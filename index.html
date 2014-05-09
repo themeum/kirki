@@ -1,71 +1,476 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Kirki by aristath</title>
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta http-equiv="refresh" content="5" />
+			<meta name="description" content="">
+			<meta name="author" content="">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+			<meta name="google-site-verification" content="wy2hDOYXpyHstFlUKiUhd9ZBnnIamDWeCPh7gpx6AKg" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Kirki</h1>
-        <p>Extending the customizer</p>
+			<title>Kirki - Advanced WordPress Theme Customizer</title>
 
-        <p class="view"><a href="https://github.com/aristath/kirki">View the Project on GitHub <small>aristath/kirki</small></a></p>
+			<!-- Favicon -->
+			<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
+			<!-- CSS -->
+			<link href="css/bootstrap.min.css" rel="stylesheet">
+			<link href="css/default.css" rel="stylesheet">
+			<link href="css/font-awesome.min.css" rel="stylesheet">
+			<link href="css/flexslider.css" rel="stylesheet">
+			<link href="css/magnific-popup.css" rel="stylesheet">
+			<link href="css/owl-carousel/owl.carousel.css" rel="stylesheet">
+			<link href="css/owl-carousel/owl.theme.css" rel="stylesheet">
 
-        <ul>
-          <li><a href="https://github.com/aristath/kirki/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/aristath/kirki/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/aristath/kirki">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+			<!-- Add custom CSS here -->
+			<link href="css/custom.css" rel="stylesheet">
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+			<!-- Google fonts -->
+			<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+			
+			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!--[if lt IE9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+			<![endif]-->
+		</head>
+		<body>
+			<!-- Side Menu -->
+			<a id="menu-toggle" href="#" class="btn btn-links btn-lg toggle"><i class="fa fa-bars fa-lg"></i></a>
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a id="menu-close" href="#" class="btn btn-links btn-lg toggle"><i class="fa fa-times fa-lg"></i></a>
+					<li><a href="#hero">Home</a></li>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#configuration">Configuration</a></li>
+					<li><a href="#fields">Fields</a></li>
+				</ul>
+			</div>
+			<!-- End side menu -->
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+			<!-- Hero -->
+			<section id="hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<div class="logo">
+								<h1><img src="img/kirki.png"></h1>
+							</div>
+							<div class="intro">
+								<h1>Advanced Theme Customizer.</h1>
+								<p class="lead">Tired of all the bloated options frameworks? You can use the WordPress Customizer instead, and extend it using <strong>kirki</strong>!</p>
+								<div class="buttons">
+									<!-- <a class="btn btn-1 btn-lg"><i class="fa fa-download icon"></i>Download</a> -->
+									<a class="btn btn-1 btn-lg" href="http://shoestrap.org"><i class="fa fa-github"></i> kirki on github</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div id="main-slider" class="flexslider">
+								<ul class="slides">
+									<li><img src="img/slides/1.png" alt="Slide Add your own custom headers and colors"></li>
+									<li><img src="img/slides/2.png" alt="slide"></li>
+									<li><img src="img/slides/3.png" alt="slide"></li>
+									<li><img src="img/slides/4.png" alt="slide"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End hero -->
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+			<!-- Features -->
+			<section id="features">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="overview">
+								<h1>Kirki features</h1>
+								<p class="lead">Why should you use it?</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<figure class="item">
+								<div class="item-icon">
+									<i class="fa fa-rocket fa-lg"></i>
+								</div>
+								<div class="item-body">
+									<h2>Ready to use</h2>
+									<p>Install the plugin or embed in your theme and start using it immediately!
+									If you can use the standard WordPress customizer then you'll be able to start in no time!
+									</p>
+								</div>
+							</figure>
+						</div>
+						<div class="col-sm-6">
+							<figure class="item">
+								<div class="item-icon">
+									<i class="fa fa-files-o fa-lg"></i>
+								</div>
+								<div class="item-body">
+									<h2>Multiple Fields</h2>
+									<p>We've extended the standard WordPress Customizer by adding extra fields and options, making it easier to build extremely complex theme configuration panels with minimal coding.</p>
+								</div>
+							</figure>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<figure class="item">
+								<div class="item-icon">
+									<i class="fa fa-bar-chart-o fa-lg"></i>
+								</div>
+								<div class="item-body">
+									<h2>Live Updating</h2>
+									<p>Unlike most option frameworks, we don't add any admin pages. Instead, your users will be able to change their theme options and watch their theme update live.</p>
+								</div>
+							</figure>
+						</div>
+						<div class="col-sm-6">
+							<figure class="item">
+								<div class="item-icon">
+									<i class="fa fa-code fa-lg"></i>
+								</div>
+								<div class="item-body">
+									<h2>Developer-Friendly</h2>
+									<p>Developers can build and extend the <strong>kirki</strong> plugin with their own custom fields. We're open-source, so you can contribute your modifications to our <a href="https://github.com/aristath/kirki">github repository</a>.</p>
+								</div>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End features -->
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+			<!-- Configuration -->
+			<section id="configuration">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="text">
+								<h1>Easy configuration and initialization</h1>
+								<p class="lead">After you install the plugin (or embed it in your theme), you can customize its look and make it match your theme's branding and feel with just a few lines!</p>
+							</div>
+							<p class="lead">Configuring the plugin is as simple as building an array:</p>
+							<script src="https://gist.github.com/aristath/f5bb04a81b3036d54f03.js"></script>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Configuration -->
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+			<!-- fields -->
+			<section id="fields">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="overview">
+								<h1>Kirki Fields</h1>
+								<p class="lead">Learn more about the fields.</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+						<strong>Kirki</strong> allows you to add these fields on your customizer:
+						<ul>
+							<li>Buttonset</li>
+							<li>Checkbox</li>
+							<li>Color</li>
+							<li>Image</li>
+							<li>Image Radio</li>
+							<li>Multicheck</li>
+							<li>Radio</li>
+							<li>Select</li>
+							<li>Slider</li>
+							<li>Text</li>
+							<li>Textarea</li>
+							<li>Upload</li>
+						</ul>
+						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
+						The WordPress Customizer is as simple as it can get when it comes to creating fields. For example in order to create a text fields using the customizer you would write something like this:
+						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+						With kirki however, now you can write the same thing like this:<br><br>
+						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+						Note that now instead of 1 function, now 2 are required:
+						<ul>
+							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer</li>
+							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
+						</ul>
+						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+						<h2>Additional Options</h2>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+						<p>In the example above, we created a simple text field that has a label and the text input itself. In some cases, you might want to add some more info to that field and provide additional information so that your users know exactly what your field does and how to use it.</p>
+						<p>For that reason, we've added some additional arguments you can use: <code>subtitle</code> and <code>description</code>. Example:
+						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/aristath">aristath</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
-</html>
+<h3>Adding a <strong>Buttonset</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'radio',
+	'mode'     => 'buttonset',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'option_1',
+	'priority' => 1,
+	'choices'  => array(
+		'option_1' => __( 'Option 1', 'textdomain' ),
+		'option_2' => __( 'Option 2', 'textdomain' ),
+		'option_3' => __( 'Option 3', 'textdomain' ),
+		'option_4' => __( 'Option 4', 'textdomain' ),
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Checkbox</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'checkbox',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 0,
+	'priority' => 1,
+);
+</pre>
+
+<h3>Adding a <strong>Color</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'color',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => '#1abc9c',
+	'priority' => 1,
+);
+</pre>
+
+<h3>Adding an <strong>Image</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'image',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => '',
+	'priority' => 1,
+);
+</pre>
+
+<h3>Adding an <strong>Image Radio</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'radio',
+	'mode'     => 'image',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'priority' => 1,
+	'default'  => 1,
+	'choices'  => array(
+		0 => get_template_directory_uri() . '/lib/customizer/assets/images/1c.png',
+		1 => get_template_directory_uri() . '/lib/customizer/assets/images/2cr.png',
+		2 => get_template_directory_uri() . '/lib/customizer/assets/images/2cl.png',
+		3 => get_template_directory_uri() . '/lib/customizer/assets/images/3cl.png',
+		4 => get_template_directory_uri() . '/lib/customizer/assets/images/3cr.png',
+		5 => get_template_directory_uri() . '/lib/customizer/assets/images/3cm.png',
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Multicheck</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'multicheck',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'option_1',
+	'priority' => 1,
+	'choices'  => array(
+		'option_1' => __( 'Option 1', 'textdomain' ),
+		'option_2' => __( 'Option 2', 'textdomain' ),
+		'option_3' => __( 'Option 3', 'textdomain' ),
+		'option_4' => __( 'Option 4', 'textdomain' ),
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Radio</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'radio',
+	'mode'     => 'radio',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'option_1',
+	'priority' => 1,
+	'choices'  => array(
+		'option_1' => __( 'Option 1', 'textdomain' ),
+		'option_2' => __( 'Option 2', 'textdomain' ),
+		'option_3' => __( 'Option 3', 'textdomain' ),
+		'option_4' => __( 'Option 4', 'textdomain' ),
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Select</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'select',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'option_1',
+	'priority' => 1,
+	'choices'  => array(
+		'option_1' => __( 'Option 1', 'textdomain' ),
+		'option_2' => __( 'Option 2', 'textdomain' ),
+		'option_3' => __( 'Option 3', 'textdomain' ),
+		'option_4' => __( 'Option 4', 'textdomain' ),
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Slider</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'slider',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 36,
+	'priority' => 1,
+	'choices'  => array(
+		'min'  => 1,
+		'max'  => 100,
+		'step' => 2,
+	),
+);
+</pre>
+
+<h3>Adding a <strong>Text</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'text',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => __( 'Default text', 'textdomain' ),
+	'priority' => 1,
+);
+</pre>
+
+<h3>Adding a <strong>Textarea</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'textarea',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => __( 'Default text', 'textdomain' ),
+	'priority' => 1,
+);
+</pre>
+
+<h3>Adding an <strong>Upload</strong> control:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'upload',
+	'setting'  => 'my_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => '',
+	'priority' => 1,
+);
+</pre>
+
+							<p>All these options can be added to your theme (or plugin) and you can combine them to create complex structures.</p>
+
+							<h2>Field "required" argument</h2>
+							<p>Sometimes it is useful to hide a few of our fields until the user selects an option that "activates" them.</p>
+							<p>For example you might have sliders that control the width and height of your post featured images, but you don't want to show these settings until the user selects that they actually want to display featured images on their posts.</p>
+							<p>For that we've introduced the <code>required</code> argument.</p>
+							<p><strong>Notice</strong>: The element that triggers the fields to be hidden or shown at the moment can only be a buttonset field.</p>
+<h3>example:</h3>
+<pre>
+$controls[] = array(
+	'type'     => 'radio',
+	'mode'     => 'buttonset',
+	'setting'  => 'parent_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'option_1',
+	'priority' => 1,
+	'choices'  => array(
+		'option_1' => __( 'Option 1', 'textdomain' ),
+		'option_2' => __( 'Option 2', 'textdomain' ),
+		'option_3' => __( 'Option 3', 'textdomain' ),
+		'option_4' => __( 'Option 4', 'textdomain' ),
+	),
+);
+
+$controls[] = array(
+	'type'     => 'textarea',
+	'setting'  => 'child_setting',
+	'label'    => __( 'My Setting', 'textdomain' ),
+	'section'  => 'my_section',
+	'default'  => __( 'Default text', 'textdomain' ),
+	'priority' => 1,
+	'required' => array( 'parent_setting' => 'option_2' )
+);
+</pre>
+							
+							<p>In the above example, the <code>child_setting</code> will be hidden unless the <code>parent_setting</code> is set to <code>option_2</code>.
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End fields -->
+			<!-- Purchase -->
+			<section id="purchase">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Are you ready?</h1>
+							<a class="btn btn-1 btn-lg" href="http://shoestrap.org/downloads/shoestrap-3"><i class="fa fa-download icon"></i>Download kirki now</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End purchase -->
+
+			<!-- Footer -->
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div class="footer-note">
+								<p>&copy; 2014 Aristeides Stathopoulos</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End footer -->
+
+			<!-- JavaScripts -->
+			<script src="js/jquery-1.10.2.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/jquery.flexslider.js"></script>
+			<script src="js/jquery.magnific-popup.js"></script>
+			<script src="js/jquery.easing.min.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
+			<script src="js/scripts.js"></script>
+		</body>
+	</html>
