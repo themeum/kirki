@@ -1,4 +1,4 @@
-kirki
+Kirki
 =====
 
-Extending the customizer
+Please visit http://kirki.org for documentation and examples

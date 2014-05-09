@@ -1,0 +1,132 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h3,
+.customize-control-title {
+  font-family: 'Roboto Slab', serif;
+}
+
+li.customize-control.customize-control-slider input[type=text] {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+
+li.customize-control.customize-control-slider .ss-slider {
+  width: 70%;
+  margin-left: 25%;
+  margin-top: 12px;
+}
+.wp-core-ui .button.tooltip {
+  margin-top: 5px;
+  color: #fff;
+  border: 0px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 0;
+  line-height: 20px;
+  font-weight: bold;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  float: right;
+}
+
+.customize-control-radio label {
+  line-height: 28px;
+  padding: 5px 10px;
+}
+
+.image.ui-buttonset label.ui-button {
+  padding: 2px;
+  line-height: 0;
+  border-radius: 0;
+  margin-right: 0;
+  background: #999;
+  border: 0;
+}
+
+li .image.ui-buttonset label.ui-button {
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
+
+.customizer-subtitle {
+  color: #999;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+#customize-info .accordion-section-title,
+#customize-info .accordion-section-title:hover {
+  color: #fff;
+}
+
+#customize-theme-controls .accordion-section-title {
+  color: #fff;
+}
+
+#customize-theme-controls .control-section .accordion-section-title {
+  color: #fff;
+}
+
+#customize-theme-controls .control-section .accordion-section-title:focus,
+#customize-theme-controls .control-section .accordion-section-title:hover,
+#customize-theme-controls .control-section.open .accordion-section-title,
+#customize-theme-controls .control-section:hover .accordion-section-title {
+  color: #fff;
+}
+
+#customize-theme-controls .control-section .accordion-section-title:focus::after,
+#customize-theme-controls .control-section .accordion-section-title:hover::after,
+#customize-theme-controls .control-section.open .accordion-section-title::after,
+#customize-theme-controls .control-section:hover .accordion-section-title::after {
+  color: #fff;
+}
+
+div.kirki-customizer {
+  height: 80px;
+}
+
+.wp-full-overlay.expanded {
+  margin-left: 330px;
+}
+.wp-full-overlay-sidebar {
+  width: 330px;
+}
+
+.wp-core-ui .button-primary {
+  border: 0px;
+}
+
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary.hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:hover {
+  border: 0px;
+}
+
+.wp-core-ui .button-primary-disabled,
+.wp-core-ui .button-primary.disabled,
+.wp-core-ui .button-primary:disabled,
+.wp-core-ui .button-primary[disabled] {
+  border: 0px !important;
+}
+
+.customize-control-title {
+  color: #555;
+}
+
+li.customize-control {
+  margin: 5px 0;
+}
+
+.wp-full-overlay-sidebar .wp-full-overlay-header,
+#customize-info .accordion-section-title,
+#customize-theme-controls .control-section:last-of-type .accordion-section-title,
+#customize-theme-controls .control-section:last-of-type.open,
+div.kirki-customizer {
+  border-bottom: 1px solid rgba( 255, 255, 255, 0.2 );
+}
