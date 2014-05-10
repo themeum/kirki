@@ -604,3 +604,7 @@ hr.separator-alt {
         padding-left: 15px;
     }
 }
+
+img {
+    max-width: 98%;
+}
