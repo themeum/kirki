@@ -43,6 +43,7 @@
 					<li><a href="#features">Features</a></li>
 					<li><a href="#configuration">Configuration</a></li>
 					<li><a href="#fields">Fields</a></li>
+					<li><a href="#download">Download</a></li>
 				</ul>
 			</div>
 			<!-- End side menu -->
@@ -51,27 +52,35 @@
 			<section id="hero">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6 col-sm-6">
+						<div class="col-sm-12">
 							<div class="logo">
 								<h1><img src="img/kirki.png"></h1>
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
 							<div class="intro">
 								<h1>Advanced Theme Customizer.</h1>
 								<p class="lead">Tired of all the bloated options frameworks? You can use the WordPress Customizer instead, and extend it using <strong>kirki</strong>!</p>
+								<p class="lead">You can now style the customizer, add a custom header and use many additional custom controls.</p>
 								<div class="buttons">
 									<!-- <a class="btn btn-1 btn-lg"><i class="fa fa-download icon"></i>Download</a> -->
-									<a class="btn btn-1 btn-lg" href="https://github.com/aristath/kirki"><i class="fa fa-github"></i> kirki on github</a>
+									<a class="btn btn-1 btn-lg" href="https://github.com/aristath/kirki"><i class="fa fa-code-fork"></i> kirki on github</a>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
-							<div id="main-slider" class="flexslider">
-								<ul class="slides">
-									<li><img src="img/slides/1.png" alt="Slide Add your own custom headers and colors"></li>
-									<li><img src="img/slides/2.png" alt="slide"></li>
-									<li><img src="img/slides/3.png" alt="slide"></li>
-									<li><img src="img/slides/4.png" alt="slide"></li>
-								</ul>
+							<div class="intro">
+								<h1>Free as in beer <i class="fa fa-beer"></i></h1>
+								<p class="lead">Kirki is completely open-source. You can use it however you like. If you want to help with its development you can submit your suggestions or improvements on <a href="https://github.com/aristath/kirki" style="color: #34495e;">Github Repository</a>, or make a donation to help us continue improving it.</p>
+								<div class="buttons">
+									<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+										<input type="hidden" name="cmd" value="_s-xclick">
+										<input type="hidden" name="hosted_button_id" value="EXD2PDDWG7TJ8">
+										<input type="submit" class="btn btn-1 btn-lg btn-donate" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Make a donation (PayPal)">
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -86,7 +95,8 @@
 						<div class="col-md-12">
 							<div class="overview">
 								<h1>Kirki features</h1>
-								<p class="lead">Why should you use it?</p>
+								<p class="lead"><strong>Why should you use it?</strong></p>
+								<p class="lead">We recently started rebuilding the <a href="http://shoestrap.org">Shoestrap theme</a> and needed to add some custom controls (like multi-check checkboxes, liders using the jQuery SliderUI, buttonsets, layout selection etc). <strong>Kirki</strong> is the result of these efforts. If you want to see a demo of kirki, we would advise you to download and install the (still incomplete - under heavy development) <a href="https://github.com/wpmu/shoestrap">new Shoestrap theme from github</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -107,10 +117,10 @@
 						<div class="col-sm-6">
 							<figure class="item">
 								<div class="item-icon">
-									<i class="fa fa-files-o fa-lg"></i>
+									<i class="fa fa-dashboard fa-lg"></i>
 								</div>
 								<div class="item-body">
-									<h2>Multiple Fields</h2>
+									<h2>Custom Controls</h2>
 									<p>We've extended the standard WordPress Customizer by adding extra fields and options, making it easier to build extremely complex theme configuration panels with minimal coding.</p>
 								</div>
 							</figure>
@@ -120,7 +130,7 @@
 						<div class="col-sm-6">
 							<figure class="item">
 								<div class="item-icon">
-									<i class="fa fa-bar-chart-o fa-lg"></i>
+									<i class="fa fa-eye fa-lg"></i>
 								</div>
 								<div class="item-body">
 									<h2>Live Updating</h2>
@@ -151,6 +161,23 @@
 						<div class="col-sm-12">
 							<div class="text">
 								<h1>Easy configuration and initialization</h1>
+								<p class="lead">There are 2 ways to install the plugin:</p>
+								<ul class="lead">
+									<li><h3><strong>Install as a plugin:</strong></h3>
+										<p class="lead">If you install it as a plugin then you can go ahead with its configuration as described below.</p>
+									</li>
+									<li><h3><strong>Embed in your theme</strong></h3>
+										<p class="lead">If you decide to embed kirki in your own theme then you will have to follow the steps below:</p>
+										<ol class="lead">
+											<li>Copy the plugin folder in your theme (for example in <em>{theme_folder}/kirki</em>).</li>
+											<li>Include the main plugin file in your theme's functions.php file:
+											<pre>include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );</pre>
+											</li>
+											<li>Add a filter to change the URL that will be used for the plugin's assets. This can be done from the configuration below (see lines 32-35).</li>
+										</ol>
+									</li>
+								</ul>
+								<hr style="border-top: 1px solid rgba( 255, 255, 255, 0.2 );">
 								<p class="lead">After you install the plugin (or embed it in your theme), you can customize its look and make it match your theme's branding and feel with just a few lines!</p>
 							</div>
 							<p class="lead">Configuring the plugin is as simple as building an array:</p>
@@ -169,27 +196,28 @@
 						<div class="col-md-12">
 							<div class="overview">
 								<h1>Kirki Fields</h1>
-								<p class="lead">Learn more about the fields.</p>
+								<p class="lead">Learn more about the available controls and how to create them.</p>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 						<strong>Kirki</strong> allows you to add these fields on your customizer:
-						<ul>
-							<li>Buttonset</li>
-							<li>Checkbox</li>
-							<li>Color</li>
-							<li>Image</li>
-							<li>Image Radio</li>
-							<li>Multicheck</li>
-							<li>Radio</li>
-							<li>Select</li>
-							<li>Slider</li>
-							<li>Text</li>
-							<li>Textarea</li>
-							<li>Upload</li>
-						</ul>
+						<br>
+						
+						<a class="label label-info" href="#buttonset">Buttonset</a>
+						<a class="label label-info" href="#checkbox">Checkbox</a>
+						<a class="label label-info" href="#color">Color</a>
+						<a class="label label-info" href="#image">Image</a>
+						<a class="label label-info" href="#imageradio">Image Radio</a>
+						<a class="label label-info" href="#multiselect">Multicheck</a>
+						<a class="label label-info" href="#radio">Radio</a>
+						<a class="label label-info" href="#select">Select</a>
+						<a class="label label-info" href="#select">Slider</a>
+						<a class="label label-info" href="#text">Text</a>
+						<a class="label label-info" href="#textarea">Textarea</a>
+						<a class="label label-info" href="#upload">Upload</a>
+
 						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
 						The WordPress Customizer is as simple as it can get when it comes to creating fields. For example in order to create a text fields using the customizer you would write something like this:
 						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
@@ -197,9 +225,9 @@
 						With kirki however, now you can write the same thing like this:<br><br>
 						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
 
-						Note that now instead of 1 function, now 2 are required:
+						Note that instead of 1 function, we now require 2 functions:
 						<ul>
-							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer</li>
+							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
 							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
 						</ul>
 						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
@@ -210,7 +238,7 @@
 						<p>For that reason, we've added some additional arguments you can use: <code>subtitle</code> and <code>description</code>. Example:
 						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
 
-<h3>Adding a <strong>Buttonset</strong> control:</h3>
+<h3 id="buttonset">Adding a <strong>Buttonset</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -229,7 +257,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Checkbox</strong> control:</h3>
+<h3 id="checkbox">Adding a <strong>Checkbox</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'checkbox',
@@ -241,7 +269,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Color</strong> control:</h3>
+<h3 id="color">Adding a <strong>Color</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'color',
@@ -253,7 +281,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding an <strong>Image</strong> control:</h3>
+<h3 id="image">Adding an <strong>Image</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'image',
@@ -265,7 +293,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding an <strong>Image Radio</strong> control:</h3>
+<h3 id="image">Adding an <strong>Image Radio</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -286,7 +314,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Multicheck</strong> control:</h3>
+<h3 id="multicheck">Adding a <strong>Multicheck</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'multicheck',
@@ -304,7 +332,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Radio</strong> control:</h3>
+<h3 id="radio">Adding a <strong>Radio</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -323,7 +351,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Select</strong> control:</h3>
+<h3 id="select">Adding a <strong>Select</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'select',
@@ -341,7 +369,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Slider</strong> control:</h3>
+<h3 id="slider">Adding a <strong>Slider</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'slider',
@@ -358,7 +386,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Text</strong> control:</h3>
+<h3 id="text">Adding a <strong>Text</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'text',
@@ -370,7 +398,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding a <strong>Textarea</strong> control:</h3>
+<h3 id="textarea">Adding a <strong>Textarea</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'textarea',
@@ -382,7 +410,7 @@ $controls[] = array(
 );
 </pre>
 
-<h3>Adding an <strong>Upload</strong> control:</h3>
+<h3 id="upload">Adding an <strong>Upload</strong> control:</h3>
 <pre>
 $controls[] = array(
 	'type'     => 'upload',
@@ -436,8 +464,8 @@ $controls[] = array(
 				</div>
 			</section>
 			<!-- End fields -->
-			<!-- Purchase -->
-			<section id="purchase">
+			<!-- Download -->
+			<section id="download">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -447,7 +475,7 @@ $controls[] = array(
 					</div>
 				</div>
 			</section>
-			<!-- End purchase -->
+			<!-- End Download -->
 
 			<!-- Footer -->
 			<footer>
@@ -455,7 +483,7 @@ $controls[] = array(
 					<div class="row">
 						<div class="col-md-12 text-center">
 							<div class="footer-note">
-								<p>&copy; 2014 Aristeides Stathopoulos</p>
+								<p>&copy; 2014 <a href="http://twitter.com/aristath">Aristeides Stathopoulos</a>, <a href="http://twitter.com/fovoc">Dimitris Kalliris</a></p>
 							</div>
 						</div>
 					</div>
