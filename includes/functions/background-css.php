@@ -51,8 +51,6 @@ function kirki_background_css() {
 					$styles .= '}';
 				}
 
-				print_r($styles);
-
 				wp_add_inline_style( $config['stylesheet_id'], $styles );
 
 			}
