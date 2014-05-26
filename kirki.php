@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Kirki Framework
-Plugin URI: http://wpmu.io
+Plugin URI: http://kirki.org
 Description: An options framework using and extending the WordPress Customizer
 Author: Aristeides Stathopoulos
-Author URI: http://aristeides.com
+Author URI: http://wpmu.io/
 Version: 0.3
 */
 
