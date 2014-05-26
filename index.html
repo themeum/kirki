@@ -223,6 +223,7 @@
 						<a class="label label-info" href="#checkbox">Checkbox</a>
 						<a class="label label-info" href="#color">Color</a>
 						<a class="label label-info" href="#image">Image</a>
+						<a class="label label-info" href="#background">Background</a>
 						<a class="label label-info" href="#imageradio">Image Radio</a>
 						<a class="label label-info" href="#multicheck">Multicheck</a>
 						<a class="label label-info" href="#radio">Radio</a>
@@ -270,6 +271,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="checkbox">Adding a <strong>Checkbox</strong> control:</h3>
 <pre>
@@ -282,6 +284,7 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
 
 <h3 id="color">Adding a <strong>Color</strong> control:</h3>
 <pre>
@@ -294,6 +297,7 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
 
 <h3 id="image">Adding an <strong>Image</strong> control:</h3>
 <pre>
@@ -306,6 +310,48 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
+
+
+<h3 id="background">Adding an <strong>Background</strong> control:</h3>
+The <code>background</code> control is a bit more complicated that others:
+<pre>
+$controls[] = array(
+	'type'         => 'background',
+	'setting'      => 'my_setting',
+	'label'        => __( 'My Setting', 'textdomain' ),
+	'description'  =>   __( 'Background Color', 'shoestrap' ),
+	'section'      => 'my_section',
+	'default'      => array(
+		'color'    => '#ffffff',
+		'image'    => null,
+		'repeat'   => 'repeat',
+		'size'     => 'inherit',
+		'attach'   => 'inherit',
+		'position' => 'left-top',
+		'opacity'  => 100,
+	),
+	'priority' => 3,
+	'output' => 'body',
+);
+</pre>
+What this actually does, is create 7 other settings and controls:
+<ul>
+	<li><code>my_setting_color</code> (color)</li>
+	<li><code>my_setting_image</code> (image upload)</li>
+	<li><code>my_setting_repeat</code> (dropdown)</li>
+	<li><code>my_setting_size</code> (buttonset)</li>
+	<li><code>my_setting_attach</code> (buttonset)</li>
+	<li><code>my_setting_position</code> (dropdown)</li>
+	<li><code>my_setting_opacity</code>(slider)</li>
+</ul>
+<p>The <code>my_setting</code> option is never created, and only serves as a prefix for the other options.</p>
+<p>if you want to disable opacity for your control, then you can simply set <code>'opacity' => false</code> in the defaults section.</p>
+<p>Since these are essentially 7 controls, each contron has its own priority. So when setting the prioritis for your controls, please make sure you leave enough room for all 7 of them.</p>
+<p>The background control also allows you to define if you want the CSS to be automatically generated and applied for you. If you want to enable this feature, then you can simply set <code>'output'</code> to the element whose background you want to control (in our above example, the <code>&#60;body&#62;</code> of our page).</p>
+<p>Please note that the generated CSS is then added to your site using the <a href="http://codex.wordpress.org/Function_Reference/wp_add_inline_style">wp_add_inline_style()</a> function, so in order for this to work you <strong>must</strong> first specify the <code>stylesheet_id</code> in the plugin's <a href="#configuration">configuration options</a>.
+<hr>
+
 
 <h3 id="imageradio">Adding an <strong>Image Radio</strong> control:</h3>
 <pre>
@@ -327,6 +373,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="multicheck">Adding a <strong>Multicheck</strong> control:</h3>
 <pre>
@@ -345,6 +392,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="radio">Adding a <strong>Radio</strong> control:</h3>
 <pre>
@@ -364,6 +412,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="select">Adding a <strong>Select</strong> control:</h3>
 <pre>
@@ -382,6 +431,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="slider">Adding a <strong>Slider</strong> control:</h3>
 <pre>
@@ -399,6 +449,7 @@ $controls[] = array(
 	),
 );
 </pre>
+<hr>
 
 <h3 id="text">Adding a <strong>Text</strong> control:</h3>
 <pre>
@@ -411,6 +462,7 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
 
 <h3 id="textarea">Adding a <strong>Textarea</strong> control:</h3>
 <pre>
@@ -423,6 +475,7 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
 
 <h3 id="upload">Adding an <strong>Upload</strong> control:</h3>
 <pre>
@@ -435,6 +488,7 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+<hr>
 
 							<p>All these options can be added to your theme (or plugin) and you can combine them to create complex structures.</p>
 
