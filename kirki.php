@@ -5,7 +5,7 @@ Plugin URI: http://wpmu.io
 Description: An options framework using and extending the WordPress Customizer
 Author: Aristeides Stathopoulos
 Author URI: http://aristeides.com
-Version: 0.2
+Version: 0.3
 */
 
 
