@@ -98,6 +98,10 @@
 <!-- AddThis Button END -->
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1"><img src="img/preview.png"></div>
+					</div>
 				</div>
 			</section>
 			<!-- End hero -->
@@ -254,6 +258,8 @@
 						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
 
 <h3 id="buttonset">Adding a <strong>Buttonset</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -271,9 +277,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/buttonset.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="checkbox">Adding a <strong>Checkbox</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'checkbox',
@@ -284,9 +297,16 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/checkbox.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="color">Adding a <strong>Color</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'color',
@@ -297,9 +317,16 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/color.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="image">Adding an <strong>Image</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'image',
@@ -310,11 +337,18 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/image.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 
 <h3 id="background">Adding an <strong>Background</strong> control:</h3>
 The <code>background</code> control is a bit more complicated that others:
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'         => 'background',
@@ -335,6 +369,7 @@ $controls[] = array(
 	'output' => 'body',
 );
 </pre>
+
 What this actually does, is create 7 other settings and controls:
 <ul>
 	<li><code>my_setting_color</code> (color)</li>
@@ -350,10 +385,17 @@ What this actually does, is create 7 other settings and controls:
 <p>Since these are essentially 7 controls, each contron has its own priority. So when setting the prioritis for your controls, please make sure you leave enough room for all 7 of them.</p>
 <p>The background control also allows you to define if you want the CSS to be automatically generated and applied for you. If you want to enable this feature, then you can simply set <code>'output'</code> to the element whose background you want to control (in our above example, the <code>&#60;body&#62;</code> of our page).</p>
 <p>Please note that the generated CSS is then added to your site using the <a href="http://codex.wordpress.org/Function_Reference/wp_add_inline_style">wp_add_inline_style()</a> function, so in order for this to work you <strong>must</strong> first specify the <code>stylesheet_id</code> in the plugin's <a href="#configuration">configuration options</a>.
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/background.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 
 <h3 id="imageradio">Adding an <strong>Image Radio</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -373,9 +415,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/image-radio.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="multicheck">Adding a <strong>Multicheck</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'multicheck',
@@ -392,9 +441,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/multicheck.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="radio">Adding a <strong>Radio</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'radio',
@@ -412,9 +468,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/radio.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="select">Adding a <strong>Select</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'select',
@@ -431,9 +494,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/select.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="slider">Adding a <strong>Slider</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'slider',
@@ -449,9 +519,16 @@ $controls[] = array(
 	),
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/slider.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="text">Adding a <strong>Text</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'text',
@@ -462,9 +539,16 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/text.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="textarea">Adding a <strong>Textarea</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'textarea',
@@ -475,9 +559,16 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/textarea.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 <h3 id="upload">Adding an <strong>Upload</strong> control:</h3>
+<div class="row">
+	<div class="col-md-9">
 <pre>
 $controls[] = array(
 	'type'     => 'upload',
@@ -488,6 +579,11 @@ $controls[] = array(
 	'priority' => 1,
 );
 </pre>
+	</div>
+	<div class="col-md-3 hidden-sm hidded-xs">
+		<img src="img/upload.png" class="field-preview-image">
+	</div>
+</div>
 <hr>
 
 							<p>All these options can be added to your theme (or plugin) and you can combine them to create complex structures.</p>
