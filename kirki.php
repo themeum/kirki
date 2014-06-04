@@ -148,6 +148,8 @@ class Kirki {
 			<?php if ( isset( $options['logo_image'] ) ) : ?>
 				div.kirki-customizer {
 					background: url("<?php echo $options['logo_image']; ?>") no-repeat left center;
+					height: 50px;
+					width: 250px;
 				}
 			<?php endif; ?>
 		</style>
