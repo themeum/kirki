@@ -58,10 +58,8 @@ class Kirki {
 
 		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : plugin_dir_url( __FILE__ );
 
-		wp_register_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, NULL, 'all' );
-		wp_register_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, NULL, 'all' );
-		wp_enqueue_style( 'kirki-customizer-css' );
-		wp_enqueue_style( 'kirki-customizer-ui' );
+		wp_enqueue_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, '0.3' );
+		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '0.3' );
 
 		wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js');
 		wp_enqueue_script( 'tipsy', $kirki_url . 'assets/js/tooltipsy.min.js', array( 'jquery' ) );
