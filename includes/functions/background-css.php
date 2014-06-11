@@ -14,7 +14,7 @@ function kirki_background_css() {
 			if ( 'background' == $control['type'] ) {
 
 				// Apply custom CSS if we've set the 'output'.
-				if ( $control['output'] ) {
+				if ( ! is_null( $control['output'] ) ) {
 
 					$bg_color    = kirki_sanitize_hex( get_theme_mod( $control['setting'] . '_color', $control['default']['color'] ) );
 					$bg_image    = get_theme_mod( $control['setting'] . '_image', $control['default']['image'] );
