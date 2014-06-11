@@ -13,8 +13,6 @@ class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 
 	public $separator = false;
 
-	public $required;
-
 	private static $firstLoad = true;
 
 	// Since theme_mod cannot handle multichecks, we will do it with some JS
@@ -80,27 +78,7 @@ class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 			?>
 			<input type="hidden" value="<?php echo esc_attr( $savedValueCSV ); ?>" <?php $this->link(); ?> />
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; 
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
 
-		foreach ( $this->required as $id => $value ) : ?>
-			<script>
-			jQuery(document).ready(function($) {
-			<?php if ( isset($id) && isset($value) && intval(get_theme_mod($id))==$value ) { ?>
-				$("#customize-control-<?php echo $this->id; ?>").fadeIn(300);
-			<?php } elseif ( isset($id) && isset($value) && intval(get_theme_mod($id))!=$value ) { ?>
-				$("#customize-control-<?php echo $this->id; ?>").fadeOut(300);
-			<?php }	?>
-				$( "#input_<?php echo $id; ?> input" ).each(function(){
-					$(this).click(function(){
-						if ( $(this).val() == <?php echo $value; ?> ) {
-							$("#customize-control-<?php echo $this->id; ?>").fadeIn(300);
-						} else {
-							$("#customize-control-<?php echo $this->id; ?>").fadeOut(300);
-						}
-					});
-				});
-			});
-			</script>
-		<?php endforeach;
 	}
 }

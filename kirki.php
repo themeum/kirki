@@ -11,6 +11,7 @@ Version: 0.3
 /**
 * The main Kirki class
 */
+if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
 
 	function __construct() {
@@ -18,6 +19,7 @@ class Kirki {
 		// Include necessary files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
 		include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
 
 		// Include the controls initialization script
 		include_once( dirname( __FILE__ ) . '/includes/controls/controls-init.php' );
@@ -175,3 +177,4 @@ class Kirki {
 }
 
 $kirki = new Kirki();
+endif;
