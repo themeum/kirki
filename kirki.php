@@ -48,6 +48,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Textarea_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Upload_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Select_Control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Group_Title_Control.php' );
 
 	}
 
