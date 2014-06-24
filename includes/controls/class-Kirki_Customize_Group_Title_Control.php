@@ -1,19 +1,19 @@
 <?php
 
-class Kirki_Customize_Textarea_Control extends WP_Customize_Control {
+class Kirki_Customize_Group_Title_Control extends WP_Customize_Control {
 
-	public $type = 'textarea';
+	public $type = 'group_title';
 
 	public $description = '';
 
 	public $subtitle = '';
 
-	public $separator = false;
-
 	public function render_content() { ?>
-		<label class="customizer-textarea">
+
+		<label class="customizer-separator">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
+
 				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
 					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
@@ -22,10 +22,7 @@ class Kirki_Customize_Textarea_Control extends WP_Customize_Control {
 			<?php if ( '' != $this->subtitle ) : ?>
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
-
-			<textarea class="of-input" rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
-
+		<?php
 	}
 }

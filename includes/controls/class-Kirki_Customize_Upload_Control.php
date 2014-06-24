@@ -19,8 +19,6 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 
 	public $separator = false;
 
-	public $required;
-
 	/**
 	 * Enqueue control related scripts/styles.
 	 *
@@ -72,37 +70,7 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>
 			</div>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">'; ?>
-		<?php foreach ( $this->required as $id => $value ) :
+		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
 
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).show();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
-					});
-				});
-				</script>
-			<?php }
-
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)!=$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).hide();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-						$( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
-					});
-				});
-				</script>
-			<?php }
-
-		endforeach;
 	}
 }

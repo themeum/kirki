@@ -130,3 +130,15 @@ li.customize-control {
 div.kirki-customizer {
   border-bottom: 1px solid rgba( 255, 255, 255, 0.2 );
 }
+
+.hide {
+  display: none;
+}
+
+li.customize-control.customize-control-group_title {
+  background: #f7f7f7;
+  margin: 20px -20px;
+  padding: 5px 20px 0;
+  border-bottom: 1px solid #dedede;
+  border-top: 1px solid #dedede;
+}

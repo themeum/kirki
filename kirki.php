@@ -11,6 +11,7 @@ Version: 0.3
 /**
 * The main Kirki class
 */
+if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
 
 	function __construct() {
@@ -18,6 +19,7 @@ class Kirki {
 		// Include necessary files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
 		include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
 
 		// Include the controls initialization script
 		include_once( dirname( __FILE__ ) . '/includes/controls/controls-init.php' );
@@ -46,6 +48,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Textarea_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Upload_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Select_Control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Group_Title_Control.php' );
 
 	}
 
@@ -58,10 +61,8 @@ class Kirki {
 
 		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : plugin_dir_url( __FILE__ );
 
-		wp_register_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, NULL, 'all' );
-		wp_register_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, NULL, 'all' );
-		wp_enqueue_style( 'kirki-customizer-css' );
-		wp_enqueue_style( 'kirki-customizer-ui' );
+		wp_enqueue_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, '0.3' );
+		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '0.3' );
 
 		wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js');
 		wp_enqueue_script( 'tipsy', $kirki_url . 'assets/js/tooltipsy.min.js', array( 'jquery' ) );
@@ -177,3 +178,4 @@ class Kirki {
 }
 
 $kirki = new Kirki();
+endif;

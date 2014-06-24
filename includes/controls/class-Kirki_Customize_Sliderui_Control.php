@@ -10,8 +10,6 @@ class Kirki_Customize_Sliderui_Control extends WP_Customize_Control {
 
 	public $separator = false;
 
-	public $required;
-
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -53,36 +51,5 @@ class Kirki_Customize_Sliderui_Control extends WP_Customize_Control {
 		</script>
 		<?php
 
-		foreach ( $this->required as $id => $value ) :
-
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)==$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).show();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-					  $( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-					  $( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
-					});
-				});
-				</script>
-			<?php }
-
-			if ( isset($id) && isset($value) && get_theme_mod($id,0)!=$value ) { ?>
-				<script>
-				jQuery(document).ready(function($) {
-					$( "#customize-control-<?php echo $this->id; ?>" ).hide();
-					$( "#<?php echo $id . get_theme_mod($id,0); ?>" ).click(function(){
-					  $( "#customize-control-<?php echo $this->id; ?>" ).fadeOut(300);
-					});
-					$( "#<?php echo $id . $value; ?>" ).click(function(){
-					  $( "#customize-control-<?php echo $this->id; ?>" ).fadeIn(300);
-					});
-				});
-				</script>
-			<?php }
-
-		endforeach;
 	}
 }
