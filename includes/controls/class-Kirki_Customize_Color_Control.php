@@ -37,7 +37,7 @@ class Kirki_Customize_Color_Control extends WP_Customize_Control {
 	 * @param array $args
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
-		$this->statuses = array( '' => __('Default') );
+		$this->statuses = array( '' => __('Default', 'kirki') );
 		parent::__construct( $manager, $id, $args );
 	}
 

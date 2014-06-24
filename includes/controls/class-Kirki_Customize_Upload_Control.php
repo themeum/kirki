@@ -66,8 +66,8 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 			<?php endif; ?>
 
 			<div>
-				<a href="#" class="button-secondary upload"><?php _e( 'Upload' ); ?></a>
-				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>
+				<a href="#" class="button-secondary upload"><?php _e( 'Upload', 'kirki' ); ?></a>
+				<a href="#" class="remove"><?php _e( 'Remove', 'kirki' ); ?></a>
 			</div>
 		</label>
 		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
