@@ -25,12 +25,17 @@ function kirki_required_script() {
 
 							$( "#input_<?php echo $id; ?> input" ).each(function(){
 								$(this).click(function(){
-									if ( $(this).val() == <?php echo $value; ?> ) {
+									if ( $(this).val() == "<?php echo $value; ?>" ) {
 										$("#customize-control-<?php echo $control['setting']; ?>").fadeIn(300);
 									} else {
 										$("#customize-control-<?php echo $control['setting']; ?>").fadeOut(300);
 									}
 								});
+								if ( $(this).val() == "<?php echo $value; ?>" ) {
+										$("#customize-control-<?php echo $control['setting']; ?>").fadeIn(300);
+									} else {
+										$("#customize-control-<?php echo $control['setting']; ?>").fadeOut(300);
+									}
 							});
 						});
 					</script>
