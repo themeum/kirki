@@ -63,7 +63,7 @@ class Kirki {
 	 */
 	function styles() {
 
-		$options = $this->options;
+		$options = apply_filters( 'kirki/config', array() );
 
 		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : plugin_dir_url( __FILE__ );
 
@@ -88,7 +88,7 @@ class Kirki {
 	 */
 	function custom_css() {
 
-		$options = $this->options;
+		$options = apply_filters( 'kirki/config', array() );
 
 		$color_active = isset( $options['color_active'] ) ? $options['color_active'] : '#1abc9c';
 		$color_accent = isset( $options['color_accent'] ) ? $options['color_accent'] : '#FF5740';
@@ -167,7 +167,7 @@ class Kirki {
 	 */
 	function custom_js() {
 
-		$options = $this->options ?>
+		$options = apply_filters( 'kirki/config', array() ); ?>
 
 		<?php if ( isset( $options['logo_image'] ) ) : ?>
 			<script>
