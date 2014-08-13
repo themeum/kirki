@@ -22,7 +22,7 @@ class Kirki {
 		// Include files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
 
-		if ( ! isset( $options['live_css'] || true == $options['live_css'] ) ) {
+		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
 			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
 		}
 		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
