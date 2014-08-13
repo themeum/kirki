@@ -8,10 +8,7 @@
 class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	private static $firstLoad = true;
 
@@ -78,7 +75,7 @@ class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
 			?>
 			<input type="hidden" value="<?php echo esc_attr( $savedValueCSV ); ?>" <?php $this->link(); ?> />
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 
 	}
 }

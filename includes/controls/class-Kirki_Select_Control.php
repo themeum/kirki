@@ -6,12 +6,8 @@ class Kirki_Select_Control extends WP_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'select';
-
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	public function render_content() {
 
@@ -37,7 +33,7 @@ class Kirki_Select_Control extends WP_Customize_Control {
 				} ?>
 			</select>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 
 	}
 }

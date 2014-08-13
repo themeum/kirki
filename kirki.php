@@ -16,9 +16,15 @@ class Kirki {
 
 	function __construct() {
 
-		// Include necessary files
+		$this->options = apply_filters( 'kirki/config', array() );
+		$options = $this->options;
+
+		// Include files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+
+		if ( ! isset( $options['live_css'] || true == $options['live_css'] ) ) {
+			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+		}
 		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
 
 		// Include the controls initialization script
@@ -57,7 +63,7 @@ class Kirki {
 	 */
 	function styles() {
 
-		$options = apply_filters( 'kirki/config', array() );
+		$options = $this->options;
 
 		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : plugin_dir_url( __FILE__ );
 
@@ -82,7 +88,7 @@ class Kirki {
 	 */
 	function custom_css() {
 
-		$options = apply_filters( 'kirki/config', array() );
+		$options = $this->options;
 
 		$color_active = isset( $options['color_active'] ) ? $options['color_active'] : '#1abc9c';
 		$color_accent = isset( $options['color_accent'] ) ? $options['color_accent'] : '#FF5740';
@@ -161,7 +167,7 @@ class Kirki {
 	 */
 	function custom_js() {
 
-		$options = apply_filters( 'kirki/config', array() ); ?>
+		$options = $this->options ?>
 
 		<?php if ( isset( $options['logo_image'] ) ) : ?>
 			<script>

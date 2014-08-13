@@ -3,12 +3,8 @@
 class Kirki_Customize_Checkbox_Control extends WP_Customize_Control {
 
 	public $type = 'checkbox';
-
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	public function render_content() { ?>
 		<label class="customizer-checkbox">
@@ -21,6 +17,6 @@ class Kirki_Customize_Checkbox_Control extends WP_Customize_Control {
 				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
 			<?php endif; ?>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 	}
 }

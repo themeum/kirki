@@ -3,9 +3,7 @@
 class Kirki_Customize_Group_Title_Control extends WP_Customize_Control {
 
 	public $type = 'group_title';
-
 	public $description = '';
-
 	public $subtitle = '';
 
 	public function render_content() { ?>

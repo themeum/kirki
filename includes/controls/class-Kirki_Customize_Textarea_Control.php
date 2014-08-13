@@ -3,12 +3,8 @@
 class Kirki_Customize_Textarea_Control extends WP_Customize_Control {
 
 	public $type = 'textarea';
-
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	public function render_content() { ?>
 		<label class="customizer-textarea">
@@ -25,7 +21,7 @@ class Kirki_Customize_Textarea_Control extends WP_Customize_Control {
 
 			<textarea class="of-input" rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 
 	}
 }

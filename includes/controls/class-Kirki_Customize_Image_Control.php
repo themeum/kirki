@@ -12,12 +12,8 @@ class Kirki_Customize_Image_Control extends WP_Customize_Upload_Control {
 	public $get_url;
 	public $statuses;
 	public $extensions = array( 'jpg', 'jpeg', 'gif', 'png' );
-
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	protected $tabs = array();
 
@@ -32,12 +28,12 @@ class Kirki_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 * @param array $args
 	 */
 	public function __construct( $manager, $id, $args ) {
-		$this->statuses = array( '' => __('No Image', 'kirki') );
+		$this->statuses = array( '' => __( 'No Image', 'kirki' ) );
 
 		parent::__construct( $manager, $id, $args );
 
-		$this->add_tab( 'upload-new', __('Upload New', 'kirki'), array( $this, 'tab_upload_new' ) );
-		$this->add_tab( 'uploaded',   __('Uploaded', 'kirki'),   array( $this, 'tab_uploaded' ) );
+		$this->add_tab( 'upload-new', __( 'Upload New', 'kirki' ), array( $this, 'tab_upload_new' ) );
+		$this->add_tab( 'uploaded',   __( 'Uploaded', 'kirki' ),   array( $this, 'tab_uploaded' ) );
 
 		// Early priority to occur before $this->manager->prepare_controls();
 		add_action( 'customize_controls_init', array( $this, 'prepare_control' ), 5 );
@@ -122,8 +118,7 @@ class Kirki_Customize_Image_Control extends WP_Customize_Upload_Control {
 				<a href="#" class="remove"><?php _e( 'Remove Image', 'kirki' ); ?></a>
 			</div>
 		</div>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
-
+		<?php
 	}
 
 	/**
@@ -165,7 +160,7 @@ class Kirki_Customize_Image_Control extends WP_Customize_Upload_Control {
 				<?php _e('Drop a file here or <a href="#" class="upload">select a file</a>.'); ?>
 			</div>
 			<div class="upload-fallback">
-				<span class="button-secondary"><?php _e('Select File', 'kirki'); ?></span>
+				<span class="button-secondary"><?php _e( 'Select File', 'kirki' ); ?></span>
 			</div>
 			<?php
 		}

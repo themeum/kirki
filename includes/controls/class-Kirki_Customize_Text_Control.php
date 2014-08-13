@@ -3,12 +3,8 @@
 class Kirki_Customize_Text_Control extends WP_Customize_Control {
 
 	public $type = 'text';
-
 	public $description = '';
-
 	public $subtitle = '';
-
-	public $separator = false;
 
 	public function render_content() { ?>
 
@@ -27,7 +23,7 @@ class Kirki_Customize_Text_Control extends WP_Customize_Control {
 
 			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
-		<?php if ( $this->separator ) echo '<hr class="customizer-separator">';
+		<?php
 
 	}
 }
