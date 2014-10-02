@@ -102,15 +102,16 @@ class Kirki {
 		}
 
 		$color = (array) $_wp_admin_css_colors[$color];
+		print_r($color);
 
 		$admin_theme = get_user_meta( get_current_user_id(), 'admin_color', true ); //Find out which theme the user has selected.
 
 		$options = apply_filters( 'kirki/config', array() );
 
 		$color_font    = false;
-		$color_active  = isset( $options['color_active'] )  ? $options['color_active']  : false;
-		$color_light   = isset( $options['color_light'] )   ? $options['color_light']   : false;
-		$color_select  = isset( $options['color_select'] )  ? $options['color_select']  : $color['colors'][2];
+		$color_active  = isset( $options['color_active'] )  ? $options['color_active']  : $color['colors'][3];
+		$color_light   = isset( $options['color_light'] )   ? $options['color_light']   : $color['colors'][2];
+		$color_select  = isset( $options['color_select'] )  ? $options['color_select']  : $color['colors'][3];
 		$color_accent  = isset( $options['color_accent'] )  ? $options['color_accent']  : $color['icon_colors']['focus'];
 		$color_back    = isset( $options['color_back'] )    ? $options['color_back']    : false;
 
@@ -189,7 +190,7 @@ class Kirki {
 			.ui-widget-content .ui-state-default,
 			.ui-widget-header .ui-state-default,
 			.ui-state-active.ui-button.ui-widget.ui-state-default {
-				background-color: <?php echo $color_accent; ?>;
+				background-color: <?php echo $color_active; ?>;
 				border: 1px solid rgba(0,0,0,.05);
 			}
 
