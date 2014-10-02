@@ -124,3 +124,20 @@ function kirki_get_rgba( $hex = '#fff', $opacity = 100 ) {
 	return $color;
 
 }
+
+/*
+ * Gets the brightness of the $hex color.
+ * Returns a value between 0 and 255
+ */
+function kirki_get_brightness( $hex ) {
+	$hex = kirki_sanitize_hex( $hex );
+	// returns brightness value from 0 to 255
+	// strip off any leading #
+	$hex = str_replace( '#', '', $hex );
+
+	$red    = hexdec( substr( $hex, 0, 2 ) );
+	$green  = hexdec( substr( $hex, 2, 2 ) );
+	$blue   = hexdec( substr( $hex, 4, 2 ) );
+
+	return ( ( $red * 299 ) + ( $green * 587 ) + ( $blue * 114 ) ) / 1000;
+}
