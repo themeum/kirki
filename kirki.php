@@ -102,7 +102,6 @@ class Kirki {
 		}
 
 		$color = (array) $_wp_admin_css_colors[$color];
-		print_r($color);
 
 		$admin_theme = get_user_meta( get_current_user_id(), 'admin_color', true ); //Find out which theme the user has selected.
 
