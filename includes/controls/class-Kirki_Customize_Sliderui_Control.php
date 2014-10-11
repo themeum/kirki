@@ -34,14 +34,14 @@ class Kirki_Customize_Sliderui_Control extends WP_Customize_Control {
 		<div id="slider_<?php echo $this->id; ?>" class="ss-slider"></div>
 		<script>
 		jQuery(document).ready(function($) {
-			$( "#slider_<?php echo $this->id; ?>" ).slider({
+			$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
 					value : <?php echo $this->value(); ?>,
 					min   : <?php echo $this->choices['min']; ?>,
 					max   : <?php echo $this->choices['max']; ?>,
 					step  : <?php echo $this->choices['step']; ?>,
-					slide : function( event, ui ) { $( "#input_<?php echo $this->id; ?>" ).val(ui.value).keyup(); }
+					slide : function( event, ui ) { $( '[id="input_<?php echo $this->id; ?>"]' ).val(ui.value).keyup(); }
 			});
-			$( "#input_<?php echo $this->id; ?>" ).val( $( "#slider_<?php echo $this->id; ?>" ).slider( "value" ) );
+			$( '[id="input_<?php echo $this->id; ?>"]' ).val( $( '[id="slider_<?php echo $this->id; ?>"]' ).slider( "value" ) );
 		});
 		</script>
 		<?php
