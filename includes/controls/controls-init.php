@@ -15,42 +15,36 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'] . '_color', array(
 					'default'    => $control['default']['color'],
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_image', array(
 					'default'    => $control['default']['image'],
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_repeat', array(
 					'default'    => $control['default']['repeat'],
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_size', array(
 					'default'    => $control['default']['size'],
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_attach', array(
 					'default'    => $control['default']['attach'],
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
 				$wp_customize->add_setting( $control['setting'] . '_position', array(
 					'default'    => $control['default']['position'],
 					'type'       => 'theme_mod',
-					'transport'   => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
@@ -59,7 +53,6 @@ function kirki_customizer_controls( $wp_customize ) {
 					$wp_customize->add_setting( $control['setting'] . '_opacity', array(
 						'default'    => $control['default']['opacity'],
 						'type'       => 'theme_mod',
-						'transport'  => 'postMessage',
 						'capability' => 'edit_theme_options'
 					) );
 
@@ -70,7 +63,6 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'], array(
 					'default'    => isset( $control['default'] ) ? $control['default'] : '',
 					'type'       => 'theme_mod',
-					'transport'  => 'postMessage',
 					'capability' => 'edit_theme_options'
 				) );
 
