@@ -79,7 +79,7 @@ class Kirki_Customize_Radio_Control extends WP_Customize_Control {
 		<?php if ( 'buttonset' == $this->mode || 'image' == $this->mode ) { ?>
 			<script>
 			jQuery(document).ready(function($) {
-				$( '[id="#input_<?php echo $this->id; ?>"]' ).buttonset();
+				$( '[id="input_<?php echo $this->id; ?>"]' ).buttonset();
 			});
 			</script>
 		<?php }
