@@ -5,7 +5,7 @@ Plugin URI: http://kirki.org
 Description: An options framework using and extending the WordPress Customizer
 Author: Aristeides Stathopoulos
 Author URI: http://wpmu.io/
-Version: 0.3
+Version: 0.4
 */
 
 /**
@@ -90,7 +90,7 @@ class Kirki {
 	 * Add custom CSS rules to the head, applying our custom styles
 	 */
 	function custom_css() {
-		
+
 		// Get the active admin theme
 		global $_wp_admin_css_colors;
 
