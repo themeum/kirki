@@ -17,10 +17,12 @@ function kirki_required_script() {
 
 					<script>
 						jQuery(document).ready(function($) {
-							<?php if ( isset( $id ) && isset( $value ) && $value == intval( get_theme_mod( $id ) ) ) : ?>
-								$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeIn(300);
-							<?php elseif ( isset( $id ) && isset( $value ) && $value != intval( get_theme_mod( $id ) ) ) : ?>
-								$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeOut(300);
+							<?php if ( isset( $id ) && isset( $value ) ) : ?>
+							 	<?php if ( $value == get_theme_mod( $id ) ) : ?>
+									$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeIn(300);
+								<?php else : ?>
+									$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeOut(300);
+								<?php endif; ?>
 							<?php endif; ?>
 
 							$( "#input_<?php echo $id; ?> input" ).each(function(){
@@ -50,4 +52,4 @@ function kirki_required_script() {
 	}
 
 }
-add_action( 'customize_controls_print_scripts', 'kirki_required_script', 999 );
+add_action( 'customize_controls_print_footer_scripts', 'kirki_required_script' );
