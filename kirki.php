@@ -41,6 +41,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/functions/controls-init.php' );
+		include_once( dirname( __FILE__ ) . '/includes/functions/transport.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Checkbox_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Color_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Image_Control.php' );
@@ -261,4 +262,5 @@ class Kirki {
 }
 
 $kirki = new Kirki();
+
 endif;
