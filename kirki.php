@@ -22,17 +22,6 @@ class Kirki {
 		// Include files
 		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
 
-		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
-			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
-		}
-		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
-
-		// Include the controls initialization script
-		include_once( dirname( __FILE__ ) . '/includes/controls/controls-init.php' );
-
-		// Include the fonts class
-		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
-
 		add_action( 'customize_register', array( $this, 'include_files' ), 1 );
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
@@ -46,6 +35,12 @@ class Kirki {
 	 */
 	function include_files() {
 
+		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
+			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+		}
+		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
+		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/functions/controls-init.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Checkbox_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Color_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Image_Control.php' );
