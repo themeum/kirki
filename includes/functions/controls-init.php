@@ -63,7 +63,8 @@ function kirki_customizer_controls( $wp_customize ) {
 				$wp_customize->add_setting( $control['setting'], array(
 					'default'    => isset( $control['default'] ) ? $control['default'] : '',
 					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options'
+					'capability' => 'edit_theme_options',
+					'transport' => isset( $control['transport'] ) ? $control['transport'] : '',
 				) );
 
 			}
