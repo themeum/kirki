@@ -37,7 +37,6 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Controls.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls-init.php' );
 		include_once( dirname( __FILE__ ) . '/includes/transport.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
@@ -45,6 +44,7 @@ class Kirki {
 		$background = new Kirki_Background();
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
+		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );
 
 	}
 
@@ -65,6 +65,24 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Upload_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Select_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Group_Title_Control.php' );
+
+	}
+
+	/**
+	 * Build the controls
+	 */
+	function customizer_builder( $wp_customize ) {
+
+		$controls = $this->get_controls();
+
+		// Early exit if controls are not set or if they're empty
+		if ( ! isset( $controls ) || empty( $controls ) ) {
+			return;
+		}
+		foreach ( $controls as $control ) {
+			Kirki_Settings::add_setting( $wp_customize, $control );
+			Kirki_Controls::add_control( $wp_customize, $control );
+		}
 
 	}
 
