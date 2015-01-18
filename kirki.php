@@ -21,15 +21,15 @@ class Kirki {
 
 		// Include files
 		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
-			include_once( dirname( __FILE__ ) . '/includes/functions/background-css.php' );
+			include_once( dirname( __FILE__ ) . '/includes/background-css.php' );
 		}
-		include_once( dirname( __FILE__ ) . '/includes/functions/required.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/class-Kirki_Fonts.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/controls-init.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/transport.php' );
-		include_once( dirname( __FILE__ ) . '/includes/functions/color-functions.php' );
+		include_once( dirname( __FILE__ ) . '/includes/required.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls-init.php' );
+		include_once( dirname( __FILE__ ) . '/includes/transport.php' );
+		include_once( dirname( __FILE__ ) . '/includes/color-functions.php' );
 
-		add_action( 'customize_register', array( $this, 'include_files' ), 1 );
+		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
@@ -40,7 +40,7 @@ class Kirki {
 	/**
 	 * Include the necessary files
 	 */
-	function include_files() {
+	function include_customizer_controls() {
 
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Checkbox_Control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Color_Control.php' );
