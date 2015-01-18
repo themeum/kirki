@@ -262,6 +262,20 @@ class Kirki {
 
 	}
 
+	function get_config() {
+
+		$config = apply_filters( 'kirki/config', array() );
+		return $config;
+
+	}
+
+	function get_controls() {
+
+		$controls = apply_filters( 'kirki/controls', array() );
+		return $controls;
+
+	}
+
 }
 
 $kirki = new Kirki();
