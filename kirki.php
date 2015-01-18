@@ -32,6 +32,7 @@ class Kirki {
 		}
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Scripts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Background.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
@@ -40,7 +41,8 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/transport.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
-		$scripts = new Kirki_Scripts();
+		$scripts    = new Kirki_Scripts();
+		$background = new Kirki_Background();
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 
@@ -82,6 +84,7 @@ class Kirki {
 
 }
 
+global $kirki;
 $kirki = new Kirki();
 
 endif;
