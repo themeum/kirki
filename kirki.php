@@ -26,6 +26,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls-init.php' );
 		include_once( dirname( __FILE__ ) . '/includes/transport.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
