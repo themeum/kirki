@@ -8,7 +8,6 @@ class Kirki_Customize_Sliderui_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-slider' );
 
 	}
