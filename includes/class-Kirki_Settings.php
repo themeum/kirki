@@ -14,36 +14,42 @@ class Kirki_Settings {
 				'default'    => $control['default']['color'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			$wp_customize->add_setting( $control['setting'] . '_image', array(
 				'default'    => $control['default']['image'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			$wp_customize->add_setting( $control['setting'] . '_repeat', array(
 				'default'    => $control['default']['repeat'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			$wp_customize->add_setting( $control['setting'] . '_size', array(
 				'default'    => $control['default']['size'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			$wp_customize->add_setting( $control['setting'] . '_attach', array(
 				'default'    => $control['default']['attach'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			$wp_customize->add_setting( $control['setting'] . '_position', array(
 				'default'    => $control['default']['position'],
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 			if ( false != $control['default']['opacity'] ) {
@@ -52,6 +58,7 @@ class Kirki_Settings {
 					'default'    => $control['default']['opacity'],
 					'type'       => 'theme_mod',
 					'capability' => 'edit_theme_options'
+					'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 				) );
 
 			}
@@ -62,6 +69,7 @@ class Kirki_Settings {
 				'default'    => isset( $control['default'] ) ? $control['default'] : '',
 				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options'
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
 			) );
 
 		}
