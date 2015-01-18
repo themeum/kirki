@@ -6,7 +6,7 @@ class Kirki_Settings {
 	/**
 	 * Build a single setting
 	 */
-	public static function add_setting( $customize, $control ) {
+	public static function add_setting( $wp_customize, $control ) {
 
 		if ( 'background' == $control['type'] ) {
 
