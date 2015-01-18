@@ -25,11 +25,12 @@ class Kirki {
 		}
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls-init.php' );
 		include_once( dirname( __FILE__ ) . '/includes/transport.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
-		
+
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
