@@ -243,23 +243,30 @@ class Kirki_Scripts {
 
 		global $kirki;
 		$controls = $kirki->get_controls();
-		?>
 
-		<?php foreach ( $controls as $control ) : ?>
-			<?php if ( isset( $control['transport'] ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
-				<script type="text/javascript">
-					jQuery(document).ready(function( $ ) {
-						wp.customize("<?php echo $control['setting']; ?>",function( value ) {
-							<?php if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) : ?>
-								value.bind(function(to) {
-									$("<?php echo $control['js_vars']['element']; ?>").<?php echo $control['js_vars']['type']; ?>("<?php echo $control['js_vars']['property']; ?>", to ? to : '' );
-								});
-							<?php endif; ?>
-						});
-					});
-				</script>
-			<?php endif; ?>
-		<?php endforeach;
+		$script = '';
+
+		foreach ( $controls as $control ) {
+
+			if ( isset( $control['transport']  && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
+
+				$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
+				$script .= 'wp.customize("' . $control['setting'] . '",function( value ) {';
+
+				if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
+					$script .= 'value.bind(function(to) {';
+					$script .= '$("' . $control['js_vars']['element'] . '").css("' . $control['js_vars']['property'] . '", to ? to : '' );';
+					$script .= '});';
+				}
+
+				$script .= '});});</script>';
+
+			}
+
+		}
+
+		echo $script;
+
 	}
 
 }
