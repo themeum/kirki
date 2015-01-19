@@ -7,6 +7,8 @@ class Kirki_Scripts {
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
+		// TODO: This is not perfect under ANY circumstances.
+		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
 	}
 
 	/**
@@ -224,4 +226,40 @@ class Kirki_Scripts {
 		</style>
 		<?php
 	}
+
+	/**
+	* Try to automatically generate the script necessary for postMessage to work.
+	* Something like this will have to be added to the control arguments:
+	*
+	* 'transport' => 'postMessage',
+	* 'js_vars'   => array(
+	* 		'element'  => 'body',
+	* 		'type'     => 'css',
+	* 		'property' => 'color',
+	* 	),
+	*
+	*/
+	function postmessage() {
+
+		global $kirki;
+		$controls = $kirki->get_controls();
+		?>
+
+		<?php foreach ( $controls as $control ) : ?>
+			<?php if ( isset( $control['transport'] && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
+				<script type="text/javascript">
+					jQuery(document).ready(function( $ ) {
+						wp.customize("<?php echo $control['setting']; ?>",function( value ) {
+							<?php if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) : ?>
+								value.bind(function(to) {
+									$("<?php echo $control['js_vars']['element']; ?>").<?php echo $control['js_vars']['type']; ?>("<?php echo $control['js_vars']['property']; ?>", to ? to : '' );
+								});
+							<?php endif; ?>
+						});
+					});
+				</script>
+			<?php endif; ?>
+		<?php endforeach;
+	}
+
 }
