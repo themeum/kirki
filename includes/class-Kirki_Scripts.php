@@ -246,7 +246,7 @@ class Kirki_Scripts {
 		?>
 
 		<?php foreach ( $controls as $control ) : ?>
-			<?php if ( isset( $control['transport'] && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
+			<?php if ( isset( $control['transport'] ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
 				<script type="text/javascript">
 					jQuery(document).ready(function( $ ) {
 						wp.customize("<?php echo $control['setting']; ?>",function( value ) {
