@@ -74,14 +74,16 @@ class Kirki {
 	function customizer_builder( $wp_customize ) {
 
 		$controls = $this->get_controls();
+		$kirki_settings = new Kirki_Settings();
+		$kirki_controls = new Kirki_Controls();
 
 		// Early exit if controls are not set or if they're empty
 		if ( ! isset( $controls ) || empty( $controls ) ) {
 			return;
 		}
 		foreach ( $controls as $control ) {
-			Kirki_Settings::add_setting( $wp_customize, $control );
-			Kirki_Controls::add_control( $wp_customize, $control );
+			$kirki_settings->add_setting( $wp_customize, $control );
+			$kirki_controls->add_control( $wp_customize, $control );
 		}
 
 	}

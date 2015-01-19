@@ -1,9 +1,9 @@
 <?php
 
 
-class Kirki_Controls {
+class Kirki_Controls extends Kirki {
 
-	public static function add_control( $wp_customize, $control ) {
+	function add_control( $wp_customize, $control ) {
 
 		// Checkbox control
 		if ( 'checkbox' == $control['type'] ) {
