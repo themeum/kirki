@@ -23,13 +23,8 @@ class Kirki {
 			define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 		}
 
-		$this->options = apply_filters( 'kirki/config', array() );
-		$options = $this->options;
+		$options = $this->get_config();
 
-		// Include files
-		if ( ! isset( $options['live_css'] ) || true == $options['live_css'] ) {
-			include_once( dirname( __FILE__ ) . '/includes/background-css.php' );
-		}
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Scripts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Background.php' );
