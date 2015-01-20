@@ -32,7 +32,6 @@ class Kirki_Background {
 		}
 
 		// Early exit if we have not set the 'output'.
-		// TODO: enqueue a blank, dummy CSS file and add it there if no output has been defined.
 		if ( is_null( $control['output'] ) ) {
 			return;
 		}

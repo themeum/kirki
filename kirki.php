@@ -85,6 +85,17 @@ class Kirki {
 	function get_config() {
 
 		$config = apply_filters( 'kirki/config', array() );
+
+		$controls = $this->get_controls();
+		foreach( $controls as $control ) {
+			if ( isset( $control['output'] ) ) {
+				$uses_output = true;
+			}
+		}
+
+		if ( isset( $uses_output ) && ! isset( $config['stylesheet_id'] ) ) {
+			$config['stylesheet_id'] = 'kirki-styles';
+		}
 		return $config;
 
 	}

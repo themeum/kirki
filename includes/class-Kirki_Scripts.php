@@ -9,6 +9,8 @@ class Kirki_Scripts {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
 		// TODO: This is not perfect under ANY circumstances.
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 	}
 
 	/**
@@ -28,6 +30,27 @@ class Kirki_Scripts {
 		// wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js');
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
+
+	}
+
+	/**
+	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
+	 */
+	function frontend_styles() {
+
+		global $kirki;
+		$config   = $kirki->get_config();
+		$controls = $kirki->get_controls();
+
+		foreach( $controls as $control ) {
+			if ( isset( $control['output'] ) ) {
+				$uses_output = true;
+			}
+		}
+
+		if ( isset( $uses_output ) && ! isset( $config['stylesheet_id'] ) ) {
+			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
+		}
 
 	}
 

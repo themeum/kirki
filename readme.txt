@@ -22,6 +22,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 == Changelog ==
 
 = HEAD =
+* Fix: Add a blank stylesheet if we need one and no stylesheet_id has been defined in the config options.
 * Fix: CSS-only tooltips. Fixes issue with tooltips now showing up on WP >= 4.1
 * Fix: Code cleanups
 * New: Added support for WordPress's transport arguments
