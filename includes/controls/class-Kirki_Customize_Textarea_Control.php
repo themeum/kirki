@@ -11,7 +11,7 @@ class Kirki_Customize_Textarea_Control extends WP_Customize_Control {
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
+					<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
 				<?php } ?>
 			</span>
 

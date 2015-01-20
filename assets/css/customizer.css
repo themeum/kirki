@@ -101,3 +101,16 @@ li.customize-control.customize-control-group_title {
   border-bottom: 1px solid #dedede;
   border-top: 1px solid #dedede;
 }
+
+a.hint--left:after {
+  height: auto;
+  margin-bottom: -14px;
+  width: 250px;
+  max-width: 250px;
+  display: block;
+  white-space: normal;
+  text-align: right;
+  position: relative;
+  top: -22px;
+  left: -270px;
+}
