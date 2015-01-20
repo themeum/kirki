@@ -22,6 +22,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 == Changelog ==
 
 = HEAD =
+* New: Add the ability to auto-generate styles for colors.
 * Fix: Add a blank stylesheet if we need one and no stylesheet_id has been defined in the config options.
 * Fix: CSS-only tooltips. Fixes issue with tooltips now showing up on WP >= 4.1
 * Fix: Code cleanups
