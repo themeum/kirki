@@ -44,6 +44,18 @@ class Kirki_Fonts {
 
 	}
 
+	/**
+	 * Detect if this is a google font or not.
+	 *
+	 * @return boolean
+	 */
+	public static function is_google_font( $font ) {
+
+		$allowed_fonts = self::get_google_fonts();
+		return ( array_key_exists( $font, $allowed_fonts ) ) ? true : false;
+
+	}
+
 
 	/**
 	 * Build the HTTP request URL for Google Fonts.
@@ -63,7 +75,7 @@ class Kirki_Fonts {
 			$font = trim( $font );
 
 			// Verify that the font exists
-			if ( array_key_exists( $font, $allowed_fonts ) ) {
+			if ( self::is_google_font( $font ) ) {
 				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
 				$family[] = urlencode( $font . ':' . join( ',', self::choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
 			}
@@ -129,16 +141,16 @@ class Kirki_Fonts {
 	public static function get_google_font_subsets() {
 
 		return array(
-			'all'          => __( 'All', 'gather' ),
-			'cyrillic'     => __( 'Cyrillic', 'gather' ),
-			'cyrillic-ext' => __( 'Cyrillic Extended', 'gather' ),
-			'devanagari'   => __( 'Devanagari', 'gather' ),
-			'greek'        => __( 'Greek', 'gather' ),
-			'greek-ext'    => __( 'Greek Extended', 'gather' ),
-			'khmer'        => __( 'Khmer', 'gather' ),
-			'latin'        => __( 'Latin', 'gather' ),
-			'latin-ext'    => __( 'Latin Extended', 'gather' ),
-			'vietnamese'   => __( 'Vietnamese', 'gather' ),
+			'all'          => __( 'All', 'kirki' ),
+			'cyrillic'     => __( 'Cyrillic', 'kirki' ),
+			'cyrillic-ext' => __( 'Cyrillic Extended', 'kirki' ),
+			'devanagari'   => __( 'Devanagari', 'kirki' ),
+			'greek'        => __( 'Greek', 'kirki' ),
+			'greek-ext'    => __( 'Greek Extended', 'kirki' ),
+			'khmer'        => __( 'Khmer', 'kirki' ),
+			'latin'        => __( 'Latin', 'kirki' ),
+			'latin-ext'    => __( 'Latin Extended', 'kirki' ),
+			'vietnamese'   => __( 'Vietnamese', 'kirki' ),
 		);
 
 	}
@@ -205,15 +217,15 @@ class Kirki_Fonts {
 
 		return array(
 			'serif' => array(
-				'label' => _x( 'Serif', 'font style', 'gather' ),
+				'label' => _x( 'Serif', 'font style', 'kirki' ),
 				'stack' => 'Georgia,Times,"Times New Roman",serif'
 			),
 			'sans-serif' => array(
-				'label' => _x( 'Sans Serif', 'font style', 'gather' ),
+				'label' => _x( 'Sans Serif', 'font style', 'kirki' ),
 				'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
 			),
 			'monospace' => array(
-				'label' => _x( 'Monospaced', 'font style', 'gather' ),
+				'label' => _x( 'Monospaced', 'font style', 'kirki' ),
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
 			)
 		);
