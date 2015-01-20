@@ -21,6 +21,16 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 == Changelog ==
 
+= HEAD =
+* Fix: CSS-only tooltips. Fixes issue with tooltips now showing up on WP >= 4.1
+* Fix: Code cleanups
+* New: Added support for WordPress's transport arguments
+* Fix: All controls now have a sanitization callback. Users can override the default sanitizations by adding their own 'sanitize_callback' argument.
+* Fix: OOP rewrite
+* Fix: Strip protocol from Google API link
+* Fix: Loading order for some files
+* Fix: Removed deprecated less_var argument
+
 = 0.4 =
 * Fix: bugfix for selector
 * New: Change the Kirki theme based on which admin theme is selected.
