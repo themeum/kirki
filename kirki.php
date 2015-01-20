@@ -29,6 +29,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Scripts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Background.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Color.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
@@ -38,6 +39,7 @@ class Kirki {
 		$scripts      = new Kirki_Scripts();
 		$styles_bg    = new Kirki_Style_Background();
 		$styles_color = new Kirki_Style_Color();
+		$styles_fonts = new Kirki_Style_Fonts();
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );
