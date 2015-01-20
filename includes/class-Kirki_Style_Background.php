@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Background {
+class Kirki_Style_Background {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), 150 );
