@@ -36,6 +36,9 @@ class Kirki_Style_Background {
 			return;
 		}
 
+		// Add support for previous syntax for output (string instead of array)
+		$output_element = is_array( $control['output'] ) ? $control['output']['element'] : $control['output'];
+
 		$bg_color    = Kirki_Color::sanitize_hex( get_theme_mod( $control['setting'] . '_color', $control['default']['color'] ) );
 		$bg_image    = get_theme_mod( $control['setting'] . '_image', $control['default']['image'] );
 		$bg_repeat   = get_theme_mod( $control['setting'] . '_repeat', $control['default']['repeat'] );
@@ -56,7 +59,7 @@ class Kirki_Style_Background {
 		}
 
 		// HTML Background
-		$styles = $control['output'] . '{';
+		$styles = $output_element . '{';
 			$styles .= 'background-color:' . $bg_color . ';';
 
 			if ( '' != $bg_image ) {
