@@ -24,77 +24,80 @@ class Kirki_Style_Fonts {
 			// The value of this control
 			$value = get_theme_mod( $control['setting'], $control['default'] );
 
-			// Early exit if 'output' is not set or not an array.
-			if ( ! isset( $control['output'] ) || ! array( $control['output'] ) ) {
-				return;
-			}
+			if ( isset( $control['output'] ) ) {
 
-			// Check if this is a font-family control
-			$is_font_family = ( strpos( strrev( $control['setting'] ), '_font_family' ) === 0 ) ? true : false;
-			// Check if this is a font-size control
-			$is_font_size   = ( strpos( strrev( $control['setting'] ), '_font_size' )   === 0 ) ? true : false;
-			// Check if this is a font-weight control
-			$is_font_weight = ( strpos( strrev( $control['setting'] ), '_font_weight' ) === 0 ) ? true : false;
-			// Check if this is a font subset control
-			$is_font_subset = ( strpos( strrev( $control['setting'] ), '_font_subset' ) === 0 ) ? true : false;
+				// Check if this is a font-family control
+				$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
+				// Check if this is a font-size control
+				$is_font_size   = isset( $control['output']['property'] ) && 'font-size'   == $control['output']['property'] ? true : false;
+				// Check if this is a font-weight control
+				$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
+				// Check if this is a font subset control
+				$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
 
-			if ( $is_font_family ) {
+				if ( $is_font_family ) {
 
-				$control['output']['property'] = ( isset( $control['output']['property'] ) ) ? $control['output']['property'] : 'font-family';
+					$fonts[]['font-family'] = $value;
+					$css .= $control['output']['element'] . '{font-family:' . $value . ';}';
 
-				$control_stripped_property = str_replace( '_font_family', '', $control['setting'] );
-				$fonts[$control_stripped_property]['_font_family'] = $value;
-				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
+				} else if ( $is_font_size ) {
 
-			} else if ( $is_font_size ) {
+					// Get the unit we're going to use for the font-size.
+					$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
 
-				$control['output']['property'] = ( isset( $control['output']['property'] ) ) ? $control['output']['property'] : 'font-size';
+					$css .= $control['output']['element'] . '{font-size:' . $value . $units . ';}';
 
-				// Get the unit we're going to use for the font-size.
-				$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
+				} else if ( $is_font_weight ) {
 
-				$control_stripped_property = str_replace( '_font_size', '', $control['setting'] );
-				$fonts[$control_stripped_property]['_font_size'] = $value;
-				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
+					$fonts[]['font-weight'] = $value;
+					$css .= $control['output']['element'] . '{font-weight:' . $value . ';}';
 
-			} else if ( $is_font_weight ) {
+				} else if ( $is_font_subset ) {
 
-				$control['output']['property'] = ( isset( $control['output']['property'] ) ) ? $control['output']['property'] : 'font-weight';
+					$fonts[]['subsets'] = $value;
 
-				$control_stripped_property = str_replace( '_font_weight', '', $control['setting'] );
-				$fonts[$control_stripped_property]['_font_weight'] = $value;
-				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
-
-			} else if ( $is_font_subset ) {
-
-				$control_stripped_property = str_replace( '_font_subset', '', $control['setting'] );
-				$fonts[$control_stripped_property]['_font_subset'] = $value;
+				}
 
 			}
 
 		}
-
-		$font_families = array();
-		$font_weights  = array();
-		$font_subsets  = array();
 
 		foreach ( $fonts as $font ) {
 
-			$font_family = isset( $font['_font_family'] ) ? $font['_font_family'] : false;
+			if ( isset( $font['font-family'] ) ) {
 
-			if ( Kirki_Fonts::is_google_font( $value ) ) {
+				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
+				$font_families[] = $font['font-family'];
 
-				$font_families[] = $font['_font_family'];
-				if ( isset( $font_family['_font_weight'] ) ) { $font_weights[] = $font['_font_weight']; }
-				if ( isset( $font_family['_font_subset'] ) ) { $font_subsets[] = $font['_font_subset']; }
+				if ( Kirki_Fonts::is_google_font( $font['font-family'] ) ) {
+					$has_google_font = true;
+				}
+
+			}
+
+			if ( isset( $font['font-weight'] ) ) {
+
+				$font_weights   = ( ! isset( $font_weights ) ) ? array() : $font_weights;
+				$font_weights[] = $font['font-weight'];
+
+			}
+
+			if ( isset( $font['subsets'] ) ) {
+
+				$font_subsets   = ( ! isset( $font_subsets ) ) ? array() : $font_subsets;
+				$font_subsets[] = $font['subsets'];
 
 			}
 
 		}
 
-		$font_families = ( ! empty( $font_families ) ) ? $font_families : false;
-		$font_weights  = ( ! empty( $font_weights ) )  ? $font_weights  : 400;
-		$font_subsets  = ( ! empty( $font_subsets ) )  ? $font_subsets  : 'all';
+		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
+		$font_weights  = ( ! isset( $font_weights )  || empty( $font_weights ) )  ? '400' : $font_weights;
+		$font_subsets  = ( ! isset( $font_subsets )  || empty( $font_subsets ) )  ? 'all' : $font_subsets;
+
+		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
+			$font_families = false;
+		}
 
 		if ( 'styles' == $context ) {
 			return $css;
