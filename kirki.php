@@ -8,6 +8,9 @@ Author URI:    http://press.codes
 Version:       0.5
 */
 
+// Load Kirki_Fonts before everything else
+include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
+
 /**
 * The main Kirki class
 */
@@ -32,7 +35,6 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Generic.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
