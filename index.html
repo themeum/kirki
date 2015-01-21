@@ -26,7 +26,7 @@
 
 			<!-- Google fonts -->
 			<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-			
+
 			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 			<!--[if lt IE9]>
 			<script src="js/html5shiv.js"></script>
@@ -43,6 +43,7 @@
 					<li><a href="#features">Features</a></li>
 					<li><a href="#configuration">Configuration</a></li>
 					<li><a href="#fields">Fields</a></li>
+					<li><a href="#output">Automatic CSS</a></li>
 					<li><a href="#download">Download</a></li>
 				</ul>
 			</div>
@@ -222,7 +223,7 @@
 						<div class="col-md-12">
 						<strong>Kirki</strong> allows you to add these fields on your customizer:
 						<br>
-						
+
 						<a class="label label-info" href="#buttonset">Buttonset</a>
 						<a class="label label-info" href="#checkbox">Checkbox</a>
 						<a class="label label-info" href="#color">Color</a>
@@ -621,13 +622,45 @@ $controls[] = array(
 	'required' => array( 'parent_setting' => 'option_2' )
 );
 </pre>
-							
+
 							<p>In the above example, the <code>child_setting</code> will be hidden unless the <code>parent_setting</code> is set to <code>option_2</code>.
 						</div>
 					</div>
 				</div>
 			</section>
 			<!-- End fields -->
+
+			<!-- Output -->
+			<section id="output">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>Automatic CSS & Scripts generation.</h1>
+							<div class="row">
+								<div class="col-md-6">
+<pre>
+'output' => array(
+	'element'  => 'body',
+	'property' => 'font-size',
+	'units'    => 'px',
+),
+</pre>
+								</div>
+								<div class="col-md-6">
+									<p>You can add an <code>output</code> argument to your controls and have the CSS automatically generated for you.</p>
+									<h4>Exceptions:</h4>
+									<p>Though the <code>output</code> argument will work on all controls, there are some things to keep in mind.</p>
+									<p>If this is a background control, the only thing you have to define is the element. <code>property</code> and <code>units</code> are not necessary.</p>
+									<p>If this is a color control, you don't need to define the <code>units</code>.</p>
+									<p>If this is a control for your <code>font-family</code> and you've selected a google font, then the goog;e-font script will also be automatically generated and added to the <code>&#60;head&#62;</code> of your document.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Output -->
+
 			<!-- Download -->
 			<section id="download">
 				<div class="container">
