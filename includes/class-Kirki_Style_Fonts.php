@@ -43,7 +43,7 @@ class Kirki_Style_Fonts {
 				$control['output']['property'] = ( isset( $control['output']['property'] ) ) ? $control['output']['property'] : 'font-family';
 
 				$control_stripped_property = str_replace( '_font_family', '', $control['setting'] );
-				$fonts[$$control_stripped_property]['_font_family'] = $value;
+				$fonts[$control_stripped_property]['_font_family'] = $value;
 				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
 
 			} else if ( $is_font_size ) {
@@ -54,7 +54,7 @@ class Kirki_Style_Fonts {
 				$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
 
 				$control_stripped_property = str_replace( '_font_size', '', $control['setting'] );
-				$fonts[$$control_stripped_property]['_font_size'] = $value;
+				$fonts[$control_stripped_property]['_font_size'] = $value;
 				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
 
 			} else if ( $is_font_weight ) {
@@ -62,13 +62,13 @@ class Kirki_Style_Fonts {
 				$control['output']['property'] = ( isset( $control['output']['property'] ) ) ? $control['output']['property'] : 'font-weight';
 
 				$control_stripped_property = str_replace( '_font_weight', '', $control['setting'] );
-				$fonts[$$control_stripped_property]['_font_weight'] = $value;
+				$fonts[$control_stripped_property]['_font_weight'] = $value;
 				$css .= $control['output']['element'] . '{' . $control['output']['property'] . 'font-family:' . $value . ';}';
 
 			} else if ( $is_font_subset ) {
 
 				$control_stripped_property = str_replace( '_font_subset', '', $control['setting'] );
-				$fonts[$$control_stripped_property]['_font_subset'] = $value;
+				$fonts[$control_stripped_property]['_font_subset'] = $value;
 
 			}
 
@@ -122,7 +122,7 @@ class Kirki_Style_Fonts {
 
 		$google_link = $this->font_builder( 'google_link' );
 
-		if ( $gogle_link ) {
+		if ( $google_link ) {
 			wp_register_style( 'kirki_google_fonts', $google_link );
 			wp_enqueue_style( 'kirki_google_fonts' );
 		}
