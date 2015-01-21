@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Kirki Framework
-Plugin URI: http://kirki.org
-Description: An options framework using and extending the WordPress Customizer
-Author: Aristeides Stathopoulos
-Author URI: http://wpmu.io/
-Version: 0.4
+Plugin Name:   Kirki Framework
+Plugin URI:    http://kirki.org
+Description:   An options framework using and extending the WordPress Customizer
+Author:        Aristeides Stathopoulos
+Author URI:    http://press.codes
+Version:       0.5
 */
 
 /**

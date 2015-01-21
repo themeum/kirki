@@ -2,9 +2,9 @@
 Contributors: aristath, fovoc
 Donate link: http://kirki.org
 Tags: customizer
-Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 0.4
+Requires at least: 3.9
+Tested up to: 4.1
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,17 +12,36 @@ Tired of all the bloated options frameworks? You can use the WordPress Customize
 
 == Description ==
 
-For documentation and examples please visit [kirki.org](http://kirki.org).
+Kirki allows developers to add advanced controls to their customizer as well as customize the way the customizer looks and feels.
+
+The following controls are included:
+
+* Buttonset
+* Checkbox
+* Color
+* Image
+* Background
+* Image Radio
+* Multicheck
+* Radio
+* Select
+* Slider
+* Text
+* Textarea
+* Upload
+
+For documentation and examples on how to use these controls, please visit [kirki.org](http://kirki.org/#fields).
+
+In addition you can also automatically generate the CSS for a lot of controls and have it added to the head of your document without writing any custom functions and code for that. [Learn more about automatic output of CSS here](http://kirki.org/#output)
 
 == Installation ==
 
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
 
-== Changelog ==
-
-= HEAD =
-* New: Automatic output of styles + scripts for fonts (including googlefonts ) - EXPERIMENTAL.
+== 0.5 ==
+* New: Automatic output of styles for generic controls.
+* New: Automatic output of styles + scripts for fonts (including googlefonts )
 * New: The 'output' argument on background controls is now an array for consistency with other controls. Older syntax is still compatible though. :)
 * New: Add the ability to auto-generate styles for colors.
 * Fix: Add a blank stylesheet if we need one and no stylesheet_id has been defined in the config options.
