@@ -58,9 +58,11 @@ class Kirki_Style_Generic {
 		// Do we have a unit specified?
 		$units = ( isset( $control['output']['units'] ) ) ? $control['output']['units'] : null;
 		// Generate the styles
-		$styles = $control['output']['element'] . '{' . $control['output']['property'] . ':' . $value . $units . ';}';
-
-		return $styles;
+		if ( isset( $control['output']['element'] ) ) {
+			return $control['output']['element'] . '{' . $control['output']['property'] . ':' . $value . $units . ';}';
+		} else {
+			return null;
+		}
 
 	}
 
