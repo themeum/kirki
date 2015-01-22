@@ -4,7 +4,7 @@ Donate link: http://kirki.org
 Tags: customizer
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 0.5
+Stable tag: 0.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ In addition you can also automatically generate the CSS for a lot of controls an
 
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
+
+== 0.5.1 ==
+* Fix: Transport defaults to refresh instead of postMessage
+* Fix: undefined index notice.
 
 == 0.5 ==
 * New: Automatic output of styles for generic controls.
