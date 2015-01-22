@@ -14,7 +14,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['color'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'sanitize_hex_color'
 			) );
 
@@ -22,7 +22,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['image'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'esc_url_raw'
 			) );
 
@@ -30,7 +30,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['repeat'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_repeat' ),
 			) );
 
@@ -38,7 +38,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['size'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_size' ),
 			) );
 
@@ -46,7 +46,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['attach'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_attach' ),
 			) );
 
@@ -54,7 +54,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => $control['default']['position'],
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_position' ),
 			) );
 
@@ -64,7 +64,7 @@ class Kirki_Settings extends Kirki {
 					'default'           => $control['default']['opacity'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
-					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'absint'
 				) );
 
@@ -106,7 +106,7 @@ class Kirki_Settings extends Kirki {
 				'default'           => isset( $control['default'] ) ? $control['default'] : '',
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'postMessage',
+				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : $sanitize_callback,
 			) );
 
