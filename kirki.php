@@ -67,6 +67,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-upload-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-select-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-group-title-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-sortable-control.php' );
 
 	}
 
