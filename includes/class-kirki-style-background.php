@@ -32,7 +32,7 @@ class Kirki_Style_Background {
 		}
 
 		// Early exit if we have not set the 'output'.
-		if ( is_null( $control['output'] ) ) {
+		if ( ! isset( $control['output'] ) || is_null( $control['output'] ) ) {
 			return;
 		}
 
