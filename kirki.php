@@ -9,7 +9,7 @@ Version:       0.5.1
 */
 
 // Load Kirki_Fonts before everything else
-include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Fonts.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
 
 /**
 * The main Kirki class
@@ -29,14 +29,14 @@ class Kirki {
 		$options = $this->get_config();
 
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Scripts.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Background.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Color.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Fonts.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Style_Generic.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Color.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Settings.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-Kirki_Controls.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-scripts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-background.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-color.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-fonts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-generic.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-color.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-settings.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
 		$scripts      = new Kirki_Scripts();
@@ -55,18 +55,18 @@ class Kirki {
 	 */
 	function include_customizer_controls() {
 
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Checkbox_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Color_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Image_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Multicheck_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Number_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Radio_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Sliderui_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Text_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Textarea_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Upload_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Select_Control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-Kirki_Customize_Group_Title_Control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-checkbox-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-color-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-image-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-multicheck-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-number-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-radio-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-sliderui-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-text-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-textarea-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-upload-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-select-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-group-title-control.php' );
 
 	}
 
