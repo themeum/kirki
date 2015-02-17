@@ -47,6 +47,11 @@ class Kirki_Style_Background {
 		$bg_position = get_theme_mod( $control['setting'] . '_position', $control['default']['position'] );
 		$bg_opacity  = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
 
+		// Early exit if both bg_color and bg_image are empty.
+		if ( !$bg_color && !$bg_image ) {
+			return null;
+		}
+
 		if ( false != $control['default']['opacity'] ) {
 
 			$bg_position = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
@@ -60,7 +65,9 @@ class Kirki_Style_Background {
 
 		// HTML Background
 		$styles = $output_element . '{';
-			$styles .= 'background-color:' . $bg_color . ';';
+			if ( $bg_color ) {
+				$styles .= 'background-color:' . $bg_color . ';';
+			}
 
 			if ( '' != $bg_image ) {
 				$styles .= 'background-image: url("' . $bg_image . '");';
