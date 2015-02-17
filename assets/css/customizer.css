@@ -115,20 +115,20 @@ a.hint--left:after {
   left: -270px;
 }
 
-ul.ui-sortable li {
+ul.ui-sortable li.kirki-sortable-item  {
   padding: 3px;
 }
 
-ul.ui-sortable li .dashicons-menu {
+ul.ui-sortable li.kirki-sortable-item .dashicons-menu {
   float: right;
 }
 
-ul.ui-sortable li .visibility {
+ul.ui-sortable li.kirki-sortable-item .visibility {
   padding-right: 10px;
 }
 
-ul.ui-sortable li.invisible,
-ul.ui-sortable li.invisible .visibility {
+ul.ui-sortable li.kirki-sortable-item.invisible,
+ul.ui-sortable li.kirki-sortable-item.invisible .visibility {
   color: #ccc;
   border: 1px solid rgba(0,0,0,0);
 }
