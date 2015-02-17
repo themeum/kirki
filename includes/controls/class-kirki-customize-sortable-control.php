@@ -1,7 +1,8 @@
 <?php
 
 class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
-	public $description;
+	public $description = '';
+	public $subtitle = '';
 	public $choices;
 
 	public function enqueue() {
@@ -23,7 +24,17 @@ class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 
 		?>
 		<label class='kirki-sortable'>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<span class="customize-control-title">
+				<?php echo esc_html( $this->label ); ?>
+
+				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
+					<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
+				<?php } ?>
+			</span>
+			<?php if ( '' != $this->subtitle ) : ?>
+				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
+			<?php endif; ?>
+
 			<?php
 				$values = $this->value();
 				$values = $values == '' ? array_keys( $this->choices ) : $values;
@@ -44,7 +55,6 @@ class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 			<?php $values = ! is_serialized( $values ) ? serialize( $values ) : $values; ?>
 			<input type='hidden' <?php $this->link(); ?> value='<?php echo esc_attr( $values )  ?>'/>
 		</label>
-		<p class='description'><?php echo $this->description; ?></p>
 		<?php
 	}
 }
