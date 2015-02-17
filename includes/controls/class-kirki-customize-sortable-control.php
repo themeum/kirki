@@ -3,7 +3,6 @@
 class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 	public $description;
 	public $choices;
-	public $visible_button;
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -30,7 +29,7 @@ class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 				$values = $values == '' ? array_keys( $this->choices ) : $values;
 				$values = is_serialized( $values ) ? unserialize( $values ) : $values;
 				$this->visible_button = count( $values ) != count( $this->choices ) ? true : '';
-				$visibleButton = ( $this->visible_button === true ) ? "<i class='dashicons dashicons-visibility visibility'></i>" : '';
+				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
 			?>
 			<ul>
 				<?php foreach ( $values as $dummy => $value ) : ?>

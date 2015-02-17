@@ -114,3 +114,21 @@ a.hint--left:after {
   top: -22px;
   left: -270px;
 }
+
+ul.ui-sortable li {
+  padding: 3px;
+}
+
+ul.ui-sortable li .dashicons-menu {
+  float: right;
+}
+
+ul.ui-sortable li .visibility {
+  padding-right: 10px;
+}
+
+ul.ui-sortable li.invisible,
+ul.ui-sortable li.invisible .visibility {
+  color: #ccc;
+  border: 1px solid rgba(0,0,0,0);
+}

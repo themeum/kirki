@@ -246,6 +246,14 @@ class Kirki_Scripts {
 		#customize-theme-controls .control-section:hover .accordion-section-title {
 			background: <?php echo $color_active; ?>;
 		}
+		ul.ui-sortable li {
+			border: 1px solid <?php echo $color_active; ?>;
+		}
+
+		ul.ui-sortable li .visibility {
+			color: <?php echo $color_active; ?>;
+		}
+
 		#customize-theme-controls .control-section.control-panel.current-panel:hover .accordion-section-title{
 			background: none;
 		}
