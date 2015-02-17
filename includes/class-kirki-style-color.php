@@ -38,6 +38,11 @@ class Kirki_Style_Color {
 
 		$color    = Kirki_Color::sanitize_hex( get_theme_mod( $control['setting'], $control['default'] ) );
 
+		// Early exit if color is empty.
+		if ( !$color ) {
+			return null;
+		}
+
 		// Generate the styles
 		$styles = $control['output']['element'] . '{' . $control['output']['property'] . ':' . $color . ';}';
 		return $styles;
