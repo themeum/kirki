@@ -31,7 +31,7 @@ class Kirki_Style_Generic {
 		 * Background controls are handled in the Kirki_Style_Background class.
 		 * Color controls are handled in the Kirki_Style_Color class.
 		 */
-		if ( 'color' != $control['type'] && 'background' != $control['type'] ) {
+		if ( 'color' != $control['type'] || 'background' != $control['type'] ) {
 			return;
 		}
 
