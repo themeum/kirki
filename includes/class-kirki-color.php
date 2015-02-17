@@ -7,6 +7,10 @@ class Kirki_Color {
 	 */
 	public static function sanitize_hex( $color ) {
 
+		// Early exit if input is empty
+		if ( !trim( $color ) )
+			return null;
+
 		// Remove any spaces and special characters before and after the string
 		$color = trim( $color. ' \t\n\r\0\x0B' );
 		// Remove any trailing '#' symbols from the color value
@@ -56,6 +60,10 @@ class Kirki_Color {
 	 */
 	public static function get_rgb( $hex, $implode = false ) {
 
+		// Early exit if input is empty
+		if ( !trim( $hex ) )
+			return null;
+
 		// Remove any trailing '#' symbols from the color value
 		$hex = str_replace( '#', '', self::sanitize_hex( $hex ) );
 
@@ -77,6 +85,10 @@ class Kirki_Color {
 	 * Gets the rgba value of a color.
 	 */
 	public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
+
+		// Early exit if input is empty
+		if ( !trim( $hex ) )
+			return null;
 
 		$hex = self::sanitize_hex( $hex );
 
@@ -104,6 +116,10 @@ class Kirki_Color {
 	 * Returns a value between 0 and 255
 	 */
 	public static function get_brightness( $hex ) {
+
+		// Early exit if input is empty
+		if ( !trim( $hex ) )
+			return null;
 
 		$hex = self::sanitize_hex( $hex );
 		// returns brightness value from 0 to 255
