@@ -295,6 +295,22 @@ class Kirki_Controls extends Kirki {
 				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
 			) ) );
 
+		// Sortable Controls
+		} elseif ( 'sortable' == $control['type'] ) {
+
+			$wp_customize->add_control( new Kirki_Customize_Sortable_Control( $wp_customize, $control['setting'], array(
+				'label'       => $control['label'],
+				'section'     => $control['section'],
+				'settings'    => $control['setting'],
+				'priority'    => $control['priority'],
+				'choices'     => $control['choices'],
+				'description' => isset( $control['description'] ) ? $control['description'] : null,
+				'subtitle'    => isset( $control['subtitle'] ) ? $control['subtitle'] : '',
+				'required'    => isset( $control['required'] ) ? $control['required'] : array(),
+				'transport'   => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+				'visible_btn' => isset( $control['visible_btn'] ) ? $control['visible_btn'] : true,
+			) ) );
+
 		}
 
 	}

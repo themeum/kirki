@@ -16,6 +16,7 @@ include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
 */
 if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
+	public $scripts;
 
 	function __construct() {
 
@@ -39,7 +40,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
-		$scripts      = new Kirki_Scripts();
+		$this->scripts = new Kirki_Scripts();
 		$styles_bg    = new Kirki_Style_Background();
 		$styles_color = new Kirki_Style_Color();
 		$styles_fonts = new Kirki_Style_Fonts();
@@ -67,6 +68,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-upload-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-select-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-group-title-control.php' );
+		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-sortable-control.php' );
 
 	}
 
