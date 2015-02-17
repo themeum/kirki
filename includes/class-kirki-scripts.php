@@ -246,11 +246,11 @@ class Kirki_Scripts {
 		#customize-theme-controls .control-section:hover .accordion-section-title {
 			background: <?php echo $color_active; ?>;
 		}
-		ul.ui-sortable li {
+		ul.ui-sortable li.kirki-sortable-item {
 			border: 1px solid <?php echo $color_active; ?>;
 		}
 
-		ul.ui-sortable li .visibility {
+		ul.ui-sortable li.kirki-sortable-item .visibility {
 			color: <?php echo $color_active; ?>;
 		}
 
