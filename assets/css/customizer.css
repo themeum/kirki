@@ -26,8 +26,8 @@ li.customize-control.customize-control-slider .ss-slider {
 }
 
 .customize-control-radio label {
-  line-height: 28px;
-  padding: 5px 10px;
+  line-height: 22px;
+  padding: 5px 8px;
 }
 
 .image.ui-buttonset label.ui-button {
@@ -131,4 +131,78 @@ ul.ui-sortable li.kirki-sortable-item.invisible,
 ul.ui-sortable li.kirki-sortable-item.invisible .visibility {
   color: #ccc;
   border: 1px solid rgba(0,0,0,0);
+}
+
+.wp-full-overlay-sidebar {
+  background: #fff;
+}
+
+.wp-core-ui.wp-customizer .button,
+.press-this.wp-core-ui .button,
+.press-this input#publish,
+.press-this input#save-post,
+.press-this a.preview {
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+  will-change: opacity, transform;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: 0.5px;
+  -webkit-transition: 0.2s ease-out;
+  -moz-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  -ms-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  display: inline-block;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-clip: padding-box;
+  border: none;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.wp-core-ui.wp-customizer .button:hover,
+.press-this.wp-core-ui .button:hover,
+.press-this input#publish:hover,
+.press-this input#save-post:hover,
+.press-this a.preview:hover {
+  background-color: #2bbbad;
+  webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.ui-button {
+  border-color: #f2f2f2;
+  background-color: #transparent !important;
+}
+
+.customize-control input[type="text"] {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.customize-control input[type="text"]:focus {
+  border-color: #333;
 }

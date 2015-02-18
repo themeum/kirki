@@ -281,6 +281,26 @@ class Kirki_Scripts {
 			color: <?php echo $color_select; ?> !important;
 		}
 
+		.customize-control input[type="text"]:focus {
+			border-color: <?php echo $color_active; ?>;
+		}
+
+		.wp-core-ui.wp-customizer .button,
+		.press-this.wp-core-ui .button,
+		.press-this input#publish,
+		.press-this input#save-post,
+		.press-this a.preview {
+			background-color: <?php echo $color_accent; ?>;
+		}
+
+		.wp-core-ui.wp-customizer .button:hover,
+		.press-this.wp-core-ui .button:hover,
+		.press-this input#publish:hover,
+		.press-this input#save-post:hover,
+		.press-this a.preview:hover {
+			background-color: <?php echo $color_accent; ?>;
+		}
+
 		<?php if ( isset( $options['logo_image'] ) ) : ?>
 			div.kirki-customizer {
 				background: url("<?php echo $options['logo_image']; ?>") no-repeat left center;
