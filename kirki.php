@@ -57,19 +57,19 @@ class Kirki {
 	function include_customizer_controls() {
 
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-customize-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-checkbox-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-color-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-image-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-multicheck-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-number-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-radio-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-sliderui-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-text-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-textarea-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-upload-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-select-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-group-title-control.php' );
-		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-sortable-control.php' );
+
+		$controls = $this->get_controls();
+		foreach ( $controls as $control ) {
+			if ( 'background' != $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-' . $control['type'] . '-control.php' );
+			} else {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-color-control.php' );
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-image-control.php' );
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-select-control.php' );
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-control.php' );
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+			}
+		}
 
 	}
 
