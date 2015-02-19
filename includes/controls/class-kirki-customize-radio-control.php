@@ -1,11 +1,12 @@
 <?php
 
-class Kirki_Customize_Radio_Control extends WP_Customize_Control {
+class Kirki_Customize_Radio_Control extends Kirki_Customize_Control {
 
-	public $type = 'radio';
-	public $description = '';
-	public $mode = 'radio';
-	public $subtitle = '';
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->type = 'radio';
+		$this->mode = ( ! isset( $this->mode ) || empty( $this->mode ) ) ? 'radio' : $this->mode;
+		parent::__construct( $manager, $id, $args );
+	}
 
 	public function enqueue() {
 
@@ -26,15 +27,11 @@ class Kirki_Customize_Radio_Control extends WP_Customize_Control {
 		?>
 		<span class="customize-control-title">
 			<?php echo esc_html( $this->label ); ?>
-			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-				<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-			<?php } ?>
+			<?php $this->description(); ?>
 		</span>
+		<?php $this->subtitle(); ?>
 
 		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
-			<?php if ( '' != $this->subtitle ) : ?>
-				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
-			<?php endif; ?>
 			<?php
 
 			// JqueryUI Button Sets

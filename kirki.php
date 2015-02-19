@@ -12,8 +12,8 @@ Version:       0.5.1
 include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
 
 /**
-* The main Kirki class
-*/
+ * The main Kirki class
+ */
 if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
 	public $scripts;
@@ -56,6 +56,7 @@ class Kirki {
 	 */
 	function include_customizer_controls() {
 
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-customize-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-checkbox-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-color-control.php' );
 		include_once( dirname( __FILE__ ) . '/includes/controls/class-kirki-customize-image-control.php' );

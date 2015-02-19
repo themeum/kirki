@@ -1,21 +1,18 @@
 <?php
 
-class Kirki_Customize_Checkbox_Control extends WP_Customize_Control {
+class Kirki_Customize_Checkbox_Control extends Kirki_Customize_Control {
 
-	public $type = 'checkbox';
-	public $description = '';
-	public $subtitle = '';
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->type = 'checkbox';
+		parent::__construct( $manager, $id, $args );
+	}
 
 	public function render_content() { ?>
 		<label class="customizer-checkbox">
 			<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" id="<?php echo $this->id . esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
 			<strong><?php echo esc_html( $this->label ); ?></strong>
-			<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-				<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-			<?php } ?>
-			<?php if ( '' != $this->subtitle ) : ?>
-				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
-			<?php endif; ?>
+			<?php $this->description(); ?>
+			<?php $this->subtitle(); ?>
 		</label>
 		<?php
 	}

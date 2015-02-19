@@ -7,13 +7,15 @@
  * @subpackage Customize
  * @since 3.4.0
  */
-class Kirki_Customize_Upload_Control extends WP_Customize_Control {
-	public $type    = 'upload';
+class Kirki_Customize_Upload_Control extends Kirki_Customize_Control {
 	public $removed = '';
 	public $context;
 	public $extensions = array();
-	public $description = '';
-	public $subtitle = '';
+
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->type = 'upload';
+		parent::__construct( $manager, $id, $args );
+	}
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -52,14 +54,9 @@ class Kirki_Customize_Upload_Control extends WP_Customize_Control {
 		<label>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
-				<?php if ( isset( $this->description ) && '' != $this->description ) { ?>
-					<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-				<?php } ?>
+				<?php $this->description(); ?>
 			</span>
-
-			<?php if ( '' != $this->subtitle ) : ?>
-				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
-			<?php endif; ?>
+			<?php $this->subtitle(); ?>
 
 			<div>
 				<a href="#" class="button-secondary upload"><?php _e( 'Upload', 'kirki' ); ?></a>

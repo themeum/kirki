@@ -1,13 +1,11 @@
 <?php
 
-class Kirki_Select_Control extends WP_Customize_Control {
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $type = 'select';
-	public $description = '';
-	public $subtitle = '';
+class Kirki_Select_Control extends Kirki_Customize_Control {
+
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->type = 'select';
+		parent::__construct( $manager, $id, $args );
+	}
 
 	public function render_content() {
 
@@ -16,16 +14,11 @@ class Kirki_Select_Control extends WP_Customize_Control {
 		} ?>
 
 		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?>
-				<?php if ( isset( $this->description ) && ! empty( $this->description ) ) { ?>
-					<a href="#" class="button tooltip hint--left" data-hint="<?php echo strip_tags( esc_html( $this->description ) ); ?>">?</a>
-				<?php } ?>
+			<span class="customize-control-title">
+				<?php echo esc_html( $this->label ); ?>
+				<?php $this->description(); ?>
 			</span>
-
-			<?php if ( '' != $this->subtitle ) : ?>
-				<div class="customizer-subtitle"><?php echo $this->subtitle; ?></div>
-			<?php endif; ?>
-
+			<?php $this->subtitle(); ?>
 			<select <?php $this->link(); ?>>
 				<?php
 				foreach ( $this->choices as $value => $label ) {
