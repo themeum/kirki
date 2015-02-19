@@ -119,7 +119,7 @@ class Kirki_Controls extends Kirki {
 			) ) );
 
 			if ( false != $control['default']['opacity'] ) {
-				$wp_customize->add_control( new Kirki_Customize_Sliderui_Control( $wp_customize, $control['setting'] . '_opacity', array(
+				$wp_customize->add_control( new Kirki_Customize_Slider_Control( $wp_customize, $control['setting'] . '_opacity', array(
 					'label'       => null,
 					'section'     => $control['section'],
 					'settings'    => $control['setting'] . '_opacity',
@@ -198,7 +198,7 @@ class Kirki_Controls extends Kirki {
 		// Slider Control
 		} elseif ( 'slider' == $control['type'] ) {
 
-			$wp_customize->add_control( new Kirki_Customize_Sliderui_Control( $wp_customize, $control['setting'], array(
+			$wp_customize->add_control( new Kirki_Customize_Slider_Control( $wp_customize, $control['setting'], array(
 				'label'       => isset( $control['label'] ) ? $control['label'] : '',
 				'section'     => $control['section'],
 				'settings'    => $control['setting'],

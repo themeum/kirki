@@ -5,7 +5,7 @@ Plugin URI:    http://kirki.org
 Description:   An options framework using and extending the WordPress Customizer
 Author:        Aristeides Stathopoulos
 Author URI:    http://press.codes
-Version:       0.5.1
+Version:       0.6.beta.1
 */
 
 // Load Kirki_Fonts before everything else
@@ -17,6 +17,7 @@ include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
 if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
 	public $scripts;
+	public $styles;
 
 	function __construct() {
 
@@ -41,10 +42,12 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
 		$this->scripts = new Kirki_Scripts();
-		$styles_bg    = new Kirki_Style_Background();
-		$styles_color = new Kirki_Style_Color();
-		$styles_fonts = new Kirki_Style_Fonts();
-		$styles_gen   = new Kirki_Style_Generic();
+		$this->styles  = array(
+			'bg'      => new Kirki_Style_Background(),
+			'color'   => new Kirki_Style_Color(),
+			'fonts'   => new Kirki_Style_Fonts(),
+			'generic' => new Kirki_Style_Generic(),
+		);
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );

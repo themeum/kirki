@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Customize_Sliderui_Control extends Kirki_Customize_Control {
+class Kirki_Customize_Slider_Control extends Kirki_Customize_Control {
 
 	public function __construct( $manager, $id, $args = array() ) {
 		$this->type = 'slider';
