@@ -15,6 +15,7 @@ class Kirki_Controls extends Kirki {
 		if ( 'background' != $control['type'] ) {
 
 			$control_class = 'Kirki_Customize_' . ucfirst( $control['type'] ) . '_Control';
+			$control_class = ( 'group_title' == $control['type'] ) ? 'Kirki_Customize_Group_Title_Control' : $control_class;
 			$wp_customize->add_control( new $control_class( $wp_customize, $control['setting'] . '_opacity', $control ) );
 
 		} else {
