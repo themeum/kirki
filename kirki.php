@@ -31,6 +31,7 @@ class Kirki {
 		$options = $this->get_config();
 
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-scripts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-background.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-color.php' );

@@ -1,11 +1,20 @@
 <?php
 
-class Kirki_Style_Fonts {
+class Kirki_Style_Fonts extends Kirki_Style {
 
 	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'get_css' ), 150 );
+		add_filter( 'kirki/styles', array( $this, 'styles' ), 150 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
 	}
+
+	function styles( $styles = array() ) {
+
+		$font_styles = $this->font_builder( 'styles' );
+		$styles = array_merge( $styles, $font_styles );
+		return $styles;
+
+	}
+
 
 	function font_builder( $context = 'styles' ) {
 
@@ -38,19 +47,18 @@ class Kirki_Style_Fonts {
 				if ( $is_font_family ) {
 
 					$fonts[]['font-family'] = $value;
-					$css .= $control['output']['element'] . '{font-family:' . $value . ';}';
+					$styles[$control['output']['element']]['font-family'] = $value;
 
 				} else if ( $is_font_size ) {
 
 					// Get the unit we're going to use for the font-size.
 					$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
-
-					$css .= $control['output']['element'] . '{font-size:' . $value . $units . ';}';
+					$styles[$control['output']['element']]['font-size'] = $value . $units;
 
 				} else if ( $is_font_weight ) {
 
 					$fonts[]['font-weight'] = $value;
-					$css .= $control['output']['element'] . '{font-weight:' . $value . ';}';
+					$styles[$control['output']['element']]['font-weight'] = $value;
 
 				} else if ( $is_font_subset ) {
 
@@ -100,24 +108,12 @@ class Kirki_Style_Fonts {
 		}
 
 		if ( 'styles' == $context ) {
-			return $css;
+			return $styles;
 		} else if ( 'google_link' == $context ) {
 			return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 		}
 
 	}
-
-	function get_css() {
-
-		global $kirki;
-		$config = $kirki->get_config();
-
-		$css = $this->font_builder( 'styles' );
-
-		wp_add_inline_style( $config['stylesheet_id'], $css );
-
-	}
-
 	/**
 	 * Enqueue Google fonts if necessary
 	 */
