@@ -55,6 +55,11 @@ class Kirki_Style_Generic {
 
 		$value = get_theme_mod( $control['setting'], $control['default'] );
 
+		// Early exit if value is empty.
+		if ( !$value ) {
+			return null;
+		}
+
 		// Do we have a unit specified?
 		$units = ( isset( $control['output']['units'] ) ) ? $control['output']['units'] : null;
 		// Generate the styles
