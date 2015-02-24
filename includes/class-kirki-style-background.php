@@ -2,39 +2,7 @@
 
 class Kirki_Style_Background {
 
-	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), 150 );
-	}
-
-	function add_css() {
-
-		global $kirki;
-		$controls = $kirki->get_controls();
-		$config   = $kirki->get_config();
-
-		$css = '';
-		foreach ( $controls as $control ) {
-			$css .= $this->control_css( $control );
-		}
-
-		wp_add_inline_style( $config['stylesheet_id'], $css );
-
-	}
-
-	/**
-	 * Apply custom backgrounds to our page.
-	 */
-	function control_css( $control ) {
-
-		// Early exit if this is not a background control
-		if ( 'background' != $control['type'] ) {
-			return;
-		}
-
-		// Early exit if we have not set the 'output'.
-		if ( ! isset( $control['output'] ) || is_null( $control['output'] ) ) {
-			return;
-		}
+	function styles( $control, $styles = array() ) {
 
 		// Add support for previous syntax for output (string instead of array)
 		$output_element = is_array( $control['output'] ) ? $control['output']['element'] : $control['output'];
@@ -58,19 +26,14 @@ class Kirki_Style_Background {
 
 		}
 
-		// HTML Background
-		$styles = $output_element . '{';
-			$styles .= 'background-color:' . $bg_color . ';';
-
-			if ( '' != $bg_image ) {
-				$styles .= 'background-image: url("' . $bg_image . '");';
-				$styles .= 'background-repeat: ' . $bg_repeat . ';';
-				$styles .= 'background-size: ' . $bg_size . ';';
-				$styles .= 'background-attachment: ' . $bg_attach . ';';
-				$styles .= 'background-position: ' . str_replace( '-', ' ', $bg_position ) . ';';
-			}
-
-		$styles .= '}';
+		$styles[$output_element]['background-color'] = $bg_color;
+		if ( '' != $bg_image ) {
+			$styles[$output_element]['background-image']      = url("' . $bg_image . '");
+			$styles[$output_element]['background-repeat']     = $bg_repeat;
+			$styles[$output_element]['background-size']       = $bg_size;
+			$styles[$output_element]['background-attachment'] = $bg_attach;
+			$styles[$output_element]['background-position']   = str_replace( '-', ' ', $bg_position );
+		}
 
 		return $styles;
 
