@@ -56,7 +56,6 @@ class Kirki_Style {
 
 		}
 
-		var_dump( $styles );
 		return $styles;
 
 	}
