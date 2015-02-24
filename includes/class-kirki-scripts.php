@@ -259,6 +259,7 @@ class Kirki_Scripts {
 			background: none;
 		}
 
+		.Switch.Round.Off .Toggle,
 		#customize-theme-controls .control-section.control-panel.current-panel .accordion-section-title:hover{
 			background: <?php echo $color_active; ?>;
 		}
