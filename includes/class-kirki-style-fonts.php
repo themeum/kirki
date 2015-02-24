@@ -2,21 +2,51 @@
 
 class Kirki_Style_Fonts extends Kirki_Style {
 
+	public $firstrun = true;
+
 	function __construct() {
-		add_filter( 'kirki/styles', array( $this, 'styles' ), 150 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
+
+		// Make sure the link is only added once
+		if ( $this->firstrun ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
+			$this->firstrun = false;
+		}
+
 	}
 
-	function styles( $styles = array() ) {
+	function styles( $control, $styles = array() ) {
 
-		$font_styles = $this->font_builder( 'styles' );
-		$styles = array_merge( $styles, $font_styles );
+		// The value of this control
+		$value = get_theme_mod( $control['setting'], $control['default'] );
+
+		// Check if this is a font-family control
+		$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
+		// Check if this is a font-size control
+		$is_font_size   = isset( $control['output']['property'] ) && 'font-size'   == $control['output']['property'] ? true : false;
+		// Check if this is a font-weight control
+		$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
+
+		if ( $is_font_family ) {
+
+			$styles[$control['output']['element']]['font-family'] = $value;
+
+		} else if ( $is_font_size ) {
+
+			// Get the unit we're going to use for the font-size.
+			$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
+			$styles[$control['output']['element']]['font-size'] = $value . $units;
+
+		} else if ( $is_font_weight ) {
+
+			$styles[$control['output']['element']]['font-weight'] = $value;
+
+		}
+
 		return $styles;
 
 	}
 
-
-	function font_builder( $context = 'styles' ) {
+	function google_link() {
 
 		// Get the global config and controls
 		global $kirki;
@@ -26,7 +56,6 @@ class Kirki_Style_Fonts extends Kirki_Style {
 		// Get an array of all the google fonts
 		$google_fonts = Kirki_Fonts::get_google_fonts();
 
-		$css   = '';
 		$fonts = array();
 		foreach ( $controls as $control ) {
 
@@ -37,33 +66,17 @@ class Kirki_Style_Fonts extends Kirki_Style {
 
 				// Check if this is a font-family control
 				$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
-				// Check if this is a font-size control
-				$is_font_size   = isset( $control['output']['property'] ) && 'font-size'   == $control['output']['property'] ? true : false;
 				// Check if this is a font-weight control
 				$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
 				// Check if this is a font subset control
 				$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
 
 				if ( $is_font_family ) {
-
 					$fonts[]['font-family'] = $value;
-					$styles[$control['output']['element']]['font-family'] = $value;
-
-				} else if ( $is_font_size ) {
-
-					// Get the unit we're going to use for the font-size.
-					$units = isset( $control['output']['units'] ) ? $control['output']['units'] : 'px';
-					$styles[$control['output']['element']]['font-size'] = $value . $units;
-
 				} else if ( $is_font_weight ) {
-
 					$fonts[]['font-weight'] = $value;
-					$styles[$control['output']['element']]['font-weight'] = $value;
-
 				} else if ( $is_font_subset ) {
-
 					$fonts[]['subsets'] = $value;
-
 				}
 
 			}
@@ -107,19 +120,16 @@ class Kirki_Style_Fonts extends Kirki_Style {
 			$font_families = false;
 		}
 
-		if ( 'styles' == $context ) {
-			return $styles;
-		} else if ( 'google_link' == $context ) {
-			return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
-		}
+		return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 
 	}
+
 	/**
 	 * Enqueue Google fonts if necessary
 	 */
 	function google_font() {
 
-		$google_link = $this->font_builder( 'google_link' );
+		$google_link = $this->google_link();
 
 		if ( $google_link ) {
 			wp_register_style( 'kirki_google_fonts', $google_link );

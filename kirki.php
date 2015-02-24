@@ -36,19 +36,13 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-background.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-fonts.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-generic.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
 		$this->scripts = new Kirki_Scripts();
-		$this->styles  = array(
-			'bg'      => new Kirki_Style_Background(),
-			'color'   => new Kirki_Style_Color(),
-			'fonts'   => new Kirki_Style_Fonts(),
-			'generic' => new Kirki_Style_Generic(),
-		);
+		$this->styles  = new Kirki_Style();
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );
