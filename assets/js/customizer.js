@@ -35,6 +35,19 @@ jQuery(document).ready(function($) {
 			kirkiUpdateSortable( $(this).parents('ul:eq(0)') );
 		})
 	});
+
+
+	// Switch Click
+	$('.Switch').click(function() {
+		if ($(this).hasClass('On')){
+			$(this).parent().find('input:checkbox').attr('checked', true);
+			$(this).removeClass('On').addClass('Off');
+		} else {
+			$(this).parent().find('input:checkbox').attr('checked', false);
+			$(this).removeClass('Off').addClass('On');
+		}
+	});
+
 });
 function kirkiUpdateSortable(ul) {
 	"use strict";

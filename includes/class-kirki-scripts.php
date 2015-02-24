@@ -30,7 +30,7 @@ class Kirki_Scripts {
 		wp_enqueue_style( 'hint-css', $kirki_url . 'assets/css/hint.css', NULL, '1.3.3' );
 		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '1.10.0' );
 
-		// wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js');
+		wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js', array( 'jquery' ) );
 		wp_enqueue_script( 'serialize-js', $kirki_url . 'assets/js/serialize.js');
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
@@ -250,6 +250,7 @@ class Kirki_Scripts {
 			border: 1px solid <?php echo $color_active; ?>;
 		}
 
+		.Switch span.On,
 		ul.ui-sortable li.kirki-sortable-item .visibility {
 			color: <?php echo $color_active; ?>;
 		}
@@ -258,6 +259,7 @@ class Kirki_Scripts {
 			background: none;
 		}
 
+		.Switch.Round.Off .Toggle,
 		#customize-theme-controls .control-section.control-panel.current-panel .accordion-section-title:hover{
 			background: <?php echo $color_active; ?>;
 		}
