@@ -23,6 +23,7 @@ li.customize-control.customize-control-slider .ss-slider {
   -webkit-box-shadow: none;
   box-shadow: none;
   float: right;
+  overflow: visible !important;
 }
 
 .customize-control-radio label {
@@ -105,14 +106,14 @@ li.customize-control.customize-control-group_title {
 a.hint--left:after {
   height: auto;
   margin-bottom: -14px;
-  width: 250px;
-  max-width: 250px;
+  width: 170px;
+  max-width: 170px;
   display: block;
   white-space: normal;
   text-align: right;
   position: relative;
   top: -22px;
-  left: -270px;
+  left: -190px;
 }
 
 ul.ui-sortable li.kirki-sortable-item  {
