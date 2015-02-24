@@ -231,6 +231,8 @@ body.IE7 .Switch { width: 78px; }
 .Switch span {
 	display: inline-block;
 	width: 35px;
+  position: relative;
+  top: -5px;
 }
 .Switch span.On { color: #33d2da; }
 .Switch .Toggle {
