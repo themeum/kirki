@@ -59,7 +59,11 @@ class Kirki {
 		$controls = $this->get_controls();
 		foreach ( $controls as $control ) {
 			if ( 'background' != $control['type'] ) {
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-' . $control['type'] . '-control.php' );
+				if ( 'group_title' == $control['type'] ) {
+					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
+				} else {
+					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-' . $control['type'] . '-control.php' );
+				}
 			} else {
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-color-control.php' );
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-image-control.php' );
