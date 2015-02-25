@@ -2,9 +2,9 @@
 Contributors: aristath, fovoc
 Donate link: http://kirki.org
 Tags: customizer
-Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 0.5.1
+Requires at least: 4.0
+Tested up to: 4.1.1
+Stable tag: 0.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ The following controls are included:
 * Text
 * Textarea
 * Upload
+* Switch
+* Toggle
+* Sortable
 
 For documentation and examples on how to use these controls, please visit [kirki.org](http://kirki.org/#fields).
 
@@ -38,6 +41,20 @@ In addition you can also automatically generate the CSS for a lot of controls an
 
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
+
+== 0.6.0 - 2012-02-25, dev time: 9 hours==
+* Fix: Tooltips now properly working
+* New: Added checkbox switches
+* New: Added checkbox toggles
+* Fix: Generated CSS is not properly combined & minified
+* Fix: Re-structuring files hierarchy
+* Fix: Simplify the way controls are loaded
+* New: Only load control classes when they are needed
+* New: Introducing Kirki_Customize_Control class
+* Fix: CSS tweaks
+* New: Sortable control (creating one is identical to a select control, but with `'type' => 'sortable'`)
+* Fix: Double output CSS (props @agusmu)
+* New: Google fonts now parsed from a json file.
 
 == 0.5.1 ==
 * Fix: Transport defaults to refresh instead of postMessage
