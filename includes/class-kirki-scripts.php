@@ -58,6 +58,8 @@ class Kirki_Scripts {
 		global $kirki;
 		$config   = $kirki->get_config();
 		$controls = $kirki->get_controls();
+		
+		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : KIRKI_URL;
 
 		foreach( $controls as $control ) {
 			if ( isset( $control['output'] ) ) {
@@ -65,7 +67,7 @@ class Kirki_Scripts {
 			}
 		}
 
-		if ( isset( $uses_output ) && ! isset( $config['stylesheet_id'] ) ) {
+		if ( isset( $uses_output )  && (! isset( $config['stylesheet_id'] ) || $config['stylesheet_id'] === 'kirki-styles' ) ) {
 			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
