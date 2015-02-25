@@ -259,8 +259,8 @@ body.IE7 .Switch { width: 78px; }
 	-o-transition: all 0.15s ease-in-out;
 	-ms-transition: all 0.15s ease-in-out;
 }
-.Switch.On .Toggle { left: 2%; }
-.Switch.Off .Toggle { left: 54%; }
+.Switch.On .Toggle { left: 54%; }
+.Switch.Off .Toggle { left: 2%; }
 /* Round Switch */
 .Switch.Round {
 	padding: 0px 20px;
@@ -275,7 +275,6 @@ body.IE7 .Switch.Round { width: 1px; }
 }
 .Switch.Round.Off .Toggle {
 	left: 3%;
-	background: #33d2da;
 }
 .Switch.Round.On .Toggle { left: 58%; }
 .switch-info {
