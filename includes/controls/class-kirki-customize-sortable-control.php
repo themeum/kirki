@@ -15,7 +15,6 @@ class Kirki_Customize_Sortable_Control extends Kirki_Customize_Control {
 
 	public function render_content() {
 		global $kirki;
-		$kirki->scripts->sortable_script();
 
 		if ( ! is_array( $this->choices ) ) {
 			return;

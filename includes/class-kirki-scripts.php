@@ -3,6 +3,7 @@
 class Kirki_Scripts {
 
 	function __construct() {
+
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
@@ -12,9 +13,7 @@ class Kirki_Scripts {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
-		//add_action( 'admin_head', array( $this, 'sortable_script' ) );
-		//add_action( 'customize_controls_enqueue_scripts', array( $this, 'sortable_script' ) );
-		//add_action( 'admin_enqueue_scripts', array( $this, 'sortable_script' ) );
+
 	}
 
 	/**
@@ -100,36 +99,9 @@ class Kirki_Scripts {
 
 	}
 
-	function sortable_script() { ?>
-		<script>jQuery(document).ready(function($) {"use strict";
-			// initialize
-			$('.kirki-sortable > ul ~ input').each(function() {var value = $(this).val();
-				try { value = unserialize( value ); } catch (err) { return; }
-				var ul = $(this).siblings('ul:eq(0)');
-				ul.find('li').addClass('invisible').find('i.visibility').toggleClass('dashicons-visibility-faint');
-				$.each(value, function(i, val) { ul.find('li[data-value=' + val + ']').removeClass('invisible').find('i.visibility').toggleClass('dashicons-visibility-faint'); });
-			});
-
-			$('.kirki-sortable > ul').each(function() {
-				$(this).sortable()
-				.disableSelection()
-				.on( "sortstop", function( event, ui ) { kirkiUpdateSortable(ui.item.parent()); })
-				.find('li').each(function() { $(this).find('i.visibility').click(function() { $(this).toggleClass('dashicons-visibility-faint').parents('li:eq(0)').toggleClass('invisible'); }); })
-				.click(function() { kirkiUpdateSortable( $(this).parents('ul:eq(0)') ); })
-			});
-		});
-
-		function kirkiUpdateSortable(ul) { "use strict"; var $ = jQuery; var values = [];
-			ul.find('li').each(function() { if ( ! $(this).is('.invisible') ) { values.push( $(this).attr('data-value') ); } });
-			ul.siblings('input').eq(0).val( serialize( values ) ).trigger('change');
-		}
-		</script>
-		<?php
-	}
-
 	/**
-	* Get the admin color theme
-	*/
+	 * Get the admin color theme
+	 */
 	public static function admin_colors() {
 
 		// Get the active admin theme
