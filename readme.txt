@@ -42,6 +42,10 @@ In addition you can also automatically generate the CSS for a lot of controls an
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
 
+== 0.6.1 - 2012-02-25, dev time: 1 hours==
+* Fix: Sortables controls had a JS conflict
+* Fix: Switches & Toggles were not properly working
+
 == 0.6.0 - 2012-02-25, dev time: 9 hours==
 * Fix: Tooltips now properly working
 * New: Added checkbox switches

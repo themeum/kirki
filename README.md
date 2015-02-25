@@ -2,8 +2,8 @@
 Contributors: aristath, fovoc
 Donate link: http://kirki.org
 Tags: customizer
-Requires at least: 3.9
-Tested up to: 4.1
+Requires at least: 4.0
+Tested up to: 4.1.1
 Stable tag: 0.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,8 +42,11 @@ In addition you can also automatically generate the CSS for a lot of controls an
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
 
-== 0.6.0 ==
-* 2012-02-25, 9 hours
+== 0.6.1 - 2012-02-25, dev time: 1 hours==
+* Fix: Sortables controls had a JS conflict
+* Fix: Switches & Toggles were not properly working
+
+== 0.6.0 - 2012-02-25, dev time: 9 hours==
 * Fix: Tooltips now properly working
 * New: Added checkbox switches
 * New: Added checkbox toggles
