@@ -3,7 +3,7 @@
 class Kirki_Scripts {
 
 	function __construct() {
-		add_action( 'customize_controls_print_styles', array( $this, 'scripts' ) );
+		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
@@ -11,15 +11,16 @@ class Kirki_Scripts {
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
-		add_action( 'admin_head', array( $this, 'sortable_script' ) );
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'sortable_script' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'sortable_script' ) );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
+		//add_action( 'admin_head', array( $this, 'sortable_script' ) );
+		//add_action( 'customize_controls_enqueue_scripts', array( $this, 'sortable_script' ) );
+		//add_action( 'admin_enqueue_scripts', array( $this, 'sortable_script' ) );
 	}
 
 	/**
-	 * Enqueue the stylesheets and scripts required.
+	 * Enqueue the stylesheets required.
 	 */
-	function scripts() {
+	function styles() {
 
 		global $kirki;
 		$options = $kirki->get_config();
@@ -30,7 +31,20 @@ class Kirki_Scripts {
 		wp_enqueue_style( 'hint-css', $kirki_url . 'assets/css/hint.css', NULL, '1.3.3' );
 		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '1.10.0' );
 
-		wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js', array( 'jquery' ) );
+	}
+
+
+	/**
+	* Enqueue the scripts required.
+	*/
+	function scripts() {
+
+		global $kirki;
+		$options = $kirki->get_config();
+
+		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : KIRKI_URL;
+
+		wp_enqueue_script( 'kirki_customizer_js', $kirki_url . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ) );
 		wp_enqueue_script( 'serialize-js', $kirki_url . 'assets/js/serialize.js');
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
