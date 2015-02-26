@@ -33,9 +33,7 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/required.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-scripts.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-background.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-color.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style-fonts.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts-script.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
