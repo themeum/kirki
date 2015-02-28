@@ -31,7 +31,7 @@ class Kirki_Style {
 				if ( ! $multiple_styles ) { // single style
 
 					// If $control['output'] is not an array, then use the string as the target element
-					if ( ! array( $control['output'] ) ) {
+					if ( is_string( $control['output'] ) ) {
 						$element = $control['output'];
 					} else {
 						$element  = isset( $control['output']['element'] )  ? $control['output']['element'] : '';
@@ -101,13 +101,13 @@ class Kirki_Style {
 
 			}
 
-			$styles[$output_element]['background-color'] = $bg_color;
+			$styles[$element]['background-color'] = $bg_color;
 			if ( '' != $bg_image ) {
-				$styles[$output_element]['background-image']      = url("' . $bg_image . '");
-				$styles[$output_element]['background-repeat']     = $bg_repeat;
-				$styles[$output_element]['background-size']       = $bg_size;
-				$styles[$output_element]['background-attachment'] = $bg_attach;
-				$styles[$output_element]['background-position']   = str_replace( '-', ' ', $bg_position );
+				$styles[$element]['background-image']      = 'url("' . $bg_image . '")';
+				$styles[$element]['background-repeat']     = $bg_repeat;
+				$styles[$element]['background-size']       = $bg_size;
+				$styles[$element]['background-attachment'] = $bg_attach;
+				$styles[$element]['background-position']   = str_replace( '-', ' ', $bg_position );
 			}
 
 		}
