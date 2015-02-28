@@ -11,6 +11,7 @@ class Kirki_Controls extends Kirki {
 		$control['subtitle']    = isset( $control['subtitle'] ) ? $control['subtitle'] : '';
 		$control['required']    = isset( $control['required'] ) ? $control['required'] : array();
 		$control['transport']   = isset( $control['transport'] ) ? $control['transport'] : 'refresh';
+		$control['default']     = 'sortable' == $control['type'] ? maybe_serialize( $control['default'] ) : $control['default'];
 
 		if ( 'background' != $control['type'] ) {
 
