@@ -44,6 +44,7 @@ class Kirki {
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );
+		add_action( 'wp', array( $this, 'update' ) );
 
 	}
 
@@ -115,6 +116,30 @@ class Kirki {
 
 		$controls = apply_filters( 'kirki/controls', array() );
 		return $controls;
+
+	}
+
+	function update() {
+
+		// < 0.6.1 -> 0.6.2
+		if ( ! get_option( 'kirki_version' ) ) {
+
+			$control_ids = array();
+			$controls = $this->get_controls();
+			foreach ( $controls as $control ) {
+				if ( 'background' != $control['type'] ) {
+					$control_ids[] = $control['setting'];
+				}
+			}
+			foreach ( $control_ids as $control_id ) {
+				if ( get_theme_mod( $control_id . '_opacity' ) && ! get_theme_mod( $control_id ) ) {
+					update_theme_mod( $control_id, get_theme_mod( $control_id . '_opacity' ) );
+				}
+			}
+
+			update_option( 'kirki_version', '0.6.2' );
+
+		}
 
 	}
 
