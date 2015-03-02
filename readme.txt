@@ -4,7 +4,7 @@ Donate link: http://kirki.org
 Tags: customizer
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.6.1
+Stable tag: 0.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,11 +42,19 @@ In addition you can also automatically generate the CSS for a lot of controls an
 Just install this plugin and activate it.
 For configuration instructions please visit http://kirki.org/#configuration
 
-== 0.6.1 - 2012-02-25, dev time: 1 hours==
+== 0.6.2 - 2014-03-02, dev time: 3 hours ==
+* Fix: Frontend styles were not properly enqueued (props @dmgawel)
+* New: Allow multiple output styles per control defined as an array of arrays.
+* Fix: Background control styles
+* Fix: Serialise default values for the sortable control. Now you can define default values as an array.
+* Fix: Required script
+* Fix: '_opacity' was added to a lot of controls by mistake. Removed it and wrote a migration script.
+
+== 0.6.1 - 2014-02-25, dev time: 1 hours ==
 * Fix: Sortables controls had a JS conflict
 * Fix: Switches & Toggles were not properly working
 
-== 0.6.0 - 2012-02-25, dev time: 9 hours==
+== 0.6.0 - 2014-02-25, dev time: 9 hours ==
 * Fix: Tooltips now properly working
 * New: Added checkbox switches
 * New: Added checkbox toggles
