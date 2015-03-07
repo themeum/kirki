@@ -4,8 +4,7 @@ class Kirki_Scripts {
 
 	function __construct() {
 
-		global $kirki;
-		$options = $kirki->get_config();
+		$config = apply_filters( 'kirki/config', array() );
 		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
 
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
