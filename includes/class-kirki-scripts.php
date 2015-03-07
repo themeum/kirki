@@ -4,6 +4,10 @@ class Kirki_Scripts {
 
 	function __construct() {
 
+		global $kirki;
+		$options = $kirki->get_config();
+		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
+
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
@@ -11,7 +15,7 @@ class Kirki_Scripts {
 		// TODO: This is not perfect under ANY circumstances.
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
 
 	}
