@@ -92,7 +92,7 @@ class Kirki_Style {
 
 			if ( false != $control['default']['opacity'] ) {
 
-				$bg_position = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
+				$bg_opacity = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
 
 				// If we're using an opacity other than 100, then convert the color to RGBA.
 				if ( 100 != $bg_opacity ) {
