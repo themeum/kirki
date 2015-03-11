@@ -114,11 +114,7 @@ class Kirki_Fonts {
 
 		} else {
 
-			$subsets = array(
-				'latin',
-				$subset,
-
-			);
+			$subsets = (array)$subset;
 
 		}
 
