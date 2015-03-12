@@ -93,22 +93,15 @@ class Kirki_Fonts {
 		}
 
 		// load the font weight
-		if ( is_array( $weight ) ) {
-
-			$weight = implode( ',', $weight );
-
-		}
-
-		$request .= ':' . $weight;
+		$weight = ( is_array( $weight ) ) ? implode( ',', $weight ) : $weight;
+		$request .= $weight;
 
 		// Load the font subset
 		if ( 'all' === $subset ) {
 
 			$subsets_available = self::get_google_font_subsets();
-
 			// Remove the all set
 			unset( $subsets_available['all'] );
-
 			// Build the array
 			$subsets = array_keys( $subsets_available );
 
@@ -119,11 +112,7 @@ class Kirki_Fonts {
 		}
 
 		// Append the subset string
-		if ( ! empty( $subsets ) ) {
-
-			$request .= urlencode( '&subset=' . join( ',', $subsets ) );
-
-		}
+		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
 
 		return esc_url( $request );
 
@@ -168,7 +157,6 @@ class Kirki_Fonts {
 		if ( empty( $variants ) ) {
 
 			$fonts = self::get_google_fonts();
-
 			if ( array_key_exists( $font, $fonts ) ) {
 				$variants = $fonts[ $font ]['variants'];
 			}
@@ -177,27 +165,19 @@ class Kirki_Fonts {
 
 		// If a "regular" variant is not found, get the first variant
 		if ( ! in_array( 'regular', $variants ) ) {
-
 			$chosen_variants[] = $variants[0];
-
 		} else {
-
 			$chosen_variants[] = 'regular';
-
 		}
 
 		// Only add "italic" if it exists
 		if ( in_array( 'italic', $variants ) ) {
-
 			$chosen_variants[] = 'italic';
-
 		}
 
 		// Only add "700" if it exists
 		if ( in_array( '700', $variants ) ) {
-
 			$chosen_variants[] = '700';
-
 		}
 
 		return apply_filters( 'kirki/font/variants', array_unique( $chosen_variants ), $font, $variants );
