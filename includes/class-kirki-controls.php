@@ -143,26 +143,26 @@ class Kirki_Controls {
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_color',
 				'priority'    => $control['priority'],
-				'description' => $control['description'],
-				'subtitle'    => __( 'Background Color', 'kirki' ),
+				'help'        => $control['help'],
+				'description' => __( 'Background Color', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) ) );
 
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control['settings'] . '_image', array(
-				'label'       => null,
+				'label'       => '',
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_image',
 				'priority'    => $control['priority'] + 1,
-				'description' => null,
-				'subtitle'    => __( 'Background Image', 'kirki' ),
+				'help'        => '',
+				'description' => __( 'Background Image', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) ) );
 
 			$wp_customize->add_control( $control['settings'] . '_repeat', array(
 				'type'        => 'select',
-				'label'       => null,
+				'label'       => '',
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_repeat',
 				'priority'    => $control['priority'] + 2,
@@ -173,15 +173,15 @@ class Kirki_Controls {
 					'repeat-y'  => __( 'Repeat Vertically', 'kirki' ),
 					'inherit'   => __( 'Inherit', 'kirki' )
 				),
-				'description' => null,
-				'subtitle'    => __( 'Background Repeat', 'kirki' ),
+				'help'        => '',
+				'description' => __( 'Background Repeat', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) );
 
 			$wp_customize->add_control( $control['settings'] . '_size', array(
 				'type'        => 'radio',
-				'label'       => null,
+				'label'       => '',
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_size',
 				'priority'    => $control['priority'] + 3,
@@ -190,15 +190,15 @@ class Kirki_Controls {
 					'cover'   => __( 'Cover', 'kirki' ),
 					'contain' => __( 'Contain', 'kirki' ),
 				),
-				'description' => null,
+				'help'        => '',
 				'mode'        => 'buttonset',
-				'subtitle'    => __( 'Background Size', 'kirki' ),
+				'description' => __( 'Background Size', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) );
 
 			$wp_customize->add_control( $control['settings'] . '_attach', array(
-				'label'       => null,
+				'label'       => '',
 				'type'        => 'radio',
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_attach',
@@ -208,16 +208,16 @@ class Kirki_Controls {
 					'fixed'   => __( 'Fixed', 'kirki' ),
 					'scroll'  => __( 'Scroll', 'kirki' ),
 				),
-				'description' => null,
+				'help'        => '',
 				'mode'        => 'buttonset',
-				'subtitle'    => __( 'Background Attachment', 'kirki' ),
+				'description' => __( 'Background Attachment', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) );
 
 			$wp_customize->add_control( $control['settings'] . '_position', array(
 				'type'        => 'select',
-				'label'       => null,
+				'label'       => '',
 				'section'     => $control['section'],
 				'settings'    => $control['settings'] . '_position',
 				'priority'    => $control['priority'] + 5,
@@ -232,15 +232,15 @@ class Kirki_Controls {
 					'center-center' => __( 'Center Center', 'kirki' ),
 					'center-bottom' => __( 'Center Bottom', 'kirki' ),
 				),
-				'description' => null,
-				'subtitle'    => __( 'Background Position', 'kirki' ),
+				'help'        => '',
+				'description' => __( 'Background Position', 'kirki' ),
 				'required'    => $control['required'],
 				'transport'   => $control['transport']
 			) );
 
 			if ( false != $control['default']['opacity'] ) {
 				$wp_customize->add_control( new Kirki_Customize_Slider_Control( $wp_customize, $control['settings'] . '_opacity', array(
-					'label'       => null,
+					'label'       => '',
 					'section'     => $control['section'],
 					'settings'    => $control['settings'] . '_opacity',
 					'priority'    => $control['priority'] + 6,
@@ -249,8 +249,8 @@ class Kirki_Controls {
 						'max'     => 100,
 						'step'    => 1,
 					),
-					'description' => null,
-					'subtitle'    => __( 'Background Opacity', 'kirki' ),
+					'help'        => '',
+					'description' => __( 'Background Opacity', 'kirki' ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );
