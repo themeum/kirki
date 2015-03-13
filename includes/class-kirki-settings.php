@@ -10,56 +10,67 @@ class Kirki_Settings extends Kirki {
 
 		if ( 'background' == $control['type'] ) {
 
-			$wp_customize->add_setting( $control['setting'] . '_color', array(
-				'default'           => $control['default']['color'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'sanitize_hex_color'
-			) );
+			if ( isset( $control['default']['color'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_color', array(
+					'default'           => $control['default']['color'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'sanitize_hex_color'
+				) );
+			}
 
-			$wp_customize->add_setting( $control['setting'] . '_image', array(
-				'default'           => $control['default']['image'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'esc_url_raw'
-			) );
+			if ( isset( $control['default']['image'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_image', array(
+					'default'           => $control['default']['image'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'esc_url_raw'
+				) );
+			}
 
-			$wp_customize->add_setting( $control['setting'] . '_repeat', array(
-				'default'           => $control['default']['repeat'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_repeat' ),
-			) );
+			if ( isset( $control['default']['repeat'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_repeat', array(
+					'default'           => $control['default']['repeat'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_repeat' ),
+				) );
+			}
 
-			$wp_customize->add_setting( $control['setting'] . '_size', array(
-				'default'           => $control['default']['size'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_size' ),
-			) );
+			if ( isset( $control['default']['size'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_size', array(
+					'default'           => $control['default']['size'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_size' ),
+				) );
+			}
 
-			$wp_customize->add_setting( $control['setting'] . '_attach', array(
-				'default'           => $control['default']['attach'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_attach' ),
-			) );
+			if ( isset( $control['default']['attach'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_attach', array(
+					'default'           => $control['default']['attach'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_attach' ),
+				) );
+			}
 
-			$wp_customize->add_setting( $control['setting'] . '_position', array(
-				'default'           => $control['default']['position'],
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-				'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_position' ),
-			) );
+			if ( isset( $control['default']['position'] ) ) {
+				$wp_customize->add_setting( $control['setting'] . '_position', array(
+					'default'           => $control['default']['position'],
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_position' ),
+				) );
+			}
 
-			if ( false != $control['default']['opacity'] ) {
-
+			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
 				$wp_customize->add_setting( $control['setting'] . '_opacity', array(
 					'default'           => $control['default']['opacity'],
 					'type'              => 'theme_mod',

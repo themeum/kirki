@@ -82,32 +82,52 @@ class Kirki_Style {
 		// Background Controls
 		elseif ( 'background' == $control['type'] ) {
 
-			$bg_color    = Kirki_Color::sanitize_hex( get_theme_mod( $control['setting'] . '_color', $control['default']['color'] ) );
-			$bg_image    = get_theme_mod( $control['setting'] . '_image', $control['default']['image'] );
-			$bg_repeat   = get_theme_mod( $control['setting'] . '_repeat', $control['default']['repeat'] );
-			$bg_size     = get_theme_mod( $control['setting'] . '_size', $control['default']['size'] );
-			$bg_attach   = get_theme_mod( $control['setting'] . '_attach', $control['default']['attach'] );
-			$bg_position = get_theme_mod( $control['setting'] . '_position', $control['default']['position'] );
-			$bg_opacity  = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
-
-			if ( false != $control['default']['opacity'] ) {
-
+			if ( isset( $control['default']['color'] ) ) {
+				$bg_color = Kirki_Color::sanitize_hex( get_theme_mod( $control['setting'] . '_color', $control['default']['color'] ) );
+			}
+			if ( isset( $control['default']['image'] ) ) {
+				$bg_image = get_theme_mod( $control['setting'] . '_image', $control['default']['image'] );
+			}
+			if ( isset( $control['default']['repeat'] ) ) {
+				$bg_repeat = get_theme_mod( $control['setting'] . '_repeat', $control['default']['repeat'] );
+			}
+			if ( isset( $control['default']['size'] ) ) {
+				$bg_size = get_theme_mod( $control['setting'] . '_size', $control['default']['size'] );
+			}
+			if ( isset( $control['default']['attach'] ) ) {
+				$bg_attach = get_theme_mod( $control['setting'] . '_attach', $control['default']['attach'] );
+			}
+			if ( isset( $control['default']['position'] ) ) {
+				$bg_position = get_theme_mod( $control['setting'] . '_position', $control['default']['position'] );
+			}
+			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
 				$bg_opacity = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
-
-				// If we're using an opacity other than 100, then convert the color to RGBA.
-				if ( 100 != $bg_opacity ) {
-					$bg_color = Kirki_Color::get_rgba( $bg_color, $bg_opacity );
+				if ( isset( $bg_color ) ) {
+					// If we're using an opacity other than 100, then convert the color to RGBA.
+					$bg_color = ( 100 != $bg_opacity ) ? Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;
+				} elseif ( isset( $bg_image ) ) {
+					$element_opacity = ( $bg_opacity / 100 );
 				}
 
 			}
 
-			$styles[$element]['background-color'] = $bg_color;
-			if ( '' != $bg_image ) {
-				$styles[$element]['background-image']      = 'url("' . $bg_image . '")';
-				$styles[$element]['background-repeat']     = $bg_repeat;
-				$styles[$element]['background-size']       = $bg_size;
-				$styles[$element]['background-attachment'] = $bg_attach;
-				$styles[$element]['background-position']   = str_replace( '-', ' ', $bg_position );
+			if ( isset( $bg_color ) ) {
+				$styles[$element]['background-color'] = $bg_color;
+			}
+			if ( isset( $bg_image ) && '' != $bg_image ) {
+				$styles[$element]['background-image'] = 'url("' . $bg_image . '")';
+				if ( isset( $bg_repeat ) ) {
+					$styles[$element]['background-repeat'] = $bg_repeat;
+				}
+				if ( isset( $bg_size ) ) {
+					$styles[$element]['background-size'] = $bg_size;
+				}
+				if ( isset( $bg_attach ) ) {
+					$styles[$element]['background-attachment'] = $bg_attach;
+				}
+				if ( isset( $bg_position ) ) {
+					$styles[$element]['background-position'] = str_replace( '-', ' ', $bg_position );
+				}
 			}
 
 		}
