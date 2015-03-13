@@ -329,7 +329,7 @@ class Kirki_Scripts {
 
 			$control = Kirki_Controls::control_clean( $control );
 
-			if ( isset( $control['help'] ) ) {
+			if ( ! empty( $control['help'] ) ) {
 				$bubble_content = $control['help'];
 				$content = "<a href='#' class='button tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'>?</a>";
 				$scripts[] = '$( "' . $content . '" ).appendTo( "#customize-control-' . $control['settings'] . '" );';

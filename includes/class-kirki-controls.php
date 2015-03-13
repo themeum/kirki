@@ -21,7 +21,7 @@ class Kirki_Controls {
 		$control['description'] = isset( $control['description'] ) ? $control['description'] : '';
 		$control['help'] = isset( $control['help'] ) ? $control['help'] : '';
 
-		$control['label']       = isset( $control['label'] ) ? $control['label'] : '';
+		$control['label'] = isset( $control['label'] ) ? $control['label'] : '';
 
 		/**
 		 * Compatibility tweak
