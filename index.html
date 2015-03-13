@@ -41,8 +41,9 @@
 					<a id="menu-close" href="#" class="btn btn-links btn-lg toggle"><i class="fa fa-times fa-lg"></i></a>
 					<li><a href="#hero">Home</a></li>
 					<li><a href="#features">Features</a></li>
+					<li><a href="#panels-sections">Adding Panels & Sections</a></li>
+					<li><a href="#fields">Adding Fields</a></li>
 					<li><a href="#configuration">Configuration</a></li>
-					<li><a href="#fields">Fields</a></li>
 					<li><a href="#output">Automatic CSS</a></li>
 					<li><a href="#download">Download</a></li>
 				</ul>
@@ -173,6 +174,94 @@
 			</section>
 			<!-- End features -->
 
+			<br>
+			<hr>
+			<br>
+
+			<!-- Panels & Sections -->
+			<section id="panels-sections">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="text">
+								<h1 style="text-align: center;">Panels & Sections</h1>
+								<p class="lead" style="text-align: center;">Use the WordPress Customizer API</p>
+								<p>Defining panels and sections for the Customizer is pretty easy using the WordPress Customizer API!</p>
+								<p>If you need assistance with these then please read <a href="https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/#customizer-panels">this post on make.wordpress.org</a> and the <a href="http://codex.wordpress.org/Theme_Customization_API">WordPress Codex</a>.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<br>
+			<hr>
+			<br>
+
+			<!-- fields -->
+			<section id="fields">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="overview">
+								<h1>Adding Fields ( aka customizer controls)</h1>
+								<p class="lead">Learn more about the available controls and how to create them.</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+						<strong>Kirki</strong> allows you to add these fields on your customizer:
+						<ul>
+							<li>Radio-Buttonset</li>
+							<li>Radio-Image</li>
+							<li>Radio</li>
+							<li>Checkbox</li>
+							<li>Color</li>
+							<li>Dropdown Pages</li>
+							<li>Image</li>
+							<li>Background</li>
+							<li>Multicheck</li>
+							<li>Select</li>
+							<li>Slider</li>
+							<li>Text</li>
+							<li>Textarea</li>
+							<li>Upload</li>
+							<li>Switch</li>
+							<li>Toggle</li>
+							<li>Sortable</li>
+							<li>Number</li>
+						</ul>
+
+						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
+						The WordPress Customizer is as simple as it can get when it comes to creating fields. For example in order to create a text fields using the customizer you would write something like this:
+						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
+
+						With Kirki however, now you can write the same thing like this:<br><br>
+						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
+
+						Note that instead of 1 function, we now require 2 functions:
+						<ul>
+							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
+							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
+						</ul>
+						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>Kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
+
+						<h2>Additional Options</h2>
+
+						<p>In the example above, we created a simple text field that has a label and the text input itself. In some cases, you might want to add some more info to that field and provide additional information so that your users know exactly what your field does and how to use it.</p>
+						<p>For that reason, we've added some additional arguments you can use: <code>subtitle</code> and <code>description</code>. Example:
+						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
+
+					</div>
+				</div>
+			</section>
+			<!-- End fields -->
+
+			<br>
+			<hr>
+			<br>
+
 			<!-- Configuration -->
 			<section id="configuration">
 				<div class="container">
@@ -208,427 +297,9 @@
 			</section>
 			<!-- End Configuration -->
 
-			<!-- fields -->
-			<section id="fields">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="overview">
-								<h1>Kirki Fields</h1>
-								<p class="lead">Learn more about the available controls and how to create them.</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-						<strong>Kirki</strong> allows you to add these fields on your customizer:
-						<br>
-
-						<a class="label label-info" href="#buttonset">Buttonset</a>
-						<a class="label label-info" href="#checkbox">Checkbox</a>
-						<a class="label label-info" href="#color">Color</a>
-						<a class="label label-info" href="#image">Image</a>
-						<a class="label label-info" href="#background">Background</a>
-						<a class="label label-info" href="#imageradio">Image Radio</a>
-						<a class="label label-info" href="#multicheck">Multicheck</a>
-						<a class="label label-info" href="#radio">Radio</a>
-						<a class="label label-info" href="#select">Select</a>
-						<a class="label label-info" href="#slider">Slider</a>
-						<a class="label label-info" href="#text">Text</a>
-						<a class="label label-info" href="#textarea">Textarea</a>
-						<a class="label label-info" href="#upload">Upload</a>
-
-						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
-						The WordPress Customizer is as simple as it can get when it comes to creating fields. For example in order to create a text fields using the customizer you would write something like this:
-						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
-
-						With Kirki however, now you can write the same thing like this:<br><br>
-						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
-
-						Note that instead of 1 function, we now require 2 functions:
-						<ul>
-							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
-							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
-						</ul>
-						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>Kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
-
-						<h2>Additional Options</h2>
-
-						<p>In the example above, we created a simple text field that has a label and the text input itself. In some cases, you might want to add some more info to that field and provide additional information so that your users know exactly what your field does and how to use it.</p>
-						<p>For that reason, we've added some additional arguments you can use: <code>subtitle</code> and <code>description</code>. Example:
-						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
-
-<h3 id="buttonset">Adding a <strong>Buttonset</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'radio',
-	'mode'     => 'buttonset',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 'option_1',
-	'priority' => 1,
-	'choices'  => array(
-		'option_1' => __( 'Option 1', 'textdomain' ),
-		'option_2' => __( 'Option 2', 'textdomain' ),
-		'option_3' => __( 'Option 3', 'textdomain' ),
-		'option_4' => __( 'Option 4', 'textdomain' ),
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/buttonset.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="checkbox">Adding a <strong>Checkbox</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'checkbox',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 0,
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/checkbox.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="color">Adding a <strong>Color</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'color',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => '#1abc9c',
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/color.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="image">Adding an <strong>Image</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'image',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => '',
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/image.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-
-<h3 id="background">Adding an <strong>Background</strong> control:</h3>
-The <code>background</code> control is a bit more complicated that others:
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'         => 'background',
-	'setting'      => 'my_setting',
-	'label'        => __( 'My Setting', 'textdomain' ),
-	'description'  =>   __( 'Background Color', 'textdomain' ),
-	'section'      => 'my_section',
-	'default'      => array(
-		'color'    => '#ffffff',
-		'image'    => null,
-		'repeat'   => 'repeat',
-		'size'     => 'inherit',
-		'attach'   => 'inherit',
-		'position' => 'left-top',
-		'opacity'  => 100,
-	),
-	'priority' => 3,
-	'output' => 'body',
-);
-</pre>
-
-What this actually does, is create 7 other settings and controls:
-<ul>
-	<li><code>my_setting_color</code> (color)</li>
-	<li><code>my_setting_image</code> (image upload)</li>
-	<li><code>my_setting_repeat</code> (dropdown)</li>
-	<li><code>my_setting_size</code> (buttonset)</li>
-	<li><code>my_setting_attach</code> (buttonset)</li>
-	<li><code>my_setting_position</code> (dropdown)</li>
-	<li><code>my_setting_opacity</code>(slider)</li>
-</ul>
-<p>The <code>my_setting</code> option is never created, and only serves as a prefix for the other options.</p>
-<p>if you want to disable opacity for your control, then you can simply set <code>'opacity' => false</code> in the defaults section.</p>
-<p>Since these are essentially 7 controls, each contron has its own priority. So when setting the prioritis for your controls, please make sure you leave enough room for all 7 of them.</p>
-<p>The background control also allows you to define if you want the CSS to be automatically generated and applied for you. If you want to enable this feature, then you can simply set <code>'output'</code> to the element whose background you want to control (in our above example, the <code>&#60;body&#62;</code> of our page).</p>
-<p>Please note that the generated CSS is then added to your site using the <a href="http://codex.wordpress.org/Function_Reference/wp_add_inline_style">wp_add_inline_style()</a> function, so in order for this to work you <strong>must</strong> first specify the <code>stylesheet_id</code> in the plugin's <a href="#configuration">configuration options</a>.
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/background.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-
-<h3 id="imageradio">Adding an <strong>Image Radio</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'radio',
-	'mode'     => 'image',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'priority' => 1,
-	'default'  => 1,
-	'choices'  => array(
-		0 => get_template_directory_uri() . '/lib/customizer/assets/images/1c.png',
-		1 => get_template_directory_uri() . '/lib/customizer/assets/images/2cr.png',
-		2 => get_template_directory_uri() . '/lib/customizer/assets/images/2cl.png',
-		3 => get_template_directory_uri() . '/lib/customizer/assets/images/3cl.png',
-		4 => get_template_directory_uri() . '/lib/customizer/assets/images/3cr.png',
-		5 => get_template_directory_uri() . '/lib/customizer/assets/images/3cm.png',
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/image-radio.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="multicheck">Adding a <strong>Multicheck</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'multicheck',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 'option_1',
-	'priority' => 1,
-	'choices'  => array(
-		'option_1' => __( 'Option 1', 'textdomain' ),
-		'option_2' => __( 'Option 2', 'textdomain' ),
-		'option_3' => __( 'Option 3', 'textdomain' ),
-		'option_4' => __( 'Option 4', 'textdomain' ),
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/multicheck.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="radio">Adding a <strong>Radio</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'radio',
-	'mode'     => 'radio',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 'option_1',
-	'priority' => 1,
-	'choices'  => array(
-		'option_1' => __( 'Option 1', 'textdomain' ),
-		'option_2' => __( 'Option 2', 'textdomain' ),
-		'option_3' => __( 'Option 3', 'textdomain' ),
-		'option_4' => __( 'Option 4', 'textdomain' ),
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/radio.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="select">Adding a <strong>Select</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'select',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 'option_1',
-	'priority' => 1,
-	'choices'  => array(
-		'option_1' => __( 'Option 1', 'textdomain' ),
-		'option_2' => __( 'Option 2', 'textdomain' ),
-		'option_3' => __( 'Option 3', 'textdomain' ),
-		'option_4' => __( 'Option 4', 'textdomain' ),
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/select.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="slider">Adding a <strong>Slider</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'slider',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 36,
-	'priority' => 1,
-	'choices'  => array(
-		'min'  => 1,
-		'max'  => 100,
-		'step' => 2,
-	),
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/slider.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="text">Adding a <strong>Text</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'text',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => __( 'Default text', 'textdomain' ),
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/text.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="textarea">Adding a <strong>Textarea</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'textarea',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => __( 'Default text', 'textdomain' ),
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/textarea.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-<h3 id="upload">Adding an <strong>Upload</strong> control:</h3>
-<div class="row">
-	<div class="col-md-9">
-<pre>
-$controls[] = array(
-	'type'     => 'upload',
-	'setting'  => 'my_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => '',
-	'priority' => 1,
-);
-</pre>
-	</div>
-	<div class="col-md-3 hidden-sm hidded-xs">
-		<img src="img/upload.png" class="field-preview-image">
-	</div>
-</div>
-<hr>
-
-							<p>All these options can be added to your theme (or plugin) and you can combine them to create complex structures.</p>
-
-							<h2>Field "required" argument</h2>
-							<p>Sometimes it is useful to hide a few of our fields until the user selects an option that "activates" them.</p>
-							<p>For example you might have sliders that control the width and height of your post featured images, but you don't want to show these settings until the user selects that they actually want to display featured images on their posts.</p>
-							<p>For that we've introduced the <code>required</code> argument.</p>
-							<p><strong>Notice</strong>: The element that triggers the fields to be hidden or shown at the moment can only be a buttonset field.</p>
-<h3>example:</h3>
-<pre>
-$controls[] = array(
-	'type'     => 'radio',
-	'mode'     => 'buttonset',
-	'setting'  => 'parent_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => 'option_1',
-	'priority' => 1,
-	'choices'  => array(
-		'option_1' => __( 'Option 1', 'textdomain' ),
-		'option_2' => __( 'Option 2', 'textdomain' ),
-		'option_3' => __( 'Option 3', 'textdomain' ),
-		'option_4' => __( 'Option 4', 'textdomain' ),
-	),
-);
-
-$controls[] = array(
-	'type'     => 'textarea',
-	'setting'  => 'child_setting',
-	'label'    => __( 'My Setting', 'textdomain' ),
-	'section'  => 'my_section',
-	'default'  => __( 'Default text', 'textdomain' ),
-	'priority' => 1,
-	'required' => array( 'parent_setting' => 'option_2' )
-);
-</pre>
-
-							<p>In the above example, the <code>child_setting</code> will be hidden unless the <code>parent_setting</code> is set to <code>option_2</code>.
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End fields -->
+			<br>
+			<hr>
+			<br>
 
 			<!-- Output -->
 			<section id="output">
@@ -661,6 +332,10 @@ $controls[] = array(
 			</section>
 			<!-- End Output -->
 
+			<br>
+			<hr>
+			<br>
+
 			<!-- Download -->
 			<section id="download">
 				<div class="container">
@@ -673,6 +348,10 @@ $controls[] = array(
 				</div>
 			</section>
 			<!-- End Download -->
+
+			<br>
+			<hr>
+			<br>
 
 			<!-- Footer -->
 			<footer>
