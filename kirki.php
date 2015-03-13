@@ -16,10 +16,14 @@ include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
  */
 if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
+
 	public $scripts;
 	public $styles;
+	public $controls;
 
-	function __construct() {
+	private static $instance;
+
+	protected function __construct() {
 
 		if ( ! defined( 'KIRKI_PATH' ) ) {
 			define( 'KIRKI_PATH', dirname( __FILE__ ) );
@@ -39,8 +43,9 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
-		$this->scripts = new Kirki_Scripts();
-		$this->styles  = new Kirki_Style();
+		$this->scripts  = Kirki_Scripts::get_instance();
+		$this->styles   = new Kirki_Style();
+		$this->controls = new Kirki_Controls();
 
 		add_action( 'customize_register', array( $this, 'include_customizer_controls' ), 1 );
 		add_action( 'customize_register', array( $this, 'customizer_builder' ), 99 );
@@ -48,26 +53,41 @@ class Kirki {
 
 	}
 
+	public static function get_instance() {
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+
 	/**
-	 * Include the necessary files
+	 * Include the necessary files for custom controls.
+	 * Default WP Controls are not included here because they are already being loaded from WP Core.
 	 */
 	function include_customizer_controls() {
 
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-customize-control.php' );
-
 		$controls = $this->get_controls();
 		foreach ( $controls as $control ) {
-			if ( 'background' != $control['type'] ) {
-				if ( 'group_title' == $control['type'] ) {
-					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
-				} else {
-					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-' . $control['type'] . '-control.php' );
-				}
-			} else {
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-color-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-image-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-select-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-control.php' );
+			if ( 'group_title' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
+			} elseif ( 'multicheck' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-multicheck-control.php' );
+			} elseif ( 'number' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-number-control.php' );
+			} elseif ( 'radio-buttonset' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'buttonset' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-buttonset-control.php' );
+			} elseif ( 'radio-image' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'image' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-image-control.php' );
+			} elseif ( 'slider' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+			} elseif ( 'sortable' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-sortable-control.php' );
+			} elseif ( 'switch' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'switch' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-switch-control.php' );
+			} elseif ( 'toggle' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'toggle' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
+			} elseif ( 'background' == $control['type'] ) {
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
 			}
 		}
@@ -81,7 +101,7 @@ class Kirki {
 
 		$controls = $this->get_controls();
 		$kirki_settings = new Kirki_Settings();
-		$kirki_controls = new Kirki_Controls();
+		$kirki_controls = $this->controls;
 
 		// Early exit if controls are not set or if they're empty
 		if ( ! isset( $controls ) || empty( $controls ) ) {
@@ -144,8 +164,54 @@ class Kirki {
 	}
 
 }
-
-global $kirki;
-$kirki = new Kirki();
-
 endif;
+
+if ( ! function_exists( 'Kirki' ) ) :
+function Kirki() {
+	return Kirki::get_instance();
+}
+endif;
+// Global for backwards compatibility.
+$GLOBALS['kirki'] = Kirki();
+global $kirki;
+
+
+/**
+ * A wrapper function for get_theme_mod.
+ *
+ * This will be a bit more generic and will future-proof the plugin
+ * in case we ever decide to switch to using options instead of theme mods.
+ *
+ * An additional benefit is that it also gets the default values
+ * without the need to manually define them like in get_theme_mod();
+ *
+ * It's recommended that you add the following to your theme/plugin before using this function:
+ *
+
+if ( ! function_exists( 'kirki_get_option' ) ) :
+function kirki_get_option( $option ) {
+	get_theme_mod( $option, '' );
+}
+endif;
+
+ *
+ * This will NOT get the right value, but at least no fatal errors will occur in case the plugin is not installed.
+ */
+function kirki_get_option( $option ) {
+
+	global $kirki;
+
+	$controls = $kirki->get_controls();
+	$value = '';
+
+	foreach ( $controls as $control ) {
+		$control = Kirki_Controls::control_clean( $control );
+		if ( $option == $setting ) {
+			$value = get_theme_mod( $control['settings'], $control['default'] );
+		}
+
+	}
+
+	return $value;
+
+}

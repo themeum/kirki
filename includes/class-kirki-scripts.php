@@ -2,7 +2,9 @@
 
 class Kirki_Scripts {
 
-	function __construct() {
+	private static $instance;
+
+	protected function __construct() {
 
 		$config = apply_filters( 'kirki/config', array() );
 		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
@@ -10,6 +12,7 @@ class Kirki_Scripts {
 		add_action( 'customize_controls_print_styles', array( $this, 'styles' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'googlefonts' ) );
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
+		add_action( 'customize_controls_print_footer_scripts', array( $this, 'help_bubble_script' ), 999 );
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
 		// TODO: This is not perfect under ANY circumstances.
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
@@ -17,6 +20,14 @@ class Kirki_Scripts {
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
 
+	}
+
+	public static function get_instance() {
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -61,7 +72,7 @@ class Kirki_Scripts {
 		global $kirki;
 		$config   = $kirki->get_config();
 		$controls = $kirki->get_controls();
-		
+
 		$kirki_url = isset( $options['url_path'] ) ? $options['url_path'] : KIRKI_URL;
 
 		foreach( $controls as $control ) {
@@ -304,17 +315,54 @@ class Kirki_Scripts {
 	}
 
 	/**
-	* Try to automatically generate the script necessary for postMessage to work.
-	* Something like this will have to be added to the control arguments:
-	*
-	* 'transport' => 'postMessage',
-	* 'js_vars'   => array(
-	* 		'element'  => 'body',
-	* 		'type'     => 'css',
-	* 		'property' => 'color',
-	* 	),
-	*
-	*/
+	 * Add the help bubble
+	 */
+	function help_bubble_script() {
+
+		global $kirki;
+		$controls = $kirki->get_controls();
+
+		$scripts = array();
+		$script  = '';
+
+		foreach ( $controls as $control ) {
+
+			$control = Kirki_Controls::control_clean( $control );
+
+			if ( ! empty( $control['help'] ) ) {
+				$bubble_content = $control['help'];
+				$content = "<a href='#' class='button tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'>?</a>";
+				$scripts[] = '$( "' . $content . '" ).appendTo( "#customize-control-' . $control['settings'] . '" );';
+			}
+
+		}
+
+		// No need to echo anything if the script is empty
+		if ( empty( $scripts ) ) {
+			return;
+		}
+
+		// Make sure we don't add any duplicates
+		$scripts = array_unique( $scripts );
+		// Convert array to string
+		$script = implode( '', $scripts );
+
+		echo '<script type="text/javascript">jQuery(document).ready(function( $ ) {' . $script . '});</script>';
+	}
+
+	/**
+	 * Try to automatically generate the script necessary for postMessage to work.
+	 * Something like this will have to be added to the control arguments:
+	 *
+
+	'transport' => 'postMessage',
+	'js_vars'   => array(
+			'element'  => 'body',
+			'type'     => 'css',
+			'property' => 'color',
+		),
+	 *
+	 */
 	function postmessage() {
 
 		global $kirki;

@@ -1,11 +1,8 @@
 <?php
 
-class Kirki_Customize_Sortable_Control extends Kirki_Customize_Control {
+class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 
-	public function __construct( $manager, $id, $args = array() ) {
-		$this->type = 'sortable';
-		parent::__construct( $manager, $id, $args );
-	}
+	public $type = 'sortable';
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -27,9 +24,10 @@ class Kirki_Customize_Sortable_Control extends Kirki_Customize_Control {
 		<label class='kirki-sortable'>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
-				<?php $this->description(); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 			</span>
-			<?php $this->subtitle(); ?>
 
 			<?php
 				$values = $this->value();
@@ -39,11 +37,11 @@ class Kirki_Customize_Sortable_Control extends Kirki_Customize_Control {
 				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
 			?>
 			<ul>
-				<?php foreach ( $values as $dummy => $value ) : ?>
+				<?php foreach ( $values as $key => $value ) : ?>
 					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
 				<?php endforeach; ?>
 				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $values ); ?>
-				<?php foreach ( $invisibleKeys as $dummy => $value ) : ?>
+				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
 					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
 				<?php endforeach; ?>
 			</ul>
