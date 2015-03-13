@@ -5,14 +5,11 @@
  * See https://github.com/gambitph/Titan-Framework/blob/v1.4.2/class-option-multicheck.php for more details.
  */
 
-class Kirki_Customize_Multicheck_Control extends Kirki_Customize_Control {
+class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
+
+	public $type = 'multicheck';
 
 	private static $firstLoad = true;
-
-	public function __construct( $manager, $id, $args = array() ) {
-		$this->type = 'multicheck';
-		parent::__construct( $manager, $id, $args );
-	}
 
 	// Since theme_mod cannot handle multichecks, we will do it with some JS
 	public function render_content() {
@@ -57,9 +54,10 @@ class Kirki_Customize_Multicheck_Control extends Kirki_Customize_Control {
 		<label class='tf-multicheck-container'>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
-				<?php $this->description(); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 			</span>
-			<?php $this->subtitle(); ?>
 			<?php
 			foreach ( $this->choices as $value => $label ) {
 				printf('<label for="%s"><input class="tf-multicheck" id="%s" type="checkbox" value="%s" %s/> %s</label><br>',

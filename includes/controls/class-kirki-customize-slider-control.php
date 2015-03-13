@@ -1,16 +1,12 @@
 <?php
 
-class Kirki_Customize_Slider_Control extends Kirki_Customize_Control {
+class Kirki_Customize_Slider_Control extends WP_Customize_Control {
 
-	public function __construct( $manager, $id, $args = array() ) {
-		$this->type = 'slider';
-		parent::__construct( $manager, $id, $args );
-	}
+	public $type = 'slider';
 
 	public function enqueue() {
-
+		wp_enqueue_script( 'jquery-ui' );
 		wp_enqueue_script( 'jquery-ui-slider' );
-
 	}
 
 	public function render_content() { ?>
@@ -18,9 +14,10 @@ class Kirki_Customize_Slider_Control extends Kirki_Customize_Control {
 
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
-				<?php $this->description(); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 			</span>
-			<?php $this->subtitle(); ?>
 
 			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 

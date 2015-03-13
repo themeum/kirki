@@ -49,25 +49,32 @@ class Kirki {
 	}
 
 	/**
-	 * Include the necessary files
+	 * Include the necessary files for custom controls.
+	 * Default WP Controls are not included here because they are already being loaded from WP Core.
 	 */
 	function include_customizer_controls() {
 
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-customize-control.php' );
-
 		$controls = $this->get_controls();
 		foreach ( $controls as $control ) {
-			if ( 'background' != $control['type'] ) {
-				if ( 'group_title' == $control['type'] ) {
-					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
-				} else {
-					include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-' . $control['type'] . '-control.php' );
-				}
-			} else {
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-color-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-image-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-select-control.php' );
-				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-control.php' );
+			if ( 'group_title' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
+			} elseif ( 'multicheck' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-multicheck-control.php' );
+			} elseif ( 'number' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-number-control.php' );
+			} elseif ( 'radio-buttonset' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'buttonset' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-buttonset-control.php' );
+			} elseif ( 'radio-image' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'image' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-image-control.php' );
+			} elseif ( 'slider' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+			} elseif ( 'sortable' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-sortable-control.php' );
+			} elseif ( 'switch' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'switch' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-switch-control.php' );
+			} elseif ( 'toggle' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'toggle' == $control['mode'] ) ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
+			} elseif ( 'background' == $control['type'] ) {
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
 			}
 		}
