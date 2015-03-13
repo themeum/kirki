@@ -37,11 +37,11 @@ class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
 			?>
 			<ul>
-				<?php foreach ( $values as $dummy => $value ) : ?>
+				<?php foreach ( $values as $key => $value ) : ?>
 					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
 				<?php endforeach; ?>
 				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $values ); ?>
-				<?php foreach ( $invisibleKeys as $dummy => $value ) : ?>
+				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
 					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
 				<?php endforeach; ?>
 			</ul>
