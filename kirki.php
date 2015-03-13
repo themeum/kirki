@@ -156,3 +156,44 @@ global $kirki;
 $kirki = new Kirki();
 
 endif;
+
+/**
+ * A wrapper function for get_theme_mod.
+ *
+ * This will be a bit more generic and will future-proof the plugin
+ * in case we ever decide to switch to using options instead of theme mods.
+ *
+ * An additional benefit is that it also gets the default values
+ * without the need to manually define them like in get_theme_mod();
+ *
+ * It's recommended that you add the following to your theme/plugin before using this function:
+ *
+
+if ( ! function_exists( 'kirki_get_option' ) ) :
+function kirki_get_option( $option ) {
+	get_theme_mod( $option, '' );
+}
+endif;
+
+ *
+ * This will NOT get the right value, but at least no fatal errors will occur in case the plugin is not installed.
+ */
+function kirki_get_option( $option ) {
+
+	global $kirki;
+
+	$controls = $kirki->get_controls();
+	$value = '';
+
+	foreach ( $controls as $control ) {
+		$setting = ( isset( $control['setting'] ) && ! isset( $control['settings'] ) ) ? $control['setting'] : $control['settings'];
+
+		if ( $option == $setting ) {
+			$value = get_theme_mod( $setting, $control['default'] );
+		}
+
+	}
+
+	return $value;
+
+}
