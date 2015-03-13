@@ -1,9 +1,9 @@
 <?php
 
 
-class Kirki_Controls extends Kirki {
+class Kirki_Controls {
 
-	function add_control( $wp_customize, $control ) {
+	public static function control_clean( $control ) {
 
 		/**
 		 * Compatibility tweak
@@ -18,6 +18,8 @@ class Kirki_Controls extends Kirki {
 			$control['help'] = ( isset( $control['description'] ) ) ? $control['description'] : '';
 			$control['description'] = $control['subtitle'];
 		}
+		$control['description'] = isset( $control['description'] ) ? $control['description'] : '';
+		$control['help'] = isset( $control['help'] ) ? $control['help'] : '';
 
 		$control['label']       = isset( $control['label'] ) ? $control['label'] : '';
 
@@ -30,7 +32,6 @@ class Kirki_Controls extends Kirki {
 			$control['settings'] = $control['setting'];
 		}
 
-		$control['description'] = isset( $control['description'] ) ? $control['description'] : null;
 		$control['required']    = isset( $control['required'] ) ? $control['required'] : array();
 		$control['transport']   = isset( $control['transport'] ) ? $control['transport'] : 'refresh';
 
@@ -42,6 +43,13 @@ class Kirki_Controls extends Kirki {
 			$control['default'] = maybe_serialize( $control['default'] );
 		}
 
+		return $control;
+
+	}
+
+	function add_control( $wp_customize, $control ) {
+
+		$control = self::control_clean( $control );
 
 		/**
 		 * Add our fields.
