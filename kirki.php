@@ -205,10 +205,9 @@ function kirki_get_option( $option ) {
 	$value = '';
 
 	foreach ( $controls as $control ) {
-		$setting = ( isset( $control['setting'] ) && ! isset( $control['settings'] ) ) ? $control['setting'] : $control['settings'];
-
+		$control = Kirki_Controls::control_clean( $control );
 		if ( $option == $setting ) {
-			$value = get_theme_mod( $setting, $control['default'] );
+			$value = get_theme_mod( $control['settings'], $control['default'] );
 		}
 
 	}
