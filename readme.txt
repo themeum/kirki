@@ -1,29 +1,34 @@
 === Kirki ===
 Contributors: aristath, fovoc
-Donate link: http://kirki.org
-Tags: customizer
+Tags: customizer, options famework, theme mods
+Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.6.2
+Stable tag: 0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Tired of all the bloated options frameworks? You can use the WordPress Customizer instead, and extend it using Kirki!
 
-== Description ==
 
+== Description ==
 Kirki allows developers to add advanced controls to their customizer as well as customize the way the customizer looks and feels.
+
+You can add beautiful options to your theme\'s customizer panel and allow your users to tweak any aspect of their theme. You\'ve got 18 control types that you can use ( 9 default + 9 custom-made ), styling options for the customizer, as well as automatic calculations for your styles using the `output` argument on your controls.
+
+Converting from the default customizer to the syntax used by Kirki will only take a few minutes and will save you a lot of time in the long run. P)
 
 The following controls are included:
 
-* Buttonset
+* Radio-Buttonset
+* Radio-Image
+* Radio
 * Checkbox
 * Color
+* Dropdown Pages
 * Image
 * Background
-* Image Radio
 * Multicheck
-* Radio
 * Select
 * Slider
 * Text
@@ -32,15 +37,37 @@ The following controls are included:
 * Switch
 * Toggle
 * Sortable
+* Number
 
 For documentation and examples on how to use these controls, please visit [kirki.org](http://kirki.org/#fields).
 
-In addition you can also automatically generate the CSS for a lot of controls and have it added to the head of your document without writing any custom functions and code for that. [Learn more about automatic output of CSS here](http://kirki.org/#output)
 
 == Installation ==
-
-Just install this plugin and activate it.
+From your dashboarad go to Plugins => Add New.
+Search for \"Kirki\" and install it.
+Once you isntall it, activate it.
 For configuration instructions please visit http://kirki.org/#configuration
+
+
+== Changelog ==
+== 0.7 - 2014-03-14, dev time: 10 hours ==
+* Fix: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
+* Fix: Background opacity affects background-position of bg image
+* Fix: font-weight not being applied on google fonts
+* New: Added `kirki_get_option( $setting );` function that also gets default values
+* Tweak: Singleton for main plugin class
+* Fix: Prevent empty help tooltips
+* New: Added `toggle` control
+* New: Added `switch` control
+* Fix: Color controls were not being reset to default:
+* Tweak: Tooltips now loaded via jQuery
+* Tweak: Renamed `setting` to settings for consistency with WordPress core
+* Tweak: Renamed `description` to `help` and `subtitle` to `description for consistency with WordPress core
+* Tweak: Backwards-compatibility improvements
+* New: Allow hiding background control elements by not including default values for them
+* Tweak: Performance improvements
+* Tweak: Using WordPress core controls instead of custom ones when those are available
+* Tweak: Separate logic for multiple-type controls that were using the "mode" argument. This has been deprecated in favor of completely separate control types.
 
 == 0.6.2 - 2014-03-02, dev time: 3 hours ==
 * Fix: Frontend styles were not properly enqueued (props @dmgawel)
@@ -48,7 +75,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Fix: Background control styles
 * Fix: Serialise default values for the sortable control. Now you can define default values as an array.
 * Fix: Required script
-* Fix: '_opacity' was added to a lot of controls by mistake. Removed it and wrote a migration script.
+* Fix: \'_opacity\' was added to a lot of controls by mistake. Removed it and wrote a migration script.
 
 == 0.6.1 - 2014-02-25, dev time: 1 hours ==
 * Fix: Sortables controls had a JS conflict
@@ -64,7 +91,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 * New: Only load control classes when they are needed
 * New: Introducing Kirki_Customize_Control class
 * Fix: CSS tweaks
-* New: Sortable control (creating one is identical to a select control, but with `'type' => 'sortable'`)
+* New: Sortable control (creating one is identical to a select control, but with `\'type\' => \'sortable\'`)
 * Fix: Double output CSS (props @agusmu)
 * New: Google fonts now parsed from a json file.
 
@@ -75,13 +102,13 @@ For configuration instructions please visit http://kirki.org/#configuration
 == 0.5 ==
 * New: Automatic output of styles for generic controls.
 * New: Automatic output of styles + scripts for fonts (including googlefonts )
-* New: The 'output' argument on background controls is now an array for consistency with other controls. Older syntax is still compatible though. :)
+* New: The \'output\' argument on background controls is now an array for consistency with other controls. Older syntax is still compatible though. :)
 * New: Add the ability to auto-generate styles for colors.
 * Fix: Add a blank stylesheet if we need one and no stylesheet_id has been defined in the config options.
 * Fix: CSS-only tooltips. Fixes issue with tooltips now showing up on WP >= 4.1
 * Fix: Code cleanups
-* New: Added support for WordPress's transport arguments
-* Fix: All controls now have a sanitization callback. Users can override the default sanitizations by adding their own 'sanitize_callback' argument.
+* New: Added support for WordPress\'s transport arguments
+* Fix: All controls now have a sanitization callback. Users can override the default sanitizations by adding their own \'sanitize_callback\' argument.
 * Fix: OOP rewrite
 * Fix: Strip protocol from Google API link
 * Fix: Loading order for some files
@@ -91,14 +118,14 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Fix: bugfix for selector
 * New: Change the Kirki theme based on which admin theme is selected.
 * Fix: Tranlsation domain issue
-* New: Added a "group_title" control
+* New: Added a \"group_title\" control
 * Fix: Updated the required script
 * Fix: Updating CSS
 * Other minor improvements and bugfixes
 
 = 0.3 =
 * new: added background field
-* new: added 'output' argument to directly output the CSS
+* new: added \'output\' argument to directly output the CSS
 
 = 0.2 =
 * Initial version
