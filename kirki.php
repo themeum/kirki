@@ -199,18 +199,22 @@ endif;
  */
 function kirki_get_option( $option ) {
 
-	global $kirki;
-
-	$controls = $kirki->get_controls();
-	$value = '';
+	// Get the array of controls
+	$controls = apply_filters( 'kirki/controls', array() );
 
 	foreach ( $controls as $control ) {
+		// Sanitize out control array and make sure we're using the right syntax
 		$control = Kirki_Controls::control_clean( $control );
+		$setting = $control['settings'];
+		// Get the theme_mod and pass the default value as well
 		if ( $option == $setting ) {
-			$value = get_theme_mod( $control['settings'], $control['default'] );
+			$value = get_theme_mod( $option, $control['default'] );
 		}
 
 	}
+
+	// If no value has been set, use get_theme_mod with an empty default.
+	$value = ( isset( $value ) ) ? get_theme_mod( '$option', '' );
 
 	return $value;
 
