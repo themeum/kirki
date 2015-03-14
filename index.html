@@ -44,7 +44,7 @@
 					<li><a href="#panels-sections">Adding Panels & Sections</a></li>
 					<li><a href="#fields">Adding Fields</a></li>
 					<li><a href="#configuration">Configuration</a></li>
-					<li><a href="#output">Automatic CSS</a></li>
+					<li><a href="#google-fonts">Google Fonts integration</a></li>
 					<li><a href="#download">Download</a></li>
 				</ul>
 			</div>
@@ -186,8 +186,8 @@
 							<div class="text">
 								<h1 style="text-align: center;">Panels & Sections</h1>
 								<p class="lead" style="text-align: center;">Use the WordPress Customizer API</p>
-								<p>Defining panels and sections for the Customizer is pretty easy using the WordPress Customizer API!</p>
-								<p>If you need assistance with these then please read <a href="https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/#customizer-panels">this post on make.wordpress.org</a> and the <a href="http://codex.wordpress.org/Theme_Customization_API">WordPress Codex</a>.</p>
+								<p style="text-align: center;">Defining panels and sections for the Customizer is pretty easy using the WordPress Customizer API!</p>
+								<p style="text-align: center;">If you need assistance with these then please read <a href="https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/#customizer-panels">this post on make.wordpress.org</a> and the <a href="http://codex.wordpress.org/Theme_Customization_API">WordPress Codex</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -210,6 +210,20 @@
 						</div>
 					</div>
 					<div class="row">
+
+						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
+						If you wanted to add a new text fields using the default WordPress Core functions you would write something like this:
+						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
+
+						With Kirki however, now you can write the same thing like this:<br><br>
+						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
+
+						Note that instead of 1 function, we now require 2 functions:
+						<ul>
+							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
+							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
+						</ul>
+						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>Kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
 						<div class="col-md-12">
 						<strong>Kirki</strong> allows you to add these fields on your customizer:
 						<ul>
@@ -233,25 +247,13 @@
 							<li>Number</li>
 						</ul>
 
-						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
-						The WordPress Customizer is as simple as it can get when it comes to creating fields. For example in order to create a text fields using the customizer you would write something like this:
-						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
-
-						With Kirki however, now you can write the same thing like this:<br><br>
-						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
-
-						Note that instead of 1 function, we now require 2 functions:
-						<ul>
-							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
-							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
-						</ul>
-						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>Kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
-
 						<h2>Additional Options</h2>
 
 						<p>In the example above, we created a simple text field that has a label and the text input itself. In some cases, you might want to add some more info to that field and provide additional information so that your users know exactly what your field does and how to use it.</p>
-						<p>For that reason, we've added some additional arguments you can use: <code>subtitle</code> and <code>description</code>. Example:
+						<p>For that reason, we've added some additional arguments you can use: <code>description</code> and <code>help</code>. Example:
 						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
+						<p>The full list of arguments a field can use is as follows:
+						<script src="https://gist.github.com/aristath/f278ce861e9c5327405d.js"></script>
 
 					</div>
 				</div>
@@ -301,29 +303,22 @@
 			<hr>
 			<br>
 
-			<!-- Output -->
-			<section id="output">
+			<!-- Google fonts -->
+			<section id="google-fonts">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Automatic CSS & Scripts generation.</h1>
+							<h1>Google Fonts integration</h1>
 							<div class="row">
-								<div class="col-md-6">
-<pre>
-'output' => array(
-	'element'  => 'body',
-	'property' => 'font-size',
-	'units'    => 'px',
-),
-</pre>
-								</div>
-								<div class="col-md-6">
-									<p>You can add an <code>output</code> argument to your controls and have the CSS automatically generated for you.</p>
-									<h4>Exceptions:</h4>
-									<p>Though the <code>output</code> argument will work on all controls, there are some things to keep in mind.</p>
-									<p>If this is a background control, the only thing you have to define is the element. <code>property</code> and <code>units</code> are not necessary.</p>
-									<p>If this is a color control, you don't need to define the <code>units</code>.</p>
-									<p>If this is a control for your <code>font-family</code> and you've selected a google font, then the google-font script will also be automatically generated and added to the <code>&#60;head&#62;</code> of your document.</p>
+								<div class="col-md-12">
+								<p>Kirki automatically integrates with Google Fonts.</p>
+								<p>Though we have not included specific controls for these, you are free to create <code>'select'</code> controls and on the <code>'choices'</code> use one of the following:</p>
+								<ul>
+									<li><code>Kirki_Fonts::get_font_choices()</code> gets the list of fonts</li>
+									<li><code>Kirki_Fonts::get_google_font_subsets()</code> gets the list of google font subsets</li>
+								</ul>
+								<p>This gives you the freedom to do whatever you want you them and manipulate them however you wish!</p>
+
 								</div>
 							</div>
 						</div>
