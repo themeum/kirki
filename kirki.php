@@ -200,7 +200,7 @@ endif;
 function kirki_get_option( $option ) {
 
 	// Get the array of controls
-	$controls = apply_filters( 'kirki/controls', array() );
+	$controls = Kirki()->get_controls();
 
 	foreach ( $controls as $control ) {
 		// Sanitize out control array and make sure we're using the right syntax
@@ -214,7 +214,7 @@ function kirki_get_option( $option ) {
 	}
 
 	// If no value has been set, use get_theme_mod with an empty default.
-	$value = ( isset( $value ) ) ? $value : get_theme_mod( '$option', '' );
+	$value = ( isset( $value ) ) ? $value : get_theme_mod( $option, '' );
 
 	return $value;
 
