@@ -107,8 +107,7 @@ class Kirki_Scripts {
 			<script>
 			jQuery(document).ready(function($) {
 				"use strict";
-
-				$( 'div#customize-info' ).replaceWith( '<div class="kirki-customizer"></div>' );
+				$( 'div#customize-info .preview-notice' ).replaceWith( '<img src="<?php echo $options['logo_image']; ?>">' );
 			});
 			</script>
 		<?php endif;
@@ -304,12 +303,6 @@ class Kirki_Scripts {
 		.press-this a.preview:hover {
 			background-color: <?php echo $color_accent; ?>;
 		}
-
-		<?php if ( isset( $options['logo_image'] ) ) : ?>
-			div.kirki-customizer {
-				background: url("<?php echo $options['logo_image']; ?>") no-repeat left center;
-			}
-		<?php endif; ?>
 		</style>
 		<?php
 	}
