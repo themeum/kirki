@@ -69,7 +69,9 @@ class Kirki_Style {
 
 	function styles( $control, $styles, $element, $property, $units ) {
 
-		$value = get_theme_mod( $control['setting'], $control['default'] );
+		$control = Kirki_Controls::control_clean( $control );
+
+		$value = get_theme_mod( $control['settings'], $control['default'] );
 
 		// Color controls
 		if ( 'color' == $control['type'] ) {
@@ -83,25 +85,25 @@ class Kirki_Style {
 		elseif ( 'background' == $control['type'] ) {
 
 			if ( isset( $control['default']['color'] ) ) {
-				$bg_color = Kirki_Color::sanitize_hex( get_theme_mod( $control['setting'] . '_color', $control['default']['color'] ) );
+				$bg_color = Kirki_Color::sanitize_hex( get_theme_mod( $control['settings'] . '_color', $control['default']['color'] ) );
 			}
 			if ( isset( $control['default']['image'] ) ) {
-				$bg_image = get_theme_mod( $control['setting'] . '_image', $control['default']['image'] );
+				$bg_image = get_theme_mod( $control['settings'] . '_image', $control['default']['image'] );
 			}
 			if ( isset( $control['default']['repeat'] ) ) {
-				$bg_repeat = get_theme_mod( $control['setting'] . '_repeat', $control['default']['repeat'] );
+				$bg_repeat = get_theme_mod( $control['settings'] . '_repeat', $control['default']['repeat'] );
 			}
 			if ( isset( $control['default']['size'] ) ) {
-				$bg_size = get_theme_mod( $control['setting'] . '_size', $control['default']['size'] );
+				$bg_size = get_theme_mod( $control['settings'] . '_size', $control['default']['size'] );
 			}
 			if ( isset( $control['default']['attach'] ) ) {
-				$bg_attach = get_theme_mod( $control['setting'] . '_attach', $control['default']['attach'] );
+				$bg_attach = get_theme_mod( $control['settings'] . '_attach', $control['default']['attach'] );
 			}
 			if ( isset( $control['default']['position'] ) ) {
-				$bg_position = get_theme_mod( $control['setting'] . '_position', $control['default']['position'] );
+				$bg_position = get_theme_mod( $control['settings'] . '_position', $control['default']['position'] );
 			}
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$bg_opacity = get_theme_mod( $control['setting'] . '_opacity', $control['default']['opacity'] );
+				$bg_opacity = get_theme_mod( $control['settings'] . '_opacity', $control['default']['opacity'] );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
 					$bg_color = ( 100 != $bg_opacity ) ? Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;

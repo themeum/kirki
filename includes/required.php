@@ -11,6 +11,8 @@ function kirki_required_script() {
 
 		foreach ( $controls as $control ) {
 
+			$control = Kirki_Controls::control_clean( $control );
+
 			if ( isset( $control['required'] ) && ! is_null( $control['required'] && is_array( $control['required'] ) ) ) {
 
 				foreach ( $control['required'] as $id => $value ) : ?>
@@ -19,24 +21,24 @@ function kirki_required_script() {
 						jQuery(document).ready(function($) {
 							<?php if ( isset( $id ) && isset( $value ) ) : ?>
 							 	<?php if ( $value == get_theme_mod( $id ) ) : ?>
-									$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeIn(300);
+									$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
 								<?php else : ?>
-									$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeOut(300);
+									$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
 								<?php endif; ?>
 							<?php endif; ?>
 
 							$( "#input_<?php echo $id; ?> input" ).each(function(){
 								$(this).click(function(){
 									if ( $(this).val() == "<?php echo $value; ?>" ) {
-										$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeIn(300);
+										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
 									} else {
-										$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeOut(300);
+										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
 									}
 								});
 								if ( $(this).val() == "<?php echo $value; ?>" ) {
-										$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeIn(300);
+										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
 									} else {
-										$( '[id="customize-control-<?php echo $control['setting']; ?>"]' ).fadeOut(300);
+										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
 									}
 							});
 						});

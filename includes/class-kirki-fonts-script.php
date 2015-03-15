@@ -27,8 +27,10 @@ class Kirki_Fonts_Script extends Kirki_Style {
 		$fonts = array();
 		foreach ( $controls as $control ) {
 
+			$control = Kirki_Controls::control_clean( $control );
+
 			// The value of this control
-			$value = get_theme_mod( $control['setting'], $control['default'] );
+			$value = get_theme_mod( $control['settings'], $control['default'] );
 
 			if ( isset( $control['output'] ) ) {
 

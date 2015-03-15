@@ -372,10 +372,12 @@ class Kirki_Scripts {
 
 		foreach ( $controls as $control ) {
 
+			$control = Kirki_Controls::control_clean( $control );
+
 			if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
 
 				$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
-				$script .= 'wp.customize("' . $control['setting'] . '",function( value ) {';
+				$script .= 'wp.customize("' . $control['settings'] . '",function( value ) {';
 
 				if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
 					$script .= 'value.bind(function(to) {';

@@ -8,10 +8,12 @@ class Kirki_Settings extends Kirki {
 	 */
 	function add_setting( $wp_customize, $control ) {
 
+		$control = Kirki_Controls::control_clean( $control );
+
 		if ( 'background' == $control['type'] ) {
 
 			if ( isset( $control['default']['color'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_color', array(
+				$wp_customize->add_setting( $control['settings'] . '_color', array(
 					'default'           => $control['default']['color'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -21,7 +23,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['image'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_image', array(
+				$wp_customize->add_setting( $control['settings'] . '_image', array(
 					'default'           => $control['default']['image'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -31,7 +33,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['repeat'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_repeat', array(
+				$wp_customize->add_setting( $control['settings'] . '_repeat', array(
 					'default'           => $control['default']['repeat'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -41,7 +43,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['size'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_size', array(
+				$wp_customize->add_setting( $control['settings'] . '_size', array(
 					'default'           => $control['default']['size'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -51,7 +53,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['attach'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_attach', array(
+				$wp_customize->add_setting( $control['settings'] . '_attach', array(
 					'default'           => $control['default']['attach'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -61,7 +63,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['position'] ) ) {
-				$wp_customize->add_setting( $control['setting'] . '_position', array(
+				$wp_customize->add_setting( $control['settings'] . '_position', array(
 					'default'           => $control['default']['position'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -71,7 +73,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$wp_customize->add_setting( $control['setting'] . '_opacity', array(
+				$wp_customize->add_setting( $control['settings'] . '_opacity', array(
 					'default'           => $control['default']['opacity'],
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
@@ -113,7 +115,7 @@ class Kirki_Settings extends Kirki {
 			}
 
 			// Add settings
-			$wp_customize->add_setting( $control['setting'], array(
+			$wp_customize->add_setting( $control['settings'], array(
 				'default'           => isset( $control['default'] ) ? $control['default'] : '',
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',

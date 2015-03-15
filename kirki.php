@@ -147,8 +147,10 @@ class Kirki {
 			$control_ids = array();
 			$controls = $this->get_controls();
 			foreach ( $controls as $control ) {
+				$control = Kirki_Controls::control_clean( $control );
+
 				if ( 'background' != $control['type'] ) {
-					$control_ids[] = $control['setting'];
+					$control_ids[] = $control['settings'];
 				}
 			}
 			foreach ( $control_ids as $control_id ) {
