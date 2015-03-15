@@ -103,13 +103,15 @@ class Kirki_Scripts {
 
 		$options = apply_filters( 'kirki/config', array() ); ?>
 
-		<?php if ( isset( $options['logo_image'] ) ) : ?>
-			<script>
-			jQuery(document).ready(function($) {
-				"use strict";
-				$( 'div#customize-info .preview-notice' ).replaceWith( '<img src="<?php echo $options['logo_image']; ?>">' );
-			});
-			</script>
+		<?php if ( isset( $options['logo_image'] ) || isset( $options['description'] ) ) : ?>
+			<script>jQuery(document).ready(function($) { "use strict";
+				<?php if ( isset( $options['logo_image'] ) ) : ?>
+					$( 'div#customize-info .preview-notice' ).replaceWith( '<img src="<?php echo $options['logo_image']; ?>">' );
+				<?php endif; ?>
+				<?php if ( isset( $options['description'] ) ) : ?>
+					$( 'div#customize-info .accordion-section-content' ).replaceWith( '<div class="accordion-section-content"><div class="theme-description"><?php echo $options['description']; ?></div></div>' );
+				<?php endif; ?>
+			});</script>
 		<?php endif;
 
 	}
