@@ -5,7 +5,7 @@ Plugin URI:    http://kirki.org
 Description:   An options framework using and extending the WordPress Customizer
 Author:        Aristeides Stathopoulos
 Author URI:    http://press.codes
-Version:       0.7
+Version:       0.7.1
 */
 
 // Load Kirki_Fonts before everything else
@@ -16,6 +16,8 @@ include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
  */
 if ( ! class_exists( 'Kirki' ) ) :
 class Kirki {
+
+	public $version = '0.7.1';
 
 	public $scripts;
 	public $styles;
@@ -141,9 +143,14 @@ class Kirki {
 
 	function update() {
 
+		$version = get_option( 'kirki_version' );
+		$version = ( ! $version ) ? '0' : $version;
 		// < 0.6.1 -> 0.6.2
 		if ( ! get_option( 'kirki_version' ) ) {
-
+			/**
+			 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
+			 * This will fix the wrong settings naming and save new settings.
+			 */
 			$control_ids = array();
 			$controls = $this->get_controls();
 			foreach ( $controls as $control ) {
@@ -159,8 +166,10 @@ class Kirki {
 				}
 			}
 
-			update_option( 'kirki_version', '0.6.2' );
+		}
 
+		if ( version_compare( $this->version, $version ) ) {
+			update_option( 'kirki_version', $this->version );
 		}
 
 	}

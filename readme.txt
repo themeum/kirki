@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.7
+Stable tag: 0.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,13 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 
 == Changelog ==
+
+== 0.7.1 - 2014-03-15, dev time 2 hours ==
+* Removed: Remove the `kirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
+* Fix: Undefined index notice when a default value for the control was not defined
+* Tweak: `logo_image` now injects an `img` element instead of a `div` with custom background
+* New: Added `description` argument in the kirki configuration (replaces the theme description)
+
 == 0.7 - 2014-03-14, dev time: 10 hours ==
 * Fix: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
 * Fix: Background opacity affects background-position of bg image
