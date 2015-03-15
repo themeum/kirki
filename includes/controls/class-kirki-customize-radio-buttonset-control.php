@@ -24,7 +24,7 @@ class Kirki_Customize_Radio_Buttonset_Control extends WP_Customize_Control {
 			<?php endif; ?>
 		</span>
 
-		<div id="input_<?php echo $this->id; ?>" class="<?php echo $this->mode; ?>">
+		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
 				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
 					<label for="<?php echo $this->id . $value; ?>">
