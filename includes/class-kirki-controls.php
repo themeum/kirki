@@ -6,6 +6,13 @@ class Kirki_Controls {
 	public static function control_clean( $control ) {
 
 		/**
+		 * If ['default'] is not set, set an empty value
+		 */
+		if ( ! isset( $control['default'] ) ) {
+			$control['default'] = '';
+		}
+
+		/**
 		 * Compatibility tweak
 		 *
 		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
