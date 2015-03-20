@@ -10,6 +10,8 @@ Version:       0.7.1
 
 // Load Kirki_Fonts before everything else
 include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-color.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-colourlovers.php' );
 
 /**
  * The main Kirki class
@@ -40,7 +42,6 @@ class Kirki {
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-style.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-scripts.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-fonts-script.php' );
-		include_once( dirname( __FILE__ ) . '/includes/class-kirki-color.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-settings.php' );
 		include_once( dirname( __FILE__ ) . '/includes/class-kirki-controls.php' );
 		include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
@@ -176,6 +177,16 @@ class Kirki {
 			update_option( 'kirki_version', $this->version );
 		}
 
+	}
+
+	/**
+	 * Helper function
+	 *
+	 * removes an item from an array
+	 */
+	public static function array_delete( $idx, $array ) {
+		unset( $array[$idx] );
+		return ( is_array( $array ) ) ? array_values( $array ) : null;
 	}
 
 }
