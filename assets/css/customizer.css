@@ -275,3 +275,37 @@ body.IE7 .Switch.Round { width: 1px; }
 .switch-info {
   /*float: left;*/
 }
+
+.customize-control-palette label.ui-button.ui-widget {
+  width: 95%;
+  background: none;
+  padding: 0;
+  margin-bottom: 5px;
+  border: none;
+}
+
+.customize-control-palette label.ui-button .ui-button-text {
+  display: flex;
+}
+
+.customize-control-palette label.ui-button .ui-button-text span {
+  padding: 10px;
+  flex-grow: 1;
+  font-size: 0px;
+  line-height: 10px;
+  color: rgba(0,0,0,0);
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.customize-control-palette label.ui-button .ui-button-text span:hover {
+  padding: 10px;
+  flex-grow: 3;
+  min-width: 60px;
+  font-size: 10px;
+  line-height: 10px;
+  color: #000;
+}
