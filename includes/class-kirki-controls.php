@@ -139,6 +139,11 @@ class Kirki_Controls {
 			$wp_customize->add_control( new Kirki_Customize_Group_Title_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
+		// Custom Control
+		elseif ( 'custom' == $control['type'] ) {
+			$wp_customize->add_control( new Kirki_Customize_Custom_Control( $wp_customize, $control['settings'], $control ) );
+		}
+
 		// Background Controls
 		elseif ( 'background' == $control['type'] ) {
 			/**

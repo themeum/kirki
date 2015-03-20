@@ -91,6 +91,8 @@ class Kirki {
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
 			} elseif ( 'background' == $control['type'] ) {
 				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+			} elseif ( 'custom' == $control['type'] ) {
+				include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-custom-control.php' );
 			}
 		}
 
