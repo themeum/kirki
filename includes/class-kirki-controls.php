@@ -66,12 +66,12 @@ class Kirki_Controls {
 
 		// Color controls
 		if ( 'color' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control['settings'] . '_color', $control ) );
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Image Controls
 		elseif ( 'image' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control['settings'] . '_color', $control ) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Text, Dropdown Pages, Textarea and Select controls
