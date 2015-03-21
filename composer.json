@@ -1,0 +1,22 @@
+{
+    "name": "aristath/kirki",
+    "type": "library",
+    "description": "Extending the WordPress customizer",
+    "homepage": "http://kirki.org",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name" : "aristath",
+            "email" : "",
+            "homepage" : ""
+        },
+        {
+            "name" : "fovoc",
+            "email" : "",
+            "homepage" : ""
+        }
+    ],
+    "require": {
+        "php": ">=5.2"
+    }
+}
