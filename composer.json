@@ -7,16 +7,16 @@
     "authors": [
         {
             "name" : "aristath",
-            "email" : "",
-            "homepage" : ""
+            "email" : "aristath@gmail.com",
+            "homepage" : "aristeides.com"
         },
         {
             "name" : "fovoc",
-            "email" : "",
-            "homepage" : ""
+            "email" : "kalliris.d@gmail.com",
+            "homepage" : "https://github.com/fovoc"
         }
     ],
     "require": {
-        "php": ">=5.2"
+        "php": ">=5.3"
     }
 }
