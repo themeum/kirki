@@ -16,10 +16,13 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 }
 
 // Load Kirki_Fonts before everything else
-include_once( KIRKI_PATH . '/includes/class-kirki-fonts.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-color.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-colourlovers.php' );
+include_once( KIRKI_PATH . '/includes/libraries/class-kirki-fonts.php' );
+include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
+include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
+
+include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
+include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
 
 class Kirki {
 
@@ -32,57 +35,6 @@ class Kirki_Controls extends Kirki {
 class Kirki_Settings extends Kirki {
 
 }
-
-class Kirki_Customizer_Scripts extends Kirki {
-
-	function __contstruct() {
-		add_action( 'customize_controls_print_footer_scripts', 'kirki_customizer_postmessage', 21 );
-	}
-	/**
-	 * Try to automatically generate the script necessary for postMessage to work.
-	 * Something like this will have to be added to the control arguments:
-	 *
-
-	'transport' => 'postMessage',
-	'js_vars'   => array(
-			'element'  => 'body',
-			'type'     => 'css',
-			'property' => 'color',
-		),
-	 *
-	 */
-	function kirki_customizer_postmessage() {
-
-		$controls = kirki_get_controls();
-
-		$script = '';
-
-		foreach ( $controls as $control ) {
-
-			if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
-
-				$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
-				$script .= 'wp.customize("' . $control['settings'] . '",function( value ) {';
-
-				if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
-					$script .= 'value.bind(function(to) {';
-					$script .= '$("' . $control['js_vars']['element'] . '").css("' . $control['js_vars']['property'] . '", to ? to : "" );';
-					$script .= '});';
-				}
-
-				$script .= '});});</script>';
-
-			}
-
-		}
-
-		echo $script;
-
-	}
-
-}
-
-$kirki_customizer_scripts = new Kirki_Customizer_Scripts();
 
 class Kirki_Customizer_Styles extends Kirki {
 
@@ -1341,37 +1293,3 @@ function kirki_customizer_custom_css() {
 	<?php
 }
 add_action( 'customize_controls_print_styles', 'kirki_customizer_custom_css', 999 );
-
-/**
- * Add the help bubble
- */
-function kirki_customizer_help_bubble_script() {
-
-	$controls = kirki_get_controls();
-
-	$scripts = array();
-	$script  = '';
-
-	foreach ( $controls as $control ) {
-
-		if ( ! empty( $control['help'] ) ) {
-			$bubble_content = $control['help'];
-			$content = "<a href='#' class='button tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'>?</a>";
-			$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $control['settings'] . '" );';
-		}
-
-	}
-
-	// No need to echo anything if the script is empty
-	if ( empty( $scripts ) ) {
-		return;
-	}
-
-	// Make sure we don't add any duplicates
-	$scripts = array_unique( $scripts );
-	// Convert array to string
-	$script = implode( '', $scripts );
-
-	echo '<script type="text/javascript">jQuery(document).ready(function( $ ) {' . $script . '});</script>';
-}
-add_action( 'customize_controls_print_footer_scripts', 'kirki_customizer_help_bubble_script', 999 );
