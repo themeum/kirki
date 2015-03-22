@@ -38,9 +38,6 @@ include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
 class Kirki {
 
 	public $config;
-	public $customizer_scripts;
-	public $customizer_styles;
-	public $scripts;
 
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
@@ -70,6 +67,3 @@ class Kirki {
 $kirki = new Kirki();
 
 $kirki->config             = new Kirki_Config();
-$kirki->customizer_scripts = new Kirki_Customizer_Scripts();
-$kirki->customizer_styles  = new Kirki_Customizer_Styles();
-$kirki->scripts            = new Kirki_Google_Fonts_Script();

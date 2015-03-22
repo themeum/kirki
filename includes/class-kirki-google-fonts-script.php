@@ -97,3 +97,4 @@ class Kirki_Google_Fonts_Script extends Kirki {
 	}
 
 }
+$google_fonts_script = new Kirki_Google_Fonts_Script();

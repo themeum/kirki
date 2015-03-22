@@ -216,3 +216,4 @@ class Kirki_Customizer_Styles extends Kirki {
 	}
 
 }
+$customizer_styles = new Kirki_Customizer_Styles();

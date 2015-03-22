@@ -100,4 +100,4 @@ class Kirki_Customizer_Scripts extends Kirki {
 	}
 
 }
-
+$customizer_scripts = new Kirki_Customizer_Scripts();
