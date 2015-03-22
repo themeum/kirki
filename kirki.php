@@ -41,7 +41,6 @@ class Kirki {
 	public $customizer_scripts;
 	public $customizer_styles;
 	public $scripts;
-	public $styles;
 
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
@@ -69,12 +68,8 @@ class Kirki {
 }
 
 $kirki = new Kirki();
-$kirki->config = new Kirki_Config();
+
+$kirki->config             = new Kirki_Config();
 $kirki->customizer_scripts = new Kirki_Customizer_Scripts();
-$kirki->customizer_styles = new Kirki_Customizer_Styles();
-$kirki->styles = array(
-	$styles = new Kirki_Styles(),
-);
-$kirki->scripts = array(
-	$google_fonts = new Kirki_Google_Fonts_Script(),
-);
+$kirki->customizer_styles  = new Kirki_Customizer_Styles();
+$kirki->scripts            = new Kirki_Google_Fonts_Script();

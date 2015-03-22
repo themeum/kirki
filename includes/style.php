@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Styles extends Kirki {
+class Kirki_Styles {
 
 	function __construct() {
 		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
@@ -11,7 +11,7 @@ class Kirki_Styles extends Kirki {
 
 	function enqueue_styles() {
 
-		$config = $this->config;
+		$config   = Kirki_Config::get_config();
 		wp_add_inline_style( $config['stylesheet_id'], kirki_styles_parse() );
 
 	}
@@ -22,7 +22,7 @@ class Kirki_Styles extends Kirki {
 	 */
 	function frontend_styles() {
 
-		$config   = $this->config;
+		$config   = Kirki_Config::get_config();
 		$controls = Kirki_Controls::get_controls();
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
@@ -40,6 +40,7 @@ class Kirki_Styles extends Kirki {
 	}
 
 }
+$styles = new Kirki_Styles();
 
 function kirki_styles( $control, $styles, $element, $property, $units ) {
 
