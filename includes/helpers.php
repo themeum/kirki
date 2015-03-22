@@ -86,8 +86,12 @@ function kirki_get_option( $option ) {
 			$value = get_theme_mod( $option, $default );
 		}
 	}
-	// If no value has been set, use get_theme_mod with an empty default.
-	$value = ( isset( $value ) ) ? $value : get_theme_mod( $option, '' );
-	return $value;
+
+	if ( isset( $value ) ) {
+		return $value;
+	}
+	
+	// fallback to returning an empty string
+	return '';
 
 }
