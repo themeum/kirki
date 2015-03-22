@@ -53,3 +53,41 @@ function kirki_update() {
 
 }
 add_action( 'wp', 'kirki_update' );
+
+/**
+ * A wrapper function for get_theme_mod.
+ *
+ * This will be a bit more generic and will future-proof the plugin
+ * in case we ever decide to switch to using options instead of theme mods.
+ *
+ * An additional benefit is that it also gets the default values
+ * without the need to manually define them like in get_theme_mod();
+ *
+ * It's recommended that you add the following to your theme/plugin before using this function:
+ *
+if ( ! function_exists( 'kirki_get_option' ) ) :
+function kirki_get_option( $option ) {
+	get_theme_mod( $option, '' );
+}
+endif;
+ *
+ * If the plugin is not installed, the above function will NOT get the right value,
+ * but at least no fatal errors will occur.
+ */
+function kirki_get_option( $option ) {
+
+	// Get the array of controls
+	$controls = Kirki_Controls::get_controls();
+	foreach ( $controls as $control ) {
+		$setting = $control['settings'];
+		$default = ( isset( $control['default'] ) ) ? $control['default'] : '';
+		// Get the theme_mod and pass the default value as well
+		if ( $option == $setting ) {
+			$value = get_theme_mod( $option, $default );
+		}
+	}
+	// If no value has been set, use get_theme_mod with an empty default.
+	$value = ( isset( $value ) ) ? $value : get_theme_mod( $option, '' );
+	return $value;
+
+}

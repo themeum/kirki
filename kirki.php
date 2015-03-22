@@ -22,6 +22,7 @@ include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
+include_once( KIRKI_PATH . '/includes/helpers.php' );
 
 include_once( KIRKI_PATH . '/includes/class-kirki-google-fonts-script.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
@@ -66,5 +67,4 @@ class Kirki {
 }
 
 $kirki = new Kirki();
-
-$kirki->config             = new Kirki_Config();
+$kirki->config = new Kirki_Config();
