@@ -1,5 +1,46 @@
 <?php
 
+class Kirki_Styles extends Kirki {
+
+	function __construct() {
+		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
+	}
+
+
+	function enqueue_styles() {
+
+		$config = $this->config;
+		wp_add_inline_style( $config['stylesheet_id'], kirki_styles_parse() );
+
+	}
+
+
+	/**
+	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
+	 */
+	function frontend_styles() {
+
+		$config   = $this->config;
+		$controls = kirki_get_controls();
+
+		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+
+		foreach( $controls as $control ) {
+			if ( isset( $control['output'] ) ) {
+				$uses_output = true;
+			}
+		}
+
+		if ( isset( $uses_output )  && ( ! isset( $config['stylesheet_id'] ) || $config['stylesheet_id'] === 'kirki-styles' ) ) {
+			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
+		}
+
+	}
+
+}
+
 function kirki_styles( $control, $styles, $element, $property, $units ) {
 
 	$value = get_theme_mod( $control['settings'], $control['default'] );
@@ -98,13 +139,6 @@ function kirki_styles( $control, $styles, $element, $property, $units ) {
 
 }
 
-function kirki_styles_enqueue() {
-
-	$config = kirki_get_config();
-	wp_add_inline_style( $config['stylesheet_id'], kirki_styles_parse() );
-
-}
-add_action( 'wp_enqueue_scripts', 'kirki_styles_enqueue', 150 );
 
 function kirki_styles_parse() {
 
@@ -127,30 +161,6 @@ function kirki_styles_parse() {
 	return $css;
 
 }
-
-/**
- * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
- */
-function kirki_frontend_styles() {
-
-	$config   = kirki_get_config();
-	$controls = kirki_get_controls();
-
-	$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
-
-	foreach( $controls as $control ) {
-		if ( isset( $control['output'] ) ) {
-			$uses_output = true;
-		}
-	}
-
-	if ( isset( $uses_output )  && ( ! isset( $config['stylesheet_id'] ) || $config['stylesheet_id'] === 'kirki-styles' ) ) {
-		wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
-	}
-
-}
-$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
-add_action( 'wp_enqueue_scripts', 'kirki_frontend_styles', $styles_priority );
 
 function kirki_style_loop_controls() {
 
