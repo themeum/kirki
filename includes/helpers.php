@@ -47,8 +47,9 @@ function kirki_update() {
 
 	}
 
-	// if ( version_compare( $this->version, $version ) ) {
-	// 	update_option( 'kirki_version', $this->version );
-	// }
+	if ( version_compare( Kirki::$version, $version ) ) {
+		update_option( 'kirki_version', $this->version );
+	}
 
 }
+add_action( 'wp', 'kirki_update' );

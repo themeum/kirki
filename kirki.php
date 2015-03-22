@@ -38,6 +38,7 @@ include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
 class Kirki {
 
 	public $config;
+	public static $version = '0.7.1';
 
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
