@@ -4,6 +4,23 @@ class Kirki_Customizer_Styles {
 
 	function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
+		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
+	}
+
+
+	/**
+	 * Enqueue the stylesheets required.
+	 */
+	function customizer_styles() {
+
+		$config = kirki_get_config();
+
+		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+
+		wp_enqueue_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, '0.5' );
+		wp_enqueue_style( 'hint-css', $kirki_url . 'assets/css/hint.css', NULL, '1.3.3' );
+		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '1.10.0' );
+
 	}
 
 
