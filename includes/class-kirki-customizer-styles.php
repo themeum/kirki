@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Customizer_Styles extends Kirki {
+class Kirki_Customizer_Styles {
 
 	function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
@@ -13,7 +13,7 @@ class Kirki_Customizer_Styles extends Kirki {
 	 */
 	function customizer_styles() {
 
-		$config = $this->config;
+		$config = Kirki_Config::get_config();
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
@@ -30,7 +30,7 @@ class Kirki_Customizer_Styles extends Kirki {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config = $this->config;
+		$config  = Kirki_Config::get_config();
 
 		$color_font    = false;
 		$color_active  = isset( $config['color_active'] )  ? $config['color_active']  : $color['colors'][3];
