@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Customizer_Styles {
+class Kirki_Customizer_Styles extends Kirki {
 
 	function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
@@ -13,7 +13,7 @@ class Kirki_Customizer_Styles {
 	 */
 	function customizer_styles() {
 
-		$config = kirki_get_config();
+		$config = $this->config;
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
@@ -29,17 +29,15 @@ class Kirki_Customizer_Styles {
 	 */
 	function custom_css() {
 
-		global $kirki;
-
 		$color   = $this->get_admin_colors();
-		$options = kirki_get_config();
+		$config = $this->config;
 
 		$color_font    = false;
-		$color_active  = isset( $options['color_active'] )  ? $options['color_active']  : $color['colors'][3];
-		$color_light   = isset( $options['color_light'] )   ? $options['color_light']   : $color['colors'][2];
-		$color_select  = isset( $options['color_select'] )  ? $options['color_select']  : $color['colors'][3];
-		$color_accent  = isset( $options['color_accent'] )  ? $options['color_accent']  : $color['icon_colors']['focus'];
-		$color_back    = isset( $options['color_back'] )    ? $options['color_back']    : false;
+		$color_active  = isset( $config['color_active'] )  ? $config['color_active']  : $color['colors'][3];
+		$color_light   = isset( $config['color_light'] )   ? $config['color_light']   : $color['colors'][2];
+		$color_select  = isset( $config['color_select'] )  ? $config['color_select']  : $color['colors'][3];
+		$color_accent  = isset( $config['color_accent'] )  ? $config['color_accent']  : $color['icon_colors']['focus'];
+		$color_back    = isset( $config['color_back'] )    ? $config['color_back']    : false;
 
 		if ( $color_back ) {
 			$color_font = ( 170 > kirki_get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
@@ -218,4 +216,3 @@ class Kirki_Customizer_Styles {
 	}
 
 }
-$styles = new Kirki_Customizer_Styles();
