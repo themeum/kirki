@@ -21,7 +21,6 @@ include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
 include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
-include_once( KIRKI_PATH . '/includes/controls.php' );
 include_once( KIRKI_PATH . '/includes/google-fonts.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/style.php' );
@@ -43,6 +42,29 @@ class Kirki {
 	public $customizer_styles;
 	public $scripts;
 	public $styles;
+
+	public function __construct() {
+		add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
+	}
+
+	/**
+	 * Build the controls
+	 */
+	function customizer_init( $wp_customize ) {
+
+		$controls = Kirki_Controls::get_controls();
+
+		// Early exit if controls are not set or if they're empty
+		if ( empty( $controls ) ) {
+			return;
+		}
+
+		foreach ( $controls as $control ) {
+			Kirki_Setting::register( $wp_customize, $control );
+			Kirki_Control::register( $wp_customize, $control );
+		}
+
+	}
 
 }
 
