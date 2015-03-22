@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Customizer_Scripts {
+class Kirki_Customizer_Scripts extends Kirki {
 
 	function __construct() {
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
@@ -35,7 +35,7 @@ class Kirki_Customizer_Scripts {
 	 */
 	function customizer_scripts() {
 
-		$config = kirki_get_config();
+		$config = $this->config;
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
@@ -100,4 +100,4 @@ class Kirki_Customizer_Scripts {
 	}
 
 }
-$scripts = new Kirki_Customizer_Scripts();
+
