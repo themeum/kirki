@@ -21,6 +21,77 @@ include_once( KIRKI_PATH . '/includes/class-kirki-color.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-colourlovers.php' );
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
 
+class Kirki {
+
+}
+
+class Kirki_Controls extends Kirki {
+
+}
+
+class Kirki_Settings extends Kirki {
+
+}
+
+class Kirki_Customizer_Scripts extends Kirki {
+
+	function __contstruct() {
+		add_action( 'customize_controls_print_footer_scripts', 'kirki_customizer_postmessage', 21 );
+	}
+	/**
+	 * Try to automatically generate the script necessary for postMessage to work.
+	 * Something like this will have to be added to the control arguments:
+	 *
+
+	'transport' => 'postMessage',
+	'js_vars'   => array(
+			'element'  => 'body',
+			'type'     => 'css',
+			'property' => 'color',
+		),
+	 *
+	 */
+	function kirki_customizer_postmessage() {
+
+		$controls = kirki_get_controls();
+
+		$script = '';
+
+		foreach ( $controls as $control ) {
+
+			if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
+
+				$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
+				$script .= 'wp.customize("' . $control['settings'] . '",function( value ) {';
+
+				if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
+					$script .= 'value.bind(function(to) {';
+					$script .= '$("' . $control['js_vars']['element'] . '").css("' . $control['js_vars']['property'] . '", to ? to : "" );';
+					$script .= '});';
+				}
+
+				$script .= '});});</script>';
+
+			}
+
+		}
+
+		echo $script;
+
+	}
+
+}
+
+$kirki_customizer_scripts = new Kirki_Customizer_Scripts();
+
+class Kirki_Customizer_Styles extends Kirki {
+
+}
+
+class Kirki_Config extends Kirki {
+
+}
+
 /**
  * Build the controls
  */
@@ -1304,46 +1375,3 @@ function kirki_customizer_help_bubble_script() {
 	echo '<script type="text/javascript">jQuery(document).ready(function( $ ) {' . $script . '});</script>';
 }
 add_action( 'customize_controls_print_footer_scripts', 'kirki_customizer_help_bubble_script', 999 );
-
-/**
- * Try to automatically generate the script necessary for postMessage to work.
- * Something like this will have to be added to the control arguments:
- *
-
-'transport' => 'postMessage',
-'js_vars'   => array(
-		'element'  => 'body',
-		'type'     => 'css',
-		'property' => 'color',
-	),
- *
- */
-function kirki_customizer_postmessage() {
-
-	$controls = kirki_get_controls();
-
-	$script = '';
-
-	foreach ( $controls as $control ) {
-
-		if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
-
-			$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
-			$script .= 'wp.customize("' . $control['settings'] . '",function( value ) {';
-
-			if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
-				$script .= 'value.bind(function(to) {';
-				$script .= '$("' . $control['js_vars']['element'] . '").css("' . $control['js_vars']['property'] . '", to ? to : "" );';
-				$script .= '});';
-			}
-
-			$script .= '});});</script>';
-
-		}
-
-	}
-
-	echo $script;
-
-}
-add_action( 'customize_controls_print_footer_scripts', 'kirki_customizer_postmessage', 21 );
