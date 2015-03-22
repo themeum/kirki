@@ -14,7 +14,7 @@ class Kirki_Customizer_Styles {
 
 		global $kirki;
 
-		$color   = kirki_get_admin_colors();
+		$color   = $this->get_admin_colors();
 		$options = kirki_get_config();
 
 		$color_font    = false;
@@ -177,6 +177,27 @@ class Kirki_Customizer_Styles {
 		}
 		</style>
 		<?php
+	}
+
+	/**
+	 * Get the admin color theme
+	 */
+	function get_admin_colors() {
+
+		// Get the active admin theme
+		global $_wp_admin_css_colors;
+
+		// Get the user's admin colors
+		$color = get_user_option( 'admin_color' );
+		// If no theme is active set it to 'fresh'
+		if ( empty( $color ) || ! isset( $_wp_admin_css_colors[$color] ) ) {
+			$color = 'fresh';
+		}
+
+		$color = (array) $_wp_admin_css_colors[$color];
+
+		return $color;
+
 	}
 
 }
