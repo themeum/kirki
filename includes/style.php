@@ -23,7 +23,7 @@ class Kirki_Styles extends Kirki {
 	function frontend_styles() {
 
 		$config   = $this->config;
-		$controls = kirki_get_controls();
+		$controls = Kirki_Controls::get_controls();
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
@@ -164,7 +164,7 @@ function kirki_styles_parse() {
 
 function kirki_style_loop_controls() {
 
-	$controls = kirki_get_controls();
+	$controls = Kirki_Controls::get_controls();
 	$styles   = array();
 
 	foreach ( $controls as $control ) {

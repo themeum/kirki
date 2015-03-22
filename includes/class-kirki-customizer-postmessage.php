@@ -21,7 +21,7 @@ class Kirki_Customizer_postMessage {
 	 */
 	function postmessage() {
 
-		$controls = kirki_get_controls();
+		$controls = Kirki_Controls::get_controls();
 
 		$script = '';
 

@@ -29,6 +29,7 @@ include_once( KIRKI_PATH . '/includes/style.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
+include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
