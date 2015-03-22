@@ -22,12 +22,12 @@ include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/controls.php' );
-include_once( KIRKI_PATH . '/includes/settings.php' );
 include_once( KIRKI_PATH . '/includes/google-fonts.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/style.php' );
 
 include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
+include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );

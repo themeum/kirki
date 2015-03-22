@@ -47,7 +47,7 @@ function kirki_customizer_builder( $wp_customize ) {
 	}
 
 	foreach ( $controls as $control ) {
-		kirki_add_setting( $wp_customize, $control );
+		Kirki_Setting::register( $wp_customize, $control );
 		kirki_add_control( $wp_customize, $control );
 	}
 
