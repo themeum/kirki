@@ -48,7 +48,7 @@ function kirki_update() {
 	}
 
 	if ( version_compare( Kirki::$version, $version ) ) {
-		update_option( 'kirki_version', $this->version );
+		update_option( 'kirki_version', Kirki::$version );
 	}
 
 }
