@@ -1,92 +1,99 @@
 <?php
 
-function kirki_google_link() {
+class Kirki_Google_Fonts_Script extends Kirki {
 
-	$controls = kirki_get_controls();
-	$config   = kirki_get_config();
+	function __construct() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
+	}
 
-	// Get an array of all the google fonts
-	$google_fonts = Kirki_Fonts::get_google_fonts();
+	function google_link() {
 
-	$fonts = array();
-	foreach ( $controls as $control ) {
+		$controls = kirki_get_controls();
+		$config   = $this->config;
 
-		// The value of this control
-		$value = get_theme_mod( $control['settings'], $control['default'] );
+		// Get an array of all the google fonts
+		$google_fonts = Kirki_Fonts::get_google_fonts();
 
-		if ( isset( $control['output'] ) ) {
+		$fonts = array();
+		foreach ( $controls as $control ) {
 
-			// Check if this is a font-family control
-			$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
-			// Check if this is a font-weight control
-			$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
-			// Check if this is a font subset control
-			$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
+			// The value of this control
+			$value = get_theme_mod( $control['settings'], $control['default'] );
 
-			if ( $is_font_family ) {
-				$fonts[]['font-family'] = $value;
-			} else if ( $is_font_weight ) {
-				$fonts[]['font-weight'] = $value;
-			} else if ( $is_font_subset ) {
-				$fonts[]['subsets'] = $value;
+			if ( isset( $control['output'] ) ) {
+
+				// Check if this is a font-family control
+				$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
+				// Check if this is a font-weight control
+				$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
+				// Check if this is a font subset control
+				$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
+
+				if ( $is_font_family ) {
+					$fonts[]['font-family'] = $value;
+				} else if ( $is_font_weight ) {
+					$fonts[]['font-weight'] = $value;
+				} else if ( $is_font_subset ) {
+					$fonts[]['subsets'] = $value;
+				}
+
 			}
 
 		}
 
-	}
+		foreach ( $fonts as $font ) {
 
-	foreach ( $fonts as $font ) {
+			if ( isset( $font['font-family'] ) ) {
 
-		if ( isset( $font['font-family'] ) ) {
+				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
+				$font_families[] = $font['font-family'];
 
-			$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
-			$font_families[] = $font['font-family'];
+				if ( Kirki_Fonts::is_google_font( $font['font-family'] ) ) {
+					$has_google_font = true;
+				}
 
-			if ( Kirki_Fonts::is_google_font( $font['font-family'] ) ) {
-				$has_google_font = true;
+			}
+
+			if ( isset( $font['font-weight'] ) ) {
+
+				$font_weights   = ( ! isset( $font_weights ) ) ? array() : $font_weights;
+				$font_weights[] = $font['font-weight'];
+
+			}
+
+			if ( isset( $font['subsets'] ) ) {
+
+				$font_subsets   = ( ! isset( $font_subsets ) ) ? array() : $font_subsets;
+				$font_subsets[] = $font['subsets'];
+
 			}
 
 		}
 
-		if ( isset( $font['font-weight'] ) ) {
+		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
+		$font_weights  = ( ! isset( $font_weights )  || empty( $font_weights ) )  ? '400' : $font_weights;
+		$font_subsets  = ( ! isset( $font_subsets )  || empty( $font_subsets ) )  ? 'all' : $font_subsets;
 
-			$font_weights   = ( ! isset( $font_weights ) ) ? array() : $font_weights;
-			$font_weights[] = $font['font-weight'];
-
+		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
+			$font_families = false;
 		}
 
-		if ( isset( $font['subsets'] ) ) {
-
-			$font_subsets   = ( ! isset( $font_subsets ) ) ? array() : $font_subsets;
-			$font_subsets[] = $font['subsets'];
-
-		}
+		return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 
 	}
 
-	$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
-	$font_weights  = ( ! isset( $font_weights )  || empty( $font_weights ) )  ? '400' : $font_weights;
-	$font_subsets  = ( ! isset( $font_subsets )  || empty( $font_subsets ) )  ? 'all' : $font_subsets;
+	/**
+	 * Enqueue Google fonts if necessary
+	 */
+	function google_font() {
 
-	if ( ! isset( $has_google_font ) || ! $has_google_font ) {
-		$font_families = false;
-	}
+		$google_link = $this->google_link();
 
-	return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
+		if ( $google_link ) {
+			wp_register_style( 'kirki_google_fonts', $google_link );
+			wp_enqueue_style( 'kirki_google_fonts' );
+		}
 
-}
-
-/**
- * Enqueue Google fonts if necessary
- */
-function kirki_google_font() {
-
-	$google_link = kirki_google_link();
-
-	if ( $google_link ) {
-		wp_register_style( 'kirki_google_fonts', $google_link );
-		wp_enqueue_style( 'kirki_google_fonts' );
 	}
 
 }
-add_action( 'wp_enqueue_scripts', 'kirki_google_font', 105 );
