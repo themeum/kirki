@@ -21,10 +21,10 @@ include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
 include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
-include_once( KIRKI_PATH . '/includes/google-fonts.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/style.php' );
 
+include_once( KIRKI_PATH . '/includes/class-kirki-google-fonts-script.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
 include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
