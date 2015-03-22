@@ -1,75 +1,69 @@
 <?php
 
-class Kirki_Style {
-
-	public $fonts_script;
+class Kirki_Styles {
 
 	function __construct() {
+		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
+	}
 
-		$this->fonts_script = new Kirki_Fonts_Script();
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 150 );
+	function enqueue_styles() {
+
+		$config   = Kirki_Config::get_config();
+		wp_add_inline_style( $config['stylesheet_id'], $this->styles_parse() );
 
 	}
 
-	function loop_controls() {
 
-		$controls = apply_filters( 'kirki/controls', array() );
-		$styles   = array();
+	/**
+	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
+	 */
+	function frontend_styles() {
 
-		foreach ( $controls as $control ) {
-			$element  = '';
-			$property = '';
-			$units    = '';
+		$config   = Kirki_Config::get_config();
+		$controls = Kirki_Controls::get_controls();
 
-			// Only continue if $control['output'] is set
+		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+
+		foreach( $controls as $control ) {
 			if ( isset( $control['output'] ) ) {
-
-				// Check if this is an array of style definitions
-				$multiple_styles = isset( $control['output'][0]['element'] ) ? true : false;
-
-				if ( ! $multiple_styles ) { // single style
-
-					// If $control['output'] is not an array, then use the string as the target element
-					if ( is_string( $control['output'] ) ) {
-						$element = $control['output'];
-					} else {
-						$element  = isset( $control['output']['element'] )  ? $control['output']['element'] : '';
-						$property = isset( $control['output']['property'] ) ? $control['output']['property'] : '';
-						$units    = isset( $control['output']['units'] )    ? $control['output']['units']    : '';
-					}
-
-					$styles = $this->styles( $control, $styles, $element, $property, $units );
-
-				} else { // Multiple styles set
-
-					foreach ( $control['output'] as $style ) {
-
-						if ( ! array( $style ) ) {
-							$element = $style;
-						} else {
-							$element  = isset( $style['element'] )  ? $style['element'] : '';
-							$property = isset( $style['property'] ) ? $style['property'] : '';
-							$units    = isset( $style['units'] )    ? $style['units']    : '';
-						}
-
-						$styles = $this->styles( $control, $styles, $element, $property, $units );
-
-					}
-
-				}
-
+				$uses_output = true;
 			}
-
 		}
 
-		return $styles;
+		if ( isset( $uses_output )  && ( ! isset( $config['stylesheet_id'] ) || $config['stylesheet_id'] === 'kirki-styles' ) ) {
+			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
+		}
 
 	}
 
-	function styles( $control, $styles, $element, $property, $units ) {
 
-		$control = Kirki_Controls::control_clean( $control );
+	function styles_parse() {
+
+		$styles = $this->loop_controls();
+		$css = '';
+
+		// Early exit if styles are empty or not an array
+		if ( empty( $styles ) || ! is_array( $styles ) ) {
+			return;
+		}
+
+		foreach ( $styles as $style => $style_array ) {
+			$css .= $style . '{';
+			foreach ( $style_array as $property => $value ) {
+				$css .= $property . ':' . $value . ';';
+			}
+			$css .= '}';
+		}
+
+		return $css;
+
+	}
+
+
+	function control_styles( $control, $styles, $element, $property, $units ) {
 
 		$value = get_theme_mod( $control['settings'], $control['default'] );
 
@@ -167,34 +161,61 @@ class Kirki_Style {
 
 	}
 
-	function enqueue() {
 
-		global $kirki;
-		$config = $kirki->get_config();
-		wp_add_inline_style( $config['stylesheet_id'], $this->parse() );
+	function loop_controls() {
 
-	}
+		$controls = Kirki_Controls::get_controls();
+		$styles   = array();
 
-	function parse() {
+		foreach ( $controls as $control ) {
+			$element  = '';
+			$property = '';
+			$units    = '';
 
-		$styles = $this->loop_controls();
-		$css = '';
+			// Only continue if $control['output'] is set
+			if ( isset( $control['output'] ) ) {
 
-		// Early exit if styles are empty or not an array
-		if ( empty( $styles ) || ! is_array( $styles ) ) {
-			return;
-		}
+				// Check if this is an array of style definitions
+				$multiple_styles = isset( $control['output'][0]['element'] ) ? true : false;
 
-		foreach ( $styles as $style => $style_array ) {
-			$css .= $style . '{';
-			foreach ( $style_array as $property => $value ) {
-				$css .= $property . ':' . $value . ';';
+				if ( ! $multiple_styles ) { // single style
+
+					// If $control['output'] is not an array, then use the string as the target element
+					if ( is_string( $control['output'] ) ) {
+						$element = $control['output'];
+					} else {
+						$element  = isset( $control['output']['element'] )  ? $control['output']['element'] : '';
+						$property = isset( $control['output']['property'] ) ? $control['output']['property'] : '';
+						$units    = isset( $control['output']['units'] )    ? $control['output']['units']    : '';
+					}
+
+					$styles = $this->control_styles( $control, $styles, $element, $property, $units );
+
+				} else { // Multiple styles set
+
+					foreach ( $control['output'] as $style ) {
+
+						if ( ! array( $style ) ) {
+							$element = $style;
+						} else {
+							$element  = isset( $style['element'] )  ? $style['element'] : '';
+							$property = isset( $style['property'] ) ? $style['property'] : '';
+							$units    = isset( $style['units'] )    ? $style['units']    : '';
+						}
+
+						$styles = $this->control_styles( $control, $styles, $element, $property, $units );
+
+					}
+
+				}
+
 			}
-			$css .= '}';
+
 		}
 
-		return $css;
+		return $styles;
 
 	}
 
 }
+$styles = new Kirki_Styles();

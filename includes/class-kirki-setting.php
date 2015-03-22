@@ -1,14 +1,11 @@
 <?php
 
-
-class Kirki_Settings extends Kirki {
+class Kirki_Setting {
 
 	/**
 	 * Build a single setting
 	 */
-	function add_setting( $wp_customize, $control ) {
-
-		$control = Kirki_Controls::control_clean( $control );
+	public static function register( $wp_customize, $control ) {
 
 		if ( 'background' == $control['type'] ) {
 
@@ -38,7 +35,7 @@ class Kirki_Settings extends Kirki {
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
 					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_repeat' ),
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'kirki_sanitize_bg_repeat',
 				) );
 			}
 
@@ -48,7 +45,7 @@ class Kirki_Settings extends Kirki {
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
 					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_size' ),
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'kirki_sanitize_bg_size',
 				) );
 			}
 
@@ -58,7 +55,7 @@ class Kirki_Settings extends Kirki {
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
 					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_attach' ),
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'kirki_sanitize_bg_attach',
 				) );
 			}
 
@@ -68,7 +65,7 @@ class Kirki_Settings extends Kirki {
 					'type'              => 'theme_mod',
 					'capability'        => 'edit_theme_options',
 					'transport'         => isset( $control['transport'] ) ? $control['transport'] : 'refresh',
-					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : array( $this, 'sanitize_bg_position' ),
+					'sanitize_callback' => isset( $control['sanitize_callback'] ) ? $control['sanitize_callback'] : 'kirki_sanitize_bg_position',
 				) );
 			}
 
@@ -85,19 +82,19 @@ class Kirki_Settings extends Kirki {
 		} else {
 
 			if ( 'checkbox' == $control['type'] ) {
-				$sanitize_callback = array( $this, 'sanitize_checkbox' );
+				$sanitize_callback = 'kirki_sanitize_checkbox';
 			} elseif ( 'color' == $control['type'] ) {
 				$sanitize_callback = 'sanitize_hex_color';
 			} elseif ( 'image' == $control['type'] ) {
 				$sanitize_callback = 'esc_url_raw';
 			} elseif ( 'radio' == $control['type'] ) {
 				// TODO: Find a way to handle these
-				$sanitize_callback = array( $this, 'unfiltered' );
+				$sanitize_callback = 'kirki_sanitize_unfiltered';
 			} elseif ( 'select' == $control['type'] ) {
 				// TODO: Find a way to handle these
-				$sanitize_callback = array( $this, 'unfiltered' );
+				$sanitize_callback = 'kirki_sanitize_unfiltered';
 			} elseif ( 'slider' == $control['type'] ) {
-				$sanitize_callback = array( $this, 'sanitize_number' );
+				$sanitize_callback = 'kirki_sanitize_number';
 			} elseif ( 'text' == $control['type'] ) {
 				$sanitize_callback = 'esc_textarea';
 			} elseif ( 'textarea' == $control['type'] ) {
@@ -111,7 +108,7 @@ class Kirki_Settings extends Kirki {
 			} elseif ( 'group_title' == $control['type'] ) {
 				$sanitize_callback = 'esc_attr';
 			} else {
-				$sanitize_callback = array( $this, 'unfiltered' );
+				$sanitize_callback = 'kirki_sanitize_unfiltered';
 			}
 
 			// Add settings
@@ -125,121 +122,6 @@ class Kirki_Settings extends Kirki {
 
 		}
 
-	}
-
-	/**
-	 * Sanitize checkbox options
-	 *
-	 * @since 0.5
-	 */
-	public function sanitize_checkbox( $value ) {
-		return ( 'on' != $value ) ? false : $value;
-	}
-
-	/**
-	 * Sanitize number options
-	 *
-	 * @since 0.5
-	 */
-	public function sanitize_number( $value ) {
-		return ( is_int( $value ) || is_float( $value ) ) ? $value : intval( $value );
-	}
-
-	/**
-	 * Sanitize a value from a list of allowed values.
-	 *
-	 * @since 0.5
-	 *
-	 * @param  mixed    $value      The value to sanitize.
-	 * @param  mixed    $setting    The setting for which the sanitizing is occurring.
-	 * @return mixed                The sanitized value.
-	 */
-	function sanitize_choice( $value, $choices, $default ) {
-
-		$allowed_choices = array_keys( $choices );
-		return ( ! in_array( $value, $allowed_choices ) ) ? $default : $value;
-
-	}
-
-	/**
-	 * Sanitize background repeat values
-	 *
-	 * @since 0.5
-	 */
-	function sanitize_bg_repeat( $value ) {
-		$valid = array(
-			'no-repeat' => __( 'No Repeat', 'kirki' ),
-			'repeat'    => __( 'Repeat All', 'kirki' ),
-			'repeat-x'  => __( 'Repeat Horizontally', 'kirki' ),
-			'repeat-y'  => __( 'Repeat Vertically', 'kirki' ),
-			'inherit'   => __( 'Inherit', 'kirki' )
-		);
-
-		return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
-
-	}
-
-	/**
-	 * Sanitize background size values
-	 *
-	 * @since 0.5
-	 */
-	function sanitize_bg_size( $value ) {
-		$valid = array(
-			'inherit' => __( 'Inherit', 'kirki' ),
-			'cover'   => __( 'Cover', 'kirki' ),
-			'contain' => __( 'Contain', 'kirki' ),
-		);
-
-		return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
-
-	}
-
-	/**
-	 * Sanitize background attachment values
-	 *
-	 * @since 0.5
-	 */
-	function sanitize_bg_attach( $value ) {
-		$valid = array(
-			'inherit' => __( 'Inherit', 'kirki' ),
-			'fixed'   => __( 'Fixed', 'kirki' ),
-			'scroll'  => __( 'Scroll', 'kirki' ),
-		);
-
-		return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
-
-	}
-
-	/**
-	 * Sanitize background position values
-	 *
-	 * @since 0.5
-	 */
-	function sanitize_bg_position( $value ) {
-		$valid = array(
-			'left-top'      => __( 'Left Top', 'kirki' ),
-			'left-center'   => __( 'Left Center', 'kirki' ),
-			'left-bottom'   => __( 'Left Bottom', 'kirki' ),
-			'right-top'     => __( 'Right Top', 'kirki' ),
-			'right-center'  => __( 'Right Center', 'kirki' ),
-			'right-bottom'  => __( 'Right Bottom', 'kirki' ),
-			'center-top'    => __( 'Center Top', 'kirki' ),
-			'center-center' => __( 'Center Center', 'kirki' ),
-			'center-bottom' => __( 'Center Bottom', 'kirki' ),
-		);
-
-		return ( array_key_exists( $value, $valid ) ) ? $value : 'center-center';
-
-	}
-
-	/**
-	 * DOES NOT SANITIZE ANYTHING.
-	 *
-	 * @since 0.5
-	 */
-	function unfiltered( $value ) {
-		return $value;
 	}
 
 }

@@ -1,33 +1,21 @@
 <?php
 
-class Kirki_Fonts_Script extends Kirki_Style {
-
-	public $firstrun = true;
+class Kirki_Google_Fonts_Script extends Kirki {
 
 	function __construct() {
-
-		// Make sure the link is only added once
-		if ( $this->firstrun ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
-			$this->firstrun = false;
-		}
-
+		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
 	}
 
 	function google_link() {
 
-		// Get the global config and controls
-		global $kirki;
-		$controls = $kirki->get_controls();
-		$config   = $kirki->get_config();
+		$controls = Kirki_Controls::get_controls();
+		$config   = $this->config;
 
 		// Get an array of all the google fonts
 		$google_fonts = Kirki_Fonts::get_google_fonts();
 
 		$fonts = array();
 		foreach ( $controls as $control ) {
-
-			$control = Kirki_Controls::control_clean( $control );
 
 			// The value of this control
 			$value = get_theme_mod( $control['settings'], $control['default'] );
@@ -109,3 +97,4 @@ class Kirki_Fonts_Script extends Kirki_Style {
 	}
 
 }
+$google_fonts_script = new Kirki_Google_Fonts_Script();
