@@ -29,7 +29,7 @@ function kirki_update() {
 		$controls = Kirki_Controls::get_controls();
 
 		foreach ( $controls as $control ) {
-			$control = Kirki_Controls::control_clean( $control );
+			$control = Kirki_Controls::sanitize( $control );
 
 			if ( 'background' != $control['type'] ) {
 				$control_ids[] = $control['settings'];
