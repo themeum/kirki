@@ -11,7 +11,7 @@ class Kirki_Styles {
 
 	function enqueue_styles() {
 
-		$config   = Kirki_Config::get_config();
+		$config   = Kirki::config()->get();
 		wp_add_inline_style( $config['stylesheet_id'], $this->styles_parse() );
 
 	}
@@ -22,7 +22,7 @@ class Kirki_Styles {
 	 */
 	function frontend_styles() {
 
-		$config   = Kirki_Config::get_config();
+		$config   = Kirki::config()->get();
 		$controls = Kirki_Controls::get_controls();
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;

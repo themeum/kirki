@@ -13,7 +13,7 @@ class Kirki_Customizer_Styles {
 	 */
 	function customizer_styles() {
 
-		$config = Kirki_Config::get_config();
+		$config = Kirki::config()->get();
 
 		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
@@ -30,7 +30,7 @@ class Kirki_Customizer_Styles {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config  = Kirki_Config::get_config();
+		$config  = Kirki::config()->get();
 
 		$color_font    = false;
 		$color_active  = isset( $config['color_active'] )  ? $config['color_active']  : $color['colors'][3];
