@@ -1,5 +1,7 @@
 <?php
 
+use Kirki\Fonts\FontRegistry;
+
 /**
  * Class Kirki
  *
@@ -18,6 +20,9 @@ class Kirki {
 
     /** @var Kirki_Controls Controls */
     public $controls = null;
+
+    /** @var FontRegistry The font registry */
+    public $font_registry = null;
 
     /**
      * Access the single instance of this class
@@ -45,6 +50,13 @@ class Kirki {
     }
 
     /**
+     * Shortcut method to get the font registry.
+     */
+    public static function fonts() {
+        return self::get_instance()->font_registry;
+    }
+
+    /**
      * Constructor is private, should only be called by get_instance()
      */
 	private function __construct() {
@@ -54,6 +66,7 @@ class Kirki {
         // Create our main objects
         $this->config = new Kirki_Config();
         $this->controls = new Kirki_Controls();
+        $this->font_registry = new FontRegistry();
 
         // Hook into WP
         $this->register_hooks();
@@ -89,7 +102,7 @@ class Kirki {
     private function include_files() {
         // Load Kirki_Fonts before everything else
         // TODO improve this
-        include_once( KIRKI_PATH . '/includes/libraries/class-kirki-fonts.php' );
+        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
         include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
         include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
