@@ -15,56 +15,8 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
-// Load Kirki_Fonts before everything else
-include_once( KIRKI_PATH . '/includes/libraries/class-kirki-fonts.php' );
-include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
-include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
+// Include the main kirki class
+include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 
-include_once( KIRKI_PATH . '/includes/deprecated.php' );
-include_once( KIRKI_PATH . '/includes/sanitize.php' );
-include_once( KIRKI_PATH . '/includes/helpers.php' );
-
-include_once( KIRKI_PATH . '/includes/class-kirki-google-fonts-script.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
-include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
-
-
-class Kirki {
-
-	public $config;
-	public static $version = '0.7.1';
-
-	public function __construct() {
-		add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
-	}
-
-	/**
-	 * Build the controls
-	 */
-	function customizer_init( $wp_customize ) {
-
-		$controls = Kirki_Controls::get_controls();
-
-		// Early exit if controls are not set or if they're empty
-		if ( empty( $controls ) ) {
-			return;
-		}
-
-		foreach ( $controls as $control ) {
-			Kirki_Setting::register( $wp_customize, $control );
-			Kirki_Control::register( $wp_customize, $control );
-		}
-
-	}
-
-}
-
-$kirki = new Kirki();
-$kirki->config = new Kirki_Config();
+// Make sure the class is instanciated
+Kirki::get_instance();

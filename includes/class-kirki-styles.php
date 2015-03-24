@@ -10,10 +10,7 @@ class Kirki_Styles {
 
 
 	function enqueue_styles() {
-
-		$config   = Kirki_Config::get_config();
-		wp_add_inline_style( $config['stylesheet_id'], $this->styles_parse() );
-
+		wp_add_inline_style( Kirki::config()->getOrThrow('stylesheet_id'), $this->styles_parse() );
 	}
 
 
@@ -21,11 +18,11 @@ class Kirki_Styles {
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
 	function frontend_styles() {
+        $config = Kirki::config();
+		$controls = Kirki::controls()->get_all();
 
-		$config   = Kirki_Config::get_config();
-		$controls = Kirki_Controls::get_controls();
-
-		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+        $kirki_url = $config->get('url_path', KIRKI_URL);
+        $kirki_stylesheet = $config->getOrThrow('stylesheet_id');
 
 		foreach( $controls as $control ) {
 			if ( isset( $control['output'] ) ) {
@@ -33,7 +30,7 @@ class Kirki_Styles {
 			}
 		}
 
-		if ( isset( $uses_output )  && ( ! isset( $config['stylesheet_id'] ) || $config['stylesheet_id'] === 'kirki-styles' ) ) {
+		if ( isset( $uses_output )  && $kirki_stylesheet === 'kirki-styles' ) {
 			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
@@ -164,7 +161,7 @@ class Kirki_Styles {
 
 	function loop_controls() {
 
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 		$styles   = array();
 
 		foreach ( $controls as $control ) {

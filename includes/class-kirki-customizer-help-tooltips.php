@@ -11,7 +11,7 @@ class Kirki_Customizer_Help_Tooltips {
 	 */
 	function help_tooltip_script() {
 
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 
 		$scripts = array();
 		$script  = '';
