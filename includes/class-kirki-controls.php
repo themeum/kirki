@@ -2,6 +2,9 @@
 
 class Kirki_Controls {
 
+    /** @var array The controls */
+    private $controls = null;
+
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'include_controls' ) );
 	}

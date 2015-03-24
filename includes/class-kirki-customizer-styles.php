@@ -12,15 +12,12 @@ class Kirki_Customizer_Styles {
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-
-		$config = Kirki::config()->get();
-
-		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+		$config = Kirki::config();
+		$kirki_url = $config->get('url_path', KIRKI_URL);
 
 		wp_enqueue_style( 'kirki-customizer-css', $kirki_url . 'assets/css/customizer.css', NULL, '0.5' );
 		wp_enqueue_style( 'hint-css', $kirki_url . 'assets/css/hint.css', NULL, '1.3.3' );
 		wp_enqueue_style( 'kirki-customizer-ui',  $kirki_url . 'assets/css/jquery-ui-1.10.0.custom.css', NULL, '1.10.0' );
-
 	}
 
 
@@ -30,14 +27,14 @@ class Kirki_Customizer_Styles {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config  = Kirki::config()->get();
+		$config  = Kirki::config();
 
 		$color_font    = false;
-		$color_active  = isset( $config['color_active'] )  ? $config['color_active']  : $color['colors'][3];
-		$color_light   = isset( $config['color_light'] )   ? $config['color_light']   : $color['colors'][2];
-		$color_select  = isset( $config['color_select'] )  ? $config['color_select']  : $color['colors'][3];
-		$color_accent  = isset( $config['color_accent'] )  ? $config['color_accent']  : $color['icon_colors']['focus'];
-		$color_back    = isset( $config['color_back'] )    ? $config['color_back']    : false;
+		$color_active  = $config->get('color_active', $color['colors'][3]);
+		$color_light   = $config->get('color_light', $color['colors'][2]);
+		$color_select  = $config->get('color_select', $color['colors'][3]);
+		$color_accent  = $config->get('color_accent', $color['icon_colors']['focus']);
+		$color_back    = $config->get('color_back', false);
 
 		if ( $color_back ) {
 			$color_font = ( 170 > kirki_get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
