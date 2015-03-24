@@ -51,7 +51,7 @@ class Kirki_Customizer_Scripts extends Kirki {
 	 */
 	function required_script() {
 
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 
 		if ( isset( $controls ) ) {
 

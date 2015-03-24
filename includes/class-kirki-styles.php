@@ -19,7 +19,7 @@ class Kirki_Styles {
 	 */
 	function frontend_styles() {
         $config = Kirki::config();
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 
         $kirki_url = $config->get('url_path', KIRKI_URL);
         $kirki_stylesheet = $config->getOrThrow('stylesheet_id');
@@ -161,7 +161,7 @@ class Kirki_Styles {
 
 	function loop_controls() {
 
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 		$styles   = array();
 
 		foreach ( $controls as $control ) {

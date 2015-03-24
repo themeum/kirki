@@ -16,6 +16,9 @@ class Kirki {
     /** @var Kirki_Config Configuration */
 	public $config = null;
 
+    /** @var Kirki_Controls Controls */
+    public $controls = null;
+
     /**
      * Access the single instance of this class
      * @return Kirki
@@ -35,6 +38,13 @@ class Kirki {
     }
 
     /**
+     * Shortcut method to get the controls of the single instance.
+     */
+    public static function controls() {
+        return self::get_instance()->controls;
+    }
+
+    /**
      * Constructor is private, should only be called by get_instance()
      */
 	private function __construct() {
@@ -43,6 +53,7 @@ class Kirki {
 
         // Create our main objects
         $this->config = new Kirki_Config();
+        $this->controls = new Kirki_Controls();
 
         // Hook into WP
         $this->register_hooks();
@@ -52,7 +63,7 @@ class Kirki {
 	 * Build the controls
 	 */
 	public function customizer_init( $wp_customize ) {
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 
 		// Early exit if controls are not set or if they're empty
 		if ( empty( $controls ) ) {
@@ -96,5 +107,20 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
+
+        // Our custom controls
+        // TODO autoload this using a PSR-4 autoloader?
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-multicheck-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-number-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-buttonset-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-image-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-sortable-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-switch-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-palette-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-custom-control.php' );
     }
 }

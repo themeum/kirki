@@ -26,7 +26,7 @@ function kirki_update() {
 		 * This will fix the wrong settings naming and save new settings.
 		 */
 		$control_ids = array();
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 
 		foreach ( $controls as $control ) {
 			$control = Kirki_Control::sanitize( $control );
@@ -77,7 +77,7 @@ endif;
 function kirki_get_option( $option ) {
 
 	// Get the array of controls
-	$controls = Kirki_Controls::get_controls();
+	$controls = Kirki::controls()->get_all();
 	foreach ( $controls as $control ) {
 		$setting = $control['settings'];
 		$default = ( isset( $control['default'] ) ) ? $control['default'] : '';

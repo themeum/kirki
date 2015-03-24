@@ -8,7 +8,7 @@ class Kirki_Google_Fonts_Script extends Kirki {
 
 	function google_link() {
 
-		$controls = Kirki_Controls::get_controls();
+		$controls = Kirki::controls()->get_all();
 		$config   = $this->config;
 
 		// Get an array of all the google fonts
