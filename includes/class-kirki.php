@@ -122,5 +122,6 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
         include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-palette-control.php' );
         include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-custom-control.php' );
+        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-editor-control.php' );
     }
 }
