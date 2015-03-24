@@ -2,6 +2,22 @@
 
 class Kirki_Controls {
 
+    /** @var array An array that defines which custom control types are available and the corresponding class name */
+    public static $CONTROL_TYPES = array(
+        'group-title'       => 'GroupTitleControl',
+        'multicheck'        => 'MultiCheckControl',
+        'number'            => 'NumberControl',
+        'radio-buttonset'   => 'RadioButtonSetControl',
+        'radio-image'       => 'RadioImageControl',
+        'slider'            => 'SliderControl',
+        'sortable'          => 'SortableControl',
+        'switch'            => 'SwitchControl',
+        'toggle'            => 'ToggleControl',
+        'palette'           => 'PaletteControl',
+        'custom'            => 'CustomControl',
+        'editor'            => 'EditorControl',
+    );
+
     /** @var array The controls */
     private $controls = null;
 
@@ -42,21 +58,10 @@ class Kirki_Controls {
      * Include the custom control files. Because they depend on the WP_Cs
      */
     public function include_files() {
-        // Our custom controls
-        // TODO autoload this using a PSR-4 autoloader?
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-multicheck-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-number-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-buttonset-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-image-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-sortable-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-switch-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-palette-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-custom-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-editor-control.php' );
+        $path = KIRKI_PATH . '/includes/Controls';
+        foreach (self::$CONTROL_TYPES as $typeId => $className) {
+            include_once($path . '/' . $className . '.php');
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Custom_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class CustomControl extends \WP_Customize_Control {
 
 	public $type = 'custom';
 

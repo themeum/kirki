@@ -1,11 +1,12 @@
 <?php
 
+namespace Kirki\Controls;
+
 /**
- * Control inspired by the Titan Framework Multicheck control.
+ * Control inspired by the Titan Framework MultiCheck control.
  * See https://github.com/gambitph/Titan-Framework/blob/v1.4.2/class-option-multicheck.php for more details.
  */
-
-class Kirki_Customize_Multicheck_Control extends WP_Customize_Control {
+class MultiCheckControl extends \WP_Customize_Control {
 
 	public $type = 'multicheck';
 

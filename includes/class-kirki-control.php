@@ -1,5 +1,18 @@
 <?php
 
+use Kirki\Controls\CustomControl;
+use Kirki\Controls\EditorControl;
+use Kirki\Controls\GroupTitleControl;
+use Kirki\Controls\MultiCheckControl;
+use Kirki\Controls\NumberControl;
+use Kirki\Controls\PaletteControl;
+use Kirki\Controls\RadioButtonSetControl;
+use Kirki\Controls\RadioImageControl;
+use Kirki\Controls\SliderControl;
+use Kirki\Controls\SortableControl;
+use Kirki\Controls\SwitchControl;
+use Kirki\Controls\ToggleControl;
+
 class Kirki_Control {
 
 	/**
@@ -87,12 +100,12 @@ class Kirki_Control {
 
 		// Switch Controls
 		elseif ( 'switch' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'switch' == $control['mode'] ) ) {
-			$wp_customize->add_control( new Kirki_Customize_Switch_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new SwitchControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Toggle Controls
 		elseif ( 'toggle' == $control['type'] || ( 'checkbox' == $control['type'] && isset( $control['mode'] ) && 'toggle' == $control['mode'] ) ) {
-			$wp_customize->add_control( new Kirki_Customize_Toggle_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new ToggleControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Checkbox Controls
@@ -102,12 +115,12 @@ class Kirki_Control {
 
 		// Radio-Buttonset Controls
 		elseif ( 'radio-buttonset' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'buttonset' == $control['mode'] ) ) {
-			$wp_customize->add_control( new Kirki_Customize_Radio_Buttonset_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new RadioButtonSetControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Radio-Image Controls
 		elseif ( 'radio-image' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'image' == $control['mode'] ) ) {
-			$wp_customize->add_control( new Kirki_Customize_Radio_Image_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new RadioImageControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Radio Controls
@@ -117,42 +130,42 @@ class Kirki_Control {
 
 		// Sortable Controls
 		elseif ( 'sortable' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Sortable_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new SortableControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Slider Controls
 		elseif ( 'slider' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Slider_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new SliderControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Number Controls
 		elseif ( 'number' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Number_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new NumberControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Multicheck Controls
 		elseif ( 'multicheck' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Multicheck_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new MultiCheckControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Group-Title Controls
 		elseif ( 'group-title' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Group_Title_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new GroupTitleControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Palette Control
 		elseif ( 'palette' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Palette_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new PaletteControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Custom Control
 		elseif ( 'custom' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Custom_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new CustomControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Custom Control
 		elseif ( 'editor' == $control['type'] ) {
-			$wp_customize->add_control( new Kirki_Customize_Editor_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new EditorControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Background Controls
@@ -274,7 +287,7 @@ class Kirki_Control {
 			}
 
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$wp_customize->add_control( new Kirki_Customize_Slider_Control( $wp_customize, $control['settings'] . '_opacity', array(
+				$wp_customize->add_control( new SliderControl( $wp_customize, $control['settings'] . '_opacity', array(
 					'label'       => '',
 					'section'     => $control['section'],
 					'settings'    => $control['settings'] . '_opacity',

@@ -9,10 +9,10 @@ class Kirki_Google_Fonts_Script extends Kirki {
 	function google_link() {
 
 		$controls = Kirki::controls()->get_all();
-		$config   = $this->config;
+		$config = $this->config;
 
 		// Get an array of all the google fonts
-		$google_fonts = Kirki_Fonts::get_google_fonts();
+		$google_fonts = Kirki::fonts()->get_google_fonts();
 
 		$fonts = array();
 		foreach ( $controls as $control ) {
@@ -21,11 +21,12 @@ class Kirki_Google_Fonts_Script extends Kirki {
 			$value = get_theme_mod( $control['settings'], $control['default'] );
 
 			if ( isset( $control['output'] ) ) {
-
 				// Check if this is a font-family control
 				$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
+
 				// Check if this is a font-weight control
 				$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
+                
 				// Check if this is a font subset control
 				$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
 
@@ -48,7 +49,7 @@ class Kirki_Google_Fonts_Script extends Kirki {
 				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
 				$font_families[] = $font['font-family'];
 
-				if ( Kirki_Fonts::is_google_font( $font['font-family'] ) ) {
+				if ( Kirki::fonts()->is_google_font( $font['font-family'] ) ) {
 					$has_google_font = true;
 				}
 
@@ -78,7 +79,7 @@ class Kirki_Google_Fonts_Script extends Kirki {
 			$font_families = false;
 		}
 
-		return ( $font_families ) ? Kirki_Fonts::get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
+		return ( $font_families ) ? Kirki::fonts()->get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 
 	}
 
@@ -86,14 +87,12 @@ class Kirki_Google_Fonts_Script extends Kirki {
 	 * Enqueue Google fonts if necessary
 	 */
 	function google_font() {
-
 		$google_link = $this->google_link();
 
 		if ( $google_link ) {
 			wp_register_style( 'kirki_google_fonts', $google_link );
 			wp_enqueue_style( 'kirki_google_fonts' );
 		}
-
 	}
 
 }

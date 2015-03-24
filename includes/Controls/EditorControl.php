@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Editor_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class EditorControl extends \WP_Customize_Control {
 
 	public $type = 'editor';
 
