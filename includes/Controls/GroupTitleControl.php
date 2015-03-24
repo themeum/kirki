@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Group_Title_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class GroupTitleControl extends \WP_Customize_Control {
 
 	public $type = 'group_title';
 

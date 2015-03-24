@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Slider_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class SliderControl extends \WP_Customize_Control {
 
 	public $type = 'slider';
 

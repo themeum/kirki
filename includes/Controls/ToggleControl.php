@@ -1,8 +1,10 @@
 <?php
 
-class Kirki_Customize_Switch_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
 
-	public $type = 'switch';
+class ToggleControl extends \WP_Customize_Control {
+
+	public $type = 'toggle';
 
 	/**
 	 * Render the control's content.
@@ -17,10 +19,9 @@ class Kirki_Customize_Switch_Control extends WP_Customize_Control {
 				<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 			<?php $classes = ( esc_attr( $this->value() ) ) ? ' On' : ' Off'; ?>
+			<?php $classes .= ' Round'; ?>
 			<div class="Switch <?php echo $classes; ?>">
 				<div class="Toggle"></div>
-				<span class="On"><?php _e( 'ON', 'kirki' ); ?></span>
-				<span class="Off"><?php _e( 'OFF', 'kirki' ); ?></span>
 			</div>
 		</label>
 		<?php

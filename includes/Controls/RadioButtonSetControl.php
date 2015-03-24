@@ -1,8 +1,10 @@
 <?php
 
-class Kirki_Customize_Radio_Image_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
 
-	public $type = 'radio-image';
+class RadioButtonSetControl extends \WP_Customize_Control {
+
+	public $type = 'radio-buttonset';
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
@@ -24,11 +26,11 @@ class Kirki_Customize_Radio_Image_Control extends WP_Customize_Control {
 			<?php endif; ?>
 		</span>
 
-		<div id="input_<?php echo $this->id; ?>" class="image">
+		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
-				<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
 					<label for="<?php echo $this->id . $value; ?>">
-						<img src="<?php echo esc_html( $label ); ?>">
+						<?php echo esc_html( $label ); ?>
 					</label>
 				</input>
 			<?php endforeach; ?>

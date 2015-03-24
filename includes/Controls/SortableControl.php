@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class SortableControl extends \WP_Customize_Control {
 
 	public $type = 'sortable';
 
@@ -11,8 +13,6 @@ class Kirki_Customize_Sortable_Control extends WP_Customize_Control {
 
 
 	public function render_content() {
-		global $kirki;
-
 		if ( ! is_array( $this->choices ) ) {
 			return;
 		}

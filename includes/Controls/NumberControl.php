@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Number_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class NumberControl extends \WP_Customize_Control {
 
 	public $type = 'number';
 
