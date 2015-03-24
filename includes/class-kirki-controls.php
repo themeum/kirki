@@ -2,6 +2,22 @@
 
 class Kirki_Controls {
 
+    /** @var array An array that defines which custom control types are available and the corresponding class name */
+    public static $CONTROL_TYPES = array(
+        'group-title'       => 'GroupTitleControl',
+        'multicheck'        => 'MultiCheckControl',
+        'number'            => 'NumberControl',
+        'radio-buttonset'   => 'RadioButtonSetControl',
+        'radio-image'       => 'RadioImageControl',
+        'slider'            => 'SliderControl',
+        'sortable'          => 'SortableControl',
+        'switch'            => 'SwitchControl',
+        'toggle'            => 'ToggleControl',
+        'palette'           => 'PaletteControl',
+        'custom'            => 'CustomControl',
+        'editor'            => 'EditorControl',
+    );
+
     /** @var array The controls */
     private $controls = null;
 
@@ -42,23 +58,8 @@ class Kirki_Controls {
      * Include the custom control files. Because they depend on the WP_Cs
      */
     public function include_files() {
-        $types = array(
-            'group-title'       => 'GroupTitleControl',
-            'multicheck'        => 'MultiCheckControl',
-            'number'            => 'NumberControl',
-            'radio-buttonset'   => 'RadioButtonSetControl',
-            'radio-image'       => 'RadioImageControl',
-            'slider'            => 'SliderControl',
-            'sortable'          => 'SortableControl',
-            'switch'            => 'SwitchControl',
-            'toggle'            => 'ToggleControl',
-            'palette'           => 'PaletteControl',
-            'custom'            => 'CustomControl',
-            'editor'            => 'EditorControl',
-        );
         $path = KIRKI_PATH . '/includes/Controls';
-
-        foreach ($types as $typeId => $className) {
+        foreach (self::$CONTROL_TYPES as $typeId => $className) {
             include_once($path . '/' . $className . '.php');
         }
     }
