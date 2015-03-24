@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Customize_Palette_Control extends WP_Customize_Control {
+namespace Kirki\Controls;
+
+class PaletteControl extends \WP_Customize_Control {
 
 	public $type = 'palette';
 
