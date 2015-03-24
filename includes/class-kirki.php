@@ -107,21 +107,5 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
-
-        // Our custom controls
-        // TODO autoload this using a PSR-4 autoloader?
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-group-title-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-multicheck-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-number-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-buttonset-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-radio-image-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-sortable-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-switch-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-toggle-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-slider-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-palette-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-custom-control.php' );
-        include_once( KIRKI_PATH . '/includes/controls/class-kirki-customize-editor-control.php' );
     }
 }
