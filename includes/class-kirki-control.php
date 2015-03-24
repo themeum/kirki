@@ -150,6 +150,11 @@ class Kirki_Control {
 			$wp_customize->add_control( new Kirki_Customize_Custom_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
+		// Custom Control
+		elseif ( 'editor' == $control['type'] ) {
+			$wp_customize->add_control( new Kirki_Customize_Editor_Control( $wp_customize, $control['settings'], $control ) );
+		}
+
 		// Background Controls
 		elseif ( 'background' == $control['type'] ) {
 			/**
