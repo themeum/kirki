@@ -9,7 +9,6 @@ class Kirki_Controls {
         'number'            => 'NumberControl',
         'radio-buttonset'   => 'RadioButtonSetControl',
         'radio-image'       => 'RadioImageControl',
-        'slider'            => 'SliderControl',
         'sortable'          => 'SortableControl',
         'switch'            => 'SwitchControl',
         'toggle'            => 'ToggleControl',
