@@ -65,6 +65,7 @@ class Kirki_Color {
 
 		// Remove any trailing '#' symbols from the color value
 		$hex = self::sanitize_hex( $hex );
+		$hex = str_replace( '#', '', $hex );
 
 		$red    = hexdec( substr( $hex, 0, 2 ) );
 		$green  = hexdec( substr( $hex, 2, 2 ) );
@@ -86,6 +87,7 @@ class Kirki_Color {
 	public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
 
 		$hex = self::sanitize_hex( $hex );
+		$hex = str_replace( '#', '', $hex );
 		// Make sure that opacity is properly formatted :
 		// Set the opacity to 100 if a larger value has been entered by mistake.
 		// If a negative value is used, then set to 0.
@@ -398,6 +400,9 @@ class Kirki_Color {
 		$color_1 = self::sanitize_hex( $color_1 );
 		$color_2 = self::sanitize_hex( $color_2 );
 
+		$color_1 = str_replace( '#', '', $color_1 );
+		$color_2 = str_replace( '#', '', $color_2 );
+
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
 
@@ -429,6 +434,9 @@ class Kirki_Color {
 		$color_1 = self::sanitize_hex( $color_1 );
 		$color_2 = self::sanitize_hex( $color_2 );
 
+		$color_1 = str_replace( '#', '', $color_1 );
+		$color_2 = str_replace( '#', '', $color_2 );
+
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
 
@@ -455,6 +463,9 @@ class Kirki_Color {
 
 		$color_1 = self::sanitize_hex( $color_1 );
 		$color_2 = self::sanitize_hex( $color_2 );
+
+		$color_1 = str_replace( '#', '', $color_1 );
+		$color_2 = str_replace( '#', '', $color_2 );
 
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
