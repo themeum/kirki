@@ -10,7 +10,7 @@ class Kirki_Color {
 	/**
 	 * Sanitize hex colors
 	 */
-	public static function sanitize_hex( $color ) {
+	public static function sanitize_hex( $color, $hash = true ) {
 
 		// Remove any spaces and special characters before and after the string
 		$color = trim( $color. ' \t\n\r\0\x0B' );
@@ -53,7 +53,7 @@ class Kirki_Color {
 
 		}
 
-		return '#' . $hex;
+		return ( ! $hash ) ? $hex : '#' . $hex;
 
 	}
 
@@ -64,8 +64,7 @@ class Kirki_Color {
 	public static function get_rgb( $hex, $implode = false ) {
 
 		// Remove any trailing '#' symbols from the color value
-		$hex = self::sanitize_hex( $hex );
-		$hex = str_replace( '#', '', $hex );
+		$hex = self::sanitize_hex( $hex, false );
 
 		$red    = hexdec( substr( $hex, 0, 2 ) );
 		$green  = hexdec( substr( $hex, 2, 2 ) );
@@ -86,8 +85,7 @@ class Kirki_Color {
 	 */
 	public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
 
-		$hex = self::sanitize_hex( $hex );
-		$hex = str_replace( '#', '', $hex );
+		$hex = self::sanitize_hex( $hex, false );
 		// Make sure that opacity is properly formatted :
 		// Set the opacity to 100 if a larger value has been entered by mistake.
 		// If a negative value is used, then set to 0.
@@ -117,10 +115,8 @@ class Kirki_Color {
 	 */
 	public static function get_brightness( $hex ) {
 
-		$hex = self::sanitize_hex( $hex );
+		$hex = self::sanitize_hex( $hex, false );
 		// returns brightness value from 0 to 255
-		// strip off any leading #
-		$hex = str_replace( '#', '', $hex );
 
 		$red    = hexdec( substr( $hex, 0, 2 ) );
 		$green  = hexdec( substr( $hex, 2, 2 ) );
@@ -136,8 +132,7 @@ class Kirki_Color {
 	 */
 	public static function adjust_brightness( $hex, $steps ) {
 
-		$hex = self::sanitize_hex( $hex );
-		$hex = str_replace( '#', '', $hex );
+		$hex = self::sanitize_hex( $hex, false );
 		// Steps should be between -255 and 255. Negative = darker, positive = lighter
 		$steps = max( -255, min( 255, $steps ) );
 
@@ -155,7 +150,7 @@ class Kirki_Color {
 		$green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 		$blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-		return self::sanitize_hex( '#' . $red_hex . $green_hex . $blue_hex );
+		return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
 	}
 
@@ -166,12 +161,8 @@ class Kirki_Color {
 	 */
 	public static function mix_colors( $hex1, $hex2, $percentage ) {
 
-		$hex1 = self::sanitize_hex( $hex1 );
-		$hex2 = self::sanitize_hex( $hex2 );
-
-		// Format the hex color string
-		$hex1 = str_replace( '#', '', $hex1 );
-		$hex2 = str_replace( '#', '', $hex2 );
+		$hex1 = self::sanitize_hex( $hex1, false );
+		$hex2 = self::sanitize_hex( $hex2, false );
 
 		// Get decimal values
 		$red_1   = hexdec( substr( $hex1, 0, 2 ) );
@@ -189,7 +180,7 @@ class Kirki_Color {
 		$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 		$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-		return self::sanitize_hex( '#' . $red_hex . $green_hex . $blue_hex );
+		return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
 	}
 
@@ -198,8 +189,7 @@ class Kirki_Color {
 	 */
 	public static function hex_to_hsv( $hex ) {
 
-		$hex = self::sanitize_hex( $hex );
-		$hex = str_replace( '#', '', $hex );
+		$hex = self::sanitize_hex( $hex, false );
 		$rgb = self::get_rgb( $hex );
 		$hsv = self::rgb_to_hsv( $rgb );
 
@@ -271,8 +261,7 @@ class Kirki_Color {
 		$brightest = false;
 
 		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color );
-			$hex        = str_replace( '#', '', $color );
+			$color      = self::sanitize_hex( $color, false );
 			$brightness = self::get_brightness( $hex );
 
 			if ( ! $brightest || self::get_brightness( $hex ) > self::get_brightness( $brightest ) ) {
@@ -298,8 +287,7 @@ class Kirki_Color {
 		$most_saturated = false;
 
 		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color );
-			$hex        = str_replace( '#', '', $color );
+			$color      = self::sanitize_hex( $color, false );
 			$hsv        = self::hex_to_hsv( $hex );
 			$saturation = $hsv['s'];
 
@@ -330,8 +318,7 @@ class Kirki_Color {
 		$most_intense = false;
 
 		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color );
-			$hex        = str_replace( '#', '', $color );
+			$color      = self::sanitize_hex( $color, false );
 			$hsv        = self::hex_to_hsv( $hex );
 			$saturation = $hsv['s'];
 
@@ -362,8 +349,7 @@ class Kirki_Color {
 		$brightest_dull = false;
 
 		foreach ( $colors as $color ) {
-			$color        = self::sanitize_hex( $color );
-			$hex          = str_replace( '#', '', $color );
+			$color        = self::sanitize_hex( $color, false );
 			$hsv          = self::hex_to_hsv( $hex );
 
 			$brightness   = self::get_brightness( $hex );
@@ -397,11 +383,8 @@ class Kirki_Color {
 	 */
 	public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 
-		$color_1 = self::sanitize_hex( $color_1 );
-		$color_2 = self::sanitize_hex( $color_2 );
-
-		$color_1 = str_replace( '#', '', $color_1 );
-		$color_2 = str_replace( '#', '', $color_2 );
+		$color_1 = self::sanitize_hex( $color_1, false );
+		$color_2 = self::sanitize_hex( $color_2, flase );
 
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
@@ -431,11 +414,8 @@ class Kirki_Color {
 	 */
 	public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 
-		$color_1 = self::sanitize_hex( $color_1 );
-		$color_2 = self::sanitize_hex( $color_2 );
-
-		$color_1 = str_replace( '#', '', $color_1 );
-		$color_2 = str_replace( '#', '', $color_2 );
+		$color_1 = self::sanitize_hex( $color_1, false );
+		$color_2 = self::sanitize_hex( $color_2, false );
 
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
@@ -461,11 +441,8 @@ class Kirki_Color {
 	 */
 	public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 
-		$color_1 = self::sanitize_hex( $color_1 );
-		$color_2 = self::sanitize_hex( $color_2 );
-
-		$color_1 = str_replace( '#', '', $color_1 );
-		$color_2 = str_replace( '#', '', $color_2 );
+		$color_1 = self::sanitize_hex( $color_1, false );
+		$color_2 = self::sanitize_hex( $color_2, false );
 
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
