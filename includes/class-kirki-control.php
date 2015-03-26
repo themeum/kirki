@@ -8,6 +8,7 @@ use Kirki\Controls\NumberControl;
 use Kirki\Controls\PaletteControl;
 use Kirki\Controls\RadioButtonSetControl;
 use Kirki\Controls\RadioImageControl;
+use Kirki\Controls\SliderControl;
 use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
@@ -64,13 +65,6 @@ class Kirki_Control {
 			$control['default'] = maybe_serialize( $control['default'] );
 		}
 
-		/**
-		 * Slider controls are now part of WordPress core and have type=range
-		 */
-		if ( 'slider' == $control['type'] ) {
-			$control['type'] = 'range';
-		}
-
 		return $control;
 
 	}
@@ -95,7 +89,7 @@ class Kirki_Control {
 		}
 
 		// Text, Dropdown Pages, Textarea and Select controls
-		elseif ( in_array( $control['type'], array( 'text', 'dropdown-pages', 'textarea', 'select', 'range' ) ) ) {
+		elseif ( in_array( $control['type'], array( 'text', 'dropdown-pages', 'textarea', 'select' ) ) ) {
 			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
@@ -137,6 +131,11 @@ class Kirki_Control {
 		// Sortable Controls
 		elseif ( 'sortable' == $control['type'] ) {
 			$wp_customize->add_control( new SortableControl( $wp_customize, $control['settings'], $control ) );
+		}
+
+		// Slider Controls
+		elseif ( 'slider' == $control['type'] ) {
+			$wp_customize->add_control( new SliderControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Number Controls
@@ -288,8 +287,7 @@ class Kirki_Control {
 			}
 
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $control['settings'] . '_opacity', array(
-					'type'        => 'range',
+				$wp_customize->add_control( new SliderControl( $wp_customize, $control['settings'] . '_opacity', array(
 					'label'       => '',
 					'section'     => $control['section'],
 					'settings'    => $control['settings'] . '_opacity',
