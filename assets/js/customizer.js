@@ -36,6 +36,17 @@ jQuery(document).ready(function($) {
 		})
 	});
 
+	// Range Input
+	var s = document.createElement('style'),
+		r = document.querySelector('[type=range]');
+	document.body.appendChild(s);
+
+	s.textContent += '.js input[type=range] /deep/ #thumb:before{content:"' + r.value + '"}' // Set the tooltip value based on the sliders current value.
+
+	r.addEventListener('input', function() {
+		$( this ).css("background-size", this.value + '%' ); // This changes the background size based on slider value, but is wonky.
+		s.textContent += '.js input[type=range] /deep/ #thumb:before{content:"' + this.value + '"}' // This updates tooltip value.
+	}, false);
 
 	// Switch Click
 	$('.Switch').click(function() {
@@ -49,6 +60,7 @@ jQuery(document).ready(function($) {
 	});
 
 });
+
 function kirkiUpdateSortable(ul) {
 	"use strict";
 	var $ = jQuery;
@@ -61,59 +73,58 @@ function kirkiUpdateSortable(ul) {
 	ul.siblings('input').eq(0).val( serialize( values ) ).trigger('change');
 }
 
-
 ( function( $ ) {
-    wp.customizerCtrlEditor = {
+	wp.customizerCtrlEditor = {
 
-        init: function() {
+		init: function() {
 
-            $(window).load(function(){
+			$(window).load(function(){
 
-                $('textarea.wp-editor-area').each(function(){
-                    var tArea = $(this),
-                        id = tArea.attr('id'),
-                        input = $('input[data-customize-setting-link="'+ id +'"]'),
-                        editor = tinyMCE.get(id),
-                        setChange,
-                        content;
+				$('textarea.wp-editor-area').each(function(){
+					var tArea = $(this),
+						id = tArea.attr('id'),
+						input = $('input[data-customize-setting-link="'+ id +'"]'),
+						editor = tinyMCE.get(id),
+						setChange,
+						content;
 
-                    if(editor){
-                        editor.onChange.add(function (ed, e) {
-                            ed.save();
-                            content = editor.getContent();
-                            clearTimeout(setChange);
-                            setChange = setTimeout(function(){
-                                input.val(content).trigger('change');
-                            },500);
-                        });
-                    }
+					if(editor){
+						editor.onChange.add(function (ed, e) {
+							ed.save();
+							content = editor.getContent();
+							clearTimeout(setChange);
+							setChange = setTimeout(function(){
+								input.val(content).trigger('change');
+							},500);
+						});
+					}
 
-                    if(editor){
-                        editor.onChange.add(function (ed, e) {
-                            ed.save();
-                            content = editor.getContent();
-                            clearTimeout(setChange);
-                            setChange = setTimeout(function(){
-                                input.val(content).trigger('change');
-                            },500);
-                        });
-                    }
+					if(editor){
+						editor.onChange.add(function (ed, e) {
+							ed.save();
+							content = editor.getContent();
+							clearTimeout(setChange);
+							setChange = setTimeout(function(){
+								input.val(content).trigger('change');
+							},500);
+						});
+					}
 
-                    tArea.css({
-                        visibility: 'visible'
-                    }).on('keyup', function(){
-                        content = tArea.val();
-                        clearTimeout(setChange);
-                        setChange = setTimeout(function(){
-                            input.val(content).trigger('change');
-                        },500);
-                    });
-                });
-            });
-        }
+					tArea.css({
+						visibility: 'visible'
+					}).on('keyup', function(){
+						content = tArea.val();
+						clearTimeout(setChange);
+						setChange = setTimeout(function(){
+							input.val(content).trigger('change');
+						},500);
+					});
+				});
+			});
+		}
 
-    };
+	};
 
-    wp.customizerCtrlEditor.init();
+	wp.customizerCtrlEditor.init();
 
 } )( jQuery );
