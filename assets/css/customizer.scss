@@ -81,10 +81,18 @@
 		background: #333;
 		color: white;
 		padding: 5px 10px;
-		font-size: 14px;
+		font-size: 12px;
 		line-height: 14px;
-		right: 25px;
-		top: 0;
+		height: auto;
+		margin-bottom: -14px;
+		width: 170px;
+		max-width: 170px;
+		display: block;
+		white-space: normal;
+		text-align: right;
+		position: relative;
+		top: -22px;
+		left: -202px;
 	}
 }
 
@@ -174,7 +182,7 @@ li.customize-control {
 			border: 1px solid #aaa;
 			border: 1px solid rgba(0,0,0,0.2);
 			background: #fff;
-			z-index: 999;
+			z-index: 989;
 			transition: all 0.15s ease-in-out;
 		}
 		.On,
