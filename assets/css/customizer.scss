@@ -1,3 +1,29 @@
+// Generic styles
+#customize-controls {
+	#customize-header-actions {
+
+	}
+	#customize-info {
+		.accordion-section-title {
+			border-bottom: 1px solid rgba(0,0,0,.3);
+		}
+	}
+	#customize-theme-controls {
+		#accordion-section-themes {
+
+		}
+		.accordion-section {
+			> .accordion-section-title {
+				border-bottom: 1px solid rgba(0,0,0,.3);
+				&:after {
+					border-color: rgba(0,0,0,0) !important;
+					border-color: transparent !important;
+				}
+			}
+		}
+	}
+}
+
 // Hints/Tooltips
 .hint, [data-hint] {
 	position: relative;
@@ -34,10 +60,7 @@
 	&:hover:before, &:hover:after {
 		transition-delay: 0ms;
 	}
-
-	/**
-	 * tooltip arrow
-	 */
+	// tooltip arrow
 	&:before {
 		content: '';
 		position: absolute;
@@ -52,10 +75,7 @@
 		border-left: 5px solid #333;
 		left: -5px;
 	}
-
-	/**
-	 * tooltip body
-	 */
+	// tooltip body
 	&:after {
 		content: attr(data-hint); // The magic!
 		background: #333;
@@ -100,6 +120,7 @@ li.customize-control {
 			margin-right: 5px;
 			margin-bottom: 5px;
 			&.ui-state-active {
+				background: none;
 				border-color: #333;
 			}
 		}
@@ -113,9 +134,16 @@ li.customize-control {
 	label {
 		padding: 5px 10px;
 		background: #f7f7f7;
-		border: 1px solid #f2f2f2;
+		border-left: 1px solid #dedede;
 		&.ui-state-active {
 			background: #dedede;
+		}
+		&.ui-corner-left {
+			border-radius: 3px 0 0 3px;
+			border-left: 0;
+		}
+		&.ui-corner-right {
+			border-radius: 0 3px 3px 0;
 		}
 	}
 }
@@ -212,8 +240,11 @@ body.IE7 .Switch.Round { width: 1px; }
 				}
 			}
 			&.invisible {
-				color: #999;
-				border: 1px dashed #999;
+				color: #aaa;
+				border: 1px dashed #aaa;
+				.dashicons.visibility {
+					color: #aaa;
+				}
 			}
 		}
 	}

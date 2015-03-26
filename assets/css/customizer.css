@@ -1,12 +1,14 @@
+#customize-controls #customize-info .accordion-section-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+#customize-controls #customize-theme-controls .accordion-section > .accordion-section-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+  #customize-controls #customize-theme-controls .accordion-section > .accordion-section-title:after {
+    border-color: transparent !important;
+    border-color: transparent !important; }
+
 .hint, [data-hint] {
   position: relative;
-  display: inline-block;
-  /**
-   * tooltip arrow
-   */
-  /**
-   * tooltip body
-   */ }
+  display: inline-block; }
   .hint:before, .hint:after, [data-hint]:before, [data-hint]:after {
     position: absolute;
     -webkit-transform: translate3d(0, 0, 0);
@@ -70,14 +72,20 @@ li.customize-control {
   margin-right: 5px;
   margin-bottom: 5px; }
   .customize-control-radio-image .image.ui-buttonset label.ui-state-active {
+    background: none;
     border-color: #333; }
 
 .customize-control-radio-buttonset label {
   padding: 5px 10px;
   background: #f7f7f7;
-  border: 1px solid #f2f2f2; }
+  border-left: 1px solid #dedede; }
   .customize-control-radio-buttonset label.ui-state-active {
     background: #dedede; }
+  .customize-control-radio-buttonset label.ui-corner-left {
+    border-radius: 3px 0 0 3px;
+    border-left: 0; }
+  .customize-control-radio-buttonset label.ui-corner-right {
+    border-radius: 0 3px 3px 0; }
 
 .customize-control-switch .Switch,
 .customize-control-toggle .Switch {
@@ -159,8 +167,10 @@ body.IE7 .Switch.Round {
   .customize-control-sortable ul.ui-sortable li .dashicons.visibility {
     margin-right: 10px; }
   .customize-control-sortable ul.ui-sortable li.invisible {
-    color: #999;
-    border: 1px dashed #999; }
+    color: #aaa;
+    border: 1px dashed #aaa; }
+    .customize-control-sortable ul.ui-sortable li.invisible .dashicons.visibility {
+      color: #aaa; }
 
 .customize-control-palette label.ui-button.ui-widget {
   width: 95%;
