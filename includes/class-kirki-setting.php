@@ -105,8 +105,6 @@ class Kirki_Setting {
 				$sanitize_callback = 'intval';
 			} elseif ( 'multicheck' == $control['type'] ) {
 				$sanitize_callback = 'esc_attr';
-			} elseif ( 'group_title' == $control['type'] ) {
-				$sanitize_callback = 'esc_attr';
 			} else {
 				$sanitize_callback = 'kirki_sanitize_unfiltered';
 			}
