@@ -8,59 +8,59 @@
    * tooltip body
    */ }
   .hint:before, .hint:after, [data-hint]:before, [data-hint]:after {
-	position: absolute;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-	visibility: hidden;
-	opacity: 0;
-	z-index: 998;
-	pointer-events: none;
-	transition: 0.3s ease;
-	transition-delay: 250ms; }
+    position: absolute;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 998;
+    pointer-events: none;
+    transition: 0.3s ease;
+    transition-delay: 250ms; }
   .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after, [data-hint]:hover:before, [data-hint]:hover:after, [data-hint]:focus:before, [data-hint]:focus:after {
-	visibility: visible;
-	opacity: 1; }
+    visibility: visible;
+    opacity: 1; }
   .hint:hover:before, .hint:hover:after, [data-hint]:hover:before, [data-hint]:hover:after {
-	transition-delay: 0ms; }
+    transition-delay: 0ms; }
   .hint:before, [data-hint]:before {
-	content: '';
-	position: absolute;
-	background: transparent;
-	border: none;
-	z-index: 999;
-	width: 0;
-	height: 0;
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	border-left: 5px solid #333;
-	left: -5px; }
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: none;
+    z-index: 999;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #333;
+    left: -5px; }
   .hint:after, [data-hint]:after {
-	content: attr(data-hint);
-	background: #333;
-	color: white;
-	padding: 5px 10px;
-	font-size: 14px;
-	line-height: 14px;
-	right: 25px;
-	top: 0; }
+    content: attr(data-hint);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 14px;
+    right: 25px;
+    top: 0; }
 
 li.customize-control {
   position: relative; }
   li.customize-control a.button.tooltip.hint--left {
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-size: 12px;
-	padding: 5px;
-	border-radius: 50%;
-	background: #333;
-	color: #fff;
-	border: none;
-	line-height: 12px;
-	width: 20px;
-	height: 20px;
-	padding: 5px 7px; }
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: none;
+    line-height: 12px;
+    width: 20px;
+    height: 20px;
+    padding: 5px 7px; }
 
 .customize-control-radio-image .image.ui-buttonset input[type=radio] {
   height: auto; }
@@ -70,14 +70,14 @@ li.customize-control {
   margin-right: 5px;
   margin-bottom: 5px; }
   .customize-control-radio-image .image.ui-buttonset label.ui-state-active {
-	border-color: #333; }
+    border-color: #333; }
 
 .customize-control-radio-buttonset label {
   padding: 5px 10px;
   background: #f7f7f7;
   border: 1px solid #f2f2f2; }
   .customize-control-radio-buttonset label.ui-state-active {
-	background: #dedede; }
+    background: #dedede; }
 
 .customize-control-switch .Switch,
 .customize-control-toggle .Switch {
@@ -97,52 +97,52 @@ li.customize-control {
   transition: all 0.15s ease-in-out; }
   .customize-control-switch .Switch .Toggle,
   .customize-control-toggle .Switch .Toggle {
-	position: absolute;
-	top: 1px;
-	width: 37px;
-	height: 25px;
-	border: 1px solid #aaa;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	background: #fff;
-	z-index: 999;
-	transition: all 0.15s ease-in-out; }
+    position: absolute;
+    top: 1px;
+    width: 37px;
+    height: 25px;
+    border: 1px solid #aaa;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    z-index: 999;
+    transition: all 0.15s ease-in-out; }
   .customize-control-switch .Switch .On,
   .customize-control-switch .Switch .Off,
   .customize-control-toggle .Switch .On,
   .customize-control-toggle .Switch .Off {
-	display: inline-block;
-	width: 35px;
-	position: relative;
-	top: -5px; }
+    display: inline-block;
+    width: 35px;
+    position: relative;
+    top: -5px; }
   .customize-control-switch .Switch .On,
   .customize-control-toggle .Switch .On {
-	color: #333; }
+    color: #333; }
   .customize-control-switch .Switch.On .Toggle,
   .customize-control-toggle .Switch.On .Toggle {
-	left: 54%; }
+    left: 54%; }
   .customize-control-switch .Switch.Off .Toggle,
   .customize-control-toggle .Switch.Off .Toggle {
-	left: 2%; }
+    left: 2%; }
   .customize-control-switch .Switch.Round,
   .customize-control-toggle .Switch.Round {
-	padding: 0px 20px;
-	border-radius: 40px;
-	margin-top: 5px; }
-	.customize-control-switch .Switch.Round .Toggle,
-	.customize-control-toggle .Switch.Round .Toggle {
-	  border-radius: 40px;
-	  width: 14px;
-	  height: 14px; }
-	.customize-control-switch .Switch.Round.Off .Toggle,
-	.customize-control-toggle .Switch.Round.Off .Toggle {
-	  left: 3%; }
-	.customize-control-switch .Switch.Round.On,
-	.customize-control-toggle .Switch.Round.On {
-	  color: #fff;
-	  background: #333; }
-	  .customize-control-switch .Switch.Round.On .Toggle,
-	  .customize-control-toggle .Switch.Round.On .Toggle {
-		left: 58%; }
+    padding: 0px 20px;
+    border-radius: 40px;
+    margin-top: 5px; }
+    .customize-control-switch .Switch.Round .Toggle,
+    .customize-control-toggle .Switch.Round .Toggle {
+      border-radius: 40px;
+      width: 14px;
+      height: 14px; }
+    .customize-control-switch .Switch.Round.Off .Toggle,
+    .customize-control-toggle .Switch.Round.Off .Toggle {
+      left: 3%; }
+    .customize-control-switch .Switch.Round.On,
+    .customize-control-toggle .Switch.Round.On {
+      color: #fff;
+      background: #333; }
+      .customize-control-switch .Switch.Round.On .Toggle,
+      .customize-control-toggle .Switch.Round.On .Toggle {
+        left: 58%; }
 
 body.IE7 .Switch {
   width: 78px; }
@@ -155,12 +155,12 @@ body.IE7 .Switch.Round {
   border: 1px solid #333;
   background: #fff; }
   .customize-control-sortable ul.ui-sortable li .dashicons.dashicons-menu {
-	float: right; }
+    float: right; }
   .customize-control-sortable ul.ui-sortable li .dashicons.visibility {
-	margin-right: 10px; }
+    margin-right: 10px; }
   .customize-control-sortable ul.ui-sortable li.invisible {
-	color: #999;
-	border: 1px dashed #999; }
+    color: #999;
+    border: 1px dashed #999; }
 
 .customize-control-palette label.ui-button.ui-widget {
   width: 95%;
@@ -171,72 +171,20 @@ body.IE7 .Switch.Round {
 .customize-control-palette label.ui-button .ui-button-text {
   display: flex; }
   .customize-control-palette label.ui-button .ui-button-text span {
-	padding: 10px 0;
-	flex-grow: 1;
-	font-size: 0px;
-	line-height: 10px;
-	color: transparent;
-	-webkit-transition: all 200ms ease-in-out;
-	-moz-transition: all 200ms ease-in-out;
-	-ms-transition: all 200ms ease-in-out;
-	-o-transition: all 200ms ease-in-out;
-	transition: all 200ms ease-in-out; }
-	.customize-control-palette label.ui-button .ui-button-text span:hover {
-	  padding: 10px;
-	  flex-grow: 3;
-	  min-width: 60px;
-	  font-size: 10px;
-	  line-height: 10px;
-	  color: #000; }
-
-/*Range / Slider */
-input[type='range']::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	background-color: #ffffff;
-	border: 1px solid #aaa;
-	width: 16px;
-	height: 16px;
-	border-radius: 40px;
-	cursor: pointer;
-	color: #333;
-	font-size: .75em;
-	padding: 0 1px;
-	text-align: center;
-}
-
-input[type='range'] {
-	box-sizing: border-box;
-	overflow: visible;
-	-webkit-appearance: none;
-	width: 100%;
-	padding: 0 0.5em;
-	border-radius: .25em;
-	background: #333;
-	background-size: 10% .5em;
-	-webkit-appearance: none;
-	width: 100%;
-	height: 20px;
-	color: #fff;
-	border: 1px solid #f5f5f5;
-	padding: 0px 1px;
-	border-radius: 40px;
-	margin-top: 5px;
-}
-label input[type='range']:active, label input[type='range']:focus {
-	outline-width: 0;
-}
-.js input[type='range'] /deep/ #thumb {
-	position: relative;
-}
-.js input[type='range'] /deep/ #thumb:before {
-	background: #000;
-	color: #fff;
-	position: absolute;
-	bottom: 100%;
-	left: 50%;
-	margin: .5em -2em;
-	width: 4em;
-	line-height: 2;
-	text-align: center;
-	content: '';
-}
+    padding: 10px 0;
+    flex-grow: 1;
+    font-size: 0px;
+    line-height: 10px;
+    color: transparent;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out; }
+    .customize-control-palette label.ui-button .ui-button-text span:hover {
+      padding: 10px;
+      flex-grow: 3;
+      min-width: 60px;
+      font-size: 10px;
+      line-height: 10px;
+      color: #000; }
