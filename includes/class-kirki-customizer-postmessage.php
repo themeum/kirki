@@ -3,6 +3,11 @@
 class Kirki_Customizer_postMessage {
 
 	function __construct() {
+		global $wp_customize;
+		// Early exit if we're not in the customizer
+		if ( ! isset( $wp_customize ) ) {
+			return;
+		}
 		add_action( 'wp_footer', array( $this, 'postmessage' ), 21 );
 	}
 
