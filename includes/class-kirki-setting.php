@@ -102,7 +102,7 @@ class Kirki_Setting {
 			} elseif ( 'upload' == $control['type'] ) {
 				$sanitize_callback = 'esc_url_raw';
 			} elseif ( 'number' == $control['type'] ) {
-				$sanitize_callback = 'intval';
+				$sanitize_callback = 'kirki_sanitize_number';
 			} elseif ( 'multicheck' == $control['type'] ) {
 				$sanitize_callback = 'esc_attr';
 			} else {
