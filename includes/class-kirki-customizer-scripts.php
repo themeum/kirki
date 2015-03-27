@@ -3,6 +3,7 @@
 class Kirki_Customizer_Scripts extends Kirki {
 
 	function __construct() {
+
 		add_action( 'customize_controls_print_scripts', array( $this, 'custom_js' ), 999 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ) );
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'required_script' ) );
@@ -53,51 +54,61 @@ class Kirki_Customizer_Scripts extends Kirki {
 
 		$controls = Kirki::controls()->get_all();
 
-		if ( isset( $controls ) ) {
-
-			foreach ( $controls as $control ) {
-
-				if ( isset( $control['required'] ) && ! is_null( $control['required'] && is_array( $control['required'] ) ) ) {
-
-					foreach ( $control['required'] as $id => $value ) : ?>
-
-						<script>
-							jQuery(document).ready(function($) {
-								<?php if ( isset( $id ) && isset( $value ) ) : ?>
-								 	<?php if ( $value == get_theme_mod( $id ) ) : ?>
-										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
-									<?php else : ?>
-										$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
-									<?php endif; ?>
-								<?php endif; ?>
-
-								$( "#input_<?php echo $id; ?> input" ).each(function(){
-									$(this).click(function(){
-										if ( $(this).val() == "<?php echo $value; ?>" ) {
-											$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
-										} else {
-											$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
-										}
-									});
-									if ( $(this).val() == "<?php echo $value; ?>" ) {
-											$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeIn(300);
-										} else {
-											$( '[id="customize-control-<?php echo $control['settings']; ?>"]' ).fadeOut(300);
-										}
-								});
-							});
-						</script>
-						<?php
-
-					endforeach;
-
-				}
-
-			}
-
+		// Early exit if no controls are defined
+		if ( empty( $controls ) ) {
+			return;
 		}
 
-	}
+		foreach ( $controls as $control ) {
 
+			$required = ( isset( $control['required'] ) ) ? $control['required'] : false;
+			$setting  = $control['settings'];
+
+			// N oneed to proceed if 'required' is not defined.
+			// if ( ! $required ) {
+			// 	return;
+			// }
+
+			echo '<script>';
+
+				$show = true;
+				foreach ( $required as $dependency ) {
+					// Get the initial status
+					if ( '==' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '!=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '>=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '<=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '>' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '<' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
+					}
+
+					echo 'jQuery(document).ready(function($) {
+						';
+
+					// Initial status is hidden
+					if ( ! $show ) {
+						echo '$("#customize-control-' . $setting . '").hide();';
+					}
+
+					echo '
+						$("#customize-control-' . $dependency['setting'] . ' input").change(function(){
+							if ($("#customize-control-' . $dependency['setting'] . ' input").val() ' . $dependency['operator'] . ' ' . $dependency['value'] . ') {
+								$("#customize-control-' . $setting . '").show();
+							} else {
+								$("#customize-control-' . $setting . '").hide();
+							}
+						});
+						$("#customize-control-' . $dependency['setting'] . ' input").trigger("change");
+					});';
+				}
+			echo '</script>';
+		}
+	}
 }
 $customizer_scripts = new Kirki_Customizer_Scripts();
