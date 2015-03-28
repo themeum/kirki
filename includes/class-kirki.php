@@ -116,12 +116,12 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
 
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
-class Kirki_Customizer_Help_Tooltips {
+namespace Kirki\Scripts\Customizer;
+
+use Kirki;
+
+class Tooltips {
 
 	function __construct() {
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'help_tooltip_script' ), 999 );
@@ -41,4 +45,4 @@ class Kirki_Customizer_Help_Tooltips {
 
 }
 
-$tooltips = new Kirki_Customizer_Help_Tooltips();
+$tooltips = new Tooltips();
