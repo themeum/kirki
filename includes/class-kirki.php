@@ -121,7 +121,7 @@ class Kirki {
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/GoogleFonts.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/PostMessage.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Frontend/GoogleFonts.php' );
     }
 }

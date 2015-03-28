@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirki\Scripts\Customizer;
+namespace Kirki\Scripts\Frontend;
 
 use Kirki;
 
