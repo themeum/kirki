@@ -46,7 +46,7 @@ class Config {
      *
      * @uses 'kirki/config' filter.
      */
-    protected function get_all() {
+    public function get_all() {
         if ($this->config==null) {
             // Get configuration from the filter
             $this->config = apply_filters('kirki/config', array());
