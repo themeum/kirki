@@ -69,7 +69,8 @@ class Kirki {
      */
 	private function __construct() {
         // Include all files we need
-        $this->include_files();
+		$this->include_helpers();
+		$this->include_files();
 
         // Create our main objects
         $this->config        = new Config();
@@ -105,19 +106,25 @@ class Kirki {
         add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
     }
 
-    /**
+	/**
+     * Include helper files we need
+     */
+    private function include_helpers() {
+
+        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
+
+        include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
+
+	}
+
+	/**
      * Include the files we need
      */
     private function include_files() {
-        // Load Kirki_Fonts before everything else
-        // TODO improve this
-        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
-        include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
-        include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
-
-        include_once( KIRKI_PATH . '/includes/deprecated.php' );
-        include_once( KIRKI_PATH . '/includes/sanitize.php' );
-        include_once( KIRKI_PATH . '/includes/helpers.php' );
 
 		include_once( KIRKI_PATH . '/includes/Config.php' );
 		include_once( KIRKI_PATH . '/includes/Setting.php' );
@@ -135,5 +142,7 @@ class Kirki {
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/PostMessage.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Frontend/GoogleFonts.php' );
+
     }
+
 }
