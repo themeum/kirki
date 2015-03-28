@@ -3,18 +3,15 @@
 namespace Kirki\Scripts\Customizer;
 
 use Kirki;
+use Kirki\Scripts\EnqueueScript;
 
-class Branding extends \Kirki {
-
-	function __construct() {
-		add_action( 'customize_controls_print_scripts', array( $this, 'script' ), 999 );
-	}
+class Branding extends EnqueueScript {
 
 	/**
 	 * If we've specified an image to be used as logo,
 	 * replace the default theme description with a div that will include our logo.
 	 */
-	function script() {
+	public function customize_controls_print_scripts() {
 
 		$options = apply_filters( 'kirki/config', array() ); ?>
 
@@ -30,5 +27,11 @@ class Branding extends \Kirki {
 		<?php endif;
 
 	}
+
+	public function customize_controls_enqueue_scripts() {}
+
+	public function customize_controls_print_footer_scripts() {}
+
+	public function wp_footer() {}
 
 }

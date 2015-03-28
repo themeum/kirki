@@ -3,17 +3,14 @@
 namespace Kirki\Scripts\Customizer;
 
 use Kirki;
+use Kirki\Scripts\EnqueueScript;
 
-class Required extends \Kirki {
-
-	function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'required_script' ) );
-	}
+class Required extends EnqueueScript {
 
 	/**
 	 * Add the required script.
 	 */
-	function required_script() {
+	function customize_controls_print_footer_scripts() {
 
 		$controls = Kirki::controls()->get_all();
 
@@ -105,5 +102,11 @@ class Required extends \Kirki {
 		}
 
 	}
+
+	public function customize_controls_print_scripts() {}
+
+	public function customize_controls_enqueue_scripts() {}
+
+	public function wp_footer() {}
 
 }

@@ -3,12 +3,9 @@
 namespace Kirki\Scripts\Customizer;
 
 use Kirki;
+use Kirki\Scripts\EnqueueScript;
 
-class PostMessage {
-
-	function __construct() {
-		add_action( 'wp_footer', array( $this, 'postmessage' ), 21 );
-	}
+class PostMessage extends EnqueueScript {
 
 	/**
 	 * Try to automatically generate the script necessary for postMessage to work.
@@ -34,7 +31,7 @@ class PostMessage {
 	)
 	 *
 	 */
-	function postmessage() {
+	public function wp_footer() {
 
 		global $wp_customize;
 		// Early exit if we're not in the customizer
@@ -67,5 +64,11 @@ class PostMessage {
 		<?php
 
 	}
+
+	public function customize_controls_print_scripts() {}
+
+	public function customize_controls_enqueue_scripts() {}
+
+	public function customize_controls_print_footer_scripts() {}
 
 }
