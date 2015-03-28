@@ -110,7 +110,6 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-        include_once( KIRKI_PATH . '/includes/class-kirki-google-fonts-script.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
@@ -123,5 +122,6 @@ class Kirki {
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/GoogleFonts.php' );
     }
 }
