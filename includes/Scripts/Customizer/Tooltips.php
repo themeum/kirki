@@ -44,5 +44,3 @@ class Tooltips {
 	}
 
 }
-
-$tooltips = new Tooltips();

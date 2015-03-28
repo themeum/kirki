@@ -107,4 +107,3 @@ class Required extends \Kirki {
 	}
 
 }
-$customizer_scripts = new Required();

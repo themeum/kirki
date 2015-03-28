@@ -32,4 +32,3 @@ class Branding extends \Kirki {
 	}
 
 }
-$branding = new Branding();

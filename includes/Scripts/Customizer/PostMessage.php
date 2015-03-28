@@ -69,4 +69,3 @@ class PostMessage {
 	}
 
 }
-$postmessage = new PostMessage();

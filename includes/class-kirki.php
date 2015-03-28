@@ -1,6 +1,7 @@
 <?php
 
 use Kirki\Fonts\FontRegistry;
+use Kirki\Scripts\ScriptRegistry;
 use Kirki\Config;
 use Kirki\Setting;
 use Kirki\Control;
@@ -27,6 +28,9 @@ class Kirki {
 
     /** @var FontRegistry The font registry */
     public $font_registry = null;
+
+    /** @var scripts */
+    public $scripts= null;
 
     /**
      * Access the single instance of this class
@@ -71,6 +75,7 @@ class Kirki {
         $this->config        = new Config();
         $this->controls      = new Controls();
         $this->font_registry = new FontRegistry();
+        $this->scripts       = new ScriptRegistry();
 
         // Hook into WP
         $this->register_hooks();
@@ -97,7 +102,7 @@ class Kirki {
      * Hook into WP
      */
     private function register_hooks() {
-        add_action('customize_register', array($this, 'customizer_init'), 99);
+        add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
     }
 
     /**
@@ -122,7 +127,8 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
         include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
 
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
+        include_once( KIRKI_PATH . '/includes/Scripts/ScriptRegistry.php' );
+        include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );

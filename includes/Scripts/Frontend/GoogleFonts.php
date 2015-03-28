@@ -100,4 +100,3 @@ class GoogleFonts extends \Kirki {
 	}
 
 }
-$google_fonts_script = new GoogleFonts();

@@ -27,4 +27,3 @@ class Dependencies extends \Kirki {
 	}
 
 }
-$dependencies = new Dependencies();
