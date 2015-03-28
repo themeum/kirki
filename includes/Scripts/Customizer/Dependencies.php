@@ -1,6 +1,10 @@
 <?php
 
-class Kirki_Customizer_Scripts extends Kirki {
+namespace Kirki\Scripts\Customizer;
+
+use Kirki;
+
+class Dependencies extends \Kirki {
 
 	function __construct() {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ) );
@@ -23,4 +27,4 @@ class Kirki_Customizer_Scripts extends Kirki {
 	}
 
 }
-$customizer_scripts = new Kirki_Customizer_Scripts();
+$dependencies = new Dependencies();
