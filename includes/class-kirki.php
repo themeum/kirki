@@ -114,13 +114,13 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-        include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
-
 		include_once( KIRKI_PATH . '/includes/Config.php' );
 		include_once( KIRKI_PATH . '/includes/Setting.php' );
 		include_once( KIRKI_PATH . '/includes/Control.php' );
-		include_once( KIRKI_PATH . '/includes/Controls.php' );
+        include_once( KIRKI_PATH . '/includes/Controls.php' );
+
+        include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
+        include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
 
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
