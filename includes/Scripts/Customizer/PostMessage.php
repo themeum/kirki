@@ -1,6 +1,10 @@
 <?php
 
-class Kirki_Customizer_postMessage {
+namespace Kirki\Scripts\Customizer;
+
+use Kirki;
+
+class PostMessage {
 
 	function __construct() {
 		global $wp_customize;
@@ -63,4 +67,4 @@ class Kirki_Customizer_postMessage {
 	}
 
 }
-$postmessage = new Kirki_Customizer_postMessage();
+$postmessage = new PostMessage();
