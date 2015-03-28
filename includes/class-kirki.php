@@ -1,6 +1,7 @@
 <?php
 
 use Kirki\Fonts\FontRegistry;
+use Kirki\Config;
 use Kirki\Setting;
 
 /**
@@ -16,7 +17,7 @@ class Kirki {
     /** @var string Version number */
     public static $version = '0.7.1';
 
-    /** @var Kirki_Config Configuration */
+    /** @var Config Configuration */
 	public $config = null;
 
     /** @var Kirki_Controls Controls */
@@ -65,7 +66,7 @@ class Kirki {
         $this->include_files();
 
         // Create our main objects
-        $this->config = new Kirki_Config();
+        $this->config = new Config();
         $this->controls = new Kirki_Controls();
         $this->font_registry = new FontRegistry();
 
@@ -111,12 +112,12 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-        include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
 
+		include_once( KIRKI_PATH . '/includes/Config.php' );
 		include_once( KIRKI_PATH . '/includes/Setting.php' );
 
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );

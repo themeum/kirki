@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Config {
+namespace Kirki;
+
+class Config {
 
     /** @var array The configuration values for Kirki */
     private $config = null;
