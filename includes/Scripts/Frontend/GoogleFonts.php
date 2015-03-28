@@ -1,6 +1,10 @@
 <?php
 
-class Kirki_Google_Fonts_Script extends Kirki {
+namespace Kirki\Scripts\Frontend;
+
+use Kirki;
+
+class GoogleFonts extends \Kirki {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
@@ -26,7 +30,7 @@ class Kirki_Google_Fonts_Script extends Kirki {
 
 				// Check if this is a font-weight control
 				$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
-                
+
 				// Check if this is a font subset control
 				$is_font_subset = isset( $control['output']['property'] ) && 'font-subset' == $control['output']['property'] ? true : false;
 
@@ -96,4 +100,3 @@ class Kirki_Google_Fonts_Script extends Kirki {
 	}
 
 }
-$google_fonts_script = new Kirki_Google_Fonts_Script();

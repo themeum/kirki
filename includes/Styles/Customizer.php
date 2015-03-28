@@ -1,6 +1,9 @@
 <?php
 
-class Kirki_Customizer_Styles {
+namespace Kirki\Styles;
+use Kirki;
+
+class Customizer {
 
 	function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
@@ -27,15 +30,15 @@ class Kirki_Customizer_Styles {
 		$color_font    = false;
 		$color_accent  = $config->get( 'color_accent', $color['icon_colors']['focus']);
 		$color_back    = $config->get( 'color_back',   '#ffffff' );
-		$color_font    = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
+		$color_font    = ( 170 > \Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
 
 		$styles = '<style>';
 
 		// Background styles
 		$styles .= '#customize-controls .wp-full-overlay-sidebar-content{background-color:' . $color_back . ';}';
 		$styles .= '#customize-theme-controls .accordion-section-title, #customize-info .accordion-section-title,#customize-info .accordion-section-title:hover,#customize-info.open .accordion-section-title{background-color:' . $color_back . ';color:' . $color_font . ';}';
-		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,.control-section.control-panel>.accordion-section-title:after{background-color:' . Kirki_Color::adjust_brightness( $color_back, -10 ) . ';color:' . $color_font . ';}';
-		$styles .= '#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after{background-color:' . Kirki_Color::adjust_brightness( $color_back, -20 ) . ';color:' . $color_font . ';}';
+		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,.control-section.control-panel>.accordion-section-title:after{background-color:' . \Kirki_Color::adjust_brightness( $color_back, -10 ) . ';color:' . $color_font . ';}';
+		$styles .= '#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after{background-color:' . \Kirki_Color::adjust_brightness( $color_back, -20 ) . ';color:' . $color_font . ';}';
 		$styles .= '#customize-theme-controls .control-section.open .accordion-section-title{background-color:' . $color_accent . ' !important;color:' . $color_font . ' !important;}';
 
 		// Tooltip styles
@@ -54,7 +57,7 @@ class Kirki_Customizer_Styles {
 		$styles .= '.customize-control-switch .Switch .On, .customize-control-toggle .Switch .On{color:' . $color_accent . ';}';
 
 		// Toggle Controls
-		$styles .= '.customize-control-switch .Switch.Round.On, .customize-control-toggle .Switch.Round.On{background-color:' . Kirki_Color::adjust_brightness( $color_accent, -10 ) . ';}';
+		$styles .= '.customize-control-switch .Switch.Round.On, .customize-control-toggle .Switch.Round.On{background-color:' . \Kirki_Color::adjust_brightness( $color_accent, -10 ) . ';}';
 
 		// Sortable Controls
 		$styles .= '.customize-control-sortable ul.ui-sortable li .dashicons.visibility{color:' . $color_accent . ';}';
@@ -87,4 +90,4 @@ class Kirki_Customizer_Styles {
 	}
 
 }
-$customizer_styles = new Kirki_Customizer_Styles();
+$customizer_styles = new Customizer();

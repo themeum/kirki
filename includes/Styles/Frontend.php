@@ -1,6 +1,9 @@
 <?php
 
-class Kirki_Styles {
+namespace Kirki\Styles;
+use Kirki;
+
+class Frontend {
 
 	function __construct() {
 		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
@@ -67,7 +70,7 @@ class Kirki_Styles {
 		// Color controls
 		if ( 'color' == $control['type'] ) {
 
-			$color = Kirki_Color::sanitize_hex( $value );
+			$color = \Kirki_Color::sanitize_hex( $value );
 			$styles[$element][$property] = $color;
 
 		}
@@ -76,7 +79,7 @@ class Kirki_Styles {
 		elseif ( 'background' == $control['type'] ) {
 
 			if ( isset( $control['default']['color'] ) ) {
-				$bg_color = Kirki_Color::sanitize_hex( get_theme_mod( $control['settings'] . '_color', $control['default']['color'] ) );
+				$bg_color = \Kirki_Color::sanitize_hex( get_theme_mod( $control['settings'] . '_color', $control['default']['color'] ) );
 			}
 			if ( isset( $control['default']['image'] ) ) {
 				$bg_image = get_theme_mod( $control['settings'] . '_image', $control['default']['image'] );
@@ -97,7 +100,7 @@ class Kirki_Styles {
 				$bg_opacity = get_theme_mod( $control['settings'] . '_opacity', $control['default']['opacity'] );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
-					$bg_color = ( 100 != $bg_opacity ) ? Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;
+					$bg_color = ( 100 != $bg_opacity ) ? \Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;
 				} elseif ( isset( $bg_image ) ) {
 					$element_opacity = ( $bg_opacity / 100 );
 				}
@@ -215,4 +218,4 @@ class Kirki_Styles {
 	}
 
 }
-$styles = new Kirki_Styles();
+$styles = new Frontend();

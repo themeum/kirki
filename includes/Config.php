@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Config {
+namespace Kirki;
+
+class Config {
 
     /** @var array The configuration values for Kirki */
     private $config = null;
@@ -44,7 +46,7 @@ class Kirki_Config {
      *
      * @uses 'kirki/config' filter.
      */
-    protected function get_all() {
+    public function get_all() {
         if ($this->config==null) {
             // Get configuration from the filter
             $this->config = apply_filters('kirki/config', array());

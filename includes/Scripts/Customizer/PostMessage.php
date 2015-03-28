@@ -1,15 +1,11 @@
 <?php
 
-class Kirki_Customizer_postMessage {
+namespace Kirki\Scripts\Customizer;
 
-	function __construct() {
-		global $wp_customize;
-		// Early exit if we're not in the customizer
-		if ( ! isset( $wp_customize ) ) {
-			return;
-		}
-		add_action( 'wp_footer', array( $this, 'postmessage' ), 21 );
-	}
+use Kirki;
+use Kirki\Scripts\EnqueueScript;
+
+class PostMessage extends EnqueueScript {
 
 	/**
 	 * Try to automatically generate the script necessary for postMessage to work.
@@ -35,7 +31,14 @@ class Kirki_Customizer_postMessage {
 	)
 	 *
 	 */
-	function postmessage() { ?>
+	public function wp_footer() {
+
+		global $wp_customize;
+		// Early exit if we're not in the customizer
+		if ( ! isset( $wp_customize ) ) {
+			return;
+		}
+		?>
 
 		<?php $controls = Kirki::controls()->get_all(); ?>
 
@@ -62,5 +65,10 @@ class Kirki_Customizer_postMessage {
 
 	}
 
+	public function customize_controls_print_scripts() {}
+
+	public function customize_controls_enqueue_scripts() {}
+
+	public function customize_controls_print_footer_scripts() {}
+
 }
-$postmessage = new Kirki_Customizer_postMessage();

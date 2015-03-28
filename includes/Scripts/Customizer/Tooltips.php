@@ -1,15 +1,16 @@
 <?php
 
-class Kirki_Customizer_Help_Tooltips {
+namespace Kirki\Scripts\Customizer;
 
-	function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'help_tooltip_script' ), 999 );
-	}
+use Kirki;
+use Kirki\Scripts\EnqueueScript;
+
+class Tooltips extends EnqueueScript {
 
 	/**
 	 * Add the help bubble
 	 */
-	function help_tooltip_script() {
+	function customize_controls_print_footer_scripts() {
 
 		$controls = Kirki::controls()->get_all();
 
@@ -37,8 +38,13 @@ class Kirki_Customizer_Help_Tooltips {
 		$script = implode( '', $scripts );
 
 		echo '<script type="text/javascript">jQuery(document).ready(function( $ ) {' . $script . '});</script>';
+
 	}
 
-}
+	public function customize_controls_print_scripts() {}
 
-$tooltips = new Kirki_Customizer_Help_Tooltips();
+	public function customize_controls_enqueue_scripts() {}
+
+	public function wp_footer() {}
+
+}

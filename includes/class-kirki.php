@@ -1,6 +1,11 @@
 <?php
 
 use Kirki\Fonts\FontRegistry;
+use Kirki\Scripts\ScriptRegistry;
+use Kirki\Config;
+use Kirki\Setting;
+use Kirki\Control;
+use Kirki\Controls;
 
 /**
  * Class Kirki
@@ -15,14 +20,17 @@ class Kirki {
     /** @var string Version number */
     public static $version = '0.7.1';
 
-    /** @var Kirki_Config Configuration */
+    /** @var Config Configuration */
 	public $config = null;
 
-    /** @var Kirki_Controls Controls */
+    /** @var Controls */
     public $controls = null;
 
     /** @var FontRegistry The font registry */
     public $font_registry = null;
+
+    /** @var scripts */
+    public $scripts= null;
 
     /**
      * Access the single instance of this class
@@ -61,12 +69,14 @@ class Kirki {
      */
 	private function __construct() {
         // Include all files we need
-        $this->include_files();
+		$this->include_helpers();
+		$this->include_files();
 
         // Create our main objects
-        $this->config = new Kirki_Config();
-        $this->controls = new Kirki_Controls();
+        $this->config        = new Config();
+        $this->controls      = new Controls();
         $this->font_registry = new FontRegistry();
+        $this->scripts       = new ScriptRegistry();
 
         // Hook into WP
         $this->register_hooks();
@@ -84,8 +94,8 @@ class Kirki {
 		}
 
 		foreach ( $controls as $control ) {
-			Kirki_Setting::register( $wp_customize, $control );
-			Kirki_Control::register( $wp_customize, $control );
+			Setting::register( $wp_customize, $control );
+			Control::register( $wp_customize, $control );
 		}
 	}
 
@@ -93,32 +103,46 @@ class Kirki {
      * Hook into WP
      */
     private function register_hooks() {
-        add_action('customize_register', array($this, 'customizer_init'), 99);
+        add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
     }
 
-    /**
+	/**
+     * Include helper files we need
+     */
+    private function include_helpers() {
+
+        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
+
+        include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
+        include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
+
+	}
+
+	/**
      * Include the files we need
      */
     private function include_files() {
-        // Load Kirki_Fonts before everything else
-        // TODO improve this
-        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
-        include_once( KIRKI_PATH . '/includes/libraries/class-kirki-color.php' );
-        include_once( KIRKI_PATH . '/includes/libraries/class-kirki-colourlovers.php' );
 
-        include_once( KIRKI_PATH . '/includes/deprecated.php' );
-        include_once( KIRKI_PATH . '/includes/sanitize.php' );
-        include_once( KIRKI_PATH . '/includes/helpers.php' );
+		include_once( KIRKI_PATH . '/includes/Config.php' );
+		include_once( KIRKI_PATH . '/includes/Setting.php' );
+		include_once( KIRKI_PATH . '/includes/Control.php' );
+        include_once( KIRKI_PATH . '/includes/Controls.php' );
 
-        include_once( KIRKI_PATH . '/includes/class-kirki-google-fonts-script.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-help-tooltips.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-postmessage.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-customizer-scripts.php' );
+        include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
+        include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
+
+		include_once( KIRKI_PATH . '/includes/Scripts/ScriptRegistry.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/EnqueueScript.php' );
+        include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/PostMessage.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/Frontend/GoogleFonts.php' );
+
     }
+
 }
