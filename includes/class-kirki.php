@@ -127,7 +127,8 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
         include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
 
-        include_once( KIRKI_PATH . '/includes/Scripts/ScriptRegistry.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/ScriptRegistry.php' );
+		include_once( KIRKI_PATH . '/includes/Scripts/EnqueueScript.php' );
         include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
