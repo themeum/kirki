@@ -7,6 +7,12 @@ use Kirki\Setting;
 use Kirki\Control;
 use Kirki\Controls;
 
+spl_autoload_register( function( $class ) {
+	if ( stripos( $class, 'Kirki' ) === 0 ) {
+		@include( KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . str_replace( '\\', DIRECTORY_SEPARATOR, strtolower( substr( $class, strlen( 'Kirki' ) ) ) ) . '.php' );
+	}
+});
+
 /**
  * Class Kirki
  *
@@ -69,7 +75,6 @@ class Kirki {
      */
 	private function __construct() {
         // Include all files we need
-		$this->include_helpers();
 		$this->include_files();
 
         // Create our main objects
@@ -109,7 +114,7 @@ class Kirki {
 	/**
      * Include helper files we need
      */
-    private function include_helpers() {
+    private function include_files() {
 
         include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
@@ -119,30 +124,12 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
 
+		// Include styles
+		// These are currently outside the autoloader,
+		// we should add them in there instead.
+		include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
+		include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
+
 	}
-
-	/**
-     * Include the files we need
-     */
-    private function include_files() {
-
-		include_once( KIRKI_PATH . '/includes/Config.php' );
-		include_once( KIRKI_PATH . '/includes/Setting.php' );
-		include_once( KIRKI_PATH . '/includes/Control.php' );
-        include_once( KIRKI_PATH . '/includes/Controls.php' );
-
-        include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
-        include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
-
-		include_once( KIRKI_PATH . '/includes/Scripts/ScriptRegistry.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/EnqueueScript.php' );
-        include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Branding.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Tooltips.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/PostMessage.php' );
-		include_once( KIRKI_PATH . '/includes/Scripts/Frontend/GoogleFonts.php' );
-
-    }
 
 }
