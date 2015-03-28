@@ -1,6 +1,7 @@
 <?php
 
 use Kirki\Fonts\FontRegistry;
+use Kirki\Setting;
 
 /**
  * Class Kirki
@@ -84,7 +85,7 @@ class Kirki {
 		}
 
 		foreach ( $controls as $control ) {
-			Kirki_Setting::register( $wp_customize, $control );
+			Setting::register( $wp_customize, $control );
 			Kirki_Control::register( $wp_customize, $control );
 		}
 	}
@@ -112,10 +113,11 @@ class Kirki {
 
         include_once( KIRKI_PATH . '/includes/class-kirki-config.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-setting.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
+
+		include_once( KIRKI_PATH . '/includes/Setting.php' );
 
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );

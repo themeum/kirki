@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Setting {
+namespace Kirki;
+
+class Setting {
 
 	/**
 	 * Build a single setting
