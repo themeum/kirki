@@ -7,11 +7,6 @@ use Kirki;
 class PostMessage {
 
 	function __construct() {
-		global $wp_customize;
-		// Early exit if we're not in the customizer
-		if ( ! isset( $wp_customize ) ) {
-			return;
-		}
 		add_action( 'wp_footer', array( $this, 'postmessage' ), 21 );
 	}
 
@@ -39,7 +34,14 @@ class PostMessage {
 	)
 	 *
 	 */
-	function postmessage() { ?>
+	function postmessage() {
+
+		global $wp_customize;
+		// Early exit if we're not in the customizer
+		if ( ! isset( $wp_customize ) ) {
+			return;
+		}
+		?>
 
 		<?php $controls = Kirki::controls()->get_all(); ?>
 
