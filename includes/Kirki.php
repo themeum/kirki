@@ -6,6 +6,7 @@ use Kirki\Config;
 use Kirki\Setting;
 use Kirki\Control;
 use Kirki\Controls;
+use Kirki\Styles;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
@@ -82,6 +83,7 @@ class Kirki {
         $this->controls      = new Controls();
         $this->font_registry = new FontRegistry();
         $this->scripts       = new ScriptRegistry();
+		$this->styles        = new Styles();
 
         // Hook into WP
         $this->register_hooks();
@@ -123,12 +125,6 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
-
-		// Include styles
-		// These are currently outside the autoloader,
-		// we should add them in there instead.
-		include_once( KIRKI_PATH . '/includes/Styles/Customizer.php' );
-		include_once( KIRKI_PATH . '/includes/Styles/Frontend.php' );
 
 	}
 
