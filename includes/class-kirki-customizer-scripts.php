@@ -59,55 +59,79 @@ class Kirki_Customizer_Scripts extends Kirki {
 			return;
 		}
 
+		$script = '';
+
 		foreach ( $controls as $control ) {
 
 			$required = ( isset( $control['required'] ) ) ? $control['required'] : false;
 			$setting  = $control['settings'];
 
-			// N oneed to proceed if 'required' is not defined.
+			// No need to proceed if 'required' is not defined.
 			// if ( ! $required ) {
 			// 	return;
 			// }
 
-			echo '<script>';
-
-				$show = true;
-				foreach ( $required as $dependency ) {
-					// Get the initial status
-					if ( '==' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
-					}
-
-					echo 'jQuery(document).ready(function($) {
-						';
-
-					// Initial status is hidden
-					if ( ! $show ) {
-						echo '$("#customize-control-' . $setting . '").hide();';
-					}
-
-					echo '
-						$("#customize-control-' . $dependency['setting'] . ' input").change(function(){
-							if ($("#customize-control-' . $dependency['setting'] . ' input").val() ' . $dependency['operator'] . ' ' . $dependency['value'] . ') {
-								$("#customize-control-' . $setting . '").show();
-							} else {
-								$("#customize-control-' . $setting . '").hide();
-							}
-						});
-						$("#customize-control-' . $dependency['setting'] . ' input").trigger("change");
-					});';
+			$show = true;
+			foreach ( $required as $dependency ) {
+				// Get the initial status
+				if ( '==' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
+				} elseif ( '!=' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
+				} elseif ( '>=' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
+				} elseif ( '<=' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
+				} elseif ( '>' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
+				} elseif ( '<' == $dependency['operator'] ) {
+					$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
 				}
-			echo '</script>';
+
+				// Find the type of the dependency control
+				foreach ( $controls as $control ) {
+					if ( $dependency['setting'] == $control['settings'] ) {
+						$type = $control['type'];
+					}
+				}
+
+				// Set the control type
+				$type = ( 'dropdown-pages' == $type )  ? 'select'   : $type;
+				$type = ( 'radio-image' == $type )     ? 'radio'    : $type;
+				$type = ( 'radio-buttonset' == $type ) ? 'radio'    : $type;
+				$type = ( 'toggle' == $type )          ? 'checkbox' : $type;
+				$type = ( 'switch' == $type )          ? 'checkbox' : $type;
+
+				// Set the controller used in the script
+				$controller = '#customize-control-' . $dependency['setting'] . ' input';
+				if ( 'select' == $type ) {
+					$controller = '#customize-control-' . $dependency['setting'] . ' select';
+				} elseif ( 'radio' == $type ) {
+					$controller = '#customize-control-' . $dependency['setting'] . ' input[value="' . $dependency['value'] . '"]';
+				}
+
+				// The target element
+				$target = '#customize-control-' . $setting;
+
+				// if initial status is hidden then hide the control
+				if ( ! $show ) {
+					$script .= '$("' . $target . '").hide();';
+				}
+
+				$script .= '$("' . $controller . '").';
+				$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
+				$script .= '(function(){';
+				$script .= 'if ($("' . $controller . '").';
+				$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
+				$script .= '$("' . $target . '").show();';
+				$script .= '} else {';
+				$script .= '$("' . $target . '").hide();';
+				$script .= '}});';
+				$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
+			}
+		}
+		if ( ! empty( $script ) ) {
+			echo '<script>jQuery(document).ready(function($) {' . $script . '});</script>';
 		}
 	}
 }
