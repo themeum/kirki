@@ -1,6 +1,8 @@
 <?php
 
-class Kirki_Controls {
+namespace Kirki;
+
+class Controls {
 
     /** @var array An array that defines which custom control types are available and the corresponding class name */
     public static $CONTROL_TYPES = array(
@@ -34,12 +36,12 @@ class Kirki_Controls {
 	 * @uses  'kirki/controls' filter.
 	 */
 	public function get_all() {
-        if ($this->controls==null) {
+        if ( $this->controls==null ) {
 		    $user_controls = apply_filters( 'kirki/controls', array() );
 
             $this->controls = array();
 			foreach ( $user_controls as $control ) {
-                $this->controls[] = Kirki_Control::sanitize( $control );
+                $this->controls[] = Control::sanitize( $control );
 			}
 		}
 
@@ -58,8 +60,8 @@ class Kirki_Controls {
      */
     public function include_files() {
         $path = KIRKI_PATH . '/includes/Controls';
-        foreach (self::$CONTROL_TYPES as $typeId => $className) {
-            include_once($path . '/' . $className . '.php');
+        foreach ( self::$CONTROL_TYPES as $typeId => $className ) {
+            include_once( $path . '/' . $className . '.php' );
         }
     }
 

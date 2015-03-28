@@ -29,7 +29,7 @@ function kirki_update() {
 		$controls = Kirki::controls()->get_all();
 
 		foreach ( $controls as $control ) {
-			$control = Kirki_Control::sanitize( $control );
+			$control = \Kirki\Control::sanitize( $control );
 
 			if ( 'background' != $control['type'] ) {
 				$control_ids[] = $control['settings'];
@@ -90,7 +90,7 @@ function kirki_get_option( $option ) {
 	if ( isset( $value ) ) {
 		return $value;
 	}
-	
+
 	// fallback to returning an empty string
 	return '';
 

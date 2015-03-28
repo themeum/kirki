@@ -3,6 +3,8 @@
 use Kirki\Fonts\FontRegistry;
 use Kirki\Config;
 use Kirki\Setting;
+use Kirki\Control;
+use Kirki\Controls;
 
 /**
  * Class Kirki
@@ -20,7 +22,7 @@ class Kirki {
     /** @var Config Configuration */
 	public $config = null;
 
-    /** @var Kirki_Controls Controls */
+    /** @var Controls */
     public $controls = null;
 
     /** @var FontRegistry The font registry */
@@ -66,8 +68,8 @@ class Kirki {
         $this->include_files();
 
         // Create our main objects
-        $this->config = new Config();
-        $this->controls = new Kirki_Controls();
+        $this->config        = new Config();
+        $this->controls      = new Controls();
         $this->font_registry = new FontRegistry();
 
         // Hook into WP
@@ -87,7 +89,7 @@ class Kirki {
 
 		foreach ( $controls as $control ) {
 			Setting::register( $wp_customize, $control );
-			Kirki_Control::register( $wp_customize, $control );
+			Control::register( $wp_customize, $control );
 		}
 	}
 
@@ -113,12 +115,12 @@ class Kirki {
         include_once( KIRKI_PATH . '/includes/helpers.php' );
 
         include_once( KIRKI_PATH . '/includes/class-kirki-styles.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
-        include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
         include_once( KIRKI_PATH . '/includes/class-kirki-customizer-styles.php' );
 
 		include_once( KIRKI_PATH . '/includes/Config.php' );
 		include_once( KIRKI_PATH . '/includes/Setting.php' );
+		include_once( KIRKI_PATH . '/includes/Control.php' );
+		include_once( KIRKI_PATH . '/includes/Controls.php' );
 
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Dependencies.php' );
 		include_once( KIRKI_PATH . '/includes/Scripts/Customizer/Required.php' );

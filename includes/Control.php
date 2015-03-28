@@ -1,5 +1,7 @@
 <?php
 
+namespace Kirki;
+
 use Kirki\Controls\CustomControl;
 use Kirki\Controls\EditorControl;
 use Kirki\Controls\MultiCheckControl;
@@ -12,7 +14,7 @@ use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
 
-class Kirki_Control {
+class Control {
 
 	/**
 	 * Cleanup a single controls.
@@ -79,22 +81,22 @@ class Kirki_Control {
 
 		// Color controls
 		if ( 'color' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Color_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Image Controls
 		elseif ( 'image' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Image_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Text, Dropdown Pages, Textarea and Select controls
 		elseif ( in_array( $control['type'], array( 'text', 'dropdown-pages', 'textarea', 'select' ) ) ) {
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Upload Controls
 		elseif ( 'upload' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Upload_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Switch Controls
@@ -109,7 +111,7 @@ class Kirki_Control {
 
 		// Checkbox Controls
 		elseif ( 'checkbox' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Radio-Buttonset Controls
@@ -124,7 +126,7 @@ class Kirki_Control {
 
 		// Radio Controls
 		elseif ( 'radio' == $control['type'] ) {
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
+			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Sortable Controls
@@ -169,7 +171,7 @@ class Kirki_Control {
 			 * so it requires extra steps to be created
 			 */
 			if ( isset( $control['default']['color'] ) ) {
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control['settings'] . '_color', array(
+				$wp_customize->add_control( new \WP_Customize_Color_Control( $wp_customize, $control['settings'] . '_color', array(
 					'label'       => isset( $control['label'] ) ? $control['label'] : '',
 					'section'     => $control['section'],
 					'settings'    => $control['settings'] . '_color',
@@ -182,7 +184,7 @@ class Kirki_Control {
 			}
 
 			if ( isset( $control['default']['image'] ) ) {
-				$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control['settings'] . '_image', array(
+				$wp_customize->add_control( new \WP_Customize_Image_Control( $wp_customize, $control['settings'] . '_image', array(
 					'label'       => '',
 					'section'     => $control['section'],
 					'settings'    => $control['settings'] . '_image',
