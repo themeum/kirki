@@ -4,7 +4,6 @@ class Kirki_Controls {
 
     /** @var array An array that defines which custom control types are available and the corresponding class name */
     public static $CONTROL_TYPES = array(
-        'group-title'       => 'GroupTitleControl',
         'multicheck'        => 'MultiCheckControl',
         'number'            => 'NumberControl',
         'radio-buttonset'   => 'RadioButtonSetControl',

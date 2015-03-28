@@ -3,7 +3,12 @@
 class Kirki_Customizer_postMessage {
 
 	function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'postmessage' ), 21 );
+		global $wp_customize;
+		// Early exit if we're not in the customizer
+		if ( ! isset( $wp_customize ) ) {
+			return;
+		}
+		add_action( 'wp_footer', array( $this, 'postmessage' ), 21 );
 	}
 
 	/**
@@ -13,38 +18,47 @@ class Kirki_Customizer_postMessage {
 
 	'transport' => 'postMessage',
 	'js_vars'   => array(
+		array(
 			'element'  => 'body',
-			'type'     => 'css',
+			'function' => 'css',
 			'property' => 'color',
 		),
+		array(
+			'element'  => '#content',
+			'function' => 'css',
+			'property' => 'background-color',
+		),
+		array(
+		'element'  => 'body',
+		'function' => 'html',
+		)
+	)
 	 *
 	 */
-	function postmessage() {
+	function postmessage() { ?>
 
-		$controls = Kirki::controls()->get_all();
+		<?php $controls = Kirki::controls()->get_all(); ?>
 
-		$script = '';
-
-		foreach ( $controls as $control ) {
-
-			if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) {
-
-				$script .= '<script type="text/javascript">jQuery(document).ready(function( $ ) {';
-				$script .= 'wp.customize("' . $control['settings'] . '",function( value ) {';
-
-				if ( isset( $control['js_vars']['type'] ) && 'css' == $control['js_vars']['type'] ) {
-					$script .= 'value.bind(function(to) {';
-					$script .= '$("' . $control['js_vars']['element'] . '").css("' . $control['js_vars']['property'] . '", to ? to : "" );';
-					$script .= '});';
-				}
-
-				$script .= '});});</script>';
-
-			}
-
-		}
-
-		echo $script;
+		<script type="text/javascript">
+			( function( $ ) {
+				<?php foreach ( $controls as $control ) : ?>
+					<?php if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
+						<?php foreach ( $control['js_vars'] as $js_vars ) : ?>
+							wp.customize( '<?php echo $control["settings"]; ?>', function( value ) {
+								value.bind( function( newval ) {
+									<?php if ( 'html' == $js_vars['function'] ) : ?>
+										$( '<?php echo $js_vars["element"]; ?>' ).html( newval );
+									<?php elseif ( 'css' == $js_vars['function'] ) : ?>
+										$('<?php echo $js_vars["element"]; ?>').css('<?php echo $js_vars["property"]; ?>', newval );
+									<?php endif; ?>
+								} );
+							} );
+						<?php endforeach; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			} )( jQuery );
+		</script>
+		<?php
 
 	}
 

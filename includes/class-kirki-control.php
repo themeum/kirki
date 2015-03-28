@@ -2,7 +2,6 @@
 
 use Kirki\Controls\CustomControl;
 use Kirki\Controls\EditorControl;
-use Kirki\Controls\GroupTitleControl;
 use Kirki\Controls\MultiCheckControl;
 use Kirki\Controls\NumberControl;
 use Kirki\Controls\PaletteControl;
@@ -148,18 +147,13 @@ class Kirki_Control {
 			$wp_customize->add_control( new MultiCheckControl( $wp_customize, $control['settings'], $control ) );
 		}
 
-		// Group-Title Controls
-		elseif ( 'group-title' == $control['type'] ) {
-			$wp_customize->add_control( new GroupTitleControl( $wp_customize, $control['settings'], $control ) );
-		}
-
 		// Palette Control
 		elseif ( 'palette' == $control['type'] ) {
 			$wp_customize->add_control( new PaletteControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Custom Control
-		elseif ( 'custom' == $control['type'] ) {
+		elseif ( in_array( $control['type'], array( 'custom', 'group-title', 'group_title' ) ) ) {
 			$wp_customize->add_control( new CustomControl( $wp_customize, $control['settings'], $control ) );
 		}
 

@@ -14,17 +14,18 @@ class Kirki_Color {
 
 		// Remove any spaces and special characters before and after the string
 		$color = trim( $color. ' \t\n\r\0\x0B' );
+
 		// Remove any trailing '#' symbols from the color value
 		$color = str_replace( '#', '', $color );
+
 		// If there are more than 6 characters, only keep the first 6.
-		if ( strlen( $color ) > 6 ) {
-			$color = ( strpos( $color, 'transparent' ) === false ) ? substr( $color, 0, 6 ) : 'ffffff';
-		}
+		$color = ( strlen( $color ) > 6 ) ? substr( $color, 0, 6 ) : 'ffffff';
+
+		// Check the validity of the hex (also takes care of wrong values like "transparent")
+		$color = ( empty( $color ) || ! ctype_xdigit( $color ) ) ? 'ffffff' : $color;
 
 		if ( strlen( $color ) == 6 ) {
-
 			$hex = $color; // If string consists of 6 characters, then this is our color
-
 		} else {
 
 			// String is shorter than 6 characters.
@@ -72,11 +73,8 @@ class Kirki_Color {
 
 		// rgb is an array
 		$rgb = array( $red, $green, $blue );
-		if ( $implode ) {
-			return implode( ',', $rgb );
-		} else {
-			return $rgb;
-		}
+
+		return ( $implode ) ? implode( ',', $rgb ) : $rgb;
 
 	}
 
@@ -235,11 +233,11 @@ class Kirki_Color {
 				$h = ( 2 / 3 ) + $del_g - $del_r;
 			}
 
-			if ( $h<0 ) {
+			if ( $h < 0 ) {
 				$h++;
 			}
 
-			if ( $h>1 ) {
+			if ( $h > 1 ) {
 				$h--;
 			}
 		}
