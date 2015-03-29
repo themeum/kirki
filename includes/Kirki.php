@@ -122,7 +122,6 @@ class Kirki {
      */
     private function include_files() {
 
-        include_once( KIRKI_PATH . '/includes/Fonts/FontRegistry.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
 
