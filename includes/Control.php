@@ -79,19 +79,19 @@ class Control {
 
 		$control = self::sanitize( $control );
 
+		// Text, Dropdown Pages, Textarea, Select, checkbox & radio controls
+		if ( in_array( $control['type'], array( 'text', 'dropdown-pages', 'textarea', 'select', 'checkbox', 'radio' ) ) ) {
+			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
+		}
+
 		// Color controls
-		if ( 'color' == $control['type'] ) {
+		elseif ( 'color' == $control['type'] ) {
 			$wp_customize->add_control( new \WP_Customize_Color_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Image Controls
 		elseif ( 'image' == $control['type'] ) {
 			$wp_customize->add_control( new \WP_Customize_Image_Control( $wp_customize, $control['settings'], $control ) );
-		}
-
-		// Text, Dropdown Pages, Textarea and Select controls
-		elseif ( in_array( $control['type'], array( 'text', 'dropdown-pages', 'textarea', 'select' ) ) ) {
-			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Upload Controls
@@ -109,11 +109,6 @@ class Control {
 			$wp_customize->add_control( new ToggleControl( $wp_customize, $control['settings'], $control ) );
 		}
 
-		// Checkbox Controls
-		elseif ( 'checkbox' == $control['type'] ) {
-			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
-		}
-
 		// Radio-Buttonset Controls
 		elseif ( 'radio-buttonset' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'buttonset' == $control['mode'] ) ) {
 			$wp_customize->add_control( new RadioButtonSetControl( $wp_customize, $control['settings'], $control ) );
@@ -122,11 +117,6 @@ class Control {
 		// Radio-Image Controls
 		elseif ( 'radio-image' == $control['type'] || ( 'radio' == $control['type'] && isset( $control['mode'] ) && 'image' == $control['mode'] ) ) {
 			$wp_customize->add_control( new RadioImageControl( $wp_customize, $control['settings'], $control ) );
-		}
-
-		// Radio Controls
-		elseif ( 'radio' == $control['type'] ) {
-			$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Sortable Controls
