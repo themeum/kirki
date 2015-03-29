@@ -16,7 +16,7 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 }
 
 // Include the main kirki class
-include_once( KIRKI_PATH . '/includes/class-kirki.php' );
+include_once( KIRKI_PATH . '/includes/Kirki.php' );
 
 // Make sure the class is instanciated
 Kirki::get_instance();

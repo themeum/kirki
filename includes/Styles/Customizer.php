@@ -2,6 +2,7 @@
 
 namespace Kirki\Styles;
 use Kirki;
+use Kirki\Styles;
 
 class Customizer {
 
@@ -90,4 +91,3 @@ class Customizer {
 	}
 
 }
-$customizer_styles = new Customizer();

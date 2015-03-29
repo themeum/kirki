@@ -2,6 +2,7 @@
 
 namespace Kirki\Styles;
 use Kirki;
+use Kirki\Styles;
 
 class Frontend {
 
@@ -13,7 +14,7 @@ class Frontend {
 
 
 	function enqueue_styles() {
-		wp_add_inline_style( Kirki::config()->getOrThrow('stylesheet_id'), $this->styles_parse() );
+		wp_add_inline_style( Kirki::config()->getOrThrow( 'stylesheet_id' ), $this->styles_parse() );
 	}
 
 
@@ -218,4 +219,3 @@ class Frontend {
 	}
 
 }
-$styles = new Frontend();
