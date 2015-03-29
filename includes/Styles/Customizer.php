@@ -11,14 +11,12 @@ class Customizer {
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
 	}
 
-
 	/**
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
 		wp_enqueue_style( 'kirki-customizer-css', KIRKI_URL . '/assets/css/customizer.css', NULL, '0.5' );
 	}
-
 
 	/**
 	 * Add custom CSS rules to the head, applying our custom styles
