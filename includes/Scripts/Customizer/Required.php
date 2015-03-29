@@ -79,15 +79,29 @@ class Required extends EnqueueScript {
 					if ( ! $show ) {
 						$script .= '$("' . $target . '").hide();';
 					}
+					$action_1 = '.show()';
+					$action_2 = '.hide()';
+					if ( 'checkbox' == $type ) {
+						if ( 0 == $dependency['value'] && '==' == $dependency['operator'] ) {
+							$action_1 = '.hide()';
+							$action_2 = '.show()';
+						}
+						if ( 1 == $dependency['value'] && '!=' == $dependency['operator'] ) {
+							$action_1 = '.hide()';
+							$action_2 = '.show()';
+						}
+					}
+
+					// Allow checking both checked and unchecked checkboxes
 
 					$script .= '$("' . $controller . '").';
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
 					$script .= 'if ($("' . $controller . '").';
 					$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-					$script .= '$("' . $target . '").show();';
+					$script .= '$("' . $target . '")' . $action_1 . ';';
 					$script .= '} else {';
-					$script .= '$("' . $target . '").hide();';
+					$script .= '$("' . $target . '")' . $action_2 . ';';
 					$script .= '}});';
 					$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
 				}
