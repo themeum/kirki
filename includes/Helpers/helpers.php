@@ -95,3 +95,13 @@ function kirki_get_option( $option ) {
 	return '';
 
 }
+
+/**
+ * Helper function to get the translation textdomain
+ */
+function kirki_textdomain() {
+
+	$config = apply_filters( 'kirki/config', array() );
+	return ( isset( $config['textdomain'] ) ) ? $config['textdomain'] : 'kirki';
+
+}

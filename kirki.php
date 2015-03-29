@@ -21,3 +21,14 @@ include_once( KIRKI_PATH . '/includes/Kirki.php' );
 
 // Make sure the class is instanciated
 Kirki::get_instance();
+
+add_action( 'plugins_loaded', 'kirki_load_textdomain' );
+/**
+ * Load plugin textdomain.
+ *
+ * @since 1.0.0
+ */
+function kirki_load_textdomain() {
+	$textdomain = kirki_textdomain();
+	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
+}

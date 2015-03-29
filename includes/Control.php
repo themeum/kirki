@@ -85,6 +85,8 @@ class Control {
 	 */
 	public function add( $wp_customize, $control ) {
 
+		$textdomain = kirki_textdomain();
+
 		$control = self::sanitize( $control );
 
 		// Text, Dropdown Pages, Textarea, Select, checkbox & radio controls
@@ -175,7 +177,7 @@ class Control {
 					'settings'    => $control['settings'] . '_color',
 					'priority'    => $control['priority'],
 					'help'        => $control['help'],
-					'description' => __( 'Background Color', 'kirki' ),
+					'description' => __( 'Background Color', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );
@@ -188,7 +190,7 @@ class Control {
 					'settings'    => $control['settings'] . '_image',
 					'priority'    => $control['priority'] + 1,
 					'help'        => '',
-					'description' => __( 'Background Image', 'kirki' ),
+					'description' => __( 'Background Image', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );
@@ -202,14 +204,14 @@ class Control {
 					'settings'    => $control['settings'] . '_repeat',
 					'priority'    => $control['priority'] + 2,
 					'choices'     => array(
-						'no-repeat' => __( 'No Repeat', 'kirki' ),
-						'repeat'    => __( 'Repeat All', 'kirki' ),
-						'repeat-x'  => __( 'Repeat Horizontally', 'kirki' ),
-						'repeat-y'  => __( 'Repeat Vertically', 'kirki' ),
-						'inherit'   => __( 'Inherit', 'kirki' )
+						'no-repeat' => __( 'No Repeat', $textdomain ),
+						'repeat'    => __( 'Repeat All', $textdomain ),
+						'repeat-x'  => __( 'Repeat Horizontally', $textdomain ),
+						'repeat-y'  => __( 'Repeat Vertically', $textdomain ),
+						'inherit'   => __( 'Inherit', $textdomain )
 					),
 					'help'        => '',
-					'description' => __( 'Background Repeat', 'kirki' ),
+					'description' => __( 'Background Repeat', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -223,13 +225,13 @@ class Control {
 					'settings'    => $control['settings'] . '_size',
 					'priority'    => $control['priority'] + 3,
 					'choices'     => array(
-						'inherit' => __( 'Inherit', 'kirki' ),
-						'cover'   => __( 'Cover', 'kirki' ),
-						'contain' => __( 'Contain', 'kirki' ),
+						'inherit' => __( 'Inherit', $textdomain ),
+						'cover'   => __( 'Cover', $textdomain ),
+						'contain' => __( 'Contain', $textdomain ),
 					),
 					'help'        => '',
 					'mode'        => 'buttonset',
-					'description' => __( 'Background Size', 'kirki' ),
+					'description' => __( 'Background Size', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -243,13 +245,13 @@ class Control {
 					'settings'    => $control['settings'] . '_attach',
 					'priority'    => $control['priority'] + 4,
 					'choices'     => array(
-						'inherit' => __( 'Inherit', 'kirki' ),
-						'fixed'   => __( 'Fixed', 'kirki' ),
-						'scroll'  => __( 'Scroll', 'kirki' ),
+						'inherit' => __( 'Inherit', $textdomain ),
+						'fixed'   => __( 'Fixed', $textdomain ),
+						'scroll'  => __( 'Scroll', $textdomain ),
 					),
 					'help'        => '',
 					'mode'        => 'buttonset',
-					'description' => __( 'Background Attachment', 'kirki' ),
+					'description' => __( 'Background Attachment', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -263,18 +265,18 @@ class Control {
 					'settings'    => $control['settings'] . '_position',
 					'priority'    => $control['priority'] + 5,
 					'choices'     => array(
-						'left-top'      => __( 'Left Top', 'kirki' ),
-						'left-center'   => __( 'Left Center', 'kirki' ),
-						'left-bottom'   => __( 'Left Bottom', 'kirki' ),
-						'right-top'     => __( 'Right Top', 'kirki' ),
-						'right-center'  => __( 'Right Center', 'kirki' ),
-						'right-bottom'  => __( 'Right Bottom', 'kirki' ),
-						'center-top'    => __( 'Center Top', 'kirki' ),
-						'center-center' => __( 'Center Center', 'kirki' ),
-						'center-bottom' => __( 'Center Bottom', 'kirki' ),
+						'left-top'      => __( 'Left Top', $textdomain ),
+						'left-center'   => __( 'Left Center', $textdomain ),
+						'left-bottom'   => __( 'Left Bottom', $textdomain ),
+						'right-top'     => __( 'Right Top', $textdomain ),
+						'right-center'  => __( 'Right Center', $textdomain ),
+						'right-bottom'  => __( 'Right Bottom', $textdomain ),
+						'center-top'    => __( 'Center Top', $textdomain ),
+						'center-center' => __( 'Center Center', $textdomain ),
+						'center-bottom' => __( 'Center Bottom', $textdomain ),
 					),
 					'help'        => '',
-					'description' => __( 'Background Position', 'kirki' ),
+					'description' => __( 'Background Position', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -292,7 +294,7 @@ class Control {
 						'step'    => 1,
 					),
 					'help'        => '',
-					'description' => __( 'Background Opacity', 'kirki' ),
+					'description' => __( 'Background Opacity', $textdomain ),
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );

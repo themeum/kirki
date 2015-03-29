@@ -41,12 +41,13 @@ function kirki_sanitize_choice( $input, $setting ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_repeat( $value ) {
+	$textdomain = kirki_textdomain();
 	$valid = array(
-		'no-repeat' => __( 'No Repeat', 'kirki' ),
-		'repeat'    => __( 'Repeat All', 'kirki' ),
-		'repeat-x'  => __( 'Repeat Horizontally', 'kirki' ),
-		'repeat-y'  => __( 'Repeat Vertically', 'kirki' ),
-		'inherit'   => __( 'Inherit', 'kirki' )
+		'no-repeat' => __( 'No Repeat', $textdomain ),
+		'repeat'    => __( 'Repeat All', $textdomain ),
+		'repeat-x'  => __( 'Repeat Horizontally', $textdomain ),
+		'repeat-y'  => __( 'Repeat Vertically', $textdomain ),
+		'inherit'   => __( 'Inherit', $textdomain )
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -59,10 +60,11 @@ function kirki_sanitize_bg_repeat( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_size( $value ) {
+	$textdomain = kirki_textdomain();
 	$valid = array(
-		'inherit' => __( 'Inherit', 'kirki' ),
-		'cover'   => __( 'Cover', 'kirki' ),
-		'contain' => __( 'Contain', 'kirki' ),
+		'inherit' => __( 'Inherit', $textdomain ),
+		'cover'   => __( 'Cover', $textdomain ),
+		'contain' => __( 'Contain', $textdomain ),
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -75,10 +77,11 @@ function kirki_sanitize_bg_size( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_attach( $value ) {
+	$textdomain = kirki_textdomain();
 	$valid = array(
-		'inherit' => __( 'Inherit', 'kirki' ),
-		'fixed'   => __( 'Fixed', 'kirki' ),
-		'scroll'  => __( 'Scroll', 'kirki' ),
+		'inherit' => __( 'Inherit', $textdomain ),
+		'fixed'   => __( 'Fixed', $textdomain ),
+		'scroll'  => __( 'Scroll', $textdomain ),
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -91,16 +94,17 @@ function kirki_sanitize_bg_attach( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_position( $value ) {
+	$textdomain = kirki_textdomain();
 	$valid = array(
-		'left-top'      => __( 'Left Top', 'kirki' ),
-		'left-center'   => __( 'Left Center', 'kirki' ),
-		'left-bottom'   => __( 'Left Bottom', 'kirki' ),
-		'right-top'     => __( 'Right Top', 'kirki' ),
-		'right-center'  => __( 'Right Center', 'kirki' ),
-		'right-bottom'  => __( 'Right Bottom', 'kirki' ),
-		'center-top'    => __( 'Center Top', 'kirki' ),
-		'center-center' => __( 'Center Center', 'kirki' ),
-		'center-bottom' => __( 'Center Bottom', 'kirki' ),
+		'left-top'      => __( 'Left Top', $textdomain ),
+		'left-center'   => __( 'Left Center', $textdomain ),
+		'left-bottom'   => __( 'Left Bottom', $textdomain ),
+		'right-top'     => __( 'Right Top', $textdomain ),
+		'right-center'  => __( 'Right Center', $textdomain ),
+		'right-bottom'  => __( 'Right Bottom', $textdomain ),
+		'center-top'    => __( 'Center Top', $textdomain ),
+		'center-center' => __( 'Center Center', $textdomain ),
+		'center-bottom' => __( 'Center Bottom', $textdomain ),
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'center-center';
