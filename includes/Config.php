@@ -21,9 +21,11 @@ class Config {
      *
      * @return mixed
      */
-    public function get($key, $default='') {
+    public function get( $key, $default='' ) {
+
         $cfg = $this->get_all();
-        return isset($cfg[$key]) ? $cfg[$key] : $default;
+        return isset( $cfg[$key] ) ? $cfg[$key] : $default;
+
     }
 
     /**
@@ -33,12 +35,15 @@ class Config {
      *
      * @return mixed
      */
-    public function getOrThrow($key) {
+    public function getOrThrow( $key ) {
+
         $cfg = $this->get_all();
-        if (isset($cfg[$key])) {
+        if ( isset( $cfg[$key] ) ) {
             return $cfg[$key];
         }
-        throw new RuntimeException(sprintf("Configuration key %s is mandatory and has not been specified", $key));
+
+        throw new RuntimeException( sprintf( "Configuration key %s is mandatory and has not been specified", $key ) );
+
     }
 
     /**
@@ -47,7 +52,9 @@ class Config {
      * @uses 'kirki/config' filter.
      */
     public function get_all() {
-        if ($this->config==null) {
+
+        if ( is_null( $this->config ) ) {
+
             // Get configuration from the filter
             $this->config = apply_filters('kirki/config', array());
 
@@ -55,7 +62,8 @@ class Config {
             $default_config = array(
                 'stylesheet_id' => 'kirki-styles'
             );
-            $this->config = array_merge($default_config, $this->config);
+            $this->config = array_merge( $default_config, $this->config );
+
         }
 
         return $this->config;

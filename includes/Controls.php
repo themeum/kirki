@@ -36,7 +36,7 @@ class Controls {
 	 * @uses  'kirki/controls' filter.
 	 */
 	public function get_all() {
-        if ( $this->controls==null ) {
+        if ( $this->controls == null ) {
 		    $user_controls = apply_filters( 'kirki/controls', array() );
 
             $this->controls = array();
