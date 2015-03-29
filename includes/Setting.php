@@ -23,11 +23,11 @@ class Setting {
 		if ( 'background' == $control['type'] ) {
 
 			if ( isset( $control['default']['color'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_color', $control['default']['color'], $this->sanitize_callback( 'color' ) );
+				$this->add_setting( $wp_customize, $control, $control['settings'] . '_color', $control['default']['color'], 'sanitize_hex_color' );
 			}
 
 			if ( isset( $control['default']['image'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_image', $control['default']['image'], $this->sanitize_callback( 'image' ) );
+				$this->add_setting( $wp_customize, $control, $control['settings'] . '_image', $control['default']['image'], 'esc_url_raw' );
 			}
 			if ( isset( $control['default']['repeat'] ) ) {
 				$this->add_setting( $wp_customize, $control, $control['settings'] . '_repeat', $control['default']['repeat'], 'kirki_sanitize_bg_repeat' );
@@ -82,11 +82,11 @@ class Setting {
 
 	}
 
-	public function add_setting( $wp_customize, $control, $id_override = false, $default_override = false, $callback = false ) {
+	public function add_setting( $wp_customize, $control, $id_override = null, $default_override = null, $callback = null ) {
 
-		$id       = ( $id_override ) ? $id_override : $control['settings'];
-		$default  = ( $default_override ) ? $default_override : $control['default'];
-		$callback = ( $callback ) ? $callback : $this->sanitize_callback( $control['type'] );
+		$id       = ( ! is_null( $id_override ) )      ? $id_override      : $control['settings'];
+		$default  = ( ! is_null( $default_override ) ) ? $default_override : $control['default'];
+		$callback = ( ! is_null( $callback ) )         ? $callback         : $this->sanitize_callback( $control['type'] );
 
 		$wp_customize->add_setting( $id, array(
 			'default'           => $default,
