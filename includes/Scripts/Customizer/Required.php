@@ -26,73 +26,71 @@ class Required extends EnqueueScript {
 			$required = ( isset( $control['required'] ) ) ? $control['required'] : false;
 			$setting  = $control['settings'];
 
-			// No need to proceed if 'required' is not defined.
-			// if ( ! $required ) {
-			// 	return;
-			// }
+			if ( $required ) {
 
-			$show = true;
-			foreach ( $required as $dependency ) {
-				// Get the initial status
-				if ( '==' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
-				} elseif ( '!=' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
-				} elseif ( '>=' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
-				} elseif ( '<=' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
-				} elseif ( '>' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
-				} elseif ( '<' == $dependency['operator'] ) {
-					$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
-				}
-
-				// Find the type of the dependency control
-				foreach ( $controls as $control ) {
-					if ( $dependency['setting'] == $control['settings'] ) {
-						$type = $control['type'];
+				$show = true;
+				foreach ( $required as $dependency ) {
+					// Get the initial status
+					if ( '==' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '!=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '>=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '<=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '>' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
+					} elseif ( '<' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
 					}
-				}
 
-				// If "operator" is not set then set it to "=="
-				if ( ! isset( $dependency['operator'] ) ) {
-					$dependency['operator'] = '==';
-				}
+					// Find the type of the dependency control
+					foreach ( $controls as $control ) {
+						if ( $dependency['setting'] == $control['settings'] ) {
+							$type = $control['type'];
+						}
+					}
 
-				// Set the control type
-				$type = ( 'dropdown-pages' == $type )  ? 'select'   : $type;
-				$type = ( 'radio-image' == $type )     ? 'radio'    : $type;
-				$type = ( 'radio-buttonset' == $type ) ? 'radio'    : $type;
-				$type = ( 'toggle' == $type )          ? 'checkbox' : $type;
-				$type = ( 'switch' == $type )          ? 'checkbox' : $type;
+					// If "operator" is not set then set it to "=="
+					if ( ! isset( $dependency['operator'] ) ) {
+						$dependency['operator'] = '==';
+					}
 
-				// Set the controller used in the script
-				$controller = '#customize-control-' . $dependency['setting'] . ' input';
-				if ( 'select' == $type ) {
-					$controller = '#customize-control-' . $dependency['setting'] . ' select';
-				} elseif ( 'radio' == $type ) {
-					$controller = '#customize-control-' . $dependency['setting'] . ' input[value="' . $dependency['value'] . '"]';
-				}
+					// Set the control type
+					$type = ( 'dropdown-pages' == $type )  ? 'select'   : $type;
+					$type = ( 'radio-image' == $type )     ? 'radio'    : $type;
+					$type = ( 'radio-buttonset' == $type ) ? 'radio'    : $type;
+					$type = ( 'toggle' == $type )          ? 'checkbox' : $type;
+					$type = ( 'switch' == $type )          ? 'checkbox' : $type;
 
-				// The target element
-				$target = '#customize-control-' . $setting;
+					// Set the controller used in the script
+					$controller = '#customize-control-' . $dependency['setting'] . ' input';
+					if ( 'select' == $type ) {
+						$controller = '#customize-control-' . $dependency['setting'] . ' select';
+					} elseif ( 'radio' == $type ) {
+						$controller = '#customize-control-' . $dependency['setting'] . ' input[value="' . $dependency['value'] . '"]';
+					}
 
-				// if initial status is hidden then hide the control
-				if ( ! $show ) {
+					// The target element
+					$target = '#customize-control-' . $setting;
+
+					// if initial status is hidden then hide the control
+					if ( ! $show ) {
+						$script .= '$("' . $target . '").hide();';
+					}
+
+					$script .= '$("' . $controller . '").';
+					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
+					$script .= '(function(){';
+					$script .= 'if ($("' . $controller . '").';
+					$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
+					$script .= '$("' . $target . '").show();';
+					$script .= '} else {';
 					$script .= '$("' . $target . '").hide();';
+					$script .= '}});';
+					$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
 				}
-
-				$script .= '$("' . $controller . '").';
-				$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
-				$script .= '(function(){';
-				$script .= 'if ($("' . $controller . '").';
-				$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-				$script .= '$("' . $target . '").show();';
-				$script .= '} else {';
-				$script .= '$("' . $target . '").hide();';
-				$script .= '}});';
-				$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
 			}
 		}
 
