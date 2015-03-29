@@ -61,6 +61,9 @@ class Customizer {
 		// Sortable Controls
 		$styles .= '.customize-control-sortable ul.ui-sortable li .dashicons.visibility{color:' . $color_accent . ';}';
 
+		// Palette Controls
+		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {border-color:' . $color_accent . ';}';
+
 		$styles .= '</style>';
 
 		echo $styles;
