@@ -13,7 +13,7 @@ class Branding extends EnqueueScript {
 	 */
 	public function customize_controls_print_scripts() {
 
-		$options = apply_filters( 'kirki/config', array() ); ?>
+		$options = Kirki::config()->get_all(); ?>
 
 		<?php if ( isset( $options['logo_image'] ) || isset( $options['description'] ) ) : ?>
 			<script>jQuery(document).ready(function($) { "use strict";

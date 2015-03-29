@@ -56,6 +56,7 @@ class Required extends EnqueueScript {
 					if ( ! isset( $dependency['operator'] ) ) {
 						$dependency['operator'] = '==';
 					}
+					$dependency['operator'] = esc_js( $dependency['operator'] );
 
 					// Set the control type
 					$type = ( 'dropdown-pages' == $type )  ? 'select'   : $type;

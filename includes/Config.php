@@ -56,13 +56,19 @@ class Config {
         if ( is_null( $this->config ) ) {
 
             // Get configuration from the filter
-            $this->config = apply_filters('kirki/config', array());
+            $this->config = apply_filters( 'kirki/config', array() );
 
             // Merge a default configuration with the one we got from the user to make sure nothing is missing
             $default_config = array(
                 'stylesheet_id' => 'kirki-styles'
             );
             $this->config = array_merge( $default_config, $this->config );
+			if ( isset( $this->config['logo_image'] ) ) {
+				$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
+			}
+			if ( isset( $this->config['description'] ) ) {
+				$this->config['description'] = esc_html( $this->config['description'] );
+			}
 
         }
 

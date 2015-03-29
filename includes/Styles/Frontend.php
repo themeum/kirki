@@ -22,7 +22,7 @@ class Frontend {
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
 	function frontend_styles() {
-        $config = Kirki::config();
+        $config   = Kirki::config();
 		$controls = Kirki::controls()->get_all();
 
         $kirki_url = $config->get('url_path', KIRKI_URL);
@@ -34,7 +34,7 @@ class Frontend {
 			}
 		}
 
-		if ( isset( $uses_output )  && $kirki_stylesheet === 'kirki-styles' ) {
+		if ( isset( $uses_output )  && $uses_output && $kirki_stylesheet === 'kirki-styles' ) {
 			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
@@ -84,21 +84,27 @@ class Frontend {
 			}
 			if ( isset( $control['default']['image'] ) ) {
 				$bg_image = get_theme_mod( $control['settings'] . '_image', $control['default']['image'] );
+				$bg_image = esc_url_raw( $bg_image );
 			}
 			if ( isset( $control['default']['repeat'] ) ) {
 				$bg_repeat = get_theme_mod( $control['settings'] . '_repeat', $control['default']['repeat'] );
+				$bg_repeat = kirki_sanitize_bg_repeat( $bg_repeat );
 			}
 			if ( isset( $control['default']['size'] ) ) {
 				$bg_size = get_theme_mod( $control['settings'] . '_size', $control['default']['size'] );
+				$bg_size = kirki_sanitize_bg_size( $bg_size );
 			}
 			if ( isset( $control['default']['attach'] ) ) {
 				$bg_attach = get_theme_mod( $control['settings'] . '_attach', $control['default']['attach'] );
+				$bg_attach = kirki_sanitize_bg_attach( $bg_attach );
 			}
 			if ( isset( $control['default']['position'] ) ) {
 				$bg_position = get_theme_mod( $control['settings'] . '_position', $control['default']['position'] );
+				$bg_position = kirki_sanitize_bg_position( $bg_position );
 			}
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
 				$bg_opacity = get_theme_mod( $control['settings'] . '_opacity', $control['default']['opacity'] );
+				$bg_opacity = kirki_sanitize_number( $bg_opacity );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
 					$bg_color = ( 100 != $bg_opacity ) ? \Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;

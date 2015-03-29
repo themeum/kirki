@@ -47,7 +47,7 @@ class Kirki {
      * @return Kirki
      */
     public static function get_instance() {
-        if (self::$instance==null) {
+        if ( self::$instance==null ) {
             self::$instance = new Kirki();
         }
         return self::$instance;

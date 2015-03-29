@@ -52,7 +52,7 @@ class Controls {
      * Hook into WP
      */
     private function register_hooks() {
-        add_action('customize_register', array($this, 'include_files'), 99);
+        add_action( 'customize_register', array( $this, 'include_files' ), 99 );
     }
 
     /**

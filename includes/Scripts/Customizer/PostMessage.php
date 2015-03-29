@@ -50,9 +50,9 @@ class PostMessage extends EnqueueScript {
 							wp.customize( '<?php echo $control["settings"]; ?>', function( value ) {
 								value.bind( function( newval ) {
 									<?php if ( 'html' == $js_vars['function'] ) : ?>
-										$( '<?php echo $js_vars["element"]; ?>' ).html( newval );
+										$( '<?php echo esc_js( $js_vars["element"] ); ?>' ).html( newval );
 									<?php elseif ( 'css' == $js_vars['function'] ) : ?>
-										$('<?php echo $js_vars["element"]; ?>').css('<?php echo $js_vars["property"]; ?>', newval );
+										$('<?php echo esc_js( $js_vars["element"] ); ?>').css('<?php echo esc_js( $js_vars["property"] ); ?>', newval );
 									<?php endif; ?>
 								} );
 							} );

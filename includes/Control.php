@@ -29,6 +29,16 @@ class Control {
 		}
 
 		/**
+		 * Sanitize label
+		 */
+		$control['label'] = ( isset( $control['label'] ) ) ? esc_html( $control['label'] ) : '';
+
+		/**
+		 * sanitize description
+		 */
+		$control['description'] = ( isset( $control['description'] ) ) ? esc_html( $control['description'] ) : '';
+
+		/**
 		 * Compatibility tweak
 		 *
 		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
@@ -42,9 +52,7 @@ class Control {
 			$control['description'] = $control['subtitle'];
 		}
 		$control['description'] = isset( $control['description'] ) ? $control['description'] : '';
-		$control['help'] = isset( $control['help'] ) ? $control['help'] : '';
-
-		$control['label'] = isset( $control['label'] ) ? $control['label'] : '';
+		$control['help'] = isset( $control['help'] ) ? esc_html( $control['help'] ) : '';
 
 		/**
 		 * Compatibility tweak
