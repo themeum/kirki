@@ -17,7 +17,7 @@ class Setting {
 
 	/**
 	 * Add a setting
-	*/
+	 */
 	public function add( $wp_customize, $control ) {
 
 		if ( 'background' == $control['type'] ) {
