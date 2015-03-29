@@ -41,7 +41,7 @@ class Customizer {
 		$styles .= '#customize-theme-controls .control-section.open .accordion-section-title{background-color:' . $color_accent . ' !important;color:' . $color_font . ' !important;}';
 
 		// Tooltip styles
-		$styles .= 'li.customize-control a.button.tooltip.hint--left {background-color:' . $color_accent . ';}';
+		// $styles .= 'li.customize-control a.button.tooltip.hint--left {color:' . $color_accent . ';}';
 
 		// Image-Radio styles
 		$styles .= '.customize-control-radio-image .image.ui-buttonset label.ui-state-active {border-color:' . $color_accent . ';}';

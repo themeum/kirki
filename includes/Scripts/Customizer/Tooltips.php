@@ -21,7 +21,7 @@ class Tooltips extends EnqueueScript {
 
 			if ( ! empty( $control['help'] ) ) {
 				$bubble_content = $control['help'];
-				$content = "<a href='#' class='button tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'>?</a>";
+				$content = "<a href='#' class='tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'><span class='dashicons dashicons-info'></span></a>";
 				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $control['settings'] . '" );';
 			}
 

@@ -36,7 +36,8 @@
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     border-left: 5px solid #333;
-    left: -5px; }
+    left: -5px;
+    top: 5px; }
   .hint:after, [data-hint]:after {
     content: attr(data-hint);
     background: #333;
@@ -53,24 +54,21 @@
     text-align: right;
     position: relative;
     top: -22px;
-    left: -202px; }
+    left: -195px; }
 
 li.customize-control {
   position: relative; }
-  li.customize-control a.button.tooltip.hint--left {
+  li.customize-control a.tooltip.hint--left {
+    display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 12px;
-    padding: 5px;
+    top: 5px;
+    right: -20px;
     border-radius: 50%;
-    background: #333;
-    color: #fff;
+    color: #999;
     border: none;
-    line-height: 12px;
+    line-height: 8px;
     width: 20px;
-    height: 20px;
-    padding: 5px 7px; }
+    height: 20px; }
 
 .customize-control-radio-image .image.ui-buttonset input[type=radio] {
   height: auto; }
