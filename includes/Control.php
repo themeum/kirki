@@ -75,7 +75,7 @@ class Control {
 	 * We use the default WordPress Core Customizer fields when possible
 	 * and only add our own custom controls when needed.
 	 */
-	public static function register( $wp_customize, $control ) {
+	public function add( $wp_customize, $control ) {
 
 		$control = self::sanitize( $control );
 

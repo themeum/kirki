@@ -40,7 +40,7 @@ class Kirki {
     public $scripts = null;
 
 	/** @var $settings */
-	public $settings = null;
+	public $setting = null;
 
     /**
      * Access the single instance of this class
@@ -83,8 +83,9 @@ class Kirki {
 
         // Create our main objects
         $this->config        = new Config();
-		$this->settings      = new Setting();
+		$this->setting       = new Setting();
         $this->controls      = new Controls();
+		$this->control       = new Control();
         $this->font_registry = new FontRegistry();
         $this->scripts       = new ScriptRegistry();
 		$this->styles        = new Styles();
@@ -105,8 +106,8 @@ class Kirki {
 		}
 
 		foreach ( $controls as $control ) {
-			$this->settings->add( $wp_customize, $control );
-			Control::register( $wp_customize, $control );
+			$this->setting->add( $wp_customize, $control );
+			$this->control->add( $wp_customize, $control );
 		}
 	}
 
