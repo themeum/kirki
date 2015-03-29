@@ -6,6 +6,7 @@ Description:   An options framework using and extending the WordPress Customizer
 Author:        Aristeides Stathopoulos
 Author URI:    http://press.codes
 Version:       0.8.0-dev
+Text Domain:   kirki
 */
 
 if ( ! defined( 'KIRKI_PATH' ) ) {
