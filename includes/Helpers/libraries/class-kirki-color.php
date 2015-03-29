@@ -18,40 +18,37 @@ class Kirki_Color {
 		// Remove any trailing '#' symbols from the color value
 		$color = str_replace( '#', '', $color );
 
-		// If there are more than 6 characters, only keep the first 6.
-		$color = ( strlen( $color ) > 6 ) ? substr( $color, 0, 6 ) : 'ffffff';
-
 		// Check the validity of the hex (also takes care of wrong values like "transparent")
-		$color = ( empty( $color ) || ! ctype_xdigit( $color ) ) ? 'ffffff' : $color;
+		if ( ! ctype_xdigit( $color ) ) {
+			$color = 'ffffff';
+		}
 
-		if ( strlen( $color ) == 6 ) {
-			$hex = $color; // If string consists of 6 characters, then this is our color
-		} else {
-
-			// String is shorter than 6 characters.
-			// We will have to do some calculations below to get the actual 6-digit hex value.
-
-			// If the string is longer than 3 characters, only keep the first 3.
-			$color = ( strlen( $color ) > 3 ) ? substr( $color, 0, 3 ) : $color;
-
-			// If this is a 3-character string, format it to 6 characters.
-			if ( 3 == strlen( $color ) ) {
-
+		$characters = strlen( $color );
+		switch ( $characters ) {
+			case 0 :
+				$hex = 'ffffff';
+				break;
+			case 1 :
+				$hex = $color . $color . $color . $color . $color . $color;
+				break;
+			case 2 :
+				$hex = $color . $color . $color;
+				break;
+			case 3 :
 				$red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
 				$green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
 				$blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
 
 				$hex = $red . $green . $blue;
-
-			}
-
-			// If this is shorter than 3 characters, do some voodoo.
-			if ( 2 == strlen( $color ) ) {
-				$hex = $color . $color . $color;
-			} else if ( 1 == strlen( $color ) ) {
-				$hex = $color . $color . $color . $color . $color . $color;
-			}
-
+				break;
+			case 4 :
+				$hex = $color . '00';
+				break;
+			case 5 :
+				$hex = $color . '0';
+				break;
+			default :
+				$hex = $color;
 		}
 
 		return ( ! $hash ) ? $hex : '#' . $hex;
@@ -88,18 +85,12 @@ class Kirki_Color {
 		// Set the opacity to 100 if a larger value has been entered by mistake.
 		// If a negative value is used, then set to 0.
 		// If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
-		if ( $opacity >= 100 ) {
-			$opacity = 100;
-		} elseif ( $opacity < 0 ) {
-			$opacity = 0;
-		} elseif ( $opacity < 1 && $opacity != 0 ) {
-			$opacity = ( $opacity * 100 );
-		} else {
-			$opacity = $opacity;
-		}
+		$opacity = ( $opacity >= 100 ) ? 100 : $opacity;
+		$opacity = ( $opacity < 0 ) ? 0 : $opacity;
+		$opacity = ( $opacity < 1 && $opacity != 0 ) ? $opacity * 100 : $opacity;
 
 		// Divide the opacity by 100 to end-up with a CSS value for the opacity
-		$opacity = ( $opacity / 100 );
+		$opacity = intval( $opacity / 100 );
 
 		$color = 'rgba(' . self::get_rgb( $hex, true ) . ', ' . $opacity . ')';
 
