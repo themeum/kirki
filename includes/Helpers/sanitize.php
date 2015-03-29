@@ -23,14 +23,15 @@ function kirki_sanitize_number( $value ) {
  *
  * @since 0.5
  *
- * @param  mixed    $value      The value to sanitize.
+ * @param  mixed    $input      The value to sanitize.
  * @param  mixed    $setting    The setting for which the sanitizing is occurring.
- * @return mixed                The sanitized value.
  */
-function kirki_sanitize_choice( $value, $choices, $default ) {
+function kirki_sanitize_choice( $input, $setting ) {
 
-	$allowed_choices = array_keys( $choices );
-	return ( ! in_array( $value, $allowed_choices ) ) ? $default : $value;
+	global $wp_customize;
+	$control = $wp_customize->get_control( $setting->id );
+
+    return ( array_key_exists( $input, $control->choices ) ) ? $input : $setting->default;
 
 }
 

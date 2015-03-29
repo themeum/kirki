@@ -114,12 +114,25 @@ class Setting {
 				$sanitize_callback = 'esc_url_raw';
 				break;
 			case 'radio' :
-				// TODO: Find a way to handle these
-				$sanitize_callback = 'kirki_sanitize_unfiltered';
+				$sanitize_callback = 'kirki_sanitize_choice';
+				break;
+			case 'radio-image' :
+				$sanitize_callback = 'kirki_sanitize_choice';
+				break;
+			case 'radio-buttonset' :
+				$sanitize_callback = 'kirki_sanitize_choice';
+				break;
+			case 'toggle' :
+				$sanitize_callback = 'kirki_sanitize_checkbox';
+				break;
+			case 'switch' :
+				$sanitize_callback = 'kirki_sanitize_checkbox';
 				break;
 			case 'select' :
-				// TODO: Find a way to handle these
-				$sanitize_callback = 'kirki_sanitize_unfiltered';
+				$sanitize_callback = 'kirki_sanitize_choice';
+				break;
+			case 'dropdown-pages' :
+				$sanitize_callback = 'kirki_sanitize_choice';
 				break;
 			case 'slider' :
 				$sanitize_callback = 'kirki_sanitize_number';
@@ -130,6 +143,9 @@ class Setting {
 			case 'textarea' :
 				$sanitize_callback = 'esc_textarea';
 				break;
+			case 'editor' :
+				$sanitize_callback = 'esc_textarea';
+				break;
 			case 'upload' :
 				$sanitize_callback = 'esc_url_raw';
 				break;
@@ -138,6 +154,12 @@ class Setting {
 				break;
 			case 'multicheck' :
 				$sanitize_callback = 'esc_attr';
+				break;
+			case 'sortable' :
+				$sanitize_callback = 'esc_attr';
+				break;
+			case 'palette' :
+				$sanitize_callback = 'kirki_sanitize_choice';
 				break;
 			default :
 				$sanitize_callback = 'kirki_sanitize_unfiltered';
