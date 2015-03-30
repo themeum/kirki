@@ -97,11 +97,26 @@ function kirki_get_option( $option ) {
 }
 
 /**
- * Helper function to get the translation textdomain
+ * Load plugin textdomain.
+ *
+ * @since 0.8.0
  */
-function kirki_textdomain() {
+function kirki_load_textdomain() {
+	$textdomain = 'kirki';
 
-	$config = apply_filters( 'kirki/config', array() );
-	return ( isset( $config['textdomain'] ) ) ? $config['textdomain'] : 'kirki';
+	// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
+	if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
+	}
+	// Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
+	if ( ! isset( $file ) && file_exists( KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo';
+	}
 
+	if ( isset( $file ) ) {
+		load_textdomain( $textdomain, $file );
+	}
+
+	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
 }
+add_action( 'plugins_loaded', 'kirki_load_textdomain' );

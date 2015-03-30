@@ -60,6 +60,15 @@ class Kirki {
         return self::get_instance()->config;
     }
 
+	/**
+	 * Shortcut method to get the translation strings
+	 */
+	public static function i18n() {
+		$config  = self::config();
+		$options = $config->get_all();
+		return $options['i18n'];
+	}
+
     /**
      * Shortcut method to get the controls of the single instance.
      */

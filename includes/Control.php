@@ -2,6 +2,7 @@
 
 namespace Kirki;
 
+use Kirki;
 use Kirki\Controls\CustomControl;
 use Kirki\Controls\EditorControl;
 use Kirki\Controls\MultiCheckControl;
@@ -85,7 +86,7 @@ class Control {
 	 */
 	public function add( $wp_customize, $control ) {
 
-		$textdomain = kirki_textdomain();
+		$i18n = Kirki::i18n();
 
 		$control = self::sanitize( $control );
 
@@ -177,7 +178,7 @@ class Control {
 					'settings'    => $control['settings'] . '_color',
 					'priority'    => $control['priority'],
 					'help'        => $control['help'],
-					'description' => __( 'Background Color', $textdomain ),
+					'description' => $i18n['background-color'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );
@@ -190,7 +191,7 @@ class Control {
 					'settings'    => $control['settings'] . '_image',
 					'priority'    => $control['priority'] + 1,
 					'help'        => '',
-					'description' => __( 'Background Image', $textdomain ),
+					'description' => $i18n['background-image'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );
@@ -204,14 +205,14 @@ class Control {
 					'settings'    => $control['settings'] . '_repeat',
 					'priority'    => $control['priority'] + 2,
 					'choices'     => array(
-						'no-repeat' => __( 'No Repeat', $textdomain ),
-						'repeat'    => __( 'Repeat All', $textdomain ),
-						'repeat-x'  => __( 'Repeat Horizontally', $textdomain ),
-						'repeat-y'  => __( 'Repeat Vertically', $textdomain ),
-						'inherit'   => __( 'Inherit', $textdomain )
+						'no-repeat' => $i18n['no-repeat'],
+						'repeat'    => $i18n['repeat-all'],
+						'repeat-x'  => $i18n['repeat-x'],
+						'repeat-y'  => $i18n['repeat-y'],
+						'inherit'   => $i18n['inherit'],
 					),
 					'help'        => '',
-					'description' => __( 'Background Repeat', $textdomain ),
+					'description' => $i18n['background-repeat'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -225,13 +226,13 @@ class Control {
 					'settings'    => $control['settings'] . '_size',
 					'priority'    => $control['priority'] + 3,
 					'choices'     => array(
-						'inherit' => __( 'Inherit', $textdomain ),
-						'cover'   => __( 'Cover', $textdomain ),
-						'contain' => __( 'Contain', $textdomain ),
+						'inherit' => $i18n['inherit'],
+						'cover'   => $i18n['cover'],
+						'contain' => $i18n['contain'],
 					),
 					'help'        => '',
 					'mode'        => 'buttonset',
-					'description' => __( 'Background Size', $textdomain ),
+					'description' => $i18n['background-size'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -245,13 +246,13 @@ class Control {
 					'settings'    => $control['settings'] . '_attach',
 					'priority'    => $control['priority'] + 4,
 					'choices'     => array(
-						'inherit' => __( 'Inherit', $textdomain ),
-						'fixed'   => __( 'Fixed', $textdomain ),
-						'scroll'  => __( 'Scroll', $textdomain ),
+						'inherit' => $i18n['inherit'],
+						'fixed'   => $i18n['fixed'],
+						'scroll'  => $i18n['scroll'],
 					),
 					'help'        => '',
 					'mode'        => 'buttonset',
-					'description' => __( 'Background Attachment', $textdomain ),
+					'description' => $i18n['background-attachment'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -265,18 +266,18 @@ class Control {
 					'settings'    => $control['settings'] . '_position',
 					'priority'    => $control['priority'] + 5,
 					'choices'     => array(
-						'left-top'      => __( 'Left Top', $textdomain ),
-						'left-center'   => __( 'Left Center', $textdomain ),
-						'left-bottom'   => __( 'Left Bottom', $textdomain ),
-						'right-top'     => __( 'Right Top', $textdomain ),
-						'right-center'  => __( 'Right Center', $textdomain ),
-						'right-bottom'  => __( 'Right Bottom', $textdomain ),
-						'center-top'    => __( 'Center Top', $textdomain ),
-						'center-center' => __( 'Center Center', $textdomain ),
-						'center-bottom' => __( 'Center Bottom', $textdomain ),
+						'left-top'      => $i18n['left-top'],
+						'left-center'   => $i18n['left-center'],
+						'left-bottom'   => $i18n['left-bottom'],
+						'right-top'     => $i18n['right-top'],
+						'right-center'  => $i18n['right-center'],
+						'right-bottom'  => $i18n['right-bottom'],
+						'center-top'    => $i18n['center-top'],
+						'center-center' => $i18n['center-center'],
+						'center-bottom' => $i18n['center-bottom'],
 					),
 					'help'        => '',
-					'description' => __( 'Background Position', $textdomain ),
+					'description' => $i18n['background-position'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) );
@@ -294,7 +295,7 @@ class Control {
 						'step'    => 1,
 					),
 					'help'        => '',
-					'description' => __( 'Background Opacity', $textdomain ),
+					'description' => $i18n['background-opacity'],
 					'required'    => $control['required'],
 					'transport'   => $control['transport']
 				) ) );

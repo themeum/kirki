@@ -41,13 +41,13 @@ function kirki_sanitize_choice( $input, $setting ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_repeat( $value ) {
-	$textdomain = kirki_textdomain();
+	$i18n = Kirki::i18n();
 	$valid = array(
-		'no-repeat' => __( 'No Repeat', $textdomain ),
-		'repeat'    => __( 'Repeat All', $textdomain ),
-		'repeat-x'  => __( 'Repeat Horizontally', $textdomain ),
-		'repeat-y'  => __( 'Repeat Vertically', $textdomain ),
-		'inherit'   => __( 'Inherit', $textdomain )
+		'no-repeat' => $i18n['no-repeat'],
+		'repeat'    => $i18n['repeat-all'],
+		'repeat-x'  => $i18n['repeat-x'],
+		'repeat-y'  => $i18n['repeat-y'],
+		'inherit'   => $i18n['inherit'],
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -60,11 +60,11 @@ function kirki_sanitize_bg_repeat( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_size( $value ) {
-	$textdomain = kirki_textdomain();
+	$i18n = Kirki::i18n();
 	$valid = array(
-		'inherit' => __( 'Inherit', $textdomain ),
-		'cover'   => __( 'Cover', $textdomain ),
-		'contain' => __( 'Contain', $textdomain ),
+		'inherit' => $i18n['inherit'],
+		'cover'   => $i18n['cover'],
+		'contain' => $i18n['contain'],
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -77,11 +77,11 @@ function kirki_sanitize_bg_size( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_attach( $value ) {
-	$textdomain = kirki_textdomain();
+	$i18n = Kirki::i18n();
 	$valid = array(
-		'inherit' => __( 'Inherit', $textdomain ),
-		'fixed'   => __( 'Fixed', $textdomain ),
-		'scroll'  => __( 'Scroll', $textdomain ),
+		'inherit' => $i18n['inherit'],
+		'fixed'   => $i18n['fixed'],
+		'scroll'  => $i18n['scroll'],
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
@@ -94,17 +94,17 @@ function kirki_sanitize_bg_attach( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_position( $value ) {
-	$textdomain = kirki_textdomain();
+	$i18n = Kirki::i18n();
 	$valid = array(
-		'left-top'      => __( 'Left Top', $textdomain ),
-		'left-center'   => __( 'Left Center', $textdomain ),
-		'left-bottom'   => __( 'Left Bottom', $textdomain ),
-		'right-top'     => __( 'Right Top', $textdomain ),
-		'right-center'  => __( 'Right Center', $textdomain ),
-		'right-bottom'  => __( 'Right Bottom', $textdomain ),
-		'center-top'    => __( 'Center Top', $textdomain ),
-		'center-center' => __( 'Center Center', $textdomain ),
-		'center-bottom' => __( 'Center Bottom', $textdomain ),
+		'left-top'      => $i18n['left-top'],
+		'left-center'   => $i18n['left-center'],
+		'left-bottom'   => $i18n['left-bottom'],
+		'right-top'     => $i18n['right-top'],
+		'right-center'  => $i18n['right-center'],
+		'right-bottom'  => $i18n['right-bottom'],
+		'center-top'    => $i18n['center-top'],
+		'center-center' => $i18n['center-center'],
+		'center-bottom' => $i18n['center-bottom'],
 	);
 
 	return ( array_key_exists( $value, $valid ) ) ? $value : 'center-center';
