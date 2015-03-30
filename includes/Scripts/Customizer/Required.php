@@ -28,23 +28,8 @@ class Required extends EnqueueScript {
 
 			if ( $required ) {
 
-				$show = true;
+				$show = false;
 				foreach ( $required as $dependency ) {
-					// Get the initial status
-					if ( '==' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : false;
-					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : false;
-					}
-
 					// Find the type of the dependency control
 					foreach ( $controls as $control ) {
 						if ( $dependency['setting'] == $control['settings'] ) {
@@ -76,16 +61,18 @@ class Required extends EnqueueScript {
 					// The target element
 					$target = '#customize-control-' . $setting;
 
-					// if initial status is hidden then hide the control
-					if ( ! $show ) {
-						$script .= '$("' . $target . '").hide();';
+					if ( ! isset( $dependency['operator'] ) ) {
+						$dependency['operator'] = '==';
 					}
+
 					$action_1 = '.show()';
 					$action_2 = '.hide()';
+					// Allow checking both checked and unchecked checkboxes
 					if ( 'checkbox' == $type ) {
 						if ( 0 == $dependency['value'] && '==' == $dependency['operator'] ) {
 							$action_1 = '.hide()';
 							$action_2 = '.show()';
+							$show = true;
 						}
 						if ( 1 == $dependency['value'] && '!=' == $dependency['operator'] ) {
 							$action_1 = '.hide()';
@@ -93,7 +80,25 @@ class Required extends EnqueueScript {
 						}
 					}
 
-					// Allow checking both checked and unchecked checkboxes
+					// Get the initial status
+					if ( '==' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : $show;
+					} elseif ( '!=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : $show;
+					} elseif ( '>=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : $show;
+					} elseif ( '<=' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : $show;
+					} elseif ( '>' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : $show;
+					} elseif ( '<' == $dependency['operator'] ) {
+						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : $show;
+					}
+
+					// if initial status is hidden then hide the control
+					if ( false == $show ) {
+						$script .= '$("' . $target . '").hide();';
+					}
 
 					$script .= '$("' . $controller . '").';
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
