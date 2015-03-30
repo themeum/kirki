@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,9 @@ Kirki allows developers to add advanced controls to their customizer as well as 
 
 You can add beautiful options to your theme\'s customizer panel and allow your users to tweak any aspect of their theme. You\'ve got 18 control types that you can use ( 9 default + 9 custom-made ), styling options for the customizer, as well as automatic calculations for your styles using the `output` argument on your controls.
 
-Converting from the default customizer to the syntax used by Kirki will only take a few minutes and will save you a lot of time in the long run. P)
+Converting from the default customizer to the syntax used by Kirki will only take a few minutes and will save you a lot of time in the long run. :)
+
+**CAUTION**: This plugin requires PHP 5.3 and is not compatible with PHP 5.2
 
 The following controls are included:
 
@@ -52,6 +54,12 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 
 == Changelog ==
+
+== 0.8.1 ==
+
+March 30, 2014, dev time: 30 minutes
+
+* Fix: Translation strings now overridable using the config filter.
 
 == 0.8.0 ==
 
