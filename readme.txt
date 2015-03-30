@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.7.1
+Stable tag: 0.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,8 @@ The following controls are included:
 * Toggle
 * Sortable
 * Number
+* Palette
+* Editor (TinyMCE)
 
 For documentation and examples on how to use these controls, please visit [kirki.org](http://kirki.org/#fields).
 
@@ -51,13 +53,40 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 == Changelog ==
 
-== 0.7.1 - 2014-03-15, dev time 2 hours ==
+== 0.8.0 ==
+
+March 30, 2014, dev time: 32 hours
+
+* Improvement: OOP redesign (props @vpratfr)
+* New: Added Palette control
+* New: Added Editor control (WYSIWYG - uses TinyMCE)
+* New: Added Custom control (free html)
+* New: Added a Kirki_Colourlovers class to use palettes from the colourlovers API
+* New: Added a composer file (props @vpratfr)
+* Fix: Wrong settings IDs
+* Fix: Color calculation on RGBA functions were off
+* Tweak: Restructuring the plugin (props @vpratfr)
+* New: added a functional kirki_get_option() function
+* Tweak: Simplified configuration options.
+* New: Turn Kirki into a singleton and a facade (props @vpratfr)
+* Tweak: Completely re-written the customizer styles
+* New: Using SASS for customizer styles
+* Tweak: Deprecating the group_title control in favor of the new custom control
+* Tweak: Changed the CSS for checkboxes
+
+== 0.7.1 ==
+
+March 15, 2014, dev time: 2 hours
+
 * Removed: Remove the `kirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
 * Fix: Undefined index notice when a default value for the control was not defined
 * Tweak: `logo_image` now injects an `img` element instead of a `div` with custom background
 * New: Added `description` argument in the kirki configuration (replaces the theme description)
 
-== 0.7 - 2014-03-14, dev time: 10 hours ==
+== 0.7 ==
+
+March 14, 2014, dev time: 10 hours
+
 * Fix: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
 * Fix: Background opacity affects background-position of bg image
 * Fix: font-weight not being applied on google fonts
@@ -76,7 +105,10 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Tweak: Using WordPress core controls instead of custom ones when those are available
 * Tweak: Separate logic for multiple-type controls that were using the "mode" argument. This has been deprecated in favor of completely separate control types.
 
-== 0.6.2 - 2014-03-02, dev time: 3 hours ==
+== 0.6.2 ==
+
+March 2, 2014, dev time: 3 hours
+
 * Fix: Frontend styles were not properly enqueued (props @dmgawel)
 * New: Allow multiple output styles per control defined as an array of arrays.
 * Fix: Background control styles
@@ -84,11 +116,17 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Fix: Required script
 * Fix: \'_opacity\' was added to a lot of controls by mistake. Removed it and wrote a migration script.
 
-== 0.6.1 - 2014-02-25, dev time: 1 hours ==
+== 0.6.1 ==
+
+2014-02-25, dev time: 1 hours
+
 * Fix: Sortables controls had a JS conflict
 * Fix: Switches & Toggles were not properly working
 
-== 0.6.0 - 2014-02-25, dev time: 9 hours ==
+== 0.6.0 ==
+
+2014-02-25, dev time: 9 hours
+
 * Fix: Tooltips now properly working
 * New: Added checkbox switches
 * New: Added checkbox toggles
@@ -103,10 +141,12 @@ For configuration instructions please visit http://kirki.org/#configuration
 * New: Google fonts now parsed from a json file.
 
 == 0.5.1 ==
+
 * Fix: Transport defaults to refresh instead of postMessage
 * Fix: undefined index notice.
 
 == 0.5 ==
+
 * New: Automatic output of styles for generic controls.
 * New: Automatic output of styles + scripts for fonts (including googlefonts )
 * New: The \'output\' argument on background controls is now an array for consistency with other controls. Older syntax is still compatible though. :)
@@ -122,6 +162,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Fix: Removed deprecated less_var argument
 
 = 0.4 =
+
 * Fix: bugfix for selector
 * New: Change the Kirki theme based on which admin theme is selected.
 * Fix: Tranlsation domain issue
@@ -131,8 +172,10 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Other minor improvements and bugfixes
 
 = 0.3 =
+
 * new: added background field
 * new: added \'output\' argument to directly output the CSS
 
 = 0.2 =
+
 * Initial version

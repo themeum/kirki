@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kirki Framework\n"
+"POT-Creation-Date: 2015-03-30 01:57+0200\n"
+"PO-Revision-Date: 2015-03-30 01:57+0200\n"
+"Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
+"Language-Team: Stathopoulos Aristeides <info@aristeides.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/Control.php:179
+msgid "Background Color"
+msgstr "Background Color"
+
+#: includes/Control.php:192
+msgid "Background Image"
+msgstr "Background Image"
+
+#: includes/Control.php:206 includes/Helpers/sanitize.php:45
+msgid "No Repeat"
+msgstr "No Repeat"
+
+#: includes/Control.php:207 includes/Helpers/sanitize.php:46
+msgid "Repeat All"
+msgstr "Repeat All"
+
+#: includes/Control.php:208 includes/Helpers/sanitize.php:47
+msgid "Repeat Horizontally"
+msgstr "Repeat Horizontally"
+
+#: includes/Control.php:209 includes/Helpers/sanitize.php:48
+msgid "Repeat Vertically"
+msgstr "Repeat Vertically"
+
+#: includes/Control.php:210 includes/Control.php:227
+#: includes/Control.php:247 includes/Helpers/sanitize.php:49
+#: includes/Helpers/sanitize.php:63 includes/Helpers/sanitize.php:79
+msgid "Inherit"
+msgstr "Inherit"
+
+#: includes/Control.php:213
+msgid "Background Repeat"
+msgstr "Background Repeat"
+
+#: includes/Control.php:228 includes/Helpers/sanitize.php:64
+msgid "Cover"
+msgstr "Cover"
+
+#: includes/Control.php:229 includes/Helpers/sanitize.php:65
+msgid "Contain"
+msgstr "Contain"
+
+#: includes/Control.php:233
+msgid "Background Size"
+msgstr "Background Size"
+
+#: includes/Control.php:248 includes/Helpers/sanitize.php:80
+msgid "Fixed"
+msgstr "Fixed"
+
+#: includes/Control.php:249 includes/Helpers/sanitize.php:81
+msgid "Scroll"
+msgstr "Scroll"
+
+#: includes/Control.php:253
+msgid "Background Attachment"
+msgstr "Background Attachment"
+
+#: includes/Control.php:267 includes/Helpers/sanitize.php:95
+msgid "Left Top"
+msgstr "Left Top"
+
+#: includes/Control.php:268 includes/Helpers/sanitize.php:96
+msgid "Left Center"
+msgstr "Left Center"
+
+#: includes/Control.php:269 includes/Helpers/sanitize.php:97
+msgid "Left Bottom"
+msgstr "Left Bottom"
+
+#: includes/Control.php:270 includes/Helpers/sanitize.php:98
+msgid "Right Top"
+msgstr "Right Top"
+
+#: includes/Control.php:271 includes/Helpers/sanitize.php:99
+msgid "Right Center"
+msgstr "Right Center"
+
+#: includes/Control.php:272 includes/Helpers/sanitize.php:100
+msgid "Right Bottom"
+msgstr "Right Bottom"
+
+#: includes/Control.php:273 includes/Helpers/sanitize.php:101
+msgid "Center Top"
+msgstr "Center Top"
+
+#: includes/Control.php:274 includes/Helpers/sanitize.php:102
+msgid "Center Center"
+msgstr "Center Center"
+
+#: includes/Control.php:275 includes/Helpers/sanitize.php:103
+msgid "Center Bottom"
+msgstr "Center Bottom"
+
+#: includes/Control.php:278
+msgid "Background Position"
+msgstr "Background Position"
+
+#: includes/Control.php:296
+msgid "Background Opacity"
+msgstr "Background Opacity"
+
+#: includes/Controls/SwitchControl.php:26
+msgid "ON"
+msgstr "ON"
+
+#: includes/Controls/SwitchControl.php:27
+msgid "OFF"
+msgstr "OFF"
+
+#: includes/Fonts/FontRegistry.php:125
+msgid "All"
+msgstr "All"
+
+#: includes/Fonts/FontRegistry.php:126
+msgid "Cyrillic"
+msgstr "Cyrillic"
+
+#: includes/Fonts/FontRegistry.php:127
+msgid "Cyrillic Extended"
+msgstr "Cyrillic Extended"
+
+#: includes/Fonts/FontRegistry.php:128
+msgid "Devanagari"
+msgstr "Devanagari"
+
+#: includes/Fonts/FontRegistry.php:129
+msgid "Greek"
+msgstr "Greek"
+
+#: includes/Fonts/FontRegistry.php:130
+msgid "Greek Extended"
+msgstr "Greek Extended"
+
+#: includes/Fonts/FontRegistry.php:131
+msgid "Khmer"
+msgstr "Khmer"
+
+#: includes/Fonts/FontRegistry.php:132
+msgid "Latin"
+msgstr "Latin"
+
+#: includes/Fonts/FontRegistry.php:133
+msgid "Latin Extended"
+msgstr "Latin Extended"
+
+#: includes/Fonts/FontRegistry.php:134
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+#: includes/Fonts/FontRegistry.php:187
+msgctxt "font style"
+msgid "Serif"
+msgstr "Serif"
+
+#: includes/Fonts/FontRegistry.php:191
+msgctxt "font style"
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: includes/Fonts/FontRegistry.php:195
+msgctxt "font style"
+msgid "Monospaced"
+msgstr "Monospaced"
