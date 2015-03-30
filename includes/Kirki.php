@@ -10,7 +10,7 @@ use Kirki\Styles;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
-		@include( KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . str_replace( '\\', DIRECTORY_SEPARATOR, strtolower( substr( $class, strlen( 'Kirki' ) ) ) ) . '.php' );
+		@include( KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . str_replace( '\\', DIRECTORY_SEPARATOR, substr( $class, strlen( 'Kirki' ) ) ) . '.php' );
 	}
 });
 
@@ -25,7 +25,7 @@ class Kirki {
     public static $instance = null;
 
     /** @var string Version number */
-    public static $version = '0.8.1';
+    public static $version = '0.8.2';
 
     /** @var Config Configuration */
 	public $config = null;

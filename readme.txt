@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.8.1
+Stable tag: 0.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 
 == Changelog ==
+
+== 0.8.2 ==
+
+* Fix: Autoloader could not properly include files due to strtolower()
 
 == 0.8.1 ==
 
