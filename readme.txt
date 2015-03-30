@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.7.1
+Stable tag: 0.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,7 +53,9 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 == Changelog ==
 
-== 0.8.0-dev ==
+== 0.8.0 ==
+
+March 30, 2014, dev time: 32 hours
 
 * Improvement: OOP redesign (props @vpratfr)
 * New: Added Palette control
@@ -70,10 +72,11 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Tweak: Completely re-written the customizer styles
 * New: Using SASS for customizer styles
 * Tweak: Deprecating the group_title control in favor of the new custom control
+* Tweak: Changed the CSS for checkboxes
 
 == 0.7.1 ==
 
-2014-03-15, dev time 2 hours
+March 15, 2014, dev time: 2 hours
 
 * Removed: Remove the `kirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
 * Fix: Undefined index notice when a default value for the control was not defined
@@ -82,7 +85,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 == 0.7 ==
 
-2014-03-14, dev time: 10 hours
+March 14, 2014, dev time: 10 hours
 
 * Fix: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
 * Fix: Background opacity affects background-position of bg image
@@ -104,7 +107,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 
 == 0.6.2 ==
 
-2014-03-02, dev time: 3 hours
+March 2, 2014, dev time: 3 hours
 
 * Fix: Frontend styles were not properly enqueued (props @dmgawel)
 * New: Allow multiple output styles per control defined as an array of arrays.
@@ -138,10 +141,12 @@ For configuration instructions please visit http://kirki.org/#configuration
 * New: Google fonts now parsed from a json file.
 
 == 0.5.1 ==
+
 * Fix: Transport defaults to refresh instead of postMessage
 * Fix: undefined index notice.
 
 == 0.5 ==
+
 * New: Automatic output of styles for generic controls.
 * New: Automatic output of styles + scripts for fonts (including googlefonts )
 * New: The \'output\' argument on background controls is now an array for consistency with other controls. Older syntax is still compatible though. :)
@@ -157,6 +162,7 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Fix: Removed deprecated less_var argument
 
 = 0.4 =
+
 * Fix: bugfix for selector
 * New: Change the Kirki theme based on which admin theme is selected.
 * Fix: Tranlsation domain issue
@@ -166,8 +172,10 @@ For configuration instructions please visit http://kirki.org/#configuration
 * Other minor improvements and bugfixes
 
 = 0.3 =
+
 * new: added background field
 * new: added \'output\' argument to directly output the CSS
 
 = 0.2 =
+
 * Initial version

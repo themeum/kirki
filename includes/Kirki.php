@@ -25,7 +25,7 @@ class Kirki {
     public static $instance = null;
 
     /** @var string Version number */
-    public static $version = '0.7.1';
+    public static $version = '0.8.0';
 
     /** @var Config Configuration */
 	public $config = null;
