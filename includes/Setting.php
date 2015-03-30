@@ -6,12 +6,14 @@ class Setting {
 
 	public $setting_type = null;
 	public $capability   = null;
+	public $option_name  = null;
 
 	/**
 	 * The class construct
 	 */
 	public function __construct() {
 		$this->setting_type = 'theme_mod';
+		$this->option_name  = 'kirki';
 		$this->capability   = 'edit_theme_options';
 	}
 
@@ -20,33 +22,44 @@ class Setting {
 	 */
 	public function add( $wp_customize, $control ) {
 
+		if ( 'option' == $this->setting_type ) {
+			$control['settings'] = $this->option_name . '[' . $control['settings'] . ']';
+		}
+
 		if ( 'background' == $control['type'] ) {
 
 			if ( isset( $control['default']['color'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_color', $control['default']['color'], 'sanitize_hex_color' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_color]' : $control['settings'] . '_color';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['color'], 'sanitize_hex_color' );
 			}
 
 			if ( isset( $control['default']['image'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_image', $control['default']['image'], 'esc_url_raw' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_image]' : $control['settings'] . '_image';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['image'], 'esc_url_raw' );
 			}
 			if ( isset( $control['default']['repeat'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_repeat', $control['default']['repeat'], 'kirki_sanitize_bg_repeat' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_repeat]' : $control['settings'] . '_repeat';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['repeat'], 'kirki_sanitize_bg_repeat' );
 			}
 
 			if ( isset( $control['default']['size'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_size', $control['default']['size'], 'kirki_sanitize_bg_size' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_size]' : $control['settings'] . '_size';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['size'], 'kirki_sanitize_bg_size' );
 			}
 
 			if ( isset( $control['default']['attach'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_attach', $control['default']['attach'], 'kirki_sanitize_bg_attach' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_attach]' : $control['settings'] . '_attach';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['attach'], 'kirki_sanitize_bg_attach' );
 			}
 
 			if ( isset( $control['default']['position'] ) ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_position', $control['default']['position'], 'kirki_sanitize_bg_position' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_position]' : $control['settings'] . '_position';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['position'], 'kirki_sanitize_bg_position' );
 			}
 
 			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$this->add_setting( $wp_customize, $control, $control['settings'] . '_opacity', $control['default']['opacity'], 'absint' );
+				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $control['settings'] . '_opacity]' : $control['settings'] . '_opacity';
+				$this->add_setting( $wp_customize, $control, $option_name, $control['default']['opacity'], 'absint' );
 			}
 		} else {
 			$this->add_setting( $wp_customize, $control );
@@ -65,12 +78,20 @@ class Setting {
 		// Get the array of controls
 		$controls = Kirki::controls()->get_all();
 		foreach ( $controls as $control ) {
+
 			$setting = $control['settings'];
 			$default = ( isset( $control['default'] ) ) ? $control['default'] : '';
 			// Get the theme_mod and pass the default value as well
 			if ( $option == $setting ) {
-				$value = get_theme_mod( $option, $default );
+
+				if ( 'theme_mod' == $this->setting_type ) {
+					$value = get_theme_mod( $option, $default );
+				} elseif ( 'option' == $this->setting_type ) {
+					$value = get_option( $option, $default );
+				}
+
 			}
+
 		}
 
 		if ( isset( $value ) ) {
