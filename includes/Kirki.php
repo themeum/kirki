@@ -8,6 +8,7 @@ use Kirki\Control;
 use Kirki\Controls;
 use Kirki\Styles;
 use Kirki\Field;
+use Kirki\Builder;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
@@ -58,10 +59,24 @@ class Kirki {
     }
 
 	/**
-	 * Shortcut method to call the field class
+	 * Shortcut method to call the Field class
 	 */
 	public static function field() {
 		return self::get_instance()->field;
+	}
+
+	/**
+	 * Shortcut method to call the Setting class
+	 */
+	public static function setting() {
+		return self::get_instance()->setting;
+	}
+
+	/**
+	 * Shortcut method to call the Setting class
+	 */
+	public static function control() {
+		return self::get_instance()->control;
 	}
 
     /**
@@ -112,31 +127,7 @@ class Kirki {
 		$this->styles        = new Styles();
 
         // Hook into WP
-        $this->register_hooks();
-    }
-
-	/**
-	 * Build the controls
-	 */
-	public function customizer_init( $wp_customize ) {
-		$controls = Kirki::controls()->get_all();
-
-		// Early exit if controls are not set or if they're empty
-		if ( empty( $controls ) ) {
-			return;
-		}
-
-		foreach ( $controls as $control ) {
-			$this->setting->add( $wp_customize, $control );
-			$this->control->add( $wp_customize, $control );
-		}
-	}
-
-    /**
-     * Hook into WP
-     */
-    private function register_hooks() {
-        add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
+        $init = new Builder();
     }
 
 	/**
