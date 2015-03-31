@@ -115,21 +115,46 @@ class Kirki {
      * Hook into WP
      */
     private function register_hooks() {
-        add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
+        add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
+        add_action( 'customize_register', array( &$this, 'customizer_init' ), 99 );
     }
 
 	/**
      * Include helper files we need
      */
     private function include_files() {
-
         include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
 
         include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
         include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
-
 	}
+
+    /**
+     * Load plugin textdomain.
+     *
+     * @since 1.0.0
+     */
+    public function load_textdomain() {
+        $textdomain = kirki_textdomain();
+
+        // Look for WP_LANG_DIR/{$domain}-{$locale}.mo
+        if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+            $file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
+        }
+
+        // Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
+        if ( ! isset( $file ) && file_exists( KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+            $file = KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo';
+        }
+
+        if ( isset( $file ) ) {
+            load_textdomain( $textdomain, $file );
+        }
+
+        load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
+    }
+
 
 }
