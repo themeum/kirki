@@ -50,21 +50,4 @@ class Controls {
 		return $this->controls;
 	}
 
-    /**
-     * Hook into WP
-     */
-    private function register_hooks() {
-        add_action( 'customize_register', array( $this, 'include_files' ), 99 );
-    }
-
-    /**
-     * Include the custom control files. Because they depend on the WP_Cs
-     */
-    public function include_files() {
-        $path = KIRKI_PATH . '/includes/Controls';
-        foreach ( self::$CONTROL_TYPES as $typeId => $className ) {
-            include_once( $path . '/' . $className . '.php' );
-        }
-    }
-
 }
