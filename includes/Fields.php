@@ -4,7 +4,7 @@ namespace Kirki;
 
 use Kirki;
 
-class Field {
+class Fields {
 
 	/**
 	 * Sanitizes the field

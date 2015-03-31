@@ -22,7 +22,7 @@ class Builder {
 		}
 
 		foreach ( $fields as $field ) {
-			$field = Kirki::field()->sanitize( $field );
+			$field = Kirki::fields()->sanitize( $field );
 			Kirki::setting()->add( $wp_customize, $field );
 			Kirki::control()->add( $wp_customize, $field );
 		}

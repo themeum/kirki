@@ -24,14 +24,6 @@ class Controls {
     /** @var array The controls */
     private $controls = null;
 
-    /**
-     * Constructor
-     */
-	public function __construct() {
-        // Hook into WP
-        $this->register_hooks();
-	}
-
 	/**
 	 * Get the controls for the Kirki customizer.
 	 *
@@ -44,7 +36,7 @@ class Controls {
 
             $this->controls = array();
 			foreach ( $fields as $field ) {
-                $this->controls[] = Kirki::field()->sanitize( $field );
+                $this->controls[] = Kirki::fields()->sanitize( $field );
 			}
 		}
 		return $this->controls;

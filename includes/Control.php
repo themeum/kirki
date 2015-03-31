@@ -25,7 +25,7 @@ class Control {
 	public function add( $wp_customize, $field ) {
 
 		$i18n  = Kirki::i18n();
-		$field = Kirki::field()->sanitize( $field );
+		$field = Kirki::fields()->sanitize( $field );
 
 		// Text, Dropdown Pages, Textarea, Select, checkbox & radio controls
 		if ( in_array( $field['type'], array( 'text', 'dropdown-pages', 'textarea', 'select', 'checkbox', 'radio' ) ) ) {
