@@ -7,6 +7,7 @@ use Kirki\Setting;
 use Kirki\Control;
 use Kirki\Controls;
 use Kirki\Styles;
+use Kirki\Field;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
@@ -42,6 +43,9 @@ class Kirki {
 	/** @var $settings */
 	public $setting = null;
 
+	/** @var field */
+	public $field = null;
+
     /**
      * Access the single instance of this class
      * @return Kirki
@@ -52,6 +56,13 @@ class Kirki {
         }
         return self::$instance;
     }
+
+	/**
+	 * Shortcut method to call the field class
+	 */
+	public static function field() {
+		return self::get_instance()->field;
+	}
 
     /**
      * Shortcut method to get the configuration of the single instance.
@@ -92,6 +103,7 @@ class Kirki {
 
         // Create our main objects
         $this->config        = new Config();
+		$this->field         = new Field();
 		$this->setting       = new Setting();
         $this->controls      = new Controls();
 		$this->control       = new Control();

@@ -2,6 +2,8 @@
 
 namespace Kirki;
 
+use Kirki;
+
 class Controls {
 
     /** @var array An array that defines which custom control types are available and the corresponding class name */
@@ -37,14 +39,14 @@ class Controls {
 	 */
 	public function get_all() {
         if ( $this->controls == null ) {
-		    $user_controls = apply_filters( 'kirki/controls', array() );
+			$fields = apply_filters( 'kirki/controls', array() );
+			$fields = apply_filters( 'kirki/fields', $fields );
 
             $this->controls = array();
-			foreach ( $user_controls as $control ) {
-                $this->controls[] = Control::sanitize( $control );
+			foreach ( $fields as $field ) {
+                $this->controls[] = Kirki::field()->sanitize( $field );
 			}
 		}
-
 		return $this->controls;
 	}
 
