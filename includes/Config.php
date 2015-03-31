@@ -70,8 +70,65 @@ class Config {
 				$this->config['description'] = esc_html( $this->config['description'] );
 			}
 
+			// Get the translation strings.
+			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
+			$this->config['i18n'] = array_merge( $this->translation_strings(), $this->config['i18n'] );
+
         }
 
         return $this->config;
     }
+
+	/**
+	 * The i18n strings
+	 */
+	public function translation_strings() {
+
+		$strings = array(
+			'background-color'      => __( 'Background Color',         'kirki' ),
+			'background-image'      => __( 'Background Image',         'kirki' ),
+			'no-repeat'             => __( 'No Repeat',                'kirki' ),
+			'repeat-all'            => __( 'Repeat All',               'kirki' ),
+			'repeat-x'              => __( 'Repeat Horizontally',      'kirki' ),
+			'repeat-y'              => __( 'Repeat Vertically',        'kirki' ),
+			'inherit'               => __( 'Inherit',                  'kirki' ),
+			'background-repeat'     => __( 'Background Repeat',        'kirki' ),
+			'cover'                 => __( 'Cover',                    'kirki' ),
+			'contain'               => __( 'Contain',                  'kirki' ),
+			'background-size'       => __( 'Background Size',          'kirki' ),
+			'fixed'                 => __( 'Fixed',                    'kirki' ),
+			'scroll'                => __( 'Scroll',                   'kirki' ),
+			'background-attachment' => __( 'Background Attachment',    'kirki' ),
+			'left-top'              => __( 'Left Top',                 'kirki' ),
+			'left-center'           => __( 'Left Center',              'kirki' ),
+			'left-bottom'           => __( 'Left Bottom',              'kirki' ),
+			'right-top'             => __( 'Right Top',                'kirki' ),
+			'right-center'          => __( 'Right Center',             'kirki' ),
+			'right-bottom'          => __( 'Right Bottom',             'kirki' ),
+			'center-top'            => __( 'Center Top',               'kirki' ),
+			'center-center'         => __( 'Center Center',            'kirki' ),
+			'center-bottom'         => __( 'Center Bottom',            'kirki' ),
+			'background-position'   => __( 'Background Position',      'kirki' ),
+			'background-opacity'    => __( 'Background Opacity',       'kirki' ),
+			'ON'                    => __( 'ON',                       'kirki' ),
+			'OFF'                   => __( 'OFF',                      'kirki' ),
+			'all'                   => __( 'All',                      'kirki' ),
+			'cyrillic'              => __( 'Cyrillic',                 'kirki' ),
+			'cyrillic-ext'          => __( 'Cyrillic Extended',        'kirki' ),
+			'devanagari'            => __( 'Devanagari',               'kirki' ),
+			'greek'                 => __( 'Greek',                    'kirki' ),
+			'greek-ext'             => __( 'Greek Extended',           'kirki' ),
+			'khmer'                 => __( 'Khmer',                    'kirki' ),
+			'latin'                 => __( 'Latin',                    'kirki' ),
+			'latin-ext'             => __( 'Latin Extended',           'kirki' ),
+			'vietnamese'            => __( 'Vietnamese',               'kirki' ),
+			'serif'                 => _x( 'Serif', 'font style',      'kirki' ),
+			'sans-serif'            => _x( 'Sans Serif', 'font style', 'kirki' ),
+			'monospace'             => _x( 'Monospace', 'font style',  'kirki' ),
+		);
+
+		return $strings;
+
+	}
+
 }

@@ -2,6 +2,8 @@
 
 namespace Kirki\Fonts;
 
+Use Kirki;
+
 /**
  * Class FontManager
  * @package Kirki\Fonts
@@ -120,18 +122,18 @@ class FontRegistry {
 	 * @return array    The available subsets.
 	 */
 	public function get_google_font_subsets() {
-        $textdomain = kirki_textdomain();
+        $i18n = Kirki::i18n();
 		return array(
-			'all'          => __( 'All', $textdomain ),
-			'cyrillic'     => __( 'Cyrillic', $textdomain ),
-			'cyrillic-ext' => __( 'Cyrillic Extended', $textdomain ),
-			'devanagari'   => __( 'Devanagari', $textdomain ),
-			'greek'        => __( 'Greek', $textdomain ),
-			'greek-ext'    => __( 'Greek Extended', $textdomain ),
-			'khmer'        => __( 'Khmer', $textdomain ),
-			'latin'        => __( 'Latin', $textdomain ),
-			'latin-ext'    => __( 'Latin Extended', $textdomain ),
-			'vietnamese'   => __( 'Vietnamese', $textdomain ),
+			'all'          => $i18n['all'],
+			'cyrillic'     => $i18n['cyrillic'],
+			'cyrillic-ext' => $i18n['cyrillic-ext'],
+			'devanagari'   => $i18n['devangari'],
+			'greek'        => $i18n['greek'],
+			'greek-ext'    => $i18n['greek-ext'],
+			'khmer'        => $i18n['khmer'],
+			'latin'        => $i18n['latin'],
+			'latin-ext'    => $i18n['latin-ext'],
+			'vietnamese'   => $i18n['vietnamese'],
 		);
 	}
 
@@ -181,19 +183,19 @@ class FontRegistry {
 	 * @return array    Standard websafe fonts.
 	 */
 	public function get_standard_fonts() {
-        $textdomain = kirki_textdomain();
+        $i18n = Kirki::i18n();
         if ($this->standard_fonts==null) {
             $this->standard_fonts = apply_filters('kirki/fonts/standard_fonts', array(
                 'serif'      => array(
-                    'label' => _x('Serif', 'font style', $textdomain),
+                    'label' => $i18n['serif'],
                     'stack' => 'Georgia,Times,"Times New Roman",serif'
                 ),
                 'sans-serif' => array(
-                    'label' => _x('Sans Serif', 'font style', $textdomain),
+                    'label' => $i18n['sans-serif'],
                     'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
                 ),
                 'monospace'  => array(
-                    'label' => _x('Monospaced', 'font style', $textdomain),
+                    'label' => $i18n['monospace'],
                     'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
                 )
             ));

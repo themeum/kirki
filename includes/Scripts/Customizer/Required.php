@@ -12,28 +12,28 @@ class Required extends EnqueueScript {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$controls = Kirki::controls()->get_all();
+		$fields = Kirki::controls()->get_all();
 
 		// Early exit if no controls are defined
-		if ( empty( $controls ) ) {
+		if ( empty( $fields ) ) {
 			return;
 		}
 
 		$script = '';
 
-		foreach ( $controls as $control ) {
+		foreach ( $fields as $field ) {
 
-			$required = ( isset( $control['required'] ) ) ? $control['required'] : false;
-			$setting  = $control['settings'];
+			$required = ( isset( $field['required'] ) ) ? $field['required'] : false;
+			$setting  = $field['settings'];
 
 			if ( $required ) {
 
 				$show = false;
 				foreach ( $required as $dependency ) {
 					// Find the type of the dependency control
-					foreach ( $controls as $control ) {
-						if ( $dependency['setting'] == $control['settings'] ) {
-							$type = $control['type'];
+					foreach ( $fields as $field ) {
+						if ( $dependency['setting'] == $field['settings'] ) {
+							$type = $field['type'];
 						}
 					}
 

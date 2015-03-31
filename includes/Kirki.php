@@ -7,10 +7,11 @@ use Kirki\Setting;
 use Kirki\Control;
 use Kirki\Controls;
 use Kirki\Styles;
+use Kirki\Field;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
-		@include( KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . str_replace( '\\', DIRECTORY_SEPARATOR, strtolower( substr( $class, strlen( 'Kirki' ) ) ) ) . '.php' );
+		@include( KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . str_replace( '\\', DIRECTORY_SEPARATOR, substr( $class, strlen( 'Kirki' ) ) ) . '.php' );
 	}
 });
 
@@ -25,7 +26,7 @@ class Kirki {
     public static $instance = null;
 
     /** @var string Version number */
-    public static $version = '0.8.0';
+    public static $version = '0.8.2';
 
     /** @var Config Configuration */
 	public $config = null;
@@ -42,6 +43,9 @@ class Kirki {
 	/** @var $settings */
 	public $setting = null;
 
+	/** @var field */
+	public $field = null;
+
     /**
      * Access the single instance of this class
      * @return Kirki
@@ -53,12 +57,28 @@ class Kirki {
         return self::$instance;
     }
 
+	/**
+	 * Shortcut method to call the field class
+	 */
+	public static function field() {
+		return self::get_instance()->field;
+	}
+
     /**
      * Shortcut method to get the configuration of the single instance.
      */
     public static function config() {
         return self::get_instance()->config;
     }
+
+	/**
+	 * Shortcut method to get the translation strings
+	 */
+	public static function i18n() {
+		$config  = self::config();
+		$options = $config->get_all();
+		return $options['i18n'];
+	}
 
     /**
      * Shortcut method to get the controls of the single instance.
@@ -83,6 +103,7 @@ class Kirki {
 
         // Create our main objects
         $this->config        = new Config();
+		$this->field         = new Field();
 		$this->setting       = new Setting();
         $this->controls      = new Controls();
 		$this->control       = new Control();

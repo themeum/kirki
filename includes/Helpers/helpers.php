@@ -25,22 +25,22 @@ function kirki_update() {
 		 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
 		 * This will fix the wrong settings naming and save new settings.
 		 */
-		$control_ids = array();
-		$controls = Kirki::controls()->get_all();
+		$field_ids = array();
+		$fields = Kirki::controls()->get_all();
 
-		foreach ( $controls as $control ) {
-			$control = \Kirki\Control::sanitize( $control );
+		foreach ( $fields as $field ) {
+			$field = Kirki::field()->sanitize( $field );
 
-			if ( 'background' != $control['type'] ) {
-				$control_ids[] = $control['settings'];
+			if ( 'background' != $field['type'] ) {
+				$field_ids[] = $field['settings'];
 			}
 
 		}
 
-		foreach ( $control_ids as $control_id ) {
+		foreach ( $field_ids as $field_id ) {
 
-			if ( get_theme_mod( $control_id . '_opacity' ) && ! get_theme_mod( $control_id ) ) {
-				update_theme_mod( $control_id, get_theme_mod( $control_id . '_opacity' ) );
+			if ( get_theme_mod( $field_id . '_opacity' ) && ! get_theme_mod( $field_id ) ) {
+				update_theme_mod( $field_id, get_theme_mod( $field_id . '_opacity' ) );
 			}
 
 		}
@@ -77,10 +77,10 @@ endif;
 function kirki_get_option( $option ) {
 
 	// Get the array of controls
-	$controls = Kirki::controls()->get_all();
-	foreach ( $controls as $control ) {
-		$setting = $control['settings'];
-		$default = ( isset( $control['default'] ) ) ? $control['default'] : '';
+	$fields = Kirki::controls()->get_all();
+	foreach ( $fields as $field ) {
+		$setting = $field['settings'];
+		$default = ( isset( $field['default'] ) ) ? $field['default'] : '';
 		// Get the theme_mod and pass the default value as well
 		if ( $option == $setting ) {
 			$value = get_theme_mod( $option, $default );
@@ -97,11 +97,26 @@ function kirki_get_option( $option ) {
 }
 
 /**
- * Helper function to get the translation textdomain
+ * Load plugin textdomain.
+ *
+ * @since 0.8.0
  */
-function kirki_textdomain() {
+function kirki_load_textdomain() {
+	$textdomain = 'kirki';
 
-	$config = apply_filters( 'kirki/config', array() );
-	return ( isset( $config['textdomain'] ) ) ? $config['textdomain'] : 'kirki';
+	// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
+	if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
+	}
+	// Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
+	if ( ! isset( $file ) && file_exists( KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo';
+	}
 
+	if ( isset( $file ) ) {
+		load_textdomain( $textdomain, $file );
+	}
+
+	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
 }
+add_action( 'plugins_loaded', 'kirki_load_textdomain' );

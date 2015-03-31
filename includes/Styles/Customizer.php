@@ -15,7 +15,9 @@ class Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-		wp_enqueue_style( 'kirki-customizer-css', KIRKI_URL . '/assets/css/customizer.css', NULL, '0.5' );
+		$config = Kirki::config()->get_all();
+		$root = ( isset( $config['url_path'] ) ) ? $config['url_path'] : KIRKI_URL;
+		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( $root ) . 'assets/css/customizer.css', NULL, '0.5' );
 	}
 
 	/**
