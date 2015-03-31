@@ -5,7 +5,6 @@ use Kirki\Scripts\ScriptRegistry;
 use Kirki\Config;
 use Kirki\Setting;
 use Kirki\Control;
-use Kirki\Controls;
 use Kirki\Styles;
 use Kirki\Fields;
 use Kirki\Builder;
@@ -31,9 +30,6 @@ class Kirki {
 
     /** @var Config Configuration */
 	public $config = null;
-
-    /** @var Controls */
-    public $controls = null;
 
     /** @var FontRegistry The font registry */
     public $font_registry = null;
@@ -96,13 +92,6 @@ class Kirki {
 	}
 
     /**
-     * Shortcut method to get the controls of the single instance.
-     */
-    public static function controls() {
-        return self::get_instance()->controls;
-    }
-
-    /**
      * Shortcut method to get the font registry.
      */
     public static function fonts() {
@@ -120,7 +109,6 @@ class Kirki {
         $this->config        = new Config();
 		$this->fields        = new Fields();
 		$this->setting       = new Setting();
-        $this->controls      = new Controls();
 		$this->control       = new Control();
         $this->font_registry = new FontRegistry();
         $this->scripts       = new ScriptRegistry();

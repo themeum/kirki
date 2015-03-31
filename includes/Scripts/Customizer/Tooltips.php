@@ -12,7 +12,7 @@ class Tooltips extends EnqueueScript {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
 		$scripts = array();
 		$script  = '';

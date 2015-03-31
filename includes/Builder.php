@@ -14,7 +14,7 @@ class Builder {
 	 * Build the customizer controls
 	 */
 	public function build( $wp_customize ) {
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
 		// Early exit if controls are not set or if they're empty
 		if ( empty( $fields ) ) {
@@ -22,7 +22,7 @@ class Builder {
 		}
 
 		foreach ( $fields as $field ) {
-			$field = Kirki::fields()->sanitize( $field );
+			$field = Kirki::fields()->sanitize_field( $field );
 			Kirki::setting()->add( $wp_customize, $field );
 			Kirki::control()->add( $wp_customize, $field );
 		}

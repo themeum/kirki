@@ -40,7 +40,7 @@ class PostMessage extends EnqueueScript {
 		}
 		?>
 
-		<?php $fields = Kirki::controls()->get_all(); ?>
+		<?php $fields = Kirki::fields()->get_all(); ?>
 
 		<script type="text/javascript">
 			( function( $ ) {

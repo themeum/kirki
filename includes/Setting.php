@@ -76,7 +76,7 @@ class Setting {
 	public function get( $setting = '' ) {
 
 		// Get the array of controls
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 		foreach ( $fields as $field ) {
 
 			$setting = $field['settings'];

@@ -12,7 +12,7 @@ class Required extends EnqueueScript {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
 		// Early exit if no controls are defined
 		if ( empty( $fields ) ) {

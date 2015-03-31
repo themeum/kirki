@@ -6,13 +6,36 @@ use Kirki;
 
 class Fields {
 
+	/** @var array The controls */
+    private $fields = null;
+
+	/**
+	 * Get an array of all the fields
+	 */
+	public function get_all() {
+
+        if ( $this->fields == null ) {
+
+			$fields = apply_filters( 'kirki/controls', array() );
+			$fields = apply_filters( 'kirki/fields', $fields );
+
+            $this->controls = array();
+			foreach ( $fields as $field ) {
+                $this->fields[] = $this->sanitize_field( $field );
+			}
+
+		}
+
+		return $this->fields;
+	}
+
 	/**
 	 * Sanitizes the field
 	 *
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize( $field ) {
+	public function sanitize_field( $field ) {
 
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );

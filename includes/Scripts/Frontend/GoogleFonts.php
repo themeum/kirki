@@ -12,7 +12,7 @@ class GoogleFonts extends \Kirki {
 
 	function google_link() {
 
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 		$config = $this->config;
 
 		// Get an array of all the google fonts

@@ -23,7 +23,7 @@ class Frontend {
 	 */
 	function frontend_styles() {
         $config = Kirki::config()->get_all();
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
         $kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
 
@@ -172,7 +172,7 @@ class Frontend {
 
 	function loop_controls() {
 
-		$fields = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 		$styles   = array();
 
 		foreach ( $fields as $field ) {
