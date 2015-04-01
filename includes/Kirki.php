@@ -83,8 +83,6 @@ class Kirki {
      * Constructor is private, should only be called by get_instance()
      */
 	private function __construct() {
-        // Include all files we need
-		$this->include_files();
 
         // Create our main objects
 		$this->font_registry = new FontRegistry();
@@ -95,20 +93,7 @@ class Kirki {
 
         // Hook into WP
         $init = new Builder();
+
     }
-
-	/**
-     * Include helper files we need
-     */
-    private function include_files() {
-
-        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
-
-        include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
-
-	}
 
 }

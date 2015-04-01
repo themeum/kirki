@@ -16,6 +16,13 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
+// Include helper files
+include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
+include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
+include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
+include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
+include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
+
 // Include the main kirki class
 include_once( KIRKI_PATH . '/includes/Kirki.php' );
 
