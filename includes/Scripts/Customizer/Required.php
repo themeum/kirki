@@ -30,11 +30,7 @@ class Required extends EnqueueScript {
 				$show = false;
 				foreach ( $required as $dependency ) {
 					// Find the type of the dependency control
-					foreach ( $fields as $field ) {
-						if ( sanitize_key( $dependency['setting'] ) == $field['id'] ) {
-							$type = $field['type'];
-						}
-					}
+					$type = $fields[$dependency['setting']]['type'];
 
 					// If "operator" is not set then set it to "=="
 					if ( ! isset( $dependency['operator'] ) ) {
