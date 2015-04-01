@@ -260,10 +260,10 @@ class Kirki_Color {
 
 		foreach ( $colors as $color ) {
 			$color      = self::sanitize_hex( $color, false );
-			$brightness = self::get_brightness( $hex );
+			$brightness = self::get_brightness( $color );
 
-			if ( ! $brightest || self::get_brightness( $hex ) > self::get_brightness( $brightest ) ) {
-				$brightest = $hex;
+			if ( ! $brightest || self::get_brightness( $color ) > self::get_brightness( $brightest ) ) {
+				$brightest = $color;
 			}
 		}
 
