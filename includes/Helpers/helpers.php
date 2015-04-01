@@ -20,7 +20,7 @@ function kirki_update() {
 	$version = get_option( 'kirki_version' );
 	$version = ( ! $version ) ? '0' : $version;
 	// < 0.6.1 -> 0.6.2
-	if ( ! get_option( 'kirki_version' ) ) {
+	if ( ! $version ) {
 		/**
 		 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
 		 * This will fix the wrong settings naming and save new settings.
@@ -47,7 +47,7 @@ function kirki_update() {
 
 	}
 
-	if ( version_compare( Kirki::$version, $version ) ) {
+	if ( ! $version || version_compare( Kirki::$version, $version ) ) {
 		update_option( 'kirki_version', Kirki::$version );
 	}
 
