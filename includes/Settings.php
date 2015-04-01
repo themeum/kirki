@@ -103,7 +103,7 @@ class Settings {
 
 		$id       = ( ! is_null( $id_override ) )      ? $id_override      : $field['settings'];
 		$default  = ( ! is_null( $default_override ) ) ? $default_override : $field['default'];
-		$callback = ( ! is_null( $callback ) )         ? $callback         : $field['type'];
+		$callback = ( ! is_null( $callback ) )         ? $callback         : $field['sanitize_callback'];
 
 		$wp_customize->add_setting( $id, array(
 			'default'           => $default,
