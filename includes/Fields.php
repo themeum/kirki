@@ -43,18 +43,18 @@ class Fields {
 		$field['label']             = $this->sanitize_label( $field );
 		$field['help']              = $this->sanitize_help( $field );
 		$field['description']       = $this->sanitize_description( $field );
-		$field['required']          = $this->sanitize_required( $field );
+		$field['required']          = $this->sanitize_required( $field, $config['options_type'] );
 		$field['transport']         = $this->sanitize_transport( $field );
 		$field['type']              = $this->sanitize_control_type( $field );
 		$field['option_type']       = $this->sanitize_type( $field );
 		$field['section']           = $this->sanitize_section( $field );
-		$field['settings']          = $this->sanitize_settings( $field );
+		$field['settings']          = $this->sanitize_settings( $field, $config['options_type'] );
 		$field['priority']          = $this->sanitize_priority( $field );
 		$field['choices']           = $this->sanitize_choices( $field );
 		$field['output']            = $this->sanitize_output( $field );
 		$field['sanitize_callback'] = $this->sanitize_callback( $field );
 		$field['js_vars']           = $this->sanitize_js_vars( $field );
-		$field['id']                = $this->sanitize_id( $field );
+		$field['id']                = $this->sanitize_id( $field, $config['options_type'] );
 
 		return $field;
 
@@ -93,7 +93,7 @@ class Fields {
 	 * @param array the field definition
 	 * @return string.
 	 */
-	public function sanitize_settings( $field ) {
+	public function sanitize_settings( $field, $options_type = 'theme_mod' ) {
 
 		/**
 		 * Compatibility tweak
@@ -103,7 +103,16 @@ class Fields {
 		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
 			$field['settings'] = $field['setting'];
 		}
-		return $field['settings'];
+
+        if ( 'background' == $field['type'] ) {
+            return $field['settings'];
+        }
+
+        if ( 'option' == $options_type ) {
+            return 'kirki' . '[' . $field['settings'] . ']';
+        } else {
+            return $field['settings'];
+        }
 
 	}
 
@@ -371,7 +380,7 @@ class Fields {
 				$sanitize_callback = 'kirki_sanitize_unfiltered';
 		}
 
-		return $sanitize_callback;
+		return 'kirki_sanitize_unfiltered';
 
 	}
 

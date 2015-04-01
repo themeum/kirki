@@ -39,7 +39,6 @@ class Builder {
 	 * Build a single field
 	 */
 	public function build_field( $wp_customize, $field ) {
-		$field = Kirki::fields()->sanitize_field( $field );
 		$this->settings->add( $wp_customize, $field );
 		$this->controls->add( $wp_customize, $field );
 	}

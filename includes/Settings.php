@@ -22,10 +22,6 @@ class Settings {
 	 */
 	public function add( $wp_customize, $field ) {
 
-		if ( 'option' == $this->setting_type ) {
-			$field['settings'] = $this->option_name . '[' . $field['settings'] . ']';
-		}
-
 		if ( 'background' == $field['type'] ) {
 
 			if ( isset( $field['default']['color'] ) ) {
