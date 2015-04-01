@@ -12,17 +12,17 @@ class Tooltips extends EnqueueScript {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$controls = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
 		$scripts = array();
 		$script  = '';
 
-		foreach ( $controls as $control ) {
+		foreach ( $fields as $field ) {
 
-			if ( ! empty( $control['help'] ) ) {
-				$bubble_content = $control['help'];
+			if ( ! empty( $field['help'] ) ) {
+				$bubble_content = $field['help'];
 				$content = "<a href='#' class='tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'><span class='dashicons dashicons-info'></span></a>";
-				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $control['settings'] . '" );';
+				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $field['settings'] . '" );';
 			}
 
 		}

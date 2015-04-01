@@ -70,6 +70,17 @@ class Config {
 				$this->config['description'] = esc_html( $this->config['description'] );
 			}
 
+			if ( ! isset( $this->config['url_path'] ) ) {
+				$this->config['url_path'] = '';
+			}
+
+			if ( isset( $this->config['options_type'] ) && 'option' == $this->config['options_type'] ) {
+				$this->config['options_type'] = 'option';
+			} else {
+				$this->config['options_type'] = 'theme_mod';
+			}
+			// $this->config['options_type'] = 'option';
+
 			// Get the translation strings.
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
 			$this->config['i18n'] = array_merge( $this->translation_strings(), $this->config['i18n'] );

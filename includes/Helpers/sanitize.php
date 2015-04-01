@@ -29,9 +29,9 @@ function kirki_sanitize_number( $value ) {
 function kirki_sanitize_choice( $input, $setting ) {
 
 	global $wp_customize;
-	$control = $wp_customize->get_control( $setting->id );
+	$field = $wp_customize->get_control( $setting->id );
 
-    return ( array_key_exists( $input, $control->choices ) ) ? $input : $setting->default;
+    return ( array_key_exists( $input, $field->choices ) ) ? $input : $setting->default;
 
 }
 

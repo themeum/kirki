@@ -40,14 +40,14 @@ class PostMessage extends EnqueueScript {
 		}
 		?>
 
-		<?php $controls = Kirki::controls()->get_all(); ?>
+		<?php $fields = Kirki::fields()->get_all(); ?>
 
 		<script type="text/javascript">
 			( function( $ ) {
-				<?php foreach ( $controls as $control ) : ?>
-					<?php if ( isset( $control['transport']  ) && isset( $control['js_vars'] ) && 'postMessage' == $control['transport'] ) : ?>
-						<?php foreach ( $control['js_vars'] as $js_vars ) : ?>
-							wp.customize( '<?php echo $control["settings"]; ?>', function( value ) {
+				<?php foreach ( $fields as $field ) : ?>
+					<?php if ( isset( $field['transport']  ) && isset( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) : ?>
+						<?php foreach ( $field['js_vars'] as $js_vars ) : ?>
+							wp.customize( '<?php echo $field["settings"]; ?>', function( value ) {
 								value.bind( function( newval ) {
 									<?php if ( 'html' == $js_vars['function'] ) : ?>
 										$( '<?php echo esc_js( $js_vars["element"] ); ?>' ).html( newval );
