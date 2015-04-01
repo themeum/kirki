@@ -15,7 +15,7 @@ use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
 
-class Control {
+class Controls {
 
 	/**
 	 * Add our fields.

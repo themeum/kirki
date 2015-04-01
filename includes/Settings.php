@@ -2,7 +2,7 @@
 
 namespace Kirki;
 
-class Setting {
+class Settings {
 
 	public $setting_type = null;
 	public $capability   = null;

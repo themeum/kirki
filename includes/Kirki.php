@@ -3,8 +3,6 @@
 use Kirki\Fonts\FontRegistry;
 use Kirki\Scripts\ScriptRegistry;
 use Kirki\Config;
-use Kirki\Setting;
-use Kirki\Control;
 use Kirki\Styles;
 use Kirki\Fields;
 use Kirki\Builder;
@@ -37,9 +35,6 @@ class Kirki {
     /** @var scripts */
     public $scripts = null;
 
-	/** @var $settings */
-	public $setting = null;
-
 	/** @var field */
 	public $fields = null;
 
@@ -59,20 +54,6 @@ class Kirki {
 	 */
 	public static function fields() {
 		return self::get_instance()->fields;
-	}
-
-	/**
-	 * Shortcut method to call the Setting class
-	 */
-	public static function setting() {
-		return self::get_instance()->setting;
-	}
-
-	/**
-	 * Shortcut method to call the Setting class
-	 */
-	public static function control() {
-		return self::get_instance()->control;
 	}
 
     /**
@@ -106,11 +87,9 @@ class Kirki {
 		$this->include_files();
 
         // Create our main objects
+		$this->font_registry = new FontRegistry();
         $this->config        = new Config();
 		$this->fields        = new Fields();
-		$this->setting       = new Setting();
-		$this->control       = new Control();
-        $this->font_registry = new FontRegistry();
         $this->scripts       = new ScriptRegistry();
 		$this->styles        = new Styles();
 

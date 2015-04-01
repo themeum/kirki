@@ -3,11 +3,18 @@
 namespace Kirki;
 
 use Kirki;
+use Kirki\Settings;
+use Kirki\Controls;
 
 class Builder {
 
+	private $settings;
+	private $controls;
+
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'build' ), 99 );
+		$this->settings = new Settings();
+		$this->controls = new Controls();
 	}
 
 	/**
@@ -23,8 +30,8 @@ class Builder {
 
 		foreach ( $fields as $field ) {
 			$field = Kirki::fields()->sanitize_field( $field );
-			Kirki::setting()->add( $wp_customize, $field );
-			Kirki::control()->add( $wp_customize, $field );
+			$this->settings->add( $wp_customize, $field );
+			$this->controls->add( $wp_customize, $field );
 		}
 
 	}
