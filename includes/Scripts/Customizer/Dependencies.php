@@ -13,7 +13,7 @@ class Dependencies extends EnqueueScript {
 	public function customize_controls_enqueue_scripts() {
 
 		$config = Kirki::config()->get_all();
-		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+		$kirki_url = ( '' != $config['url_path'] )? $config['url_path'] : KIRKI_URL;
 
 		wp_enqueue_script( 'kirki_customizer_js', trailingslashit( $kirki_url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ) );
 		wp_enqueue_script( 'serialize-js', trailingslashit( $kirki_url ) . 'assets/js/serialize.js');

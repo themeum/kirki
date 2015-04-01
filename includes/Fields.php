@@ -6,7 +6,7 @@ use Kirki;
 
 class Fields {
 
-	/** @var array The controls */
+    /** @var array The controls */
     private $fields = null;
 
 	/**
@@ -36,6 +36,8 @@ class Fields {
 	 * @return array
 	 */
 	public function sanitize_field( $field ) {
+
+        $config = Kirki::config()->get_all();
 
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );

@@ -33,7 +33,7 @@ class Frontend {
 			}
 		}
 
-		$root = ( isset( $config['url_path'] ) ) ? $config['url_path'] : KIRKI_URL;
+		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 
 		if ( isset( $uses_output )  && $uses_output && $kirki_stylesheet === 'kirki-styles' ) {
 			wp_enqueue_style( 'kirki-styles', trailingslashit( $root ) . 'assets/css/kirki-styles.css', NULL, NULL );
