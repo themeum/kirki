@@ -153,9 +153,9 @@ class Fields {
 		 * Sortable controls need a serialized array as the default value.
 		 * Since we're using normal arrays to set our defaults when defining the fields, we need to serialize that value here.
 		 */
-		if ( 'sortable' == $field['type'] && isset( $field['default'] ) && ! empty( $field['default'] ) ) {
-			$field['default'] = maybe_serialize( $field['default'] );
-		}
+		// if ( 'sortable' == $field['type'] && isset( $field['default'] ) && ! empty( $field['default'] ) ) {
+		// 	$field['default'] = maybe_serialize( $field['default'] );
+		// }
 
 		return $field['default'];
 
