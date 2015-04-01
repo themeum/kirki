@@ -78,21 +78,22 @@ function kirki_get_option( $option ) {
 
 	// Get the array of controls
 	$fields = Kirki::fields()->get_all();
-	foreach ( $fields as $field ) {
-		$setting = $field['settings'];
-		$default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-		// Get the theme_mod and pass the default value as well
-		if ( $option == $setting ) {
-			$value = get_theme_mod( $option, $default );
-		}
+
+	// Early exit if this option does not exist
+	if ( ! isset( $fields[$option] ) ) {
+		return;
 	}
 
-	if ( isset( $value ) ) {
-		return $value;
+	$theme_mods = get_theme_mods();
+	if ( $theme_mods || empty( $theme_mods ) ) {
+		return $fields[$option]['default'];
 	}
 
-	// fallback to returning an empty string
-	return '';
+	$option  = $fields[$option];
+	$default = $fields[$option]['default'];
+
+	// return the theme mod
+	return get_theme_mod( $option, $default );
 
 }
 

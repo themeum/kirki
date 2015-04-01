@@ -21,7 +21,8 @@ class Fields {
 
             $this->controls = array();
 			foreach ( $fields as $field ) {
-                $this->fields[] = $this->sanitize_field( $field );
+                $field = $this->sanitize_field( $field );
+                $this->fields[$field['settings']] = $field;
 			}
 
 		}
@@ -104,15 +105,17 @@ class Fields {
 			$field['settings'] = $field['setting'];
 		}
 
-        if ( 'background' == $field['type'] ) {
-            return $field['settings'];
+        /**
+         * When using 'option' as the setting type,
+         * we store all settings as an array in a single option in the database.
+         * The 'background' controls are a bit more complicated and handled in the
+         * Settings and Controls classes separately.
+         */
+        if ( 'option' == $options_type && 'background' != $field['type'] ) {
+            $field['settings'] == 'kirki' . '[' . $field['settings'] . ']';
         }
 
-        if ( 'option' == $options_type ) {
-            return 'kirki' . '[' . $field['settings'] . ']';
-        } else {
-            return $field['settings'];
-        }
+        return $field['settings'];
 
 	}
 
@@ -142,8 +145,14 @@ class Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_id( $field ) {
-		return sanitize_key( $field['settings'] );
+	public function sanitize_id( $field, $options_type = 'theme_mod' ) {
+
+        if ( 'option' == $options_type ) {
+            return sanitize_key( $field['settings'] );
+        } else {
+            return $field['settings'];
+        }
+
 	}
 
 	/**
@@ -257,19 +266,11 @@ class Fields {
 	public function sanitize_callback( $field ) {
 
 		if ( isset( $field['sanitize_callback'] ) && ! empty( $field['sanitize_callback'] ) ) {
-			if ( ! is_array( $field['sanitize_callback'] ) && function_exists( $field['sanitize_callback'] ) ) {
-				$exists = true;
-			} elseif ( method_exists( $field['sanitize_callback'] ) ) {
-				$exists = true;
-			}
-		}
-
-		if ( isset( $exists ) ) {
 			return $field['sanitize_callback'];
-		} else {
-			// Fallback callback
+		} else { // Fallback callback
 			return self::fallback_callback( $field['type'] );
 		}
+
 	}
 
 	/**
@@ -380,7 +381,7 @@ class Fields {
 				$sanitize_callback = 'kirki_sanitize_unfiltered';
 		}
 
-		return 'kirki_sanitize_unfiltered';
+		return $sanitize_callback;
 
 	}
 

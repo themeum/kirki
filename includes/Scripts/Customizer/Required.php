@@ -24,7 +24,6 @@ class Required extends EnqueueScript {
 		foreach ( $fields as $field ) {
 
 			$required = ( isset( $field['required'] ) ) ? $field['required'] : false;
-			$setting  = $field['settings'];
 
 			if ( $required ) {
 
@@ -59,7 +58,7 @@ class Required extends EnqueueScript {
 					}
 
 					// The target element
-					$target = '#customize-control-' . $setting;
+					$target = '#customize-control-' . $field['settings'];
 
 					if ( ! isset( $dependency['operator'] ) ) {
 						$dependency['operator'] = '==';
@@ -81,18 +80,19 @@ class Required extends EnqueueScript {
 					}
 
 					// Get the initial status
+					$value = kirki_get_option( $field['settings'] );
 					if ( '==' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] == $value ) ) ? true : $show;
 					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] != $value ) ) ? true : $show;
 					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] >= $value ) ) ? true : $show;
 					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] <= $value ) ) ? true : $show;
 					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] > $value ) ) ? true : $show;
 					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] < $value ) ) ? true : $show;
 					}
 
 					// if initial status is hidden then hide the control

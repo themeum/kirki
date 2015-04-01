@@ -127,7 +127,7 @@ class FontRegistry {
 			'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
 			'cyrillic-ext' => $i18n['cyrillic-ext'],
-			'devanagari'   => $i18n['devangari'],
+			'devanagari'   => $i18n['devanagari'],
 			'greek'        => $i18n['greek'],
 			'greek-ext'    => $i18n['greek-ext'],
 			'khmer'        => $i18n['khmer'],

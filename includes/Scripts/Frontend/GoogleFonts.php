@@ -4,16 +4,15 @@ namespace Kirki\Scripts\Frontend;
 
 use Kirki;
 
-class GoogleFonts extends \Kirki {
+class GoogleFonts {
 
-	function __construct() {
+	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
 	}
 
 	function google_link() {
 
 		$fields = Kirki::fields()->get_all();
-		$config = $this->config;
 
 		// Get an array of all the google fonts
 		$google_fonts = Kirki::fonts()->get_google_fonts();
@@ -21,10 +20,8 @@ class GoogleFonts extends \Kirki {
 		$fonts = array();
 		foreach ( $fields as $field ) {
 
-			// The value of this control
-			$value = get_theme_mod( $field['settings'], $field['default'] );
-
 			if ( isset( $field['output'] ) ) {
+
 				// Check if this is a font-family control
 				$is_font_family = isset( $field['output']['property'] ) && 'font-family' == $field['output']['property'] ? true : false;
 
@@ -34,12 +31,18 @@ class GoogleFonts extends \Kirki {
 				// Check if this is a font subset control
 				$is_font_subset = isset( $field['output']['property'] ) && 'font-subset' == $field['output']['property'] ? true : false;
 
-				if ( $is_font_family ) {
-					$fonts[]['font-family'] = $value;
-				} else if ( $is_font_weight ) {
-					$fonts[]['font-weight'] = $value;
-				} else if ( $is_font_subset ) {
-					$fonts[]['subsets'] = $value;
+				if ( $is_font_family || $is_font_weight || $is_font_subset ) {
+					// The value of this control
+					$value = kirki_get_option( $field['settings'] );
+
+					if ( $is_font_family ) {
+						$fonts[]['font-family'] = $value;
+					} else if ( $is_font_weight ) {
+						$fonts[]['font-weight'] = $value;
+					} else if ( $is_font_subset ) {
+						$fonts[]['subsets'] = $value;
+					}
+
 				}
 
 			}
