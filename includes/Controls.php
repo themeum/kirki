@@ -14,6 +14,7 @@ use Kirki\Controls\SliderControl;
 use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
+use Kirki\Controls\ColorAlphaControl;
 
 class Controls {
 
@@ -36,6 +37,11 @@ class Controls {
 		// Color controls
 		elseif ( 'color' == $field['type'] ) {
 			$wp_customize->add_control( new \WP_Customize_Color_Control( $wp_customize, $field['id'], $field ) );
+		}
+
+		// Color controls
+		elseif ( 'color-alpha' == $field['type'] ) {
+			$wp_customize->add_control( new ColorAlphaControl( $wp_customize, $field['id'], $field ) );
 		}
 
 		// Image Controls
