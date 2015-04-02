@@ -8,11 +8,15 @@
 class Kirki_Color {
 
     /**
+	 * Sanitises a HEX value.
+	 * The way this works is by splitting the string in 6 substrings.
+	 * Each sub-string is individually sanitized, and the result is then returned.
+	 *
      * @var     string      The hex value of a color
      * @param   boolean     Whether we want to include a hash (#) at the beginning or not
      * @return  string      The sanitized hex color.
      */
-     public static function sanitize_hex( $color = '#ffffff', $hash = true ) {
+     public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
 		// Remove any spaces and special characters before and after the string
 		$color = trim( $color. ' \t\n\r\0\x0B' );
@@ -20,40 +24,18 @@ class Kirki_Color {
 		// Remove any trailing '#' symbols from the color value
 		$color = str_replace( '#', '', $color );
 
-		// If there are more than 6 characters, only keep the first 6.
-		$color = ( strlen( $color ) > 6 ) ? substr( $color, 0, 6 ) : $color;
-
-		// Check the validity of the hex (also takes care of wrong values like "transparent")
-		$color = ( empty( $color ) || ! ctype_xdigit( $color ) ) ? 'ffffff' : $color;
-
-		// If string consists of 6 characters, then this is our color
-		if ( 6 == strlen( $color ) ) {
-
-			$hex = $color;
-
-		// If the string is shorter than 6 characters but longer than 2 then only keep the 3 first character.
-        // We will have to do some calculations below to get the actual 6-digit hex value.
-		} elseif ( 2 < strlen( $color ) ) {
-
-			if ( 3 == strlen( $color ) ) {
-
-				$red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
-				$green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
-				$blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-
-				$hex = $red . $green . $blue;
-
-			}
-
-        } elseif ( 2 == strlen( $color ) ) {
-
-			$hex = $color . $color . $color;
-
-		} else if ( 1 == strlen( $color ) ) {
-
-				$hex = $color . $color . $color . $color . $color . $color;
-
+		// If the string is 6 characters long then use it in pairs.
+		if ( 3 == strlen( $color ) ) {
+			$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
 		}
+
+		$substr = array();
+		for ( $i = 0; $i <= 5; $i++ ) {
+			$default    = ( 0 == $i ) ? 'F' : ( $substr[$i-1] );
+			$substr[$i] = substr( $color, $i, 1 );
+			$substr[$i] = ( ! $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
+		}
+		$hex = implode( '', $substr );
 
 		return ( ! $hash ) ? $hex : '#' . $hex;
 
