@@ -175,6 +175,11 @@ class Frontend {
 		$fields = Kirki::fields()->get_all();
 		$styles   = array();
 
+		// Early exit if no fields are found.
+		if ( ! $fields || empty( $fields ) ) {
+			return;
+		}
+
 		foreach ( $fields as $field ) {
 			$element  = '';
 			$property = '';
