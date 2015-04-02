@@ -18,6 +18,7 @@ class Customizer {
 		$config = Kirki::config()->get_all();
 		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( $root ) . 'assets/css/customizer.css', NULL, '0.5' );
+		wp_enqueue_style( 'kirki-select2-css', trailingslashit( $root ) . 'assets/css/select2.css', NULL, '0.5' );
 	}
 
 	/**
