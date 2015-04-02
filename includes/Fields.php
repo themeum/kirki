@@ -148,7 +148,8 @@ class Fields {
 	public function sanitize_id( $field, $options_type = 'theme_mod' ) {
 
 		if ( 'option' == $options_type ) {
-			return sanitize_key( $field['settings'] );
+			$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+			return sanitize_key( $id );
 		} else {
 			return $field['settings'];
 		}
