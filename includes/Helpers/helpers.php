@@ -85,11 +85,11 @@ function kirki_get_option( $option ) {
 	}
 
 	$theme_mods = get_theme_mods();
-	if ( $theme_mods || empty( $theme_mods ) ) {
+	if ( ! $theme_mods || empty( $theme_mods ) ) {
 		return $fields[$option]['default'];
 	}
 
-	$option  = $fields[$option];
+	$option  = $fields[$option]['settings'];
 	$default = $fields[$option]['default'];
 
 	// return the theme mod
