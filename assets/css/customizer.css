@@ -6,10 +6,13 @@
     border-color: transparent !important;
     border-color: transparent !important; }
 
-.hint, [data-hint] {
+.hint,
+[data-hint] {
   position: relative;
   display: inline-block; }
-  .hint:before, .hint:after, [data-hint]:before, [data-hint]:after {
+  .hint:before, .hint:after,
+  [data-hint]:before,
+  [data-hint]:after {
     position: absolute;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -20,12 +23,19 @@
     pointer-events: none;
     transition: 0.3s ease;
     transition-delay: 250ms; }
-  .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after, [data-hint]:hover:before, [data-hint]:hover:after, [data-hint]:focus:before, [data-hint]:focus:after {
+  .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after,
+  [data-hint]:focus:before,
+  [data-hint]:focus:after {
     visibility: visible;
     opacity: 1; }
-  .hint:hover:before, .hint:hover:after, [data-hint]:hover:before, [data-hint]:hover:after {
-    transition-delay: 0ms; }
-  .hint:before, [data-hint]:before {
+  .hint:hover:before, .hint:hover:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after {
+    transition-delay: 0; }
+  .hint:before,
+  [data-hint]:before {
     content: '';
     position: absolute;
     background: transparent;
@@ -38,7 +48,8 @@
     border-left: 5px solid #333;
     left: -5px;
     top: 5px; }
-  .hint:after, [data-hint]:after {
+  .hint:after,
+  [data-hint]:after {
     content: attr(data-hint);
     background: #333;
     color: white;
@@ -219,7 +230,7 @@ li.customize-control {
     left: 2%; }
   .customize-control-switch .Switch.Round,
   .customize-control-toggle .Switch.Round {
-    padding: 0px 20px;
+    padding: 0 20px;
     border-radius: 40px;
     margin-top: 5px; }
     .customize-control-switch .Switch.Round .Toggle,
@@ -270,7 +281,7 @@ body.IE7 .Switch.Round {
     .customize-control-palette label.ui-button.ui-widget .ui-button-text span {
       padding: 10px 0;
       flex-grow: 1;
-      font-size: 0px;
+      font-size: 0;
       line-height: 10px;
       color: transparent;
       -webkit-transition: all 200ms ease-in-out;
@@ -320,7 +331,7 @@ body.IE7 .Switch.Round {
   .customize-control-slider .ui-slider .ui-slider-range {
     position: absolute;
     z-index: 1;
-    font-size: .7em;
+    font-size: 0.7em;
     display: block;
     border: 0;
     background-position: 0 0; }
@@ -330,13 +341,13 @@ body.IE7 .Switch.Round {
   display: none;
   border: 1px solid #dfdfdf;
   border-top: none;
-  background: #FFF;
+  background: #fff;
   padding: 0 11px 6px; }
   .customize-control-color-alpha .kirki-alpha-container .transparency {
     height: 24px;
     width: 100%;
-    background-color: #FFF;
-    background-image: url(../images/transparency-grid.png);
+    background-color: #fff;
+    background-image: url("../images/transparency-grid.png");
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -344,8 +355,8 @@ body.IE7 .Switch.Round {
     padding: 0; }
   .customize-control-color-alpha .kirki-alpha-container .ui-slider-handle {
     color: #777;
-    background-color: #FFF;
-    text-shadow: 0 1px 0 #FFF;
+    background-color: #fff;
+    text-shadow: 0 1px 0 #fff;
     text-decoration: none;
     position: absolute;
     z-index: 2;
