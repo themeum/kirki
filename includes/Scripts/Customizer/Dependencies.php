@@ -17,6 +17,7 @@ class Dependencies extends EnqueueScript {
 
 		wp_enqueue_script( 'kirki_customizer_js', trailingslashit( $kirki_url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ) );
 		wp_enqueue_script( 'serialize-js', trailingslashit( $kirki_url ) . 'assets/js/serialize.js');
+		wp_enqueue_script( 'select2-js', trailingslashit( $kirki_url ) . 'assets/js/select2.min.js');
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
