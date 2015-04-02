@@ -68,7 +68,29 @@ class Fields {
 	 * @return string. If not set, then defaults to text.
 	 */
 	public function sanitize_control_type( $field ) {
-		return ( isset( $field['type'] ) ) ? $field['type'] : 'text';
+
+		if ( ! isset( $field['type'] ) ) {
+			return 'text';
+		}
+
+		if ( 'checkbox' == $field['type'] ) {
+
+			$field['type'] = ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) ? 'switch' : $field['type'];
+			$field['type'] = ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) ? 'toggle' : $field['type'];
+
+		} elseif ( 'radio' == $field['type'] ) {
+
+			$field['type'] = ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) ? 'radio-buttonset' : $field['type'];
+			$field['type'] = ( isset( $field['mode'] ) && 'image' == $field['mode'] ) ? 'radio-image' : $field['type'];
+
+		} elseif ( 'group-title' == $field['type'] || 'group_title' == $field['type'] ) {
+
+			$field['type'] = 'custom';
+
+		}
+
+		return $field['type'];
+
 	}
 
 	/**
