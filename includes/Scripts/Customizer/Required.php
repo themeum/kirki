@@ -55,6 +55,15 @@ class Required extends EnqueueScript {
 
 					// The target element
 					$target = '#customize-control-' . $field['settings'];
+					// if this is a background control then make sure we target all sub-controls
+					if ( 'background' == $field['type'] ) {
+						$target  = '#customize-control-' . $control['settings'] . '_color, ';
+						$target .= '#customize-control-' . $control['settings'] . '_image, ';
+						$target .= '#customize-control-' . $control['settings'] . '_repeat, ';
+						$target .= '#customize-control-' . $control['settings'] . '_size, ';
+						$target .= '#customize-control-' . $control['settings'] . '_position, ';
+						$target .= '#customize-control-' . $control['settings'] . '_attach';
+					}
 
 					if ( ! isset( $dependency['operator'] ) ) {
 						$dependency['operator'] = '==';
