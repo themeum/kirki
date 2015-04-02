@@ -184,6 +184,6 @@ class Kirki_Colourlovers {
 
 		return $palette;
 
-    }
+	}
 
 }

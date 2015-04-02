@@ -22,10 +22,10 @@ class Frontend {
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
 	function frontend_styles() {
-        $config = Kirki::config()->get_all();
+		$config = Kirki::config()->get_all();
 		$fields = Kirki::fields()->get_all();
 
-        $kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
+		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
 
 		foreach( $fields as $field ) {
 			if ( isset( $field['output'] ) ) {

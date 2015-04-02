@@ -20,34 +20,34 @@ spl_autoload_register( function( $class ) {
  */
 class Kirki {
 
-    /** @var Kirki The only instance of this class */
-    public static $instance = null;
+	/** @var Kirki The only instance of this class */
+	public static $instance = null;
 
-    /** @var string Version number */
-    public static $version = '0.8.2';
+	/** @var string Version number */
+	public static $version = '0.8.2';
 
-    /** @var Config Configuration */
+	/** @var Config Configuration */
 	public $config = null;
 
-    /** @var FontRegistry The font registry */
-    public $font_registry = null;
+	/** @var FontRegistry The font registry */
+	public $font_registry = null;
 
-    /** @var scripts */
-    public $scripts = null;
+	/** @var scripts */
+	public $scripts = null;
 
 	/** @var field */
 	public $fields = null;
 
-    /**
-     * Access the single instance of this class
-     * @return Kirki
-     */
-    public static function get_instance() {
-        if ( self::$instance==null ) {
-            self::$instance = new Kirki();
-        }
-        return self::$instance;
-    }
+	/**
+	 * Access the single instance of this class
+	 * @return Kirki
+	 */
+	public static function get_instance() {
+		if ( self::$instance==null ) {
+			self::$instance = new Kirki();
+		}
+		return self::$instance;
+	}
 
 	/**
 	 * Shortcut method to call the Field class
@@ -56,12 +56,12 @@ class Kirki {
 		return self::get_instance()->fields;
 	}
 
-    /**
-     * Shortcut method to get the configuration of the single instance.
-     */
-    public static function config() {
-        return self::get_instance()->config;
-    }
+	/**
+	 * Shortcut method to get the configuration of the single instance.
+	 */
+	public static function config() {
+		return self::get_instance()->config;
+	}
 
 	/**
 	 * Shortcut method to get the translation strings
@@ -72,28 +72,28 @@ class Kirki {
 		return $options['i18n'];
 	}
 
-    /**
-     * Shortcut method to get the font registry.
-     */
-    public static function fonts() {
-        return self::get_instance()->font_registry;
-    }
+	/**
+	 * Shortcut method to get the font registry.
+	 */
+	public static function fonts() {
+		return self::get_instance()->font_registry;
+	}
 
-    /**
-     * Constructor is private, should only be called by get_instance()
-     */
+	/**
+	 * Constructor is private, should only be called by get_instance()
+	 */
 	private function __construct() {
 
-        // Create our main objects
+		// Create our main objects
 		$this->font_registry = new FontRegistry();
-        $this->config        = new Config();
+		$this->config        = new Config();
 		$this->fields        = new Fields();
-        $this->scripts       = new ScriptRegistry();
+		$this->scripts       = new ScriptRegistry();
 		$this->styles        = new Styles();
 
-        // Hook into WP
-        $init = new Builder();
+		// Hook into WP
+		$init = new Builder();
 
-    }
+	}
 
 }

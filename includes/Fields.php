@@ -6,23 +6,23 @@ use Kirki;
 
 class Fields {
 
-    /** @var array The controls */
-    private $fields = null;
+	/** @var array The controls */
+	private $fields = null;
 
 	/**
 	 * Get an array of all the fields
 	 */
 	public function get_all() {
 
-        if ( $this->fields == null ) {
+		if ( $this->fields == null ) {
 
 			$fields = apply_filters( 'kirki/controls', array() );
 			$fields = apply_filters( 'kirki/fields', $fields );
 
-            $this->controls = array();
+			$this->controls = array();
 			foreach ( $fields as $field ) {
-                $field = $this->sanitize_field( $field );
-                $this->fields[$field['settings']] = $field;
+				$field = $this->sanitize_field( $field );
+				$this->fields[$field['settings']] = $field;
 			}
 
 		}
@@ -38,7 +38,7 @@ class Fields {
 	 */
 	public function sanitize_field( $field ) {
 
-        $config = Kirki::config()->get_all();
+		$config = Kirki::config()->get_all();
 
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );
@@ -105,17 +105,17 @@ class Fields {
 			$field['settings'] = $field['setting'];
 		}
 
-        /**
-         * When using 'option' as the setting type,
-         * we store all settings as an array in a single option in the database.
-         * The 'background' controls are a bit more complicated and handled in the
-         * Settings and Controls classes separately.
-         */
-        if ( 'option' == $options_type && 'background' != $field['type'] ) {
-            $field['settings'] == 'kirki' . '[' . $field['settings'] . ']';
-        }
+		/**
+		 * When using 'option' as the setting type,
+		 * we store all settings as an array in a single option in the database.
+		 * The 'background' controls are a bit more complicated and handled in the
+		 * Settings and Controls classes separately.
+		 */
+		if ( 'option' == $options_type && 'background' != $field['type'] ) {
+			$field['settings'] == 'kirki' . '[' . $field['settings'] . ']';
+		}
 
-        return $field['settings'];
+		return $field['settings'];
 
 	}
 
@@ -147,11 +147,11 @@ class Fields {
 	 */
 	public function sanitize_id( $field, $options_type = 'theme_mod' ) {
 
-        if ( 'option' == $options_type ) {
-            return sanitize_key( $field['settings'] );
-        } else {
-            return $field['settings'];
-        }
+		if ( 'option' == $options_type ) {
+			return sanitize_key( $field['settings'] );
+		} else {
+			return $field['settings'];
+		}
 
 	}
 
