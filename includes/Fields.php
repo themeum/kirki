@@ -356,8 +356,9 @@ class Fields {
 				$field['priority']    = ( isset( $field['priority'] ) )    ? $field['priority']    : 10;
 
 				if ( isset( $field['default']['color'] ) ) {
+					$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 					$fields[] = array(
-						'type'        => 'color',
+						'type'        => $color_mode,
 						'label'       => isset( $field['label'] ) ? $field['label'] : '',
 						'section'     => $field['section'],
 						'settings'    => $field['settings'] . '_color',
@@ -516,6 +517,9 @@ class Fields {
 				break;
 			case 'color' :
 				$sanitize_callback = 'sanitize_hex_color';
+				break;
+			case 'color-alpha' :
+				$sanitize_callback = 'esc_js';
 				break;
 			case 'image' :
 				$sanitize_callback = 'esc_url_raw';
