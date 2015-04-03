@@ -8,13 +8,15 @@ use Kirki\Controls;
 
 class Builder {
 
-	private $settings;
+	public $settings;
 	private $controls;
 
 	public function __construct() {
+
 		$this->settings = new Settings();
 		$this->controls = new Controls();
 		add_action( 'customize_register', array( $this, 'build' ), 99 );
+
 	}
 
 	/**

@@ -66,6 +66,7 @@ class Config {
 			if ( isset( $this->config['logo_image'] ) ) {
 				$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
 			}
+
 			if ( isset( $this->config['description'] ) ) {
 				$this->config['description'] = esc_html( $this->config['description'] );
 			}
@@ -79,7 +80,6 @@ class Config {
 			} else {
 				$this->config['options_type'] = 'theme_mod';
 			}
-			// $this->config['options_type'] = 'option';
 
 			// Get the translation strings.
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
@@ -88,6 +88,7 @@ class Config {
 		}
 
 		return $this->config;
+
 	}
 
 	/**

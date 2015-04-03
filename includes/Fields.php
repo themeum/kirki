@@ -39,24 +39,22 @@ class Fields {
 	 */
 	public function sanitize_field( $field ) {
 
-		$config = Kirki::config()->get_all();
-
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );
 		$field['help']              = $this->sanitize_help( $field );
 		$field['description']       = $this->sanitize_description( $field );
-		$field['required']          = $this->sanitize_required( $field, $config['options_type'] );
+		$field['required']          = $this->sanitize_required( $field );
 		$field['transport']         = $this->sanitize_transport( $field );
 		$field['type']              = $this->sanitize_control_type( $field );
 		$field['option_type']       = $this->sanitize_type( $field );
 		$field['section']           = $this->sanitize_section( $field );
-		$field['settings']          = $this->sanitize_settings( $field, $config['options_type'] );
+		$field['settings']          = $this->sanitize_settings( $field );
 		$field['priority']          = $this->sanitize_priority( $field );
 		$field['choices']           = $this->sanitize_choices( $field );
 		$field['output']            = $this->sanitize_output( $field );
 		$field['sanitize_callback'] = $this->sanitize_callback( $field );
 		$field['js_vars']           = $this->sanitize_js_vars( $field );
-		$field['id']                = $this->sanitize_id( $field, $config['options_type'] );
+		$field['id']                = $this->sanitize_id( $field );
 
 		return $field;
 
@@ -105,14 +103,8 @@ class Fields {
 	 * @return string. (theme_mod|option)
 	 */
 	public function sanitize_type( $field ) {
-
 		$config = Kirki::config()->get_all();
-		if ( isset( $config['options_type'] ) && 'option' == $config['options_type'] ) {
-			return 'option';
-		} else {
-			return 'theme_mod';
-		}
-
+		return $config['options_type'];
 	}
 
 	/**
@@ -121,25 +113,14 @@ class Fields {
 	 * @param array the field definition
 	 * @return string.
 	 */
-	public function sanitize_settings( $field, $options_type = 'theme_mod' ) {
+	public function sanitize_settings( $field ) {
 
 		/**
 		 * Compatibility tweak
-		 *
 		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
 		 */
 		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
 			$field['settings'] = $field['setting'];
-		}
-
-		/**
-		 * When using 'option' as the setting type,
-		 * we store all settings as an array in a single option in the database.
-		 * The 'background' controls are a bit more complicated and handled in the
-		 * Settings and Controls classes separately.
-		 */
-		if ( 'option' == $options_type && 'background' != $field['type'] ) {
-			$field['settings'] == 'kirki' . '[' . $field['settings'] . ']';
 		}
 
 		return $field['settings'];
@@ -172,15 +153,9 @@ class Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_id( $field, $options_type = 'theme_mod' ) {
-
-		if ( 'option' == $options_type ) {
-			$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
-			return sanitize_key( $id );
-		} else {
-			return $field['settings'];
-		}
-
+	public function sanitize_id( $field ) {
+		$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+		return sanitize_key( $id );
 	}
 
 	/**

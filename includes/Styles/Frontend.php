@@ -65,9 +65,9 @@ class Frontend {
 	}
 
 
-	function control_styles( $field, $styles, $element, $property, $units ) {
+	function setting_styles( $field, $styles, $element, $property, $units ) {
 
-		$value = get_theme_mod( $field['settings'], $field['default'] );
+		$value = kirki_get_option( $field['settings'] );
 
 		// Color controls
 		if ( 'color' == $field['type'] ) {
@@ -81,30 +81,36 @@ class Frontend {
 		elseif ( 'background' == $field['type'] ) {
 
 			if ( isset( $field['default']['color'] ) ) {
-				$bg_color = \Kirki_Color::sanitize_hex( get_theme_mod( $field['settings'] . '_color', $field['default']['color'] ) );
+				$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
+				$value = kirki_get_option( $field['settings'] . '_color' );
+				if ( 'color-alpha' == $color_mode ) {
+					$bg_color = esc_js( $value );
+				} else {
+					$bg_color = \Kirki_Color::sanitize_hex( $value );
+				}
 			}
 			if ( isset( $field['default']['image'] ) ) {
-				$bg_image = get_theme_mod( $field['settings'] . '_image', $field['default']['image'] );
+				$bg_image = kirki_get_option( $field['settings'] . '_image' );
 				$bg_image = esc_url_raw( $bg_image );
 			}
 			if ( isset( $field['default']['repeat'] ) ) {
-				$bg_repeat = get_theme_mod( $field['settings'] . '_repeat', $field['default']['repeat'] );
+				$bg_repeat = kirki_get_option( $field['settings'] . '_repeat' );
 				$bg_repeat = kirki_sanitize_bg_repeat( $bg_repeat );
 			}
 			if ( isset( $field['default']['size'] ) ) {
-				$bg_size = get_theme_mod( $field['settings'] . '_size', $field['default']['size'] );
+				$bg_size = kirki_get_option( $field['settings'] . '_size' );
 				$bg_size = kirki_sanitize_bg_size( $bg_size );
 			}
 			if ( isset( $field['default']['attach'] ) ) {
-				$bg_attach = get_theme_mod( $field['settings'] . '_attach', $field['default']['attach'] );
+				$bg_attach = kirki_get_option( $field['settings'] . '_attach' );
 				$bg_attach = kirki_sanitize_bg_attach( $bg_attach );
 			}
 			if ( isset( $field['default']['position'] ) ) {
-				$bg_position = get_theme_mod( $field['settings'] . '_position', $field['default']['position'] );
+				$bg_position = kirki_get_option( $field['settings'] . '_position' );
 				$bg_position = kirki_sanitize_bg_position( $bg_position );
 			}
 			if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
-				$bg_opacity = get_theme_mod( $field['settings'] . '_opacity', $field['default']['opacity'] );
+				$bg_opacity = kirki_get_option( $field['settings'] . '_opacity' );
 				$bg_opacity = kirki_sanitize_number( $bg_opacity );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
@@ -202,7 +208,7 @@ class Frontend {
 						$units    = isset( $field['output']['units'] )    ? $field['output']['units']    : '';
 					}
 
-					$styles = $this->control_styles( $field, $styles, $element, $property, $units );
+					$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
 
 				} else { // Multiple styles set
 
@@ -216,7 +222,7 @@ class Frontend {
 							$units    = isset( $style['units'] )    ? $style['units']    : '';
 						}
 
-						$styles = $this->control_styles( $field, $styles, $element, $property, $units );
+						$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
 
 					}
 
