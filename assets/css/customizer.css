@@ -100,37 +100,37 @@ li.customize-control {
   width: 22px;
   height: 22px; }
   .customize-control-multicheck input[type="checkbox"]:before {
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
     content: "";
     position: absolute;
     left: 0;
     z-index: 1;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #f2f2f2; }
-  .customize-control-multicheck input[type="checkbox"]:checked:before {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    height: 8px;
-    top: 4px;
-    left: 4px;
-    border-color: #009688;
-    border-top-style: none;
-    border-right-style: none; }
+    width: 100%;
+    height: 100%;
+    border: none; }
   .customize-control-multicheck input[type="checkbox"]:after {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    width: 18px;
-    height: 18px;
+    width: 100%;
+    height: 100%;
     background: #fff;
     cursor: pointer; }
+  .customize-control-multicheck input[type="checkbox"]:checked:before {
+    border: 4px solid #4caf50;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 14px;
+    height: 6px;
+    top: 6px;
+    left: 5px;
+    border-top-style: none;
+    border-right-style: none; }
+  .customize-control-multicheck input[type="checkbox"]:checked:after {
+    background: #f2f2f2; }
 
 .customize-control-checkbox input[type="checkbox"] {
   position: relative;
@@ -140,37 +140,37 @@ li.customize-control {
   width: 22px;
   height: 22px; }
   .customize-control-checkbox input[type="checkbox"]:before {
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
     content: "";
     position: absolute;
     left: 0;
     z-index: 1;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #f2f2f2; }
-  .customize-control-checkbox input[type="checkbox"]:checked:before {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    height: 8px;
-    top: 4px;
-    left: 4px;
-    border-color: #009688;
-    border-top-style: none;
-    border-right-style: none; }
+    width: 100%;
+    height: 100%;
+    border: none; }
   .customize-control-checkbox input[type="checkbox"]:after {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    width: 18px;
-    height: 18px;
+    width: 100%;
+    height: 100%;
     background: #fff;
     cursor: pointer; }
+  .customize-control-checkbox input[type="checkbox"]:checked:before {
+    border: 4px solid #4caf50;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 14px;
+    height: 6px;
+    top: 6px;
+    left: 5px;
+    border-top-style: none;
+    border-right-style: none; }
+  .customize-control-checkbox input[type="checkbox"]:checked:after {
+    background: #f2f2f2; }
 
 .customize-control-radio-buttonset label {
   padding: 5px 10px;
