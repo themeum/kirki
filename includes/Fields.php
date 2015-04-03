@@ -521,9 +521,6 @@ class Fields {
 				break;
 			case 'color' :
 				$sanitize_callback = 'sanitize_hex_color';
-				if ( 'color' == $field['type'] && false !== strpos( $field['default']['color'], 'rgba' ) ) {
-					$sanitize_callback = 'esc_js';
-				}
 				break;
 			case 'color-alpha' :
 				$sanitize_callback = 'esc_js';
