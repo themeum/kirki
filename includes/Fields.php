@@ -18,8 +18,9 @@ class Fields {
 
 			$fields = apply_filters( 'kirki/controls', array() );
 			$fields = apply_filters( 'kirki/fields', $fields );
+			$fields = $this->build_background_fields( $fields );
 
-			$this->controls = array();
+			$this->fields = array();
 			foreach ( $fields as $field ) {
 				$field = $this->sanitize_field( $field );
 				$this->fields[$field['settings']] = $field;
@@ -331,6 +332,173 @@ class Fields {
 		} else {
 			return 10;
 		}
+
+	}
+
+	/**
+	 *
+	 */
+	public function build_background_fields( $fields ) {
+		$i18n = Kirki::i18n();
+
+		foreach ( $fields as $field ) {
+
+			if ( 'background' == $field['type'] ) {
+
+				// Set any unset values to avoid PHP warnings below.
+				$field['settings']    = ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) ? $field['setting'] : $field['settings'];
+				$field['section']     = ( isset( $field['section'] ) )     ? $field['section']     : 'background';
+				$field['help']        = ( isset( $field['help'] ) )        ? $field['help']        : '';
+				$field['description'] = ( isset( $field['description'] ) ) ? $field['description'] : $i18n['background-color'];
+				$field['required']    = ( isset( $field['required'] ) )    ? $field['required']    : array();
+				$field['transport']   = ( isset( $field['transport'] ) )   ? $field['transport']   : 'refresh';
+				$field['default']     = ( isset( $field['default'] ) )     ? $field['default']     : array();
+				$field['priority']    = ( isset( $field['priority'] ) )    ? $field['priority']    : 10;
+
+				if ( isset( $field['default']['color'] ) ) {
+					$fields[] = array(
+						'type'        => 'color',
+						'label'       => isset( $field['label'] ) ? $field['label'] : '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_color',
+						'priority'    => $field['priority'],
+						'help'        => $field['help'],
+						'description' => $field['description'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['color'],
+					);
+				}
+
+				if ( isset( $field['default']['image'] ) ) {
+					$fields[] = array(
+						'type'        => 'image',
+						'label'       => '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_image',
+						'priority'    => $field['priority'] + 1,
+						'help'        => '',
+						'description' => $i18n['background-image'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['image'],
+					);
+				}
+
+				if ( isset( $field['default']['repeat'] ) ) {
+					$fields[] = array(
+						'type'        => 'select',
+						'label'       => '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_',
+						'priority'    => $field['priority'] + 2,
+						'choices'     => array(
+							'no-repeat' => $i18n['no-repeat'],
+							'repeat'    => $i18n['repeat-all'],
+							'repeat-x'  => $i18n['repeat-x'],
+							'repeat-y'  => $i18n['repeat-y'],
+							'inherit'   => $i18n['inherit'],
+						),
+						'help'        => '',
+						'description' => $i18n['background-repeat'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['repeat'],
+					);
+				}
+
+				if ( isset( $field['default']['size'] ) ) {
+					$fields[] = array(
+						'type'        => 'radio-buttonset',
+						'label'       => '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_size',
+						'priority'    => $field['priority'] + 3,
+						'choices'     => array(
+							'inherit' => $i18n['inherit'],
+							'cover'   => $i18n['cover'],
+							'contain' => $i18n['contain'],
+						),
+						'help'        => '',
+						'description' => $i18n['background-size'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['size'],
+					);
+				}
+
+				if ( isset( $field['default']['attach'] ) ) {
+					$fields[] = array(
+						'label'       => '',
+						'type'        => 'radio-buttonset',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_attach',
+						'priority'    => $field['priority'] + 4,
+						'choices'     => array(
+							'inherit' => $i18n['inherit'],
+							'fixed'   => $i18n['fixed'],
+							'scroll'  => $i18n['scroll'],
+						),
+						'help'        => '',
+						'description' => $i18n['background-attachment'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['attach'],
+					);
+				}
+
+				if ( isset( $field['default']['position'] ) ) {
+					$fields[] = array(
+						'type'        => 'select',
+						'label'       => '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_position',
+						'priority'    => $field['priority'] + 5,
+						'choices'     => array(
+							'left-top'      => $i18n['left-top'],
+							'left-center'   => $i18n['left-center'],
+							'left-bottom'   => $i18n['left-bottom'],
+							'right-top'     => $i18n['right-top'],
+							'right-center'  => $i18n['right-center'],
+							'right-bottom'  => $i18n['right-bottom'],
+							'center-top'    => $i18n['center-top'],
+							'center-center' => $i18n['center-center'],
+							'center-bottom' => $i18n['center-bottom'],
+						),
+						'help'        => '',
+						'description' => $i18n['background-position'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['position'],
+					);
+				}
+
+				if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
+					$fields[] = array(
+						'type'        => 'slider',
+						'label'       => '',
+						'section'     => $field['section'],
+						'settings'    => $field['settings'] . '_opacity',
+						'priority'    => $field['priority'] + 6,
+						'choices'     => array(
+							'min'     => 0,
+							'max'     => 100,
+							'step'    => 1,
+						),
+						'help'        => '',
+						'description' => $i18n['background-opacity'],
+						'required'    => $field['required'],
+						'transport'   => $field['transport'],
+						'default'     => $field['default']['opacity'],
+					);
+
+				}
+
+			}
+
+		}
+
+		return $fields;
 
 	}
 

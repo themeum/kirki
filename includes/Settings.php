@@ -23,40 +23,9 @@ class Settings {
 	public function add( $wp_customize, $field ) {
 
 		if ( 'background' == $field['type'] ) {
-
-			if ( isset( $field['default']['color'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_color]' : $field['settings'] . '_color';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['color'], 'sanitize_hex_color' );
-			}
-
-			if ( isset( $field['default']['image'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_image]' : $field['settings'] . '_image';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['image'], 'esc_url_raw' );
-			}
-			if ( isset( $field['default']['repeat'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_repeat]' : $field['settings'] . '_repeat';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['repeat'], 'kirki_sanitize_bg_repeat' );
-			}
-
-			if ( isset( $field['default']['size'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_size]' : $field['settings'] . '_size';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['size'], 'kirki_sanitize_bg_size' );
-			}
-
-			if ( isset( $field['default']['attach'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_attach]' : $field['settings'] . '_attach';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['attach'], 'kirki_sanitize_bg_attach' );
-			}
-
-			if ( isset( $field['default']['position'] ) ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_position]' : $field['settings'] . '_position';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['position'], 'kirki_sanitize_bg_position' );
-			}
-
-			if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
-				$option_name = ( 'option' == $this->setting_type ) ? $this->option_name . '[' . $field['settings'] . '_opacity]' : $field['settings'] . '_opacity';
-				$this->add_setting( $wp_customize, $field, $option_name, $field['default']['opacity'], 'absint' );
-			}
+			// Do nothing.
+			// The 'background' field is just the sum of its sub-fields
+			// which are created individually.
 		} else {
 			$this->add_setting( $wp_customize, $field );
 		}
