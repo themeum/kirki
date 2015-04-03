@@ -379,3 +379,46 @@ body.IE7 .Switch.Round {
   display: block; }
 .customize-control-color-alpha .customize-control-alphacolor .wp-picker-container .iris-picker {
   border-bottom: none; }
+
+.customize-control-number .stepper {
+  border-radius: 0px;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  position: relative;
+  width: 50%; }
+  .customize-control-number .stepper .stepper-input {
+    background: #F9F9F9;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+    overflow: hidden;
+    padding: 9px 10px 10px;
+    width: 100%;
+    z-index: 49;
+    -moz-appearance: textfield; }
+    .customize-control-number .stepper .stepper-input::-webkit-inner-spin-button, .customize-control-number .stepper .stepper-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .customize-control-number .stepper .stepper-input:focus {
+      background-color: #fff; }
+  .customize-control-number .stepper .stepper-arrow {
+    background: #eee url("../images/jquery.fs.stepper-arrows.png") no-repeat;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: block;
+    height: 50%;
+    position: absolute;
+    right: 0;
+    text-indent: -99999px;
+    width: 20px;
+    z-index: 50; }
+    .customize-control-number .stepper .stepper-arrow.up {
+      background-position: center top;
+      border-bottom: none;
+      top: 0; }
+    .customize-control-number .stepper .stepper-arrow.down {
+      background-position: center bottom;
+      bottom: 0; }
