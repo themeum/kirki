@@ -14,6 +14,11 @@ class GoogleFonts {
 
 		$fields = Kirki::fields()->get_all();
 
+		// Early exit if no fields are found.
+		if ( ! $fields || empty( $fields ) ) {
+			return;
+		}
+
 		// Get an array of all the google fonts
 		$google_fonts = Kirki::fonts()->get_google_fonts();
 
