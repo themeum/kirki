@@ -15,12 +15,12 @@ class Branding extends EnqueueScript {
 
 		$options = Kirki::config()->get_all(); ?>
 
-		<?php if ( isset( $options['logo_image'] ) || isset( $options['description'] ) ) : ?>
+		<?php if ( '' != $options['logo_image'] || '' != $options['description'] ) : ?>
 			<script>jQuery(document).ready(function($) { "use strict";
-				<?php if ( isset( $options['logo_image'] ) ) : ?>
+				<?php if ( '' != $options['logo_image'] ) : ?>
 					$( 'div#customize-info .preview-notice' ).replaceWith( '<img src="<?php echo $options['logo_image']; ?>">' );
 				<?php endif; ?>
-				<?php if ( isset( $options['description'] ) ) : ?>
+				<?php if ( '' != $options['description'] ) : ?>
 					$( 'div#customize-info .accordion-section-content' ).replaceWith( '<div class="accordion-section-content"><div class="theme-description"><?php echo $options['description']; ?></div></div>' );
 				<?php endif; ?>
 			});</script>

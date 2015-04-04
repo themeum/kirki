@@ -60,30 +60,18 @@ class Config {
 
 			// Merge a default configuration with the one we got from the user to make sure nothing is missing
 			$default_config = array(
-				'stylesheet_id' => 'kirki-styles'
+				'stylesheet_id' => 'kirki-styles',
+				'capability'    => 'edit_theme_options',
+				'logo_image'    => '',
+				'description'   => '',
+				'url_path'      => '',
+				'options_type'  => 'options_type',
 			);
 			$this->config = array_merge( $default_config, $this->config );
-			if ( isset( $this->config['logo_image'] ) ) {
-				$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
-			}
 
-			if ( isset( $this->config['description'] ) ) {
-				$this->config['description'] = esc_html( $this->config['description'] );
-			}
-
-			if ( ! isset( $this->config['url_path'] ) ) {
-				$this->config['url_path'] = '';
-			}
-
-			if ( isset( $this->config['options_type'] ) && 'option' == $this->config['options_type'] ) {
-				$this->config['options_type'] = 'option';
-			} else {
-				$this->config['options_type'] = 'theme_mod';
-			}
-
-			if ( ! isset( $this->config['capability'] ) ) {
-				$this->config['capability'] = 'edit_theme_options';
-			}
+			$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
+			$this->config['description'] = esc_html( $this->config['description'] );
+			$this->config['url_path']    = esc_url_raw( $this->config['url_path'] );
 
 			// Get the translation strings.
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
