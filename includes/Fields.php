@@ -55,6 +55,7 @@ class Fields {
 		$field['sanitize_callback'] = $this->sanitize_callback( $field );
 		$field['js_vars']           = $this->sanitize_js_vars( $field );
 		$field['id']                = $this->sanitize_id( $field );
+		$field['capability']        = $this->sanitize_capability( $field );
 
 		return $field;
 
@@ -105,6 +106,21 @@ class Fields {
 	public function sanitize_type( $field ) {
 		$config = Kirki::config()->get_all();
 		return $config['options_type'];
+	}
+
+	/**
+	 * Sanitizes the setting permissions.
+	 *
+	 * @param array the field definition
+	 * @return string. (theme_mod|option)
+	 */
+	public function sanitize_capability( $field ) {
+		if ( ! isset( $field['capability'] ) ) {
+			$config = Kirki::config()->get_all();
+			return $config['capability'];
+		} else {
+			return $field['capability'];
+		}
 	}
 
 	/**
