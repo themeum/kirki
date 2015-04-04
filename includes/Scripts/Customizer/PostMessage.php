@@ -4,6 +4,7 @@ namespace Kirki\Scripts\Customizer;
 
 use Kirki;
 use Kirki\Scripts\EnqueueScript;
+use Kirki\Scripts\ScriptRegistry;
 
 class PostMessage extends EnqueueScript {
 
@@ -38,30 +39,27 @@ class PostMessage extends EnqueueScript {
 		if ( ! isset( $wp_customize ) ) {
 			return;
 		}
-		?>
 
-		<?php $fields = Kirki::fields()->get_all(); ?>
+		$fields = Kirki::fields()->get_all();
+		$script = '';
+		foreach ( $fields as $field ) {
+			if ( isset( $field['transport']  ) && isset( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) {
+				foreach ( $field['js_vars'] as $js_vars ) {
+					$script .= 'wp.customize( \'' . $field['settings'] . '\', function( value ) {';
+					$script .= 'value.bind( function( newval ) {';
+					if ( 'html' == $js_vars['function'] ) {
+						$script .= '$( \'' . esc_js( $js_vars["element"] ) . '\' ).html( newval );';
+					} elseif ( 'css' == $js_vars['function'] ) {
+						$script .= '$(\'' . esc_js( $js_vars["element"] ) . '\').css(\'' . esc_js( $js_vars["property"] ) . '\', newval );';
+					}
+					$script .= '}); });';
+				}
+			}
+		}
 
-		<script type="text/javascript">
-			( function( $ ) {
-				<?php foreach ( $fields as $field ) : ?>
-					<?php if ( isset( $field['transport']  ) && isset( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) : ?>
-						<?php foreach ( $field['js_vars'] as $js_vars ) : ?>
-							wp.customize( '<?php echo $field["settings"]; ?>', function( value ) {
-								value.bind( function( newval ) {
-									<?php if ( 'html' == $js_vars['function'] ) : ?>
-										$( '<?php echo esc_js( $js_vars["element"] ); ?>' ).html( newval );
-									<?php elseif ( 'css' == $js_vars['function'] ) : ?>
-										$('<?php echo esc_js( $js_vars["element"] ); ?>').css('<?php echo esc_js( $js_vars["property"] ); ?>', newval );
-									<?php endif; ?>
-								} );
-							} );
-						<?php endforeach; ?>
-					<?php endif; ?>
-				<?php endforeach; ?>
-			} )( jQuery );
-		</script>
-		<?php
+		if ( '' != $script ) {
+			echo ScriptRegistry::prepare( $script );
+		}
 
 	}
 

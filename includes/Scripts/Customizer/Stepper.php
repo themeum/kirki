@@ -4,6 +4,7 @@ namespace Kirki\Scripts\Customizer;
 
 use Kirki;
 use Kirki\Scripts\EnqueueScript;
+use Kirki\Scripts\ScriptRegistry;
 
 class Stepper extends EnqueueScript {
 
@@ -33,7 +34,7 @@ class Stepper extends EnqueueScript {
 		// Convert array to string
 		$script = implode( '', $scripts );
 
-		echo '<script type="text/javascript">jQuery(document).ready(function( $ ) {' . $script . '});</script>';
+		echo ScriptRegistry::prepare( $script );
 
 	}
 

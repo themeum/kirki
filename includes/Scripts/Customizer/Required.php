@@ -4,6 +4,7 @@ namespace Kirki\Scripts\Customizer;
 
 use Kirki;
 use Kirki\Scripts\EnqueueScript;
+use Kirki\Scripts\ScriptRegistry;
 
 class Required extends EnqueueScript {
 
@@ -121,7 +122,7 @@ class Required extends EnqueueScript {
 
 		// If there's a script then echo it wrapped.
 		if ( ! empty( $script ) ) {
-			echo '<script>jQuery(document).ready(function($) {' . $script . '});</script>';
+			echo ScriptRegistry::prepare( $script );
 		}
 
 	}
