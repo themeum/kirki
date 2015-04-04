@@ -18,7 +18,14 @@ class Fields {
 
 			$fields = apply_filters( 'kirki/controls', array() );
 			$fields = apply_filters( 'kirki/fields', $fields );
+
+			// Early exit if no fields are found.
+			if ( empty( $fields ) ) {
+				return array();
+			}
+
 			$fields = $this->build_background_fields( $fields );
+			$fields = $this->build_tabs( $fields );
 
 			$this->fields = array();
 			foreach ( $fields as $field ) {
@@ -61,6 +68,76 @@ class Fields {
 
 	}
 
+	public function build_tabs( $fields ) {
+		foreach ( $fields as $field ) {
+			$field['settings'] = ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) ? $field['setting'] : $field['settings'];
+			if ( 'tab' == $field['type'] ) {
+
+				// Create a new tab field
+				$fields[] = array(
+					'type'        => 'tab',
+					'settings'    => $field['settings'] . '_tabs_wrapper_open',
+					'label'       => ( isset( $field['label'] ) ) ? $field['label'] : '',
+					'description' => ( isset( $field['description'] ) ) ? $field['description'] : '',
+					'help'        => ( isset( $field['help'] ) ) ? $field['help'] : '',
+					'section'     => $field['section'],
+					'priority'    => ( isset( $field['priority'] ) ) ? $field['priority'] : 10,
+					'mode'        => 'open-wrapper',
+				);
+
+				$choices = $field['choices'];
+				foreach ( $choices as $choice ) {
+					// Open a tab
+					// $fields[] = array(
+					// 	'type'        => 'tab',
+					// 	'settings'    => $field['settings'] . '_open_tab_' . $choice['label'],
+					// 	'label'       => $choice['label'],
+					// 	'section'     => $field['section'],
+					// 	'priority'    => $field['priority'],
+					// 	'mode'        => 'open-tab',
+					// );
+					// The array of fields assigned to this tab
+					$sub_fields = $choice['fields'];
+					foreach ( $sub_fields as $subfield ) {
+						foreach ( $fields as $id => $scanned_field ) {
+							$scanned_field['settings'] = ( ! isset( $scanned_field['settings'] ) && isset( $scanned_field['setting'] ) ) ? $scanned_field['setting'] : $scanned_field['settings'];
+							if ( $subfield == $scanned_field['settings'] ) {
+								// Make sure the same section is assigned
+								$scanned_field['section'] = $field['section'];
+								// Assing the same priority
+								$scanned_field['priority'] = $field['priority'];
+								// Add the field
+								$fields[] = $scanned_field;
+								// Remove previous one from the array of fields
+								unset( $fields[$id] );
+							}
+						}
+					}
+					// Close the tab
+					// $fields[] = array(
+					// 	'type'        => 'tab',
+					// 	'settings'    => $field['settings'] . '_close_tab_' . $choice['label'],
+					// 	'section'     => $field['section'],
+					// 	'priority'    => $field['priority'],
+					// 	'mode'        => 'close-tab',
+					// );
+				}
+				// Close the wrapper
+				// $fields[] = array(
+				// 	'type'        => 'tab',
+				// 	'settings'    => $field['settings'] . '_tabs_wrapper_close',
+				// 	'label'       => $choice['label'],
+				// 	'section'     => $field['section'],
+				// 	'priority'    => $field['priority'],
+				// 	'mode'        => 'close-wrapper',
+				// );
+			}
+		}
+
+		return $fields;
+
+	}
+
 	/**
 	 * Sanitizes the control type.
 	 *
@@ -73,23 +150,25 @@ class Fields {
 			return 'text';
 		}
 
-		if ( 'checkbox' == $field['type'] ) {
+		switch ( $field['type'] ) {
 
-			$field['type'] = ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) ? 'switch' : $field['type'];
-			$field['type'] = ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) ? 'toggle' : $field['type'];
-
-		} elseif ( 'radio' == $field['type'] ) {
-
-			$field['type'] = ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) ? 'radio-buttonset' : $field['type'];
-			$field['type'] = ( isset( $field['mode'] ) && 'image' == $field['mode'] ) ? 'radio-image' : $field['type'];
-
-		} elseif ( 'group-title' == $field['type'] || 'group_title' == $field['type'] ) {
-
-			$field['type'] = 'custom';
-
-		} elseif ( 'color' == $field['type'] && false !== strpos( $field['default'], 'rgba' ) ) {
-
-			$field['type'] = 'color-alpha';
+			case 'checkbox' :
+				$field['type'] = ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) ? 'switch' : $field['type'];
+				$field['type'] = ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) ? 'toggle' : $field['type'];
+				break;
+			case 'radio' :
+				$field['type'] = ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) ? 'radio-buttonset' : $field['type'];
+				$field['type'] = ( isset( $field['mode'] ) && 'image' == $field['mode'] ) ? 'radio-image' : $field['type'];
+				break;
+			case 'group-title' :
+				$field['type'] = 'custom';
+				break;
+			case 'group_title' :
+				$field['type'] = 'custom';
+				break;
+			case 'color' :
+				$field['type'] = ( false !== strpos( $field['default'], 'rgba' ) ) ? 'color-alpha' : 'color';
+				break;
 
 		}
 

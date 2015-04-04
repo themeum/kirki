@@ -15,6 +15,7 @@ use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
 use Kirki\Controls\ColorAlphaControl;
+use Kirki\Controls\TabControl;
 
 class Controls {
 
@@ -111,6 +112,10 @@ class Controls {
 				// Do nothing.
 				// The 'background' field is just the sum of its sub-fields
 				// which are created individually.
+				break;
+
+			case 'tab' :
+				$wp_customize->add_control( new TabControl( $wp_customize, $field['id'], $field ) );
 				break;
 
 			default :
