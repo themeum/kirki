@@ -18,6 +18,26 @@ use Kirki\Controls\ColorAlphaControl;
 
 class Controls {
 
+	public function __construct() {
+		global $wp_customize;
+		add_action( 'customize_register', array( $this, 'register_control_type' ) );
+	}
+
+	public function register_control_type( $wp_customize ) {
+		$wp_customize->register_control_type( '\Kirki\Controls\CustomControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\EditorControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\MulticheckControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\NumberControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\PaletteControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\RadioImageControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SliderControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SortableControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SwitchControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\ToggleControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\ColorAlphaControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\TabControl' );
+	}
+
 	/**
 	 * Add our fields.
 	 * We use the default WordPress Core Customizer fields when possible
