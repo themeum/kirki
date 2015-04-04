@@ -24,4 +24,8 @@ class ScriptRegistry {
 
 	}
 
+	public static function prepare( $script ) {
+		return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
+	}
+
 }
