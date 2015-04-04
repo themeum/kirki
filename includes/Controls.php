@@ -20,7 +20,7 @@ class Controls {
 
 	public function __construct() {
 		global $wp_customize;
-		add_action( 'customize_register', array( $this, 'register_control_type' ) );
+		// add_action( 'customize_register', array( $this, 'register_control_type' ) );
 	}
 
 	public function register_control_type( $wp_customize ) {
