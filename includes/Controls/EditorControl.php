@@ -10,8 +10,14 @@ class EditorControl extends \WP_Customize_Control {
 
 		<label>
 			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
+				<?php
+					// The label has already been sanitized in the Fields class, no need to re-sanitize it.
+				?>
+				<?php echo $this->label; ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php
+						// The description has already been sanitized in the Fields class, no need to re-sanitize it.
+					?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
@@ -21,7 +27,7 @@ class EditorControl extends \WP_Customize_Control {
 					'textarea_name'    => $this->id,
 					'teeny'            => true
 				);
-				wp_editor( $this->value(), $this->id, $settings );
+				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
 
 				do_action('admin_footer');
 				do_action('admin_print_footer_scripts');

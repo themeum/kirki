@@ -18,7 +18,10 @@ class ColorAlphaControl extends \WP_Customize_Control {
 
 	public function render_content() { ?>
 		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<?php
+				// The label has already been sanitized in the Fields class, no need to re-sanitize it.
+			?>
+			<span class="customize-control-title"><?php echo $this->label; ?></span>
 			<input type="text" data-palette="<?php echo $this->palette; ?>" data-default-color="<?php echo $this->default; ?>" value="<?php echo intval( $this->value() ); ?>" class="kirki-color-control" <?php $this->link(); ?>  />
 		</label>
 	<?php }
