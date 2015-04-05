@@ -40,7 +40,7 @@ function kirki_update() {
 		foreach ( $control_ids as $control_id ) {
 
 			if ( get_theme_mod( $control_id . '_opacity' ) && ! get_theme_mod( $control_id ) ) {
-				update_theme_mod( $control_id, get_theme_mod( $control_id . '_opacity' ) );
+				set_theme_mod( $control_id, get_theme_mod( $control_id . '_opacity' ) );
 			}
 
 		}
