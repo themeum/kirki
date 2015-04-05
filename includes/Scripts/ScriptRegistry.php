@@ -8,6 +8,7 @@ use Kirki\Scripts\Customizer\PostMessage;
 use Kirki\Scripts\Customizer\Required;
 use Kirki\Scripts\Customizer\Tooltips;
 use Kirki\Scripts\Customizer\Stepper;
+use Kirki\Scripts\Customizer\Tabs;
 use Kirki\Scripts\Frontend\GoogleFonts;
 
 class ScriptRegistry {
@@ -21,6 +22,7 @@ class ScriptRegistry {
 		$tooltips     = new Tooltips();
 		$googlefonts  = new GoogleFonts();
 		$stepper      = new Stepper();
+		$tabs         = new Tabs();
 
 	}
 
