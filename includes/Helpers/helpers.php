@@ -20,34 +20,34 @@ function kirki_update() {
 	$version = get_option( 'kirki_version' );
 	$version = ( ! $version ) ? '0' : $version;
 	// < 0.6.1 -> 0.6.2
-	if ( ! get_option( 'kirki_version' ) ) {
+	if ( ! $version ) {
 		/**
 		 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
 		 * This will fix the wrong settings naming and save new settings.
 		 */
-		$control_ids = array();
-		$controls = Kirki::controls()->get_all();
+		$field_ids = array();
+		$fields = Kirki::fields()->get_all();
 
-		foreach ( $controls as $control ) {
-			$control = \Kirki\Control::sanitize( $control );
+		foreach ( $fields as $field ) {
+			$field = Kirki::field()->sanitize( $field );
 
-			if ( 'background' != $control['type'] ) {
-				$control_ids[] = $control['settings'];
+			if ( 'background' != $field['type'] ) {
+				$field_ids[] = $field['settings'];
 			}
 
 		}
 
-		foreach ( $control_ids as $control_id ) {
+		foreach ( $field_ids as $field_id ) {
 
-			if ( get_theme_mod( $control_id . '_opacity' ) && ! get_theme_mod( $control_id ) ) {
-				set_theme_mod( $control_id, get_theme_mod( $control_id . '_opacity' ) );
+			if ( get_theme_mod( $field_id . '_opacity' ) && ! get_theme_mod( $field_id ) ) {
+				set_theme_mod( $field_id, get_theme_mod( $field_id . '_opacity' ) );
 			}
 
 		}
 
 	}
 
-	if ( version_compare( Kirki::$version, $version ) ) {
+	if ( ! $version || version_compare( Kirki::$version, $version ) ) {
 		update_option( 'kirki_version', Kirki::$version );
 	}
 
@@ -55,44 +55,51 @@ function kirki_update() {
 add_action( 'wp', 'kirki_update' );
 
 /**
- * A wrapper function for get_theme_mod.
- *
- * This will be a bit more generic and will future-proof the plugin
- * in case we ever decide to switch to using options instead of theme mods.
- *
- * An additional benefit is that it also gets the default values
- * without the need to manually define them like in get_theme_mod();
- *
- * It's recommended that you add the following to your theme/plugin before using this function:
- *
-if ( ! function_exists( 'kirki_get_option' ) ) :
-function kirki_get_option( $option ) {
-	get_theme_mod( $option, '' );
-}
-endif;
- *
- * If the plugin is not installed, the above function will NOT get the right value,
- * but at least no fatal errors will occur.
+ * Get the value of a field.
  */
-function kirki_get_option( $option ) {
+function kirki_get_option( $option = '' ) {
 
-	// Get the array of controls
-	$controls = Kirki::controls()->get_all();
-	foreach ( $controls as $control ) {
-		$setting = $control['settings'];
-		$default = ( isset( $control['default'] ) ) ? $control['default'] : '';
-		// Get the theme_mod and pass the default value as well
-		if ( $option == $setting ) {
-			$value = get_theme_mod( $option, $default );
+	// Make sure the class is instanciated
+	Kirki::get_instance();
+
+	// Get the array of all the fields.
+	$fields = Kirki::fields()->get_all();
+	// Get the config.
+	$config = Kirki::config()->get_all();
+
+	/**
+	* If no setting has been defined then return all.
+	*/
+	if ( '' == $option ) {
+		if ( 'option' == $config['options_type'] ) {
+			$values = array();
+			foreach ( $fields as $field ) {
+				$values[] = get_option( $field['settings'], $field['default'] );
+			}
+		} else {
+			$values = get_theme_mods();
 		}
+
+		return $values;
+
+	}
+	// If a value has been defined then we proceed.
+
+	// Early exit if this option does not exist
+	if ( ! isset( $fields[$option] ) ) {
+		return;
 	}
 
-	if ( isset( $value ) ) {
-		return $value;
+	$option_name  = $fields[$option]['settings'];
+	$default      = $fields[$option]['default'];
+
+	if ( 'option' == $config['options_type'] ) {
+		$value = get_option( $option_name, $default );
+	} else {
+		$value = get_theme_mod( $option_name, $default );
 	}
 
-	// fallback to returning an empty string
-	return '';
+	return $value;
 
 }
 

@@ -6,10 +6,13 @@
     border-color: transparent !important;
     border-color: transparent !important; }
 
-.hint, [data-hint] {
+.hint,
+[data-hint] {
   position: relative;
   display: inline-block; }
-  .hint:before, .hint:after, [data-hint]:before, [data-hint]:after {
+  .hint:before, .hint:after,
+  [data-hint]:before,
+  [data-hint]:after {
     position: absolute;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -20,12 +23,19 @@
     pointer-events: none;
     transition: 0.3s ease;
     transition-delay: 250ms; }
-  .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after, [data-hint]:hover:before, [data-hint]:hover:after, [data-hint]:focus:before, [data-hint]:focus:after {
+  .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after,
+  [data-hint]:focus:before,
+  [data-hint]:focus:after {
     visibility: visible;
     opacity: 1; }
-  .hint:hover:before, .hint:hover:after, [data-hint]:hover:before, [data-hint]:hover:after {
-    transition-delay: 0ms; }
-  .hint:before, [data-hint]:before {
+  .hint:hover:before, .hint:hover:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after {
+    transition-delay: 0; }
+  .hint:before,
+  [data-hint]:before {
     content: '';
     position: absolute;
     background: transparent;
@@ -38,7 +48,8 @@
     border-left: 5px solid #333;
     left: -5px;
     top: 5px; }
-  .hint:after, [data-hint]:after {
+  .hint:after,
+  [data-hint]:after {
     content: attr(data-hint);
     background: #333;
     color: white;
@@ -89,37 +100,37 @@ li.customize-control {
   width: 22px;
   height: 22px; }
   .customize-control-multicheck input[type="checkbox"]:before {
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
     content: "";
     position: absolute;
     left: 0;
     z-index: 1;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #f2f2f2; }
-  .customize-control-multicheck input[type="checkbox"]:checked:before {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    height: 8px;
-    top: 4px;
-    left: 4px;
-    border-color: #009688;
-    border-top-style: none;
-    border-right-style: none; }
+    width: 100%;
+    height: 100%;
+    border: none; }
   .customize-control-multicheck input[type="checkbox"]:after {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    width: 18px;
-    height: 18px;
+    width: 100%;
+    height: 100%;
     background: #fff;
     cursor: pointer; }
+  .customize-control-multicheck input[type="checkbox"]:checked:before {
+    border: 4px solid #4caf50;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 14px;
+    height: 6px;
+    top: 6px;
+    left: 5px;
+    border-top-style: none;
+    border-right-style: none; }
+  .customize-control-multicheck input[type="checkbox"]:checked:after {
+    background: #f2f2f2; }
 
 .customize-control-checkbox input[type="checkbox"] {
   position: relative;
@@ -129,37 +140,37 @@ li.customize-control {
   width: 22px;
   height: 22px; }
   .customize-control-checkbox input[type="checkbox"]:before {
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
     content: "";
     position: absolute;
     left: 0;
     z-index: 1;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #f2f2f2; }
-  .customize-control-checkbox input[type="checkbox"]:checked:before {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    height: 8px;
-    top: 4px;
-    left: 4px;
-    border-color: #009688;
-    border-top-style: none;
-    border-right-style: none; }
+    width: 100%;
+    height: 100%;
+    border: none; }
   .customize-control-checkbox input[type="checkbox"]:after {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    width: 18px;
-    height: 18px;
+    width: 100%;
+    height: 100%;
     background: #fff;
     cursor: pointer; }
+  .customize-control-checkbox input[type="checkbox"]:checked:before {
+    border: 4px solid #4caf50;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 14px;
+    height: 6px;
+    top: 6px;
+    left: 5px;
+    border-top-style: none;
+    border-right-style: none; }
+  .customize-control-checkbox input[type="checkbox"]:checked:after {
+    background: #f2f2f2; }
 
 .customize-control-radio-buttonset label {
   padding: 5px 10px;
@@ -219,7 +230,7 @@ li.customize-control {
     left: 2%; }
   .customize-control-switch .Switch.Round,
   .customize-control-toggle .Switch.Round {
-    padding: 0px 20px;
+    padding: 0 20px;
     border-radius: 40px;
     margin-top: 5px; }
     .customize-control-switch .Switch.Round .Toggle,
@@ -270,7 +281,7 @@ body.IE7 .Switch.Round {
     .customize-control-palette label.ui-button.ui-widget .ui-button-text span {
       padding: 10px 0;
       flex-grow: 1;
-      font-size: 0px;
+      font-size: 0;
       line-height: 10px;
       color: transparent;
       -webkit-transition: all 200ms ease-in-out;
@@ -320,7 +331,94 @@ body.IE7 .Switch.Round {
   .customize-control-slider .ui-slider .ui-slider-range {
     position: absolute;
     z-index: 1;
-    font-size: .7em;
+    font-size: 0.7em;
     display: block;
     border: 0;
     background-position: 0 0; }
+
+.customize-control-color-alpha .kirki-alpha-container {
+  box-sizing: padding-box;
+  display: none;
+  border: 1px solid #dfdfdf;
+  border-top: none;
+  background: #fff;
+  padding: 0 11px 6px; }
+  .customize-control-color-alpha .kirki-alpha-container .transparency {
+    height: 24px;
+    width: 100%;
+    background-color: #fff;
+    background-image: url("../images/transparency-grid.png");
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0; }
+  .customize-control-color-alpha .kirki-alpha-container .ui-slider-handle {
+    color: #777;
+    background-color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    text-decoration: none;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #aaa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    opacity: 0.9;
+    margin-top: -2px;
+    height: 20px;
+    cursor: ew-resize;
+    font-size: 12px;
+    padding: 3px; }
+  .customize-control-color-alpha .kirki-alpha-container .ui-slider {
+    position: relative;
+    text-align: center;
+    width: 88%; }
+.customize-control-color-alpha .wp-picker-container a.wp-picker-open ~ div.kirki-alpha-container {
+  display: block; }
+.customize-control-color-alpha .customize-control-alphacolor .wp-picker-container .iris-picker {
+  border-bottom: none; }
+
+.customize-control-number .stepper {
+  border-radius: 0px;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  position: relative;
+  width: 50%; }
+  .customize-control-number .stepper .stepper-input {
+    background: #F9F9F9;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+    overflow: hidden;
+    padding: 9px 10px 10px;
+    width: 100%;
+    z-index: 49;
+    -moz-appearance: textfield; }
+    .customize-control-number .stepper .stepper-input::-webkit-inner-spin-button, .customize-control-number .stepper .stepper-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .customize-control-number .stepper .stepper-input:focus {
+      background-color: #fff; }
+  .customize-control-number .stepper .stepper-arrow {
+    background: #eee url("../images/jquery.fs.stepper-arrows.png") no-repeat;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: block;
+    height: 50%;
+    position: absolute;
+    right: 0;
+    text-indent: -99999px;
+    width: 20px;
+    z-index: 50; }
+    .customize-control-number .stepper .stepper-arrow.up {
+      background-position: center top;
+      border-bottom: none;
+      top: 0; }
+    .customize-control-number .stepper .stepper-arrow.down {
+      background-position: center bottom;
+      bottom: 0; }

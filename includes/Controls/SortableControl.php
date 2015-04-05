@@ -32,7 +32,7 @@ class SortableControl extends \WP_Customize_Control {
 			<?php
 				$values = $this->value();
 				$values = $values == '' ? array_keys( $this->choices ) : $values;
-				$values = is_serialized( $values ) ? unserialize( $values ) : $values;
+				$values = maybe_unserialize( $values );
 				$this->visible_button = count( $values ) != count( $this->choices ) ? true : '';
 				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
 			?>
@@ -46,7 +46,7 @@ class SortableControl extends \WP_Customize_Control {
 				<?php endforeach; ?>
 			</ul>
 			<div style='clear: both'></div>
-			<?php $values = ! is_serialized( $values ) ? serialize( $values ) : $values; ?>
+			<?php $values = maybe_serialize( $values ); ?>
 			<input type='hidden' <?php $this->link(); ?> value='<?php echo esc_attr( $values )  ?>'/>
 		</label>
 		<?php

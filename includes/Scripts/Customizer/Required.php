@@ -4,6 +4,7 @@ namespace Kirki\Scripts\Customizer;
 
 use Kirki;
 use Kirki\Scripts\EnqueueScript;
+use Kirki\Scripts\ScriptRegistry;
 
 class Required extends EnqueueScript {
 
@@ -12,30 +13,25 @@ class Required extends EnqueueScript {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$controls = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 
 		// Early exit if no controls are defined
-		if ( empty( $controls ) ) {
+		if ( empty( $fields ) ) {
 			return;
 		}
 
 		$script = '';
 
-		foreach ( $controls as $control ) {
+		foreach ( $fields as $field ) {
 
-			$required = ( isset( $control['required'] ) ) ? $control['required'] : false;
-			$setting  = $control['settings'];
+			$required = ( isset( $field['required'] ) ) ? $field['required'] : false;
 
 			if ( $required ) {
 
 				$show = false;
 				foreach ( $required as $dependency ) {
 					// Find the type of the dependency control
-					foreach ( $controls as $control ) {
-						if ( $dependency['setting'] == $control['settings'] ) {
-							$type = $control['type'];
-						}
-					}
+					$type = $fields[$dependency['setting']]['type'];
 
 					// If "operator" is not set then set it to "=="
 					if ( ! isset( $dependency['operator'] ) ) {
@@ -59,7 +55,16 @@ class Required extends EnqueueScript {
 					}
 
 					// The target element
-					$target = '#customize-control-' . $setting;
+					$target = '#customize-control-' . $field['settings'];
+					// if this is a background control then make sure we target all sub-controls
+					if ( 'background' == $field['type'] ) {
+						$target  = '#customize-control-' . $control['settings'] . '_color, ';
+						$target .= '#customize-control-' . $control['settings'] . '_image, ';
+						$target .= '#customize-control-' . $control['settings'] . '_repeat, ';
+						$target .= '#customize-control-' . $control['settings'] . '_size, ';
+						$target .= '#customize-control-' . $control['settings'] . '_position, ';
+						$target .= '#customize-control-' . $control['settings'] . '_attach';
+					}
 
 					if ( ! isset( $dependency['operator'] ) ) {
 						$dependency['operator'] = '==';
@@ -81,18 +86,19 @@ class Required extends EnqueueScript {
 					}
 
 					// Get the initial status
+					$value = kirki_get_option( $field['settings'] );
 					if ( '==' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] == kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] == $value ) ) ? true : $show;
 					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] != kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] != $value ) ) ? true : $show;
 					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] >= kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] >= $value ) ) ? true : $show;
 					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] <= kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] <= $value ) ) ? true : $show;
 					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] > kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] > $value ) ) ? true : $show;
 					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] < kirki_get_option( $setting ) ) ) ? true : $show;
+						$show = ( $show && ( $dependency['value'] < $value ) ) ? true : $show;
 					}
 
 					// if initial status is hidden then hide the control
@@ -116,7 +122,7 @@ class Required extends EnqueueScript {
 
 		// If there's a script then echo it wrapped.
 		if ( ! empty( $script ) ) {
-			echo '<script>jQuery(document).ready(function($) {' . $script . '});</script>';
+			echo ScriptRegistry::prepare( $script );
 		}
 
 	}

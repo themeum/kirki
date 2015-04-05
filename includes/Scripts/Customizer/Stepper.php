@@ -6,7 +6,7 @@ use Kirki;
 use Kirki\Scripts\EnqueueScript;
 use Kirki\Scripts\ScriptRegistry;
 
-class Tooltips extends EnqueueScript {
+class Stepper extends EnqueueScript {
 
 	/**
 	 * Add the help bubble
@@ -14,16 +14,12 @@ class Tooltips extends EnqueueScript {
 	function customize_controls_print_footer_scripts() {
 
 		$fields = Kirki::fields()->get_all();
-
 		$scripts = array();
-		$script  = '';
 
 		foreach ( $fields as $field ) {
 
-			if ( ! empty( $field['help'] ) ) {
-				$bubble_content = $field['help'];
-				$content = "<a href='#' class='tooltip hint--left' data-hint='" . strip_tags( esc_html( $bubble_content ) ) . "'><span class='dashicons dashicons-info'></span></a>";
-				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $field['settings'] . '" );';
+			if ( 'number' == $field['type'] ) {
+				$scripts[] = '$( "#customize-control-' . $field['settings'] . ' input[type=\'number\']").stepper();';
 			}
 
 		}

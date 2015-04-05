@@ -9,7 +9,12 @@ class EditorControl extends \WP_Customize_Control {
 	public function render_content() { ?>
 
 		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<span class="customize-control-title">
+				<?php echo esc_html( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea( $this->value() ); ?>">
 			<?php
 				$settings = array(

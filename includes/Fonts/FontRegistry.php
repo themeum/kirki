@@ -12,19 +12,19 @@ Use Kirki;
  */
 class FontRegistry {
 
-    /** @var array */
-    private $standard_fonts = null;
+	/** @var array */
+	private $standard_fonts = null;
 
-    /** @var array */
-    private $google_fonts = null;
+	/** @var array */
+	private $google_fonts = null;
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
-    }
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+	}
 
-    /**
+	/**
 	 * Compile font options from different sources.
 	 *
 	 * @return array    All available fonts.
@@ -71,7 +71,7 @@ class FontRegistry {
 	 */
 	public function get_google_font_uri( $fonts, $weight = 400, $subset = 'all' ) {
 		// De-dupe the fonts
-        $allowed_fonts = $this->get_google_fonts();
+		$allowed_fonts = $this->get_google_fonts();
 		$fonts         = array_unique( $fonts );
 		$family        = array();
 
@@ -122,12 +122,12 @@ class FontRegistry {
 	 * @return array    The available subsets.
 	 */
 	public function get_google_font_subsets() {
-        $i18n = Kirki::i18n();
+		$i18n = Kirki::i18n();
 		return array(
 			'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
 			'cyrillic-ext' => $i18n['cyrillic-ext'],
-			'devanagari'   => $i18n['devangari'],
+			'devanagari'   => $i18n['devanagari'],
 			'greek'        => $i18n['greek'],
 			'greek-ext'    => $i18n['greek-ext'],
 			'khmer'        => $i18n['khmer'],
@@ -183,25 +183,25 @@ class FontRegistry {
 	 * @return array    Standard websafe fonts.
 	 */
 	public function get_standard_fonts() {
-        $i18n = Kirki::i18n();
-        if ($this->standard_fonts==null) {
-            $this->standard_fonts = apply_filters('kirki/fonts/standard_fonts', array(
-                'serif'      => array(
-                    'label' => $i18n['serif'],
-                    'stack' => 'Georgia,Times,"Times New Roman",serif'
-                ),
-                'sans-serif' => array(
-                    'label' => $i18n['sans-serif'],
-                    'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
-                ),
-                'monospace'  => array(
-                    'label' => $i18n['monospace'],
-                    'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
-                )
-            ));
-        }
+		$i18n = Kirki::i18n();
+		if ($this->standard_fonts==null) {
+			$this->standard_fonts = apply_filters('kirki/fonts/standard_fonts', array(
+				'serif'      => array(
+					'label' => $i18n['serif'],
+					'stack' => 'Georgia,Times,"Times New Roman",serif'
+				),
+				'sans-serif' => array(
+					'label' => $i18n['sans-serif'],
+					'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif'
+				),
+				'monospace'  => array(
+					'label' => $i18n['monospace'],
+					'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace'
+				)
+			));
+		}
 
-        return $this->standard_fonts;
+		return $this->standard_fonts;
 	}
 
 
@@ -242,7 +242,7 @@ class FontRegistry {
 			return $value;
 		}
 
-        return '';
+		return '';
 	}
 
 	/**
@@ -251,23 +251,23 @@ class FontRegistry {
 	 * @return array    All Google Fonts.
 	 */
 	public function get_google_fonts() {
-        if ($this->google_fonts==null) {
-            // Get the list of fonts from our json file and convert to an array
-            $fonts = json_decode(file_get_contents(KIRKI_PATH . '/assets/json/webfonts.json'), true);
+		if ($this->google_fonts==null) {
+			// Get the list of fonts from our json file and convert to an array
+			$fonts = json_decode(file_get_contents(KIRKI_PATH . '/assets/json/webfonts.json'), true);
 
-            $google_fonts = array();
-            foreach ($fonts['items'] as $font) {
-                $google_fonts[$font['family']] = array(
-                    'label'    => $font['family'],
-                    'variants' => $font['variants'],
-                    'subsets'  => $font['subsets'],
-                );
-            }
+			$google_fonts = array();
+			foreach ($fonts['items'] as $font) {
+				$google_fonts[$font['family']] = array(
+					'label'    => $font['family'],
+					'variants' => $font['variants'],
+					'subsets'  => $font['subsets'],
+				);
+			}
 
-            $this->google_fonts = apply_filters('kirki/fonts/google_fonts', $google_fonts);
-        }
+			$this->google_fonts = apply_filters('kirki/fonts/google_fonts', $google_fonts);
+		}
 
-        return $this->google_fonts;
+		return $this->google_fonts;
 	}
 
 }

@@ -2,67 +2,123 @@
 
 namespace Kirki;
 
+use Kirki;
+use Kirki\Controls\CustomControl;
+use Kirki\Controls\EditorControl;
+use Kirki\Controls\MultiCheckControl;
+use Kirki\Controls\NumberControl;
+use Kirki\Controls\PaletteControl;
+use Kirki\Controls\RadioButtonSetControl;
+use Kirki\Controls\RadioImageControl;
+use Kirki\Controls\SliderControl;
+use Kirki\Controls\SortableControl;
+use Kirki\Controls\SwitchControl;
+use Kirki\Controls\ToggleControl;
+use Kirki\Controls\ColorAlphaControl;
+
 class Controls {
 
-    /** @var array An array that defines which custom control types are available and the corresponding class name */
-    public static $CONTROL_TYPES = array(
-        'multicheck'        => 'MultiCheckControl',
-        'number'            => 'NumberControl',
-        'radio-buttonset'   => 'RadioButtonSetControl',
-        'radio-image'       => 'RadioImageControl',
-        'slider'            => 'SliderControl',
-        'sortable'          => 'SortableControl',
-        'switch'            => 'SwitchControl',
-        'toggle'            => 'ToggleControl',
-        'palette'           => 'PaletteControl',
-        'custom'            => 'CustomControl',
-        'editor'            => 'EditorControl',
-    );
-
-    /** @var array The controls */
-    private $controls = null;
-
-    /**
-     * Constructor
-     */
 	public function __construct() {
-        // Hook into WP
-        $this->register_hooks();
+		global $wp_customize;
+		// add_action( 'customize_register', array( $this, 'register_control_type' ) );
+	}
+
+	public function register_control_type( $wp_customize ) {
+		$wp_customize->register_control_type( '\Kirki\Controls\CustomControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\EditorControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\MulticheckControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\NumberControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\PaletteControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\RadioImageControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SliderControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SortableControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\SwitchControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\ToggleControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\ColorAlphaControl' );
+		$wp_customize->register_control_type( '\Kirki\Controls\TabControl' );
 	}
 
 	/**
-	 * Get the controls for the Kirki customizer.
-	 *
-	 * @uses  'kirki/controls' filter.
+	 * Add our fields.
+	 * We use the default WordPress Core Customizer fields when possible
+	 * and only add our own custom controls when needed.
 	 */
-	public function get_all() {
-        if ( $this->controls == null ) {
-		    $user_controls = apply_filters( 'kirki/controls', array() );
+	public function add( $wp_customize, $field ) {
 
-            $this->controls = array();
-			foreach ( $user_controls as $control ) {
-                $this->controls[] = Control::sanitize( $control );
-			}
+		switch ( $field['type'] ) {
+
+			case 'color' :
+				$wp_customize->add_control( new \WP_Customize_Color_Control( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'color-alpha' :
+				$wp_customize->add_control( new ColorAlphaControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'image' :
+				$wp_customize->add_control( new \WP_Customize_Image_Control( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'upload' :
+				$wp_customize->add_control( new \WP_Customize_Upload_Control( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'switch' :
+				$wp_customize->add_control( new SwitchControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'toggle' :
+				$wp_customize->add_control( new ToggleControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'radio-buttonset' :
+				$wp_customize->add_control( new RadioButtonSetControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'radio-image' :
+				$wp_customize->add_control( new RadioImageControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'sortable' :
+				$wp_customize->add_control( new SortableControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'slider' :
+				$wp_customize->add_control( new SliderControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'number' :
+				$wp_customize->add_control( new NumberControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'multicheck' :
+				$wp_customize->add_control( new MultiCheckControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'palette' :
+				$wp_customize->add_control( new PaletteControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'custom' :
+				$wp_customize->add_control( new CustomControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'editor' :
+				$wp_customize->add_control( new EditorControl( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'background' :
+				// Do nothing.
+				// The 'background' field is just the sum of its sub-fields
+				// which are created individually.
+				break;
+
+			default :
+				$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, $field['id'], $field ) );
+				break;
+
 		}
 
-		return $this->controls;
 	}
-
-    /**
-     * Hook into WP
-     */
-    private function register_hooks() {
-        add_action( 'customize_register', array( $this, 'include_files' ), 99 );
-    }
-
-    /**
-     * Include the custom control files. Because they depend on the WP_Cs
-     */
-    public function include_files() {
-        $path = KIRKI_PATH . '/includes/Controls';
-        foreach ( self::$CONTROL_TYPES as $typeId => $className ) {
-            include_once( $path . '/' . $className . '.php' );
-        }
-    }
 
 }

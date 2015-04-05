@@ -15,7 +15,9 @@ class Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-		wp_enqueue_style( 'kirki-customizer-css', KIRKI_URL . '/assets/css/customizer.css', NULL, '0.5' );
+		$config = Kirki::config()->get_all();
+		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( $root ) . 'assets/css/customizer.css', NULL, '0.5' );
 	}
 
 	/**
@@ -36,7 +38,7 @@ class Customizer {
 		// Background styles
 		$styles .= '#customize-controls .wp-full-overlay-sidebar-content{background-color:' . $color_back . ';}';
 		$styles .= '#customize-theme-controls .accordion-section-title, #customize-info .accordion-section-title,#customize-info .accordion-section-title:hover,#customize-info.open .accordion-section-title{background-color:' . $color_back . ';color:' . $color_font . ';}';
-		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,.control-section.control-panel>.accordion-section-title:after{background-color:' . \Kirki_Color::adjust_brightness( $color_back, -10 ) . ';color:' . $color_font . ';}';
+		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,#customize-theme-controls .control-section .accordion-section-title:focus,.control-section.control-panel>.accordion-section-title:after{background-color:' . \Kirki_Color::adjust_brightness( $color_back, -10 ) . ';color:' . $color_font . ';}';
 		$styles .= '#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after{background-color:' . \Kirki_Color::adjust_brightness( $color_back, -20 ) . ';color:' . $color_font . ';}';
 		$styles .= '#customize-theme-controls .control-section.open .accordion-section-title{background-color:' . $color_accent . ' !important;color:' . $color_font . ' !important;}';
 

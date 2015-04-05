@@ -1,406 +1,506 @@
-@mixin material-checkbox() {
-	position: relative;
-	margin: 0 1rem 0 0;
-	cursor: pointer;
-	margin-bottom: 5px;
-	width: 22px;
-	height: 22px;
-	&:before {
-		-webkit-transition: all 0.1s ease-in-out;
-		-moz-transition: all 0.1s ease-in-out;
-		transition: all 0.1s ease-in-out;
-		content: "";
-		position: absolute;
-		left: 0;
-		z-index: 1;
-		width: 16px;
-		height: 16px;
-		border: 2px solid #f2f2f2;
-	}
-	&:checked {
-		&:before {
-			-webkit-transform: rotate(-45deg);
-			-moz-transform: rotate(-45deg);
-			-ms-transform: rotate(-45deg);
-			-o-transform: rotate(-45deg);
-			transform: rotate(-45deg);
-			height: 8px;
-			top:4px;
-			left: 4px;
-			border-color: #009688;
-			border-top-style: none;
-			border-right-style: none;
-		}
-	}
-	&:after {
-		content: "";
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 18px;
-		height: 18px;
-		background: #fff;
-		cursor: pointer;
-	}
+@mixin custom-checkbox() {
+    position: relative;
+    margin: 0 1rem 0 0;
+    cursor: pointer;
+    margin-bottom: 5px;
+    width: 22px;
+    height: 22px;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        cursor: pointer;
+    }
+    &:checked {
+        &:before {
+            border: 4px solid #4caf50;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            width: 14px;
+            height: 6px;
+            top: 6px;
+            left: 5px;
+            border-top-style: none;
+            border-right-style: none;
+        }
+        &:after {
+            background: #f2f2f2;
+        }
+    }
 }
-
 // Generic styles
 #customize-controls {
-	#customize-header-actions {
+    #customize-header-actions {
 
-	}
-	#customize-info {
-		.accordion-section-title {
-			border-bottom: 1px solid rgba(0,0,0,.3);
-		}
-	}
-	#customize-theme-controls {
-		#accordion-section-themes {
+    }
+    #customize-info {
+        .accordion-section-title {
+            border-bottom: 1px solid rgba(0,0,0,.3);
+        }
+    }
+    #customize-theme-controls {
+        #accordion-section-themes {
 
-		}
-		.accordion-section {
-			> .accordion-section-title {
-				border-bottom: 1px solid rgba(0,0,0,.1);
-				&:after {
-					border-color: rgba(0,0,0,0) !important;
-					border-color: transparent !important;
-				}
-			}
-		}
-	}
+        }
+        .accordion-section {
+            > .accordion-section-title {
+                border-bottom: 1px solid rgba(0,0,0,.1);
+                &:after {
+                    border-color: rgba(0,0,0,0) !important;
+                    border-color: transparent !important;
+                }
+            }
+        }
+    }
 }
-
 // Hints/Tooltips
-.hint, [data-hint] {
-	position: relative;
-	display: inline-block;
-
-	&:before, &:after {
-		position: absolute;
-
-		// HACK: Trigger hardware accelerated rendering, otherwise transform was not
-		// working on a hidden element
-		-webkit-transform: translate3d(0, 0, 0);
-	    -moz-transform: translate3d(0, 0, 0);
-	    transform: translate3d(0, 0, 0);
-
-		// HACK: visibility is set to hidden because IE & Opera don't support
-		// pointer-events on HTML content yet because of which hovering a hidden tooltip
-		// shows the tooltip.
-		visibility: hidden;
-		opacity: 0;
-		z-index: 998;
-		// shouldn't receive pointer events, otherwise even hovering tooltip will make it appear
-		pointer-events: none;
-
-		transition: 0.3s ease;
-		transition-delay: 250ms;
-	}
-
-	&:hover:before, &:hover:after,
-	&:focus:before, &:focus:after {
-		visibility: visible;
-		opacity: 1;
-	}
-
-	&:hover:before, &:hover:after {
-		transition-delay: 0ms;
-	}
-	// tooltip arrow
-	&:before {
-		content: '';
-		position: absolute;
-		background: transparent;
-		border: none;
-		// move z-index 1 up than :after so that it shows over box-shadow
-		z-index: 999;
-		width: 0;
-		height: 0;
-		border-top: 5px solid transparent;
-		border-bottom: 5px solid transparent;
-		border-left: 5px solid #333;
-		left: -5px;
-		top: 5px;
-	}
-	// tooltip body
-	&:after {
-		content: attr(data-hint); // The magic!
-		background: #333;
-		color: white;
-		padding: 5px 10px;
-		font-size: 12px;
-		line-height: 14px;
-		height: auto;
-		margin-bottom: -14px;
-		width: 170px;
-		max-width: 170px;
-		display: block;
-		white-space: normal;
-		text-align: right;
-		position: relative;
-		top: -22px;
-		left: -195px;
-	}
+.hint,
+[data-hint] {
+    position: relative;
+    display: inline-block;
+    &:before,
+    &:after {
+        position: absolute;
+        // HACK: Trigger hardware accelerated rendering, otherwise transform was not
+        // working on a hidden element
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        // HACK: visibility is set to hidden because IE & Opera don't support
+        // pointer-events on HTML content yet because of which hovering a hidden tooltip
+        // shows the tooltip.
+        visibility: hidden;
+        opacity: 0;
+        z-index: 998;
+        // shouldn't receive pointer events, otherwise even hovering tooltip will make it appear
+        pointer-events: none;
+        transition: 0.3s ease;
+        transition-delay: 250ms;
+    }
+    &:hover:before,
+    &:hover:after,
+    &:focus:before,
+    &:focus:after {
+        visibility: visible;
+        opacity: 1;
+    }
+    &:hover:before,
+    &:hover:after {
+        transition-delay: 0;
+    }
+    // tooltip arrow
+    &:before {
+        content: '';
+        position: absolute;
+        background: transparent;
+        border: none;
+        // move z-index 1 up than :after so that it shows over box-shadow
+        z-index: 999;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid #333;
+        left: -5px;
+        top: 5px;
+    }
+    // tooltip body
+    &:after {
+        content: attr(data-hint);
+        // The magic!
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 14px;
+        height: auto;
+        margin-bottom: -14px;
+        width: 170px;
+        max-width: 170px;
+        display: block;
+        white-space: normal;
+        text-align: right;
+        position: relative;
+        top: -22px;
+        left: -195px;
+    }
 }
-
 // apply to all controls for tooltips
 li.customize-control {
-	position: relative;
-	a.tooltip.hint--left {
-		display: block;
-		position: absolute;
-		top: 5px;
-		right: -20px;
-		border-radius: 50%;
-		color: #999;
-		border: none;
-		line-height: 8px;
-		width: 20px;
-		height: 20px;
-	}
+    position: relative;
+    a.tooltip.hint--left {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: -20px;
+        border-radius: 50%;
+        color: #999;
+        border: none;
+        line-height: 8px;
+        width: 20px;
+        height: 20px;
+    }
 }
-
 // Radio-Image Controls
 .customize-control-radio-image {
-	.image.ui-buttonset {
-		input[type=radio] {
-			height: auto;
-		}
-		label {
-			border: 1px solid transparent;
-			display: inline-block;
-			margin-right: 5px;
-			margin-bottom: 5px;
-			&.ui-state-active {
-				background: none;
-				border-color: #333;
-			}
-		}
-	}
+    .image.ui-buttonset {
+        input[type=radio] {
+            height: auto;
+        }
+        label {
+            border: 1px solid transparent;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            &.ui-state-active {
+                background: none;
+                border-color: #333;
+            }
+        }
+    }
 }
-
 // Multicheck Controls
 .customize-control-multicheck {
-	input[type="checkbox"] {
-		@include material-checkbox();
-	}
+    input[type="checkbox"] {
+        @include custom-checkbox();
+    }
 }
-
 // Checkbox Controls
 // Multicheck Controls
 .customize-control-checkbox {
-	input[type="checkbox"] {
-		@include material-checkbox();
-	}
+    input[type="checkbox"] {
+        @include custom-checkbox();
+    }
 }
-
 // Radio-Buttonset Controls
 .customize-control-radio-buttonset {
-	input[type=radio] {
-	}
-	label {
-		padding: 5px 10px;
-		background: #f7f7f7;
-		border-left: 1px solid #dedede;
-		&.ui-state-active {
-			background: #dedede;
-		}
-		&.ui-corner-left {
-			border-radius: 3px 0 0 3px;
-			border-left: 0;
-		}
-		&.ui-corner-right {
-			border-radius: 0 3px 3px 0;
-		}
-	}
-}
+    input[type=radio] {
 
+    }
+    label {
+        padding: 5px 10px;
+        background: #f7f7f7;
+        border-left: 1px solid #dedede;
+        &.ui-state-active {
+            background: #dedede;
+        }
+        &.ui-corner-left {
+            border-radius: 3px 0 0 3px;
+            border-left: 0;
+        }
+        &.ui-corner-right {
+            border-radius: 0 3px 3px 0;
+        }
+    }
+}
 // Switch & toggle Controls
 .customize-control-switch,
 .customize-control-toggle {
-	.Switch {
-		position: relative;
-		display: inline-block;
-		font-size: 16px;
-		font-weight: bold;
-		color: #aaa;
-		height: 18px;
-		line-height: 27px;
-		padding: 6px;
-		border: 1px solid #ccc;
-		border: 1px solid rgba(0,0,0,0.2);
-		background: #f2f2f2;
-		cursor: pointer;
-		float: right;
-		transition: all 0.15s ease-in-out;
-		.Toggle {
-			position: absolute;
-			top: 1px;
-			width: 37px;
-			height: 25px;
-			border: 1px solid #aaa;
-			border: 1px solid rgba(0,0,0,0.2);
-			background: #fff;
-			z-index: 989;
-			transition: all 0.15s ease-in-out;
-		}
-		.On,
-		.Off {
-			display: inline-block;
-			width: 35px;
-			position: relative;
-			top: -5px;
-		}
-		.On {
-			color: #333;
-		}
-		&.On {
-			.Toggle {
-				left: 54%;
-			}
-		}
-		&.Off {
-			.Toggle {
-				left: 2%;
-			}
-		}
-		&.Round {
-			padding: 0px 20px;
-			border-radius: 40px;
-			margin-top: 5px;
-			.Toggle {
-				border-radius: 40px;
-				width: 14px;
-				height: 14px;
-			}
-			&.Off {
-				.Toggle {
-					left: 3%;
-				}
-			}
-			&.On {
-				color: #fff;
-				background: #333;
-				.Toggle {
-					left: 58%;
-				}
-			}
-		}
-	}
+    .Switch {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        color: #aaa;
+        height: 18px;
+        line-height: 27px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,0.2);
+        background: #f2f2f2;
+        cursor: pointer;
+        float: right;
+        transition: all 0.15s ease-in-out;
+        .Toggle {
+            position: absolute;
+            top: 1px;
+            width: 37px;
+            height: 25px;
+            border: 1px solid #aaa;
+            border: 1px solid rgba(0,0,0,0.2);
+            background: #fff;
+            z-index: 989;
+            transition: all 0.15s ease-in-out;
+        }
+        .On,
+        .Off {
+            display: inline-block;
+            width: 35px;
+            position: relative;
+            top: -5px;
+        }
+        .On {
+            color: #333;
+        }
+        &.On {
+            .Toggle {
+                left: 54%;
+            }
+        }
+        &.Off {
+            .Toggle {
+                left: 2%;
+            }
+        }
+        &.Round {
+            padding: 0 20px;
+            border-radius: 40px;
+            margin-top: 5px;
+            .Toggle {
+                border-radius: 40px;
+                width: 14px;
+                height: 14px;
+            }
+            &.Off {
+                .Toggle {
+                    left: 3%;
+                }
+            }
+            &.On {
+                color: #fff;
+                background: #333;
+                .Toggle {
+                    left: 58%;
+                }
+            }
+        }
+    }
 }
-body.IE7 .Switch { width: 78px; }
-body.IE7 .Switch.Round { width: 1px; }
-
+body.IE7 .Switch {
+    width: 78px;
+}
+body.IE7 .Switch.Round {
+    width: 1px;
+}
 // Sortable Controls
 .customize-control-sortable {
-	ul.ui-sortable {
-		li {
-			padding: 5px 10px;
-			border: 1px solid #333;
-			background: #fff;
-			.dashicons {
-				&.dashicons-menu {
-					float: right;
-				}
-				&.visibility {
-					margin-right: 10px;
-				}
-			}
-			&.invisible {
-				color: #aaa;
-				border: 1px dashed #aaa;
-				.dashicons.visibility {
-					color: #aaa;
-				}
-			}
-		}
-	}
+    ul.ui-sortable {
+        li {
+            padding: 5px 10px;
+            border: 1px solid #333;
+            background: #fff;
+            .dashicons {
+                &.dashicons-menu {
+                    float: right;
+                }
+                &.visibility {
+                    margin-right: 10px;
+                }
+            }
+            &.invisible {
+                color: #aaa;
+                border: 1px dashed #aaa;
+                .dashicons.visibility {
+                    color: #aaa;
+                }
+            }
+        }
+    }
 }
-
 // Palette controls
 .customize-control-palette {
-	label {
-		&.ui-button.ui-widget {
-			width: 95%;
-			background: none;
-			padding: 0;
-			.ui-button-text {
-				border-top: 3px solid transparent;
-				border-bottom: 3px solid transparent;
-				margin-bottom: 5px;
-				display: flex;
-				span {
-					padding: 10px 0;
-					flex-grow: 1;
-					font-size: 0px;
-					line-height: 10px;
-					color: rgba(0,0,0,0);
-					-webkit-transition: all 200ms ease-in-out;
-					-moz-transition: all 200ms ease-in-out;
-					-ms-transition: all 200ms ease-in-out;
-					-o-transition: all 200ms ease-in-out;
-					transition: all 200ms ease-in-out;
-					&:hover {
-						padding: 10px;
-						flex-grow: 3;
-						min-width: 60px;
-						font-size: 10px;
-						line-height: 10px;
-						color: #000;
-					}
-				}
-			}
-		}
-		&.ui-state-active {
-			&.ui-button.ui-widget {
-				span.ui-button-text {
-					border: 3px solid #333;
-				}
-			}
-		}
-	}
+    label {
+        &.ui-button.ui-widget {
+            width: 95%;
+            background: none;
+            padding: 0;
+            .ui-button-text {
+                border-top: 3px solid transparent;
+                border-bottom: 3px solid transparent;
+                margin-bottom: 5px;
+                display: flex;
+                span {
+                    padding: 10px 0;
+                    flex-grow: 1;
+                    font-size: 0;
+                    line-height: 10px;
+                    color: rgba(0,0,0,0);
+                    -webkit-transition: all 200ms ease-in-out;
+                    -moz-transition: all 200ms ease-in-out;
+                    -ms-transition: all 200ms ease-in-out;
+                    -o-transition: all 200ms ease-in-out;
+                    transition: all 200ms ease-in-out;
+                    &:hover {
+                        padding: 10px;
+                        flex-grow: 3;
+                        min-width: 60px;
+                        font-size: 10px;
+                        line-height: 10px;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        &.ui-state-active {
+            &.ui-button.ui-widget {
+                span.ui-button-text {
+                    border: 3px solid #333;
+                }
+            }
+        }
+    }
 }
-
 // Slider Controls
 .customize-control-slider {
-	input[type="text"] {
-		border: none;
-		text-align: center;
-		padding: 0;
-		margin: 0;
-		font-size: 12px;
-		box-shadow: none;
-		color: #333;
-	}
-	.ui-slider {
-		position: relative;
-		text-align: left;
-		height: 7px;
-		border-radius: 3px;
-		background: #f2f2f2;
-		border: 1px solid #dedede;
-		margin-top: 10px;
-		margin-bottom: 20px;
-		.ui-slider-handle {
-			position: absolute;
-			z-index: 2;
-			width: 15px;
-			height: 15px;
-			top: -5px;
-			border-radius: 50%;
-			cursor: default;
-			-ms-touch-action: none;
-			touch-action: none;
-			background: #333;
-			border: 1px solid #333;
-		}
-		.ui-slider-range {
-			position: absolute;
-			z-index: 1;
-			font-size: .7em;
-			display: block;
-			border: 0;
-			background-position: 0 0;
-		}
-	}
+    input[type="text"] {
+        border: none;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        box-shadow: none;
+        color: #333;
+    }
+    .ui-slider {
+        position: relative;
+        text-align: left;
+        height: 7px;
+        border-radius: 3px;
+        background: #f2f2f2;
+        border: 1px solid #dedede;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        .ui-slider-handle {
+            position: absolute;
+            z-index: 2;
+            width: 15px;
+            height: 15px;
+            top: -5px;
+            border-radius: 50%;
+            cursor: default;
+            -ms-touch-action: none;
+            touch-action: none;
+            background: #333;
+            border: 1px solid #333;
+        }
+        .ui-slider-range {
+            position: absolute;
+            z-index: 1;
+            font-size: 0.7em;
+            display: block;
+            border: 0;
+            background-position: 0 0;
+        }
+    }
+}
+// Color-Alpha Controls
+.customize-control-color-alpha {
+    .kirki-alpha-container {
+        box-sizing: padding-box;
+        display: none;
+        border: 1px solid #dfdfdf;
+        border-top: none;
+        background: #fff;
+        padding: 0 11px 6px;
+        .transparency {
+            height: 24px;
+            width: 100%;
+            background-color: #fff;
+            background-image: url("../images/transparency-grid.png");
+            box-shadow: 0 0 5px rgba(0,0,0,0.4) inset;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            padding: 0;
+        }
+        .ui-slider-handle {
+            color: #777;
+            background-color: #fff;
+            text-shadow: 0 1px 0 #fff;
+            text-decoration: none;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            border: 1px solid #aaa;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            opacity: 0.9;
+            margin-top: -2px;
+            height: 20px;
+            cursor: ew-resize;
+            font-size: 12px;
+            padding: 3px;
+        }
+        .ui-slider {
+            position: relative;
+            text-align: center;
+            width: 88%;
+        }
+    }
+    .wp-picker-container a.wp-picker-open ~ div.kirki-alpha-container {
+        display: block;
+    }
+    .customize-control-alphacolor .wp-picker-container .iris-picker {
+        border-bottom: none;
+    }
+}
+
+// Number Controls
+.customize-control-number {
+    .stepper {
+        border-radius: 0px;
+        margin: 0 0 10px 0;
+        overflow: hidden;
+        position: relative;
+        width: 50%;
+        .stepper-input {
+            background: #F9F9F9;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            color: #333;
+            font-size: 13px;
+            line-height: 1.2;
+            margin: 0;
+            overflow: hidden;
+            padding: 9px 10px 10px;
+            width: 100%;
+            z-index: 49;
+            -moz-appearance: textfield;
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none; margin: 0;
+            }
+            &:focus {
+                background-color: #fff;
+            }
+        }
+        .stepper-arrow {
+            background: #eee url("../images/jquery.fs.stepper-arrows.png") no-repeat;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            display: block;
+            height: 50%;
+            position: absolute;
+            right: 0;
+            text-indent: -99999px;
+            width: 20px;
+            z-index: 50;
+            &.up {
+                background-position: center top;
+                border-bottom: none;
+                top: 0;
+            }
+            &.down {
+                background-position: center bottom;
+                bottom: 0;
+            }
+        }
+    }
 }

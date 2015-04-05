@@ -3,10 +3,9 @@
 use Kirki\Fonts\FontRegistry;
 use Kirki\Scripts\ScriptRegistry;
 use Kirki\Config;
-use Kirki\Setting;
-use Kirki\Control;
-use Kirki\Controls;
 use Kirki\Styles;
+use Kirki\Fields;
+use Kirki\Builder;
 
 spl_autoload_register( function( $class ) {
 	if ( stripos( $class, 'Kirki' ) === 0 ) {
@@ -21,44 +20,48 @@ spl_autoload_register( function( $class ) {
  */
 class Kirki {
 
-    /** @var Kirki The only instance of this class */
-    public static $instance = null;
+	/** @var Kirki The only instance of this class */
+	public static $instance = null;
 
-    /** @var string Version number */
-    public static $version = '0.8.2';
+	/** @var string Version number */
+	public static $version = '0.8.3';
 
-    /** @var Config Configuration */
+	/** @var Config Configuration */
 	public $config = null;
 
-    /** @var Controls */
-    public $controls = null;
+	/** @var FontRegistry The font registry */
+	public $font_registry = null;
 
-    /** @var FontRegistry The font registry */
-    public $font_registry = null;
+	/** @var scripts */
+	public $scripts = null;
 
-    /** @var scripts */
-    public $scripts = null;
+	/** @var field */
+	public $fields = null;
 
-	/** @var $settings */
-	public $setting = null;
+	/**
+	 * Access the single instance of this class
+	 * @return Kirki
+	 */
+	public static function get_instance() {
+		if ( self::$instance==null ) {
+			self::$instance = new Kirki();
+		}
+		return self::$instance;
+	}
 
-    /**
-     * Access the single instance of this class
-     * @return Kirki
-     */
-    public static function get_instance() {
-        if ( self::$instance==null ) {
-            self::$instance = new Kirki();
-        }
-        return self::$instance;
-    }
+	/**
+	 * Shortcut method to call the Field class
+	 */
+	public static function fields() {
+		return self::get_instance()->fields;
+	}
 
-    /**
-     * Shortcut method to get the configuration of the single instance.
-     */
-    public static function config() {
-        return self::get_instance()->config;
-    }
+	/**
+	 * Shortcut method to get the configuration of the single instance.
+	 */
+	public static function config() {
+		return self::get_instance()->config;
+	}
 
 	/**
 	 * Shortcut method to get the translation strings
@@ -69,75 +72,27 @@ class Kirki {
 		return $options['i18n'];
 	}
 
-    /**
-     * Shortcut method to get the controls of the single instance.
-     */
-    public static function controls() {
-        return self::get_instance()->controls;
-    }
-
-    /**
-     * Shortcut method to get the font registry.
-     */
-    public static function fonts() {
-        return self::get_instance()->font_registry;
-    }
-
-    /**
-     * Constructor is private, should only be called by get_instance()
-     */
-	private function __construct() {
-        // Include all files we need
-		$this->include_files();
-
-        // Create our main objects
-        $this->config        = new Config();
-		$this->setting       = new Setting();
-        $this->controls      = new Controls();
-		$this->control       = new Control();
-        $this->font_registry = new FontRegistry();
-        $this->scripts       = new ScriptRegistry();
-		$this->styles        = new Styles();
-
-        // Hook into WP
-        $this->register_hooks();
-    }
-
 	/**
-	 * Build the controls
+	 * Shortcut method to get the font registry.
 	 */
-	public function customizer_init( $wp_customize ) {
-		$controls = Kirki::controls()->get_all();
-
-		// Early exit if controls are not set or if they're empty
-		if ( empty( $controls ) ) {
-			return;
-		}
-
-		foreach ( $controls as $control ) {
-			$this->setting->add( $wp_customize, $control );
-			$this->control->add( $wp_customize, $control );
-		}
+	public static function fonts() {
+		return self::get_instance()->font_registry;
 	}
 
-    /**
-     * Hook into WP
-     */
-    private function register_hooks() {
-        add_action( 'customize_register', array( $this, 'customizer_init' ), 99 );
-    }
-
 	/**
-     * Include helper files we need
-     */
-    private function include_files() {
+	 * Constructor is private, should only be called by get_instance()
+	 */
+	private function __construct() {
 
-        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
+		// Create our main objects
+		$this->font_registry = new FontRegistry();
+		$this->config        = new Config();
+		$this->fields        = new Fields();
+		$this->scripts       = new ScriptRegistry();
+		$this->styles        = new Styles();
 
-        include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
-        include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
+		// Hook into WP
+		$init = new Builder();
 
 	}
 

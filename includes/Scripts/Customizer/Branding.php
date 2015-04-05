@@ -4,6 +4,7 @@ namespace Kirki\Scripts\Customizer;
 
 use Kirki;
 use Kirki\Scripts\EnqueueScript;
+use Kirki\Scripts\ScriptRegistry;
 
 class Branding extends EnqueueScript {
 
@@ -13,18 +14,22 @@ class Branding extends EnqueueScript {
 	 */
 	public function customize_controls_print_scripts() {
 
-		$options = Kirki::config()->get_all(); ?>
+		$options = Kirki::config()->get_all();
+		$script = '';
+		if ( '' != $options['logo_image'] || '' != $options['description'] ) {
 
-		<?php if ( isset( $options['logo_image'] ) || isset( $options['description'] ) ) : ?>
-			<script>jQuery(document).ready(function($) { "use strict";
-				<?php if ( isset( $options['logo_image'] ) ) : ?>
-					$( 'div#customize-info .preview-notice' ).replaceWith( '<img src="<?php echo $options['logo_image']; ?>">' );
-				<?php endif; ?>
-				<?php if ( isset( $options['description'] ) ) : ?>
-					$( 'div#customize-info .accordion-section-content' ).replaceWith( '<div class="accordion-section-content"><div class="theme-description"><?php echo $options['description']; ?></div></div>' );
-				<?php endif; ?>
-			});</script>
-		<?php endif;
+			if ( '' != $options['logo_image'] ) {
+				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $options['logo_image'] . '">\' );';
+			}
+			if ( '' != $options['description'] ) {
+				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $options['description'] . '</div></div>\' );';
+			}
+
+		}
+
+		if ( '' != $script ) {
+			echo ScriptRegistry::prepare( $script );
+		}
 
 	}
 

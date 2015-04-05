@@ -22,20 +22,21 @@ class Frontend {
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
 	function frontend_styles() {
-        $config   = Kirki::config();
-		$controls = Kirki::controls()->get_all();
+		$config = Kirki::config()->get_all();
+		$fields = Kirki::fields()->get_all();
 
-        $kirki_url = $config->get('url_path', KIRKI_URL);
-        $kirki_stylesheet = $config->getOrThrow('stylesheet_id');
+		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
 
-		foreach( $controls as $control ) {
-			if ( isset( $control['output'] ) ) {
+		foreach( $fields as $field ) {
+			if ( isset( $field['output'] ) ) {
 				$uses_output = true;
 			}
 		}
 
+		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+
 		if ( isset( $uses_output )  && $uses_output && $kirki_stylesheet === 'kirki-styles' ) {
-			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
+			wp_enqueue_style( 'kirki-styles', trailingslashit( $root ) . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
 	}
@@ -64,12 +65,12 @@ class Frontend {
 	}
 
 
-	function control_styles( $control, $styles, $element, $property, $units ) {
+	function setting_styles( $field, $styles, $element, $property, $units ) {
 
-		$value = get_theme_mod( $control['settings'], $control['default'] );
+		$value = kirki_get_option( $field['settings'] );
 
 		// Color controls
-		if ( 'color' == $control['type'] ) {
+		if ( 'color' == $field['type'] ) {
 
 			$color = \Kirki_Color::sanitize_hex( $value );
 			$styles[$element][$property] = $color;
@@ -77,33 +78,39 @@ class Frontend {
 		}
 
 		// Background Controls
-		elseif ( 'background' == $control['type'] ) {
+		elseif ( 'background' == $field['type'] ) {
 
-			if ( isset( $control['default']['color'] ) ) {
-				$bg_color = \Kirki_Color::sanitize_hex( get_theme_mod( $control['settings'] . '_color', $control['default']['color'] ) );
+			if ( isset( $field['default']['color'] ) ) {
+				$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
+				$value = kirki_get_option( $field['settings'] . '_color' );
+				if ( 'color-alpha' == $color_mode ) {
+					$bg_color = esc_js( $value );
+				} else {
+					$bg_color = \Kirki_Color::sanitize_hex( $value );
+				}
 			}
-			if ( isset( $control['default']['image'] ) ) {
-				$bg_image = get_theme_mod( $control['settings'] . '_image', $control['default']['image'] );
+			if ( isset( $field['default']['image'] ) ) {
+				$bg_image = kirki_get_option( $field['settings'] . '_image' );
 				$bg_image = esc_url_raw( $bg_image );
 			}
-			if ( isset( $control['default']['repeat'] ) ) {
-				$bg_repeat = get_theme_mod( $control['settings'] . '_repeat', $control['default']['repeat'] );
+			if ( isset( $field['default']['repeat'] ) ) {
+				$bg_repeat = kirki_get_option( $field['settings'] . '_repeat' );
 				$bg_repeat = kirki_sanitize_bg_repeat( $bg_repeat );
 			}
-			if ( isset( $control['default']['size'] ) ) {
-				$bg_size = get_theme_mod( $control['settings'] . '_size', $control['default']['size'] );
+			if ( isset( $field['default']['size'] ) ) {
+				$bg_size = kirki_get_option( $field['settings'] . '_size' );
 				$bg_size = kirki_sanitize_bg_size( $bg_size );
 			}
-			if ( isset( $control['default']['attach'] ) ) {
-				$bg_attach = get_theme_mod( $control['settings'] . '_attach', $control['default']['attach'] );
+			if ( isset( $field['default']['attach'] ) ) {
+				$bg_attach = kirki_get_option( $field['settings'] . '_attach' );
 				$bg_attach = kirki_sanitize_bg_attach( $bg_attach );
 			}
-			if ( isset( $control['default']['position'] ) ) {
-				$bg_position = get_theme_mod( $control['settings'] . '_position', $control['default']['position'] );
+			if ( isset( $field['default']['position'] ) ) {
+				$bg_position = kirki_get_option( $field['settings'] . '_position' );
 				$bg_position = kirki_sanitize_bg_position( $bg_position );
 			}
-			if ( isset( $control['default']['opacity'] ) && $control['default']['opacity'] ) {
-				$bg_opacity = get_theme_mod( $control['settings'] . '_opacity', $control['default']['opacity'] );
+			if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
+				$bg_opacity = kirki_get_option( $field['settings'] . '_opacity' );
 				$bg_opacity = kirki_sanitize_number( $bg_opacity );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
@@ -136,15 +143,15 @@ class Frontend {
 		}
 
 		// Font controls
-		elseif ( array( $control['output'] ) && isset( $control['output']['property'] ) && in_array( $control['output']['property'], array( 'font-family', 'font-size', 'font-weight' ) ) ) {
+		elseif ( array( $field['output'] ) && isset( $field['output']['property'] ) && in_array( $field['output']['property'], array( 'font-family', 'font-size', 'font-weight' ) ) ) {
 
-			$is_font_family = isset( $control['output']['property'] ) && 'font-family' == $control['output']['property'] ? true : false;
-			$is_font_size   = isset( $control['output']['property'] ) && 'font-size'   == $control['output']['property'] ? true : false;
-			$is_font_weight = isset( $control['output']['property'] ) && 'font-weight' == $control['output']['property'] ? true : false;
+			$is_font_family = isset( $field['output']['property'] ) && 'font-family' == $field['output']['property'] ? true : false;
+			$is_font_size   = isset( $field['output']['property'] ) && 'font-size'   == $field['output']['property'] ? true : false;
+			$is_font_weight = isset( $field['output']['property'] ) && 'font-weight' == $field['output']['property'] ? true : false;
 
 			if ( 'font-family' == $property ) {
 
-				$styles[$control['output']['element']]['font-family'] = $value;
+				$styles[$field['output']['element']]['font-family'] = $value;
 
 			} else if ( 'font-size' == $property ) {
 
@@ -171,36 +178,41 @@ class Frontend {
 
 	function loop_controls() {
 
-		$controls = Kirki::controls()->get_all();
+		$fields = Kirki::fields()->get_all();
 		$styles   = array();
 
-		foreach ( $controls as $control ) {
+		// Early exit if no fields are found.
+		if ( ! $fields || empty( $fields ) ) {
+			return;
+		}
+
+		foreach ( $fields as $field ) {
 			$element  = '';
 			$property = '';
 			$units    = '';
 
-			// Only continue if $control['output'] is set
-			if ( isset( $control['output'] ) ) {
+			// Only continue if $field['output'] is set
+			if ( isset( $field['output'] ) ) {
 
 				// Check if this is an array of style definitions
-				$multiple_styles = isset( $control['output'][0]['element'] ) ? true : false;
+				$multiple_styles = isset( $field['output'][0]['element'] ) ? true : false;
 
 				if ( ! $multiple_styles ) { // single style
 
-					// If $control['output'] is not an array, then use the string as the target element
-					if ( is_string( $control['output'] ) ) {
-						$element = $control['output'];
+					// If $field['output'] is not an array, then use the string as the target element
+					if ( is_string( $field['output'] ) ) {
+						$element = $field['output'];
 					} else {
-						$element  = isset( $control['output']['element'] )  ? $control['output']['element'] : '';
-						$property = isset( $control['output']['property'] ) ? $control['output']['property'] : '';
-						$units    = isset( $control['output']['units'] )    ? $control['output']['units']    : '';
+						$element  = isset( $field['output']['element'] )  ? $field['output']['element'] : '';
+						$property = isset( $field['output']['property'] ) ? $field['output']['property'] : '';
+						$units    = isset( $field['output']['units'] )    ? $field['output']['units']    : '';
 					}
 
-					$styles = $this->control_styles( $control, $styles, $element, $property, $units );
+					$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
 
 				} else { // Multiple styles set
 
-					foreach ( $control['output'] as $style ) {
+					foreach ( $field['output'] as $style ) {
 
 						if ( ! array( $style ) ) {
 							$element = $style;
@@ -210,7 +222,7 @@ class Frontend {
 							$units    = isset( $style['units'] )    ? $style['units']    : '';
 						}
 
-						$styles = $this->control_styles( $control, $styles, $element, $property, $units );
+						$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
 
 					}
 

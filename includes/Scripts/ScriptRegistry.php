@@ -7,6 +7,7 @@ use Kirki\Scripts\Customizer\Branding;
 use Kirki\Scripts\Customizer\PostMessage;
 use Kirki\Scripts\Customizer\Required;
 use Kirki\Scripts\Customizer\Tooltips;
+use Kirki\Scripts\Customizer\Stepper;
 use Kirki\Scripts\Frontend\GoogleFonts;
 
 class ScriptRegistry {
@@ -19,7 +20,12 @@ class ScriptRegistry {
 		$required     = new Required();
 		$tooltips     = new Tooltips();
 		$googlefonts  = new GoogleFonts();
+		$stepper      = new Stepper();
 
+	}
+
+	public static function prepare( $script ) {
+		return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
 	}
 
 }
