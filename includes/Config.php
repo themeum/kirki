@@ -65,7 +65,7 @@ class Config {
 				'logo_image'    => '',
 				'description'   => '',
 				'url_path'      => '',
-				'options_type'  => 'options_type',
+				'options_type'  => 'theme_mod',
 			);
 			$this->config = array_merge( $default_config, $this->config );
 
