@@ -93,7 +93,7 @@ class Fields {
 
 		}
 
-		return $field['type'];
+		return esc_attr( $field['type'] );
 
 	}
 
@@ -105,7 +105,7 @@ class Fields {
 	 */
 	public function sanitize_type( $field ) {
 		$config = Kirki::config()->get_all();
-		return $config['options_type'];
+		return esc_attr( $config['options_type'] );
 	}
 
 	/**
@@ -117,9 +117,9 @@ class Fields {
 	public function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
 			$config = Kirki::config()->get_all();
-			return $config['capability'];
+			return esc_attr( $config['capability'] );
 		} else {
-			return $field['capability'];
+			return esc_attr( $field['capability'] );
 		}
 	}
 
@@ -139,7 +139,7 @@ class Fields {
 			$field['settings'] = $field['setting'];
 		}
 
-		return $field['settings'];
+		return esc_attr( $field['settings'] );
 
 	}
 
@@ -263,6 +263,8 @@ class Fields {
 	 * @return array
 	 */
 	public function sanitize_output( $field ) {
+		// Further sanitization on the values of the array happens near the output.
+		// This just makes sure the value is defined to avoid errors.
 		return isset( $field['output'] ) ? $field['output'] : null;
 	}
 
@@ -301,6 +303,8 @@ class Fields {
 	public function sanitize_js_vars( $field ) {
 		if ( isset( $field['js_vars'] ) ) {
 			return $field['js_vars'];
+		} else {
+			return null;
 		}
 	}
 
@@ -311,6 +315,8 @@ class Fields {
 	 * @return array
 	 */
 	public function sanitize_required( $field ) {
+		// The individual options of the array get sanitized in the Required class.
+		// We're just making sure this is defined here.
 		return isset( $field['required'] ) ? $field['required'] : array();
 	}
 
@@ -331,7 +337,8 @@ class Fields {
 	}
 
 	/**
-	 *
+	 * Build the background fields.
+	 * Takes a single field with type = background and explodes it to multiple controls.
 	 */
 	public function build_background_fields( $fields ) {
 		$i18n = Kirki::i18n();
