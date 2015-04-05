@@ -562,7 +562,7 @@ class Fields {
 				$sanitize_callback = 'esc_attr';
 				break;
 			case 'sortable' :
-				$sanitize_callback = 'esc_attr';
+				$sanitize_callback = 'kirki_sanitize_sortable';
 				break;
 			case 'palette' :
 				$sanitize_callback = 'kirki_sanitize_choice';

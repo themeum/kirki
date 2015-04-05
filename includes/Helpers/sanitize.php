@@ -112,6 +112,19 @@ function kirki_sanitize_bg_position( $value ) {
 }
 
 /**
+ * Sanitize sortable controls
+ *
+ * @since 0.8.3
+ */
+
+function kirki_sanitize_sortable( $value ) {
+	if ( is_serialized( $value ) ) {
+		return $value;
+	} else {
+		return serialize( $value );
+	}
+}
+/**
  * DOES NOT SANITIZE ANYTHING.
  *
  * @since 0.5
