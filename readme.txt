@@ -3,8 +3,8 @@ Contributors: aristath, fovoc
 Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
-Tested up to: 4.1.1
-Stable tag: 0.8.2
+Tested up to: 4.2
+Stable tag: 0.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,7 @@ The following controls are included:
 * Radio
 * Checkbox
 * Color
+* Color-Alpha
 * Dropdown Pages
 * Image
 * Background
@@ -47,27 +48,57 @@ For documentation and examples on how to use these controls, please visit [kirki
 
 
 == Installation ==
-From your dashboarad go to Plugins => Add New.
-Search for \"Kirki\" and install it.
-Once you isntall it, activate it.
+
+**Method 1: Use as a plugin**
+From your dashboard go to Plugins => Add New.
+Search for "Kirki" and install it.
+Once you install it, activate it.
 For configuration instructions please visit http://kirki.org/#configuration
 
+**Method 2: Embed in your theme**
+Please visit http://kirki.org for documentation and instructions.
 
 == Changelog ==
 
-== 0.8.2 ==
+= 0.8.3 =
+
+April 5, 2014, dev time: 28 hours
+
+* New: Introduce a Field class
+* New: Introduce a Builder class
+* Tweak: Code Cleanups
+* New: Added ability to use 'option' as the setting type
+* Fix : Bugs in the color calculation class
+* Tweak: Everything gets sanitized in the "Field" class
+* Fix: Bugs in sortable field
+* Fix: Editor control had no description
+* New: Added a color-alpha control. To use it just set an rgba color as the default value.
+* Tweak: SCSS & CSS improvements
+* Fix: Various PHP notices and warnings when no fields are defined
+* Tweak: More efficient color sanitization method
+* Tweak: Improved number control presentation
+* Tweak: Improved the way background fields are handled
+* Tweak: Checkboxes styling
+* New: Allow using rgba values for background colors
+* Fix: CSS fix - :focus color for active section
+* New: Add a static 'prepare' method to the ScriptRegistry class
+* Fix: Issues with the URL when Kirki is embedded in a theme
+
+= 0.8.2 =
+
+March 30, 2015, dev time: 5 minutes
 
 * Fix: Autoloader could not properly include files due to strtolower()
 
-== 0.8.1 ==
+= 0.8.1 =
 
-March 30, 2014, dev time: 30 minutes
+March 30, 2015, dev time: 30 minutes
 
 * Fix: Translation strings now overridable using the config filter.
 
-== 0.8.0 ==
+= 0.8.0 =
 
-March 30, 2014, dev time: 32 hours
+March 30, 2015, dev time: 32 hours
 
 * Improvement: OOP redesign (props @vpratfr)
 * New: Added Palette control
@@ -86,18 +117,18 @@ March 30, 2014, dev time: 32 hours
 * Tweak: Deprecating the group_title control in favor of the new custom control
 * Tweak: Changed the CSS for checkboxes
 
-== 0.7.1 ==
+= 0.7.1 =
 
-March 15, 2014, dev time: 2 hours
+March 15, 2015, dev time: 2 hours
 
 * Removed: Remove the `kirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
 * Fix: Undefined index notice when a default value for the control was not defined
 * Tweak: `logo_image` now injects an `img` element instead of a `div` with custom background
 * New: Added `description` argument in the kirki configuration (replaces the theme description)
 
-== 0.7 ==
+= 0.7 =
 
-March 14, 2014, dev time: 10 hours
+March 14, 2015, dev time: 10 hours
 
 * Fix: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
 * Fix: Background opacity affects background-position of bg image
@@ -117,9 +148,9 @@ March 14, 2014, dev time: 10 hours
 * Tweak: Using WordPress core controls instead of custom ones when those are available
 * Tweak: Separate logic for multiple-type controls that were using the "mode" argument. This has been deprecated in favor of completely separate control types.
 
-== 0.6.2 ==
+= 0.6.2 =
 
-March 2, 2014, dev time: 3 hours
+March 2, 2015, dev time: 3 hours
 
 * Fix: Frontend styles were not properly enqueued (props @dmgawel)
 * New: Allow multiple output styles per control defined as an array of arrays.
@@ -128,16 +159,16 @@ March 2, 2014, dev time: 3 hours
 * Fix: Required script
 * Fix: \'_opacity\' was added to a lot of controls by mistake. Removed it and wrote a migration script.
 
-== 0.6.1 ==
+= 0.6.1 =
 
-2014-02-25, dev time: 1 hours
+2015-02-25, dev time: 1 hours
 
 * Fix: Sortables controls had a JS conflict
 * Fix: Switches & Toggles were not properly working
 
-== 0.6.0 ==
+= 0.6.0 =
 
-2014-02-25, dev time: 9 hours
+2015-02-25, dev time: 9 hours
 
 * Fix: Tooltips now properly working
 * New: Added checkbox switches
@@ -152,12 +183,12 @@ March 2, 2014, dev time: 3 hours
 * Fix: Double output CSS (props @agusmu)
 * New: Google fonts now parsed from a json file.
 
-== 0.5.1 ==
+= 0.5.1 =
 
 * Fix: Transport defaults to refresh instead of postMessage
 * Fix: undefined index notice.
 
-== 0.5 ==
+= 0.5 =
 
 * New: Automatic output of styles for generic controls.
 * New: Automatic output of styles + scripts for fonts (including googlefonts )
