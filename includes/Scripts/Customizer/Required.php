@@ -110,7 +110,6 @@ class Required extends EnqueueScript {
 					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
-					$script .= 'console.log("function started");';
 					$script .= "if ($('" . $controller . "').";
 					$script .= 'is(":checked") ) {';
 					$script .= "$('" . $target . "')" . $action_1 . ';';
