@@ -4,7 +4,7 @@ Tags: customizer, options famework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 0.8.3
+Stable tag: 0.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,15 @@ For configuration instructions please visit http://kirki.org/#configuration
 Please visit http://kirki.org for documentation and instructions.
 
 == Changelog ==
+
+= 0.8.4 =
+
+April 6, 2014, dev time: 0.5 hours
+
+* Fix: Color sanitization was distorting 0 characters in the color hex.
+* Fix: Properly sanitizing ColorAlpha controls
+* Fix: Sanitizing more properties in the Fields class
+* Fix: removing remnant double-sanitization calls from the controls classes
 
 = 0.8.3 =
 
@@ -161,14 +170,14 @@ March 2, 2015, dev time: 3 hours
 
 = 0.6.1 =
 
-2015-02-25, dev time: 1 hours
+February 25, 2015, dev time: 1 hours
 
 * Fix: Sortables controls had a JS conflict
 * Fix: Switches & Toggles were not properly working
 
 = 0.6.0 =
 
-2015-02-25, dev time: 9 hours
+February 25, 2015, dev time: 9 hours
 
 * Fix: Tooltips now properly working
 * New: Added checkbox switches
@@ -185,10 +194,14 @@ March 2, 2015, dev time: 3 hours
 
 = 0.5.1 =
 
+January 22, 2015
+
 * Fix: Transport defaults to refresh instead of postMessage
 * Fix: undefined index notice.
 
 = 0.5 =
+
+January 21, 2015
 
 * New: Automatic output of styles for generic controls.
 * New: Automatic output of styles + scripts for fonts (including googlefonts )
@@ -206,6 +219,8 @@ March 2, 2015, dev time: 3 hours
 
 = 0.4 =
 
+October 25, 2014
+
 * Fix: bugfix for selector
 * New: Change the Kirki theme based on which admin theme is selected.
 * Fix: Tranlsation domain issue
@@ -216,9 +231,13 @@ March 2, 2015, dev time: 3 hours
 
 = 0.3 =
 
+May 26, 2014
+
 * new: added background field
 * new: added \'output\' argument to directly output the CSS
 
 = 0.2 =
+
+May 9, 2014
 
 * Initial version
