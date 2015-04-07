@@ -39,6 +39,7 @@ class Fields {
 	 */
 	public function sanitize_field( $field ) {
 
+		$field['settings_raw']      = ( isset( $field['setting'] ) && ! isset( $field['settings'] ) ) ? $field['setting'] : $field['settings'];
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );
 		$field['help']              = $this->sanitize_help( $field );

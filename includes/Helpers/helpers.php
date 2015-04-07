@@ -25,22 +25,41 @@ function kirki_get_option( $option = '' ) {
 	// Get the config.
 	$config = Kirki::config()->get_all();
 
-	/**
-	* If no setting has been defined then return all.
-	*/
-	if ( '' == $option ) {
-		if ( 'option' == $config['options_type'] ) {
-			$values = array();
+	// If we're using options instead of theme_mods,
+	// then first we'll have to get the array of all options.
+	if ( 'option' == $config['options_type'] ) {
+		$values = array();
+		if ( '' == $config['option_name'] ) {
+			// No option name is defined.
+			// Each options is saved separately in the db, so we'll manually build the array here.
 			foreach ( $fields as $field ) {
-				$values[] = get_option( $field['settings'], $field['default'] );
+				$values[$field['settings']] = get_option( $field['settings'], $field['default'] );
 			}
 		} else {
+			// An option_name has been defined so our options are all saved in an array there.
+			$values = get_option( $config['option_name'] );
+			foreach ( $fields as $field ) {
+				if ( ! isset( $values[$field['settings']] ) ) {
+					$values[$field['settings_raw']] = maybe_unserialize( $field['default'] );
+				}
+			}
+		}
+	}
+
+	if ( '' == $option ) {
+		// No option has been defined so we'll get all options and return an array
+		// If we're using options then we already have the $values set above.
+		// All we need here is a fallback for theme_mods
+		if ( 'option' != $config['options_type'] ) {
+			// We're using theme_mods
 			$values = get_theme_mods();
 		}
 
+		// Early exit and return the array of all values
 		return $values;
 
 	}
+
 	// If a value has been defined then we proceed.
 
 	// Early exit if this option does not exist
@@ -49,32 +68,18 @@ function kirki_get_option( $option = '' ) {
 	}
 
 	if ( 'option' == $config['options_type'] ) {
-
-		// We're using options instead of theme_mods
-		if ( '' == $config['option_name'] ) {
-
-			// No option name has been defined.
-			// Each option is saved individually in the database
-			$value = get_option( $option, $fields[$option]['default'] );
-
-		} else {
-			// 'option_name' has been defined.
-			// Our options are all saved as an array in the db under that 'option_name'
-
-			// Get all options
-			$values = get_option( $config['option_name'], array() );
-			$value  = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
-
-		}
+		// We're using options instead of theme_mods.
+		// We already have the array of values set from above so we'll use that.
+		$value  = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
 
 	} else {
-
 		// We're using theme_mods
 		$value = get_theme_mod( $option_name, $default );
 
 	}
-
-	return $value;
+	// Return the single value.
+	// Pass it through maybe_unserialize so we're sure we get a proper value.
+	return maybe_unserialize( $value );
 
 }
 
