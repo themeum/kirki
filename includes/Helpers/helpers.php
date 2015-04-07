@@ -13,48 +13,6 @@ function kirki_array_delete( $idx, $array ) {
 }
 
 /**
- * Takes care of all the migration and compatibility issues with previous versions.
- */
-function kirki_update() {
-
-	$version = get_option( 'kirki_version' );
-	$version = ( ! $version ) ? '0' : $version;
-	// < 0.6.1 -> 0.6.2
-	if ( ! $version ) {
-		/**
-		 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
-		 * This will fix the wrong settings naming and save new settings.
-		 */
-		$field_ids = array();
-		$fields = Kirki::fields()->get_all();
-
-		foreach ( $fields as $field ) {
-			// $field = Kirki::field()->sanitize( $field );
-
-			if ( 'background' != $field['type'] ) {
-				$field_ids[] = $field['settings'];
-			}
-
-		}
-
-		foreach ( $field_ids as $field_id ) {
-
-			if ( get_theme_mod( $field_id . '_opacity' ) && ! get_theme_mod( $field_id ) ) {
-				set_theme_mod( $field_id, get_theme_mod( $field_id . '_opacity' ) );
-			}
-
-		}
-
-	}
-
-	if ( ! $version || version_compare( Kirki::$version, $version ) ) {
-		update_option( 'kirki_version', Kirki::$version );
-	}
-
-}
-add_action( 'wp', 'kirki_update' );
-
-/**
  * Get the value of a field.
  */
 function kirki_get_option( $option = '' ) {
