@@ -131,6 +131,8 @@ class Fields {
 	 */
 	public function sanitize_settings( $field ) {
 
+		$config = Kirki::config()->get_all();
+
 		/**
 		 * Compatibility tweak
 		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
@@ -139,7 +141,16 @@ class Fields {
 			$field['settings'] = $field['setting'];
 		}
 
-		return esc_attr( $field['settings'] );
+		// Sanitize the field's settings attribute.
+		$field['settings'] = sanitize_key( $field['settings'] );
+
+		// Checking and sanitization of config values is handled by the Config class.
+		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
+		if ( '' != $config['option_name'] ) {
+			$field['settings'] = $config['option_name'] . '[' . $field['settings'] . ']';
+		}
+
+		return $field['settings'];
 
 	}
 
@@ -164,7 +175,10 @@ class Fields {
 	}
 
 	/**
-	 * Sanitizes the control id
+	 * Sanitizes the control id.
+	 * Sanitizing the ID should happen after the 'settings' sanitization.
+	 * This way we can also properly handle cases where the option_type is set to 'option'
+	 * and we're using an array instead of individual options.
 	 *
 	 * @param array the field definition
 	 * @return string

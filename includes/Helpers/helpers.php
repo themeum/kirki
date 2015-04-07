@@ -29,7 +29,7 @@ function kirki_update() {
 		$fields = Kirki::fields()->get_all();
 
 		foreach ( $fields as $field ) {
-			$field = Kirki::field()->sanitize( $field );
+			// $field = Kirki::field()->sanitize( $field );
 
 			if ( 'background' != $field['type'] ) {
 				$field_ids[] = $field['settings'];
@@ -90,13 +90,30 @@ function kirki_get_option( $option = '' ) {
 		return;
 	}
 
-	$option_name  = $fields[$option]['settings'];
-	$default      = $fields[$option]['default'];
-
 	if ( 'option' == $config['options_type'] ) {
-		$value = get_option( $option_name, $default );
+
+		// We're using options instead of theme_mods
+		if ( '' == $config['option_name'] ) {
+
+			// No option name has been defined.
+			// Each option is saved individually in the database
+			$value = get_option( $option, $fields[$option]['default'] );
+
+		} else {
+			// 'option_name' has been defined.
+			// Our options are all saved as an array in the db under that 'option_name'
+
+			// Get all options
+			$values = get_option( $config['option_name'], array() );
+			$value  = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
+
+		}
+
 	} else {
+
+		// We're using theme_mods
 		$value = get_theme_mod( $option_name, $default );
+
 	}
 
 	return $value;
