@@ -39,7 +39,7 @@ function kirki_get_option( $option = '' ) {
 			// An option_name has been defined so our options are all saved in an array there.
 			$values = get_option( $config['option_name'] );
 			foreach ( $fields as $field ) {
-				if ( ! isset( $values[$field['settings']] ) ) {
+				if ( ! isset( $values[$field['settings_raw']] ) ) {
 					$values[$field['settings_raw']] = maybe_unserialize( $field['default'] );
 				}
 			}
@@ -63,7 +63,8 @@ function kirki_get_option( $option = '' ) {
 	// If a value has been defined then we proceed.
 
 	// Early exit if this option does not exist
-	if ( ! isset( $fields[$option] ) ) {
+	$field_id = ( 'option' == $config['options_type'] && '' != $config['option_name'] ) ? $config['option_name'] . '[' . $option . ']' : $option;
+	if ( ! isset( $fields[$field_id] ) ) {
 		return;
 	}
 
