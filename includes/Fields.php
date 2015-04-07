@@ -39,7 +39,7 @@ class Fields {
 	 */
 	public function sanitize_field( $field ) {
 
-		$field['settings_raw']      = ( isset( $field['setting'] ) && ! isset( $field['settings'] ) ) ? $field['setting'] : $field['settings'];
+		$field['settings_raw']      = $this->sanitize_settings_raw( $field );
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );
 		$field['help']              = $this->sanitize_help( $field );
@@ -125,14 +125,12 @@ class Fields {
 	}
 
 	/**
-	 * Sanitizes the setting name
+	 * Sanitizes the raw setting name.
 	 *
 	 * @param array the field definition
-	 * @return string.
+	 * @return string
 	 */
-	public function sanitize_settings( $field ) {
-
-		$config = Kirki::config()->get_all();
+	public function sanitize_settings_raw( $field ) {
 
 		/**
 		 * Compatibility tweak
@@ -144,6 +142,23 @@ class Fields {
 
 		// Sanitize the field's settings attribute.
 		$field['settings'] = sanitize_key( $field['settings'] );
+
+		return $field['settings'];
+
+	}
+
+	/**
+	 * Sanitizes the setting name
+	 *
+	 * @param array the field definition
+	 * @return string.
+	 */
+	public function sanitize_settings( $field ) {
+
+		$config = Kirki::config()->get_all();
+
+		// Pass this throught the sanitize_settings_raw method first.
+		$field['settings'] = $this->sanitize_settings_raw( $field );
 
 		// Checking and sanitization of config values is handled by the Config class.
 		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
