@@ -51,6 +51,7 @@ class Required extends EnqueueScript {
 					if ( 'select' == $type ) {
 						$controller = '#customize-control-' . $dependency['setting'] . ' select';
 					} elseif ( 'radio' == $type ) {
+						$common_controller = '#customize-control-' . $dependency['setting'] . ' input';
 						$controller = '#customize-control-' . $dependency['setting'] . ' input[value="' . $dependency['value'] . '"]';
 					}
 
@@ -103,19 +104,19 @@ class Required extends EnqueueScript {
 
 					// if initial status is hidden then hide the control
 					if ( false == $show ) {
-						$script .= '$("' . $target . '").hide();';
+						$script .= "$('" . $target . "').hide();";
 					}
 
-					$script .= '$("' . $controller . '").';
+					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
-					$script .= 'if ($("' . $controller . '").';
-					$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-					$script .= '$("' . $target . '")' . $action_1 . ';';
+					$script .= "if ($('" . $controller . "').";
+					$script .= 'is(":checked") ) {';
+					$script .= "$('" . $target . "')" . $action_1 . ';';
 					$script .= '} else {';
-					$script .= '$("' . $target . '")' . $action_2 . ';';
+					$script .= "$('" . $target . "')" . $action_2 . ';';
 					$script .= '}});';
-					$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
+					$script .= ( 'checkbox' != $type ) ? "$('" . $controller . "')".'.trigger("change");' : '';
 				}
 			}
 		}
