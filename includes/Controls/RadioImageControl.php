@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class RadioImageControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class RadioImageControl extends Control {
 
 	public $type = 'radio-image';
 
@@ -19,19 +21,7 @@ class RadioImageControl extends \WP_Customize_Control {
 		$name = '_customize-radio-' . $this->id;
 
 		?>
-		<span class="customize-control-title">
-			<?php
-				// The label has already been sanitized in the Fields class, no need to re-sanitize it.
-			?>
-			<?php echo $this->label; ?>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<?php
-					// The description has already been sanitized in the Fields class, no need to re-sanitize it.
-				?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-		</span>
-
+		<?php $this->title(); ?>
 		<div id="input_<?php echo $this->id; ?>" class="image">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
 				<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>

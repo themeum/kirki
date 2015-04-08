@@ -2,24 +2,15 @@
 
 namespace Kirki\Controls;
 
-class CustomControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class CustomControl extends Control {
 
 	public $type = 'custom';
 
 	public function render_content() { ?>
 		<label>
-			<?php
-				// The label has already been sanitized in the Fields class, no need to re-sanitize it.
-			?>
-			<?php if ( ! empty( $this->label ) ) : ?>
-				<span class="customize-control-title"><?php echo $this->label; ?></span>
-			<?php endif;
-			if ( ! empty( $this->description ) ) : ?>
-				<?php
-					// The description has already been sanitized in the Fields class, no need to re-sanitize it.
-				?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
+			<?php $this->title(); ?>
 			<?php
 				/**
 				 * The value is defined by the developer in the field configuration as the default value.

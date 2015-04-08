@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class SliderControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class SliderControl extends Control {
 
 	public $type = 'slider';
 
@@ -14,18 +16,7 @@ class SliderControl extends \WP_Customize_Control {
 	public function render_content() { ?>
 		<label>
 
-			<span class="customize-control-title">
-				<?php
-					// The label has already been sanitized in the Fields class, no need to re-sanitize it.
-				?>
-				<?php echo $this->label; ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<?php
-						// The description has already been sanitized in the Fields class, no need to re-sanitize it.
-					?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-			</span>
+			<?php $this->title(); ?>
 
 			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 
