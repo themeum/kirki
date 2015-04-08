@@ -423,7 +423,7 @@ class Fields {
 						'type'        => 'select',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_',
+						'settings'    => $field['settings'] . '_repeat',
 						'priority'    => $field['priority'] + 2,
 						'choices'     => array(
 							'no-repeat' => $i18n['no-repeat'],
