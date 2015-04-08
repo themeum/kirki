@@ -75,9 +75,35 @@ function kirki_get_option( $option = '' ) {
 
 	} else {
 		// We're using theme_mods
-		$value = get_theme_mod( $option_name, $default );
+		$value = get_theme_mod( $option, $default );
 
 	}
+
+	// Combine background options to a single array
+	if ( 'background' == $fields[$field_id]['type'] ) {
+		if ( 'option' == $config['options_type'] ) {
+			$value = array(
+				'background-color'      => isset( $values[$option . '_color'] )    ? $values[$option . '_color']    : null,
+				'background-repeat'     => isset( $values[$option . '_repeat'] )   ? $values[$option . '_repeat']   : null,
+				'background-attachment' => isset( $values[$option . '_attach'] )   ? $values[$option . '_attach']   : null,
+				'background-image'      => isset( $values[$option . '_image'] )    ? $values[$option . '_image']    : null,
+				'background-position'   => isset( $values[$option . '_position'] ) ? $values[$option . '_position'] : null,
+				'background-clip'       => isset( $values[$option . '_clip'] )     ? $values[$option . '_clip']     : null,
+				'background-size'       => isset( $values[$option . '_size'] )     ? $values[$option . '_size']     : null,
+			);
+		} else {
+			$value = array(
+				'background-color'      => get_theme_mod( $option . '_color',    $fields[$option . '_color']['default'] ),
+				'background-repeat'     => get_theme_mod( $option . '_repeat',   $fields[$option . '_repeat']['default'] ),
+				'background-attachment' => get_theme_mod( $option . '_attach',   $fields[$option . '_attach']['default'] ),
+				'background-image'      => get_theme_mod( $option . '_image',    $fields[$option . '_image']['default'] ),
+				'background-position'   => get_theme_mod( $option . '_position', $fields[$option . '_position']['default'] ),
+				'background-clip'       => get_theme_mod( $option . '_clip',     $fields[$option . '_clip']['default'] ),
+				'background-size'       => get_theme_mod( $option . '_size',     $fields[$option . '_size']['default'] ),
+			);
+		}
+	}
+
 	// Return the single value.
 	// Pass it through maybe_unserialize so we're sure we get a proper value.
 	return maybe_unserialize( $value );
