@@ -73,7 +73,7 @@ class Frontend {
 		if ( 'color' == $field['type'] ) {
 
 			$color = \Kirki_Color::sanitize_hex( $value );
-			$styles[$element][$property] = $color;
+			$styles[$element][$property] = $color . $units;
 
 		}
 
@@ -122,21 +122,21 @@ class Frontend {
 			}
 
 			if ( isset( $bg_color ) ) {
-				$styles[$element]['background-color'] = $bg_color;
+				$styles[$element]['background-color'] = $bg_color . $units;
 			}
 			if ( isset( $bg_image ) && '' != $bg_image ) {
-				$styles[$element]['background-image'] = 'url("' . $bg_image . '")';
+				$styles[$element]['background-image'] = 'url("' . $bg_image . '")' . $units;
 				if ( isset( $bg_repeat ) ) {
-					$styles[$element]['background-repeat'] = $bg_repeat;
+					$styles[$element]['background-repeat'] = $bg_repeat . $units;
 				}
 				if ( isset( $bg_size ) ) {
-					$styles[$element]['background-size'] = $bg_size;
+					$styles[$element]['background-size'] = $bg_size . $units;
 				}
 				if ( isset( $bg_attach ) ) {
-					$styles[$element]['background-attachment'] = $bg_attach;
+					$styles[$element]['background-attachment'] = $bg_attach . $units;
 				}
 				if ( isset( $bg_position ) ) {
-					$styles[$element]['background-position'] = str_replace( '-', ' ', $bg_position );
+					$styles[$element]['background-position'] = str_replace( '-', ' ', $bg_position ) . $units;
 				}
 			}
 
@@ -151,7 +151,7 @@ class Frontend {
 
 			if ( 'font-family' == $property ) {
 
-				$styles[$field['output']['element']]['font-family'] = $value;
+				$styles[$field['output']['element']]['font-family'] = $value . $units;
 
 			} else if ( 'font-size' == $property ) {
 
@@ -161,7 +161,7 @@ class Frontend {
 
 			} else if ( 'font-weight' == $property ) {
 
-				$styles[$element]['font-weight'] = $value;
+				$styles[$element]['font-weight'] = $value . $units;
 
 			}
 
