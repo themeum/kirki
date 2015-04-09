@@ -14,6 +14,7 @@ class Required extends EnqueueScript {
 	function customize_controls_print_footer_scripts() {
 
 		$fields = Kirki::fields()->get_all();
+		$config = Kirki::config()->get_all();
 
 		// Early exit if no controls are defined
 		if ( empty( $fields ) ) {
@@ -27,10 +28,12 @@ class Required extends EnqueueScript {
 			$required = ( isset( $field['required'] ) ) ? $field['required'] : false;
 
 			if ( $required ) {
-
 				$show = false;
 				foreach ( $required as $dependency ) {
 					// Find the type of the dependency control
+					if ( 'option' == $config['options_type'] && '' != $config['option_name'] ) {
+						$dependency['setting'] = $config['option_name'] . '[' . $dependency['setting'] . ']';
+					}
 					$type = $fields[$dependency['setting']]['type'];
 
 					// If "operator" is not set then set it to "=="
@@ -47,15 +50,17 @@ class Required extends EnqueueScript {
 					$type = ( 'switch' == $type )          ? 'checkbox' : $type;
 
 					// Set the controller used in the script
-					$controller = '#customize-control-' . $dependency['setting'] . ' input';
+					$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+                    $common_controller= '';
 					if ( 'select' == $type ) {
-						$controller = '#customize-control-' . $dependency['setting'] . ' select';
+						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' select';
 					} elseif ( 'radio' == $type ) {
-						$controller = '#customize-control-' . $dependency['setting'] . ' input[value="' . $dependency['value'] . '"]';
-					}
+						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input[value="' . $dependency['value'] . '"]';
+                        $common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+                    }
 
 					// The target element
-					$target = '#customize-control-' . $field['settings'];
+					$target = '#customize-control-' . $field['id'];
 					// if this is a background control then make sure we target all sub-controls
 					if ( 'background' == $field['type'] ) {
 						$target  = '#customize-control-' . $control['settings'] . '_color, ';
@@ -86,7 +91,7 @@ class Required extends EnqueueScript {
 					}
 
 					// Get the initial status
-					$value = kirki_get_option( $field['settings'] );
+					$value = kirki_get_option( $field['settings_raw'] );
 					if ( '==' == $dependency['operator'] ) {
 						$show = ( $show && ( $dependency['value'] == $value ) ) ? true : $show;
 					} elseif ( '!=' == $dependency['operator'] ) {
@@ -103,19 +108,19 @@ class Required extends EnqueueScript {
 
 					// if initial status is hidden then hide the control
 					if ( false == $show ) {
-						$script .= '$("' . $target . '").hide();';
+						$script .= "$('" . $target . "').hide();";
 					}
 
-					$script .= '$("' . $controller . '").';
+					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
-					$script .= 'if ($("' . $controller . '").';
-					$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-					$script .= '$("' . $target . '")' . $action_1 . ';';
+					$script .= "if ($('" . $controller . "').";
+					$script .= 'is(":checked") ) {';
+					$script .= "$('" . $target . "')" . $action_1 . ';';
 					$script .= '} else {';
-					$script .= '$("' . $target . '")' . $action_2 . ';';
+					$script .= "$('" . $target . "')" . $action_2 . ';';
 					$script .= '}});';
-					$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
+					$script .= ( 'checkbox' != $type ) ? "$('" . $controller . "')".'.trigger("change");' : '';
 				}
 			}
 		}
