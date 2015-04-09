@@ -55,11 +55,13 @@ class Required extends EnqueueScript {
 
 					// Set the controller used in the script
 					$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+                    $common_controller= '';
 					if ( 'select' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' select';
 					} elseif ( 'radio' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input[value="' . $dependency['value'] . '"]';
-					}
+                        $common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+                    }
 
 					// The target element
 					$target = '#customize-control-' . $field['id'];
@@ -110,19 +112,19 @@ class Required extends EnqueueScript {
 
 					// if initial status is hidden then hide the control
 					if ( false == $show ) {
-						$script .= '$("' . $target . '").hide();';
+						$script .= "$('" . $target . "').hide();";
 					}
 
-					$script .= '$("' . $controller . '").';
+					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
-					$script .= 'if ($("' . $controller . '").';
-					$script .= ( 'checkbox' == $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-					$script .= '$("' . $target . '")' . $action_1 . ';';
+					$script .= "if ($('" . $controller . "').";
+					$script .= 'is(":checked") ) {';
+					$script .= "$('" . $target . "')" . $action_1 . ';';
 					$script .= '} else {';
-					$script .= '$("' . $target . '")' . $action_2 . ';';
+					$script .= "$('" . $target . "')" . $action_2 . ';';
 					$script .= '}});';
-					$script .= ( 'checkbox' != $type ) ? '$("' . $controller . '").trigger("change");' : '';
+					$script .= ( 'checkbox' != $type ) ? "$('" . $controller . "')".'.trigger("change");' : '';
 				}
 			}
 		}
