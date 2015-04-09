@@ -75,7 +75,7 @@ function kirki_get_option( $option = '' ) {
 
 	} else {
 		// We're using theme_mods
-		$value = get_theme_mod( $option, $default );
+		$value = get_theme_mod( $option, $fields[$option]['default'] );
 
 	}
 
