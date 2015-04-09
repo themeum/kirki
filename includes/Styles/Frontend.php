@@ -67,13 +67,13 @@ class Frontend {
 
 	function setting_styles( $field, $styles, $element, $property, $units ) {
 
-		$value = kirki_get_option( $field['settings'] );
+		$value = kirki_get_option( $field['settings_raw'] );
 
 		// Color controls
 		if ( 'color' == $field['type'] ) {
 
 			$color = \Kirki_Color::sanitize_hex( $value );
-			$styles[$element][$property] = $color;
+			$styles[$element][$property] = $color . $units;
 
 		}
 
@@ -82,7 +82,7 @@ class Frontend {
 
 			if ( isset( $field['default']['color'] ) ) {
 				$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
-				$value = kirki_get_option( $field['settings'] . '_color' );
+				$value = kirki_get_option( $field['settings_raw'] . '_color' );
 				if ( 'color-alpha' == $color_mode ) {
 					$bg_color = esc_js( $value );
 				} else {
@@ -90,27 +90,27 @@ class Frontend {
 				}
 			}
 			if ( isset( $field['default']['image'] ) ) {
-				$bg_image = kirki_get_option( $field['settings'] . '_image' );
+				$bg_image = kirki_get_option( $field['settings_raw'] . '_image' );
 				$bg_image = esc_url_raw( $bg_image );
 			}
 			if ( isset( $field['default']['repeat'] ) ) {
-				$bg_repeat = kirki_get_option( $field['settings'] . '_repeat' );
+				$bg_repeat = kirki_get_option( $field['settings_raw'] . '_repeat' );
 				$bg_repeat = kirki_sanitize_bg_repeat( $bg_repeat );
 			}
 			if ( isset( $field['default']['size'] ) ) {
-				$bg_size = kirki_get_option( $field['settings'] . '_size' );
+				$bg_size = kirki_get_option( $field['settings_raw'] . '_size' );
 				$bg_size = kirki_sanitize_bg_size( $bg_size );
 			}
 			if ( isset( $field['default']['attach'] ) ) {
-				$bg_attach = kirki_get_option( $field['settings'] . '_attach' );
+				$bg_attach = kirki_get_option( $field['settings_raw'] . '_attach' );
 				$bg_attach = kirki_sanitize_bg_attach( $bg_attach );
 			}
 			if ( isset( $field['default']['position'] ) ) {
-				$bg_position = kirki_get_option( $field['settings'] . '_position' );
+				$bg_position = kirki_get_option( $field['settings_raw'] . '_position' );
 				$bg_position = kirki_sanitize_bg_position( $bg_position );
 			}
 			if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
-				$bg_opacity = kirki_get_option( $field['settings'] . '_opacity' );
+				$bg_opacity = kirki_get_option( $field['settings_raw'] . '_opacity' );
 				$bg_opacity = kirki_sanitize_number( $bg_opacity );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
@@ -122,21 +122,21 @@ class Frontend {
 			}
 
 			if ( isset( $bg_color ) ) {
-				$styles[$element]['background-color'] = $bg_color;
+				$styles[$element]['background-color'] = $bg_color . $units;
 			}
 			if ( isset( $bg_image ) && '' != $bg_image ) {
-				$styles[$element]['background-image'] = 'url("' . $bg_image . '")';
+				$styles[$element]['background-image'] = 'url("' . $bg_image . '")' . $units;
 				if ( isset( $bg_repeat ) ) {
-					$styles[$element]['background-repeat'] = $bg_repeat;
+					$styles[$element]['background-repeat'] = $bg_repeat . $units;
 				}
 				if ( isset( $bg_size ) ) {
-					$styles[$element]['background-size'] = $bg_size;
+					$styles[$element]['background-size'] = $bg_size . $units;
 				}
 				if ( isset( $bg_attach ) ) {
-					$styles[$element]['background-attachment'] = $bg_attach;
+					$styles[$element]['background-attachment'] = $bg_attach . $units;
 				}
 				if ( isset( $bg_position ) ) {
-					$styles[$element]['background-position'] = str_replace( '-', ' ', $bg_position );
+					$styles[$element]['background-position'] = str_replace( '-', ' ', $bg_position ) . $units;
 				}
 			}
 
@@ -151,7 +151,7 @@ class Frontend {
 
 			if ( 'font-family' == $property ) {
 
-				$styles[$field['output']['element']]['font-family'] = $value;
+				$styles[$field['output']['element']]['font-family'] = $value . $units;
 
 			} else if ( 'font-size' == $property ) {
 
@@ -161,7 +161,7 @@ class Frontend {
 
 			} else if ( 'font-weight' == $property ) {
 
-				$styles[$element]['font-weight'] = $value;
+				$styles[$element]['font-weight'] = $value . $units;
 
 			}
 

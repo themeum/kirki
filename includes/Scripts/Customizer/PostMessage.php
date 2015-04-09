@@ -43,7 +43,7 @@ class PostMessage extends EnqueueScript {
 		$fields = Kirki::fields()->get_all();
 		$script = '';
 		foreach ( $fields as $field ) {
-			if ( isset( $field['transport']  ) && isset( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) {
+			if ( isset( $field['transport']  ) && ! is_null( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) {
 				foreach ( $field['js_vars'] as $js_vars ) {
 					$script .= 'wp.customize( \'' . $field['settings'] . '\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';

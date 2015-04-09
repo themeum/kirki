@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class SortableControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class SortableControl extends Control {
 
 	public $type = 'sortable';
 
@@ -13,22 +15,13 @@ class SortableControl extends \WP_Customize_Control {
 
 
 	public function render_content() {
-		if ( ! is_array( $this->choices ) ) {
-			return;
-		}
-		if ( ! count( $this->choices ) ) {
+		if ( ! is_array( $this->choices ) || ! count( $this->choices ) ) {
 			return;
 		}
 
 		?>
 		<label class='kirki-sortable'>
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-			</span>
-
+			<?php $this->title(); ?>
 			<?php
 				$values = $this->value();
 				$values = $values == '' ? array_keys( $this->choices ) : $values;

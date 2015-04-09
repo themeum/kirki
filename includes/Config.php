@@ -65,7 +65,7 @@ class Config {
 				'logo_image'    => '',
 				'description'   => '',
 				'url_path'      => '',
-				'options_type'  => 'options_type',
+				'options_type'  => 'theme_mod',
 			);
 			$this->config = array_merge( $default_config, $this->config );
 
@@ -76,6 +76,13 @@ class Config {
 			// Get the translation strings.
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
 			$this->config['i18n'] = array_merge( $this->translation_strings(), $this->config['i18n'] );
+
+			if ( 'option' == $this->config['options_type'] && isset( $this->config['option_name'] ) && '' != $this->config['option_name'] ) {
+				$option_name = $this->config['option_name'];
+				$this->config['option_name'] = sanitize_key( $this->config['option_name'] );
+			} else {
+				$this->config['option_name'] = '';
+			}
 
 		}
 

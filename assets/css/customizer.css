@@ -175,7 +175,8 @@ li.customize-control {
 .customize-control-radio-buttonset label {
   padding: 5px 10px;
   background: #f7f7f7;
-  border-left: 1px solid #dedede; }
+  border-left: 1px solid #dedede;
+  line-height: 35px; }
   .customize-control-radio-buttonset label.ui-state-active {
     background: #dedede; }
   .customize-control-radio-buttonset label.ui-corner-left {

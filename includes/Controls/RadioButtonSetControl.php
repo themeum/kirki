@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class RadioButtonSetControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class RadioButtonSetControl extends Control {
 
 	public $type = 'radio-buttonset';
 
@@ -19,12 +21,7 @@ class RadioButtonSetControl extends \WP_Customize_Control {
 		$name = '_customize-radio-' . $this->id;
 
 		?>
-		<span class="customize-control-title">
-			<?php echo esc_html( $this->label ); ?>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-		</span>
+		<?php $this->title(); ?>
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $label ) : ?>

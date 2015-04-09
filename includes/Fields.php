@@ -39,6 +39,7 @@ class Fields {
 	 */
 	public function sanitize_field( $field ) {
 
+		$field['settings_raw']      = $this->sanitize_settings_raw( $field );
 		$field['default']           = $this->sanitize_default( $field );
 		$field['label']             = $this->sanitize_label( $field );
 		$field['help']              = $this->sanitize_help( $field );
@@ -93,7 +94,7 @@ class Fields {
 
 		}
 
-		return $field['type'];
+		return esc_attr( $field['type'] );
 
 	}
 
@@ -105,7 +106,7 @@ class Fields {
 	 */
 	public function sanitize_type( $field ) {
 		$config = Kirki::config()->get_all();
-		return $config['options_type'];
+		return esc_attr( $config['options_type'] );
 	}
 
 	/**
@@ -117,10 +118,33 @@ class Fields {
 	public function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
 			$config = Kirki::config()->get_all();
-			return $config['capability'];
+			return esc_attr( $config['capability'] );
 		} else {
-			return $field['capability'];
+			return esc_attr( $field['capability'] );
 		}
+	}
+
+	/**
+	 * Sanitizes the raw setting name.
+	 *
+	 * @param array the field definition
+	 * @return string
+	 */
+	public function sanitize_settings_raw( $field ) {
+
+		/**
+		 * Compatibility tweak
+		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
+		 */
+		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
+			$field['settings'] = $field['setting'];
+		}
+
+		// Sanitize the field's settings attribute.
+		$field['settings'] = sanitize_key( $field['settings'] );
+
+		return $field['settings'];
+
 	}
 
 	/**
@@ -131,12 +155,15 @@ class Fields {
 	 */
 	public function sanitize_settings( $field ) {
 
-		/**
-		 * Compatibility tweak
-		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
-		 */
-		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
-			$field['settings'] = $field['setting'];
+		$config = Kirki::config()->get_all();
+
+		// Pass this throught the sanitize_settings_raw method first.
+		$field['settings'] = $this->sanitize_settings_raw( $field );
+
+		// Checking and sanitization of config values is handled by the Config class.
+		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
+		if ( '' != $config['option_name'] ) {
+			$field['settings'] = $config['option_name'] . '[' . $field['settings'] . ']';
 		}
 
 		return $field['settings'];
@@ -164,7 +191,10 @@ class Fields {
 	}
 
 	/**
-	 * Sanitizes the control id
+	 * Sanitizes the control id.
+	 * Sanitizing the ID should happen after the 'settings' sanitization.
+	 * This way we can also properly handle cases where the option_type is set to 'option'
+	 * and we're using an array instead of individual options.
 	 *
 	 * @param array the field definition
 	 * @return string
@@ -190,9 +220,9 @@ class Fields {
 		 * Sortable controls need a serialized array as the default value.
 		 * Since we're using normal arrays to set our defaults when defining the fields, we need to serialize that value here.
 		 */
-		// if ( 'sortable' == $field['type'] && isset( $field['default'] ) && ! empty( $field['default'] ) ) {
-		// 	$field['default'] = maybe_serialize( $field['default'] );
-		// }
+		if ( 'sortable' == $field['type'] && isset( $field['default'] ) && ! empty( $field['default'] ) ) {
+			$field['default'] = maybe_serialize( $field['default'] );
+		}
 
 		return $field['default'];
 
@@ -263,6 +293,8 @@ class Fields {
 	 * @return array
 	 */
 	public function sanitize_output( $field ) {
+		// Further sanitization on the values of the array happens near the output.
+		// This just makes sure the value is defined to avoid errors.
 		return isset( $field['output'] ) ? $field['output'] : null;
 	}
 
@@ -301,6 +333,8 @@ class Fields {
 	public function sanitize_js_vars( $field ) {
 		if ( isset( $field['js_vars'] ) ) {
 			return $field['js_vars'];
+		} else {
+			return null;
 		}
 	}
 
@@ -311,6 +345,8 @@ class Fields {
 	 * @return array
 	 */
 	public function sanitize_required( $field ) {
+		// The individual options of the array get sanitized in the Required class.
+		// We're just making sure this is defined here.
 		return isset( $field['required'] ) ? $field['required'] : array();
 	}
 
@@ -331,7 +367,8 @@ class Fields {
 	}
 
 	/**
-	 *
+	 * Build the background fields.
+	 * Takes a single field with type = background and explodes it to multiple controls.
 	 */
 	public function build_background_fields( $fields ) {
 		$i18n = Kirki::i18n();
@@ -386,7 +423,7 @@ class Fields {
 						'type'        => 'select',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_',
+						'settings'    => $field['settings'] . '_repeat',
 						'priority'    => $field['priority'] + 2,
 						'choices'     => array(
 							'no-repeat' => $i18n['no-repeat'],
@@ -562,7 +599,7 @@ class Fields {
 				$sanitize_callback = 'esc_attr';
 				break;
 			case 'sortable' :
-				$sanitize_callback = 'esc_attr';
+				$sanitize_callback = 'kirki_sanitize_sortable';
 				break;
 			case 'palette' :
 				$sanitize_callback = 'kirki_sanitize_choice';

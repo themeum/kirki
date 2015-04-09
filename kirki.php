@@ -5,7 +5,7 @@ Plugin URI:    http://kirki.org
 Description:   An options framework using and extending the WordPress Customizer
 Author:        Aristeides Stathopoulos
 Author URI:    http://aristeides.com
-Version:       0.8.3
+Version:       0.8.4
 Text Domain:   kirki
 */
 

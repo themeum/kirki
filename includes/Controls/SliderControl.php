@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class SliderControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class SliderControl extends Control {
 
 	public $type = 'slider';
 
@@ -14,12 +16,7 @@ class SliderControl extends \WP_Customize_Control {
 	public function render_content() { ?>
 		<label>
 
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-			</span>
+			<?php $this->title(); ?>
 
 			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
 

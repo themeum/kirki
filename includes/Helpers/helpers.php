@@ -13,48 +13,6 @@ function kirki_array_delete( $idx, $array ) {
 }
 
 /**
- * Takes care of all the migration and compatibility issues with previous versions.
- */
-function kirki_update() {
-
-	$version = get_option( 'kirki_version' );
-	$version = ( ! $version ) ? '0' : $version;
-	// < 0.6.1 -> 0.6.2
-	if ( ! $version ) {
-		/**
-		 * In versions 0.6.0 & 0.6.1 there was a bug and some fields were saved as ID_opacity istead if ID
-		 * This will fix the wrong settings naming and save new settings.
-		 */
-		$field_ids = array();
-		$fields = Kirki::fields()->get_all();
-
-		foreach ( $fields as $field ) {
-			$field = Kirki::field()->sanitize( $field );
-
-			if ( 'background' != $field['type'] ) {
-				$field_ids[] = $field['settings'];
-			}
-
-		}
-
-		foreach ( $field_ids as $field_id ) {
-
-			if ( get_theme_mod( $field_id . '_opacity' ) && ! get_theme_mod( $field_id ) ) {
-				set_theme_mod( $field_id, get_theme_mod( $field_id . '_opacity' ) );
-			}
-
-		}
-
-	}
-
-	if ( ! $version || version_compare( Kirki::$version, $version ) ) {
-		update_option( 'kirki_version', Kirki::$version );
-	}
-
-}
-add_action( 'wp', 'kirki_update' );
-
-/**
  * Get the value of a field.
  */
 function kirki_get_option( $option = '' ) {
@@ -67,39 +25,88 @@ function kirki_get_option( $option = '' ) {
 	// Get the config.
 	$config = Kirki::config()->get_all();
 
-	/**
-	* If no setting has been defined then return all.
-	*/
-	if ( '' == $option ) {
-		if ( 'option' == $config['options_type'] ) {
-			$values = array();
+	// If we're using options instead of theme_mods,
+	// then first we'll have to get the array of all options.
+	if ( 'option' == $config['options_type'] ) {
+		$values = array();
+		if ( '' == $config['option_name'] ) {
+			// No option name is defined.
+			// Each options is saved separately in the db, so we'll manually build the array here.
 			foreach ( $fields as $field ) {
-				$values[] = get_option( $field['settings'], $field['default'] );
+				$values[$field['settings']] = get_option( $field['settings'], $field['default'] );
 			}
 		} else {
+			// An option_name has been defined so our options are all saved in an array there.
+			$values = get_option( $config['option_name'] );
+			foreach ( $fields as $field ) {
+				if ( ! isset( $values[$field['settings_raw']] ) ) {
+					$values[$field['settings_raw']] = maybe_unserialize( $field['default'] );
+				}
+			}
+		}
+	}
+
+	if ( '' == $option ) {
+		// No option has been defined so we'll get all options and return an array
+		// If we're using options then we already have the $values set above.
+		// All we need here is a fallback for theme_mods
+		if ( 'option' != $config['options_type'] ) {
+			// We're using theme_mods
 			$values = get_theme_mods();
 		}
 
+		// Early exit and return the array of all values
 		return $values;
 
 	}
+
 	// If a value has been defined then we proceed.
 
 	// Early exit if this option does not exist
-	if ( ! isset( $fields[$option] ) ) {
+	$field_id = ( 'option' == $config['options_type'] && '' != $config['option_name'] ) ? $config['option_name'] . '[' . $option . ']' : $option;
+	if ( ! isset( $fields[$field_id] ) ) {
 		return;
 	}
 
-	$option_name  = $fields[$option]['settings'];
-	$default      = $fields[$option]['default'];
-
 	if ( 'option' == $config['options_type'] ) {
-		$value = get_option( $option_name, $default );
+		// We're using options instead of theme_mods.
+		// We already have the array of values set from above so we'll use that.
+		$value  = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
+
 	} else {
-		$value = get_theme_mod( $option_name, $default );
+		// We're using theme_mods
+		$value = get_theme_mod( $option, $default );
+
 	}
 
-	return $value;
+	// Combine background options to a single array
+	if ( 'background' == $fields[$field_id]['type'] ) {
+		if ( 'option' == $config['options_type'] ) {
+			$value = array(
+				'background-color'      => isset( $values[$option . '_color'] )    ? $values[$option . '_color']    : null,
+				'background-repeat'     => isset( $values[$option . '_repeat'] )   ? $values[$option . '_repeat']   : null,
+				'background-attachment' => isset( $values[$option . '_attach'] )   ? $values[$option . '_attach']   : null,
+				'background-image'      => isset( $values[$option . '_image'] )    ? $values[$option . '_image']    : null,
+				'background-position'   => isset( $values[$option . '_position'] ) ? $values[$option . '_position'] : null,
+				'background-clip'       => isset( $values[$option . '_clip'] )     ? $values[$option . '_clip']     : null,
+				'background-size'       => isset( $values[$option . '_size'] )     ? $values[$option . '_size']     : null,
+			);
+		} else {
+			$value = array(
+				'background-color'      => get_theme_mod( $option . '_color',    $fields[$option . '_color']['default'] ),
+				'background-repeat'     => get_theme_mod( $option . '_repeat',   $fields[$option . '_repeat']['default'] ),
+				'background-attachment' => get_theme_mod( $option . '_attach',   $fields[$option . '_attach']['default'] ),
+				'background-image'      => get_theme_mod( $option . '_image',    $fields[$option . '_image']['default'] ),
+				'background-position'   => get_theme_mod( $option . '_position', $fields[$option . '_position']['default'] ),
+				'background-clip'       => get_theme_mod( $option . '_clip',     $fields[$option . '_clip']['default'] ),
+				'background-size'       => get_theme_mod( $option . '_size',     $fields[$option . '_size']['default'] ),
+			);
+		}
+	}
+
+	// Return the single value.
+	// Pass it through maybe_unserialize so we're sure we get a proper value.
+	return maybe_unserialize( $value );
 
 }
 

@@ -29,6 +29,12 @@ function kirki_sanitize_number( $value ) {
 function kirki_sanitize_choice( $input, $setting ) {
 
 	global $wp_customize;
+	$config = Kirki::config()->get_all();
+
+	if ( '' != $config['option_name'] ) {
+		return sanitize_key( $input );
+	}
+
 	$field = $wp_customize->get_control( $setting->id );
 
 	return ( array_key_exists( $input, $field->choices ) ) ? $input : $setting->default;
@@ -111,6 +117,19 @@ function kirki_sanitize_bg_position( $value ) {
 
 }
 
+/**
+ * Sanitize sortable controls
+ *
+ * @since 0.8.3
+ */
+
+function kirki_sanitize_sortable( $value ) {
+	if ( is_serialized( $value ) ) {
+		return $value;
+	} else {
+		return serialize( $value );
+	}
+}
 /**
  * DOES NOT SANITIZE ANYTHING.
  *

@@ -2,7 +2,9 @@
 
 namespace Kirki\Controls;
 
-class ColorAlphaControl extends \WP_Customize_Control {
+use Kirki\Control;
+
+class ColorAlphaControl extends Control {
 
 	public $type = 'color-alpha';
 	public $palette = true;
@@ -18,8 +20,8 @@ class ColorAlphaControl extends \WP_Customize_Control {
 
 	public function render_content() { ?>
 		<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<input type="text" data-palette="<?php echo $this->palette; ?>" data-default-color="<?php echo $this->default; ?>" value="<?php echo intval( $this->value() ); ?>" class="kirki-color-control" <?php $this->link(); ?>  />
+			<?php $this->title(); ?>
+			<input type="text" data-palette="<?php echo esc_textarea( $this->palette ); ?>" data-default-color="<?php echo $this->default; ?>" value="<?php echo intval( $this->value() ); ?>" class="kirki-color-control" <?php $this->link(); ?>  />
 		</label>
 	<?php }
 }
