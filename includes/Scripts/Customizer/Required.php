@@ -51,13 +51,13 @@ class Required extends EnqueueScript {
 
 					// Set the controller used in the script
 					$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
-                    $common_controller= '';
+          $common_controller= '';
 					if ( 'select' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' select';
 					} elseif ( 'radio' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input[value="' . $dependency['value'] . '"]';
-                        $common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
-                    }
+            $common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+          }
 
 					// The target element
 					$target = '#customize-control-' . $field['id'];
@@ -111,12 +111,11 @@ class Required extends EnqueueScript {
 						$script .= '$("' . $target . '").hide();';
 					}
 
-					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
+					$script .= "$('" . (( 'radio' != $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
 					$script .= "if ($('" . $controller . "').";
-					// $script .= ( 'select' != $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
-					$script .= ( 'select' != $type ) ? 'is(":checked") ) {' : 'find(":selected").val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
+					$script .= ( 'select' != $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
 					$script .= "$('" . $target . "')" . $action_1 . ';';
 					$script .= '} else {';
 					$script .= "$('" . $target . "')" . $action_2 . ';';
