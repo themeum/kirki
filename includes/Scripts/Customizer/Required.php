@@ -91,31 +91,32 @@ class Required extends EnqueueScript {
 					}
 
 					// Get the initial status
-					$value = kirki_get_option( $field['settings_raw'] );
+					$value = kirki_get_option( $dependency['setting'] );
 					if ( '==' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] == $value ) ) ? true : $show;
+						$show = ( $dependency['value'] == $value ) ? true : $show;
 					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] != $value ) ) ? true : $show;
+						$show = ( $dependency['value'] != $value ) ? true : $show;
 					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] >= $value ) ) ? true : $show;
+						$show = ( $dependency['value'] >= $value ) ? true : $show;
 					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] <= $value ) ) ? true : $show;
+						$show = ( $dependency['value'] <= $value ) ? true : $show;
 					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] > $value ) ) ? true : $show;
+						$show = ( $dependency['value'] > $value ) ? true : $show;
 					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $show && ( $dependency['value'] < $value ) ) ? true : $show;
+						$show = ( $dependency['value'] < $value ) ? true : $show;
 					}
 
 					// if initial status is hidden then hide the control
 					if ( false == $show ) {
-						$script .= "$('" . $target . "').hide();";
+						$script .= '$("' . $target . '").hide();';
 					}
 
 					$script .= "$('" . (( 'checkbox' == $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
 					$script .= "if ($('" . $controller . "').";
-					$script .= 'is(":checked") ) {';
+					// $script .= ( 'select' != $type ) ? 'is(":checked") ) {' : 'val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
+					$script .= ( 'select' != $type ) ? 'is(":checked") ) {' : 'find(":selected").val() ' . $dependency['operator'] . ' "' . $dependency['value'] . '") {';
 					$script .= "$('" . $target . "')" . $action_1 . ';';
 					$script .= '} else {';
 					$script .= "$('" . $target . "')" . $action_2 . ';';
