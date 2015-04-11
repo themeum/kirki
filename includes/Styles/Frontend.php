@@ -84,7 +84,7 @@ class Frontend {
 				$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 				$value = kirki_get_option( $field['settings_raw'] . '_color' );
 				if ( 'color-alpha' == $color_mode ) {
-					$bg_color = esc_js( $value );
+					$bg_color = kirki_sanitize_rgba( $value );
 				} else {
 					$bg_color = \Kirki_Color::sanitize_hex( $value );
 				}

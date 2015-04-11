@@ -551,7 +551,7 @@ class Fields {
 				$sanitize_callback = 'sanitize_hex_color';
 				break;
 			case 'color-alpha' :
-				$sanitize_callback = 'esc_js';
+				$sanitize_callback = 'kirki_sanitize_rgba';
 				break;
 			case 'image' :
 				$sanitize_callback = 'esc_url_raw';

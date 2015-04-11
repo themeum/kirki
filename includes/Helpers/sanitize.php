@@ -130,6 +130,38 @@ function kirki_sanitize_sortable( $value ) {
 		return serialize( $value );
 	}
 }
+
+/**
+ * Sanitize RGBA colors
+ *
+ * @since 0.8.5
+ */
+function kirki_sanitize_rgba( $value ) {
+
+	// If empty or an array return transparent
+	if ( empty( $value ) || is_array( $value ) ) {
+		return 'rgba(0,0,0,0)';
+	}
+
+	// If string does not start with 'rgba', then treat as hex
+	// sanitize the hex color and finally convert hex to rgba
+	if ( false === strpos( $value, 'rgba' ) ) {
+		return Kirki_Color::get_rgba( Kirki_Color::sanitize_hex( $value ) );
+	}
+
+	// By now we know the string is formatted as an rgba color so we need to further sanitize it.
+	$value = str_replace( array( 'rgba', '(', ')' ), '', $value );
+	$colors = explode( ',', $value );
+
+	$red     = ( isset( $colors[0] ) ) ? intval( $colors[0] ) : '0';
+	$green   = ( isset( $colors[1] ) ) ? intval( $colors[1] ) : '0';
+	$blue    = ( isset( $colors[2] ) ) ? intval( $colors[2] ) : '0';
+	$opacity = ( isset( $colors[3] ) ) ? intval( $colors[3] ) : '0';
+
+	return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $opacity . ')';
+
+}
+
 /**
  * DOES NOT SANITIZE ANYTHING.
  *
