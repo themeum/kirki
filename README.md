@@ -1,12 +1,12 @@
 # [Kirki](http://kirki.org) #
 
-Contributors: aristath, fovoc
-Tags: customizer, options famework, theme mods
-Donate link: http://kirki.org/
-Requires at least: 4.0
-Tested up to: 4.2
-Stable tag: 0.8.4
-License: GPLv2 or later
+Contributors: aristath, fovoc<br>
+Tags: customizer, options famework, theme mods<br>
+Donate link: http://kirki.org/<br>
+Requires at least: 4.0<br>
+Tested up to: 4.2<br>
+Stable tag: 0.8.4<br>
+License: GPLv2 or later<br>
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Tired of all the bloated options frameworks? You can use the WordPress Customizer instead, and extend it using Kirki!
