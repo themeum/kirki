@@ -58,6 +58,10 @@ For configuration instructions please visit http://kirki.org/#configuration
 **Method 2: Embed in your theme**
 Please visit http://kirki.org for documentation and instructions.
 
+== Sample Theme ==
+
+To get an idea on how to include Kirki in your next project, a [sample theme](https://github.com/aristath/kirki/wiki/Sample-Theme-with-Kirki) has been created.
+
 == Changelog ==
 
 = 0.8.4 =
