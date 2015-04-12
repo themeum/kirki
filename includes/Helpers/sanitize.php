@@ -150,14 +150,8 @@ function kirki_sanitize_rgba( $value ) {
 	}
 
 	// By now we know the string is formatted as an rgba color so we need to further sanitize it.
-	$value = str_replace( array( 'rgba', '(', ')' ), '', $value );
-	$colors = explode( ',', $value );
-
-	$red     = ( isset( $colors[0] ) ) ? intval( $colors[0] ) : '0';
-	$green   = ( isset( $colors[1] ) ) ? intval( $colors[1] ) : '0';
-	$blue    = ( isset( $colors[2] ) ) ? intval( $colors[2] ) : '0';
-	$opacity = ( isset( $colors[3] ) ) ? intval( $colors[3] ) : '0';
-
+	$value  = str_replace( ' ', '', $value );
+	sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
 	return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $opacity . ')';
 
 }
