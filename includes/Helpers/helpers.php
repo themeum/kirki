@@ -93,13 +93,13 @@ function kirki_get_option( $option = '' ) {
 			);
 		} else {
 			$value = array(
-				'background-color'      => get_theme_mod( $option . '_color',    $fields[$option . '_color']['default'] ),
-				'background-repeat'     => get_theme_mod( $option . '_repeat',   $fields[$option . '_repeat']['default'] ),
-				'background-attachment' => get_theme_mod( $option . '_attach',   $fields[$option . '_attach']['default'] ),
-				'background-image'      => get_theme_mod( $option . '_image',    $fields[$option . '_image']['default'] ),
-				'background-position'   => get_theme_mod( $option . '_position', $fields[$option . '_position']['default'] ),
-				'background-clip'       => get_theme_mod( $option . '_clip',     $fields[$option . '_clip']['default'] ),
-				'background-size'       => get_theme_mod( $option . '_size',     $fields[$option . '_size']['default'] ),
+				'background-color'      => isset( $fields[$field_id]['default']['color'] )    ? get_theme_mod( $option . '_color',    $fields[$field_id]['default']['color'] )    : null,
+				'background-repeat'     => isset( $fields[$field_id]['default']['repeat'] )   ? get_theme_mod( $option . '_repeat',   $fields[$field_id]['default']['repeat'] )   : null,
+				'background-attachment' => isset( $fields[$field_id]['default']['attach'] )   ? get_theme_mod( $option . '_attach',   $fields[$field_id]['default']['attach'] )   : null,
+				'background-image'      => isset( $fields[$field_id]['default']['image'] )    ? get_theme_mod( $option . '_image',    $fields[$field_id]['default']['image'] )    : null,
+				'background-position'   => isset( $fields[$field_id]['default']['position'] ) ? get_theme_mod( $option . '_position', $fields[$field_id]['default']['position'] ) : null,
+				'background-clip'       => isset( $fields[$field_id]['default']['clip'] )     ? get_theme_mod( $option . '_clip',     $fields[$field_id]['default']['clip'] )     : null,
+				'background-size'       => isset( $fields[$field_id]['default']['size'] )     ? get_theme_mod( $option . '_size',     $fields[$field_id]['default']['size'] )     : null,
 			);
 		}
 	}
@@ -134,3 +134,79 @@ function kirki_load_textdomain() {
 	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
 }
 add_action( 'plugins_loaded', 'kirki_load_textdomain' );
+
+/**
+ * Build the variables.
+ * @return string
+ */
+function kirki_compiler_variables() {
+
+	$config = Kirki::config()->get_all();
+	$fields = Kirki::fields()->get_all();
+
+	$compiler_mode = '';
+	if ( ! empty( $config['compiler'] && '' != $config['compiler']['mode'] ) && '' != $config['compiler']['filter'] ) {
+		$compiler_mode = $config['compiler']['mode'];
+	}
+
+	/**
+	 * Determine the prefix that will be used depending on the compiler mode.
+	 */
+	switch ( $compiler_mode ) {
+
+		case 'scss' :
+			$prefix = '$';
+			break;
+
+		case 'SCSS' :
+			$prefix = '$';
+			break;
+
+		case 'less' :
+			$prefix = '@';
+			break;
+
+		case 'LESS' :
+			$prefix = '@';
+			break;
+
+		default :
+			$prefix = '';
+			break;
+
+	}
+
+	$variables = array();
+
+	foreach ( $fields as $field ) {
+
+		if ( '' != $field['variable'] ) {
+			// The variable string is sanitized in the Field class
+			// No need to re-sanitize it here.
+			$variables[$field['variable']] = kirki_get_option( $field['settings'] );
+		}
+
+	}
+
+	$variables_final = '';
+	foreach ( $variables as $variable_name => $value ) {
+		$variables_final .= $this->prefix . $variable_name . ' : ' . $value . '; ';
+	}
+
+	return $variables_final;
+
+}
+
+
+function kirki_variables_filter( $variables ) {
+
+	$config = Kirki::config()->get_all();
+	if ( ! isset( $config['compiler']['filter'] ) ) {
+		return;
+	}
+	$filter = $config['compiler']['filter'];
+
+	add_filter( $filter, 'kirki_compiler_variables' );
+
+}
+add_filter( 'wp', 'kirki_variables_filter' );

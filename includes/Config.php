@@ -42,7 +42,7 @@ class Config {
 			return $cfg[$key];
 		}
 
-		throw new RuntimeException( sprintf( "Configuration key %s is mandatory and has not been specified", $key ) );
+		throw new RuntimeException( sprintf( __( 'Configuration key %s is mandatory and has not been specified', 'kirki' ), $key ) );
 
 	}
 
@@ -66,12 +66,17 @@ class Config {
 				'description'   => '',
 				'url_path'      => '',
 				'options_type'  => 'theme_mod',
+				'compiler'      => array(),
 			);
 			$this->config = array_merge( $default_config, $this->config );
 
 			$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
 			$this->config['description'] = esc_html( $this->config['description'] );
 			$this->config['url_path']    = esc_url_raw( $this->config['url_path'] );
+			$this->config['compiler']    = array(
+				'mode'   => isset( $this->config['compiler']['mode'] ) ? sanitize_key( $this->config['compiler']['mode'] ) : '',
+				'filter' => isset( $this->config['compiler']['filter'] ) ? esc_html( $this->config['compiler']['filter'] ) : '',
+			);
 
 			// Get the translation strings.
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
