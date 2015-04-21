@@ -57,6 +57,7 @@ class Fields {
 		$field['js_vars']           = $this->sanitize_js_vars( $field );
 		$field['id']                = $this->sanitize_id( $field );
 		$field['capability']        = $this->sanitize_capability( $field );
+		$field['variable']          = $this->sanitize_variable( $field );
 
 		return $field;
 
@@ -107,6 +108,16 @@ class Fields {
 	public function sanitize_type( $field ) {
 		$config = Kirki::config()->get_all();
 		return esc_attr( $config['options_type'] );
+	}
+
+	/**
+	 * Sanitizes the setting variable.
+	 *
+	 * @param array the field definition
+	 * @return string.
+	 */
+	public function sanitize_variable( $field ) {
+		return ( isset( $field['variable'] ) ) ? esc_attr( $field['variable'] ) : '';
 	}
 
 	/**
