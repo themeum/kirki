@@ -15,7 +15,7 @@ function kirki_sanitize_checkbox( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_number( $value ) {
-	return ( is_int( $value ) || is_float( $value ) ) ? $value : intval( $value );
+	return ( is_numeric( $value ) ) ? $value : intval( $value );
 }
 
 /**
