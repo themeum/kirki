@@ -16,15 +16,23 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
-// Include helper files
-include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-color.php' );
-include_once( KIRKI_PATH . '/includes/Helpers/libraries/class-kirki-colourlovers.php' );
-include_once( KIRKI_PATH . '/includes/Helpers/deprecated.php' );
-include_once( KIRKI_PATH . '/includes/Helpers/sanitize.php' );
-include_once( KIRKI_PATH . '/includes/Helpers/helpers.php' );
 
-// Include the main kirki class
-include_once( KIRKI_PATH . '/includes/Kirki.php' );
+include_once( KIRKI_PATH . '/includes/class-kirki.php' );
+
+function kirki_autoload_classes( $class_name ) {
+	if ( stripos( $class_name, 'Kirki' ) === 0 ) {
+		$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
+		if ( file_exists( $class_path ) ) {
+			include $class_path;
+		}
+	}
+}
+spl_autoload_register( 'kirki_autoload_classes' );
+
+// Include helper files
+include_once( KIRKI_PATH . '/includes/deprecated.php' );
+include_once( KIRKI_PATH . '/includes/sanitize.php' );
+include_once( KIRKI_PATH . '/includes/helpers.php' );
 
 // Make sure the class is instanciated
 Kirki::get_instance();
