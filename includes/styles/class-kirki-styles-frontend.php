@@ -98,9 +98,12 @@ class Kirki_Styles_Frontend {
 	/**
 	 * Get the styles for a single field.
 	 */
-	public function setting_styles( $field, $styles, $element, $property, $units ) {
+	public function setting_styles( $field, $styles = '', $element = '', $property = '', $units = '', $prefix = '', $suffix = '', $callback = false ) {
 
-		$value = kirki_get_option( $field['settings_raw'] );
+		$value   = kirki_get_option( $field['settings_raw'] );
+		$value   = ( $callback ) ? call_user_func( $callback, $value ) : $value;
+		$element = $prefix . $element;
+		$units   = $units . $suffix;
 
 		// Color controls
 		if ( 'color' == $field['type'] ) {
@@ -238,12 +241,15 @@ class Kirki_Styles_Frontend {
 					if ( is_string( $field['output'] ) ) {
 						$element = $field['output'];
 					} else {
-						$element  = isset( $field['output']['element'] )  ? $field['output']['element'] : '';
+						$element  = isset( $field['output']['element'] )  ? $field['output']['element']  : '';
 						$property = isset( $field['output']['property'] ) ? $field['output']['property'] : '';
 						$units    = isset( $field['output']['units'] )    ? $field['output']['units']    : '';
+						$prefix   = isset( $field['output']['prefix'] )   ? $field['output']['prefix']   : '';
+						$suffix   = isset( $field['output']['suffix'] )   ? $field['output']['suffix']   : '';
+						$callback = isset( $field['output']['callback'] ) ? $field['output']['callback'] : '';
 					}
 
-					$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
+					$styles = $this->setting_styles( $field, $styles, $element, $property, $units, $prefix, $suffix, $callback );
 
 				} else { // Multiple styles set
 
@@ -252,12 +258,15 @@ class Kirki_Styles_Frontend {
 						if ( ! array( $style ) ) {
 							$element = $style;
 						} else {
-							$element  = isset( $style['element'] )  ? $style['element'] : '';
+							$element  = isset( $style['element'] )  ? $style['element']  : '';
 							$property = isset( $style['property'] ) ? $style['property'] : '';
 							$units    = isset( $style['units'] )    ? $style['units']    : '';
+							$prefix   = isset( $style['prefix'] )   ? $style['prefix']   : '';
+							$suffix   = isset( $style['suffix'] )   ? $style['suffix']   : '';
+							$callback = isset( $style['callback'] ) ? $style['callback'] : '';
 						}
 
-						$styles = $this->setting_styles( $field, $styles, $element, $property, $units );
+						$styles = $this->setting_styles( $field, $styles, $element, $property, $units, $prefix, $suffix, $callback );
 
 					}
 
