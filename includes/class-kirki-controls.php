@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Parses the fields and creates the new controls depending on the field type.
+ */
 class Kirki_Controls {
 
 	public function __construct() {

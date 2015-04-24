@@ -16,9 +16,13 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
-
+// Include the main plugin class
 include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 
+/**
+ * The Kirki class autoloader.
+ * Finds the path to a class that we're requiring and includes the file.
+ */
 function kirki_autoload_classes( $class_name ) {
 
 	if ( 0 === stripos( $class_name, 'Kirki' ) ) {
@@ -37,6 +41,7 @@ function kirki_autoload_classes( $class_name ) {
 	}
 
 }
+// Run the autoloader
 spl_autoload_register( 'kirki_autoload_classes' );
 
 // Include helper files

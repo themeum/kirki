@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * The field builder class.
+ */
 class Kirki_Builder {
 
 	public $settings;

@@ -68,9 +68,13 @@ class Kirki_Config {
 			);
 			$this->config = array_merge( $default_config, $this->config );
 
+			// The logo image
 			$this->config['logo_image']  = esc_url_raw( $this->config['logo_image'] );
+			// The customizer description
 			$this->config['description'] = esc_html( $this->config['description'] );
+			// The URL path to Kirki. Used when Kirki is embedded in a theme for example.
 			$this->config['url_path']    = esc_url_raw( $this->config['url_path'] );
+			// Compiler configuration. Still experimental and under construction.
 			$this->config['compiler']    = array(
 				'mode'   => isset( $this->config['compiler']['mode'] ) ? sanitize_key( $this->config['compiler']['mode'] ) : '',
 				'filter' => isset( $this->config['compiler']['filter'] ) ? esc_html( $this->config['compiler']['filter'] ) : '',
@@ -80,6 +84,7 @@ class Kirki_Config {
 			$this->config['i18n'] = ( ! isset( $this->config['i18n'] ) ) ? array() : $this->config['i18n'];
 			$this->config['i18n'] = array_merge( $this->translation_strings(), $this->config['i18n'] );
 
+			// If we're using options instead of theme_mods then sanitize the option name & type here.
 			if ( 'option' == $this->config['options_type'] && isset( $this->config['option_name'] ) && '' != $this->config['option_name'] ) {
 				$option_name = $this->config['option_name'];
 				$this->config['option_name'] = sanitize_key( $this->config['option_name'] );

@@ -2,9 +2,9 @@
 
 /**
  * Class FontManager
- * @package Kirki\Fonts
+ * @package Kirki
  *
- *          Provides access to fonts available for selection in the controls
+ * Provides access to fonts available for selection in the controls
  */
 class Kirki_Fonts_Font_Registry {
 

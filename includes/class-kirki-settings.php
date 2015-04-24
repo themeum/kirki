@@ -3,7 +3,8 @@
 class Kirki_Settings {
 
 	/**
-	 * Add a setting
+	 * Add a setting.
+	 * This is just a wrapper for the 'add_setting' method and takes care of any extra processing.
 	 */
 	public function add( $wp_customize, $field ) {
 
@@ -17,6 +18,9 @@ class Kirki_Settings {
 
 	}
 
+	/**
+	 * Creates the setting that will be later used by the controls in the customizer.
+	 */
 	public function add_setting( $wp_customize, $field, $id_override = null, $default_override = null, $callback = null ) {
 
 		$id       = ( ! is_null( $id_override ) )      ? $id_override      : $field['settings'];

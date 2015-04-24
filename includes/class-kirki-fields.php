@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Sanitizes all variables from our fields and separates complex fields to their sub-fields.
+ */
 class Kirki_Fields {
 
 	/** @var array The controls */
