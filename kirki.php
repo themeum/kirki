@@ -20,12 +20,22 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 
 function kirki_autoload_classes( $class_name ) {
-	if ( stripos( $class_name, 'Kirki' ) === 0 ) {
-		$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
+
+	if ( 0 === stripos( $class_name, 'Kirki' ) ) {
+
+		$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls' : '';
+		$foldername = ( 0 === stripos( $class_name, 'Kirki_Scripts' ) )   ? 'scripts'  : $foldername;
+		$foldername = ( 0 === stripos( $class_name, 'Kirki_Styles' ) )    ? 'styles'   : $foldername;
+
+		$foldername = ( '' != $foldername ) ? $foldername . DIRECTORY_SEPARATOR : '';
+
+		$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $foldername . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 		if ( file_exists( $class_path ) ) {
 			include $class_path;
 		}
+
 	}
+
 }
 spl_autoload_register( 'kirki_autoload_classes' );
 
