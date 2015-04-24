@@ -137,76 +137,37 @@ add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 
 /**
  * Build the variables.
+ *
  * @return string
  */
-// function kirki_compiler_variables() {
-//
-// 	$config = Kirki::config()->get_all();
-// 	$fields = Kirki::fields()->get_all();
-//
-// 	$compiler_mode = '';
-// 	if ( ! empty( $config['compiler'] && '' != $config['compiler']['mode'] ) && '' != $config['compiler']['filter'] ) {
-// 		$compiler_mode = $config['compiler']['mode'];
-// 	}
-//
-// 	/**
-// 	 * Determine the prefix that will be used depending on the compiler mode.
-// 	 */
-// 	switch ( $compiler_mode ) {
-//
-// 		case 'scss' :
-// 			$prefix = '$';
-// 			break;
-//
-// 		case 'SCSS' :
-// 			$prefix = '$';
-// 			break;
-//
-// 		case 'less' :
-// 			$prefix = '@';
-// 			break;
-//
-// 		case 'LESS' :
-// 			$prefix = '@';
-// 			break;
-//
-// 		default :
-// 			$prefix = '';
-// 			break;
-//
-// 	}
-//
-// 	$variables = array();
-//
-// 	foreach ( $fields as $field ) {
-//
-// 		if ( '' != $field['variable'] ) {
-// 			// The variable string is sanitized in the Field class
-// 			// No need to re-sanitize it here.
-// 			$variables[$field['variable']] = kirki_get_option( $field['settings'] );
-// 		}
-//
-// 	}
-//
-// 	$variables_final = '';
-// 	foreach ( $variables as $variable_name => $value ) {
-// 		$variables_final .= $this->prefix . $variable_name . ' : ' . $value . '; ';
-// 	}
-//
-// 	return $variables_final;
-//
-// }
+function kirki_get_variables() {
 
+	// Get all fields
+	$fields = Kirki::fields()->get_all();
 
-// function kirki_variables_filter( $variables ) {
-//
-// 	$config = Kirki::config()->get_all();
-// 	if ( ! isset( $config['compiler']['filter'] ) ) {
-// 		return;
-// 	}
-// 	$filter = $config['compiler']['filter'];
-//
-// 	add_filter( $filter, 'kirki_compiler_variables' );
-//
-// }
-// add_filter( 'wp', 'kirki_variables_filter' );
+	$variables = array();
+
+	foreach ( $fields as $field ) {
+
+		if ( '' != $field['variable_name'] ) {
+
+			// The variable string is sanitized in the Field class
+			// No need to re-sanitize it here.
+			if ( $field['variable_callback'] ) {
+				$variables[$field['variable_name']] = call_user_func( $field['variable_callback'], kirki_get_option( $field['settings'] ) );
+			} else {
+				$variables[$field['variable_name']] = kirki_get_option( $field['settings'] );
+			}
+
+		}
+
+	}
+
+	$variables_final = '';
+	foreach ( $variables as $variable_name => $value ) {
+		$variables_final .= $variable_name . ': ' . $value . '; ';
+	}
+
+	return $variables_final;
+
+}

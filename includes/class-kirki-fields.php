@@ -56,7 +56,8 @@ class Kirki_Fields {
 		$field['js_vars']           = $this->sanitize_js_vars( $field );
 		$field['id']                = $this->sanitize_id( $field );
 		$field['capability']        = $this->sanitize_capability( $field );
-		$field['variable']          = $this->sanitize_variable( $field );
+		$field['variable_name']     = $this->sanitize_variable_name( $field );
+		$field['variable_callback'] = $this->sanitize_variable_callback( $field );
 
 		return $field;
 
@@ -115,8 +116,18 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string.
 	 */
-	public function sanitize_variable( $field ) {
-		return ( isset( $field['variable'] ) ) ? esc_attr( $field['variable'] ) : '';
+	public function sanitize_variable_name( $field ) {
+		return ( isset( $field['variable_name'] ) ) ? esc_attr( $field['variable_name'] ) : '';
+	}
+
+	/**
+	 * Sanitizes the variable callback.
+	 *
+	 * @param	string	the function name of the callback
+	 * @return	mixed	if the function is callable then returns the function name, else false.
+	 */
+	public function sanitize_variable_callback( $field ) {
+		return ( isset( $field['variable_callback'] ) && is_callable( $field['variable_callback'] ) ) ? $field['variable_callback'] : false;
 	}
 
 	/**
