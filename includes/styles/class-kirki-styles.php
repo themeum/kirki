@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Instantiates all styling-related classes
+ */
 class Kirki_Styles {
 
 	public function __construct() {

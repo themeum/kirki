@@ -1,44 +1,79 @@
 <?php
 
+/**
+ * Generates the styles for the frontend.
+ * Handles the 'output' argument of fields
+ */
 class Kirki_Styles_Frontend {
 
-	function __construct() {
+	public function __construct() {
+
 		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
+
 	}
 
+	/**
+	 * Detect if we're using the 'output' argument in one of our fields.
+	 *
+	 * @return	boolean
+	 */
+	public function uses_output() {
 
-	function enqueue_styles() {
+		// Get all fields
+		$fields = Kirki::fields()->get_all();
+		// Are we using 'output' in any of our fields?
+		$uses_output = 'no';
+		foreach( $fields as $field ) {
+			if ( 'no' == $uses_output && null != $field['output'] ) {
+				$uses_output = 'yes';
+			}
+		}
+
+		// Return true if we're using 'output' in our fields else returns false.
+		return ( 'yes' == $uses_output ) ? true : false;
+
+	}
+
+	/**
+	 * Add the inline styles
+	 */
+	public function enqueue_styles() {
+
+		// Early exit if we're not using output
+		if ( ! $this->uses_output() ) {
+			return;
+		}
 		wp_add_inline_style( Kirki::config()->getOrThrow( 'stylesheet_id' ), $this->styles_parse() );
-	}
 
+	}
 
 	/**
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
-	function frontend_styles() {
-		$config = Kirki::config()->get_all();
-		$fields = Kirki::fields()->get_all();
+	public function frontend_styles() {
 
-		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
-
-		foreach( $fields as $field ) {
-			if ( isset( $field['output'] ) ) {
-				$uses_output = true;
-			}
+		// Early exit if we're not using output
+		if ( ! $this->uses_output() ) {
+			return;
 		}
 
-		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+		$config = Kirki::config()->get_all();
 
-		if ( isset( $uses_output )  && $uses_output && $kirki_stylesheet === 'kirki-styles' ) {
-			wp_enqueue_style( 'kirki-styles', trailingslashit( $root ) . 'assets/css/kirki-styles.css', NULL, NULL );
+		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
+		$root_url = ( '' != $config['url_path'] ) ? Kirki::config()->getOrThrow( 'url_path' ) : KIRKI_URL;
+
+		if ( 'kirki-styles' == $kirki_stylesheet ) {
+			wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
 	}
 
-
-	function styles_parse() {
+	/**
+	 * Gets the array of generated styles and creates the minimized, inline CSS
+	 */
+	public function styles_parse() {
 
 		$styles = $this->loop_controls();
 		$css = '';
@@ -60,8 +95,10 @@ class Kirki_Styles_Frontend {
 
 	}
 
-
-	function setting_styles( $field, $styles, $element, $property, $units ) {
+	/**
+	 * Get the styles for a single field.
+	 */
+	public function setting_styles( $field, $styles, $element, $property, $units ) {
 
 		$value = kirki_get_option( $field['settings_raw'] );
 
@@ -171,8 +208,10 @@ class Kirki_Styles_Frontend {
 
 	}
 
-
-	function loop_controls() {
+	/**
+	 * loop through all fields and create an array of style definitions
+	 */
+	public function loop_controls() {
 
 		$fields = Kirki::fields()->get_all();
 		$styles   = array();
