@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates a toggle control
+ */
 class Kirki_Controls_Toggle_Control extends Kirki_Control {
 
 	public $type = 'toggle';

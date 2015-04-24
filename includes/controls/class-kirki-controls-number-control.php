@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create a simple number control
+ */
 class Kirki_Controls_Number_Control extends WP_Customize_Control {
 
 	public $type = 'number';

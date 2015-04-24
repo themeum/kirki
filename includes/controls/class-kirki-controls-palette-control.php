@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create a palette control.
+ */
 class Kirki_Controls_Palette_Control extends Kirki_Control {
 
 	public $type = 'palette';

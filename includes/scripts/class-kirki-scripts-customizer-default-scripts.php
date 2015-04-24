@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Scripts_Customizer_Dependencies extends Kirki_Scripts_Enqueue_Script {
+class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Script {
 
 	/**
 	 * Enqueue the scripts required.

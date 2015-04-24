@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Create a jQuery slider control.
+ * TODO: Migrate to an HTML5 range control. Range control are hard to style 'cause they don't display the value
+ */
 class Kirki_Controls_Slider_Control extends Kirki_Control {
 
 	public $type = 'slider';

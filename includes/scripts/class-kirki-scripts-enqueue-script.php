@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This is just an abstract class that enqueues scripts.
+ * Other classes can extend this and skip the __construct since it's all handled here.
+ */
 abstract class Kirki_Scripts_Enqueue_Script extends Kirki_Scripts_Registry {
 
 	function __construct() {

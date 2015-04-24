@@ -7,7 +7,9 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 	 */
 	function customize_controls_print_footer_scripts() {
 
+		// Get an array of all our fields
 		$fields = Kirki::fields()->get_all();
+		// Get the config options
 		$config = Kirki::config()->get_all();
 
 		// Early exit if no controls are defined
@@ -45,13 +47,16 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 
 					// Set the controller used in the script
 					$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
-          $common_controller= '';
+					$common_controller= '';
+					// Se the controller for select-type controls
 					if ( 'select' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' select';
-					} elseif ( 'radio' == $type ) {
+					}
+					// Set the controller for radio-type controls
+					elseif ( 'radio' == $type ) {
 						$controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input[value="' . $dependency['value'] . '"]';
-            $common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
-          }
+						$common_controller = '#customize-control-' . $fields[$dependency['setting']]['id'] . ' input';
+					}
 
 					// The target element
 					$target = '#customize-control-' . $field['id'];
@@ -65,6 +70,7 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 						$target .= '#customize-control-' . $control['settings'] . '_attach';
 					}
 
+					// If no operator has been defined, fallback to '=='
 					if ( ! isset( $dependency['operator'] ) ) {
 						$dependency['operator'] = '==';
 					}
@@ -86,18 +92,28 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 
 					// Get the initial status
 					$value = kirki_get_option( $dependency['setting'] );
-					if ( '==' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] == $value ) ? true : $show;
-					} elseif ( '!=' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] != $value ) ? true : $show;
-					} elseif ( '>=' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] >= $value ) ? true : $show;
-					} elseif ( '<=' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] <= $value ) ? true : $show;
-					} elseif ( '>' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] > $value ) ? true : $show;
-					} elseif ( '<' == $dependency['operator'] ) {
-						$show = ( $dependency['value'] < $value ) ? true : $show;
+					switch ( $dependency['operator'] ) {
+						case '==' :
+							$show = ( $dependency['value'] == $value ) ? true : $show;
+							break;
+						case '!=' :
+							$show = ( $dependency['value'] != $value ) ? true : $show;
+							break;
+						case '>=' :
+							$show = ( $dependency['value'] >= $value ) ? true : $show;
+							break;
+						case '<=' :
+							$show = ( $dependency['value'] <= $value ) ? true : $show;
+							break;
+						case '>' :
+							$show = ( $dependency['value'] > $value )  ? true : $show;
+							break;
+						case '<' :
+							$show = ( $dependency['value'] < $value )  ? true : $show;
+							break;
+						default :
+							$show = ( $dependency['value'] == $value ) ? true : $show;
+
 					}
 
 					// if initial status is hidden then hide the control
@@ -105,6 +121,7 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 						$script .= '$("' . $target . '").hide();';
 					}
 
+					// Create the actual script
 					$script .= "$('" . (( 'radio' != $type ) ? $controller : $common_controller) . "').";
 					$script .= ( 'checkbox' == $type ) ? 'click' : 'change';
 					$script .= '(function(){';
@@ -115,8 +132,11 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 					$script .= "$('" . $target . "')" . $action_2 . ';';
 					$script .= '}});';
 					$script .= ( 'checkbox' != $type ) ? "$('" . $controller . "')".'.trigger("change");' : '';
+
 				}
+
 			}
+
 		}
 
 		// If there's a script then echo it wrapped.

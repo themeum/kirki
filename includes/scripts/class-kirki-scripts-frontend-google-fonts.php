@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates the google-fonts link.
+ */
 class Kirki_Scripts_Frontend_Google_Fonts {
 
 	public function __construct() {

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create a Radio-Buttonset control.
+ */
 class Kirki_Controls_Radio_Buttonset_Control extends Kirki_Control {
 
 	public $type = 'radio-buttonset';

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Create a sortable control.
+ * This will display a list of checkboxes that can be sorted.
+ */
 class Kirki_Controls_Sortable_Control extends Kirki_Control {
 
 	public $type = 'sortable';

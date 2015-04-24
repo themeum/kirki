@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates a TinyMCE control
+ */
 class Kirki_Controls_Editor_Control extends Kirki_Control {
 
 	public $type = 'editor';

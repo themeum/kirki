@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates a new color-alpha control.
+ */
 class Kirki_Controls_Color_Alpha_Control extends Kirki_Control {
 
 	public $type = 'color-alpha';

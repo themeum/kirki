@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Creates a Switch control.
+ */
 class Kirki_Controls_Switch_Control extends Kirki_Control {
 
 	public $type = 'switch';

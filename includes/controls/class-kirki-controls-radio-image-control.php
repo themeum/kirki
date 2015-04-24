@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Create a Radio-Image control.
+ */
 class Kirki_Controls_Radio_Image_Control extends Kirki_Control {
 
 	public $type = 'radio-image';

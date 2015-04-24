@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * Adds the stepper script for number controls.
+ * See http://classic.formstone.it/components/stepper for details.
+ */
 class Kirki_Scripts_Customizer_Stepper extends Kirki_Scripts_Enqueue_Script {
 
 	/**
-	 * Add the help bubble
+	 * Add the script to the footer
 	 */
 	function customize_controls_print_footer_scripts() {
 
