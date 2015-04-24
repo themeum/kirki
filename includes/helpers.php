@@ -149,14 +149,22 @@ function kirki_get_variables() {
 
 	foreach ( $fields as $field ) {
 
-		if ( '' != $field['variable_name'] ) {
+		if ( false != $field['variables'] ) {
 
-			// The variable string is sanitized in the Field class
-			// No need to re-sanitize it here.
-			if ( $field['variable_callback'] ) {
-				$variables[$field['variable_name']] = call_user_func( $field['variable_callback'], kirki_get_option( $field['settings'] ) );
-			} else {
-				$variables[$field['variable_name']] = kirki_get_option( $field['settings'] );
+			foreach ( $field['variables'] as $field_variable ) {
+
+				if ( isset( $field_variable['name'] ) ) {
+					$variable_name     = esc_attr( $field_variable['name'] );
+					$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
+
+					if ( $variable_callback ) {
+						$variables[$field_variable['name']] = call_user_func( $field_variable['callback'], kirki_get_option( $field['settings'] ) );
+					} else {
+						$variables[$field_variable['name']] = kirki_get_option( $field['settings'] );
+					}
+
+				}
+
 			}
 
 		}
