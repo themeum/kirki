@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Framework\n"
-"POT-Creation-Date: 2015-03-30 01:57+0200\n"
-"PO-Revision-Date: 2015-03-30 01:57+0200\n"
+"POT-Creation-Date: 2015-04-24 16:51+0200\n"
+"PO-Revision-Date: 2015-04-24 16:52+0200\n"
 "Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language-Team: Stathopoulos Aristeides <info@aristeides.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8beta1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -19,167 +19,170 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/Control.php:179
+#: includes/class-kirki-config.php:43
+#, php-format
+msgid "Configuration key %s is mandatory and has not been specified"
+msgstr "Configuration key %s is mandatory and has not been specified"
+
+#: includes/class-kirki-config.php:107
 msgid "Background Color"
 msgstr "Background Color"
 
-#: includes/Control.php:192
+#: includes/class-kirki-config.php:108
 msgid "Background Image"
 msgstr "Background Image"
 
-#: includes/Control.php:206 includes/Helpers/sanitize.php:45
+#: includes/class-kirki-config.php:109
 msgid "No Repeat"
 msgstr "No Repeat"
 
-#: includes/Control.php:207 includes/Helpers/sanitize.php:46
+#: includes/class-kirki-config.php:110
 msgid "Repeat All"
 msgstr "Repeat All"
 
-#: includes/Control.php:208 includes/Helpers/sanitize.php:47
+#: includes/class-kirki-config.php:111
 msgid "Repeat Horizontally"
 msgstr "Repeat Horizontally"
 
-#: includes/Control.php:209 includes/Helpers/sanitize.php:48
+#: includes/class-kirki-config.php:112
 msgid "Repeat Vertically"
 msgstr "Repeat Vertically"
 
-#: includes/Control.php:210 includes/Control.php:227
-#: includes/Control.php:247 includes/Helpers/sanitize.php:49
-#: includes/Helpers/sanitize.php:63 includes/Helpers/sanitize.php:79
+#: includes/class-kirki-config.php:113
 msgid "Inherit"
 msgstr "Inherit"
 
-#: includes/Control.php:213
+#: includes/class-kirki-config.php:114
 msgid "Background Repeat"
 msgstr "Background Repeat"
 
-#: includes/Control.php:228 includes/Helpers/sanitize.php:64
+#: includes/class-kirki-config.php:115
 msgid "Cover"
 msgstr "Cover"
 
-#: includes/Control.php:229 includes/Helpers/sanitize.php:65
+#: includes/class-kirki-config.php:116
 msgid "Contain"
 msgstr "Contain"
 
-#: includes/Control.php:233
+#: includes/class-kirki-config.php:117
 msgid "Background Size"
 msgstr "Background Size"
 
-#: includes/Control.php:248 includes/Helpers/sanitize.php:80
+#: includes/class-kirki-config.php:118
 msgid "Fixed"
 msgstr "Fixed"
 
-#: includes/Control.php:249 includes/Helpers/sanitize.php:81
+#: includes/class-kirki-config.php:119
 msgid "Scroll"
 msgstr "Scroll"
 
-#: includes/Control.php:253
+#: includes/class-kirki-config.php:120
 msgid "Background Attachment"
 msgstr "Background Attachment"
 
-#: includes/Control.php:267 includes/Helpers/sanitize.php:95
+#: includes/class-kirki-config.php:121
 msgid "Left Top"
 msgstr "Left Top"
 
-#: includes/Control.php:268 includes/Helpers/sanitize.php:96
+#: includes/class-kirki-config.php:122
 msgid "Left Center"
 msgstr "Left Center"
 
-#: includes/Control.php:269 includes/Helpers/sanitize.php:97
+#: includes/class-kirki-config.php:123
 msgid "Left Bottom"
 msgstr "Left Bottom"
 
-#: includes/Control.php:270 includes/Helpers/sanitize.php:98
+#: includes/class-kirki-config.php:124
 msgid "Right Top"
 msgstr "Right Top"
 
-#: includes/Control.php:271 includes/Helpers/sanitize.php:99
+#: includes/class-kirki-config.php:125
 msgid "Right Center"
 msgstr "Right Center"
 
-#: includes/Control.php:272 includes/Helpers/sanitize.php:100
+#: includes/class-kirki-config.php:126
 msgid "Right Bottom"
 msgstr "Right Bottom"
 
-#: includes/Control.php:273 includes/Helpers/sanitize.php:101
+#: includes/class-kirki-config.php:127
 msgid "Center Top"
 msgstr "Center Top"
 
-#: includes/Control.php:274 includes/Helpers/sanitize.php:102
+#: includes/class-kirki-config.php:128
 msgid "Center Center"
 msgstr "Center Center"
 
-#: includes/Control.php:275 includes/Helpers/sanitize.php:103
+#: includes/class-kirki-config.php:129
 msgid "Center Bottom"
 msgstr "Center Bottom"
 
-#: includes/Control.php:278
+#: includes/class-kirki-config.php:130
 msgid "Background Position"
 msgstr "Background Position"
 
-#: includes/Control.php:296
+#: includes/class-kirki-config.php:131
 msgid "Background Opacity"
 msgstr "Background Opacity"
 
-#: includes/Controls/SwitchControl.php:26
+#: includes/class-kirki-config.php:132
 msgid "ON"
 msgstr "ON"
 
-#: includes/Controls/SwitchControl.php:27
+#: includes/class-kirki-config.php:133
 msgid "OFF"
 msgstr "OFF"
 
-#: includes/Fonts/FontRegistry.php:125
+#: includes/class-kirki-config.php:134
 msgid "All"
 msgstr "All"
 
-#: includes/Fonts/FontRegistry.php:126
+#: includes/class-kirki-config.php:135
 msgid "Cyrillic"
 msgstr "Cyrillic"
 
-#: includes/Fonts/FontRegistry.php:127
+#: includes/class-kirki-config.php:136
 msgid "Cyrillic Extended"
 msgstr "Cyrillic Extended"
 
-#: includes/Fonts/FontRegistry.php:128
+#: includes/class-kirki-config.php:137
 msgid "Devanagari"
 msgstr "Devanagari"
 
-#: includes/Fonts/FontRegistry.php:129
+#: includes/class-kirki-config.php:138
 msgid "Greek"
 msgstr "Greek"
 
-#: includes/Fonts/FontRegistry.php:130
+#: includes/class-kirki-config.php:139
 msgid "Greek Extended"
 msgstr "Greek Extended"
 
-#: includes/Fonts/FontRegistry.php:131
+#: includes/class-kirki-config.php:140
 msgid "Khmer"
 msgstr "Khmer"
 
-#: includes/Fonts/FontRegistry.php:132
+#: includes/class-kirki-config.php:141
 msgid "Latin"
 msgstr "Latin"
 
-#: includes/Fonts/FontRegistry.php:133
+#: includes/class-kirki-config.php:142
 msgid "Latin Extended"
 msgstr "Latin Extended"
 
-#: includes/Fonts/FontRegistry.php:134
+#: includes/class-kirki-config.php:143
 msgid "Vietnamese"
 msgstr "Vietnamese"
 
-#: includes/Fonts/FontRegistry.php:187
+#: includes/class-kirki-config.php:144
 msgctxt "font style"
 msgid "Serif"
 msgstr "Serif"
 
-#: includes/Fonts/FontRegistry.php:191
+#: includes/class-kirki-config.php:145
 msgctxt "font style"
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: includes/Fonts/FontRegistry.php:195
+#: includes/class-kirki-config.php:146
 msgctxt "font style"
-msgid "Monospaced"
-msgstr "Monospaced"
+msgid "Monospace"
+msgstr "Monospace"
