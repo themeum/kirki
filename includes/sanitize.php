@@ -29,11 +29,6 @@ function kirki_sanitize_number( $value ) {
 function kirki_sanitize_choice( $input, $setting ) {
 
 	global $wp_customize;
-	$config = Kirki::config()->get_all();
-
-	if ( '' != $config['option_name'] ) {
-		return sanitize_key( $input );
-	}
 
 	$field = $wp_customize->get_control( $setting->id );
 

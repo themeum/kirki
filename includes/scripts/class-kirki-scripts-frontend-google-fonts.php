@@ -5,13 +5,19 @@
  */
 class Kirki_Scripts_Frontend_Google_Fonts {
 
-	public function __construct() {
+	public $instance_id;
+
+	public function __construct( $instance_id ) {
+
+		$this->instance_id = $instance_id;
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
+
 	}
 
 	function google_link() {
 
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki( $this->instance_id )->fields->get_all();
 
 		// Early exit if no fields are found.
 		if ( ! $fields || empty( $fields ) ) {

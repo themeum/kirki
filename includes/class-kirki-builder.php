@@ -5,10 +5,13 @@
  */
 class Kirki_Builder {
 
-	public $settings;
+	public  $instance_id;
+	public  $settings;
 	private $controls;
 
-	public function __construct() {
+	public function __construct( $instance_id ) {
+
+		$this->instance_id = $instance_id;
 
 		$this->settings = new Kirki_Settings();
 		$this->controls = new Kirki_Controls();
@@ -25,7 +28,7 @@ class Kirki_Builder {
 		include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
 		include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
 
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki::fields( $this->instance_id )->get_all();
 
 		// Early exit if controls are not set or if they're empty
 		if ( empty( $fields ) ) {

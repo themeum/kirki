@@ -5,12 +5,16 @@
  */
 class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 
+	public function __construct( $instance_id ) {
+		parent::__construct( $instance_id );
+	}
+
 	/**
 	 * Add the help bubble
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$fields = Kirki::fields()->get_all();
+		$fields = $fields = Kirki( $this->instance_id )->fields->get_all();
 
 		$scripts = array();
 		$script  = '';

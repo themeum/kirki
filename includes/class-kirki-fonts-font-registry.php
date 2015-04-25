@@ -8,6 +8,8 @@
  */
 class Kirki_Fonts_Font_Registry {
 
+	public $instance_id = null;
+
 	/** @var array */
 	private $standard_fonts = null;
 
@@ -17,7 +19,8 @@ class Kirki_Fonts_Font_Registry {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct( $instance_id = null ) {
+		$this->instance_id = $instance_id;
 	}
 
 	/**
@@ -118,7 +121,7 @@ class Kirki_Fonts_Font_Registry {
 	 * @return array    The available subsets.
 	 */
 	public function get_google_font_subsets() {
-		$i18n = Kirki::i18n();
+		$i18n = Kirki::i18n( $this->instance_id );
 		return array(
 			'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
@@ -179,7 +182,7 @@ class Kirki_Fonts_Font_Registry {
 	 * @return array    Standard websafe fonts.
 	 */
 	public function get_standard_fonts() {
-		$i18n = Kirki::i18n();
+		$i18n = Kirki::i18n( $this->instance_id );
 		if ($this->standard_fonts==null) {
 			$this->standard_fonts = apply_filters('kirki/fonts/standard_fonts', array(
 				'serif'      => array(

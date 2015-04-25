@@ -49,5 +49,17 @@ include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-// Make sure the class is instanciated
-Kirki::get_instance();
+/**
+ * Kirki main object & instance handler
+ */
+function Kirki( $instance = null ) {
+	return Kirki::get_instance( $instance );
+}
+
+/**
+ * Instantiates the global Kirki object
+ */
+function kirki_instantiate() {
+	Kirki();
+}
+add_action( 'after_setup_theme', 'kirki_instantiate' );
