@@ -7,32 +7,22 @@
  */
 class Kirki {
 
-	/** @var Kirki The only instance of this class */
-	public static $instance = null;
-
-	/** @var string Version number */
-	public static $version = '0.8.4';
-
+	public static $instance    = null;
+	public static $version     = '0.8.4';
 	public static $instance_id = null;
 
-	/** @var Config Configuration */
-	public $config = null;
-
-	/** @var FontRegistry The font registry */
+	public $config        = null;
 	public $font_registry = null;
-
-	/** @var scripts */
-	public $scripts = null;
-
-	/** @var field */
-	public $fields = null;
+	public $scripts       = null;
+	public $fields        = null;
+	public $builder       = null;
 
 	/**
 	 * Access the single instance of this class
 	 * @return Kirki
 	 */
 	public static function get_instance( $instance_id = null ) {
-		if ( $instance_id == self::$instance_id && null == self::$instance ) {
+		if ( $instance_id != self::$instance_id || null == self::$instance ) {
 			self::$instance = new Kirki( $instance_id );
 		}
 		return self::$instance;
@@ -81,7 +71,7 @@ class Kirki {
 		$this->styles        = new Kirki_Styles( $instance_id );
 
 		// Hook into WP
-		$init = new Kirki_Builder( $instance_id );
+		$this->builder       = new Kirki_Builder( $instance_id );
 
 	}
 
