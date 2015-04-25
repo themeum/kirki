@@ -29,11 +29,6 @@ function kirki_sanitize_number( $value ) {
 function kirki_sanitize_choice( $input, $setting ) {
 
 	global $wp_customize;
-	$config = Kirki::config()->get_all();
-
-	if ( '' != $config['option_name'] ) {
-		return sanitize_key( $input );
-	}
 
 	$field = $wp_customize->get_control( $setting->id );
 
@@ -47,16 +42,8 @@ function kirki_sanitize_choice( $input, $setting ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_repeat( $value ) {
-	$i18n = Kirki::i18n();
-	$valid = array(
-		'no-repeat' => $i18n['no-repeat'],
-		'repeat'    => $i18n['repeat-all'],
-		'repeat-x'  => $i18n['repeat-x'],
-		'repeat-y'  => $i18n['repeat-y'],
-		'inherit'   => $i18n['inherit'],
-	);
 
-	return ( array_key_exists( $value, $valid ) ) ? $value : 'inherit';
+	return ( in_array( $value, array( 'no-repeat', 'repeat', 'repeat-x', 'repeat-y', 'inherit' ) ) ) ? $value : 'inherit';
 
 }
 

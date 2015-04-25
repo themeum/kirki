@@ -2,16 +2,22 @@
 
 class Kirki_Styles_Customizer {
 
-	function __construct() {
+	public $instance_id;
+
+	function __construct( $instance_id ) {
+
+		$this->instance_id = $instance_id;
+
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
+
 	}
 
 	/**
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-		$config = Kirki::config()->get_all();
+		$config = Kirki( $this->instance_id )->config->get_all();
 		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( $root ) . 'assets/css/customizer.css', NULL, '0.5' );
 	}
@@ -22,7 +28,7 @@ class Kirki_Styles_Customizer {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config  = Kirki::config();
+		$config  = Kirki( $this->instance_id )->config();
 
 		$color_font    = false;
 		$color_accent  = $config->get( 'color_accent', $color['icon_colors']['focus']);

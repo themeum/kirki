@@ -15,15 +15,12 @@ function kirki_array_delete( $idx, $array ) {
 /**
  * Get the value of a field.
  */
-function kirki_get_option( $option = '' ) {
-
-	// Make sure the class is instanciated
-	Kirki::get_instance();
+function kirki_get_option( $option = '', $instance_id = null ) {
 
 	// Get the array of all the fields.
-	$fields = Kirki::fields()->get_all();
+	$fields = Kirki( $instance_id )->fields->get_all();
 	// Get the config.
-	$config = Kirki::config()->get_all();
+	$config = Kirki( $instance_id )->config->get_all();
 
 	// If we're using options instead of theme_mods,
 	// then first we'll have to get the array of all options.
@@ -140,10 +137,10 @@ add_action( 'plugins_loaded', 'kirki_load_textdomain' );
  *
  * @return string
  */
-function kirki_get_variables() {
+function kirki_get_variables( $instance_id = null ) {
 
 	// Get all fields
-	$fields = Kirki::fields()->get_all();
+	$fields = Kirki( $instance_id )->fields->get_all();
 
 	$variables = array();
 

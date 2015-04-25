@@ -2,13 +2,17 @@
 
 class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 
+	public function __construct( $instance_id ) {
+		parent::__construct( $instance_id );
+	}
+
 	/**
 	 * If we've specified an image to be used as logo,
 	 * replace the default theme description with a div that will include our logo.
 	 */
 	public function customize_controls_print_scripts() {
 
-		$options = Kirki::config()->get_all();
+		$options = Kirki( $this->instance_id )->config->get_all();
 		$script = '';
 		if ( '' != $options['logo_image'] || '' != $options['description'] ) {
 

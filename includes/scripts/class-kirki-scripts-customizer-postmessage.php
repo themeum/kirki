@@ -25,6 +25,10 @@
 */
 class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script {
 
+	public function __construct( $instance_id ) {
+		parent::__construct( $instance_id );
+	}
+
 	public function wp_footer() {
 
 		global $wp_customize;
@@ -34,7 +38,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 		}
 
 		// Get an array of all the fields
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki( $this->instance_id )->fields->get_all();
 		$script = '';
 		// Parse the fields and create the script.
 		foreach ( $fields as $field ) {
