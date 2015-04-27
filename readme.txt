@@ -1,6 +1,6 @@
 === Kirki ===
 Contributors: aristath, fovoc
-Tags: customizer, options famework, theme mods
+Tags: customizer, options framework, theme mods
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.2
