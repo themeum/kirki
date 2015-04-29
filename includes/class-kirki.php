@@ -13,17 +13,11 @@ class Kirki {
 	/** @var string Version number */
 	public static $version = '0.8.4';
 
-	/** @var Config Configuration */
-	public $config = null;
-
-	/** @var FontRegistry The font registry */
-	public $font_registry = null;
-
-	/** @var scripts */
+	public $config  = null;
+	public $fonts   = null;
 	public $scripts = null;
-
-	/** @var field */
-	public $fields = null;
+	public $fields  = null;
+	public $builder = null;
 
 	/**
 	 * Access the single instance of this class
@@ -63,7 +57,7 @@ class Kirki {
 	 * Shortcut method to get the font registry.
 	 */
 	public static function fonts() {
-		return self::get_instance()->font_registry;
+		return self::get_instance()->fonts;
 	}
 
 	/**
@@ -71,15 +65,6 @@ class Kirki {
 	 */
 	private function __construct() {
 
-		// Create our main objects
-		$this->font_registry = new Kirki_Fonts_Font_Registry();
-		$this->config        = new Kirki_Config();
-		$this->fields        = new Kirki_Fields();
-		$this->scripts       = new Kirki_Scripts_Registry();
-		$this->styles        = new Kirki_Styles();
-
-		// Hook into WP
-		$init = new Kirki_Builder();
 
 	}
 

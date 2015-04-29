@@ -54,6 +54,14 @@ function Kirki() {
 	// Make sure the class is instanciated
 	$kirki = Kirki::get_instance();
 
+	// Create our main objects
+	$kirki->fonts   = new Kirki_Fonts_Font_Registry();
+	$kirki->config  = new Kirki_Config();
+	$kirki->fields  = new Kirki_Fields();
+	$kirki->scripts = new Kirki_Scripts_Registry();
+	$kirki->styles  = new Kirki_Styles();
+	$kirki->builder = new Kirki_Builder();
+
 	return $kirki;
 
 }
