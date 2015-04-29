@@ -49,10 +49,10 @@ include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-function Kirki() {
+function Kirki( $instance = null ) {
 
 	// Make sure the class is instanciated
-	$kirki = Kirki::get_instance();
+	$kirki = Kirki::get_instance( $instance );
 
 	// Create our main objects
 	$kirki->fonts   = new Kirki_Fonts_Font_Registry();

@@ -35,22 +35,22 @@ class Kirki {
 	/**
 	 * Shortcut method to call the Field class
 	 */
-	public static function fields() {
-		return self::get_instance()->fields;
+	public static function fields( $instance = null ) {
+		return self::get_instance( $instance )->fields;
 	}
 
 	/**
 	 * Shortcut method to get the configuration of the single instance.
 	 */
-	public static function config() {
-		return self::get_instance()->config;
+	public static function config( $instance = null ) {
+		return self::get_instance( $instance )->config;
 	}
 
 	/**
 	 * Shortcut method to get the translation strings
 	 */
-	public static function i18n() {
-		$config  = self::config();
+	public static function i18n( $instance = null ) {
+		$config  = self::config( $instance );
 		$options = $config->get_all();
 		return $options['i18n'];
 	}
@@ -58,8 +58,8 @@ class Kirki {
 	/**
 	 * Shortcut method to get the font registry.
 	 */
-	public static function fonts() {
-		return self::get_instance()->fonts;
+	public static function fonts( $instance = null ) {
+		return self::get_instance( $instance )->fonts;
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Kirki {
 	/**
 	 * Constructor is private, should only be called by get_instance()
 	 */
-	private function __construct() {
+	private function __construct( $instance = null ) {
 	}
 
 }
