@@ -52,7 +52,7 @@ include_once( KIRKI_PATH . '/includes/helpers.php' );
 function Kirki( $instance = null ) {
 
 	// Make sure the class is instantiated
-	$kirki = Kirki::get_instance( $instance );
+	$kirki = Kirki_Framework::get_instance( $instance );
 
 	// Create our main objects
 	$kirki->fonts   = new Kirki_Fonts_Font_Registry( $instance );

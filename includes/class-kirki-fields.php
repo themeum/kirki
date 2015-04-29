@@ -105,7 +105,7 @@ class Kirki_Fields {
 	 * @return string. (theme_mod|option)
 	 */
 	public function sanitize_type( $field ) {
-		$config = Kirki::config()->get_all();
+		$config = Kirki_Framework::config()->get_all();
 		return esc_attr( $config['options_type'] );
 	}
 
@@ -127,7 +127,7 @@ class Kirki_Fields {
 	 */
 	public function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
-			$config = Kirki::config()->get_all();
+			$config = Kirki_Framework::config()->get_all();
 			return esc_attr( $config['capability'] );
 		} else {
 			return esc_attr( $field['capability'] );
@@ -165,7 +165,7 @@ class Kirki_Fields {
 	 */
 	public function sanitize_settings( $field ) {
 
-		$config = Kirki::config()->get_all();
+		$config = Kirki_Framework::config()->get_all();
 
 		// Pass this throught the sanitize_settings_raw method first.
 		$field['settings'] = $this->sanitize_settings_raw( $field );
@@ -381,7 +381,7 @@ class Kirki_Fields {
 	 * Takes a single field with type = background and explodes it to multiple controls.
 	 */
 	public function build_background_fields( $fields ) {
-		$i18n = Kirki::i18n();
+		$i18n = Kirki_Framework::i18n();
 
 		foreach ( $fields as $field ) {
 
