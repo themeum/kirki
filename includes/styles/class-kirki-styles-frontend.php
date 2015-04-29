@@ -22,7 +22,7 @@ class Kirki_Styles_Frontend {
 	public function uses_output() {
 
 		// Get all fields
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki_Framework::fields()->get_all();
 		// Are we using 'output' in any of our fields?
 		$uses_output = 'no';
 		foreach( $fields as $field ) {
@@ -45,7 +45,7 @@ class Kirki_Styles_Frontend {
 		if ( ! $this->uses_output() ) {
 			return;
 		}
-		wp_add_inline_style( Kirki::config()->getOrThrow( 'stylesheet_id' ), $this->styles_parse() );
+		wp_add_inline_style( Kirki_Framework::config()->getOrThrow( 'stylesheet_id' ), $this->styles_parse() );
 
 	}
 
@@ -59,10 +59,10 @@ class Kirki_Styles_Frontend {
 			return;
 		}
 
-		$config = Kirki::config()->get_all();
+		$config = Kirki_Framework::config()->get_all();
 
-		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
-		$root_url = ( '' != $config['url_path'] ) ? Kirki::config()->getOrThrow( 'url_path' ) : KIRKI_URL;
+		$kirki_stylesheet = Kirki_Framework::config()->getOrThrow( 'stylesheet_id' );
+		$root_url = ( '' != $config['url_path'] ) ? Kirki_Framework::config()->getOrThrow( 'url_path' ) : KIRKI_URL;
 
 		if ( 'kirki-styles' == $kirki_stylesheet ) {
 			wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
@@ -216,7 +216,7 @@ class Kirki_Styles_Frontend {
 	 */
 	public function loop_controls() {
 
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki_Framework::fields()->get_all();
 		$styles   = array();
 
 		// Early exit if no fields are found.

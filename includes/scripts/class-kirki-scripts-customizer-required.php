@@ -8,9 +8,9 @@ class Kirki_Scripts_Customizer_Required extends Kirki_Scripts_Enqueue_Script {
 	function customize_controls_print_footer_scripts() {
 
 		// Get an array of all our fields
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki_Framework::fields()->get_all();
 		// Get the config options
-		$config = Kirki::config()->get_all();
+		$config = Kirki_Framework::config()->get_all();
 
 		// Early exit if no controls are defined
 		if ( empty( $fields ) ) {
