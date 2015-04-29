@@ -228,6 +228,9 @@ class Kirki_Styles_Frontend {
 			$element  = '';
 			$property = '';
 			$units    = '';
+			$prefix   = '';
+			$suffix   = '';
+			$callback = '';
 
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) ) {
@@ -239,7 +242,7 @@ class Kirki_Styles_Frontend {
 
 					// If $field['output'] is not an array, then use the string as the target element
 					if ( is_string( $field['output'] ) ) {
-						$element = $field['output'];
+						$element  = $field['output'];
 					} else {
 						$element  = isset( $field['output']['element'] )  ? $field['output']['element']  : '';
 						$property = isset( $field['output']['property'] ) ? $field['output']['property'] : '';
