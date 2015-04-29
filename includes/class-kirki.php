@@ -10,7 +10,7 @@ class Kirki {
 	public static $instances = array();
 
 	/** @var string Version number */
-	public static $version = '0.8.4';
+	public static $version = '0.9-dev';
 
 	public $config  = null;
 	public $fonts   = null;
