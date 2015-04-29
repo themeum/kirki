@@ -72,4 +72,4 @@ function kirki_init() {
 add_action( 'after_setup_theme', 'kirki_init' );
 
 
-// Kirki::load();
+Kirki::load();
