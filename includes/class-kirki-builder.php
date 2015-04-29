@@ -8,10 +8,10 @@ class Kirki_Builder {
 	public $settings;
 	private $controls;
 
-	public function __construct() {
+	public function __construct( $instance = null ) {
 
-		$this->settings = new Kirki_Settings();
-		$this->controls = new Kirki_Controls();
+		$this->settings = new Kirki_Settings( $instance );
+		$this->controls = new Kirki_Controls( $instance );
 		add_action( 'customize_register', array( $this, 'build' ), 99 );
 
 	}
