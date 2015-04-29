@@ -67,7 +67,7 @@ class Kirki {
 	 */
 	public static function add_config( $instance_id = '', $config = array() ) {
 		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
-		self::$instances[$instance_id][$config] = $config;
+		self::$instances[$instance_id]['config'] = $config;
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Kirki {
 	 */
 	public static function add_panel( $instance_id = '', $panel = array() ) {
 		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
-		self::$instances[$instance_id][$panels] = $panel;
+		self::$instances[$instance_id]['panels'][$panel['id']] = $panel;
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Kirki {
 	 */
 	public static function add_section( $instance_id = '', $section = array() ) {
 		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
-		self::$instances[$instance_id][$sections] = $section;
+		self::$instances[$instance_id]['sections'][$section['id']] = $section;
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Kirki {
 	 */
 	public static function add_field( $instance_id = '', $field = array() ) {
 		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
-		self::$instances[$instance_id][$fields] = $field;
+		self::$instances[$instance_id]['fields'][$field['settings']] = $field;
 	}
 
 	/**
