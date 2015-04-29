@@ -7,6 +7,7 @@
  */
 class Kirki {
 
+	public static $instance;
 	public static $instances = array();
 
 	/** @var string Version number */
@@ -18,18 +19,36 @@ class Kirki {
 	public $builder = null;
 
 	public $fields  = null;
-	/**
-	 * Access the single instance of this class
-	 * @return Kirki
-	 */
-	public static function get_instance( $instance = null ) {
 
-		if ( empty( self::$instances ) || ! isset( self::$instances[$instance] ) ) {
-			self::$instances[$instance] = new Kirki( $instance );
+	/**
+	 * Get all instantiated Kirki instances (so far)
+	 *
+	 * @return [type] [description]
+	 */
+	public static function get_all_instances() {
+		return self::$instances;
+	}
+
+	/**
+	 * Get Instance
+	 * Get Kirki instance
+	 * OR an instance of Kirki by [instance_id]
+	 *
+	 * @param  string $instance_id the defined configuration ID
+	 *
+	 * @return object                class instance
+	 */
+	public static function get_instance( $instance_id = false ) {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
 
-		return self::$instances[$instance];
+		if ( $instance_id && ! empty( self::$instances[$instance_id] ) ) {
+			return self::$instances[$instance_id];
+		}
 
+		return self::$instance;
 	}
 
 	/**
@@ -98,6 +117,22 @@ class Kirki {
 	 * Constructor is private, should only be called by get_instance()
 	 */
 	private function __construct( $instance = null ) {
+		$this->capture( $this );
+	}
+
+	function capture( $Kirki ) {
+		$this->store( $Kirki );
+	}
+
+	private function store( $Kirki ) {
+
+		if ( $Kirki instanceof Kirki ) {
+
+			$key = $Kirki->config['instance_id'];
+			self::$instances[$key] = $Kirki;
+
+		}
+
 	}
 
 }
