@@ -7,54 +7,50 @@
  */
 class Kirki {
 
-	/** @var Kirki The only instance of this class */
-	public static $instance = null;
+	public static $instances = array();
 
 	/** @var string Version number */
-	public static $version = '0.8.4';
+	public static $version = '0.9-dev';
 
-	/** @var Config Configuration */
-	public $config = null;
-
-	/** @var FontRegistry The font registry */
-	public $font_registry = null;
-
-	/** @var scripts */
+	public $config  = null;
+	public $fonts   = null;
 	public $scripts = null;
+	public $builder = null;
 
-	/** @var field */
-	public $fields = null;
-
+	public $fields  = null;
 	/**
 	 * Access the single instance of this class
 	 * @return Kirki
 	 */
-	public static function get_instance() {
-		if ( self::$instance==null ) {
-			self::$instance = new Kirki();
+	public static function get_instance( $instance = null ) {
+
+		if ( empty( self::$instances ) || ! isset( self::$instances[$instance] ) ) {
+			self::$instances[$instance] = new Kirki( $instance );
 		}
-		return self::$instance;
+
+		return self::$instances[$instance];
+
 	}
 
 	/**
 	 * Shortcut method to call the Field class
 	 */
-	public static function fields() {
-		return self::get_instance()->fields;
+	public static function fields( $instance = null ) {
+		return self::get_instance( $instance )->fields;
 	}
 
 	/**
 	 * Shortcut method to get the configuration of the single instance.
 	 */
-	public static function config() {
-		return self::get_instance()->config;
+	public static function config( $instance = null ) {
+		return self::get_instance( $instance )->config;
 	}
 
 	/**
 	 * Shortcut method to get the translation strings
 	 */
-	public static function i18n() {
-		$config  = self::config();
+	public static function i18n( $instance = null ) {
+		$config  = self::config( $instance );
 		$options = $config->get_all();
 		return $options['i18n'];
 	}
@@ -62,25 +58,46 @@ class Kirki {
 	/**
 	 * Shortcut method to get the font registry.
 	 */
-	public static function fonts() {
-		return self::get_instance()->font_registry;
+	public static function fonts( $instance = null ) {
+		return self::get_instance( $instance )->fonts;
+	}
+
+	/**
+	 * Adds configution for an instance
+	 */
+	public static function add_config( $instance_id = '', $config = array() ) {
+		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
+		self::$instances[$instance_id]['config'] = $config;
+	}
+
+	/**
+	 * Adds panel to an instance
+	 */
+	public static function add_panel( $instance_id = '', $panel = array() ) {
+		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
+		self::$instances[$instance_id]['panels'][$panel['id']] = $panel;
+	}
+
+	/**
+	 * Adds a section to an instance
+	 */
+	public static function add_section( $instance_id = '', $section = array() ) {
+		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
+		self::$instances[$instance_id]['sections'][$section['id']] = $section;
+	}
+
+	/**
+	 * Adds a field to an instance
+	 */
+	public static function add_field( $instance_id = '', $field = array() ) {
+		self::$instances[$instance_id] = ( isset( self::$instances[$instance_id] ) ) ? self::$instances[$instance_id] : array();
+		self::$instances[$instance_id]['fields'][$field['settings']] = $field;
 	}
 
 	/**
 	 * Constructor is private, should only be called by get_instance()
 	 */
-	private function __construct() {
-
-		// Create our main objects
-		$this->font_registry = new Kirki_Fonts_Font_Registry();
-		$this->config        = new Kirki_Config();
-		$this->fields        = new Kirki_Fields();
-		$this->scripts       = new Kirki_Scripts_Registry();
-		$this->styles        = new Kirki_Styles();
-
-		// Hook into WP
-		$init = new Kirki_Builder();
-
+	private function __construct( $instance = null ) {
 	}
 
 }

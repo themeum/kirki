@@ -5,7 +5,7 @@ Plugin URI:    http://kirki.org
 Description:   An options framework using and extending the WordPress Customizer
 Author:        Aristeides Stathopoulos
 Author URI:    http://aristeides.com
-Version:       0.8.4
+Version:       0.9-dev
 Text Domain:   kirki
 */
 
@@ -49,5 +49,24 @@ include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-// Make sure the class is instanciated
-Kirki::get_instance();
+function Kirki( $instance = null ) {
+
+	// Make sure the class is instantiated
+	$kirki = Kirki::get_instance( $instance );
+
+	// Create our main objects
+	$kirki->fonts   = new Kirki_Fonts_Font_Registry( $instance );
+	$kirki->config  = new Kirki_Config( $instance );
+	$kirki->fields  = new Kirki_Fields( $instance );
+	$kirki->scripts = new Kirki_Scripts_Registry( $instance );
+	$kirki->styles  = new Kirki_Styles( $instance );
+	$kirki->builder = new Kirki_Builder( $instance );
+
+	return $kirki;
+
+}
+
+function kirki_init() {
+	Kirki();
+}
+add_action( 'after_setup_theme', 'kirki_init' );
