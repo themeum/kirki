@@ -7,8 +7,7 @@
  */
 class Kirki {
 
-	/** @var Kirki The only instance of this class */
-	public static $instance = null;
+	public static $instances = array();
 
 	/** @var string Version number */
 	public static $version = '0.8.4';
@@ -23,11 +22,14 @@ class Kirki {
 	 * Access the single instance of this class
 	 * @return Kirki
 	 */
-	public static function get_instance() {
-		if ( self::$instance==null ) {
-			self::$instance = new Kirki();
+	public static function get_instance( $instance = null ) {
+
+		if ( empty( self::$instances ) || ! isset( self::$instances[$instance] ) ) {
+			self::$instances[$instance] = new Kirki( $instance );
 		}
-		return self::$instance;
+
+		return self::$instances[$instance];
+
 	}
 
 	/**
