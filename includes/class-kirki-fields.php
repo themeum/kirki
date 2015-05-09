@@ -57,6 +57,7 @@ class Kirki_Fields {
 		$field['id']                = $this->sanitize_id( $field );
 		$field['capability']        = $this->sanitize_capability( $field );
 		$field['variables']         = $this->sanitize_variables( $field );
+		$field['active_callback']   = $this->sanitize_active_callback( $field );
 
 		return $field;
 
@@ -117,6 +118,16 @@ class Kirki_Fields {
 	 */
 	public function sanitize_variables( $field ) {
 		return ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : false;
+	}
+
+	/**
+	 * Sanitizes the setting active callback.
+	 *
+	 * @param array the field definition
+	 * @return string callable function name.
+	 */
+	public function sanitize_active_callback( $field ) {
+		return ( isset( $field['active_callback'] ) ) ? 'active_callback' : 'kirki_field_active_callback';
 	}
 
 	/**
@@ -357,7 +368,7 @@ class Kirki_Fields {
 	public function sanitize_required( $field ) {
 		// The individual options of the array get sanitized in the Required class.
 		// We're just making sure this is defined here.
-		return isset( $field['required'] ) ? $field['required'] : array();
+		return isset( $field['required'] ) ? $field['required'] : false;
 	}
 
 	/**

@@ -179,3 +179,62 @@ function kirki_get_variables() {
 	return $variables_final;
 
 }
+
+function kirki_field_active_callback( $control ) {
+
+	// Get all fields
+	$fields = Kirki::fields()->get_all();
+
+	$current_field = $fields[$control->id];
+
+	if ( false != $current_field['required'] ) {
+
+		foreach ( $current_field['required'] as $requirement ) {
+
+			$show  = false;
+			$value = $control->manager->get_setting( $requirement['setting'] )->value();
+			switch ( $requirement['operator'] ) {
+				case '===' :
+					$show = ( $requirement['value'] === $value ) ? true : $show;
+					break;
+				case '==' :
+					$show = ( $requirement['value'] == $value ) ? true : $show;
+					break;
+				case '!==' :
+					$show = ( $requirement['value'] !== $value ) ? true : $show;
+					break;
+				case '!=' :
+					$show = ( $requirement['value'] != $value ) ? true : $show;
+					break;
+				case '>=' :
+					$show = ( $requirement['value'] >= $value ) ? true : $show;
+					break;
+				case '<=' :
+					$show = ( $requirement['value'] <= $value ) ? true : $show;
+					break;
+				case '>' :
+					$show = ( $requirement['value'] > $value )  ? true : $show;
+					break;
+				case '<' :
+					$show = ( $requirement['value'] < $value )  ? true : $show;
+					break;
+				default :
+					$show = ( $requirement['value'] == $value ) ? true : $show;
+
+			}
+
+			if ( ! $show ) {
+				return false;
+			}
+
+		}
+
+	} else {
+
+		$show = true;
+
+	}
+
+	return $show;
+
+}
