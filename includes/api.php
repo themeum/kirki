@@ -90,8 +90,3 @@ function kirki_add_field( $config_id, $args ) {
 	Kirki()->api->fields[] = $args;
 
 }
-
-add_action( 'customize_register', 'hhhhsss' );
-function hhhhsss() {
-	var_dump( Kirki()->api->fields );
-}
