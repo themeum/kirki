@@ -25,6 +25,8 @@ class Kirki {
 	/** @var field */
 	public $fields = null;
 
+	public $api = null;
+
 	/**
 	 * Access the single instance of this class
 	 * @return Kirki

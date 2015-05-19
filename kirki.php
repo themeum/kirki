@@ -45,9 +45,15 @@ function kirki_autoload_classes( $class_name ) {
 spl_autoload_register( 'kirki_autoload_classes' );
 
 // Include helper files
+include_once( KIRKI_PATH . '/includes/api.php' );
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
 
-// Make sure the class is instanciated
-Kirki::get_instance();
+/**
+ * Returns the Kirki object
+ */
+function Kirki() {
+	// Make sure the class is instanciated
+	return Kirki::get_instance();
+}

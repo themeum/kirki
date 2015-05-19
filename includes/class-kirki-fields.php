@@ -58,6 +58,7 @@ class Kirki_Fields {
 		$field['capability']        = $this->sanitize_capability( $field );
 		$field['variables']         = $this->sanitize_variables( $field );
 		$field['active_callback']   = $this->sanitize_active_callback( $field );
+		$field['stylesheet_id']     = $this->sanitize_stylesheet_id( $field );
 
 		return $field;
 
@@ -383,6 +384,22 @@ class Kirki_Fields {
 			return intval( $field['priority'] );
 		} else {
 			return 10;
+		}
+
+	}
+
+	/**
+	 * Sanitizes the control priority
+	 *
+	 * @param array the field definition
+	 * @return int
+	 */
+	public function sanitize_stylesheet_id( $field ) {
+
+		if ( isset( $field['stylesheet_id'] ) ) {
+			return sanitize_key( $field['stylesheet_id'] );
+		} else {
+			return null;
 		}
 
 	}
