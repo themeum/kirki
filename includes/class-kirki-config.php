@@ -58,7 +58,6 @@ class Kirki_Config {
 
 			// Merge a default configuration with the one we got from the user to make sure nothing is missing
 			$default_config = array(
-				'stylesheet_id' => 'kirki-styles',
 				'capability'    => 'edit_theme_options',
 				'logo_image'    => '',
 				'description'   => '',

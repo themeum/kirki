@@ -185,6 +185,10 @@ function kirki_field_active_callback( $control ) {
 	// Get all fields
 	$fields = Kirki::fields()->get_all();
 
+	if ( ! isset( $fields[$control->id] ) ) {
+		return true;
+	}
+
 	$current_field = $fields[$control->id];
 
 	if ( false != $current_field['required'] ) {

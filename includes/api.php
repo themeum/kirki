@@ -30,7 +30,6 @@ class Kirki_API {
 function kirki_add_config( $config_id, $args ) {
 
 	$default_args = array(
-		'stylesheet_id' => 'kirki-styles',
 		'capability'    => 'edit_theme_options',
 		'option_type'   => 'theme_mod',
 		'option'        => '',
@@ -44,7 +43,7 @@ function kirki_add_config( $config_id, $args ) {
 }
 
 /**
- * Sets the configuration options.
+ * Create a new field
  *
  * @var		string		the configuration ID for this field
  * @var		array		the field arguments
@@ -53,6 +52,7 @@ function kirki_add_field( $config_id, $args ) {
 
 	// Get the configuration options
 	$config = Kirki()->api->config[$config_id];
+	var_dump( $config );
 
 	/**
 	 * If we've set an option in the configuration
@@ -86,15 +86,12 @@ function kirki_add_field( $config_id, $args ) {
 		$args['option_type'] = $config['option_type'];
 	}
 
-	/**
-	 * If no stylesheet ID has been set for the field,
-	 * use the one from the configuration
-	 */
-	if ( ! isset( $args['stylesheet_id'] ) ) {
-		$args['stylesheet_id'] = $config['stylesheet_id'];
-	}
-
 	// Add the field to the Kirki_API class
 	Kirki()->api->fields[] = $args;
 
+}
+
+add_action( 'customize_register', 'hhhhsss' );
+function hhhhsss() {
+	var_dump( Kirki()->api->fields );
 }

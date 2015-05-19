@@ -45,12 +45,12 @@ class Kirki_Styles_Frontend {
 		if ( ! $this->uses_output() ) {
 			return;
 		}
-		wp_add_inline_style( Kirki::config()->getOrThrow( 'stylesheet_id' ), $this->styles_parse() );
+		wp_add_inline_style( 'kirki-styles', $this->styles_parse() );
 
 	}
 
 	/**
-	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
+	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
 
@@ -61,12 +61,8 @@ class Kirki_Styles_Frontend {
 
 		$config = Kirki::config()->get_all();
 
-		$kirki_stylesheet = Kirki::config()->getOrThrow( 'stylesheet_id' );
 		$root_url = ( '' != $config['url_path'] ) ? Kirki::config()->getOrThrow( 'url_path' ) : KIRKI_URL;
-
-		if ( 'kirki-styles' == $kirki_stylesheet ) {
-			wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
-		}
+		wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
 
 	}
 
