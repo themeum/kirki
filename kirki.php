@@ -66,3 +66,6 @@ function Kirki() {
 	return $kirki;
 
 }
+
+global $kirki;
+$kirki = Kirki();
