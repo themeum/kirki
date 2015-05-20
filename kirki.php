@@ -17,7 +17,7 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 }
 
 // Include the main plugin class
-include_once( KIRKI_PATH . '/includes/class-kirki.php' );
+// include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 
 /**
  * The Kirki class autoloader.
@@ -55,7 +55,7 @@ include_once( KIRKI_PATH . '/includes/helpers.php' );
  */
 function Kirki() {
 	// Make sure the class is instanciated
-	$kirki = Kirki::get_instance();
+	$kirki = Kirki_Framework::get_instance();
 
 	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
 	$kirki->config        = new Kirki_Config();

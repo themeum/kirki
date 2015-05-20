@@ -11,7 +11,7 @@ class Kirki_Scripts_Customizer_Stepper extends Kirki_Scripts_Enqueue_Script {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$fields = Kirki::fields()->get_all();
+		$fields = Kirki_Framework::fields()->get_all();
 		$scripts = array();
 
 		foreach ( $fields as $field ) {

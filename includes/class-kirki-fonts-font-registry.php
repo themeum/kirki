@@ -118,7 +118,7 @@ class Kirki_Fonts_Font_Registry {
 	 * @return array    The available subsets.
 	 */
 	public function get_google_font_subsets() {
-		$i18n = Kirki::i18n();
+		$i18n = Kirki_Framework::i18n();
 		return array(
 			'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
@@ -179,7 +179,7 @@ class Kirki_Fonts_Font_Registry {
 	 * @return array    Standard websafe fonts.
 	 */
 	public function get_standard_fonts() {
-		$i18n = Kirki::i18n();
+		$i18n = Kirki_Framework::i18n();
 		if ($this->standard_fonts==null) {
 			$this->standard_fonts = apply_filters('kirki/fonts/standard_fonts', array(
 				'serif'      => array(

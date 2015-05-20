@@ -5,7 +5,7 @@
  *
  * The main Kirki object
  */
-class Kirki {
+class Kirki_Framework {
 
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
@@ -35,7 +35,7 @@ class Kirki {
 	 */
 	public static function get_instance() {
 		if ( self::$instance==null ) {
-			self::$instance = new Kirki();
+			self::$instance = new Kirki_Framework();
 		}
 		return self::$instance;
 	}
