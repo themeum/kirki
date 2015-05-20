@@ -195,6 +195,10 @@ function kirki_field_active_callback( $control ) {
 
 		foreach ( $current_field['required'] as $requirement ) {
 
+			if ( ! is_object( $control->manager->get_setting( $requirement['setting'] ) ) ) {
+				return true;
+			}
+
 			$show  = false;
 			$value = $control->manager->get_setting( $requirement['setting'] )->value();
 			switch ( $requirement['operator'] ) {
