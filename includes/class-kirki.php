@@ -22,6 +22,7 @@ class Kirki {
 	 */
 	public function add_to_customizer( $wp_customize ) {
 		add_filter( 'kirki/fields', array( $this, 'merge_fields' ) );
+		add_action( 'customize_register', array( $this, 'add_panels' ), 998 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 999 );
 	}
 
@@ -53,19 +54,36 @@ class Kirki {
 
 	}
 
+	public function add_panels( $wp_customize ) {
+
+		if ( ! empty( self::$panels ) ) {
+
+			foreach ( self::$panels as $panel ) {
+				$wp_customize->add_panel( sanitize_key( $panel['id'] ), array(
+					'title'       => $panel['title'],
+					'priority'    => $panel['priority'],
+					'description' => $panel['description'],
+				) );
+			}
+
+		}
+	}
+
 	public function add_sections( $wp_customize ) {
 
-		if ( empty( self::$sections ) ) {
-			return;
+		if ( ! empty( self::$sections ) ) {
+
+			foreach ( self::$sections as $section ) {
+				$wp_customize->add_section( sanitize_key( $section['id'] ), array(
+					'title'       => $section['title'],
+					'priority'    => $section['priority'],
+					'panel'       => $section['panel'],
+					'description' => $section['description'],
+				) );
+			}
+
 		}
-		foreach ( self::$sections as $section ) {
-			$wp_customize->add_section( sanitize_key( $section['id'] ), array(
-				'title'       => $section['title'],
-				'priority'    => $section['priority'],
-				// 'panel'       => $section['panel'],
-				'description' => $section['description'],
-			) );
-		}
+
 	}
 
 	/**
@@ -118,23 +136,39 @@ class Kirki {
 
 	public static function setSection( $config_id, $args = array() ) {
 
-		self::$sections[] = array(
-			'id'          => $args['id'],
-			'title'       => $args['title'],
-			'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
-			// 'panel'       =>
-			'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
-		);
+		if ( ! isset( $args['fields'] ) || ! isset( $args['subsection'] ) || ( isset( $args['subsection'] ) && ! $args['subsection'] ) ) { // This is a panel
+			self::$panels[] = array(
+				'id'          => $args['id'],
+				'title'       => $args['title'],
+				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
+				'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
+			);
+		} else { // This is a section
+			// Get the section ID
+			if ( isset( $args['subsection'] ) && $args['subsection'] ) {
+				$panel    = end( array_values( self::$panels ) );
+				$panel_id = $panel['id'];
+			}
 
-		foreach ( $args['fields'] as $field ) {
+			self::$sections[] = array(
+				'id'          => $args['id'],
+				'title'       => $args['title'],
+				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
+				'panel'       => ( isset( $panel_id ) ) ? $panel_id : '',
+				'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
+			);
 
-			$field['section']     = sanitize_key( $args['id'] );
-			$field['settings']    = $field['id'];
-			$field['help']        = ( isset( $field['desc'] ) ) ? $field['desc'] : '';
-			$field['description'] = ( isset( $field['subtitle'] ) ) ? $field['subtitle'] : '';
-			$field['choices']     = ( isset( $field['options'] ) ) ? $field['options'] : '';
+			foreach ( $args['fields'] as $field ) {
 
-			self::add_field( $config_id, $field );
+				$field['section']     = sanitize_key( $args['id'] );
+				$field['settings']    = $field['id'];
+				$field['help']        = ( isset( $field['desc'] ) ) ? $field['desc'] : '';
+				$field['description'] = ( isset( $field['subtitle'] ) ) ? $field['subtitle'] : '';
+				$field['choices']     = ( isset( $field['options'] ) ) ? $field['options'] : '';
+
+				self::add_field( $config_id, $field );
+
+			}
 
 		}
 
