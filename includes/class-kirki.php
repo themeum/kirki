@@ -166,6 +166,111 @@ class Kirki {
 				$field['description'] = ( isset( $field['subtitle'] ) ) ? $field['subtitle'] : '';
 				$field['choices']     = ( isset( $field['options'] ) ) ? $field['options'] : '';
 
+				switch ( $field['type'] ) {
+
+					case 'ace_editor' :
+						$field['type'] = 'textarea';
+						break;
+					case 'background' :
+						// TODO
+						break;
+					case 'border' :
+						// TODO
+						break;
+					case 'button_set' :
+						$field['type'] = 'radio-buttonset';
+						break;
+					case 'color_gradient' :
+						// TODO
+						break;
+					case 'color_rgba' :
+						$field['type'] = 'color-alpha';
+						break;
+					case 'date' :
+						// TODO
+						break;
+					case 'dimensions' :
+						// TODO
+						break;
+					case 'divide' :
+						// TODO
+						break;
+					case 'gallery' :
+						// TODO
+						break;
+					case 'image_select' :
+						$field['type'] = 'radio-image';
+						break;
+					case 'import_export' :
+						// TODO
+						break;
+					case 'info' :
+						$fiel['label'] = '';
+						$field['help'] = '';
+						$field['type'] = 'custom';
+						if ( 'success' == $field['style'] ) {
+							$background_color = '#dff0d8';
+							$border_color     = '#d6e9c6';
+							$text_color       = '#3c763d';
+						} elseif ( 'critical' == $field['style'] ) {
+							$background_color = '#f2dede';
+							$border_color     = '#ebccd1';
+							$text_color       = '#a94442';
+						} else { // Defaults to warning
+							$background_color = '#fcf8e3';
+							$border_color     = '#faebcc';
+							$text_color       = '#8a6d3b';
+						}
+						$field['default']  = '<div style="background:' . $background_color . ';border-radius:4px;border:1px solid ' . $border_color . ';color:' . $text_color . ';">';
+						$field['default'] .= ( isset( $field['title'] ) ) ? '<h4>' . $field['title'] . '</h4>' : '';
+						$field['default'] .= ( isset( $field['desc'] ) ) ? $field['desc'] : '';
+						$field['default'] .= '</div>';
+						break;
+					case 'link_color' :
+						// TODO
+						break;
+					case 'media' :
+						// TODO
+						break;
+					case 'multi_text' :
+						// TODO
+						break;
+					case 'password' :
+						// TODO
+						break;
+					case 'raw' :
+						$field['default'] = $field['content'];
+						break;
+					case 'section' :
+						// TODO
+						break;
+					case 'select_image' :
+						// TODO
+						break;
+					case 'slides' :
+						// TODO
+						break;
+					case 'sortable' :
+						// TODO
+						break;
+					case 'sorter' :
+						// TODO
+						break;
+					case 'spacing' :
+						// TODO
+						break;
+					case 'spinner' :
+						// TODO
+						break;
+					case 'switch' :
+						// TODO
+						break;
+					case 'typography' :
+						// TODO
+						break;
+
+				}
+
 				self::add_field( $config_id, $field );
 
 			}
