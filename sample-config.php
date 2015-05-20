@@ -185,6 +185,13 @@
             'description' => __( 'This is the section description', 'kirki' ),
         ) );
 
+        $wp_customize->add_section( 'select2_section', array(
+            'title'       => __( 'Select2 Control', 'kirki' ),
+            'priority'    => 10,
+            'panel'       => 'kirki_controls',
+            'description' => __( 'This is the section description', 'kirki' ),
+        ) );
+
     }
 
     add_action( 'customize_register', 'kirki_demo_panels_sections' );
@@ -587,6 +594,23 @@
                     '#0097a7',
                     '#00e5ff',
                 ),
+            ),
+        );
+
+        $controls[] = array(
+            'type'        => 'select2',
+            'setting'     => 'select_demo_2',
+            'label'       => __( 'This is the label', 'kirki' ),
+            'description' => __( 'This is the control description', 'kirki' ),
+            'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+            'section'     => 'select2_section',
+            'default'     => 'option-1',
+            'priority'    => 10,
+            'choices'     => array(
+                'option-1' => __( 'Option 1', 'kirki' ),
+                'option-2' => __( 'Option 2', 'kirki' ),
+                'option-3' => __( 'Option 3', 'kirki' ),
+                'option-4' => __( 'Option 4', 'kirki' ),
             ),
         );
 
