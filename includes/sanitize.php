@@ -29,7 +29,7 @@ function kirki_sanitize_number( $value ) {
 function kirki_sanitize_choice( $input, $setting ) {
 
 	global $wp_customize;
-	$config = Kirki::config()->get_all();
+	$config = Kirki_Framework::config()->get_all();
 
 	if ( '' != $config['option_name'] ) {
 		return sanitize_key( $input );
@@ -47,7 +47,7 @@ function kirki_sanitize_choice( $input, $setting ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_repeat( $value ) {
-	$i18n = Kirki::i18n();
+	$i18n = Kirki_Framework::i18n();
 	$valid = array(
 		'no-repeat' => $i18n['no-repeat'],
 		'repeat'    => $i18n['repeat-all'],
@@ -66,7 +66,7 @@ function kirki_sanitize_bg_repeat( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_size( $value ) {
-	$i18n = Kirki::i18n();
+	$i18n = Kirki_Framework::i18n();
 	$valid = array(
 		'inherit' => $i18n['inherit'],
 		'cover'   => $i18n['cover'],
@@ -83,7 +83,7 @@ function kirki_sanitize_bg_size( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_attach( $value ) {
-	$i18n = Kirki::i18n();
+	$i18n = Kirki_Framework::i18n();
 	$valid = array(
 		'inherit' => $i18n['inherit'],
 		'fixed'   => $i18n['fixed'],
@@ -100,7 +100,7 @@ function kirki_sanitize_bg_attach( $value ) {
  * @since 0.5
  */
 function kirki_sanitize_bg_position( $value ) {
-	$i18n = Kirki::i18n();
+	$i18n = Kirki_Framework::i18n();
 	$valid = array(
 		'left-top'      => $i18n['left-top'],
 		'left-center'   => $i18n['left-center'],

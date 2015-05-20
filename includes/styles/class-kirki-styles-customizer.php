@@ -11,7 +11,7 @@ class Kirki_Styles_Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-		$config = Kirki::config()->get_all();
+		$config = Kirki_Framework::config()->get_all();
 		$root = ( '' != $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( $root ) . 'assets/css/customizer.css', NULL, '0.5' );
 	}
@@ -22,7 +22,7 @@ class Kirki_Styles_Customizer {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config  = Kirki::config();
+		$config  = Kirki_Framework::config();
 
 		$color_font    = false;
 		$color_accent  = $config->get( 'color_accent', $color['icon_colors']['focus']);

@@ -18,12 +18,12 @@ function kirki_array_delete( $idx, $array ) {
 function kirki_get_option( $option = '' ) {
 
 	// Make sure the class is instanciated
-	Kirki::get_instance();
+	Kirki_Framework::get_instance();
 
 	// Get the array of all the fields.
-	$fields = Kirki::fields()->get_all();
+	$fields = Kirki_Framework::fields()->get_all();
 	// Get the config.
-	$config = Kirki::config()->get_all();
+	$config = Kirki_Framework::config()->get_all();
 
 	// If we're using options instead of theme_mods,
 	// then first we'll have to get the array of all options.
@@ -143,7 +143,7 @@ add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 function kirki_get_variables() {
 
 	// Get all fields
-	$fields = Kirki::fields()->get_all();
+	$fields = Kirki_Framework::fields()->get_all();
 
 	$variables = array();
 
@@ -183,13 +183,21 @@ function kirki_get_variables() {
 function kirki_field_active_callback( $control ) {
 
 	// Get all fields
-	$fields = Kirki::fields()->get_all();
+	$fields = Kirki_Framework::fields()->get_all();
+
+	if ( ! isset( $fields[$control->id] ) ) {
+		return true;
+	}
 
 	$current_field = $fields[$control->id];
 
 	if ( false != $current_field['required'] ) {
 
 		foreach ( $current_field['required'] as $requirement ) {
+
+			if ( ! is_object( $control->manager->get_setting( $requirement['setting'] ) ) ) {
+				return true;
+			}
 
 			$show  = false;
 			$value = $control->manager->get_setting( $requirement['setting'] )->value();

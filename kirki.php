@@ -16,9 +16,6 @@ if ( ! defined( 'KIRKI_URL' ) ) {
 	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
-// Include the main plugin class
-include_once( KIRKI_PATH . '/includes/class-kirki.php' );
-
 /**
  * The Kirki class autoloader.
  * Finds the path to a class that we're requiring and includes the file.
@@ -48,6 +45,27 @@ spl_autoload_register( 'kirki_autoload_classes' );
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
+// Include the API class
+include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 
-// Make sure the class is instanciated
-Kirki::get_instance();
+/**
+ * Returns the Kirki object
+ */
+function Kirki() {
+	// Make sure the class is instanciated
+	$kirki = Kirki_Framework::get_instance();
+
+	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
+	$kirki->config        = new Kirki_Config();
+	$kirki->fields        = new Kirki_Fields();
+	$kirki->scripts       = new Kirki_Scripts_Registry();
+	$kirki->styles        = new Kirki_Styles();
+	$kirki->builder       = new Kirki_Builder();
+	$kirki->api           = new Kirki();
+
+	return $kirki;
+
+}
+
+global $kirki;
+$kirki = Kirki();
