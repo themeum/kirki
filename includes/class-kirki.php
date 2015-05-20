@@ -27,6 +27,8 @@ class Kirki {
 
 	public $api = null;
 
+	public $builder = null;
+
 	/**
 	 * Access the single instance of this class
 	 * @return Kirki
@@ -72,8 +74,6 @@ class Kirki {
 	 * Constructor is private, should only be called by get_instance()
 	 */
 	private function __construct() {
-		// Hook into WP
-		$init = new Kirki_Builder();
 	}
 
 }

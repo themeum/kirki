@@ -62,6 +62,7 @@ function Kirki() {
 	$kirki->fields        = new Kirki_Fields();
 	$kirki->scripts       = new Kirki_Scripts_Registry();
 	$kirki->styles        = new Kirki_Styles();
+	$kirki->builder       = new Kirki_Builder();
 
 	return $kirki;
 
