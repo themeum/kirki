@@ -23,6 +23,7 @@ class Kirki_Controls {
 		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Tab_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
 	}
 
 	/**
@@ -92,6 +93,10 @@ class Kirki_Controls {
 
 			case 'editor' :
 				$wp_customize->add_control( new Kirki_Controls_Editor_Control( $wp_customize, $field['id'], $field ) );
+				break;
+
+			case 'select2' :
+				$wp_customize->add_control( new Kirki_Controls_Select_Control( $wp_customize, $field['id'], $field ) );
 				break;
 
 			case 'background' :
