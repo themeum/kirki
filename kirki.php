@@ -55,5 +55,14 @@ include_once( KIRKI_PATH . '/includes/helpers.php' );
  */
 function Kirki() {
 	// Make sure the class is instanciated
-	return Kirki::get_instance();
+	$kirki = Kirki::get_instance();
+
+	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
+	$kirki->config        = new Kirki_Config();
+	$kirki->fields        = new Kirki_Fields();
+	$kirki->scripts       = new Kirki_Scripts_Registry();
+	$kirki->styles        = new Kirki_Styles();
+
+	return $kirki;
+
 }

@@ -72,17 +72,8 @@ class Kirki {
 	 * Constructor is private, should only be called by get_instance()
 	 */
 	private function __construct() {
-
-		// Create our main objects
-		$this->font_registry = new Kirki_Fonts_Font_Registry();
-		$this->config        = new Kirki_Config();
-		$this->fields        = new Kirki_Fields();
-		$this->scripts       = new Kirki_Scripts_Registry();
-		$this->styles        = new Kirki_Styles();
-
 		// Hook into WP
 		$init = new Kirki_Builder();
-
 	}
 
 }
