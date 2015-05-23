@@ -190,6 +190,11 @@ class Kirki {
 						break;
 					case 'color_rgba' :
 						$field['type'] = 'color-alpha';
+						if ( isset( $field['default'] ) && is_array( $field['default'] ) ) {
+							$field['default']['color'] = isset( $field['default']['color'] ) ? Kirki_Color::sanitize_hex( $field['default']['color'], true ) : '#ffffff';
+							$field['default']['alpha'] = isset( $field['default']['alpha'] ) ? $field['default']['alpha'] : '1';
+							$field['default'] = Kirki_Color::get_rgba( $field['default']['color'], $field['default']['alpha'] );
+						}
 						break;
 					case 'date' :
 						// TODO
@@ -227,7 +232,7 @@ class Kirki {
 								$text_color       = '#a94442';
 							}
 						}
-						$field['default']  = '<div style="background:' . $background_color . ';border-radius:4px;border:1px solid ' . $border_color . ';color:' . $text_color . ';">';
+						$field['default']  = '<div style="padding: 10px;background:' . $background_color . ';border-radius:4px;border:1px solid ' . $border_color . ';color:' . $text_color . ';">';
 						$field['default'] .= ( isset( $field['title'] ) ) ? '<h4>' . $field['title'] . '</h4>' : '';
 						$field['default'] .= ( isset( $field['desc'] ) ) ? $field['desc'] : '';
 						$field['default'] .= '</div>';
@@ -241,6 +246,9 @@ class Kirki {
 					case 'multi_text' :
 						// TODO
 						break;
+					case 'palette' :
+						$field['choices'] = $field['palettes'];
+						break;
 					case 'password' :
 						// TODO
 						break;
@@ -250,11 +258,33 @@ class Kirki {
 					case 'section' :
 						// TODO
 						break;
+					case 'select' :
+						if ( is_array( $field['choices'] ) ) {
+							foreach ( $field['choices'] as $key => $value ) {
+								if ( is_array( $value ) ) {
+									foreach ( $value as $child_key => $child_value ) {
+										$field['choices'][$child_key] = $child_value;
+									}
+									unset( $field['choices'][$key] );
+								}
+							}
+						}
+						break;
 					case 'select_image' :
 						// TODO
 						break;
+					case 'slider' :
+						$field['choices'] = array(
+							'min'  => $field['min'],
+							'max'  => $field['max'],
+							'step' => $field['step'],
+						);
+						break;
 					case 'slides' :
 						// TODO
+						break;
+					case 'spinner' :
+						$field['type'] = 'number';
 						break;
 					case 'sortable' :
 						// TODO

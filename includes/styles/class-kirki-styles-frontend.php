@@ -95,9 +95,8 @@ class Kirki_Styles_Frontend {
 	 * Get the styles for a single field.
 	 */
 	public function setting_styles( $field, $styles = '', $element = '', $property = '', $units = '', $prefix = '', $suffix = '', $callback = false ) {
-
 		$value   = kirki_get_option( $field['settings_raw'] );
-		$value   = ( $callback ) ? call_user_func( $callback, $value ) : $value;
+		$value   = ( isset( $callback ) && '' != $callback && '.' != $callback ) ? call_user_func( $callback, $value ) : $value;
 		$element = $prefix . $element;
 		$units   = $units . $suffix;
 
