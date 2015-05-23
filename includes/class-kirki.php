@@ -138,8 +138,8 @@ class Kirki {
 
 		if ( ! isset( $args['fields'] ) || ! isset( $args['subsection'] ) || ( isset( $args['subsection'] ) && ! $args['subsection'] ) ) { // This is a panel
 			self::$panels[] = array(
-				'id'          => $args['id'],
-				'title'       => $args['title'],
+				'id'          => isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr(str_shuffle("abcdefghijklmnopqrstuvwxyz-_"), 0, 7),
+				'title'       => isset( $args['title'] ) ? $args['title'] : '',
 				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
 				'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
 			);
@@ -151,7 +151,7 @@ class Kirki {
 			}
 
 			self::$sections[] = array(
-				'id'          => $args['id'],
+				'id'          => isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr(str_shuffle("abcdefghijklmnopqrstuvwxyz-_"), 0, 7),
 				'title'       => $args['title'],
 				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
 				'panel'       => ( isset( $panel_id ) ) ? $panel_id : '',
@@ -160,7 +160,7 @@ class Kirki {
 
 			foreach ( $args['fields'] as $field ) {
 
-				$field['section']     = sanitize_key( $args['id'] );
+				$field['section']     = isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr(str_shuffle("abcdefghijklmnopqrstuvwxyz-_"), 0, 7);
 				$field['settings']    = $field['id'];
 				$field['help']        = ( isset( $field['desc'] ) ) ? $field['desc'] : '';
 				$field['description'] = ( isset( $field['subtitle'] ) ) ? $field['subtitle'] : '';
@@ -208,18 +208,19 @@ class Kirki {
 						$fiel['label'] = '';
 						$field['help'] = '';
 						$field['type'] = 'custom';
-						if ( 'success' == $field['style'] ) {
-							$background_color = '#dff0d8';
-							$border_color     = '#d6e9c6';
-							$text_color       = '#3c763d';
-						} elseif ( 'critical' == $field['style'] ) {
-							$background_color = '#f2dede';
-							$border_color     = '#ebccd1';
-							$text_color       = '#a94442';
-						} else { // Defaults to warning
-							$background_color = '#fcf8e3';
-							$border_color     = '#faebcc';
-							$text_color       = '#8a6d3b';
+						$background_color = '#fcf8e3';
+						$border_color     = '#faebcc';
+						$text_color       = '#8a6d3b';
+						if ( isset( $field['style'] ) ) {
+							if ( 'success' == $field['style'] ) {
+								$background_color = '#dff0d8';
+								$border_color     = '#d6e9c6';
+								$text_color       = '#3c763d';
+							} elseif ( 'critical' == $field['style'] ) {
+								$background_color = '#f2dede';
+								$border_color     = '#ebccd1';
+								$text_color       = '#a94442';
+							}
 						}
 						$field['default']  = '<div style="background:' . $background_color . ';border-radius:4px;border:1px solid ' . $border_color . ';color:' . $text_color . ';">';
 						$field['default'] .= ( isset( $field['title'] ) ) ? '<h4>' . $field['title'] . '</h4>' : '';

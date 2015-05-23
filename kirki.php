@@ -69,3 +69,7 @@ function Kirki() {
 
 global $kirki;
 $kirki = Kirki();
+
+if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
+	include_once( KIRKI_PATH . '/includes/redux-compatibility.php' );	
+}
