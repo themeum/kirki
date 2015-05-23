@@ -180,6 +180,10 @@ class Kirki {
 					case 'button_set' :
 						$field['type'] = 'radio-buttonset';
 						break;
+					case 'checkbox' :
+						if ( isset( $field['options'] ) && is_array( $field['options'] ) ) {
+							$field['type'] = 'multicheck';
+						}
 					case 'color_gradient' :
 						// TODO
 						break;
