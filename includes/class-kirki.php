@@ -165,6 +165,7 @@ class Kirki {
 				$field['help']        = ( isset( $field['desc'] ) ) ? $field['desc'] : '';
 				$field['description'] = ( isset( $field['subtitle'] ) ) ? $field['subtitle'] : '';
 				$field['choices']     = ( isset( $field['options'] ) ) ? $field['options'] : '';
+				$field['label']       = ( isset( $field['title'] ) ) ? $field['title'] : '';
 
 				switch ( $field['type'] ) {
 
