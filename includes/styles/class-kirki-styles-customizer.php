@@ -31,6 +31,12 @@ class Kirki_Styles_Customizer {
 
 		$styles = '<style>';
 
+		// Width
+		if ( null != $config->get( 'width', null ) ) {
+			$styles .= '.wp-full-overlay-sidebar{width:' . $config->get( 'width', null ) . ';}';
+			$styles .= '.wp-full-overlay.expanded{margin-left:' . $config->get( 'width', null ) . ';}';
+		}
+
 		// Background styles
 		$styles .= '#customize-controls .wp-full-overlay-sidebar-content{background-color:' . $color_back . ';}';
 		$styles .= '#customize-theme-controls .accordion-section-title, #customize-info .accordion-section-title,#customize-info .accordion-section-title:hover,#customize-info.open .accordion-section-title{background-color:' . $color_back . ';color:' . $color_font . ';}';
