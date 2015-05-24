@@ -133,6 +133,22 @@ class Kirki {
 	}
 
 	/**
+	 * Create a new section
+	 *
+	 * @var		string		the configuration ID for this field
+	 * @var		array		the field arguments
+	 */
+	public static function add_section( $id, $args ) {
+
+		// Add the section to the $fields variable
+		$args['id']          = $id;
+		$args['panel']       = ( isset( $args['panel'] ) ) ? $args['panel'] : '';
+		$args['description'] = ( isset( $args['description'] ) ) ? $args['description'] : '';
+		self::$sections[]    = $args;
+
+	}
+
+	/**
 	 * Create a new field
 	 *
 	 * @var		string		the configuration ID for this field
