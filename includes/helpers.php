@@ -195,12 +195,12 @@ function kirki_field_active_callback( $control ) {
 
 		foreach ( $current_field['required'] as $requirement ) {
 
-			if ( ! is_object( $control->manager->get_setting( $requirement['setting'] ) ) ) {
+			if ( ! is_object( $control->manager->get_setting( $fields[$requirement['setting']]['settings'] ) ) ) {
 				return true;
 			}
 
 			$show  = false;
-			$value = $control->manager->get_setting( $requirement['setting'] )->value();
+			$value = $control->manager->get_setting( $fields[$requirement['setting']]['settings'] )->value();
 			switch ( $requirement['operator'] ) {
 				case '===' :
 					$show = ( $requirement['value'] === $value ) ? true : $show;
