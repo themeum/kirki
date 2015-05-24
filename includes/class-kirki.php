@@ -133,10 +133,26 @@ class Kirki {
 	}
 
 	/**
+	 * Create a new panel
+	 *
+	 * @var		string		the ID for this panel
+	 * @var		array		the panel arguments
+	 */
+	public static function add_panel( $id, $args ) {
+
+		// Add the section to the $fields variable
+		$args['id']          = $id;
+		$args['description'] = ( isset( $args['description'] ) ) ? $args['description'] : '';
+		$args['priority']    = ( isset( $args['priority'] ) ) ? $args['priority'] : 10;
+		self::$panels[]      = $args;
+
+	}
+
+	/**
 	 * Create a new section
 	 *
-	 * @var		string		the configuration ID for this field
-	 * @var		array		the field arguments
+	 * @var		string		the ID for this section
+	 * @var		array		the section arguments
 	 */
 	public static function add_section( $id, $args ) {
 
@@ -144,6 +160,7 @@ class Kirki {
 		$args['id']          = $id;
 		$args['panel']       = ( isset( $args['panel'] ) ) ? $args['panel'] : '';
 		$args['description'] = ( isset( $args['description'] ) ) ? $args['description'] : '';
+		$args['priority']    = ( isset( $args['priority'] ) ) ? $args['priority'] : 10;
 		self::$sections[]    = $args;
 
 	}
