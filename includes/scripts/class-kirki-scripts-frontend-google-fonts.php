@@ -98,11 +98,9 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 	 * Enqueue Google fonts if necessary
 	 */
 	function google_font() {
-		$google_link = $this->google_link();
-
-		if ( $google_link ) {
-			wp_register_style( 'kirki_google_fonts', $google_link );
-			wp_enqueue_style( 'kirki_google_fonts' );
+		if ( $this->google_link() ) {
+			$google_link = str_replace( '%3A', ':', $this->google_link() );
+			wp_enqueue_style( 'kirki_google_fonts', $google_link, array(), null );
 		}
 	}
 

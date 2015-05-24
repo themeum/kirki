@@ -73,12 +73,10 @@ class Kirki_Fonts_Font_Registry {
 
 		// Validate each font and convert to URL format
 		foreach ( $fonts as $font ) {
-			$font = trim( $font );
-
 			// Verify that the font exists
 			if ( $this->is_google_font( $font ) ) {
 				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
-				$family[] = urlencode( $font . ':' . join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) );
+				$family[] = $font . ':' . join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[$font]['variants'] ) );
 			}
 		}
 
@@ -86,12 +84,12 @@ class Kirki_Fonts_Font_Registry {
 		if ( empty( $family ) ) {
 			return '';
 		} else {
-			$request = '//fonts.googleapis.com/css?family=' . implode( '|', $family );
+			$request = str_replace( ' ', '+', '//fonts.googleapis.com/css?family=' . implode( '|', $family ) );
 		}
 
 		// load the font weight
 		$weight = ( is_array( $weight ) ) ? implode( ',', $weight ) : $weight;
-		$request .= $weight;
+		$request .= trim( $weight );
 
 		// Load the font subset
 		if ( 'all' === $subset ) {
@@ -109,7 +107,7 @@ class Kirki_Fonts_Font_Registry {
 		// Append the subset string
 		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
 
-		return esc_url( $request );
+		return $request;
 	}
 
 	/**
