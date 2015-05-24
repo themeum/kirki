@@ -11,7 +11,7 @@ class Kirki_Controls_Switch_Control extends Kirki_Control {
 	 * Render the control's content.
 	 */
 	protected function render_content() { ?>
-		<?php $i18n = Kirki_Framework::i18n(); ?>
+		<?php $i18n = Kirki_Toolkit::i18n(); ?>
 		<label>
 			<div class="switch-info">
 				<input style="display: none;" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />

@@ -22,7 +22,7 @@ class Kirki_Styles_Frontend {
 	public function uses_output() {
 
 		// Get all fields
-		$fields = Kirki_Framework::fields()->get_all();
+		$fields = Kirki_Toolkit::fields()->get_all();
 		// Are we using 'output' in any of our fields?
 		$uses_output = 'no';
 		foreach( $fields as $field ) {
@@ -59,7 +59,7 @@ class Kirki_Styles_Frontend {
 			return;
 		}
 
-		$config = Kirki_Framework::config()->get_all();
+		$config = Kirki_Toolkit::config()->get_all();
 
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 		wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
@@ -211,7 +211,7 @@ class Kirki_Styles_Frontend {
 	 */
 	public function loop_controls() {
 
-		$fields = Kirki_Framework::fields()->get_all();
+		$fields = Kirki_Toolkit::fields()->get_all();
 		$styles   = array();
 
 		// Early exit if no fields are found.

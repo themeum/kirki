@@ -8,7 +8,7 @@ class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 	 */
 	public function customize_controls_print_scripts() {
 
-		$options = Kirki_Framework::config()->get_all();
+		$options = Kirki_Toolkit::config()->get_all();
 		$script = '';
 		if ( '' != $options['logo_image'] || '' != $options['description'] ) {
 

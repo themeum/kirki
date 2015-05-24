@@ -11,7 +11,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 	function google_link() {
 
-		$fields = Kirki_Framework::fields()->get_all();
+		$fields = Kirki_Toolkit::fields()->get_all();
 
 		// Early exit if no fields are found.
 		if ( ! $fields || empty( $fields ) ) {
@@ -19,7 +19,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		}
 
 		// Get an array of all the google fonts
-		$google_fonts = Kirki_Framework::fonts()->get_google_fonts();
+		$google_fonts = Kirki_Toolkit::fonts()->get_google_fonts();
 
 		$fonts = array();
 		foreach ( $fields as $field ) {
@@ -60,7 +60,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
 				$font_families[] = $font['font-family'];
 
-				if ( Kirki_Framework::fonts()->is_google_font( $font['font-family'] ) ) {
+				if ( Kirki_Toolkit::fonts()->is_google_font( $font['font-family'] ) ) {
 					$has_google_font = true;
 				}
 
@@ -90,7 +90,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 			$font_families = false;
 		}
 
-		return ( $font_families ) ? Kirki_Framework::fonts()->get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
+		return ( $font_families ) ? Kirki_Toolkit::fonts()->get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 
 	}
 

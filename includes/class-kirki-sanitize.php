@@ -31,7 +31,7 @@ class Kirki_Sanitize {
 	public static function choice( $input, $setting ) {
 
 		global $wp_customize;
-		$config = Kirki_Framework::config()->get_all();
+		$config = Kirki_Toolkit::config()->get_all();
 
 		if ( '' != $config['option_name'] ) {
 			return sanitize_key( $input );
@@ -49,7 +49,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_repeat( $value ) {
-		$i18n = Kirki_Framework::i18n();
+		$i18n = Kirki_Toolkit::i18n();
 		$valid = array(
 			'no-repeat' => $i18n['no-repeat'],
 			'repeat'    => $i18n['repeat-all'],
@@ -68,7 +68,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_size( $value ) {
-		$i18n = Kirki_Framework::i18n();
+		$i18n = Kirki_Toolkit::i18n();
 		$valid = array(
 			'inherit' => $i18n['inherit'],
 			'cover'   => $i18n['cover'],
@@ -85,7 +85,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_attach( $value ) {
-		$i18n = Kirki_Framework::i18n();
+		$i18n = Kirki_Toolkit::i18n();
 		$valid = array(
 			'inherit' => $i18n['inherit'],
 			'fixed'   => $i18n['fixed'],
@@ -102,7 +102,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_position( $value ) {
-		$i18n = Kirki_Framework::i18n();
+		$i18n = Kirki_Toolkit::i18n();
 		$valid = array(
 			'left-top'      => $i18n['left-top'],
 			'left-center'   => $i18n['left-center'],

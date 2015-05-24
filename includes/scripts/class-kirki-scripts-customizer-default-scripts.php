@@ -7,7 +7,7 @@ class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Scr
 	 */
 	public function customize_controls_enqueue_scripts() {
 
-		$config = Kirki_Framework::config()->get_all();
+		$config = Kirki_Toolkit::config()->get_all();
 		$kirki_url = ( '' != $config['url_path'] )? $config['url_path'] : KIRKI_URL;
 
 		wp_enqueue_script( 'kirki_customizer_js', trailingslashit( $kirki_url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ) );

@@ -10,7 +10,7 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 	 */
 	function customize_controls_print_footer_scripts() {
 
-		$fields = Kirki_Framework::fields()->get_all();
+		$fields = Kirki_Toolkit::fields()->get_all();
 
 		$scripts = array();
 		$script  = '';

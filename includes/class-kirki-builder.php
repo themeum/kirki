@@ -25,7 +25,7 @@ class Kirki_Builder {
 		include_once( KIRKI_PATH . '/includes/class-kirki-control.php' );
 		include_once( KIRKI_PATH . '/includes/class-kirki-controls.php' );
 
-		$fields = Kirki_Framework::fields()->get_all();
+		$fields = Kirki_Toolkit::fields()->get_all();
 
 		// Early exit if controls are not set or if they're empty
 		if ( empty( $fields ) ) {
