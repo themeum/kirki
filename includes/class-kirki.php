@@ -56,7 +56,7 @@ class Kirki {
 		if ( 'theme_mod' == $mode ) {
 
 			// We're using theme_mods
-			return get_theme_mod( $field_id, self::$fields[$field_id]['default'] );
+			$value = get_theme_mod( $field_id, self::$fields[$field_id]['default'] );
 
 		} elseif ( 'option' == $mode ) {
 
@@ -66,16 +66,30 @@ class Kirki {
 				// Options are serialized as a single option in the db
 				$options = get_option( $option_name );
 				$value   = ( isset( $options[$field_id] ) ) ? $options[$field_id] : self::$fields[$field_id]['default'];
-				return maybe_unserialize( $value );
+				$value   = maybe_unserialize( $value );
 
 			} else {
 
 				// Each option separately saved in the db
-				return get_option( $field_id, self::$fields[$field_id]['default'] );
+				$value = get_option( $field_id, self::$fields[$field_id]['default'] );
 
 			}
 
 		}
+
+		if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
+
+			switch ( $this->fields[$field_id]['type'] ) {
+
+				case 'image' :
+					$value = Kirki_Helper::get_image_from_url( $value );
+					break;
+
+			}
+
+		}
+
+		return $value;
 
 	}
 
