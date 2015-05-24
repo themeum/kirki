@@ -23,6 +23,7 @@ class Kirki_Helper {
 	 * @return 	array		array()
 	 */
 	public static function get_image_from_url( $url ) {
+
 		$image_id = self::get_image_id( $url );
 		$image    = wp_get_attachment_image_src( $image_id, 'full' );
 
@@ -32,6 +33,23 @@ class Kirki_Helper {
 			'height'    => $image[2],
 			'thumbnail' => $image[3],
 		);
+
+	}
+
+	/**
+	 * Helper function that gets posts and fomats them in a way so they can be used in select fields etc.
+	 */
+	public static function get_posts( $args ) {
+
+		$posts = get_posts( $args );
+
+		$items = array();
+		foreach ( $posts as $post ) {
+			$items[$post->ID] = $post->post_title;
+		}
+
+		return $items;
+
 	}
 
 }
