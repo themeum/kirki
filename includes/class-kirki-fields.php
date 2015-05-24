@@ -566,40 +566,40 @@ class Kirki_Fields {
 
 		switch ( $field_type ) {
 			case 'checkbox' :
-				$sanitize_callback = 'kirki_sanitize_checkbox';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
 			case 'color' :
 				$sanitize_callback = 'sanitize_hex_color';
 				break;
 			case 'color-alpha' :
-				$sanitize_callback = 'kirki_sanitize_rgba';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'rgba' );
 				break;
 			case 'image' :
 				$sanitize_callback = 'esc_url_raw';
 				break;
 			case 'radio' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			case 'radio-image' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			case 'radio-buttonset' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			case 'toggle' :
-				$sanitize_callback = 'kirki_sanitize_checkbox';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
 			case 'switch' :
-				$sanitize_callback = 'kirki_sanitize_checkbox';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
 			case 'select' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			case 'dropdown-pages' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			case 'slider' :
-				$sanitize_callback = 'kirki_sanitize_number';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
 				break;
 			case 'text' :
 				$sanitize_callback = 'esc_textarea';
@@ -614,19 +614,19 @@ class Kirki_Fields {
 				$sanitize_callback = 'esc_url_raw';
 				break;
 			case 'number' :
-				$sanitize_callback = 'kirki_sanitize_number';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
 				break;
 			case 'multicheck' :
 				$sanitize_callback = 'esc_attr';
 				break;
 			case 'sortable' :
-				$sanitize_callback = 'kirki_sanitize_sortable';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
 				break;
 			case 'palette' :
-				$sanitize_callback = 'kirki_sanitize_choice';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
 				break;
 			default :
-				$sanitize_callback = 'kirki_sanitize_unfiltered';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
 		}
 
 		return $sanitize_callback;

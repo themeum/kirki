@@ -115,7 +115,7 @@ class Kirki_Styles_Frontend {
 				$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 				$value = kirki_get_option( $field['settings_raw'] . '_color' );
 				if ( 'color-alpha' == $color_mode ) {
-					$bg_color = kirki_sanitize_rgba( $value );
+					$bg_color = Kirki_Sanitize::rgba( $value );
 				} else {
 					$bg_color = Kirki_Color::sanitize_hex( $value );
 				}
@@ -126,23 +126,23 @@ class Kirki_Styles_Frontend {
 			}
 			if ( isset( $field['default']['repeat'] ) ) {
 				$bg_repeat = kirki_get_option( $field['settings_raw'] . '_repeat' );
-				$bg_repeat = kirki_sanitize_bg_repeat( $bg_repeat );
+				$bg_repeat = Kirki_Sanitize::repeat( $bg_repeat );
 			}
 			if ( isset( $field['default']['size'] ) ) {
 				$bg_size = kirki_get_option( $field['settings_raw'] . '_size' );
-				$bg_size = kirki_sanitize_bg_size( $bg_size );
+				$bg_size = Kirki_Sanitize::bg_size( $bg_size );
 			}
 			if ( isset( $field['default']['attach'] ) ) {
 				$bg_attach = kirki_get_option( $field['settings_raw'] . '_attach' );
-				$bg_attach = kirki_sanitize_bg_attach( $bg_attach );
+				$bg_attach = Kirki_Sanitize::bg_attach( $bg_attach );
 			}
 			if ( isset( $field['default']['position'] ) ) {
 				$bg_position = kirki_get_option( $field['settings_raw'] . '_position' );
-				$bg_position = kirki_sanitize_bg_position( $bg_position );
+				$bg_position = Kirki_Sanitize::bg_position( $bg_position );
 			}
 			if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
 				$bg_opacity = kirki_get_option( $field['settings_raw'] . '_opacity' );
-				$bg_opacity = kirki_sanitize_number( $bg_opacity );
+				$bg_opacity = Kirki_Sanitize::number( $bg_opacity );
 				if ( isset( $bg_color ) ) {
 					// If we're using an opacity other than 100, then convert the color to RGBA.
 					$bg_color = ( 100 != $bg_opacity ) ? Kirki_Color::get_rgba( $bg_color, $bg_opacity ) : $bg_color;

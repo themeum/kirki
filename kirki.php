@@ -43,7 +43,6 @@ spl_autoload_register( 'kirki_autoload_classes' );
 
 // Include helper files
 include_once( KIRKI_PATH . '/includes/deprecated.php' );
-include_once( KIRKI_PATH . '/includes/sanitize.php' );
 include_once( KIRKI_PATH . '/includes/helpers.php' );
 // Include the API class
 include_once( KIRKI_PATH . '/includes/class-kirki.php' );
