@@ -180,4 +180,20 @@ class Kirki {
 
 	}
 
+	/**
+	 * Helper function that gets posts and fomats them in a way so they can be used in select fields etc.
+	 */
+	public static function get_posts( $args ) {
+
+		$posts = get_posts( $args );
+
+		$items = array();
+		foreach ( $posts as $post ) {
+			$items[$post->ID] = $post->post_title;
+		}
+
+		return $items;
+
+	}
+
 }
