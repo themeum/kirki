@@ -34,12 +34,58 @@ class Kirki {
 	}
 
 	/**
+	 * Get the value of an option from the db.
+	 *
+	 * @var 	string	the ID of the configuration corresponding to this field
+	 * @var		string	the field_id (defined as 'settings' in the field arguments)
+	 *
+	 * @return 	mixed 	the saved value of the field.
+	 *
+	 */
+	public static function get_option(  $config_id = '', $field_id = '' ) {
+
+		if ( ( '' == $field_id ) ) {
+			return null;
+		}
+
+		// Are we using options or theme_mods?
+		$mode = self::$config[$config_id]['option_type'];
+		// Is there an option name set?
+		$option_name = ( 'option' == $mode && isset( self::$config[$config_id]['option'] ) ) ? self::$config[$config_id]['option'] : false;
+
+		if ( 'theme_mod' == $mode ) {
+
+			// We're using theme_mods
+			return get_theme_mod( $field_id, self::$fields[$field_id]['default'] );
+
+		} elseif ( 'option' == $mode ) {
+
+			// We're using options
+			if ( $option_name ) {
+
+				// Options are serialized as a single option in the db
+				$options = get_option( $option_name );
+				$value   = ( isset( $options[$field_id] ) ) ? $options[$field_id] : self::$fields[$field_id]['default'];
+				return maybe_unserialize( $value );
+
+			} else {
+
+				// Each option separately saved in the db
+				return get_option( $field_id, self::$fields[$field_id]['default'] );
+
+			}
+
+		}
+
+	}
+
+	/**
 	 * Sets the configuration options.
 	 *
 	 * @var		string		the configuration ID.
 	 * @var		array		the configuration options.
 	 */
-	public static function add_config( $config_id, $args ) {
+	public static function add_config( $config_id, $args = array() ) {
 
 		$default_args = array(
 			'capability'    => 'edit_theme_options',
