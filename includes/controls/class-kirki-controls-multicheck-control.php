@@ -55,8 +55,8 @@ class Kirki_Controls_MultiCheck_Control extends Kirki_Control {
 			<?php
 			foreach ( $this->choices as $value => $label ) {
 				printf('<label for="%s"><input class="tf-multicheck" id="%s" type="checkbox" value="%s" %s/> %s</label><br>',
-					$this->id . $value,
-					$this->id . $value,
+					$this->id . esc_attr( $value ),
+					$this->id . esc_attr( $value ),
 					esc_attr( $value ),
 					checked( in_array( $value, $values ), true, false ),
 					$label
