@@ -61,7 +61,7 @@ class Kirki_Styles_Frontend {
 
 		$config = Kirki_Framework::config()->get_all();
 
-		$root_url = ( '' != $config['url_path'] ) ? Kirki_Framework::config()->getOrThrow( 'url_path' ) : KIRKI_URL;
+		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 		wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
 
 	}

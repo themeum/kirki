@@ -27,24 +27,6 @@ class Kirki_Config {
 	}
 
 	/**
-	 * Get a configuration value or throw an exception if that value is mandatory
-	 *
-	 * @param string $key     The configuration key we are interested in
-	 *
-	 * @return mixed
-	 */
-	public function getOrThrow( $key ) {
-
-		$cfg = $this->get_all();
-		if ( isset( $cfg[$key] ) ) {
-			return $cfg[$key];
-		}
-
-		throw new RuntimeException( sprintf( __( 'Configuration key %s is mandatory and has not been specified', 'kirki' ), $key ) );
-
-	}
-
-	/**
 	 * Get the configuration options for the Kirki customizer.
 	 *
 	 * @uses 'kirki/config' filter.
