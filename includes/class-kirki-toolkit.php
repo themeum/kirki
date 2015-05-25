@@ -10,24 +10,16 @@ class Kirki_Toolkit {
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
 
-	/** @var string Version number */
 	public static $version = '1.0.0-alpha';
 
-	/** @var Config Configuration */
-	public $config = null;
-
-	/** @var FontRegistry The font registry */
+	public $config        = null;
 	public $font_registry = null;
+	public $scripts       = null;
+	public $fields        = null;
+	public $api           = null;
+	public $settings      = null;
+	public $controls      = null;
 
-	/** @var scripts */
-	public $scripts = null;
-
-	/** @var field */
-	public $fields = null;
-
-	public $api = null;
-
-	public $builder = null;
 
 	/**
 	 * Access the single instance of this class

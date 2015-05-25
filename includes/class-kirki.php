@@ -19,6 +19,7 @@ class Kirki {
 
 	/**
 	 * Helper function that adds the fields, sections and panels to the customizer.
+	 * @var	object	The WordPress Customizer object
 	 */
 	public function add_to_customizer( $wp_customize ) {
 		$this->fields_from_filters();
@@ -123,6 +124,10 @@ class Kirki {
 
 	}
 
+	/**
+	 * register our panels to the WordPress Customizer
+	 * @var	object	The WordPress Customizer object
+	 */
 	public function add_panels( $wp_customize ) {
 
 		if ( ! empty( self::$panels ) ) {
@@ -138,6 +143,10 @@ class Kirki {
 		}
 	}
 
+	/**
+	 * register our sections to the WordPress Customizer
+	 * @var	object	The WordPress Customizer object
+	 */
 	public function add_sections( $wp_customize ) {
 
 		if ( ! empty( self::$sections ) ) {
@@ -155,17 +164,18 @@ class Kirki {
 
 	}
 
+	/**
+	 * Create the settings and controls from the $fields array and register them.
+	 * @var	object	The WordPress Customizer object
+	 */
 	public function add_fields( $wp_customize ) {
 
 		$fields = self::process_fields( self::$fields );
 
-		$settings = new Kirki_Settings();
-		$controls = new Kirki_Controls();
-
 		foreach ( $fields as $field ) {
 			if ( 'background' != $field['type'] ) {
-				$settings->add( $wp_customize, $field );
-				$controls->add( $wp_customize, $field );
+				Kirki()->settings->add( $wp_customize, $field );
+				Kirki()->controls->add( $wp_customize, $field );
 			}
 		}
 

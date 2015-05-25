@@ -55,11 +55,13 @@ function Kirki() {
 	$kirki = Kirki_Toolkit::get_instance();
 
 	$kirki->field         = new Kirki_Field();
-	$kirki->api           = new Kirki();
 	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
 	$kirki->config        = new Kirki_Config();
 	$kirki->scripts       = new Kirki_Scripts_Registry();
 	$kirki->styles        = new Kirki_Styles();
+	$kirki->settings      = new Kirki_Settings();
+	$kirki->controls      = new Kirki_Controls();
+	$kirki->api           = new Kirki();
 
 	return $kirki;
 
