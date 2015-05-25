@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name:   Kirki Framework
+Plugin Name:   Kirki Toolkit
 Plugin URI:    http://kirki.org
-Description:   An options framework using and extending the WordPress Customizer
+Description:   The ultimate WordPress Customizer Toolkit
 Author:        Aristeides Stathopoulos
 Author URI:    http://aristeides.com
-Version:       0.8.4
+Version:       1.0.0-alpha
 Text Domain:   kirki
 */
 

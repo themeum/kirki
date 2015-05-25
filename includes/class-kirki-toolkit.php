@@ -11,7 +11,7 @@ class Kirki_Toolkit {
 	public static $instance = null;
 
 	/** @var string Version number */
-	public static $version = '0.8.4';
+	public static $version = '1.0.0-alpha';
 
 	/** @var Config Configuration */
 	public $config = null;
