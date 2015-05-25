@@ -227,4 +227,41 @@ class Kirki {
 
 	}
 
+	/**
+	 * Build the variables.
+	 *
+	 * @return array 	('variable-name' => value)
+	 */
+	function get_variables() {
+
+		$variables = array();
+
+		foreach ( $this->fields as $field ) {
+
+			if ( isset( $field['variables'] ) && false != $field['variables'] ) {
+
+				foreach ( $field['variables'] as $field_variable ) {
+
+					if ( isset( $field_variable['name'] ) ) {
+						$variable_name     = esc_attr( $field_variable['name'] );
+						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
+
+						if ( $variable_callback ) {
+							$variables[$field_variable['name']] = call_user_func( $field_variable['callback'], kirki_get_option( $field['settings'] ) );
+						} else {
+							$variables[$field_variable['name']] = self::get_option( $field['settings'] );
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		return apply_filters( 'kirki/variable', $variables );
+
+	}
+
 }
