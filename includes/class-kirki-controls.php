@@ -5,25 +5,41 @@
  */
 class Kirki_Controls {
 
+	public $control_types;
+
 	public function __construct() {
-		global $wp_customize;
+
+		// Control types and their classes.
+		$this->control_types = 	apply_filters( 'kirki/control_types', array(
+			'color'           => 'WP_Customize_Color_Control',
+			'color-alpha'     => 'Kirki_Controls_Color_Alpha_Control',
+			'image'           => 'WP_Customize_Image_Control',
+			'upload'          => 'WP_Customize_Upload_Control',
+			'switch'          => 'Kirki_Controls_Switch_Control',
+			'toggle'          => 'Kirki_Controls_Toggle_Control',
+			'radio-buttonset' => 'Kirki_Controls_Radio_ButtonSet_Control',
+			'radio-image'     => 'Kirki_Controls_Radio_Image_Control',
+			'sortable'        => 'Kirki_Controls_Sortable_Control',
+			'slider'          => 'Kirki_Controls_Slider_Control',
+			'number'          => 'Kirki_Controls_Number_Control',
+			'multicheck'      => 'Kirki_Controls_MultiCheck_Control',
+			'palette'         => 'Kirki_Controls_Palette_Control',
+			'custom'          => 'Kirki_Controls_Custom_Control',
+			'editor'          => 'Kirki_Controls_Editor_Control',
+			'select2'         => 'Kirki_Controls_Select_Control'
+		) );
+
+		// global $wp_customize;
 		// add_action( 'customize_register', array( $this, 'register_control_type' ) );
+
 	}
 
 	public function register_control_type( $wp_customize ) {
-		$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Editor_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Multicheck_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Image_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Sortable_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Tab_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
+		foreach ( $this->control_types as $type => $control_class ) {
+			if ( false !== strpos( $control_class, 'Kirki' ) ) {
+				$wp_customize->register_control_type( $control_class );
+			}
+		}
 	}
 
 	/**
@@ -33,82 +49,11 @@ class Kirki_Controls {
 	 */
 	public function add( $wp_customize, $field ) {
 
-		switch ( $field['type'] ) {
-
-			case 'color' :
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'color-alpha' :
-				$wp_customize->add_control( new Kirki_Controls_Color_Alpha_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'image' :
-				$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'upload' :
-				$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'switch' :
-				$wp_customize->add_control( new Kirki_Controls_Switch_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'toggle' :
-				$wp_customize->add_control( new Kirki_Controls_Toggle_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'radio-buttonset' :
-				$wp_customize->add_control( new Kirki_Controls_Radio_ButtonSet_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'radio-image' :
-				$wp_customize->add_control( new Kirki_Controls_Radio_Image_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'sortable' :
-				$wp_customize->add_control( new Kirki_Controls_Sortable_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'slider' :
-				$wp_customize->add_control( new Kirki_Controls_Slider_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'number' :
-				$wp_customize->add_control( new Kirki_Controls_Number_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'multicheck' :
-				$wp_customize->add_control( new Kirki_Controls_MultiCheck_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'palette' :
-				$wp_customize->add_control( new Kirki_Controls_Palette_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'custom' :
-				$wp_customize->add_control( new Kirki_Controls_Custom_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'editor' :
-				$wp_customize->add_control( new Kirki_Controls_Editor_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'select2' :
-				$wp_customize->add_control( new Kirki_Controls_Select_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
-			case 'background' :
-				// Do nothing.
-				// The 'background' field is just the sum of its sub-fields
-				// which are created individually.
-				break;
-
-			default :
-				$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $field['id'], $field ) );
-				break;
-
+		if ( array_key_exists( $field['type'], $this->control_types ) ) {
+			$class_name = $this->control_types[$field['type']];
+			$wp_customize->add_control( new $class_name( $wp_customize, $field['id'], $field ) );
+		} else {
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $field['id'], $field ) );
 		}
 
 	}
