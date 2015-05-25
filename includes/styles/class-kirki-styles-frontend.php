@@ -126,7 +126,7 @@ class Kirki_Styles_Frontend {
 			}
 			if ( isset( $field['default']['repeat'] ) ) {
 				$bg_repeat = kirki_get_option( $field['settings_raw'] . '_repeat' );
-				$bg_repeat = Kirki_Sanitize::repeat( $bg_repeat );
+				$bg_repeat = Kirki_Sanitize::bg_repeat( $bg_repeat );
 			}
 			if ( isset( $field['default']['size'] ) ) {
 				$bg_size = kirki_get_option( $field['settings_raw'] . '_size' );
