@@ -253,6 +253,10 @@ class Kirki {
 	 */
 	public static function add_field( $config_id, $args ) {
 
+		if ( '' == $config_id ) {
+			$config_id = 'global';
+		}
+
 		// Get the configuration options
 		$config = self::$config[$config_id];
 

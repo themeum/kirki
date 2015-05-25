@@ -99,4 +99,5 @@ function kirki_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 
-include_once( KIRKI_PATH . '/sample-config.php' );
+// Add an empty config for global fields
+Kirki::add_config( '' );
