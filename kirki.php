@@ -72,3 +72,28 @@ $kirki = Kirki();
 if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
 	include_once( KIRKI_PATH . '/includes/redux-compatibility.php' );
 }
+
+/**
+ * Load plugin textdomain.
+ *
+ * @since 0.8.0
+ */
+function kirki_load_textdomain() {
+	$textdomain = 'kirki';
+
+	// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
+	if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
+	}
+	// Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
+	if ( ! isset( $file ) && file_exists( KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+		$file = KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo';
+	}
+
+	if ( isset( $file ) ) {
+		load_textdomain( $textdomain, $file );
+	}
+
+	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
+}
+add_action( 'plugins_loaded', 'kirki_load_textdomain' );
