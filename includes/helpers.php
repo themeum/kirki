@@ -1,16 +1,5 @@
 <?php
 
-/**
- * Helper function
- *
- * removes an item from an array
- */
-function kirki_array_delete( $idx, $array ) {
-
-	unset( $array[$idx] );
-	return ( is_array( $array ) ) ? array_values( $array ) : null;
-
-}
 
 /**
  * Get the value of a field.

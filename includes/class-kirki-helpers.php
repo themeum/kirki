@@ -3,6 +3,18 @@
 class Kirki_Helper {
 
 	/**
+	 * Helper function
+	 *
+	 * removes an item from an array
+	 */
+	function array_delete( $idx, $array ) {
+
+		unset( $array[$idx] );
+		return ( is_array( $array ) ) ? array_values( $array ) : null;
+
+	}
+
+	/**
 	 * Returns the attachment object
 	 *
 	 * @var 	string		URL to the image
