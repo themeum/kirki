@@ -1,6 +1,6 @@
 === Kirki ===
 Contributors: aristath, fovoc
-Tags: customizer, options framework, theme mods
+Tags: customizer, options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.2
@@ -43,8 +43,9 @@ The following controls are included:
 * Number
 * Palette
 * Editor (TinyMCE)
+* Select2
 
-For documentation and examples on how to use these controls, please visit [kirki.org](http://kirki.org/#fields).
+For documentation and examples on how to use these controls, please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
 
 
 == Installation ==
@@ -53,16 +54,52 @@ For documentation and examples on how to use these controls, please visit [kirki
 From your dashboard go to Plugins => Add New.
 Search for "Kirki" and install it.
 Once you install it, activate it.
-For configuration instructions please visit http://kirki.org/#configuration
+For configuration instructions please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
 
 **Method 2: Embed in your theme**
-Please visit http://kirki.org for documentation and instructions.
+Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for documentation and instructions.
 
 == Sample Theme ==
 
 To get an idea on how to include Kirki in your next project, a [sample theme](https://github.com/aristath/kirki/wiki/Sample-Theme-with-Kirki) has been created.
 
 == Changelog ==
+
+= 1.0.0-alpha =
+
+New: Added a new API. See https://github.com/aristath/kirki/wiki for documentation.
+New: Minimum PHP requirement is now PHP 5.2
+Tweak: Use active_callback for required arguments instead of custom JS
+New: Added a Select2 field type.
+New: Introducing the Kirki::get_option() method to get values.
+Tweak: allow using serialized options.
+New: $units to all outputs to support '!important'
+Fix: avoid errors when Color is undefined
+Fix: Use WP_Filesystem to get the google fonts array from a json file
+Fix: Radio-Button styling
+Fix: PHP Notices
+Fix: Properly sanitising rgba colors
+Fix: Properly sanitize numbers
+Tweak: Adding some more inline docs
+Tweak: Updated translation files
+New: added 'prefix' and 'suffix' arguments to output. See https://github.com/aristath/kirki/issues/200#issuecomment-95994419
+New: Added ability to get variables for CSS preprocessors from the customizer values
+Fix: Typos
+Tweak: Better color manipulation in the Kirki_Color class
+Removed: remove the 'stylesheet_id' from the configuration.
+Tweak: Move secondary classes instantiation to the Kirki() function.
+Tweak: set a $kirki global
+New: Ability to create panels & sections using the new API.
+Tweak: deprecate getOrThrow method in the Kirki_Config class.
+New: added a get_posts method to the Kirki class.
+New: Implement width argument in the styling options. See https://github.com/aristath/kirki/wiki/Styling-the-Customizer
+Tweak: Move sanitisation functions to a Kirki_Sanitize class.
+Tweak: Rename Kirki_Framework to Kirki_Toolkit.
+Fix: Make sure all variables are escaped on output
+Tweak: Move variables to the new API
+Tweak: simplify Kirki_Controls class
+New: add kirki/control_types filter
+Tweak: move the kirki/fields & kirki/controls filters to the new API
 
 = 0.8.4 =
 
