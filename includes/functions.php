@@ -3,7 +3,7 @@
 function kirki_field_active_callback( $control ) {
 
 	// Get all fields
-	$fields = Kirki_Toolkit::fields()->get_all();
+	$fields = Kirki::$fields;
 
 	if ( ! isset( $fields[$control->id] ) ) {
 		return true;

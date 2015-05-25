@@ -22,7 +22,7 @@ class Kirki_Styles_Frontend {
 	public function uses_output() {
 
 		// Get all fields
-		$fields = Kirki_Toolkit::fields()->get_all();
+		$fields = Kirki::$fields;
 		// Are we using 'output' in any of our fields?
 		$uses_output = 'no';
 		foreach( $fields as $field ) {
@@ -211,8 +211,8 @@ class Kirki_Styles_Frontend {
 	 */
 	public function loop_controls() {
 
-		$fields = Kirki_Toolkit::fields()->get_all();
-		$styles   = array();
+		$fields = Kirki::$fields;
+		$styles = array();
 
 		// Early exit if no fields are found.
 		if ( ! $fields || empty( $fields ) ) {

@@ -3,32 +3,7 @@
 /**
  * Sanitizes all variables from our fields and separates complex fields to their sub-fields.
  */
-class Kirki_Fields {
-
-	/** @var array The controls */
-	private $fields = null;
-
-	/**
-	 * Get an array of all the fields
-	 */
-	public function get_all() {
-
-		if ( $this->fields == null ) {
-
-			$fields = apply_filters( 'kirki/controls', array() );
-			$fields = apply_filters( 'kirki/fields', $fields );
-			$fields = $this->build_background_fields( $fields );
-
-			$this->fields = array();
-			foreach ( $fields as $field ) {
-				$field = $this->sanitize_field( $field );
-				$this->fields[$field['settings']] = $field;
-			}
-
-		}
-
-		return $this->fields;
-	}
+class Kirki_Field {
 
 	/**
 	 * Sanitizes the field
@@ -36,28 +11,28 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize_field( $field ) {
+	public static function sanitize_field( $field ) {
 
-		$field['settings_raw']      = $this->sanitize_settings_raw( $field );
-		$field['default']           = $this->sanitize_default( $field );
-		$field['label']             = $this->sanitize_label( $field );
-		$field['help']              = $this->sanitize_help( $field );
-		$field['description']       = $this->sanitize_description( $field );
-		$field['required']          = $this->sanitize_required( $field );
-		$field['transport']         = $this->sanitize_transport( $field );
-		$field['type']              = $this->sanitize_control_type( $field );
-		$field['option_type']       = $this->sanitize_type( $field );
-		$field['section']           = $this->sanitize_section( $field );
-		$field['settings']          = $this->sanitize_settings( $field );
-		$field['priority']          = $this->sanitize_priority( $field );
-		$field['choices']           = $this->sanitize_choices( $field );
-		$field['output']            = $this->sanitize_output( $field );
-		$field['sanitize_callback'] = $this->sanitize_callback( $field );
-		$field['js_vars']           = $this->sanitize_js_vars( $field );
-		$field['id']                = $this->sanitize_id( $field );
-		$field['capability']        = $this->sanitize_capability( $field );
-		$field['variables']         = $this->sanitize_variables( $field );
-		$field['active_callback']   = $this->sanitize_active_callback( $field );
+		$field['settings_raw']      = self::sanitize_settings_raw( $field );
+		$field['default']           = self::sanitize_default( $field );
+		$field['label']             = self::sanitize_label( $field );
+		$field['help']              = self::sanitize_help( $field );
+		$field['description']       = self::sanitize_description( $field );
+		$field['required']          = self::sanitize_required( $field );
+		$field['transport']         = self::sanitize_transport( $field );
+		$field['type']              = self::sanitize_control_type( $field );
+		$field['option_type']       = self::sanitize_type( $field );
+		$field['section']           = self::sanitize_section( $field );
+		$field['settings']          = self::sanitize_settings( $field );
+		$field['priority']          = self::sanitize_priority( $field );
+		$field['choices']           = self::sanitize_choices( $field );
+		$field['output']            = self::sanitize_output( $field );
+		$field['sanitize_callback'] = self::sanitize_callback( $field );
+		$field['js_vars']           = self::sanitize_js_vars( $field );
+		$field['id']                = self::sanitize_id( $field );
+		$field['capability']        = self::sanitize_capability( $field );
+		$field['variables']         = self::sanitize_variables( $field );
+		$field['active_callback']   = self::sanitize_active_callback( $field );
 
 		return $field;
 
@@ -69,7 +44,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string. If not set, then defaults to text.
 	 */
-	public function sanitize_control_type( $field ) {
+	public static function sanitize_control_type( $field ) {
 
 		if ( ! isset( $field['type'] ) ) {
 			return 'text';
@@ -105,7 +80,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string. (theme_mod|option)
 	 */
-	public function sanitize_type( $field ) {
+	public static function sanitize_type( $field ) {
 		$config = Kirki_Toolkit::config()->get_all();
 		return esc_attr( $config['options_type'] );
 	}
@@ -116,7 +91,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string.
 	 */
-	public function sanitize_variables( $field ) {
+	public static function sanitize_variables( $field ) {
 		return ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : false;
 	}
 
@@ -126,7 +101,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string callable function name.
 	 */
-	public function sanitize_active_callback( $field ) {
+	public static function sanitize_active_callback( $field ) {
 		return ( isset( $field['active_callback'] ) ) ? 'active_callback' : 'kirki_field_active_callback';
 	}
 
@@ -136,7 +111,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string. (theme_mod|option)
 	 */
-	public function sanitize_capability( $field ) {
+	public static function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
 			$config = Kirki_Toolkit::config()->get_all();
 			return esc_attr( $config['capability'] );
@@ -151,7 +126,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_settings_raw( $field ) {
+	public static function sanitize_settings_raw( $field ) {
 
 		/**
 		 * Compatibility tweak
@@ -174,12 +149,12 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string.
 	 */
-	public function sanitize_settings( $field ) {
+	public static function sanitize_settings( $field ) {
 
 		$config = Kirki_Toolkit::config()->get_all();
 
 		// Pass this throught the sanitize_settings_raw method first.
-		$field['settings'] = $this->sanitize_settings_raw( $field );
+		$field['settings'] = self::sanitize_settings_raw( $field );
 
 		// Checking and sanitization of config values is handled by the Config class.
 		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
@@ -197,7 +172,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_label( $field ) {
+	public static function sanitize_label( $field ) {
 		return ( isset( $field['label'] ) ) ? esc_html( $field['label'] ) : '';
 	}
 
@@ -207,7 +182,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_section( $field ) {
+	public static function sanitize_section( $field ) {
 		return sanitize_key( $field['section'] );
 	}
 
@@ -220,7 +195,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_id( $field ) {
+	public static function sanitize_id( $field ) {
 		$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
 		return sanitize_key( $id );
 	}
@@ -231,7 +206,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return mixed
 	 */
-	public function sanitize_default( $field ) {
+	public static function sanitize_default( $field ) {
 		// If ['default'] is not set, set an empty value
 		if ( ! isset( $field['default'] ) ) {
 			$field['default'] = '';
@@ -255,7 +230,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_description( $field ) {
+	public static function sanitize_description( $field ) {
 
 		/**
 		 * Compatibility tweak
@@ -279,7 +254,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string
 	 */
-	public function sanitize_help( $field ) {
+	public static function sanitize_help( $field ) {
 
 		/**
 		 * Compatibility tweak
@@ -303,7 +278,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize_choices( $field ) {
+	public static function sanitize_choices( $field ) {
 		return isset( $field['choices'] ) ? $field['choices'] : array();
 	}
 
@@ -313,7 +288,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize_output( $field ) {
+	public static function sanitize_output( $field ) {
 		// Further sanitization on the values of the array happens near the output.
 		// This just makes sure the value is defined to avoid errors.
 		return isset( $field['output'] ) ? $field['output'] : null;
@@ -325,7 +300,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return string postMessage|refresh (defaults to refresh)
 	 */
-	public function sanitize_transport( $field ) {
+	public static function sanitize_transport( $field ) {
 		return ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) ? 'postMessage' : 'refresh';
 	}
 
@@ -335,7 +310,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return mixed the sanitization callback for this setting
 	 */
-	public function sanitize_callback( $field ) {
+	public static function sanitize_callback( $field ) {
 
 		if ( isset( $field['sanitize_callback'] ) && ! empty( $field['sanitize_callback'] ) ) {
 			return $field['sanitize_callback'];
@@ -351,7 +326,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize_js_vars( $field ) {
+	public static function sanitize_js_vars( $field ) {
 		if ( isset( $field['js_vars'] ) ) {
 			return $field['js_vars'];
 		} else {
@@ -365,7 +340,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return array
 	 */
-	public function sanitize_required( $field ) {
+	public static function sanitize_required( $field ) {
 		// The individual options of the array get sanitized in the Required class.
 		// We're just making sure this is defined here.
 		return isset( $field['required'] ) ? $field['required'] : false;
@@ -377,7 +352,7 @@ class Kirki_Fields {
 	 * @param array the field definition
 	 * @return int
 	 */
-	public function sanitize_priority( $field ) {
+	public static function sanitize_priority( $field ) {
 
 		if ( isset( $field['priority'] ) ) {
 			return intval( $field['priority'] );
@@ -391,7 +366,7 @@ class Kirki_Fields {
 	 * Build the background fields.
 	 * Takes a single field with type = background and explodes it to multiple controls.
 	 */
-	public function build_background_fields( $fields ) {
+	public static function build_background_fields( $fields ) {
 		$i18n = Kirki_Toolkit::i18n();
 
 		foreach ( $fields as $field ) {

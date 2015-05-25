@@ -21,16 +21,25 @@ class Kirki {
 	 * Helper function that adds the fields, sections and panels to the customizer.
 	 */
 	public function add_to_customizer( $wp_customize ) {
-		add_filter( 'kirki/fields', array( $this, 'merge_fields' ) );
-		add_action( 'customize_register', array( $this, 'add_panels' ), 998 );
-		add_action( 'customize_register', array( $this, 'add_sections' ), 999 );
+		$this->fields_from_filters();
+		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
+		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
+		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
 	}
 
 	/**
-	 * Merge the fields arrays
+	 * Process fields added using the 'kirki/fields' and 'kirki/controls' filter.
+	 * These filters are no longer used, this is simply for backwards-compatibility
 	 */
-	public function merge_fields( $fields ) {
-		return array_merge( $fields, self::$fields );
+	public function fields_from_filters() {
+
+		$fields = apply_filters( 'kirki/controls', array() );
+		$fields = apply_filters( 'kirki/fields', $fields );
+
+		foreach ( $fields as $field ) {
+			self::$fields[] = $field;
+		}
+
 	}
 
 	/**
@@ -79,7 +88,7 @@ class Kirki {
 
 		if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
 
-			switch ( $this->fields[$field_id]['type'] ) {
+			switch ( self::$fields[$field_id]['type'] ) {
 
 				case 'image' :
 					$value = Kirki_Helpers::get_image_from_url( $value );
@@ -143,6 +152,50 @@ class Kirki {
 			}
 
 		}
+
+	}
+
+	public function add_fields( $wp_customize ) {
+
+		$fields = self::process_fields( self::$fields );
+
+		$settings = new Kirki_Settings();
+		$controls = new Kirki_Controls();
+
+		foreach ( $fields as $field ) {
+			if ( 'background' != $field['type'] ) {
+				$settings->add( $wp_customize, $field );
+				$controls->add( $wp_customize, $field );
+			}
+		}
+
+	}
+
+	/**
+	 * Processes the array of fields and applies any necessary modifications
+	 */
+	public static function process_fields() {
+
+		$fields = array();
+		// Sanitize the 'settings' argument
+		foreach ( self::$fields as $field ) {
+			$field['settings'] = Kirki_Field::sanitize_settings( $field );
+			$fields[] = $field;
+		}
+		// Build the background fields
+		$fields = Kirki_Field::build_background_fields( $fields );
+
+		$fields_sanitized = array();
+		foreach ( $fields as $key => $field ) {
+			// Sanitize field
+			$field = Kirki_Field::sanitize_field( $field );
+			// Add the field to the static $fields variable properly indexed
+			$fields_sanitized[$field['settings']] = $field;
+		}
+
+		self::$fields = $fields_sanitized;
+
+		return $fields_sanitized;
 
 	}
 
@@ -236,7 +289,7 @@ class Kirki {
 
 		$variables = array();
 
-		foreach ( $this->fields as $field ) {
+		foreach ( self::$fields as $field ) {
 
 			if ( isset( $field['variables'] ) && false != $field['variables'] ) {
 

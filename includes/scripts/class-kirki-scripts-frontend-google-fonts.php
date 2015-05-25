@@ -11,7 +11,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 	function google_link() {
 
-		$fields = Kirki_Toolkit::fields()->get_all();
+		$fields = Kirki::$fields;
 
 		// Early exit if no fields are found.
 		if ( ! $fields || empty( $fields ) ) {

@@ -41,13 +41,6 @@ class Kirki_Toolkit {
 	}
 
 	/**
-	 * Shortcut method to call the Field class
-	 */
-	public static function fields() {
-		return self::get_instance()->fields;
-	}
-
-	/**
 	 * Shortcut method to get the configuration of the single instance.
 	 */
 	public static function config() {

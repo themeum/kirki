@@ -54,13 +54,12 @@ function Kirki() {
 	// Make sure the class is instanciated
 	$kirki = Kirki_Toolkit::get_instance();
 
+	$kirki->field         = new Kirki_Field();
+	$kirki->api           = new Kirki();
 	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
 	$kirki->config        = new Kirki_Config();
-	$kirki->fields        = new Kirki_Fields();
 	$kirki->scripts       = new Kirki_Scripts_Registry();
 	$kirki->styles        = new Kirki_Styles();
-	$kirki->builder       = new Kirki_Builder();
-	$kirki->api           = new Kirki();
 
 	return $kirki;
 
@@ -97,3 +96,5 @@ function kirki_load_textdomain() {
 	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
 }
 add_action( 'plugins_loaded', 'kirki_load_textdomain' );
+
+include_once( KIRKI_PATH . '/sample-config.php' );

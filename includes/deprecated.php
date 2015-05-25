@@ -17,7 +17,7 @@ function kirki_get_option( $option = '' ) {
 	Kirki_Toolkit::get_instance();
 
 	// Get the array of all the fields.
-	$fields = Kirki_Toolkit::fields()->get_all();
+	$fields = Kirki::$fields;
 	// Get the config.
 	$config = Kirki_Toolkit::config()->get_all();
 

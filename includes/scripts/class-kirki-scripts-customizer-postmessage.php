@@ -34,7 +34,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 		}
 
 		// Get an array of all the fields
-		$fields = Kirki_Toolkit::fields()->get_all();
+		$fields = Kirki::$fields;
 		$script = '';
 		// Parse the fields and create the script.
 		foreach ( $fields as $field ) {
