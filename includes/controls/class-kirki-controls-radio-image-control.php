@@ -23,8 +23,8 @@ class Kirki_Controls_Radio_Image_Control extends Kirki_Control {
 		<?php $this->title(); ?>
 		<div id="input_<?php echo $this->id; ?>" class="image">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
-				<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id . $value; ?>">
+				<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
 						<img src="<?php echo esc_html( $label ); ?>">
 					</label>
 				</input>

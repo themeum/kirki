@@ -24,8 +24,8 @@ class Kirki_Controls_Radio_Buttonset_Control extends Kirki_Control {
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id . $value; ?>">
+				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
 						<?php echo esc_html( $label ); ?>
 					</label>
 				</input>

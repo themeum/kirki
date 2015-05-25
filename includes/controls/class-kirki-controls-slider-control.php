@@ -18,7 +18,7 @@ class Kirki_Controls_Slider_Control extends Kirki_Control {
 
 			<?php $this->title(); ?>
 
-			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
+			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
 
 		</label>
 
@@ -26,7 +26,7 @@ class Kirki_Controls_Slider_Control extends Kirki_Control {
 		<script>
 		jQuery(document).ready(function($) {
 			$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
-					value : <?php echo $this->value(); ?>,
+					value : <?php echo esc_attr( $this->value() ); ?>,
 					min   : <?php echo $this->choices['min']; ?>,
 					max   : <?php echo $this->choices['max']; ?>,
 					step  : <?php echo $this->choices['step']; ?>,
