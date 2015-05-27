@@ -12,8 +12,9 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 		$config   = Kirki_Toolkit::config()->get_all();
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 
-		wp_enqueue_script( 'kirki-fs-stepper', trailingslashit( $root_url ) . 'assets/js/jquery.fs.stepper.min.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-number', trailingslashit( $root_url ) . 'assets/css/number.js' );
+		wp_enqueue_script( 'formstone', trailingslashit( $root_url ) . 'assets/js/formstone-core.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone-number', trailingslashit( $root_url ) . 'assets/js/formstone-number.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_style( 'kirki-number', trailingslashit( $root_url ) . 'assets/css/number.css' );
 
     }
 
@@ -32,7 +33,7 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 		<script>
 			jQuery(document).ready(function($) {
 				"use strict";
-				$( "#customize-control-<?php echo $this->id; ?> input[type='number']").stepper();
+				$( "#customize-control-<?php echo $this->id; ?> input[type='number']").number();
 			});
 		</script>
 
