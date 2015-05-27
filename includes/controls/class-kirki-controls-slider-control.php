@@ -24,7 +24,7 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 
-			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
+			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
 
 		</label>
 
@@ -39,6 +39,13 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 					slide : function( event, ui ) { $( '[id="input_<?php echo $this->id; ?>"]' ).val(ui.value).keyup(); }
 			});
 			$( '[id="input_<?php echo $this->id; ?>"]' ).val( $( '[id="slider_<?php echo $this->id; ?>"]' ).slider( "value" ) );
+
+			$( '[id="input_<?php echo $this->id; ?>"]' ).change(function() { 
+				$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
+					value : $( this ).val()
+				});	
+			});
+
 		});
 		</script>
 		<?php

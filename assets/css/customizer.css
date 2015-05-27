@@ -308,9 +308,10 @@ body.IE7 .Switch.Round {
 
 .customize-control-slider input[type="text"] {
   border: none;
+  border-bottom: 1px solid #F2F2F2;
   text-align: center;
   padding: 0;
-  margin: 0;
+  margin-bottom: 5px;
   font-size: 12px;
   box-shadow: none;
   color: #333; }
