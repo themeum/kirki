@@ -614,6 +614,23 @@ function kirki_demo_controls( $controls ) {
         ),
     );
 
+    $controls[] = array(
+        'type'        => 'select2-multiple',
+        'setting'     => 'select_demo_3',
+        'label'       => __( 'This is the label', 'kirki' ),
+        'description' => __( 'This is the control description', 'kirki' ),
+        'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+        'section'     => 'select2_section',
+        'default'     => 'option-1',
+        'priority'    => 10,
+        'choices'     => array(
+            'option-1' => __( 'Option 1', 'kirki' ),
+            'option-2' => __( 'Option 2', 'kirki' ),
+            'option-3' => __( 'Option 3', 'kirki' ),
+            'option-4' => __( 'Option 4', 'kirki' ),
+        ),
+    );
+
     return $controls;
 
 }

@@ -3,7 +3,7 @@
 /**
  * Creates a new select2 control.
  */
-class Kirki_Controls_Select_Control extends WP_Customize_Control {
+class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 
 	public $type = 'select2';
 
@@ -16,7 +16,11 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 	<?php }
 
 	public function render_content() {
-		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) ); ?>
+		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) ); 
+
+		if ( empty( $this->choices ) ) {
+    	return;
+		} ?>
 
 		<label>
 			<span class="customize-control-title">
