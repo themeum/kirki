@@ -1,0 +1,79 @@
+// Switch & toggle Controls
+.customize-control-switch,
+.customize-control-toggle {
+    .Switch {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        color: #aaa;
+        height: 18px;
+        line-height: 27px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,0.2);
+        background: #f2f2f2;
+        cursor: pointer;
+        float: right;
+        transition: all 0.15s ease-in-out;
+        .Toggle {
+            position: absolute;
+            top: 1px;
+            width: 37px;
+            height: 25px;
+            border: 1px solid #aaa;
+            border: 1px solid rgba(0,0,0,0.2);
+            background: #fff;
+            z-index: 989;
+            transition: all 0.15s ease-in-out;
+        }
+        .On,
+        .Off {
+            display: inline-block;
+            width: 35px;
+            position: relative;
+            top: -5px;
+        }
+        .On {
+            color: #333;
+        }
+        &.On {
+            .Toggle {
+                left: 54%;
+            }
+        }
+        &.Off {
+            .Toggle {
+                left: 2%;
+            }
+        }
+        &.Round {
+            padding: 0 20px;
+            border-radius: 40px;
+            margin-top: 5px;
+            .Toggle {
+                border-radius: 40px;
+                width: 14px;
+                height: 14px;
+            }
+            &.Off {
+                .Toggle {
+                    left: 3%;
+                }
+            }
+            &.On {
+                color: #fff;
+                background: #333;
+                .Toggle {
+                    left: 58%;
+                }
+            }
+        }
+    }
+}
+body.IE7 .Switch {
+    width: 78px;
+}
+body.IE7 .Switch.Round {
+    width: 1px;
+}

@@ -17,6 +17,7 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
         wp_enqueue_script( 'kirki-sortable', trailingslashit( $root_url ) . 'assets/js/kirki-sortable.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+		wp_enqueue_style( 'kirki-sortable', trailingslashit( $root_url ) . 'assets/css/sortable.css' );
 
     }
 

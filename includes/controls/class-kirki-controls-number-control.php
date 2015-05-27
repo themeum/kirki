@@ -12,7 +12,8 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 		$config   = Kirki_Toolkit::config()->get_all();
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 
-        wp_enqueue_script( 'kirki-fs-stepper', trailingslashit( $root_url ) . 'assets/js/jquery.fs.stepper.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'kirki-fs-stepper', trailingslashit( $root_url ) . 'assets/js/jquery.fs.stepper.min.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-number', trailingslashit( $root_url ) . 'assets/css/number.js' );
 
     }
 

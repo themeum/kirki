@@ -13,6 +13,7 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 
         wp_enqueue_script( 'kirki-switch', trailingslashit( $root_url ) . 'assets/js/kirki-switch.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-switch', trailingslashit( $root_url ) . 'assets/css/switch.css' );
 
     }
 

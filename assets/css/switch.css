@@ -1,0 +1,70 @@
+.customize-control-switch .Switch,
+.customize-control-toggle .Switch {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #aaa;
+  height: 18px;
+  line-height: 27px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #f2f2f2;
+  cursor: pointer;
+  float: right;
+  transition: all 0.15s ease-in-out; }
+  .customize-control-switch .Switch .Toggle,
+  .customize-control-toggle .Switch .Toggle {
+    position: absolute;
+    top: 1px;
+    width: 37px;
+    height: 25px;
+    border: 1px solid #aaa;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    z-index: 989;
+    transition: all 0.15s ease-in-out; }
+  .customize-control-switch .Switch .On,
+  .customize-control-switch .Switch .Off,
+  .customize-control-toggle .Switch .On,
+  .customize-control-toggle .Switch .Off {
+    display: inline-block;
+    width: 35px;
+    position: relative;
+    top: -5px; }
+  .customize-control-switch .Switch .On,
+  .customize-control-toggle .Switch .On {
+    color: #333; }
+  .customize-control-switch .Switch.On .Toggle,
+  .customize-control-toggle .Switch.On .Toggle {
+    left: 54%; }
+  .customize-control-switch .Switch.Off .Toggle,
+  .customize-control-toggle .Switch.Off .Toggle {
+    left: 2%; }
+  .customize-control-switch .Switch.Round,
+  .customize-control-toggle .Switch.Round {
+    padding: 0 20px;
+    border-radius: 40px;
+    margin-top: 5px; }
+    .customize-control-switch .Switch.Round .Toggle,
+    .customize-control-toggle .Switch.Round .Toggle {
+      border-radius: 40px;
+      width: 14px;
+      height: 14px; }
+    .customize-control-switch .Switch.Round.Off .Toggle,
+    .customize-control-toggle .Switch.Round.Off .Toggle {
+      left: 3%; }
+    .customize-control-switch .Switch.Round.On,
+    .customize-control-toggle .Switch.Round.On {
+      color: #fff;
+      background: #333; }
+      .customize-control-switch .Switch.Round.On .Toggle,
+      .customize-control-toggle .Switch.Round.On .Toggle {
+        left: 58%; }
+
+body.IE7 .Switch {
+  width: 78px; }
+
+body.IE7 .Switch.Round {
+  width: 1px; }

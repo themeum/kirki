@@ -9,6 +9,7 @@ class Kirki_Controls_Radio_Image_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
+		wp_enqueue_style( 'kirki-radio-image', trailingslashit( $root_url ) . 'assets/css/radio-image.css' );
 	}
 
 	public function render_content() {
