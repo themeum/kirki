@@ -1,77 +1,39 @@
 <?php
 
 /**
- * Control inspired by the Titan Framework MultiCheck control.
- * See https://github.com/gambitph/Titan-Framework/blob/v1.4.2/class-option-multicheck.php for more details.
+ * Multiple checkbox customize control class.
+ * Props @ Justin Tadlock: http://justintadlock.com/archives/2015/05/26/multiple-checkbox-customizer-control
  */
 class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
-	public $type = 'multicheck';
+    public $type = 'multicheck';
 
-	private static $firstLoad = true;
+    public function render_content() {
 
-	// Since theme_mod cannot handle multichecks, we will do it with some JS
-	public function render_content() {
-		// the saved value is an array. convert it to csv
-		if ( is_array( $this->value() ) ) {
-			$savedValueCSV = implode( ',', $this->value() );
-			$values = $this->value();
-		} else {
-			$savedValueCSV = $this->value();
-			$values = explode( ',', $this->value() );
-		}
+        if ( empty( $this->choices ) )
+            return; ?>
 
-		if ( self::$firstLoad ) {
-			self::$firstLoad = false;
+        <?php if ( ! empty( $this->label ) ) : ?>
+            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <?php endif; ?>
 
-			?>
-			<script>
-			jQuery(document).ready(function($) {
-				"use strict";
+        <?php if ( ! empty( $this->description ) ) : ?>
+            <span class="description customize-control-description"><?php echo $this->description; ?></span>
+        <?php endif; ?>
 
-				$('input.tf-multicheck').change(function(event) {
-					event.preventDefault();
-					var csv = '';
+        <?php $multi_values = ( ! is_array( $this->value() ) ) ? explode( ',', $this->value() ) : $this->value(); ?>
 
-					$(this).parents('li:eq(0)').find('input[type=checkbox]').each(function() {
-						if ($(this).is(':checked')) {
-							csv += $(this).attr('value') + ',';
-						}
-					});
+        <ul>
+            <?php foreach ( $this->choices as $value => $label ) : ?>
+                <li>
+                    <label>
+                        <input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> />
+                        <?php echo esc_html( $label ); ?>
+                    </label>
+                </li>
+            <?php endforeach; ?>
+        </ul>
 
-					csv = csv.replace(/,+$/, "");
-
-					$(this).parents('li:eq(0)').find('input[type=hidden]').val(csv)
-					// we need to trigger the field afterwards to enable the save button
-					.trigger('change');
-					return true;
-				});
-			});
-			</script>
-			<?php
-		} ?>
-		<label class='tf-multicheck-container'>
-			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-			</span>
-			<?php
-			foreach ( $this->choices as $value => $label ) {
-				printf('<label for="%s"><input class="tf-multicheck" id="%s" type="checkbox" value="%s" %s/> %s</label><br>',
-					$this->id . esc_attr( $value ),
-					$this->id . esc_attr( $value ),
-					esc_attr( $value ),
-					checked( in_array( $value, $values ), true, false ),
-					$label
-				);
-			}
-			?>
-			<input type="hidden" value="<?php echo esc_attr( $savedValueCSV ); ?>" <?php $this->link(); ?> />
-		</label>
-		<?php
-
-	}
+        <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
+    <?php }
 }
