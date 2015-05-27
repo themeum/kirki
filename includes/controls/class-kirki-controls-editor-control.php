@@ -3,14 +3,20 @@
 /**
  * Creates a TinyMCE control
  */
-class Kirki_Controls_Editor_Control extends Kirki_Control {
+class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 
 	public $type = 'editor';
 
 	public function render_content() { ?>
 
 		<label>
-			<?php $this->title(); ?>
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea( $this->value() ); ?>">
 			<?php
 				$settings = array(

@@ -3,7 +3,7 @@
 /**
  * Creates a new select2 control.
  */
-class Kirki_Controls_Select_Control extends Kirki_Control {
+class Kirki_Controls_Select_Control extends WP_Customize_Control {
 
 	public $type = 'select2';
 
@@ -15,18 +15,18 @@ class Kirki_Controls_Select_Control extends Kirki_Control {
 		</li>
 	<?php }
 
-	public function render_content() { 
+	public function render_content() {
 		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) ); ?>
-		
+
 		<label>
-			<?php 
-			if ( $this->label ) { ?>
-				<span class="customize-control-title"><?php echo $this->label; ?></span>
-			<?php } 
-			if ( $this->description ) { ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php } ?>
-			
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
+
 			<select data-customize-setting-link="<?php echo esc_attr( $id ); ?>" class="select2">
 				<?php foreach ( $this->choices as $value => $label ) : ?>
 					<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
@@ -39,7 +39,7 @@ class Kirki_Controls_Select_Control extends Kirki_Control {
 	  	$('.select2').select2();
 	  });
 		</script>
-		<?php 
+		<?php
 		}
 
 }

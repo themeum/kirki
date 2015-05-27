@@ -4,7 +4,7 @@
  * Control inspired by the Titan Framework MultiCheck control.
  * See https://github.com/gambitph/Titan-Framework/blob/v1.4.2/class-option-multicheck.php for more details.
  */
-class Kirki_Controls_MultiCheck_Control extends Kirki_Control {
+class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
 	public $type = 'multicheck';
 
@@ -51,7 +51,13 @@ class Kirki_Controls_MultiCheck_Control extends Kirki_Control {
 			<?php
 		} ?>
 		<label class='tf-multicheck-container'>
-			<?php $this->title(); ?>
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 			<?php
 			foreach ( $this->choices as $value => $label ) {
 				printf('<label for="%s"><input class="tf-multicheck" id="%s" type="checkbox" value="%s" %s/> %s</label><br>',

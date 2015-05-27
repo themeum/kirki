@@ -3,7 +3,7 @@
 /**
  * Creates a new color-alpha control.
  */
-class Kirki_Controls_Color_Alpha_Control extends Kirki_Control {
+class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 
 	public $type = 'color-alpha';
 	public $palette = true;
@@ -19,7 +19,13 @@ class Kirki_Controls_Color_Alpha_Control extends Kirki_Control {
 
 	public function render_content() { ?>
 		<label>
-			<?php $this->title(); ?>
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 			<input type="text" data-palette="<?php echo esc_textarea( $this->palette ); ?>" data-default-color="<?php echo $this->default; ?>" value="<?php echo intval( $this->value() ); ?>" class="kirki-color-control" <?php $this->link(); ?>  />
 		</label>
 	<?php }

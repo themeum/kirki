@@ -4,7 +4,7 @@
  * Create a jQuery slider control.
  * TODO: Migrate to an HTML5 range control. Range control are hard to style 'cause they don't display the value
  */
-class Kirki_Controls_Slider_Control extends Kirki_Control {
+class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 	public $type = 'slider';
 
@@ -16,7 +16,13 @@ class Kirki_Controls_Slider_Control extends Kirki_Control {
 	public function render_content() { ?>
 		<label>
 
-			<?php $this->title(); ?>
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 
 			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" disabled value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
 

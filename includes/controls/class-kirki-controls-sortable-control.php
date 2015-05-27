@@ -4,7 +4,7 @@
  * Create a sortable control.
  * This will display a list of checkboxes that can be sorted.
  */
-class Kirki_Controls_Sortable_Control extends Kirki_Control {
+class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 	public $type = 'sortable';
 
@@ -21,7 +21,13 @@ class Kirki_Controls_Sortable_Control extends Kirki_Control {
 
 		?>
 		<label class='kirki-sortable'>
-			<?php $this->title(); ?>
+			<span class="customize-control-title">
+				<?php echo esc_attr( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
 			<?php
 				$values = $this->value();
 				$values = $values == '' ? array_keys( $this->choices ) : $values;
