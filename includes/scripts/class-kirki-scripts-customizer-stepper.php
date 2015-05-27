@@ -14,14 +14,6 @@ class Kirki_Scripts_Customizer_Stepper extends Kirki_Scripts_Enqueue_Script {
 		$fields = Kirki::$fields;
 		$scripts = array();
 
-		foreach ( $fields as $field ) {
-
-			if ( 'number' == $field['type'] ) {
-				$scripts[] = '$( "#customize-control-' . $field['settings'] . ' input[type=\'number\']").stepper();';
-			}
-
-		}
-
 		// No need to echo anything if the script is empty
 		if ( empty( $scripts ) ) {
 			return;
