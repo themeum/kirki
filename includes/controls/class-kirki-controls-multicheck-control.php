@@ -8,6 +8,15 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
     public $type = 'multicheck';
 
+	public function enqueue() {
+
+		$config   = Kirki_Toolkit::config()->get_all();
+		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
+
+        wp_enqueue_script( 'kirki-multicheck', trailingslashit( $root_url ) . 'assets/js/kirki-multicheck.js', array( 'jquery' ) );
+
+    }
+
     public function render_content() {
 
         if ( empty( $this->choices ) )
