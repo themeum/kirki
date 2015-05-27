@@ -9,6 +9,15 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 	public $palette = true;
 	public $default = '#FFFFFF';
 
+	public function enqueue() {
+
+		$config   = Kirki_Toolkit::config()->get_all();
+		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
+
+        wp_enqueue_script( 'kirki-color-alpha', trailingslashit( $root_url ) . 'assets/js/kirki-color-alpha.js', array( 'jquery' ) );
+
+    }
+
 	protected function render() {
 		$id = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 		$class = 'customize-control customize-control-' . $this->type; ?>

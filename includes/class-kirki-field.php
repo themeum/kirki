@@ -592,7 +592,7 @@ class Kirki_Field {
 				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
 				break;
 			case 'multicheck' :
-				$sanitize_callback = 'esc_attr';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
 				break;
 			case 'sortable' :
 				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
