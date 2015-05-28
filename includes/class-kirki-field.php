@@ -426,6 +426,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-image',
+								'callback' => 'esc_url_raw',
 							)
 						) : '',
 					);
@@ -454,6 +455,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-repeat',
+								'callback' => 'esc_attr',
 							)
 						) : '',
 					);
@@ -480,6 +482,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-size',
+								'callback' => 'esc_attr',
 							)
 						) : '',
 					);
@@ -506,6 +509,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-attachment',
+								'callback' => 'esc_attr',
 							)
 						) : '',
 					);
@@ -538,6 +542,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-position',
+								'callback' => 'esc_attr',
 							)
 						) : '',
 					);
