@@ -382,9 +382,13 @@ class Kirki_Field {
 				$field['transport']   = ( isset( $field['transport'] ) )   ? $field['transport']   : 'refresh';
 				$field['default']     = ( isset( $field['default'] ) )     ? $field['default']     : array();
 				$field['priority']    = ( isset( $field['priority'] ) )    ? $field['priority']    : 10;
+				$field['output']      = ( isset( $field['output'] ) && '' != $field['output'] ) ? $field['output'] : '';
 
 				if ( isset( $field['default']['color'] ) ) {
 					$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
+					if ( isset( $field['default']['opacity'] ) ) {
+						$color_mode = 'color-alpha';
+					}
 					$fields[] = array(
 						'type'        => $color_mode,
 						'label'       => isset( $field['label'] ) ? $field['label'] : '',
@@ -396,6 +400,12 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['color'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-color',
+							)
+						) : '',
 					);
 				}
 
@@ -411,6 +421,12 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['image'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-image',
+							)
+						) : '',
 					);
 				}
 
@@ -433,6 +449,12 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['repeat'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-repeat',
+							)
+						) : '',
 					);
 				}
 
@@ -453,6 +475,12 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['size'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-size',
+							)
+						) : '',
 					);
 				}
 
@@ -473,6 +501,12 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['attach'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-attachment',
+							)
+						) : '',
 					);
 				}
 
@@ -499,28 +533,13 @@ class Kirki_Field {
 						'required'    => $field['required'],
 						'transport'   => $field['transport'],
 						'default'     => $field['default']['position'],
+						'output'      => ( '' != $field['output'] ) ? array(
+							array(
+								'element'  => $field['output'],
+								'property' => 'background-position',
+							)
+						) : '',
 					);
-				}
-
-				if ( isset( $field['default']['opacity'] ) && $field['default']['opacity'] ) {
-					$fields[] = array(
-						'type'        => 'slider',
-						'label'       => '',
-						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_opacity',
-						'priority'    => $field['priority'] + 6,
-						'choices'     => array(
-							'min'     => 0,
-							'max'     => 100,
-							'step'    => 1,
-						),
-						'help'        => '',
-						'description' => $i18n['background-opacity'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
-						'default'     => $field['default']['opacity'],
-					);
-
 				}
 
 			}
