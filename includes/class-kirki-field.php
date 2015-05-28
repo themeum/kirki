@@ -102,7 +102,7 @@ class Kirki_Field {
 	 * @return string callable function name.
 	 */
 	public static function sanitize_active_callback( $field ) {
-		return ( isset( $field['active_callback'] ) ) ? 'active_callback' : 'kirki_field_active_callback';
+		return ( isset( $field['active_callback'] ) ) ? $field['active_callback'] : 'kirki_field_active_callback';
 	}
 
 	/**
