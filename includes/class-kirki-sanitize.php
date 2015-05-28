@@ -159,6 +159,26 @@ class Kirki_Sanitize {
 	}
 
 	/**
+	 * Sanitize colors.
+	 * Determine if the current value is a hex or an rgba color and call the appropriate method.
+	 *
+	 * @since 0.8.5
+	 * @return string
+	 */
+	public static function color( $value ) {
+
+		// Is this an rgba color or a hex?
+		$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
+
+		if ( 'rgba' == $mode ) {
+			return Kirki_Color::sanitize_hex( $value );
+		} else {
+			return self::rgba( $value );
+		}
+
+	}
+
+	/**
 	 * multicheck callback
 	 */
 	function multicheck( $values ) {
