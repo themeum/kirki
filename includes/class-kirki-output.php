@@ -32,6 +32,7 @@ class Kirki_Output {
 
 		self::$settings = $setting;
 		self::$type     = $type;
+		self::$output   = $output;
 		self::$value    = self::get_value( $setting, $callback );
 
 		return self::styles_parse();
@@ -62,6 +63,7 @@ class Kirki_Output {
 	public static function styles_parse() {
 
 		$styles = self::styles();
+
 		$css = '';
 
 		// Early exit if styles are empty or not an array
