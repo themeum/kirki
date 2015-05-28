@@ -12,12 +12,8 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 		wp_enqueue_script( 'jquery-ui' );
 		wp_enqueue_script( 'jquery-ui-slider' );
-
-		$config   = Kirki_Toolkit::config()->get_all();
-		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
-
-		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( $root_url ) . 'assets/js/kirki-color-alpha.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-slider', trailingslashit( $root_url ) . 'assets/css/slider.css' );
+		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( KIRKI_URL ) . 'assets/js/kirki-color-alpha.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-slider', trailingslashit( KIRKI_URL ) . 'assets/css/slider.css' );
 
 	}
 
@@ -48,10 +44,10 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 			});
 			$( '[id="input_<?php echo $this->id; ?>"]' ).val( $( '[id="slider_<?php echo $this->id; ?>"]' ).slider( "value" ) );
 
-			$( '[id="input_<?php echo $this->id; ?>"]' ).change(function() { 
+			$( '[id="input_<?php echo $this->id; ?>"]' ).change(function() {
 				$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
 					value : $( this ).val()
-				});	
+				});
 			});
 
 		});

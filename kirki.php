@@ -9,11 +9,18 @@ Version:       1.0.0-alpha
 Text Domain:   kirki
 */
 
+// Set the KIRKI_PATH constant.
 if ( ! defined( 'KIRKI_PATH' ) ) {
 	define( 'KIRKI_PATH', dirname( __FILE__ ) );
 }
+// Set the KIRKI_URL constant.
 if ( ! defined( 'KIRKI_URL' ) ) {
-	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
+	$config = apply_filters( 'kirki/config', array() );
+	if ( isset( $config['url_path'] ) ) {
+		define( 'KIRKI_URL', esc_url_raw( $config['url_path'] ) );
+	} else {
+		define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
+	}
 }
 
 /**

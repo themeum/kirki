@@ -653,4 +653,4 @@ function kirki_demo_configuration_sample() {
 
 }
 
-add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
+// add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
