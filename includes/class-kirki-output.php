@@ -30,9 +30,15 @@ class Kirki_Output {
 			return;
 		}
 
+		$multiple_styles = isset( $output[0]['element'] ) ? true : false;
+
 		self::$settings = $setting;
 		self::$type     = $type;
-		self::$output   = $output;
+		if ( $multiple_styles ) {
+			self::$output = $output;
+		} else {
+			self::$output[0] = $output;
+		}
 		self::$value    = self::get_value( $setting, $callback );
 
 		return self::styles_parse();
