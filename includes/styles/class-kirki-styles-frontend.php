@@ -18,7 +18,7 @@ class Kirki_Styles_Frontend {
 	 * Add the inline styles
 	 */
 	public function enqueue_styles() {
-		wp_add_inline_style( 'kirki-styles', $this->styles_parse() );
+		wp_add_inline_style( 'kirki-styles', $this->loop_controls() );
 	}
 
 	/**
@@ -29,31 +29,6 @@ class Kirki_Styles_Frontend {
 
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
 		wp_enqueue_style( 'kirki-styles', trailingslashit( $root_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
-
-	}
-
-	/**
-	 * Gets the array of generated styles and creates the minimized, inline CSS
-	 */
-	public function styles_parse() {
-
-		$styles = $this->loop_controls();
-		$css = '';
-
-		// Early exit if styles are empty or not an array
-		if ( empty( $styles ) || ! is_array( $styles ) ) {
-			return;
-		}
-
-		foreach ( $styles as $style => $style_array ) {
-			$css .= $style . '{';
-			foreach ( $style_array as $property => $value ) {
-				$css .= $property . ':' . $value . ';';
-			}
-			$css .= '}';
-		}
-
-		return $css;
 
 	}
 
@@ -178,7 +153,7 @@ class Kirki_Styles_Frontend {
 	public function loop_controls() {
 
 		$fields = Kirki::$fields;
-		$styles = array();
+		$css    = '';
 
 		// Early exit if no fields are found.
 		if ( ! $fields || empty( $fields ) ) {
@@ -196,51 +171,18 @@ class Kirki_Styles_Frontend {
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) ) {
 
-				// Check if this is an array of style definitions
-				$multiple_styles = isset( $field['output'][0]['element'] ) ? true : false;
-
-				if ( ! $multiple_styles ) { // single style
-
-					// If $field['output'] is not an array, then use the string as the target element
-					if ( is_string( $field['output'] ) ) {
-						$element  = $field['output'];
-					} else {
-						$element  = isset( $field['output']['element'] )  ? $field['output']['element']  : '';
-						$property = isset( $field['output']['property'] ) ? $field['output']['property'] : '';
-						$units    = isset( $field['output']['units'] )    ? $field['output']['units']    : '';
-						$prefix   = isset( $field['output']['prefix'] )   ? $field['output']['prefix']   : '';
-						$suffix   = isset( $field['output']['suffix'] )   ? $field['output']['suffix']   : '';
-						$callback = isset( $field['output']['callback'] ) ? $field['output']['callback'] : '';
-					}
-
-					$styles = $this->setting_styles( $field, $styles, $element, $property, $units, $prefix, $suffix, $callback );
-
-				} else { // Multiple styles set
-
-					foreach ( $field['output'] as $style ) {
-
-						if ( ! array( $style ) ) {
-							$element = $style;
-						} else {
-							$element  = isset( $style['element'] )  ? $style['element']  : '';
-							$property = isset( $style['property'] ) ? $style['property'] : '';
-							$units    = isset( $style['units'] )    ? $style['units']    : '';
-							$prefix   = isset( $style['prefix'] )   ? $style['prefix']   : '';
-							$suffix   = isset( $style['suffix'] )   ? $style['suffix']   : '';
-							$callback = isset( $style['callback'] ) ? $style['callback'] : '';
-						}
-
-						$styles = $this->setting_styles( $field, $styles, $element, $property, $units, $prefix, $suffix, $callback );
-
-					}
-
-				}
+				$css .= Kirki_Output::css(
+					$field['settings_raw'],
+					$field['option_type'],
+					$field['output'],
+					isset( $field['output']['callback'] ) ? $field['output']['callback'] : ''
+				);
 
 			}
 
 		}
 
-		return $styles;
+		return $css;
 
 	}
 
