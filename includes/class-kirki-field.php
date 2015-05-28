@@ -404,6 +404,7 @@ class Kirki_Field {
 							array(
 								'element'  => $field['output'],
 								'property' => 'background-color',
+								'callback' => array( 'Kirki_Sanitize', 'color' ),
 							)
 						) : '',
 					);
