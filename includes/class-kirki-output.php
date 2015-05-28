@@ -6,38 +6,48 @@
  */
 class Kirki_Output {
 
-	public $settings = null;
-	public $output   = array();
-	public $type     = 'theme_mod';
+	public static $settings = null;
+	public static $type     = 'theme_mod';
+	public static $output   = array();
+	public static $callback = null;
 
-	public $value = null;
+	public static $css;
 
-	public function __construct( $setting = '', $type = 'theme_mod', $output = array(), $callback = '' ) {
+	public static $value = null;
+
+	/**
+	 * The class constructor.
+	 *
+	 * @var 	string		the setting ID.
+	 * @var 	string		theme_mod / option
+	 * @var 	array 		an array of arrays of the output arguments.
+	 * @var 	mixed		a callable function.
+	 */
+	public static function css( $setting = '', $type = 'theme_mod', $output = array(), $callback = '' ) {
 
 		// No need to proceed any further if we don't have the required arguments.
 		if ( '' == $setting || empty( $output ) ) {
 			return;
 		}
 
-		$this->settings    = $field['settings'];
-		$this->option_type = ( isset( $field['option_type'] ) ) ? $field['option_type'] : 'theme_mod';
-		$this->value       = $this->get_value( $field, $callback );
+		self::$settings = $setting;
+		self::$type     = $type;
+		self::$value    = self::get_value( $setting, $callback );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
+		return self::styles_parse();
 
 	}
 
-	public function get_value( $field, $callback = '' ) {
+	public static function get_value() {
 
-		$default = ( isset( $field['default'] ) ) ? $field['default'] : null;
-		if ( 'theme_mod' == $this->option_type ) {
-			$value = get_theme_mod( $field['settings'], $default );
+		if ( 'theme_mod' == self::$type ) {
+			$value = get_theme_mod( self::$settings );
 		} else {
-			$value = get_option( $field['settings'], $default );
+			$value = get_option( self::$settings );
 		}
 
-		if ( '' != $callback ) {
-			$value = call_user_func( $callback, $value );
+		if ( '' != self::$callback ) {
+			$value = call_user_func( self::$callback, $value );
 		}
 
 		return $value;
@@ -45,18 +55,13 @@ class Kirki_Output {
 	}
 
 	/**
-	 * Add the inline styles
-	 */
-	public function enqueue_styles() {
-		wp_add_inline_style( 'kirki-styles', $this->styles_parse() );
-	}
-
-	/**
 	 * Gets the array of generated styles and creates the minimized, inline CSS
+	 *
+	 * @return string	the generated CSS.
 	 */
-	public function styles_parse() {
+	public static function styles_parse() {
 
-		$styles = $this->styles();
+		$styles = self::styles();
 		$css = '';
 
 		// Early exit if styles are empty or not an array
@@ -77,20 +82,20 @@ class Kirki_Output {
 	}
 
 	/**
-	 * Get the styles for a single field.
+	 * Get the styles as an array.
 	 */
-	public function styles() {
+	public static function styles() {
 
 		$styles = array();
 
-		foreach ( $this->output as $output ) {
+		foreach ( self::$output as $output ) {
 
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 			$units  = ( isset( $output['units'] ) )  ? $output['units']  : '';
 
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[$prefix . $output['element']][$output['property']] = $this->value . $units;
+				$styles[$prefix . $output['element']][$output['property']] = self::$value . $units;
 			}
 
 		}
