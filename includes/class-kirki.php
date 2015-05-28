@@ -37,11 +37,7 @@ class Kirki {
 		$fields = apply_filters( 'kirki/controls', array() );
 		$fields = apply_filters( 'kirki/fields', $fields );
 
-		foreach ( $fields as $field ) {
-			self::$fields[] = $field;
-		}
-
-		self::$fields = self::process_fields( self::$fields );
+		self::$fields = self::process_fields( $fields );
 
 	}
 
@@ -175,9 +171,7 @@ class Kirki {
 	 */
 	public function add_fields( $wp_customize ) {
 
-		$fields = self::process_fields( self::$fields );
-
-		foreach ( $fields as $field ) {
+		foreach ( self::$fields as $field ) {
 			if ( 'background' != $field['type'] ) {
 				Kirki()->settings->add( $wp_customize, $field );
 				Kirki()->controls->add( $wp_customize, $field );
@@ -189,11 +183,10 @@ class Kirki {
 	/**
 	 * Processes the array of fields and applies any necessary modifications
 	 */
-	public static function process_fields() {
+	public static function process_fields( $fields ) {
 
-		$fields = array();
 		// Sanitize the 'settings' argument
-		foreach ( self::$fields as $field ) {
+		foreach ( $fields as $field ) {
 			$field['settings'] = Kirki_Field::sanitize_settings( $field );
 			$fields[] = $field;
 		}
@@ -207,8 +200,6 @@ class Kirki {
 			// Add the field to the static $fields variable properly indexed
 			$fields_sanitized[$field['settings']] = $field;
 		}
-
-		self::$fields = $fields_sanitized;
 
 		return $fields_sanitized;
 
