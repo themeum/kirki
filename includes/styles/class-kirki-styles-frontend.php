@@ -15,50 +15,16 @@ class Kirki_Styles_Frontend {
 	}
 
 	/**
-	 * Detect if we're using the 'output' argument in one of our fields.
-	 *
-	 * @return	boolean
-	 */
-	public function uses_output() {
-
-		// Get all fields
-		$fields = Kirki::$fields;
-		// Are we using 'output' in any of our fields?
-		$uses_output = 'no';
-		foreach( $fields as $field ) {
-			if ( 'no' == $uses_output && null != $field['output'] ) {
-				$uses_output = 'yes';
-			}
-		}
-
-		// Return true if we're using 'output' in our fields else returns false.
-		return ( 'yes' == $uses_output ) ? true : false;
-
-	}
-
-	/**
 	 * Add the inline styles
 	 */
 	public function enqueue_styles() {
-
-		// Early exit if we're not using output
-		if ( ! $this->uses_output() ) {
-			return;
-		}
 		wp_add_inline_style( 'kirki-styles', $this->styles_parse() );
-
 	}
 
 	/**
 	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
-
-		// Early exit if we're not using output
-		if ( ! $this->uses_output() ) {
-			return;
-		}
-
 		$config = Kirki_Toolkit::config()->get_all();
 
 		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
