@@ -569,10 +569,10 @@ class Kirki_Field {
 				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
 			case 'color' :
-				$sanitize_callback = 'sanitize_hex_color';
+				$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
 				break;
 			case 'color-alpha' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'rgba' );
+				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
 				break;
 			case 'image' :
 				$sanitize_callback = 'esc_url_raw';
