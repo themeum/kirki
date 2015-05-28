@@ -41,6 +41,8 @@ class Kirki {
 			self::$fields[] = $field;
 		}
 
+		self::$fields = self::process_fields( self::$fields );
+
 	}
 
 	/**
@@ -292,8 +294,15 @@ class Kirki {
 			$args['option_type'] = $config['option_type'];
 		}
 
-		// Add the field to the Kirki_API class
-		self::$fields[] = $args;
+		// Sanitize field
+		$field = Kirki_Field::sanitize_field( $args );
+		// Add the field to the static $fields variable properly indexed
+		self::$fields[$field['settings']] = $field;
+
+		if ( 'background' == $args['type'] ) {
+			// Build the background fields
+			self::$fields = Kirki_Field::build_background_fields( $fields );
+		}
 
 	}
 
