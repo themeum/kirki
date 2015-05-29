@@ -12,7 +12,6 @@ class Kirki_Scripts_Registry {
 		$postmessage  = new Kirki_Scripts_Customizer_PostMessage();
 		$tooltips     = new Kirki_Scripts_Customizer_Tooltips();
 		$googlefonts  = new Kirki_Scripts_Frontend_Google_Fonts();
-		$stepper      = new Kirki_Scripts_Customizer_Stepper();
 
 	}
 
