@@ -65,6 +65,50 @@ class Kirki_Color {
 	}
 
     /**
+     * Converts an rgba color to hex
+     * This is an approximation and not completely accurate.
+     *
+     * @var     string  The rgba color formatted like rgba(r,g,b,a)
+     * @return  string  The hex value of the color.
+     */
+     public static function rgba2hex( $color ) {
+         // Remove the 'rgba' part of the string
+         $color = str_replace( 'rgba', '', $color );
+         // Remove the parenthesis & spaces.
+         $color = str_replace( '(', '', $color );
+         $color = str_replace( ')', '', $color );
+         $color = str_replace( ' ', '', $color );
+
+         // Convert to array
+         $color = explode( ',', $color );
+         // This is not a valid rgba definition, so return white.
+         if ( 4 != count( $color ) ) {
+             return '#ffffff';
+         }
+         // Convert dec. to hex.
+         $red   = dechex( (int) $color[0] );
+         $green = dechex( (int) $color[1] );
+         $blue  = dechex( (int) $color[2] );
+         $alpha = $color[3];
+
+         // Make sure all colors are 2 digits
+         $red   = ( 1 == strlen( $red ) )   ? $red . $red     : $red;
+         $green = ( 1 == strlen( $green ) ) ? $green . $green : $green;
+         $blue  = ( 1 == strlen( $blue ) )  ? $blue . $blue   : $blue;
+
+         // Combine hex parts
+         $hex = $red . $green . $blue;
+         // Get the opacity value on a 0-100 basis instead of 0-1.
+         $mix_level = intval( $alpha * 100 );
+         // Apply opacity - mix with white.
+         $hex = self::mix_colors( $hex, '#ffffff', $mix_level );
+
+         return $hex;
+
+
+     }
+
+    /**
      * Gets the rgb value of the $hex color.
      *
      * @var     string      The hex value of a color
