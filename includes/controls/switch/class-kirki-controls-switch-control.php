@@ -1,26 +1,22 @@
 <?php
 
 /**
- * Creates a toggle control
+ * Creates a Switch control.
  */
-class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
+class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 
-	public $type = 'toggle';
+	public $type = 'switch';
 
 	public function enqueue() {
-
-		$config   = Kirki_Toolkit::config()->get_all();
-		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
-
-        wp_enqueue_script( 'kirki-switch', trailingslashit( $root_url ) . 'assets/js/kirki-switch.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-switch', trailingslashit( $root_url ) . 'assets/css/switch.css' );
-
+        wp_enqueue_script( 'kirki-switch', trailingslashit( KIRKI_URL ) . 'includes/controls/switch/kirki-switch.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-switch', trailingslashit( KIRKI_URL ) . 'includes/controls/switch/style.css' );
     }
 
 	/**
 	 * Render the control's content.
 	 */
 	protected function render_content() { ?>
+		<?php $i18n = Kirki_Toolkit::i18n(); ?>
 		<label>
 			<div class="switch-info">
 				<input style="display: none;" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
@@ -33,9 +29,10 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 			<?php $classes = ( esc_attr( $this->value() ) ) ? ' On' : ' Off'; ?>
-			<?php $classes .= ' Round'; ?>
 			<div class="Switch <?php echo $classes; ?>">
 				<div class="Toggle"></div>
+				<span class="On"><?php echo $i18n['ON']; ?></span>
+				<span class="Off"><?php echo $i18n['OFF']; ?></span>
 			</div>
 		</label>
 		<?php

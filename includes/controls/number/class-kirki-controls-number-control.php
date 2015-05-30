@@ -9,9 +9,9 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'formstone', trailingslashit( KIRKI_URL ) . 'assets/js/formstone-core.js', array( 'jquery' ) );
-		wp_enqueue_script( 'formstone-number', trailingslashit( KIRKI_URL ) . 'assets/js/formstone-number.js', array( 'jquery', 'formstone' ) );
-		wp_enqueue_style( 'kirki-number', trailingslashit( KIRKI_URL ) . 'assets/css/number.css' );
+		wp_enqueue_script( 'formstone', trailingslashit( KIRKI_URL ) . 'includes/controls/number/formstone-core.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone-number', trailingslashit( KIRKI_URL ) . 'includes/controls/number/formstone-number.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_style( 'kirki-number', trailingslashit( KIRKI_URL ) . 'includes/controls/number/style.css' );
 
     }
 

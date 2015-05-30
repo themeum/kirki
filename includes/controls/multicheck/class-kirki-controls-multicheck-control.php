@@ -10,8 +10,8 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-multicheck', trailingslashit( KIRKI_URL ) . 'assets/js/kirki-multicheck.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-multicheck', trailingslashit( KIRKI_URL ) . 'assets/css/checkbox.css' );
+		wp_enqueue_script( 'kirki-multicheck', trailingslashit( KIRKI_URL ) . 'includes/controls/multicheck/kirki-multicheck.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-multicheck', trailingslashit( KIRKI_URL ) . 'includes/controls/multicheck/style.css' );
 
     }
 

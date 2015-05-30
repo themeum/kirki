@@ -10,14 +10,11 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		$config   = Kirki_Toolkit::config()->get_all();
-		$root_url = ( '' != $config['url_path'] ) ? esc_url_raw( $config['url_path'] ) : KIRKI_URL;
-
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
-        wp_enqueue_script( 'kirki-sortable', trailingslashit( $root_url ) . 'assets/js/kirki-sortable.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
-		wp_enqueue_style( 'kirki-sortable', trailingslashit( $root_url ) . 'assets/css/sortable.css' );
+        wp_enqueue_script( 'kirki-sortable', trailingslashit( KIRKI_URL ) . 'includes/controls/sortable/kirki-sortable.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+		wp_enqueue_style( 'kirki-sortable', trailingslashit( KIRKI_URL ) . 'includes/controls/sortable/style.css' );
 
     }
 
