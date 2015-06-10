@@ -25,7 +25,7 @@ class Kirki_Styles_Frontend {
 	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
-		wp_enqueue_style( 'kirki-styles', trailingslashit( KIRKI_URL ) . 'assets/css/kirki-styles.css', NULL, NULL );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ) . 'assets/css/kirki-styles.css', NULL, NULL );
 
 	}
 

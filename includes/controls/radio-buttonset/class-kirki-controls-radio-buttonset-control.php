@@ -9,7 +9,7 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_style( 'kirki-radio-buttonset', trailingslashit( KIRKI_URL ) . 'includes/controls/radio-buttonset/style.css' );
+		wp_enqueue_style( 'kirki-radio-buttonset', trailingslashit( kirki_url() ) . 'includes/controls/radio-buttonset/style.css' );
 	}
 
 	public function render_content() {

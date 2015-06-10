@@ -10,7 +10,7 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_style( 'kirki-palette', trailingslashit( KIRKI_URL ) . 'includes/controls/palette/style.css' );
+		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ) . 'includes/controls/palette/style.css' );
 
 	}
 

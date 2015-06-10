@@ -15,12 +15,7 @@ if ( ! defined( 'KIRKI_PATH' ) ) {
 }
 // Set the KIRKI_URL constant.
 if ( ! defined( 'KIRKI_URL' ) ) {
-	$config = apply_filters( 'kirki/config', array() );
-	if ( isset( $config['url_path'] ) ) {
-		define( 'KIRKI_URL', esc_url_raw( $config['url_path'] ) );
-	} else {
-		define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
-	}
+	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
 }
 
 /**
@@ -49,8 +44,8 @@ function kirki_autoload_classes( $class_name ) {
 spl_autoload_register( 'kirki_autoload_classes' );
 
 // Include helper files
-include_once( KIRKI_PATH . '/includes/deprecated.php' );
 include_once( KIRKI_PATH . '/includes/functions.php' );
+include_once( KIRKI_PATH . '/includes/deprecated.php' );
 // Include the API class
 include_once( KIRKI_PATH . '/includes/class-kirki.php' );
 

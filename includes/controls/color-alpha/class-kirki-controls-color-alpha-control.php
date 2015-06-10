@@ -11,8 +11,8 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( KIRKI_URL ) . 'includes/controls/color-alpha/script.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-color-alpha', trailingslashit( KIRKI_URL ) . 'includes/controls/color-alpha/style.css' );
+		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/script.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/style.css' );
 
     }
 

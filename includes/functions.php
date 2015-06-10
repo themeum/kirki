@@ -1,5 +1,18 @@
 <?php
 
+function kirki_path() {
+	return KIRKI_PATH;
+}
+
+function kirki_url() {
+	$config = apply_filters( 'kirki/config', array() );
+	if ( isset( $config['url_path'] ) ) {
+		return $config['url_path'];
+	} else {
+		return KIRKI_URL;
+	}
+}
+
 function kirki_field_active_callback( $control ) {
 
 	// Get all fields
