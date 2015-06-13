@@ -27,9 +27,6 @@ function kirki_autoload_classes( $class_name ) {
 	if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
 		$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls' . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
-		$foldername = ( 0 === stripos( $class_name, 'Kirki_Scripts' ) )   ? 'scripts'  : $foldername;
-		$foldername = ( 0 === stripos( $class_name, 'Kirki_Styles' ) )    ? 'styles'   : $foldername;
-
 		$foldername = ( '' != $foldername ) ? $foldername . DIRECTORY_SEPARATOR : '';
 
 		$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $foldername . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
