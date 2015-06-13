@@ -60,7 +60,9 @@ function Kirki() {
 	$kirki->settings      = new Kirki_Settings();
 	$kirki->controls      = new Kirki_Controls();
 	$kirki->api           = new Kirki();
-	$kirki->styles        = new Kirki_Styles();
+	$kirki->back_styles   = new Kirki_Styles_Customizer();
+	$kirki->front_styles  = new Kirki_Styles_Frontend();
+
 
 	return $kirki;
 

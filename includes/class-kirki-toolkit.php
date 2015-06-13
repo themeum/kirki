@@ -19,7 +19,8 @@ class Kirki_Toolkit {
 	public $api           = null;
 	public $settings      = null;
 	public $controls      = null;
-
+	public $back_styles   = null;
+	public $front_styles  = null;
 
 	/**
 	 * Access the single instance of this class
