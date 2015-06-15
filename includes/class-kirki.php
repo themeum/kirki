@@ -57,7 +57,7 @@ class Kirki {
 	public static function get_option( $config_id = '', $field_id = '' ) {
 
 		if ( ( '' == $field_id ) && '' != $config_id ) {
-			$field_if  = $config_id;
+			$field_id  = $config_id;
 			$config_id = 'global';
 		}
 
@@ -71,7 +71,7 @@ class Kirki {
 		if ( 'theme_mod' == $mode ) {
 
 			// We're using theme_mods
-			$value = get_theme_mod( $field_id, self::$fields[$field_id]['default'] );
+			$value = get_theme_mod( $field_id, Kirki_Field::sanitize_default( self::$fields[$field_id]['default'] ) );
 
 		} elseif ( 'option' == $mode ) {
 
@@ -368,7 +368,7 @@ class Kirki {
 						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
 
 						if ( $variable_callback ) {
-							$variables[$field_variable['name']] = call_user_func( $field_variable['callback'], kirki_get_option( $field['settings'] ) );
+							$variables[$field_variable['name']] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field::sanitize_settings( $field ) ) );
 						} else {
 							$variables[$field_variable['name']] = self::get_option( $field['settings'] );
 						}

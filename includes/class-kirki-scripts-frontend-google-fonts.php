@@ -40,7 +40,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 				if ( $is_font_family || $is_font_weight || $is_font_subset ) {
 					// The value of this control
-					$value = kirki_get_option( $field['settings_raw'] );
+					$value = Kirki::get_option( $field['settings_raw'] );
 
 					if ( $is_font_family ) {
 						$fonts[]['font-family'] = $value;

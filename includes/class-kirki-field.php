@@ -212,20 +212,8 @@ class Kirki_Field {
 	 * @return mixed
 	 */
 	public static function sanitize_default( $field ) {
-		// If ['default'] is not set, set an empty value
-		if ( ! isset( $field['default'] ) ) {
-			$field['default'] = '';
-		}
 
-		/**
-		 * Sortable controls need a serialized array as the default value.
-		 * Since we're using normal arrays to set our defaults when defining the fields, we need to serialize that value here.
-		 */
-		if ( 'sortable' == $field['type'] && isset( $field['default'] ) && ! empty( $field['default'] ) ) {
-			$field['default'] = maybe_serialize( $field['default'] );
-		}
-
-		return $field['default'];
+		return ( isset( $field['default'] ) ) ? $field['default'] : '';
 
 	}
 

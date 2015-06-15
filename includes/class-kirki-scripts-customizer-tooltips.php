@@ -21,7 +21,6 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 			$field['settings'] = Kirki_Field::sanitize_settings( $field );
 
 			if ( ! empty( $field['help'] ) ) {
-				$bubble_content = $field['help'];
 				$content = "<a href='#' class='tooltip hint--left' data-hint='" . strip_tags( esc_html( $field['help'] ) ) . "'><span class='dashicons dashicons-info'></span></a>";
 				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $field['settings'] . '" );';
 			}
