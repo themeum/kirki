@@ -1,5 +1,7 @@
 # [Kirki](http://kirki.org) #
 
+[![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki)
+
 Contributors: aristath, fovoc<br>
 Tags: customizer, options famework, theme mods<br>
 Donate link: http://kirki.org/<br>
