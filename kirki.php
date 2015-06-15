@@ -55,7 +55,6 @@ function Kirki() {
 
 	$kirki->field         = new Kirki_Field();
 	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
-	$kirki->config        = new Kirki_Config();
 	$kirki->scripts       = new Kirki_Scripts_Registry();
 	$kirki->settings      = new Kirki_Settings();
 	$kirki->controls      = new Kirki_Controls();

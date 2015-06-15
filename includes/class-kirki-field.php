@@ -81,8 +81,12 @@ class Kirki_Field {
 	 * @return string. (theme_mod|option)
 	 */
 	public static function sanitize_type( $field ) {
-		$config = Kirki_Toolkit::config()->get_all();
-		return esc_attr( $config['options_type'] );
+		$config = apply_filters( 'kirki/config', array() );
+		if ( isset( $field['option_type'] ) ) {
+			return esc_attr( $field['option_type'] );
+		} else {
+			return ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
+		}
 	}
 
 	/**
@@ -113,8 +117,8 @@ class Kirki_Field {
 	 */
 	public static function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
-			$config = Kirki_Toolkit::config()->get_all();
-			return esc_attr( $config['capability'] );
+			$config = apply_filters( 'kirki/config', array() );
+			return isset( $config['capability'] ) ? esc_attr( $config['capability'] ) : 'edit_theme_options';
 		} else {
 			return esc_attr( $field['capability'] );
 		}
@@ -151,7 +155,8 @@ class Kirki_Field {
 	 */
 	public static function sanitize_settings( $field ) {
 
-		$config = Kirki_Toolkit::config()->get_all();
+		$config = apply_filters( 'kirki/config', array() );
+		$config['option_name'] = ( isset( $config['option_name'] ) ) ? $config['option_name'] : '';
 
 		// Pass this throught the sanitize_settings_raw method first.
 		$field['settings'] = self::sanitize_settings_raw( $field );

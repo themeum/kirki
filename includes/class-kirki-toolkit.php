@@ -12,7 +12,6 @@ class Kirki_Toolkit {
 
 	public static $version = '1.0.0-alpha';
 
-	public $config        = null;
 	public $font_registry = null;
 	public $scripts       = null;
 	public $fields        = null;
@@ -34,19 +33,61 @@ class Kirki_Toolkit {
 	}
 
 	/**
-	 * Shortcut method to get the configuration of the single instance.
-	 */
-	public static function config() {
-		return self::get_instance()->config;
-	}
-
-	/**
 	 * Shortcut method to get the translation strings
 	 */
 	public static function i18n() {
-		$config  = self::config();
-		$options = $config->get_all();
-		return $options['i18n'];
+
+		$i18n = array(
+			'background-color'      => __( 'Background Color',         'kirki' ),
+			'background-image'      => __( 'Background Image',         'kirki' ),
+			'no-repeat'             => __( 'No Repeat',                'kirki' ),
+			'repeat-all'            => __( 'Repeat All',               'kirki' ),
+			'repeat-x'              => __( 'Repeat Horizontally',      'kirki' ),
+			'repeat-y'              => __( 'Repeat Vertically',        'kirki' ),
+			'inherit'               => __( 'Inherit',                  'kirki' ),
+			'background-repeat'     => __( 'Background Repeat',        'kirki' ),
+			'cover'                 => __( 'Cover',                    'kirki' ),
+			'contain'               => __( 'Contain',                  'kirki' ),
+			'background-size'       => __( 'Background Size',          'kirki' ),
+			'fixed'                 => __( 'Fixed',                    'kirki' ),
+			'scroll'                => __( 'Scroll',                   'kirki' ),
+			'background-attachment' => __( 'Background Attachment',    'kirki' ),
+			'left-top'              => __( 'Left Top',                 'kirki' ),
+			'left-center'           => __( 'Left Center',              'kirki' ),
+			'left-bottom'           => __( 'Left Bottom',              'kirki' ),
+			'right-top'             => __( 'Right Top',                'kirki' ),
+			'right-center'          => __( 'Right Center',             'kirki' ),
+			'right-bottom'          => __( 'Right Bottom',             'kirki' ),
+			'center-top'            => __( 'Center Top',               'kirki' ),
+			'center-center'         => __( 'Center Center',            'kirki' ),
+			'center-bottom'         => __( 'Center Bottom',            'kirki' ),
+			'background-position'   => __( 'Background Position',      'kirki' ),
+			'background-opacity'    => __( 'Background Opacity',       'kirki' ),
+			'ON'                    => __( 'ON',                       'kirki' ),
+			'OFF'                   => __( 'OFF',                      'kirki' ),
+			'all'                   => __( 'All',                      'kirki' ),
+			'cyrillic'              => __( 'Cyrillic',                 'kirki' ),
+			'cyrillic-ext'          => __( 'Cyrillic Extended',        'kirki' ),
+			'devanagari'            => __( 'Devanagari',               'kirki' ),
+			'greek'                 => __( 'Greek',                    'kirki' ),
+			'greek-ext'             => __( 'Greek Extended',           'kirki' ),
+			'khmer'                 => __( 'Khmer',                    'kirki' ),
+			'latin'                 => __( 'Latin',                    'kirki' ),
+			'latin-ext'             => __( 'Latin Extended',           'kirki' ),
+			'vietnamese'            => __( 'Vietnamese',               'kirki' ),
+			'serif'                 => _x( 'Serif', 'font style',      'kirki' ),
+			'sans-serif'            => _x( 'Sans Serif', 'font style', 'kirki' ),
+			'monospace'             => _x( 'Monospace', 'font style',  'kirki' ),
+		);
+
+		$config = apply_filters( 'kirki/config', array() );
+
+		if ( isset( $config['i18n'] ) ) {
+			$i18n = wp_parse_args( $config['i18n'], $strings );
+		}
+
+		return $i18n;
+
 	}
 
 	/**

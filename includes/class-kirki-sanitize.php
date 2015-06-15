@@ -31,9 +31,9 @@ class Kirki_Sanitize {
 	public static function choice( $input, $setting ) {
 
 		global $wp_customize;
-		$config = Kirki_Toolkit::config()->get_all();
+		$config = apply_filters( 'kirki/config', array() );
 
-		if ( '' != $config['option_name'] ) {
+		if ( isset( $config['option_name'] ) && '' != $config['option_name'] ) {
 			return sanitize_key( $input );
 		}
 

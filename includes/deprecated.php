@@ -19,7 +19,9 @@ function kirki_get_option( $option = '' ) {
 	// Get the array of all the fields.
 	$fields = Kirki::$fields;
 	// Get the config.
-	$config = Kirki_Toolkit::config()->get_all();
+	$config = apply_filters( 'kirki/config', array() );
+	$config['options_type'] = ( isset( $config['options_type'] ) ) ? esc_attr( $config['options_type'] ) : 'theme_mod';
+	$config['option_name']  = ( isset( $config['option_name'] ) )  ? esc_attr( $config['option_name'] )  : '';
 
 	// If we're using options instead of theme_mods,
 	// then first we'll have to get the array of all options.

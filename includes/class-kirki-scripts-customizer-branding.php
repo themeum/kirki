@@ -8,15 +8,15 @@ class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 	 */
 	public function customize_controls_print_scripts() {
 
-		$options = Kirki_Toolkit::config()->get_all();
+		$config = apply_filters( 'kirki/config', array() );
 		$script = '';
-		if ( '' != $options['logo_image'] || '' != $options['description'] ) {
+		if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
 
-			if ( '' != $options['logo_image'] ) {
-				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $options['logo_image'] . '">\' );';
+			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
+				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $config['logo_image'] . '">\' );';
 			}
-			if ( '' != $options['description'] ) {
-				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $options['description'] . '</div></div>\' );';
+			if ( isset( $config['description'] ) && '' != $config['description'] ) {
+				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $config['description'] . '</div></div>\' );';
 			}
 
 		}

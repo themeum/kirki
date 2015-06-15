@@ -20,19 +20,19 @@ class Kirki_Styles_Customizer {
 	function custom_css() {
 
 		$color   = $this->get_admin_colors();
-		$config  = Kirki_Toolkit::config();
+		$config = apply_filters( 'kirki/config', array() );
 
 		$color_font    = false;
-		$color_accent  = $config->get( 'color_accent', $color['icon_colors']['focus']);
-		$color_back    = $config->get( 'color_back',   '#ffffff' );
+		$color_accent  = isset( $config['color_accent'] ) ? Kirki_Color::sanitize_hex( $config['color_accent'] ) : $color['icon_colors']['focus'];
+		$color_back    = isset( $config['color_back'] ) ? Kirki_Color::sanitize_hex( $config['color_back'] ) : '#ffffff';
 		$color_font    = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
 
 		$styles = '<style>';
 
 		// Width
-		if ( null != $config->get( 'width', null ) ) {
-			$styles .= '.wp-full-overlay-sidebar{width:' . $config->get( 'width', null ) . ';}';
-			$styles .= '.wp-full-overlay.expanded{margin-left:' . $config->get( 'width', null ) . ';}';
+		if ( isset( $config['width'] ) ) {
+			$styles .= '.wp-full-overlay-sidebar{width:' . esc_attr( $config['width'] ) . ';}';
+			$styles .= '.wp-full-overlay.expanded{margin-left:' . esc_attr( $config['width'] ) . ';}';
 		}
 
 		// Background styles
