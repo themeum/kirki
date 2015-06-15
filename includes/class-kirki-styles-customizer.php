@@ -41,6 +41,7 @@ class Kirki_Styles_Customizer {
 		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,#customize-theme-controls .control-section .accordion-section-title:focus,.control-section.control-panel>.accordion-section-title:after{background-color:' . Kirki_Color::adjust_brightness( $color_back, -10 ) . ';color:' . $color_font . ';}';
 		$styles .= '#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after{background-color:' . Kirki_Color::adjust_brightness( $color_back, -20 ) . ';color:' . $color_font . ';}';
 		$styles .= '#customize-theme-controls .control-section.open .accordion-section-title{background-color:' . $color_accent . ' !important;color:' . $color_font . ' !important;}';
+		$styles .= '#customize-theme-controls .accordion-section-content, #customize-controls .description, li.customize-control a.tooltip.hint--left, #customize-controls .customize-info .customize-help-toggle{color:' . $color_font . '}';
 
 		// Tooltip styles
 		// $styles .= 'li.customize-control a.button.tooltip.hint--left {color:' . $color_accent . ';}';
