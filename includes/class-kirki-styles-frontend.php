@@ -85,6 +85,7 @@ class Kirki_Styles_Frontend {
 	public function loop_controls() {
 
 		$fields = Kirki::$fields;
+
 		$css    = '';
 
 		// Early exit if no fields are found.
@@ -104,9 +105,9 @@ class Kirki_Styles_Frontend {
 			if ( isset( $field['output'] ) ) {
 
 				$css .= Kirki_Output::css(
-					$field['settings_raw'],
-					$field['option_type'],
-					$field['output'],
+					Kirki_Field::sanitize_settings_raw( $field ),
+					Kirki_Field::sanitize_type( $field ),
+					Kirki_Field::sanitize_output( $field ),
 					isset( $field['output']['callback'] ) ? $field['output']['callback'] : ''
 				);
 

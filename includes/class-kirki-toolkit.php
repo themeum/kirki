@@ -83,7 +83,7 @@ class Kirki_Toolkit {
 		$config = apply_filters( 'kirki/config', array() );
 
 		if ( isset( $config['i18n'] ) ) {
-			$i18n = wp_parse_args( $config['i18n'], $strings );
+			$i18n = wp_parse_args( $config['i18n'], $i18n );
 		}
 
 		return $i18n;

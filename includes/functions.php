@@ -24,7 +24,7 @@ function kirki_field_active_callback( $control ) {
 
 	$current_field = $fields[$control->id];
 
-	if ( false != $current_field['required'] ) {
+	if ( isset( $current_field['required'] ) ) {
 
 		foreach ( $current_field['required'] as $requirement ) {
 

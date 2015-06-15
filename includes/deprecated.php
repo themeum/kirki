@@ -31,14 +31,14 @@ function kirki_get_option( $option = '' ) {
 			// No option name is defined.
 			// Each options is saved separately in the db, so we'll manually build the array here.
 			foreach ( $fields as $field ) {
-				$values[$field['settings']] = get_option( $field['settings'], $field['default'] );
+				$values[Kirki_Field::sanitize_settings( $field )] = get_option( Kirki_Field::sanitize_settings( $field ), Kirki_Field::sanitize_default( $field ) );
 			}
 		} else {
 			// An option_name has been defined so our options are all saved in an array there.
 			$values = get_option( $config['option_name'] );
 			foreach ( $fields as $field ) {
-				if ( ! isset( $values[$field['settings_raw']] ) ) {
-					$values[$field['settings_raw']] = maybe_unserialize( $field['default'] );
+				if ( ! isset( $values[Kirki_Field::sanitize_settings_raw( $field )] ) ) {
+					$values[Kirki_Field::sanitize_settings_raw( $field )] = maybe_unserialize( Kirki_Field::sanitize_default( $field ) );
 				}
 			}
 		}
