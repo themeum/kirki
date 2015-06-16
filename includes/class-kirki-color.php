@@ -53,12 +53,12 @@ class Kirki_Color {
 		// Remove any trailing '#' symbols from the color value
 		$hex = self::sanitize_hex( $hex, false );
 
-		$red    = hexdec( substr( $hex, 0, 2 ) );
-		$green  = hexdec( substr( $hex, 2, 2 ) );
-		$blue   = hexdec( substr( $hex, 4, 2 ) );
-
 		// rgb is an array
-		$rgb = array( $red, $green, $blue );
+		$rgb = array(
+            hexdec( substr( $hex, 0, 2 ) ),
+            hexdec( substr( $hex, 2, 2 ) ),
+            hexdec( substr( $hex, 4, 2 ) )
+        );
 
 		return ( $implode ) ? implode( ',', $rgb ) : $rgb;
 
@@ -72,13 +72,9 @@ class Kirki_Color {
      * @return  string  The hex value of the color.
      */
      public static function rgba2hex( $color ) {
-         // Remove the 'rgba' part of the string
-         $color = str_replace( 'rgba', '', $color );
-         // Remove the parenthesis & spaces.
-         $color = str_replace( '(', '', $color );
-         $color = str_replace( ')', '', $color );
-         $color = str_replace( ' ', '', $color );
 
+         // Remove parts of the string
+         $color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
          // Convert to array
          $color = explode( ',', $color );
          // This is not a valid rgba definition, so return white.
@@ -105,7 +101,6 @@ class Kirki_Color {
 
          return $hex;
 
-
      }
 
     /**
@@ -118,19 +113,14 @@ class Kirki_Color {
 	public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
 
 		$hex = self::sanitize_hex( $hex, false );
-		// Make sure that opacity is properly formatted :
-		// Set the opacity to 100 if a larger value has been entered by mistake.
-		// If a negative value is used, then set to 0.
-		// If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
-		if ( $opacity >= 100 ) {
-			$opacity = 100;
-		} elseif ( $opacity < 0 ) {
-			$opacity = 0;
-		} elseif ( $opacity < 1 && $opacity != 0 ) {
-			$opacity = ( $opacity * 100 );
-		} else {
-			$opacity = $opacity;
-		}
+        /**
+         * Make sure that opacity is properly formatted :
+         * Set the opacity to 100 if a larger value has been entered by mistake.
+         * If a negative value is used, then set to 0.
+         * If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
+         */
+        $opacity = ( 1 > $opacity && 0 < $opacity ) ? $opacity * 100 : $opacity;
+        $opacity = max( 0, min( 100, $opacity ) );
 
 		// Divide the opacity by 100 to end-up with a CSS value for the opacity
 		$opacity = ( $opacity / 100 );
@@ -151,12 +141,7 @@ class Kirki_Color {
 
 		$hex = self::sanitize_hex( $hex, false );
 		// returns brightness value from 0 to 255
-
-		$red    = hexdec( substr( $hex, 0, 2 ) );
-		$green  = hexdec( substr( $hex, 2, 2 ) );
-		$blue   = hexdec( substr( $hex, 4, 2 ) );
-
-		return ( ( $red * 299 ) + ( $green * 587 ) + ( $blue * 114 ) ) / 1000;
+		return ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000;
 
 	}
 
@@ -172,16 +157,10 @@ class Kirki_Color {
 		$hex = self::sanitize_hex( $hex, false );
 		// Steps should be between -255 and 255. Negative = darker, positive = lighter
 		$steps = max( -255, min( 255, $steps ) );
-
-		// Get decimal values
-		$red    = hexdec( substr( $hex, 0, 2 ) );
-		$green  = hexdec( substr( $hex, 2, 2 ) );
-		$blue   = hexdec( substr( $hex, 4, 2 ) );
-
 		// Adjust number of steps and keep it inside 0 to 255
-		$red    = max( 0, min( 255, $red + $steps ) );
-		$green  = max( 0, min( 255, $green + $steps ) );
-		$blue   = max( 0, min( 255, $blue + $steps ) );
+		$red    = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
+		$green  = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
+		$blue   = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
 
 		$red_hex    = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
 		$green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
@@ -206,17 +185,9 @@ class Kirki_Color {
 		$hex1 = self::sanitize_hex( $hex1, false );
 		$hex2 = self::sanitize_hex( $hex2, false );
 
-		// Get decimal values
-		$red_1   = hexdec( substr( $hex1, 0, 2 ) );
-		$green_1 = hexdec( substr( $hex1, 2, 2 ) );
-		$blue_1  = hexdec( substr( $hex1, 4, 2 ) );
-		$red_2   = hexdec( substr( $hex2, 0, 2 ) );
-		$green_2 = hexdec( substr( $hex2, 2, 2 ) );
-		$blue_2  = hexdec( substr( $hex2, 4, 2 ) );
-
-		$red   = ( $percentage * $red_1 + ( 100 - $percentage ) * $red_2 ) / 100;
-		$green = ( $percentage * $green_1 + ( 100 - $percentage ) * $green_2 ) / 100;
-		$blue  = ( $percentage * $blue_1 + ( 100 - $percentage ) * $blue_2 ) / 100;
+		$red   = ( $percentage * hexdec( substr( $hex1, 0, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 0, 2 ) ) ) / 100;
+		$green = ( $percentage * hexdec( substr( $hex1, 2, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 2, 2 ) ) ) / 100;
+		$blue  = ( $percentage * hexdec( substr( $hex1, 4, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 4, 2 ) ) ) / 100;
 
 		$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
 		$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
@@ -233,13 +204,7 @@ class Kirki_Color {
      * @return  array       returns array( 'h', 's', 'v' )
      */
 	public static function hex_to_hsv( $hex ) {
-
-		$hex = self::sanitize_hex( $hex, false );
-		$rgb = self::get_rgb( $hex );
-		$hsv = self::rgb_to_hsv( $rgb );
-
-		return $hsv;
-
+		return self::rgb_to_hsv( self::get_rgb( self::sanitize_hex( $hex, false ) ) );
 	}
 
     /**
@@ -249,15 +214,10 @@ class Kirki_Color {
      * @return  array       returns array( 'h', 's', 'v' )
      */
 	public static function rgb_to_hsv( $color = array() ) {
-		$r = $color[0];
-		$g = $color[1];
-		$b = $color[2];
 
-		$hsl = array();
-
-		$var_r = ( $r / 255 );
-		$var_g = ( $g / 255 );
-		$var_b = ( $b / 255 );
+		$var_r = ( $color[0] / 255 );
+		$var_g = ( $color[1] / 255 );
+		$var_b = ( $color[2] / 255 );
 
 		$var_min = min( $var_r, $var_g, $var_b);
 		$var_max = max( $var_r, $var_g, $var_b);
@@ -292,11 +252,8 @@ class Kirki_Color {
 			}
 		}
 
-		$hsl['h'] = $h;
-		$hsl['s'] = $s;
-		$hsl['v'] = $v;
+		return array( 'h' => $h, 's' => $s, 'v' => $v );
 
-		return $hsl;
 	}
 
     /**
@@ -441,17 +398,9 @@ class Kirki_Color {
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
 
-		$r1 = $color_1_rgb[0];
-		$g1 = $color_1_rgb[1];
-		$b1 = $color_1_rgb[2];
-
-		$r2 = $color_2_rgb[0];
-		$g2 = $color_2_rgb[1];
-		$b2 = $color_2_rgb[2];
-
-		$r_diff = max( $r1, $r2 ) - min( $r1, $r2 );
-		$g_diff = max( $g1, $g2 ) - min( $g1, $g2 );
-		$b_diff = max( $b1, $b2 ) - min( $b1, $b2 );
+		$r_diff = max( $color_1_rgb[0], $color_2_rgb[0] ) - min( $color_1_rgb[0], $color_2_rgb[0] );
+		$g_diff = max( $color_1_rgb[1], $color_2_rgb[1] ) - min( $color_1_rgb[1], $color_2_rgb[1] );
+		$b_diff = max( $color_1_rgb[2], $color_2_rgb[2] ) - min( $color_1_rgb[2], $color_2_rgb[2] );
 
 		$color_diff = $r_diff + $g_diff + $b_diff;
 
@@ -472,16 +421,8 @@ class Kirki_Color {
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
 
-		$r1 = $color_1_rgb[0];
-		$g1 = $color_1_rgb[1];
-		$b1 = $color_1_rgb[2];
-
-		$r2 = $color_2_rgb[0];
-		$g2 = $color_2_rgb[1];
-		$b2 = $color_2_rgb[2];
-
-		$br_1 = ( 299 * $r1 + 587 * $g1 + 114 * $b1 ) / 1000;
-		$br_2 = ( 299 * $r2 + 587 * $g2 + 114 * $b2 ) / 1000;
+		$br_1 = ( 299 * $color_1_rgb[0] + 587 * $color_1_rgb[1] + 114 * $color_1_rgb[2] ) / 1000;
+		$br_2 = ( 299 * $color_2_rgb[0] + 587 * $color_2_rgb[1] + 114 * $color_2_rgb[2] ) / 1000;
 
 		return abs( $br_1 - $br_2 );
 
@@ -499,16 +440,8 @@ class Kirki_Color {
 		$color_1_rgb = self::get_rgb( $color_1 );
 		$color_2_rgb = self::get_rgb( $color_2 );
 
-		$r1 = $color_1_rgb[0];
-		$g1 = $color_1_rgb[1];
-		$b1 = $color_1_rgb[2];
-
-		$r2 = $color_2_rgb[0];
-		$g2 = $color_2_rgb[1];
-		$b2 = $color_2_rgb[2];
-
-		$l1 = 0.2126 * pow( $r1 / 255, 2.2 ) + 0.7152 * pow( $g1 / 255, 2.2 ) + 0.0722 * pow( $b1 / 255, 2.2 );
-		$l2 = 0.2126 * pow( $r2 / 255, 2.2 ) + 0.7152 * pow( $g2 / 255, 2.2 ) + 0.0722 * pow( $b2 / 255, 2.2 );
+		$l1 = 0.2126 * pow( $color_1_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_1_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_1_rgb[2] / 255, 2.2 );
+		$l2 = 0.2126 * pow( $color_2_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_2_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_2_rgb[2] / 255, 2.2 );
 
 		$lum_diff = ( $l1 > $l2 ) ? ( $l1 + 0.05 ) / ( $l2 + 0.05 ) : ( $l2 + 0.05 ) / ( $l1 + 0.05 );
 
