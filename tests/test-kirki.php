@@ -52,6 +52,35 @@ class Kirki_Test extends WP_UnitTestCase {
 
 	}
 
+	function add_controls_via_filter( $fields ) {
+
+	    // Add the controls
+	    $fields[] = array(
+	        'label'        => __( 'My custom control', 'translation_domain' ),
+	        'section'      => 'my_section',
+	        'settings'     => 'my_setting_3',
+	        'type'         => 'text',
+	        'priority'     => 10,
+	        'options_type' => 'theme_mod',
+	        'capability'   => 'edit_posts',
+			'default'      => 'some-default-value',
+	    );
+
+	    $fields[] = array(
+	        'label'        => __( 'My custom control 2', 'translation_domain' ),
+	        'section'      => 'my_section',
+	        'settings'     => 'my_setting_4',
+	        'type'         => 'checkbox',
+	        'priority'     => 20,
+	        'options_type' => 'theme_mod',
+	        'capability'   => 'edit_theme_options',
+			'default'      => 'some-default-value',
+	    );
+
+	    return $fields;
+
+	}
+
 	public function test_config() {
 		$this->add_config();
 		// Default config
@@ -107,6 +136,28 @@ class Kirki_Test extends WP_UnitTestCase {
 		// Inherited from config
 		$this->assertEquals( 'edit_theme_options',  Kirki::$fields['my_setting_2']['capability'] );
 		$this->assertEquals( 'option',              Kirki::$fields['my_setting_2']['option_type'] );
+	}
+
+	public function test_fields_via_filter() {
+		add_filter( 'kirki/fields', array( $this, 'add_controls_via_filter' ) );
+		do_action( 'wp_loaded' );
+
+		// my_setting
+		$this->assertArrayHasKey( 'my_setting',    Kirki::$fields );
+		$this->assertEquals( 'My custom control',  Kirki::$fields['my_setting_3']['label'] );
+		$this->assertEquals( 'my_section',         Kirki::$fields['my_setting_3']['section'] );
+		$this->assertEquals( 'text',               Kirki::$fields['my_setting_3']['type'] );
+		$this->assertEquals( 10,                   Kirki::$fields['my_setting_3']['priority'] );
+		$this->assertEquals( 'some-default-value', Kirki::$fields['my_setting_3']['default'] );
+		$this->assertEquals( 'edit_posts',         Kirki::$fields['my_setting_3']['capability'] );
+
+		// my_setting
+		$this->assertArrayHasKey( 'my_setting_2',   Kirki::$fields );
+		$this->assertEquals( 'My custom control 2', Kirki::$fields['my_setting_4']['label'] );
+		$this->assertEquals( 'my_section',          Kirki::$fields['my_setting_4']['section'] );
+		$this->assertEquals( 'checkbox',            Kirki::$fields['my_setting_4']['type'] );
+		$this->assertEquals( 20,                    Kirki::$fields['my_setting_4']['priority'] );
+		$this->assertEquals( 'some-default-value',  Kirki::$fields['my_setting_4']['default'] );
 	}
 
 }
