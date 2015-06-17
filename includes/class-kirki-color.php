@@ -119,13 +119,13 @@ class Kirki_Color {
          * If a negative value is used, then set to 0.
          * If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
          */
-        $opacity = ( 1 > $opacity && 0 < $opacity ) ? $opacity * 100 : $opacity;
+        $opacity = ( 1 >= $opacity && 0 < $opacity ) ? $opacity * 100 : $opacity;
         $opacity = max( 0, min( 100, $opacity ) );
 
 		// Divide the opacity by 100 to end-up with a CSS value for the opacity
 		$opacity = ( $opacity / 100 );
 
-		$color = 'rgba(' . self::get_rgb( $hex, true ) . ', ' . $opacity . ')';
+		$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
 
 		return $color;
 
@@ -141,7 +141,7 @@ class Kirki_Color {
 
 		$hex = self::sanitize_hex( $hex, false );
 		// returns brightness value from 0 to 255
-		return ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000;
+		return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
 
 	}
 
