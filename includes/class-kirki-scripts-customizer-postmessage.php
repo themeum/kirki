@@ -48,7 +48,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 					if ( 'html' == $js_vars['function'] ) {
 						$script .= '$( \'' . esc_js( $js_vars["element"] ) . '\' ).html( newval );';
 					} elseif ( 'css' == $js_vars['function'] ) {
-						$script .= '$(\'' . esc_js( $js_vars["element"] ) . '\').css(\'' . esc_js( $js_vars["property"] ) . '\', newval );';
+						$script .= '$(\'' . esc_js( $js_vars["element"] ) . '\').css(\'' . esc_js( $js_vars["property"] ) . '\', newval'. ( ! empty( $js_vars['units'] ) ? ' + \'' . $js_vars['units'] . "'" : '' ) .' );';
 					}
 					$script .= '}); });';
 				}
