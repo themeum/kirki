@@ -76,7 +76,7 @@ class Kirki_Fonts_Font_Registry {
 			// Verify that the font exists
 			if ( $this->is_google_font( $font ) ) {
 				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
-				$family[] = $font . ':' . join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[$font]['variants'] ) );
+				$family[] = $font . ':' . join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[$font]['variants'] ) ).',';
 			}
 		}
 
