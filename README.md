@@ -1,6 +1,6 @@
 # [Kirki](http://kirki.org) #
 
-[![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki)
+[![Build Status](https://travis-ci.org/reduxframework/kirki.svg?branch=master)](https://travis-ci.org/reduxframework/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki)
 
 Contributors: aristath, fovoc<br>
 Tags: customizer, options famework, theme mods<br>
