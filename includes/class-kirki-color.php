@@ -252,7 +252,7 @@ class Kirki_Color {
 			}
 		}
 
-		return array( 'h' => $h, 's' => $s, 'v' => $v );
+		return array( 'h' => round( $h, 2 ), 's' => round( $s, 2 ), 'v' => round( $v, 2 ) );
 
 	}
 
@@ -269,19 +269,25 @@ class Kirki_Color {
 
 		$brightest = false;
 
-		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color, false );
-			$brightness = self::get_brightness( $color );
+        // Sanitize colors
+        $colors_sanitized = array();
+        foreach ( $colors as $key => $value ) {
+            $colors_sanitized[$key] = self::sanitize_hex( $value );
+        }
 
-			if ( ! $brightest || self::get_brightness( $color ) > self::get_brightness( $brightest ) ) {
-				$brightest = $color;
+		foreach ( $colors_sanitized as $key => $value ) {
+            $value      = self::sanitize_hex( $value, false );
+			$brightness = self::get_brightness( $value );
+
+			if ( ! $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {
+				$brightest = $value;
 			}
 		}
 
 		if ( $context == 'key' ) {
-			return array_search( $brightest, $colors );
+			return array_search( $brightest, $colors_sanitized );
 		} elseif ( $context == 'value' ) {
-			return $brightest;
+			return self::sanitize_hex( $brightest );
 		}
 
 	}

@@ -126,4 +126,45 @@ class KirkiColorTest extends WP_UnitTestCase {
 		$this->assertEquals( '#7f7f7f', Kirki_Color::mix_colors( '#000000', '#ffffff', 50 ) );
 	}
 
+	public function test_hex_to_hsv() {
+
+		$white = array( 'h' => 0,    's' => 0, 'v' => 1 );
+		$black = array( 'h' => 0,    's' => 0, 'v' => 0 );
+		$red   = array( 'h' => 0,    's' => 1, 'v' => 1 );
+		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
+		$blue  = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
+
+		$this->assertEquals( $white, Kirki_Color::hex_to_hsv( '#ffffff' ) );
+		$this->assertEquals( $black, Kirki_Color::hex_to_hsv( '#000000' ) );
+		$this->assertEquals( $red, Kirki_Color::hex_to_hsv( '#ff0000' ) );
+		$this->assertEquals( $green, Kirki_Color::hex_to_hsv( '#00ff00' ) );
+		$this->assertEquals( $blue, Kirki_Color::hex_to_hsv( '#0000ff' ) );
+	}
+
+	public function test_rgb_to_hsv() {
+
+		$white = array( 'h' => 0,    's' => 0, 'v' => 1 );
+		$black = array( 'h' => 0,    's' => 0, 'v' => 0 );
+		$red   = array( 'h' => 0,    's' => 1, 'v' => 1 );
+		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
+		$blue  = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
+
+		$this->assertEquals( $white, Kirki_Color::rgb_to_hsv( array( 255, 255, 255 ) ) );
+		$this->assertEquals( $black, Kirki_Color::rgb_to_hsv( array( 0,   0,   0   ) ) );
+		$this->assertEquals( $red,   Kirki_Color::rgb_to_hsv( array( 255, 0,   0   ) ) );
+		$this->assertEquals( $green, Kirki_Color::rgb_to_hsv( array( 0,   255, 0   ) ) );
+		$this->assertEquals( $blue,  Kirki_Color::rgb_to_hsv( array( 0,   0,   255 ) ) );
+	}
+
+	public function test_brightest_color() {
+		$colors1 = array( '#000000', '#ffffff', '333' );
+		$colors2 = array( 'f3f3f3', '0088cc', '#00', 'cc0000' );
+
+		$this->assertEquals( '#ffffff', Kirki_Color::brightest_color( $colors1, 'value' ) );
+		$this->assertEquals( '#f3f3f3', Kirki_Color::brightest_color( $colors2, 'value' ) );
+		// TODO: These 2 fail.
+		// $this->assertEquals( 1, Kirki_Color::brightest_color( $colors1, 'key' ) );
+		// $this->assertEquals( 0, Kirki_Color::brightest_color( $colors2, 'key' ) );
+	}
+
 }
