@@ -143,9 +143,167 @@ class Kirki_Test_Field extends WP_UnitTestCase {
 	}
 
 	public function test_sanitize_choices() {
-		$this->assertEquals( array( 'min' => -10, 'max' => 999, 'step' => 3 ), Kirki_Field::sanitize_choices( array( 'choices' => array( 'min' => -10, 'max' => 999, 'step' => 3 ) ) ) );
-		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field::sanitize_choices( array( 'choices' => array( 'foo', 'bar' ) ) ) );
+		$this->assertEquals(
+			array( 'min' => -10, 'max' => 999, 'step' => 3 ),
+			Kirki_Field::sanitize_choices(
+				array( 'choices' => array( 'min' => -10, 'max' => 999, 'step' => 3 ) )
+			)
+		);
+		$this->assertEquals(
+			array( 'foo', 'bar' ),
+			Kirki_Field::sanitize_choices( array( 'choices' => array( 'foo', 'bar' ) ) )
+		);
 		$this->assertEquals( array(), Kirki_Field::sanitize_choices( array() ) );
+	}
+
+	public function test_sanitize_output() {
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_output( array( 'output' => 'foo' ) ) );
+		$this->assertEquals(
+			array(
+				array(
+					'element'  => 'body > #main',
+					'property' => 'font-family',
+					'units'    => '',
+					'prefix'   => '',
+					'suffix'   => '',
+				)
+			),
+			Kirki_Field::sanitize_output( array( 'output' => array(
+				'element'  => 'body > #main',
+				'property' => 'font-family',
+			) ) )
+		);
+		$this->assertEquals(
+			array(
+				array(
+					'element'  => 'body > #main',
+					'property' => 'font-size',
+					'units'    => 'px !important',
+					'prefix'   => '@media (min-width: 700px) and (orientation: landscape) {',
+					'suffix'   => '}',
+				)
+			),
+			Kirki_Field::sanitize_output( array( 'output' => array(
+				array(
+					'element'  => 'body > #main',
+					'property' => 'font-size',
+					'units'    => 'px !important',
+					'prefix'   => '@media (min-width: 700px) and (orientation: landscape) {',
+					'suffix'   => '}',
+				)
+			) ) )
+		);
+	}
+
+	public function test_sanitize_transport() {
+		$this->assertEquals( 'refresh',     Kirki_Field::sanitize_transport( array() ) );
+		$this->assertEquals( 'refresh',     Kirki_Field::sanitize_transport( array( 'transport' => '' ) ) );
+		$this->assertEquals( 'refresh',     Kirki_Field::sanitize_transport( array( 'transport' => 'invalid' ) ) );
+		$this->assertEquals( 'postMessage', Kirki_Field::sanitize_transport( array( 'transport' => 'postMessage' ) ) );
+	}
+
+	public function test_sanitize_callback() {
+		$this->assertEquals( '__return_true',   Kirki_Field::sanitize_callback( array( 'sanitize_callback' => '__return_true' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ),   Kirki_Field::sanitize_callback( array( 'type' => 'checkbox' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ),      Kirki_Field::sanitize_callback( array( 'type' => 'color-alpha' ) ) );
+		$this->assertEquals( array( 'Kirki_Color', 'sanitize_hex' ),  Kirki_Field::sanitize_callback( array( 'type' => 'color' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ), Kirki_Field::sanitize_callback( array( 'type' => 'custom' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'dropdown-pages' ) ) );
+		$this->assertEquals( 'esc_textarea',                          Kirki_Field::sanitize_callback( array( 'type' => 'editor' ) ) );
+		$this->assertEquals( 'esc_url_raw',                           Kirki_Field::sanitize_callback( array( 'type' => 'image' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'multicheck' ), Kirki_Field::sanitize_callback( array( 'type' => 'multicheck' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ),     Kirki_Field::sanitize_callback( array( 'type' => 'number' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'palette' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'radio-buttonset' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'radio-image' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'radio' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'choice' ),     Kirki_Field::sanitize_callback( array( 'type' => 'select' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ),     Kirki_Field::sanitize_callback( array( 'type' => 'slider' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'sortable' ),   Kirki_Field::sanitize_callback( array( 'type' => 'sortable' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ),   Kirki_Field::sanitize_callback( array( 'type' => 'switch' ) ) );
+		$this->assertEquals( 'esc_textarea',                          Kirki_Field::sanitize_callback( array( 'type' => 'text' ) ) );
+		$this->assertEquals( 'esc_textarea',                          Kirki_Field::sanitize_callback( array( 'type' => 'textarea' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ),   Kirki_Field::sanitize_callback( array( 'type' => 'toggle' ) ) );
+		$this->assertEquals( 'esc_url_raw',                           Kirki_Field::sanitize_callback( array( 'type' => 'upload' ) ) );
+	}
+
+	public function test_sanitize_js_vars() {
+		$this->assertEquals( null, Kirki_Field::sanitize_js_vars( array() ) );
+		$this->assertEquals( null, Kirki_Field::sanitize_js_vars( array( 'js_vars' => 'foo' ) ) );
+		$this->assertEquals(
+			array(
+				array(
+					'element'  => '#main',
+					'function' => 'css',
+					'property' => 'color',
+					'units'    => '',
+				)
+			),
+			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(
+				'element'  => '#main',
+				'function' => 'css',
+				'property' => 'color',
+			) ) )
+		);
+		$this->assertEquals(
+			array(
+				array(
+					'element'  => 'body > #main',
+					'function' => 'css',
+					'property' => 'font-size',
+					'units'    => 'px'
+				)
+			),
+			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(
+				array(
+					'element'  => 'body > #main',
+					'function' => 'css',
+					'property' => 'font-size',
+					'units'    => 'px'
+				)
+			) ) )
+		);
+	}
+
+	public function test_sanitize_required() {
+		$this->assertEquals(
+			array(
+				array(
+					'setting'  => 'my-setting',
+					'operator' => '==',
+					'value'    => '1',
+				)
+			),
+			Kirki_Field::sanitize_required( array( 'required' => array(
+				'setting'  => 'my-setting',
+			) ) )
+		);
+		$this->assertEquals(
+			array(
+				array(
+					'setting'  => 'my-setting',
+					'operator' => '>=',
+					'value'    => '#333ff2'
+				)
+			),
+			Kirki_Field::sanitize_required( array( 'required' => array(
+				array(
+					'setting'  => 'my-setting',
+					'operator' => '>=',
+					'value'    => '#333ff2'
+				)
+			) ) )
+		);
+	}
+
+	public function test_sanitize_priority() {
+		$this->assertEquals( 10, Kirki_Field::sanitize_priority( array() ) );
+		$this->assertEquals( 10, Kirki_Field::sanitize_priority( array( 'priority' => 'invalid priority' ) ) );
+		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => '-20' ) ) );
+		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => -20 ) ) );
+		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => 20 ) ) );
+		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => 20.356 ) ) );
+		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => '20.356' ) ) );
 	}
 
 }
