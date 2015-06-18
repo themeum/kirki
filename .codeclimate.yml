@@ -5,4 +5,4 @@ languages:
 exclude_paths:
 - "assets/js/serialize.js"
 - "sample-config.php"
-- "tests"
+- "tests/*"

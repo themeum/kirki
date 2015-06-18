@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Test extends WP_UnitTestCase {
+class Test_Kirki extends WP_UnitTestCase {
 
 	public function add_config() {
 		Kirki::add_config( 'my_config', array(

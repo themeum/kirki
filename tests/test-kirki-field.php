@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Test_Field extends WP_UnitTestCase {
+class Test_Kirki_Field extends WP_UnitTestCase {
 
 	public function test_sanitize_control_type() {
 

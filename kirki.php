@@ -53,12 +53,13 @@ function Kirki() {
 	// Make sure the class is instanciated
 	$kirki = Kirki_Toolkit::get_instance();
 
-	$kirki->field         = new Kirki_Field();
 	$kirki->font_registry = new Kirki_Fonts_Font_Registry();
 	$kirki->scripts       = new Kirki_Scripts_Registry();
 	$kirki->api           = new Kirki();
-	$kirki->back_styles   = new Kirki_Styles_Customizer();
-	$kirki->front_styles  = new Kirki_Styles_Frontend();
+	$kirki->styles        = array(
+		'back'            => new Kirki_Styles_Customizer(),
+		'front'           => new Kirki_Styles_Frontend(),
+	);
 
 
 	return $kirki;

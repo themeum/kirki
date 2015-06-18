@@ -14,12 +14,8 @@ class Kirki_Toolkit {
 
 	public $font_registry = null;
 	public $scripts       = null;
-	public $fields        = null;
 	public $api           = null;
-	public $settings      = null;
-	public $controls      = null;
-	public $back_styles   = null;
-	public $front_styles  = null;
+	public $styles        = array();
 
 	/**
 	 * Access the single instance of this class

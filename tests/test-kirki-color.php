@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Color_Test extends WP_UnitTestCase {
+class Test_Kirki_Color extends WP_UnitTestCase {
 
 	public function test_hex_sanitize() {
 
