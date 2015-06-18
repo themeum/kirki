@@ -45,7 +45,7 @@ class Kirki_Test extends WP_UnitTestCase {
 		    'section'    => 'my_section',
 		    'type'       => 'checkbox',
 		    'priority'   => 20,
-		    'default'    => 'some-default-value',
+		    'default'    => '1',
 			'capability' => 'edit_theme_options',
 
 		) );
@@ -74,7 +74,7 @@ class Kirki_Test extends WP_UnitTestCase {
 	        'priority'     => 20,
 	        'options_type' => 'theme_mod',
 	        'capability'   => 'edit_theme_options',
-			'default'      => 'some-default-value',
+			'default'      => '0',
 	    );
 
 	    return $fields;
@@ -132,7 +132,7 @@ class Kirki_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'my_section',          Kirki::$fields['my_setting_2']['section'] );
 		$this->assertEquals( 'checkbox',            Kirki::$fields['my_setting_2']['type'] );
 		$this->assertEquals( 20,                    Kirki::$fields['my_setting_2']['priority'] );
-		$this->assertEquals( 'some-default-value',  Kirki::$fields['my_setting_2']['default'] );
+		$this->assertEquals( '1',                   Kirki::$fields['my_setting_2']['default'] );
 		// Inherited from config
 		$this->assertEquals( 'edit_theme_options',  Kirki::$fields['my_setting_2']['capability'] );
 		$this->assertEquals( 'option',              Kirki::$fields['my_setting_2']['option_type'] );
@@ -157,7 +157,7 @@ class Kirki_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'my_section',          Kirki::$fields['my_setting_4']['section'] );
 		$this->assertEquals( 'checkbox',            Kirki::$fields['my_setting_4']['type'] );
 		$this->assertEquals( 20,                    Kirki::$fields['my_setting_4']['priority'] );
-		$this->assertEquals( 'some-default-value',  Kirki::$fields['my_setting_4']['default'] );
+		$this->assertEquals( '0',  Kirki::$fields['my_setting_4']['default'] );
 	}
 
 }

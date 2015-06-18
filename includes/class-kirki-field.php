@@ -64,7 +64,7 @@ class Kirki_Field {
 
 			$field['type'] = 'custom';
 
-		} elseif ( 'color' == $field['type'] && false !== strpos( $field['default'], 'rgba' ) ) {
+		} elseif ( 'color_alpha' == $field['type'] || ( 'color' == $field['type'] && isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) ) {
 
 			$field['type'] = 'color-alpha';
 
