@@ -102,3 +102,4 @@ add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 Kirki::add_config( '' );
 
 // include_once( KIRKI_PATH . '/sample-config.php' );
+// include_once( KIRKI_PATH . '/kirki-user-tests.php' );
