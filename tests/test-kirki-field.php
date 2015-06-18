@@ -103,9 +103,49 @@ class Kirki_Test_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'my_settingsub-setting', Kirki_Field::sanitize_settings_raw( array( 'setting'  => 'my_setting sub-setting' ) ) );
 	}
 
+	public function test_sanitize_settings() {
+		$this->assertEquals( 'foo',      Kirki_Field::sanitize_settings( array( 'settings' => 'foo' ) ) );
+		$this->assertEquals( 'foo[bar]', Kirki_Field::sanitize_settings( array( 'settings' => 'bar', 'option_type' => 'option', 'option_name' => 'foo' ) ) );
+		$this->assertEquals( 'foo[bar]', Kirki_Field::sanitize_settings( array( 'settings' => 'foo[bar]' ) ) );
+	}
+
 	public function test_sanitize_label() {
 		$this->assertEquals( 'This is my LABEL', Kirki_Field::sanitize_label( array( 'label' => 'This is my LABEL' ) ) );
+	}
 
+	public function test_sanitize_section() {
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_section( array( 'section' => 'foo' ) ) );
+	}
+
+	public function test_sanitize_id() {
+		$this->assertEquals( 'foo',     Kirki_Field::sanitize_id( array( 'settings' => 'foo' ) ) );
+		$this->assertEquals( 'foo-bar', Kirki_Field::sanitize_id( array( 'settings' => 'foo[bar]' ) ) );
+		$this->assertEquals( 'foo-bar', Kirki_Field::sanitize_id( array( 'settings' => 'foo[ bar ]' ) ) );
+	}
+
+	public function test_sanitize_default() {
+		$this->assertEquals( '<div class="foo">bar</div>', Kirki_Field::sanitize_default( array( 'type' => 'custom', 'default' => '<div class="foo">bar</div>' ) ) );
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_default( array( 'default' => 'foo' ) ) );
+		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field::sanitize_default( array( 'default' => array( 'foo', 'bar' ) ) ) );
+		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Field::sanitize_default( array( 'default' => 'rgba(0,0,0,0)' ) ) );
+	}
+
+	public function test_sanitize_description() {
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'description' => 'foo' ) ) );
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'subtitle'    => 'foo' ) ) );
+		$this->assertEquals( 'bar', Kirki_Field::sanitize_description( array( 'description' => '<div class="foo">bar</div>' ) ) );
+	}
+
+	public function test_sanitize_help() {
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_help( array( 'help' => 'foo' ) ) );
+		$this->assertEquals( 'bar', Kirki_Field::sanitize_help( array( 'subtitle' => 'foo', 'description' => 'bar' ) ) );
+		$this->assertEquals( 'bar', Kirki_Field::sanitize_help( array( 'help' => '<div class="foo">bar</div>' ) ) );
+	}
+
+	public function test_sanitize_choices() {
+		$this->assertEquals( array( 'min' => -10, 'max' => 999, 'step' => 3 ), Kirki_Field::sanitize_choices( array( 'choices' => array( 'min' => -10, 'max' => 999, 'step' => 3 ) ) ) );
+		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field::sanitize_choices( array( 'choices' => array( 'foo', 'bar' ) ) ) );
+		$this->assertEquals( array(), Kirki_Field::sanitize_choices( array() ) );
 	}
 
 }

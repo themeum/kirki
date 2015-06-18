@@ -155,16 +155,9 @@ class Kirki_Field {
 	 */
 	public static function sanitize_settings( $field ) {
 
-		$config = apply_filters( 'kirki/config', array() );
-		$config['option_name'] = ( isset( $config['option_name'] ) ) ? $config['option_name'] : '';
-
-		// Pass this throught the sanitize_settings_raw method first.
-		$field['settings'] = self::sanitize_settings_raw( $field );
-
-		// Checking and sanitization of config values is handled by the Config class.
 		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
-		if ( '' != $config['option_name'] ) {
-			$field['settings'] = $config['option_name'] . '[' . $field['settings'] . ']';
+		if ( ( isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
+			$field['settings'] = esc_attr( $field['option_name'] ) . '[' . esc_attr( $field['settings'] ) . ']';
 		}
 
 		return $field['settings'];
@@ -213,8 +206,36 @@ class Kirki_Field {
 	 */
 	public static function sanitize_default( $field ) {
 
-		return ( isset( $field['default'] ) ) ? $field['default'] : '';
+		if ( ! isset( $field['default'] ) ) {
 
+			return '';
+
+		} else {
+
+			if ( is_array( $field['default'] ) ) {
+				array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+				return $field['default'];
+			} else {
+				if ( isset( $field['type'] ) && 'custom' != $field['type'] ) {
+					return esc_textarea( $field['default'] );
+				} else {
+					// Return raw & unfiltered for custom controls
+					return $field['default'];
+				}
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Sanitizes the defaults array.
+	 * This is used as a callback function in the sanitize_default method.
+	 */
+	public static function sanitize_defaults_array( $value = '', $key = '' ) {
+		$value = esc_textarea( $value );
+		$key   = esc_attr( $key );
 	}
 
 	/**
@@ -237,7 +258,7 @@ class Kirki_Field {
 			$field['description'] = $field['subtitle'];
 		}
 
-		return ( isset( $field['description'] ) ) ? esc_html( $field['description'] ) : '';
+		return ( isset( $field['description'] ) ) ? wp_strip_all_tags( $field['description'] ) : '';
 
 	}
 
@@ -261,7 +282,7 @@ class Kirki_Field {
 			// Use old arguments form.
 			$field['help'] = ( isset( $field['description'] ) ) ? $field['description'] : '';
 		}
-		return isset( $field['help'] ) ? esc_html( $field['help'] ) : '';
+		return isset( $field['help'] ) ? wp_strip_all_tags( $field['help'] ) : '';
 
 	}
 
@@ -272,7 +293,16 @@ class Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize_choices( $field ) {
-		return isset( $field['choices'] ) ? $field['choices'] : array();
+		if ( ! isset( $field['choices'] ) ) {
+			return array();
+		} else {
+			if ( is_array( $field['choices'] ) ) {
+				array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+				return $field['choices'];
+			} else {
+				return esc_attr( $field['choices'] );
+			}
+		}
 	}
 
 	/**
