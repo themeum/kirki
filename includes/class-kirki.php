@@ -204,7 +204,7 @@ class Kirki {
 
 			if ( 'background' != $field['type'] ) {
 
-				$wp_customize->add_setting( Kirki_Field::sanitize_id( $field ), array(
+				$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), array(
 					'default'           => Kirki_Field::sanitize_default( $field ),
 					'type'              => Kirki_Field::sanitize_type( $field ),
 					'capability'        => Kirki_Field::sanitize_capability( $field ),
