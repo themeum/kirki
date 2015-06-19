@@ -99,11 +99,10 @@ class Kirki_Output {
 		foreach ( self::$output as $output ) {
 
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
-			$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
 
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units.$suffix;
+				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units;
 			}
 
 		}
