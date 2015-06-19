@@ -9,7 +9,7 @@ class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 
 	protected function render() {
 		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type; ?>
+		$class = 'customize-control customize-control-'.$this->type; ?>
 		<li id="customize-control-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<?php $this->render_content(); ?>
 		</li>

@@ -26,10 +26,10 @@ function kirki_autoload_classes( $class_name ) {
 
 	if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
-		$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls' . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
-		$foldername = ( '' != $foldername ) ? $foldername . DIRECTORY_SEPARATOR : '';
+		$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
+		$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
 
-		$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $foldername . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
+		$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
 		if ( file_exists( $class_path ) ) {
 			include $class_path;
 		}
@@ -41,10 +41,10 @@ function kirki_autoload_classes( $class_name ) {
 spl_autoload_register( 'kirki_autoload_classes' );
 
 // Include helper files
-include_once( KIRKI_PATH . '/includes/functions.php' );
-include_once( KIRKI_PATH . '/includes/deprecated.php' );
+include_once( KIRKI_PATH.'/includes/functions.php' );
+include_once( KIRKI_PATH.'/includes/deprecated.php' );
 // Include the API class
-include_once( KIRKI_PATH . '/includes/class-kirki.php' );
+include_once( KIRKI_PATH.'/includes/class-kirki.php' );
 
 /**
  * Returns the Kirki object
@@ -70,7 +70,7 @@ global $kirki;
 $kirki = Kirki();
 
 if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
-	include_once( KIRKI_PATH . '/includes/redux-compatibility.php' );
+	include_once( KIRKI_PATH.'/includes/redux-compatibility.php' );
 }
 
 /**
@@ -82,19 +82,19 @@ function kirki_load_textdomain() {
 	$textdomain = 'kirki';
 
 	// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
-	if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
-		$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
+	if ( file_exists( WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo' ) ) {
+		$file = WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo';
 	}
 	// Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
-	if ( ! isset( $file ) && file_exists( KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
-		$file = KIRKI_PATH . '/languages/' . $textdomain . '-' . get_locale() . '.mo';
+	if ( ! isset( $file ) && file_exists( KIRKI_PATH.'/languages/'.$textdomain.'-'.get_locale().'.mo' ) ) {
+		$file = KIRKI_PATH.'/languages/'.$textdomain.'-'.get_locale().'.mo';
 	}
 
 	if ( isset( $file ) ) {
 		load_textdomain( $textdomain, $file );
 	}
 
-	load_plugin_textdomain( $textdomain, false, KIRKI_PATH . '/languages' );
+	load_plugin_textdomain( $textdomain, false, KIRKI_PATH.'/languages' );
 }
 add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 

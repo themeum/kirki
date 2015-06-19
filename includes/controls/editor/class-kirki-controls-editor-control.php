@@ -8,7 +8,7 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 	public $type = 'editor';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ) . 'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
+		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ).'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
 	}
 
 	public function render_content() { ?>

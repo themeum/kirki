@@ -11,14 +11,14 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/script.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/style.css' );
+		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( kirki_url() ).'includes/controls/color-alpha/script.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-color-alpha', trailingslashit( kirki_url() ).'includes/controls/color-alpha/style.css' );
 
 	}
 
 	protected function render() {
-		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type; ?>
+		$id    = 'customize-control-'.str_replace( '[', '-', str_replace( ']', '', $this->id ) );
+		$class = 'customize-control customize-control-'.$this->type; ?>
 		<li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<?php $this->render_content(); ?>
 		</li>

@@ -86,8 +86,8 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		}
 
 		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
-		$font_weights  = ( ! isset( $font_weights )  || empty( $font_weights ) )  ? '400' : $font_weights;
-		$font_subsets  = ( ! isset( $font_subsets )  || empty( $font_subsets ) )  ? 'all' : $font_subsets;
+		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? '400' : $font_weights;
+		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? 'all' : $font_subsets;
 
 		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
 			$font_families = false;

@@ -375,9 +375,9 @@ function kirki_demo_controls( $controls ) {
 		'default'     => 'option-1',
 		'priority'    => 10,
 		'choices'     => array(
-			'option-1' => admin_url() . '/images/align-left-2x.png',
-			'option-2' => admin_url() . '/images/align-center-2x.png',
-			'option-3' => admin_url() . '/images/align-right-2x.png',
+			'option-1' => admin_url().'/images/align-left-2x.png',
+			'option-2' => admin_url().'/images/align-center-2x.png',
+			'option-3' => admin_url().'/images/align-right-2x.png',
 		),
 	);
 
@@ -448,7 +448,7 @@ function kirki_demo_controls( $controls ) {
 		'default'     => 20,
 		'priority'    => 10,
 		'choices'     => array(
-			'min'  => - 100,
+			'min'  => -100,
 			'max'  => 100,
 			'step' => 10
 		),

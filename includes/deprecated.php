@@ -23,7 +23,7 @@ function kirki_get_option( $option = '' ) {
 	// Get the config.
 	$config = apply_filters( 'kirki/config', array() );
 	$config['options_type'] = ( isset( $config['options_type'] ) ) ? esc_attr( $config['options_type'] ) : 'theme_mod';
-	$config['option_name']  = ( isset( $config['option_name'] ) )  ? esc_attr( $config['option_name'] )  : '';
+	$config['option_name']  = ( isset( $config['option_name'] ) ) ? esc_attr( $config['option_name'] ) : '';
 
 	// If we're using options instead of theme_mods,
 	// then first we'll have to get the array of all options.
@@ -62,7 +62,7 @@ function kirki_get_option( $option = '' ) {
 	// If a value has been defined then we proceed.
 
 	// Early exit if this option does not exist
-	$field_id = ( 'option' == $config['options_type'] && '' != $config['option_name'] ) ? $config['option_name'] . '[' . $option . ']' : $option;
+	$field_id = ( 'option' == $config['options_type'] && '' != $config['option_name'] ) ? $config['option_name'].'['.$option.']' : $option;
 	if ( ! isset( $fields[$field_id] ) ) {
 		return;
 	}
@@ -70,7 +70,7 @@ function kirki_get_option( $option = '' ) {
 	if ( 'option' == $config['options_type'] ) {
 		// We're using options instead of theme_mods.
 		// We already have the array of values set from above so we'll use that.
-		$value  = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
+		$value = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
 
 	} else {
 		// We're using theme_mods
@@ -82,23 +82,23 @@ function kirki_get_option( $option = '' ) {
 	if ( 'background' == $fields[$field_id]['type'] ) {
 		if ( 'option' == $config['options_type'] ) {
 			$value = array(
-				'background-color'      => isset( $values[$option . '_color'] )    ? $values[$option . '_color']    : null,
-				'background-repeat'     => isset( $values[$option . '_repeat'] )   ? $values[$option . '_repeat']   : null,
-				'background-attachment' => isset( $values[$option . '_attach'] )   ? $values[$option . '_attach']   : null,
-				'background-image'      => isset( $values[$option . '_image'] )    ? $values[$option . '_image']    : null,
-				'background-position'   => isset( $values[$option . '_position'] ) ? $values[$option . '_position'] : null,
-				'background-clip'       => isset( $values[$option . '_clip'] )     ? $values[$option . '_clip']     : null,
-				'background-size'       => isset( $values[$option . '_size'] )     ? $values[$option . '_size']     : null,
+				'background-color'      => isset( $values[$option.'_color'] ) ? $values[$option.'_color'] : null,
+				'background-repeat'     => isset( $values[$option.'_repeat'] ) ? $values[$option.'_repeat'] : null,
+				'background-attachment' => isset( $values[$option.'_attach'] ) ? $values[$option.'_attach'] : null,
+				'background-image'      => isset( $values[$option.'_image'] ) ? $values[$option.'_image'] : null,
+				'background-position'   => isset( $values[$option.'_position'] ) ? $values[$option.'_position'] : null,
+				'background-clip'       => isset( $values[$option.'_clip'] ) ? $values[$option.'_clip'] : null,
+				'background-size'       => isset( $values[$option.'_size'] ) ? $values[$option.'_size'] : null,
 			);
 		} else {
 			$value = array(
-				'background-color'      => isset( $fields[$field_id]['default']['color'] )    ? get_theme_mod( $option . '_color',    $fields[$field_id]['default']['color'] )    : null,
-				'background-repeat'     => isset( $fields[$field_id]['default']['repeat'] )   ? get_theme_mod( $option . '_repeat',   $fields[$field_id]['default']['repeat'] )   : null,
-				'background-attachment' => isset( $fields[$field_id]['default']['attach'] )   ? get_theme_mod( $option . '_attach',   $fields[$field_id]['default']['attach'] )   : null,
-				'background-image'      => isset( $fields[$field_id]['default']['image'] )    ? get_theme_mod( $option . '_image',    $fields[$field_id]['default']['image'] )    : null,
-				'background-position'   => isset( $fields[$field_id]['default']['position'] ) ? get_theme_mod( $option . '_position', $fields[$field_id]['default']['position'] ) : null,
-				'background-clip'       => isset( $fields[$field_id]['default']['clip'] )     ? get_theme_mod( $option . '_clip',     $fields[$field_id]['default']['clip'] )     : null,
-				'background-size'       => isset( $fields[$field_id]['default']['size'] )     ? get_theme_mod( $option . '_size',     $fields[$field_id]['default']['size'] )     : null,
+				'background-color'      => isset( $fields[$field_id]['default']['color'] ) ? get_theme_mod( $option.'_color', $fields[$field_id]['default']['color'] ) : null,
+				'background-repeat'     => isset( $fields[$field_id]['default']['repeat'] ) ? get_theme_mod( $option.'_repeat', $fields[$field_id]['default']['repeat'] ) : null,
+				'background-attachment' => isset( $fields[$field_id]['default']['attach'] ) ? get_theme_mod( $option.'_attach', $fields[$field_id]['default']['attach'] ) : null,
+				'background-image'      => isset( $fields[$field_id]['default']['image'] ) ? get_theme_mod( $option.'_image', $fields[$field_id]['default']['image'] ) : null,
+				'background-position'   => isset( $fields[$field_id]['default']['position'] ) ? get_theme_mod( $option.'_position', $fields[$field_id]['default']['position'] ) : null,
+				'background-clip'       => isset( $fields[$field_id]['default']['clip'] ) ? get_theme_mod( $option.'_clip', $fields[$field_id]['default']['clip'] ) : null,
+				'background-size'       => isset( $fields[$field_id]['default']['size'] ) ? get_theme_mod( $option.'_size', $fields[$field_id]['default']['size'] ) : null,
 			);
 		}
 	}

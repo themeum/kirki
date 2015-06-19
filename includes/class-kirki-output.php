@@ -78,9 +78,9 @@ class Kirki_Output {
 		}
 
 		foreach ( $styles as $style => $style_array ) {
-			$css .= $style . '{';
+			$css .= $style.'{';
 			foreach ( $style_array as $property => $value ) {
-				$css .= $property . ':' . $value . ';';
+				$css .= $property.':'.$value.';';
 			}
 			$css .= '}';
 		}
@@ -100,10 +100,10 @@ class Kirki_Output {
 
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
-			$units  = ( isset( $output['units'] ) )  ? $output['units']  : '';
+			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
 
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[$prefix . $output['element']][$output['property']] = self::$value . $units;
+				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units;
 			}
 
 		}
