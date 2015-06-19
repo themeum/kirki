@@ -11,7 +11,7 @@ class Kirki_Styles_Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	function customizer_styles() {
-		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ) . 'assets/css/customizer.css', NULL, '0.5' );
+		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ) . 'assets/css/customizer.css', null, '0.5' );
 	}
 
 	/**
@@ -19,13 +19,13 @@ class Kirki_Styles_Customizer {
 	 */
 	function custom_css() {
 
-		$color   = $this->get_admin_colors();
+		$color  = $this->get_admin_colors();
 		$config = apply_filters( 'kirki/config', array() );
 
-		$color_font    = false;
-		$color_accent  = isset( $config['color_accent'] ) ? Kirki_Color::sanitize_hex( $config['color_accent'] ) : $color['icon_colors']['focus'];
-		$color_back    = isset( $config['color_back'] ) ? Kirki_Color::sanitize_hex( $config['color_back'] ) : '#ffffff';
-		$color_font    = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
+		$color_font   = false;
+		$color_accent = isset( $config['color_accent'] ) ? Kirki_Color::sanitize_hex( $config['color_accent'] ) : $color['icon_colors']['focus'];
+		$color_back   = isset( $config['color_back'] ) ? Kirki_Color::sanitize_hex( $config['color_back'] ) : '#ffffff';
+		$color_font   = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
 
 		$styles = '<style>';
 

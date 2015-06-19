@@ -39,7 +39,7 @@ class Kirki_Output {
 		} else {
 			self::$output[0] = $output;
 		}
-		self::$value    = self::get_value( $setting, $callback );
+		self::$value = self::get_value( $setting, $callback );
 
 		return self::styles_parse();
 

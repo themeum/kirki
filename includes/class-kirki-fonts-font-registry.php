@@ -29,7 +29,7 @@ class Kirki_Fonts_Font_Registry {
 		$standard_fonts = $this->get_standard_fonts();
 		$google_fonts   = $this->get_google_fonts();
 
-		return apply_filters('kirki/fonts/all', array_merge($standard_fonts, $google_fonts));
+		return apply_filters( 'kirki/fonts/all', array_merge($standard_fonts, $google_fonts ) );
 	}
 
 	/**
@@ -88,7 +88,7 @@ class Kirki_Fonts_Font_Registry {
 		}
 
 		// load the font weight
-		$weight = ( is_array( $weight ) ) ? implode( ',', $weight ) : $weight;
+		$weight   = ( is_array( $weight ) ) ? implode( ',', $weight ) : $weight;
 		$request .= trim( $weight );
 
 		// Load the font subset
@@ -168,7 +168,7 @@ class Kirki_Fonts_Font_Registry {
 			$chosen_variants[] = '700';
 		}
 
-		return apply_filters( 'kirki/font/variants', array_unique($chosen_variants), $font, $variants );
+		return apply_filters( 'kirki/font/variants', array_unique( $chosen_variants ), $font, $variants );
 	}
 
 	/**
@@ -257,10 +257,10 @@ class Kirki_Fonts_Font_Registry {
 			$json = $wp_filesystem->get_contents( KIRKI_PATH . '/assets/json/webfonts.json' );
 
 			// Get the list of fonts from our json file and convert to an array
-			$fonts = json_decode( $json, true);
+			$fonts = json_decode( $json, true );
 
 			$google_fonts = array();
-			foreach ($fonts['items'] as $font) {
+			foreach ( $fonts['items'] as $font ) {
 				$google_fonts[$font['family']] = array(
 					'label'    => $font['family'],
 					'variants' => $font['variants'],
@@ -268,7 +268,7 @@ class Kirki_Fonts_Font_Registry {
 				);
 			}
 
-			$this->google_fonts = apply_filters('kirki/fonts/google_fonts', $google_fonts);
+			$this->google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
 		}
 
 		return $this->google_fonts;

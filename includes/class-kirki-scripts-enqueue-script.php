@@ -13,12 +13,12 @@ abstract class Kirki_Scripts_Enqueue_Script extends Kirki_Scripts_Registry {
 		add_action( 'wp_footer', array( $this, 'wp_footer' ), 21 );
 	}
 
-	public abstract function customize_controls_print_scripts();
+	abstract public function customize_controls_print_scripts();
 
-	public abstract function customize_controls_enqueue_scripts();
+	abstract public function customize_controls_enqueue_scripts();
 
-	public abstract function customize_controls_print_footer_scripts();
+	abstract public function customize_controls_print_footer_scripts();
 
-	public abstract function wp_footer();
+	abstract public function wp_footer();
 
 }

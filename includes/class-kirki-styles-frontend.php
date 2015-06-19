@@ -24,7 +24,7 @@ class Kirki_Styles_Frontend {
 	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
-		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ) . 'assets/css/kirki-styles.css', NULL, NULL );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ) . 'assets/css/kirki-styles.css', null, null );
 
 	}
 
@@ -84,7 +84,6 @@ class Kirki_Styles_Frontend {
 	public function loop_controls() {
 
 		$fields = Kirki::$fields;
-
 		$css    = '';
 
 		// Early exit if no fields are found.

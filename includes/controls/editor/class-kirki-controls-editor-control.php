@@ -29,8 +29,8 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 				);
 				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
 
-				do_action('admin_footer');
-				do_action('admin_print_footer_scripts');
+				do_action( 'admin_footer' );
+				do_action( 'admin_print_footer_scripts' );
 			?>
 		</label>
 		<?php

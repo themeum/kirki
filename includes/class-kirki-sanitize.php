@@ -49,7 +49,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_repeat( $value ) {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n  = Kirki_Toolkit::i18n();
 		$valid = array(
 			'no-repeat' => $i18n['no-repeat'],
 			'repeat'    => $i18n['repeat-all'],
@@ -68,7 +68,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_size( $value ) {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n  = Kirki_Toolkit::i18n();
 		$valid = array(
 			'inherit' => $i18n['inherit'],
 			'cover'   => $i18n['cover'],
@@ -85,7 +85,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_attach( $value ) {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n  = Kirki_Toolkit::i18n();
 		$valid = array(
 			'inherit' => $i18n['inherit'],
 			'fixed'   => $i18n['fixed'],
@@ -102,7 +102,7 @@ class Kirki_Sanitize {
 	 * @since 0.5
 	 */
 	public static function bg_position( $value ) {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n  = Kirki_Toolkit::i18n();
 		$valid = array(
 			'left-top'      => $i18n['left-top'],
 			'left-center'   => $i18n['left-center'],
@@ -152,7 +152,7 @@ class Kirki_Sanitize {
 		}
 
 		// By now we know the string is formatted as an rgba color so we need to further sanitize it.
-		$value  = str_replace( ' ', '', $value );
+		$value = str_replace( ' ', '', $value );
 		sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
 		return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
 

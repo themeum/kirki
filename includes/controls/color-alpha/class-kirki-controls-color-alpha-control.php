@@ -5,7 +5,7 @@
  */
 class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 
-	public $type = 'color-alpha';
+	public $type    = 'color-alpha';
 	public $palette = true;
 	public $default = '#FFFFFF';
 
@@ -17,7 +17,7 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
 	}
 
 	protected function render() {
-		$id = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
+		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 		$class = 'customize-control customize-control-' . $this->type; ?>
 		<li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<?php $this->render_content(); ?>

@@ -158,13 +158,13 @@ class Kirki_Color {
 		// Steps should be between -255 and 255. Negative = darker, positive = lighter
 		$steps = max( -255, min( 255, $steps ) );
 		// Adjust number of steps and keep it inside 0 to 255
-		$red    = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
-		$green  = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
-		$blue   = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
+		$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
+		$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
+		$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
 
-		$red_hex    = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
-		$green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
-		$blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
+		$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+		$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+		$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
 		return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
@@ -220,8 +220,8 @@ class Kirki_Color {
 		$var_g = ( $color[1] / 255 );
 		$var_b = ( $color[2] / 255 );
 
-		$var_min = min( $var_r, $var_g, $var_b);
-		$var_max = max( $var_r, $var_g, $var_b);
+		$var_min = min( $var_r, $var_g, $var_b );
+		$var_max = max( $var_r, $var_g, $var_b );
 		$del_max = $var_max - $var_min;
 
 		$h = 0;
@@ -310,7 +310,7 @@ class Kirki_Color {
 				$hsv_old = self::hex_to_hsv( $most_saturated );
 			}
 
-			if ( null === $most_saturated || $saturation > $hsv_old['s'] ) {
+			if ( null === $most_saturated || isset( $hsv_old ) && $saturation > $hsv_old['s'] ) {
 				$most_saturated = $color;
 			}
 		}
@@ -364,18 +364,15 @@ class Kirki_Color {
 		$brightest_dull = null;
 
 		foreach ( $colors as $color ) {
-			$color        = self::sanitize_hex( $color, false );
-			$hsv          = self::hex_to_hsv( $color );
-
-			$brightness   = self::get_brightness( $color );
-			// Prevent "division by zero" messages.
-			$hsv['s']     = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s'];
-			$dullness     = 1 / $hsv['s'];
+			$color      = self::sanitize_hex( $color, false );
+			$hsv        = self::hex_to_hsv( $color );
+			$brightness = self::get_brightness( $color );
+			$hsv['s']   = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s']; // Prevent "division by zero" messages.
+			$dullness   = 1 / $hsv['s'];
 
 			if ( null !== $brightest_dull ) {
 				$hsv_old      = self::hex_to_hsv( $brightest_dull );
-				// Prevent "division by zero" messages.
-				$hsv_old['s'] = ( $hsv_old['s'] == 0 ) ? 0.0001 : $hsv_old['s'];
+				$hsv_old['s'] = ( $hsv_old['s'] == 0 ) ? 0.0001 : $hsv_old['s']; // Prevent "division by zero" messages.
 				$dullness_old = 1 / $hsv_old['s'];
 			}
 

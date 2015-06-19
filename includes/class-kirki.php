@@ -119,10 +119,10 @@ class Kirki {
 	public static function add_config( $config_id, $args = array() ) {
 
 		$default_args = array(
-			'capability'    => 'edit_theme_options',
-			'option_type'   => 'theme_mod',
-			'option'        => '',
-			'compiler'      => array(),
+			'capability'  => 'edit_theme_options',
+			'option_type' => 'theme_mod',
+			'option'      => '',
+			'compiler'    => array(),
 		);
 		$args = array_merge( $default_args, $args );
 

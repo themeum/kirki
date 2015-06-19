@@ -24,7 +24,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		$fonts = array();
 		foreach ( $fields as $field ) {
 
-			$field['output'] = Kirki_Field::sanitize_output( $field );
+			$field['output']       = Kirki_Field::sanitize_output( $field );
 			$field['settings_raw'] = Kirki_Field::sanitize_settings_raw( $field );
 
 			if ( isset( $field['output'] ) ) {

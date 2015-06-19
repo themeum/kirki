@@ -17,8 +17,10 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
 	public function render_content() {
 
-		if ( empty( $this->choices ) )
-			return; ?>
+		if ( empty( $this->choices ) ) {
+			return;
+		}
+		?>
 
 		<?php if ( ! empty( $this->label ) ) : ?>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
