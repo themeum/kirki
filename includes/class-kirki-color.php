@@ -149,7 +149,7 @@ class Kirki_Color {
 	 * Adjusts brightness of the $hex color.
 	 *
 	 * @var     string      The hex value of a color
-	 * @param   int         a value between -255 (darken) and 255 (lighten)
+	 * @var     int         a value between -255 (darken) and 255 (lighten)
 	 * @return  string      returns hex color
 	 */
 	public static function adjust_brightness( $hex, $steps ) {
@@ -177,7 +177,7 @@ class Kirki_Color {
 	 *
 	 * @var     string      The hex value of color 1
 	 * @var     string      The hex value of color 2
-	 * @param   int         a value between 0 and 100
+	 * @var     int         a value between 0 and 100
 	 * @return  string      returns hex color
 	 */
 	public static function mix_colors( $hex1, $hex2, $percentage ) {
@@ -262,7 +262,7 @@ class Kirki_Color {
 	 * Return the hex value of the color if $context = 'value'
 	 *
 	 * @var     array       flat array of hex colors
-	 * @param   string      'key' or 'value'
+	 * @var     string      'key' or 'value'
 	 * @return  mixed       int|string
 	 */
 	public static function brightest_color( $colors = array(), $context = 'key' ) {
