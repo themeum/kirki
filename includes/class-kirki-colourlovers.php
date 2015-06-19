@@ -28,11 +28,11 @@ class Kirki_Colourlovers {
 		$palettes = array();
 
 		foreach ( $feed_xml->palette as $result ) {
-			$id       = $result->id;
-			$content  = $result->content;
-			$title    = $result->title;
-			$badgeurl = $result->badgeUrl;
-			$imageurl = $result->imageUrl;
+			// $id       = $result->id;
+			// $content  = $result->content;
+			// $title    = $result->title;
+			// $badgeurl = $result->badgeUrl;
+			// $imageurl = $result->imageUrl;
 			$palette  = (array) $result->colors->hex;
 
 			$palettes[] = $palette;
@@ -78,7 +78,7 @@ class Kirki_Colourlovers {
 			$brightest_3_val = Kirki_Color::brightest_color( $colors_array_3b, 'value' );
 
 			$colors_array_4b = Kirki_Helpers::array_delete( $brightest_3_key, $colors_array_3b );
-			$brightest_4_key = Kirki_Color::brightest_color( $colors_array_4b, 'key' );
+			// $brightest_4_key = Kirki_Color::brightest_color( $colors_array_4b, 'key' );
 			$brightest_4_val = Kirki_Color::brightest_color( $colors_array_4b, 'value' );
 
 			$palette = array(
@@ -109,7 +109,7 @@ class Kirki_Colourlovers {
 			$most_saturated_3_val = Kirki_Color::most_saturated_color( $colors_array_3s, 'value' );
 
 			$colors_array_4s      = Kirki_Helpers::array_delete( $most_saturated_3_key, $colors_array_3s );
-			$most_saturated_3_key = Kirki_Color::most_saturated_color( $colors_array_4s, 'key' );
+			// $most_saturated_3_key = Kirki_Color::most_saturated_color( $colors_array_4s, 'key' );
 			$most_saturated_4_val = Kirki_Color::most_saturated_color( $colors_array_4s, 'value' );
 
 			$palette = array(
@@ -140,7 +140,7 @@ class Kirki_Colourlovers {
 			$most_intense_3_val = Kirki_Color::most_intense_color( $colors_array_3i, 'value' );
 
 			$colors_array_4i    = Kirki_Helpers::array_delete( $most_intense_3_key, $colors_array_3i );
-			$most_intense_3_key = Kirki_Color::most_intense_color( $colors_array_4i, 'key' );
+			// $most_intense_3_key = Kirki_Color::most_intense_color( $colors_array_4i, 'key' );
 			$most_intense_4_val = Kirki_Color::most_intense_color( $colors_array_4i, 'value' );
 
 			$palette = array(
@@ -171,7 +171,7 @@ class Kirki_Colourlovers {
 			$bright_dull_3_val = Kirki_Color::brightest_dull_color( $colors_array_3d, 'value' );
 
 			$colors_array_4d   = Kirki_Helpers::array_delete( $bright_dull_3_key, $colors_array_3d );
-			$bright_dull_3_key = Kirki_Color::brightest_dull_color( $colors_array_4d, 'key' );
+			// $bright_dull_3_key = Kirki_Color::brightest_dull_color( $colors_array_4d, 'key' );
 			$bright_dull_4_val = Kirki_Color::brightest_dull_color( $colors_array_4d, 'value' );
 
 			$palette = array(

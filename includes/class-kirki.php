@@ -291,8 +291,8 @@ class Kirki {
 	public static function add_field( $config_id, $args ) {
 
 		if ( is_array( $config_id ) && empty( $args ) ) {
-			$args = $config_id;
-			$id   = 'global';
+			$args      = $config_id;
+			$config_id = 'global';
 		}
 
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
@@ -370,9 +370,9 @@ class Kirki {
 						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
 
 						if ( $variable_callback ) {
-							$variables[$field_variable['name']] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field::sanitize_settings( $field ) ) );
+							$variables[$variable_name] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field::sanitize_settings( $field ) ) );
 						} else {
-							$variables[$field_variable['name']] = self::get_option( $field['settings'] );
+							$variables[$variable_name] = self::get_option( $field['settings'] );
 						}
 
 					}

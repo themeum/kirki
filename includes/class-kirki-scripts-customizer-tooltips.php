@@ -13,7 +13,6 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 		$fields = Kirki::$fields;
 
 		$scripts = array();
-		$script  = '';
 
 		foreach ( $fields as $field ) {
 

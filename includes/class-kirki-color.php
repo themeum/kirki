@@ -276,8 +276,7 @@ class Kirki_Color {
 		}
 
 		foreach ( $colors_sanitized as $key => $value ) {
-			$value      = self::sanitize_hex( $value, false );
-			$brightness = self::get_brightness( $value );
+			$value = self::sanitize_hex( $value, false );
 
 			if ( null === $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {
 				$brightest = $value;
@@ -364,11 +363,10 @@ class Kirki_Color {
 		$brightest_dull = null;
 
 		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color, false );
-			$hsv        = self::hex_to_hsv( $color );
-			$brightness = self::get_brightness( $color );
-			$hsv['s']   = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s']; // Prevent "division by zero" messages.
-			$dullness   = 1 / $hsv['s'];
+			$color    = self::sanitize_hex( $color, false );
+			$hsv      = self::hex_to_hsv( $color );
+			$hsv['s'] = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s']; // Prevent "division by zero" messages.
+			$dullness = 1 / $hsv['s'];
 
 			if ( null !== $brightest_dull ) {
 				$hsv_old      = self::hex_to_hsv( $brightest_dull );

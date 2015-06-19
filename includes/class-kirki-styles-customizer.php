@@ -22,7 +22,6 @@ class Kirki_Styles_Customizer {
 		$color  = $this->get_admin_colors();
 		$config = apply_filters( 'kirki/config', array() );
 
-		$color_font   = false;
 		$color_accent = isset( $config['color_accent'] ) ? Kirki_Color::sanitize_hex( $config['color_accent'] ) : $color['icon_colors']['focus'];
 		$color_back   = isset( $config['color_back'] ) ? Kirki_Color::sanitize_hex( $config['color_back'] ) : '#ffffff';
 		$color_font   = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';

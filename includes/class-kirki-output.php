@@ -103,7 +103,7 @@ class Kirki_Output {
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
 
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units;
+				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units.$suffix;
 			}
 
 		}

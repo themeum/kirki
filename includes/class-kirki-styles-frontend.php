@@ -48,10 +48,6 @@ class Kirki_Styles_Frontend {
 		// Font controls
 		elseif ( array( $field['output'] ) && isset( $field['output']['property'] ) && in_array( $field['output']['property'], array( 'font-family', 'font-size', 'font-weight' ) ) ) {
 
-			$is_font_family = isset( $field['output']['property'] ) && 'font-family' == $field['output']['property'] ? true : false;
-			$is_font_size   = isset( $field['output']['property'] ) && 'font-size' == $field['output']['property'] ? true : false;
-			$is_font_weight = isset( $field['output']['property'] ) && 'font-weight' == $field['output']['property'] ? true : false;
-
 			if ( 'font-family' == $property ) {
 
 				$styles[$field['output']['element']]['font-family'] = $value.$units;
@@ -92,12 +88,6 @@ class Kirki_Styles_Frontend {
 		}
 
 		foreach ( $fields as $field ) {
-			$element  = '';
-			$property = '';
-			$units    = '';
-			$prefix   = '';
-			$suffix   = '';
-			$callback = '';
 
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) ) {
