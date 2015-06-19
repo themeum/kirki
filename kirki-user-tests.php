@@ -102,52 +102,52 @@ $color = new Kirki_Test_Field( array( 'type' => 'color', 'default' => '#0000ff',
 $custom = new Kirki_Test_Field( array( 'type' => 'custom', 'default' => '<div style="text-align:center; background-color:#333; margin:10px 5px;"><h3 style="color: #fff !important;">Custom Control Test</h3></div>' ) );
 
 // dropdown-pages
-//$dropdown_pages = new Kirki_Test_Field( array( 'type' => 'dropdown-pages' ) );
+$dropdown_pages = new Kirki_Test_Field( array( 'type' => 'dropdown-pages', 'default' => 1 ) );
 
 // editor
-//$editor = new Kirki_Test_Field( array( 'type' => 'editor' ) );
+$editor = new Kirki_Test_Field( array( 'type' => 'editor', 'default' => 'This is the standard TinyMCE editor.' ) );
 
 // image
-//$image = new Kirki_Test_Field( array( 'type' => 'image' ) );
+$image = new Kirki_Test_Field( array( 'type' => 'image', 'default' => '' ) );
 
 // multicheck
-//$multicheck = new Kirki_Test_Field( array( 'type' => 'multicheck' ) );
+$multicheck = new Kirki_Test_Field( array( 'type' => 'multicheck', 'default' => array( 'option1' ), 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // number
-//$number = new Kirki_Test_Field( array( 'type' => 'number' ) );
+$number = new Kirki_Test_Field( array( 'type' => 'number', 'default' => '99' ) );
 
 // palette
-//$palette = new Kirki_Test_Field( array( 'type' => 'palette' ) );
+$palette = new Kirki_Test_Field( array( 'type' => 'palette', 'default' => 'red', 'choices' => array( 'red' => array( '#F9BAAF', '#FB9D8C', '#FD8069' ), 'green' => array( '#C9F7C4', '#B3F9AC', '#9DFA94' ), 'blue' => array( '#D9E3F6', '#CCDAF7', '#BED1F8' ) ) ) );
 
 // radio-buttonset
-//$radio_buttonset = new Kirki_Test_Field( array( 'type' => 'radio-buttonset' ) );
+$radio_buttonset = new Kirki_Test_Field( array( 'type' => 'radio-buttonset', 'default' => 'option2', 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option-3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // radio-image
-//$radio_image = new Kirki_Test_Field( array( 'type' => 'radio-image' ) );
+$radio_image = new Kirki_Test_Field( array( 'type' => 'radio-image', 'default' => 'option3', 'choices' => array('option1' => admin_url() . '/images/align-left-2x.png', 'option2' => admin_url() . '/images/align-center-2x.png', 'option3' => admin_url() . '/images/align-right-2x.png' ) ) );
 
 // radio
-//$radio = new Kirki_Test_Field( array( 'type' => 'radio' ) );
+$radio = new Kirki_Test_Field( array( 'type' => 'radio', 'default' => 'option1', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // select
-//$select = new Kirki_Test_Field( array( 'type' => 'select' ) );
+$select = new Kirki_Test_Field( array( 'type' => 'select', 'default' => 'option2', 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // slider
-//$slider = new Kirki_Test_Field( array( 'type' => 'slider' ) );
+$slider = new Kirki_Test_Field( array( 'type' => 'slider', 'default' => 0, 'choices' => array( 'min' => -100, 'max' => 100, 'step' => 1 ) ) );
 
 // sortable
-//$sortable = new Kirki_Test_Field( array( 'type' => 'sortable' ) );
+$sortable = new Kirki_Test_Field( array( 'type' => 'sortable', 'default' => array( 'option2', 'option1' ), 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ), 'option4' => __( 'Option 4', 'kirki' ) ) ) );
 
 // switch
-//$switch = new Kirki_Test_Field( array( 'type' => 'switch' ) );
+$switch = new Kirki_Test_Field( array( 'type' => 'switch', 'default' => '1' ) );
 
 // text
-//$text = new Kirki_Test_Field( array( 'type' => 'text' ) );
+$text = new Kirki_Test_Field( array( 'type' => 'text', 'default' => __( 'This is some default text for the text control.', 'kirki' ) ) );
 
 // textarea
-//$textarea = new Kirki_Test_Field( array( 'type' => 'textarea' ) );
+$textarea = new Kirki_Test_Field( array( 'type' => 'textarea', 'default' => __( 'This is some default text for the textarea control.', 'kirki' ) ) );
 
 // toggle
-//$toggle = new Kirki_Test_Field( array( 'type' => 'toggle' ) );
+$toggle = new Kirki_Test_Field( array( 'type' => 'toggle', 'default' => '1' ) );
 
 // upload
-//$upload = new Kirki_Test_Field( array( 'type' => 'upload' ) );
+$upload = new Kirki_Test_Field( array( 'type' => 'upload', 'default' => '' ) );
