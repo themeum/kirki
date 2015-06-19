@@ -15,6 +15,8 @@ function kirki_url() {
 
 function kirki_field_active_callback( $control ) {
 
+	$show = true;
+
 	// Get all fields
 	$fields = Kirki::$fields;
 

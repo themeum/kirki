@@ -56,6 +56,8 @@ class Kirki {
 	 */
 	public static function get_option( $config_id = '', $field_id = '' ) {
 
+		$value = '';
+
 		if ( ( '' == $field_id ) && '' != $config_id ) {
 			$field_id  = $config_id;
 			$config_id = 'global';

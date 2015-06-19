@@ -8,8 +8,7 @@ class Kirki_Styles_Frontend {
 
 	public function __construct() {
 
-		$styles_priority = ( isset( $options['styles_priority'] ) ) ? $styles_priority : 10;
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $styles_priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
 
 	}
@@ -89,7 +88,7 @@ class Kirki_Styles_Frontend {
 		$css    = '';
 
 		// Early exit if no fields are found.
-		if ( ! $fields || empty( $fields ) ) {
+		if ( empty( $fields ) ) {
 			return;
 		}
 

@@ -204,7 +204,8 @@ class Kirki_Color {
 	 * @return  array       returns array( 'h', 's', 'v' )
 	 */
 	public static function hex_to_hsv( $hex ) {
-		return self::rgb_to_hsv( self::get_rgb( self::sanitize_hex( $hex, false ) ) );
+		$rgb = (array) (array) self::get_rgb( self::sanitize_hex( $hex, false ) );
+		return self::rgb_to_hsv( $rgb );
 	}
 
 	/**
@@ -223,12 +224,11 @@ class Kirki_Color {
 		$var_max = max( $var_r, $var_g, $var_b);
 		$del_max = $var_max - $var_min;
 
+		$h = 0;
+		$s = 0;
 		$v = $var_max;
 
-		if ( $del_max == 0 ) {
-			$h = 0;
-			$s = 0;
-		} else {
+		if ( 0 != $del_max ) {
 			$s = $del_max / $var_max;
 
 			$del_r = ( ( ( $var_max - $var_r ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
@@ -267,7 +267,7 @@ class Kirki_Color {
 	 */
 	public static function brightest_color( $colors = array(), $context = 'key' ) {
 
-		$brightest = false;
+		$brightest = null;
 
 		// Sanitize colors
 		$colors_sanitized = array();
@@ -279,7 +279,7 @@ class Kirki_Color {
 			$value      = self::sanitize_hex( $value, false );
 			$brightness = self::get_brightness( $value );
 
-			if ( ! $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {
+			if ( null === $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {
 				$brightest = $value;
 			}
 		}
@@ -299,18 +299,18 @@ class Kirki_Color {
 	 */
 	public static function most_saturated_color( $colors = array(), $context = 'key' ) {
 
-		$most_saturated = false;
+		$most_saturated = null;
 
 		foreach ( $colors as $color ) {
 			$color      = self::sanitize_hex( $color, false );
 			$hsv        = self::hex_to_hsv( $color );
 			$saturation = $hsv['s'];
 
-			if ( $most_saturated ) {
+			if ( null !== $most_saturated ) {
 				$hsv_old = self::hex_to_hsv( $most_saturated );
 			}
 
-			if ( ! $most_saturated || $saturation > $hsv_old['s'] ) {
+			if ( null === $most_saturated || $saturation > $hsv_old['s'] ) {
 				$most_saturated = $color;
 			}
 		}
@@ -330,18 +330,18 @@ class Kirki_Color {
 	 */
 	public static function most_intense_color( $colors = array(), $context = 'key' ) {
 
-		$most_intense = false;
+		$most_intense = null;
 
 		foreach ( $colors as $color ) {
 			$color      = self::sanitize_hex( $color, false );
 			$hsv        = self::hex_to_hsv( $color );
 			$saturation = $hsv['s'];
 
-			if ( $most_intense ) {
+			if ( null !== $most_intense ) {
 				$hsv_old = self::hex_to_hsv( $most_intense );
 			}
 
-			if ( ! $most_intense || $saturation > $hsv_old['s'] ) {
+			if ( null === $most_intense || ( isset( $hsv_old ) && $saturation > $hsv_old['s'] ) ) {
 				$most_intense = $color;
 			}
 		}
@@ -361,7 +361,7 @@ class Kirki_Color {
 	 */
 	public static function brightest_dull_color( $colors = array(), $context = 'key' ) {
 
-		$brightest_dull = false;
+		$brightest_dull = null;
 
 		foreach ( $colors as $color ) {
 			$color        = self::sanitize_hex( $color, false );
@@ -372,14 +372,14 @@ class Kirki_Color {
 			$hsv['s']     = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s'];
 			$dullness     = 1 / $hsv['s'];
 
-			if ( $brightest_dull ) {
+			if ( null !== $brightest_dull ) {
 				$hsv_old      = self::hex_to_hsv( $brightest_dull );
 				// Prevent "division by zero" messages.
 				$hsv_old['s'] = ( $hsv_old['s'] == 0 ) ? 0.0001 : $hsv_old['s'];
 				$dullness_old = 1 / $hsv_old['s'];
 			}
 
-			if ( ! $brightest_dull || self::get_brightness( $color ) * $dullness > self::get_brightness( $brightest_dull ) * $dullness_old ) {
+			if ( null === $brightest_dull || ( isset( $dullness_old ) && self::get_brightness( $color ) * $dullness > self::get_brightness( $brightest_dull ) * $dullness_old ) ) {
 				$brightest_dull = $color;
 			}
 		}

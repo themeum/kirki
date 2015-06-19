@@ -22,7 +22,7 @@ class Kirki_Toolkit {
 	 * @return Kirki
 	 */
 	public static function get_instance() {
-		if ( self::$instance==null ) {
+		if ( null == self::$instance ) {
 			self::$instance = new Kirki_Toolkit();
 		}
 		return self::$instance;

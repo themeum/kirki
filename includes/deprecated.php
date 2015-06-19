@@ -16,6 +16,8 @@ function kirki_get_option( $option = '' ) {
 	// Make sure the class is instanciated
 	Kirki_Toolkit::get_instance();
 
+	$values = array();
+
 	// Get the array of all the fields.
 	$fields = Kirki::$fields;
 	// Get the config.
@@ -26,7 +28,6 @@ function kirki_get_option( $option = '' ) {
 	// If we're using options instead of theme_mods,
 	// then first we'll have to get the array of all options.
 	if ( 'option' == $config['options_type'] ) {
-		$values = array();
 		if ( '' == $config['option_name'] ) {
 			// No option name is defined.
 			// Each options is saved separately in the db, so we'll manually build the array here.
@@ -140,7 +141,7 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 
 		public static function is_google_font( $font ) {
 			$font_registry = Kirki_Toolkit::fonts();
-			return $font_registray->is_google_font( $font );
+			return $font_registry->is_google_font( $font );
 		}
 
 		public static function get_google_font_uri( $fonts, $weight = 400, $subset = 'all' ) {

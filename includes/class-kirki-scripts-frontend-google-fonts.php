@@ -14,7 +14,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		$fields = Kirki::$fields;
 
 		// Early exit if no fields are found.
-		if ( ! $fields || empty( $fields ) ) {
+		if ( empty( $fields ) ) {
 			return;
 		}
 
