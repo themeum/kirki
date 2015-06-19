@@ -606,12 +606,13 @@ function kirki_demo_controls( $controls ) {
 		'section'     => 'select2_section',
 		'default'     => 'option-1',
 		'priority'    => 10,
-		'choices'     => array(
-			'option-1' => __( 'Option 1', 'kirki' ),
-			'option-2' => __( 'Option 2', 'kirki' ),
-			'option-3' => __( 'Option 3', 'kirki' ),
-			'option-4' => __( 'Option 4', 'kirki' ),
-		),
+		'choices'     => Kirki_Fonts::get_font_choices(),
+		'output'      => array(
+			array(
+				'element'  => 'body p',
+				'property' => 'font-family',
+			)
+		)
 	);
 
 	$controls[] = array(

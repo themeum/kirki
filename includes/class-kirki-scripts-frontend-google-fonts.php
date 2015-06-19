@@ -27,27 +27,22 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 			$field['output']       = Kirki_Field::sanitize_output( $field );
 			$field['settings_raw'] = Kirki_Field::sanitize_settings_raw( $field );
 
-			if ( isset( $field['output'] ) ) {
+			if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
 
-				// Check if this is a font-family control
-				$is_font_family = isset( $field['output']['property'] ) && 'font-family' == $field['output']['property'] ? true : false;
+				foreach ( $field['output'] as $output ) {
 
-				// Check if this is a font-weight control
-				$is_font_weight = isset( $field['output']['property'] ) && 'font-weight' == $field['output']['property'] ? true : false;
+					if ( in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
+						// The value of this control
+						$value = Kirki::get_option( $field['settings_raw'] );
 
-				// Check if this is a font subset control
-				$is_font_subset = isset( $field['output']['property'] ) && 'font-subset' == $field['output']['property'] ? true : false;
+						if ( 'font-family' == $output['property'] ) {
+							$fonts[]['font-family'] = $value;
+						} else if ( 'font-weight' == $output['property'] ) {
+							$fonts[]['font-weight'] = $value;
+						} else if ( 'font-subset' == $output['property'] ) {
+							$fonts[]['subsets'] = $value;
+						}
 
-				if ( $is_font_family || $is_font_weight || $is_font_subset ) {
-					// The value of this control
-					$value = Kirki::get_option( $field['settings_raw'] );
-
-					if ( $is_font_family ) {
-						$fonts[]['font-family'] = $value;
-					} else if ( $is_font_weight ) {
-						$fonts[]['font-weight'] = $value;
-					} else if ( $is_font_subset ) {
-						$fonts[]['subsets'] = $value;
 					}
 
 				}
