@@ -24,7 +24,7 @@ class Kirki_Styles_Frontend {
 	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
-		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ) . 'assets/css/kirki-styles.css', null, null );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ).'assets/css/kirki-styles.css', null, null );
 
 	}
 
@@ -34,14 +34,14 @@ class Kirki_Styles_Frontend {
 	public function setting_styles( $field, $styles = '', $element = '', $property = '', $units = '', $prefix = '', $suffix = '', $callback = false ) {
 		$value   = kirki_get_option( $field['settings_raw'] );
 		$value   = ( isset( $callback ) && '' != $callback && '.' != $callback ) ? call_user_func( $callback, $value ) : $value;
-		$element = $prefix . $element;
-		$units   = $units . $suffix;
+		$element = $prefix.$element;
+		$units   = $units.$suffix;
 
 		// Color controls
 		if ( 'color' == $field['type'] ) {
 
 			$color = Kirki_Color::sanitize_hex( $value );
-			$styles[$element][$property] = $color . $units;
+			$styles[$element][$property] = $color.$units;
 
 		}
 
@@ -49,28 +49,28 @@ class Kirki_Styles_Frontend {
 		elseif ( array( $field['output'] ) && isset( $field['output']['property'] ) && in_array( $field['output']['property'], array( 'font-family', 'font-size', 'font-weight' ) ) ) {
 
 			$is_font_family = isset( $field['output']['property'] ) && 'font-family' == $field['output']['property'] ? true : false;
-			$is_font_size   = isset( $field['output']['property'] ) && 'font-size'   == $field['output']['property'] ? true : false;
+			$is_font_size   = isset( $field['output']['property'] ) && 'font-size' == $field['output']['property'] ? true : false;
 			$is_font_weight = isset( $field['output']['property'] ) && 'font-weight' == $field['output']['property'] ? true : false;
 
 			if ( 'font-family' == $property ) {
 
-				$styles[$field['output']['element']]['font-family'] = $value . $units;
+				$styles[$field['output']['element']]['font-family'] = $value.$units;
 
 			} else if ( 'font-size' == $property ) {
 
 				// Get the unit we're going to use for the font-size.
 				$units = empty( $units ) ? 'px' : $units;
-				$styles[$element]['font-size'] = $value . $units;
+				$styles[$element]['font-size'] = $value.$units;
 
 			} else if ( 'font-weight' == $property ) {
 
-				$styles[$element]['font-weight'] = $value . $units;
+				$styles[$element]['font-weight'] = $value.$units;
 
 			}
 
 		} else {
 
-			$styles[$element][$property] = $value . $units;
+			$styles[$element][$property] = $value.$units;
 
 		}
 

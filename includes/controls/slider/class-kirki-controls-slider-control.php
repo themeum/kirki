@@ -12,7 +12,7 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 		wp_enqueue_script( 'jquery-ui' );
 		wp_enqueue_script( 'jquery-ui-slider' );
-		wp_enqueue_style( 'kirki-slider', trailingslashit( kirki_url() ) . 'includes/controls/slider/style.css' );
+		wp_enqueue_style( 'kirki-slider', trailingslashit( kirki_url() ).'includes/controls/slider/style.css' );
 
 	}
 

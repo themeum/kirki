@@ -78,7 +78,7 @@ class Kirki_Field {
 	 * Sanitizes the setting type.
 	 *
 	 * @param array the field definition
-	 * @return string. (theme_mod|option)
+	 * @return string (theme_mod|option)
 	 */
 	public static function sanitize_type( $field ) {
 		$config = apply_filters( 'kirki/config', array() );
@@ -151,13 +151,13 @@ class Kirki_Field {
 	 * Sanitizes the setting name
 	 *
 	 * @param array the field definition
-	 * @return string.
+	 * @return string
 	 */
 	public static function sanitize_settings( $field ) {
 
 		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
 		if ( ( isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
-			$field['settings'] = esc_attr( $field['option_name'] ) . '[' . esc_attr( $field['settings'] ) . ']';
+			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
 		}
 
 		return $field['settings'];
@@ -317,20 +317,20 @@ class Kirki_Field {
 				$output_sanitized = array();
 				if ( isset( $field['output']['element'] ) ) {
 					$output_sanitized[] = array(
-						'element'  => ( isset( $field['output']['element'] ) )  ? sanitize_text_field( $field['output']['element'] )  : '',
+						'element'  => ( isset( $field['output']['element'] ) ) ? sanitize_text_field( $field['output']['element'] ) : '',
 						'property' => ( isset( $field['output']['property'] ) ) ? sanitize_text_field( $field['output']['property'] ) : '',
-						'units'    => ( isset( $field['output']['units'] ) )    ? sanitize_text_field( $field['output']['units'] )    : '',
-						'prefix'   => ( isset( $field['output']['prefix'] ) )   ? sanitize_text_field( $field['output']['prefix'] )   : '',
-						'suffix'   => ( isset( $field['output']['suffix'] ) )   ? sanitize_text_field( $field['output']['suffix'] )   : '',
+						'units'    => ( isset( $field['output']['units'] ) ) ? sanitize_text_field( $field['output']['units'] ) : '',
+						'prefix'   => ( isset( $field['output']['prefix'] ) ) ? sanitize_text_field( $field['output']['prefix'] ) : '',
+						'suffix'   => ( isset( $field['output']['suffix'] ) ) ? sanitize_text_field( $field['output']['suffix'] ) : '',
 					);
 				} else {
 					foreach ( $field['output'] as $output ) {
 						$output_sanitized[] = array(
-							'element'  => ( isset( $output['element'] ) )  ? sanitize_text_field( $output['element'] )  : '',
+							'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
 							'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-							'units'    => ( isset( $output['units'] ) )    ? sanitize_text_field( $output['units'] )    : '',
-							'prefix'   => ( isset( $output['prefix'] ) )   ? sanitize_text_field( $output['prefix'] )   : '',
-							'suffix'   => ( isset( $output['suffix'] ) )   ? sanitize_text_field( $output['suffix'] )   : '',
+							'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
+							'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
+							'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
 						);
 					}
 				}
@@ -380,18 +380,18 @@ class Kirki_Field {
 			$js_vars_sanitized = array();
 			if ( isset( $field['js_vars']['element'] ) ) {
 				$js_vars_sanitized[] = array(
-					'element'  => ( isset( $field['js_vars']['element'] ) )  ? sanitize_text_field( $field['js_vars']['element'] )  : '',
-					'function' => ( isset( $field['js_vars']['function'] ) ) ? esc_js( $field['js_vars']['function'] )              : '',
-					'property' => ( isset( $field['js_vars']['property'] ) ) ? esc_js( $field['js_vars']['property'] )              : '',
-					'units'    => ( isset( $field['js_vars']['units'] ) )    ? esc_js( $field['js_vars']['units'] )                 : '',
+					'element'  => ( isset( $field['js_vars']['element'] ) ) ? sanitize_text_field( $field['js_vars']['element'] ) : '',
+					'function' => ( isset( $field['js_vars']['function'] ) ) ? esc_js( $field['js_vars']['function'] ) : '',
+					'property' => ( isset( $field['js_vars']['property'] ) ) ? esc_js( $field['js_vars']['property'] ) : '',
+					'units'    => ( isset( $field['js_vars']['units'] ) ) ? esc_js( $field['js_vars']['units'] ) : '',
 				);
 			} else {
 				foreach ( $field['js_vars'] as $js_vars ) {
 					$js_vars_sanitized[] = array(
-						'element'  => ( isset( $js_vars['element'] ) )  ? sanitize_text_field( $js_vars['element'] )  : '',
-						'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] )              : '',
-						'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] )              : '',
-						'units'    => ( isset( $js_vars['units'] ) )    ? esc_js( $js_vars['units'] )                 : '',
+						'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
+						'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
+						'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
+						'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
 					);
 				}
 			}
@@ -412,16 +412,16 @@ class Kirki_Field {
 			$required_sanitized = array();
 			if ( isset( $field['required']['setting'] ) ) {
 				$required_sanitized[] = array(
-					'setting'  => ( isset( $field['required']['setting'] ) )  ? sanitize_text_field( $field['required']['setting'] )  : '',
+					'setting'  => ( isset( $field['required']['setting'] ) ) ? sanitize_text_field( $field['required']['setting'] ) : '',
 					'operator' => ( isset( $field['required']['operator'] ) && in_array( $field['required']['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $field['required']['operator'] : '==',
-					'value'    => ( isset( $field['required']['value'] ) )    ? sanitize_text_field( $field['required']['value'] )    : true,
+					'value'    => ( isset( $field['required']['value'] ) ) ? sanitize_text_field( $field['required']['value'] ) : true,
 				);
 			} else {
 				foreach ( $field['required'] as $required ) {
 					$required_sanitized[] = array(
-						'setting'  => ( isset( $required['setting'] ) )  ? sanitize_text_field( $required['setting'] )  : '',
+						'setting'  => ( isset( $required['setting'] ) ) ? sanitize_text_field( $required['setting'] ) : '',
 						'operator' => ( isset( $required['operator'] ) && in_array( $required['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $required['operator'] : '==',
-						'value'    => ( isset( $required['value'] ) )    ? sanitize_text_field( $required['value'] )    : true,
+						'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
 					);
 				}
 			}
@@ -464,13 +464,13 @@ class Kirki_Field {
 
 				// Set any unset values to avoid PHP warnings below.
 				$field['settings']    = ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) ? $field['setting'] : $field['settings'];
-				$field['section']     = ( isset( $field['section'] ) )     ? $field['section']     : 'background';
-				$field['help']        = ( isset( $field['help'] ) )        ? $field['help']        : '';
+				$field['section']     = ( isset( $field['section'] ) ) ? $field['section'] : 'background';
+				$field['help']        = ( isset( $field['help'] ) ) ? $field['help'] : '';
 				$field['description'] = ( isset( $field['description'] ) ) ? $field['description'] : $i18n['background-color'];
-				$field['required']    = ( isset( $field['required'] ) )    ? $field['required']    : array();
-				$field['transport']   = ( isset( $field['transport'] ) )   ? $field['transport']   : 'refresh';
-				$field['default']     = ( isset( $field['default'] ) )     ? $field['default']     : array();
-				$field['priority']    = ( isset( $field['priority'] ) )    ? $field['priority']    : 10;
+				$field['required']    = ( isset( $field['required'] ) ) ? $field['required'] : array();
+				$field['transport']   = ( isset( $field['transport'] ) ) ? $field['transport'] : 'refresh';
+				$field['default']     = ( isset( $field['default'] ) ) ? $field['default'] : array();
+				$field['priority']    = ( isset( $field['priority'] ) ) ? $field['priority'] : 10;
 				$field['output']      = ( isset( $field['output'] ) && '' != $field['output'] ) ? $field['output'] : '';
 
 				if ( isset( $field['default']['color'] ) ) {
@@ -482,7 +482,7 @@ class Kirki_Field {
 						'type'        => $color_mode,
 						'label'       => isset( $field['label'] ) ? $field['label'] : '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_color',
+						'settings'    => $field['settings'].'_color',
 						'priority'    => $field['priority'],
 						'help'        => $field['help'],
 						'description' => $field['description'],
@@ -504,7 +504,7 @@ class Kirki_Field {
 						'type'        => 'image',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_image',
+						'settings'    => $field['settings'].'_image',
 						'priority'    => $field['priority'] + 1,
 						'help'        => '',
 						'description' => $i18n['background-image'],
@@ -526,7 +526,7 @@ class Kirki_Field {
 						'type'        => 'select',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_repeat',
+						'settings'    => $field['settings'].'_repeat',
 						'priority'    => $field['priority'] + 2,
 						'choices'     => array(
 							'no-repeat' => $i18n['no-repeat'],
@@ -555,7 +555,7 @@ class Kirki_Field {
 						'type'        => 'radio-buttonset',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_size',
+						'settings'    => $field['settings'].'_size',
 						'priority'    => $field['priority'] + 3,
 						'choices'     => array(
 							'inherit' => $i18n['inherit'],
@@ -582,7 +582,7 @@ class Kirki_Field {
 						'label'       => '',
 						'type'        => 'radio-buttonset',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_attach',
+						'settings'    => $field['settings'].'_attach',
 						'priority'    => $field['priority'] + 4,
 						'choices'     => array(
 							'inherit' => $i18n['inherit'],
@@ -609,7 +609,7 @@ class Kirki_Field {
 						'type'        => 'select',
 						'label'       => '',
 						'section'     => $field['section'],
-						'settings'    => $field['settings'] . '_position',
+						'settings'    => $field['settings'].'_position',
 						'priority'    => $field['priority'] + 5,
 						'choices'     => array(
 							'left-top'      => $i18n['left-top'],

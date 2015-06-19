@@ -48,12 +48,12 @@ class Kirki_Test_Field {
 		$args = $this->field;
 		$args['section']      = $this->section['id'];
 
-		$args['settings']     = $args['settings'] . '_0';
+		$args['settings']     = $args['settings'].'_0';
 		$args['label']        = sprintf( __( '%s theme_mod via filter', 'kirki' ), $args['type'] );
 		$args['options_type'] = 'theme_mod';
 		$fields[] = $args;
 
-		$args['settings']     = $args['settings'] . '_1';
+		$args['settings']     = $args['settings'].'_1';
 		$args['label']        = sprintf( __( '%s single option via filter', 'kirki' ), $args['type'] );
 		$args['options_type'] = 'option';
 		$fields[] = $args;
@@ -77,12 +77,12 @@ class Kirki_Test_Field {
 		$args['section']      = $this->section['id'];
 		$args['capability']   = 'read';
 
-		$args['settings']     = $args['settings'] . '_3';
+		$args['settings']     = $args['settings'].'_3';
 		$args['label']        = sprintf( __( '%s theme_mod via API', 'kirki' ), $args['type'] );
 		$args['options_type'] = 'theme_mod';
 		Kirki::add_field( '', $args );
 
-		$args['settings']     = $args['settings'] . '_4';
+		$args['settings']     = $args['settings'].'_4';
 		$args['label']        = sprintf( __( '%s single option via API', 'kirki' ), $args['type'] );
 		$args['options_type'] = 'option';
 		Kirki::add_field( '', $args );

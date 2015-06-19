@@ -44,25 +44,19 @@ class Kirki_Controls_Background_Control extends WP_Customize_Control {
 					'repeat-y'  => $i18n['repeat-y'],
 					'inherit'   => $i18n['inherit'],
 				);
-			}
-
-			elseif ( 'size' === $setting_key ) {
+			} elseif ( 'size' === $setting_key ) {
 				$this->json[$setting_key]['choices'] = array(
 					'inherit' => $i18n['inherit'],
 					'cover'   => $i18n['cover'],
 					'contain' => $i18n['contain'],
 				);
-			}
-
-			elseif ( 'attach' === $setting_key ) {
+			} elseif ( 'attach' === $setting_key ) {
 				$this->json[$setting_key]['choices'] = array(
 					'inherit' => $i18n['inherit'],
 					'fixed'   => $i18n['fixed'],
 					'scroll'  => $i18n['scroll'],
 				);
-			}
-
-			elseif ( 'position' === $setting_key ) {
+			} elseif ( 'position' === $setting_key ) {
 				$this->json[$setting_key]['choices'] = array(
 					'left-top'      => $i18n['left-top'],
 					'left-center'   => $i18n['left-center'],

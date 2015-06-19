@@ -253,7 +253,7 @@ class Kirki {
 		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
-		$args['priority']    = ( isset( $args['priority'] ) )    ? esc_attr( $args['priority'] )        : 10;
+		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 
 		self::$panels[$args['id']] = $args;
 
@@ -274,9 +274,9 @@ class Kirki {
 
 		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
-		$args['panel']       = ( isset( $args['panel'] ) )       ? esc_attr( $args['panel']  )          : '';
+		$args['panel']       = ( isset( $args['panel'] ) ) ? esc_attr( $args['panel'] ) : '';
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
-		$args['priority']    = ( isset( $args['priority'] ) )    ? esc_attr( $args['priority'] )        : 10;
+		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 
 		self::$sections[$args['id']] = $args;
 

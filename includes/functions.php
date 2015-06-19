@@ -56,10 +56,10 @@ function kirki_field_active_callback( $control ) {
 					$show = ( $requirement['value'] <= $value ) ? true : $show;
 					break;
 				case '>' :
-					$show = ( $requirement['value'] > $value )  ? true : $show;
+					$show = ( $requirement['value'] > $value ) ? true : $show;
 					break;
 				case '<' :
-					$show = ( $requirement['value'] < $value )  ? true : $show;
+					$show = ( $requirement['value'] < $value ) ? true : $show;
 					break;
 				default :
 					$show = ( $requirement['value'] == $value ) ? true : $show;

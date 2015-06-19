@@ -8,8 +8,8 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	public $type = 'toggle';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/kirki-switch.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/style.css' );
+		wp_enqueue_script( 'kirki-switch', trailingslashit( kirki_url() ).'includes/controls/switch/kirki-switch.js', array( 'jquery' ) );
+		wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ).'includes/controls/switch/style.css' );
 	}
 
 	/**
