@@ -181,7 +181,7 @@ class Kirki_Sanitize {
 	/**
 	 * multicheck callback
 	 */
-	function multicheck( $values ) {
+	public static function multicheck( $values ) {
 
 		$multi_values = ( ! is_array( $values ) ) ? explode( ',', $values ) : $values;
 		return ( ! empty( $multi_values ) ) ? array_map( 'sanitize_text_field', $multi_values ) : array();

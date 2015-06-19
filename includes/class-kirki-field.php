@@ -42,7 +42,7 @@ class Kirki_Field {
 	 * Sanitizes the control type.
 	 *
 	 * @param array the field definition
-	 * @return string. If not set, then defaults to text.
+	 * @return string If not set, then defaults to text.
 	 */
 	public static function sanitize_control_type( $field ) {
 
@@ -93,7 +93,7 @@ class Kirki_Field {
 	 * Sanitizes the setting variables.
 	 *
 	 * @param array the field definition
-	 * @return string.
+	 * @return string
 	 */
 	public static function sanitize_variables( $field ) {
 		return ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : false;
@@ -113,7 +113,7 @@ class Kirki_Field {
 	 * Sanitizes the setting permissions.
 	 *
 	 * @param array the field definition
-	 * @return string. (theme_mod|option)
+	 * @return string (theme_mod|option)
 	 */
 	public static function sanitize_capability( $field ) {
 		if ( ! isset( $field['capability'] ) ) {
@@ -207,11 +207,8 @@ class Kirki_Field {
 	public static function sanitize_default( $field ) {
 
 		if ( ! isset( $field['default'] ) ) {
-
 			return '';
-
 		} else {
-
 			if ( is_array( $field['default'] ) ) {
 				array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 				return $field['default'];
@@ -222,9 +219,7 @@ class Kirki_Field {
 					// Return raw & unfiltered for custom controls
 					return $field['default'];
 				}
-
 			}
-
 		}
 
 	}
@@ -373,7 +368,7 @@ class Kirki_Field {
 	 * Sanitizes the control js_vars.
 	 *
 	 * @param array the field definition
-	 * @return array
+	 * @return array|null
 	 */
 	public static function sanitize_js_vars( $field ) {
 		if ( isset( $field['js_vars'] ) && is_array( $field['js_vars'] ) ) {
@@ -405,7 +400,7 @@ class Kirki_Field {
 	 * Sanitizes the control required argument.
 	 *
 	 * @param array the field definition
-	 * @return array
+	 * @return array|null
 	 */
 	public static function sanitize_required( $field ) {
 		if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
@@ -426,7 +421,7 @@ class Kirki_Field {
 				}
 			}
 		} else {
-			$required_sanitized = false;
+			$required_sanitized = null;
 		}
 		return $required_sanitized;
 	}
@@ -494,7 +489,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-color',
 								'callback' => array( 'Kirki_Sanitize', 'color' ),
-							)
+							),
 						) : '',
 					);
 				}
@@ -516,7 +511,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-image',
 								'callback' => 'esc_url_raw',
-							)
+							),
 						) : '',
 					);
 				}
@@ -545,7 +540,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-repeat',
 								'callback' => 'esc_attr',
-							)
+							),
 						) : '',
 					);
 				}
@@ -572,7 +567,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-size',
 								'callback' => 'esc_attr',
-							)
+							),
 						) : '',
 					);
 				}
@@ -599,7 +594,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-attachment',
 								'callback' => 'esc_attr',
-							)
+							),
 						) : '',
 					);
 				}
@@ -632,7 +627,7 @@ class Kirki_Field {
 								'element'  => $field['output'],
 								'property' => 'background-position',
 								'callback' => 'esc_attr',
-							)
+							),
 						) : '',
 					);
 				}
@@ -649,7 +644,7 @@ class Kirki_Field {
 	 * Sanitizes the control transport.
 	 *
 	 * @param string the control type
-	 * @return string the function name of a sanitization callback
+	 * @return string[]|string the function name of a sanitization callback
 	 */
 	public static function fallback_callback( $field_type ) {
 

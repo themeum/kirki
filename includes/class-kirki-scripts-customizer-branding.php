@@ -11,14 +11,12 @@ class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 		$config = apply_filters( 'kirki/config', array() );
 		$script = '';
 		if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
-
 			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
 				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="'.$config['logo_image'].'">\' );';
 			}
 			if ( isset( $config['description'] ) && '' != $config['description'] ) {
 				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">'.$config['description'].'</div></div>\' );';
 			}
-
 		}
 
 		if ( '' != $script ) {

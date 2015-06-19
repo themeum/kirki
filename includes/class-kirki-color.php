@@ -31,9 +31,9 @@ class Kirki_Color {
 
 		$substr = array();
 		for ( $i = 0; $i <= 5; $i++ ) {
-			$default    = ( 0 == $i ) ? 'F' : ( $substr[$i - 1] );
-			$substr[$i] = substr( $color, $i, 1 );
-			$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
+			$default      = ( 0 == $i ) ? 'F' : ( $substr[ $i - 1 ] );
+			$substr[ $i ] = substr( $color, $i, 1 );
+			$substr[ $i ] = ( false === $substr[ $i ] || ! ctype_xdigit( $substr[ $i ] ) ) ? $default : $substr[ $i ];
 		}
 		$hex = implode( '', $substr );
 
@@ -57,7 +57,7 @@ class Kirki_Color {
 		$rgb = array(
 			hexdec( substr( $hex, 0, 2 ) ),
 			hexdec( substr( $hex, 2, 2 ) ),
-			hexdec( substr( $hex, 4, 2 ) )
+			hexdec( substr( $hex, 4, 2 ) ),
 		);
 
 		return ( $implode ) ? implode( ',', $rgb ) : $rgb;
@@ -272,7 +272,7 @@ class Kirki_Color {
 		// Sanitize colors
 		$colors_sanitized = array();
 		foreach ( $colors as $key => $value ) {
-			$colors_sanitized[$key] = self::sanitize_hex( $value );
+			$colors_sanitized[ $key ] = self::sanitize_hex( $value );
 		}
 
 		foreach ( $colors_sanitized as $key => $value ) {
@@ -283,9 +283,9 @@ class Kirki_Color {
 			}
 		}
 
-		if ( $context == 'key' ) {
+		if ( 'key' == $context ) {
 			return array_search( $brightest, $colors_sanitized );
-		} elseif ( $context == 'value' ) {
+		} elseif ( 'value' == $context ) {
 			return self::sanitize_hex( $brightest );
 		}
 
@@ -314,9 +314,9 @@ class Kirki_Color {
 			}
 		}
 
-		if ( $context == 'key' ) {
+		if ( 'key' == $context ) {
 			return array_search( $most_saturated, $colors );
-		} elseif ( $context == 'value' ) {
+		} elseif ( 'value' == $context ) {
 			return self::sanitize_hex( $most_saturated );
 		}
 
@@ -345,9 +345,9 @@ class Kirki_Color {
 			}
 		}
 
-		if ( $context == 'key' ) {
+		if ( 'key' == $context ) {
 			return array_search( $most_intense, $colors );
-		} elseif ( $context == 'value' ) {
+		} elseif ( 'value' == $context ) {
 			return self::sanitize_hex( $most_intense );
 		}
 
@@ -379,9 +379,9 @@ class Kirki_Color {
 			}
 		}
 
-		if ( $context == 'key' ) {
+		if ( 'key' == $context ) {
 			return array_search( $brightest_dull, $colors );
-		} elseif ( $context == 'value' ) {
+		} elseif ( 'value' == $context ) {
 			return self::sanitize_hex( $brightest_dull );
 		}
 

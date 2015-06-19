@@ -18,7 +18,7 @@ class Kirki_Colourlovers {
 	}
 
 	/**
-	 * @param string $xml
+	 * @param string|null $xml
 	 */
 	public static function parse( $xml = null ) {
 
@@ -28,15 +28,7 @@ class Kirki_Colourlovers {
 		$palettes = array();
 
 		foreach ( $feed_xml->palette as $result ) {
-			// $id       = $result->id;
-			// $content  = $result->content;
-			// $title    = $result->title;
-			// $badgeurl = $result->badgeUrl;
-			// $imageurl = $result->imageUrl;
-			$palette  = (array) $result->colors->hex;
-
-			$palettes[] = $palette;
-
+			$palettes[] = (array) $result->colors->hex;
 		}
 
 		return $palettes;

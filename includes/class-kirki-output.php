@@ -64,7 +64,7 @@ class Kirki_Output {
 	/**
 	 * Gets the array of generated styles and creates the minimized, inline CSS
 	 *
-	 * @return string	the generated CSS.
+	 * @return string|null	the generated CSS.
 	 */
 	public static function styles_parse() {
 
@@ -97,14 +97,11 @@ class Kirki_Output {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
-
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
-
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[$prefix.$output['element']][$output['property']] = self::$value.$units;
+				$styles[ $prefix.$output['element'] ][ $output['property'] ] = self::$value.$units;
 			}
-
 		}
 
 		return $styles;

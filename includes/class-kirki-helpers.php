@@ -7,9 +7,9 @@ class Kirki_Helper {
 	 *
 	 * removes an item from an array
 	 */
-	function array_delete( $idx, $array ) {
+	public function array_delete( $idx, $array ) {
 
-		unset( $array[$idx] );
+		unset( $array[ $idx ] );
 		return ( is_array( $array ) ) ? array_values( $array ) : null;
 
 	}
@@ -57,7 +57,7 @@ class Kirki_Helper {
 
 		$items = array();
 		foreach ( $posts as $post ) {
-			$items[$post->ID] = $post->post_title;
+			$items[ $post->ID ] = $post->post_title;
 		}
 
 		return $items;
