@@ -24,7 +24,7 @@ class Kirki_Helper {
 
 		global $wpdb;
 		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
-        return $attachment[0];
+		return $attachment[0];
 
 	}
 

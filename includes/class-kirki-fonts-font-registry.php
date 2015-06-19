@@ -249,8 +249,8 @@ class Kirki_Fonts_Font_Registry {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function
 		if ( empty( $wp_filesystem ) ) {
-		    require_once ( ABSPATH . '/wp-admin/includes/file.php' );
-		    WP_Filesystem();
+			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
+			WP_Filesystem();
 		}
 
 		if ( null == $this->google_fonts  ) {

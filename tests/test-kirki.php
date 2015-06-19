@@ -4,48 +4,48 @@ class Test_Kirki extends WP_UnitTestCase {
 
 	public function add_config() {
 		Kirki::add_config( 'my_config', array(
-		    'option_type' => 'option',
+			'option_type' => 'option',
 			'option_name' => 'my_option',
-		    'capability'  => 'edit_posts',
+			'capability'  => 'edit_posts',
 		) );
 	}
 
 	public function add_panel() {
 		Kirki::add_panel( 'panel_id', array(
-		    'priority'    => 10,
-		    'title'       => 'My Title',
-		    'description' => 'My Description',
+			'priority'    => 10,
+			'title'       => 'My Title',
+			'description' => 'My Description',
 		) );
 	}
 
 	public function add_section() {
 		Kirki::add_section( 'section_id', array(
-		    'title'          => 'My Title',
+			'title'          => 'My Title',
 			'description'    => 'My Description',
-		    'panel'          => 'panel_id',
-		    'priority'       => 160,
-		    'capability'     => 'edit_theme_options',
+			'panel'          => 'panel_id',
+			'priority'       => 160,
+			'capability'     => 'edit_theme_options',
 		) );
 	}
 
 	public function add_field() {
 
 		Kirki::add_field( 'my_config', array(
-		    'settings' => 'my_setting',
-		    'label'    => __( 'My custom control', 'translation_domain' ),
-		    'section'  => 'my_section',
-		    'type'     => 'text',
-		    'priority' => 10,
-		    'default'  => 'some-default-value',
+			'settings' => 'my_setting',
+			'label'    => __( 'My custom control', 'translation_domain' ),
+			'section'  => 'my_section',
+			'type'     => 'text',
+			'priority' => 10,
+			'default'  => 'some-default-value',
 		) );
 
 		Kirki::add_field( 'my_config', array(
-		    'settings'   => 'my_setting_2',
-		    'label'      => __( 'My custom control 2', 'translation_domain' ),
-		    'section'    => 'my_section',
-		    'type'       => 'checkbox',
-		    'priority'   => 20,
-		    'default'    => '1',
+			'settings'   => 'my_setting_2',
+			'label'      => __( 'My custom control 2', 'translation_domain' ),
+			'section'    => 'my_section',
+			'type'       => 'checkbox',
+			'priority'   => 20,
+			'default'    => '1',
 			'capability' => 'edit_theme_options',
 
 		) );
@@ -54,30 +54,30 @@ class Test_Kirki extends WP_UnitTestCase {
 
 	function add_controls_via_filter( $fields ) {
 
-	    // Add the controls
-	    $fields[] = array(
-	        'label'        => __( 'My custom control', 'translation_domain' ),
-	        'section'      => 'my_section',
-	        'settings'     => 'my_setting_3',
-	        'type'         => 'text',
-	        'priority'     => 10,
-	        'options_type' => 'theme_mod',
-	        'capability'   => 'edit_posts',
+		// Add the controls
+		$fields[] = array(
+			'label'        => __( 'My custom control', 'translation_domain' ),
+			'section'      => 'my_section',
+			'settings'     => 'my_setting_3',
+			'type'         => 'text',
+			'priority'     => 10,
+			'options_type' => 'theme_mod',
+			'capability'   => 'edit_posts',
 			'default'      => 'some-default-value',
-	    );
+		);
 
-	    $fields[] = array(
-	        'label'        => __( 'My custom control 2', 'translation_domain' ),
-	        'section'      => 'my_section',
-	        'settings'     => 'my_setting_4',
-	        'type'         => 'checkbox',
-	        'priority'     => 20,
-	        'options_type' => 'theme_mod',
-	        'capability'   => 'edit_theme_options',
+		$fields[] = array(
+			'label'        => __( 'My custom control 2', 'translation_domain' ),
+			'section'      => 'my_section',
+			'settings'     => 'my_setting_4',
+			'type'         => 'checkbox',
+			'priority'     => 20,
+			'options_type' => 'theme_mod',
+			'capability'   => 'edit_theme_options',
 			'default'      => '0',
-	    );
+		);
 
-	    return $fields;
+		return $fields;
 
 	}
 

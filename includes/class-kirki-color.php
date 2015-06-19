@@ -7,16 +7,16 @@
  */
 class Kirki_Color {
 
-    /**
+	/**
 	 * Sanitises a HEX value.
 	 * The way this works is by splitting the string in 6 substrings.
 	 * Each sub-string is individually sanitized, and the result is then returned.
 	 *
-     * @var     string      The hex value of a color
-     * @param   boolean     Whether we want to include a hash (#) at the beginning or not
-     * @return  string      The sanitized hex color.
-     */
-     public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
+	 * @var     string      The hex value of a color
+	 * @param   boolean     Whether we want to include a hash (#) at the beginning or not
+	 * @return  string      The sanitized hex color.
+	 */
+	 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
 		// Remove any spaces and special characters before and after the string
 		$color = trim( $color );
@@ -41,13 +41,13 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Gets the rgb value of the $hex color.
-     *
-     * @var     string      The hex value of a color
-     * @param   boolean     Whether we want to implode the values or not
-     * @return  mixed       array|string
-     */
+	/**
+	 * Gets the rgb value of the $hex color.
+	 *
+	 * @var     string      The hex value of a color
+	 * @param   boolean     Whether we want to implode the values or not
+	 * @return  mixed       array|string
+	 */
 	public static function get_rgb( $hex, $implode = false ) {
 
 		// Remove any trailing '#' symbols from the color value
@@ -55,72 +55,72 @@ class Kirki_Color {
 
 		// rgb is an array
 		$rgb = array(
-            hexdec( substr( $hex, 0, 2 ) ),
-            hexdec( substr( $hex, 2, 2 ) ),
-            hexdec( substr( $hex, 4, 2 ) )
-        );
+			hexdec( substr( $hex, 0, 2 ) ),
+			hexdec( substr( $hex, 2, 2 ) ),
+			hexdec( substr( $hex, 4, 2 ) )
+		);
 
 		return ( $implode ) ? implode( ',', $rgb ) : $rgb;
 
 	}
 
-    /**
-     * Converts an rgba color to hex
-     * This is an approximation and not completely accurate.
-     *
-     * @var     string  The rgba color formatted like rgba(r,g,b,a)
-     * @return  string  The hex value of the color.
-     */
-     public static function rgba2hex( $color ) {
+	/**
+	 * Converts an rgba color to hex
+	 * This is an approximation and not completely accurate.
+	 *
+	 * @var     string  The rgba color formatted like rgba(r,g,b,a)
+	 * @return  string  The hex value of the color.
+	 */
+	 public static function rgba2hex( $color ) {
 
-         // Remove parts of the string
-         $color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
-         // Convert to array
-         $color = explode( ',', $color );
-         // This is not a valid rgba definition, so return white.
-         if ( 4 != count( $color ) ) {
-             return '#ffffff';
-         }
-         // Convert dec. to hex.
-         $red   = dechex( (int) $color[0] );
-         $green = dechex( (int) $color[1] );
-         $blue  = dechex( (int) $color[2] );
-         $alpha = $color[3];
+		 // Remove parts of the string
+		 $color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
+		 // Convert to array
+		 $color = explode( ',', $color );
+		 // This is not a valid rgba definition, so return white.
+		 if ( 4 != count( $color ) ) {
+			 return '#ffffff';
+		 }
+		 // Convert dec. to hex.
+		 $red   = dechex( (int) $color[0] );
+		 $green = dechex( (int) $color[1] );
+		 $blue  = dechex( (int) $color[2] );
+		 $alpha = $color[3];
 
-         // Make sure all colors are 2 digits
-         $red   = ( 1 == strlen( $red ) )   ? $red . $red     : $red;
-         $green = ( 1 == strlen( $green ) ) ? $green . $green : $green;
-         $blue  = ( 1 == strlen( $blue ) )  ? $blue . $blue   : $blue;
+		 // Make sure all colors are 2 digits
+		 $red   = ( 1 == strlen( $red ) )   ? $red . $red     : $red;
+		 $green = ( 1 == strlen( $green ) ) ? $green . $green : $green;
+		 $blue  = ( 1 == strlen( $blue ) )  ? $blue . $blue   : $blue;
 
-         // Combine hex parts
-         $hex = $red . $green . $blue;
-         // Get the opacity value on a 0-100 basis instead of 0-1.
-         $mix_level = intval( $alpha * 100 );
-         // Apply opacity - mix with white.
-         $hex = self::mix_colors( $hex, '#ffffff', $mix_level );
+		 // Combine hex parts
+		 $hex = $red . $green . $blue;
+		 // Get the opacity value on a 0-100 basis instead of 0-1.
+		 $mix_level = intval( $alpha * 100 );
+		 // Apply opacity - mix with white.
+		 $hex = self::mix_colors( $hex, '#ffffff', $mix_level );
 
-         return $hex;
+		 return $hex;
 
-     }
+	 }
 
-    /**
-     * Gets the rgb value of the $hex color.
-     *
-     * @var     string      The hex value of a color
-     * @param   int         Opacity level (1-100)
-     * @return  string
-     */
+	/**
+	 * Gets the rgb value of the $hex color.
+	 *
+	 * @var     string      The hex value of a color
+	 * @param   int         Opacity level (1-100)
+	 * @return  string
+	 */
 	public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
 
 		$hex = self::sanitize_hex( $hex, false );
-        /**
-         * Make sure that opacity is properly formatted :
-         * Set the opacity to 100 if a larger value has been entered by mistake.
-         * If a negative value is used, then set to 0.
-         * If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
-         */
-        $opacity = ( 1 >= $opacity && 0 < $opacity ) ? $opacity * 100 : $opacity;
-        $opacity = max( 0, min( 100, $opacity ) );
+		/**
+		 * Make sure that opacity is properly formatted :
+		 * Set the opacity to 100 if a larger value has been entered by mistake.
+		 * If a negative value is used, then set to 0.
+		 * If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
+		 */
+		$opacity = ( 1 >= $opacity && 0 < $opacity ) ? $opacity * 100 : $opacity;
+		$opacity = max( 0, min( 100, $opacity ) );
 
 		// Divide the opacity by 100 to end-up with a CSS value for the opacity
 		$opacity = ( $opacity / 100 );
@@ -131,12 +131,12 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Gets the brightness of the $hex color.
-     *
-     * @var     string      The hex value of a color
-     * @return  int         value between 0 and 255
-     */
+	/**
+	 * Gets the brightness of the $hex color.
+	 *
+	 * @var     string      The hex value of a color
+	 * @return  int         value between 0 and 255
+	 */
 	public static function get_brightness( $hex ) {
 
 		$hex = self::sanitize_hex( $hex, false );
@@ -145,13 +145,13 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Adjusts brightness of the $hex color.
-     *
-     * @var     string      The hex value of a color
-     * @param   int         a value between -255 (darken) and 255 (lighten)
-     * @return  string      returns hex color
-     */
+	/**
+	 * Adjusts brightness of the $hex color.
+	 *
+	 * @var     string      The hex value of a color
+	 * @param   int         a value between -255 (darken) and 255 (lighten)
+	 * @return  string      returns hex color
+	 */
 	public static function adjust_brightness( $hex, $steps ) {
 
 		$hex = self::sanitize_hex( $hex, false );
@@ -170,16 +170,16 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Mixes 2 hex colors.
-     * the "percentage" variable is the percent of the first color
-     * to be used it the mix. default is 50 (equal mix)
-     *
-     * @var     string      The hex value of color 1
-     * @var     string      The hex value of color 2
-     * @param   int         a value between 0 and 100
-     * @return  string      returns hex color
-     */
+	/**
+	 * Mixes 2 hex colors.
+	 * the "percentage" variable is the percent of the first color
+	 * to be used it the mix. default is 50 (equal mix)
+	 *
+	 * @var     string      The hex value of color 1
+	 * @var     string      The hex value of color 2
+	 * @param   int         a value between 0 and 100
+	 * @return  string      returns hex color
+	 */
 	public static function mix_colors( $hex1, $hex2, $percentage ) {
 
 		$hex1 = self::sanitize_hex( $hex1, false );
@@ -197,22 +197,22 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Convert hex color to hsv
-     *
-     * @var     string      The hex value of color 1
-     * @return  array       returns array( 'h', 's', 'v' )
-     */
+	/**
+	 * Convert hex color to hsv
+	 *
+	 * @var     string      The hex value of color 1
+	 * @return  array       returns array( 'h', 's', 'v' )
+	 */
 	public static function hex_to_hsv( $hex ) {
 		return self::rgb_to_hsv( self::get_rgb( self::sanitize_hex( $hex, false ) ) );
 	}
 
-    /**
-     * Convert hex color to hsv
-     *
-     * @var     array       The rgb color to conver array( 'r', 'g', 'b' )
-     * @return  array       returns array( 'h', 's', 'v' )
-     */
+	/**
+	 * Convert hex color to hsv
+	 *
+	 * @var     array       The rgb color to conver array( 'r', 'g', 'b' )
+	 * @return  array       returns array( 'h', 's', 'v' )
+	 */
 	public static function rgb_to_hsv( $color = array() ) {
 
 		$var_r = ( $color[0] / 255 );
@@ -256,27 +256,27 @@ class Kirki_Color {
 
 	}
 
-    /**
-     * Get the brightest color from an array of colors.
-     * Return the key of the array if $context = 'key'
-     * Return the hex value of the color if $context = 'value'
-     *
-     * @var     array       flat array of hex colors
-     * @param   string      'key' or 'value'
-     * @return  mixed       int|string
-     */
+	/**
+	 * Get the brightest color from an array of colors.
+	 * Return the key of the array if $context = 'key'
+	 * Return the hex value of the color if $context = 'value'
+	 *
+	 * @var     array       flat array of hex colors
+	 * @param   string      'key' or 'value'
+	 * @return  mixed       int|string
+	 */
 	public static function brightest_color( $colors = array(), $context = 'key' ) {
 
 		$brightest = false;
 
-        // Sanitize colors
-        $colors_sanitized = array();
-        foreach ( $colors as $key => $value ) {
-            $colors_sanitized[$key] = self::sanitize_hex( $value );
-        }
+		// Sanitize colors
+		$colors_sanitized = array();
+		foreach ( $colors as $key => $value ) {
+			$colors_sanitized[$key] = self::sanitize_hex( $value );
+		}
 
 		foreach ( $colors_sanitized as $key => $value ) {
-            $value      = self::sanitize_hex( $value, false );
+			$value      = self::sanitize_hex( $value, false );
 			$brightness = self::get_brightness( $value );
 
 			if ( ! $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {

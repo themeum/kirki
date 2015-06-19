@@ -13,7 +13,7 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'formstone-number', trailingslashit( kirki_url() ) . 'includes/controls/number/formstone-number.js', array( 'jquery', 'formstone' ) );
 		wp_enqueue_style( 'kirki-number', trailingslashit( kirki_url() ) . 'includes/controls/number/style.css' );
 
-    }
+	}
 
 	public function render_content() {
 

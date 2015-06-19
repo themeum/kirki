@@ -16,10 +16,10 @@ class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 	<?php }
 
 	public function render_content() {
-		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) ); 
+		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 
 		if ( empty( $this->choices ) ) {
-    	return;
+		return;
 		} ?>
 
 		<label>
@@ -40,7 +40,7 @@ class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 
 		<script>
 		jQuery(document).ready(function($) {
-	  	$('.select2').select2();
+		$('.select2').select2();
 	  });
 		</script>
 		<?php
