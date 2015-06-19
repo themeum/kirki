@@ -22,9 +22,19 @@ class Kirki_Styles_Customizer {
 		$color  = $this->get_admin_colors();
 		$config = apply_filters( 'kirki/config', array() );
 
-		$color_accent = isset( $config['color_accent'] ) ? Kirki_Color::sanitize_hex( $config['color_accent'] ) : $color['icon_colors']['focus'];
-		$color_back   = isset( $config['color_back'] ) ? Kirki_Color::sanitize_hex( $config['color_back'] ) : '#ffffff';
-		$color_font   = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
+		// Calculate the accent color
+		$color_accent = $color['icon_colors']['focus'];
+		if ( isset( $config['color_accent'] ) ) {
+			$color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
+		}
+
+		// Calculate the background & font colors
+		$color_back = false;
+		$color_font = false;
+		if ( isset( $config['color_back'] ) ) {
+			$color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
+			$color_font = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
+		}
 
 		$styles = '<style>';
 
@@ -34,37 +44,91 @@ class Kirki_Styles_Customizer {
 			$styles .= '.wp-full-overlay.expanded{margin-left:'.esc_attr( $config['width'] ).';}';
 		}
 
-		// Background styles
-		$styles .= '#customize-controls .wp-full-overlay-sidebar-content{background-color:'.$color_back.';}';
-		$styles .= '#customize-theme-controls .accordion-section-title, #customize-info .accordion-section-title,#customize-info .accordion-section-title:hover,#customize-info.open .accordion-section-title, #customize-controls .customize-info .accordion-section-title{background-color:'.$color_back.';color:'.$color_font.';}';
-		$styles .= '#customize-theme-controls .control-section .accordion-section-title:hover,#customize-theme-controls .control-section .accordion-section-title:focus,.control-section.control-panel>.accordion-section-title:after{background-color:'.Kirki_Color::adjust_brightness( $color_back, -10 ).';color:'.$color_font.';}';
-		$styles .= '#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after{background-color:'.Kirki_Color::adjust_brightness( $color_back, -20 ).';color:'.$color_font.';}';
-		$styles .= '#customize-theme-controls .control-section.open .accordion-section-title{background-color:'.$color_accent.' !important;color:'.$color_font.' !important;}';
-		$styles .= '#customize-theme-controls .accordion-section-content, #customize-controls .description, li.customize-control a.tooltip.hint--left, #customize-controls .customize-info .customize-help-toggle{color:'.$color_font.'}';
+		if ( false !== $color_back && false !== $color_font ) {
+
+			// Generic background color
+			$styles .= '.wp-full-overlay-sidebar{background:'.$color_back.';}';
+
+			// Title background color
+			$styles .= '#customize-controls .customize-info .accordion-section-title, #customize-controls .panel-meta.customize-info .accordion-section-title:hover{background:'.$color_back.';}';
+
+			// Borders
+			$border_color = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
+			$styles      .= '#customize-controls .customize-info{border-top-color:'.$border_color.';border-bottom-color:'.$border_color.';}';
+			$styles      .= '.customize-section-title{border-bottom-color:'.$border_color.';}';
+			$styles      .= '.customize-panel-back, .customize-section-back{border-right-color:'.$border_color.';}';
+			$styles      .= '#customize-header-actions{border-bottom-color:'.$border_color.';}';
+			$styles      .= '.customize-controls-close, .customize-overlay-close{border-right-color:'.$border_color.'!important;}';
+
+			// back & close buttons color
+			if ( 170 > Kirki_Color::get_brightness( $color_back ) ) {
+				$color = Kirki_Color::adjust_brightness( $color_back, 80 );
+			} else {
+				$color = Kirki_Color::adjust_brightness( $color_back, -80 );
+			}
+			$styles .= '.customize-panel-back:focus, .customize-panel-back:hover, .customize-section-back:focus, .customize-section-back:hover, .customize-panel-back, .customize-section-back, .customize-controls-close, .customize-overlay-close{background:'.$color.';}';
+			$styles .= '.control-panel-back:focus, .control-panel-back:hover, .customize-controls-close:focus, .customize-controls-close:hover, .customize-controls-preview-toggle:focus, .customize-controls-preview-toggle:hover, .customize-overlay-close:focus, .customize-overlay-close:hover{background:'.$color.'}';
+
+			// Sections list titles
+			$styles .= '#customize-theme-controls .accordion-section-title{background:'.$color_back.';color:'.$color_font.';}';
+			$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? 'color:#ffffff;' : '';
+			$styles .= '#customize-controls .control-section .accordion-section-title:focus, #customize-controls .control-section .accordion-section-title:hover, #customize-controls .control-section.open .accordion-section-title, #customize-controls .control-section:hover>.accordion-section-title{background:'.$color_accent.';'.$color.'}';
+
+			// Arrows
+			if ( 170 > Kirki_Color::get_brightness( $color_back ) ) {
+				$color = Kirki_Color::adjust_brightness( $color_back, 120 );
+			} else {
+				$color = Kirki_Color::adjust_brightness( $color_back, -120 );
+			}
+			$styles .= '.accordion-section-title:after, .handlediv, .item-edit, .sidebar-name-arrow, .widget-action{color:'.$color.'}';
+			if ( 170 > Kirki_Color::get_brightness( $color_accent ) ) {
+				$color = Kirki_Color::adjust_brightness( $color_accent, 120 );
+			} else {
+				$color = Kirki_Color::adjust_brightness( $color_accent, -120 );
+			}
+			$styles .= '#customize-theme-controls .control-section .accordion-section-title:focus:after, #customize-theme-controls .control-section .accordion-section-title:hover:after, #customize-theme-controls .control-section.open .accordion-section-title:after, #customize-theme-controls .control-section:hover>.accordion-section-title:after{color:'.$color.'}';
+
+			// Title for active section
+			$styles .= '.customize-section-title{background:'.$color_back.';}';
+			$styles .= '.customize-section-title h3, h3.customize-section-title{color:'.$color_font.';}';
+
+			// Active section background
+			$styles .= '#customize-theme-controls .accordion-section-content{background:'.Kirki_Color::mix_colors( $color_back, '#ffffff', 10 ).';}';
+
+			// Title color for active panels etc.
+			$styles .= '#customize-controls .customize-info .preview-notice{color:'.$color_font.';}';
+
+		}
+
+		// Button styles
+		$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#fff' : '#222';
+		$styles .= '.wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled]{background:'.$color_accent.' !important;color:'.$color.' !important;border-color:rgba(0,0,0,.1) !important;opacity:.7;}';
+		$styles .= '.wp-core-ui .button-primary{background-color:'.$color_accent.';color:'.$color.';opacity:1;}';
 
 		// Tooltip styles
-		// $styles .= 'li.customize-control a.button.tooltip.hint--left {color:' . $color_accent . ';}';
+		$styles .= '#customize-controls .customize-info .customize-help-toggle{color:'.$color_accent.';}';
 
 		// Image-Radio styles
-		$styles .= '.customize-control-radio-image .image.ui-buttonset label.ui-state-active {border-color:'.$color_accent.';}';
+		$styles .= '.customize-control-radio-image .image.ui-buttonset label.ui-state-active{border:2px solid '.$color_accent.';}';
 
 		// Buttonset-Radio styles
-		$styles .= '.customize-control-radio-buttonset label.ui-state-active{background-color:'.$color_accent.';color:'.$color_font.';}';
+		$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#fff;' : '#222';
+		$styles .= '.customize-control-radio-buttonset label.ui-state-active{background-color:'.$color_accent.';color:'.$color.';}';
 
 		// Slider Controls
-		$styles .= '.customize-control-slider .ui-slider .ui-slider-handle{background-color:'.$color_accent.';border-color:'.$color_accent.';}';
+		$styles .= '.customize-control-slider .ui-slider .ui-slider-handle{background-color:'.$color_accent.';}';
 
 		// Switch Controls
 		$styles .= '.customize-control-switch .Switch .On, .customize-control-toggle .Switch .On{color:'.$color_accent.';}';
 
 		// Toggle Controls
-		$styles .= '.customize-control-switch .Switch.Round.On, .customize-control-toggle .Switch.Round.On{background-color:'.Kirki_Color::adjust_brightness( $color_accent, -10 ).';}';
+		$styles .= '.customize-control-switch .Switch.Round.On, .customize-control-toggle .Switch.Round.On{background:'.$color_accent.';}';
 
 		// Sortable Controls
 		$styles .= '.customize-control-sortable ul.ui-sortable li .dashicons.visibility{color:'.$color_accent.';}';
 
 		// Palette Controls
-		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {border-color:'.$color_accent.';}';
+		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text{border-color:'.$color_accent.';}';
 
 		$styles .= '</style>';
 

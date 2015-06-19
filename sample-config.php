@@ -644,7 +644,7 @@ add_filter( 'kirki/controls', 'kirki_demo_controls' );
 function kirki_demo_configuration_sample() {
 
 	$args = array(
-		'logo_image'   => 'http://kirki.org/images/logo.png',
+		'logo_image'   => 'http://kirki.org/img/kirki-new-logo-white.png',
 		'description'  => __( 'This is the theme description. You can edit it in the Kirki configuration and add whatever you want here.', 'kirki' ),
 		'color_accent' => '#00bcd4',
 		'color_back'   => '#455a64',
@@ -654,4 +654,4 @@ function kirki_demo_configuration_sample() {
 
 }
 
-// add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
+add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );

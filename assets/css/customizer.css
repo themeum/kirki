@@ -6,7 +6,8 @@
   border-color: transparent !important;
   border-color: transparent !important; }
 .select2-container {
-  min-width: 100px; }
+  min-width: 100px;
+  width: 100% !important;}
 .select2-container--open .select2-dropdown--below,
 .select2-container--open .select2-dropdown--above {
   z-index: 9999999;
