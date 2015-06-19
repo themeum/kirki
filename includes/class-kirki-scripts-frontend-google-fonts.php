@@ -9,7 +9,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
 	}
 
-	function google_link() {
+	public function google_link() {
 
 		$fields = Kirki::$fields;
 
@@ -17,9 +17,6 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		if ( empty( $fields ) ) {
 			return;
 		}
-
-		// Get an array of all the google fonts
-		$google_fonts = Kirki_Toolkit::fonts()->get_google_fonts();
 
 		$fonts = array();
 		foreach ( $fields as $field ) {
@@ -95,7 +92,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 	/**
 	 * Enqueue Google fonts if necessary
 	 */
-	function google_font() {
+	public function google_font() {
 		if ( $this->google_link() ) {
 			$google_link = str_replace( '%3A', ':', $this->google_link() );
 			wp_enqueue_style( 'kirki_google_fonts', $google_link, array(), null );

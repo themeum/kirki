@@ -8,7 +8,7 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 	/**
 	 * Add the help bubble
 	 */
-	function customize_controls_print_footer_scripts() {
+	public function customize_controls_print_footer_scripts() {
 
 		$fields = Kirki::$fields;
 

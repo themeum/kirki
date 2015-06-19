@@ -41,7 +41,7 @@ class Kirki_Styles_Frontend {
 		if ( 'color' == $field['type'] ) {
 
 			$color = Kirki_Color::sanitize_hex( $value );
-			$styles[$element][$property] = $color.$units;
+			$styles[ $element ][ $property ] = $color.$units;
 
 		}
 
@@ -50,23 +50,23 @@ class Kirki_Styles_Frontend {
 
 			if ( 'font-family' == $property ) {
 
-				$styles[$field['output']['element']]['font-family'] = $value.$units;
+				$styles[ $field['output']['element'] ]['font-family'] = $value.$units;
 
 			} else if ( 'font-size' == $property ) {
 
 				// Get the unit we're going to use for the font-size.
 				$units = empty( $units ) ? 'px' : $units;
-				$styles[$element]['font-size'] = $value.$units;
+				$styles[ $element ]['font-size'] = $value.$units;
 
 			} else if ( 'font-weight' == $property ) {
 
-				$styles[$element]['font-weight'] = $value.$units;
+				$styles[ $element ]['font-weight'] = $value.$units;
 
 			}
 
 		} else {
 
-			$styles[$element][$property] = $value.$units;
+			$styles[ $element ][ $property ] = $value.$units;
 
 		}
 

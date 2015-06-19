@@ -25,7 +25,7 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 			<?php
 				$settings = array(
 					'textarea_name'    => $this->id,
-					'teeny'            => true
+					'teeny'            => true,
 				);
 				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
 

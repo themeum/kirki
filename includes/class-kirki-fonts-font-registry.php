@@ -261,7 +261,7 @@ class Kirki_Fonts_Font_Registry {
 
 			$google_fonts = array();
 			foreach ( $fonts['items'] as $font ) {
-				$google_fonts[$font['family']] = array(
+				$google_fonts[ $font['family'] ] = array(
 					'label'    => $font['family'],
 					'variants' => $font['variants'],
 					'subsets'  => $font['subsets'],

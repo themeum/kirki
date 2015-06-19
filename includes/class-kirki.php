@@ -19,9 +19,9 @@ class Kirki {
 
 	/**
 	 * Helper function that adds the fields, sections and panels to the customizer.
-	 * @var	object	The WordPress Customizer object
+	 * @return void
 	 */
-	public function add_to_customizer( $wp_customize ) {
+	public function add_to_customizer() {
 		$this->fields_from_filters();
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
@@ -66,14 +66,17 @@ class Kirki {
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
 		// Are we using options or theme_mods?
-		$mode = self::$config[$config_id]['option_type'];
+		$mode = self::$config[ $config_id ]['option_type'];
 		// Is there an option name set?
-		$option_name = ( 'option' == $mode && isset( self::$config[$config_id]['option'] ) ) ? self::$config[$config_id]['option'] : false;
+		$option_name = false;
+		if ( 'option' == $mode && isset( self::$config[ $config_id ]['option'] ) ) {
+			$option_name = self::$config[ $config_id ]['option'];
+		}
 
 		if ( 'theme_mod' == $mode ) {
 
 			// We're using theme_mods
-			$value = get_theme_mod( $field_id, Kirki_Field::sanitize_default( self::$fields[$field_id]['default'] ) );
+			$value = get_theme_mod( $field_id, Kirki_Field::sanitize_default( self::$fields[ $field_id ]['default'] ) );
 
 		} elseif ( 'option' == $mode ) {
 
@@ -82,13 +85,13 @@ class Kirki {
 
 				// Options are serialized as a single option in the db
 				$options = get_option( $option_name );
-				$value   = ( isset( $options[$field_id] ) ) ? $options[$field_id] : self::$fields[$field_id]['default'];
+				$value   = ( isset( $options[ $field_id ] ) ) ? $options[ $field_id ] : self::$fields[ $field_id ]['default'];
 				$value   = maybe_unserialize( $value );
 
 			} else {
 
 				// Each option separately saved in the db
-				$value = get_option( $field_id, self::$fields[$field_id]['default'] );
+				$value = get_option( $field_id, self::$fields[ $field_id ]['default'] );
 
 			}
 
@@ -96,7 +99,7 @@ class Kirki {
 
 		if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
 
-			switch ( self::$fields[$field_id]['type'] ) {
+			switch ( self::$fields[ $field_id ]['type'] ) {
 
 				case 'image' :
 					$value = Kirki_Helpers::get_image_from_url( $value );
@@ -130,7 +133,7 @@ class Kirki {
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
 		// Set the config
-		self::$config[$config_id] = $args;
+		self::$config[ $config_id ] = $args;
 
 	}
 
@@ -214,7 +217,7 @@ class Kirki {
 
 				if ( array_key_exists( $field['type'], $control_types ) ) {
 
-					$class_name = $control_types[$field['type']];
+					$class_name = $control_types[ $field['type'] ];
 					$wp_customize->add_control( new $class_name(
 						$wp_customize,
 						Kirki_Field::sanitize_id( $field ),
@@ -278,7 +281,7 @@ class Kirki {
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 
-		self::$sections[$args['id']] = $args;
+		self::$sections[ $args['id'] ] = $args;
 
 	}
 
@@ -298,7 +301,7 @@ class Kirki {
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
 		// Get the configuration options
-		$config = self::$config[$config_id];
+		$config = self::$config[ $config_id ];
 
 		/**
 		 * If we've set an option in the configuration
@@ -355,7 +358,7 @@ class Kirki {
 	 *
 	 * @return array 	('variable-name' => value)
 	 */
-	function get_variables() {
+	public function get_variables() {
 
 		$variables = array();
 
@@ -370,9 +373,9 @@ class Kirki {
 						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
 
 						if ( $variable_callback ) {
-							$variables[$variable_name] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field::sanitize_settings( $field ) ) );
+							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], self::get_option( Kirki_Field::sanitize_settings( $field ) ) );
 						} else {
-							$variables[$variable_name] = self::get_option( $field['settings'] );
+							$variables[ $variable_name ] = self::get_option( $field['settings'] );
 						}
 
 					}

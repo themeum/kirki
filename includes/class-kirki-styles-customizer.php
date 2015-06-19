@@ -2,7 +2,7 @@
 
 class Kirki_Styles_Customizer {
 
-	function __construct() {
+	public function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
 	}
@@ -10,14 +10,14 @@ class Kirki_Styles_Customizer {
 	/**
 	 * Enqueue the stylesheets required.
 	 */
-	function customizer_styles() {
+	public function customizer_styles() {
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, '0.5' );
 	}
 
 	/**
 	 * Add custom CSS rules to the head, applying our custom styles
 	 */
-	function custom_css() {
+	public function custom_css() {
 
 		$color  = $this->get_admin_colors();
 		$config = apply_filters( 'kirki/config', array() );
@@ -139,7 +139,7 @@ class Kirki_Styles_Customizer {
 	/**
 	 * Get the admin color theme
 	 */
-	function get_admin_colors() {
+	public function get_admin_colors() {
 
 		// Get the active admin theme
 		global $_wp_admin_css_colors;
@@ -147,11 +147,11 @@ class Kirki_Styles_Customizer {
 		// Get the user's admin colors
 		$color = get_user_option( 'admin_color' );
 		// If no theme is active set it to 'fresh'
-		if ( empty( $color ) || ! isset( $_wp_admin_css_colors[$color] ) ) {
+		if ( empty( $color ) || ! isset( $_wp_admin_css_colors[ $color ] ) ) {
 			$color = 'fresh';
 		}
 
-		$color = (array) $_wp_admin_css_colors[$color];
+		$color = (array) $_wp_admin_css_colors[ $color ];
 
 		return $color;
 
