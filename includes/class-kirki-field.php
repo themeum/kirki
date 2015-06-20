@@ -451,7 +451,8 @@ class Kirki_Field {
 	 * Takes a single field with type = background and explodes it to multiple controls.
 	 */
 	public static function build_background_fields( $fields ) {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n    = Kirki_Toolkit::i18n();
+		$choices = self::background_choices();
 
 		foreach ( $fields as $field ) {
 
@@ -523,13 +524,7 @@ class Kirki_Field {
 						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_repeat',
 						'priority'    => $field['priority'] + 2,
-						'choices'     => array(
-							'no-repeat' => $i18n['no-repeat'],
-							'repeat'    => $i18n['repeat-all'],
-							'repeat-x'  => $i18n['repeat-x'],
-							'repeat-y'  => $i18n['repeat-y'],
-							'inherit'   => $i18n['inherit'],
-						),
+						'choices'     => $choices['repeat'],
 						'help'        => '',
 						'description' => $i18n['background-repeat'],
 						'required'    => $field['required'],
@@ -552,11 +547,7 @@ class Kirki_Field {
 						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_size',
 						'priority'    => $field['priority'] + 3,
-						'choices'     => array(
-							'inherit' => $i18n['inherit'],
-							'cover'   => $i18n['cover'],
-							'contain' => $i18n['contain'],
-						),
+						'choices'     => $choices['size'],
 						'help'        => '',
 						'description' => $i18n['background-size'],
 						'required'    => $field['required'],
@@ -579,11 +570,7 @@ class Kirki_Field {
 						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_attach',
 						'priority'    => $field['priority'] + 4,
-						'choices'     => array(
-							'inherit' => $i18n['inherit'],
-							'fixed'   => $i18n['fixed'],
-							'scroll'  => $i18n['scroll'],
-						),
+						'choices'     => $choices['attach'],
 						'help'        => '',
 						'description' => $i18n['background-attachment'],
 						'required'    => $field['required'],
@@ -606,17 +593,7 @@ class Kirki_Field {
 						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_position',
 						'priority'    => $field['priority'] + 5,
-						'choices'     => array(
-							'left-top'      => $i18n['left-top'],
-							'left-center'   => $i18n['left-center'],
-							'left-bottom'   => $i18n['left-bottom'],
-							'right-top'     => $i18n['right-top'],
-							'right-center'  => $i18n['right-center'],
-							'right-bottom'  => $i18n['right-bottom'],
-							'center-top'    => $i18n['center-top'],
-							'center-center' => $i18n['center-center'],
-							'center-bottom' => $i18n['center-bottom'],
-						),
+						'choices'     => $choices['position'],
 						'help'        => '',
 						'description' => $i18n['background-position'],
 						'required'    => $field['required'],
@@ -641,10 +618,52 @@ class Kirki_Field {
 	}
 
 	/**
+	 * The background choices.
+	 * @return array
+	 */
+	public static function background_choices() {
+
+		$i18n = Kirki_Toolkit::i18n();
+
+		$choices = array(
+			'repeat'        => array(
+				'no-repeat' => $i18n['no-repeat'],
+				'repeat'    => $i18n['repeat-all'],
+				'repeat-x'  => $i18n['repeat-x'],
+				'repeat-y'  => $i18n['repeat-y'],
+				'inherit'   => $i18n['inherit'],
+			),
+			'size'        => array(
+				'inherit' => $i18n['inherit'],
+				'cover'   => $i18n['cover'],
+				'contain' => $i18n['contain'],
+			),
+			'attach'      => array(
+				'inherit' => $i18n['inherit'],
+				'fixed'   => $i18n['fixed'],
+				'scroll'  => $i18n['scroll'],
+			),
+			'position'          => array(
+				'left-top'      => $i18n['left-top'],
+				'left-center'   => $i18n['left-center'],
+				'left-bottom'   => $i18n['left-bottom'],
+				'right-top'     => $i18n['right-top'],
+				'right-center'  => $i18n['right-center'],
+				'right-bottom'  => $i18n['right-bottom'],
+				'center-top'    => $i18n['center-top'],
+				'center-center' => $i18n['center-center'],
+				'center-bottom' => $i18n['center-bottom'],
+			),
+		);
+
+		return $choices;
+	}
+
+	/**
 	 * Sanitizes the control transport.
 	 *
 	 * @param string the control type
-	 * @return string[]|string the function name of a sanitization callback
+	 * @return array|string the function name of a sanitization callback
 	 */
 	public static function fallback_callback( $field_type ) {
 
