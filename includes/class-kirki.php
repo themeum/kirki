@@ -102,7 +102,7 @@ class Kirki {
 			switch ( self::$fields[ $field_id ]['type'] ) {
 
 				case 'image' :
-					$value = Kirki_Helpers::get_image_from_url( $value );
+					$value = Kirki_Helper::get_image_from_url( $value );
 					break;
 
 			}
