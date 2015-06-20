@@ -70,7 +70,7 @@ class Kirki_Sanitize {
 	 * @param WP_Customize_Setting $setting Setting instance.
 	 * @return int|string Page ID if the page is published; otherwise, the setting default.
 	 */
-	function dropdown_pages( $page_id, $setting ) {
+	public static function dropdown_pages( $page_id, $setting ) {
 		// Ensure $input is an absolute integer.
 		$page_id = absint( $page_id );
 
