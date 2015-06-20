@@ -3,12 +3,16 @@
 class Kirki_Sanitize {
 
 	/**
-	 * Sanitize checkbox options
+	 * Checkbox sanitization callback.
 	 *
-	 * @since 0.5
+	 * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
+	 * as a boolean value, either TRUE or FALSE.
+	 *
+	 * @param bool|string $checked Whether the checkbox is checked.
+	 * @return bool Whether the checkbox is checked.
 	 */
-	public static function checkbox( $value ) {
-		return ( 'on' != $value ) ? false : $value;
+	public static function checkbox( $checked ) {
+		return ( ( isset( $checked ) && ( true == $checked || 'on' == $checked ) ) ? true : false );
 	}
 
 	/**
@@ -21,26 +25,30 @@ class Kirki_Sanitize {
 	}
 
 	/**
-	 * Sanitize a value from a list of allowed values.
+	 * Select sanitization callback example.
 	 *
-	 * @since 0.5
+	 * - Control: select, radio
 	 *
-	 * @param  mixed    $input      The value to sanitize.
-	 * @param  mixed    $setting    The setting for which the sanitizing is occurring.
+	 * Sanitization callback for 'select' and 'radio' type controls. This callback sanitizes `$input`
+	 * as a slug, and then validates `$input` against the choices defined for the control.
+	 *
+	 * @see sanitize_key()               https://developer.wordpress.org/reference/functions/sanitize_key/
+	 * @see $wp_customize->get_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/get_control/
+	 *
+	 * @param string               $input   Slug to sanitize.
+	 * @param WP_Customize_Setting $setting Setting instance.
+	 * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
 	 */
 	public static function choice( $input, $setting ) {
 
-		global $wp_customize;
-		$config = apply_filters( 'kirki/config', array() );
+		// Ensure input is a slug.
+		$input = sanitize_key( $input );
 
-		if ( isset( $config['option_name'] ) && '' != $config['option_name'] ) {
-			return sanitize_key( $input );
-		}
+		// Get list of choices from the control associated with the setting.
+		$choices = $setting->manager->get_control( $setting->id )->choices;
 
-		$field = $wp_customize->get_control( $setting->id );
-
-		return ( array_key_exists( $input, $field->choices ) ) ? $input : $setting->default;
-
+		// If the input is a valid key, return it; otherwise, return the default.
+		return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 	}
 
 	/**
