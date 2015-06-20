@@ -229,6 +229,19 @@ function kirki_controls_with_choices_fields( $fields ) {
 		),
 	);
 
+	// Define custom palettes
+	$fields[] = array(
+		'type'        => 'palette',
+		'settings'    => 'palette_demo_colourlovers',
+		'label'       => __( 'Palettes from Colourlovers', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'section'     => 'controls_with_choices',
+		'default'     => 'red',
+		'priority'    => 10,
+		'choices'     => Kirki_Colourlovers::get_palettes( 5 ),
+	);
+
 	$fields[] = array(
 		'type'        => 'select2',
 		'settings'    => 'select_demo_2',
