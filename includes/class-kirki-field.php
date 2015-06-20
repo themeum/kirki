@@ -667,69 +667,28 @@ class Kirki_Field {
 	 */
 	public static function fallback_callback( $field_type ) {
 
-		switch ( $field_type ) {
-			case 'checkbox' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
-				break;
-			case 'color' :
-				$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
-				break;
-			case 'color-alpha' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
-				break;
-			case 'image' :
-				$sanitize_callback = 'esc_url_raw';
-				break;
-			case 'radio' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'radio-image' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'radio-buttonset' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'toggle' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
-				break;
-			case 'switch' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
-				break;
-			case 'select' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'dropdown-pages' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			case 'slider' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
-				break;
-			case 'text' :
-				$sanitize_callback = 'esc_textarea';
-				break;
-			case 'textarea' :
-				$sanitize_callback = 'esc_textarea';
-				break;
-			case 'editor' :
-				$sanitize_callback = 'esc_textarea';
-				break;
-			case 'upload' :
-				$sanitize_callback = 'esc_url_raw';
-				break;
-			case 'number' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
-				break;
-			case 'multicheck' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
-				break;
-			case 'sortable' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
-				break;
-			case 'palette' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-				break;
-			default :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
+		if ( in_array( $field_type, array( 'checkbox', 'toggle', 'switch' ) ) ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
+		} elseif ( 'color' == $field_type ) {
+			$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
+		} elseif ( 'color-alpha' == $field_type ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
+		} elseif ( in_array( $field_type, array( 'image', 'upload' ) ) ) {
+			$sanitize_callback = 'esc_url_raw';
+		} elseif ( in_array( $field_type, array( 'radio', 'radio-image', 'radio-buttonset', 'select', 'palette' ) ) ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
+		} elseif ( 'dropdown-pages' == $field_type ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
+		} elseif ( in_array( $field_type, array( 'slider', 'number' ) ) ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
+		} elseif ( in_array( $field_type, array( 'text', 'textarea', 'editor' ) ) ) {
+			$sanitize_callback = 'esc_textarea';
+		} elseif ( 'multicheck' == $field_type ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
+		} elseif ( 'sortable' == $field_type ) {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
+		} else {
+			$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
 		}
 
 		return $sanitize_callback;
