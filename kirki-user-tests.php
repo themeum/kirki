@@ -93,7 +93,7 @@ class Kirki_Test_Field {
 $checkbox = new Kirki_Test_Field( array( 'type' => 'checkbox', 'default' => 1 ) );
 
 // color-alpha
-$color_alpha = new Kirki_Test_Field( array( 'type' => 'color-alpha', 'default' => 'rgba(255,0,0,.75)', 'output' => array( 'element' => 'body a', 'property' => 'color') ) );
+$color_alpha = new Kirki_Test_Field( array( 'type' => 'color-alpha', 'default' => 'rgba(255,0,0,.75)', 'output' => array( 'element' => 'body a', 'property' => 'color' ) ) );
 
 // color
 $color = new Kirki_Test_Field( array( 'type' => 'color', 'default' => '#0000ff', 'output' => array( 'element' => 'a:hover', 'property' => 'color' ) ) );
@@ -111,7 +111,7 @@ $editor = new Kirki_Test_Field( array( 'type' => 'editor', 'default' => 'This is
 $image = new Kirki_Test_Field( array( 'type' => 'image', 'default' => '' ) );
 
 // multicheck
-$multicheck = new Kirki_Test_Field( array( 'type' => 'multicheck', 'default' => array( 'option1' ), 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
+$multicheck = new Kirki_Test_Field( array( 'type' => 'multicheck', 'default' => array( 'option1' ), 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // number
 $number = new Kirki_Test_Field( array( 'type' => 'number', 'default' => '99' ) );
@@ -120,16 +120,16 @@ $number = new Kirki_Test_Field( array( 'type' => 'number', 'default' => '99' ) )
 $palette = new Kirki_Test_Field( array( 'type' => 'palette', 'default' => 'red', 'choices' => array( 'red' => array( '#F9BAAF', '#FB9D8C', '#FD8069' ), 'green' => array( '#C9F7C4', '#B3F9AC', '#9DFA94' ), 'blue' => array( '#D9E3F6', '#CCDAF7', '#BED1F8' ) ) ) );
 
 // radio-buttonset
-$radio_buttonset = new Kirki_Test_Field( array( 'type' => 'radio-buttonset', 'default' => 'option2', 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option-3' => __( 'Option 3', 'kirki' ) ) ) );
+$radio_buttonset = new Kirki_Test_Field( array( 'type' => 'radio-buttonset', 'default' => 'option2', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option-3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // radio-image
-$radio_image = new Kirki_Test_Field( array( 'type' => 'radio-image', 'default' => 'option3', 'choices' => array('option1' => admin_url() . '/images/align-left-2x.png', 'option2' => admin_url() . '/images/align-center-2x.png', 'option3' => admin_url() . '/images/align-right-2x.png' ) ) );
+$radio_image = new Kirki_Test_Field( array( 'type' => 'radio-image', 'default' => 'option3', 'choices' => array( 'option1' => admin_url().'/images/align-left-2x.png', 'option2' => admin_url().'/images/align-center-2x.png', 'option3' => admin_url().'/images/align-right-2x.png' ) ) );
 
 // radio
 $radio = new Kirki_Test_Field( array( 'type' => 'radio', 'default' => 'option1', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // select
-$select = new Kirki_Test_Field( array( 'type' => 'select', 'default' => 'option2', 'choices' => array('option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
+$select = new Kirki_Test_Field( array( 'type' => 'select', 'default' => 'option2', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
 
 // slider
 $slider = new Kirki_Test_Field( array( 'type' => 'slider', 'default' => 0, 'choices' => array( 'min' => -100, 'max' => 100, 'step' => 1 ) ) );

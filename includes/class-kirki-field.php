@@ -584,7 +584,7 @@ class Kirki_Field {
 					$expanded_field['priority']  = $field['priority'];
 					$expanded_field['required']  = $field['required'];
 					$expanded_field['transport'] = $field['transport'];
-					$fields[]     = $expanded_field;
+					$fields[] = $expanded_field;
 				}
 
 			}

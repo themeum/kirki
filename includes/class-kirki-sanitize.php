@@ -66,7 +66,7 @@ class Kirki_Sanitize {
 	 * @see absint() https://developer.wordpress.org/reference/functions/absint/
 	 * @see get_post_status() https://developer.wordpress.org/reference/functions/get_post_status/
 	 *
-	 * @param int                  $page    Page ID.
+	 * @param int                  $page_id    Page ID.
 	 * @param WP_Customize_Setting $setting Setting instance.
 	 * @return int|string Page ID if the page is published; otherwise, the setting default.
 	 */
