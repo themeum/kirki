@@ -44,11 +44,14 @@ class Kirki_Sanitize {
 		// Ensure input is a slug.
 		$input = sanitize_key( $input );
 
-		// Get list of choices from the control associated with the setting.
-		$choices = $setting->manager->get_control( $setting->id )->choices;
+		if ( ! is_object( $setting->manager->get_control( $setting->id ) ) || null == $setting->manager->get_control( $setting->id ) ) {
+			return $input;
+		} else {
+			// Get list of choices from the control associated with the setting.
+			$choices = $setting->manager->get_control( $setting->id )->choices;
 
-		// If the input is a valid key, return it; otherwise, return the default.
-		return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+			return ( ! is_array( $choices ) || ! is_object( $setting ) || array_key_exists( $input, $choices ) ? $input : $setting->default );
+		}
 	}
 
 	/**
