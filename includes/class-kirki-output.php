@@ -39,7 +39,7 @@ class Kirki_Output {
 		} else {
 			self::$output[0] = $output;
 		}
-		self::$value = self::get_value( $setting, $callback );
+		self::$value = self::get_value();
 
 		return self::styles_parse();
 
@@ -47,10 +47,17 @@ class Kirki_Output {
 
 	public static function get_value() {
 
+		$default = '';
+		if ( isset( Kirki::$fields[ self::$settings ] ) && isset( Kirki::$fields[ self::$settings ]['default'] ) ) {
+			if ( ! is_array( Kirki::$fields[ self::$settings ]['default'] ) ) {
+				$default = Kirki::$fields[ self::$settings ]['default'];
+			}
+		}
+
 		if ( 'theme_mod' == self::$type ) {
-			$value = get_theme_mod( self::$settings );
+			$value = get_theme_mod( self::$settings, $default );
 		} else {
-			$value = get_option( self::$settings );
+			$value = get_option( self::$settings, $default );
 		}
 
 		if ( '' != self::$callback ) {
