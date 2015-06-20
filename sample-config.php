@@ -18,6 +18,12 @@ function kirki_demo_sections( $wp_customize ) {
 	/**
 	 * Add sections
 	 */
+	$wp_customize->add_section( 'controls_with_choices', array(
+		'title'       => __( 'Controls with Choices', 'kirki' ),
+		'priority'    => 10,
+		'description' => __( 'This is the section description', 'kirki' ),
+	) );
+
 	$wp_customize->add_section( 'color_section', array(
 		'title'       => __( 'Color Controls', 'kirki' ),
 		'priority'    => 10,
