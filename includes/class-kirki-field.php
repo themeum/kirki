@@ -458,6 +458,8 @@ class Kirki_Field {
 
 			if ( 'background' == $field['type'] ) {
 
+				$expanded_fields = array();
+
 				// Set any unset values to avoid PHP warnings below.
 				$field['settings']    = ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) ? $field['setting'] : $field['settings'];
 				$field['section']     = ( isset( $field['section'] ) ) ? $field['section'] : 'background';
@@ -474,16 +476,12 @@ class Kirki_Field {
 					if ( isset( $field['default']['opacity'] ) ) {
 						$color_mode = 'color-alpha';
 					}
-					$fields[] = array(
+					$expanded_fields[] = array(
 						'type'        => $color_mode,
 						'label'       => isset( $field['label'] ) ? $field['label'] : '',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_color',
-						'priority'    => $field['priority'],
 						'help'        => $field['help'],
 						'description' => $field['description'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['color'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -496,16 +494,10 @@ class Kirki_Field {
 				}
 
 				if ( isset( $field['default']['image'] ) ) {
-					$fields[] = array(
+					$expanded_fields[] = array(
 						'type'        => 'image',
-						'label'       => '',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_image',
-						'priority'    => $field['priority'] + 1,
-						'help'        => '',
 						'description' => $i18n['background-image'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['image'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -518,17 +510,11 @@ class Kirki_Field {
 				}
 
 				if ( isset( $field['default']['repeat'] ) ) {
-					$fields[] = array(
+					$expanded_fields[] = array(
 						'type'        => 'select',
-						'label'       => '',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_repeat',
-						'priority'    => $field['priority'] + 2,
 						'choices'     => $choices['repeat'],
-						'help'        => '',
 						'description' => $i18n['background-repeat'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['repeat'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -541,17 +527,11 @@ class Kirki_Field {
 				}
 
 				if ( isset( $field['default']['size'] ) ) {
-					$fields[] = array(
+					$expanded_fields[] = array(
 						'type'        => 'radio-buttonset',
-						'label'       => '',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_size',
-						'priority'    => $field['priority'] + 3,
 						'choices'     => $choices['size'],
-						'help'        => '',
 						'description' => $i18n['background-size'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['size'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -564,17 +544,11 @@ class Kirki_Field {
 				}
 
 				if ( isset( $field['default']['attach'] ) ) {
-					$fields[] = array(
-						'label'       => '',
+					$expanded_fields[] = array(
 						'type'        => 'radio-buttonset',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_attach',
-						'priority'    => $field['priority'] + 4,
 						'choices'     => $choices['attach'],
-						'help'        => '',
 						'description' => $i18n['background-attachment'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['attach'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -587,17 +561,11 @@ class Kirki_Field {
 				}
 
 				if ( isset( $field['default']['position'] ) ) {
-					$fields[] = array(
+					$expanded_fields[] = array(
 						'type'        => 'select',
-						'label'       => '',
-						'section'     => $field['section'],
 						'settings'    => $field['settings'].'_position',
-						'priority'    => $field['priority'] + 5,
 						'choices'     => $choices['position'],
-						'help'        => '',
 						'description' => $i18n['background-position'],
-						'required'    => $field['required'],
-						'transport'   => $field['transport'],
 						'default'     => $field['default']['position'],
 						'output'      => ( '' != $field['output'] ) ? array(
 							array(
@@ -607,6 +575,16 @@ class Kirki_Field {
 							),
 						) : '',
 					);
+				}
+
+				foreach ( $expanded_fields as $expanded_field ) {
+					$expanded_field['label']     = ( ! isset( $expanded_field['label'] ) ) ? '' : $expanded_field['label'];
+					$expanded_field['help']      = ( ! isset( $expanded_field['help'] ) ) ? '' : $expanded_field['help'];
+					$expanded_field['section']   = $field['section'];
+					$expanded_field['priority']  = $field['priority'];
+					$expanded_field['required']  = $field['required'];
+					$expanded_field['transport'] = $field['transport'];
+					$fields[]     = $expanded_field;
 				}
 
 			}

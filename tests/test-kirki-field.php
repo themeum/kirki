@@ -357,7 +357,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'label' => '',
 				'section' => 'my_section',
 				'settings' => 'my_setting_repeat',
-				'priority' => 22,
+				'priority' => 20,
 				'choices' => array(
 					'no-repeat' => 'No Repeat',
 					'repeat' => 'Repeat All',
@@ -377,7 +377,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'label' => '',
 				'section' => 'my_section',
 				'settings' => 'my_setting_size',
-				'priority' => 23,
+				'priority' => 20,
 				'choices' => array(
 					'inherit' => 'Inherit',
 					'cover' => 'Cover',
@@ -395,7 +395,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'label' => '',
 				'section' => 'my_section',
 				'settings' => 'my_setting_attach',
-				'priority' => 24,
+				'priority' => 20,
 				'choices' => array(
 					'inherit' => 'Inherit',
 					'fixed' => 'Fixed',
@@ -413,7 +413,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'label' => '',
 				'section' => 'my_section',
 				'settings' => 'my_setting_position',
-				'priority' => 25,
+				'priority' => 20,
 				'choices' => array(
 					'left-top' => 'Left Top',
 					'left-center' => 'Left Center',
