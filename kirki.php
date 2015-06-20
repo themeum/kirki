@@ -5,7 +5,7 @@ Plugin URI:    http://kirki.org
 Description:   The ultimate WordPress Customizer Toolkit
 Author:        Aristeides Stathopoulos
 Author URI:    http://aristeides.com
-Version:       1.0.0-alpha
+Version:       1.0.0-beta1
 Text Domain:   kirki
 */
 
