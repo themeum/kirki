@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Output' ) ) {
+	return;
+}
+
 class Kirki_Output {
 
 	public static $settings = null;

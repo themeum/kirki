@@ -2,6 +2,9 @@
 /**
  * slider Customizer Control.
  *
+ * Creates a jQuery slider control.
+ * TODO: Migrate to an HTML5 range control. Range control are hard to style 'cause they don't display the value
+ *
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
@@ -14,10 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Create a jQuery slider control.
- * TODO: Migrate to an HTML5 range control. Range control are hard to style 'cause they don't display the value
- */
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Slider_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 	public $type = 'slider';

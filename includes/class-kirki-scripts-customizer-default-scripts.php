@@ -17,6 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Scripts_Customizer_Default_Scripts' ) ) {
+	return;
+}
+
 class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Script {
 
 	/**

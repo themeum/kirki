@@ -18,6 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Styles_Customizer' ) ) {
+	return;
+}
+
 class Kirki_Styles_Customizer {
 
 	public function __construct() {

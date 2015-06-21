@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Scripts_Enqueue_Script' ) ) {
+	return;
+}
+
 abstract class Kirki_Scripts_Enqueue_Script extends Kirki_Scripts_Registry {
 
 	public function __construct() {

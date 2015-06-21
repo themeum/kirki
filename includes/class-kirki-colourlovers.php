@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Colourlovers' ) ) {
+	return;
+}
+
 class Kirki_Colourlovers {
 
 	public static function get_palettes( $palettes_nr = 5, $order_by = 'none', $xml = '' ) {

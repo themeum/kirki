@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Editor_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 
 	public $type = 'editor';

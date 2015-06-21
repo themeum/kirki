@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Fonts_Font_Registry' ) ) {
+	return;
+}
+
 class Kirki_Fonts_Font_Registry {
 
 	/** @var array */

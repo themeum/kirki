@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Scripts_Frontend_Google_Fonts' ) ) {
+	return;
+}
+
 class Kirki_Scripts_Frontend_Google_Fonts {
 
 	public function __construct() {

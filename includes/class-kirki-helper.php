@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Helper' ) ) {
+	return;
+}
+
 class Kirki_Helper {
 
 	/**

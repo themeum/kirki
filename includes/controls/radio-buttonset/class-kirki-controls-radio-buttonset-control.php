@@ -14,6 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Radio_Buttonset_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 	public $type = 'radio-buttonset';

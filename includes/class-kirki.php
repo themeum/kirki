@@ -17,9 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * The API class.
- */
+// Early exit if the class already exists
+if ( class_exists( 'Kirki' ) ) {
+	return;
+}
+
 class Kirki {
 
 	public static $config   = array();
