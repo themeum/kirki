@@ -2,7 +2,7 @@
 
 class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 
-	function add_font_family_field() {
+	public function add_font_family_field() {
 		Kirki::add_field( '', array(
 		    'type'     => 'select',
 		    'setting'  => 'font_family',
@@ -18,7 +18,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		) );
 	}
 
-	function add_font_subsets_field() {
+	public function add_font_subsets_field() {
 		Kirki::add_field( '', array(
 		    'type'     => 'multicheck',
 		    'setting'  => 'subsets',
@@ -35,7 +35,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		) );
 	}
 
-	function add_font_weight_field() {
+	public function add_font_weight_field() {
 		Kirki::add_field( '', array(
 		    'type'     => 'slider',
 		    'setting'  => 'font_weight',
@@ -55,7 +55,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		) );
 	}
 
-	function test_google_link_font_family_roboto() {
+	public function test_google_link_font_family_roboto() {
 		$this->add_font_family_field();
 		set_theme_mod( 'font_family', 'Roboto' );
 		$googlefonts  = new Kirki_Scripts_Frontend_Google_Fonts();
@@ -66,7 +66,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		);
 	}
 
-	function test_google_link_font_family_open_sans() {
+	public function test_google_link_font_family_open_sans() {
 		$this->add_font_family_field();
 		set_theme_mod( 'font_family', 'Open Sans' );
 		$googlefonts  = new Kirki_Scripts_Frontend_Google_Fonts();
@@ -77,7 +77,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		);
 	}
 
-	function test_google_link_font_subset_roboto() {
+	public function test_google_link_font_subset_roboto() {
 		$this->add_font_family_field();
 		$this->add_font_subsets_field();
 		set_theme_mod( 'font_family', 'Roboto' );
@@ -90,7 +90,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		);
 	}
 
-	function test_google_link_font_subset_open_sans() {
+	public function test_google_link_font_subset_open_sans() {
 		$this->add_font_family_field();
 		$this->add_font_subsets_field();
 		set_theme_mod( 'font_family', 'Open Sans' );
@@ -103,7 +103,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		);
 	}
 
-	function test_google_link_font_combo_roboto() {
+	public function test_google_link_font_combo_roboto() {
 		$this->add_font_family_field();
 		$this->add_font_subsets_field();
 		$this->add_font_weight_field();
@@ -118,7 +118,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		);
 	}
 
-	function test_google_link_font_combo_open_sans() {
+	public function test_google_link_font_combo_open_sans() {
 		$this->add_font_family_field();
 		$this->add_font_subsets_field();
 		$this->add_font_weight_field();
@@ -131,6 +131,22 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 			$link,
 			'//fonts.googleapis.com/css?family=Open+Sans:regular,italic,700,100&subset=devangari'
 		);
+	}
+
+	public function test_google_font_enqueued() {
+		$this->add_font_family_field();
+		$this->add_font_subsets_field();
+		$this->add_font_weight_field();
+		set_theme_mod( 'font_family', 'Open Sans' );
+		set_theme_mod( 'subsets', 'devangari' );
+		set_theme_mod( 'font_weight', 100 );
+
+		Kirki();
+
+		$this->go_to( home_url() );
+		do_action( 'wp_enqueue_scripts' );
+		$styles = $GLOBALS['wp_styles']->registered;
+		$this->assertNotFalse( isset( $styles['kirki_google_fonts'] ) );
 	}
 
 }
