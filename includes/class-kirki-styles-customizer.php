@@ -46,7 +46,7 @@ class Kirki_Styles_Customizer {
 		$config = apply_filters( 'kirki/config', array() );
 
 		// Calculate the accent color
-		$color_accent = $color['icon_colors']['focus'];
+		$color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
 		if ( isset( $config['color_accent'] ) ) {
 			$color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
 		}
