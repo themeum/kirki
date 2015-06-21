@@ -27,4 +27,12 @@ before_script:
 
 script:
   - find . \( -name '*.php' \) -exec php -lf {} \;
-  - phpunit
+  - if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
+  ]]; then phpunit --coverage-clover=coverage.clover; else phpunit; fi
+
+after_script:
+- if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
+  ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+- if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
+  ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover;
+  fi
