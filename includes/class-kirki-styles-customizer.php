@@ -26,8 +26,8 @@ if ( class_exists( 'Kirki_Styles_Customizer' ) ) {
 class Kirki_Styles_Customizer {
 
 	public function __construct() {
-		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 999 );
-		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
+		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
+		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 100 );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Kirki_Styles_Customizer {
 			$color_font = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
 		}
 
-		$styles = '<style>';
+		$styles = '';
 
 		// Width
 		if ( isset( $config['width'] ) ) {
@@ -153,9 +153,7 @@ class Kirki_Styles_Customizer {
 		// Palette Controls
 		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text{border-color:'.$color_accent.';}';
 
-		$styles .= '</style>';
-
-		echo $styles;
+		wp_add_inline_style( 'kirki-customizer-css', $styles );
 
 	}
 
