@@ -7,7 +7,6 @@ notifications:
   on_failure: change
 
 php:
-  - 5.2
   - 5.3
   - 5.4
   - 5.5
@@ -29,8 +28,8 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - find . \( -name '*.php' \) -exec php -lf {} \;
   - phpunit --coverage-clover build/logs/clover.xml
+  - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
 
 after_script:
   - php vendor/bin/coveralls -v
