@@ -27,7 +27,7 @@ class Kirki_Colourlovers {
 		$palettes = self::parse();
 		$palettes = array_slice( $palettes, 0, $palettes_nr );
 
-		foreach( $palettes as $palette ) {
+		foreach ( $palettes as $palette ) {
 			foreach ( $palette as $key => $value ) {
 				$palettes[ $key ] = Kirki_Color::sanitize_hex( $value );
 			}

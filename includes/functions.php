@@ -91,7 +91,7 @@ if ( ! function_exists( 'kirki_active_callback' ) ) {
 
 		}
 
-		return $show;
+		return ( isset( $show ) && ( false === $show ) ) ? false : true;
 
 	}
 }
