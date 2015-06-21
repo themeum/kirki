@@ -156,38 +156,6 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		$this->assertEquals( $blue,  Kirki_Color::rgb_to_hsv( array( 0,   0,   255 ) ) );
 	}
 
-	public function test_brightest_color() {
-		$colors1 = array( '#000000', '#ffffff', '333' );
-		$colors2 = array( 'f3f3f3', '0088cc', 'cc0000' );
-
-		$this->assertEquals( '#ffffff', Kirki_Color::brightest_color( $colors1, 'value' ) );
-		$this->assertEquals( '#f3f3f3', Kirki_Color::brightest_color( $colors2, 'value' ) );
-	}
-
-	public function test_most_saturated_color() {
-		$colors1 = array( '#000000', '#ffffff', '333' );
-		$colors2 = array( 'f3f3f3', '0088cc', 'cc0000' );
-
-		$this->assertEquals( '#000000', Kirki_Color::most_saturated_color( $colors1, 'value' ) );
-		$this->assertEquals( '#0088cc', Kirki_Color::most_saturated_color( $colors2, 'value' ) );
-	}
-
-	public function test_most_intense_color() {
-		$colors1 = array( '#000000', '#ffffff', '333' );
-		$colors2 = array( 'f3f3f3', '0088cc', 'cc0000' );
-
-		$this->assertEquals( '#000000', Kirki_Color::most_intense_color( $colors1, 'value' ) );
-		$this->assertEquals( '#0088cc', Kirki_Color::most_intense_color( $colors2, 'value' ) );
-	}
-
-	public function test_brightest_dull_color() {
-		$colors1 = array( '#000000', '#ffffff', '333' );
-		$colors2 = array( 'f3f3f3', '0088cc', 'cc0000' );
-
-		$this->assertEquals( '#ffffff', Kirki_Color::brightest_dull_color( $colors1, 'value' ) );
-		$this->assertEquals( '#f3f3f3', Kirki_Color::brightest_dull_color( $colors2, 'value' ) );
-	}
-
 	public function test_color_difference() {
 		$this->assertEquals( '0',   Kirki_Color::color_difference( 'fff',      '#ffffff' ) );
 		$this->assertEquals( '765', Kirki_Color::color_difference( 'fff',     '000'      ) );
