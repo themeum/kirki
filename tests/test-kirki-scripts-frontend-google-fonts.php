@@ -146,7 +146,7 @@ class Test_Kirki_Scripts_Frontend_Google_Fonts extends WP_UnitTestCase {
 		$this->go_to( home_url() );
 		do_action( 'wp_enqueue_scripts' );
 		$styles = $GLOBALS['wp_styles']->registered;
-		$this->assertNotFalse( isset( $styles['kirki_google_fonts'] ) );
+		$this->assertTrue( isset( $styles['kirki_google_fonts'] ) );
 	}
 
 }
