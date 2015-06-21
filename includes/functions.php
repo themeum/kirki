@@ -13,68 +13,61 @@ function kirki_url() {
 	}
 }
 
-function kirki_field_active_callback( $control ) {
-
-	$show = true;
+function kirki_active_callback( $object ) {
 
 	// Get all fields
 	$fields = Kirki::$fields;
 
-	if ( ! isset( $fields[$control->id] ) ) {
+	if ( ! isset( $fields[ $object->id ] ) ) {
 		return true;
 	}
 
-	$current_field = $fields[$control->id];
+	$current_object = $fields[ $object->id ];
 
-	if ( isset( $current_field['required'] ) ) {
+	if ( isset( $current_object['required'] ) ) {
 
-		foreach ( $current_field['required'] as $requirement ) {
+		foreach ( $current_object['required'] as $requirement ) {
 
-			if ( ! is_object( $control->manager->get_setting( $fields[$requirement['setting']]['settings'] ) ) ) {
+			if ( ! is_object( $object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] ) ) ) {
 				return true;
 			}
 
-			$show  = false;
-			$value = $control->manager->get_setting( $fields[$requirement['setting']]['settings'] )->value();
-			switch ( $requirement['operator'] ) {
-				case '===' :
-					$show = ( $requirement['value'] === $value ) ? true : $show;
-					break;
-				case '==' :
-					$show = ( $requirement['value'] == $value ) ? true : $show;
-					break;
-				case '!==' :
-					$show = ( $requirement['value'] !== $value ) ? true : $show;
-					break;
-				case '!=' :
-					$show = ( $requirement['value'] != $value ) ? true : $show;
-					break;
-				case '>=' :
-					$show = ( $requirement['value'] >= $value ) ? true : $show;
-					break;
-				case '<=' :
-					$show = ( $requirement['value'] <= $value ) ? true : $show;
-					break;
-				case '>' :
-					$show = ( $requirement['value'] > $value ) ? true : $show;
-					break;
-				case '<' :
-					$show = ( $requirement['value'] < $value ) ? true : $show;
-					break;
-				default :
-					$show = ( $requirement['value'] == $value ) ? true : $show;
-
-			}
-
-			if ( ! $show ) {
+			if ( isset( $show ) && ! $show ) {
 				return false;
 			}
 
+			$value = $object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] )->value();
+			switch ( $requirement['operator'] ) {
+				case '===' :
+					$show = ( $requirement['value'] === $value ) ? true : false;
+					break;
+				case '==' :
+					$show = ( $requirement['value'] == $value ) ? true : false;
+					break;
+				case '!==' :
+					$show = ( $requirement['value'] !== $value ) ? true : false;
+					break;
+				case '!=' :
+					$show = ( $requirement['value'] != $value ) ? true : false;
+					break;
+				case '>=' :
+					$show = ( $requirement['value'] >= $value ) ? true : false;
+					break;
+				case '<=' :
+					$show = ( $requirement['value'] <= $value ) ? true : false;
+					break;
+				case '>' :
+					$show = ( $requirement['value'] > $value ) ? true : false;
+					break;
+				case '<' :
+					$show = ( $requirement['value'] < $value ) ? true : false;
+					break;
+				default :
+					$show = ( $requirement['value'] == $value ) ? true : false;
+
+			}
+
 		}
-
-	} else {
-
-		$show = true;
 
 	}
 

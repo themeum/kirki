@@ -147,9 +147,10 @@ class Kirki {
 
 			foreach ( self::$panels as $panel ) {
 				$wp_customize->add_panel( sanitize_key( $panel['id'] ), array(
-					'title'       => esc_textarea( $panel['title'] ),
-					'priority'    => esc_attr( $panel['priority'] ),
-					'description' => esc_textarea( $panel['description'] ),
+					'title'           => esc_textarea( $panel['title'] ),
+					'priority'        => esc_attr( $panel['priority'] ),
+					'description'     => esc_textarea( $panel['description'] ),
+					'active_callback' => $panel['active_callback'],
 				) );
 			}
 
@@ -166,10 +167,11 @@ class Kirki {
 
 			foreach ( self::$sections as $section ) {
 				$wp_customize->add_section( sanitize_key( $section['id'] ), array(
-					'title'       => esc_textarea( $section['title'] ),
-					'priority'    => esc_attr( $section['priority'] ),
-					'panel'       => esc_attr( $section['panel'] ),
-					'description' => esc_textarea( $section['description'] ),
+					'title'           => esc_textarea( $section['title'] ),
+					'priority'        => esc_attr( $section['priority'] ),
+					'panel'           => esc_attr( $section['panel'] ),
+					'description'     => esc_textarea( $section['description'] ),
+					'active_callback' => $section['active_callback'],
 				) );
 			}
 
@@ -257,6 +259,9 @@ class Kirki {
 		$args['id']          = esc_attr( $id );
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
+		if ( ! isset( $args['active_callback'] ) ) {
+			$args['active_callback'] = ( isset( $args['required'] ) ) ? 'kirki_active_callback' : '__return_true';
+		}
 
 		self::$panels[$args['id']] = $args;
 
@@ -280,6 +285,9 @@ class Kirki {
 		$args['panel']       = ( isset( $args['panel'] ) ) ? esc_attr( $args['panel'] ) : '';
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
+		if ( ! isset( $args['active_callback'] ) ) {
+			$args['active_callback'] = ( isset( $args['required'] ) ) ? 'kirki_active_callback' : '__return_true';
+		}
 
 		self::$sections[ $args['id'] ] = $args;
 
