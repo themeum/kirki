@@ -1,6 +1,6 @@
 # [Kirki](http://kirki.org) #
 
-[![Build Status](https://travis-ci.org/reduxframework/kirki.svg?branch=master)](https://travis-ci.org/reduxframework/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/reduxframework/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/reduxframework/kirki/?branch=master)[![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki)
+[![Build Status](https://travis-ci.org/reduxframework/kirki.svg?branch=master)](https://travis-ci.org/reduxframework/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/reduxframework/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/reduxframework/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki)
 
 Contributors: aristath, fovoc<br>
 Tags: customizer, options famework, theme mods<br>
