@@ -1,10 +1,21 @@
 <?php
-
-
 /**
  * Color Calculations class for Kirki
- * (initially built for the Shoestrap-3 theme)
+ * Initially built for the Shoestrap-3 theme and then tweaked for Kirki.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Color {
 
 	/**
@@ -253,137 +264,6 @@ class Kirki_Color {
 		}
 
 		return array( 'h' => round( $h, 2 ), 's' => round( $s, 2 ), 'v' => round( $v, 2 ) );
-
-	}
-
-	/**
-	 * Get the brightest color from an array of colors.
-	 * Return the key of the array if $context = 'key'
-	 * Return the hex value of the color if $context = 'value'
-	 *
-	 * @var     array       flat array of hex colors
-	 * @var     string      'key' or 'value'
-	 * @return  mixed       int|string
-	 */
-	public static function brightest_color( $colors = array(), $context = 'key' ) {
-
-		$brightest = null;
-
-		// Sanitize colors
-		$colors_sanitized = array();
-		foreach ( $colors as $key => $value ) {
-			$colors_sanitized[ $key ] = self::sanitize_hex( $value );
-		}
-
-		foreach ( $colors_sanitized as $key => $value ) {
-			$value = self::sanitize_hex( $value, false );
-
-			if ( null === $brightest || self::get_brightness( $value ) > self::get_brightness( $brightest ) ) {
-				$brightest = $value;
-			}
-		}
-
-		if ( 'key' == $context ) {
-			return array_search( $brightest, $colors_sanitized );
-		} elseif ( 'value' == $context ) {
-			return self::sanitize_hex( $brightest );
-		}
-
-	}
-
-	/*
-	 * Get the most saturated color from an array of colors.
-	 * Return the key of the array if $context = 'key'
-	 * Return the hex value of the color if $context = 'value'
-	 */
-	public static function most_saturated_color( $colors = array(), $context = 'key' ) {
-
-		$most_saturated = null;
-
-		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color, false );
-			$hsv        = self::hex_to_hsv( $color );
-			$saturation = $hsv['s'];
-
-			if ( null !== $most_saturated ) {
-				$hsv_old = self::hex_to_hsv( $most_saturated );
-			}
-
-			if ( null === $most_saturated || isset( $hsv_old ) && $saturation > $hsv_old['s'] ) {
-				$most_saturated = $color;
-			}
-		}
-
-		if ( 'key' == $context ) {
-			return array_search( $most_saturated, $colors );
-		} elseif ( 'value' == $context ) {
-			return self::sanitize_hex( $most_saturated );
-		}
-
-	}
-
-	/*
-	 * Get the most intense color from an array of colors.
-	 * Return the key of the array if $context = 'key'
-	 * Return the hex value of the color if $context = 'value'
-	 */
-	public static function most_intense_color( $colors = array(), $context = 'key' ) {
-
-		$most_intense = null;
-
-		foreach ( $colors as $color ) {
-			$color      = self::sanitize_hex( $color, false );
-			$hsv        = self::hex_to_hsv( $color );
-			$saturation = $hsv['s'];
-
-			if ( null !== $most_intense ) {
-				$hsv_old = self::hex_to_hsv( $most_intense );
-			}
-
-			if ( null === $most_intense || ( isset( $hsv_old ) && $saturation > $hsv_old['s'] ) ) {
-				$most_intense = $color;
-			}
-		}
-
-		if ( 'key' == $context ) {
-			return array_search( $most_intense, $colors );
-		} elseif ( 'value' == $context ) {
-			return self::sanitize_hex( $most_intense );
-		}
-
-	}
-
-	/*
-	 * Get the brightest color from an array of colors.
-	 * Return the key of the array if $context = 'key'
-	 * Return the hex value of the color if $context = 'value'
-	 */
-	public static function brightest_dull_color( $colors = array(), $context = 'key' ) {
-
-		$brightest_dull = null;
-
-		foreach ( $colors as $color ) {
-			$color    = self::sanitize_hex( $color, false );
-			$hsv      = self::hex_to_hsv( $color );
-			$hsv['s'] = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s']; // Prevent "division by zero" messages.
-			$dullness = 1 / $hsv['s'];
-
-			if ( null !== $brightest_dull ) {
-				$hsv_old      = self::hex_to_hsv( $brightest_dull );
-				$hsv_old['s'] = ( $hsv_old['s'] == 0 ) ? 0.0001 : $hsv_old['s']; // Prevent "division by zero" messages.
-				$dullness_old = 1 / $hsv_old['s'];
-			}
-
-			if ( null === $brightest_dull || ( isset( $dullness_old ) && self::get_brightness( $color ) * $dullness > self::get_brightness( $brightest_dull ) * $dullness_old ) ) {
-				$brightest_dull = $color;
-			}
-		}
-
-		if ( 'key' == $context ) {
-			return array_search( $brightest_dull, $colors );
-		} elseif ( 'value' == $context ) {
-			return self::sanitize_hex( $brightest_dull );
-		}
 
 	}
 

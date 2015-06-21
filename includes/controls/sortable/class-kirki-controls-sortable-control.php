@@ -1,9 +1,19 @@
 <?php
-
 /**
- * Create a sortable control.
- * This will display a list of checkboxes that can be sorted.
+ * sortable Customizer Control.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 	public $type = 'sortable';

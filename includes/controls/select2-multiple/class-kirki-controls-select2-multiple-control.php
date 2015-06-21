@@ -1,8 +1,19 @@
 <?php
-
 /**
- * Creates a new select2 control.
+ * select2-multiple
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Controls_Select2_Multiple_Control extends WP_Customize_Control {
 
 	public $type = 'select2-multiple';

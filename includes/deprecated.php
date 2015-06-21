@@ -1,9 +1,20 @@
 <?php
-
 /**
- * This file contains all the deprecated functions
+ * This file contains all the deprecated functions.
+ * We could easily delete all these but they are kept for backwards-compatibility purposes.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Get the value of a field.

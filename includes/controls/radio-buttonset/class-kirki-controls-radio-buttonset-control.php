@@ -1,8 +1,19 @@
 <?php
-
 /**
- * Create a Radio-Buttonset control.
+ * radio-buttonset Customizer Control.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 	public $type = 'radio-buttonset';

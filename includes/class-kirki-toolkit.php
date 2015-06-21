@@ -1,10 +1,20 @@
 <?php
-
 /**
- * Class Kirki
- *
  * The main Kirki object
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Toolkit {
 
 	/** @var Kirki The only instance of this class */

@@ -1,4 +1,20 @@
 <?php
+/**
+ * Redux-compatibility.
+ * adds a 'Redux' class and tries to emulate the way Redux adds its fields & sections.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // No need to proceed if Redux exists.
 if ( class_exists( 'Redux' ) ) {

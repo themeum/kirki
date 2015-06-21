@@ -1,4 +1,21 @@
 <?php
+/**
+ * Add the logo and description to the customizer.
+ * Logo and customizer are defined using the kirki/config filter.
+ * See https://github.com/reduxframework/kirki/wiki/Styling-the-Customizer for documentation
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 

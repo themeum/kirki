@@ -1,28 +1,20 @@
 <?php
-
 /**
-* Try to automatically generate the script necessary for postMessage to work.
-* Something like this will have to be added to the control arguments:
-*
-* 	'transport' => 'postMessage',
-* 	'js_vars'   => array(
-* 		array(
-* 			'element'  => 'body',
-* 			'function' => 'css',
-* 			'property' => 'color',
-* 		),
-* 		array(
-* 			'element'  => '#content',
-* 			'function' => 'css',
-* 			'property' => 'background-color',
-* 		),
-* 		array(
-* 			'element'  => 'body',
-* 			'function' => 'html',
-* 		)
-* 	)
-*
-*/
+ * Try to automatically generate the script necessary for postMessage to work.
+ * for documentation see https://github.com/reduxframework/kirki/wiki/required
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script {
 
 	public function wp_footer() {

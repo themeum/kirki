@@ -1,4 +1,22 @@
 <?php
+/**
+ * Changes the styling of the customizer
+ * based on the settings set using the kirki/config filter.
+ * For documentation please see
+ * https://github.com/reduxframework/kirki/wiki/Styling-the-Customizer
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Kirki_Styles_Customizer {
 

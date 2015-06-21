@@ -1,13 +1,26 @@
 <?php
-/*
-Plugin Name:   Kirki Toolkit
-Plugin URI:    http://kirki.org
-Description:   The ultimate WordPress Customizer Toolkit
-Author:        Aristeides Stathopoulos
-Author URI:    http://aristeides.com
-Version:       1.0.0-beta1
-Text Domain:   kirki
-*/
+/**
+ * Plugin Name:   Kirki Toolkit
+ * Plugin URI:    http://kirki.org
+ * Description:   The ultimate WordPress Customizer Toolkit
+ * Author:        Aristeides Stathopoulos
+ * Author URI:    http://aristeides.com
+ * Version:       1.0.0-beta1
+ * Text Domain:   kirki
+ *
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // Set the KIRKI_PATH constant.
 if ( ! defined( 'KIRKI_PATH' ) ) {

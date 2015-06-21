@@ -1,8 +1,20 @@
 <?php
-
 /**
- * Injects tooltips on controls.
+ * Injects tooltips to controls when the 'help' argument is used.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 
 	/**

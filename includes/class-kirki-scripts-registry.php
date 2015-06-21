@@ -1,8 +1,20 @@
 <?php
-
 /**
- * Instantiates all other scripts needed
+ * Instantiates all other needed scripts.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Scripts_Registry {
 
 	public function __construct() {

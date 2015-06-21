@@ -1,8 +1,21 @@
 <?php
-
 /**
- * Creates a TinyMCE control
+ * editor Customizer Control.
+ *
+ * Creates a TinyMCE textarea.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 
 	public $type = 'editor';

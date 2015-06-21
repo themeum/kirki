@@ -1,4 +1,21 @@
 <?php
+/**
+ * The Kirki API class.
+ * Takes care of adding panels, sections & fields to the customizer.
+ * For documentation please see https://github.com/reduxframework/kirki/wiki
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * The API class.
