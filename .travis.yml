@@ -24,5 +24,10 @@ matrix:
 
 before_script:
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - pear channel-discover pear.phpqatools.org
+  - pear install -f phpqatools/phpqatools
+  - phpenv rehash
 
-script: phpunit
+script:
+ - ant travis
+ - phpunit
