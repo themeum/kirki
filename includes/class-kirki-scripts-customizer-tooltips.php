@@ -25,7 +25,7 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 	/**
 	 * Add the help bubble
 	 */
-	public function customize_controls_print_footer_scripts() {
+	public function generate_script() {
 
 		$fields = Kirki::$fields;
 
@@ -53,8 +53,15 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 		// Convert array to string
 		$script = implode( '', $scripts );
 
-		echo Kirki_Scripts_Registry::prepare( $script );
+		return $script;
 
+	}
+
+	public function customize_controls_print_footer_scripts() {
+		$script = $this->generate_script();
+		if ( '' != $script ) {
+			echo Kirki_Scripts_Registry::prepare( $script );
+		}
 	}
 
 	public function customize_controls_print_scripts() {}

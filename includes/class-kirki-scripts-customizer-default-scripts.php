@@ -24,6 +24,8 @@ if ( class_exists( 'Kirki_Scripts_Customizer_Default_Scripts' ) ) {
 
 class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Script {
 
+	public function generate_script() {}
+		
 	/**
 	 * Enqueue the scripts required.
 	 */

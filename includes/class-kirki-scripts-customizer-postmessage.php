@@ -23,7 +23,7 @@ if ( class_exists( 'Kirki_Scripts_Customizer_PostMessage' ) ) {
 
 class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script {
 
-	public function wp_footer() {
+	public function generate_script() {
 
 		global $wp_customize;
 		// Early exit if we're not in the customizer
@@ -53,10 +53,15 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 			}
 		}
 
+		return $script;
+		
+	}
+
+	public function wp_footer() {
+		$script = $this->generate_script();
 		if ( '' != $script ) {
 			echo Kirki_Scripts_Registry::prepare( $script );
 		}
-
 	}
 
 	public function customize_controls_print_scripts() {}
