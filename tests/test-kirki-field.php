@@ -37,6 +37,37 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 
 	}
 
+	public function test_sanitize_field() {
+		$this->assertEquals(
+			array(
+				'settings'          => 'foo',
+				'section'           => 'foo',
+				'type'              => 'text',
+				'settings_raw'      => 'foo',
+				'default'           => '',
+				'label'             => '',
+				'help'              => '',
+				'description'       => '',
+				'required'          => null,
+				'transport'         => 'refresh',
+				'option_type'       => 'theme_mod',
+				'priority'          => 10,
+				'choices'           => array(),
+				'output'            => null,
+				'sanitize_callback' => 'esc_textarea',
+				'js_vars'           => null,
+				'id'                => 'foo',
+				'capability'        => 'edit_theme_options',
+				'variables'         => false,
+				'active_callback'   => 'kirki_active_callback',
+			),
+			Kirki_Field::sanitize_field( array(
+				'settings' => 'foo',
+				'section'  => 'foo',
+				'type'     => 'text',
+			) ) );
+	}
+
 	public function test_sanitize_type() {
 		$this->assertEquals( 'theme_mod', Kirki_Field::sanitize_type( array( 'option_type' => 'theme_mod' ) ) );
 		$this->assertEquals( 'option',    Kirki_Field::sanitize_type( array( 'option_type' => 'option' ) ) );
