@@ -324,23 +324,16 @@ class Kirki_Field {
 			if ( is_array( $field['output'] ) ) {
 				$output_sanitized = array();
 				if ( isset( $field['output']['element'] ) ) {
+					$field['output'] = array( $field['output'] );
+				}
+				foreach ( $field['output'] as $output ) {
 					$output_sanitized[] = array(
-						'element'  => ( isset( $field['output']['element'] ) ) ? sanitize_text_field( $field['output']['element'] ) : '',
-						'property' => ( isset( $field['output']['property'] ) ) ? sanitize_text_field( $field['output']['property'] ) : '',
-						'units'    => ( isset( $field['output']['units'] ) ) ? sanitize_text_field( $field['output']['units'] ) : '',
-						'prefix'   => ( isset( $field['output']['prefix'] ) ) ? sanitize_text_field( $field['output']['prefix'] ) : '',
-						'suffix'   => ( isset( $field['output']['suffix'] ) ) ? sanitize_text_field( $field['output']['suffix'] ) : '',
+						'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
+						'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
+						'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
+						'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
+						'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
 					);
-				} else {
-					foreach ( $field['output'] as $output ) {
-						$output_sanitized[] = array(
-							'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-							'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-							'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-							'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
-							'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
-						);
-					}
 				}
 			} else {
 				$output_sanitized = esc_attr( $field['output'] );
@@ -387,21 +380,15 @@ class Kirki_Field {
 		if ( isset( $field['js_vars'] ) && is_array( $field['js_vars'] ) ) {
 			$js_vars_sanitized = array();
 			if ( isset( $field['js_vars']['element'] ) ) {
+				$field['js_vars'] = array( $field['js_vars'] );
+			}
+			foreach ( $field['js_vars'] as $js_vars ) {
 				$js_vars_sanitized[] = array(
-					'element'  => ( isset( $field['js_vars']['element'] ) ) ? sanitize_text_field( $field['js_vars']['element'] ) : '',
-					'function' => ( isset( $field['js_vars']['function'] ) ) ? esc_js( $field['js_vars']['function'] ) : '',
-					'property' => ( isset( $field['js_vars']['property'] ) ) ? esc_js( $field['js_vars']['property'] ) : '',
-					'units'    => ( isset( $field['js_vars']['units'] ) ) ? esc_js( $field['js_vars']['units'] ) : '',
+					'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
+					'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
+					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
+					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
 				);
-			} else {
-				foreach ( $field['js_vars'] as $js_vars ) {
-					$js_vars_sanitized[] = array(
-						'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
-						'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
-						'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
-						'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
-					);
-				}
 			}
 		} else {
 			$js_vars_sanitized = null;
@@ -419,19 +406,14 @@ class Kirki_Field {
 		if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
 			$required_sanitized = array();
 			if ( isset( $field['required']['setting'] ) ) {
+				$field['required'] = array( $field['required'] );
+			}
+			foreach ( $field['required'] as $required ) {
 				$required_sanitized[] = array(
-					'setting'  => ( isset( $field['required']['setting'] ) ) ? sanitize_text_field( $field['required']['setting'] ) : '',
-					'operator' => ( isset( $field['required']['operator'] ) && in_array( $field['required']['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $field['required']['operator'] : '==',
-					'value'    => ( isset( $field['required']['value'] ) ) ? sanitize_text_field( $field['required']['value'] ) : true,
+					'setting'  => ( isset( $required['setting'] ) ) ? sanitize_text_field( $required['setting'] ) : '',
+					'operator' => ( isset( $required['operator'] ) && in_array( $required['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $required['operator'] : '==',
+					'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
 				);
-			} else {
-				foreach ( $field['required'] as $required ) {
-					$required_sanitized[] = array(
-						'setting'  => ( isset( $required['setting'] ) ) ? sanitize_text_field( $required['setting'] ) : '',
-						'operator' => ( isset( $required['operator'] ) && in_array( $required['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $required['operator'] : '==',
-						'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
-					);
-				}
 			}
 		} else {
 			$required_sanitized = null;
