@@ -30,28 +30,30 @@ class Kirki_Field {
 	 */
 	public static function sanitize_field( $field ) {
 
-		$field['settings_raw']      = self::sanitize_settings_raw( $field );
-		$field['default']           = self::sanitize_default( $field );
-		$field['label']             = self::sanitize_label( $field );
-		$field['help']              = self::sanitize_help( $field );
-		$field['description']       = self::sanitize_description( $field );
-		$field['required']          = self::sanitize_required( $field );
-		$field['transport']         = self::sanitize_transport( $field );
-		$field['type']              = self::sanitize_control_type( $field );
-		$field['option_type']       = self::sanitize_type( $field );
-		$field['section']           = self::sanitize_section( $field );
-		$field['settings']          = self::sanitize_settings( $field );
-		$field['priority']          = self::sanitize_priority( $field );
-		$field['choices']           = self::sanitize_choices( $field );
-		$field['output']            = self::sanitize_output( $field );
-		$field['sanitize_callback'] = self::sanitize_callback( $field );
-		$field['js_vars']           = self::sanitize_js_vars( $field );
-		$field['id']                = self::sanitize_id( $field );
-		$field['capability']        = self::sanitize_capability( $field );
-		$field['variables']         = self::sanitize_variables( $field );
-		$field['active_callback']   = self::sanitize_active_callback( $field );
+		$sanitized = array(
+			'settings_raw'      => self::sanitize_settings_raw( $field ),
+			'default'           => self::sanitize_default( $field ),
+			'label'             => self::sanitize_label( $field ),
+			'help'              => self::sanitize_help( $field ),
+			'description'       => self::sanitize_description( $field ),
+			'required'          => self::sanitize_required( $field ),
+			'transport'         => self::sanitize_transport( $field ),
+			'type'              => self::sanitize_control_type( $field ),
+			'option_type'       => self::sanitize_type( $field ),
+			'section'           => self::sanitize_section( $field ),
+			'settings'          => self::sanitize_settings( $field ),
+			'priority'          => self::sanitize_priority( $field ),
+			'choices'           => self::sanitize_choices( $field ),
+			'output'            => self::sanitize_output( $field ),
+			'sanitize_callback' => self::sanitize_callback( $field ),
+			'js_vars'           => self::sanitize_js_vars( $field ),
+			'id'                => self::sanitize_id( $field ),
+			'capability'        => self::sanitize_capability( $field ),
+			'variables'         => self::sanitize_variables( $field ),
+			'active_callback'   => self::sanitize_active_callback( $field )
+		);
 
-		return $field;
+		return array_merge( $field, $sanitized );
 
 	}
 
@@ -65,21 +67,39 @@ class Kirki_Field {
 
 		if ( ! isset( $field['type'] ) ) {
 			return 'text';
-		} elseif ( 'checkbox' == $field['type'] && isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
-			return 'switch';
-		} elseif ( 'checkbox' == $field['type'] && isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
-			return 'toggle';
-		} elseif ( 'radio' == $field['type'] && isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
-			return 'radio-buttonset';
-		} elseif ( 'radio' == $field['type'] && isset( $field['mode'] ) && 'image' == $field['mode'] ) {
-			return 'radio-image';
-		} elseif ( in_array( $field['type'], array( 'group-title', 'group_title' ) ) ) {
-			return 'custom';
-		} elseif ( 'color_alpha' == $field['type'] || ( 'color' == $field['type'] && isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) ) {
-			return 'color-alpha';
-		} else {
-			return esc_attr( $field['type'] );
 		}
+
+		switch ( $field['type'] ) {
+
+			case 'checkbox' :
+				if ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
+					$field['type'] = 'switch';
+				} elseif ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
+					$field['type'] = 'toggle';
+				}
+				break;
+			case 'radio' :
+			 	if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
+					$field['type'] = 'radio-buttonset';
+				} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
+					$field['type'] = 'radio-image';
+				}
+				break;
+			case 'group-title' :
+			case 'group_title' :
+				$field['type'] = 'custom';
+				break;
+			case 'color_alpha' :
+				$field['type'] = 'color-alpha';
+				break;
+			case 'color' :
+				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
+					$field['type'] = 'color-alpha';
+				}
+				break;
+		}
+
+		return esc_attr( $field['type'] );
 
 	}
 
@@ -640,28 +660,50 @@ class Kirki_Field {
 	 */
 	public static function fallback_callback( $field_type ) {
 
-		if ( in_array( $field_type, array( 'checkbox', 'toggle', 'switch' ) ) ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
-		} elseif ( 'color' == $field_type ) {
-			$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
-		} elseif ( 'color-alpha' == $field_type ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
-		} elseif ( in_array( $field_type, array( 'image', 'upload' ) ) ) {
-			$sanitize_callback = 'esc_url_raw';
-		} elseif ( in_array( $field_type, array( 'radio', 'radio-image', 'radio-buttonset', 'select', 'palette' ) ) ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
-		} elseif ( 'dropdown-pages' == $field_type ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
-		} elseif ( in_array( $field_type, array( 'slider', 'number' ) ) ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
-		} elseif ( in_array( $field_type, array( 'text', 'textarea', 'editor' ) ) ) {
-			$sanitize_callback = 'esc_textarea';
-		} elseif ( 'multicheck' == $field_type ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
-		} elseif ( 'sortable' == $field_type ) {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
-		} else {
-			$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
+		switch ( $field_type ) {
+			case 'checkbox' :
+			case 'toggle' :
+			case 'switch' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
+				break;
+			case 'color' :
+				$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
+				break;
+			case 'color-alpha' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
+				break;
+			case 'image' :
+			case 'upload' :
+				$sanitize_callback = 'esc_url_raw';
+				break;
+			case 'radio' :
+			case 'radio-image' :
+			case 'radio-buttonset' :
+			case 'select' :
+			case 'palette' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
+				break;
+			case 'dropdown-pages' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
+				break;
+			case 'slider' :
+			case 'number' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
+				break;
+			case 'text' :
+			case 'textarea' :
+			case 'editor' :
+				$sanitize_callback = 'esc_textarea';
+				break;
+			case 'multicheck' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
+				break;
+			case 'sortable' :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
+				break;
+			default :
+				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
+				break;
 		}
 
 		return $sanitize_callback;
