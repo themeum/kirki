@@ -104,6 +104,9 @@ class Kirki_Output {
 		foreach ( $styles as $style => $style_array ) {
 			$css .= $style.'{';
 			foreach ( $style_array as $property => $value ) {
+				if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
+					$value = 'url("'.$value.'")';
+				}
 				$css .= $property.':'.$value.';';
 			}
 			$css .= '}';
