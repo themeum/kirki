@@ -102,7 +102,7 @@ li.customize-control {
         display: block;
         position: absolute;
         top: 5px;
-        right: -20px;
+        right: -10px;
         border-radius: 50%;
         color: #999;
         border: none;
@@ -110,4 +110,16 @@ li.customize-control {
         width: 20px;
         height: 20px;
     }
+}
+
+.select2-container {
+	min-width: 100px;
+	width: 100% !important;
+	&--open {
+		.select2-dropdown--below,
+		.select2-dropdown--above {
+			z-index: 9999999;
+			min-width: 100px;
+		}
+	}
 }
