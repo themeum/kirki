@@ -3,6 +3,8 @@ languages:
   JavaScript: true
   PHP: true
 exclude_paths:
-- "assets/js/serialize.js"
-- "sample-config.php"
-- "tests/*"
+  - "assets/*"
+  - "sample-config.php"
+  - "kirki-user-tests.php"
+  - "tests/*"
+  - "bin/*"
