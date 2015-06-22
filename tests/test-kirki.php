@@ -8,6 +8,14 @@ class Test_Kirki extends WP_UnitTestCase {
 			'option_name' => 'my_option',
 			'capability'  => 'edit_posts',
 		) );
+		Kirki::add_config( 'my_config2', array(
+			'option_type' => 'theme_mod',
+			'capability'  => 'edit_posts',
+		) );
+		Kirki::add_config( 'my_config3', array(
+			'option_type' => 'option',
+			'capability'  => 'edit_posts',
+		) );
 	}
 
 	public function add_panel() {
@@ -32,6 +40,33 @@ class Test_Kirki extends WP_UnitTestCase {
 
 		Kirki::add_field( 'my_config', array(
 			'settings' => 'my_setting',
+			'label'    => __( 'My custom control', 'translation_domain' ),
+			'section'  => 'my_section',
+			'type'     => 'text',
+			'priority' => 10,
+			'default'  => 'some-default-value',
+		) );
+
+		Kirki::add_field( 'my_config', array(
+			'settings' => 'my_setting0',
+			'label'    => __( 'My custom control', 'translation_domain' ),
+			'section'  => 'my_section',
+			'type'     => 'text',
+			'priority' => 10,
+			'default'  => 'some-default-value',
+		) );
+
+		Kirki::add_field( 'my_config2', array(
+			'settings' => 'my_setting1',
+			'label'    => __( 'My custom control', 'translation_domain' ),
+			'section'  => 'my_section',
+			'type'     => 'text',
+			'priority' => 10,
+			'default'  => 'some-default-value',
+		) );
+
+		Kirki::add_field( 'my_config3', array(
+			'settings' => 'my_setting2',
 			'label'    => __( 'My custom control', 'translation_domain' ),
 			'section'  => 'my_section',
 			'type'     => 'text',
@@ -158,6 +193,14 @@ class Test_Kirki extends WP_UnitTestCase {
 		$this->assertEquals( 'checkbox',            Kirki::$fields['my_setting_4']['type'] );
 		$this->assertEquals( 20,                    Kirki::$fields['my_setting_4']['priority'] );
 		$this->assertEquals( '0',  Kirki::$fields['my_setting_4']['default'] );
+	}
+
+	public function test_get_option() {
+		$this->add_config();
+		$this->add_field();
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config', 'my_setting0' ) );
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config2', 'my_setting1' ) );
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config3', 'my_setting2' ) );
 	}
 
 }

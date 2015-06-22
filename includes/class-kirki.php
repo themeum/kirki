@@ -95,7 +95,7 @@ class Kirki {
 		if ( 'theme_mod' == $mode ) {
 
 			// We're using theme_mods
-			$value = get_theme_mod( $field_id, Kirki_Field::sanitize_default( self::$fields[ $field_id ]['default'] ) );
+			$value = get_theme_mod( $field_id, self::$fields[ $field_id ]['default'] );
 
 		} elseif ( 'option' == $mode ) {
 
