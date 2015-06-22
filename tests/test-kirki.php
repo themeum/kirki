@@ -2,6 +2,17 @@
 
 class Test_Kirki extends WP_UnitTestCase {
 
+	public function init_customizer() {
+		global $wp_customize;
+		if ( ! isset( $wp_customize ) ) {
+			if ( ! class_exists( 'WP_Customize_Manager' ) ) {
+				require_once( ABSPATH . '/wp-includes/class-wp-customize-manager.php' );
+			}
+			$wp_customize = new WP_Customize_Manager();
+		}
+		return $wp_customize;
+	}
+
 	public function add_config() {
 		Kirki::add_config( 'my_config', array(
 			'option_type' => 'option',

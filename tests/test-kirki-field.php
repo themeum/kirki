@@ -352,6 +352,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			'label'     => 'Control Title',
 			'section'   => 'my_section',
 			'default'   => array(
+				'image'    => 'http://example.com/foo.png',
 				'color'    => 'rgba(255,230,34,1)',
 				'repeat'   => 'no-repeat',
 				'size'     => 'cover',
@@ -370,6 +371,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'label'     => 'Control Title',
 				'section'   => 'my_section',
 				'default'   => array(
+					'image'    => 'http://example.com/foo.png',
 					'color'    => 'rgba(255,230,34,1)',
 					'repeat'   => 'no-repeat',
 					'size'     => 'cover',
@@ -396,6 +398,25 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 						'element' => 'body',
 						'property' => 'background-color',
 						'callback' => array( 'Kirki_Sanitize', 'color' ),
+					),
+				),
+			),
+			array(
+				'type' => 'image',
+				'label' => '',
+				'section' => 'my_section',
+				'settings' => 'my_setting_image',
+				'priority' => 20,
+				'help' => '',
+				'description' => 'Background Image',
+				'required' => array(),
+				'transport' => 'refresh',
+				'default' => 'http://example.com/foo.png',
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-image',
+						'callback' => 'esc_url_raw',
 					),
 				),
 			),
