@@ -65,29 +65,21 @@ class Kirki_Field {
 
 		if ( ! isset( $field['type'] ) ) {
 			return 'text';
-		}
-
-		if ( 'checkbox' == $field['type'] ) {
-
-			$field['type'] = ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) ? 'switch' : $field['type'];
-			$field['type'] = ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) ? 'toggle' : $field['type'];
-
-		} elseif ( 'radio' == $field['type'] ) {
-
-			$field['type'] = ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) ? 'radio-buttonset' : $field['type'];
-			$field['type'] = ( isset( $field['mode'] ) && 'image' == $field['mode'] ) ? 'radio-image' : $field['type'];
-
-		} elseif ( 'group-title' == $field['type'] || 'group_title' == $field['type'] ) {
-
-			$field['type'] = 'custom';
-
+		} elseif ( 'checkbox' == $field['type'] && isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
+			return 'switch';
+		} elseif ( 'checkbox' == $field['type'] && isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
+			return 'toggle';
+		} elseif ( 'radio' == $field['type'] && isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
+			return 'radio-buttonset';
+		} elseif ( 'radio' == $field['type'] && isset( $field['mode'] ) && 'image' == $field['mode'] ) {
+			return 'radio-image';
+		} elseif ( in_array( $field['type'], array( 'group-title', 'group_title' ) ) ) {
+			return 'custom';
 		} elseif ( 'color_alpha' == $field['type'] || ( 'color' == $field['type'] && isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) ) {
-
-			$field['type'] = 'color-alpha';
-
+			return 'color-alpha';
+		} else {
+			return esc_attr( $field['type'] );
 		}
-
-		return esc_attr( $field['type'] );
 
 	}
 
@@ -258,6 +250,10 @@ class Kirki_Field {
 	 */
 	public static function sanitize_description( $field ) {
 
+		if ( ! isset( $field['description'] ) && ! isset( $field['subtitle'] ) ) {
+			return '';
+		}
+
 		/**
 		 * Compatibility tweak
 		 *
@@ -267,10 +263,10 @@ class Kirki_Field {
 		 *
 		 */
 		if ( isset( $field['subtitle'] ) ) {
-			$field['description'] = $field['subtitle'];
+			return wp_strip_all_tags( $field['subtitle'] );
+		} else {
+			return wp_strip_all_tags( $field['description'] );
 		}
-
-		return ( isset( $field['description'] ) ) ? wp_strip_all_tags( $field['description'] ) : '';
 
 	}
 
@@ -614,7 +610,7 @@ class Kirki_Field {
 
 	/**
 	 * The background choices.
-	 * @return array
+	 * @return array<string,array>
 	 */
 	public static function background_choices() {
 
@@ -658,7 +654,7 @@ class Kirki_Field {
 	 * Sanitizes the control transport.
 	 *
 	 * @param string the control type
-	 * @return array|string the function name of a sanitization callback
+	 * @return string[]|string the function name of a sanitization callback
 	 */
 	public static function fallback_callback( $field_type ) {
 
