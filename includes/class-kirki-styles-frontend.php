@@ -47,52 +47,6 @@ class Kirki_Styles_Frontend {
 	}
 
 	/**
-	 * Get the styles for a single field.
-	 */
-	public function setting_styles( $field, $styles = '', $element = '', $property = '', $units = '', $prefix = '', $suffix = '', $callback = false ) {
-		$value   = kirki_get_option( $field['settings_raw'] );
-		$value   = ( isset( $callback ) && '' != $callback && '.' != $callback ) ? call_user_func( $callback, $value ) : $value;
-		$element = $prefix.$element;
-		$units   = $units.$suffix;
-
-		// Color controls
-		if ( 'color' == $field['type'] ) {
-
-			$color = Kirki_Color::sanitize_hex( $value );
-			$styles[ $element ][ $property ] = $color.$units;
-
-		}
-
-		// Font controls
-		elseif ( array( $field['output'] ) && isset( $field['output']['property'] ) && in_array( $field['output']['property'], array( 'font-family', 'font-size', 'font-weight' ) ) ) {
-
-			if ( 'font-family' == $property ) {
-
-				$styles[ $field['output']['element'] ]['font-family'] = $value.$units;
-
-			} else if ( 'font-size' == $property ) {
-
-				// Get the unit we're going to use for the font-size.
-				$units = empty( $units ) ? 'px' : $units;
-				$styles[ $element ]['font-size'] = $value.$units;
-
-			} else if ( 'font-weight' == $property ) {
-
-				$styles[ $element ]['font-weight'] = $value.$units;
-
-			}
-
-		} else {
-
-			$styles[ $element ][ $property ] = $value.$units;
-
-		}
-
-		return $styles;
-
-	}
-
-	/**
 	 * loop through all fields and create an array of style definitions
 	 */
 	public function loop_controls() {
