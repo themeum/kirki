@@ -27,7 +27,6 @@ class Kirki_Styles_Customizer {
 
 	public function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
-		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 100 );
 	}
 
 	/**
@@ -35,6 +34,7 @@ class Kirki_Styles_Customizer {
 	 */
 	public function customizer_styles() {
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, '0.5' );
+		wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
 	}
 
 	/**
@@ -153,9 +153,10 @@ class Kirki_Styles_Customizer {
 		// Palette Controls
 		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text{border-color:'.$color_accent.';}';
 
-		wp_add_inline_style( 'kirki-customizer-css', $styles );
+		return $styles;
 
 	}
+
 
 	/**
 	 * Get the admin color theme
