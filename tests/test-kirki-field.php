@@ -35,6 +35,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'toggle',          Kirki_Field::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'toggle' ) ) );
 		$this->assertEquals( 'upload',          Kirki_Field::sanitize_control_type( array( 'type' => 'upload' ) ) );
 
+		$this->assertEquals( 'text', Kirki_Field::sanitize_control_type( array() ) );
+
 	}
 
 	public function test_sanitize_field() {
@@ -159,12 +161,14 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_default( array( 'default' => 'foo' ) ) );
 		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field::sanitize_default( array( 'default' => array( 'foo', 'bar' ) ) ) );
 		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Field::sanitize_default( array( 'default' => 'rgba(0,0,0,0)' ) ) );
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_default( array( 'type' => 'text', 'default' => 'foo', ) ) );
 	}
 
 	public function test_sanitize_description() {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'description' => 'foo' ) ) );
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'subtitle'    => 'foo' ) ) );
 		$this->assertEquals( 'bar', Kirki_Field::sanitize_description( array( 'description' => '<div class="foo">bar</div>' ) ) );
+		$this->assertEquals( '', Kirki_Field::sanitize_description( array() ) );
 	}
 
 	public function test_sanitize_help() {
@@ -185,6 +189,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			Kirki_Field::sanitize_choices( array( 'choices' => array( 'foo', 'bar' ) ) )
 		);
 		$this->assertEquals( array(), Kirki_Field::sanitize_choices( array() ) );
+
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_choices( array( 'choices' => 'foo' ) ) );
 	}
 
 	public function test_sanitize_output() {
@@ -325,6 +331,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				)
 			) ) )
 		);
+
+		$this->assertEquals( null, Kirki_Field::sanitize_required( array() ) );
 	}
 
 	public function test_sanitize_priority() {
@@ -352,6 +360,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'opacity'  => 1
 			),
 			'priority'  => 20,
+			'output'    => 'body',
 		) );
 
 		$final_fields = array(
@@ -369,6 +378,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'opacity'  => 1
 				),
 				'priority'  => 20,
+				'output'    => 'body',
 			),
 			array(
 				'type' => 'color-alpha',
@@ -381,7 +391,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'required' => array(),
 				'transport' => 'refresh',
 				'default' => 'rgba(255,230,34,1)',
-				'output' => '',
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-color',
+						'callback' => array( 'Kirki_Sanitize', 'color' ),
+					),
+				),
 			),
 			array(
 				'type' => 'select',
@@ -401,7 +417,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'required' => array(),
 				'transport' => 'refresh',
 				'default' => 'no-repeat',
-				'output' => '',
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-repeat',
+						'callback' => 'esc_attr',
+					),
+				),
 			),
 			array(
 				'type' => 'radio-buttonset',
@@ -419,7 +441,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'required' => array(),
 				'transport' => 'refresh',
 				'default' => 'cover',
-				'output' => '',
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-size',
+						'callback' => 'esc_attr',
+					),
+				),
 			),
 			array(
 				'type' => 'radio-buttonset',
@@ -437,7 +465,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'required' => array(),
 				'transport' => 'refresh',
 				'default' => 'fixed',
-				'output' => ''
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-attachment',
+						'callback' => 'esc_attr',
+					),
+				),
 			),
 			array(
 				'type' => 'select',
@@ -461,7 +495,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'required' => array(),
 				'transport' => 'refresh',
 				'default' => 'left-top',
-				'output' => ''
+				'output' => array(
+					array(
+						'element' => 'body',
+						'property' => 'background-position',
+						'callback' => 'esc_attr',
+					),
+				),
 			)
 		);
 
