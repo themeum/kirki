@@ -135,7 +135,15 @@ class Kirki_Field {
 	 * @return string callable function name.
 	 */
 	public static function sanitize_active_callback( $field ) {
-		return ( isset( $field['active_callback'] ) ) ? $field['active_callback'] : 'kirki_active_callback';
+		if ( isset( $field['active_callback'] ) ) {
+			return $field['active_callback'];
+		} else {
+			if ( isset( $field['required'] ) ) {
+				return 'kirki_active_callback';
+			} else {
+				return '__return_true';
+			}
+		}
 	}
 
 	/**
@@ -462,197 +470,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Build the background fields.
-	 * Takes a single field with type = background and explodes it to multiple controls.
-	 */
-	public static function build_background_fields( $fields ) {
-		$i18n    = Kirki_Toolkit::i18n();
-		$choices = self::background_choices();
-
-		foreach ( $fields as $field ) {
-
-			if ( 'background' == $field['type'] ) {
-
-				$expanded_fields = array();
-
-				// Set any unset values to avoid PHP warnings below.
-				$field['settings']    = ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) ? $field['setting'] : $field['settings'];
-				$field['section']     = ( isset( $field['section'] ) ) ? $field['section'] : 'background';
-				$field['help']        = ( isset( $field['help'] ) ) ? $field['help'] : '';
-				$field['description'] = ( isset( $field['description'] ) ) ? $field['description'] : $i18n['background-color'];
-				$field['required']    = ( isset( $field['required'] ) ) ? $field['required'] : array();
-				$field['transport']   = ( isset( $field['transport'] ) ) ? $field['transport'] : 'refresh';
-				$field['default']     = ( isset( $field['default'] ) ) ? $field['default'] : array();
-				$field['priority']    = ( isset( $field['priority'] ) ) ? $field['priority'] : 10;
-				$field['output']      = ( isset( $field['output'] ) && '' != $field['output'] ) ? $field['output'] : '';
-
-				if ( isset( $field['default']['color'] ) ) {
-					$color_mode = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
-					if ( isset( $field['default']['opacity'] ) ) {
-						$color_mode = 'color-alpha';
-					}
-					$expanded_fields[] = array(
-						'type'        => $color_mode,
-						'label'       => isset( $field['label'] ) ? $field['label'] : '',
-						'settings'    => $field['settings'].'_color',
-						'help'        => $field['help'],
-						'description' => $field['description'],
-						'default'     => $field['default']['color'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-color',
-								'callback' => array( 'Kirki_Sanitize', 'color' ),
-							),
-						) : '',
-					);
-				}
-
-				if ( isset( $field['default']['image'] ) ) {
-					$expanded_fields[] = array(
-						'type'        => 'image',
-						'settings'    => $field['settings'].'_image',
-						'description' => $i18n['background-image'],
-						'default'     => $field['default']['image'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-image',
-								'callback' => 'esc_url_raw',
-							),
-						) : '',
-					);
-				}
-
-				if ( isset( $field['default']['repeat'] ) ) {
-					$expanded_fields[] = array(
-						'type'        => 'select',
-						'settings'    => $field['settings'].'_repeat',
-						'choices'     => $choices['repeat'],
-						'description' => $i18n['background-repeat'],
-						'default'     => $field['default']['repeat'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-repeat',
-								'callback' => 'esc_attr',
-							),
-						) : '',
-					);
-				}
-
-				if ( isset( $field['default']['size'] ) ) {
-					$expanded_fields[] = array(
-						'type'        => 'radio-buttonset',
-						'settings'    => $field['settings'].'_size',
-						'choices'     => $choices['size'],
-						'description' => $i18n['background-size'],
-						'default'     => $field['default']['size'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-size',
-								'callback' => 'esc_attr',
-							),
-						) : '',
-					);
-				}
-
-				if ( isset( $field['default']['attach'] ) ) {
-					$expanded_fields[] = array(
-						'type'        => 'radio-buttonset',
-						'settings'    => $field['settings'].'_attach',
-						'choices'     => $choices['attach'],
-						'description' => $i18n['background-attachment'],
-						'default'     => $field['default']['attach'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-attachment',
-								'callback' => 'esc_attr',
-							),
-						) : '',
-					);
-				}
-
-				if ( isset( $field['default']['position'] ) ) {
-					$expanded_fields[] = array(
-						'type'        => 'select',
-						'settings'    => $field['settings'].'_position',
-						'choices'     => $choices['position'],
-						'description' => $i18n['background-position'],
-						'default'     => $field['default']['position'],
-						'output'      => ( '' != $field['output'] ) ? array(
-							array(
-								'element'  => $field['output'],
-								'property' => 'background-position',
-								'callback' => 'esc_attr',
-							),
-						) : '',
-					);
-				}
-
-				foreach ( $expanded_fields as $expanded_field ) {
-					$expanded_field['label']     = ( ! isset( $expanded_field['label'] ) ) ? '' : $expanded_field['label'];
-					$expanded_field['help']      = ( ! isset( $expanded_field['help'] ) ) ? '' : $expanded_field['help'];
-					$expanded_field['section']   = $field['section'];
-					$expanded_field['priority']  = $field['priority'];
-					$expanded_field['required']  = $field['required'];
-					$expanded_field['transport'] = $field['transport'];
-					$fields[] = $expanded_field;
-				}
-
-			}
-
-		}
-
-		return $fields;
-
-	}
-
-	/**
-	 * The background choices.
-	 * @return array<string,array>
-	 */
-	public static function background_choices() {
-
-		$i18n = Kirki_Toolkit::i18n();
-
-		$choices = array(
-			'repeat'        => array(
-				'no-repeat' => $i18n['no-repeat'],
-				'repeat'    => $i18n['repeat-all'],
-				'repeat-x'  => $i18n['repeat-x'],
-				'repeat-y'  => $i18n['repeat-y'],
-				'inherit'   => $i18n['inherit'],
-			),
-			'size'        => array(
-				'inherit' => $i18n['inherit'],
-				'cover'   => $i18n['cover'],
-				'contain' => $i18n['contain'],
-			),
-			'attach'      => array(
-				'inherit' => $i18n['inherit'],
-				'fixed'   => $i18n['fixed'],
-				'scroll'  => $i18n['scroll'],
-			),
-			'position'          => array(
-				'left-top'      => $i18n['left-top'],
-				'left-center'   => $i18n['left-center'],
-				'left-bottom'   => $i18n['left-bottom'],
-				'right-top'     => $i18n['right-top'],
-				'right-center'  => $i18n['right-center'],
-				'right-bottom'  => $i18n['right-bottom'],
-				'center-top'    => $i18n['center-top'],
-				'center-center' => $i18n['center-center'],
-				'center-bottom' => $i18n['center-bottom'],
-			),
-		);
-
-		return $choices;
-	}
-
-	/**
 	 * Sanitizes the control transport.
 	 *
 	 * @param string the control type
@@ -667,8 +484,6 @@ class Kirki_Field {
 				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
 			case 'color' :
-				$sanitize_callback = array( 'Kirki_Color', 'sanitize_hex' );
-				break;
 			case 'color-alpha' :
 				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
 				break;

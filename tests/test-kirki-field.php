@@ -61,7 +61,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'id'                => 'foo',
 				'capability'        => 'edit_theme_options',
 				'variables'         => false,
-				'active_callback'   => 'kirki_active_callback',
+				'active_callback'   => '__return_true',
 			),
 			Kirki_Field::sanitize_field( array(
 				'settings' => 'foo',
@@ -82,8 +82,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 	}
 
 	public function test_sanitize_active_callback() {
-		$this->assertEquals( '__return_true',               Kirki_Field::sanitize_active_callback( array( 'active_callback' => '__return_true' ) ) );
-		$this->assertEquals( 'kirki_active_callback', Kirki_Field::sanitize_active_callback( array() ) );
+		$this->assertEquals( '__return_true', Kirki_Field::sanitize_active_callback( array( 'active_callback' => '__return_true' ) ) );
+		$this->assertEquals( '__return_true', Kirki_Field::sanitize_active_callback( array() ) );
 	}
 
 	public function test_sanitize_capability() {
@@ -243,7 +243,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( '__return_true',   Kirki_Field::sanitize_callback( array( 'sanitize_callback' => '__return_true' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ),       Kirki_Field::sanitize_callback( array( 'type' => 'checkbox' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ),          Kirki_Field::sanitize_callback( array( 'type' => 'color-alpha' ) ) );
-		$this->assertEquals( array( 'Kirki_Color', 'sanitize_hex' ),      Kirki_Field::sanitize_callback( array( 'type' => 'color' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ),          Kirki_Field::sanitize_callback( array( 'type' => 'color' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ),     Kirki_Field::sanitize_callback( array( 'type' => 'custom' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'dropdown_pages' ), Kirki_Field::sanitize_callback( array( 'type' => 'dropdown-pages' ) ) );
 		$this->assertEquals( 'esc_textarea',                              Kirki_Field::sanitize_callback( array( 'type' => 'editor' ) ) );
@@ -345,195 +345,10 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 20, Kirki_Field::sanitize_priority( array( 'priority' => '20.356' ) ) );
 	}
 
-	public function test_build_background_fields() {
-		$initial_fields = array( array(
-			'type'      => 'background',
-			'settings'  => 'my_setting',
-			'label'     => 'Control Title',
-			'section'   => 'my_section',
-			'default'   => array(
-				'image'    => 'http://example.com/foo.png',
-				'color'    => 'rgba(255,230,34,1)',
-				'repeat'   => 'no-repeat',
-				'size'     => 'cover',
-				'attach'   => 'fixed',
-				'position' => 'left-top',
-				'opacity'  => 1
-			),
-			'priority'  => 20,
-			'output'    => 'body',
-		) );
-
-		$final_fields = array(
-			array(
-				'type'      => 'background',
-				'settings'  => 'my_setting',
-				'label'     => 'Control Title',
-				'section'   => 'my_section',
-				'default'   => array(
-					'image'    => 'http://example.com/foo.png',
-					'color'    => 'rgba(255,230,34,1)',
-					'repeat'   => 'no-repeat',
-					'size'     => 'cover',
-					'attach'   => 'fixed',
-					'position' => 'left-top',
-					'opacity'  => 1
-				),
-				'priority'  => 20,
-				'output'    => 'body',
-			),
-			array(
-				'type' => 'color-alpha',
-				'label' => 'Control Title',
-				'section' => 'my_section',
-				'settings' => 'my_setting_color',
-				'priority' => 20,
-				'help' => '',
-				'description' => 'Background Color',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'rgba(255,230,34,1)',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-color',
-						'callback' => array( 'Kirki_Sanitize', 'color' ),
-					),
-				),
-			),
-			array(
-				'type' => 'image',
-				'label' => '',
-				'section' => 'my_section',
-				'settings' => 'my_setting_image',
-				'priority' => 20,
-				'help' => '',
-				'description' => 'Background Image',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'http://example.com/foo.png',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-image',
-						'callback' => 'esc_url_raw',
-					),
-				),
-			),
-			array(
-				'type' => 'select',
-				'label' => '',
-				'section' => 'my_section',
-				'settings' => 'my_setting_repeat',
-				'priority' => 20,
-				'choices' => array(
-					'no-repeat' => 'No Repeat',
-					'repeat' => 'Repeat All',
-					'repeat-x' => 'Repeat Horizontally',
-					'repeat-y' => 'Repeat Vertically',
-					'inherit' => 'Inherit',
-				),
-				'help' => '',
-				'description' => 'Background Repeat',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'no-repeat',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-repeat',
-						'callback' => 'esc_attr',
-					),
-				),
-			),
-			array(
-				'type' => 'radio-buttonset',
-				'label' => '',
-				'section' => 'my_section',
-				'settings' => 'my_setting_size',
-				'priority' => 20,
-				'choices' => array(
-					'inherit' => 'Inherit',
-					'cover' => 'Cover',
-					'contain' => 'Contain',
-				),
-				'help' => '',
-				'description' => 'Background Size',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'cover',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-size',
-						'callback' => 'esc_attr',
-					),
-				),
-			),
-			array(
-				'type' => 'radio-buttonset',
-				'label' => '',
-				'section' => 'my_section',
-				'settings' => 'my_setting_attach',
-				'priority' => 20,
-				'choices' => array(
-					'inherit' => 'Inherit',
-					'fixed' => 'Fixed',
-					'scroll' => 'Scroll',
-				),
-				'help' => '',
-				'description' => 'Background Attachment',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'fixed',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-attachment',
-						'callback' => 'esc_attr',
-					),
-				),
-			),
-			array(
-				'type' => 'select',
-				'label' => '',
-				'section' => 'my_section',
-				'settings' => 'my_setting_position',
-				'priority' => 20,
-				'choices' => array(
-					'left-top' => 'Left Top',
-					'left-center' => 'Left Center',
-					'left-bottom' => 'Left Bottom',
-					'right-top' => 'Right Top',
-					'right-center' => 'Right Center',
-					'right-bottom' => 'Right Bottom',
-					'center-top' => 'Center Top',
-					'center-center' => 'Center Center',
-					'center-bottom' => 'Center Bottom',
-				),
-				'help' => '',
-				'description' => 'Background Position',
-				'required' => array(),
-				'transport' => 'refresh',
-				'default' => 'left-top',
-				'output' => array(
-					array(
-						'element' => 'body',
-						'property' => 'background-position',
-						'callback' => 'esc_attr',
-					),
-				),
-			)
-		);
-
-		$this->assertEquals( $final_fields, Kirki_Field::build_background_fields( $initial_fields ) );
-
-	}
-
 	public function test_fallback_callback() {
 		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ),       Kirki_Field::fallback_callback( 'checkbox' ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ),          Kirki_Field::fallback_callback( 'color-alpha' ) );
-		$this->assertEquals( array( 'Kirki_Color', 'sanitize_hex' ),      Kirki_Field::fallback_callback( 'color' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ),          Kirki_Field::fallback_callback( 'color' ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ),     Kirki_Field::fallback_callback( 'custom' ) );
 		$this->assertEquals( array( 'Kirki_Sanitize', 'dropdown_pages' ), Kirki_Field::fallback_callback( 'dropdown-pages' ) );
 		$this->assertEquals( 'esc_textarea',                              Kirki_Field::fallback_callback( 'editor' ) );

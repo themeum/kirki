@@ -361,11 +361,11 @@ class Kirki {
 		}
 
 		// Add the field to the static $fields variable properly indexed
-		self::$fields[Kirki_Field::sanitize_settings( $args )] = $args;
+		self::$fields[ Kirki_Field::sanitize_settings( $args ) ] = $args;
 
 		if ( 'background' == $args['type'] ) {
 			// Build the background fields
-			self::$fields = Kirki_Field::build_background_fields( self::$fields );
+			self::$fields = Kirki_Explode_Background_Field::process_fields( self::$fields );
 		}
 
 	}
