@@ -473,7 +473,7 @@ class Kirki_Field {
 	 * Sanitizes the control transport.
 	 *
 	 * @param string the control type
-	 * @return string[]|string the function name of a sanitization callback
+	 * @return string|string[] the function name of a sanitization callback
 	 */
 	public static function fallback_callback( $field_type ) {
 

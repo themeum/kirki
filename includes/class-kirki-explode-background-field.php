@@ -6,7 +6,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 	 * Takes a single field with type = background and explodes it to multiple controls.
 	 *
 	 * @param array
-	 * @return array
+	 * @return null|array<Array>
 	 */
 	public static function explode( $field ) {
 		$i18n    = Kirki_Toolkit::i18n();
@@ -15,8 +15,6 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 		if ( 'background' != $field['type'] ) {
 			return;
 		}
-
-		$expanded_fields = array();
 
 		// Sanitize field
 		$field = Kirki_Field::sanitize_field( $field );
@@ -27,7 +25,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 		}
 
 		$fields = array();
-		$i = 0;
+		$i      = 0;
 		foreach ( $field['default'] as $key => $value ) {
 
 			// No need to process the opacity, it is factored in the color control.
@@ -40,27 +38,23 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 			$help            = $field['help'];
 			$description     = isset( $i18n[ 'background-'.$key ] ) ? $i18n[ 'background-'.$key ] : '';
 			$output_property = 'background-'.$key;
-			$callback        = 'esc_attr';
 			$label           = ( 0 === $i ) ? $field['label'] : '';
+			$type            = 'select';
 
 			switch ( $key ) {
 				case 'color':
 					$type     = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 					$type     = ( isset( $field['default']['opacity'] ) ) ? 'color-alpha' : $type;
-					$callback =  array( 'Kirki_Sanitize', 'color' );
 					break;
 				case 'image':
 					$type     = 'image';
-					$callback = 'esc_url_raw';
 					break;
 				case 'attach':
 					$output_property = 'background-attachment';
 					$description     = $i18n['background-attachment'];
 					break;
 				default:
-					$type     = 'select';
 					$help     = '';
-					$callback = array( 'Kirki_Sanitize', 'choice' );
 					break;
 			}
 
@@ -101,7 +95,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 		foreach ( $fields as $field ) {
 			if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
 				$explode = self::explode( $field );
-				$fields = array_merge( $fields, $explode );
+				$fields  = array_merge( $fields, $explode );
 			}
 		}
 		return $fields;
