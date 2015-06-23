@@ -47,7 +47,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 				case 'color':
 					$type     = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 					$type     = ( isset( $field['default']['opacity'] ) ) ? 'color-alpha' : $type;
-					$callback =  array( 'Kirki_Sanitize', 'color' );
+					$callback = array( 'Kirki_Sanitize', 'color' );
 					break;
 				case 'image':
 					$type     = 'image';
