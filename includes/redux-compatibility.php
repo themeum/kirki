@@ -46,7 +46,7 @@ class Redux {
 
 		if ( ! isset( $args['fields'] ) || ! isset( $args['subsection'] ) || ( isset( $args['subsection'] ) && ! $args['subsection'] ) ) { // This is a panel
 			Kirki::$panels[] = array(
-				'id'          => isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr( str_shuffle( "abcdefghijklmnopqrstuvwxyz-_" ), 0, 7 ),
+				'id'          => isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz-_' ), 0, 7 ),
 				'title'       => isset( $args['title'] ) ? $args['title'] : '',
 				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
 				'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
@@ -80,12 +80,6 @@ class Redux {
 					case 'ace_editor' :
 						$field['type'] = 'textarea';
 						break;
-					case 'background' :
-						// TODO
-						break;
-					case 'border' :
-						// TODO
-						break;
 					case 'button_set' :
 						$field['type'] = 'radio-buttonset';
 						break;
@@ -93,9 +87,6 @@ class Redux {
 						if ( isset( $field['options'] ) && is_array( $field['options'] ) ) {
 							$field['type'] = 'multicheck';
 						}
-					case 'color_gradient' :
-						// TODO
-						break;
 					case 'color_rgba' :
 						$field['type'] = 'color-alpha';
 						if ( isset( $field['default'] ) && is_array( $field['default'] ) ) {
@@ -104,23 +95,8 @@ class Redux {
 							$field['default'] = Kirki_Color::get_rgba( $field['default']['color'], $field['default']['alpha'] );
 						}
 						break;
-					case 'date' :
-						// TODO
-						break;
-					case 'dimensions' :
-						// TODO
-						break;
-					case 'divide' :
-						// TODO
-						break;
-					case 'gallery' :
-						// TODO
-						break;
 					case 'image_select' :
 						$field['type'] = 'radio-image';
-						break;
-					case 'import_export' :
-						// TODO
 						break;
 					case 'info' :
 						$fiel['label'] = '';
@@ -145,26 +121,11 @@ class Redux {
 						$field['default'] .= ( isset( $field['desc'] ) ) ? $field['desc'] : '';
 						$field['default'] .= '</div>';
 						break;
-					case 'link_color' :
-						// TODO
-						break;
-					case 'media' :
-						// TODO
-						break;
-					case 'multi_text' :
-						// TODO
-						break;
 					case 'palette' :
 						$field['choices'] = $field['palettes'];
 						break;
-					case 'password' :
-						// TODO
-						break;
 					case 'raw' :
 						$field['default'] = $field['content'];
-						break;
-					case 'section' :
-						// TODO
 						break;
 					case 'select' :
 						if ( is_array( $field['choices'] ) ) {
@@ -178,9 +139,6 @@ class Redux {
 							}
 						}
 						break;
-					case 'select_image' :
-						// TODO
-						break;
 					case 'slider' :
 						$field['choices'] = array(
 							'min'  => $field['min'],
@@ -188,28 +146,30 @@ class Redux {
 							'step' => $field['step'],
 						);
 						break;
-					case 'slides' :
-						// TODO
-						break;
 					case 'spinner' :
 						$field['type'] = 'number';
 						break;
+					case 'background' :
+					case 'border' :
+					case 'color_gradient' :
+					case 'date' :
+					case 'dimensions' :
+					case 'divide' :
+					case 'gallery' :
+					case 'import_export' :
+					case 'link_color' :
+					case 'media' :
+					case 'multi_text' :
+					case 'password' :
+					case 'section' :
+					case 'select_image' :
 					case 'sortable' :
-						// TODO
-						break;
 					case 'sorter' :
-						// TODO
-						break;
 					case 'spacing' :
-						// TODO
-						break;
 					case 'spinner' :
-						// TODO
-						break;
 					case 'switch' :
-						// TODO
-						break;
 					case 'typography' :
+					case 'slides' :
 						// TODO
 						break;
 
