@@ -23,8 +23,9 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 	}
 
 	public function final_fields() {
+		$initial_fields = $this->initial_fields();
 		return array(
-			$this->initial_fields()[0],
+			$initial_fields[0],
 			'my_setting_color' => array(
 				'type' => 'color-alpha',
 				'label' => '',
