@@ -269,11 +269,6 @@ class Kirki {
 	 */
 	public static function add_panel( $id = '', $args = array() ) {
 
-		if ( is_array( $id ) && empty( $args ) ) {
-			$args = $id;
-			$id   = 'global';
-		}
-
 		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
@@ -293,11 +288,6 @@ class Kirki {
 	 * @var		array		the section arguments
 	 */
 	public static function add_section( $id, $args ) {
-
-		if ( is_array( $id ) && empty( $args ) ) {
-			$args = $id;
-			$id   = 'global';
-		}
 
 		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
