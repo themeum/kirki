@@ -29,8 +29,13 @@ class Kirki_Helper {
 	 */
 	public function array_delete( $idx, $array ) {
 
+		// Early exit and return null if $array is not an array.
+		if ( ! is_array( $array ) ) {
+			return null;
+		}
+
 		unset( $array[ $idx ] );
-		return ( is_array( $array ) ) ? array_values( $array ) : null;
+		return array_values( $array );
 
 	}
 
@@ -73,8 +78,10 @@ class Kirki_Helper {
 	 */
 	public static function get_posts( $args ) {
 
+		// Get the posts
 		$posts = get_posts( $args );
 
+		// properly format the array.
 		$items = array();
 		foreach ( $posts as $post ) {
 			$items[ $post->ID ] = $post->post_title;

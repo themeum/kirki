@@ -198,11 +198,10 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals(
 			array(
 				array(
-					'element'  => 'body > #main',
-					'property' => 'font-family',
-					'units'    => '',
-					'prefix'   => '',
-					'suffix'   => '',
+					'element'     => 'body > #main',
+					'property'    => 'font-family',
+					'units'       => '',
+					'media_query' => 'global',
 				)
 			),
 			Kirki_Field::sanitize_output( array( 'output' => array(
@@ -213,11 +212,10 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals(
 			array(
 				array(
-					'element'  => 'body > #main',
-					'property' => 'font-size',
-					'units'    => 'px !important',
-					'prefix'   => '@media (min-width: 700px) and (orientation: landscape) {',
-					'suffix'   => '}',
+					'element'     => 'body > #main',
+					'property'    => 'font-size',
+					'units'       => 'px !important',
+					'media_query' => '@media (min-width: 700px) and (orientation: landscape)',
 				)
 			),
 			Kirki_Field::sanitize_output( array( 'output' => array(

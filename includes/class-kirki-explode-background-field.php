@@ -12,6 +12,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 		$i18n    = Kirki_Toolkit::i18n();
 		$choices = self::background_choices();
 
+		// Early exit if this is not a background field.
 		if ( 'background' != $field['type'] ) {
 			return;
 		}
@@ -110,7 +111,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 
 		$i18n = Kirki_Toolkit::i18n();
 
-		$choices = array(
+		return array(
 			'repeat'        => array(
 				'no-repeat' => $i18n['no-repeat'],
 				'repeat'    => $i18n['repeat-all'],
@@ -141,6 +142,6 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 			),
 		);
 
-		return $choices;
 	}
+
 }

@@ -408,12 +408,20 @@ class Kirki_Field {
 		}
 		// sanitize array items individually
 		foreach ( $field['output'] as $output ) {
+			if ( ! isset( $output['media_query'] ) ) {
+				if ( isset( $output['prefix'] ) && ( false !== strpos( $output['prefix'], '@media' ) ) ) {
+					$output['media_query'] = str_replace( '{', '', $output['prefix'] );
+					$output['prefix']      = '';
+					$output['suffix']      = '';
+				} else {
+					$output['media_query'] = 'global';
+				}
+			}
 			$output_sanitized[] = array(
-				'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-				'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-				'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-				'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
-				'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
+				'element'     => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
+				'property'    => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
+				'units'       => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
+				'media_query' => trim( sanitize_text_field( $output['media_query'] ) ),
 			);
 		}
 		return $output_sanitized;

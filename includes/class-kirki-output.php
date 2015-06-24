@@ -47,19 +47,10 @@ class Kirki_Output {
 			return;
 		}
 
-		// Are we dealing with a single style or multiple styles?
-		$multiple_styles = isset( $output[0]['element'] ) ? true : false;
-
 		self::$settings = $setting;
 		self::$type     = $type;
-
-		if ( $multiple_styles ) { // Single style
-			self::$output = $output;
-		} else { // Multiple styles
-			self::$output[0] = $output;
-		}
-		// Set the value
-		self::$value = self::get_value();
+		self::$output   = Kirki_Field::sanitize_output( array( 'output' => $output ) );
+		self::$value    = self::get_value();
 
 		return self::styles_parse();
 
@@ -100,32 +91,36 @@ class Kirki_Output {
 	 */
 	public static function styles_parse() {
 
-		$styles = self::styles();
+		$css = self::add_prefixes( self::styles() );
 
-		$css = '';
+		/**
+		 * Process the array of CSS properties and produce the final CSS
+		 */
+		$final_css = '';
+		foreach ( $css as $media_query => $styles ) {
 
-		// Early exit if styles are empty or not an array
-		if ( empty( $styles ) || ! is_array( $styles ) ) {
-			return;
-		}
+			$final_css .= ( 'global' != $media_query ) ? $media_query . '{' : '';
 
-		foreach ( $styles as $style => $style_array ) {
-			$css .= $style.'{';
-			foreach ( $style_array as $property => $value ) {
-				// Take care of formatting the URL for background-image statements.
-				if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
-					$value = 'url("'.$value.'")';
-				}
-				// Make sure the background-position property is properly formatted
-				if ( 'background-position' == $property ) {
-					$value = str_replace( array( '_', '-' ), ' ', $value );
-				}
-				$css .= $property.':'.$value.';';
+			foreach ( $styles as $style => $style_array ) {
+				$final_css .= $style . '{';
+					foreach ( $style_array as $property => $value ) {
+						if ( is_array( $value ) ) {
+							foreach ( $value as $sub_value ) {
+								$final_css .= $property . ':' . $sub_value . ';';
+							}
+						} else {
+							$final_css .= $property . ':' . $value . ';';
+						}
+					}
+				$final_css .= '}';
 			}
-			$css .= '}';
+
+			$final_css .= ( 'global' != $media_query ) ? '}' : '';
+
 		}
 
-		return $css;
+
+		return $final_css;
 
 	}
 
@@ -137,16 +132,85 @@ class Kirki_Output {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
-			// do we have a prefix?
-			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			// Do we have units?
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
-			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
-				$styles[ $prefix.$output['element'] ][ $output['property'] ] = self::$value.$units;
-			}
+			$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = self::$value.$units;
 		}
 
 		return $styles;
+
+	}
+
+	/**
+	 * Add prefixes if necessary
+	 */
+	public static function add_prefixes( $css ) {
+
+		if ( ! is_array( $css ) ) {
+			return;
+		}
+
+		foreach ( $css as $media_query => $elements ) {
+
+			foreach ( $elements as $element => $style_array ) {
+
+				foreach ( $style_array as $property => $value ) {
+
+					// border-radius
+					if ( 'border-radius' == $property ) {
+						$css[$media_query][$element]['-webkit-border-radius'] = $value;
+					}
+					// box-shadow
+					if ( 'box-shadow' == $property ) {
+						$css[$media_query][$element]['-webkit-box-shadow'] = $value;
+						$css[$media_query][$element]['-moz-box-shadow']    = $value;
+					}
+					// box-sizing
+					elseif ( 'box-sizing' == $property ) {
+						$css[$media_query][$element]['-webkit-box-sizing'] = $value;
+						$css[$media_query][$element]['-moz-box-sizing']    = $value;
+					}
+					// text-shadow
+					elseif ( 'text-shadow' == $property ) {
+						$css[$media_query][$element]['-webkit-text-shadow'] = $value;
+						$css[$media_query][$element]['-moz-text-shadow']    = $value;
+					}
+					// transform
+					elseif ( 'transform' == $property ) {
+						$css[$media_query][$element]['-webkit-transform'] = $value;
+						$css[$media_query][$element]['-moz-transform']    = $value;
+						$css[$media_query][$element]['-ms-transform']     = $value;
+						$css[$media_query][$element]['-o-transform']      = $value;
+					}
+					// background-size
+					elseif ( 'background-size' == $property ) {
+						$css[$media_query][$element]['-webkit-background-size'] = $value;
+						$css[$media_query][$element]['-moz-background-size']    = $value;
+						$css[$media_query][$element]['-ms-background-size']     = $value;
+						$css[$media_query][$element]['-o-background-size']      = $value;
+					}
+					// transition
+					elseif ( 'transition' == $property ) {
+						$css[$media_query][$element]['-webkit-transition'] = $value;
+						$css[$media_query][$element]['-moz-transition']    = $value;
+						$css[$media_query][$element]['-ms-transition']     = $value;
+						$css[$media_query][$element]['-o-transition']      = $value;
+					}
+					// transition-property
+					elseif ( 'transition-property' == $property ) {
+						$css[$media_query][$element]['-webkit-transition-property'] = $value;
+						$css[$media_query][$element]['-moz-transition-property']    = $value;
+						$css[$media_query][$element]['-ms-transition-property']     = $value;
+						$css[$media_query][$element]['-o-transition-property']      = $value;
+					}
+
+				}
+
+			}
+
+		}
+
+		return $css;
 
 	}
 
