@@ -47,23 +47,30 @@ class Kirki_Output {
 			return;
 		}
 
+		// Are we dealing with a single style or multiple styles?
 		$multiple_styles = isset( $output[0]['element'] ) ? true : false;
 
 		self::$settings = $setting;
 		self::$type     = $type;
-		if ( $multiple_styles ) {
+
+		if ( $multiple_styles ) { // Single style
 			self::$output = $output;
-		} else {
+		} else { // Multiple styles
 			self::$output[0] = $output;
 		}
+		// Set the value
 		self::$value = self::get_value();
 
 		return self::styles_parse();
 
 	}
 
+	/**
+	 * Gets the value
+	 */
 	public static function get_value() {
 
+		// Get the default value
 		$default = '';
 		if ( isset( Kirki::$fields[ self::$settings ] ) && isset( Kirki::$fields[ self::$settings ]['default'] ) ) {
 			if ( ! is_array( Kirki::$fields[ self::$settings ]['default'] ) ) {
@@ -71,12 +78,13 @@ class Kirki_Output {
 			}
 		}
 
-		if ( 'theme_mod' == self::$type ) {
+		if ( 'theme_mod' == self::$type ) { // This is a theme_mod
 			$value = get_theme_mod( self::$settings, $default );
-		} else {
+		} else { // This is an option
 			$value = get_option( self::$settings, $default );
 		}
 
+		// Do we need to run this through a callback action?
 		if ( '' != self::$callback ) {
 			$value = call_user_func( self::$callback, $value );
 		}
@@ -104,9 +112,12 @@ class Kirki_Output {
 		foreach ( $styles as $style => $style_array ) {
 			$css .= $style.'{';
 			foreach ( $style_array as $property => $value ) {
+				// Take care of formatting the URL for background-image statements.
 				if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
 					$value = 'url("'.$value.'")';
-				} elseif ( 'background-position' == $property ) {
+				}
+				// Make sure the background-position property is properly formatted
+				if ( 'background-position' == $property ) {
 					$value = str_replace( array( '_', '-' ), ' ', $value );
 				}
 				$css .= $property.':'.$value.';';
@@ -126,7 +137,9 @@ class Kirki_Output {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
+			// do we have a prefix?
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
+			// Do we have units?
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
 			if ( isset( $output['element'] ) && isset( $output['property'] ) ) {
 				$styles[ $prefix.$output['element'] ][ $output['property'] ] = self::$value.$units;

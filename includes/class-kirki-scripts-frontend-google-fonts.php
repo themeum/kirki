@@ -28,6 +28,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 	public function google_link() {
 
+		// Get the array of fields
 		$fields = Kirki::$fields;
 
 		// Early exit if no fields are found.
@@ -38,9 +39,11 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		$fonts = array();
 		foreach ( $fields as $field ) {
 
+			// Sanitize the field's output & settings_raw items.
 			$field['output']       = Kirki_Field::sanitize_output( $field );
 			$field['settings_raw'] = Kirki_Field::sanitize_settings_raw( $field );
 
+			// Make sure output is properly formatted
 			if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
 
 				foreach ( $field['output'] as $output ) {
@@ -50,10 +53,13 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 						$value = Kirki::get_option( $field['settings_raw'] );
 
 						if ( 'font-family' == $output['property'] ) {
+							// Add the font-family to the array
 							$fonts[]['font-family'] = $value;
 						} else if ( 'font-weight' == $output['property'] ) {
+							// Add font-weight to the array
 							$fonts[]['font-weight'] = $value;
 						} else if ( 'font-subset' == $output['property'] ) {
+							// add font subsets to the array
 							$fonts[]['subsets'] = $value;
 						}
 
@@ -67,6 +73,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 		foreach ( $fonts as $font ) {
 
+			// Do we have font-families?
 			if ( isset( $font['font-family'] ) ) {
 
 				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
@@ -78,6 +85,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 			}
 
+			// Do we have font-weights?
 			if ( isset( $font['font-weight'] ) ) {
 
 				$font_weights   = ( ! isset( $font_weights ) ) ? array() : $font_weights;
@@ -85,6 +93,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 			}
 
+			// Do we have font-subsets?
 			if ( isset( $font['subsets'] ) ) {
 
 				$font_subsets   = ( ! isset( $font_subsets ) ) ? array() : $font_subsets;
@@ -94,6 +103,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 		}
 
+		// Make sure there are no empty values and define defaults.
 		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
 		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? '400' : $font_weights;
 		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? 'all' : $font_subsets;
@@ -102,6 +112,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 			$font_families = false;
 		}
 
+		// Return the font URL.
 		return ( $font_families ) ? Kirki_Toolkit::fonts()->get_google_font_uri( $font_families, $font_weights, $font_subsets ) : false;
 
 	}
