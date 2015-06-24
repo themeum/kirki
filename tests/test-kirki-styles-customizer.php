@@ -12,8 +12,8 @@ class Test_Kirki_Styles_Customizer extends WP_UnitTestCase {
 	public function test_custom_css() {
 		add_filter( 'kirki/config', function( $config ) {
 			$config['color_accent'] = '#00bcd4';
-			$config['color_back']   = '#455a64';
-			$config['width']        = '20%';
+			$config['color_back'] = '#455a64';
+			$config['width'] = '20%';
 			return $config;
 		});
 

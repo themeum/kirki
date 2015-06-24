@@ -11,19 +11,19 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 				'theme_mod',
 				array(
 					array(
-						'element'  => 'body > #foo',
+						'element' => 'body > #foo',
 						'property' => 'background-color',
-						'units'    => '!important',
-						'prefix'   => '@media (min-width: 700px) {',
-						'suffix'   => '}',
+						'units' => '!important',
+						'prefix' => '@media (min-width: 700px) {',
+						'suffix' => '}',
 					),
 					array(
-						'element'  => '#bar',
+						'element' => '#bar',
 						'property' => 'color',
 					),
 					array(
-						'element'     => 'body > #foo a:after',
-						'property'    => 'color',
+						'element' => 'body > #foo a:after',
+						'property' => 'color',
 						'media_query' => '@media (min-width: 700px)',
 					),
 				)
@@ -40,14 +40,14 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 				'option',
 				array(
 					array(
-						'element'  => 'body > #foo',
+						'element' => 'body > #foo',
 						'property' => 'background-color',
-						'units'    => '!important',
-						'prefix'   => '@media (min-width: 700px) and (orientation: landscape) {',
-						'suffix'   => '}',
+						'units' => '!important',
+						'prefix' => '@media (min-width: 700px) and (orientation: landscape) {',
+						'suffix' => '}',
 					),
 					array(
-						'element'  => '#bar',
+						'element' => '#bar',
 						'property' => 'color',
 					),
 				)

@@ -66,7 +66,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		 */
 		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(255,255,255,1)' ) );
 		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(255,255,255,0)' ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(  255, 255, 255, 0    )   ' ) );
+		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba( 255, 255, 255, 0 ) ' ) );
 		$this->assertEquals( true, ( '#ffffff' != Kirki_Color::rgba2hex( 'rgba(255,230,255,1)' ) ) );
 		/**
 		 * Black
@@ -133,11 +133,11 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 
 	public function test_hex_to_hsv() {
 
-		$white = array( 'h' => 0,    's' => 0, 'v' => 1 );
-		$black = array( 'h' => 0,    's' => 0, 'v' => 0 );
-		$red   = array( 'h' => 0,    's' => 1, 'v' => 1 );
+		$white = array( 'h' => 0, 's' => 0, 'v' => 1 );
+		$black = array( 'h' => 0, 's' => 0, 'v' => 0 );
+		$red = array( 'h' => 0, 's' => 1, 'v' => 1 );
 		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
-		$blue  = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
+		$blue = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
 
 		$this->assertEquals( $white, Kirki_Color::hex_to_hsv( '#ffffff' ) );
 		$this->assertEquals( $black, Kirki_Color::hex_to_hsv( '#000000' ) );
@@ -148,41 +148,41 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 
 	public function test_rgb_to_hsv() {
 
-		$white = array( 'h' => 0,    's' => 0, 'v' => 1 );
-		$black = array( 'h' => 0,    's' => 0, 'v' => 0 );
-		$red   = array( 'h' => 0,    's' => 1, 'v' => 1 );
+		$white = array( 'h' => 0, 's' => 0, 'v' => 1 );
+		$black = array( 'h' => 0, 's' => 0, 'v' => 0 );
+		$red = array( 'h' => 0, 's' => 1, 'v' => 1 );
 		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
-		$blue  = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
+		$blue = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
 
 		$this->assertEquals( $white, Kirki_Color::rgb_to_hsv( array( 255, 255, 255 ) ) );
-		$this->assertEquals( $black, Kirki_Color::rgb_to_hsv( array( 0,   0,   0   ) ) );
-		$this->assertEquals( $red,   Kirki_Color::rgb_to_hsv( array( 255, 0,   0   ) ) );
-		$this->assertEquals( $green, Kirki_Color::rgb_to_hsv( array( 0,   255, 0   ) ) );
-		$this->assertEquals( $blue,  Kirki_Color::rgb_to_hsv( array( 0,   0,   255 ) ) );
+		$this->assertEquals( $black, Kirki_Color::rgb_to_hsv( array( 0, 0, 0 ) ) );
+		$this->assertEquals( $red, Kirki_Color::rgb_to_hsv( array( 255, 0, 0 ) ) );
+		$this->assertEquals( $green, Kirki_Color::rgb_to_hsv( array( 0, 255, 0 ) ) );
+		$this->assertEquals( $blue, Kirki_Color::rgb_to_hsv( array( 0, 0, 255 ) ) );
 	}
 
 	public function test_color_difference() {
-		$this->assertEquals( '0',   Kirki_Color::color_difference( 'fff',      '#ffffff' ) );
-		$this->assertEquals( '765', Kirki_Color::color_difference( 'fff',     '000'      ) );
-		$this->assertEquals( '765', Kirki_Color::color_difference( '#000000', '#ffffff'  ) );
-		$this->assertEquals( '522', Kirki_Color::color_difference( '#f2f2f2', '#c00'     ) );
-		$this->assertEquals( '39',  Kirki_Color::color_difference( '#f2f2f2', '#ffffff'  ) );
+		$this->assertEquals( '0', Kirki_Color::color_difference( 'fff', '#ffffff' ) );
+		$this->assertEquals( '765', Kirki_Color::color_difference( 'fff', '000' ) );
+		$this->assertEquals( '765', Kirki_Color::color_difference( '#000000', '#ffffff' ) );
+		$this->assertEquals( '522', Kirki_Color::color_difference( '#f2f2f2', '#c00' ) );
+		$this->assertEquals( '39', Kirki_Color::color_difference( '#f2f2f2', '#ffffff' ) );
 	}
 
 	public function test_brightness_difference() {
-		$this->assertEquals( '0',   Kirki_Color::brightness_difference( 'fff',      '#ffffff' ) );
-		$this->assertEquals( '255', Kirki_Color::brightness_difference( 'fff',     '000'      ) );
-		$this->assertEquals( '255', Kirki_Color::brightness_difference( '#000000', '#ffffff'  ) );
-		$this->assertEquals( '181', Kirki_Color::brightness_difference( '#f2f2f2', '#c00'     ) );
-		$this->assertEquals( '13',  Kirki_Color::brightness_difference( '#f2f2f2', '#ffffff'  ) );
+		$this->assertEquals( '0', Kirki_Color::brightness_difference( 'fff', '#ffffff' ) );
+		$this->assertEquals( '255', Kirki_Color::brightness_difference( 'fff', '000' ) );
+		$this->assertEquals( '255', Kirki_Color::brightness_difference( '#000000', '#ffffff' ) );
+		$this->assertEquals( '181', Kirki_Color::brightness_difference( '#f2f2f2', '#c00' ) );
+		$this->assertEquals( '13', Kirki_Color::brightness_difference( '#f2f2f2', '#ffffff' ) );
 	}
 
 	public function test_lumosity_difference() {
-		$this->assertEquals( '1',    Kirki_Color::lumosity_difference( 'fff',      '#ffffff' ) );
-		$this->assertEquals( '21',   Kirki_Color::lumosity_difference( 'fff',     '000'      ) );
-		$this->assertEquals( '21',   Kirki_Color::lumosity_difference( '#000000', '#ffffff'  ) );
-		$this->assertEquals( '5.23', Kirki_Color::lumosity_difference( '#f2f2f2', '#c00'     ) );
-		$this->assertEquals( '1.12', Kirki_Color::lumosity_difference( '#f2f2f2', '#ffffff'  ) );
+		$this->assertEquals( '1', Kirki_Color::lumosity_difference( 'fff', '#ffffff' ) );
+		$this->assertEquals( '21', Kirki_Color::lumosity_difference( 'fff', '000' ) );
+		$this->assertEquals( '21', Kirki_Color::lumosity_difference( '#000000', '#ffffff' ) );
+		$this->assertEquals( '5.23', Kirki_Color::lumosity_difference( '#f2f2f2', '#c00' ) );
+		$this->assertEquals( '1.12', Kirki_Color::lumosity_difference( '#f2f2f2', '#ffffff' ) );
 	}
 
 }

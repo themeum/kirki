@@ -4,11 +4,11 @@ class Test_Kirki_Deprecated extends WP_UnitTestCase {
 
 	public function add_theme_mod_field() {
 		Kirki::add_field( '', array(
-			'type'        => 'text',
-			'settings'    => 'the_mod_option',
-			'section'     => 'my_section',
-			'default'     => 'foo',
-			'priority'    => 20,
+			'type' => 'text',
+			'settings' => 'the_mod_option',
+			'section' => 'my_section',
+			'default' => 'foo',
+			'priority' => 20,
 			'option_type' => 'theme_mod',
 		) );
 	}

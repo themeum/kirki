@@ -4,21 +4,21 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 
 	public function initial_fields() {
 		return array( array(
-			'type'      => 'background',
-			'settings'  => 'my_setting',
-			'label'     => 'Control Title',
-			'section'   => 'my_section',
-			'default'   => array(
-				'image'    => 'http://example.com/foo.png',
-				'color'    => 'rgba(255,230,34,1)',
-				'repeat'   => 'no-repeat',
-				'size'     => 'cover',
-				'attach'   => 'fixed',
+			'type' => 'background',
+			'settings' => 'my_setting',
+			'label' => 'Control Title',
+			'section' => 'my_section',
+			'default' => array(
+				'image' => 'http://example.com/foo.png',
+				'color' => 'rgba(255,230,34,1)',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'fixed',
 				'position' => 'left-top',
-				'opacity'  => 1
+				'opacity' => 1
 			),
-			'priority'  => 20,
-			'output'    => 'body',
+			'priority' => 20,
+			'output' => 'body',
 		) );
 	}
 

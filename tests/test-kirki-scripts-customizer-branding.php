@@ -5,7 +5,7 @@ class Test_Kirki_Scripts_Customizer_Branding extends WP_UnitTestCase {
 	public function test_generate_script() {
 		add_filter( 'kirki/config', function() {
 			return array(
-				'logo_image'  => 'http://foo.com/bar.png',
+				'logo_image' => 'http://foo.com/bar.png',
 				'description' => 'Lorem ipsum dolor sit amet',
 			);
 		});
@@ -24,7 +24,7 @@ class Test_Kirki_Scripts_Customizer_Branding extends WP_UnitTestCase {
 
 		add_filter( 'kirki/config', function() {
 			return array(
-				'logo_image'  => 'http://foo.com/bar.png',
+				'logo_image' => 'http://foo.com/bar.png',
 				'description' => 'Lorem ipsum dolor sit amet',
 			);
 		});
