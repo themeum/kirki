@@ -65,6 +65,7 @@ class Kirki_Field {
 	 */
 	public static function sanitize_control_type( $field ) {
 
+		// If no field type has been defined then fallback to text
 		if ( ! isset( $field['type'] ) ) {
 			return 'text';
 		}
@@ -72,6 +73,10 @@ class Kirki_Field {
 		switch ( $field['type'] ) {
 
 			case 'checkbox' :
+				/**
+				 * Tweaks for backwards-compatibility:
+				 * Prior to version 0.8 switch & toggle were part of the checkbox control.
+				 */
 				if ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
 					$field['type'] = 'switch';
 				} elseif ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
@@ -79,6 +84,10 @@ class Kirki_Field {
 				}
 				break;
 			case 'radio' :
+				/**
+				 * Tweaks for backwards-compatibility:
+				 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
+				 */
 			 	if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
 					$field['type'] = 'radio-buttonset';
 				} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
@@ -87,12 +96,18 @@ class Kirki_Field {
 				break;
 			case 'group-title' :
 			case 'group_title' :
+				/**
+				 * Tweaks for backwards-compatibility:
+				 * Prior to version 0.8 there was a group-title control.
+				 */
 				$field['type'] = 'custom';
 				break;
 			case 'color_alpha' :
+				// Just making sure that common mistakes will still work.
 				$field['type'] = 'color-alpha';
 				break;
 			case 'color' :
+				// If a default value of rgba() is defined for a color control then use color-alpha instead.
 				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
 					$field['type'] = 'color-alpha';
 				}
@@ -114,8 +129,13 @@ class Kirki_Field {
 		if ( isset( $field['option_type'] ) ) {
 			return esc_attr( $field['option_type'] );
 		}
+		// If no 'option_type' has been defined then try to get the option from the kirki/config filter.
 		$config = apply_filters( 'kirki/config', array() );
-		return ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
+		if ( isset( $config['option_type'] ) ) {
+			return esc_attr( $config['option_type'] );
+		}
+		// Fallback to theme_mod
+		return 'theme_mod';
 
 	}
 
@@ -130,6 +150,7 @@ class Kirki_Field {
 		if ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) {
 			return $field['variables'];
 		}
+		// fallback to null
 		return null;
 
 	}
@@ -145,9 +166,11 @@ class Kirki_Field {
 		if ( isset( $field['active_callback'] ) ) {
 			return $field['active_callback'];
 		}
+		// If the 'required' argument is set then we'll need to auto-calculate things.
 		if ( isset( $field['required'] ) ) {
 			return 'kirki_active_callback';
 		}
+		// fallback to __return_true
 		return '__return_true';
 
 	}
@@ -161,12 +184,15 @@ class Kirki_Field {
 	public static function sanitize_capability( $field ) {
 
 		if ( ! isset( $field['capability'] ) ) {
+			// Try to get a value from the kirki/config filter
 			$config = apply_filters( 'kirki/config', array() );
 			if ( isset( $config['capability'] ) ) {
 				return esc_attr( $config['capability'] );
 			}
+			// fallback to edit_theme_options
 			return 'edit_theme_options';
 		}
+		// All good, a capability has been defined so return that escaped.
 		return esc_attr( $field['capability'] );
 
 	}
@@ -260,9 +286,11 @@ class Kirki_Field {
 	 */
 	public static function sanitize_default( $field ) {
 
+		// make sure a default value is defined.
 		if ( ! isset( $field['default'] ) ) {
 			return '';
 		}
+		// If an array then sanitize the array items separately
 		if ( is_array( $field['default'] ) ) {
 			array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['default'];
@@ -271,6 +299,7 @@ class Kirki_Field {
 		if ( isset( $field['type'] ) && 'custom' == $field['type'] ) {
 			return $field['default'];
 		}
+		// fallback to escaping the default value.
 		return esc_textarea( $field['default'] );
 
 	}
@@ -325,9 +354,11 @@ class Kirki_Field {
 			}
 			return '';
 		}
+		// Return empty string if not set.
 		if ( ! isset( $field['help'] ) ) {
 			return '';
 		}
+		// Fallback to stripping all tags and returning.
 		return wp_strip_all_tags( $field['help'] );
 
 	}
@@ -336,17 +367,20 @@ class Kirki_Field {
 	 * Sanitizes the control choices.
 	 *
 	 * @param array the field definition
-	 * @return array
+	 * @return array|string
 	 */
 	public static function sanitize_choices( $field ) {
 
+		// If not set then return an empty array.
 		if ( ! isset( $field['choices'] ) ) {
 			return array();
 		}
+		// sanitize the array recursively.
 		if ( is_array( $field['choices'] ) ) {
 			array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['choices'];
 		}
+		// this is a string so fallback to escaping the value and return.
 		return esc_attr( $field['choices'] );
 
 	}
@@ -397,6 +431,7 @@ class Kirki_Field {
 		if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) {
 			return 'postMessage';
 		}
+		// fallback to 'refresh'
 		return 'refresh';
 
 	}
