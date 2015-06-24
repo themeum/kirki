@@ -110,22 +110,28 @@ class Kirki_Field {
 	 * @return string (theme_mod|option)
 	 */
 	public static function sanitize_type( $field ) {
-		$config = apply_filters( 'kirki/config', array() );
+
 		if ( isset( $field['option_type'] ) ) {
 			return esc_attr( $field['option_type'] );
-		} else {
-			return ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
 		}
+		$config = apply_filters( 'kirki/config', array() );
+		return ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
+
 	}
 
 	/**
 	 * Sanitizes the setting variables.
 	 *
 	 * @param array the field definition
-	 * @return string
+	 * @return mixed
 	 */
 	public static function sanitize_variables( $field ) {
-		return ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : false;
+
+		if ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) {
+			return $field['variables'];
+		}
+		return null;
+
 	}
 
 	/**
@@ -135,15 +141,15 @@ class Kirki_Field {
 	 * @return string callable function name.
 	 */
 	public static function sanitize_active_callback( $field ) {
+
 		if ( isset( $field['active_callback'] ) ) {
 			return $field['active_callback'];
-		} else {
-			if ( isset( $field['required'] ) ) {
-				return 'kirki_active_callback';
-			} else {
-				return '__return_true';
-			}
 		}
+		if ( isset( $field['required'] ) ) {
+			return 'kirki_active_callback';
+		}
+		return '__return_true';
+
 	}
 
 	/**
@@ -153,12 +159,16 @@ class Kirki_Field {
 	 * @return string (theme_mod|option)
 	 */
 	public static function sanitize_capability( $field ) {
+
 		if ( ! isset( $field['capability'] ) ) {
 			$config = apply_filters( 'kirki/config', array() );
-			return isset( $config['capability'] ) ? esc_attr( $config['capability'] ) : 'edit_theme_options';
-		} else {
-			return esc_attr( $field['capability'] );
+			if ( isset( $config['capability'] ) ) {
+				return esc_attr( $config['capability'] );
+			}
+			return 'edit_theme_options';
 		}
+		return esc_attr( $field['capability'] );
+
 	}
 
 	/**
@@ -174,13 +184,11 @@ class Kirki_Field {
 		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
 		 */
 		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
-			$field['settings'] = $field['setting'];
+			return sanitize_key( $field['setting'] );
 		}
 
 		// Sanitize the field's settings attribute.
-		$field['settings'] = sanitize_key( $field['settings'] );
-
-		return $field['settings'];
+		return sanitize_key( $field['settings'] );
 
 	}
 
@@ -196,7 +204,6 @@ class Kirki_Field {
 		if ( ( isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
 			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
 		}
-
 		return $field['settings'];
 
 	}
@@ -208,7 +215,12 @@ class Kirki_Field {
 	 * @return string
 	 */
 	public static function sanitize_label( $field ) {
-		return ( isset( $field['label'] ) ) ? esc_html( $field['label'] ) : '';
+
+		if ( isset( $field['label'] ) ) {
+			return esc_html( $field['label'] );
+		}
+		return '';
+
 	}
 
 	/**
@@ -218,7 +230,13 @@ class Kirki_Field {
 	 * @return string
 	 */
 	public static function sanitize_section( $field ) {
+
+		// If no section is defined then make sure we add the one section that is ALWAYS present: title_tagline
+		if ( ! isset( $field['section'] ) ) {
+			return 'title_tagline';
+		}
 		return sanitize_key( $field['section'] );
+
 	}
 
 	/**
@@ -231,8 +249,7 @@ class Kirki_Field {
 	 * @return string
 	 */
 	public static function sanitize_id( $field ) {
-		$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
-		return sanitize_key( $id );
+		return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) ) );
 	}
 
 	/**
@@ -245,29 +262,17 @@ class Kirki_Field {
 
 		if ( ! isset( $field['default'] ) ) {
 			return '';
-		} else {
-			if ( is_array( $field['default'] ) ) {
-				array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
-				return $field['default'];
-			} else {
-				if ( isset( $field['type'] ) && 'custom' != $field['type'] ) {
-					return esc_textarea( $field['default'] );
-				} else {
-					// Return raw & unfiltered for custom controls
-					return $field['default'];
-				}
-			}
 		}
+		if ( is_array( $field['default'] ) ) {
+			array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			return $field['default'];
+		}
+		// Return raw & unfiltered for custom controls
+		if ( isset( $field['type'] ) && 'custom' == $field['type'] ) {
+			return $field['default'];
+		}
+		return esc_textarea( $field['default'] );
 
-	}
-
-	/**
-	 * Sanitizes the defaults array.
-	 * This is used as a callback function in the sanitize_default method.
-	 */
-	public static function sanitize_defaults_array( $value = '', $key = '' ) {
-		$value = esc_textarea( $value );
-		$key   = esc_attr( $key );
 	}
 
 	/**
@@ -292,9 +297,8 @@ class Kirki_Field {
 		 */
 		if ( isset( $field['subtitle'] ) ) {
 			return wp_strip_all_tags( $field['subtitle'] );
-		} else {
-			return wp_strip_all_tags( $field['description'] );
 		}
+		return wp_strip_all_tags( $field['description'] );
 
 	}
 
@@ -316,9 +320,15 @@ class Kirki_Field {
 		 */
 		if ( isset( $field['subtitle'] ) ) {
 			// Use old arguments form.
-			$field['help'] = ( isset( $field['description'] ) ) ? $field['description'] : '';
+			if ( isset( $field['description'] ) ) {
+				return wp_strip_all_tags( $field['description'] );
+			}
+			return '';
 		}
-		return isset( $field['help'] ) ? wp_strip_all_tags( $field['help'] ) : '';
+		if ( ! isset( $field['help'] ) ) {
+			return '';
+		}
+		return wp_strip_all_tags( $field['help'] );
 
 	}
 
@@ -329,16 +339,16 @@ class Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize_choices( $field ) {
+
 		if ( ! isset( $field['choices'] ) ) {
 			return array();
-		} else {
-			if ( is_array( $field['choices'] ) ) {
-				array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
-				return $field['choices'];
-			} else {
-				return esc_attr( $field['choices'] );
-			}
 		}
+		if ( is_array( $field['choices'] ) ) {
+			array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			return $field['choices'];
+		}
+		return esc_attr( $field['choices'] );
+
 	}
 
 	/**
@@ -348,28 +358,32 @@ class Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize_output( $field ) {
-		if ( isset( $field['output'] ) ) {
-			if ( is_array( $field['output'] ) ) {
-				$output_sanitized = array();
-				if ( isset( $field['output']['element'] ) ) {
-					$field['output'] = array( $field['output'] );
-				}
-				foreach ( $field['output'] as $output ) {
-					$output_sanitized[] = array(
-						'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-						'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-						'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-						'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
-						'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
-					);
-				}
-			} else {
-				$output_sanitized = esc_attr( $field['output'] );
-			}
-		} else {
-			$output_sanitized = null;
+
+		// Early exit if output is not set
+		if ( ! isset( $field['output'] ) ) {
+			return null;
+		}
+		// sanitize using esc_attr if output is string.
+		if ( ! is_array( $field['output'] ) ) {
+			return esc_attr( $field['output'] );
+		}
+		$output_sanitized = array();
+		// convert to multidimentional array if necessary
+		if ( isset( $field['output']['element'] ) ) {
+			$field['output'] = array( $field['output'] );
+		}
+		// sanitize array items individually
+		foreach ( $field['output'] as $output ) {
+			$output_sanitized[] = array(
+				'element'  => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
+				'property' => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
+				'units'    => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
+				'prefix'   => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
+				'suffix'   => ( isset( $output['suffix'] ) ) ? sanitize_text_field( $output['suffix'] ) : '',
+			);
 		}
 		return $output_sanitized;
+
 	}
 
 	/**
@@ -379,7 +393,12 @@ class Kirki_Field {
 	 * @return string postMessage|refresh (defaults to refresh)
 	 */
 	public static function sanitize_transport( $field ) {
-		return ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) ? 'postMessage' : 'refresh';
+
+		if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) {
+			return 'postMessage';
+		}
+		return 'refresh';
+
 	}
 
 	/**
@@ -392,9 +411,9 @@ class Kirki_Field {
 
 		if ( isset( $field['sanitize_callback'] ) && ! empty( $field['sanitize_callback'] ) ) {
 			return $field['sanitize_callback'];
-		} else { // Fallback callback
-			return self::fallback_callback( $field['type'] );
 		}
+		// Fallback callback
+		return self::fallback_callback( $field['type'] );
 
 	}
 
@@ -405,6 +424,8 @@ class Kirki_Field {
 	 * @return array|null
 	 */
 	public static function sanitize_js_vars( $field ) {
+
+		$js_vars_sanitized = null;
 		if ( isset( $field['js_vars'] ) && is_array( $field['js_vars'] ) ) {
 			$js_vars_sanitized = array();
 			if ( isset( $field['js_vars']['element'] ) ) {
@@ -418,10 +439,9 @@ class Kirki_Field {
 					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
 				);
 			}
-		} else {
-			$js_vars_sanitized = null;
 		}
 		return $js_vars_sanitized;
+
 	}
 
 	/**
@@ -431,6 +451,8 @@ class Kirki_Field {
 	 * @return array|null
 	 */
 	public static function sanitize_required( $field ) {
+
+		$required_sanitized = null;
 		if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
 			$required_sanitized = array();
 			if ( isset( $field['required']['setting'] ) ) {
@@ -443,10 +465,9 @@ class Kirki_Field {
 					'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
 				);
 			}
-		} else {
-			$required_sanitized = null;
 		}
 		return $required_sanitized;
+
 	}
 
 	/**
@@ -457,15 +478,10 @@ class Kirki_Field {
 	 */
 	public static function sanitize_priority( $field ) {
 
-		if ( isset( $field['priority'] ) ) {
-			$priority = intval( $field['priority'] );
-		}
-
-		if ( isset( $priority ) && '0' != $priority ) {
-			return absint( $priority );
-		} else {
+		if ( ! isset( $field['priority'] ) || '0' == absint( intval( $field['priority'] ) ) ) {
 			return 10;
 		}
+		return absint( intval( $field['priority'] ) );
 
 	}
 
@@ -522,6 +538,17 @@ class Kirki_Field {
 		}
 
 		return $sanitize_callback;
+
+	}
+
+	/**
+	 * Sanitizes the defaults array.
+	 * This is used as a callback function in the sanitize_default method.
+	 */
+	public static function sanitize_defaults_array( $value = '', $key = '' ) {
+
+		$value = esc_textarea( $value );
+		$key   = esc_attr( $key );
 
 	}
 
