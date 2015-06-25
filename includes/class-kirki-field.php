@@ -410,7 +410,7 @@ class Kirki_Field {
 		foreach ( $field['output'] as $output ) {
 			if ( ! isset( $output['media_query'] ) ) {
 				if ( isset( $output['prefix'] ) && ( false !== strpos( $output['prefix'], '@media' ) ) ) {
-					$output['media_query'] = str_replace( '{', '', $output['prefix'] );
+					$output['media_query'] = $output['prefix'];
 					$output['prefix']      = '';
 					$output['suffix']      = '';
 				} else {
@@ -421,7 +421,7 @@ class Kirki_Field {
 				'element'     => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
 				'property'    => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
 				'units'       => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-				'media_query' => trim( sanitize_text_field( $output['media_query'] ) ),
+				'media_query' => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
 			);
 		}
 		return $output_sanitized;
