@@ -62,7 +62,7 @@ class Kirki_Styles_Frontend {
 		foreach ( $fields as $field ) {
 
 			// Only continue if $field['output'] is set
-			if ( isset( $field['output'] ) ) {
+			if ( isset( $field['output'] ) && 'background' != $field['type'] ) {
 
 				$css .= Kirki_Output::css(
 					Kirki_Field::sanitize_settings_raw( $field ),

@@ -104,6 +104,14 @@ class Kirki_Output {
 			foreach ( $styles as $style => $style_array ) {
 				$final_css .= $style . '{';
 					foreach ( $style_array as $property => $value ) {
+						// Take care of formatting the URL for background-image statements.
+						if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
+							$value = 'url("'.$value.'")';
+						}
+						// Make sure the background-position property is properly formatted
+						if ( 'background-position' == $property ) {
+							$value = str_replace( array( '_', '-' ), ' ', $value );
+						}
 						if ( is_array( $value ) ) {
 							foreach ( $value as $sub_value ) {
 								$final_css .= $property . ':' . $sub_value . ';';
