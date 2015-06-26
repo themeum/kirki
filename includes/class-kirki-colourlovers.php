@@ -27,10 +27,13 @@ class Kirki_Colourlovers {
 		$palettes = self::parse();
 		$palettes = array_slice( $palettes, 0, $palettes_nr );
 
+		$i = 0;
 		foreach ( $palettes as $palette ) {
+			$palettes[ $i ] = array();
 			foreach ( $palette as $key => $value ) {
-				$palettes[ $key ] = Kirki_Color::sanitize_hex( $value );
+				$palettes[ $i ][ $key ] = Kirki_Color::sanitize_hex( $value );
 			}
+			$i++;
 		}
 
 		return $palettes;
