@@ -74,6 +74,12 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'theme_mod', Kirki_Field::sanitize_type( array( 'option_type' => 'theme_mod' ) ) );
 		$this->assertEquals( 'option', Kirki_Field::sanitize_type( array( 'option_type' => 'option' ) ) );
 		$this->assertEquals( 'theme_mod', Kirki_Field::sanitize_type( array() ) );
+		add_filter( 'kirki/config', function() {
+			return array(
+				'option_type' => 'option',
+			);
+		});
+		$this->assertEquals( 'option', Kirki_Field::sanitize_type( array() ) );
 	}
 
 	public function test_sanitize_variables() {
@@ -84,6 +90,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 	public function test_sanitize_active_callback() {
 		$this->assertEquals( '__return_true', Kirki_Field::sanitize_active_callback( array( 'active_callback' => '__return_true' ) ) );
 		$this->assertEquals( '__return_true', Kirki_Field::sanitize_active_callback( array() ) );
+		$this->assertEquals( 'kirki_active_callback', Kirki_Field::sanitize_active_callback( array( 'required' => array() ) ) );
 	}
 
 	public function test_sanitize_capability() {
@@ -126,6 +133,13 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		}
 
 		$this->assertEquals( 'edit_theme_options', Kirki_Field::sanitize_capability( array() ) );
+
+		add_filter( 'kirki/config', function() {
+			return array(
+				'capability' => 'activate_plugins',
+			);
+		});
+		$this->assertEquals( 'activate_plugins', Kirki_Field::sanitize_capability( array() ) );
 	}
 
 	public function test_sanitize_settings_raw() {
@@ -148,6 +162,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 
 	public function test_sanitize_section() {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_section( array( 'section' => 'foo' ) ) );
+		$this->assertEquals( 'title_tagline', Kirki_Field::sanitize_section( array() ) );
 	}
 
 	public function test_sanitize_id() {
@@ -175,6 +190,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_help( array( 'help' => 'foo' ) ) );
 		$this->assertEquals( 'bar', Kirki_Field::sanitize_help( array( 'subtitle' => 'foo', 'description' => 'bar' ) ) );
 		$this->assertEquals( 'bar', Kirki_Field::sanitize_help( array( 'help' => '<div class="foo">bar</div>' ) ) );
+		$this->assertEquals( '', Kirki_Field::sanitize_help( array( 'subtitle' => 'foo' ) ) );
 	}
 
 	public function test_sanitize_choices() {
