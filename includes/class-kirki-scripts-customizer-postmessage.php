@@ -44,7 +44,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 					$script .= 'wp.customize( \''.Kirki_Field::sanitize_settings( $field ).'\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';
 					if ( 'html' == $js_vars['function'] ) {
-						$script .= '$( \''.esc_js( $js_vars['element'] ).'\' ).html( newval );';
+						$script .= '$(\''.esc_js( $js_vars['element'] ).'\').html( newval );';
 					} elseif ( 'css' == $js_vars['function'] ) {
 						$script .= '$(\''.esc_js( $js_vars['element'] ).'\').css(\''.esc_js( $js_vars['property'] ).'\', newval'.( ! empty( $js_vars['units'] ) ? ' + \''.$js_vars['units']."'" : '' ).' );';
 					}
@@ -54,7 +54,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 		}
 
 		return $script;
-		
+
 	}
 
 	public function wp_footer() {
