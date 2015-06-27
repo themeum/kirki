@@ -51,6 +51,7 @@ class Kirki_Output {
 		self::$type     = $type;
 		self::$output   = Kirki_Field::sanitize_output( array( 'output' => $output ) );
 		self::$value    = self::get_value();
+		self::$callback = $callback;
 
 		return self::styles_parse();
 
@@ -73,11 +74,6 @@ class Kirki_Output {
 			$value = get_theme_mod( self::$settings, $default );
 		} else { // This is an option
 			$value = get_option( self::$settings, $default );
-		}
-
-		// Do we need to run this through a callback action?
-		if ( '' != self::$callback ) {
-			$value = call_user_func( self::$callback, $value );
 		}
 
 		return $value;
@@ -112,13 +108,7 @@ class Kirki_Output {
 						if ( 'background-position' == $property ) {
 							$value = str_replace( array( '_', '-' ), ' ', $value );
 						}
-						if ( is_array( $value ) ) {
-							foreach ( $value as $sub_value ) {
-								$final_css .= $property . ':' . $sub_value . ';';
-							}
-						} else {
-							$final_css .= $property . ':' . $value . ';';
-						}
+						$final_css .= $property . ':' . $value . ';';
 					}
 				$final_css .= '}';
 			}
@@ -142,7 +132,10 @@ class Kirki_Output {
 		foreach ( self::$output as $output ) {
 			// Do we have units?
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
-			$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = self::$value.$units;
+			// Do we need to run this through a callback action?
+			$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
+
+			$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
 		}
 
 		return $styles;
@@ -167,6 +160,7 @@ class Kirki_Output {
 					// border-radius
 					if ( 'border-radius' == $property ) {
 						$css[$media_query][$element]['-webkit-border-radius'] = $value;
+						$css[$media_query][$element]['-moz-border-radius'] = $value;
 					}
 					// box-shadow
 					if ( 'box-shadow' == $property ) {
