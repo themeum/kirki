@@ -52,7 +52,7 @@ class Kirki_Styles_Frontend {
 	public function loop_controls() {
 
 		$fields = Kirki::$fields;
-		$css    = '';
+		$css    = array();
 
 		// Early exit if no fields are found.
 		if ( empty( $fields ) ) {
@@ -64,18 +64,19 @@ class Kirki_Styles_Frontend {
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) && 'background' != $field['type'] ) {
 
-				$css .= Kirki_Output::css(
+				$css = array_merge_recursive( $css, Kirki_Output::css(
 					Kirki_Field::sanitize_settings_raw( $field ),
 					Kirki_Field::sanitize_type( $field ),
 					Kirki_Field::sanitize_output( $field ),
-					isset( $field['output']['callback'] ) ? $field['output']['callback'] : ''
-				);
+					isset( $field['output']['callback'] ) ? $field['output']['callback'] : '',
+					true
+				) );
 
 			}
 
 		}
-
-		return $css;
+		
+		return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
 
 	}
 

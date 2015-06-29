@@ -40,7 +40,7 @@ class Kirki_Output {
 	 * @var 	array 		an array of arrays of the output arguments.
 	 * @var 	mixed		a callable function.
 	 */
-	public static function css( $setting = '', $type = 'theme_mod', $output = array(), $callback = '' ) {
+	public static function css( $setting = '', $type = 'theme_mod', $output = array(), $callback = '', $return_array = false ) {
 
 		// No need to proceed any further if we don't have the required arguments.
 		if ( '' == $setting || empty( $output ) ) {
@@ -53,7 +53,7 @@ class Kirki_Output {
 		self::$value    = self::get_value();
 		self::$callback = $callback;
 
-		return self::styles_parse();
+		return ( true === $return_array ) ? self::styles() : self::styles_parse( self::add_prefixes( self::styles() ) );
 
 	}
 
@@ -83,11 +83,10 @@ class Kirki_Output {
 	/**
 	 * Gets the array of generated styles and creates the minimized, inline CSS
 	 *
+	 * @param array
 	 * @return string|null	the generated CSS.
 	 */
-	public static function styles_parse() {
-
-		$css = self::add_prefixes( self::styles() );
+	public static function styles_parse( $css = array() ) {
 
 		/**
 		 * Process the array of CSS properties and produce the final CSS
