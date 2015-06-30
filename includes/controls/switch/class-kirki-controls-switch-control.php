@@ -24,7 +24,9 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	public $type = 'switch';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-switch', trailingslashit( kirki_url() ).'includes/controls/switch/kirki-switch.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-core.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-touch.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
 		wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ).'includes/controls/switch/style.css' );
 	}
 
@@ -35,7 +37,7 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		<?php $i18n = Kirki_Toolkit::i18n(); ?>
 		<label>
 			<div class="switch-info">
-				<input style="display: none;" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+				<input id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
 			</div>
 			<span class="customize-control-title">
 				<?php echo esc_attr( $this->label ); ?>
@@ -44,13 +46,8 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<?php $classes = ( esc_attr( $this->value() ) ) ? ' On' : ' Off'; ?>
-			<div class="Switch <?php echo $classes; ?>">
-				<div class="Toggle"></div>
-				<span class="On"><?php echo $i18n['ON']; ?></span>
-				<span class="Off"><?php echo $i18n['OFF']; ?></span>
-			</div>
 		</label>
+		<script>jQuery(document).ready(function($){$('[id="switch_<?php echo $this->id; ?>"]').checkbox({toggle:true});});</script>
 		<?php
 	}
 }
