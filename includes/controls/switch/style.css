@@ -1,11 +1,11 @@
-.fs-checkbox.fs-checkbox-enabled {
+.customize-control-switch .fs-checkbox.fs-checkbox-enabled {
   cursor: pointer;
   margin: 0 0 10px 0;
   overflow: hidden; }
-  .fs-checkbox.fs-checkbox-enabled:focus {
+  .customize-control-switch .fs-checkbox.fs-checkbox-enabled:focus {
     box-shadow: none;
     outline: none; }
-.fs-checkbox-element_wrapper {
+.customize-control-switch .fs-checkbox-element_wrapper {
   position: relative;
   border: 0;
   height: 0;
@@ -14,7 +14,7 @@
   overflow: hidden;
   padding: 0;
   width: 0; }
-.fs-checkbox-element {
+.customize-control-switch .fs-checkbox-element {
   position: absolute;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@
   pointer-events: none;
   -webkit-transition: none;
   transition: none; }
-.fs-checkbox-label {
+.customize-control-switch .fs-checkbox-label {
   color: #666666;
   cursor: pointer;
   display: block;
@@ -33,7 +33,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-.fs-checkbox-marker {
+.customize-control-switch .fs-checkbox-marker {
   width: 20px;
   height: 20px;
   background: #ffffff;
@@ -44,11 +44,11 @@
   float: left;
   margin: 0 10px 0 0;
   float: right; }
-.fs-checkbox-flag {
+.customize-control-switch .fs-checkbox-flag {
   width: 100%;
   height: 100%;
   margin: 0; }
-  .fs-checkbox-flag:before {
+  .customize-control-switch .fs-checkbox-flag:before {
     width: 5px;
     height: 10px;
     border: 2px solid #999999;
@@ -62,17 +62,16 @@
     -webkit-transform: rotate(45deg) scale(0);
     -ms-transform: rotate(45deg) scale(0);
     transform: rotate(45deg) scale(0); }
-.fs-checkbox-checked .fs-checkbox-flag:before {
+.customize-control-switch .fs-checkbox-checked .fs-checkbox-flag:before {
   -webkit-transform: rotate(45deg) scale(1);
   -ms-transform: rotate(45deg) scale(1);
   transform: rotate(45deg) scale(1); }
-
-.fs-checkbox,
-.fs-checkbox:after,
-.fs-checkbox:before,
-.fs-checkbox *,
-.fs-checkbox *:after,
-.fs-checkbox *:before {
+.customize-control-switch .fs-checkbox,
+.customize-control-switch .fs-checkbox:after,
+.customize-control-switch .fs-checkbox:before,
+.customize-control-switch .fs-checkbox *,
+.customize-control-switch .fs-checkbox *:after,
+.customize-control-switch .fs-checkbox *:before {
   box-sizing: border-box;
   -webkit-transition: none;
   transition: none;
@@ -80,20 +79,18 @@
   -moz-user-select: none !important;
   -ms-user-select: none !important;
   user-select: none !important; }
-
-.no-csstransforms .fs-checkbox-flag:before {
+.customize-control-switch .no-csstransforms .fs-checkbox-flag:before {
   width: 100%;
   height: 100%;
   content: "\2713";
   display: none;
   line-height: 1;
   text-align: center; }
-.no-csstransforms .fs-checkbox-checked .fs-checkbox-flag:before {
+.customize-control-switch .no-csstransforms .fs-checkbox-checked .fs-checkbox-flag:before {
   display: block; }
-
-.fs-checkbox-radio .fs-checkbox-marker {
+.customize-control-switch .fs-checkbox-radio .fs-checkbox-marker {
   border-radius: 100%; }
-.fs-checkbox-radio .fs-checkbox-flag {
+.customize-control-switch .fs-checkbox-radio .fs-checkbox-flag {
   background: #999999;
   border: 3px solid #ffffff;
   border-radius: 100%;
@@ -102,51 +99,46 @@
   transform: scale(0);
   -webkit-transition: -webkit-transform 0.15s ease;
   transition: transform 0.15s ease; }
-  .fs-checkbox-radio .fs-checkbox-flag:before {
+  .customize-control-switch .fs-checkbox-radio .fs-checkbox-flag:before {
     display: none; }
-.fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag {
+.customize-control-switch .fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1); }
-  .fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag:before {
+  .customize-control-switch .fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag:before {
     display: none; }
-
-.no-csstransforms .fs-checkbox-radio .fs-checkbox-flag:before {
+.customize-control-switch .no-csstransforms .fs-checkbox-radio .fs-checkbox-flag:before {
   display: none; }
-.no-csstransforms .fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag:before {
+.customize-control-switch .no-csstransforms .fs-checkbox-radio.fs-checkbox-checked .fs-checkbox-flag:before {
   display: block; }
-
-.fs-checkbox-focus .fs-checkbox-label {
+.customize-control-switch .fs-checkbox-focus .fs-checkbox-label {
   color: #333333; }
-.fs-checkbox-focus .fs-checkbox-marker {
+.customize-control-switch .fs-checkbox-focus .fs-checkbox-marker {
   border-color: #999999;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
-
-.fs-checkbox-disabled {
+.customize-control-switch .fs-checkbox-disabled {
   cursor: default;
   opacity: 0.5; }
-
-.fs-checkbox-disabled .fs-checkbox-label {
+.customize-control-switch .fs-checkbox-disabled .fs-checkbox-label {
   color: #666666;
   cursor: default; }
-.fs-checkbox-disabled .fs-checkbox-marker {
+.customize-control-switch .fs-checkbox-disabled .fs-checkbox-marker {
   border-color: #cccccc;
   cursor: default; }
-
-.fs-checkbox-toggle {
+.customize-control-switch .fs-checkbox-toggle {
   position: relative; }
-  .fs-checkbox-toggle .fs-checkbox-label {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-label {
     line-height: 40px; }
-  .fs-checkbox-toggle .fs-checkbox-marker {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-marker {
     width: 100px;
     height: 40px;
     position: relative;
     border-radius: 3px; }
-  .fs-checkbox-toggle .fs-checkbox-marker:after {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-marker:after {
     clear: both;
     content: '';
     display: table; }
-  .fs-checkbox-toggle .fs-checkbox-flag {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-flag {
     width: 50%;
     height: 100%;
     position: absolute;
@@ -159,9 +151,9 @@
     margin: 0;
     -webkit-transition: left 0.15s ease;
     transition: left 0.15s ease; }
-    .fs-checkbox-toggle .fs-checkbox-flag:before {
+    .customize-control-switch .fs-checkbox-toggle .fs-checkbox-flag:before {
       display: none; }
-    .fs-checkbox-toggle .fs-checkbox-flag:after {
+    .customize-control-switch .fs-checkbox-toggle .fs-checkbox-flag:after {
       width: 2px;
       height: 10px;
       position: absolute;
@@ -174,13 +166,13 @@
       content: '';
       margin: auto;
       opacity: 0.75; }
-  .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
+  .customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
     left: 50%; }
-    .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag:before {
+    .customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag:before {
       display: none; }
-    .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag:after {
+    .customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag:after {
       display: none; }
-  .fs-checkbox-toggle .fs-checkbox-state {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-state {
     width: 50%;
     color: #666666;
     display: block;
@@ -189,10 +181,9 @@
     margin: 0;
     text-align: center;
     text-transform: uppercase; }
-  .fs-checkbox-toggle .fs-checkbox-state_on {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-state_on {
     float: left; }
-  .fs-checkbox-toggle .fs-checkbox-state_off {
+  .customize-control-switch .fs-checkbox-toggle .fs-checkbox-state_off {
     float: right; }
-
-.no-touch .fs-checkbox-toggle:hover .fs-checkbox-flag:after {
+.customize-control-switch .no-touch .fs-checkbox-toggle:hover .fs-checkbox-flag:after {
   opacity: 1; }
