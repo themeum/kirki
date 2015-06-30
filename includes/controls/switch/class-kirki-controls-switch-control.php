@@ -35,10 +35,7 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	 */
 	protected function render_content() { ?>
 		<?php $i18n = Kirki_Toolkit::i18n(); ?>
-		<label>
-			<div class="switch-info">
-				<input id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-			</div>
+		<label for="switch_<?php echo $this->id; ?>">
 			<span class="customize-control-title">
 				<?php echo esc_attr( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
@@ -47,7 +44,18 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 		</label>
-		<script>jQuery(document).ready(function($){$('[id="switch_<?php echo $this->id; ?>"]').checkbox({toggle:true});});</script>
+		<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+		<script>
+		jQuery(document).ready(function($){
+			$('[id="switch_<?php echo $this->id; ?>"]').checkbox({
+				toggle:true,
+				labels:{
+					on:"<?php echo ( ! empty( $this->choices ) && isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['ON']; ?>",
+					off:"<?php echo ( ! empty( $this->choices ) && isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['OFF']; ?>"
+				}
+			});
+		});
+		</script>
 		<?php
 	}
 }
