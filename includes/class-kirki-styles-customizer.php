@@ -142,10 +142,10 @@ class Kirki_Styles_Customizer {
 		$styles .= '.customize-control-slider .ui-slider .ui-slider-handle{background-color:'.$color_accent.';}';
 
 		// Switch Controls
-		$styles .= '.customize-control-switch .Switch .On, .customize-control-toggle .Switch .On{color:'.$color_accent.';}';
+		$styles .= '.customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag{background:'.$color_accent.';}';
 
 		// Toggle Controls
-		$styles .= '.customize-control-switch .Switch.Round.On, .customize-control-toggle .Switch.Round.On{background:'.$color_accent.';}';
+		$styles .= '.customize-control-toggle .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag{background:'.$color_accent.';}';
 
 		// Sortable Controls
 		$styles .= '.customize-control-sortable ul.ui-sortable li .dashicons.visibility{color:'.$color_accent.';}';
