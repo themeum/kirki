@@ -363,7 +363,7 @@ class Kirki {
 		/**
 		 * Merge the remaining config options in the field
 		 */
-		if ( isset ( self::$congig[ $config_id ] ) ) {
+		if ( isset ( self::$config[ $config_id ] ) ) {
 			$args = array_merge_recursive( self::$config[ $config_id ], $args );
 		}
 
