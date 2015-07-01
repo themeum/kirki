@@ -360,13 +360,6 @@ class Kirki {
 			$args['option_type'] = $config['option_type'];
 		}
 
-		/**
-		 * Merge the remaining config options in the field
-		 */
-		if ( isset ( self::$congig[ $config_id ] ) ) {
-			$args = array_merge_recursive( self::$config[ $config_id ], $args );
-		}
-
 		// Add the field to the static $fields variable properly indexed
 		self::$fields[ Kirki_Field::sanitize_settings( $args ) ] = $args;
 
