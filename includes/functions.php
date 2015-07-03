@@ -25,7 +25,7 @@ if ( ! function_exists( 'kirki_url' ) ) {
 	function kirki_url() {
 		$config = apply_filters( 'kirki/config', array() );
 		if ( isset( $config['url_path'] ) ) {
-			return $config['url_path'];
+			return esc_url_raw( $config['url_path'] );
 		} else {
 			return KIRKI_URL;
 		}
