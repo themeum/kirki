@@ -40,20 +40,20 @@ class Kirki_Test_Field {
 		$args = $this->field;
 		$args['section']      = sanitize_key( $this->field['type'] );
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_0';
-		$args['label']        = sprintf( __( '%s theme_mod via filter', 'kirki' ), $args['type'] );
-		$args['options_type'] = 'theme_mod';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_0';
+		$args['label']       = sprintf( __( '%s theme_mod via filter', 'kirki' ), $args['type'] );
+		$args['option_type'] = 'theme_mod';
 		$fields[] = $args;
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_1';
-		$args['label']        = sprintf( __( '%s single option via filter', 'kirki' ), $args['type'] );
-		$args['options_type'] = 'option';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_1';
+		$args['label']       = sprintf( __( '%s single option via filter', 'kirki' ), $args['type'] );
+		$args['option_type'] = 'option';
 		$fields[] = $args;
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_2';
-		$args['options_type'] = 'option';
-		$args['label']        = sprintf( __( '%s serialized option via filter', 'kirki' ), $args['type'] );
-		$args['option_name']  = 'kirki_test';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_2';
+		$args['option_type'] = 'option';
+		$args['label']       = sprintf( __( '%s serialized option via filter', 'kirki' ), $args['type'] );
+		$args['option_name'] = 'kirki_test';
 		$fields[] = $args;
 
 		return $fields;
@@ -69,20 +69,20 @@ class Kirki_Test_Field {
 		$args['section']      = sanitize_key( $this->field['type'] );
 		$args['capability']   = 'read';
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_3';
-		$args['label']        = sprintf( __( '%s theme_mod via API', 'kirki' ), $args['type'] );
-		$args['options_type'] = 'theme_mod';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_3';
+		$args['label']       = sprintf( __( '%s theme_mod via API', 'kirki' ), $args['type'] );
+		$args['option_type'] = 'theme_mod';
 		Kirki::add_field( '', $args );
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_4';
-		$args['label']        = sprintf( __( '%s single option via API', 'kirki' ), $args['type'] );
-		$args['options_type'] = 'option';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_4';
+		$args['label']       = sprintf( __( '%s single option via API', 'kirki' ), $args['type'] );
+		$args['option_type'] = 'option';
 		Kirki::add_field( '', $args );
 
-		$args['settings']     = sanitize_key( $this->field['type'] ).'_demo_5';
-		$args['options_type'] = 'option';
-		$args['label']        = sprintf( __( '%s serialized option via API', 'kirki' ), $args['type'] );
-		$args['option_name']  = 'kirki_test';
+		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_5';
+		$args['option_type'] = 'option';
+		$args['label']       = sprintf( __( '%s serialized option via API', 'kirki' ), $args['type'] );
+		$args['option_name'] = 'kirki_test';
 		Kirki::add_field( '', $args );
 
 	}

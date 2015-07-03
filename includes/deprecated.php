@@ -34,12 +34,12 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 		$fields = Kirki::$fields;
 		// Get the config.
 		$config = apply_filters( 'kirki/config', array() );
-		$config['options_type'] = ( isset( $config['options_type'] ) ) ? esc_attr( $config['options_type'] ) : 'theme_mod';
+		$config['option_type'] = ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
 		$config['option_name']  = ( isset( $config['option_name'] ) ) ? esc_attr( $config['option_name'] ) : '';
 
 		// If we're using options instead of theme_mods,
 		// then first we'll have to get the array of all options.
-		if ( 'option' == $config['options_type'] ) {
+		if ( 'option' == $config['option_type'] ) {
 			if ( '' == $config['option_name'] ) {
 				// No option name is defined.
 				// Each options is saved separately in the db, so we'll manually build the array here.
@@ -61,7 +61,7 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 			// No option has been defined so we'll get all options and return an array
 			// If we're using options then we already have the $values set above.
 			// All we need here is a fallback for theme_mods
-			if ( 'option' != $config['options_type'] ) {
+			if ( 'option' != $config['option_type'] ) {
 				// We're using theme_mods
 				$values = get_theme_mods();
 			}
@@ -74,12 +74,12 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 		// If a value has been defined then we proceed.
 
 		// Early exit if this option does not exist
-		$field_id = ( 'option' == $config['options_type'] && '' != $config['option_name'] ) ? $config['option_name'].'['.$option.']' : $option;
+		$field_id = ( 'option' == $config['option_type'] && '' != $config['option_name'] ) ? $config['option_name'].'['.$option.']' : $option;
 		if ( ! isset( $fields[$field_id] ) ) {
 			return;
 		}
 
-		if ( 'option' == $config['options_type'] ) {
+		if ( 'option' == $config['option_type'] ) {
 			// We're using options instead of theme_mods.
 			// We already have the array of values set from above so we'll use that.
 			$value = ( isset( $values[$option] ) ) ? $values[$option] : $fields[$option]['default'];
@@ -92,7 +92,7 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 
 		// Combine background options to a single array
 		if ( 'background' == $fields[$field_id]['type'] ) {
-			if ( 'option' == $config['options_type'] ) {
+			if ( 'option' == $config['option_type'] ) {
 				$value = array(
 					'background-color'      => isset( $values[$option.'_color'] ) ? $values[$option.'_color'] : null,
 					'background-repeat'     => isset( $values[$option.'_repeat'] ) ? $values[$option.'_repeat'] : null,

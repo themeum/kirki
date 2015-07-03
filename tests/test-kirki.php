@@ -107,7 +107,7 @@ class Test_Kirki extends WP_UnitTestCase {
 			'settings' => 'my_setting_3',
 			'type' => 'text',
 			'priority' => 10,
-			'options_type' => 'theme_mod',
+			'option_type' => 'theme_mod',
 			'capability' => 'edit_posts',
 			'default' => 'some-default-value',
 		);
@@ -118,7 +118,7 @@ class Test_Kirki extends WP_UnitTestCase {
 			'settings' => 'my_setting_4',
 			'type' => 'checkbox',
 			'priority' => 20,
-			'options_type' => 'theme_mod',
+			'option_type' => 'theme_mod',
 			'capability' => 'edit_theme_options',
 			'default' => '0',
 		);

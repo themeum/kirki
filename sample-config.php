@@ -422,7 +422,7 @@ add_filter( 'kirki/fields', 'kirki_numeric_fields' );
  * For this example we'll be defining our options to be serialized in the db, under the 'kirki_demo' option.
  */
 Kirki::add_config( 'kirki_demo', array(
-	'options_type' => 'option',
+	'option_type' => 'option',
 	'option_name'  => 'kirki_demo'
 ) );
 
