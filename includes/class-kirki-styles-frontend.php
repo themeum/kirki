@@ -26,8 +26,11 @@ class Kirki_Styles_Frontend {
 
 	public function __construct() {
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 150 );
+		$config = apply_filters( 'kirki/config', array() );
+		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 150;
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
 
 	}
 
@@ -75,7 +78,7 @@ class Kirki_Styles_Frontend {
 			}
 
 		}
-		
+
 		return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
 
 	}
