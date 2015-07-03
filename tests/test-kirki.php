@@ -13,18 +13,19 @@ class Test_Kirki extends WP_UnitTestCase {
 		return $wp_customize;
 	}
 
+
 	public function add_config() {
-		Kirki::add_config( 'my_config', array(
-			'option_type' => 'option',
-			'option_name' => 'my_option',
-			'capability' => 'edit_posts',
-		) );
-		Kirki::add_config( 'my_config2', array(
+		Kirki::add_config( 'my_config_theme_mods', array(
 			'option_type' => 'theme_mod',
 			'capability' => 'edit_posts',
 		) );
-		Kirki::add_config( 'my_config3', array(
+		Kirki::add_config( 'my_config_options', array(
 			'option_type' => 'option',
+			'capability' => 'edit_posts',
+		) );
+		Kirki::add_config( 'my_config_options_serialized', array(
+			'option_type' => 'option',
+			'option_name' => 'my_option',
 			'capability' => 'edit_posts',
 		) );
 	}
@@ -49,8 +50,8 @@ class Test_Kirki extends WP_UnitTestCase {
 
 	public function add_field() {
 
-		Kirki::add_field( 'my_config', array(
-			'settings' => 'my_setting',
+		Kirki::add_field( 'my_config_theme_mods', array(
+			'settings' => 'my_setting_theme_mods',
 			'label' => __( 'My custom control', 'translation_domain' ),
 			'section' => 'my_section',
 			'type' => 'text',
@@ -58,8 +59,8 @@ class Test_Kirki extends WP_UnitTestCase {
 			'default' => 'some-default-value',
 		) );
 
-		Kirki::add_field( 'my_config', array(
-			'settings' => 'my_setting0',
+		Kirki::add_field( 'my_config_options', array(
+			'settings' => 'my_setting_options',
 			'label' => __( 'My custom control', 'translation_domain' ),
 			'section' => 'my_section',
 			'type' => 'text',
@@ -67,33 +68,13 @@ class Test_Kirki extends WP_UnitTestCase {
 			'default' => 'some-default-value',
 		) );
 
-		Kirki::add_field( 'my_config2', array(
-			'settings' => 'my_setting1',
+		Kirki::add_field( 'my_config_options_serialized', array(
+			'settings' => 'my_setting_options_serialized',
 			'label' => __( 'My custom control', 'translation_domain' ),
 			'section' => 'my_section',
 			'type' => 'text',
 			'priority' => 10,
 			'default' => 'some-default-value',
-		) );
-
-		Kirki::add_field( 'my_config3', array(
-			'settings' => 'my_setting2',
-			'label' => __( 'My custom control', 'translation_domain' ),
-			'section' => 'my_section',
-			'type' => 'text',
-			'priority' => 10,
-			'default' => 'some-default-value',
-		) );
-
-		Kirki::add_field( 'my_config', array(
-			'settings' => 'my_setting_2',
-			'label' => __( 'My custom control 2', 'translation_domain' ),
-			'section' => 'my_section',
-			'type' => 'checkbox',
-			'priority' => 20,
-			'default' => '1',
-			'capability' => 'edit_theme_options',
-
 		) );
 
 	}
@@ -134,10 +115,13 @@ class Test_Kirki extends WP_UnitTestCase {
 		$this->assertEquals( 'edit_theme_options', Kirki::$config['global']['capability'] );
 		$this->assertEquals( 'theme_mod', Kirki::$config['global']['option_type'] );
 		// Custom config
-		$this->assertArrayHasKey( 'my_config', Kirki::$config );
-		$this->assertEquals( 'edit_posts', Kirki::$config['my_config']['capability'] );
-		$this->assertEquals( 'option', Kirki::$config['my_config']['option_type'] );
-		$this->assertEquals( 'my_option', Kirki::$config['my_config']['option_name'] );
+		$this->assertArrayHasKey( 'my_config_theme_mods', Kirki::$config );
+		$this->assertArrayHasKey( 'my_config_options', Kirki::$config );
+		$this->assertArrayHasKey( 'my_config_options_serialized', Kirki::$config );
+
+		$this->assertEquals( 'edit_posts', Kirki::$config['my_config_theme_mods']['capability'] );
+		$this->assertEquals( 'option', Kirki::$config['my_config_options']['option_type'] );
+		$this->assertEquals( 'my_option', Kirki::$config['my_config_options_serialized']['option_name'] );
 	}
 
 	public function test_panels() {
@@ -159,37 +143,30 @@ class Test_Kirki extends WP_UnitTestCase {
 	}
 
 	public function test_fields() {
+		Kirki::$fields = array();
 		$this->add_config();
 		$this->add_field();
-		// my_setting
-		$this->assertArrayHasKey( 'my_setting', Kirki::$fields );
-		$this->assertEquals( 'My custom control', Kirki::$fields['my_setting']['label'] );
-		$this->assertEquals( 'my_section', Kirki::$fields['my_setting']['section'] );
-		$this->assertEquals( 'text', Kirki::$fields['my_setting']['type'] );
-		$this->assertEquals( 10, Kirki::$fields['my_setting']['priority'] );
-		$this->assertEquals( 'some-default-value', Kirki::$fields['my_setting']['default'] );
-		$this->assertEquals( 'edit_posts', Kirki::$fields['my_setting']['capability'] );
-		// Inherited from config
-		$this->assertEquals( 'option', Kirki::$fields['my_setting']['option_type'] );
 
-		// my_setting
-		$this->assertArrayHasKey( 'my_setting_2', Kirki::$fields );
-		$this->assertEquals( 'My custom control 2', Kirki::$fields['my_setting_2']['label'] );
-		$this->assertEquals( 'my_section', Kirki::$fields['my_setting_2']['section'] );
-		$this->assertEquals( 'checkbox', Kirki::$fields['my_setting_2']['type'] );
-		$this->assertEquals( 20, Kirki::$fields['my_setting_2']['priority'] );
-		$this->assertEquals( '1', Kirki::$fields['my_setting_2']['default'] );
-		// Inherited from config
-		$this->assertEquals( 'edit_theme_options', Kirki::$fields['my_setting_2']['capability'] );
-		$this->assertEquals( 'option', Kirki::$fields['my_setting_2']['option_type'] );
+		$this->assertArrayHasKey( 'my_setting_theme_mods', Kirki::$fields );
+		$this->assertEquals( 'My custom control', Kirki::$fields['my_setting_theme_mods']['label'] );
+		$this->assertEquals( 'my_section', Kirki::$fields['my_setting_theme_mods']['section'] );
+		$this->assertEquals( 'text', Kirki::$fields['my_setting_theme_mods']['type'] );
+		$this->assertEquals( 10, Kirki::$fields['my_setting_theme_mods']['priority'] );
+		$this->assertEquals( 'some-default-value', Kirki::$fields['my_setting_theme_mods']['default'] );
+		$this->assertEquals( 'edit_posts', Kirki::$fields['my_setting_theme_mods']['capability'] );
+		$this->assertEquals( 'theme_mod', Kirki::$fields['my_setting_theme_mods']['option_type'] );
+		$this->assertEquals( 'option', Kirki::$fields['my_setting_options']['option_type'] );
+		$this->assertEquals( 'option', Kirki::$fields['my_option[my_setting_options_serialized]']['option_type'] );
 	}
 
 	public function test_fields_via_filter() {
+		Kirki::$fields = array();
 		add_filter( 'kirki/fields', array( $this, 'add_controls_via_filter' ) );
 		do_action( 'wp_loaded' );
 
 		// my_setting
-		$this->assertArrayHasKey( 'my_setting', Kirki::$fields );
+		$this->assertArrayHasKey( 'my_setting_3', Kirki::$fields );
+		$this->assertArrayHasKey( 'my_setting_4', Kirki::$fields );
 		$this->assertEquals( 'My custom control', Kirki::$fields['my_setting_3']['label'] );
 		$this->assertEquals( 'my_section', Kirki::$fields['my_setting_3']['section'] );
 		$this->assertEquals( 'text', Kirki::$fields['my_setting_3']['type'] );
@@ -197,21 +174,14 @@ class Test_Kirki extends WP_UnitTestCase {
 		$this->assertEquals( 'some-default-value', Kirki::$fields['my_setting_3']['default'] );
 		$this->assertEquals( 'edit_posts', Kirki::$fields['my_setting_3']['capability'] );
 
-		// my_setting
-		$this->assertArrayHasKey( 'my_setting_2', Kirki::$fields );
-		$this->assertEquals( 'My custom control 2', Kirki::$fields['my_setting_4']['label'] );
-		$this->assertEquals( 'my_section', Kirki::$fields['my_setting_4']['section'] );
-		$this->assertEquals( 'checkbox', Kirki::$fields['my_setting_4']['type'] );
-		$this->assertEquals( 20, Kirki::$fields['my_setting_4']['priority'] );
-		$this->assertEquals( '0', Kirki::$fields['my_setting_4']['default'] );
 	}
 
 	public function test_get_option() {
 		$this->add_config();
 		$this->add_field();
-		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config', 'my_setting0' ) );
-		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config2', 'my_setting1' ) );
-		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config3', 'my_setting2' ) );
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_theme_mods', 'my_setting_theme_mods' ) );
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_options', 'my_setting_options' ) );
+		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_options_serialized', 'my_option[my_setting_options_serialized]' ) );
 	}
 
 }

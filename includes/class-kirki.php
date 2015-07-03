@@ -87,10 +87,7 @@ class Kirki {
 		// Are we using options or theme_mods?
 		$mode = self::$config[ $config_id ]['option_type'];
 		// Is there an option name set?
-		$option_name = false;
-		if ( 'option' == $mode && isset( self::$config[ $config_id ]['option'] ) ) {
-			$option_name = self::$config[ $config_id ]['option'];
-		}
+		$option_name = self::$config[ $config_id ]['option_name'];
 
 		if ( 'theme_mod' == $mode ) {
 
@@ -100,7 +97,7 @@ class Kirki {
 		} elseif ( 'option' == $mode ) {
 
 			// We're using options
-			if ( $option_name ) {
+			if ( '' != $option_name ) {
 
 				// Options are serialized as a single option in the db
 				$options = get_option( $option_name );
@@ -143,7 +140,7 @@ class Kirki {
 		$default_args = array(
 			'capability'  => 'edit_theme_options',
 			'option_type' => 'theme_mod',
-			'option'      => '',
+			'option_name' => '',
 			'compiler'    => array(),
 		);
 		$args = array_merge( $default_args, $args );
@@ -324,7 +321,7 @@ class Kirki {
 		 * If we've set an option in the configuration
 		 * then make sure we're using options and not theme_mods
 		 */
-		if ( '' != $config['option'] ) {
+		if ( '' != $config['option_name'] ) {
 			$config['option_type'] = 'option';
 		}
 
@@ -332,8 +329,8 @@ class Kirki {
 		 * If no option name has been set for the field,
 		 * use the one from the configuration
 		 */
-		if ( ! isset( $args['option'] ) ) {
-			$args['option'] = $config['option'];
+		if ( ! isset( $args['option_name'] ) ) {
+			$args['option_name'] = $config['option_name'];
 		}
 
 		/**
