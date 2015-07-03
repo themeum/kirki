@@ -46,36 +46,6 @@ class Kirki_Sanitize {
 	}
 
 	/**
-	 * Select sanitization callback example.
-	 *
-	 * - Control: select, radio
-	 *
-	 * Sanitization callback for 'select' and 'radio' type controls. This callback sanitizes `$input`
-	 * as a slug, and then validates `$input` against the choices defined for the control.
-	 *
-	 * @see sanitize_key()               https://developer.wordpress.org/reference/functions/sanitize_key/
-	 * @see $wp_customize->get_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/get_control/
-	 *
-	 * @param string               $input   Slug to sanitize.
-	 * @param WP_Customize_Setting $setting Setting instance.
-	 * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
-	 */
-	public static function choice( $input, $setting ) {
-
-		// Ensure input is a slug.
-		$input = sanitize_key( $input );
-
-		if ( ! is_object( $setting->manager->get_control( $setting->id ) ) || null == $setting->manager->get_control( $setting->id ) ) {
-			return $input;
-		} else {
-			// Get list of choices from the control associated with the setting.
-			$choices = $setting->manager->get_control( $setting->id )->choices;
-
-			return ( ! is_array( $choices ) || ! is_object( $setting ) || array_key_exists( $input, $choices ) ? $input : $setting->default );
-		}
-	}
-
-	/**
 	 * Drop-down Pages sanitization callback.
 	 *
 	 * - Sanitization: dropdown-pages

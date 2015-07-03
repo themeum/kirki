@@ -554,8 +554,9 @@ class Kirki_Field {
 			case 'radio-image' :
 			case 'radio-buttonset' :
 			case 'select' :
+			case 'select2' :
 			case 'palette' :
-				$sanitize_callback = array( 'Kirki_Sanitize', 'choice' );
+				$sanitize_callback = 'esc_attr';
 				break;
 			case 'dropdown-pages' :
 				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );

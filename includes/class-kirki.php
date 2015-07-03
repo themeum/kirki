@@ -94,6 +94,13 @@ class Kirki {
 			// We're using theme_mods
 			$value = get_theme_mod( $field_id, self::$fields[ $field_id ]['default'] );
 
+			if ( 'background' == self::$fields[ $field_id ]['type'] ) {
+				$value = array();
+				foreach ( self::$fields[ $field_id ]['default'] as $property ) {
+					$value[ $property ] = get_theme_mod( $field_id.'_'.$property, self::$fields[ $field_id ]['default'][ $property ] );
+				}
+			}
+
 		} elseif ( 'option' == $mode ) {
 
 			// We're using options
