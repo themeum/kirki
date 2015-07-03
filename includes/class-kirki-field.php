@@ -292,7 +292,7 @@ class Kirki_Field {
 		}
 		// If an array then sanitize the array items separately
 		if ( is_array( $field['default'] ) ) {
-			array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			// array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['default'];
 		}
 		// Return raw & unfiltered for custom controls
@@ -377,7 +377,7 @@ class Kirki_Field {
 		}
 		// sanitize the array recursively.
 		if ( is_array( $field['choices'] ) ) {
-			array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			// array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['choices'];
 		}
 		// this is a string so fallback to escaping the value and return.
