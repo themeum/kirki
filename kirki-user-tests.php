@@ -38,7 +38,7 @@ class Kirki_Test_Field {
 	public function add_filter_fields( $fields ) {
 
 		$args = $this->field;
-		$args['section']      = sanitize_key( $this->field['type'] );
+		$args['section'] = sanitize_key( $this->field['type'] );
 
 		$args['settings']    = sanitize_key( $this->field['type'] ).'_demo_0';
 		$args['label']       = sprintf( __( '%s theme_mod via filter', 'kirki' ), $args['type'] );
