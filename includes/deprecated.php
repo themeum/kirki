@@ -35,7 +35,7 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 		// Get the config.
 		$config = apply_filters( 'kirki/config', array() );
 		$config['option_type'] = ( isset( $config['option_type'] ) ) ? esc_attr( $config['option_type'] ) : 'theme_mod';
-		$config['option_name']  = ( isset( $config['option_name'] ) ) ? esc_attr( $config['option_name'] ) : '';
+		$config['option_name'] = ( isset( $config['option_name'] ) ) ? esc_attr( $config['option_name'] ) : '';
 
 		// If we're using options instead of theme_mods,
 		// then first we'll have to get the array of all options.
