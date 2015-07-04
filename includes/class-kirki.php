@@ -75,25 +75,44 @@ class Kirki {
 	 */
 	public static function get_option( $config_id = '', $field_id = '' ) {
 
+		// Make sure value is defined
 		$value = '';
 
+		/**
+		 * This allows us to skip the $config_id argument.
+		 * If we skip adding a $config_id, use the 'global' configuration.
+		 */
 		if ( ( '' == $field_id ) && '' != $config_id ) {
 			$field_id  = $config_id;
 			$config_id = 'global';
 		}
 
+		/**
+		 * If $config_id is empty, set it to 'global'.
+		 */
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
-		// Are we using options or theme_mods?
+		/**
+		 * Are we using options or theme_mods?
+		 */
 		$mode = self::$config[ $config_id ]['option_type'];
-		// Is there an option name set?
+
+		/**
+		 * Is there an option name set?
+		 */
 		$option_name = self::$config[ $config_id ]['option_name'];
 
 		if ( 'theme_mod' == $mode ) {
-
-			// We're using theme_mods
+			/**
+			 * We're using theme_mods.
+			 * so just get the value using get_theme_mod
+			 */
 			$value = get_theme_mod( $field_id, self::$fields[ $field_id ]['default'] );
 
+			/**
+			 * If the field is a background field, then get the sub-fields
+			 * and return an array of the values.
+			 */
 			if ( 'background' == self::$fields[ $field_id ]['type'] ) {
 				$value = array();
 				foreach ( self::$fields[ $field_id ]['default'] as $property ) {
@@ -102,24 +121,59 @@ class Kirki {
 			}
 
 		} elseif ( 'option' == $mode ) {
-
-			// We're using options
+			/**
+			 * We're using options.
+			 */
 			if ( '' != $option_name ) {
-
-				// Options are serialized as a single option in the db
+				/**
+				 * Options are serialized as a single option in the db.
+				 * We'll have to get the option and then get the item from the array.
+				 */
 				$options = get_option( $option_name );
 				$value   = ( isset( $options[ $field_id ] ) ) ? $options[ $field_id ] : self::$fields[ $field_id ]['default'];
 				$value   = maybe_unserialize( $value );
 
-			} else {
+				/**
+				 * If this is a background field, get the individual sub-fields and return an array.
+				 */
+				if ( 'background' == self::$fields[ $field_id ]['type'] ) {
+					$value = array();
+					foreach ( self::$fields[ $field_id ]['default'] as $property ) {
+						if ( isset( $options[ $field_id.'_'.$property ] ) ) {
+							$value[ $property ] = $options[ $field_id.'_'.$property ];
+						} else {
+							$value[ $property ] = self::$fields[ $field_id ]['default'][ $property ];
+						}
+					}
+				}
 
-				// Each option separately saved in the db
+
+			} else {
+				/**
+				 * Each option separately saved in the db
+				 */
 				$value = get_option( $field_id, self::$fields[ $field_id ]['default'] );
+
+				/**
+				 * If the field is a background field, then get the sub-fields
+				 * and return an array of the values.
+				 */
+				if ( 'background' == self::$fields[ $field_id ]['type'] ) {
+					$value = array();
+					foreach ( self::$fields[ $field_id ]['default'] as $property ) {
+						$value[ $property ] = get_option( $field_id.'_'.$property, self::$fields[ $field_id ]['default'][ $property ] );
+					}
+				}
 
 			}
 
 		}
 
+		/**
+		 * reduxframework compatibility tweaks.
+		 * If KIRKI_REDUX_COMPATIBILITY is defined as true then modify the output of the values
+		 * and make them compatible with Redux.
+		 */
 		if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
 
 			switch ( self::$fields[ $field_id ]['type'] ) {
