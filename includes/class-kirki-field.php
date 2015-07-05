@@ -30,6 +30,9 @@ class Kirki_Field {
 	 */
 	public static function sanitize_field( $field ) {
 
+		/**
+		 * Sanitize each property of the field separately.
+		 */
 		$sanitized = array(
 			'settings_raw'      => self::sanitize_settings_raw( $field ),
 			'default'           => self::sanitize_default( $field ),
@@ -53,6 +56,9 @@ class Kirki_Field {
 			'active_callback'   => self::sanitize_active_callback( $field )
 		);
 
+		/**
+		 * Return a merged array so any extra custom properties are parse as well (but not sanitized)
+		 */
 		return array_merge( $field, $sanitized );
 
 	}
@@ -114,6 +120,9 @@ class Kirki_Field {
 				break;
 		}
 
+		/**
+		 * sanitize using esc_attr and return the value.
+		 */
 		return esc_attr( $field['type'] );
 
 	}
@@ -126,15 +135,26 @@ class Kirki_Field {
 	 */
 	public static function sanitize_type( $field ) {
 
+		/**
+		 * If we've set an 'option_type' in the field properties
+		 * then sanitize the value using esc_attr and return it.
+		 */
 		if ( isset( $field['option_type'] ) ) {
 			return esc_attr( $field['option_type'] );
 		}
-		// If no 'option_type' has been defined then try to get the option from the kirki/config filter.
+
+		/**
+		 * If no 'option_type' has been defined
+		 * then try to get the option from the kirki/config filter.
+		 */
 		$config = apply_filters( 'kirki/config', array() );
 		if ( isset( $config['option_type'] ) ) {
 			return esc_attr( $config['option_type'] );
 		}
-		// Fallback to theme_mod
+
+		/**
+		 * If all else fails, fallback to theme_mod
+		 */
 		return 'theme_mod';
 
 	}
@@ -147,11 +167,14 @@ class Kirki_Field {
 	 */
 	public static function sanitize_variables( $field ) {
 
-		if ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) {
-			return $field['variables'];
+		/**
+		 * Return null if no value has been defined
+		 * or if not properly formatted as an array.
+		 */
+		if ( ! isset( $field['variables'] ) || ! is_array( $field['variables'] ) ) {
+			return null;
 		}
-		// fallback to null
-		return null;
+		return $field['variables'];
 
 	}
 
@@ -163,14 +186,25 @@ class Kirki_Field {
 	 */
 	public static function sanitize_active_callback( $field ) {
 
+		/**
+		 * If a custom 'active_callback' has been defined then return that.
+		 */
 		if ( isset( $field['active_callback'] ) ) {
 			return $field['active_callback'];
 		}
-		// If the 'required' argument is set then we'll need to auto-calculate things.
+
+		/**
+		 * If the 'required' argument is set then we'll need to auto-calculate things.
+		 * Set 'active_callback' to 'kirki_active_callback'. ALl extra calculations will be handled there.
+		 */
 		if ( isset( $field['required'] ) ) {
 			return 'kirki_active_callback';
 		}
-		// fallback to __return_true
+
+		/**
+		 * If all else fails, then fallback to __return_true
+		 * This way the control is always shown.
+		 */
 		return '__return_true';
 
 	}
@@ -183,16 +217,30 @@ class Kirki_Field {
 	 */
 	public static function sanitize_capability( $field ) {
 
+		/**
+		 * If we have not set a custom 'capability' then we'll need to figure it out.
+		 */
 		if ( ! isset( $field['capability'] ) ) {
-			// Try to get a value from the kirki/config filter
+
+			/**
+			 * If there's a global configuration then perhaps we're defining a capability there.
+			 * Use the 'kirki/config' filter to figure it out.
+			 */
 			$config = apply_filters( 'kirki/config', array() );
 			if ( isset( $config['capability'] ) ) {
 				return esc_attr( $config['capability'] );
 			}
-			// fallback to edit_theme_options
+
+			/**
+			 * No capability has been found, fallback to edit_theme_options
+			 */
 			return 'edit_theme_options';
+
 		}
-		// All good, a capability has been defined so return that escaped.
+
+		/**
+		 * All good, a capability has been defined so return that escaped.
+		 */
 		return esc_attr( $field['capability'] );
 
 	}
@@ -213,7 +261,9 @@ class Kirki_Field {
 			return sanitize_key( $field['setting'] );
 		}
 
-		// Sanitize the field's settings attribute.
+		/**
+		 * Sanitize the field's settings attribute.
+		 */
 		return sanitize_key( $field['settings'] );
 
 	}
@@ -226,10 +276,13 @@ class Kirki_Field {
 	 */
 	public static function sanitize_settings( $field ) {
 
-		// If we're using options & option_name is set, then we need to modify the setting.
+		/**
+		 * If we're using options & option_name is set, then we need to modify the setting.
+		 */
 		if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
 			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
 		}
+
 		return $field['settings'];
 
 	}
@@ -242,9 +295,18 @@ class Kirki_Field {
 	 */
 	public static function sanitize_label( $field ) {
 
+		/**
+		 * If a label has been defined then we need to sanitize it and then return it.
+		 * Sanitization here will be done using the 'wp_strip_all_tags' function.
+		 */
 		if ( isset( $field['label'] ) ) {
-			return esc_html( $field['label'] );
+			return wp_strip_all_tags( $field['label'] );
 		}
+
+		/**
+		 * If no label has been defined then we're returning an empty value.
+		 * This is simply done to prevent any 'undefined index' PHP notices.
+		 */
 		return '';
 
 	}
@@ -257,10 +319,18 @@ class Kirki_Field {
 	 */
 	public static function sanitize_section( $field ) {
 
-		// If no section is defined then make sure we add the one section that is ALWAYS present: title_tagline
+		/**
+		 * If no section is defined then make sure we add the one section that is ALWAYS present: 'title_tagline'
+		 * Though it's wrong to use a section arbitrarily, at least this way we're making sure that the control will be rendered,
+		 * even if you forget to add a section argument.
+		 */
 		if ( ! isset( $field['section'] ) ) {
 			return 'title_tagline';
 		}
+
+		/**
+		 * Sanitize the section name and return it.
+		 */
 		return sanitize_key( $field['section'] );
 
 	}
@@ -286,20 +356,33 @@ class Kirki_Field {
 	 */
 	public static function sanitize_default( $field ) {
 
-		// make sure a default value is defined.
+		/**
+		 * make sure a default value is defined.
+		 */
 		if ( ! isset( $field['default'] ) ) {
 			return '';
 		}
-		// If an array then sanitize the array items separately
+
+		/**
+		 * If an array then sanitize the array items separately
+		 * TODO: the array_walk_recursive that we used was over-sanitizing things causing malfunctions.
+		 * We've commented this out and will revisit this in a future release.
+		 */
 		if ( is_array( $field['default'] ) ) {
 			// array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['default'];
 		}
-		// Return raw & unfiltered for custom controls
+
+		/**
+		 * Return raw & unfiltered for custom controls
+		 */
 		if ( isset( $field['type'] ) && 'custom' == $field['type'] ) {
 			return $field['default'];
 		}
-		// fallback to escaping the default value.
+
+		/**
+		 * fallback to escaping the default value.
+		 */
 		return esc_textarea( $field['default'] );
 
 	}
@@ -354,11 +437,17 @@ class Kirki_Field {
 			}
 			return '';
 		}
-		// Return empty string if not set.
+
+		/**
+		 * Return empty string if not set.
+		 */
 		if ( ! isset( $field['help'] ) ) {
 			return '';
 		}
-		// Fallback to stripping all tags and returning.
+
+		/**
+		 * Fallback to stripping all tags and returning.
+		 */
 		return wp_strip_all_tags( $field['help'] );
 
 	}
@@ -371,16 +460,27 @@ class Kirki_Field {
 	 */
 	public static function sanitize_choices( $field ) {
 
-		// If not set then return an empty array.
+		/**
+		 * If not set then return an empty array.
+		 * This will prevent PHP 'undefined index' notices.
+		 */
 		if ( ! isset( $field['choices'] ) ) {
 			return array();
 		}
-		// sanitize the array recursively.
+
+		/**
+		 * If an array then sanitize the array items separately
+		 * TODO: the array_walk_recursive that we used was over-sanitizing things causing malfunctions.
+		 * We've commented this out and will revisit this in a future release.
+		 */
 		if ( is_array( $field['choices'] ) ) {
 			// array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
 			return $field['choices'];
 		}
-		// this is a string so fallback to escaping the value and return.
+
+		/**
+		 * This is a string so fallback to escaping the value and return.
+		 */
 		return esc_attr( $field['choices'] );
 
 	}
@@ -393,20 +493,31 @@ class Kirki_Field {
 	 */
 	public static function sanitize_output( $field ) {
 
-		// Early exit if output is not set
+		/**
+		 * Early exit and return a NULL value if output is not set
+		 */
 		if ( ! isset( $field['output'] ) ) {
 			return null;
 		}
-		// sanitize using esc_attr if output is string.
+
+		/**
+		 * sanitize using esc_attr if output is string.
+		 */
 		if ( ! is_array( $field['output'] ) ) {
 			return esc_attr( $field['output'] );
 		}
 		$output_sanitized = array();
-		// convert to multidimentional array if necessary
+
+		/**
+		 * convert to multidimentional array if necessary
+		 */
 		if ( isset( $field['output']['element'] ) ) {
 			$field['output'] = array( $field['output'] );
 		}
-		// sanitize array items individually
+
+		/**
+		 * sanitize array items individually
+		 */
 		foreach ( $field['output'] as $output ) {
 			if ( ! isset( $output['media_query'] ) ) {
 				if ( isset( $output['prefix'] ) && ( false !== strpos( $output['prefix'], '@media' ) ) ) {
@@ -424,6 +535,7 @@ class Kirki_Field {
 				'media_query' => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
 			);
 		}
+
 		return $output_sanitized;
 
 	}
@@ -439,7 +551,10 @@ class Kirki_Field {
 		if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) {
 			return 'postMessage';
 		}
-		// fallback to 'refresh'
+
+		/**
+		 * fallback to 'refresh'
+		 */
 		return 'refresh';
 
 	}
