@@ -115,8 +115,8 @@ class Kirki {
 			 */
 			if ( 'background' == self::$fields[ $field_id ]['type'] ) {
 				$value = array();
-				foreach ( self::$fields[ $field_id ]['default'] as $property ) {
-					$value[ $property ] = get_theme_mod( $field_id.'_'.$property, self::$fields[ $field_id ]['default'][ $property ] );
+				foreach ( self::$fields[ $field_id ]['default'] as $property_key => $property_default ) {
+					$value[ $property_key ] = get_theme_mod( $field_id.'_'.$property_key, $property_default );
 				}
 			}
 
@@ -130,21 +130,28 @@ class Kirki {
 				 * We'll have to get the option and then get the item from the array.
 				 */
 				$options = get_option( $option_name );
-				$value   = ( isset( $options[ $field_id ] ) ) ? $options[ $field_id ] : self::$fields[ $field_id ]['default'];
-				$value   = maybe_unserialize( $value );
 
 				/**
 				 * If this is a background field, get the individual sub-fields and return an array.
 				 */
 				if ( 'background' == self::$fields[ $field_id ]['type'] ) {
 					$value = array();
-					foreach ( self::$fields[ $field_id ]['default'] as $property ) {
-						if ( isset( $options[ $field_id.'_'.$property ] ) ) {
-							$value[ $property ] = $options[ $field_id.'_'.$property ];
+					$setting_modified = str_replace( ']', '', str_replace( $option_name.'[', '', $field_id ) );
+
+					foreach ( self::$fields[ $field_id ]['default'] as $property => $property_default ) {
+
+						if ( isset( $options[ $setting_modified.'_'.$property ] ) ) {
+							$value[ $property ] = $options[ $setting_modified.'_'.$property ];
 						} else {
-							$value[ $property ] = self::$fields[ $field_id ]['default'][ $property ];
+							$value[ $property ] = $property_default;
 						}
 					}
+				} else {
+					/**
+					 * This is not a background field so continue and get the value.
+					 */
+					$value   = ( isset( $options[ $field_id ] ) ) ? $options[ $field_id ] : self::$fields[ $field_id ]['default'];
+					$value   = maybe_unserialize( $value );
 				}
 
 
@@ -160,8 +167,8 @@ class Kirki {
 				 */
 				if ( 'background' == self::$fields[ $field_id ]['type'] ) {
 					$value = array();
-					foreach ( self::$fields[ $field_id ]['default'] as $property ) {
-						$value[ $property ] = get_option( $field_id.'_'.$property, self::$fields[ $field_id ]['default'][ $property ] );
+					foreach ( self::$fields[ $field_id ]['default'] as $property_key => $property_default ) {
+						$value[ $property_key ] = get_option( $field_id.'_'.$property_key, $property_default );
 					}
 				}
 

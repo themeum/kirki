@@ -79,6 +79,51 @@ class Test_Kirki extends WP_UnitTestCase {
 
 	}
 
+	public function add_background_fields() {
+		Kirki::add_field( 'my_config_theme_mods', array(
+			'settings' => 'my_settings_test_background_theme_mod',
+			'section' => 'my_section',
+			'type' => 'background',
+			'default' => array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+		) );
+		Kirki::add_field( 'my_config_options', array(
+			'settings' => 'my_settings_test_background_options',
+			'section' => 'my_section',
+			'type' => 'background',
+			'default' => array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+		) );
+		Kirki::add_field( 'my_config_options_serialized', array(
+			'settings' => 'my_settings_test_background_options_serialized',
+			'section' => 'my_section',
+			'type' => 'background',
+			'default' => array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+		) );
+	}
+
 	function add_controls_via_filter( $fields ) {
 
 		// Add the controls
@@ -177,11 +222,99 @@ class Test_Kirki extends WP_UnitTestCase {
 	}
 
 	public function test_get_option() {
+		Kirki::$config = null;
+		Kirki::$fields = null;
 		$this->add_config();
 		$this->add_field();
 		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_theme_mods', 'my_setting_theme_mods' ) );
 		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_options', 'my_setting_options' ) );
 		$this->assertEquals( 'some-default-value', Kirki::get_option( 'my_config_options_serialized', 'my_option[my_setting_options_serialized]' ) );
+
+		Kirki::$config = null;
+		Kirki::$fields = null;
+		$this->add_config();
+		$this->add_background_fields();
+		$this->assertEquals(
+			array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_theme_mods', 'my_settings_test_background_theme_mod' )
+		);
+		$this->assertEquals(
+			array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_options', 'my_settings_test_background_options' )
+		);
+		$this->assertEquals(
+			array(
+				'color' => '#333333',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_options_serialized', 'my_option[my_settings_test_background_options_serialized]' )
+		);
+
+		Kirki::$config = null;
+		Kirki::$fields = null;
+		$this->add_config();
+		$this->add_background_fields();
+
+		set_theme_mod( 'my_settings_test_background_theme_mod_color', '#000000' );
+		$this->assertEquals(
+			array(
+				'color' => '#000000',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_theme_mods', 'my_settings_test_background_theme_mod' )
+		);
+		update_option( 'my_settings_test_background_options_color', '#222222' );
+		$this->assertEquals(
+			array(
+				'color' => '#222222',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_options', 'my_settings_test_background_options' )
+		);
+		update_option( 'my_option', array( 'my_settings_test_background_options_serialized_color' => '#444444' ) );
+		$this->assertEquals(
+			array(
+				'color' => '#444444',
+				'image' => 'http://foo.com/bar.png',
+				'repeat' => 'no-repeat',
+				'size' => 'cover',
+				'attach' => 'scroll',
+				'position' => 'center-bottom',
+				'opacity' => '.6',
+			),
+			Kirki::get_option( 'my_config_options_serialized', 'my_option[my_settings_test_background_options_serialized]' )
+		);
 	}
 
 }

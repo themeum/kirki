@@ -226,8 +226,8 @@ class Kirki_Field {
 	 */
 	public static function sanitize_settings( $field ) {
 
-		// If the value of 'option_name' is not empty, then we're also using options instead of theme_mods.
-		if ( ( isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
+		// If we're using options & option_name is set, then we need to modify the setting.
+		if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
 			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
 		}
 		return $field['settings'];

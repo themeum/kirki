@@ -59,10 +59,18 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 					break;
 			}
 
-			$fields[ $field['settings'].'_'.$setting ] = array_merge( $field, array(
+			// If we're using options & option_name is set, then we need to modify the setting.
+			if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
+				$property_setting = str_replace( ']', '', str_replace( $field['option_name'].'[', '', $field['settings'] ) );
+				$property_setting = esc_attr( $field['option_name'] ).'['.esc_attr( $property_setting ).'_'.$setting.']';
+			} else {
+				$property_setting = esc_attr( $field['settings'] ).'_'.$setting;
+			}
+
+			$fields[ $property_setting ] = array_merge( $field, array(
 				'type'        => $type,
 				'label'       => $label,
-				'settings'    => $field['settings'].'_'.$setting,
+				'settings'    => $property_setting,
 				'help'        => $help,
 				'section'     => $field['section'],
 				'priority'    => $field['priority'],
