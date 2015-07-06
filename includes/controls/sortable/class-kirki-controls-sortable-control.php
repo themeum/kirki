@@ -54,14 +54,21 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 				$values = maybe_unserialize( $values );
 				$this->visible_button = count( $values ) != count( $this->choices ) ? true : '';
 				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
+
+				$filtered_values = array();
+				foreach ( $values as $key => $value ) {
+					if ( in_array( $key, $this->choices ) ) {
+						$filtered_values[ $key ] = $value;
+					}
+				}
 			?>
 			<ul>
-				<?php foreach ( $values as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
+				<?php foreach ( $filtered_values as $key => $value ) : ?>
+					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[ $value ] ); ?>
 				<?php endforeach; ?>
-				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $values ); ?>
+				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $filtered_values ); ?>
 				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
+					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[ $value ] ); ?>
 				<?php endforeach; ?>
 			</ul>
 			<div style='clear: both'></div>
