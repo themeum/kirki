@@ -22,7 +22,13 @@ if ( class_exists( 'Kirki_Colourlovers' ) ) {
 
 class Kirki_Colourlovers {
 
-	public static function get_palettes( $palettes_nr = 5, $order_by = 'none', $xml = '' ) {
+	/**
+	 * Returns an array properly formatted for use by the Kirki_Palette control.
+	 *
+	 * @param 	$palettes_nr	int		the number of palettes we want to get
+	 * @return array
+	 */
+	public static function get_palettes( $palettes_nr = 5 ) {
 
 		$palettes = self::parse();
 		$palettes = array_slice( $palettes, 0, $palettes_nr );
@@ -41,15 +47,20 @@ class Kirki_Colourlovers {
 	}
 
 	/**
+	 * Get the palettes from an XML file and parse them.
+	 *
 	 * @param string|null $xml
 	 */
 	public static function parse( $xml = null ) {
 
-		// XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
+		/**
+		 * Parse the XML file.
+		 * XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
+		 */
 		$xml_url  = ( is_null( $xml ) ) ? trailingslashit( kirki_url() ).'assets/xml/colourlovers-top.xml' : $xml;
 		$feed_xml = simplexml_load_file( $xml_url );
-		$palettes = array();
 
+		$palettes = array();
 		foreach ( $feed_xml->palette as $result ) {
 			$palettes[] = (array) $result->colors->hex;
 		}
