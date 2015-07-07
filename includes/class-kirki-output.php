@@ -87,25 +87,23 @@ class Kirki_Output {
 			if ( false !== strpos( self::$settings, '[' ) ) {
 				$setting_parts = explode( '[', self::$settings );
 				$option_name   = str_replace( array( '[', ']' ), '', $setting_parts[0] );
-				if ( '' != $option_name ) {
+				/**
+				 * We're using serialized options.
+				 * First we'll need to get the option defined by the $option_name
+				 * and then get the value of the specific setting from the array of options.
+				 */
+				$option_value     = get_option( $option_name );
+				$setting_stripped = str_replace( $option_name.'[', '', str_replace( ']', '', self::$settings ) );
+				if ( isset( $option_value[ $setting_stripped ] ) ) {
 					/**
-					 * We're using serialized options.
-					 * First we'll need to get the option defined by the $option_name
-					 * and then get the value of the specific setting from the array of options.
+					 * An option is set, so use that value.
 					 */
-					$option_value     = get_option( $option_name );
-					$setting_stripped = str_replace( $option_name.'[', '', str_replace( ']', '', self::$settings ) );
-					if ( isset( $option_value[ $setting_stripped ] ) ) {
-						/**
-						 * An option is set, so use that value.
-						 */
-						$value = $option_value[ $setting_stripped ];
-					} else {
-						/**
-						 * Option is not set, fallback to the default value.
-						 */
-						$value = $default;
-					}
+					$value = $option_value[ $setting_stripped ];
+				} else {
+					/**
+					 * Option is not set, fallback to the default value.
+					 */
+					$value = $default;
 				}
 			} else {
 				/**
