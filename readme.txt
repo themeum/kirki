@@ -18,8 +18,6 @@ You can add beautiful options to your theme\'s customizer panel and allow your u
 
 Converting from the default customizer to the syntax used by Kirki will only take a few minutes and will save you a lot of time in the long run. :)
 
-**CAUTION**: This plugin requires PHP 5.3 and is not compatible with PHP 5.2
-
 The following controls are included:
 
 * Radio-Buttonset
