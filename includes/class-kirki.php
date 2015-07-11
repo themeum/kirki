@@ -156,7 +156,6 @@ class Kirki {
 					$value   = maybe_unserialize( $value );
 				}
 
-
 			} else {
 				/**
 				 * Each option separately saved in the db
