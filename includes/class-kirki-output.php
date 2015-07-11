@@ -129,6 +129,9 @@ class Kirki_Output {
 		 * Process the array of CSS properties and produce the final CSS
 		 */
 		$final_css = '';
+		if ( ! is_array( $css ) || empty( $css ) ) {
+			return;
+		}
 		foreach ( $css as $media_query => $styles ) {
 
 			$final_css .= ( 'global' != $media_query ) ? $media_query . '{' : '';

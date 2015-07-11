@@ -75,7 +75,9 @@ class Kirki {
 	 */
 	public static function get_option( $config_id = '', $field_id = '' ) {
 
-		// Make sure value is defined
+		/**
+		 * Make sure value is defined
+		 */
 		$value = '';
 
 		/**
@@ -213,10 +215,13 @@ class Kirki {
 		);
 		$args = array_merge( $default_args, $args );
 
-		// Allow empty value as the config ID by setting the id to global.
+		/**
+		 * Allow empty value as the config ID by setting the id to global.
+		 */
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
-
-		// Set the config
+		/**
+		 * Set the config
+		 */
 		self::$config[ $config_id ] = $args;
 
 	}
@@ -334,7 +339,6 @@ class Kirki {
 	 */
 	public static function add_panel( $id = '', $args = array() ) {
 
-		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
@@ -342,7 +346,7 @@ class Kirki {
 			$args['active_callback'] = ( isset( $args['required'] ) ) ? 'kirki_active_callback' : '__return_true';
 		}
 
-		self::$panels[$args['id']] = $args;
+		self::$panels[ $args['id'] ] = $args;
 
 	}
 
@@ -354,7 +358,6 @@ class Kirki {
 	 */
 	public static function add_section( $id, $args ) {
 
-		// Add the section to the $fields variable
 		$args['id']          = esc_attr( $id );
 		$args['panel']       = ( isset( $args['panel'] ) ) ? esc_attr( $args['panel'] ) : '';
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
@@ -382,7 +385,9 @@ class Kirki {
 
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
-		// Get the configuration options
+		/**
+		 * Get the configuration options
+		 */
 		$config = self::$config[ $config_id ];
 
 		/**
@@ -425,11 +430,15 @@ class Kirki {
 			$args['option_type'] = $config['option_type'];
 		}
 
-		// Add the field to the static $fields variable properly indexed
+		/**
+		 * Add the field to the static $fields variable properly indexed
+		 */
 		self::$fields[ Kirki_Field::sanitize_settings( $args ) ] = $args;
 
 		if ( 'background' == $args['type'] ) {
-			// Build the background fields
+			/**
+			 * Build the background fields
+			 */
 			self::$fields = Kirki_Explode_Background_Field::process_fields( self::$fields );
 		}
 
@@ -444,16 +453,37 @@ class Kirki {
 
 		$variables = array();
 
+		/**
+		 * Loop through all fields
+		 */
 		foreach ( self::$fields as $field ) {
-
-			if ( isset( $field['variables'] ) && false != $field['variables'] ) {
-
+			/**
+			 * Check if we have variables for this field
+			 */
+			if ( isset( $field['variables'] ) && false != $field['variables'] && ! empty( $field['variables'] ) ) {
+				/**
+				 * Loop through the array of variables
+				 */
 				foreach ( $field['variables'] as $field_variable ) {
-
+					/**
+					 * Is the variable ['name'] defined?
+					 * If yes, then we can proceed.
+					 */
 					if ( isset( $field_variable['name'] ) ) {
+						/**
+						 * Sanitize the variable name
+						 */
 						$variable_name     = esc_attr( $field_variable['name'] );
+						/**
+						 * Do we have a callback function defined?
+						 * If not then set $variable_callback to false.
+						 */
 						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
-
+						/**
+						 * If we have a variable_callback defined then get the value of the option
+						 * and run it through the callback function.
+						 * If no callback is defined (false) then just get the value.
+						 */
 						if ( $variable_callback ) {
 							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], self::get_option( Kirki_Field::sanitize_settings( $field ) ) );
 						} else {
@@ -467,7 +497,10 @@ class Kirki {
 			}
 
 		}
-
+		/**
+		 * Pass the variables through a filter ('kirki/variable')
+		 * and return the array of variables
+		 */
 		return apply_filters( 'kirki/variable', $variables );
 
 	}
