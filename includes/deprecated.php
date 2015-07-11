@@ -77,7 +77,7 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 
 		// Early exit if this option does not exist
 		$field_id = ( 'option' == $config['option_type'] && '' != $config['option_name'] ) ? $config['option_name'].'['.$option.']' : $option;
-		if ( ! isset( $fields[$field_id] ) ) {
+		if ( ! isset( $fields[ $field_id ] ) ) {
 			return;
 		}
 

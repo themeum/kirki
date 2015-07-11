@@ -162,7 +162,7 @@ function kirki_controls_with_choices_fields( $fields ) {
 		'section'     => 'controls_with_choices',
 		'default'     => array(
 			'option-1',
-			'option-2'
+			'option-2',
 		),
 		'priority'    => 10,
 		'choices'     => array(
