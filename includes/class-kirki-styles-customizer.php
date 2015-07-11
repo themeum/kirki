@@ -106,11 +106,11 @@ class Kirki_Styles_Customizer {
 		$styles = str_replace( 'COLOR_ACCENT_TEXT', $color_accent_text, $styles );
 		$styles = str_replace( 'COLOR_ACCENT', $color_accent, $styles );
 		$styles = str_replace( 'BORDER_COLOR', $border_color, $styles );
- 		$styles = str_replace( 'BUTTONS_COLOR', $buttons_color, $styles );
- 		$styles = str_replace( 'COLOR_FONT', $color_font, $styles );
- 		$styles = str_replace( 'CONTROLS_COLOR', $controls_color, $styles );
- 		$styles = str_replace( 'ARROWS_COLOR', $arrows_color, $styles );
- 		$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $section_background_color, $styles );
+		$styles = str_replace( 'BUTTONS_COLOR', $buttons_color, $styles );
+		$styles = str_replace( 'COLOR_FONT', $color_font, $styles );
+		$styles = str_replace( 'CONTROLS_COLOR', $controls_color, $styles );
+		$styles = str_replace( 'ARROWS_COLOR', $arrows_color, $styles );
+		$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $section_background_color, $styles );
 
 		return $styles;
 
