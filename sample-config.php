@@ -183,7 +183,7 @@ function kirki_controls_with_choices_fields( $fields ) {
 		'default'     => array(
 			'option-3',
 			'option-1',
-			'option-4'
+			'option-4',
 		),
 		'priority'    => 10,
 		'choices'     => array(
@@ -256,8 +256,8 @@ function kirki_controls_with_choices_fields( $fields ) {
 			array(
 				'element'  => 'body p',
 				'property' => 'font-family',
-			)
-		)
+			),
+		),
 	);
 
 	$fields[] = array(
@@ -380,7 +380,7 @@ function kirki_numeric_fields( $fields ) {
 		'choices'     => array(
 			'min'  => -100,
 			'max'  => 100,
-			'step' => 10
+			'step' => 10,
 		),
 	);
 
@@ -397,7 +397,7 @@ function kirki_numeric_fields( $fields ) {
 		'choices'     => array(
 			'min'  => 0,
 			'max'  => 5,
-			'step' => .01
+			'step' => .01,
 		),
 	);
 
@@ -423,7 +423,7 @@ add_filter( 'kirki/fields', 'kirki_numeric_fields' );
  */
 Kirki::add_config( 'kirki_demo', array(
 	'option_type' => 'option',
-	'option_name'  => 'kirki_demo'
+	'option_name'  => 'kirki_demo',
 ) );
 
 /**
@@ -456,11 +456,11 @@ Kirki::add_field( 'kirki_demo', array(
 		array(
 			'element'  => 'a, a:visited',
 			'property' => 'color',
-			'units'    => ' !important'
+			'units'    => ' !important',
 		),
 		array(
 			'element'  => '#content',
-			'property' => 'border-color'
+			'property' => 'border-color',
 		),
 	),
 	'transport'   => 'postMessage',
@@ -491,11 +491,11 @@ Kirki::add_field( 'kirki_demo', array(
 		array(
 			'element'  => 'a, a:visited',
 			'property' => 'color',
-			'units'    => ' !important'
+			'units'    => ' !important',
 		),
 		array(
 			'element'  => '#content',
-			'property' => 'border-color'
+			'property' => 'border-color',
 		),
 	),
 	'transport'   => 'postMessage',

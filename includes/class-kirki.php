@@ -187,10 +187,9 @@ class Kirki {
 
 			switch ( self::$fields[ $field_id ]['type'] ) {
 
-				case 'image' :
+				case 'image':
 					$value = Kirki_Helper::get_image_from_url( $value );
 					break;
-
 			}
 
 		}
@@ -291,7 +290,7 @@ class Kirki {
 			'custom'          	=> 'Kirki_Controls_Custom_Control',
 			'editor'          	=> 'Kirki_Controls_Editor_Control',
 			'select2'         	=> 'Kirki_Controls_Select2_Control',
-			'select2-multiple'	=> 'Kirki_Controls_Select2_Multiple_Control'
+			'select2-multiple'	=> 'Kirki_Controls_Select2_Multiple_Control',
 		) );
 
 		foreach ( self::$fields as $field ) {

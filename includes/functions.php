@@ -16,12 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'kirki_path' ) ) {
+	/**
+	 * Returns the absolute path to the plugin.
+	 * @return string
+	 */
 	function kirki_path() {
 		return KIRKI_PATH;
 	}
 }
 
 if ( ! function_exists( 'kirki_url' ) ) {
+	/**
+	 * Returns the URL of the plugin.
+	 * @return string
+	 */
 	function kirki_url() {
 		$config = apply_filters( 'kirki/config', array() );
 		if ( isset( $config['url_path'] ) ) {
@@ -33,6 +41,12 @@ if ( ! function_exists( 'kirki_url' ) ) {
 }
 
 if ( ! function_exists( 'kirki_active_callback' ) ) {
+	/**
+	 * Figure out whether the current object should be displayed or not.
+	 *
+	 * @param $object 	the current field
+	 * @return boolean
+	 */
 	function kirki_active_callback( $object ) {
 
 		// Get all fields
@@ -58,31 +72,31 @@ if ( ! function_exists( 'kirki_active_callback' ) ) {
 
 				$value = $object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] )->value();
 				switch ( $requirement['operator'] ) {
-					case '===' :
+					case '===':
 						$show = ( $requirement['value'] === $value ) ? true : false;
 						break;
-					case '==' :
+					case '==':
 						$show = ( $requirement['value'] == $value ) ? true : false;
 						break;
-					case '!==' :
+					case '!==':
 						$show = ( $requirement['value'] !== $value ) ? true : false;
 						break;
-					case '!=' :
+					case '!=':
 						$show = ( $requirement['value'] != $value ) ? true : false;
 						break;
-					case '>=' :
+					case '>=':
 						$show = ( $requirement['value'] >= $value ) ? true : false;
 						break;
-					case '<=' :
+					case '<=':
 						$show = ( $requirement['value'] <= $value ) ? true : false;
 						break;
-					case '>' :
+					case '>':
 						$show = ( $requirement['value'] > $value ) ? true : false;
 						break;
-					case '<' :
+					case '<':
 						$show = ( $requirement['value'] < $value ) ? true : false;
 						break;
-					default :
+					default:
 						$show = ( $requirement['value'] == $value ) ? true : false;
 
 				}

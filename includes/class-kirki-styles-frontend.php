@@ -79,7 +79,11 @@ class Kirki_Styles_Frontend {
 
 		}
 
-		return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
+		if ( is_array( $css ) ) {
+			return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
+		}
+
+		return;
 
 	}
 

@@ -77,7 +77,6 @@ if ( ! function_exists( 'Kirki' ) ) {
 			'front'           => new Kirki_Styles_Frontend(),
 		);
 
-
 		return $kirki;
 
 	}

@@ -78,7 +78,7 @@ class Kirki_Field {
 
 		switch ( $field['type'] ) {
 
-			case 'checkbox' :
+			case 'checkbox':
 				/**
 				 * Tweaks for backwards-compatibility:
 				 * Prior to version 0.8 switch & toggle were part of the checkbox control.
@@ -89,7 +89,7 @@ class Kirki_Field {
 					$field['type'] = 'toggle';
 				}
 				break;
-			case 'radio' :
+			case 'radio':
 				/**
 				 * Tweaks for backwards-compatibility:
 				 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
@@ -100,19 +100,19 @@ class Kirki_Field {
 					$field['type'] = 'radio-image';
 				}
 				break;
-			case 'group-title' :
-			case 'group_title' :
+			case 'group-title':
+			case 'group_title':
 				/**
 				 * Tweaks for backwards-compatibility:
 				 * Prior to version 0.8 there was a group-title control.
 				 */
 				$field['type'] = 'custom';
 				break;
-			case 'color_alpha' :
+			case 'color_alpha':
 				// Just making sure that common mistakes will still work.
 				$field['type'] = 'color-alpha';
 				break;
-			case 'color' :
+			case 'color':
 				// If a default value of rgba() is defined for a color control then use color-alpha instead.
 				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
 					$field['type'] = 'color-alpha';
@@ -652,46 +652,46 @@ class Kirki_Field {
 	public static function fallback_callback( $field_type ) {
 
 		switch ( $field_type ) {
-			case 'checkbox' :
-			case 'toggle' :
-			case 'switch' :
+			case 'checkbox':
+			case 'toggle':
+			case 'switch':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
 				break;
-			case 'color' :
-			case 'color-alpha' :
+			case 'color':
+			case 'color-alpha':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
 				break;
-			case 'image' :
-			case 'upload' :
+			case 'image':
+			case 'upload':
 				$sanitize_callback = 'esc_url_raw';
 				break;
-			case 'radio' :
-			case 'radio-image' :
-			case 'radio-buttonset' :
-			case 'select' :
-			case 'select2' :
-			case 'palette' :
+			case 'radio':
+			case 'radio-image':
+			case 'radio-buttonset':
+			case 'select':
+			case 'select2':
+			case 'palette':
 				$sanitize_callback = 'esc_attr';
 				break;
-			case 'dropdown-pages' :
+			case 'dropdown-pages':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
 				break;
-			case 'slider' :
-			case 'number' :
+			case 'slider':
+			case 'number':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
 				break;
-			case 'text' :
-			case 'textarea' :
-			case 'editor' :
+			case 'text':
+			case 'textarea':
+			case 'editor':
 				$sanitize_callback = 'esc_textarea';
 				break;
-			case 'multicheck' :
+			case 'multicheck':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
 				break;
-			case 'sortable' :
+			case 'sortable':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
 				break;
-			default :
+			default:
 				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
 				break;
 		}

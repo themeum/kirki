@@ -73,6 +73,8 @@ class Kirki_Sanitize {
 	 * Sanitize sortable controls
 	 *
 	 * @since 0.8.3
+	 *
+	 * @return mixed
 	 */
 
 	public static function sortable( $value ) {
@@ -87,6 +89,8 @@ class Kirki_Sanitize {
 	 * Sanitize RGBA colors
 	 *
 	 * @since 0.8.5
+	 *
+	 * @return string
 	 */
 	public static function rgba( $value ) {
 
@@ -142,6 +146,8 @@ class Kirki_Sanitize {
 	 * DOES NOT SANITIZE ANYTHING.
 	 *
 	 * @since 0.5
+	 *
+	 * @return mixed
 	 */
 	public static function unfiltered( $value ) {
 		return $value;

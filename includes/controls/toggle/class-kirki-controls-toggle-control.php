@@ -34,7 +34,6 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	 * Render the control's content.
 	 */
 	protected function render_content() { ?>
-		<?php $i18n = Kirki_Toolkit::i18n(); ?>
 		<label for="toggle_<?php echo $this->id; ?>">
 			<span class="customize-control-title">
 				<?php echo esc_attr( $this->label ); ?>

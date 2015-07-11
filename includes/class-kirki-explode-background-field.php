@@ -6,7 +6,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field {
 	 * Takes a single field with type = background and explodes it to multiple controls.
 	 *
 	 * @param array
-	 * @return null|array<Array>
+	 * @return null|array
 	 */
 	public static function explode( $field ) {
 		$i18n    = Kirki_Toolkit::i18n();

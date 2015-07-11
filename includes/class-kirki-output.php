@@ -53,7 +53,11 @@ class Kirki_Output {
 		self::$value    = self::get_value();
 		self::$callback = $callback;
 
-		return ( true === $return_array ) ? self::styles() : self::styles_parse( self::add_prefixes( self::styles() ) );
+		if ( true === $return_array ) {
+			return self::styles();
+		} else {
+			return self::styles_parse( self::add_prefixes( self::styles() ) );
+		}
 
 	}
 
@@ -156,7 +160,6 @@ class Kirki_Output {
 
 		}
 
-
 		return $final_css;
 
 	}
@@ -186,69 +189,77 @@ class Kirki_Output {
 	 */
 	public static function add_prefixes( $css ) {
 
-		if ( ! is_array( $css ) ) {
-			return;
-		}
-
-		foreach ( $css as $media_query => $elements ) {
-
-			foreach ( $elements as $element => $style_array ) {
-
-				foreach ( $style_array as $property => $value ) {
-
-					// border-radius
-					if ( 'border-radius' == $property ) {
-						$css[$media_query][$element]['-webkit-border-radius'] = $value;
-						$css[$media_query][$element]['-moz-border-radius'] = $value;
+		if ( is_array( $css ) ) {
+			foreach ( $css as $media_query => $elements ) {
+				foreach ( $elements as $element => $style_array ) {
+					foreach ( $style_array as $property => $value ) {
+						/**
+						 * border-radius
+						 */
+						if ( 'border-radius' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-border-radius'] = $value;
+							$css[ $media_query ][ $element ]['-moz-border-radius'] = $value;
+						}
+						/**
+						 * box-shadow
+						 */
+						if ( 'box-shadow' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-box-shadow'] = $value;
+							$css[ $media_query ][ $element ]['-moz-box-shadow']    = $value;
+						}
+						/**
+						 * box-sizing
+						 */
+						elseif ( 'box-sizing' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-box-sizing'] = $value;
+							$css[ $media_query ][ $element ]['-moz-box-sizing']    = $value;
+						}
+						/**
+						 * text-shadow
+						 */
+						elseif ( 'text-shadow' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-text-shadow'] = $value;
+							$css[ $media_query ][ $element ]['-moz-text-shadow']    = $value;
+						}
+						/**
+						 * transform
+						 */
+						elseif ( 'transform' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-transform'] = $value;
+							$css[ $media_query ][ $element ]['-moz-transform']    = $value;
+							$css[ $media_query ][ $element ]['-ms-transform']     = $value;
+							$css[ $media_query ][ $element ]['-o-transform']      = $value;
+						}
+						/**
+						 * background-size
+						 */
+						elseif ( 'background-size' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-background-size'] = $value;
+							$css[ $media_query ][ $element ]['-moz-background-size']    = $value;
+							$css[ $media_query ][ $element ]['-ms-background-size']     = $value;
+							$css[ $media_query ][ $element ]['-o-background-size']      = $value;
+						}
+						/**
+						 * transition
+						 */
+						elseif ( 'transition' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-transition'] = $value;
+							$css[ $media_query ][ $element ]['-moz-transition']    = $value;
+							$css[ $media_query ][ $element ]['-ms-transition']     = $value;
+							$css[ $media_query ][ $element ]['-o-transition']      = $value;
+						}
+						/**
+						 * transition-property
+						 */
+						elseif ( 'transition-property' == $property ) {
+							$css[ $media_query ][ $element ]['-webkit-transition-property'] = $value;
+							$css[ $media_query ][ $element ]['-moz-transition-property']    = $value;
+							$css[ $media_query ][ $element ]['-ms-transition-property']     = $value;
+							$css[ $media_query ][ $element ]['-o-transition-property']      = $value;
+						}
 					}
-					// box-shadow
-					if ( 'box-shadow' == $property ) {
-						$css[$media_query][$element]['-webkit-box-shadow'] = $value;
-						$css[$media_query][$element]['-moz-box-shadow']    = $value;
-					}
-					// box-sizing
-					elseif ( 'box-sizing' == $property ) {
-						$css[$media_query][$element]['-webkit-box-sizing'] = $value;
-						$css[$media_query][$element]['-moz-box-sizing']    = $value;
-					}
-					// text-shadow
-					elseif ( 'text-shadow' == $property ) {
-						$css[$media_query][$element]['-webkit-text-shadow'] = $value;
-						$css[$media_query][$element]['-moz-text-shadow']    = $value;
-					}
-					// transform
-					elseif ( 'transform' == $property ) {
-						$css[$media_query][$element]['-webkit-transform'] = $value;
-						$css[$media_query][$element]['-moz-transform']    = $value;
-						$css[$media_query][$element]['-ms-transform']     = $value;
-						$css[$media_query][$element]['-o-transform']      = $value;
-					}
-					// background-size
-					elseif ( 'background-size' == $property ) {
-						$css[$media_query][$element]['-webkit-background-size'] = $value;
-						$css[$media_query][$element]['-moz-background-size']    = $value;
-						$css[$media_query][$element]['-ms-background-size']     = $value;
-						$css[$media_query][$element]['-o-background-size']      = $value;
-					}
-					// transition
-					elseif ( 'transition' == $property ) {
-						$css[$media_query][$element]['-webkit-transition'] = $value;
-						$css[$media_query][$element]['-moz-transition']    = $value;
-						$css[$media_query][$element]['-ms-transition']     = $value;
-						$css[$media_query][$element]['-o-transition']      = $value;
-					}
-					// transition-property
-					elseif ( 'transition-property' == $property ) {
-						$css[$media_query][$element]['-webkit-transition-property'] = $value;
-						$css[$media_query][$element]['-moz-transition-property']    = $value;
-						$css[$media_query][$element]['-ms-transition-property']     = $value;
-						$css[$media_query][$element]['-o-transition-property']      = $value;
-					}
-
 				}
-
 			}
-
 		}
 
 		return $css;
