@@ -59,99 +59,58 @@ class Kirki_Styles_Customizer {
 			$color_font = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
 		}
 
-		$styles = '';
+		$border_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
+		$buttons_color            = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 80 ) : Kirki_Color::adjust_brightness( $color_back, -80 );
+		$controls_color           = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#ffffff;' : '#333333';
+		$arrows_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 120 ) : Kirki_Color::adjust_brightness( $color_back, -120 );
+		$color_accent_text        = ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ? Kirki_Color::adjust_brightness( $color_accent, 120 ) : Kirki_Color::adjust_brightness( $color_accent, -120 );
+		$section_background_color = Kirki_Color::mix_colors( $color_back, '#ffffff', 10 );
 
-		// Width
+		/**
+		 * Initialize the WP_Filesystem
+		 */
+		global $wp_filesystem;
+		if ( empty( $wp_filesystem ) ) {
+			require_once ( ABSPATH.'/wp-admin/includes/file.php' );
+			WP_Filesystem();
+		}
+
+		$styles  = '';
+		/**
+		 * Include the width CSS if necessary
+		 */
 		if ( isset( $config['width'] ) ) {
-			$styles .= '.wp-full-overlay-sidebar{width:'.esc_attr( $config['width'] ).';}';
-			$styles .= '.wp-full-overlay.expanded{margin-left:'.esc_attr( $config['width'] ).';}';
+			$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css-width.css' );
+			/**
+			 * Replace width placeholder with actual value
+			 */
+			$styles  = str_replace( 'WIDTH', $config['width'], $styles );
 		}
 
+		/**
+		 * Include the color modifications CSS if necessary
+		 */
 		if ( false !== $color_back && false !== $color_font ) {
-
-			// Generic background color
-			$styles .= '.wp-full-overlay-sidebar{background:'.$color_back.';}';
-
-			// Title background color
-			$styles .= '#customize-controls .customize-info .accordion-section-title, #customize-controls .panel-meta.customize-info .accordion-section-title:hover{background:'.$color_back.';}';
-
-			// Borders
-			$border_color = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
-			$styles      .= '#customize-controls .customize-info{border-top-color:'.$border_color.';border-bottom-color:'.$border_color.';}';
-			$styles      .= '.customize-section-title{border-bottom-color:'.$border_color.';}';
-			$styles      .= '.customize-panel-back, .customize-section-back{border-right-color:'.$border_color.';}';
-			$styles      .= '#customize-header-actions{border-bottom-color:'.$border_color.';}';
-			$styles      .= '.customize-controls-close, .customize-overlay-close{border-right-color:'.$border_color.'!important;}';
-
-			// back & close buttons color
-			if ( 170 > Kirki_Color::get_brightness( $color_back ) ) {
-				$color = Kirki_Color::adjust_brightness( $color_back, 80 );
-			} else {
-				$color = Kirki_Color::adjust_brightness( $color_back, -80 );
-			}
-			$styles .= '.customize-panel-back:focus, .customize-panel-back:hover, .customize-section-back:focus, .customize-section-back:hover, .customize-panel-back, .customize-section-back, .customize-controls-close, .customize-overlay-close{background:'.$color.';}';
-			$styles .= '.control-panel-back:focus, .control-panel-back:hover, .customize-controls-close:focus, .customize-controls-close:hover, .customize-controls-preview-toggle:focus, .customize-controls-preview-toggle:hover, .customize-overlay-close:focus, .customize-overlay-close:hover{background:'.$color.'}';
-
-			// Sections list titles
-			$styles .= '#customize-theme-controls .accordion-section-title{background:'.$color_back.';color:'.$color_font.';}';
-			$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? 'color:#ffffff;' : '';
-			$styles .= '#customize-controls .control-section .accordion-section-title:focus, #customize-controls .control-section .accordion-section-title:hover, #customize-controls .control-section.open .accordion-section-title, #customize-controls .control-section:hover>.accordion-section-title{background:'.$color_accent.';'.$color.'}';
-
-			// Arrows
-			if ( 170 > Kirki_Color::get_brightness( $color_back ) ) {
-				$color = Kirki_Color::adjust_brightness( $color_back, 120 );
-			} else {
-				$color = Kirki_Color::adjust_brightness( $color_back, -120 );
-			}
-			$styles .= '.accordion-section-title:after, .handlediv, .item-edit, .sidebar-name-arrow, .widget-action{color:'.$color.'}';
-			if ( 170 > Kirki_Color::get_brightness( $color_accent ) ) {
-				$color = Kirki_Color::adjust_brightness( $color_accent, 120 );
-			} else {
-				$color = Kirki_Color::adjust_brightness( $color_accent, -120 );
-			}
-			$styles .= '#customize-theme-controls .control-section .accordion-section-title:focus:after, #customize-theme-controls .control-section .accordion-section-title:hover:after, #customize-theme-controls .control-section.open .accordion-section-title:after, #customize-theme-controls .control-section:hover>.accordion-section-title:after{color:'.$color.'}';
-
-			// Title for active section
-			$styles .= '.customize-section-title{background:'.$color_back.';}';
-			$styles .= '.customize-section-title h3, h3.customize-section-title{color:'.$color_font.';}';
-
-			// Active section background
-			$styles .= '#customize-theme-controls .accordion-section-content{background:'.Kirki_Color::mix_colors( $color_back, '#ffffff', 10 ).';}';
-
-			// Title color for active panels etc.
-			$styles .= '#customize-controls .customize-info .preview-notice{color:'.$color_font.';}';
-
+			$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css-colors.css' );
 		}
 
-		// Button styles
-		$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#fff' : '#222';
-		$styles .= '.wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled]{background:'.$color_accent.' !important;color:'.$color.' !important;border-color:rgba(0,0,0,.1) !important;opacity:.7;}';
-		$styles .= '.wp-core-ui .button-primary{background-color:'.$color_accent.';color:'.$color.';opacity:1;}';
+		/**
+		 * Include generic CSS for controls
+		 */
+		$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css.css' );
 
-		// Tooltip styles
-		$styles .= '#customize-controls .customize-info .customize-help-toggle{color:'.$color_accent.';}';
-
-		// Image-Radio styles
-		$styles .= '.customize-control-radio-image .image.ui-buttonset label.ui-state-active{border:2px solid '.$color_accent.';}';
-
-		// Buttonset-Radio styles
-		$color   = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#fff;' : '#222';
-		$styles .= '.customize-control-radio-buttonset label.ui-state-active{background-color:'.$color_accent.';color:'.$color.';}';
-
-		// Slider Controls
-		$styles .= '.customize-control-slider .ui-slider .ui-slider-handle{background-color:'.$color_accent.';}';
-
-		// Switch Controls
-		$styles .= '.customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag{background:'.$color_accent.';}';
-
-		// Toggle Controls
-		$styles .= '.customize-control-toggle .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag{background:'.$color_accent.';}';
-
-		// Sortable Controls
-		$styles .= '.customize-control-sortable ul.ui-sortable li .dashicons.visibility{color:'.$color_accent.';}';
-
-		// Palette Controls
-		$styles .= '.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text{border-color:'.$color_accent.';}';
+		/**
+		 * replace CSS placeholders with actual values
+		 */
+		$styles = str_replace( 'COLOR_BACK', $color_back, $styles );
+		$styles = str_replace( 'COLOR_ACCENT_TEXT', $color_accent_text, $styles );
+		$styles = str_replace( 'COLOR_ACCENT', $color_accent, $styles );
+		$styles = str_replace( 'BORDER_COLOR', $border_color, $styles );
+ 		$styles = str_replace( 'BUTTONS_COLOR', $buttons_color, $styles );
+ 		$styles = str_replace( 'COLOR_FONT', $color_font, $styles );
+ 		$styles = str_replace( 'CONTROLS_COLOR', $controls_color, $styles );
+ 		$styles = str_replace( 'ARROWS_COLOR', $arrows_color, $styles );
+ 		$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $section_background_color, $styles );
 
 		return $styles;
 

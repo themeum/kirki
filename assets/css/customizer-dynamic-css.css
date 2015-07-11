@@ -1,0 +1,57 @@
+/** Button styles **/
+.wp-core-ui .button-primary-disabled,
+.wp-core-ui .button-primary.disabled,
+.wp-core-ui .button-primary:disabled,
+.wp-core-ui .button-primary[disabled] {
+  background: COLOR_ACCENT !important;
+  color: COLOR_ACCENT_TEXT !important;
+  border-color: rgba(0,0,0,.1) !important;
+  opacity: .7;
+}
+
+.wp-core-ui .button-primary {
+  background-color: COLOR_ACCENT;
+  color: COLOR_ACCENT_TEXT;
+  opacity: 1;
+}
+
+/** Tooltip styles **/
+#customize-controls .customize-info .customize-help-toggle {
+  color: COLOR_ACCENT;
+}
+
+/** Image-Radio styles **/
+.customize-control-radio-image .image.ui-buttonset label.ui-state-active {
+  border: 2px solid COLOR_ACCENT
+}
+
+/** Radio-Buttonset styles **/
+.customize-control-radio-buttonset label.ui-state-active {
+  background-color: COLOR_ACCENT;
+  color: COLOR_ACCENT_TEXT;
+}
+
+/** Slider Controls **/
+.customize-control-slider .ui-slider .ui-slider-handle {
+  background-color: COLOR_ACCENT;
+}
+
+/** Switch Controls **/
+.customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
+  background: COLOR_ACCENT;
+}
+
+/** Toggle Controls **/
+.customize-control-toggle .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
+  background: COLOR_ACCENT;
+}
+
+/** Sortable Controls **/
+.customize-control-sortable ul.ui-sortable li .dashicons.visibility {
+  color: COLOR_ACCENT;
+}
+
+/** Palette Controls **/
+.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {
+  border-color: COLOR_ACCENT;
+}
