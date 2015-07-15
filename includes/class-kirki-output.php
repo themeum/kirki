@@ -42,6 +42,8 @@ class Kirki_Output {
 	 */
 	public static function css( $field ) {
 
+		$field = Kirki_Field::sanitize_field( $field );
+
 		self::$settings    = $field['settings'];
 		self::$output      = $field['output'];
 		self::$value       = Kirki::get_option( Kirki::get_config_id( $field ), $field['settings'] );
@@ -102,12 +104,21 @@ class Kirki_Output {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
-			// Do we have units?
+			/**
+			 * Do we have units?
+			 */
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
-			// Do we need to run this through a callback action?
+			/**
+			 * Do we need to run this through a callback action?
+			 */
 			$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
-
-			$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+			/**
+			 * Make sure the value is a string before proceeding
+			 * If all is ok, then populate the array.
+			 */
+	 		if ( ! is_string( self::$value ) ) {
+				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+			}
 		}
 
 		return $styles;

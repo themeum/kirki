@@ -56,8 +56,8 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 					 */
 					$config_id = Kirki::get_config_id( $field );
 					$settings = $field['settings'];
-					if ( 'option' == Kirki::$config[ $config_id ][ $field['option_type'] ] && '' != $config[ $config_id ][ $field['option_name'] ] ) {
-						$settings = str_replace( array( ']', $field['option_name'].'[' ), '', $field_id );
+					if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
+						$settings = str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'].'[' ), '', $field['settings'] );
 					}
 					$value = Kirki::get_option( $config_id, $settings );
 
