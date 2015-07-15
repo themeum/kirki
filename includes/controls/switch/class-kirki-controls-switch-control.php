@@ -44,7 +44,7 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 		</label>
-		<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+		<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> <?php if ( '1' == $this->value() ) { echo 'checked'; } ?> />
 		<script>
 		jQuery(document).ready(function($){
 			$('[id="switch_<?php echo $this->id; ?>"]').checkbox({
@@ -56,6 +56,9 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 			});
 		});
 		</script>
+		<?php if ( '0' == $this->value() ) { ?>
+			<script>jQuery(document).ready(function($){$('#customize-control-<?php echo $this->id; ?> .fs-checkbox').removeClass('fs-checkbox-checked');});</script>
+		<?php } ?>
 		<?php
 	}
 }
