@@ -41,15 +41,34 @@ class Kirki_Output {
 	 * @var 	mixed		a callable function.
 	 */
 	public static function css( $field ) {
-
+		/**
+		 * Make sure the field is sanitized before proceeding any further.
+		 */
 		$field = Kirki_Field::sanitize_field( $field );
-
-		self::$settings    = $field['settings'];
-		self::$output      = $field['output'];
-		self::$value       = Kirki::get_option( Kirki::get_config_id( $field ), $field['settings'] );
-		self::$callback    = $field['sanitize_callback'];
-
-		return self::styles();
+		/**
+		 * Get the config ID used in the Kirki class.
+		 */
+		$config_id       = Kirki::get_config_id( $field );
+		/**
+		 * Set class vars
+		 */
+		self::$settings = $field['settings'];
+		self::$output   = $field['output'];
+		self::$callback = $field['sanitize_callback'];
+		/**
+		 * Get the value of this field
+		 */
+		if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
+			self::$value = Kirki::get_option( $config_id, str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'].'[' ), '', $field['settings'] ) );
+		} else {
+			self::$value = Kirki::get_option( $config_id, $field['settings'] );
+		}
+		/**
+		 * Returns the styles
+		 */
+		if ( ! is_array( self::$value ) ) {
+			return self::styles();
+		}
 
 	}
 
@@ -75,6 +94,7 @@ class Kirki_Output {
 			foreach ( $styles as $style => $style_array ) {
 				$final_css .= $style . '{';
 					foreach ( $style_array as $property => $value ) {
+						$value = ( is_string( $value ) ) ? $value : '';
 						// Take care of formatting the URL for background-image statements.
 						if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
 							$value = 'url("'.$value.'")';
@@ -116,7 +136,7 @@ class Kirki_Output {
 			 * Make sure the value is a string before proceeding
 			 * If all is ok, then populate the array.
 			 */
-	 		if ( ! is_string( self::$value ) ) {
+			if ( ! is_array( $value ) ) {
 				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
 			}
 		}
