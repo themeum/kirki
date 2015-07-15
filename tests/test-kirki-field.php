@@ -45,7 +45,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'settings' => 'foo',
 				'section' => 'foo',
 				'type' => 'text',
-				'settings_raw' => 'foo',
 				'default' => '',
 				'label' => '',
 				'help' => '',
@@ -60,8 +59,9 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'js_vars' => null,
 				'id' => 'foo',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			Kirki_Field::sanitize_field( array(
 				'settings' => 'foo',
@@ -140,14 +140,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			);
 		});
 		$this->assertEquals( 'activate_plugins', Kirki_Field::sanitize_capability( array() ) );
-	}
-
-	public function test_sanitize_settings_raw() {
-		$this->assertEquals( 'my_settingsub-setting', Kirki_Field::sanitize_settings_raw( array( 'settings' => 'my_setting[sub-setting]' ) ) );
-		$this->assertEquals( 'my_settingsub-setting', Kirki_Field::sanitize_settings_raw( array( 'settings' => 'my_setting["sub-setting"]' ) ) );
-		$this->assertEquals( 'my_settingsub-setting', Kirki_Field::sanitize_settings_raw( array( 'settings' => 'my_setting sub-setting' ) ) );
-
-		$this->assertEquals( 'my_settingsub-setting', Kirki_Field::sanitize_settings_raw( array( 'setting' => 'my_setting sub-setting' ) ) );
 	}
 
 	public function test_sanitize_settings() {

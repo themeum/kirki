@@ -94,17 +94,7 @@ class Kirki {
 		 */
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
-		/**
-		 * Are we using options or theme_mods?
-		 */
-		$mode = self::$config[ $config_id ]['option_type'];
-
-		/**
-		 * Is there an option name set?
-		 */
-		$option_name = self::$config[ $config_id ]['option_name'];
-
-		if ( 'theme_mod' == $mode ) {
+		if ( 'theme_mod' == self::$config[ $config_id ]['option_type'] ) {
 			/**
 			 * We're using theme_mods.
 			 * so just get the value using get_theme_mod
@@ -122,23 +112,24 @@ class Kirki {
 				}
 			}
 
-		} elseif ( 'option' == $mode ) {
+		} elseif ( 'option' == self::$config[ $config_id ]['option_type'] ) {
 			/**
 			 * We're using options.
 			 */
-			if ( '' != $option_name ) {
+			if ( '' != self::$config[ $config_id ]['option_name'] ) {
 				/**
 				 * Options are serialized as a single option in the db.
 				 * We'll have to get the option and then get the item from the array.
 				 */
-				$options = get_option( $option_name );
+				$options = get_option( self::$config[ $config_id ]['option_name'] );
+
+				$setting_modified = str_replace( ']', '', str_replace( self::$config[ $config_id ]['option_name'].'[', '', $field_id ) );
 
 				/**
 				 * If this is a background field, get the individual sub-fields and return an array.
 				 */
 				if ( 'background' == self::$fields[ $field_id ]['type'] ) {
 					$value = array();
-					$setting_modified = str_replace( ']', '', str_replace( $option_name.'[', '', $field_id ) );
 
 					foreach ( self::$fields[ $field_id ]['default'] as $property => $property_default ) {
 
@@ -152,7 +143,7 @@ class Kirki {
 					/**
 					 * This is not a background field so continue and get the value.
 					 */
-					$value   = ( isset( $options[ $field_id ] ) ) ? $options[ $field_id ] : self::$fields[ $field_id ]['default'];
+					$value   = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : self::$fields[ $field_id ]['default'];
 					$value   = maybe_unserialize( $value );
 				}
 
@@ -439,6 +430,39 @@ class Kirki {
 			 */
 			self::$fields = Kirki_Explode_Background_Field::process_fields( self::$fields );
 		}
+
+	}
+
+	/**
+	 * Find the config ID based on the field options
+	 */
+	public static function get_config_id( $field ) {
+
+		/**
+		 * Get the array of configs from the Kirki class
+		 */
+		$configs = Kirki::$config;
+		/**
+		 * Loop through all configs and search for a match
+		 */
+		foreach ( $configs as $config_id => $config_args ) {
+			$option_type = ( isset( $config_args['option_type'] ) ) ? $config_args['option_type'] : 'theme_mod';
+			$option_name = ( isset( $config_args['option_name'] ) ) ? $config_args['option_name'] : '';
+			$types_match = false;
+			$names_match = false;
+			if ( isset( $field['option_type'] ) ) {
+				$types_match = ( $option_type == $field['option_type'] ) ? true : false;
+			}
+			if ( isset( $field['option_name'] ) ) {
+				$names_match = ( $option_name == $field['option_name'] ) ? true : false;
+			}
+
+			if ( $types_match && $names_match ) {
+				$active_config = $config_id;
+			}
+		}
+
+		return $config_id;
 
 	}
 
