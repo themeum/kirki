@@ -134,6 +134,17 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 	 * Enqueue Google fonts if necessary
 	 */
 	public function google_font() {
+
+		$config = apply_filters( 'kirki/config', array() );
+
+		/**
+		 * If we have set $config['disable_google_fonts'] to true
+		 * then do not proceed any further.
+		 */
+		if ( isset( $config['disable_google_fonts'] ) && true == $config['disable_google_fonts'] ) {
+			return;
+		}
+
 		if ( $this->google_link() ) {
 			$google_link = str_replace( '%3A', ':', $this->google_link() );
 			wp_enqueue_style( 'kirki_google_fonts', $google_link, array(), null );
