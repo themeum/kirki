@@ -15,44 +15,54 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 Kirki is not a framework. It's a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
 
-It does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with them§.
+It does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with them.
 An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/advanced-topics/customizer-api/) website.
 
 What Kirki does is save you time... LOTS of time!
 
 **Configurations**
+
 Add your own Kirki configuration so that all the fields you create using Kirki inherit the configuration's properties.
 More information on configurations can be found on our [Wiki](https://github.com/aristath/kirki/wiki/Configuration).
 
 **Add Panels**
+
 Want to use Kirki to add your panels? Please look at the documentation on our [Wiki](https://github.com/aristath/kirki/wiki/Panels)
 
 **Add Sections**
+
 Want to use Kirki to add your sections? Please look at the documentation on our [Wiki](https://github.com/aristath/kirki/wiki/Sections)
 
 **Add Fields**
+
 Kirki allows you to create your fields easily and without any issues.
 There are 3 syntaxes you can use to do that, depending on your preferences and the project at hand. More info about how to add fields can be found on the [Wiki](https://github.com/aristath/kirki/wiki/Fields)
 
 **Automatic CSS calculations**
+
 Most of the options we create for our themes take care of CSS. We make that easy for you so you no longer have to write any custom PHP functions to create your CSS!
 All you have to do is use the `output` argument inside your fields and everything else is taken care of. More information on that can be found on our [Wiki page for the output argument](https://github.com/aristath/kirki/wiki/output)
 
 **Automatic JS generation for postMessage**
+
 If you want to use postMessage we've got you covered... Chances are you won't need to write your custom JS, we can auto-generate that for you if you use the `js_vars` argument in your fields. More info on that can be found on our [Wiki page for the js_vars argument](https://github.com/aristath/kirki/wiki/js_vars)
 
 **Style the customizer**
+
 Want to change colors? Perhaps the width of the customizer panel? What about adding a custom logo & description?
 No matter what you want we've got you covered.
 Go ahead and take a look at [styling the customizer](https://github.com/aristath/kirki/wiki/Styling-the-Customizer)
 
 **Google Fonts Integration**
+
 Kirki also integrates with Google Fonts, allowing you to use ALL google fonts and their variants in your themes. We take care of all the calculations for you, all you have to do is add your fields and let us handle the rest. Take a look at the [Google Fonts Integration](https://github.com/aristath/kirki/wiki/Google-Fonts-Integration) page for an example and instructions.
 
 **Add tooltips to your fields**
+
 Sometimes we need to add more info for our users... We've included a popup where you can add your help text using the `help` argument.
 
 **Extended Documentation**
+
 For documentation and examples on how to use the plugin please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
 Feel free to improve them! :)
 
@@ -88,12 +98,14 @@ If you wish to donate you can do so on http://kirki.org
 == Installation ==
 
 **Method 1: Use as a plugin**
+
 From your dashboard go to Plugins => Add New.
 Search for "Kirki" and install it.
 Once you install it, activate it.
 For configuration instructions please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
 
 **Method 2: Embed in your theme**
+
 Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for documentation and instructions.
 
 == Sample Theme ==
