@@ -25,7 +25,7 @@ class Kirki_Toolkit {
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
 
-	public static $version = '1.0.1';
+	public static $version = '1.0.2';
 
 	public $font_registry = null;
 	public $scripts       = null;

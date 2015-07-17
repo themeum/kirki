@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,12 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea).
 
 == Changelog ==
+
+= 1.0.2 =
+
+July 17, 2014, dev time: 5 minutes
+
+* NEW: Added 'disable_output' and 'disable_google_fonts' arguments to the configuration.
 
 = 1.0.1 =
 
