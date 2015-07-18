@@ -123,6 +123,9 @@ class Kirki {
 				 */
 				$options = get_option( self::$config[ $config_id ]['option_name'] );
 
+				if ( ! isset( self::$fields[ $field_id ] ) && isset( self::$fields[ self::$config[ $config_id ]['option_name'].'['.$field_id.']' ] ) ) {
+					$field_id = self::$config[ $config_id ]['option_name'].'['.$field_id.']';
+				}
 				$setting_modified = str_replace( ']', '', str_replace( self::$config[ $config_id ]['option_name'].'[', '', $field_id ) );
 
 				/**
@@ -143,8 +146,8 @@ class Kirki {
 					/**
 					 * This is not a background field so continue and get the value.
 					 */
-					$value   = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : self::$fields[ $field_id ]['default'];
-					$value   = maybe_unserialize( $value );
+					$value = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : self::$fields[ $field_id ]['default'];
+					$value = maybe_unserialize( $value );
 				}
 
 			} else {

@@ -70,8 +70,8 @@ if ( ! function_exists( 'Kirki' ) ) {
 		$kirki = Kirki_Toolkit::get_instance();
 
 		$kirki->font_registry = new Kirki_Fonts_Font_Registry();
-		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->api           = new Kirki();
+		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->styles        = array(
 			'back'  => new Kirki_Styles_Customizer(),
 			'front' => new Kirki_Styles_Frontend(),
