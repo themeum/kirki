@@ -73,8 +73,8 @@ if ( ! function_exists( 'Kirki' ) ) {
 		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->api           = new Kirki();
 		$kirki->styles        = array(
-			'back'            => new Kirki_Styles_Customizer(),
-			'front'           => new Kirki_Styles_Frontend(),
+			'back'  => new Kirki_Styles_Customizer(),
+			'front' => new Kirki_Styles_Frontend(),
 		);
 
 		return $kirki;

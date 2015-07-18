@@ -584,6 +584,7 @@ function kirki_demo_configuration_sample() {
 		'description'  => __( 'This is the theme description. You can edit it in the Kirki configuration and add whatever you want here.', 'kirki' ),
 		'color_accent' => '#00bcd4',
 		'color_back'   => '#455a64',
+		// 'disable_output' => true,
 	);
 
 	return $args;
