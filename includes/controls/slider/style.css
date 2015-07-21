@@ -1,0 +1,38 @@
+.customize-control-slider input[type="text"] {
+  border: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  box-shadow: none;
+  color: #333; }
+.customize-control-slider .ui-slider {
+  position: relative;
+  text-align: left;
+  height: 7px;
+  border-radius: 3px;
+  background: #f2f2f2;
+  border: 1px solid #dedede;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+  .customize-control-slider .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    top: -5px;
+    border-radius: 50%;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+    background: #333;
+    border: 1px solid #333; }
+  .customize-control-slider .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: 0.7em;
+    display: block;
+    border: 0;
+    background-position: 0 0; }
+
+/*# sourceMappingURL=style.css.map */

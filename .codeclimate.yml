@@ -1,0 +1,10 @@
+languages:
+  Ruby: false
+  JavaScript: true
+  PHP: true
+exclude_paths:
+  - "assets/*"
+  - "sample-config.php"
+  - "kirki-user-tests.php"
+  - "tests/*"
+  - "bin/*"

@@ -1,22 +1,26 @@
 {
-    "name": "aristath/kirki",
-    "type": "library",
-    "description": "Extending the WordPress customizer",
-    "homepage": "http://kirki.org",
-    "license": "GPLv2 or later",
-    "authors": [
-        {
-            "name" : "aristath",
-            "email" : "aristath@gmail.com",
-            "homepage" : "http://aristeides.com"
-        },
-        {
-            "name" : "fovoc",
-            "email" : "kalliris.d@gmail.com",
-            "homepage" : "https://github.com/fovoc"
-        }
-    ],
-    "require": {
-        "php": ">=5.3"
+  "name": "aristath/kirki",
+  "type": "library",
+  "description": "Extending the WordPress customizer",
+  "homepage": "http://kirki.org",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name" : "aristath",
+      "email" : "aristath@gmail.com",
+      "homepage" : "http://aristeides.com"
+    },
+    {
+      "name" : "fovoc",
+      "email" : "kalliris.d@gmail.com",
+      "homepage" : "https://github.com/fovoc"
     }
+  ],
+  "require": {
+    "php": ">=5.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "satooshi/php-coveralls": "dev-master"
+  }
 }

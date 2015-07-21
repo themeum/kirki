@@ -1,0 +1,12 @@
+.customize-control-radio-image .image.ui-buttonset input[type=radio] {
+  height: auto; }
+.customize-control-radio-image .image.ui-buttonset label {
+  border: 1px solid transparent;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+  .customize-control-radio-image .image.ui-buttonset label.ui-state-active {
+    background: none;
+    border-color: #333; }
+
+/*# sourceMappingURL=style.css.map */

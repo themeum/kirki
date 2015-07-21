@@ -1,0 +1,24 @@
+{
+  "name": "kirki-toolkit",
+  "version": "1.0.2",
+  "author": "Aristeides Stathopoulos",
+  "homepage": "http://kirki.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reduxframework/kirki"
+  },
+  "bugs": {
+    "url" : "https://github.com/reduxframework/kirki/issues"
+  },
+  "licenses": [{
+    "type": "GPL v2",
+    "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+  }],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.9.0"
+  }
+}
