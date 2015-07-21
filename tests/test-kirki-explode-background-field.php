@@ -43,15 +43,15 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-color',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'choices' => array(),
 				'sanitize_callback' => array( 'Kirki_Sanitize', 'color' ),
 				'js_vars' => null,
 				'id' => 'my_setting_color',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			'my_setting_image' => array(
 				'type' => 'image',
@@ -70,15 +70,15 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-image',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'choices' => array(),
 				'sanitize_callback' => 'esc_url_raw',
 				'js_vars' => null,
 				'id' => 'my_setting_image',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			'my_setting_repeat' => array(
 				'type' => 'select',
@@ -104,14 +104,14 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-repeat',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'sanitize_callback' => 'esc_attr',
 				'js_vars' => null,
 				'id' => 'my_setting_repeat',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			'my_setting_size' => array(
 				'type' => 'select',
@@ -135,14 +135,14 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-size',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'sanitize_callback' => 'esc_attr',
 				'js_vars' => null,
 				'id' => 'my_setting_size',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			'my_setting_attach' => array(
 				'type' => 'select',
@@ -166,14 +166,14 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-attachment',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'sanitize_callback' => 'esc_attr',
 				'js_vars' => null,
 				'id' => 'my_setting_attach',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			),
 			'my_setting_position' => array(
 				'type' => 'select',
@@ -203,14 +203,14 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 						'property' => 'background-position',
 					),
 				),
-				'settings_raw' => 'my_setting',
 				'option_type' => 'theme_mod',
 				'sanitize_callback' => 'esc_attr',
 				'js_vars' => null,
 				'id' => 'my_setting_position',
 				'capability' => 'edit_theme_options',
-				'variables' => false,
+				'variables' => null,
 				'active_callback' => '__return_true',
+				'option_name' => ''
 			)
 		);
 	}

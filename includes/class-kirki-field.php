@@ -34,7 +34,6 @@ class Kirki_Field {
 		 * Sanitize each property of the field separately.
 		 */
 		$sanitized = array(
-			'settings_raw'      => self::sanitize_settings_raw( $field ),
 			'default'           => self::sanitize_default( $field ),
 			'label'             => self::sanitize_label( $field ),
 			'help'              => self::sanitize_help( $field ),
@@ -43,6 +42,7 @@ class Kirki_Field {
 			'transport'         => self::sanitize_transport( $field ),
 			'type'              => self::sanitize_control_type( $field ),
 			'option_type'       => self::sanitize_type( $field ),
+			'option_name'       => self::sanitize_option_name( $field ),
 			'section'           => self::sanitize_section( $field ),
 			'settings'          => self::sanitize_settings( $field ),
 			'priority'          => self::sanitize_priority( $field ),
@@ -160,6 +160,34 @@ class Kirki_Field {
 	}
 
 	/**
+	 * Sanitizes the setting name.
+	 *
+	 * @param array the field definition
+	 * @return string (theme_mod|option)
+	 */
+	public static function sanitize_option_name( $field ) {
+
+		if ( isset( $field['option_name'] ) ) {
+			return esc_attr( $field['option_name'] );
+		}
+
+		/**
+		 * If no 'option_type' has been defined
+		 * then try to get the option from the kirki/config filter.
+		 */
+		$config = apply_filters( 'kirki/config', array() );
+		if ( isset( $config['option_name'] ) ) {
+			return esc_attr( $config['option_type'] );
+		}
+
+		/**
+		 * If all else fails, return empty.
+		 */
+		return '';
+
+	}
+
+	/**
 	 * Sanitizes the setting variables.
 	 *
 	 * @param array the field definition
@@ -246,29 +274,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Sanitizes the raw setting name.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_settings_raw( $field ) {
-
-		/**
-		 * Compatibility tweak
-		 * Previous versions of the Kirki customizer used 'setting' istead of 'settings'.
-		 */
-		if ( ! isset( $field['settings'] ) && isset( $field['setting'] ) ) {
-			return sanitize_key( $field['setting'] );
-		}
-
-		/**
-		 * Sanitize the field's settings attribute.
-		 */
-		return sanitize_key( $field['settings'] );
-
-	}
-
-	/**
 	 * Sanitizes the setting name
 	 *
 	 * @param array the field definition
@@ -279,7 +284,7 @@ class Kirki_Field {
 		/**
 		 * If we're using options & option_name is set, then we need to modify the setting.
 		 */
-		if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
+		if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
 			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
 		}
 

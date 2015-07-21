@@ -23,10 +23,10 @@ if ( class_exists( 'Kirki_Output' ) ) {
 
 class Kirki_Output {
 
-	public static $settings = null;
-	public static $type     = 'theme_mod';
-	public static $output   = array();
-	public static $callback = null;
+	public static $settings    = null;
+	public static $output      = array();
+	public static $callback    = null;
+	public static $option_name = null;
 
 	public static $css;
 
@@ -40,84 +40,35 @@ class Kirki_Output {
 	 * @var 	array 		an array of arrays of the output arguments.
 	 * @var 	mixed		a callable function.
 	 */
-	public static function css( $setting = '', $type = 'theme_mod', $output = array(), $callback = '', $return_array = false ) {
-
-		// No need to proceed any further if we don't have the required arguments.
-		if ( '' == $setting || empty( $output ) ) {
-			return;
-		}
-
-		self::$settings = $setting;
-		self::$type     = $type;
-		self::$output   = Kirki_Field::sanitize_output( array( 'output' => $output ) );
-		self::$value    = self::get_value();
-		self::$callback = $callback;
-
-		if ( true === $return_array ) {
-			return self::styles();
-		} else {
-			return self::styles_parse( self::add_prefixes( self::styles() ) );
-		}
-
-	}
-
-	/**
-	 * Gets the value
-	 *
-	 * @return mixed
-	 */
-	public static function get_value() {
-
+	public static function css( $field ) {
 		/**
-		 * Get the default value
+		 * Make sure the field is sanitized before proceeding any further.
 		 */
-		$default = '';
-		if ( isset( Kirki::$fields[ self::$settings ] ) && isset( Kirki::$fields[ self::$settings ]['default'] ) ) {
-			if ( ! is_array( Kirki::$fields[ self::$settings ]['default'] ) ) {
-				$default = Kirki::$fields[ self::$settings ]['default'];
-			}
-		}
-
-		if ( 'theme_mod' == self::$type ) {
-			/**
-			 * This is a theme_mod.
-			 * All we have to do is use the get_theme_mod function to get the value
-			 */
-			$value = get_theme_mod( self::$settings, $default );
+		$field = Kirki_Field::sanitize_field( $field );
+		/**
+		 * Get the config ID used in the Kirki class.
+		 */
+		$config_id       = Kirki::get_config_id( $field );
+		/**
+		 * Set class vars
+		 */
+		self::$settings = $field['settings'];
+		self::$output   = $field['output'];
+		self::$callback = $field['sanitize_callback'];
+		/**
+		 * Get the value of this field
+		 */
+		if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
+			self::$value = Kirki::get_option( $config_id, str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'].'[' ), '', $field['settings'] ) );
 		} else {
-			/**
-			 * This is an option.
-			 */
-			if ( false !== strpos( self::$settings, '[' ) ) {
-				$setting_parts = explode( '[', self::$settings );
-				$option_name   = str_replace( array( '[', ']' ), '', $setting_parts[0] );
-				/**
-				 * We're using serialized options.
-				 * First we'll need to get the option defined by the $option_name
-				 * and then get the value of the specific setting from the array of options.
-				 */
-				$option_value     = get_option( $option_name );
-				$setting_stripped = str_replace( $option_name.'[', '', str_replace( ']', '', self::$settings ) );
-				if ( isset( $option_value[ $setting_stripped ] ) ) {
-					/**
-					 * An option is set, so use that value.
-					 */
-					$value = $option_value[ $setting_stripped ];
-				} else {
-					/**
-					 * Option is not set, fallback to the default value.
-					 */
-					$value = $default;
-				}
-			} else {
-				/**
-				 * Options are not serialized, all we need to do is get the option value here.
-				 */
-				$value = get_option( self::$settings, $default );
-			}
+			self::$value = Kirki::get_option( $config_id, $field['settings'] );
 		}
-
-		return $value;
+		/**
+		 * Returns the styles
+		 */
+		if ( ! is_array( self::$value ) ) {
+			return self::styles();
+		}
 
 	}
 
@@ -134,7 +85,7 @@ class Kirki_Output {
 		 */
 		$final_css = '';
 		if ( ! is_array( $css ) || empty( $css ) ) {
-			return;
+			return '';
 		}
 		foreach ( $css as $media_query => $styles ) {
 
@@ -143,6 +94,7 @@ class Kirki_Output {
 			foreach ( $styles as $style => $style_array ) {
 				$final_css .= $style . '{';
 					foreach ( $style_array as $property => $value ) {
+						$value = ( is_string( $value ) ) ? $value : '';
 						// Take care of formatting the URL for background-image statements.
 						if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
 							$value = 'url("'.$value.'")';
@@ -172,12 +124,21 @@ class Kirki_Output {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
-			// Do we have units?
+			/**
+			 * Do we have units?
+			 */
 			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
-			// Do we need to run this through a callback action?
+			/**
+			 * Do we need to run this through a callback action?
+			 */
 			$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
-
-			$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+			/**
+			 * Make sure the value is a string before proceeding
+			 * If all is ok, then populate the array.
+			 */
+			if ( ! is_array( $value ) ) {
+				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+			}
 		}
 
 		return $styles;

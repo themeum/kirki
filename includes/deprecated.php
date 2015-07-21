@@ -52,8 +52,8 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 				// An option_name has been defined so our options are all saved in an array there.
 				$values = get_option( $config['option_name'] );
 				foreach ( $fields as $field ) {
-					if ( ! isset( $values[ Kirki_Field::sanitize_settings_raw( $field ) ] ) ) {
-						$values[ Kirki_Field::sanitize_settings_raw( $field ) ] = maybe_unserialize( Kirki_Field::sanitize_default( $field ) );
+					if ( ! isset( $values[ Kirki_Field::sanitize_settings( $field ) ] ) ) {
+						$values[ Kirki_Field::sanitize_settings( $field ) ] = maybe_unserialize( Kirki_Field::sanitize_default( $field ) );
 					}
 				}
 			}

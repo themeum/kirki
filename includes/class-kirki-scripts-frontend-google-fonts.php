@@ -39,30 +39,43 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		$fonts = array();
 		foreach ( $fields as $field ) {
 
-			// Sanitize the field's output & settings_raw items.
-			$field['output']       = Kirki_Field::sanitize_output( $field );
-			$field['settings_raw'] = Kirki_Field::sanitize_settings_raw( $field );
+			/**
+			 * Sanitize the field
+			 */
+			$field = Kirki_Field::sanitize_field( $field );
 
-			// Make sure output is properly formatted
-			if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
+			if ( ! is_array( $field['output'] ) ) {
+				continue;
+			}
 
-				foreach ( $field['output'] as $output ) {
+			foreach ( $field['output'] as $output ) {
 
-					if ( in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
-						// The value of this control
-						$value = Kirki::get_option( $field['settings_raw'] );
+				if ( in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
+					/**
+					 * Get the value of the field
+					 */
+					$config_id = Kirki::get_config_id( $field );
+					$settings = $field['settings'];
+					if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
+						$settings = str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'].'[' ), '', $field['settings'] );
+					}
+					$value = Kirki::get_option( $config_id, $settings );
 
-						if ( 'font-family' == $output['property'] ) {
-							// Add the font-family to the array
-							$fonts[]['font-family'] = $value;
-						} else if ( 'font-weight' == $output['property'] ) {
-							// Add font-weight to the array
-							$fonts[]['font-weight'] = $value;
-						} else if ( 'font-subset' == $output['property'] ) {
-							// add font subsets to the array
-							$fonts[]['subsets'] = $value;
-						}
-
+					if ( 'font-family' == $output['property'] ) {
+						/**
+						 * Add the font-family to the array
+						 */
+						$fonts[]['font-family'] = $value;
+					} else if ( 'font-weight' == $output['property'] ) {
+						/**
+						 * Add font-weight to the array
+						 */
+						$fonts[]['font-weight'] = $value;
+					} else if ( 'font-subset' == $output['property'] ) {
+						/**
+						 * add font subsets to the array
+						 */
+						$fonts[]['subsets'] = $value;
 					}
 
 				}
@@ -121,6 +134,17 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 	 * Enqueue Google fonts if necessary
 	 */
 	public function google_font() {
+
+		$config = apply_filters( 'kirki/config', array() );
+
+		/**
+		 * If we have set $config['disable_google_fonts'] to true
+		 * then do not proceed any further.
+		 */
+		if ( isset( $config['disable_google_fonts'] ) && true == $config['disable_google_fonts'] ) {
+			return;
+		}
+
 		if ( $this->google_link() ) {
 			$google_link = str_replace( '%3A', ':', $this->google_link() );
 			wp_enqueue_style( 'kirki_google_fonts', $google_link, array(), null );

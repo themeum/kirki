@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       1.0.0
+ * Version:       1.0.2
  * Text Domain:   kirki
  *
  *
@@ -70,11 +70,11 @@ if ( ! function_exists( 'Kirki' ) ) {
 		$kirki = Kirki_Toolkit::get_instance();
 
 		$kirki->font_registry = new Kirki_Fonts_Font_Registry();
-		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->api           = new Kirki();
+		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->styles        = array(
-			'back'            => new Kirki_Styles_Customizer(),
-			'front'           => new Kirki_Styles_Frontend(),
+			'back'  => new Kirki_Styles_Customizer(),
+			'front' => new Kirki_Styles_Frontend(),
 		);
 
 		return $kirki;
@@ -124,4 +124,4 @@ Kirki::add_config( '' );
  * You can uncomment whichever you want and fields will flood the customizer.
  */
 // include_once( KIRKI_PATH . '/sample-config.php' );
-// include_once( KIRKI_PATH . '/kirki-user-tests.php' );
+// include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );

@@ -26,7 +26,6 @@ class Kirki_Styles_Frontend {
 
 	public function __construct() {
 
-		$config = apply_filters( 'kirki/config', array() );
 		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 150;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
@@ -38,13 +37,34 @@ class Kirki_Styles_Frontend {
 	 * Add the inline styles
 	 */
 	public function enqueue_styles() {
+
+		$config = apply_filters( 'kirki/config', array() );
+
+		/**
+		 * If we have set $config['disable_output'] to true,
+		 * then do not proceed any further.
+		 */
+		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
+			return;
+		}
 		wp_add_inline_style( 'kirki-styles', $this->loop_controls() );
+
 	}
 
 	/**
 	 * Add a dummy, empty stylesheet.
 	 */
 	public function frontend_styles() {
+
+		$config = apply_filters( 'kirki/config', array() );
+
+		/**
+		 * If we have set $config['disable_output'] to true,
+		 * then do not proceed any further.
+		 */
+		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
+			return;
+		}
 		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ).'assets/css/kirki-styles.css', null, null );
 
 	}
@@ -65,14 +85,10 @@ class Kirki_Styles_Frontend {
 		foreach ( $fields as $field ) {
 
 			// Only continue if $field['output'] is set
-			if ( isset( $field['output'] ) && 'background' != $field['type'] ) {
+			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
 				$css = array_merge_recursive( $css, Kirki_Output::css(
-					Kirki_Field::sanitize_settings_raw( $field ),
-					Kirki_Field::sanitize_type( $field ),
-					Kirki_Field::sanitize_output( $field ),
-					isset( $field['output']['callback'] ) ? $field['output']['callback'] : '',
-					true
+					Kirki_Field::sanitize_field( $field )
 				) );
 
 			}
