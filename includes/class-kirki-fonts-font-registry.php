@@ -97,7 +97,7 @@ class Kirki_Fonts_Font_Registry {
 		if ( empty( $family ) ) {
 			return '';
 		} else {
-			$request = str_replace( ' ', '+', '//fonts.googleapis.com/css?family='.implode( '|', $family ) );
+			$request = str_replace( ' ', '+', '//fonts.googleapis.com/css?family='.implode( '%7C', $family ) );
 		}
 
 		// load the font weight
