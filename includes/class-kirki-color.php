@@ -131,7 +131,7 @@ class Kirki_Color {
 		// Convert to array
 		$color = explode( ',', $color );
 
-		if ( isset ( $color[3] ) {
+		if ( isset ( $color[3] ) ) {
 			return (string) $color[3];
 		} else {
 			return '1';
