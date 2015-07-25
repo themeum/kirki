@@ -534,10 +534,11 @@ class Kirki_Field {
 				}
 			}
 			$output_sanitized[] = array(
-				'element'     => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-				'property'    => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-				'units'       => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-				'media_query' => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
+				'element'           => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
+				'property'          => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
+				'units'             => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
+				'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : null,
+				'media_query'       => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
 			);
 		}
 

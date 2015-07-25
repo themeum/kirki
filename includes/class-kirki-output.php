@@ -132,6 +132,9 @@ class Kirki_Output {
 			 * Do we need to run this through a callback action?
 			 */
 			$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
+			if ( null !== $output['sanitize_callback'] ) {
+				$value = call_user_func( $output['sanitize_callback'], $value );
+			}
 			/**
 			 * Make sure the value is a string before proceeding
 			 * If all is ok, then populate the array.
