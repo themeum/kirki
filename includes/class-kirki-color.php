@@ -125,7 +125,7 @@ class Kirki_Color {
 	 * @var     string  The rgba color formatted like rgba(r,g,b,a)
 	 * @return  string  The alpha value of the color.
 	 */
-	public function get_alpha_from_rgba( $color ) {
+	public static function get_alpha_from_rgba( $color ) {
 		// Remove parts of the string
 		$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
 		// Convert to array
