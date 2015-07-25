@@ -210,6 +210,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'property' => 'font-family',
 					'units' => '',
 					'media_query' => 'global',
+					'sanitize_callback' => null
 				)
 			),
 			Kirki_Field::sanitize_output( array( 'output' => array(
