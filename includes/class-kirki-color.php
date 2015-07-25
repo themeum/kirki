@@ -87,37 +87,56 @@ class Kirki_Color {
 	 * @var     string  The rgba color formatted like rgba(r,g,b,a)
 	 * @return  string  The hex value of the color.
 	 */
-	 public static function rgba2hex( $color ) {
+	public static function rgba2hex( $color ) {
 
-		 // Remove parts of the string
-		 $color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
-		 // Convert to array
-		 $color = explode( ',', $color );
-		 // This is not a valid rgba definition, so return white.
-		 if ( 4 != count( $color ) ) {
-			 return '#ffffff';
-		 }
-		 // Convert dec. to hex.
-		 $red   = dechex( (int) $color[0] );
-		 $green = dechex( (int) $color[1] );
-		 $blue  = dechex( (int) $color[2] );
-		 $alpha = $color[3];
+		// Remove parts of the string
+		$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
+		// Convert to array
+		$color = explode( ',', $color );
+		// This is not a valid rgba definition, so return white.
+		if ( 4 != count( $color ) ) {
+			return '#ffffff';
+		}
+		// Convert dec. to hex.
+		$red   = dechex( (int) $color[0] );
+		$green = dechex( (int) $color[1] );
+		$blue  = dechex( (int) $color[2] );
+		$alpha = $color[3];
 
-		 // Make sure all colors are 2 digits
-		 $red   = ( 1 == strlen( $red ) ) ? $red.$red : $red;
-		 $green = ( 1 == strlen( $green ) ) ? $green.$green : $green;
-		 $blue  = ( 1 == strlen( $blue ) ) ? $blue.$blue : $blue;
+		// Make sure all colors are 2 digits
+		$red   = ( 1 == strlen( $red ) ) ? $red.$red : $red;
+		$green = ( 1 == strlen( $green ) ) ? $green.$green : $green;
+		$blue  = ( 1 == strlen( $blue ) ) ? $blue.$blue : $blue;
 
-		 // Combine hex parts
-		 $hex = $red.$green.$blue;
-		 // Get the opacity value on a 0-100 basis instead of 0-1.
-		 $mix_level = intval( $alpha * 100 );
-		 // Apply opacity - mix with white.
-		 $hex = self::mix_colors( $hex, '#ffffff', $mix_level );
+		// Combine hex parts
+		$hex = $red.$green.$blue;
+		// Get the opacity value on a 0-100 basis instead of 0-1.
+		$mix_level = intval( $alpha * 100 );
+		// Apply opacity - mix with white.
+		$hex = self::mix_colors( $hex, '#ffffff', $mix_level );
 
-		 return $hex;
+		return $hex;
 
-	 }
+	}
+
+	/**
+	 * Get the alpha channel from an rgba color
+	 *
+	 * @var     string  The rgba color formatted like rgba(r,g,b,a)
+	 * @return  string  The alpha value of the color.
+	 */
+	public function get_alpha_from_rgba( $color ) {
+		// Remove parts of the string
+		$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
+		// Convert to array
+		$color = explode( ',', $color );
+
+		if ( isset ( $color[3] ) {
+			return (string) $color[3];
+		} else {
+			return '1';
+		}
+	}
 
 	/**
 	 * Gets the rgb value of the $hex color.
