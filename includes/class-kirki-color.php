@@ -87,7 +87,7 @@ class Kirki_Color {
 	 * @var     string  The rgba color formatted like rgba(r,g,b,a)
 	 * @return  string  The hex value of the color.
 	 */
-	public static function rgba2hex( $color ) {
+	public static function rgba2hex( $color, $apply_opacity = false ) {
 
 		// Remove parts of the string
 		$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
@@ -110,10 +110,12 @@ class Kirki_Color {
 
 		// Combine hex parts
 		$hex = $red.$green.$blue;
-		// Get the opacity value on a 0-100 basis instead of 0-1.
-		$mix_level = intval( $alpha * 100 );
-		// Apply opacity - mix with white.
-		$hex = self::mix_colors( $hex, '#ffffff', $mix_level );
+		if ( $apply_opacity ) {
+			// Get the opacity value on a 0-100 basis instead of 0-1.
+			$mix_level = intval( $alpha * 100 );
+			// Apply opacity - mix with white.
+			$hex = self::mix_colors( $hex, '#ffffff', $mix_level );
+		}
 
 		return $hex;
 
