@@ -202,7 +202,7 @@ class Kirki_Fonts_Font_Registry {
 				),
 				'sans-serif' => array(
 					'label'  => $i18n['sans-serif'],
-					'stack'  => '"Helvetica Neue",Helvetica,Arial,sans-serif',
+					'stack'  => 'Helvetica,Arial,sans-serif',
 				),
 				'monospace' => array(
 					'label' => $i18n['monospace'],
