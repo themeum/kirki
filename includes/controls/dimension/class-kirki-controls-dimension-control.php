@@ -1,6 +1,6 @@
 <?php
 /**
- * number Customizer Control.
+ * dimension Customizer Control.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -25,7 +25,8 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_style( 'kirki-number', trailingslashit( kirki_url() ).'includes/controls/dimension/style.css' );
+		wp_enqueue_style( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/style.css' );
+		wp_enqueue_script( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/kirki-dimension.js', array( 'jquery' ) );
 
 	}
 
@@ -39,7 +40,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<input type="text" <?php $this->link; ?> value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
+			<input type="text" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
 			<select <?php $this->link(); ?>>
 				<?php foreach ( $this->get_units() as $unit ) : ?>
 					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
@@ -52,10 +53,20 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		<?php
 	}
 
+	/**
+	 * Get the numeric value of the field
+	 *
+	 * @return  float|int
+	 */
 	public function numeric_value() {
 		return filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT );
 	}
 
+	/**
+	 * Get the array of units we're using.
+	 *
+	 * @return  array
+	 */
 	public function get_units() {
 		$all_units = array( 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax' );
 		$defaults  = array( 'px', '%', 'em' );
@@ -74,6 +85,11 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		return $defaults;
 	}
 
+	/**
+	 * Get the value of the units we're using.
+	 *
+	 * @return  string
+	 */
 	public function unit_value() {
 		foreach ( $this->get_units() as $unit ) {
 			if ( false !== strpos( $this->value, $unit ) ) {
