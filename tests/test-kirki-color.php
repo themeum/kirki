@@ -73,7 +73,8 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		 */
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba(0,0,0,1)' ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba( 0, 0, 0, 1)' ) );
-		$this->assertEquals( true, ( '#000000' != Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)' ) ) );
+		$this->assertEquals( true, ( '#000000' == Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)' ) ) );
+		$this->assertEquals( true, ( '#000000' != Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)', true ) ) );
 		/**
 		 * Opacity
 		 */
