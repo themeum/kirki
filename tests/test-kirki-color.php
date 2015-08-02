@@ -73,19 +73,20 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		 */
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba(0,0,0,1)' ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba( 0, 0, 0, 1)' ) );
-		$this->assertEquals( true, ( '#000000' != Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)' ) ) );
+		$this->assertEquals( true, ( '#000000' == Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)' ) ) );
+		$this->assertEquals( true, ( '#000000' != Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)', true ) ) );
 		/**
 		 * Opacity
 		 */
-		$this->assertEquals( '#7f7f7f', Kirki_Color::rgba2hex( 'rgba(0,0,0,.5)' ) );
-		$this->assertEquals( '#ff7f7f', Kirki_Color::rgba2hex( 'rgba(255,0,0,.5)' ) );
-		$this->assertEquals( '#7fff7f', Kirki_Color::rgba2hex( 'rgba(0,255,0,.5)' ) );
-		$this->assertEquals( '#7f7fff', Kirki_Color::rgba2hex( 'rgba(0,0,255,.5)' ) );
+		$this->assertEquals( '#7f7f7f', Kirki_Color::rgba2hex( 'rgba(0,0,0,.5)', true ) );
+		$this->assertEquals( '#ff7f7f', Kirki_Color::rgba2hex( 'rgba(255,0,0,.5)', true ) );
+		$this->assertEquals( '#7fff7f', Kirki_Color::rgba2hex( 'rgba(0,255,0,.5)', true ) );
+		$this->assertEquals( '#7f7fff', Kirki_Color::rgba2hex( 'rgba(0,0,255,.5)', true ) );
 		/**
 		 * invalid
 		 */
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(0,.5)' ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( '#ffffff' ) );
+		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(0,.5)', true ) );
+		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( '#ffffff', true ) );
 	}
 
 	public function test_get_rgba() {

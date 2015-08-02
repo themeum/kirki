@@ -117,7 +117,7 @@ class Kirki_Color {
 			$hex = self::mix_colors( $hex, '#ffffff', $mix_level );
 		}
 
-		return $hex;
+		return '#' . str_replace( '#', '', $hex );
 
 	}
 
