@@ -54,9 +54,9 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 		jQuery(document).ready(function($) {
 			$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
 					value : <?php echo esc_attr( $this->value() ); ?>,
-					min   : <?php echo $this->choices['min']; ?>,
-					max   : <?php echo $this->choices['max']; ?>,
-					step  : <?php echo $this->choices['step']; ?>,
+					min   : <?php echo ($this->choices['min']) ? $this->choices['min'] : '0'; ?>,
+					max   : <?php echo ($this->choices['max']) ? $this->choices['max'] : '100'; ?>,
+					step  : <?php echo ($this->choices['step']) ? $this->choices['step'] : '1'; ?>,
 					slide : function( event, ui ) { $( '[id="input_<?php echo $this->id; ?>"]' ).val(ui.value).keyup(); }
 			});
 			$( '[id="input_<?php echo $this->id; ?>"]' ).val( $( '[id="slider_<?php echo $this->id; ?>"]' ).slider( "value" ) );
