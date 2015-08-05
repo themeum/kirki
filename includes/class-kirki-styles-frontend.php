@@ -47,7 +47,7 @@ class Kirki_Styles_Frontend {
 		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
 			return;
 		}
-		wp_add_inline_style( 'kirki-styles', $this->loop_controls() );
+		wp_add_inline_style( 'kirki-styles', Kirki_Output::generate_css_by_fields( Kirki::$fields ) );
 
 	}
 
@@ -66,40 +66,6 @@ class Kirki_Styles_Frontend {
 			return;
 		}
 		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ).'assets/css/kirki-styles.css', null, null );
-
-	}
-
-	/**
-	 * loop through all fields and create an array of style definitions
-	 */
-	public function loop_controls() {
-
-		$fields = Kirki::$fields;
-		$css    = array();
-
-		// Early exit if no fields are found.
-		if ( empty( $fields ) ) {
-			return;
-		}
-
-		foreach ( $fields as $field ) {
-
-			// Only continue if $field['output'] is set
-			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
-
-				$css = array_merge_recursive( $css, Kirki_Output::css(
-					Kirki_Field::sanitize_field( $field )
-				) );
-
-			}
-
-		}
-
-		if ( is_array( $css ) ) {
-			return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
-		}
-
-		return;
 
 	}
 
