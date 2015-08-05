@@ -1,4 +1,24 @@
 <?php
+/**
+ * Helper methods
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Helper' ) ) {
+	return;
+}
 
 class Kirki_Helper {
 
@@ -7,10 +27,15 @@ class Kirki_Helper {
 	 *
 	 * removes an item from an array
 	 */
-	function array_delete( $idx, $array ) {
+	public function array_delete( $idx, $array ) {
 
-		unset( $array[$idx] );
-		return ( is_array( $array ) ) ? array_values( $array ) : null;
+		// Early exit and return null if $array is not an array.
+		if ( ! is_array( $array ) ) {
+			return null;
+		}
+
+		unset( $array[ $idx ] );
+		return array_values( $array );
 
 	}
 
@@ -24,7 +49,7 @@ class Kirki_Helper {
 
 		global $wpdb;
 		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
-        return $attachment[0];
+		return $attachment[0];
 
 	}
 
@@ -53,11 +78,13 @@ class Kirki_Helper {
 	 */
 	public static function get_posts( $args ) {
 
+		// Get the posts
 		$posts = get_posts( $args );
 
+		// properly format the array.
 		$items = array();
 		foreach ( $posts as $post ) {
-			$items[$post->ID] = $post->post_title;
+			$items[ $post->ID ] = $post->post_title;
 		}
 
 		return $items;

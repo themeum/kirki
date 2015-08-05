@@ -1,9 +1,27 @@
 <?php
-
 /**
+ * custom Customizer Control.
+ *
  * Creates a new custom control.
  * Custom controls accept raw HTML/JS.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Custom_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Custom_Control extends WP_Customize_Control {
 
 	public $type = 'custom';

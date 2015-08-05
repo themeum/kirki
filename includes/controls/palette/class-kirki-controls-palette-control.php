@@ -1,8 +1,24 @@
 <?php
-
 /**
- * Create a palette control.
+ * palette Customizer Control.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Palette_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 
 	public $type = 'palette';
@@ -10,7 +26,7 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ) . 'includes/controls/palette/style.css' );
+		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ).'includes/controls/palette/style.css' );
 
 	}
 
@@ -20,7 +36,7 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 			return;
 		}
 
-		$name = '_customize-palette-' . $this->id;
+		$name = '_customize-palette-'.$this->id;
 
 		?>
 		<span class="customize-control-title">
@@ -33,8 +49,8 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $colorSet ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
+				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id.esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+					<label for="<?php echo $this->id.esc_attr( $value ); ?>">
 						<?php
 						foreach ( $colorSet as $color ) {
 							printf( "<span style='background: {$color}'>{$color}</span>" );

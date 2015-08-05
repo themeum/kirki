@@ -1,25 +1,41 @@
 <?php
-
 /**
- * Creates a new select2 control.
+ * select2-multiple
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Select2_Multiple_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Select2_Multiple_Control extends WP_Customize_Control {
 
 	public $type = 'select2-multiple';
 
 	protected function render() {
 		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-' . $this->type; ?>
+		$class = 'customize-control customize-control-'.$this->type; ?>
 		<li id="customize-control-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<?php $this->render_content(); ?>
 		</li>
 	<?php }
 
 	public function render_content() {
-		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) ); 
+		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 
 		if ( empty( $this->choices ) ) {
-    	return;
+		return;
 		} ?>
 
 		<label>
@@ -40,7 +56,7 @@ class Kirki_Controls_Select2_Multiple_Control extends WP_Customize_Control {
 
 		<script>
 		jQuery(document).ready(function($) {
-	  	$('.select2').select2();
+		$('.select2').select2();
 	  });
 		</script>
 		<?php

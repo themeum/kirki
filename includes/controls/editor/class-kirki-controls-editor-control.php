@@ -1,15 +1,33 @@
 <?php
-
 /**
- * Creates a TinyMCE control
+ * editor Customizer Control.
+ *
+ * Creates a TinyMCE textarea.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Early exit if the class already exists
+if ( class_exists( 'Kirki_Controls_Editor_Control' ) ) {
+	return;
+}
+
 class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 
 	public $type = 'editor';
 
 	public function enqueue() {
-        wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ) . 'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
-    }
+		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ).'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
+	}
 
 	public function render_content() { ?>
 
@@ -25,12 +43,12 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 			<?php
 				$settings = array(
 					'textarea_name'    => $this->id,
-					'teeny'            => true
+					'teeny'            => true,
 				);
 				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
 
-				do_action('admin_footer');
-				do_action('admin_print_footer_scripts');
+				do_action( 'admin_footer' );
+				do_action( 'admin_print_footer_scripts' );
 			?>
 		</label>
 		<?php
