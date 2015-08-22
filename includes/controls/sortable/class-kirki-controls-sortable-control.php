@@ -57,7 +57,7 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 				$filtered_values = array();
 				foreach ( $values as $key => $value ) {
-					if ( in_array( $key, $this->choices ) ) {
+					if ( array_key_exists( $value, $this->choices ) ) { // We only want to supply keys, search in keyes instead
 						$filtered_values[ $key ] = $value;
 					}
 				}
@@ -65,10 +65,13 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 			<ul>
 				<?php foreach ( $filtered_values as $key => $value ) : ?>
 					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[ $value ] ); ?>
-				<?php endforeach; ?>
-				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $filtered_values ); ?>
+				<?php endforeach; 
+
+				$invisibleKeys = array_diff( array_keys( $this->choices ), $filtered_values );
+
+				?>
 				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[ $value ] ); ?>
+					<?php printf( "<li class='kirki-sortable-item invisible' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[ $value ] ); ?>
 				<?php endforeach; ?>
 			</ul>
 			<div style='clear: both'></div>
