@@ -1,5 +1,5 @@
 === Kirki ===
-Contributors: aristath, fovoc
+Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
