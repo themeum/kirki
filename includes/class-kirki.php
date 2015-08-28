@@ -285,6 +285,7 @@ class Kirki {
 			'select2'          => 'Kirki_Controls_Select2_Control',
 			'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',
+			'repeater'        => 'Kirki_Controls_Repeater_Control',
 		) );
 
 		foreach ( self::$fields as $field ) {
