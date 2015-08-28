@@ -301,24 +301,15 @@ class Kirki {
 				'sanitize_callback' => Kirki_Field::sanitize_callback( $field ),
 			) );
 
-			if ( array_key_exists( $field['type'], $control_types ) ) {
-
+			$class_name = 'WP_Customize_Control';
+			if ( array_key_exists( $field['type'], $control_types ) )
 				$class_name = $control_types[ $field['type'] ];
-				$wp_customize->add_control( new $class_name(
-					$wp_customize,
-					Kirki_Field::sanitize_id( $field ),
-					Kirki_Field::sanitize_field( $field )
-				) );
 
-			} else {
-
-				$wp_customize->add_control( new WP_Customize_Control(
-					$wp_customize,
-					Kirki_Field::sanitize_id( $field ),
-					Kirki_Field::sanitize_field( $field )
-				) );
-
-			}
+			$wp_customize->add_control( new $class_name(
+				$wp_customize,
+				Kirki_Field::sanitize_id( $field ),
+				Kirki_Field::sanitize_field( $field )
+			) );
 
 		}
 
