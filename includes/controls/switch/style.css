@@ -42,7 +42,7 @@
   cursor: pointer;
   display: block;
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 15px 0 0;
   float: right; }
 .customize-control-switch .fs-checkbox-flag {
   width: 100%;
@@ -131,7 +131,7 @@
     line-height: 40px; }
   .customize-control-switch .fs-checkbox-toggle .fs-checkbox-marker {
     width: 100px;
-    height: 40px;
+    height: 30px;
     position: relative;
     border-radius: 3px; }
   .customize-control-switch .fs-checkbox-toggle .fs-checkbox-marker:after {
@@ -177,7 +177,7 @@
     color: #666666;
     display: block;
     font-size: 12px;
-    line-height: 40px;
+    line-height: 30px;
     margin: 0;
     text-align: center;
     text-transform: uppercase; }
