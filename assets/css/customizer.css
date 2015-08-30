@@ -79,7 +79,8 @@ li.customize-control {
     border: none;
     line-height: 8px;
     width: 20px;
-    height: 20px; }
+    height: 20px; 
+    z-index:10; }
 
 .select2-container {
   min-width: 100px;
