@@ -286,13 +286,34 @@ class Kirki {
 			'select2'          => 'Kirki_Controls_Select2_Control',
 			'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',
-			'repeater'        => 'Kirki_Controls_Repeater_Control',
+			'repeater'         => 'Kirki_Controls_Repeater_Control',
 		) );
 
 		foreach ( self::$fields as $field ) {
 
 			if ( 'background' == $field['type'] ) {
 				continue;
+			}
+
+			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
+				$settings = Kirki_Field::sanitize_settings( $field );
+				$defaults = Kirki_Field::sanitize_default( $field );
+				foreach ( $settings as $setting_key => $setting_value ) {
+					$args = array(
+						'default'           => ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '',
+						'type'              => Kirki_Field::sanitize_type( $field ),
+						'capability'        => Kirki_Field::sanitize_capability( $field ),
+						'transport'         => Kirki_Field::sanitize_transport( $field ),
+					);
+					if ( isset( $field['sanitize_callback'] ) && is_array( $field['sanitize_callback'] ) ) {
+						if ( isset( $field['sanitize_callback'][ $setting_key ] ) ) {
+							$args['sanitize_callback'] = Kirki_Field::sanitize_callback( array( 'sanitize_callback' => $field['sanitize_callback'][ $setting_key ] ) );
+						} else {
+							$args['sanitize_callback'] = Kirki_Field::sanitize_callback( $field );
+						}
+					}
+					$wp_customize->add_setting( $setting_value, $args );
+				}
 			}
 
 			$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), array(
