@@ -316,5 +316,38 @@ class Test_Kirki extends WP_UnitTestCase {
 			Kirki::get_option( 'my_config_options_serialized', 'my_option[my_settings_test_background_options_serialized]' )
 		);
 	}
+	
+	public function test_setting_with_brackets() {
+		$wp_customize = $this->init_customizer();
+		
+		$setting = 'foo[bar]';
+		
+		$wp_customize->add_setting( $setting, array(
+			'default' => ''
+		) );
+		
+		$select2 = new Kirki_Controls_Select2_Control( $wp_customize, $setting, array(
+			'settings' => $setting,
+			'choices' => array(
+				'foo' => 'bar'
+			)
+		) );
+		$select2_multiple = new Kirki_Controls_Select2_Multiple_Control( $wp_customize, $setting, array(
+			'settings' => $setting,
+			'choices' => array(
+				'foo' => 'bar'
+			)
+		) );
+		$contents = '';
+		ob_start();
+		$select2->render_content();
+		$select2_multiple->render_content();
+		$contents = ob_get_clean();
+		
+		preg_match_all('/data-customize-setting-link="(.*?)"/', $contents, $matches, PREG_SET_ORDER);
+		$links = wp_list_pluck($matches, 1);
+		
+		$this->assertEqualSets($links, array('foo[bar]', 'foo[bar]'));
+	}
 
 }
