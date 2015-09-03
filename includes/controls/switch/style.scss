@@ -187,13 +187,14 @@
 	.fs-checkbox-toggle {
 		position: relative;
 		.fs-checkbox-label {
-			line-height: 40px;
+			line-height: 30px;
 		}
 		.fs-checkbox-marker {
-			width: 100px;
-			height: 40px;
+			width: 90px;
+			height: 30px;
 			position: relative;
 			border-radius: 3px;
+			margin-left: 10px;
 		}
 		.fs-checkbox-marker:after {
 			clear: both;
@@ -247,7 +248,7 @@
 			color: #666666;
 			display: block;
 			font-size: 12px;
-			line-height: 40px;
+			line-height: 30px;
 			margin: 0;
 			text-align: center;
 			text-transform: uppercase;

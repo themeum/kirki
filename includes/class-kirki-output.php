@@ -127,7 +127,11 @@ class Kirki_Output {
 			/**
 			 * Do we have units?
 			 */
-			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
+			$units = ( isset( $output['units'] ) ) ? $output['units'] : '';
+			/**
+			 * Do we have a prefix?
+			 */
+			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			/**
 			 * Do we need to run this through a callback action?
 			 */
@@ -140,7 +144,7 @@ class Kirki_Output {
 			 * If all is ok, then populate the array.
 			 */
 			if ( ! is_array( $value ) ) {
-				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $prefix.$value.$units;
 			}
 		}
 

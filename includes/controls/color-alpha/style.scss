@@ -12,6 +12,7 @@
             width: 100%;
             background-color: #fff;
             background-image: url("transparency-grid.png");
+            background-size: cover;
             box-shadow: 0 0 5px rgba(0,0,0,0.4) inset;
             -webkit-border-radius: 3px;
             -moz-border-radius: 3px;
@@ -48,5 +49,24 @@
     }
     .customize-control-alphacolor .wp-picker-container .iris-picker {
         border-bottom: none;
+    }
+    // Make the control 100% wide
+    .wp-picker-container {
+    	width: 100%;
+    	.wp-picker-holder {
+    		width: calc(100% - 2px);
+    	}
+    	.iris-picker {
+    		width: 100% !important;
+    		.iris-picker-inner {
+    			.iris-square {
+    				width: 88% !important;
+    				margin-right: 2%;
+    			}
+    			.iris-slider.iris-strip {
+    				width: 10% !important;
+    			}
+    		}
+    	}
     }
 }

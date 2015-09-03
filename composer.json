@@ -1,6 +1,6 @@
 {
   "name": "aristath/kirki",
-  "type": "library",
+  "type": "wordpress-plugin",
   "description": "Extending the WordPress customizer",
   "homepage": "http://kirki.org",
   "license": "GPLv2 or later",
@@ -17,7 +17,8 @@
     }
   ],
   "require": {
-    "php": ">=5.2"
+    "php": ">=5.2",
+    "composer/installers": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

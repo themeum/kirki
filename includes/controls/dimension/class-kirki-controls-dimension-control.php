@@ -41,7 +41,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 			<input type="text" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
-			<select <?php $this->link(); ?>>
+			<select>
 				<?php foreach ( $this->get_units() as $unit ) : ?>
 					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
 						<?php echo $unit; ?>
@@ -54,15 +54,6 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Get the numeric value of the field
-	 *
-	 * @return  float|int
-	 */
-	public function numeric_value() {
-		return filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT );
-	}
-
-	/**
 	 * Get the array of units we're using.
 	 *
 	 * @return  array
@@ -70,7 +61,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	public function get_units() {
 		$all_units = array( 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax' );
 		$defaults  = array( 'px', '%', 'em' );
-		if ( isset( $this->choices ) && is_array( $this->choices ) ) {
+		if ( isset( $this->choices ) && is_array( $this->choices ) && ! empty( $this->choices ) ) {
 			$choices = array();
 			foreach ( $this->choices as $choice ) {
 				if ( in_array( $choice, $all_units ) ) {
@@ -86,13 +77,23 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	}
 
 	/**
+	 * Get the numeric value of the field
+	 *
+	 * @return  float|int
+	 */
+	public function numeric_value() {
+		// Sanitize the input field and return numeric values, rounded to 2 decimals.
+		return round( filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT ), 2 );
+	}
+
+	/**
 	 * Get the value of the units we're using.
 	 *
 	 * @return  string
 	 */
 	public function unit_value() {
 		foreach ( $this->get_units() as $unit ) {
-			if ( false !== strpos( $this->value, $unit ) ) {
+			if ( isset( $this->value ) && false !== strpos( $this->value, $unit ) ) {
 				$located_unit = $unit;
 				break;
 			}

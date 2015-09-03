@@ -267,6 +267,7 @@ class Kirki {
 	public function add_fields( $wp_customize ) {
 
 		$control_types = apply_filters( 'kirki/control_types', array(
+			'code'             => 'Kirki_Controls_Code_Control',
 			'color'            => 'WP_Customize_Color_Control',
 			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
 			'image'            => 'WP_Customize_Image_Control',
