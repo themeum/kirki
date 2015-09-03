@@ -282,6 +282,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'function' => 'css',
 					'property' => 'color',
 					'units' => '',
+					'prefix' => '',
 				)
 			),
 			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(
