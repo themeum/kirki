@@ -44,29 +44,24 @@ class Kirki_Controls_Repeater_Setting extends WP_Customize_Setting {
 	 * @return array
 	 */
 	public function sanitize_repeater_setting( $value ) {
-		$value = json_decode( urldecode( $value ) );
 
-		if ( empty( $value ) || ! is_array( $value ) )
-			$sanitized = array();
-		else
-			$sanitized = $value;
+		$value     = json_decode( urldecode( $value ) );
+		$sanitized = ( empty( $value ) || ! is_array( $value ) ) ? array() : $value;
 
 		// Make sure that every row is an array, not an object
 		foreach ( $sanitized as $key => $_value ) {
 			if ( empty( $_value ) ) {
 				unset( $sanitized[ $key ] );
-			}
-			else {
+			} else {
 				$sanitized[ $key ] = (array)$_value;
 			}
-
 		}
 
 		// Reindex array
 		$sanitized = array_values( $sanitized );
 
 		return $sanitized;
-	}
 
+	}
 
 }

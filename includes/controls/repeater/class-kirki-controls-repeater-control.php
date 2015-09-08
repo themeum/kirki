@@ -27,8 +27,9 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 
-		if ( empty( $this->button_label ) )
-			$this->button_label = 'Add new row';
+		if ( empty( $this->button_label ) ) {
+			$this->button_label = __( 'Add new row', 'Kirki' );
+		}
 	}
 
 	public function to_json() {
@@ -53,8 +54,8 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif;
-			if ( ! empty( $this->description ) ) : ?>
+			<?php endif; ?>
+			<?php if ( ! empty( $this->description ) ) : ?>
 				<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 			<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo $this->get_link(); ?> />
@@ -72,31 +73,24 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	public function repeater_js_template() {
 		?>
 		<script type="text/html" class="customize-control-repeater-content">
-			<#
+			<# var field; #>
+			<# var index = data['index']; #>
+			<div class="repeater-row" data-row="{{{ index }}}">
 
-				var field;
-				var index = data['index'];
+				<div class="repeater-row-header">
+					<span class="repeater-row-number"></span>
+					<span class="repeater-row-close" data-row="{{{ index }}}"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
+				</div>
 
-				#>
-				<div class="repeater-row" data-row="{{{ index }}}">
-					<div class="repeater-row-header">
-						<span class="repeater-row-number"></span>
-						<span class="repeater-row-close" data-row="{{{ index }}}"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
-					</div>
-				<#
+				<# for ( i in data ) { #>
+					<# if ( ! data.hasOwnProperty( i ) ) continue; #>
+					<# field = data[i]; #>
+					<# if ( ! field.type ) continue; #>
 
-				for ( i in data ) {
-					if ( ! data.hasOwnProperty( i ) )
-						continue;
+					<div class="repeater-field repeater-field-{{{ field.type }}}">
 
-					field = data[i];
+						<# if ( field.type === 'text' ) { #>
 
-					if ( ! field.type )
-						continue;
-
-					#><div class="repeater-field repeater-field-{{{ field.type }}}"><#
-					if ( field.type === 'text' ) {
-						#>
 							<label>
 								<# if ( field.label ) { #>
 									<span class="customize-control-title">{{ field.label }}</span>
@@ -106,61 +100,55 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 								<# } #>
 								<input type="text" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}" data-row="{{{ index }}}">
 							</label>
-						<#
-					}
-					else if ( field.type === 'checkbox' ) {
-						#>
-						<label>
-							<input type="checkbox" value="true" data-field="{{{ field.id }}}" data-row="{{{ index }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
-							<# if ( field.description ) { #>
-								{{ field.description }}
-							<# } #>
-						</label>
-						<#
-					}
-					else if ( field.type === 'select' ) {
-						#>
-						<label>
-							<# if ( field.label ) { #>
-								<span class="customize-control-title">{{ field.label }}</span>
-							<# } #>
-							<# if ( field.description ) { #>
-								<span class="description customize-control-description">{{ field.description }}</span>
-							<# } #>
-							<select data-field="{{{ field.id }}}" data-row="{{{ index }}}">
+
+						<# } else if ( field.type === 'checkbox' ) { #>
+
+							<label>
+								<input type="checkbox" value="true" data-field="{{{ field.id }}}" data-row="{{{ index }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
+								<# if ( field.description ) { #>
+									{{ field.description }}
+								<# } #>
+							</label>
+
+						<# } else if ( field.type === 'select' ) { #>
+
+							<label>
+								<# if ( field.label ) { #>
+									<span class="customize-control-title">{{ field.label }}</span>
+								<# } #>
+								<# if ( field.description ) { #>
+									<span class="description customize-control-description">{{ field.description }}</span>
+								<# } #>
+								<select data-field="{{{ field.id }}}" data-row="{{{ index }}}">
+									<# for ( i in field.choices ) { #>
+										<# if ( field.choices.hasOwnProperty( i ) ) { #>
+											<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ field.choices[i] }}</option>
+										<# } #>
+									<# } #>
+								</select>
+							</label>
+
+						<# } else if ( field.type === 'radio' ) { #>
+
+							<label>
+								<# if ( field.label ) { #>
+									<span class="customize-control-title">{{ field.label }}</span>
+								<# } #>
+								<# if ( field.description ) { #>
+									<span class="description customize-control-description">{{ field.description }}</span>
+								<# } #>
+
 								<# for ( i in field.choices ) { #>
 									<# if ( field.choices.hasOwnProperty( i ) ) { #>
-										<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ field.choices[i] }}</option>
+										<label>
+											<input type="radio" data-field="{{{ field.id }}}" data-row="{{{ index }}}" name="{{{ data.controlId }}}-{{{ field.id }}}-{{{ index }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
+										</label>
 									<# } #>
 								<# } #>
-							</select>
+							</label>
 
-						</label>
-						<#
-					}
-					else if ( field.type === 'radio' ) {
-						#>
-						<label>
-							<# if ( field.label ) { #>
-								<span class="customize-control-title">{{ field.label }}</span>
-							<# } #>
-							<# if ( field.description ) { #>
-								<span class="description customize-control-description">{{ field.description }}</span>
-							<# } #>
+						<# } else if ( field.type == 'textarea' ) { #>
 
-							<# for ( i in field.choices ) { #>
-								<# if ( field.choices.hasOwnProperty( i ) ) { #>
-									<label>
-										<input type="radio" data-field="{{{ field.id }}}" data-row="{{{ index }}}" name="{{{ data.controlId }}}-{{{ field.id }}}-{{{ index }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
-									</label>
-								<# } #>
-							<# } #>
-
-						</label>
-						<#
-					}
-					else if ( field.type == 'textarea' ) {
-						#>
 							<# if ( field.label ) { #>
 								<span class="customize-control-title">{{ field.label }}</span>
 							<# } #>
@@ -168,17 +156,11 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 								<span class="description customize-control-description">{{ field.description }}</span>
 							<# } #>
 							<textarea rows="5" data-field="{{{ field.id }}}" data-row="{{{ index }}}">{{ field.default }}</textarea>
-						<#
-					}
 
-					#></div><#
-				}
-
-				#>
-				</div>
-				<#
-			#>
-
+						<# } #>
+					</div>
+				<# } #>
+			</div>
 		</script>
 		<?php
 	}
