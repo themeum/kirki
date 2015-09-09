@@ -167,13 +167,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_default( array( 'type' => 'text', 'default' => 'foo', ) ) );
 	}
 
-	public function test_sanitize_description() {
-		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'description' => 'foo' ) ) );
-		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'subtitle' => 'foo' ) ) );
-		$this->assertEquals( 'bar', Kirki_Field::sanitize_description( array( 'description' => '<div class="foo">bar</div>' ) ) );
-		$this->assertEquals( '', Kirki_Field::sanitize_description( array() ) );
-	}
-
 	public function test_sanitize_help() {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_help( array( 'help' => 'foo' ) ) );
 		$this->assertEquals( 'bar', Kirki_Field::sanitize_help( array( 'subtitle' => 'foo', 'description' => 'bar' ) ) );

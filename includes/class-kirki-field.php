@@ -37,7 +37,7 @@ class Kirki_Field {
 			'default'           => self::sanitize_default( $field ),
 			'label'             => ( isset( $field['label'] ) ) ? $field['label'] : '',
 			'help'              => self::sanitize_help( $field ),
-			'description'       => self::sanitize_description( $field ),
+			'description'       => ( isset( $field['description'] ) ) ? $field['description'] : '',
 			'required'          => self::sanitize_required( $field ),
 			'transport'         => self::sanitize_transport( $field ),
 			'type'              => self::sanitize_control_type( $field ),
@@ -365,33 +365,6 @@ class Kirki_Field {
 		 * fallback to escaping the default value.
 		 */
 		return esc_textarea( $field['default'] );
-
-	}
-
-	/**
-	 * Sanitizes the control description
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_description( $field ) {
-
-		if ( ! isset( $field['description'] ) && ! isset( $field['subtitle'] ) ) {
-			return '';
-		}
-
-		/**
-		 * Compatibility tweak
-		 *
-		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
-		 * and instead of 'description' we were using 'subtitle'.
-		 * This has been deprecated in favor of WordPress core's 'description' field that was recently introduced.
-		 *
-		 */
-		if ( isset( $field['subtitle'] ) ) {
-			return wp_strip_all_tags( $field['subtitle'] );
-		}
-		return wp_strip_all_tags( $field['description'] );
 
 	}
 
