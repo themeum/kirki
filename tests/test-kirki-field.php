@@ -297,7 +297,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'element' => 'body > #main',
 					'function' => 'css',
 					'property' => 'font-size',
-					'units' => 'px'
+					'units' => 'px',
+					'prefix' => '',
 				)
 			),
 			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(
