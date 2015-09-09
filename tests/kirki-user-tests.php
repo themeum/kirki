@@ -264,6 +264,16 @@ $upload = new Kirki_Test_Field( array(
 	'default' => ''
 ) );
 
+$code = new Kirki_Test_Field( array(
+	'type'    => 'code',
+	'default' => '',
+	'choices' => array(
+		'language' => 'css',
+		'height'   => 300,
+		'theme'    => 'chrome',
+	),
+) );
+
 // repeater
 $repeater = new Kirki_Test_Field( array(
 	'type'    => 'repeater',
