@@ -24,10 +24,10 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	public $type = 'toggle';
 
 	public function enqueue() {
-		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ).'includes/controls/toggle/formstone-core.js', array( 'jquery' ) );
-		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ).'includes/controls/toggle/formstone-touch.js', array( 'jquery', 'formstone' ) );
-		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ).'includes/controls/toggle/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
-		wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ).'includes/controls/toggle/style.css' );
+		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-core.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-touch.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
+		wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/style.css' );
 	}
 
 	/**
@@ -36,9 +36,8 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	protected function render_content() { ?>
 		<label for="toggle_<?php echo $this->id; ?>">
 			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
@@ -48,6 +47,6 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		<?php if ( '0' == $this->value() ) { ?>
 			<script>jQuery(document).ready(function($){$('#customize-control-<?php echo $this->id; ?> .fs-checkbox').removeClass('fs-checkbox-checked');});</script>
 		<?php } ?>
-		<?php 
+		<?php
 	}
 }

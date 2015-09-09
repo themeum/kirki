@@ -26,8 +26,8 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_script( 'kirki-palette', trailingslashit( kirki_url() ).'includes/controls/palette/script.js', array( 'jquery', 'jquery-ui-button' ) );
-		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ).'includes/controls/palette/style.css' );
+		wp_enqueue_script( 'kirki-palette', trailingslashit( kirki_url() ) . 'includes/controls/palette/script.js', array( 'jquery', 'jquery-ui-button' ) );
+		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ) . 'includes/controls/palette/style.css' );
 
 	}
 
@@ -37,21 +37,20 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 			return;
 		}
 
-		$name = '_customize-palette-'.$this->id;
+		$name = '_customize-palette-' . $this->id;
 
 		?>
 		<span class="customize-control-title">
-			<?php echo esc_attr( $this->label ); ?>
+			<?php echo esc_html( $this->label ); ?>
 			<?php if ( ! empty( $this->description ) ) : ?>
-				<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 				<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 		</span>
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $colorSet ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id.esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id.esc_attr( $value ); ?>">
+				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
 						<?php
 						foreach ( $colorSet as $color ) {
 							printf( "<span style='background: {$color}'>{$color}</span>" );

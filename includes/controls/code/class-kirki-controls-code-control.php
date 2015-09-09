@@ -38,8 +38,8 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif;
-			if ( ! empty( $this->description ) ) : ?>
+			<?php endif; ?>
+			<?php if ( ! empty( $this->description ) ) : ?>
 				<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 			<?php
@@ -63,7 +63,7 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 				 * As such, we will not be escaping anything by default.
 				 *
 				 * It can be used for custom CSS, custom JS and even custom PHP depending on the implementation.
-				 * It's up to the theme/plugin developer to properly escape it depending on the use case.
+				 * It's up to the theme/plugin developer to properly sanitize it depending on the use case.
 				 */
 				echo $this->value();
 				?>
