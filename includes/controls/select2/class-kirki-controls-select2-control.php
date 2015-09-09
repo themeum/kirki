@@ -24,14 +24,14 @@ class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 	public $type = 'select2';
 
 	public function enqueue() {
-		wp_enqueue_script( 'jquery-select2', trailingslashit( kirki_url() ).'includes/controls/select2/select2.full.min.js', array( 'jquery' ) );
-		wp_enqueue_style( 'css-select2', trailingslashit( kirki_url() ).'includes/controls/select2/select2.min.css' );
-		wp_enqueue_script( 'kirki-select2', trailingslashit( kirki_url() ).'includes/controls/select2/script.js', array( 'jquery', 'jquery-select2' ) );
+		wp_enqueue_script( 'jquery-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/select2.full.min.js', array( 'jquery' ) );
+		wp_enqueue_style( 'css-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/select2.min.css' );
+		wp_enqueue_script( 'kirki-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/script.js', array( 'jquery', 'jquery-select2' ) );
 	}
 
 	protected function render() {
 		$id = str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-		$class = 'customize-control customize-control-'.$this->type; ?>
+		$class = 'customize-control customize-control-' . $this->type; ?>
 		<li id="customize-control-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
 			<?php $this->render_content(); ?>
 		</li>

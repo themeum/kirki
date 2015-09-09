@@ -63,7 +63,7 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 				 * As such, we will not be escaping anything by default.
 				 *
 				 * It can be used for custom CSS, custom JS and even custom PHP depending on the implementation.
-				 * It's up to the theme/plugin developer to properly escape it depending on the use case.
+				 * It's up to the theme/plugin developer to properly sanitize it depending on the use case.
 				 */
 				echo $this->value();
 				?>

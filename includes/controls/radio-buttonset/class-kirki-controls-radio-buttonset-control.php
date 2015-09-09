@@ -25,8 +25,8 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_script( 'kirki-radio-buttonset', trailingslashit( kirki_url() ).'includes/controls/radio-buttonset/script.js', array( 'jquery', 'jquery-ui-button' ) );
-		wp_enqueue_style( 'kirki-radio-buttonset', trailingslashit( kirki_url() ).'includes/controls/radio-buttonset/style.css' );
+		wp_enqueue_script( 'kirki-radio-buttonset', trailingslashit( kirki_url() ) . 'includes/controls/radio-buttonset/script.js', array( 'jquery', 'jquery-ui-button' ) );
+		wp_enqueue_style( 'kirki-radio-buttonset', trailingslashit( kirki_url() ) . 'includes/controls/radio-buttonset/style.css' );
 	}
 
 	public function render_content() {
@@ -35,7 +35,7 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 			return;
 		}
 
-		$name = '_customize-radio-'.$this->id;
+		$name = '_customize-radio-' . $this->id;
 
 		?>
 		<span class="customize-control-title">
@@ -47,8 +47,8 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<?php foreach ( $this->choices as $value => $label ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id.esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id.esc_attr( $value ); ?>">
+				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
 						<?php echo esc_html( $label ); ?>
 					</label>
 				</input>

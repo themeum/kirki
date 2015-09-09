@@ -24,10 +24,10 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	public $type = 'switch';
 
 	public function enqueue() {
-		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-core.js', array( 'jquery' ) );
-		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-touch.js', array( 'jquery', 'formstone' ) );
-		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ).'includes/controls/switch/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
-		wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ).'includes/controls/switch/style.css' );
+		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-core.js', array( 'jquery' ) );
+		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-touch.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
+		wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/style.css' );
 	}
 
 	/**

@@ -26,7 +26,7 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 	public $type = 'editor';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ).'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
+		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ) . 'includes/controls/editor/kirki-editor.js', array( 'jquery' ) );
 	}
 
 	public function render_content() { ?>
@@ -41,8 +41,8 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea( $this->value() ); ?>">
 			<?php
 				$settings = array(
-					'textarea_name'    => $this->id,
-					'teeny'            => true,
+					'textarea_name' => $this->id,
+					'teeny'         => true,
 				);
 				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
 

@@ -43,7 +43,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 			<select>
 				<?php foreach ( $this->get_units() as $unit ) : ?>
 					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
-						<?php echo $unit; ?>
+						<?php echo esc_attr( $unit ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
