@@ -75,7 +75,7 @@ class Kirki_Styles_Customizer {
 			WP_Filesystem();
 		}
 
-		$styles  = '';
+		$styles = '';
 		/**
 		 * Include the width CSS if necessary
 		 */
@@ -84,7 +84,7 @@ class Kirki_Styles_Customizer {
 			/**
 			 * Replace width placeholder with actual value
 			 */
-			$styles  = str_replace( 'WIDTH', $config['width'], $styles );
+			$styles = str_replace( 'WIDTH', $config['width'], $styles );
 		}
 
 		/**

@@ -196,6 +196,7 @@ class Kirki {
 	 *
 	 * @var		string		the configuration ID.
 	 * @var		array		the configuration options.
+	 * @param string $config_id
 	 */
 	public static function add_config( $config_id, $args = array() ) {
 
@@ -325,8 +326,9 @@ class Kirki {
 			) );
 
 			$class_name = 'WP_Customize_Control';
-			if ( array_key_exists( $field['type'], $control_types ) )
-				$class_name = $control_types[ $field['type'] ];
+			if ( array_key_exists( $field['type'], $control_types ) ) {
+							$class_name = $control_types[ $field['type'] ];
+			}
 
 			$wp_customize->add_control( new $class_name(
 				$wp_customize,
@@ -362,6 +364,7 @@ class Kirki {
 	 *
 	 * @var		string		the ID for this section
 	 * @var		array		the section arguments
+	 * @param string $id
 	 */
 	public static function add_section( $id, $args ) {
 
@@ -513,7 +516,7 @@ class Kirki {
 						/**
 						 * Sanitize the variable name
 						 */
-						$variable_name     = esc_attr( $field_variable['name'] );
+						$variable_name = esc_attr( $field_variable['name'] );
 						/**
 						 * Do we have a callback function defined?
 						 * If not then set $variable_callback to false.

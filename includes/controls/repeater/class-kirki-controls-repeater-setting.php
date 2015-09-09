@@ -30,8 +30,9 @@ class Kirki_Controls_Repeater_Setting extends WP_Customize_Setting {
 
 	public function value() {
 		$value = parent::value();
-		if ( ! is_array( $value ) )
-			$value = array();
+		if ( ! is_array( $value ) ) {
+					$value = array();
+		}
 
 		return $value;
 	}
