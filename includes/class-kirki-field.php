@@ -35,7 +35,7 @@ class Kirki_Field {
 		 */
 		$sanitized = array(
 			'default'           => self::sanitize_default( $field ),
-			'label'             => self::sanitize_label( $field ),
+			'label'             => ( isset( $field['label'] ) ) ? $field['label'] : '',
 			'help'              => self::sanitize_help( $field ),
 			'description'       => self::sanitize_description( $field ),
 			'required'          => self::sanitize_required( $field ),
@@ -289,30 +289,6 @@ class Kirki_Field {
 		}
 
 		return $field['settings'];
-
-	}
-
-	/**
-	 * Sanitizes the control label.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_label( $field ) {
-
-		/**
-		 * If a label has been defined then we need to sanitize it and then return it.
-		 * Sanitization here will be done using the 'wp_strip_all_tags' function.
-		 */
-		if ( isset( $field['label'] ) ) {
-			return wp_strip_all_tags( $field['label'] );
-		}
-
-		/**
-		 * If no label has been defined then we're returning an empty value.
-		 * This is simply done to prevent any 'undefined index' PHP notices.
-		 */
-		return '';
 
 	}
 

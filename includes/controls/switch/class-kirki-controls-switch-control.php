@@ -37,7 +37,7 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		<?php $i18n = Kirki_Toolkit::i18n(); ?>
 		<label for="switch_<?php echo $this->id; ?>">
 			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>

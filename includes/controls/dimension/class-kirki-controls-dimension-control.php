@@ -34,7 +34,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 
 		<label class="customizer-text">
 			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>

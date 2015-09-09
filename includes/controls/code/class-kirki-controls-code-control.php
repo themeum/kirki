@@ -38,8 +38,8 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif;
-			if ( ! empty( $this->description ) ) : ?>
+			<?php endif; ?>
+			<?php if ( ! empty( $this->description ) ) : ?>
 				<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 			<?php

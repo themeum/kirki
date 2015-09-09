@@ -36,7 +36,7 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	protected function render_content() { ?>
 		<label for="toggle_<?php echo $this->id; ?>">
 			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
@@ -48,6 +48,6 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		<?php if ( '0' == $this->value() ) { ?>
 			<script>jQuery(document).ready(function($){$('#customize-control-<?php echo $this->id; ?> .fs-checkbox').removeClass('fs-checkbox-checked');});</script>
 		<?php } ?>
-		<?php 
+		<?php
 	}
 }
