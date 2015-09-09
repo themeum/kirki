@@ -76,7 +76,7 @@ class Kirki_Output {
 	 * Gets the array of generated styles and creates the minimized, inline CSS
 	 *
 	 * @param array
-	 * @return string|null	the generated CSS.
+	 * @return string	the generated CSS.
 	 */
 	public static function styles_parse( $css = array() ) {
 
