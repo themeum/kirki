@@ -282,6 +282,21 @@ class Kirki_Field {
 	public static function sanitize_settings( $field ) {
 
 		/**
+		 * If an array, we must process each setting separately
+		 */
+		if ( is_array( $field['settings'] ) ) {
+			$settings = array();
+			foreach ( $field['settings'] as $setting_key => $setting_value ) {
+				if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $field['option_name'] ).'['.esc_attr( $setting_value ).']';
+				} else {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+				}
+			}
+			return $settings;
+		}
+
+		/**
 		 * If we're using options & option_name is set, then we need to modify the setting.
 		 */
 		if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {

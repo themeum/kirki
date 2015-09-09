@@ -196,6 +196,7 @@ class Kirki {
 	 *
 	 * @var		string		the configuration ID.
 	 * @var		array		the configuration options.
+	 * @param string $config_id
 	 */
 	public static function add_config( $config_id, $args = array() ) {
 
@@ -286,7 +287,13 @@ class Kirki {
 			'select2'          => 'Kirki_Controls_Select2_Control',
 			'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',
+			'repeater'         => 'Kirki_Controls_Repeater_Control',
 		) );
+
+		$setting_types = apply_filters( 'kirki/setting_types', array(
+			'repeater'         => 'Kirki_Settings_Repeater_Setting'
+		) );
+
 
 		foreach ( self::$fields as $field ) {
 
@@ -294,17 +301,52 @@ class Kirki {
 				continue;
 			}
 
-			$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), array(
+			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
+				$settings = Kirki_Field::sanitize_settings( $field );
+				$defaults = Kirki_Field::sanitize_default( $field );
+				foreach ( $settings as $setting_key => $setting_value ) {
+					$args = array(
+						'default'           => ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '',
+						'type'              => Kirki_Field::sanitize_type( $field ),
+						'capability'        => Kirki_Field::sanitize_capability( $field ),
+						'transport'         => Kirki_Field::sanitize_transport( $field ),
+					);
+					if ( isset( $field['sanitize_callback'] ) && is_array( $field['sanitize_callback'] ) ) {
+						if ( isset( $field['sanitize_callback'][ $setting_key ] ) ) {
+							$args['sanitize_callback'] = Kirki_Field::sanitize_callback( array( 'sanitize_callback' => $field['sanitize_callback'][ $setting_key ] ) );
+						} else {
+							$args['sanitize_callback'] = Kirki_Field::sanitize_callback( $field );
+						}
+					}
+					$wp_customize->add_setting( $setting_value, $args );
+				}
+			}
+
+			$setting_args = array(
 				'default'           => Kirki_Field::sanitize_default( $field ),
 				'type'              => Kirki_Field::sanitize_type( $field ),
 				'capability'        => Kirki_Field::sanitize_capability( $field ),
 				'transport'         => Kirki_Field::sanitize_transport( $field ),
 				'sanitize_callback' => Kirki_Field::sanitize_callback( $field ),
-			) );
+			);
+
+
+			if ( isset( $field['type'] ) && array_key_exists( $field['type'], $setting_types ) ) {
+				// We must instantiate a custom class for the setting
+				$setting_classname = $setting_types[ $field['type'] ];
+				$setting = new $setting_classname( $wp_customize, Kirki_Field::sanitize_settings( $field ), $setting_args );
+				$wp_customize->add_setting( $setting );
+
+			}
+			else {
+				$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), $setting_args );
+			}
+
 
 			$class_name = 'WP_Customize_Control';
-			if ( array_key_exists( $field['type'], $control_types ) )
+			if ( array_key_exists( $field['type'], $control_types ) ) {
 				$class_name = $control_types[ $field['type'] ];
+			}
 
 			$wp_customize->add_control( new $class_name(
 				$wp_customize,
@@ -340,6 +382,7 @@ class Kirki {
 	 *
 	 * @var		string		the ID for this section
 	 * @var		array		the section arguments
+	 * @param string $id
 	 */
 	public static function add_section( $id, $args ) {
 
@@ -491,7 +534,7 @@ class Kirki {
 						/**
 						 * Sanitize the variable name
 						 */
-						$variable_name     = esc_attr( $field_variable['name'] );
+						$variable_name = esc_attr( $field_variable['name'] );
 						/**
 						 * Do we have a callback function defined?
 						 * If not then set $variable_callback to false.
