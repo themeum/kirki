@@ -55,7 +55,7 @@ class Kirki_Controls_Select2_Multiple_Control extends WP_Customize_Control {
 				<?php endif; ?>
 			</span>
 
-			<select data-customize-setting-link="<?php echo esc_attr( $id ); ?>" class="select2" multiple="multiple">
+			<select <?php $this->link(); ?> class="select2" multiple="multiple">
 				<?php foreach ( $this->choices as $value => $label ) : ?>
 					<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
