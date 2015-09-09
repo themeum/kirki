@@ -26,6 +26,7 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'jquery-ui-button' );
+		wp_enqueue_script( 'kirki-palette', trailingslashit( kirki_url() ).'includes/controls/palette/script.js', array( 'jquery', 'jquery-ui-button' ) );
 		wp_enqueue_style( 'kirki-palette', trailingslashit( kirki_url() ).'includes/controls/palette/style.css' );
 
 	}
@@ -60,8 +61,6 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 				</input>
 			<?php endforeach; ?>
 		</div>
-		<script>jQuery(document).ready(function($) { $( '[id="input_<?php echo $this->id; ?>"]' ).buttonset(); });</script>
-
 		<?php
 	}
 }

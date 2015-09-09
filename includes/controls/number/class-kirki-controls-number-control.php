@@ -30,6 +30,7 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 
 		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ).'includes/controls/number/formstone-core.js', array( 'jquery' ) );
 		wp_enqueue_script( 'formstone-number', trailingslashit( kirki_url() ).'includes/controls/number/formstone-number.js', array( 'jquery', 'formstone' ) );
+		wp_enqueue_script( 'kirki-number', trailingslashit( kirki_url() ).'includes/controls/number/script.js', array( 'jquery', 'formstone', 'formstone-number' ) );
 		wp_enqueue_style( 'kirki-number', trailingslashit( kirki_url() ).'includes/controls/number/style.css' );
 
 	}
@@ -57,13 +58,6 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 			</span>
 			<input type="number"<?php echo $min.$max.$step; ?> <?php $this->link(); ?> value="<?php echo intval( $this->value() ); ?>"/>
 		</label>
-		<script>
-			jQuery(document).ready(function($) {
-				"use strict";
-				$( "#customize-control-<?php echo $this->id; ?> input[type='number']").number();
-			});
-		</script>
-
 		<?php
 	}
 }
