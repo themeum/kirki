@@ -10,6 +10,9 @@ module.exports = function(grunt) {
           src: ['**/*.scss'],
           dest: 'includes/controls/',
           ext: '.css'
+        },
+        {
+          'assets/css/customizer.css': 'assets/css/customizer.scss'
         }]
       }
     }
