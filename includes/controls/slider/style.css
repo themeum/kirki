@@ -8,6 +8,7 @@
   color: #333; }
 .customize-control-slider .ui-slider {
   position: relative;
+  width:97%;
   text-align: left;
   height: 7px;
   border-radius: 3px;
