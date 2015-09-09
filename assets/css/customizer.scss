@@ -109,6 +109,7 @@ li.customize-control {
         line-height: 8px;
         width: 20px;
         height: 20px;
+        z-index: 10;
     }
 }
 
@@ -120,6 +121,13 @@ li.customize-control {
 		.select2-dropdown--above {
 			z-index: 9999999;
 			min-width: 100px;
+		}
+	}
+}
+customize-control-upload {
+	.current {
+		.container{
+			border: 1px solid #C3C2C2; 
 		}
 	}
 }
