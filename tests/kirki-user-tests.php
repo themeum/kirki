@@ -263,3 +263,55 @@ $upload = new Kirki_Test_Field( array(
 	'type'    => 'upload',
 	'default' => ''
 ) );
+
+// repeater
+$repeater = new Kirki_Test_Field( array(
+	'type'    => 'repeater',
+	'default' => array(),
+	'fields'  => array(
+		'subsetting_1' => array(
+			'type' => 'text',
+			'label' => 'Setting A',
+			'description' => 'lalala',
+			'default' => 'Yeah'
+		),
+		'subsetting_2' => array(
+			'type' => 'text',
+			'label' => 'Setting B',
+			'description' => 'lalala',
+			'default' => ''
+		),
+		'subsetting_3' => array(
+			'type' => 'checkbox',
+			'description' => 'A checkbox',
+			'default' => true
+		),
+		'subsetting_4' => array(
+			'label' => 'A selector',
+			'type' => 'select',
+			'description' => 'lalala',
+			'default' => '',
+			'choices' => array(
+				'' => 'None',
+				'choice_1' => 'Choice 1',
+				'choice_2' => 'Choice 2'
+			)
+		),
+		'subsetting_5' => array(
+			'type' => 'textarea',
+			'label' => 'A textarea',
+			'description' => 'lalalala',
+			'default' => ''
+		),
+		'subsetting_6' => array(
+			'label' => 'A radio',
+			'type' => 'radio',
+			'description' => 'yipiyai',
+			'default' => 'choice-1',
+			'choices' => array(
+				'choice-1' => 'First choice',
+				'choice-2' => 'Second choice'
+			)
+		),
+	)
+) );
