@@ -30,6 +30,20 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		if ( empty( $this->button_label ) ) {
 			$this->button_label = __( 'Add new row', 'Kirki' );
 		}
+
+		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) )
+			$args['fields'] = array();
+
+		foreach ( $args['fields'] as $key => $value ) {
+			if ( ! isset( $value['default'] ) )
+				$args['fields'][ $key ]['default'] = '';
+
+			if ( ! isset( $value['label'] ) )
+				$args['fields'][ $key ]['label'] = '';
+			$args['fields'][ $key ]['id'] = $key;
+		}
+
+		$this->fields = $args['fields'];
 	}
 
 	public function to_json() {
@@ -79,7 +93,8 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 				<div class="repeater-row-header">
 					<span class="repeater-row-number"></span>
-					<span class="repeater-row-close" data-row="{{{ index }}}"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
+					<span class="repeater-row-remove" data-row="{{{ index }}}"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
+					<span class="repeater-row-minimize" data-row="{{{ index }}}"><i class="dashicons dashicons-arrow-up repeater-remove"></i></span>
 				</div>
 
 				<# for ( i in data ) { #>

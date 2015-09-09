@@ -40,12 +40,24 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
+			// Autoload Controls
 			$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
 			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
 
 			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
 			if ( file_exists( $class_path ) ) {
 				include $class_path;
+				return;
+			}
+
+			// Autoload Settings
+			$foldername = ( 0 === stripos( $class_name, 'Kirki_Settings_' ) ) ? 'settings'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Setting', '', str_replace( 'Kirki_Settings_', '', $class_name ) ) ) ) : '';
+			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
+
+			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
+			if ( file_exists( $class_path ) ) {
+				include $class_path;
+				return;
 			}
 
 		}
@@ -145,13 +157,13 @@ function kirki_hooks_init() {
 
 	Kirki::add_field( 'my_kirki_repeater', array(
 		'type'        => 'repeater',
-		'setting'     => 'text_demo',
 		'label'       => __( 'This is the label', 'kirki' ),
 		'description' => __( 'This is the control description', 'kirki' ),
 		'help'        => __( 'This is some extra help text.', 'kirki' ),
 		'section'     => 'my_kirki_repeater_section',
 		'default'     => array(),
 		'priority'    => 10,
+		'setting' => 'my_kirki_repeater',
 		'fields' => array(
 			'subsetting_1' => array(
 				'type' => 'text',

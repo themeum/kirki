@@ -290,6 +290,11 @@ class Kirki {
 			'repeater'         => 'Kirki_Controls_Repeater_Control',
 		) );
 
+		$setting_types = apply_filters( 'kirki/setting_types', array(
+			'repeater'         => 'Kirki_Settings_Repeater_Setting'
+		) );
+
+
 		foreach ( self::$fields as $field ) {
 
 			if ( 'background' == $field['type'] ) {
@@ -317,17 +322,30 @@ class Kirki {
 				}
 			}
 
-			$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), array(
+			$setting_args = array(
 				'default'           => Kirki_Field::sanitize_default( $field ),
 				'type'              => Kirki_Field::sanitize_type( $field ),
 				'capability'        => Kirki_Field::sanitize_capability( $field ),
 				'transport'         => Kirki_Field::sanitize_transport( $field ),
 				'sanitize_callback' => Kirki_Field::sanitize_callback( $field ),
-			) );
+			);
+
+
+			if ( isset( $field['type'] ) && array_key_exists( $field['type'], $setting_types ) ) {
+				// We must instantiate a custom class for the setting
+				$setting_classname = $setting_types[ $field['type'] ];
+				$setting = new $setting_classname( $wp_customize, Kirki_Field::sanitize_settings( $field ), $setting_args );
+				$wp_customize->add_setting( $setting );
+
+			}
+			else {
+				$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), $setting_args );
+			}
+
 
 			$class_name = 'WP_Customize_Control';
 			if ( array_key_exists( $field['type'], $control_types ) ) {
-							$class_name = $control_types[ $field['type'] ];
+				$class_name = $control_types[ $field['type'] ];
 			}
 
 			$wp_customize->add_control( new $class_name(

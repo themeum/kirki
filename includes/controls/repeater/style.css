@@ -66,21 +66,31 @@
     text-align: center;
 }
 
-.customize-control-repeater .repeater-row-close {
+.customize-control-repeater .repeater-row-remove,
+.customize-control-repeater .repeater-row-minimize {
     display: inline-block;
     float: right;
     border-left: 1px solid #ddd;
     width: 35px;
+    height:36px;
     text-align: center;
 }
-.customize-control-repeater .repeater-row-close:hover {
+.customize-control-repeater .repeater-row-remove:hover,
+.customize-control-repeater .repeater-row-minimize:hover {
     background:#ddd;
     cursor: pointer;
 }
 
-.customize-control-repeater .repeater-remove {
+.customize-control-repeater .repeater-remove,
+.customize-control-repeater .repeater-minimize {
     line-height: 36px;
-
-
 }
+
+.customize-control-repeater .repeater-row.minimized {
+    padding: 0;
+    height: 36px;
+    overflow: hidden;
+}
+
+
 

@@ -60,8 +60,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             });
 
         this.container
-            .on( 'click', '.repeater-row-close', function( e ) {
+            .on( 'click', '.repeater-row-remove', function( e ) {
                 control.deleteRow( jQuery(this).data( 'row' ) );
+            });
+
+        this.container
+            .on( 'click', '.repeater-row-minimize', function( e ) {
+                control.toggleMinimize( jQuery(this).data( 'row' ) );
             });
 
     },
@@ -180,6 +185,15 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         }
 
         this.prependListNumbers();
+    },
+
+    toggleMinimize: function( index ) {
+        var row = this.container.find( '.repeater-row[data-row="' + index + '"]').first();
+        if ( row.length ) {
+            row.toggleClass( 'minimized' );
+            row.find( '.repeater-remove').toggleClass( 'dashicons-arrow-up' );
+            row.find( '.repeater-remove').toggleClass( 'dashicons-arrow-down' );
+        }
     },
 
     /**
