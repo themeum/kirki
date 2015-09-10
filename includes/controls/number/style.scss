@@ -107,3 +107,11 @@
         }
     }
 }
+.rtl {
+	.customize-control-number {
+		.fs-number-arrow {
+			right: auto;
+  			left: 0;
+		}
+	}
+}
