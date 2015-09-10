@@ -26,11 +26,11 @@
 			border-left: none;
   			border-right: 1px solid #dedede;
   			&.ui-corner-right {
-	            border-radius: 3px 0px 0px 3px;
-	        }
-	        &.ui-corner-left {
-	            border-radius: 0 3px 3px 0;
-	        }
+		            border-radius: 3px 0px 0px 3px;
+		        }
+		        &.ui-corner-left {
+		            border-radius: 0 3px 3px 0;
+		        }
 		}
 	}
 }
