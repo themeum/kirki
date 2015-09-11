@@ -85,4 +85,8 @@
     border-top-color: #cccccc;
     border-bottom-color: #cccccc; }
 
+.rtl .customize-control-number .fs-number-arrow {
+  right: auto;
+  left: 0; }
+
 /*# sourceMappingURL=style.css.map */

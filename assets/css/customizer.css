@@ -82,6 +82,18 @@ li.customize-control {
     height: 20px;
     z-index: 10; }
 
+.rtl li.customize-control a.tooltip.hint--left {
+  right: auto;
+  left: 0; }
+.rtl .hint:before,
+.rtl [data-hint]:before {
+  left: 20px;
+  border-left: none;
+  border-right: 5px solid #333; }
+.rtl .hint:after,
+.rtl [data-hint]:after {
+  left: 195px; }
+
 .select2-container {
   min-width: 100px;
   width: 100% !important; }

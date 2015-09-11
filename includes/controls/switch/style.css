@@ -189,4 +189,8 @@
 .customize-control-switch .no-touch .fs-checkbox-toggle:hover .fs-checkbox-flag:after {
   opacity: 1; }
 
+.rtl .customize-control-switch .fs-checkbox-marker {
+  float: left;
+  margin: 0 0 0 5px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -149,6 +149,10 @@
     border-top-color: #cccccc;
     border-bottom-color: #cccccc; }
 
+.rtl .customize-control-number .fs-number-arrow {
+  right: auto;
+  left: 0; }
+
 .customize-control-palette label.ui-button.ui-widget {
   width: 95%;
   background: none;
@@ -190,6 +194,14 @@
     border-radius: 3px 0 0 3px;
     border-left: 0; }
   .customize-control-radio-buttonset label.ui-corner-right {
+    border-radius: 0 3px 3px 0; }
+
+.rtl .customize-control-radio-buttonset label {
+  border-left: none;
+  border-right: 1px solid #dedede; }
+  .rtl .customize-control-radio-buttonset label.ui-corner-right {
+    border-radius: 3px 0px 0px 3px; }
+  .rtl .customize-control-radio-buttonset label.ui-corner-left {
     border-radius: 0 3px 3px 0; }
 
 .customize-control-radio-image .image.ui-buttonset input[type=radio] {
@@ -549,6 +561,10 @@
 .customize-control-switch .no-touch .fs-checkbox-toggle:hover .fs-checkbox-flag:after {
   opacity: 1; }
 
+.rtl .customize-control-switch .fs-checkbox-marker {
+  float: left;
+  margin: 0 0 0 5px; }
+
 .customize-control-toggle .fs-checkbox.fs-checkbox-enabled {
   cursor: pointer;
   margin: 0 0 10px 0;
@@ -827,6 +843,18 @@ li.customize-control {
     width: 20px;
     height: 20px;
     z-index: 10; }
+
+.rtl li.customize-control a.tooltip.hint--left {
+  right: auto;
+  left: 0; }
+.rtl .hint:before,
+.rtl [data-hint]:before {
+  left: 20px;
+  border-left: none;
+  border-right: 5px solid #333; }
+.rtl .hint:after,
+.rtl [data-hint]:after {
+  left: 195px; }
 
 .select2-container {
   min-width: 100px;
