@@ -35,9 +35,9 @@ class Kirki_Field {
 		 */
 		$sanitized = array(
 			'default'           => self::sanitize_default( $field ),
-			'label'             => self::sanitize_label( $field ),
+			'label'             => ( isset( $field['label'] ) ) ? $field['label'] : '',
 			'help'              => self::sanitize_help( $field ),
-			'description'       => self::sanitize_description( $field ),
+			'description'       => ( isset( $field['description'] ) ) ? $field['description'] : '',
 			'required'          => self::sanitize_required( $field ),
 			'transport'         => self::sanitize_transport( $field ),
 			'type'              => self::sanitize_control_type( $field ),
@@ -282,6 +282,21 @@ class Kirki_Field {
 	public static function sanitize_settings( $field ) {
 
 		/**
+		 * If an array, we must process each setting separately
+		 */
+		if ( is_array( $field['settings'] ) ) {
+			$settings = array();
+			foreach ( $field['settings'] as $setting_key => $setting_value ) {
+				if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $field['option_name'] ).'['.esc_attr( $setting_value ).']';
+				} else {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+				}
+			}
+			return $settings;
+		}
+
+		/**
 		 * If we're using options & option_name is set, then we need to modify the setting.
 		 */
 		if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
@@ -289,30 +304,6 @@ class Kirki_Field {
 		}
 
 		return $field['settings'];
-
-	}
-
-	/**
-	 * Sanitizes the control label.
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_label( $field ) {
-
-		/**
-		 * If a label has been defined then we need to sanitize it and then return it.
-		 * Sanitization here will be done using the 'wp_strip_all_tags' function.
-		 */
-		if ( isset( $field['label'] ) ) {
-			return wp_strip_all_tags( $field['label'] );
-		}
-
-		/**
-		 * If no label has been defined then we're returning an empty value.
-		 * This is simply done to prevent any 'undefined index' PHP notices.
-		 */
-		return '';
 
 	}
 
@@ -389,33 +380,6 @@ class Kirki_Field {
 		 * fallback to escaping the default value.
 		 */
 		return esc_textarea( $field['default'] );
-
-	}
-
-	/**
-	 * Sanitizes the control description
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_description( $field ) {
-
-		if ( ! isset( $field['description'] ) && ! isset( $field['subtitle'] ) ) {
-			return '';
-		}
-
-		/**
-		 * Compatibility tweak
-		 *
-		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
-		 * and instead of 'description' we were using 'subtitle'.
-		 * This has been deprecated in favor of WordPress core's 'description' field that was recently introduced.
-		 *
-		 */
-		if ( isset( $field['subtitle'] ) ) {
-			return wp_strip_all_tags( $field['subtitle'] );
-		}
-		return wp_strip_all_tags( $field['description'] );
 
 	}
 
@@ -601,6 +565,7 @@ class Kirki_Field {
 					'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
 					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
 					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
+					'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
 				);
 			}
 		}

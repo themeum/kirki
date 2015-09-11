@@ -40,12 +40,24 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
+			// Autoload Controls
 			$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
 			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
 
 			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
 			if ( file_exists( $class_path ) ) {
 				include $class_path;
+				return;
+			}
+
+			// Autoload Settings
+			$foldername = ( 0 === stripos( $class_name, 'Kirki_Settings_' ) ) ? 'settings'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Setting', '', str_replace( 'Kirki_Settings_', '', $class_name ) ) ) ) : '';
+			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
+
+			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
+			if ( file_exists( $class_path ) ) {
+				include $class_path;
+				return;
 			}
 
 		}
@@ -123,5 +135,5 @@ Kirki::add_config( '' );
  * The 2 following commented-out lines are for testing purposes.
  * You can uncomment whichever you want and fields will flood the customizer.
  */
-// include_once( KIRKI_PATH . '/sample-config.php' );
-// include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );
+//include_once( KIRKI_PATH . '/sample-config.php' );
+//include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );

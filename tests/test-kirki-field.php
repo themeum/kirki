@@ -148,10 +148,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'foo[bar]', Kirki_Field::sanitize_settings( array( 'settings' => 'foo[bar]' ) ) );
 	}
 
-	public function test_sanitize_label() {
-		$this->assertEquals( 'This is my LABEL', Kirki_Field::sanitize_label( array( 'label' => 'This is my LABEL' ) ) );
-	}
-
 	public function test_sanitize_section() {
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_section( array( 'section' => 'foo' ) ) );
 		$this->assertEquals( 'title_tagline', Kirki_Field::sanitize_section( array() ) );
@@ -169,13 +165,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field::sanitize_default( array( 'default' => array( 'foo', 'bar' ) ) ) );
 		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Field::sanitize_default( array( 'default' => 'rgba(0,0,0,0)' ) ) );
 		$this->assertEquals( 'foo', Kirki_Field::sanitize_default( array( 'type' => 'text', 'default' => 'foo', ) ) );
-	}
-
-	public function test_sanitize_description() {
-		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'description' => 'foo' ) ) );
-		$this->assertEquals( 'foo', Kirki_Field::sanitize_description( array( 'subtitle' => 'foo' ) ) );
-		$this->assertEquals( 'bar', Kirki_Field::sanitize_description( array( 'description' => '<div class="foo">bar</div>' ) ) );
-		$this->assertEquals( '', Kirki_Field::sanitize_description( array() ) );
 	}
 
 	public function test_sanitize_help() {
@@ -282,6 +271,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'function' => 'css',
 					'property' => 'color',
 					'units' => '',
+					'prefix' => '',
 				)
 			),
 			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(
@@ -296,7 +286,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 					'element' => 'body > #main',
 					'function' => 'css',
 					'property' => 'font-size',
-					'units' => 'px'
+					'units' => 'px',
+					'prefix' => '',
 				)
 			),
 			Kirki_Field::sanitize_js_vars( array( 'js_vars' => array(

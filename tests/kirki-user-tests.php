@@ -90,64 +90,238 @@ class Kirki_Test_Field {
 }
 
 // checkbox
-$checkbox = new Kirki_Test_Field( array( 'type' => 'checkbox', 'default' => 1 ) );
+$checkbox = new Kirki_Test_Field( array(
+	'type'    => 'checkbox',
+	'default' => 1
+) );
 
 // color-alpha
-$color_alpha = new Kirki_Test_Field( array( 'type' => 'color-alpha', 'default' => 'rgba(255,0,0,.75)', 'output' => array( 'element' => 'body a', 'property' => 'color' ) ) );
+$color_alpha = new Kirki_Test_Field( array(
+	'type'    => 'color-alpha',
+	'default' => 'rgba(255,0,0,.75)',
+	'output'  => array(
+		'element'  => 'body a',
+		'property' => 'color'
+	)
+) );
 
 // color
-$color = new Kirki_Test_Field( array( 'type' => 'color', 'default' => '#0000ff', 'output' => array( 'element' => 'a:hover', 'property' => 'color' ) ) );
+$color = new Kirki_Test_Field( array(
+	'type'    => 'color',
+	'default' => '#0000ff',
+	'output'  => array(
+		'element'  => 'a:hover',
+		'property' => 'color'
+	)
+) );
 
 // custom
-$custom = new Kirki_Test_Field( array( 'type' => 'custom', 'default' => '<div style="text-align:center; background-color:#333; margin:10px 5px;"><h3 style="color: #fff !important;">Custom Control Test</h3></div>' ) );
+$custom = new Kirki_Test_Field( array(
+	'type'    => 'custom',
+	'default' => '<div style="text-align:center; background-color:#333; margin:10px 5px;"><h3 style="color: #fff !important;">Custom Control Test</h3></div>'
+) );
 
 // dropdown-pages
-$dropdown_pages = new Kirki_Test_Field( array( 'type' => 'dropdown-pages', 'default' => 1 ) );
+$dropdown_pages = new Kirki_Test_Field( array(
+	'type'    => 'dropdown-pages',
+	'default' => 1
+) );
 
 // editor
-$editor = new Kirki_Test_Field( array( 'type' => 'editor', 'default' => 'This is the standard TinyMCE editor.' ) );
+$editor = new Kirki_Test_Field( array(
+	'type'    => 'editor',
+	'default' => 'This is the standard TinyMCE editor.'
+) );
 
 // image
-$image = new Kirki_Test_Field( array( 'type' => 'image', 'default' => '' ) );
+$image = new Kirki_Test_Field( array(
+	'type'    => 'image',
+	'default' => ''
+) );
 
 // multicheck
-$multicheck = new Kirki_Test_Field( array( 'type' => 'multicheck', 'default' => array( 'option1' ), 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
+$multicheck = new Kirki_Test_Field( array(
+	'type'    => 'multicheck',
+	'default' => array( 'option1' ),
+	'choices' => array(
+		'option1' => __( 'Option 1', 'kirki' ),
+		'option2' => __( 'Option 2', 'kirki' ),
+		'option3' => __( 'Option 3', 'kirki' )
+	)
+) );
 
 // number
-$number = new Kirki_Test_Field( array( 'type' => 'number', 'default' => '99' ) );
+$number = new Kirki_Test_Field( array(
+	'type'    => 'number',
+	'default' => '99'
+) );
 
 // palette
-$palette = new Kirki_Test_Field( array( 'type' => 'palette', 'default' => 'red', 'choices' => array( 'red' => array( '#F9BAAF', '#FB9D8C', '#FD8069' ), 'green' => array( '#C9F7C4', '#B3F9AC', '#9DFA94' ), 'blue' => array( '#D9E3F6', '#CCDAF7', '#BED1F8' ) ) ) );
+$palette = new Kirki_Test_Field( array(
+	'type'    => 'palette',
+	'default' => 'red',
+	'choices' => array(
+		'red'   => array( '#F9BAAF', '#FB9D8C', '#FD8069' ),
+		'green' => array( '#C9F7C4', '#B3F9AC', '#9DFA94' ),
+		'blue'  => array( '#D9E3F6', '#CCDAF7', '#BED1F8' )
+	)
+) );
 
 // radio-buttonset
-$radio_buttonset = new Kirki_Test_Field( array( 'type' => 'radio-buttonset', 'default' => 'option2', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option-3' => __( 'Option 3', 'kirki' ) ) ) );
+$radio_buttonset = new Kirki_Test_Field( array(
+	'type'    => 'radio-buttonset',
+	'default' => 'option2',
+	'choices' => array(
+		'option1'  => __( 'Option 1', 'kirki' ),
+		'option2'  => __( 'Option 2', 'kirki' ),
+		'option-3' => __( 'Option 3', 'kirki' )
+	)
+) );
 
 // radio-image
-$radio_image = new Kirki_Test_Field( array( 'type' => 'radio-image', 'default' => 'option3', 'choices' => array( 'option1' => admin_url().'/images/align-left-2x.png', 'option2' => admin_url().'/images/align-center-2x.png', 'option3' => admin_url().'/images/align-right-2x.png' ) ) );
+$radio_image = new Kirki_Test_Field( array(
+	'type'    => 'radio-image',
+	'default' => 'option3',
+	'choices' => array(
+		'option1' => admin_url().'/images/align-left-2x.png',
+		'option2' => admin_url().'/images/align-center-2x.png',
+		'option3' => admin_url().'/images/align-right-2x.png'
+	)
+) );
 
 // radio
-$radio = new Kirki_Test_Field( array( 'type' => 'radio', 'default' => 'option1', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
+$radio = new Kirki_Test_Field( array(
+	'type'    => 'radio',
+	'default' => 'option1',
+	'choices' => array(
+		'option1' => __( 'Option 1', 'kirki' ),
+		'option2' => __( 'Option 2', 'kirki' ),
+		'option3' => __( 'Option 3', 'kirki' )
+	)
+) );
 
 // select
-$select = new Kirki_Test_Field( array( 'type' => 'select', 'default' => 'option2', 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ) ) ) );
+$select = new Kirki_Test_Field( array(
+	'type'    => 'select',
+	'default' => 'option2',
+	'choices' => array(
+		'option1' => __( 'Option 1', 'kirki' ),
+		'option2' => __( 'Option 2', 'kirki' ),
+		'option3' => __( 'Option 3', 'kirki' )
+	)
+) );
 
 // slider
-$slider = new Kirki_Test_Field( array( 'type' => 'slider', 'default' => 0, 'choices' => array( 'min' => -100, 'max' => 100, 'step' => 1 ) ) );
+$slider = new Kirki_Test_Field( array(
+	'type'    => 'slider',
+	'default' => 0,
+	'choices' => array(
+		'min'  => -100,
+		'max'  => 100,
+		'step' => 1
+	)
+) );
 
 // sortable
-$sortable = new Kirki_Test_Field( array( 'type' => 'sortable', 'default' => array( 'option2', 'option1' ), 'choices' => array( 'option1' => __( 'Option 1', 'kirki' ), 'option2' => __( 'Option 2', 'kirki' ), 'option3' => __( 'Option 3', 'kirki' ), 'option4' => __( 'Option 4', 'kirki' ) ) ) );
+$sortable = new Kirki_Test_Field( array(
+	'type'    => 'sortable',
+	'default' => array( 'option2', 'option1' ),
+	'choices' => array(
+		'option1' => __( 'Option 1', 'kirki' ),
+		'option2' => __( 'Option 2', 'kirki' ),
+		'option3' => __( 'Option 3', 'kirki' ),
+		'option4' => __( 'Option 4', 'kirki' )
+	)
+) );
 
 // switch
-$switch = new Kirki_Test_Field( array( 'type' => 'switch', 'default' => '1' ) );
+$switch = new Kirki_Test_Field( array(
+	'type'    => 'switch',
+	'default' => '1'
+) );
 
 // text
-$text = new Kirki_Test_Field( array( 'type' => 'text', 'default' => __( 'This is some default text for the text control.', 'kirki' ) ) );
+$text = new Kirki_Test_Field( array(
+	'type'    => 'text',
+	'default' => __( 'This is some default text for the text control.', 'kirki' )
+) );
 
 // textarea
-$textarea = new Kirki_Test_Field( array( 'type' => 'textarea', 'default' => __( 'This is some default text for the textarea control.', 'kirki' ) ) );
+$textarea = new Kirki_Test_Field( array(
+	'type'    => 'textarea',
+	'default' => __( 'This is some default text for the textarea control.', 'kirki' )
+) );
 
 // toggle
-$toggle = new Kirki_Test_Field( array( 'type' => 'toggle', 'default' => '1' ) );
+$toggle = new Kirki_Test_Field( array(
+	'type'    => 'toggle',
+	'default' => '1'
+) );
 
 // upload
-$upload = new Kirki_Test_Field( array( 'type' => 'upload', 'default' => '' ) );
+$upload = new Kirki_Test_Field( array(
+	'type'    => 'upload',
+	'default' => ''
+) );
+
+$code = new Kirki_Test_Field( array(
+	'type'    => 'code',
+	'default' => '',
+	'choices' => array(
+		'language' => 'css',
+		'height'   => 300,
+		'theme'    => 'chrome',
+	),
+) );
+
+// repeater
+$repeater = new Kirki_Test_Field( array(
+	'type'    => 'repeater',
+	'default' => array(),
+	'fields'  => array(
+		'subsetting_1' => array(
+			'type' => 'text',
+			'label' => 'Setting A',
+			'description' => 'lalala',
+			'default' => 'Yeah'
+		),
+		'subsetting_2' => array(
+			'type' => 'text',
+			'label' => 'Setting B',
+			'description' => 'lalala',
+			'default' => ''
+		),
+		'subsetting_3' => array(
+			'type' => 'checkbox',
+			'description' => 'A checkbox',
+			'default' => true
+		),
+		'subsetting_4' => array(
+			'label' => 'A selector',
+			'type' => 'select',
+			'description' => 'lalala',
+			'default' => '',
+			'choices' => array(
+				'' => 'None',
+				'choice_1' => 'Choice 1',
+				'choice_2' => 'Choice 2'
+			)
+		),
+		'subsetting_5' => array(
+			'type' => 'textarea',
+			'label' => 'A textarea',
+			'description' => 'lalalala',
+			'default' => ''
+		),
+		'subsetting_6' => array(
+			'label' => 'A radio',
+			'type' => 'radio',
+			'description' => 'yipiyai',
+			'default' => 'choice-1',
+			'choices' => array(
+				'choice-1' => 'First choice',
+				'choice-2' => 'Second choice'
+			)
+		),
+	)
+) );

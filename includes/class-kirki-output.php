@@ -48,7 +48,7 @@ class Kirki_Output {
 		/**
 		 * Get the config ID used in the Kirki class.
 		 */
-		$config_id       = Kirki::get_config_id( $field );
+		$config_id = Kirki::get_config_id( $field );
 		/**
 		 * Set class vars
 		 */
@@ -59,7 +59,7 @@ class Kirki_Output {
 		 * Get the value of this field
 		 */
 		if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
-			self::$value = Kirki::get_option( $config_id, str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'].'[' ), '', $field['settings'] ) );
+			self::$value = Kirki::get_option( $config_id, str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'] . '[' ), '', $field['settings'] ) );
 		} else {
 			self::$value = Kirki::get_option( $config_id, $field['settings'] );
 		}
@@ -76,7 +76,7 @@ class Kirki_Output {
 	 * Gets the array of generated styles and creates the minimized, inline CSS
 	 *
 	 * @param array
-	 * @return string|null	the generated CSS.
+	 * @return string	the generated CSS.
 	 */
 	public static function styles_parse( $css = array() ) {
 
@@ -97,7 +97,7 @@ class Kirki_Output {
 						$value = ( is_string( $value ) ) ? $value : '';
 						// Take care of formatting the URL for background-image statements.
 						if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
-							$value = 'url("'.$value.'")';
+							$value = 'url("' . $value . '")';
 						}
 						// Make sure the background-position property is properly formatted
 						if ( 'background-position' == $property ) {
@@ -127,7 +127,11 @@ class Kirki_Output {
 			/**
 			 * Do we have units?
 			 */
-			$units  = ( isset( $output['units'] ) ) ? $output['units'] : '';
+			$units = ( isset( $output['units'] ) ) ? $output['units'] : '';
+			/**
+			 * Do we have a prefix?
+			 */
+			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			/**
 			 * Do we need to run this through a callback action?
 			 */
@@ -140,7 +144,26 @@ class Kirki_Output {
 			 * If all is ok, then populate the array.
 			 */
 			if ( ! is_array( $value ) ) {
-				$styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value.$units;
+				$element = $output['element'];
+				/**
+				 * Allow using an array of elements
+				 */
+				if ( is_array( $output['element'] ) ) {
+					/**
+					 * Make sure our values are unique
+					 */
+					$elements = array_unique( $elements );
+					/**
+					 * Sort elements alphabetically.
+					 * This way all duplicate items will be merged in the final CSS array.
+					 */
+					sort( $elements );
+					/**
+					 * Implode items
+					 */
+					$element = implode( ',', $elements );
+				}
+				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units;
 			}
 		}
 

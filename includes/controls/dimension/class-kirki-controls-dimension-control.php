@@ -34,32 +34,22 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 
 		<label class="customizer-text">
 			<span class="customize-control-title">
-				<?php echo esc_attr( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					<?php // The description has already been sanitized in the Fields class, no need to re-sanitize it. ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
 			<input type="text" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
-			<select <?php $this->link(); ?>>
+			<select>
 				<?php foreach ( $this->get_units() as $unit ) : ?>
 					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
-						<?php echo $unit; ?>
+						<?php echo esc_attr( $unit ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
 			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( $this->numeric_value() . $this->unit_value() ); ?>" />
 		</label>
 		<?php
-	}
-
-	/**
-	 * Get the numeric value of the field
-	 *
-	 * @return  float|int
-	 */
-	public function numeric_value() {
-		return filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT );
 	}
 
 	/**
@@ -70,7 +60,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	public function get_units() {
 		$all_units = array( 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax' );
 		$defaults  = array( 'px', '%', 'em' );
-		if ( isset( $this->choices ) && is_array( $this->choices ) ) {
+		if ( isset( $this->choices ) && is_array( $this->choices ) && ! empty( $this->choices ) ) {
 			$choices = array();
 			foreach ( $this->choices as $choice ) {
 				if ( in_array( $choice, $all_units ) ) {
@@ -86,13 +76,23 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	}
 
 	/**
+	 * Get the numeric value of the field
+	 *
+	 * @return  float|int
+	 */
+	public function numeric_value() {
+		// Sanitize the input field and return numeric values, rounded to 2 decimals.
+		return round( filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT ), 2 );
+	}
+
+	/**
 	 * Get the value of the units we're using.
 	 *
 	 * @return  string
 	 */
 	public function unit_value() {
 		foreach ( $this->get_units() as $unit ) {
-			if ( false !== strpos( $this->value, $unit ) ) {
+			if ( isset( $this->value ) && false !== strpos( $this->value, $unit ) ) {
 				$located_unit = $unit;
 				break;
 			}
