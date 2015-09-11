@@ -25,8 +25,8 @@ class Kirki_Controls_Select2_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/select2.full.min.js', array( 'jquery' ) );
-		wp_enqueue_style( 'css-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/select2.min.css' );
 		wp_enqueue_script( 'kirki-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/script.js', array( 'jquery', 'jquery-select2' ) );
+		wp_enqueue_style( 'css-select2', trailingslashit( kirki_url() ) . 'includes/controls/select2/select2.min.css' );
 	}
 
 	protected function render() {

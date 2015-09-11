@@ -31,7 +31,9 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/number/formstone-core.js', array( 'jquery' ) );
 		wp_enqueue_script( 'formstone-number', trailingslashit( kirki_url() ) . 'includes/controls/number/formstone-number.js', array( 'jquery', 'formstone' ) );
 		wp_enqueue_script( 'kirki-number', trailingslashit( kirki_url() ) . 'includes/controls/number/script.js', array( 'jquery', 'formstone', 'formstone-number' ) );
-		wp_enqueue_style( 'kirki-number', trailingslashit( kirki_url() ) . 'includes/controls/number/style.css' );
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			wp_enqueue_style( 'kirki-number', trailingslashit( kirki_url() ) . 'includes/controls/number/style.css' );
+		}
 
 	}
 

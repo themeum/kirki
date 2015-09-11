@@ -27,7 +27,9 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-core.js', array( 'jquery' ) );
 		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-touch.js', array( 'jquery', 'formstone' ) );
 		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
-		wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/style.css' );
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/style.css' );
+		}
 	}
 
 	/**
