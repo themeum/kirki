@@ -29,7 +29,6 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'kirki-multicheck', trailingslashit( kirki_url() ) . 'includes/controls/multicheck/kirki-multicheck.js', array( 'jquery' ) );
-		wp_enqueue_style( 'kirki-multicheck', trailingslashit( kirki_url() ) . 'includes/controls/multicheck/style.css' );
 
 	}
 
