@@ -19,7 +19,7 @@ if ( class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Control {
+class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 
 	public $type    = 'color-alpha';
 	public $palette = true;
