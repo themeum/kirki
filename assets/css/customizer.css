@@ -98,4 +98,25 @@ customize-control-upload .current .container {
   font-weight: 300;
   font-size: .9em; }
 
+.customize-control-color .wp-picker-container,
+.customize-control-color-alpha .wp-picker-container {
+  width: 100%; }
+  .customize-control-color .wp-picker-container a.wp-color-result,
+  .customize-control-color-alpha .wp-picker-container a.wp-color-result {
+    width: auto;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding-left: 40px; }
+    .customize-control-color .wp-picker-container a.wp-color-result:after,
+    .customize-control-color-alpha .wp-picker-container a.wp-color-result:after {
+      background: rgba(0, 0, 0, 0.25);
+      color: #fff;
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .customize-control-color .wp-picker-container a.wp-color-result:focus:after, .customize-control-color .wp-picker-container a.wp-color-result:hover:after,
+    .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after,
+    .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
+      color: #fff; }
+
 /*# sourceMappingURL=customizer.css.map */

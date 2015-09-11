@@ -138,3 +138,28 @@ customize-control-upload {
     font-weight: 300;
     font-size: .9em;
 }
+
+// Color & color-alpha controls
+.customize-control-color,
+.customize-control-color-alpha {
+    .wp-picker-container {
+        width: 100%;
+        a.wp-color-result {
+            width: auto;
+            display: block;
+            border: 1px solid rgba(0,0,0,.2);
+            padding-left: 40px;
+            &:after {
+                background: rgba(0,0,0,.25);
+                color: #fff;
+                border: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            &:focus:after,
+            &:hover:after {
+                color: #fff;
+            }
+        }
+    }
+}
