@@ -28,9 +28,8 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 
-		wp_enqueue_script( 'jquery-ui' );
-		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_style( 'kirki-slider', trailingslashit( kirki_url() ) . 'includes/controls/slider/style.css' );
+		wp_enqueue_script( 'kirki-slider', trailingslashit( kirki_url() ) . 'includes/controls/slider/script.js', array( 'jquery' ) );
 
 	}
 
@@ -43,31 +42,44 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-
-			<input type="text" class="kirki-slider" id="input_<?php echo $this->id; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
-
+			<?php
+			/**
+			 * Get the defined min, max & step values
+			 */
+			$min  = ( $this->choices['min'] ) ? esc_attr( $this->choices['min'] ) : '0';
+			$max  = ( $this->choices['max'] ) ? esc_attr( $this->choices['max'] ) : '100';
+			$step = ( $this->choices['step'] ) ? esc_attr( $this->choices['step'] ) : '1';
+			?>
+			<?php
+			/**
+			 * Create the input
+			 */
+			?>
+			<input type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> data-reset_value="<?php echo esc_attr( $this->setting->default ); ?>" />
+			<?php
+			/**
+			 * Append the value
+			 */
+			?>
+			<div class="kirki_range_value">
+				<span class="value"><?php echo esc_attr( $this->value() ); ?></span>
+				<?php if ( isset( $this->choices['suffix'] ) && '' != $this->choices['suffix'] ) : ?>
+					<?php echo esc_attr( $this->choices['suffix'] ); ?>
+				<?php endif; ?>
+			</div>
+			<?php
+			/**
+			 * Add the reset button
+			 * We can disable the reset button by adding to our options:
+			 * 'reset' => false
+			 */
+			?>
+			<?php if ( ! isset( $this->choices['reset'] ) || false != $this->choices['reset'] ) : ?>
+				<div class="kirki-slider-reset">
+					<span class="dashicons dashicons-image-rotate"></span>
+				</div>
+			<?php endif; ?>
 		</label>
-
-		<div id="slider_<?php echo $this->id; ?>" class="ss-slider"></div>
-		<script>
-		jQuery(document).ready(function($) {
-			$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
-					value : <?php echo esc_attr( $this->value() ); ?>,
-					min   : <?php echo ($this->choices['min']) ? $this->choices['min'] : '0'; ?>,
-					max   : <?php echo ($this->choices['max']) ? $this->choices['max'] : '100'; ?>,
-					step  : <?php echo ($this->choices['step']) ? $this->choices['step'] : '1'; ?>,
-					slide : function( event, ui ) { $( '[id="input_<?php echo $this->id; ?>"]' ).val(ui.value).keyup(); }
-			});
-			$( '[id="input_<?php echo $this->id; ?>"]' ).val( $( '[id="slider_<?php echo $this->id; ?>"]' ).slider( "value" ) );
-
-			$( '[id="input_<?php echo $this->id; ?>"]' ).change(function() {
-				$( '[id="slider_<?php echo $this->id; ?>"]' ).slider({
-					value : $( this ).val()
-				});
-			});
-
-		});
-		</script>
 		<?php
 
 	}
