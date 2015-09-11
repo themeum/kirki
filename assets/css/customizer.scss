@@ -163,3 +163,16 @@ customize-control-upload {
         }
     }
 }
+
+// Radio controls
+.customize-control-radio {
+    input[type=radio] {
+        width: 18px;
+        height: 18px;
+        &:checked:before {
+            width: 10px;
+            height: 10px;
+            margin: 3px;
+        }
+    }
+}
