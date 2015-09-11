@@ -116,6 +116,25 @@ li.customize-control {
         z-index: 10;
     }
 }
+.rtl {
+    li.customize-control {
+        a.tooltip.hint--left {
+            right: auto;
+            left: 0;
+        }
+    }
+    .hint,
+    [data-hint] {
+        &:before {
+            left: 20px;
+            border-left: none;
+            border-right: 5px solid #333;
+        }
+        &:after {
+            left: 195px;
+        }
+    }
+}
 
 /////////////////////
 // Select2 controls
