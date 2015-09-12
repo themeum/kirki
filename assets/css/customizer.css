@@ -216,4 +216,12 @@ customize-control-upload .current .container {
     color: #777;
     pointer-events: none; }
 
+input[type="text"] {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  border-radius: 3px;
+  padding: .5em; }
+
 /*# sourceMappingURL=customizer.css.map */
