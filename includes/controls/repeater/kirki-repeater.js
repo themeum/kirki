@@ -1,4 +1,4 @@
-function repeaterRow( rowIndex, element ) {
+function RepeaterRow( rowIndex, element, sortablesContainer ) {
     this.rowIndex = rowIndex;
     this.rowNumber = rowIndex + 1;
     this.$el = element;
@@ -6,6 +6,8 @@ function repeaterRow( rowIndex, element ) {
     this.$minimizer = this.$el.find( '.repeater-row-minimize' );
     this.$remover = this.$el.find( '.repeater-row-remove' );
     this.$number = this.$el.find( '.repeater-row-number' );
+    this.$fields = this.$el.find( 'input,select,textarea' );
+    this.rowId = this.$el.data('row');
 
     var self = this;
 
@@ -17,47 +19,71 @@ function repeaterRow( rowIndex, element ) {
         self.remove();
     });
 
+    this.$dragger.on( 'mousedown', function() {
+        self.$el.trigger( 'row:start-dragging' );
+    });
+
+
+    this.$el.on( 'keyup change', 'input, select, textarea', function( e ) {
+        self.$el.trigger( 'row:update', [ self.getRowIndex(), jQuery( e.target ).data( 'field' ), e.target ] );
+    });
+
     this.renderNumber();
 
-};
+    sortablesContainer.on( "sortstart", function( event,ui ) {
+        // Detect which element we're moving
+        var draggingNow = ui.item.data('row');
+        if ( draggingNow == self.rowId ) {
+            console.log(ui);
+        }
+    });
 
-repeaterRow.prototype.getRowIndex = function() {
+}
+
+RepeaterRow.prototype.getRowIndex = function() {
     return this.rowIndex;
 };
 
-repeaterRow.prototype.getRowNumber = function() {
+RepeaterRow.prototype.getRowNumber = function() {
     return this.rowNumber;
 };
 
-repeaterRow.prototype.setRowNumber = function( rowNumber ) {
+RepeaterRow.prototype.setRowNumber = function( rowNumber ) {
     this.rowNumber = rowNumber;
     this.renderNumber();
 };
 
-repeaterRow.prototype.getElement = function() {
+RepeaterRow.prototype.getElement = function() {
     return this.$el;
 };
 
-repeaterRow.prototype.setRowIndex = function( rowIndex ) {
+RepeaterRow.prototype.setRowIndex = function( rowIndex ) {
     this.rowIndex = rowIndex;
 };
 
-repeaterRow.prototype.toggleMinimize = function() {
+RepeaterRow.prototype.toggleMinimize = function() {
+    // Store the previous state
     this.$el.toggleClass( 'minimized' );
     this.$minimizer.find( '.repeater-minimize' ).toggleClass( 'dashicons-arrow-up' );
     this.$minimizer.find( '.repeater-minimize').toggleClass( 'dashicons-arrow-down' );
 };
 
-repeaterRow.prototype.remove = function() {
+RepeaterRow.prototype.minimize = function() {
+    this.$el.addClass( 'minimized' );
+    this.$minimizer.find( '.repeater-minimize' ).removeClass( 'dashicons-arrow-up' );
+    this.$minimizer.find( '.repeater-minimize').addClass( 'dashicons-arrow-down' );
+};
+
+RepeaterRow.prototype.remove = function() {
     if ( confirm( "Are you sure?" ) ) {
         this.$el.slideUp( 300, function() {
             jQuery(this).detach();
         });
-        this.$el.trigger( 'row:remove' );
+        this.$el.trigger( 'row:remove', [ this.getRowIndex() ] );
     }
 };
 
-repeaterRow.prototype.renderNumber = function() {
+RepeaterRow.prototype.renderNumber = function() {
     this.$number.text( this.getRowNumber() );
 };
 
@@ -82,6 +108,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
         // Save the rows objects
         this.rows = [];
+
 
         control.container.on('click', 'button.repeater-add', function (e) {
             e.preventDefault();
@@ -120,10 +147,9 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             }
         }
 
-        this.container
-            .on( 'keyup change', '.repeater-fields input, .repeater-fields select, .repeater-fields textarea', function( e ) {
-                control.updateField.call( control, e );
-            });
+        this.repeaterFieldsContainer.sortable({
+            handle: ".repeater-row-move"
+        });
 
     },
 
@@ -199,16 +225,27 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             template = template( templateData );
 
             // Create a new row object and append the element
-            var newRow = new repeaterRow(
+            var newRow = new RepeaterRow(
                 control.currentIndex,
                 jQuery( template ).appendTo( control.repeaterFieldsContainer ),
-                control
+                this.repeaterFieldsContainer
             );
 
-            newRow.getElement().one( 'row:remove', function() {
-                ( function() {
-                    control.deleteRow( newRow.getRowIndex() );
-                })();
+            newRow.getElement().one( 'row:remove', function( e, rowIndex ) {
+                control.deleteRow( rowIndex );
+            });
+
+            newRow.getElement().on( 'row:update', function( e, rowIndex, fieldName, element ) {
+                control.updateField.call( control, e, rowIndex, fieldName, element );
+            });
+
+            newRow.getElement().on( 'row:start-dragging', function() {
+                // Minimize all rows
+                for ( i in control.rows ) {
+                    if ( control.rows.hasOwnProperty( i ) && control.rows[i] ) {
+                        control.rows[i].minimize();
+                    }
+                }
             });
 
             // Add the row to rows collection
@@ -257,7 +294,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         var i = 1;
         for ( prop in this.rows ) {
             if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
-                this.rows[ prop ].setRowNumber( i  );
+                this.rows[ prop ].setRowNumber( i );
                 i++;
             }
         }
@@ -269,28 +306,31 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
      *
      * @param e Event Object
      */
-    updateField: function( e ) {
-        var element = jQuery( e.target ),
-            control = this,
-            currentSettings = this.getValue(),
-            type = element.attr( 'type' )
-
-        // Gather data about the field row + ID
-        var row = element.data( 'row' );
-        var fieldId = element.data( 'field' );
-
-        if ( typeof currentSettings[row][fieldId] == undefined )
+    updateField: function( e, rowIndex, fieldId, element ) {
+        if ( ! this.rows[ rowIndex ] )
             return;
 
+        if ( ! this.params.fields[ fieldId ] )
+            return;
+
+        var type = this.params.fields[ fieldId].type;
+        var row = this.rows[ rowIndex ];
+        var currentSettings = this.getValue();
+        element = jQuery( element );
+
+        if (typeof currentSettings[row.getRowIndex()][fieldId] == undefined) {
+            return;
+        }
+
         if ( type == 'checkbox' ) {
-            currentSettings[row][fieldId] = element.is( ':checked' );
+            currentSettings[row.getRowIndex()][fieldId] = element.is( ':checked' );
         }
         else {
             // Update the settings
-            currentSettings[row][fieldId] = element.val();
+            currentSettings[row.getRowIndex()][fieldId] = element.val();
         }
 
-        control.setValue( currentSettings, true );
+        this.setValue( currentSettings, true );
 
     }
 });
