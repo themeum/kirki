@@ -40,6 +40,7 @@
     background: rgba(52, 152, 222, 0.075);
     transform: translate3d(100%, -50%, 0) scale(3); }
 .customize-control-toggle .customize-control-title {
-  width: calc(100% - 50px); }
+  width: calc(100% - 50px);
+  float: left; }
 
 /*# sourceMappingURL=style.css.map */

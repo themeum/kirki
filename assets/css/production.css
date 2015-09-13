@@ -607,7 +607,8 @@
     background: rgba(52, 152, 222, 0.075);
     transform: translate3d(100%, -50%, 0) scale(3); }
 .customize-control-toggle .customize-control-title {
-  width: calc(100% - 50px); }
+  width: calc(100% - 50px);
+  float: left; }
 
 #customize-controls #customize-info .accordion-section-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
