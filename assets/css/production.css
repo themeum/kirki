@@ -183,76 +183,19 @@
 .customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {
   border: 3px solid #333; }
 
-.customize-control-radio-buttonset .switch {
-  position: relative;
-  margin: 20px auto;
-  height: 26px;
-  width: 120px;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1); }
-.customize-control-radio-buttonset .switch-label {
-  position: relative;
-  z-index: 2;
-  float: left;
-  width: 58px;
-  line-height: 26px;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.35);
-  text-align: center;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
-  cursor: pointer; }
-  .customize-control-radio-buttonset .switch-label:active {
-    font-weight: bold; }
-.customize-control-radio-buttonset .switch-label-off {
-  padding-left: 2px; }
-.customize-control-radio-buttonset .switch-label-on {
-  padding-right: 2px; }
-.customize-control-radio-buttonset .switch-input {
+.customize-control-radio-buttonset .buttonset .switch-label {
+  background: rgba(0, 0, 0, 0.17);
+  color: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 4px 7px;
+  margin: 0;
+  font-size: 12px; }
+  .customize-control-radio-buttonset .buttonset .switch-label:last-child {
+    border-right: none; }
+.customize-control-radio-buttonset .buttonset .switch-input {
   display: none; }
-  .customize-control-radio-buttonset .switch-input:checked + .switch-label {
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.65);
-    text-shadow: 0 1px rgba(255, 255, 255, 0.25);
-    -webkit-transition: 0.15s ease-out;
-    -moz-transition: 0.15s ease-out;
-    -o-transition: 0.15s ease-out;
-    transition: 0.15s ease-out; }
-  .customize-control-radio-buttonset .switch-input:checked + .switch-label-on ~ .switch-selection {
-    left: 60px; }
-.customize-control-radio-buttonset .switch-selection {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 2px;
-  left: 2px;
-  width: 58px;
-  height: 22px;
-  background: #65bd63;
-  border-radius: 3px;
-  background-image: -webkit-linear-gradient(top, #9dd993, #65bd63);
-  background-image: -moz-linear-gradient(top, #9dd993, #65bd63);
-  background-image: -o-linear-gradient(top, #9dd993, #65bd63);
-  background-image: linear-gradient(to bottom, #9dd993, #65bd63);
-  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
-  -webkit-transition: left 0.15s ease-out;
-  -moz-transition: left 0.15s ease-out;
-  -o-transition: left 0.15s ease-out;
-  transition: left 0.15s ease-out; }
-  .switch-blue .customize-control-radio-buttonset .switch-selection {
-    background: #3aa2d0;
-    background-image: -webkit-linear-gradient(top, #4fc9ee, #3aa2d0);
-    background-image: -moz-linear-gradient(top, #4fc9ee, #3aa2d0);
-    background-image: -o-linear-gradient(top, #4fc9ee, #3aa2d0);
-    background-image: linear-gradient(to bottom, #4fc9ee, #3aa2d0); }
-  .switch-yellow .customize-control-radio-buttonset .switch-selection {
-    background: #c4bb61;
-    background-image: -webkit-linear-gradient(top, #e0dd94, #c4bb61);
-    background-image: -moz-linear-gradient(top, #e0dd94, #c4bb61);
-    background-image: -o-linear-gradient(top, #e0dd94, #c4bb61);
-    background-image: linear-gradient(to bottom, #e0dd94, #c4bb61); }
+  .customize-control-radio-buttonset .buttonset .switch-input:checked + .switch-label {
+    background-color: #3498DB; }
 
 .customize-control-radio-image .image.ui-buttonset input[type=radio] {
   height: auto; }

@@ -53,7 +53,6 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 					</label>
 				</input>
 			<?php endforeach; ?>
-			<span class="switch-selection"></span>
 		</div>
 		<?php
 	}

@@ -1,161 +1,24 @@
 // Radio-Buttonset Controls
-@mixin box-sizing($val) {
-	-webkit-box-sizing: $val;
-	-moz-box-sizing: $val;
-	box-sizing: $val;
-}
-@mixin user-select($val...) {
-	-webkit-user-select: $val;
-	-moz-user-select: $val;
-	-ms-user-select: $val;
-	user-select: $val;
-}
-@mixin box-shadow($shadows...) {
-	-webkit-box-shadow: $shadows;
-	box-shadow: $shadows;
-}
-@function inverse-side($side) {
-	@if $side == top {
-		@return bottom;
-	}
-	@else if $side == bottom {
-		@return top;
-	}
-	@else if $side == left {
-		@return right;
-	}
-	@else if $side == right {
-		@return left;
-	}
-}
-@mixin linear-gradient($gradientLine, $colorStops...) {
-	background-image: -webkit-linear-gradient($gradientLine, $colorStops);
-	background-image: -moz-linear-gradient($gradientLine, $colorStops);
-	background-image: -o-linear-gradient($gradientLine, $colorStops);
-	@if length($gradientLine) == 2 {
-		background-image: linear-gradient(to #{inverse-side(nth($gradientLine, 1))} #{inverse-side(nth($gradientLine, 2))}, $colorStops);
-	}
-	@else {
-		background-image: linear-gradient(to #{inverse-side($gradientLine)}, $colorStops);
-	}
-}
-@mixin radial-gradient($gradient...) {
-	background-image: -webkit-radial-gradient($gradient);
-	background-image: -moz-radial-gradient($gradient);
-	background-image: -o-radial-gradient($gradient);
-	background-image: radial-gradient($gradient);
-}
-@mixin transition($transition...) {
-	-webkit-transition: $transition;
-	-moz-transition: $transition;
-	-o-transition: $transition;
-	transition: $transition;
-}
-@mixin transition-property($properties...) {
-	-webkit-transition-property: $properties;
-	-moz-transition-property: $properties;
-	-o-transition-property: $properties;
-	transition-property: $properties;
-}
-@mixin transform($transform...) {
-	-webkit-transform: $transform;
-	-moz-transform: $transform;
-	-ms-transform: $transform;
-	-o-transform: $transform;
-	transform: $transform;
-}
-@mixin clearfix {
-	zoom: 1;
-	&:before,
-	&:after {
-		content: '';
-		display: table;
-	}
-	&:after {
-		clear: both;
-	}
-}
-@mixin inline-block {
-	display: inline-block;
-	vertical-align: baseline;
-	zoom: 1;
-	*display: inline;
-	*vertical-align: auto;
-}
-@mixin hide-text() {
-	font: 0/0 serif;
-	text-shadow: none;
-	color: transparent;
-}
-@mixin hidpi {
-	@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
-		@content;
-	}
-}
 .customize-control-radio-buttonset {
-	$labelWidth: 58px;
-	.switch {
-		position: relative;
-		margin: 20px auto;
-		height: 26px;
-		width: $labelWidth * 2 + 4px;
-		background: rgba(black, .25);
-		border-radius: 3px;
-		@include box-shadow(inset 0 1px 3px rgba(black, .3), 0 1px rgba(white, .1));
-	}
-	.switch-label {
-		position: relative;
-		z-index: 2;
-		float: left;
-		width: $labelWidth;
-		line-height: 26px;
-		font-size: 11px;
-		color: rgba(white, .35);
-		text-align: center;
-		text-shadow: 0 1px 1px rgba(black, .45);
-		cursor: pointer;
-		&:active {
-			font-weight: bold;
+	.buttonset {
+		.switch-label {
+			background: rgba(0,0,0,.17);
+			color: #fff;
+			border-right: 1px solid rgba(0,0,0,.2);
+			padding: 4px 7px;
+			margin: 0;
+			font-size: 12px;
+			&:last-child {
+				border-right: none;
+			}
 		}
-	}
-	.switch-label-off {
-		padding-left: 2px;
-	}
-	.switch-label-on {
-		padding-right: 2px;
-	}
-	.switch-input {
-		display: none;
-		&:checked + .switch-label {
-			font-weight: bold;
-			color: rgba(black, .65);
-			text-shadow: 0 1px rgba(white, .25);
-			@include transition(.15s ease-out);
-		}
-		&:checked + .switch-label-on ~ .switch-selection {
-			left: $labelWidth + 2px;
-		}
-	}
-	.switch-selection {
-		display: block;
-		position: absolute;
-		z-index: 1;
-		top: 2px;
-		left: 2px;
-		width: $labelWidth;
-		height: 22px;
-		background: #65bd63;
-		border-radius: 3px;
-		@include linear-gradient(top, #9dd993, #65bd63);
-		@include box-shadow(inset 0 1px rgba(white, .5), 0 0 2px rgba(black, .2));
-		@include transition(left .15s ease-out);
-		.switch-blue & {
-			background: #3aa2d0;
-			@include linear-gradient(top, #4fc9ee, #3aa2d0);
-		}
-		.switch-yellow & {
-			background: #c4bb61;
-			@include linear-gradient(top, #e0dd94, #c4bb61);
+		.switch-input {
+			display: none;
+			&:checked {
+				+ .switch-label {
+					background-color: #3498DB;
+				}
+			}
 		}
 	}
 }
