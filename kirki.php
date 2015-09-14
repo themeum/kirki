@@ -149,7 +149,7 @@ function kirki_hooks_init() {
 		'title'          => __( 'Kirki Repeater' ),
 		'description'    => __( 'Add custom CSS here' ),
 		'panel'          => '', // Not typically needed.
-		'priority'       => 160,
+		'priority'       => 1,
 		'capability'     => 'edit_theme_options',
 		'theme_supports' => '', // Rarely needed.
 	) );
