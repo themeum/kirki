@@ -538,6 +538,17 @@ Kirki::add_field( 'kirki_demo', array(
 	'default'     => '1',
 	'priority'    => 10,
 ) );
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'switch',
+	'settings'    => 'switch_demo_1',
+	'label'       => __( 'This is the label', 'kirki' ),
+	'description' => __( 'This is the control description', 'kirki' ),
+	'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users.', 'kirki' ),
+	'section'     => 'boolean_controls',
+	'default'     => '1',
+	'priority'    => 10,
+	'choices'     => array( 'round' => true ),
+) );
 
 // Toggle
 Kirki::add_field( 'kirki_demo', array(

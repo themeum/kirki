@@ -24,9 +24,6 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	public $type = 'switch';
 
 	public function enqueue() {
-		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-core.js', array( 'jquery' ) );
-		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-touch.js', array( 'jquery', 'formstone' ) );
-		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/switch/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/style.css' );
 		}
@@ -37,29 +34,19 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	 */
 	protected function render_content() { ?>
 		<?php $i18n = Kirki_Toolkit::i18n(); ?>
-		<label for="switch_<?php echo $this->id; ?>">
+		<div class="switch<?php echo ( isset( $this->choices['round'] ) && true == $this->choices['round'] ) ? ' round' : ''; ?>">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-		</label>
-		<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> <?php if ( '1' == $this->value() ) { echo 'checked'; } ?> />
-		<script>
-		jQuery(document).ready(function($){
-			$('[id="switch_<?php echo $this->id; ?>"]').checkbox({
-				toggle:true,
-				labels:{
-					on:"<?php echo ( ! empty( $this->choices ) && isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['ON']; ?>",
-					off:"<?php echo ( ! empty( $this->choices ) && isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['OFF']; ?>"
-				}
-			});
-		});
-		</script>
-		<?php if ( '0' == $this->value() ) { ?>
-			<script>jQuery(document).ready(function($){$('#customize-control-<?php echo $this->id; ?> .fs-checkbox').removeClass('fs-checkbox-checked');});</script>
-		<?php } ?>
+			<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> <?php if ( '1' == $this->value() ) { echo 'checked'; } ?> />
+			<label for="switch_<?php echo $this->id; ?>">
+				<span class="switch-on"><?php echo ( ! empty( $this->choices ) && isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['ON']; ?></span>
+				<span class="switch-off"><?php echo ( ! empty( $this->choices ) && isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['OFF']; ?></span>
+			</label>
+		</div>
 		<?php
 	}
 }
