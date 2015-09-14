@@ -1,0 +1,10 @@
+.customize-control-typography {
+	.font-style {
+		input[type="checkbox"] {
+			display: none;
+			&:checked + .dashicons {
+				background: rgba(0,0,0,.3);
+			}
+		}
+	}
+}

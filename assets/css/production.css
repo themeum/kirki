@@ -483,6 +483,11 @@
   width: calc(100% - 50px);
   float: left; }
 
+.customize-control-typography .font-style input[type="checkbox"] {
+  display: none; }
+  .customize-control-typography .font-style input[type="checkbox"]:checked + .dashicons {
+    background: rgba(0, 0, 0, 0.3); }
+
 #customize-controls #customize-info .accordion-section-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
 #customize-controls #customize-theme-controls .accordion-section > .accordion-section-title {

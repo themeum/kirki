@@ -1,0 +1,6 @@
+.customize-control-typography .font-style input[type="checkbox"] {
+  display: none; }
+  .customize-control-typography .font-style input[type="checkbox"]:checked + .dashicons {
+    background: rgba(0, 0, 0, 0.3); }
+
+/*# sourceMappingURL=style.css.map */
