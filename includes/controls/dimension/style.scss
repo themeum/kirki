@@ -1,3 +1,47 @@
-.customize-control.customize-control-dimension input[type="text"] {
-  width: 100px;
+.customize-control-dimension {
+	input[type="number"] {
+		width: calc(100% - 90px);
+		float: left;
+		height: 35px;
+	}
+	select {
+		width: 88px;
+		min-width: 88px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		text-indent: 0.01px;
+		text-overflow: '';
+		padding: 0 1em;
+		height: 34px;
+		@media screen and (-webkit-min-device-pixel-ratio: 0) {
+			padding-right: 1em;
+		}
+		border: 1px solid #fff;
+		border-radius: 0;
+		position: relative;
+		border-right-width: 20px;
+		background-color: #fff;
+		color: #555;
+		&:focus {
+			outline: none;
+			border-color: rgba(0,0,0,.1);
+		}
+	}
+	label {
+		width: 100%;
+		position: relative;
+		display: inline-block;
+		&:after {
+			display: block;
+			content: "\f347";
+			font-family: dashicons;
+			font-size: 14px;
+			position: absolute;
+			margin-top: -25px;
+			right: 4px;
+			color: #777;
+			pointer-events: none;
+		}
+	}
 }

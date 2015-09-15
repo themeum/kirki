@@ -1,7 +1,7 @@
 jQuery( document ).ready( function() {
-	jQuery( '.customize-control-dimension input[type="text"]' ).on( 'change', function() {
-		// Get the numeric value from the text input
-		numeric_value = jQuery( this ).parents( '.customize-control' ).find( 'input[type="text"]' ).map(
+	jQuery( '.customize-control-dimension input[type="number"]' ).on( 'change', function() {
+		// Get the numeric value from the number input
+		numeric_value = jQuery( this ).parents( '.customize-control' ).find( 'input[type="number"]' ).map(
 			function() { return this.value; }
 		).get();
 		// Get the units value from the dropdown

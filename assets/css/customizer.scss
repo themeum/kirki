@@ -262,6 +262,15 @@ customize-control-upload {
 // Select controls
 /////////////////////
 .customize-control-select,
+.customize-control-dropdown-pages,
+.customize-control-repeater,
+.customize-control-dimension {
+	select {
+		border: 1px solid rgba(0,0,0,.15);
+	}
+}
+
+.customize-control-select,
 .customize-control-dropdown-pages {
     select {
         width: 100%;

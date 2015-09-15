@@ -41,7 +41,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
+			<input type="number" min="0" step="any" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
 			<select>
 				<?php foreach ( $this->get_units() as $unit ) : ?>
 					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
