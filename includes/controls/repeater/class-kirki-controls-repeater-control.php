@@ -31,15 +31,18 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 			$this->button_label = __( 'Add new row', 'Kirki' );
 		}
 
-		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) )
+		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
 			$args['fields'] = array();
+		}
 
 		foreach ( $args['fields'] as $key => $value ) {
-			if ( ! isset( $value['default'] ) )
+			if ( ! isset( $value['default'] ) ) {
 				$args['fields'][ $key ]['default'] = '';
+			}
 
-			if ( ! isset( $value['label'] ) )
+			if ( ! isset( $value['label'] ) ) {
 				$args['fields'][ $key ]['label'] = '';
+			}
 			$args['fields'][ $key ]['id'] = $key;
 		}
 

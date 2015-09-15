@@ -26,6 +26,22 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 
 	public $type = 'code';
 
+	public function to_json() {
+		parent::to_json();
+		if ( ! isset( $this->choices['language'] ) ) {
+			$this->choices['language'] = 'css';
+		}
+		if ( ! isset( $this->choices['theme'] ) ) {
+			$this->choices['theme'] = 'monokai';
+		}
+		if ( ! isset( $this->choices['height'] ) ) {
+			$this->choices['height'] = 200;
+		}
+		$this->json['value'] = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link'] = $this->get_link();
+	}
+
 	public function enqueue() {
 
 		wp_enqueue_script( 'ace', trailingslashit( kirki_url() ) . 'includes/controls/code/src-min-noconflict/ace.js', array( 'jquery' ) );
@@ -36,30 +52,16 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 
 	}
 
-	public function render_content() { ?>
+	public function content_template() { ?>
 		<label>
-			<?php if ( ! empty( $this->label ) ) : ?>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php endif; ?>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
-			<?php
-			/**
-			 * Get the proper language
-			 */
-			$language = ( isset( $this->choices['language'] ) ) ? $this->choices['language'] : 'css';
-			/**
-			 * Get the theme we'll be using
-			 */
-			$theme = ( isset( $this->choices['theme'] ) ) ? $this->choices['theme'] : 'monokai';
-			/**
-			 * Get the height
-			 */
-			$height = ( isset( $this->choices['height'] ) ) ? $this->choices['height'] : 200;
-			?>
-			<textarea <?php $this->link(); ?> data-editor="<?php echo esc_attr( $language ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>" height="<?php echo esc_attr( $height ); ?>" rows="15">
-				<?php
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
+			<textarea {{{ data.link }}} data-editor="{{ data.choices['language'] }}" data-theme="{{ data.choices['theme'] }}" height="{{ data.choices['height'] }}" rows="15">
+				<#
 				/**
 				 * This is a CODE EDITOR.
 				 * As such, we will not be escaping anything by default.
@@ -67,16 +69,16 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 				 * It can be used for custom CSS, custom JS and even custom PHP depending on the implementation.
 				 * It's up to the theme/plugin developer to properly sanitize it depending on the use case.
 				 */
-				echo $this->value();
-				?>
+				#>
+				{{ data.value }}
 			</textarea>
 		</label>
-		<?php
+		<#
 		/**
 		 * Add some custom CSS to define the height
 		 */
-		?>
-		<style>li#customize-control-<?php echo $this->id; ?> .ace_editor { height: <?php echo intval( $height ); ?>px !important; }</style>
+		#>
+		<style>li#customize-control-{{ data.id }} .ace_editor { height: {{ data.choices['height'] }}px !important; }</style>
 		<?php
 	}
 

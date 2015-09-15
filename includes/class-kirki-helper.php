@@ -91,4 +91,36 @@ class Kirki_Helper {
 
 	}
 
+	public static function get_taxonomies() {
+
+		$items = array();
+
+		// Get the taxonomies
+		$taxonomies = get_taxonomies( array( 'public' => true ) );
+		// Build the array
+		foreach ( $taxonomies as $taxonomy ) {
+			$id           = $taxonomy;
+			$taxonomy     = get_taxonomy( $taxonomy );
+			$items[ $id ] = $taxonomy->labels->name;
+		}
+
+		return $items;
+
+	}
+
+	public static function get_post_types() {
+
+		$items = array();
+
+		// Get the post types
+		$post_types = get_post_types( array( 'public' => true ), 'objects' );
+		// Build the array
+		foreach ( $post_types as $post_type ) {
+			$items[ $post_type->name ] = $post_type->labels->name;
+		}
+
+		return $items;
+
+	}
+
 }

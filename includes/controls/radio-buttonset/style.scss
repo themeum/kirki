@@ -1,36 +1,24 @@
 // Radio-Buttonset Controls
 .customize-control-radio-buttonset {
-    input[type=radio] {
-
-    }
-    label {
-        padding: 8px 10px;
-        background: rgba(0,0,0,.06);
-        border-left: 1px solid rgba(0,0,0,.13);
-        line-height: 35px;
-        &.ui-state-active {
-            background: #dedede;
-        }
-        &.ui-corner-left {
-            border-radius: 3px 0 0 3px;
-            border-left: 0;
-        }
-        &.ui-corner-right {
-            border-radius: 0 3px 3px 0;
-        }
-    }
-}
-.rtl {
-	.customize-control-radio-buttonset{
-		label {
-			border-left: none;
-  			border-right: 1px solid #dedede;
-  			&.ui-corner-right {
-		            border-radius: 3px 0px 0px 3px;
-		        }
-		        &.ui-corner-left {
-		            border-radius: 0 3px 3px 0;
-		        }
+	.buttonset {
+		.switch-label {
+			background: rgba(0,0,0,.17);
+			color: #fff;
+			border-right: 1px solid rgba(0,0,0,.2);
+			padding: 4px 7px;
+			margin: 0;
+			font-size: 12px;
+			&:last-child {
+				border-right: none;
+			}
+		}
+		.switch-input {
+			display: none;
+			&:checked {
+				+ .switch-label {
+					background-color: #3498DB;
+				}
+			}
 		}
 	}
 }
