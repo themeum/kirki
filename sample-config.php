@@ -60,6 +60,12 @@ function kirki_demo_sections( $wp_customize ) {
 		'description' => __( 'This is the section description', 'kirki' ),
 	) );
 
+	$wp_customize->add_section( 'repeater_section', array(
+		'title'       => __( 'Repeater Control', 'kirki' ),
+		'priority'    => 10,
+		'description' => __( 'This is the section description', 'kirki' ),
+	) );
+
 }
 add_action( 'customize_register', 'kirki_demo_sections' );
 
@@ -417,6 +423,63 @@ function kirki_numeric_fields( $fields ) {
 }
 add_filter( 'kirki/fields', 'kirki_numeric_fields' );
 
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'repeater',
+	'label'       => __( 'This is the label', 'kirki' ),
+	'description' => __( 'This is the control description', 'kirki' ),
+	'help'        => __( 'This is some extra help text.', 'kirki' ),
+	'section'     => 'repeater_section',
+	'default'     => array(),
+	'priority'    => 10,
+	'settings' => 'kirki_demo',
+	'fields' => array(
+		'subsetting_1' => array(
+			'type' => 'text',
+			'label' => 'Setting A',
+			'description' => 'lalala',
+			'default' => 'Yeah'
+		),
+		'subsetting_2' => array(
+			'type' => 'text',
+			'label' => 'Setting B',
+			'description' => 'lalala',
+			'default' => ''
+		),
+		'subsetting_3' => array(
+			'type' => 'checkbox',
+			'description' => 'A checkbox',
+			'default' => true
+		),
+		'subsetting_4' => array(
+			'label' => 'A selector',
+			'type' => 'select',
+			'description' => 'lalala',
+			'default' => '',
+			'choices' => array(
+				'' => 'None',
+				'choice_1' => 'Choice 1',
+				'choice_2' => 'Choice 2'
+			)
+		),
+		'subsetting_5' => array(
+			'type' => 'textarea',
+			'label' => 'A textarea',
+			'description' => 'lalalala',
+			'default' => ''
+		),
+		'subsetting_6' => array(
+			'label' => 'A radio',
+			'type' => 'radio',
+			'description' => 'yipiyai',
+			'default' => 'choice-1',
+			'choices' => array(
+				'choice-1' => 'First choice',
+				'choice-2' => 'Second choice'
+			)
+		),
+	)
+) );
+
 /**
  * Create a config instance that will be used by fields added via the static methods.
  * For this example we'll be defining our options to be serialized in the db, under the 'kirki_demo' option.
@@ -592,3 +655,20 @@ function kirki_demo_configuration_sample() {
 }
 
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
+
+function kirki_hooks_init() {
+	Kirki::add_config( 'my_kirki_repeater', array(
+		'capability'    => 'edit_theme_options',
+		'option_type'   => 'option',
+		'option_name'   => 'my_kirki_repeater',
+	) );
+
+	Kirki::add_section( 'my_kirki_repeater_section', array(
+		'title'          => __( 'Kirki Repeater' ),
+		'description'    => __( 'Add custom CSS here' ),
+		'panel'          => '', // Not typically needed.
+		'priority'       => 1,
+		'capability'     => 'edit_theme_options',
+		'theme_supports' => '', // Rarely needed.
+	) );
+}

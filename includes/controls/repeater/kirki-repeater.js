@@ -1,4 +1,4 @@
-function RepeaterRow( rowIndex, element, sortablesContainer ) {
+function RepeaterRow( rowIndex, element ) {
     this.rowIndex = rowIndex;
     this.rowNumber = rowIndex + 1;
     this.$el = element;
@@ -7,7 +7,6 @@ function RepeaterRow( rowIndex, element, sortablesContainer ) {
     this.$remover = this.$el.find( '.repeater-row-remove' );
     this.$number = this.$el.find( '.repeater-row-number' );
     this.$fields = this.$el.find( 'input,select,textarea' );
-    this.rowId = this.$el.data('row');
 
     var self = this;
 
@@ -29,25 +28,6 @@ function RepeaterRow( rowIndex, element, sortablesContainer ) {
     });
 
     this.renderNumber();
-
-    sortablesContainer.on( "sortstart", function( event,ui ) {
-        // Detect which element we're moving
-        var draggingNow = ui.item.data('row');
-        if ( draggingNow == self.rowId ) {
-            ui.item.originalRowId = self.rowId;
-        }
-    });
-
-    sortablesContainer.on( "sortupdate", function( event, ui ) {
-        // Detect which element we're moving
-        var draggingNow = ui.item.data('row');
-        if ( draggingNow != ui.item.originalRowId )
-            return;
-
-        if ( draggingNow == self.rowId ) {
-            self.$el.trigger( 'row:sorted', [ self ] );
-        }
-    });
 
 }
 
@@ -162,7 +142,10 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         }
 
         this.repeaterFieldsContainer.sortable({
-            handle: ".repeater-row-move"
+            handle: ".repeater-row-move",
+            update: function( e, ui ) {
+                control.sort();
+            }
         });
 
     },
@@ -242,8 +225,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             // Create a new row object and append the element
             var newRow = new RepeaterRow(
                 control.currentIndex,
-                jQuery( template ).appendTo( control.repeaterFieldsContainer ),
-                this.repeaterFieldsContainer
+                jQuery( template ).appendTo( control.repeaterFieldsContainer )
             );
 
             newRow.getElement().one( 'row:remove', function( e, rowIndex ) {
@@ -263,82 +245,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
                 }
             });
 
-            newRow.getElement().on( 'row:sorted', function( e, repeaterRow ) {
-                // Original row ID
-                var originalRowId = repeaterRow.getRowIndex();
-
-                // Calculate destination row ID
-                var destinationRowId = 0;
-                var found = false;
-                var $allRows = jQuery( control.repeaterFieldsContainer).find( '.repeater-row' );
-                jQuery.each( $allRows, function( i, item ) {
-                    var dataRow = jQuery( item ).data( 'row' );
-                    var _repeaterRow = control.rows[ dataRow ];
-                    if ( ! found ) {
-                        if ( _repeaterRow.getRowIndex() == originalRowId ) {
-                            found = true;
-                        }
-                        else {
-                            destinationRowId++;
-                        }
-                    }
-                });
-
-                // These are useful for swapping the settings
-                var _settings = _.clone( control.getValue() );
-                var _setting_a, _setting_b;
-                console.log(_settings);
-
-                // Iterate again to reorder
-                jQuery.each( control.rows, function( i ) {
-                    if ( originalRowId > destinationRowId ) {
-                        if ( i <= originalRowId && i >= destinationRowId ) {
-                            // Moving from bottom to top
-                            _setting_a = _settings[ i ];
-                            _setting_b = _settings[ originalRowId ];
-                            _settings[ i ] = _setting_b;
-                            _settings[ originalRowId ] = _setting_a;
-
-                            control.rows[i].setRowIndex( control.rows[ originalRowId].getRowIndex() );
-                        }
-                    }
-                    else if ( destinationRowId > originalRowId ) {
-                        if ( control.rows[i].getRowIndex() <= destinationRowId && control.rows[i].getRowIndex() > originalRowId ) {
-                            // Moving from top to bottom
-                            // Swap the setting
-                            _setting_a = _settings[ control.rows[i].getRowIndex() ];
-                            _setting_b = _settings[ control.rows[i].getRowIndex() - 1 ];
-                            _settings[ control.rows[i].getRowIndex() ] = _setting_b;
-                            _settings[ control.rows[i].getRowIndex() - 1 ] = _setting_a;
-
-                            // -1
-                            control.rows[i].setRowIndex( control.rows[i].getRowIndex() - 1 );
-
-                        }
-                    }
-                });
-
-                // Update the settings
-                if ( destinationRowId > originalRowId )
-                    control.rows[ originalRowId ].setRowIndex( destinationRowId );
-
-                var _rows = _.clone( control.rows );
-                var _row_a, _row_b;
-                jQuery.each( control.rows, function( i ) {
-                    if ( _rows[i].getRowIndex() != i ) {
-                        _row_a = _rows[ _rows[i].getRowIndex() ];
-                        _row_b = _rows[i];
-                        _rows[ control.rows[i].getRowIndex() ] = _row_b;
-                        _rows[ i ] = _row_a;
-                    }
-                });
-                console.log(_rows);
-                // Update the rowId for the sorted element
-
-                console.log(control.rows);
-            });
-
-
             // Add the row to rows collection
             this.rows[ this.currentIndex ] = newRow;
 
@@ -356,6 +262,31 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         }
 
     },
+
+    sort: function() {
+        var control = this;
+        var $rows = this.repeaterFieldsContainer.find( '.repeater-row' );
+        var newOrder = [];
+
+        $rows.each( function( i, element ) {
+            newOrder.push( jQuery( element ).data( 'row' ) );
+        });
+
+        var settings = control.getValue();
+        var newRows = [];
+        var newSettings = [];
+        jQuery.each( newOrder, function( newPosition, oldPosition ) {
+            newRows[ newPosition ] = control.rows[ oldPosition ];
+            newRows[ newPosition ].setRowIndex( newPosition );
+            newRows[ newPosition ].setRowNumber( newPosition + 1 );
+
+            newSettings[ newPosition ] = settings[ oldPosition ];
+        });
+
+        control.rows = newRows;
+        control.setValue( newSettings );
+    },
+
     /**
      * Delete a row in the repeater setting
      *
