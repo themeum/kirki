@@ -357,6 +357,36 @@ function kirki_text_controls_fields( $fields ) {
 		'section'     => 'text_section',
 	);
 
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_monokai',
+		'label'       => __( 'Code-CSS-Monokai', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'monokai',
+			'language' => 'css',
+			'height'   => 250,
+		)
+	);
+
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_chrom',
+		'label'       => __( 'Code-HTML-Chrome', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'chrome',
+			'language' => 'html',
+			'height'   => 250,
+		)
+	);
+
 	return $fields;
 
 }
