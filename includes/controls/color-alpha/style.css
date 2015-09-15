@@ -47,11 +47,31 @@
   .customize-control-color-alpha .wp-picker-container .wp-picker-holder {
     width: calc(100% - 2px); }
   .customize-control-color-alpha .wp-picker-container .iris-picker {
-    width: 100% !important; }
-    .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
-      width: 88% !important;
-      margin-right: 2%; }
-    .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-slider.iris-strip {
-      width: 10% !important; }
+    width: 100% !important;
+    height: 195px !important;
+    padding-bottom: 10px !important; }
+    .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner {
+      left: 35px;
+      height: 190px; }
+      .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
+        width: calc(100% - 35px) !important;
+        margin-right: 2%; }
+      .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-slider.iris-strip {
+        height: 185px !important;
+        width: 28px !important; }
+.customize-control-color-alpha .iris-palette-container {
+  width: 20px;
+  left: 8px;
+  top: 10px;
+  text-align: center; }
+  .customize-control-color-alpha .iris-palette-container a {
+    display: inline-block;
+    margin-left: 0 !important;
+    margin-bottom: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 0;
+    box-shadow: none;
+    width: 18px !important;
+    height: 18px !important; }
 
 /*# sourceMappingURL=style.css.map */

@@ -44,43 +44,45 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<?php
-			/**
-			 * Get the defined min, max & step values
-			 */
-			$min  = ( $this->choices['min'] ) ? esc_attr( $this->choices['min'] ) : '0';
-			$max  = ( $this->choices['max'] ) ? esc_attr( $this->choices['max'] ) : '100';
-			$step = ( $this->choices['step'] ) ? esc_attr( $this->choices['step'] ) : '1';
-			?>
-			<?php
-			/**
-			 * Create the input
-			 */
-			?>
-			<input type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> data-reset_value="<?php echo esc_attr( $this->setting->default ); ?>" />
-			<?php
-			/**
-			 * Append the value
-			 */
-			?>
-			<div class="kirki_range_value">
-				<span class="value"><?php echo esc_attr( $this->value() ); ?></span>
-				<?php if ( isset( $this->choices['suffix'] ) && '' != $this->choices['suffix'] ) : ?>
-					<?php echo esc_attr( $this->choices['suffix'] ); ?>
+			<div class="wrapper">
+				<?php
+				/**
+				 * Get the defined min, max & step values
+				 */
+				$min  = ( $this->choices['min'] ) ? esc_attr( $this->choices['min'] ) : '0';
+				$max  = ( $this->choices['max'] ) ? esc_attr( $this->choices['max'] ) : '100';
+				$step = ( $this->choices['step'] ) ? esc_attr( $this->choices['step'] ) : '1';
+				?>
+				<?php
+				/**
+				 * Create the input
+				 */
+				?>
+				<input type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> data-reset_value="<?php echo esc_attr( $this->setting->default ); ?>" />
+				<?php
+				/**
+				 * Append the value
+				 */
+				?>
+				<div class="kirki_range_value">
+					<span class="value"><?php echo esc_attr( $this->value() ); ?></span>
+					<?php if ( isset( $this->choices['suffix'] ) && '' != $this->choices['suffix'] ) : ?>
+						<?php echo esc_attr( $this->choices['suffix'] ); ?>
+					<?php endif; ?>
+				</div>
+				<?php
+				/**
+				 * Add the reset button
+				 * We can disable the reset button by adding to our options:
+				 * 'reset' => false
+				 */
+				?>
+				<?php if ( ! isset( $this->choices['reset'] ) || false != $this->choices['reset'] ) : ?>
+					<div class="kirki-slider-reset">
+						<span class="dashicons dashicons-image-rotate"></span>
+					</div>
 				<?php endif; ?>
 			</div>
-			<?php
-			/**
-			 * Add the reset button
-			 * We can disable the reset button by adding to our options:
-			 * 'reset' => false
-			 */
-			?>
-			<?php if ( ! isset( $this->choices['reset'] ) || false != $this->choices['reset'] ) : ?>
-				<div class="kirki-slider-reset">
-					<span class="dashicons dashicons-image-rotate"></span>
-				</div>
-			<?php endif; ?>
 		</label>
 		<?php
 
