@@ -448,6 +448,17 @@ function kirki_numeric_fields( $fields ) {
 		'priority'    => 10,
 	);
 
+	$fields[] = array(
+		'type'        => 'dimension',
+		'settings'    => 'dimension_demo',
+		'label'       => __( 'This is the label', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'section'     => 'numeric',
+		'default'     => '42px',
+		'priority'    => 10,
+	);
+
 	return $fields;
 
 }
@@ -684,8 +695,8 @@ Kirki::add_field( 'kirki_demo', array(
 function kirki_demo_configuration_sample() {
 
 	$args = array(
-		'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
-		'color_accent' => '#00bcd4',
+		// 'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
+		// 'color_accent' => '#00bcd4',
 		'color_back'   => '#f7f7f7',
 		'width'        => '350px'
 	);
