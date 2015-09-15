@@ -1,11 +1,8 @@
 wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-
-		this.container.on( 'click', 'label.switch-label',
-			function() {
-				control.setting.set( jQuery( this ).val() );
-			}
-		);
+		this.container.on( 'click', 'label.switch-label', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
 	}
-} );
+});

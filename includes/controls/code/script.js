@@ -25,11 +25,8 @@ jQuery( document ).ready( function($) {
 wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-
-		this.container.on( 'change', 'textarea',
-			function() {
-				control.setting.set( jQuery( this ).val() );
-			}
-		);
+		this.container.on( 'change', 'textarea', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
 	}
-} );
+});

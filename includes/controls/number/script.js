@@ -6,11 +6,8 @@ jQuery(document).ready(function($) {
 wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-
-		this.container.on( 'change', 'input',
-			function() {
-				control.setting.set( jQuery( this ).val() );
-			}
-		);
+		this.container.on( 'change', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
 	}
-} );
+});
