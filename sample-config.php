@@ -464,6 +464,14 @@ function kirki_numeric_fields( $fields ) {
 }
 add_filter( 'kirki/fields', 'kirki_numeric_fields' );
 
+/**
+ * Create a config instance that will be used by fields added via the static methods.
+ * For this example we'll be defining our options to be serialized in the db, under the 'kirki_demo' option.
+ */
+Kirki::add_config( 'kirki_demo', array(
+	'option_type' => 'theme_mod',
+) );
+
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'repeater',
 	'label'       => __( 'This is the label', 'kirki' ),
@@ -519,14 +527,6 @@ Kirki::add_field( 'kirki_demo', array(
 			)
 		),
 	)
-) );
-
-/**
- * Create a config instance that will be used by fields added via the static methods.
- * For this example we'll be defining our options to be serialized in the db, under the 'kirki_demo' option.
- */
-Kirki::add_config( 'kirki_demo', array(
-	'option_type' => 'theme_mod',
 ) );
 
 /**
