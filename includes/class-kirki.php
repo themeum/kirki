@@ -84,6 +84,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Buttonset_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 	}
 
 	/**
