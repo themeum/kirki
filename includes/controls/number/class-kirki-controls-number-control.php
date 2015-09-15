@@ -55,15 +55,15 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 			<# } #>
 			<div class="customize-control-content">
 				<input type="number" {{{ data.link }}} value="{{ data.value }}"
-					<# if data.choices['min'] #>
+					<# if ( data.choices['min'] ) { #>
 						min="{{ data.choices['min'] }}"
-					<# endif #>
-					<# if data.choices['max'] #>
+					<# } #>
+					<# if ( data.choices['max'] ) { #>
 						max="{{ data.choices['max'] }}"
-					<# endif #>
-					<# if data.choices['step'] #>
+					<# } #>
+					<# if ( data.choices['step'] ) { #>
 						step="{{ data.choices['step'] }}"
-					<# endif #>
+					<# } #>
 				/>
 			</div>
 		</label>
