@@ -591,15 +591,11 @@ Kirki::add_field( 'kirki_demo', array(
 function kirki_demo_configuration_sample() {
 
 	$args = array(
-		'logo_image'   => 'http://kirki.org/img/kirki-new-logo-white.png',
-		'description'  => __( 'This is the theme description. You can edit it in the Kirki configuration and add whatever you want here.', 'kirki' ),
+		'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
 		'color_accent' => '#00bcd4',
-		'color_back'   => '#455a64',
-		// 'disable_output' => true,
+		'color_back'   => '#f7f7f7',
+		'width'        => '350px'
 	);
-
 	return $args;
-
 }
-
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
