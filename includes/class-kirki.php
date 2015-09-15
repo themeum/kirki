@@ -88,6 +88,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
 	}
 
 	/**
