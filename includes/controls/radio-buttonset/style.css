@@ -1,22 +1,15 @@
-.customize-control-radio-buttonset label {
-  padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.06);
-  border-left: 1px solid rgba(0, 0, 0, 0.13);
-  line-height: 35px; }
-  .customize-control-radio-buttonset label.ui-state-active {
-    background: #dedede; }
-  .customize-control-radio-buttonset label.ui-corner-left {
-    border-radius: 3px 0 0 3px;
-    border-left: 0; }
-  .customize-control-radio-buttonset label.ui-corner-right {
-    border-radius: 0 3px 3px 0; }
-
-.rtl .customize-control-radio-buttonset label {
-  border-left: none;
-  border-right: 1px solid #dedede; }
-  .rtl .customize-control-radio-buttonset label.ui-corner-right {
-    border-radius: 3px 0px 0px 3px; }
-  .rtl .customize-control-radio-buttonset label.ui-corner-left {
-    border-radius: 0 3px 3px 0; }
+.customize-control-radio-buttonset .buttonset .switch-label {
+  background: rgba(0, 0, 0, 0.17);
+  color: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 4px 7px;
+  margin: 0;
+  font-size: 12px; }
+  .customize-control-radio-buttonset .buttonset .switch-label:last-child {
+    border-right: none; }
+.customize-control-radio-buttonset .buttonset .switch-input {
+  display: none; }
+  .customize-control-radio-buttonset .buttonset .switch-input:checked + .switch-label {
+    background-color: #3498DB; }
 
 /*# sourceMappingURL=style.css.map */

@@ -24,31 +24,31 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	public $type = 'toggle';
 
 	public function enqueue() {
-		wp_enqueue_script( 'formstone', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-core.js', array( 'jquery' ) );
-		wp_enqueue_script( 'formstone-touch', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-touch.js', array( 'jquery', 'formstone' ) );
-		wp_enqueue_script( 'formstone-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/toggle/formstone-checkbox.js', array( 'jquery', 'formstone', 'formstone-touch' ) );
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/style.css' );
 		}
+		wp_enqueue_script( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/script.js', array( 'jquery' ) );
 	}
 
-	/**
-	 * Render the control's content.
-	 */
-	protected function render_content() { ?>
-		<label for="toggle_<?php echo $this->id; ?>">
+	public function to_json() {
+		parent::to_json();
+		$this->json['id']      = $this->id;
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+	}
+
+	protected function content_template() { ?>
+		<label for="toggle_{{ data.id }}">
 			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
+				{{{ data.label }}}
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
+				<# } #>
 			</span>
+			<input name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> hidden />
+			<span  class="switch"></span>
 		</label>
-		<input name="toggle_<?php echo $this->id; ?>" id="toggle_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> <?php if ( '1' == $this->value() ) { echo 'checked'; } ?> />
-		<script>jQuery(document).ready(function($){$('[id="toggle_<?php echo $this->id; ?>"]').checkbox({toggle:true});});</script>
-		<?php if ( '0' == $this->value() ) { ?>
-			<script>jQuery(document).ready(function($){$('#customize-control-<?php echo $this->id; ?> .fs-checkbox').removeClass('fs-checkbox-checked');});</script>
-		<?php } ?>
 		<?php
 	}
 }

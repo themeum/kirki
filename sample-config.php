@@ -363,6 +363,36 @@ function kirki_text_controls_fields( $fields ) {
 		'section'     => 'text_section',
 	);
 
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_monokai',
+		'label'       => __( 'Code-CSS-Monokai', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'monokai',
+			'language' => 'css',
+			'height'   => 250,
+		)
+	);
+
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_chrom',
+		'label'       => __( 'Code-HTML-Chrome', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'chrome',
+			'language' => 'html',
+			'height'   => 250,
+		)
+	);
+
 	return $fields;
 
 }
@@ -601,6 +631,17 @@ Kirki::add_field( 'kirki_demo', array(
 	'default'     => '1',
 	'priority'    => 10,
 ) );
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'switch',
+	'settings'    => 'switch_demo_1',
+	'label'       => __( 'This is the label', 'kirki' ),
+	'description' => __( 'This is the control description', 'kirki' ),
+	'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users.', 'kirki' ),
+	'section'     => 'boolean_controls',
+	'default'     => '1',
+	'priority'    => 10,
+	'choices'     => array( 'round' => true ),
+) );
 
 // Toggle
 Kirki::add_field( 'kirki_demo', array(
@@ -643,17 +684,13 @@ Kirki::add_field( 'kirki_demo', array(
 function kirki_demo_configuration_sample() {
 
 	$args = array(
-		'logo_image'   => 'http://kirki.org/img/kirki-new-logo-white.png',
-		'description'  => __( 'This is the theme description. You can edit it in the Kirki configuration and add whatever you want here.', 'kirki' ),
+		'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
 		'color_accent' => '#00bcd4',
-		'color_back'   => '#455a64',
-		// 'disable_output' => true,
+		'color_back'   => '#f7f7f7',
+		'width'        => '350px'
 	);
-
 	return $args;
-
 }
-
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
 
 function kirki_hooks_init() {
