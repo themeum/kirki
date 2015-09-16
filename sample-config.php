@@ -475,49 +475,22 @@ Kirki::add_field( 'kirki_demo', array(
 	'settings' => 'kirki_demo',
 	'fields' => array(
 		'subsetting_1' => array(
+			'label' => 'An image',
+			'type' => 'image',
+			'description' => 'An image description',
+			'default' => 'http://local.wordpress-wpmudev.dev/wp-content/uploads/2015/08/cropped-140.jpg'
+		),
+		'subsetting_2' => array(
+			'label' => 'An image 2',
+			'type' => 'image',
+			'description' => 'An image description 2'
+		),
+		'subsetting_3' => array(
 			'type' => 'text',
 			'label' => 'Setting A',
 			'description' => 'lalala',
 			'default' => 'Yeah'
-		),
-		'subsetting_2' => array(
-			'type' => 'text',
-			'label' => 'Setting B',
-			'description' => 'lalala',
-			'default' => ''
-		),
-		'subsetting_3' => array(
-			'type' => 'checkbox',
-			'description' => 'A checkbox',
-			'default' => true
-		),
-		'subsetting_4' => array(
-			'label' => 'A selector',
-			'type' => 'select',
-			'description' => 'lalala',
-			'default' => '',
-			'choices' => array(
-				'' => 'None',
-				'choice_1' => 'Choice 1',
-				'choice_2' => 'Choice 2'
-			)
-		),
-		'subsetting_5' => array(
-			'type' => 'textarea',
-			'label' => 'A textarea',
-			'description' => 'lalalala',
-			'default' => ''
-		),
-		'subsetting_6' => array(
-			'label' => 'A radio',
-			'type' => 'radio',
-			'description' => 'yipiyai',
-			'default' => 'choice-1',
-			'choices' => array(
-				'choice-1' => 'First choice',
-				'choice-2' => 'Second choice'
-			)
-		),
+		)
 	)
 ) );
 
