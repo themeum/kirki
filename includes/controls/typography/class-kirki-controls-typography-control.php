@@ -35,10 +35,21 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 		$this->json['id']      = $this->id;
-		$this->json['value']   = $this->value();
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['fonts']   = $this->get_all_fonts();
+		$value = $this->value();
+		$this->json['value'] = array(
+			'bold'           => isset( $value['bold'] ) ? $value['bold'] : false,
+			'italic'         => isset( $value['italic'] ) ? $value['italic'] : false,
+			'underline'      => isset( $value['underline'] ) ? $value['underline'] : false,
+			'strikethrough'  => isset( $value['strikethrough'] ) ? $value['strikethrough'] : false,
+			'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : false,
+			'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : false,
+			'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : false,
+			'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : false,
+			'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : false,
+		);
 	}
 
 	public function content_template() { ?>
@@ -85,11 +96,11 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# if ( data.choices['font-size'] ) { #>
 				<div class="font-size">
 					<h5>font-size</h5>
-					<input type="number" min="0" step="any" value="{{ data.value['font-size']['value'] }}"/>
+					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['font-size'] ) }}"/>
 					<select>
-						<option value="px" <# if ( 'px' === data.value['font-size']['unit'] ) { #> selected <# } #>>px</option>
-						<option value="em" <# if ( 'em' === data.value['font-size']['unit'] ) { #> selected <# } #>>em</option>
-						<option value="%" <# if ( '%' === data.value['font-size']['unit'] ) { #> selected <# } #>>%</option>
+						<option value="px" <# if ( ~data.value['font-size'].indexOf('px') ) { #> selected <# } #>>px</option>
+						<option value="em" <# if ( ~data.value['font-size'].indexOf('em') ) { #> selected <# } #>>em</option>
+						<option value="%" <# if ( ~data.value['font-size'].indexOf('%') ) { #> selected <# } #>>%</option>
 					</select>
 				</div>
 			<# } #>
@@ -114,14 +125,14 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# if ( data.choices['line-height'] ) { #>
 				<div class="line-height">
 					<h5>line-height</h5>
-					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['line-height'] ) }}"/>
+					<input type="number" min="0" step="any" value="{{ data.value['line-height'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.choices['letter-spacing'] ) { #>
 				<div class="letter-spacing">
 					<h5>letter-spacing</h5>
-					<input type="number" min="0" step="any" value="{{ data.value['letter-spacing'] }}"/>
+					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['letter-spacing'] ) }}"/>
 					<select>
 						<option value="px" <# if ( ~data.value['letter-spacing'].indexOf('px') ) { #> selected <# } #>>px</option>
 						<option value="em" <# if ( ~data.value['letter-spacing'].indexOf('em') ) { #> selected <# } #>>em</option>
