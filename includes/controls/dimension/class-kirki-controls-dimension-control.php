@@ -54,7 +54,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 			<input type="number" min="0" step="any" value="{{ data.numeric_value }}"/>
 			<select>
 				<# for ( key in data.available_units ) { #>
-					<option value="{{ data.available_units[ key ] }}" <# if ( key === data.unit_value ) { #> checked="checked" <# } #>>
+					<option value="{{ data.available_units[ key ] }}" <# if ( data.available_units[ key ] === data.unit_value ) { #> selected <# } #>>
 						{{ data.available_units[ key ] }}
 					</option>
 				<# } #>
@@ -104,7 +104,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	 */
 	public function unit_value() {
 		foreach ( $this->get_units() as $unit ) {
-			if ( isset( $this->value ) && false !== strpos( $this->value, $unit ) ) {
+			if ( false !== strpos( $this->value(), $unit ) ) {
 				$located_unit = $unit;
 				break;
 			}

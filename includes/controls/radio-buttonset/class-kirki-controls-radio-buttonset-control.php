@@ -35,7 +35,7 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 		$this->json['id']      = $this->id;
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
-		$this->json['value'] = $this->value();
+		$this->json['value']   = $this->value();
 	}
 
 	public function content_template() { ?>
