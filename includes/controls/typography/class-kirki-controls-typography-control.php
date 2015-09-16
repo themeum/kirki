@@ -65,6 +65,10 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 						<input name="underline_{{ data.id }}" id="underline_{{ data.id }}" type="checkbox" value="{{ data.value['underline'] }}" {{{ data.link }}}<# if ( '1' == data.value['underline'] ) { #> checked<# } #>>
 						<span class="dashicons dashicons-editor-underline"></span>
 					</label>
+					<label>
+						<input name="strikethrough_{{ data.id }}" id="strikethrough_{{ data.id }}" type="checkbox" value="{{ data.value['strikethrough'] }}" {{{ data.link }}}<# if ( '1' == data.value['strikethrough'] ) { #> checked<# } #>>
+						<span class="dashicons dashicons-editor-strikethrough"></span>
+					</label>
 				</div>
 			<# } #>
 
