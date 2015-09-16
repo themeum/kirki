@@ -5,11 +5,11 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 		var units_value   = control.container.find('select' ).val();
 
 		this.container.on( 'change', 'input', function() {
-			var numeric_value = jQuery( this ).val();
+			numeric_value = jQuery( this ).val();
 			control.setting.set( numeric_value + units_value );
 		});
 		this.container.on( 'change', 'select', function() {
-			var units_value = jQuery( this ).val();
+			units_value = jQuery( this ).val();
 			control.setting.set( numeric_value + units_value );
 		});
 	}
