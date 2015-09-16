@@ -53,7 +53,6 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# if ( data.choices['font-style'] ) { #>
 				<div class="font-style">
 					<label>
-						<input type="checkbox">
 						<input name="bold_{{ data.id }}" id="bold_{{ data.id }}" type="checkbox" value="{{ data.value['bold'] }}" {{{ data.link }}}<# if ( '1' == data.value['bold'] ) { #> checked<# } #>>
 						<span class="dashicons dashicons-editor-bold"></span>
 					</label>
@@ -120,7 +119,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.choices['letter-spacing'] ) { #>
-				<div class="line-height">
+				<div class="letter-spacing">
 					<h5>letter-spacing</h5>
 					<input type="number" min="0" step="any" value="{{ data.value['letter-spacing'] }}"/>
 					<select>

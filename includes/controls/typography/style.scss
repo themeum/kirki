@@ -1,10 +1,53 @@
 .customize-control-typography {
+	background-color: rgba(0,0,0,.05);
+	border: 1px solid rgba(0,0,0,.06);
+	width: calc(100% - 20px);
+	padding: 10px;
+	border-radius: 3px;
+	.font-style,
+	.font-family,
+	.font-size,
+	.font-weight,
+	.line-height,
+	.letter-spacing {
+		width: 120px;
+		display: inline-block;
+		h5 {
+			margin-bottom: .5em;
+		}
+	}
 	.font-style {
+		width: 100%;
 		input[type="checkbox"] {
 			display: none;
 			&:checked + .dashicons {
 				background: rgba(0,0,0,.3);
 			}
+		}
+		.dashicons {
+			border-radius: 50%;
+			padding: 10px;
+		}
+	}
+	.font-family {
+		width: 100%;
+	}
+	.font-size {
+		input {
+			width: 60px;
+		}
+		select {
+			width: 50px;
+			min-width: 50px;
+		}
+	}
+	.letter-spacing {
+		input {
+			width: 60px;
+		}
+		select {
+			width: 50px;
+			min-width: 50px;
 		}
 	}
 }
