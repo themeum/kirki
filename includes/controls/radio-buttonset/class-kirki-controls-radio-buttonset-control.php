@@ -52,10 +52,11 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<# for ( key in data.choices ) { #>
-				<input class="switch-input" type="radio" value="{{ key }}>" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>/>
-				<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">
-					{{ data.choices[ key ] }}
-				</label>
+				<input class="switch-input" type="radio" value="{{ key }}>" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
+					<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">
+						{{ data.choices[ key ] }}
+					</label>
+				</input>
 			<# } #>
 		</div>
 		<?php
