@@ -28,15 +28,9 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 
 	public function to_json() {
 		parent::to_json();
-		if ( ! empty( $this->choices ) ) {
-			$this->json['min']  = ( isset( $this->choices['min'] ) ) ? 'min="' . esc_attr( $this->choices['min'] ) . '"' : '';
-			$this->json['max']  = ( isset( $this->choices['max'] ) ) ? 'max="' . esc_attr( $this->choices['max'] ) . '"' : '';
-			$this->json['step'] = ( isset( $this->choices['step'] ) ) ? 'step="' . esc_attr( $this->choices['step'] ) . '"' : '';
-		} else {
-			$this->json['min']  = '';
-			$this->json['max']  = '';
-			$this->json['step'] = '';
-		}
+		$this->json['value'] = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link'] = $this->get_link();
 	}
 
 	public function enqueue() {
@@ -60,7 +54,17 @@ class Kirki_Controls_Number_Control extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="customize-control-content">
-				<input type="number"{{ data.min }} {{ data.max }} {{ data.step }} <?php $this->link(); ?> value="<?php echo intval( $this->value() ); ?>"/>
+				<input type="number" {{{ data.link }}} value="{{ data.value }}"
+					<# if ( data.choices['min'] ) { #>
+						min="{{ data.choices['min'] }}"
+					<# } #>
+					<# if ( data.choices['max'] ) { #>
+						max="{{ data.choices['max'] }}"
+					<# } #>
+					<# if ( data.choices['step'] ) { #>
+						step="{{ data.choices['step'] }}"
+					<# } #>
+				/>
 			</div>
 		</label>
 		<?php

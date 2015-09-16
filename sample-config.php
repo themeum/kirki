@@ -60,6 +60,12 @@ function kirki_demo_sections( $wp_customize ) {
 		'description' => __( 'This is the section description', 'kirki' ),
 	) );
 
+	$wp_customize->add_section( 'repeater_section', array(
+		'title'       => __( 'Repeater Control', 'kirki' ),
+		'priority'    => 10,
+		'description' => __( 'This is the section description', 'kirki' ),
+	) );
+
 }
 add_action( 'customize_register', 'kirki_demo_sections' );
 
@@ -383,6 +389,36 @@ function kirki_text_controls_fields( $fields ) {
 		'section'     => 'text_section',
 	);
 
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_monokai',
+		'label'       => __( 'Code-CSS-Monokai', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'monokai',
+			'language' => 'css',
+			'height'   => 250,
+		)
+	);
+
+	$fields[] = array(
+		'type'        => 'code',
+		'settings'    => 'code_chrom',
+		'label'       => __( 'Code-HTML-Chrome', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'default'     => '',
+		'section'     => 'text_section',
+		'choices'     => array(
+			'theme'    => 'chrome',
+			'language' => 'html',
+			'height'   => 250,
+		)
+	);
+
 	return $fields;
 
 }
@@ -438,6 +474,17 @@ function kirki_numeric_fields( $fields ) {
 		'priority'    => 10,
 	);
 
+	$fields[] = array(
+		'type'        => 'dimension',
+		'settings'    => 'dimension_demo',
+		'label'       => __( 'This is the label', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'section'     => 'numeric',
+		'default'     => '42px',
+		'priority'    => 10,
+	);
+
 	return $fields;
 
 }
@@ -449,6 +496,63 @@ add_filter( 'kirki/fields', 'kirki_numeric_fields' );
  */
 Kirki::add_config( 'kirki_demo', array(
 	'option_type' => 'theme_mod',
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'repeater',
+	'label'       => __( 'This is the label', 'kirki' ),
+	'description' => __( 'This is the control description', 'kirki' ),
+	'help'        => __( 'This is some extra help text.', 'kirki' ),
+	'section'     => 'repeater_section',
+	'default'     => array(),
+	'priority'    => 10,
+	'settings' => 'kirki_demo',
+	'fields' => array(
+		'subsetting_1' => array(
+			'type' => 'text',
+			'label' => 'Setting A',
+			'description' => 'lalala',
+			'default' => 'Yeah'
+		),
+		'subsetting_2' => array(
+			'type' => 'text',
+			'label' => 'Setting B',
+			'description' => 'lalala',
+			'default' => ''
+		),
+		'subsetting_3' => array(
+			'type' => 'checkbox',
+			'description' => 'A checkbox',
+			'default' => true
+		),
+		'subsetting_4' => array(
+			'label' => 'A selector',
+			'type' => 'select',
+			'description' => 'lalala',
+			'default' => '',
+			'choices' => array(
+				'' => 'None',
+				'choice_1' => 'Choice 1',
+				'choice_2' => 'Choice 2'
+			)
+		),
+		'subsetting_5' => array(
+			'type' => 'textarea',
+			'label' => 'A textarea',
+			'description' => 'lalalala',
+			'default' => ''
+		),
+		'subsetting_6' => array(
+			'label' => 'A radio',
+			'type' => 'radio',
+			'description' => 'yipiyai',
+			'default' => 'choice-1',
+			'choices' => array(
+				'choice-1' => 'First choice',
+				'choice-2' => 'Second choice'
+			)
+		),
+	)
 ) );
 
 /**
@@ -617,15 +721,28 @@ Kirki::add_field( 'kirki_demo', array(
 function kirki_demo_configuration_sample() {
 
 	$args = array(
-		'logo_image'   => 'http://kirki.org/img/kirki-new-logo-white.png',
-		'description'  => __( 'This is the theme description. You can edit it in the Kirki configuration and add whatever you want here.', 'kirki' ),
-		'color_accent' => '#00bcd4',
-		'color_back'   => '#455a64',
-		// 'disable_output' => true,
+		// 'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
+		// 'color_accent' => '#00bcd4',
+		'color_back'   => '#f7f7f7',
+		'width'        => '350px'
 	);
-
 	return $args;
-
 }
-
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample' );
+
+function kirki_hooks_init() {
+	Kirki::add_config( 'my_kirki_repeater', array(
+		'capability'    => 'edit_theme_options',
+		'option_type'   => 'option',
+		'option_name'   => 'my_kirki_repeater',
+	) );
+
+	Kirki::add_section( 'my_kirki_repeater_section', array(
+		'title'          => __( 'Kirki Repeater' ),
+		'description'    => __( 'Add custom CSS here' ),
+		'panel'          => '', // Not typically needed.
+		'priority'       => 1,
+		'capability'     => 'edit_theme_options',
+		'theme_supports' => '', // Rarely needed.
+	) );
+}

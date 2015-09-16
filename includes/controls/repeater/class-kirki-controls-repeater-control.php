@@ -31,15 +31,18 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 			$this->button_label = __( 'Add new row', 'Kirki' );
 		}
 
-		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) )
+		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
 			$args['fields'] = array();
+		}
 
 		foreach ( $args['fields'] as $key => $value ) {
-			if ( ! isset( $value['default'] ) )
+			if ( ! isset( $value['default'] ) ) {
 				$args['fields'][ $key ]['default'] = '';
+			}
 
-			if ( ! isset( $value['label'] ) )
+			if ( ! isset( $value['label'] ) ) {
 				$args['fields'][ $key ]['label'] = '';
+			}
 			$args['fields'][ $key ]['id'] = $key;
 		}
 
@@ -57,6 +60,9 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-repeater', trailingslashit( kirki_url() ) . 'includes/controls/repeater/kirki-repeater.js', array( 'jquery', 'customize-base' ), '', true );
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-sortable' );
+
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'kirki-repeater', trailingslashit( kirki_url() ).'includes/controls/repeater/style.css' );
 		}
@@ -77,7 +83,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 			<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo $this->get_link(); ?> />
 		</label>
 
-		<div class="repeater-fields"></div>
+		<ul class="repeater-fields"></ul>
 
 		<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 		<?php
@@ -89,14 +95,16 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	public function repeater_js_template() {
 		?>
 		<script type="text/html" class="customize-control-repeater-content">
-			<# var field; #>
-			<# var index = data['index']; #>
-			<div class="repeater-row" data-row="{{{ index }}}">
+			<# var field; var index = data['index']; #>
+
+
+			<li class="repeater-row" data-row="{{{ index }}}">
 
 				<div class="repeater-row-header">
 					<span class="repeater-row-number"></span>
-					<span class="repeater-row-remove" data-row="{{{ index }}}"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
-					<span class="repeater-row-minimize" data-row="{{{ index }}}"><i class="dashicons dashicons-arrow-up repeater-remove"></i></span>
+					<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
+					<span class="repeater-row-minimize"><i class="dashicons dashicons-arrow-up repeater-minimize"></i></span>
+					<span class="repeater-row-move"><i class="dashicons dashicons-sort repeater-move"></i></span>
 				</div>
 
 				<# for ( i in data ) { #>
@@ -115,13 +123,13 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 								<# if ( field.description ) { #>
 									<span class="description customize-control-description">{{ field.description }}</span>
 								<# } #>
-								<input type="text" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}" data-row="{{{ index }}}">
+								<input type="text" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
 							</label>
 
 						<# } else if ( field.type === 'checkbox' ) { #>
 
 							<label>
-								<input type="checkbox" value="true" data-field="{{{ field.id }}}" data-row="{{{ index }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
+								<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
 								<# if ( field.description ) { #>
 									{{ field.description }}
 								<# } #>
@@ -136,7 +144,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 								<# if ( field.description ) { #>
 									<span class="description customize-control-description">{{ field.description }}</span>
 								<# } #>
-								<select data-field="{{{ field.id }}}" data-row="{{{ index }}}">
+								<select data-field="{{{ field.id }}}">
 									<# for ( i in field.choices ) { #>
 										<# if ( field.choices.hasOwnProperty( i ) ) { #>
 											<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ field.choices[i] }}</option>
@@ -158,7 +166,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 								<# for ( i in field.choices ) { #>
 									<# if ( field.choices.hasOwnProperty( i ) ) { #>
 										<label>
-											<input type="radio" data-field="{{{ field.id }}}" data-row="{{{ index }}}" name="{{{ data.controlId }}}-{{{ field.id }}}-{{{ index }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
+											<input type="radio" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
 										</label>
 									<# } #>
 								<# } #>
@@ -172,12 +180,12 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 							<# if ( field.description ) { #>
 								<span class="description customize-control-description">{{ field.description }}</span>
 							<# } #>
-							<textarea rows="5" data-field="{{{ field.id }}}" data-row="{{{ index }}}">{{ field.default }}</textarea>
+							<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
 						<# } #>
 					</div>
 				<# } #>
-			</div>
+			</li>
 		</script>
 		<?php
 	}

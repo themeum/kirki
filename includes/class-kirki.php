@@ -29,10 +29,39 @@ class Kirki {
 	public static $panels   = array();
 	public static $sections = array();
 
+	public static $control_types = array(
+		'code'             => 'Kirki_Controls_Code_Control',
+		'color'            => 'WP_Customize_Color_Control',
+		'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
+		'image'            => 'WP_Customize_Image_Control',
+		'upload'           => 'WP_Customize_Upload_Control',
+		'switch'           => 'Kirki_Controls_Switch_Control',
+		'toggle'           => 'Kirki_Controls_Toggle_Control',
+		'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
+		'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
+		'sortable'         => 'Kirki_Controls_Sortable_Control',
+		'slider'           => 'Kirki_Controls_Slider_Control',
+		'number'           => 'Kirki_Controls_Number_Control',
+		'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
+		'palette'          => 'Kirki_Controls_Palette_Control',
+		'custom'           => 'Kirki_Controls_Custom_Control',
+		'editor'           => 'Kirki_Controls_Editor_Control',
+		'select2'          => 'Kirki_Controls_Select2_Control',
+		'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
+		'dimension'        => 'Kirki_Controls_Dimension_Control',
+		'repeater'         => 'Kirki_Controls_Repeater_Control',
+		'typography'       => 'Kirki_Controls_Typography_Control',
+	);
+
+	public static $setting_types = array(
+		'repeater'         => 'Kirki_Settings_Repeater_Setting'
+	);
 	/**
 	 * the class constructor
 	 */
 	public function __construct() {
+		self::$control_types = apply_filters( 'kirki/control_types', self::$control_types );
+		self::$setting_types = apply_filters( 'kirki/setting_types', self::$setting_types );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 	}
 
@@ -42,9 +71,27 @@ class Kirki {
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
+		add_action( 'customize_register', array( $this, 'register_control_types' ) );
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
 		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
+	}
+
+	/**
+	 * Register control types
+	 */
+	public function register_control_types() {
+		global $wp_customize;
+		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Buttonset_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 	}
 
 	/**
@@ -267,34 +314,8 @@ class Kirki {
 	 */
 	public function add_fields( $wp_customize ) {
 
-		$control_types = apply_filters( 'kirki/control_types', array(
-			'code'             => 'Kirki_Controls_Code_Control',
-			'color'            => 'WP_Customize_Color_Control',
-			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
-			'image'            => 'WP_Customize_Image_Control',
-			'upload'           => 'WP_Customize_Upload_Control',
-			'switch'           => 'Kirki_Controls_Switch_Control',
-			'toggle'           => 'Kirki_Controls_Toggle_Control',
-			'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
-			'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
-			'sortable'         => 'Kirki_Controls_Sortable_Control',
-			'slider'           => 'Kirki_Controls_Slider_Control',
-			'number'           => 'Kirki_Controls_Number_Control',
-			'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
-			'palette'          => 'Kirki_Controls_Palette_Control',
-			'custom'           => 'Kirki_Controls_Custom_Control',
-			'editor'           => 'Kirki_Controls_Editor_Control',
-			'select2'          => 'Kirki_Controls_Select2_Control',
-			'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
-			'dimension'        => 'Kirki_Controls_Dimension_Control',
-			'repeater'         => 'Kirki_Controls_Repeater_Control',
-			'typography'       => 'Kirki_Controls_Typography_Control',
-		) );
-
-		$setting_types = apply_filters( 'kirki/setting_types', array(
-			'repeater'         => 'Kirki_Settings_Repeater_Setting'
-		) );
-
+		$control_types = self::$control_types;
+		$setting_types = self::$setting_types;
 
 		foreach ( self::$fields as $field ) {
 

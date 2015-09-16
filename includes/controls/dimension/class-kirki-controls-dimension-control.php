@@ -28,28 +28,38 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/style.css' );
 		}
-		wp_enqueue_script( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/kirki-dimension.js', array( 'jquery' ) );
+		wp_enqueue_script( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/script.js', array( 'jquery' ) );
 
 	}
 
-	public function render_content() { ?>
+	public function to_json() {
+		parent::to_json();
+		$this->json['value']           = $this->value();
+		$this->json['choices']         = $this->choices;
+		$this->json['link']            = $this->get_link();
+		$this->json['numeric_value']   = $this->numeric_value();
+		$this->json['unit_value']      = $this->unit_value();
+		$this->json['available_units'] = $this->get_units();
+	}
 
+	public function content_template() { ?>
 		<label class="customizer-text">
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->numeric_value() ); ?>"/>
+			<input type="number" min="0" step="any" value="{{ data.numeric_value }}"/>
 			<select>
-				<?php foreach ( $this->get_units() as $unit ) : ?>
-					<option value="<?php echo esc_attr( $unit ); ?>" <?php echo selected( $this->unit_value(), $unit, false ); ?>>
-						<?php echo esc_attr( $unit ); ?>
+				<# for ( key in data.available_units ) { #>
+					<option value="{{ data.available_units[ key ] }}" <# if ( data.available_units[ key ] === data.unit_value ) { #> selected <# } #>>
+						{{ data.available_units[ key ] }}
 					</option>
-				<?php endforeach; ?>
+				<# } #>
 			</select>
-			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( $this->numeric_value() . $this->unit_value() ); ?>" />
+			<input type="hidden" {{{ data.link }}} value="{{ data.numeric_value }}{{ data.unit_value }}" />
 		</label>
 		<?php
 	}
@@ -94,7 +104,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	 */
 	public function unit_value() {
 		foreach ( $this->get_units() as $unit ) {
-			if ( isset( $this->value ) && false !== strpos( $this->value, $unit ) ) {
+			if ( false !== strpos( $this->value(), $unit ) ) {
 				$located_unit = $unit;
 				break;
 			}

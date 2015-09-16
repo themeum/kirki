@@ -503,6 +503,7 @@ class Kirki_Field {
 				'units'             => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
 				'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : null,
 				'media_query'       => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
+				'prefix'           => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
 			);
 		}
 

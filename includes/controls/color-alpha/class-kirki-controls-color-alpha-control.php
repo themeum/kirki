@@ -34,6 +34,14 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 
 	}
 
+	public function to_json() {
+		parent::to_json();
+		$this->json['palette'] = $this->palette;
+		$this->json['default'] = $this->default;
+		$this->json['value']   = $this->value();
+		$this->json['link']    = $this->get_link();
+	}
+
 	protected function render() {
 		$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 		$class = 'customize-control customize-control-' . $this->type; ?>
@@ -42,15 +50,15 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 		</li>
 	<?php }
 
-	public function render_content() { ?>
+	public function content_template() { ?>
 		<label>
 			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
+				{{{ data.label }}}
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{ data.description }}</span>
+				<# } #>
 			</span>
-			<input type="text" data-palette="<?php echo esc_textarea( $this->palette ); ?>" data-default-color="<?php echo esc_attr( $this->default ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="kirki-color-control" <?php $this->link(); ?>  />
+			<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" value="{{ data.value }}" class="kirki-color-control" {{{ data.link }}} />
 		</label>
 	<?php }
 }

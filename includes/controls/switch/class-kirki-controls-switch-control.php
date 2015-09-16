@@ -27,24 +27,34 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/style.css' );
 		}
+		wp_enqueue_script( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/script.js', array( 'jquery' ) );
 	}
 
-	/**
-	 * Render the control's content.
-	 */
-	protected function render_content() { ?>
-		<?php $i18n = Kirki_Toolkit::i18n(); ?>
-		<div class="switch<?php echo ( isset( $this->choices['round'] ) && true == $this->choices['round'] ) ? ' round' : ''; ?>">
+	public function to_json() {
+		parent::to_json();
+		$i18n = Kirki_Toolkit::i18n();
+		$this->choices = ( empty( $this->choices ) || ! is_array( $this->choices ) ) ? array() : $this->choices;
+		$this->choices['on']  = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
+		$this->choices['off'] = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];
+
+		$this->json['id']      = $this->id;
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+	}
+
+	protected function content_template() { ?>
+		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
+				{{{ data.label }}}
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
+				<# } #>
 			</span>
-			<input name="switch_<?php echo $this->id; ?>" id="switch_<?php echo $this->id; ?>" type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> <?php if ( '1' == $this->value() ) { echo 'checked'; } ?> />
-			<label for="switch_<?php echo $this->id; ?>">
-				<span class="switch-on"><?php echo ( ! empty( $this->choices ) && isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['ON']; ?></span>
-				<span class="switch-off"><?php echo ( ! empty( $this->choices ) && isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['OFF']; ?></span>
+			<input name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
+			<label class="switch-label" for="switch_{{ data.id }}">
+				<span class="switch-on">{{ data.choices['on'] }}</span>
+				<span class="switch-off">{{ data.choices['off'] }}</span>
 			</label>
 		</div>
 		<?php

@@ -1,3 +1,86 @@
+function RepeaterRow( rowIndex, element ) {
+    this.rowIndex = rowIndex;
+    this.rowNumber = rowIndex + 1;
+    this.$el = element;
+    this.$dragger = this.$el.find( '.repeater-row-move' );
+    this.$minimizer = this.$el.find( '.repeater-row-minimize' );
+    this.$remover = this.$el.find( '.repeater-row-remove' );
+    this.$number = this.$el.find( '.repeater-row-number' );
+    this.$fields = this.$el.find( 'input,select,textarea' );
+
+    var self = this;
+
+    this.$minimizer.on( 'click', function() {
+        self.toggleMinimize();
+    });
+
+    this.$remover.on( 'click', function() {
+        self.remove();
+    });
+
+    this.$dragger.on( 'mousedown', function() {
+        self.$el.trigger( 'row:start-dragging' );
+    });
+
+
+    this.$el.on( 'keyup change', 'input, select, textarea', function( e ) {
+        self.$el.trigger( 'row:update', [ self.getRowIndex(), jQuery( e.target ).data( 'field' ), e.target ] );
+    });
+
+    this.renderNumber();
+
+}
+
+RepeaterRow.prototype.getRowIndex = function() {
+    return this.rowIndex;
+};
+
+
+RepeaterRow.prototype.getRowNumber = function() {
+    return this.rowNumber;
+};
+
+RepeaterRow.prototype.setRowNumber = function( rowNumber ) {
+    this.rowNumber = rowNumber;
+    this.renderNumber();
+};
+
+RepeaterRow.prototype.getElement = function() {
+    return this.$el;
+};
+
+RepeaterRow.prototype.setRowIndex = function( rowIndex ) {
+    this.rowIndex = rowIndex;
+    this.$el.attr( 'data-row', rowIndex );
+    this.$el.data( 'row', rowIndex );
+};
+
+RepeaterRow.prototype.toggleMinimize = function() {
+    // Store the previous state
+    this.$el.toggleClass( 'minimized' );
+    this.$minimizer.find( '.repeater-minimize' ).toggleClass( 'dashicons-arrow-up' );
+    this.$minimizer.find( '.repeater-minimize').toggleClass( 'dashicons-arrow-down' );
+};
+
+RepeaterRow.prototype.minimize = function() {
+    this.$el.addClass( 'minimized' );
+    this.$minimizer.find( '.repeater-minimize' ).removeClass( 'dashicons-arrow-up' );
+    this.$minimizer.find( '.repeater-minimize').addClass( 'dashicons-arrow-down' );
+};
+
+RepeaterRow.prototype.remove = function() {
+    if ( confirm( "Are you sure?" ) ) {
+        this.$el.slideUp( 300, function() {
+            jQuery(this).detach();
+        });
+        this.$el.trigger( 'row:remove', [ this.getRowIndex() ] );
+    }
+};
+
+RepeaterRow.prototype.renderNumber = function() {
+    this.$number.text( this.getRowNumber() );
+};
+
 wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
     ready: function() {
         var control = this;
@@ -16,6 +99,10 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
         // Set number of rows to 0
         this.currentIndex = 0;
+
+        // Save the rows objects
+        this.rows = [];
+
 
         control.container.on('click', 'button.repeater-add', function (e) {
             e.preventDefault();
@@ -54,20 +141,12 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             }
         }
 
-        this.container
-            .on( 'keyup change', '.repeater-fields input, .repeater-fields select, .repeater-fields textarea', function( e ) {
-                control.updateField.call( control, e );
-            });
-
-        this.container
-            .on( 'click', '.repeater-row-remove', function( e ) {
-                control.deleteRow( jQuery(this).data( 'row' ) );
-            });
-
-        this.container
-            .on( 'click', '.repeater-row-minimize', function( e ) {
-                control.toggleMinimize( jQuery(this).data( 'row' ) );
-            });
+        this.repeaterFieldsContainer.sortable({
+            handle: ".repeater-row-move",
+            update: function( e, ui ) {
+                control.sort();
+            }
+        });
 
     },
 
@@ -107,6 +186,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
     addRow: function( data ) {
         var control = this,
             i,
+            row,
 
         // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
             template = control.repeaterTemplate(),
@@ -141,8 +221,32 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
             // Append the template content
             template = template( templateData );
-            control.repeaterFieldsContainer.append( template );
 
+            // Create a new row object and append the element
+            var newRow = new RepeaterRow(
+                control.currentIndex,
+                jQuery( template ).appendTo( control.repeaterFieldsContainer )
+            );
+
+            newRow.getElement().one( 'row:remove', function( e, rowIndex ) {
+                control.deleteRow( rowIndex );
+            });
+
+            newRow.getElement().on( 'row:update', function( e, rowIndex, fieldName, element ) {
+                control.updateField.call( control, e, rowIndex, fieldName, element );
+            });
+
+            newRow.getElement().on( 'row:start-dragging', function() {
+                // Minimize all rows
+                for ( i in control.rows ) {
+                    if ( control.rows.hasOwnProperty( i ) && control.rows[i] ) {
+                        control.rows[i].minimize();
+                    }
+                }
+            });
+
+            // Add the row to rows collection
+            this.rows[ this.currentIndex ] = newRow;
 
             for ( i in templateData ) {
                 if ( templateData.hasOwnProperty( i ) ) {
@@ -157,8 +261,32 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
         }
 
-        this.prependListNumbers();
     },
+
+    sort: function() {
+        var control = this;
+        var $rows = this.repeaterFieldsContainer.find( '.repeater-row' );
+        var newOrder = [];
+
+        $rows.each( function( i, element ) {
+            newOrder.push( jQuery( element ).data( 'row' ) );
+        });
+
+        var settings = control.getValue();
+        var newRows = [];
+        var newSettings = [];
+        jQuery.each( newOrder, function( newPosition, oldPosition ) {
+            newRows[ newPosition ] = control.rows[ oldPosition ];
+            newRows[ newPosition ].setRowIndex( newPosition );
+            newRows[ newPosition ].setRowNumber( newPosition + 1 );
+
+            newSettings[ newPosition ] = settings[ oldPosition ];
+        });
+
+        control.rows = newRows;
+        control.setValue( newSettings );
+    },
+
     /**
      * Delete a row in the repeater setting
      *
@@ -169,30 +297,28 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
         if ( currentSettings[ index ] ) {
             // Find the row
-            var row = this.container.find( '.repeater-row[data-row="' + index + '"]').first();
+            var row = this.rows[ index ];
             if ( row ) {
                 // The row exists, let's delete it
+
+                // Remove the row settings
                 delete currentSettings[index];
 
-                // Remove it from DOM
-                row.slideUp( 300, function() {
-                    jQuery(this).detach();
-                });
+                // Remove the row from the rows collection
+                delete this.rows[index];
 
                 // Update the new setting values
                 this.setValue( currentSettings, true );
             }
         }
 
-        this.prependListNumbers();
-    },
-
-    toggleMinimize: function( index ) {
-        var row = this.container.find( '.repeater-row[data-row="' + index + '"]').first();
-        if ( row.length ) {
-            row.toggleClass( 'minimized' );
-            row.find( '.repeater-remove').toggleClass( 'dashicons-arrow-up' );
-            row.find( '.repeater-remove').toggleClass( 'dashicons-arrow-down' );
+        // Remap the row numbers
+        var i = 1;
+        for ( prop in this.rows ) {
+            if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
+                this.rows[ prop ].setRowNumber( i );
+                i++;
+            }
         }
     },
 
@@ -202,37 +328,31 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
      *
      * @param e Event Object
      */
-    updateField: function( e ) {
-        var element = jQuery( e.target ),
-            control = this,
-            currentSettings = this.getValue(),
-            type = element.attr( 'type' )
-
-        // Gather data about the field row + ID
-        var row = element.data( 'row' );
-        var fieldId = element.data( 'field' );
-
-        if ( typeof currentSettings[row][fieldId] == undefined )
+    updateField: function( e, rowIndex, fieldId, element ) {
+        if ( ! this.rows[ rowIndex ] )
             return;
 
+        if ( ! this.params.fields[ fieldId ] )
+            return;
+
+        var type = this.params.fields[ fieldId].type;
+        var row = this.rows[ rowIndex ];
+        var currentSettings = this.getValue();
+        element = jQuery( element );
+
+        if (typeof currentSettings[row.getRowIndex()][fieldId] == undefined) {
+            return;
+        }
+
         if ( type == 'checkbox' ) {
-            currentSettings[row][fieldId] = element.is( ':checked' );
+            currentSettings[row.getRowIndex()][fieldId] = element.is( ':checked' );
         }
         else {
             // Update the settings
-            currentSettings[row][fieldId] = element.val();
+            currentSettings[row.getRowIndex()][fieldId] = element.val();
         }
 
-        control.setValue( currentSettings, true );
+        this.setValue( currentSettings, true );
 
-    },
-
-    /**
-     * Generate numbers for every row so the user can easily see what row is he editing
-     */
-    prependListNumbers: function() {
-        this.container.find( '.repeater-row-number' ).each( function( index ) {
-            jQuery(this).html( index + 1 );
-        });
     }
 });

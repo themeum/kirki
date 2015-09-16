@@ -35,52 +35,38 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 
 	}
 
-	public function render_content() { ?>
-		<label>
+	public function to_json() {
+		parent::to_json();
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['default'] = $this->setting->default;
 
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-			</span>
-			<?php
-			/**
-			 * Get the defined min, max & step values
-			 */
-			$min  = ( $this->choices['min'] ) ? esc_attr( $this->choices['min'] ) : '0';
-			$max  = ( $this->choices['max'] ) ? esc_attr( $this->choices['max'] ) : '100';
-			$step = ( $this->choices['step'] ) ? esc_attr( $this->choices['step'] ) : '1';
-			?>
-			<?php
-			/**
-			 * Create the input
-			 */
-			?>
-			<input type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> data-reset_value="<?php echo esc_attr( $this->setting->default ); ?>" />
-			<?php
-			/**
-			 * Append the value
-			 */
-			?>
-			<div class="kirki_range_value">
-				<span class="value"><?php echo esc_attr( $this->value() ); ?></span>
-				<?php if ( isset( $this->choices['suffix'] ) && '' != $this->choices['suffix'] ) : ?>
-					<?php echo esc_attr( $this->choices['suffix'] ); ?>
-				<?php endif; ?>
-			</div>
-			<?php
-			/**
-			 * Add the reset button
-			 * We can disable the reset button by adding to our options:
-			 * 'reset' => false
-			 */
-			?>
-			<?php if ( ! isset( $this->choices['reset'] ) || false != $this->choices['reset'] ) : ?>
+		$this->json['choices']['min']  = ( isset( $this->choices['min'] ) ) ? $this->choices['min'] : '0';
+		$this->json['choices']['max']  = ( isset( $this->choices['max'] ) ) ? $this->choices['max'] : '100';
+		$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
+	}
+
+	public function content_template() { ?>
+		<label>
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div class="wrapper">
+				<input type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
+				<div class="kirki_range_value">
+					<span class="value">{{ data.value }}</span>
+					<# if ( data.choices['suffix'] ) { #>
+						{{ data.choices['suffix'] }}
+					<# } #>
+				</div>
 				<div class="kirki-slider-reset">
 					<span class="dashicons dashicons-image-rotate"></span>
 				</div>
-			<?php endif; ?>
+			</div>
 		</label>
 		<?php
 
