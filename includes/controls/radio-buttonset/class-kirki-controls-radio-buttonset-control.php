@@ -35,11 +35,7 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 		$this->json['id']      = $this->id;
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
-		if ( in_array( $this->value(), $this->choices ) ) {
-			$this->json['value'] = $this->value();
-		} else {
-			$this->json['value'] = $this->setting->default;
-		}
+		$this->json['value'] = $this->value();
 	}
 
 	public function content_template() { ?>
@@ -49,10 +45,9 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 		<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
-
 		<div id="input_<?php echo $this->id; ?>" class="buttonset">
 			<# for ( key in data.choices ) { #>
-				<input class="switch-input" type="radio" value="{{ key }}>" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
+				<input class="switch-input" type="radio" value="{{ key }}" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
 					<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">
 						{{ data.choices[ key ] }}
 					</label>
