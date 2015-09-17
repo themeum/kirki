@@ -59,7 +59,6 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 					</option>
 				<# } #>
 			</select>
-			<input type="hidden" {{{ data.link }}} value="{{ data.numeric_value }}{{ data.unit_value }}" />
 		</label>
 		<?php
 	}

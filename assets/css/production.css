@@ -546,6 +546,54 @@
   width: calc(100% - 50px);
   float: left; }
 
+.customize-control-typography {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 3px; }
+  .customize-control-typography .font-style,
+  .customize-control-typography .font-family,
+  .customize-control-typography .font-size,
+  .customize-control-typography .font-weight,
+  .customize-control-typography .line-height,
+  .customize-control-typography .letter-spacing {
+    width: 120px;
+    display: inline-block; }
+    .customize-control-typography .font-style h5,
+    .customize-control-typography .font-family h5,
+    .customize-control-typography .font-size h5,
+    .customize-control-typography .font-weight h5,
+    .customize-control-typography .line-height h5,
+    .customize-control-typography .letter-spacing h5 {
+      margin-bottom: .5em; }
+  .customize-control-typography .font-style {
+    width: 100%; }
+    .customize-control-typography .font-style .bold,
+    .customize-control-typography .font-style .italic,
+    .customize-control-typography .font-style .underline,
+    .customize-control-typography .font-style .strikethrough {
+      display: inline-block; }
+    .customize-control-typography .font-style input[type="checkbox"] {
+      display: none; }
+      .customize-control-typography .font-style input[type="checkbox"]:checked + .dashicons {
+        background: rgba(0, 0, 0, 0.3); }
+    .customize-control-typography .font-style .dashicons {
+      border-radius: 50%;
+      padding: 10px; }
+  .customize-control-typography .font-family {
+    width: 100%; }
+  .customize-control-typography .font-size input {
+    width: 60px; }
+  .customize-control-typography .font-size select {
+    width: 50px;
+    min-width: 50px; }
+  .customize-control-typography .letter-spacing input {
+    width: 60px; }
+  .customize-control-typography .letter-spacing select {
+    width: 50px;
+    min-width: 50px; }
+
 #customize-controls #customize-info .accordion-section-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
 #customize-controls #customize-theme-controls .accordion-section > .accordion-section-title {

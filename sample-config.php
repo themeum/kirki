@@ -84,6 +84,32 @@ Kirki::add_section( 'boolean_controls', array(
 function kirki_controls_with_choices_fields( $fields ) {
 
 	$fields[] = array(
+		'type'        => 'typography',
+		'settings'    => 'typography_demo',
+		'label'       => __( 'Typography Control', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
+		'section'     => 'controls_with_choices',
+		'default'     => array(
+			'font-style'     => array( 'bold', 'italic' ),
+			'font-family'    => 'Roboto',
+			'font-size'      => '14',
+			'font-weight'    => '400',
+			'line-height'    => '1.5',
+			'letter-spacing' => '0',
+		),
+		'priority'    => 10,
+		'choices'     => array(
+			'font-style'     => true,
+			'font-family'    => true,
+			'font-size'      => true,
+			'font-weight'    => true,
+			'line-height'    => true,
+			'letter-spacing' => true,
+		),
+	);
+
+	$fields[] = array(
 		'type'        => 'radio',
 		'settings'    => 'radio_demo',
 		'label'       => __( 'Radio Control', 'kirki' ),
