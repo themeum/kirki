@@ -34,6 +34,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 	public function to_json() {
 		parent::to_json();
+
+		$i18n = Kirki_Toolkit::i18n();
 		$this->json['id']      = $this->id;
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
@@ -51,11 +53,11 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : false,
 		);
 		$this->json['l10n'] = array(
-			'font-family'    => __( 'Font Family', 'Kirki' ),
-			'font-size'      => __( 'Font Size', 'Kirki' ),
-			'font-weight'    => __( 'Font Weight', 'Kirki' ),
-			'line-height'    => __( 'Line Height', 'Kirki' ),
-			'letter-spacing' => __( 'Letter Spacing', 'Kirki' ),
+			'font-family'    => $i18n['font-family'],
+			'font-size'      => $i18n['font-size'],
+			'font-weight'    => $i18n['font-weight']
+			'line-height'    => $i18n['line-height'],
+			'letter-spacing' => $i18n['letter-spacing'],
 		);
 	}
 

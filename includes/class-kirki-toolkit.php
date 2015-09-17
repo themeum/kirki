@@ -86,9 +86,21 @@ class Kirki_Toolkit {
 			'latin'                 => __( 'Latin', 'kirki' ),
 			'latin-ext'             => __( 'Latin Extended', 'kirki' ),
 			'vietnamese'            => __( 'Vietnamese', 'kirki' ),
+			'hebrew'                => __( 'Hebrew', 'kirki' ),
+			'arabic'                => __( 'Arabic', 'kirki' ),
+			'bengali'               => __( 'Bengali', 'kirki' ),
+			'gujarati'              => __( 'Gujarati', 'kirki' ),
+			'tamil'                 => __( 'Tamil', 'kirki' ),
+			'telugu'                => __( 'Telugu', 'kirki' ),
+			'thai'                  => __( 'Thai', 'kirki' ),
 			'serif'                 => _x( 'Serif', 'font style', 'kirki' ),
 			'sans-serif'            => _x( 'Sans Serif', 'font style', 'kirki' ),
 			'monospace'             => _x( 'Monospace', 'font style', 'kirki' ),
+			'font-family'           => __( 'Font Family', 'Kirki' ),
+			'font-size'             => __( 'Font Size', 'Kirki' ),
+			'font-weight'           => __( 'Font Weight', 'Kirki' ),
+			'line-height'           => __( 'Line Height', 'Kirki' ),
+			'letter-spacing'        => __( 'Letter Spacing', 'Kirki' ),
 		);
 
 		$config = apply_filters( 'kirki/config', array() );
