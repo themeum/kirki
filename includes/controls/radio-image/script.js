@@ -1,3 +1,8 @@
-jQuery(document).ready(function($) {
-	$( '.customize-control-radio-image > div' ).buttonset();
+wp.customize.controlConstructor['radio-image'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'click', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
 });

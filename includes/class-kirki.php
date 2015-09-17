@@ -83,6 +83,7 @@ class Kirki {
 	public function register_control_types() {
 		global $wp_customize;
 		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Buttonset_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Image_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );

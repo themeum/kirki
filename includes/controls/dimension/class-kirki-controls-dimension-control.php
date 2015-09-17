@@ -50,7 +50,6 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			</span>
 			<input type="number" min="0" step="any" value="{{ data.numeric_value }}"/>
 			<select>
 				<# for ( key in data.available_units ) { #>
