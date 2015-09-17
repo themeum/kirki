@@ -21,6 +21,11 @@
       margin-bottom: .5em; }
   .customize-control-typography .font-style {
     width: 100%; }
+    .customize-control-typography .font-style .bold,
+    .customize-control-typography .font-style .italic,
+    .customize-control-typography .font-style .underline,
+    .customize-control-typography .font-style .strikethrough {
+      display: inline-block; }
     .customize-control-typography .font-style input[type="checkbox"] {
       display: none; }
       .customize-control-typography .font-style input[type="checkbox"]:checked + .dashicons {

@@ -18,6 +18,12 @@
 	}
 	.font-style {
 		width: 100%;
+		.bold,
+		.italic,
+		.underline,
+		.strikethrough {
+			display: inline-block;
+		}
 		input[type="checkbox"] {
 			display: none;
 			&:checked + .dashicons {
