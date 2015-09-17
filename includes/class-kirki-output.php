@@ -253,4 +253,43 @@ class Kirki_Output {
 
 	}
 
+	public static function generate_css_by_fields( $fields, $placeholder = false ) {
+		// Early exit if no fields are found.
+		if ( empty( $fields ) ) {
+			return;
+		}
+
+		$css    = array();
+
+		foreach ( $fields as $field ) {
+
+			// Only continue if $field['output'] is set
+			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
+
+				$css = array_merge_recursive( $css, self::css(
+					Kirki_Field::sanitize_field( $field )
+				) );
+
+			}
+
+		}
+
+		// Replace all values with placeholder
+		if ( $placeholder ) {
+			foreach ( $css as $media_query => $styles ) {
+				foreach ( $styles as $style => $style_array ) {
+					foreach ( $style_array as $property => $value ) {
+						$css[ $media_query ][ $style ][ $property ] = '{value}';
+					}
+				}
+			}
+		}
+
+		if ( is_array( $css ) ) {
+			return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
+		}
+
+		return;
+	}
+
 }
