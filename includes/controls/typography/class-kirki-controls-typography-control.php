@@ -55,7 +55,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 		$this->json['l10n'] = array(
 			'font-family'    => $i18n['font-family'],
 			'font-size'      => $i18n['font-size'],
-			'font-weight'    => $i18n['font-weight']
+			'font-weight'    => $i18n['font-weight'],
 			'line-height'    => $i18n['line-height'],
 			'letter-spacing' => $i18n['letter-spacing'],
 		);
