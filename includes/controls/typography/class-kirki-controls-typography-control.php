@@ -50,6 +50,13 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : false,
 			'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : false,
 		);
+		$this->json['l10n'] = array(
+			'font-family'    => __( 'Font Family', 'Kirki' ),
+			'font-size'      => __( 'Font Size', 'Kirki' ),
+			'font-weight'    => __( 'Font Weight', 'Kirki' ),
+			'line-height'    => __( 'Line Height', 'Kirki' ),
+			'letter-spacing' => __( 'Letter Spacing', 'Kirki' ),
+		);
 	}
 
 	public function content_template() { ?>
@@ -94,7 +101,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 			<# if ( data.choices['font-family'] ) { #>
 				<div class="font-family">
-					<h5>font-family</h5>
+					<h5>{{ data.l10n['font-family'] }}</h5>
+					<span class="dashicons dashicons-editor-textcolor"></span>
 					<select class="font-family select2">
 						<# for ( key in data.fonts ) { #>
 							<option value="{{ data.fonts[ key ] }}" <# if ( data.fonts[ key ] === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
@@ -105,7 +113,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 			<# if ( data.choices['font-size'] ) { #>
 				<div class="font-size">
-					<h5>font-size</h5>
+					<h5>{{ data.l10n['font-size'] }}</h5>
+					<span class="dashicons dashicons-plus-alt"></span>
 					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['font-size'] ) }}"/>
 					<select>
 						<option value="px" <# if ( _.contains( data.value['font-size'], 'px' ) ) { #> selected <# } #>>px</option>
@@ -117,7 +126,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 			<# if ( data.choices['font-weight'] ) { #>
 			    <div class="font-weight">
-			        <h5>font-weight</h5>
+			        <h5>{{ data.l10n['font-weight'] }}</h5>
+					<span class="dashicons dashicons-editor-bold"></span>
 			        <select class="font-weight">
 			            <option value="100" <# if ( 100 === data.value['font-weight'] ) { #> selected<# } #>>100</option>
 			            <option value="200" <# if ( 200 === data.value['font-weight'] ) { #> selected<# } #>>200</option>
@@ -134,14 +144,16 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 			<# if ( data.choices['line-height'] ) { #>
 			    <div class="line-height">
-			        <h5>line-height</h5>
+			        <h5>{{ data.l10n['line-height'] }}</h5>
+					<span class="dashicons dashicons-image-flip-vertical"></span>
 			        <input type="number" min="0" step="any" value="{{ data.value['line-height'] }}"/>
 			    </div>
 			<# } #>
 
 			<# if ( data.choices['letter-spacing'] ) { #>
 			    <div class="letter-spacing">
-			        <h5>letter-spacing</h5>
+					<h5>{{ data.l10n['letter-spacing'] }}</h5>
+					<span class="dashicons dashicons-image-flip-horizontal"></span>
 			        <input type="number" min="0" step="any" value="{{ parseFloat( data.value['letter-spacing'] ) }}"/>
 			        <select>
 			            <option value="px" <# if ( _.contains( data.value['letter-spacing'], 'px' ) ) { #> selected <# } #>>px</option>
