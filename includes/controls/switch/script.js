@@ -1,8 +1,13 @@
 wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
+
+		// Get the initial value
+		var checkbox_value = control.setting._value;
+
 		this.container.on( 'change', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
+			checkbox_value = ( jQuery( this ).is( ':checked' ) ) ? true : false;
+			control.setting.set( checkbox_value );
 		});
 	}
 });
