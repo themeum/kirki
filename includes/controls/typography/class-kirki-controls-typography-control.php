@@ -95,7 +95,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# if ( data.choices['font-family'] ) { #>
 				<div class="font-family">
 					<h5>font-family</h5>
-					<select class="font-family">
+					<select class="font-family select2">
 						<# for ( key in data.fonts ) { #>
 							<option value="{{ data.fonts[ key ] }}" <# if ( data.fonts[ key ] === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
 						<# } #>
