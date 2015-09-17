@@ -135,5 +135,5 @@ Kirki::add_config( '' );
  * The 2 following commented-out lines are for testing purposes.
  * You can uncomment whichever you want and fields will flood the customizer.
  */
-//include_once( KIRKI_PATH . '/sample-config.php' );
+include_once( KIRKI_PATH . '/sample-config.php' );
 //include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );

@@ -110,6 +110,28 @@ function kirki_controls_with_choices_fields( $fields ) {
 	);
 
 	$fields[] = array(
+		'type'        => 'spacing',
+		'settings'    => 'spacing_demo',
+		'label'       => __( 'Spacing Control', 'kirki' ),
+		'description' => __( 'This is the control description', 'kirki' ),
+		'section'     => 'controls_with_choices',
+		'default'     => array(
+			'top'    => '1em',
+			'bottom' => '3px',
+			'left'   => '10%',
+			'right'  => '1rem',
+		),
+		'priority'    => 10,
+		'choices'     => array(
+			'top',
+			'bottom',
+			'left',
+			'right',
+			// 'units' => array( 'px', 'em', '%', 'rem' ),
+		),
+	);
+
+	$fields[] = array(
 		'type'        => 'radio',
 		'settings'    => 'radio_demo',
 		'label'       => __( 'Radio Control', 'kirki' ),
@@ -724,7 +746,7 @@ function kirki_demo_configuration_sample() {
 		// 'logo_image'   => KIRKI_URL . 'assets/images/kirki-toolkit.png',
 		// 'color_accent' => '#00bcd4',
 		'color_back'   => '#f7f7f7',
-		'width'        => '350px'
+		// 'width'        => '350px'
 	);
 	return $args;
 }

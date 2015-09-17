@@ -1,0 +1,46 @@
+.customize-control-spacing .wrapper {
+  -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  width: 96%;
+  padding: 3%; }
+  .customize-control-spacing .wrapper > div:nth-child(odd) {
+    margin-right: 5px; }
+.customize-control-spacing .top,
+.customize-control-spacing .bottom,
+.customize-control-spacing .left,
+.customize-control-spacing .right {
+  width: calc(50% - 5px);
+  display: inline-block; }
+  .customize-control-spacing .top h5,
+  .customize-control-spacing .bottom h5,
+  .customize-control-spacing .left h5,
+  .customize-control-spacing .right h5 {
+    margin: 0;
+    margin-top: 5px; }
+  .customize-control-spacing .top input,
+  .customize-control-spacing .bottom input,
+  .customize-control-spacing .left input,
+  .customize-control-spacing .right input {
+    width: calc(58% - 20px); }
+  .customize-control-spacing .top select,
+  .customize-control-spacing .bottom select,
+  .customize-control-spacing .left select,
+  .customize-control-spacing .right select {
+    min-width: 42%;
+    width: 42%; }
+  .customize-control-spacing .top .inner,
+  .customize-control-spacing .bottom .inner,
+  .customize-control-spacing .left .inner,
+  .customize-control-spacing .right .inner {
+    border: 1px solid rgba(0, 0, 0, 0.067);
+    border-radius: 3px;
+    padding: 2px; }
+  .customize-control-spacing .top .dashicons,
+  .customize-control-spacing .bottom .dashicons,
+  .customize-control-spacing .left .dashicons,
+  .customize-control-spacing .right .dashicons {
+    width: 15px;
+    margin-left: -5px;
+    margin-top: 5px; }
+
+/*# sourceMappingURL=style.css.map */

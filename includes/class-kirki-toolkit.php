@@ -101,6 +101,10 @@ class Kirki_Toolkit {
 			'font-weight'           => __( 'Font Weight', 'Kirki' ),
 			'line-height'           => __( 'Line Height', 'Kirki' ),
 			'letter-spacing'        => __( 'Letter Spacing', 'Kirki' ),
+			'top'                   => __( 'Top', 'kirki' ),
+			'bottom'                => __( 'Bottom', 'kirki' ),
+			'left'                  => __( 'Left', 'kirki' ),
+			'right'                 => __( 'Right', 'kirki' ),
 		);
 
 		$config = apply_filters( 'kirki/config', array() );

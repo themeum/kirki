@@ -1,0 +1,41 @@
+.customize-control-spacing {
+	.wrapper {
+		-webkit-box-shadow:inset 0 0 5px 2px rgba(0,0,0,.1);
+		box-shadow:inset 0 0 5px 2px rgba(0,0,0,.1);
+		width: 96%;
+		padding: 3%;
+		> div {
+			&:nth-child(odd) {
+				margin-right: 5px;
+			}
+		}
+	}
+	.top,
+	.bottom,
+	.left,
+	.right {
+		width: calc(50% - 5px);
+		display: inline-block;
+		h5 {
+			margin: 0;
+			margin-top: 5px;
+		}
+		input {
+			width: calc(58% - 20px);
+		}
+		select {
+			min-width: 42%;
+			width: 42%;
+		}
+		.inner {
+			border: 1px solid rgba(0,0,0,.067);
+			border-radius: 3px;
+			padding: 2px;
+		}
+		.dashicons {
+			width: 15px;
+			margin-left: -5px;
+			margin-top: 5px;
+		}
+	}
+}

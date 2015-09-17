@@ -51,6 +51,7 @@ class Kirki {
 		'dimension'        => 'Kirki_Controls_Dimension_Control',
 		'repeater'         => 'Kirki_Controls_Repeater_Control',
 		'typography'       => 'Kirki_Controls_Typography_Control',
+		'spacing'          => 'Kirki_Controls_Spacing_Control',
 	);
 
 	public static $setting_types = array(
@@ -93,6 +94,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
 	}
 
 	/**
