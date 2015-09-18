@@ -760,8 +760,8 @@ function kirki_hooks_init() {
 	) );
 
 	Kirki::add_section( 'my_kirki_repeater_section', array(
-		'title'          => __( 'Kirki Repeater' ),
-		'description'    => __( 'Add custom CSS here' ),
+		'title'          => __( 'Kirki Repeater', 'kirki' ),
+		'description'    => __( 'Add custom CSS here', 'kirki' ),
 		'panel'          => '', // Not typically needed.
 		'priority'       => 1,
 		'capability'     => 'edit_theme_options',

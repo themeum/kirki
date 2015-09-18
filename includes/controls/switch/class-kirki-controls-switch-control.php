@@ -34,8 +34,9 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		parent::to_json();
 		$i18n = Kirki_Toolkit::i18n();
 		$this->choices = ( empty( $this->choices ) || ! is_array( $this->choices ) ) ? array() : $this->choices;
-		$this->choices['on']  = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
-		$this->choices['off'] = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];
+		$this->choices['on']    = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
+		$this->choices['off']   = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];
+		$this->choices['round'] = ( isset( $this->choices['round'] ) ) ? $this->choices['round'] : false;
 
 		$this->json['id']      = $this->id;
 		$this->json['value']   = $this->value();
