@@ -117,6 +117,10 @@ class Kirki_Field {
 				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
 					$field['type'] = 'color-alpha';
 				}
+			case 'select':
+			case 'select2':
+			case 'select2-multiple':
+				$field['type'] = 'kirki-select';
 				break;
 		}
 

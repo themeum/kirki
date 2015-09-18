@@ -46,8 +46,9 @@ class Kirki {
 		'palette'          => 'Kirki_Controls_Palette_Control',
 		'custom'           => 'Kirki_Controls_Custom_Control',
 		'editor'           => 'Kirki_Controls_Editor_Control',
-		'select2'          => 'Kirki_Controls_Select2_Control',
-		'select2-multiple' => 'Kirki_Controls_Select2_Multiple_Control',
+		'select'           => 'Kirki_Controls_Select_Control',
+		'select2'          => 'Kirki_Controls_Select_Control',
+		'select2-multiple' => 'Kirki_Controls_Select_Control',
 		'dimension'        => 'Kirki_Controls_Dimension_Control',
 		'repeater'         => 'Kirki_Controls_Repeater_Control',
 		'typography'       => 'Kirki_Controls_Typography_Control',
@@ -95,6 +96,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
 	}
 
 	/**
@@ -322,8 +324,11 @@ class Kirki {
 
 		foreach ( self::$fields as $field ) {
 
-			if ( 'background' == $field['type'] ) {
+			if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
 				continue;
+			}
+			if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
+				$field['multiple'] = 999;
 			}
 
 			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
