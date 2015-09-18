@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: SORTABLE
+ */
 jQuery(document).ready(function($) {
 	"use strict";
 	// initialize

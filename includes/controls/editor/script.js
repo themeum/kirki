@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: EDITOR
+ */
 (function($) {
 	wp.customizerCtrlEditor = {
 

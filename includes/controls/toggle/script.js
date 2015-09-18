@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: TOGGLE
+ */
 wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;

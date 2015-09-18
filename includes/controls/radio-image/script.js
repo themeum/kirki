@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: RADIO-IMAGE
+ */
 wp.customize.controlConstructor['radio-image'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;

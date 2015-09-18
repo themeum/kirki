@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: REPEATER
+ */
 function RepeaterRow( rowIndex, element ) {
     this.rowIndex = rowIndex;
     this.rowNumber = rowIndex + 1;

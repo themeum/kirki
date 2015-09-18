@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: SLIDER
+ */
 jQuery(document).ready(function($) {
 
 	$( 'input[type=range]' ).on( 'mousedown', function() {

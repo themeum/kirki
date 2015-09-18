@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: MULTICHECK
+ */
 jQuery( document ).ready( function() {
 	jQuery( '.customize-control-multicheck input[type="checkbox"]' ).on( 'change', function() {
 		checkbox_values = jQuery( this ).parents( '.customize-control' ).find( 'input[type="checkbox"]:checked' ).map(
