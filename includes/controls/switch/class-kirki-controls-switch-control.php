@@ -24,9 +24,6 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 	public $type = 'switch';
 
 	public function enqueue() {
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/style.css' );
-		}
 		wp_enqueue_script( 'kirki-switch', trailingslashit( kirki_url() ) . 'includes/controls/switch/script.js', array( 'jquery' ) );
 	}
 

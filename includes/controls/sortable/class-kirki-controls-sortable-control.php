@@ -24,15 +24,9 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 	public $type = 'sortable';
 
 	public function enqueue() {
-
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
-
 		wp_enqueue_script( 'kirki-sortable', trailingslashit( kirki_url() ) . 'includes/controls/sortable/kirki-sortable.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-sortable', trailingslashit( kirki_url() ) . 'includes/controls/sortable/style.css' );
-		}
-
 	}
 
 

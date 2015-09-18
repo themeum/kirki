@@ -24,12 +24,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 	public $type = 'dimension';
 
 	public function enqueue() {
-
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/style.css' );
-		}
 		wp_enqueue_script( 'kirki-dimension', trailingslashit( kirki_url() ).'includes/controls/dimension/script.js', array( 'jquery' ) );
-
 	}
 
 	public function to_json() {

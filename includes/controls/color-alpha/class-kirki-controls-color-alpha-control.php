@@ -26,12 +26,7 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 	public $default = '#FFFFFF';
 
 	public function enqueue() {
-
 		wp_enqueue_script( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/script.js', array( 'jquery' ) );
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-color-alpha', trailingslashit( kirki_url() ) . 'includes/controls/color-alpha/style.css' );
-		}
-
 	}
 
 	public function to_json() {

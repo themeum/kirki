@@ -25,9 +25,6 @@ class Kirki_Controls_Radio_Image_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-radio-image', trailingslashit( kirki_url() ) . 'includes/controls/radio-image/script.js', array( 'jquery', 'jquery-ui-button' ) );
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-radio-image', trailingslashit( kirki_url() ) . 'includes/controls/radio-image/style.css' );
-		}
 	}
 
 	public function to_json() {

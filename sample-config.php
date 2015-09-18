@@ -545,7 +545,7 @@ Kirki::add_field( 'kirki_demo', array(
 		'subsetting_3' => array(
 			'type' => 'checkbox',
 			'description' => 'A checkbox',
-			'default' => true
+			'default' => false
 		),
 		'subsetting_4' => array(
 			'label' => 'A selector',
@@ -675,7 +675,7 @@ Kirki::add_field( 'kirki_demo', array(
 	'description' => __( 'This is the control description', 'kirki' ),
 	'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users.', 'kirki' ),
 	'section'     => 'boolean_controls',
-	'default'     => 1,
+	'default'     => false,
 	'priority'    => 10,
 ) );
 

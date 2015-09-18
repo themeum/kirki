@@ -33,11 +33,7 @@ class Kirki_Styles_Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	public function customizer_styles() {
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, Kirki_Toolkit::$version );
-		} else {
-			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/production.css', null, Kirki_Toolkit::$version );
-		}
+		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, Kirki_Toolkit::$version );
 		wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
 	}
 
