@@ -76,6 +76,13 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 						 * add font subsets to the array
 						 */
 						$fonts[]['subsets'] = $value;
+					} elseif ( 'typography' == $field['type'] ) {
+						if ( isset( $value['font-family'] ) ) {
+							$fonts[]['font-family'] = $value['font-family'];
+						}
+						if ( isset( $value['font-weight'] ) ) {
+							$fonts[]['font-weight'] = $value['font-weight'];
+						}
 					}
 
 				}

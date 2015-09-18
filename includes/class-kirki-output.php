@@ -27,6 +27,7 @@ class Kirki_Output {
 	public static $output      = array();
 	public static $callback    = null;
 	public static $option_name = null;
+	public static $field_type  = null;
 
 	public static $css;
 
@@ -52,9 +53,16 @@ class Kirki_Output {
 		/**
 		 * Set class vars
 		 */
-		self::$settings = $field['settings'];
-		self::$output   = $field['output'];
-		self::$callback = $field['sanitize_callback'];
+		self::$settings   = $field['settings'];
+		self::$callback   = $field['sanitize_callback'];
+		self::$field_type = $field['type'];
+		self::$output     = $field['output'];
+		if ( ! is_array( self::$output ) ) {
+			self::$output = array( array(
+				'element'           => self::$output,
+			 	'sanitize_callback' => null,
+			) );
+		}
 		/**
 		 * Get the value of this field
 		 */
@@ -66,9 +74,7 @@ class Kirki_Output {
 		/**
 		 * Returns the styles
 		 */
-		if ( ! is_array( self::$value ) ) {
-			return self::styles();
-		}
+		return self::styles();
 
 	}
 
@@ -143,27 +149,61 @@ class Kirki_Output {
 			 * Make sure the value is a string before proceeding
 			 * If all is ok, then populate the array.
 			 */
-			if ( ! is_array( $value ) ) {
-				$element = $output['element'];
+
+			$element = $output['element'];
+			/**
+			 * Allow using an array of elements
+			 */
+			if ( is_array( $output['element'] ) ) {
 				/**
-				 * Allow using an array of elements
+				 * Make sure our values are unique
 				 */
-				if ( is_array( $output['element'] ) ) {
-					/**
-					 * Make sure our values are unique
-					 */
-					$elements = array_unique( $elements );
-					/**
-					 * Sort elements alphabetically.
-					 * This way all duplicate items will be merged in the final CSS array.
-					 */
-					sort( $elements );
-					/**
-					 * Implode items
-					 */
-					$element = implode( ',', $elements );
-				}
+				$elements = array_unique( $elements );
+				/**
+				 * Sort elements alphabetically.
+				 * This way all duplicate items will be merged in the final CSS array.
+				 */
+				sort( $elements );
+				/**
+				 * Implode items
+				 */
+				$element = implode( ',', $elements );
+			}
+			if ( ! is_array( $value ) ) {
 				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units;
+			} else {
+				/**
+				 * Take care of typography controls output
+				 */
+				if ( 'typography' == self::$field_type ) {
+					if ( isset( $value['bold'] ) && $value['bold'] ) {
+						$styles[ $output['media_query'] ][ $element ]['font-weight'] = 'bold';
+					}
+					if ( isset( $value['italic'] ) && $value['italic'] ) {
+						$styles[ $output['media_query'] ][ $element ]['font-style'] = 'italic';
+					}
+					if ( isset( $value['underline'] ) && $value['underline'] ) {
+						$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'underline';
+					}
+					if ( isset( $value['strikethrough'] ) && $value['strikethrough'] ) {
+						$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'strikethrough';
+					}
+					if ( isset( $value['font-family'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
+					}
+					if ( isset( $value['font-size'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];
+					}
+					if ( isset( $value['font-weight'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['font-weight'] = $value['font-weight'];
+					}
+					if ( isset( $value['line-height'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
+					}
+					if ( isset( $value['font-size'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
+					}
+				}
 			}
 		}
 
