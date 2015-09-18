@@ -321,7 +321,22 @@ function kirki_controls_with_choices_fields( $fields ) {
 		'description' => __( 'This is the control description', 'kirki' ),
 		'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
 		'section'     => 'controls_with_choices',
-		'default'     => 'option-1',
+		'default'     => array('option-4', 'option-1'),
+		'priority'    => 10,
+		'choices'     => array(
+			'option-1' => __( 'Option 1', 'kirki' ),
+			'option-2' => __( 'Option 2', 'kirki' ),
+			'option-3' => __( 'Option 3', 'kirki' ),
+			'option-4' => __( 'Option 4', 'kirki' ),
+		),
+	);
+
+	$fields[] = array(
+		'type'        => 'select',
+		'settings'    => 'select_demo_4',
+		'label'       => __( 'Select - multiple', 'kirki' ),
+		'section'     => 'controls_with_choices',
+		'default'     => array('option-1'),
 		'priority'    => 10,
 		'choices'     => array(
 			'option-1' => __( 'Option 1', 'kirki' ),
