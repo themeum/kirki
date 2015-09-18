@@ -344,6 +344,7 @@ function kirki_controls_with_choices_fields( $fields ) {
 			'option-3' => __( 'Option 3', 'kirki' ),
 			'option-4' => __( 'Option 4', 'kirki' ),
 		),
+		'multiple' => 3,
 	);
 
 	return $fields;
