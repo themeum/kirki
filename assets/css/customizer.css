@@ -94,14 +94,6 @@ li.customize-control {
 .rtl [data-hint]:after {
   left: 195px; }
 
-.select2-container {
-  min-width: 100px;
-  width: 100% !important; }
-  .select2-container--open .select2-dropdown--below,
-  .select2-container--open .select2-dropdown--above {
-    z-index: 9999999;
-    min-width: 100px; }
-
 customize-control-upload .current .container {
   border: 1px solid rgba(0, 0, 0, 0.05); }
 
@@ -130,52 +122,6 @@ customize-control-upload .current .container {
     .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after,
     .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
       color: #fff; }
-
-.customize-control-select select,
-.customize-control-dropdown-pages select,
-.customize-control-repeater select,
-.customize-control-dimension select {
-  border: 1px solid rgba(0, 0, 0, 0.15); }
-
-.customize-control-select select,
-.customize-control-dropdown-pages select {
-  width: 100%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  text-indent: 0.01px;
-  text-overflow: '';
-  padding: 0 1em;
-  border: 1px solid #fff;
-  border-radius: 0;
-  position: relative;
-  border-right-width: 20px;
-  background-color: #fff;
-  color: #555; }
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .customize-control-select select,
-    .customize-control-dropdown-pages select {
-      padding-right: 1em; } }
-  .customize-control-select select:focus,
-  .customize-control-dropdown-pages select:focus {
-    outline: none;
-    border-color: rgba(0, 0, 0, 0.1); }
-.customize-control-select label,
-.customize-control-dropdown-pages label {
-  width: 100%;
-  position: relative;
-  display: inline-block; }
-  .customize-control-select label:after,
-  .customize-control-dropdown-pages label:after {
-    display: block;
-    content: "\f347";
-    font-family: dashicons;
-    font-size: 14px;
-    position: absolute;
-    margin-top: -23px;
-    right: 2px;
-    color: #777;
-    pointer-events: none; }
 
 input[type="text"] {
   border: 1px solid rgba(0, 0, 0, 0.1);
