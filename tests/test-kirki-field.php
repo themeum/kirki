@@ -24,7 +24,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		$this->assertEquals( 'radio-image', Kirki_Field::sanitize_control_type( array( 'type' => 'radio-image' ) ) );
 		$this->assertEquals( 'radio-image', Kirki_Field::sanitize_control_type( array( 'type' => 'radio', 'mode' => 'image' ) ) );
 		$this->assertEquals( 'radio', Kirki_Field::sanitize_control_type( array( 'type' => 'radio' ) ) );
-		$this->assertEquals( 'select', Kirki_Field::sanitize_control_type( array( 'type' => 'select' ) ) );
+		$this->assertEquals( 'kirki-select', Kirki_Field::sanitize_control_type( array( 'type' => 'select' ) ) );
 		$this->assertEquals( 'slider', Kirki_Field::sanitize_control_type( array( 'type' => 'slider' ) ) );
 		$this->assertEquals( 'sortable', Kirki_Field::sanitize_control_type( array( 'type' => 'sortable' ) ) );
 		$this->assertEquals( 'switch', Kirki_Field::sanitize_control_type( array( 'type' => 'switch' ) ) );
@@ -80,11 +80,6 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			);
 		});
 		$this->assertEquals( 'option', Kirki_Field::sanitize_type( array() ) );
-	}
-
-	public function test_sanitize_variables() {
-		$this->assertEquals( false, Kirki_Field::sanitize_variables( array() ) );
-		$this->assertEquals( array(), Kirki_Field::sanitize_variables( array( 'variables' => array() ) ) );
 	}
 
 	public function test_sanitize_active_callback() {

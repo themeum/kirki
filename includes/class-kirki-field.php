@@ -52,7 +52,7 @@ class Kirki_Field {
 			'js_vars'           => self::sanitize_js_vars( $field ),
 			'id'                => self::sanitize_id( $field ),
 			'capability'        => self::sanitize_capability( $field ),
-			'variables'         => self::sanitize_variables( $field ),
+			'variables'         => ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null,
 			'active_callback'   => self::sanitize_active_callback( $field )
 		);
 
@@ -117,6 +117,7 @@ class Kirki_Field {
 				if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
 					$field['type'] = 'color-alpha';
 				}
+				break;
 			case 'select':
 			case 'select2':
 			case 'select2-multiple':
@@ -188,25 +189,6 @@ class Kirki_Field {
 		 * If all else fails, return empty.
 		 */
 		return '';
-
-	}
-
-	/**
-	 * Sanitizes the setting variables.
-	 *
-	 * @param array the field definition
-	 * @return mixed
-	 */
-	public static function sanitize_variables( $field ) {
-
-		/**
-		 * Return null if no value has been defined
-		 * or if not properly formatted as an array.
-		 */
-		if ( ! isset( $field['variables'] ) || ! is_array( $field['variables'] ) ) {
-			return null;
-		}
-		return $field['variables'];
 
 	}
 
