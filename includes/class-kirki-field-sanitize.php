@@ -148,6 +148,9 @@ class Kirki_Field_Sanitize {
 			case 'select2-multiple':
 				$field['type'] = 'kirki-select';
 				break;
+			case 'textarea':
+				$field['type'] = 'kirki-textarea';
+				break;
 		}
 
 		/**

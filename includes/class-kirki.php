@@ -51,6 +51,7 @@ class Kirki {
 		'sortable'         => 'Kirki_Controls_Sortable_Control',
 		'spacing'          => 'Kirki_Controls_Spacing_Control',
 		'switch'           => 'Kirki_Controls_Switch_Control',
+		'textarea'         => 'Kirki_Controls_Textarea_Control',
 		'toggle'           => 'Kirki_Controls_Toggle_Control',
 		'typography'       => 'Kirki_Controls_Typography_Control',
 
@@ -100,6 +101,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Textarea_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 	}

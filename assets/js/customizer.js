@@ -864,6 +864,17 @@ wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 	}
 });
 /**
+ * KIRKI CONTROL: TEXTAREA
+ */
+wp.customize.controlConstructor['kirki-textarea'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'change keyup paste', '.textarea', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
+});
+/**
  * KIRKI CONTROL: TOGGLE
  */
 wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend( {

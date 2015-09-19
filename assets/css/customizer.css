@@ -963,6 +963,12 @@ input[type="text"] {
   font-weight: bold;
   font-size: 9px; }
 
+.customize-control-kirki-textarea textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
 .customize-control-toggle input[type="checkbox"] {
   display: none; }
 .customize-control-toggle .switch {
