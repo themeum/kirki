@@ -35,6 +35,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			compiled_value['letter-spacing'] = control.setting._value['letter-spacing'];
 		}
 
+		// use selectize
+		jQuery( '.customize-control-typography select' ).selectize();
+
 		// bold
 		if ( control.container.has( '.bold' ).size() ) {
 			this.container.on( 'change', '.bold input', function() {
