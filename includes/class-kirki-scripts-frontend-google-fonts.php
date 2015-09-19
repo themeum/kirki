@@ -42,7 +42,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 			/**
 			 * Sanitize the field
 			 */
-			$field = Kirki_Field::sanitize_field( $field );
+			$field = Kirki_Field_Sanitize::sanitize_field( $field );
 
 			if ( ! is_array( $field['output'] ) ) {
 				continue;

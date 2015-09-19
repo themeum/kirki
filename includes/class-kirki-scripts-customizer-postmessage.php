@@ -37,13 +37,13 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 		$script = '';
 		// Parse the fields and create the script.
 		foreach ( $fields as $field ) {
-			$field['transport'] = Kirki_Field::sanitize_transport( $field );
-			$field['js_vars']   = Kirki_Field::sanitize_js_vars( $field );
+			$field['transport'] = Kirki_Field_Sanitize::sanitize_transport( $field );
+			$field['js_vars']   = Kirki_Field_Sanitize::sanitize_js_vars( $field );
 			if ( ! is_null( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) {
 				foreach ( $field['js_vars'] as $js_vars ) {
 					$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
 					$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
-					$script .= 'wp.customize( \''.Kirki_Field::sanitize_settings( $field ).'\', function( value ) {';
+					$script .= 'wp.customize( \''.Kirki_Field_Sanitize::sanitize_settings( $field ).'\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';
 					if ( 'html' == $js_vars['function'] ) {
 						$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';

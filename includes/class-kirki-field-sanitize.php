@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Field' ) ) {
+if ( class_exists( 'Kirki_Field_Sanitize' ) ) {
 	return;
 }
 
-class Kirki_Field {
+class Kirki_Field_Sanitize {
 
 	/**
 	 * Sanitizes the field
@@ -351,7 +351,7 @@ class Kirki_Field {
 		 * We've commented this out and will revisit this in a future release.
 		 */
 		if ( is_array( $field['default'] ) ) {
-			// array_walk_recursive( $field['default'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			// array_walk_recursive( $field['default'], array( 'Kirki_Field_Sanitize', 'sanitize_defaults_array' ) );
 			return $field['default'];
 		}
 
@@ -429,7 +429,7 @@ class Kirki_Field {
 		 * We've commented this out and will revisit this in a future release.
 		 */
 		if ( is_array( $field['choices'] ) ) {
-			// array_walk_recursive( $field['choices'], array( 'Kirki_Field', 'sanitize_defaults_array' ) );
+			// array_walk_recursive( $field['choices'], array( 'Kirki_Field_Sanitize', 'sanitize_defaults_array' ) );
 			return $field['choices'];
 		}
 

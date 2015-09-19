@@ -45,7 +45,7 @@ class Kirki_Output {
 		/**
 		 * Make sure the field is sanitized before proceeding any further.
 		 */
-		$field = Kirki_Field::sanitize_field( $field );
+		$field = Kirki_Field_Sanitize::sanitize_field( $field );
 		/**
 		 * Get the config ID used in the Kirki class.
 		 */

@@ -332,19 +332,19 @@ class Kirki {
 			}
 
 			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
-				$settings = Kirki_Field::sanitize_settings( $field );
-				$defaults = Kirki_Field::sanitize_default( $field );
+				$settings = Kirki_Field_Sanitize::sanitize_settings( $field );
+				$defaults = Kirki_Field_Sanitize::sanitize_default( $field );
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
-					$type       = Kirki_Field::sanitize_type( $field );
-					$capability = Kirki_Field::sanitize_capability( $field );
-					$transport  = Kirki_Field::sanitize_transport( $field );
+					$type       = Kirki_Field_Sanitize::sanitize_type( $field );
+					$capability = Kirki_Field_Sanitize::sanitize_capability( $field );
+					$transport  = Kirki_Field_Sanitize::sanitize_transport( $field );
 
 					if ( isset( $field['sanitize_callback'] ) && is_array( $field['sanitize_callback'] ) ) {
 						if ( isset( $field['sanitize_callback'][ $setting_key ] ) ) {
-							$sanitize_callback = Kirki_Field::sanitize_callback( array( 'sanitize_callback' => $field['sanitize_callback'][ $setting_key ] ) );
+							$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => $field['sanitize_callback'][ $setting_key ] ) );
 						} else {
-							$sanitize_callback = Kirki_Field::sanitize_callback( $field );
+							$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $field );
 						}
 					}
 					$wp_customize->add_setting( $setting_value, array(
@@ -359,21 +359,21 @@ class Kirki {
 			if ( isset( $field['type'] ) && array_key_exists( $field['type'], $setting_types ) ) {
 				// We must instantiate a custom class for the setting
 				$setting_classname = $setting_types[ $field['type'] ];
-				$wp_customize->add_setting( new $setting_classname( $wp_customize, Kirki_Field::sanitize_settings( $field ), array(
-					'default'           => Kirki_Field::sanitize_default( $field ),
-					'type'              => Kirki_Field::sanitize_type( $field ),
-					'capability'        => Kirki_Field::sanitize_capability( $field ),
-					'transport'         => Kirki_Field::sanitize_transport( $field ),
-					'sanitize_callback' => Kirki_Field::sanitize_callback( $field ),
+				$wp_customize->add_setting( new $setting_classname( $wp_customize, Kirki_Field_Sanitize::sanitize_settings( $field ), array(
+					'default'           => Kirki_Field_Sanitize::sanitize_default( $field ),
+					'type'              => Kirki_Field_Sanitize::sanitize_type( $field ),
+					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $field ),
+					'transport'         => Kirki_Field_Sanitize::sanitize_transport( $field ),
+					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $field ),
 				) ) );
 
 			} else {
-				$wp_customize->add_setting( Kirki_Field::sanitize_settings( $field ), array(
-					'default'           => Kirki_Field::sanitize_default( $field ),
-					'type'              => Kirki_Field::sanitize_type( $field ),
-					'capability'        => Kirki_Field::sanitize_capability( $field ),
-					'transport'         => Kirki_Field::sanitize_transport( $field ),
-					'sanitize_callback' => Kirki_Field::sanitize_callback( $field ),
+				$wp_customize->add_setting( Kirki_Field_Sanitize::sanitize_settings( $field ), array(
+					'default'           => Kirki_Field_Sanitize::sanitize_default( $field ),
+					'type'              => Kirki_Field_Sanitize::sanitize_type( $field ),
+					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $field ),
+					'transport'         => Kirki_Field_Sanitize::sanitize_transport( $field ),
+					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $field ),
 				) );
 			}
 
@@ -385,8 +385,8 @@ class Kirki {
 
 			$wp_customize->add_control( new $class_name(
 				$wp_customize,
-				Kirki_Field::sanitize_id( $field ),
-				Kirki_Field::sanitize_field( $field )
+				Kirki_Field_Sanitize::sanitize_id( $field ),
+				Kirki_Field_Sanitize::sanitize_field( $field )
 			) );
 
 		}
@@ -496,7 +496,7 @@ class Kirki {
 		/**
 		 * Add the field to the static $fields variable properly indexed
 		 */
-		self::$fields[ Kirki_Field::sanitize_settings( $args ) ] = $args;
+		self::$fields[ Kirki_Field_Sanitize::sanitize_settings( $args ) ] = $args;
 
 		if ( 'background' == $args['type'] ) {
 			/**
@@ -581,7 +581,7 @@ class Kirki {
 						 * If no callback is defined (false) then just get the value.
 						 */
 						if ( $variable_callback ) {
-							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], self::get_option( Kirki_Field::sanitize_settings( $field ) ) );
+							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], self::get_option( Kirki_Field_Sanitize::sanitize_settings( $field ) ) );
 						} else {
 							$variables[ $variable_name ] = self::get_option( $field['settings'] );
 						}
