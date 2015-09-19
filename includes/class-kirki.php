@@ -333,12 +333,12 @@ class Kirki {
 
 			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
 				$settings = Kirki_Field_Sanitize::sanitize_settings( $field );
-				$defaults = Kirki_Field_Sanitize::sanitize_default( $field );
+				$defaults = isset( $field['default'] ) ? $field['default'] : array();
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
 					$type       = Kirki_Field_Sanitize::sanitize_type( $field );
 					$capability = Kirki_Field_Sanitize::sanitize_capability( $field );
-					$transport  = Kirki_Field_Sanitize::sanitize_transport( $field );
+					$transport  = isset( $field['transport'] ) ? $field['transport'] : 'refresh';
 
 					if ( isset( $field['sanitize_callback'] ) && is_array( $field['sanitize_callback'] ) ) {
 						if ( isset( $field['sanitize_callback'][ $setting_key ] ) ) {
@@ -360,19 +360,19 @@ class Kirki {
 				// We must instantiate a custom class for the setting
 				$setting_classname = $setting_types[ $field['type'] ];
 				$wp_customize->add_setting( new $setting_classname( $wp_customize, Kirki_Field_Sanitize::sanitize_settings( $field ), array(
-					'default'           => Kirki_Field_Sanitize::sanitize_default( $field ),
+					'default'           => isset( $field['default'] ) ? $field['default'] : '',
 					'type'              => Kirki_Field_Sanitize::sanitize_type( $field ),
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $field ),
-					'transport'         => Kirki_Field_Sanitize::sanitize_transport( $field ),
+					'transport'         => isset( $field['transport'] ) ? $field['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $field ),
 				) ) );
 
 			} else {
 				$wp_customize->add_setting( Kirki_Field_Sanitize::sanitize_settings( $field ), array(
-					'default'           => Kirki_Field_Sanitize::sanitize_default( $field ),
+					'default'           => isset( $field['default'] ) ? $field['default'] : '',
 					'type'              => Kirki_Field_Sanitize::sanitize_type( $field ),
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $field ),
-					'transport'         => Kirki_Field_Sanitize::sanitize_transport( $field ),
+					'transport'         => isset( $field['transport'] ) ? $field['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $field ),
 				) );
 			}

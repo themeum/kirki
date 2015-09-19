@@ -37,7 +37,7 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 		$script = '';
 		// Parse the fields and create the script.
 		foreach ( $fields as $field ) {
-			$field['transport'] = Kirki_Field_Sanitize::sanitize_transport( $field );
+			$field['transport'] = ( isset( $field['transport'] ) ) ? $field['transport'] : 'refresh';
 			$field['js_vars']   = Kirki_Field_Sanitize::sanitize_js_vars( $field );
 			if ( ! is_null( $field['js_vars'] ) && 'postMessage' == $field['transport'] ) {
 				foreach ( $field['js_vars'] as $js_vars ) {

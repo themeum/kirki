@@ -54,9 +54,9 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 				'option_type' => 'theme_mod',
 				'priority' => 10,
 				'choices' => array(),
-				'output' => null,
+				'output' => array(),
 				'sanitize_callback' => 'esc_textarea',
-				'js_vars' => null,
+				'js_vars' => array(),
 				'id' => 'foo',
 				'capability' => 'edit_theme_options',
 				'variables' => null,
@@ -143,30 +143,10 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'foo[bar]', Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => 'foo[bar]' ) ) );
 	}
 
-	public function test_sanitize_section() {
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_section( array( 'section' => 'foo' ) ) );
-		$this->assertEquals( 'title_tagline', Kirki_Field_Sanitize::sanitize_section( array() ) );
-	}
-
 	public function test_sanitize_id() {
 		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo' ) ) );
 		$this->assertEquals( 'foo-bar', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo[bar]' ) ) );
 		$this->assertEquals( 'foo-bar', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo[ bar ]' ) ) );
-	}
-
-	public function test_sanitize_default() {
-		$this->assertEquals( '<div class="foo">bar</div>', Kirki_Field_Sanitize::sanitize_default( array( 'type' => 'custom', 'default' => '<div class="foo">bar</div>' ) ) );
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_default( array( 'default' => 'foo' ) ) );
-		$this->assertEquals( array( 'foo', 'bar' ), Kirki_Field_Sanitize::sanitize_default( array( 'default' => array( 'foo', 'bar' ) ) ) );
-		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Field_Sanitize::sanitize_default( array( 'default' => 'rgba(0,0,0,0)' ) ) );
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_default( array( 'type' => 'text', 'default' => 'foo', ) ) );
-	}
-
-	public function test_sanitize_help() {
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_help( array( 'help' => 'foo' ) ) );
-		$this->assertEquals( 'bar', Kirki_Field_Sanitize::sanitize_help( array( 'subtitle' => 'foo', 'description' => 'bar' ) ) );
-		$this->assertEquals( 'bar', Kirki_Field_Sanitize::sanitize_help( array( 'help' => '<div class="foo">bar</div>' ) ) );
-		$this->assertEquals( '', Kirki_Field_Sanitize::sanitize_help( array( 'subtitle' => 'foo' ) ) );
 	}
 
 	public function test_sanitize_output() {
@@ -208,13 +188,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 				)
 			) ) )
 		);
-	}
-
-	public function test_sanitize_transport() {
-		$this->assertEquals( 'refresh', Kirki_Field_Sanitize::sanitize_transport( array() ) );
-		$this->assertEquals( 'refresh', Kirki_Field_Sanitize::sanitize_transport( array( 'transport' => '' ) ) );
-		$this->assertEquals( 'refresh', Kirki_Field_Sanitize::sanitize_transport( array( 'transport' => 'invalid' ) ) );
-		$this->assertEquals( 'postMessage', Kirki_Field_Sanitize::sanitize_transport( array( 'transport' => 'postMessage' ) ) );
 	}
 
 	public function test_sanitize_callback() {
@@ -280,49 +253,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 				)
 			) ) )
 		);
-	}
-
-	public function test_sanitize_required() {
-		$this->assertEquals(
-			array(
-				array(
-					'setting' => 'my-setting',
-					'operator' => '==',
-					'value' => '1',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_required( array( 'required' => array(
-				'setting' => 'my-setting',
-			) ) )
-		);
-		$this->assertEquals(
-			array(
-				array(
-					'setting' => 'my-setting',
-					'operator' => '>=',
-					'value' => '#333ff2'
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_required( array( 'required' => array(
-				array(
-					'setting' => 'my-setting',
-					'operator' => '>=',
-					'value' => '#333ff2'
-				)
-			) ) )
-		);
-
-		$this->assertEquals( null, Kirki_Field_Sanitize::sanitize_required( array() ) );
-	}
-
-	public function test_sanitize_priority() {
-		$this->assertEquals( 10, Kirki_Field_Sanitize::sanitize_priority( array() ) );
-		$this->assertEquals( 10, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => 'invalid priority' ) ) );
-		$this->assertEquals( 20, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => '-20' ) ) );
-		$this->assertEquals( 20, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => -20 ) ) );
-		$this->assertEquals( 20, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => 20 ) ) );
-		$this->assertEquals( 20, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => 20.356 ) ) );
-		$this->assertEquals( 20, Kirki_Field_Sanitize::sanitize_priority( array( 'priority' => '20.356' ) ) );
 	}
 
 	public function test_fallback_callback() {

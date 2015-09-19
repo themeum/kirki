@@ -33,7 +33,7 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 
 		foreach ( $fields as $field ) {
 
-			$field['help']     = Kirki_Field_Sanitize::sanitize_help( $field );
+			$field['help']     = isset( $field['help'] ) ? wp_strip_all_tags( $field['help'] ) : '';
 			$field['settings'] = Kirki_Field_Sanitize::sanitize_settings( $field );
 
 			if ( ! empty( $field['help'] ) ) {

@@ -30,36 +30,57 @@ class Kirki_Field_Sanitize {
 	 */
 	public static function sanitize_field( $field ) {
 
-		/**
-		 * Sanitize each property of the field separately.
-		 */
-		$sanitized = array(
-			'default'           => self::sanitize_default( $field ),
-			'label'             => ( isset( $field['label'] ) ) ? $field['label'] : '',
-			'help'              => self::sanitize_help( $field ),
-			'description'       => ( isset( $field['description'] ) ) ? $field['description'] : '',
-			'required'          => self::sanitize_required( $field ),
-			'transport'         => self::sanitize_transport( $field ),
-			'type'              => self::sanitize_control_type( $field ),
-			'option_type'       => self::sanitize_type( $field ),
-			'option_name'       => self::sanitize_option_name( $field ),
-			'section'           => self::sanitize_section( $field ),
-			'settings'          => self::sanitize_settings( $field ),
-			'priority'          => self::sanitize_priority( $field ),
-			'choices'           => ( isset( $field['choices'] ) ) ? $field['choices'] : array(),
-			'output'            => self::sanitize_output( $field ),
-			'sanitize_callback' => self::sanitize_callback( $field ),
-			'js_vars'           => self::sanitize_js_vars( $field ),
-			'id'                => self::sanitize_id( $field ),
-			'capability'        => self::sanitize_capability( $field ),
-			'variables'         => ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null,
-			'active_callback'   => self::sanitize_active_callback( $field )
+		$defaults = array(
+			'default'           => '',
+			'label'             => '',
+			'help'              => '',
+			'description'       => '',
+			'required'          => null,
+			'transport'         => 'refresh',
+			'type'              => 'text',
+			'option_type'       => 'theme_mod',
+			'option_name'       => '',
+			'section'           => 'title_tagline',
+			'settings'          => '',
+			'priority'          => 10,
+			'choices'           => array(),
+			'output'            => array(),
+			'sanitize_callback' => '',
+			'js_vars'           => array(),
+			'id'                => '',
+			'capability'        => 'edit_theme_options',
+			'variables'         => null,
+			'active_callback'   => '__return_true',
 		);
-
 		/**
-		 * Return a merged array so any extra custom properties are parse as well (but not sanitized)
+		 * Field type has to run before the others to accomodate older implementations
+		 * If we don't do this then kirki/config filters won't work properly.
 		 */
-		return array_merge( $field, $sanitized );
+		$field['option_type'] = self::sanitize_type( $field );
+		$field['option_name'] = self::sanitize_option_name( $field );
+		/**
+		 * Merge defined args with defaults
+		 */
+		$field = wp_parse_args( $field, $defaults );
+		/**
+		 * Strip all HTML from help messages
+		 */
+		$field['help'] = wp_strip_all_tags( $field['help'] );
+		/**
+		 * Get the right control type
+		 */
+		$field['type']              = self::sanitize_control_type( $field );
+		$field['settings']          = self::sanitize_settings( $field );
+		$field['choices']           = ( isset( $field['choices'] ) ) ? $field['choices'] : array();
+		$field['output']            = self::sanitize_output( $field );
+		$field['sanitize_callback'] = self::sanitize_callback( $field );
+		$field['js_vars']           = self::sanitize_js_vars( $field );
+		$field['id']                = self::sanitize_id( $field );
+		$field['capability']        = self::sanitize_capability( $field );
+		$field['variables']         = ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null;
+		$field['active_callback']   = self::sanitize_active_callback( $field );
+
+		return $field;
 
 	}
 
@@ -294,30 +315,6 @@ class Kirki_Field_Sanitize {
 	}
 
 	/**
-	 * Sanitizes the control section
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_section( $field ) {
-
-		/**
-		 * If no section is defined then make sure we add the one section that is ALWAYS present: 'title_tagline'
-		 * Though it's wrong to use a section arbitrarily, at least this way we're making sure that the control will be rendered,
-		 * even if you forget to add a section argument.
-		 */
-		if ( ! isset( $field['section'] ) ) {
-			return 'title_tagline';
-		}
-
-		/**
-		 * Sanitize the section name and return it.
-		 */
-		return sanitize_key( $field['section'] );
-
-	}
-
-	/**
 	 * Sanitizes the control id.
 	 * Sanitizing the ID should happen after the 'settings' sanitization.
 	 * This way we can also properly handle cases where the option_type is set to 'option'
@@ -328,83 +325,6 @@ class Kirki_Field_Sanitize {
 	 */
 	public static function sanitize_id( $field ) {
 		return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) ) );
-	}
-
-	/**
-	 * Sanitizes the setting default value
-	 *
-	 * @param array the field definition
-	 * @return mixed
-	 */
-	public static function sanitize_default( $field ) {
-
-		/**
-		 * make sure a default value is defined.
-		 */
-		if ( ! isset( $field['default'] ) ) {
-			return '';
-		}
-
-		/**
-		 * If an array then sanitize the array items separately
-		 * TODO: the array_walk_recursive that we used was over-sanitizing things causing malfunctions.
-		 * We've commented this out and will revisit this in a future release.
-		 */
-		if ( is_array( $field['default'] ) ) {
-			// array_walk_recursive( $field['default'], array( 'Kirki_Field_Sanitize', 'sanitize_defaults_array' ) );
-			return $field['default'];
-		}
-
-		/**
-		 * Return raw & unfiltered for custom controls
-		 */
-		if ( isset( $field['type'] ) && 'custom' == $field['type'] ) {
-			return $field['default'];
-		}
-
-		/**
-		 * fallback to escaping the default value.
-		 */
-		return esc_textarea( $field['default'] );
-
-	}
-
-	/**
-	 * Sanitizes the control help
-	 *
-	 * @param array the field definition
-	 * @return string
-	 */
-	public static function sanitize_help( $field ) {
-
-		/**
-		 * Compatibility tweak
-		 *
-		 * Previous verions of the Kirki Customizer had the 'description' field mapped to the new 'help'
-		 * and instead of 'description' we were using 'subtitle'.
-		 * This has been deprecated in favor of WordPress core's 'description' field that was recently introduced.
-		 *
-		 */
-		if ( isset( $field['subtitle'] ) ) {
-			// Use old arguments form.
-			if ( isset( $field['description'] ) ) {
-				return wp_strip_all_tags( $field['description'] );
-			}
-			return '';
-		}
-
-		/**
-		 * Return empty string if not set.
-		 */
-		if ( ! isset( $field['help'] ) ) {
-			return '';
-		}
-
-		/**
-		 * Fallback to stripping all tags and returning.
-		 */
-		return wp_strip_all_tags( $field['help'] );
-
 	}
 
 	/**
@@ -456,30 +376,11 @@ class Kirki_Field_Sanitize {
 				'units'             => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
 				'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : null,
 				'media_query'       => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
-				'prefix'           => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
+				'prefix'            => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
 			);
 		}
 
 		return $output_sanitized;
-
-	}
-
-	/**
-	 * Sanitizes the control transport.
-	 *
-	 * @param array the field definition
-	 * @return string postMessage|refresh (defaults to refresh)
-	 */
-	public static function sanitize_transport( $field ) {
-
-		if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] ) {
-			return 'postMessage';
-		}
-
-		/**
-		 * fallback to 'refresh'
-		 */
-		return 'refresh';
 
 	}
 
@@ -524,47 +425,6 @@ class Kirki_Field_Sanitize {
 			}
 		}
 		return $js_vars_sanitized;
-
-	}
-
-	/**
-	 * Sanitizes the control required argument.
-	 *
-	 * @param array the field definition
-	 * @return array|null
-	 */
-	public static function sanitize_required( $field ) {
-
-		$required_sanitized = null;
-		if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
-			$required_sanitized = array();
-			if ( isset( $field['required']['setting'] ) ) {
-				$field['required'] = array( $field['required'] );
-			}
-			foreach ( $field['required'] as $required ) {
-				$required_sanitized[] = array(
-					'setting'  => ( isset( $required['setting'] ) ) ? sanitize_text_field( $required['setting'] ) : '',
-					'operator' => ( isset( $required['operator'] ) && in_array( $required['operator'], array( '==', '===', '!=', '!==', '>=', '<=', '>', '<' ) ) ) ? $required['operator'] : '==',
-					'value'    => ( isset( $required['value'] ) ) ? sanitize_text_field( $required['value'] ) : true,
-				);
-			}
-		}
-		return $required_sanitized;
-
-	}
-
-	/**
-	 * Sanitizes the control priority
-	 *
-	 * @param array the field definition
-	 * @return int
-	 */
-	public static function sanitize_priority( $field ) {
-
-		if ( ! isset( $field['priority'] ) || '0' == absint( intval( $field['priority'] ) ) ) {
-			return 10;
-		}
-		return absint( intval( $field['priority'] ) );
 
 	}
 
@@ -622,17 +482,6 @@ class Kirki_Field_Sanitize {
 		}
 
 		return $sanitize_callback;
-
-	}
-
-	/**
-	 * Sanitizes the defaults array.
-	 * This is used as a callback function in the sanitize_default method.
-	 */
-	public static function sanitize_defaults_array( $value = '', $key = '' ) {
-
-		$value = esc_textarea( $value );
-		$key   = esc_attr( $key );
 
 	}
 
