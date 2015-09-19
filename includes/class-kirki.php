@@ -30,6 +30,7 @@ class Kirki {
 	public static $sections = array();
 
 	public static $control_types = array(
+		'checkbox'         => 'Kirki_Controls_Checkbox_Control',
 		'code'             => 'Kirki_Controls_Code_Control',
 		'color'            => 'WP_Customize_Color_Control',
 		'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
@@ -97,6 +98,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
 	}
 
 	/**

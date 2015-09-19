@@ -108,6 +108,8 @@ class Kirki_Field_Sanitize {
 					$field['type'] = 'switch';
 				} elseif ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
 					$field['type'] = 'toggle';
+				} else {
+					$field['type'] = 'kirki-checkbox';
 				}
 				break;
 			case 'radio':
