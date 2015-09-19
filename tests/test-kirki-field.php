@@ -169,22 +169,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( '', Kirki_Field_Sanitize::sanitize_help( array( 'subtitle' => 'foo' ) ) );
 	}
 
-	public function test_sanitize_choices() {
-		$this->assertEquals(
-			array( 'min' => -10, 'max' => 999, 'step' => 3 ),
-			Kirki_Field_Sanitize::sanitize_choices(
-				array( 'choices' => array( 'min' => -10, 'max' => 999, 'step' => 3 ) )
-			)
-		);
-		$this->assertEquals(
-			array( 'foo', 'bar' ),
-			Kirki_Field_Sanitize::sanitize_choices( array( 'choices' => array( 'foo', 'bar' ) ) )
-		);
-		$this->assertEquals( array(), Kirki_Field_Sanitize::sanitize_choices( array() ) );
-
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_choices( array( 'choices' => 'foo' ) ) );
-	}
-
 	public function test_sanitize_output() {
 		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_output( array( 'output' => 'foo' ) ) );
 		$this->assertEquals(

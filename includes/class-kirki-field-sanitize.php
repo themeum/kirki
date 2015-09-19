@@ -46,7 +46,7 @@ class Kirki_Field_Sanitize {
 			'section'           => self::sanitize_section( $field ),
 			'settings'          => self::sanitize_settings( $field ),
 			'priority'          => self::sanitize_priority( $field ),
-			'choices'           => self::sanitize_choices( $field ),
+			'choices'           => ( isset( $field['choices'] ) ) ? $field['choices'] : array(),
 			'output'            => self::sanitize_output( $field ),
 			'sanitize_callback' => self::sanitize_callback( $field ),
 			'js_vars'           => self::sanitize_js_vars( $field ),
@@ -404,39 +404,6 @@ class Kirki_Field_Sanitize {
 		 * Fallback to stripping all tags and returning.
 		 */
 		return wp_strip_all_tags( $field['help'] );
-
-	}
-
-	/**
-	 * Sanitizes the control choices.
-	 *
-	 * @param array the field definition
-	 * @return array|string
-	 */
-	public static function sanitize_choices( $field ) {
-
-		/**
-		 * If not set then return an empty array.
-		 * This will prevent PHP 'undefined index' notices.
-		 */
-		if ( ! isset( $field['choices'] ) ) {
-			return array();
-		}
-
-		/**
-		 * If an array then sanitize the array items separately
-		 * TODO: the array_walk_recursive that we used was over-sanitizing things causing malfunctions.
-		 * We've commented this out and will revisit this in a future release.
-		 */
-		if ( is_array( $field['choices'] ) ) {
-			// array_walk_recursive( $field['choices'], array( 'Kirki_Field_Sanitize', 'sanitize_defaults_array' ) );
-			return $field['choices'];
-		}
-
-		/**
-		 * This is a string so fallback to escaping the value and return.
-		 */
-		return esc_attr( $field['choices'] );
 
 	}
 
