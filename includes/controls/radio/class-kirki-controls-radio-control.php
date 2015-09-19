@@ -42,7 +42,7 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{ data.label }}</span>
 		<# } #>
-		<# if data.description ) { #>
+		<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 		<# for ( key in data.choices ) { #>

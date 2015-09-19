@@ -121,6 +121,8 @@ class Kirki_Field_Sanitize {
 					$field['type'] = 'radio-buttonset';
 				} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
 					$field['type'] = 'radio-image';
+				} else {
+					$field['type'] = 'kirki-radio';
 				}
 				break;
 			case 'group-title':

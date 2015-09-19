@@ -34,26 +34,28 @@ class Kirki {
 		'code'             => 'Kirki_Controls_Code_Control',
 		'color'            => 'WP_Customize_Color_Control',
 		'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
-		'image'            => 'WP_Customize_Image_Control',
-		'upload'           => 'WP_Customize_Upload_Control',
-		'switch'           => 'Kirki_Controls_Switch_Control',
-		'toggle'           => 'Kirki_Controls_Toggle_Control',
+		'custom'           => 'Kirki_Controls_Custom_Control',
+		'dimension'        => 'Kirki_Controls_Dimension_Control',
+		'editor'           => 'Kirki_Controls_Editor_Control',
+		'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
+		'number'           => 'Kirki_Controls_Number_Control',
+		'palette'          => 'Kirki_Controls_Palette_Control',
+		'radio'            => 'Kirki_Controls_Radio_Control',
 		'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
 		'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
-		'sortable'         => 'Kirki_Controls_Sortable_Control',
-		'slider'           => 'Kirki_Controls_Slider_Control',
-		'number'           => 'Kirki_Controls_Number_Control',
-		'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
-		'palette'          => 'Kirki_Controls_Palette_Control',
-		'custom'           => 'Kirki_Controls_Custom_Control',
-		'editor'           => 'Kirki_Controls_Editor_Control',
+		'repeater'         => 'Kirki_Controls_Repeater_Control',
 		'select'           => 'Kirki_Controls_Select_Control',
 		'select2'          => 'Kirki_Controls_Select_Control',
 		'select2-multiple' => 'Kirki_Controls_Select_Control',
-		'dimension'        => 'Kirki_Controls_Dimension_Control',
-		'repeater'         => 'Kirki_Controls_Repeater_Control',
-		'typography'       => 'Kirki_Controls_Typography_Control',
+		'slider'           => 'Kirki_Controls_Slider_Control',
+		'sortable'         => 'Kirki_Controls_Sortable_Control',
 		'spacing'          => 'Kirki_Controls_Spacing_Control',
+		'switch'           => 'Kirki_Controls_Switch_Control',
+		'toggle'           => 'Kirki_Controls_Toggle_Control',
+		'typography'       => 'Kirki_Controls_Typography_Control',
+
+		'image'            => 'WP_Customize_Image_Control',
+		'upload'           => 'WP_Customize_Upload_Control',
 	);
 
 	public static $setting_types = array(
@@ -85,20 +87,21 @@ class Kirki {
 	 */
 	public function register_control_types() {
 		global $wp_customize;
-		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Buttonset_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Image_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Buttonset_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Radio_Image_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
-		$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 	}
 
 	/**
