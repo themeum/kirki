@@ -528,14 +528,18 @@ input[type="text"] {
     content: "\f347";
     display: block;
     position: absolute;
-    top: 50%;
-    right: 18px;
-    margin-top: -7px;
-    width: 0;
-    height: 0;
-    font-family: dashicons; }
+    top: 0;
+    right: 0;
+    margin-top: 0;
+    width: 12px;
+    height: 36px;
+    font-family: dashicons;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    line-height: 36px;
+    padding: 0 3px; }
   .selectize-control.single .selectize-input.dropdown-active:after {
-    content: "\f343"; }
+    content: "\f343";
+    border-left: 1px solid rgba(0, 0, 0, 0.1); }
   .selectize-control.single .selectize-input.disabled {
     opacity: 0.5;
     background-color: #fafafa; }
@@ -848,45 +852,62 @@ input[type="text"] {
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
   width: 96%;
   padding: 3%; }
-  .customize-control-spacing .wrapper > div:nth-child(odd) {
-    margin-right: 5px; }
+  .customize-control-spacing .wrapper > .control {
+    display: inline-block; }
+    .customize-control-spacing .wrapper > .control > div:nth-child(odd) {
+      margin-right: 5px; }
 .customize-control-spacing .top,
 .customize-control-spacing .bottom,
 .customize-control-spacing .left,
 .customize-control-spacing .right {
   width: calc(50% - 5px);
-  display: inline-block; }
+  float: left; }
   .customize-control-spacing .top h5,
   .customize-control-spacing .bottom h5,
   .customize-control-spacing .left h5,
   .customize-control-spacing .right h5 {
     margin: 0;
     margin-top: 5px; }
-  .customize-control-spacing .top input,
-  .customize-control-spacing .bottom input,
-  .customize-control-spacing .left input,
-  .customize-control-spacing .right input {
-    width: calc(58% - 20px); }
-  .customize-control-spacing .top select,
-  .customize-control-spacing .bottom select,
-  .customize-control-spacing .left select,
-  .customize-control-spacing .right select {
-    min-width: 42%;
-    width: 42%; }
+  .customize-control-spacing .top input[type="number"],
+  .customize-control-spacing .bottom input[type="number"],
+  .customize-control-spacing .left input[type="number"],
+  .customize-control-spacing .right input[type="number"] {
+    width: calc(100% - 65px);
+    display: inline-block;
+    height: 36px;
+    position: relative;
+    top: -12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .customize-control-spacing .top .selectize-control,
+  .customize-control-spacing .bottom .selectize-control,
+  .customize-control-spacing .left .selectize-control,
+  .customize-control-spacing .right .selectize-control {
+    width: 35px;
+    display: inline-block; }
+  .customize-control-spacing .top .selectize-control.single .selectize-input:after,
+  .customize-control-spacing .bottom .selectize-control.single .selectize-input:after,
+  .customize-control-spacing .left .selectize-control.single .selectize-input:after,
+  .customize-control-spacing .right .selectize-control.single .selectize-input:after {
+    display: none; }
   .customize-control-spacing .top .inner,
   .customize-control-spacing .bottom .inner,
   .customize-control-spacing .left .inner,
   .customize-control-spacing .right .inner {
     border: 1px solid rgba(0, 0, 0, 0.067);
     border-radius: 3px;
-    padding: 2px; }
+    padding: 2px;
+    height: 37px; }
   .customize-control-spacing .top .dashicons,
   .customize-control-spacing .bottom .dashicons,
   .customize-control-spacing .left .dashicons,
   .customize-control-spacing .right .dashicons {
-    width: 15px;
-    margin-left: -5px;
-    margin-top: 5px; }
+    width: 20px;
+    line-height: 36px; }
+.customize-control-spacing .right input[type="number"] {
+  top: 0 !important; }
 
 .customize-control-switch input[type="checkbox"] {
   display: none; }

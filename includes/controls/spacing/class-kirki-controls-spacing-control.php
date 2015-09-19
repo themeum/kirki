@@ -59,89 +59,91 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="wrapper">
-				<# if ( data.choices['top'] ) { #>
-					<div class="top">
-						<h5>{{ data.l10n['top'] }}</h5>
-						<div class="inner">
-							<span class="dashicons dashicons-arrow-up"></span>
-							<input type="number" min="0" step="any" value="{{ parseFloat( data.value['top'] ) }}"/>
-							<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['top'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+				<div class="control">
+					<# if ( data.choices['top'] ) { #>
+						<div class="top">
+							<h5>{{ data.l10n['top'] }}</h5>
+							<div class="inner">
+								<span class="dashicons dashicons-arrow-up-alt"></span>
+								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['top'] ) }}"/>
+								<select>
+								<# if ( data.choices['units'] ) { #>
+									<# for ( key in data.choices['units'] ) { #>
+										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['top'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+									<# } #>
+								<# } else { #>
+									<option value="px" <# if ( _.contains( data.value['top'], 'px' ) ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( _.contains( data.value['top'], 'em' ) ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( _.contains( data.value['top'], '%' ) ) { #> selected <# } #>>%</option>
 								<# } #>
-							<# } else { #>
-								<option value="px" <# if ( _.contains( data.value['top'], 'px' ) ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( _.contains( data.value['top'], 'em' ) ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( _.contains( data.value['top'], '%' ) ) { #> selected <# } #>>%</option>
-							<# } #>
-							</select>
+								</select>
+							</div>
 						</div>
-					</div>
-				<# } #>
+					<# } #>
 
-				<# if ( data.choices['bottom'] ) { #>
-					<div class="bottom">
-						<h5>{{ data.l10n['bottom'] }}</h5>
-						<div class="inner">
-							<span class="dashicons dashicons-arrow-down"></span>
-							<input type="number" min="0" step="any" value="{{ parseFloat( data.value['bottom'] ) }}"/>
-							<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['bottom'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+					<# if ( data.choices['bottom'] ) { #>
+						<div class="bottom">
+							<h5>{{ data.l10n['bottom'] }}</h5>
+							<div class="inner">
+								<span class="dashicons dashicons-arrow-down-alt"></span>
+								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['bottom'] ) }}"/>
+								<select>
+								<# if ( data.choices['units'] ) { #>
+									<# for ( key in data.choices['units'] ) { #>
+										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['bottom'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+									<# } #>
+								<# } else { #>
+									<option value="px" <# if ( _.contains( data.value['bottom'], 'px' ) ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( _.contains( data.value['bottom'], 'em' ) ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( _.contains( data.value['bottom'], '%' ) ) { #> selected <# } #>>%</option>
 								<# } #>
-							<# } else { #>
-								<option value="px" <# if ( _.contains( data.value['bottom'], 'px' ) ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( _.contains( data.value['bottom'], 'em' ) ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( _.contains( data.value['bottom'], '%' ) ) { #> selected <# } #>>%</option>
-							<# } #>
-							</select>
+								</select>
+							</div>
 						</div>
-					</div>
-				<# } #>
+					<# } #>
 
-				<# if ( data.choices['left'] ) { #>
-					<div class="left">
-						<h5>{{ data.l10n['left'] }}</h5>
-						<div class="inner">
-							<span class="dashicons dashicons-arrow-left"></span>
-							<input type="number" min="0" step="any" value="{{ parseFloat( data.value['left'] ) }}"/>
-							<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['left'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+					<# if ( data.choices['left'] ) { #>
+						<div class="left">
+							<h5>{{ data.l10n['left'] }}</h5>
+							<div class="inner">
+								<span class="dashicons dashicons-arrow-left-alt"></span>
+								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['left'] ) }}"/>
+								<select>
+								<# if ( data.choices['units'] ) { #>
+									<# for ( key in data.choices['units'] ) { #>
+										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['left'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+									<# } #>
+								<# } else { #>
+									<option value="px" <# if ( _.contains( data.value['left'], 'px' ) ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( _.contains( data.value['left'], 'em' ) ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( _.contains( data.value['left'], '%' ) ) { #> selected <# } #>>%</option>
 								<# } #>
-							<# } else { #>
-								<option value="px" <# if ( _.contains( data.value['left'], 'px' ) ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( _.contains( data.value['left'], 'em' ) ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( _.contains( data.value['left'], '%' ) ) { #> selected <# } #>>%</option>
-							<# } #>
-							</select>
+								</select>
+							</div>
 						</div>
-					</div>
-				<# } #>
+					<# } #>
 
-				<# if ( data.choices['right'] ) { #>
-					<div class="right">
-						<h5>{{ data.l10n['right'] }}</h5>
-						<div class="inner">
-							<span class="dashicons dashicons-arrow-right"></span>
-							<input type="number" min="0" step="any" value="{{ parseFloat( data.value['right'] ) }}"/>
-							<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['right'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+					<# if ( data.choices['right'] ) { #>
+						<div class="right">
+							<h5>{{ data.l10n['right'] }}</h5>
+							<div class="inner">
+								<span class="dashicons dashicons-arrow-right-alt"></span>
+								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['right'] ) }}"/>
+								<select>
+								<# if ( data.choices['units'] ) { #>
+									<# for ( key in data.choices['units'] ) { #>
+										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['right'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+									<# } #>
+								<# } else { #>
+									<option value="px" <# if ( _.contains( data.value['right'], 'px' ) ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( _.contains( data.value['right'], 'em' ) ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( _.contains( data.value['right'], '%' ) ) { #> selected <# } #>>%</option>
 								<# } #>
-							<# } else { #>
-								<option value="px" <# if ( _.contains( data.value['right'], 'px' ) ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( _.contains( data.value['right'], 'em' ) ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( _.contains( data.value['right'], '%' ) ) { #> selected <# } #>>%</option>
-							<# } #>
-							</select>
+								</select>
+							</div>
 						</div>
-					</div>
-				<# } #>
+					<# } #>
+				</div>
 			</div>
 		</label>
 		<?php

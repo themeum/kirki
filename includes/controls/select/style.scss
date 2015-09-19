@@ -18,15 +18,19 @@
 					content: "\f347";
 					display: block;
 					position: absolute;
-					top: 50%;
-					right: 18px;
-					margin-top: -7px;
-					width: 0;
-					height: 0;
+					top: 0;
+					right: 0;
+					margin-top: 0;
+					width: 12px;
+					height: 36px;
 					font-family: dashicons;
+					border-left: 1px solid rgba(0,0,0,.06);
+					line-height: 36px;
+					padding: 0 3px;
 				}
 				&.dropdown-active:after {
 					content: "\f343";
+					border-left: 1px solid rgba(0,0,0,.1);
 				}
 				&.disabled {
 					opacity: 0.5;

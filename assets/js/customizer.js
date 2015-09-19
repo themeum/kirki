@@ -778,6 +778,9 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 			compiled_value['right']    = control.setting._value['right'];
 		}
 
+		// use selectize
+		jQuery( '.customize-control-spacing select' ).selectize();
+
 		// top
 		if ( control.container.has( '.top' ).size() ) {
 			var top_numeric_value = control.container.find('.top input[type=number]' ).val();
