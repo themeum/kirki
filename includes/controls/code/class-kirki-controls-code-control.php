@@ -55,18 +55,7 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{ data.description }}</span>
 			<# } #>
-			<textarea {{{ data.link }}} data-editor="{{ data.choices['language'] }}" data-theme="{{ data.choices['theme'] }}" height="{{ data.choices['height'] }}" rows="15">
-				<#
-				/**
-				 * This is a CODE EDITOR.
-				 * As such, we will not be escaping anything by default.
-				 *
-				 * It can be used for custom CSS, custom JS and even custom PHP depending on the implementation.
-				 * It's up to the theme/plugin developer to properly sanitize it depending on the use case.
-				 */
-				#>
-				{{ data.value }}
-			</textarea>
+			<textarea {{{ data.link }}} data-editor="{{ data.choices['language'] }}" data-theme="{{ data.choices['theme'] }}" height="{{ data.choices['height'] }}" rows="15">{{ data.value }}</textarea>
 		</label>
 		<#
 		/**
