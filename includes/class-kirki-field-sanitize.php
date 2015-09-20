@@ -51,6 +51,7 @@ class Kirki_Field_Sanitize {
 			'capability'        => 'edit_theme_options',
 			'variables'         => null,
 			'active_callback'   => '__return_true',
+			'multiple'          => 1,
 		);
 		/**
 		 * Field type has to run before the others to accomodate older implementations
@@ -79,6 +80,7 @@ class Kirki_Field_Sanitize {
 		$field['capability']        = self::sanitize_capability( $field );
 		$field['variables']         = ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null;
 		$field['active_callback']   = self::sanitize_active_callback( $field );
+		$field['multiple']          = ( isset( $field['multiple'] ) ) ? intval( $field['multiple'] ) : 1;
 
 		return $field;
 

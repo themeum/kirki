@@ -61,5 +61,4 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 		</label>
 		<?php
 	}
-
 }

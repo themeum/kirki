@@ -26,13 +26,13 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 		}
 
 		this.container.on( 'change', 'select', function() {
-			if ( 1 < multiple ) {
+			if ( multiple > 1 ) {
 				var select_value = kirkiArrayToObject( jQuery( this ).val() );
 			} else {
 				var select_value = jQuery( this ).val();
 			}
-			control.setting.set( select_value );
 			console.log( select_value );
+			control.setting.set( select_value );
 		});
 	}
 });

@@ -98,7 +98,7 @@
          ?>
         <div class="sortable demo">
             <h4><?php _e( 'sortable:', 'kirki-demo' ); ?></h4>
-            <?php $sortable_value = get_theme_mod( 'sortable_demo', array( 'option-1', 'option-3' ) ); ?>
+            <?php $sortable_value = maybe_unserialize( get_theme_mod( 'sortable_demo', array( 'option-1', 'option-3' ) ) ); ?>
             <?php if ( ! empty( $sortable_value ) ) : ?>
                 <ul>
                     <?php foreach ( $sortable_value as $checked_value ) : ?>
