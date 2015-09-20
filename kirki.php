@@ -37,31 +37,43 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 	 * Finds the path to a class that we're requiring and includes the file.
 	 */
 	function kirki_autoload_classes( $class_name ) {
-		$foldername = '';
+		$paths = array();
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
-			// Autoload Controls
-			if ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) {
-				$foldername = 'controls' . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) );
-			}
-			if ( '' != $foldername ) {
-				$foldername .= DIRECTORY_SEPARATOR;
+			$replacements = array(
+				'Controls',
+				'Scripts',
+				'Settings',
+				'Styles',
+			);
+
+			$path     = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
+
+			$paths[] = $path . $filename;
+
+			foreach ( $replacements as $replacement ) {
+				if ( 0 === stripos( $class_name, 'Kirki_' . $replacement ) ) {
+					$substr   = str_replace( 'Kirki_' . $replacement, '', $class_name );
+					$exploded = explode( '_', $substr );
+
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . $filename;
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_' . $replacement, '', str_replace( 'Kirki_' . $replacement . '_', '', $class_name ) ) ) ) . DIRECTORY_SEPARATOR . $filename;
+					if ( isset( $exploded[1] ) ) {
+						$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . $filename;
+						if ( isset( $exploded[2] ) ) {
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . '-' .  strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+						}
+					}
+				}
 			}
 
-			$class_path = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $foldername . 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
-			if ( file_exists( $class_path ) ) {
-				include $class_path;
-				return;
-			}
-
-			// Autoload Settings
-			$foldername = ( 0 === stripos( $class_name, 'Kirki_Settings_' ) ) ? 'settings'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Setting', '', str_replace( 'Kirki_Settings_', '', $class_name ) ) ) ) : '';
-			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
-
-			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
-			if ( file_exists( $class_path ) ) {
-				include $class_path;
-				return;
+			foreach ( $paths as $path ) {
+				if ( file_exists( $path ) ) {
+					include $path;
+					return;
+				}
 			}
 
 		}
