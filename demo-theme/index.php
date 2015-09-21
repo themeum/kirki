@@ -5,6 +5,15 @@
  *
  * Please visit the WordPress Customizer
  */
+
+if ( ! class_exists( 'Kirki' ) ) {
+    die( __( 'Please enable the Kirki Plugin in order to see the demo in the Customizer', 'kirki-demo' ) );
+}
+global $wp_customize;
+if ( ! $wp_customize ) {
+    wp_redirect( trailingslashit( admin_url() ) . 'customize.php' );
+    exit;
+}
 ?>
 <head>
     <?php wp_head(); ?>
