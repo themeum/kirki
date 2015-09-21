@@ -465,7 +465,7 @@ class Kirki_Field_Sanitize {
 			case 'select':
 			case 'select2':
 			case 'palette':
-				$sanitize_callback = 'esc_attr';
+				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
 				break;
 			case 'dropdown-pages':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );

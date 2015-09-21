@@ -16,7 +16,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 		var element  = this.container.find( 'select' );
 		var multiple = parseInt( element.data( 'multiple' ) );
 
-		if ( 1 < multiple ) {
+		if ( multiple > 1 ) {
 			jQuery( element ).selectize({
 				maxItems: multiple,
 				plugins: ['remove_button', 'drag_drop']

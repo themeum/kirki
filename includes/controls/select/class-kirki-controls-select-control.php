@@ -40,6 +40,8 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 	}
 
 	protected function content_template() { ?>
+
+		<# if ( ! data.choices ) return; #>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{ data.label }}</span>
