@@ -50,7 +50,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 			foreach ( $field['output'] as $output ) {
 
-				if ( in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
+				if ( ( 'typography' == $field['type'] ) || in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
 					/**
 					 * Get the value of the field
 					 */
@@ -61,28 +61,34 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 					}
 					$value = Kirki::get_option( $config_id, $settings );
 
-					if ( 'font-family' == $output['property'] ) {
-						/**
-						 * Add the font-family to the array
-						 */
-						$fonts[]['font-family'] = $value;
-					} else if ( 'font-weight' == $output['property'] ) {
-						/**
-						 * Add font-weight to the array
-						 */
-						$fonts[]['font-weight'] = $value;
-					} else if ( 'font-subset' == $output['property'] ) {
-						/**
-						 * add font subsets to the array
-						 */
-						$fonts[]['subsets'] = $value;
-					} elseif ( 'typography' == $field['type'] ) {
+					if ( 'typography' == $field['type'] ) {
+
 						if ( isset( $value['font-family'] ) ) {
 							$fonts[]['font-family'] = $value['font-family'];
 						}
 						if ( isset( $value['font-weight'] ) ) {
 							$fonts[]['font-weight'] = $value['font-weight'];
 						}
+
+					} else {
+
+						if ( 'font-family' == $output['property'] ) {
+							/**
+							 * Add the font-family to the array
+							 */
+							$fonts[]['font-family'] = $value;
+						} else if ( 'font-weight' == $output['property'] ) {
+							/**
+							 * Add font-weight to the array
+							 */
+							$fonts[]['font-weight'] = $value;
+						} else if ( 'font-subset' == $output['property'] ) {
+							/**
+							 * add font subsets to the array
+							 */
+							$fonts[]['subsets'] = $value;
+						}
+
 					}
 
 				}
