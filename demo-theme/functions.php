@@ -4,7 +4,7 @@
  * Add the theme's styles.css
  */
 function theme_name_scripts() {
-	wp_enqueue_style( 'kirki-demo', get_stylesheet_uri() );
+	wp_enqueue_style( 'kirki-demo', get_stylesheet_uri(), array(), time() );
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
@@ -13,13 +13,13 @@ if ( class_exists( 'Kirki' ) ) {
      * Add sections
      */
     Kirki::add_section( 'checkbox', array(
-        'title'          => __( 'Checkbox Control', 'kirki-demo' ),
+        'title'          => __( 'Checkbox Controls', 'kirki-demo' ),
         'priority'       => 1,
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'code', array(
-        'title'          => __( 'Code Control', 'kirki-demo' ),
+    Kirki::add_section( 'text', array(
+        'title'          => __( 'Text Controls', 'kirki-demo' ),
         'priority'       => 2,
         'capability'     => 'edit_theme_options',
     ) );
@@ -30,63 +30,33 @@ if ( class_exists( 'Kirki' ) ) {
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'custom', array(
-        'title'          => __( 'Custom Control', 'kirki-demo' ),
+	Kirki::add_section( 'numeric', array(
+        'title'          => __( 'Numeric Controls', 'kirki-demo' ),
         'priority'       => 4,
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'dimension', array(
-        'title'          => __( 'Dimension Control', 'kirki-demo' ),
+	Kirki::add_section( 'radio', array(
+        'title'          => __( 'Radio Controls', 'kirki-demo' ),
         'priority'       => 5,
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'text', array(
-        'title'          => __( 'Text Controls', 'kirki-demo' ),
+	Kirki::add_section( 'select', array(
+        'title'          => __( 'Select Controls', 'kirki-demo' ),
         'priority'       => 6,
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'multicheck', array(
-        'title'          => __( 'Multicheck Control', 'kirki-demo' ),
+	Kirki::add_section( 'composite', array(
+        'title'          => __( 'Composite Controls', 'kirki-demo' ),
         'priority'       => 7,
         'capability'     => 'edit_theme_options',
     ) );
 
-    Kirki::add_section( 'number', array(
-        'title'          => __( 'Number Control', 'kirki-demo' ),
-        'priority'       => 8,
-        'capability'     => 'edit_theme_options',
-    ) );
-
-    Kirki::add_section( 'palette', array(
-        'title'          => __( 'Palette Control', 'kirki-demo' ),
-        'priority'       => 9,
-        'capability'     => 'edit_theme_options',
-    ) );
-
-    Kirki::add_section( 'radio', array(
-        'title'          => __( 'Radio Control', 'kirki-demo' ),
-        'priority'       => 10,
-        'capability'     => 'edit_theme_options',
-    ) );
-
-    Kirki::add_section( 'repeater', array(
-        'title'          => __( 'Repeater Control', 'kirki-demo' ),
-        'priority'       => 10,
-        'capability'     => 'edit_theme_options',
-    ) );
-
-    Kirki::add_section( 'select', array(
-        'title'          => __( 'Select Controls', 'kirki-demo' ),
-        'priority'       => 10,
-        'capability'     => 'edit_theme_options',
-    ) );
-
-    Kirki::add_section( 'typography', array(
-        'title'          => __( 'Typography Control', 'kirki-demo' ),
-        'priority'       => 10,
+    Kirki::add_section( 'custom', array(
+        'title'          => __( 'Custom Control', 'kirki-demo' ),
+        'priority'       => 4,
         'capability'     => 'edit_theme_options',
     ) );
 
@@ -107,7 +77,7 @@ if ( class_exists( 'Kirki' ) ) {
         'type'        => 'checkbox',
         'settings'    => 'checkbox_demo',
         'label'       => __( 'Checkbox demo', 'kirki' ),
-        'description' => __( 'This is the control description', 'kirki-demo' ),
+        'description' => __( 'This is a simple checkbox', 'kirki-demo' ),
         'section'     => 'checkbox',
         'default'     => true,
         'priority'    => 10,
@@ -117,7 +87,7 @@ if ( class_exists( 'Kirki' ) ) {
         'type'        => 'switch',
         'settings'    => 'switch_demo',
         'label'       => __( 'Switch demo', 'kirki' ),
-        'description' => __( 'This is the control description', 'kirki-demo' ),
+        'description' => __( 'This is a switch control. Internally it is a checkbox and you can also change the ON/OFF labels.', 'kirki-demo' ),
         'section'     => 'checkbox',
         'default'     => true,
         'priority'    => 10,
@@ -127,18 +97,47 @@ if ( class_exists( 'Kirki' ) ) {
         'type'        => 'toggle',
         'settings'    => 'toggle_demo',
         'label'       => __( 'Toggle demo', 'kirki' ),
-        'description' => __( 'This is the control description', 'kirki-demo' ),
+        'description' => __( 'This is a toggle. it is basically identical to a switch, the only difference is that it does not have any labels and to save space it is inline with the label. Internally this is a checkbox.', 'kirki-demo' ),
         'section'     => 'checkbox',
         'default'     => true,
         'priority'    => 10,
     ) );
 
+	Kirki::add_field( 'kirki_demo', array(
+    	'type'        => 'text',
+    	'settings'    => 'text_demo',
+    	'label'       => __( 'Text Control', 'kirki-demo' ),
+		'default'     => __( 'This text is entered in the "text" control.', 'kirki-demo' ),
+    	'section'     => 'text',
+    	'default'     => '',
+    	'priority'    => 10,
+    ) );
+
+	Kirki::add_field( 'kirki_demo', array(
+    	'type'        => 'textarea',
+    	'settings'    => 'textarea_demo',
+    	'label'       => __( 'Textarea Control', 'kirki-demo' ),
+		'default'     => __( 'This text is entered in the "textarea" control.', 'kirki-demo' ),
+    	'section'     => 'text',
+    	'default'     => '',
+    	'priority'    => 10,
+    ) );
+
+	Kirki::add_field( 'kirki_demo', array(
+    	'type'        => 'editor',
+    	'settings'    => 'editor_demo',
+    	'label'       => __( 'Editor Control', 'kirki-demo' ),
+    	'section'     => 'text',
+    	'default'     => __( 'This text is entered in the "editor" control.', 'kirki-demo' ),
+    	'priority'    => 10,
+    ) );
+
     Kirki::add_field( 'kirki_demo', array(
         'type'        => 'code',
         'settings'    => 'code_demo',
-        'label'       => __( 'Code demo', 'kirki' ),
-        'description' => __( 'Enter some custom CSS', 'kirki-demo' ),
-        'section'     => 'code',
+        'label'       => __( 'Code Control', 'kirki' ),
+        'description' => __( 'This is a cimple code control. You can define the language you want as well as the theme. For a full list of available languages and themes see http://ace.c9.io/build/kitchen-sink.html. In this demo we are using a CSS editor with the monokai theme.', 'kirki-demo' ),
+        'section'     => 'text',
         'default'     => 'body { background: #fff; }',
         'priority'    => 10,
         'choices'     => array(
@@ -150,7 +149,8 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
         'type'        => 'color',
         'settings'    => 'color_demo',
-        'label'       => __( 'Color demo', 'kirki' ),
+        'label'       => __( 'Color Control', 'kirki' ),
+		'description' => __( 'This uses the default WordPress-core color control.', 'kirki-demo' ),
         'section'     => 'color',
         'default'     => '#81d742',
         'priority'    => 10,
@@ -160,6 +160,7 @@ if ( class_exists( 'Kirki' ) ) {
                 'property' => 'color',
             ),
         ),
+		'transport'   => 'postMessage',
         'js_vars'     => array(
             array(
                 'element'  => '.demo.color p',
@@ -172,7 +173,8 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
         'type'        => 'color-alpha',
         'settings'    => 'color_alpha_demo',
-        'label'       => __( 'Color-Alpha demo', 'kirki' ),
+        'label'       => __( 'Color-Alpha Control', 'kirki' ),
+		'description' => __( 'Similar to the default Color control but with a teist: This one allows you to also select an opacity for the color and saves the value as HEX or RGBA depending on the alpha channel\'s value.', 'kirki-demo' ),
         'section'     => 'color',
         'default'     => '#333333',
         'priority'    => 10,
@@ -182,6 +184,7 @@ if ( class_exists( 'Kirki' ) ) {
                 'property' => 'background-color',
             ),
         ),
+		'transport'   => 'postMessage',
         'js_vars'     => array(
             array(
                 'element'  => '.demo.color',
@@ -194,7 +197,7 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'custom',
     	'settings'    => 'custom_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
+    	'label'       => __( 'Custom Control', 'kirki-demo' ),
     	'description' => __( 'This is the control description', 'kirki-demo' ),
     	'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki-demo' ),
     	'section'     => 'custom',
@@ -205,9 +208,9 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
         'type'        => 'dimension',
         'settings'    => 'dimension_demo',
-        'label'       => __( 'This is the label', 'kirki' ),
-        'description' => __( 'This controls the width of the body', 'kirki-demo' ),
-        'section'     => 'dimension',
+        'label'       => __( 'Dimension Control', 'kirki' ),
+        'description' => __( 'In this example we are changing the width of the body', 'kirki-demo' ),
+        'section'     => 'composite',
         'default'     => '980px',
         'priority'    => 10,
         'output'      => array(
@@ -216,22 +219,22 @@ if ( class_exists( 'Kirki' ) ) {
                 'property' => 'width',
             ),
         ),
-    ) );
-
-    Kirki::add_field( 'kirki_demo', array(
-    	'type'        => 'editor',
-    	'settings'    => 'editor_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'text',
-    	'default'     => __( 'This text is entered in the "editor" control.', 'kirki-demo' ),
-    	'priority'    => 10,
+		'transport'   => 'postMessage',
+		'js_vars'     => array(
+			array(
+				'element'  => 'body',
+				'property' => 'width',
+				'function' => 'css',
+			),
+		),
     ) );
 
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'multicheck',
     	'settings'    => 'multicheck_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'multicheck',
+    	'label'       => __( 'Multicheck control', 'kirki-demo' ),
+		'description' => __( 'You can define choices for this control and it will save the selected values as an array.', 'kirki-demo' ),
+    	'section'     => 'checkbox',
     	'default'     => array( 'option-1', 'option-3' ),
     	'priority'    => 10,
         'choices'     => array(
@@ -246,8 +249,9 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'sortable',
     	'settings'    => 'sortable_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'multicheck',
+    	'label'       => __( 'Sortable Control', 'kirki-demo' ),
+    	'section'     => 'checkbox',
+		'description' => __( 'Similar to the "multicheck" control, you can define choices foir this control and the options will be saved as an array. The main difference between the multicheck control and this one is that this one also allows you to rearrange the order of the items.', 'kirki-demo' ),
     	'default'     => array( 'option-1', 'option-3' ),
     	'priority'    => 10,
         'choices'     => array(
@@ -262,8 +266,9 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'number',
     	'settings'    => 'number_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'number',
+    	'label'       => __( 'Number Control', 'kirki-demo' ),
+		'description' => __( 'This is a simple num,ber control that allows you to select integer values.', 'kirki-demo' ),
+    	'section'     => 'numeric',
     	'default'     => '10',
     	'priority'    => 10,
         'output'      => array(
@@ -273,6 +278,15 @@ if ( class_exists( 'Kirki' ) ) {
                 'units'    => 'px',
             ),
         ),
+		'transport'    => 'postMessage',
+		'js_vars'      => array(
+			array(
+				'element'  => '.number-demo-border-radius',
+				'property' => 'border-radius',
+				'units'    => 'px',
+				'function' => 'css',
+			),
+		),
         'choices'      => array(
             'min'  => 0,
             'max'  => 30,
@@ -283,8 +297,9 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'slider',
     	'settings'    => 'slider_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'number',
+    	'label'       => __( 'Slider Control', 'kirki-demo' ),
+		'description' => __( 'Similar to the number control. The main difference is that on this one you can define a min, max & step value thus allowing you to use decimal values instead of just integers.', 'kirki-demo' ),
+    	'section'     => 'numeric',
     	'default'     => '10',
     	'priority'    => 10,
         'output'      => array(
@@ -294,6 +309,15 @@ if ( class_exists( 'Kirki' ) ) {
                 'units'    => 'px',
             ),
         ),
+		'transport'    => 'postMessage',
+		'js_vars'      => array(
+			array(
+				'element'  => '.slider-demo-border-radius',
+				'property' => 'border-radius',
+				'units'    => 'px',
+				'function' => 'css',
+			),
+		),
         'choices'      => array(
             'min'  => 0,
             'max'  => 30,
@@ -301,7 +325,52 @@ if ( class_exists( 'Kirki' ) ) {
         )
     ) );
 
-    function kirki_demo_get_palettes() {
+	Kirki::add_field( 'kirki_demo', array(
+    	'type'        => 'radio',
+    	'settings'    => 'radio_demo',
+    	'label'       => __( 'Radio Control', 'kirki-demo' ),
+		'description' => __( 'A simple radio-inputs control.', 'kirki-demo' ),
+    	'section'     => 'radio',
+    	'default'     => 'red',
+    	'priority'    => 10,
+        'choices'     => array(
+            'red'   => __( 'Red', 'kirki-demo' ),
+            'green' => __( 'Green', 'kirki-demo' ),
+            'blue'  => __( 'Blue', 'kirki-demo' ),
+        ),
+    ) );
+
+    Kirki::add_field( 'kirki_demo', array(
+    	'type'        => 'radio-buttonset',
+    	'settings'    => 'radio_buttonset_demo',
+    	'label'       => __( 'Radio-Buttonset Control', 'kirki-demo' ),
+		'description' => __( 'This is a radio control styled as inline buttons. You can use this if you have few options with short titles that will fit in a single line.', 'kirki-demo' ),
+    	'section'     => 'radio',
+    	'default'     => 'green',
+    	'priority'    => 10,
+        'choices'     => array(
+            'red'   => __( 'Red', 'kirki-demo' ),
+            'green' => __( 'Green', 'kirki-demo' ),
+            'blue'  => __( 'Blue', 'kirki-demo' ),
+        ),
+    ) );
+
+    Kirki::add_field( 'kirki_demo', array(
+        'type'        => 'radio-image',
+        'settings'    => 'radio_image_demo',
+        'label'       => __( 'Radio-Image Control', 'kirki' ),
+		'description' => __( 'This is a radio control that allows you to define an image for every option is the array of choices in the field. Useful if you want for example to select a layout. You can even use the images included in the Kirki plugin for that, in the /assets/images directory.', 'kirki-demo' ),
+        'section'     => 'radio',
+        'default'     => 'left',
+        'priority'    => 10,
+        'choices'     => array(
+            'left'   => admin_url() . '/images/align-left-2x.png',
+            'center' => admin_url() . '/images/align-center-2x.png',
+            'right'  => admin_url() . '/images/align-right-2x.png',
+        ),
+    ) );
+
+	function kirki_demo_get_palettes() {
         return array(
             'light' => array(
                 '#ECEFF1',
@@ -318,59 +387,49 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( '', array(
         'type'        => 'palette',
         'settings'     => 'palette_demo',
-        'label'       => __( 'This is the label', 'kirki' ),
-        'section'     => 'palette',
+        'label'       => __( 'Palette Control', 'kirki' ),
+		'description' => __( 'This is basically a radio control. It allows you to define an array of colors that will be used in order to convey your message in a visually compelling way.', 'kirki-demo' ),
+        'section'     => 'radio',
         'default'     => 'light',
         'priority'    => 10,
         'choices'     => kirki_demo_get_palettes(),
     ) );
 
-    Kirki::add_field( 'kirki_demo', array(
-    	'type'        => 'radio',
-    	'settings'    => 'radio_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'radio',
-    	'default'     => 'red',
-    	'priority'    => 10,
-        'choices'     => array(
-            'red'   => __( 'Red', 'kirki-demo' ),
-            'green' => __( 'Green', 'kirki-demo' ),
-            'blue'  => __( 'Blue', 'kirki-demo' ),
+	Kirki::add_field( 'kirki_demo', array(
+        'type'        => 'typography',
+        'settings'    => 'typography_demo',
+        'label'       => __( 'Typography Control', 'kirki' ),
+        'description' => __( 'This is a composite typography control. It saves the data as an array, and you can define which of the controls you want shown.', 'kirki' ),
+        'section'     => 'composite',
+        'default'     => array(
+            'font-style'     => array( 'bold', 'italic' ),
+            'font-family'    => 'Roboto',
+            'font-size'      => '14',
+            'font-weight'    => '400',
+            'line-height'    => '1.5',
+            'letter-spacing' => '0',
         ),
-    ) );
-
-    Kirki::add_field( 'kirki_demo', array(
-    	'type'        => 'radio-buttonset',
-    	'settings'    => 'radio_buttonset_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
-    	'section'     => 'radio',
-    	'default'     => 'green',
-    	'priority'    => 10,
-        'choices'     => array(
-            'red'   => __( 'Red', 'kirki-demo' ),
-            'green' => __( 'Green', 'kirki-demo' ),
-            'blue'  => __( 'Blue', 'kirki-demo' ),
-        ),
-    ) );
-
-    Kirki::add_field( 'kirki_demo', array(
-        'type'        => 'radio-image',
-        'settings'    => 'radio_image_demo',
-        'label'       => __( 'Radio-Image', 'kirki' ),
-        'section'     => 'radio',
-        'default'     => 'left',
         'priority'    => 10,
         'choices'     => array(
-            'left'   => admin_url().'/images/align-left-2x.png',
-            'center' => admin_url().'/images/align-center-2x.png',
-            'right'  => admin_url().'/images/align-right-2x.png',
+            'font-style'     => true,
+            'font-family'    => true,
+            'font-size'      => true,
+            'font-weight'    => true,
+            'line-height'    => true,
+            'letter-spacing' => true,
+        ),
+        'output' => array(
+            array(
+                'element' => 'body',
+            ),
         ),
     ) );
 
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'repeater',
-    	'label'       => __( 'This is the label', 'kirki' ),
-    	'section'     => 'repeater',
+    	'label'       => __( 'Repeater Control', 'kirki' ),
+		'description' => __( 'The "repeater" control allows you to create rows of data and you can define the fields that the rows will use. Valide field-types are: text, checkbox, radio, select, textarea. The data is saves as a multi-dimentional array.'),
+    	'section'     => 'composite',
         'priority'    => 10,
     	'settings'    => 'repeater_demo',
     	'default'     => array(
@@ -402,7 +461,8 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'select',
     	'settings'    => 'select_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
+    	'label'       => __( 'Select Control', 'kirki-demo' ),
+		'description' => __( 'A simple select (dropdown) control, allowing you to make a single option from a relatively large pool of options.', 'kirki-demo' ),
     	'section'     => 'select',
     	'default'     => 'green',
     	'priority'    => 10,
@@ -416,7 +476,8 @@ if ( class_exists( 'Kirki' ) ) {
     Kirki::add_field( 'kirki_demo', array(
     	'type'        => 'select',
     	'settings'    => 'select_multiple_demo',
-    	'label'       => __( 'This is the label', 'kirki-demo' ),
+    	'label'       => __( 'Select Control (multiple)', 'kirki-demo' ),
+		'description' => __( 'A multi-select control, allowing you to select multiple items simultaneously as well as re-arrange them at will using a simple drag-n-drop interface. Data is saved as an array.', 'kirki-demo' ),
     	'section'     => 'select',
     	'default'     => array( 'option-1' ),
     	'priority'    => 10,
@@ -430,62 +491,4 @@ if ( class_exists( 'Kirki' ) ) {
         ),
     ) );
 
-    Kirki::add_field( 'kirki_demo', array(
-        'type'        => 'typography',
-        'settings'    => 'typography_demo',
-        'label'       => __( 'Typography Control', 'kirki' ),
-        'description' => __( 'This is the control description', 'kirki' ),
-        'help'        => __( 'This is some extra help. You can use this to add some additional instructions for users. The main description should go in the "description" of the field, this is only to be used for help tips.', 'kirki' ),
-        'section'     => 'typography',
-        'default'     => array(
-            'font-style'     => array( 'bold', 'italic' ),
-            'font-family'    => 'Roboto',
-            'font-size'      => '14',
-            'font-weight'    => '400',
-            'line-height'    => '1.5',
-            'letter-spacing' => '0',
-        ),
-        'priority'    => 10,
-        'choices'     => array(
-            'font-style'     => true,
-            'font-family'    => true,
-            'font-size'      => true,
-            'font-weight'    => true,
-            'line-height'    => true,
-            'letter-spacing' => true,
-        ),
-        'output' => array(
-            array(
-                'element' => 'body',
-            ),
-        ),
-    ) );
-
-
-
-    Kirki::add_field( 'kirki_demo', array(
-    	'type'        => 'repeater',
-    	'label'       => __( 'Social Media', 'kirki' ),
-    	'section'     => 'my-section',
-        'priority'    => 10,
-    	'settings'    => 'social_networks',
-    	'default'     => array(),
-    	'fields' => array(
-    		'network' => array(
-                'type'        => 'select',
-    			'label'       => __( 'Social Network', 'kirki-demo' ),
-    			'default'     => 'facebook',
-                'choices'     => array(
-                    'facebook'    => 'Facebook',
-                    'twitter'     => 'Twitter',
-                    'google-plus' => 'Google+'
-                ),
-    		),
-    		'url' => array(
-                'type'        => 'text',
-    			'label'       => __( 'Link URL', 'kirki-demo' ),
-    			'default'     => 'https://'
-    		),
-    	)
-    ) );
 }

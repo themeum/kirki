@@ -28,7 +28,7 @@ if ( ! $wp_customize ) {
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper checkbox-controls">
         <?php
         /**
          * Checkbox control demo
@@ -56,25 +56,6 @@ if ( ! $wp_customize ) {
                     ( get_theme_mod( 'toggle_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' )
                 ); ?>
             </div>
-        </div>
-        <?php
-        /**
-         * Color & Color-Alpha control demos
-         */
-        ?>
-        <div class="color demo">
-            <h4><?php _e( 'color & color-alpha:', 'kirki-demo' ); ?></h4>
-            <p><?php _e( 'Change the "color" control to make the color of this text change', 'kirki-demo' ); ?></p>
-            <p><?php _e( 'Change the "color-alpha" control to make the background of this text change' ); ?></p>
-        </div>
-        <?php
-        /**
-         * Editor control demo
-         */
-         ?>
-        <div class="editor demo">
-            <h4><?php _e( 'editor:', 'kirki-demo' ); ?></h4>
-            <?php echo html_entity_decode( get_theme_mod( 'editor_demo', __( 'This text is entered in the "editor" control.', 'kirki-demo' ) ) ); ?>
         </div>
         <?php
         /**
@@ -124,6 +105,52 @@ if ( ! $wp_customize ) {
                 <?php endif; ?>
             </p>
         </div>
+    </div>
+    <div class="wrapper text-controls">
+        <?php
+        /**
+         * Text control demo
+         */
+         ?>
+        <div class="editor demo">
+            <h4><?php _e( 'text:', 'kirki-demo' ); ?></h4>
+            <?php echo esc_html( get_theme_mod( 'text_demo', __( 'This text is entered in the "text" control.', 'kirki-demo' ) ) ); ?>
+        </div>
+        <?php
+        /**
+         * Textarea control demo
+         */
+         ?>
+        <div class="editor demo">
+            <h4><?php _e( 'textarea:', 'kirki-demo' ); ?></h4>
+            <?php echo esc_html( get_theme_mod( 'textarea_demo', __( 'This text is entered in the "textarea" control.', 'kirki-demo' ) ) ); ?>
+        </div>
+        <?php
+        /**
+         * Editor control demo
+         */
+         ?>
+        <div class="editor demo">
+            <h4><?php _e( 'editor:', 'kirki-demo' ); ?></h4>
+            <?php echo html_entity_decode( get_theme_mod( 'editor_demo', __( 'This text is entered in the "editor" control.', 'kirki-demo' ) ) ); ?>
+        </div>
+        <div class="code demo invalid">
+            <p><?php _e( 'The "code" control has its CSS applied directly to the page for the purposes of this demo. In order to see the changes, please write some valid CSS and you will see the changes take effect immediately.', 'kirki-demo' ); ?></p>
+        </div>
+    </div>
+    <div class="wrapper color-controls">
+        <?php
+        /**
+         * Color & Color-Alpha control demos
+         */
+        ?>
+        <div class="color demo">
+            <h4><?php _e( 'color & color-alpha:', 'kirki-demo' ); ?></h4>
+            <p><?php _e( 'Change the "color" control to make the color of this text change', 'kirki-demo' ); ?></p>
+            <p><?php _e( 'Change the "color-alpha" control to make the background of this text change' ); ?></p>
+        </div>
+    </div>
+    <div class="wrapper numeric-controls">
         <?php
         /**
          * Number control demo
@@ -146,20 +173,8 @@ if ( ! $wp_customize ) {
             <p><?php _e( 'The border-radius of this colored div will change depending on the value you select', 'kirki-demo' ); ?></p>
             <div class="slider-demo-border-radius"></div>
         </div>
-        <?php
-        /**
-         * Palette control demo
-         */
-        ?>
-        <div class="palette demo">
-            <h4><?php _e( 'palette:', 'kirki-demo' ); ?></h4>
-            <?php $selected_palette = get_theme_mod( 'palette_demo', 'light' ); ?>
-            <p><?php printf( __( 'selected palette: %s', 'kirki-demo' ), esc_attr( $selected_palette ) ); ?></p>
-            <?php $all_palettes = kirki_demo_get_palettes(); ?>
-            <?php foreach ( $all_palettes[ $selected_palette ] as $color ) : ?>
-                <div class="palette-demo-color" style="background-color:<?php echo esc_attr( $color ); ?>"></div>
-            <?php endforeach; ?>
-        </div>
+    </div>
+    <div class="wrapper radio-controls">
         <?php
         /**
          * Radio & radio-buttonset controls demo
@@ -191,6 +206,52 @@ if ( ! $wp_customize ) {
         </div>
         <?php
         /**
+         * Palette control demo
+         */
+        ?>
+        <div class="palette demo">
+            <h4><?php _e( 'palette:', 'kirki-demo' ); ?></h4>
+            <?php $selected_palette = get_theme_mod( 'palette_demo', 'light' ); ?>
+            <p><?php printf( __( 'selected palette: %s', 'kirki-demo' ), esc_attr( $selected_palette ) ); ?></p>
+            <?php $all_palettes = kirki_demo_get_palettes(); ?>
+            <?php foreach ( $all_palettes[ $selected_palette ] as $color ) : ?>
+                <div class="palette-demo-color" style="background-color:<?php echo esc_attr( $color ); ?>"></div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="wrapper select-controls">
+        <?php
+        /**
+         * Select controls demo
+         */
+        ?>
+        <div class="select demo">
+            <h4><?php _e( 'select:', 'kirki-demo' ); ?></h4>
+            <?php printf(
+                __( 'selected option: %s', 'kirki-demo' ),
+                '<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>'
+            ); ?>
+        </div>
+        <div class="select-multiple demo">
+            <h4><?php _e( 'Multiple Select:', 'kirki-demo' ); ?></h4>
+            <?php if ( ! empty( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) ) ) : ?>
+                <ul>
+                    <?php foreach ( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) as $option ) : ?>
+                        <li><?php echo esc_attr( $option ); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="wrapper composite-controls">
+        <div class="dimension demo invalid">
+            <p><?php _e( 'The "dimension" control has its value applied directly as the body\'s width', 'kirki-demo'); ?></p>
+        </div>
+        <div class="typography demo invalid">
+            <p><?php _e( 'The "typography" control has its values applied directly as the body\'s typography ooptions. By changing its value you will see the changes applied to all text on this page.', 'kirki-demo'); ?></p>
+        </div>
+        <?php
+        /**
          * Repeater control demo
          */
         ?>
@@ -209,32 +270,12 @@ if ( ! $wp_customize ) {
             <ul>
             <?php foreach ( $repeater_value as $row ) : ?>
                 <li>
-                    <a href="<?php echo esc_url_raw( $row['link_url'] ); ?>">
+                    <?php if ( isset( $row['link_url'] ) && ! empty( $row['link_url'] ) ) : ?><a href="<?php echo esc_url_raw( $row['link_url'] ); ?>"><?php endif; ?>
                         <?php echo esc_html( $row['link_text'] ); ?>
-                    </a>
+                    <?php if ( isset( $row['link_url'] ) && ! empty( $row['link_url'] ) ) : ?></a><?php endif; ?>
                 </li>
             <?php endforeach; ?>
             </ul>
-        </div>
-        <?php
-        /**
-         * Select controls demo
-         */
-        ?>
-        <div class="select demo">
-            <h4><?php _e( 'select:', 'kirki-demo' ); ?></h4>
-            <?php printf(
-                __( 'selected option: %s', 'kirki-demo' ),
-                '<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>'
-            ); ?>
-            <h4><?php _e( 'Multiple Select:', 'kirki-demo' ); ?></h4>
-            <?php if ( ! empty( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) ) ) : ?>
-                <ul>
-                    <?php foreach ( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) as $option ) : ?>
-                        <li><?php echo esc_attr( $option ); ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
         </div>
     </div>
 </body>
