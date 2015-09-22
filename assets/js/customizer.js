@@ -643,8 +643,10 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
  */
 function kirkiArrayToObject( arr ) {
 	var rv = {};
-	for ( var i = 0; i < arr.length; ++i ) {
-		if ( arr[i] !== undefined ) rv[i] = arr[i];
+	if ( null !== arr ) {
+		for ( var i = 0; i < arr.length; ++i ) {
+			if ( arr[i] !== undefined ) rv[i] = arr[i];
+		}
 	}
 	return rv;
 }
@@ -656,7 +658,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 		var element  = this.container.find( 'select' );
 		var multiple = parseInt( element.data( 'multiple' ) );
 
-		if ( 1 < multiple ) {
+		if ( multiple > 1 ) {
 			jQuery( element ).selectize({
 				maxItems: multiple,
 				plugins: ['remove_button', 'drag_drop']
@@ -666,13 +668,12 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 		}
 
 		this.container.on( 'change', 'select', function() {
-			if ( 1 < multiple ) {
+			if ( multiple > 1 ) {
 				var select_value = kirkiArrayToObject( jQuery( this ).val() );
 			} else {
 				var select_value = jQuery( this ).val();
 			}
 			control.setting.set( select_value );
-			console.log( select_value );
 		});
 	}
 });

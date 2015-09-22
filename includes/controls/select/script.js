@@ -3,8 +3,10 @@
  */
 function kirkiArrayToObject( arr ) {
 	var rv = {};
-	for ( var i = 0; i < arr.length; ++i ) {
-		if ( arr[i] !== undefined ) rv[i] = arr[i];
+	if ( null !== arr ) {
+		for ( var i = 0; i < arr.length; ++i ) {
+			if ( arr[i] !== undefined ) rv[i] = arr[i];
+		}
 	}
 	return rv;
 }
@@ -31,7 +33,6 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 			} else {
 				var select_value = jQuery( this ).val();
 			}
-			console.log( select_value );
 			control.setting.set( select_value );
 		});
 	}

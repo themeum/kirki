@@ -115,6 +115,7 @@
 		}
 		&.multi {
 			.selectize-input {
+				min-height: 36px;
 				&.has-items {
 					padding: 6px 8px 3px;
 				}

@@ -595,23 +595,25 @@ input[type="text"] {
     background: none; }
   .selectize-control .plugin .disabled [data-value] .remove {
     border-left-color: #ffffff; }
-  .selectize-control.multi .selectize-input.has-items {
-    padding: 6px 8px 3px; }
-  .selectize-control.multi .selectize-input > div {
-    cursor: pointer;
-    margin: 0 3px 3px 0;
-    padding: 2px 6px;
-    background: #f2f2f2;
-    color: #303030;
-    border: 0 solid #d0d0d0; }
-    .selectize-control.multi .selectize-input > div.active {
-      background: #e8e8e8;
+  .selectize-control.multi .selectize-input {
+    min-height: 36px; }
+    .selectize-control.multi .selectize-input.has-items {
+      padding: 6px 8px 3px; }
+    .selectize-control.multi .selectize-input > div {
+      cursor: pointer;
+      margin: 0 3px 3px 0;
+      padding: 2px 6px;
+      background: #f2f2f2;
       color: #303030;
-      border: 0 solid #cacaca; }
-  .selectize-control.multi .selectize-input.disabled > div, .selectize-control.multi .selectize-input.disabled > div.active {
-    color: #7d7d7d;
-    background: #ffffff;
-    border: 0 solid #ffffff; }
+      border: 0 solid #d0d0d0; }
+      .selectize-control.multi .selectize-input > div.active {
+        background: #e8e8e8;
+        color: #303030;
+        border: 0 solid #cacaca; }
+    .selectize-control.multi .selectize-input.disabled > div, .selectize-control.multi .selectize-input.disabled > div.active {
+      color: #7d7d7d;
+      background: #ffffff;
+      border: 0 solid #ffffff; }
 .selectize-dropdown {
   position: absolute;
   z-index: 10;
