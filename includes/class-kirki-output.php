@@ -200,7 +200,7 @@ class Kirki_Output {
 					if ( isset( $value['line-height'] ) ) {
 						$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
 					}
-					if ( isset( $value['font-size'] ) ) {
+					if ( isset( $value['letter-spacing'] ) ) {
 						$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
 					}
 				}
