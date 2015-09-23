@@ -112,7 +112,7 @@ if ( ! $wp_customize ) {
          * Text control demo
          */
          ?>
-        <div class="editor demo">
+        <div class="text demo">
             <h4><?php _e( 'text:', 'kirki-demo' ); ?></h4>
             <?php echo esc_html( get_theme_mod( 'text_demo', __( 'This text is entered in the "text" control.', 'kirki-demo' ) ) ); ?>
         </div>
@@ -121,7 +121,7 @@ if ( ! $wp_customize ) {
          * Textarea control demo
          */
          ?>
-        <div class="editor demo">
+        <div class="textarea demo">
             <h4><?php _e( 'textarea:', 'kirki-demo' ); ?></h4>
             <?php echo esc_html( get_theme_mod( 'textarea_demo', __( 'This text is entered in the "textarea" control.', 'kirki-demo' ) ) ); ?>
         </div>

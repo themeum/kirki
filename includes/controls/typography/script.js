@@ -47,6 +47,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					compiled_value['bold'] = false;
 				}
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -60,6 +61,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					compiled_value['italic'] = false;
 				}
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -73,6 +75,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					compiled_value['underline'] = false;
 				}
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -86,6 +89,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					compiled_value['strikethrough'] = false;
 				}
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -95,6 +99,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			this.container.on( 'change', '.font-family select', function() {
 				compiled_value['font-family'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -108,11 +113,13 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				font_size_numeric_value = jQuery( this ).val();
 				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.font-size select', function() {
 				font_size_units_value = jQuery( this ).val();
 				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
+				console.log( compiled_value );
 				control.setting.set( compiled_value );
 				wp.customize.previewer.refresh();
 			});
@@ -123,6 +130,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			this.container.on( 'change', '.font-weight select', function() {
 				compiled_value['font-weight'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -132,6 +140,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			this.container.on( 'change', '.line-height input', function() {
 				compiled_value['line-height'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -145,12 +154,14 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				letter_spacing_numeric_value = jQuery( this ).val();
 				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.letter-spacing select', function() {
 				letter_spacing_units_value = jQuery( this ).val();
 				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
 				control.setting.set( compiled_value );
+				console.log( compiled_value );
 				wp.customize.previewer.refresh();
 			});
 		}

@@ -72,9 +72,10 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['top'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<option value="px" <# if ( _.contains( data.value['top'], 'px' ) ) { #> selected <# } #>>px</option>
-									<option value="em" <# if ( _.contains( data.value['top'], 'em' ) ) { #> selected <# } #>>em</option>
-									<option value="%" <# if ( _.contains( data.value['top'], '%' ) ) { #> selected <# } #>>%</option>
+									<# var units = data.value['top'].replace( parseFloat( data.value['top'] ), '' ); #>
+									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
 								<# } #>
 								</select>
 							</div>
@@ -93,9 +94,10 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['bottom'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<option value="px" <# if ( _.contains( data.value['bottom'], 'px' ) ) { #> selected <# } #>>px</option>
-									<option value="em" <# if ( _.contains( data.value['bottom'], 'em' ) ) { #> selected <# } #>>em</option>
-									<option value="%" <# if ( _.contains( data.value['bottom'], '%' ) ) { #> selected <# } #>>%</option>
+									<# var units = data.value['bottom'].replace( parseFloat( data.value['bottom'] ), '' ); #>
+									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
 								<# } #>
 								</select>
 							</div>
@@ -114,9 +116,10 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['left'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<option value="px" <# if ( _.contains( data.value['left'], 'px' ) ) { #> selected <# } #>>px</option>
-									<option value="em" <# if ( _.contains( data.value['left'], 'em' ) ) { #> selected <# } #>>em</option>
-									<option value="%" <# if ( _.contains( data.value['left'], '%' ) ) { #> selected <# } #>>%</option>
+									<# var units = data.value['left'].replace( parseFloat( data.value['left'] ), '' ); #>
+									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
 								<# } #>
 								</select>
 							</div>
@@ -135,9 +138,10 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['right'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<option value="px" <# if ( _.contains( data.value['right'], 'px' ) ) { #> selected <# } #>>px</option>
-									<option value="em" <# if ( _.contains( data.value['right'], 'em' ) ) { #> selected <# } #>>em</option>
-									<option value="%" <# if ( _.contains( data.value['right'], '%' ) ) { #> selected <# } #>>%</option>
+									<# var units = data.value['right'].replace( parseFloat( data.value['right'] ), '' ); #>
+									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
 								<# } #>
 								</select>
 							</div>
