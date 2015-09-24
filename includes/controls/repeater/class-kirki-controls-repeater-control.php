@@ -59,7 +59,8 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-repeater', trailingslashit( kirki_url() ) . 'includes/controls/repeater/script.js', array( 'jquery', 'customize-base' ), '', true );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-repeater', 'script.js', array( 'jquery', 'customize-base' ), true );
+
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 	}

@@ -31,7 +31,7 @@ class Kirki_Controls_Checkbox_Control extends WP_Customize_Control {
 	}
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-checkbox', trailingslashit( kirki_url() ) . 'includes/controls/checkbox/script.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'checkbox', 'kirki-checkbox', 'script.js', array( 'jquery' ) );
 	}
 
 	protected function content_template() { ?>

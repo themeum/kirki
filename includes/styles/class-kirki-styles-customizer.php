@@ -27,6 +27,7 @@ class Kirki_Styles_Customizer {
 
 	public function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ), 99 );
 	}
 
 	/**
@@ -36,6 +37,36 @@ class Kirki_Styles_Customizer {
 		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, Kirki_Toolkit::$version );
 		wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
 	}
+
+	/**
+	 * Enqueue the scripts required.
+	 */
+	public function customizer_scripts() {
+		if ( ! Kirki_Toolkit::kirki_debug() ) {
+			$suffix = '.min';
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
+				$suffix = '';
+
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ).'assets/css/customizer.' . $suffix . 'js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
+		}
+	}
+
+	/**
+	 * Helper that enqueues a script for a control.
+	 *
+	 * Every Kirki Control should use this function to enqueue
+	 * its main JS file (not dependencies like jQuery or jQuery UI).
+	 *
+	 * These files are only enqueued when debugging Kirki
+	 */
+	public static function enqueue_customizer_control_script( $control, $handle, $file = 'script.js', $deps = array(), $in_footer = false ) {
+		if ( Kirki_Toolkit::kirki_debug() ) {
+			$file = trailingslashit( kirki_url() ) . 'includes/controls/' . $control . '/' . $file;
+			// We are debugging, no need of version or suffix
+			wp_enqueue_script( $handle, $file, $deps, '', $in_footer );
+		}
+	}
+
 
 	/**
 	 * Add custom CSS rules to the head, applying our custom styles
