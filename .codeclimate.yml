@@ -1,14 +1,8 @@
-engines:
-  csslint:
-    enabled: true
-  phpcodesniffer:
-  	enabled: true
-  phpmd:
-  	enabled:true
-
+languages:
+  Ruby: false
+  JavaScript: false
+  PHP: true
 exclude_paths:
   - "assets/*"
-  - "sample-config.php"
-  - "kirki-user-tests.php"
   - "tests/*"
   - "bin/*"
