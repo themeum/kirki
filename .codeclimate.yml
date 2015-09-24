@@ -1,7 +1,11 @@
-languages:
-  Ruby: false
-  JavaScript: true
-  PHP: true
+engines:
+  csslint:
+    enabled: true
+  phpcodesniffer:
+  	enabled: true
+  phpmd:
+  	enabled:true
+
 exclude_paths:
   - "assets/*"
   - "sample-config.php"
