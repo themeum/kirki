@@ -43,8 +43,8 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 	}
 
 	public function enqueue() {
-		//Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'ace', 'src-min-noconflict/ace.js', array( 'jquery' ) );
-		//Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-code', 'script.js', array( 'jquery', 'ace' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'ace', 'src-min-noconflict/ace.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-code', 'script.js', array( 'jquery', 'ace' ) );
 	}
 
 	public function content_template() { ?>
