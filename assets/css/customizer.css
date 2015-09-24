@@ -421,6 +421,11 @@ input[type="text"] {
 .customize-control-kirki-radio label {
   display: list-item;
   margin-bottom: 7px; }
+  .customize-control-kirki-radio label .option-description {
+    display: block;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: .9em;
+    padding-left: 25px; }
 
 .customize-control-radio-buttonset .buttonset .switch-label {
   background: rgba(0, 0, 0, 0.17);
