@@ -48,7 +48,7 @@ class Kirki_Styles_Customizer {
 				$suffix = '';
 			}
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ).'assets/css/customizer.' . $suffix . 'js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
 		}
 	}
 
