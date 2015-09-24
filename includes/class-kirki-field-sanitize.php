@@ -50,7 +50,6 @@ class Kirki_Field_Sanitize {
 			'id'                => '',
 			'capability'        => 'edit_theme_options',
 			'variables'         => null,
-			'active_callback'   => '__return_true',
 			'multiple'          => 1,
 		);
 		/**
@@ -67,6 +66,16 @@ class Kirki_Field_Sanitize {
 		 * Strip all HTML from help messages
 		 */
 		$field['help'] = wp_strip_all_tags( $field['help'] );
+		/**
+		 * If the 'required' argument is set then we'll need to auto-calculate things.
+		 * Set 'active_callback' to 'kirki_active_callback'. ALl extra calculations will be handled there.
+		 */
+		if ( isset( $field['required'] ) ) {
+			$field['active_callback'] = 'kirki_active_callback';
+		} elseif ( ! isset( $field['active_callback'] ) ) {
+			$field['active_callback'] = '__return_true';
+		}
+
 		/**
 		 * Get the right control type
 		 */
@@ -237,13 +246,6 @@ class Kirki_Field_Sanitize {
 			return $field['active_callback'];
 		}
 
-		/**
-		 * If the 'required' argument is set then we'll need to auto-calculate things.
-		 * Set 'active_callback' to 'kirki_active_callback'. ALl extra calculations will be handled there.
-		 */
-		if ( isset( $field['required'] ) ) {
-			return 'kirki_active_callback';
-		}
 
 		/**
 		 * If all else fails, then fallback to __return_true

@@ -91,6 +91,13 @@ if ( class_exists( 'Kirki' ) ) {
         'section'     => 'checkbox',
         'default'     => true,
         'priority'    => 10,
+        'required'    => array(
+        	array(
+        		'setting'  => 'checkbox_demo',
+        		'operator' => '==',
+        		'value'    => true,
+        	),
+        ),
     ) );
 
     Kirki::add_field( 'kirki_demo', array(
