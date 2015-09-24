@@ -33,7 +33,7 @@ class Kirki_Controls_Textarea_Control extends WP_Customize_Control {
 	}
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-textarea', trailingslashit( kirki_url() ) . 'includes/controls/textarea/script.js', array( 'jquery', 'formstone', 'formstone-number' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'textarea', 'kirki-textarea', 'script.js', array( 'jquery', 'formstone', 'formstone-number' ) );
 	}
 
 	public function content_template() {

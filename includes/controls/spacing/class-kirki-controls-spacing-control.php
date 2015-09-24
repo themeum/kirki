@@ -24,7 +24,7 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 	public $type = 'spacing';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-spacing', trailingslashit( kirki_url() ).'includes/controls/spacing/script.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-spacing', 'script.js', array( 'jquery' ) );
 	}
 
 	public function to_json() {

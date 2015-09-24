@@ -24,8 +24,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 	public $type = 'typography';
 
 	public function enqueue() {
-		wp_enqueue_script( 'selectize', trailingslashit( kirki_url() ) . 'includes/controls/select/selectize.js', array( 'jquery' ) );
-		wp_enqueue_script( 'kirki-typography', trailingslashit( kirki_url() ) . 'includes/controls/typography/script.js', array( 'jquery', 'selectize' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'select', 'selectize', 'selectize.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-typography', 'script.js', array( 'jquery', 'selectize' ) );
 	}
 
 	public function to_json() {

@@ -16,11 +16,35 @@ module.exports = function(grunt) {
 				dest: 'assets/js/customizer.js',
 			},
 		},
+		uglify: {
+			options: {
+				compress: {},
+				mangle: true,
+				sourceMap: true
+			},
+			target: {
+				src: 'assets/js/customizer.js',
+				dest: 'assets/js/customizer.min.js'
+			}
+		},
+		cssmin: {
+			options: {
+				shorthandCompacting: false,
+				roundingPrecision: -1
+			},
+			target: {
+				files: {
+					'assets/css/customizer.min.css': 'assets/css/customizer.css'
+				}
+			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('default', ['sass', 'concat']);
+	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin']);
 
 };
