@@ -50,7 +50,6 @@ class Kirki_Field_Sanitize {
 			'id'                => '',
 			'capability'        => 'edit_theme_options',
 			'variables'         => null,
-			'multiple'          => 1,
 		);
 		/**
 		 * Field type has to run before the others to accomodate older implementations
@@ -75,21 +74,48 @@ class Kirki_Field_Sanitize {
 		} elseif ( ! isset( $field['active_callback'] ) ) {
 			$field['active_callback'] = '__return_true';
 		}
-
 		/**
 		 * Get the right control type
 		 */
-		$field['type']              = self::sanitize_control_type( $field );
-		$field['settings']          = self::sanitize_settings( $field );
-		$field['choices']           = ( isset( $field['choices'] ) ) ? $field['choices'] : array();
-		$field['output']            = self::sanitize_output( $field );
+		$field['type'] = self::sanitize_control_type( $field );
+		/**
+		 * Sanitize the settings argument
+		 */
+		$field['settings'] = self::sanitize_settings( $field );
+		/**
+		 * Sanitize the choices argument
+		 */
+		$field['choices'] = ( isset( $field['choices'] ) ) ? $field['choices'] : array();
+		/**
+		 * Sanitize the output argument
+		 */
+		$field['output'] = self::sanitize_output( $field );
+		/**
+		 * Sanitize the sanitize_callback argument
+		 */
 		$field['sanitize_callback'] = self::sanitize_callback( $field );
-		$field['js_vars']           = self::sanitize_js_vars( $field );
-		$field['id']                = self::sanitize_id( $field );
-		$field['capability']        = self::sanitize_capability( $field );
-		$field['variables']         = ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null;
-		$field['active_callback']   = self::sanitize_active_callback( $field );
-		$field['multiple']          = ( isset( $field['multiple'] ) ) ? intval( $field['multiple'] ) : 1;
+		/**
+		 * Sanitize the js_vars argument
+		 */
+		$field['js_vars'] = self::sanitize_js_vars( $field );
+		/**
+		 * Sanitize the id argument
+		 */
+		$field['id'] = self::sanitize_id( $field );
+		/**
+		 * Sanitize the capability argument
+		 */
+		$field['capability'] = self::sanitize_capability( $field );
+		/**
+		 * Sanitize the variables argument
+		 */
+		$field['variables'] = ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null;
+		/**
+		 * Make sure the "multiple" argument is properly formatted for <select> controls
+		 */
+		if ( 'kirki-select' == $field['type'] ) {
+			$field['multiple'] = ( isset( $field['multiple'] ) ) ? intval( $field['multiple'] ) : 1;
+		}
 
 		return $field;
 
@@ -228,30 +254,6 @@ class Kirki_Field_Sanitize {
 		 * If all else fails, return empty.
 		 */
 		return '';
-
-	}
-
-	/**
-	 * Sanitizes the setting active callback.
-	 *
-	 * @param array the field definition
-	 * @return string callable function name.
-	 */
-	public static function sanitize_active_callback( $field ) {
-
-		/**
-		 * If a custom 'active_callback' has been defined then return that.
-		 */
-		if ( isset( $field['active_callback'] ) ) {
-			return $field['active_callback'];
-		}
-
-
-		/**
-		 * If all else fails, then fallback to __return_true
-		 * This way the control is always shown.
-		 */
-		return '__return_true';
 
 	}
 
@@ -464,9 +466,12 @@ class Kirki_Field_Sanitize {
 			case 'radio':
 			case 'radio-image':
 			case 'radio-buttonset':
+			case 'palette':
+				$sanitize_callback = 'esc_attr';
+				break;
 			case 'select':
 			case 'select2':
-			case 'palette':
+			case 'select2-multiple':
 				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
 				break;
 			case 'dropdown-pages':

@@ -41,6 +41,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 			$output_property = 'background-'.$key;
 			$label           = ( 0 === $i ) ? $field['label'] : '';
 			$type            = 'select';
+			$sanitize_callback = 'esc_attr';
 
 			switch ( $key ) {
 				case 'color':
@@ -53,9 +54,11 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 					if ( isset( $field['default']['opacity'] ) && false === strpos( $value, 'rgb' ) ) {
 						$value = Kirki_Color::get_rgba( $value, $field['default']['opacity'] );
 					}
+					$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
 					break;
 				case 'image':
 					$type = 'image';
+					$sanitize_callback = 'esc_url_raw';
 					break;
 				case 'attach':
 					/**
@@ -101,7 +104,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 						'property' => $output_property,
 					),
 				) : '',
-				'sanitize_callback' => Kirki_Field_Sanitize::fallback_callback( $type ),
+				'sanitize_callback' => ( isset( $sanitize_callback ) ) ? $sanitize_callback : Kirki_Field_Sanitize::fallback_callback( $type ),
 			) );
 			$i++;
 		}
