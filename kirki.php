@@ -153,11 +153,6 @@ Kirki::add_config( '' );
  * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
  * Activate that theme to test all controls.
  */
-<<<<<<< HEAD
-include_once( KIRKI_PATH . '/sample-config.php' );
-//include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );
-=======
 if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) )  {
 	register_theme_directory( dirname( __FILE__ ) );
 }
->>>>>>> master
