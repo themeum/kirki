@@ -4,26 +4,23 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		sass: {
 			dist: {
-				files: [
-					{
-						expand: true,
-						cwd: 'includes/controls/',
-						src: ['**/*.scss'],
-						dest: 'includes/controls/',
-						ext: '.css'
-					},
-					{
-						'assets/css/customizer.css': 'assets/css/customizer.scss'
-					},
-					{
-						'assets/css/production.css': 'assets/css/production.scss'
-					}
-				]
+				files: { 'assets/css/customizer.css' : 'assets/scss/customizer.scss' }
 			}
-		}
+		},
+		concat: {
+			options: {
+				separator: '',
+			},
+			dist: {
+				src: ['includes/controls/**/script.js'],
+				dest: 'assets/js/customizer.js',
+			},
+		},
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.registerTask('default', ['sass']);
+	grunt.loadNpmTasks('grunt-contrib-concat');
+
+	grunt.registerTask('default', ['sass', 'concat']);
 
 };

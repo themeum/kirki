@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: SLIDER
+ */
 jQuery(document).ready(function($) {
 
 	$( 'input[type=range]' ).on( 'mousedown', function() {
@@ -17,4 +20,13 @@ jQuery(document).ready(function($) {
 		$this_input.change();
 	});
 
+});
+
+wp.customize.controlConstructor['slider'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'change', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
 });

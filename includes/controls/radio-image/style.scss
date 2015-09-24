@@ -1,21 +1,22 @@
-// Radio-Image Controls
+/////////////////////
+// radio-image controls
+/////////////////////
 .customize-control-radio-image {
-    .image.ui-buttonset {
-        input[type=radio] {
-            height: auto;
-        }
-        label {
-            border: 2px solid transparent;
-            display: inline-block;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            &.ui-state-active {
-                background: none;
-                border-color: #333;
-            }
-			img {
-				display: block;
+	label {
+	}
+	input {
+		img {
+			border: 1px solid transparent;
+		}
+		display: none;
+		&:checked {
+			+ label {
+				img {
+					-webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+					box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+					border: 1px solid #3498DB;
+				}
 			}
-        }
-    }
+		}
+	}
 }

@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: CODE
+ */
 jQuery( document ).ready( function($) {
 	$( 'textarea[data-editor]' ).each( function () {
 		var textarea = $( this );

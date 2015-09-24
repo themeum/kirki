@@ -1,3 +1,6 @@
+/**
+ * KIRKI CONTROL: COLOR-ALPHA
+ */
 jQuery(document).ready(function($) {
 
 	if ( typeof Color !== "undefined" ) {

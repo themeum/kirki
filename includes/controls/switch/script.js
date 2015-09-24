@@ -1,8 +1,16 @@
+/**
+ * KIRKI CONTROL: SWITCH
+ */
 wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		this.container.on( 'click', 'label.switch-label', function() {
-			control.setting.set( jQuery( this ).val() );
+
+		// Get the initial value
+		var checkbox_value = control.setting._value;
+
+		this.container.on( 'change', 'input', function() {
+			checkbox_value = ( jQuery( this ).is( ':checked' ) ) ? true : false;
+			control.setting.set( checkbox_value );
 		});
 	}
 });

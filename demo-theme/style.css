@@ -1,0 +1,67 @@
+/*
+Theme Name: Kirki Demo
+Author: Aristeides Stathopoulos
+Author URI: http://aristeides.com
+Description: Demo for the Kirki plugin
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: 'kirki-demo'
+*/
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox.demo > div {
+  padding: 10px;
+}
+
+.wrapper > .demo {
+  margin: 1%;
+  padding: 1%;
+  border: 1px solid rgba(0,0,0,.1);
+  -webkit-box-shadow:inset 1px 1px 3px 0 rgba(0,0,0,.1);
+  box-shadow:inset 1px 1px 3px 0 rgba(0,0,0,.1);
+  border-radius: 3px;
+  flex-grow: 1;
+  width: 20%;
+}
+
+.demo h4 {
+  margin: 5px 0;
+}
+
+.number-demo-border-radius,
+.slider-demo-border-radius {
+  padding: 30px;
+  background-color: #37474F;
+}
+
+.demo.invalid {
+  background-color: #f2f2f2;
+  color: #777;
+}
+.palette-demo-color {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: inline-block;
+  -webkit-box-shadow:inset 1px 1px 3px 0 rgba(0,0,0,.1);
+  box-shadow:inset 1px 1px 3px 0 rgba(0,0,0,.1);
+}
+
+.text-controls > .demo {
+  width: 20%;
+}
+
+.numeric-controls > .demo {
+  width: 45%;
+}

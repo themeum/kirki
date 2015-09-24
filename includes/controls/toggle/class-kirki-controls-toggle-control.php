@@ -24,9 +24,6 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 	public $type = 'toggle';
 
 	public function enqueue() {
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/style.css' );
-		}
 		wp_enqueue_script( 'kirki-toggle', trailingslashit( kirki_url() ) . 'includes/controls/toggle/script.js', array( 'jquery' ) );
 	}
 

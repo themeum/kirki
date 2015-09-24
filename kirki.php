@@ -37,27 +37,43 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 	 * Finds the path to a class that we're requiring and includes the file.
 	 */
 	function kirki_autoload_classes( $class_name ) {
-
+		$paths = array();
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
-			// Autoload Controls
-			$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
-			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
+			$replacements = array(
+				'Controls',
+				'Scripts',
+				'Settings',
+				'Styles',
+			);
 
-			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
-			if ( file_exists( $class_path ) ) {
-				include $class_path;
-				return;
+			$path     = KIRKI_PATH . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
+
+			$paths[] = $path . $filename;
+
+			foreach ( $replacements as $replacement ) {
+				if ( 0 === stripos( $class_name, 'Kirki_' . $replacement ) ) {
+					$substr   = str_replace( 'Kirki_' . $replacement, '', $class_name );
+					$exploded = explode( '_', $substr );
+
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . $filename;
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_' . $replacement, '', str_replace( 'Kirki_' . $replacement . '_', '', $class_name ) ) ) ) . DIRECTORY_SEPARATOR . $filename;
+					if ( isset( $exploded[1] ) ) {
+						$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . $filename;
+						if ( isset( $exploded[2] ) ) {
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . '-' .  strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+						}
+					}
+				}
 			}
 
-			// Autoload Settings
-			$foldername = ( 0 === stripos( $class_name, 'Kirki_Settings_' ) ) ? 'settings'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Setting', '', str_replace( 'Kirki_Settings_', '', $class_name ) ) ) ) : '';
-			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
-
-			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
-			if ( file_exists( $class_path ) ) {
-				include $class_path;
-				return;
+			foreach ( $paths as $path ) {
+				if ( file_exists( $path ) ) {
+					include $path;
+					return;
+				}
 			}
 
 		}
@@ -132,8 +148,16 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 Kirki::add_config( '' );
 
 /**
- * The 2 following commented-out lines are for testing purposes.
- * You can uncomment whichever you want and fields will flood the customizer.
+ * To enable the demo theme, just add this line to your wp-config.php file:
+ * define( 'KIRKI_CONFIG', true );
+ * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
+ * Activate that theme to test all controls.
  */
+<<<<<<< HEAD
 include_once( KIRKI_PATH . '/sample-config.php' );
 //include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );
+=======
+if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) )  {
+	register_theme_directory( dirname( __FILE__ ) );
+}
+>>>>>>> master
