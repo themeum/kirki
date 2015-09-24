@@ -54,7 +54,7 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 			if ( empty( $_value ) ) {
 				unset( $sanitized[ $key ] );
 			} else {
-				$sanitized[ $key ] = (array)$_value;
+				$sanitized[ $key ] = (array) $_value;
 			}
 		}
 

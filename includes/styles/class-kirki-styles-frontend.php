@@ -26,6 +26,7 @@ class Kirki_Styles_Frontend {
 
 	public function __construct() {
 
+		$config   = apply_filters( 'kirki/config', array() );
 		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 150;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );

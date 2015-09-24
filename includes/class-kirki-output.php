@@ -58,10 +58,12 @@ class Kirki_Output {
 		self::$field_type = $field['type'];
 		self::$output     = $field['output'];
 		if ( ! is_array( self::$output ) ) {
-			self::$output = array( array(
-				'element'           => self::$output,
-			 	'sanitize_callback' => null,
-			) );
+			self::$output = array(
+				array(
+					'element'           => self::$output,
+				 	'sanitize_callback' => null,
+				),
+			);
 		}
 		/**
 		 * Get the value of this field
@@ -158,7 +160,7 @@ class Kirki_Output {
 				/**
 				 * Make sure our values are unique
 				 */
-				$elements = array_unique( $elements );
+				$elements = array_unique( $element );
 				/**
 				 * Sort elements alphabetically.
 				 * This way all duplicate items will be merged in the final CSS array.

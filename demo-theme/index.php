@@ -37,24 +37,15 @@ if ( ! $wp_customize ) {
 		<div class="checkbox demo">
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'checkbox_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'checkbox:', 'kirki-demo' ); ?></h4>
-				<?php printf(
-					__( 'Checkbox is %s', 'kirki-demo' ),
-					( get_theme_mod( 'checkbox_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' )
-				); ?>
+				<?php printf( __( 'Checkbox is %s', 'kirki-demo' ), ( get_theme_mod( 'checkbox_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'switch_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'switch:', 'kirki-demo' ); ?></h4>
-				<?php printf(
-					__( 'Switch is %s', 'kirki-demo' ),
-					( get_theme_mod( 'switch_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' )
-				); ?>
+				<?php printf( __( 'Switch is %s', 'kirki-demo' ), ( get_theme_mod( 'switch_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'toggle_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'toggle:', 'kirki-demo' ); ?></h4>
-				<?php printf(
-					__( 'Toggle is %s', 'kirki-demo' ),
-					( get_theme_mod( 'toggle_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' )
-				); ?>
+				<?php printf( __( 'Toggle is %s', 'kirki-demo' ), ( get_theme_mod( 'toggle_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 		</div>
 		<?php
@@ -182,15 +173,9 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="radio demo">
 			<h4><?php _e( 'radio:', 'kirki-demo' ); ?></h4>
-			<?php printf(
-				__( 'selected option: %s', 'kirki-demo' ),
-				'<span style="color:' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '</span>'
-			); ?>
+			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '</span>' ); ?>
 			<h4><?php _e( 'radio-buttonset:', 'kirki-demo' ); ?></h4>
-			<?php printf(
-				__( 'selected option: %s', 'kirki-demo' ),
-				'<span style="color:' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '">' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '</span>'
-			); ?>
+			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '">' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '</span>' ); ?>
 		</div>
 		<?php
 		/**
@@ -227,10 +212,7 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="select demo">
 			<h4><?php _e( 'select:', 'kirki-demo' ); ?></h4>
-			<?php printf(
-				__( 'selected option: %s', 'kirki-demo' ),
-				'<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>'
-			); ?>
+			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>' ); ?>
 		</div>
 		<div class="select-multiple demo">
 			<h4><?php _e( 'Multiple Select:', 'kirki-demo' ); ?></h4>
@@ -245,10 +227,10 @@ if ( ! $wp_customize ) {
 	</div>
 	<div class="wrapper composite-controls">
 		<div class="dimension demo invalid">
-			<p><?php _e( 'The "dimension" control has its value applied directly as the body\'s width', 'kirki-demo'); ?></p>
+			<p><?php _e( 'The "dimension" control has its value applied directly as the body\'s width', 'kirki-demo' ); ?></p>
 		</div>
 		<div class="typography demo invalid">
-			<p><?php _e( 'The "typography" control has its values applied directly as the body\'s typography ooptions. By changing its value you will see the changes applied to all text on this page.', 'kirki-demo'); ?></p>
+			<p><?php _e( 'The "typography" control has its values applied directly as the body\'s typography ooptions. By changing its value you will see the changes applied to all text on this page.', 'kirki-demo' ); ?></p>
 		</div>
 		<?php
 		/**

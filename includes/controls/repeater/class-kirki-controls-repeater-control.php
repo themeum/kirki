@@ -20,9 +20,9 @@ if ( class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 }
 
 class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
-	public $type = 'repeater';
-	public $fields = array();
-	public $button_label = "";
+	public $type         = 'repeater';
+	public $fields       = array();
+	public $button_label = '';
 
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );

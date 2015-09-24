@@ -44,8 +44,9 @@ class Kirki_Styles_Customizer {
 	public function customizer_scripts() {
 		if ( ! Kirki_Toolkit::kirki_debug() ) {
 			$suffix = '.min';
-			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				$suffix = '';
+			}
 
 			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ).'assets/css/customizer.' . $suffix . 'js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
 		}
