@@ -26,7 +26,7 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
-		wp_enqueue_script( 'kirki-sortable', trailingslashit( kirki_url() ) . 'includes/controls/sortable/script.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-sortable', 'script.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
 	}
 
 

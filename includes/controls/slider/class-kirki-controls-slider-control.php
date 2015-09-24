@@ -27,7 +27,7 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 	public $type = 'slider';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-slider', trailingslashit( kirki_url() ) . 'includes/controls/slider/script.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-slider', 'script.js', array( 'jquery' ) );
 	}
 
 	public function to_json() {

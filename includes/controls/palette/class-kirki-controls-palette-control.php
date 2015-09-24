@@ -25,7 +25,7 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
-		wp_enqueue_script( 'kirki-palette', trailingslashit( kirki_url() ) . 'includes/controls/palette/script.js', array( 'jquery', 'jquery-ui-button' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-palette', 'script.js', array( 'jquery', 'jquery-ui-button' ) );
 	}
 
 	public function render_content() {

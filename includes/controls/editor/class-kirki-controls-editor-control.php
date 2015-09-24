@@ -26,7 +26,7 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 	public $type = 'editor';
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-editor', trailingslashit( kirki_url() ) . 'includes/controls/editor/script.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( $this->type, 'kirki-editor', 'script.js', array( 'jquery' ) );
 	}
 
 	public function render_content() { ?>

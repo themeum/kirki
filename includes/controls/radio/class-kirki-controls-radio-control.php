@@ -33,7 +33,7 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 	}
 
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-radio', trailingslashit( kirki_url() ) . 'includes/controls/radio/script.js', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'radio', 'kirki-radio', 'script.js', array( 'jquery' ) );
 	}
 
 	protected function content_template() { ?>
