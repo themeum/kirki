@@ -63,6 +63,9 @@ class Kirki_Styles_Customizer {
 	public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 		if ( Kirki_Toolkit::kirki_debug() ) {
 			$file = trailingslashit( kirki_url() ) . 'assets/js/' . $file . '.js';
+			foreach ( $deps as $dep ) {
+				wp_enqueue_script( $dep );
+			}
 			// We are debugging, no need of version or suffix
 			wp_enqueue_script( $handle, $file, $deps, '', $in_footer );
 		}
