@@ -57,6 +57,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 		);
 	}
 
+	public function render_content() {}
+
 	public function content_template() { ?>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
