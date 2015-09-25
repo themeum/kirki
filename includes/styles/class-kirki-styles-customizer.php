@@ -48,7 +48,7 @@ class Kirki_Styles_Customizer {
 				$suffix = '';
 			}
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ).'assets/css/customizer.' . $suffix . 'js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
 		}
 	}
 
@@ -60,9 +60,9 @@ class Kirki_Styles_Customizer {
 	 *
 	 * These files are only enqueued when debugging Kirki
 	 */
-	public static function enqueue_customizer_control_script( $control, $handle, $file = 'script.js', $deps = array(), $in_footer = false ) {
+	public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 		if ( Kirki_Toolkit::kirki_debug() ) {
-			$file = trailingslashit( kirki_url() ) . 'includes/controls/' . $control . '/' . $file;
+			$file = trailingslashit( kirki_url() ) . 'assets/js/' . $file . '.js';
 			// We are debugging, no need of version or suffix
 			wp_enqueue_script( $handle, $file, $deps, '', $in_footer );
 		}
