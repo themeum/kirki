@@ -435,7 +435,7 @@ if ( class_exists( 'Kirki' ) ) {
 	Kirki::add_field( 'kirki_demo', array(
 		'type'        => 'repeater',
 		'label'       => __( 'Repeater Control', 'kirki' ),
-		'description' => __( 'The "repeater" control allows you to create rows of data and you can define the fields that the rows will use. Valide field-types are: text, checkbox, radio, select, textarea. The data is saves as a multi-dimentional array.'),
+		'description' => __( 'The "repeater" control allows you to create rows of data and you can define the fields that the rows will use. Valide field-types are: text, checkbox, radio, select, textarea. The data is saves as a multi-dimentional array.' ),
 		'section'     => 'composite',
 		'priority'    => 10,
 		'settings'    => 'repeater_demo',
@@ -454,13 +454,13 @@ if ( class_exists( 'Kirki' ) ) {
 				'type'        => 'text',
 				'label'       => __( 'Link Text', 'kirki-demo' ),
 				'description' => __( 'This will be the label for your link', 'kirki-demo' ),
-				'default'     => ''
+				'default'     => '',
 			),
 			'link_url' => array(
 				'type'        => 'text',
 				'label'       => __( 'Link URL', 'kirki-demo' ),
 				'description' => __( 'This will be the link URL', 'kirki-demo' ),
-				'default'     => ''
+				'default'     => '',
 			),
 		)
 	) );
