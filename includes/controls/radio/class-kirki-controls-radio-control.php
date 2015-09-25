@@ -36,6 +36,8 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'radio', 'kirki-radio', 'script.js', array( 'jquery' ) );
 	}
 
+	public function render_content() {}
+
 	protected function content_template() { ?>
 		<# if ( ! data.choices ) { return; } #>
 

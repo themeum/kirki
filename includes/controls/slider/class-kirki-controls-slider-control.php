@@ -42,7 +42,9 @@ class Kirki_Controls_Slider_Control extends WP_Customize_Control {
 		$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
 	}
 
-	public function content_template() { ?>
+	public function render_content() {}
+
+	protected function content_template() { ?>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

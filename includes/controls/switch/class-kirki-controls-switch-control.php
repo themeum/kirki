@@ -41,6 +41,8 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		$this->json['link']    = $this->get_link();
 	}
 
+	public function render_content() {}
+
 	protected function content_template() { ?>
 		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">

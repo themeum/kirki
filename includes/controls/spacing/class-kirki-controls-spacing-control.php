@@ -50,7 +50,9 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 
 	}
 
-	public function content_template() { ?>
+	public function render_content() {}
+
+	protected function content_template() { ?>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

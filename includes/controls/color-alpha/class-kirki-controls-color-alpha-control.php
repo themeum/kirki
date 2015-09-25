@@ -45,6 +45,8 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 		</li>
 	<?php }
 
+	public function render_content() {}
+
 	public function content_template() { ?>
 		<label>
 			<span class="customize-control-title">

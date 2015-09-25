@@ -31,7 +31,9 @@ class Kirki_Controls_Custom_Control extends WP_Customize_Control {
 		$this->json['value'] = $this->value();
 	}
 
-	public function content_template() { ?>
+	public function render_content() {}
+
+	protected function content_template() { ?>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

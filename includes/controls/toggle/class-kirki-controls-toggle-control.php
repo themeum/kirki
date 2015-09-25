@@ -35,6 +35,8 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		$this->json['link']    = $this->get_link();
 	}
 
+	public function render_content() {}
+
 	protected function content_template() { ?>
 		<label for="toggle_{{ data.id }}">
 			<span class="customize-control-title">

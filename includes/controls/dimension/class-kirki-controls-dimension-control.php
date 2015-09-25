@@ -37,7 +37,9 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		$this->json['available_units'] = $this->get_units();
 	}
 
-	public function content_template() { ?>
+	public function render_content() {}
+
+	protected function content_template() { ?>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

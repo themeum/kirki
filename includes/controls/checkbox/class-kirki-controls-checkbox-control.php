@@ -34,6 +34,8 @@ class Kirki_Controls_Checkbox_Control extends WP_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'checkbox', 'kirki-checkbox', 'script.js', array( 'jquery' ) );
 	}
 
+	public function render_content() {}
+
 	protected function content_template() { ?>
 		<label>
 			<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
