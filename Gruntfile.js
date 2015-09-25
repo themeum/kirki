@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				separator: '',
 			},
 			dist: {
-				src: ['includes/controls/**/script.js'],
+				src: ['assets/js/controls/*.js'],
 				dest: 'assets/js/customizer.js',
 			},
 		},

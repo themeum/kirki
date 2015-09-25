@@ -58,7 +58,7 @@ class Kirki {
 	);
 
 	public static $setting_types = array(
-		'repeater'         => 'Kirki_Settings_Repeater_Setting'
+		'repeater' => 'Kirki_Settings_Repeater_Setting',
 	);
 	/**
 	 * the class constructor
@@ -337,8 +337,9 @@ class Kirki {
 			}
 
 			if ( isset( $field['settings'] ) && is_array( $field['settings'] ) ) {
-				$settings = Kirki_Field_Sanitize::sanitize_settings( $field );
-				$defaults = isset( $field['default'] ) ? $field['default'] : array();
+				$settings          = Kirki_Field_Sanitize::sanitize_settings( $field );
+				$defaults          = isset( $field['default'] ) ? $field['default'] : array();
+				$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $field );
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
 					$type       = Kirki_Field_Sanitize::sanitize_type( $field );
@@ -348,8 +349,6 @@ class Kirki {
 					if ( isset( $field['sanitize_callback'] ) && is_array( $field['sanitize_callback'] ) ) {
 						if ( isset( $field['sanitize_callback'][ $setting_key ] ) ) {
 							$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => $field['sanitize_callback'][ $setting_key ] ) );
-						} else {
-							$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $field );
 						}
 					}
 					$wp_customize->add_setting( $setting_value, array(
@@ -357,6 +356,7 @@ class Kirki {
 						'type'              => $type,
 						'capability'        => $capability,
 						'sanitize_callback' => $sanitize_callback,
+						'transport'         => $transport,
 					) );
 				}
 			}
@@ -381,7 +381,6 @@ class Kirki {
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $field ),
 				) );
 			}
-
 
 			$class_name = 'WP_Customize_Control';
 			if ( array_key_exists( $field['type'], $control_types ) ) {
@@ -520,7 +519,7 @@ class Kirki {
 		/**
 		 * Get the array of configs from the Kirki class
 		 */
-		$configs = Kirki::$config;
+		$configs = self::$config;
 		/**
 		 * Loop through all configs and search for a match
 		 */

@@ -134,9 +134,9 @@ class Kirki_Toolkit {
 	 * Return true if we are debugging Kirki.
 	 */
 	public static function kirki_debug() {
-		if ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG )
+		if ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) {
 			return true;
-
+		}
 		return false;
 	}
 

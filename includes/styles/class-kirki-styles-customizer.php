@@ -44,10 +44,29 @@ class Kirki_Styles_Customizer {
 	public function customizer_scripts() {
 		if ( ! Kirki_Toolkit::kirki_debug() ) {
 			$suffix = '.min';
-			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				$suffix = '';
+			}
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ).'assets/css/customizer.' . $suffix . 'js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
+			self::enqueue_customizer_control_script( 'ace', 'vendor/ace/src-min-noconflict/ace', array( 'jquery' ) );
+			self::enqueue_customizer_control_script( 'formstone', 'vendor/formstone-core', array( 'jquery' ) );
+			self::enqueue_customizer_control_script( 'formstone-number', 'vendor/formstone-number', array( 'jquery', 'formstone' ) );
+			self::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+
+			$deps = array(
+				'jquery',
+				'customize-base'.
+				'jquery-ui-core',
+				'jquery-ui-sortable',
+				'ace',
+				'formstone',
+				'formstone-number',
+				'selectize'
+			);
+
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 		}
 	}
 
@@ -59,9 +78,12 @@ class Kirki_Styles_Customizer {
 	 *
 	 * These files are only enqueued when debugging Kirki
 	 */
-	public static function enqueue_customizer_control_script( $control, $handle, $file = 'script.js', $deps = array(), $in_footer = false ) {
-		if ( Kirki_Toolkit::kirki_debug() ) {
-			$file = trailingslashit( kirki_url() ) . 'includes/controls/' . $control . '/' . $file;
+	public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
+		if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::kirki_debug() ) || false === strpos( $file, 'controls/') ) {
+			$file = trailingslashit( kirki_url() ) . 'assets/js/' . $file . '.js';
+			foreach ( $deps as $dep ) {
+				wp_enqueue_script( $dep );
+			}
 			// We are debugging, no need of version or suffix
 			wp_enqueue_script( $handle, $file, $deps, '', $in_footer );
 		}
