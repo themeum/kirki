@@ -57,7 +57,7 @@ class Kirki_Styles_Customizer {
 
 			$deps = array(
 				'jquery',
-				'customize-base'.
+				'customize-base',
 				'jquery-ui-core',
 				'jquery-ui-sortable',
 				'ace',
@@ -66,7 +66,7 @@ class Kirki_Styles_Customizer {
 				'selectize'
 			);
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 		}
 	}
 
