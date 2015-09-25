@@ -48,7 +48,25 @@ class Kirki_Styles_Customizer {
 				$suffix = '';
 			}
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', array( 'jquery', 'customize-base' ), Kirki_Toolkit::$version );
+			self::enqueue_customizer_control_script( 'ace', 'vendor/ace/src-min-noconflict/ace', array( 'jquery' ) );
+			self::enqueue_customizer_control_script( 'formstone', 'vendor/formstone-core', array( 'jquery' ) );
+			self::enqueue_customizer_control_script( 'formstone-number', 'vendor/formstone-number', array( 'jquery', 'formstone' ) );
+			self::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+
+			$deps = array(
+				'jquery',
+				'customize-base'.
+				'jquery-ui-core',
+				'jquery-ui-sortable',
+				'ace',
+				'formstone',
+				'formstone-number',
+				'selectize'
+			);
+
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/css/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 		}
 	}
 
