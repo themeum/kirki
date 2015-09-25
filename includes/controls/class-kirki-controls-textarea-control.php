@@ -36,7 +36,9 @@ class Kirki_Controls_Textarea_Control extends WP_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-textarea', 'controls/textarea', array( 'jquery', 'formstone', 'formstone-number' ) );
 	}
 
-	public function content_template() {
+	public function render_content() {}
+
+	protected function content_template() {
 		?>
 		<label>
 			<# if ( data.label ) { #>

@@ -34,7 +34,9 @@ class Kirki_Controls_Radio_Image_Control extends WP_Customize_Control {
 		$this->json['link']            = $this->get_link();
 	}
 
-	public function content_template() { ?>
+	public function render_content() {}
+
+	protected function content_template() { ?>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
