@@ -3,10 +3,10 @@
 /**
  * Add the theme's styles.css
  */
-function theme_name_scripts() {
+function kirki_demo_scripts() {
 	wp_enqueue_style( 'kirki-demo', get_stylesheet_uri(), array(), time() );
 }
-add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+add_action( 'wp_enqueue_scripts', 'kirki_demo_scripts' );
 
 if ( class_exists( 'Kirki' ) ) {
 	/**
