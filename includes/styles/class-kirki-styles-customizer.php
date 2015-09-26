@@ -54,11 +54,13 @@ class Kirki_Styles_Customizer {
 			self::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-button' );
 
 			$deps = array(
 				'jquery',
 				'customize-base',
 				'jquery-ui-core',
+				'jquery-ui-button',
 				'jquery-ui-sortable',
 				'ace',
 				'formstone',
