@@ -23,6 +23,8 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 	public $type = 'sortable';
 
+	public $help = '';
+
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
@@ -34,8 +36,10 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 		if ( ! is_array( $this->choices ) || ! count( $this->choices ) ) {
 			return;
 		}
-
 		?>
+		<?php if ( '' != $this->help ) : ?>
+			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+		<?php endif; ?>
 		<label class='kirki-sortable'>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>

@@ -25,11 +25,16 @@ class Kirki_Controls_Editor_Control extends WP_Customize_Control {
 
 	public $type = 'editor';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-editor', 'controls/editor', array( 'jquery' ) );
 	}
 
 	public function render_content() { ?>
+		<?php if ( '' != $this->help ) : ?>
+			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+		<?php endif; ?>
 
 		<label>
 			<span class="customize-control-title">

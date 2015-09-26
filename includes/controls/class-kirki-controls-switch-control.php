@@ -23,6 +23,8 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 
 	public $type = 'switch';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-switch', 'controls/switch', array( 'jquery' ) );
 	}
@@ -39,11 +41,15 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		$this->json['value']   = $this->value();
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
+		$this->json['help']    = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">
 				{{{ data.label }}}

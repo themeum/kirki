@@ -23,6 +23,8 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 
 	public $type = 'kirki-radio';
 
+	public $help = '';
+
 	public function to_json() {
 		parent::to_json();
 
@@ -30,6 +32,7 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 		$this->json['link']    = $this->get_link();
 		$this->json['choices'] = $this->choices;
 		$this->json['id']      = $this->id;
+		$this->json['help']    = $this->help;
 	}
 
 	public function enqueue() {
@@ -41,6 +44,9 @@ class Kirki_Controls_Radio_Control extends WP_Customize_Control {
 	protected function content_template() { ?>
 		<# if ( ! data.choices ) { return; } #>
 
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{ data.label }}</span>
 		<# } #>
