@@ -474,6 +474,7 @@ if ( class_exists( 'Kirki' ) ) {
 		'default'     => 'green',
 		'priority'    => 10,
 		'choices'     => array(
+			''      => __( 'Placeholder Text', 'kirki-demo' ),
 			'red'   => __( 'Red', 'kirki-demo' ),
 			'green' => __( 'Green', 'kirki-demo' ),
 			'blue'  => __( 'Blue', 'kirki-demo' ),
