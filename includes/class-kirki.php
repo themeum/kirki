@@ -39,6 +39,7 @@ class Kirki {
 		'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
 		'number'           => 'Kirki_Controls_Number_Control',
 		'palette'          => 'Kirki_Controls_Palette_Control',
+		'preset'           => 'Kirki_Controls_Preset_Control',
 		'radio'            => 'Kirki_Controls_Radio_Control',
 		'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
 		'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
@@ -103,6 +104,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Preset_Control' );
 	}
 
 	/**
