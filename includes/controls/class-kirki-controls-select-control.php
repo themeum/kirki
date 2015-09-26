@@ -23,6 +23,8 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 
 	public $type = 'kirki-select';
 
+	public $help = '';
+
 	public $multiple = 1;
 
 	public function to_json() {
@@ -32,6 +34,7 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 		$this->json['choices']  = $this->choices;
 		$this->json['link']     = $this->get_link();
 		$this->json['multiple'] = $this->multiple;
+		$this->json['help']     = $this->help;
 	}
 
 	public function enqueue() {
@@ -44,6 +47,9 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 	protected function content_template() { ?>
 
 		<# if ( ! data.choices ) return; #>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{ data.label }}</span>

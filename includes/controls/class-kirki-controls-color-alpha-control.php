@@ -21,9 +21,13 @@ if ( class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 
 class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 
-	public $type    = 'color-alpha';
+	public $type = 'color-alpha';
+
 	public $palette = true;
+
 	public $default = '#FFFFFF';
+
+	public $help = '';
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-color-alpha', 'controls/color-alpha', array( 'jquery' ) );
@@ -35,6 +39,7 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 		$this->json['default'] = $this->default;
 		$this->json['value']   = $this->value();
 		$this->json['link']    = $this->get_link();
+		$this->json['help']    = $this->help;
 	}
 
 	protected function render() {
@@ -48,6 +53,9 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 	public function render_content() {}
 
 	public function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label>
 			<span class="customize-control-title">
 				{{{ data.label }}}

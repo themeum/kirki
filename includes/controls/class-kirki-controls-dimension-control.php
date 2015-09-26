@@ -23,6 +23,8 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 
 	public $type = 'dimension';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-dimension', 'controls/dimension', array( 'jquery' ) );
 	}
@@ -35,11 +37,15 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		$this->json['numeric_value']   = $this->numeric_value();
 		$this->json['unit_value']      = $this->unit_value();
 		$this->json['available_units'] = $this->get_units();
+		$this->json['help']            = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

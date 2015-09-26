@@ -26,6 +26,8 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
 	public $type = 'multicheck';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-multicheck', 'controls/multicheck', array( 'jquery' ) );
 	}
@@ -36,6 +38,11 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 			return;
 		}
 		?>
+
+		<?php if ( '' != $this->help ) : ?>
+			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+		<?php endif; ?>
+
 
 		<?php if ( ! empty( $this->label ) ) : ?>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
