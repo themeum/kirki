@@ -3,7 +3,6 @@
  * slider Customizer Control.
  *
  * Creates a jQuery slider control.
- * TODO: Migrate to an HTML5 range control. Range control are hard to style 'cause they don't display the value
  *
  * @package     Kirki
  * @subpackage  Controls

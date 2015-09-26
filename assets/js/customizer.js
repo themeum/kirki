@@ -241,6 +241,18 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 		});
 	}
 });
+/**
+ * KIRKI CONTROL: PALETTE
+ */
+wp.customize.controlConstructor['palette'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'click', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
+});
+
 jQuery(document).ready(function($) {
 	$( '.customize-control-palette > div' ).buttonset();
 });

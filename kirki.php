@@ -22,11 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// TODO: THIS HAS TO BE REMOVED BEFORE RELEASING A STABLE VERSION
-if ( ! defined( 'KIRKI_DEBUG' ) ) {
-	define( 'KIRKI_DEBUG', true );
-}
-
 // Set the KIRKI_PATH constant.
 if ( ! defined( 'KIRKI_PATH' ) ) {
 	define( 'KIRKI_PATH', dirname( __FILE__ ) );

@@ -28,34 +28,35 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-palette', 'controls/palette', array( 'jquery', 'jquery-ui-button' ) );
 	}
 
-	public function render_content() {
+	public function to_json() {
+		parent::to_json();
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['id']      = $this->id;
+	}
 
-		if ( empty( $this->choices ) ) {
-			return;
-		}
+	public function render_content() {}
 
-		$name = '_customize-palette-' . $this->id;
-
-		?>
+	protected function content_template() { ?>
+		<# if ( ! data.choices ) { return; } #>
 		<span class="customize-control-title">
-			<?php echo esc_html( $this->label ); ?>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
-			<?php endif; ?>
+			{{ data.label }}
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
 		</span>
 
-		<div id="input_<?php echo $this->id; ?>" class="buttonset">
-			<?php foreach ( $this->choices as $value => $colorSet ) : ?>
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . esc_attr( $value ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
-					<label for="<?php echo $this->id . esc_attr( $value ); ?>">
-						<?php
-						foreach ( $colorSet as $color ) {
-							printf( "<span style='background: {$color}'>{$color}</span>" );
-						}
-						?>
+		<div id="input_{{ data.id }}" class="buttonset">
+			<# for ( key in data.choices ) { #>
+				<input type="radio" value="{{ key }}" name="_customize-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == key ) { #> checked<# } #>>
+					<label for="{{ data.id }}{{ key }}">
+						<# for ( color in data.choices[ key ] ) { #>
+							<span style='background: {{ data.choices[ key ][ color ] }}'>{{ data.choices[ key ][ color ] }}</span>
+						<# } #>
 					</label>
 				</input>
-			<?php endforeach; ?>
+			<# } #>
 		</div>
 		<?php
 	}

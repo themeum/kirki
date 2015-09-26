@@ -102,6 +102,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Textarea_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
 	}
 
 	/**
