@@ -1,0 +1,760 @@
+# Copyright (C) 2015 Aristeides Stathopoulos
+# This file is distributed under the same license as the Kirki Toolkit package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Kirki Toolkit 1.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
+"POT-Creation-Date: 2015-09-26 07:26:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
+
+#: demo-theme/functions.php:16
+msgid "Checkbox Controls"
+msgstr ""
+
+#: demo-theme/functions.php:22
+msgid "Text Controls"
+msgstr ""
+
+#: demo-theme/functions.php:28
+msgid "Color & Color-Alpha Controls"
+msgstr ""
+
+#: demo-theme/functions.php:34
+msgid "Numeric Controls"
+msgstr ""
+
+#: demo-theme/functions.php:40
+msgid "Radio Controls"
+msgstr ""
+
+#: demo-theme/functions.php:46
+msgid "Select Controls"
+msgstr ""
+
+#: demo-theme/functions.php:52
+msgid "Composite Controls"
+msgstr ""
+
+#: demo-theme/functions.php:58 demo-theme/functions.php:207
+msgid "Custom Control"
+msgstr ""
+
+#: demo-theme/functions.php:79
+msgid "Checkbox demo"
+msgstr ""
+
+#: demo-theme/functions.php:80
+msgid "This is a simple checkbox"
+msgstr ""
+
+#: demo-theme/functions.php:89
+msgid "Switch demo"
+msgstr ""
+
+#: demo-theme/functions.php:90
+msgid ""
+"This is a switch control. Internally it is a checkbox and you can also "
+"change the ON/OFF labels."
+msgstr ""
+
+#: demo-theme/functions.php:106
+msgid "Toggle demo"
+msgstr ""
+
+#: demo-theme/functions.php:107
+msgid ""
+"This is a toggle. it is basically identical to a switch, the only "
+"difference is that it does not have any labels and to save space it is "
+"inline with the label. Internally this is a checkbox."
+msgstr ""
+
+#: demo-theme/functions.php:116
+msgid "Text Control"
+msgstr ""
+
+#: demo-theme/functions.php:117 demo-theme/index.php:108
+msgid "This text is entered in the \"text\" control."
+msgstr ""
+
+#: demo-theme/functions.php:126
+msgid "Textarea Control"
+msgstr ""
+
+#: demo-theme/functions.php:127 demo-theme/index.php:117
+msgid "This text is entered in the \"textarea\" control."
+msgstr ""
+
+#: demo-theme/functions.php:136
+msgid "Editor Control"
+msgstr ""
+
+#: demo-theme/functions.php:138 demo-theme/index.php:126
+msgid "This text is entered in the \"editor\" control."
+msgstr ""
+
+#: demo-theme/functions.php:145
+msgid "Code Control"
+msgstr ""
+
+#: demo-theme/functions.php:146
+msgid ""
+"This is a cimple code control. You can define the language you want as well "
+"as the theme. For a full list of available languages and themes see "
+"http://ace.c9.io/build/kitchen-sink.html. In this demo we are using a CSS "
+"editor with the monokai theme."
+msgstr ""
+
+#: demo-theme/functions.php:159
+msgid "Color Control"
+msgstr ""
+
+#: demo-theme/functions.php:160
+msgid "This uses the default WordPress-core color control."
+msgstr ""
+
+#: demo-theme/functions.php:183
+msgid "Color-Alpha Control"
+msgstr ""
+
+#: demo-theme/functions.php:184
+msgid ""
+"Similar to the default Color control but with a teist: This one allows you "
+"to also select an opacity for the color and saves the value as HEX or RGBA "
+"depending on the alpha channel's value."
+msgstr ""
+
+#: demo-theme/functions.php:208
+msgid "This is the control description"
+msgstr ""
+
+#: demo-theme/functions.php:209
+msgid ""
+"This is some extra help. You can use this to add some additional "
+"instructions for users. The main description should go in the "
+"\"description\" of the field, this is only to be used for help tips."
+msgstr ""
+
+#: demo-theme/functions.php:218
+msgid "Dimension Control"
+msgstr ""
+
+#: demo-theme/functions.php:219
+msgid "In this example we are changing the width of the body"
+msgstr ""
+
+#: demo-theme/functions.php:242
+msgid "Multicheck control"
+msgstr ""
+
+#: demo-theme/functions.php:243
+msgid ""
+"You can define choices for this control and it will save the selected "
+"values as an array."
+msgstr ""
+
+#: demo-theme/functions.php:248 demo-theme/functions.php:265
+#: demo-theme/functions.php:493
+msgid "Option 1"
+msgstr ""
+
+#: demo-theme/functions.php:249 demo-theme/functions.php:266
+#: demo-theme/functions.php:494
+msgid "Option 2"
+msgstr ""
+
+#: demo-theme/functions.php:250 demo-theme/functions.php:267
+#: demo-theme/functions.php:495
+msgid "Option 3"
+msgstr ""
+
+#: demo-theme/functions.php:251 demo-theme/functions.php:268
+#: demo-theme/functions.php:496
+msgid "Option 4"
+msgstr ""
+
+#: demo-theme/functions.php:252 demo-theme/functions.php:269
+#: demo-theme/functions.php:497
+msgid "Option 5"
+msgstr ""
+
+#: demo-theme/functions.php:259
+msgid "Sortable Control"
+msgstr ""
+
+#: demo-theme/functions.php:261
+msgid ""
+"Similar to the \"multicheck\" control, you can define choices foir this "
+"control and the options will be saved as an array. The main difference "
+"between the multicheck control and this one is that this one also allows "
+"you to rearrange the order of the items."
+msgstr ""
+
+#: demo-theme/functions.php:276
+msgid "Number Control"
+msgstr ""
+
+#: demo-theme/functions.php:277
+msgid "This is a simple num,ber control that allows you to select integer values."
+msgstr ""
+
+#: demo-theme/functions.php:307
+msgid "Slider Control"
+msgstr ""
+
+#: demo-theme/functions.php:308
+msgid ""
+"Similar to the number control. The main difference is that on this one you "
+"can define a min, max & step value thus allowing you to use decimal values "
+"instead of just integers."
+msgstr ""
+
+#: demo-theme/functions.php:338
+msgid "Radio Control"
+msgstr ""
+
+#: demo-theme/functions.php:339
+msgid "A simple radio-inputs control."
+msgstr ""
+
+#: demo-theme/functions.php:344 demo-theme/functions.php:359
+#: demo-theme/functions.php:477
+msgid "Red"
+msgstr ""
+
+#: demo-theme/functions.php:345 demo-theme/functions.php:360
+#: demo-theme/functions.php:478
+msgid "Green"
+msgstr ""
+
+#: demo-theme/functions.php:346 demo-theme/functions.php:361
+#: demo-theme/functions.php:479
+msgid "Blue"
+msgstr ""
+
+#: demo-theme/functions.php:353
+msgid "Radio-Buttonset Control"
+msgstr ""
+
+#: demo-theme/functions.php:354
+msgid ""
+"This is a radio control styled as inline buttons. You can use this if you "
+"have few options with short titles that will fit in a single line."
+msgstr ""
+
+#: demo-theme/functions.php:368
+msgid "Radio-Image Control"
+msgstr ""
+
+#: demo-theme/functions.php:369
+msgid ""
+"This is a radio control that allows you to define an image for every option "
+"is the array of choices in the field. Useful if you want for example to "
+"select a layout. You can even use the images included in the Kirki plugin "
+"for that, in the /assets/images directory."
+msgstr ""
+
+#: demo-theme/functions.php:397
+msgid "Palette Control"
+msgstr ""
+
+#: demo-theme/functions.php:398
+msgid ""
+"This is basically a radio control. It allows you to define an array of "
+"colors that will be used in order to convey your message in a visually "
+"compelling way."
+msgstr ""
+
+#: demo-theme/functions.php:408
+msgid "Typography Control"
+msgstr ""
+
+#: demo-theme/functions.php:409
+msgid ""
+"This is a composite typography control. It saves the data as an array, and "
+"you can define which of the controls you want shown."
+msgstr ""
+
+#: demo-theme/functions.php:437
+msgid "Repeater Control"
+msgstr ""
+
+#: demo-theme/functions.php:438
+msgid ""
+"The \"repeater\" control allows you to create rows of data and you can "
+"define the fields that the rows will use. Valide field-types are: text, "
+"checkbox, radio, select, textarea. The data is saves as a multi-dimentional "
+"array."
+msgstr ""
+
+#: demo-theme/functions.php:444 demo-theme/index.php:244
+msgid "Kirki Site"
+msgstr ""
+
+#: demo-theme/functions.php:448 demo-theme/index.php:248
+msgid "Kirki Repository"
+msgstr ""
+
+#: demo-theme/functions.php:455
+msgid "Link Text"
+msgstr ""
+
+#: demo-theme/functions.php:456
+msgid "This will be the label for your link"
+msgstr ""
+
+#: demo-theme/functions.php:461
+msgid "Link URL"
+msgstr ""
+
+#: demo-theme/functions.php:462
+msgid "This will be the link URL"
+msgstr ""
+
+#: demo-theme/functions.php:471
+msgid "Select Control"
+msgstr ""
+
+#: demo-theme/functions.php:472
+msgid ""
+"A simple select (dropdown) control, allowing you to make a single option "
+"from a relatively large pool of options."
+msgstr ""
+
+#: demo-theme/functions.php:486
+msgid "Select Control (multiple)"
+msgstr ""
+
+#: demo-theme/functions.php:487
+msgid ""
+"A multi-select control, allowing you to select multiple items "
+"simultaneously as well as re-arrange them at will using a simple "
+"drag-n-drop interface. Data is saved as an array."
+msgstr ""
+
+#: demo-theme/index.php:10
+msgid "Please enable the Kirki Plugin in order to see the demo in the Customizer"
+msgstr ""
+
+#: demo-theme/index.php:39
+msgid "checkbox:"
+msgstr ""
+
+#: demo-theme/index.php:40
+msgid "Checkbox is %s"
+msgstr ""
+
+#: demo-theme/index.php:40 demo-theme/index.php:44 demo-theme/index.php:48
+#: includes/class-kirki-toolkit.php:77
+msgid "ON"
+msgstr ""
+
+#: demo-theme/index.php:40 demo-theme/index.php:44 demo-theme/index.php:48
+#: includes/class-kirki-toolkit.php:78
+msgid "OFF"
+msgstr ""
+
+#: demo-theme/index.php:43
+msgid "switch:"
+msgstr ""
+
+#: demo-theme/index.php:44
+msgid "Switch is %s"
+msgstr ""
+
+#: demo-theme/index.php:47
+msgid "toggle:"
+msgstr ""
+
+#: demo-theme/index.php:48
+msgid "Toggle is %s"
+msgstr ""
+
+#: demo-theme/index.php:57
+msgid "multicheck:"
+msgstr ""
+
+#: demo-theme/index.php:66 demo-theme/index.php:90
+msgid "Total number of options selected: %s"
+msgstr ""
+
+#: demo-theme/index.php:69 demo-theme/index.php:93
+msgid "Option 2 is selected"
+msgstr ""
+
+#: demo-theme/index.php:71 demo-theme/index.php:95
+msgid "Option 2 is not selected"
+msgstr ""
+
+#: demo-theme/index.php:81
+msgid "sortable:"
+msgstr ""
+
+#: demo-theme/index.php:107
+msgid "text:"
+msgstr ""
+
+#: demo-theme/index.php:116
+msgid "textarea:"
+msgstr ""
+
+#: demo-theme/index.php:125
+msgid "editor:"
+msgstr ""
+
+#: demo-theme/index.php:129
+msgid ""
+"The \"code\" control has its CSS applied directly to the page for the "
+"purposes of this demo. In order to see the changes, please write some valid "
+"CSS and you will see the changes take effect immediately."
+msgstr ""
+
+#: demo-theme/index.php:139
+msgid "color & color-alpha:"
+msgstr ""
+
+#: demo-theme/index.php:140
+msgid "Change the \"color\" control to make the color of this text change"
+msgstr ""
+
+#: demo-theme/index.php:141
+msgid ""
+"Change the \"color-alpha\" control to make the background of this text "
+"change"
+msgstr ""
+
+#: demo-theme/index.php:151
+msgid "number"
+msgstr ""
+
+#: demo-theme/index.php:152 demo-theme/index.php:163
+msgid "Number selected: %s"
+msgstr ""
+
+#: demo-theme/index.php:153 demo-theme/index.php:164
+msgid ""
+"The border-radius of this colored div will change depending on the value "
+"you select"
+msgstr ""
+
+#: demo-theme/index.php:162
+msgid "slider"
+msgstr ""
+
+#: demo-theme/index.php:175
+msgid "radio:"
+msgstr ""
+
+#: demo-theme/index.php:176 demo-theme/index.php:178 demo-theme/index.php:215
+msgid "selected option: %s"
+msgstr ""
+
+#: demo-theme/index.php:177
+msgid "radio-buttonset:"
+msgstr ""
+
+#: demo-theme/index.php:186
+msgid "radio-image:"
+msgstr ""
+
+#: demo-theme/index.php:187
+msgid "The word below is aligned according to your selection"
+msgstr ""
+
+#: demo-theme/index.php:198
+msgid "palette:"
+msgstr ""
+
+#: demo-theme/index.php:200
+msgid "selected palette: %s"
+msgstr ""
+
+#: demo-theme/index.php:214
+msgid "select:"
+msgstr ""
+
+#: demo-theme/index.php:218
+msgid "Multiple Select:"
+msgstr ""
+
+#: demo-theme/index.php:230
+msgid "The \"dimension\" control has its value applied directly as the body's width"
+msgstr ""
+
+#: demo-theme/index.php:233
+msgid ""
+"The \"typography\" control has its values applied directly as the body's "
+"typography ooptions. By changing its value you will see the changes applied "
+"to all text on this page."
+msgstr ""
+
+#: demo-theme/index.php:241
+msgid "repeater:"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:52
+msgid "Background Color"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:53
+msgid "Background Image"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:54
+msgid "No Repeat"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:55
+msgid "Repeat All"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:56
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:57
+msgid "Repeat Vertically"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:58
+msgid "Inherit"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:59
+msgid "Background Repeat"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:60
+msgid "Cover"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:61
+msgid "Contain"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:62
+msgid "Background Size"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:63
+msgid "Fixed"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:64
+msgid "Scroll"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:65
+msgid "Background Attachment"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:66
+msgid "Left Top"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:67
+msgid "Left Center"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:68
+msgid "Left Bottom"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:69
+msgid "Right Top"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:70
+msgid "Right Center"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:71
+msgid "Right Bottom"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:72
+msgid "Center Top"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:73
+msgid "Center Center"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:74
+msgid "Center Bottom"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:75
+msgid "Background Position"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:76
+msgid "Background Opacity"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:79
+msgid "All"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:80
+msgid "Cyrillic"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:81
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:82
+msgid "Devanagari"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:83
+msgid "Greek"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:84
+msgid "Greek Extended"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:85
+msgid "Khmer"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:86
+msgid "Latin"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:87
+msgid "Latin Extended"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:88
+msgid "Vietnamese"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:89
+msgid "Hebrew"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:90
+msgid "Arabic"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:91
+msgid "Bengali"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:92
+msgid "Gujarati"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:93
+msgid "Tamil"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:94
+msgid "Telugu"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:95
+msgid "Thai"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:99
+#: tests/void-test-kirki-scripts-frontend-google-fonts.php:9
+msgid "Font Family"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:100
+msgid "Font Size"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:101
+#: tests/void-test-kirki-scripts-frontend-google-fonts.php:42
+msgid "Font Weight"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:102
+msgid "Line Height"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:103
+msgid "Letter Spacing"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:104
+msgid "Top"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:105
+msgid "Bottom"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:106
+msgid "Left"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:107
+msgid "Right"
+msgstr ""
+
+#: includes/controls/class-kirki-controls-repeater-control.php:31
+msgid "Add new row"
+msgstr ""
+
+#: tests/test-kirki.php:55 tests/test-kirki.php:64 tests/test-kirki.php:73
+#: tests/test-kirki.php:131
+msgid "My custom control"
+msgstr ""
+
+#: tests/test-kirki.php:142
+msgid "My custom control 2"
+msgstr ""
+
+#: tests/void-test-kirki-scripts-frontend-google-fonts.php:25
+msgid "Google-Font subsets"
+msgstr ""
+
+#: tests/void-test-kirki-scripts-frontend-google-fonts.php:26
+msgid "The subsets used from Google's API."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Kirki Toolkit"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://kirki.org"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "The ultimate WordPress Customizer Toolkit"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aristeides Stathopoulos"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://aristeides.com"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:96
+msgctxt "font style"
+msgid "Serif"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:97
+msgctxt "font style"
+msgid "Sans Serif"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:98
+msgctxt "font style"
+msgid "Monospace"
+msgstr ""
