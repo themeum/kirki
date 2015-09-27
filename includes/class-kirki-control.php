@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Control {
+class Kirki_Control extends Kirki_Field {
 
 	public $wp_customize;
 
@@ -9,13 +9,7 @@ class Kirki_Control {
 	 */
 	public function __construct( $args ) {
 
-		global $wp_customize;
-		if ( ! $wp_customize ) {
-			return;
-		}
-
-		$this->wp_customize = $wp_customize;
-
+		parent::__construct( $args );
 		$this->add_control( $args );
 
 	}

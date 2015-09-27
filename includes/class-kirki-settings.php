@@ -1,16 +1,10 @@
 <?php
 
-class Kirki_Settings {
+class Kirki_Settings extends Kirki_Field {
 
 	public function __construct( $args ) {
 
-		global $wp_customize;
-		if ( ! $wp_customize ) {
-			return;
-		}
-
-		$this->wp_customize = $wp_customize;
-
+		parent::__construct( $args );
 		$this->add_settings( $args );
 
 	}
