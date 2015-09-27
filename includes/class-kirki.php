@@ -384,16 +384,7 @@ class Kirki {
 				) );
 			}
 
-			$class_name = 'WP_Customize_Control';
-			if ( array_key_exists( $field['type'], $control_types ) ) {
-				$class_name = $control_types[ $field['type'] ];
-			}
-
-			$wp_customize->add_control( new $class_name(
-				$wp_customize,
-				Kirki_Field_Sanitize::sanitize_id( $field ),
-				Kirki_Field_Sanitize::sanitize_field( $field )
-			) );
+			$control = new Kirki_Control( $field );
 
 		}
 
