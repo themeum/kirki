@@ -286,13 +286,8 @@ class Kirki {
 
 		if ( ! empty( self::$panels ) ) {
 
-			foreach ( self::$panels as $panel ) {
-				$wp_customize->add_panel( sanitize_key( $panel['id'] ), array(
-					'title'           => esc_textarea( $panel['title'] ),
-					'priority'        => esc_attr( $panel['priority'] ),
-					'description'     => esc_textarea( $panel['description'] ),
-					'active_callback' => $panel['active_callback'],
-				) );
+			foreach ( self::$panels as $panel_args ) {
+				$panel = new Kirki_Panel( $panel_args );
 			}
 
 		}
