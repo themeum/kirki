@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Sanitize' ) ) {
+if ( class_exists( 'Kirki_Sanitize_Values' ) ) {
 	return;
 }
 
-class Kirki_Sanitize {
+class Kirki_Sanitize_Values {
 
 	/**
 	 * Checkbox sanitization callback.
