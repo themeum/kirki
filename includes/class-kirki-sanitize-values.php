@@ -21,7 +21,7 @@ if ( class_exists( 'Kirki_Sanitize_Values' ) ) {
 	return;
 }
 
-class Kirki_Sanitize_Values {
+class Kirki_Sanitize_Values extends Kirki_Sanitize {
 
 	/**
 	 * Checkbox sanitization callback.
