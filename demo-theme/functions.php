@@ -512,18 +512,40 @@ if ( class_exists( 'Kirki' ) ) {
 			'1' => array(
 				'label'    => __( 'Option 1', 'kirki-demo' ),
 				'settings' => array(
-					'select_demo'          => 'red',
-					'select_multiple_demo' => array( 'option-1', 'option-2' ),
+					'select_demo'             => 'red',
+					'select_multiple_demo'    => array( 'option-1', 'option-2' ),
+					'color_demo_preset'       => '#0088cc',
+					'color_alpha_demo_preset' => '#cc0000',
 				),
 			),
 			'2' => array(
 				'label'    => __( 'Option 2', 'kirki-demo' ),
 				'settings' => array(
-					'select_demo'          => 'green',
-					'select_multiple_demo' => array( 'option-4', 'option-1' ),
+					'select_demo'             => 'green',
+					'select_multiple_demo'    => array( 'option-4', 'option-1' ),
+					'color_alpha_demo_preset' => '#dedede',
+					'color_demo_preset'       => '#333333',
 				),
 			),
 		),
+	) );
+
+	Kirki::add_field( 'kirki_demo', array(
+		'type'        => 'color',
+		'settings'    => 'color_demo_preset',
+		'label'       => __( 'Color Control', 'kirki' ),
+		'section'     => 'select',
+		'default'     => '#81d742',
+		'priority'    => 10,
+	) );
+
+	Kirki::add_field( 'kirki_demo', array(
+		'type'        => 'color-alpha',
+		'settings'    => 'color_alpha_demo_preset',
+		'label'       => __( 'Color-Alpha Control', 'kirki' ),
+		'section'     => 'select',
+		'default'     => '#333333',
+		'priority'    => 10,
 	) );
 
 }
