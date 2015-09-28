@@ -361,7 +361,7 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 							/**
 							 * Update the value in the customizer object
 							 */
-							wp.customize( preset_setting ).set( preset_setting_value );
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
 
 						}
 						/**
@@ -379,30 +379,44 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 							/**
 							 * Update the value in the customizer object
 							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     textarea
+						 *     kirki-textarea
+						 */
+						else if ( 'textarea' == sub_control_type || 'kirki-textarea' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'textarea' );
+							jQuery( input_element ).prop( "value", preset_setting_value );
+							/**
+							 * Update the value in the customizer object
+							 */
 							wp.customize( preset_setting ).set( preset_setting_value );
 
 						}
 						/**
 						 * Control types:
 						 *     color
-						 *     color-alpha
 						 *     kirki-color
 						 */
-						else if ( 'color-alpha' == sub_control_type || 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
+						else if ( 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
 
-							var input_element = wp.customize.control( preset_setting ).container.find( '.color-picker-hex' );
-							input_element.data( 'data-default-color', preset_setting_value ).wpColorPicker( 'defaultColor', preset_setting_value );
-
-						}
-						/**
-						 * Control types:
-						 *     code
-						 *     textarea
-						 *     kirki-textarea
-						 */
-						else if ( 'code' == sub_control_type || 'textarea' == sub_control_type || 'kirki-textarea' == sub_control_type ) {
-
-							var input_element = wp.customize.control( preset_setting ).container.find( 'textarea' );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+							/**
+							 * Update the value visually in the control
+							 */
+							wp.customize.control( preset_setting ).container.find( '.color-picker-hex' )
+								.data( 'data-default-color', preset_setting_value )
+								.wpColorPicker( 'defaultColor', preset_setting_value );
 
 						}
 						/**
