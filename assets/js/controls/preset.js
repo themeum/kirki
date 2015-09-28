@@ -110,14 +110,37 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 * Control types:
 						 *     text
 						 *     kirki-text
+						 *     number
 						 */
-						else if ( 'text' == sub_control_type || 'kirki-text' == sub_control_type ) {
+						else if ( 'text' == sub_control_type || 'kirki-text' == sub_control_type || 'number' == sub_control_type ) {
 
 							/**
 							 * Update the value visually in the control
 							 */
 							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
 							jQuery( input_element ).prop( "value", preset_setting_value );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     slider
+						 */
+						else if ( 'slider' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control (slider)
+							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
+							jQuery( input_element ).prop( "value", preset_setting_value );
+							/**
+							 * Update the value visually in the control (number)
+							 */
+							var numeric_element = wp.customize.control( preset_setting ).container.find( '.kirki_range_value .value' );
+							jQuery( numeric_element ).html( preset_setting_value );
 							/**
 							 * Update the value in the customizer object
 							 */
