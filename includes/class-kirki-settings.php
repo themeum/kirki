@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Settings extends Kirki_Field {
+class Kirki_Settings extends Kirki_Customizer {
 
 	public function __construct( $args ) {
 

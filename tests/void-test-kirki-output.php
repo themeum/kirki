@@ -1,6 +1,6 @@
 <?php
 
-class Test_Kirki_Output extends WP_UnitTestCase {
+class Test_Kirki_Output_CSS extends WP_UnitTestCase {
 
 	public function timestwo( $value ) {
 		return 2 * intval( $value );
@@ -10,7 +10,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 		set_theme_mod( 'foo', '#333' );
 		$this->assertEquals(
 		'@media (min-width: 700px){body > #foo{background-color:#333!important;}body > #foo a:after{color:#333;}}#bar{color:#333;}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo',
 				'theme_mod',
 				array(
@@ -40,7 +40,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 		update_option( 'foo', '#333' );
 		$this->assertEquals(
 		'@media (min-width: 700px){body > #foo{background-color:#333!important;}body > #foo a:after{color:#333;}}#bar{color:#333;}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo',
 				'option',
 				array(
@@ -70,7 +70,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 		update_option( 'foo', array( 'bar' => '#333' ) );
 		$this->assertEquals(
 		'@media (min-width: 700px){body > #foo{background-color:#333!important;}body > #foo a:after{color:#333;}}#bar{color:#333;}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo[bar]',
 				'option',
 				array(
@@ -97,10 +97,10 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 	}
 
 	public function test_css() {
-		$this->assertEquals( null, Kirki_Output::css() );
+		$this->assertEquals( null, Kirki_Output_CSS::css() );
 		set_theme_mod( 'foo', '3' );
 		$this->assertEquals( 'body{font-size:6px;}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo',
 				'theme_mod',
 				array( array(
@@ -115,7 +115,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 
 		set_theme_mod( 'foo', 'http://foo.com/bar.png' );
 		$this->assertEquals( 'body{background-image:url("http://foo.com/bar.png");}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo',
 				'theme_mod',
 				array( array(
@@ -129,7 +129,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 
 		set_theme_mod( 'foo', 'left-top' );
 		$this->assertEquals( 'body{background-position:left top;}',
-			Kirki_Output::css(
+			Kirki_Output_CSS::css(
 				'foo',
 				'theme_mod',
 				array( array(
@@ -143,7 +143,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 	}
 
 	public function test_add_prefixes() {
-		$this->assertEquals( null, Kirki_Output::add_prefixes( '' ) );
+		$this->assertEquals( null, Kirki_Output_CSS::add_prefixes( '' ) );
 		$css = array();
 		$css['global']['body']['border-radius'] = '3px';
 		$css['global']['body']['box-shadow'] = '10px 10px 5px 0px rgba(0,0,0,0.75)';
@@ -188,7 +188,7 @@ class Test_Kirki_Output extends WP_UnitTestCase {
 				'-ms-transition-property' => 'width',
 				'-o-transition-property' => 'width',
 			) ) ),
-			Kirki_Output::add_prefixes( $css )
+			Kirki_Output_CSS::add_prefixes( $css )
 		);
 	}
 

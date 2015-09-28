@@ -88,7 +88,7 @@ class Kirki_Styles_Frontend {
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
-				$css = array_merge_recursive( $css, Kirki_Output::css(
+				$css = array_merge_recursive( $css, Kirki_Output_CSS::css(
 					Kirki_Field_Sanitize::sanitize_field( $field )
 				) );
 
@@ -97,7 +97,7 @@ class Kirki_Styles_Frontend {
 		}
 
 		if ( is_array( $css ) ) {
-			return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
+			return Kirki_Output_CSS::styles_parse( Kirki_Output_CSS::add_prefixes( $css ) );
 		}
 
 		return;
