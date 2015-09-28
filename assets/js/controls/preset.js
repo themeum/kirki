@@ -82,6 +82,9 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						else if ( 'select' == sub_control_type || 'select2' == sub_control_type || 'select2-multiple' == sub_control_type || 'kirki-select' == sub_control_type ) {
 
 							var input_element = wp.customize.control( preset_setting ).container.find( 'select' );
+							var $select = jQuery( input_element ).selectize();
+							var selectize = $select[0].selectize;
+							selectize.setValue( preset_setting_value, true )
 
 						}
 						/**

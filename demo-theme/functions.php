@@ -523,8 +523,8 @@ if ( class_exists( 'Kirki' ) ) {
 				'settings' => array(
 					'select_demo'             => 'green',
 					'select_multiple_demo'    => array( 'option-4', 'option-1' ),
-					'color_alpha_demo_preset' => '#dedede',
 					'color_demo_preset'       => '#333333',
+					'color_alpha_demo_preset' => '#dedede',
 				),
 			),
 		),
