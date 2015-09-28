@@ -93,13 +93,31 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 */
 						else if ( 'select' == sub_control_type || 'select2' == sub_control_type || 'select2-multiple' == sub_control_type || 'kirki-select' == sub_control_type ) {
 
-							var input_element = wp.customize.control( preset_setting ).container.find( 'select' );
 							/**
 							 * Update the value visually in the control
 							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'select' );
 							var $select = jQuery( input_element ).selectize();
 							var selectize = $select[0].selectize;
 							selectize.setValue( preset_setting_value, true );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     text
+						 *     kirki-text
+						 */
+						else if ( 'text' == sub_control_type || 'kirki-text' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
+							jQuery( input_element ).prop( "value", preset_setting_value );
 							/**
 							 * Update the value in the customizer object
 							 */
