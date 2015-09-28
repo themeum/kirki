@@ -322,24 +322,24 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 
 							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
 							if ( 1 == preset_setting_value ) {
+								/**
+								 * Update the value visually in the control
+								 */
 								jQuery( input_element ).prop( "checked", true );
+								/**
+								 * Update the value in the customizer object
+								 */
 								wp.customize.instance( preset_setting ).set( true );
 							} else {
+								/**
+								 * Update the value visually in the control
+								 */
 								jQuery( input_element ).prop( "checked", false );
+								/**
+								 * Update the value in the customizer object
+								 */
 								wp.customize.instance( preset_setting ).set( false );
 							}
-
-						}
-						/**
-						 * Control types:
-						 *     color
-						 *     color-alpha
-						 *     kirki-color
-						 */
-						else if ( 'color-alpha' == sub_control_type || 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
-
-							var input_element = wp.customize.control( preset_setting ).container.find( '.color-picker-hex' );
-							input_element.data( 'data-default-color', preset_setting_value ).wpColorPicker( 'defaultColor', preset_setting_value );
 
 						}
 						/**
@@ -352,9 +352,28 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						else if ( 'select' == sub_control_type || 'select2' == sub_control_type || 'select2-multiple' == sub_control_type || 'kirki-select' == sub_control_type ) {
 
 							var input_element = wp.customize.control( preset_setting ).container.find( 'select' );
+							/**
+							 * Update the value visually in the control
+							 */
 							var $select = jQuery( input_element ).selectize();
 							var selectize = $select[0].selectize;
-							selectize.setValue( preset_setting_value, true )
+							selectize.setValue( preset_setting_value, true );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     color
+						 *     color-alpha
+						 *     kirki-color
+						 */
+						else if ( 'color-alpha' == sub_control_type || 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
+
+							var input_element = wp.customize.control( preset_setting ).container.find( '.color-picker-hex' );
+							input_element.data( 'data-default-color', preset_setting_value ).wpColorPicker( 'defaultColor', preset_setting_value );
 
 						}
 						/**
