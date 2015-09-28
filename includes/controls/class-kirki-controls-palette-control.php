@@ -23,6 +23,8 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 
 	public $type = 'palette';
 
+	public $help = '';
+
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-palette', 'controls/palette', array( 'jquery', 'jquery-ui-button' ) );
@@ -34,11 +36,15 @@ class Kirki_Controls_Palette_Control extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
+		$this->json['help']    = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<# if ( ! data.choices ) { return; } #>
 		<span class="customize-control-title">
 			{{ data.label }}

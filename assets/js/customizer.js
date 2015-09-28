@@ -217,14 +217,24 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 /**
  * KIRKI CONTROL: MULTICHECK
  */
-jQuery( document ).ready( function() {
-	jQuery( '.customize-control-multicheck input[type="checkbox"]' ).on( 'change', function() {
-		checkbox_values = jQuery( this ).parents( '.customize-control' ).find( 'input[type="checkbox"]:checked' ).map(
-			function() { return this.value; }
-		).get().join( ',' );
-		jQuery( this ).parents( '.customize-control' ).find( 'input[type="hidden"]' ).val( checkbox_values ).trigger( 'change' );
+wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+
+		// Modified values
+		control.container.on( 'change', 'input', function() {
+			var compiled_value = {};
+			jQuery.each( control.params.choices, function( key, value ) {
+				if ( jQuery( 'input[value="' + key + '"' ).is( ':checked' ) ) {
+					compiled_value[ key ] = true;
+				}
+			});
+			control.setting.set( compiled_value );
+			wp.customize.previewer.refresh();
+			console.log( compiled_value );
+		});
 	}
-); } );
+});
 /**
  * KIRKI CONTROL: NUMBER
  */

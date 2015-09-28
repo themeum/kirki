@@ -105,6 +105,7 @@ class Kirki {
 		$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
 		$wp_customize->register_control_type( 'Kirki_Controls_Preset_Control' );
+		$wp_customize->register_control_type( 'Kirki_Controls_Multicheck_Control' );
 	}
 
 	/**

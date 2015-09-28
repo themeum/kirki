@@ -31,14 +31,51 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 
 		$scripts = array();
 
+		/**
+		 * The following control types already have the "help" argument in them
+		 * and they don't need an extra implementation in order to be rendered.
+		 * We're going to ignore these control-types and only process the rest.
+		 */
+		$ready_controls = array(
+			'checkbox',
+			'code',
+			'color-alpha',
+			'custom',
+			'dimension',
+			'editor',
+			'multicheck',
+			'number',
+			'palette',
+			'radio-buttonset',
+			'radio-image',
+			'radio',
+			'kirki-radio',
+			'repeater',
+			'select',
+			'kirki-select',
+			'select2',
+			'select2-multiple',
+			'slider',
+			'sortable',
+			'spacing',
+			'switch',
+			'textarea',
+			'toggle',
+			'typography',
+		);
+
 		foreach ( $fields as $field ) {
+
+			if ( isset( $field['type'] ) && in_array( $field['type'], $ready_controls ) ) {
+				continue;
+			}
 
 			$field['help']     = isset( $field['help'] ) ? wp_strip_all_tags( $field['help'] ) : '';
 			$field['settings'] = Kirki_Field_Sanitize::sanitize_settings( $field );
 
 			if ( ! empty( $field['help'] ) ) {
-				$content   = "<a href='#' class='tooltip hint--left' data-hint='".strip_tags( esc_html( $field['help'] ) )."'><span class='dashicons dashicons-info'></span></a>";
-				$scripts[] = '$( "'.$content.'" ).prependTo( "#customize-control-'.$field['settings'].'" );';
+				$content   = "<a href='#' class='tooltip hint--left' data-hint='" . strip_tags( esc_html( $field['help'] ) ) . "'><span class='dashicons dashicons-info'></span></a>";
+				$scripts[] = '$( "' . $content . '" ).prependTo( "#customize-control-' . $field['settings'] . '" );';
 			}
 
 		}

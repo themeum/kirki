@@ -23,6 +23,8 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 
 	public $type = 'typography';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-typography', 'controls/typography', array( 'jquery', 'selectize' ) );
@@ -55,11 +57,15 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			'line-height'    => $i18n['line-height'],
 			'letter-spacing' => $i18n['letter-spacing'],
 		);
+		$this->json['help'] = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>

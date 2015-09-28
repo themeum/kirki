@@ -23,6 +23,8 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 
 	public $type = 'spacing';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-spacing', 'controls/spacing', array( 'jquery' ) );
 	}
@@ -47,12 +49,16 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 			'left'   => $i18n['left'],
 			'right'  => $i18n['right'],
 		);
+		$this->json['help'] = $this->help;
 
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
