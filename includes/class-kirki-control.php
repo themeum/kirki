@@ -19,8 +19,8 @@ class Kirki_Control extends Kirki_Customizer {
 		parent::__construct( $args );
 
 		$class_name = 'WP_Customize_Control';
-		if ( array_key_exists( $args['type'], Kirki::$control_types ) ) {
-			$class_name = Kirki::$control_types[ $args['type'] ];
+		if ( array_key_exists( $args['type'], Kirki_Init::$control_types ) ) {
+			$class_name = Kirki_Init::$control_types[ $args['type'] ];
 		}
 
 		return $class_name;
