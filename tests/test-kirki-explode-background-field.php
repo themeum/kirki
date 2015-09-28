@@ -45,7 +45,7 @@ class Test_Kirki_Explode_Background_Field extends WP_UnitTestCase {
 				),
 				'option_type' => 'theme_mod',
 				'choices' => array(),
-				'sanitize_callback' => array( 'Kirki_Sanitize', 'color' ),
+				'sanitize_callback' => array( 'Kirki_Sanitize_Values', 'color' ),
 				'js_vars' => array(),
 				'id' => 'my_setting_color',
 				'capability' => 'edit_theme_options',

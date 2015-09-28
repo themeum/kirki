@@ -54,7 +54,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 					if ( isset( $field['default']['opacity'] ) && false === strpos( $value, 'rgb' ) ) {
 						$value = Kirki_Color::get_rgba( $value, $field['default']['opacity'] );
 					}
-					$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
 					break;
 				case 'image':
 					$type = 'image';
