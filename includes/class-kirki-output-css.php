@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Output' ) ) {
+if ( class_exists( 'Kirki_Output_CSS' ) ) {
 	return;
 }
 
-class Kirki_Output {
+class Kirki_Output_CSS {
 
 	public static $settings    = null;
 	public static $output      = array();
