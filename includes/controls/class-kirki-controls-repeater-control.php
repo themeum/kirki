@@ -20,9 +20,14 @@ if ( class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 }
 
 class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
-	public $type         = 'repeater';
-	public $fields       = array();
+
+	public $type = 'repeater';
+
+	public $fields = array();
+
 	public $button_label = '';
+
+	public $help = '';
 
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -108,7 +113,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		}
 
 		$this->json['fields'] = $fields;
-		$this->json['value'] = $value;
+		$this->json['value']  = $value;
 	}
 
 
@@ -125,6 +130,9 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		$value = json_encode( $this->value() );
 		$id = $this->id;
 		?>
+		<?php if ( '' != $this->help ) : ?>
+			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+		<?php endif; ?>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>

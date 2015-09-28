@@ -15,15 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Controls_Select_Control' ) ) {
+if ( class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Select_Control extends WP_Customize_Control {
+class Kirki_Controls_Preset_Control extends WP_Customize_Control {
 
-	public $type = 'kirki-select';
-
-	public $help = '';
+	public $type = 'preset';
 
 	public $multiple = 1;
 
@@ -33,8 +31,6 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 		$this->json['value']    = $this->value();
 		$this->json['choices']  = $this->choices;
 		$this->json['link']     = $this->get_link();
-		$this->json['multiple'] = $this->multiple;
-		$this->json['help']     = $this->help;
 	}
 
 	public function enqueue() {
@@ -47,9 +43,6 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 	protected function content_template() { ?>
 
 		<# if ( ! data.choices ) return; #>
-		<# if ( data.help ) { #>
-			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
-		<# } #>
 		<label>
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{ data.label }}</span>
@@ -57,22 +50,11 @@ class Kirki_Controls_Select_Control extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<select {{{ data.link }}} data-multiple="{{ data.multiple }}"<# if ( 1 < data.multiple ) { #> multiple<# } #>>
-				<# if ( 1 < data.multiple ) { #>
-					<# for ( key in data.value ) { #>
-						<option value="{{ data.value[ key ] }}" selected>{{ data.choices[ data.value[ key ] ] }}</option>
-					<# } #>
-					<# for ( key in data.choices ) { #>
-						<# if ( data.value[ key ] in data.value ) { #>
-						<# } else { #>
-							<option value="{{ key }}">{{ data.choices[ key ] }}</option>
-						}
-						<# } #>
-					<# } #>
-				<# } else { #>
-					<# for ( key in data.choices ) { #>
-						<option value="{{ key }}"<# if ( key === data.value ) { #>selected<# } #>>{{ data.choices[ key ] }}</option>
-					<# } #>
+			<select {{{ data.link }}} data-multiple="1">
+				<# for ( key in data.choices ) { #>
+					<option value="{{ key }}"<# if ( key === data.value ) { #>selected<# } #>>
+						{{ data.choices[ key ]['label'] }}
+					</option>
 				<# } #>
 			</select>
 		</label>

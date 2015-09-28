@@ -23,6 +23,8 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 
 	public $type = 'dimension';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-dimension', 'controls/dimension', array( 'jquery' ) );
 	}
@@ -32,14 +34,15 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 		$this->json['value']           = $this->value();
 		$this->json['choices']         = $this->choices;
 		$this->json['link']            = $this->get_link();
-		$this->json['numeric_value']   = $this->numeric_value();
-		$this->json['unit_value']      = $this->unit_value();
-		$this->json['available_units'] = $this->get_units();
+		$this->json['help']            = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label class="customizer-text">
 			<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
@@ -47,63 +50,21 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<input type="number" min="0" step="any" value="{{ data.numeric_value }}"/>
+			<input type="number" min="0" step="any" value="{{ parseFloat( data.value ) }}"/>
 			<select>
-				<# for ( key in data.available_units ) { #>
-					<option value="{{ data.available_units[ key ] }}" <# if ( data.available_units[ key ] === data.unit_value ) { #> selected <# } #>>
-						{{ data.available_units[ key ] }}
-					</option>
+			<# if ( data.choices['units'] ) { #>
+				<# for ( key in data.choices['units'] ) { #>
+					<option value="{{ data.choices[ key ] }}" <# if ( _.contains( data.value, data.choices[ key ] ) ) { #> selected <# } #>>{{ data.choices[ key ] }}</option>
 				<# } #>
+			<# } else { #>
+				<# var units = data.value.replace( parseFloat( data.value ), '' ); #>
+				<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+				<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+				<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+			<# } #>
 			</select>
 		</label>
 		<?php
 	}
 
-	/**
-	 * Get the array of units we're using.
-	 *
-	 * @return  array
-	 */
-	public function get_units() {
-		$all_units = array( 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax' );
-		$defaults  = array( 'px', '%', 'em' );
-		if ( isset( $this->choices ) && is_array( $this->choices ) && ! empty( $this->choices ) ) {
-			$choices = array();
-			foreach ( $this->choices as $choice ) {
-				if ( in_array( $choice, $all_units ) ) {
-					$choices[] = $choice;
-				}
-			}
-			if ( ! empty( $choices ) ) {
-				return $choices;
-			}
-		}
-
-		return $defaults;
-	}
-
-	/**
-	 * Get the numeric value of the field
-	 *
-	 * @return  float|int
-	 */
-	public function numeric_value() {
-		// Sanitize the input field and return numeric values, rounded to 2 decimals.
-		return round( filter_var( $this->value(), FILTER_SANITIZE_NUMBER_FLOAT ), 2 );
-	}
-
-	/**
-	 * Get the value of the units we're using.
-	 *
-	 * @return  string
-	 */
-	public function unit_value() {
-		foreach ( $this->get_units() as $unit ) {
-			if ( false !== strpos( $this->value(), $unit ) ) {
-				$located_unit = $unit;
-				break;
-			}
-		}
-		return ( isset( $located_unit ) ) ? $located_unit : 'px';
-	}
 }

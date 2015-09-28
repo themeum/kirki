@@ -26,38 +26,48 @@ class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
 
 	public $type = 'multicheck';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-multicheck', 'controls/multicheck', array( 'jquery' ) );
 	}
 
-	public function render_content() {
+	public function to_json() {
+		parent::to_json();
+		$this->json['value']        = $this->value();
+		$this->json['choices']      = $this->choices;
+		$this->json['link']         = $this->get_link();
+		$this->json['id']           = $this->id;
+		$this->json['help']         = $this->help;
+	}
 
-		if ( empty( $this->choices ) ) {
-			return;
-		}
-		?>
+	public function render_content() {}
 
-		<?php if ( ! empty( $this->label ) ) : ?>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		<?php endif; ?>
+	protected function content_template() { ?>
 
-		<?php if ( ! empty( $this->description ) ) : ?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
-		<?php endif; ?>
+		<# if ( ! data.choices ) { return; } #>
 
-		<?php $multi_values = ( is_array( $this->value() ) ) ? $this->value() : explode( ',', $this->value() ); ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
+
+		<# if ( data.label ) { #>
+			<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
+
+		<# if ( data.description ) { #>
+			<span class="description customize-control-description">{{ data.description }}</span>
+		<# } #>
 
 		<ul>
-			<?php foreach ( $this->choices as $value => $label ) : ?>
+			<# for ( key in data.choices ) { #>
 				<li>
 					<label>
-						<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> />
-						<?php echo esc_html( $label ); ?>
+						<input type="checkbox" value="{{ key }}"<# if ( 1 == data.value[ key ] ) { #> checked<# } #> />
+						{{ data.choices[ key ] }}
 					</label>
 				</li>
-			<?php endforeach; ?>
+			<# } #>
 		</ul>
-
-		<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
 	<?php }
 }

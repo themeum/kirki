@@ -23,11 +23,14 @@ class Kirki_Controls_Checkbox_Control extends WP_Customize_Control {
 
 	public $type = 'kirki-checkbox';
 
+	public $help = '';
+
 	public function to_json() {
 		parent::to_json();
 
-		$this->json['value']    = $this->value();
-		$this->json['link']     = $this->get_link();
+		$this->json['value'] = $this->value();
+		$this->json['link']  = $this->get_link();
+		$this->json['help']  = $this->help;
 	}
 
 	public function enqueue() {
@@ -37,6 +40,9 @@ class Kirki_Controls_Checkbox_Control extends WP_Customize_Control {
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label>
 			<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
 			{{ data.label }}

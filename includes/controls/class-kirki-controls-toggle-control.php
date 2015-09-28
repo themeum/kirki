@@ -23,6 +23,8 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 
 	public $type = 'toggle';
 
+	public $help = '';
+
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-toggle', 'controls/toggle', array( 'jquery' ) );
 	}
@@ -33,11 +35,15 @@ class Kirki_Controls_Toggle_Control extends WP_Customize_Control {
 		$this->json['value']   = $this->value();
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
+		$this->json['help']    = $this->help;
 	}
 
 	public function render_content() {}
 
 	protected function content_template() { ?>
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
 		<label for="toggle_{{ data.id }}">
 			<span class="customize-control-title">
 				{{{ data.label }}}

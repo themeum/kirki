@@ -453,11 +453,11 @@ class Kirki_Field_Sanitize {
 			case 'checkbox':
 			case 'toggle':
 			case 'switch':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'checkbox' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'checkbox' );
 				break;
 			case 'color':
 			case 'color-alpha':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'color' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
 				break;
 			case 'image':
 			case 'upload':
@@ -472,14 +472,14 @@ class Kirki_Field_Sanitize {
 			case 'select':
 			case 'select2':
 			case 'select2-multiple':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 				break;
 			case 'dropdown-pages':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'dropdown_pages' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'dropdown_pages' );
 				break;
 			case 'slider':
 			case 'number':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'number' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
 				break;
 			case 'text':
 			case 'textarea':
@@ -487,13 +487,13 @@ class Kirki_Field_Sanitize {
 				$sanitize_callback = 'esc_textarea';
 				break;
 			case 'multicheck':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'multicheck' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'multicheck' );
 				break;
 			case 'sortable':
-				$sanitize_callback = array( 'Kirki_Sanitize', 'sortable' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'sortable' );
 				break;
 			default:
-				$sanitize_callback = array( 'Kirki_Sanitize', 'unfiltered' );
+				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 				break;
 		}
 

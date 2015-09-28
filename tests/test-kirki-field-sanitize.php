@@ -194,26 +194,26 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 
 	public function test_sanitize_callback() {
 		$this->assertEquals( '__return_true', Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => '__return_true' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'checkbox' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'color-alpha' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'color' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'custom' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'dropdown_pages' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'dropdown-pages' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'checkbox' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'color' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'color-alpha' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'color' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'color' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'unfiltered' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'custom' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'dropdown_pages' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'dropdown-pages' ) ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'editor' ) ) );
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'image' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'multicheck' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'multicheck' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'number' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'multicheck' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'multicheck' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'number' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'number' ) ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'palette' ) ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'radio-buttonset' ) ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'radio-image' ) ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'radio' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'select' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'slider' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'sortable' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'sortable' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'switch' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'unfiltered' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'select' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'number' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'slider' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'sortable' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'sortable' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'switch' ) ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'text' ) ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'textarea' ) ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'toggle' ) ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'toggle' ) ) );
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'upload' ) ) );
 	}
 
@@ -258,26 +258,26 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 	}
 
 	public function test_fallback_callback() {
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'checkbox' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ), Kirki_Field_Sanitize::fallback_callback( 'color-alpha' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'color' ), Kirki_Field_Sanitize::fallback_callback( 'color' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ), Kirki_Field_Sanitize::fallback_callback( 'custom' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'dropdown_pages' ), Kirki_Field_Sanitize::fallback_callback( 'dropdown-pages' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'checkbox' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'color' ), Kirki_Field_Sanitize::fallback_callback( 'color-alpha' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'color' ), Kirki_Field_Sanitize::fallback_callback( 'color' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'unfiltered' ), Kirki_Field_Sanitize::fallback_callback( 'custom' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'dropdown_pages' ), Kirki_Field_Sanitize::fallback_callback( 'dropdown-pages' ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::fallback_callback( 'editor' ) );
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::fallback_callback( 'image' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'multicheck' ), Kirki_Field_Sanitize::fallback_callback( 'multicheck' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ), Kirki_Field_Sanitize::fallback_callback( 'number' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'multicheck' ), Kirki_Field_Sanitize::fallback_callback( 'multicheck' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'number' ), Kirki_Field_Sanitize::fallback_callback( 'number' ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::fallback_callback( 'palette' ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::fallback_callback( 'radio-buttonset' ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::fallback_callback( 'radio-image' ) );
 		$this->assertEquals( 'esc_attr', Kirki_Field_Sanitize::fallback_callback( 'radio' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'unfiltered' ), Kirki_Field_Sanitize::fallback_callback( 'select' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'number' ), Kirki_Field_Sanitize::fallback_callback( 'slider' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'sortable' ), Kirki_Field_Sanitize::fallback_callback( 'sortable' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'switch' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'unfiltered' ), Kirki_Field_Sanitize::fallback_callback( 'select' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'number' ), Kirki_Field_Sanitize::fallback_callback( 'slider' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'sortable' ), Kirki_Field_Sanitize::fallback_callback( 'sortable' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'switch' ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::fallback_callback( 'text' ) );
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::fallback_callback( 'textarea' ) );
-		$this->assertEquals( array( 'Kirki_Sanitize', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'toggle' ) );
+		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'toggle' ) );
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::fallback_callback( 'upload' ) );
 	}
 
