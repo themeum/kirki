@@ -521,4 +521,42 @@ if ( class_exists( 'Kirki' ) ) {
 		),
 	) );
 
+	Kirki::add_field( 'kirki_demo', array(
+		'type'        => 'preset',
+		'settings'    => 'preset_demo',
+		'label'       => __( 'Preset control', 'kirki-demo' ),
+		'description' => __( 'Bulk-changes the value of other controls.', 'kirki-demo' ),
+		'section'     => 'select',
+		'default'     => '1',
+		'priority'    => 10,
+		'multiple'    => 3,
+		'choices'     => array(
+			'1' => array(
+				'label'    => __( 'Option 1', 'kirki-demo' ),
+				'settings' => array(
+					'select_demo'             => 'red',
+					'select_multiple_demo'    => array( 'option-1', 'option-2' ),
+					'color_demo_preset'       => '#0088cc',
+				),
+			),
+			'2' => array(
+				'label'    => __( 'Option 2', 'kirki-demo' ),
+				'settings' => array(
+					'select_demo'             => 'green',
+					'select_multiple_demo'    => array( 'option-4', 'option-1' ),
+					'color_demo_preset'       => '#333333',
+				),
+			),
+		),
+	) );
+
+	Kirki::add_field( 'kirki_demo', array(
+		'type'        => 'color',
+		'settings'    => 'color_demo_preset',
+		'label'       => __( 'Color Control', 'kirki' ),
+		'section'     => 'select',
+		'default'     => '#81d742',
+		'priority'    => 10,
+	) );
+
 }
