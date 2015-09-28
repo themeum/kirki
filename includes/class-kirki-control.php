@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Control extends Kirki_Field {
+class Kirki_Control extends Kirki_Customizer {
 
 	public $wp_customize;
 

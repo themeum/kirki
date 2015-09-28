@@ -285,8 +285,7 @@ class Kirki {
 			if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
 				$field['multiple'] = 999;
 			}
-			$settings = new Kirki_Settings( $field );
-			$control  = new Kirki_Control( $field );
+			$field = new Kirki_Field( $field );
 		}
 	}
 
