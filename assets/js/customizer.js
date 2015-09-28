@@ -496,15 +496,22 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						}
 						/**
 						 * Control types:
-						 *     palette
 						 *     radio-buttonset
 						 *     radio-image
 						 *     radio
 						 *     kirki-radio
 						 */
-						else if ( 'palette' == sub_control_type || 'radio-buttonset' == sub_control_type || 'radio-image' == sub_control_type || 'radio' == sub_control_type || 'kirki-radio' == sub_control_type ) {
+						else if ( 'radio-buttonset' == sub_control_type || 'radio-image' == sub_control_type || 'radio' == sub_control_type || 'kirki-radio' == sub_control_type ) {
 
+							/**
+							 * Update the value visually in the control
+							 */
 							var input_element = wp.customize.control( preset_setting ).container.find( 'input[value="' + preset_setting_value + '"]' );
+							jQuery( input_element ).prop( "checked", true );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
 
 						}
 						/**
