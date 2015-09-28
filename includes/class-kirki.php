@@ -243,24 +243,7 @@ class Kirki {
 	 * @param string $config_id
 	 */
 	public static function add_config( $config_id, $args = array() ) {
-
-		$default_args = array(
-			'capability'  => 'edit_theme_options',
-			'option_type' => 'theme_mod',
-			'option_name' => '',
-			'compiler'    => array(),
-		);
-		$args = array_merge( $default_args, $args );
-
-		/**
-		 * Allow empty value as the config ID by setting the id to global.
-		 */
-		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
-		/**
-		 * Set the config
-		 */
-		self::$config[ $config_id ] = $args;
-
+		$config = new Kirki_Config( $config_id, $args );
 	}
 
 	/**
