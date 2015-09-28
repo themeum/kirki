@@ -366,25 +366,6 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						}
 						/**
 						 * Control types:
-						 *     text
-						 *     kirki-text
-						 *     number
-						 */
-						else if ( 'text' == sub_control_type || 'kirki-text' == sub_control_type || 'number' == sub_control_type ) {
-
-							/**
-							 * Update the value visually in the control
-							 */
-							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-							jQuery( input_element ).prop( "value", preset_setting_value );
-							/**
-							 * Update the value in the customizer object
-							 */
-							wp.customize.instance( preset_setting ).set( preset_setting_value );
-
-						}
-						/**
-						 * Control types:
 						 *     slider
 						 */
 						else if ( 'slider' == sub_control_type ) {
@@ -515,47 +496,19 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 
 						}
 						/**
-						 * Control types:
-						 *     typography
-						 */
-						else if ( 'typography' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
-						 * Control types:
-						 *     repeater
-						 */
-						else if ( 'repeater' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
-						 * Control types:
-						 *     sortable
-						 */
-						else if ( 'sortable' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
-						 * Control types:
-						 *     spacing
-						 */
-						else if ( 'spacing' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
 						 * Fallback for all other controls.
 						 */
 						else {
 
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
+							/**
+							 * Update the value visually in the control
+							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
+							jQuery( input_element ).prop( "value", preset_setting_value );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
 
 						}
 
