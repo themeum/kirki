@@ -90,4 +90,35 @@ class Kirki_Field extends Kirki_Customizer {
 		}
 
 	}
+
+	public static function get_config_id( $field ) {
+
+		/**
+		 * Get the array of configs from the Kirki class
+		 */
+		$configs = Kirki::$config;
+		/**
+		 * Loop through all configs and search for a match
+		 */
+		foreach ( $configs as $config_id => $config_args ) {
+			$option_type = ( isset( $config_args['option_type'] ) ) ? $config_args['option_type'] : 'theme_mod';
+			$option_name = ( isset( $config_args['option_name'] ) ) ? $config_args['option_name'] : '';
+			$types_match = false;
+			$names_match = false;
+			if ( isset( $field['option_type'] ) ) {
+				$types_match = ( $option_type == $field['option_type'] ) ? true : false;
+			}
+			if ( isset( $field['option_name'] ) ) {
+				$names_match = ( $option_name == $field['option_name'] ) ? true : false;
+			}
+
+			if ( $types_match && $names_match ) {
+				$active_config = $config_id;
+			}
+		}
+
+		return $config_id;
+
+	}
+
 }
