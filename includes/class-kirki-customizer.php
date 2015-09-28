@@ -7,7 +7,7 @@ class Kirki_Customizer {
 	/**
 	 * The class constructor
 	 */
-	public function __construct( $args ) {
+	public function __construct( $args = array() ) {
 
 		global $wp_customize;
 		if ( ! $wp_customize ) {
