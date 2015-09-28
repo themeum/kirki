@@ -421,6 +421,30 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						}
 						/**
 						 * Control types:
+						 *     dimension
+						 */
+						else if ( 'dimension' == sub_control_type ) {
+
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+							/**
+							 * Update the numeric value visually in the control
+							 */
+							var input_element = wp.customize.control( preset_setting ).container.find( 'input[type=number]' );
+							var numeric_value = parseFloat( preset_setting_value );
+							jQuery( input_element ).prop( "value", numeric_value );
+							/**
+							 * Update the units value visually in the control
+							 */
+							var select_element = wp.customize.control( preset_setting ).container.find( 'select' );
+							var units_value    = preset_setting_value.replace( parseFloat( preset_setting_value ), '' );
+							jQuery( select_element ).prop( "value", units_value );
+
+						}
+						/**
+						 * Control types:
 						 *     palette
 						 *     radio-buttonset
 						 *     radio-image
@@ -437,15 +461,6 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 *     typography
 						 */
 						else if ( 'typography' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
-						 * Control types:
-						 *     dimension
-						 */
-						else if ( 'dimension' == sub_control_type ) {
 
 							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
 
