@@ -303,14 +303,8 @@ class Kirki {
 
 		if ( ! empty( self::$sections ) ) {
 
-			foreach ( self::$sections as $section ) {
-				$wp_customize->add_section( sanitize_key( $section['id'] ), array(
-					'title'           => esc_textarea( $section['title'] ),
-					'priority'        => esc_attr( $section['priority'] ),
-					'panel'           => esc_attr( $section['panel'] ),
-					'description'     => esc_textarea( $section['description'] ),
-					'active_callback' => $section['active_callback'],
-				) );
+			foreach ( self::$sections as $section_args ) {
+				$section = new Kirki_Section( $section_args );
 			}
 
 		}
