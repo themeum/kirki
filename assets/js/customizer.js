@@ -294,13 +294,6 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 					 */
 					jQuery.each( value['settings'], function( preset_setting, preset_setting_value ) {
 						/**
-						 * Update the value of the defined setting.
-						 * This will only update the value in the global customizer object.
-						 * However, it will not help us live-update the value on the control itself.
-						 * We'll need to do some extra work for that below
-						 */
-						wp.customize( preset_setting ).set( preset_setting_value );
-						/**
 						 * Get the control of the sub-setting.
 						 * This will be used to get properties we need from that control,
 						 * and determine if we need to do any further work based on those.
@@ -320,11 +313,30 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 
 						/**
 						 * Control types:
+						 *     checkbox
+						 *     switch
+						 *     toggle
+						 *     kirki-checkbox
+						 */
+						if ( 'checkbox' == sub_control_type || 'switch' == sub_control_type || 'toggle' == sub_control_type || 'kirki-checkbox' == sub_control_type ) {
+
+							var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
+							if ( 1 == preset_setting_value ) {
+								jQuery( input_element ).prop( "checked", true );
+								wp.customize.instance( preset_setting ).set( true );
+							} else {
+								jQuery( input_element ).prop( "checked", false );
+								wp.customize.instance( preset_setting ).set( false );
+							}
+
+						}
+						/**
+						 * Control types:
 						 *     color
 						 *     color-alpha
 						 *     kirki-color
 						 */
-						if ( 'color-alpha' == sub_control_type || 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
+						else if ( 'color-alpha' == sub_control_type || 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
 
 							var input_element = wp.customize.control( preset_setting ).container.find( '.color-picker-hex' );
 							input_element.data( 'data-default-color', preset_setting_value ).wpColorPicker( 'defaultColor', preset_setting_value );
