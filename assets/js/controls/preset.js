@@ -187,6 +187,34 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						}
 						/**
 						 * Control types:
+						 *     multicheck
+						 */
+						else if ( 'multicheck' == sub_control_type ) {
+
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+							/**
+							 * Update the value visually in the control.
+							 * This value is an array so we'll have to go through each one of the items
+							 * in order to properly apply the value and check each checkbox separately.
+							 *
+							 * First we uncheck ALL checkboxes in the control
+							 * Then we check the ones that we want.
+							 */
+							wp.customize.control( preset_setting ).container.find( 'input' ).each(function() {
+								jQuery( this ).prop( "checked", false );
+							});
+
+							for	( index = 0; index < preset_setting_value.length; index++ ) {
+								var input_element = wp.customize.control( preset_setting ).container.find( 'input[value="' + preset_setting_value[ index ] + '"]' );
+								jQuery( input_element ).prop( "checked", true );
+							}
+
+						}
+						/**
+						 * Control types:
 						 *     palette
 						 *     radio-buttonset
 						 *     radio-image
@@ -203,15 +231,6 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 *     typography
 						 */
 						else if ( 'typography' == sub_control_type ) {
-
-							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
-
-						}
-						/**
-						 * Control types:
-						 *     multicheck
-						 */
-						else if ( 'multicheck' == sub_control_type ) {
 
 							// var input_element = wp.customize.control( preset_setting ).container.find( 'input' );
 
