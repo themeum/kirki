@@ -16,6 +16,8 @@ class Kirki_Control extends Kirki_Field {
 
 	public function control_class_name( $args ) {
 
+		parent::__construct( $args );
+
 		$class_name = 'WP_Customize_Control';
 		if ( array_key_exists( $args['type'], Kirki::$control_types ) ) {
 			$class_name = Kirki::$control_types[ $args['type'] ];
