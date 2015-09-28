@@ -251,13 +251,10 @@ class Kirki {
 	 * @var	object	The WordPress Customizer object
 	 */
 	public function add_panels( $wp_customize ) {
-
 		if ( ! empty( self::$panels ) ) {
-
 			foreach ( self::$panels as $panel_args ) {
 				$panel = new Kirki_Panel( $panel_args );
 			}
-
 		}
 	}
 
@@ -266,15 +263,11 @@ class Kirki {
 	 * @var	object	The WordPress Customizer object
 	 */
 	public function add_sections( $wp_customize ) {
-
 		if ( ! empty( self::$sections ) ) {
-
 			foreach ( self::$sections as $section_args ) {
 				$section = new Kirki_Section( $section_args );
 			}
-
 		}
-
 	}
 
 	/**
@@ -282,24 +275,19 @@ class Kirki {
 	 * @var	object	The WordPress Customizer object
 	 */
 	public function add_fields( $wp_customize ) {
-
 		$control_types = self::$control_types;
 		$setting_types = self::$setting_types;
 
 		foreach ( self::$fields as $field ) {
-
 			if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
 				continue;
 			}
 			if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
 				$field['multiple'] = 999;
 			}
-
 			$settings = new Kirki_Settings( $field );
 			$control  = new Kirki_Control( $field );
-
 		}
-
 	}
 
 	/**

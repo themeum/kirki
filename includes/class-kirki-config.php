@@ -19,7 +19,7 @@ class Kirki_Config extends Kirki_Customizer {
 
 	}
 
-	public function add_config( $id, $args ) {
+	public function add_config( $config_id, $args ) {
 
 		/**
 		 * Allow empty value as the config ID by setting the id to global.
