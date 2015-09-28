@@ -81,8 +81,14 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			files: ['assets/**/*.scss', 'assets/**/*.js'],
-			tasks: ['sass', 'concat', 'uglify', 'cssmin']
+			css: {
+				files: 'assets/**/*.scss',
+				tasks: ['sass', 'cssmin'],
+			},
+			scripts: {
+				files: 'assets/**/*.js',
+				tasks: ['concat', 'uglify'],
+			},
 		}
 	});
 
