@@ -71,9 +71,11 @@ Feel free to improve them! :)
 **Available Control types:**
 
 * checkbox
+* code
 * color-alpha
 * color
 * custom
+* dimension
 * dropdown-pages
 * editor
 * image
@@ -84,14 +86,14 @@ Feel free to improve them! :)
 * radio-image
 * radio
 * select
-* select2
-* select2-multiple
 * slider
 * sortable
+* spacing
 * switch
 * text
 * textarea
 * toggle
+* typography
 
 All development is done on github on https://github.com/aristath/kirki
 
