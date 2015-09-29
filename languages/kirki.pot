@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2015-09-28 21:36:13+00:00\n"
+"POT-Creation-Date: 2015-09-29 18:50:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -124,7 +124,7 @@ msgid ""
 "editor with the monokai theme."
 msgstr ""
 
-#: demo-theme/functions.php:166 demo-theme/functions.php:556
+#: demo-theme/functions.php:166 demo-theme/functions.php:558
 msgid "Color Control"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgid "Option 1"
 msgstr ""
 
 #: demo-theme/functions.php:260 demo-theme/functions.php:278
-#: demo-theme/functions.php:517 demo-theme/functions.php:543
+#: demo-theme/functions.php:517 demo-theme/functions.php:544
 msgid "Option 2"
 msgstr ""
 
@@ -361,6 +361,10 @@ msgstr ""
 
 #: demo-theme/functions.php:528
 msgid "Bulk-changes the value of other controls."
+msgstr ""
+
+#: demo-theme/functions.php:567
+msgid "Color Alpha Control"
 msgstr ""
 
 #: demo-theme/index.php:10
