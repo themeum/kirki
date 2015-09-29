@@ -80,7 +80,16 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		watch: {
+		// Convert readme.txt to readme.md
+		wp_readme_to_markdown: {
+			your_target: {
+				files: {
+					'README.md': 'readme.txt'
+				},
+			},
+		},
+		// Watch task (run with "grunt watch")
+  		watch: {
 			css: {
 				files: 'assets/**/*.scss',
 				tasks: ['sass', 'cssmin'],
@@ -89,6 +98,10 @@ module.exports = function(grunt) {
 				files: 'assets/**/*.js',
 				tasks: ['concat', 'uglify'],
 			},
+			readme: {
+				files: 'readme.txt',
+				tasks: ['wp_readme_to_markdown'],
+			}
 		}
 	});
 
@@ -101,8 +114,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-phpdocumentor');
+	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
 
-	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'makepot']);
+	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'makepot', 'wp_readme_to_markdown']);
 	grunt.registerTask('docs', ['phpdocumentor:dist']);
 	grunt.registerTask('googlefonts', ['curl:google-fonts-source']);
 
