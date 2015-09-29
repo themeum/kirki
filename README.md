@@ -116,6 +116,53 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 ## Changelog ##
 
+### 1.1.0 ###
+
+WIP, dev time > 130 hours
+
+* NEW: Added support for `sanitize_callback` arguments on each item in the CSS `output`.
+* NEW: Added the ability to define an array as element in the `output`.
+* NEW: Auto-prefixing CSS output for cross-browser compatibilities.
+* NEW: Allow using arrays in settings.
+* NEW: Dimension Field.
+* NEW: Repeater Field.
+* NEW: Code Field using the ACE editor.
+* NEW: Typography Control.
+* NEW: Preset Field.
+* NEW: Demo theme.
+* NEW: Spacing Control.
+* FIX: Minor bugfixes to the Kirki_Color class.
+* FIX: kirki_get_option now uses Kirki::get_option().
+* FIX: Various bugfixes.
+* TWEAK: Converted the `checkbox` control to use the JS templating system.
+* TWEAK: Converted the `custom` control to use the JS templating system.
+* TWEAK: Converted the `multicheck` control to use the JS templating system.
+* TWEAK: Converted the `number` control to use the JS templating system.
+* TWEAK: Converted the `palette` control to use the JS templating system.
+* TWEAK: Converted the `radio-buttonset` control to use the JS templating system.
+* TWEAK: Converted the `radio-image` control to use the JS templating system.
+* TWEAK: Converted the `radio` control to use the JS templating system.
+* TWEAK: Converted the `select` control to use the JS templating system.
+* TWEAK: Converted the `slider` control to use the JS templating system.
+* TWEAK: Converted the `switch` control to use the JS templating system.
+* TWEAK: Converted the `textarea` control to use the JS templating system.
+* TWEAK: Converted the `toggle` control to use the JS templating system.
+* TWEAK: `radio-buttonset` controls are now CSS-only.
+* TWEAK: `radio-image` controls are now CSS-only.
+* TWEAK: `select` controls nopw use [selectize](http://brianreavis.github.io/selectize.js/) instead of [Select2](https://select2.github.io/).
+* TWEAK: Deprecated `select2` and `select2-multiple` controls. We now have a global `select` control. Previous implementations gracefully fallback to the current one.
+* TWEAK: `switch` controls are now CSS-only.
+* TWEAK: `toggle` controls are now CSS-only.
+* TWEAK: Sliders now use an HTML5 "range" input instead of jQuery-UI.
+* TWEAK: Better coding standards.
+* TWEAK: Descriptions styling.
+* TWEAK: Improved controls styling.
+* TWEAK: Compiled CSS & JS for improved performance.
+* TWEAK: Added prefix to the sanitized output array.
+* TWEAK: Updated google-fonts.
+* TWEAK: Grunt integration.
+* TWEAK: Started code refactoring.
+
 ### 1.0.2 ###
 
 July 17, 2014, dev time: 5 minutes
