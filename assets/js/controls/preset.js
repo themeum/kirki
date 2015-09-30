@@ -258,6 +258,25 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 
 						}
 						/**
+						 * Control types:
+						 *     code
+						 */
+						else if ( 'code' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var editor_element = wp.customize.control( preset_setting ).container.find( '#kirki-ace-editor-'+preset_setting );
+							var editor = ace.edit( editor_element.selector.substring(1) );
+							editor.setValue(preset_setting_value);
+
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
 						 * Fallback for all other controls.
 						 */
 						else {
