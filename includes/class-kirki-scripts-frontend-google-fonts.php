@@ -50,6 +50,10 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 			foreach ( $field['output'] as $output ) {
 
+				if ( ! isset( $output['property'] ) ) {
+					continue;
+				}
+
 				if ( ( 'typography' == $field['type'] ) || in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
 					/**
 					 * Get the value of the field

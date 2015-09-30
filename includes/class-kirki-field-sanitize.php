@@ -89,7 +89,7 @@ class Kirki_Field_Sanitize {
 		/**
 		 * Sanitize the output argument
 		 */
-		$field['output'] = self::sanitize_output( $field );
+		$field['output'] = isset( $field['output'] ) ? $field['output'] : array();
 		/**
 		 * Sanitize the sanitize_callback argument
 		 */
@@ -154,7 +154,7 @@ class Kirki_Field_Sanitize {
 				 * Tweaks for backwards-compatibility:
 				 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
 				 */
-			 	if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
+				if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
 					$field['type'] = 'radio-buttonset';
 				} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
 					$field['type'] = 'radio-image';
@@ -338,63 +338,6 @@ class Kirki_Field_Sanitize {
 	 */
 	public static function sanitize_id( $field ) {
 		return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) ) );
-	}
-
-	/**
-	 * Sanitizes the control output
-	 *
-	 * @param array the field definition
-	 * @return array
-	 */
-	public static function sanitize_output( $field ) {
-
-		/**
-		 * Early exit and return a NULL value if output is not set
-		 */
-		if ( ! isset( $field['output'] ) ) {
-			return null;
-		}
-
-		/**
-		 * sanitize using esc_attr if output is string.
-		 */
-		if ( ! is_array( $field['output'] ) ) {
-			return esc_attr( $field['output'] );
-		}
-		$output_sanitized = array();
-
-		/**
-		 * convert to multidimentional array if necessary
-		 */
-		if ( isset( $field['output']['element'] ) ) {
-			$field['output'] = array( $field['output'] );
-		}
-
-		/**
-		 * sanitize array items individually
-		 */
-		foreach ( $field['output'] as $output ) {
-			if ( ! isset( $output['media_query'] ) ) {
-				if ( isset( $output['prefix'] ) && ( false !== strpos( $output['prefix'], '@media' ) ) ) {
-					$output['media_query'] = $output['prefix'];
-					$output['prefix']      = '';
-					$output['suffix']      = '';
-				} else {
-					$output['media_query'] = 'global';
-				}
-			}
-			$output_sanitized[] = array(
-				'element'           => ( isset( $output['element'] ) ) ? sanitize_text_field( $output['element'] ) : '',
-				'property'          => ( isset( $output['property'] ) ) ? sanitize_text_field( $output['property'] ) : '',
-				'units'             => ( isset( $output['units'] ) ) ? sanitize_text_field( $output['units'] ) : '',
-				'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : null,
-				'media_query'       => trim( sanitize_text_field( str_replace( '{', '', $output['media_query'] ) ) ),
-				'prefix'            => ( isset( $output['prefix'] ) ) ? sanitize_text_field( $output['prefix'] ) : '',
-			);
-		}
-
-		return $output_sanitized;
-
 	}
 
 	/**
