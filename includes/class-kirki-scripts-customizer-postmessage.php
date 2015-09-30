@@ -43,12 +43,13 @@ class Kirki_Scripts_Customizer_PostMessage extends Kirki_Scripts_Enqueue_Script 
 				foreach ( $field['js_vars'] as $js_vars ) {
 					$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
 					$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
+					$suffix = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 					$script .= 'wp.customize( \''.Kirki_Field_Sanitize::sanitize_settings( $field ).'\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';
 					if ( 'html' == $js_vars['function'] ) {
 						$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
 					} else {
-						$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ' );';
+						$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . $suffix . ' );';
 					}
 					$script .= '}); });';
 				}

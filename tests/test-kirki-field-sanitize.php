@@ -151,47 +151,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'foo-bar', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo[ bar ]' ) ) );
 	}
 
-	public function test_sanitize_output() {
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_output( array( 'output' => 'foo' ) ) );
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-family',
-					'units' => '',
-					'media_query' => 'global',
-					'sanitize_callback' => null,
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_output( array( 'output' => array(
-				'element' => 'body > #main',
-				'property' => 'font-family',
-			) ) )
-		);
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-size',
-					'units' => 'px !important',
-					'media_query' => '@media (min-width: 700px) and (orientation: landscape)',
-					'sanitize_callback' => null,
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_output( array( 'output' => array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-size',
-					'units' => 'px !important',
-					'prefix' => '@media (min-width: 700px) and (orientation: landscape) {',
-					'suffix' => '}',
-				)
-			) ) )
-		);
-	}
-
 	public function test_sanitize_callback() {
 		$this->assertEquals( '__return_true', Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => '__return_true' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'checkbox' ) ) );
@@ -228,6 +187,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 					'property' => 'color',
 					'units' => '',
 					'prefix' => '',
+					'suffix' => '',
 				)
 			),
 			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
@@ -244,6 +204,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 					'property' => 'font-size',
 					'units' => 'px',
 					'prefix' => '',
+					'suffix' => '',
 				)
 			),
 			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
