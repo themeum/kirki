@@ -151,6 +151,10 @@ class Kirki_Output_CSS {
 			 */
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			/**
+			 * Do we have a suffix?
+			 */
+			$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
+			/**
 			 * Accept "callback" as short for "sanitize_callback".
 			 */
 			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
@@ -198,7 +202,7 @@ class Kirki_Output_CSS {
 				if ( ! isset( $output['property'] ) ) {
 					continue;
 				}
-				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units;
+				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units . $suffix;
 			} else {
 				/**
 				 * Take care of typography controls output
