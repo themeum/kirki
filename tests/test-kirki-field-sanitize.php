@@ -87,7 +87,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$field = Kirki_Field_Sanitize::sanitize_field( array() );
 		$this->assertEquals( '__return_true', $field['active_callback'] );
 		$field = Kirki_Field_Sanitize::sanitize_field( array( 'required' => array() ) );
-		$this->assertEquals( 'kirki_active_callback', $field['active_callback'] );
+		$this->assertEquals( array( 'Kirki_Active_Callback', 'evaluate' ), $field['active_callback'] );
 	}
 
 	public function test_sanitize_capability() {

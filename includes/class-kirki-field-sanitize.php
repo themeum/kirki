@@ -67,10 +67,10 @@ class Kirki_Field_Sanitize {
 		$field['help'] = wp_strip_all_tags( $field['help'] );
 		/**
 		 * If the 'required' argument is set then we'll need to auto-calculate things.
-		 * Set 'active_callback' to 'kirki_active_callback'. ALl extra calculations will be handled there.
+		 * Set 'active_callback' to 'Kirki_Active_Callback::evaluate'. ALl extra calculations will be handled there.
 		 */
 		if ( isset( $field['required'] ) ) {
-			$field['active_callback'] = 'kirki_active_callback';
+			$field['active_callback'] = array( 'Kirki_Active_Callback', 'evaluate' );
 		} elseif ( ! isset( $field['active_callback'] ) ) {
 			$field['active_callback'] = '__return_true';
 		}
