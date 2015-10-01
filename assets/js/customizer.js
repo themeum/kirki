@@ -17,35 +17,18 @@ wp.customize.controlConstructor['kirki-checkbox'] = wp.customize.Control.extend(
 /**
  * KIRKI CONTROL: CODE
  */
-jQuery( document ).ready( function($) {
-	$( 'textarea[data-editor]' ).each( function () {
-		var textarea = $( this );
-		var mode     = textarea.data( 'editor' );
-		var editDiv  = $( '<div>', {
-			position: 'absolute',
-			width: textarea.width(),
-			height: textarea.height(),
-			'class': textarea.attr( 'class' )
-		}).insertBefore( textarea );
-		textarea.css( 'display', 'none' );
-		var editor = ace.edit( editDiv[0] );
-		editor.renderer.setShowGutter( false );
-		editor.renderer.setPadding(10);
-		editor.getSession().setValue( textarea.val() );
-		editor.getSession().setMode( "ace/mode/" + mode );
-		editor.setTheme( "ace/theme/" + textarea.data( 'theme' ) );
-
-		editor.getSession().on( 'change', function(){
-			textarea.val( editor.getSession().getValue() ).trigger( 'change' );
-		});
-	});
-});
-
 wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		this.container.on( 'change', 'textarea', function() {
-			control.setting.set( jQuery( this ).val() );
+		var editor = ace.edit('kirki-ace-editor-'+control.id);
+
+    editor.getSession().setUseWrapMode(true);
+    editor.setTheme('ace/theme/'+control.params.choices.theme);
+    editor.getSession().setMode('ace/mode/'+control.params.choices.language);
+    editor.setValue(control.settings.default._value);
+
+		editor.getSession().on('change', function() {
+			control.setting.set( editor.getValue() );
 		});
 	}
 });
@@ -521,6 +504,25 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 							 */
 							var input_element = wp.customize.control( preset_setting ).container.find( 'input[value="' + preset_setting_value + '"]' );
 							jQuery( input_element ).prop( "checked", true );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     code
+						 */
+						else if ( 'code' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var editor_element = wp.customize.control( preset_setting ).container.find( '#kirki-ace-editor-'+preset_setting );
+							var editor = ace.edit( editor_element.selector.substring(1) );
+							editor.setValue(preset_setting_value);
+
 							/**
 							 * Update the value in the customizer object
 							 */
