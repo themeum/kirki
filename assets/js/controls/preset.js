@@ -42,6 +42,14 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 */
 						var sub_control = wp.customize.settings.controls[ preset_setting ];
 						/**
+						 * Check if the control we want to affect actually exists.
+						 * If not then skip the item,
+						 */
+						if ( typeof sub_control === undefined ) {
+							return true;
+						}
+
+						/**
 						 * Get the control-type of this sub-setting.
 						 * We want the value to live-update on the controls themselves,
 						 * so depending on the control's type we'll need to do different things.
