@@ -99,23 +99,7 @@ class Kirki_Values {
 
 		}
 
-		/**
-		 * reduxframework compatibility tweaks.
-		 * If KIRKI_REDUX_COMPATIBILITY is defined as true then modify the output of the values
-		 * and make them compatible with Redux.
-		 */
-		if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
-
-			switch ( Kirki::$fields[ $field_id ]['type'] ) {
-
-				case 'image':
-					$value = Kirki_Helper::get_image_from_url( $value );
-					break;
-			}
-
-		}
-
-		return $value;
+		return apply_filters( 'kirki/values/get_value', $value, $field_id );
 
 	}
 

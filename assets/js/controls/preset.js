@@ -160,9 +160,29 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 							/**
 							 * Update the value visually in the control
 							 */
+
 							wp.customize.control( preset_setting ).container.find( '.color-picker-hex' )
-								.data( 'data-default-color', preset_setting_value )
-								.wpColorPicker( 'defaultColor', preset_setting_value );
+								.attr( 'data-default-color', preset_setting_value )
+								.data( 'default-color', preset_setting_value )
+								.wpColorPicker( 'color', preset_setting_value );
+
+						}
+						else if ( 'color-alpha' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var alphaColorControl = wp.customize.control( preset_setting ).container.find( '.kirki-color-control' );
+
+							alphaColorControl
+								.attr( 'data-default-color', preset_setting_value )
+								.data( 'default-color', preset_setting_value )
+								.wpColorPicker( 'color', preset_setting_value );
+
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
 
 						}
 						/**
@@ -231,6 +251,25 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 							 */
 							var input_element = wp.customize.control( preset_setting ).container.find( 'input[value="' + preset_setting_value + '"]' );
 							jQuery( input_element ).prop( "checked", true );
+							/**
+							 * Update the value in the customizer object
+							 */
+							wp.customize.instance( preset_setting ).set( preset_setting_value );
+
+						}
+						/**
+						 * Control types:
+						 *     code
+						 */
+						else if ( 'code' == sub_control_type ) {
+
+							/**
+							 * Update the value visually in the control
+							 */
+							var editor_element = wp.customize.control( preset_setting ).container.find( '#kirki-ace-editor-'+preset_setting );
+							var editor = ace.edit( editor_element.selector.substring(1) );
+							editor.setValue(preset_setting_value);
+
 							/**
 							 * Update the value in the customizer object
 							 */

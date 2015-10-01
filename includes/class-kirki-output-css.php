@@ -45,34 +45,40 @@ class Kirki_Output_CSS {
 		/**
 		 * Make sure the field is sanitized before proceeding any further.
 		 */
-		$field = Kirki_Field_Sanitize::sanitize_field( $field );
-		/**
-		 * Get the config ID used in the Kirki class.
-		 */
-		$config_id = Kirki::get_config_id( $field );
+		$field_sanitized = Kirki_Field_Sanitize::sanitize_field( $field );
 		/**
 		 * Set class vars
 		 */
-		self::$settings   = $field['settings'];
-		self::$callback   = $field['sanitize_callback'];
-		self::$field_type = $field['type'];
-		self::$output     = $field['output'];
+		self::$settings   = $field_sanitized['settings'];
+		self::$callback   = $field_sanitized['sanitize_callback'];
+		self::$field_type = $field_sanitized['type'];
+		self::$output     = $field_sanitized['output'];
 		if ( ! is_array( self::$output ) ) {
 			self::$output = array(
 				array(
 					'element'           => self::$output,
-				 	'sanitize_callback' => null,
+					'sanitize_callback' => null,
 				),
 			);
 		}
 		/**
 		 * Get the value of this field
 		 */
-		if ( 'option' == Kirki::$config[ $config_id ]['option_type'] && '' != Kirki::$config[ $config_id ]['option_name'] ) {
-			self::$value = Kirki::get_option( $config_id, str_replace( array( ']', Kirki::$config[ $config_id ]['option_name'] . '[' ), '', $field['settings'] ) );
-		} else {
-			self::$value = Kirki::get_option( $config_id, $field['settings'] );
+		self::$value = $field_sanitized['default'];
+		if ( isset( $field_sanitized['option_type'] ) && 'theme_mod' == $field_sanitized['option_type'] ) {
+			self::$value = get_theme_mod( $field_sanitized['settings'], $field_sanitized['default'] );
+		} else if ( isset( $field_sanitized['option_type'] ) && 'option' == $field_sanitized['option_type'] )  {
+			if ( isset( $field_sanitized['option_name'] ) && '' != $field_sanitized['option_name'] ) {
+				$all_values = get_option( $field_sanitized['option_name'], array() );
+				$sub_setting_id = str_replace( array( ']', $field_sanitized['option_name'] . '[' ), '', $field_sanitized['settings'] );
+				if ( isset( $all_values[ $sub_setting_id ] ) ) {
+					self::$value = $all_values[ $sub_setting_id ];
+				}
+			} else {
+				self::$value = get_option( $field_sanitized['settings'], $field_sanitized['default'] );
+			}
 		}
+
 		/**
 		 * Returns the styles
 		 */
@@ -132,6 +138,10 @@ class Kirki_Output_CSS {
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
+
+			if ( ! isset( $output['element'] ) ) {
+				continue;
+			}
 			/**
 			 * Do we have units?
 			 */
@@ -141,17 +151,34 @@ class Kirki_Output_CSS {
 			 */
 			$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 			/**
+			 * Do we have a suffix?
+			 */
+			$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
+			/**
+			 * Accept "callback" as short for "sanitize_callback".
+			 */
+			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+				$output['sanitize_callback'] = $output['callback'];
+			}
+			/**
+			 * Do we have a "media_query" defined?
+			 */
+			if ( ! isset( $output['media_query'] ) ) {
+				$output['media_query'] = 'global';
+			} else {
+				$output['media_query'] = esc_attr( $output['media_query'] );
+			}
+			/**
 			 * Do we need to run this through a callback action?
 			 */
 			$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
-			if ( null !== $output['sanitize_callback'] ) {
+			if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
 				$value = call_user_func( $output['sanitize_callback'], $value );
 			}
 			/**
 			 * Make sure the value is a string before proceeding
 			 * If all is ok, then populate the array.
 			 */
-
 			$element = $output['element'];
 			/**
 			 * Allow using an array of elements
@@ -172,7 +199,10 @@ class Kirki_Output_CSS {
 				$element = implode( ',', $elements );
 			}
 			if ( ! is_array( $value ) ) {
-				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units;
+				if ( ! isset( $output['property'] ) ) {
+					continue;
+				}
+				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units . $suffix;
 			} else {
 				/**
 				 * Take care of typography controls output

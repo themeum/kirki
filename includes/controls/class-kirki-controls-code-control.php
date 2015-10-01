@@ -43,6 +43,7 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['help']    = $this->help;
+		$this->json['id']      = $this->id;
 	}
 
 	public function enqueue() {
@@ -63,7 +64,7 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{ data.description }}</span>
 			<# } #>
-			<textarea {{{ data.link }}} data-editor="{{ data.choices['language'] }}" data-theme="{{ data.choices['theme'] }}" height="{{ data.choices['height'] }}" rows="15">{{ data.value }}</textarea>
+			<div id="kirki-ace-editor-{{ data.id }}"></div>
 		</label>
 		<#
 		/**
