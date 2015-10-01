@@ -22,10 +22,10 @@ wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 		var control = this;
 		var editor = ace.edit('kirki-ace-editor-'+control.id);
 
-    editor.getSession().setUseWrapMode(true);
-    editor.setTheme('ace/theme/'+control.params.choices.theme);
-    editor.getSession().setMode('ace/mode/'+control.params.choices.language);
-    editor.setValue(control.settings.default._value);
+		editor.getSession().setUseWrapMode(true);
+		editor.setTheme('ace/theme/'+control.params.choices.theme);
+		editor.getSession().setMode('ace/mode/'+control.params.choices.language);
+		editor.setValue(control.settings.default._value);
 
 		editor.getSession().on('change', function() {
 			control.setting.set( editor.getValue() );
@@ -294,6 +294,14 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 * and determine if we need to do any further work based on those.
 						 */
 						var sub_control = wp.customize.settings.controls[ preset_setting ];
+						/**
+						 * Check if the control we want to affect actually exists.
+						 * If not then skip the item,
+						 */
+						if ( typeof sub_control === undefined ) {
+							return true;
+						}
+
 						/**
 						 * Get the control-type of this sub-setting.
 						 * We want the value to live-update on the controls themselves,
