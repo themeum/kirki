@@ -32,7 +32,7 @@ class Kirki_Scripts_Registry {
 
 		$this->dependencies = new Kirki_Scripts_Customizer_Default_Scripts();
 		$this->branding     = new Kirki_Scripts_Customizer_Branding();
-		$this->postmessage  = new Kirki_PostMessage();
+		$this->postmessage  = new Kirki_Customizer_Scripts_PostMessage();
 		$this->tooltips     = new Kirki_Customizer_Scripts_Tooltips();
 		$this->googlefonts  = new Kirki_Scripts_Frontend_Google_Fonts();
 
