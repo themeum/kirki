@@ -49,7 +49,7 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Script {
 	 * @param array the field definition
 	 * @return void
 	 */
-	public function generate_script( $args = array() ) {
+	public static function generate_script( $args = array() ) {
 
 		$script = '';
 		/**

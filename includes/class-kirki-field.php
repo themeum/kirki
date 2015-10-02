@@ -6,34 +6,39 @@ class Kirki_Field extends Kirki_Customizer {
 
 	public function __construct( $args ) {
 
+		/**
+		 * Run the parent class constructor
+		 */
 		parent::__construct( $args );
-
+		/**
+		 * Set the field arguments
+		 */
 		$this->args = $args;
-
-		$this->add_settings();
-		$this->add_control();
-
+		/**
+		 * Create the settings.
+		 */
+		$settings = new Kirki_Settings( $this->args );
+		/**
+		 * Check if we're on the customizer.
+		 * If we are, then we will create the controls,
+		 * add the scripts needed for the customizer
+		 * and any other tweaks that this field may require.
+		 */
 		if ( $this->wp_customize ) {
-			$this->postMessage();
-			$this->add_tooltips();
+			/**
+			 * Create the control
+			 */
+			$control  = new Kirki_Control( $this->args );
+			/**
+			 * Create the scripts for postMessage to properly work
+			 */
+			Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
+			/**
+			 * Create the scripts for tooltips.
+			 */
+			Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
 		}
 
-	}
-
-	public function add_settings() {
-		$settings = new Kirki_Settings( $this->args );
-	}
-
-	public function add_control() {
-		$control  = new Kirki_Control( $this->args );
-	}
-
-	public function postMessage() {
-		Kirki()->scripts->postmessage->generate_script( $this->args );
-	}
-
-	public function add_tooltips() {
-		Kirki()->scripts->tooltips->generate_script( $this->args );
 	}
 
 	public static function add_field( $config_id, $args ) {
