@@ -34,7 +34,7 @@ class Kirki_Styles_Customizer {
 	 * Enqueue the stylesheets required.
 	 */
 	public function customizer_styles() {
-		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( kirki_url() ).'assets/css/customizer.css', null, Kirki_Toolkit::$version );
+		wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ).'assets/css/customizer.css', null, Kirki_Toolkit::$version );
 		wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
 	}
 
@@ -68,7 +68,7 @@ class Kirki_Styles_Customizer {
 				'selectize'
 			);
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( kirki_url() ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 		}
 	}
 
@@ -82,7 +82,7 @@ class Kirki_Styles_Customizer {
 	 */
 	public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 		if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::kirki_debug() ) || false === strpos( $file, 'controls/') ) {
-			$file = trailingslashit( kirki_url() ) . 'assets/js/' . $file . '.js';
+			$file = trailingslashit( Kirki::$url ) . 'assets/js/' . $file . '.js';
 			foreach ( $deps as $dep ) {
 				wp_enqueue_script( $dep );
 			}
@@ -135,7 +135,7 @@ class Kirki_Styles_Customizer {
 		 * Include the width CSS if necessary
 		 */
 		if ( isset( $config['width'] ) ) {
-			$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css-width.css' );
+			$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css-width.css' );
 			/**
 			 * Replace width placeholder with actual value
 			 */
@@ -146,13 +146,13 @@ class Kirki_Styles_Customizer {
 		 * Include the color modifications CSS if necessary
 		 */
 		if ( false !== $color_back && false !== $color_font ) {
-			$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css-colors.css' );
+			$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css-colors.css' );
 		}
 
 		/**
 		 * Include generic CSS for controls
 		 */
-		$styles .= $wp_filesystem->get_contents( KIRKI_PATH.'/assets/css/customizer-dynamic-css.css' );
+		$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css.css' );
 
 		/**
 		 * replace CSS placeholders with actual values

@@ -44,11 +44,11 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			'italic'         => isset( $value['italic'] ) ? $value['italic'] : false,
 			'underline'      => isset( $value['underline'] ) ? $value['underline'] : false,
 			'strikethrough'  => isset( $value['strikethrough'] ) ? $value['strikethrough'] : false,
-			'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : false,
-			'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : false,
-			'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : false,
-			'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : false,
-			'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : false,
+			'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : '',
+			'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : '',
+			'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : '',
+			'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : '',
+			'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : '',
 		);
 		$this->json['l10n'] = array(
 			'font-family'    => $i18n['font-family'],
@@ -106,6 +106,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.choices['font-family'] ) { #>
+				<# if ( '' == data.value['font-family'] ) { data.value['font-family'] = data.default['font-family']; } #>
 				<div class="font-family">
 					<h5>{{ data.l10n['font-family'] }}</h5>
 					<select class="font-family select2">
