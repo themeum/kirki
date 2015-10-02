@@ -24,6 +24,9 @@ if ( class_exists( 'Kirki' ) ) {
 
 class Kirki extends Kirki_Init {
 
+	public static $path;
+	public static $url;
+
 	public static $config   = array();
 	public static $fields   = array();
 	public static $panels   = array();

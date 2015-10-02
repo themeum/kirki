@@ -186,4 +186,8 @@ class Kirki_Init {
 
 	}
 
+	public static function path() {
+
+	}
+
 }
