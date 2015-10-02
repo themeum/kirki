@@ -25,7 +25,7 @@ class Kirki_Scripts_Customizer_Tooltips extends Kirki_Scripts_Enqueue_Script {
 	/**
 	 * Add the help bubble
 	 */
-	public function generate_script() {
+	public function generate_script( $args = array() ) {
 
 		$fields = Kirki::$fields;
 

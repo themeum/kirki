@@ -12,6 +12,9 @@ class Kirki_Field extends Kirki_Customizer {
 
 		$this->add_settings();
 		$this->add_control();
+		if ( $this->wp_customize ) {
+			$this->postMessage();
+		}
 
 	}
 
@@ -21,6 +24,10 @@ class Kirki_Field extends Kirki_Customizer {
 
 	public function add_control() {
 		$control  = new Kirki_Control( $this->args );
+	}
+
+	public function postMessage() {
+		Kirki()->scripts->postmessage->postmessage_script .= Kirki()->scripts->postmessage->generate_script( $this->args );
 	}
 
 	public static function add_field( $config_id, $args ) {
