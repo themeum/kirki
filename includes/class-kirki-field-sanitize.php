@@ -95,10 +95,6 @@ class Kirki_Field_Sanitize {
 		 */
 		$field['sanitize_callback'] = self::sanitize_callback( $field );
 		/**
-		 * Sanitize the js_vars argument
-		 */
-		$field['js_vars'] = self::sanitize_js_vars( $field );
-		/**
 		 * Sanitize the id argument
 		 */
 		$field['id'] = self::sanitize_id( $field );
@@ -353,35 +349,6 @@ class Kirki_Field_Sanitize {
 		}
 		// Fallback callback
 		return self::fallback_callback( $field['type'] );
-
-	}
-
-	/**
-	 * Sanitizes the control js_vars.
-	 *
-	 * @param array the field definition
-	 * @return array|null
-	 */
-	public static function sanitize_js_vars( $field ) {
-
-		$js_vars_sanitized = null;
-		if ( isset( $field['js_vars'] ) && is_array( $field['js_vars'] ) ) {
-			$js_vars_sanitized = array();
-			if ( isset( $field['js_vars']['element'] ) ) {
-				$field['js_vars'] = array( $field['js_vars'] );
-			}
-			foreach ( $field['js_vars'] as $js_vars ) {
-				$js_vars_sanitized[] = array(
-					'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
-					'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
-					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
-					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
-					'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
-					'suffix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
-				);
-			}
-		}
-		return $js_vars_sanitized;
 
 	}
 

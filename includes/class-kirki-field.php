@@ -27,7 +27,7 @@ class Kirki_Field extends Kirki_Customizer {
 	}
 
 	public function postMessage() {
-		Kirki()->scripts->postmessage->postmessage_script .= Kirki()->scripts->postmessage->generate_script( $this->args );
+		Kirki()->scripts->postmessage->generate_script( $this->args );
 	}
 
 	public static function add_field( $config_id, $args ) {
