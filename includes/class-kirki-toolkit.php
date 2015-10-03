@@ -20,7 +20,7 @@ if ( class_exists( 'Kirki_Toolkit' ) ) {
 	return;
 }
 
-class Kirki_Toolkit {
+final class Kirki_Toolkit {
 
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
