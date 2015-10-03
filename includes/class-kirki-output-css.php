@@ -244,7 +244,10 @@ class Kirki_Output_CSS {
 	}
 
 	/**
-	 * Add prefixes if necessary
+	 * Add prefixes if necessary.
+	 *
+	 * @param  $css array
+	 * @return  array
 	 */
 	public static function add_prefixes( $css ) {
 
