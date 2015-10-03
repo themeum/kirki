@@ -2,7 +2,7 @@
 /**
  * Add the logo and description to the customizer.
  * Logo and customizer are defined using the kirki/config filter.
- * See https://github.com/reduxframework/kirki/wiki/Styling-the-Customizer for documentation
+ * See https://github.com/aristath/kirki/wiki/Styling-the-Customizer for documentation
  *
  * @package     Kirki
  * @category    Core
@@ -28,18 +28,18 @@ class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 	 * If we've specified an image to be used as logo,
 	 * replace the default theme description with a div that will include our logo.
 	 */
-	public function generate_script() {
+	public function generate_script( $args = array() ) {
 
 		$config = apply_filters( 'kirki/config', array() );
 		$script = '';
 		if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
 			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
 				$config['logo_image'] = esc_url_raw( $config['logo_image'] );
-				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="'.$config['logo_image'].'">\' );';
+				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $config['logo_image'] . '">\' );';
 			}
 			if ( isset( $config['description'] ) && '' != $config['description'] ) {
 				$config['description'] = esc_textarea( $config['description'] );
-				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">'.$config['description'].'</div></div>\' );';
+				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $config['description'] . '</div></div>\' );';
 			}
 		}
 

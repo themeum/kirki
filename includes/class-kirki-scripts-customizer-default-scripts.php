@@ -24,15 +24,15 @@ if ( class_exists( 'Kirki_Scripts_Customizer_Default_Scripts' ) ) {
 
 class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Script {
 
-	public function generate_script() {}
+	public function generate_script( $args = array() ) {}
 
 	/**
 	 * Enqueue the scripts required.
 	 */
 	public function customize_controls_enqueue_scripts() {
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( kirki_url() ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
-		wp_enqueue_script( 'serialize-js', trailingslashit( kirki_url() ) . 'assets/js/vendor/serialize.js' );
+		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
+		wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 		wp_enqueue_script( 'jquery-stepper-min-js' );

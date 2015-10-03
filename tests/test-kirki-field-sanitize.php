@@ -87,7 +87,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$field = Kirki_Field_Sanitize::sanitize_field( array() );
 		$this->assertEquals( '__return_true', $field['active_callback'] );
 		$field = Kirki_Field_Sanitize::sanitize_field( array( 'required' => array() ) );
-		$this->assertEquals( 'kirki_active_callback', $field['active_callback'] );
+		$this->assertEquals( array( 'Kirki_Active_Callback', 'evaluate' ), $field['active_callback'] );
 	}
 
 	public function test_sanitize_capability() {
@@ -151,47 +151,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'foo-bar', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo[ bar ]' ) ) );
 	}
 
-	public function test_sanitize_output() {
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_output( array( 'output' => 'foo' ) ) );
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-family',
-					'units' => '',
-					'media_query' => 'global',
-					'sanitize_callback' => null,
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_output( array( 'output' => array(
-				'element' => 'body > #main',
-				'property' => 'font-family',
-			) ) )
-		);
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-size',
-					'units' => 'px !important',
-					'media_query' => '@media (min-width: 700px) and (orientation: landscape)',
-					'sanitize_callback' => null,
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_output( array( 'output' => array(
-				array(
-					'element' => 'body > #main',
-					'property' => 'font-size',
-					'units' => 'px !important',
-					'prefix' => '@media (min-width: 700px) and (orientation: landscape) {',
-					'suffix' => '}',
-				)
-			) ) )
-		);
-	}
-
 	public function test_sanitize_callback() {
 		$this->assertEquals( '__return_true', Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => '__return_true' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'checkbox' ) ) );
@@ -215,46 +174,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'esc_textarea', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'textarea' ) ) );
 		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'toggle' ) ) );
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'upload' ) ) );
-	}
-
-	public function test_sanitize_js_vars() {
-		$this->assertEquals( null, Kirki_Field_Sanitize::sanitize_js_vars( array() ) );
-		$this->assertEquals( null, Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => 'foo' ) ) );
-		$this->assertEquals(
-			array(
-				array(
-					'element' => '#main',
-					'function' => 'css',
-					'property' => 'color',
-					'units' => '',
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
-				'element' => '#main',
-				'function' => 'css',
-				'property' => 'color',
-			) ) )
-		);
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'function' => 'css',
-					'property' => 'font-size',
-					'units' => 'px',
-					'prefix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
-				array(
-					'element' => 'body > #main',
-					'function' => 'css',
-					'property' => 'font-size',
-					'units' => 'px'
-				)
-			) ) )
-		);
 	}
 
 	public function test_fallback_callback() {

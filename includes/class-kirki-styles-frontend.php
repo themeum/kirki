@@ -2,7 +2,7 @@
 /**
  * Generates the styles for the frontend.
  * Handles the 'output' argument of fields.
- * Usage instructions on https://github.com/reduxframework/kirki/wiki/output
+ * Usage instructions on https://github.com/aristath/kirki/wiki/output
  *
  * @package     Kirki
  * @category    Core
@@ -66,7 +66,7 @@ class Kirki_Styles_Frontend {
 		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
 			return;
 		}
-		wp_enqueue_style( 'kirki-styles', trailingslashit( kirki_url() ).'assets/css/kirki-styles.css', null, null );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
 
 	}
 
@@ -88,16 +88,14 @@ class Kirki_Styles_Frontend {
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
-				$css = array_merge_recursive( $css, Kirki_Output::css(
-					Kirki_Field_Sanitize::sanitize_field( $field )
-				) );
+				$css = array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
 
 			}
 
 		}
 
 		if ( is_array( $css ) ) {
-			return Kirki_Output::styles_parse( Kirki_Output::add_prefixes( $css ) );
+			return Kirki_Output_CSS::styles_parse( Kirki_Output_CSS::add_prefixes( $css ) );
 		}
 
 		return;

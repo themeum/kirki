@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Control extends Kirki_Field {
+class Kirki_Control extends Kirki_Customizer {
 
 	public $wp_customize;
 
@@ -14,13 +14,19 @@ class Kirki_Control extends Kirki_Field {
 
 	}
 
+	/**
+	 * Get the class name of the class needed to create tis control.
+	 *
+	 * @param  $args array
+	 * @return  string
+	 */
 	public function control_class_name( $args ) {
 
 		parent::__construct( $args );
 
 		$class_name = 'WP_Customize_Control';
-		if ( array_key_exists( $args['type'], Kirki::$control_types ) ) {
-			$class_name = Kirki::$control_types[ $args['type'] ];
+		if ( array_key_exists( $args['type'], Kirki_Init::$control_types ) ) {
+			$class_name = Kirki_Init::$control_types[$args['type']];
 		}
 
 		return $class_name;
@@ -28,7 +34,10 @@ class Kirki_Control extends Kirki_Field {
 	}
 
 	/**
-	 * Add the control
+	 * Add the control.
+	 *
+	 * @param  $arg array
+	 * @return  void
 	 */
 	public function add_control( $args ) {
 

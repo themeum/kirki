@@ -54,7 +54,7 @@ class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
 			<select>
 			<# if ( data.choices['units'] ) { #>
 				<# for ( key in data.choices['units'] ) { #>
-					<option value="{{ data.choices[ key ] }}" <# if ( _.contains( data.value, data.choices[ key ] ) ) { #> selected <# } #>>{{ data.choices[ key ] }}</option>
+					<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value, data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 				<# } #>
 			<# } else { #>
 				<# var units = data.value.replace( parseFloat( data.value ), '' ); #>

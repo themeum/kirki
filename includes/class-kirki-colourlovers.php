@@ -35,9 +35,9 @@ class Kirki_Colourlovers {
 
 		$i = 0;
 		foreach ( $palettes as $palette ) {
-			$palettes[ $i ] = array();
+			$palettes[$i] = array();
 			foreach ( $palette as $key => $value ) {
-				$palettes[ $i ][ $key ] = Kirki_Color::sanitize_hex( $value );
+				$palettes[$i][$key] = Kirki_Color::sanitize_hex( $value );
 			}
 			$i++;
 		}
@@ -57,7 +57,7 @@ class Kirki_Colourlovers {
 		 * Parse the XML file.
 		 * XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
 		 */
-		$xml_url  = ( is_null( $xml ) ) ? trailingslashit( kirki_url() ).'assets/xml/colourlovers-top.xml' : $xml;
+		$xml_url  = ( is_null( $xml ) ) ? trailingslashit( Kirki::$url ) . 'assets/xml/colourlovers-top.xml' : $xml;
 		$feed_xml = simplexml_load_file( $xml_url );
 
 		$palettes = array();

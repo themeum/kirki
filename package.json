@@ -5,10 +5,10 @@
   "homepage": "http://kirki.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reduxframework/kirki"
+    "url": "https://github.com/aristath/kirki"
   },
   "bugs": {
-    "url" : "https://github.com/reduxframework/kirki/issues"
+    "url" : "https://github.com/aristath/kirki/issues"
   },
   "licenses": [{
     "type": "GPL v2",
@@ -27,6 +27,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-curl": "*",
-    "grunt-phpdocumentor": "~0.4.1"
+    "grunt-phpdocumentor": "~0.4.1",
+    "grunt-wp-readme-to-markdown": "^1.0.0"
   }
 }

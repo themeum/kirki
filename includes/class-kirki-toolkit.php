@@ -20,7 +20,7 @@ if ( class_exists( 'Kirki_Toolkit' ) ) {
 	return;
 }
 
-class Kirki_Toolkit {
+final class Kirki_Toolkit {
 
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
@@ -134,10 +134,7 @@ class Kirki_Toolkit {
 	 * Return true if we are debugging Kirki.
 	 */
 	public static function kirki_debug() {
-		if ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) {
-			return true;
-		}
-		return false;
+		return (bool) ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG );
 	}
 
 }

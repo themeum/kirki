@@ -42,13 +42,13 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 		foreach ( $args['fields'] as $key => $value ) {
 			if ( ! isset( $value['default'] ) ) {
-				$args['fields'][ $key ]['default'] = '';
+				$args['fields'][$key]['default'] = '';
 			}
 
 			if ( ! isset( $value['label'] ) ) {
-				$args['fields'][ $key ]['label'] = '';
+				$args['fields'][$key]['label'] = '';
 			}
-			$args['fields'][ $key ]['id'] = $key;
+			$args['fields'][$key]['id'] = $key;
 		}
 
 		$this->fields = $args['fields'];
@@ -126,10 +126,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	}
 
 
-	public function render_content() {
-		$value = json_encode( $this->value() );
-		$id = $this->id;
-		?>
+	public function render_content() { ?>
 		<?php if ( '' != $this->help ) : ?>
 			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
 		<?php endif; ?>
