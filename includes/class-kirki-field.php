@@ -17,7 +17,7 @@ class Kirki_Field extends Kirki_Customizer {
 		/**
 		 * Create the settings.
 		 */
-		$settings = new Kirki_Settings( $this->args );
+		new Kirki_Settings( $this->args );
 		/**
 		 * Check if we're on the customizer.
 		 * If we are, then we will create the controls,
@@ -28,7 +28,7 @@ class Kirki_Field extends Kirki_Customizer {
 			/**
 			 * Create the control
 			 */
-			$control = new Kirki_Control( $this->args );
+			new Kirki_Control( $this->args );
 			/**
 			 * Create the scripts for postMessage to properly work
 			 */
@@ -128,10 +128,6 @@ class Kirki_Field extends Kirki_Customizer {
 			}
 			if ( isset( $field['option_name'] ) ) {
 				$names_match = ( $option_name == $field['option_name'] ) ? true : false;
-			}
-
-			if ( $types_match && $names_match ) {
-				$active_config = $config_id;
 			}
 		}
 

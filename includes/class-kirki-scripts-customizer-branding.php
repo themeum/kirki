@@ -2,7 +2,7 @@
 /**
  * Add the logo and description to the customizer.
  * Logo and customizer are defined using the kirki/config filter.
- * See https://github.com/reduxframework/kirki/wiki/Styling-the-Customizer for documentation
+ * See https://github.com/aristath/kirki/wiki/Styling-the-Customizer for documentation
  *
  * @package     Kirki
  * @category    Core

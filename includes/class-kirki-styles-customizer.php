@@ -3,7 +3,7 @@
  * Changes the styling of the customizer
  * based on the settings set using the kirki/config filter.
  * For documentation please see
- * https://github.com/reduxframework/kirki/wiki/Styling-the-Customizer
+ * https://github.com/aristath/kirki/wiki/Styling-the-Customizer
  *
  * @package     Kirki
  * @category    Core

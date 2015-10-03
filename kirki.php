@@ -79,10 +79,6 @@ include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARA
 // Include the API class
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-kirki.php' );
 
-if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
-	include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'redux-compatibility.php' );
-}
-
 if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 	/**
 	 * Load plugin textdomain.

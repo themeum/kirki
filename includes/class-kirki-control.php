@@ -14,6 +14,12 @@ class Kirki_Control extends Kirki_Customizer {
 
 	}
 
+	/**
+	 * Get the class name of the class needed to create tis control.
+	 *
+	 * @param  $args array
+	 * @return  string
+	 */
 	public function control_class_name( $args ) {
 
 		parent::__construct( $args );
@@ -28,7 +34,10 @@ class Kirki_Control extends Kirki_Customizer {
 	}
 
 	/**
-	 * Add the control
+	 * Add the control.
+	 *
+	 * @param  $arg array
+	 * @return  void
 	 */
 	public function add_control( $args ) {
 

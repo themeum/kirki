@@ -2,7 +2,7 @@
 /**
  * The Kirki API class.
  * Takes care of adding panels, sections & fields to the customizer.
- * For documentation please see https://github.com/reduxframework/kirki/wiki
+ * For documentation please see https://github.com/aristath/kirki/wiki
  *
  * @package     Kirki
  * @category    Core
@@ -53,7 +53,7 @@ class Kirki extends Kirki_Init {
 	 * @param string $config_id
 	 */
 	public static function add_config( $config_id, $args = array() ) {
-		$config = new Kirki_Config( $config_id, $args );
+		new Kirki_Config( $config_id, $args );
 	}
 
 	/**
