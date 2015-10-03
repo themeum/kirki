@@ -71,10 +71,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	}
 
 
-	public function render_content() {
-		$value = json_encode( $this->value() );
-		$id = $this->id;
-		?>
+	public function render_content() { ?>
 		<?php if ( '' != $this->help ) : ?>
 			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
 		<?php endif; ?>

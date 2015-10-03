@@ -129,10 +129,6 @@ class Kirki_Field extends Kirki_Customizer {
 			if ( isset( $field['option_name'] ) ) {
 				$names_match = ( $option_name == $field['option_name'] ) ? true : false;
 			}
-
-			if ( $types_match && $names_match ) {
-				$active_config = $config_id;
-			}
 		}
 
 		return $config_id;
