@@ -1,7 +1,7 @@
 <?php
 /**
  * Try to automatically generate the script necessary for postMessage to work.
- * for documentation see https://github.com/reduxframework/kirki/wiki/required
+ * for documentation see https://github.com/aristath/kirki/wiki/required
  *
  * @package     Kirki
  * @category    Core

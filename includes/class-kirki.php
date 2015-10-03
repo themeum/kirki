@@ -2,7 +2,7 @@
 /**
  * The Kirki API class.
  * Takes care of adding panels, sections & fields to the customizer.
- * For documentation please see https://github.com/reduxframework/kirki/wiki
+ * For documentation please see https://github.com/aristath/kirki/wiki
  *
  * @package     Kirki
  * @category    Core

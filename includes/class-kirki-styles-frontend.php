@@ -2,7 +2,7 @@
 /**
  * Generates the styles for the frontend.
  * Handles the 'output' argument of fields.
- * Usage instructions on https://github.com/reduxframework/kirki/wiki/output
+ * Usage instructions on https://github.com/aristath/kirki/wiki/output
  *
  * @package     Kirki
  * @category    Core
