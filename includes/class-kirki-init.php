@@ -49,7 +49,7 @@ class Kirki_Init {
 	 * @return void
 	 */
 	public function add_to_customizer() {
-		$fields_from_filters = new Kirki_Fields_Filter();
+		new Kirki_Fields_Filter();
 		add_action( 'customize_register', array( $this, 'register_control_types' ) );
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
@@ -86,10 +86,10 @@ class Kirki_Init {
 	 * register our panels to the WordPress Customizer
 	 * @var	object	The WordPress Customizer object
 	 */
-	public function add_panels( $wp_customize ) {
+	public function add_panels() {
 		if ( ! empty( Kirki::$panels ) ) {
 			foreach ( Kirki::$panels as $panel_args ) {
-				$panel = new Kirki_Panel( $panel_args );
+				new Kirki_Panel( $panel_args );
 			}
 		}
 	}
@@ -98,10 +98,10 @@ class Kirki_Init {
 	 * register our sections to the WordPress Customizer
 	 * @var	object	The WordPress Customizer object
 	 */
-	public function add_sections( $wp_customize ) {
+	public function add_sections() {
 		if ( ! empty( Kirki::$sections ) ) {
 			foreach ( Kirki::$sections as $section_args ) {
-				$section = new Kirki_Section( $section_args );
+				new Kirki_Section( $section_args );
 			}
 		}
 	}
@@ -110,10 +110,7 @@ class Kirki_Init {
 	 * Create the settings and controls from the $fields array and register them.
 	 * @var	object	The WordPress Customizer object
 	 */
-	public function add_fields( $wp_customize ) {
-		$control_types = self::$control_types;
-		$setting_types = self::$setting_types;
-
+	public function add_fields() {
 		foreach ( Kirki::$fields as $field ) {
 			if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
 				continue;
@@ -121,7 +118,7 @@ class Kirki_Init {
 			if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
 				$field['multiple'] = 999;
 			}
-			$field = new Kirki_Field( $field );
+			new Kirki_Field( $field );
 		}
 	}
 

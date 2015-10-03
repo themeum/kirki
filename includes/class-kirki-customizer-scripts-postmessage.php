@@ -59,7 +59,7 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Script {
 		/**
 		 * Make sure that we need to proceed
 		 */
-		if ( ! is_null( $args['js_vars'] ) && 'postMessage' == $args['transport'] ) {
+		if ( isset( $args['js_vars'] ) && ! is_null( $args['js_vars'] ) && 'postMessage' == $args['transport'] ) {
 			/**
 			 * Make sure that "js_vars" is an array.
 			 * If not, then early exit with return.

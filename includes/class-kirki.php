@@ -53,7 +53,7 @@ class Kirki extends Kirki_Init {
 	 * @param string $config_id
 	 */
 	public static function add_config( $config_id, $args = array() ) {
-		$config = new Kirki_Config( $config_id, $args );
+		new Kirki_Config( $config_id, $args );
 	}
 
 	/**
