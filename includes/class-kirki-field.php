@@ -28,7 +28,7 @@ class Kirki_Field extends Kirki_Customizer {
 			/**
 			 * Create the control
 			 */
-			$control  = new Kirki_Control( $this->args );
+			$control = new Kirki_Control( $this->args );
 			/**
 			 * Create the scripts for postMessage to properly work
 			 */

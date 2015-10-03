@@ -66,7 +66,7 @@ class Kirki_Styles_Frontend {
 		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
 			return;
 		}
-		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ).'assets/css/kirki-styles.css', null, null );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
 
 	}
 

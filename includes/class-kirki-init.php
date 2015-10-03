@@ -166,9 +166,9 @@ class Kirki_Init {
 						 * If no callback is defined (false) then just get the value.
 						 */
 						if ( $variable_callback ) {
-							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field_Sanitize::sanitize_settings( $field ) ) );
+							$variables[$variable_name] = call_user_func( $field_variable['callback'], Kirki::get_option( Kirki_Field_Sanitize::sanitize_settings( $field ) ) );
 						} else {
-							$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
+							$variables[$variable_name] = Kirki::get_option( $field['settings'] );
 						}
 
 					}

@@ -42,7 +42,7 @@ class Kirki_Scripts_Registry {
 	 * @param string $script
 	 */
 	public static function prepare( $script ) {
-		return '<script>jQuery(document).ready(function($) { "use strict"; '.$script.'});</script>';
+		return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
 	}
 
 }

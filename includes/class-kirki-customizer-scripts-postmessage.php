@@ -89,7 +89,7 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Script {
 				$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
 				$suffix = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 
-				$script .= 'wp.customize( \''.Kirki_Field_Sanitize::sanitize_settings( $args ).'\', function( value ) {';
+				$script .= 'wp.customize( \'' . Kirki_Field_Sanitize::sanitize_settings( $args ) . '\', function( value ) {';
 				$script .= 'value.bind( function( newval ) {';
 
 				if ( 'html' == $js_vars['function'] ) {
