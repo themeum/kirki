@@ -108,7 +108,7 @@ class Kirki_Sanitize_Values extends Kirki_Sanitize {
 		// By now we know the string is formatted as an rgba color so we need to further sanitize it.
 		$value = str_replace( ' ', '', $value );
 		sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
-		return 'rgba('.$red.','.$green.','.$blue.','.$alpha.')';
+		return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
 
 	}
 

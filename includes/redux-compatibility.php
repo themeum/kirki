@@ -44,14 +44,16 @@ class Redux {
 
 	public static function setSection( $config_id, $args = array() ) {
 
-		if ( ! isset( $args['fields'] ) || ! isset( $args['subsection'] ) || ( isset( $args['subsection'] ) && ! $args['subsection'] ) ) { // This is a panel
+		if ( ! isset( $args['fields'] ) || ! isset( $args['subsection'] ) || ( isset( $args['subsection'] ) && ! $args['subsection'] ) ) {
+// This is a panel
 			Kirki::$panels[] = array(
 				'id'          => isset( $args['id'] ) ? sanitize_key( $args['id'] ) : substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz-_' ), 0, 7 ),
 				'title'       => isset( $args['title'] ) ? $args['title'] : '',
 				'priority'    => ( isset( $args['priority'] ) ) ? $args['priority'] : 10,
 				'description' => ( isset( $args['desc'] ) ) ? $args['desc'] : '',
 			);
-		} else { // This is a section
+		} else {
+// This is a section
 			// Get the section ID
 			if ( isset( $args['subsection'] ) && $args['subsection'] ) {
 				$panel    = end( array_values( Kirki::$panels ) );
@@ -116,8 +118,8 @@ class Redux {
 								$text_color       = '#a94442';
 							}
 						}
-						$field['default']  = '<div style="padding: 10px;background:'.$background_color.';border-radius:4px;border:1px solid '.$border_color.';color:'.$text_color.';">';
-						$field['default'] .= ( isset( $field['title'] ) ) ? '<h4>'.$field['title'].'</h4>' : '';
+						$field['default']  = '<div style="padding: 10px;background:' . $background_color . ';border-radius:4px;border:1px solid ' . $border_color . ';color:' . $text_color . ';">';
+						$field['default'] .= ( isset( $field['title'] ) ) ? '<h4>' . $field['title'] . '</h4>' : '';
 						$field['default'] .= ( isset( $field['desc'] ) ) ? $field['desc'] : '';
 						$field['default'] .= '</div>';
 						break;
@@ -132,9 +134,9 @@ class Redux {
 							foreach ( $field['choices'] as $key => $value ) {
 								if ( is_array( $value ) ) {
 									foreach ( $value as $child_key => $child_value ) {
-										$field['choices'][ $child_key ] = $child_value;
+										$field['choices'][$child_key] = $child_value;
 									}
-									unset( $field['choices'][ $key ] );
+									unset( $field['choices'][$key] );
 								}
 							}
 						}

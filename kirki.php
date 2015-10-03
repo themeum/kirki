@@ -93,8 +93,8 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 		$textdomain = 'kirki';
 
 		// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
-		if ( file_exists( WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo' ) ) {
-			$file = WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo';
+		if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+			$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
 		}
 		// Look for Kirki::$path/languages/{$domain}-{$locale}.mo
 		if ( ! isset( $file ) && file_exists( Kirki::$path . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $textdomain . '-' . get_locale() . '.mo' ) ) {
@@ -119,6 +119,6 @@ Kirki::add_config( '' );
  * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
  * Activate that theme to test all controls.
  */
-if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) )  {
+if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) ) {
 	register_theme_directory( dirname( __FILE__ ) );
 }
