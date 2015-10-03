@@ -28,7 +28,7 @@ class Kirki_Config extends Kirki_Customizer {
 		/**
 		 * Set the config
 		 */
-		Kirki::$config[ $config_id ] = array_merge( $this->default_args, $args );
+		Kirki::$config[$config_id] = array_merge( $this->default_args, $args );
 
 	}
 

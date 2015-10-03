@@ -37,8 +37,8 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 			$key             = esc_attr( $key );
 			$setting         = $key;
 			$help            = $field['help'];
-			$description     = isset( $i18n[ 'background-'.$key ] ) ? $i18n[ 'background-'.$key ] : '';
-			$output_property = 'background-'.$key;
+			$description     = isset( $i18n['background-' . $key] ) ? $i18n['background-' . $key] : '';
+			$output_property = 'background-' . $key;
 			$label           = ( 0 === $i ) ? $field['label'] : '';
 			$type            = 'select';
 			$sanitize_callback = 'esc_attr';
@@ -76,17 +76,17 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 			 * If we're using options & option_name is set, then we need to modify the setting.
 			 */
 			if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
-				$property_setting = str_replace( ']', '', str_replace( $field['option_name'].'[', '', $field['settings'] ) );
-				$property_setting = esc_attr( $field['option_name'] ).'['.esc_attr( $property_setting ).'_'.$setting.']';
+				$property_setting = str_replace( ']', '', str_replace( $field['option_name'] . '[', '', $field['settings'] ) );
+				$property_setting = esc_attr( $field['option_name'] ) . '[' . esc_attr( $property_setting ) . '_' . $setting . ']';
 			} else {
-				$property_setting = esc_attr( $field['settings'] ).'_'.$setting;
+				$property_setting = esc_attr( $field['settings'] ) . '_' . $setting;
 			}
 
 			/**
 			 * Build the field.
 			 * We're merging with the original field here, so any extra properties are inherited.
 			 */
-			$fields[ $property_setting ] = array_merge( $field, array(
+			$fields[$property_setting] = array_merge( $field, array(
 				'type'        => $type,
 				'label'       => $label,
 				'settings'    => $property_setting,
@@ -96,8 +96,8 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 				'required'    => $field['required'],
 				'description' => $description,
 				'default'     => $value,
-				'id'          => Kirki_Field_Sanitize::sanitize_id( array( 'settings' => Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => $field['settings'].'_'.$setting ) ) ) ),
-				'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
+				'id'          => Kirki_Field_Sanitize::sanitize_id( array( 'settings' => Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => $field['settings'] . '_' . $setting ) ) ) ),
+				'choices'     => isset( $choices[$key] ) ? $choices[$key] : array(),
 				'output'      => ( '' != $field['output'] ) ? array(
 					array(
 						'element'  => $field['output'],

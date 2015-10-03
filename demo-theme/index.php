@@ -58,7 +58,7 @@ if ( ! $wp_customize ) {
 			<?php $multicheck_value = get_theme_mod( 'multicheck_demo', array( 'option-1', 'option-3' ) ); ?>
 			<?php if ( ! empty( $multicheck_value ) ) : ?>
 				<ul>
-					<?php foreach ( $multicheck_value as $checked_value => $checked) : ?>
+					<?php foreach ( $multicheck_value as $checked_value => $checked ) : ?>
 						<li><?php echo $checked_value; ?></li>
 					<?php endforeach; ?>
 				</ul>
@@ -199,7 +199,7 @@ if ( ! $wp_customize ) {
 			<?php $selected_palette = get_theme_mod( 'palette_demo', 'light' ); ?>
 			<p><?php printf( __( 'selected palette: %s', 'kirki-demo' ), esc_attr( $selected_palette ) ); ?></p>
 			<?php $all_palettes = kirki_demo_get_palettes(); ?>
-			<?php foreach ( $all_palettes[ $selected_palette ] as $color ) : ?>
+			<?php foreach ( $all_palettes[$selected_palette] as $color ) : ?>
 				<div class="palette-demo-color" style="background-color:<?php echo esc_attr( $color ); ?>"></div>
 			<?php endforeach; ?>
 		</div>

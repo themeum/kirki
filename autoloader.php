@@ -32,7 +32,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 						$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . $filename;
 						if ( isset( $exploded[2] ) ) {
 							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
-							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . '-' .  strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . '-' . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
 						}
 					}
 				}

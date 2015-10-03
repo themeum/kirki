@@ -67,12 +67,12 @@ class Kirki_Output_CSS {
 		self::$value = $field_sanitized['default'];
 		if ( isset( $field_sanitized['option_type'] ) && 'theme_mod' == $field_sanitized['option_type'] ) {
 			self::$value = get_theme_mod( $field_sanitized['settings'], $field_sanitized['default'] );
-		} else if ( isset( $field_sanitized['option_type'] ) && 'option' == $field_sanitized['option_type'] )  {
+		} else if ( isset( $field_sanitized['option_type'] ) && 'option' == $field_sanitized['option_type'] ) {
 			if ( isset( $field_sanitized['option_name'] ) && '' != $field_sanitized['option_name'] ) {
 				$all_values = get_option( $field_sanitized['option_name'], array() );
 				$sub_setting_id = str_replace( array( ']', $field_sanitized['option_name'] . '[' ), '', $field_sanitized['settings'] );
-				if ( isset( $all_values[ $sub_setting_id ] ) ) {
-					self::$value = $all_values[ $sub_setting_id ];
+				if ( isset( $all_values[$sub_setting_id] ) ) {
+					self::$value = $all_values[$sub_setting_id];
 				}
 			} else {
 				self::$value = get_option( $field_sanitized['settings'], $field_sanitized['default'] );
@@ -202,38 +202,38 @@ class Kirki_Output_CSS {
 				if ( ! isset( $output['property'] ) ) {
 					continue;
 				}
-				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units . $suffix;
+				$styles[$output['media_query']][$element][$output['property']] = $prefix . $value . $units . $suffix;
 			} else {
 				/**
 				 * Take care of typography controls output
 				 */
 				if ( 'typography' == self::$field_type ) {
 					if ( isset( $value['bold'] ) && $value['bold'] ) {
-						$styles[ $output['media_query'] ][ $element ]['font-weight'] = 'bold';
+						$styles[$output['media_query']][$element]['font-weight'] = 'bold';
 					}
 					if ( isset( $value['italic'] ) && $value['italic'] ) {
-						$styles[ $output['media_query'] ][ $element ]['font-style'] = 'italic';
+						$styles[$output['media_query']][$element]['font-style'] = 'italic';
 					}
 					if ( isset( $value['underline'] ) && $value['underline'] ) {
-						$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'underline';
+						$styles[$output['media_query']][$element]['text-decoration'] = 'underline';
 					}
 					if ( isset( $value['strikethrough'] ) && $value['strikethrough'] ) {
-						$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'strikethrough';
+						$styles[$output['media_query']][$element]['text-decoration'] = 'strikethrough';
 					}
 					if ( isset( $value['font-family'] ) ) {
-						$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
+						$styles[$output['media_query']][$element]['font-family'] = $value['font-family'];
 					}
 					if ( isset( $value['font-size'] ) ) {
-						$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];
+						$styles[$output['media_query']][$element]['font-size'] = $value['font-size'];
 					}
 					if ( isset( $value['font-weight'] ) ) {
-						$styles[ $output['media_query'] ][ $element ]['font-weight'] = $value['font-weight'];
+						$styles[$output['media_query']][$element]['font-weight'] = $value['font-weight'];
 					}
 					if ( isset( $value['line-height'] ) ) {
-						$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
+						$styles[$output['media_query']][$element]['line-height'] = $value['line-height'];
 					}
 					if ( isset( $value['letter-spacing'] ) ) {
-						$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
+						$styles[$output['media_query']][$element]['letter-spacing'] = $value['letter-spacing'];
 					}
 				}
 			}
@@ -256,65 +256,65 @@ class Kirki_Output_CSS {
 						 * border-radius
 						 */
 						if ( 'border-radius' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-border-radius'] = $value;
-							$css[ $media_query ][ $element ]['-moz-border-radius'] = $value;
+							$css[$media_query][$element]['-webkit-border-radius'] = $value;
+							$css[$media_query][$element]['-moz-border-radius'] = $value;
 						}
 						/**
 						 * box-shadow
 						 */
 						if ( 'box-shadow' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-box-shadow'] = $value;
-							$css[ $media_query ][ $element ]['-moz-box-shadow']    = $value;
+							$css[$media_query][$element]['-webkit-box-shadow'] = $value;
+							$css[$media_query][$element]['-moz-box-shadow']    = $value;
 						}
 						/**
 						 * box-sizing
 						 */
 						elseif ( 'box-sizing' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-box-sizing'] = $value;
-							$css[ $media_query ][ $element ]['-moz-box-sizing']    = $value;
+							$css[$media_query][$element]['-webkit-box-sizing'] = $value;
+							$css[$media_query][$element]['-moz-box-sizing']    = $value;
 						}
 						/**
 						 * text-shadow
 						 */
 						elseif ( 'text-shadow' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-text-shadow'] = $value;
-							$css[ $media_query ][ $element ]['-moz-text-shadow']    = $value;
+							$css[$media_query][$element]['-webkit-text-shadow'] = $value;
+							$css[$media_query][$element]['-moz-text-shadow']    = $value;
 						}
 						/**
 						 * transform
 						 */
 						elseif ( 'transform' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-transform'] = $value;
-							$css[ $media_query ][ $element ]['-moz-transform']    = $value;
-							$css[ $media_query ][ $element ]['-ms-transform']     = $value;
-							$css[ $media_query ][ $element ]['-o-transform']      = $value;
+							$css[$media_query][$element]['-webkit-transform'] = $value;
+							$css[$media_query][$element]['-moz-transform']    = $value;
+							$css[$media_query][$element]['-ms-transform']     = $value;
+							$css[$media_query][$element]['-o-transform']      = $value;
 						}
 						/**
 						 * background-size
 						 */
 						elseif ( 'background-size' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-background-size'] = $value;
-							$css[ $media_query ][ $element ]['-moz-background-size']    = $value;
-							$css[ $media_query ][ $element ]['-ms-background-size']     = $value;
-							$css[ $media_query ][ $element ]['-o-background-size']      = $value;
+							$css[$media_query][$element]['-webkit-background-size'] = $value;
+							$css[$media_query][$element]['-moz-background-size']    = $value;
+							$css[$media_query][$element]['-ms-background-size']     = $value;
+							$css[$media_query][$element]['-o-background-size']      = $value;
 						}
 						/**
 						 * transition
 						 */
 						elseif ( 'transition' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-transition'] = $value;
-							$css[ $media_query ][ $element ]['-moz-transition']    = $value;
-							$css[ $media_query ][ $element ]['-ms-transition']     = $value;
-							$css[ $media_query ][ $element ]['-o-transition']      = $value;
+							$css[$media_query][$element]['-webkit-transition'] = $value;
+							$css[$media_query][$element]['-moz-transition']    = $value;
+							$css[$media_query][$element]['-ms-transition']     = $value;
+							$css[$media_query][$element]['-o-transition']      = $value;
 						}
 						/**
 						 * transition-property
 						 */
 						elseif ( 'transition-property' == $property ) {
-							$css[ $media_query ][ $element ]['-webkit-transition-property'] = $value;
-							$css[ $media_query ][ $element ]['-moz-transition-property']    = $value;
-							$css[ $media_query ][ $element ]['-ms-transition-property']     = $value;
-							$css[ $media_query ][ $element ]['-o-transition-property']      = $value;
+							$css[$media_query][$element]['-webkit-transition-property'] = $value;
+							$css[$media_query][$element]['-moz-transition-property']    = $value;
+							$css[$media_query][$element]['-ms-transition-property']     = $value;
+							$css[$media_query][$element]['-o-transition-property']      = $value;
 						}
 					}
 				}
