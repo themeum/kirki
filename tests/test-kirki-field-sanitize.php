@@ -176,48 +176,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'esc_url_raw', Kirki_Field_Sanitize::sanitize_callback( array( 'type' => 'upload' ) ) );
 	}
 
-	public function test_sanitize_js_vars() {
-		$this->assertEquals( null, Kirki_Field_Sanitize::sanitize_js_vars( array() ) );
-		$this->assertEquals( null, Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => 'foo' ) ) );
-		$this->assertEquals(
-			array(
-				array(
-					'element' => '#main',
-					'function' => 'css',
-					'property' => 'color',
-					'units' => '',
-					'prefix' => '',
-					'suffix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
-				'element' => '#main',
-				'function' => 'css',
-				'property' => 'color',
-			) ) )
-		);
-		$this->assertEquals(
-			array(
-				array(
-					'element' => 'body > #main',
-					'function' => 'css',
-					'property' => 'font-size',
-					'units' => 'px',
-					'prefix' => '',
-					'suffix' => '',
-				)
-			),
-			Kirki_Field_Sanitize::sanitize_js_vars( array( 'js_vars' => array(
-				array(
-					'element' => 'body > #main',
-					'function' => 'css',
-					'property' => 'font-size',
-					'units' => 'px'
-				)
-			) ) )
-		);
-	}
-
 	public function test_fallback_callback() {
 		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'checkbox' ), Kirki_Field_Sanitize::fallback_callback( 'checkbox' ) );
 		$this->assertEquals( array( 'Kirki_Sanitize_Values', 'color' ), Kirki_Field_Sanitize::fallback_callback( 'color-alpha' ) );
