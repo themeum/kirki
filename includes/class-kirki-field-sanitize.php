@@ -316,7 +316,7 @@ class Kirki_Field_Sanitize {
 		 * If we're using options & option_name is set, then we need to modify the setting.
 		 */
 		if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
-			$field['settings'] = esc_attr( $field['option_name'] ).'['.esc_attr( $field['settings'] ).']';
+			$field['settings'] = esc_attr( $field['option_name'] ) . '[' . esc_attr( $field['settings'] ) . ']';
 		}
 
 		return $field['settings'];

@@ -42,18 +42,18 @@ class Kirki_Color {
 
 		// If the string is 6 characters long then use it in pairs.
 		if ( 3 == strlen( $color ) ) {
-			$color = substr( $color, 0, 1 ).substr( $color, 0, 1 ).substr( $color, 1, 1 ).substr( $color, 1, 1 ).substr( $color, 2, 1 ).substr( $color, 2, 1 );
+			$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
 		}
 
 		$substr = array();
 		for ( $i = 0; $i <= 5; $i++ ) {
-			$default      = ( 0 == $i ) ? 'F' : ( $substr[ $i - 1 ] );
-			$substr[ $i ] = substr( $color, $i, 1 );
-			$substr[ $i ] = ( false === $substr[ $i ] || ! ctype_xdigit( $substr[ $i ] ) ) ? $default : $substr[ $i ];
+			$default      = ( 0 == $i ) ? 'F' : ( $substr[$i - 1] );
+			$substr[$i] = substr( $color, $i, 1 );
+			$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
 		}
 		$hex = implode( '', $substr );
 
-		return ( ! $hash ) ? $hex : '#'.$hex;
+		return ( ! $hash ) ? $hex : '#' . $hex;
 
 	}
 
@@ -104,12 +104,12 @@ class Kirki_Color {
 		$alpha = $color[3];
 
 		// Make sure all colors are 2 digits
-		$red   = ( 1 == strlen( $red ) ) ? $red.$red : $red;
-		$green = ( 1 == strlen( $green ) ) ? $green.$green : $green;
-		$blue  = ( 1 == strlen( $blue ) ) ? $blue.$blue : $blue;
+		$red   = ( 1 == strlen( $red ) ) ? $red . $red : $red;
+		$green = ( 1 == strlen( $green ) ) ? $green . $green : $green;
+		$blue  = ( 1 == strlen( $blue ) ) ? $blue . $blue : $blue;
 
 		// Combine hex parts
-		$hex = $red.$green.$blue;
+		$hex = $red . $green . $blue;
 		if ( $apply_opacity ) {
 			// Get the opacity value on a 0-100 basis instead of 0-1.
 			$mix_level = intval( $alpha * 100 );
@@ -162,7 +162,7 @@ class Kirki_Color {
 		// Divide the opacity by 100 to end-up with a CSS value for the opacity
 		$opacity = ( $opacity / 100 );
 
-		$color = 'rgba('.self::get_rgb( $hex, true ).','.$opacity.')';
+		$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
 
 		return $color;
 
@@ -203,7 +203,7 @@ class Kirki_Color {
 		$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 		$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-		return self::sanitize_hex( $red_hex.$green_hex.$blue_hex );
+		return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
 	}
 
@@ -230,7 +230,7 @@ class Kirki_Color {
 		$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 		$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-		return self::sanitize_hex( $red_hex.$green_hex.$blue_hex );
+		return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
 	}
 

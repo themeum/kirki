@@ -182,7 +182,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 		$fonts = Kirki()->font_registry->get_all_fonts();
 		$fonts_array = array();
 		foreach ( $fonts as $font => $properties ) {
-			$fonts_array[ $font ] = $font;
+			$fonts_array[$font] = $font;
 		}
 		return $fonts_array;
 	}
