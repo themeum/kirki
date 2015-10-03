@@ -24,6 +24,9 @@ if ( class_exists( 'Kirki' ) ) {
 
 class Kirki extends Kirki_Init {
 
+	public static $path;
+	public static $url;
+
 	public static $config   = array();
 	public static $fields   = array();
 	public static $panels   = array();
@@ -65,7 +68,7 @@ class Kirki extends Kirki_Init {
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? 'kirki_active_callback' : '__return_true';
+			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
 		}
 
 		self::$panels[ $args['id'] ] = $args;
@@ -86,7 +89,7 @@ class Kirki extends Kirki_Init {
 		$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? 'kirki_active_callback' : '__return_true';
+			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
 		}
 
 		self::$sections[ $args['id'] ] = $args;

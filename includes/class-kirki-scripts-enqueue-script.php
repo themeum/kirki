@@ -35,7 +35,7 @@ abstract class Kirki_Scripts_Enqueue_Script extends Kirki_Scripts_Registry {
 	/**
 	 * @return void
 	 */
-	abstract public function generate_script();
+	abstract public function generate_script( $args = array() );
 
 	/**
 	 * @return void

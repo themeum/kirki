@@ -274,13 +274,13 @@ class Kirki_Fonts_Font_Registry {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function
 		if ( empty( $wp_filesystem ) ) {
-			require_once ( ABSPATH.'/wp-admin/includes/file.php' );
+			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
 			WP_Filesystem();
 		}
 
 		if ( null == $this->google_fonts ) {
 
-			$json = $wp_filesystem->get_contents( KIRKI_PATH.'/assets/json/webfonts.json' );
+			$json = $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'webfonts.json' );
 			// Get the list of fonts from our json file and convert to an array
 			$fonts = json_decode( $json, true );
 

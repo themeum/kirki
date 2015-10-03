@@ -28,7 +28,7 @@ class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
 	 * If we've specified an image to be used as logo,
 	 * replace the default theme description with a div that will include our logo.
 	 */
-	public function generate_script() {
+	public function generate_script( $args = array() ) {
 
 		$config = apply_filters( 'kirki/config', array() );
 		$script = '';
