@@ -118,8 +118,13 @@ class Kirki_Fonts_Font_Registry {
 			$subsets = (array) $subset;
 
 		}
-
-		// Append the subset string
+		/**
+		 * Sanitization: flatten the array.
+		 */
+		$subsets = Kirki_Helper::array_flatten( $subsets, 'value' );
+		/**
+		 * Append the subset string
+		 */
 		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
 
 		return $request;

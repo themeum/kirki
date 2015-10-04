@@ -28,70 +28,119 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 
 	public function google_link() {
 
-		// Get the array of fields
+		/**
+		 * Get the array of fields from the Kirki object.
+		 */
 		$fields = Kirki::$fields;
-
-		// Early exit if no fields are found.
+		/**
+		 * Early exit if no fields are found.
+		 */
 		if ( empty( $fields ) ) {
 			return;
 		}
 
 		$fonts = array();
+		/**
+		 * Run a loop for our fields
+		 */
 		foreach ( $fields as $field ) {
-
 			/**
 			 * Sanitize the field
 			 */
 			$field = Kirki_Field_Sanitize::sanitize_field( $field );
-
-			if ( ! is_array( $field['output'] ) ) {
+			/**
+			 * No reason to proceed any further if no 'output' has been defined
+			 * or if it's not defined as an array.
+			 */
+			if ( ! isset( $field['output'] ) || ! is_array( $field['output'] ) ) {
 				continue;
 			}
-
+			/**
+			 * Run through each of our "output" items in the array separately.
+			 */
 			foreach ( $field['output'] as $output ) {
-
-				if ( ! isset( $output['property'] ) ) {
+				$valid = false;
+				/**
+				 * If the field-type exists and is set to "typography"
+				 * then we need some extra checks to figure out if we need to proceed.
+				 */
+				if ( isset( $field['type'] ) && 'typography' == $field['type'] ) {
+					if ( isset( $field['choices'] ) && isset( $field['choices']['font-family'] ) && $field['choices']['font-family'] ) {
+						$valid = true;
+					}
+				}
+				/**
+				 * Check if the "property" of this item is related to typography.
+				 */
+				if ( isset( $output['property'] ) && in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
+					$valid = true;
+				}
+				/**
+				 * If the $valid var is not true, then we don't need to proceed.
+				 * Continue to the next item in the array.
+				 */
+				if ( ! $valid ) {
 					continue;
 				}
 
-				if ( ( 'typography' == $field['type'] ) || in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset' ) ) ) {
+				/**
+				 * Get the value of this field
+				 */
+		 		$value = $field['default'];
+		 		if ( isset( $field['option_type'] ) && 'theme_mod' == $field['option_type'] ) {
+		 			$value = get_theme_mod( $field['settings'], $field['default'] );
+		 		} else if ( isset( $field['option_type'] ) && 'option' == $field['option_type'] ) {
+		 			if ( isset( $field['option_name'] ) && '' != $field['option_name'] ) {
+		 				$all_values = get_option( $field['option_name'], array() );
+		 				$sub_setting_id = str_replace( array( ']', $field['option_name'] . '[' ), '', $field['settings'] );
+		 				if ( isset( $all_values[$sub_setting_id] ) ) {
+		 					$value = $all_values[$sub_setting_id];
+		 				}
+		 			} else {
+		 				$value = get_option( $field['settings'], $field['default'] );
+		 			}
+		 		}
+
+				/**
+				 * Typography fields arew a bit more complex than usual fields.
+				 * We need to get the sub-items of the array
+				 * and then base our calculations on these.
+				 */
+				if ( 'typography' == $field['type'] ) {
 					/**
-					 * Get the value of the field
+					 * Add the font-family to the array
 					 */
-					$config_id = Kirki::get_config_id( $field );
-					$settings = $field['settings'];
-					if ( 'option' == Kirki::$config[$config_id]['option_type'] && '' != Kirki::$config[$config_id]['option_name'] ) {
-						$settings = str_replace( array( ']', Kirki::$config[$config_id]['option_name'] . '[' ), '', $field['settings'] );
+					if ( isset( $value['font-family'] ) ) {
+						$fonts[]['font-family'] = $value['font-family'];
 					}
-					$value = Kirki::get_option( $config_id, $settings );
+					/**
+					 * Add the font-weight to the array
+					 */
+					if ( isset( $value['font-weight'] ) ) {
+						$fonts[]['font-weight'] = $value['font-weight'];
+					}
+				}
+				/**
+				 * This is not a typography field so we can proceed.
+				 * This is a lot simple. :)
+				 */
+				 else {
 
-					if ( 'typography' == $field['type'] ) {
-
-						if ( isset( $value['font-family'] ) ) {
-							$fonts[]['font-family'] = $value['font-family'];
-						}
-						if ( isset( $value['font-weight'] ) ) {
-							$fonts[]['font-weight'] = $value['font-weight'];
-						}
-
-					} else {
-
-						if ( 'font-family' == $output['property'] ) {
-							/**
-							 * Add the font-family to the array
-							 */
-							$fonts[]['font-family'] = $value;
-						} else if ( 'font-weight' == $output['property'] ) {
-							/**
-							 * Add font-weight to the array
-							 */
-							$fonts[]['font-weight'] = $value;
-						} else if ( 'font-subset' == $output['property'] ) {
-							/**
-							 * add font subsets to the array
-							 */
-							$fonts[]['subsets'] = $value;
-						}
+					 if ( 'font-family' == $output['property'] ) {
+						 /**
+						  * Add the font-family to the array
+						  */
+						 $fonts[]['font-family'] = $value;
+					} else if ( 'font-weight' == $output['property'] ) {
+						/**
+						 * Add font-weight to the array
+						 */
+						$fonts[]['font-weight'] = $value;
+					} else if ( 'font-subset' == $output['property'] ) {
+						/**
+						 * add font subsets to the array
+						 */
+						$fonts[]['subsets'] = $value;
 
 					}
 
@@ -100,43 +149,53 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 			}
 
 		}
-
+		/**
+		 * Start going through all the items in the $fonts array.
+		 */
 		foreach ( $fonts as $font ) {
-
-			// Do we have font-families?
+			/**
+			 * Do we have font-families?
+			 */
 			if ( isset( $font['font-family'] ) ) {
-
 				$font_families   = ( ! isset( $font_families ) ) ? array() : $font_families;
 				$font_families[] = $font['font-family'];
-
-				if ( Kirki_Toolkit::fonts()->is_google_font( $font['font-family'] ) ) {
-					$has_google_font = true;
+				/**
+				 * Determine if we need to create a google-fonts link or not.
+				 */
+				if ( ! isset( $has_google_font ) ) {
+					if ( Kirki_Toolkit::fonts()->is_google_font( $font['font-family'] ) ) {
+						$has_google_font = true;
+					}
 				}
-
 			}
-
-			// Do we have font-weights?
+			/**
+			 * Do we have font-weights?
+			 */
 			if ( isset( $font['font-weight'] ) ) {
-
 				$font_weights   = ( ! isset( $font_weights ) ) ? array() : $font_weights;
 				$font_weights[] = $font['font-weight'];
-
 			}
-
-			// Do we have font-subsets?
+			/**
+			 * Do we have font-subsets?
+			 */
 			if ( isset( $font['subsets'] ) ) {
-
 				$font_subsets   = ( ! isset( $font_subsets ) ) ? array() : $font_subsets;
 				$font_subsets[] = $font['subsets'];
-
 			}
 
 		}
-
-		// Make sure there are no empty values and define defaults.
+		/**
+		 * Make sure there are no empty values and define some sane defaults.
+		 */
 		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
 		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? '400' : $font_weights;
 		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? 'all' : $font_subsets;
+		/**
+		 * Get rid of duplicate values
+		 */
+		$font_families = array_unique( $font_families );
+		$font_weights  = array_unique( $font_weights );
+		$font_subsets  = array_unique( $font_subsets );
 
 		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
 			$font_families = false;
