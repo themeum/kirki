@@ -39,6 +39,20 @@ class Kirki_Helper {
 
 	}
 
+	public static function array_flatten( array $array ) {
+		$flat  = array(); // initialize return array
+		$stack = array_values( $array );
+		while( $stack ) { // process stack until done
+			$value = array_shift( $stack );
+			if ( is_array( $value ) ) { // a value to further process
+				$stack = array_merge( array_keys( $value ), $stack );
+			} else { // a value to take
+				$flat[] = $value;
+			}
+		}
+	    return $flat;
+	}
+
 	/**
 	 * Returns the attachment object
 	 *
