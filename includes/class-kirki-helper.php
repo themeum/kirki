@@ -34,7 +34,7 @@ class Kirki_Helper {
 			return null;
 		}
 
-		unset( $array[ $idx ] );
+		unset( $array[$idx] );
 		return array_values( $array );
 
 	}
@@ -42,7 +42,7 @@ class Kirki_Helper {
 	public static function array_flatten( array $array ) {
 		$flat  = array(); // initialize return array
 		$stack = array_values( $array );
-		while( $stack ) { // process stack until done
+		while ( $stack ) { // process stack until done
 			$value = array_shift( $stack );
 			if ( is_array( $value ) ) { // a value to further process
 				$stack = array_merge( array_keys( $value ), $stack );
@@ -50,7 +50,7 @@ class Kirki_Helper {
 				$flat[] = $value;
 			}
 		}
-	    return $flat;
+		return $flat;
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Kirki_Helper {
 		// properly format the array.
 		$items = array();
 		foreach ( $posts as $post ) {
-			$items[ $post->ID ] = $post->post_title;
+			$items[$post->ID] = $post->post_title;
 		}
 
 		return $items;
@@ -115,7 +115,7 @@ class Kirki_Helper {
 		foreach ( $taxonomies as $taxonomy ) {
 			$id           = $taxonomy;
 			$taxonomy     = get_taxonomy( $taxonomy );
-			$items[ $id ] = $taxonomy->labels->name;
+			$items[$id] = $taxonomy->labels->name;
 		}
 
 		return $items;
@@ -130,7 +130,7 @@ class Kirki_Helper {
 		$post_types = get_post_types( array( 'public' => true ), 'objects' );
 		// Build the array
 		foreach ( $post_types as $post_type ) {
-			$items[ $post_type->name ] = $post_type->labels->name;
+			$items[$post_type->name] = $post_type->labels->name;
 		}
 
 		return $items;

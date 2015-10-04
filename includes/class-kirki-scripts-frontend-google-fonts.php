@@ -84,8 +84,8 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 				}
 
 				/**
-		 		 * Get the value of this field
-		 		 */
+				 * Get the value of this field
+				 */
 		 		$value = $field['default'];
 		 		if ( isset( $field['option_type'] ) && 'theme_mod' == $field['option_type'] ) {
 		 			$value = get_theme_mod( $field['settings'], $field['default'] );
