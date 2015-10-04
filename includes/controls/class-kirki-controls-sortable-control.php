@@ -23,8 +23,6 @@ class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
 
 	public $type = 'sortable';
 
-	public $help = '';
-
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );

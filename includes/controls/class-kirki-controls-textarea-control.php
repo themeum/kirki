@@ -26,21 +26,6 @@ class Kirki_Controls_Textarea_Control extends WP_Customize_Control {
 
 	public $type = 'kirki-textarea';
 
-	public $help = '';
-
-	public function to_json() {
-		parent::to_json();
-		$this->json['value'] = $this->value();
-		$this->json['link']  = $this->get_link();
-		$this->json['help']  = $this->help;
-	}
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-textarea', 'controls/textarea', array( 'jquery', 'formstone', 'formstone-number' ) );
-	}
-
-	public function render_content() {}
-
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>
 			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>

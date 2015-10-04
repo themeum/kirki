@@ -19,26 +19,16 @@ if ( class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Preset_Control extends WP_Customize_Control {
+class Kirki_Controls_Preset_Control extends Kirki_Customize_Control {
 
 	public $type = 'preset';
 
 	public $multiple = 1;
 
-	public function to_json() {
-		parent::to_json();
-
-		$this->json['value']    = $this->value();
-		$this->json['choices']  = $this->choices;
-		$this->json['link']     = $this->get_link();
-	}
-
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-preset', 'controls/select', array( 'jquery', 'selectize' ) );
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 

@@ -23,12 +23,6 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 
 	public $type = 'switch';
 
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-switch', 'controls/switch', array( 'jquery' ) );
-	}
-
 	public function to_json() {
 		parent::to_json();
 		$i18n = Kirki_Toolkit::i18n();
@@ -36,15 +30,7 @@ class Kirki_Controls_Switch_Control extends WP_Customize_Control {
 		$this->choices['on']    = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
 		$this->choices['off']   = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];
 		$this->choices['round'] = ( isset( $this->choices['round'] ) ) ? $this->choices['round'] : false;
-
-		$this->json['id']      = $this->id;
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['help']    = $this->help;
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>

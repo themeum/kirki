@@ -23,23 +23,6 @@ class Kirki_Controls_Radio_Buttonset_Control extends WP_Customize_Control {
 
 	public $type = 'radio-buttonset';
 
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-buttonset', 'controls/radio-buttonset', array( 'jquery' ) );
-	}
-
-	public function to_json() {
-		parent::to_json();
-		$this->json['id']      = $this->id;
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['value']   = $this->value();
-		$this->json['help']    = $this->help;
-	}
-
-	public function render_content() {}
-
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>
 			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>

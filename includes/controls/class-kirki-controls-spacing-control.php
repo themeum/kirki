@@ -23,17 +23,8 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 
 	public $type = 'spacing';
 
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-spacing', 'controls/spacing', array( 'jquery' ) );
-	}
-
 	public function to_json() {
 		parent::to_json();
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
 		$this->json['choices'] = ( is_array( $this->choices ) ) ? array(
 			'top'    => ( in_array( 'top', $this->choices ) ) ? true : false,
 			'bottom' => ( in_array( 'bottom', $this->choices ) ) ? true : false,
@@ -49,11 +40,8 @@ class Kirki_Controls_Spacing_Control extends WP_Customize_Control {
 			'left'   => $i18n['left'],
 			'right'  => $i18n['right'],
 		);
-		$this->json['help'] = $this->help;
 
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>

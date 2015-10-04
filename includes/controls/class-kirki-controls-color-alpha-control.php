@@ -19,7 +19,7 @@ if ( class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
+class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {
 
 	public $type = 'color-alpha';
 
@@ -27,19 +27,9 @@ class Kirki_Controls_Color_Alpha_Control extends WP_Customize_Color_Control {
 
 	public $default = '#FFFFFF';
 
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-color-alpha', 'controls/color-alpha', array( 'jquery' ) );
-	}
-
 	public function to_json() {
 		parent::to_json();
 		$this->json['palette'] = $this->palette;
-		$this->json['default'] = $this->default;
-		$this->json['value']   = $this->value();
-		$this->json['link']    = $this->get_link();
-		$this->json['help']    = $this->help;
 	}
 
 	protected function render() {
