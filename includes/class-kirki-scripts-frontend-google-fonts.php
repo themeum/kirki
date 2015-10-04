@@ -86,21 +86,7 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 				/**
 		 		 * Get the value of this field
 		 		 */
-		 		$value = $field['default'];
-		 		if ( isset( $field['option_type'] ) && 'theme_mod' == $field['option_type'] ) {
-		 			$value = get_theme_mod( $field['settings'], $field['default'] );
-		 		} else if ( isset( $field['option_type'] ) && 'option' == $field['option_type'] ) {
-		 			if ( isset( $field['option_name'] ) && '' != $field['option_name'] ) {
-		 				$all_values = get_option( $field['option_name'], array() );
-		 				$sub_setting_id = str_replace( array( ']', $field['option_name'] . '[' ), '', $field['settings'] );
-		 				if ( isset( $all_values[$sub_setting_id] ) ) {
-		 					$value = $all_values[$sub_setting_id];
-		 				}
-		 			} else {
-		 				$value = get_option( $field['settings'], $field['default'] );
-		 			}
-		 		}
-
+		 		$value = Kirki_Values::get_sanitized_field_value( $field );
 				/**
 				 * Typography fields arew a bit more complex than usual fields.
 				 * We need to get the sub-items of the array
