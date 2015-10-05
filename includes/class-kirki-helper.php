@@ -23,6 +23,17 @@ if ( class_exists( 'Kirki_Helper' ) ) {
 class Kirki_Helper {
 
 	/**
+	 * Initialize the WP_Filesystem
+	 */
+	public static function init_filesystem() {
+		global $wp_filesystem;
+		if ( empty( $wp_filesystem ) ) {
+			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
+			WP_Filesystem();
+		}
+	}
+
+	/**
 	 * Helper function
 	 *
 	 * removes an item from an array
