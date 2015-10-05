@@ -105,7 +105,7 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 					<h5>{{ data.l10n['font-family'] }}</h5>
 					<select class="font-family select2">
 						<# for ( key in data.fonts ) { #>
-							<option value="{{ data.fonts[ key ] }}" <# if ( data.fonts[ key ] === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
+							<option value="{{ key }}" <# if ( key === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
 						<# } #>
 					</select>
 				</div>
@@ -175,8 +175,20 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 	public function get_all_fonts() {
 		$fonts = Kirki()->font_registry->get_all_fonts();
 		$fonts_array = array();
-		foreach ( $fonts as $font => $properties ) {
-			$fonts_array[$font] = $font;
+		foreach ( $fonts as $key => $font ) {
+			if ( is_array( $font ) ) {
+				if ( isset( $font['label'] ) ) {
+					if ( isset( $font['stack'] ) ) {
+						$fonts_array[ $font['stack'] ] = $font['label'];
+					} else {
+						$fonts_array[ $key ] = $font['label'];
+					}
+				} else {
+					$fonts_array[ $key ] = $key;
+				}
+			} else {
+				$fonts_array[ $key ] = $font;
+			}
 		}
 		return $fonts_array;
 	}
