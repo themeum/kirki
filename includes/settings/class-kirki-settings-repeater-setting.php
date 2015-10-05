@@ -46,7 +46,9 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 	 */
 	public function sanitize_repeater_setting( $value ) {
 
-		$value     = json_decode( urldecode( $value ) );
+		if ( ! is_array( $value ) ) {
+			$value = json_decode( urldecode( $value ) );
+		}
 		$sanitized = ( empty( $value ) || ! is_array( $value ) ) ? array() : $value;
 
 		// Make sure that every row is an array, not an object
