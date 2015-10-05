@@ -174,14 +174,20 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		 * Make sure there are no empty values and define some sane defaults.
 		 */
 		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
-		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? '400' : $font_weights;
-		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? 'all' : $font_subsets;
+		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? array( '400' ) : $font_weights;
+		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? array( 'all' ) : $font_subsets;
 		/**
 		 * Get rid of duplicate values
 		 */
-		$font_families = array_unique( $font_families );
-		$font_weights  = array_unique( $font_weights );
-		$font_subsets  = array_unique( $font_subsets );
+		if ( is_array( $font_families ) && ! empty( $font_families ) ) {
+			$font_families = array_unique( $font_families );
+		}
+		if ( is_array( $font_weights ) && ! empty( $font_weights ) ) {
+			$font_weights  = array_unique( $font_weights );
+		}
+		if ( is_array( $font_subsets ) && ! empty( $font_subsets ) ) {
+			$font_subsets  = array_unique( $font_subsets );
+		}
 
 		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
 			$font_families = false;
