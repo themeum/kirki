@@ -173,14 +173,14 @@ input[type="text"] {
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
   min-height: 150px !important; }
 
-.customize-control-color-alpha .kirki-alpha-container {
+.customize-control-color .kirki-alpha-container {
   box-sizing: padding-box;
   display: none;
   border: 1px solid #dfdfdf;
   border-top: none;
   background: #fff;
   padding: 0 11px 6px; }
-  .customize-control-color-alpha .kirki-alpha-container .transparency {
+  .customize-control-color .kirki-alpha-container .transparency {
     height: 24px;
     width: 100%;
     background-color: #fff;
@@ -191,7 +191,7 @@ input[type="text"] {
     -moz-border-radius: 3px;
     border-radius: 3px;
     padding: 0; }
-  .customize-control-color-alpha .kirki-alpha-container .ui-slider-handle {
+  .customize-control-color .kirki-alpha-container .ui-slider-handle {
     color: #777;
     background-color: #fff;
     text-shadow: 0 1px 0 #fff;
@@ -209,37 +209,37 @@ input[type="text"] {
     cursor: ew-resize;
     font-size: 12px;
     padding: 3px; }
-  .customize-control-color-alpha .kirki-alpha-container .ui-slider {
+  .customize-control-color .kirki-alpha-container .ui-slider {
     position: relative;
     text-align: center;
     width: 88%; }
-.customize-control-color-alpha .wp-picker-container a.wp-picker-open ~ div.kirki-alpha-container {
+.customize-control-color .wp-picker-container a.wp-picker-open ~ div.kirki-alpha-container {
   display: block; }
-.customize-control-color-alpha .customize-control-alphacolor .wp-picker-container .iris-picker {
+.customize-control-color .customize-control-alphacolor .wp-picker-container .iris-picker {
   border-bottom: none; }
-.customize-control-color-alpha .wp-picker-container {
+.customize-control-color .wp-picker-container {
   width: 100%; }
-  .customize-control-color-alpha .wp-picker-container .wp-picker-holder {
+  .customize-control-color .wp-picker-container .wp-picker-holder {
     width: calc(100% - 2px); }
-  .customize-control-color-alpha .wp-picker-container .iris-picker {
+  .customize-control-color .wp-picker-container .iris-picker {
     width: 100% !important;
     height: 195px !important;
     padding-bottom: 10px !important; }
-    .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner {
+    .customize-control-color .wp-picker-container .iris-picker .iris-picker-inner {
       left: 35px;
       height: 190px; }
-      .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
+      .customize-control-color .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
         width: calc(100% - 35px) !important;
         margin-right: 2%; }
-      .customize-control-color-alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-slider.iris-strip {
+      .customize-control-color .wp-picker-container .iris-picker .iris-picker-inner .iris-slider.iris-strip {
         height: 185px !important;
         width: 28px !important; }
-.customize-control-color-alpha .iris-palette-container {
+.customize-control-color .iris-palette-container {
   width: 20px;
   left: 8px;
   top: 10px;
   text-align: center; }
-  .customize-control-color-alpha .iris-palette-container a {
+  .customize-control-color .iris-palette-container a {
     display: inline-block;
     margin-left: 0 !important;
     margin-bottom: 3px;
