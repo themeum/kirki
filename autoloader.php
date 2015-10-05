@@ -20,6 +20,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 
 			$paths[] = $path . $filename;
+			$paths[] = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . $filename;
 
 			foreach ( $replacements as $replacement ) {
 				if ( 0 === stripos( $class_name, 'Kirki_' . $replacement ) ) {

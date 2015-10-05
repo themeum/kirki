@@ -40,13 +40,13 @@ class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 		foreach ( $args['fields'] as $key => $value ) {
 			if ( ! isset( $value['default'] ) ) {
-				$args['fields'][$key]['default'] = '';
+				$args['fields'][ $key ]['default'] = '';
 			}
 
 			if ( ! isset( $value['label'] ) ) {
-				$args['fields'][$key]['label'] = '';
+				$args['fields'][ $key ]['label'] = '';
 			}
-			$args['fields'][$key]['id'] = $key;
+			$args['fields'][ $key ]['id'] = $key;
 		}
 
 		$this->fields = $args['fields'];
