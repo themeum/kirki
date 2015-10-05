@@ -25,6 +25,9 @@ if ( class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 class Kirki_Styles_Customizer {
 
+	public $color_back;
+	public $color_font;
+	public $color_accent;
 	public $border_color;
 	public $buttons_color;
 	public $controls_color;
@@ -103,26 +106,27 @@ class Kirki_Styles_Customizer {
 	public function get_colors() {
 
 		$color  = $this->get_admin_colors();
+		$config = apply_filters( 'kirki/config', array() );
 		// Calculate the accent color
-		$color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
+		$this->color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
 		if ( isset( $config['color_accent'] ) ) {
-			$color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
+			$this->color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
 		}
 
 		// Calculate the background & font colors
-		$color_back = false;
-		$color_font = false;
+		$this->color_back = false;
+		$this->color_font = false;
 		if ( isset( $config['color_back'] ) ) {
-			$color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
-			$color_font = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
+			$this->color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
+			$this->color_font = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? '#f2f2f2' : '#222';
 		}
 
-		$this->border_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
-		$this->buttons_color            = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 80 ) : Kirki_Color::adjust_brightness( $color_back, -80 );
-		$this->controls_color           = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#ffffff;' : '#333333';
-		$this->arrows_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 120 ) : Kirki_Color::adjust_brightness( $color_back, -120 );
-		$this->color_accent_text        = ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ? Kirki_Color::adjust_brightness( $color_accent, 120 ) : Kirki_Color::adjust_brightness( $color_accent, -120 );
-		$this->section_background_color = Kirki_Color::mix_colors( $color_back, '#ffffff', 10 );
+		$this->border_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
+		$this->buttons_color            = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 80 ) : Kirki_Color::adjust_brightness( $this->color_back, -80 );
+		$this->controls_color           = ( ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ) ? '#ffffff;' : '#333333';
+		$this->arrows_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 120 ) : Kirki_Color::adjust_brightness( $this->color_back, -120 );
+		$this->color_accent_text        = ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ? Kirki_Color::adjust_brightness( $this->color_accent, 120 ) : Kirki_Color::adjust_brightness( $this->color_accent, -120 );
+		$this->section_background_color = Kirki_Color::mix_colors( $this->color_back, '#ffffff', 10 );
 
 	}
 
