@@ -19,7 +19,7 @@ if ( class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Dimension_Control extends WP_Customize_Control {
+class Kirki_Controls_Dimension_Control extends Kirki_Customize_Control {
 
 	public $type = 'dimension';
 

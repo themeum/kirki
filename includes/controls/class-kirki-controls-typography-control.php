@@ -19,7 +19,7 @@ if ( class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Typography_Control extends WP_Customize_Control {
+class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
 	public $type = 'typography';
 

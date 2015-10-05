@@ -19,7 +19,7 @@ if ( class_exists( 'Kirki_Controls_Palette_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Palette_Control extends WP_Customize_Control {
+class Kirki_Controls_Palette_Control extends Kirki_Customize_Control {
 
 	public $type = 'palette';
 

@@ -22,7 +22,7 @@ if ( class_exists( 'Kirki_Controls_Textarea_Control' ) ) {
 /**
  * Create a simple textarea control
  */
-class Kirki_Controls_Textarea_Control extends WP_Customize_Control {
+class Kirki_Controls_Textarea_Control extends Kirki_Customize_Control {
 
 	public $type = 'kirki-textarea';
 
