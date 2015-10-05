@@ -22,11 +22,9 @@ if ( class_exists( 'Kirki_Controls_Code_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Code_Control extends WP_Customize_Control {
+class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 
 	public $type = 'code';
-
-	public $help = '';
 
 	public function to_json() {
 		parent::to_json();
@@ -39,19 +37,12 @@ class Kirki_Controls_Code_Control extends WP_Customize_Control {
 		if ( ! isset( $this->choices['height'] ) ) {
 			$this->choices['height'] = 200;
 		}
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['help']    = $this->help;
-		$this->json['id']      = $this->id;
 	}
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'ace', 'vendor/ace/src-min-noconflict/ace', array( 'jquery' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'ace' ) );
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>

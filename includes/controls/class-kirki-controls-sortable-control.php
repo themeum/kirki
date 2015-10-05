@@ -19,11 +19,9 @@ if ( class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Sortable_Control extends WP_Customize_Control {
+class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 	public $type = 'sortable';
-
-	public $help = '';
 
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );

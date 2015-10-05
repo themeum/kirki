@@ -21,15 +21,9 @@ if ( class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Editor_Control extends WP_Customize_Control {
+class Kirki_Controls_Editor_Control extends Kirki_Customize_Control {
 
 	public $type = 'editor';
-
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-editor', 'controls/editor', array( 'jquery' ) );
-	}
 
 	public function render_content() { ?>
 		<?php if ( '' != $this->help ) : ?>

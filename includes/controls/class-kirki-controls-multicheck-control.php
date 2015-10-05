@@ -22,26 +22,9 @@ if ( class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_MultiCheck_Control extends WP_Customize_Control {
+class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
 
 	public $type = 'multicheck';
-
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-multicheck', 'controls/multicheck', array( 'jquery' ) );
-	}
-
-	public function to_json() {
-		parent::to_json();
-		$this->json['value']        = $this->value();
-		$this->json['choices']      = $this->choices;
-		$this->json['link']         = $this->get_link();
-		$this->json['id']           = $this->id;
-		$this->json['help']         = $this->help;
-	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 
