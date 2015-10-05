@@ -27,7 +27,7 @@ class Kirki_Styles_Frontend {
 	public function __construct() {
 
 		$config   = apply_filters( 'kirki/config', array() );
-		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 150;
+		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 999;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
@@ -48,7 +48,8 @@ class Kirki_Styles_Frontend {
 		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
 			return;
 		}
-		wp_add_inline_style( 'kirki-styles', $this->loop_controls() );
+		$stylesheet_id = ( isset( $config['stylesheet_id'] ) ) ? $config['stylesheet_id'] : 'kirki-styles';
+		wp_add_inline_style( $stylesheet_id, $this->loop_controls() );
 
 	}
 
@@ -64,6 +65,13 @@ class Kirki_Styles_Frontend {
 		 * then do not proceed any further.
 		 */
 		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
+			return;
+		}
+		/**
+		 * If we're using a different stylesheet_id
+		 * then do not enqueue our own stylesheet.
+		 */
+		if ( isset( $config['stylesheet_id'] ) ) {
 			return;
 		}
 		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
