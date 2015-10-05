@@ -22,11 +22,9 @@ class Kirki_Control extends Kirki_Customizer {
 	 */
 	public function control_class_name( $args ) {
 
-		parent::__construct( $args );
-
 		$class_name = 'WP_Customize_Control';
 		if ( array_key_exists( $args['type'], Kirki_Init::$control_types ) ) {
-			$class_name = Kirki_Init::$control_types[$args['type']];
+			$class_name = Kirki_Init::$control_types[ $args['type'] ];
 		}
 
 		return $class_name;

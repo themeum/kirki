@@ -13,11 +13,11 @@ class Kirki_Active_Callback extends Kirki_Customizer {
 		// Get all fields
 		$fields = Kirki::$fields;
 
-		if ( ! isset( $fields[$object->id] ) ) {
+		if ( ! isset( $fields[ $object->id ] ) ) {
 			return true;
 		}
 
-		$current_object = $fields[$object->id];
+		$current_object = $fields[ $object->id ];
 
 		if ( isset( $current_object['required'] ) ) {
 
@@ -28,7 +28,7 @@ class Kirki_Active_Callback extends Kirki_Customizer {
 				 * This ensures that even if we enter the wrong settings,
 				 * the field will not mysteriously disappear.
 				 */
-				if ( ! is_object( $object->manager->get_setting( $fields[$requirement['setting']]['settings'] ) ) ) {
+				if ( ! is_object( $object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] ) ) ) {
 					$show = true;
 				}
 
@@ -49,7 +49,7 @@ class Kirki_Active_Callback extends Kirki_Customizer {
 				 */
 				$show = self::compare(
 					$requirement['value'],
-					$object->manager->get_setting( $fields[$requirement['setting']]['settings'] )->value(),
+					$object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] )->value(),
 					$requirement['operator']
 				);
 

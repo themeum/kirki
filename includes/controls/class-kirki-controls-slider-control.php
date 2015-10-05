@@ -21,30 +21,16 @@ if ( class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Slider_Control extends WP_Customize_Control {
+class Kirki_Controls_Slider_Control extends Kirki_Customize_Control {
 
 	public $type = 'slider';
 
-	public $help = '';
-
-	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-slider', 'controls/slider', array( 'jquery' ) );
-	}
-
 	public function to_json() {
 		parent::to_json();
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['default'] = $this->setting->default;
-		$this->json['help']    = $this->help;
-
 		$this->json['choices']['min']  = ( isset( $this->choices['min'] ) ) ? $this->choices['min'] : '0';
 		$this->json['choices']['max']  = ( isset( $this->choices['max'] ) ) ? $this->choices['max'] : '100';
 		$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>

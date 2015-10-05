@@ -84,23 +84,9 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 				}
 
 				/**
-				 * Get the value of this field
-				 */
-		 		$value = $field['default'];
-		 		if ( isset( $field['option_type'] ) && 'theme_mod' == $field['option_type'] ) {
-		 			$value = get_theme_mod( $field['settings'], $field['default'] );
-		 		} else if ( isset( $field['option_type'] ) && 'option' == $field['option_type'] ) {
-		 			if ( isset( $field['option_name'] ) && '' != $field['option_name'] ) {
-		 				$all_values = get_option( $field['option_name'], array() );
-		 				$sub_setting_id = str_replace( array( ']', $field['option_name'] . '[' ), '', $field['settings'] );
-		 				if ( isset( $all_values[$sub_setting_id] ) ) {
-		 					$value = $all_values[$sub_setting_id];
-		 				}
-		 			} else {
-		 				$value = get_option( $field['settings'], $field['default'] );
-		 			}
-		 		}
-
+		 		 * Get the value of this field
+		 		 */
+		 		$value = Kirki_Values::get_sanitized_field_value( $field );
 				/**
 				 * Typography fields arew a bit more complex than usual fields.
 				 * We need to get the sub-items of the array
@@ -188,14 +174,20 @@ class Kirki_Scripts_Frontend_Google_Fonts {
 		 * Make sure there are no empty values and define some sane defaults.
 		 */
 		$font_families = ( ! isset( $font_families ) || empty( $font_families ) ) ? false : $font_families;
-		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? '400' : $font_weights;
-		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? 'all' : $font_subsets;
+		$font_weights  = ( ! isset( $font_weights ) || empty( $font_weights ) ) ? array( '400' ) : $font_weights;
+		$font_subsets  = ( ! isset( $font_subsets ) || empty( $font_subsets ) ) ? array( 'all' ) : $font_subsets;
 		/**
 		 * Get rid of duplicate values
 		 */
-		$font_families = array_unique( $font_families );
-		$font_weights  = array_unique( $font_weights );
-		$font_subsets  = array_unique( $font_subsets );
+		if ( is_array( $font_families ) && ! empty( $font_families ) ) {
+			$font_families = array_unique( $font_families );
+		}
+		if ( is_array( $font_weights ) && ! empty( $font_weights ) ) {
+			$font_weights  = array_unique( $font_weights );
+		}
+		if ( is_array( $font_subsets ) && ! empty( $font_subsets ) ) {
+			$font_subsets  = array_unique( $font_subsets );
+		}
 
 		if ( ! isset( $has_google_font ) || ! $has_google_font ) {
 			$font_families = false;

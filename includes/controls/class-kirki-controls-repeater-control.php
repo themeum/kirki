@@ -19,15 +19,13 @@ if ( class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
+class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 	public $type = 'repeater';
 
 	public $fields = array();
 
 	public $button_label = '';
-
-	public $help = '';
 
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -42,13 +40,13 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 		foreach ( $args['fields'] as $key => $value ) {
 			if ( ! isset( $value['default'] ) ) {
-				$args['fields'][$key]['default'] = '';
+				$args['fields'][ $key ]['default'] = '';
 			}
 
 			if ( ! isset( $value['label'] ) ) {
-				$args['fields'][$key]['label'] = '';
+				$args['fields'][ $key ]['label'] = '';
 			}
-			$args['fields'][$key]['id'] = $key;
+			$args['fields'][ $key ]['id'] = $key;
 		}
 
 		$this->fields = $args['fields'];
@@ -56,12 +54,8 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 	public function to_json() {
 		parent::to_json();
-
 		$this->json['fields'] = $this->fields;
-		$this->json['value']  = $this->value();
 	}
-
-
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-repeater', 'controls/repeater', array( 'jquery', 'customize-base' ), true );
@@ -69,7 +63,6 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
-
 
 	public function render_content() { ?>
 		<?php if ( '' != $this->help ) : ?>

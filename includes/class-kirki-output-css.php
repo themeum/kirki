@@ -64,21 +64,7 @@ class Kirki_Output_CSS {
 		/**
 		 * Get the value of this field
 		 */
-		self::$value = $field_sanitized['default'];
-		if ( isset( $field_sanitized['option_type'] ) && 'theme_mod' == $field_sanitized['option_type'] ) {
-			self::$value = get_theme_mod( $field_sanitized['settings'], $field_sanitized['default'] );
-		} else if ( isset( $field_sanitized['option_type'] ) && 'option' == $field_sanitized['option_type'] ) {
-			if ( isset( $field_sanitized['option_name'] ) && '' != $field_sanitized['option_name'] ) {
-				$all_values = get_option( $field_sanitized['option_name'], array() );
-				$sub_setting_id = str_replace( array( ']', $field_sanitized['option_name'] . '[' ), '', $field_sanitized['settings'] );
-				if ( isset( $all_values[$sub_setting_id] ) ) {
-					self::$value = $all_values[$sub_setting_id];
-				}
-			} else {
-				self::$value = get_option( $field_sanitized['settings'], $field_sanitized['default'] );
-			}
-		}
-
+		self::$value = Kirki_Values::get_sanitized_field_value( $field_sanitized );
 		/**
 		 * Returns the styles
 		 */
