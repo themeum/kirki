@@ -19,15 +19,13 @@ if ( class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
+class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 	public $type = 'repeater';
 
 	public $fields = array();
 
 	public $button_label = '';
-
-	public $help = '';
 
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -42,13 +40,13 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 		foreach ( $args['fields'] as $key => $value ) {
 			if ( ! isset( $value['default'] ) ) {
-				$args['fields'][$key]['default'] = '';
+				$args['fields'][ $key ]['default'] = '';
 			}
 
 			if ( ! isset( $value['label'] ) ) {
-				$args['fields'][$key]['label'] = '';
+				$args['fields'][ $key ]['label'] = '';
 			}
-			$args['fields'][$key]['id'] = $key;
+			$args['fields'][ $key ]['id'] = $key;
 		}
 
 		$this->fields = $args['fields'];
@@ -57,8 +55,7 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
-		$fields = $this->fields;
-		$value = $this->value();
+		$fields     = $this->fields;
 		$can_upload = current_user_can( 'upload_files' );
 
 		$default_image_button_labels = array(
@@ -88,14 +85,16 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 
 			if ( $field['default'] ) {
 				$default_attachment = array(
-					'id' => 1,
-					'url' => $field['default'],
-					'type' => 'image',
-					'icon' => wp_mime_type_icon( 'image' ),
+					'id'    => 1,
+					'url'   => $field['default'],
+					'type'  => 'image',
+					'icon'  => wp_mime_type_icon( 'image' ),
 					'title' => basename( $field['default'] ),
 					'sizes' => array(
-						'full' => array( 'url' => $field['default'] )
-					)
+						'full' => array(
+							'url' => $field['default']
+						),
+					),
 				);
 
 				// Set the default as the attachment.
@@ -109,14 +108,11 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 			$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
 			$fields[ $key ]['canUpload'] = $can_upload;
 
-
 		}
 
 		$this->json['fields'] = $fields;
 		$this->json['value']  = $value;
 	}
-
-
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-repeater', 'controls/repeater', array( 'jquery', 'customize-base' ), true );
@@ -124,7 +120,6 @@ class Kirki_Controls_Repeater_Control extends WP_Customize_Control {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
-
 
 	public function render_content() { ?>
 		<?php if ( '' != $this->help ) : ?>

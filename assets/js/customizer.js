@@ -741,6 +741,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         // This is the first time that we create all the rows
         if (settingValue.length) {
             for (var i = 0; i < settingValue.length; i++) {
+                console.log(settingValue[i]);
                 control.addRow(settingValue[i]);
             }
         }

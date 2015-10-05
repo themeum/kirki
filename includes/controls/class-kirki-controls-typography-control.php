@@ -19,11 +19,9 @@ if ( class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 	return;
 }
 
-class Kirki_Controls_Typography_Control extends WP_Customize_Control {
+class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
 	public $type = 'typography';
-
-	public $help = '';
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
@@ -34,9 +32,6 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 		parent::to_json();
 
 		$i18n = Kirki_Toolkit::i18n();
-		$this->json['id']      = $this->id;
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
 		$this->json['fonts']   = $this->get_all_fonts();
 		$value = $this->value();
 		$this->json['value'] = array(
@@ -57,7 +52,6 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 			'line-height'    => $i18n['line-height'],
 			'letter-spacing' => $i18n['letter-spacing'],
 		);
-		$this->json['help'] = $this->help;
 	}
 
 	public function render_content() {}
@@ -111,7 +105,7 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 					<h5>{{ data.l10n['font-family'] }}</h5>
 					<select class="font-family select2">
 						<# for ( key in data.fonts ) { #>
-							<option value="{{ data.fonts[ key ] }}" <# if ( data.fonts[ key ] === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
+							<option value="{{ key }}" <# if ( key === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
 						<# } #>
 					</select>
 				</div>
@@ -181,8 +175,20 @@ class Kirki_Controls_Typography_Control extends WP_Customize_Control {
 	public function get_all_fonts() {
 		$fonts = Kirki()->font_registry->get_all_fonts();
 		$fonts_array = array();
-		foreach ( $fonts as $font => $properties ) {
-			$fonts_array[$font] = $font;
+		foreach ( $fonts as $key => $font ) {
+			if ( is_array( $font ) ) {
+				if ( isset( $font['label'] ) ) {
+					if ( isset( $font['stack'] ) ) {
+						$fonts_array[ $font['stack'] ] = $font['label'];
+					} else {
+						$fonts_array[ $key ] = $font['label'];
+					}
+				} else {
+					$fonts_array[ $key ] = $key;
+				}
+			} else {
+				$fonts_array[ $key ] = $font;
+			}
 		}
 		return $fonts_array;
 	}

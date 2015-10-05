@@ -22,27 +22,15 @@ if ( class_exists( 'Kirki_Controls_Number_Control' ) ) {
 /**
  * Create a simple number control
  */
-class Kirki_Controls_Number_Control extends WP_Customize_Control {
+class Kirki_Controls_Number_Control extends Kirki_Customize_Control {
 
 	public $type = 'number';
-
-	public $help = '';
-
-	public function to_json() {
-		parent::to_json();
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['help']    = $this->help;
-	}
 
 	public function enqueue() {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'formstone', 'vendor/formstone-core', array( 'jquery' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'formstone-number', 'vendor/formstone-number', array( 'jquery', 'formstone' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-number', 'controls/number', array( 'jquery', 'formstone', 'formstone-number' ) );
 	}
-
-	public function render_content() {}
 
 	protected function content_template() { ?>
 		<# if ( data.help ) { #>

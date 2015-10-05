@@ -47,9 +47,9 @@ class Kirki_Color {
 
 		$substr = array();
 		for ( $i = 0; $i <= 5; $i++ ) {
-			$default = ( 0 == $i ) ? 'F' : ( $substr[$i - 1] );
-			$substr[$i] = substr( $color, $i, 1 );
-			$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
+			$default = ( 0 == $i ) ? 'F' : ( $substr[ $i - 1 ] );
+			$substr[ $i ] = substr( $color, $i, 1 );
+			$substr[ $i ] = ( false === $substr[ $i ] || ! ctype_xdigit( $substr[ $i ] ) ) ? $default : $substr[ $i ];
 		}
 		$hex = implode( '', $substr );
 

@@ -86,7 +86,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 			 * Build the field.
 			 * We're merging with the original field here, so any extra properties are inherited.
 			 */
-			$fields[$property_setting] = array_merge( $field, array(
+			$fields[ $property_setting ] = array_merge( $field, array(
 				'type'        => $type,
 				'label'       => $label,
 				'settings'    => $property_setting,
@@ -97,7 +97,7 @@ class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
 				'description' => $description,
 				'default'     => $value,
 				'id'          => Kirki_Field_Sanitize::sanitize_id( array( 'settings' => Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => $field['settings'] . '_' . $setting ) ) ) ),
-				'choices'     => isset( $choices[$key] ) ? $choices[$key] : array(),
+				'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
 				'output'      => ( '' != $field['output'] ) ? array(
 					array(
 						'element'  => $field['output'],
