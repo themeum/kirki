@@ -875,7 +875,7 @@ input[type="text"] {
   .customize-control-spacing .bottom .selectize-control,
   .customize-control-spacing .left .selectize-control,
   .customize-control-spacing .right .selectize-control {
-    width: 35px;
+    width: 60px;
     display: inline-block; }
   .customize-control-spacing .top .selectize-control.single .selectize-input:after,
   .customize-control-spacing .bottom .selectize-control.single .selectize-input:after,
