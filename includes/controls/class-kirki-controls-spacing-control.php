@@ -27,16 +27,16 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 		parent::to_json();
 		$this->json['choices'] = array();
 		if ( is_array( $this->choices ) ) {
-			if ( in_array( 'top', $this->choices ) && true == $this->choices['top'] ) {
+			if ( isset( $this->choices['top'] ) && true == $this->choices['top'] ) {
 				$this->json['choices']['top'] = true;
 			}
-			if ( in_array( 'bottom', $this->choices ) && true == $this->choices['bottom'] ) {
+			if ( isset( $this->choices['bottom'] ) && true == $this->choices['bottom'] ) {
 				$this->json['choices']['bottom'] = true;
 			}
-			if ( in_array( 'left', $this->choices ) && true == $this->choices['left'] ) {
+			if ( isset( $this->choices['left'] ) && true == $this->choices['left'] ) {
 				$this->json['choices']['left'] = true;
 			}
-			if ( in_array( 'right', $this->choices ) && true == $this->choices['right'] ) {
+			if ( isset( $this->choices['right'] ) && true == $this->choices['right'] ) {
 				$this->json['choices']['right'] = true;
 			}
 		}
@@ -75,7 +75,6 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<# console.log( data.choices ); #>
 			<div class="wrapper">
 				<div class="control">
 					<# if ( data.choices['top'] ) { #>
