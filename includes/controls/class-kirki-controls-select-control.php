@@ -49,7 +49,7 @@ class Kirki_Controls_Select_Control extends Kirki_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<select {{{ data.link }}} data-multiple="{{ data.multiple }}"<# if ( 1 < data.multiple ) { #> multiple<# } #>>
-				<# if ( 1 < data.multiple ) { #>
+				<# if ( 1 < data.multiple && data.value ) { #>
 					<# for ( key in data.value ) { #>
 						<option value="{{ data.value[ key ] }}" selected>{{ data.choices[ data.value[ key ] ] }}</option>
 					<# } #>
