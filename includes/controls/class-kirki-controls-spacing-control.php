@@ -25,13 +25,21 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = ( is_array( $this->choices ) ) ? array(
-			'top'    => ( in_array( 'top', $this->choices ) ) ? true : false,
-			'bottom' => ( in_array( 'bottom', $this->choices ) ) ? true : false,
-			'left'   => ( in_array( 'left', $this->choices ) ) ? true : false,
-			'right'  => ( in_array( 'right', $this->choices ) ) ? true : false,
-			'units'  => ( isset( $this->choices['units'] ) ) ? $this->choices['units'] : false,
-		) : array();
+		$this->json['choices'] = array();
+		if ( is_array( $this->choices ) ) {
+			if ( in_array( 'top', $this->choices ) && true == $this->choices['top'] ) {
+				$this->json['choices']['top'] = true;
+			}
+			if ( in_array( 'bottom', $this->choices ) && true == $this->choices['bottom'] ) {
+				$this->json['choices']['bottom'] = true;
+			}
+			if ( in_array( 'left', $this->choices ) && true == $this->choices['left'] ) {
+				$this->json['choices']['left'] = true;
+			}
+			if ( in_array( 'right', $this->choices ) && true == $this->choices['right'] ) {
+				$this->json['choices']['right'] = true;
+			}
+		}
 
 		$i18n = Kirki_Toolkit::i18n();
 		$this->json['l10n'] = array(
@@ -40,6 +48,19 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 			'left'   => $i18n['left'],
 			'right'  => $i18n['right'],
 		);
+
+		if ( isset( $this->json['choices']['top'] ) && ! isset( $this->json['value']['top'] ) ) {
+			$this->json['value']['top'] = $this->json['default']['top'];
+		}
+		if ( isset( $this->json['choices']['bottom'] ) && ! isset( $this->json['value']['bottom'] ) ) {
+			$this->json['value']['bottom'] = $this->json['default']['bottom'];
+		}
+		if ( isset( $this->json['choices']['left'] ) && ! isset( $this->json['value']['left'] ) ) {
+			$this->json['value']['left'] = $this->json['default']['left'];
+		}
+		if ( isset( $this->json['choices']['right'] ) && ! isset( $this->json['value']['top'] ) ) {
+			$this->json['value']['right'] = $this->json['default']['right'];
+		}
 
 	}
 
@@ -54,6 +75,7 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
+			<# console.log( data.choices ); #>
 			<div class="wrapper">
 				<div class="control">
 					<# if ( data.choices['top'] ) { #>
@@ -68,7 +90,11 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['top'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<# var units = data.value['top'].replace( parseFloat( data.value['top'] ), '' ); #>
+									<# if ( data.value && data.value['top'] ) { #>
+										<# var units = data.value['top'].replace( parseFloat( data.value['top'] ), '' ); #>
+									<# } else { #>
+										<# var units = 'px'; #>
+									<# } #>
 									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
 									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
 									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
@@ -90,7 +116,11 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['bottom'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<# var units = data.value['bottom'].replace( parseFloat( data.value['bottom'] ), '' ); #>
+									<# if ( data.value && data.value['bottom'] ) { #>
+										<# var units = data.value['bottom'].replace( parseFloat( data.value['bottom'] ), '' ); #>
+									<# } else { #>
+										<# var units = 'px'; #>
+									<# } #>
 									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
 									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
 									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
@@ -112,7 +142,11 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['left'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<# var units = data.value['left'].replace( parseFloat( data.value['left'] ), '' ); #>
+									<# if ( data.value && data.value['left'] ) { #>
+										<# var units = data.value['left'].replace( parseFloat( data.value['left'] ), '' ); #>
+									<# } else { #>
+										<# var units = 'px'; #>
+									<# } #>
 									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
 									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
 									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
@@ -134,7 +168,11 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 										<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['right'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 									<# } #>
 								<# } else { #>
-									<# var units = data.value['right'].replace( parseFloat( data.value['right'] ), '' ); #>
+									<# if ( data.value && data.value['right'] ) { #>
+										<# var units = data.value['right'].replace( parseFloat( data.value['right'] ), '' ); #>
+									<# } else { #>
+										<# var units = 'px'; #>
+									<# } #>
 									<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
 									<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
 									<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>

@@ -227,12 +227,12 @@ class Kirki_Output_CSS {
 				 */
 				if ( 'spacing' == self::$field_type && isset( $output['property'] ) ) {
 					foreach ( $value as $key => $sub_value ) {
-						if ( 'margin' == $output['property'] || 'padding' == $output['property'] ) {
-							$output['property'] = $output['property'] . '-' . $key;
-						} else if ( false !== strpos( $output['property'], '%%' ) ) {
-							$output['property'] = str_replace( '%%', $key, $output['property'] );
+						if ( false !== strpos( $output['property'], '%%' ) ) {
+							$property = str_replace( '%%', $key, $output['property'] );
+						} else {
+							$property = $output['property'] . '-' . $key;
 						}
-						$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $sub_value;
+						$styles[ $output['media_query'] ][ $element ][ $property ] = $sub_value;
 					}
 				}
 			}
