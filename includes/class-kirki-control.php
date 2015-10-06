@@ -20,7 +20,7 @@ class Kirki_Control extends Kirki_Customizer {
 	 * @param  $args array
 	 * @return  string
 	 */
-	public function control_class_name( $args ) {
+	public static function control_class_name( $args ) {
 
 		$class_name = 'WP_Customize_Control';
 		if ( array_key_exists( $args['type'], Kirki_Init::$control_types ) ) {
@@ -39,7 +39,7 @@ class Kirki_Control extends Kirki_Customizer {
 	 */
 	public function add_control( $args ) {
 
-		$control_class_name = $this->control_class_name( $args );
+		$control_class_name = self::control_class_name( $args );
 
 		$this->wp_customize->add_control( new $control_class_name(
 			$this->wp_customize,

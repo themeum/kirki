@@ -25,9 +25,21 @@ if ( class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 class Kirki_Styles_Customizer {
 
+	public $color_back;
+	public $color_font;
+	public $color_accent;
+	public $border_color;
+	public $buttons_color;
+	public $controls_color;
+	public $arrows_color;
+	public $color_accent_text;
+	public $section_background_color;
+
 	public function __construct() {
+
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ), 99 );
+
 	}
 
 	/**
@@ -91,46 +103,73 @@ class Kirki_Styles_Customizer {
 		}
 	}
 
+	public function get_colors() {
+
+		$color  = $this->get_admin_colors();
+		$config = apply_filters( 'kirki/config', array() );
+		// Calculate the accent color
+		$this->color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
+		if ( isset( $config['color_accent'] ) ) {
+			$this->color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
+		}
+
+		// Calculate the background & font colors
+		$this->color_back = false;
+		$this->color_font = false;
+		if ( isset( $config['color_back'] ) ) {
+			$this->color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
+			$this->color_font = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? '#f2f2f2' : '#222';
+		}
+
+		$this->border_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
+		$this->buttons_color            = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 80 ) : Kirki_Color::adjust_brightness( $this->color_back, -80 );
+		$this->controls_color           = ( ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ) ? '#ffffff;' : '#333333';
+		$this->arrows_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 120 ) : Kirki_Color::adjust_brightness( $this->color_back, -120 );
+		$this->color_accent_text        = ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ? Kirki_Color::adjust_brightness( $this->color_accent, 120 ) : Kirki_Color::adjust_brightness( $this->color_accent, -120 );
+		$this->section_background_color = Kirki_Color::mix_colors( $this->color_back, '#ffffff', 10 );
+
+	}
+
 
 	/**
 	 * Add custom CSS rules to the head, applying our custom styles
 	 */
 	public function custom_css() {
 
-		$color  = $this->get_admin_colors();
-		$config = apply_filters( 'kirki/config', array() );
+		$this->get_colors();
+		$styles = $this->include_stylesheets();
+		$styles = $this->replace_placeholders( $styles );
 
-		// Calculate the accent color
-		$color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
-		if ( isset( $config['color_accent'] ) ) {
-			$color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
-		}
+		return $styles;
 
-		// Calculate the background & font colors
-		$color_back = false;
-		$color_font = false;
-		if ( isset( $config['color_back'] ) ) {
-			$color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
-			$color_font = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? '#f2f2f2' : '#222';
-		}
+	}
 
-		$border_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
-		$buttons_color            = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 80 ) : Kirki_Color::adjust_brightness( $color_back, -80 );
-		$controls_color           = ( ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ) ? '#ffffff;' : '#333333';
-		$arrows_color             = ( 170 > Kirki_Color::get_brightness( $color_back ) ) ? Kirki_Color::adjust_brightness( $color_back, 120 ) : Kirki_Color::adjust_brightness( $color_back, -120 );
-		$color_accent_text        = ( 170 > Kirki_Color::get_brightness( $color_accent ) ) ? Kirki_Color::adjust_brightness( $color_accent, 120 ) : Kirki_Color::adjust_brightness( $color_accent, -120 );
-		$section_background_color = Kirki_Color::mix_colors( $color_back, '#ffffff', 10 );
-
+	public function replace_placeholders( $styles ) {
 		/**
-		 * Initialize the WP_Filesystem
+		 * replace CSS placeholders with actual values
 		 */
-		global $wp_filesystem;
-		if ( empty( $wp_filesystem ) ) {
-			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
-			WP_Filesystem();
-		}
+		$styles = str_replace( 'COLOR_BACK', $this->color_back, $styles );
+		$styles = str_replace( 'COLOR_ACCENT_TEXT', $this->color_accent_text, $styles );
+		$styles = str_replace( 'COLOR_ACCENT', $this->color_accent, $styles );
+		$styles = str_replace( 'BORDER_COLOR', $this->border_color, $styles );
+		$styles = str_replace( 'BUTTONS_COLOR', $this->buttons_color, $styles );
+		$styles = str_replace( 'COLOR_FONT', $this->color_font, $styles );
+		$styles = str_replace( 'CONTROLS_COLOR', $this->controls_color, $styles );
+		$styles = str_replace( 'ARROWS_COLOR', $this->arrows_color, $styles );
+		$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $this->section_background_color, $styles );
 
+		return $styles;
+
+	}
+
+	public function include_stylesheets() {
+
+		$config = apply_filters( 'kirki/config', array() );
 		$styles = '';
+
+		Kirki_Helper::init_filesystem();
+		global $wp_filesystem;
+
 		/**
 		 * Include the width CSS if necessary
 		 */
@@ -145,7 +184,7 @@ class Kirki_Styles_Customizer {
 		/**
 		 * Include the color modifications CSS if necessary
 		 */
-		if ( false !== $color_back && false !== $color_font ) {
+		if ( false !== $this->color_back && false !== $this->color_font ) {
 			$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css-colors.css' );
 		}
 
@@ -153,19 +192,6 @@ class Kirki_Styles_Customizer {
 		 * Include generic CSS for controls
 		 */
 		$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css.css' );
-
-		/**
-		 * replace CSS placeholders with actual values
-		 */
-		$styles = str_replace( 'COLOR_BACK', $color_back, $styles );
-		$styles = str_replace( 'COLOR_ACCENT_TEXT', $color_accent_text, $styles );
-		$styles = str_replace( 'COLOR_ACCENT', $color_accent, $styles );
-		$styles = str_replace( 'BORDER_COLOR', $border_color, $styles );
-		$styles = str_replace( 'BUTTONS_COLOR', $buttons_color, $styles );
-		$styles = str_replace( 'COLOR_FONT', $color_font, $styles );
-		$styles = str_replace( 'CONTROLS_COLOR', $controls_color, $styles );
-		$styles = str_replace( 'ARROWS_COLOR', $arrows_color, $styles );
-		$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $section_background_color, $styles );
 
 		return $styles;
 
