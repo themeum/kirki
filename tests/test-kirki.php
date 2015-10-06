@@ -316,5 +316,4 @@ class Test_Kirki extends WP_UnitTestCase {
 			Kirki::get_option( 'my_config_options_serialized', 'my_option[my_settings_test_background_options_serialized]' )
 		);
 	}
-
 }

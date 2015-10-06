@@ -1,0 +1,16 @@
+/////////////////////
+// dimension controls
+/////////////////////
+.customize-control-dimension {
+	input[type="number"] {
+		width: 68%;
+		display: inline-block;
+		height: 35px;
+		position: relative;
+		top: -12px;
+	}
+	.selectize-control {
+		width: 30%;
+		display: inline-block;
+	}
+}

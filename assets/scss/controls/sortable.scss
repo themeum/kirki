@@ -1,0 +1,27 @@
+/////////////////////
+// sortable controls
+/////////////////////
+.customize-control-sortable {
+    ul.ui-sortable {
+        li {
+            padding: 5px 10px;
+            border: 1px solid #333;
+            background: #fff;
+            .dashicons {
+                &.dashicons-menu {
+                    float: right;
+                }
+                &.visibility {
+                    margin-right: 10px;
+                }
+            }
+            &.invisible {
+                color: #aaa;
+                border: 1px dashed #aaa;
+                .dashicons.visibility {
+                    color: #aaa;
+                }
+            }
+        }
+    }
+}

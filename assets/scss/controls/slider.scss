@@ -1,0 +1,92 @@
+/////////////////////
+// slider controls
+/////////////////////
+.customize-control-slider {
+	input[type=range] {
+		-webkit-appearance: none;
+		-webkit-transition: background .3s;
+		-moz-transition: background .3s;
+		transition: background .3s;
+		background-color: rgba(0,0,0,.1);
+		height: 5px;
+		width: calc(100% - 70px);
+		padding: 0;
+		&:focus {
+			box-shadow: none;
+			outline: none;
+		}
+		&:hover {
+			background-color: rgba(0,0,0,.25);
+		}
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			-webkit-border-radius: 50%;
+			background-color: #3498D9;
+		}
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 15px;
+			height: 15px;
+			border: none;
+			border-radius: 50%;
+			background-color: #3498D9;
+		}
+		&::-moz-range-thumb {
+			width: 15px;
+			height: 15px;
+			border: none;
+			border-radius: 50%;
+			background-color: #3498D9;
+		}
+		&::-ms-thumb {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			border: 0;
+			background-color: #3498D9;
+		}
+		&::-moz-range-track {
+			border: inherit;
+			background: transparent;
+		}
+		&::-ms-track {
+			border: inherit;
+			color: transparent;
+			background: transparent;
+		}
+		&::-ms-fill-lower,
+		&::-ms-fill-upper {
+			background: transparent;
+		}
+		&::-ms-tooltip {
+			display: none;
+		}
+	}
+	.kirki_range_value {
+		display: inline-block;
+		font-size: 14px;
+		padding: 0 5px;
+		font-weight: 400;
+		position: relative;
+		top: 2px;
+	}
+	.kirki-slider-reset {
+		color: rgba(0,0,0,.2);
+		float: right;
+		-webkit-transition: color .5s ease-in;
+		-moz-transition: color .5s ease-in;
+		-ms-transition: color .5s ease-in;
+		-o-transition: color .5s ease-in;
+		transition: color .5s ease-in;
+		span {
+			font-size: 16px;
+			line-height: 22px;
+		}
+		&:hover {
+			color: red;
+		}
+	}
+}

@@ -32,8 +32,12 @@
 }
 
 /** Slider Controls **/
-.customize-control-slider .ui-slider .ui-slider-handle {
-  background-color: COLOR_ACCENT;
+.customize-control-slider input[type=range]::-webkit-slider-thumb,
+.customize-control-slider input[type=range]::-webkit-slider-thumb,
+.customize-control-slider input[type=range]::-moz-range-thumb,
+.customize-control-slider input[type=range]::-ms-thumb,
+.customize-control-slider .kirki_range_value {
+  background-color: COLOR_ACCENT !important;
 }
 
 /** Switch Controls **/

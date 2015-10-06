@@ -89,7 +89,7 @@ class Kirki_Fonts_Font_Registry {
 			// Verify that the font exists
 			if ( $this->is_google_font( $font ) ) {
 				// Build the family name and variant string (e.g., "Open+Sans:regular,italic,700")
-				$family[] = $font.':'.join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ).',';
+				$family[] = $font . ':' . join( ',', $this->choose_google_font_variants( $font, $allowed_fonts[ $font ]['variants'] ) ) . ',';
 			}
 		}
 
@@ -97,7 +97,7 @@ class Kirki_Fonts_Font_Registry {
 		if ( empty( $family ) ) {
 			return '';
 		} else {
-			$request = str_replace( ' ', '+', '//fonts.googleapis.com/css?family='.implode( '%7C', $family ) );
+			$request = str_replace( ' ', '+', '//fonts.googleapis.com/css?family=' . implode( '%7C', $family ) );
 		}
 
 		// load the font weight
@@ -118,9 +118,14 @@ class Kirki_Fonts_Font_Registry {
 			$subsets = (array) $subset;
 
 		}
-
-		// Append the subset string
-		$request .= ( ! empty( $subsets ) ) ? '&subset='.join( ',', $subsets ) : '';
+		/**
+		 * Sanitization: flatten the array.
+		 */
+		$subsets = Kirki_Helper::array_flatten( $subsets, 'value' );
+		/**
+		 * Append the subset string
+		 */
+		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
 
 		return $request;
 	}
@@ -144,6 +149,13 @@ class Kirki_Fonts_Font_Registry {
 			'latin'        => $i18n['latin'],
 			'latin-ext'    => $i18n['latin-ext'],
 			'vietnamese'   => $i18n['vietnamese'],
+			'hebrew'       => $i18n['hebrew'],
+			'arabic'       => $i18n['arabic'],
+			'bengali'      => $i18n['bengali'],
+			'gujarati'     => $i18n['gujarati'],
+			'tamil'        => $i18n['tamil'],
+			'telugu'       => $i18n['telugu'],
+			'thai'         => $i18n['thai'],
 		);
 
 	}
@@ -234,7 +246,7 @@ class Kirki_Fonts_Font_Registry {
 		if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
 			return $all_fonts[ $font ]['stack'];
 		}
-		return '"'.$font.'",'.$sans;
+		return '"' . $font . '",' . $sans;
 
 	}
 
@@ -267,13 +279,13 @@ class Kirki_Fonts_Font_Registry {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function
 		if ( empty( $wp_filesystem ) ) {
-			require_once ( ABSPATH.'/wp-admin/includes/file.php' );
+			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
 			WP_Filesystem();
 		}
 
 		if ( null == $this->google_fonts ) {
 
-			$json = $wp_filesystem->get_contents( KIRKI_PATH.'/assets/json/webfonts.json' );
+			$json = $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'webfonts.json' );
 			// Get the list of fonts from our json file and convert to an array
 			$fonts = json_decode( $json, true );
 

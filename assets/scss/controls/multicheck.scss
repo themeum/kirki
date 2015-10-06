@@ -1,0 +1,15 @@
+/////////////////////
+// multicheck controls
+/////////////////////
+.rtl {
+    .customize-control-multicheck {
+        input[type="checkbox"] {
+            margin:0 0 0 1rem;
+            &:checked {
+                &:before{
+                    left:2px
+                }
+            }
+        }
+    }
+}

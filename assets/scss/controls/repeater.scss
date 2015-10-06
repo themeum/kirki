@@ -1,0 +1,104 @@
+/////////////////////
+// repeater controls
+/////////////////////
+.customize-control-repeater {
+	.repeater-fields {
+		.repeater-row {
+			padding:.5rem;
+		    border:1px solid #999;
+		    margin-top:.5rem;
+		    background: #eee;
+		    position:relative;
+		    padding-top:48px;
+
+			label {
+				margin-bottom:12px;
+				clear:both;
+			}
+		}
+	}
+	button.repeater-add {
+	    margin-top:1rem;
+	}
+
+	.repeater-field {
+	    margin-bottom:12px;
+	    width:100%;
+	    clear: both;
+	    padding-bottom: 12px;
+	    border-bottom: 1px dotted #CCC;
+	}
+
+	.repeater-row .repeater-field:last-child {
+	    border-bottom:none;
+	    padding-bottom:0;
+	}
+
+	.repeater-field-select select {
+	    margin-left:0;
+	}
+	.repeater-field-checkbox {
+		label {
+			line-height: 28px;
+		}
+		input {
+		    line-height: 28px;
+		    margin-right: 5px;
+		}
+	}
+	.repeater-field-textarea textarea {
+	    width: 100%;
+	    resize: vertical;
+	}
+	.repeater-row-header {
+	    background: white;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    height: 36px;
+	    color: #555;
+	    border-bottom: 1px solid #999;
+	    line-height: 36px;
+	    font-size: 15px;
+	}
+
+	.repeater-row-number {
+	    border-right: 1px solid #ddd;
+	    display: inline-block;
+	    width: 35px;
+	    text-align: center;
+	}
+
+	.repeater-row-remove,
+	.repeater-row-move,
+	.repeater-row-minimize {
+	    display: inline-block;
+	    float: right;
+	    border-left: 1px solid #ddd;
+	    width: 35px;
+	    height:36px;
+	    text-align: center;
+
+		&:hover {
+		    background:#ddd;
+		    cursor: pointer;
+		}
+	}
+
+  	.repeater-row-move:hover {
+	  cursor:move;
+	}
+
+	.repeater-remove,
+	.repeater-move,
+	.repeater-minimize {
+	    line-height: 36px;
+	}
+
+	.repeater-row.minimized {
+	    padding: 0;
+	    height: 36px;
+	    overflow: hidden;
+	}
+}

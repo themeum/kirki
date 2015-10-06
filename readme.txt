@@ -1,5 +1,5 @@
 === Kirki ===
-Contributors: aristath, fovoc
+Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
@@ -19,6 +19,8 @@ It does not replace the WordPress Customizer API, you can still use the default 
 An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/advanced-topics/customizer-api/) website.
 
 What Kirki does is save you time... LOTS of time!
+
+[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![Coverage Status](https://coveralls.io/repos/aristath/kirki/badge.svg?branch=master)](https://coveralls.io/r/aristath/kirki?branch=master) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE)
 
 **Configurations**
 
@@ -69,9 +71,11 @@ Feel free to improve them! :)
 **Available Control types:**
 
 * checkbox
+* code
 * color-alpha
 * color
 * custom
+* dimension
 * dropdown-pages
 * editor
 * image
@@ -82,14 +86,14 @@ Feel free to improve them! :)
 * radio-image
 * radio
 * select
-* select2
-* select2-multiple
 * slider
 * sortable
+* spacing
 * switch
 * text
 * textarea
 * toggle
+* typography
 
 All development is done on github on https://github.com/aristath/kirki
 
@@ -113,6 +117,53 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea).
 
 == Changelog ==
+
+= 1.1.0 =
+
+WIP, dev time > 130 hours
+
+* NEW: Added support for `sanitize_callback` arguments on each item in the CSS `output`.
+* NEW: Added the ability to define an array as element in the `output`.
+* NEW: Auto-prefixing CSS output for cross-browser compatibilities.
+* NEW: Allow using arrays in settings.
+* NEW: Dimension Field.
+* NEW: Repeater Field.
+* NEW: Code Field using the ACE editor.
+* NEW: Typography Control.
+* NEW: Preset Field.
+* NEW: Demo theme.
+* NEW: Spacing Control.
+* FIX: Minor bugfixes to the Kirki_Color class.
+* FIX: kirki_get_option now uses Kirki::get_option().
+* FIX: Various bugfixes.
+* TWEAK: Converted the `checkbox` control to use the JS templating system.
+* TWEAK: Converted the `custom` control to use the JS templating system.
+* TWEAK: Converted the `multicheck` control to use the JS templating system.
+* TWEAK: Converted the `number` control to use the JS templating system.
+* TWEAK: Converted the `palette` control to use the JS templating system.
+* TWEAK: Converted the `radio-buttonset` control to use the JS templating system.
+* TWEAK: Converted the `radio-image` control to use the JS templating system.
+* TWEAK: Converted the `radio` control to use the JS templating system.
+* TWEAK: Converted the `select` control to use the JS templating system.
+* TWEAK: Converted the `slider` control to use the JS templating system.
+* TWEAK: Converted the `switch` control to use the JS templating system.
+* TWEAK: Converted the `textarea` control to use the JS templating system.
+* TWEAK: Converted the `toggle` control to use the JS templating system.
+* TWEAK: `radio-buttonset` controls are now CSS-only.
+* TWEAK: `radio-image` controls are now CSS-only.
+* TWEAK: `select` controls nopw use [selectize](http://brianreavis.github.io/selectize.js/) instead of [Select2](https://select2.github.io/).
+* TWEAK: Deprecated `select2` and `select2-multiple` controls. We now have a global `select` control. Previous implementations gracefully fallback to the current one.
+* TWEAK: `switch` controls are now CSS-only.
+* TWEAK: `toggle` controls are now CSS-only.
+* TWEAK: Sliders now use an HTML5 "range" input instead of jQuery-UI.
+* TWEAK: Better coding standards.
+* TWEAK: Descriptions styling.
+* TWEAK: Improved controls styling.
+* TWEAK: Compiled CSS & JS for improved performance.
+* TWEAK: Added prefix to the sanitized output array.
+* TWEAK: Updated google-fonts.
+* TWEAK: Grunt integration.
+* TWEAK: Started code refactoring.
 
 = 1.0.2 =
 

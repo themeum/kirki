@@ -1,0 +1,26 @@
+/////////////////////
+// radio-buttonset controls
+/////////////////////
+.customize-control-radio-buttonset {
+	.buttonset {
+		.switch-label {
+			background: rgba(0,0,0,.17);
+			color: #fff;
+			border-right: 1px solid rgba(0,0,0,.2);
+			padding: 4px 7px;
+			margin: 0;
+			font-size: 12px;
+			&:last-child {
+				border-right: none;
+			}
+		}
+		.switch-input {
+			display: none;
+			&:checked {
+				+ .switch-label {
+					background-color: #3498DB;
+				}
+			}
+		}
+	}
+}

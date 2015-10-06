@@ -22,44 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Set the KIRKI_PATH constant.
-if ( ! defined( 'KIRKI_PATH' ) ) {
-	define( 'KIRKI_PATH', dirname( __FILE__ ) );
-}
-// Set the KIRKI_URL constant.
-if ( ! defined( 'KIRKI_URL' ) ) {
-	define( 'KIRKI_URL', plugin_dir_url( __FILE__ ) );
-}
-
-if ( ! function_exists( 'kirki_autoload_classes' ) ) {
-	/**
-	 * The Kirki class autoloader.
-	 * Finds the path to a class that we're requiring and includes the file.
-	 */
-	function kirki_autoload_classes( $class_name ) {
-
-		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
-
-			$foldername = ( 0 === stripos( $class_name, 'Kirki_Controls_' ) ) ? 'controls'.DIRECTORY_SEPARATOR.strtolower( str_replace( '_', '-', str_replace( '_Control', '', str_replace( 'Kirki_Controls_', '', $class_name ) ) ) ) : '';
-			$foldername = ( '' != $foldername ) ? $foldername.DIRECTORY_SEPARATOR : '';
-
-			$class_path = KIRKI_PATH.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.$foldername.'class-'.strtolower( str_replace( '_', '-', $class_name ) ).'.php';
-			if ( file_exists( $class_path ) ) {
-				include $class_path;
-			}
-
-		}
-
-	}
-	// Run the autoloader
-	spl_autoload_register( 'kirki_autoload_classes' );
-}
-
-// Include helper files
-include_once( KIRKI_PATH.'/includes/functions.php' );
-include_once( KIRKI_PATH.'/includes/deprecated.php' );
-// Include the API class
-include_once( KIRKI_PATH.'/includes/class-kirki.php' );
+// Include the autoloader
+include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
@@ -77,6 +41,32 @@ if ( ! function_exists( 'Kirki' ) ) {
 			'front' => new Kirki_Styles_Frontend(),
 		);
 
+		/**
+		 * The path of the current Kirki instance
+		 */
+		Kirki::$path = dirname( __FILE__ );
+		/**
+		 * The URL of the current Kirki instance
+		 */
+		if ( false !== strpos( dirname( __FILE__ ), WP_PLUGIN_DIR ) ) {
+			/**
+			 * Kirki is activated as a plugin.
+			 */
+			Kirki::$url = plugin_dir_url( __FILE__ );
+		} else if ( false !== strpos( dirname( __FILE__ ), get_template_directory() ) ) {
+			/**
+			 * Kirki is embedded in a theme
+			 */
+			Kirki::$url = get_template_directory_uri() . str_replace( get_template_directory(), '', dirname( __FILE__ ) );
+		}
+		/**
+		 * Apply the filters to the Kirki::$url
+		 */
+		$config = apply_filters( 'kirki/config', array() );
+		if ( isset( $config['url_path'] ) ) {
+			Kirki::$url = esc_url_raw( $config['url_path'] );
+		}
+
 		return $kirki;
 
 	}
@@ -85,9 +75,9 @@ if ( ! function_exists( 'Kirki' ) ) {
 	$kirki = Kirki();
 }
 
-if ( defined( 'KIRKI_REDUX_COMPATIBILITY' ) && KIRKI_REDUX_COMPATIBILITY ) {
-	include_once( KIRKI_PATH.'/includes/redux-compatibility.php' );
-}
+include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
+// Include the API class
+include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-kirki.php' );
 
 if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 	/**
@@ -99,19 +89,19 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 		$textdomain = 'kirki';
 
 		// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
-		if ( file_exists( WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo' ) ) {
-			$file = WP_LANG_DIR.'/'.$textdomain.'-'.get_locale().'.mo';
+		if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
+			$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
 		}
-		// Look for KIRKI_PATH/languages/{$domain}-{$locale}.mo
-		if ( ! isset( $file ) && file_exists( KIRKI_PATH.'/languages/'.$textdomain.'-'.get_locale().'.mo' ) ) {
-			$file = KIRKI_PATH.'/languages/'.$textdomain.'-'.get_locale().'.mo';
+		// Look for Kirki::$path/languages/{$domain}-{$locale}.mo
+		if ( ! isset( $file ) && file_exists( Kirki::$path . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $textdomain . '-' . get_locale() . '.mo' ) ) {
+			$file = Kirki::$path . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $textdomain . '-' . get_locale() . '.mo';
 		}
 
 		if ( isset( $file ) ) {
 			load_textdomain( $textdomain, $file );
 		}
 
-		load_plugin_textdomain( $textdomain, false, KIRKI_PATH.'/languages' );
+		load_plugin_textdomain( $textdomain, false, Kirki::$path . DIRECTORY_SEPARATOR . 'languages' );
 	}
 	add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 }
@@ -120,8 +110,11 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 Kirki::add_config( '' );
 
 /**
- * The 2 following commented-out lines are for testing purposes.
- * You can uncomment whichever you want and fields will flood the customizer.
+ * To enable the demo theme, just add this line to your wp-config.php file:
+ * define( 'KIRKI_CONFIG', true );
+ * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
+ * Activate that theme to test all controls.
  */
-// include_once( KIRKI_PATH . '/sample-config.php' );
-// include_once( KIRKI_PATH . '/tests/kirki-user-tests.php' );
+if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) ) {
+	register_theme_directory( dirname( __FILE__ ) );
+}

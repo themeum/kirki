@@ -20,7 +20,7 @@ if ( class_exists( 'Kirki_Toolkit' ) ) {
 	return;
 }
 
-class Kirki_Toolkit {
+final class Kirki_Toolkit {
 
 	/** @var Kirki The only instance of this class */
 	public static $instance = null;
@@ -74,8 +74,8 @@ class Kirki_Toolkit {
 			'center-bottom'         => __( 'Center Bottom', 'kirki' ),
 			'background-position'   => __( 'Background Position', 'kirki' ),
 			'background-opacity'    => __( 'Background Opacity', 'kirki' ),
-			'ON'                    => __( 'ON', 'kirki' ),
-			'OFF'                   => __( 'OFF', 'kirki' ),
+			'on'                    => __( 'ON', 'kirki' ),
+			'off'                   => __( 'OFF', 'kirki' ),
 			'all'                   => __( 'All', 'kirki' ),
 			'cyrillic'              => __( 'Cyrillic', 'kirki' ),
 			'cyrillic-ext'          => __( 'Cyrillic Extended', 'kirki' ),
@@ -86,9 +86,25 @@ class Kirki_Toolkit {
 			'latin'                 => __( 'Latin', 'kirki' ),
 			'latin-ext'             => __( 'Latin Extended', 'kirki' ),
 			'vietnamese'            => __( 'Vietnamese', 'kirki' ),
+			'hebrew'                => __( 'Hebrew', 'kirki' ),
+			'arabic'                => __( 'Arabic', 'kirki' ),
+			'bengali'               => __( 'Bengali', 'kirki' ),
+			'gujarati'              => __( 'Gujarati', 'kirki' ),
+			'tamil'                 => __( 'Tamil', 'kirki' ),
+			'telugu'                => __( 'Telugu', 'kirki' ),
+			'thai'                  => __( 'Thai', 'kirki' ),
 			'serif'                 => _x( 'Serif', 'font style', 'kirki' ),
 			'sans-serif'            => _x( 'Sans Serif', 'font style', 'kirki' ),
 			'monospace'             => _x( 'Monospace', 'font style', 'kirki' ),
+			'font-family'           => __( 'Font Family', 'Kirki' ),
+			'font-size'             => __( 'Font Size', 'Kirki' ),
+			'font-weight'           => __( 'Font Weight', 'Kirki' ),
+			'line-height'           => __( 'Line Height', 'Kirki' ),
+			'letter-spacing'        => __( 'Letter Spacing', 'Kirki' ),
+			'top'                   => __( 'Top', 'kirki' ),
+			'bottom'                => __( 'Bottom', 'kirki' ),
+			'left'                  => __( 'Left', 'kirki' ),
+			'right'                 => __( 'Right', 'kirki' ),
 		);
 
 		$config = apply_filters( 'kirki/config', array() );
@@ -112,6 +128,13 @@ class Kirki_Toolkit {
 	 * Constructor is private, should only be called by get_instance()
 	 */
 	private function __construct() {
+	}
+
+	/**
+	 * Return true if we are debugging Kirki.
+	 */
+	public static function kirki_debug() {
+		return (bool) ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG );
 	}
 
 }
