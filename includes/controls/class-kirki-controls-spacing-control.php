@@ -82,7 +82,6 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 						<div class="top">
 							<h5>{{ data.l10n['top'] }}</h5>
 							<div class="inner">
-								<span class="dashicons dashicons-arrow-up-alt"></span>
 								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['top'] ) }}"/>
 								<select>
 								<# if ( data.choices['units'] ) { #>
@@ -108,7 +107,6 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 						<div class="bottom">
 							<h5>{{ data.l10n['bottom'] }}</h5>
 							<div class="inner">
-								<span class="dashicons dashicons-arrow-down-alt"></span>
 								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['bottom'] ) }}"/>
 								<select>
 								<# if ( data.choices['units'] ) { #>
@@ -134,7 +132,6 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 						<div class="left">
 							<h5>{{ data.l10n['left'] }}</h5>
 							<div class="inner">
-								<span class="dashicons dashicons-arrow-left-alt"></span>
 								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['left'] ) }}"/>
 								<select>
 								<# if ( data.choices['units'] ) { #>
@@ -160,7 +157,6 @@ class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 						<div class="right">
 							<h5>{{ data.l10n['right'] }}</h5>
 							<div class="inner">
-								<span class="dashicons dashicons-arrow-right-alt"></span>
 								<input type="number" min="0" step="any" value="{{ parseFloat( data.value['right'] ) }}"/>
 								<select>
 								<# if ( data.choices['units'] ) { #>
