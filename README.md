@@ -1,4 +1,6 @@
 # Kirki #
+
+[![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 **Contributors:** aristath, fovoc, igmoweb  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
