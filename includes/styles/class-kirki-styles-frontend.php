@@ -96,7 +96,11 @@ class Kirki_Styles_Frontend {
 			// Only continue if $field['output'] is set
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
-				$css = array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
+				if ( function_exists( 'array_replace_recursive' ) ) {
+					$css = array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
+				} else {
+					$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
+				}
 
 			}
 

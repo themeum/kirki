@@ -222,6 +222,19 @@ class Kirki_Output_CSS {
 						$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
 					}
 				}
+				/**
+				 * Take care of "spacing" controls output
+				 */
+				if ( 'spacing' == self::$field_type && isset( $output['property'] ) ) {
+					foreach ( $value as $key => $sub_value ) {
+						if ( false !== strpos( $output['property'], '%%' ) ) {
+							$property = str_replace( '%%', $key, $output['property'] );
+						} else {
+							$property = $output['property'] . '-' . $key;
+						}
+						$styles[ $output['media_query'] ][ $element ][ $property ] = $sub_value;
+					}
+				}
 			}
 		}
 

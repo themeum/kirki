@@ -22,20 +22,34 @@ class Kirki_Values {
 		 */
 		$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
+		/**
+		 * fallback to 'global' if $config_id is not found
+		 */
+		if ( ! isset( Kirki::$config[ $config_id ] ) ) {
+			$config_id = 'global';
+		}
+
 		if ( 'theme_mod' == Kirki::$config[ $config_id ]['option_type'] ) {
 			/**
 			 * We're using theme_mods.
 			 * so just get the value using get_theme_mod
 			 */
-			$value = get_theme_mod( $field_id, Kirki::$fields[ $field_id ]['default'] );
+			$default_value = null;
+			if ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['default'] ) ) {
+				$default_value = Kirki::$fields[ $field_id ]['default'];
+			}
+			$value = get_theme_mod( $field_id, $default_value );
 
 			/**
 			 * If the field is a background field, then get the sub-fields
 			 * and return an array of the values.
 			 */
-			if ( 'background' == Kirki::$fields[ $field_id ]['type'] ) {
+			if ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['type'] ) && 'background' == Kirki::$fields[ $field_id ]['type'] ) {
 				$value = array();
-				foreach ( Kirki::$fields[ $field_id ]['default'] as $property_key => $property_default ) {
+				if ( null == $default_value ) {
+					$default_value = array();
+				}
+				foreach ( $default_value as $property_key => $property_default ) {
 					$value[ $property_key ] = get_theme_mod( $field_id . '_' . $property_key, $property_default );
 				}
 			}

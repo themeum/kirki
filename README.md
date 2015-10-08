@@ -1,6 +1,4 @@
 # Kirki #
-
-[![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 **Contributors:** aristath, fovoc, igmoweb  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
@@ -22,7 +20,7 @@ An excellent handbook for the WordPress Customizer can be found on the [develope
 
 What Kirki does is save you time... LOTS of time!
 
-[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![Coverage Status](https://coveralls.io/repos/aristath/kirki/badge.svg?branch=master)](https://coveralls.io/r/aristath/kirki?branch=master) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE)
+[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![Coverage Status](https://coveralls.io/repos/aristath/kirki/badge.svg?branch=master)](https://coveralls.io/r/aristath/kirki?branch=master) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE)[![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Configurations**
 
@@ -135,6 +133,7 @@ WIP, dev time > 130 hours
 * NEW: Preset Field.
 * NEW: Demo theme.
 * NEW: Spacing Control.
+* REMOVED: Redux Framework compatibility.
 * FIX: Minor bugfixes to the Kirki_Color class.
 * FIX: kirki_get_option now uses Kirki::get_option().
 * FIX: Various bugfixes.
@@ -165,7 +164,7 @@ WIP, dev time > 130 hours
 * TWEAK: Added prefix to the sanitized output array.
 * TWEAK: Updated google-fonts.
 * TWEAK: Grunt integration.
-* TWEAK: Started code refactoring.
+* TWEAK: Some Code refactoring.
 
 ### 1.0.2 ###
 
