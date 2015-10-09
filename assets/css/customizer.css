@@ -913,7 +913,8 @@ input[type="text"] {
     .customize-control-switch .switch input:checked + label {
       background: #3498DB; }
       .customize-control-switch .switch input:checked + label:after {
-        left: 2.25rem; }
+        left: 2.25rem;
+        background: #ffffff; }
   .customize-control-switch .switch.round {
     border-radius: 1000px; }
     .customize-control-switch .switch.round label {
