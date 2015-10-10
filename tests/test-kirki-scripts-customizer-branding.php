@@ -1,6 +1,6 @@
 <?php
 
-class Test_Kirki_Scripts_Customizer_Branding extends WP_UnitTestCase {
+class Test_Kirki_Customizer_Scripts_Branding extends WP_UnitTestCase {
 
 	public function test_generate_script() {
 		add_filter( 'kirki/config', function() {

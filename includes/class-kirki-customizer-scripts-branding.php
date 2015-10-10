@@ -18,11 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Scripts_Customizer_Branding' ) ) {
+if ( class_exists( 'Kirki_Customizer_Scripts_Branding' ) ) {
 	return;
 }
 
-class Kirki_Scripts_Customizer_Branding extends Kirki_Scripts_Enqueue_Script {
+class Kirki_Customizer_Scripts_Branding extends Kirki_Customizer_Scripts_Enqueue {
 
 	/**
 	 * If we've specified an image to be used as logo,

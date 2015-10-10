@@ -33,7 +33,7 @@ if ( ! function_exists( 'Kirki' ) ) {
 		// Make sure the class is instanciated
 		$kirki = Kirki_Toolkit::get_instance();
 
-		$kirki->font_registry = new Kirki_Fonts_Font_Registry();
+		$kirki->font_registry = new Kirki_Google_Fonts_Registry();
 		$kirki->api           = new Kirki();
 		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->styles        = array(
