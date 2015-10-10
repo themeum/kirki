@@ -118,14 +118,26 @@ class Kirki_Fonts_Font_Registry {
 			$subsets = (array) $subset;
 
 		}
-		/**
-		 * Sanitization: flatten the array.
-		 */
-		$subsets = Kirki_Helper::array_flatten( $subsets, 'value' );
+		$final_subsets = array();
+		foreach ( $subsets as $subset ) {
+			if ( is_array( $subset ) ) {
+				foreach ( $subsets as $subset => $value ) {
+					if ( ! is_array( $value ) ) {
+						$final_subsets[] = $value;
+					} else {
+						foreach ( $value as $sub_subset => $sub_value ) {
+							$final_subsets[] = $sub_value;
+						}
+					}
+				}
+			} else {
+				$final_subsets[] = $subset;
+			}
+		}
 		/**
 		 * Append the subset string
 		 */
-		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
+		$request .= ( ! empty( $final_subsets ) ) ? '&subset=' . join( ',', $final_subsets ) : '';
 
 		return $request;
 	}

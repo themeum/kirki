@@ -58,7 +58,7 @@ if ( ! $wp_customize ) {
 			<?php $multicheck_value = get_theme_mod( 'multicheck_demo', array( 'option-1', 'option-3' ) ); ?>
 			<?php if ( ! empty( $multicheck_value ) ) : ?>
 				<ul>
-					<?php foreach ( $multicheck_value as $checked_value => $checked ) : ?>
+					<?php foreach ( $multicheck_value as $checked_value ) : ?>
 						<li><?php echo $checked_value; ?></li>
 					<?php endforeach; ?>
 				</ul>

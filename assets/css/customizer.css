@@ -345,13 +345,9 @@ input[type="text"] {
     margin: auto; }
   .customize-control-number .fs-number-arrow.fs-number-up {
     top: 0; }
-  .customize-control-number .fs-number-arrow.fs-number-up:after {
-    border-bottom: 5px solid #666666; }
   .customize-control-number .fs-number-arrow.fs-number-down {
     bottom: 0;
     border-top: none; }
-    .customize-control-number .fs-number-arrow.fs-number-down:after {
-      border-top: 5px solid #666666; }
 .customize-control-number .no-opacity .fs-number-arrow {
   text-indent: -999999px; }
 .customize-control-number .fs-number-disabled .fs-number-arrow {
@@ -913,7 +909,8 @@ input[type="text"] {
     .customize-control-switch .switch input:checked + label {
       background: #3498DB; }
       .customize-control-switch .switch input:checked + label:after {
-        left: 2.25rem; }
+        left: 2.25rem;
+        background: #ffffff; }
   .customize-control-switch .switch.round {
     border-radius: 1000px; }
     .customize-control-switch .switch.round label {

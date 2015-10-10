@@ -19,6 +19,11 @@ class Kirki_Section extends Kirki_Customizer {
 			'active_callback' => $args['active_callback'],
 		) );
 
+		if ( isset( $args['icon'] ) ) {
+			$args['context'] = 'section';
+			Kirki_Customizer_Scripts_Icons::generate_script( $args );
+		}
+
 	}
 
 }
