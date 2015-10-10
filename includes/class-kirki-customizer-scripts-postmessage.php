@@ -21,7 +21,7 @@ if ( class_exists( 'Kirki_PostMessage' ) ) {
 	return;
 }
 
-class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Script {
+class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 
 	/**
 	 * string.

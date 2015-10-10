@@ -20,7 +20,7 @@ if ( class_exists( 'Kirki_Customizer_Scripts_Icons' ) ) {
 	return;
 }
 
-class Kirki_Customizer_Scripts_Icons extends Kirki_Customizer_Script {
+class Kirki_Customizer_Scripts_Icons extends Kirki_Customizer_Scripts {
 
 	/**
 	 * string.

@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Fonts_Font_Registry' ) ) {
+if ( class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 	return;
 }
 
-class Kirki_Fonts_Font_Registry {
+class Kirki_Google_Fonts_Registry {
 
 	/** @var array */
 	private $standard_fonts = null;

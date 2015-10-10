@@ -20,7 +20,7 @@ if ( class_exists( 'Kirki_Scripts_Customizer_Tooltips' ) ) {
 	return;
 }
 
-class Kirki_Customizer_Scripts_Tooltips extends Kirki_Customizer_Script {
+class Kirki_Customizer_Scripts_Tooltips extends Kirki_Customizer_Scripts {
 
 	/**
 	 * string.
