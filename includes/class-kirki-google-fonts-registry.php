@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Fonts_Font_Registry' ) ) {
+if ( class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 	return;
 }
 
-class Kirki_Fonts_Font_Registry {
+class Kirki_Google_Fonts_Registry {
 
 	/** @var array */
 	private $standard_fonts = null;
@@ -118,14 +118,26 @@ class Kirki_Fonts_Font_Registry {
 			$subsets = (array) $subset;
 
 		}
-		/**
-		 * Sanitization: flatten the array.
-		 */
-		$subsets = Kirki_Helper::array_flatten( $subsets, 'value' );
+		$final_subsets = array();
+		foreach ( $subsets as $subset ) {
+			if ( is_array( $subset ) ) {
+				foreach ( $subsets as $subset => $value ) {
+					if ( ! is_array( $value ) ) {
+						$final_subsets[] = $value;
+					} else {
+						foreach ( $value as $sub_subset => $sub_value ) {
+							$final_subsets[] = $sub_value;
+						}
+					}
+				}
+			} else {
+				$final_subsets[] = $subset;
+			}
+		}
 		/**
 		 * Append the subset string
 		 */
-		$request .= ( ! empty( $subsets ) ) ? '&subset=' . join( ',', $subsets ) : '';
+		$request .= ( ! empty( $final_subsets ) ) ? '&subset=' . join( ',', $final_subsets ) : '';
 
 		return $request;
 	}

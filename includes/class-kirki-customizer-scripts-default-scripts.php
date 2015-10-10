@@ -18,11 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Scripts_Customizer_Default_Scripts' ) ) {
+if ( class_exists( 'Kirki_Customizer_Scripts_Default_Scripts' ) ) {
 	return;
 }
 
-class Kirki_Scripts_Customizer_Default_Scripts extends Kirki_Scripts_Enqueue_Script {
+class Kirki_Customizer_Scripts_Default_Scripts extends Kirki_Customizer_Scripts_Enqueue {
 
 	public function generate_script( $args = array() ) {}
 

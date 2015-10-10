@@ -85,15 +85,9 @@
         &.fs-number-up {
             top: 0;
         }
-        &.fs-number-up:after {
-            border-bottom: 5px solid #666666;
-        }
         &.fs-number-down {
             bottom: 0;
             border-top: none;
-            &:after {
-                border-top: 5px solid #666666;
-            }
         }
     }
     .no-opacity .fs-number-arrow {

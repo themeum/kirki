@@ -53,6 +53,9 @@ class Kirki_Field extends Kirki_Customizer {
 		/**
 		 * Get the configuration options
 		 */
+		if ( ! isset( Kirki::$config[ $config_id ] ) ) {
+			$config_id = 'global';
+		}
 		$config = Kirki::$config[ $config_id ];
 
 		/**

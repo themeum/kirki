@@ -32,11 +32,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				top_numeric_value = jQuery( this ).val();
 				compiled_value['top'] = top_numeric_value + top_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.top select', function() {
 				top_units_value = jQuery( this ).val();
 				compiled_value['top'] = top_numeric_value + top_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -49,11 +51,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				bottom_numeric_value = jQuery( this ).val();
 				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.bottom select', function() {
 				bottom_units_value = jQuery( this ).val();
 				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -66,11 +70,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				left_numeric_value = jQuery( this ).val();
 				compiled_value['left'] = left_numeric_value + left_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.left select', function() {
 				left_units_value = jQuery( this ).val();
 				compiled_value['left'] = left_numeric_value + left_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -83,11 +89,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				right_numeric_value = jQuery( this ).val();
 				compiled_value['right'] = right_numeric_value + right_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.right select', function() {
 				right_units_value = jQuery( this ).val();
 				compiled_value['right'] = right_numeric_value + right_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 	}

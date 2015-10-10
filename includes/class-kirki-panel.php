@@ -18,6 +18,11 @@ class Kirki_Panel extends Kirki_Customizer {
 			'active_callback' => $args['active_callback'],
 		) );
 
+		if ( isset( $args['icon'] ) ) {
+			$args['context'] = 'panel';
+			Kirki_Customizer_Scripts_Icons::generate_script( $args );
+		}
+
 	}
 
 }

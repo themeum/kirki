@@ -33,7 +33,7 @@ if ( ! function_exists( 'Kirki' ) ) {
 		// Make sure the class is instanciated
 		$kirki = Kirki_Toolkit::get_instance();
 
-		$kirki->font_registry = new Kirki_Fonts_Font_Registry();
+		$kirki->font_registry = new Kirki_Google_Fonts_Registry();
 		$kirki->api           = new Kirki();
 		$kirki->scripts       = new Kirki_Scripts_Registry();
 		$kirki->styles        = array(
@@ -59,13 +59,6 @@ if ( ! function_exists( 'Kirki' ) ) {
 			 */
 			Kirki::$url = get_template_directory_uri() . str_replace( get_template_directory(), '', dirname( __FILE__ ) );
 		}
-		/**
-		 * Apply the filters to the Kirki::$url
-		 */
-		$config = apply_filters( 'kirki/config', array() );
-		if ( isset( $config['url_path'] ) ) {
-			Kirki::$url = esc_url_raw( $config['url_path'] );
-		}
 
 		return $kirki;
 
@@ -74,6 +67,17 @@ if ( ! function_exists( 'Kirki' ) ) {
 	global $kirki;
 	$kirki = Kirki();
 }
+
+/**
+ * Apply the filters to the Kirki::$url
+ */
+function kirki_filtered_url() {
+	$config = apply_filters( 'kirki/config', array() );
+	if ( isset( $config['url_path'] ) ) {
+		Kirki::$url = esc_url_raw( $config['url_path'] );
+	}
+}
+add_action( 'after_setup_theme', 'kirki_filtered_url' );
 
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
 // Include the API class

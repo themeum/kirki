@@ -208,15 +208,16 @@ wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend( {
 
 		// Modified values
 		control.container.on( 'change', 'input', function() {
-			var compiled_value = {};
+			var compiled_value = [];
+			var i = 0;
 			jQuery.each( control.params.choices, function( key, value ) {
 				if ( jQuery( 'input[value="' + key + '"' ).is( ':checked' ) ) {
-					compiled_value[ key ] = true;
+					compiled_value[i] = key;
+					i++;
 				}
 			});
 			control.setting.set( compiled_value );
 			wp.customize.previewer.refresh();
-			console.log( compiled_value );
 		});
 	}
 });
@@ -1114,11 +1115,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				top_numeric_value = jQuery( this ).val();
 				compiled_value['top'] = top_numeric_value + top_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.top select', function() {
 				top_units_value = jQuery( this ).val();
 				compiled_value['top'] = top_numeric_value + top_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -1131,11 +1134,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				bottom_numeric_value = jQuery( this ).val();
 				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.bottom select', function() {
 				bottom_units_value = jQuery( this ).val();
 				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -1148,11 +1153,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				left_numeric_value = jQuery( this ).val();
 				compiled_value['left'] = left_numeric_value + left_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.left select', function() {
 				left_units_value = jQuery( this ).val();
 				compiled_value['left'] = left_numeric_value + left_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 
@@ -1165,11 +1172,13 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 				right_numeric_value = jQuery( this ).val();
 				compiled_value['right'] = right_numeric_value + right_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.right select', function() {
 				right_units_value = jQuery( this ).val();
 				compiled_value['right'] = right_numeric_value + right_units_value;
 				control.setting.set( compiled_value );
+				wp.customize.previewer.refresh();
 			});
 		}
 	}

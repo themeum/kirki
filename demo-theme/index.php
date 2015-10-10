@@ -58,7 +58,7 @@ if ( ! $wp_customize ) {
 			<?php $multicheck_value = get_theme_mod( 'multicheck_demo', array( 'option-1', 'option-3' ) ); ?>
 			<?php if ( ! empty( $multicheck_value ) ) : ?>
 				<ul>
-					<?php foreach ( $multicheck_value as $checked_value => $checked ) : ?>
+					<?php foreach ( $multicheck_value as $checked_value ) : ?>
 						<li><?php echo $checked_value; ?></li>
 					<?php endforeach; ?>
 				</ul>
@@ -216,7 +216,8 @@ if ( ! $wp_customize ) {
 		</div>
 		<div class="select-multiple demo">
 			<h4><?php _e( 'Multiple Select:', 'kirki-demo' ); ?></h4>
-			<?php if ( ! empty( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) ) ) : ?>
+			<?php $value = get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ); ?>
+			<?php if ( ! empty( $value ) ) : ?>
 				<ul>
 					<?php foreach ( get_theme_mod( 'select_multiple_demo', array( 'option-1' ) ) as $option ) : ?>
 						<li><?php echo esc_attr( $option ); ?></li>

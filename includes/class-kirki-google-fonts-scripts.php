@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Early exit if the class already exists
-if ( class_exists( 'Kirki_Scripts_Frontend_Google_Fonts' ) ) {
+if ( class_exists( 'Kirki_Google_Fonts_Scripts' ) ) {
 	return;
 }
 
-class Kirki_Scripts_Frontend_Google_Fonts {
+class Kirki_Google_Fonts_Scripts {
 
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'google_font' ), 105 );
