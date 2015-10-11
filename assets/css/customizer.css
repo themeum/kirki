@@ -360,35 +360,41 @@ input[type="text"] {
   right: auto;
   left: 0; }
 
-.customize-control-palette label.ui-button.ui-widget {
-  width: 95%;
+.customize-control-palette input[type="radio"] {
+  display: none; }
+  .customize-control-palette input[type="radio"]:checked + label {
+    border: 3px solid rgba(0, 0, 0, 0.4); }
+.customize-control-palette label {
   background: none;
-  padding: 0; }
-  .customize-control-palette label.ui-button.ui-widget .ui-button-text {
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    margin-bottom: 5px;
-    display: flex; }
-    .customize-control-palette label.ui-button.ui-widget .ui-button-text span {
-      padding: 10px 0;
-      flex-grow: 1;
-      font-size: 0;
+  padding: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  margin-bottom: 5px;
+  display: flex; }
+  .customize-control-palette label span {
+    padding: 10px 0;
+    flex-grow: 1;
+    font-size: 0;
+    line-height: 10px;
+    color: transparent;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    .customize-control-palette label span:first-child {
+      border-left: 1px solid rgba(0, 0, 0, 0.1); }
+    .customize-control-palette label span:last-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.1); }
+    .customize-control-palette label span:hover {
+      padding: 10px;
+      flex-grow: 3;
+      min-width: 60px;
+      font-size: 10px;
       line-height: 10px;
-      color: transparent;
-      -webkit-transition: all 200ms ease-in-out;
-      -moz-transition: all 200ms ease-in-out;
-      -ms-transition: all 200ms ease-in-out;
-      -o-transition: all 200ms ease-in-out;
-      transition: all 200ms ease-in-out; }
-      .customize-control-palette label.ui-button.ui-widget .ui-button-text span:hover {
-        padding: 10px;
-        flex-grow: 3;
-        min-width: 60px;
-        font-size: 10px;
-        line-height: 10px;
-        color: #000; }
-.customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {
-  border: 3px solid #333; }
+      color: #000; }
 
 .customize-control-kirki-radio input[type=radio] {
   width: 18px;
