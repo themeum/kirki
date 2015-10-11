@@ -26,62 +26,43 @@ class Kirki_Styles_Frontend {
 
 	public function __construct() {
 
+		global $wp_customize;
+
 		$config   = apply_filters( 'kirki/config', array() );
 		$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 999;
 
+		if ( isset( $config['disable_output'] ) && true !== $config['disable_output'] ) {
+			return;
+		}
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
-
-	}
-
-	/**
-	 * Add the inline styles
-	 */
-	public function enqueue_styles() {
-
-		$config = apply_filters( 'kirki/config', array() );
-
-		/**
-		 * If we have set $config['disable_output'] to true,
-		 * then do not proceed any further.
-		 */
-		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
+		if ( $wp_customize ) {
 			return;
 		}
-		$stylesheet_id = ( isset( $config['stylesheet_id'] ) ) ? $config['stylesheet_id'] : 'kirki-styles';
-		wp_add_inline_style( $stylesheet_id, $this->loop_controls() );
+
+		add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'dynamic_css' ) );
+		add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'dynamic_css' ) );
 
 	}
 
-	/**
-	 * Add a dummy, empty stylesheet.
-	 */
+	public function dynamic_css() {
+		require( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'dynamic-css.php' );
+		exit;
+	}
+
 	public function frontend_styles() {
-
-		$config = apply_filters( 'kirki/config', array() );
-
-		/**
-		 * If we have set $config['disable_output'] to true,
-		 * then do not proceed any further.
-		 */
-		if ( isset( $config['disable_output'] ) && true == $config['disable_output'] ) {
-			return;
+		global $wp_customize;
+		if ( $wp_customize ) {
+			wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
+			wp_add_inline_style( 'kirki-styles', self::loop_controls() );
+		} else {
+			wp_enqueue_style( 'kirki-styles-php', admin_url( 'admin-ajax.php' ) . '?action=kirki_dynamic_css', null, null );
 		}
-		/**
-		 * If we're using a different stylesheet_id
-		 * then do not enqueue our own stylesheet.
-		 */
-		if ( isset( $config['stylesheet_id'] ) ) {
-			return;
-		}
-		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
-
 	}
 
 	/**
 	 * loop through all fields and create an array of style definitions
 	 */
-	public function loop_controls() {
+	public static function loop_controls() {
 
 		$fields = Kirki::$fields;
 		$css    = array();
