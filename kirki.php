@@ -46,14 +46,22 @@ if ( ! function_exists( 'Kirki' ) ) {
 		 */
 		Kirki::$path = dirname( __FILE__ );
 		/**
-		 * The URL of the current Kirki instance
+		 * Get the URL of the current Kirki instance.
+		 * In order to do that, first we'll have to determine if we're using Kirki
+		 * as a plugin, or if it's embedded in a theme.
+		 * We'll also have to do some ugly stuff below because Windows is messy
+		 * and we want to accomodate users using XAMPP for their development.
+		 * Seriously though guys, you should consider using Vagrant instead.
 		 */
-		if ( false !== strpos( dirname( __FILE__ ), WP_PLUGIN_DIR ) ) {
+		$dirname_no_slashes   = str_replace( array( '\\', '/' ), '', dirname( __FILE__ ) );
+		$plugindir_no_slashes = str_replace( array( '\\', '/' ), '', WP_PLUGIN_DIR );
+		$themedir_no_slashes  = str_replace( array( '\\', '/' ), '', get_template_directory() );
+		if ( false !== strpos( $dirname_no_slashes, $plugindir_no_slashes ) ) {
 			/**
 			 * Kirki is activated as a plugin.
 			 */
 			Kirki::$url = plugin_dir_url( __FILE__ );
-		} else if ( false !== strpos( dirname( __FILE__ ), get_template_directory() ) ) {
+		} else if ( false !== strpos( $dirname_no_slashes, $themedir_no_slashes ) ) {
 			/**
 			 * Kirki is embedded in a theme
 			 */
