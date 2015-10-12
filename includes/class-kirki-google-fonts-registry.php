@@ -302,12 +302,14 @@ class Kirki_Google_Fonts_Registry {
 			$fonts = json_decode( $json, true );
 
 			$google_fonts = array();
-			foreach ( $fonts['items'] as $font ) {
-				$google_fonts[ $font['family'] ] = array(
-					'label'    => $font['family'],
-					'variants' => $font['variants'],
-					'subsets'  => $font['subsets'],
-				);
+			if ( is_array( $fonts ) ) {
+				foreach ( $fonts['items'] as $font ) {
+					$google_fonts[ $font['family'] ] = array(
+						'label'    => $font['family'],
+						'variants' => $font['variants'],
+						'subsets'  => $font['subsets'],
+					);
+				}
 			}
 
 			$this->google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );

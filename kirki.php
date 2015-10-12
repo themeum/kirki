@@ -79,13 +79,15 @@ if ( ! function_exists( 'Kirki' ) ) {
 /**
  * Apply the filters to the Kirki::$url
  */
-function kirki_filtered_url() {
-	$config = apply_filters( 'kirki/config', array() );
-	if ( isset( $config['url_path'] ) ) {
-		Kirki::$url = esc_url_raw( $config['url_path'] );
+if ( ! function_exists( 'kirki_filtered_url' ) ) {
+	function kirki_filtered_url() {
+		$config = apply_filters( 'kirki/config', array() );
+		if ( isset( $config['url_path'] ) ) {
+			Kirki::$url = esc_url_raw( $config['url_path'] );
+		}
 	}
+	add_action( 'after_setup_theme', 'kirki_filtered_url' );
 }
-add_action( 'after_setup_theme', 'kirki_filtered_url' );
 
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
 // Include the API class
