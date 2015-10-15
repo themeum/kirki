@@ -65,7 +65,7 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 				<?php endforeach; ?>
 				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $filtered_values ); ?>
 				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
+					<?php printf( "<li class='kirki-sortable-item invisible' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
 				<?php endforeach; ?>
 			</ul>
 			<div style='clear: both'></div>
