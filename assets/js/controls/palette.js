@@ -9,7 +9,3 @@ wp.customize.controlConstructor['palette'] = wp.customize.Control.extend( {
 		});
 	}
 });
-
-jQuery(document).ready(function($) {
-	$( '.customize-control-palette > div' ).buttonset();
-});

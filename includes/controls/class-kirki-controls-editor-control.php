@@ -43,7 +43,7 @@ class Kirki_Controls_Editor_Control extends Kirki_Customize_Control {
 					'textarea_name' => $this->id,
 					'teeny'         => true,
 				);
-				wp_editor( esc_textarea( $this->value() ), $this->id, $settings );
+				wp_editor( html_entity_decode( wp_kses_post( $this->value() ) ), $this->id, $settings );
 
 				do_action( 'admin_footer' );
 				do_action( 'admin_print_footer_scripts' );
