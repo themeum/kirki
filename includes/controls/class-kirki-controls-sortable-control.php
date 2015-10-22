@@ -29,49 +29,72 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-sortable', 'controls/sortable', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
 	}
 
+	public function to_json() {
+		parent::to_json();
 
-	public function render_content() {
-		if ( ! is_array( $this->choices ) || ! count( $this->choices ) ) {
-			return;
+		$this->json['choicesLength'] = 0;
+		if ( is_array( $this->choices ) && count( $this->choices ) )
+			$this->json['choicesLength'] = count( $this->choices );
+
+		$values = $this->value() == '' ? array_keys( $this->choices ) : $this->value();
+		$filtered_values = array();
+		foreach ( $values as $key => $value ) {
+			if ( array_key_exists( $value, $this->choices ) ) {
+				$filtered_values[$key] = $value;
+			}
 		}
-		?>
-		<?php if ( '' != $this->help ) : ?>
-			<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
-		<?php endif; ?>
+
+		$this->json['filteredValues'] = $filtered_values;
+
+		$this->json['invisibleKeys'] = array_diff( array_keys( $this->choices ), $filtered_values );
+
+		$this->json['serializedValue'] = maybe_serialize( $this->value() );
+
+
+	}
+
+	protected function content_template() { ?>
+		<# console.log( data); #>
+		<# if ( ! data.choicesLength ) return; #>
+
+		<# if ( data.help ) { #>
+			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+		<# } #>
+
 		<label class='kirki-sortable'>
 			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
+				{{{ data.label }}}
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<?php
-				$values = $this->value();
-				$values = $values == '' ? array_keys( $this->choices ) : $values;
-				$values = maybe_unserialize( $values );
-				$this->visible_button = count( $values ) != count( $this->choices ) ? true : '';
-				$visibleButton = '<i class="dashicons dashicons-visibility visibility"></i>';
 
-				$filtered_values = array();
-				foreach ( $values as $key => $value ) {
-					if ( array_key_exists( $value, $this->choices ) ) {
-						$filtered_values[$key] = $value;
-					}
-				}
-			?>
 			<ul>
-				<?php foreach ( $filtered_values as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
-				<?php endforeach; ?>
-				<?php $invisibleKeys = array_diff( array_keys( $this->choices ), $filtered_values ); ?>
-				<?php foreach ( $invisibleKeys as $key => $value ) : ?>
-					<?php printf( "<li class='kirki-sortable-item invisible' data-value='%s'><i class='dashicons dashicons-menu'></i>%s%s</li>", esc_attr( $value ), $visibleButton, $this->choices[$value] ); ?>
-				<?php endforeach; ?>
+				<# for ( i in data.filteredValues ) { #>
+					<# if ( data.filteredValues.hasOwnProperty( i ) ) { #>
+						<li class='kirki-sortable-item' data-value='{{ data.filteredValues[i] }}'>
+							<i class='dashicons dashicons-menu'></i>
+							<i class="dashicons dashicons-visibility visibility"></i>
+							{{{ data.choices[ data.filteredValues[i] ] }}}
+						</li>
+					<# } #>
+				<# } #>
+
+				<# for ( i in data.invisibleKeys ) { #>
+					<# if ( data.invisibleKeys.hasOwnProperty( i ) ) { #>
+						<li class='kirki-sortable-item invisible' data-value='{{ data.invisibleKeys[i] }}'>
+							<i class='dashicons dashicons-menu'></i>
+							<i class="dashicons dashicons-visibility visibility"></i>
+							{{{ data.choices[ data.invisibleKeys[i] ] }}}
+						</li>
+					<# } #>
+				<# } #>
 			</ul>
+
 			<div style='clear: both'></div>
-			<?php $values = maybe_serialize( $values ); ?>
-			<input type='hidden' <?php $this->link(); ?> value='<?php echo esc_attr( $values )  ?>'/>
+			<input type="hidden" {{ data.link }} value="{{ data.serializedValue }}"/>
 		</label>
+
 		<?php
 	}
 }
