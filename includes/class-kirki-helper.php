@@ -102,11 +102,7 @@ class Kirki_Helper {
 	 * @return 	string		numeric ID of the attachement.
 	 */
 	public static function get_image_id( $url ) {
-
-		global $wpdb;
-		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
-		return $attachment[0];
-
+		return url_to_postid( $url );
 	}
 
 	/**
