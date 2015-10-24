@@ -157,6 +157,7 @@ if ( class_exists( 'Kirki' ) ) {
 		'choices'     => array(
 			'language' => 'css',
 			'theme'    => 'monokai',
+			'height'   => 250,
 		),
 	) );
 
