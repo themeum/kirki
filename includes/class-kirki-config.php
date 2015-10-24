@@ -18,8 +18,9 @@ class Kirki_Config extends Kirki_Customizer {
 	 */
 	public function __construct( $id, $args = array() ) {
 
+		// Call the parent constructor
 		parent::__construct();
-
+		// Set the default args
 		$this->default_args = array(
 			'capability'  => 'edit_theme_options',
 			'option_type' => 'theme_mod',
