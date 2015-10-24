@@ -156,7 +156,7 @@ if ( class_exists( 'Kirki' ) ) {
 		'priority'    => 10,
 		'choices'     => array(
 			'language' => 'css',
-			'theme'    => 'monokai',
+			'theme'    => 'abcdef',
 		),
 	) );
 
