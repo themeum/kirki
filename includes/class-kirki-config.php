@@ -26,7 +26,9 @@ class Kirki_Config extends Kirki_Customizer {
 			'option_name' => '',
 			'compiler'    => array(),
 		);
-
+		// Process the 'kirki/config' filter by replacing the defaults
+		$this->default_args = $this->config_from_filters();
+		// Add the config
 		$this->add_config( $id, $args );
 
 	}
