@@ -150,7 +150,7 @@ if ( class_exists( 'Kirki' ) ) {
 		'settings'    => 'code_demo',
 		'label'       => __( 'Code Control', 'kirki' ),
 		'help'        => __( 'This is a tooltip', 'kirki-demo' ),
-		'description' => __( 'This is a cimple code control. You can define the language you want as well as the theme. For a full list of available languages and themes see http://ace.c9.io/build/kitchen-sink.html. In this demo we are using a CSS editor with the monokai theme.', 'kirki-demo' ),
+		'description' => __( 'This is a simple code control. You can define the language you want as well as the theme. In this demo we are using a CSS editor with the monokai theme.', 'kirki-demo' ),
 		'section'     => 'text',
 		'default'     => 'body { background: #fff; }',
 		'priority'    => 10,
