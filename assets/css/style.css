@@ -1,0 +1,239 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: Landing Sumo - Theme 2
+ * URL: http://LandingSumo.com
+ * Version: 1.0
+ */
+
+/*	################################################################
+	1. GENERAL STRUCTURES
+################################################################# */
+
+* { 
+	margin: 0;
+	padding: 0px;
+    font-family: 'Roboto', sans-serif;
+} 
+body { 
+	background: #fff; 
+	margin: 0; 
+	color: #696E74;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
+}
+
+h5 {
+	font-weight: 400;
+	margin-top: 40px;
+}
+
+p { 
+	padding: 0; 
+	margin-bottom: 12px; 
+    font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 15px; 
+	line-height: 24px;
+	color: #696E74; 
+	margin-top: 10px; 
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.alignleft { float: left; }
+.alignright { float: right; }
+.aligncenter {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	clear: both;
+}
+.centered {text-align: center}
+.mt {margin-top: 50px;}
+.mb {margin-bottom: 50px;}
+.mtb {margin-top: 50px; margin-bottom: 50px;}
+.ptb {padding-top: 80px; padding-bottom: 80px;}
+
+.clear {
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width:100%;
+}
+::-moz-selection  {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+::selection {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+a { 
+	padding: 0;
+	margin: 0;
+	text-decoration: none; 
+	-webkit-transition: background-color .4s linear, color .4s linear;
+	-moz-transition: background-color .4s linear, color .4s linear;
+	-o-transition: background-color .4s linear, color .4s linear;
+	-ms-transition: background-color .4s linear, color .4s linear;
+	transition: background-color .4s linear, color .4s linear;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#696E74;
+}
+
+/* BOOTSTRAP MODIFICATIONS */
+.navbar-inverse {
+	background: #f9f9f9;
+	border-color: #f9f9f9;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #d9dbda;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: #979797;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	color: #979797;
+	background-color: transparent;
+}
+
+.navbar-brand {
+	font-weight: 900;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+	color: #d9dbda;
+}
+
+hr {
+	border-color: #3f4d4d;
+	width: 80px;
+	border-top-width: 2px;
+}
+
+/* GREY SECTION */
+#gs {
+	background-color: #f2f2f2;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	min-height: 80vh;
+}
+
+#gs h4 {
+	margin-top: 30px;
+	color: #3f4d4d;
+	font-weight: 700;
+}
+
+
+.intro {
+	color: #9a9a9a;
+	margin-top: 30px;
+	font-weight: 300;
+}
+
+/* BUTTON CONFIGURATIONS */
+
+.btn-gold {
+	border: 2px solid #fddc92;
+	color: #fddc92;
+	background: transparent;
+	border-radius: 0px;
+}
+
+.btn-gold:hover {
+	background: #fddc92;
+	color: #fff;
+}
+
+.btn-white {
+	border: 2px solid #fff;
+	color: #fff;
+	background: transparent;
+	border-radius: 0px;
+}
+
+.btn-white:hover {
+	background: #fff;
+	color: #000;
+}
+
+.btn-dark {
+	border: 2px solid #3f4d4d;
+	color: #3f4d4d;
+	background: transparent;
+	border-radius: 0px;
+}
+
+.btn-dark:hover {
+	background: #3f4d4d;
+	color: #fff;
+}
+
+/*Social Icons */
+
+.social-icons {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.social-icons i {
+	font-size: 30px;
+	padding: 15px;
+}
+
+.social-icons a {
+	color: #9a9a9a;
+}
+
+.social-icons a:hover {
+	color: #fddc92;
+}
+
+/* People Testimonial */
+
+.people h5 {
+	color: #9a9a9a;
+	margin-top: 10px;
+}
+
+/* Footer Section */
+
+#f {
+	background-color: #303743;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	min-height: 20vh;
+}
+
+#f .donate-submit {
+	right: 0;
+}

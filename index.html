@@ -1,376 +1,105 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="utf-8">
-			<meta name="description" content="">
-			<meta name="author" content="">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-			<meta name="google-site-verification" content="wy2hDOYXpyHstFlUKiUhd9ZBnnIamDWeCPh7gpx6AKg" />
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Kirki WordPress Customizer Toolkit">
+		<meta name="author" content="">
+		<link rel="icon" href="assets/img/favicon.ico">
 
-			<title>Kirki - Advanced WordPress Theme Customizer</title>
+		<title>Kirki - Extending the WordPress Customizer</title>
 
-			<!-- Favicon -->
-			<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+		<!-- Bootstrap core CSS -->
+		<link href="assets/css/bootstrap.css" rel="stylesheet">
 
-			<!-- CSS -->
-			<link href="css/bootstrap.min.css" rel="stylesheet">
-			<link href="css/default.css" rel="stylesheet">
-			<link href="css/font-awesome.min.css" rel="stylesheet">
-			<link href="css/flexslider.css" rel="stylesheet">
-			<link href="css/magnific-popup.css" rel="stylesheet">
-			<link href="css/owl-carousel/owl.carousel.css" rel="stylesheet">
-			<link href="css/owl-carousel/owl.theme.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|Roboto+Slab:400,100,300,700|Roboto+Mono' rel='stylesheet' type='text/css'>
+		<link href="assets/css/style.css" rel="stylesheet">
 
-			<!-- Add custom CSS here -->
-			<link href="css/custom.css" rel="stylesheet">
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
-			<!-- Google fonts -->
-			<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
 
-			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-			<!--[if lt IE9]>
-			<script src="js/html5shiv.js"></script>
-			<script src="js/respond.min.js"></script>
-			<![endif]-->
-		</head>
-		<body>
-			<!-- Side Menu -->
-			<a id="menu-toggle" href="#" class="btn btn-links btn-lg toggle"><i class="fa fa-bars fa-lg"></i></a>
-			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav">
-					<a id="menu-close" href="#" class="btn btn-links btn-lg toggle"><i class="fa fa-times fa-lg"></i></a>
-					<li><a href="#hero">Home</a></li>
-					<li><a href="#features">Features</a></li>
-					<li><a href="#panels-sections">Adding Panels & Sections</a></li>
-					<li><a href="#fields">Adding Fields</a></li>
-					<li><a href="#configuration">Configuration</a></li>
-					<li><a href="#google-fonts">Google Fonts integration</a></li>
-					<li><a href="#download">Download</a></li>
-				</ul>
+	<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+		<section id="navbar-main">
+			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"><img src="assets/img/kirki-logo.png" height="20" alt="Kirki Logo"></a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="#about" class="smoothScroll">ABOUT</a></li>
+							<li><a href="https://wordpress.org/plugins/kirki">DOWNLOAD</a></li>
+							<li><a href="https://github.com/aristath/kirki">FORK IN GITHUB</a></li>
+							<li><a href="https://github.com/aristath/kirki/wiki">DOCUMENTATION</a></li>
+							<li><a href="#donate" class="smoothScroll">DONATE</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
 			</div>
-			<!-- End side menu -->
+		</section>
 
-			<!-- Hero -->
-			<section id="hero">
+		<section id="about" name="about">
+			<div id="gs">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="logo">
-								<h1><img src="img/kirki.png"></h1>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-sm-6">
-							<div class="intro">
-								<h1>Advanced Theme Customizer.</h1>
-								<p class="lead">Tired of all the bloated options frameworks? You can use the WordPress Customizer instead, and extend it using <em>Kirki</em>!</p>
-								<p class="lead">You can now <strong>style</strong> the customizer, add a <strong>custom header</strong> and use many additional <strong>custom controls</strong>.</p>
-								<div class="buttons">
-									<a class="btn btn-4 btn-lg" href="http://wordpress.org/plugins/kirki/"><i class="fa fa-download icon"></i>Download</a>
-									<a class="btn btn-1 btn-lg" href="https://github.com/aristath/kirki"><i class="fa fa-code-fork"></i> Kirki on github</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="intro">
-								<h1>Free as in beer <i class="fa fa-beer"></i></h1>
-								<p class="lead">Kirki is completely open-source. You can use it however you like. If you want to help with its development you can submit your suggestions or improvements on <a href="https://github.com/aristath/kirki" style="color: #34495e;">Github Repository</a>, or make a donation to help us continue improving it.</p>
-								<div class="buttons">
-									<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-										<input type="hidden" name="cmd" value="_s-xclick">
-										<input type="hidden" name="hosted_button_id" value="B3JPWWJBUSWDU">
-										<input type="submit" class="btn btn-3 btn-lg btn-donate" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Make a donation (PayPal)">
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-<!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style" style="margin-top: 50px;">
-<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_counter addthis_pill_style"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e8994de6a13ee6a"></script>
-<!-- AddThis Button END -->
-						</div>
-					</div>
+						<div class="col-md-6 col-md-offset-3">
+							<div class="centered"><img src="assets/img/wire-black.png" height="200"></div>
+							<h4>WHAT IS KIRKI?</h4>
+							<p class="intro">Kirki is a no-nonsence Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility.</p>
+							<p class="intro">Minimalistic and using the WordPress APIs to create beautiful and meaningful user experiences, it creates advanced controls for the customizer, takes care of the CSS output for you, creates postMessage scripts and saves you time while developing complex projects.</p>
+							<p class="intro">Don't worry about pricing, <strong>Kirki</strong> is 100% open-source and free. All development is done on <a href="https://github.com/aristath/kirki" target="_blank">github</a> and has <a href="https://github.com/aristath/kirki/wiki" target="_blank">extensive documentation</a> publicly available and editable!
+							<hr class="aligncenter">
+						</div><! --/col-md-4 -->
+					</div><! --/row -->
+				</div><! --/container -->
+			</div><! --/GS -->
+		</section>
 
-					<div class="row">
-						<div class="col-sm-10 col-sm-offset-1"><img src="img/preview.png"></div>
-					</div>
-				</div>
-			</section>
-			<!-- End hero -->
+		<section id="controls-image">
+			<img src="assets/img/kirki-controls.png" style="width: 100%;">
+		</section>
 
-			<!-- Features -->
-			<section id="features">
+		<section id="donate" name="donate">
+			<! -- FOOTER -->
+			<div id="f">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<div class="overview">
-								<h1>Kirki features</h1>
-								<p class="lead"><strong>Why should you use it?</strong></p>
-								<p class="lead">We recently started rebuilding the <a href="http://shoestrap.org">Shoestrap theme</a> and needed to add some custom controls (like multi-check checkboxes, sliders using the jQuery SliderUI, buttonsets, layout selection etc). <strong>Kirki</strong> is the result of these efforts. If you want to see a demo of Kirki, we would advise you to download and install the (still incomplete - under heavy development) <a href="https://github.com/wpmu/shoestrap">new Shoestrap theme from github</a>.</p>
-							</div>
+						<div class="centered">
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="B3JPWWJBUSWDU">
+								<input type="submit" class="btn btn-lg btn-gold donate-submit" name="submit" alt="PayPal - The safer, easier way to pay online!" value="DONATE">
+							</form>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<figure class="item">
-								<div class="item-icon">
-									<i class="fa fa-rocket fa-lg"></i>
-								</div>
-								<div class="item-body">
-									<h2>Ready to use</h2>
-									<p>Install the plugin or embed in your theme and start using it immediately!
-									If you can use the standard WordPress customizer then you'll be able to start in no time!
-									</p>
-								</div>
-							</figure>
-						</div>
-						<div class="col-sm-6">
-							<figure class="item">
-								<div class="item-icon">
-									<i class="fa fa-dashboard fa-lg"></i>
-								</div>
-								<div class="item-body">
-									<h2>Custom Controls</h2>
-									<p>We've extended the standard WordPress Customizer by adding extra fields and options, making it easier to build extremely complex theme configuration panels with minimal coding.</p>
-								</div>
-							</figure>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<figure class="item">
-								<div class="item-icon">
-									<i class="fa fa-eye fa-lg"></i>
-								</div>
-								<div class="item-body">
-									<h2>Live Updating</h2>
-									<p>Unlike most option frameworks, we don't add any admin pages. Instead, your users will be able to change their theme options and watch their theme update live.</p>
-								</div>
-							</figure>
-						</div>
-						<div class="col-sm-6">
-							<figure class="item">
-								<div class="item-icon">
-									<i class="fa fa-code fa-lg"></i>
-								</div>
-								<div class="item-body">
-									<h2>Developer-Friendly</h2>
-									<p>Developers can build and extend the <strong>Kirki</strong> plugin with their own custom fields. We're open-source, so you can contribute your modifications to our <a href="https://github.com/aristath/kirki">github repository</a>.</p>
-								</div>
-							</figure>
-						</div>
-					</div>
+					</div><! --/row -->
 				</div>
-			</section>
-			<!-- End features -->
+			</div><! --/row -->
+		</section>
 
-			<br>
-			<hr>
-			<br>
-
-			<!-- Panels & Sections -->
-			<section id="panels-sections">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="text">
-								<h1 style="text-align: center;">Panels & Sections</h1>
-								<p class="lead" style="text-align: center;">Use the WordPress Customizer API</p>
-								<p style="text-align: center;">Defining panels and sections for the Customizer is pretty easy using the WordPress Customizer API!</p>
-								<p style="text-align: center;">If you need assistance with these then please read <a href="https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/#customizer-panels">this post on make.wordpress.org</a> and the <a href="http://codex.wordpress.org/Theme_Customization_API">WordPress Codex</a>.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<br>
-			<hr>
-			<br>
-
-			<!-- fields -->
-			<section id="fields">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="overview">
-								<h1>Adding Fields ( aka customizer controls)</h1>
-								<p class="lead">Learn more about the available controls and how to create them.</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-
-						<p>We're always improving these and we will hopefully add more fields as this project progresses.</p>
-						If you wanted to add a new text fields using the default WordPress Core functions you would write something like this:
-						<script src="https://gist.github.com/aristath/983eb866da624eb98968.js"></script>
-
-						With Kirki however, now you can write the same thing like this:<br><br>
-						<script src="https://gist.github.com/aristath/9b6d8bb36da046950211.js"></script>
-
-						Note that instead of 1 function, we now require 2 functions:
-						<ul>
-							<li>The first function is used to add the section and is identical to the one used in the default WordPress customizer.</li>
-							<li>The second function creates the control. We no longer need to register the setting separately, it is automatically taken care of.</li>
-						</ul>
-						<p>	Though it might seem at first that we now have more lines of code (33 instead of 30 that we had before), that is simply because we have only written a single field. If we were to write something a little more complex than that with 2, 3, 10 or even 50 fields, then you would realize that <em>Kirki</em> actually saves you a lot of time and writing so you can focus on what's important: <strong>create beautiful and easy to use themes</strong>.</p>
-						<div class="col-md-12">
-						<strong>Kirki</strong> allows you to add these fields on your customizer:
-						<ul>
-							<li>Radio-Buttonset</li>
-							<li>Radio-Image</li>
-							<li>Radio</li>
-							<li>Checkbox</li>
-							<li>Color</li>
-							<li>Dropdown Pages</li>
-							<li>Image</li>
-							<li>Background</li>
-							<li>Multicheck</li>
-							<li>Select</li>
-							<li>Slider</li>
-							<li>Text</li>
-							<li>Textarea</li>
-							<li>Upload</li>
-							<li>Switch</li>
-							<li>Toggle</li>
-							<li>Sortable</li>
-							<li>Number</li>
-						</ul>
-
-						<h2>Additional Options</h2>
-
-						<p>In the example above, we created a simple text field that has a label and the text input itself. In some cases, you might want to add some more info to that field and provide additional information so that your users know exactly what your field does and how to use it.</p>
-						<p>For that reason, we've added some additional arguments you can use: <code>description</code> and <code>help</code>. Example:
-						<script src="https://gist.github.com/aristath/548bbbcc3774a693a3ca.js"></script>
-						<p>The full list of arguments a field can use is as follows:
-						<script src="https://gist.github.com/aristath/f278ce861e9c5327405d.js"></script>
-
-					</div>
-				</div>
-			</section>
-			<!-- End fields -->
-
-			<br>
-			<hr>
-			<br>
-
-			<!-- Configuration -->
-			<section id="configuration">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="text">
-								<h1>Easy configuration and initialization</h1>
-								<p class="lead">There are 2 ways to install the plugin:</p>
-								<ul class="lead">
-									<li><h3><strong>Install as a plugin:</strong></h3>
-										<p class="lead">If you install it as a plugin then you can go ahead with its configuration as described below.</p>
-									</li>
-									<li><h3><strong>Embed in your theme</strong></h3>
-										<p class="lead">If you decide to embed Kirki in your own theme then you will have to follow the steps below:</p>
-										<ol class="lead">
-											<li>Copy the plugin folder in your theme (for example in <em>{theme_folder}/kirki</em>).</li>
-											<li>Include the main plugin file in your theme's functions.php file:
-											<pre>include_once( dirname( __FILE__ ) . '/kirki/kirki.php' );</pre>
-											</li>
-											<li>Add a filter to change the URL that will be used for the plugin's assets. This can be done from the configuration below (see lines 32-35).</li>
-										</ol>
-									</li>
-								</ul>
-								<hr style="border-top: 1px solid rgba( 255, 255, 255, 0.2 );">
-								<p class="lead">After you install the plugin (or embed it in your theme), you can customize its look and make it match your theme's branding and feel with just a few lines!</p>
-							</div>
-							<p class="lead">Configuring the plugin is as simple as building an array:</p>
-							<script src="https://gist.github.com/aristath/f5bb04a81b3036d54f03.js"></script>
-
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End Configuration -->
-
-			<br>
-			<hr>
-			<br>
-
-			<!-- Google fonts -->
-			<section id="google-fonts">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Google Fonts integration</h1>
-							<div class="row">
-								<div class="col-md-12">
-								<p>Kirki automatically integrates with Google Fonts.</p>
-								<p>Though we have not included specific controls for these, you are free to create <code>'select'</code> controls and on the <code>'choices'</code> use one of the following:</p>
-								<ul>
-									<li><code>Kirki_Fonts::get_font_choices()</code> gets the list of fonts</li>
-									<li><code>Kirki_Fonts::get_google_font_subsets()</code> gets the list of google font subsets</li>
-								</ul>
-								<p>This gives you the freedom to do whatever you want you them and manipulate them however you wish!</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End Output -->
-
-			<!-- Download -->
-			<section id="download">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Are you ready?</h1>
-							<a class="btn btn-1 btn-lg" href="http://wordpress.org/plugins/kirki/"><i class="fa fa-download icon"></i>Download Kirki now</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End Download -->
-
-			<!-- Footer -->
-			<footer>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<div class="footer-note">
-								<p>&copy; 2014 <a href="http://twitter.com/aristath">Aristeides Stathopoulos</a>, <a href="http://twitter.com/fovoc">Dimitris Kalliris</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
-			<!-- End footer -->
-
-			<!-- JavaScripts -->
-			<script src="js/jquery-1.10.2.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/jquery.flexslider.js"></script>
-			<script src="js/jquery.magnific-popup.js"></script>
-			<script src="js/jquery.easing.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
-			<script src="js/scripts.js"></script>
-			<script>
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-				ga('create', 'UA-50848118-1', 'kirki.org');
-				ga('send', 'pageview');
-
-			</script>
-		</body>
-	</html>
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/classie.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/retina-1.1.0.js"></script>
+		<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+	</body>
+</html>
