@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2015-10-22 17:41:37+00:00\n"
+"POT-Creation-Date: 2015-10-25 20:08:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Composite Controls"
 msgstr ""
 
-#: demo-theme/functions.php:58 demo-theme/functions.php:216
+#: demo-theme/functions.php:58 demo-theme/functions.php:217
 msgid "Custom Control"
 msgstr ""
 
@@ -56,14 +56,14 @@ msgstr ""
 #: demo-theme/functions.php:81 demo-theme/functions.php:92
 #: demo-theme/functions.php:110 demo-theme/functions.php:120
 #: demo-theme/functions.php:131 demo-theme/functions.php:142
-#: demo-theme/functions.php:152 demo-theme/functions.php:168
-#: demo-theme/functions.php:193 demo-theme/functions.php:229
-#: demo-theme/functions.php:254 demo-theme/functions.php:273
-#: demo-theme/functions.php:290 demo-theme/functions.php:322
-#: demo-theme/functions.php:354 demo-theme/functions.php:370
-#: demo-theme/functions.php:386 demo-theme/functions.php:416
-#: demo-theme/functions.php:428 demo-theme/functions.php:458
-#: demo-theme/functions.php:493 demo-theme/functions.php:510
+#: demo-theme/functions.php:152 demo-theme/functions.php:169
+#: demo-theme/functions.php:194 demo-theme/functions.php:230
+#: demo-theme/functions.php:255 demo-theme/functions.php:274
+#: demo-theme/functions.php:291 demo-theme/functions.php:323
+#: demo-theme/functions.php:355 demo-theme/functions.php:371
+#: demo-theme/functions.php:387 demo-theme/functions.php:417
+#: demo-theme/functions.php:429 demo-theme/functions.php:459
+#: demo-theme/functions.php:494 demo-theme/functions.php:511
 msgid "This is a tooltip"
 msgstr ""
 
@@ -124,84 +124,84 @@ msgid ""
 "editor with the monokai theme."
 msgstr ""
 
-#: demo-theme/functions.php:166 demo-theme/functions.php:558
+#: demo-theme/functions.php:167 demo-theme/functions.php:559
 msgid "Color Control"
 msgstr ""
 
-#: demo-theme/functions.php:167
+#: demo-theme/functions.php:168
 msgid "This uses the default WordPress-core color control."
 msgstr ""
 
-#: demo-theme/functions.php:191
+#: demo-theme/functions.php:192
 msgid "Color-Alpha Control"
 msgstr ""
 
-#: demo-theme/functions.php:192
+#: demo-theme/functions.php:193
 msgid ""
 "Similar to the default Color control but with a teist: This one allows you "
 "to also select an opacity for the color and saves the value as HEX or RGBA "
 "depending on the alpha channel's value."
 msgstr ""
 
-#: demo-theme/functions.php:217
+#: demo-theme/functions.php:218
 msgid "This is the control description"
 msgstr ""
 
-#: demo-theme/functions.php:218
+#: demo-theme/functions.php:219
 msgid ""
 "This is some extra help. You can use this to add some additional "
 "instructions for users. The main description should go in the "
 "\"description\" of the field, this is only to be used for help tips."
 msgstr ""
 
-#: demo-theme/functions.php:227
+#: demo-theme/functions.php:228
 msgid "Dimension Control"
 msgstr ""
 
-#: demo-theme/functions.php:228
+#: demo-theme/functions.php:229
 msgid "In this example we are changing the width of the body"
 msgstr ""
 
-#: demo-theme/functions.php:252
+#: demo-theme/functions.php:253
 msgid "Multicheck control"
 msgstr ""
 
-#: demo-theme/functions.php:253
+#: demo-theme/functions.php:254
 msgid ""
 "You can define choices for this control and it will save the selected "
 "values as an array."
 msgstr ""
 
-#: demo-theme/functions.php:259 demo-theme/functions.php:277
-#: demo-theme/functions.php:516 demo-theme/functions.php:535
+#: demo-theme/functions.php:260 demo-theme/functions.php:278
+#: demo-theme/functions.php:517 demo-theme/functions.php:536
 msgid "Option 1"
 msgstr ""
 
-#: demo-theme/functions.php:260 demo-theme/functions.php:278
-#: demo-theme/functions.php:517 demo-theme/functions.php:544
-msgid "Option 2"
-msgstr ""
-
 #: demo-theme/functions.php:261 demo-theme/functions.php:279
-#: demo-theme/functions.php:518
-msgid "Option 3"
+#: demo-theme/functions.php:518 demo-theme/functions.php:545
+msgid "Option 2"
 msgstr ""
 
 #: demo-theme/functions.php:262 demo-theme/functions.php:280
 #: demo-theme/functions.php:519
-msgid "Option 4"
+msgid "Option 3"
 msgstr ""
 
 #: demo-theme/functions.php:263 demo-theme/functions.php:281
 #: demo-theme/functions.php:520
+msgid "Option 4"
+msgstr ""
+
+#: demo-theme/functions.php:264 demo-theme/functions.php:282
+#: demo-theme/functions.php:521
 msgid "Option 5"
 msgstr ""
 
-#: demo-theme/functions.php:270
+#: demo-theme/functions.php:271
 msgid "Sortable Control"
 msgstr ""
 
-#: demo-theme/functions.php:272
+#: demo-theme/functions.php:273
 msgid ""
 "Similar to the \"multicheck\" control, you can define choices foir this "
 "control and the options will be saved as an array. The main difference "
@@ -209,63 +209,63 @@ msgid ""
 "you to rearrange the order of the items."
 msgstr ""
 
-#: demo-theme/functions.php:288
+#: demo-theme/functions.php:289
 msgid "Number Control"
 msgstr ""
 
-#: demo-theme/functions.php:289
+#: demo-theme/functions.php:290
 msgid "This is a simple num,ber control that allows you to select integer values."
 msgstr ""
 
-#: demo-theme/functions.php:320
+#: demo-theme/functions.php:321
 msgid "Slider Control"
 msgstr ""
 
-#: demo-theme/functions.php:321
+#: demo-theme/functions.php:322
 msgid ""
 "Similar to the number control. The main difference is that on this one you "
 "can define a min, max & step value thus allowing you to use decimal values "
 "instead of just integers."
 msgstr ""
 
-#: demo-theme/functions.php:352
+#: demo-theme/functions.php:353
 msgid "Radio Control"
 msgstr ""
 
-#: demo-theme/functions.php:353
+#: demo-theme/functions.php:354
 msgid "A simple radio-inputs control."
-msgstr ""
-
-#: demo-theme/functions.php:359 demo-theme/functions.php:375
-#: demo-theme/functions.php:499
-msgid "Red"
 msgstr ""
 
 #: demo-theme/functions.php:360 demo-theme/functions.php:376
 #: demo-theme/functions.php:500
-msgid "Green"
+msgid "Red"
 msgstr ""
 
 #: demo-theme/functions.php:361 demo-theme/functions.php:377
 #: demo-theme/functions.php:501
+msgid "Green"
+msgstr ""
+
+#: demo-theme/functions.php:362 demo-theme/functions.php:378
+#: demo-theme/functions.php:502
 msgid "Blue"
 msgstr ""
 
-#: demo-theme/functions.php:368
+#: demo-theme/functions.php:369
 msgid "Radio-Buttonset Control"
 msgstr ""
 
-#: demo-theme/functions.php:369
+#: demo-theme/functions.php:370
 msgid ""
 "This is a radio control styled as inline buttons. You can use this if you "
 "have few options with short titles that will fit in a single line."
 msgstr ""
 
-#: demo-theme/functions.php:384
+#: demo-theme/functions.php:385
 msgid "Radio-Image Control"
 msgstr ""
 
-#: demo-theme/functions.php:385
+#: demo-theme/functions.php:386
 msgid ""
 "This is a radio control that allows you to define an image for every option "
 "is the array of choices in the field. Useful if you want for example to "
@@ -273,32 +273,32 @@ msgid ""
 "for that, in the /assets/images directory."
 msgstr ""
 
-#: demo-theme/functions.php:414
+#: demo-theme/functions.php:415
 msgid "Palette Control"
 msgstr ""
 
-#: demo-theme/functions.php:415
+#: demo-theme/functions.php:416
 msgid ""
 "This is basically a radio control. It allows you to define an array of "
 "colors that will be used in order to convey your message in a visually "
 "compelling way."
 msgstr ""
 
-#: demo-theme/functions.php:426
+#: demo-theme/functions.php:427
 msgid "Typography Control"
 msgstr ""
 
-#: demo-theme/functions.php:427
+#: demo-theme/functions.php:428
 msgid ""
 "This is a composite typography control. It saves the data as an array, and "
 "you can define which of the controls you want shown."
 msgstr ""
 
-#: demo-theme/functions.php:456
+#: demo-theme/functions.php:457
 msgid "Repeater Control"
 msgstr ""
 
-#: demo-theme/functions.php:457
+#: demo-theme/functions.php:458
 msgid ""
 "The \"repeater\" control allows you to create rows of data and you can "
 "define the fields that the rows will use. Valide field-types are: text, "
@@ -306,64 +306,64 @@ msgid ""
 "array."
 msgstr ""
 
-#: demo-theme/functions.php:464 demo-theme/index.php:245
+#: demo-theme/functions.php:465 demo-theme/index.php:245
 msgid "Kirki Site"
 msgstr ""
 
-#: demo-theme/functions.php:468 demo-theme/index.php:249
+#: demo-theme/functions.php:469 demo-theme/index.php:249
 msgid "Kirki Repository"
 msgstr ""
 
-#: demo-theme/functions.php:475
+#: demo-theme/functions.php:476
 msgid "Link Text"
 msgstr ""
 
-#: demo-theme/functions.php:476
+#: demo-theme/functions.php:477
 msgid "This will be the label for your link"
 msgstr ""
 
-#: demo-theme/functions.php:481
+#: demo-theme/functions.php:482
 msgid "Link URL"
 msgstr ""
 
-#: demo-theme/functions.php:482
+#: demo-theme/functions.php:483
 msgid "This will be the link URL"
 msgstr ""
 
-#: demo-theme/functions.php:491
+#: demo-theme/functions.php:492
 msgid "Select Control"
 msgstr ""
 
-#: demo-theme/functions.php:492
+#: demo-theme/functions.php:493
 msgid ""
 "A simple select (dropdown) control, allowing you to make a single option "
 "from a relatively large pool of options."
 msgstr ""
 
-#: demo-theme/functions.php:498
+#: demo-theme/functions.php:499
 msgid "Placeholder Text"
 msgstr ""
 
-#: demo-theme/functions.php:508
+#: demo-theme/functions.php:509
 msgid "Select Control (multiple)"
 msgstr ""
 
-#: demo-theme/functions.php:509
+#: demo-theme/functions.php:510
 msgid ""
 "A multi-select control, allowing you to select multiple items "
 "simultaneously as well as re-arrange them at will using a simple "
 "drag-n-drop interface. Data is saved as an array."
 msgstr ""
 
-#: demo-theme/functions.php:527
+#: demo-theme/functions.php:528
 msgid "Preset control"
 msgstr ""
 
-#: demo-theme/functions.php:528
+#: demo-theme/functions.php:529
 msgid "Bulk-changes the value of other controls."
 msgstr ""
 
-#: demo-theme/functions.php:567
+#: demo-theme/functions.php:568
 msgid "Color Alpha Control"
 msgstr ""
 

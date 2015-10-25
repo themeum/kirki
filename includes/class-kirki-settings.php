@@ -36,9 +36,9 @@ class Kirki_Settings extends Kirki_Customizer {
 			}
 		}
 
-		if ( isset( $args['type'] ) && array_key_exists( $args['type'], Kirki::$setting_types ) ) {
+		if ( isset( $args['type'] ) && array_key_exists( $args['type'], Kirki_Control::$setting_types ) ) {
 			// We must instantiate a custom class for the setting
-			$setting_classname = Kirki::$setting_types[ $args['type'] ];
+			$setting_classname = Kirki_Control::$setting_types[ $args['type'] ];
 			$this->wp_customize->add_setting( new $setting_classname( $this->wp_customize, Kirki_Field_Sanitize::sanitize_settings( $args ), array(
 				'default'           => isset( $args['default'] ) ? $args['default'] : '',
 				'type'              => Kirki_Field_Sanitize::sanitize_type( $args ),
