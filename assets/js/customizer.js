@@ -20,14 +20,16 @@ wp.customize.controlConstructor['kirki-checkbox'] = wp.customize.Control.extend(
 wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		var editor = ace.edit('kirki-ace-editor-'+control.id);
+		var element = control.container.find( '#kirki-codemirror-editor-' + control.id );
+		var editor  = CodeMirror.fromTextArea( element[0] );
 
-		editor.getSession().setUseWrapMode(true);
-		editor.setTheme('ace/theme/'+control.params.choices.theme);
-		editor.getSession().setMode('ace/mode/'+control.params.choices.language);
-		editor.setValue(control.settings.default._value);
+		editor.setOption( "value", control.setting._value );
+		editor.setOption( "mode", control.params.choices.language );
+		editor.setOption( "lineNumbers", true );
+		editor.setOption( "theme", control.params.choices.theme );
+		editor.setOption( "height", control.params.choices.height + 'px' );
 
-		editor.getSession().on('change', function() {
+		editor.on('change', function() {
 			control.setting.set( editor.getValue() );
 		});
 	}

@@ -40,8 +40,35 @@ class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 	}
 
 	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'ace', 'vendor/ace/src-min-noconflict/ace', array( 'jquery' ) );
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'ace' ) );
+		/**
+		 * Get the language
+		 */
+		$lang_file = '/assets/js/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js';
+		$language  = 'css';
+		if ( file_exists( Kirki::$path . $lang_file ) || ! file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $lang_file ) ) ) {
+			$language = $this->choices['language'];
+		}
+		/**
+		 * Get the theme
+		 */
+		$theme_file = '/assets/js/vendor/codemirror/theme/' . $this->choices['theme'] . '.css';
+		$theme      = 'monokai';
+		if ( file_exists( Kirki::$path . $theme_file ) || file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $theme_file ) ) ) {
+			$theme = $this->choices['theme'];
+		}
+		/**
+		 * Enqueue dependencies
+		 */
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'codemirror' ) );
+		/**
+		 * Add language script
+		 */
+		wp_enqueue_script( 'codemirror-language-' . $language, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $language . '/' . $language . '.js', array( 'jquery', 'codemirror' ) );
+		/**
+		 * Add theme styles
+		 */
+		wp_enqueue_style( 'codemirror-theme-' . $theme, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/theme/' . $theme . '.css' );
 	}
 
 	protected function content_template() { ?>
@@ -55,7 +82,7 @@ class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{ data.description }}</span>
 			<# } #>
-			<div id="kirki-ace-editor-{{ data.id }}"></div>
+			<textarea id="kirki-codemirror-editor-{{ data.id }}">{{{ data.value }}}</textarea>
 		</label>
 		<#
 		/**
