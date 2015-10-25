@@ -74,7 +74,7 @@ class Kirki_Styles_Customizer {
 				'jquery-ui-core',
 				'jquery-ui-button',
 				'jquery-ui-sortable',
-				'ace',
+				'codemirror',
 				'formstone',
 				'formstone-number',
 				'selectize'
