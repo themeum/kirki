@@ -48,13 +48,12 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 		$this->json['invisibleKeys'] = array_diff( array_keys( $this->choices ), $filtered_values );
 
-		$this->json['serializedValue'] = maybe_serialize( $this->value() );
+		$this->json['inputAttrs'] = maybe_serialize( $this->input_attrs() );
 
 
 	}
 
 	protected function content_template() { ?>
-		<# console.log( data); #>
 		<# if ( ! data.choicesLength ) return; #>
 
 		<# if ( data.help ) { #>
@@ -69,7 +68,7 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 				<?php endif; ?>
 			</span>
 
-			<ul>
+			<ul class="sortable">
 				<# for ( i in data.filteredValues ) { #>
 					<# if ( data.filteredValues.hasOwnProperty( i ) ) { #>
 						<li class='kirki-sortable-item' data-value='{{ data.filteredValues[i] }}'>
@@ -92,7 +91,7 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 			</ul>
 
 			<div style='clear: both'></div>
-			<input type="hidden" {{ data.link }} value="{{ data.serializedValue }}"/>
+			<input type="hidden" {{ data.link }} value="" {{ data.inputAttrs }}/>
 		</label>
 
 		<?php
