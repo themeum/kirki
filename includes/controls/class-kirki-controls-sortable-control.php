@@ -23,6 +23,23 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 	public $type = 'sortable';
 
+	public function __construct( $manager, $id, $args = array() ) {
+		parent::__construct( $manager, $id, $args );
+		add_filter( 'customize_sanitize_' . $id, array( $this, 'customize_sanitize' ) );
+	}
+
+	/**
+	 * Unserialize the setting before saving on DB
+	 *
+	 * @param $value Serialized settings
+	 *
+	 * @return Array
+	 */
+	public function customize_sanitize( $value ) {
+		$value = maybe_unserialize( $value );
+		return $value;
+	}
+
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
