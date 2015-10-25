@@ -43,7 +43,7 @@ class Kirki_Controls_Number_Control extends Kirki_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="customize-control-content">
-				<input type="number" {{{ data.link }}} value="{{ data.value }}"
+				<input type="text" {{{ data.link }}} value="{{ data.value }}"
 					<# if ( data.choices['min'] ) { #>
 						min="{{ data.choices['min'] }}"
 					<# } #>
