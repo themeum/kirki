@@ -60,9 +60,7 @@ class Kirki_Styles_Customizer {
 				$suffix = '';
 			}
 
-			self::enqueue_customizer_control_script( 'ace', 'vendor/ace/src-min-noconflict/ace', array( 'jquery' ) );
-			self::enqueue_customizer_control_script( 'formstone', 'vendor/formstone-core', array( 'jquery' ) );
-			self::enqueue_customizer_control_script( 'formstone-number', 'vendor/formstone-number', array( 'jquery', 'formstone' ) );
+			self::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
 			self::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
@@ -75,8 +73,7 @@ class Kirki_Styles_Customizer {
 				'jquery-ui-button',
 				'jquery-ui-sortable',
 				'codemirror',
-				'formstone',
-				'formstone-number',
+				'jquery-ui-spinner',
 				'selectize'
 			);
 

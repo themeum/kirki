@@ -27,8 +27,7 @@ class Kirki_Controls_Number_Control extends Kirki_Customize_Control {
 	public $type = 'number';
 
 	public function enqueue() {
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'formstone', 'vendor/formstone-core', array( 'jquery' ) );
-		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'formstone-number', 'vendor/formstone-number', array( 'jquery', 'formstone' ) );
+		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'jquery-ui-spinner', 'vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-number', 'controls/number', array( 'jquery', 'formstone', 'formstone-number' ) );
 	}
 
@@ -44,7 +43,7 @@ class Kirki_Controls_Number_Control extends Kirki_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="customize-control-content">
-				<input type="number" {{{ data.link }}} value="{{ data.value }}"
+				<input type="text" {{{ data.link }}} value="{{ data.value }}"
 					<# if ( data.choices['min'] ) { #>
 						min="{{ data.choices['min'] }}"
 					<# } #>
