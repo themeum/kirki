@@ -6,7 +6,38 @@ class Kirki_Init {
 	 * the class constructor
 	 */
 	public function __construct() {
+		$this->set_url();
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
+	}
+
+	/**
+	 * Properly set the Kirki URL for assets
+	 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
+	 * and then does some calculations to get the proper URL for its CSS & JS assets
+	 *
+	 * @return string
+	 */
+	public function set_url() {
+		/**
+		 * Are we on a parent theme?
+		 */
+		if ( Kirki_Toolkit::is_parent_theme( __FILE__ ) ) {
+			$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_template_directory() ), '', dirname( dirname( __FILE__ ) ) );
+			Kirki::$url = trailingslashit( get_template_directory_uri() . $relative_url );
+		}
+		/**
+		 * Are we on a child theme?
+		 */
+		elseif ( Kirki_Toolkit::is_child_theme( __FILE__ ) ) {
+			$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_stylesheet_directory() ), '', dirname( dirname( __FILE__ ) ) );
+			Kirki::$url = trailingslashit( get_stylesheet_directory() . $relative_url );
+		}
+		/**
+		 * Fallback to plugin
+		 */
+		else {
+			Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
+		}
 	}
 
 	/**
