@@ -137,4 +137,80 @@ final class Kirki_Toolkit {
 		return (bool) ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG );
 	}
 
+    /**
+     * Take a path and return it clean
+     *
+     * @param string $path
+	 * @return string
+     */
+    public static function clean_file_path( $path ) {
+        $path = str_replace( '', '', str_replace( array( "\\", "\\\\" ), '/', $path ) );
+        if ( '/' === $path[ strlen( $path ) - 1 ] ) {
+            $path = rtrim( $path, '/' );
+        }
+        return $path;
+    }
+
+	/**
+	 * Determine if we're on a parent theme
+	 *
+	 * @param $file string
+	 * @return bool
+	 */
+	public static function is_parent_theme( $file ) {
+		$file = self::clean_file_path( $file );
+		$dir  = self::clean_file_path( get_template_directory() );
+		$file = str_replace( '//', '/', $file );
+		$dir  = str_replace( '//', '/', $dir );
+		if ( false !== strpos( $file, $dir ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Determine if we're on a child theme.
+	 *
+	 * @param $file string
+	 * @return bool
+	 */
+	public static function is_child_theme( $file ) {
+		$file = self::clean_file_path( $file );
+		$dir  = self::clean_file_path( get_stylesheet_directory() );
+		$file = str_replace( '//', '/', $file );
+		$dir  = str_replace( '//', '/', $dir );
+		if ( false !== strpos( $file, $dir ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Determine if we're running as a plugin
+	 */
+	private static function is_plugin() {
+		if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( get_stylesheet_directory() ) ) ) {
+			return false;
+		}
+		if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( get_template_directory_uri() ) ) ) {
+			return false;
+		}
+		if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( WP_CONTENT_DIR . '/themes/' ) ) ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Determine if we're on a theme
+	 *
+	 * @param $file string
+	 * @return bool
+	 */
+	public static function is_theme( $file ) {
+		if ( true == self::is_child_theme( $file ) || true == self::is_parent_theme( $file ) ) {
+			return true;
+		}
+		return false;
+	}
 }
