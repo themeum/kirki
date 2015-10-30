@@ -54,7 +54,64 @@ class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 	public function to_json() {
 		parent::to_json();
-		$this->json['fields'] = $this->fields;
+
+		$fields     = $this->fields;
+		$can_upload = current_user_can( 'upload_files' );
+
+		$default_image_button_labels = array(
+			'select'       => __( 'Select File' ),
+			'change'       => __( 'Change File' ),
+			'default'      => __( 'Default' ),
+			'remove'       => __( 'Remove' ),
+			'placeholder'  => __( 'No file selected' ),
+			'frame_title'  => __( 'Select File' ),
+			'frame_button' => __( 'Choose File' ),
+		);
+
+		foreach ( $value as $key => $row ) {
+			foreach ( $row as $field_key => $field ) {
+				$field_type = isset( $fields[ $field_key ]['type'] ) ? $fields[ $field_key ]['type'] : false;
+				if ( $field_type == 'image' ) {
+					$value[ $key ][ $field_key ]['canUpload'] = $can_upload;
+					$value[ $key ][ $field_key ]['buttonLabels'] = $default_image_button_labels;
+				}
+			}
+		}
+
+		// Add attachment attributes if there's any image type
+		foreach ( $fields as $key => $field ) {
+			if ( $field['type'] != 'image' )
+				continue;
+
+			if ( $field['default'] ) {
+				$default_attachment = array(
+					'id'    => 1,
+					'url'   => $field['default'],
+					'type'  => 'image',
+					'icon'  => wp_mime_type_icon( 'image' ),
+					'title' => basename( $field['default'] ),
+					'sizes' => array(
+						'full' => array(
+							'url' => $field['default']
+						),
+					),
+				);
+
+				// Set the default as the attachment.
+				$fields[ $key ]['attachment'] = $default_attachment;
+
+			}
+			else {
+				$fields[ $key ]['attachment'] = false;
+			}
+
+			$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
+			$fields[ $key ]['canUpload'] = $can_upload;
+
+		}
+
+		$this->json['fields'] = $fields;
+		$this->json['value']  = $value;
 	}
 
 	public function enqueue() {
@@ -177,6 +234,37 @@ class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 							<# } #>
 							<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
+						<# } else if ( field.type == 'image' ) { console.log(field); #>
+
+							<label for="{{ field.id }}-{{ index }}-button">
+								<# if ( field.label ) { #>
+									<span class="customize-control-title">{{ field.label }}</span>
+								<# } #>
+								<# if ( field.description ) { #>
+									<span class="description customize-control-description">{{{ field.description }}}</span>
+								<# } #>
+							</label>
+
+							<div class="current">
+								<div class="container">
+									<div class="placeholder">
+										<div class="inner">
+											<span>
+												{{{ field.buttonLabels.placeholder }}}
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="actions">
+								<# if ( field.attachment ) { #>
+									<button type="button" class="button default-button">{{{ field.buttonLabels.default }}}</button>
+								<# } #>
+								<# if ( field.canUpload ) { #>
+									<button type="button" class="button upload-button" id="{{ field.id }}-{{ index }}-button">{{{ field.buttonLabels.select }}}</button>
+								<# } #>
+								<div style="clear:both"></div>
+							</div>
 						<# } #>
 					</div>
 				<# } #>
