@@ -30,7 +30,7 @@ class Kirki_Init {
 		 */
 		elseif ( Kirki_Toolkit::is_child_theme( __FILE__ ) ) {
 			$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_stylesheet_directory() ), '', dirname( dirname( __FILE__ ) ) );
-			Kirki::$url = trailingslashit( get_stylesheet_directory() . $relative_url );
+			Kirki::$url = trailingslashit( get_stylesheet_directory_uri() . $relative_url );
 		}
 		/**
 		 * Fallback to plugin
