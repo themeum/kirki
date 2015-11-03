@@ -234,14 +234,20 @@ input[type="text"] {
   background-color: #7e7; }
 
 @-moz-keyframes blink {
+  0%;
   50% {
-    background-color: transparent; } }
+    background-color: transparent; }
+  100%; }
 @-webkit-keyframes blink {
+  0%;
   50% {
-    background-color: transparent; } }
+    background-color: transparent; }
+  100%; }
 @keyframes blink {
+  0%;
   50% {
-    background-color: transparent; } }
+    background-color: transparent; }
+  100%; }
 /* Can style cursor different in overwrite (non-insert) mode */
 .cm-tab {
   display: inline-block;
