@@ -84,12 +84,6 @@ class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 			<# } #>
 			<textarea id="kirki-codemirror-editor-{{ data.id }}">{{{ data.value }}}</textarea>
 		</label>
-		<#
-		/**
-		 * Add some custom CSS to define the height
-		 */
-		#>
-		<style>li#customize-control-{{ data.id }} .ace_editor { height: {{ data.choices['height'] }}px !important; }</style>
 		<?php
 	}
 

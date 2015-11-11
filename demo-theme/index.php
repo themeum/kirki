@@ -7,7 +7,7 @@
  */
 
 if ( ! class_exists( 'Kirki' ) ) {
-	die( __( 'Please enable the Kirki Plugin in order to see the demo in the Customizer', 'kirki-demo' ) );
+	die( esc_attr__( 'Please enable the Kirki Plugin in order to see the demo in the Customizer', 'kirki-demo' ) );
 }
 global $wp_customize;
 if ( ! $wp_customize ) {
@@ -37,15 +37,15 @@ if ( ! $wp_customize ) {
 		<div class="checkbox demo">
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'checkbox_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'checkbox:', 'kirki-demo' ); ?></h4>
-				<?php printf( __( 'Checkbox is %s', 'kirki-demo' ), ( get_theme_mod( 'checkbox_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
+				<?php printf( esc_attr__( 'Checkbox is %s', 'kirki-demo' ), ( get_theme_mod( 'checkbox_demo', true ) ) ? esc_attr__( 'ON', 'kirki-demo' ) : esc_attr__( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'switch_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'switch:', 'kirki-demo' ); ?></h4>
-				<?php printf( __( 'Switch is %s', 'kirki-demo' ), ( get_theme_mod( 'switch_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
+				<?php printf( esc_attr__( 'Switch is %s', 'kirki-demo' ), ( get_theme_mod( 'switch_demo', true ) ) ? esc_attr__( 'ON', 'kirki-demo' ) : esc_attr__( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 			<div style="color:#fff;<?php echo ( get_theme_mod( 'toggle_demo', true ) ) ? 'background-color:#4CAF50;' : 'background-color:#D32F2F;"'; ?>">
 				<h4><?php _e( 'toggle:', 'kirki-demo' ); ?></h4>
-				<?php printf( __( 'Toggle is %s', 'kirki-demo' ), ( get_theme_mod( 'toggle_demo', true ) ) ? __( 'ON', 'kirki-demo' ) : __( 'OFF', 'kirki-demo' ) ); ?>
+				<?php printf( esc_attr__( 'Toggle is %s', 'kirki-demo' ), ( get_theme_mod( 'toggle_demo', true ) ) ? esc_attr__( 'ON', 'kirki-demo' ) : esc_attr__( 'OFF', 'kirki-demo' ) ); ?>
 			</div>
 		</div>
 		<?php
@@ -63,7 +63,7 @@ if ( ! $wp_customize ) {
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
-			<p><?php printf( __( 'Total number of options selected: %s', 'kirki-demo' ), intval( count( $multicheck_value ) ) ); ?></p>
+			<p><?php printf( esc_attr__( 'Total number of options selected: %s', 'kirki-demo' ), intval( count( $multicheck_value ) ) ); ?></p>
 			<p>
 				<?php if ( in_array( 'option-2', $multicheck_value ) ) : ?>
 					<?php _e( 'Option 2 is selected', 'kirki-demo' ); ?>
@@ -87,7 +87,7 @@ if ( ! $wp_customize ) {
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
-			<p><?php printf( __( 'Total number of options selected: %s', 'kirki-demo' ), intval( count( $sortable_value ) ) ); ?></p>
+			<p><?php printf( esc_attr__( 'Total number of options selected: %s', 'kirki-demo' ), intval( count( $sortable_value ) ) ); ?></p>
 			<p>
 				<?php if ( in_array( 'option-2', $sortable_value ) ) : ?>
 					<?php _e( 'Option 2 is selected', 'kirki-demo' ); ?>
@@ -105,7 +105,7 @@ if ( ! $wp_customize ) {
 		 ?>
 		<div class="text demo">
 			<h4><?php _e( 'text:', 'kirki-demo' ); ?></h4>
-			<?php echo esc_html( get_theme_mod( 'text_demo', __( 'This text is entered in the "text" control.', 'kirki-demo' ) ) ); ?>
+			<?php echo esc_html( get_theme_mod( 'text_demo', esc_attr__( 'This text is entered in the "text" control.', 'kirki-demo' ) ) ); ?>
 		</div>
 		<?php
 		/**
@@ -114,7 +114,7 @@ if ( ! $wp_customize ) {
 		 ?>
 		<div class="textarea demo">
 			<h4><?php _e( 'textarea:', 'kirki-demo' ); ?></h4>
-			<?php echo esc_html( get_theme_mod( 'textarea_demo', __( 'This text is entered in the "textarea" control.', 'kirki-demo' ) ) ); ?>
+			<?php echo esc_html( get_theme_mod( 'textarea_demo', esc_attr__( 'This text is entered in the "textarea" control.', 'kirki-demo' ) ) ); ?>
 		</div>
 		<?php
 		/**
@@ -123,7 +123,7 @@ if ( ! $wp_customize ) {
 		 ?>
 		<div class="editor demo">
 			<h4><?php _e( 'editor:', 'kirki-demo' ); ?></h4>
-			<?php echo html_entity_decode( get_theme_mod( 'editor_demo', __( 'This text is entered in the "editor" control.', 'kirki-demo' ) ) ); ?>
+			<?php echo html_entity_decode( get_theme_mod( 'editor_demo', esc_attr__( 'This text is entered in the "editor" control.', 'kirki-demo' ) ) ); ?>
 		</div>
 		<div class="code demo invalid">
 			<p><?php _e( 'The "code" control has its CSS applied directly to the page for the purposes of this demo. In order to see the changes, please write some valid CSS and you will see the changes take effect immediately.', 'kirki-demo' ); ?></p>
@@ -149,7 +149,7 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="number demo">
 			<h4><?php _e( 'number', 'kirki-demo' ); ?></h4>
-			<p><?php printf( __( 'Number selected: %s', 'kirki-demo' ), intval( get_theme_mod( 'number_demo', '10' ) ) ); ?></p>
+			<p><?php printf( esc_attr__( 'Number selected: %s', 'kirki-demo' ), intval( get_theme_mod( 'number_demo', '10' ) ) ); ?></p>
 			<p><?php _e( 'The border-radius of this colored div will change depending on the value you select', 'kirki-demo' ); ?></p>
 			<div class="number-demo-border-radius"></div>
 		</div>
@@ -160,7 +160,7 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="slider demo">
 			<h4><?php _e( 'slider', 'kirki-demo' ); ?></h4>
-			<p><?php printf( __( 'Number selected: %s', 'kirki-demo' ), intval( get_theme_mod( 'slider_demo', '10' ) ) ); ?></p>
+			<p><?php printf( esc_attr__( 'Number selected: %s', 'kirki-demo' ), intval( get_theme_mod( 'slider_demo', '10' ) ) ); ?></p>
 			<p><?php _e( 'The border-radius of this colored div will change depending on the value you select', 'kirki-demo' ); ?></p>
 			<div class="slider-demo-border-radius"></div>
 		</div>
@@ -173,9 +173,9 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="radio demo">
 			<h4><?php _e( 'radio:', 'kirki-demo' ); ?></h4>
-			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '</span>' ); ?>
+			<?php printf( esc_attr__( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'radio_demo', 'red' ) ) . '</span>' ); ?>
 			<h4><?php _e( 'radio-buttonset:', 'kirki-demo' ); ?></h4>
-			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '">' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '</span>' ); ?>
+			<?php printf( esc_attr__( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '">' . esc_attr( get_theme_mod( 'radio_buttonset_demo', 'green' ) ) . '</span>' ); ?>
 		</div>
 		<?php
 		/**
@@ -197,7 +197,7 @@ if ( ! $wp_customize ) {
 		<div class="palette demo">
 			<h4><?php _e( 'palette:', 'kirki-demo' ); ?></h4>
 			<?php $selected_palette = get_theme_mod( 'palette_demo', 'light' ); ?>
-			<p><?php printf( __( 'selected palette: %s', 'kirki-demo' ), esc_attr( $selected_palette ) ); ?></p>
+			<p><?php printf( esc_attr__( 'selected palette: %s', 'kirki-demo' ), esc_attr( $selected_palette ) ); ?></p>
 			<?php $all_palettes = kirki_demo_get_palettes(); ?>
 			<?php foreach ( $all_palettes[$selected_palette] as $color ) : ?>
 				<div class="palette-demo-color" style="background-color:<?php echo esc_attr( $color ); ?>"></div>
@@ -212,7 +212,7 @@ if ( ! $wp_customize ) {
 		?>
 		<div class="select demo">
 			<h4><?php _e( 'select:', 'kirki-demo' ); ?></h4>
-			<?php printf( __( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>' ); ?>
+			<?php printf( esc_attr__( 'selected option: %s', 'kirki-demo' ), '<span style="color:' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '">' . esc_attr( get_theme_mod( 'select_demo', 'red' ) ) . '</span>' ); ?>
 		</div>
 		<div class="select-multiple demo">
 			<h4><?php _e( 'Multiple Select:', 'kirki-demo' ); ?></h4>
@@ -242,11 +242,11 @@ if ( ! $wp_customize ) {
 			<h4><?php _e( 'repeater:', 'kirki-demo' ); ?></h4>
 			<?php $repeater_value = get_theme_mod( 'repeater_demo', array(
 				array(
-					'link_text' => __( 'Kirki Site', 'kirki-demo' ),
+					'link_text' => esc_attr__( 'Kirki Site', 'kirki-demo' ),
 					'link_url'  => 'https://kirki.org',
 				),
 				array(
-					'link_text' => __( 'Kirki Repository', 'kirki-demo' ),
+					'link_text' => esc_attr__( 'Kirki Repository', 'kirki-demo' ),
 					'link_url'  => 'https://github.com/aristath/kirki',
 				),
 			) ); ?>
