@@ -105,7 +105,7 @@ class Kirki_Styles_Customizer {
 		$color  = $this->get_admin_colors();
 		$config = apply_filters( 'kirki/config', array() );
 		// Calculate the accent color
-		$this->color_accent = ( isset( $color['icon_colors'] ) && isset( $color['icon_colos']['focus'] ) ) ? $color['icon_colors']['focus'] : '#3498DB';
+		$this->color_accent = ( isset( $color['colors'] ) && isset( $color['colors'][3] ) ) ? $color['colors'][3] : '#3498DB';
 		if ( isset( $config['color_accent'] ) ) {
 			$this->color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
 		}

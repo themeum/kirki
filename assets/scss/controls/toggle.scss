@@ -6,9 +6,10 @@
 		display: none;
 	}
 	.switch {
+		border: 1px solid rgba(0,0,0,.1);
 		display: inline-block;
-		width: 40px;
-		height: 16px;
+		width: 35px;
+		height: 12px;
 		border-radius: 8px;
 		background: #ccc;
 		vertical-align: middle;
@@ -25,6 +26,7 @@
 			border-radius: 50%;
 			position: absolute;
 			top: 50%;
+			left: -3px;
 			transition: all 350ms cubic-bezier(0,.95,.38,.98),
 			background 150ms ease;
 		}
@@ -33,7 +35,8 @@
 			transform: translate3d(0, -50%, 0) scale(0);
 		}
 		&:after {
-			background: rgba(100,100,100, 0.8);
+			background: #999;
+			border: 1px solid rgba(0,0,0,.1);
 			transform: translate3d(0, -50%, 0);
 		}
 		&:active {

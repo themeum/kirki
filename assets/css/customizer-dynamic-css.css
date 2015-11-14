@@ -41,13 +41,17 @@
 }
 
 /** Switch Controls **/
-.customize-control-switch .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
+.customize-control-switch .switch input:checked + label {
   background: COLOR_ACCENT;
+  color: COLOR_ACCENT_TEXT
 }
 
 /** Toggle Controls **/
-.customize-control-toggle .fs-checkbox-toggle.fs-checkbox-checked .fs-checkbox-flag {
+.customize-control-toggle input:checked + .switch:after {
   background: COLOR_ACCENT;
+}
+.customize-control-toggle input:checked + .switch {
+  background: COLOR_ACCENT_TEXT;
 }
 
 /** Sortable Controls **/

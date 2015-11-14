@@ -27,7 +27,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: #fff;
+            background: #f2f2f2;
             cursor: pointer;
             border-radius: 3px;
             -webkit-border-radius: 3px;
@@ -41,7 +41,7 @@
                 top: 2px;
             }
             &:after {
-                background: #f2f2f2;
+                background: #fff;
             }
         }
     }
