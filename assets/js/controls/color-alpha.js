@@ -3,13 +3,16 @@
  */
 wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
 	ready: function() {
-		var control = this,
-			picker = this.container.find('.kirki-color-control');
-			console.log(picker);
+		var control   = this;
+		var picker    = this.container.find( '.kirki-color-control' );
+		var new_color = picker.val();
 
-		this.setting.bind( function ( value ) {
-			console.log( picker.val( value ) );
-			picker.wpColorPicker( 'color', value );
+		picker.wpColorPicker({
+			change: function( event, ui ) {
+				setTimeout( function(){
+					control.setting.set( picker.val() );
+				}, 100 );
+			},
 		});
 	}
 });
