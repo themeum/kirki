@@ -36,6 +36,8 @@ class Kirki_Customizer_Scripts_Default_Scripts extends Kirki_Customizer_Scripts_
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 		wp_enqueue_script( 'jquery-stepper-min-js' );
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
+		wp_enqueue_style( 'wp-color-picker' );
 
 	}
 
