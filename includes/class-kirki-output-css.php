@@ -121,6 +121,9 @@ class Kirki_Output_CSS {
 	 */
 	public static function styles() {
 
+		$google_fonts_array = Kirki()->font_registry->get_google_fonts();
+		$backup_fonts       = Kirki()->font_registry->get_backup_fonts();
+
 		$styles = array();
 
 		foreach ( self::$output as $output ) {
@@ -188,6 +191,16 @@ class Kirki_Output_CSS {
 				if ( ! isset( $output['property'] ) ) {
 					continue;
 				}
+				if ( 'font-family' == $output['property'] ) {
+					// Add backup font
+					if ( Kirki()->font_registry->is_google_font( $value ) ) {
+						if ( isset( $google_fonts_array[ $value ] ) && isset( $google_fonts_array[ $value ]['category'] ) ) {
+							if ( isset( $backup_fonts[ $google_fonts_array[ $value ]['category'] ] ) ) {
+								$value .= ', ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
+							}
+						}
+					}
+				}
 				$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units . $suffix;
 			} else {
 				/**
@@ -208,6 +221,14 @@ class Kirki_Output_CSS {
 					}
 					if ( isset( $value['font-family'] ) ) {
 						$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
+						// Add backup font
+						if ( Kirki()->font_registry->is_google_font( $value['font-family'] ) ) {
+							if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
+								if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
+									$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'] . ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
+								}
+							}
+						}
 					}
 					if ( isset( $value['font-size'] ) ) {
 						$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];

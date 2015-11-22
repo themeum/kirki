@@ -37,12 +37,12 @@ class Kirki_Controls_Editor_Control extends Kirki_Customize_Control {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 			</span>
-			<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea( $this->value() ); ?>">
 			<?php
 				$settings = array(
 					'textarea_name' => $this->id,
 					'teeny'         => true,
 				);
+				add_filter( 'the_editor', array( $this, 'filter_editor_setting_link' ) );
 				wp_editor( html_entity_decode( wp_kses_post( $this->value() ) ), $this->id, $settings );
 
 				do_action( 'admin_footer' );
@@ -51,5 +51,9 @@ class Kirki_Controls_Editor_Control extends Kirki_Customize_Control {
 		</label>
 		<?php
 	}
+
+	public function filter_editor_setting_link( $output ) {
+        return preg_replace( '/<textarea/', '<textarea ' . $this->get_link(), $output, 1 );
+    }
 
 }
