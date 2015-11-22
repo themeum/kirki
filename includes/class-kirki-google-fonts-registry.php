@@ -308,6 +308,7 @@ class Kirki_Google_Fonts_Registry {
 						'label'    => $font['family'],
 						'variants' => $font['variants'],
 						'subsets'  => $font['subsets'],
+						'category' => $font['category'],
 					);
 				}
 			}
@@ -317,6 +318,24 @@ class Kirki_Google_Fonts_Registry {
 		}
 
 		return $this->google_fonts;
+
+	}
+
+	/**
+	 * Return an array of backup fonts based on the font-category
+	 *
+	 * @return array
+	 */
+	public function get_backup_fonts() {
+
+		$backup_fonts = array(
+			'sans-serif'  => 'Helvetica, Arial, sans-serif',
+			'serif'       => 'Georgia, serif',
+			'display'     => '"Comic Sans MS", cursive, sans-serif',
+			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
+			'monospace'   => '"Lucida Console", Monaco, monospace',
+		);
+		return apply_filters( 'kirki/fonts/backup_fonts', $backup_fonts );
 
 	}
 
