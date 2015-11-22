@@ -139,6 +139,7 @@ if ( class_exists( 'Kirki' ) ) {
 		'type'        => 'editor',
 		'settings'    => 'editor_demo',
 		'label'       => esc_attr__( 'Editor Control', 'kirki-demo' ),
+		'description' => esc_attr__( 'Editor Control Description', 'kirki-demo' ),
 		'help'        => esc_attr__( 'This is a tooltip', 'kirki-demo' ),
 		'section'     => 'text',
 		'default'     => esc_attr__( 'This text is entered in the "editor" control.', 'kirki-demo' ),
