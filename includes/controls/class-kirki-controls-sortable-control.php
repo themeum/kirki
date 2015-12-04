@@ -55,9 +55,11 @@ class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 		$values = $this->value() == '' ? array_keys( $this->choices ) : $this->value();
 		$filtered_values = array();
-		foreach ( $values as $key => $value ) {
-			if ( array_key_exists( $value, $this->choices ) ) {
-				$filtered_values[$key] = $value;
+		if ( is_array( $values && ! empty( $values ) ) ) {
+			foreach ( $values as $key => $value ) {
+				if ( array_key_exists( $value, $this->choices ) ) {
+					$filtered_values[$key] = $value;
+				}
 			}
 		}
 

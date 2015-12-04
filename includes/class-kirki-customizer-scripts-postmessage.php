@@ -85,16 +85,29 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 					'suffix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
 				);
 
-				$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
-				$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
-				$suffix = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
+				$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
+				$units    = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
+				$prefix   = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
+				$suffix   = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 
-				$script .= 'wp.customize( \'' . Kirki_Field_Sanitize::sanitize_settings( $args ) . '\', function( value ) {';
+				$script .= 'wp.customize( \'' . $settings . '\', function( value ) {';
 				$script .= 'value.bind( function( newval ) {';
 
 				if ( 'html' == $js_vars['function'] ) {
 
 					$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
+
+				} else if ( 'style' == $js_vars['function'] ) {
+
+					$styleID = uniqid( 'kirki-style-' );
+					$script .= 'if( !$(\'#' . $styleID . '\').size() ) {';
+					$script .= '$(\'head\').append(\'<style id="' . $styleID . '"></style>\');';
+					$script .= '}';
+					$script .= 'if( newval !== \'\') {';
+					$script .= '$(\'#' . $styleID . '\').text(\'' . $js_vars['element'] . '{ ' . $js_vars['property'] . ':' . $prefix . '\' + newval + \'' . $units . $suffix . ';}\');';
+					$script .= '}else{';
+					$script .= '$(\'#' . $styleID . '\').text(\'\');';
+					$script .= "}";
 
 				} else {
 
