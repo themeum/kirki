@@ -26,6 +26,7 @@ class Kirki_Control extends Kirki_Customizer {
 		'sortable'         => 'Kirki_Controls_Sortable_Control',
 		'spacing'          => 'Kirki_Controls_Spacing_Control',
 		'switch'           => 'Kirki_Controls_Switch_Control',
+		'text'             => 'Kirki_Controls_Text_Control',
 		'textarea'         => 'Kirki_Controls_Textarea_Control',
 		'toggle'           => 'Kirki_Controls_Toggle_Control',
 		'typography'       => 'Kirki_Controls_Typography_Control',

@@ -184,6 +184,9 @@ class Kirki_Field_Sanitize {
 			case 'textarea':
 				$field['type'] = 'kirki-textarea';
 				break;
+			case 'text':
+				$field['type'] = 'kirki-text';
+				break;
 		}
 
 		/**
