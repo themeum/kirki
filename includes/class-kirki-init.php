@@ -46,7 +46,7 @@ class Kirki_Init {
 	 * @return void
 	 */
 	public function add_to_customizer() {
-		new Kirki_Fields_Filter();
+		$this->fields_from_filters();
 		add_action( 'customize_register', array( $this, 'register_control_types' ) );
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
@@ -191,6 +191,23 @@ class Kirki_Init {
 	}
 
 	public static function path() {
+
+	}
+
+	/**
+	 * Process fields added using the 'kirki/fields' and 'kirki/controls' filter.
+	 * These filters are no longer used, this is simply for backwards-compatibility
+	 */
+	public function fields_from_filters() {
+
+		$fields = apply_filters( 'kirki/controls', array() );
+		$fields = apply_filters( 'kirki/fields', $fields );
+
+		if ( ! empty( $fields ) ) {
+			foreach ( $fields as $field ) {
+				Kirki::add_field( 'global', $field );
+			}
+		}
 
 	}
 
