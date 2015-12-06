@@ -6,32 +6,36 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 	 * Finds the path to a class that we're requiring and includes the file.
 	 */
 	function kirki_autoload_classes( $class_name ) {
-		$paths    = array();
-		$includes = dirname( __FILE__ ) . '/includes/';
-
+		$paths = array();
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
-			$path     = $includes;
+			$replacements = array(
+				'Controls',
+				'Scripts',
+				'Settings',
+				'Styles',
+			);
+
+			$path     = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
 			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 
 			$paths[] = $path . $filename;
-			$paths[] = $includes . 'lib/' . $filename;
+			$paths[] = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . $filename;
 
-			$classname_no_prefix = str_replace( 'Kirki_', '', $class_name );
+			foreach ( $replacements as $replacement ) {
+				if ( 0 === stripos( $class_name, 'Kirki_' . $replacement ) ) {
+					$substr   = str_replace( 'Kirki_' . $replacement, '', $class_name );
+					$exploded = explode( '_', $substr );
 
-			$filename_parts = explode( '_', str_replace( 'Kirki_', '', $classname_no_prefix ) );
-			$count_parts    = count( $filename_parts );
-			foreach ( $filename_parts as $key => $value ) {
-				$paths[] = $includes . strtolower( $value ) . '/' . $filename;
-				if ( isset( $filename_parts[ $key - 1 ] ) ) {
-					$paths[] = $includes . strtolower( $filename_parts[ $key - 1 ] ) . '/' . strtolower( $filename_parts[ $key ] ) . '/' . $filename;
-					$paths[] = $includes . strtolower( $filename_parts[ $key - 1 ] ) . '-' . strtolower( $filename_parts[ $key ] ) . '/' . $filename;
-				}
-				if ( isset( $filename_parts[ $key - 2 ] ) ) {
-					$paths[] = $includes . strtolower( $filename_parts[ $key - 2 ] ) . '/' . strtolower( $filename_parts[ $key - 1 ] ) . '/' . strtolower( $filename_parts[ $key ] ) . '/' . $filename;
-				}
-				if ( isset( $filename_parts[ $key - 3 ] ) ) {
-					$paths[] = $includes . strtolower( $filename_parts[ $key - 3 ] ) . '/' . strtolower( $filename_parts[ $key - 2 ] ) . '/' . strtolower( $filename_parts[ $key - 1 ] ) . '/' . strtolower( $filename_parts[ $key ] ) . '/' . $filename;
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . $filename;
+					$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( str_replace( '_', '-', str_replace( '_' . $replacement, '', str_replace( 'Kirki_' . $replacement . '_', '', $class_name ) ) ) ) . DIRECTORY_SEPARATOR . $filename;
+					if ( isset( $exploded[1] ) ) {
+						$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . $filename;
+						if ( isset( $exploded[2] ) ) {
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . DIRECTORY_SEPARATOR . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+							$paths[] = $path . strtolower( $replacement ) . DIRECTORY_SEPARATOR . strtolower( $exploded[1] ) . '-' . strtolower( $exploded[2] ) . DIRECTORY_SEPARATOR . $filename;
+						}
+					}
 				}
 			}
 
