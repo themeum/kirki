@@ -82,7 +82,7 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
 					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
 					'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
-					'suffix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
+					'suffix'   => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
 				);
 
 				$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
