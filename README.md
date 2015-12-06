@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0.2  
+**Stable tag:** 2.0.3  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -118,6 +118,10 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea).
 
 ## Changelog ##
+
+### 2.0.3 ###
+
+* Bugfix for updates
 
 ### 2.0.2 ###
 
