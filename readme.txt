@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,12 +119,18 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 == Changelog ==
 
+= 2.0.2 =
+
+December 6, 2015, dev time: 30 minutes
+
+* FIX: Fatal error on update (not on new installations)
+* FIX: Typo
+
 = 2.0.1 =
 
 December 6, 2015, dev time: 10 minutes
 
 * FIX: Some configurations were failing with the new autoloader. Reverted to a simpler file structure.
-
 
 = 2.0 =
 
