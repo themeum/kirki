@@ -68,8 +68,8 @@ $files = array(
 	'lib' . DIRECTORY_SEPARATOR . 'class-kirki-colourlovers.php',
 );
 foreach ( $files as $file ) {
-	if ( file_exists( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file ) {
-		include_once( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file
+	if ( file_exists( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file ) ) {
+		include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file );
 	}
 }
 
