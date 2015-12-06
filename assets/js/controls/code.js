@@ -17,7 +17,7 @@ wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 			control.setting.set( editor.getValue() );
 		});
 
-		element.parents('.accordion-section').on('click', function(e){
+		element.parents('.accordion-section').on('click', function(){
 		    editor.refresh();
 		});
 	}
