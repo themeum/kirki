@@ -27,6 +27,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Include the autoloader
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
+// Manually include all files to resolve an issue with upgrades for versions < 2.0
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	require_once( ABSPATH . WPINC . '/class-wp-customize-control.php' );
+}
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-active-callback.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-config.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-control.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customize-control.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-branding.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-default-scripts.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-enqueue.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-icons.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-postmessage.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts-tooltips.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer-scripts.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-customizer.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-explode-background-field.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-field-sanitize.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-field.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-google-fonts-registry.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-google-fonts-scripts.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-helper.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-init.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-panel.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-sanitize-values.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-sanitize.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-scripts-registry.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-section.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-settings.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-styles-customizer.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-styles-frontend.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-styles-output-css.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-toolkit.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki-values.php' );
+include_once( dirname( __FILE__ ) . '/includes/class-kirki.php' );
+include_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
+include_once( dirname( __FILE__ ) . '/includes/lib/class-kirki-color.php' );
+include_once( dirname( __FILE__ ) . '/includes/lib/class-kirki-colourlovers.php' );
 
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
