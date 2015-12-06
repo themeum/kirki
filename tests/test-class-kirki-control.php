@@ -5,7 +5,7 @@ class Test_Class_Kirki_Control extends WP_UnitTestCase {
 	public function test_control_class_name() {
 		$this->assertEquals(
 			Kirki_Control::control_class_name( array( 'type' => 'text' ) ),
-			'WP_Customize_Control'
+			'Kirki_Controls_Text_Control'
 		);
 		$this->assertEquals(
 			Kirki_Control::control_class_name( array( 'type' => 'checkbox' ) ),

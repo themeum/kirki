@@ -28,7 +28,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'sortable', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'sortable' ) ) );
 		$this->assertEquals( 'switch', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'switch' ) ) );
 		$this->assertEquals( 'switch', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'switch' ) ) );
-		$this->assertEquals( 'text', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'text' ) ) );
+		$this->assertEquals( 'kirki-text', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'text' ) ) );
 		$this->assertEquals( 'kirki-textarea', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'textarea' ) ) );
 		$this->assertEquals( 'toggle', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'toggle' ) ) );
 		$this->assertEquals( 'toggle', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'toggle' ) ) );
@@ -43,7 +43,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 			array(
 				'settings' => 'foo',
 				'section' => 'foo',
-				'type' => 'text',
+				'type' => 'kirki-text',
 				'default' => '',
 				'label' => '',
 				'help' => '',
