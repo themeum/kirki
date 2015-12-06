@@ -71,13 +71,16 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
 		<div class="wrapper">
 			<# if ( data.choices['font-style'] ) { #>
+				<!--
 				<div class="font-style">
-					<div class="bold">
-						<label for="bold_{{ data.id }}">
-							<input name="bold_{{ data.id }}" id="bold_{{ data.id }}" type="checkbox" value="{{ data.value['bold'] }}" {{{ data.link }}}<# if ( '1' == data.value['bold'] ) { #> checked<# } #>>
-							<span class="dashicons dashicons-editor-bold"></span>
-						</label>
-					</div>
+					<# if ( ! data.choices['font-weight'] ) { #>
+						<div class="bold">
+							<label for="bold_{{ data.id }}">
+								<input name="bold_{{ data.id }}" id="bold_{{ data.id }}" type="checkbox" value="{{ data.value['bold'] }}" {{{ data.link }}}<# if ( '1' == data.value['bold'] ) { #> checked<# } #>>
+								<span class="dashicons dashicons-editor-bold"></span>
+							</label>
+						</div>
+					<# } #>
 					<div class="italic">
 						<label for="italic_{{ data.id }}">
 							<input name="italic_{{ data.id }}" id="italic_{{ data.id }}" type="checkbox" value="{{ data.value['italic'] }}" {{{ data.link }}}<# if ( '1' == data.value['italic'] ) { #> checked<# } #>>
@@ -97,6 +100,7 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 						</label>
 					</div>
 				</div>
+				-->
 			<# } #>
 
 			<# if ( data.choices['font-family'] ) { #>

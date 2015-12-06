@@ -85,6 +85,7 @@ Feel free to improve them! :)
 * radio-buttonset
 * radio-image
 * radio
+* repeater
 * select
 * slider
 * sortable
@@ -118,9 +119,9 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 ## Changelog ##
 
-### 1.1.0 ###
+### 2.0 ###
 
-WIP, dev time > 130 hours
+WIP, dev time > 140 hours
 
 * NEW: Added support for `sanitize_callback` arguments on each item in the CSS `output`.
 * NEW: Added the ability to define an array as element in the `output`.

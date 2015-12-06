@@ -184,6 +184,9 @@ class Kirki_Field_Sanitize {
 			case 'textarea':
 				$field['type'] = 'kirki-textarea';
 				break;
+			case 'text':
+				$field['type'] = 'kirki-text';
+				break;
 		}
 
 		/**
@@ -393,6 +396,7 @@ class Kirki_Field_Sanitize {
 				$sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
 				break;
 			case 'text':
+			case 'kirki-text':
 			case 'textarea':
 			case 'editor':
 				$sanitize_callback = 'esc_textarea';
