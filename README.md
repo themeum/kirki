@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0  
+**Stable tag:** 2.0.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -119,9 +119,16 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 ## Changelog ##
 
+### 2.0.1 ###
+
+December 6, 2015, dev time: 10 minutes
+
+* FIX: Some configurations were failing with the new autoloader. Reverted to a simpler file structure.
+
+
 ### 2.0 ###
 
-WIP, dev time > 140 hours
+December 6, 2015, dev time > 140 hours
 
 * NEW: Added support for `sanitize_callback` arguments on each item in the CSS `output`.
 * NEW: Added the ability to define an array as element in the `output`.
