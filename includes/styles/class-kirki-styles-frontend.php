@@ -78,9 +78,9 @@ class Kirki_Styles_Frontend {
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
 				if ( function_exists( 'array_replace_recursive' ) ) {
-					$css = array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
+					$css = array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
 				} else {
-					$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Output_CSS::css( $field ) );
+					$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
 				}
 
 			}
@@ -88,7 +88,7 @@ class Kirki_Styles_Frontend {
 		}
 
 		if ( is_array( $css ) ) {
-			return Kirki_Output_CSS::styles_parse( Kirki_Output_CSS::add_prefixes( $css ) );
+			return Kirki_Styles_Output_CSS::styles_parse( Kirki_Styles_Output_CSS::add_prefixes( $css ) );
 		}
 
 		return;
