@@ -32,6 +32,10 @@ wp.customize.controlConstructor['code'] = wp.customize.Control.extend( {
 		editor.on('change', function() {
 			control.setting.set( editor.getValue() );
 		});
+
+		element.parents('.accordion-section').on('click', function(){
+		    editor.refresh();
+		});
 	}
 });
 /**
