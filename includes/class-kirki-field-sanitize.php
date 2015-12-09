@@ -37,7 +37,7 @@ class Kirki_Field_Sanitize {
 			'description'       => '',
 			'required'          => null,
 			'transport'         => 'refresh',
-			'type'              => 'text',
+			'type'              => 'kirki-text',
 			'option_type'       => 'theme_mod',
 			'option_name'       => '',
 			'section'           => 'title_tagline',
@@ -127,7 +127,7 @@ class Kirki_Field_Sanitize {
 
 		// If no field type has been defined then fallback to text
 		if ( ! isset( $field['type'] ) ) {
-			return 'text';
+			return 'kirki-text';
 		}
 
 		switch ( $field['type'] ) {
