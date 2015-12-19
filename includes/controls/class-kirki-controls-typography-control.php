@@ -168,10 +168,11 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 								<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['letter-spacing'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 							<# } #>
 						<# } else { #>
-						<# var units = data.value['letter-spacing'].replace( parseFloat( data.value['letter-spacing'] ), '' ); #>
-						<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-						<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-						<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+							<# var units = data.value['letter-spacing'].replace( parseFloat( data.value['letter-spacing'] ), '' ); #>
+							<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+							<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+							<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+						<# } #>
 					</select>
 				</div>
 			<# } #>
