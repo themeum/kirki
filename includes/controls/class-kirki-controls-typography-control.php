@@ -120,49 +120,61 @@ class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 					<h5>{{ data.l10n['font-size'] }}</h5>
 					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['font-size'] ) }}"/>
 					<select>
-						<# var units = data.value['font-size'].replace( parseFloat( data.value['font-size'] ), '' ); #>
-						<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-						<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-						<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+						<# if ( data.choices['units'] ) { #>
+							<# for ( key in data.choices['units'] ) { #>
+								<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['font-size'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+							<# } #>
+						<# } else { #>
+							<# var units = data.value['font-size'].replace( parseFloat( data.value['font-size'] ), '' ); #>
+							<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+							<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+							<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+						<# } #>
 					</select>
 				</div>
 			<# } #>
 
 			<# if ( data.choices['font-weight'] ) { #>
-			    <div class="font-weight">
-			        <h5>{{ data.l10n['font-weight'] }}</h5>
-			        <select class="font-weight">
-			            <option value="100" <# if ( 100 == data.value['font-weight'] ) { #> selected<# } #>>100</option>
-			            <option value="200" <# if ( 200 == data.value['font-weight'] ) { #> selected<# } #>>200</option>
-			            <option value="300" <# if ( 300 == data.value['font-weight'] ) { #> selected<# } #>>300</option>
-			            <option value="400" <# if ( 400 == data.value['font-weight'] ) { #> selected<# } #>>400</option>
-			            <option value="500" <# if ( 500 == data.value['font-weight'] ) { #> selected<# } #>>500</option>
-			            <option value="600" <# if ( 600 == data.value['font-weight'] ) { #> selected<# } #>>600</option>
-			            <option value="700" <# if ( 700 == data.value['font-weight'] ) { #> selected<# } #>>700</option>
-			            <option value="800" <# if ( 800 == data.value['font-weight'] ) { #> selected<# } #>>800</option>
-			            <option value="900" <# if ( 900 == data.value['font-weight'] ) { #> selected<# } #>>900</option>
-			        </select>
-			    </div>
+				<div class="font-weight">
+					<h5>{{ data.l10n['font-weight'] }}</h5>
+					<select class="font-weight">
+						<option value="100" <# if ( 100 == data.value['font-weight'] ) { #> selected<# } #>>100</option>
+						<option value="200" <# if ( 200 == data.value['font-weight'] ) { #> selected<# } #>>200</option>
+						<option value="300" <# if ( 300 == data.value['font-weight'] ) { #> selected<# } #>>300</option>
+						<option value="400" <# if ( 400 == data.value['font-weight'] ) { #> selected<# } #>>400</option>
+						<option value="500" <# if ( 500 == data.value['font-weight'] ) { #> selected<# } #>>500</option>
+						<option value="600" <# if ( 600 == data.value['font-weight'] ) { #> selected<# } #>>600</option>
+						<option value="700" <# if ( 700 == data.value['font-weight'] ) { #> selected<# } #>>700</option>
+						<option value="800" <# if ( 800 == data.value['font-weight'] ) { #> selected<# } #>>800</option>
+						<option value="900" <# if ( 900 == data.value['font-weight'] ) { #> selected<# } #>>900</option>
+					</select>
+				</div>
 			<# } #>
 
 			<# if ( data.choices['line-height'] ) { #>
-			    <div class="line-height">
-			        <h5>{{ data.l10n['line-height'] }}</h5>
-			        <input type="number" min="0" step="any" value="{{ data.value['line-height'] }}"/>
-			    </div>
+				<div class="line-height">
+					<h5>{{ data.l10n['line-height'] }}</h5>
+					<input type="number" min="0" step="any" value="{{ data.value['line-height'] }}"/>
+				</div>
 			<# } #>
 
 			<# if ( data.choices['letter-spacing'] ) { #>
-			    <div class="letter-spacing">
+				<div class="letter-spacing">
 					<h5>{{ data.l10n['letter-spacing'] }}</h5>
-			        <input type="number" min="0" step="any" value="{{ parseFloat( data.value['letter-spacing'] ) }}"/>
-			        <select>
-						<# var units = data.value['letter-spacing'].replace( parseFloat( data.value['letter-spacing'] ), '' ); #>
-						<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-						<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-						<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-			        </select>
-			    </div>
+					<input type="number" min="0" step="any" value="{{ parseFloat( data.value['letter-spacing'] ) }}"/>
+					<select>
+						<# if ( data.choices['units'] ) { #>
+							<# for ( key in data.choices['units'] ) { #>
+								<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['letter-spacing'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+							<# } #>
+						<# } else { #>
+							<# var units = data.value['letter-spacing'].replace( parseFloat( data.value['letter-spacing'] ), '' ); #>
+							<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
+							<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
+							<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
+						<# } #>
+					</select>
+				</div>
 			<# } #>
 		</div>
 		<?php

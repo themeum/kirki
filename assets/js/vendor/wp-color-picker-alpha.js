@@ -204,8 +204,6 @@
 					self.options.customWidth = 100;
 				}
 
-				console.log( self.options.customWidth );
-
 				// Set default width for input reset
 				self.options.defaultWidth = el.width();
 

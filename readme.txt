@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,7 +119,23 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 == Changelog ==
 
+= 2.0.4 =
+
+December 19, 2015, dev time: 3 hours
+
+* NEW: Added units support to the Typography field
+* NEW: Default methods of enqueuing styles in now inline.
+* NEW: Added 'inline_css' argument to config. set to false to add styles using AJAX.
+* FIX: HTML mode for CodeMirror now functional
+* FIX: PHP Notices when the config filter is used wrong
+* FIX: Monor bugfix for text inputs
+* FIX: Indentation & coding standards
+* FIX: failing PHPUNIT test.
+* TWEAK: Remove passing click event object
+
 = 2.0.3 =
+
+December 6, 2015, dev time: 45 minutes
 
 * Bugfix for updates
 

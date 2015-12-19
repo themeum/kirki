@@ -34,7 +34,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'toggle', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'toggle' ) ) );
 		$this->assertEquals( 'upload', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'upload' ) ) );
 
-		$this->assertEquals( 'text', Kirki_Field_Sanitize::sanitize_control_type( array() ) );
+		$this->assertEquals( 'kirki-text', Kirki_Field_Sanitize::sanitize_control_type( array() ) );
 
 	}
 
