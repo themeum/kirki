@@ -27,7 +27,8 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       indentSwitch = parserConfig.indentSwitch !== false,
       namespaceSeparator = parserConfig.namespaceSeparator,
       isPunctuationChar = parserConfig.isPunctuationChar || /[\[\]{}\(\),;\:\.]/,
-      isNumberChar = parserConfig.isNumberChar || /\d/,
+      numberStart = parserConfig.numberStart || /[\d\.]/,
+      number = parserConfig.number || /^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i,
       isOperatorChar = parserConfig.isOperatorChar || /[+\-*&%=<>!?|\/]/,
       endStatement = parserConfig.endStatement || /^[;:,]$/;
 
@@ -47,9 +48,10 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       curPunc = ch;
       return null;
     }
-    if (isNumberChar.test(ch)) {
-      stream.eatWhile(/[\w\.]/);
-      return "number";
+    if (numberStart.test(ch)) {
+      stream.backUp(1)
+      if (stream.match(number)) return "number"
+      stream.next()
     }
     if (ch == "/") {
       if (stream.eat("*")) {
@@ -220,6 +222,10 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       }
       var closing = firstChar == ctx.type;
       var switchBlock = ctx.prev && ctx.prev.type == "switchstatement";
+      if (parserConfig.allmanIndentation && /[{(]/.test(firstChar)) {
+        while (ctx.type != "top" && ctx.type != "}") ctx = ctx.prev
+        return ctx.indented
+      }
       if (isStatement(ctx.type))
         return ctx.indented + (firstChar == "{" ? 0 : statementIndentUnit);
       if (ctx.align && (!dontAlignCalls || ctx.type != ")"))
@@ -252,8 +258,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     }
   }
   var cKeywords = "auto if break case register continue return default do sizeof " +
-    "static else struct switch extern typedef float union for " +
-    "goto while enum const volatile";
+    "static else struct switch extern typedef union for goto while enum const volatile";
   var cTypes = "int long char short double float unsigned signed void size_t ptrdiff_t";
 
   function cppHook(stream, state) {
@@ -530,19 +535,36 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     modeProps: {closeBrackets: {triples: '"'}}
   });
 
+  function tokenKotlinString(tripleString){
+    return function (stream, state) {
+      var escaped = false, next, end = false;
+      while (!stream.eol()) {
+        if (!tripleString && !escaped && stream.match('"') ) {end = true; break;}
+        if (tripleString && stream.match('"""')) {end = true; break;}
+        next = stream.next();
+        if(!escaped && next == "$" && stream.match('{'))
+          stream.skipTo("}");
+        escaped = !escaped && next == "\\" && !tripleString;
+      }
+      if (end || !tripleString)
+        state.tokenize = null;
+      return "string";
+    }
+  }
+
   def("text/x-kotlin", {
     name: "clike",
     keywords: words(
       /*keywords*/
       "package as typealias class interface this super val " +
       "var fun for is in This throw return " +
-      "break continue object if else while do try when !in !is as?" +
+      "break continue object if else while do try when !in !is as? " +
 
       /*soft keywords*/
       "file import where by get set abstract enum open inner override private public internal " +
       "protected catch finally out final vararg reified dynamic companion constructor init " +
       "sealed field property receiver param sparam lateinit data inline noinline tailrec " +
-      "external annotation crossinline"
+      "external annotation crossinline const operator infix"
     ),
     types: words(
       /* package java.lang */
@@ -551,10 +573,18 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       "Runtime Runnable SecurityManager Short StackTraceElement StrictMath String " +
       "StringBuffer System Thread ThreadGroup ThreadLocal Throwable Triple Void"
     ),
+    intendSwitch: false,
+    indentStatements: false,
     multiLineStrings: true,
     blockKeywords: words("catch class do else finally for if where try while enum"),
     defKeywords: words("class val var object package interface fun"),
     atoms: words("true false null this"),
+    hooks: {
+      '"': function(stream, state) {
+        state.tokenize = tokenKotlinString(stream.match('""'));
+        return state.tokenize(stream, state);
+      }
+    },
     modeProps: {closeBrackets: {triples: '"'}}
   });
 
@@ -703,7 +733,8 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
                    " native optional sealed see serializable shared suppressWarnings tagged throws variable"),
     isPunctuationChar: /[\[\]{}\(\),;\:\.`]/,
     isOperatorChar: /[+\-*&%=<>!?|^~:\/]/,
-    isNumberChar: /[\d#$]/,
+    numberStart: /[\d#$]/,
+    number: /^(?:#[\da-fA-F_]+|\$[01_]+|[\d_]+[kMGTPmunpf]?|[\d_]+\.[\d_]+(?:[eE][-+]?\d+|[kMGTPmunpf]|)|)/i,
     multiLineStrings: true,
     typeFirstDefinitions: true,
     atoms: words("true false null larger smaller equal empty finished"),
