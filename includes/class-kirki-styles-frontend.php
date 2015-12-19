@@ -39,12 +39,21 @@ class Kirki_Styles_Frontend {
 			return;
 		}
 
-		add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'dynamic_css' ) );
-		add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'dynamic_css' ) );
+		if ( isset( $config['inline_css'] ) && false == $config['inline_css'] ) {
+			add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+			add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+		} else {
+			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ) );
+		}
 
 	}
 
-	public function dynamic_css() {
+	public function inline_dynamic_css() {
+		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
+		wp_add_inline_style( 'kirki-styles', self::loop_controls() );
+	}
+
+	public function ajax_dynamic_css() {
 		require( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'dynamic-css.php' );
 		exit;
 	}

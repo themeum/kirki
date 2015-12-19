@@ -48,6 +48,10 @@ class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 		if ( file_exists( Kirki::$path . $lang_file ) || ! file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $lang_file ) ) ) {
 			$language = $this->choices['language'];
 		}
+		// hack for 'html' mode.
+		if ( 'html' == $language ) {
+			$language = 'htmlmixed';
+		}
 		/**
 		 * Get the theme
 		 */
@@ -62,9 +66,21 @@ class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
 		Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'codemirror' ) );
 		/**
-		 * Add language script
+		 * If we're using html mode, we'll also need to include the multiplex addon
+		 * as well as dependencies for XML, JS, CSS languages.
 		 */
-		wp_enqueue_script( 'codemirror-language-' . $language, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $language . '/' . $language . '.js', array( 'jquery', 'codemirror' ) );
+		if ( in_array( $language, array( 'html', 'htmlmixed' ) ) ) {
+			wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-css', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/css/css.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
+		} else {
+			/**
+			 * Add language script
+			 */
+			wp_enqueue_script( 'codemirror-language-' . $language, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $language . '/' . $language . '.js', array( 'jquery', 'codemirror' ) );
+		}
 		/**
 		 * Add theme styles
 		 */

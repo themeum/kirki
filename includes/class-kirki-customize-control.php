@@ -19,7 +19,9 @@ if ( class_exists( 'Kirki_Customize_Control' ) ) {
 
 class Kirki_Customize_Control extends WP_Customize_Control {
 
-	public $help = '';
+	public $help    = '';
+	public $js_vars = array();
+	public $output  = array();
 
 	public function to_json() {
 		parent::to_json();
@@ -29,6 +31,8 @@ class Kirki_Customize_Control extends WP_Customize_Control {
 		} else {
 			$this->json['default'] = $this->setting->default;
 		}
+		$this->json['js_vars'] = $this->js_vars;
+		$this->json['output']  = $this->output;
 		$this->json['value']   = $this->value();
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();

@@ -246,6 +246,9 @@ if ( class_exists( 'Kirki' ) ) {
 				'function' => 'css',
 			),
 		),
+		'choices' => array(
+			'units' => array( '%', 'rem', 'vmax' )
+		),
 	) );
 
 	Kirki::add_field( 'kirki_demo', array(
@@ -445,6 +448,7 @@ if ( class_exists( 'Kirki' ) ) {
 			'font-weight'    => true,
 			'line-height'    => true,
 			'letter-spacing' => true,
+			'units'          => array( 'px', 'rem' ),
 		),
 		'output' => array(
 			array(

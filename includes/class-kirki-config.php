@@ -55,13 +55,14 @@ class Kirki_Config extends Kirki_Customizer {
 	 */
 	public function config_from_filters() {
 		// get the args from the filter
-		$args = apply_filters( 'kirki/config', $this->default_args );
+		$default_args = $this->default_args;
+		$args = apply_filters( 'kirki/config', $default_args );
 		// create a valid config by merging with the default args.
 		$valid_args = array();
-		$valid_args['capability']  = $args['capability'];
-		$valid_args['option_type'] = $args['option_type'];
-		$valid_args['option_name'] = $args['option_name'];
-		$valid_args['compiler']    = $args['compiler'];
+		$valid_args['capability']  = isset( $args['capability'] ) ? $args['capability'] : $default_args['capability'];
+		$valid_args['option_type'] = isset( $args['option_type'] ) ? $args['option_type'] : $default_args['option_type'];
+		$valid_args['option_name'] = isset( $args['option_name'] ) ? $args['option_name'] : $default_args['option_name'];
+		$valid_args['compiler']    = isset( $args['compiler'] ) ? $args['compiler'] : $default_args['compiler'];
 
 		return $valid_args;
 
