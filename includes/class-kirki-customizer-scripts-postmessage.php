@@ -133,7 +133,11 @@ class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 	public function enqueue_script() {
 		if ( ! self::$script_added && '' != self::$postmessage_script ) {
 			self::$script_added = true;
-			echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$postmessage_script . '});</script>';
+			?>
+			<script>
+				<?php require( Kirki::$path . '/assets/js/kirki-postmessage.js' ); ?>
+			</script>
+			<?php
 		}
 	}
 
