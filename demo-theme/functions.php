@@ -4,7 +4,7 @@
  * Add the theme's styles.css
  */
 function kirki_demo_scripts() {
-	wp_enqueue_style( 'kirki-demo', Kirki::$url . '/demo-theme/style.css', array(), time() );
+	wp_enqueue_style( 'kirki-demo', trailingslashit( Kirki::$url ) . 'demo-theme/style.css', array(), time() );
 }
 add_action( 'wp_enqueue_scripts', 'kirki_demo_scripts' );
 

@@ -17,7 +17,16 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 			var control_step = ( 'any' == control.params.choises.step ) ? '0.001' : control.params.choices.step;
 			jQuery( element ).spinner( 'option', 'step', control_step );
 		}
+		// On change
 		this.container.on( 'change', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+		// On click
+		this.container.on( 'click', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+		// On keyup
+		this.container.on( 'keyup', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}
