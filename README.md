@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0.4  
+**Stable tag:** 2.0.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -118,6 +118,15 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea).
 
 ## Changelog ##
+
+### 2.0.5 ###
+
+December 23, 2015, dev time: 2.5 hours
+
+* FIX: Disabled the ajax-loading method for stylesheets. All styles are now added inline. Will be re-examined for a future release.
+* FIX: Number controls were not properly triggering changes
+* FIX: Styling for number controls
+* FIX: In some cases the dynamic CSS was added before the main stylesheet. We now add them using a priority of 999 to ensure they are enqueued afterwards.
 
 ### 2.0.4 ###
 
