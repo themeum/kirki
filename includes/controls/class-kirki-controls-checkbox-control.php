@@ -28,7 +28,7 @@ class Kirki_Controls_Checkbox_Control extends Kirki_Customize_Control {
 			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
 		<# } #>
 		<label>
-			<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
+			<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value !== 'false' ) { #> checked<# } #> />
 			{{ data.label }}
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
