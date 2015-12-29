@@ -105,6 +105,7 @@ final class Kirki_Toolkit {
 			'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
 			'left'                  => esc_attr__( 'Left', 'kirki' ),
 			'right'                 => esc_attr__( 'Right', 'kirki' ),
+			'color'                 => esc_attr__( 'Color', 'kirki' ),
 		);
 
 		$config = apply_filters( 'kirki/config', array() );
