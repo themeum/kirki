@@ -1,14 +1,14 @@
-# Copyright (C) 2015 Aristeides Stathopoulos
+# Copyright (C) 2016 Aristeides Stathopoulos
 # This file is distributed under the same license as the Kirki Toolkit package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 2.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2015-12-23 15:43:36+00:00\n"
+"POT-Creation-Date: 2016-01-02 19:35:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.3\n"
@@ -62,8 +62,8 @@ msgstr ""
 #: demo-theme/functions.php:295 demo-theme/functions.php:327
 #: demo-theme/functions.php:359 demo-theme/functions.php:375
 #: demo-theme/functions.php:391 demo-theme/functions.php:421
-#: demo-theme/functions.php:433 demo-theme/functions.php:464
-#: demo-theme/functions.php:499 demo-theme/functions.php:516
+#: demo-theme/functions.php:433 demo-theme/functions.php:466
+#: demo-theme/functions.php:501 demo-theme/functions.php:518
 msgid "This is a tooltip"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgid ""
 "as the theme. In this demo we are using a CSS editor with the monokai theme."
 msgstr ""
 
-#: demo-theme/functions.php:168 demo-theme/functions.php:564
+#: demo-theme/functions.php:168 demo-theme/functions.php:566
 msgid "Color Control"
 msgstr ""
 
@@ -175,27 +175,27 @@ msgid ""
 msgstr ""
 
 #: demo-theme/functions.php:264 demo-theme/functions.php:282
-#: demo-theme/functions.php:522 demo-theme/functions.php:541
+#: demo-theme/functions.php:524 demo-theme/functions.php:543
 msgid "Option 1"
 msgstr ""
 
 #: demo-theme/functions.php:265 demo-theme/functions.php:283
-#: demo-theme/functions.php:523 demo-theme/functions.php:550
+#: demo-theme/functions.php:525 demo-theme/functions.php:552
 msgid "Option 2"
 msgstr ""
 
 #: demo-theme/functions.php:266 demo-theme/functions.php:284
-#: demo-theme/functions.php:524
+#: demo-theme/functions.php:526
 msgid "Option 3"
 msgstr ""
 
 #: demo-theme/functions.php:267 demo-theme/functions.php:285
-#: demo-theme/functions.php:525
+#: demo-theme/functions.php:527
 msgid "Option 4"
 msgstr ""
 
 #: demo-theme/functions.php:268 demo-theme/functions.php:286
-#: demo-theme/functions.php:526
+#: demo-theme/functions.php:528
 msgid "Option 5"
 msgstr ""
 
@@ -239,17 +239,17 @@ msgid "A simple radio-inputs control."
 msgstr ""
 
 #: demo-theme/functions.php:364 demo-theme/functions.php:380
-#: demo-theme/functions.php:505
+#: demo-theme/functions.php:507
 msgid "Red"
 msgstr ""
 
 #: demo-theme/functions.php:365 demo-theme/functions.php:381
-#: demo-theme/functions.php:506
+#: demo-theme/functions.php:508
 msgid "Green"
 msgstr ""
 
 #: demo-theme/functions.php:366 demo-theme/functions.php:382
-#: demo-theme/functions.php:507
+#: demo-theme/functions.php:509
 msgid "Blue"
 msgstr ""
 
@@ -296,11 +296,11 @@ msgid ""
 "you can define which of the controls you want shown."
 msgstr ""
 
-#: demo-theme/functions.php:462
+#: demo-theme/functions.php:464
 msgid "Repeater Control"
 msgstr ""
 
-#: demo-theme/functions.php:463
+#: demo-theme/functions.php:465
 msgid ""
 "The \"repeater\" control allows you to create rows of data and you can "
 "define the fields that the rows will use. Valide field-types are: text, "
@@ -308,64 +308,64 @@ msgid ""
 "array."
 msgstr ""
 
-#: demo-theme/functions.php:470 demo-theme/index.php:245
+#: demo-theme/functions.php:472 demo-theme/index.php:245
 msgid "Kirki Site"
 msgstr ""
 
-#: demo-theme/functions.php:474 demo-theme/index.php:249
+#: demo-theme/functions.php:476 demo-theme/index.php:249
 msgid "Kirki Repository"
 msgstr ""
 
-#: demo-theme/functions.php:481
+#: demo-theme/functions.php:483
 msgid "Link Text"
 msgstr ""
 
-#: demo-theme/functions.php:482
+#: demo-theme/functions.php:484
 msgid "This will be the label for your link"
 msgstr ""
 
-#: demo-theme/functions.php:487
+#: demo-theme/functions.php:489
 msgid "Link URL"
 msgstr ""
 
-#: demo-theme/functions.php:488
+#: demo-theme/functions.php:490
 msgid "This will be the link URL"
 msgstr ""
 
-#: demo-theme/functions.php:497
+#: demo-theme/functions.php:499
 msgid "Select Control"
 msgstr ""
 
-#: demo-theme/functions.php:498
+#: demo-theme/functions.php:500
 msgid ""
 "A simple select (dropdown) control, allowing you to make a single option "
 "from a relatively large pool of options."
 msgstr ""
 
-#: demo-theme/functions.php:504
+#: demo-theme/functions.php:506
 msgid "Placeholder Text"
 msgstr ""
 
-#: demo-theme/functions.php:514
+#: demo-theme/functions.php:516
 msgid "Select Control (multiple)"
 msgstr ""
 
-#: demo-theme/functions.php:515
+#: demo-theme/functions.php:517
 msgid ""
 "A multi-select control, allowing you to select multiple items "
 "simultaneously as well as re-arrange them at will using a simple "
 "drag-n-drop interface. Data is saved as an array."
 msgstr ""
 
-#: demo-theme/functions.php:533
+#: demo-theme/functions.php:535
 msgid "Preset control"
 msgstr ""
 
-#: demo-theme/functions.php:534
+#: demo-theme/functions.php:536
 msgid "Bulk-changes the value of other controls."
 msgstr ""
 
-#: demo-theme/functions.php:573
+#: demo-theme/functions.php:575
 msgid "Color Alpha Control"
 msgstr ""
 
@@ -731,6 +731,10 @@ msgstr ""
 
 #: includes/class-kirki-toolkit.php:107
 msgid "Right"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:108
+msgid "Color"
 msgstr ""
 
 #: includes/controls/class-kirki-controls-repeater-control.php:34
