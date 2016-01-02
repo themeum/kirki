@@ -242,6 +242,9 @@ class Kirki_Styles_Output_CSS {
 					if ( isset( $value['letter-spacing'] ) ) {
 						$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
 					}
+					if ( isset( $value['color'] ) ) {
+						$styles[ $output['media_query'] ][ $element ]['color'] = $value['color'];
+					}
 				}
 				/**
 				 * Take care of "spacing" controls output
