@@ -1219,6 +1219,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		if ( control.container.has( '.letter-spacing' ).size() ) {
 			compiled_value['letter-spacing'] = control.setting._value['letter-spacing'];
 		}
+		if ( control.container.has( '.color' ).size() ) {
+			compiled_value['color'] = control.setting._value['color'];
+		}
 
 		// use selectize
 		jQuery( '.customize-control-typography select' ).selectize();
@@ -1338,6 +1341,20 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				control.setting.set( compiled_value );
 				wp.customize.previewer.refresh();
 			});
+		}
+
+		// color
+		if ( control.container.has( '.color' ).size() ) {
+			var picker = this.container.find ( '.kirki-color-control' );
+			picker.wpColorPicker ( {
+				change: function() {
+					setTimeout ( function() {
+						compiled_value[ 'color' ] = picker.val ();
+						control.setting.set ( compiled_value );
+						wp.customize.previewer.refresh ();
+					}, 100 );
+				}
+			} );
 		}
 	}
 });
