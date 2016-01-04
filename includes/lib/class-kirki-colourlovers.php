@@ -15,58 +15,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Colourlovers' ) ) {
-	return;
-}
-
-class Kirki_Colourlovers {
-
-	/**
-	 * Returns an array properly formatted for use by the Kirki_Palette control.
-	 *
-	 * @param 	$palettes_nr	int		the number of palettes we want to get
-	 * @return array
-	 */
-	public static function get_palettes( $palettes_nr = 5 ) {
-
-		$palettes = self::parse();
-		$palettes = array_slice( $palettes, 0, $palettes_nr );
-
-		$i = 0;
-		foreach ( $palettes as $palette ) {
-			$palettes[$i] = array();
-			foreach ( $palette as $key => $value ) {
-				$palettes[$i][$key] = Kirki_Color::sanitize_hex( $value );
-			}
-			$i++;
-		}
-
-		return $palettes;
-
-	}
-
-	/**
-	 * Get the palettes from an XML file and parse them.
-	 *
-	 * @param string|null $xml
-	 */
-	public static function parse( $xml = null ) {
+if ( ! class_exists( 'Kirki_Colourlovers' ) ) {
+	class Kirki_Colourlovers {
 
 		/**
-		 * Parse the XML file.
-		 * XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
+		 * Returns an array properly formatted for use by the Kirki_Palette control.
+		 *
+		 * @param 	$palettes_nr	int		the number of palettes we want to get
+		 * @return array
 		 */
-		$xml_url  = ( is_null( $xml ) ) ? trailingslashit( Kirki::$url ) . 'assets/xml/colourlovers-top.xml' : $xml;
-		$feed_xml = simplexml_load_file( $xml_url );
+		public static function get_palettes( $palettes_nr = 5 ) {
 
-		$palettes = array();
-		foreach ( $feed_xml->palette as $result ) {
-			$palettes[] = (array) $result->colors->hex;
+			$palettes = self::parse();
+			$palettes = array_slice( $palettes, 0, $palettes_nr );
+
+			$i = 0;
+			foreach ( $palettes as $palette ) {
+				$palettes[$i] = array();
+				foreach ( $palette as $key => $value ) {
+					$palettes[$i][$key] = Kirki_Color::sanitize_hex( $value );
+				}
+				$i++;
+			}
+
+			return $palettes;
+
 		}
 
-		return $palettes;
+		/**
+		 * Get the palettes from an XML file and parse them.
+		 *
+		 * @param string|null $xml
+		 */
+		public static function parse( $xml = null ) {
+
+			/**
+			 * Parse the XML file.
+			 * XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
+			 */
+			$xml_url  = ( is_null( $xml ) ) ? trailingslashit( Kirki::$url ) . 'assets/xml/colourlovers-top.xml' : $xml;
+			$feed_xml = simplexml_load_file( $xml_url );
+
+			$palettes = array();
+			foreach ( $feed_xml->palette as $result ) {
+				$palettes[] = (array) $result->colors->hex;
+			}
+
+			return $palettes;
+
+		}
 
 	}
-
 }

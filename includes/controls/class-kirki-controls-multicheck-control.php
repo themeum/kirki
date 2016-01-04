@@ -17,40 +17,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
-	return;
-}
+if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
+	class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
 
-class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
+		public $type = 'multicheck';
 
-	public $type = 'multicheck';
+		protected function content_template() { ?>
 
-	protected function content_template() { ?>
+			<# if ( ! data.choices ) { return; } #>
 
-		<# if ( ! data.choices ) { return; } #>
-
-		<# if ( data.help ) { #>
-			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
-		<# } #>
-
-		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
-		<# } #>
-
-		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{ data.description }}</span>
-		<# } #>
-
-		<ul>
-			<# for ( key in data.choices ) { #>
-				<li>
-					<label>
-						<input type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />
-						{{ data.choices[ key ] }}
-					</label>
-				</li>
+			<# if ( data.help ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
-		</ul>
-	<?php }
+
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{ data.label }}</span>
+			<# } #>
+
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
+
+			<ul>
+				<# for ( key in data.choices ) { #>
+					<li>
+						<label>
+							<input type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />
+							{{ data.choices[ key ] }}
+						</label>
+					</li>
+				<# } #>
+			</ul>
+		<?php }
+	}
 }
