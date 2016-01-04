@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		/** @var Kirki The only instance of this class */
 		public static $instance = null;
 
-		public static $version = '2.0.5';
+		public static $version = '2.0.6-dev';
 
 		public $font_registry = null;
 		public $scripts       = null;
@@ -101,6 +101,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
 				'left'                  => esc_attr__( 'Left', 'kirki' ),
 				'right'                 => esc_attr__( 'Right', 'kirki' ),
+				'color'                 => esc_attr__( 'Color', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

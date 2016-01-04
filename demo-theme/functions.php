@@ -439,6 +439,7 @@ if ( class_exists( 'Kirki' ) ) {
 			'font-weight'    => '400',
 			'line-height'    => '1.5',
 			'letter-spacing' => '0',
+			'color'          => '#333333',
 		),
 		'priority'    => 10,
 		'choices'     => array(
@@ -448,6 +449,7 @@ if ( class_exists( 'Kirki' ) ) {
 			'font-weight'    => true,
 			'line-height'    => true,
 			'letter-spacing' => true,
+			'color'          => true,
 			'units'          => array( 'px', 'rem' ),
 		),
 		'output' => array(

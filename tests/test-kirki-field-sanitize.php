@@ -3,69 +3,73 @@
 class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 
 	public function test_sanitize_control_type() {
+		$assertions = array(
+			'kirki-checkbox'  => array( 'type' => 'checkbox' ),
+			'color-alpha'     => array( 'type' => 'color-alpha' ),
+			'color-alpha'     => array( 'type' => 'color_alpha' ),
+			'color-alpha'     => array( 'type' => 'color', 'default' => 'rgba(0,0,0,1)' ),
+			'color'           => array( 'type' => 'color' ),
+			'custom'          => array( 'type' => 'custom' ),
+			'custom'          => array( 'type' => 'group-title' ),
+			'custom'          => array( 'type' => 'group_title' ),
+			'dropdown-pages'  => array( 'type' => 'dropdown-pages' ),
+			'editor'          => array( 'type' => 'editor' ),
+			'image'           => array( 'type' => 'image' ),
+			'multicheck'      => array( 'type' => 'multicheck' ),
+			'number'          => array( 'type' => 'number' ),
+			'palette'         => array( 'type' => 'palette' ),
+			'radio-buttonset' => array( 'type' => 'radio-buttonset' ),
+			'radio-buttonset' => array( 'type' => 'radio', 'mode' => 'buttonset' ),
+			'radio-image'     => array( 'type' => 'radio-image' ),
+			'radio-image'     => array( 'type' => 'radio', 'mode' => 'image' ),
+			'kirki-radio'     => array( 'type' => 'radio' ),
+			'kirki-select'    => array( 'type' => 'select' ),
+			'slider'          => array( 'type' => 'slider' ),
+			'sortable'        => array( 'type' => 'sortable' ),
+			'switch'          => array( 'type' => 'switch' ),
+			'switch'          => array( 'type' => 'checkbox', 'mode' => 'switch' ),
+			'kirki-text'      => array( 'type' => 'text' ),
+			'kirki-textarea'  => array( 'type' => 'textarea' ),
+			'toggle'          => array( 'type' => 'toggle' ),
+			'toggle'          => array( 'type' => 'checkbox', 'mode' => 'toggle' ),
+			'upload'          => array( 'type' => 'upload' ),
+			'kirki-text'      => array(),
+		);
 
-		$this->assertEquals( 'kirki-checkbox', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox' ) ) );
-		$this->assertEquals( 'color-alpha', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'color-alpha' ) ) );
-		$this->assertEquals( 'color-alpha', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'color_alpha' ) ) );
-		$this->assertEquals( 'color-alpha', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'color', 'default' => 'rgba(0,0,0,1)' ) ) );
-		$this->assertEquals( 'color', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'color' ) ) );
-		$this->assertEquals( 'custom', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'custom' ) ) );
-		$this->assertEquals( 'custom', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'group-title' ) ) );
-		$this->assertEquals( 'custom', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'group_title' ) ) );
-		$this->assertEquals( 'dropdown-pages', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'dropdown-pages' ) ) );
-		$this->assertEquals( 'editor', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'editor' ) ) );
-		$this->assertEquals( 'image', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'image' ) ) );
-		$this->assertEquals( 'multicheck', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'multicheck' ) ) );
-		$this->assertEquals( 'number', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'number' ) ) );
-		$this->assertEquals( 'palette', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'palette' ) ) );
-		$this->assertEquals( 'radio-buttonset', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'radio-buttonset' ) ) );
-		$this->assertEquals( 'radio-buttonset', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'radio', 'mode' => 'buttonset' ) ) );
-		$this->assertEquals( 'radio-image', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'radio-image' ) ) );
-		$this->assertEquals( 'radio-image', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'radio', 'mode' => 'image' ) ) );
-		$this->assertEquals( 'kirki-radio', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'radio' ) ) );
-		$this->assertEquals( 'kirki-select', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'select' ) ) );
-		$this->assertEquals( 'slider', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'slider' ) ) );
-		$this->assertEquals( 'sortable', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'sortable' ) ) );
-		$this->assertEquals( 'switch', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'switch' ) ) );
-		$this->assertEquals( 'switch', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'switch' ) ) );
-		$this->assertEquals( 'kirki-text', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'text' ) ) );
-		$this->assertEquals( 'kirki-textarea', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'textarea' ) ) );
-		$this->assertEquals( 'toggle', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'toggle' ) ) );
-		$this->assertEquals( 'toggle', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'checkbox', 'mode' => 'toggle' ) ) );
-		$this->assertEquals( 'upload', Kirki_Field_Sanitize::sanitize_control_type( array( 'type' => 'upload' ) ) );
-
-		$this->assertEquals( 'kirki-text', Kirki_Field_Sanitize::sanitize_control_type( array() ) );
+		foreach ( $assertions as $result => $field_args ) {
+			$this->assertEquals( $result, Kirki_Field_Sanitize::sanitize_control_type( $field_args ) );
+		}
 
 	}
 
 	public function test_sanitize_field() {
 		$this->assertEquals(
 			array(
-				'settings' => 'foo',
-				'section' => 'foo',
-				'type' => 'kirki-text',
-				'default' => '',
-				'label' => '',
-				'help' => '',
-				'description' => '',
-				'required' => null,
-				'transport' => 'refresh',
-				'option_type' => 'theme_mod',
-				'priority' => 10,
-				'choices' => array(),
-				'output' => array(),
+				'settings'          => 'foo',
+				'section'           => 'foo',
+				'type'              => 'kirki-text',
+				'default'           => '',
+				'label'             => '',
+				'help'              => '',
+				'description'       => '',
+				'required'          => null,
+				'transport'         => 'refresh',
+				'option_type'       => 'theme_mod',
+				'priority'          => 10,
+				'choices'           => array(),
+				'output'            => array(),
 				'sanitize_callback' => 'esc_textarea',
-				'js_vars' => array(),
-				'id' => 'foo',
-				'capability' => 'edit_theme_options',
-				'variables' => null,
-				'active_callback' => '__return_true',
-				'option_name' => ''
+				'js_vars'           => array(),
+				'id'                => 'foo',
+				'capability'        => 'edit_theme_options',
+				'variables'         => null,
+				'active_callback'   => '__return_true',
+				'option_name'       => ''
 			),
 			Kirki_Field_Sanitize::sanitize_field( array(
 				'settings' => 'foo',
-				'section' => 'foo',
-				'type' => 'text',
+				'section'  => 'foo',
+				'type'     => 'text',
 			) ) );
 	}
 

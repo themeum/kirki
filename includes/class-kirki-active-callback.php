@@ -14,22 +14,25 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 			// Get all fields
 			$fields = Kirki::$fields;
 
-			if ( ! isset( $fields[ $object->id ] ) ) {
+			// Make sure the current object matches a registered field.
+			if ( ! isset( $object->setting->id ) || ! isset( $fields[ $object->setting->id ] ) ) {
 				return true;
 			}
 
-			$current_object = $fields[ $object->id ];
+			$current_object = $fields[ $object->setting->id ];
 
 			if ( isset( $current_object['required'] ) ) {
 
 				foreach ( $current_object['required'] as $requirement ) {
+
+					$current_setting = $object->manager->get_setting( $requirement['setting'] );
 
 					/**
 					 * If the setting required does not exist, then show the control.
 					 * This ensures that even if we enter the wrong settings,
 					 * the field will not mysteriously disappear.
 					 */
-					if ( ! is_object( $object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] ) ) ) {
+					if ( ! is_object( $current_setting ) ) {
 						$show = true;
 					}
 
@@ -50,7 +53,7 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 					 */
 					$show = self::compare(
 						$requirement['value'],
-						$object->manager->get_setting( $fields[ $requirement['setting'] ]['settings'] )->value(),
+						$current_setting->value(),
 						$requirement['operator']
 					);
 

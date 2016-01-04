@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
-	class Kirki_Field_Sanitize {
+	class Kirki_Field_Sanitize extends Kirki_Sanitize {
 
 		/**
 		 * Sanitizes the field

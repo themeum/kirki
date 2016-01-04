@@ -40,6 +40,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : '',
 				'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : '',
 				'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : '',
+				'color'          => isset( $value['color'] ) ? $value['color'] : '',
 			);
 			$this->json['l10n'] = array(
 				'font-family'    => $i18n['font-family'],
@@ -47,6 +48,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'font-weight'    => $i18n['font-weight'],
 				'line-height'    => $i18n['line-height'],
 				'letter-spacing' => $i18n['letter-spacing'],
+				'color'          => $i18n['color'],
 			);
 		}
 
@@ -67,9 +69,8 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 
 			<div class="wrapper">
 				<# if ( data.choices['font-style'] ) { #>
-					<!--
 					<div class="font-style">
-						<# if ( ! data.choices['font-weight'] ) { #>
+						<# if ( data.choices['font-style']['bold'] ) { #>
 							<div class="bold">
 								<label for="bold_{{ data.id }}">
 									<input name="bold_{{ data.id }}" id="bold_{{ data.id }}" type="checkbox" value="{{ data.value['bold'] }}" {{{ data.link }}}<# if ( '1' == data.value['bold'] ) { #> checked<# } #>>
@@ -77,30 +78,36 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 								</label>
 							</div>
 						<# } #>
-						<div class="italic">
-							<label for="italic_{{ data.id }}">
-								<input name="italic_{{ data.id }}" id="italic_{{ data.id }}" type="checkbox" value="{{ data.value['italic'] }}" {{{ data.link }}}<# if ( '1' == data.value['italic'] ) { #> checked<# } #>>
-								<span class="dashicons dashicons-editor-italic"></span>
-							</label>
-						</div>
-						<div class="underline">
-							<label for="underline_{{ data.id }}">
-								<input name="underline_{{ data.id }}" id="underline_{{ data.id }}" type="checkbox" value="{{ data.value['underline'] }}" {{{ data.link }}}<# if ( '1' == data.value['underline'] ) { #> checked<# } #>>
-								<span class="dashicons dashicons-editor-underline"></span>
-							</label>
-						</div>
-						<div class="strikethrough">
-							<label for="strikethrough_{{ data.id }}">
-								<input name="strikethrough_{{ data.id }}" id="strikethrough_{{ data.id }}" type="checkbox" value="{{ data.value['strikethrough'] }}" {{{ data.link }}}<# if ( '1' == data.value['strikethrough'] ) { #> checked<# } #>>
-								<span class="dashicons dashicons-editor-strikethrough"></span>
-							</label>
-						</div>
+						<# if ( data.choices['font-style']['italic'] ) { #>
+							<div class="italic">
+								<label for="italic_{{ data.id }}">
+									<input name="italic_{{ data.id }}" id="italic_{{ data.id }}" type="checkbox" value="{{ data.value['italic'] }}" {{{ data.link }}}<# if ( '1' == data.value['italic'] ) { #> checked<# } #>>
+									<span class="dashicons dashicons-editor-italic"></span>
+								</label>
+							</div>
+						<# } #>
+						<# if ( data.choices['font-style']['underline'] ) { #>
+							<div class="underline">
+								<label for="underline_{{ data.id }}">
+									<input name="underline_{{ data.id }}" id="underline_{{ data.id }}" type="checkbox" value="{{ data.value['underline'] }}" {{{ data.link }}}<# if ( '1' == data.value['underline'] ) { #> checked<# } #>>
+									<span class="dashicons dashicons-editor-underline"></span>
+								</label>
+							</div>
+						<# } #>
+						<# if ( data.choices['font-style']['strikethrough'] ) { #>
+							<div class="strikethrough">
+								<label for="strikethrough_{{ data.id }}">
+									<input name="strikethrough_{{ data.id }}" id="strikethrough_{{ data.id }}" type="checkbox" value="{{ data.value['strikethrough'] }}" {{{ data.link }}}<# if ( '1' == data.value['strikethrough'] ) { #> checked<# } #>>
+									<span class="dashicons dashicons-editor-strikethrough"></span>
+								</label>
+							</div>
+						<# } #>
 					</div>
-					-->
 				<# } #>
 
 				<# if ( data.choices['font-family'] ) { #>
 					<# if ( '' == data.value['font-family'] ) { data.value['font-family'] = data.default['font-family']; } #>
+					<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 					<div class="font-family">
 						<h5>{{ data.l10n['font-family'] }}</h5>
 						<select class="font-family select2">
@@ -172,20 +179,30 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						</select>
 					</div>
 				<# } #>
+
+				<# if ( data.choices['color'] ) { #>
+					<div class="color">
+						<h5>{{ data.l10n['color'] }}</h5>
+						<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+					</div>
+				<# } #>
 			</div>
 			<?php
 		}
 
 		public function get_standard_fonts() {
-			return Kirki()->font_registry->get_standard_fonts();
+			$kirki = Kirki();
+			return $kirki->font_registry->get_standard_fonts();
 		}
 
 		public function get_google_fonts() {
-			return Kirki()->font_registry->get_google_fonts();
+			$kirki = Kirki();
+			return $kirki->font_registry->get_google_fonts();
 		}
 
 		public function get_all_fonts() {
-			$fonts = Kirki()->font_registry->get_all_fonts();
+			$kirki = Kirki();
+			$fonts = $kirki->font_registry->get_all_fonts();
 			$fonts_array = array();
 			foreach ( $fonts as $key => $font ) {
 				if ( is_array( $font ) ) {
