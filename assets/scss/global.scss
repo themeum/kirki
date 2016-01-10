@@ -198,3 +198,22 @@ input[type="text"] {
 	border-radius: 3px;
 	padding: .5em;
 }
+
+/////////////////////
+// Custom Kirki Logo
+/////////////////////
+.wp-full-overlay.expanded {
+	#customize-footer-actions {
+		.kirki-footer-thanks {
+			position: fixed;
+		    bottom: 8px;
+		    left: 150px;
+		    padding: 0;
+		    width: 90px;
+		    height: 25px;
+		    background-image: url("../images/kirki-bottom.png");
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		}
+	}
+}

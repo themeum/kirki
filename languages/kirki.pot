@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Kirki Toolkit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kirki Toolkit 2.0.5\n"
+"Project-Id-Version: Kirki Toolkit 2.0.6-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-01-02 19:35:55+00:00\n"
+"POT-Creation-Date: 2016-01-10 04:23:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -382,12 +382,12 @@ msgid "Checkbox is %s"
 msgstr ""
 
 #: demo-theme/index.php:40 demo-theme/index.php:44 demo-theme/index.php:48
-#: includes/class-kirki-toolkit.php:77
+#: includes/class-kirki-toolkit.php:73
 msgid "ON"
 msgstr ""
 
 #: demo-theme/index.php:40 demo-theme/index.php:44 demo-theme/index.php:48
-#: includes/class-kirki-toolkit.php:78
+#: includes/class-kirki-toolkit.php:74
 msgid "OFF"
 msgstr ""
 
@@ -529,215 +529,215 @@ msgstr ""
 msgid "repeater:"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:52
+#: includes/class-kirki-toolkit.php:48
 msgid "Background Color"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:53
+#: includes/class-kirki-toolkit.php:49
 msgid "Background Image"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:54
+#: includes/class-kirki-toolkit.php:50
 msgid "No Repeat"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:55
+#: includes/class-kirki-toolkit.php:51
 msgid "Repeat All"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:56
+#: includes/class-kirki-toolkit.php:52
 msgid "Repeat Horizontally"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:57
+#: includes/class-kirki-toolkit.php:53
 msgid "Repeat Vertically"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:58
+#: includes/class-kirki-toolkit.php:54
 msgid "Inherit"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:59
+#: includes/class-kirki-toolkit.php:55
 msgid "Background Repeat"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:60
+#: includes/class-kirki-toolkit.php:56
 msgid "Cover"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:61
+#: includes/class-kirki-toolkit.php:57
 msgid "Contain"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:62
+#: includes/class-kirki-toolkit.php:58
 msgid "Background Size"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:63
+#: includes/class-kirki-toolkit.php:59
 msgid "Fixed"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:64
+#: includes/class-kirki-toolkit.php:60
 msgid "Scroll"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:65
+#: includes/class-kirki-toolkit.php:61
 msgid "Background Attachment"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:66
+#: includes/class-kirki-toolkit.php:62
 msgid "Left Top"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:67
+#: includes/class-kirki-toolkit.php:63
 msgid "Left Center"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:68
+#: includes/class-kirki-toolkit.php:64
 msgid "Left Bottom"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:69
+#: includes/class-kirki-toolkit.php:65
 msgid "Right Top"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:70
+#: includes/class-kirki-toolkit.php:66
 msgid "Right Center"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:71
+#: includes/class-kirki-toolkit.php:67
 msgid "Right Bottom"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:72
+#: includes/class-kirki-toolkit.php:68
 msgid "Center Top"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:73
+#: includes/class-kirki-toolkit.php:69
 msgid "Center Center"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:74
+#: includes/class-kirki-toolkit.php:70
 msgid "Center Bottom"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:75
+#: includes/class-kirki-toolkit.php:71
 msgid "Background Position"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:76
+#: includes/class-kirki-toolkit.php:72
 msgid "Background Opacity"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:79
+#: includes/class-kirki-toolkit.php:75
 msgid "All"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:80
+#: includes/class-kirki-toolkit.php:76
 msgid "Cyrillic"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:81
+#: includes/class-kirki-toolkit.php:77
 msgid "Cyrillic Extended"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:82
+#: includes/class-kirki-toolkit.php:78
 msgid "Devanagari"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:83
+#: includes/class-kirki-toolkit.php:79
 msgid "Greek"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:84
+#: includes/class-kirki-toolkit.php:80
 msgid "Greek Extended"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:85
+#: includes/class-kirki-toolkit.php:81
 msgid "Khmer"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:86
+#: includes/class-kirki-toolkit.php:82
 msgid "Latin"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:87
+#: includes/class-kirki-toolkit.php:83
 msgid "Latin Extended"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:88
+#: includes/class-kirki-toolkit.php:84
 msgid "Vietnamese"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:89
+#: includes/class-kirki-toolkit.php:85
 msgid "Hebrew"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:90
+#: includes/class-kirki-toolkit.php:86
 msgid "Arabic"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:91
+#: includes/class-kirki-toolkit.php:87
 msgid "Bengali"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:92
+#: includes/class-kirki-toolkit.php:88
 msgid "Gujarati"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:93
+#: includes/class-kirki-toolkit.php:89
 msgid "Tamil"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:94
+#: includes/class-kirki-toolkit.php:90
 msgid "Telugu"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:95
+#: includes/class-kirki-toolkit.php:91
 msgid "Thai"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:99
+#: includes/class-kirki-toolkit.php:95
 msgid "Font Family"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:100
+#: includes/class-kirki-toolkit.php:96
 msgid "Font Size"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:101
+#: includes/class-kirki-toolkit.php:97
 msgid "Font Weight"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:102
+#: includes/class-kirki-toolkit.php:98
 msgid "Line Height"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:103
+#: includes/class-kirki-toolkit.php:99
 msgid "Letter Spacing"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:104
+#: includes/class-kirki-toolkit.php:100
 msgid "Top"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:105
+#: includes/class-kirki-toolkit.php:101
 msgid "Bottom"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:106
+#: includes/class-kirki-toolkit.php:102
 msgid "Left"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:107
+#: includes/class-kirki-toolkit.php:103
 msgid "Right"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:108
+#: includes/class-kirki-toolkit.php:104
 msgid "Color"
 msgstr ""
 
-#: includes/controls/class-kirki-controls-repeater-control.php:34
+#: includes/controls/class-kirki-controls-repeater-control.php:30
 msgid "Add new row"
 msgstr ""
 
@@ -770,17 +770,17 @@ msgstr ""
 msgid "http://aristeides.com"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:96
+#: includes/class-kirki-toolkit.php:92
 msgctxt "font style"
 msgid "Serif"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:97
+#: includes/class-kirki-toolkit.php:93
 msgctxt "font style"
 msgid "Sans Serif"
 msgstr ""
 
-#: includes/class-kirki-toolkit.php:98
+#: includes/class-kirki-toolkit.php:94
 msgctxt "font style"
 msgid "Monospace"
 msgstr ""
