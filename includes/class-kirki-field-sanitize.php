@@ -75,10 +75,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 */
 			$field['type'] = self::sanitize_control_type( $field );
 			/**
-			 * Sanitize the settings argument
-			 */
-			$field['settings'] = self::sanitize_settings( $field );
-			/**
 			 * Sanitize the choices argument
 			 */
 			$field['choices'] = ( isset( $field['choices'] ) ) ? $field['choices'] : array();
@@ -285,40 +281,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 * All good, a capability has been defined so return that escaped.
 			 */
 			return esc_attr( $field['capability'] );
-
-		}
-
-		/**
-		 * Sanitizes the setting name
-		 *
-		 * @param array the field definition
-		 * @return string
-		 */
-		public static function sanitize_settings( $field ) {
-
-			/**
-			 * If an array, we must process each setting separately
-			 */
-			if ( is_array( $field['settings'] ) ) {
-				$settings = array();
-				foreach ( $field['settings'] as $setting_key => $setting_value ) {
-					if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $field['option_name'] ).'['.esc_attr( $setting_value ).']';
-					} else {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
-					}
-				}
-				return $settings;
-			}
-
-			/**
-			 * If we're using options & option_name is set, then we need to modify the setting.
-			 */
-			if ( 'option' == self::sanitize_type( $field ) && '' != self::sanitize_option_name( $field ) ) {
-				$field['settings'] = esc_attr( $field['option_name'] ) . '[' . esc_attr( $field['settings'] ) . ']';
-			}
-
-			return $field['settings'];
 
 		}
 

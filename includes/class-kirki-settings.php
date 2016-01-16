@@ -13,7 +13,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		public function add_settings( $args ) {
 
 			if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
-				$settings          = Kirki_Field_Sanitize::sanitize_settings( $args );
+				$settings          = $args['settings'];
 				$defaults          = isset( $args['default'] ) ? $args['default'] : array();
 				$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $args );
 				foreach ( $settings as $setting_key => $setting_value ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 			if ( isset( $args['type'] ) && array_key_exists( $args['type'], Kirki_Control::$setting_types ) ) {
 				// We must instantiate a custom class for the setting
 				$setting_classname = Kirki_Control::$setting_types[ $args['type'] ];
-				$this->wp_customize->add_setting( new $setting_classname( $this->wp_customize, Kirki_Field_Sanitize::sanitize_settings( $args ), array(
+				$this->wp_customize->add_setting( new $setting_classname( $this->wp_customize, $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
 					'type'              => Kirki_Field_Sanitize::sanitize_type( $args ),
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				) ) );
 
 			} else {
-				$this->wp_customize->add_setting( Kirki_Field_Sanitize::sanitize_settings( $args ), array(
+				$this->wp_customize->add_setting( $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
 					'type'              => Kirki_Field_Sanitize::sanitize_type( $args ),
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),

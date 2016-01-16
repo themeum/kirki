@@ -82,7 +82,7 @@ if ( ! class_exists( 'Kirki_PostMessage' ) ) {
 						'js_callback' => ( isset( $js_vars['js_callback'] ) ) ? esc_js( $js_vars['js_callback'] ) : '',
 					);
 
-					$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
+					$settings    = $args['settings'];
 					$prefix      = ( ! empty( $js_vars['prefix'] ) ) ? $js_vars['prefix'] . " + " : '';
 					$units       = ( ! empty( $js_vars['units'] ) ) ? " + " . $js_vars['units'] : '';
 					$suffix      = ( ! empty( $js_vars['suffix'] ) ) ? $js_vars['suffix'] : '';

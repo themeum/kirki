@@ -88,8 +88,6 @@ if ( ! class_exists( 'Kirki_Scripts_Customizer_Tooltips' ) ) {
 				return;
 			}
 
-			$args['settings'] = Kirki_Field_Sanitize::sanitize_settings( $args );
-
 			$script = '';
 			if ( isset( $args['help'] ) && ! empty( $args['help'] ) ) {
 				$content = "<a href='#' class='tooltip hint--left' data-hint='" . wp_strip_all_tags( $args['help'] ) . "'><span class='dashicons dashicons-info'></span></a>";

@@ -143,12 +143,6 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 		$this->assertEquals( 'activate_plugins', Kirki_Field_Sanitize::sanitize_capability( array() ) );
 	}
 
-	public function test_sanitize_settings() {
-		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => 'foo' ) ) );
-		$this->assertEquals( 'foo[bar]', Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => 'bar', 'option_type' => 'option', 'option_name' => 'foo' ) ) );
-		$this->assertEquals( 'foo[bar]', Kirki_Field_Sanitize::sanitize_settings( array( 'settings' => 'foo[bar]' ) ) );
-	}
-
 	public function test_sanitize_id() {
 		$this->assertEquals( 'foo', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo' ) ) );
 		$this->assertEquals( 'foo-bar', Kirki_Field_Sanitize::sanitize_id( array( 'settings' => 'foo[bar]' ) ) );

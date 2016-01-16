@@ -33,11 +33,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				/**
 				 * Create the scripts for postMessage to properly work
 				 */
-				Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
+				// Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
 				/**
 				 * Create the scripts for tooltips.
 				 */
-				Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
+				// Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
 			}
 
 		}
@@ -85,10 +85,30 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			/**
 			 * Check if [settings] is set.
-			 * If not set, check for [setting]
+			 * If not set, check for [setting].
+			 * After this check is complete, we'll do some additional tweaking
+			 * based on whether this is an option or a theme_mod.
+			 * If an option and option_name is also defined,
+			 * then we'll have to change the setting.
 			 */
 			if ( ! isset( $args['settings'] ) && isset( $args['setting'] ) ) {
 				$args['settings'] = $args['setting'];
+			}
+			if ( is_array( $args['settings'] ) ) {
+				$settings = array();
+				foreach ( $args['settings'] as $setting_key => $setting_value ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+					if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
+						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $config['option_name'] ).'['.esc_attr( $setting_value ).']';
+					}
+				}
+				$args['settings'] = $settings;
+			} else {
+				if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
+					$args['settings'] = esc_attr( $args['option_name'] ) . '[' . esc_attr( $args['settings'] ) . ']';
+				} else {
+					$args['settings'] = esc_attr( $args['settings'] );
+				}
 			}
 
 			/**
@@ -102,7 +122,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			/**
 			 * Add the field to the static $fields variable properly indexed
 			 */
-			Kirki::$fields[ Kirki_Field_Sanitize::sanitize_settings( $args ) ] = $args;
+			Kirki::$fields[ $args['settings'] ] = $args;
 
 			if ( 'background' == $args['type'] ) {
 				/**
