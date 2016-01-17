@@ -98,7 +98,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         this.setValue( [], false );
 
         // The DIV that holds all the rows
-        this.repeaterFieldsContainer = control.container.find('.repeater-fields').first();
+        this.repeaterFieldsContainer = this.container.find('.repeater-fields').first();
 
         // Set number of rows to 0
         this.currentIndex = 0;
@@ -107,9 +107,21 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         this.rows = [];
 
 
-        control.container.on('click', 'button.repeater-add', function (e) {
+        this.container.on('click', 'button.repeater-add', function (e) {
             e.preventDefault();
             control.addRow();
+        });
+
+        this.container.on('click keypress', '.repeater-field-image .upload-button', function (e) {
+            e.preventDefault();
+            control.$thisButton = jQuery(this);
+            control.openFrame();
+        });
+
+        this.container.on('click keypress', '.repeater-field-image .remove-button', function (e) {
+            e.preventDefault();
+            control.$thisButton = jQuery(this);
+            control.removeImage();
         });
 
         /**
@@ -153,6 +165,71 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
     },
 
+    /**
+     * Open the media modal.
+     */
+    openFrame: function() {
+        if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
+
+        if ( ! this.frame ) {
+            this.initFrame();
+        }
+
+        this.frame.open();
+    },
+
+    initFrame : function()
+    {
+        var control = this;
+
+        this.frame = wp.media({
+            states: [
+                new wp.media.controller.Library({
+                    library:   wp.media.query({ type: 'image' }),
+                    multiple:  false,
+                    date:      false
+                })
+            ]
+        });
+
+        // When a file is selected, run a callback.
+        this.frame.on( 'select', function(e){
+            control.selectImage();
+        });
+    },
+
+    selectImage : function()
+    {
+        var attachment = this.frame.state().get( 'selection' ).first().toJSON();
+
+        var image_src = attachment.url;
+
+        var $targetDiv = this.$thisButton.closest('.repeater-field-image');
+
+        $targetDiv.find('.kirki-image-attachment').html( '<img src="'+ image_src +'">' )
+        .hide().slideDown('slow');
+        $targetDiv.find('.hidden-field').val(image_src);
+        this.$thisButton.text( this.$thisButton.data('alt-label') );
+        $targetDiv.find('.remove-button').show();
+
+        //This will activate the save button
+        $targetDiv.find('input, textarea').trigger('change');
+    },
+
+    removeImage : function()
+    {
+        if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
+
+        var $targetDiv = this.$thisButton.closest('.repeater-field-image');
+        var $uploadButton = $targetDiv.find('.upload-button');
+
+        $targetDiv.find('.kirki-image-attachment').slideUp( 'fast', function(){
+            jQuery(this).html('');
+        });
+        $targetDiv.find('.hidden-field').val('');
+        $uploadButton.text($uploadButton.data('label'));
+        this.$thisButton.hide();
+    },
 
 
     /**
