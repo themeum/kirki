@@ -10,7 +10,7 @@ wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend( {
 			var compiled_value = [];
 			var i = 0;
 			jQuery.each( control.params.choices, function( key, value ) {
-				if ( jQuery( 'input[value="' + key + '"' ).is( ':checked' ) ) {
+				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
 					compiled_value[i] = key;
 					i++;
 				}
