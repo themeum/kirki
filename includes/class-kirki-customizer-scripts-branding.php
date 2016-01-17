@@ -17,47 +17,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Customizer_Scripts_Branding' ) ) {
-	return;
-}
+if ( ! class_exists( 'Kirki_Customizer_Scripts_Branding' ) ) {
+	class Kirki_Customizer_Scripts_Branding extends Kirki_Customizer_Scripts_Enqueue {
 
-class Kirki_Customizer_Scripts_Branding extends Kirki_Customizer_Scripts_Enqueue {
+		/**
+		 * If we've specified an image to be used as logo,
+		 * replace the default theme description with a div that will include our logo.
+		 */
+		public function generate_script( $args = array() ) {
 
-	/**
-	 * If we've specified an image to be used as logo,
-	 * replace the default theme description with a div that will include our logo.
-	 */
-	public function generate_script( $args = array() ) {
-
-		$config = apply_filters( 'kirki/config', array() );
-		$script = '';
-		if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
-			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
-				$config['logo_image'] = esc_url_raw( $config['logo_image'] );
-				$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $config['logo_image'] . '">\' );';
+			$config = apply_filters( 'kirki/config', array() );
+			$script = '';
+			if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
+				if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
+					$config['logo_image'] = esc_url_raw( $config['logo_image'] );
+					$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $config['logo_image'] . '">\' );';
+				}
+				if ( isset( $config['description'] ) && '' != $config['description'] ) {
+					$config['description'] = esc_textarea( $config['description'] );
+					$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $config['description'] . '</div></div>\' );';
+				}
 			}
-			if ( isset( $config['description'] ) && '' != $config['description'] ) {
-				$config['description'] = esc_textarea( $config['description'] );
-				$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $config['description'] . '</div></div>\' );';
+
+			return $script;
+
+		}
+
+		public function customize_controls_print_scripts() {
+			$script = $this->generate_script();
+			if ( '' != $script ) {
+				echo Kirki_Scripts_Registry::prepare( $script );
 			}
 		}
 
-		return $script;
+		public function customize_controls_enqueue_scripts() {}
 
-	}
-
-	public function customize_controls_print_scripts() {
-		$script = $this->generate_script();
-		if ( '' != $script ) {
-			echo Kirki_Scripts_Registry::prepare( $script );
+		public function customize_controls_print_footer_scripts() {
+			$config = apply_filters( 'kirki/config', array() );
+			if ( ! isset( $config['no_thanks'] ) || true != $config['no_thanks'] ) {
+				$script = '$(\'<a class="kirki-footer-thanks" href="http://kirki.org" target="_blank"></a>\').appendTo(".wp-full-overlay.expanded #customize-footer-actions");';
+				echo Kirki_Scripts_Registry::prepare( $script );
+			}
 		}
+
+		public function wp_footer() {}
+
 	}
-
-	public function customize_controls_enqueue_scripts() {}
-
-	public function customize_controls_print_footer_scripts() {}
-
-	public function wp_footer() {}
-
 }

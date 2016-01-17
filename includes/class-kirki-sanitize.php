@@ -1,3 +1,5 @@
 <?php
 
-class Kirki_Sanitize extends Kirki_Customizer {}
+if ( ! class_exists( 'Kirki_Sanitize' ) ) {
+	class Kirki_Sanitize extends Kirki_Customizer {}
+}

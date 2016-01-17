@@ -134,6 +134,17 @@ input[type="text"] {
   border-radius: 3px;
   padding: .5em; }
 
+.wp-full-overlay.expanded #customize-footer-actions .kirki-footer-thanks {
+  position: fixed;
+  bottom: 8px;
+  left: 150px;
+  padding: 0;
+  width: 90px;
+  height: 25px;
+  background-image: url("../images/kirki-bottom.png");
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 .customize-control input[type="checkbox"] {
   position: relative;
   margin: 0 1rem 0 0;
@@ -870,6 +881,14 @@ span.CodeMirror-selectedtext {
   padding: 0;
   height: 36px;
   overflow: hidden; }
+.customize-control-repeater .remove-button, .customize-control-repeater .upload-button {
+  width: 48%; }
+
+.kirki-image-attachment {
+  margin: 0;
+  text-align: center; }
+  .kirki-image-attachment img {
+    display: inline-block; }
 
 .selectize-control {
   position: relative; }

@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
 
 		$this_input.val( input_default );
 		$this_input.change();
+		$( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( input_default );
 	});
 
 });

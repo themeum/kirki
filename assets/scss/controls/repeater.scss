@@ -101,4 +101,16 @@
 	    height: 36px;
 	    overflow: hidden;
 	}
+
+	.remove-button, .upload-button{
+		width: 48%;
+	}
+}
+
+.kirki-image-attachment{
+	margin: 0;
+	text-align:center;
+	img{
+		display:inline-block;
+	}
 }
