@@ -881,6 +881,14 @@ span.CodeMirror-selectedtext {
   padding: 0;
   height: 36px;
   overflow: hidden; }
+.customize-control-repeater .remove-button, .customize-control-repeater .upload-button {
+  width: 48%; }
+
+.kirki-image-attachment {
+  margin: 0;
+  text-align: center; }
+  .kirki-image-attachment img {
+    display: inline-block; }
 
 .selectize-control {
   position: relative; }
