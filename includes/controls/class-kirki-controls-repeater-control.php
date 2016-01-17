@@ -21,23 +21,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		public $fields = array();
 
-		public $button_label = '';
-
-		public $upload_button_label = '';
-
-		public $upload_button_alt_label = '';
-
-		public $remove_button_label = '';
-
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
-
-			$i18n = Kirki_Toolkit::i18n();
-			$this->upload_button_label = apply_filters( 'kirki/upload_button_label' , $i18n['add_image'], $id );
-			$this->upload_button_alt_label = apply_filters( 'kirki/upload_button_alt_label' , $i18n['change_image'], $id );
-			$this->remove_button_label = apply_filters( 'kirki/remove_button_label' , $i18n['remove'], $id );
-
-			$this->thumbnail = '';
 
 			if ( empty( $this->button_label ) ) {
 				$this->button_label =  esc_attr__( 'Add new row', 'Kirki' );
@@ -63,7 +48,24 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
-			$this->json['fields'] = $this->fields;
+
+			$fields = $this->fields;
+
+			$default_image_button_labels = array(
+				'default'     => esc_attr__( 'Add Image' , 'Kirki' ),
+				'remove'      => esc_attr__( 'Remove' , 'Kirki' ),
+				'change'      => esc_attr__( 'Change Image' , 'Kirki' ),
+				'placeholder' => esc_attr__( 'No Image selected' , 'Kirki' ),
+			);
+
+			foreach ( $fields as $key => $field ) {
+				if ( $field['type'] != 'image' )
+					continue;
+
+				$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
+			}
+
+			$this->json['fields'] = $fields;
 		}
 
 		public function enqueue() {
@@ -186,7 +188,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<# } #>
 								<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
-							<# } else if ( field.type === 'image' ) { #>
+							<# } else if ( field.type === 'image' ) { console.log(field); #>
 
 								<label>
 									<# if ( field.label ) { #>
@@ -200,16 +202,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<figure class="kirki-image-attachment">
 									<# if ( field.default ) { #>
 										<img src="{{{ field.default }}}">
+									<# } else { #>
+										{{ field.buttonLabels.placeholder }}
 									<# } #>
 								</figure>
 
 								<div class="actions">
-									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php echo esc_html( $this->remove_button_label ); ?></button>
-									<button type="button" class="button upload-button" data-label="<?php echo esc_html( $this->upload_button_label ); ?>" data-alt-label="<?php echo esc_html( $this->upload_button_alt_label ); ?>" >
+									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ field.buttonLabels.remove }}</button>
+									<button type="button" class="button upload-button" data-label="{{{ field.buttonLabels.default }}}" data-alt-label="{{{ field.buttonLabels.change }}}" >
 										<# if ( field.default ) { #>
-											<?php echo esc_html( $this->upload_button_alt_label ); ?>
+											{{ field.buttonLabels.change }}
 										<# } else { #>
-											<?php echo esc_html( $this->upload_button_label ); ?>
+											{{ field.buttonLabels.default }}
 										<# } #>
 									</button>
 									<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
