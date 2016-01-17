@@ -103,13 +103,3 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 
 // Add an empty config for global fields
 Kirki::add_config( '' );
-
-/**
- * To enable the demo theme, just add this line to your wp-config.php file:
- * define( 'KIRKI_CONFIG', true );
- * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
- * Activate that theme to test all controls.
- */
-if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) ) {
-	register_theme_directory( dirname( __FILE__ ) );
-}
