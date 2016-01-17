@@ -124,10 +124,11 @@ To get an idea on how to include Kirki in your next project, you can take a look
 * FIX: Fix active callback for multidimensional arrays. (props @andrezrv)
 * FIX: Correctly check current value of checkbox control. (props @andrezrv)
 * FIX: Bug in the sortable field (props @daviedR)
+* FIX: Fixed some bugs that occured when using serialized options instead of theme_mods
 * NEW: Added an image sub-field to repeater fields (props @sayedwp)
 * NEW: Added a JS callback to js_vars (props @pingram3541)
 * TWEAK: Settings sanitization
-* FIX: Fixed some bugs that occured when using serialized options instead of theme_mods
+* TWEAK: Removed demo theme from the plugin. This is now provided separately on https://github.com/aristath/kirki-demo
 
 ### 2.0.5 ###
 
