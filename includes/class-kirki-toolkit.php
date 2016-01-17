@@ -102,9 +102,10 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'left'                  => esc_attr__( 'Left', 'kirki' ),
 				'right'                 => esc_attr__( 'Right', 'kirki' ),
 				'color'                 => esc_attr__( 'Color', 'kirki' ),
-				'add_image'             => esc_attr__( 'Add Image' , 'kirki' ),
-				'change_image'          => esc_attr__( 'Change Image' , 'kirki' ),
-				'remove'                => esc_attr__( 'Remove' , 'kirki' )
+				'add-image'             => esc_attr__( 'Add Image' , 'kirki' ),
+				'change-image'          => esc_attr__( 'Change Image' , 'kirki' ),
+				'remove'                => esc_attr__( 'Remove' , 'kirki' ),
+				'no-image-selected'     => esc_attr__( 'No Image Selected', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );
