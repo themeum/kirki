@@ -21,9 +21,18 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 
 			$current_object = $fields[ $object->setting->id ];
 
-			if ( isset( $current_object['required'] ) ) {
+			if ( isset( $current_object['required'] ) && is_array( $current_object['required'] ) ) {
 
 				foreach ( $current_object['required'] as $requirement ) {
+					if ( ! isset( $requirement['operator'] ) || ! isset( $requirement['value'] ) || ! isset( $requirement['setting'] ) ) {
+						return true;
+					}
+
+					if ( isset( $current_object['option_name'] ) && '' != $current_object['option_name'] ) {
+						if ( false === strpos( $requirement['setting'], '[' ) ) {
+							$requirement['setting'] = $current_object['option_name'] . '[' . $requirement['setting'] . ']';
+						}
+					}
 
 					$current_setting = $object->manager->get_setting( $requirement['setting'] );
 
