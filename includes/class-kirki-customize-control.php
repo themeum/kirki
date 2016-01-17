@@ -34,6 +34,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			$this->json['link']    = $this->get_link();
 			$this->json['help']    = $this->help;
 			$this->json['id']      = $this->id;
+			$this->json['i18n']    = Kirki_Toolkit::i18n();
 		}
 
 		public function enqueue() {

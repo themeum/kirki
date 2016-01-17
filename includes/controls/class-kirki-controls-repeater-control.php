@@ -32,11 +32,10 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
 
-			$this->upload_button_label = apply_filters( 'kirki/upload_button_label' , esc_attr__( 'Add Image' , 'Kirki' ), $id );
-
-			$this->upload_button_alt_label = apply_filters( 'kirki/upload_button_alt_label' , esc_attr__( 'Change Image' , 'Kirki' ), $id );
-
-			$this->remove_button_label = apply_filters( 'kirki/remove_button_label' , esc_attr__( 'Remove' , 'Kirki' ), $id );
+			$i18n = Kirki_Toolkit::i18n();
+			$this->upload_button_label = apply_filters( 'kirki/upload_button_label' , $i18n['add_image'], $id );
+			$this->upload_button_alt_label = apply_filters( 'kirki/upload_button_alt_label' , $i18n['change_image'], $id );
+			$this->remove_button_label = apply_filters( 'kirki/remove_button_label' , $i18n['remove'], $id );
 
 			$this->thumbnail = '';
 
