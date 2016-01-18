@@ -3,18 +3,12 @@
 if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 	class Kirki_Customizer_Scripts_Loading extends Kirki_Customizer {
 		public function __construct() {
-
 			/**
 			 * Add the "loading" icon
 			 */
 			add_action( 'wp_footer', array( $this, 'add_loader_to_footer' ) );
 			add_action( 'wp_head', array( $this, 'add_loader_styles_to_header' ), 99 );
 			$this->remove_default_loading_styles();
-			/**
-			 * Add custom JS to the customizer
-			 */
-			add_action( 'wp_footer', array( $this, 'customizer_scripts' ) );
-
 		}
 
 		/**
