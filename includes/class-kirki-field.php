@@ -33,11 +33,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				/**
 				 * Create the scripts for postMessage to properly work
 				 */
-				// Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
+				Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
 				/**
 				 * Create the scripts for tooltips.
 				 */
-				// Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
+				Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
 			}
 
 		}

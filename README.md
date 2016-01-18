@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0.6  
+**Stable tag:** 2.0.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -115,11 +115,21 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 
 ## Sample Theme ##
 
-To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea).
+To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea) or use our test theme from https://github.com/aristath/kirki-demo.
 
 ## Changelog ##
 
+### 2.0.7 ###
+
+January 19, 2016, dev time: 1 hour
+
+* FIX: Narrow the scope of "multicheck" modification checker (props @chetzof)
+* FIX: PHP warnings due to invalid callback method
+* FIX: postMessage bug introduced in 2.0.6 (2 lines commented-out)
+
 ### 2.0.6 ###
+
+January 18, 2016, dev time: 7 hours
 
 * FIX: Fix active callback for multidimensional arrays. (props @andrezrv)
 * FIX: Correctly check current value of checkbox control. (props @andrezrv)
