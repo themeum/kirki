@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       2.0.5.beta
+ * Version:       2.0.6
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -27,51 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Include the autoloader
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
-// Manually include all files to resolve an issue with upgrades for versions < 2.0
-if ( ! class_exists( 'WP_Customize_Control' ) ) {
-	require_once( ABSPATH . WPINC . DIRECTORY_SEPARATOR . 'class-wp-customize-control.php' );
-}
-$files = array(
-	'class-kirki-customizer.php',
-	'class-kirki-active-callback.php',
-	'class-kirki-config.php',
-	'class-kirki-control.php',
-	'class-kirki-customize-control.php',
-	'class-kirki-scripts-registry.php',
-	'class-kirki-customizer-scripts.php',
-	'class-kirki-customizer-scripts-enqueue.php',
-	'class-kirki-customizer-scripts-branding.php',
-	'class-kirki-customizer-scripts-default-scripts.php',
-	'class-kirki-customizer-scripts-icons.php',
-	'class-kirki-customizer-scripts-postmessage.php',
-	'class-kirki-customizer-scripts-tooltips.php',
-	'class-kirki-field-sanitize.php',
-	'class-kirki-explode-background-field.php',
-	'class-kirki-field.php',
-	'class-kirki-google-fonts-registry.php',
-	'class-kirki-google-fonts-scripts.php',
-	'class-kirki-helper.php',
-	'class-kirki-init.php',
-	'class-kirki-panel.php',
-	'class-kirki-sanitize.php',
-	'class-kirki-sanitize-values.php',
-	'class-kirki-section.php',
-	'class-kirki-settings.php',
-	'class-kirki-styles-customizer.php',
-	'class-kirki-styles-frontend.php',
-	'class-kirki-styles-output-css.php',
-	'class-kirki-toolkit.php',
-	'class-kirki-values.php',
-	'class-kirki.php',
-	'deprecated.php',
-	'lib' . DIRECTORY_SEPARATOR . 'class-kirki-color.php',
-	'lib' . DIRECTORY_SEPARATOR . 'class-kirki-colourlovers.php',
-);
-foreach ( $files as $file ) {
-	if ( file_exists( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file ) ) {
-		include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . $file );
-	}
-}
 
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
@@ -98,9 +53,9 @@ if ( ! function_exists( 'Kirki' ) ) {
 
 	}
 
-	global $kirki;
-	$kirki = Kirki();
 }
+global $kirki;
+$kirki = Kirki();
 
 /**
  * Apply the filters to the Kirki::$url
@@ -148,13 +103,3 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 
 // Add an empty config for global fields
 Kirki::add_config( '' );
-
-/**
- * To enable the demo theme, just add this line to your wp-config.php file:
- * define( 'KIRKI_CONFIG', true );
- * Once you add that line, you'll see a new theme in your dashboard called "Kirki Demo".
- * Activate that theme to test all controls.
- */
-if ( defined( 'KIRKI_DEMO' ) && KIRKI_DEMO && file_exists( dirname( __FILE__ ) . '/demo-theme/style.css' ) ) {
-	register_theme_directory( dirname( __FILE__ ) );
-}

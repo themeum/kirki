@@ -16,129 +16,126 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_PostMessage' ) ) {
-	return;
-}
+if ( ! class_exists( 'Kirki_PostMessage' ) ) {
+	class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 
-class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
-
-	/**
-	 * string.
-	 * The script generated for ALL fields
-	 */
-	public static $postmessage_script = '';
-	/**
-	 * boolean.
-	 * Whether the script has already been added to the customizer or not.
-	 */
-	public static $script_added = false;
-
-	/**
-	 * The class constructor
-	 */
-	public function __construct() {
-		add_action( 'wp_footer', array( $this, 'enqueue_script' ), 21 );
-	}
-
-	/**
-	 * Generates the scripts needed for postMessage.
-	 * This works on a per-field basis.
-	 * Once created, the script is added to the $postmessage_script property.
-	 *
-	 * @param array the field definition
-	 * @return void
-	 */
-	public static function generate_script( $args = array() ) {
-
-		$script = '';
 		/**
-		 * Make sure "transport" is defined
+		 * string.
+		 * The script generated for ALL fields
 		 */
-		$args['transport'] = ( isset( $args['transport'] ) ) ? $args['transport'] : 'refresh';
+		public static $postmessage_script = '';
 		/**
-		 * Make sure that we need to proceed
+		 * boolean.
+		 * Whether the script has already been added to the customizer or not.
 		 */
-		if ( isset( $args['js_vars'] ) && 'postMessage' == $args['transport'] ) {
+		public static $script_added = false;
+
+		/**
+		 * The class constructor
+		 */
+		public function __construct() {
+			add_action( 'wp_footer', array( $this, 'enqueue_script' ), 21 );
+		}
+
+		/**
+		 * Generates the scripts needed for postMessage.
+		 * This works on a per-field basis.
+		 * Once created, the script is added to the $postmessage_script property.
+		 *
+		 * @param array the field definition
+		 * @return void
+		 */
+		public static function generate_script( $args = array() ) {
+
+			$script = '';
 			/**
-			 * Make sure that "js_vars" is an array.
-			 * If not, then early exit with return.
+			 * Make sure "transport" is defined
 			 */
-			if ( ! is_array( $args['js_vars'] ) || empty( $args['js_vars'] ) ) {
-				return;
-			}
+			$args['transport'] = ( isset( $args['transport'] ) ) ? $args['transport'] : 'refresh';
 			/**
-			 * Start looping through all the "js_vars" items in the array.
-			 * Documentation on how to use the "js_vars" argument and its syntax
-			 * can be found on https://github.com/aristath/kirki/wiki/js_vars
+			 * Make sure that we need to proceed
 			 */
-			foreach ( $args['js_vars'] as $js_vars ) {
+			if ( isset( $args['js_vars'] ) && 'postMessage' == $args['transport'] ) {
 				/**
-				 * Sanitize the arguments
+				 * Make sure that "js_vars" is an array.
+				 * If not, then early exit with return.
 				 */
-				$js_vars = array(
-					'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
-					'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
-					'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
-					'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
-					'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
-					'suffix'   => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
-				);
+				if ( ! is_array( $args['js_vars'] ) || empty( $args['js_vars'] ) ) {
+					return;
+				}
+				/**
+				 * Start looping through all the "js_vars" items in the array.
+				 * Documentation on how to use the "js_vars" argument and its syntax
+				 * can be found on https://github.com/aristath/kirki/wiki/js_vars
+				 */
+				foreach ( $args['js_vars'] as $js_vars ) {
+					/**
+					 * Sanitize the arguments
+					 */
+					$js_vars = array(
+						'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
+						'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
+						'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
+						'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
+						'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
+						'suffix'   => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
+					);
 
-				$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
-				$units    = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
-				$prefix   = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
-				$suffix   = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
+					$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
+					$units    = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
+					$prefix   = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
+					$suffix   = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 
-				$script .= 'wp.customize( \'' . $settings . '\', function( value ) {';
-				$script .= 'value.bind( function( newval ) {';
+					$script .= 'wp.customize( \'' . $settings . '\', function( value ) {';
+					$script .= 'value.bind( function( newval ) {';
 
-				if ( 'html' == $js_vars['function'] ) {
+					if ( 'html' == $js_vars['function'] ) {
 
-					$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
+						$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
 
-				} else if ( 'style' == $js_vars['function'] ) {
+					} else if ( 'style' == $js_vars['function'] ) {
 
-					$styleID = uniqid( 'kirki-style-' );
-					$script .= 'if( !$(\'#' . $styleID . '\').size() ) {';
-					$script .= '$(\'head\').append(\'<style id="' . $styleID . '"></style>\');';
-					$script .= '}';
-					$script .= 'if( newval !== \'\') {';
-					$script .= '$(\'#' . $styleID . '\').text(\'' . $js_vars['element'] . '{ ' . $js_vars['property'] . ':' . $prefix . '\' + newval + \'' . $units . $suffix . ';}\');';
-					$script .= '}else{';
-					$script .= '$(\'#' . $styleID . '\').text(\'\');';
-					$script .= "}";
+						$styleID = uniqid( 'kirki-style-' );
+						$script .= 'if( !$(\'#' . $styleID . '\').size() ) {';
+						$script .= '$(\'head\').append(\'<style id="' . $styleID . '"></style>\');';
+						$script .= '}';
+						$script .= 'if( newval !== \'\') {';
+						$script .= '$(\'#' . $styleID . '\').text(\'' . $js_vars['element'] . '{ ' . $js_vars['property'] . ':' . $prefix . '\' + newval + \'' . $units . $suffix . ';}\');';
+						$script .= '}else{';
+						$script .= '$(\'#' . $styleID . '\').text(\'\');';
+						$script .= "}";
 
-				} else {
+					} else {
 
-					$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . $suffix . ' );';
+						$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . $suffix . ' );';
+
+					}
+
+					$script .= '}); });';
 
 				}
 
-				$script .= '}); });';
-
 			}
 
+			self::$postmessage_script .= $script;
+
 		}
 
-		self::$postmessage_script .= $script;
-
-	}
-
-	/**
-	 * Format the script in a way that will be compatible with WordPress.
-	 *
-	 * @return  void (echoes the script)
-	 */
-	public function enqueue_script() {
-		if ( ! self::$script_added && '' != self::$postmessage_script ) {
-			self::$script_added = true;
-			?>
-			<script>
-				<?php require( Kirki::$path . '/assets/js/kirki-postmessage.js' ); ?>
-			</script>
-			<?php
+		/**
+		 * Format the script in a way that will be compatible with WordPress.
+		 *
+		 * @return  void (echoes the script)
+		 */
+		public function enqueue_script() {
+			if ( ! self::$script_added && '' != self::$postmessage_script ) {
+				self::$script_added = true;
+				?>
+				<script>
+					<?php require( Kirki::$path . '/assets/js/kirki-postmessage.js' ); ?>
+				</script>
+				<?php
+			}
 		}
-	}
 
+	}
 }

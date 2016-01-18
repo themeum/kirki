@@ -14,35 +14,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Controls_Radio_Buttonset_Control' ) ) {
-	return;
-}
+if ( ! class_exists( 'Kirki_Controls_Radio_Buttonset_Control' ) ) {
+	class Kirki_Controls_Radio_Buttonset_Control extends Kirki_Customize_Control {
 
-class Kirki_Controls_Radio_Buttonset_Control extends Kirki_Customize_Control {
+		public $type = 'radio-buttonset';
 
-	public $type = 'radio-buttonset';
-
-	protected function content_template() { ?>
-		<# if ( data.help ) { #>
-			<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
-		<# } #>
-		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{{ data.label }}}</span>
-		<# } #>
-		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{{ data.description }}}</span>
-		<# } #>
-		<div id="input_<?php echo $this->id; ?>" class="buttonset">
-			<# for ( key in data.choices ) { #>
-				<input class="switch-input" type="radio" value="{{ key }}" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
-					<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">
-						{{ data.choices[ key ] }}
-					</label>
-				</input>
+		protected function content_template() { ?>
+			<# if ( data.help ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
-		</div>
-		<?php
-	}
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div id="input_<?php echo $this->id; ?>" class="buttonset">
+				<# for ( key in data.choices ) { #>
+					<input class="switch-input" type="radio" value="{{ key }}" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
+						<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">
+							{{ data.choices[ key ] }}
+						</label>
+					</input>
+				<# } #>
+			</div>
+			<?php
+		}
 
+	}
 }

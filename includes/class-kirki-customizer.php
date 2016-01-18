@@ -1,21 +1,23 @@
 <?php
 
-class Kirki_Customizer {
+if ( ! class_exists( 'Kirki_Customizer' ) ) {
+	class Kirki_Customizer {
 
-	public $wp_customize;
+		public $wp_customize;
 
-	/**
-	 * The class constructor
-	 */
-	public function __construct( $args = array() ) {
+		/**
+		 * The class constructor
+		 */
+		public function __construct( $args = array() ) {
 
-		global $wp_customize;
-		if ( ! $wp_customize ) {
-			return;
+			global $wp_customize;
+			if ( ! $wp_customize ) {
+				return;
+			}
+
+			$this->wp_customize = $wp_customize;
+
 		}
 
-		$this->wp_customize = $wp_customize;
-
 	}
-
 }

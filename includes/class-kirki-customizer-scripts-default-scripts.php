@@ -17,36 +17,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if the class already exists
-if ( class_exists( 'Kirki_Customizer_Scripts_Default_Scripts' ) ) {
-	return;
-}
+if ( ! class_exists( 'Kirki_Customizer_Scripts_Default_Scripts' ) ) {
+	class Kirki_Customizer_Scripts_Default_Scripts extends Kirki_Customizer_Scripts_Enqueue {
 
-class Kirki_Customizer_Scripts_Default_Scripts extends Kirki_Customizer_Scripts_Enqueue {
+		public function generate_script( $args = array() ) {}
 
-	public function generate_script( $args = array() ) {}
+		/**
+		 * Enqueue the scripts required.
+		 */
+		public function customize_controls_enqueue_scripts() {
 
-	/**
-	 * Enqueue the scripts required.
-	 */
-	public function customize_controls_enqueue_scripts() {
+			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
+			wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-tooltip' );
+			wp_enqueue_script( 'jquery-stepper-min-js' );
+			wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
+			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_script( 'kirki-postmessage', trailingslashit( Kirki::$url ) . 'assets/js/kirki-postmessage.js', array(), '', true );
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
-		wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
-		wp_enqueue_script( 'jquery-ui-core' );
-		wp_enqueue_script( 'jquery-ui-tooltip' );
-		wp_enqueue_script( 'jquery-stepper-min-js' );
-		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
-		wp_enqueue_style( 'wp-color-picker' );
-		// wp_enqueue_script( 'kirki-postmessage', trailingslashit( Kirki::$url ) . 'assets/js/kirki-postmessage.js', array(), '', true );
 
+		}
+
+		public function customize_controls_print_scripts() {}
+
+		public function customize_controls_print_footer_scripts() {}
+
+		public function wp_footer() {}
 
 	}
-
-	public function customize_controls_print_scripts() {}
-
-	public function customize_controls_print_footer_scripts() {}
-
-	public function wp_footer() {}
-
 }
