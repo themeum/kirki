@@ -11,11 +11,8 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 			add_action( 'wp_head', array( $this, 'add_loader_styles_to_header' ), 99 );
 			$this->remove_default_loading_styles();
 			/**
-			 * Add custom CSS to the customizer
+			 * Add custom JS to the customizer
 			 */
-			add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ) );
-			/**
-			 * Add custom JS to the customizer*/
 			add_action( 'wp_footer', array( $this, 'customizer_scripts' ) );
 
 		}
