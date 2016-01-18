@@ -10,6 +10,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 		public static $control_types = array(
 			'checkbox'         => 'Kirki_Controls_Checkbox_Control',
 			'code'             => 'Kirki_Controls_Code_Control',
+			'color'            => 'Kirki_Controls_Color_Control',
 			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
 			'custom'           => 'Kirki_Controls_Custom_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',

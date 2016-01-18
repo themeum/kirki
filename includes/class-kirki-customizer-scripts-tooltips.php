@@ -54,6 +54,7 @@ if ( ! class_exists( 'Kirki_Scripts_Customizer_Tooltips' ) ) {
 			$ready_controls = array(
 				'checkbox',
 				'code',
+				'color',
 				'color-alpha',
 				'custom',
 				'dimension',
