@@ -29,5 +29,8 @@ wp.customize.controlConstructor['slider'] = wp.customize.Control.extend( {
 		this.container.on( 'change', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
+		if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+			KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+		}
 	}
 });

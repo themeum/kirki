@@ -57,6 +57,9 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
 			change: function( event, ui ) {
 				setTimeout( function(){
 					control.setting.set( picker.val() );
+					if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+						KirkiPostMessage( control.params.js_vars, picker.val() );
+					}
 				}, 100 );
 			},
 		});
@@ -75,6 +78,9 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend( {
 			change: function( event, ui ) {
 				setTimeout( function(){
 					control.setting.set( picker.val() );
+					if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+						KirkiPostMessage( control.params.js_vars, picker.val() );
+					}
 				}, 100 );
 			},
 		});
@@ -183,14 +189,23 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 		// On change
 		this.container.on( 'change', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 		// On click
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 		// On keyup
 		this.container.on( 'keyup', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
@@ -509,6 +524,9 @@ wp.customize.controlConstructor['radio-buttonset'] = wp.customize.Control.extend
 		var control = this;
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
@@ -520,6 +538,9 @@ wp.customize.controlConstructor['radio-image'] = wp.customize.Control.extend( {
 		var control = this;
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
@@ -531,6 +552,9 @@ wp.customize.controlConstructor['kirki-radio'] = wp.customize.Control.extend( {
 		var control = this;
 		this.container.on( 'change', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
@@ -1008,6 +1032,9 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 				var select_value = jQuery( this ).val();
 			}
 			control.setting.set( select_value );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
@@ -1042,6 +1069,9 @@ wp.customize.controlConstructor['slider'] = wp.customize.Control.extend( {
 		this.container.on( 'change', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
+		if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+			KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+		}
 	}
 });
 /**
