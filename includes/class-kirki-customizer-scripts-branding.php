@@ -52,13 +52,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Branding' ) ) {
 
 		public function customize_controls_enqueue_scripts() {}
 
-		public function customize_controls_print_footer_scripts() {
-			$config = apply_filters( 'kirki/config', array() );
-			if ( ! isset( $config['no_thanks'] ) || true != $config['no_thanks'] ) {
-				$script = '$(\'<a class="kirki-footer-thanks" href="http://kirki.org" target="_blank"></a>\').appendTo(".wp-full-overlay.expanded #customize-footer-actions");';
-				echo Kirki_Scripts_Registry::prepare( $script );
-			}
-		}
+		public function customize_controls_print_footer_scripts() {}
 
 		public function wp_footer() {}
 
