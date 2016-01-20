@@ -388,7 +388,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				$opacity = 100;
 			} elseif ( $opacity < 0 ) {
 				$opacity = 0;
-			} elseif ( $opacity < 1 && $opacity != 0 ) {
+			} elseif ( $opacity <= 1 && $opacity != 0 ) {
 				$opacity = ( $opacity * 100 );
 			}
 			// Divide the opacity by 100 to end-up with a CSS value for the opacity
