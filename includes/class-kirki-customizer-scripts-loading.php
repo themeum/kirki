@@ -56,54 +56,34 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 					display: block;
 					opacity: 1;
 				}
-				.kirki-customizer-loading {
+				.kirki-customizer-loading-wrapper .kirki-customizer-loading {
 					position: absolute;
+					width: 60px;
+					height: 60px;
 					top: 50%;
 					left: 50%;
-					margin: -35px 0 0 -35px;
-					color: transparent;
-					font-size: 10px;
-					border-top: 0.5em solid rgba(0, 0, 0, 0.2);
-					border-right: 0.5em solid rgba(0, 0, 0, 0.2);
-					border-bottom: 0.5em solid #333;
-					border-left: 0.5em solid rgba(0, 0, 0, 0.2);
-					-webkit-animation: fusion-rotate 0.8s infinite linear;
-					animation: fusion-rotate 0.8s infinite linear;
+					margin: -30px;
+					background-color: rgba(0,0,0,.83);
+					border-radius: 100%;
+					-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+					animation: sk-scaleout 1.0s infinite ease-in-out;
 				}
-				.kirki-customizer-loading .kirki-customizer-loading-text {
-					position: absolute;
+				@-webkit-keyframes sk-scaleout {
+					0% { -webkit-transform: scale(0) }
+					100% {
+						-webkit-transform: scale(1.0);
+						opacity: 0;
+					}
 				}
-				.no-cssanimations .kirki-customizer-loading {
-					padding-left: 5px;
-					padding-top: 15px;
-					color: #000;
-				}
-				.kirki-customizer-loading,
-				.kirki-customizer-loading:after {
-					width: 70px;
-					height: 70px;
-					border-radius: 50%;
-					/* Fix to make border-radius work for transparent colors */
-					background-clip: padding-box;
-				}
-				@-webkit-keyframes fusion-rotate {
+				@keyframes sk-scaleout {
 					0% {
-						-webkit-transform: rotate(0deg);
-						transform: rotate(0deg);
+						-webkit-transform: scale(0);
+						transform: scale(0);
 					}
 					100% {
-						-webkit-transform: rotate(360deg);
-						transform: rotate(360deg);
-					}
-				}
-				@keyframes fusion-rotate {
-					0% {
-						-webkit-transform: rotate(0deg);
-						transform: rotate(0deg);
-					}
-					100% {
-						-webkit-transform: rotate(360deg);
-						transform: rotate(360deg);
+						-webkit-transform: scale(1.0);
+						transform: scale(1.0);
+						opacity: 0;
 					}
 				}
 			</style>
