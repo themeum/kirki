@@ -3,6 +3,10 @@
 if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 	class Kirki_Customizer_Scripts_Loading extends Kirki_Customizer {
 		public function __construct() {
+			global $wp_customize;
+			if ( ! $wp_customize ) {
+				return;
+			}
 			/**
 			 * Add the "loading" icon
 			 */
@@ -15,7 +19,9 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 		 * Adds a custom "loading" div $ its styles when changes are made to the customizer.
 		 */
 		public function add_loader_to_footer() { ?>
-			<div class="kirki-customizer-loading-wrapper"/><span class="kirki-customizer-loading"></span></div>
+			<div class="kirki-customizer-loading-wrapper">
+				<span class="kirki-customizer-loading"></span>
+			</div>
 			<?php
 		}
 
