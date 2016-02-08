@@ -19,11 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 	class Kirki_Styles_Output_CSS {
 
+		public static $instance = null;
+
 		public static $settings    = null;
 		public static $output      = array();
 		public static $callback    = null;
 		public static $option_name = null;
 		public static $field_type  = null;
+
+		public static $google_fonts = null;
+		public static $backup_fonts = null;
 
 		public static $css;
 
@@ -31,6 +36,28 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 
 		/**
 		 * The class constructor.
+		 */
+		private function __construct() {
+			if ( is_null( self::$google_fonts ) ) {
+				self::$google_fonts = Kirki()->font_registry->get_google_fonts();
+			}
+			if ( is_null( self::$backup_fonts ) ) {
+				self::$backup_fonts = Kirki()->font_registry->get_backup_fonts();
+			}
+		}
+
+		/**
+		 * Get a single instance of this class
+		 */
+		public static function get_instance() {
+			if ( null === self::$instance ) {
+				self::$instance = new Kirki_Styles_Output_CSS();
+			}
+			return self::$instance;
+		}
+
+		/**
+		 * get the CSS for a field
 		 *
 		 * @var 	string		the setting ID.
 		 * @var 	string		theme_mod / option
@@ -117,8 +144,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		public static function styles() {
 
-			$google_fonts_array = Kirki()->font_registry->get_google_fonts();
-			$backup_fonts       = Kirki()->font_registry->get_backup_fonts();
+			$google_fonts_array = self::$google_fonts;
+			$backup_fonts       = self::$backup_fonts;
 
 			$styles = array();
 
