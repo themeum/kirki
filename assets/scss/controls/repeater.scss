@@ -15,6 +15,26 @@
 				margin-bottom:12px;
 				clear:both;
 			}
+
+			.repeater-field {
+				&.repeater-field-radio-image {
+					input {
+						img {
+							border: 1px solid transparent;
+						}
+						display: none;
+						&:checked {
+							+ label {
+								img {
+									-webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+									box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+									border: 1px solid #3498DB;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	button.repeater-add {

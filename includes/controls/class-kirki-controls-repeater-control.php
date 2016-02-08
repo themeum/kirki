@@ -172,9 +172,30 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<# for ( i in field.choices ) { #>
 										<# if ( field.choices.hasOwnProperty( i ) ) { #>
 											<label>
-												<input type="radio" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
+												<input type="radio" name="{{{ field.id }}}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
 											</label>
 										<# } #>
+									<# } #>
+								</label>
+
+							<# } else if ( field.type == 'radio-image' ) { #>
+
+								<label>
+									<# if ( field.label ) { #>
+										<span class="customize-control-title">{{ field.label }}</span>
+									<# } #>
+									<# if ( field.description ) { #>
+										<span class="description customize-control-description">{{ field.description }}</span>
+									<# } #>
+
+									<# for ( i in field.choices ) { #>
+										<# if ( field.choices.hasOwnProperty( i ) ) { #>
+											<input type="radio" id="{{{ field.id }}}_{{ index }}_{{{ i }}}" name="{{{ field.id }}}{{ index }}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>>
+												<label for="{{{ field.id }}}_{{ index }}_{{{ i }}}">
+													<img src="{{ field.choices[i] }}">
+												</label>
+											</input>
+ 										<# } #>
 									<# } #>
 								</label>
 
