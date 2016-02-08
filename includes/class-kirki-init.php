@@ -24,20 +24,20 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			 */
 			if ( Kirki_Toolkit::is_parent_theme( __FILE__ ) ) {
 				$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_template_directory() ), '', dirname( dirname( __FILE__ ) ) );
-				Kirki::$url = wp_normalize_path( trailingslashit( get_template_directory_uri() . $relative_url ) );
+				Kirki::$url = trailingslashit( get_template_directory_uri() . $relative_url );
 			}
 			/**
 			 * Are we on a child theme?
 			 */
 			elseif ( Kirki_Toolkit::is_child_theme( __FILE__ ) ) {
 				$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_stylesheet_directory() ), '', dirname( dirname( __FILE__ ) ) );
-				Kirki::$url = wp_normalize_path( trailingslashit( get_stylesheet_directory_uri() . $relative_url ) );
+				Kirki::$url = trailingslashit( get_stylesheet_directory_uri() . $relative_url );
 			}
 			/**
 			 * Fallback to plugin
 			 */
 			else {
-				Kirki::$url = wp_normalize_path( plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' ) );
+				Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
 			}
 		}
 

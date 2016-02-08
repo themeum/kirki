@@ -64,7 +64,7 @@ if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	function kirki_filtered_url() {
 		$config = apply_filters( 'kirki/config', array() );
 		if ( isset( $config['url_path'] ) ) {
-			Kirki::$url = wp_normalize_path( esc_url_raw( $config['url_path'] ) );
+			Kirki::$url = esc_url_raw( $config['url_path'] );
 		}
 	}
 	add_action( 'after_setup_theme', 'kirki_filtered_url' );
