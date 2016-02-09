@@ -393,7 +393,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			}
 			// Divide the opacity by 100 to end-up with a CSS value for the opacity
 			$opacity = ( $opacity / 100 );
-			$color = 'rgba(' . self::get_rgb( $hex, true ) . ', ' . $opacity . ')';
+			$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
 			return $color;
 
 		}
