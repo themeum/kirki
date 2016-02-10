@@ -219,7 +219,12 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 						if ( Kirki()->font_registry->is_google_font( $value ) ) {
 							if ( isset( $google_fonts_array[ $value ] ) && isset( $google_fonts_array[ $value ]['category'] ) ) {
 								if ( isset( $backup_fonts[ $google_fonts_array[ $value ]['category'] ] ) ) {
-									$value .= ', ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
+									// add double quotes if needed
+									if ( false !== strpos( $value, ' ' ) && false === strpos( $value, '"' ) ) {
+										$value = '"' . $value . '", ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
+									} else {
+										$value .= ', ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
+									}
 								}
 							}
 						}
@@ -243,12 +248,22 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'strikethrough';
 						}
 						if ( isset( $value['font-family'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
+							// add double quotes if needed
+							if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
+								$styles[ $output['media_query'] ][ $element ]['font-family'] = '"' . $value['font-family'] . '"';
+							} else {
+								$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
+							}
 							// Add backup font
 							if ( Kirki()->font_registry->is_google_font( $value['font-family'] ) ) {
 								if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
 									if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
-										$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'] . ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
+										// add double quotes if needed
+										if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
+											$styles[ $output['media_query'] ][ $element ]['font-family'] = '"' . $value['font-family'] . '", ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
+										} else {
+											$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'] . ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
+										}
 									}
 								}
 							}
