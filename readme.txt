@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,15 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea) or use our test theme from https://github.com/aristath/kirki-demo.
 
 == Changelog ==
+
+= 2.0.8 =
+
+February 10, 2016, dev time: 2 hours
+
+* FIX: Only load Kirki styles when in the customizer
+* FIX: Performance issue with Google Fonts
+* NEW: Added radio-image controls to repeaters
+* TWEAK: Better color handling in the Kirki_Color class
 
 = 2.0.7 =
 
