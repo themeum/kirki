@@ -31,6 +31,8 @@ include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
 	 * Returns the Kirki object
+	 * 
+	 * @return Kirki_Toolkit Kirki Object.
 	 */
 	function Kirki() {
 		// Make sure the class is instanciated
