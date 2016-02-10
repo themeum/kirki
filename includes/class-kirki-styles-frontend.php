@@ -70,6 +70,10 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		 */
 		public static function loop_controls() {
 
+			// Get an instance of the Kirki_Styles_Output_CSS class.
+			// This will make sure google fonts and backup fonts are loaded.
+			Kirki_Styles_Output_CSS::get_instance();
+
 			$fields = Kirki::$fields;
 			$css    = array();
 

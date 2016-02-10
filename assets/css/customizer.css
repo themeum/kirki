@@ -820,6 +820,14 @@ span.CodeMirror-selectedtext {
   .customize-control-repeater .repeater-fields .repeater-row label {
     margin-bottom: 12px;
     clear: both; }
+  .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input {
+    display: none; }
+    .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input img {
+      border: 1px solid transparent; }
+    .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input:checked + label img {
+      -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+      border: 1px solid #3498DB; }
 .customize-control-repeater button.repeater-add {
   margin-top: 1rem; }
 .customize-control-repeater .repeater-field {
