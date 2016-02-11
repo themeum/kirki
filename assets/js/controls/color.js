@@ -1,7 +1,7 @@
 /**
- * KIRKI CONTROL: COLOR-ALPHA
+ * KIRKI CONTROL: COLOR
  */
-wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
+wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control   = this;
 		var picker    = this.container.find( '.kirki-color-control' );
