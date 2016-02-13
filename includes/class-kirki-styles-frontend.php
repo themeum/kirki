@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			$config   = apply_filters( 'kirki/config', array() );
 			$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 999;
 
-			if ( isset( $config['disable_output'] ) && true !== $config['disable_output'] ) {
+			if ( ( defined( 'KIRKI_NO_OUTPUT' ) && KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true !== $config['disable_output'] ) ) {
 				return;
 			}
 
