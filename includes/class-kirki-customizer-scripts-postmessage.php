@@ -81,12 +81,11 @@ if ( ! class_exists( 'Kirki_PostMessage' ) ) {
 						'suffix'   => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
 					);
 
-					$settings = Kirki_Field_Sanitize::sanitize_settings( $args );
 					$units    = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
 					$prefix   = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
 					$suffix   = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 
-					$script .= 'wp.customize( \'' . $settings . '\', function( value ) {';
+					$script .= 'wp.customize( \'' . $args['settings'] . '\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';
 
 					if ( 'html' == $js_vars['function'] ) {
