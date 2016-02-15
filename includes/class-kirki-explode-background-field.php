@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 						 * Use 'color-alpha' instead of 'color' if default is an rgba value
 						 * or if 'opacity' is set.
 						 */
-						$type = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
+						$type = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'kirki-color';
 						$type = ( isset( $field['default']['opacity'] ) ) ? 'color-alpha' : $type;
 						if ( isset( $field['default']['opacity'] ) && false === strpos( $value, 'rgb' ) ) {
 							$value = Kirki_Color::get_rgba( $value, $field['default']['opacity'] );

@@ -73,78 +73,40 @@ if ( ! class_exists( 'Kirki_PostMessage' ) ) {
 					 * Sanitize the arguments
 					 */
 					$js_vars = array(
-						'element'     => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
-						'function'    => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
-						'property'    => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
-						'units'       => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
-						'prefix'      => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
-						'suffix'      => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
-						'js_callback' => ( isset( $js_vars['js_callback'] ) ) ? esc_js( $js_vars['js_callback'] ) : '',
+						'element'  => ( isset( $js_vars['element'] ) ) ? sanitize_text_field( $js_vars['element'] ) : '',
+						'function' => ( isset( $js_vars['function'] ) ) ? esc_js( $js_vars['function'] ) : '',
+						'property' => ( isset( $js_vars['property'] ) ) ? esc_js( $js_vars['property'] ) : '',
+						'units'    => ( isset( $js_vars['units'] ) ) ? esc_js( $js_vars['units'] ) : '',
+						'prefix'   => ( isset( $js_vars['prefix'] ) ) ? esc_js( $js_vars['prefix'] ) : '',
+						'suffix'   => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
 					);
 
-					$settings    = $args['settings'];
-					$prefix      = ( ! empty( $js_vars['prefix'] ) ) ? $js_vars['prefix'] . " + " : '';
-					$units       = ( ! empty( $js_vars['units'] ) ) ? " + " . $js_vars['units'] : '';
-					$suffix      = ( ! empty( $js_vars['suffix'] ) ) ? $js_vars['suffix'] : '';
-					$js_callback = ( ! empty( $js_vars['js_callback'] ) ) ? $js_vars['js_callback'] : '';
+					$units    = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
+					$prefix   = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
+					$suffix   = ( ! empty( $js_vars['suffix'] ) ) ? " + '" . $js_vars['suffix'] . "'" : '';
 
-					$script .= 'wp.customize( \'' . $settings . '\', function( value ) {';
+					$script .= 'wp.customize( \'' . $args['settings'] . '\', function( value ) {';
 					$script .= 'value.bind( function( newval ) {';
 
 					if ( 'html' == $js_vars['function'] ) {
 
 						$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
 
-						// execute js_callback (callback must exist in dom before this script - see priority on the action/
-						if ( ! empty( $js_callback ) ){
-							$script .= $js_callback . '(\'' . $js_vars['element'] . '\', newval);'; // js_callback(element, newval);
-						}
-
 					} else if ( 'style' == $js_vars['function'] ) {
 
 						$styleID = uniqid( 'kirki-style-' );
-
-						// append unique style tag if not exist
 						$script .= 'if( !$(\'#' . $styleID . '\').size() ) {';
 						$script .= '$(\'head\').append(\'<style id="' . $styleID . '"></style>\');';
 						$script .= '}';
-
-						// if we have new value, replace style contents with custom css
 						$script .= 'if( newval !== \'\') {';
 						$script .= '$(\'#' . $styleID . '\').text(\'' . $js_vars['element'] . '{ ' . $js_vars['property'] . ':' . $prefix . '\' + newval + \'' . $units . $suffix . ';}\');';
-
-						// else let's clear it out
 						$script .= '}else{';
 						$script .= '$(\'#' . $styleID . '\').text(\'\');';
 						$script .= "}";
 
-						// execute js_callback (callback must exist in dom before this script - see priority on line 41
-						if ( ! empty( $js_callback ) ) {
-							$script .= $js_callback . '(\'' . $js_vars['element'] . '\', newval);'; // js_callback(element, newval);
-						}
-
 					} else {
-						$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
-						$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
 
-						// append inline css - rules are very strict
-						if ( ' !important' === $suffix || '!important' === $suffix ) {
-							$units  = ( ! empty( $js_vars['units'] ) ) ? '+\'' . $js_vars['units'] . '\'' : '';
-							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? '\'' . $js_vars['prefix'] . '\'+' : '';
-							// this.style.setProperty( 'color', 'red', 'important' ); - jquery won't fix .css !important issue so we go oldschool
-							$script .= '$(\'' . $js_vars['element'] . '\').each(function(){ this.style.setProperty(\'' .  $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ', \'important\');});';
-						} else {
-							$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
-							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
-							// $suffix = what other suffix exists inline?
-
-							$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ' );';
-						}
-
-						// execute js_callback (callback must exist in dom before this script - see priority on action
-						if ( ! empty( $js_callback ) ) {
-							$script .= $js_callback . '(\'' . $js_vars['element'] . '\', newval);'; // js_callback(element, newval);
-						}
+						$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . $suffix . ' );';
 
 					}
 
@@ -166,7 +128,11 @@ if ( ! class_exists( 'Kirki_PostMessage' ) ) {
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$postmessage_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$postmessage_script . '});</script>';
+				?>
+				<script>
+					<?php require( Kirki::$path . '/assets/js/kirki-postmessage.js' ); ?>
+				</script>
+				<?php
 			}
 		}
 

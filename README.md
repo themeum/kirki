@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.0.8  
+**Stable tag:** 2.0.9  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -118,6 +118,14 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea) or use our test theme from https://github.com/aristath/kirki-demo.
 
 ## Changelog ##
+
+### 2.0.9 ###
+
+February 13, 2016, dev time: 1 hour.
+
+* FIX: Google fonts bug (use double quotes when font name contains a space character)
+* FIX: Checkbox control bug (checkboxes were always displayed as checked, regardless of their actual value)
+* NEW: Intruducing KIRKI_NO_OUTPUT constant that disables CSS output completely when set to true.
 
 ### 2.0.8 ###
 

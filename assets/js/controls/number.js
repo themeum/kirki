@@ -20,14 +20,23 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 		// On change
 		this.container.on( 'change', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 		// On click
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 		// On keyup
 		this.container.on( 'keyup', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });

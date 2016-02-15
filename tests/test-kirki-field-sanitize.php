@@ -8,7 +8,7 @@ class Test_Kirki_Field_Sanitize extends WP_UnitTestCase {
 			'color-alpha'     => array( 'type' => 'color-alpha' ),
 			'color-alpha'     => array( 'type' => 'color_alpha' ),
 			'color-alpha'     => array( 'type' => 'color', 'default' => 'rgba(0,0,0,1)' ),
-			'color'           => array( 'type' => 'color' ),
+			'kirki-color'     => array( 'type' => 'color' ),
 			'custom'          => array( 'type' => 'custom' ),
 			'custom'          => array( 'type' => 'group-title' ),
 			'custom'          => array( 'type' => 'group_title' ),

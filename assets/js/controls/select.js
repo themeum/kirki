@@ -34,6 +34,9 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 				var select_value = jQuery( this ).val();
 			}
 			control.setting.set( select_value );
+			if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
+				KirkiPostMessage( control.params.js_vars, jQuery( this ).val() );
+			}
 		});
 	}
 });
