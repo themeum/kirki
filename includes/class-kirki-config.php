@@ -28,6 +28,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 				'option_name'    => '',
 				'compiler'       => array(),
 				'disable_output' => false,
+				'postMessage'    => '',
 			);
 			// Process the 'kirki/config' filter by replacing the defaults
 			$this->default_args = $this->config_from_filters();
@@ -66,6 +67,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 			$valid_args['option_name']    = isset( $args['option_name'] ) ? $args['option_name'] : $default_args['option_name'];
 			$valid_args['compiler']       = isset( $args['compiler'] ) ? $args['compiler'] : $default_args['compiler'];
 			$valid_args['disable_output'] = isset( $args['disable_output'] ) ? $args['disable_output'] : $default_args['disable_output'];
+			$valid_args['postMessage'] = isset( $args['postMessage'] ) ? $args['postMessage'] : $default_args['postMessage'];
 
 			return $valid_args;
 
