@@ -18,43 +18,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Customizer_Scripts_Branding' ) ) {
-	class Kirki_Customizer_Scripts_Branding extends Kirki_Customizer_Scripts_Enqueue {
+	class Kirki_Customizer_Scripts_Branding {
 
-		/**
-		 * If we've specified an image to be used as logo,
-		 * replace the default theme description with a div that will include our logo.
-		 */
-		public function generate_script( $args = array() ) {
+		public function __construct() {
+			add_action( 'customize_controls_print_scripts', array( $this, 'enqueue' ) );
+		}
+
+		public function enqueue() {
 
 			$config = apply_filters( 'kirki/config', array() );
-			$script = '';
-			if ( ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) || ( isset( $config['description'] ) && '' != $config['description'] ) ) {
-				if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
-					$config['logo_image'] = esc_url_raw( $config['logo_image'] );
-					$script .= '$( \'div#customize-info .preview-notice\' ).replaceWith( \'<img src="' . $config['logo_image'] . '">\' );';
-				}
-				if ( isset( $config['description'] ) && '' != $config['description'] ) {
-					$config['description'] = esc_textarea( $config['description'] );
-					$script .= '$( \'div#customize-info .accordion-section-content\' ).replaceWith( \'<div class="accordion-section-content"><div class="theme-description">' . $config['description'] . '</div></div>\' );';
-				}
+			$vars   = array(
+				'logoImage'   => '',
+				'description' => '',
+			);
+			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
+				$vars['logoImage'] = esc_url_raw( $config['logo_image'] );
+			}
+			if ( isset( $config['description'] ) && '' != $config['description'] ) {
+				$vars['description'] = esc_textarea( $config['description'] );
 			}
 
-			return $script;
-
-		}
-
-		public function customize_controls_print_scripts() {
-			$script = $this->generate_script();
-			if ( '' != $script ) {
-				echo Kirki_Scripts_Registry::prepare( $script );
+			if ( ! empty( $vars['logoImage'] ) || ! empty( $vars['description'] ) ) {
+				wp_register_script( 'kirki-branding', Kirki::$url . '/assets/js/kirki-branding.js' );
+				wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
+				wp_enqueue_script( 'kirki-branding' );
 			}
+
 		}
-
-		public function customize_controls_enqueue_scripts() {}
-
-		public function customize_controls_print_footer_scripts() {}
-
-		public function wp_footer() {}
 
 	}
 }
