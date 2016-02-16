@@ -1,28 +1,51 @@
 jQuery(document).ready(function($) { "use strict";
-	var controls = wp.customize.settings.controls;
-	// Loop controls
-	for ( var control in controls ) {
-		// Get the control object
-		var control_obj = wp.customize.settings.controls[ control ];
 
-		// if ( 'color-alpha' == control_obj.type ) {
-			// Check that we have js_vars
-			if ( 0 < control_obj.js_vars.length ) {
-				// Loop the js_vars
-				for ( var i in control_obj.js_vars ) {
-					if ( control_obj.js_vars.hasOwnProperty( i ) ) {
-						// Define the vars we'll use
-						var element  = control_obj.js_vars[ i ]['element'];
-						var property = control_obj.js_vars[ i ]['property'];
-						// apply the CSS changes
-						wp.customize( control_obj.id, function( value ) {
-							value.bind( function( newval ) {
-								jQuery( element ).css( property, newval );
-							});
-						});
+	var settings = window._wpCustomizeSettings;
+
+	jQuery.each( settings.values, function( key, value ) {
+	} );
+});
+
+function KirkiPostMessage( js_vars, newval ) {
+	if ( undefined !== js_vars && 0 < js_vars.length ) {
+		jQuery.each( js_vars, function( i, js_var ) {
+
+			// Make sure everything is properly defined.
+			if ( undefined === js_vars[ i ]["element"] ) {
+				js_vars[ i ]["element"] = "";
+			}
+			if ( undefined === js_vars[ i ]["property"] ) {
+				js_vars[ i ]["property"] = "";
+			}
+			if ( undefined === js_vars[ i ]["prefix"] ) {
+				js_vars[ i ]["prefix"] = "";
+			}
+			if ( undefined === js_vars[ i ]["suffix"] ) {
+				js_vars[ i ]["suffix"] = "";
+			}
+			if ( undefined === js_vars[ i ]["units"] ) {
+				js_vars[ i ]["units"] = "";
+			}
+			if ( undefined === js_vars[ i ]["function"] ) {
+				js_vars[ i ]["function"] = "css";
+			}
+
+			jQuery.each( js_vars, function( i, args ) {
+				if ( "css" === args.functionName ) {
+					jQuery( args.element ).css( args.property, args.prefix + newval + args.units + args.suffix );
+				} else if ( "html" === args.functionName ) {
+					jQuery( args.element ).html( args.prefix + newval + args.units + args.suffix );
+				} else if ( "style" === args.functionName ) {
+					if ( ! jQuery( "#kirki-style-" + args.id ).size() ) {
+						jQuery( "head" ).append( '<style id="#kirki-style-' + args.id + '"></style>' );
+					}
+					if ( newval !== "" ) {
+						jQuery( "#kirki-style-" + args.id ).text( args.element + "{" + args.property + ":" + args.prefix + args.newval + args.units + args.suffix + ";}" );
+					} else {
+						jQuery( "#kirki-style-" + args.id ).text( "" );
 					}
 				}
-			}
-		// }
+			});
+		});
 	}
-});
+}
