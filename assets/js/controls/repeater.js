@@ -115,13 +115,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         this.container.on('click keypress', '.repeater-field-image .upload-button', function (e) {
             e.preventDefault();
             control.$thisButton = jQuery(this);
-            control.openFrame();
+            control.openFrame(e);
         });
 
         this.container.on('click keypress', '.repeater-field-image .remove-button', function (e) {
             e.preventDefault();
             control.$thisButton = jQuery(this);
-            control.removeImage();
+            control.removeImage(e);
         });
 
         /**
@@ -168,7 +168,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
     /**
      * Open the media modal.
      */
-    openFrame: function() {
+    openFrame: function( event ) {
         if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
 
         if ( ! this.frame ) {
@@ -216,7 +216,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         $targetDiv.find('input, textarea').trigger('change');
     },
 
-    removeImage : function()
+    removeImage : function( event )
     {
         if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
 
