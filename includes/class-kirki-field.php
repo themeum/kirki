@@ -52,6 +52,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$config_id = ( '' == $config_id ) ? 'global' : $config_id;
 
 			/**
+			 * Add the config_id to the field
+			 */
+			$args['kirki_config'] = $config_id;
+
+			/**
 			 * Get the configuration options
 			 */
 			if ( ! isset( Kirki::$config[ $config_id ] ) ) {
@@ -82,6 +87,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( ! isset( $args['capability'] ) ) {
 				$args['capability'] = $config['capability'];
 			}
+
+			/**
+			 * Check the 'disable_output' argument from the config
+			 */
+			$args['disable_output'] = $config['disable_output'];
 
 			/**
 			 * Check if [settings] is set.

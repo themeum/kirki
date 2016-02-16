@@ -49,9 +49,18 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		}
 
 		public function inline_dynamic_css() {
+			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
-				wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
-				wp_add_inline_style( 'kirki-styles', self::loop_controls() );
+				foreach ( $configs as $config_id => $args ) {
+					if ( true === $args['disable_output'] ) {
+						continue;
+					}
+					$styles = self::loop_controls( $config_id );
+					if ( ! empty( $styles ) ) {
+						wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
+						wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );
+					}
+				}
 				$this->processed = true;
 			}
 		}
@@ -68,7 +77,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		/**
 		 * loop through all fields and create an array of style definitions
 		 */
-		public static function loop_controls() {
+		public static function loop_controls( $config_id ) {
 
 			// Get an instance of the Kirki_Styles_Output_CSS class.
 			// This will make sure google fonts and backup fonts are loaded.
@@ -83,6 +92,11 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			}
 
 			foreach ( $fields as $field ) {
+
+				// Only process fields that belong to $config_id
+				if ( $config_id != $field['kirki_config'] ) {
+					continue;
+				}
 
 				// Only continue if $field['output'] is set
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
