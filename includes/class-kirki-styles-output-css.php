@@ -268,20 +268,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								}
 							}
 						}
-						if ( isset( $value['font-size'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];
-						}
-						if ( isset( $value['font-weight'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['font-weight'] = $value['font-weight'];
-						}
-						if ( isset( $value['line-height'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
-						}
-						if ( isset( $value['letter-spacing'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
-						}
-						if ( isset( $value['color'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['color'] = $value['color'];
+						foreach ( $value as $key => $sub_value ) {
+							$styles[ $output['media_query'] ][ $element ][ $key ] = $sub_value;
 						}
 					}
 					/**
