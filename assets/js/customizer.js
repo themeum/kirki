@@ -75,9 +75,6 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend( {
 			change: function( event, ui ) {
 				setTimeout( function(){
 					control.setting.set( picker.val() );
-					if ( undefined !== control.params.js_vars && 0 < control.params.js_vars.length ) {
-						KirkiPostMessage( control.params.js_vars, picker.val() );
-					}
 				}, 100 );
 			},
 		});
