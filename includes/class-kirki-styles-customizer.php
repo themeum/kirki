@@ -84,6 +84,10 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 * its main JS file (not dependencies like jQuery or jQuery UI).
 		 *
 		 * These files are only enqueued when debugging Kirki
+		 *
+		 * @param string $handle
+		 * @param string $file
+		 * @param array  $deps
 		 */
 		public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::kirki_debug() ) || false === strpos( $file, 'controls/' ) ) {
@@ -137,6 +141,9 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 		}
 
+		/**
+		 * @param string $styles
+		 */
 		public function replace_placeholders( $styles ) {
 			/**
 			 * replace CSS placeholders with actual values

@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			parent::to_json();
 
 			$i18n = Kirki_Toolkit::i18n();
-			$this->json['fonts']   = $this->get_all_fonts();
+			$this->json['fonts'] = $this->get_all_fonts();
 			$value = $this->value();
 			$this->json['value'] = array(
 				'bold'           => isset( $value['bold'] ) ? $value['bold'] : false,

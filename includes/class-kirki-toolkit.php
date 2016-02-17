@@ -138,19 +138,19 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			return (bool) ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG );
 		}
 
-	    /**
-	     * Take a path and return it clean
-	     *
-	     * @param string $path
+		/**
+		 * Take a path and return it clean
+		 *
+		 * @param string $path
 		 * @return string
-	     */
-	    public static function clean_file_path( $path ) {
-	        $path = str_replace( '', '', str_replace( array( "\\", "\\\\" ), '/', $path ) );
-	        if ( '/' === $path[ strlen( $path ) - 1 ] ) {
-	            $path = rtrim( $path, '/' );
-	        }
-	        return $path;
-	    }
+		 */
+		public static function clean_file_path( $path ) {
+			$path = str_replace( '', '', str_replace( array( "\\", "\\\\" ), '/', $path ) );
+			if ( '/' === $path[ strlen( $path ) - 1 ] ) {
+				$path = rtrim( $path, '/' );
+			}
+			return $path;
+		}
 
 		/**
 		 * Determine if we're on a parent theme

@@ -434,14 +434,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Adjusts brightness of the $hex color.
 		 *
-		 * @var     string      The hex value of a color
-		 * @var     int         a value between -255 (darken) and 255 (lighten)
-		 * @return  string      returns hex color
+		 * @param   string  $hex    The hex value of a color
+		 * @param   integer $steps  should be between -255 and 255. Negative = darker, positive = lighter
+		 * @return  string          returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
 
 			$hex = self::sanitize_hex( $hex, false );
-			// Steps should be between -255 and 255. Negative = darker, positive = lighter
 			$steps = max( -255, min( 255, $steps ) );
 			// Adjust number of steps and keep it inside 0 to 255
 			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
@@ -461,10 +460,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * the "percentage" variable is the percent of the first color
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
-		 * @var     string      The hex value of color 1
-		 * @var     string      The hex value of color 2
-		 * @var     int         a value between 0 and 100
-		 * @return  string      returns hex color
+		 * @param   string|false $hex1
+		 * @param   string       $hex2
+		 * @param   integer      $percentage        a value between 0 and 100
+		 * @return  string       returns hex color
 		 */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {
 
