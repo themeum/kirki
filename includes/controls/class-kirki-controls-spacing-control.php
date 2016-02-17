@@ -21,43 +21,23 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
+			$this->json['l10n']    = Kirki_Toolkit::i18n();
 			$this->json['choices'] = array();
 			if ( is_array( $this->choices ) ) {
-				if ( isset( $this->choices['top'] ) && true == $this->choices['top'] ) {
-					$this->json['choices']['top'] = true;
-				}
-				if ( isset( $this->choices['bottom'] ) && true == $this->choices['bottom'] ) {
-					$this->json['choices']['bottom'] = true;
-				}
-				if ( isset( $this->choices['left'] ) && true == $this->choices['left'] ) {
-					$this->json['choices']['left'] = true;
-				}
-				if ( isset( $this->choices['right'] ) && true == $this->choices['right'] ) {
-					$this->json['choices']['right'] = true;
+				foreach( $this->choices as $choice => $value ) {
+					if ( true === $value ) {
+						$this->json['choices'][ $choice ] = true;
+					}
 				}
 			}
 
-			$i18n = Kirki_Toolkit::i18n();
-			$this->json['l10n'] = array(
-				'top'    => $i18n['top'],
-				'bottom' => $i18n['bottom'],
-				'left'   => $i18n['left'],
-				'right'  => $i18n['right'],
-			);
-
-			if ( isset( $this->json['choices']['top'] ) && ! isset( $this->json['value']['top'] ) ) {
-				$this->json['value']['top'] = $this->json['default']['top'];
+			if ( is_array( $this->json['default'] ) ) {
+				foreach( $this->json['default'] as $key => $value ) {
+					if ( isset( $this->json['choices'][ $key ] ) && ! isset( $this->json['value'][ $key ] ) ) {
+						$this->json['value'][ $key ] = $value;
+					}
+				}
 			}
-			if ( isset( $this->json['choices']['bottom'] ) && ! isset( $this->json['value']['bottom'] ) ) {
-				$this->json['value']['bottom'] = $this->json['default']['bottom'];
-			}
-			if ( isset( $this->json['choices']['left'] ) && ! isset( $this->json['value']['left'] ) ) {
-				$this->json['value']['left'] = $this->json['default']['left'];
-			}
-			if ( isset( $this->json['choices']['right'] ) && ! isset( $this->json['value']['top'] ) ) {
-				$this->json['value']['right'] = $this->json['default']['right'];
-			}
-
 		}
 
 		protected function content_template() { ?>
