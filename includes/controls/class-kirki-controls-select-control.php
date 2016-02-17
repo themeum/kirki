@@ -53,7 +53,6 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 							<# if ( data.value[ key ] in data.value ) { #>
 							<# } else { #>
 								<option value="{{ key }}">{{ data.choices[ key ] }}</option>
-							}
 							<# } #>
 						<# } #>
 					<# } else { #>
