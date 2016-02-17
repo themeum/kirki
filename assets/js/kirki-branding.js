@@ -3,6 +3,6 @@ jQuery(document).ready(function($) { "use strict";
 		jQuery( "div#customize-info .preview-notice" ).replaceWith( '<img src="' + kirkiBranding.logoImage + '">' );
 	}
 	if ( '' != kirkiBranding.description ) {
-		jQuery( "div#customize-info .accordion-section-content" ).replaceWith( '<div class="accordion-section-content"><div class="theme-description">' + kirkiBranding.description + '</div></div>' );
+		jQuery( "div#customize-info > .customize-panel-description" ).replaceWith( '<div class="customize-panel-description">' + kirkiBranding.description + '</div>' );
 	}
 });
