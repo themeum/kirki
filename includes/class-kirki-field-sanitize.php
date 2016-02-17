@@ -163,6 +163,7 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 					$field['type'] = 'color-alpha';
 					break;
 				case 'color':
+					$field['type'] = 'kirki-color';
 					// If a default value of rgba() is defined for a color control then use color-alpha instead.
 					if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
 						$field['type'] = 'color-alpha';

@@ -11,6 +11,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			'checkbox'         => 'Kirki_Controls_Checkbox_Control',
 			'code'             => 'Kirki_Controls_Code_Control',
 			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
+			'color'            => 'Kirki_Controls_Color_Control',
 			'custom'           => 'Kirki_Controls_Custom_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',
 			'editor'           => 'Kirki_Controls_Editor_Control',
@@ -31,7 +32,6 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			'textarea'         => 'Kirki_Controls_Textarea_Control',
 			'toggle'           => 'Kirki_Controls_Toggle_Control',
 			'typography'       => 'Kirki_Controls_Typography_Control',
-			'color'            => 'WP_Customize_Color_Control',
 			'image'            => 'WP_Customize_Image_Control',
 			'upload'           => 'WP_Customize_Upload_Control',
 		);
