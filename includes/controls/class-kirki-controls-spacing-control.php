@@ -53,94 +53,19 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 				<# } #>
 				<div class="wrapper">
 					<div class="control">
-						<# if ( data.choices['top'] ) { #>
-							<div class="top">
-								<h5>{{ data.l10n['top'] }}</h5>
+						<# for ( choiceKey in data.choices ) { #>
+							<div class="{{ choiceKey }}">
+								<h5>{{ data.l10n[ choiceKey ] }}</h5>
 								<div class="inner">
-									<input type="number" min="0" step="any" value="{{ parseFloat( data.value['top'] ) }}"/>
+									<input type="number" min="0" step="any" value="{{ parseFloat( data.value[ choiceKey ] ) }}"/>
 									<select>
 									<# if ( data.choices['units'] ) { #>
 										<# for ( key in data.choices['units'] ) { #>
-											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['top'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
+											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value[ choiceKey ], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
 										<# } #>
 									<# } else { #>
-										<# if ( data.value && data.value['top'] ) { #>
-											<# var units = data.value['top'].replace( parseFloat( data.value['top'] ), '' ); #>
-										<# } else { #>
-											<# var units = 'px'; #>
-										<# } #>
-										<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-										<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-										<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-									<# } #>
-									</select>
-								</div>
-							</div>
-						<# } #>
-
-						<# if ( data.choices['bottom'] ) { #>
-							<div class="bottom">
-								<h5>{{ data.l10n['bottom'] }}</h5>
-								<div class="inner">
-									<input type="number" min="0" step="any" value="{{ parseFloat( data.value['bottom'] ) }}"/>
-									<select>
-									<# if ( data.choices['units'] ) { #>
-										<# for ( key in data.choices['units'] ) { #>
-											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['bottom'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-										<# } #>
-									<# } else { #>
-										<# if ( data.value && data.value['bottom'] ) { #>
-											<# var units = data.value['bottom'].replace( parseFloat( data.value['bottom'] ), '' ); #>
-										<# } else { #>
-											<# var units = 'px'; #>
-										<# } #>
-										<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-										<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-										<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-									<# } #>
-									</select>
-								</div>
-							</div>
-						<# } #>
-
-						<# if ( data.choices['left'] ) { #>
-							<div class="left">
-								<h5>{{ data.l10n['left'] }}</h5>
-								<div class="inner">
-									<input type="number" min="0" step="any" value="{{ parseFloat( data.value['left'] ) }}"/>
-									<select>
-									<# if ( data.choices['units'] ) { #>
-										<# for ( key in data.choices['units'] ) { #>
-											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['left'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-										<# } #>
-									<# } else { #>
-										<# if ( data.value && data.value['left'] ) { #>
-											<# var units = data.value['left'].replace( parseFloat( data.value['left'] ), '' ); #>
-										<# } else { #>
-											<# var units = 'px'; #>
-										<# } #>
-										<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-										<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-										<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-									<# } #>
-									</select>
-								</div>
-							</div>
-						<# } #>
-
-						<# if ( data.choices['right'] ) { #>
-							<div class="right">
-								<h5>{{ data.l10n['right'] }}</h5>
-								<div class="inner">
-									<input type="number" min="0" step="any" value="{{ parseFloat( data.value['right'] ) }}"/>
-									<select>
-									<# if ( data.choices['units'] ) { #>
-										<# for ( key in data.choices['units'] ) { #>
-											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['right'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-										<# } #>
-									<# } else { #>
-										<# if ( data.value && data.value['right'] ) { #>
-											<# var units = data.value['right'].replace( parseFloat( data.value['right'] ), '' ); #>
+										<# if ( data.value && data.value[ choiceKey ] ) { #>
+											<# var units = data.value[ choiceKey ].replace( parseFloat( data.value[ choiceKey ] ), '' ); #>
 										<# } else { #>
 											<# var units = 'px'; #>
 										<# } #>
