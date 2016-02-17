@@ -209,7 +209,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<# } #>
 								<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
-							<# } else if ( field.type === 'image' ) { console.log(field); #>
+							<# } else if ( field.type === 'image' ) { #>
 
 								<label>
 									<# if ( field.label ) { #>
