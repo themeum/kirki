@@ -13,4 +13,10 @@ header( 'Content-Type: text/css' );
 /**
  * Echo the styles
  */
-echo Kirki_Styles_Frontend::loop_controls();
+$configs = Kirki::$config;
+foreach ( $configs as $config_id => $args ) {
+	if ( true === $args['disable_output'] ) {
+		continue;
+	}
+	echo Kirki_Styles_Frontend::loop_controls( $config_id );
+}

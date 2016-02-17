@@ -23,10 +23,12 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 			parent::__construct();
 			// Set the default args
 			$this->default_args = array(
-				'capability'  => 'edit_theme_options',
-				'option_type' => 'theme_mod',
-				'option_name' => '',
-				'compiler'    => array(),
+				'capability'     => 'edit_theme_options',
+				'option_type'    => 'theme_mod',
+				'option_name'    => '',
+				'compiler'       => array(),
+				'disable_output' => false,
+				'postMessage'    => '',
 			);
 			// Process the 'kirki/config' filter by replacing the defaults
 			$this->default_args = $this->config_from_filters();
@@ -60,10 +62,12 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 			$args = apply_filters( 'kirki/config', $default_args );
 			// create a valid config by merging with the default args.
 			$valid_args = array();
-			$valid_args['capability']  = isset( $args['capability'] ) ? $args['capability'] : $default_args['capability'];
-			$valid_args['option_type'] = isset( $args['option_type'] ) ? $args['option_type'] : $default_args['option_type'];
-			$valid_args['option_name'] = isset( $args['option_name'] ) ? $args['option_name'] : $default_args['option_name'];
-			$valid_args['compiler']    = isset( $args['compiler'] ) ? $args['compiler'] : $default_args['compiler'];
+			$valid_args['capability']     = isset( $args['capability'] ) ? $args['capability'] : $default_args['capability'];
+			$valid_args['option_type']    = isset( $args['option_type'] ) ? $args['option_type'] : $default_args['option_type'];
+			$valid_args['option_name']    = isset( $args['option_name'] ) ? $args['option_name'] : $default_args['option_name'];
+			$valid_args['compiler']       = isset( $args['compiler'] ) ? $args['compiler'] : $default_args['compiler'];
+			$valid_args['disable_output'] = isset( $args['disable_output'] ) ? $args['disable_output'] : $default_args['disable_output'];
+			$valid_args['postMessage'] = isset( $args['postMessage'] ) ? $args['postMessage'] : $default_args['postMessage'];
 
 			return $valid_args;
 
