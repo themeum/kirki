@@ -436,6 +436,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @var     string      The hex value of a color
 		 * @var     int         a value between -255 (darken) and 255 (lighten)
+		 * @param integer $steps
 		 * @return  string      returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
@@ -464,6 +465,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @var     string      The hex value of color 1
 		 * @var     string      The hex value of color 2
 		 * @var     int         a value between 0 and 100
+		 * @param string|false $hex1
+		 * @param string $hex2
+		 * @param integer $percentage
 		 * @return  string      returns hex color
 		 */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {

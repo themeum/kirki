@@ -15,6 +15,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @var $id    string    the configuration ID
 		 * @var $args  array     the configuration arguments
+		 * @param string $id
 		 * @return     void
 		 */
 		public function __construct( $id, $args = array() ) {
@@ -42,6 +43,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @var $config_id    the configuration ID.
 		 * @var $args         the configuration arguments
+		 * @param string $config_id
 		 * @return  void
 		 */
 		public function add_config( $config_id, $args ) {
