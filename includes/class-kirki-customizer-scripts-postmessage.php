@@ -146,7 +146,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 							$units  = ( ! empty( $js_vars['units'] ) ) ? '+\'' . $js_vars['units'] . '\'' : '';
 							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? '\'' . $js_vars['prefix'] . '\'+' : '';
 							// this.style.setProperty( 'color', 'red', 'important' ); - jquery won't fix .css !important issue so we go oldschool
-							$script .= '$(\'' . $js_vars['element'] . '\').each(function(){ this.style.setProperty(\'' .  $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ', \'important\');});';
+							$script .= '$(\'' . $js_vars['element'] . '\').each(function(){ this.style.setProperty(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ', \'important\');});';
 						} else {
 							$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
 							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';

@@ -80,8 +80,8 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Scripts' ) ) {
 					}
 
 					/**
-			 		 * Get the value of this field
-			 		 */
+					 * Get the value of this field
+					 */
 			 		$value = Kirki_Values::get_sanitized_field_value( $field );
 					/**
 					 * Typography fields arew a bit more complex than usual fields.
