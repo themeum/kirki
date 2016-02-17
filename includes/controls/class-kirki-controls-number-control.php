@@ -39,17 +39,7 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="customize-control-content">
-					<input type="text" {{{ data.link }}} value="{{ data.value }}"
-						<# if ( data.choices['min'] ) { #>
-							min="{{ data.choices['min'] }}"
-						<# } #>
-						<# if ( data.choices['max'] ) { #>
-							max="{{ data.choices['max'] }}"
-						<# } #>
-						<# if ( data.choices['step'] ) { #>
-							step="{{ data.choices['step'] }}"
-						<# } #>
-					/>
+					<input type="text" {{{ data.link }}} value="{{ data.value }}" <# for ( key in data.choices ) { #> {{ key }}="{{ data.choices[ key ] }}"<# } #> />
 				</div>
 			</label>
 			<?php
