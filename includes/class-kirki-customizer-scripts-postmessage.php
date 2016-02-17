@@ -110,7 +110,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 						$script .= '$(\'' . $js_vars['element'] . '\').html( newval );';
 
 						// execute js_callback (callback must exist in dom before this script - see priority on the action/
-						if ( ! empty( $js_callback ) ){
+						if ( ! empty( $js_callback ) ) {
 							$script .= $js_callback . '(\'' . $js_vars['element'] . '\', newval);'; // js_callback(element, newval);
 						}
 

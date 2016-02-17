@@ -59,8 +59,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			);
 
 			foreach ( $fields as $key => $field ) {
-				if ( $field['type'] != 'image' )
+				if ( 'image' != $field['type'] ) {
 					continue;
+				}
 
 				$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
 			}
