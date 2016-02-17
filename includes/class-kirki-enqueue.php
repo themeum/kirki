@@ -17,14 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Customizer_Scripts_Default_Scripts' ) ) {
-	class Kirki_Customizer_Scripts_Default_Scripts extends Kirki_Customizer_Scripts_Enqueue {
+if ( ! class_exists( 'Kirki_Enqueue' ) ) {
+	class Kirki_Enqueue {
 
-		public function generate_script( $args = array() ) {}
+		public function __construct() {
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ) );
+		}
 
-		/**
-		 * Enqueue the scripts required.
-		 */
 		public function customize_controls_enqueue_scripts() {
 
 			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
@@ -36,12 +35,6 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Default_Scripts' ) ) {
 			wp_enqueue_style( 'wp-color-picker' );
 
 		}
-
-		public function customize_controls_print_scripts() {}
-
-		public function customize_controls_print_footer_scripts() {}
-
-		public function wp_footer() {}
 
 	}
 }

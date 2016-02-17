@@ -26,7 +26,7 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 
 		public function __construct() {
 
-			$this->dependencies = new Kirki_Customizer_Scripts_Default_Scripts();
+			$this->dependencies = new Kirki_Enqueue();
 			$this->branding     = new Kirki_Customizer_Scripts_Branding();
 			$this->postmessage  = new Kirki_Customizer_Scripts_PostMessage();
 			$this->tooltips     = new Kirki_Customizer_Scripts_Tooltips();
