@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.1.0
+Stable tag: 2.1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,12 @@ Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for doc
 To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea) or use our test theme from https://github.com/aristath/kirki-demo.
 
 == Changelog ==
+
+= 2.1.0.1 =
+
+February 17, 2016, dev time: 5 minutes
+
+* FIX: PHP Notices (undefined index)
 
 = 2.1.0 =
 
