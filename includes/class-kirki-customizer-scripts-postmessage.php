@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_PostMessage' ) ) {
+if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 	class Kirki_Customizer_Scripts_PostMessage extends Kirki_Customizer_Scripts {
 
 		/**
