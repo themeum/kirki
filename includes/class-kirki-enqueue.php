@@ -22,6 +22,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 		public function __construct() {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ) );
+			add_action( 'customize_controls_print_scripts', array( $this, 'branding' ) );
 		}
 
 		public function customize_controls_enqueue_scripts() {
@@ -34,6 +35,27 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
 			wp_enqueue_style( 'wp-color-picker' );
 
+		}
+
+		public function branding() {
+
+			$config = apply_filters( 'kirki/config', array() );
+			$vars   = array(
+				'logoImage'   => '',
+				'description' => '',
+			);
+			if ( isset( $config['logo_image'] ) && '' != $config['logo_image'] ) {
+				$vars['logoImage'] = esc_url_raw( $config['logo_image'] );
+			}
+			if ( isset( $config['description'] ) && '' != $config['description'] ) {
+				$vars['description'] = esc_textarea( $config['description'] );
+			}
+
+			if ( ! empty( $vars['logoImage'] ) || ! empty( $vars['description'] ) ) {
+				wp_register_script( 'kirki-branding', Kirki::$url . '/assets/js/kirki-branding.js' );
+				wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
+				wp_enqueue_script( 'kirki-branding' );
+			}
 		}
 
 	}
