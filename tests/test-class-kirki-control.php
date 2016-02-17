@@ -16,7 +16,7 @@ class Test_Class_Kirki_Control extends WP_UnitTestCase {
 		// color
 		$this->assertEquals(
 			Kirki_Control::control_class_name( array( 'type' => 'color' ) ),
-			'WP_Customize_Color_Control'
+			'Kirki_Controls_Color_Control'
 		);
 		// color-alpha
 		$this->assertEquals(
