@@ -53,7 +53,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 			 * then use the 'output' argument to auto-generate the js_vars
 			 */
 			$config_id = ( isset( $args['kirki_config'] ) ) ? $args['kirki_config'] : 'global';
-			if ( 'auto' == Kirki::$config[ $config_id ]['postMessage'] ) {
+			if ( isset( Kirki::$config[ $config_id ]['postMessage'] ) && 'auto' == Kirki::$config[ $config_id ]['postMessage'] ) {
 				if ( ! isset( $args['js_vars'] ) || empty( $args['js_vars'] ) ) {
 					if ( isset( $args['output'] ) ) {
 						$args['js_vars']   = $args['output'];
