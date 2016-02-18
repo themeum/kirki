@@ -102,12 +102,5 @@ if ( ! class_exists( 'Kirki' ) ) {
 			Kirki_Field::add_field( $config_id, $args );
 		}
 
-		/**
-		 * Find the config ID based on the field options
-		 */
-		public static function get_config_id( $field ) {
-			return Kirki_Field::get_config_id( $field );
-		}
-
 	}
 }
