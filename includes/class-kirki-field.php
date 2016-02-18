@@ -389,16 +389,17 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					}
 					break;
 				case 'radio':
+					$args['type'] = 'kirki-radio';
 					/**
 					 * Tweaks for backwards-compatibility:
 					 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
 					 */
-					if ( isset( $args['mode'] ) && 'buttonset' == $args['mode'] ) {
-						$args['type'] = 'radio-buttonset';
-					} elseif ( isset( $args['mode'] ) && 'image' == $args['mode'] ) {
-						$args['type'] = 'radio-image';
-					} else {
-						$args['type'] = 'kirki-radio';
+					if ( isset( $args['mode'] ) ) {
+						if ( 'buttonset' == $args['mode'] ) {
+							$args['type'] = 'radio-buttonset';
+						} elseif ( 'image' == $args['mode'] ) {
+							$args['type'] = 'radio-image';
+						}
 					}
 					break;
 				case 'group-title':

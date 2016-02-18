@@ -18,7 +18,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			'number'           => 'Kirki_Controls_Number_Control',
 			'palette'          => 'Kirki_Controls_Palette_Control',
 			'preset'           => 'Kirki_Controls_Preset_Control',
-			'radio'            => 'Kirki_Controls_Radio_Control',
+			'kirki-radio'      => 'Kirki_Controls_Radio_Control',
 			'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
 			'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
 			'repeater'         => 'Kirki_Controls_Repeater_Control',
