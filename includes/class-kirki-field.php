@@ -79,32 +79,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$args['disable_output'] = $config['disable_output'];
 
 			/**
-			 * Check if [settings] is set.
-			 * If not set, check for [setting].
-			 * After this check is complete, we'll do some additional tweaking
-			 * based on whether this is an option or a theme_mod.
-			 * If an option and option_name is also defined,
-			 * then we'll have to change the setting.
+			 * Sanitize settings
 			 */
-			if ( ! isset( $args['settings'] ) && isset( $args['setting'] ) ) {
-				$args['settings'] = $args['setting'];
-			}
-			if ( is_array( $args['settings'] ) ) {
-				$settings = array();
-				foreach ( $args['settings'] as $setting_key => $setting_value ) {
-					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
-					if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $config['option_name'] ).'['.esc_attr( $setting_value ).']';
-					}
-				}
-				$args['settings'] = $settings;
-			} else {
-				if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
-					$args['settings'] = esc_attr( $args['option_name'] ) . '[' . esc_attr( $args['settings'] ) . ']';
-				} else {
-					$args['settings'] = esc_attr( $args['settings'] );
-				}
-			}
+			$args['settings'] = self::sanitize_settings( $config_id, $args );
 
 			/**
 			 * If no option-type has been set for the field,
@@ -223,6 +200,55 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * If all else fails, return edit_theme_options.
 			 */
 			return 'edit_theme_options';
+
+		}
+
+		/**
+		 * Sanitizes the settings.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string|array
+		 */
+		public static function sanitize_settings( $config_id, $args ) {
+
+			/**
+			 * Check for typos:
+			 * If the user has entered "setting" instead of "settings",
+			 * then use "setting" instead. It's a pretty common mistake
+			 * So we'll be accomodating.
+			 */
+			if ( ! isset( $args['settings'] ) && isset( $args['setting'] ) ) {
+				$args['settings'] = $args['setting'];
+			}
+			/**
+			 * If we have an array of settings then we need to sanitize each of them
+			 */
+			if ( is_array( $args['settings'] ) ) {
+				$settings = array();
+				foreach ( $args['settings'] as $setting_key => $setting_value ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+					/**
+					 * If we're using serialized options then we may need to modify things a bit
+					 */
+					if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
+						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $config['option_name'] ).'['.esc_attr( $setting_value ).']';
+					}
+				}
+				return $settings;
+			}
+			/**
+			 * If we got to this point then settings is not an array.
+			 * Continue sanitizing it
+			 */
+			if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
+				/**
+				 * If we're using serialized options then we may need to modify things a bit
+				 */
+				return esc_attr( $args['option_name'] ) . '[' . esc_attr( $args['settings'] ) . ']';
+			}
+
+			return esc_attr( $args['settings'] );
 
 		}
 	}
