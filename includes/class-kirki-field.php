@@ -45,9 +45,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		public static function add_field( $config_id, $args ) {
 
 			/**
-			 * Evaluate $config_id
+			 * Sanitize $config_id
 			 */
-			$config_id = self::evaluate_config_id( $config_id, $args );
+			$config_id = self::sanitize_config_id( $config_id, $args );
 			$args['kirki_config'] = $config_id;
 
 			/**
@@ -59,17 +59,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * If we've set an option in the configuration
 			 * then make sure we're using options and not theme_mods
 			 */
-			if ( '' != $config['option_name'] ) {
+			if ( isset( $config['option_name'] ) && ! empty( $config['option_name'] ) ) {
 				$config['option_type'] = 'option';
 			}
 
 			/**
-			 * If no option name has been set for the field,
-			 * use the one from the configuration
+			 * Sanitize option_name
 			 */
-			if ( ! isset( $args['option_name'] ) ) {
-				$args['option_name'] = $config['option_name'];
-			}
+			$args['option_name'] = self::sanitize_option_name( $config_id, $args );
 
 			/**
 			 * If no capability has been set for the field,
@@ -143,8 +140,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-
-		public static function evaluate_config_id( $config_id, $args ) {
+		public static function sanitize_config_id( $config_id, $args ) {
 			/**
 			 * Check if 'kirki_config' has been defined inside the $args.
 			 * In that case, it will override the $config.
@@ -172,6 +168,37 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 			return esc_attr( $config_id );
 		}
+
+		/**
+		 * Sanitizes the setting name.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_option_name( $config_id, $args ) {
+
+			/**
+			 * If an option_name has been defined in the field itself,
+			 * then escape it and return it.
+			 */
+			if ( isset( $args['option_name'] ) ) {
+				return esc_attr( $args['option_name'] );
+			}
+			/**
+			 * Try to get the option_name from the config
+			 */
+
+			if ( isset( Kirki::$config[ $config_id ]['option_name'] ) ) {
+				return esc_attr( Kirki::$config[ $config_id ]['option_name'] );
+			}
+			/**
+			 * If all else fails, return empty.
+			 */
+			return '';
+
+		}
+
 
 	}
 }

@@ -222,34 +222,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 		}
 
 		/**
-		 * Sanitizes the setting name.
-		 *
-		 * @param array the field definition
-		 * @return string (theme_mod|option)
-		 */
-		public static function sanitize_option_name( $field ) {
-
-			if ( isset( $field['option_name'] ) ) {
-				return esc_attr( $field['option_name'] );
-			}
-
-			/**
-			 * If no 'option_type' has been defined
-			 * then try to get the option from the kirki/config filter.
-			 */
-			$config = apply_filters( 'kirki/config', array() );
-			if ( isset( $config['option_name'] ) ) {
-				return esc_attr( $config['option_type'] );
-			}
-
-			/**
-			 * If all else fails, return empty.
-			 */
-			return '';
-
-		}
-
-		/**
 		 * Sanitizes the setting permissions.
 		 *
 		 * @param array the field definition
