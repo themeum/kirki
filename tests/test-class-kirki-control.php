@@ -13,11 +13,6 @@ class Test_Class_Kirki_Control extends WP_UnitTestCase {
 			Kirki_Control::control_class_name( array( 'type' => 'code' ) ),
 			'Kirki_Controls_Code_Control'
 		);
-		// color
-		$this->assertEquals(
-			Kirki_Control::control_class_name( array( 'type' => 'color' ) ),
-			'Kirki_Controls_Color_Control'
-		);
 		// color-alpha
 		$this->assertEquals(
 			Kirki_Control::control_class_name( array( 'type' => 'color-alpha' ) ),
@@ -105,7 +100,7 @@ class Test_Class_Kirki_Control extends WP_UnitTestCase {
 		);
 		// text
 		$this->assertEquals(
-			Kirki_Control::control_class_name( array( 'type' => 'text' ) ),
+			Kirki_Control::control_class_name( array( 'type' => 'kirki-text' ) ),
 			'Kirki_Controls_Text_Control'
 		);
 		// textarea

@@ -214,7 +214,7 @@ class Test_Kirki extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'my_setting_4', Kirki::$fields );
 		$this->assertEquals( 'My custom control', Kirki::$fields['my_setting_3']['label'] );
 		$this->assertEquals( 'my_section', Kirki::$fields['my_setting_3']['section'] );
-		$this->assertEquals( 'text', Kirki::$fields['my_setting_3']['type'] );
+		$this->assertEquals( 'kirki-text', Kirki::$fields['my_setting_3']['type'] );
 		$this->assertEquals( 10, Kirki::$fields['my_setting_3']['priority'] );
 		$this->assertEquals( 'some-default-value', Kirki::$fields['my_setting_3']['default'] );
 		$this->assertEquals( 'edit_posts', Kirki::$fields['my_setting_3']['capability'] );
