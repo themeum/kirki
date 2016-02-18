@@ -18,7 +18,6 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $args );
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
-					$type       = Kirki_Field_Sanitize::sanitize_type( $args );
 					$capability = Kirki_Field_Sanitize::sanitize_capability( $args );
 					$transport  = isset( $args['transport'] ) ? $args['transport'] : 'refresh';
 
@@ -29,7 +28,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 					}
 					$this->wp_customize->add_setting( $setting_value, array(
 						'default'           => $default,
-						'type'              => $type,
+						'type'              => $args['option_type'],
 						'capability'        => $capability,
 						'sanitize_callback' => $sanitize_callback,
 						'transport'         => $transport,
@@ -42,7 +41,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				$setting_classname = Kirki_Control::$setting_types[ $args['type'] ];
 				$this->wp_customize->add_setting( new $setting_classname( $this->wp_customize, $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
-					'type'              => Kirki_Field_Sanitize::sanitize_type( $args ),
+					'type'              => $args['option_type'],
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
@@ -51,7 +50,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 			} else {
 				$this->wp_customize->add_setting( $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
-					'type'              => Kirki_Field_Sanitize::sanitize_type( $args ),
+					'type'              => $args['option_type'],
 					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
