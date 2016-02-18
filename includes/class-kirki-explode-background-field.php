@@ -1,7 +1,7 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
-	class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
+	class Kirki_Explode_Background_Field {
 		/**
 		 * Build the background fields.
 		 * Takes a single field with type = background and explodes it to multiple controls.
@@ -18,8 +18,6 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 				return;
 			}
 
-			// Sanitize field
-			$field = Kirki_Field_Sanitize::sanitize_field( $field );
 			// No need to proceed any further if no defaults have been set.
 			// We build the array of fields based on what default values have been defined.
 			if ( ! isset( $field['default'] ) || ! is_array( $field['default'] ) ) {
@@ -97,7 +95,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					'required'    => $field['required'],
 					'description' => $description,
 					'default'     => $value,
-					'id'          => Kirki_Field_Sanitize::sanitize_id( array( 'settings' => $field['settings'] . '_' . $setting ) ),
+					'id'          => Kirki_Field::sanitize_id( array( 'settings' => $field['settings'] . '_' . $setting ) ),
 					'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
 					'output'      => ( '' != $field['output'] ) ? array(
 						array(
@@ -105,7 +103,6 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 							'property' => $output_property,
 						),
 					) : '',
-					'sanitize_callback' => ( isset( $sanitize_callback ) ) ? $sanitize_callback : Kirki_Field_Sanitize::fallback_callback( $type ),
 				) );
 				$i++;
 			}

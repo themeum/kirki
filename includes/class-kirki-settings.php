@@ -15,14 +15,14 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 			if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
 				$settings          = $args['settings'];
 				$defaults          = isset( $args['default'] ) ? $args['default'] : array();
-				$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $args );
+				$sanitize_callback = $args['sanitize_callback'];
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
 					$transport  = isset( $args['transport'] ) ? $args['transport'] : 'refresh';
 
 					if ( isset( $args['sanitize_callback'] ) && is_array( $args['sanitize_callback'] ) ) {
 						if ( isset( $args['sanitize_callback'][ $setting_key ] ) ) {
-							$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( array( 'sanitize_callback' => $args['sanitize_callback'][ $setting_key ] ) );
+							$sanitize_callback = Kirki_Field::sanitize_callback( '', array( 'sanitize_callback' => $args['sanitize_callback'][ $setting_key ] ) );
 						}
 					}
 					$this->wp_customize->add_setting( $setting_value, array(
@@ -43,7 +43,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 					'type'              => $args['option_type'],
 					'capability'        => $args['capability'],
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
-					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
+					'sanitize_callback' => $args['sanitize_callback'],
 				) ) );
 
 			} else {
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 					'type'              => $args['option_type'],
 					'capability'        => $args['capability'],
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
-					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
+					'sanitize_callback' => $args['sanitize_callback'],
 				) );
 			}
 

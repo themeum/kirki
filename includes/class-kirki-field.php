@@ -92,6 +92,34 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * Sanitize control type
 			 */
 			$args['type'] = self::sanitize_control_type( $config_id, $args );
+			/**
+			 * If no choices have been defined, use an empty array
+			 */
+			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
+			/**
+			 * If no output argument has been defined, use an empty array
+			 */
+			$args['output'] = isset( $args['output'] ) ? $args['output'] : array();
+			/**
+			 * If "variables" has not been defined, set to null.
+			 */
+			$args['variables'] = ( isset( $args['variables'] ) && is_array( $args['variables'] ) ) ? $args['variables'] : null;
+			/**
+			 * Sanitize the id (for internal use)
+			 */
+			$args['id'] = self::sanitize_id( $config_id, $args );
+			/**
+			 * Sanitize the sanitize_callback argument.
+			 */
+			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
+			/**
+			 * Make sure the "multiple" argument is properly formatted for <select> controls
+			 */
+			if ( 'kirki-select' == $args['type'] ) {
+				$args['multiple'] = ( isset( $args['multiple'] ) ) ? intval( $args['multiple'] ) : 1;
+			}
+
+
 
 			/**
 			 * Add the field to the static $fields variable properly indexed
@@ -402,6 +430,102 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * sanitize using esc_attr and return the value.
 			 */
 			return esc_attr( $args['type'] );
+
+		}
+
+		/**
+		 * Sanitizes the control id.
+		 * Sanitizing the ID should happen after the 'settings' sanitization.
+		 * This way we can also properly handle cases where the option_type is set to 'option'
+		 * and we're using an array instead of individual options.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_id( $config_id, $args ) {
+			return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $args['settings'] ) ) );
+		}
+
+		/**
+		 * Sanitizes the setting sanitize_callback
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string|array
+		 */
+		public static function sanitize_callback( $config_id, $args ) {
+
+			if ( isset( $args['sanitize_callback'] ) && ! empty( $args['sanitize_callback'] ) ) {
+				if ( is_callable( $args['sanitize_callback'] ) ) {
+					return $args['sanitize_callback'];
+				}
+			}
+			// Fallback callback
+			return self::fallback_callback( $config_id, $args );
+
+		}
+
+		/**
+		 * returns a callable function or method that can be used to sanitize the values.
+		 * This is used as fallback in case a sanitize_callback has not been defined for a setting.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string|array
+		 */
+		public static function fallback_callback( $config_id, $args ) {
+
+			switch ( $args['type'] ) {
+				case 'checkbox':
+				case 'toggle':
+				case 'switch':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'checkbox' );
+					break;
+				case 'color':
+				case 'color-alpha':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
+					break;
+				case 'image':
+				case 'upload':
+					$sanitize_callback = 'esc_url_raw';
+					break;
+				case 'radio':
+				case 'radio-image':
+				case 'radio-buttonset':
+				case 'palette':
+					$sanitize_callback = 'esc_attr';
+					break;
+				case 'select':
+				case 'select2':
+				case 'select2-multiple':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
+					break;
+				case 'dropdown-pages':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'dropdown_pages' );
+					break;
+				case 'slider':
+				case 'number':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
+					break;
+				case 'text':
+				case 'kirki-text':
+				case 'textarea':
+				case 'editor':
+					$sanitize_callback = 'esc_textarea';
+					break;
+				case 'multicheck':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'multicheck' );
+					break;
+				case 'sortable':
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'sortable' );
+					break;
+				default:
+					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
+					break;
+			}
+
+			return $sanitize_callback;
 
 		}
 

@@ -99,7 +99,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			$this->wp_customize->add_control( new $control_class_name(
 				$this->wp_customize,
 				$args['settings'],
-				Kirki_Field_Sanitize::sanitize_field( $args )
+				$args
 			) );
 
 		}

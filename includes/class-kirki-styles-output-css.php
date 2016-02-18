@@ -66,16 +66,12 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		public static function css( $field ) {
 			/**
-			 * Make sure the field is sanitized before proceeding any further.
-			 */
-			$field_sanitized = Kirki_Field_Sanitize::sanitize_field( $field );
-			/**
 			 * Set class vars
 			 */
-			self::$settings   = $field_sanitized['settings'];
-			self::$callback   = $field_sanitized['sanitize_callback'];
-			self::$field_type = $field_sanitized['type'];
-			self::$output     = $field_sanitized['output'];
+			self::$settings   = $field['settings'];
+			self::$callback   = $field['sanitize_callback'];
+			self::$field_type = $field['type'];
+			self::$output     = $field['output'];
 			if ( ! is_array( self::$output ) ) {
 				self::$output = array(
 					array(
@@ -87,7 +83,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			/**
 			 * Get the value of this field
 			 */
-			self::$value = Kirki_Values::get_sanitized_field_value( $field_sanitized );
+			self::$value = Kirki_Values::get_sanitized_field_value( $field );
 			/**
 			 * Returns the styles
 			 */
