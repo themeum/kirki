@@ -56,17 +56,22 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$config = Kirki::$config[ $config_id ];
 
 			/**
+			 * Sanitize option_name
+			 */
+			$args['option_name'] = self::sanitize_option_name( $config_id, $args );
+
+			/**
 			 * If we've set an option in the configuration
 			 * then make sure we're using options and not theme_mods
 			 */
 			if ( isset( $config['option_name'] ) && ! empty( $config['option_name'] ) ) {
-				$config['option_type'] = 'option';
+				$args['option_type'] = 'option';
 			}
 
 			/**
-			 * Sanitize option_name
+			 * Sanitize option_type
 			 */
-			$args['option_name'] = self::sanitize_option_name( $config_id, $args );
+			$args['option_type'] = self::sanitize_option_type( $config_id, $args );
 
 			/**
 			 * Sanitize capability
@@ -204,6 +209,36 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		}
 
 		/**
+		 * Sanitizes the option_type
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_option_type( $config_id, $args ) {
+
+			/**
+			 * If an capability has been defined in the field itself,
+			 * then escape it and return it.
+			 */
+			if ( isset( $args['option_type'] ) ) {
+				return esc_attr( $args['option_type'] );
+			}
+			/**
+			 * Try to get the capability from the config
+			 */
+
+			if ( isset( Kirki::$config[ $config_id ]['option_type'] ) ) {
+				return esc_attr( Kirki::$config[ $config_id ]['option_type'] );
+			}
+			/**
+			 * If all else fails, return option_type.
+			 */
+			return 'option_type';
+
+		}
+
+		/**
 		 * Sanitizes the settings.
 		 *
 		 * @param   string  $config_id
@@ -241,7 +276,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * If we got to this point then settings is not an array.
 			 * Continue sanitizing it
 			 */
-			if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
+			if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
 				/**
 				 * If we're using serialized options then we may need to modify things a bit
 				 */

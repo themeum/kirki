@@ -48,11 +48,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 				'variables'         => null,
 			);
 			/**
-			 * Field type has to run before the others to accomodate older implementations
-			 * If we don't do this then kirki/config filters won't work properly.
-			 */
-			$field['option_type'] = self::sanitize_type( $field );
-			/**
 			 * Merge defined args with defaults
 			 */
 			$field = wp_parse_args( $field, $defaults );
@@ -181,38 +176,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 * sanitize using esc_attr and return the value.
 			 */
 			return esc_attr( $field['type'] );
-
-		}
-
-		/**
-		 * Sanitizes the setting type.
-		 *
-		 * @param array the field definition
-		 * @return string (theme_mod|option)
-		 */
-		public static function sanitize_type( $field ) {
-
-			/**
-			 * If we've set an 'option_type' in the field properties
-			 * then sanitize the value using esc_attr and return it.
-			 */
-			if ( isset( $field['option_type'] ) ) {
-				return esc_attr( $field['option_type'] );
-			}
-
-			/**
-			 * If no 'option_type' has been defined
-			 * then try to get the option from the kirki/config filter.
-			 */
-			$config = apply_filters( 'kirki/config', array() );
-			if ( isset( $config['option_type'] ) ) {
-				return esc_attr( $config['option_type'] );
-			}
-
-			/**
-			 * If all else fails, fallback to theme_mod
-			 */
-			return 'theme_mod';
 
 		}
 
