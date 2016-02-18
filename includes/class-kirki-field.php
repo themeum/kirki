@@ -143,7 +143,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		}
 
 		/**
-		 * Gets the $confi_id and $args specified in the field,
+		 * Gets the $config_id and $args specified in the field,
 		 * and then checks the validity of $config_id.
 		 * If $config_id is not valid, then fallback to using the 'global' config.
 		 *
