@@ -52,10 +52,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 */
 			$field = wp_parse_args( $field, $defaults );
 			/**
-			 * Get the right control type
-			 */
-			$field['type'] = self::sanitize_control_type( $field );
-			/**
 			 * Sanitize the choices argument
 			 */
 			$field['choices'] = ( isset( $field['choices'] ) ) ? $field['choices'] : array();
@@ -83,86 +79,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			}
 
 			return $field;
-
-		}
-
-		/**
-		 * Sanitizes the control type.
-		 *
-		 * @param array the field definition
-		 * @return string If not set, then defaults to text.
-		 */
-		public static function sanitize_control_type( $field ) {
-
-			// If no field type has been defined then fallback to text
-			if ( ! isset( $field['type'] ) ) {
-				return 'kirki-text';
-			}
-
-			switch ( $field['type'] ) {
-
-				case 'checkbox':
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 switch & toggle were part of the checkbox control.
-					 */
-					if ( isset( $field['mode'] ) && 'switch' == $field['mode'] ) {
-						$field['type'] = 'switch';
-					} elseif ( isset( $field['mode'] ) && 'toggle' == $field['mode'] ) {
-						$field['type'] = 'toggle';
-					} else {
-						$field['type'] = 'kirki-checkbox';
-					}
-					break;
-				case 'radio':
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
-					 */
-					if ( isset( $field['mode'] ) && 'buttonset' == $field['mode'] ) {
-						$field['type'] = 'radio-buttonset';
-					} elseif ( isset( $field['mode'] ) && 'image' == $field['mode'] ) {
-						$field['type'] = 'radio-image';
-					} else {
-						$field['type'] = 'kirki-radio';
-					}
-					break;
-				case 'group-title':
-				case 'group_title':
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 there was a group-title control.
-					 */
-					$field['type'] = 'custom';
-					break;
-				case 'color_alpha':
-					// Just making sure that common mistakes will still work.
-					$field['type'] = 'color-alpha';
-					break;
-				case 'color':
-					$field['type'] = 'kirki-color';
-					// If a default value of rgba() is defined for a color control then use color-alpha instead.
-					if ( isset( $field['default'] ) && false !== strpos( $field['default'], 'rgba' ) ) {
-						$field['type'] = 'color-alpha';
-					}
-					break;
-				case 'select':
-				case 'select2':
-				case 'select2-multiple':
-					$field['type'] = 'kirki-select';
-					break;
-				case 'textarea':
-					$field['type'] = 'kirki-textarea';
-					break;
-				case 'text':
-					$field['type'] = 'kirki-text';
-					break;
-			}
-
-			/**
-			 * sanitize using esc_attr and return the value.
-			 */
-			return esc_attr( $field['type'] );
 
 		}
 

@@ -88,8 +88,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * Sanitize active_callback
 			 */
 			$args['active_callback'] = self::sanitize_active_callback( $config_id, $args );
-
-
+			/**
+			 * Sanitize control type
+			 */
+			$args['type'] = self::sanitize_control_type( $config_id, $args );
 
 			/**
 			 * Add the field to the static $fields variable properly indexed
@@ -322,5 +324,87 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		}
 
+		/**
+		 * Sanitizes the control type.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_control_type( $config_id, $args ) {
+
+			// If no field type has been defined then fallback to text
+			if ( ! isset( $args['type'] ) ) {
+				return 'kirki-text';
+			}
+
+			switch ( $args['type'] ) {
+
+				case 'checkbox':
+					/**
+					 * Tweaks for backwards-compatibility:
+					 * Prior to version 0.8 switch & toggle were part of the checkbox control.
+					 */
+					if ( isset( $args['mode'] ) && 'switch' == $args['mode'] ) {
+						$args['type'] = 'switch';
+					} elseif ( isset( $args['mode'] ) && 'toggle' == $args['mode'] ) {
+						$args['type'] = 'toggle';
+					} else {
+						$args['type'] = 'kirki-checkbox';
+					}
+					break;
+				case 'radio':
+					/**
+					 * Tweaks for backwards-compatibility:
+					 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
+					 */
+					if ( isset( $args['mode'] ) && 'buttonset' == $args['mode'] ) {
+						$args['type'] = 'radio-buttonset';
+					} elseif ( isset( $args['mode'] ) && 'image' == $args['mode'] ) {
+						$args['type'] = 'radio-image';
+					} else {
+						$args['type'] = 'kirki-radio';
+					}
+					break;
+				case 'group-title':
+				case 'group_title':
+					/**
+					 * Tweaks for backwards-compatibility:
+					 * Prior to version 0.8 there was a group-title control.
+					 */
+					$args['type'] = 'custom';
+					break;
+				case 'color_alpha':
+					// Just making sure that common mistakes will still work.
+					$args['type'] = 'color-alpha';
+					break;
+				case 'color':
+					$args['type'] = 'kirki-color';
+					// If a default value of rgba() is defined for a color control then use color-alpha instead.
+					if ( isset( $args['default'] ) && false !== strpos( $args['default'], 'rgba' ) ) {
+						$args['type'] = 'color-alpha';
+					}
+					break;
+				case 'select':
+				case 'select2':
+				case 'select2-multiple':
+					$args['type'] = 'kirki-select';
+					break;
+				case 'textarea':
+					$args['type'] = 'kirki-textarea';
+					break;
+				case 'text':
+					$args['type'] = 'kirki-text';
+					break;
+			}
+
+			/**
+			 * sanitize using esc_attr and return the value.
+			 */
+			return esc_attr( $args['type'] );
+
+		}
+
 	}
+
 }
