@@ -55,8 +55,8 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public function render_content() {}
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label class="customizer-text">
 				<# if ( data.label ) { #>
@@ -70,35 +70,11 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			<div class="wrapper">
 				<# if ( data.choices['font-style'] ) { #>
 					<div class="font-style">
-						<# if ( data.choices['font-style']['bold'] ) { #>
-							<div class="bold">
-								<label for="bold_{{ data.id }}">
-									<input name="bold_{{ data.id }}" id="bold_{{ data.id }}" type="checkbox" value="{{ data.value['bold'] }}" {{{ data.link }}}<# if ( '1' == data.value['bold'] ) { #> checked<# } #>>
-									<span class="dashicons dashicons-editor-bold"></span>
-								</label>
-							</div>
-						<# } #>
-						<# if ( data.choices['font-style']['italic'] ) { #>
-							<div class="italic">
-								<label for="italic_{{ data.id }}">
-									<input name="italic_{{ data.id }}" id="italic_{{ data.id }}" type="checkbox" value="{{ data.value['italic'] }}" {{{ data.link }}}<# if ( '1' == data.value['italic'] ) { #> checked<# } #>>
-									<span class="dashicons dashicons-editor-italic"></span>
-								</label>
-							</div>
-						<# } #>
-						<# if ( data.choices['font-style']['underline'] ) { #>
-							<div class="underline">
-								<label for="underline_{{ data.id }}">
-									<input name="underline_{{ data.id }}" id="underline_{{ data.id }}" type="checkbox" value="{{ data.value['underline'] }}" {{{ data.link }}}<# if ( '1' == data.value['underline'] ) { #> checked<# } #>>
-									<span class="dashicons dashicons-editor-underline"></span>
-								</label>
-							</div>
-						<# } #>
-						<# if ( data.choices['font-style']['strikethrough'] ) { #>
-							<div class="strikethrough">
-								<label for="strikethrough_{{ data.id }}">
-									<input name="strikethrough_{{ data.id }}" id="strikethrough_{{ data.id }}" type="checkbox" value="{{ data.value['strikethrough'] }}" {{{ data.link }}}<# if ( '1' == data.value['strikethrough'] ) { #> checked<# } #>>
-									<span class="dashicons dashicons-editor-strikethrough"></span>
+						<# for ( styleProperty in data.choices['font-style'] ) { #>
+							<div class="{{ styleProperty }}">
+								<label for="{{ styleProperty }}_{{ data.id }}">
+									<input name="{{ styleProperty }}_{{ data.id }}" id="{{ styleProperty }}_{{ data.id }}" type="checkbox" value="{{ data.value[ styleProperty ] }}" {{{ data.link }}}<# if ( '1' == data.value[ styleProperty ] ) { #> checked<# } #>>
+									<span class="dashicons dashicons-editor-{{ styleProperty }}"></span>
 								</label>
 							</div>
 						<# } #>
@@ -141,15 +117,10 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<div class="font-weight">
 						<h5>{{ data.l10n['font-weight'] }}</h5>
 						<select class="font-weight">
-							<option value="100" <# if ( 100 == data.value['font-weight'] ) { #> selected<# } #>>100</option>
-							<option value="200" <# if ( 200 == data.value['font-weight'] ) { #> selected<# } #>>200</option>
-							<option value="300" <# if ( 300 == data.value['font-weight'] ) { #> selected<# } #>>300</option>
-							<option value="400" <# if ( 400 == data.value['font-weight'] ) { #> selected<# } #>>400</option>
-							<option value="500" <# if ( 500 == data.value['font-weight'] ) { #> selected<# } #>>500</option>
-							<option value="600" <# if ( 600 == data.value['font-weight'] ) { #> selected<# } #>>600</option>
-							<option value="700" <# if ( 700 == data.value['font-weight'] ) { #> selected<# } #>>700</option>
-							<option value="800" <# if ( 800 == data.value['font-weight'] ) { #> selected<# } #>>800</option>
-							<option value="900" <# if ( 900 == data.value['font-weight'] ) { #> selected<# } #>>900</option>
+							<# var fontWeights = ['100', '200', '300', '400', '500', '600', '700', '800', '900']; #>
+							<# for ( key in fontWeights ) { #>
+								<option value="{{ fontWeights[ key ] }}" <# if ( fontWeights[ key ] == data.value['font-weight'] ) { #> selected<# } #>>{{ fontWeights[ key ] }}</option>
+							<# } #>
 						</select>
 					</div>
 				<# } #>
@@ -188,16 +159,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# } #>
 			</div>
 			<?php
-		}
-
-		public function get_standard_fonts() {
-			$kirki = Kirki();
-			return $kirki->font_registry->get_standard_fonts();
-		}
-
-		public function get_google_fonts() {
-			$kirki = Kirki();
-			return $kirki->font_registry->get_google_fonts();
 		}
 
 		public function get_all_fonts() {

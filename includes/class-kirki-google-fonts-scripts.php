@@ -41,10 +41,6 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Scripts' ) ) {
 			 */
 			foreach ( $fields as $field ) {
 				/**
-				 * Sanitize the field
-				 */
-				$field = Kirki_Field_Sanitize::sanitize_field( $field );
-				/**
 				 * No reason to proceed any further if no 'output' has been defined
 				 * or if it's not defined as an array.
 				 */

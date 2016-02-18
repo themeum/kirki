@@ -21,8 +21,8 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 		public $type = 'kirki-checkbox';
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
 				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value !== false ) { #> checked<# } #> />

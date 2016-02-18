@@ -1,6 +1,6 @@
 <?php
 /**
- * Injects tooltips to controls when the 'help' argument is used.
+ * Injects tooltips to controls when the 'tooltip' argument is used.
  *
  * @package     Kirki
  * @category    Core
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Tooltips' ) ) {
 		public static function generate_script( $args = array() ) {
 
 			/**
-			 * The following control types already have the "help" argument in them
+			 * The following control types already have the "tooltip" argument in them
 			 * and they don't need an extra implementation in order to be rendered.
 			 * We're going to ignore these control-types and only process the rest.
 			 */
@@ -89,8 +89,8 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Tooltips' ) ) {
 			}
 
 			$script = '';
-			if ( isset( $args['help'] ) && ! empty( $args['help'] ) ) {
-				$content = "<a href='#' class='tooltip hint--left' data-hint='" . wp_strip_all_tags( $args['help'] ) . "'><span class='dashicons dashicons-info'></span></a>";
+			if ( isset( $args['tooltip'] ) && ! empty( $args['tooltip'] ) ) {
+				$content = "<a href='#' class='tooltip hint--left' data-hint='" . wp_strip_all_tags( $args['tooltip'] ) . "'><span class='dashicons dashicons-info'></span></a>";
 				$script  = '$( "' . $content . '" ).prependTo( "#customize-control-' . $args['settings'] . '" );';
 			}
 

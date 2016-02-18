@@ -11,7 +11,6 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			'checkbox'         => 'Kirki_Controls_Checkbox_Control',
 			'code'             => 'Kirki_Controls_Code_Control',
 			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
-			'color'            => 'Kirki_Controls_Color_Control',
 			'custom'           => 'Kirki_Controls_Custom_Control',
 			'dimension'        => 'Kirki_Controls_Dimension_Control',
 			'editor'           => 'Kirki_Controls_Editor_Control',
@@ -19,11 +18,11 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			'number'           => 'Kirki_Controls_Number_Control',
 			'palette'          => 'Kirki_Controls_Palette_Control',
 			'preset'           => 'Kirki_Controls_Preset_Control',
-			'radio'            => 'Kirki_Controls_Radio_Control',
+			'kirki-radio'      => 'Kirki_Controls_Radio_Control',
 			'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
 			'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
 			'repeater'         => 'Kirki_Controls_Repeater_Control',
-			'select'           => 'Kirki_Controls_Select_Control',
+			'kirki-select'     => 'Kirki_Controls_Select_Control',
 			'slider'           => 'Kirki_Controls_Slider_Control',
 			'sortable'         => 'Kirki_Controls_Sortable_Control',
 			'spacing'          => 'Kirki_Controls_Spacing_Control',
@@ -99,7 +98,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 			$this->wp_customize->add_control( new $control_class_name(
 				$this->wp_customize,
 				$args['settings'],
-				Kirki_Field_Sanitize::sanitize_field( $args )
+				$args
 			) );
 
 		}

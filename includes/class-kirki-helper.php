@@ -25,7 +25,8 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			if ( ! is_array( $array ) ) {
 				return $array;
 			}
-			for ( $i = 1; $i < count( $args ); $i++ ) {
+			$count = count( $args );
+			for ( $i = 1; $i < $count; $i++ ) {
 				if ( is_array( $args[ $i ] ) ) {
 					$array = self::recurse( $array, $args[ $i ] );
 				}

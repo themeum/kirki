@@ -63,24 +63,6 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
 	}
 });
 /**
- * KIRKI CONTROL: COLOR
- */
-wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control   = this;
-		var picker    = this.container.find( '.kirki-color-control' );
-		var new_color = picker.val();
-
-		picker.wpColorPicker({
-			change: function( event, ui ) {
-				setTimeout( function(){
-					control.setting.set( picker.val() );
-				}, 100 );
-			},
-		});
-	}
-});
-/**
  * KIRKI CONTROL: DIMENSION
  */
 wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
@@ -365,24 +347,9 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 * Control types:
 						 *     color
 						 *     kirki-color
+						 *     color-alpha
 						 */
-						else if ( 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
-
-							/**
-							 * Update the value in the customizer object
-							 */
-							wp.customize.instance( preset_setting ).set( preset_setting_value );
-							/**
-							 * Update the value visually in the control
-							 */
-
-							wp.customize.control( preset_setting ).container.find( '.color-picker-hex' )
-								.attr( 'data-default-color', preset_setting_value )
-								.data( 'default-color', preset_setting_value )
-								.wpColorPicker( 'color', preset_setting_value );
-
-						}
-						else if ( 'color-alpha' == sub_control_type ) {
+						else if ( 'color-alpha' == sub_control_type || 'kirki-color' == sub_control_type || 'color' == sub_control_type ) {
 
 							/**
 							 * Update the value visually in the control
