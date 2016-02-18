@@ -44,24 +44,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		public static function add_field( $config_id, $args ) {
 
-			if ( is_array( $config_id ) && empty( $args ) ) {
-				$args      = $config_id;
-				$config_id = 'global';
-			}
-
-			$config_id = ( '' == $config_id ) ? 'global' : $config_id;
-
 			/**
-			 * Add the config_id to the field
+			 * Evaluate $config_id
 			 */
+			$config_id = self::evaluate_config_id( $config_id, $args );
 			$args['kirki_config'] = $config_id;
 
 			/**
-			 * Get the configuration options
+			 * Get the config arguments
 			 */
-			if ( ! isset( Kirki::$config[ $config_id ] ) ) {
-				$config_id = 'global';
-			}
 			$config = Kirki::$config[ $config_id ];
 
 			/**
@@ -141,6 +132,35 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
 			}
 
+		}
+
+		public static function evaluate_config_id( $config_id, $args ) {
+			/**
+			 * Check if 'kirki_config' has been defined inside the $args.
+			 * In that case, it will override the $config.
+			 */
+			if ( isset( $args['kirki_config'] ) ) {
+				$config_id = $args['kirki_config'];
+			}
+			/**
+			 * If $args is not used, then assume that $config_id took its place
+			 */
+			if ( is_array( $config_id ) && empty( $args ) ) {
+				$args = $config_id;
+			}
+			/**
+			 * If $config_id is empty, use global config.
+			 */
+			if ( empty( $config_id ) ) {
+				$config_id = 'global';
+			}
+			/**
+			 * If the defined config does not exist, use global.
+			 */
+			if ( ! isset( Kirki::$config[ $config_id ] ) ) {
+				$config_id = 'global';
+			}
+			return $config_id;
 		}
 
 	}
