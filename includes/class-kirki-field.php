@@ -266,7 +266,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			/**
 			 * If all else fails, return option_type.
 			 */
-			return 'option_type';
+			return 'theme_mod';
 
 		}
 
