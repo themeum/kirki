@@ -52,7 +52,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 * If we don't do this then kirki/config filters won't work properly.
 			 */
 			$field['option_type'] = self::sanitize_type( $field );
-			$field['option_name'] = self::sanitize_option_name( $field );
 			/**
 			 * Merge defined args with defaults
 			 */
