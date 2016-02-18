@@ -93,6 +93,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 */
 			$args['type'] = self::sanitize_control_type( $config_id, $args );
 			/**
+			 * set choices for color controls
+			 */
+			if ( 'kirki-color' == $args['type'] ) {
+				$args['choices']['alpha'] = false;
+				$args['type'] = 'color-alpha';
+			} elseif ( 'color-alpha' == $args['type'] ) {
+				$args['choices']['alpha'] = true;
+			}
+			/**
 			 * If no choices have been defined, use an empty array
 			 */
 			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
@@ -118,8 +127,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( 'kirki-select' == $args['type'] ) {
 				$args['multiple'] = ( isset( $args['multiple'] ) ) ? intval( $args['multiple'] ) : 1;
 			}
-
-
 
 			/**
 			 * Add the field to the static $fields variable properly indexed
