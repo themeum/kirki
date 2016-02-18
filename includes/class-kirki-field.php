@@ -49,17 +49,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 */
 			$config_id = self::sanitize_config_id( $config_id, $args );
 			$args['kirki_config'] = $config_id;
-
 			/**
 			 * Get the config arguments
 			 */
 			$config = Kirki::$config[ $config_id ];
-
 			/**
 			 * Sanitize option_name
 			 */
 			$args['option_name'] = self::sanitize_option_name( $config_id, $args );
-
 			/**
 			 * If we've set an option in the configuration
 			 * then make sure we're using options and not theme_mods
@@ -67,31 +64,31 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( isset( $config['option_name'] ) && ! empty( $config['option_name'] ) ) {
 				$args['option_type'] = 'option';
 			}
-
 			/**
 			 * Sanitize option_type
 			 */
 			$args['option_type'] = self::sanitize_option_type( $config_id, $args );
-
 			/**
 			 * Sanitize capability
 			 */
 			$args['capability'] = self::sanitize_capability( $config_id, $args );
-
 			/**
 			 * Get the 'disable_output' argument from the config
 			 */
 			$args['disable_output'] = $config['disable_output'];
-
 			/**
 			 * Sanitize settings
 			 */
 			$args['settings'] = self::sanitize_settings( $config_id, $args );
-
 			/**
 			 * Sanitize tooltip messages
 			 */
 			$args['tooltip'] = self::sanitize_tooltip( $config_id, $args );
+			/**
+			 * Sanitize active_callback
+			 */
+			$args['active_callback'] = self::sanitize_active_callback( $config_id, $args );
+
 
 
 			/**
@@ -301,6 +298,27 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				return wp_strip_all_tags( $args['help'] );
 			}
 			return '';
+
+		}
+
+		/**
+		 * Sanitizes the active_callback
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_active_callback( $config_id, $args ) {
+
+			if ( isset( $args['active_callback'] ) ) {
+				if is_callable( $args['active_callback'] ) {
+					return $args['active_callback'];
+				}
+			}
+			if ( isset( $args['required'] ) ) {
+				return array( 'Kirki_Active_Callback', 'evaluate' );
+			}
+			return '__return_true';
 
 		}
 
