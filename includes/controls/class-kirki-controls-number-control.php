@@ -28,8 +28,8 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 		}
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
 				<# if ( data.label ) { #>

@@ -89,12 +89,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$args['settings'] = self::sanitize_settings( $config_id, $args );
 
 			/**
-			 * If no option-type has been set for the field,
-			 * use the one from the configuration
+			 * Sanitize tooltip messages
 			 */
-			if ( ! isset( $args['option_type'] ) ) {
-				$args['option_type'] = $config['option_type'];
-			}
+			$args['tooltip'] = self::sanitize_tooltip( $config_id, $args );
+
 
 			/**
 			 * Add the field to the static $fields variable properly indexed
@@ -286,5 +284,25 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			return esc_attr( $args['settings'] );
 
 		}
+
+		/**
+		 * Sanitizes the tooltip message
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_tooltip( $config_id, $args ) {
+
+			if ( isset( $args['tooltip'] ) ) {
+				return wp_strip_all_tags( $args['tooltip'] );
+			}
+			if ( isset( $args['help'] ) ) {
+				return wp_strip_all_tags( $args['help'] );
+			}
+			return '';
+
+		}
+
 	}
 }

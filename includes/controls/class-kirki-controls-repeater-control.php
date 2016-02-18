@@ -77,8 +77,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function render_content() { ?>
-			<?php if ( '' != $this->help ) : ?>
-				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+			<?php if ( '' != $this->tooltip ) : ?>
+				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
 			<label>
 				<?php if ( ! empty( $this->label ) ) : ?>

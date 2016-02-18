@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 	class Kirki_Customize_Control extends WP_Customize_Control {
 
-		public $help    = '';
+		public $tooltip = '';
 		public $js_vars = array();
 		public $output  = array();
 
@@ -32,7 +32,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			$this->json['value']   = $this->value();
 			$this->json['choices'] = $this->choices;
 			$this->json['link']    = $this->get_link();
-			$this->json['help']    = $this->help;
+			$this->json['tooltip'] = $this->tooltip;
 			$this->json['id']      = $this->id;
 			$this->json['i18n']    = Kirki_Toolkit::i18n();
 		}

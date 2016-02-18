@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			$defaults = array(
 				'default'           => '',
 				'label'             => '',
-				'help'              => '',
+				'tooltip'           => '',
 				'description'       => '',
 				'required'          => null,
 				'transport'         => 'refresh',
@@ -52,9 +52,9 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 */
 			$field = wp_parse_args( $field, $defaults );
 			/**
-			 * Strip all HTML from help messages
+			 * Strip all HTML from tooltip messages
 			 */
-			$field['help'] = wp_strip_all_tags( $field['help'] );
+			$field['tooltip'] = wp_strip_all_tags( $field['tooltip'] );
 			/**
 			 * If the 'required' argument is set then we'll need to auto-calculate things.
 			 * Set 'active_callback' to 'Kirki_Active_Callback::evaluate'. ALl extra calculations will be handled there.

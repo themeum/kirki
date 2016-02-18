@@ -24,8 +24,8 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 		}
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label class="customizer-text">
 				<# if ( data.label ) { #>

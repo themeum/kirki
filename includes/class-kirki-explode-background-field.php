@@ -37,7 +37,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 
 				$key             = esc_attr( $key );
 				$setting         = $key;
-				$help            = $field['help'];
+				$tooltip         = $field['tooltip'];
 				$description     = isset( $i18n['background-' . $key] ) ? $i18n['background-' . $key] : '';
 				$output_property = 'background-' . $key;
 				$label           = ( 0 === $i ) ? $field['label'] : '';
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 						$description     = $i18n['background-attachment'];
 						break;
 					default:
-						$help = '';
+						$tooltip = '';
 						break;
 				}
 
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					'type'        => $type,
 					'label'       => $label,
 					'settings'    => $property_setting,
-					'help'        => $help,
+					'tooltip'     => $tooltip,
 					'section'     => $field['section'],
 					'priority'    => $field['priority'],
 					'required'    => $field['required'],
