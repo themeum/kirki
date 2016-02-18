@@ -34,7 +34,7 @@ script:
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/coveralls
 
 after_success:
 	- codecov
