@@ -311,7 +311,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		public static function sanitize_active_callback( $config_id, $args ) {
 
 			if ( isset( $args['active_callback'] ) ) {
-				if is_callable( $args['active_callback'] ) {
+				if ( is_callable( $args['active_callback'] ) ) {
 					return $args['active_callback'];
 				}
 			}
