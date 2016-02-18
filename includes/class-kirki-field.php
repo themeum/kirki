@@ -134,6 +134,16 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		}
 
+		/**
+		 * Gets the $confi_id and $args specified in the field,
+		 * and then checks the validity of $config_id.
+		 * If $config_id is not valid, then fallback to using the 'global' config.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+
 		public static function evaluate_config_id( $config_id, $args ) {
 			/**
 			 * Check if 'kirki_config' has been defined inside the $args.
@@ -160,7 +170,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( ! isset( Kirki::$config[ $config_id ] ) ) {
 				$config_id = 'global';
 			}
-			return $config_id;
+			return esc_attr( $config_id );
 		}
 
 	}
