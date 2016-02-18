@@ -69,15 +69,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$args['option_name'] = self::sanitize_option_name( $config_id, $args );
 
 			/**
-			 * If no capability has been set for the field,
-			 * use the one from the configuration
+			 * Sanitize capability
 			 */
-			if ( ! isset( $args['capability'] ) ) {
-				$args['capability'] = $config['capability'];
-			}
+			$args['capability'] = self::sanitize_capability( $config_id, $args );
 
 			/**
-			 * Check the 'disable_output' argument from the config
+			 * Get the 'disable_output' argument from the config
 			 */
 			$args['disable_output'] = $config['disable_output'];
 
@@ -199,6 +196,34 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		}
 
+		/**
+		 * Sanitizes the capability.
+		 *
+		 * @param   string  $config_id
+		 * @param   array   $args
+		 * @return  string
+		 */
+		public static function sanitize_capability( $config_id, $args ) {
 
+			/**
+			 * If an capability has been defined in the field itself,
+			 * then escape it and return it.
+			 */
+			if ( isset( $args['capability'] ) ) {
+				return esc_attr( $args['capability'] );
+			}
+			/**
+			 * Try to get the capability from the config
+			 */
+
+			if ( isset( Kirki::$config[ $config_id ]['capability'] ) ) {
+				return esc_attr( Kirki::$config[ $config_id ]['capability'] );
+			}
+			/**
+			 * If all else fails, return edit_theme_options.
+			 */
+			return 'edit_theme_options';
+
+		}
 	}
 }

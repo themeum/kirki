@@ -91,10 +91,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 */
 			$field['id'] = self::sanitize_id( $field );
 			/**
-			 * Sanitize the capability argument
-			 */
-			$field['capability'] = self::sanitize_capability( $field );
-			/**
 			 * Sanitize the variables argument
 			 */
 			$field['variables'] = ( isset( $field['variables'] ) && is_array( $field['variables'] ) ) ? $field['variables'] : null;
@@ -218,42 +214,6 @@ if ( ! class_exists( 'Kirki_Field_Sanitize' ) ) {
 			 * If all else fails, fallback to theme_mod
 			 */
 			return 'theme_mod';
-
-		}
-
-		/**
-		 * Sanitizes the setting permissions.
-		 *
-		 * @param array the field definition
-		 * @return string (theme_mod|option)
-		 */
-		public static function sanitize_capability( $field ) {
-
-			/**
-			 * If we have not set a custom 'capability' then we'll need to figure it out.
-			 */
-			if ( ! isset( $field['capability'] ) ) {
-
-				/**
-				 * If there's a global configuration then perhaps we're defining a capability there.
-				 * Use the 'kirki/config' filter to figure it out.
-				 */
-				$config = apply_filters( 'kirki/config', array() );
-				if ( isset( $config['capability'] ) ) {
-					return esc_attr( $config['capability'] );
-				}
-
-				/**
-				 * No capability has been found, fallback to edit_theme_options
-				 */
-				return 'edit_theme_options';
-
-			}
-
-			/**
-			 * All good, a capability has been defined so return that escaped.
-			 */
-			return esc_attr( $field['capability'] );
 
 		}
 

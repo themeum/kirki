@@ -18,7 +18,6 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				$sanitize_callback = Kirki_Field_Sanitize::sanitize_callback( $args );
 				foreach ( $settings as $setting_key => $setting_value ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
-					$capability = Kirki_Field_Sanitize::sanitize_capability( $args );
 					$transport  = isset( $args['transport'] ) ? $args['transport'] : 'refresh';
 
 					if ( isset( $args['sanitize_callback'] ) && is_array( $args['sanitize_callback'] ) ) {
@@ -29,7 +28,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 					$this->wp_customize->add_setting( $setting_value, array(
 						'default'           => $default,
 						'type'              => $args['option_type'],
-						'capability'        => $capability,
+						'capability'        => $args['capability'],
 						'sanitize_callback' => $sanitize_callback,
 						'transport'         => $transport,
 					) );
@@ -42,7 +41,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				$this->wp_customize->add_setting( new $setting_classname( $this->wp_customize, $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
 					'type'              => $args['option_type'],
-					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),
+					'capability'        => $args['capability'],
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
 				) ) );
@@ -51,7 +50,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				$this->wp_customize->add_setting( $args['settings'], array(
 					'default'           => isset( $args['default'] ) ? $args['default'] : '',
 					'type'              => $args['option_type'],
-					'capability'        => Kirki_Field_Sanitize::sanitize_capability( $args ),
+					'capability'        => $args['capability'],
 					'transport'         => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
 					'sanitize_callback' => Kirki_Field_Sanitize::sanitize_callback( $args ),
 				) );
