@@ -1203,7 +1203,7 @@ span.CodeMirror-selectedtext {
   font-weight: bold;
   font-size: 9px; }
 
-.customize-control-kirki-textarea textarea {
+.customize-control-kirki-generic textarea {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: none;

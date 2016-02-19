@@ -76,8 +76,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Text_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Textarea_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Generic_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );

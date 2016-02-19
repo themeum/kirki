@@ -93,6 +93,29 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 */
 			$args['type'] = self::sanitize_control_type( $config_id, $args );
 			/**
+			 * Sanitize the sanitize_callback argument.
+			 */
+			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
+			/**
+			 * If no choices have been defined, use an empty array
+			 */
+			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
+			/**
+			 * Tweaks for simple controls
+			 */
+			if ( 'kirki-text' == $args['type'] ) {
+				$args['type']               = 'kirki-generic';
+				$args['choices']['element'] = 'input';
+				$args['choices']['type']    = 'text';
+			} elseif( 'kirki-textarea' == $args['type'] ) {
+				$args['type']               = 'kirki-generic';
+				$args['choices']['element'] = 'textarea';
+				$args['choices']['rows']    = '5';
+			}
+			if ( 'kirki-generic' == $args['type'] && ! isset( $args['choices']['element'] ) ) {
+				$args['choices']['element'] = 'input';
+			}
+			/**
 			 * set choices for color controls
 			 */
 			if ( 'kirki-color' == $args['type'] ) {
@@ -101,10 +124,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			} elseif ( 'color-alpha' == $args['type'] ) {
 				$args['choices']['alpha'] = true;
 			}
-			/**
-			 * If no choices have been defined, use an empty array
-			 */
-			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
 			/**
 			 * If no output argument has been defined, use an empty array
 			 */
@@ -117,10 +136,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * Sanitize the id (for internal use)
 			 */
 			$args['id'] = self::sanitize_id( $config_id, $args );
-			/**
-			 * Sanitize the sanitize_callback argument.
-			 */
-			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
 			/**
 			 * Make sure the "multiple" argument is properly formatted for <select> controls
 			 */
