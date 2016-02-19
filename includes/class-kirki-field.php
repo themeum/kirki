@@ -107,7 +107,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'input';
 				$args['choices']['type']    = 'text';
-			} elseif( 'kirki-textarea' == $args['type'] ) {
+			} elseif ( 'kirki-textarea' == $args['type'] ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'textarea';
 				$args['choices']['rows']    = '5';
