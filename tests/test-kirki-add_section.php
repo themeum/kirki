@@ -1,14 +1,15 @@
 <?php
 
-class Test_Kirki_Add_Panel extends WP_UnitTestCase {
+class Test_Kirki_Add_Section extends WP_UnitTestCase {
 
-	public function test_add_panel() {
+	public function test_add_section() {
 
-		Kirki::add_panel( 'test_empty', array() );
-		Kirki::add_panel( 'test', array(
+		Kirki::add_section( 'test_empty', array() );
+		Kirki::add_section( 'test', array(
 			'priority'    => 4,
 			'title'       => 'Title',
 			'description' => 'My Description',
+			'panel'       => 'my_panel',
 		) );
 
 		$this->assertEquals(
@@ -17,8 +18,9 @@ class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 				'description'     => '',
 				'priority'        => 10,
 				'active_callback' => '__return_true',
+				'panel'           => '',
 			),
-			Kirki::$panels['test_empty']
+			Kirki::$sections['test_empty']
 		);
 		$this->assertEquals(
 			array(
@@ -27,9 +29,10 @@ class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 				'description'     => 'My Description',
 				'priority'        => '4',
 				'active_callback' => '__return_true',
+				'panel'           => 'my_panel'
 			),
-			Kirki::$panels['test']
+			Kirki::$sections['test']
 		);
-		$this->assertEquals( 2, count( Kirki::$panels ) );
+		$this->assertEquals( 2, count( Kirki::$sections ) );
 	}
 }
