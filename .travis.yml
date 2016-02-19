@@ -17,6 +17,9 @@ matrix:
     - php: 5.6
       env: WP_VERSION=latest WP_MULTISITE=1
 
+defore_install:
+  - pip install --user codecov
+
 before_script:
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - curl -s http://getcomposer.org/installer | php
@@ -24,12 +27,15 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover=coverage.clover
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - php vendor/bin/coveralls
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
 
 after_success:
   - coveralls
+  - codecov
   - bash <(curl -s https://codecov.io/bash)

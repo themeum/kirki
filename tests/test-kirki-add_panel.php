@@ -2,20 +2,15 @@
 
 class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 
-	public function __construct() {
-		$this->add_panels();
-	}
+	public function test_add_panel() {
 
-	public function add_panels() {
 		Kirki::add_panel( 'test_empty', array() );
 		Kirki::add_panel( 'test', array(
 			'priority'    => 4,
 			'title'       => 'Title',
 			'description' => 'My Description',
 		) );
-	}
 
-	public function test_add_panel() {
 		$this->assertEquals(
 			array(
 				'id'              => 'test_empty',
