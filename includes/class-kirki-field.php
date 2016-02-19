@@ -199,7 +199,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			/**
 			 * Try to get the option_name from the config
 			 */
-
 			if ( isset( Kirki::$config[ $config_id ]['option_name'] ) ) {
 				return esc_attr( Kirki::$config[ $config_id ]['option_name'] );
 			}
@@ -229,7 +228,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			/**
 			 * Try to get the capability from the config
 			 */
-
 			if ( isset( Kirki::$config[ $config_id ]['capability'] ) ) {
 				return esc_attr( Kirki::$config[ $config_id ]['capability'] );
 			}
@@ -250,16 +248,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		public static function sanitize_option_type( $config_id, $args ) {
 
 			/**
-			 * If an capability has been defined in the field itself,
+			 * If an option_type has been defined in the field itself,
 			 * then escape it and return it.
 			 */
 			if ( isset( $args['option_type'] ) ) {
 				return esc_attr( $args['option_type'] );
 			}
 			/**
-			 * Try to get the capability from the config
+			 * Try to get the option_type from the config
 			 */
-
 			if ( isset( Kirki::$config[ $config_id ]['option_type'] ) ) {
 				return esc_attr( Kirki::$config[ $config_id ]['option_type'] );
 			}

@@ -84,4 +84,65 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		) );
 		$this->assertEquals( 'new_config', Kirki::$fields['my_setting']['kirki_config'] );
 	}
+
+	/**
+	 * We can set an "option_name" in the field itself.
+	 */
+	public function test_defined_option_name() {
+
+		Kirki::add_field( 'global', array(
+			'setting'     => 'my_setting',
+			'type'        => 'text',
+		) );
+		$this->assertEquals( '', Kirki::$fields['my_setting']['option_name'] );
+
+		Kirki::add_field( 'global', array(
+			'setting'     => 'my_setting',
+			'type'        => 'text',
+			'option_name' => 'tralala',
+		) );
+		$this->assertEquals( 'tralala', Kirki::$fields['my_setting']['option_name'] );
+
+	}
+
+	/**
+	 * We can set an "capability" in the field itself.
+	 */
+	public function test_defined_capability() {
+
+		Kirki::add_field( 'global', array(
+			'setting' => 'my_setting',
+			'type'    => 'text',
+		) );
+		$this->assertEquals( 'edit_theme_options', Kirki::$fields['my_setting']['capability'] );
+
+		Kirki::add_field( 'global', array(
+			'setting'    => 'my_setting',
+			'type'       => 'text',
+			'capability' => 'manage_network_options',
+		) );
+		$this->assertEquals( 'manage_network_options', Kirki::$fields['my_setting']['capability'] );
+
+	}
+
+	/**
+	 * Test tooltip & help arguments
+	 */
+	public function test_tooltips() {
+
+		Kirki::add_field( 'global', array(
+			'setting' => 'my_setting',
+			'type'    => 'text',
+			'tooltip' => 'Tooltip Message',
+		) );
+		$this->assertEquals( 'Tooltip Message', Kirki::$fields['my_setting']['tooltip'] );
+
+		Kirki::add_field( 'global', array(
+			'setting' => 'my_setting',
+			'type'    => 'text',
+			'help'    => 'Tooltip Message using help argument',
+		) );
+		$this->assertEquals( 'Tooltip Message using help argument', Kirki::$fields['my_setting']['tooltip'] );
+
+	}
 }
