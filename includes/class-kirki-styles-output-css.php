@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
-	class Kirki_Styles_Output_CSS {
+	final class Kirki_Styles_Output_CSS {
 
 		public static $instance = null;
 
@@ -48,6 +48,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 
 		/**
 		 * Get a single instance of this class
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
 			if ( null === self::$instance ) {

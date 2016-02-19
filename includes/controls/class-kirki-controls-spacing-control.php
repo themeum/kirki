@@ -24,7 +24,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 			$this->json['l10n']    = Kirki_Toolkit::i18n();
 			$this->json['choices'] = array();
 			if ( is_array( $this->choices ) ) {
-				foreach( $this->choices as $choice => $value ) {
+				foreach ( $this->choices as $choice => $value ) {
 					if ( true === $value ) {
 						$this->json['choices'][ $choice ] = true;
 					}
@@ -32,7 +32,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 			}
 
 			if ( is_array( $this->json['default'] ) ) {
-				foreach( $this->json['default'] as $key => $value ) {
+				foreach ( $this->json['default'] as $key => $value ) {
 					if ( isset( $this->json['choices'][ $key ] ) && ! isset( $this->json['value'][ $key ] ) ) {
 						$this->json['value'][ $key ] = $value;
 					}

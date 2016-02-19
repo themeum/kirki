@@ -97,8 +97,8 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 					);
 
 					$settings    = $args['settings'];
-					$prefix      = ( ! empty( $js_vars['prefix'] ) ) ? $js_vars['prefix'] . " + " : '';
-					$units       = ( ! empty( $js_vars['units'] ) ) ? " + " . $js_vars['units'] : '';
+					$prefix      = ( ! empty( $js_vars['prefix'] ) ) ? $js_vars['prefix'] . ' + ' : '';
+					$units       = ( ! empty( $js_vars['units'] ) ) ? ' + ' . $js_vars['units'] : '';
 					$suffix      = ( ! empty( $js_vars['suffix'] ) ) ? $js_vars['suffix'] : '';
 					$js_callback = ( ! empty( $js_vars['js_callback'] ) ) ? $js_vars['js_callback'] : '';
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 						// else let's clear it out
 						$script .= '}else{';
 						$script .= '$(\'#' . $styleID . '\').text(\'\');';
-						$script .= "}";
+						$script .= '}';
 
 						// execute js_callback (callback must exist in dom before this script - see priority on line 41
 						if ( ! empty( $js_callback ) ) {
@@ -143,15 +143,10 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 
 						// append inline css - rules are very strict
 						if ( ' !important' === $suffix || '!important' === $suffix ) {
-							$units  = ( ! empty( $js_vars['units'] ) ) ? '+\'' . $js_vars['units'] . '\'' : '';
-							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? '\'' . $js_vars['prefix'] . '\'+' : '';
 							// this.style.setProperty( 'color', 'red', 'important' ); - jquery won't fix .css !important issue so we go oldschool
 							$script .= '$(\'' . $js_vars['element'] . '\').each(function(){ this.style.setProperty(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ', \'important\');});';
 						} else {
-							$units  = ( ! empty( $js_vars['units'] ) ) ? " + '" . $js_vars['units'] . "'" : '';
-							$prefix = ( ! empty( $js_vars['prefix'] ) ) ? "'" . $js_vars['prefix'] . "' + " : '';
 							// $suffix = what other suffix exists inline?
-
 							$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ' );';
 						}
 
