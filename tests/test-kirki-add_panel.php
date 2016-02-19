@@ -2,6 +2,17 @@
 
 class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 
+	public $wp_customize;
+
+	function setUp() {
+		parent::setUp();
+		require_once( ABSPATH . WPINC . '/class-wp-customize-manager.php' );
+		// @codingStandardsIgnoreStart
+		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
+		// @codingStandardsIgnoreEnd
+		$this->wp_customize = $GLOBALS['wp_customize'];
+	}
+
 	public function test_add_panel() {
 
 		Kirki::add_panel( 'test_empty', array() );

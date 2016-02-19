@@ -2,6 +2,17 @@
 
 class Test_Kirki_Add_Config extends WP_UnitTestCase {
 
+	public $wp_customize;
+
+	function setUp() {
+		parent::setUp();
+		require_once( ABSPATH . WPINC . '/class-wp-customize-manager.php' );
+		// @codingStandardsIgnoreStart
+		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
+		// @codingStandardsIgnoreEnd
+		$this->wp_customize = $GLOBALS['wp_customize'];
+	}
+
 	public function test_config() {
 
 		Kirki::add_config( 'test_empty', array() );

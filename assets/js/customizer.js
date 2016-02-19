@@ -122,6 +122,17 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 	wp.customizerCtrlEditor.init();
 })( jQuery );
 /**
+ * KIRKI CONTROL: GENERIC
+ */
+wp.customize.controlConstructor['kirki-generic'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'change keyup paste', control.params.choices.element, function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
+});
+/**
  * KIRKI CONTROL: MULTICHECK
  */
 wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend( {
@@ -1205,28 +1216,6 @@ wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 		this.container.on( 'change', 'input', function() {
 			checkbox_value = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkbox_value );
-		});
-	}
-});
-/**
- * KIRKI CONTROL: TEXT
- */
-wp.customize.controlConstructor['kirki-text'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control = this;
-		this.container.on( 'change keyup paste', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-	}
-});
-/**
- * KIRKI CONTROL: TEXTAREA
- */
-wp.customize.controlConstructor['kirki-textarea'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control = this;
-		this.container.on( 'change keyup paste', '.textarea', function() {
-			control.setting.set( jQuery( this ).val() );
 		});
 	}
 });

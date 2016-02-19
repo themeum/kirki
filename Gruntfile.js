@@ -76,7 +76,10 @@ module.exports = function(grunt) {
 			target: {
 				options: {
 					type: 'wp-plugin',
-					domainPath: 'languages'
+					domainPath: 'languages',
+					exclude: [
+						'tests/.*'
+					]
 				}
 			}
 		},
