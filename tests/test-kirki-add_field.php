@@ -2,12 +2,8 @@
 
 class Test_Kirki_Add_Field extends WP_UnitTestCase {
 
-	public function __construct() {
-		$this->add_config();
-		$this->add_fields();
-	}
+	public function test_field() {
 
-	public function add_config() {
 		Kirki::add_config( 'test', array(
 			'capability'     => 'manage_network_options',
 			'option_type'    => 'option',
@@ -16,9 +12,6 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 			'disable_output' => true,
 			'postMessage'    => 'auto',
 		) );
-	}
-
-	public function add_fields() {
 
 		Kirki::add_field( 'global', array(
 			'settings' => 'my_setting_global',
@@ -37,10 +30,6 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 			'priority' => 10,
 			'default'  => 'some-default-value',
 		) );
-
-	}
-
-	public function test_field() {
 
 		$this->assertEquals(
 			array(

@@ -2,11 +2,8 @@
 
 class Test_Kirki_Add_Config extends WP_UnitTestCase {
 
-	public function __construct() {
-		$this->add_config();
-	}
+	public function test_config() {
 
-	public function add_config() {
 		Kirki::add_config( 'test_empty', array() );
 		Kirki::add_config( 'test', array(
 			'capability'     => 'manage_network_options',
@@ -16,9 +13,7 @@ class Test_Kirki_Add_Config extends WP_UnitTestCase {
 			'disable_output' => true,
 			'postMessage'    => 'auto',
 		) );
-	}
 
-	public function test_config() {
 		$this->assertEquals(
 			array(
 				'capability'     => 'edit_theme_options',
