@@ -310,8 +310,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					/**
 					 * If we're using serialized options then we may need to modify things a bit
 					 */
-					if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $config['option_name'] ).'['.esc_attr( $setting_value ).']';
+					if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
+						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $args['option_name'] ).'['.esc_attr( $setting_value ).']';
 					}
 				}
 				return $settings;
