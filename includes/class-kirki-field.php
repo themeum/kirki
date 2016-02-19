@@ -107,7 +107,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'input';
 				$args['choices']['type']    = 'text';
-			} elseif( 'kirki-textarea' == $args['type'] ) {
+			} elseif ( 'kirki-textarea' == $args['type'] ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'textarea';
 				$args['choices']['rows']    = '5';
@@ -310,8 +310,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					/**
 					 * If we're using serialized options then we may need to modify things a bit
 					 */
-					if ( 'option' == $config['option_type'] && '' != $config['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $config['option_name'] ).'['.esc_attr( $setting_value ).']';
+					if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
+						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $args['option_name'] ).'['.esc_attr( $setting_value ).']';
 					}
 				}
 				return $settings;

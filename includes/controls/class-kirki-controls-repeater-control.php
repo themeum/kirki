@@ -25,7 +25,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			parent::__construct( $manager, $id, $args );
 
 			if ( empty( $this->button_label ) ) {
-				$this->button_label =  esc_attr__( 'Add new row', 'Kirki' );
+				$this->button_label = esc_attr__( 'Add new row', 'Kirki' );
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {

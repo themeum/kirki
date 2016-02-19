@@ -19,6 +19,8 @@ matrix:
 
 defore_install:
   - pip install --user codecov
+  - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
+  - composer install --dev
 
 before_script:
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
@@ -29,6 +31,7 @@ script:
   - mkdir -p build/logs
   - phpunit --coverage-clover=coverage.clover
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
+  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
 
 after_script:
   - php vendor/bin/coveralls

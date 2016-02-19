@@ -70,7 +70,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 					'jquery-ui-sortable',
 					'codemirror',
 					'jquery-ui-spinner',
-					'selectize'
+					'selectize',
 				);
 
 				wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
