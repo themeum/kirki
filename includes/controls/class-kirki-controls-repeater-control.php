@@ -221,7 +221,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<# } #>
 								</label>
 
-								<figure class="kirki-image-attachment">
+								<figure class="kirki-image-attachment" data-placeholder="{{ field.buttonLabels.placeholder }}" >
 									<# if ( field.default ) { #>
 										<img src="{{{ field.default }}}">
 									<# } else { #>
