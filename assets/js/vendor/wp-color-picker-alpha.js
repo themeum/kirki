@@ -6,7 +6,7 @@
  *
  * Version: 1.2
  * https://github.com/23r9i0/wp-color-picker-alpha
- * Copyright (c) 2015 Sergio P.A. (23r9i0).
+ * Copyright (c) 2016 Sergio P.A. (23r9i0).
  * Licensed under the GPLv2 license.
  */
 ( function( $ ) {

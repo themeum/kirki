@@ -768,7 +768,8 @@ span.CodeMirror-selectedtext {
 
 .kirki-image-attachment {
   margin: 0;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 25px; }
   .kirki-image-attachment img {
     display: inline-block; }
 
