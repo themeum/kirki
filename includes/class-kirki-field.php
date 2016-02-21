@@ -42,7 +42,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		}
 
-		public static function add_field( $config_id, $args ) {
+		public static function add_field( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * Sanitize $config_id
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_config_id( $config_id, $args ) {
+		public static function sanitize_config_id( $config_id = 'global', $args = array() ) {
 			/**
 			 * Check if 'kirki_config' has been defined inside the $args.
 			 * In that case, it will override the $config.
@@ -209,7 +209,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_option_name( $config_id, $args ) {
+		public static function sanitize_option_name( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * If an option_name has been defined in the field itself,
@@ -238,7 +238,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_capability( $config_id, $args ) {
+		public static function sanitize_capability( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * If an capability has been defined in the field itself,
@@ -267,7 +267,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_option_type( $config_id, $args ) {
+		public static function sanitize_option_type( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * If an option_type has been defined in the field itself,
@@ -296,7 +296,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string|array
 		 */
-		public static function sanitize_settings( $config_id, $args ) {
+		public static function sanitize_settings( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * Check for typos:
@@ -345,7 +345,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_tooltip( $config_id, $args ) {
+		public static function sanitize_tooltip( $config_id = 'global', $args = array() ) {
 
 			if ( isset( $args['tooltip'] ) ) {
 				return wp_strip_all_tags( $args['tooltip'] );
@@ -364,14 +364,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_active_callback( $config_id, $args ) {
+		public static function sanitize_active_callback( $config_id = 'global', $args = array() ) {
 
-			if ( isset( $args['active_callback'] ) ) {
-				if ( is_callable( $args['active_callback'] ) ) {
-					return $args['active_callback'];
-				}
-			}
-			if ( isset( $args['required'] ) ) {
+			if ( isset( $args['active_callback'] ) && is_callable( $args['active_callback'] ) ) {
+				return $args['active_callback'];
+			} elseif ( isset( $args['required'] ) ) {
 				return array( 'Kirki_Active_Callback', 'evaluate' );
 			}
 			return '__return_true';
@@ -385,7 +382,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_control_type( $config_id, $args ) {
+		public static function sanitize_control_type( $config_id = 'global', $args = array() ) {
 
 			// If no field type has been defined then fallback to text
 			if ( ! isset( $args['type'] ) ) {
@@ -470,7 +467,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		public static function sanitize_id( $config_id, $args ) {
+		public static function sanitize_id( $config_id = 'global', $args = array() ) {
 			return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $args['settings'] ) ) );
 		}
 
@@ -481,7 +478,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string|array
 		 */
-		public static function sanitize_callback( $config_id, $args ) {
+		public static function sanitize_callback( $config_id = 'global', $args = array() ) {
 
 			if ( isset( $args['sanitize_callback'] ) && ! empty( $args['sanitize_callback'] ) ) {
 				if ( is_callable( $args['sanitize_callback'] ) ) {
@@ -501,7 +498,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string|array
 		 */
-		public static function fallback_callback( $config_id, $args ) {
+		public static function fallback_callback( $config_id = 'global', $args = array() ) {
 
 			$default_callbacks = array(
 				'checkbox'         => array( 'Kirki_Sanitize_Values', 'checkbox' ),
