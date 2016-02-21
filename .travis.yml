@@ -7,7 +7,9 @@ notifications:
   on_failure: change
 
 php:
-  - 5.6
+  - 5.3
+  - 7.0
+  - hhvm
 
 env:
   - WP_VERSION=latest WP_MULTISITE=0
@@ -15,6 +17,9 @@ env:
 matrix:
   include:
     - php: 5.6
+      env: WP_VERSION=latest WP_MULTISITE=1
+  exclude:
+    - php: hhvm
       env: WP_VERSION=latest WP_MULTISITE=1
 
 defore_install:
