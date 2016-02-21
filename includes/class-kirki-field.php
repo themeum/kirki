@@ -184,7 +184,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * If $args is not used, then assume that $config_id took its place
 			 */
 			if ( is_array( $config_id ) && empty( $args ) ) {
-				$args = $config_id;
+				$args      = $config_id;
+				$config_id = 'global';
 			}
 			/**
 			 * If $config_id is empty, use global config.
