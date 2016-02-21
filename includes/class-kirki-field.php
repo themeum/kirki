@@ -93,10 +93,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 */
 			$args['type'] = self::sanitize_control_type( $config_id, $args );
 			/**
-			 * Sanitize the sanitize_callback argument.
-			 */
-			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
-			/**
 			 * If no choices have been defined, use an empty array
 			 */
 			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
@@ -107,14 +103,24 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'input';
 				$args['choices']['type']    = 'text';
+				if ( ! isset( $args['sanitize_callback'] ) ) {
+					$args['sanitize_callback'] = 'wp_kses_post';
+				}
 			} elseif ( 'kirki-textarea' == $args['type'] ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'textarea';
 				$args['choices']['rows']    = '5';
+				if ( ! isset( $args['sanitize_callback'] ) ) {
+					$args['sanitize_callback'] = 'wp_kses_post';
+				}
 			}
 			if ( 'kirki-generic' == $args['type'] && ! isset( $args['choices']['element'] ) ) {
 				$args['choices']['element'] = 'input';
 			}
+			/**
+			 * Sanitize the sanitize_callback argument.
+			 */
+			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
 			/**
 			 * set choices for color controls
 			 */
@@ -178,7 +184,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * If $args is not used, then assume that $config_id took its place
 			 */
 			if ( is_array( $config_id ) && empty( $args ) ) {
-				$args = $config_id;
+				$args      = $config_id;
+				$config_id = 'global';
 			}
 			/**
 			 * If $config_id is empty, use global config.
@@ -496,56 +503,37 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		public static function fallback_callback( $config_id, $args ) {
 
-			switch ( $args['type'] ) {
-				case 'checkbox':
-				case 'toggle':
-				case 'switch':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'checkbox' );
-					break;
-				case 'color':
-				case 'color-alpha':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
-					break;
-				case 'image':
-				case 'upload':
-					$sanitize_callback = 'esc_url_raw';
-					break;
-				case 'radio':
-				case 'radio-image':
-				case 'radio-buttonset':
-				case 'palette':
-					$sanitize_callback = 'esc_attr';
-					break;
-				case 'select':
-				case 'select2':
-				case 'select2-multiple':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
-					break;
-				case 'dropdown-pages':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'dropdown_pages' );
-					break;
-				case 'slider':
-				case 'number':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
-					break;
-				case 'text':
-				case 'kirki-text':
-				case 'textarea':
-				case 'editor':
-					$sanitize_callback = 'esc_textarea';
-					break;
-				case 'multicheck':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'multicheck' );
-					break;
-				case 'sortable':
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'sortable' );
-					break;
-				default:
-					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
-					break;
-			}
+			$default_callbacks = array(
+				'checkbox'         => array( 'Kirki_Sanitize_Values', 'checkbox' ),
+				'toggle'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
+				'switch'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
+				'color'            => array( 'Kirki_Sanitize_Values', 'color' ),
+				'color-alpha'      => array( 'Kirki_Sanitize_Values', 'color' ),
+				'image'            => 'esc_url_raw',
+				'upload'           => 'esc_url_raw',
+				'radio'            => 'esc_attr',
+				'radio-image'      => 'esc_attr',
+				'radio-buttonset'  => 'esc_attr',
+				'palette'          => 'esc_attr',
+				'select'           => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
+				'select2'          => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
+				'select2-multiple' => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
+				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
+				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
+				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
+				'text'             => 'esc_textarea',
+				'kirki-text'       => 'esc_textarea',
+				'textarea'         => 'wp_kses_post',
+				'editor'           => 'wp_kses_post',
+				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
+				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
+			);
 
-			return $sanitize_callback;
+			if ( in_array( $args['type'], $default_callbacks ) ) {
+				return $default_callbacks[ $args['type'] ];
+			} else {
+				return array( 'Kirki_Sanitize_Values', 'unfiltered' );
+			}
 
 		}
 

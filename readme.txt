@@ -119,6 +119,30 @@ To get an idea on how to include Kirki in your next project, you can take a look
 
 == Changelog ==
 
+= 2.2.0 =
+WIP
+
+* FIX: Improved & simplified the `number` control.
+* FIX: Improved & simplified the `spacing` control.
+* FIX: Minor bugfix on the `select` control.
+* FIX: Improved & simplified the `typography` control.
+* FIX: WP Coding standards improvements.
+* FIX: Bugfix for radio controls.
+* FIX: Fixed repeater remove image not triggering save button to activate, and added a placeholder when the image is removed. (props @sayedwp)
+* FIX: Fixed bug when using negative numbers as min value in the `number` field
+* FIX: Typo in the textdomain for some strings (some strings were using "Kirki" instead of "kirki").
+* NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
+* NEW: Deprecated the `Kirki_Field::get_config_id()` method. It's no longer needed since fields have a `kirki_config` argument.
+* NEW: Added a new `kirki-generic` control.
+* NEW: Deprecated the custom text control and used the new `kirki-generic` control instead.
+* NEW: Deprecated the custom textarea control and used the new `kirki-generic` control instead.
+* NEW: Renamed the `help` argument to `tooltip`. `help` will continue to work as an alias.
+* NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
+* NEW: Updated `grunt` packages
+* NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on various travis-ci.
+
+
+
 = 2.1.0.1 =
 
 February 17, 2016, dev time: 5 minutes

@@ -166,12 +166,15 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 		if ( control.params.choices.min ) {
 			jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
 		}
-		if ( control.params.choices.min ) {
+		if ( control.params.choices.max ) {
 			jQuery( element ).spinner( 'option', 'max', control.params.choices.max );
 		}
-		if ( control.params.choices.min ) {
-			var control_step = ( 'any' == control.params.choises.step ) ? '0.001' : control.params.choices.step;
-			jQuery( element ).spinner( 'option', 'step', control_step );
+		if ( control.params.choices.step ) {
+			if ( 'any' == control.params.choices.step ) {
+				jQuery( element ).spinner( 'option', 'step', '0.001' );
+			} else {
+				jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
+			}
 		}
 		// On change
 		this.container.on( 'change', 'input', function() {
@@ -727,7 +730,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         $targetDiv.find('.remove-button').show();
 
         //This will activate the save button
-        $targetDiv.find('input, textarea').trigger('change');
+        $targetDiv.find('input, textarea, select').trigger('change');
     },
 
     removeImage : function( event )
@@ -738,11 +741,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         var $uploadButton = $targetDiv.find('.upload-button');
 
         $targetDiv.find('.kirki-image-attachment').slideUp( 'fast', function(){
-            jQuery(this).html('');
+            jQuery(this).show().html( jQuery(this).data('placeholder') );
         });
         $targetDiv.find('.hidden-field').val('');
         $uploadButton.text($uploadButton.data('label'));
         this.$thisButton.hide();
+
+        $targetDiv.find('input, textarea, select').trigger('change');
     },
 
 
