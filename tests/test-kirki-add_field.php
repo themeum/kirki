@@ -61,7 +61,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'output'            => array(),
 				'variables'         => null,
 				'id'                => 'my_setting_global',
-				'sanitize_callback' => 'esc_textarea',
+				'sanitize_callback' => 'wp_kses_post',
 				'choices'           => array(
 					'element' => 'input',
 					'type'    => 'text',
@@ -89,7 +89,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'output'            => array(),
 				'variables'         => null,
 				'id'                => 'my_option_name-my_setting_test',
-				'sanitize_callback' => 'esc_textarea',
+				'sanitize_callback' => 'wp_kses_post',
 				'choices'           => array(
 					'element' => 'input',
 					'type'    => 'text',
@@ -97,6 +97,47 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
+		);
+
+	}
+
+	public function test_generic_field_tweaks() {
+
+		Kirki::add_field( 'global', array(
+			'settings' => 'my_setting_global',
+			'label'    => __( 'My custom control', 'translation_domain' ),
+			'section'  => 'my_section',
+			'type'     => 'textarea',
+			'priority' => 10,
+			'default'  => 'some-default-value',
+		) );
+
+		$this->assertEquals(
+			array(
+				'settings'          => 'my_setting_global',
+				'label'             => 'My custom control',
+				'section'           => 'my_section',
+				'type'              => 'kirki-generic',
+				'priority'          => 10,
+				'default'           => 'some-default-value',
+				'kirki_config'      => 'global',
+				'option_name'       => '',
+				'option_type'       => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'disable_output'    => false,
+				'tooltip'           => '',
+				'active_callback'   => '__return_true',
+				'choices'           => array(),
+				'output'            => array(),
+				'variables'         => null,
+				'id'                => 'my_setting_global',
+				'sanitize_callback' => 'wp_kses_post',
+				'choices'           => array(
+					'element' => 'textarea',
+					'rows'    => '5',
+				),
+			),
+			Kirki::$fields['my_setting_global']
 		);
 
 	}

@@ -93,10 +93,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 */
 			$args['type'] = self::sanitize_control_type( $config_id, $args );
 			/**
-			 * Sanitize the sanitize_callback argument.
-			 */
-			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
-			/**
 			 * If no choices have been defined, use an empty array
 			 */
 			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
@@ -107,14 +103,24 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'input';
 				$args['choices']['type']    = 'text';
+				if ( ! isset( $args['sanitize_callback'] ) ) {
+					$args['sanitize_callback'] = 'wp_kses_post';
+				}
 			} elseif ( 'kirki-textarea' == $args['type'] ) {
 				$args['type']               = 'kirki-generic';
 				$args['choices']['element'] = 'textarea';
 				$args['choices']['rows']    = '5';
+				if ( ! isset( $args['sanitize_callback'] ) ) {
+					$args['sanitize_callback'] = 'wp_kses_post';
+				}
 			}
 			if ( 'kirki-generic' == $args['type'] && ! isset( $args['choices']['element'] ) ) {
 				$args['choices']['element'] = 'input';
 			}
+			/**
+			 * Sanitize the sanitize_callback argument.
+			 */
+			$args['sanitize_callback'] = self::sanitize_callback( $config_id, $args );
 			/**
 			 * set choices for color controls
 			 */
@@ -532,7 +538,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				case 'kirki-text':
 				case 'textarea':
 				case 'editor':
-					$sanitize_callback = 'esc_textarea';
+					$sanitize_callback = 'wp_kses_post';
 					break;
 				case 'multicheck':
 					$sanitize_callback = array( 'Kirki_Sanitize_Values', 'multicheck' );
