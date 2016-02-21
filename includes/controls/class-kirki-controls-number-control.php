@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="customize-control-content">
-					<input type="text" {{{ data.link }}} value="{{ data.value }}" <# for ( key in data.choices ) { #> {{ key }}="{{ data.choices[ key ] }}"<# } #> />
+					<input type="text" {{{ data.link }}} value="{{ data.value }}" />
 				</div>
 			</label>
 			<?php
