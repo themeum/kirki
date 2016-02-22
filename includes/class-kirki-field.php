@@ -392,6 +392,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			switch ( $args['type'] ) {
 
 				case 'checkbox':
+					$args['type'] = 'kirki-checkbox';
 					/**
 					 * Tweaks for backwards-compatibility:
 					 * Prior to version 0.8 switch & toggle were part of the checkbox control.
@@ -400,8 +401,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						$args['type'] = 'switch';
 					} elseif ( isset( $args['mode'] ) && 'toggle' == $args['mode'] ) {
 						$args['type'] = 'toggle';
-					} else {
-						$args['type'] = 'kirki-checkbox';
 					}
 					break;
 				case 'radio':
@@ -526,7 +525,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
 			);
 
-			if ( in_array( $args['type'], $default_callbacks ) ) {
+			if ( array_key_exists( $args['type'], $default_callbacks ) ) {
 				return $default_callbacks[ $args['type'] ];
 			} else {
 				return array( 'Kirki_Sanitize_Values', 'unfiltered' );
