@@ -247,28 +247,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
-			// Remove any spaces and special characters before and after the string
-			$color = trim( $color );
-			// Check if the color is a standard word-color.
-			// If it is, then convert to hex.
-			if ( array_key_exists( $color, self::$word_colors ) ) {
-				$color = self::$word_colors[ $color ];
-			}
-			// Remove any trailing '#' symbols from the color value
-			$color = str_replace( '#', '', $color );
-			// If the string is 6 characters long then use it in pairs.
-			if ( 3 == strlen( $color ) ) {
-				$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-			}
-			$substr = array();
-			for ( $i = 0; $i <= 5; $i++ ) {
-				$default    = ( 0 == $i ) ? 'F' : ( $substr[$i-1] );
-				$substr[$i] = substr( $color, $i, 1 );
-				$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
-			}
-			$hex = implode( '', $substr );
-
-			return ( ! $hash ) ? $hex : '#' . $hex;
+		 	$color_obj = new Jetpack_Color( $color );
+		 	$color     = $color_obj->toCSS( 'hex' );
+		 	if ( ! $hash ) {
+		 		return str_replace( '#', '', $color );
+		 	}
+		 	return $color;
 
 		}
 
