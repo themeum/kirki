@@ -7,7 +7,7 @@ class Kirki_Color_Object {
 	private $red;
 	private $green;
 	private $blue;
-	private $alpha
+	private $alpha;
 
 	private $hue;
 	private $saturation;
