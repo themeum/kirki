@@ -3,16 +3,17 @@
 class Test_Kirki_Customizer_Scripts_Icons extends WP_UnitTestCase {
 
 	public function test_empty() {
-		$this->assertEquals( '', Kirki_Customizer_Scripts_Icons::generate_script() );
 
-		$this->assertEquals( '', Kirki_Customizer_Scripts_Icons::generate_script( array(
+		Kirki_Customizer_Scripts_Icons::generate_script();
+		Kirki_Customizer_Scripts_Icons::generate_script( array(
 			'icon' => 'foo',
-		) ) );
-
-		$this->assertEquals( '', Kirki_Customizer_Scripts_Icons::generate_script( array(
+		) );
+		Kirki_Customizer_Scripts_Icons::generate_script( array(
 			'icon'    => 'foo',
 			'context' => 'panel'
-		) ) );
+		) );
+
+		$this->assertEquals( '', Kirki_Customizer_Scripts_Icons::$icons_script );
 	}
 
 	public function test_basic() {
