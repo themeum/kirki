@@ -184,11 +184,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		private $lightness;
 		private $luminance;
 
-		private $color;
+		private $color = 1;
 
 		public function __construct( $color = '' ) {
 			$this->load_jetpack_color_lib();
 			$this->mode = $this->get_mode( $color );
+			$this->alpha = 1;
 
 			if ( in_array( $this->mode, array( 'hex', 'rgb', 'hsl', 'int' ) ) ) {
 				$this->color = new Jetpack_Color( $color, $this->mode );
@@ -276,31 +277,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function sanitize_color( $value ) {
 
-			if ( is_array( $value ) ) {
-				if ( isset( $value['rgba'] ) ) {
-					$value = $value['rgba'];
-				} elseif ( isset( $value['color'] ) ) {
-					$opacity = ( isset( $value['opacity'] ) ) ? $value['opacity'] : null;
-					$opacity = ( ! is_null( $opacity ) && isset( $value['alpha'] ) ) ? $value['alpha'] : null;
-					$opacity = ( is_null( $opacity ) ) ? 1 : self::number( $opacity );
-					$value = self::get_rgba( $value['color'], $opacity );
-				} else {
-					return;
-				}
-			}
-
 			if ( 'transparent' == $value ) {
 				return 'transparent';
 			}
 
-			// Is this an rgba color or a hex?
-			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
-
-			if ( 'rgba' == $mode ) {
-				return self::sanitize_hex( $value );
-			} else {
-				return self::sanitize_rgba( $value );
-			}
+			$color_obj = new self( $value );
+			return $color_obj->color->toCSS( $color->mode, $color->alpha );
 
 		}
 
@@ -419,13 +401,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				$opacity = 100;
 			} elseif ( $opacity < 0 ) {
 				$opacity = 0;
-			} elseif ( $opacity <= 1 && $opacity != 0 ) {
-				$opacity = ( $opacity * 100 );
+			} elseif ( $opacity >= 1 ) {
+				$opacity = $opacity / 100;
 			}
-			// Divide the opacity by 100 to end-up with a CSS value for the opacity
-			$opacity = ( $opacity / 100 );
-			$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
-			return $color;
+			$color_obj = new self( $hex );
+			return $color_obj->color->toCSS( 'rgba', $opacity );
 
 		}
 
@@ -609,22 +589,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 
 		/*
 		 * Uses the luminosity to calculate the difference between the given colors.
-		 * The returned value should be bigger than 5 for best readability.
 		 */
 		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 
-			$color_1 = self::sanitize_hex( $color_1, false );
-			$color_2 = self::sanitize_hex( $color_2, false );
+			$color_1_obj = new self( $color_1 );
+			$color_2_obj = new self( $color_2 );
 
-			$color_1_rgb = self::get_rgb( $color_1 );
-			$color_2_rgb = self::get_rgb( $color_2 );
-
-			$l1 = 0.2126 * pow( $color_1_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_1_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_1_rgb[2] / 255, 2.2 );
-			$l2 = 0.2126 * pow( $color_2_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_2_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_2_rgb[2] / 255, 2.2 );
-
-			$lum_diff = ( $l1 > $l2 ) ? ( $l1 + 0.05 ) / ( $l2 + 0.05 ) : ( $l2 + 0.05 ) / ( $l1 + 0.05 );
-
-			return round( $lum_diff, 2 );
+			return $color_1_obj->color->getDistanceLuminosityFrom( $color_2_obj->color );
 
 		}
 
