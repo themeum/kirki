@@ -106,6 +106,17 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test generic field tweaks
+	 */
+	public function test_generic_field_edge_cases() {
+		Kirki::add_field( 'global', array(
+			'setting' => 'my_setting',
+			'type'    => 'kirki-generic',
+		) );
+		$this->assertEquals( 'input', Kirki::$fields['my_setting']['choices']['element'] );
+	}
+
+	/**
 	 * We can set an "capability" in the field itself.
 	 */
 	public function test_defined_capability() {
@@ -144,5 +155,133 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 		) );
 		$this->assertEquals( 'Tooltip Message using help argument', Kirki::$fields['my_setting']['tooltip'] );
 
+	}
+
+	/**
+	 * Test sanitize_config_id
+	 */
+	public function test_sanitize_config_id() {
+		// Define invalid config IDs. should return 'global'.
+		$this->assertEquals( 'global', Kirki_Field::sanitize_config_id( 'foo', array( 'kirki_config' => 'bar' ) ) );
+
+		$this->assertEquals( 'global', Kirki_Field::sanitize_config_id( array() ) );
+
+		Kirki::add_config( 'foo' );
+		Kirki::add_config( 'bar' );
+		$this->assertEquals( 'bar', Kirki_Field::sanitize_config_id( 'foo', array( 'kirki_config' => 'bar' ) ) );
+
+		$this->assertEquals( 'foo', Kirki_Field::sanitize_config_id( 'foo', array() ) );
+
+		$this->assertEquals( 'global', Kirki_Field::sanitize_config_id( '', array() ) );
+
+		$this->assertEquals( 'global', Kirki_Field::sanitize_config_id() );
+	}
+
+	/**
+	 * test sanitize_option_name edge cases
+	 */
+	public function test_sanitize_option_name() {
+		$this->assertEquals( '', Kirki_Field::sanitize_option_name() );
+	}
+
+	/**
+	 * Test sanitize_capability edge cases
+	 */
+	public function test_sanitize_capability() {
+		$this->assertEquals( 'edit_theme_options', Kirki_Field::sanitize_capability() );
+	}
+
+	/**
+	 * Test sanitize_option_type edge cases
+	 */
+	public function test_sanitize_option_type() {
+		$this->assertEquals( 'theme_mod', Kirki_Field::sanitize_option_type() );
+	}
+
+	/**
+	 * Test sanitize_active_callback edge cases
+	 */
+	public function test_sanitize_active_callback() {
+		$this->assertEquals(
+			'__return_false',
+			Kirki_Field::sanitize_active_callback( '', array( 'active_callback' => '__return_false' ) )
+		);
+		$this->assertEquals(
+			'__return_true',
+			Kirki_Field::sanitize_active_callback( '', array( 'active_callback' => 'nonexistend_dummy_function_name' ) )
+		);
+		$this->assertEquals(
+			'__return_false',
+			Kirki_Field::sanitize_active_callback( '', array(
+				'active_callback' => '__return_false',
+				'required'        => array( 'foo' => 'bar' )
+			) )
+		);
+		$this->assertEquals(
+			array( 'Kirki_Active_Callback', 'evaluate' ),
+			Kirki_Field::sanitize_active_callback( '', array(
+				'required' => array( 'foo' => 'bar' )
+			) )
+		);
+	}
+
+	/**
+	 * Test sanitize_control_type edge cases
+	 */
+	public function test_sanitize_control_type() {
+		$this->assertEquals(
+			'kirki-text',
+			Kirki_Field::sanitize_control_type( 'global', array() )
+		);
+		$this->assertEquals(
+			'switch',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'checkbox', 'mode' => 'switch' ) )
+		);
+		$this->assertEquals(
+			'toggle',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'checkbox', 'mode' => 'toggle' ) )
+		);
+		$this->assertEquals(
+			'kirki-checkbox',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'checkbox' ) )
+		);
+		$this->assertEquals(
+			'kirki-radio',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'radio' ) )
+		);
+		$this->assertEquals(
+			'radio-buttonset',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'radio', 'mode' => 'buttonset' ) )
+		);
+		$this->assertEquals(
+			'radio-image',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'radio', 'mode' => 'image' ) )
+		);
+		$this->assertEquals(
+			'custom',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'group-title' ) )
+		);
+		$this->assertEquals(
+			'custom',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'group_title' ) )
+		);
+		$this->assertEquals(
+			'color-alpha',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'color-alpha' ) )
+		);
+		$this->assertEquals(
+			'color-alpha',
+			Kirki_Field::sanitize_control_type( 'global', array( 'type' => 'color', 'default' => 'rgba(0,0,0,0)' ) )
+		);
+	}
+
+	/**
+	 * Test fallback_callback functionality
+	 */
+	public function test_fallback_callback() {
+		$this->assertEquals(
+			array( 'Kirki_Sanitize_Values', 'color' ),
+			Kirki_Field::fallback_callback( 'global', array( 'type' => 'color' ) )
+		);
 	}
 }
