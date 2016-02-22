@@ -222,13 +222,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public function get_mode( $color ) {
 			if ( false !== strpos( $color, 'rgba' ) ) {
 				return 'rgba';
-			} elseif ( false !== strpos( 'rgb', $color ) ) {
+			} elseif ( false !== strpos( $color, 'rgb' ) ) {
 				return 'rgb';
-			} elseif ( false !== strpos( 'hsla', $color ) ) {
+			} elseif ( false !== strpos( $color, 'hsla' ) ) {
 				return 'hsla';
-			} elseif ( false !== strpos( 'hsl', $color ) ) {
+			} elseif ( false !== strpos( $color, 'hsl' ) ) {
 				return 'hsl';
-			} elseif ( false !== strpos( '#', $color ) ) {
+			} elseif ( false !== strpos( $color, '#' ) ) {
 				return 'hex';
 			} elseif ( $color == intval( $color ) && 0 < $color && 16777215 > $color ) {
 				return 'int';
