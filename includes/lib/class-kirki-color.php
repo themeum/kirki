@@ -247,8 +247,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
-		 	$color_obj = new Jetpack_Color( $color );
-		 	$color     = $color_obj->toCSS( 'hex' );
+		 	$color_obj = new self( $color );
+		 	$color     = $color_obj->color->toCSS( 'hex' );
 		 	if ( ! $hash ) {
 		 		return str_replace( '#', '', $color );
 		 	}
@@ -257,23 +257,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 
 		public static function sanitize_rgba( $value ) {
-			// If empty or an array return transparent
-			if ( empty( $value ) || is_array( $value ) ) {
-				return 'rgba(0,0,0,0)';
-			}
-			// If string does not start with 'rgba', then treat as hex
-			// sanitize the hex color and finally convert hex to rgba
-			if ( false === strpos( $value, 'rgba' ) ) {
-				return self::get_rgba( self::sanitize_hex( $value ) );
-			}
-			// By now we know the string is formatted as an rgba color so we can just return it.
-			$value = str_replace( array( ' ', 'rgba', '(', ')' ), '', $value );
-			$value = explode( ',', $value );
-			$red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
-			$green = ( isset( $value[1] ) ) ? intval( $value[1] ) : 255;
-			$blue  = ( isset( $value[2] ) ) ? intval( $value[2] ) : 255;
-			$alpha = ( isset( $value[3] ) ) ? filter_var( $value[3], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
-			return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
+
+			$color_obj = new self( $value );
+			$rgba      = $color_obj->color->toCSS( 'rgba', $color_obj->alpha );
+			return ( str_replace( ' ', '', $rgba ) );
+
 		}
 
 		/**
