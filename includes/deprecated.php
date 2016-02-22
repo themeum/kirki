@@ -60,83 +60,60 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 
 		public static $kirki = null;
 
-		public static function get_all_fonts() {
+		public static function get_kirki() {
 			if ( null === self::$kirki ) {
 				self::$kirki = Kirki();
 			}
-			$kirki = self::$kirki;
+			return self::$kirki;
+		}
+
+		public static function get_all_fonts() {
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_all_fonts();
 		}
 
 		public static function get_font_choices() {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_font_choices();
 		}
 
 		public static function is_google_font( $font ) {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->is_google_font( $font );
 		}
 
 		public static function get_google_font_uri( $fonts, $weight = 400, $subset = 'all' ) {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_google_font_uri( $fonts, $weight, $subset );
 		}
 
 		public static function get_google_font_subsets() {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_google_font_subsets();
 		}
 
 		public static function choose_google_font_variants( $font, $variants = array() ) {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->choose_google_font_variants( $font, $variants );
 		}
 
 		public static function get_standard_fonts() {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_standard_fonts();
 		}
 
 		public static function get_font_stack( $font ) {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_font_stack( $font );
 		}
 
 		public static function sanitize_font_choice( $value ) {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->sanitize_font_choice( $value );
 		}
 
 		public static function get_google_fonts() {
-			if ( null === self::$kirki ) {
-				self::$kirki = Kirki();
-			}
-			$kirki = self::$kirki;
+			$kirki = self::get_kirki();
 			return $kirki->font_registry->get_google_fonts();
 		}
 
