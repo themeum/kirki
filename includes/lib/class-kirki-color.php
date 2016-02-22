@@ -169,6 +169,73 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			'yellowgreen'          => '9ACD32'
 		);
 
+		private $mode;
+
+		private $hex;
+
+		private $red;
+		private $green;
+		private $blue;
+		private $alpha;
+
+		private $hue;
+		private $saturation;
+
+		private $lightness;
+		private $luminance;
+
+		private $color;
+
+		public function __construct( $color = '' ) {
+			$this->load_jetpack_color_lib();
+			$this->mode = $this->get_mode( $color );
+
+			if ( in_array( $this->mode, array( 'hex', 'rgb', 'hsl', 'int' ) ) ) {
+				$this->color = new Jetpack_Color( $color, $this->mode );
+			} elseif ( 'rgba' == $this->mode ) {
+				$this->color = new Jetpack_Color( self::rgba2hex( $color, 'rgb' ) );
+				$this->alpha = self::get_alpha_from_rgba( $color );
+			}
+		}
+
+		/**
+		 * Loads the JetPack Color class.
+		 * If Jetpack is not installed then use our copy of that file.
+		 */
+		public function load_jetpack_color_lib() {
+			if ( function_exists( 'jetpack_require_lib' ) ) {
+				if ( ! class_exists( 'Jetpack_Color' ) ) {
+					jetpack_require_lib( 'class.color' );
+				}
+			}
+			if ( ! class_exists( 'Jetpack_Color' ) ) {
+				include_once dirname( __FILE__ ) . '/class.color.php';
+			}
+		}
+
+		/**
+		 * Detect the format of the provided color.
+		 *
+		 * @param  $color string
+		 * @return        string
+		 */
+		public function get_mode( $color ) {
+			if ( false !== strpos( $color, 'rgba' ) ) {
+				return 'rgba';
+			} elseif ( false !== strpos( 'rgb', $color ) ) {
+				return 'rgb';
+			} elseif ( false !== strpos( 'hsla', $color ) ) {
+				return 'hsla';
+			} elseif ( false !== strpos( 'hsl', $color ) ) {
+				return 'hsl';
+			} elseif ( false !== strpos( '#', $color ) ) {
+				return 'hex';
+			} elseif ( $color == intval( $color ) && 0 < $color && 16777215 > $color ) {
+				return 'int';
+			}
+			return 'hex';
+		}
+
 		/**
 		 * Sanitises a HEX value.
 		 * The way this works is by splitting the string in 6 substrings.
@@ -274,17 +341,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function get_rgb( $hex, $implode = false ) {
 
-			// Remove any trailing '#' symbols from the color value
-			$hex = self::sanitize_hex( $hex, false );
-
-			// rgb is an array
-			$rgb = array(
-				hexdec( substr( $hex, 0, 2 ) ),
-				hexdec( substr( $hex, 2, 2 ) ),
-				hexdec( substr( $hex, 4, 2 ) ),
-			);
-
-			return ( $implode ) ? implode( ',', $rgb ) : $rgb;
+			$color_obj = new self( $hex );
+			$rgb = $color_obj->color->toCSS( 'rgb', 1 );
+			return ( str_replace( ' ', '', $rgb ) );
 
 		}
 
@@ -440,18 +499,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
 
-			$hex = self::sanitize_hex( $hex, false );
-			$steps = max( -255, min( 255, $steps ) );
-			// Adjust number of steps and keep it inside 0 to 255
-			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
-			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
-			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
-
-			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
-			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
-			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
-
-			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
+			$color_obj     = new self( $hex );
+			$steps_percent = round( ( $steps * 100 / 255 ), 2 );
+			$new_color     = $color_obj->color->incrementLightness( $steps_percent );
+			$new_color_obj = new Jetpack_Color( $new_color );
+			return self::sanitize_hex( $new_color_obj->toCSS( 'hex' ) );
 
 		}
 
