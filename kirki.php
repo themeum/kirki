@@ -35,22 +35,10 @@ if ( ! function_exists( 'Kirki' ) ) {
 	function Kirki() {
 		// Make sure the class is instanciated
 		$kirki = Kirki_Toolkit::get_instance();
-
-		$kirki->font_registry = new Kirki_Google_Fonts_Registry();
-		$kirki->api           = new Kirki();
-		$kirki->scripts       = new Kirki_Scripts_Registry();
-		$kirki->styles        = array(
-			'back'  => new Kirki_Styles_Customizer(),
-			'front' => new Kirki_Styles_Frontend(),
-		);
-
-		/**
-		 * The path of the current Kirki instance
-		 */
+		// The path of the current Kirki instance
 		Kirki::$path = dirname( __FILE__ );
 
 		return $kirki;
-
 	}
 
 }
