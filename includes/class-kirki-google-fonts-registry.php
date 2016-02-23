@@ -144,28 +144,7 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 * @return array    The available subsets.
 		 */
 		public function get_google_font_subsets() {
-
-			$i18n = Kirki_Toolkit::i18n();
-			return array(
-				'all'          => $i18n['all'],
-				'cyrillic'     => $i18n['cyrillic'],
-				'cyrillic-ext' => $i18n['cyrillic-ext'],
-				'devanagari'   => $i18n['devanagari'],
-				'greek'        => $i18n['greek'],
-				'greek-ext'    => $i18n['greek-ext'],
-				'khmer'        => $i18n['khmer'],
-				'latin'        => $i18n['latin'],
-				'latin-ext'    => $i18n['latin-ext'],
-				'vietnamese'   => $i18n['vietnamese'],
-				'hebrew'       => $i18n['hebrew'],
-				'arabic'       => $i18n['arabic'],
-				'bengali'      => $i18n['bengali'],
-				'gujarati'     => $i18n['gujarati'],
-				'tamil'        => $i18n['tamil'],
-				'telugu'       => $i18n['telugu'],
-				'thai'         => $i18n['thai'],
-			);
-
+			return Kirki_Google_Fonts_Manager::get_all_subsets();
 		}
 
 		/**
