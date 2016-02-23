@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
-	class Kirki_Sanitize_Values extends Kirki_Sanitize {
+	class Kirki_Sanitize_Values extends Kirki_Customizer {
 
 		/**
 		 * Checkbox sanitization callback.
