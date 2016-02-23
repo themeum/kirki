@@ -8,7 +8,10 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 	private static $script;
 
 	public function __construct() {
+		// Generate the script
 		$this->generate_script();
+		// Add script in <head>
+		add_action( 'wp_head', array( $this, 'add_script' ), 999 );
 	}
 
 	private function generate_script() {
@@ -41,6 +44,14 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 
 	public static function get_script() {
 		return self::$script;
+	}
+
+	/**
+	 * Wraps the script in <script> tags
+	 * and prepares it for output.
+	 */
+	public function add_script() {
+		return '<script type="text/javascript">' . self::$script . '</script>';
 	}
 
 }

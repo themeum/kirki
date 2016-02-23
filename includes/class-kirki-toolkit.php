@@ -129,7 +129,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * Constructor is private, should only be called by get_instance()
 		 */
 		private function __construct() {
-			$this->font_registry = new Kirki_Google_Fonts_Registry();
+			$this->font_registry = Kirki_Google_Fonts_Registry::get_instance();
 			$this->api           = new Kirki();
 			$this->scripts       = new Kirki_Scripts_Registry();
 			$this->styles        = array(
@@ -137,6 +137,8 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'front' => new Kirki_Styles_Frontend(),
 			);
 			new Kirki_Selective_Refresh();
+			Kirki_GoogleFonts_Manager::get_instance();
+			new Kirki_GoogleFonts_Loader();
 		}
 
 		/**

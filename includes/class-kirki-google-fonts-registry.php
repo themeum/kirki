@@ -24,10 +24,24 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		/** @var array */
 		private $google_fonts = null;
 
+		private static $instance = null;
+
 		/**
-		 * Constructor
+		 * Get the one, true instance of this class.
+		 * If the class has not yet been instantiated then we create a new instance.
+		 *
+		 * @return Kirki_Google_Fonts_Manager object
 		 */
-		public function __construct() {
+		public static function get_instance() {
+
+			if ( null === self::$instance ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+
+		}
+
+		private function __construct() {
 		}
 
 		/**
@@ -302,7 +316,14 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 * @return array
 		 */
 		public function get_backup_fonts() {
-			return Kirki_GoogleFonts_Manager::get_backup_fonts();
+			$backup_fonts = array(
+				'sans-serif'  => 'Helvetica, Arial, sans-serif',
+				'serif'       => 'Georgia, serif',
+				'display'     => '"Comic Sans MS", cursive, sans-serif',
+				'handwriting' => '"Comic Sans MS", cursive, sans-serif',
+				'monospace'   => '"Lucida Console", Monaco, monospace',
+			);
+			return apply_filters( 'kirki/fonts/backup_fonts', $backup_fonts );
 		}
 
 	}
