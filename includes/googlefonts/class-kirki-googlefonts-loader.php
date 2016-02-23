@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Google_Fonts_Loader extends Kirki_Google_Fonts_Manager {
+class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 
 	/**
 	 * The generated script
@@ -8,8 +8,6 @@ class Kirki_Google_Fonts_Loader extends Kirki_Google_Fonts_Manager {
 	private static $script;
 
 	public function __construct() {
-		var_dump( parent::$fonts );
-
 		$this->generate_script();
 	}
 
@@ -34,7 +32,7 @@ class Kirki_Google_Fonts_Loader extends Kirki_Google_Fonts_Manager {
 		self::$script .= 'var wf = document.createElement(\'script\');';
 		self::$script .= 'wf.src = \'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js\';';
 		self::$script .= 'wf.type = \'text/javascript\';';
-		self::$script .= 'wf.async = \'true\';'
+		self::$script .= 'wf.async = \'true\';';
 		self::$script .= 'var s = document.getElementsByTagName(\'script\')[0];';
 		self::$script .= 's.parentNode.insertBefore(wf, s);';
 		self::$script .= '})();';

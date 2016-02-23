@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Google_Fonts_Manager {
+class Kirki_GoogleFonts_Manager {
 
 	/**
 	 * The one true instance of this object
@@ -116,6 +116,24 @@ class Kirki_Google_Fonts_Manager {
 			'telugu'       => $i18n['telugu'],
 			'thai'         => $i18n['thai'],
 		);
+	}
+
+	/**
+	 * Return an array of backup fonts based on the font-category
+	 *
+	 * @return array
+	 */
+	public static function get_backup_fonts() {
+
+		$backup_fonts = array(
+			'sans-serif'  => 'Helvetica, Arial, sans-serif',
+			'serif'       => 'Georgia, serif',
+			'display'     => '"Comic Sans MS", cursive, sans-serif',
+			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
+			'monospace'   => '"Lucida Console", Monaco, monospace',
+		);
+		return apply_filters( 'kirki/fonts/backup_fonts', $backup_fonts );
+
 	}
 
 }
