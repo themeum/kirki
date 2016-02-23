@@ -3,7 +3,8 @@
 /**
  * Field "partial_refresh" argument format:
 
-	partial_refresh => array(
+ 	'transport'       => 'postMessage',
+ 	'partial_refresh' => array(
 		'header_site_title' => array(
 			'selector'        => '.site-title a',
 			'render_callback' => function() {
