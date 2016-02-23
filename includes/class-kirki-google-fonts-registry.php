@@ -51,7 +51,7 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 */
 		public function get_all_fonts() {
 			$standard_fonts = $this->get_standard_fonts();
-			$google_fonts   = $this->get_google_fonts();
+			$google_fonts   = Kirki_GoogleFonts_Manager::get_google_fonts();
 
 			return apply_filters( 'kirki/fonts/all', array_merge( $standard_fonts, $google_fonts ) );
 		}
@@ -79,7 +79,7 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 * @return boolean
 		 */
 		public function is_google_font( $font ) {
-			return ( array_key_exists( $font, $this->get_google_fonts() ) );
+			return ( array_key_exists( $font, Kirki_GoogleFonts_Manager::get_google_fonts() ) );
 		}
 
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 */
 		public function get_google_font_uri( $fonts, $weight = 400, $subset = 'all' ) {
 			// De-dupe the fonts
-			$allowed_fonts = $this->get_google_fonts();
+			$allowed_fonts = Kirki_GoogleFonts_Manager::get_google_fonts();
 			$fonts         = array_unique( $fonts );
 			$family        = array();
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 			$chosen_variants = array();
 
 			if ( empty( $variants ) ) {
-				$fonts = $this->get_google_fonts();
+				$fonts = $this->google_fonts;
 				if ( array_key_exists( $font, $fonts ) ) {
 					$variants = $fonts[ $font ]['variants'];
 				}
@@ -276,40 +276,8 @@ if ( ! class_exists( 'Kirki_Google_Fonts_Registry' ) ) {
 		 * @return array    All Google Fonts.
 		 */
 		public function get_google_fonts() {
-
-			global $wp_filesystem;
-			// Initialize the WP filesystem, no more using 'file-put-contents' function
-			if ( empty( $wp_filesystem ) ) {
-				require_once ( ABSPATH . '/wp-admin/includes/file.php' );
-				WP_Filesystem();
-			}
-
-			if ( null == $this->google_fonts ) {
-
-				$json = $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'webfonts.json' );
-				// Get the list of fonts from our json file and convert to an array
-				$fonts = json_decode( $json, true );
-
-				$google_fonts = array();
-				if ( is_array( $fonts ) ) {
-					foreach ( $fonts['items'] as $font ) {
-						$google_fonts[ $font['family'] ] = array(
-							'label'    => $font['family'],
-							'variants' => $font['variants'],
-							'subsets'  => $font['subsets'],
-							'category' => $font['category'],
-						);
-					}
-				}
-
-				$this->google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
-
-			}
-
-			return $this->google_fonts;
-
+			return Kirki_GoogleFonts_Manager::get_google_fonts();
 		}
-
 		/**
 		 * Return an array of backup fonts based on the font-category
 		 *

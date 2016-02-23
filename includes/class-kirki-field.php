@@ -161,6 +161,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
 			}
 
+			/**
+			 * Process google fonts for this field
+			 */
+			Kirki_GoogleFonts_Field_Processor::generate_google_fonts( $args );
+
 		}
 
 		/**

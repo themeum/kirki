@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		private function __construct() {
 			if ( is_null( self::$google_fonts ) ) {
-				self::$google_fonts = Kirki()->font_registry->get_google_fonts();
+				self::$google_fonts = Kirki_GoogleFonts_Manager::get_google_fonts();
 			}
 			if ( is_null( self::$backup_fonts ) ) {
 				self::$backup_fonts = Kirki()->font_registry->get_backup_fonts();

@@ -8,8 +8,6 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 	private static $script;
 
 	public function __construct() {
-		// Generate the script
-		$this->generate_script();
 		// Add script in <head>
 		add_action( 'wp_head', array( $this, 'add_script' ), 999 );
 	}
@@ -40,10 +38,7 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 		self::$script .= 's.parentNode.insertBefore(wf, s);';
 		self::$script .= '})();';
 
-	}
 
-	public static function get_script() {
-		return self::$script;
 	}
 
 	/**
@@ -51,7 +46,10 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 	 * and prepares it for output.
 	 */
 	public function add_script() {
-		return '<script type="text/javascript">' . self::$script . '</script>';
+		// Generate the script
+		$this->generate_script();
+
+		echo '<script type="text/javascript">' . self::$script . '</script>';
 	}
 
 }
