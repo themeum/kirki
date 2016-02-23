@@ -20,19 +20,17 @@
  */
 class Kirki_Selective_Refresh {
 
-	private $wp_customize;
-
 	public function __construct() {
-
-		global $wp_customize;
-		if ( $wp_customize ) {
-			$this->wp_customize = $wp_customize;
-		}
-
 		add_action( 'customize_register', array( $this, 'register_partials' ), 99 );
-
 	}
 
+	/**
+	 * Parses all fields and searches for the "partial_refresh" argument inside them.
+	 * If that argument is found, then it starts parsing the array of arguments.
+	 * Registers a selective_refresh in the customizer for each one of them.
+	 *
+	 * @param $wp_customize WP_Customize_Manager
+	 */
 	public function register_partials( WP_Customize_Manager $wp_customize ) {
 
 		// Abort if selective refresh is not available.
@@ -40,13 +38,16 @@ class Kirki_Selective_Refresh {
 			return;
 		}
 
+		// Get an array of all fields
 		$fields = Kirki::$fields;
 
+		// Start parsing the fields
 		foreach ( $fields as $field_id => $args ) {
 			if ( isset( $args['partial_refresh'] ) ) {
+				// Start going through each item in the array of partial refreshes
 				foreach ( $args['partial_refresh'] as $partial_refresh => $partial_refresh_args ) {
-					$function = false;
-					if ( isset( $partial_refresh_args['render_callback'] ) ) {
+					// If we have all we need, create the selective refresh call.
+					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
 						$wp_customize->selective_refresh->add_partial( $partial_refresh, array(
 							'selector'        => $partial_refresh_args['selector'],
 							'settings'        => array( $args['settings'] ),
