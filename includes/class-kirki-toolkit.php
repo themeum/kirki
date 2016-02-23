@@ -136,6 +136,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'back'  => new Kirki_Styles_Customizer(),
 				'front' => new Kirki_Styles_Frontend(),
 			);
+			new Kirki_Selective_Refresh();
 		}
 
 		/**
