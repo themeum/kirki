@@ -17,13 +17,12 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 			$substr   = str_replace( 'Kirki_', '', $class_name );
 			$exploded = explode( '_', $substr );
-			$i = 0;
-			foreach ( $exploded as $subfolder ) {
-				$previous_path = '';
-				for ( $level = 0; $level <= $i; $level++ ) {
-					$paths[] = $path . $previous_path . strtolower( $exploded[ $level ] ) . '/' . $filename;
-					$previous_path = strtolower( $exploded[ $level ] );
-				}
+			$levels   = count( $exploded );
+
+			$previous_path = '';
+			for ( $i = 0; $i < $levels; $i++ ) {
+				$paths[] = $path . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
+				$previous_path .= strtolower( $exploded[ $i ] ) . '/';
 			}
 
 			foreach ( $paths as $path ) {
