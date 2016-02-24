@@ -46,3 +46,7 @@ after_success:
   - coveralls
   - codecov
   - bash <(curl -s https://codecov.io/bash)
+
+addons:
+    code_climate:
+        repo_token: 75f0cfb28ddd1d57e69a3ed6ee26ebe380c7e86398c288d279fc93258bcfb7ec
