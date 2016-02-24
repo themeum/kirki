@@ -131,7 +131,9 @@ WIP
 * FIX: Fixed repeater remove image not triggering save button to activate, and added a placeholder when the image is removed. (props @sayedwp)
 * FIX: Fixed bug when using negative numbers as min value in the `number` field
 * FIX: Typo in the textdomain for some strings (some strings were using "Kirki" instead of "kirki").
+* FIX: COmplete refactor & rewrite of the google-fonts implementation.
 * NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" (formatted as an array).
+* NEW: Better autoloader & improved file structure
 * NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
 * NEW: Deprecated the `Kirki_Field::get_config_id()` method. It's no longer needed since fields have a `kirki_config` argument.
 * NEW: Added a new `kirki-generic` control.
@@ -141,7 +143,6 @@ WIP
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
 * NEW: Updated `grunt` packages
 * NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
-* NEW: Started using the `Jetpack_Color` library in `Kirki_Color` methods.
 
 
 
