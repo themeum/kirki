@@ -9,7 +9,7 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 
 	public function __construct() {
 		// Add script in <head>
-		add_action( 'wp_head', array( $this, 'add_script' ), 999 );
+		add_action( 'wp_head', array( $this, 'add_script' ) );
 	}
 
 	private function generate_script() {
