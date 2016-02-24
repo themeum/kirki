@@ -60,7 +60,7 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 		 * Process non-typography fields
 		 */
 		else {
-			if ( isset( $field['output'] ) ) {
+			if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
 				foreach ( $field['output'] as $output ) {
 					// If we don't have a typography-related output argument we can skip this.
 					if ( ! isset( $output['property'] ) ||  ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset', 'font-style' ) ) ) {
