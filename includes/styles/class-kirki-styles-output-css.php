@@ -301,7 +301,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							/**
 							 * Add -webkit-* and -mod-*
 							 */
-							if ( in_array( $property, array(
+							if ( is_string( $property ) && in_array( $property, array(
 								'border-radius',
 								'box-shadow',
 								'box-sizing',
@@ -317,7 +317,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							/**
 							 * Add -ms-* and -o-*
 							 */
-							if ( in_array( $property. array(
+							if ( is_string( $property ) && in_array( $property, array(
 								'transform',
 								'background-size',
 								'transition',
