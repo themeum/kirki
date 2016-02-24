@@ -13,6 +13,11 @@ class Kirki_GoogleFonts_Manager {
 	public static $subsets = array();
 
 	/**
+	 * Additional font-weights
+	 */
+	public static $font_weights = array();
+
+	/**
 	 * The font-families including their font-weights and subsets
 	 */
 	protected static $fonts = array();
@@ -39,6 +44,12 @@ class Kirki_GoogleFonts_Manager {
 		// Early exit if font-family is empty
 		if ( '' == $family ) {
 			return;
+		}
+
+		// Process for any additional font-weights we may want
+		self::$font_weights[] = 700;
+		foreach ( $font_weights as $font_weight ) {
+			self::add_font( $family, $font_weight, $style, $subsets );
 		}
 
 		$google_fonts = Kirki_Fonts::get_google_fonts();
