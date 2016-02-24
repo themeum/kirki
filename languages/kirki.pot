@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 2.1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-02-24 04:03:25+00:00\n"
+"POT-Creation-Date: 2016-02-24 19:42:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -206,42 +206,46 @@ msgid "Line Height"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:99
-msgid "Letter Spacing"
+msgid "Font Style"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:100
-msgid "Top"
+msgid "Letter Spacing"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:101
-msgid "Bottom"
+msgid "Top"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:102
-msgid "Left"
+msgid "Bottom"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:103
-msgid "Right"
+msgid "Left"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:104
-msgid "Color"
+msgid "Right"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:105
-msgid "Add Image"
+msgid "Color"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:106
-msgid "Change Image"
+msgid "Add Image"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:107
-msgid "Remove"
+msgid "Change Image"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:108
+msgid "Remove"
+msgstr ""
+
+#: includes/class-kirki-toolkit.php:109
 msgid "No Image Selected"
 msgstr ""
 

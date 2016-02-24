@@ -96,6 +96,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'font-size'             => esc_attr__( 'Font Size', 'kirki' ),
 				'font-weight'           => esc_attr__( 'Font Weight', 'kirki' ),
 				'line-height'           => esc_attr__( 'Line Height', 'kirki' ),
+				'font-style'            => esc_attr__( 'Font Style', 'kirki' ),
 				'letter-spacing'        => esc_attr__( 'Letter Spacing', 'kirki' ),
 				'top'                   => esc_attr__( 'Top', 'kirki' ),
 				'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
