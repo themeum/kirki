@@ -12,7 +12,7 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 		add_action( 'wp_head', array( $this, 'add_script' ) );
 	}
 
-	private function generate_script() {
+	public function add_script() {
 		// If we don't have any fonts then we can exit.
 		if ( empty( parent::$fonts ) ) {
 			return;
@@ -24,32 +24,23 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 
 			$fonts[] = str_replace( ' ', '+', $font ) . ':' . $variants . ':' . $subsets;
 		}
+		?>
+		<script type="text/javascript" id="kirki-googlefonts">
+			WebFontConfig = {
+				google: { families: [ '<?php echo implode( '\', \'', $fonts ); ?>' ] },
+				timeout: 2500 // Set the timeout to 2.5 seconds
+			};
+			(function() {
+				var wf   = document.createElement('script');
+				wf.src   = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+				wf.type  = 'text/javascript';
+				wf.async = 'true';
+				var s    = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+			})();
+		</script>
+		<?php
 
-		$fonts = '\'' . implode( '\', \'', $fonts ) . '\'';
-		self::$script  = 'WebFontConfig = {';
-		self::$script .= 'google: { families: [ ' . $fonts . ' ] }';
-		self::$script .= '};';
-		self::$script .= '(function() {';
-		self::$script .= 'var wf = document.createElement(\'script\');';
-		self::$script .= 'wf.src = \'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js\';';
-		self::$script .= 'wf.type = \'text/javascript\';';
-		self::$script .= 'wf.async = \'true\';';
-		self::$script .= 'var s = document.getElementsByTagName(\'script\')[0];';
-		self::$script .= 's.parentNode.insertBefore(wf, s);';
-		self::$script .= '})();';
-
-
-	}
-
-	/**
-	 * Wraps the script in <script> tags
-	 * and prepares it for output.
-	 */
-	public function add_script() {
-		// Generate the script
-		$this->generate_script();
-
-		echo '<script type="text/javascript">' . self::$script . '</script>';
 	}
 
 }

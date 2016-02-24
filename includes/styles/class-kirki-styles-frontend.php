@@ -49,6 +49,8 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		}
 
 		public function inline_dynamic_css() {
+			new Kirki_GoogleFonts_Loader();
+
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
 				foreach ( $configs as $config_id => $args ) {

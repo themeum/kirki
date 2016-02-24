@@ -138,7 +138,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			);
 			new Kirki_Selective_Refresh();
 			Kirki_GoogleFonts_Manager::get_instance();
-			new Kirki_GoogleFonts_Loader();
 		}
 
 		/**
