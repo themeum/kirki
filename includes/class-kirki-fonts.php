@@ -4,10 +4,17 @@ class Kirki_Fonts {
 
 	public static $mode = 'link';
 
+	private static $instance = null;
+
 	public static $google_fonts = null;
 
-	public function __construct() {
-		$this->set_google_fonts();
+	private function __construct() {}
+
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**
@@ -16,8 +23,8 @@ class Kirki_Fonts {
 	 * @return array    All available fonts.
 	 */
 	public static function get_all_fonts() {
-		$standard_fonts = Kirki_Fonts::get_standard_fonts();
-		$google_fonts   = Kirki_Fonts::get_google_fonts();
+		$standard_fonts = self::get_standard_fonts();
+		$google_fonts   = self::get_google_fonts();
 
 		return apply_filters( 'kirki/fonts/all', array_merge( $standard_fonts, $google_fonts ) );
 	}
@@ -70,24 +77,17 @@ class Kirki_Fonts {
 	 * @return array    All Google Fonts.
 	 */
 	public static function get_google_fonts() {
-		return self::$google_fonts;
-	}
 
-	/**
-	 * Sets the $google_fonts property
-	 */
-	private function set_google_fonts() {
+		if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-		global $wp_filesystem;
-		// Initialize the WP filesystem, no more using 'file-put-contents' function
-		if ( empty( $wp_filesystem ) ) {
-			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
-			WP_Filesystem();
-		}
+			global $wp_filesystem;
+			// Initialize the WP filesystem, no more using 'file-put-contents' function
+			if ( empty( $wp_filesystem ) ) {
+				require_once ( ABSPATH . '/wp-admin/includes/file.php' );
+				WP_Filesystem();
+			}
 
-		if ( null == self::$google_fonts ) {
-
-			$json_path = wp_normalize_path( dirname( dirname( dirname( __FILE__ ) ) ) . '/assets/json/webfonts.json' );
+			$json_path = wp_normalize_path( dirname( dirname( __FILE__ ) ) . '/assets/json/webfonts.json' );
 			$json      = $wp_filesystem->get_contents( $json_path );
 			// Get the list of fonts from our json file and convert to an array
 			$fonts = json_decode( $json, true );
@@ -104,9 +104,11 @@ class Kirki_Fonts {
 				}
 			}
 
+			self::$google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
+
 		}
 
-		self::$google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
+		return self::$google_fonts;
 
 	}
 
@@ -138,6 +140,15 @@ class Kirki_Fonts {
 			return true;
 		}
 		return false;
+	}
+
+	public static function get_font_choices() {
+		$fonts = self::get_all_fonts();
+		$fonts_array = array();
+		foreach ( $fonts as $key => $args ) {
+			$fonts_array[ $key ] = $key;
+		}
+		return $fonts_array;
 	}
 
 }

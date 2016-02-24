@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_GoogleFonts_Manager extends Kirki_Fonts {
+class Kirki_GoogleFonts_Manager {
 
 	/**
 	 * The one true instance of this object
@@ -41,6 +41,8 @@ class Kirki_GoogleFonts_Manager extends Kirki_Fonts {
 			return;
 		}
 
+		$google_fonts = Kirki_Fonts::get_google_fonts();
+
 		// Make sure the class is instantiated
 		self::get_instance();
 
@@ -48,7 +50,7 @@ class Kirki_GoogleFonts_Manager extends Kirki_Fonts {
 
 		// Determine if this is indeed a google font or not.
 		$is_google_font = false;
-		if ( array_key_exists( $family, self::$google_fonts ) ) {
+		if ( array_key_exists( $family, $google_fonts ) ) {
 			$is_google_font = true;
 		}
 
@@ -59,8 +61,8 @@ class Kirki_GoogleFonts_Manager extends Kirki_Fonts {
 
 		// Get all valid font variants for this font
 		$font_variants = array();
-		if ( isset( self::$google_fonts[ $family ]['variants'] ) ) {
-			$font_variants = self::$google_fonts[ $family ]['variants'];
+		if ( isset( $google_fonts[ $family ]['variants'] ) ) {
+			$font_variants = $google_fonts[ $family ]['variants'];
 		}
 
 		// format the requested variant
@@ -74,8 +76,8 @@ class Kirki_GoogleFonts_Manager extends Kirki_Fonts {
 
 		// Get all available subsets for this font
 		$font_subsets = array();
-		if ( isset( self::$google_fonts[ $family ]['subsets'] ) ) {
-			$font_subsets = self::$google_fonts[ $family ]['subsets'];
+		if ( isset( $google_fonts[ $family ]['subsets'] ) ) {
+			$font_subsets = $google_fonts[ $family ]['subsets'];
 		}
 
 		// Get the valid subsets for this font

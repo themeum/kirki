@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			parent::to_json();
 
 			$i18n = Kirki_Toolkit::i18n();
-			$this->json['fonts'] = $this->get_all_fonts();
+			$this->json['fonts'] = Kirki_Fonts::get_font_choices();
 			$value = $this->value();
 			$this->json['value'] = array(
 				'bold'           => isset( $value['bold'] ) ? $value['bold'] : false,
@@ -161,26 +161,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			<?php
 		}
 
-		public function get_all_fonts() {
-			$fonts = Kirki_Fonts::get_all_fonts();
-			$fonts_array = array();
-			foreach ( $fonts as $key => $font ) {
-				if ( is_array( $font ) ) {
-					if ( isset( $font['label'] ) ) {
-						if ( isset( $font['stack'] ) ) {
-							$fonts_array[ $font['stack'] ] = $font['label'];
-						} else {
-							$fonts_array[ $key ] = $font['label'];
-						}
-					} else {
-						$fonts_array[ $key ] = $key;
-					}
-				} else {
-					$fonts_array[ $key ] = $font;
-				}
-			}
-			return $fonts_array;
-		}
-
 	}
+
 }
