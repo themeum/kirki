@@ -25,7 +25,7 @@ class Kirki_GoogleFonts_Field_Processor {
 			$value = Kirki_Values::get_sanitized_field_value( $field );
 			// If we don't have a font-family then we can skip this.
 			if ( ! isset( $value['font-family'] ) ) {
-				continue;
+				return;
 			}
 			// Set a default value for font-weight
 			if ( ! isset( $value['font-weight'] ) ) {
