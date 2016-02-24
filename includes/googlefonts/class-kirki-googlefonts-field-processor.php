@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_GoogleFonts_Field_Processor {
+class Kirki_GoogleFonts_Field_Processor extends Kirki_GoogleFonts {
 
 	/**
 	 * The one true instance of this object
