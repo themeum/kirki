@@ -31,10 +31,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			$this->json['fonts'] = Kirki_Fonts::get_font_choices();
 			$value = $this->value();
 			$this->json['value'] = array(
-				'bold'           => isset( $value['bold'] ) ? $value['bold'] : false,
-				'italic'         => isset( $value['italic'] ) ? $value['italic'] : false,
-				'underline'      => isset( $value['underline'] ) ? $value['underline'] : false,
-				'strikethrough'  => isset( $value['strikethrough'] ) ? $value['strikethrough'] : false,
+				'font-style'     => isset( $value['font-style'] ) ? $value['font-style'] : false,
 				'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : '',
 				'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : '',
 				'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : '',
@@ -48,6 +45,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'font-weight'    => $i18n['font-weight'],
 				'line-height'    => $i18n['line-height'],
 				'letter-spacing' => $i18n['letter-spacing'],
+				'font-style'     => $i18n['font-style'],
 				'color'          => $i18n['color'],
 			);
 		}
@@ -55,6 +53,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public function render_content() {}
 
 		protected function content_template() { ?>
+		<#console.log(data.value); #>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
@@ -68,18 +67,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			</label>
 
 			<div class="wrapper">
-				<# if ( data.choices['font-style'] ) { #>
-					<div class="font-style">
-						<# for ( styleProperty in data.choices['font-style'] ) { #>
-							<div class="{{ styleProperty }}">
-								<label for="{{ styleProperty }}_{{ data.id }}">
-									<input name="{{ styleProperty }}_{{ data.id }}" id="{{ styleProperty }}_{{ data.id }}" type="checkbox" value="{{ data.value[ styleProperty ] }}" {{{ data.link }}}<# if ( '1' == data.value[ styleProperty ] ) { #> checked<# } #>>
-									<span class="dashicons dashicons-editor-{{ styleProperty }}"></span>
-								</label>
-							</div>
-						<# } #>
-					</div>
-				<# } #>
 
 				<# if ( data.choices['font-family'] ) { #>
 					<# if ( '' == data.value['font-family'] ) { data.value['font-family'] = data.default['font-family']; } #>
@@ -148,6 +135,24 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 								<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
 							<# } #>
 						</select>
+					</div>
+				<# } #>
+
+				<# if ( data.choices['font-style'] ) { #>
+					<div class="font-style ">
+						<h5>{{ data.l10n['font-style'] }}</h5>
+						<input class="switch-input" type="radio" value="normal" name="_typography_font_style_customize-radio-{{{ data.id }}}" id="{{ data.id }}_font_style_normal" {{{ data.link }}}<# if ( 'normal' === data.value['font-style'] ) { #> checked="checked" <# } #>>
+							<label class="switch-label switch-label-<# if ( 'normal' === data.value['font-style'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}_font_style_normal">
+								<span class="dashicons dashicons-editor-removeformatting"></span>
+							</label>
+						</input>
+						<# for ( styleProperty in data.choices['font-style'] ) { #>
+							<input class="switch-input" type="radio" value="{{ data.choices['font-style'][ styleProperty ] }}" name="_typography_font_style_customize-radio-{{{ data.id }}}" id="{{ data.id }}_font_style_{{ data.choices['font-style'][ styleProperty ] }}" {{{ data.link }}}<# if ( data.choices['font-style'][ styleProperty ] === data.value['font-style'] ) { #> checked="checked" <# } #>>
+								<label class="switch-label switch-label-<# if ( data.choices['font-style'][ styleProperty ] === data.value['font-style'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}_font_style_{{ data.choices['font-style'][ styleProperty ] }}">
+									<span class="dashicons dashicons-editor-{{ data.choices['font-style'][ styleProperty ] }}"></span>
+								</label>
+							</input>
+						<# } #>
 					</div>
 				<# } #>
 

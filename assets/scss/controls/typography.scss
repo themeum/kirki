@@ -13,19 +13,6 @@
 	}
 	.font-style {
 		width: 100%;
-		.bold,
-		.italic,
-		.underline,
-		.strikethrough {
-			display: inline-block;
-		}
-		input[type="checkbox"] {
-			display: none;
-			&:checked + .dashicons {
-				background: #3498DB;
-				color: #fff;
-			}
-		}
 		.dashicons {
 			border-radius: 50%;
 			padding: 10px;
@@ -33,6 +20,15 @@
 			height: 20px;
 			line-height: 20px;
 			color: #777;
+		}
+		.switch-input {
+			display: none;
+			&:checked {
+				+ .switch-label .dashicons {
+					background-color: #3498DB;
+					color: #fff;
+				}
+			}
 		}
 	}
 	.font-family {

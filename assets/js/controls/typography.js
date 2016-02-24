@@ -7,17 +7,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		var compiled_value = {};
 
 		// get initial values and pre-populate the object
-		if ( control.container.has( '.bold' ).size() ) {
-			compiled_value['bold']           = control.setting._value['bold'];
-		}
-		if ( control.container.has( '.italic' ).size() ) {
-			compiled_value['italic']         = control.setting._value['italic'];
-		}
-		if ( control.container.has( '.underline' ).size() ) {
-			compiled_value['underline']      = control.setting._value['underline'];
-		}
-		if ( control.container.has( '.strikethrough' ).size() ) {
-			compiled_value['strikethrough']  = control.setting._value['strikethrough'];
+		if ( control.container.has( '.font-style' ).size() ) {
+			compiled_value['font-style']     = control.setting._value['font-style'];
 		}
 		if ( control.container.has( '.font-family' ).size() ) {
 			compiled_value['font-family']    = control.setting._value['font-family'];
@@ -42,52 +33,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		jQuery( '.customize-control-typography select' ).selectize();
 
 		// bold
-		if ( control.container.has( '.bold' ).size() ) {
-			this.container.on( 'change', '.bold input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['bold'] = true;
-				} else {
-					compiled_value['bold'] = false;
-				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// italic
-		if ( control.container.has( '.italic' ).size() ) {
-			this.container.on( 'change', '.italic input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['italic'] = true;
-				} else {
-					compiled_value['italic'] = false;
-				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// underline
-		if ( control.container.has( '.underline' ).size() ) {
-			this.container.on( 'change', '.underline input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['underline'] = true;
-				} else {
-					compiled_value['underline'] = false;
-				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// strikethrough
-		if ( control.container.has( '.strikethrough' ).size() ) {
-			this.container.on( 'change', '.strikethrough input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['strikethrough'] = true;
-				} else {
-					compiled_value['strikethrough'] = false;
-				}
+		if ( control.container.has( '.font-style' ).size() ) {
+			this.container.on( 'click', '.font-style input', function() {
+				compiled_value['font-style'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
 				wp.customize.previewer.refresh();
 			});

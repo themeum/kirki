@@ -18,5 +18,7 @@ foreach ( $configs as $config_id => $args ) {
 	if ( true === $args['disable_output'] ) {
 		continue;
 	}
-	echo Kirki_Styles_Frontend::loop_controls( $config_id );
+
+	$styles = Kirki_Styles_Frontend::loop_controls( $config_id );
+	echo apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
 }

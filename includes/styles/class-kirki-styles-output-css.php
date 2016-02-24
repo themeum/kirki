@@ -233,6 +233,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					 * Take care of typography controls output
 					 */
 					if ( 'typography' == self::$field_type ) {
+						foreach ( $value as $key => $sub_value ) {
+							$styles[ $output['media_query'] ][ $element ][ $key ] = $sub_value;
+						}
+
 						if ( isset( $value['bold'] ) && $value['bold'] ) {
 							$styles[ $output['media_query'] ][ $element ]['font-weight'] = 'bold';
 						}
@@ -256,18 +260,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							if ( Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
 								if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
 									if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
-										// add double quotes if needed
-										if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
-											$styles[ $output['media_query'] ][ $element ]['font-family'] = '"' . $value['font-family'] . '", ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
-										} else {
-											$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'] . ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
-										}
+										$styles[ $output['media_query'] ][ $element ]['font-family'] .= ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
 									}
 								}
 							}
-						}
-						foreach ( $value as $key => $sub_value ) {
-							$styles[ $output['media_query'] ][ $element ][ $key ] = $sub_value;
 						}
 					}
 					/**

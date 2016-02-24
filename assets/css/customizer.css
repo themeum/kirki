@@ -1268,16 +1268,6 @@ span.CodeMirror-selectedtext {
   justify-content: space-between; }
 .customize-control-typography .font-style {
   width: 100%; }
-  .customize-control-typography .font-style .bold,
-  .customize-control-typography .font-style .italic,
-  .customize-control-typography .font-style .underline,
-  .customize-control-typography .font-style .strikethrough {
-    display: inline-block; }
-  .customize-control-typography .font-style input[type="checkbox"] {
-    display: none; }
-    .customize-control-typography .font-style input[type="checkbox"]:checked + .dashicons {
-      background: #3498DB;
-      color: #fff; }
   .customize-control-typography .font-style .dashicons {
     border-radius: 50%;
     padding: 10px;
@@ -1285,6 +1275,11 @@ span.CodeMirror-selectedtext {
     height: 20px;
     line-height: 20px;
     color: #777; }
+  .customize-control-typography .font-style .switch-input {
+    display: none; }
+    .customize-control-typography .font-style .switch-input:checked + .switch-label .dashicons {
+      background-color: #3498DB;
+      color: #fff; }
 .customize-control-typography .font-family {
   width: 100%; }
 .customize-control-typography .font-size,
