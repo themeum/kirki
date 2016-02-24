@@ -31,6 +31,8 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		public $color_accent_text;
 		public $section_background_color;
 
+		public $process = false;
+
 		public function __construct() {
 
 			add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
@@ -102,10 +104,15 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 		public function get_colors() {
 
-			$color  = $this->get_admin_colors();
 			$config = apply_filters( 'kirki/config', array() );
+
+			// No need to proceed if we haven't set any colors
+			if ( ! isset( $config['color_back'] ) && ! isset( $config['color_accent'] ) ) {
+				return;
+			}
+			// set the $process to true.
+			$this->process = true;
 			// Calculate the accent color
-			$this->color_accent = ( isset( $color['colors'] ) && isset( $color['colors'][3] ) ) ? $color['colors'][3] : '#3498DB';
 			if ( isset( $config['color_accent'] ) ) {
 				$this->color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
 			}
@@ -134,6 +141,9 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		public function custom_css() {
 
 			$this->get_colors();
+			if ( ! $this->process ) {
+				return;
+			}
 			$styles = $this->include_stylesheets();
 			$styles = $this->replace_placeholders( $styles );
 
@@ -148,15 +158,20 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			/**
 			 * replace CSS placeholders with actual values
 			 */
-			$styles = str_replace( 'COLOR_BACK', $this->color_back, $styles );
-			$styles = str_replace( 'COLOR_ACCENT_TEXT', $this->color_accent_text, $styles );
-			$styles = str_replace( 'COLOR_ACCENT', $this->color_accent, $styles );
-			$styles = str_replace( 'BORDER_COLOR', $this->border_color, $styles );
-			$styles = str_replace( 'BUTTONS_COLOR', $this->buttons_color, $styles );
-			$styles = str_replace( 'COLOR_FONT', $this->color_font, $styles );
-			$styles = str_replace( 'CONTROLS_COLOR', $this->controls_color, $styles );
-			$styles = str_replace( 'ARROWS_COLOR', $this->arrows_color, $styles );
-			$styles = str_replace( 'SECTION_BACKGROUND_COLOR', $this->section_background_color, $styles );
+			$replacements = array(
+				'COLOR_BACK'               => $this->color_back,
+				'COLOR_ACCENT_TEXT'        => $this->color_accent_text,
+				'COLOR_ACCENT'             => $this->color_accent,
+				'BORDER_COLOR'             => $this->border_color,
+				'BUTTONS_COLOR'            => $this->buttons_color,
+				'COLOR_FONT'               => $this->color_font,
+				'CONTROLS_COLOR'           => $this->controls_color,
+				'ARROWS_COLOR'             => $this->arrows_color,
+				'SECTION_BACKGROUND_COLOR' => $this->section_background_color,
+			);
+			foreach ( $replacements as $placeholder => $replacement ) {
+				$styles = str_replace( $placeholder, $replacement, $styles );
+			}
 
 			return $styles;
 
@@ -197,27 +212,6 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 		}
 
-
-		/**
-		 * Get the admin color theme
-		 */
-		public function get_admin_colors() {
-
-			// Get the active admin theme
-			global $_wp_admin_css_colors;
-
-			// Get the user's admin colors
-			$color = get_user_option( 'admin_color' );
-			// If no theme is active set it to 'fresh'
-			if ( empty( $color ) || ! isset( $_wp_admin_css_colors[$color] ) ) {
-				$color = 'fresh';
-			}
-
-			$color = (array) $_wp_admin_css_colors[$color];
-
-			return $color;
-
-		}
-
 	}
+
 }
