@@ -13,6 +13,11 @@ class Kirki_GoogleFonts_Manager {
 	public static $subsets = array();
 
 	/**
+	 * Additional font-weights
+	 */
+	public static $font_weights = array();
+
+	/**
 	 * The font-families including their font-weights and subsets
 	 */
 	protected static $fonts = array();
