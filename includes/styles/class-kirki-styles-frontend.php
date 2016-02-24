@@ -58,7 +58,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 						continue;
 					}
 					$styles = self::loop_controls( $config_id );
-					$styles = apply_filters( 'kirki/dynamic_css', $styles );
+					$styles = apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
 					if ( ! empty( $styles ) ) {
 						wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
 						wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );

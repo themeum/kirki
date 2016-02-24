@@ -20,5 +20,5 @@ foreach ( $configs as $config_id => $args ) {
 	}
 
 	$styles = Kirki_Styles_Frontend::loop_controls( $config_id );
-	echo apply_filters( 'kirki/dynamic_css', $styles );
+	echo apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
 }
