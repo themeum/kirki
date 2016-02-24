@@ -299,68 +299,32 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					foreach ( $elements as $element => $style_array ) {
 						foreach ( $style_array as $property => $value ) {
 							/**
-							 * border-radius
+							 * Add -webkit-* and -mod-*
 							 */
-							if ( 'border-radius' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-border-radius'] = $value;
-								$css[ $media_query ][ $element ]['-moz-border-radius'] = $value;
+							if ( in_array( $property, array(
+								'border-radius',
+								'box-shadow',
+								'box-sizing',
+								'text-shadow',
+								'transform',
+								'background-size',
+								'transition',
+								'transition-property',
+							) ) {
+								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
+								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
 							}
 							/**
-							 * box-shadow
+							 * Add -ms-* and -o-*
 							 */
-							if ( 'box-shadow' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-box-shadow'] = $value;
-								$css[ $media_query ][ $element ]['-moz-box-shadow']    = $value;
-							}
-							/**
-							 * box-sizing
-							 */
-							elseif ( 'box-sizing' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-box-sizing'] = $value;
-								$css[ $media_query ][ $element ]['-moz-box-sizing']    = $value;
-							}
-							/**
-							 * text-shadow
-							 */
-							elseif ( 'text-shadow' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-text-shadow'] = $value;
-								$css[ $media_query ][ $element ]['-moz-text-shadow']    = $value;
-							}
-							/**
-							 * transform
-							 */
-							elseif ( 'transform' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-transform'] = $value;
-								$css[ $media_query ][ $element ]['-moz-transform']    = $value;
-								$css[ $media_query ][ $element ]['-ms-transform']     = $value;
-								$css[ $media_query ][ $element ]['-o-transform']      = $value;
-							}
-							/**
-							 * background-size
-							 */
-							elseif ( 'background-size' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-background-size'] = $value;
-								$css[ $media_query ][ $element ]['-moz-background-size']    = $value;
-								$css[ $media_query ][ $element ]['-ms-background-size']     = $value;
-								$css[ $media_query ][ $element ]['-o-background-size']      = $value;
-							}
-							/**
-							 * transition
-							 */
-							elseif ( 'transition' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-transition'] = $value;
-								$css[ $media_query ][ $element ]['-moz-transition']    = $value;
-								$css[ $media_query ][ $element ]['-ms-transition']     = $value;
-								$css[ $media_query ][ $element ]['-o-transition']      = $value;
-							}
-							/**
-							 * transition-property
-							 */
-							elseif ( 'transition-property' == $property ) {
-								$css[ $media_query ][ $element ]['-webkit-transition-property'] = $value;
-								$css[ $media_query ][ $element ]['-moz-transition-property']    = $value;
-								$css[ $media_query ][ $element ]['-ms-transition-property']     = $value;
-								$css[ $media_query ][ $element ]['-o-transition-property']      = $value;
+							if ( in_array( $property. array(
+								'transform',
+								'background-size',
+								'transition',
+								'transition-property',
+							) ) {
+								$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
+								$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;
 							}
 						}
 					}
