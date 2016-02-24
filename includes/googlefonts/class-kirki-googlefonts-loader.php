@@ -21,7 +21,16 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 		}
 	}
 
+	private function loop_fields() {
+		foreach ( Kirki::$fields as $field_id => $args ) {
+			Kirki_GoogleFonts_Field_Processor::generate_google_fonts( $args );
+		}
+	}
+
 	private function set_properties() {
+
+		$this->loop_fields();
+
 		// If we don't have any fonts then we can exit.
 		if ( empty( parent::$fonts ) ) {
 			return;
@@ -32,7 +41,6 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 		foreach ( parent::$fonts as $font => $properties ) {
 			$variants = implode( ',', $properties['variants'] );
 			$subsets  = implode( ',', $properties['subsets'] );
-			var_dump($variants);
 
 			$link_font = str_replace( ' ', '+', $font );
 			if ( ! empty( $variants ) ) {
