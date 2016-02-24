@@ -29,6 +29,8 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 			Kirki_Color::get_rgb( '#0000ff' )
 		);
 
+		$this->assertEquals( '#FF0000', Kirki_Color::sanitize_hex( 'red' ) );
+
 		$this->assertEquals( 'rgba(0,0,33,.4)', Kirki_Color::sanitize_rgba( 'rgba(0,0,33,.4)' ) );
 
 		$this->assertEquals( 'transparent', Kirki_Color::sanitize_color( 'transparent' ) );
