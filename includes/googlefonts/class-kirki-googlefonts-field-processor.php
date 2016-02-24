@@ -50,6 +50,10 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], $value['font-weight'], $value['font-style'] );
 			// Add font-weight 700 so that bold works for all fonts
 			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], 700, $value['font-style'] );
+			// Any additional font-weights we may need
+			foreach ( Kirki_GoogleFonts_Manager::$font_weights as $font_weight ) {
+				Kirki_GoogleFonts_Manager::add_font( $value['font-family'], 700, $value['font-style'] );
+			}
 		}
 
 		/**

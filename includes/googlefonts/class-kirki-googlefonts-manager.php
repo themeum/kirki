@@ -46,12 +46,6 @@ class Kirki_GoogleFonts_Manager {
 			return;
 		}
 
-		// Process for any additional font-weights we may want
-		self::$font_weights[] = 700;
-		foreach ( self::$font_weights as $font_weight ) {
-			self::add_font( $family, $font_weight, $style, $subsets );
-		}
-
 		$google_fonts = Kirki_Fonts::get_google_fonts();
 
 		// Make sure the class is instantiated
