@@ -119,24 +119,17 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		}
 
 		/**
-		 * Shortcut method to get the font registry.
-		 */
-		public static function fonts() {
-			return self::get_instance()->font_registry;
-		}
-
-		/**
 		 * Constructor is private, should only be called by get_instance()
 		 */
 		private function __construct() {
-			$this->font_registry = new Kirki_Google_Fonts_Registry();
-			$this->api           = new Kirki();
-			$this->scripts       = new Kirki_Scripts_Registry();
-			$this->styles        = array(
+			$this->api     = new Kirki();
+			$this->scripts = new Kirki_Scripts_Registry();
+			$this->styles  = array(
 				'back'  => new Kirki_Styles_Customizer(),
 				'front' => new Kirki_Styles_Frontend(),
 			);
 			new Kirki_Selective_Refresh();
+			Kirki_GoogleFonts_Manager::get_instance();
 		}
 
 		/**

@@ -6,7 +6,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -19,224 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Color' ) ) {
 	class Kirki_Color {
 
-		public static $word_colors = array(
-			'aliceblue'            => 'F0F8FF',
-			'antiquewhite'         => 'FAEBD7',
-			'aqua'                 => '00FFFF',
-			'aquamarine'           => '7FFFD4',
-			'azure'                => 'F0FFFF',
-			'beige'                => 'F5F5DC',
-			'bisque'               => 'FFE4C4',
-			'black'                => '000000',
-			'blanchedalmond'       => 'FFEBCD',
-			'blue'                 => '0000FF',
-			'blueviolet'           => '8A2BE2',
-			'brown'                => 'A52A2A',
-			'burlywood'            => 'DEB887',
-			'cadetblue'            => '5F9EA0',
-			'chartreuse'           => '7FFF00',
-			'chocolate'            => 'D2691E',
-			'coral'                => 'FF7F50',
-			'cornflowerblue'       => '6495ED',
-			'cornsilk'             => 'FFF8DC',
-			'crimson'              => 'DC143C',
-			'cyan'                 => '00FFFF',
-			'darkblue'             => '00008B',
-			'darkcyan'             => '008B8B',
-			'darkgoldenrod'        => 'B8860B',
-			'darkgray'             => 'A9A9A9',
-			'darkgreen'            => '006400',
-			'darkgrey'             => 'A9A9A9',
-			'darkkhaki'            => 'BDB76B',
-			'darkmagenta'          => '8B008B',
-			'darkolivegreen'       => '556B2F',
-			'darkorange'           => 'FF8C00',
-			'darkorchid'           => '9932CC',
-			'darkred'              => '8B0000',
-			'darksalmon'           => 'E9967A',
-			'darkseagreen'         => '8FBC8F',
-			'darkslateblue'        => '483D8B',
-			'darkslategray'        => '2F4F4F',
-			'darkslategrey'        => '2F4F4F',
-			'darkturquoise'        => '00CED1',
-			'darkviolet'           => '9400D3',
-			'deeppink'             => 'FF1493',
-			'deepskyblue'          => '00BFFF',
-			'dimgray'              => '696969',
-			'dimgrey'              => '696969',
-			'dodgerblue'           => '1E90FF',
-			'firebrick'            => 'B22222',
-			'floralwhite'          => 'FFFAF0',
-			'forestgreen'          => '228B22',
-			'fuchsia'              => 'FF00FF',
-			'gainsboro'            => 'DCDCDC',
-			'ghostwhite'           => 'F8F8FF',
-			'gold'                 => 'FFD700',
-			'goldenrod'            => 'DAA520',
-			'gray'                 => '808080',
-			'green'                => '008000',
-			'greenyellow'          => 'ADFF2F',
-			'grey'                 => '808080',
-			'honeydew'             => 'F0FFF0',
-			'hotpink'              => 'FF69B4',
-			'indianred'            => 'CD5C5C',
-			'indigo'               => '4B0082',
-			'ivory'                => 'FFFFF0',
-			'khaki'                => 'F0E68C',
-			'lavender'             => 'E6E6FA',
-			'lavenderblush'        => 'FFF0F5',
-			'lawngreen'            => '7CFC00',
-			'lemonchiffon'         => 'FFFACD',
-			'lightblue'            => 'ADD8E6',
-			'lightcoral'           => 'F08080',
-			'lightcyan'            => 'E0FFFF',
-			'lightgoldenrodyellow' => 'FAFAD2',
-			'lightgray'            => 'D3D3D3',
-			'lightgreen'           => '90EE90',
-			'lightgrey'            => 'D3D3D3',
-			'lightpink'            => 'FFB6C1',
-			'lightsalmon'          => 'FFA07A',
-			'lightseagreen'        => '20B2AA',
-			'lightskyblue'         => '87CEFA',
-			'lightslategray'       => '778899',
-			'lightslategrey'       => '778899',
-			'lightsteelblue'       => 'B0C4DE',
-			'lightyellow'          => 'FFFFE0',
-			'lime'                 => '00FF00',
-			'limegreen'            => '32CD32',
-			'linen'                => 'FAF0E6',
-			'magenta'              => 'FF00FF',
-			'maroon'               => '800000',
-			'mediumaquamarine'     => '66CDAA',
-			'mediumblue'           => '0000CD',
-			'mediumorchid'         => 'BA55D3',
-			'mediumpurple'         => '9370D0',
-			'mediumseagreen'       => '3CB371',
-			'mediumslateblue'      => '7B68EE',
-			'mediumspringgreen'    => '00FA9A',
-			'mediumturquoise'      => '48D1CC',
-			'mediumvioletred'      => 'C71585',
-			'midnightblue'         => '191970',
-			'mintcream'            => 'F5FFFA',
-			'mistyrose'            => 'FFE4E1',
-			'moccasin'             => 'FFE4B5',
-			'navajowhite'          => 'FFDEAD',
-			'navy'                 => '000080',
-			'oldlace'              => 'FDF5E6',
-			'olive'                => '808000',
-			'olivedrab'            => '6B8E23',
-			'orange'               => 'FFA500',
-			'orangered'            => 'FF4500',
-			'orchid'               => 'DA70D6',
-			'palegoldenrod'        => 'EEE8AA',
-			'palegreen'            => '98FB98',
-			'paleturquoise'        => 'AFEEEE',
-			'palevioletred'        => 'DB7093',
-			'papayawhip'           => 'FFEFD5',
-			'peachpuff'            => 'FFDAB9',
-			'peru'                 => 'CD853F',
-			'pink'                 => 'FFC0CB',
-			'plum'                 => 'DDA0DD',
-			'powderblue'           => 'B0E0E6',
-			'purple'               => '800080',
-			'red'                  => 'FF0000',
-			'rosybrown'            => 'BC8F8F',
-			'royalblue'            => '4169E1',
-			'saddlebrown'          => '8B4513',
-			'salmon'               => 'FA8072',
-			'sandybrown'           => 'F4A460',
-			'seagreen'             => '2E8B57',
-			'seashell'             => 'FFF5EE',
-			'sienna'               => 'A0522D',
-			'silver'               => 'C0C0C0',
-			'skyblue'              => '87CEEB',
-			'slateblue'            => '6A5ACD',
-			'slategray'            => '708090',
-			'slategrey'            => '708090',
-			'snow'                 => 'FFFAFA',
-			'springgreen'          => '00FF7F',
-			'steelblue'            => '4682B4',
-			'tan'                  => 'D2B48C',
-			'teal'                 => '008080',
-			'thistle'              => 'D8BFD8',
-			'tomato'               => 'FF6347',
-			'turquoise'            => '40E0D0',
-			'violet'               => 'EE82EE',
-			'wheat'                => 'F5DEB3',
-			'white'                => 'FFFFFF',
-			'whitesmoke'           => 'F5F5F5',
-			'yellow'               => 'FFFF00',
-			'yellowgreen'          => '9ACD32'
-		);
-
-		private $mode;
-
-		private $hex;
-
-		private $red;
-		private $green;
-		private $blue;
-		private $alpha;
-
-		private $hue;
-		private $saturation;
-
-		private $lightness;
-		private $luminance;
-
-		private $color = 1;
-
-		public function __construct( $color = '' ) {
-			$this->load_jetpack_color_lib();
-			$this->mode = $this->get_mode( $color );
-			$this->alpha = 1;
-
-			if ( in_array( $this->mode, array( 'hex', 'rgb', 'hsl', 'int' ) ) ) {
-				$this->color = new Jetpack_Color( $color, $this->mode );
-			} elseif ( 'rgba' == $this->mode ) {
-				$this->color = new Jetpack_Color( self::rgba2hex( $color, 'rgb' ) );
-				$this->alpha = self::get_alpha_from_rgba( $color );
-			}
-		}
-
-		/**
-		 * Loads the JetPack Color class.
-		 * If Jetpack is not installed then use our copy of that file.
-		 */
-		public function load_jetpack_color_lib() {
-			if ( function_exists( 'jetpack_require_lib' ) ) {
-				if ( ! class_exists( 'Jetpack_Color' ) ) {
-					jetpack_require_lib( 'class.color' );
-				}
-			}
-			if ( ! class_exists( 'Jetpack_Color' ) ) {
-				include_once dirname( __FILE__ ) . '/class.color.php';
-			}
-		}
-
-		/**
-		 * Detect the format of the provided color.
-		 *
-		 * @param  $color string
-		 * @return        string
-		 */
-		public function get_mode( $color ) {
-			if ( false !== strpos( $color, 'rgba' ) ) {
-				return 'rgba';
-			} elseif ( false !== strpos( $color, 'rgb' ) ) {
-				return 'rgb';
-			} elseif ( false !== strpos( $color, 'hsla' ) ) {
-				return 'hsla';
-			} elseif ( false !== strpos( $color, 'hsl' ) ) {
-				return 'hsl';
-			} elseif ( false !== strpos( $color, '#' ) ) {
-				return 'hex';
-			} elseif ( $color == intval( $color ) && 0 < $color && 16777215 > $color ) {
-				return 'int';
-			}
-			return 'hex';
-		}
-
 		/**
 		 * Sanitises a HEX value.
 		 * The way this works is by splitting the string in 6 substrings.
@@ -248,21 +30,199 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
-		 	$color_obj = new self( $color );
-		 	$color     = $color_obj->color->toCSS( 'hex' );
-		 	if ( ! $hash ) {
-		 		return str_replace( '#', '', $color );
-		 	}
-		 	return $color;
+			$word_colors = array(
+				'aliceblue'            => 'F0F8FF',
+				'antiquewhite'         => 'FAEBD7',
+				'aqua'                 => '00FFFF',
+				'aquamarine'           => '7FFFD4',
+				'azure'                => 'F0FFFF',
+				'beige'                => 'F5F5DC',
+				'bisque'               => 'FFE4C4',
+				'black'                => '000000',
+				'blanchedalmond'       => 'FFEBCD',
+				'blue'                 => '0000FF',
+				'blueviolet'           => '8A2BE2',
+				'brown'                => 'A52A2A',
+				'burlywood'            => 'DEB887',
+				'cadetblue'            => '5F9EA0',
+				'chartreuse'           => '7FFF00',
+				'chocolate'            => 'D2691E',
+				'coral'                => 'FF7F50',
+				'cornflowerblue'       => '6495ED',
+				'cornsilk'             => 'FFF8DC',
+				'crimson'              => 'DC143C',
+				'cyan'                 => '00FFFF',
+				'darkblue'             => '00008B',
+				'darkcyan'             => '008B8B',
+				'darkgoldenrod'        => 'B8860B',
+				'darkgray'             => 'A9A9A9',
+				'darkgreen'            => '006400',
+				'darkgrey'             => 'A9A9A9',
+				'darkkhaki'            => 'BDB76B',
+				'darkmagenta'          => '8B008B',
+				'darkolivegreen'       => '556B2F',
+				'darkorange'           => 'FF8C00',
+				'darkorchid'           => '9932CC',
+				'darkred'              => '8B0000',
+				'darksalmon'           => 'E9967A',
+				'darkseagreen'         => '8FBC8F',
+				'darkslateblue'        => '483D8B',
+				'darkslategray'        => '2F4F4F',
+				'darkslategrey'        => '2F4F4F',
+				'darkturquoise'        => '00CED1',
+				'darkviolet'           => '9400D3',
+				'deeppink'             => 'FF1493',
+				'deepskyblue'          => '00BFFF',
+				'dimgray'              => '696969',
+				'dimgrey'              => '696969',
+				'dodgerblue'           => '1E90FF',
+				'firebrick'            => 'B22222',
+				'floralwhite'          => 'FFFAF0',
+				'forestgreen'          => '228B22',
+				'fuchsia'              => 'FF00FF',
+				'gainsboro'            => 'DCDCDC',
+				'ghostwhite'           => 'F8F8FF',
+				'gold'                 => 'FFD700',
+				'goldenrod'            => 'DAA520',
+				'gray'                 => '808080',
+				'green'                => '008000',
+				'greenyellow'          => 'ADFF2F',
+				'grey'                 => '808080',
+				'honeydew'             => 'F0FFF0',
+				'hotpink'              => 'FF69B4',
+				'indianred'            => 'CD5C5C',
+				'indigo'               => '4B0082',
+				'ivory'                => 'FFFFF0',
+				'khaki'                => 'F0E68C',
+				'lavender'             => 'E6E6FA',
+				'lavenderblush'        => 'FFF0F5',
+				'lawngreen'            => '7CFC00',
+				'lemonchiffon'         => 'FFFACD',
+				'lightblue'            => 'ADD8E6',
+				'lightcoral'           => 'F08080',
+				'lightcyan'            => 'E0FFFF',
+				'lightgoldenrodyellow' => 'FAFAD2',
+				'lightgray'            => 'D3D3D3',
+				'lightgreen'           => '90EE90',
+				'lightgrey'            => 'D3D3D3',
+				'lightpink'            => 'FFB6C1',
+				'lightsalmon'          => 'FFA07A',
+				'lightseagreen'        => '20B2AA',
+				'lightskyblue'         => '87CEFA',
+				'lightslategray'       => '778899',
+				'lightslategrey'       => '778899',
+				'lightsteelblue'       => 'B0C4DE',
+				'lightyellow'          => 'FFFFE0',
+				'lime'                 => '00FF00',
+				'limegreen'            => '32CD32',
+				'linen'                => 'FAF0E6',
+				'magenta'              => 'FF00FF',
+				'maroon'               => '800000',
+				'mediumaquamarine'     => '66CDAA',
+				'mediumblue'           => '0000CD',
+				'mediumorchid'         => 'BA55D3',
+				'mediumpurple'         => '9370D0',
+				'mediumseagreen'       => '3CB371',
+				'mediumslateblue'      => '7B68EE',
+				'mediumspringgreen'    => '00FA9A',
+				'mediumturquoise'      => '48D1CC',
+				'mediumvioletred'      => 'C71585',
+				'midnightblue'         => '191970',
+				'mintcream'            => 'F5FFFA',
+				'mistyrose'            => 'FFE4E1',
+				'moccasin'             => 'FFE4B5',
+				'navajowhite'          => 'FFDEAD',
+				'navy'                 => '000080',
+				'oldlace'              => 'FDF5E6',
+				'olive'                => '808000',
+				'olivedrab'            => '6B8E23',
+				'orange'               => 'FFA500',
+				'orangered'            => 'FF4500',
+				'orchid'               => 'DA70D6',
+				'palegoldenrod'        => 'EEE8AA',
+				'palegreen'            => '98FB98',
+				'paleturquoise'        => 'AFEEEE',
+				'palevioletred'        => 'DB7093',
+				'papayawhip'           => 'FFEFD5',
+				'peachpuff'            => 'FFDAB9',
+				'peru'                 => 'CD853F',
+				'pink'                 => 'FFC0CB',
+				'plum'                 => 'DDA0DD',
+				'powderblue'           => 'B0E0E6',
+				'purple'               => '800080',
+				'red'                  => 'FF0000',
+				'rosybrown'            => 'BC8F8F',
+				'royalblue'            => '4169E1',
+				'saddlebrown'          => '8B4513',
+				'salmon'               => 'FA8072',
+				'sandybrown'           => 'F4A460',
+				'seagreen'             => '2E8B57',
+				'seashell'             => 'FFF5EE',
+				'sienna'               => 'A0522D',
+				'silver'               => 'C0C0C0',
+				'skyblue'              => '87CEEB',
+				'slateblue'            => '6A5ACD',
+				'slategray'            => '708090',
+				'slategrey'            => '708090',
+				'snow'                 => 'FFFAFA',
+				'springgreen'          => '00FF7F',
+				'steelblue'            => '4682B4',
+				'tan'                  => 'D2B48C',
+				'teal'                 => '008080',
+				'thistle'              => 'D8BFD8',
+				'tomato'               => 'FF6347',
+				'turquoise'            => '40E0D0',
+				'violet'               => 'EE82EE',
+				'wheat'                => 'F5DEB3',
+				'white'                => 'FFFFFF',
+				'whitesmoke'           => 'F5F5F5',
+				'yellow'               => 'FFFF00',
+				'yellowgreen'          => '9ACD32'
+			);
+
+			// Remove any spaces and special characters before and after the string
+			$color = trim( $color );
+			// Check if the color is a standard word-color.
+			// If it is, then convert to hex.
+			if ( array_key_exists( $color, $word_colors ) ) {
+				$color = $word_colors[ $color ];
+			}
+			// Remove any trailing '#' symbols from the color value
+			$color = str_replace( '#', '', $color );
+			// If the string is 6 characters long then use it in pairs.
+			if ( 3 == strlen( $color ) ) {
+				$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+			}
+			$substr = array();
+			for ( $i = 0; $i <= 5; $i++ ) {
+				$default    = ( 0 == $i ) ? 'F' : ( $substr[$i-1] );
+				$substr[$i] = substr( $color, $i, 1 );
+				$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
+			}
+			$hex = implode( '', $substr );
+
+			return ( ! $hash ) ? $hex : '#' . $hex;
 
 		}
 
 		public static function sanitize_rgba( $value ) {
-
-			$color_obj = new self( $value );
-			$rgba      = $color_obj->color->toCSS( 'rgba', $color_obj->alpha );
-			return ( str_replace( ' ', '', $rgba ) );
-
+			// If empty or an array return transparent
+			if ( empty( $value ) || is_array( $value ) ) {
+				return 'rgba(0,0,0,0)';
+			}
+			// If string does not start with 'rgba', then treat as hex
+			// sanitize the hex color and finally convert hex to rgba
+			if ( false === strpos( $value, 'rgba' ) ) {
+				return self::get_rgba( self::sanitize_hex( $value ) );
+			}
+			// By now we know the string is formatted as an rgba color so we can just return it.
+			$value = str_replace( array( ' ', 'rgba', '(', ')' ), '', $value );
+			$value = explode( ',', $value );
+			$red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
+			$green = ( isset( $value[1] ) ) ? intval( $value[1] ) : 255;
+			$blue  = ( isset( $value[2] ) ) ? intval( $value[2] ) : 255;
+			$alpha = ( isset( $value[3] ) ) ? filter_var( $value[3], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
+			return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
 		}
 
 		/**
@@ -277,12 +237,31 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function sanitize_color( $value ) {
 
+			if ( is_array( $value ) ) {
+				if ( isset( $value['rgba'] ) ) {
+					$value = $value['rgba'];
+				} elseif ( isset( $value['color'] ) ) {
+					$opacity = ( isset( $value['opacity'] ) ) ? $value['opacity'] : null;
+					$opacity = ( ! is_null( $opacity ) && isset( $value['alpha'] ) ) ? $value['alpha'] : null;
+					$opacity = ( is_null( $opacity ) ) ? 1 : self::number( $opacity );
+					$value = self::get_rgba( $value['color'], $opacity );
+				} else {
+					return;
+				}
+			}
+
 			if ( 'transparent' == $value ) {
 				return 'transparent';
 			}
 
-			$color_obj = new self( $value );
-			return $color_obj->color->toCSS( $color->mode, $color->alpha );
+			// Is this an rgba color or a hex?
+			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
+
+			if ( 'rgba' == $mode ) {
+				return self::sanitize_hex( $value );
+			} else {
+				return self::sanitize_rgba( $value );
+			}
 
 		}
 
@@ -295,9 +274,17 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function get_rgb( $hex, $implode = false ) {
 
-			$color_obj = new self( $hex );
-			$rgb = $color_obj->color->toCSS( 'rgb', 1 );
-			return ( str_replace( ' ', '', $rgb ) );
+			// Remove any trailing '#' symbols from the color value
+			$hex = self::sanitize_hex( $hex, false );
+
+			// rgb is an array
+			$rgb = array(
+				hexdec( substr( $hex, 0, 2 ) ),
+				hexdec( substr( $hex, 2, 2 ) ),
+				hexdec( substr( $hex, 4, 2 ) ),
+			);
+
+			return ( $implode ) ? implode( ',', $rgb ) : $rgb;
 
 		}
 
@@ -401,11 +388,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				$opacity = 100;
 			} elseif ( $opacity < 0 ) {
 				$opacity = 0;
-			} elseif ( $opacity >= 1 ) {
-				$opacity = $opacity / 100;
+			} elseif ( $opacity <= 1 && $opacity != 0 ) {
+				$opacity = ( $opacity * 100 );
 			}
-			$color_obj = new self( $hex );
-			return $color_obj->color->toCSS( 'rgba', $opacity );
+			// Divide the opacity by 100 to end-up with a CSS value for the opacity
+			$opacity = ( $opacity / 100 );
+			$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
+			return $color;
 
 		}
 
@@ -451,11 +440,18 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
 
-			$color_obj     = new self( $hex );
-			$steps_percent = round( ( $steps * 100 / 255 ), 2 );
-			$new_color     = $color_obj->color->incrementLightness( $steps_percent );
-			$new_color_obj = new Jetpack_Color( $new_color );
-			return self::sanitize_hex( $new_color_obj->toCSS( 'hex' ) );
+			$hex = self::sanitize_hex( $hex, false );
+			$steps = max( -255, min( 255, $steps ) );
+			// Adjust number of steps and keep it inside 0 to 255
+			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
+			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
+			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
+
+			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
+
+			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 
 		}
 
@@ -589,13 +585,22 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 
 		/*
 		 * Uses the luminosity to calculate the difference between the given colors.
+		 * The returned value should be bigger than 5 for best readability.
 		 */
 		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 
-			$color_1_obj = new self( $color_1 );
-			$color_2_obj = new self( $color_2 );
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
 
-			return $color_1_obj->color->getDistanceLuminosityFrom( $color_2_obj->color );
+			$color_1_rgb = self::get_rgb( $color_1 );
+			$color_2_rgb = self::get_rgb( $color_2 );
+
+			$l1 = 0.2126 * pow( $color_1_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_1_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_1_rgb[2] / 255, 2.2 );
+			$l2 = 0.2126 * pow( $color_2_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_2_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_2_rgb[2] / 255, 2.2 );
+
+			$lum_diff = ( $l1 > $l2 ) ? ( $l1 + 0.05 ) / ( $l2 + 0.05 ) : ( $l2 + 0.05 ) / ( $l1 + 0.05 );
+
+			return round( $lum_diff, 2 );
 
 		}
 
