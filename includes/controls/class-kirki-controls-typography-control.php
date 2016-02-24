@@ -162,7 +162,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		}
 
 		public function get_all_fonts() {
-			$fonts = Kirki_GoogleFonts::get_all_fonts();
+			$fonts = Kirki_Fonts::get_all_fonts();
 			$fonts_array = array();
 			foreach ( $fonts as $key => $font ) {
 				if ( is_array( $font ) ) {

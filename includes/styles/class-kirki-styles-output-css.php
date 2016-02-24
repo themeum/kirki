@@ -39,10 +39,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		private function __construct() {
 			if ( is_null( self::$google_fonts ) ) {
-				self::$google_fonts = Kirki_GoogleFonts::get_google_fonts();
+				self::$google_fonts = Kirki_Fonts::get_google_fonts();
 			}
 			if ( is_null( self::$backup_fonts ) ) {
-				self::$backup_fonts = Kirki_GoogleFonts::get_backup_fonts();
+				self::$backup_fonts = Kirki_Fonts::get_backup_fonts();
 			}
 		}
 
@@ -214,7 +214,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					}
 					if ( 'font-family' == $output['property'] ) {
 						// Add backup font
-						if ( Kirki_GoogleFonts::is_google_font( $value ) ) {
+						if ( Kirki_Fonts::is_google_font( $value ) ) {
 							if ( isset( $google_fonts_array[ $value ] ) && isset( $google_fonts_array[ $value ]['category'] ) ) {
 								if ( isset( $backup_fonts[ $google_fonts_array[ $value ]['category'] ] ) ) {
 									// add double quotes if needed
@@ -253,7 +253,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
 							}
 							// Add backup font
-							if ( Kirki_Googlefonts::is_google_font( $value['font-family'] ) ) {
+							if ( Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
 								if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
 									if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
 										// add double quotes if needed

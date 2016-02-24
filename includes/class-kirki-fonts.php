@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_GoogleFonts {
+class Kirki_Fonts {
 
 	public static $mode = 'link';
 
@@ -16,8 +16,8 @@ class Kirki_GoogleFonts {
 	 * @return array    All available fonts.
 	 */
 	public static function get_all_fonts() {
-		$standard_fonts = Kirki_GoogleFonts::get_standard_fonts();
-		$google_fonts   = Kirki_GoogleFonts::get_google_fonts();
+		$standard_fonts = Kirki_Fonts::get_standard_fonts();
+		$google_fonts   = Kirki_Fonts::get_google_fonts();
 
 		return apply_filters( 'kirki/fonts/all', array_merge( $standard_fonts, $google_fonts ) );
 	}

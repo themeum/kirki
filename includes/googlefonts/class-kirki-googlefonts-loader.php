@@ -12,7 +12,7 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 	private static $link = '';
 
 	public function __construct() {
-		if ( 'script' == Kirki_GoogleFonts::$mode ) {
+		if ( 'script' == Kirki_Fonts::$mode ) {
 			// Add script in <head>
 			add_action( 'wp_head', array( $this, 'add_script' ) );
 		} else {
