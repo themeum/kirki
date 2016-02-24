@@ -310,7 +310,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								'background-size',
 								'transition',
 								'transition-property',
-							) ) {
+							) ) ) {
 								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
 							}
@@ -322,7 +322,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								'background-size',
 								'transition',
 								'transition-property',
-							) ) {
+							) ) ) {
 								$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;
 							}
