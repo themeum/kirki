@@ -53,7 +53,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public function render_content() {}
 
 		protected function content_template() { ?>
-		<#console.log(data.value); #>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
