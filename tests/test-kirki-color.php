@@ -201,5 +201,10 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		$this->assertEquals( '.35', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,.35)' ) );
 		$this->assertEquals( '0', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,0)' ) );
 
+		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_color( array( 'rgba' => 'rgba(0,0,0,0)' ) ) );
+		$this->assertEquals( 'rgba(0,0,0,1)', Kirki_Color::sanitize_color( array( 'color' => '#000000' ) ) );
+
+		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#fff', -10 ) );
+
 	}
 }

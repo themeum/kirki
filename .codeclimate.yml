@@ -18,6 +18,8 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths:
+- assets/css/customizer-dynamic-css-colors.css
+- assets/js/customizer.js
 - assets/js/vendor/*
 - tests/*
 - bin/*

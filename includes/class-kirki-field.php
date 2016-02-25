@@ -38,6 +38,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$this->type();
 			$this->sanitize_callback();
 			$this->the_id();
+			$this->output();
 
 			$this->args = wp_parse_args( $this->args, $this->default_args );
 
@@ -329,6 +330,36 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				if ( array_key_exists( $this->args['type'], $default_callbacks ) ) {
 					$this->args['sanitize_callback'] = $default_callbacks[ $this->args['type'] ];
 				}
+			}
+		}
+
+		/**
+		 * Set the output
+		 */
+		private function output() {
+			if ( ! isset( $this->args['output'] ) ) {
+				$this->args['output'] = array();
+			}
+			// Convert to array of arrays if needed
+			if ( isset( $this->args['output']['element'] ) ) {
+				$this->args['output'] = array( $this->args['output'] );
+			}
+			foreach ( $this->args['output'] as $key => $output ) {
+				if ( ! isset( $output['element'] ) ) {
+					continue;
+				}
+				// Do we have units?
+				$this->args['output'][ $key ]['units'] = ( isset( $output['units'] ) ) ? $output['units'] : '';
+				// Do we have a prefix?
+				$this->args['output'][ $key ]['prefix'] = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
+				// Do we have a suffix?
+				$this->args['output'][ $key ]['suffix'] = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
+				// Accept "callback" as short for "sanitize_callback".
+				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+					$this->args['output'][ $key ]['sanitize_callback'] = $output['callback'];
+				}
+				// Do we have a "media_query" defined?
+				$this->args['output'][ $key ]['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 			}
 		}
 
