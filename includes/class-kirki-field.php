@@ -24,6 +24,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_capability',
 				'sanitize_settings',
 				'sanitize_settings',
+				'sanitize_tooltip',
 			);
 
 			foreach ( $calls as $call ) {
