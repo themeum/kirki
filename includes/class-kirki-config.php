@@ -15,7 +15,6 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @param string $id
 		 * @param array  $args
-		 * @return       void
 		 */
 		public function __construct( $id, $args = array() ) {
 
@@ -42,7 +41,6 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @param string $config_id
 		 * @param array  $args
-		 * @return  void
 		 */
 		public function add_config( $config_id, $args ) {
 			// Allow empty value as the config ID by setting the id to global.
