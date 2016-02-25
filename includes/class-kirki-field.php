@@ -1,21 +1,11 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Field' ) ) {
-	class Kirki_Field extends Kirki_Customizer {
+	class Kirki_Field {
 
 		public $args = null;
 
 		public function __construct( $args ) {
-
-			/**
-			 * Run the parent class constructor
-			 */
-			parent::__construct( $args );
-			/**
-			 * Set the field arguments
-			 */
-			$this->args = $args;
-
 		}
 
 		public static function add_field( $config_id = 'global', $args = array() ) {
