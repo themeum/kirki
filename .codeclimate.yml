@@ -1,8 +1,23 @@
-languages:
-  Ruby: false
-  JavaScript: false
-  PHP: true
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      - php
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
+  - "**.php"
 exclude_paths:
-  - "assets/*"
-  - "tests/*"
-  - "bin/*"
+- assets/js/vendor/*
+- tests/*
+- bin/*
