@@ -27,6 +27,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_tooltip',
 				'sanitize_active_callback',
 				'sanitize_control_type',
+				'sanitize_callback',
 			);
 
 			foreach ( $calls as $call ) {
@@ -35,14 +36,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
-			/**
-			 * If no choices have been defined, use an empty array
-			 */
+			// If no choices have been defined, use an empty array
 			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
-			/**
-			 * Sanitize the sanitize_callback argument.
-			 */
-			$args['sanitize_callback'] = $this->sanitize_callback( $config_id, $args );
 			/**
 			 * If no output argument has been defined, use an empty array
 			 */
@@ -390,19 +385,19 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the setting sanitize_callback
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string|array
 		 */
-		private function sanitize_callback( $config_id = 'global', $args = array() ) {
+		private function sanitize_callback( $args = array() ) {
 
 			if ( isset( $args['sanitize_callback'] ) && ! empty( $args['sanitize_callback'] ) ) {
 				if ( is_callable( $args['sanitize_callback'] ) ) {
-					return $args['sanitize_callback'];
+					return $args;
 				}
 			}
+
 			// Fallback callback
-			return $this->fallback_callback( $config_id, $args );
+			$args['sanitize_callback'] = $this->fallback_callback( $config_id, $args );
 
 		}
 
