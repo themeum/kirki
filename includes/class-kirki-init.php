@@ -120,14 +120,36 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * @return  void
 		 */
 		public function add_fields() {
-			foreach ( Kirki::$fields as $field ) {
-				if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
+
+			global $wp_customize;
+			foreach ( Kirki::$fields as $args ) {
+				if ( isset( $args['type'] ) && 'background' == $args['type'] ) {
 					continue;
 				}
-				if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
-					$field['multiple'] = 999;
+				/**
+				 * Create the settings.
+				 */
+				new Kirki_Settings( $args );
+				/**
+				 * Check if we're on the customizer.
+				 * If we are, then we will create the controls,
+				 * add the scripts needed for the customizer
+				 * and any other tweaks that this field may require.
+				 */
+				if ( $wp_customize ) {
+					/**
+					 * Create the control
+					 */
+					new Kirki_Control( $args );
+					/**
+					 * Create the scripts for postMessage to properly work
+					 */
+					Kirki_Customizer_Scripts_PostMessage::generate_script( $args );
+					/**
+					 * Create the scripts for tooltips.
+					 */
+					Kirki_Customizer_Scripts_Tooltips::generate_script( $args );
 				}
-				new Kirki_Field( $field );
 			}
 		}
 
