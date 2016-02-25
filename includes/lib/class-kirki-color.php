@@ -394,17 +394,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @param 	string $rgba	The RGBA color string.
 		 * @return  string			The corresponding RGB string.
 		 */
-		public static function rgba_to_rgb( $rgba ) {
-			$rgba = str_replace( ' ', '', $rgba );
-			$rgba_array = explode( ',', $rgba );
-			$rgba_array[0] = str_replace( 'rgba(', '', $rgba_array[0] );
-			if ( isset( $rgba_array[3] ) ) {
-				unset( $rgba_array[3] );
-			}
-
-			$rgb = sprintf( 'rgb(%s)', implode( ',', $rgba_array ) );
-
-			return $rgb;
+		public static function rgba_to_rgb( $color ) {
+			$obj = Kirki_Color::get_instance( $color );
+			return $obj->get_css( 'rgb' );
 		}
 
 		/**
