@@ -3,12 +3,13 @@
 if ( ! class_exists( 'Kirki_Field' ) ) {
 	class Kirki_Field {
 
-		public $args = null;
+		private $args = null;
 
-		public function __construct( $args ) {
+		public function __construct( $config_id = 'global', $args = array() ) {
+			$this->add_field( $config_id, $args );;
 		}
 
-		public static function add_field( $config_id = 'global', $args = array() ) {
+		private function add_field( $config_id = 'global', $args = array() ) {
 
 			/**
 			 * Sanitize $config_id

@@ -99,7 +99,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @var		array		the field arguments
 		 */
 		public static function add_field( $config_id, $args ) {
-			Kirki_Field::add_field( $config_id, $args );
+			new Kirki_Field( $config_id, $args );
 		}
 
 	}
