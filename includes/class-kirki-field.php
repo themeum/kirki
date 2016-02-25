@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		);
 
 		public function __construct( $config_id = 'global', $args = array() ) {
-			$this->set_field( $config_id, $args );;
+			$this->set_field( $config_id, $args );
 		}
 
 		private function set_field( $config_id = 'global', $args = array() ) {
