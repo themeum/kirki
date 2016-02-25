@@ -23,6 +23,7 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		public $postmessage;
 		public $tooltips;
 		public $googlefonts;
+		public $icons;
 
 		public function __construct() {
 

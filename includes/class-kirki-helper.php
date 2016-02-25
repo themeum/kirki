@@ -62,37 +62,6 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		}
 
 		/**
-		 * Helper function
-		 *
-		 * removes an item from an array
-		 */
-		public function array_delete( $idx, $array ) {
-
-			// Early exit and return null if $array is not an array.
-			if ( ! is_array( $array ) ) {
-				return null;
-			}
-
-			unset( $array[ $idx ] );
-			return array_values( $array );
-
-		}
-
-		public static function array_flatten( array $array ) {
-			$flat  = array(); // initialize return array
-			$stack = array_values( $array );
-			while ( $stack ) { // process stack until done
-				$value = array_shift( $stack );
-				if ( is_array( $value ) ) { // a value to further process
-					$stack = array_merge( array_keys( $value ), $stack );
-				} else { // a value to take
-					$flat[] = $value;
-				}
-			}
-			return $flat;
-		}
-
-		/**
 		 * Returns the attachment object
 		 *
 		 * @var 	string		URL to the image

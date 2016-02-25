@@ -243,7 +243,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				} elseif ( isset( $value['color'] ) ) {
 					$opacity = ( isset( $value['opacity'] ) ) ? $value['opacity'] : null;
 					$opacity = ( ! is_null( $opacity ) && isset( $value['alpha'] ) ) ? $value['alpha'] : null;
-					$opacity = ( is_null( $opacity ) ) ? 1 : self::number( $opacity );
+					$opacity = ( is_null( $opacity ) ) ? 1 : filter_var( $opacity, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 					$value = self::get_rgba( $value['color'], $opacity );
 				} else {
 					return;
