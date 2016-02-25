@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Control' ) ) {
 				<span class="customize-control-title">{{ data.label }}</span>
 			<# } #>
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{ data.description }}</span>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<# for ( key in data.choices ) { #>
 				<label>
