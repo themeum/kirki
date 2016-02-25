@@ -23,6 +23,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_option_type',
 				'sanitize_capability',
 				'sanitize_settings',
+				'sanitize_settings',
 			);
 
 			foreach ( $calls as $call ) {
@@ -31,10 +32,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
-			/**
-			 * Sanitize tooltip messages
-			 */
-			$args['tooltip'] = $this->sanitize_tooltip( $config_id, $args );
 			/**
 			 * Sanitize active_callback
 			 */
@@ -283,19 +280,19 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the tooltip message
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_tooltip( $config_id = 'global', $args = array() ) {
+		private function sanitize_tooltip( $args = array() ) {
+
+			$defaults = array( 'tooltip' => '' );
 
 			if ( isset( $args['tooltip'] ) ) {
-				return wp_strip_all_tags( $args['tooltip'] );
+				$args['tooltip'] = wp_strip_all_tags( $args['tooltip'] );
+			} elseif ( isset( $args['help'] ) ) {
+				$args['tooltip'] = wp_strip_all_tags( $args['help'] );
 			}
-			if ( isset( $args['help'] ) ) {
-				return wp_strip_all_tags( $args['help'] );
-			}
-			return '';
+			return wp_parse_args( $args, $defaults );
 
 		}
 
