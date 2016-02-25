@@ -181,7 +181,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		foreach ( $word_colors as $word => $color ) {
 			$this->assertEquals( '#' . $color, Kirki_Color::sanitize_hex( $word ) );
 		}
-		$this->assertEquals( '#333333', Kirki_Color::sanitize_hex( '#333' ) );
+		$this->assertEquals( '#333', Kirki_Color::sanitize_hex( '#333' ) );
 
 		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_rgba( '' ) );
 		$this->assertEquals( 'rgba(0,0,33,.4)', Kirki_Color::sanitize_rgba( 'rgba(0,0,33,.4)' ) );
@@ -189,7 +189,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		$this->assertEquals( 'rgba(255,0,0,1)', Kirki_Color::sanitize_rgba( '#ff0000' ) );
 
 		$this->assertEquals( 'transparent', Kirki_Color::sanitize_color( 'transparent' ) );
-		$this->assertEquals( '#333333', Kirki_Color::sanitize_color( '#333333' ) );
+		$this->assertTrue( in_array( Kirki_Color::sanitize_color( '#333333' ), array( '#333333', '#333' ) ) );
 		$this->assertEquals( 'rgba(255,200,200,1)', Kirki_Color::sanitize_color( 'rgba(255,200,200,1)' ) );
 
 		$this->assertEquals( 'rgb(255,200,200)', Kirki_Color::rgba_to_rgb( 'rgba(255,200,200,1)' ) );
@@ -203,8 +203,13 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 
 		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_color( array( 'rgba' => 'rgba(0,0,0,0)' ) ) );
 		$this->assertEquals( 'rgba(0,0,0,1)', Kirki_Color::sanitize_color( array( 'color' => '#000000' ) ) );
+		$this->assertEquals( null, Kirki_Color::sanitize_color( array() ) );
 
-		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#fff', -10 ) );
+		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( array() ) );
+		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( array( 'color' => '#000000' ) ) );
+		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( '#000000' ) );
+
+		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#fff', 0 ) );
 
 	}
 }

@@ -180,6 +180,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				'yellowgreen'          => '9ACD32'
 			);
 
+			if ( ! function_exists( 'sanitize_hex_color' ) ) {
+				require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+			}
+
 			// Remove any spaces and special characters before and after the string
 			$color = trim( $color );
 			// Check if the color is a standard word-color.
@@ -187,21 +191,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( array_key_exists( $color, $word_colors ) ) {
 				$color = $word_colors[ $color ];
 			}
-			// Remove any trailing '#' symbols from the color value
-			$color = str_replace( '#', '', $color );
-			// If the string is 6 characters long then use it in pairs.
-			if ( 3 == strlen( $color ) ) {
-				$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+			// Make sure color has "#" in the beginning for sanitize_hex to work ok
+			$color = maybe_hash_hex_color( $color );
+			$color = sanitize_hex_color( $color );
+			if ( ! $hash ) {
+				return str_replace( '#', '', $color );
 			}
-			$substr = array();
-			for ( $i = 0; $i <= 5; $i++ ) {
-				$default    = ( 0 == $i ) ? 'F' : ( $substr[$i-1] );
-				$substr[$i] = substr( $color, $i, 1 );
-				$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
-			}
-			$hex = implode( '', $substr );
-
-			return ( ! $hash ) ? $hex : '#' . $hex;
+			return $color;
 
 		}
 
@@ -238,6 +234,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function sanitize_color( $value ) {
 
 			if ( is_array( $value ) ) {
+				// for Redux & SMOF compatibility
 				if ( isset( $value['rgba'] ) ) {
 					$value = $value['rgba'];
 				} elseif ( isset( $value['color'] ) ) {
@@ -255,12 +252,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			}
 
 			// Is this an rgba color or a hex?
-			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
+			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 
 			if ( 'rgba' == $mode ) {
-				return self::sanitize_hex( $value );
-			} else {
 				return self::sanitize_rgba( $value );
+			} else {
+				return self::sanitize_hex( $value );
 			}
 
 		}
@@ -297,16 +294,19 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function rgba2hex( $color, $apply_opacity = false ) {
 
-			// Remove parts of the string
-			$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
 			if ( is_array( $color ) ) {
 				return ( isset( $color['color'] ) ) ? $color['color'] : '#ffffff';
 			}
 
 			// if not rgba, sanitize as HEX
-			if ( false !== strpos( $color, 'rgba' ) ) {
+			if ( false === strpos( $color, 'rgba' ) ) {
 				return self::sanitize_hex( $color );
 			}
+
+			// Remove parts of the string
+			$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
+
+
 			// Convert to array
 			$color = explode( ',', $color );
 			// This is not a valid rgba definition, so return white.
@@ -378,6 +378,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
 
 			$hex = self::sanitize_hex( $hex, false );
+			if ( 3 == strlen( $hex ) ) {
+				$hex = substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 2, 1 ) . substr( $hex, 2, 1 );
+			}
 			/**
 			 * Make sure that opacity is properly formatted :
 			 * Set the opacity to 100 if a larger value has been entered by mistake.
