@@ -18,12 +18,16 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Get the config arguments
 			$config = Kirki::$config[ $config_id ];
 
-			// Sanitize option_name
-			$args = $this->sanitize_option_name( $args );
-			// Sanitize option_type
-			$args = $this->sanitize_option_type( $args );
-			// Sanitize capability
-			$args = $this->sanitize_capability( $args );
+			$calls = array(
+				'sanitize_option_name',
+				'sanitize_option_type',
+				'sanitize_capability',
+			);
+
+			foreach ( $calls as $call ) {
+				$args = $this->$call( $args );
+			}
+
 			/**
 			 * Get the 'disable_output' argument from the config
 			 */
