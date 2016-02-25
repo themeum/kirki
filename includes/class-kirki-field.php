@@ -37,7 +37,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$this->active_callback();
 			$this->type();
 			$this->sanitize_callback();
-			$this->id();
+			$this->the_id();
 
 			$this->args = wp_parse_args( $this->args, $this->default_args );
 
@@ -149,25 +149,22 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				unset( $this->args['setting'] );
 			}
 			// If we have an array of settings then we need to sanitize each of them
-			if ( is_array( $this->args['settings'] ) ) {
-				$settings = array();
-				foreach ( $this->args['settings'] as $setting_key => $setting_value ) {
-					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
-					// If we're using serialized options then we need to spice this up
-					if ( 'option' == $this->args['option_type'] && '' != $this->args['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->args['option_name'] ).'['.esc_attr( $setting_value ).']';
-					} else {
-						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
-					}
+			if ( ! is_array( $this->args['settings'] ) ) {
+				$this->args['settings'] = array(
+					'kirki_placeholder_setting' => $this->args['settings']
+				);
+			}
+			$settings = array();
+			foreach ( $this->args['settings'] as $setting_key => $setting_value ) {
+				$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+				// If we're using serialized options then we need to spice this up
+				if ( 'option' == $this->args['option_type'] && '' != $this->args['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->args['option_name'] ).'['.esc_attr( $setting_value ).']';
 				}
-				$this->args['settings'] = $settings;
-			} else {
-				if ( 'option' == $this->args['option_type'] && '' != $this->args['option_name'] && ( false === strpos( $this->args['settings'], '[' ) ) ) {
-					// If we're using serialized options then we need to spice this up just like before.
-					$this->args['settings'] = esc_attr( $this->args['option_name'] ) . '[' . esc_attr( $this->args['settings'] ) . ']';
-				} else {
-					$this->args['settings'] = esc_attr( $this->args['settings'] );
-				}
+			}
+			$this->args['settings'] = $settings;
+			if ( isset( $this->args['settings']['kirki_placeholder_setting'] ) ) {
+				$this->args['settings'] = $this->args['settings']['kirki_placeholder_setting'];
 			}
 		}
 
@@ -252,10 +249,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				case 'select':
 				case 'select2':
 				case 'select2-multiple':
+					$this->args['multiple'] = ( isset( $this->args['multiple'] ) ) ? intval( $this->args['multiple'] ) : 1;
 					if ( 'select2-multiple' == $this->args['type'] ) {
 						$this->args['multiple'] = 999;
-					} else {
-						$this->args['multiple'] = ( isset( $this->args['multiple'] ) ) ? intval( $this->args['multiple'] ) : 1;
 					}
 					$this->args['type'] = 'kirki-select';
 					break;
@@ -295,7 +291,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * This way we can also properly handle cases where the option_type is set to 'option'
 		 * and we're using an array instead of individual options.
 		 */
-		private function id() {
+		private function the_id() {
 			$this->args['id'] = sanitize_key( str_replace( '[', '-', str_replace( ']', '', $this->args['settings'] ) ) );
 		}
 
@@ -329,10 +325,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
 			);
 			if ( ! isset( $this->args['sanitize_callback'] ) || empty( $this->args['sanitize_callback'] ) || ! is_callable( $this->args['sanitize_callback'] ) ) {
+				$this->args['sanitize_callback'] = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 				if ( array_key_exists( $this->args['type'], $default_callbacks ) ) {
 					$this->args['sanitize_callback'] = $default_callbacks[ $this->args['type'] ];
-				} else {
-					$this->args['sanitize_callback'] = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 				}
 			}
 		}
