@@ -25,6 +25,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_settings',
 				'sanitize_settings',
 				'sanitize_tooltip',
+				'sanitize_active_callback',
 			);
 
 			foreach ( $calls as $call ) {
@@ -33,10 +34,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
-			/**
-			 * Sanitize active_callback
-			 */
-			$args['active_callback'] = $this->sanitize_active_callback( $config_id, $args );
 			/**
 			 * Sanitize control type
 			 */
@@ -300,18 +297,24 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the active_callback
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_active_callback( $config_id = 'global', $args = array() ) {
+		private function sanitize_active_callback( $args = array() ) {
 
-			if ( isset( $args['active_callback'] ) && is_callable( $args['active_callback'] ) ) {
-				return $args['active_callback'];
-			} elseif ( isset( $args['required'] ) ) {
-				return array( 'Kirki_Active_Callback', 'evaluate' );
+			// fallback: __return_true
+			$defaults = array( 'active_callback' => '__return_true' );
+			// Use our evaluation method as fallback if required argument is defined.
+			if ( isset( $args['required'] ) ) {
+				$defaults = array( 'active_callback' => array( 'Kirki_Active_Callback', 'evaluate' ) );
 			}
-			return '__return_true';
+			$args = wp_parse_args( $args, $defaults );
+			// Make sure the function is callable, otherwise fallback to __return_true
+			if ( ! is_callable( $args['active_callback'] ) ) {
+				$args['active_callback'] = '__return_true';
+			}
+
+			return $args;
 
 		}
 
