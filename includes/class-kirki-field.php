@@ -21,13 +21,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Sanitize option_name
 			$args = $this->sanitize_option_name( $args );
 			/**
-			 * If we've set an option in the configuration
-			 * then make sure we're using options and not theme_mods
-			 */
-			if ( isset( $config['option_name'] ) && ! empty( $config['option_name'] ) ) {
-				$args['option_type'] = 'option';
-			}
-			/**
 			 * Sanitize option_type
 			 */
 			$args['option_type'] = $this->sanitize_option_type( $config_id, $args );
@@ -184,6 +177,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 			// sanitize value
 			$args['option_name'] = esc_attr( $args['option_name'] );
+
+			// If we have an option_name
+			// then make sure we're using options and not theme_mods
+			if ( '' != $args['option_name'] ) {
+				$args['option_type'] = 'option';
+			}
 
 			return $args;
 
