@@ -126,9 +126,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 				if ( isset( $args['type'] ) && 'background' == $args['type'] ) {
 					continue;
 				}
-				if ( isset( $args['type'] ) && 'select2-multiple' == $args['type'] ) {
-					$field['multiple'] = 999;
-				}
 				/**
 				 * Create the settings.
 				 */

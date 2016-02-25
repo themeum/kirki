@@ -26,6 +26,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_settings',
 				'sanitize_tooltip',
 				'sanitize_active_callback',
+				'sanitize_control_type',
 			);
 
 			foreach ( $calls as $call ) {
@@ -35,47 +36,13 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
 			/**
-			 * Sanitize control type
-			 */
-			$args['type'] = $this->sanitize_control_type( $config_id, $args );
-			/**
 			 * If no choices have been defined, use an empty array
 			 */
 			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
 			/**
-			 * Tweaks for simple controls
-			 */
-			if ( 'kirki-text' == $args['type'] ) {
-				$args['type']               = 'kirki-generic';
-				$args['choices']['element'] = 'input';
-				$args['choices']['type']    = 'text';
-				if ( ! isset( $args['sanitize_callback'] ) ) {
-					$args['sanitize_callback'] = 'wp_kses_post';
-				}
-			} elseif ( 'kirki-textarea' == $args['type'] ) {
-				$args['type']               = 'kirki-generic';
-				$args['choices']['element'] = 'textarea';
-				$args['choices']['rows']    = '5';
-				if ( ! isset( $args['sanitize_callback'] ) ) {
-					$args['sanitize_callback'] = 'wp_kses_post';
-				}
-			}
-			if ( 'kirki-generic' == $args['type'] && ! isset( $args['choices']['element'] ) ) {
-				$args['choices']['element'] = 'input';
-			}
-			/**
 			 * Sanitize the sanitize_callback argument.
 			 */
 			$args['sanitize_callback'] = $this->sanitize_callback( $config_id, $args );
-			/**
-			 * set choices for color controls
-			 */
-			if ( 'kirki-color' == $args['type'] ) {
-				$args['choices']['alpha'] = false;
-				$args['type'] = 'color-alpha';
-			} elseif ( 'color-alpha' == $args['type'] ) {
-				$args['choices']['alpha'] = true;
-			}
 			/**
 			 * If no output argument has been defined, use an empty array
 			 */
@@ -88,13 +55,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * Sanitize the id (for internal use)
 			 */
 			$args['id'] = $this->sanitize_id( $config_id, $args );
-			/**
-			 * Make sure the "multiple" argument is properly formatted for <select> controls
-			 */
-			if ( 'kirki-select' == $args['type'] ) {
-				$args['multiple'] = ( isset( $args['multiple'] ) ) ? intval( $args['multiple'] ) : 1;
-			}
-
 			/**
 			 * Add the field to the static $fields variable properly indexed
 			 */
@@ -321,25 +281,19 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the control type.
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_control_type( $config_id = 'global', $args = array() ) {
+		private function sanitize_control_type( $args = array() ) {
 
-			// If no field type has been defined then fallback to text
-			if ( ! isset( $args['type'] ) ) {
-				return 'kirki-text';
-			}
+			$defaults = array( 'type' => 'kirki-text' );
 
 			switch ( $args['type'] ) {
 
 				case 'checkbox':
 					$args['type'] = 'kirki-checkbox';
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 switch & toggle were part of the checkbox control.
-					 */
+					// Tweaks for backwards-compatibility:
+					// Prior to version 0.8 switch & toggle were part of the checkbox control.
 					if ( isset( $args['mode'] ) && 'switch' == $args['mode'] ) {
 						$args['type'] = 'switch';
 					} elseif ( isset( $args['mode'] ) && 'toggle' == $args['mode'] ) {
@@ -348,54 +302,74 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					break;
 				case 'radio':
 					$args['type'] = 'kirki-radio';
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
-					 */
-					if ( isset( $args['mode'] ) ) {
-						if ( 'buttonset' == $args['mode'] ) {
-							$args['type'] = 'radio-buttonset';
-						} elseif ( 'image' == $args['mode'] ) {
-							$args['type'] = 'radio-image';
-						}
+					// Tweaks for backwards-compatibility:
+					// Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
+					if ( isset( $args['mode'] ) && 'buttonset' == $args['mode'] ) {
+						$args['type'] = 'radio-buttonset';
+					} elseif ( isset( $args['mode'] ) && 'image' == $args['mode'] ) {
+						$args['type'] = 'radio-image';
 					}
 					break;
 				case 'group-title':
 				case 'group_title':
-					/**
-					 * Tweaks for backwards-compatibility:
-					 * Prior to version 0.8 there was a group-title control.
-					 */
+					// Tweaks for backwards-compatibility:
+					// Prior to version 0.8 there was a group-title control.
+					// Instead we now just use a "custom" control.
 					$args['type'] = 'custom';
 					break;
+				case 'color-alpha':
 				case 'color_alpha':
 					// Just making sure that common mistakes will still work.
 					$args['type'] = 'color-alpha';
+					$args['choices']['alpha'] = true;
 					break;
 				case 'color':
-					$args['type'] = 'kirki-color';
-					// If a default value of rgba() is defined for a color control then use color-alpha instead.
+					$args['type'] = 'color-alpha';
+					$args['choices']['alpha'] = false;
+					// If a default value of rgba() is defined for a color control then we need to enable the alpha channel.
 					if ( isset( $args['default'] ) && false !== strpos( $args['default'], 'rgba' ) ) {
-						$args['type'] = 'color-alpha';
+						$args['choices']['alpha'] = true;
 					}
 					break;
 				case 'select':
 				case 'select2':
 				case 'select2-multiple':
+					if ( 'select2-multiple' == $args['type'] ) {
+						$args['multiple'] = 999;
+					} else {
+						$args['multiple'] = ( isset( $args['multiple'] ) ) ? intval( $args['multiple'] ) : 1;
+					}
 					$args['type'] = 'kirki-select';
 					break;
 				case 'textarea':
-					$args['type'] = 'kirki-textarea';
+					$args['type']               = 'kirki-generic';
+					$args['choices']['element'] = 'textarea';
+					$args['choices']['rows']    = '5';
+					if ( ! isset( $args['sanitize_callback'] ) ) {
+						$args['sanitize_callback'] = 'wp_kses_post';
+					}
 					break;
 				case 'text':
-					$args['type'] = 'kirki-text';
+					$args['type']               = 'kirki-generic';
+					$args['choices']['element'] = 'input';
+					$args['choices']['type']    = 'text';
+					if ( ! isset( $args['sanitize_callback'] ) ) {
+						$args['sanitize_callback'] = 'wp_kses_post';
+					}
+					break;
+				case 'kirki-generic':
+					if ( ! isset( $args['choices']['element'] ) ) {
+						$args['choices']['element'] = 'input';
+					}
 					break;
 			}
 
-			/**
-			 * sanitize using esc_attr and return the value.
-			 */
-			return esc_attr( $args['type'] );
+			$args = wp_parse_args( $args, $defaults );
+
+			// escape the control type
+			$args['type'] = esc_attr( $args['type'] );
+
+			return $args;
 
 		}
 
