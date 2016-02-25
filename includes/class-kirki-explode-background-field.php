@@ -95,7 +95,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					'required'    => $field['required'],
 					'description' => $description,
 					'default'     => $value,
-					'id'          => Kirki_Field::sanitize_id( $field['kirki_config'], array( 'settings' => $field['settings'] . '_' . $setting ) ),
+					'id'          => sanitize_key( str_replace( '[', '-', str_replace( ']', '', $property_setting ) ) ),
 					'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
 					'output'      => ( '' != $field['output'] ) ? array(
 						array(
