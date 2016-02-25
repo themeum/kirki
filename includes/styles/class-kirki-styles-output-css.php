@@ -148,64 +148,22 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			$styles = array();
 
 			foreach ( self::$output as $output ) {
-
-				if ( ! isset( $output['element'] ) ) {
-					continue;
-				}
-				/**
-				 * Do we have units?
-				 */
-				$units = ( isset( $output['units'] ) ) ? $output['units'] : '';
-				/**
-				 * Do we have a prefix?
-				 */
-				$prefix = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
-				/**
-				 * Do we have a suffix?
-				 */
-				$suffix = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
-				/**
-				 * Accept "callback" as short for "sanitize_callback".
-				 */
-				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
-					$output['sanitize_callback'] = $output['callback'];
-				}
-				/**
-				 * Do we have a "media_query" defined?
-				 */
-				if ( ! isset( $output['media_query'] ) ) {
-					$output['media_query'] = 'global';
-				} else {
-					$output['media_query'] = esc_attr( $output['media_query'] );
-				}
-				/**
-				 * Do we need to run this through a callback action?
-				 */
+				// Do we need to run this through a callback action?
 				$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
 				if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
 					$value = call_user_func( $output['sanitize_callback'], $value );
 				}
-				/**
-				 * Make sure the value is a string before proceeding
-				 * If all is ok, then populate the array.
-				 */
+				// Make sure the value is a string before proceeding
+				// If all is ok, then populate the array.
 				$element = $output['element'];
-				/**
-				 * Allow using an array of elements
-				 */
+				// Allow using an array of elements
 				if ( is_array( $output['element'] ) ) {
-					/**
-					 * Make sure our values are unique
-					 */
+					// Make sure our values are unique
 					$elements = array_unique( $element );
-					/**
-					 * Sort elements alphabetically.
-					 * This way all duplicate items will be merged in the final CSS array.
-					 */
+					// Sort elements alphabetically.
+					// This way all duplicate items will be merged in the final CSS array.
 					sort( $elements );
-					/**
-					 * Implode items
-					 */
+					// Implode items
 					$element = implode( ',', $elements );
 				}
 				if ( ! is_array( $value ) ) {
@@ -227,11 +185,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							}
 						}
 					}
-					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $prefix . $value . $units . $suffix;
+					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 				} else {
-					/**
-					 * Take care of typography controls output
-					 */
+					// Take care of typography controls output
 					if ( 'typography' == self::$field_type ) {
 						foreach ( $value as $key => $sub_value ) {
 							$styles[ $output['media_query'] ][ $element ][ $key ] = $sub_value;
@@ -266,9 +222,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 							}
 						}
 					}
-					/**
-					 * Take care of "spacing" controls output
-					 */
+					// Take care of "spacing" controls output
 					if ( 'spacing' == self::$field_type && isset( $output['property'] ) ) {
 						foreach ( $value as $key => $sub_value ) {
 							if ( false !== strpos( $output['property'], '%%' ) ) {
