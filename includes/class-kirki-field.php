@@ -15,30 +15,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			 * Set the field arguments
 			 */
 			$this->args = $args;
-			/**
-			 * Create the settings.
-			 */
-			new Kirki_Settings( $this->args );
-			/**
-			 * Check if we're on the customizer.
-			 * If we are, then we will create the controls,
-			 * add the scripts needed for the customizer
-			 * and any other tweaks that this field may require.
-			 */
-			if ( $this->wp_customize ) {
-				/**
-				 * Create the control
-				 */
-				new Kirki_Control( $this->args );
-				/**
-				 * Create the scripts for postMessage to properly work
-				 */
-				Kirki_Customizer_Scripts_PostMessage::generate_script( $this->args );
-				/**
-				 * Create the scripts for tooltips.
-				 */
-				Kirki_Customizer_Scripts_Tooltips::generate_script( $this->args );
-			}
 
 		}
 
