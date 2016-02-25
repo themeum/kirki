@@ -11,6 +11,20 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		private function add_field( $config_id = 'global', $args = array() ) {
 
+			$defaults = array(
+				'kirki_config'    => 'global',
+				'capability'      => 'edit_theme_options',
+				'option_name'     => '',
+				'disable_output'  => false,
+				'choices'         => array(),
+				'output'          => array(),
+				'variables'       => null,
+				'option_type'     => 'theme_mod',
+				'tooltip'         => '',
+				'active_callback' => '__return_true',
+				'type'            => 'kirki-generic',
+			);
+
 			// Sanitize $config_id
 			$args      = $this->sanitize_config_id( $config_id, $args );
 			$config_id = $args['kirki_config'];
@@ -23,42 +37,27 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_option_type',
 				'sanitize_capability',
 				'sanitize_settings',
-				'sanitize_settings',
 				'sanitize_tooltip',
 				'sanitize_active_callback',
 				'sanitize_control_type',
 				'sanitize_callback',
+				'sanitize_id',
 			);
 
 			foreach ( $calls as $call ) {
 				$args = $this->$call( $args );
 			}
 
+			$args = wp_parse_args( $args, $defaults );
+
 			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
-			// If no choices have been defined, use an empty array
-			$args['choices'] = ( isset( $args['choices'] ) ) ? $args['choices'] : array();
-			/**
-			 * If no output argument has been defined, use an empty array
-			 */
-			$args['output'] = isset( $args['output'] ) ? $args['output'] : array();
-			/**
-			 * If "variables" has not been defined, set to null.
-			 */
-			$args['variables'] = ( isset( $args['variables'] ) && is_array( $args['variables'] ) ) ? $args['variables'] : null;
-			/**
-			 * Sanitize the id (for internal use)
-			 */
-			$args['id'] = $this->sanitize_id( $config_id, $args );
-			/**
-			 * Add the field to the static $fields variable properly indexed
-			 */
+
+			// Add the field to the static $fields variable properly indexed
 			Kirki::$fields[ $args['settings'] ] = $args;
 
 			if ( 'background' == $args['type'] ) {
-				/**
-				 * Build the background fields
-				 */
+				// Build the background fields
 				Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
 			}
 
@@ -114,13 +113,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					'option_name' => Kirki::$config[ $args['kirki_config'] ]['option_name'],
 				);
 				$args = wp_parse_args( $args, $defaults );
+				// escape value
+				$args['option_name'] = esc_attr( $args['option_name'] );
 			}
-			// fallback to empty if undefined
-			if ( ! isset( $args['option_name'] ) ) {
-				$args['option_name'] = '';
-			}
-			// sanitize value
-			$args['option_name'] = esc_attr( $args['option_name'] );
 
 			return $args;
 
@@ -136,18 +131,13 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// If an capability has not been defined in the field itself,
 			// Then fallback to the capability from the field's config.
-			// If that fails as well then use 'edit_theme_options'
 			if ( isset( Kirki::$config[ $args['kirki_config'] ]['capability'] ) ) {
 				$defaults = array(
 					'capability' => Kirki::$config[ $args['kirki_config'] ]['capability'],
 				);
-			} else {
-				$defaults = array(
-					'capability' => 'edit_theme_options',
-				);
+				$args = wp_parse_args( $args, $defaults );
 			}
-			$args = wp_parse_args( $args, $defaults );
-			// escape the capability
+			// escape the value
 			$args['capability'] = esc_attr( $args['capability'] );
 
 			return $args;
@@ -170,18 +160,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// if no option_type has been defined for this field
 			// Then try to get it from the config.
+			// Fallback to "theme_mod"
+			$defaults = array( 'option_type' => 'theme_mod' );
 			if ( isset( Kirki::$config[ $args['kirki_config'] ]['option_type'] ) ) {
-				$defaults = array(
-					Kirki::$config[ $args['kirki_config'] ]['option_type'],
-				);
-				$args = wp_parse_args( $args, $defaults );
+				$defaults = array( 'option_type' => Kirki::$config[ $args['kirki_config'] ]['option_type'] );
 			}
-			// fallback to theme_mod if all else fails
-			if ( ! isset( $args['option_type'] ) ) {
-				$args['option_type'] = 'theme_mod';
-			}
+			$args = wp_parse_args( $args, $defaults );
 
-			// sanitize it just to be safe
+			// escape the value
 			$args['option_type'] = esc_attr( $args['option_type'] );
 
 			return $args;
@@ -238,14 +224,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		private function sanitize_tooltip( $args = array() ) {
 
-			$defaults = array( 'tooltip' => '' );
-
 			if ( isset( $args['tooltip'] ) ) {
 				$args['tooltip'] = wp_strip_all_tags( $args['tooltip'] );
 			} elseif ( isset( $args['help'] ) ) {
 				$args['tooltip'] = wp_strip_all_tags( $args['help'] );
+				unset( $args['help'] );
 			}
-			return wp_parse_args( $args, $defaults );
+
+			return $args;
 
 		}
 
@@ -257,15 +243,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		private function sanitize_active_callback( $args = array() ) {
 
-			// fallback: __return_true
-			$defaults = array( 'active_callback' => '__return_true' );
 			// Use our evaluation method as fallback if required argument is defined.
 			if ( isset( $args['required'] ) ) {
 				$defaults = array( 'active_callback' => array( 'Kirki_Active_Callback', 'evaluate' ) );
+				$args = wp_parse_args( $args, $defaults );
 			}
-			$args = wp_parse_args( $args, $defaults );
+
 			// Make sure the function is callable, otherwise fallback to __return_true
-			if ( ! is_callable( $args['active_callback'] ) ) {
+			if ( isset( $args['active_callback'] ) && ! is_callable( $args['active_callback'] ) ) {
 				$args['active_callback'] = '__return_true';
 			}
 
@@ -281,7 +266,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		private function sanitize_control_type( $args = array() ) {
 
-			$defaults = array( 'type' => 'kirki-text' );
+			$defaults = array( 'type' => 'kirki-generic' );
 
 			switch ( $args['type'] ) {
 
@@ -374,12 +359,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * This way we can also properly handle cases where the option_type is set to 'option'
 		 * and we're using an array instead of individual options.
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_id( $config_id = 'global', $args = array() ) {
-			return sanitize_key( str_replace( '[', '-', str_replace( ']', '', $args['settings'] ) ) );
+		private function sanitize_id( $args = array() ) {
+			$args['id'] = sanitize_key( str_replace( '[', '-', str_replace( ']', '', $args['settings'] ) ) );
+			return $args;
 		}
 
 		/**
@@ -389,27 +374,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @return  string|array
 		 */
 		private function sanitize_callback( $args = array() ) {
-
-			if ( isset( $args['sanitize_callback'] ) && ! empty( $args['sanitize_callback'] ) ) {
-				if ( is_callable( $args['sanitize_callback'] ) ) {
-					return $args;
-				}
-			}
-
-			// Fallback callback
-			$args['sanitize_callback'] = $this->fallback_callback( $config_id, $args );
-
-		}
-
-		/**
-		 * returns a callable function or method that can be used to sanitize the values.
-		 * This is used as fallback in case a sanitize_callback has not been defined for a setting.
-		 *
-		 * @param   string  $config_id
-		 * @param   array   $args
-		 * @return  string|array
-		 */
-		private function fallback_callback( $config_id = 'global', $args = array() ) {
 
 			$default_callbacks = array(
 				'checkbox'         => array( 'Kirki_Sanitize_Values', 'checkbox' ),
@@ -437,11 +401,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
 			);
 
-			if ( array_key_exists( $args['type'], $default_callbacks ) ) {
-				return $default_callbacks[ $args['type'] ];
-			} else {
-				return array( 'Kirki_Sanitize_Values', 'unfiltered' );
+			if ( ! isset( $args['sanitize_callback'] ) || empty( $args['sanitize_callback'] ) || ! is_callable( $args['sanitize_callback'] ) ) {
+				if ( array_key_exists( $args['type'], $default_callbacks ) ) {
+					$args['sanitize_callback'] = $default_callbacks[ $args['type'] ];
+				} else {
+					$args['sanitize_callback'] = array( 'Kirki_Sanitize_Values', 'unfiltered' );
+				}
 			}
+
+			return $args;
 
 		}
 
