@@ -20,11 +20,6 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 					$default    = ( isset( $defaults[ $setting_key ] ) ) ? $defaults[ $setting_key ] : '';
 					$transport  = isset( $args['transport'] ) ? $args['transport'] : 'refresh';
 
-					if ( isset( $args['sanitize_callback'] ) && is_array( $args['sanitize_callback'] ) ) {
-						if ( isset( $args['sanitize_callback'][ $setting_key ] ) ) {
-							$sanitize_callback = Kirki_Field::sanitize_callback( '', array( 'sanitize_callback' => $args['sanitize_callback'][ $setting_key ] ) );
-						}
-					}
 					$this->wp_customize->add_setting( $setting_value, array(
 						'default'           => $default,
 						'type'              => $args['option_type'],

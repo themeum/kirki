@@ -162,7 +162,8 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 	 */
 	public function test_sanitize_config_id() {
 		// Define invalid config IDs. should return 'global'.
-		// $this->assertEquals( 'global', Kirki_Field::sanitize_config_id( 'foo', array( 'kirki_config' => 'bar' ) ) );
+		$field = new Kirki_Field( 'foo', array( 'kirki_config' => 'bar' ) );
+		$this->assertEquals( 'global', Kirki_Field::sanitize_config_id( 'foo',  ) );
 
 		// $this->assertEquals( 'global', Kirki_Field::sanitize_config_id( array() ) );
 

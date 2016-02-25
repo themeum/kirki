@@ -135,7 +135,7 @@ WIP
 * NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" (formatted as an array).
 * NEW: Better autoloader & improved file structure
 * NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
-* NEW: Deprecated the `Kirki_Field::get_config_id()` method. It's no longer needed since fields have a `kirki_config` argument.
+* NEW: Completely refactored the `Kirki_Field` class, we're migrating to a more OOP model.
 * NEW: Added a new `kirki-generic` control.
 * NEW: Deprecated the custom text control and used the new `kirki-generic` control instead.
 * NEW: Deprecated the custom textarea control and used the new `kirki-generic` control instead.
