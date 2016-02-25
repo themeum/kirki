@@ -17,10 +17,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// Get the config arguments
 			$config = Kirki::$config[ $config_id ];
-			/**
-			 * Sanitize option_name
-			 */
-			$args['option_name'] = $this->sanitize_option_name( $config_id, $args );
+
+			// Sanitize option_name
+			$args = $this->sanitize_option_name( $args );
 			/**
 			 * If we've set an option in the configuration
 			 * then make sure we're using options and not theme_mods
@@ -170,25 +169,23 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_option_name( $config_id = 'global', $args = array() ) {
+		private function sanitize_option_name( $args = array() ) {
 
-			/**
-			 * If an option_name has been defined in the field itself,
-			 * then escape it and return it.
-			 */
-			if ( isset( $args['option_name'] ) ) {
-				return esc_attr( $args['option_name'] );
+			if ( isset( Kirki::$config[ $args['kirki_config'] ]['option_name'] ) ) {
+				// use from config if not defined in the option
+				$defaults = array(
+					'option_name' => Kirki::$config[ $args['kirki_config'] ]['option_name'],
+				);
+				$args = wp_parse_args( $args, $defaults );
 			}
-			/**
-			 * Try to get the option_name from the config
-			 */
-			if ( isset( Kirki::$config[ $config_id ]['option_name'] ) ) {
-				return esc_attr( Kirki::$config[ $config_id ]['option_name'] );
+			// fallback to empty if undefined
+			if ( ! isset( $args['option_name'] ) ) {
+				$args['option_name'] = '';
 			}
-			/**
-			 * If all else fails, return empty.
-			 */
-			return '';
+			// sanitize value
+			$args['option_name'] = esc_attr( $args['option_name'] );
+
+			return $args;
 
 		}
 
