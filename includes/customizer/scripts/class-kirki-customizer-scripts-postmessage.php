@@ -95,6 +95,14 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 						'suffix'      => ( isset( $js_vars['suffix'] ) ) ? esc_js( $js_vars['suffix'] ) : '',
 						'js_callback' => ( isset( $js_vars['js_callback'] ) ) ? esc_js( $js_vars['js_callback'] ) : '',
 					);
+					// If 'background-image' is used, then we need to use url("value").
+					if ( 'background-image' == $js_vars['property'] ) {
+						// check that the user hasn't already done this manually using other arguments
+						if ( false === strrpos( $js_vars['prefix'], 'url' ) ) {
+							$js_vars['prefix'] .= 'url("';
+							$js_vars['units']  .= '")';
+						}
+					}
 
 					$settings    = $args['settings'];
 					$prefix      = ( ! empty( $js_vars['prefix'] ) ) ? $js_vars['prefix'] . ' + ' : '';
@@ -147,7 +155,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_PostMessage' ) ) {
 							$script .= '$(\'' . $js_vars['element'] . '\').each(function(){ this.style.setProperty(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ', \'important\');});';
 						} else {
 							// $suffix = what other suffix exists inline?
-							$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . ' );';
+							$script .= '$(\'' . $js_vars['element'] . '\').' . $js_vars['function'] . '(\'' . $js_vars['property'] . '\', ' . $prefix . 'newval' . $units . $js_vars['suffix'] . ' );';
 						}
 
 						// execute js_callback (callback must exist in dom before this script - see priority on action
