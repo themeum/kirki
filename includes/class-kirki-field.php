@@ -22,10 +22,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$args = $this->sanitize_option_name( $args );
 			// Sanitize option_type
 			$args = $this->sanitize_option_type( $args );
-			/**
-			 * Sanitize capability
-			 */
-			$args['capability'] = $this->sanitize_capability( $config_id, $args );
+			// Sanitize capability
+			$args = $this->sanitize_capability( $args );
 			/**
 			 * Get the 'disable_output' argument from the config
 			 */
@@ -182,29 +180,28 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the capability.
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_capability( $config_id = 'global', $args = array() ) {
+		private function sanitize_capability( $args = array() ) {
 
-			/**
-			 * If an capability has been defined in the field itself,
-			 * then escape it and return it.
-			 */
-			if ( isset( $args['capability'] ) ) {
-				return esc_attr( $args['capability'] );
+			// If an capability has not been defined in the field itself,
+			// Then fallback to the capability from the field's config.
+			// If that fails as well then use 'edit_theme_options'
+			if ( isset( Kirki::$config[ $args['kirki_config'] ]['capability'] ) ) {
+				$defaults = array(
+					'capability' => Kirki::$config[ $args['kirki_config'] ]['capability'],
+				);
+			} else {
+				$defaults = array(
+					'capability' => 'edit_theme_options',
+				);
 			}
-			/**
-			 * Try to get the capability from the config
-			 */
-			if ( isset( Kirki::$config[ $config_id ]['capability'] ) ) {
-				return esc_attr( Kirki::$config[ $config_id ]['capability'] );
-			}
-			/**
-			 * If all else fails, return edit_theme_options.
-			 */
-			return 'edit_theme_options';
+			$args = wp_parse_args( $args, $defaults );
+			// escape the capability
+			$args['capability'] = esc_attr( $args['capability'] );
+
+			return $args;
 
 		}
 
