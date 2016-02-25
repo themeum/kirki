@@ -183,10 +183,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		}
 		$this->assertEquals( '#333', Kirki_Color::sanitize_hex( '#333' ) );
 
-		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_rgba( '' ) );
 		$this->assertEquals( 'rgba(0,0,33,.4)', Kirki_Color::sanitize_rgba( 'rgba(0,0,33,.4)' ) );
-		$this->assertEquals( 'rgba(255,255,255,1)', Kirki_Color::sanitize_rgba( '#ffffff' ) );
-		$this->assertEquals( 'rgba(255,0,0,1)', Kirki_Color::sanitize_rgba( '#ff0000' ) );
 
 		$this->assertEquals( 'transparent', Kirki_Color::sanitize_color( 'transparent' ) );
 		$this->assertTrue( in_array( Kirki_Color::sanitize_color( '#333333' ), array( '#333333', '#333' ) ) );
