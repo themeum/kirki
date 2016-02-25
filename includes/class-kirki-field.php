@@ -11,14 +11,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		private function add_field( $config_id = 'global', $args = array() ) {
 
-			/**
-			 * Sanitize $config_id
-			 */
-			$config_id = $this->sanitize_config_id( $config_id, $args );
-			$args['kirki_config'] = $config_id;
-			/**
-			 * Get the config arguments
-			 */
+			// Sanitize $config_id
+			$args      = $this->sanitize_config_id( $config_id, $args );
+			$config_id = $args['kirki_config'];
+
+			// Get the config arguments
 			$config = Kirki::$config[ $config_id ];
 			/**
 			 * Sanitize option_name
@@ -140,33 +137,30 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @return  string
 		 */
 		private function sanitize_config_id( $config_id = 'global', $args = array() ) {
-			/**
-			 * Check if 'kirki_config' has been defined inside the $args.
-			 * In that case, it will override the $config.
-			 */
+
+			// Check if 'kirki_config' has been defined inside the $args.
+			// In that case, it will override the $config.
 			if ( isset( $args['kirki_config'] ) ) {
 				$config_id = $args['kirki_config'];
 			}
-			/**
-			 * If $args is not used, then assume that $config_id took its place
-			 */
+			// If $args is not used, then assume that $config_id took its place
 			if ( is_array( $config_id ) && empty( $args ) ) {
 				$args      = $config_id;
 				$config_id = 'global';
 			}
-			/**
-			 * If $config_id is empty, use global config.
-			 */
+			// If $config_id is empty, use global config.
 			if ( empty( $config_id ) ) {
 				$config_id = 'global';
 			}
-			/**
-			 * If the defined config does not exist, use global.
-			 */
+			// If the defined config does not exist, use global.
 			if ( ! isset( Kirki::$config[ $config_id ] ) ) {
 				$config_id = 'global';
 			}
-			return esc_attr( $config_id );
+			// Sanitize $config_id using the esc_attr() function
+			$args['kirki_config'] = esc_attr( $config_id );
+
+			return $args;
+
 		}
 
 		/**
