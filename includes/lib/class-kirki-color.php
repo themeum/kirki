@@ -19,6 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Color' ) ) {
 	class Kirki_Color {
 
+		private static $instances = array();
+
 		private $color;
 
 		private $word_colors = array();
@@ -33,13 +35,78 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * The class constructor
 		 */
-		public function __construct( $color = '', $mode = 'hex' ) {
+		public function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
-			$method = 'from_hex';
 			if ( method_exists( $this, 'from_' . $mode ) ) {
 				$method = 'from_' . $mode;
+			} else {
+				if ( null === $this->get_mode( $color ) ) {
+					return;
+				}
+				$method = 'from_' . $this->get_mode( $color );
 			}
 			$this->$method();
+		}
+
+		public static function get_instance( $color, $mode = 'auto' ) {
+			if ( is_array( $color ) ) {
+				$color_md5 = md5( json_encode( $color ) . $mode );
+			} else {
+				$color_md5 = md5( $color . $mode );
+			}
+			if ( ! isset( self::$instances[ $color_md5 ] ) ) {
+				self::$instances[ $color_md5 ] = new self( $color, $mode );
+			}
+			return self::$instances[ $color_md5 ];
+		}
+
+		private function get_new_object_by( $property = '', $value = '' ) {
+			if ( in_array( $property, array( 'red', 'green', 'blue', 'alpha' ) ) ) {
+				$this->$property = $value;
+				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
+			}
+		}
+
+		private function get_mode( $color ) {
+			if ( is_array( $color ) ) {
+				if ( isset( $color['rgba'] ) ) {
+					$this->color = $color['rgba'];
+					return 'rgba';
+				} elseif ( isset( $color['color'] ) ) {
+					$this->color = $color['color'];
+					return 'hex';
+				} else {
+					$finders_keepers = array(
+						'r'       => 'red',
+						'g'       => 'green',
+						'b'       => 'blue',
+						'a'       => 'alpha',
+						'red'     => 'red',
+						'green'   => 'green',
+						'blue'    => 'blue',
+						'alpha'   => 'alpha',
+						'opacity' => 'alpha',
+					);
+					foreach( $finders_keepers as $finder => $keeper ) {
+						if ( isset( $color[ $finder ] ) ) {
+							$this->$keeper = $color[ $finder ];
+						}
+					}
+					return null;
+				}
+			} else {
+				$finders_keepers = array(
+					'#'    => 'hex',
+					'rgba' => 'rgba',
+					'rgb'  => 'rgb',
+				);
+				foreach ( $finders_keepers as $finder => $keeper ) {
+					if ( false !== strrpos( $color, $finder ) ) {
+						return $keeper;
+					}
+				}
+			}
+			return 'hex';
 		}
 
 		/**
@@ -52,17 +119,17 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
 			}
 			// Is this perhaps a word-color?
-			$this->set_word_colors();
-			if ( array_key_exists( $this->color, $this->word_colors ) ) {
-				$this->color = '#' . $this->word_colors[ $this->color ];
+			$word_colors = $this->get_word_colors();
+			if ( array_key_exists( $this->color, $word_colors ) ) {
+				$this->color = '#' . $word_colors[ $this->color ];
 			}
 			// Sanitize color
 			$this->hex = maybe_hash_hex_color( $this->color );
 			$this->hex = sanitize_hex_color( $this->hex );
 
-			$hex = $this->hex;
+			$hex = ltrim( $this->hex, '#' );
 			// Make sure we have 6 digits for the below calculations
-			if ( 3 == strlen( ltrim( $this->hex, '#' ) ) ) {
+			if ( 3 == strlen( $hex ) ) {
 				$hex = ltrim( $this->hex, '#' );
 				$hex = substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 2, 1 ) . substr( $hex, 2, 1 );
 			}
@@ -137,7 +204,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string      The sanitized hex color.
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
-		 	$obj = new Kirki_Color( $color, 'hex' );
+		 	$obj = Kirki_Color::get_instance( $color );
 		 	if ( ! $hash ) {
 		 		return ltrim( $obj->get_css( 'hex' ), '#' );
 		 	}
@@ -145,7 +212,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 
 		public static function sanitize_rgba( $value ) {
-			$obj = new Kirki_Color( $value, 'rgba' );
+			$obj = Kirki_Color::get_instance( $value );
 			return $obj->get_css( 'rgba' );
 		}
 
@@ -198,19 +265,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  mixed       array|string
 		 */
 		public static function get_rgb( $hex, $implode = false ) {
-
-			// Remove any trailing '#' symbols from the color value
-			$hex = self::sanitize_hex( $hex, false );
-
-			// rgb is an array
-			$rgb = array(
-				hexdec( substr( $hex, 0, 2 ) ),
-				hexdec( substr( $hex, 2, 2 ) ),
-				hexdec( substr( $hex, 4, 2 ) ),
-			);
-
-			return ( $implode ) ? implode( ',', $rgb ) : $rgb;
-
+			$obj = Kirki_Color::get_instance( $hex );
+			if ( $implode ) {
+				return $obj->get_css( 'rgb' );
+			}
+			return array( $obj->red, $obj->green, $obj->blue );
 		}
 
 		/**
@@ -221,6 +280,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string  The hex value of the color.
 		 */
 		public static function rgba2hex( $color, $apply_opacity = false ) {
+			$obj = Kirki_Color::get_instance( $color );
+			if ( ! $apply_opacity ) {
+				return $obj->get_css( 'hex' );
+			}
 
 			if ( is_array( $color ) ) {
 				return ( isset( $color['color'] ) ) ? $color['color'] : '#ffffff';
@@ -300,32 +363,28 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Gets the rgb value of the $hex color.
 		 *
 		 * @var     string      The hex value of a color
-		 * @param   int         Opacity level (1-100)
+		 * @param   int         Opacity level (0-1)
 		 * @return  string
 		 */
-		public static function get_rgba( $hex = '#fff', $opacity = 100 ) {
+		public static function get_rgba( $hex = '#fff', $alpha = 1 ) {
 
-			$hex = self::sanitize_hex( $hex, false );
-			if ( 3 == strlen( $hex ) ) {
-				$hex = substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 2, 1 ) . substr( $hex, 2, 1 );
+			// Make sure that opacity is properly formatted.
+			// Converts 1-100 values to 0-1
+			if ( $alpha > 1 || $alpha < -1 ) {
+				// divide by 100
+				$alpha /= 100;
 			}
-			/**
-			 * Make sure that opacity is properly formatted :
-			 * Set the opacity to 100 if a larger value has been entered by mistake.
-			 * If a negative value is used, then set to 0.
-			 * If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
-			 */
-			if ( $opacity >= 100 ) {
-				$opacity = 100;
-			} elseif ( $opacity < 0 ) {
-				$opacity = 0;
-			} elseif ( $opacity <= 1 && $opacity != 0 ) {
-				$opacity = ( $opacity * 100 );
+			// get absolute value
+			$alpha = abs( $alpha );
+			// max 1
+			if ( 1 < $alpha ) {
+				$alpha = 1;
 			}
-			// Divide the opacity by 100 to end-up with a CSS value for the opacity
-			$opacity = ( $opacity / 100 );
-			$color = 'rgba(' . self::get_rgb( $hex, true ) . ',' . $opacity . ')';
-			return $color;
+
+			$obj = Kirki_Color::get_instance( $hex );
+			$new_obj = $obj->get_new_object_by( 'alpha', $alpha );
+
+			return $new_obj->get_css( 'rgba' );
 
 		}
 
@@ -535,8 +594,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 
 		}
 
-		private function set_word_colors() {
-			$this->word_colors = array(
+		private function get_word_colors() {
+			return array(
 				'aliceblue'            => 'F0F8FF',
 				'antiquewhite'         => 'FAEBD7',
 				'aqua'                 => '00FFFF',
