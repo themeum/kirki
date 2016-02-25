@@ -22,20 +22,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'sanitize_option_name',
 				'sanitize_option_type',
 				'sanitize_capability',
+				'sanitize_settings',
 			);
 
 			foreach ( $calls as $call ) {
 				$args = $this->$call( $args );
 			}
 
-			/**
-			 * Get the 'disable_output' argument from the config
-			 */
+			// Get the 'disable_output' argument from the config
 			$args['disable_output'] = $config['disable_output'];
-			/**
-			 * Sanitize settings
-			 */
-			$args['settings'] = $this->sanitize_settings( $config_id, $args );
 			/**
 			 * Sanitize tooltip messages
 			 */
@@ -246,49 +241,42 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the settings.
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string|array
 		 */
-		private function sanitize_settings( $config_id = 'global', $args = array() ) {
+		private function sanitize_settings( $args = array() ) {
 
-			/**
-			 * Check for typos:
-			 * If the user has entered "setting" instead of "settings",
-			 * then use "setting" instead. It's a pretty common mistake
-			 * So we'll be accomodating.
-			 */
+			// Check for typos:
+			// If the user has entered "setting" instead of "settings",
+			// then use "setting" instead. It's a pretty common mistake
+			// So we'll be accomodating.
 			if ( ! isset( $args['settings'] ) && isset( $args['setting'] ) ) {
 				$args['settings'] = $args['setting'];
+				unset( $args['setting'] );
 			}
-			/**
-			 * If we have an array of settings then we need to sanitize each of them
-			 */
+			// If we have an array of settings then we need to sanitize each of them
 			if ( is_array( $args['settings'] ) ) {
 				$settings = array();
 				foreach ( $args['settings'] as $setting_key => $setting_value ) {
 					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
-					/**
-					 * If we're using serialized options then we may need to modify things a bit
-					 */
+					// If we're using serialized options then we need to spice this up
 					if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $setting_key, '[' ) ) ) {
 						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $args['option_name'] ).'['.esc_attr( $setting_value ).']';
+					} else {
+						$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
 					}
 				}
-				return $settings;
-			}
-			/**
-			 * If we got to this point then settings is not an array.
-			 * Continue sanitizing it
-			 */
-			if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
-				/**
-				 * If we're using serialized options then we may need to modify things a bit
-				 */
-				return esc_attr( $args['option_name'] ) . '[' . esc_attr( $args['settings'] ) . ']';
+				$args['settings'] = $settings;
+			} else {
+				if ( 'option' == $args['option_type'] && '' != $args['option_name'] && ( false === strpos( $args['settings'], '[' ) ) ) {
+					// If we're using serialized options then we need to spice this up just like before.
+					$args['settings'] = esc_attr( $args['option_name'] ) . '[' . esc_attr( $args['settings'] ) . ']';
+				} else {
+					$args['settings'] = esc_attr( $args['settings'] );
+				}
 			}
 
-			return esc_attr( $args['settings'] );
+			return $args;
 
 		}
 
