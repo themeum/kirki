@@ -101,7 +101,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			'type'        => 'text',
 			'option_name' => 'tralala',
 		) );
-		$this->assertEquals( 'tralala', Kirki::$fields['my_setting']['option_name'] );
+		$this->assertEquals( 'tralala', Kirki::$fields['tralala[my_setting]']['option_name'] );
 
 	}
 
