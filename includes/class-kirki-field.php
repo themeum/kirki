@@ -20,10 +20,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			// Sanitize option_name
 			$args = $this->sanitize_option_name( $args );
-			/**
-			 * Sanitize option_type
-			 */
-			$args['option_type'] = $this->sanitize_option_type( $config_id, $args );
+			// Sanitize option_type
+			$args = $this->sanitize_option_type( $args );
 			/**
 			 * Sanitize capability
 			 */
@@ -158,7 +156,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the setting name.
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
@@ -177,12 +174,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 			// sanitize value
 			$args['option_name'] = esc_attr( $args['option_name'] );
-
-			// If we have an option_name
-			// then make sure we're using options and not theme_mods
-			if ( '' != $args['option_name'] ) {
-				$args['option_type'] = 'option';
-			}
 
 			return $args;
 
@@ -220,29 +211,34 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		/**
 		 * Sanitizes the option_type
 		 *
-		 * @param   string  $config_id
 		 * @param   array   $args
 		 * @return  string
 		 */
-		private function sanitize_option_type( $config_id = 'global', $args = array() ) {
+		private function sanitize_option_type( $args = array() ) {
 
-			/**
-			 * If an option_type has been defined in the field itself,
-			 * then escape it and return it.
-			 */
-			if ( isset( $args['option_type'] ) ) {
-				return esc_attr( $args['option_type'] );
+			// If we have an option_name
+			// then make sure we're using options and not theme_mods
+			if ( '' != $args['option_name'] ) {
+				$args['option_type'] = 'option';
 			}
-			/**
-			 * Try to get the option_type from the config
-			 */
-			if ( isset( Kirki::$config[ $config_id ]['option_type'] ) ) {
-				return esc_attr( Kirki::$config[ $config_id ]['option_type'] );
+
+			// if no option_type has been defined for this field
+			// Then try to get it from the config.
+			if ( isset( Kirki::$config[ $args['kirki_config'] ]['option_type'] ) ) {
+				$defaults = array(
+					Kirki::$config[ $args['kirki_config'] ]['option_type'],
+				);
+				$args = wp_parse_args( $args, $defaults );
 			}
-			/**
-			 * If all else fails, return option_type.
-			 */
-			return 'theme_mod';
+			// fallback to theme_mod if all else fails
+			if ( ! isset( $args['option_type'] ) ) {
+				$args['option_type'] = 'theme_mod';
+			}
+
+			// sanitize it just to be safe
+			$args['option_type'] = esc_attr( $args['option_type'] );
+
+			return $args;
 
 		}
 
