@@ -32,7 +32,7 @@ if ( ! class_exists( 'Kirki_Controls_Palette_Control' ) ) {
 			<span class="customize-control-title">
 				{{ data.label }}
 				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{ data.description }}</span>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 			</span>
 

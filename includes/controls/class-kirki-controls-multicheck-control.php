@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 			<# } #>
 
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{ data.description }}</span>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 
 			<ul>
