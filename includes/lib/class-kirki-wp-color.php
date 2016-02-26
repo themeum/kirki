@@ -39,6 +39,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		public $chroma;
 
 		public $brightness = array();
+		public $luminance;
 
 		/**
 		 * The class constructor
@@ -181,6 +182,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 
 			$this->set_brightness();
 			$this->set_hsl();
+			$this->set_luminance();
 
 		}
 
@@ -220,6 +222,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 
 			$this->set_brightness();
 			$this->set_hsl();
+			$this->set_luminance();
 		}
 
 		/**
@@ -328,6 +331,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->blue  = round( $b * 255, 0 );
 
 			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
+			$this->set_luminance();
 		}
 
 		/**
@@ -403,6 +407,11 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				'blue'  => round( $this->blue * .114 ),
 				'total' => intval( ( $this->red * .299 ) + ( $this->green * .587 ) + ( $this->blue * .114 ) )
 			);
+		}
+
+		private function set_luminance() {
+			$lum = ( 0.2126 * $this->red ) + ( 0.7152 * $this->green ) + ( 0.0722 * $this->blue );
+			$this->luminance = round( $lum );
 		}
 
 		public function get_word_colors() {

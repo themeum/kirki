@@ -23,6 +23,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 0,
 					'lightness'  => 0,
 					'alpha'      => 1,
+					'luminance'  => 0,
 				),
 			),
 			'FFFFFF' => array(
@@ -43,6 +44,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 0,
 					'lightness'  => 100,
 					'alpha'      => 1,
+					'luminance'  => 255,
 				),
 			),
 			'049CBE' => array(
@@ -63,6 +65,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 96,
 					'lightness'  => 38,
 					'alpha'      => 1,
+					'luminance'  => 126,
 				),
 			),
 			'038703' => array(
@@ -83,6 +86,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 96,
 					'lightness'  => 27,
 					'alpha'      => 1,
+					'luminance'  => 97,
 				),
 			),
 			'D8D5AC' => array(
@@ -103,6 +107,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 36,
 					'lightness'  => 76,
 					'alpha'      => 1,
+					'luminance'  => 211,
 				),
 			),
 			'B8191E' => array(
@@ -123,6 +128,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 76,
 					'lightness'  => 41,
 					'alpha'      => 1,
+					'luminance'  => 59,
 				),
 			),
 			'9600AD' => array(
@@ -143,6 +149,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'saturation' => 100,
 					'lightness'  => 34,
 					'alpha'      => 1,
+					'luminance'  => 44,
 				),
 			),
 		);
@@ -177,6 +184,9 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 							break;
 						case 'lightness':
 							$this->assertEquals( $expected_result, $color_obj->lightness );
+							break;
+						case 'luminance':
+							$this->assertEquals( $expected_result, $color_obj->luminance );
 							break;
 
 					}
