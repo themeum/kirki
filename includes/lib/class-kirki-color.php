@@ -32,6 +32,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		private $blue  = null;
 		private $alpha = 1;
 
+		private $brightness = array();
+
 		/**
 		 * The class constructor
 		 */
@@ -138,6 +140,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			$this->blue  = hexdec( substr( $hex, 4, 2 ) );
 			$this->alpha = 1;
 
+			$this->set_brightness();
+
 		}
 
 		/**
@@ -171,6 +175,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			$hex_blue  = ( 1 == strlen( $hex_blue ) ) ? $hex_blue . $hex_blue : $hex_blue;
 			// set the hex property of the class
 			$this->hex = '#' . $hex_red . $hex_green . $hex_blue;
+
+			$this->set_brightness();
 		}
 
 		/**
@@ -194,6 +200,19 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 
 			}
 			return $value;
+		}
+
+		private function set_brightness() {
+			$this->brightness = array(
+				'red'   => round( $this->red * .299 ),
+				'green' => round( $this->green * .587 ),
+				'blue'  => round( $this->blue * .114 ),
+				'total' => intval( ( $this->red * .299 ) + ( $this->green * .587 ) + ( $this->blue * .114 ) )
+			);
+		}
+
+		private function get_brightness_array() {
+			return $this->brightness;
 		}
 
 		/**
@@ -405,12 +424,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @var     string      The hex value of a color
 		 * @return  int         value between 0 and 255
 		 */
-		public static function get_brightness( $hex ) {
-
-			$hex = self::sanitize_hex( $hex, false );
-			// returns brightness value from 0 to 255
-			return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
-
+		public static function get_brightness( $color ) {
+			$obj = Kirki_Color::get_instance( $color );
+			$brightness = $obj->get_brightness_array();
+			return $brightness['total'];
 		}
 
 		/**
