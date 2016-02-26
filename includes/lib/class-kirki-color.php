@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Color' ) ) {
-	class Kirki_Color {
+	class Kirki_Color extends Kirki_WP_Color {
 
 		/**
 		 * Sanitises a HEX value.
@@ -79,53 +79,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @var     string  The rgba color formatted like rgba(r,g,b,a)
 		 * @return  string  The hex value of the color.
 		 */
-		public static function rgba2hex( $color, $apply_opacity = false ) {
+		public static function rgba2hex( $color ) {
 			$obj = kirki_wp_color( $color );
-			if ( ! $apply_opacity ) {
-				return $obj->get_css( 'hex' );
-			}
-
-			if ( is_array( $color ) ) {
-				return ( isset( $color['color'] ) ) ? $color['color'] : '#ffffff';
-			}
-
-			// if not rgba, sanitize as HEX
-			if ( false === strpos( $color, 'rgba' ) ) {
-				return self::sanitize_hex( $color );
-			}
-
-			// Remove parts of the string
-			$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
-
-
-			// Convert to array
-			$color = explode( ',', $color );
-			// This is not a valid rgba definition, so return white.
-			if ( 4 != count( $color ) ) {
-				return '#ffffff';
-			}
-			// Convert dec. to hex.
-			$red   = dechex( (int) $color[0] );
-			$green = dechex( (int) $color[1] );
-			$blue  = dechex( (int) $color[2] );
-			$alpha = $color[3];
-
-			// Make sure all colors are 2 digits
-			$red   = ( 1 == strlen( $red ) ) ? $red . $red : $red;
-			$green = ( 1 == strlen( $green ) ) ? $green . $green : $green;
-			$blue  = ( 1 == strlen( $blue ) ) ? $blue . $blue : $blue;
-
-			// Combine hex parts
-			$hex = $red . $green . $blue;
-			if ( $apply_opacity ) {
-				// Get the opacity value on a 0-100 basis instead of 0-1.
-				$mix_level = intval( $alpha * 100 );
-				// Apply opacity - mix with white.
-				$hex = self::mix_colors( $hex, '#ffffff', $mix_level );
-			}
-
-			return '#' . str_replace( '#', '', $hex );
-
+			return $obj->get_css( 'hex' );
 		}
 
 		/**
@@ -135,39 +91,22 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string  The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
-			if ( is_array( $color ) ) {
-				if ( isset( $color['opacity'] ) ) {
-					return $color['opacity'];
-				} elseif ( isset( $color['alpha'] ) ) {
-					return $color['alpha'];
-				} else {
-					return 1;
-				}
-			}
-			if ( false === strpos( $color, 'rgba' ) ) {
-				return '1';
-			}
-			// Remove parts of the string
-			$color = str_replace( array( 'rgba', '(', ')', ' ' ), '', $color );
-			// Convert to array
-			$color = explode( ',', $color );
-
-			if ( isset ( $color[3] ) ) {
-				return (string) $color[3];
-			} else {
-				return '1';
-			}
+			$obj = kirki_wp_color( $color );
+			return $obj->alpha;
 		}
 
 		/**
-		 * Gets the rgb value of the $hex color.
+		 * Gets the rgba value of the $color.
 		 *
 		 * @var     string      The hex value of a color
 		 * @param   int         Opacity level (0-1)
 		 * @return  string
 		 */
-		public static function get_rgba( $hex = '#fff', $alpha = 1 ) {
-
+		public static function get_rgba( $color = '#fff', $alpha = 1 ) {
+			$obj = kirki_wp_color( $color );
+			if ( 1 == $alpha ) {
+				return $obj->get_css( 'rgba' );
+			}
 			// Make sure that opacity is properly formatted.
 			// Converts 1-100 values to 0-1
 			if ( $alpha > 1 || $alpha < -1 ) {
@@ -180,12 +119,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( 1 < $alpha ) {
 				$alpha = 1;
 			}
-
-			$obj = kirki_wp_color( $hex );
 			$new_obj = $obj->get_new_object_by( 'alpha', $alpha );
-
 			return $new_obj->get_css( 'rgba' );
-
 		}
 
 		/**
@@ -207,8 +142,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function get_brightness( $color ) {
 			$obj = kirki_wp_color( $color );
-			$brightness = $obj->get_brightness_array();
-			return $brightness['total'];
+			return $obj->brightness['total'];
 		}
 
 		/**
@@ -219,20 +153,14 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string          returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
-
-			$hex = self::sanitize_hex( $hex, false );
-			$steps = max( -255, min( 255, $steps ) );
-			// Adjust number of steps and keep it inside 0 to 255
-			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
-			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
-			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
-
-			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
-			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
-			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
-
-			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
-
+			$obj = kirki_wp_color( $hex );
+			if ( 0 == $steps ) {
+				return $obj->get_css( 'hex' );
+			}
+			$new_brightness = ( 0 < $steps ) ? $obj->brightness['total'] - $steps : $obj->brightness['total'] + $steps;
+			$new_brightness = max( 0, min( 255, $brightness ) );
+			$new_obj = $obj->get_new_object_by( 'brightness', $new_brightness );
+			return $new_obj->get_css( 'hex' );
 		}
 
 		/**

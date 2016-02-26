@@ -70,6 +70,21 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				$this->$property = $value;
 				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
 			}
+			if ( 'brightness' == $property ) {
+				if ( $value < $this->brightness['total'] ) {
+					$this->red   = max( 0, min( 255, $this->red - ( $this->brightness['total'] - $value ) ) );
+					$this->green = max( 0, min( 255, $this->green - ( $this->brightness['total'] - $value ) ) );
+					$this->blue  = max( 0, min( 255, $this->blue - ( $this->brightness['total'] - $value ) ) );
+				} elseif ( $value > $this->brightness['total'] ) {
+					$this->red   = max( 0, min( 255, $this->red + ( $value - $this->brightness['total'] ) ) );
+					$this->green = max( 0, min( 255, $this->green + ( $value - $this->brightness['total'] ) ) );
+					$this->blue  = max( 0, min( 255, $this->blue + ( $value - $this->brightness['total'] ) ) );
+				} else {
+					// if it's not smaller and it's not greater, then it's equal.
+					return $this;
+				}
+				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
+			}
 		}
 
 		public function get_mode( $color ) {
@@ -202,6 +217,8 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 */
 		public function get_css( $mode = 'hex' ) {
 
+			$value = '';
+
 			switch ( $mode ) {
 				case 'hex':
 					$value = $this->hex;
@@ -224,10 +241,6 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				'blue'  => round( $this->blue * .114 ),
 				'total' => intval( ( $this->red * .299 ) + ( $this->green * .587 ) + ( $this->blue * .114 ) )
 			);
-		}
-
-		public function get_brightness_array() {
-			return $this->brightness;
 		}
 
 		public function get_word_colors() {
