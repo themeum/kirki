@@ -32,9 +32,7 @@ if ( ! class_exists( 'Kirki_Controls_Generic_Control' ) ) {
 				<# } #>
 				<div class="customize-control-content">
 					<# if ( 'textarea' == data.choices['element'] ) { #>
-						<textarea {{{ data.link }}} <# for ( key in data.choices ) { #> {{ key }}="{{ data.choices[ key ] }}"<# } #>>
-							{{ data.value }}
-						</textarea>
+						<textarea {{{ data.link }}} <# for ( key in data.choices ) { #> {{ key }}="{{ data.choices[ key ] }}"<# } #>>{{ data.value }}</textarea>
 					<# } else { #>
 						<# var element = ( data.choices['element'] ) ? data.choices['element'] : 'input'; #>
 						<{{ element }} value="{{ data.value }}" {{{ data.link }}} <# for ( key in data.choices ) { #> {{ key }}="{{ data.choices[ key ] }}"<# } #> />
