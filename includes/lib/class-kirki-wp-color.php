@@ -207,16 +207,12 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->green = ( isset( $value[1] ) ) ? intval( $value[1] ) : 255;
 			$this->blue  = ( isset( $value[2] ) ) ? intval( $value[2] ) : 255;
 			$this->alpha = ( isset( $value[3] ) ) ? filter_var( $value[3], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
-			// limit minimum values
-			$this->red   = ( 0 > $this->red ) ? 0 : $this->red;
-			$this->green = ( 0 > $this->green ) ? 0 : $this->green;
-			$this->blue  = ( 0 > $this->blue ) ? 0 : $this->blue;
-			$this->alpha = ( 0 > $this->alpha ) ? 0 : $this->alpha;
-			// limit maximum values
-			$this->red   = ( 255 < $this->red ) ? 255 : $this->red;
-			$this->green = ( 255 < $this->green ) ? 255 : $this->green;
-			$this->blue  = ( 255 < $this->blue ) ? 255 : $this->blue;
-			$this->alpha = ( 1 < $this->alpha ) ? 1 : $this->alpha;
+			// limit values in the range of 0 - 255
+			$this->red   = max( 0, min( 255, $this->red ) );
+			$this->green = max( 0, min( 255, $this->green ) );
+			$this->blue  = max( 0, min( 255, $this->blue ) );
+			// limit values 0 - 1
+			$this->alpha = max( 0, min( 1, $this->alpha ) );
 
 			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
 
@@ -228,16 +224,22 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 * Convert to hex using red, green, blue values
 		 */
 		public function rgb_to_hex( $red, $green, $blue ) {
-			// get hex values
-			$hex_red   = ( 9 >= $this->red ) ? '0' . $this->red : dechex( $this->red );
-			$hex_green = ( 9 >= $this->green ) ? '0' . $this->green : dechex( $this->green );
-			$hex_blue  = ( 9 >= $this->blue ) ? '0' . $this->blue : dechex( $this->blue );
-			// make sure all hex values are 2 digits
-			$hex_red   = ( 1 == strlen( $hex_red ) ) ? $hex_red . $hex_red : $hex_red;
-			$hex_green = ( 1 == strlen( $hex_green ) ) ? $hex_green . $hex_green : $hex_green;
-			$hex_blue  = ( 1 == strlen( $hex_blue ) ) ? $hex_blue . $hex_blue : $hex_blue;
-			// set the hex property of the class
+			// get hex values properly formatted
+			$hex_red   = $this->dexhex_double_digit( $this->red );
+			$hex_green = $this->dexhex_double_digit( $this->green );
+			$hex_blue  = $this->dexhex_double_digit( $this->blue );
 			return '#' . $hex_red . $hex_green . $hex_blue;
+		}
+
+		/**
+		 * Convert a decimal value to hex and make sure it's 2 characters
+		 */
+		private function dexhex_double_digit( $value ) {
+			$value = ( 9 >= $value ) ? '0' . $value : dechex( $value );
+			if ( 1 == strlen( $value ) ) {
+				$value .= $value;
+			}
+			return $value;
 		}
 
 		/**
