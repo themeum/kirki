@@ -311,7 +311,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 					$value = 'hsl(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%)';
 					break;
 				case 'hsla':
-					$value = 'hsl(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%' . $this->alpha . ')';
+					$value = 'hsla(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%' . $this->alpha . ')';
 					break;
 			}
 			return $value;
