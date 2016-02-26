@@ -183,10 +183,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		}
 		$this->assertEquals( '#333', Kirki_Color::sanitize_hex( '#333' ) );
 
-		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_rgba( '' ) );
 		$this->assertEquals( 'rgba(0,0,33,.4)', Kirki_Color::sanitize_rgba( 'rgba(0,0,33,.4)' ) );
-		$this->assertEquals( 'rgba(255,255,255,1)', Kirki_Color::sanitize_rgba( '#ffffff' ) );
-		$this->assertEquals( 'rgba(255,0,0,1)', Kirki_Color::sanitize_rgba( '#ff0000' ) );
 
 		$this->assertEquals( 'transparent', Kirki_Color::sanitize_color( 'transparent' ) );
 		$this->assertTrue( in_array( Kirki_Color::sanitize_color( '#333333' ), array( '#333333', '#333' ) ) );
@@ -194,7 +191,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 
 		$this->assertEquals( 'rgb(255,200,200)', Kirki_Color::rgba_to_rgb( 'rgba(255,200,200,1)' ) );
 
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(255,255,255,1)' ) );
+		$this->assertEquals( '#FFFFFF', Kirki_Color::rgba2hex( 'rgba(255,255,255,1)' ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba(0,0,0,1)' ) );
 
 		$this->assertEquals( '1', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,1)' ) );
@@ -202,10 +199,10 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 		$this->assertEquals( '0', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,0)' ) );
 
 		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_color( array( 'rgba' => 'rgba(0,0,0,0)' ) ) );
-		$this->assertEquals( 'rgba(0,0,0,1)', Kirki_Color::sanitize_color( array( 'color' => '#000000' ) ) );
-		$this->assertEquals( null, Kirki_Color::sanitize_color( array() ) );
+		$this->assertEquals( '#000000', Kirki_Color::sanitize_color( array( 'color' => '#000000' ) ) );
+		$this->assertEquals( '', Kirki_Color::sanitize_color( array() ) );
 
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( array() ) );
+		$this->assertEquals( '', Kirki_Color::rgba2hex( array() ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( array( 'color' => '#000000' ) ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( '#000000' ) );
 
