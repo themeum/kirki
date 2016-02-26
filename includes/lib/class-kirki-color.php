@@ -27,9 +27,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 
 		private $hex;
 
-		private $red   = null;
-		private $green = null;
-		private $blue  = null;
+		private $red   = 0;
+		private $green = 0;
+		private $blue  = 0;
 		private $alpha = 1;
 
 		private $brightness = array();
@@ -78,6 +78,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 					$this->color = $color['color'];
 					return 'hex';
 				} else {
+					if ( 4 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) && isset( $color[3] ) ) {
+						$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . intval( $color[3] ) . ')';
+						return 'rgba';
+					} elseif ( 3 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) ) {
+						$this->color = 'rgb(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ')';
+					}
 					$finders_keepers = array(
 						'r'       => 'red',
 						'g'       => 'green',
@@ -89,12 +95,18 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 						'alpha'   => 'alpha',
 						'opacity' => 'alpha',
 					);
+					$found = false;
 					foreach( $finders_keepers as $finder => $keeper ) {
 						if ( isset( $color[ $finder ] ) ) {
+							$found = true;
 							$this->$keeper = $color[ $finder ];
 						}
 					}
-					return null;
+					if ( ! $found ) {
+						return null;
+					}
+					$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
+					return 'rgba';
 				}
 			} else {
 				$finders_keepers = array(
