@@ -46,6 +46,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 */
 		public function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
+			// set the color mode we'll be using
 			$this->mode  = $mode;
 			if ( method_exists( $this, 'from_' . $mode ) ) {
 				$method = 'from_' . $mode;
@@ -53,32 +54,64 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				if ( null === $this->get_mode( $color ) ) {
 					return;
 				}
+				// Fallback if color mode used was invalid or not defined
 				$this->mode = $this->get_mode( $color );
 				$method = 'from_' . $this->mode;
 			}
+			// call the from_{$color_mode} method
 			$this->$method();
 		}
 
+		/**
+		 * Gets an instance for this color.
+		 * We use a separate instance per color
+		 * because there's no need to create a completely new instance each time we call this class.
+		 * Instead using instances helps us improve performance & footprint.
+		 *
+		 * @param $color string|array
+		 * @param $mode  string
+		 *
+		 * @return Kirki_WP_Color (object)
+		 */
 		public static function get_instance( $color, $mode = 'auto' ) {
-			if ( is_array( $color ) ) {
-				$color_md5 = md5( json_encode( $color ) . $mode );
-			} else {
-				$color_md5 = md5( $color . $mode );
-			}
+			// get an md5 for this color
+			$color_md5 = ( is_array( $color ) ) ? md5( json_encode( $color ) . $mode ) : md5( $color . $mode );
+			// Set the instance if it does not already exist.
 			if ( ! isset( self::$instances[ $color_md5 ] ) ) {
 				self::$instances[ $color_md5 ] = new self( $color, $mode );
 			}
 			return self::$instances[ $color_md5 ];
 		}
 
+		/**
+		 * Allows us to get a new instance by modifying a property of the existing one.
+		 *
+		 * @param $property string  can be one of the following:
+		 *                          red,
+		 *                          green,
+		 *                          blue,
+		 *                          alpha,
+		 *                          hue,
+		 *                          saturation,
+		 *                          lightness,
+		 *                          brightness
+		 * @param $value int|float|string the new value
+		 *
+		 * @return object|null
+		 */
 		public function get_new_object_by( $property = '', $value = '' ) {
+			// Check if we're changing any of the rgba values
 			if ( in_array( $property, array( 'red', 'green', 'blue', 'alpha' ) ) ) {
 				$this->$property = $value;
 				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
-			} elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
+			}
+			// Check if we're changing any of the hsl values
+			elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
 				$this->$property = $value;
 				return self::get_instance( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
-			} elseif ( 'brightness' == $property ) {
+			}
+			// Check if we're changing the brightness
+			elseif ( 'brightness' == $property ) {
 				if ( $value < $this->brightness['total'] ) {
 					$this->red   = max( 0, min( 255, $this->red - ( $this->brightness['total'] - $value ) ) );
 					$this->green = max( 0, min( 255, $this->green - ( $this->brightness['total'] - $value ) ) );
@@ -93,67 +126,95 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				}
 				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
 			}
+			return null;
 		}
 
+		/**
+		 * Figure out what mode we're using.
+		 *
+		 * @param string|array
+		 *
+		 * @return string
+		 */
 		public function get_mode( $color ) {
+			// Check if value is an array
 			if ( is_array( $color ) ) {
+				// does the array have an 'rgba' key?
 				if ( isset( $color['rgba'] ) ) {
 					$this->color = $color['rgba'];
 					return 'rgba';
-				} elseif ( isset( $color['color'] ) ) {
+				}
+				// Does the array have a 'color' key?
+				elseif ( isset( $color['color'] ) ) {
 					$this->color = $color['color'];
 					return 'hex';
-				} else {
-					if ( 4 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) && isset( $color[3] ) ) {
-						$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . intval( $color[3] ) . ')';
-						return 'rgba';
-					} elseif ( 3 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) ) {
-						$this->color = 'rgb(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ')';
-					}
-					$finders_keepers = array(
-						'r'       => 'red',
-						'g'       => 'green',
-						'b'       => 'blue',
-						'a'       => 'alpha',
-						'red'     => 'red',
-						'green'   => 'green',
-						'blue'    => 'blue',
-						'alpha'   => 'alpha',
-						'opacity' => 'alpha',
-					);
-					$found = false;
-					foreach( $finders_keepers as $finder => $keeper ) {
-						if ( isset( $color[ $finder ] ) ) {
-							$found = true;
-							$this->$keeper = $color[ $finder ];
-						}
-					}
-					if ( ! $found ) {
-						return null;
-					}
-					$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
+				}
+				// is this a simple array with 4 items?
+				if ( 4 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) && isset( $color[3] ) ) {
+					$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . intval( $color[3] ) . ')';
 					return 'rgba';
 				}
-			} else {
+				// Is this a simple array with 3 items?
+				elseif ( 3 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) ) {
+					$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . '1)';
+					return 'rgba';
+				}
+				// Check for other keys in the array and get values from there
 				$finders_keepers = array(
-					'#'    => 'hex',
-					'rgba' => 'rgba',
-					'rgb'  => 'rgb',
-					'hsla' => 'hsla',
-					'hsl'  => 'hsl',
+					'r'       => 'red',
+					'g'       => 'green',
+					'b'       => 'blue',
+					'a'       => 'alpha',
+					'red'     => 'red',
+					'green'   => 'green',
+					'blue'    => 'blue',
+					'alpha'   => 'alpha',
+					'opacity' => 'alpha',
 				);
-				foreach ( $finders_keepers as $finder => $keeper ) {
-					if ( false !== strrpos( $color, $finder ) ) {
-						return $keeper;
+				$found = false;
+				foreach( $finders_keepers as $finder => $keeper ) {
+					if ( isset( $color[ $finder ] ) ) {
+						$found = true;
+						$this->$keeper = $color[ $finder ];
 					}
 				}
+				// We failed, return null.
+				if ( ! $found ) {
+					return null;
+				}
+				// We did not fail, so use rgba values recovered above.
+				$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
+				return 'rgba';
 			}
+			// If we got this far, it's not an array.
+
+			// Check for key identifiers in the value
+			$finders_keepers = array(
+				'#'    => 'hex',
+				'rgba' => 'rgba',
+				'rgb'  => 'rgb',
+				'hsla' => 'hsla',
+				'hsl'  => 'hsl',
+			);
+			foreach ( $finders_keepers as $finder => $keeper ) {
+				if ( false !== strrpos( $color, $finder ) ) {
+					return $keeper;
+				}
+			}
+			// Perhaps we're using a word like "orange"?
+			$wordcolors = $this->get_word_colors();
+			if ( array_key_exists( $color, $wordcolors ) ) {
+				$this->color = '#' . $wordcolors[ $color ];
+				return 'hex';
+			}
+			// fallback to hex.
 			return 'hex';
 		}
 
 		/**
-		 * Sets the class properties
-		 * using a hex color as base for all calculations.
+		 * Starts with a HEX color and calculates all other properties.
+		 *
+		 * @return void
 		 */
 		public function from_hex() {
 
@@ -166,20 +227,19 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 				$this->color = '#' . $word_colors[ $this->color ];
 			}
 			// Sanitize color
-			$this->hex = maybe_hash_hex_color( $this->color );
-			$this->hex = sanitize_hex_color( $this->hex );
-
+			$this->hex = sanitize_hex_color( maybe_hash_hex_color( $this->color ) );
 			$hex = ltrim( $this->hex, '#' );
 			// Make sure we have 6 digits for the below calculations
 			if ( 3 == strlen( $hex ) ) {
 				$hex = ltrim( $this->hex, '#' );
 				$hex = substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) . substr( $hex, 2, 1 ) . substr( $hex, 2, 1 );
 			}
+			// Set red, green, blue
 			$this->red   = hexdec( substr( $hex, 0, 2 ) );
 			$this->green = hexdec( substr( $hex, 2, 2 ) );
 			$this->blue  = hexdec( substr( $hex, 4, 2 ) );
 			$this->alpha = 1;
-
+			// set other color properties
 			$this->set_brightness();
 			$this->set_hsl();
 			$this->set_luminance();
@@ -187,22 +247,29 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		}
 
 		/**
-		 * Sets the class properties
-		 * using an rgba color as base for all calculations.
+		 * Starts with an RGB color and calculates all other properties.
+		 *
+		 * @return void
 		 */
 		public function from_rgb() {
 			$value = explode( ',', str_replace( array( ' ', 'rgb', '(', ')' ), '', $this->color ) );
+			// set red, green, blue
 			$this->red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
 			$this->green = ( isset( $value[1] ) ) ? intval( $value[1] ) : 255;
 			$this->blue  = ( isset( $value[2] ) ) ? intval( $value[2] ) : 255;
 			$this->alpha = 1;
-			$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
-			$this->from_rgba();
+			// set the hex
+			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
+			// set other color properties
+			$this->set_brightness();
+			$this->set_hsl();
+			$this->set_luminance();
 		}
 
 		/**
-		 * Sets the class properties
-		 * using an rgba color as base for all calculations.
+		 * Starts with an RGBA color and calculates all other properties.
+		 *
+		 * @return void
 		 */
 		public function from_rgba() {
 			// Set r, g, b, a properties
@@ -217,39 +284,18 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->blue  = max( 0, min( 255, $this->blue ) );
 			// limit values 0 - 1
 			$this->alpha = max( 0, min( 1, $this->alpha ) );
-
+			// set hex
 			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
-
+			// set other color properties
 			$this->set_brightness();
 			$this->set_hsl();
 			$this->set_luminance();
 		}
 
 		/**
-		 * Convert to hex using red, green, blue values
-		 */
-		public function rgb_to_hex( $red, $green, $blue ) {
-			// get hex values properly formatted
-			$hex_red   = $this->dexhex_double_digit( $this->red );
-			$hex_green = $this->dexhex_double_digit( $this->green );
-			$hex_blue  = $this->dexhex_double_digit( $this->blue );
-			return '#' . $hex_red . $hex_green . $hex_blue;
-		}
-
-		/**
-		 * Convert a decimal value to hex and make sure it's 2 characters
-		 */
-		private function dexhex_double_digit( $value ) {
-			$value = ( 9 >= $value ) ? '0' . $value : dechex( $value );
-			if ( 1 == strlen( $value ) ) {
-				$value .= $value;
-			}
-			return $value;
-		}
-
-		/**
-		 * Sets the class properties
-		 * using an hsl color as base for all calculations
+		 * Starts with an HSL color and calculates all other properties.
+		 *
+		 * @return void
 		 */
 		public function from_hsl() {
 			$value = explode( ',', str_replace( array( ' ', 'hsl', '(', ')', '%' ), '', $this->color ) );
@@ -260,8 +306,9 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		}
 
 		/**
-		 * Sets the class properties
-		 * using an hsla color as base for all calculations
+		 * Starts with an HSLA color and calculates all other properties.
+		 *
+		 * @return void
 		 */
 		public function from_hsla() {
 			$value = explode( ',', str_replace( array( ' ', 'hsla', '(', ')', '%' ), '', $this->color ) );
@@ -273,7 +320,40 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		}
 
 		/**
-		 * See https://gist.github.com/brandonheyer/5254516
+		 * Generates the HEX value of a color given values for $red, $green, $blue
+		 *
+		 * @param $red   int|string
+		 * @param $green int|string
+		 * @param $blue  int|string
+		 *
+		 * @return string
+		 */
+		public function rgb_to_hex( $red, $green, $blue ) {
+			// get hex values properly formatted
+			$hex_red   = $this->dexhex_double_digit( $red );
+			$hex_green = $this->dexhex_double_digit( $green );
+			$hex_blue  = $this->dexhex_double_digit( $blue );
+			return '#' . $hex_red . $hex_green . $hex_blue;
+		}
+
+		/**
+		 * Convert a decimal value to hex and make sure it's 2 characters
+		 *
+		 * @param $value int|string
+		 *
+		 * @return string
+		 */
+		private function dexhex_double_digit( $value ) {
+			$value = ( 9 >= $value ) ? '0' . $value : dechex( $value );
+			if ( 1 == strlen( $value ) ) {
+				$value .= $value;
+			}
+			return $value;
+		}
+
+		/**
+		 * Calculates the red, green, blue values of an HSL color
+		 * @see https://gist.github.com/brandonheyer/5254516
 		 */
 		public function from_hsl_array() {
 			$h = $this->hue /360;
@@ -364,6 +444,9 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			return $value;
 		}
 
+		/**
+		 * Sets the HSL values of a color based on the values of red, green, blue
+		 */
 		public function set_hsl() {
 			$red   = $this->red / 255;
 			$green = $this->green / 255;
@@ -400,6 +483,9 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->lightness  = round( $lightness * 100 );
 		}
 
+		/**
+		 * Sets the brightness of a color based on the values of red, green, blue
+		 */
 		public function set_brightness() {
 			$this->brightness = array(
 				'red'   => round( $this->red * .299 ),
@@ -409,11 +495,19 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			);
 		}
 
+		/**
+		 * Sets the luminance of a color (range:0-255) based on the values of red, green, blue
+		 */
 		private function set_luminance() {
 			$lum = ( 0.2126 * $this->red ) + ( 0.7152 * $this->green ) + ( 0.0722 * $this->blue );
 			$this->luminance = round( $lum );
 		}
 
+		/**
+		 * Gets an array of all the wordcolors
+		 *
+		 * @return array
+		 */
 		public function get_word_colors() {
 			return array(
 				'aliceblue'            => 'F0F8FF',
