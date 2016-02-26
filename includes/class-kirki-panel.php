@@ -24,9 +24,9 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 
 			// Add the panel using the customizer API
 			$this->wp_customize->add_panel( sanitize_key( $args['id'] ), array(
-				'title'           => esc_textarea( $args['title'] ),
-				'priority'        => esc_attr( $args['priority'] ),
-				'description'     => esc_textarea( $args['description'] ),
+				'title'           => $args['title'], // already escaped in WP Core
+				'priority'        => absint( $args['priority'] ),
+				'description'     => $args['description'], // already escaped in WP Core
 				'active_callback' => $args['active_callback'],
 			) );
 

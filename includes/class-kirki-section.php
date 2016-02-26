@@ -13,10 +13,10 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 		public function add_section( $args ) {
 
 			$this->wp_customize->add_section( sanitize_key( $args['id'] ), array(
-				'title'           => esc_textarea( $args['title'] ),
-				'priority'        => esc_attr( $args['priority'] ),
+				'title'           => $args['title'], // already escaped in WP Core
+				'priority'        => absint( $args['priority'] ),
 				'panel'           => esc_attr( $args['panel'] ),
-				'description'     => esc_textarea( $args['description'] ),
+				'description'     => $args['description'], // already escaped in WP Core
 				'active_callback' => $args['active_callback'],
 			) );
 
