@@ -168,26 +168,20 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * the "percentage" variable is the percent of the first color
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
-		 * @param   string|false $hex1
-		 * @param   string       $hex2
+		 * @param   string|false $color1
+		 * @param   string       $color2
 		 * @param   integer      $percentage        a value between 0 and 100
 		 * @return  string       returns hex color
 		 */
-		public static function mix_colors( $hex1, $hex2, $percentage ) {
-
-			$hex1 = self::sanitize_hex( $hex1, false );
-			$hex2 = self::sanitize_hex( $hex2, false );
-
-			$red   = ( $percentage * hexdec( substr( $hex1, 0, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 0, 2 ) ) ) / 100;
-			$green = ( $percentage * hexdec( substr( $hex1, 2, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 2, 2 ) ) ) / 100;
-			$blue  = ( $percentage * hexdec( substr( $hex1, 4, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 4, 2 ) ) ) / 100;
-
-			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
-			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
-			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
-
-			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
-
+		public static function mix_colors( $color1, $color2, $percentage ) {
+			$obj_1     = kirki_wp_color( $color1 );
+			$obj_2     = kirki_wp_color( $color2 );
+			$new_color = kirki_wp_color( array(
+				( $percentage * $obj_1->red + ( 100 - $percentage ) * $obj_2->red ) / 100,
+				( $percentage * $obj_1->green + ( 100 - $percentage ) * $obj_2->green ) / 100,
+				( $percentage * $obj_1->blue + ( 100 - $percentage ) * $obj_2->blue ) / 100,
+			) );
+			return $new_color->get_css( 'hex' );
 		}
 
 		/**
