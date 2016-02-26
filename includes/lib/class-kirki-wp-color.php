@@ -22,6 +22,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		public static $instances = array();
 
 		public $color;
+		public $mode = 'hex';
 
 		public $word_colors = array();
 
@@ -39,13 +40,15 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 */
 		public function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
+			$this->mode  = $mode;
 			if ( method_exists( $this, 'from_' . $mode ) ) {
 				$method = 'from_' . $mode;
 			} else {
 				if ( null === $this->get_mode( $color ) ) {
 					return;
 				}
-				$method = 'from_' . $this->get_mode( $color );
+				$this->mode = $this->get_mode( $color );
+				$method = 'from_' . $this->mode;
 			}
 			$this->$method();
 		}
@@ -381,4 +384,8 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		}
 
 	}
+}
+
+function kirki_wp_color( $color = '' ) {
+	return Kirki_WP_Color::get_instance( $color );
 }

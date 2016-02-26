@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string      The sanitized hex color.
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
-		 	$obj = Kirki_WP_Color::get_instance( $color );
+		 	$obj = kirki_wp_color( $color );
 		 	if ( ! $hash ) {
 		 		return ltrim( $obj->get_css( 'hex' ), '#' );
 		 	}
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 
 		public static function sanitize_rgba( $value ) {
-			$obj = Kirki_WP_Color::get_instance( $value );
+			$obj = kirki_wp_color( $value );
 			return $obj->get_css( 'rgba' );
 		}
 
@@ -45,39 +45,16 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @since 0.8.5
 		 *
-		 * @param  $value   string  hex or rgba color
+		 * @param  $color   string  hex or rgba color
 		 * @param  $default string  hex or rgba color
 		 * @return string
 		 */
-		public static function sanitize_color( $value ) {
-
-			if ( is_array( $value ) ) {
-				// for Redux & SMOF compatibility
-				if ( isset( $value['rgba'] ) ) {
-					$value = $value['rgba'];
-				} elseif ( isset( $value['color'] ) ) {
-					$opacity = ( isset( $value['opacity'] ) ) ? $value['opacity'] : null;
-					$opacity = ( ! is_null( $opacity ) && isset( $value['alpha'] ) ) ? $value['alpha'] : null;
-					$opacity = ( is_null( $opacity ) ) ? 1 : filter_var( $opacity, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-					$value = self::get_rgba( $value['color'], $opacity );
-				} else {
-					return;
-				}
-			}
-
-			if ( 'transparent' == $value ) {
+		public static function sanitize_color( $color ) {
+			if ( is_string( $color ) && 'transparent' == trim( $color ) ) {
 				return 'transparent';
 			}
-
-			// Is this an rgba color or a hex?
-			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
-
-			if ( 'rgba' == $mode ) {
-				return self::sanitize_rgba( $value );
-			} else {
-				return self::sanitize_hex( $value );
-			}
-
+			$obj = kirki_wp_color( $color );
+			return $obj->get_css( $obj->mode );
 		}
 
 		/**
@@ -88,7 +65,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  mixed       array|string
 		 */
 		public static function get_rgb( $hex, $implode = false ) {
-			$obj = Kirki_WP_Color::get_instance( $hex );
+			$obj = kirki_wp_color( $hex );
 			if ( $implode ) {
 				return $obj->get_css( 'rgb' );
 			}
@@ -103,7 +80,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string  The hex value of the color.
 		 */
 		public static function rgba2hex( $color, $apply_opacity = false ) {
-			$obj = Kirki_WP_Color::get_instance( $color );
+			$obj = kirki_wp_color( $color );
 			if ( ! $apply_opacity ) {
 				return $obj->get_css( 'hex' );
 			}
@@ -204,7 +181,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				$alpha = 1;
 			}
 
-			$obj = Kirki_WP_Color::get_instance( $hex );
+			$obj = kirki_wp_color( $hex );
 			$new_obj = $obj->get_new_object_by( 'alpha', $alpha );
 
 			return $new_obj->get_css( 'rgba' );
@@ -218,7 +195,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string			The corresponding RGB string.
 		 */
 		public static function rgba_to_rgb( $color ) {
-			$obj = Kirki_WP_Color::get_instance( $color );
+			$obj = kirki_wp_color( $color );
 			return $obj->get_css( 'rgb' );
 		}
 
@@ -229,7 +206,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  int         value between 0 and 255
 		 */
 		public static function get_brightness( $color ) {
-			$obj = Kirki_WP_Color::get_instance( $color );
+			$obj = kirki_wp_color( $color );
 			$brightness = $obj->get_brightness_array();
 			return $brightness['total'];
 		}
