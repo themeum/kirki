@@ -46,18 +46,14 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 */
 		public function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
-			// set the color mode we'll be using
-			$this->mode  = $mode;
-			if ( method_exists( $this, 'from_' . $mode ) ) {
-				$method = 'from_' . $mode;
-			} else {
-				if ( null === $this->get_mode( $color ) ) {
-					return;
-				}
-				// Fallback if color mode used was invalid or not defined
-				$this->mode = $this->get_mode( $color );
-				$method = 'from_' . $this->mode;
+			if ( ! method_exists( $this, 'from_' . $mode ) ) {
+				$mode = $this->get_mode( $color );
 			}
+			if ( null == $mode ) {
+				return;
+			}
+			$this->mode = $mode;
+			$method = 'from_' . $mode;
 			// call the from_{$color_mode} method
 			$this->$method();
 		}
