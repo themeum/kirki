@@ -137,7 +137,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Strips the alpha value from an RGBA color string.
 		 *
-		 * @param 	string $rgba	The RGBA color string.
+		 * @param 	string $color	The RGBA color string.
 		 *
 		 * @return  string			The corresponding RGB string.
 		 */
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				return $obj->get_css( 'hex' );
 			}
 			$new_brightness = ( 0 < $steps ) ? $obj->brightness['total'] - $steps : $obj->brightness['total'] + $steps;
-			$new_brightness = max( 0, min( 255, $brightness ) );
+			$new_brightness = max( 0, min( 255, $new_brightness ) );
 			$new_obj = $obj->get_new_object_by( 'brightness', $new_brightness );
 			return $new_obj->get_css( 'hex' );
 		}
@@ -182,7 +182,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * the "percentage" variable is the percent of the first color
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
-		 * @param   string|false $color1
+		 * @param   string       $color1
 		 * @param   string       $color2
 		 * @param   integer      $percentage        a value between 0 and 100
 		 *
