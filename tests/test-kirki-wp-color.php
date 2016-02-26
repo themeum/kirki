@@ -21,7 +21,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'hsla'       => 'hsla(0,0%,0%,1)',
 					'hue'        => 0,
 					'saturation' => 0,
-					'luminosity' => 0,
+					'lightness'  => 0,
 					'alpha'      => 1,
 				),
 			),
@@ -41,7 +41,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'hsla'       => 'hsla(0,0%,100%,1)',
 					'hue'        => 0,
 					'saturation' => 0,
-					'luminosity' => 100,
+					'lightness'  => 100,
 					'alpha'      => 1,
 				),
 			),
@@ -61,7 +61,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					'hsla'       => 'hsla(191,96%,38%,1)',
 					'hue'        => 191,
 					'saturation' => 96,
-					'luminosity' => 38,
+					'lightness'  => 38,
 					'alpha'      => 1,
 				),
 			),
@@ -95,8 +95,8 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 						case 'saturation':
 							$this->assertEquals( $expected_result, $color_obj->saturation );
 							break;
-						case 'luminosity':
-							$this->assertEquals( $expected_result, $color_obj->luminosity );
+						case 'lightness':
+							$this->assertEquals( $expected_result, $color_obj->lightness );
 							break;
 
 					}

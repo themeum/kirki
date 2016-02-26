@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 
 		public $hue;
 		public $saturation;
-		public $luminosity;
+		public $lightness;
 		public $chroma;
 
 		public $brightness = array();
@@ -248,7 +248,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$value = explode( ',', str_replace( array( ' ', 'hsl', '(', ')', '%' ), '', $this->color ) );
 			$this->hue        = $value[0];
 			$this->saturation = $value[1];
-			$this->luminosity = $value[2];
+			$this->lightness  = $value[2];
 			$this->from_hsl_array();
 		}
 
@@ -260,7 +260,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$value = explode( ',', str_replace( array( ' ', 'hsla', '(', ')', '%' ), '', $this->color ) );
 			$this->hue        = $value[0];
 			$this->saturation = $value[1];
-			$this->luminosity = $value[2];
+			$this->lightness  = $value[2];
 			$this->alpha      = $value[3];
 			$this->from_hsl_array();
 		}
@@ -268,7 +268,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		public function from_hsl_array() {
 			$h = $this->hue /360;
 			$s = $this->saturation / 100;
-			$l = $this->luminosity /100;
+			$l = $this->lightness /100;
 
 			$r = $l;
 			$g = $l;
@@ -344,10 +344,10 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 					$value = 'rgb(' . $this->red . ',' . $this->green . ',' . $this->blue . ')';
 					break;
 				case 'hsl':
-					$value = 'hsl(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%)';
+					$value = 'hsl(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->lightness ) . '%)';
 					break;
 				case 'hsla':
-					$value = 'hsla(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%,' . $this->alpha . ')';
+					$value = 'hsla(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->lightness ) . '%,' . $this->alpha . ')';
 					break;
 			}
 			return $value;
@@ -361,13 +361,13 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$max = max( $red, $green, $blue );
 			$min = min( $red, $green, $blue );
 
-			$luminosity = ( $max + $min ) / 2;
+			$lightness  = ( $max + $min ) / 2;
 			$difference = $max - $min;
 
 			if ( 0 == $difference ) {
 				$hue = $saturation = 0; // achromatic
 			} else {
-				$saturation = $difference / ( 1 - abs( 2 * $luminosity - 1 ) );
+				$saturation = $difference / ( 1 - abs( 2 * $lightness - 1 ) );
 				switch ( $max ) {
 					case $red:
 						$hue = 60 * fmod( ( ( $green - $blue ) / $difference ), 6 );
@@ -386,7 +386,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 
 			$this->hue        = round( $hue );
 			$this->saturation = round( $saturation * 100 );
-			$this->luminosity = round( $luminosity * 100 );
+			$this->lightness  = round( $lightness * 100 );
 		}
 
 		public function set_brightness() {

@@ -240,13 +240,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 
 		/*
-		 * Uses the luminosity to calculate the difference between the given colors.
+		 * Uses the ligghtness to calculate the difference between the given colors.
 		 * The returned value should be bigger than 5 for best readability.
 		 */
-		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+		public static function lightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 			$obj1 = kirki_wp_color( $color_1 );
 			$obj2 = kirki_wp_color( $color_2 );
-			return abs( $obj1->luminosity - $obj2->luminosity );
+			return abs( $obj1->lightness - $obj2->lightness );
 		}
 
 	}
