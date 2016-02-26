@@ -186,6 +186,20 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 * Sets the class properties
 		 * using an rgba color as base for all calculations.
 		 */
+		public function from_rgb() {
+			$value = explode( ',', str_replace( array( ' ', 'rgb', '(', ')' ), '', $this->color ) );
+			$this->red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
+			$this->green = ( isset( $value[1] ) ) ? intval( $value[1] ) : 255;
+			$this->blue  = ( isset( $value[2] ) ) ? intval( $value[2] ) : 255;
+			$this->alpha = 1;
+			$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
+			$this->from_rgba();
+		}
+
+		/**
+		 * Sets the class properties
+		 * using an rgba color as base for all calculations.
+		 */
 		public function from_rgba() {
 			// Set r, g, b, a properties
 			$value = explode( ',', str_replace( array( ' ', 'rgba', '(', ')' ), '', $this->color ) );
@@ -203,19 +217,27 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->green = ( 255 < $this->green ) ? 255 : $this->green;
 			$this->blue  = ( 255 < $this->blue ) ? 255 : $this->blue;
 			$this->alpha = ( 1 < $this->alpha ) ? 1 : $this->alpha;
+
+			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
+
+			$this->set_brightness();
+			$this->set_hsl();
+		}
+
+		/**
+		 * Convert to hex using red, green, blue values
+		 */
+		public function rgb_to_hex( $red, $green, $blue ) {
 			// get hex values
-			$hex_red   = dechex( $this->red );
-			$hex_green = dechex( $this->green );
-			$hex_blue  = dechex( $this->blue );
+			$hex_red   = ( 9 >= $this->red ) ? '0' . $this->red : dechex( $this->red );
+			$hex_green = ( 9 >= $this->green ) ? '0' . $this->green : dechex( $this->green );
+			$hex_blue  = ( 9 >= $this->blue ) ? '0' . $this->blue : dechex( $this->blue );
 			// make sure all hex values are 2 digits
 			$hex_red   = ( 1 == strlen( $hex_red ) ) ? $hex_red . $hex_red : $hex_red;
 			$hex_green = ( 1 == strlen( $hex_green ) ) ? $hex_green . $hex_green : $hex_green;
 			$hex_blue  = ( 1 == strlen( $hex_blue ) ) ? $hex_blue . $hex_blue : $hex_blue;
 			// set the hex property of the class
-			$this->hex = '#' . $hex_red . $hex_green . $hex_blue;
-
-			$this->set_brightness();
-			$this->set_hsl();
+			return '#' . $hex_red . $hex_green . $hex_blue;
 		}
 
 		/**
@@ -244,47 +266,61 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		}
 
 		public function from_hsl_array() {
-			// If saturation is 0, the given color is grey and only
-			// lightness is relevant.
-			if ( 0 == $this->saturation ) {
-				$this->red   = $this->luminosity;
-				$this->green = $this->luminosity;
-				$this->blue  = $this->luminosity;
-			}
-			// Else calculate red, green, blue according to hue.
-			// Check http://en.wikipedia.org/wiki/HSL_and_HSV#From_HSL for details
-			else {
-				$this->$chroma = ( 1 - abs( 2 * $this->luminosity - 1 ) ) * $this->saturation;
-				$h_ = $this->hue * 6;
-				$x   = $chroma * ( 1 - abs( ( fmod( $h_, 2 ) ) - 1 ) ); // Note: fmod because % (modulo) returns int value!!
-				$m   = $this->luminosity - round( $this->chroma / 2, 10 ); // Bugfix for strange float behaviour (e.g. $l=0.17 and $s=1)
+			$h = $this->hue /360;
+			$s = $this->saturation / 100;
+			$l = $this->luminosity /100;
 
-				if ( 5 <= $h_ ) {
-					$this->red   = $chroma + $m;
-					$this->green = $m;
-					$this->blue  = $x + $m;
-				} elseif ( 4 <= $h_ ) {
-					$this->red   = $x + $m;
-					$this->green = $m;
-					$this->blue  = $chroma + $m;
-				} elseif ( 3 <= $h_ ) {
-					$this->red   = $m;
-					$this->green = $x + $m;
-					$this->blue  = $chroma + $m;
-				} elseif ( 2 <= $h_ ) {
-					$this->red   = $m;
-					$this->green = $chroma + $m;
-					$this->blue  = $x + $m;
-				} elseif ( 1 <= $h_ ) {
-					$this->red   = $x + $m;
-					$this->green = $chroma + $m;
-					$this->blue  = $m;
-				} elseif ( 0 <= $h_ ) {
-					$this->red   = $chroma + $m;
-					$this->green = $x + $m;
-					$this->blue  = $m;
+			$r = $l;
+			$g = $l;
+			$b = $l;
+			$v = ( $l <= 0.5 ) ? ( $l * ( 1.0 + $s ) ) : ( $l + $s - $l * $s );
+			if ( $v > 0 ) {
+				$m = $l + $l - $v;
+				$sv = ( $v - $m ) / $v;
+				$h *= 6.0;
+				$sextant = floor( $h );
+				$fract = $h - $sextant;
+				$vsf = $v * $sv * $fract;
+				$mid1 = $m + $vsf;
+				$mid2 = $v - $vsf;
+				switch ( $sextant ) {
+					case 0:
+						$r = $v;
+						$g = $mid1;
+						$b = $m;
+						break;
+					case 1:
+						$r = $mid2;
+						$g = $v;
+						$b = $m;
+						break;
+					case 2:
+						$r = $m;
+						$g = $v;
+						$b = $mid1;
+						break;
+					case 3:
+						$r = $m;
+						$g = $mid2;
+						$b = $v;
+						break;
+					case 4:
+						$r = $mid1;
+						$g = $m;
+						$b = $v;
+						break;
+					case 5:
+						$r = $v;
+						$g = $m;
+						$b = $mid2;
+						break;
 				}
 			}
+			$this->red   = round( $r * 255, 0 );
+			$this->green = round( $g * 255, 0 );
+			$this->blue  = round( $b * 255, 0 );
+
+			$this->hex = $this->rgb_to_hex( $this->red, $this->green, $this->blue );
 		}
 
 		/**
@@ -299,7 +335,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 
 			switch ( $mode ) {
 				case 'hex':
-					$value = $this->hex;
+					$value = strtoupper( $this->hex );
 					break;
 				case 'rgba':
 					$value = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
@@ -311,7 +347,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 					$value = 'hsl(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%)';
 					break;
 				case 'hsla':
-					$value = 'hsla(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%' . $this->alpha . ')';
+					$value = 'hsla(' . $this->hue . ',' . round( $this->saturation ) . '%,' . round( $this->luminosity ) . '%,' . $this->alpha . ')';
 					break;
 			}
 			return $value;
@@ -321,38 +357,36 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$red   = $this->red / 255;
 			$green = $this->green / 255;
 			$blue  = $this->blue / 255;
-			// Determine lowest & highest value and chroma
+
 			$max = max( $red, $green, $blue );
 			$min = min( $red, $green, $blue );
-			$this->chroma = $max - $min;
-			// Calculate Luminosity
-			$this->luminosity = ( $max + $min ) / 2;
-			// If chroma is 0, the given color is grey
-			// therefore hue and saturation are set to 0
-			if ( 0 == $this->chroma ) {
-				$this->hue        = 0;
-				$this->saturation = 0;
-			}
-			// Else calculate hue and saturation.
-			// Check http://en.wikipedia.org/wiki/HSL_and_HSV for details
-			else {
+
+			$luminosity = ( $max + $min ) / 2;
+			$difference = $max - $min;
+
+			if ( 0 == $difference ) {
+				$hue = $saturation = 0; // achromatic
+			} else {
+				$saturation = $difference / ( 1 - abs( 2 * $luminosity - 1 ) );
 				switch ( $max ) {
 					case $red:
-						$hue = fmod( ( ( $green - $blue ) / $this->chroma ), 6 );
-						// Bugfix: fmod() returns wrong values for negative numbers
-						$this->hue = ( 0 > $hue ) ? ( 6 - fmod( abs( $hue ), 6 ) ) / 6 : $hue / 6;
+						$hue = 60 * fmod( ( ( $green - $blue ) / $difference ), 6 );
+						if ( $blue > $green ) {
+							$hue += 360;
+						}
 						break;
 					case $green:
-						$this->hue = ( ( $blue - $red ) / $this->chroma + 2 ) / 6;
+						$hue = 60 * ( ( $blue - $red ) / $difference + 2 );
 						break;
 					case $blue:
-						$this->hue = ( ( $red - $green ) / $this->chroma + 4 ) / 6;
-						break;
-					default:
+						$hue = 60 * ( ( $red - $green ) / $difference + 4 );
 						break;
 				}
-				$this->saturation = 1 - abs( 2 * $this->luminosity - 1 );
 			}
+
+			$this->hue        = round( $hue );
+			$this->saturation = round( $saturation * 100 );
+			$this->luminosity = round( $luminosity * 100 );
 		}
 
 		public function set_brightness() {
