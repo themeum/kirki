@@ -73,9 +73,11 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		public function get_new_object_by( $property = '', $value = '' ) {
 			if ( in_array( $property, array( 'red', 'green', 'blue', 'alpha' ) ) ) {
 				$this->$property = $value;
-				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
-			}
-			if ( 'brightness' == $property ) {
+				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
+			} elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
+				$this->$property = $value;
+				return self::get_instance( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
+			} elseif ( 'brightness' == $property ) {
 				if ( $value < $this->brightness['total'] ) {
 					$this->red   = max( 0, min( 255, $this->red - ( $this->brightness['total'] - $value ) ) );
 					$this->green = max( 0, min( 255, $this->green - ( $this->brightness['total'] - $value ) ) );
@@ -267,6 +269,9 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 			$this->from_hsl_array();
 		}
 
+		/**
+		 * See https://gist.github.com/brandonheyer/5254516
+		 */
 		public function from_hsl_array() {
 			$h = $this->hue /360;
 			$s = $this->saturation / 100;
