@@ -1299,8 +1299,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// font-style
 		if ( control.container.has( '.font-style' ).size() ) {
 			this.container.on( 'click', '.font-style input', function() {
+				// add the value to the array and set the setting's value
 				compiled_value['font-style'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1308,8 +1310,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// font-family
 		if ( control.container.has( '.font-family' ).size() ) {
 			this.container.on( 'change', '.font-family select', function() {
+				// add the value to the array and set the setting's value
 				compiled_value['font-family'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1321,14 +1325,18 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 			this.container.on( 'change', '.font-size input', function() {
 				font_size_numeric_value = jQuery( this ).val();
+				// add the value to the array and set the setting's value
 				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.font-size select', function() {
 				font_size_units_value = jQuery( this ).val();
+				// add the value to the array and set the setting's value
 				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1336,8 +1344,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// font-weight
 		if ( control.container.has( '.font-weight' ).size() ) {
 			this.container.on( 'change', '.font-weight select', function() {
+				// add the value to the array and set the setting's value
 				compiled_value['font-weight'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1345,8 +1355,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// line-height
 		if ( control.container.has( '.line-height' ).size() ) {
 			this.container.on( 'change', '.line-height input', function() {
+				// add the value to the array and set the setting's value
 				compiled_value['line-height'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1358,14 +1370,18 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 			this.container.on( 'change', '.letter-spacing input', function() {
 				letter_spacing_numeric_value = jQuery( this ).val();
+				// add the value to the array and set the setting's value
 				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 			this.container.on( 'change', '.letter-spacing select', function() {
 				letter_spacing_units_value = jQuery( this ).val();
+				// add the value to the array and set the setting's value
 				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
 				control.setting.set( compiled_value );
+				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
 		}
@@ -1376,8 +1392,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			picker.wpColorPicker ( {
 				change: function() {
 					setTimeout ( function() {
+						// add the value to the array and set the setting's value
 						compiled_value[ 'color' ] = picker.val ();
 						control.setting.set ( compiled_value );
+						// refresh the preview
 						wp.customize.previewer.refresh ();
 					}, 100 );
 				}
