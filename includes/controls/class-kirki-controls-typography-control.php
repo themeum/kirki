@@ -78,19 +78,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.choices['font-size'] ) { #>
 					<div class="font-size">
 						<h5>{{ data.l10n['font-size'] }}</h5>
-						<input type="number" min="0" step="any" value="{{ parseFloat( data.value['font-size'] ) }}"/>
-						<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['font-size'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-								<# } #>
-							<# } else { #>
-								<# var units = data.value['font-size'].replace( parseFloat( data.value['font-size'] ), '' ); #>
-								<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-							<# } #>
-						</select>
+						<input type="size" min="0" step="any" value="{{ data.value['font-size'] }}"/>
 					</div>
 				<# } #>
 

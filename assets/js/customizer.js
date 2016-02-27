@@ -1363,21 +1363,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 		// font-size
 		if ( control.container.has( '.font-size' ).size() ) {
-			var font_size_numeric_value = control.container.find('.font-size input[type=number]' ).val();
-			var font_size_units_value   = control.container.find('.font-size select' ).val();
-
 			this.container.on( 'change', '.font-size input', function() {
-				font_size_numeric_value = jQuery( this ).val();
 				// add the value to the array and set the setting's value
-				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
-				control.setting.set( compiled_value );
-				// refresh the preview
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.font-size select', function() {
-				font_size_units_value = jQuery( this ).val();
-				// add the value to the array and set the setting's value
-				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
+				compiled_value['font-size'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
 				// refresh the preview
 				wp.customize.previewer.refresh();
