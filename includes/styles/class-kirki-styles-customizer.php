@@ -81,12 +81,24 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				foreach ( $fonts as $family => $args ) {
 					$label      = ( isset( $args['label'] ) ) ? $label : $family;
 					$variants   = ( isset( $args['variants'] ) ) ? $args['variants'] : array();
+					if ( is_array( $variants ) ) {
+						$font_weights = array();
+						foreach ( $variants as $variant ) {
+							if ( in_array( $variant, array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ) ) ) {
+								$font_weights[] = $variant;
+							}
+							if ( 'regular' == $variant ) {
+								$font_weights[] = '400';
+							}
+						}
+					}
 					$subsets    = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
 					$final[] = array(
-						'family'   => $family,
-						'label'    => $label,
-						'variants' => $variants,
-						'subsets'  => $subsets,
+						'family'       => $family,
+						'label'        => $label,
+						'variants'     => $variants,
+						'subsets'      => $subsets,
+						'font-weights' => $font_weights,
 					);
 				}
 				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
