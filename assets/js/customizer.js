@@ -1253,6 +1253,24 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			compiled_value['font-style']     = control.setting._value['font-style'];
 		}
 		if ( control.container.has( '.font-family' ).size() ) {
+			jQuery('#kirki-typography-' + control.id ).selectize({
+				options: kirkiAllFonts,
+				persist: false,
+				maxItems: 1,
+				valueField: 'family',
+				labelField: 'label',
+				searchField: ['family', 'label', 'subsets'],
+				create: false,
+				render: {
+					item: function(item, escape) {
+						return '<div><span class="name">' + escape( item.family ) + '</span></div>';
+					},
+					option: function(item, escape) {
+						return '<div><span class="label">' + escape( item.family ) + '</span></div>';
+					}
+				},
+			});
+
 			compiled_value['font-family']    = control.setting._value['font-family'];
 		}
 		if ( control.container.has( '.font-size' ).size() ) {

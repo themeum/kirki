@@ -107,6 +107,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'change-image'          => esc_attr__( 'Change Image', 'kirki' ),
 				'remove'                => esc_attr__( 'Remove', 'kirki' ),
 				'no-image-selected'     => esc_attr__( 'No Image Selected', 'kirki' ),
+				'select-font-family'    => esc_attr__( 'Select a font-family', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

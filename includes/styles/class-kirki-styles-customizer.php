@@ -76,7 +76,20 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				);
 
 				wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
-				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', Kirki_Fonts::get_all_fonts() );
+				$final = array();
+				$fonts = Kirki_Fonts::get_all_fonts();
+				foreach ( $fonts as $family => $args ) {
+					$label      = ( isset( $args['label'] ) ) ? $label : $family;
+					$variants   = ( isset( $args['variants'] ) ) ? $variants : array();
+					$subsets    = ( isset( $args['subsets'] ) ) ? $subsets : array();
+					$final[] = array(
+						'family'   => $family,
+						'label'    => $label,
+						'variants' => $variants,
+						'subsets'  => $subsets,
+					);
+				}
+				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
 			}
 		}
 

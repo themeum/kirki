@@ -28,7 +28,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			parent::to_json();
 
 			$i18n = Kirki_Toolkit::i18n();
-			$this->json['fonts'] = Kirki_Fonts::get_font_choices();
 			$value = $this->value();
 			$this->json['value'] = array(
 				'font-style'     => isset( $value['font-style'] ) ? $value['font-style'] : false,
@@ -72,11 +71,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 					<div class="font-family">
 						<h5>{{ data.l10n['font-family'] }}</h5>
-						<select class="font-family select2">
-							<# for ( key in data.fonts ) { #>
-								<option value="{{ key }}" <# if ( key === data.value['font-family'] ) { #> selected<# } #>>{{ data.fonts[ key ] }}</option>
-							<# } #>
-						</select>
+						<select id="kirki-typography-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
 					</div>
 				<# } #>
 
