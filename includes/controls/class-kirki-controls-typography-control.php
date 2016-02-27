@@ -103,24 +103,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					</div>
 				<# } #>
 
-				<# if ( data.choices['font-style'] ) { #>
-					<div class="font-style ">
-						<h5>{{ data.l10n['font-style'] }}</h5>
-						<input class="switch-input" type="radio" value="normal" name="_typography_font_style_customize-radio-{{{ data.id }}}" id="{{ data.id }}_font_style_normal" {{{ data.link }}}<# if ( 'normal' === data.value['font-style'] ) { #> checked="checked" <# } #>>
-							<label class="switch-label switch-label-<# if ( 'normal' === data.value['font-style'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}_font_style_normal">
-								<span class="dashicons dashicons-editor-removeformatting"></span>
-							</label>
-						</input>
-						<# for ( styleProperty in data.choices['font-style'] ) { #>
-							<input class="switch-input" type="radio" value="{{ data.choices['font-style'][ styleProperty ] }}" name="_typography_font_style_customize-radio-{{{ data.id }}}" id="{{ data.id }}_font_style_{{ data.choices['font-style'][ styleProperty ] }}" {{{ data.link }}}<# if ( data.choices['font-style'][ styleProperty ] === data.value['font-style'] ) { #> checked="checked" <# } #>>
-								<label class="switch-label switch-label-<# if ( data.choices['font-style'][ styleProperty ] === data.value['font-style'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}_font_style_{{ data.choices['font-style'][ styleProperty ] }}">
-									<span class="dashicons dashicons-editor-{{ data.choices['font-style'][ styleProperty ] }}"></span>
-								</label>
-							</input>
-						<# } #>
-					</div>
-				<# } #>
-
 				<# if ( data.choices['color'] ) { #>
 					<div class="color">
 						<h5>{{ data.l10n['color'] }}</h5>

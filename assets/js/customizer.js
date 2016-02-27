@@ -1249,9 +1249,6 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		var compiled_value = {};
 
 		// get initial values and pre-populate the object
-		if ( control.container.has( '.font-style' ).size() ) {
-			compiled_value['font-style']     = control.setting._value['font-style'];
-		}
 		if ( control.container.has( '.font-family' ).size() ) {
 
 			jQuery('#kirki-typography-font-family-' + control.id ).selectize({
@@ -1293,17 +1290,6 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 		// use selectize
 		jQuery( '.customize-control-typography select' ).selectize();
-
-		// font-style
-		if ( control.container.has( '.font-style' ).size() ) {
-			this.container.on( 'click', '.font-style input', function() {
-				// add the value to the array and set the setting's value
-				compiled_value['font-style'] = jQuery( this ).val();
-				control.setting.set( compiled_value );
-				// refresh the preview
-				wp.customize.previewer.refresh();
-			});
-		}
 
 		var eventHandlerFontWeight = function(newval) {
 			return function() {
