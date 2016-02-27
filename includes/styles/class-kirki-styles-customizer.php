@@ -76,6 +76,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				);
 
 				wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
+				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', Kirki_Fonts::get_all_fonts() );
 			}
 		}
 
