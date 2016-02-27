@@ -188,21 +188,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 		// letter-spacing
 		if ( control.container.has( '.letter-spacing' ).size() ) {
-			var letter_spacing_numeric_value = control.container.find('.letter-spacing input[type=number]' ).val();
-			var letter_spacing_units_value   = control.container.find('.letter-spacing select' ).val();
-
 			this.container.on( 'change', '.letter-spacing input', function() {
-				letter_spacing_numeric_value = jQuery( this ).val();
 				// add the value to the array and set the setting's value
-				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
-				control.setting.set( compiled_value );
-				// refresh the preview
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.letter-spacing select', function() {
-				letter_spacing_units_value = jQuery( this ).val();
-				// add the value to the array and set the setting's value
-				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
+				compiled_value['letter-spacing'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
 				// refresh the preview
 				wp.customize.previewer.refresh();

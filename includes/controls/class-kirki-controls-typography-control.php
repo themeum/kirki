@@ -78,7 +78,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.choices['font-size'] ) { #>
 					<div class="font-size">
 						<h5>{{ data.l10n['font-size'] }}</h5>
-						<input type="size" min="0" step="any" value="{{ data.value['font-size'] }}"/>
+						<input type="text" value="{{ data.value['font-size'] }}"/>
 					</div>
 				<# } #>
 
@@ -99,19 +99,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.choices['letter-spacing'] ) { #>
 					<div class="letter-spacing">
 						<h5>{{ data.l10n['letter-spacing'] }}</h5>
-						<input type="number" min="0" step="any" value="{{ parseFloat( data.value['letter-spacing'] ) }}"/>
-						<select>
-							<# if ( data.choices['units'] ) { #>
-								<# for ( key in data.choices['units'] ) { #>
-									<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value['letter-spacing'], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-								<# } #>
-							<# } else { #>
-								<# var units = data.value['letter-spacing'].replace( parseFloat( data.value['letter-spacing'] ), '' ); #>
-								<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-								<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-								<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-							<# } #>
-						</select>
+						<input type="text" value="{{ data.value['letter-spacing'] }}"/>
 					</div>
 				<# } #>
 
