@@ -1305,6 +1305,15 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			});
 		}
 
+		var eventHandlerFontWeight = function(newval) {
+			return function() {
+				// add the value to the array and set the setting's value
+				compiled_value['font-weight'] = newval;
+				control.setting.set( compiled_value );
+				// refresh the preview
+				wp.customize.previewer.refresh();
+			};
+		};
 		// font-family
 		if ( control.container.has( '.font-family' ).size() ) {
 			this.container.on( 'change', '.font-family select', function() {
@@ -1332,15 +1341,16 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 						// refresh available font-weights
 						if ( undefined !== font_weights ) {
 							jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
-							var font_weights_refresh;
-							font_weights_refresh = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+							var font_weights_selectize;
+							font_weights_selectize = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
 								maxItems: 1,
 								valueField: 'id',
 								labelField: 'label',
 								searchField: ['id', 'label'],
 								options: font_weights,
 								items: [ initial_fw ],
-								create: false
+								create: false,
+								onChange: eventHandlerFontWeight( jQuery( '#kirki-typography-font-weight-' + control.id ).val() )
 							}).data( 'selectize' );
 						}
 					}
@@ -1397,8 +1407,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					// refresh available font-weights
 					if ( undefined !== font_weights ) {
 						jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
-						var font_weights_initial;
-						font_weights_initial = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+						var font_weights_selectize;
+						font_weights_selectize = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
 							maxItems: 1,
 							valueField: 'id',
 							labelField: 'label',
