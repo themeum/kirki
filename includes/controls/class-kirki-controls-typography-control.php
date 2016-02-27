@@ -33,7 +33,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'font-style'     => isset( $value['font-style'] ) ? $value['font-style'] : false,
 				'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : '',
 				'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : '',
-				'font-weight'    => isset( $value['font-weight'] ) ? $value['font-weight'] : '',
+				'variant'        => isset( $value['variant'] ) ? $value['variant'] : '',
 				'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : '',
 				'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : '',
 				'color'          => isset( $value['color'] ) ? $value['color'] : '',
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			$this->json['l10n'] = array(
 				'font-family'    => $i18n['font-family'],
 				'font-size'      => $i18n['font-size'],
-				'font-weight'    => $i18n['font-weight'],
+				'variant'        => $i18n['variant'],
 				'line-height'    => $i18n['line-height'],
 				'letter-spacing' => $i18n['letter-spacing'],
 				'font-style'     => $i18n['font-style'],
@@ -73,19 +73,16 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						<h5>{{ data.l10n['font-family'] }}</h5>
 						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
 					</div>
+					<div class="variant">
+						<h5>{{ data.l10n['variant'] }}</h5>
+						<select class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
+					</div>
 				<# } #>
 
 				<# if ( data.choices['font-size'] ) { #>
 					<div class="font-size">
 						<h5>{{ data.l10n['font-size'] }}</h5>
 						<input type="text" value="{{ data.value['font-size'] }}"/>
-					</div>
-				<# } #>
-
-				<# if ( data.choices['font-weight'] ) { #>
-					<div class="font-weight">
-						<h5>{{ data.l10n['font-weight'] }}</h5>
-						<select class="font-weight" id="kirki-typography-font-weight-{{{ data.id }}}"></select>
 					</div>
 				<# } #>
 

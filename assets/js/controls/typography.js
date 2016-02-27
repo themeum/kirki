@@ -33,8 +33,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		if ( control.container.has( '.font-size' ).size() ) {
 			compiled_value['font-size']      = control.setting._value['font-size'];
 		}
-		if ( control.container.has( '.font-weight' ).size() ) {
-			compiled_value['font-weight']    = control.setting._value['font-weight'];
+		if ( control.container.has( '.font-variant' ).size() ) {
+			compiled_value['variant']    = control.setting._value['variant'];
 		}
 		if ( control.container.has( '.line-height' ).size() ) {
 			compiled_value['line-height']    = control.setting._value['line-height'];
@@ -49,10 +49,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// use selectize
 		jQuery( '.customize-control-typography select' ).selectize();
 
-		var eventHandlerFontWeight = function(newval) {
+		var eventHandlerFontVariant = function(newval) {
 			return function() {
 				// add the value to the array and set the setting's value
-				compiled_value['font-weight'] = newval;
+				compiled_value['variant'] = newval;
 				control.setting.set( compiled_value );
 				// refresh the preview
 				wp.customize.previewer.refresh();
@@ -64,37 +64,37 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				// add the value to the array and set the setting's value
 				compiled_value['font-family'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
-				// find the font-weights of this family
+				// find the selected variant
 				for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 					if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
-						var font_weights = kirkiAllFonts[ i ]['font-weights'];
+						var variants = kirkiAllFonts[ i ]['variants'];
 						// Determine the initial value we have to use
-						if ( undefined !== kirkiAllFonts[ i ]['font-weights'][ compiled_value['font-weight'] ] ) {
-							var initial_fw = compiled_value['font-weight'];
+						if ( undefined !== kirkiAllFonts[ i ]['variants'][ compiled_value['variant'] ] ) {
+							var initial_variant = compiled_value['variant'];
 						} else {
-							for ( var w = 0, len = font_weights.length; w < len; w++ ) {
-								if ( '400' == font_weights[ w ]['id'] ) {
+							for ( var w = 0, len = variants.length; w < len; w++ ) {
+								if ( '400' == variants[ w ]['id'] ) {
 									var has_regular = true
 								} else if ( undefined === first_available_fw ) {
-									var first_available_fw = font_weights[ w ]['id'];
+									var first_available_fw = variants[ w ]['id'];
 								}
 							}
 							// select regular if it exists, otherwise fallback to the first available value
-							var initial_fw = ( undefined !== has_regular ) ? '400' : first_available_fw;
+							var initial_variant = ( undefined !== has_regular ) ? '400' : first_available_fw;
 						}
-						// refresh available font-weights
-						if ( undefined !== font_weights ) {
-							jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
-							var font_weights_selectize;
-							font_weights_selectize = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+						// refresh available variants
+						if ( undefined !== variants ) {
+							jQuery( '#kirki-typography-variant-' + control.id ).selectize()[0].selectize.destroy();
+							var variants_selectize;
+							fvariants_selectize = jQuery( '#kirki-typography-variant-' + control.id ).selectize({
 								maxItems: 1,
 								valueField: 'id',
 								labelField: 'label',
 								searchField: ['id', 'label'],
-								options: font_weights,
-								items: [ initial_fw ],
+								options: variants,
+								items: [ initial_variant ],
 								create: false,
-								onChange: eventHandlerFontWeight( jQuery( '#kirki-typography-font-weight-' + control.id ).val() )
+								onChange: eventHandlerFontVariant( jQuery( '#kirki-typography-variant-' + control.id ).val() )
 							}).data( 'selectize' );
 						}
 					}
@@ -116,45 +116,45 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			});
 		}
 
-		// font-weight
-		if ( control.container.has( '.font-weight' ).size() ) {
-			// populate this field initially with the font-weights available for this family.
+		// variants
+		if ( control.container.has( '.variant' ).size() ) {
+			// populate this field initially with the variants available for this family.
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 				if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
-					var font_weights = kirkiAllFonts[ i ]['font-weights'];
+					var variants = kirkiAllFonts[ i ]['variants'];
 					// Determine the initial value we have to use
-					if ( undefined !== kirkiAllFonts[ i ]['font-weights'][ compiled_value['font-weight'] ] ) {
-						var initial_fw = compiled_value['font-weight'];
+					if ( undefined !== kirkiAllFonts[ i ]['variants'][ compiled_value['variant'] ] ) {
+						var initial_variant = compiled_value['variants'];
 					} else {
-						for ( var w = 0, len = font_weights.length; w < len; w++ ) {
-							if ( '400' == font_weights[ w ]['id'] ) {
+						for ( var w = 0, len = variants.length; w < len; w++ ) {
+							if ( '400' == variants[ w ]['id'] ) {
 								var has_regular = true
 							} else if ( undefined === first_available_fw ) {
-								var first_available_fw = font_weights[ w ]['id'];
+								var first_available_fw = variants[ w ]['id'];
 							}
 						}
 						// select regular if it exists, otherwise fallback to the first available value
-						var initial_fw = ( undefined !== has_regular ) ? '400' : first_available_fw;
+						var initial_variant = ( undefined !== has_regular ) ? '400' : first_available_fw;
 					}
-					// refresh available font-weights
-					if ( undefined !== font_weights ) {
-						jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
-						var font_weights_selectize;
-						font_weights_selectize = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+					// refresh available variants
+					if ( undefined !== variants ) {
+						jQuery( '#kirki-typography-variant-' + control.id ).selectize()[0].selectize.destroy();
+						var variants_selectize;
+						variants_selectize = jQuery( '#kirki-typography-variant-' + control.id ).selectize({
 							maxItems: 1,
 							valueField: 'id',
 							labelField: 'label',
 							searchField: ['id', 'label'],
-							options: font_weights,
-							items: [ initial_fw ],
+							options: variants,
+							items: [ initial_variant ],
 							create: false
 						}).data( 'selectize' );
 					}
 				}
 			}
-			this.container.on( 'change', '.font-weight select', function() {
+			this.container.on( 'change', '.variant select', function() {
 				// add the value to the array and set the setting's value
-				compiled_value['font-weight'] = jQuery( this ).val();
+				compiled_value['variant'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
 				// refresh the preview
 				wp.customize.previewer.refresh();

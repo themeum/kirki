@@ -79,24 +79,73 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				$final = array();
 				$fonts = Kirki_Fonts::get_all_fonts();
 				foreach ( $fonts as $family => $args ) {
-					$label      = ( isset( $args['label'] ) ) ? $label : $family;
-					$variants   = ( isset( $args['variants'] ) ) ? $args['variants'] : array();
+					$label    = ( isset( $args['label'] ) ) ? $label : $family;
+					$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array();
+					$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
+					$available_variants = array();
 					if ( is_array( $variants ) ) {
-						$font_weights = array();
+						$all_variants = array(
+							'400'       => array( 'id' => '400',       'label' => esc_attr__( 'Normal 400', 'Avada' ) ),
+							'italic'    => array( 'id' => '400italic', 'label' => esc_attr__( 'Normal 400 Italic', 'Avada' ) ),
+							'100'       => array( 'id' => '100',       'label' => esc_attr__( 'Ultra-Light 100', 'Avada' ) ),
+							'200'       => array( 'id' => '200',       'label' => esc_attr__( 'Light 200', 'Avada' ) ),
+							'300'       => array( 'id' => '300',       'label' => esc_attr__( 'Book 300', 'Avada' ) ),
+							'500'       => array( 'id' => '500',       'label' => esc_attr__( 'Medium 500', 'Avada' ) ),
+							'600'       => array( 'id' => '600',       'label' => esc_attr__( 'Semi-Bold 600', 'Avada' ) ),
+							'700'       => array( 'id' => '700',       'label' => esc_attr__( 'Bold 700', 'Avada' ) ),
+							'700italic' => array( 'id' => '700italic', 'label' => esc_attr__( 'Bold 700 Italic', 'Avada' ) ),
+							'900'       => array( 'id' => '900',       'label' => esc_attr__( 'Normal 400', 'Avada' ) ),
+							'900italic' => array( 'id' => '900italic', 'label' => esc_attr__( 'Ultra-Bold 900 Italic', 'Avada' ) ),
+							'100italic' => array( 'id' => '100italic', 'label' => esc_attr__( 'Ultra-Light 100 Italic', 'Avada' ) ),
+							'300italic' => array( 'id' => '300italic', 'label' => esc_attr__( 'Book 300 Italic', 'Avada' ) ),
+							'500italic' => array( 'id' => '500italic', 'label' => esc_attr__( 'Medium 500 Italic', 'Avada' ) ),
+							'800'       => array( 'id' => '800',       'label' => esc_attr__( 'Extra-Bold 800', 'Avada' ) ),
+							'800italic' => array( 'id' => '800italic', 'label' => esc_attr__( 'Extra-Bold 800 Italic', 'Avada' ) ),
+							'600italic' => array( 'id' => '600italic', 'label' => esc_attr__( 'Semi-Bold 600 Italic', 'Avada' ) ),
+							'200italic' => array( 'id' => '200italic', 'label' => esc_attr__( 'Light 200 Italic', 'Avada' ) ),
+						);
 						foreach ( $variants as $variant ) {
-							if ( in_array( $variant, array( '100', '200', '300', '400', '500', '600', '700', '800', '900', 'regular' ) ) ) {
-								$fw_id = ( 'regular' == $variant ) ? '400' : $variant;
-								$font_weights[] = array( 'id' => $fw_id, 'label' => $variant );
+							if ( in_array( $variant, $all_variants ) ) {
+								$available_variants[] = array( 'id' => $fw_id, 'label' => $variant );
+							}
+						}
+						if ( empty( $available_variants ) ) {
+							$available_variants = array( $all_variants['400'], $all_variants['700'] );
+						}
+					}
+
+					if ( is_array( $subsets ) ) {
+						$available_subsets = array();
+						$all_subsets = array(
+							'greek-ext'    => esc_attr__( 'Greek Extended', 'Avada' ),
+							'greek'        => esc_attr__( 'Greek', 'Avada' ),
+							'cyrillic-ext' => esc_attr__( 'Cyrillic Extended', 'Avada' ),
+							'cyrillic'     => esc_attr__( 'Cyrillic', 'Avada' ),
+							'latin-ext'    => esc_attr__( 'Latin Extended', 'Avada' ),
+							'latin'        => esc_attr__( 'Latin', 'Avada' ),
+							'vietnamese'   => esc_attr__( 'Vietnamese', 'Avada' ),
+							'arabic'       => esc_attr__( 'Arabic', 'Avada' ),
+							'gujarati'     => esc_attr__( 'Gujarati', 'Avada' ),
+							'devanagari'   => esc_attr__( 'Devanagari', 'Avada' ),
+							'bengali'      => esc_attr__( 'Bengali', 'Avada' ),
+							'hebrew'       => esc_attr__( 'Hebrew', 'Avada' ),
+							'khmer'        => esc_attr__( 'Khmer', 'Avada' ),
+							'tamil'        => esc_attr__( 'Tamil', 'Avada' ),
+							'telugu'       => esc_attr__( 'Telugu', 'Avada' ),
+							'thai'         => esc_attr__( 'Thai', 'Avada' ),
+						);
+						foreach ( $subsets as $id => $label ) {
+							if ( in_array( $id, $all_subsets ) ) {
+								$available_subsets[] = array( 'id' => $id, 'label' => $label );
 							}
 						}
 					}
-					$subsets    = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
+
 					$final[] = array(
 						'family'       => $family,
 						'label'        => $label,
-						'variants'     => $variants,
-						'subsets'      => $subsets,
-						'font-weights' => $font_weights,
+						'variants'     => $available_variants,
+						'subsets'      => $available_subsets,
 					);
 				}
 				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
