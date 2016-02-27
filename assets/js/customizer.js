@@ -1246,65 +1246,23 @@ wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend( {
 wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
+
+		// Get initial values
 		var compiled_value = {};
+		compiled_value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
+		compiled_value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
+		compiled_value['variant']        = ( undefined !== control.setting._value['variant'] ) ? control.setting._value['variant'] : '';
+		compiled_value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
+		compiled_value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
+		compiled_value['color']          = ( undefined !== control.setting._value['color'] ) ? control.setting._value['color'] : '';
 
-		// get initial values and pre-populate the object
-		if ( control.container.has( '.font-family' ).size() ) {
-
-			jQuery('#kirki-typography-font-family-' + control.id ).selectize({
-				options:     kirkiAllFonts,
-				items:       [ control.setting._value['font-family'] ],
-				persist:     false,
-				maxItems:    1,
-				valueField:  'family',
-				labelField:  'label',
-				searchField: ['family', 'label', 'subsets'],
-				create:      false,
-				render: {
-					item: function(item, escape) {
-						return '<div>' + escape( item.family ) + '</div>';
-					},
-					option: function(item, escape) {
-						return '<div>' + escape( item.family ) + '</div>';
-					}
-				},
-			});
-
-			compiled_value['font-family']    = control.setting._value['font-family'];
-		}
-		if ( control.container.has( '.font-size' ).size() ) {
-			compiled_value['font-size']      = control.setting._value['font-size'];
-		}
-		if ( control.container.has( '.font-variant' ).size() ) {
-			compiled_value['variant']    = control.setting._value['variant'];
-		}
-		if ( control.container.has( '.line-height' ).size() ) {
-			compiled_value['line-height']    = control.setting._value['line-height'];
-		}
-		if ( control.container.has( '.letter-spacing' ).size() ) {
-			compiled_value['letter-spacing'] = control.setting._value['letter-spacing'];
-		}
-		if ( control.container.has( '.color' ).size() ) {
-			compiled_value['color'] = control.setting._value['color'];
-		}
-
-		// use selectize
-		jQuery( '.customize-control-typography select' ).selectize();
-
-		var eventHandlerFontVariant = function(newval) {
+		/**
+		 * Event handler for font-families.
+		 */
+		var eventHandlerFontFamily = function(newval) {
 			return function() {
 				// add the value to the array and set the setting's value
-				compiled_value['variant'] = newval;
-				control.setting.set( compiled_value );
-				// refresh the preview
-				wp.customize.previewer.refresh();
-			};
-		};
-		// font-family
-		if ( control.container.has( '.font-family' ).size() ) {
-			this.container.on( 'change', '.font-family select', function() {
-				// add the value to the array and set the setting's value
-				compiled_value['font-family'] = jQuery( this ).val();
+				compiled_value['font-family'] = newval;
 				control.setting.set( compiled_value );
 				// find the selected variant
 				for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
@@ -1341,13 +1299,51 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 						}
 					}
 				}
-
 				// refresh the preview
 				wp.customize.previewer.refresh();
+				console.log('lalalalalalalala-font-family');
+			};
+		};
+
+		/**
+		 * Event handler for variants.
+		 */
+		var eventHandlerFontVariant = function(newval) {
+			return function() {
+				// add the value to the array and set the setting's value
+				compiled_value['variant'] = jQuery( this ).val();
+				control.setting.set( compiled_value );
+				// refresh the preview
+				wp.customize.previewer.refresh();
+				console.log('lalalalalalalala-font-variant');
+			};
+		};
+
+		/**
+		 * font-family
+		 */
+		if ( control.container.has( '.font-family' ).size() ) {
+			jQuery( '#kirki-typography-font-family-' + control.id ).selectize({
+				options:     kirkiAllFonts,
+				items:       [ control.setting._value['font-family'] ],
+				persist:     false,
+				maxItems:    1,
+				valueField:  'family',
+				labelField:  'label',
+				searchField: ['family', 'label', 'subsets'],
+				create:      false,
+				onChange: eventHandlerFontFamily( jQuery( '#kirki-typography-font-family-' + control.id ).val() ),
+				render: {
+					item: function(item, escape) { return '<div>' + escape( item.family ) + '</div>'; },
+					option: function(item, escape) { return '<div>' + escape( item.family ) + '</div>'; }
+				},
 			});
+
 		}
 
-		// font-size
+		/**
+		 * font-size
+		 */
 		if ( control.container.has( '.font-size' ).size() ) {
 			this.container.on( 'change', '.font-size input', function() {
 				// add the value to the array and set the setting's value
@@ -1358,8 +1354,10 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			});
 		}
 
-		// variants
-		if ( control.container.has( '.variant' ).size() ) {
+		/**
+		 * font-variant
+		 */
+		if ( control.container.has( '.font-variant' ).size() ) {
 			// populate this field initially with the variants available for this family.
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 				if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
@@ -1389,21 +1387,17 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 							searchField: ['id', 'label'],
 							options: variants,
 							items: [ initial_variant ],
+							onChange: eventHandlerFontVariant( jQuery( '#kirki-typography-variant-' + control.id ).val() ),
 							create: false
 						}).data( 'selectize' );
 					}
 				}
 			}
-			this.container.on( 'change', '.variant select', function() {
-				// add the value to the array and set the setting's value
-				compiled_value['variant'] = jQuery( this ).val();
-				control.setting.set( compiled_value );
-				// refresh the preview
-				wp.customize.previewer.refresh();
-			});
 		}
 
-		// line-height
+		/**
+		 * line-height
+		 */
 		if ( control.container.has( '.line-height' ).size() ) {
 			this.container.on( 'change', '.line-height input', function() {
 				// add the value to the array and set the setting's value
@@ -1414,7 +1408,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			});
 		}
 
-		// letter-spacing
+		/**
+		 * letter-spacing
+		 */
 		if ( control.container.has( '.letter-spacing' ).size() ) {
 			this.container.on( 'change', '.letter-spacing input', function() {
 				// add the value to the array and set the setting's value
@@ -1425,7 +1421,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			});
 		}
 
-		// color
+		/**
+		 * color
+		 */
 		if ( control.container.has( '.color' ).size() ) {
 			var picker = this.container.find ( '.kirki-color-control' );
 			picker.wpColorPicker ( {
@@ -1440,5 +1438,6 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				}
 			} );
 		}
+
 	}
 });

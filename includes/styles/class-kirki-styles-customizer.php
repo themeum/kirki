@@ -113,7 +113,6 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 							$available_variants = array( $all_variants['400'], $all_variants['700'] );
 						}
 					}
-
 					if ( is_array( $subsets ) ) {
 						$available_subsets = array();
 						$all_subsets = array(
