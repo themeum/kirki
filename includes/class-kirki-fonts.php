@@ -36,22 +36,17 @@ class Kirki_Fonts {
 	 */
 	public static function get_standard_fonts() {
 
-		$i18n = Kirki_Toolkit::i18n();
-
-		return apply_filters( 'kirki/fonts/standard_fonts', array(
-			'serif'     => array(
-				'label' => $i18n['serif'],
-				'stack' => 'Georgia,Times,"Times New Roman",serif',
-			),
-			'sans-serif' => array(
-				'label'  => $i18n['sans-serif'],
-				'stack'  => 'Helvetica,Arial,sans-serif',
-			),
-			'monospace' => array(
-				'label' => $i18n['monospace'],
-				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
-			),
+		$fonts = apply_filters( 'kirki/fonts/standard_fonts', array(
+			'Georgia,Times,"Times New Roman",serif',
+			'Helvetica,Arial,sans-serif',
+			'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 		) );
+		$standard_fonts = array();
+		foreach ( $fonts as $font ) {
+			$standard_fonts[ $font ] = array();
+		}
+
+		return $standard_fonts;
 
 	}
 
