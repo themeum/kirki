@@ -76,67 +76,65 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				);
 
 				wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
-				$final = array();
+
 				$fonts = Kirki_Fonts::get_all_fonts();
+				$all_variants = array(
+					'regular'   => array( 'id' => 'regular',   'label' => esc_attr__( 'Normal 400', 'kirki' ) ),
+					'italic'    => array( 'id' => '400italic', 'label' => esc_attr__( 'Normal 400 Italic', 'kirki' ) ),
+					'100'       => array( 'id' => '100',       'label' => esc_attr__( 'Ultra-Light 100', 'kirki' ) ),
+					'200'       => array( 'id' => '200',       'label' => esc_attr__( 'Light 200', 'kirki' ) ),
+					'300'       => array( 'id' => '300',       'label' => esc_attr__( 'Book 300', 'kirki' ) ),
+					'500'       => array( 'id' => '500',       'label' => esc_attr__( 'Medium 500', 'kirki' ) ),
+					'600'       => array( 'id' => '600',       'label' => esc_attr__( 'Semi-Bold 600', 'kirki' ) ),
+					'700'       => array( 'id' => '700',       'label' => esc_attr__( 'Bold 700', 'kirki' ) ),
+					'700italic' => array( 'id' => '700italic', 'label' => esc_attr__( 'Bold 700 Italic', 'kirki' ) ),
+					'900'       => array( 'id' => '900',       'label' => esc_attr__( 'Normal 400', 'kirki' ) ),
+					'900italic' => array( 'id' => '900italic', 'label' => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ) ),
+					'100italic' => array( 'id' => '100italic', 'label' => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ) ),
+					'300italic' => array( 'id' => '300italic', 'label' => esc_attr__( 'Book 300 Italic', 'kirki' ) ),
+					'500italic' => array( 'id' => '500italic', 'label' => esc_attr__( 'Medium 500 Italic', 'kirki' ) ),
+					'800'       => array( 'id' => '800',       'label' => esc_attr__( 'Extra-Bold 800', 'kirki' ) ),
+					'800italic' => array( 'id' => '800italic', 'label' => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ) ),
+					'600italic' => array( 'id' => '600italic', 'label' => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ) ),
+					'200italic' => array( 'id' => '200italic', 'label' => esc_attr__( 'Light 200 Italic', 'kirki' ) ),
+				);
+
+				$all_subsets = array(
+					'all'          => esc_attr__( 'All', 'kirki' ),
+					'greek-ext'    => esc_attr__( 'Greek Extended', 'kirki' ),
+					'greek'        => esc_attr__( 'Greek', 'kirki' ),
+					'cyrillic-ext' => esc_attr__( 'Cyrillic Extended', 'kirki' ),
+					'cyrillic'     => esc_attr__( 'Cyrillic', 'kirki' ),
+					'latin-ext'    => esc_attr__( 'Latin Extended', 'kirki' ),
+					'latin'        => esc_attr__( 'Latin', 'kirki' ),
+					'vietnamese'   => esc_attr__( 'Vietnamese', 'kirki' ),
+					'arabic'       => esc_attr__( 'Arabic', 'kirki' ),
+					'gujarati'     => esc_attr__( 'Gujarati', 'kirki' ),
+					'devanagari'   => esc_attr__( 'Devanagari', 'kirki' ),
+					'bengali'      => esc_attr__( 'Bengali', 'kirki' ),
+					'hebrew'       => esc_attr__( 'Hebrew', 'kirki' ),
+					'khmer'        => esc_attr__( 'Khmer', 'kirki' ),
+					'tamil'        => esc_attr__( 'Tamil', 'kirki' ),
+					'telugu'       => esc_attr__( 'Telugu', 'kirki' ),
+					'thai'         => esc_attr__( 'Thai', 'kirki' ),
+				);
+
 				foreach ( $fonts as $family => $args ) {
-					$label    = ( isset( $args['label'] ) ) ? $label : $family;
-					$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array();
-					$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
+					$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
+					$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
+					$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array( 'all' );
+
 					$available_variants = array();
-					if ( is_array( $variants ) ) {
-						$all_variants = array(
-							'400'       => array( 'id' => '400',       'label' => esc_attr__( 'Normal 400', 'kirki' ) ),
-							'italic'    => array( 'id' => '400italic', 'label' => esc_attr__( 'Normal 400 Italic', 'kirki' ) ),
-							'100'       => array( 'id' => '100',       'label' => esc_attr__( 'Ultra-Light 100', 'kirki' ) ),
-							'200'       => array( 'id' => '200',       'label' => esc_attr__( 'Light 200', 'kirki' ) ),
-							'300'       => array( 'id' => '300',       'label' => esc_attr__( 'Book 300', 'kirki' ) ),
-							'500'       => array( 'id' => '500',       'label' => esc_attr__( 'Medium 500', 'kirki' ) ),
-							'600'       => array( 'id' => '600',       'label' => esc_attr__( 'Semi-Bold 600', 'kirki' ) ),
-							'700'       => array( 'id' => '700',       'label' => esc_attr__( 'Bold 700', 'kirki' ) ),
-							'700italic' => array( 'id' => '700italic', 'label' => esc_attr__( 'Bold 700 Italic', 'kirki' ) ),
-							'900'       => array( 'id' => '900',       'label' => esc_attr__( 'Normal 400', 'kirki' ) ),
-							'900italic' => array( 'id' => '900italic', 'label' => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ) ),
-							'100italic' => array( 'id' => '100italic', 'label' => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ) ),
-							'300italic' => array( 'id' => '300italic', 'label' => esc_attr__( 'Book 300 Italic', 'kirki' ) ),
-							'500italic' => array( 'id' => '500italic', 'label' => esc_attr__( 'Medium 500 Italic', 'kirki' ) ),
-							'800'       => array( 'id' => '800',       'label' => esc_attr__( 'Extra-Bold 800', 'kirki' ) ),
-							'800italic' => array( 'id' => '800italic', 'label' => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ) ),
-							'600italic' => array( 'id' => '600italic', 'label' => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ) ),
-							'200italic' => array( 'id' => '200italic', 'label' => esc_attr__( 'Light 200 Italic', 'kirki' ) ),
-						);
-						foreach ( $variants as $variant ) {
-							if ( in_array( $variant, $all_variants ) ) {
-								$available_variants[] = array( 'id' => $fw_id, 'label' => $variant );
-							}
-						}
-						if ( empty( $available_variants ) ) {
-							$available_variants = array( $all_variants['400'], $all_variants['700'] );
+					foreach ( $variants as $variant ) {
+						if ( array_key_exists( $variant, $all_variants ) ) {
+							$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
 						}
 					}
-					if ( is_array( $subsets ) ) {
-						$available_subsets = array();
-						$all_subsets = array(
-							'greek-ext'    => esc_attr__( 'Greek Extended', 'kirki' ),
-							'greek'        => esc_attr__( 'Greek', 'kirki' ),
-							'cyrillic-ext' => esc_attr__( 'Cyrillic Extended', 'kirki' ),
-							'cyrillic'     => esc_attr__( 'Cyrillic', 'kirki' ),
-							'latin-ext'    => esc_attr__( 'Latin Extended', 'kirki' ),
-							'latin'        => esc_attr__( 'Latin', 'kirki' ),
-							'vietnamese'   => esc_attr__( 'Vietnamese', 'kirki' ),
-							'arabic'       => esc_attr__( 'Arabic', 'kirki' ),
-							'gujarati'     => esc_attr__( 'Gujarati', 'kirki' ),
-							'devanagari'   => esc_attr__( 'Devanagari', 'kirki' ),
-							'bengali'      => esc_attr__( 'Bengali', 'kirki' ),
-							'hebrew'       => esc_attr__( 'Hebrew', 'kirki' ),
-							'khmer'        => esc_attr__( 'Khmer', 'kirki' ),
-							'tamil'        => esc_attr__( 'Tamil', 'kirki' ),
-							'telugu'       => esc_attr__( 'Telugu', 'kirki' ),
-							'thai'         => esc_attr__( 'Thai', 'kirki' ),
-						);
-						foreach ( $subsets as $id => $label ) {
-							if ( in_array( $id, $all_subsets ) ) {
-								$available_subsets[] = array( 'id' => $id, 'label' => $label );
-							}
+
+					$available_subsets = array();
+					foreach ( $subsets as $subset ) {
+						if ( array_key_exists( $subset, $all_subsets ) ) {
+							$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
 						}
 					}
 

@@ -109,6 +109,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'no-image-selected'     => esc_attr__( 'No Image Selected', 'kirki' ),
 				'select-font-family'    => esc_attr__( 'Select a font-family', 'kirki' ),
 				'variant'               => esc_attr__( 'Font Variant', 'kirki' ),
+				'subset'                => esc_attr__( 'Font Subset', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

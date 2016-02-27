@@ -77,6 +77,10 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						<h5>{{ data.l10n['variant'] }}</h5>
 						<select class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 					</div>
+					<div class="subset">
+						<h5>{{ data.l10n['subset'] }}</h5>
+						<select class="subset" id="kirki-typography-subset-{{{ data.id }}}"></select>
+					</div>
 				<# } #>
 
 				<# if ( data.choices['font-size'] ) { #>
