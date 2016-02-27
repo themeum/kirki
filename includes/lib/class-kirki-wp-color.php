@@ -44,7 +44,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		/**
 		 * The class constructor
 		 */
-		public function __construct( $color = '', $mode = 'auto' ) {
+		private function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
 			if ( ! method_exists( $this, 'from_' . $mode ) ) {
 				$mode = $this->get_mode( $color );
@@ -212,7 +212,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return void
 		 */
-		public function from_hex() {
+		private function from_hex() {
 
 			if ( ! function_exists( 'sanitize_hex_color' ) ) {
 				require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
@@ -247,7 +247,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return void
 		 */
-		public function from_rgb() {
+		private function from_rgb() {
 			$value = explode( ',', str_replace( array( ' ', 'rgb', '(', ')' ), '', $this->color ) );
 			// set red, green, blue
 			$this->red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
@@ -267,7 +267,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return void
 		 */
-		public function from_rgba() {
+		private function from_rgba() {
 			// Set r, g, b, a properties
 			$value = explode( ',', str_replace( array( ' ', 'rgba', '(', ')' ), '', $this->color ) );
 			$this->red   = ( isset( $value[0] ) ) ? intval( $value[0] ) : 255;
@@ -293,7 +293,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return void
 		 */
-		public function from_hsl() {
+		private function from_hsl() {
 			$value = explode( ',', str_replace( array( ' ', 'hsl', '(', ')', '%' ), '', $this->color ) );
 			$this->hue        = $value[0];
 			$this->saturation = $value[1];
@@ -306,7 +306,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return void
 		 */
-		public function from_hsla() {
+		private function from_hsla() {
 			$value = explode( ',', str_replace( array( ' ', 'hsla', '(', ')', '%' ), '', $this->color ) );
 			$this->hue        = $value[0];
 			$this->saturation = $value[1];
@@ -324,7 +324,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return string
 		 */
-		public function rgb_to_hex( $red, $green, $blue ) {
+		private function rgb_to_hex( $red, $green, $blue ) {
 			// get hex values properly formatted
 			$hex_red   = $this->dexhex_double_digit( $red );
 			$hex_green = $this->dexhex_double_digit( $green );
@@ -351,7 +351,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 * Calculates the red, green, blue values of an HSL color
 		 * @see https://gist.github.com/brandonheyer/5254516
 		 */
-		public function from_hsl_array() {
+		private function from_hsl_array() {
 			$h = $this->hue /360;
 			$s = $this->saturation / 100;
 			$l = $this->lightness /100;
@@ -416,7 +416,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 * @param $mode string
 		 * @return string
 		 */
-		public function get_css( $mode = 'hex' ) {
+		public function toCSS( $mode = 'hex' ) {
 
 			$value = '';
 
@@ -443,7 +443,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		/**
 		 * Sets the HSL values of a color based on the values of red, green, blue
 		 */
-		public function set_hsl() {
+		private function set_hsl() {
 			$red   = $this->red / 255;
 			$green = $this->green / 255;
 			$blue  = $this->blue / 255;
@@ -482,7 +482,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		/**
 		 * Sets the brightness of a color based on the values of red, green, blue
 		 */
-		public function set_brightness() {
+		private function set_brightness() {
 			$this->brightness = array(
 				'red'   => round( $this->red * .299 ),
 				'green' => round( $this->green * .587 ),
@@ -504,7 +504,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return array
 		 */
-		public function get_word_colors() {
+		private function get_word_colors() {
 			return array(
 				'aliceblue'            => 'F0F8FF',
 				'antiquewhite'         => 'FAEBD7',

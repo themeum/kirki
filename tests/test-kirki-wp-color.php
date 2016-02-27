@@ -162,19 +162,19 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 					switch ( $test ) {
 
 						case 'hex':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hex' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hex' ) );
 							break;
 						case 'rgb':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'rgb' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'rgb' ) );
 							break;
 						case 'rgba':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'rgba' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'rgba' ) );
 							break;
 						case 'hsl':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hsl' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hsl' ) );
 							break;
 						case 'hsla':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hsla' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hsla' ) );
 							break;
 						case 'hue':
 							$this->assertEquals( $expected_result, $color_obj->hue );
