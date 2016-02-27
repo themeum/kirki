@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_WP_Color' ) ) {
-	class Kirki_WP_Color {
+if ( ! class_exists( 'ariColor' ) ) {
+	class ariColor {
 
 		public static $instances = array();
 
@@ -67,9 +67,9 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 * @param $color string|array
 		 * @param $mode  string
 		 *
-		 * @return Kirki_WP_Color (object)
+		 * @return ariColor (object)
 		 */
-		public static function get_instance( $color, $mode = 'auto' ) {
+		public static function newColor( $color, $mode = 'auto' ) {
 			// get an md5 for this color
 			$color_md5 = ( is_array( $color ) ) ? md5( json_encode( $color ) . $mode ) : md5( $color . $mode );
 			// Set the instance if it does not already exist.
@@ -95,16 +95,16 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 		 *
 		 * @return object|null
 		 */
-		public function get_new_object_by( $property = '', $value = '' ) {
+		public function getNew( $property = '', $value = '' ) {
 			// Check if we're changing any of the rgba values
 			if ( in_array( $property, array( 'red', 'green', 'blue', 'alpha' ) ) ) {
 				$this->$property = $value;
-				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
+				return self::newColor( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
 			}
 			// Check if we're changing any of the hsl values
 			elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
 				$this->$property = $value;
-				return self::get_instance( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
+				return self::newColor( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
 			}
 			// Check if we're changing the brightness
 			elseif ( 'brightness' == $property ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 					// if it's not smaller and it's not greater, then it's equal.
 					return $this;
 				}
-				return self::get_instance( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
+				return self::newColor( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')' );
 			}
 			return null;
 		}
@@ -661,5 +661,5 @@ if ( ! class_exists( 'Kirki_WP_Color' ) ) {
 }
 
 function kirki_wp_color( $color = '' ) {
-	return Kirki_WP_Color::get_instance( $color );
+	return ariColor::newColor( $color );
 }

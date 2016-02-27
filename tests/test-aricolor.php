@@ -1,6 +1,6 @@
 <?php
 
-class Test_Kirki_WP_Color extends WP_UnitTestCase {
+class Test_ariColor extends WP_UnitTestCase {
 
 	public function test_colors() {
 
@@ -156,7 +156,7 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 
 		foreach ( $colors as $color ) {
 			foreach ( $color['input'] as $color_mode => $input_value ) {
-				$color_obj = Kirki_WP_Color::get_instance( $input_value );
+				$color_obj = ariColor::newColor( $input_value );
 				$this->assertEquals( $color_mode, $color_obj->mode );
 				foreach ( $color['output'] as $test => $expected_result ) {
 					switch ( $test ) {

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Color' ) ) {
-	class Kirki_Color extends Kirki_WP_Color {
+	class Kirki_Color extends ariColor {
 
 		/**
 		 * A proxy for the sanitize_color method.
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( 1 < $alpha ) {
 				$alpha = 1;
 			}
-			$new_obj = $obj->get_new_object_by( 'alpha', $alpha );
+			$new_obj = $obj->getNew( 'alpha', $alpha );
 			return $new_obj->toCSS( 'rgba' );
 		}
 
@@ -173,7 +173,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			}
 			$new_brightness = ( 0 < $steps ) ? $obj->brightness['total'] - $steps : $obj->brightness['total'] + $steps;
 			$new_brightness = max( 0, min( 255, $new_brightness ) );
-			$new_obj = $obj->get_new_object_by( 'brightness', $new_brightness );
+			$new_obj = $obj->getNew( 'brightness', $new_brightness );
 			return $new_obj->toCSS( 'hex' );
 		}
 
