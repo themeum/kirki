@@ -1255,6 +1255,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		if ( control.container.has( '.font-family' ).size() ) {
 			jQuery('#kirki-typography-' + control.id ).selectize({
 				options: kirkiAllFonts,
+				items: [ control.setting._value['font-family'] ],
 				persist: false,
 				maxItems: 1,
 				valueField: 'family',
