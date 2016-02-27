@@ -1254,8 +1254,6 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		}
 		if ( control.container.has( '.font-family' ).size() ) {
 
-			console.log( kirkiAllFonts );
-
 			jQuery('#kirki-typography-font-family-' + control.id ).selectize({
 				options:     kirkiAllFonts,
 				items:       [ control.setting._value['font-family'] ],
@@ -1313,14 +1311,41 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				// add the value to the array and set the setting's value
 				compiled_value['font-family'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
-				// find the properties of this family
+				// find the font-weights of this family
 				for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 					if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
-						console.log( kirkiAllFonts[ i ]['font-weights'] );
 						var font_weights = kirkiAllFonts[ i ]['font-weights'];
-						var subsets      = kirkiAllFonts[ i ]['subsets'];
+						// Determine the initial value we have to use
+						if ( undefined !== kirkiAllFonts[ i ]['font-weights'][ compiled_value['font-weight'] ] ) {
+							var initial_fw = compiled_value['font-weight'];
+						} else {
+							for ( var w = 0, len = font_weights.length; w < len; w++ ) {
+								if ( '400' == font_weights[ w ]['id'] ) {
+									var has_regular = true
+								} else if ( undefined === first_available_fw ) {
+									var first_available_fw = font_weights[ w ]['id'];
+								}
+							}
+							// select regular if it exists, otherwise fallback to the first available value
+							var initial_fw = ( undefined !== has_regular ) ? '400' : first_available_fw;
+						}
+						// refresh available font-weights
+						if ( undefined !== font_weights ) {
+							jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
+							var font_weights_refresh;
+							font_weights_refresh = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+								maxItems: 1,
+								valueField: 'id',
+								labelField: 'label',
+								searchField: ['id', 'label'],
+								options: font_weights,
+								items: [ initial_fw ],
+								create: false
+							}).data( 'selectize' );
+						}
 					}
 				}
+
 				// refresh the preview
 				wp.customize.previewer.refresh();
 			});
@@ -1351,6 +1376,40 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 		// font-weight
 		if ( control.container.has( '.font-weight' ).size() ) {
+			// populate this field initially with the font-weights available for this family.
+			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+				if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
+					var font_weights = kirkiAllFonts[ i ]['font-weights'];
+					// Determine the initial value we have to use
+					if ( undefined !== kirkiAllFonts[ i ]['font-weights'][ compiled_value['font-weight'] ] ) {
+						var initial_fw = compiled_value['font-weight'];
+					} else {
+						for ( var w = 0, len = font_weights.length; w < len; w++ ) {
+							if ( '400' == font_weights[ w ]['id'] ) {
+								var has_regular = true
+							} else if ( undefined === first_available_fw ) {
+								var first_available_fw = font_weights[ w ]['id'];
+							}
+						}
+						// select regular if it exists, otherwise fallback to the first available value
+						var initial_fw = ( undefined !== has_regular ) ? '400' : first_available_fw;
+					}
+					// refresh available font-weights
+					if ( undefined !== font_weights ) {
+						jQuery( '#kirki-typography-font-weight-' + control.id ).selectize()[0].selectize.destroy();
+						var font_weights_initial;
+						font_weights_initial = jQuery( '#kirki-typography-font-weight-' + control.id ).selectize({
+							maxItems: 1,
+							valueField: 'id',
+							labelField: 'label',
+							searchField: ['id', 'label'],
+							options: font_weights,
+							items: [ initial_fw ],
+							create: false
+						}).data( 'selectize' );
+					}
+				}
+			}
 			this.container.on( 'change', '.font-weight select', function() {
 				// add the value to the array and set the setting's value
 				compiled_value['font-weight'] = jQuery( this ).val();

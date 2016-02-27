@@ -84,11 +84,9 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 					if ( is_array( $variants ) ) {
 						$font_weights = array();
 						foreach ( $variants as $variant ) {
-							if ( in_array( $variant, array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ) ) ) {
-								$font_weights[] = $variant;
-							}
-							if ( 'regular' == $variant ) {
-								$font_weights['400'] = '400';
+							if ( in_array( $variant, array( '100', '200', '300', '400', '500', '600', '700', '800', '900', 'regular' ) ) ) {
+								$fw_id = ( 'regular' == $variant ) ? '400' : $variant;
+								$font_weights[] = array( 'id' => $fw_id, 'label' => $variant );
 							}
 						}
 					}
