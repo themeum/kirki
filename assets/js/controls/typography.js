@@ -54,7 +54,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		// use selectize
 		jQuery( '.customize-control-typography select' ).selectize();
 
-		// bold
+		// font-style
 		if ( control.container.has( '.font-style' ).size() ) {
 			this.container.on( 'click', '.font-style input', function() {
 				compiled_value['font-style'] = jQuery( this ).val();
