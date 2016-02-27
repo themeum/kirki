@@ -1256,7 +1256,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 			console.log( kirkiAllFonts );
 
-			jQuery('#kirki-typography-' + control.id ).selectize({
+			jQuery('#kirki-typography-font-family-' + control.id ).selectize({
 				options:     kirkiAllFonts,
 				items:       [ control.setting._value['font-family'] ],
 				persist:     false,
@@ -1313,6 +1313,14 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				// add the value to the array and set the setting's value
 				compiled_value['font-family'] = jQuery( this ).val();
 				control.setting.set( compiled_value );
+				// find the properties of this family
+				for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+					if ( compiled_value['font-family'] === kirkiAllFonts[ i ]['family'] ) {
+						console.log( kirkiAllFonts[ i ]['font-weights'] );
+						var font_weights = kirkiAllFonts[ i ]['font-weights'];
+						var subsets      = kirkiAllFonts[ i ]['subsets'];
+					}
+				}
 				// refresh the preview
 				wp.customize.previewer.refresh();
 			});

@@ -71,7 +71,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 					<div class="font-family">
 						<h5>{{ data.l10n['font-family'] }}</h5>
-						<select id="kirki-typography-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
+						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
 					</div>
 				<# } #>
 
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.choices['font-weight'] ) { #>
 					<div class="font-weight">
 						<h5>{{ data.l10n['font-weight'] }}</h5>
-						<select class="font-weight">
+						<select class="font-weight" id="kirki-typography-font-weight-{{{ data.id }}}">
 							<# var fontWeights = ['100', '200', '300', '400', '500', '600', '700', '800', '900']; #>
 							<# for ( key in fontWeights ) { #>
 								<option value="{{ fontWeights[ key ] }}" <# if ( fontWeights[ key ] == data.value['font-weight'] ) { #> selected<# } #>>{{ fontWeights[ key ] }}</option>

@@ -88,7 +88,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 								$font_weights[] = $variant;
 							}
 							if ( 'regular' == $variant ) {
-								$font_weights[] = '400';
+								$font_weights['400'] = '400';
 							}
 						}
 					}
