@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Color' ) ) {
-	class Kirki_Color extends Kirki_WP_Color {
+	class Kirki_Color extends ariColor {
 
 		/**
 		 * A proxy for the sanitize_color method.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( 'auto' == $mode ) {
 				$mode = $obj->mode;
 			}
-			return $obj->get_css( $mode );
+			return $obj->toCSS( $mode );
 		}
 
 		/**
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function get_rgb( $color, $implode = false ) {
 			$obj = kirki_wp_color( $color );
 			if ( $implode ) {
-				return $obj->get_css( 'rgb' );
+				return $obj->toCSS( 'rgb' );
 			}
 			return array( $obj->red, $obj->green, $obj->blue );
 		}
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function get_rgba( $color = '#fff', $alpha = 1 ) {
 			$obj = kirki_wp_color( $color );
 			if ( 1 == $alpha ) {
-				return $obj->get_css( 'rgba' );
+				return $obj->toCSS( 'rgba' );
 			}
 			// Make sure that opacity is properly formatted.
 			// Converts 1-100 values to 0-1
@@ -130,8 +130,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( 1 < $alpha ) {
 				$alpha = 1;
 			}
-			$new_obj = $obj->get_new_object_by( 'alpha', $alpha );
-			return $new_obj->get_css( 'rgba' );
+			$new_obj = $obj->getNew( 'alpha', $alpha );
+			return $new_obj->toCSS( 'rgba' );
 		}
 
 		/**
@@ -143,7 +143,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function rgba_to_rgb( $color ) {
 			$obj = kirki_wp_color( $color );
-			return $obj->get_css( 'rgb' );
+			return $obj->toCSS( 'rgb' );
 		}
 
 		/**
@@ -169,12 +169,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function adjust_brightness( $hex, $steps ) {
 			$obj = kirki_wp_color( $hex );
 			if ( 0 == $steps ) {
-				return $obj->get_css( 'hex' );
+				return $obj->toCSS( 'hex' );
 			}
 			$new_brightness = ( 0 < $steps ) ? $obj->brightness['total'] - $steps : $obj->brightness['total'] + $steps;
 			$new_brightness = max( 0, min( 255, $new_brightness ) );
-			$new_obj = $obj->get_new_object_by( 'brightness', $new_brightness );
-			return $new_obj->get_css( 'hex' );
+			$new_obj = $obj->getNew( 'brightness', $new_brightness );
+			return $new_obj->toCSS( 'hex' );
 		}
 
 		/**
@@ -196,7 +196,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				( $percentage * $obj_1->green + ( 100 - $percentage ) * $obj_2->green ) / 100,
 				( $percentage * $obj_1->blue + ( 100 - $percentage ) * $obj_2->blue ) / 100,
 			) );
-			return $new_color->get_css( 'hex' );
+			return $new_color->toCSS( 'hex' );
 		}
 
 		/**
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function to_hsl( $color ) {
 			$obj = kirki_wp_color( $color );
-			return $obj->get_css( 'hsl' );
+			return $obj->toCSS( 'hsl' );
 		}
 
 		/*

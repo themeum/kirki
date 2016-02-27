@@ -89,5 +89,8 @@ if ( ! function_exists( 'kirki_load_textdomain' ) ) {
 	add_action( 'plugins_loaded', 'kirki_load_textdomain' );
 }
 
+// Include the ariColor library
+include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.php' ) );
+
 // Add an empty config for global fields
 Kirki::add_config( '' );

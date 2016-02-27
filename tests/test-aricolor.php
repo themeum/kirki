@@ -1,6 +1,6 @@
 <?php
 
-class Test_Kirki_WP_Color extends WP_UnitTestCase {
+class Test_ariColor extends WP_UnitTestCase {
 
 	public function test_colors() {
 
@@ -156,25 +156,25 @@ class Test_Kirki_WP_Color extends WP_UnitTestCase {
 
 		foreach ( $colors as $color ) {
 			foreach ( $color['input'] as $color_mode => $input_value ) {
-				$color_obj = Kirki_WP_Color::get_instance( $input_value );
+				$color_obj = ariColor::newColor( $input_value );
 				$this->assertEquals( $color_mode, $color_obj->mode );
 				foreach ( $color['output'] as $test => $expected_result ) {
 					switch ( $test ) {
 
 						case 'hex':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hex' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hex' ) );
 							break;
 						case 'rgb':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'rgb' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'rgb' ) );
 							break;
 						case 'rgba':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'rgba' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'rgba' ) );
 							break;
 						case 'hsl':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hsl' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hsl' ) );
 							break;
 						case 'hsla':
-							$this->assertEquals( $expected_result, $color_obj->get_css( 'hsla' ) );
+							$this->assertEquals( $expected_result, $color_obj->toCSS( 'hsla' ) );
 							break;
 						case 'hue':
 							$this->assertEquals( $expected_result, $color_obj->hue );
