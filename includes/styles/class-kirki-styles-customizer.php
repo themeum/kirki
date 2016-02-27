@@ -80,8 +80,8 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 				$fonts = Kirki_Fonts::get_all_fonts();
 				foreach ( $fonts as $family => $args ) {
 					$label      = ( isset( $args['label'] ) ) ? $label : $family;
-					$variants   = ( isset( $args['variants'] ) ) ? $variants : array();
-					$subsets    = ( isset( $args['subsets'] ) ) ? $subsets : array();
+					$variants   = ( isset( $args['variants'] ) ) ? $args['variants'] : array();
+					$subsets    = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
 					$final[] = array(
 						'family'   => $family,
 						'label'    => $label,
