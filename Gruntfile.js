@@ -9,28 +9,6 @@ module.exports = function(grunt) {
 				dest: 'assets/json/webfonts.json'
 			}
 		},
-		// jshint
-		jshint: {
-			files: [
-				'assets/js/**/*.js'
-			],
-			options: {
-				expr: true,
-				globals: {
-					jQuery: true,
-					console: true,
-					module: true,
-					document: true
-				}
-			}
-		},
-		phpdocumentor: {
-			dist: {
-				options: {
-					ignore: 'node_modules'
-				}
-			}
-		},
 		// Compile CSS
 		sass: {
 			dist: {
@@ -43,7 +21,10 @@ module.exports = function(grunt) {
 				separator: '',
 			},
 			dist: {
-				src: ['assets/js/controls/*.js'],
+				src: [
+					'assets/js/kirki-functions.js',
+					'assets/js/controls/*.js'
+				],
 				dest: 'assets/js/customizer.js',
 			},
 		},
@@ -114,13 +95,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-wp-i18n');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-curl');
-	grunt.loadNpmTasks('grunt-phpdocumentor');
 	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
 
 	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'makepot', 'wp_readme_to_markdown']);
-	grunt.registerTask('docs', ['phpdocumentor:dist']);
 	grunt.registerTask('googlefonts', ['curl:google-fonts-source']);
 
 };
