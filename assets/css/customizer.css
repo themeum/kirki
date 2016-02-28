@@ -1266,53 +1266,15 @@ span.CodeMirror-selectedtext {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
-.customize-control-typography .font-style {
-  width: 100%; }
-  .customize-control-typography .font-style .dashicons {
-    border-radius: 50%;
-    padding: 10px;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    color: #777; }
-  .customize-control-typography .font-style .switch-input {
-    display: none; }
-    .customize-control-typography .font-style .switch-input:checked + .switch-label .dashicons {
-      background-color: #3498DB;
-      color: #fff; }
-.customize-control-typography .font-family {
-  width: 100%; }
-.customize-control-typography .font-size,
-.customize-control-typography .font-weight,
-.customize-control-typography .line-height,
-.customize-control-typography .letter-spacing {
-  width: 48%; }
-  .customize-control-typography .font-size h5,
-  .customize-control-typography .font-weight h5,
-  .customize-control-typography .line-height h5,
-  .customize-control-typography .letter-spacing h5 {
+  .customize-control-typography .wrapper .font-family,
+  .customize-control-typography .wrapper .variant,
+  .customize-control-typography .wrapper .subset,
+  .customize-control-typography .wrapper .font-size,
+  .customize-control-typography .wrapper .line-height,
+  .customize-control-typography .wrapper .letter-spacing,
+  .customize-control-typography .wrapper .color {
     width: 100%;
-    margin: 10px 0 7px 0; }
-.customize-control-typography .font-size,
-.customize-control-typography .letter-spacing {
-  display: flex;
-  flex-wrap: wrap; }
-  .customize-control-typography .font-size input[type="number"],
-  .customize-control-typography .letter-spacing input[type="number"] {
-    width: 50%;
-    height: 36px; }
-  .customize-control-typography .font-size .selectize-control.single,
-  .customize-control-typography .letter-spacing .selectize-control.single {
-    width: 50%; }
-    .customize-control-typography .font-size .selectize-control.single > .selectize-input,
-    .customize-control-typography .letter-spacing .selectize-control.single > .selectize-input {
-      height: 36px; }
-.customize-control-typography .font-weight .selectize-control.single {
-  width: 100%; }
-  .customize-control-typography .font-weight .selectize-control.single > .selectize-input {
-    height: 36px; }
-.customize-control-typography .line-height input[type="number"] {
-  width: 100%;
-  height: 36px; }
+    float: none;
+    clear: both; }
 
 /*# sourceMappingURL=customizer.css.map */

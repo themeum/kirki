@@ -93,7 +93,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.choices['line-height'] ) { #>
 					<div class="line-height">
 						<h5>{{ data.l10n['line-height'] }}</h5>
-						<input type="number" min="0" step="any" value="{{ data.value['line-height'] }}"/>
+						<input type="text" value="{{ data.value['line-height'] }}"/>
 					</div>
 				<# } #>
 

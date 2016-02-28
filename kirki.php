@@ -122,9 +122,4 @@ Kirki::add_field( 'kirki_demo', array(
 		'color'          => true,
 		'units'          => array( 'px', 'rem' ),
 	),
-	'output' => array(
-		array(
-			'element' => 'body',
-		),
-	),
 ) );
