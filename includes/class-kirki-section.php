@@ -15,7 +15,7 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 			$this->wp_customize->add_section( sanitize_key( $args['id'] ), array(
 				'title'           => $args['title'], // already escaped in WP Core
 				'priority'        => absint( $args['priority'] ),
-				'panel'           => esc_attr( $args['panel'] ),
+				'panel'           => sanitize_key( $args['panel'] ),
 				'description'     => $args['description'], // already escaped in WP Core
 				'active_callback' => $args['active_callback'],
 			) );

@@ -31,6 +31,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			$this->option_name();
 			$this->option_type();
+			$this->section_id();
 			$this->capability();
 			$this->settings();
 			$this->tooltip();
@@ -95,6 +96,16 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$this->args = wp_parse_args( $this->args, $defaults );
 				// escape value
 				$this->args['option_name'] = esc_attr( $this->args['option_name'] );
+			}
+		}
+
+
+		/**
+		 * Sets the section ID.
+		 */
+		private function section_id() {
+			if ( isset( $this->args['section'] ) ) {
+				$this->args['section'] = sanitize_key( $this->args['section'] );
 			}
 		}
 
