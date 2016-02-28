@@ -324,6 +324,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
+				'typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
 			);
 			if ( ! isset( $this->args['sanitize_callback'] ) || empty( $this->args['sanitize_callback'] ) || ! is_callable( $this->args['sanitize_callback'] ) ) {
 				$this->args['sanitize_callback'] = array( 'Kirki_Sanitize_Values', 'unfiltered' );

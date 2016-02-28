@@ -26,17 +26,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
-
-			$value = $this->value();
-			$this->json['value'] = array(
-				'font-style'     => isset( $value['font-style'] ) ? $value['font-style'] : false,
-				'font-family'    => isset( $value['font-family'] ) ? $value['font-family'] : '',
-				'font-size'      => isset( $value['font-size'] ) ? $value['font-size'] : '',
-				'variant'        => isset( $value['variant'] ) ? $value['variant'] : '',
-				'line-height'    => isset( $value['line-height'] ) ? $value['line-height'] : '',
-				'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : '',
-				'color'          => isset( $value['color'] ) ? $value['color'] : '',
-			);
+			$this->add_values_backwards_compatibility();
 			$this->json['l10n'] = Kirki_Toolkit::i18n();
 		}
 
@@ -103,6 +93,28 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# } #>
 			</div>
 			<?php
+		}
+
+		protected function add_values_backwards_compatibility() {
+			$value = $this->value();
+			$old_values = array(
+				'font-family'    => '',
+				'font-size'      => '',
+				'variant'        => ( isset( $value['font-weight'] ) ) ? $value['font-weight'] : 'regular',
+				'line-height'    => '',
+				'letter-spacing' => '',
+				'color'          => '',
+			);
+			// font-weight is now variant.
+			// All values are the same with the exception of 400 (becomes regular)
+			if ( '400' == $old_values['variant'] ) {
+				$old_values['variant'] = 'regular';
+			}
+			// letter spacing was in px, now it requires units.
+			if ( $value['letter-spacing'] == intval( $value['letter-spacing'] ) ) {
+				$value['letter-spacing'] .= 'px';
+			}
+			$this->json['value'] = wp_parse_args( $value, $old_values );
 		}
 
 	}

@@ -30,7 +30,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				}
 			}
 			// Determine the initial value we have to use
-			if ( null === startValue ) {
+			if ( null === startValue  ) {
 				for ( var i = 0, len = subList.length; i < len; i++ ) {
 					if ( undefined !== subList[ i ]['id'] ) {
 						var activeItem = value['variant'];
@@ -52,6 +52,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			}
 			// we should allow multiple subsets but not multiple variants
 			var maxItems = ( 'variant' == sub ) ? 1 : null;
+			var plugins  = ( 'variant' == sub ) ? '' : ['remove_button'];
 			// create
 			var subSelectize;
 			subSelectize = jQuery( subSelector ).selectize({
@@ -62,6 +63,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				options:     subList,
 				items:       [ subValue ],
 				create:      false,
+				plugins:     plugins,
 				render: {
 					item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
 					option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
@@ -115,11 +117,12 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		});
 
 		this.container.on( 'change', '.subset select', function() {
-			// add the value to the array and set the setting's value
+			// add the value to the array and set the setting's value.
 			value['subset'] = jQuery( this ).val();
 			control.setting.set( value );
 			// refresh the preview
 			wp.customize.previewer.refresh();
+			console.log(value);
 		});
 
 		this.container.on( 'change', '.font-size input', function() {
