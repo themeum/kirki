@@ -206,6 +206,15 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								}
 							}
 						}
+						// Add support for the older font-weight parameter.
+						// This has been deprecated so the code below is just
+						// to add some backwards-compatibility.
+						// Once a user visits their customizer
+						// and make changes to their typography,
+						// new values are saved and this one is no longer used.
+						if ( isset( $value['font-weight'] ) && $value['font-weight'] ) {
+							$styles[ $output['media_query'] ][ $element ]['font-weight'] = $value['font-weight'];
+						}
 						// Take care of variants
 						if ( isset( $value['variant'] ) && $value['variant'] ) {
 							// Get the font_weight
