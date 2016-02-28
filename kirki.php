@@ -94,32 +94,3 @@ include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.ph
 
 // Add an empty config for global fields
 Kirki::add_config( '' );
-
-Kirki::add_field( 'kirki_demo', array(
-	'type'        => 'typography',
-	'settings'    => 'typography_demo',
-	'label'       => esc_attr__( 'Typography Control', 'kirki' ),
-	'description' => esc_attr__( 'This is a composite typography control. It saves the data as an array, and you can define which of the controls you want shown.', 'kirki' ),
-	'help'        => esc_attr__( 'This is a tooltip', 'kirki-demo' ),
-	'section'     => 'colors',
-	'default'     => array(
-		'font-style'     => array( 'bold', 'italic' ),
-		'font-family'    => 'Roboto',
-		'font-size'      => '14',
-		'font-weight'    => '400',
-		'line-height'    => '1.5',
-		'letter-spacing' => '0',
-		'color'          => '#333333',
-	),
-	'priority'    => 0,
-	'choices'     => array(
-		'font-style'     => true,
-		'font-family'    => true,
-		'font-size'      => true,
-		'font-weight'    => true,
-		'line-height'    => true,
-		'letter-spacing' => true,
-		'color'          => true,
-		'units'          => array( 'px', 'rem' ),
-	),
-) );
