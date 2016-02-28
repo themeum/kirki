@@ -189,22 +189,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				} else {
 					// Take care of typography controls output
 					if ( 'typography' == self::$field_type ) {
-						foreach ( $value as $key => $sub_value ) {
-							$styles[ $output['media_query'] ][ $element ][ $key ] = $sub_value;
-						}
-
-						if ( isset( $value['bold'] ) && $value['bold'] ) {
-							$styles[ $output['media_query'] ][ $element ]['font-weight'] = 'bold';
-						}
-						if ( isset( $value['italic'] ) && $value['italic'] ) {
-							$styles[ $output['media_query'] ][ $element ]['font-style'] = 'italic';
-						}
-						if ( isset( $value['underline'] ) && $value['underline'] ) {
-							$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'underline';
-						}
-						if ( isset( $value['strikethrough'] ) && $value['strikethrough'] ) {
-							$styles[ $output['media_query'] ][ $element ]['text-decoration'] = 'strikethrough';
-						}
+						// Take care of font-families
 						if ( isset( $value['font-family'] ) ) {
 							// add double quotes if needed
 							if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
@@ -220,6 +205,30 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 									}
 								}
 							}
+						}
+						// Take care of variants
+						if ( isset( $value['variant'] ) && $value['variant'] ) {
+							// Get the font_weight
+							$font_weight = str_replace( 'italic', '', $value['variant'] );
+							$font_weight = ( in_array( $font_weight, array( '', 'regular' ) ) ) ? '400' : $font_weight;
+							// Is this italic?
+							$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
+							$styles[ $output['media_query'] ][ $element ]['font-weight'] = $font_weight;
+							if ( $is_italic ) {
+								$styles[ $output['media_query'] ][ $element ]['font-style'] = 'italic';
+							}
+						}
+						// Take care of font-size
+						if ( isset( $value['font-size'] ) ) {
+							$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];
+						}
+						// Take care of line-height
+						if ( isset( $value['line-height'] ) ) {
+							$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
+						}
+						// Take care of letter-spacing
+						if ( isset( $value['letter-spacing'] ) ) {
+							$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
 						}
 					}
 					// Take care of "spacing" controls output
