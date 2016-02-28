@@ -63,47 +63,9 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 
-			$fonts = Kirki_Fonts::get_all_fonts();
-			$all_variants = array(
-				'regular'   => $l10n['regular'],
-				'italic'    => $l10n['italic'],
-				'100'       => $l10n['100'],
-				'200'       => $l10n['200'],
-				'300'       => $l10n['300'],
-				'500'       => $l10n['500'],
-				'600'       => $l10n['600'],
-				'700'       => $l10n['700'],
-				'700italic' => $l10n['700italic'],
-				'900'       => $l10n['900'],
-				'900italic' => $l10n['900italic'],
-				'100italic' => $l10n['100italic'],
-				'300italic' => $l10n['300italic'],
-				'500italic' => $l10n['500italic'],
-				'800'       => $l10n['800'],
-				'800italic' => $l10n['800italic'],
-				'600italic' => $l10n['600italic'],
-				'200italic' => $l10n['200italic'],
-			);
-
-			$all_subsets = array(
-				'all'          => $l10n['all'],
-				'greek-ext'    => $l10n['greek-ext'],
-				'greek'        => $l10n['greek'],
-				'cyrillic-ext' => $l10n['cyrillic-ext'],
-				'cyrillic'     => $l10n['cyrillic'],
-				'latin-ext'    => $l10n['latin-ext'],
-				'latin'        => $l10n['latin'],
-				'vietnamese'   => $l10n['vietnamese'],
-				'arabic'       => $l10n['arabic'],
-				'gujarati'     => $l10n['gujarati'],
-				'devanagari'   => $l10n['devanagari'],
-				'bengali'      => $l10n['bengali'],
-				'hebrew'       => $l10n['hebrew'],
-				'khmer'        => $l10n['khmer'],
-				'tamil'        => $l10n['tamil'],
-				'telugu'       => $l10n['telugu'],
-				'thai'         => $l10n['thai'],
-			);
+			$fonts        = Kirki_Fonts::get_all_fonts();
+			$all_variants = Kirki_Fonts::get_all_variants();
+			$all_subsets  = Kirki_Fonts::get_all_subsets();
 
 			foreach ( $fonts as $family => $args ) {
 				$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;

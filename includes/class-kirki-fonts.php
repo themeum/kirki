@@ -130,6 +130,30 @@ class Kirki_Fonts {
 		);
 	}
 
+	public static function get_all_variants() {
+		$i18n = Kirki_Toolkit::i18n();
+		return array(
+			'regular'   => $i18n['regular'],
+			'italic'    => $i18n['italic'],
+			'100'       => $i18n['100'],
+			'200'       => $i18n['200'],
+			'300'       => $i18n['300'],
+			'500'       => $i18n['500'],
+			'600'       => $i18n['600'],
+			'700'       => $i18n['700'],
+			'700italic' => $i18n['700italic'],
+			'900'       => $i18n['900'],
+			'900italic' => $i18n['900italic'],
+			'100italic' => $i18n['100italic'],
+			'300italic' => $i18n['300italic'],
+			'500italic' => $i18n['500italic'],
+			'800'       => $i18n['800'],
+			'800italic' => $i18n['800italic'],
+			'600italic' => $i18n['600italic'],
+			'200italic' => $i18n['200italic'],
+		);
+	}
+
 	public static function is_google_font( $fontname ) {
 		if ( array_key_exists( $fontname, self::$google_fonts ) ) {
 			return true;
