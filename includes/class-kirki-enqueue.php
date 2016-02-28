@@ -73,7 +73,10 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				$standard_fonts_final[] = array(
 					'family'       => $value['stack'],
 					'label'        => $value['label'],
-					'variants'     => array(),
+					'variants'     => array(
+						array( 'id' => 'regular', 'label' => $all_variants['regular'] ),
+						array( 'id' => '700',     'label' => $all_variants['700'] ),
+					),
 					'subsets'      => array(),
 					'is_standard'  => true,
 				);

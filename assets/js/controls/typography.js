@@ -30,12 +30,11 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
 					if ( undefined !== kirkiAllFonts[ i ]['is_standard'] && true === kirkiAllFonts[ i ]['is_standard'] ) {
 						is_standard = true;
-					} else {
-						subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
 					}
+					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
 				}
 			}
-			if ( false === is_standard ) {
+			if ( false === is_standard || 'subset' !== sub ) {
 				// Determine the initial value we have to use
 				if ( null === startValue  ) {
 					if ( 'variant' == sub ) { // the context here is variants
