@@ -165,6 +165,8 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 				$value['color'] = $color->toCSS( 'hex' );
 			}
 
+			return $value;
+
 		}
 
 		/**
