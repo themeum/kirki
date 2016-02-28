@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 2.1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-02-28 01:49:32+00:00\n"
+"POT-Creation-Date: 2016-02-28 15:52:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.3\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
 
 #: includes/class-kirki-toolkit.php:48
 msgid "Background Color"
@@ -361,20 +361,6 @@ msgstr ""
 
 #: includes/styles/class-kirki-styles-customizer.php:99
 msgid "Light 200 Italic"
-msgstr ""
-
-#: kirki.php:101
-msgid "Typography Control"
-msgstr ""
-
-#: kirki.php:102
-msgid ""
-"This is a composite typography control. It saves the data as an array, and "
-"you can define which of the controls you want shown."
-msgstr ""
-
-#: kirki.php:103
-msgid "This is a tooltip"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

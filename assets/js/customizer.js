@@ -1,3 +1,26 @@
+function kirkiArrayToObject( arr ) {
+	var obj = {};
+	if ( null !== arr ) {
+		for ( var i = 0; i < arr.length; ++i ) {
+			if ( undefined !== arr[ i ] ) {
+				obj[ i ] = arr[ i ];
+			}
+		}
+	}
+	return obj;
+}
+
+function kirkiObjectToArray( obj ) {
+	var arr = [];
+	if ( null !== obj ) {
+		for ( var i = 0; i < obj.length; ++i ) {
+			if ( undefined !== obj[ i ] ) {
+				arr.push( obj[ i ] );
+			}
+		}
+	}
+	return arr;
+}
 /**
  * KIRKI CONTROL: CHECKBOX
  */
@@ -958,16 +981,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: KIRKI-SELECT
  */
-function kirkiArrayToObject( arr ) {
-	var rv = {};
-	if ( null !== arr ) {
-		for ( var i = 0; i < arr.length; ++i ) {
-			if ( arr[i] !== undefined ) rv[i] = arr[i];
-		}
-	}
-	return rv;
-}
-
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
@@ -1273,17 +1286,38 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			}
 			// Determine the initial value we have to use
 			if ( null === startValue  ) {
-				for ( var i = 0, len = subList.length; i < len; i++ ) {
-					if ( undefined !== subList[ i ]['id'] ) {
-						var activeItem = value['variant'];
-					} else {
-						var defaultValue = ( 'variant' == sub ) ? 'regular' : 'latin';
-						if ( defaultValue == subList[ i ]['id'] ) {
-							var hasDefault = true;
-						} else if ( undefined === firstAvailable ) {
-							var firstAvailable = subList[ i ]['id'];
+				if ( 'variant' == sub ) { // the context here is variants
+					for ( var i = 0, len = subList.length; i < len; i++ ) {
+						if ( undefined !== subList[ i ]['id'] ) {
+							var activeItem = value['variant'];
+						} else {
+							var defaultValue = 'regular';
+							if ( defaultValue == subList[ i ]['id'] ) {
+								var hasDefault = true;
+							} else if ( undefined === firstAvailable ) {
+								var firstAvailable = subList[ i ]['id'];
+							}
 						}
 					}
+				} else if ( 'subset' == sub ) { // The context here is subsets
+					var subsetValues = {};
+					for ( var i = 0, len = subList.length; i < len; i++ ) {
+						for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
+							if ( value['subset'][ s ] == subList[ i ]['id'] ) {
+								subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+							}
+						}
+					}
+					if ( 0 == subsetValues.length ) {
+						activeItem = ['latin']
+					} else {
+						var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
+							return [value];
+						});
+						activeItem = subsetValuesArray;
+					}
+					console.log(subsetValues);
+					console.log(activeItem);
 				}
 				// If we have a valid setting, use it.
 				// If not, check if the default value exists.
@@ -1292,20 +1326,17 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			} else {
 				subValue = startValue;
 			}
-			// we should allow multiple subsets but not multiple variants
-			var maxItems = ( 'variant' == sub ) ? 1 : null;
-			var plugins  = ( 'variant' == sub ) ? '' : ['remove_button'];
 			// create
 			var subSelectize;
 			subSelectize = jQuery( subSelector ).selectize({
-				maxItems:    maxItems,
+				maxItems:    ( 'variant' == sub ) ? 1 : null,
 				valueField:  'id',
 				labelField:  'label',
 				searchField: ['label'],
 				options:     subList,
-				items:       [ subValue ],
+				items:       ( 'variant' == sub ) ? [ subValue ] : subValue,
 				create:      false,
-				plugins:     plugins,
+				plugins:     ( 'variant' == sub ) ? '' : ['remove_button'],
 				render: {
 					item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
 					option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
@@ -1364,7 +1395,6 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			control.setting.set( value );
 			// refresh the preview
 			wp.customize.previewer.refresh();
-			console.log(value);
 		});
 
 		this.container.on( 'change', '.font-size input', function() {
