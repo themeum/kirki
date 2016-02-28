@@ -113,7 +113,24 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'size'                  => esc_attr__( 'Size', 'kirki' ),
 				'height'                => esc_attr__( 'Height', 'kirki' ),
 				'spacing'               => esc_attr__( 'Spacing', 'kirki' ),
-			);
+				'regular'               => esc_attr__( 'Normal 400', 'kirki' ),
+				'italic'                => esc_attr__( 'Normal 400 Italic', 'kirki' ),
+				'100'                   => esc_attr__( 'Ultra-Light 100', 'kirki' ),
+				'200'                   => esc_attr__( 'Light 200', 'kirki' ),
+				'300'                   => esc_attr__( 'Book 300', 'kirki' ),
+				'500'                   => esc_attr__( 'Medium 500', 'kirki' ),
+				'600'                   => esc_attr__( 'Semi-Bold 600', 'kirki' ),
+				'700'                   => esc_attr__( 'Bold 700', 'kirki' ),
+				'700italic'             => esc_attr__( 'Bold 700 Italic', 'kirki' ),
+				'900'                   => esc_attr__( 'Normal 400', 'kirki' ),
+				'900italic'             => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
+				'100italic'             => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ),
+				'300italic'             => esc_attr__( 'Book 300 Italic', 'kirki' ),
+				'500italic'             => esc_attr__( 'Medium 500 Italic', 'kirki' ),
+				'800'                   => esc_attr__( 'Extra-Bold 800', 'kirki' ),
+				'800italic'             => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ),
+				'600italic'             => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ),
+				'200italic'             => esc_attr__( 'Light 200 Italic', 'kirki' ),			);
 
 			$config = apply_filters( 'kirki/config', array() );
 

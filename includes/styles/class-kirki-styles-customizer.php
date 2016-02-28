@@ -34,10 +34,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		public $process = false;
 
 		public function __construct() {
-
 			add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_scripts' ), 99 );
-
 		}
 
 		/**
@@ -46,107 +43,6 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		public function customizer_styles() {
 			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null, Kirki_Toolkit::$version );
 			wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
-		}
-
-		/**
-		 * Enqueue the scripts required.
-		 */
-		public function customizer_scripts() {
-			if ( ! Kirki_Toolkit::kirki_debug() ) {
-				$suffix = '.min';
-				if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-					$suffix = '';
-				}
-
-				self::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
-				self::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-				wp_enqueue_script( 'jquery-ui-core' );
-				wp_enqueue_script( 'jquery-ui-sortable' );
-				wp_enqueue_script( 'jquery-ui-button' );
-
-				$deps = array(
-					'jquery',
-					'customize-base',
-					'jquery-ui-core',
-					'jquery-ui-button',
-					'jquery-ui-sortable',
-					'codemirror',
-					'jquery-ui-spinner',
-					'selectize',
-				);
-
-				wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
-
-				$fonts = Kirki_Fonts::get_all_fonts();
-				$all_variants = array(
-					'regular'   => esc_attr__( 'Normal 400', 'kirki' ),
-					'italic'    => esc_attr__( 'Normal 400 Italic', 'kirki' ),
-					'100'       => esc_attr__( 'Ultra-Light 100', 'kirki' ),
-					'200'       => esc_attr__( 'Light 200', 'kirki' ),
-					'300'       => esc_attr__( 'Book 300', 'kirki' ),
-					'500'       => esc_attr__( 'Medium 500', 'kirki' ),
-					'600'       => esc_attr__( 'Semi-Bold 600', 'kirki' ),
-					'700'       => esc_attr__( 'Bold 700', 'kirki' ),
-					'700italic' => esc_attr__( 'Bold 700 Italic', 'kirki' ),
-					'900'       => esc_attr__( 'Normal 400', 'kirki' ),
-					'900italic' => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
-					'100italic' => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ),
-					'300italic' => esc_attr__( 'Book 300 Italic', 'kirki' ),
-					'500italic' => esc_attr__( 'Medium 500 Italic', 'kirki' ),
-					'800'       => esc_attr__( 'Extra-Bold 800', 'kirki' ),
-					'800italic' => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ),
-					'600italic' => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ),
-					'200italic' => esc_attr__( 'Light 200 Italic', 'kirki' ),
-				);
-
-				$all_subsets = array(
-					'all'          => esc_attr__( 'All', 'kirki' ),
-					'greek-ext'    => esc_attr__( 'Greek Extended', 'kirki' ),
-					'greek'        => esc_attr__( 'Greek', 'kirki' ),
-					'cyrillic-ext' => esc_attr__( 'Cyrillic Extended', 'kirki' ),
-					'cyrillic'     => esc_attr__( 'Cyrillic', 'kirki' ),
-					'latin-ext'    => esc_attr__( 'Latin Extended', 'kirki' ),
-					'latin'        => esc_attr__( 'Latin', 'kirki' ),
-					'vietnamese'   => esc_attr__( 'Vietnamese', 'kirki' ),
-					'arabic'       => esc_attr__( 'Arabic', 'kirki' ),
-					'gujarati'     => esc_attr__( 'Gujarati', 'kirki' ),
-					'devanagari'   => esc_attr__( 'Devanagari', 'kirki' ),
-					'bengali'      => esc_attr__( 'Bengali', 'kirki' ),
-					'hebrew'       => esc_attr__( 'Hebrew', 'kirki' ),
-					'khmer'        => esc_attr__( 'Khmer', 'kirki' ),
-					'tamil'        => esc_attr__( 'Tamil', 'kirki' ),
-					'telugu'       => esc_attr__( 'Telugu', 'kirki' ),
-					'thai'         => esc_attr__( 'Thai', 'kirki' ),
-				);
-
-				foreach ( $fonts as $family => $args ) {
-					$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
-					$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
-					$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array( 'all' );
-
-					$available_variants = array();
-					foreach ( $variants as $variant ) {
-						if ( array_key_exists( $variant, $all_variants ) ) {
-							$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
-						}
-					}
-
-					$available_subsets = array();
-					foreach ( $subsets as $subset ) {
-						if ( array_key_exists( $subset, $all_subsets ) ) {
-							$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
-						}
-					}
-
-					$final[] = array(
-						'family'       => $family,
-						'label'        => $label,
-						'variants'     => $available_variants,
-						'subsets'      => $available_subsets,
-					);
-				}
-				wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
-			}
 		}
 
 		/**
