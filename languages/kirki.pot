@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 2.1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-02-28 15:52:34+00:00\n"
+"POT-Creation-Date: 2016-02-28 16:53:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -122,87 +122,70 @@ msgid "OFF"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:75
-#: includes/styles/class-kirki-styles-customizer.php:103
 msgid "All"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:76
-#: includes/styles/class-kirki-styles-customizer.php:107
 msgid "Cyrillic"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:77
-#: includes/styles/class-kirki-styles-customizer.php:106
 msgid "Cyrillic Extended"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:78
-#: includes/styles/class-kirki-styles-customizer.php:113
 msgid "Devanagari"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:79
-#: includes/styles/class-kirki-styles-customizer.php:105
 msgid "Greek"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:80
-#: includes/styles/class-kirki-styles-customizer.php:104
 msgid "Greek Extended"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:81
-#: includes/styles/class-kirki-styles-customizer.php:116
 msgid "Khmer"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:82
-#: includes/styles/class-kirki-styles-customizer.php:109
 msgid "Latin"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:83
-#: includes/styles/class-kirki-styles-customizer.php:108
 msgid "Latin Extended"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:84
-#: includes/styles/class-kirki-styles-customizer.php:110
 msgid "Vietnamese"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:85
-#: includes/styles/class-kirki-styles-customizer.php:115
 msgid "Hebrew"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:86
-#: includes/styles/class-kirki-styles-customizer.php:111
 msgid "Arabic"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:87
-#: includes/styles/class-kirki-styles-customizer.php:114
 msgid "Bengali"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:88
-#: includes/styles/class-kirki-styles-customizer.php:112
 msgid "Gujarati"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:89
-#: includes/styles/class-kirki-styles-customizer.php:117
 msgid "Tamil"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:90
-#: includes/styles/class-kirki-styles-customizer.php:118
 msgid "Telugu"
 msgstr ""
 
 #: includes/class-kirki-toolkit.php:91
-#: includes/styles/class-kirki-styles-customizer.php:119
 msgid "Thai"
 msgstr ""
 
@@ -290,77 +273,76 @@ msgstr ""
 msgid "Spacing"
 msgstr ""
 
-#: includes/controls/class-kirki-controls-repeater-control.php:28
-msgid "Add new row"
-msgstr ""
-
-#: includes/styles/class-kirki-styles-customizer.php:82
-#: includes/styles/class-kirki-styles-customizer.php:91
+#: includes/class-kirki-toolkit.php:116 includes/class-kirki-toolkit.php:125
 msgid "Normal 400"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:83
+#: includes/class-kirki-toolkit.php:117
 msgid "Normal 400 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:84
+#: includes/class-kirki-toolkit.php:118
 msgid "Ultra-Light 100"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:85
+#: includes/class-kirki-toolkit.php:119
 msgid "Light 200"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:86
+#: includes/class-kirki-toolkit.php:120
 msgid "Book 300"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:87
+#: includes/class-kirki-toolkit.php:121
 msgid "Medium 500"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:88
+#: includes/class-kirki-toolkit.php:122
 msgid "Semi-Bold 600"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:89
+#: includes/class-kirki-toolkit.php:123
 msgid "Bold 700"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:90
+#: includes/class-kirki-toolkit.php:124
 msgid "Bold 700 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:92
+#: includes/class-kirki-toolkit.php:126
 msgid "Ultra-Bold 900 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:93
+#: includes/class-kirki-toolkit.php:127
 msgid "Ultra-Light 100 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:94
+#: includes/class-kirki-toolkit.php:128
 msgid "Book 300 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:95
+#: includes/class-kirki-toolkit.php:129
 msgid "Medium 500 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:96
+#: includes/class-kirki-toolkit.php:130
 msgid "Extra-Bold 800"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:97
+#: includes/class-kirki-toolkit.php:131
 msgid "Extra-Bold 800 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:98
+#: includes/class-kirki-toolkit.php:132
 msgid "Semi-Bold 600 Italic"
 msgstr ""
 
-#: includes/styles/class-kirki-styles-customizer.php:99
+#: includes/class-kirki-toolkit.php:133
 msgid "Light 200 Italic"
+msgstr ""
+
+#: includes/controls/class-kirki-controls-repeater-control.php:28
+msgid "Add new row"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
