@@ -63,11 +63,24 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
 
-			$fonts        = Kirki_Fonts::get_all_fonts();
-			$all_variants = Kirki_Fonts::get_all_variants();
-			$all_subsets  = Kirki_Fonts::get_all_subsets();
+			$google_fonts   = Kirki_Fonts::get_google_fonts();
+			$standard_fonts = Kirki_Fonts::get_standard_fonts();
+			$all_variants   = Kirki_Fonts::get_all_variants();
+			$all_subsets    = Kirki_Fonts::get_all_subsets();
 
-			foreach ( $fonts as $family => $args ) {
+			$standard_fonts_final = array();
+			foreach ( $standard_fonts as $key => $value ) {
+				$standard_fonts_final[] = array(
+					'family'       => $value['stack'],
+					'label'        => $value['label'],
+					'variants'     => array(),
+					'subsets'      => array(),
+					'is_standard'  => true,
+				);
+			}
+
+			$google_fonts_final = array();
+			foreach ( $google_fonts as $family => $args ) {
 				$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
 				$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
 				$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array( 'all' );
@@ -86,13 +99,14 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 					}
 				}
 
-				$final[] = array(
+				$google_fonts_final[] = array(
 					'family'       => $family,
 					'label'        => $label,
 					'variants'     => $available_variants,
 					'subsets'      => $available_subsets,
 				);
 			}
+			$final = array_merge( $standard_fonts_final, $google_fonts_final );
 			wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
 		}
 		public function branding() {

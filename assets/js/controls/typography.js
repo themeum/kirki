@@ -21,72 +21,84 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 		var renderSubControl = function( fontFamily, sub, startValue ) {
 			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
+			var is_standard = false;
+			var subList = {}
 			// destroy
 			jQuery( subSelector ).selectize()[0].selectize.destroy();
 			// Get all items in the sub-list for the active font-family
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
-					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
-				}
-			}
-			// Determine the initial value we have to use
-			if ( null === startValue  ) {
-				if ( 'variant' == sub ) { // the context here is variants
-					for ( var i = 0, len = subList.length; i < len; i++ ) {
-						if ( undefined !== subList[ i ]['id'] ) {
-							var activeItem = value['variant'];
-						} else {
-							var defaultValue = 'regular';
-							if ( defaultValue == subList[ i ]['id'] ) {
-								var hasDefault = true;
-							} else if ( undefined === firstAvailable ) {
-								var firstAvailable = subList[ i ]['id'];
-							}
-						}
-					}
-				} else if ( 'subset' == sub ) { // The context here is subsets
-					var subsetValues = {};
-					for ( var i = 0, len = subList.length; i < len; i++ ) {
-						for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
-							if ( value['subset'][ s ] == subList[ i ]['id'] ) {
-								subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
-							}
-						}
-					}
-					if ( 0 == subsetValues.length ) {
-						activeItem = ['latin']
+					if ( undefined !== kirkiAllFonts[ i ]['is_standard'] && true === kirkiAllFonts[ i ]['is_standard'] ) {
+						is_standard = true;
 					} else {
-						var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
-							return [value];
-						});
-						activeItem = subsetValuesArray;
+						subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
 					}
-					console.log(subsetValues);
-					console.log(activeItem);
 				}
-				// If we have a valid setting, use it.
-				// If not, check if the default value exists.
-				// If not, then use the 1st available option.
-				subValue = ( undefined !== activeItem ) ? activeItem : ( undefined !== hasDefault ) ? 'regular' : firstAvailable;
-			} else {
-				subValue = startValue;
 			}
-			// create
-			var subSelectize;
-			subSelectize = jQuery( subSelector ).selectize({
-				maxItems:    ( 'variant' == sub ) ? 1 : null,
-				valueField:  'id',
-				labelField:  'label',
-				searchField: ['label'],
-				options:     subList,
-				items:       ( 'variant' == sub ) ? [ subValue ] : subValue,
-				create:      false,
-				plugins:     ( 'variant' == sub ) ? '' : ['remove_button'],
-				render: {
-					item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
-					option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
-				},
-			}).data( 'selectize' );
+			if ( false === is_standard ) {
+				// Determine the initial value we have to use
+				if ( null === startValue  ) {
+					if ( 'variant' == sub ) { // the context here is variants
+						for ( var i = 0, len = subList.length; i < len; i++ ) {
+							if ( undefined !== subList[ i ]['id'] ) {
+								var activeItem = value['variant'];
+							} else {
+								var defaultValue = 'regular';
+								if ( defaultValue == subList[ i ]['id'] ) {
+									var hasDefault = true;
+								} else if ( undefined === firstAvailable ) {
+									var firstAvailable = subList[ i ]['id'];
+								}
+							}
+						}
+					} else if ( 'subset' == sub ) { // The context here is subsets
+						var subsetValues = {};
+						for ( var i = 0, len = subList.length; i < len; i++ ) {
+							for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
+								if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
+									subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+								}
+							}
+						}
+						if ( 0 == subsetValues.length ) {
+							activeItem = ['latin']
+						} else {
+							var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
+								return [value];
+							});
+							activeItem = subsetValuesArray;
+						}
+					}
+					// If we have a valid setting, use it.
+					// If not, check if the default value exists.
+					// If not, then use the 1st available option.
+					subValue = ( undefined !== activeItem ) ? activeItem : ( undefined !== hasDefault ) ? 'regular' : firstAvailable;
+				} else {
+					subValue = startValue;
+				}
+				// create
+				var subSelectize;
+				subSelectize = jQuery( subSelector ).selectize({
+					maxItems:    ( 'variant' == sub ) ? 1 : null,
+					valueField:  'id',
+					labelField:  'label',
+					searchField: ['label'],
+					options:     subList,
+					items:       ( 'variant' == sub ) ? [ subValue ] : subValue,
+					create:      false,
+					plugins:     ( 'variant' == sub ) ? '' : ['remove_button'],
+					render: {
+						item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
+						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
+					},
+				}).data( 'selectize' );
+			}
+
+			if ( true === is_standard ) {
+				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
+			} else {
+				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
+			}
 		};
 
 		// Render the font-family
@@ -100,8 +112,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			searchField: ['family', 'label', 'subsets'],
 			create:      false,
 			render: {
-				item: function( item, escape ) { return '<div>' + escape( item.family ) + '</div>'; },
-				option: function( item, escape ) { return '<div>' + escape( item.family ) + '</div>'; }
+				item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
+				option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
 			},
 		});
 
