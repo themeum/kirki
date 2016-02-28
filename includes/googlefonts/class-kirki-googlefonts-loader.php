@@ -102,4 +102,3 @@ class Kirki_GoogleFonts_Loader extends Kirki_GoogleFonts_Manager {
 	}
 
 }
-

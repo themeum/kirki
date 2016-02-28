@@ -13,12 +13,12 @@ class Kirki_GoogleFonts_Manager {
 	public static $subsets = array();
 
 	/**
-	 * Additional font-weights
+	 * Additional variants
 	 */
-	public static $font_weights = array();
+	public static $variants = array();
 
 	/**
-	 * The font-families including their font-weights and subsets
+	 * The font-families including their variants and subsets
 	 */
 	protected static $fonts = array();
 
@@ -40,7 +40,7 @@ class Kirki_GoogleFonts_Manager {
 	/**
 	 * adds a font and specifies its properties
 	 */
-	public static function add_font( $family = '', $weight = 400, $style = '', $subsets = array( 'latin' ) ) {
+	public static function add_font( $family = '', $variant = 'regular', $subsets = array( 'latin' ) ) {
 		// Early exit if font-family is empty
 		if ( '' == $family ) {
 			return;
@@ -70,12 +70,9 @@ class Kirki_GoogleFonts_Manager {
 			$font_variants = $google_fonts[ $family ]['variants'];
 		}
 
-		// format the requested variant
-		$requested_variant = $weight . $style;
-
 		// Is this a valid variant for this font?
 		$variant_is_valid = false;
-		if ( in_array( $requested_variant, $font_variants ) ) {
+		if ( in_array( $variant, $font_variants ) ) {
 			$variant_is_valid = true;
 		}
 
@@ -100,7 +97,7 @@ class Kirki_GoogleFonts_Manager {
 			self::$fonts[ $family ]['variants'] = array();
 		}
 		if ( $variant_is_valid ) {
-			self::$fonts[ $family ]['variants'][] =$requested_variant;
+			self::$fonts[ $family ]['variants'][] = $variant;
 		}
 
 	}

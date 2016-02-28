@@ -49,7 +49,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		}
 
 		public function inline_dynamic_css() {
-			new Kirki_GoogleFonts_Loader();
+			Kirki_GoogleFonts_Loader::get_instance();
 
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {

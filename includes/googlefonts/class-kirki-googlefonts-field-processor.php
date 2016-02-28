@@ -27,13 +27,19 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 			if ( ! isset( $value['font-family'] ) ) {
 				return;
 			}
-			// Set a default value for font-weight
-			if ( ! isset( $value['font-weight'] ) ) {
-				$value['font-weight'] = 400;
+			// Add support for older formats of the typography control.
+			// We used to have font-weight instead of variant.
+			if ( isset( $value['font-weight'] ) && ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
+				$value['variant'] = $value['font-weight'];
+			}
+			// Set a default value for variants
+			if ( ! isset( $value['variant'] ) ) {
+				$value['variant'] = 'regular';
 			}
 			if ( isset( $value['subset'] ) ) {
 				// Add the subset directly to the array of subsets
 				// in the Kirki_GoogleFonts_Manager object.
+				// Subsets must be applied to ALL fonts if possible.
 				if ( ! is_array( $value['subset'] ) ) {
 					Kirki_GoogleFonts_Manager::$subsets[] = $value['subset'];
 				} else {
@@ -42,17 +48,13 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 					}
 				}
 			}
-			// Get the font-style
-			if ( ! isset( $value['font-style'] ) ) {
-				$value['font-style'] = 'regular';
-			}
 			// Add the requested google-font
-			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], $value['font-weight'], $value['font-style'] );
+			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], $value['variant'] );
 			// Add font-weight 700 so that bold works for all fonts
-			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], 700, $value['font-style'] );
+			Kirki_GoogleFonts_Manager::add_font( $value['font-family'], '700' );
 			// Any additional font-weights we may need
-			foreach ( Kirki_GoogleFonts_Manager::$font_weights as $font_weight ) {
-				Kirki_GoogleFonts_Manager::add_font( $value['font-family'], 700, $value['font-style'] );
+			foreach ( Kirki_GoogleFonts_Manager::$variants as $variant ) {
+				Kirki_GoogleFonts_Manager::add_font( $value['font-family'], $variant );
 			}
 		}
 
@@ -63,7 +65,7 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 			if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
 				foreach ( $field['output'] as $output ) {
 					// If we don't have a typography-related output argument we can skip this.
-					if ( ! isset( $output['property'] ) ||  ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset', 'font-style' ) ) ) {
+					if ( ! isset( $output['property'] ) ||  ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ) ) ) {
 						continue;
 					}
 					// Get the value
@@ -75,7 +77,7 @@ class Kirki_GoogleFonts_Field_Processor extends Kirki_Fonts {
 					}
 					// font-weight
 					elseif ( 'font-weight' == $output['property'] ) {
-						Kirki_GoogleFonts_Manager::$font_weights[] = $value;
+						Kirki_GoogleFonts_Manager::$variants[] = $value;
 					}
 					// subsets
 					elseif ( 'font-subset' == $output['property'] || 'subset' == $output['property'] ) {
