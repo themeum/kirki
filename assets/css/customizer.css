@@ -1276,5 +1276,17 @@ span.CodeMirror-selectedtext {
     width: 100%;
     float: none;
     clear: both; }
+    .customize-control-typography .wrapper .font-family h5,
+    .customize-control-typography .wrapper .variant h5,
+    .customize-control-typography .wrapper .subset h5,
+    .customize-control-typography .wrapper .font-size h5,
+    .customize-control-typography .wrapper .line-height h5,
+    .customize-control-typography .wrapper .letter-spacing h5,
+    .customize-control-typography .wrapper .color h5 {
+      margin: .67em 0 0; }
+  .customize-control-typography .wrapper .font-size,
+  .customize-control-typography .wrapper .line-height,
+  .customize-control-typography .wrapper .letter-spacing {
+    width: 33%; }
 
 /*# sourceMappingURL=customizer.css.map */

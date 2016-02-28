@@ -27,7 +27,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 
-			$i18n = Kirki_Toolkit::i18n();
 			$value = $this->value();
 			$this->json['value'] = array(
 				'font-style'     => isset( $value['font-style'] ) ? $value['font-style'] : false,
@@ -38,15 +37,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'letter-spacing' => isset( $value['letter-spacing'] ) ? $value['letter-spacing'] : '',
 				'color'          => isset( $value['color'] ) ? $value['color'] : '',
 			);
-			$this->json['l10n'] = array(
-				'font-family'    => $i18n['font-family'],
-				'font-size'      => $i18n['font-size'],
-				'variant'        => $i18n['variant'],
-				'line-height'    => $i18n['line-height'],
-				'letter-spacing' => $i18n['letter-spacing'],
-				'font-style'     => $i18n['font-style'],
-				'color'          => $i18n['color'],
-			);
+			$this->json['l10n'] = Kirki_Toolkit::i18n();
 		}
 
 		public function render_content() {}
@@ -78,28 +69,28 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						<select class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 					</div>
 					<div class="subset">
-						<h5>{{ data.l10n['subset'] }}</h5>
+						<h5>{{ data.l10n['subsets'] }}</h5>
 						<select class="subset" id="kirki-typography-subset-{{{ data.id }}}"></select>
 					</div>
 				<# } #>
 
 				<# if ( data.choices['font-size'] ) { #>
 					<div class="font-size">
-						<h5>{{ data.l10n['font-size'] }}</h5>
+						<h5>{{ data.l10n['size'] }}</h5>
 						<input type="text" value="{{ data.value['font-size'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.choices['line-height'] ) { #>
 					<div class="line-height">
-						<h5>{{ data.l10n['line-height'] }}</h5>
+						<h5>{{ data.l10n['height'] }}</h5>
 						<input type="text" value="{{ data.value['line-height'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.choices['letter-spacing'] ) { #>
 					<div class="letter-spacing">
-						<h5>{{ data.l10n['letter-spacing'] }}</h5>
+						<h5>{{ data.l10n['spacing'] }}</h5>
 						<input type="text" value="{{ data.value['letter-spacing'] }}"/>
 					</div>
 				<# } #>

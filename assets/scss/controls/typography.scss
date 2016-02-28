@@ -21,6 +21,14 @@
 			width: 100%;
 			float: none;
 			clear: both;
+			h5 {
+				margin: .67em 0 0;
+			}
+		}
+		.font-size,
+		.line-height,
+		.letter-spacing {
+			width: 33%;
 		}
 	}
 }

@@ -108,8 +108,11 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'remove'                => esc_attr__( 'Remove', 'kirki' ),
 				'no-image-selected'     => esc_attr__( 'No Image Selected', 'kirki' ),
 				'select-font-family'    => esc_attr__( 'Select a font-family', 'kirki' ),
-				'variant'               => esc_attr__( 'Font Variant', 'kirki' ),
-				'subset'                => esc_attr__( 'Font Subset', 'kirki' ),
+				'variant'               => esc_attr__( 'Variant', 'kirki' ),
+				'subsets'               => esc_attr__( 'Subset', 'kirki' ),
+				'size'                  => esc_attr__( 'Size', 'kirki' ),
+				'height'                => esc_attr__( 'Height', 'kirki' ),
+				'spacing'               => esc_attr__( 'Spacing', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );
