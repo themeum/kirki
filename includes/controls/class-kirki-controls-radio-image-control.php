@@ -40,6 +40,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 					<input class="image-select" type="radio" value="{{ key }}" name="_customize-radio-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}{{ key }}">
 							<img src="{{ data.choices[ key ] }}">
+							<span class="image-clickable"></span>
 						</label>
 					</input>
 				<# } #>
