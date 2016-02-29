@@ -90,7 +90,17 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			 * Array of fields that have their own output class
 			 */
 			$field_output_classes = array(
-				'color-alpha' => 'Kirki_Output_Control_Color',
+				'color-alpha'     => 'Kirki_Output_Control_Color',
+				'dimension'       => 'Kirki_Output_Control_Dimension',
+				'kirki-generic'   => 'Kirki_Output_Control_Generic',
+				'number'          => 'Kirki_Output_Control_Number',
+				'radio-buttonset' => 'Kirki_Output_Control_Radio_Buttonset',
+				'radio-image'     => 'Kirki_Output_Control_Radio_Image',
+				'kirki-radio'     => 'Kirki_Output_Control_Radio',
+				'kirki-select'    => 'Kirki_Output_Control_Select',
+				'slider'          => 'Kirki_Output_Control_Slider',
+				// 'spacing'         => 'Kirki_Output_Control_Spacing',
+				// 'typography'      => 'Kirki_Output_Control_Typography',
 			);
 			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 				$classname = $field_output_classes[ self::$field_type ];
