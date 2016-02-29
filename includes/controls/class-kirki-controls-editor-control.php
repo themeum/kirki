@@ -29,10 +29,10 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 			<label>
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
-					<?php if ( ! empty( $this->description ) ) : ?>
-						<span class="description customize-control-description"><?php echo $this->description; ?></span>
-					<?php endif; ?>
 				</span>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 				<?php
 					$settings = array(
 						'textarea_name' => $this->id,

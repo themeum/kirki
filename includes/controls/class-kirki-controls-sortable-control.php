@@ -78,10 +78,10 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 			<label class='kirki-sortable'>
 				<span class="customize-control-title">
 					{{{ data.label }}}
-					<?php if ( ! empty( $this->description ) ) : ?>
-						<span class="description customize-control-description"><?php echo $this->description; ?></span>
-					<?php endif; ?>
 				</span>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 
 				<ul class="sortable">
 					<# for ( i in data.filteredValues ) { #>

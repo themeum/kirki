@@ -45,11 +45,11 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 			<label>
 				<span class="customize-control-title">
 					{{{ data.label }}}
-					<# if ( data.description ) { #>
-						<span class="description customize-control-description">{{{ data.description }}}</span>
-					<# } #>
 				</span>
-				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{ data.description }}</span>
+				<# } #>
+				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="true" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 			</label>
 			<?php
 		}
