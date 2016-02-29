@@ -140,6 +140,21 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			return $items;
 
 		}
+		
+		public static function get_terms( $taxonomies ) {
+
+			$items = array();
+
+			// Get the post types
+			$terms = get_terms( $taxonomies );
+			// Build the array
+			foreach ( $terms as $term ) {
+				$items[ $term->term_id ] = $term->name;
+			}
+
+			return $items;
+
+		}
 
 	}
 }
