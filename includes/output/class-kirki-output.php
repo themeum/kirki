@@ -60,7 +60,8 @@ class Kirki_Output {
 	}
 
 	/**
-	 * Parses the output arguments and creates the styles
+	 * Parses the output arguments
+	 * Calls the process_output method for each of them.
 	 */
 	protected function parse_output() {
 		foreach ( $this->output as $output ) {
@@ -81,9 +82,22 @@ class Kirki_Output {
 			if ( $skip ) {
 				continue;
 			}
+
 			$value = $this->process_value( $value );
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
+			$this->process_output( $output, $value );
 		}
+	}
+
+	/**
+	 * Parses an output and creates the styles array for it
+	 *
+	 * @param $output array
+	 * @param $value  string
+	 *
+	 * @return void
+	 */
+	protected function process_output( $output, $value ) {
+		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 	}
 
 	/**
