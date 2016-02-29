@@ -372,6 +372,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				}
 				// Do we have a "media_query" defined?
 				$this->args['output'][ $key ]['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+				// add the ability to exclude a value
+				$this->args['output'][ $key ]['exclude'] = ( isset( $output['exclude'] ) ) ? $output['exclude'] : false;
 			}
 		}
 

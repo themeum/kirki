@@ -148,8 +148,23 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			$styles = array();
 
 			foreach ( self::$output as $output ) {
+				$skip = false;
 				// Do we need to run this through a callback action?
 				$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
+				// No need to proceed this if the current value is the same as in the "exclude" value.
+				if ( false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
+					foreach ( $output['exclude'] as $exclude ) {
+						if ( $skip ) {
+							continue;
+						}
+						if ( $exclude == $value ) {
+							$skip = true;
+						}
+					}
+				}
+				if ( $skip ) {
+					continue;
+				}
 				if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
 					$value = call_user_func( $output['sanitize_callback'], $value );
 				}
