@@ -99,7 +99,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				'kirki-radio'     => 'Kirki_Output_Control_Radio',
 				'kirki-select'    => 'Kirki_Output_Control_Select',
 				'slider'          => 'Kirki_Output_Control_Slider',
-				// 'spacing'         => 'Kirki_Output_Control_Spacing',
+				'spacing'         => 'Kirki_Output_Control_Spacing',
 				'typography'      => 'Kirki_Output_Control_Typography',
 			);
 			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
@@ -223,18 +223,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 						}
 					}
 					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
-				} else {
-					// Take care of "spacing" controls output
-					if ( 'spacing' == self::$field_type && isset( $output['property'] ) ) {
-						foreach ( $value as $key => $sub_value ) {
-							if ( false !== strpos( $output['property'], '%%' ) ) {
-								$property = str_replace( '%%', $key, $output['property'] );
-							} else {
-								$property = $output['property'] . '-' . $key;
-							}
-							$styles[ $output['media_query'] ][ $element ][ $property ] = $sub_value;
-						}
-					}
 				}
 			}
 
