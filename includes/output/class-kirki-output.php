@@ -63,7 +63,7 @@ class Kirki_Output {
 	 * Parses the output arguments and creates the styles
 	 */
 	protected function parse_output() {
-		foreach ( self::$output as $output ) {
+		foreach ( $this->output as $output ) {
 			$skip = false;
 			// Apply any sanitization callbacks defined
 			$value = $this->apply_sanitize_callback( $output, $this->value );
@@ -82,7 +82,7 @@ class Kirki_Output {
 				continue;
 			}
 			$value = $this->process_value( $value );
-			$this->styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 		}
 	}
 
