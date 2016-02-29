@@ -108,11 +108,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				return $obj->get_styles();
 			}
 
-			/**
-			 * Returns the styles
-			 */
-			return self::styles();
-
 		}
 
 		/**
@@ -156,62 +151,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			}
 
 			return $final_css;
-
-		}
-
-		/**
-		 * Get the styles as an array.
-		 */
-		public static function styles() {
-
-			$google_fonts_array = self::$google_fonts;
-			$backup_fonts       = self::$backup_fonts;
-
-			$styles = array();
-
-			foreach ( self::$output as $output ) {
-				$skip = false;
-				// Do we need to run this through a callback action?
-				$value = ( '' != self::$callback ) ? call_user_func( self::$callback, self::$value ) : self::$value;
-				// No need to proceed this if the current value is the same as in the "exclude" value.
-				if ( false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
-					foreach ( $output['exclude'] as $exclude ) {
-						if ( $skip ) {
-							continue;
-						}
-						if ( $exclude == $value ) {
-							$skip = true;
-						}
-					}
-				}
-				if ( $skip ) {
-					continue;
-				}
-				if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
-					$value = call_user_func( $output['sanitize_callback'], $value );
-				}
-				// Make sure the value is a string before proceeding
-				// If all is ok, then populate the array.
-				$element = $output['element'];
-				// Allow using an array of elements
-				if ( is_array( $output['element'] ) ) {
-					// Make sure our values are unique
-					$elements = array_unique( $element );
-					// Sort elements alphabetically.
-					// This way all duplicate items will be merged in the final CSS array.
-					sort( $elements );
-					// Implode items
-					$element = implode( ',', $elements );
-				}
-				if ( ! is_array( $value ) ) {
-					if ( ! isset( $output['property'] ) ) {
-						continue;
-					}
-					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
-				}
-			}
-
-			return $styles;
 
 		}
 
