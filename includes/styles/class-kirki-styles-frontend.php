@@ -24,6 +24,8 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 		public function __construct() {
 
+			Kirki_Fonts_Google::get_instance();
+
 			global $wp_customize;
 
 			$config   = apply_filters( 'kirki/config', array() );
@@ -49,8 +51,6 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		}
 
 		public function inline_dynamic_css() {
-			Kirki_GoogleFonts_Loader::get_instance();
-
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
 				foreach ( $configs as $config_id => $args ) {
