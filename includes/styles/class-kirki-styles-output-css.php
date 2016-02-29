@@ -91,14 +91,14 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			 * Find the class that will handle the outpout for this field
 			 */
 			$classname = 'Kirki_Output';
-			$field_output_classes = array(
+			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames'. array(
 				'spacing'    => 'Kirki_Output_Control_Spacing',
 				'typography' => 'Kirki_Output_Control_Typography',
-			);
+			) );
 			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 				$classname = $field_output_classes[ self::$field_type ];
 			}
-			$obj = new $classname( self::$output, self::$value );
+			$obj = new $classname( $field['kirki_config'], self::$output, self::$value );
 			return $obj->get_styles();
 
 		}

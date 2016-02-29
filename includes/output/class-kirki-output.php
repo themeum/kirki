@@ -2,16 +2,18 @@
 
 class Kirki_Output {
 
-	protected $output = array();
-	protected $styles = array();
+	protected $config_id = 'global';
+	protected $output    = array();
+	protected $styles    = array();
 	protected $value;
 
 	/**
 	 * The class constructor
 	 */
-	public function __construct( $output, $value ) {
-		$this->value  = $value;
-		$this->output = $output;
+	public function __construct( $config_id, $output, $value ) {
+		$this->config_id = $config_id;
+		$this->value     = $value;
+		$this->output    = $output;
 
 		$this->sanitize_elements();
 		$this->parse_output();
@@ -108,10 +110,10 @@ class Kirki_Output {
 	 * @param $value     string  the value
 	 */
 	protected function process_property_value( $property, $value ) {
-		$properties = array(
+		$properties = apply_filters( 'kirki/' . $this->config_id . '/output/property-classnames', array(
 			'font-family'      => 'Kirki_Output_Property_Font_Family',
 			'background-image' => 'Kirki_Output_Property_Background_Image',
-		);
+		) );
 		if ( array_key_exists( $property, $properties ) ) {
 			$classname = $properties[ $property ];
 			$obj = new $classname( $property, $value );
