@@ -87,6 +87,18 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			 */
 			self::$value = Kirki_Values::get_sanitized_field_value( $field );
 			/**
+			 * Array of fields that have their own output class
+			 */
+			$field_output_classes = array(
+				'color-alpha' => 'Kirki_Output_Control_Color',
+			);
+			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
+				$classname = $field_output_classes[ self::$field_type ];
+				$obj = new $classname( self::$output, self::$value );
+				return $obj->get_styles();
+			}
+
+			/**
 			 * Returns the styles
 			 */
 			return self::styles();
