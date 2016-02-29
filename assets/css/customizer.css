@@ -1298,6 +1298,8 @@ span.CodeMirror-selectedtext {
   .customize-control-typography .wrapper .font-size,
   .customize-control-typography .wrapper .line-height,
   .customize-control-typography .wrapper .letter-spacing {
-    width: 33%; }
+    width: 50%; }
+  .customize-control-typography .wrapper .color {
+    width: auto; }
 
 /*# sourceMappingURL=customizer.css.map */

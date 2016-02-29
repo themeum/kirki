@@ -66,21 +66,21 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 
 				<# if ( data.choices['font-size'] ) { #>
 					<div class="font-size">
-						<h5>{{ data.l10n['size'] }}</h5>
+						<h5>{{ data.l10n['font-size'] }}</h5>
 						<input type="text" value="{{ data.value['font-size'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.choices['line-height'] ) { #>
 					<div class="line-height">
-						<h5>{{ data.l10n['height'] }}</h5>
+						<h5>{{ data.l10n['line-height'] }}</h5>
 						<input type="text" value="{{ data.value['line-height'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.choices['letter-spacing'] ) { #>
 					<div class="letter-spacing">
-						<h5>{{ data.l10n['spacing'] }}</h5>
+						<h5>{{ data.l10n['letter-spacing'] }}</h5>
 						<input type="text" value="{{ data.value['letter-spacing'] }}"/>
 					</div>
 				<# } #>
