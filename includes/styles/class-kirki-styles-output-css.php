@@ -91,7 +91,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			 * Find the class that will handle the outpout for this field
 			 */
 			$classname = 'Kirki_Output';
-			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames'. array(
+			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames', array(
 				'spacing'    => 'Kirki_Output_Control_Spacing',
 				'typography' => 'Kirki_Output_Control_Typography',
 			) );
