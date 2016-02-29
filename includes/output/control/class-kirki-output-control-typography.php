@@ -6,20 +6,7 @@ class Kirki_Output_Control_Typography extends Kirki_Output {
 
 		// Take care of font-families
 		if ( isset( $value['font-family'] ) ) {
-			// add double quotes if needed
-			if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
-				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] = '"' . $value['font-family'] . '"';
-			} else {
-				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] = $value['font-family'];
-			}
-			// Add backup font
-			if ( Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
-				if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
-					if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
-						$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] .= ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
-					}
-				}
-			}
+			$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] = $this->process_property_value( 'font-family', $value['font-family'] );
 		}
 		// Add support for the older font-weight parameter.
 		// This has been deprecated so the code below is just

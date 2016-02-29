@@ -207,21 +207,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					if ( ! isset( $output['property'] ) ) {
 						continue;
 					}
-					if ( 'font-family' == $output['property'] ) {
-						// Add backup font
-						if ( Kirki_Fonts::is_google_font( $value ) ) {
-							if ( isset( $google_fonts_array[ $value ] ) && isset( $google_fonts_array[ $value ]['category'] ) ) {
-								if ( isset( $backup_fonts[ $google_fonts_array[ $value ]['category'] ] ) ) {
-									// add double quotes if needed
-									if ( false !== strpos( $value, ' ' ) && false === strpos( $value, '"' ) ) {
-										$value = '"' . $value . '", ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
-									} else {
-										$value .= ', ' . $backup_fonts[ $google_fonts_array[ $value ]['category'] ];
-									}
-								}
-							}
-						}
-					}
 					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 				}
 			}

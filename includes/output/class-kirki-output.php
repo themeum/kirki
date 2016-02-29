@@ -83,7 +83,7 @@ class Kirki_Output {
 				continue;
 			}
 
-			$value = $this->process_value( $value );
+			$value = $this->process_value( $value, $output );
 			$this->process_output( $output, $value );
 		}
 	}
@@ -101,13 +101,36 @@ class Kirki_Output {
 	}
 
 	/**
+	 * Some CSS properties are unique.
+	 * We need to tweak the value to make everything works as expected.
+	 *
+	 * @param $property  string  the CSS property
+	 * @param $value     string  the value
+	 */
+	protected function process_property_value( $property, $value ) {
+		$properties = array(
+			'font-family'      => 'Kirki_Output_Property_Font_Family',
+			'background-image' => 'Kirki_Output_Property_Background_Image',
+		);
+		if ( array_key_exists( $property, $properties ) ) {
+			$classname = $properties[ $property ];
+			$obj = new $classname( $property, $value );
+			return $obj->get_value();
+		}
+		return $value;
+	}
+
+	/**
 	 * Returns the value
 	 *
 	 * @param string|array
 	 *
 	 * @return string|array
 	 */
-	protected function process_value( $value ) {
+	protected function process_value( $value, $output ) {
+		if ( isset( $output['property'] ) ) {
+			return $this->process_property_value( $output['property'], $value );
+		}
 		return $value;
 	}
 
