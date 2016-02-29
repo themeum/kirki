@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		// Get json file from the google-fonts API
 		curl: {
 			'google-fonts-source': {
-				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
+				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
 				dest: 'assets/json/webfonts.json'
 			}
 		},
