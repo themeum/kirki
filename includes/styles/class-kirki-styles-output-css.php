@@ -100,7 +100,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				'kirki-select'    => 'Kirki_Output_Control_Select',
 				'slider'          => 'Kirki_Output_Control_Slider',
 				// 'spacing'         => 'Kirki_Output_Control_Spacing',
-				// 'typography'      => 'Kirki_Output_Control_Typography',
+				'typography'      => 'Kirki_Output_Control_Typography',
 			);
 			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 				$classname = $field_output_classes[ self::$field_type ];
@@ -224,59 +224,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					}
 					$styles[ $output['media_query'] ][ $element ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 				} else {
-					// Take care of typography controls output
-					if ( 'typography' == self::$field_type ) {
-						// Take care of font-families
-						if ( isset( $value['font-family'] ) ) {
-							// add double quotes if needed
-							if ( false !== strpos( $value['font-family'], ' ' ) && false === strpos( $value['font-family'], '"' ) ) {
-								$styles[ $output['media_query'] ][ $element ]['font-family'] = '"' . $value['font-family'] . '"';
-							} else {
-								$styles[ $output['media_query'] ][ $element ]['font-family'] = $value['font-family'];
-							}
-							// Add backup font
-							if ( Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
-								if ( isset( $google_fonts_array[ $value['font-family'] ] ) && isset( $google_fonts_array[ $value['font-family'] ]['category'] ) ) {
-									if ( isset( $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ] ) ) {
-										$styles[ $output['media_query'] ][ $element ]['font-family'] .= ', ' . $backup_fonts[ $google_fonts_array[ $value['font-family'] ]['category'] ];
-									}
-								}
-							}
-						}
-						// Add support for the older font-weight parameter.
-						// This has been deprecated so the code below is just
-						// to add some backwards-compatibility.
-						// Once a user visits their customizer
-						// and make changes to their typography,
-						// new values are saved and this one is no longer used.
-						if ( isset( $value['font-weight'] ) && $value['font-weight'] ) {
-							$styles[ $output['media_query'] ][ $element ]['font-weight'] = $value['font-weight'];
-						}
-						// Take care of variants
-						if ( isset( $value['variant'] ) && $value['variant'] ) {
-							// Get the font_weight
-							$font_weight = str_replace( 'italic', '', $value['variant'] );
-							$font_weight = ( in_array( $font_weight, array( '', 'regular' ) ) ) ? '400' : $font_weight;
-							// Is this italic?
-							$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
-							$styles[ $output['media_query'] ][ $element ]['font-weight'] = $font_weight;
-							if ( $is_italic ) {
-								$styles[ $output['media_query'] ][ $element ]['font-style'] = 'italic';
-							}
-						}
-						// Take care of font-size
-						if ( isset( $value['font-size'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['font-size'] = $value['font-size'];
-						}
-						// Take care of line-height
-						if ( isset( $value['line-height'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['line-height'] = $value['line-height'];
-						}
-						// Take care of letter-spacing
-						if ( isset( $value['letter-spacing'] ) ) {
-							$styles[ $output['media_query'] ][ $element ]['letter-spacing'] = $value['letter-spacing'];
-						}
-					}
 					// Take care of "spacing" controls output
 					if ( 'spacing' == self::$field_type && isset( $output['property'] ) ) {
 						foreach ( $value as $key => $sub_value ) {
