@@ -125,15 +125,19 @@ WIP
 * FIX: Improved & simplified the `number` control.
 * FIX: Improved & simplified the `spacing` control.
 * FIX: Minor bugfix on the `select` control.
-* FIX: Improved & simplified the `typography` control.
 * FIX: WP Coding standards improvements.
 * FIX: Bugfix for radio controls.
 * FIX: Fixed repeater remove image not triggering save button to activate, and added a placeholder when the image is removed. (props @sayedwp)
 * FIX: Fixed bug when using negative numbers as min value in the `number` field
 * FIX: Typo in the textdomain for some strings (some strings were using "Kirki" instead of "kirki").
-* FIX: COmplete refactor & rewrite of the google-fonts implementation.
-* NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" (formatted as an array).
-* NEW: Better autoloader & improved file structure
+* FIX: Complete refactor & rewrite of the google-fonts implementation.
+* FIX: IE11 bug on radio-image controls.
+* FIX: Radio-image bug when used with serialized options.
+* NEW: Complete refactor & rewrite of typography control.
+* NEW: Added font-subsets in typography controls.
+* NEW: Google fonts now only show valid variants & subsets in typography controls.
+* NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" argument (formatted as an array).
+* NEW: Better autoloader & improved file structure.
 * NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
 * NEW: Completely refactored the `Kirki_Field` class, we're migrating to a more OOP model.
 * NEW: Added a new `kirki-generic` control.
@@ -141,8 +145,9 @@ WIP
 * NEW: Deprecated the custom textarea control and used the new `kirki-generic` control instead.
 * NEW: Renamed the `help` argument to `tooltip`. `help` will continue to work as an alias.
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
-* NEW: Updated `grunt` packages
+* NEW: Updated `grunt` packages.
 * NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
+* TWEAK: Other code refactoring for improved performance
 
 
 
