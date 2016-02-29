@@ -22,6 +22,8 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 		public $processed = false;
 
+		public static $css_array = array();
+
 		public function __construct() {
 
 			Kirki_Fonts_Google::get_instance();
@@ -104,10 +106,15 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 				// Only continue if $field['output'] is set
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 
-					if ( function_exists( 'array_replace_recursive' ) ) {
-						$css = array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
-					} else {
-						$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
+					// Fallback: the array_replace_recurcive function is not found on all system configurations.
+					$array_replace_recursive = 'array_replace_recursive';
+					if ( ! function_exists( 'array_replace_recursive' ) ) {
+						$array_replace_recursive = array( 'Kirki_Helper', 'array_replace_recursive' );
+					}
+					$css = $array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
+					// Add the globals
+					if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
+						$array_replace_recursive( $css, self::$css_array[ $config_id ] );
 					}
 
 				}
