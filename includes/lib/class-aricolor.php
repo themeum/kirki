@@ -93,7 +93,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *                          brightness
 		 * @param $value int|float|string the new value
 		 *
-		 * @return object|null
+		 * @return ariColor|null
 		 */
 		public function getNew( $property = '', $value = '' ) {
 			// Check if we're changing any of the rgba values
@@ -129,6 +129,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * Figure out what mode we're using.
 		 *
 		 * @param string|array
+		 * @param string $color
 		 *
 		 * @return string
 		 */

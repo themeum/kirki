@@ -207,6 +207,9 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			return $raw_value . $unit_used;
 		}
 
+		/**
+		 * @param string $value
+		 */
 		public static function filter_number( $value ) {
 			return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 		}
