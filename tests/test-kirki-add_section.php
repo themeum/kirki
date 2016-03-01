@@ -30,7 +30,7 @@ class Test_Kirki_Add_Section extends WP_UnitTestCase {
 				'priority'        => 10,
 				'active_callback' => '__return_true',
 				'panel'           => '',
-				'type'            => '',
+				'type'            => 'default',
 			),
 			Kirki::$sections['test_empty']
 		);
@@ -42,7 +42,7 @@ class Test_Kirki_Add_Section extends WP_UnitTestCase {
 				'priority'        => '4',
 				'active_callback' => '__return_true',
 				'panel'           => 'my_panel',
-				'type'            => '',
+				'type'            => 'default',
 			),
 			Kirki::$sections['test']
 		);
