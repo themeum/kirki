@@ -134,6 +134,8 @@ WIP
 * FIX: IE11 bug on radio-image controls.
 * FIX: Radio-image bug when used with serialized options.
 * NEW: Complete refactor & rewrite of typography control.
+* NEW: Refactored the CSS output methods.
+* NEW: Added new mothods for detecting dependencies.
 * NEW: Added font-subsets in typography controls.
 * NEW: Google fonts now only show valid variants & subsets in typography controls.
 * NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" argument (formatted as an array).
