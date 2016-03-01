@@ -10,7 +10,7 @@ class Kirki_Output_Control_Spacing extends Kirki_Output {
 			} else {
 				$property = $output['property'] . '-' . $key;
 			}
-			$this->styles[ $output['media_query'] ][ $element ][ $property ] = $sub_value;
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $sub_value;
 		}
 
 	}

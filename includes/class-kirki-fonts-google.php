@@ -109,14 +109,14 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			 * Process non-typography fields
 			 */
 			else {
-				if ( isset( $field['output'] ) && is_array( $field['output'] ) ) {
-					foreach ( $field['output'] as $output ) {
+				if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
+					foreach ( $args['output'] as $output ) {
 						// If we don't have a typography-related output argument we can skip this.
 						if ( ! isset( $output['property'] ) ||  ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ) ) ) {
 							continue;
 						}
 						// Get the value
-						$value = Kirki_Values::get_sanitized_field_value( $field );
+						$value = Kirki_Values::get_sanitized_field_value( $args );
 
 						// font-family
 						if ( 'font-family' == $output['property'] ) {
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 
 		private function process_fonts() {
 			// Early exit if font-family is empty
-			if ( empty( $this->family ) ) {
+			if ( empty( $this->fonts ) ) {
 				return;
 			}
 			// Get an array of all available google fonts
@@ -170,8 +170,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				}
 				// Get all valid font variants for this font
 				$font_variants = array();
-				if ( isset( $google_fonts[ $family ]['variants'] ) ) {
-					$font_variants = $google_fonts[ $family ]['variants'];
+				if ( isset( $google_fonts[ $font ]['variants'] ) ) {
+					$font_variants = $google_fonts[ $font ]['variants'];
 				}
 				foreach ( $variants as $variant ) {
 					// If this is not a valid variant for this font-family
@@ -183,9 +183,9 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				}
 				// Check if the selected subsets exist, even in one of the selected fonts.
 				// If they don't, then they have to be removed otherwise the link will fail.
-				if ( isset( $google_fonts[ $family ]['subsets'] ) ) {
+				if ( isset( $google_fonts[ $font ]['subsets'] ) ) {
 					foreach ( $this->subsets as $subset ) {
-						if ( in_array( $subset, $google_fonts[ $family ]['subsets'] ) ) {
+						if ( in_array( $subset, $google_fonts[ $font ]['subsets'] ) ) {
 							$valid_subsets[] = $subset;
 						}
 					}
