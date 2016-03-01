@@ -146,7 +146,9 @@ input[type="text"] {
   display: block;
   margin-top: 0 !important; }
 
-.customize-control input[type="checkbox"] {
+.customize-control-kirki-checkbox input[type="checkbox"],
+.customize-control-multicheck input[type="checkbox"],
+.customize-control-repeater input[type="checkbox"] {
   position: relative;
   margin: 0 1rem 0 0;
   cursor: pointer;
@@ -155,7 +157,9 @@ input[type="text"] {
   height: 22px;
   border-radius: 3px;
   -webkit-border-radius: 3px; }
-  .customize-control input[type="checkbox"]:before {
+  .customize-control-kirki-checkbox input[type="checkbox"]:before,
+  .customize-control-multicheck input[type="checkbox"]:before,
+  .customize-control-repeater input[type="checkbox"]:before {
     content: "";
     position: absolute;
     left: 0;
@@ -163,7 +167,9 @@ input[type="text"] {
     width: 100%;
     height: 100%;
     border: none; }
-  .customize-control input[type="checkbox"]:after {
+  .customize-control-kirki-checkbox input[type="checkbox"]:after,
+  .customize-control-multicheck input[type="checkbox"]:after,
+  .customize-control-repeater input[type="checkbox"]:after {
     content: "";
     position: absolute;
     left: 0;
@@ -174,13 +180,17 @@ input[type="text"] {
     cursor: pointer;
     border-radius: 3px;
     -webkit-border-radius: 3px; }
-  .customize-control input[type="checkbox"]:checked:before {
+  .customize-control-kirki-checkbox input[type="checkbox"]:checked:before,
+  .customize-control-multicheck input[type="checkbox"]:checked:before,
+  .customize-control-repeater input[type="checkbox"]:checked:before {
     content: "\f147";
     font-family: dashicons;
     font-size: 25px;
     left: 0;
     top: 2px; }
-  .customize-control input[type="checkbox"]:checked:after {
+  .customize-control-kirki-checkbox input[type="checkbox"]:checked:after,
+  .customize-control-multicheck input[type="checkbox"]:checked:after,
+  .customize-control-repeater input[type="checkbox"]:checked:after {
     background: #fff; }
 
 /* BASICS */
