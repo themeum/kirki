@@ -7,14 +7,29 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 * The default arguments.
 		 * These are set in the class constructor.
 		 * Used as a fallback in case the user has not defined any.
+		 *
+		 * @access private
+		 * @var array
 		 */
 		private $default_args = array();
 
 		/**
 		 * The class constructor
 		 *
-		 * @param string $id
-		 * @param array  $args
+		 * @param string    $id     Config ID
+		 * @param array     $args   {
+		 *    Optional. Arguments to override config defaults.
+		 *
+		 *    @type string      $capability       @see https://codex.wordpress.org/Roles_and_Capabilities
+		 *    @type string      $option_type      theme_mod or option.
+		 *    @type string      $option_name      If we want to used serialized options,
+		 *                                        this is where we'll be adding the option name.
+		 *                                        All fields using this config will be items in that array.
+		 *    @type array       $compiler         Not yet fully implemented
+		 *    @type bool        $disable_output   If set to true, no CSS will be generated
+		 *                                        from fields using this configuration.
+		 *    @type string      $postMessage
+		 * }
 		 */
 		public function __construct( $id, $args = array() ) {
 
