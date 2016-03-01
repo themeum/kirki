@@ -63,6 +63,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 			$args['id']          = esc_attr( $id );
 			$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
 			$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
+			$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 			if ( ! isset( $args['active_callback'] ) ) {
 				$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
 			}

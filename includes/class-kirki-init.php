@@ -65,6 +65,8 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 			$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
 
+			$wp_customize->register_panel_type( 'Kirki_Panels_Expanded_Panel' );
+
 			$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );

@@ -140,6 +140,14 @@ input[type="text"] {
   background-repeat: no-repeat;
   background-position: center center; }
 
+#customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content {
+  position: relative;
+  left: 0;
+  display: block !important;
+  margin-top: 0 !important; }
+  #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content .accordion-section-title {
+    margin-left: 0; }
+
 #customize-theme-controls .control-section.control-section-kirki-expanded > ul.accordion-section-content {
   position: relative;
   left: 0;

@@ -1,0 +1,14 @@
+#customize-theme-controls .control-panel {
+	&.control-panel-kirki-expanded {
+		> ul.control-panel-content {
+			position: relative;
+			left: 0;
+			display: block !important;
+			margin-top: 0 !important;
+
+			.accordion-section-title {
+				margin-left: 0;
+			}
+		}
+	}
+}

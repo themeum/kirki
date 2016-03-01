@@ -23,12 +23,21 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		public function add_panel( $args ) {
 
 			// Add the panel using the customizer API
-			$this->wp_customize->add_panel( sanitize_key( $args['id'] ), array(
-				'title'           => $args['title'], // already escaped in WP Core
-				'priority'        => absint( $args['priority'] ),
-				'description'     => $args['description'], // already escaped in WP Core
-				'active_callback' => $args['active_callback'],
-			) );
+			if ( isset( $args['type'] ) && 'expanded' == $args['type'] ) {
+				$this->wp_customize->add_panel( new Kirki_Panels_Expanded_Panel( $this->wp_customize, sanitize_key( $args['id'] ), array(
+					'title'           => $args['title'], // already escaped in WP Core
+					'priority'        => absint( $args['priority'] ),
+					'description'     => $args['description'], // already escaped in WP Core
+					'active_callback' => $args['active_callback'],
+				) ) );
+			} else {
+				$this->wp_customize->add_panel( sanitize_key( $args['id'] ), array(
+					'title'           => $args['title'], // already escaped in WP Core
+					'priority'        => absint( $args['priority'] ),
+					'description'     => $args['description'], // already escaped in WP Core
+					'active_callback' => $args['active_callback'],
+				) );
+			}
 
 			// If we've got an icon then call the object to create its script.
 			if ( isset( $args['icon'] ) ) {
