@@ -1,17 +1,44 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Config' ) ) {
-	class Kirki_Config extends Kirki_Customizer {
+
+	class Kirki_Config {
 
 		/**
-		 * The default arguments.
-		 * These are set in the class constructor.
-		 * Used as a fallback in case the user has not defined any.
-		 *
-		 * @access private
+		 * @access protected
+		 * @var string
+		 */
+		protected $capability = 'edit_theme_options';
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $option_type = 'theme_mod';
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $option_name = '';
+
+		/**
+		 * @access protected
 		 * @var array
 		 */
-		private $default_args = array();
+		protected $compiler = array();
+
+		/**
+		 * @access protected
+		 * @var bool
+		 */
+		protected $disable_output = false;
+
+		/**
+		 * @access protected
+		 * @var bool
+		 */
+		protected $postMessage = '';
 
 		/**
 		 * The class constructor
@@ -32,59 +59,30 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 * }
 		 */
 		public function __construct( $id, $args = array() ) {
+			$id = trim( esc_attr( $id ) );
+			if ( '' == $id ) {
+				$id = 'global';
+			}
+			// Get defaults from the class
+			$defaults = get_class_vars( __CLASS__ );
+			// Apply any kirki/config global filters.
+			$defaults = apply_filters( 'kirki/config', $defaults );
+			// Merge our args with the defaults
+			$args = wp_parse_args( $args, $defaults );
 
-			// Call the parent constructor
-			parent::__construct();
-			// Set the default args
-			$this->default_args = array(
-				'capability'     => 'edit_theme_options',
-				'option_type'    => 'theme_mod',
-				'option_name'    => '',
-				'compiler'       => array(),
-				'disable_output' => false,
-				'postMessage'    => '',
-			);
-			// Process the 'kirki/config' filter by replacing the defaults
-			$this->default_args = $this->config_from_filters();
-			// Add the config
-			$this->add_config( $id, $args );
+			// Modify default values with the defined ones
+			foreach ( $args as $key => $value ) {
+				// Is this property whitelisted?
+				if ( property_exists( $this, $key ) ) {
+					$args[ $key ] = $value;
+				}
+			}
 
-		}
-
-		/**
-		 * Adds the configuration to the Kirki object.
-		 *
-		 * @param string $config_id
-		 * @param array  $args
-		 */
-		public function add_config( $config_id, $args ) {
-			// Allow empty value as the config ID by setting the id to global.
-			$config_id = ( '' == $config_id ) ? 'global' : $config_id;
-			// Set the config
-			Kirki::$config[ $config_id ] = array_merge( $this->default_args, $args );
-		}
-
-		/**
-		 * Parses the 'kirki/config' filter.
-		 *
-		 * @return  array
-		 */
-		public function config_from_filters() {
-			// get the args from the filter
-			$default_args = $this->default_args;
-			$args = apply_filters( 'kirki/config', $default_args );
-			// create a valid config by merging with the default args.
-			$valid_args = array();
-			$valid_args['capability']     = isset( $args['capability'] ) ? $args['capability'] : $default_args['capability'];
-			$valid_args['option_type']    = isset( $args['option_type'] ) ? $args['option_type'] : $default_args['option_type'];
-			$valid_args['option_name']    = isset( $args['option_name'] ) ? $args['option_name'] : $default_args['option_name'];
-			$valid_args['compiler']       = isset( $args['compiler'] ) ? $args['compiler'] : $default_args['compiler'];
-			$valid_args['disable_output'] = isset( $args['disable_output'] ) ? $args['disable_output'] : $default_args['disable_output'];
-			$valid_args['postMessage'] = isset( $args['postMessage'] ) ? $args['postMessage'] : $default_args['postMessage'];
-
-			return $valid_args;
+			// Add our config
+			Kirki::$config[ $id ] = $args;
 
 		}
 
 	}
+
 }
