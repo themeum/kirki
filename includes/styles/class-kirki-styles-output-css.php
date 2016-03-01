@@ -119,28 +119,18 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				return '';
 			}
 			foreach ( $css as $media_query => $styles ) {
-
 				$final_css .= ( 'global' != $media_query ) ? $media_query . '{' : '';
-
 				foreach ( $styles as $style => $style_array ) {
 					$final_css .= $style . '{';
 						foreach ( $style_array as $property => $value ) {
 							$value = ( is_string( $value ) ) ? $value : '';
-							// Make sure the background-position property is properly formatted
-							if ( 'background-position' == $property ) {
-								$value = str_replace( array( '_', '-' ), ' ', $value );
-							}
 							$final_css .= $property . ':' . $value . ';';
 						}
 					$final_css .= '}';
 				}
-
 				$final_css .= ( 'global' != $media_query ) ? '}' : '';
-
 			}
-
 			return $final_css;
-
 		}
 
 		/**

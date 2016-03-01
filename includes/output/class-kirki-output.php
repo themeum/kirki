@@ -111,8 +111,9 @@ class Kirki_Output {
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters( 'kirki/' . $this->config_id . '/output/property-classnames', array(
-			'font-family'      => 'Kirki_Output_Property_Font_Family',
-			'background-image' => 'Kirki_Output_Property_Background_Image',
+			'font-family'         => 'Kirki_Output_Property_Font_Family',
+			'background-image'    => 'Kirki_Output_Property_Background_Image',
+			'background-position' => 'Kirki_Output_Property_Background_Position',
 		) );
 		if ( array_key_exists( $property, $properties ) ) {
 			$classname = $properties[ $property ];
