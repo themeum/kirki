@@ -28,6 +28,7 @@ class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 				'description'     => '',
 				'priority'        => 10,
 				'active_callback' => '__return_true',
+				'type'            => 'default',
 			),
 			Kirki::$panels['test_empty']
 		);
@@ -38,6 +39,7 @@ class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 				'description'     => 'My Description',
 				'priority'        => '4',
 				'active_callback' => '__return_true',
+				'type'            => 'default',
 			),
 			Kirki::$panels['test']
 		);
