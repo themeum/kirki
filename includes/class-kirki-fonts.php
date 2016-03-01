@@ -156,6 +156,9 @@ class Kirki_Fonts {
 		);
 	}
 
+	/**
+	 * @param string $fontname
+	 */
 	public static function is_google_font( $fontname ) {
 		if ( array_key_exists( $fontname, self::$google_fonts ) ) {
 			return true;
