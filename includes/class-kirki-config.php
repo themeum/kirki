@@ -8,7 +8,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 * These are set in the class constructor.
 		 * Used as a fallback in case the user has not defined any.
 		 */
-		public $default_args = array();
+		private $default_args = array();
 
 		/**
 		 * The class constructor
