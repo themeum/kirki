@@ -6,7 +6,7 @@ class Kirki_Panels_Expanded_Panel extends WP_Customize_Panel {
 
 	protected function render_template() {
 		?>
-		<li id="accordion-panel-{{ data.id }}" class="accordion-section control-section control-panel control-panel-{{ data.type }}">
+		<li id="accordion-panel-{{ data.id }}" class="control-section control-panel control-panel-{{ data.type }}">
 			<ul class="accordion-sub-container control-panel-content"></ul>
 		</li>
 		<?php

@@ -147,6 +147,11 @@ input[type="text"] {
   margin-top: 0 !important; }
   #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content .accordion-section-title {
     margin-left: 0; }
+  #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content > li.customize-info {
+    margin-bottom: 0;
+    border-top: none; }
+    #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content > li.customize-info .accordion-section-title {
+      border-bottom: none !important; }
 
 #customize-theme-controls .control-section.control-section-kirki-expanded > ul.accordion-section-content {
   position: relative;
