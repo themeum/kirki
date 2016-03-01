@@ -126,10 +126,6 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					$final_css .= $style . '{';
 						foreach ( $style_array as $property => $value ) {
 							$value = ( is_string( $value ) ) ? $value : '';
-							// Take care of formatting the URL for background-image statements.
-							if ( 'background-image' == $property || 'background' == $property && false !== filter_var( $value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) ) {
-								$value = 'url("' . $value . '")';
-							}
 							// Make sure the background-position property is properly formatted
 							if ( 'background-position' == $property ) {
 								$value = str_replace( array( '_', '-' ), ' ', $value );
