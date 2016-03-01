@@ -41,7 +41,7 @@ class Test_Kirki_Add_Section extends WP_UnitTestCase {
 				'description'     => 'My Description',
 				'priority'        => '4',
 				'active_callback' => '__return_true',
-				'panel'           => 'my_panel'
+				'panel'           => 'my_panel',
 				'type'            => '',
 			),
 			Kirki::$sections['test']
