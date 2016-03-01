@@ -130,7 +130,8 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'800'                   => esc_attr__( 'Extra-Bold 800', 'kirki' ),
 				'800italic'             => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ),
 				'600italic'             => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ),
-				'200italic'             => esc_attr__( 'Light 200 Italic', 'kirki' ),			);
+				'200italic'             => esc_attr__( 'Light 200 Italic', 'kirki' ),
+			);
 
 			$config = apply_filters( 'kirki/config', array() );
 
