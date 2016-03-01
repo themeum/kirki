@@ -140,6 +140,12 @@ input[type="text"] {
   background-repeat: no-repeat;
   background-position: center center; }
 
+#customize-theme-controls .control-section.control-section-kirki-expanded > ul.accordion-section-content {
+  position: relative;
+  left: 0;
+  display: block;
+  margin-top: 0 !important; }
+
 .customize-control input[type="checkbox"] {
   position: relative;
   margin: 0 1rem 0 0;
