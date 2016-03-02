@@ -49,7 +49,9 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @param string $config_id
 		 */
 		public static function add_config( $config_id, $args = array() ) {
-			new Kirki_Config( $config_id, $args );
+			$config = Kirki_Config::get_instance( $config_id, $args );
+			$config_args = $config->get_config();
+			self::$config[ $config_args['id'] ] = $config_args;
 		}
 
 		/**

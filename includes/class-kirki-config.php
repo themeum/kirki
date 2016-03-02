@@ -5,6 +5,25 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 	class Kirki_Config {
 
 		/**
+		 * @static
+		 * @access private
+		 * @var array
+		 */
+		private static $instances = array();
+
+		/**
+		 * @access protected
+		 * @var array
+		 */
+		protected $config_final = array();
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $id = 'global';
+
+		/**
 		 * @access protected
 		 * @var string
 		 */
@@ -41,8 +60,45 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		protected $postMessage = '';
 
 		/**
-		 * The class constructor
+		 * The class constructor.
+		 * Use the get_instance() static method to get the instance you need.
 		 *
+		 * @access private
+		 *
+		 * @param string    $id     @see Kirki_Config::get_instance()
+		 * @param array     $args   @see Kirki_Config::get_instance()
+		 */
+		private function __construct( $id = 'global', $args = array() ) {
+
+			// Get defaults from the class
+			$defaults = get_class_vars( __CLASS__ );
+			// skip the what we don't need in this context
+			unset( $defaults['config_final'] );
+			unset( $defaults['instances'] );
+			// Apply any kirki/config global filters.
+			$defaults = apply_filters( 'kirki/config', $defaults );
+			// Merge our args with the defaults
+			$args = wp_parse_args( $args, $defaults );
+
+			// Modify default values with the defined ones
+			foreach ( $args as $key => $value ) {
+				// Is this property whitelisted?
+				if ( property_exists( $this, $key ) ) {
+					$args[ $key ] = $value;
+				}
+			}
+
+			$this->config_final       = $args;
+			$this->config_final['id'] = $id;
+
+		}
+
+		/**
+		 * Use this method to get an instance of your config.
+		 * Each config has its own instance of this object.
+		 *
+		 * @static
+		 * @access public
 		 * @param string    $id     Config ID
 		 * @param array     $args   {
 		 *    Optional. Arguments to override config defaults.
@@ -57,29 +113,34 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *                                        from fields using this configuration.
 		 *    @type string      $postMessage
 		 * }
+		 *
+		 * @return Kirki_Config
 		 */
-		public function __construct( $id, $args = array() ) {
+		public static function get_instance( $id = 'global', $args = array() ) {
+
 			$id = trim( esc_attr( $id ) );
-			if ( '' == $id ) {
-				$id = 'global';
-			}
-			// Get defaults from the class
-			$defaults = get_class_vars( __CLASS__ );
-			// Apply any kirki/config global filters.
-			$defaults = apply_filters( 'kirki/config', $defaults );
-			// Merge our args with the defaults
-			$args = wp_parse_args( $args, $defaults );
+			$id = ( '' == $id ) ? 'global' : $id;
 
-			// Modify default values with the defined ones
-			foreach ( $args as $key => $value ) {
-				// Is this property whitelisted?
-				if ( property_exists( $this, $key ) ) {
-					$args[ $key ] = $value;
-				}
+			$id_md5 = md5( $id );
+			if ( ! isset( self::$instances[ $id_md5 ] ) ) {
+				self::$instances[ $id_md5 ] = new self( $id, $args );
 			}
+			return self::$instances[ $id_md5 ];
 
-			// Add our config
-			Kirki::$config[ $id ] = $args;
+		}
+
+
+
+		/**
+		 * Returns the $config_final property
+		 *
+		 * @access public
+		 *
+		 * @return array
+		 */
+		public function get_config() {
+
+			return $this->config_final;
 
 		}
 
