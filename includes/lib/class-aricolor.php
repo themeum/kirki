@@ -49,7 +49,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 			if ( ! method_exists( $this, 'from_' . $mode ) ) {
 				$mode = $this->get_mode( $color );
 			}
-			if ( null == $mode ) {
+			if ( null === $mode ) {
 				return;
 			}
 			$this->mode = $mode;
