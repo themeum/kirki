@@ -157,10 +157,15 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		}
 
 		/**
-		 * Return true if we are debugging Kirki.
+		 * Return true if we are debugging Kirki,
+		 *
+		 * @return bool
 		 */
 		public static function kirki_debug() {
-			return (bool) ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG );
+			if ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+				return true;
+			}
+			return false;
 		}
 
 		/**
