@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 
 		/**
 		 * Access the single instance of this class
-		 * @return Kirki
+		 * @return Kirki_Toolkit
 		 */
 		public static function get_instance() {
 			if ( null == self::$instance ) {
