@@ -179,6 +179,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 				'settings'          => 'foo',
 				'sanitize_callback' => 'wp_kses_post',
 				'id'                => 'foo',
+				'transport'         => 'refresh',
 			),
 			Kirki::$fields['foo']
 		);

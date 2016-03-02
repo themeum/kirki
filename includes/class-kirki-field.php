@@ -17,6 +17,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			'tooltip'         => '',
 			'active_callback' => '__return_true',
 			'type'            => 'kirki-generic',
+			'transport'       => 'refresh',
 		);
 
 		public function __construct( $config_id = 'global', $args = array() ) {
