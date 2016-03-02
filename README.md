@@ -148,6 +148,7 @@ WIP
 * NEW: Renamed the `help` argument to `tooltip`. `help` will continue to work as an alias.
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
 * NEW: Updated `grunt` packages.
+* NEW: Started an OOP rewrite of many classes
 * NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
 * TWEAK: Other code refactoring for improved performance
 
