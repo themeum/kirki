@@ -18,10 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 	final class Kirki_Toolkit {
 
-		/** @var Kirki The only instance of this class */
+		/** @var Kirki_Toolkit The only instance of this class */
 		public static $instance = null;
 
-		public static $version = '2.2.0.beta.1';
+		public static $version = '2.2.0.beta.2';
 
 		public $font_registry = null;
 		public $scripts       = null;
