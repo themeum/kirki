@@ -292,21 +292,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @access protected
 		 */
 		protected function set_capability() {
-
 			// early exit if we're using 'edit_theme_options'.
 			if ( 'edit_theme_options' == $this->capability ) {
 				return;
 			}
 			// escape & trim the capability
 			$this->capability = trim( esc_attr( $this->capability ) );
-			// Check if the defined capability exists.
-			// If yes, then we don't have to do anything.
-			if ( in_array( $this->capability, Kirki_Toolkit::get_all_capabilities() ) ) {
-				return;
-			}
-			// capability was not found, fallback to 'edit_theme_options'
-			$this->capability = 'edit_theme_options';
-
 		}
 
 		/**
