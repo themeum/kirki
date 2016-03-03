@@ -152,8 +152,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		public function __construct( $config_id = 'global', $args = array() ) {
 
-			// In case uses only use $args and skip the $config_id,
-			// we have to use them in the right order (assume $config_id = 'global')
+			if ( is_string( $config_id ) ) {
+				$args['kirki_config'] = $config_id;
+			}
+			// In case the user only provides 1 argument,
+			// assume that the provided argument is $args and set $config_id = 'global'
 			if ( is_array( $config_id ) && empty( $args ) ) {
 				$args = $config_id;
 				$this->kirki_config = 'global';
