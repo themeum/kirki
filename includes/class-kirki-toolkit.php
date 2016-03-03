@@ -28,6 +28,8 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		public $api           = null;
 		public $styles        = array();
 
+		public static $capabilities = array();
+
 		/**
 		 * Access the single instance of this class
 		 * @return Kirki_Toolkit
@@ -243,6 +245,27 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				return true;
 			}
 			return false;
+		}
+
+		public static function get_all_capabilities() {
+			if ( ! empty( self::$capabilities ) ) {
+				return self::$capabilities;
+			}
+			$capabilities = array();
+			$roles_obj    = wp_roles();
+			foreach ( $roles_obj as $roles ) {
+				$roles = (array) $roles;
+				foreach ( $roles as $role ) {
+					$role = (array) $role;
+					if ( isset( $role['capabilities'] ) ) {
+						foreach ( $role['capabilities'] as $key => $value ) {
+							$capabilities[] = $key;
+						}
+					}
+				}
+			}
+			self::$capabilities = array_unique( $capabilities );
+			return self::$capabilities;
 		}
 	}
 }
