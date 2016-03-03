@@ -2,13 +2,37 @@
 
 class Kirki_Output {
 
+	/**
+	 * @access protected
+	 * @var string
+	 */
 	protected $config_id = 'global';
+
+	/**
+	 * @access protected
+	 * @var array
+	 */
 	protected $output    = array();
+
+	/**
+	 * @access protected
+	 * @var array
+	 */
 	protected $styles    = array();
+
+	/**
+	 * @access protected
+	 * @var string|array
+	 */
 	protected $value;
 
 	/**
 	 * The class constructor
+	 *
+	 * @access public
+	 * @param $config_id    string
+	 * @param $output       array
+	 * @param $value        string|array
 	 */
 	public function __construct( $config_id, $output, $value ) {
 		$this->config_id = $config_id;
@@ -42,6 +66,8 @@ class Kirki_Output {
 	/**
 	 * Convert element arrays to strings
 	 * and finally escapes them using the esc_js function.
+	 *
+	 * @access protected
 	 */
 	protected function sanitize_elements() {
 		foreach ( $this->output as $key => $output ) {
@@ -64,6 +90,8 @@ class Kirki_Output {
 	/**
 	 * Parses the output arguments
 	 * Calls the process_output method for each of them.
+	 *
+	 * @access protected
 	 */
 	protected function parse_output() {
 		foreach ( $this->output as $output ) {
@@ -93,6 +121,7 @@ class Kirki_Output {
 	/**
 	 * Parses an output and creates the styles array for it
 	 *
+	 * @access protected
 	 * @param $output array
 	 * @param $value  string
 	 *
@@ -109,6 +138,7 @@ class Kirki_Output {
 	 * Some CSS properties are unique.
 	 * We need to tweak the value to make everything works as expected.
 	 *
+	 * @access protected
 	 * @param $property  string  the CSS property
 	 * @param $value     string  the value
 	 */
@@ -129,6 +159,7 @@ class Kirki_Output {
 	/**
 	 * Returns the value
 	 *
+	 * @access protected
 	 * @param string|array
 	 *
 	 * @return string|array
@@ -143,6 +174,7 @@ class Kirki_Output {
 	/**
 	 * Exploses the private $styles property to the world
 	 *
+	 * @access protected
 	 * @return array
 	 */
 	public function get_styles() {
