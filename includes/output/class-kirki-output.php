@@ -65,7 +65,6 @@ class Kirki_Output {
 
 	/**
 	 * Convert element arrays to strings
-	 * and finally escapes them using the esc_js function.
 	 *
 	 * @access protected
 	 */
@@ -80,9 +79,6 @@ class Kirki_Output {
 				// Implode items to build the string
 				$output['element'] = implode( ',', $output['element'] );
 			}
-			// escape the element
-			$output['element'] = esc_js( $output['element'] );
-
 			$this->output[ $key ]['element'] = $output['element'];
 		}
 	}
