@@ -99,6 +99,9 @@ class Kirki_Output {
 	 * @return void
 	 */
 	protected function process_output( $output, $value ) {
+		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
+			return;
+		}
 		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 	}
 

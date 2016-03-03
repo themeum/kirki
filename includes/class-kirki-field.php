@@ -566,7 +566,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			if ( ! empty ( $this->output ) && ! is_array( $this->output ) ) {
-				$this->output = array( 'element' => $this->outuput );
+				$this->output = array( 'element' => $this->output );
 			}
 			// Convert to array of arrays if needed
 			if ( isset( $this->output['element'] ) ) {
