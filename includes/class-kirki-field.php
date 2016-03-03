@@ -561,6 +561,13 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_output() {
 
+			if ( empty( $this->output ) ) {
+				return;
+			}
+
+			if ( ! empty ( $this->output ) && ! is_array( $this->output ) ) {
+				$this->output = array( 'element' => $this->outuput );
+			}
 			// Convert to array of arrays if needed
 			if ( isset( $this->output['element'] ) ) {
 				$this->output = array( $this->output );
