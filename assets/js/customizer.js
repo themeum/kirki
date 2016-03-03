@@ -1259,11 +1259,9 @@ wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend( {
 wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-
-		var fontFamilySelector = '#kirki-typography-font-family-' + control.id;
-		var variantSelector    = '#kirki-typography-variant-' + control.id;
-		var subsetSelector     = '#kirki-typography-subset-' + control.id;
-
+		var fontFamilySelector = control.selector + ' .font-family select';
+		var variantSelector    = control.selector + ' .variant select';
+		var subsetSelector     = control.selector + ' .subset select';
 		// Get initial values
 		var value = {};
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
