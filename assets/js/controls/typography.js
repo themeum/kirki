@@ -24,7 +24,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			var is_standard = false;
 			var subList = {}
 			// destroy
-			jQuery( subSelector ).selectize()[0].selectize.destroy();
+			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
+				jQuery( subSelector ).selectize()[0].selectize.destroy();
+			}
 			// Get all items in the sub-list for the active font-family
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
