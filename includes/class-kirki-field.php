@@ -819,6 +819,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						if ( isset( $skip ) && true === $skip ) {
 							continue;
 						}
+						$output['element'] = implode( ',', $output['element'] );
 					}
 					// If there's a sanitize_callback defined, skip this.
 					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
