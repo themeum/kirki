@@ -564,32 +564,40 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( empty( $this->output ) ) {
 				return;
 			}
-
 			if ( ! empty ( $this->output ) && ! is_array( $this->output ) ) {
-				$this->output = array( 'element' => $this->output );
+				$this->output = array( array( 'element' => $this->output ) );
 			}
 			// Convert to array of arrays if needed
 			if ( isset( $this->output['element'] ) ) {
 				$this->output = array( $this->output );
 			}
-			foreach ( $this->output as $key => $output ) {
+			$outputs = array();
+			foreach ( $this->output as $output ) {
 				if ( ! isset( $output['element'] ) ) {
 					continue;
 				}
-				// Do we have units?
-				$this->output[ $key ]['units'] = ( isset( $output['units'] ) ) ? $output['units'] : '';
-				// Do we have a prefix?
-				$this->output[ $key ]['prefix'] = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
-				// Do we have a suffix?
-				$this->output[ $key ]['suffix'] = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
-				// Accept "callback" as short for "sanitize_callback".
-				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
-					$this->output[ $key ]['sanitize_callback'] = $output['callback'];
+				if ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'typography', 'background' ) ) ) {
+					continue;
 				}
-				// Do we have a "media_query" defined?
-				$this->output[ $key ]['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
-				// add the ability to exclude a value
-				$this->output[ $key ]['exclude'] = ( isset( $output['exclude'] ) ) ? $output['exclude'] : false;
+				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+					$output['sanitize_callback'] = $output['callback'];
+				}
+				// Convert element arrays to strings
+				if ( is_array( $output['element'] ) ) {
+					$output['element'] = array_unique( $output['element'] );
+					sort( $output['element'] );
+					$output['element'] = implode( ',', $output['element'] );
+				}
+				$outputs[] = array(
+					'element'           => $output['element'],
+					'property'          => ( isset( $output['property'] ) ) ? $output['property'] : '',
+					'media_query'       => ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global',
+					'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : '',
+					'units'             => ( isset( $output['units'] ) ) ? $output['units'] : '',
+					'prefix'            => ( isset( $output['prefix'] ) ) ? $output['prefix'] : '',
+					'suffix'            => ( isset( $output['suffix'] ) ) ? $output['suffix'] : '',
+					'exclude'           => ( isset( $output['exclude'] ) ) ? $output['exclude'] : false,
+				);
 			}
 
 		}
@@ -800,9 +808,17 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					if ( ! in_array( $output['property'], $easy_css_properties ) ) {
 						continue;
 					}
-					// we can't do pseudo-element as easy, so skip them.
-					if ( false !== strrpos( $output['element'], ':' ) ) {
-						continue;
+					if ( is_array( $output['element'] ) ) {
+						foreach ( $output['element'] as $element ) {
+							// we can't do pseudo-element as easy, so skip them.
+							if ( false !== strrpos( $element, ':' ) ) {
+								$skip = true;
+								continue;
+							}
+						}
+						if ( isset( $skip ) && true === $skip ) {
+							continue;
+						}
 					}
 					// If there's a sanitize_callback defined, skip this.
 					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
@@ -811,7 +827,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					// If we got this far, it's safe to add this.
 					$output['function'] = 'css';
 					$js_vars[] = $output;
-
 				}
 
 				// Did we manage to get all the items from 'output'?

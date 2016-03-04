@@ -81,6 +81,18 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					$property_setting = esc_attr( $field['settings'] ) . '_' . $setting;
 				}
 
+				// Build the field's output element
+				$output_element = $field['output'];
+				if ( ! empty( $field['output'] ) ) {
+					if ( is_array( $field['output'] ) ) {
+						if ( isset( $field['output']['element'] ) ) {
+							$output_element = $field['output']['element'];
+						} elseif ( isset( $field['output'][0] ) && isset( $field['output'][0]['element'] ) ) {
+							$output_element = $field['output'][0]['element'];
+						}
+					}
+				}
+
 				/**
 				 * Build the field.
 				 * We're merging with the original field here, so any extra properties are inherited.
@@ -97,12 +109,12 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					'default'     => $value,
 					'id'          => sanitize_key( str_replace( '[', '-', str_replace( ']', '', $property_setting ) ) ),
 					'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
-					'output'      => ( '' != $field['output'] ) ? array(
+					'output'      => ( ! empty( $field['output'] ) ) ? array(
 						array(
-							'element'  => $field['output'],
+							'element'  => $output_element,
 							'property' => $output_property,
 						),
-					) : '',
+					) : array(),
 				) );
 				$i++;
 			}

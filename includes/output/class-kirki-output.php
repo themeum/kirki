@@ -39,7 +39,6 @@ class Kirki_Output {
 		$this->value     = $value;
 		$this->output    = $output;
 
-		$this->sanitize_elements();
 		$this->parse_output();
 	}
 
@@ -64,26 +63,6 @@ class Kirki_Output {
 	}
 
 	/**
-	 * Convert element arrays to strings
-	 *
-	 * @access protected
-	 */
-	protected function sanitize_elements() {
-		foreach ( $this->output as $key => $output ) {
-			if ( is_array( $output['element'] ) ) {
-				// Make sure our values are unique
-				$output['element'] = array_unique( $output['element'] );
-				// Sort elements alphabetically.
-				// This way all duplicate items will be merged in the final CSS array.
-				sort( $output['element'] );
-				// Implode items to build the string
-				$output['element'] = implode( ',', $output['element'] );
-			}
-			$this->output[ $key ]['element'] = $output['element'];
-		}
-	}
-
-	/**
 	 * Parses the output arguments
 	 * Calls the process_output method for each of them.
 	 *
@@ -95,7 +74,7 @@ class Kirki_Output {
 			// Apply any sanitization callbacks defined
 			$value = $this->apply_sanitize_callback( $output, $this->value );
 			// No need to proceed this if the current value is the same as in the "exclude" value.
-			if ( false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
+			if ( isset( $output['exclude'] ) && false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
 				foreach ( $output['exclude'] as $exclude ) {
 					if ( $skip ) {
 						continue;
@@ -127,6 +106,17 @@ class Kirki_Output {
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 			return;
 		}
+		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
+		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
+		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
+
+		if ( is_array( $output['element'] ) ) {
+			$output['element'] = array_unique( $output['element'] );
+			sort( $output['element'] );
+			$output['element'] = implode( ',', $output['element'] );
+		}
+
 		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 	}
 
