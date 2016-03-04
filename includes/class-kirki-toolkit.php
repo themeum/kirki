@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		/** @var Kirki_Toolkit The only instance of this class */
 		public static $instance = null;
 
-		public static $version = '2.2.0.beta.2';
+		public static $version = '2.2.0.beta.3';
 
 		public $font_registry = null;
 		public $scripts       = null;
