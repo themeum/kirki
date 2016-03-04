@@ -911,7 +911,8 @@ span.CodeMirror-selectedtext {
       background: #ffffff;
       border: 0 solid #ffffff; }
 .selectize-dropdown {
-  position: absolute;
+  position: relative;
+  top: -4px !important;
   z-index: 10;
   border: 1px solid #d0d0d0;
   background: #ffffff;
