@@ -6,6 +6,7 @@ class Kirki_Output_Control_Typography extends Kirki_Output {
 
 		// Take care of font-families
 		if ( isset( $value['font-family'] ) ) {
+			$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] = $this->process_property_value( 'font-family', $value['font-family'] );
 		}
 		// Add support for the older font-weight parameter.
