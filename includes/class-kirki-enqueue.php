@@ -83,7 +83,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			foreach ( $google_fonts as $family => $args ) {
 				$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
 				$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
-				$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array( 'all' );
+				$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
 
 				$available_variants = array();
 				foreach ( $variants as $variant ) {

@@ -54,11 +54,11 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						<h5>{{ data.l10n['font-family'] }}</h5>
 						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
 					</div>
-					<div class="variant">
+					<div class="variant kirki-variant-wrapper">
 						<h5>{{ data.l10n['variant'] }}</h5>
 						<select class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 					</div>
-					<div class="subset hide-on-standard-fonts">
+					<div class="subset hide-on-standard-fonts kirki-subset-wrapper">
 						<h5>{{ data.l10n['subsets'] }}</h5>
 						<select class="subset" id="kirki-typography-subset-{{{ data.id }}}"></select>
 					</div>

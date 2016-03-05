@@ -1375,6 +1375,22 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 				}).data( 'selectize' );
 			}
 
+
+			// If only 1 option is available then there's no reason to show this.
+			if ( 'variant' == sub ) {
+				if ( 1 === subList.length || 0 === subList.length ) {
+					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
+				} else {
+					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
+				}
+			} else if ( 'subset' == sub ) {
+				if ( 0 === subList.length ) {
+					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );
+				} else {
+					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'block' );
+				}
+			}
+
 			if ( true === is_standard ) {
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
 			} else {
