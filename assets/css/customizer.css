@@ -594,15 +594,16 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext {
   background: none; }
 
-.customize-control-dimension input[type="number"] {
-  width: 68%;
-  display: inline-block;
-  height: 35px;
-  position: relative;
-  top: -12px; }
-.customize-control-dimension .selectize-control {
-  width: 30%;
-  display: inline-block; }
+.customize-control-dimension .input-wrapper .invalid-value {
+  display: none;
+  background: #D32F2F;
+  font-size: .85em;
+  color: #fff;
+  float: left;
+  padding: 2px 10px;
+  border-radius: 3px; }
+.customize-control-dimension .input-wrapper.invalid .invalid-value {
+  display: block; }
 
 .customize-control-number .ui-spinner.ui-widget-content {
   position: relative; }

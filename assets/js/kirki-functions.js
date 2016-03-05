@@ -21,3 +21,23 @@ function kirkiObjectToArray( obj ) {
 	}
 	return arr;
 }
+
+function kirkiValidateCSSValue( value ) {
+	var valueIsValid = true;
+
+	var validUnits   = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'];
+	// Get the numeric value
+	var numericValue = parseFloat( value );
+	// Get the unit
+	var unit = value.replace( numericValue, '' );
+	// Check the validity of the numeric value
+	if ( NaN === numericValue ) {
+		valueIsValid = false;
+	}
+	// Check the validity of the units
+	if ( -1 === jQuery.inArray( unit, validUnits ) ) {
+		valueIsValid = false;
+	}
+
+	return valueIsValid;
+}

@@ -2,15 +2,20 @@
 // dimension controls
 /////////////////////
 .customize-control-dimension {
-	input[type="number"] {
-		width: 68%;
-		display: inline-block;
-		height: 35px;
-		position: relative;
-		top: -12px;
-	}
-	.selectize-control {
-		width: 30%;
-		display: inline-block;
+	.input-wrapper {
+		.invalid-value {
+			display: none;
+			background: #D32F2F;
+			font-size: .85em;
+			color: #fff;
+			float: left;
+			padding: 2px 10px;
+			border-radius: 3px;
+		}
+		&.invalid {
+			.invalid-value {
+				display: block;
+			}
+		}
 	}
 }

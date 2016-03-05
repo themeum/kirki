@@ -131,6 +131,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				'extra-bold-italic'     => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ),
 				'ultra-bold'            => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
 				'ultra-bold-italic'     => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
+				'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );
