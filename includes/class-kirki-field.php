@@ -818,7 +818,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					if ( is_array( $output['element'] ) ) {
 						$output['element'] = implode( ',', $output['element'] );
 					}
-					if ( false !== strrpos( $element, ':' ) ) {
+					if ( false !== strrpos( $output['element'], ':' ) ) {
 						$output['function'] = 'style';
 					}
 					// If there's a sanitize_callback defined, skip this.
