@@ -212,18 +212,21 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					unset( $properties[ $key ] );
 				}
 			}
+
 			// Some things must run before the others.
 			$priorities = array(
 				'option_name',
 				'option_type',
 				'settings',
 			);
+
 			foreach ( $priorities as $priority ) {
 				if ( method_exists( $this, 'set_' . $priority ) ) {
 					$method_name = 'set_' . $priority;
 					$this->$method_name();
 				}
 			}
+
 			// Sanitize the properties, skipping the ones run from the $priorities
 			foreach ( $properties as $property => $value ) {
 				if ( in_array( $property, $priorities ) ) {
@@ -240,6 +243,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			foreach ( $args as $key => $default_value ) {
 				$args[ $key ] = $this->$key;
 			}
+
 			// add the whitelisted properties through the back door
 			foreach ( $whitelisted_properties as $key => $default_value ) {
 				if ( ! isset( $this->$key ) ) {
@@ -318,15 +322,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// then make sure we're using options and not theme_mods
 			if ( '' != $this->option_name ) {
 				$this->option_type = 'option';
-				return;
 			}
-			// The only valid options are 'theme_mod' and 'option'.
-			if ( ! in_array( $this->option_name, array( 'theme_mod', 'option' ) ) ) {
-				$this->option_type = 'theme_mod';
-				return;
+			// Take care of common typos
+			if ( 'options' == $this->option_type ) {
+				$this->options_type = 'option';
 			}
-			$this->option_type = 'theme_mod';
-
+			// Take care of common typos
+			if ( 'theme_mods' == $this->option_type ) {
+				$this->options_type = 'theme_mod';
+			}
 		}
 
 		/**
