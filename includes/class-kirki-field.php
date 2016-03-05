@@ -154,6 +154,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 				$args['settings'] = $args['setting'];
+				unset( $args['setting'] );
+				error_log( 'Kirki: Typo found in field ' . $args['settings'] . ' ("setting" instead of "settings").' );
 			}
 
 			if ( is_string( $config_id ) ) {
