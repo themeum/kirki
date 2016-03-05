@@ -806,6 +806,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				);
 				// start going through each item in the $output array
 				foreach ( $this->output as $output ) {
+					$output['function'] = 'css';
 					// If 'element' or 'property' are not defined, skip this.
 					if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 						continue;
@@ -815,24 +816,17 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						continue;
 					}
 					if ( is_array( $output['element'] ) ) {
-						foreach ( $output['element'] as $element ) {
-							// we can't do pseudo-element as easy, so skip them.
-							if ( false !== strrpos( $element, ':' ) ) {
-								$skip = true;
-								continue;
-							}
-						}
-						if ( isset( $skip ) && true === $skip ) {
-							continue;
-						}
 						$output['element'] = implode( ',', $output['element'] );
+					}
+					if ( false !== strrpos( $element, ':' ) ) {
+						$output['function'] = 'style';
 					}
 					// If there's a sanitize_callback defined, skip this.
 					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
 						continue;
 					}
 					// If we got this far, it's safe to add this.
-					$output['function'] = 'css';
+
 					$js_vars[] = $output;
 				}
 
