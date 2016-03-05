@@ -252,6 +252,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$args[ $key ] = $this->$key;
 			}
 
+			// Add any modifications needed for this data type
+			Kirki_Option_Type::get_instance( $this->option_type );
+
 			// Add the field to the static $fields variable properly indexed
 			Kirki::$fields[ $this->settings ] = $args;
 
