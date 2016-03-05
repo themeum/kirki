@@ -30,12 +30,16 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			}
 			$this->json['js_vars'] = $this->js_vars;
 			$this->json['output']  = $this->output;
-			$this->json['value']   = apply_filters( 'kirki/controls/get_value/' . $this->option_type, $this->value() );
+			$this->json['value']   = $this->value();
 			$this->json['choices'] = $this->choices;
 			$this->json['link']    = $this->get_link();
 			$this->json['tooltip'] = $this->tooltip;
 			$this->json['id']      = $this->id;
 			$this->json['i18n']    = Kirki_Toolkit::i18n();
+
+			if ( 'user_meta' == $this->option_type ) {
+				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true  );
+			}
 		}
 
 		public function enqueue() {

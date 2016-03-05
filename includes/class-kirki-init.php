@@ -8,6 +8,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 */
 		public function __construct() {
 			$this->set_url();
+			add_action( 'customize_update_user_meta', array( $this, 'update_user_meta' ), 10, 2 );
 			add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		}
 
@@ -239,5 +240,16 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 		}
 
+		/**
+		 * Handle saving of settings with "user_meta" storage type.
+		 *
+		 * @param string $value Value being saved
+		 * @param WP_Customize_Setting|onj $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
+		 */
+		public function update_user_meta( $value, $wp_customize_setting ) {
+			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value  );
+		}
+
 	}
+
 }
