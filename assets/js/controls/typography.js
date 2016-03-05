@@ -153,7 +153,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			wp.customize.previewer.refresh();
 		});
 
-		this.container.on( 'change', '.font-size input', function() {
+		this.container.on( 'change keyup paste', '.font-size input', function() {
 			// add the value to the array and set the setting's value
 			value['font-size'] = jQuery( this ).val();
 			control.setting.set( value );
@@ -161,7 +161,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			wp.customize.previewer.refresh();
 		});
 
-		this.container.on( 'change', '.line-height input', function() {
+		this.container.on( 'change keyup paste', '.line-height input', function() {
 			// add the value to the array and set the setting's value
 			value['line-height'] = jQuery( this ).val();
 			control.setting.set( value );
@@ -169,7 +169,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			wp.customize.previewer.refresh();
 		});
 
-		this.container.on( 'change', '.letter-spacing input', function() {
+		this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 			// add the value to the array and set the setting's value
 			value['letter-spacing'] = jQuery( this ).val();
 			control.setting.set( value );
