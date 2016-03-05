@@ -112,14 +112,14 @@ class Kirki_Fonts {
 	public static function get_all_subsets() {
 		$i18n = Kirki_Toolkit::i18n();
 		return array(
-			'all'          => $i18n['all'],
+			// 'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
 			'cyrillic-ext' => $i18n['cyrillic-ext'],
 			'devanagari'   => $i18n['devanagari'],
 			'greek'        => $i18n['greek'],
 			'greek-ext'    => $i18n['greek-ext'],
 			'khmer'        => $i18n['khmer'],
-			'latin'        => $i18n['latin'],
+			// 'latin'        => $i18n['latin'],
 			'latin-ext'    => $i18n['latin-ext'],
 			'vietnamese'   => $i18n['vietnamese'],
 			'hebrew'       => $i18n['hebrew'],
