@@ -1333,9 +1333,11 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					} else if ( 'subset' == sub ) { // The context here is subsets
 						var subsetValues = {};
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
-							for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
-								if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
-									subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+							if ( null !== value['subset'] ) {
+								for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
+									if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
+										subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+									}
 								}
 							}
 						}
