@@ -152,6 +152,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		public function __construct( $config_id = 'global', $args = array() ) {
 
+			if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
+				$args['settings'] = $args['setting'];
+			}
+
 			if ( is_string( $config_id ) ) {
 				$args['kirki_config'] = $config_id;
 			}
