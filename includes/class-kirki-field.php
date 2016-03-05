@@ -195,6 +195,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'description' => '', // this is sanitized later in the controls themselves
 				'default'     => '', // this is sanitized later in the controls themselves
 				'mode'        => '', // only used for backwards-compatibility reasons
+				'fields'      => array(), // Used in repeater fields
 			) );
 
 			$this->set_field( $whitelisted );
