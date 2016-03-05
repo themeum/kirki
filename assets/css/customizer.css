@@ -720,7 +720,7 @@ span.CodeMirror-selectedtext {
     -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
     border: 1px solid #3498DB; }
-  .customize-control-radio-image input:checked + label .image-clickable {
+  .customize-control-radio-image input + label .image-clickable {
     position: absolute;
     top: 0;
     bottom: 0;
