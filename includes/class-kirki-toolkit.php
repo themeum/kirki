@@ -153,19 +153,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		}
 
 		/**
-		 * Constructor is private, should only be called by get_instance()
-		 */
-		private function __construct() {
-			$this->api     = new Kirki();
-			$this->scripts = new Kirki_Scripts_Registry();
-			$this->styles  = array(
-				'back'  => new Kirki_Styles_Customizer(),
-				'front' => new Kirki_Styles_Frontend(),
-			);
-			new Kirki_Selective_Refresh();
-		}
-
-		/**
 		 * Return true if we are debugging Kirki,
 		 *
 		 * @return bool

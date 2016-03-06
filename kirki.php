@@ -45,6 +45,13 @@ if ( ! function_exists( 'Kirki' ) ) {
 global $kirki;
 $kirki = Kirki();
 
+new Kirki_l10n();
+new Kirki_Scripts_Registry();
+new Kirki_Styles_Customizer();
+new Kirki_Styles_Frontend();
+new Kirki_Selective_Refresh();
+new Kirki();
+
 /**
  * Apply the filters to the Kirki::$url
  */
@@ -58,11 +65,7 @@ if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	add_action( 'after_setup_theme', 'kirki_filtered_url' );
 }
 
-new Kirki_l10n();
-
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
-// Include the API class
-include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-kirki.php' );
 // Include the ariColor library
 include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.php' ) );
 
