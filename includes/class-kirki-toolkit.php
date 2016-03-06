@@ -32,7 +32,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 */
 		protected static $version = '2.2.0.beta.3';
 
-		public $font_registry = null;
 		public $scripts       = null;
 		public $api           = null;
 		public $styles        = array();
