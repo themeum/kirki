@@ -36,7 +36,7 @@ if ( ! function_exists( 'Kirki' ) ) {
 		// Make sure the class is instanciated
 		$kirki = Kirki_Toolkit::get_instance();
 		// The path of the current Kirki instance
-		Kirki::$path = dirname( __FILE__ );
+		Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 
 		return $kirki;
 	}
