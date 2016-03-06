@@ -65,11 +65,8 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * @return string
 		 */
 		public static function clean_file_path( $path ) {
-			$path = str_replace( '', '', str_replace( array( "\\", "\\\\" ), '/', $path ) );
-			if ( '/' === $path[ strlen( $path ) - 1 ] ) {
-				$path = rtrim( $path, '/' );
-			}
-			return $path;
+			$path = wp_normalize_path( $path );
+			return rtrim( $path, '/' );
 		}
 
 		/**
@@ -81,8 +78,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		public static function is_parent_theme( $file ) {
 			$file = self::clean_file_path( $file );
 			$dir  = self::clean_file_path( get_template_directory() );
-			$file = str_replace( '//', '/', $file );
-			$dir  = str_replace( '//', '/', $dir );
 			if ( false !== strpos( $file, $dir ) ) {
 				return true;
 			}
@@ -98,8 +93,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		public static function is_child_theme( $file ) {
 			$file = self::clean_file_path( $file );
 			$dir  = self::clean_file_path( get_stylesheet_directory() );
-			$file = str_replace( '//', '/', $file );
-			$dir  = str_replace( '//', '/', $dir );
 			if ( false !== strpos( $file, $dir ) ) {
 				return true;
 			}
