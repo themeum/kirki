@@ -41,7 +41,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 * Enqueue the stylesheets required.
 		 */
 		public function customizer_styles() {
-			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null, Kirki_Toolkit::$version );
+			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null, Kirki_Toolkit::get_version() );
 			wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
 		}
 

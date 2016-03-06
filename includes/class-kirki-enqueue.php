@@ -56,7 +56,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'selectize',
 			);
 
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::$version );
+			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps, Kirki_Toolkit::get_version() );
 
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
 			$standard_fonts = Kirki_Fonts::get_standard_fonts();

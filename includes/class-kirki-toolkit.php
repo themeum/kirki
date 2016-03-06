@@ -18,10 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 	final class Kirki_Toolkit {
 
-		/** @var Kirki_Toolkit The only instance of this class */
-		public static $instance = null;
+		/**
+		 * @static
+		 * @access protected
+		 * @var string
+		 */
+		protected static $instance = null;
 
-		public static $version = '2.2.0.beta.3';
+		/**
+		 * @static
+		 * @access protected
+		 * @var string
+		 */
+		protected static $version = '2.2.0.beta.3';
 
 		public $font_registry = null;
 		public $scripts       = null;
@@ -244,6 +253,15 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Get the version
+		 *
+		 * @return string
+		 */
+		public static function get_version() {
+			return self::$version;
 		}
 
 	}
