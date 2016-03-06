@@ -58,37 +58,11 @@ if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	add_action( 'after_setup_theme', 'kirki_filtered_url' );
 }
 
+new Kirki_l10n();
+
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
 // Include the API class
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'class-kirki.php' );
-
-if ( ! function_exists( 'kirki_load_textdomain' ) ) {
-	/**
-	 * Load plugin textdomain.
-	 *
-	 * @since 0.8.0
-	 */
-	function kirki_load_textdomain() {
-		$textdomain = 'kirki';
-
-		// Look for WP_LANG_DIR/{$domain}-{$locale}.mo
-		if ( file_exists( WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo' ) ) {
-			$file = WP_LANG_DIR . '/' . $textdomain . '-' . get_locale() . '.mo';
-		}
-		// Look for Kirki::$path/languages/{$domain}-{$locale}.mo
-		if ( ! isset( $file ) && file_exists( Kirki::$path . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $textdomain . '-' . get_locale() . '.mo' ) ) {
-			$file = Kirki::$path . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $textdomain . '-' . get_locale() . '.mo';
-		}
-
-		if ( isset( $file ) ) {
-			load_textdomain( $textdomain, $file );
-		}
-
-		load_plugin_textdomain( $textdomain, false, Kirki::$path . DIRECTORY_SEPARATOR . 'languages' );
-	}
-	add_action( 'plugins_loaded', 'kirki_load_textdomain' );
-}
-
 // Include the ariColor library
 include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.php' ) );
 
