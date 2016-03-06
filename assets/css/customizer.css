@@ -696,8 +696,8 @@ span.CodeMirror-selectedtext {
     padding-left: 25px; }
 
 .customize-control-radio-buttonset .buttonset .switch-label {
-  background: rgba(0, 0, 0, 0.17);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.05);
+  color: #555;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
   padding: 4px 7px;
   margin: 0;
@@ -707,7 +707,8 @@ span.CodeMirror-selectedtext {
 .customize-control-radio-buttonset .buttonset .switch-input {
   display: none; }
   .customize-control-radio-buttonset .buttonset .switch-input:checked + .switch-label {
-    background-color: #3498DB; }
+    background-color: #3498DB;
+    color: #fff; }
 
 .customize-control-radio-image label {
   position: relative;

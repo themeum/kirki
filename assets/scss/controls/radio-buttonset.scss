@@ -4,8 +4,8 @@
 .customize-control-radio-buttonset {
 	.buttonset {
 		.switch-label {
-			background: rgba(0,0,0,.17);
-			color: #fff;
+			background: rgba(0,0,0,.05);
+			color: #555;
 			border-right: 1px solid rgba(0,0,0,.2);
 			padding: 4px 7px;
 			margin: 0;
@@ -19,6 +19,7 @@
 			&:checked {
 				+ .switch-label {
 					background-color: #3498DB;
+					color: #fff;
 				}
 			}
 		}
