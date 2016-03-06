@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			parent::to_json();
 
 			$fields = $this->fields;
-			$i18n   = Kirki_Toolkit::i18n();
+			$i18n   = Kirki_l10n::get_strings();
 			$default_image_button_labels = array(
 				'default'     => $i18n['add-image'],
 				'remove'      => $i18n['remove'],

@@ -28,33 +28,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Include the autoloader
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
+// Gets an instance of the main Kirki object.
 if ( ! function_exists( 'Kirki' ) ) {
-	/**
-	 * Returns the Kirki object
-	 */
 	function Kirki() {
-		// Make sure the class is instanciated
 		$kirki = Kirki_Toolkit::get_instance();
-		// The path of the current Kirki instance
-		Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
-
 		return $kirki;
 	}
-
 }
+// Start Kirki
 global $kirki;
 $kirki = Kirki();
-
+// Make sure the path is properly set
+Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
+// Instantiate 2ndary classes
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
 new Kirki_Styles_Customizer();
 new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
-
-/**
- * Apply the filters to the Kirki::$url
- */
+// apply the kirki/config filter to the URL
 if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	function kirki_filtered_url() {
 		$config = apply_filters( 'kirki/config', array() );
@@ -64,7 +57,7 @@ if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	}
 	add_action( 'after_setup_theme', 'kirki_filtered_url' );
 }
-
+// Include deprectaed functions & methods
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
 // Include the ariColor library
 include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.php' ) );

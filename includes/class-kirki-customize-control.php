@@ -15,10 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 	class Kirki_Customize_Control extends WP_Customize_Control {
 
-		public $tooltip     = '';
-		public $js_vars     = array();
-		public $output      = array();
-		public $option_type = 'theme_mod';
+		public $tooltip      = '';
+		public $js_vars      = array();
+		public $output       = array();
+		public $option_type  = 'theme_mod';
+		public $kirki_config = 'global';
 
 		public function to_json() {
 			parent::to_json();
@@ -35,7 +36,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			$this->json['link']    = $this->get_link();
 			$this->json['tooltip'] = $this->tooltip;
 			$this->json['id']      = $this->id;
-			$this->json['i18n']    = Kirki_Toolkit::i18n();
+			$this->json['i18n']    = Kirki_l10n::get_strings( $this->kirki_config );
 
 			if ( 'user_meta' == $this->option_type ) {
 				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true  );

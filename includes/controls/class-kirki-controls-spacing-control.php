@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
-			$this->json['l10n']    = Kirki_Toolkit::i18n();
+			$this->json['l10n']    = Kirki_l10n::get_strings();
 			$this->json['choices'] = array();
 			if ( is_array( $this->choices ) ) {
 				foreach ( $this->choices as $choice => $value ) {

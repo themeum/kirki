@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
-			$i18n = Kirki_Toolkit::i18n();
+			$i18n = Kirki_l10n::get_strings();
 			$this->json['choices'] = ( empty( $this->choices ) || ! is_array( $this->choices ) ) ? array() : $this->choices;
 			$this->json['choices']['on']    = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
 			$this->json['choices']['off']   = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];

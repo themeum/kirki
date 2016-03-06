@@ -35,7 +35,7 @@ class Kirki_Fonts {
 	 * @return array    Standard websafe fonts.
 	 */
 	 public static function get_standard_fonts() {
- 		$i18n = Kirki_Toolkit::i18n();
+ 		$i18n = Kirki_l10n::get_strings();
  		return apply_filters( 'kirki/fonts/standard_fonts', array(
  			'serif'     => array(
  				'label' => $i18n['serif'],
@@ -110,7 +110,7 @@ class Kirki_Fonts {
 	}
 
 	public static function get_all_subsets() {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n = Kirki_l10n::get_strings();
 		return array(
 			// 'all'          => $i18n['all'],
 			'cyrillic'     => $i18n['cyrillic'],
@@ -133,7 +133,7 @@ class Kirki_Fonts {
 	}
 
 	public static function get_all_variants() {
-		$i18n = Kirki_Toolkit::i18n();
+		$i18n = Kirki_l10n::get_strings();
 		return array(
 			'100'       => $i18n['ultra-light'],
 			'100italic' => $i18n['ultra-light-italic'],

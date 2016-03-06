@@ -10,7 +10,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		 * @return null|array
 		 */
 		public static function explode( $field ) {
-			$i18n    = Kirki_Toolkit::i18n();
+			$i18n    = Kirki_l10n::get_strings( $field['kirki_config'] );
 			$choices = self::background_choices();
 
 			// Early exit if this is not a background field.
@@ -152,7 +152,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		 */
 		public static function background_choices() {
 
-			$i18n = Kirki_Toolkit::i18n();
+			$i18n = Kirki_l10n::get_strings()
 
 			return array(
 				'repeat'        => array(
