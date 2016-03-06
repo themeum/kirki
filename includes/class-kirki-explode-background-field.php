@@ -152,7 +152,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		 */
 		public static function background_choices() {
 
-			$i18n = Kirki_l10n::get_strings()
+			$i18n = Kirki_l10n::get_strings();
 
 			return array(
 				'repeat'        => array(
