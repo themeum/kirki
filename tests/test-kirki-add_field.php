@@ -41,40 +41,41 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 			'priority' => 10,
 			'default'  => 'some-default-value',
 		) );
-		// $this->assertEquals(
-		// 	array(
-		// 		'settings'          => 'my_setting_global',
-		// 		'label'             => 'My custom control',
-		// 		'section'           => 'my_section',
-		// 		'type'              => 'kirki-generic',
-		// 		'priority'          => 10,
-		// 		'default'           => 'some-default-value',
-		// 		'kirki_config'      => 'global',
-		// 		'option_name'       => '',
-		// 		'option_type'       => 'theme_mod',
-		// 		'capability'        => 'edit_theme_options',
-		// 		'disable_output'    => false,
-		// 		'tooltip'           => '',
-		// 		'active_callback'   => '__return_true',
-		// 		'choices'           => array(),
-		// 		'output'            => array(),
-		// 		'variables'         => array(),
-		// 		'id'                => 'my_setting_global',
-		// 		'transport'         => 'refresh',
-		// 		'sanitize_callback' => 'wp_kses_post',
-		// 		'choices'           => array(
-		// 			'element' => 'input',
-		// 			'type'    => 'text',
-		// 		'js_vars'           => array(),
-		// 		'help'              => '',
-		// 		'mode'              => '',
-		// 		'required'          => array(),
-		// 		'multiple'          => 1,
-		// 		'description'       => '',
-		// 		),
-		// 	),
-		// 	Kirki::$fields['my_setting_global']
-		// );
+		$this->assertEquals(
+			array(
+				'settings'          => 'my_setting_global',
+				'label'             => 'My custom control',
+				'section'           => 'my_section',
+				'type'              => 'kirki-generic',
+				'priority'          => 10,
+				'default'           => 'some-default-value',
+				'kirki_config'      => 'global',
+				'option_name'       => '',
+				'option_type'       => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'disable_output'    => false,
+				'tooltip'           => '',
+				'active_callback'   => '__return_true',
+				'choices'           => array(),
+				'output'            => array(),
+				'variables'         => array(),
+				'id'                => 'my_setting_global',
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'wp_kses_post',
+				'choices'           => array(
+					'element' => 'input',
+					'type'    => 'text',
+				),
+				'js_vars'           => array(),
+				'help'              => '',
+				'mode'              => '',
+				'required'          => array(),
+				'multiple'          => 1,
+				'description'       => '',
+				'fields'            => array(),
+			),
+			Kirki::$fields['my_setting_global']
+		);
 
 		$this->assertEquals(
 			array(
@@ -107,6 +108,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'required'          => array(),
 				'multiple'          => 1,
 				'description'       => '',
+				'fields'            => array(),
 
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
@@ -156,6 +158,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'required'          => array(),
 				'multiple'          => 1,
 				'description'       => '',
+				'fields'            => array(),
 			),
 			Kirki::$fields['my_setting_global']
 		);
