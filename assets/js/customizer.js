@@ -125,13 +125,13 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 
 		this.container.on( 'change keyup paste', 'input', function() {
 			var value = jQuery( this ).val();
-			// Set the value to the customizer
-			control.setting.set( value );
 			// Validate the value and show a warning if it's invalid
 			if ( false === kirkiValidateCSSValue( value ) ) {
 				jQuery( control.selector + ' .input-wrapper' ).addClass( 'invalid' );
 			} else {
 				jQuery( control.selector + ' .input-wrapper' ).removeClass( 'invalid' );
+				// Set the value to the customizer
+				control.setting.set( value );
 			}
 		});
 	}
