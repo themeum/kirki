@@ -58,7 +58,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 * @param array  $deps
 		 */
 		public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
-			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::kirki_debug() ) || false === strpos( $file, 'controls/' ) ) {
+			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::is_debug() ) || false === strpos( $file, 'controls/' ) ) {
 				$file = trailingslashit( Kirki::$url ) . 'assets/js/' . $file . '.js';
 				foreach ( $deps as $dep ) {
 					wp_enqueue_script( $dep );

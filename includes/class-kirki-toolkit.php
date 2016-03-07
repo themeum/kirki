@@ -47,11 +47,12 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		}
 
 		/**
-		 * Return true if we are debugging Kirki,
+		 * Return true if we are debugging Kirki
 		 *
+		 * @access public
 		 * @return bool
 		 */
-		public static function kirki_debug() {
+		public static function is_debug() {
 			if ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
 				return true;
 			}

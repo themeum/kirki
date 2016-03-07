@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
 			wp_enqueue_style( 'wp-color-picker' );
 
-			$suffix = ( ! Kirki_Toolkit::kirki_debug() ) ? '.min' : '';
+			$suffix = ( ! Kirki_Toolkit::is_debug() ) ? '.min' : '';
 
 			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
 			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
