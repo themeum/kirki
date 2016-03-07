@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		/**
 		 * Determine if we're running as a plugin
 		 */
-		private static function is_plugin() {
+		public static function is_plugin() {
 			if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( get_stylesheet_directory() ) ) ) {
 				return false;
 			}

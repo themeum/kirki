@@ -47,6 +47,7 @@ new Kirki_Styles_Customizer();
 new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
+
 // apply the kirki/config filter to the URL
 if ( ! function_exists( 'kirki_filtered_url' ) ) {
 	function kirki_filtered_url() {
@@ -55,6 +56,8 @@ if ( ! function_exists( 'kirki_filtered_url' ) ) {
 			Kirki::$url = esc_url_raw( $config['url_path'] );
 		}
 	}
+}
+if ( ! Kirki_Toolkit::is_plugin() ) {
 	add_action( 'after_setup_theme', 'kirki_filtered_url' );
 }
 // Include deprectaed functions & methods
