@@ -282,9 +282,9 @@ class Test_ariColor extends WP_UnitTestCase {
 
 		foreach ( $colors as $color ) {
 			$c = ariColor::newColor( $color );
-			$this->assertEquals( $c->hue - 5, $c->getNew( 'hue', $c->hue - 5 )->hue );
-			$this->assertEquals( $c->saturation, $c->getNew( 'hue', $c->hue - 5 )->saturation );
-			$this->assertEquals( $c->lightness, $c->getNew( 'hue', $c->hue - 5 )->lightness );
+			$this->assertEquals( max( 0, min( 360, $c->hue - 5 ) ), $c->getNew( 'hue', $c->hue - 5 )->hue );
+			$this->assertEquals( max( 0, min( 100, $c->saturation ) ), $c->getNew( 'hue', $c->hue - 5 )->saturation );
+			$this->assertEquals( max( 0, min( 100, $c->lightness ) ), $c->getNew( 'hue', $c->hue - 5 )->lightness );
 			if ( 5 < $c->hue ) {
 				$this->assertTrue( $c->toCSS( 'hex' ) !== $c->getNew( 'hue', $c->hue - 5 )->toCSS( 'hex' ) );
 			}
@@ -298,9 +298,9 @@ class Test_ariColor extends WP_UnitTestCase {
 
 		foreach ( $colors as $color ) {
 			$c = ariColor::newColor( $color );
-			$this->assertEquals( $c->hue, $c->getNew( 'saturation', $c->saturation - 5 )->hue );
-			$this->assertEquals( $c->saturation - 5, $c->getNew( 'saturation', $c->saturation - 5 )->saturation );
-			$this->assertEquals( $c->lightness, $c->getNew( 'saturation', $c->saturation - 5 )->lightness );
+			$this->assertEquals( max( 0, min( 360, $c->hue ) ), $c->getNew( 'saturation', $c->saturation - 5 )->hue );
+			$this->assertEquals( max( 0, min( 100, $c->saturation - 5 ) ), $c->getNew( 'saturation', $c->saturation - 5 )->saturation );
+			$this->assertEquals( max( 0, min( 100, $c->lightness ) ), $c->getNew( 'saturation', $c->saturation - 5 )->lightness );
 			if ( 5 < $c->saturation ) {
 				$this->assertTrue( $c->toCSS( 'hex' ) !== $c->getNew( 'saturation', $c->hue - 5 )->toCSS( 'hex' ) );
 			}
@@ -314,9 +314,9 @@ class Test_ariColor extends WP_UnitTestCase {
 
 		foreach ( $colors as $color ) {
 			$c = ariColor::newColor( $color );
-			$this->assertEquals( $c->hue, $c->getNew( 'lightness', $c->lightness - 5 )->hue );
-			$this->assertEquals( $c->saturation, $c->getNew( 'lightness', $c->lightness - 5 )->saturation );
-			$this->assertEquals( $c->lightness - 5, $c->getNew( 'lightness', $c->lightness - 5 )->lightness );
+			$this->assertEquals( max( 0, min( 360, $c->hue ) ), $c->getNew( 'lightness', $c->lightness - 5 )->hue );
+			$this->assertEquals( max( 0, min( 100, $c->saturation ) ), $c->getNew( 'lightness', $c->lightness - 5 )->saturation );
+			$this->assertEquals( max( 0, min( 100, $c->lightness - 5 ) ), $c->getNew( 'lightness', $c->lightness - 5 )->lightness );
 			if ( 5 < $c->lightness ) {
 				$this->assertTrue( $c->toCSS( 'hex' ) !== $c->getNew( 'lightness', $c->hue - 5 )->toCSS( 'hex' ) );
 			}
@@ -327,7 +327,27 @@ class Test_ariColor extends WP_UnitTestCase {
 	public function get_material_design_main_colors() {
 
 		$mdc = array();
-		$colors = array( 'F44336', 'E91E63', '9C27B0', '673AB7', '3F51B5', '2196F3', '03A9F4', '00BCD4', '009688', '4CAF50', '8BC34A', 'CDDC39', 'FFEB3B', 'FFC107', 'FF9800', 'FF5722', '795548', '9E9E9E', '607D8B' );
+		$colors = array(
+			'F44336',
+			'E91E63',
+			'9C27B0',
+			'673AB7',
+			'3F51B5',
+			'2196F3',
+			'03A9F4',
+			'00BCD4',
+			'009688',
+			'4CAF50',
+			'8BC34A',
+			'CDDC39',
+			'FFEB3B',
+			'FFC107',
+			'FF9800',
+			'FF5722',
+			'795548',
+			'9E9E9E',
+			'607D8B'
+		);
 		foreach ( $colors as $color ) {
 			$mdc[] = '#' . $color;
 		}

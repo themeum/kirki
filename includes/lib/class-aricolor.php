@@ -1,12 +1,21 @@
 <?php
 /**
- * Color Calculations class for Kirki
- * Initially built for the Shoestrap-3 theme and then tweaked for Kirki.
+ * Plugin Name:   ariColor
+ * Plugin URI:    http://aristath.github.io/ariColor/
+ * Description:   A PHP library for color manipulation in WordPress themes and plugins
+ * Author:        Aristeides Stathopoulos
+ * Author URI:    http://aristeides.com
+ * Version:       1.0
+ * Text Domain:   aricolor
  *
- * @package     Kirki
+ * GitHub Plugin URI: aristath/ariColor
+ * GitHub Plugin URI: https://github.com/aristath/ariColor
+ *
+ *
+ * @package     ariColor
  * @category    Core
  * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -99,11 +108,18 @@ if ( ! class_exists( 'ariColor' ) ) {
 			// Check if we're changing any of the rgba values
 			if ( in_array( $property, array( 'red', 'green', 'blue', 'alpha' ) ) ) {
 				$this->$property = $value;
+				$this->red   = max( 0, min( 255, $this->red ) );
+				$this->green = max( 0, min( 255, $this->green ) );
+				$this->blue  = max( 0, min( 255, $this->blue ) );
+				$this->alpha = max( 0, min( 255, $this->alpha ) );
 				return self::newColor( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
 			}
 			// Check if we're changing any of the hsl values
 			elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
-				$this->$property = $value;
+				$this->$property  = $value;
+				$this->hue        = max( 0, min( 360, $this->hue ) );
+				$this->saturation = max( 0, min( 100, $this->saturation ) );
+				$this->lightness  = max( 0, min( 100, $this->lightness ) );
 				return self::newColor( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
 			}
 			// Check if we're changing the brightness
