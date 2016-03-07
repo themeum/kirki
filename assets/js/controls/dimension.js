@@ -5,6 +5,7 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
 
+		// Validate the value and show a warning if it's invalid
 		if ( false === kirkiValidateCSSValue( control.setting._value ) ) {
 			jQuery( control.selector + ' .input-wrapper' ).addClass( 'invalid' );
 		} else {
@@ -15,7 +16,7 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 			var value = jQuery( this ).val();
 			// Set the value to the customizer
 			control.setting.set( value );
-
+			// Validate the value and show a warning if it's invalid
 			if ( false === kirkiValidateCSSValue( value ) ) {
 				jQuery( control.selector + ' .input-wrapper' ).addClass( 'invalid' );
 			} else {

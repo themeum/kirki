@@ -21,15 +21,7 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 			}
 		}
 		// On change
-		this.container.on( 'change', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-		// On click
-		this.container.on( 'click', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-		// On keyup
-		this.container.on( 'keyup', 'input', function() {
+		this.container.on( 'change click keyup paste', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}

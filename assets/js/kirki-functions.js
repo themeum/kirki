@@ -25,6 +25,10 @@ function kirkiObjectToArray( obj ) {
 function kirkiValidateCSSValue( value ) {
 	var valueIsValid = true;
 
+	if ( '0' == value ) {
+		return true;
+	}
+
 	var validUnits   = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'];
 	// Get the numeric value
 	var numericValue = parseFloat( value );
