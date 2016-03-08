@@ -1,4 +1,4 @@
-# Selecto Control
+# select
 
 We extend WordPress Core's `select` controls and all `select` controls created using Kirki will use the [selectize.js](http://brianreavis.github.io/selectize.js/) script.
 

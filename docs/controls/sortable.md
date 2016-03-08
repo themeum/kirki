@@ -1,4 +1,4 @@
-# Sortable Control
+# sortable
 
 ```php
 Kirki::add_field( 'my_config', array(
