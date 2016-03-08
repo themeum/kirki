@@ -117,6 +117,7 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 					$show = ( $value1 < $value2 ) ? true : false;
 					break;
 				case 'contains':
+				case 'in':
 					if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
 						$array  = $value1;
 						$string = $value2;
