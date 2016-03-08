@@ -1,4 +1,4 @@
-# Checkbox Controls
+# Checkbox Control
 
 WordPress Core already allows you to create checkbox controls.
 However in some cases you may want to enrich those, either to better convey your message, or to visually enrich the user experience.

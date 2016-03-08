@@ -7,7 +7,7 @@ If you want to enable the alpha layer (opavity) in your color controls, you can 
 Example:
 
 ```php
-Kirki::add_field( '', array(
+Kirki::add_field( 'my_config', array(
     'type'        => 'color',
     'settings'    => 'my_setting',
     'label'       => __( 'This is the label', 'my_textdomain' ),
