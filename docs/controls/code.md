@@ -21,3 +21,11 @@ Kirki::add_field( 'my_config', array(
     ),
 ) );
 ```
+
+## Usage
+
+The saved values is a `string`
+
+```php
+<?php echo get_theme_mod( 'my_setting', '' ); ?>
+```

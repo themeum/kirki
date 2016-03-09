@@ -15,3 +15,12 @@ Kirki::add_field( 'my_config', array(
 ) );
 ```
 The control saves the URL to the image, and if you want to define a default value as an image, then you will have to add a string containing the full URL to that image.
+
+# Usage
+
+```php
+<?php $image = get_theme_mo( 'my_setting', '' ); ?>
+<div style="background-image: url('<?php echo esc_url_raw( $image ); ?>')">
+    Set the background-image of this div from "my_setting".
+</div>
+```

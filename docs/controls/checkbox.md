@@ -5,7 +5,7 @@ However in some cases you may want to enrich those, either to better convey your
 
 Besides checkboxes we also allow you to use `switch` and `toggle` controls. To change a checkbox to a switch all you have to do is change its type from `checkbox` to `switch` or `toggle`. Since switches & toggles are internally checkboxes, they will still return values 0|1 like checkboxes do.
 
-## Creating a `checkbox` control
+### Creating a `checkbox` control
 
 ```php
 Kirki::add_field( 'my_config', array(
@@ -18,7 +18,7 @@ Kirki::add_field( 'my_config', array(
 ) );
 ```
 
-## Creating a `switch` control
+### Creating a `switch` control
 
 Switches have the benefit of allowing you to change their labels.
 In the example below we'll be using 'Enable' and 'Disable' as labels.
@@ -39,7 +39,7 @@ Kirki::add_field( 'my_config', array(
 ) );
 ```
 
-## Creating a `toggle` control
+### Creating a `toggle` control
 
 ```php
 Kirki::add_field( 'my_config', array(
@@ -50,4 +50,16 @@ Kirki::add_field( 'my_config', array(
     'default'     => '1',
     'priority'    => 10,
 ) );
+```
+
+## Usage:
+
+The saved value is a `boolean`:
+
+```php
+<?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>
+    <p>Checkbox is checked</p>
+<?php else : ?>
+    <p>Checkbox is unchecked</p>
+<?php endif; ?>
 ```
