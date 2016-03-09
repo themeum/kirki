@@ -52,7 +52,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 				<# } #>
 				<div class="wrapper">
 					<div class="control">
-						<# for ( choiceKey in data.choices ) { #>
+						<# for ( choiceKey in data.default ) { #>
 							<div class="{{ choiceKey }}">
 								<h5>{{ data.i18n[ choiceKey ] }}</h5>
 								<div class="{{ choiceKey }} input-wrapper">
