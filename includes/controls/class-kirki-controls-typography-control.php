@@ -28,6 +28,15 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			parent::to_json();
 			$this->add_values_backwards_compatibility();
 			$this->json['l10n'] = Kirki_l10n::get_strings();
+			$defaults = array(
+				'font-family'    => false,
+				'font-size'      => false,
+				'line-height'    => false,
+				'line-height'    => false,
+				'letter-spacing' => false,
+				'color'          => false,
+			);
+			$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 		}
 
 		public function render_content() {}
@@ -111,7 +120,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				$old_values['variant'] = 'regular';
 			}
 			// letter spacing was in px, now it requires units.
-			if ( $value['letter-spacing'] == intval( $value['letter-spacing'] ) ) {
+			if ( isset( $value['letter-spacing'] ) && $value['letter-spacing'] == intval( $value['letter-spacing'] ) ) {
 				$value['letter-spacing'] .= 'px';
 			}
 			$this->json['value'] = wp_parse_args( $value, $old_values );
