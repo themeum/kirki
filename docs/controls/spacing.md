@@ -13,7 +13,7 @@ Kirki::add_field( 'my_config', array(
     'label'       => __( 'Spacing Control', 'my_textdomain' ),
     'section'     => 'my_section',
     'default'     => array(
-        'top'    => 1.5em',
+        'top'    => '1.5em',
         'bottom' => '10px',
         'left'   => '40%',
         'right'  => '2rem',
@@ -31,7 +31,7 @@ Kirki::add_field( 'my_config', array(
     'label'       => __( 'Spacing Control', 'my_textdomain' ),
     'section'     => 'my_section',
     'default'     => array(
-        'top'    => 1.5em',
+        'top'    => '1.5em',
         'bottom' => '10px',
     ),
     'priority'    => 10,
