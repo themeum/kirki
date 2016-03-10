@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		/**
 		 * @static
 		 * @access protected
-		 * @var string
+		 * @var object
 		 */
 		protected static $instance = null;
 

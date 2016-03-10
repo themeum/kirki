@@ -59,6 +59,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		/**
 		 * @access protected
+		 * @var string|array
+		 */
+		protected $default = '';
+
+		/**
+		 * @access protected
 		 * @var int
 		 */
 		protected $priority = 10;
@@ -111,7 +117,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		/**
 		 * @access protected
-		 * @var string
+		 * @var string|array
 		 */
 		protected $active_callback = '__return_true';
 
@@ -325,11 +331,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 			// Take care of common typos
 			if ( 'options' == $this->option_type ) {
-				$this->options_type = 'option';
+				$this->option_type = 'option';
 			}
 			// Take care of common typos
 			if ( 'theme_mods' == $this->option_type ) {
-				$this->options_type = 'theme_mod';
+				$this->option_type = 'theme_mod';
 			}
 		}
 
