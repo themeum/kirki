@@ -2,7 +2,7 @@
 
 There are currently 2 ways to include Kirki in a theme:
 * By requiring its installation using [TGMPA](http://tgmpluginactivation.com/)
-* By including a copy of tyhe plugin files in your theme.
+* By including a copy of the plugin files in your theme.
 
 There are plans to add a dependencies manager in WordPress core but this is still under discussion so for the time being the best way to include Kirki is by using TGMPA. This way your users will always have the latest version of the plugin, including all improvements and bugfixes that they would otherwise not get if the plugin files were included in your theme.
 
@@ -40,6 +40,7 @@ Example:
 
 ```php
 add_filter( 'kirki/my_config/l10n', function( $l10n ) {
+
 	$l10n['background-color']      => esc_attr__( 'Background Color', my_textdomain );
 	$l10n['background-image']      => esc_attr__( 'Background Image', my_textdomain );
 	$l10n['no-repeat']             => esc_attr__( 'No Repeat', my_textdomain );
