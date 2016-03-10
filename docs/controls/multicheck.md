@@ -36,4 +36,5 @@ On Multicheck fields, you can specify the options that will be available to your
   </ul>
 <?php endif; ?>
 ```
+
 Please keep in mind that the returned values are the keys of the settings you have defined, not their labels. If you want to display the labels then you will have to implement this on your code.
