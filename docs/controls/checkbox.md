@@ -8,14 +8,14 @@ Besides checkboxes we also allow you to use `switch` and `toggle` controls. To c
 ### Arguments
 
 Argument            | Required | Type              | Description
-:------------------ |  :-----: | ----------------- | :----------
+:------------------ | :------: | :---------------- | :----------
 `settings`          | Yes      | `string`          | The setting-name that will be used to identify this field.
 `type`              | Yes      | `string`          | Set to `checkbox`, `switch` or `toggle`.
 `label`             | Yes      | `string`          | The title that will be displayed in the control.
 `description`       | No       | `string`          | An optional description.
 `section`           | Yes      | `string`          | Defines the section in which this field's control will be added.
 `priority`          | No       | `integer`         | You can use `priority` to change the order in which your controls are added inside a section. Defaults to `10`.
-`default`           | Yes      | `string`          | Set to `'0'` or `'1'`.
+`default`           | Yes      | `string`, `bool`  | Set to `'0'` or `'1'`.
 `choices`           | No       | `array`           | If you're using switches, you can use this to change the ON/OFF labels.
 `variables`         | No       | `array`           | If you're using a compiler you can use this to define the corresponding variable names. See `variables` documentation for more details.
 `tooltip`           | No       | `string`          | Add a localized string to show an informative tooltip.

@@ -7,7 +7,7 @@ If you want to enable the alpha layer (opacity) in your color controls, you can 
 ### Arguments
 
 Argument            | Required | Type              | Description
-:------------------ |  :-----: | ----------------- | :----------
+:------------------ | :------: | :---------------- | :----------
 `settings`          | Yes      | `string`          | The setting-name that will be used to identify this field.
 `type`              | Yes      | `string`          | Set to `color`.
 `label`             | Yes      | `string`          | The title that will be displayed in the control.

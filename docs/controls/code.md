@@ -9,7 +9,7 @@ You can see a list of all available languages [here](https://codemirror.net/mode
 ### Arguments
 
 Argument            | Required | Type              | Description
-:------------------ |  :-----: | ----------------- | :----------
+:------------------ | :------: | :---------------- | :----------
 `settings`          | Yes      | `string`          | The setting-name that will be used to identify this field.
 `type`              | Yes      | `string`          | Set to `code`.
 `label`             | Yes      | `string`          | The title that will be displayed in the control.
