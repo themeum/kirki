@@ -8,7 +8,7 @@ Besides checkboxes we also allow you to use `switch` and `toggle` controls. To c
 ### Arguments
 
 Argument            | Required | Type              | Description
-------------------- | -------- | ----------------- | -----------
+:------------------ |  :-----: | ----------------- | :----------
 `settings`          | Yes      | `string`          | The setting-name that will be used to identify this field.
 `type`              | Yes      | `string`          | Set to `checkbox`, `switch` or `toggle`.
 `label`             | Yes      | `string`          | The title that will be displayed in the control.
