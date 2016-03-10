@@ -216,6 +216,23 @@ class Test_ariColor extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_color_conversions() {
+
+		$colors = $this->get_material_design_main_colors();
+
+		foreach ( $colors as $color ) {
+			$hex_obj = ariColor::newColor( $color );
+			$this->assertEquals( $hex_obj->toCSS( 'hex' ), $color );
+
+			$rgba = $hex_obj->toCSS( 'rgba' );
+
+			$rgba_obj = ariColor::newColor( $rgba );
+
+			$this->assertEquals( $color, $rgba_obj->toCSS( 'hex' ) );
+		}
+
+	}
+
 	public function test_getNew_red() {
 
 		$colors = $this->get_material_design_main_colors();
