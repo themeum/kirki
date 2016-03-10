@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			$this->json['i18n']    = Kirki_l10n::get_strings( $this->kirki_config );
 
 			if ( 'user_meta' == $this->option_type ) {
-				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true  );
+				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
 			}
 		}
 

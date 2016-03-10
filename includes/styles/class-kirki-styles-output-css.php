@@ -65,6 +65,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 * @var 	string		theme_mod / option
 		 * @var 	array 		an array of arrays of the output arguments.
 		 * @var 	mixed		a callable function.
+		 *
+		 * @return array
 		 */
 		public static function css( $field ) {
 			/**

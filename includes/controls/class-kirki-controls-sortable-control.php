@@ -46,8 +46,9 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 			parent::to_json();
 
 			$this->json['choicesLength'] = 0;
-			if ( is_array( $this->choices ) && count( $this->choices ) )
+			if ( is_array( $this->choices ) && count( $this->choices ) ) {
 				$this->json['choicesLength'] = count( $this->choices );
+			}
 
 			$values = $this->value() == '' ? array_keys( $this->choices ) : $this->value();
 			$filtered_values = array();
