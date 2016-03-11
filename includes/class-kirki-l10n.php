@@ -22,6 +22,9 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 
 		}
 
+		/**
+		 * @return string
+		 */
 		protected function get_path() {
 			$path_found = false;
 			$found_path = null;
@@ -40,11 +43,14 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 
 		}
 
+		/**
+		 * @return array
+		 */
 		protected function get_paths() {
 
 			return array(
 				WP_LANG_DIR . '/' . $this->textdomain . '-' . get_locale() . '.mo',
-				Kirki::$path . '/languages/' . $this->textdomain . '-' . get_locale() . '.mo'
+				Kirki::$path . '/languages/' . $this->textdomain . '-' . get_locale() . '.mo',
 			);
 
 		}
@@ -54,6 +60,8 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 		 *
 		 * @static
 		 * @access public
+		 *
+		 * @return array
 		 */
 		public static function get_strings( $config_id = 'global' ) {
 

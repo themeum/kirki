@@ -147,7 +147,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * @param string|array
 		 * @param string $color
 		 *
-		 * @return string
+		 * @return string|null
 		 */
 		public function get_mode( $color ) {
 			// Check if value is an array
@@ -185,7 +185,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 					'opacity' => 'alpha',
 				);
 				$found = false;
-				foreach( $finders_keepers as $finder => $keeper ) {
+				foreach ( $finders_keepers as $finder => $keeper ) {
 					if ( isset( $color[ $finder ] ) ) {
 						$found = true;
 						$this->$keeper = $color[ $finder ];
@@ -369,9 +369,9 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * @see https://gist.github.com/brandonheyer/5254516
 		 */
 		private function from_hsl_array() {
-			$h = $this->hue /360;
+			$h = $this->hue / 360;
 			$s = $this->saturation / 100;
-			$l = $this->lightness /100;
+			$l = $this->lightness / 100;
 
 			$r = $l;
 			$g = $l;
@@ -669,7 +669,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 				'white'                => 'FFFFFF',
 				'whitesmoke'           => 'F5F5F5',
 				'yellow'               => 'FFFF00',
-				'yellowgreen'          => '9ACD32'
+				'yellowgreen'          => '9ACD32',
 			);
 
 		}

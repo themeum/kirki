@@ -4,7 +4,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 	/**
 	 * Manages the way Google Fonts are enqueued.
 	 */
-	class Kirki_Fonts_Google {
+	final class Kirki_Fonts_Google {
 
 		private static $instance = null;
 
@@ -31,6 +31,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		/**
 		 * Get the one, true instance of this class.
 		 * Prevents performance issues since this is only loaded once.
+		 *
+		 * @return object Kirki_Fonts_Google
 		 */
 		public static function get_instance() {
 			if ( null === self::$instance ) {
@@ -112,7 +114,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
 					foreach ( $args['output'] as $output ) {
 						// If we don't have a typography-related output argument we can skip this.
-						if ( ! isset( $output['property'] ) ||  ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ) ) ) {
+						if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ) ) ) {
 							continue;
 						}
 						// Get the value

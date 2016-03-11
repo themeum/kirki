@@ -48,6 +48,9 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 			<?php
 		}
 
+		/**
+		 * @return string
+		 */
 		public function filter_editor_setting_link( $output ) {
 			return preg_replace( '/<textarea/', '<textarea ' . $this->get_link(), $output, 1 );
 		}

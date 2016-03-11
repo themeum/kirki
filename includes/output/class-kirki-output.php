@@ -12,13 +12,13 @@ class Kirki_Output {
 	 * @access protected
 	 * @var array
 	 */
-	protected $output    = array();
+	protected $output = array();
 
 	/**
 	 * @access protected
 	 * @var array
 	 */
-	protected $styles    = array();
+	protected $styles = array();
 
 	/**
 	 * @access protected
@@ -127,6 +127,8 @@ class Kirki_Output {
 	 * @access protected
 	 * @param $property  string  the CSS property
 	 * @param $value     string  the value
+	 *
+	 * @return array
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters( 'kirki/' . $this->config_id . '/output/property-classnames', array(

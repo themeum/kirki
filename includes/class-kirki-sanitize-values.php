@@ -136,7 +136,9 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 				$subsets_ok = array();
 				if ( is_array( $value['subset'] ) ) {
 					foreach ( $value['subset'] as $subset ) {
-						$subsets_ok[] = $subset;
+						if ( in_array( $subset, $valid_subsets ) ) {
+							$subsets_ok[] = $subset;
+						}
 					}
 					$value['subsets'] = $subsets_ok;
 				}

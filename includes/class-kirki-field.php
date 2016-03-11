@@ -581,7 +581,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( empty( $this->output ) ) {
 				return;
 			}
-			if ( ! empty ( $this->output ) && ! is_array( $this->output ) ) {
+			if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
 				$this->output = array( array( 'element' => $this->output ) );
 			}
 			// Convert to array of arrays if needed
@@ -913,7 +913,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_required() {
 
-			if ( ! is_array( $this->required) ) {
+			if ( ! is_array( $this->required ) ) {
 				$this->required = array();
 			}
 

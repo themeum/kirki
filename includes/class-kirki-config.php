@@ -2,7 +2,7 @@
 
 if ( ! class_exists( 'Kirki_Config' ) ) {
 
-	class Kirki_Config {
+	final class Kirki_Config {
 
 		/**
 		 * @static

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Color' ) ) {
-	class Kirki_Color extends ariColor {
+	final class Kirki_Color extends ariColor {
 
 		/**
 		 * A proxy for the sanitize_color method.
@@ -96,9 +96,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Get the alpha channel from an rgba color
 		 *
-		 * @param   string  The rgba color formatted like rgba(r,g,b,a)
+		 * @param   string     The rgba color formatted like rgba(r,g,b,a)
 		 *
-		 * @return  string  The alpha value of the color.
+		 * @return  int|float  The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
 			$obj = kirki_wp_color( $color );

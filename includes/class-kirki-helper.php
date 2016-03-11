@@ -18,6 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Helper' ) ) {
 	class Kirki_Helper {
 
+		/**
+		 * Recursive replace in arrays.
+		 *
+		 * @param $array    array
+		 * @param $array1   array
+		 *
+		 * @return array
+		 */
 		public static function array_replace_recursive( $array, $array1 ) {
 			// handle the arguments, merge one by one
 			$args  = func_get_args();
@@ -34,6 +42,9 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			return $array;
 		}
 
+		/**
+		 * @return array
+		 */
 		public static function recurse( $array, $array1 ) {
 			foreach ( $array1 as $key => $value ) {
 				// create new key in $array, if it is empty or not an array
@@ -56,7 +67,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		public static function init_filesystem() {
 			global $wp_filesystem;
 			if ( empty( $wp_filesystem ) ) {
-				require_once ( ABSPATH . '/wp-admin/includes/file.php' );
+				require_once( ABSPATH . '/wp-admin/includes/file.php' );
 				WP_Filesystem();
 			}
 		}
@@ -140,7 +151,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			return $items;
 
 		}
-		
+
 		public static function get_terms( $taxonomies ) {
 
 			$items = array();

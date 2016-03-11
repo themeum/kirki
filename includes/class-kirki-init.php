@@ -16,8 +16,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * Properly set the Kirki URL for assets
 		 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
 		 * and then does some calculations to get the proper URL for its CSS & JS assets
-		 *
-		 * @return string
 		 */
 		public function set_url() {
 			/**
@@ -247,7 +245,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * @param wp_customize_setting   object     $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
 		 */
 		public function update_user_meta( $value, $wp_customize_setting ) {
-			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value  );
+			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
 		}
 
 	}

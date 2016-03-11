@@ -19,8 +19,8 @@ Kirki::add_config( 'my_config', array(
 // This will inherit the capability from our config.
 Kirki::add_field( 'my_config', array(
 	'type'     => 'text',
-	'settings' => 'my_setting',
-	'label'    => __( 'Text Control', 'my_textdomain' ),
+	'settings' => 'my_setting1',
+	'label'    => __( 'Text Control 1', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => esc_attr__( 'This is a defualt value', 'my_textdomain' ),
 	'priority' => 10,
@@ -30,8 +30,8 @@ Kirki::add_field( 'my_config', array(
 // This will override the capability of the config and be available to admins.
 Kirki::add_field( 'my_config', array(
 	'type'        => 'text',
-	'settings'    => 'my_setting',
-	'label'       => __( 'Text Control', 'my_textdomain' ),
+	'settings'    => 'my_setting2',
+	'label'       => __( 'Text Control 2', 'my_textdomain' ),
 	'section'     => 'my_section',
 	'default'     => esc_attr__( 'This is a defualt value', 'my_textdomain' ),
 	'priority'    => 10,

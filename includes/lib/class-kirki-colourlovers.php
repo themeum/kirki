@@ -31,9 +31,9 @@ if ( ! class_exists( 'Kirki_Colourlovers' ) ) {
 
 			$i = 0;
 			foreach ( $palettes as $palette ) {
-				$palettes[$i] = array();
+				$palettes[ $i ] = array();
 				foreach ( $palette as $key => $value ) {
-					$palettes[$i][$key] = Kirki_Color::sanitize_hex( $value );
+					$palettes[ $i ][ $key ] = Kirki_Color::sanitize_hex( $value );
 				}
 				$i++;
 			}

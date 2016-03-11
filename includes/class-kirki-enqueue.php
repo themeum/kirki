@@ -64,16 +64,28 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			$standard_fonts_final = array();
 			foreach ( $standard_fonts as $key => $value ) {
 				$standard_fonts_final[] = array(
-					'family'       => $value['stack'],
-					'label'        => $value['label'],
-					'variants'     => array(
-						array( 'id' => 'regular',   'label' => $all_variants['regular'] ),
-						array( 'id' => 'italic',    'label' => $all_variants['italic'] ),
-						array( 'id' => '700',       'label' => $all_variants['700'] ),
-						array( 'id' => '700italic', 'label' => $all_variants['700italic'] ),
+					'family'      => $value['stack'],
+					'label'       => $value['label'],
+					'subsets'     => array(),
+					'is_standard' => true,
+					'variants'    => array(
+						array(
+							'id'    => 'regular',
+							'label' => $all_variants['regular']
+						),
+						array(
+							'id'    => 'italic',
+							'label' => $all_variants['italic']
+						),
+						array(
+							'id'    => '700',
+							'label' => $all_variants['700']
+						),
+						array(
+							'id'    => '700italic',
+							'label' => $all_variants['700italic']
+						),
 					),
-					'subsets'      => array(),
-					'is_standard'  => true,
 				);
 			}
 

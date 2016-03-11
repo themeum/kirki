@@ -196,7 +196,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 													<img src="{{ field.choices[i] }}">
 												</label>
 											</input>
- 										<# } #>
+										<# } #>
 									<# } #>
 								</label>
 

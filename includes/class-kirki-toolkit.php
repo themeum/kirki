@@ -53,10 +53,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * @return bool
 		 */
 		public static function is_debug() {
-			if ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
-				return true;
-			}
-			return false;
+			return (bool) ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) );
 		}
 
 		/**
@@ -79,10 +76,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		public static function is_parent_theme( $file ) {
 			$file = self::clean_file_path( $file );
 			$dir  = self::clean_file_path( get_template_directory() );
-			if ( false !== strpos( $file, $dir ) ) {
-				return true;
-			}
-			return false;
+			return ( false !== strpos( $file, $dir ) );
 		}
 
 		/**
@@ -94,10 +88,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		public static function is_child_theme( $file ) {
 			$file = self::clean_file_path( $file );
 			$dir  = self::clean_file_path( get_stylesheet_directory() );
-			if ( false !== strpos( $file, $dir ) ) {
-				return true;
-			}
-			return false;
+			return ( false !== strpos( $file, $dir ) );
 		}
 
 		/**
@@ -110,10 +101,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( get_template_directory_uri() ) ) ) {
 				return false;
 			}
-			if ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( WP_CONTENT_DIR . '/themes/' ) ) ) {
-				return false;
-			}
-			return true;
+			return ( false !== strpos( self::clean_file_path( __FILE__ ), self::clean_file_path( WP_CONTENT_DIR . '/themes/' ) ) );
 		}
 
 		/**
@@ -123,10 +111,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * @return bool
 		 */
 		public static function is_theme( $file ) {
-			if ( true == self::is_child_theme( $file ) || true == self::is_parent_theme( $file ) ) {
-				return true;
-			}
-			return false;
+			return ( true === self::is_child_theme( $file ) || true === self::is_parent_theme( $file ) );
 		}
 
 		/**

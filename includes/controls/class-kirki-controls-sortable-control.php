@@ -55,7 +55,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 			if ( is_array( $values ) && ! empty( $values ) ) {
 				foreach ( $values as $key => $value ) {
 					if ( array_key_exists( $value, $this->choices ) ) {
-						$filtered_values[$key] = $value;
+						$filtered_values[ $key ] = $value;
 					}
 				}
 			}
@@ -65,7 +65,6 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 			$this->json['invisibleKeys'] = array_diff( array_keys( $this->choices ), $filtered_values );
 
 			$this->json['inputAttrs'] = maybe_serialize( $this->input_attrs() );
-
 
 		}
 
