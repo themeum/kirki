@@ -1,3 +1,3 @@
 # label
 
-You can use the `label` argument  o set the title of a control.
+The `label` argument is used to set a control's title.

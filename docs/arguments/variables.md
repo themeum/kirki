@@ -1,4 +1,5 @@
 # variables
+
 If you're using a CSS preprocessor and for example a less-php, sass-php or even less.js compiler for your styles, you may wish to have the values of your options returned as variables that you can then use and feed them to your compiler.
 
 In order to facilitate this we now have a `variables` argument you can define in your fields.
@@ -44,7 +45,7 @@ function my_h3_calc( $value ) {
 
 What we did in the above example is add a control for the H1 font-size, and then using variables created variables for the h1, h2 & h3 font-sizes, with h2 being 80% of h1's font-size and h3 65% of h1's size.
 
-If we omit the `callback` argument inside the array then the value is returned without any sanitization applied.
+If we omit the `callback` argument inside the array then the value is returned without any modifications applied.
 
 In our compiler then in order to get the values and format them properly we'd do something like this:
 
