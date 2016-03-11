@@ -31,12 +31,12 @@ Argument            | Required | Type              | Description
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'checkbox',
-    'settings'    => 'my_setting',
-    'label'       => __( 'This is the label', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => '1',
-    'priority'    => 10,
+	'type'        => 'checkbox',
+	'settings'    => 'my_setting',
+	'label'       => __( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '1',
+	'priority'    => 10,
 ) );
 ```
 
@@ -48,16 +48,16 @@ The default labels are "On" & "Off", so iof you don't want to change them you ca
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'switch',
-    'settings'    => 'my_setting',
-    'label'       => __( 'This is the label', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => '1',
-    'priority'    => 10,
-    'choices'     => array(
-        'on'  => esc_attr__( 'Enable', 'my_textdomain' ),
-        'off' => esc_attr__( 'Disable', 'my_textdomain' ),
-    ),
+	'type'        => 'switch',
+	'settings'    => 'my_setting',
+	'label'       => __( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '1',
+	'priority'    => 10,
+	'choices'     => array(
+		'on'  => esc_attr__( 'Enable', 'my_textdomain' ),
+		'off' => esc_attr__( 'Disable', 'my_textdomain' ),
+	),
 ) );
 ```
 
@@ -65,12 +65,12 @@ Kirki::add_field( 'my_config', array(
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'toggle',
-    'settings'    => 'my_setting',
-    'label'       => __( 'This is the label', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => '1',
-    'priority'    => 10,
+	'type'        => 'toggle',
+	'settings'    => 'my_setting',
+	'label'       => __( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '1',
+	'priority'    => 10,
 ) );
 ```
 
@@ -80,8 +80,8 @@ The saved value is a `boolean`:
 
 ```php
 <?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>
-    <p>Checkbox is checked</p>
+	<p>Checkbox is checked</p>
 <?php else : ?>
-    <p>Checkbox is unchecked</p>
+	<p>Checkbox is unchecked</p>
 <?php endif; ?>
 ```

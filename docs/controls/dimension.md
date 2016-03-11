@@ -31,12 +31,12 @@ Argument            | Required | Type              | Description
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'dimension',
-    'settings'    => 'my_setting',
-    'label'       => __( 'Dimension Control', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => '1.5em',
-    'priority'    => 10,
+	'type'        => 'dimension',
+	'settings'    => 'my_setting',
+	'label'       => __( 'Dimension Control', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '1.5em',
+	'priority'    => 10,
 ) );
 ```
 
@@ -44,6 +44,6 @@ Kirki::add_field( 'my_config', array(
 
 ```html
 <div style="font-size: <?php echo get_theme_mod( 'my_setting', '1em' ); ?>">
-    <p>The font-size of this paragraph is controlled by "my_setting".</p>
+	<p>The font-size of this paragraph is controlled by "my_setting".</p>
 </div>
 ```

@@ -32,13 +32,13 @@ Example:
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'color',
-    'settings'    => 'my_setting',
-    'label'       => __( 'This is the label', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => '#0088CC',
-    'priority'    => 10,
-    'alpha'       => true,
+	'type'        => 'color',
+	'settings'    => 'my_setting',
+	'label'       => __( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '#0088CC',
+	'priority'    => 10,
+	'alpha'       => true,
 ) );
 ```
 
@@ -49,6 +49,6 @@ The `color` control saves its value as a `string`:
 
 ```html
 <div style="color:<?php echo get_theme_mod( 'my_setting', '#FFFFFF' ); ?>">
-    <p>The text-color of this div is controlled by "my_setting".
+	<p>The text-color of this div is controlled by "my_setting".
 </div>
 ```

@@ -28,11 +28,11 @@ Argument            | Required | Type                     | Description
 
 ```php
 Kirki::add_field( 'my_config', array(
-    'type'        => 'number',
-    'settings'    => 'my_setting',
-    'label'       => esc_attr__( 'This is the label', 'my_textdomain' ),
-    'section'     => 'my_section',
-    'default'     => 42,
+	'type'        => 'number',
+	'settings'    => 'my_setting',
+	'label'       => esc_attr__( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => 42,
 ) );
 ```
 
@@ -40,6 +40,6 @@ Kirki::add_field( 'my_config', array(
 
 ```html
 <div style="font-size: <?php echo get_theme_mod( 'my_setting', '14' ); ?>px">
-    <p>The font-size of this paragraph is controlled by "my_setting".</p>
+	<p>The font-size of this paragraph is controlled by "my_setting".</p>
 </div>
 ```
