@@ -1,10 +1,14 @@
 # Embedding Kirki in a theme
 
 There are currently 2 ways to include Kirki in a theme:
-* By requiring its installation using [TGMPA](http://tgmpluginactivation.com/)
+* By recommending its installation
+	* Using a custom setting in the customizer like the one on https://gist.github.com/aristath/a42f51db02b9c1d22794
+	* Using [TGMPA](http://tgmpluginactivation.com/)
 * By including a copy of the plugin files in your theme.
 
-There are plans to add a dependencies manager in WordPress core but this is still under discussion so for the time being the best way to include Kirki is by using TGMPA. This way your users will always have the latest version of the plugin, including all improvements and bugfixes that they would otherwise not get if the plugin files were included in your theme.
+There are plans to add a dependencies manager in WordPress core but this is still under discussion so for the time being the best way to include Kirki is by using a custom setting in your customizer or using TGMPA.
+
+This way your users will always have the latest version of the plugin, including all improvements and bugfixes that they would otherwise not get if the plugin files were included in your theme.
 
 However in some cases we understand that you may need to instead include it as a library in your theme/plugin.
 
