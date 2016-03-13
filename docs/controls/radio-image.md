@@ -28,7 +28,7 @@ Argument            | Required | Type              | Description
 
 ```php
 Kirki::add_field( 'my_config', array(
-	'type'        => 'radio',
+	'type'        => 'radio-image',
 	'settings'    => 'my_setting',
 	'label'       => __( 'Radio Control', 'my_textdomain' ),
 	'section'     => 'radio',
