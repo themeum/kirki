@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: type
 ---
 
-# type
 
 Using the `type` argument you can define what sort of control you want to create for your setting.
 

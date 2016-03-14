@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: output
 ---
 
-# output
 
 Using the `output` argument you can specify if you want Kirki to automatically generate and apply CSS for various elements of your page.
 

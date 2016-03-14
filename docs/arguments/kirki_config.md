@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: kirki_config
 ---
 
-# kirki_config
 
 The `kirki_config` argument is used internally to assign a configuration to your fields.
 

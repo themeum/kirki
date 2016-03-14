@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: description
 ---
 
-# description
 
 Descriptions are used as informative text below the field's title.
 

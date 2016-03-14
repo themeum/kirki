@@ -1,8 +1,10 @@
 ---
 layout: docs
+title: radio-image
+sections:
+  - Arguments
+  - Example
 ---
-
-# radio-image
 
 You can define the available options using the `choices` argument and formating them as an array `key => URL`.
 
@@ -29,6 +31,8 @@ Argument            | Required | Type              | Description
 `capability`        | No       | `string`          | The capability required so that users can access this setting. This is automatically set by your configuration, and if none is defined in your config then falls-back to `edit_theme_options`. You can use this to override your config defaults on a per-field basis.
 `option_type`       | No       | `string`          | `theme_mod`, `option`, `user_meta`. This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
+
+### Example
 
 {% highlight php %}
 <?php

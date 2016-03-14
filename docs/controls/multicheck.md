@@ -1,5 +1,10 @@
 ---
 layout: docs
+title: multicheck
+sections:
+  - Arguments
+  - Example
+  - Usage
 ---
 
 # multicheck
@@ -26,6 +31,7 @@ Argument            | Required | Type              | Description
 `option_type`       | No       | `string`          | `theme_mod`, `option`, `user_meta`. This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
+### Example
 
 {% highlight php %}
 <?php
@@ -51,7 +57,7 @@ On Multicheck fields, you can specify the options that will be available to your
 
 > Please keep in mind that you should always use WordPress's i18n functions for your labels and descriptions so they are translatable. More information on WordPress's i18n functions can be found on the [WordPress Codex](https://codex.wordpress.org/I18n_for_WordPress_Developers).
 
-## Usage
+### Usage
 
 {% highlight php %}
 <?php $multicheck_value = get_theme_mod( 'my_setting', array( 'option-1', 'option-3' ) ); ?>

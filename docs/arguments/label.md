@@ -1,7 +1,7 @@
 ---
 layout: docs
+title: label
 ---
 
-# label
 
 The `label` argument is used to set a control's title.

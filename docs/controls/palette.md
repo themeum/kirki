@@ -1,8 +1,11 @@
 ---
 layout: docs
+title: palette
+sections:
+  - Arguments
+  - Example
+  - Usage
 ---
-
-# palette
 
 Palette controls are essentially radio controls. The difference between palette controls and radio controls is purely presentational: Palette controls allow you to define an array of colors for each option which will be used to show users a palette.
 
@@ -26,6 +29,8 @@ Argument            | Required | Type              | Description
 `capability`        | No       | `string`          | The capability required so that users can access this setting. This is automatically set by your configuration, and if none is defined in your config then falls-back to `edit_theme_options`. You can use this to override your config defaults on a per-field basis.
 `option_type`       | No       | `string`          | `theme_mod`, `option`, `user_meta`. This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
+
+### Example
 
 {% highlight php %}
 <?php
@@ -52,7 +57,7 @@ Kirki::add_field( 'my_config', array(
 ?>
 {% endhighlight %}
 
-## Usage
+### Usage
 
 {% highlight php %}
 <?php

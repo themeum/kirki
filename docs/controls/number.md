@@ -1,8 +1,11 @@
 ---
 layout: docs
+title: number
+sections:
+  - Arguments
+  - Example
+  - Usage
 ---
-
-# number
 
 `number` controls are simple numeric fields that only accept numbers as input and not free text.
 
@@ -30,6 +33,8 @@ Argument            | Required | Type                     | Description
 `option_name`       | No       | `string`                 | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
 
+### Example
+
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(
@@ -42,7 +47,7 @@ Kirki::add_field( 'my_config', array(
 ?>
 {% endhighlight %}
 
-## Usage
+### Usage
 
 {% highlight php %}
 <div style="font-size: <?php echo get_theme_mod( 'my_setting', '14' ); ?>px">

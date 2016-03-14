@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: settings
 ---
 
-# settings
 
 `settings` is a mandatory argument for any field. The value entered here will be used to store the settings in the database.
 

@@ -1,7 +1,6 @@
 ---
 layout: docs
+title: toggle
 ---
-
-# toggle
 
 Please check the documentation for `checkbox` controls.

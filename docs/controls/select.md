@@ -1,12 +1,13 @@
 ---
 layout: docs
+title: select
+sections:
+  - Arguments
+  - Example
+  - Multi-Select
 ---
 
-# select
-
 We extend WordPress Core's `select` controls and all `select` controls created using Kirki will use the [selectize.js](http://brianreavis.github.io/selectize.js/) script.
-
-## Creating a select control
 
 ### Arguments
 
@@ -31,6 +32,8 @@ Argument            | Required | Type              | Description
 `option_type`       | No       | `string`          | `theme_mod`, `option`, `user_meta`. This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
+### Example
+
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(
@@ -50,6 +53,8 @@ Kirki::add_field( 'my_config', array(
 ) );
 ?>
 {% endhighlight %}
+
+### Multi-Select
 
 The `multiple` argument allows you to define the maximum number of simultaneous selections a user can make.
 If `multiple` is set to `1` then users will be able to select a single option like on a normal dropdown.

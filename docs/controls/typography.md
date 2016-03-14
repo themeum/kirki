@@ -1,8 +1,13 @@
 ---
 layout: docs
+title: typography
+sections:
+  - Example
+  - Defining active sub-fields
+  - Output
+  - Variants
+  - Usage
 ---
-
-# typography
 
 The `typography` field allows you to add the most important typography-related controls in a single, compact view.
 It shows the following controls:
@@ -41,7 +46,8 @@ Kirki::add_field( 'my_config', array(
 ) );
 ?>
 {% endhighlight %}
-## Defining active sub-fields
+
+### Defining active sub-fields
 
 You can define which of the above fields you want displayed or hidden using the `default` argument of the field.
 
@@ -54,12 +60,12 @@ The exception to the above rule is the `variant` and `subset` controls.
 Since the `typography` control uses google fonts, in order to ensure that your fonts will be properly enqueued we have to add the variant & subset controls for google fonts.
 So if you add `font-family`, all 3 controls will be automatically displayed when the selected font requires it.
 
-## Output
+### Output
 
 The `typography` field requires you to use only the `element` argument in order to properly generate its CSS.
 Of course you can define multiple elements as documented in the documentation of the `output` argument, but you do not have to define a `property` since it will be automatically applies for each sub-element of the control.
 
-## Variants
+### Variants
 
 The available options for variants are:
 
@@ -84,7 +90,7 @@ The available options for variants are:
 
 When selecting a default value for the variant, please make sure that the value is valid for the selected google font.
 
-## Usage
+### Usage
 
 It is advised to use this field with the `output` argument to directly apply the generated CSS and automatically generate and enqueue the script necessary for Google Fonts to function.
 

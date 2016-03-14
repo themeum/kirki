@@ -1,8 +1,9 @@
 ---
 layout: docs
+title: Fields
 ---
 
-# Adding Fields
+### Adding Fields
 
 If you are familiar with the WordPress Customizer API then this will be a lot easier for you.
 To add a new simple text field using Kirki you will have to add the following to your project:

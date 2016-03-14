@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: default
 ---
 
-# default
 
 You can use the `default` argument to define a default value for your controls.
 

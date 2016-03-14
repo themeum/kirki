@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: sanitize_callback
 ---
 
-# sanitize_callback
 
 Under normal circumstances, WordPress requires you to define a `sanitize_callback` for every option you create, which is a great security enhancement.
 

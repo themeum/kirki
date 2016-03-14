@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: fields
 ---
 
-# fields
 
 The `fields` argument is only used in `repeater` controls.
 

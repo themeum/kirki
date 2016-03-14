@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: tooltip
 ---
 
-# transport
 
 You can use the `transport` argument to define how your options will be applied to the preview.
 

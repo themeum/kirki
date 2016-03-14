@@ -1,5 +1,9 @@
 ---
 layout: docs
+title: repeater
+sections:
+  - Arguments
+  - Example
 ---
 
 # repeater
@@ -30,7 +34,10 @@ Argument            | Required | Type              | Description
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
 
-Example: Creating a repeater control where each row contains 2 textfields.
+### Example
+
+Creating a repeater control where each row contains 2 textfields.
+
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(

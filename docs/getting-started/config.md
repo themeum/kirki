@@ -1,8 +1,10 @@
 ---
 layout: docs
+title: Creating a Configuration for your project
+sections:
+  - Example
+  - Arguments
 ---
-
-# Creating a Configuration for your project
 
 When you create a project in Kirki, the first thing you have to do is **create a configuration**. Configurations allow each project to use a different setup and act as identifiers so it's important you create one. Fields that belong to your configuration will inherit your config properties.
 
@@ -10,7 +12,7 @@ When you create a project in Kirki, the first thing you have to do is **create a
 <?php Kirki::add_config( $config_id, $args ); ?>
 {% endhighlight %}
 
-Example:
+### Example:
 
 {% highlight php %}
 <?php
@@ -20,6 +22,9 @@ Kirki::add_config( 'my_theme', array(
 ) );
 ?>
 {% endhighlight %}
+
+
+### Arguments
 
 * `capability`: any valid WordPress capability. See the [WordPress Codex](https://codex.wordpress.org/Roles_and_Capabilities) for details.
 * `option_type`: can be either `option` or `theme_mod`.

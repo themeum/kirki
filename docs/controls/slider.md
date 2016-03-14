@@ -1,8 +1,10 @@
 ---
 layout: docs
+title: slider
+sections:
+  - Arguments
+  - Example
 ---
-
-# slider
 
 `slider` controls are numeric fields that allow you to set a minimum value, a maximum value and a step.
 
@@ -29,6 +31,7 @@ Argument            | Required | Type              | Description
 `option_type`       | No       | `string`          | `theme_mod`, `option`, `user_meta`. This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
+### Example
 
 {% highlight php %}
 <?php

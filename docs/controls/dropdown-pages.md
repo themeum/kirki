@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: dropdown-pages
 ---
 
-# dropdown-pages
 
 Exactly the same as **select** controls.
 

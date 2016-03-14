@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: multiple
 ---
 
-# multiple
 
 The `multiple` argument is only used in the `select` controls.
 

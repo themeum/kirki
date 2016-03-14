@@ -1,7 +1,6 @@
 ---
 layout: docs
+title: switch
 ---
-
-# switch
 
 Please check the documentation for `checkbox` controls.

@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: required
 ---
 
-# required
 
 You can use the `required` argument to define field dependencies.
 if you want to show or hide a field conditionally based on the values of other controls in the customizer you can use something like this:

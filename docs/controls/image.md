@@ -1,8 +1,12 @@
 ---
 layout: docs
+title: image
+sections:
+  - Arguments
+  - Example
+  - Usage
 ---
 
-# image
 
 Image controls allow you to upload a new image, or use an existing image from your media library.
 
@@ -30,6 +34,8 @@ Argument            | Required | Type              | Description
 `option_name`       | No       | `string`          | This option is set in your configuration but can be overriden on a per-field basis. See configuration documentation for more details.
 
 
+### Example
+
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(
@@ -46,7 +52,7 @@ Kirki::add_field( 'my_config', array(
 {% endhighlight %}
 The control saves the URL to the image, and if you want to define a default value as an image, then you will have to add a string containing the full URL to that image.
 
-# Usage
+### Usage
 
 {% highlight php %}
 <?php $image = get_theme_mo( 'my_setting', '' ); ?>

@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: js_vars
 ---
 
-# js_vars
 
 If you set `transport` to `postMessage` you can write your own scripts, or you can use the `js_vars` argument and let Kirki automatically create these for you.
 

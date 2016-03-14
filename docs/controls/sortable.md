@@ -1,8 +1,11 @@
 ---
 layout: docs
+title: sortable
+sections:
+  - Example
 ---
 
-# sortable
+### Example
 
 {% highlight php %}
 <?php

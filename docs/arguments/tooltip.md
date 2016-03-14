@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: tooltip
 ---
 
-# tooltip
 
 Using the `tooltip` argument you can add tooltips to your controls.
 

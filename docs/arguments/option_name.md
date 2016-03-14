@@ -1,8 +1,8 @@
 ---
 layout: docs
+title: option_name
 ---
 
-# option_name
 
 You don't have to manually set the `option_name` argument as it is automatically set for you from the config you're using.
 
