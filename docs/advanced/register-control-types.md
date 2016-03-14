@@ -1,13 +1,13 @@
 ---
 layout: docs
+title: Register a new Control Type
 ---
-
-# Registering Control Types in Kirki
 
 Though you can create new control types for the WordPress Customizer using its API, you may want to register your control with Kirki as well so you can define fields using that control type directly.
 
 To do that you can write something like the example below:
 {% highlight php %}
+<?php
 add_action( 'customize_register', function( $wp_customize ) {
 	/**
 	 * The custom control class
@@ -26,5 +26,6 @@ add_action( 'customize_register', function( $wp_customize ) {
 	} );
 
 } );
+?>
 {% endhighlight %}
-You can then create new fields using your own control simply be defining `notice` as your field's [[type]].
+You can then create new fields using your own control simply be defining `notice` as your field's [`type`](/docs/arguments/type).
