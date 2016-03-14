@@ -1,5 +1,5 @@
 ---
-layout: narrow
+layout: docs
 ---
 
 # What is Kirki?
@@ -17,4 +17,4 @@ Easily add configurations for your project, create panels, sections and add fiel
 
 Add Google Fonts with our [typography field](/docs/controls/typography), add [tooltips](/docs/arguments/tooltip) to help your users and build awesome products!
 
-<a href="https://github.com/aristath/kirki" class="success button">Download</a> <a href="/docs" class="button">Read the documentation</a>
+<a href="https://github.com/aristath/kirki" class="success button">Fork on Github</a>

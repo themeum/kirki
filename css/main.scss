@@ -18,10 +18,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer {
 	padding: 2rem 0;
-	border-top: 1px solid #1583cc;
+	border-top: 1px solid #777;
 }
 
 .top-bar {
+	background-color: #fff;
+	ul {
+		background-color: #fff;
+	}
 	.top-bar-left,
 	.top-bar-right {
 		.menu {
@@ -38,6 +42,9 @@ h1, h2, h3, h4, h5, h6 {
 				width: auto;
 			}
 		}
+	}
+	&.navigation {
+		border-bottom: 1px solid #dedede;
 	}
 }
 
