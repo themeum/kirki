@@ -3,8 +3,8 @@
 	{% include head.html %}
 	<body>
 		{% include header.html %}
-		<div class="expanded row">
-			<div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+		<div id="main" class="expanded row">
+			<div id="main" class="medium-9 large-10 medium-push-3 large-push-2 columns">
 				<article>
 					<div class="row">
 						{% if page.sections %}<div class="large-9 columns">{% else %}<div class="large-12 columns">{% endif %}
@@ -29,8 +29,7 @@
 			<div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
 				{% include docs-sidebar.html %}
 			</div>
-
+		</div>
 		{% include footer.html %}
-
 	</body>
 </html>
