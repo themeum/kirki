@@ -7,12 +7,12 @@
 			<div class="large-12 columns">
 				<article>
 					<div class="row">
-						{% if page.sections %}<div class="large-9 columns">{% else %}<div class="large-12 columns">{% endif %}
+						{% if page.sections %}<div class="medium-6 columns">{% else %}<div class="medium-6 columns medium-offset-3">{% endif %}
 							{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 							{{ content }}
 						</div>
 						{% if page.sections %}
-							<div class="large-3 columns" data-sticky-container>
+							<div class="medium-3 columns" data-sticky-container>
 								<nav class="columns sticky" data-sticky data-sticky-on="large" data-margin-top="0">
 									<ul data-docs-toc class="vertical menu docs-side-nav" data-magellan>
 										<li class="side-nav-header">On this page:</li>
