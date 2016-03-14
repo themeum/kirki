@@ -7,7 +7,6 @@ sections:
   - Usage
 ---
 
-# multicheck
 
 ### Arguments
 

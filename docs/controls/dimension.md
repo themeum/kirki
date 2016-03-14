@@ -7,7 +7,6 @@ sections:
   - Usage
 ---
 
-# dimension
 
 `dimension` controls allow you to add a simple, single-line text input. The difference with normal text inputs is that entered values can only be valid CSS units (example: `10px`, `3em`, `48%`, `90vh` etc.).
 
