@@ -1,0 +1,20 @@
+<div class="footer">
+	<div class="row">
+		Footer
+
+	</div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js"></script>
+<script>$(document).foundation();</script>
+
+{% if page.sections %}
+	<script>
+		var $toc = $('[data-docs-toc]');
+		new Foundation.Magellan($toc, {
+			'data-animation-duration': 250,
+			'data-active-class': 'active',
+
+		});
+	</script>
+{% endif %}

@@ -1,107 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Kirki WordPress Customizer Toolkit">
-		<meta name="author" content="">
-		<link rel="icon" href="assets/img/favicon.ico">
+---
+layout: default
+---
 
-		<title>Kirki - Extending the WordPress Customizer</title>
+<h3>We are currently rebuilding the site. Feel free to navigate our new docs while we continue improving our content and layout. Thank you for your patience!</h3>
+<!-- <div class="home">
 
-		<!-- Bootstrap core CSS -->
-		<link href="assets/css/bootstrap.css" rel="stylesheet">
+  <h1 class="page-heading">Posts</h1>
 
-		<!-- Custom styles for this template -->
-		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|Roboto+Slab:400,100,300,700|Roboto+Mono' rel='stylesheet' type='text/css'>
-		<link href="assets/css/style.css" rel="stylesheet">
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
 
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us12.list-manage.com","uuid":"63d1425d3d1b729d54f02068d","lid":"3a8ae06703"}) })</script>
-
-	<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
-
-		<section id="navbar-main">
-			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#"><img src="assets/img/kirki-logo.png" height="20" alt="Kirki Logo"></a>
-					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="#about" class="smoothScroll">ABOUT</a></li>
-							<li><a href="https://wordpress.org/plugins/kirki">DOWNLOAD</a></li>
-							<li><a href="https://github.com/aristath/kirki">FORK IN GITHUB</a></li>
-							<li><a href="https://github.com/aristath/kirki/wiki">DOCUMENTATION</a></li>
-							<li><a href="#donate" class="smoothScroll">DONATE</a></li>
-						</ul>
-					</div><!--/.nav-collapse -->
-				</div>
-			</div>
-		</section>
-
-		<section id="about" name="about">
-			<div id="gs">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">
-							<div class="centered"><img src="assets/img/wire-black.png" height="200"></div>
-							<h4>WHAT IS KIRKI?</h4>
-							<p class="intro">Kirki is a no-nonsence Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility.</p>
-							<p class="intro">Minimalistic and using the WordPress APIs to create beautiful and meaningful user experiences, it creates advanced controls for the customizer, takes care of the CSS output for you, creates postMessage scripts and saves you time while developing complex projects.</p>
-							<p class="intro">Don't worry about pricing, <strong>Kirki</strong> is 100% open-source and free. All development is done on <a href="https://github.com/aristath/kirki" target="_blank">github</a> and has <a href="https://github.com/aristath/kirki/wiki" target="_blank">extensive documentation</a> publicly available and editable!
-							<hr class="aligncenter">
-						</div><! --/col-md-4 -->
-					</div><! --/row -->
-				</div><! --/container -->
-			</div><! --/GS -->
-		</section>
-
-		<section id="controls-image">
-			<img src="assets/img/kirki-controls.png" style="width: 100%;">
-		</section>
-
-		<section id="donate" name="donate">
-			<! -- FOOTER -->
-			<div id="f">
-				<div class="container">
-					<div class="row">
-						<div class="centered">
-							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="hosted_button_id" value="B3JPWWJBUSWDU">
-								<input type="submit" class="btn btn-lg btn-gold donate-submit" name="submit" alt="PayPal - The safer, easier way to pay online!" value="DONATE">
-							</form>
-						</div>
-					</div><! --/row -->
-				</div>
-			</div><! --/row -->
-		</section>
-
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/classie.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/retina-1.1.0.js"></script>
-		<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
-	</body>
-</html>
+</div>
+ -->
