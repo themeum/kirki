@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Getting your saved options
+title: Getting Values
 sections:
   - When using Theme Mods
   - When using Options

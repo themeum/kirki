@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Register a new Control Type
+title: Register new Control Type
 edit: docs/advanced/register-control-types.md
 ---
 

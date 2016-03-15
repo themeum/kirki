@@ -1,62 +1,29 @@
 <ul class="vertical menu docs-nav">
 	<li class="docs-nav-title">Getting Started</li>
-	<li><a href="/docs/getting-started/config">Configuring your Project</a></li>
-	<li><a href="/docs/getting-started/panels">Creating Panels</a></li>
-	<li><a href="/docs/getting-started/sections">Creating Sections</a></li>
-	<li><a href="/docs/getting-started/fields">Creating Fields</a></li>
-	<li><a href="/docs/getting-started/getting-values">Getting values</a></li>
+	{% for node in site.pages %}
+		{% if node.url contains "docs/getting-started" %}
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+		{% endif %}
+	{% endfor %}
 
 	<li class="docs-nav-title">Controls</li>
-	<li><a href="/docs/controls/checkbox">checkbox</a></li>
-	<li><a href="/docs/controls/code">code</a></li>
-	<li><a href="/docs/controls/color">color</a></li>
-	<li><a href="/docs/controls/custom">custom</a></li>
-	<li><a href="/docs/controls/dimension">dimension</a></li>
-	<li><a href="/docs/controls/dropdown-pages">dropdown-pages</a></li>
-	<li><a href="/docs/controls/image">image</a></li>
-	<li><a href="/docs/controls/multicheck">multicheck</a></li>
-	<li><a href="/docs/controls/number">number</a></li>
-	<li><a href="/docs/controls/palette">palette</a></li>
-	<li><a href="/docs/controls/radio">radio</a></li>
-	<li><a href="/docs/controls/radio-buttonset">radio-buttonset</a></li>
-	<li><a href="/docs/controls/radio-image">radio-image</a></li>
-	<li><a href="/docs/controls/repeater">repeater</a></li>
-	<li><a href="/docs/controls/select">select</a></li>
-	<li><a href="/docs/controls/slider">slider</a></li>
-	<li><a href="/docs/controls/sortable">sortable</a></li>
-	<li><a href="/docs/controls/spacing">spacing</a></li>
-	<li><a href="/docs/controls/switch">switch</a></li>
-	<li><a href="/docs/controls/text">text</a></li>
-	<li><a href="/docs/controls/textarea">textarea</a></li>
-	<li><a href="/docs/controls/toggle">toggle</a></li>
-	<li><a href="/docs/controls/typography">typography</a></li>
-	<li><a href="/docs/controls/upload">upload</a></li>
+	{% for node in site.pages %}
+		{% if node.url contains "docs/controls" %}
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+		{% endif %}
+	{% endfor %}
 
 	<li class="docs-nav-title">Field Arguments</li>
-	<li><a href="/docs/arguments/capability">capability</a></li>
-	<li><a href="/docs/arguments/choices">choices</a></li>
-	<li><a href="/docs/arguments/default">default</a></li>
-	<li><a href="/docs/arguments/description">description</a></li>
-	<li><a href="/docs/arguments/fields">fields</a></li>
-	<li><a href="/docs/arguments/js_vars">js_vars</a></li>
-	<!-- <li><a href="/docs/arguments/kirki_config">kirki_config</a></li> -->
-	<li><a href="/docs/arguments/label">label</a></li>
-	<li><a href="/docs/arguments/multiple">multiple</a></li>
-	<li><a href="/docs/arguments/option_name">option_name</a></li>
-	<li><a href="/docs/arguments/option_type">option_type</a></li>
-	<li><a href="/docs/arguments/output">output</a></li>
-	<li><a href="/docs/arguments/priority">priority</a></li>
-	<li><a href="/docs/arguments/required">required</a></li>
-	<li><a href="/docs/arguments/sanitize_callback">sanitize_callback</a></li>
-	<li><a href="/docs/arguments/section">section</a></li>
-	<li><a href="/docs/arguments/settings">settings</a></li>
-	<li><a href="/docs/arguments/tooltip">tooltip</a></li>
-	<li><a href="/docs/arguments/transport">transport</a></li>
-	<li><a href="/docs/arguments/type">type</a></li>
-	<li><a href="/docs/arguments/variables">variables</a></li>
+	{% for node in site.pages %}
+		{% if node.url contains "docs/arguments" %}
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+		{% endif %}
+	{% endfor %}
 
 	<li class="docs-nav-title">Advanced Topics</li>
-	<li><a href="/docs/advanced/styling-the-customizer">Styling the Customizer</a></li>
-	<li><a href="/docs/advanced/register-control-types">Register new Control Types</a></li>
-	<li><a href="/docs/advanced/integration">Integrating Kirki in your theme or plugin</a></li>
+	{% for node in site.pages %}
+		{% if node.url contains "docs/advanced" %}
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+		{% endif %}
+	{% endfor %}
 </ul>

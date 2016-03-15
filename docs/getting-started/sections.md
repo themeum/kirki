@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Creating Sections
+title: Adding Sections
 edit: docs/getting-started/sections.md
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Creating Panels
+title: Adding Panels
 edit: docs/getting-started/panels.md
 ---
 

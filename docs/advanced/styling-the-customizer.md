@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Styling The Customizer
+title: Styling the Customizer
 edit: docs/advanced/styling-the-customizer.md
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Creating a Configuration for your project
+title: Configuration
 sections:
   - Example
   - Arguments

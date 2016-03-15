@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Integrating Kirki in your products
+title: Integrating Kirki
 sections:
   - Using a custom setting in the customizer (recommended)
   - Using TGMPA
