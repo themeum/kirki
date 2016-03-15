@@ -14,13 +14,4 @@ extra_args:
     required: "yes"
     type: array
     description: Use it to define the language to be used, the theme, and the area's height.
-edit: docs/controls/code.md
 ---
-
-### Usage
-
-The saved values is a `string`
-
-{% highlight php %}
-<?php echo get_theme_mod( 'my_setting', '' ); ?>
-{% endhighlight %}

@@ -17,8 +17,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #field-description,
-#field-examples {
+#field-examples,
+#field-usage {
 	position: relative;
+	min-height: 50vh;
 	.button.improve-section {
 		position: absolute;
 		top: 0;

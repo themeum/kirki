@@ -7,8 +7,9 @@
 			<div id="main" class="medium-9 large-10 medium-push-3 large-push-2 columns">
 				<article>
 					<div class="row">
-						<div class="{% if page.sections %}large-9{% else %}large-12{% endif %} columns">
+						<div class="large-9 columns">
 							<h1>{{ page.title }}</h1>
+							{{ content }}
 							<hr>
 							<div id="field-description">
 								<h2 id="description">Description</h2>
@@ -20,7 +21,7 @@
 							</div>
 							<hr>
 							<div id="field-examples">
-								<h2 id="description">Examples</h2>
+								<h2 id="examples">Examples</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-examples.{{ page.title }}.html">Improve this section</a>
 								{% capture field-examples %}
 									{% include field-examples/{{ page.title }}.md %}
@@ -28,8 +29,20 @@
 								{{ field-examples | markdownify }}
 							</div>
 							<hr>
-							{{ content }}
-							{% include field-arguments.html %}
+							<div id="field-usage">
+								<h2 id="usage">Usage</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-usage.{{ page.title }}.html">Improve this section</a>
+								{% capture field-usage %}
+									{% include field-usage/{{ page.title }}.md %}
+								{% endcapture %}
+								{{ field-usage | markdownify }}
+							</div>
+							<hr>
+							<div id="field-arguments">
+								<h2 id="arguments">Arguments</h2>
+								{% include field-arguments.html %}
+							</div>
+							<hr>
 						</div>
 						{% include fields-sections-sidebar.html %}
 					</div>
