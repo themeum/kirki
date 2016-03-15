@@ -1,11 +1,6 @@
 ---
 layout: docs-field
 title: multicheck
-sections:
-  - Arguments
-  - Example
-  - Usage
-edit: docs/controls/multicheck.md
 extra_args:
   - argument: type
     required: "yes"

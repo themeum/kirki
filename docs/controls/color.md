@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: color
-sections:
-  - Arguments
-  - Example
-  - Usage
 extra_args:
   - argument: type
     required: "yes"

@@ -1,7 +1,6 @@
 ---
 layout: docs-field
 title: upload
-edit: docs/controls/upload.md
 extra_args:
   - argument: type
     required: "yes"

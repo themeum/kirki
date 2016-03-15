@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: radio
-sections:
-  - Arguments
-  - Example
-edit: docs/controls/radio.md
 extra_args:
   - argument: type
     required: "yes"

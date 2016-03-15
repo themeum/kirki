@@ -1,13 +1,6 @@
 ---
 layout: docs-field
 title: typography
-sections:
-  - Example
-  - Defining active sub-fields
-  - Output
-  - Variants
-  - Usage
-edit: docs/controls/typography.md
 extra_args:
   - argument: type
     required: "yes"

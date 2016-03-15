@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: slider
-sections:
-  - Arguments
-  - Example
-edit: docs/controls/slider.md
 extra_args:
   - argument: type
     required: "yes"

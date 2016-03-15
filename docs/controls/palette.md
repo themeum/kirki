@@ -1,11 +1,6 @@
 ---
 layout: docs-field
 title: palette
-sections:
-  - Arguments
-  - Example
-  - Usage
-edit: docs/controls/palette.md
 extra_args:
   - argument: type
     required: "yes"

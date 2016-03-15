@@ -1,11 +1,6 @@
 ---
 layout: docs-field
 title: select
-sections:
-  - Arguments
-  - Example
-  - Multi-Select
-edit: docs/controls/select.md
 extra_args:
   - argument: type
     required: "yes"

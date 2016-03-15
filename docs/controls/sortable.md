@@ -1,9 +1,6 @@
 ---
 layout: docs-field
 title: sortable
-sections:
-  - Example
-edit: docs/controls/sortable.md
 extra_args:
   - argument: type
     required: "yes"

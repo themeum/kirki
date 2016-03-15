@@ -1,7 +1,6 @@
 ---
 layout: docs-field
 title: switch
-edit: docs/controls/switch.md
 extra_args:
   - argument: type
     required: "yes"

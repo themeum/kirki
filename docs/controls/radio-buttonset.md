@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: radio-buttonset
-sections:
-  - Arguments
-  - Example
-edit: docs/controls/radio-buttonset.md
 extra_args:
   - argument: type
     required: "yes"

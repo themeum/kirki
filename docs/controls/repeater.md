@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: repeater
-sections:
-  - Arguments
-  - Example
-edit: docs/controls/repeater.md
 extra_args:
   - argument: type
     required: "yes"

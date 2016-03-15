@@ -1,11 +1,6 @@
 ---
 layout: docs-field
 title: spacing
-sections:
-  - Arguments
-  - Example
-  - Usage
-edit: docs/controls/spacing.md
 extra_args:
   - argument: type
     required: "yes"

@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: code
-sections:
-  - Arguments
-  - Example
-  - Usage
 extra_args:
   - argument: type
     required: "yes"

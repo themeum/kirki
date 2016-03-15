@@ -1,12 +1,6 @@
 ---
 layout: docs-field
 title: checkbox
-sections:
-  - Arguments
-  - Creating a checkbox Control
-  - Creating a switch Control
-  - Creating a toggle Control
-  - Usage
 extra_args:
   - argument: type
     required: "yes"

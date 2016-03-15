@@ -1,10 +1,6 @@
 ---
 layout: docs-field
 title: radio-image
-sections:
-  - Arguments
-  - Example
-edit: docs/controls/radio-image.md
 extra_args:
   - argument: type
     required: "yes"

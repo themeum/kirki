@@ -1,11 +1,6 @@
 ---
 layout: docs-field
 title: number
-sections:
-  - Arguments
-  - Example
-  - Usage
-edit: docs/controls/number.md
 extra_args:
   - argument: type
     required: "yes"
