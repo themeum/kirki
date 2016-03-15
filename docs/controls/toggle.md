@@ -1,7 +1,12 @@
 ---
-layout: docs
-title: toggle
+layout: docs-field
+title: switch
 edit: docs/controls/toggle.md
+extra_args:
+  - argument: type
+    required: "yes"
+    type: string
+    description: Set to <code>toggle</code>.
 ---
 
 Please check the documentation for `checkbox` controls.

@@ -1,0 +1,10 @@
+<div class="large-3 columns" data-sticky-container>
+    <nav class="columns sticky" data-sticky data-sticky-on="large" data-margin-top="0">
+        <ul data-docs-toc class="vertical menu docs-side-nav" data-magellan>
+            <li class="side-nav-header">On this page:</li>
+            {% for section in page.sections %}
+                <li><a href="#{{ section|downcase|replace:' ','-'|replace:'(',''|replace:')','' }}">{{ section }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>

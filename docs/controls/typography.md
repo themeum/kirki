@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docs-field
 title: typography
 sections:
   - Example
@@ -8,6 +8,15 @@ sections:
   - Variants
   - Usage
 edit: docs/controls/typography.md
+extra_args:
+  - argument: type
+    required: "yes"
+    type: string
+    description: Set to <code>typography</code>.
+  - argument: default
+    required: "yes"
+    type: array
+    description: See "Defining active sub-fields" section.
 ---
 
 The `typography` field allows you to add the most important typography-related controls in a single, compact view.

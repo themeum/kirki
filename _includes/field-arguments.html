@@ -1,0 +1,122 @@
+<h3 id="arguments">Arguments</h3>
+
+<table style="font-size: .9rem;">
+    <thead>
+        <tr>
+            <th>Argument</th>
+            <th>Required</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if page.extra_args %}
+            {% for arg in page.extra_args %}
+                <tr>
+                    <td><code>{{ arg.argument }}</code></td>
+                    <td>{{ arg.required }}</td>
+                    <td><code>{{ arg.type }}</code></td>
+                    <td>{{ arg.description }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        <tr>
+            <td><code>settings</code></td>
+            <td>yes</td>
+            <td><code>string</code></td>
+            <td>The setting-name that will be used to identify this field.</td>
+        </tr>
+        <tr>
+            <td><code>section</code></td>
+            <td>yes</td>
+            <td><code>string</code></td>
+            <td>Defines the section in which this field's control will be added.</td>
+        </tr>
+        <tr>
+            <td><code>label</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>The title that will be displayed in the control.</td>
+        </tr>
+        <tr>
+            <td><code>description</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>An optional description</td>
+        </tr>
+        <tr>
+            <td><code>priority</code></td>
+            <td>no</td>
+            <td><code>int</code></td>
+            <td>You can use <code>priority</code> to change the order in which your controls are added inside a section. Defaults to <code>10</code>.</td>
+        </tr>
+        <tr>
+            <td><code>variables</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>If you're using a compiler you can use this to define the corresponding variable names. See <code>variables</code> documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>tooltip</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>Add a localized string to show an informative tooltip.</td>
+        </tr>
+        <tr>
+            <td><code>active_callback</code></td>
+            <td>no</td>
+            <td><code>string/array</code></td>
+            <td>A callable function or method returning boolean (<code>true</code>/<code>false</code>) to define if the current field will be displayed or not. Overrides the <code>required</code> argument if one is defined.</td>
+        </tr>
+        <tr>
+            <td><code>sanitize_callback</code></td>
+            <td>no</td>
+            <td><code>string/array</code></td>
+            <td>Not necessary since we already have a default sanitization callback in pace. If you want to override the default sanitization you can enter a callable function or method.</td>
+        </tr>
+        <tr>
+            <td><code>transport</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td><code>refresh</code> or <code>postMessage</code>. defaults to <code>refresh</code>.</td>
+        </tr>
+        <tr>
+            <td><code>required</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define field dependencies if you want to show or hide this field conditionally based on the values of other controls.</td>
+        </tr>
+        <tr>
+            <td><code>capability</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>The capability required so that users can access this setting. This is automatically set by your configuration, and if none is defined in your config then falls-back to <code>edit_theme_options</code>. You can use this to override your config defaults on a per-field basis.</td>
+        </tr>
+        <tr>
+            <td><code>option_type</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td><code>theme_mod</code>, <code>option</code>, <code>user_meta</code>. This option is set in your configuration but can be overridden on a per-field basis. See configuration documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>option_name</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>This option is set in your configuration but can be overridden on a per-field basis. See configuration documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>output</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define an array of elements & properties to auto-generate and apply the CSS to your frontend. See <code>output</code> documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>js_vars</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define an array of elements & properties to auto-generate and apply the necessary JS in order for postMessage to work. Requires that <code>transport</code> is set to <code>postMessage</code>.</td>
+        </tr>
+    </tbody>
+
+</table>

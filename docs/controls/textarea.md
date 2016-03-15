@@ -1,22 +1,22 @@
 ---
 layout: docs-field
-title: text
-edit: docs/controls/text.md
+title: textarea
+edit: docs/controls/textarea.md
 extra_args:
   - argument: type
     required: "yes"
     type: string
-    description: Set to <code>text</code>.
+    description: Set to <code>textarea</code>.
 ---
 
-`text` controls allow you to add a simple, single-line text input.
+`textarea` controls allow you to add a simple, multi-line text input.
 
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(
-	'type'     => 'text',
+	'type'     => 'textarea',
 	'settings' => 'my_setting',
-	'label'    => __( 'Text Control', 'my_textdomain' ),
+	'label'    => __( 'Textarea Control', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => esc_attr__( 'This is a defualt value', 'my_textdomain' ),
 	'priority' => 10,
