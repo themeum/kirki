@@ -19,22 +19,3 @@ extra_args:
     type: array
     description: Define the minimum value, maximum value, and step. Example <code>'choices' => array( 'min' => '0', 'max' => '100', 'step' => '1' )</code>.
 ---
-
-### Example
-
-{% highlight php %}
-<?php
-Kirki::add_field( 'my_config', array(
-	'type'        => 'slider',
-	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'This is the label', 'my_textdomain' ),
-	'section'     => 'my_section',
-	'default'     => 42,
-	'choices'     => array(
-		'min'  => '0',
-		'max'  => '100',
-		'step' => '1',
-	),
-) );
-?>
-{% endhighlight %}

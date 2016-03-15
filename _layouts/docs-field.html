@@ -19,6 +19,15 @@
 								{{ field-description | markdownify }}
 							</div>
 							<hr>
+							<div id="field-examples">
+								<h2 id="description">Examples</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-examples.{{ page.title }}.html">Improve this section</a>
+								{% capture field-examples %}
+									{% include field-examples/{{ page.title }}.md %}
+								{% endcapture %}
+								{{ field-examples | markdownify }}
+							</div>
+							<hr>
 							{{ content }}
 							{% include field-arguments.html %}
 						</div>

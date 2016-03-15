@@ -21,22 +21,6 @@ extra_args:
 edit: docs/controls/color.md
 ---
 
-### Example:
-
-{% highlight php %}
-<?php
-Kirki::add_field( 'my_config', array(
-	'type'        => 'color',
-	'settings'    => 'my_setting',
-	'label'       => __( 'This is the label', 'my_textdomain' ),
-	'section'     => 'my_section',
-	'default'     => '#0088CC',
-	'priority'    => 10,
-	'alpha'       => true,
-) );
-?>
-{% endhighlight %}
-
 ### Usage
 Most times you won't have to manually retrieve the value of `color` controls since the `output` argument can cover most use-cases.
 

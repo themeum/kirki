@@ -16,10 +16,14 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 1rem;
 }
 
-.button.improve-section {
-	float: right;
-	margin-left: 6em;
-	margin-bottom: 3em;
+#field-description,
+#field-examples {
+	position: relative;
+	.button.improve-section {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 }
 
 .footer {
