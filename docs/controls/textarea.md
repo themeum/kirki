@@ -9,8 +9,6 @@ extra_args:
     description: Set to <code>textarea</code>.
 ---
 
-`textarea` controls allow you to add a simple, multi-line text input.
-
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(

@@ -20,8 +20,6 @@ extra_args:
     description: Define the minimum value, maximum value, and step. Example <code>'choices' => array( 'min' => '0', 'max' => '100', 'step' => '1' )</code>.
 ---
 
-`slider` controls are numeric fields that allow you to set a minimum value, a maximum value and a step.
-
 ### Example
 
 {% highlight php %}

@@ -17,9 +17,6 @@ extra_args:
     description: Define the URL to an image or use an empty string (<code>'default' => ''</code>).
 ---
 
-
-Image controls allow you to upload a new image, or use an existing image from your media library.
-
 ### Example
 
 {% highlight php %}

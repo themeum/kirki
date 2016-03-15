@@ -8,5 +8,3 @@ extra_args:
     type: string
     description: Set to <code>toggle</code>.
 ---
-
-Please check the documentation for `checkbox` controls.

@@ -13,8 +13,6 @@ extra_args:
     description: Define the URL to a file or use an empty string (<code>'default' => ''</code>).
 ---
 
-The `upload` control is identical to the `image` control, the only difference is that it allows uploading more file types and not only images.
-
 ### Usage
 
 * returns `string` (url of the uploaded file).

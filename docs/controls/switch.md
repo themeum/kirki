@@ -12,5 +12,3 @@ extra_args:
     type: array
     description: You can use this to change the ON/OFF labels.
 ---
-
-Please check the documentation for `checkbox` controls.

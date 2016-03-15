@@ -20,10 +20,6 @@ extra_args:
     description: "Define an array of fields that will be used. Each defined field must be an array."
 ---
 
-
-Repeater controls allow you to build repeatable blocks of fields.
-You can create for example a set of fields that will contain a checkbox and a textfield. The user will then be able to add "rows", and each row will contain a checkbox and a textfield.
-
 ### Example
 
 Creating a repeater control where each row contains 2 textfields.

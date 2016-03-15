@@ -20,8 +20,6 @@ extra_args:
     description: Use an array of elements. Format <code>$key => $url</code>.
 ---
 
-You can define the available options using the `choices` argument and formating them as an array `key => URL`.
-
 ### Example
 
 {% highlight php %}

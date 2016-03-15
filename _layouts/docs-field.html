@@ -8,12 +8,21 @@
 				<article>
 					<div class="row">
 						<div class="{% if page.sections %}large-9{% else %}large-12{% endif %} columns">
-							{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
-							{% include edit-link.html %}
+							<h1>{{ page.title }}</h1>
+							<hr>
+							<div id="field-description">
+								<h2 id="description">Description</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-descriptions.{{ page.title }}.html">Improve this section</a>
+								{% capture field-description %}
+									{% include field-descriptions/{{ page.title }}.md %}
+								{% endcapture %}
+								{{ field-description | markdownify }}
+							</div>
+							<hr>
 							{{ content }}
 							{% include field-arguments.html %}
 						</div>
-						{% if page.sections %}{% include sections-sidebar.html %}{% endif %}
+						{% include fields-sections-sidebar.html %}
 					</div>
 				</article>
 			</div>

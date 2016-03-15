@@ -20,8 +20,6 @@ extra_args:
     description: Use an array of elements. Format <code>$key => $label</code>.
 ---
 
-You can define the available options using the `choices` argument and formating them as an array `key => label`.
-
 ### Example
 
 {% highlight php %}

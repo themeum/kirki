@@ -9,8 +9,6 @@ extra_args:
     description: Set to <code>text</code>.
 ---
 
-`text` controls allow you to add a simple, single-line text input.
-
 {% highlight php %}
 <?php
 Kirki::add_field( 'my_config', array(
