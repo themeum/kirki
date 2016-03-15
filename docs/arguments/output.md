@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: output
+edit: docs/arguments/output.md
 ---
 
 

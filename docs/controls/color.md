@@ -5,6 +5,7 @@ sections:
   - Arguments
   - Example
   - Usage
+edit: docs/controls/color.md
 ---
 
 Kirki's `color` control extends WordPress Core's color control, allowing you to select not only `HEX` colors but also `RGBA` colors.

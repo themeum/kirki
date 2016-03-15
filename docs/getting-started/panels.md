@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Creating Panels
+edit: docs/getting-started/panels.md
 ---
 
 Panels are wrappers for sections, a way to group multiple sections together. To see how to create Panels using the WordPress Customizer API please take a look at [these docs](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#panels).

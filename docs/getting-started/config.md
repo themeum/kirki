@@ -4,6 +4,7 @@ title: Creating a Configuration for your project
 sections:
   - Example
   - Arguments
+edit: docs/getting-started/config.md
 ---
 
 When you create a project in Kirki, the first thing you have to do is **create a configuration**. Configurations allow each project to use a different setup and act as identifiers so it's important you create one. Fields that belong to your configuration will inherit your config properties.

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: type
+edit: docs/arguments/type.md
 ---
 
 

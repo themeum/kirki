@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: option_type
+edit: docs/arguments/option_type.md
 ---
 
 

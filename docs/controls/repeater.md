@@ -4,6 +4,7 @@ title: repeater
 sections:
   - Arguments
   - Example
+edit: docs/controls/repeater.md
 ---
 
 

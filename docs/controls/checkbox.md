@@ -7,6 +7,7 @@ sections:
   - Creating a switch Control
   - Creating a toggle Control
   - Usage
+edit: docs/controls/checkbox.md
 ---
 
 WordPress Core already allows you to create checkbox controls.

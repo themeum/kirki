@@ -9,6 +9,7 @@
 					<div class="row">
 						{% if page.sections %}<div class="large-9 columns">{% else %}<div class="large-12 columns">{% endif %}
 							{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+							{% if page.edit %}<a class="button small hollow secondary" href="https://github.com/aristath/kirki/edit/gh-pages/{{ page.edit }}">Improve this page</a>{% endif %}
 							{{ content }}
 						</div>
 						{% if page.sections %}

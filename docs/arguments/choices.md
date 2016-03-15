@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: choices
+edit: docs/arguments/choices.md
 ---
 
 

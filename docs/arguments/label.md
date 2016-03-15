@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: label
+edit: docs/arguments/label.md
 ---
 
 

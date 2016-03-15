@@ -3,6 +3,7 @@ layout: docs
 title: sortable
 sections:
   - Example
+edit: docs/controls/sortable.md
 ---
 
 ### Example

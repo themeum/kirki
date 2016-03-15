@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Fields
+edit: docs/getting-started/fields.md
 ---
 
 ### Adding Fields

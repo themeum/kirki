@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: js_vars
+edit: docs/arguments/js_vars.md
 ---
 
 

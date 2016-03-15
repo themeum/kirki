@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: multiple
+edit: docs/arguments/multiple.md
 ---
 
 

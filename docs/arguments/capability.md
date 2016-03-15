@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: capability
+edit: docs/arguments/capability.md
 ---
 
 The `capability` argument allows you to define the the capability that a user must have in order to access the control for a field.

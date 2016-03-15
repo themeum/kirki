@@ -5,6 +5,7 @@ sections:
   - Arguments
   - Example
   - Usage
+edit: docs/controls/number.md
 ---
 
 `number` controls are simple numeric fields that only accept numbers as input and not free text.

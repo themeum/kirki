@@ -5,6 +5,7 @@ sections:
   - Arguments
   - Example
   - Usage
+edit: docs/controls/spacing.md
 ---
 
 The functionality of `spacing` controls is similar to that of `dimension` controls:

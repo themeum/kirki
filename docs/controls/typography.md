@@ -7,6 +7,7 @@ sections:
   - Output
   - Variants
   - Usage
+edit: docs/controls/typography.md
 ---
 
 The `typography` field allows you to add the most important typography-related controls in a single, compact view.

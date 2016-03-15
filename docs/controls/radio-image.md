@@ -4,6 +4,7 @@ title: radio-image
 sections:
   - Arguments
   - Example
+edit: docs/controls/radio-image.md
 ---
 
 You can define the available options using the `choices` argument and formating them as an array `key => URL`.

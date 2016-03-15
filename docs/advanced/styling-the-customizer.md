@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Styling The Customizer
+edit: docs/advanced/styling-the-customizer.md
 ---
 
 Kirki allows you to change the styling of the customizer using the `kirki/config` filter:

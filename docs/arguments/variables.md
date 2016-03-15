@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: variables
+edit: docs/arguments/variables.md
 ---
 
 

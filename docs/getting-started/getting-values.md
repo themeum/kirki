@@ -5,6 +5,7 @@ sections:
   - When using Theme Mods
   - When using Options
   - When using Serialized Options
+edit: docs/getting-started/getting-values.md
 ---
 
 To get the value of any of your settings we recommend using the WordPress Core functions [`get_option`](https://codex.wordpress.org/Function_Reference/get_option) and [`get_theme_mod`](https://codex.wordpress.org/Function_Reference/get_theme_mod)

@@ -5,6 +5,7 @@ sections:
   - Arguments
   - Example
   - Multi-Select
+edit: docs/controls/select.md
 ---
 
 We extend WordPress Core's `select` controls and all `select` controls created using Kirki will use the [selectize.js](http://brianreavis.github.io/selectize.js/) script.

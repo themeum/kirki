@@ -6,6 +6,7 @@ sections:
   - Using TGMPA
   - Embedding in your theme
   - Translating Kirki strings in embedded theme
+edit: docs/advanced/integration.md
 ---
 
 There are currently 2 ways to include Kirki in a theme:

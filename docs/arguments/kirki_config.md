@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: kirki_config
+edit: docs/arguments/kirki_config.md
 ---
 
 

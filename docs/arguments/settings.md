@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: settings
+edit: docs/arguments/settings.md
 ---
 
 

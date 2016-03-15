@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: tooltip
+edit: docs/arguments/tooltip.md
 ---
 
 

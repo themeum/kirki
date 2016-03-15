@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: default
+edit: docs/arguments/default.md
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: fields
+edit: docs/arguments/fields.md
 ---
 
 

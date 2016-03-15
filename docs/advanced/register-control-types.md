@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Register a new Control Type
+edit: docs/advanced/register-control-types.md
 ---
 
 Though you can create new control types for the WordPress Customizer using its API, you may want to register your control with Kirki as well so you can define fields using that control type directly.

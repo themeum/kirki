@@ -5,6 +5,7 @@ sections:
   - Arguments
   - Example
   - Usage
+edit: docs/controls/multicheck.md
 ---
 
 

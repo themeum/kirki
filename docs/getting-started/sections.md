@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Creating Sections
+edit: docs/getting-started/sections.md
 ---
 
 Sections are wrappers for fields, a way to group multiple fields together. All fields must belong to a section, no field can be an orphan. To see how to create Sections using the WordPress Customizer API please take a look at [these docs](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#sections).

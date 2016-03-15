@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: priority
+edit: docs/arguments/priority.md
 ---
 
 

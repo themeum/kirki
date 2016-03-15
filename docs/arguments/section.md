@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: section
+edit: docs/arguments/section.md
 ---
 
 

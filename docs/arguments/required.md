@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: required
+edit: docs/arguments/required.md
 ---
 
 

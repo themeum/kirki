@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: dropdown-pages
+edit: docs/controls/dropdown-pages.md
 ---
 
 

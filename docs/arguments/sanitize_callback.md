@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: sanitize_callback
+edit: docs/arguments/sanitize_callback.md
 ---
 
 
