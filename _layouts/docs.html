@@ -17,7 +17,7 @@
 									<ul data-docs-toc class="vertical menu docs-side-nav" data-magellan>
 										<li class="side-nav-header">On this page:</li>
 										{% for section in page.sections %}
-											<li><a href="#{{ section|downcase|replace:' ','-' }}">{{ section }}</a></li>
+											<li><a href="#{{ section|downcase|replace:' ','-'|replace:'(',''|replace:')','' }}">{{ section }}</a></li>
 										{% endfor %}
 									</ul>
 								</nav>
