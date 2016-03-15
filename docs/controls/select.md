@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: select
+returns: string | array
 extra_args:
   - argument: type
     required: "yes"

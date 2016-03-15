@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: multicheck
+returns: array
 extra_args:
   - argument: type
     required: "yes"

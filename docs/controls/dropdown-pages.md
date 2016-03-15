@@ -1,7 +1,7 @@
 ---
 layout: docs-field
 title: dropdown-pages
-edit: docs/controls/dropdown-pages.md
+returns: int
 extra_args:
   - argument: type
     required: "yes"

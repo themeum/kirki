@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: slider
+returns: string
 extra_args:
   - argument: type
     required: "yes"

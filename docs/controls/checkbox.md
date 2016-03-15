@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: checkbox
+returns: bool
 extra_args:
   - argument: type
     required: "yes"

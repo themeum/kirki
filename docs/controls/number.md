@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: number
+returns: string
 extra_args:
   - argument: type
     required: "yes"

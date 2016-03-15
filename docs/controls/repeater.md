@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: repeater
+returns: array
 extra_args:
   - argument: type
     required: "yes"

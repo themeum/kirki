@@ -1,6 +1,7 @@
 ---
 layout: docs-field
 title: custom
+returns: "null"
 extra_args:
   - argument: type
     required: "yes"
