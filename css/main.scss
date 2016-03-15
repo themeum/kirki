@@ -4,7 +4,7 @@
 
 body {
 	font-family: Roboto;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	font-weight: 300;
 }
 
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 #field-examples,
 #field-usage {
 	position: relative;
-	min-height: 50vh;
+	min-height: 25vh;
 	.button.improve-section {
 		position: absolute;
 		top: 0;
@@ -81,9 +81,9 @@ h1, h2, h3, h4, h5, h6 {
 		padding-top: 1.5rem;
 	}
 	> li {
-		font-size: .8em;
+		font-size: .9em;
 		> a {
-			padding: .3rem 1rem;
+			padding: .5rem 1rem;
 		}
 	}
 }
