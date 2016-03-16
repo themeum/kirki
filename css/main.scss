@@ -109,4 +109,14 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+#mc_embed_signup {
+	padding: 1rem;
+	background: #000;
+	label {
+		color: #fff;
+		line-height: 2.4375rem;
+		font-size: 1.1rem;
+	}
+}
+
 @import "code-highlight";

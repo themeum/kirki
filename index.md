@@ -2,6 +2,26 @@
 layout: docs
 ---
 
+<div id="mc_embed_signup">
+	<form action="//github.us12.list-manage.com/subscribe/post?u=63d1425d3d1b729d54f02068d&amp;id=3a8ae06703" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+		<div class="row">
+			<div class="columns medium-12">
+				<label for="mce-EMAIL">Subscribe for important news. No spam, ever.</label>
+			</div>
+			<div class="columns medium-8">
+				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="e-mail address">
+				<div style="position: absolute; left: -5000px;" aria-hidden="true">
+					<input type="text" name="b_63d1425d3d1b729d54f02068d_3a8ae06703" tabindex="-1" value="">
+				</div>
+			</div>
+			<div class="medium-4 columns">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button success expanded">
+			</div>
+		</div>
+	</form>
+</div>
+
+
 # What is Kirki?
 
 Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
