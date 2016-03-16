@@ -25,6 +25,7 @@ To get the value of any of your settings we recommend using the WordPress Core f
 ### When using **Serialized Options**
 
 If you're using serialized options you may want to consider writing a proxy function to make this easier:
+
 ```php
 <?php
 function my_theme_get_option( $setting, $default ) {
