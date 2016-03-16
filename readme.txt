@@ -68,6 +68,7 @@ March 16, 2016, dev time: 120 hours
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
 * NEW: Started an OOP rewrite of many classes
 * NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
+* NEW: Included the ariColor library for color calculations (https://aristath.github.io/ariColor/)
 * TWEAK: Other code refactoring for improved performance
 * TWEAK: Updated `grunt` packages.
 
