@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       2.2.0.beta.3
+ * Version:       2.2.0
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
