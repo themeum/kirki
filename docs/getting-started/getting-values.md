@@ -40,6 +40,7 @@ function my_theme_get_option( $setting, $default ) {
 ```
 
 You can then get your values using the above function:
+
 ```php
 <?php $value = my_theme_get_option( 'option_name', 'default_value' ); ?>
 ```
