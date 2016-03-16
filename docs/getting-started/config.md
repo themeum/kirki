@@ -9,20 +9,20 @@ edit: docs/getting-started/config.md
 
 When you create a project in Kirki, the first thing you have to do is **create a configuration**. Configurations allow each project to use a different setup and act as identifiers so it's important you create one. Fields that belong to your configuration will inherit your config properties.
 
-{% highlight php %}
+```php
 <?php Kirki::add_config( $config_id, $args ); ?>
-{% endhighlight %}
+```
 
 ### Example:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_config( 'my_theme', array(
 	'capability'    => 'edit_theme_options',
 	'option_type'   => 'theme_mod',
 ) );
 ?>
-{% endhighlight %}
+```
 
 
 ### Arguments
@@ -33,6 +33,6 @@ Kirki::add_config( 'my_theme', array(
 * `disable_output`: Set to `true` if you don't want Kirki to automatically output any CSS for your config (defaults to `false`).
 
 To create a field that will then use this configuration you can add your fields like this:
-{% highlight php %}
+```php
 <?php Kirki::add_field( 'my_theme', $field_args ); ?>
-{% endhighlight %}
+```

@@ -12,20 +12,20 @@ To get the value of any of your settings we recommend using the WordPress Core f
 
 ### When using **Theme Mods**
 
-{% highlight php %}
+```php
 <?php $value = get_theme_mod( 'option_name', 'default_value' ); ?>
-{% endhighlight %}
+```
 
 ### When using **Options**
 
-{% highlight php %}
+```php
 <?php $value = get_option( 'option_name', 'default_value' ); ?>
-{% endhighlight %}
+```
 
 ### When using **Serialized Options**
 
 If you're using serialized options you may want to consider writing a proxy function to make this easier:
-{% highlight php %}
+```php
 <?php
 function my_theme_get_option( $setting, $default ) {
     $options = get_option( 'option_name', array() );
@@ -36,9 +36,9 @@ function my_theme_get_option( $setting, $default ) {
     return $value;
 }
 ?>
-{% endhighlight %}
+```
 
 You can then get your values using the above function:
-{% highlight php %}
+```php
 <?php $value = my_theme_get_option( 'option_name', 'default_value' ); ?>
-{% endhighlight %}
+```

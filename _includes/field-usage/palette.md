@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 $saved_palette = get_theme_mod( 'my_setting', 'light' );
 if ( 'light' == $saved_palette ) {
@@ -16,4 +16,4 @@ $styles = "background-color:{$background}; color:{$text_color}; border-color:{$b
 <div style="<?php echo $styles; ?>">
 	Some text here
 </div>
-{% endhighlight %}
+```

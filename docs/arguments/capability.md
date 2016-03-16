@@ -12,7 +12,7 @@ You can set the `capability in your config, as well as on individual fields.
 
 Example:
 
-{% highlight php %}
+```php
 <?php
 // Only allow network admins to access options in this config
 Kirki::add_config( 'my_config', array(
@@ -43,6 +43,6 @@ Kirki::add_field( 'my_config', array(
 	'capability'  => 'edit_theme_options'
 ) );
 ?>
-{% endhighlight %}
+```
 
 For a complete list of WordPress capabilities and what capabilities each user role has, please visit the [documentation on wordpress.org](https://codex.wordpress.org/Roles_and_Capabilities).

@@ -7,9 +7,9 @@ One main difference that `switch` controls have from [`checkbox`](/docs/controls
 
 By default the labels are ON/OFF. To change them you can use the `choices` argument:
 
-{% highlight php %}
+```php
 'choices' => array(
     'on'  => esc_attr__( 'Enable', 'textdomain' ),
     'off' => esc_attr__( 'Disable', 'textdomain' )
 )
-{% endhighlight %}
+```

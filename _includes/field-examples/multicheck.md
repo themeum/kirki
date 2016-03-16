@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'multicheck',
@@ -17,4 +17,4 @@ Kirki::add_field( 'my_config', array(
 	),
 ) );
 ?>
-{% endhighlight %}
+```

@@ -11,7 +11,7 @@ Based on these values Kirki will then automatically generate the necessary CSS a
 
 Example: Using the `output` argument of a slider control to automatically apply CSS that changes the `border-top-width` of elements with the `variable-top-border` class, and also the `border-bottom-width` of elements with the `variable-bottom-border` class:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_config( 'my_config' );
 
@@ -41,7 +41,7 @@ Kirki::add_field( 'my_config', array(
 	),
 ) );
 ?>
-{% endhighlight %}
+```
 
 ## Arguments you can use inside each `output` array:
 

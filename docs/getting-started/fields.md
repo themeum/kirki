@@ -9,7 +9,7 @@ edit: docs/getting-started/fields.md
 If you are familiar with the WordPress Customizer API then this will be a lot easier for you.
 To add a new simple text field using Kirki you will have to add the following to your project:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'settings' => 'my_setting',
@@ -20,12 +20,12 @@ Kirki::add_field( 'my_config', array(
 	'default'  => 'some-default-value',
 ) );
 ?>
-{% endhighlight %}
+```
 
 This of course requires that you have first created a `'my_config'` configuration.
 
 What Kirki does internally would look something like this:
-{% highlight php %}
+```php
 <?php
 function my_custom_text_settings( $wp_customize ) {
 
@@ -48,7 +48,7 @@ function my_custom_text_settings( $wp_customize ) {
 }
 add_action( 'customize_register', 'my_custom_text_settings' );
 ?>
-{% endhighlight %}
+```
 
 When you create a new field using the Kirki API, we automatically create the setting and the control for that field.
 
@@ -58,9 +58,9 @@ Below is a list of all the arguments you can use when creating a field as well a
 
 When creating fields you will have to use a syntax like this:
 
-{% highlight php %}
+```php
 <?php Kirki::add_field( $config_id, $field_arguments ); ?>
-{% endhighlight %}
+```
 
 * `$config_id`: string. See [Getting Started - Creating a configuration](https://github.com/aristath/kirki/wiki/Getting-Started#creating-a-configuration-for-your-project) for details. You can use the configuration to define how your project will save & handle data.
 * `$field_arguments`: array. This is where you can define the properties of your field. Read below for a detailed breakdown of each argument.

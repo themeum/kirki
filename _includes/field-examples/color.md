@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'color',
@@ -11,4 +11,4 @@ Kirki::add_field( 'my_config', array(
 	'alpha'       => true,
 ) );
 ?>
-{% endhighlight %}
+```

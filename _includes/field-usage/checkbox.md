@@ -1,11 +1,11 @@
 
-{% highlight php %}
+```php
 <?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>
 	<p>Checkbox is checked</p>
 <?php else : ?>
 	<p>Checkbox is unchecked</p>
 <?php endif; ?>
-{% endhighlight %}
+```
 
 Adding a class to a `<div>` if the checkbox is checked:
 

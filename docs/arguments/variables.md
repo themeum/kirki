@@ -11,7 +11,7 @@ In order to facilitate this we now have a `variables` argument you can define in
 
 Example:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'settings'  => 'my_setting',
@@ -36,11 +36,11 @@ Kirki::add_field( 'my_config', array(
 	),
 ) );
 ?>
-{% endhighlight %}
+```
 
 You can then create your own custom functions that will calculate the necessary values:
 
-{% highlight php %}
+```php
 <?php
 function my_h2_calc( $value ) {
 	return intval( $value * 0.8 );
@@ -50,7 +50,7 @@ function my_h3_calc( $value ) {
 	return intval( $value * 0.65 );
 }
 ?>
-{% endhighlight %}
+```
 
 What we did in the above example is add a control for the H1 font-size, and then using variables created variables for the h1, h2 & h3 font-sizes, with h2 being 80% of h1's font-size and h3 65% of h1's size.
 
@@ -58,7 +58,7 @@ If we omit the `callback` argument inside the array then the value is returned w
 
 In our compiler then in order to get the values and format them properly we'd do something like this:
 
-{% highlight php %}
+```php
 <?php
 $variables = Kirki::get_variables();
 
@@ -66,6 +66,6 @@ foreach ( $variables as $variable => $value ) {
 	echo '@' . $variable . ':' . $value . ';';
 }
 ?>
-{% endhighlight %}
+```
 
 This would format our variables for use by a LESS compiler.

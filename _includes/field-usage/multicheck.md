@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php $multicheck_value = get_theme_mod( 'my_setting', array( 'option-1', 'option-3' ) ); ?>
 <?php if ( ! empty( $multicheck_value ) ) : ?>
   <ul>
@@ -8,6 +8,6 @@
 	<?php endforeach; ?>
   </ul>
 <?php endif; ?>
-{% endhighlight %}
+```
 
 Please keep in mind that the returned values are the keys of the settings you have defined, not their labels. If you want to display the labels then you will have to implement this on your code.

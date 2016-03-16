@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'custom',
@@ -10,7 +10,7 @@ Kirki::add_field( 'my_config', array(
 	'priority'    => 10,
 ) );
 ?>
-{% endhighlight %}
+```
 
 The content of the field is defined in the `default` argument.
 You can use valid HTML.

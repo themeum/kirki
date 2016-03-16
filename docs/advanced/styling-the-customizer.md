@@ -6,7 +6,7 @@ edit: docs/advanced/styling-the-customizer.md
 
 Kirki allows you to change the styling of the customizer using the `kirki/config` filter:
 
-{% highlight php %}
+```php
 <?php
 /**
  * Configuration sample for the Kirki Customizer
@@ -24,7 +24,7 @@ function kirki_demo_configuration_sample_styling( $config ) {
 }
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample_styling' );
 ?>
-{% endhighlight %}
+```
 
 * `logo_image`: Change the logo image (URL). If omitted, the default theme info will be displayed. You may want to use a relatively large image (for example 700px wide) so that it's properly displayed on retina screens as well.
 * `description`: Changes the theme description. Will be visible when clicking on the theme logo.

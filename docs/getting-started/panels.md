@@ -6,7 +6,7 @@ edit: docs/getting-started/panels.md
 
 Panels are wrappers for sections, a way to group multiple sections together. To see how to create Panels using the WordPress Customizer API please take a look at [these docs](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#panels).
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_panel( 'panel_id', array(
     'priority'    => 10,
@@ -14,6 +14,6 @@ Kirki::add_panel( 'panel_id', array(
     'description' => __( 'My Description', 'textdomain' ),
 ) );
 ?>
-{% endhighlight %}
+```
 
 The `Kirki::add_panel()` method is nothing more than a wrapper for the WordPress customizer API and therefore follows the exact same syntax. More information on WordPress Customizer Panels can be found on the [WordPress Codex](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#panels)

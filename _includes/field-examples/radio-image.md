@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'radio-image',
@@ -15,4 +15,4 @@ Kirki::add_field( 'my_config', array(
 	),
 ) );
 ?>
-{% endhighlight %}
+```

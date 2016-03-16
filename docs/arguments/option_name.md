@@ -11,7 +11,7 @@ However, if needed, you can override it on a per-field basis.
 
 Example:
 
-{% highlight php %}
+```php
 <?php
 // Use serialized options under "my_option".
 // Settings will be accessed from "my_option['my_setting']".
@@ -44,4 +44,4 @@ Kirki::add_field( 'my_config', array(
 	'option_name' => 'my_option_2'
 ) );
 ?>
-{% endhighlight %}
+```

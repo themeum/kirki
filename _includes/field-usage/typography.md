@@ -1,7 +1,7 @@
 
 It is advised to use this field with the `output` argument to directly apply the generated CSS and automatically generate and enqueue the script necessary for Google Fonts to function.
 
-{% highlight php %}
+```php
 <?php
 
 $value = get_theme_mod( 'my_setting', array() );
@@ -31,4 +31,4 @@ if ( isset( $value['letter-spacing'] ) ) {
 if ( isset( $value['color'] ) ) {
 	echo '<p>' . sprintf( esc_attr_e( 'Color: %s', 'my-textdomain' ), $value['color'] ) . '</p>';
 }
-{% endhighlight %}
+```

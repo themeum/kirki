@@ -9,7 +9,7 @@ If you set `transport` to `postMessage` you can write your own scripts, or you c
 
 It is defined as an array of arrays so you can specify multiple elements.
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'      => 'color',
@@ -33,7 +33,7 @@ Kirki::add_field( 'my_config', array(
 	)
 ) );
 ?>
-{% endhighlight %}
+```
 
 Available arguments you can use on each item inside each array:
 

@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'image',
@@ -12,5 +12,5 @@ Kirki::add_field( 'my_config', array(
 	'priority'    => 10,
 ) );
 ?>
-{% endhighlight %}
+```
 The control saves the URL to the image, and if you want to define a default value as an image, then you will have to add a string containing the full URL to that image.

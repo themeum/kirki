@@ -1,5 +1,5 @@
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'toggle',
@@ -10,4 +10,4 @@ Kirki::add_field( 'my_config', array(
 	'priority'    => 10,
 ) );
 ?>
-{% endhighlight %}
+```

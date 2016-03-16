@@ -11,7 +11,7 @@ You don't have to manually set it since it's automatically set when you create y
 
 Example:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
     'type'        => 'text',
@@ -22,6 +22,6 @@ Kirki::add_field( 'my_config', array(
     'priority'    => 10,
 ) );
 ?>
-{% endhighlight %}
+```
 
 In the above example, the `kirki_config` argument is automatically set to `my_config`.

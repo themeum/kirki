@@ -9,7 +9,7 @@ edit: docs/arguments/settings.md
 
 If for example you create a field using something like this:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
     'type'        => 'color',
@@ -21,10 +21,10 @@ Kirki::add_field( 'my_config', array(
     'alpha'       => true,
 ) );
 ?>
-{% endhighlight %}
+```
 
 then in your theme you can access that value using:
 
-{% highlight php %}
+```php
 <?php $color = get_theme_mod( 'body_background_color', '#0088CC' ); ?>
-{% endhighlight %}
+```

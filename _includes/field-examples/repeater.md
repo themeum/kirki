@@ -1,7 +1,7 @@
 
 Creating a repeater control where each row contains 2 textfields:
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'repeater',
@@ -35,4 +35,4 @@ Kirki::add_field( 'my_config', array(
 	)
 ) );
 ?>
-{% endhighlight %}
+```

@@ -8,7 +8,7 @@ edit: docs/arguments/required.md
 You can use the `required` argument to define field dependencies.
 if you want to show or hide a field conditionally based on the values of other controls in the customizer you can use something like this:
 
-{% highlight php %}
+```php
 <?php
 'required'    => array(
 	array(
@@ -18,7 +18,7 @@ if you want to show or hide a field conditionally based on the values of other c
 	),
 ),
 ?>
-{% endhighlight %}
+```
 It is formatted as an array of arrays so you can add multiple dependencies.
 
 * `setting`: you can use the `settings` argument of the controller-field.
@@ -40,7 +40,7 @@ In the example below we're first creating a config, then a section, and finally 
 
 The text control will **only** be shown if the value of the checkbox is equal to 1 **and** the value of the radio control is not equal to `option-1`.
 
-{% highlight php %}
+```php
 <?php
 Kirki::add_config( 'my_config' );
 
@@ -93,4 +93,4 @@ Kirki::add_field( 'my_config', array(
 	)
 ) );
 ?>
-{% endhighlight %}
+```
