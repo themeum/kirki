@@ -27,11 +27,13 @@ Automatically create CSS from your fields, and make the customizer’s preview i
 
 Add Google Fonts with our typography field, add tooltips to help your users and build awesome products!
 
+You can find detailed documentation on how to use Kirki on [https://kirki.org](https://kirki.org)
+
 ## Installation ##
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on https://kirki.org/docs/advanced/integration.html
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
 
