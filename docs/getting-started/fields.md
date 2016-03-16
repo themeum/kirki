@@ -25,6 +25,7 @@ Kirki::add_field( 'my_config', array(
 This of course requires that you have first created a `'my_config'` configuration.
 
 What Kirki does internally would look something like this:
+
 ```php
 <?php
 function my_custom_text_settings( $wp_customize ) {
