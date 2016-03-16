@@ -1,3 +1,50 @@
+function kirkiArrayToObject( arr ) {
+	var obj = {};
+	if ( null !== arr ) {
+		for ( var i = 0; i < arr.length; ++i ) {
+			if ( undefined !== arr[ i ] ) {
+				obj[ i ] = arr[ i ];
+			}
+		}
+	}
+	return obj;
+}
+
+function kirkiObjectToArray( obj ) {
+	var arr = [];
+	if ( null !== obj ) {
+		for ( var i = 0; i < obj.length; ++i ) {
+			if ( undefined !== obj[ i ] ) {
+				arr.push( obj[ i ] );
+			}
+		}
+	}
+	return arr;
+}
+
+function kirkiValidateCSSValue( value ) {
+	var valueIsValid = true;
+
+	if ( '0' == value ) {
+		return true;
+	}
+
+	var validUnits   = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'];
+	// Get the numeric value
+	var numericValue = parseFloat( value );
+	// Get the unit
+	var unit = value.replace( numericValue, '' );
+	// Check the validity of the numeric value
+	if ( NaN === numericValue ) {
+		valueIsValid = false;
+	}
+	// Check the validity of the units
+	if ( -1 === jQuery.inArray( unit, validUnits ) ) {
+		valueIsValid = false;
+	}
+
+	return valueIsValid;
+}
 /**
  * KIRKI CONTROL: CHECKBOX
  */
@@ -63,41 +110,29 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
 	}
 });
 /**
- * KIRKI CONTROL: COLOR
- */
-wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control   = this;
-		var picker    = this.container.find( '.kirki-color-control' );
-		var new_color = picker.val();
-
-		picker.wpColorPicker({
-			change: function( event, ui ) {
-				setTimeout( function(){
-					control.setting.set( picker.val() );
-				}, 100 );
-			},
-		});
-	}
-});
-/**
  * KIRKI CONTROL: DIMENSION
  */
 wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		var numeric_value = control.container.find('input[type=number]' ).val();
-		var units_value   = control.container.find('select' ).val();
 
-		jQuery( '.customize-control-dimension select' ).selectize();
+		// Validate the value and show a warning if it's invalid
+		if ( false === kirkiValidateCSSValue( control.setting._value ) ) {
+			jQuery( control.selector + ' .input-wrapper' ).addClass( 'invalid' );
+		} else {
+			jQuery( control.selector + ' .input-wrapper' ).removeClass( 'invalid' );
+		}
 
-		this.container.on( 'change', 'input', function() {
-			numeric_value = jQuery( this ).val();
-			control.setting.set( numeric_value + units_value );
-		});
-		this.container.on( 'change', 'select', function() {
-			units_value = jQuery( this ).val();
-			control.setting.set( numeric_value + units_value );
+		this.container.on( 'change keyup paste', 'input', function() {
+			var value = jQuery( this ).val();
+			// Validate the value and show a warning if it's invalid
+			if ( false === kirkiValidateCSSValue( value ) ) {
+				jQuery( control.selector + ' .input-wrapper' ).addClass( 'invalid' );
+			} else {
+				jQuery( control.selector + ' .input-wrapper' ).removeClass( 'invalid' );
+				// Set the value to the customizer
+				control.setting.set( value );
+			}
 		});
 	}
 });
@@ -140,6 +175,17 @@ wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend( {
 	wp.customizerCtrlEditor.init();
 })( jQuery );
 /**
+ * KIRKI CONTROL: GENERIC
+ */
+wp.customize.controlConstructor['kirki-generic'] = wp.customize.Control.extend( {
+	ready: function() {
+		var control = this;
+		this.container.on( 'change keyup paste', control.params.choices.element, function() {
+			control.setting.set( jQuery( this ).val() );
+		});
+	}
+});
+/**
  * KIRKI CONTROL: MULTICHECK
  */
 wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend( {
@@ -173,23 +219,18 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend( {
 		if ( control.params.choices.min ) {
 			jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
 		}
-		if ( control.params.choices.min ) {
+		if ( control.params.choices.max ) {
 			jQuery( element ).spinner( 'option', 'max', control.params.choices.max );
 		}
-		if ( control.params.choices.min ) {
-			var control_step = ( 'any' == control.params.choises.step ) ? '0.001' : control.params.choices.step;
-			jQuery( element ).spinner( 'option', 'step', control_step );
+		if ( control.params.choices.step ) {
+			if ( 'any' == control.params.choices.step ) {
+				jQuery( element ).spinner( 'option', 'step', '0.001' );
+			} else {
+				jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
+			}
 		}
 		// On change
-		this.container.on( 'change', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-		// On click
-		this.container.on( 'click', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-		// On keyup
-		this.container.on( 'keyup', 'input', function() {
+		this.container.on( 'change click keyup paste', 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}
@@ -365,24 +406,9 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 * Control types:
 						 *     color
 						 *     kirki-color
+						 *     color-alpha
 						 */
-						else if ( 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
-
-							/**
-							 * Update the value in the customizer object
-							 */
-							wp.customize.instance( preset_setting ).set( preset_setting_value );
-							/**
-							 * Update the value visually in the control
-							 */
-
-							wp.customize.control( preset_setting ).container.find( '.color-picker-hex' )
-								.attr( 'data-default-color', preset_setting_value )
-								.data( 'default-color', preset_setting_value )
-								.wpColorPicker( 'color', preset_setting_value );
-
-						}
-						else if ( 'color-alpha' == sub_control_type ) {
+						else if ( 'color-alpha' == sub_control_type || 'kirki-color' == sub_control_type || 'color' == sub_control_type ) {
 
 							/**
 							 * Update the value visually in the control
@@ -749,7 +775,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         $targetDiv.find('.remove-button').show();
 
         //This will activate the save button
-        $targetDiv.find('input, textarea').trigger('change');
+        $targetDiv.find('input, textarea, select').trigger('change');
     },
 
     removeImage : function( event )
@@ -760,11 +786,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         var $uploadButton = $targetDiv.find('.upload-button');
 
         $targetDiv.find('.kirki-image-attachment').slideUp( 'fast', function(){
-            jQuery(this).html('');
+            jQuery(this).show().html( jQuery(this).data('placeholder') );
         });
         $targetDiv.find('.hidden-field').val('');
         $uploadButton.text($uploadButton.data('label'));
         this.$thisButton.hide();
+
+        $targetDiv.find('input, textarea, select').trigger('change');
     },
 
 
@@ -975,16 +1003,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: KIRKI-SELECT
  */
-function kirkiArrayToObject( arr ) {
-	var rv = {};
-	if ( null !== arr ) {
-		for ( var i = 0; i < arr.length; ++i ) {
-			if ( arr[i] !== undefined ) rv[i] = arr[i];
-		}
-	}
-	return rv;
-}
-
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
@@ -1131,98 +1149,35 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
 		var control = this;
 		var compiled_value = {};
 
-		// get initial values and pre-populate the object
-		if ( control.container.has( '.top' ).size() ) {
-			compiled_value['top'] = control.setting._value['top'];
-		}
-		if ( control.container.has( '.bottom' ).size() ) {
-			compiled_value['bottom'] = control.setting._value['bottom'];
-		}
-		if ( control.container.has( '.left' ).size() ) {
-			compiled_value['left']  = control.setting._value['left'];
-		}
-		if ( control.container.has( '.right' ).size() ) {
-			compiled_value['right']    = control.setting._value['right'];
-		}
+		jQuery.each( ['top', 'bottom', 'left', 'right'], function( index, dimension ) {
 
-		// use selectize
-		jQuery( '.customize-control-spacing select' ).selectize();
+			// get initial values and pre-populate the object
+			if ( control.container.has( '.' + dimension ).size() ) {
+				compiled_value[ dimension ] = control.setting._value[ dimension ];
+				// Validate the value and show a warning if it's invalid
+				if ( false === kirkiValidateCSSValue( control.setting._value[ dimension ] ) ) {
+					jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
+				} else {
+					jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
+				}
+			}
 
-		// top
-		if ( control.container.has( '.top' ).size() ) {
-			var top_numeric_value = control.container.find('.top input[type=number]' ).val();
-			var top_units_value   = control.container.find('.top select' ).val();
-
-			this.container.on( 'change', '.top input', function() {
-				top_numeric_value = jQuery( this ).val();
-				compiled_value['top'] = top_numeric_value + top_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.top select', function() {
-				top_units_value = jQuery( this ).val();
-				compiled_value['top'] = top_numeric_value + top_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// bottom
-		if ( control.container.has( '.bottom' ).size() ) {
-			var bottom_numeric_value = control.container.find('.bottom input[type=number]' ).val();
-			var bottom_units_value   = control.container.find('.bottom select' ).val();
-
-			this.container.on( 'change', '.bottom input', function() {
-				bottom_numeric_value = jQuery( this ).val();
-				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.bottom select', function() {
-				bottom_units_value = jQuery( this ).val();
-				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// left
-		if ( control.container.has( '.left' ).size() ) {
-			var left_numeric_value = control.container.find('.left input[type=number]' ).val();
-			var left_units_value   = control.container.find('.left select' ).val();
-
-			this.container.on( 'change', '.left input', function() {
-				left_numeric_value = jQuery( this ).val();
-				compiled_value['left'] = left_numeric_value + left_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.left select', function() {
-				left_units_value = jQuery( this ).val();
-				compiled_value['left'] = left_numeric_value + left_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// right
-		if ( control.container.has( '.right' ).size() ) {
-			var right_numeric_value = control.container.find('.right input[type=number]' ).val();
-			var right_units_value   = control.container.find('.right select' ).val();
-
-			this.container.on( 'change', '.right input', function() {
-				right_numeric_value = jQuery( this ).val();
-				compiled_value['right'] = right_numeric_value + right_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.right select', function() {
-				right_units_value = jQuery( this ).val();
-				compiled_value['right'] = right_numeric_value + right_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+			if ( control.container.has( '.' + dimension ).size() ) {
+				control.container.on( 'change keyup paste', '.' + dimension + ' input', function() {
+					subValue = jQuery( this ).val();
+					// Validate the value and show a warning if it's invalid
+					if ( false === kirkiValidateCSSValue( subValue ) ) {
+						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
+					} else {
+						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
+						// only proceed if value is valid
+						compiled_value[ dimension ] = subValue;
+						control.setting.set( compiled_value );
+						wp.customize.previewer.refresh();
+					}
+				});
+			}
+		});
 	}
 });
 /**
@@ -1238,28 +1193,6 @@ wp.customize.controlConstructor['switch'] = wp.customize.Control.extend( {
 		this.container.on( 'change', 'input', function() {
 			checkbox_value = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkbox_value );
-		});
-	}
-});
-/**
- * KIRKI CONTROL: TEXT
- */
-wp.customize.controlConstructor['kirki-text'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control = this;
-		this.container.on( 'change keyup paste', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-	}
-});
-/**
- * KIRKI CONTROL: TEXTAREA
- */
-wp.customize.controlConstructor['kirki-textarea'] = wp.customize.Control.extend( {
-	ready: function() {
-		var control = this;
-		this.container.on( 'change keyup paste', '.textarea', function() {
-			control.setting.set( jQuery( this ).val() );
 		});
 	}
 });
@@ -1285,172 +1218,208 @@ wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend( {
 wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		var compiled_value = {};
+		var fontFamilySelector = control.selector + ' .font-family select';
+		var variantSelector    = control.selector + ' .variant select';
+		var subsetSelector     = control.selector + ' .subset select';
+		// Get initial values
+		var value = {};
+		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
+		value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
+		value['variant']        = ( undefined !== control.setting._value['variant'] ) ? control.setting._value['variant'] : '';
+		value['subset']         = ( undefined !== control.setting._value['subset'] ) ? control.setting._value['subset'] : '';
+		value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
+		value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
+		value['color']          = ( undefined !== control.setting._value['color'] ) ? control.setting._value['color'] : '';
 
-		// get initial values and pre-populate the object
-		if ( control.container.has( '.bold' ).size() ) {
-			compiled_value['bold']           = control.setting._value['bold'];
-		}
-		if ( control.container.has( '.italic' ).size() ) {
-			compiled_value['italic']         = control.setting._value['italic'];
-		}
-		if ( control.container.has( '.underline' ).size() ) {
-			compiled_value['underline']      = control.setting._value['underline'];
-		}
-		if ( control.container.has( '.strikethrough' ).size() ) {
-			compiled_value['strikethrough']  = control.setting._value['strikethrough'];
-		}
-		if ( control.container.has( '.font-family' ).size() ) {
-			compiled_value['font-family']    = control.setting._value['font-family'];
-		}
-		if ( control.container.has( '.font-size' ).size() ) {
-			compiled_value['font-size']      = control.setting._value['font-size'];
-		}
-		if ( control.container.has( '.font-weight' ).size() ) {
-			compiled_value['font-weight']    = control.setting._value['font-weight'];
-		}
-		if ( control.container.has( '.line-height' ).size() ) {
-			compiled_value['line-height']    = control.setting._value['line-height'];
-		}
-		if ( control.container.has( '.letter-spacing' ).size() ) {
-			compiled_value['letter-spacing'] = control.setting._value['letter-spacing'];
-		}
-		if ( control.container.has( '.color' ).size() ) {
-			compiled_value['color'] = control.setting._value['color'];
-		}
-
-		// use selectize
-		jQuery( '.customize-control-typography select' ).selectize();
-
-		// bold
-		if ( control.container.has( '.bold' ).size() ) {
-			this.container.on( 'change', '.bold input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['bold'] = true;
+		var renderSubControl = function( fontFamily, sub, startValue ) {
+			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
+			var is_standard = false;
+			var subList = {}
+			// destroy
+			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
+				jQuery( subSelector ).selectize()[0].selectize.destroy();
+			}
+			// Get all items in the sub-list for the active font-family
+			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
+					if ( undefined !== kirkiAllFonts[ i ]['is_standard'] && true === kirkiAllFonts[ i ]['is_standard'] ) {
+						is_standard = true;
+					}
+					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
+				}
+			}
+			if ( false === is_standard || 'subset' !== sub ) {
+				// Determine the initial value we have to use
+				if ( null === startValue  ) {
+					if ( 'variant' == sub ) { // the context here is variants
+						for ( var i = 0, len = subList.length; i < len; i++ ) {
+							if ( undefined !== subList[ i ]['id'] ) {
+								var activeItem = value['variant'];
+							} else {
+								var defaultValue = 'regular';
+								if ( defaultValue == subList[ i ]['id'] ) {
+									var hasDefault = true;
+								} else if ( undefined === firstAvailable ) {
+									var firstAvailable = subList[ i ]['id'];
+								}
+							}
+						}
+					} else if ( 'subset' == sub ) { // The context here is subsets
+						var subsetValues = {};
+						for ( var i = 0, len = subList.length; i < len; i++ ) {
+							if ( null !== value['subset'] ) {
+								for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
+									if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
+										subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+									}
+								}
+							}
+						}
+						if ( 0 == subsetValues.length ) {
+							activeItem = ['latin']
+						} else {
+							var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
+								return [value];
+							});
+							activeItem = subsetValuesArray;
+						}
+					}
+					// If we have a valid setting, use it.
+					// If not, check if the default value exists.
+					// If not, then use the 1st available option.
+					subValue = ( undefined !== activeItem ) ? activeItem : ( undefined !== hasDefault ) ? 'regular' : firstAvailable;
 				} else {
-					compiled_value['bold'] = false;
+					subValue = startValue;
 				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+				// create
+				var subSelectize;
+				subSelectize = jQuery( subSelector ).selectize({
+					maxItems:    ( 'variant' == sub ) ? 1 : null,
+					valueField:  'id',
+					labelField:  'label',
+					searchField: ['label'],
+					options:     subList,
+					items:       ( 'variant' == sub ) ? [ subValue ] : subValue,
+					create:      false,
+					plugins:     ( 'variant' == sub ) ? '' : ['remove_button'],
+					render: {
+						item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
+						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
+					},
+				}).data( 'selectize' );
+			}
 
-		// italic
-		if ( control.container.has( '.italic' ).size() ) {
-			this.container.on( 'change', '.italic input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['italic'] = true;
+
+			// If only 1 option is available then there's no reason to show this.
+			if ( 'variant' == sub ) {
+				if ( 1 === subList.length || 0 === subList.length ) {
+					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
 				} else {
-					compiled_value['italic'] = false;
+					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
 				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
-
-		// underline
-		if ( control.container.has( '.underline' ).size() ) {
-			this.container.on( 'change', '.underline input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['underline'] = true;
+			} else if ( 'subset' == sub ) {
+				if ( 0 === subList.length ) {
+					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );
 				} else {
-					compiled_value['underline'] = false;
+					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'block' );
 				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+			}
 
-		// strikethrough
-		if ( control.container.has( '.strikethrough' ).size() ) {
-			this.container.on( 'change', '.strikethrough input', function() {
-				if ( jQuery( this ).is( ':checked' ) ) {
-					compiled_value['strikethrough'] = true;
-				} else {
-					compiled_value['strikethrough'] = false;
-				}
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+			if ( true === is_standard ) {
+				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
+			} else {
+				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
+			}
+		};
 
-		// font-family
-		if ( control.container.has( '.font-family' ).size() ) {
-			this.container.on( 'change', '.font-family select', function() {
-				compiled_value['font-family'] = jQuery( this ).val();
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		// Render the font-family
+		jQuery( fontFamilySelector ).selectize({
+			options:     kirkiAllFonts,
+			items:       [ control.setting._value['font-family'] ],
+			persist:     false,
+			maxItems:    1,
+			valueField:  'family',
+			labelField:  'label',
+			searchField: ['family', 'label', 'subsets'],
+			create:      false,
+			render: {
+				item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
+				option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
+			},
+		});
 
-		// font-size
-		if ( control.container.has( '.font-size' ).size() ) {
-			var font_size_numeric_value = control.container.find('.font-size input[type=number]' ).val();
-			var font_size_units_value   = control.container.find('.font-size select' ).val();
+		// Render the variants
+		// Please note that when the value of font-family changes,
+		// this will be destroyed and re-created.
+		renderSubControl( value['font-family'], 'variant', value['variant'] );
 
-			this.container.on( 'change', '.font-size input', function() {
-				font_size_numeric_value = jQuery( this ).val();
-				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.font-size select', function() {
-				font_size_units_value = jQuery( this ).val();
-				compiled_value['font-size'] = font_size_numeric_value + font_size_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		// Render the subsets
+		// Please note that when the value of font-family changes,
+		// this will be destroyed and re-created.
+		renderSubControl( value['font-family'], 'subset', value['subset'] );
 
-		// font-weight
-		if ( control.container.has( '.font-weight' ).size() ) {
-			this.container.on( 'change', '.font-weight select', function() {
-				compiled_value['font-weight'] = jQuery( this ).val();
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		this.container.on( 'change', '.font-family select', function() {
+			// add the value to the array and set the setting's value
+			value['font-family'] = jQuery( this ).val();
+			control.setting.set( value );
+			// trigger changes to variants & subsets
+			renderSubControl( jQuery( this ).val(), 'variant', null );
+			renderSubControl( jQuery( this ).val(), 'subset', null );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
 
-		// line-height
-		if ( control.container.has( '.line-height' ).size() ) {
-			this.container.on( 'change', '.line-height input', function() {
-				compiled_value['line-height'] = jQuery( this ).val();
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		this.container.on( 'change', '.variant select', function() {
+			// add the value to the array and set the setting's value
+			value['variant'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
 
-		// letter-spacing
-		if ( control.container.has( '.letter-spacing' ).size() ) {
-			var letter_spacing_numeric_value = control.container.find('.letter-spacing input[type=number]' ).val();
-			var letter_spacing_units_value   = control.container.find('.letter-spacing select' ).val();
+		this.container.on( 'change', '.subset select', function() {
+			// add the value to the array and set the setting's value.
+			value['subset'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
 
-			this.container.on( 'change', '.letter-spacing input', function() {
-				letter_spacing_numeric_value = jQuery( this ).val();
-				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.letter-spacing select', function() {
-				letter_spacing_units_value = jQuery( this ).val();
-				compiled_value['letter-spacing'] = letter_spacing_numeric_value + letter_spacing_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		this.container.on( 'change keyup paste', '.font-size input', function() {
+			// add the value to the array and set the setting's value
+			value['font-size'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
 
-		// color
-		if ( control.container.has( '.color' ).size() ) {
-			var picker = this.container.find ( '.kirki-color-control' );
-			picker.wpColorPicker ( {
-				change: function() {
-					setTimeout ( function() {
-						compiled_value[ 'color' ] = picker.val ();
-						control.setting.set ( compiled_value );
-						wp.customize.previewer.refresh ();
-					}, 100 );
-				}
-			} );
-		}
+		this.container.on( 'change keyup paste', '.line-height input', function() {
+			// add the value to the array and set the setting's value
+			value['line-height'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
+
+		this.container.on( 'change keyup paste', '.letter-spacing input', function() {
+			// add the value to the array and set the setting's value
+			value['letter-spacing'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
+
+		var picker = this.container.find ( '.kirki-color-control' );
+		picker.wpColorPicker ( {
+			change: function() {
+				setTimeout ( function() {
+					// add the value to the array and set the setting's value
+					compiled_value[ 'color' ] = picker.val ();
+					control.setting.set ( compiled_value );
+					// refresh the preview
+					wp.customize.previewer.refresh ();
+				}, 100 );
+			}
+		} );
 	}
 });

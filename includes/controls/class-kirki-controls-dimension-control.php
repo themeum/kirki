@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -20,8 +20,8 @@ if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 		public $type = 'dimension';
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label class="customizer-text">
 				<# if ( data.label ) { #>
@@ -30,19 +30,10 @@ if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<input type="number" min="0" step="any" value="{{ parseFloat( data.value ) }}"/>
-				<select>
-				<# if ( data.choices['units'] ) { #>
-					<# for ( key in data.choices['units'] ) { #>
-						<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value, data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-					<# } #>
-				<# } else { #>
-					<# var units = data.value.replace( parseFloat( data.value ), '' ); #>
-					<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-					<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-					<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-				<# } #>
-				</select>
+				<div class="input-wrapper">
+					<input type="text" value="{{ data.value }}"/>
+					<span class="invalid-value">{{ data.i18n['invalid-value'] }}</span>
+				</div>
 			</label>
 			<?php
 		}

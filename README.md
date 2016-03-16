@@ -2,9 +2,9 @@
 **Contributors:** aristath, fovoc, igmoweb  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
-**Requires at least:** 4.0  
-**Tested up to:** 4.3  
-**Stable tag:** 2.1.0.1  
+**Requires at least:** 4.4  
+**Tested up to:** 4.5  
+**Stable tag:** 2.2.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -13,111 +13,63 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 ## Description ##
 
-Kirki is not a framework. It's a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
+[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![codecov.io](https://codecov.io/github/aristath/kirki/coverage.svg?branch=master)](https://codecov.io/github/aristath/kirki?branch=master) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE) [![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-It does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with them.
-An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/advanced-topics/customizer-api/) website.
+Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
 
-What Kirki does is save you time... LOTS of time!
+Kirki does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with it. An excellent handbook for the WordPress Customizer can be found on the developer.wordpress.org website.
 
-[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![Coverage Status](https://coveralls.io/repos/aristath/kirki/badge.svg?branch=master)](https://coveralls.io/r/aristath/kirki?branch=master) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE) [![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+What Kirki does is save you time… LOTS of time!
 
-**Configurations**
+Easily add configurations for your project, create panels, sections and add fields with ease.
 
-Add your own Kirki configuration so that all the fields you create using Kirki inherit the configuration's properties.
-More information on configurations can be found on our [Wiki](https://github.com/aristath/kirki/wiki/Configuration).
+Automatically create CSS from your fields, and make the customizer’s preview instant with our automatic postMessage scripts creation!
 
-**Add Panels**
+Add Google Fonts with our typography field, add tooltips to help your users and build awesome products!
 
-Want to use Kirki to add your panels? Please look at the documentation on our [Wiki](https://github.com/aristath/kirki/wiki/Panels)
-
-**Add Sections**
-
-Want to use Kirki to add your sections? Please look at the documentation on our [Wiki](https://github.com/aristath/kirki/wiki/Sections)
-
-**Add Fields**
-
-Kirki allows you to create your fields easily and without any issues.
-There are 3 syntaxes you can use to do that, depending on your preferences and the project at hand. More info about how to add fields can be found on the [Wiki](https://github.com/aristath/kirki/wiki/Fields)
-
-**Automatic CSS calculations**
-
-Most of the options we create for our themes take care of CSS. We make that easy for you so you no longer have to write any custom PHP functions to create your CSS!
-All you have to do is use the `output` argument inside your fields and everything else is taken care of. More information on that can be found on our [Wiki page for the output argument](https://github.com/aristath/kirki/wiki/output)
-
-**Automatic JS generation for postMessage**
-
-If you want to use postMessage we've got you covered... Chances are you won't need to write your custom JS, we can auto-generate that for you if you use the `js_vars` argument in your fields. More info on that can be found on our [Wiki page for the js_vars argument](https://github.com/aristath/kirki/wiki/js_vars)
-
-**Style the customizer**
-
-Want to change colors? Perhaps the width of the customizer panel? What about adding a custom logo & description?
-No matter what you want we've got you covered.
-Go ahead and take a look at [styling the customizer](https://github.com/aristath/kirki/wiki/Styling-the-Customizer)
-
-**Google Fonts Integration**
-
-Kirki also integrates with Google Fonts, allowing you to use ALL google fonts and their variants in your themes. We take care of all the calculations for you, all you have to do is add your fields and let us handle the rest. Take a look at the [Google Fonts Integration](https://github.com/aristath/kirki/wiki/Google-Fonts-Integration) page for an example and instructions.
-
-**Add tooltips to your fields**
-
-Sometimes we need to add more info for our users... We've included a popup where you can add your help text using the `help` argument.
-
-**Extended Documentation**
-
-For documentation and examples on how to use the plugin please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
-Feel free to improve them! :)
-
-**Available Control types:**
-
-* checkbox
-* code
-* color-alpha
-* color
-* custom
-* dimension
-* dropdown-pages
-* editor
-* image
-* multicheck
-* number
-* palette
-* radio-buttonset
-* radio-image
-* radio
-* repeater
-* select
-* slider
-* sortable
-* spacing
-* switch
-* text
-* textarea
-* toggle
-* typography
-
-All development is done on github on https://github.com/aristath/kirki
-
-If you wish to donate you can do so on http://kirki.org
+You can find detailed documentation on how to use Kirki on [https://kirki.org](https://kirki.org)
 
 ## Installation ##
 
-**Method 1: Use as a plugin**
+Simply install as a normal WordPress plugin and activate.
 
-From your dashboard go to Plugins => Add New.
-Search for "Kirki" and install it.
-Once you install it, activate it.
-For configuration instructions please visit the [Kirki Wiki on Github](https://github.com/aristath/kirki/wiki).
-
-**Method 2: Embed in your theme**
-
-Please visit https://github.com/aristath/kirki/wiki/Embedding-in-a-theme for documentation and instructions.
-
-## Sample Theme ##
-
-To get an idea on how to include Kirki in your next project, you can take a look at the [Ornea theme](https://github.com/aristath/ornea) or use our test theme from https://github.com/aristath/kirki-demo.
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.2.0 ###
+
+March 16, 2016, dev time: 120 hours
+
+* FIX: Improved & simplified the `number` control.
+* FIX: Improved & simplified the `spacing` control.
+* FIX: Minor bugfix on the `select` control.
+* FIX: WP Coding standards improvements.
+* FIX: Bugfix for radio controls.
+* FIX: Fixed repeater remove image not triggering save button to activate, and added a placeholder when the image is removed. (props @sayedwp)
+* FIX: Fixed bug when using negative numbers as min value in the `number` field
+* FIX: Typo in the textdomain for some strings (some strings were using "Kirki" instead of "kirki").
+* FIX: Complete refactor & rewrite of the google-fonts implementation.
+* FIX: IE11 bug on radio-image controls.
+* FIX: Radio-image bug when used with serialized options.
+* NEW: Complete refactor & rewrite of typography control.
+* NEW: Refactored the CSS output methods.
+* NEW: Added new mothods for detecting dependencies.
+* NEW: Added font-subsets in typography controls.
+* NEW: Google fonts now only show valid variants & subsets in typography controls.
+* NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" argument (formatted as an array).
+* NEW: Better autoloader & improved file structure.
+* NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
+* NEW: Completely refactored the `Kirki_Field` class, we're migrating to a more OOP model.
+* NEW: Added a new `kirki-generic` control.
+* NEW: Deprecated the custom text control and used the new `kirki-generic` control instead.
+* NEW: Deprecated the custom textarea control and used the new `kirki-generic` control instead.
+* NEW: Renamed the `help` argument to `tooltip`. `help` will continue to work as an alias.
+* NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
+* NEW: Started an OOP rewrite of many classes
+* NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
+* TWEAK: Other code refactoring for improved performance
+* TWEAK: Updated `grunt` packages.
 
 ### 2.1.0.1 ###
 

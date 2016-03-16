@@ -7,15 +7,24 @@ notifications:
   on_failure: change
 
 php:
-  - 5.6
+  - 7.0
+  - hhvm
 
 env:
   - WP_VERSION=latest WP_MULTISITE=0
 
 matrix:
-  include:
-    - php: 5.6
+  # include:
+  #   - php: 5.6
+  #     env: WP_VERSION=latest WP_MULTISITE=1
+  exclude:
+    - php: hhvm
       env: WP_VERSION=latest WP_MULTISITE=1
+
+defore_install:
+  - pip install --user codecov
+  - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
+  - composer install --dev
 
 before_script:
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
@@ -24,12 +33,16 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover=coverage.clover
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
+  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - php vendor/bin/coveralls
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
 
 after_success:
   - coveralls
+  - codecov
   - bash <(curl -s https://codecov.io/bash)

@@ -2,188 +2,211 @@
 
 class Test_Kirki_Color extends WP_UnitTestCase {
 
-	public function test_hex_sanitize() {
+	public function test() {
 
-		/**
-		 * White
-		 */
-		// 1-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'f' ) );
-		// 2-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'ff' ) );
-		// 3-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'fff' ) );
-		// 4-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'ffff' ) );
-		// 5-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'fffff' ) );
-		// 6-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'ffffff' ) );
-		// 7-letter hex
-		$this->assertEquals( '#ffffff', Kirki_Color::sanitize_hex( 'fffffff' ) );
+		$this->assertEquals(
+			array( 255, 255, 255 ),
+			Kirki_Color::get_rgb( '#ffffff' )
+		);
 
-		/**
-		 * Black
-		 */
-		// 1-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '0' ) );
-		// 2-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '00' ) );
-		// 3-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '000' ) );
-		// 4-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '0000' ) );
-		// 5-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '00000' ) );
-		// 6-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '000000' ) );
-		// 7-letter hex
-		$this->assertEquals( '#000000', Kirki_Color::sanitize_hex( '0000000' ) );
+		$this->assertEquals(
+			array( 0, 0, 0 ),
+			Kirki_Color::get_rgb( '#000000' )
+		);
 
-		/**
-		 * Invalid color characters
-		 */
-		$this->assertEquals( '#ff8855', Kirki_Color::sanitize_hex( 'fg8p5m' ) );
+		$this->assertEquals(
+			array( 255, 0, 0 ),
+			Kirki_Color::get_rgb( '#ff0000' )
+		);
 
-	}
+		$this->assertEquals(
+			array( 0, 255, 0 ),
+			Kirki_Color::get_rgb( '#00ff00' )
+		);
 
-	public function test_get_rgb() {
-		/**
-		 * White
-		 */
-		$this->assertEquals( array( 255, 255, 255 ), Kirki_Color::get_rgb( '#ffffff' ) );
-		$this->assertEquals( '255,255,255', Kirki_Color::get_rgb( '#ffffff', true ) );
-		/**
-		 * Black
-		 */
-		$this->assertEquals( array( 0, 0, 0 ), Kirki_Color::get_rgb( '#000000' ) );
-		$this->assertEquals( '0,0,0', Kirki_Color::get_rgb( '#000000', true ) );
-	}
+		$this->assertEquals(
+			array( 0, 0, 255 ),
+			Kirki_Color::get_rgb( '#0000ff' )
+		);
 
-	public function test_rgba2hex() {
-		/**
-		 * White
-		 */
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(255,255,255,1)' ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(255,255,255,0)' ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba( 255, 255, 255, 0 ) ' ) );
-		$this->assertEquals( true, ( '#ffffff' != Kirki_Color::rgba2hex( 'rgba(255,230,255,1)' ) ) );
-		/**
-		 * Black
-		 */
+		$word_colors = array(
+			'aliceblue'            => 'F0F8FF',
+			'antiquewhite'         => 'FAEBD7',
+			'aqua'                 => '00FFFF',
+			'aquamarine'           => '7FFFD4',
+			'azure'                => 'F0FFFF',
+			'beige'                => 'F5F5DC',
+			'bisque'               => 'FFE4C4',
+			'black'                => '000000',
+			'blanchedalmond'       => 'FFEBCD',
+			'blue'                 => '0000FF',
+			'blueviolet'           => '8A2BE2',
+			'brown'                => 'A52A2A',
+			'burlywood'            => 'DEB887',
+			'cadetblue'            => '5F9EA0',
+			'chartreuse'           => '7FFF00',
+			'chocolate'            => 'D2691E',
+			'coral'                => 'FF7F50',
+			'cornflowerblue'       => '6495ED',
+			'cornsilk'             => 'FFF8DC',
+			'crimson'              => 'DC143C',
+			'cyan'                 => '00FFFF',
+			'darkblue'             => '00008B',
+			'darkcyan'             => '008B8B',
+			'darkgoldenrod'        => 'B8860B',
+			'darkgray'             => 'A9A9A9',
+			'darkgreen'            => '006400',
+			'darkgrey'             => 'A9A9A9',
+			'darkkhaki'            => 'BDB76B',
+			'darkmagenta'          => '8B008B',
+			'darkolivegreen'       => '556B2F',
+			'darkorange'           => 'FF8C00',
+			'darkorchid'           => '9932CC',
+			'darkred'              => '8B0000',
+			'darksalmon'           => 'E9967A',
+			'darkseagreen'         => '8FBC8F',
+			'darkslateblue'        => '483D8B',
+			'darkslategray'        => '2F4F4F',
+			'darkslategrey'        => '2F4F4F',
+			'darkturquoise'        => '00CED1',
+			'darkviolet'           => '9400D3',
+			'deeppink'             => 'FF1493',
+			'deepskyblue'          => '00BFFF',
+			'dimgray'              => '696969',
+			'dimgrey'              => '696969',
+			'dodgerblue'           => '1E90FF',
+			'firebrick'            => 'B22222',
+			'floralwhite'          => 'FFFAF0',
+			'forestgreen'          => '228B22',
+			'fuchsia'              => 'FF00FF',
+			'gainsboro'            => 'DCDCDC',
+			'ghostwhite'           => 'F8F8FF',
+			'gold'                 => 'FFD700',
+			'goldenrod'            => 'DAA520',
+			'gray'                 => '808080',
+			'green'                => '008000',
+			'greenyellow'          => 'ADFF2F',
+			'grey'                 => '808080',
+			'honeydew'             => 'F0FFF0',
+			'hotpink'              => 'FF69B4',
+			'indianred'            => 'CD5C5C',
+			'indigo'               => '4B0082',
+			'ivory'                => 'FFFFF0',
+			'khaki'                => 'F0E68C',
+			'lavender'             => 'E6E6FA',
+			'lavenderblush'        => 'FFF0F5',
+			'lawngreen'            => '7CFC00',
+			'lemonchiffon'         => 'FFFACD',
+			'lightblue'            => 'ADD8E6',
+			'lightcoral'           => 'F08080',
+			'lightcyan'            => 'E0FFFF',
+			'lightgoldenrodyellow' => 'FAFAD2',
+			'lightgray'            => 'D3D3D3',
+			'lightgreen'           => '90EE90',
+			'lightgrey'            => 'D3D3D3',
+			'lightpink'            => 'FFB6C1',
+			'lightsalmon'          => 'FFA07A',
+			'lightseagreen'        => '20B2AA',
+			'lightskyblue'         => '87CEFA',
+			'lightslategray'       => '778899',
+			'lightslategrey'       => '778899',
+			'lightsteelblue'       => 'B0C4DE',
+			'lightyellow'          => 'FFFFE0',
+			'lime'                 => '00FF00',
+			'limegreen'            => '32CD32',
+			'linen'                => 'FAF0E6',
+			'magenta'              => 'FF00FF',
+			'maroon'               => '800000',
+			'mediumaquamarine'     => '66CDAA',
+			'mediumblue'           => '0000CD',
+			'mediumorchid'         => 'BA55D3',
+			'mediumpurple'         => '9370D0',
+			'mediumseagreen'       => '3CB371',
+			'mediumslateblue'      => '7B68EE',
+			'mediumspringgreen'    => '00FA9A',
+			'mediumturquoise'      => '48D1CC',
+			'mediumvioletred'      => 'C71585',
+			'midnightblue'         => '191970',
+			'mintcream'            => 'F5FFFA',
+			'mistyrose'            => 'FFE4E1',
+			'moccasin'             => 'FFE4B5',
+			'navajowhite'          => 'FFDEAD',
+			'navy'                 => '000080',
+			'oldlace'              => 'FDF5E6',
+			'olive'                => '808000',
+			'olivedrab'            => '6B8E23',
+			'orange'               => 'FFA500',
+			'orangered'            => 'FF4500',
+			'orchid'               => 'DA70D6',
+			'palegoldenrod'        => 'EEE8AA',
+			'palegreen'            => '98FB98',
+			'paleturquoise'        => 'AFEEEE',
+			'palevioletred'        => 'DB7093',
+			'papayawhip'           => 'FFEFD5',
+			'peachpuff'            => 'FFDAB9',
+			'peru'                 => 'CD853F',
+			'pink'                 => 'FFC0CB',
+			'plum'                 => 'DDA0DD',
+			'powderblue'           => 'B0E0E6',
+			'purple'               => '800080',
+			'red'                  => 'FF0000',
+			'rosybrown'            => 'BC8F8F',
+			'royalblue'            => '4169E1',
+			'saddlebrown'          => '8B4513',
+			'salmon'               => 'FA8072',
+			'sandybrown'           => 'F4A460',
+			'seagreen'             => '2E8B57',
+			'seashell'             => 'FFF5EE',
+			'sienna'               => 'A0522D',
+			'silver'               => 'C0C0C0',
+			'skyblue'              => '87CEEB',
+			'slateblue'            => '6A5ACD',
+			'slategray'            => '708090',
+			'slategrey'            => '708090',
+			'snow'                 => 'FFFAFA',
+			'springgreen'          => '00FF7F',
+			'steelblue'            => '4682B4',
+			'tan'                  => 'D2B48C',
+			'teal'                 => '008080',
+			'thistle'              => 'D8BFD8',
+			'tomato'               => 'FF6347',
+			'turquoise'            => '40E0D0',
+			'violet'               => 'EE82EE',
+			'wheat'                => 'F5DEB3',
+			'white'                => 'FFFFFF',
+			'whitesmoke'           => 'F5F5F5',
+			'yellow'               => 'FFFF00',
+			'yellowgreen'          => '9ACD32'
+		);
+		foreach ( $word_colors as $word => $color ) {
+			$this->assertEquals( '#' . $color, Kirki_Color::sanitize_hex( $word ) );
+		}
+		$this->assertEquals( '#333', Kirki_Color::sanitize_hex( '#333' ) );
+
+		$this->assertEquals( 'rgba(0,0,33,.4)', Kirki_Color::sanitize_rgba( 'rgba(0,0,33,.4)' ) );
+
+		$this->assertEquals( 'transparent', Kirki_Color::sanitize_color( 'transparent' ) );
+		$this->assertTrue( in_array( Kirki_Color::sanitize_color( '#333333' ), array( '#333333', '#333' ) ) );
+		$this->assertEquals( 'rgba(255,200,200,1)', Kirki_Color::sanitize_color( 'rgba(255,200,200,1)' ) );
+
+		$this->assertEquals( 'rgb(255,200,200)', Kirki_Color::rgba_to_rgb( 'rgba(255,200,200,1)' ) );
+
+		$this->assertEquals( '#FFFFFF', Kirki_Color::rgba2hex( 'rgba(255,255,255,1)' ) );
 		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba(0,0,0,1)' ) );
-		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( 'rgba( 0, 0, 0, 1)' ) );
-		$this->assertEquals( true, ( '#000000' == Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)' ) ) );
-		$this->assertEquals( true, ( '#000000' != Kirki_Color::rgba2hex( 'rgba(0,0,0,.1)', true ) ) );
-		/**
-		 * Opacity
-		 */
-		$this->assertEquals( '#7f7f7f', Kirki_Color::rgba2hex( 'rgba(0,0,0,.5)', true ) );
-		$this->assertEquals( '#ff7f7f', Kirki_Color::rgba2hex( 'rgba(255,0,0,.5)', true ) );
-		$this->assertEquals( '#7fff7f', Kirki_Color::rgba2hex( 'rgba(0,255,0,.5)', true ) );
-		$this->assertEquals( '#7f7fff', Kirki_Color::rgba2hex( 'rgba(0,0,255,.5)', true ) );
-		/**
-		 * invalid
-		 */
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( 'rgba(0,.5)', true ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::rgba2hex( '#ffffff', true ) );
+
+		$this->assertEquals( '1', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,1)' ) );
+		$this->assertEquals( '.35', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,.35)' ) );
+		$this->assertEquals( '0', Kirki_Color::get_alpha_from_rgba( 'rgba(255,255,255,0)' ) );
+
+		$this->assertEquals( 'rgba(0,0,0,0)', Kirki_Color::sanitize_color( array( 'rgba' => 'rgba(0,0,0,0)' ) ) );
+		$this->assertEquals( '#000000', Kirki_Color::sanitize_color( array( 'color' => '#000000' ) ) );
+		$this->assertEquals( '', Kirki_Color::sanitize_color( array() ) );
+
+		$this->assertEquals( '', Kirki_Color::rgba2hex( array() ) );
+		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( array( 'color' => '#000000' ) ) );
+		$this->assertEquals( '#000000', Kirki_Color::rgba2hex( '#000000' ) );
+
+		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#fff', 0 ) );
+
 	}
-
-	public function test_get_rgba() {
-		// White
-		$this->assertEquals( 'rgba(255,255,255,1)', Kirki_Color::get_rgba( '#ffffff', 1 ) );
-		$this->assertEquals( 'rgba(255,255,255,1)', Kirki_Color::get_rgba( '#ffffff', 100 ) );
-		// Transparent
-		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#ffffff', 0 ) );
-		// grey
-		$this->assertEquals( 'rgba(0,0,0,0.5)', Kirki_Color::get_rgba( '#000000', .5 ) );
-		// colors
-		$this->assertEquals( 'rgba(255,0,0,0.5)', Kirki_Color::get_rgba( '#ff0000', .5 ) );
-		$this->assertEquals( 'rgba(0,255,0,0.5)', Kirki_Color::get_rgba( '#00ff00', .5 ) );
-		$this->assertEquals( 'rgba(0,0,255,0.5)', Kirki_Color::get_rgba( '#0000ff', .5 ) );
-	}
-
-	public function test_get_brightness() {
-		$this->assertEquals( '0', Kirki_Color::get_brightness( '#000000' ) );
-		$this->assertEquals( '255', Kirki_Color::get_brightness( '#ffffff' ) );
-		$this->assertEquals( 127, Kirki_Color::get_brightness( '#7f7f7f' ) );
-		$this->assertEquals( 105, Kirki_Color::get_brightness( '#ff00ff' ) );
-	}
-
-	public function test_adjust_brightness() {
-		$this->assertEquals( '#ffffff', Kirki_Color::adjust_brightness( '#000000', 255 ) );
-		$this->assertEquals( '#000000', Kirki_Color::adjust_brightness( '#000000', 0 ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::adjust_brightness( '#fff', 0 ) );
-		$this->assertEquals( '#000000', Kirki_Color::adjust_brightness( '#fff', -255 ) );
-		$this->assertEquals( '#7f7f7f', Kirki_Color::adjust_brightness( '#fff', (0 - 255/2) ) );
-	}
-
-	public function test_mix_colors() {
-		$this->assertEquals( '#ffffff', Kirki_Color::mix_colors( '#ffffff', 'fff', 100 ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::mix_colors( '#ffffff', 'fff', 0 ) );
-		$this->assertEquals( '#ffffff', Kirki_Color::mix_colors( '#ffffff', 'fff', 37 ) );
-
-		$this->assertEquals( '#000000', Kirki_Color::mix_colors( '#000000', '000', 100 ) );
-		$this->assertEquals( '#000000', Kirki_Color::mix_colors( '#000000', '000', 0 ) );
-		$this->assertEquals( '#000000', Kirki_Color::mix_colors( '#000000', '0000', 37 ) );
-
-		$this->assertEquals( '#7f7f7f', Kirki_Color::mix_colors( '#ffffff', '000', 50 ) );
-		$this->assertEquals( '#7f7f7f', Kirki_Color::mix_colors( '#ffffff', '#000000', 50 ) );
-		$this->assertEquals( '#7f7f7f', Kirki_Color::mix_colors( '#000000', '#ffffff', 50 ) );
-	}
-
-	public function test_hex_to_hsv() {
-
-		$white = array( 'h' => 0, 's' => 0, 'v' => 1 );
-		$black = array( 'h' => 0, 's' => 0, 'v' => 0 );
-		$red = array( 'h' => 0, 's' => 1, 'v' => 1 );
-		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
-		$blue = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
-
-		$this->assertEquals( $white, Kirki_Color::hex_to_hsv( '#ffffff' ) );
-		$this->assertEquals( $black, Kirki_Color::hex_to_hsv( '#000000' ) );
-		$this->assertEquals( $red, Kirki_Color::hex_to_hsv( '#ff0000' ) );
-		$this->assertEquals( $green, Kirki_Color::hex_to_hsv( '#00ff00' ) );
-		$this->assertEquals( $blue, Kirki_Color::hex_to_hsv( '#0000ff' ) );
-	}
-
-	public function test_rgb_to_hsv() {
-
-		$white = array( 'h' => 0, 's' => 0, 'v' => 1 );
-		$black = array( 'h' => 0, 's' => 0, 'v' => 0 );
-		$red = array( 'h' => 0, 's' => 1, 'v' => 1 );
-		$green = array( 'h' => 0.33, 's' => 1, 'v' => 1 );
-		$blue = array( 'h' => 0.67, 's' => 1, 'v' => 1 );
-
-		$this->assertEquals( $white, Kirki_Color::rgb_to_hsv( array( 255, 255, 255 ) ) );
-		$this->assertEquals( $black, Kirki_Color::rgb_to_hsv( array( 0, 0, 0 ) ) );
-		$this->assertEquals( $red, Kirki_Color::rgb_to_hsv( array( 255, 0, 0 ) ) );
-		$this->assertEquals( $green, Kirki_Color::rgb_to_hsv( array( 0, 255, 0 ) ) );
-		$this->assertEquals( $blue, Kirki_Color::rgb_to_hsv( array( 0, 0, 255 ) ) );
-	}
-
-	public function test_color_difference() {
-		$this->assertEquals( '0', Kirki_Color::color_difference( 'fff', '#ffffff' ) );
-		$this->assertEquals( '765', Kirki_Color::color_difference( 'fff', '000' ) );
-		$this->assertEquals( '765', Kirki_Color::color_difference( '#000000', '#ffffff' ) );
-		$this->assertEquals( '522', Kirki_Color::color_difference( '#f2f2f2', '#c00' ) );
-		$this->assertEquals( '39', Kirki_Color::color_difference( '#f2f2f2', '#ffffff' ) );
-	}
-
-	public function test_brightness_difference() {
-		$this->assertEquals( '0', Kirki_Color::brightness_difference( 'fff', '#ffffff' ) );
-		$this->assertEquals( '255', Kirki_Color::brightness_difference( 'fff', '000' ) );
-		$this->assertEquals( '255', Kirki_Color::brightness_difference( '#000000', '#ffffff' ) );
-		$this->assertEquals( '181', Kirki_Color::brightness_difference( '#f2f2f2', '#c00' ) );
-		$this->assertEquals( '13', Kirki_Color::brightness_difference( '#f2f2f2', '#ffffff' ) );
-	}
-
-	public function test_lumosity_difference() {
-		$this->assertEquals( '1', Kirki_Color::lumosity_difference( 'fff', '#ffffff' ) );
-		$this->assertEquals( '21', Kirki_Color::lumosity_difference( 'fff', '000' ) );
-		$this->assertEquals( '21', Kirki_Color::lumosity_difference( '#000000', '#ffffff' ) );
-		$this->assertEquals( '5.23', Kirki_Color::lumosity_difference( '#f2f2f2', '#c00' ) );
-		$this->assertEquals( '1.12', Kirki_Color::lumosity_difference( '#f2f2f2', '#ffffff' ) );
-	}
-
 }

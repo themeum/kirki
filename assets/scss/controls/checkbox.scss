@@ -1,7 +1,9 @@
 /////////////////////
 // checkbox controls
 /////////////////////
-.customize-control {
+.customize-control-kirki-checkbox,
+.customize-control-multicheck,
+.customize-control-repeater {
     input[type="checkbox"] {
         position: relative;
         margin: 0 1rem 0 0;

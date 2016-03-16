@@ -158,24 +158,9 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend( {
 						 * Control types:
 						 *     color
 						 *     kirki-color
+						 *     color-alpha
 						 */
-						else if ( 'color' == sub_control_type || 'kirki-color' == sub_control_type ) {
-
-							/**
-							 * Update the value in the customizer object
-							 */
-							wp.customize.instance( preset_setting ).set( preset_setting_value );
-							/**
-							 * Update the value visually in the control
-							 */
-
-							wp.customize.control( preset_setting ).container.find( '.color-picker-hex' )
-								.attr( 'data-default-color', preset_setting_value )
-								.data( 'default-color', preset_setting_value )
-								.wpColorPicker( 'color', preset_setting_value );
-
-						}
-						else if ( 'color-alpha' == sub_control_type ) {
+						else if ( 'color-alpha' == sub_control_type || 'kirki-color' == sub_control_type || 'color' == sub_control_type ) {
 
 							/**
 							 * Update the value visually in the control

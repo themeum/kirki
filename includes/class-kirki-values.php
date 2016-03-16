@@ -3,6 +3,12 @@
 if ( ! class_exists( 'Kirki_Values' ) ) {
 	class Kirki_Values {
 
+		/**
+		 * @param $config_id    string
+		 * @param $field_id     string
+		 *
+		 * @return string|array
+		 */
 		public static function get_value( $config_id = '', $field_id = '' ) {
 			/**
 			 * Make sure value is defined
@@ -66,7 +72,7 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 					 */
 					$options = get_option( Kirki::$config[ $config_id ]['option_name'] );
 
-					if ( ! isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ Kirki::$config[ $config_id ]['option_name'] . '[' . $field_id . ']'] ) ) {
+					if ( ! isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ Kirki::$config[ $config_id ]['option_name'] . '[' . $field_id . ']' ] ) ) {
 						$field_id = Kirki::$config[ $config_id ]['option_name'] . '[' . $field_id . ']';
 					}
 					$setting_modified = str_replace( ']', '', str_replace( Kirki::$config[ $config_id ]['option_name'] . '[', '', $field_id ) );
@@ -118,6 +124,11 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 
 		}
 
+		/**
+		 * @param $field array
+		 *
+		 * @return string|array
+		 */
 		public static function get_sanitized_field_value( $field ) {
 			/**
 			 * Get the value of this field

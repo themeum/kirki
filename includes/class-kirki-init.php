@@ -8,6 +8,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 */
 		public function __construct() {
 			$this->set_url();
+			add_action( 'customize_update_user_meta', array( $this, 'update_user_meta' ), 10, 2 );
 			add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		}
 
@@ -15,8 +16,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * Properly set the Kirki URL for assets
 		 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
 		 * and then does some calculations to get the proper URL for its CSS & JS assets
-		 *
-		 * @return string
 		 */
 		public function set_url() {
 			/**
@@ -63,10 +62,13 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		public function register_control_types() {
 			global $wp_customize;
 
+			$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
+
+			$wp_customize->register_panel_type( 'Kirki_Panels_Expanded_Panel' );
+
 			$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Color_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
@@ -77,8 +79,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Text_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Textarea_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Generic_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Typography_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
@@ -122,14 +123,36 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * @return  void
 		 */
 		public function add_fields() {
-			foreach ( Kirki::$fields as $field ) {
-				if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
+
+			global $wp_customize;
+			foreach ( Kirki::$fields as $args ) {
+				if ( isset( $args['type'] ) && 'background' == $args['type'] ) {
 					continue;
 				}
-				if ( isset( $field['type'] ) && 'select2-multiple' == $field['type'] ) {
-					$field['multiple'] = 999;
+				/**
+				 * Create the settings.
+				 */
+				new Kirki_Settings( $args );
+				/**
+				 * Check if we're on the customizer.
+				 * If we are, then we will create the controls,
+				 * add the scripts needed for the customizer
+				 * and any other tweaks that this field may require.
+				 */
+				if ( $wp_customize ) {
+					/**
+					 * Create the control
+					 */
+					new Kirki_Control( $args );
+					/**
+					 * Create the scripts for postMessage to properly work
+					 */
+					Kirki_Customizer_Scripts_PostMessage::generate_script( $args );
+					/**
+					 * Create the scripts for tooltips.
+					 */
+					Kirki_Customizer_Scripts_Tooltips::generate_script( $args );
 				}
-				new Kirki_Field( $field );
 			}
 		}
 
@@ -215,5 +238,16 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 		}
 
+		/**
+		 * Handle saving of settings with "user_meta" storage type.
+		 *
+		 * @param $value                 string     Value being saved
+		 * @param wp_customize_setting   object     $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
+		 */
+		public function update_user_meta( $value, $wp_customize_setting ) {
+			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
+		}
+
 	}
+
 }

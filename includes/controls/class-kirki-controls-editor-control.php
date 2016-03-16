@@ -6,7 +6,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -22,17 +22,17 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 		public $type = 'editor';
 
 		public function render_content() { ?>
-			<?php if ( '' != $this->help ) : ?>
-				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+			<?php if ( '' != $this->tooltip ) : ?>
+				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
 
 			<label>
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
-					<?php if ( ! empty( $this->description ) ) : ?>
-						<span class="description customize-control-description"><?php echo $this->description; ?></span>
-					<?php endif; ?>
 				</span>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
 				<?php
 					$settings = array(
 						'textarea_name' => $this->id,
@@ -48,6 +48,9 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 			<?php
 		}
 
+		/**
+		 * @return string
+		 */
 		public function filter_editor_setting_link( $output ) {
 			return preg_replace( '/<textarea/', '<textarea ' . $this->get_link(), $output, 1 );
 		}

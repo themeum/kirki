@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -24,8 +24,8 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 		}
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label class="customizer-text">
 				<# if ( data.label ) { #>
@@ -40,6 +40,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 					<input class="image-select" type="radio" value="{{ key }}" name="_customize-radio-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}{{ key }}">
 							<img src="{{ data.choices[ key ] }}">
+							<span class="image-clickable"></span>
 						</label>
 					</input>
 				<# } #>

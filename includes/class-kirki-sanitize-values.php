@@ -6,7 +6,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
-	class Kirki_Sanitize_Values extends Kirki_Sanitize {
+	class Kirki_Sanitize_Values extends Kirki_Customizer {
 
 		/**
 		 * Checkbox sanitization callback.
@@ -66,13 +66,163 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		}
 
 		/**
+		 * Sanitizes typography controls
+		 *
+		 * @since 2.2.0
+		 * @return array
+		 */
+		public static function typography( $value ) {
+			if ( ! is_array( $value ) ) {
+				return array();
+			}
+			// escape the font-family
+			if ( isset( $value['font-family'] ) ) {
+				$value['font-family'] = esc_attr( $value['font-family'] );
+			}
+			// make sure we're using a valid variant.
+			// We're adding checks for font-weight as well for backwards-compatibility
+			// Versions 2.0 - 2.2 were using an integer font-weight.
+			if ( isset( $value['variant'] ) || isset( $value['font-weight'] ) ) {
+				if ( isset( $value['font-weight'] ) && ! empty( $value['font-weight'] ) ) {
+					if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
+						$value['variant'] = $value['font-weight'];
+					}
+				}
+				$valid_variants = array(
+					'regular',
+					'italic',
+					'100',
+					'200',
+					'300',
+					'500',
+					'600',
+					'700',
+					'700italic',
+					'900',
+					'900italic',
+					'100italic',
+					'300italic',
+					'500italic',
+					'800',
+					'800italic',
+					'600italic',
+					'200italic',
+				);
+				if ( ! in_array( $value['variant'], $valid_variants ) ) {
+					$value['variant'] = 'regular';
+				}
+			}
+			// Make sure we're using a valid subset
+			if ( isset( $value['subset'] ) ) {
+				$valid_subsets = array(
+					'all',
+					'greek-ext',
+					'greek',
+					'cyrillic-ext',
+					'cyrillic',
+					'latin-ext',
+					'latin',
+					'vietnamese',
+					'arabic',
+					'gujarati',
+					'devanagari',
+					'bengali',
+					'hebrew',
+					'khmer',
+					'tamil',
+					'telugu',
+					'thai',
+				);
+				$subsets_ok = array();
+				if ( is_array( $value['subset'] ) ) {
+					foreach ( $value['subset'] as $subset ) {
+						if ( in_array( $subset, $valid_subsets ) ) {
+							$subsets_ok[] = $subset;
+						}
+					}
+					$value['subsets'] = $subsets_ok;
+				}
+			}
+			// Sanitize the font-size
+			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
+				$value['font-size'] = self::css_dimension( $value['font-size'] );
+				if ( $value['font-size'] == self::filter_number( $value['font-size'] ) ) {
+					$value['font-size'] .= 'px';
+				}
+			}
+			// Sanitize the line-height
+			if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
+				$value['line-height'] = self::css_dimension( $value['line-height'] );
+			}
+			// Sanitize the letter-spacing
+			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
+				$value['letter-spacing'] = self::css_dimension( $value['font-size'] );
+				if ( $value['letter-spacing'] == self::filter_number( $value['letter-spacing'] ) ) {
+					$value['letter-spacing'] .= 'px';
+				}
+			}
+			// Sanitize the color
+			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
+				$color = ariColor::newColor( $value['color'] );
+				$value['color'] = $color->toCSS( 'hex' );
+			}
+
+			return $value;
+
+		}
+
+		/**
+		 * Sanitizes css dimensions
+		 *
+		 * @since 2.2.0
+		 * @return string
+		 */
+		public static function css_dimension( $value ) {
+			// trim it
+			$value = trim( $value );
+			// if round, return 50%
+			if ( 'round' == $value ) {
+				$value = '50%';
+			}
+			// if empty, return empty
+			if ( '' == $value ) {
+				return '';
+			}
+			// If auto, return auto
+			if ( 'auto' == $value ) {
+				return 'auto';
+			}
+			// Return empty if there are no numbers in the value.
+			if ( ! preg_match( '#[0-9]#' , $value ) ) {
+				return '';
+			}
+			// The raw value without the units
+			$raw_value = self::filter_number( $value );
+			$unit_used = '';
+			// An array of all valid CSS units. Their order was carefully chosen for this evaluation, don't mix it up!!!
+			$units = array( 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' );
+			foreach ( $units as $unit ) {
+				if ( false !== strpos( $value, $unit ) ) {
+					$unit_used = $unit;
+				}
+			}
+			return $raw_value . $unit_used;
+		}
+
+		/**
+		 * @param string $value
+		 */
+		public static function filter_number( $value ) {
+			return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		}
+
+		/**
 		 * Sanitize sortable controls
 		 *
 		 * @since 0.8.3
 		 *
 		 * @return mixed
 		 */
-
 		public static function sortable( $value ) {
 			if ( is_serialized( $value ) ) {
 				return $value;

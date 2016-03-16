@@ -1,68 +1,39 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Control' ) ) {
-	class Kirki_Control extends Kirki_Customizer {
+
+	class Kirki_Control {
 
 		/**
-		 * an array of all the control types
-		 * and the classname each one of them will use.
+		 * @access protected
+		 * @var WP_Customize_Manager
 		 */
-		public static $control_types = array(
-			'checkbox'         => 'Kirki_Controls_Checkbox_Control',
-			'code'             => 'Kirki_Controls_Code_Control',
-			'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
-			'color'            => 'Kirki_Controls_Color_Control',
-			'custom'           => 'Kirki_Controls_Custom_Control',
-			'dimension'        => 'Kirki_Controls_Dimension_Control',
-			'editor'           => 'Kirki_Controls_Editor_Control',
-			'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
-			'number'           => 'Kirki_Controls_Number_Control',
-			'palette'          => 'Kirki_Controls_Palette_Control',
-			'preset'           => 'Kirki_Controls_Preset_Control',
-			'radio'            => 'Kirki_Controls_Radio_Control',
-			'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
-			'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
-			'repeater'         => 'Kirki_Controls_Repeater_Control',
-			'select'           => 'Kirki_Controls_Select_Control',
-			'slider'           => 'Kirki_Controls_Slider_Control',
-			'sortable'         => 'Kirki_Controls_Sortable_Control',
-			'spacing'          => 'Kirki_Controls_Spacing_Control',
-			'switch'           => 'Kirki_Controls_Switch_Control',
-			'text'             => 'Kirki_Controls_Text_Control',
-			'textarea'         => 'Kirki_Controls_Textarea_Control',
-			'toggle'           => 'Kirki_Controls_Toggle_Control',
-			'typography'       => 'Kirki_Controls_Typography_Control',
-			'image'            => 'WP_Customize_Image_Control',
-			'upload'           => 'WP_Customize_Upload_Control',
-		);
+		protected $wp_customize;
 
 		/**
-		 * Some controls may need to create additional classes
-		 * for their settings regiastration.
-		 * in that case here's an array of those controls.
+		 * @access protected
+		 * @var array
 		 */
-		public static $setting_types = array(
-			'repeater' => 'Kirki_Settings_Repeater_Setting',
-		);
-
-		public $wp_customize;
+		protected $control_types = array();
 
 		/**
-		 * The class constructor
+		 * The class constructor.
+		 * Creates the actual controls in the customizer.
+		 *
+		 * @access public
+		 * @param $args    array    the field definition as sanitized in Kirki_Field
 		 */
 		public function __construct( $args ) {
-			// call the parent constructor
-			parent::__construct( $args );
-			/**
-			 * Apply the 'kirki/control_types' filter to Kirki_Control::$control_types.
-			 * We can use that to register our own customizer controls and extend Kirki.
-			 */
-			self::$control_types = apply_filters( 'kirki/control_types', self::$control_types );
-			/**
-			 * Apply the 'kirki/setting_types' filter to Kirki_Control::$control_types.
-			 * We can use that to register our own setting classes for controls and extend Kirki.
-			 */
-			self::$setting_types = apply_filters( 'kirki/setting_types', self::$setting_types );
+
+			// Set the $wp_customize property
+			global $wp_customize;
+			if ( ! $wp_customize ) {
+				return;
+			}
+			$this->wp_customize = $wp_customize;
+
+			// Set the control types
+			$this->set_control_types();
 			// Add the control
 			$this->add_control( $args );
 
@@ -71,38 +42,86 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 		/**
 		 * Get the class name of the class needed to create tis control.
 		 *
-		 * @param  $args array
-		 * @return  string
+		 * @access private
+		 * @param $args    array    the field definition as sanitized in Kirki_Field
+		 *
+		 * @return         string   the name of the class that will be used to create this control
 		 */
-		public static function control_class_name( $args ) {
+		final private function get_control_class_name( $args ) {
+
 			// Set a default class name
 			$class_name = 'WP_Customize_Control';
 			// Get the classname from the array of control classnames
-			if ( array_key_exists( $args['type'], self::$control_types ) ) {
-				$class_name = self::$control_types[ $args['type'] ];
+			if ( array_key_exists( $args['type'], $this->control_types ) ) {
+				$class_name = $this->control_types[ $args['type'] ];
 			}
-
 			return $class_name;
 
 		}
 
 		/**
-		 * Add the control.
+		 * Adds the control.
 		 *
-		 * @param  $arg array
-		 * @return  void
+		 * @access protected
+		 * @param $args    array    the field definition as sanitized in Kirki_Field
+		 *
+		 * @return         void
 		 */
-		public function add_control( $args ) {
+		final protected function add_control( $args ) {
 
-			$control_class_name = self::control_class_name( $args );
+			// Get the name of the class we're going to use
+			$class_name = $this->get_control_class_name( $args );
+			// Add the control
+			$this->wp_customize->add_control( new $class_name( $this->wp_customize, $args['settings'], $args ) );
 
-			$this->wp_customize->add_control( new $control_class_name(
-				$this->wp_customize,
-				$args['settings'],
-				Kirki_Field_Sanitize::sanitize_field( $args )
+		}
+
+		/**
+		 * Sets the $this->control_types property.
+		 * Makes sure the kirki/control_types filter is applied
+		 * and that the defined classes actually exist.
+		 * If a defined class does not exist, it is removed.
+		 */
+		final private function set_control_types() {
+
+			$this->control_types = apply_filters( 'kirki/control_types', array(
+				'checkbox'         => 'Kirki_Controls_Checkbox_Control',
+				'code'             => 'Kirki_Controls_Code_Control',
+				'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
+				'custom'           => 'Kirki_Controls_Custom_Control',
+				'dimension'        => 'Kirki_Controls_Dimension_Control',
+				'editor'           => 'Kirki_Controls_Editor_Control',
+				'multicheck'       => 'Kirki_Controls_MultiCheck_Control',
+				'number'           => 'Kirki_Controls_Number_Control',
+				'palette'          => 'Kirki_Controls_Palette_Control',
+				'preset'           => 'Kirki_Controls_Preset_Control',
+				'kirki-radio'      => 'Kirki_Controls_Radio_Control',
+				'radio-buttonset'  => 'Kirki_Controls_Radio_ButtonSet_Control',
+				'radio-image'      => 'Kirki_Controls_Radio_Image_Control',
+				'repeater'         => 'Kirki_Controls_Repeater_Control',
+				'kirki-select'     => 'Kirki_Controls_Select_Control',
+				'slider'           => 'Kirki_Controls_Slider_Control',
+				'sortable'         => 'Kirki_Controls_Sortable_Control',
+				'spacing'          => 'Kirki_Controls_Spacing_Control',
+				'switch'           => 'Kirki_Controls_Switch_Control',
+				'kirki-generic'    => 'Kirki_Controls_Generic_Control',
+				'toggle'           => 'Kirki_Controls_Toggle_Control',
+				'typography'       => 'Kirki_Controls_Typography_Control',
+				'image'            => 'WP_Customize_Image_Control',
+				'upload'           => 'WP_Customize_Upload_Control',
 			) );
+
+			// Make sure the defined classes actually exist
+			foreach ( $this->control_types as $key => $classname ) {
+
+				if ( ! class_exists( $classname ) ) {
+					unset( $this->control_types[ $key ] );
+				}
+
+			}
 
 		}
 
 	}
+
 }

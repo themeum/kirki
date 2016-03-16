@@ -1,7 +1,7 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
-	class Kirki_Explode_Background_Field extends Kirki_Field_Sanitize {
+	class Kirki_Explode_Background_Field {
 		/**
 		 * Build the background fields.
 		 * Takes a single field with type = background and explodes it to multiple controls.
@@ -10,7 +10,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		 * @return null|array
 		 */
 		public static function explode( $field ) {
-			$i18n    = Kirki_Toolkit::i18n();
+			$i18n    = Kirki_l10n::get_strings( $field['kirki_config'] );
 			$choices = self::background_choices();
 
 			// Early exit if this is not a background field.
@@ -18,8 +18,6 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 				return;
 			}
 
-			// Sanitize field
-			$field = Kirki_Field_Sanitize::sanitize_field( $field );
 			// No need to proceed any further if no defaults have been set.
 			// We build the array of fields based on what default values have been defined.
 			if ( ! isset( $field['default'] ) || ! is_array( $field['default'] ) ) {
@@ -35,21 +33,19 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					continue;
 				}
 
-				$key             = esc_attr( $key );
-				$setting         = $key;
-				$help            = $field['help'];
-				$description     = isset( $i18n['background-' . $key] ) ? $i18n['background-' . $key] : '';
-				$output_property = 'background-' . $key;
-				$label           = ( 0 === $i ) ? $field['label'] : '';
-				$type            = 'select';
+				$key               = esc_attr( $key );
+				$setting           = $key;
+				$tooltip           = $field['tooltip'];
+				$description       = isset( $i18n[ 'background-' . $key ] ) ? $i18n[ 'background-' . $key ] : '';
+				$output_property   = 'background-' . $key;
+				$label             = ( 0 === $i ) ? $field['label'] : '';
+				$type              = 'select';
 				$sanitize_callback = 'esc_attr';
 
 				switch ( $key ) {
 					case 'color':
-						/**
-						 * Use 'color-alpha' instead of 'color' if default is an rgba value
-						 * or if 'opacity' is set.
-						 */
+						// Use 'color-alpha' instead of 'color' if default is an rgba value
+						// or if 'opacity' is set.
 						$type = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 						$type = ( isset( $field['default']['opacity'] ) ) ? 'color-alpha' : $type;
 						if ( isset( $field['default']['opacity'] ) && false === strpos( $value, 'rgb' ) ) {
@@ -62,20 +58,16 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 						$sanitize_callback = 'esc_url_raw';
 						break;
 					case 'attach':
-						/**
-						 * Small hack so that background attachments properly work.
-						 */
+						// Small hack so that background attachments properly work.
 						$output_property = 'background-attachment';
 						$description     = $i18n['background-attachment'];
 						break;
 					default:
-						$help = '';
+						$tooltip = '';
 						break;
 				}
 
-				/**
-				 * If we're using options & option_name is set, then we need to modify the setting.
-				 */
+				// If we're using options & option_name is set, then we need to modify the setting.
 				if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
 					$property_setting = str_replace( ']', '', str_replace( $field['option_name'] . '[', '', $field['settings'] ) );
 					$property_setting = esc_attr( $field['option_name'] ) . '[' . esc_attr( $property_setting ) . '_' . $setting . ']';
@@ -83,29 +75,41 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 					$property_setting = esc_attr( $field['settings'] ) . '_' . $setting;
 				}
 
+				// Build the field's output element
+				$output_element = $field['output'];
+				if ( ! empty( $field['output'] ) ) {
+					if ( is_array( $field['output'] ) ) {
+						if ( isset( $field['output']['element'] ) ) {
+							$output_element = $field['output']['element'];
+						} elseif ( isset( $field['output'][0] ) && isset( $field['output'][0]['element'] ) ) {
+							$output_element = $field['output'][0]['element'];
+						}
+					}
+				}
+
 				/**
 				 * Build the field.
 				 * We're merging with the original field here, so any extra properties are inherited.
 				 */
 				$fields[ $property_setting ] = array_merge( $field, array(
-					'type'        => $type,
-					'label'       => $label,
-					'settings'    => $property_setting,
-					'help'        => $help,
-					'section'     => $field['section'],
-					'priority'    => $field['priority'],
-					'required'    => $field['required'],
-					'description' => $description,
-					'default'     => $value,
-					'id'          => Kirki_Field_Sanitize::sanitize_id( array( 'settings' => $field['settings'] . '_' . $setting ) ),
-					'choices'     => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
-					'output'      => ( '' != $field['output'] ) ? array(
+					'type'              => $type,
+					'label'             => $label,
+					'settings'          => $property_setting,
+					'tooltip'           => $tooltip,
+					'section'           => $field['section'],
+					'priority'          => $field['priority'],
+					'required'          => $field['required'],
+					'description'       => $description,
+					'default'           => $value,
+					'id'                => sanitize_key( str_replace( '[', '-', str_replace( ']', '', $property_setting ) ) ),
+					'choices'           => isset( $choices[ $key ] ) ? $choices[ $key ] : array(),
+					'sanitize_callback' => $sanitize_callback,
+					'output'            => ( ! empty( $field['output'] ) ) ? array(
 						array(
-							'element'  => $field['output'],
+							'element'  => $output_element,
 							'property' => $output_property,
 						),
-					) : '',
-					'sanitize_callback' => ( isset( $sanitize_callback ) ) ? $sanitize_callback : Kirki_Field_Sanitize::fallback_callback( $type ),
+					) : array(),
 				) );
 				$i++;
 			}
@@ -143,7 +147,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		 */
 		public static function background_choices() {
 
-			$i18n = Kirki_Toolkit::i18n();
+			$i18n = Kirki_l10n::get_strings();
 
 			return array(
 				'repeat'        => array(

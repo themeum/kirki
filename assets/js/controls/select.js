@@ -1,16 +1,6 @@
 /**
  * KIRKI CONTROL: KIRKI-SELECT
  */
-function kirkiArrayToObject( arr ) {
-	var rv = {};
-	if ( null !== arr ) {
-		for ( var i = 0; i < arr.length; ++i ) {
-			if ( arr[i] !== undefined ) rv[i] = arr[i];
-		}
-	}
-	return rv;
-}
-
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;

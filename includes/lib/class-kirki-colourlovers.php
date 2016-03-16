@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Addon
  * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -31,9 +31,9 @@ if ( ! class_exists( 'Kirki_Colourlovers' ) ) {
 
 			$i = 0;
 			foreach ( $palettes as $palette ) {
-				$palettes[$i] = array();
+				$palettes[ $i ] = array();
 				foreach ( $palette as $key => $value ) {
-					$palettes[$i][$key] = Kirki_Color::sanitize_hex( $value );
+					$palettes[ $i ][ $key ] = Kirki_Color::sanitize_hex( $value );
 				}
 				$i++;
 			}

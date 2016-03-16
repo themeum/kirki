@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			parent::__construct( $manager, $id, $args );
 
 			if ( empty( $this->button_label ) ) {
-				$this->button_label =  esc_attr__( 'Add new row', 'Kirki' );
+				$this->button_label = esc_attr__( 'Add new row', 'kirki' );
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			parent::to_json();
 
 			$fields = $this->fields;
-			$i18n   = Kirki_Toolkit::i18n();
+			$i18n   = Kirki_l10n::get_strings();
 			$default_image_button_labels = array(
 				'default'     => $i18n['add-image'],
 				'remove'      => $i18n['remove'],
@@ -77,8 +77,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function render_content() { ?>
-			<?php if ( '' != $this->help ) : ?>
-				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->help ); ?>"><span class='dashicons dashicons-info'></span></a>
+			<?php if ( '' != $this->tooltip ) : ?>
+				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
 			<label>
 				<?php if ( ! empty( $this->label ) ) : ?>
@@ -196,7 +196,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 													<img src="{{ field.choices[i] }}">
 												</label>
 											</input>
- 										<# } #>
+										<# } #>
 									<# } #>
 								</label>
 
@@ -221,7 +221,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<# } #>
 								</label>
 
-								<figure class="kirki-image-attachment">
+								<figure class="kirki-image-attachment" data-placeholder="{{ field.buttonLabels.placeholder }}" >
 									<# if ( field.default ) { #>
 										<img src="{{{ field.default }}}">
 									<# } else { #>

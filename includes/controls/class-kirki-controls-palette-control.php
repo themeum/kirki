@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -25,17 +25,16 @@ if ( ! class_exists( 'Kirki_Controls_Palette_Control' ) ) {
 		}
 
 		protected function content_template() { ?>
-			<# if ( data.help ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.help }}"><span class='dashicons dashicons-info'></span></a>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<# if ( ! data.choices ) { return; } #>
 			<span class="customize-control-title">
 				{{ data.label }}
-				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{ data.description }}</span>
-				<# } #>
 			</span>
-
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
 			<div id="input_{{ data.id }}" class="buttonset">
 				<# for ( key in data.choices ) { #>
 					<input type="radio" value="{{ key }}" name="_customize-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == key ) { #> checked<# } #>>

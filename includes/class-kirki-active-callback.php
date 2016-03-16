@@ -86,25 +86,54 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 					$show = ( $value1 === $value2 ) ? true : false;
 					break;
 				case '==':
+				case '=':
+				case 'equals':
+				case 'equal':
 					$show = ( $value1 == $value2 ) ? true : false;
 					break;
 				case '!==':
 					$show = ( $value1 !== $value2 ) ? true : false;
 					break;
 				case '!=':
+				case 'not equal':
 					$show = ( $value1 != $value2 ) ? true : false;
 					break;
 				case '>=':
+				case 'greater or equal':
+				case 'equal or greater':
 					$show = ( $value1 >= $value2 ) ? true : false;
 					break;
 				case '<=':
+				case 'smaller or equal':
+				case 'equal or smaller':
 					$show = ( $value1 <= $value2 ) ? true : false;
 					break;
 				case '>':
+				case 'greater':
 					$show = ( $value1 > $value2 ) ? true : false;
 					break;
 				case '<':
+				case 'smaller':
 					$show = ( $value1 < $value2 ) ? true : false;
+					break;
+				case 'contains':
+				case 'in':
+					if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+						$array  = $value1;
+						$string = $value2;
+					} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+						$array  = $value2;
+						$string = $value1;
+					}
+					if ( isset( $array ) && isset( $string ) ) {
+						if ( ! in_array( $string, $array ) ) {
+							$show = false;
+						}
+					} else {
+						if ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+							$show = false;
+						}
+					}
 					break;
 				default:
 					$show = ( $value1 == $value2 ) ? true : false;

@@ -1,8 +1,28 @@
-languages:
-  Ruby: false
-  JavaScript: false
-  PHP: true
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: false
+    config:
+      languages:
+      - javascript
+      - php
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+    checks:
+      Controversial/CamelCaseMethodName:
+      	enabled: false
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
+  - "**.php"
 exclude_paths:
-  - "assets/*"
-  - "tests/*"
-  - "bin/*"
+- assets/css/customizer-dynamic-css-colors.css
+- assets/js/customizer.js
+- assets/js/vendor/*
+- tests/*
+- bin/*

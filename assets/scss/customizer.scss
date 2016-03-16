@@ -1,5 +1,9 @@
 @import "global.scss";
 
+@import "panels/expanded";
+
+@import "sections/expanded";
+
 @import "controls/checkbox";
 @import "controls/code";
 @import "controls/dimension";
@@ -14,6 +18,6 @@
 @import "controls/sortable";
 @import "controls/spacing";
 @import "controls/switch";
-@import "controls/textarea";
+@import "controls/generic";
 @import "controls/toggle";
 @import "controls/typography";

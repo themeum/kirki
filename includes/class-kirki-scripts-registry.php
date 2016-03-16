@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -23,6 +23,7 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		public $postmessage;
 		public $tooltips;
 		public $googlefonts;
+		public $icons;
 
 		public function __construct() {
 
@@ -30,7 +31,6 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 			$this->postmessage  = new Kirki_Customizer_Scripts_PostMessage();
 			$this->tooltips     = new Kirki_Customizer_Scripts_Tooltips();
 			$this->icons        = new Kirki_Customizer_Scripts_Icons();
-			$this->googlefonts  = new Kirki_Google_Fonts_Scripts();
 
 		}
 
