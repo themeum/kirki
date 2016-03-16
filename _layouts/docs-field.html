@@ -21,7 +21,7 @@
 							</div>
 							{{ content }}
 							<hr>
-							<div id="field-description">
+							<div id="field-description" data-magellan-target="field-description">
 								<h2 id="description">Description</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-descriptions/{{ page.title }}.md">Improve this section</a>
 								{% capture field-description %}
@@ -30,7 +30,7 @@
 								{{ field-description | markdownify }}
 							</div>
 							<hr>
-							<div id="field-examples">
+							<div id="field-examples" data-magellan-target="field-examples">
 								<h2 id="examples">Examples</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-examples/{{ page.title }}.md">Improve this section</a>
 								{% capture field-examples %}
@@ -39,7 +39,7 @@
 								{{ field-examples | markdownify }}
 							</div>
 							<hr>
-							<div id="field-usage">
+							<div id="field-usage" data-magellan-target="field-usage">
 								<h2 id="usage">Usage</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-usage/{{ page.title }}.md">Improve this section</a>
 								{% capture field-usage %}
@@ -48,7 +48,7 @@
 								{{ field-usage | markdownify }}
 							</div>
 							<hr>
-							<div id="field-arguments">
+							<div id="field-arguments" data-magellan-target="field-arguments">
 								<h2 id="arguments">Arguments</h2>
 								{% include field-arguments.html %}
 							</div>

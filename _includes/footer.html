@@ -10,7 +10,7 @@
 {% if page.sections %}
 	<script>
 		var $toc = $('[data-docs-toc]');
-		new Foundation.Magellan($toc, {
+		var $toc_magellan = new Foundation.Magellan($toc, {
 			'data-animation-duration': 250,
 			'data-active-class': 'active',
 

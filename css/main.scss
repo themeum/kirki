@@ -100,6 +100,10 @@ h1, h2, h3, h4, h5, h6 {
 		margin-top: 1rem;
 		padding-top: 1.5rem;
 	}
+	.active {
+		background: #2199e8;
+		color: #fff;
+	}
 }
 
 @import "code-highlight";
