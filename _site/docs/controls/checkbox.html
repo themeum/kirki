@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script>var host = "kirki.org";if ( ( host == window.location.host) && (window.location.protocol != "https:" ) ) window.location.protocol = "https";</script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>checkbox</title>
+	<meta name="description" content="Documentation for the Kirki WordPress Customizer plugin.
+">
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+
+	<link rel="canonical" href="https://kirki.org/docs/controls/checkbox.html">
+	<link rel="alternate" type="application/rss+xml" title="Kirki Documentation" href="https://kirki.org/feed.xml">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700|Roboto+Mono|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+	<body>
+		<div class="top-bar navigation">
+	<div class="top-bar-left">
+		<ul class="menu">
+			<li class="logo"><a href="/" alt="Home"><img src="/images/logo.png"></a></li>
+		</ul>
+	</div>
+	<div class="top-bar-right">
+		<ul class="menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="https://wordpress.org/plugins/kirki">Download Stable</a></li>
+			<li><a href="https://github.com/aristath/kirki">Download Development</a></li>
+			<li>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align: center;">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="B3JPWWJBUSWDU">
+					<input type="submit" class="hollow button alert" name="submit" alt="PayPal - The safer, easier way to pay online!" value="DONATE">
+				</form>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		<div id="main" class="expanded row">
+			<div id="main" class="medium-9 large-10 medium-push-3 large-push-2 columns">
+				<article>
+					<div class="row">
+						<div class="large-9 columns">
+							<h1>checkbox</h1>
+							<div class="returns-type">
+								
+								<span class="secondary label">returns</span><span class="success label">bool</span>
+							</div>
+							
+
+							<hr>
+							<div id="field-description">
+								<h2 id="description">Description</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-descriptions/checkbox.md">Improve this section</a>
+								
+								
+<p>WordPress Core already allows you to create checkbox controls.
+However in some cases you may want to enrich those, either to better convey your message, or to visually enrich the user experience.</p>
+
+<p>Besides checkboxes we also allow you to use <code class="highlighter-rouge">switch</code> and <code class="highlighter-rouge">toggle</code> controls. To change a checkbox to a switch all you have to do is change its type from <code class="highlighter-rouge">checkbox</code> to <code class="highlighter-rouge">switch</code> or <code class="highlighter-rouge">toggle</code>. Since switches &amp; toggles are internally checkboxes, they will still return values <code class="highlighter-rouge">true</code> / <code class="highlighter-rouge">false</code> like checkboxes do.</p>
+
+
+							</div>
+							<hr>
+							<div id="field-examples">
+								<h2 id="examples">Examples</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-examples/checkbox.md">Improve this section</a>
+								
+								
+<h3 id="creating-a-checkbox-control">Creating a <code class="highlighter-rouge">checkbox</code> control</h3>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nx">Kirki</span><span class="o">::</span><span class="na">add_field</span><span class="p">(</span> <span class="s1">'my_config'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+	<span class="s1">'type'</span>        <span class="o">=&gt;</span> <span class="s1">'checkbox'</span><span class="p">,</span>
+	<span class="s1">'settings'</span>    <span class="o">=&gt;</span> <span class="s1">'my_setting'</span><span class="p">,</span>
+	<span class="s1">'label'</span>       <span class="o">=&gt;</span> <span class="nx">__</span><span class="p">(</span> <span class="s1">'This is the label'</span><span class="p">,</span> <span class="s1">'my_textdomain'</span> <span class="p">),</span>
+	<span class="s1">'section'</span>     <span class="o">=&gt;</span> <span class="s1">'my_section'</span><span class="p">,</span>
+	<span class="s1">'default'</span>     <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span>
+	<span class="s1">'priority'</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">);</span>
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<h3 id="creating-a-switch-control">Creating a <code class="highlighter-rouge">switch</code> control</h3>
+
+<p>Switches have the benefit of allowing you to change their labels.
+In the example below we’ll be using ‘Enable’ and ‘Disable’ as labels.
+The default labels are “On” &amp; “Off”, so iof you don’t want to change them you can simply omit the <code class="highlighter-rouge">choices</code> argument.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nx">Kirki</span><span class="o">::</span><span class="na">add_field</span><span class="p">(</span> <span class="s1">'my_config'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+	<span class="s1">'type'</span>        <span class="o">=&gt;</span> <span class="s1">'switch'</span><span class="p">,</span>
+	<span class="s1">'settings'</span>    <span class="o">=&gt;</span> <span class="s1">'my_setting'</span><span class="p">,</span>
+	<span class="s1">'label'</span>       <span class="o">=&gt;</span> <span class="nx">__</span><span class="p">(</span> <span class="s1">'This is the label'</span><span class="p">,</span> <span class="s1">'my_textdomain'</span> <span class="p">),</span>
+	<span class="s1">'section'</span>     <span class="o">=&gt;</span> <span class="s1">'my_section'</span><span class="p">,</span>
+	<span class="s1">'default'</span>     <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span>
+	<span class="s1">'priority'</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+	<span class="s1">'choices'</span>     <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+		<span class="s1">'on'</span>  <span class="o">=&gt;</span> <span class="nx">esc_attr__</span><span class="p">(</span> <span class="s1">'Enable'</span><span class="p">,</span> <span class="s1">'my_textdomain'</span> <span class="p">),</span>
+		<span class="s1">'off'</span> <span class="o">=&gt;</span> <span class="nx">esc_attr__</span><span class="p">(</span> <span class="s1">'Disable'</span><span class="p">,</span> <span class="s1">'my_textdomain'</span> <span class="p">),</span>
+	<span class="p">),</span>
+<span class="p">)</span> <span class="p">);</span>
+<span class="cp">?&gt;</span></code></pre></figure>
+
+<h3 id="creating-a-toggle-control">Creating a <code class="highlighter-rouge">toggle</code> control</h3>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nx">Kirki</span><span class="o">::</span><span class="na">add_field</span><span class="p">(</span> <span class="s1">'my_config'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+	<span class="s1">'type'</span>        <span class="o">=&gt;</span> <span class="s1">'toggle'</span><span class="p">,</span>
+	<span class="s1">'settings'</span>    <span class="o">=&gt;</span> <span class="s1">'my_setting'</span><span class="p">,</span>
+	<span class="s1">'label'</span>       <span class="o">=&gt;</span> <span class="nx">__</span><span class="p">(</span> <span class="s1">'This is the label'</span><span class="p">,</span> <span class="s1">'my_textdomain'</span> <span class="p">),</span>
+	<span class="s1">'section'</span>     <span class="o">=&gt;</span> <span class="s1">'my_section'</span><span class="p">,</span>
+	<span class="s1">'default'</span>     <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span>
+	<span class="s1">'priority'</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">);</span>
+<span class="cp">?&gt;</span></code></pre></figure>
+
+
+							</div>
+							<hr>
+							<div id="field-usage">
+								<h2 id="usage">Usage</h2>
+								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-usage/checkbox.md">Improve this section</a>
+								
+								
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="kc">true</span> <span class="o">==</span> <span class="nx">get_theme_mod</span><span class="p">(</span> <span class="s1">'my_setting'</span><span class="p">,</span> <span class="kc">true</span> <span class="p">)</span> <span class="p">)</span> <span class="o">:</span> <span class="cp">?&gt;</span>
+	<span class="nt">&lt;p&gt;</span>Checkbox is checked<span class="nt">&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">else</span> <span class="o">:</span> <span class="cp">?&gt;</span>
+	<span class="nt">&lt;p&gt;</span>Checkbox is unchecked<span class="nt">&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span></code></pre></figure>
+
+
+							</div>
+							<hr>
+							<div id="field-arguments">
+								<h2 id="arguments">Arguments</h2>
+								<table style="font-size: .9rem;">
+    <thead>
+        <tr>
+            <th>Argument</th>
+            <th>Required</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+            
+                <tr>
+                    <td><code>type</code></td>
+                    <td>yes</td>
+                    <td><code>string</code></td>
+                    <td>Set to <code>checkbox</code>, <code>switch</code> or <code>toggle</code>.</td>
+                </tr>
+            
+                <tr>
+                    <td><code>choices</code></td>
+                    <td>no</td>
+                    <td><code>array</code></td>
+                    <td>If you're using switches, you can use this to change the ON/OFF labels.</td>
+                </tr>
+            
+        
+        <tr>
+            <td><code>settings</code></td>
+            <td>yes</td>
+            <td><code>string</code></td>
+            <td>The setting-name that will be used to identify this field.</td>
+        </tr>
+        <tr>
+            <td><code>section</code></td>
+            <td>yes</td>
+            <td><code>string</code></td>
+            <td>Defines the section in which this field's control will be added.</td>
+        </tr>
+        <tr>
+            <td><code>label</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>The title that will be displayed in the control.</td>
+        </tr>
+        <tr>
+            <td><code>description</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>An optional description</td>
+        </tr>
+        <tr>
+            <td><code>priority</code></td>
+            <td>no</td>
+            <td><code>int</code></td>
+            <td>You can use <code>priority</code> to change the order in which your controls are added inside a section. Defaults to <code>10</code>.</td>
+        </tr>
+        <tr>
+            <td><code>variables</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>If you're using a compiler you can use this to define the corresponding variable names. See <code>variables</code> documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>tooltip</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>Add a localized string to show an informative tooltip.</td>
+        </tr>
+        <tr>
+            <td><code>active_callback</code></td>
+            <td>no</td>
+            <td><code>string/array</code></td>
+            <td>A callable function or method returning boolean (<code>true</code>/<code>false</code>) to define if the current field will be displayed or not. Overrides the <code>required</code> argument if one is defined.</td>
+        </tr>
+        <tr>
+            <td><code>sanitize_callback</code></td>
+            <td>no</td>
+            <td><code>string/array</code></td>
+            <td>Not necessary since we already have a default sanitization callback in pace. If you want to override the default sanitization you can enter a callable function or method.</td>
+        </tr>
+        <tr>
+            <td><code>transport</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td><code>refresh</code> or <code>postMessage</code>. defaults to <code>refresh</code>.</td>
+        </tr>
+        <tr>
+            <td><code>required</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define field dependencies if you want to show or hide this field conditionally based on the values of other controls.</td>
+        </tr>
+        <tr>
+            <td><code>capability</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>The capability required so that users can access this setting. This is automatically set by your configuration, and if none is defined in your config then falls-back to <code>edit_theme_options</code>. You can use this to override your config defaults on a per-field basis.</td>
+        </tr>
+        <tr>
+            <td><code>option_type</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td><code>theme_mod</code>, <code>option</code>, <code>user_meta</code>. This option is set in your configuration but can be overridden on a per-field basis. See configuration documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>option_name</code></td>
+            <td>no</td>
+            <td><code>string</code></td>
+            <td>This option is set in your configuration but can be overridden on a per-field basis. See configuration documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>output</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define an array of elements & properties to auto-generate and apply the CSS to your frontend. See <code>output</code> documentation for more details.</td>
+        </tr>
+        <tr>
+            <td><code>js_vars</code></td>
+            <td>no</td>
+            <td><code>array</code></td>
+            <td>Define an array of elements & properties to auto-generate and apply the necessary JS in order for postMessage to work. Requires that <code>transport</code> is set to <code>postMessage</code>.</td>
+        </tr>
+    </tbody>
+
+</table>
+
+							</div>
+							<hr>
+						</div>
+						<div class="large-3 columns" data-sticky-container>
+    <nav class="columns sticky" data-sticky data-sticky-on="large" data-margin-top="0">
+        <ul data-docs-toc class="vertical menu docs-side-nav" data-magellan>
+            <li class="side-nav-header">On this page:</li>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+        </ul>
+    </nav>
+</div>
+
+					</div>
+				</article>
+			</div>
+			<div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+				<ul class="vertical menu docs-nav">
+	<li class="docs-nav-title">Getting Started</li>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/getting-started/config.html">Configuration</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/getting-started/fields.html">Adding Fields</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/getting-started/getting-values.html">Getting Values</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/getting-started/panels.html">Adding Panels</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/getting-started/sections.html">Adding Sections</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	<li class="docs-nav-title">Controls</li>
+	
+		
+	
+		
+			<li class="active"><a href="/docs/controls/checkbox.html">checkbox</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/code.html">code</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/color.html">color</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/custom.html">custom</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/dimension.html">dimension</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/dropdown-pages.html">dropdown-pages</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/image.html">image</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/multicheck.html">multicheck</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/number.html">number</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/palette.html">palette</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/radio-buttonset.html">radio-buttonset</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/radio-image.html">radio-image</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/radio.html">radio</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/repeater.html">repeater</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/select.html">select</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/slider.html">slider</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/sortable.html">sortable</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/spacing.html">spacing</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/switch.html">switch</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/text.html">text</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/textarea.html">textarea</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/toggle.html">switch</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/controls/typography.html">typography</a></li>
+		
+	
+		
+			<li ><a href="/docs/controls/upload.html">upload</a></li>
+		
+	
+		
+	
+
+	<li class="docs-nav-title">Field Arguments</li>
+	
+		
+			<li ><a href="/docs/arguments/capability.html">capability</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/choices.html">choices</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/default.html">default</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/description.html">description</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/fields.html">fields</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/js_vars.html">js_vars</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/kirki_config.html">kirki_config</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/label.html">label</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/multiple.html">multiple</a></li>
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/option_name.html">option_name</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/option_type.html">option_type</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/output.html">output</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/priority.html">priority</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/required.html">required</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/sanitize_callback.html">sanitize_callback</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/section.html">section</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/settings.html">settings</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/tooltip.html">tooltip</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/transport.html">transport</a></li>
+		
+	
+		
+			<li ><a href="/docs/arguments/type.html">type</a></li>
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/arguments/variables.html">variables</a></li>
+		
+	
+
+	<li class="docs-nav-title">Advanced Topics</li>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/advanced/integration.html">Integrating Kirki</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/advanced/register-control-types.html">Register new Control Type</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			<li ><a href="/docs/advanced/styling-the-customizer.html">Styling the Customizer</a></li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+</ul>
+
+			</div>
+		</div>
+		<div class="footer">
+	<div class="row">
+		<p>Kirki is licenced under the <a href="https://github.com/aristath/kirki/blob/master/LICENSE">MIT licence</a> and is completely open-source.</p>
+	</div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js"></script>
+<script>$(document).foundation();</script>
+
+
+
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us12.list-manage.com","uuid":"63d1425d3d1b729d54f02068d","lid":"3a8ae06703"}) })</script>
+
+	</body>
+</html>
