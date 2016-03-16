@@ -1,6 +1,6 @@
 ---
 layout: docs-field
-title: switch
+title: toggle
 returns: bool
 extra_args:
   - argument: type

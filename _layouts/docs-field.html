@@ -42,6 +42,9 @@
 							<div id="field-usage" data-magellan-target="field-usage">
 								<h2 id="usage">Usage</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-usage/{{ page.title }}.md">Improve this section</a>
+
+								<blockquote>Please note: in all our examples we're assuming you're using <code>theme_mods</code>. If in your <a href="/docs/getting-started/config">Project's Configuration</a> you've chosen to use options instead of theme_mods, then please refer to the <a href="/docs/getting-started/getting-values">Getting Values</a> documentation.</blockquote>
+
 								{% capture field-usage %}
 									{% include field-usage/{{ page.title }}.md %}
 								{% endcapture %}

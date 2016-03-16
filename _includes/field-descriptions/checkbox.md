@@ -1,5 +1,4 @@
 
-WordPress Core already allows you to create checkbox controls.
-However in some cases you may want to enrich those, either to better convey your message, or to visually enrich the user experience.
+Checkboxes provide a simple way to turn on/off options. They return a `boolean` so you can easily check their value in your code and act on them (check the examples for more details).
 
-Besides checkboxes we also allow you to use `switch` and `toggle` controls. To change a checkbox to a switch all you have to do is change its type from `checkbox` to `switch` or `toggle`. Since switches & toggles are internally checkboxes, they will still return values `true` / `false` like checkboxes do.
+If a checkbox is not what you're after visually, you can also use a [`switch`](/docs/controls/switch) or a [`toggle`](/docs/controls/toggle). They are both internally checkboxes, so you use them the exact same way, their only difference is the way they present the options.
