@@ -26,6 +26,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 			$this->json['palette'] = $this->palette;
+			$this->choices['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		}
 
 		protected function render() {
@@ -49,7 +50,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{ data.description }}</span>
 				<# } #>
-				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="true" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 			</label>
 			<?php
 		}

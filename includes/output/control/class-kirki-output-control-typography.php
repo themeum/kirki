@@ -3,6 +3,8 @@
 class Kirki_Output_Control_Typography extends Kirki_Output {
 
 	protected function process_output( $output, $value ) {
+		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 
 		// Take care of font-families
 		if ( isset( $value['font-family'] ) ) {

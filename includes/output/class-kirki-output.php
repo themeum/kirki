@@ -35,6 +35,7 @@ class Kirki_Output {
 	 * @param $value        string|array
 	 */
 	public function __construct( $config_id, $output, $value ) {
+
 		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;

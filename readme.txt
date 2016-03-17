@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,17 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.2.1 =
+
+March 17, 2016, dev time: 3 hours
+
+* FIX: Alpha channel was always enabled for color controls
+* FIX: PHP Notices in the class-kirki-output-control-typography.php file
+* FIX: PHP Fatal error on PHP 5.2
+* FIX: PHP Notice in the class-kirki-field.php file
+* FIX: PHP Fatal error when using background-position in the output argument
+* TWEAK: Removed unused languages from CodeMirror to reduce the plugin's size
 
 = 2.2.0 =
 

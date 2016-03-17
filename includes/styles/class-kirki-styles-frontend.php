@@ -105,16 +105,10 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 				// Only continue if $field['output'] is set
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
-
-					// Fallback: the array_replace_recurcive function is not found on all system configurations.
-					$array_replace_recursive = 'array_replace_recursive';
-					if ( ! function_exists( 'array_replace_recursive' ) ) {
-						$array_replace_recursive = array( 'Kirki_Helper', 'array_replace_recursive' );
-					}
-					$css = $array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
+					$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
 					// Add the globals
 					if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
-						$array_replace_recursive( $css, self::$css_array[ $config_id ] );
+						Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
 					}
 
 				}

@@ -28,7 +28,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 			foreach ( $paths as $path ) {
 				$path = wp_normalize_path( $path );
 				if ( file_exists( $path ) ) {
-					include $path;
+					include_once $path;
 					return;
 				}
 			}
