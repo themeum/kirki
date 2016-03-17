@@ -36,9 +36,6 @@ class Kirki_Output {
 	 */
 	public function __construct( $config_id, $output, $value ) {
 
-		if ( ! class_exists( 'Avada_Sanitize_Values' ) ) {
-			include_once wp_normalize_path( Kirki::$path . '/includes/class-kirki-sanitize-values.php' );
-		}
 		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;
