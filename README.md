@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.0  
+**Stable tag:** 2.2.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -37,6 +37,17 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 2.2.1 ###
+
+March 17, 2016, dev time: 3 hours
+
+* FIX: Alpha channel was always enabled for color controls
+* FIX: PHP Notices in the class-kirki-output-control-typography.php file
+* FIX: PHP Fatal error on PHP 5.2
+* FIX: PHP Notice in the class-kirki-field.php file
+* FIX: PHP Fatal error when using background-position in the output argument
+* TWEAK: Removed unused languages from CodeMirror to reduce the plugin's size
+
 ### 2.2.0 ###
 
 March 16, 2016, dev time: 120 hours
@@ -68,6 +79,7 @@ March 16, 2016, dev time: 120 hours
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
 * NEW: Started an OOP rewrite of many classes
 * NEW: Started rewriting the PHPUNIT tests & tweaked them so they can now run on localhosts (like VVV) and not just on travis-ci.
+* NEW: Included the ariColor library for color calculations (https://aristath.github.io/ariColor/)
 * TWEAK: Other code refactoring for improved performance
 * TWEAK: Updated `grunt` packages.
 
