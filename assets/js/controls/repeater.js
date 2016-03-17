@@ -106,10 +106,24 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         // Save the rows objects
         this.rows = [];
 
+        // Default limit choice
+        if ( this.params.choices.limit !== undefined ) {
+            if ( this.params.choices.limit <= 0 ) {
+                var limit = false;
+            } else {
+                var limit = parseInt(this.params.choices.limit);
+            }
+        } else {
+            var limit = false;
+        }
 
         this.container.on('click', 'button.repeater-add', function (e) {
             e.preventDefault();
-            control.addRow();
+            if ( !limit || control.currentIndex < limit ) {
+                control.addRow();
+            } else {
+                jQuery( control.selector + ' .limit' ).toggleClass( 'highlight' );
+            }
         });
 
         this.container.on('click keypress', '.repeater-field-image .upload-button', function (e) {
