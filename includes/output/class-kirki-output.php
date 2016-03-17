@@ -89,6 +89,12 @@ class Kirki_Output {
 				continue;
 			}
 
+			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
+				$output['element'] = array_unique( $output['element'] );
+				sort( $output['element'] );
+				$output['element'] = implode( ',', $output['element'] );
+			}
+
 			$value = $this->process_value( $value, $output );
 			$this->process_output( $output, $value );
 		}
@@ -111,12 +117,6 @@ class Kirki_Output {
 		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
 		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
-
-		if ( is_array( $output['element'] ) ) {
-			$output['element'] = array_unique( $output['element'] );
-			sort( $output['element'] );
-			$output['element'] = implode( ',', $output['element'] );
-		}
 
 		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 	}
