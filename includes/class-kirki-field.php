@@ -180,7 +180,11 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Get defaults from the class
 			$defaults = get_class_vars( __CLASS__ );
 			// Get the config arguments, and merge them with the defaults
-			$config_defaults = Kirki::$config[ $this->kirki_config ];
+			$config_defaults = ( isset( Kirki::$config['global'] ) ? Kirki::$config['global'] : array();
+			if ( 'global' != $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
+				$config_defaults = Kirki::$config[ $this->kirki_config ];
+			}
+			$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
 			foreach ( $config_defaults as $key => $value ) {
 				if ( isset( $defaults[ $key ] ) ) {
 					if ( ! empty( $value ) && $value != $defaults[ $key ] ) {
