@@ -92,29 +92,9 @@ class Kirki_Output {
 				continue;
 			}
 
-			$value  = $this->process_value( $value, $output );
-			$output = $this->satitize_output( $output );
+			$value = $this->process_value( $value, $output );
 			$this->process_output( $output, $value );
 		}
-	}
-
-	/**
-	 * Make sure all the required arguments for the ['output'] have been defined.
-	 * This is just to avoid issues in classes that extend this base class
-	 * and this way we're sure they don't have to rewrite the same code over and over.
-	 *
-	 * @access protected
-	 * @param $output  array
-	 *
-	 * @return array
-	 */
-	protected function satitize_output( $output ) {
-		$output['element']     = ( isset( $output['element'] ) )     ? $output['element']     : null;
-		$output['property']    = ( isset( $output['property'] ) )    ? $output['property']    : null;
-		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
-		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
-		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
-		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
 	}
 
 	/**
@@ -127,9 +107,13 @@ class Kirki_Output {
 	 * @return void
 	 */
 	protected function process_output( $output, $value ) {
-		if ( null === $output['element'] || null === $output['property'] ) {
+		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 			return;
 		}
+		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
+		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
+		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
 
 		if ( is_array( $output['element'] ) ) {
 			$output['element'] = array_unique( $output['element'] );
