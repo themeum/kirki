@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * @access protected
 		 * @var string
 		 */
-		protected static $version = '2.2.1';
+		protected static $version = '2.2.2';
 
 		/**
 		 * Access the single instance of this class

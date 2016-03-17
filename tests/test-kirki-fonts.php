@@ -36,4 +36,9 @@ class Test_Kirki_Fonts extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'monospace', Kirki_Fonts::get_backup_fonts() );
 	}
 
+	public function test_get_all_subsets() {
+		$this->assertTrue( is_array( Kirki_Fonts::get_all_subsets() ) );
+		$this->assertEquals( Kirki_Fonts::get_all_subsets(), Kirki_Fonts::get_google_font_subsets() );
+	}
+
 }
