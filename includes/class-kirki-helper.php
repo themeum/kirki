@@ -27,6 +27,9 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		 * @return array
 		 */
 		public static function array_replace_recursive( $array, $array1 ) {
+			if ( function_exists( 'array_replace_recursive' ) ) {
+				return array_replace_recursive( $array, $array1 );
+			}
 			// handle the arguments, merge one by one
 			$args  = func_get_args();
 			$array = $args[0];
