@@ -120,7 +120,7 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 		public static function get_google_font_subsets() {
 			return self::get_all_subsets();
 		}
-		
+
 		public static function get_all_subsets() {
 			$i18n = Kirki_l10n::get_strings();
 			return array(

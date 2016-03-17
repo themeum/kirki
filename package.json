@@ -1,6 +1,6 @@
 {
   "name": "kirki-toolkit",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "author": "Aristeides Stathopoulos",
   "homepage": "http://kirki.org",
   "repository": {
@@ -8,12 +8,14 @@
     "url": "https://github.com/aristath/kirki"
   },
   "bugs": {
-    "url" : "https://github.com/aristath/kirki/issues"
+    "url": "https://github.com/aristath/kirki/issues"
   },
-  "licenses": [{
-    "type": "GPL v2",
-    "url": "http://www.gnu.org/licenses/gpl-2.0.html"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  ],
   "engines": {
     "node": ">= 0.10.0"
   },
