@@ -117,11 +117,13 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 
 		}
 
-		public static function get_google_font_subsets() {
-			return self::get_all_subsets();
-		}
+		/**
+		 * dummy function to avoid issues with backwards-compatibility.
+		 * This is not functional, but it will prevent PHP Fatal errors.
+		 */
+		public static function get_google_font_uri() {}
 
-		public static function get_all_subsets() {
+		public static function get_google_font_subsets() {
 			$i18n = Kirki_l10n::get_strings();
 			return array(
 				// 'all'          => $i18n['all'],
