@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Kirki Toolkit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kirki Toolkit 2.2.2\n"
+"Project-Id-Version: Kirki Toolkit 2.2.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-03-17 20:49:03+00:00\n"
+"POT-Creation-Date: 2016-03-18 15:03:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -355,6 +355,14 @@ msgstr ""
 
 #: includes/controls/class-kirki-controls-repeater-control.php:95
 msgid "Limit: %s rows"
+msgstr ""
+
+#: includes/sections/class-kirki-sections-hover-section.php:12
+msgid "Press return or enter to open this section"
+msgstr ""
+
+#: includes/sections/class-kirki-sections-hover-section.php:18
+msgid "Back"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

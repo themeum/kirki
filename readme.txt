@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.2.2
+Stable tag: 2.2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,12 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.2.2.1 =
+
+March 17, 2016, dev time: 5 minutes
+
+* FIX: Backwards-compatibility bugfix
 
 = 2.2.2 =
 
