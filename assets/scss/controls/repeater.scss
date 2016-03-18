@@ -135,3 +135,12 @@
 		display:inline-block;
 	}
 }
+
+.limit{
+	padding: 3px;
+	border-radius: 3px;
+	&.highlight {
+		background: #D32F2F;
+		color: #fff;
+	}
+}

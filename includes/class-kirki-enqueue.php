@@ -59,7 +59,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
 			$standard_fonts = Kirki_Fonts::get_standard_fonts();
 			$all_variants   = Kirki_Fonts::get_all_variants();
-			$all_subsets    = Kirki_Fonts::get_all_subsets();
+			$all_subsets    = Kirki_Fonts::get_google_font_subsets();
 
 			$standard_fonts_final = array();
 			foreach ( $standard_fonts as $key => $value ) {

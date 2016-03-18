@@ -92,7 +92,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 			<ul class="repeater-fields"></ul>
 
+			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), $this->choices['limit'] ); ?></p>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
+
 			<?php
 
 			$this->repeater_js_template();

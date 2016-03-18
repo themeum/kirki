@@ -63,6 +63,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			global $wp_customize;
 
 			$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
+			$wp_customize->register_section_type( 'Kirki_Sections_Hover_Section' );
 
 			$wp_customize->register_panel_type( 'Kirki_Panels_Expanded_Panel' );
 

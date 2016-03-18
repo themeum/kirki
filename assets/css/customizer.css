@@ -159,6 +159,18 @@ input[type="text"] {
   display: block;
   margin-top: 0 !important; }
 
+#customize-theme-controls .control-section.control-section-kirki-hover:hover:not(.open) > ul.accordion-section-content, #customize-theme-controls .control-section.control-section-kirki-hover:focus:not(.open) > ul.accordion-section-content, #customize-theme-controls .control-section.control-section-kirki-hover:active:not(.open) > ul.accordion-section-content {
+  position: fixed;
+  left: 300px;
+  width: 300px;
+  background: #eee;
+  display: block;
+  height: 100%;
+  max-height: 100vh;
+  overflow-y: scroll; }
+#customize-theme-controls .control-section.control-section-kirki-hover:hover:not(.open) .customize-section-title, #customize-theme-controls .control-section.control-section-kirki-hover:focus:not(.open) .customize-section-title, #customize-theme-controls .control-section.control-section-kirki-hover:active:not(.open) .customize-section-title {
+  display: none; }
+
 .customize-control-kirki-checkbox input[type="checkbox"],
 .customize-control-multicheck input[type="checkbox"],
 .customize-control-repeater input[type="checkbox"] {
@@ -818,6 +830,13 @@ span.CodeMirror-selectedtext {
   margin-bottom: 25px; }
   .kirki-image-attachment img {
     display: inline-block; }
+
+.limit {
+  padding: 3px;
+  border-radius: 3px; }
+  .limit.highlight {
+    background: #D32F2F;
+    color: #fff; }
 
 .selectize-control {
   position: relative; }

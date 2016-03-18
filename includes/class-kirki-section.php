@@ -9,6 +9,7 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 		private $section_types = array(
 			'default'  => 'Kirki_Sections_Default_Section',
 			'expanded' => 'Kirki_Sections_Expanded_Section',
+			'hover'    => 'Kirki_Sections_Hover_Section'
 		);
 
 		public function __construct( $args ) {
