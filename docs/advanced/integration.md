@@ -39,7 +39,7 @@ This way your users will always have the latest version of the plugin, including
 		<h3>Using TGMPA</h3>
 		<p>For instructions on how to use TGMPA, please <a href="http://tgmpluginactivation.com/" target="_blank">visit the TGMPA site</a> and recommend your users to install Kirki from <a href="https://wordpress.org/plugins/kirki" target="_blank">wordpress.org</a>.</p>
 	</div>
-	<div class="tabs-pane" id="embedding">
+	<div class="tabs-panel" id="embedding">
 		<h3>Embedding in your theme</h3>
 		<p>Though not recommended, in some cases we understand that you may need to instead include it as a library in your theme/plugin.</p>
 		<p>In order to properly do that, please follow the instructions below:</p>
