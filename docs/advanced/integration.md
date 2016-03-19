@@ -52,7 +52,7 @@ This way your users will always have the latest version of the plugin, including
 		<p>Kirki will auto-detect that it's embedded in a theme and the URLs & paths will automatically be adjusted.</p>
 		<p>If for some reason the URLs are not properly detected in your setup, you can add the following code in your theme:</p>
 
-<pre>
+```php
 if ( ! function_exists( 'my_theme_kirki_update_url' ) ) {
     function my_theme_kirki_update_url( $config ) {
         $config['url_path'] = get_stylesheet_directory_uri() . '/inc/kirki/';
@@ -60,12 +60,13 @@ if ( ! function_exists( 'my_theme_kirki_update_url' ) ) {
     }
 }
 add_filter( 'kirki/config', 'my_theme_kirki_update_url' );
-</pre>
+```
 
 		<h4>Translating Kirki strings in embedded theme</h4>
 		<p>In case you decide to include Kirki in your theme, you may want to consider adding the translations there as well so that they use your own textdomain.</p>
-		</p>You can do that using the <code>kirki/{$config_id}/l10n</code> filter.</p>
-<pre>
+		<p>You can do that using the <code>kirki/{$config_id}/l10n</code> filter.</p>
+
+```php
 add_filter( 'kirki/my_config/l10n', function( $l10n ) {
 
 	$l10n['background-color']      => esc_attr__( 'Background Color', my_textdomain );
@@ -159,7 +160,7 @@ add_filter( 'kirki/my_config/l10n', function( $l10n ) {
 	return $l10n;
 
 } );
-</pre>
+```
 	
 	</div>
 </div>
