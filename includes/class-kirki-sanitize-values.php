@@ -239,43 +239,29 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		 * @return string
 		 */
 		public static function rgba( $value ) {
-
-			// If empty or an array return transparent
-			if ( empty( $value ) || is_array( $value ) ) {
-				return 'rgba(0,0,0,0)';
-			}
-
-			// If string does not start with 'rgba', then treat as hex
-			// sanitize the hex color and finally convert hex to rgba
-			if ( false === strpos( $value, 'rgba' ) ) {
-				return Kirki_Color::get_rgba( Kirki_Color::sanitize_hex( $value ) );
-			}
-
-			// By now we know the string is formatted as an rgba color so we need to further sanitize it.
-			$value = str_replace( ' ', '', $value );
-			sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
-			return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
-
+			$color = ariColor::newColor( $value );
+			return $color->toCSS( 'rgba' );
 		}
 
 		/**
 		 * Sanitize colors.
-		 * Determine if the current value is a hex or an rgba color and call the appropriate method.
 		 *
 		 * @since 0.8.5
 		 * @return string
 		 */
 		public static function color( $value ) {
-
-			// Is this an rgba color or a hex?
-			$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
-
-			if ( 'rgba' == $mode ) {
-				return Kirki_Color::sanitize_hex( $value );
-			} else {
-				return self::rgba( $value );
+			// If empty, return empty
+			if ( '' == $value ) {
+				return '';
 			}
-
+			// If transparent, return 'transparent'
+			if ( is_string( $value ) && 'transparent' == trim( $value ) ) {
+				return 'transparent';
+			}
+			// Instantiate the object
+			$color = ariColor::newColor( $value );
+			// Return a CSS value, using the auto-detected mode
+			return $color->toCSS( $color->mode );
 		}
 
 		/**
