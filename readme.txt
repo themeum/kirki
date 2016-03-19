@@ -37,6 +37,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 2.2.3 =
+
+March 17, 2016
+
+* FIX: Selecting a color inside typography controls was throwing a JS error (typo)
+* FIX: CSS alignment for descriptions in toggle controls
+* FIX: Default value for letter-spacing setting in typography controls (props @andreg)
+
 = 2.2.2.1 =
 
 March 17, 2016, dev time: 5 minutes
