@@ -39,7 +39,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 2.2.3 =
 
-March 17, 2016
+March 19, 2016
 
 * FIX: Selecting a color inside typography controls was throwing a JS error (typo)
 * FIX: CSS alignment for descriptions in toggle controls
@@ -47,7 +47,7 @@ March 17, 2016
 
 = 2.2.2.1 =
 
-March 17, 2016, dev time: 5 minutes
+March 18, 2016, dev time: 5 minutes
 
 * FIX: Backwards-compatibility bugfix
 
