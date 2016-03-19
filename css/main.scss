@@ -153,4 +153,19 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+#integration-methods.tabs {
+	border: none;
+	border-bottom: 1px solid #e6e6e6;
+	
+	.tabs-title > a {
+		font-size: 1rem;
+		&:focus,
+		&[aria-selected=true] {
+			background: none;
+			border: 1px solid #e6e6e6;
+			border-bottom: none;
+		}
+	}
+}
+
 @import "code-highlight";
