@@ -156,7 +156,7 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			}
 			// Sanitize the letter-spacing
 			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
-				$value['letter-spacing'] = self::css_dimension( $value['font-size'] );
+				$value['letter-spacing'] = self::css_dimension( $value['letter-spacing'] );
 				if ( $value['letter-spacing'] == self::filter_number( $value['letter-spacing'] ) ) {
 					$value['letter-spacing'] .= 'px';
 				}

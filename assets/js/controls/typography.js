@@ -200,8 +200,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			change: function() {
 				setTimeout ( function() {
 					// add the value to the array and set the setting's value
-					compiled_value[ 'color' ] = picker.val ();
-					control.setting.set ( compiled_value );
+					value[ 'color' ] = picker.val ();
+					control.setting.set ( value );
 					// refresh the preview
 					wp.customize.previewer.refresh ();
 				}, 100 );

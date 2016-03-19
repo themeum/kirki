@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.2.1  
+**Stable tag:** 2.2.3  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -37,9 +37,17 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 2.2.3 ###
+
+March 19, 2016
+
+* FIX: Selecting a color inside typography controls was throwing a JS error (typo)
+* FIX: CSS alignment for descriptions in toggle controls
+* FIX: Default value for letter-spacing setting in typography controls (props @andreg)
+
 ### 2.2.2.1 ###
 
-March 17, 2016, dev time: 5 minutes
+March 18, 2016, dev time: 5 minutes
 
 * FIX: Backwards-compatibility bugfix
 
