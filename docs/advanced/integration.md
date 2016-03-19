@@ -16,120 +16,43 @@ There are currently 2 ways to include Kirki in a theme:
 	* Using [TGMPA](http://tgmpluginactivation.com/)
 * By including a copy of the plugin files in your theme.
 
-
 There are plans to add a dependencies manager in WordPress core but this is still under discussion so for the time being the best way to include Kirki is by using a custom setting in your customizer or using TGMPA.
 
 This way your users will always have the latest version of the plugin, including all improvements and bugfixes that they would otherwise not get if the plugin files were included in your theme.
 
-### Using a custom setting in the customizer (recommended)
+<ul class="tabs" data-tabs id="integration-methods">
+	<li class="tabs-title is-active"><a href="#default" aria-selected="true">Customizer Setting (recommended)</a></li>
+	<li class="tabs-title"><a href="#tgmpa">Using TGMPA</a></li>
+	<li class="tabs-title"><a href="#embedding">Embedding in the theme</a></li>
+</ul>
 
-This method requires you to add a few lines of code in your theme that will create a custom section and a custom control. 
-When the user visits the customizer, if they don't have Kirki installed they will see a button prompting them to install it.
-You can configure the description and add whatever you want so that it suits your use-case.
+<div class="tabs-content" data-tabs-content="integration-methods">
+	<div class="tabs-panel is-active" id="default">
+		<h3>Using a custom setting in the customizer (recommended)</h3>
+		<p>This method requires you to add a few lines of code in your theme that will create a custom section and a custom control.</p>
+		<p>When the user visits the customizer, if they don't have Kirki installed they will see a button prompting them to install it.</p>
+		<p>You can configure the description and add whatever you want so that it suits your use-case.</p>
+		<p>Please visit the <a href="https://github.com/aristath/kirki-helpers" target="_blank">Kirki Helpers</a> repository for detailed instructions.</p>
+		<p>If you are starting a new theme, we recommend you start using our <a href="https://github.com/aristath/_s" target="_blank">fork of the _s theme</a> as a starting point for your project, as this has already been implemented for you there.</p>
+	</div>
+	<div class="tabs-panel" id="tgmpa">
+		<h3>Using TGMPA</h3>
+		<p>For instructions on how to use TGMPA, please <a href="http://tgmpluginactivation.com/" target="_blank">visit the TGMPA site</a> and recommend your users to install Kirki from <a href="https://wordpress.org/plugins/kirki" target="_blank">wordpress.org</a>.</p>
+	</div>
+	<div class="tabs-pane" id="embedding">
+		<h3>Embedding in your theme</h3>
+		<p>Though not recommended, in some cases we understand that you may need to instead include it as a library in your theme/plugin.</p>
+		<p>In order to properly do that, please follow the instructions below:</p>
+		<ul>
+			<li>Copy the plugin folder in your theme (for example in <code>{theme_folder}/includes/kirki</code>).</li>
+			<li>Include the main plugin file in your theme's functions.php file:
+				<pre>include_once( dirname( __FILE__ ) . '/includes/kirki/kirki.php' );</pre>
+			</li>
+		</ul>
+		<p>Kirki will auto-detect that it's embedded in a theme and the URLs & paths will automatically be adjusted.</p>
+		<p>If for some reason the URLs are not properly detected in your setup, you can add the following code in your theme:</p>
 
-```php
-<?php
-
-if ( ! class_exists( 'Kirki' ) ) {
-
-	if ( class_exists( 'WP_Customize_Section' ) && ! class_exists( 'Kirki_Installer_Control' ) ) {
-		/**
-		 * A simple control that will render the installer <iframe>.
-		 * We'll apply some CSS in order to move the section to the top
-		 * as well as style the section & the iframe.
-		 */
-		class Kirki_Installer_Control extends WP_Customize_Control {
-			public $type = 'kirki-installer';
-			public function render_content() { ?>
-				<style>
-				li#accordion-section-kirki_installer { background:#f3f3f3; margin:-15px 0; }
-				li#accordion-section-kirki_installer .accordion-section-title,li#accordion-section-kirki_installer .customize-section-title { display: none; }
-				li#accordion-section-kirki_installer ul.accordion-section-content { display: block; position: relative; left: 0; margin-top: 0 !important; padding-top: 0; padding-bottom: 0; }
-				#customize-controls li#accordion-section-kirki_installer .description { font-size: 1em; }
-				#customize-control-kirki_installer { margin-bottom: 0; }
-				iframe#kirki-customizer-installer { margin-left: -15px; height: 158px; }
-				</style>
-				<?php $plugins   = get_plugins(); ?>
-				<?php $installed = false; ?>
-				<?php foreach ( $plugins as $plugin ) : ?>
-					<?php if ( 'Kirki' == $plugin['Name'] || 'Kirki Toolkit' == $plugin['Name'] ) : ?>
-						<?php $installed = true; ?>
-					<?php endif; ?>
-				<?php endforeach; ?>
-
-				<?php if ( ! $installed ) : ?>
-
-					<script>
-					var installerStyles = '<style>#plugin-information-tabs,#plugin-information-content {display:none !important;}</style>';
-					jQuery('iframe#kirki-customizer-installer').load( function() {
-						jQuery('iframe#kirki-customizer-installer').contents().find("head").append( installerStyles );
-					});
-					</script>
-					<iframe id="kirki-customizer-installer" src="<?php echo admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=kirki' ); ?>"></iframe>
-				<?php else : ?>
-					<hr>
-					<p><?php printf( __( 'The plugin is installed but not activated. Please <a href="%s">activate it</a>.', 'textdomain' ), admin_url( 'plugins.php' ) ); ?></p>
-				<?php endif;
-			}
-		}
-
-	}
-
-	if ( ! function_exists( 'kirki_installer_register' ) ) {
-		/**
-		 * Registers the section, setting & control for the kirki installer.
-		 */
-		function kirki_installer_register( $wp_customize ) {
-			// Add the section/
-			// You can add your description here.
-			// Please note that the title will not be displayed.
-			$wp_customize->add_section( 'kirki_installer', array(
-				'title'       => '',
-				'description' => esc_attr__( 'If you want to take full advantage of the options this theme has to provide, please install the Kirki plugin.', 'textdomain' ),
-				'priority'    => -10,
-				'capability'  => 'install_plugins',
-			) );
-			// Add the setting. This is required by WordPress in order to add our control.
-			$wp_customize->add_setting( 'kirki_installer', array(
-				'type'              => 'theme_mod',
-				'capability'        => 'install_plugins',
-				'default'           => '',
-				'sanitize_callback' => '__return_true',
-			));
-			// Add our control. This is required in order to show the section.
-			$wp_customize->add_control( new Kirki_Installer_Control( $wp_customize, 'kirki_installer', array(
-				'section' => 'kirki_installer',
-			) ) );
-
-		}
-		add_action( 'customize_register', 'kirki_installer_register' );
-	}
-}
-```
-
-### Using TGMPA
-
-For instructions on how to use TGMPA, please [visit the TGMPA site](http://tgmpluginactivation.com/).
-
-### Embedding in your theme
-
-However in some cases we understand that you may need to instead include it as a library in your theme/plugin.
-
-In order to properly do that, please follow the instructions below:
-
-* Copy the plugin folder in your theme (for example in *{theme_folder}/includes/kirki*).
-* Include the main plugin file in your theme's functions.php file:
-
-```php
-<?php include_once( dirname( __FILE__ ) . '/includes/kirki/kirki.php' ); ?>
-```
-
-Kirki will auto-detect that it's embedded in a theme and the URLs & paths will automatically be adjusted.
-
-If for some reason the URLs are not properly detected in your setup, you can add the following code in your theme:
-
-```php
-<?php
+<pre>
 if ( ! function_exists( 'my_theme_kirki_update_url' ) ) {
     function my_theme_kirki_update_url( $config ) {
         $config['url_path'] = get_stylesheet_directory_uri() . '/inc/kirki/';
@@ -137,17 +60,12 @@ if ( ! function_exists( 'my_theme_kirki_update_url' ) ) {
     }
 }
 add_filter( 'kirki/config', 'my_theme_kirki_update_url' );
-?>
-```
+</pre>
 
-### Translating Kirki strings in embedded theme
-
-In case you decide to include Kirki in your theme, you may want to consider adding the translations there as well so that they use your own textdomain.
-
-You can do that using the `kirki/{$config_id}/l10n` filter.
-
-```php
-<?php
+		<h4>Translating Kirki strings in embedded theme</h4>
+		<p>In case you decide to include Kirki in your theme, you may want to consider adding the translations there as well so that they use your own textdomain.</p>
+		</p>You can do that using the <code>kirki/{$config_id}/l10n</code> filter.</p>
+<pre>
 add_filter( 'kirki/my_config/l10n', function( $l10n ) {
 
 	$l10n['background-color']      => esc_attr__( 'Background Color', my_textdomain );
@@ -241,5 +159,7 @@ add_filter( 'kirki/my_config/l10n', function( $l10n ) {
 	return $l10n;
 
 } );
-?>
-```
+</pre>
+	
+	</div>
+</div>
