@@ -44,7 +44,10 @@ class Kirki_Output_Control_Typography extends Kirki_Output {
 		if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['letter-spacing'] = $value['letter-spacing'];
 		}
-
+		// Take care of color
+		if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
+			$this->styles[ $output['media_query'] ][ $output['element'] ]['color'] = $value['color'];
+		}
 	}
 
 }
