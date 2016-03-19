@@ -141,4 +141,16 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+.important-news {
+	padding: 1rem;
+	text-align: center;
+	background-color: #ec5840;
+	color: #fff;
+	a {
+		color: #fff;
+		text-decoration: underline;
+		font-weight: bold;
+	}
+}
+
 @import "code-highlight";
