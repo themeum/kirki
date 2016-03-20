@@ -24,8 +24,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
 
+			$l10n = Kirki_l10n::get_strings();
 			if ( empty( $this->button_label ) ) {
-				$this->button_label = esc_attr__( 'Add new row', 'kirki' );
+				$this->button_label = $l10n['add-new-row'];
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
@@ -77,6 +78,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function render_content() { ?>
+			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
@@ -92,7 +94,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 			<ul class="repeater-fields"></ul>
 
-			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), $this->choices['limit'] ); ?></p>
+			<?php if ( isset( $this->choices['limit'] ) ) : ?>
+				<p class="limit"><?php printf( $l10n['limit-rows'], $this->choices['limit'] ); ?></p>
+			<?php endif; ?>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
 			<?php
