@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.3  
+**Stable tag:** 2.2.4  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,16 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.2.4 ###
+
+March 20, 2016, dev time: 6 hours
+
+* FIX: Removed unnecessary CSS echoed by the `typography` control
+* FIX: Color Calculation class improvements
+* FIX: CSS improvement for `toggle` controls
+* NEW: Added `dashicons` field
+* NEW: Added the ability to limit the number of rows in `repeater` controls (props @fovoc)
 
 ### 2.2.3 ###
 
