@@ -149,112 +149,143 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Gets the brightness of the $hex color.
 		 *
-		 * @param   string      The hex value of a color
-		 *
+		 * @var     string      The hex value of a color
 		 * @return  int         value between 0 and 255
 		 */
-		public static function get_brightness( $color ) {
-			$obj = ariColor::newColor( $color );
-			return intval( ( 255 * $obj->brightness['total'] ) / 100 );;
+		public static function get_brightness( $hex ) {
+			$hex = self::sanitize_hex( $hex, false );
+			// returns brightness value from 0 to 255
+			return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
 		}
-
 		/**
 		 * Adjusts brightness of the $hex color.
 		 *
 		 * @param   string  $hex    The hex value of a color
 		 * @param   integer $steps  should be between -255 and 255. Negative = darker, positive = lighter
-		 *
 		 * @return  string          returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
-			// Create the color object
-			$obj = ariColor::newColor( $hex );
-			// If steps = 0 then no modification is required.
-			// Return sanitized value
-			if ( 0 == $steps ) {
-				return $obj->toCSS( 'hex' );
-			}
-			// Get original color brightness
-			$brightness = $obj->brightness['total'];
-			// Calculate new brightness
-			$new_brightness = min( 255, max( 0, $brightness + $steps ) );
-			// create a new object using the new brightness
-			$new_obj = $obj->getNew( 'brightness', $new_brightness );
-			// Return a sanitized hex of the new
-			return $new_obj->toCSS( 'hex' );
+			$hex = self::sanitize_hex( $hex, false );
+			$steps = max( -255, min( 255, $steps ) );
+			// Adjust number of steps and keep it inside 0 to 255
+			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
+			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
+			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
+			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
+			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 		}
-
 		/**
 		 * Mixes 2 hex colors.
 		 * the "percentage" variable is the percent of the first color
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
-		 * @param   string       $color1
-		 * @param   string       $color2
+		 * @param   string|false $hex1
+		 * @param   string       $hex2
 		 * @param   integer      $percentage        a value between 0 and 100
-		 *
 		 * @return  string       returns hex color
 		 */
-		public static function mix_colors( $color1, $color2, $percentage ) {
-			$obj_1     = ariColor::newColor( $color1 );
-			$obj_2     = ariColor::newColor( $color2 );
-			$new_color = ariColor::newColor( array(
-				( $percentage * $obj_1->red + ( 100 - $percentage ) * $obj_2->red ) / 100,
-				( $percentage * $obj_1->green + ( 100 - $percentage ) * $obj_2->green ) / 100,
-				( $percentage * $obj_1->blue + ( 100 - $percentage ) * $obj_2->blue ) / 100,
-			) );
-			return $new_color->toCSS( 'hex' );
+		public static function mix_colors( $hex1, $hex2, $percentage ) {
+			$hex1 = self::sanitize_hex( $hex1, false );
+			$hex2 = self::sanitize_hex( $hex2, false );
+			$red   = ( $percentage * hexdec( substr( $hex1, 0, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 0, 2 ) ) ) / 100;
+			$green = ( $percentage * hexdec( substr( $hex1, 2, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 2, 2 ) ) ) / 100;
+			$blue  = ( $percentage * hexdec( substr( $hex1, 4, 2 ) ) + ( 100 - $percentage ) * hexdec( substr( $hex2, 4, 2 ) ) ) / 100;
+			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
+			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 		}
-
 		/**
-		 * Convert color to hsl
+		 * Convert hex color to hsv
 		 *
-		 * @param   mixed   color
-		 *
-		 * @return  string  css-formated hsl color
+		 * @var     string      The hex value of color 1
+		 * @return  array       returns array( 'h', 's', 'v' )
 		 */
-		public static function to_hsl( $color ) {
-			$obj = ariColor::newColor( $color );
-			return $obj->toCSS( 'hsl' );
+		public static function hex_to_hsv( $hex ) {
+			$rgb = (array) (array) self::get_rgb( self::sanitize_hex( $hex, false ) );
+			return self::rgb_to_hsv( $rgb );
 		}
-
+		/**
+		 * Convert hex color to hsv
+		 *
+		 * @var     array       The rgb color to conver array( 'r', 'g', 'b' )
+		 * @return  array       returns array( 'h', 's', 'v' )
+		 */
+		public static function rgb_to_hsv( $color = array() ) {
+			$var_r = ( $color[0] / 255 );
+			$var_g = ( $color[1] / 255 );
+			$var_b = ( $color[2] / 255 );
+			$var_min = min( $var_r, $var_g, $var_b );
+			$var_max = max( $var_r, $var_g, $var_b );
+			$del_max = $var_max - $var_min;
+			$h = 0;
+			$s = 0;
+			$v = $var_max;
+			if ( 0 != $del_max ) {
+				$s = $del_max / $var_max;
+				$del_r = ( ( ( $var_max - $var_r ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+				$del_g = ( ( ( $var_max - $var_g ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+				$del_b = ( ( ( $var_max - $var_b ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+				if ( $var_r == $var_max ) {
+					$h = $del_b - $del_g;
+				} elseif ( $var_g == $var_max ) {
+					$h = ( 1 / 3 ) + $del_r - $del_b;
+				} elseif ( $var_b == $var_max ) {
+					$h = ( 2 / 3 ) + $del_g - $del_r;
+				}
+				if ( $h < 0 ) {
+					$h++;
+				}
+				if ( $h > 1 ) {
+					$h--;
+				}
+			}
+			return array( 'h' => round( $h, 2 ), 's' => round( $s, 2 ), 'v' => round( $v, 2 ) );
+		}
 		/*
 		 * This is a very simple algorithm that works by summing up the differences between the three color components red, green and blue.
 		 * A value higher than 500 is recommended for good readability.
 		 */
 		public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj_1 = ariColor::newColor( $color_1 );
-			$obj_2 = ariColor::newColor( $color_2 );
-
-			$r_diff = max( $obj_1->red, $obj_2->red ) - min( $obj_1->red, $obj_2->red );
-			$g_diff = max( $obj_1->green, $obj_2->green ) - min( $obj_1->green, $obj_2->green );
-			$b_diff = max( $obj_1->blue, $obj_2->blue ) - min( $obj_1->blue, $obj_2->blue );
-
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
+			$color_1_rgb = self::get_rgb( $color_1 );
+			$color_2_rgb = self::get_rgb( $color_2 );
+			$r_diff = max( $color_1_rgb[0], $color_2_rgb[0] ) - min( $color_1_rgb[0], $color_2_rgb[0] );
+			$g_diff = max( $color_1_rgb[1], $color_2_rgb[1] ) - min( $color_1_rgb[1], $color_2_rgb[1] );
+			$b_diff = max( $color_1_rgb[2], $color_2_rgb[2] ) - min( $color_1_rgb[2], $color_2_rgb[2] );
 			$color_diff = $r_diff + $g_diff + $b_diff;
-
 			return $color_diff;
 		}
-
 		/*
 		 * This function tries to compare the brightness of the colors.
 		 * A return value of more than 125 is recommended.
 		 * Combining it with the color_difference function above might make sense.
 		 */
 		public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj1 = ariColor::newColor( $color_1 );
-			$obj2 = ariColor::newColor( $color_2 );
-			return intval( abs( $obj1->brightness['total'] - $obj2->brightness['total'] ) );
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
+			$color_1_rgb = self::get_rgb( $color_1 );
+			$color_2_rgb = self::get_rgb( $color_2 );
+			$br_1 = ( 299 * $color_1_rgb[0] + 587 * $color_1_rgb[1] + 114 * $color_1_rgb[2] ) / 1000;
+			$br_2 = ( 299 * $color_2_rgb[0] + 587 * $color_2_rgb[1] + 114 * $color_2_rgb[2] ) / 1000;
+			return intval( abs( $br_1 - $br_2 ) );
 		}
-
 		/*
-		 * Uses the ligghtness to calculate the difference between the given colors.
+		 * Uses the luminosity to calculate the difference between the given colors.
 		 * The returned value should be bigger than 5 for best readability.
 		 */
-		public static function lightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj1 = ariColor::newColor( $color_1 );
-			$obj2 = ariColor::newColor( $color_2 );
-			return abs( $obj1->lightness - $obj2->lightness );
+		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
+			$color_1_rgb = self::get_rgb( $color_1 );
+			$color_2_rgb = self::get_rgb( $color_2 );
+			$l1 = 0.2126 * pow( $color_1_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_1_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_1_rgb[2] / 255, 2.2 );
+			$l2 = 0.2126 * pow( $color_2_rgb[0] / 255, 2.2 ) + 0.7152 * pow( $color_2_rgb[1] / 255, 2.2 ) + 0.0722 * pow( $color_2_rgb[2] / 255, 2.2 );
+			$lum_diff = ( $l1 > $l2 ) ? ( $l1 + 0.05 ) / ( $l2 + 0.05 ) : ( $l2 + 0.05 ) / ( $l1 + 0.05 );
+			return round( $lum_diff, 2 );
 		}
-
 	}
 }
