@@ -59,7 +59,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			if ( is_string( $color ) && 'transparent' == trim( $color ) ) {
 				return 'transparent';
 			}
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			if ( 'auto' == $mode ) {
 				$mode = $obj->mode;
 			}
@@ -75,7 +75,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  mixed       array|string
 		 */
 		public static function get_rgb( $color, $implode = false ) {
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			if ( $implode ) {
 				return $obj->toCSS( 'rgb' );
 			}
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  int|float  The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			return $obj->alpha;
 		}
 
@@ -114,7 +114,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string
 		 */
 		public static function get_rgba( $color = '#fff', $alpha = 1 ) {
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			if ( 1 == $alpha ) {
 				return $obj->toCSS( 'rgba' );
 			}
@@ -142,7 +142,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string			The corresponding RGB string.
 		 */
 		public static function rgba_to_rgb( $color ) {
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			return $obj->toCSS( 'rgb' );
 		}
 
@@ -154,8 +154,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  int         value between 0 and 255
 		 */
 		public static function get_brightness( $color ) {
-			$obj = kirki_wp_color( $color );
-			return $obj->brightness['total'];
+			$obj = ariColor::newColor( $color );
+			return intval( ( 255 * $obj->brightness['total'] ) / 100 );;
 		}
 
 		/**
@@ -167,13 +167,20 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string          returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
-			$obj = kirki_wp_color( $hex );
+			// Create the color object
+			$obj = ariColor::newColor( $hex );
+			// If steps = 0 then no modification is required.
+			// Return sanitized value
 			if ( 0 == $steps ) {
 				return $obj->toCSS( 'hex' );
 			}
-			$new_brightness = ( 0 < $steps ) ? $obj->brightness['total'] - $steps : $obj->brightness['total'] + $steps;
-			$new_brightness = max( 0, min( 255, $new_brightness ) );
+			// Get original color brightness
+			$brightness = $obj->brightness['total'];
+			// Calculate new brightness
+			$new_brightness = min( 255, max( 0, $brightness + $steps ) );
+			// create a new object using the new brightness
 			$new_obj = $obj->getNew( 'brightness', $new_brightness );
+			// Return a sanitized hex of the new
 			return $new_obj->toCSS( 'hex' );
 		}
 
@@ -189,9 +196,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string       returns hex color
 		 */
 		public static function mix_colors( $color1, $color2, $percentage ) {
-			$obj_1     = kirki_wp_color( $color1 );
-			$obj_2     = kirki_wp_color( $color2 );
-			$new_color = kirki_wp_color( array(
+			$obj_1     = ariColor::newColor( $color1 );
+			$obj_2     = ariColor::newColor( $color2 );
+			$new_color = ariColor::newColor( array(
 				( $percentage * $obj_1->red + ( 100 - $percentage ) * $obj_2->red ) / 100,
 				( $percentage * $obj_1->green + ( 100 - $percentage ) * $obj_2->green ) / 100,
 				( $percentage * $obj_1->blue + ( 100 - $percentage ) * $obj_2->blue ) / 100,
@@ -207,7 +214,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * @return  string  css-formated hsl color
 		 */
 		public static function to_hsl( $color ) {
-			$obj = kirki_wp_color( $color );
+			$obj = ariColor::newColor( $color );
 			return $obj->toCSS( 'hsl' );
 		}
 
@@ -216,8 +223,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * A value higher than 500 is recommended for good readability.
 		 */
 		public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj_1 = kirki_wp_color( $color_1 );
-			$obj_2 = kirki_wp_color( $color_2 );
+			$obj_1 = ariColor::newColor( $color_1 );
+			$obj_2 = ariColor::newColor( $color_2 );
 
 			$r_diff = max( $obj_1->red, $obj_2->red ) - min( $obj_1->red, $obj_2->red );
 			$g_diff = max( $obj_1->green, $obj_2->green ) - min( $obj_1->green, $obj_2->green );
@@ -234,8 +241,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Combining it with the color_difference function above might make sense.
 		 */
 		public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj1 = kirki_wp_color( $color_1 );
-			$obj2 = kirki_wp_color( $color_2 );
+			$obj1 = ariColor::newColor( $color_1 );
+			$obj2 = ariColor::newColor( $color_2 );
 			return intval( abs( $obj1->brightness['total'] - $obj2->brightness['total'] ) );
 		}
 
@@ -244,8 +251,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * The returned value should be bigger than 5 for best readability.
 		 */
 		public static function lightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$obj1 = kirki_wp_color( $color_1 );
-			$obj2 = kirki_wp_color( $color_2 );
+			$obj1 = ariColor::newColor( $color_1 );
+			$obj2 = ariColor::newColor( $color_2 );
 			return abs( $obj1->lightness - $obj2->lightness );
 		}
 
