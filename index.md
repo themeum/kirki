@@ -69,6 +69,10 @@ premium_themes:
     market: ThemeForest
     url: http://themeforest.net/item/almond-inspiring-blog-wordpress-theme/12684784
     thumb: https://image-tf.s3.envato.com/files/163387743/preview.__large_preview.jpg
+  - name: Darina
+    market: ThemeForest
+    url: http://themeforest.net/item/darina-elegant-minimal-blog-theme/14345937
+    thumb: https://image-tf.s3.envato.com/files/177891615/darina-preview.__large_preview.jpg
 free_themes:
   - name: Agama
     url: https://wordpress.org/themes/agama/
@@ -182,6 +186,10 @@ Add Google Fonts with our [typography field](/docs/controls/typography), add [to
 		</div>
 	{% endfor %}
 </div>
+
+Are you a theme author? [Tell us about your project](mailto:aristath@gmail.com)!
+
+
 <!-- <div class="awesome-themes row small-up-2 large-up-3">
 	<h3>Awesome Free themes built with Kirki:</h3>
 	{% for theme in page.free_themes %}
