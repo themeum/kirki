@@ -2,6 +2,20 @@
 // toggle controls
 /////////////////////
 .customize-control-toggle {
+
+	label {
+		display: flex;
+		flex-wrap: wrap;
+
+		.customize-control-title {
+			width: calc(100% - 55px);
+		}
+
+		.description {
+			order: 99;
+		}
+
+	}
 	input[type="checkbox"] {
 		display: none;
 	}
@@ -61,10 +75,5 @@
 				transform: translate3d(100%, -50%, 0) scale(3);
 			}
 		}
-	}
-
-	.no-description .customize-control-title {
-		width: calc(100% - 50px);
-		float: left;
 	}
 }

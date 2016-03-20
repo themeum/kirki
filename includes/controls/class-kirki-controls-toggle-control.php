@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
-			<label for="toggle_{{ data.id }}" class="<# if ( data.description ) { #>has-description<# } else { #>no-description<# } #>">
+			<label for="toggle_{{ data.id }}">
 				<span class="customize-control-title">
 					{{{ data.label }}}
 				</span>
