@@ -153,6 +153,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'ultra-bold'            => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
 				'ultra-bold-italic'     => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
 				'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
+				'add-new-row'           => esc_attr__( 'Add new row', 'kirki' ),
 				'limit-rows'            => esc_attr__( 'Limit: %s rows', 'kirki' ),
 			);
 
