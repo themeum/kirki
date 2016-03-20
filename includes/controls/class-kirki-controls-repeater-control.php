@@ -77,6 +77,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function render_content() { ?>
+			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
@@ -93,7 +94,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			<ul class="repeater-fields"></ul>
 
 			<?php if ( isset( $this->choices['limit'] ) ) : ?>
-				<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), $this->choices['limit'] ); ?></p>
+				<p class="limit"><?php printf( $l10n['limit-rows'], $this->choices['limit'] ); ?></p>
 			<?php endif; ?>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
