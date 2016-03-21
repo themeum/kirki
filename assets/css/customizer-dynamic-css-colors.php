@@ -1,3 +1,6 @@
+<?php
+
+return '
 /** Generic background color **/
 .wp-full-overlay-sidebar {
   background: COLOR_BACK;
@@ -105,3 +108,4 @@ h3.customize-section-title {
 #customize-controls .customize-info .preview-notice {
   color: COLOR_FONT;
 }
+';

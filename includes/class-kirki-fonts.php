@@ -85,10 +85,8 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 
 			if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-				$json_path = wp_normalize_path( dirname( dirname( __FILE__ ) ) . '/assets/json/webfonts.json' );
-				$json      = file_get_contents( $json_path );
-				// Get the list of fonts from our json file and convert to an array
-				$fonts = json_decode( $json, true );
+				$fonts_path = wp_normalize_path( dirname( dirname( __FILE__ ) ) . '/assets/json/webfonts.php' );
+				$fonts      = include $fonts_path;
 
 				$google_fonts = array();
 				if ( is_array( $fonts ) ) {
