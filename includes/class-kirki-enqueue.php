@@ -23,6 +23,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		public function __construct() {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ) );
 			add_action( 'customize_controls_print_scripts', array( $this, 'branding' ) );
+			add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 		}
 
 		public function customize_controls_enqueue_scripts() {
@@ -138,6 +139,18 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
 				wp_enqueue_script( 'kirki-branding' );
 			}
+		}
+
+		public function postmessage() {
+			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/kirki-postmessage.js', array( 'customize-preview' ), time(), true );
+			$js_vars_fields = array();
+			$fields = Kirki::$fields;
+			foreach ( $fields as $field ) {
+				if ( isset( $field['transport'] ) && 'postMessage' == $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
+					$js_vars_fields[ $field['settings'] ] = $field['js_vars'];
+				}
+			}
+			wp_localize_script( 'kirki_auto_postmessage', 'js_vars', $js_vars_fields );
 		}
 
 	}
