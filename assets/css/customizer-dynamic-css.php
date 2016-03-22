@@ -1,3 +1,4 @@
+<?php
 return '
 /** Button styles **/
 .wp-core-ui .button-primary-disabled,
