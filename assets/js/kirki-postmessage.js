@@ -51,7 +51,7 @@
 
 							// Value is an object
 							} else if ( 'object' == typeof newval ) {
-								$.each( jsVars, function( subValueKey, subValueValue ) {
+								$.each( newval, function( subValueKey, subValueValue ) {
 									$( args.element ).css( subValueKey, args.prefix + subValueValue + args.units + args.suffix );
 								} );
 							}
