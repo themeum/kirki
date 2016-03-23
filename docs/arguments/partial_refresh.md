@@ -37,7 +37,9 @@ add_action( 'customize_register', 'my_register_blogname_partials' );
 ?>
 ```
 
-Kirki simplifies that process and you can add the arguments for partial refreshes in your fields using the `partial_refresh` argument. The example from above would be come like this:
+
+Kirki simplifies that process and you can add the arguments for partial refreshes in your fields using the `partial_refresh` argument. The example from above when combined with a text field would become like this:
+
 
 ```php
 <?php
@@ -63,5 +65,3 @@ Kirki::add_field( 'my_config', array(
 	),
 ) );
 ```
-
-The above code creates the setting, creates the control and adds the `partial_refresh` argument, all combined in 1.
