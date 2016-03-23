@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,18 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.2.5 =
+
+March 23, 2016, dev time: 7 hours
+
+* FIX: Google fonts now loaded via a PHP array instead of a JSON file.
+* FIX: CSS issue due to escaped quotes on standard fonts.
+* FIX: Issue when using `units` on `js_vars` combined with the `style` method.
+* FIX: Missing textdomain on a string.
+* NEW: Refactored postMessage scripts.
+* NEW: Allow passing options to iris using the `choices` argument on color controls.
+* NEW: Allow disabling the custom loader using the `disable_loader` argument in the `kirki/config` filter.
 
 = 2.2.4 =
 
