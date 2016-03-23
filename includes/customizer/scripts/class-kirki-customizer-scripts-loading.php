@@ -8,6 +8,13 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 				return;
 			}
 			/**
+			 * Allow disabling the custom loader using the kirki/config filter
+			 */
+			$config = apply_filters( 'kirki/config', array() );
+			if ( isset( $config['disable_loader'] ) && true === $config['disable_loader'] ) {
+				return;
+			}
+			/**
 			 * Add the "loading" icon
 			 */
 			add_action( 'wp_footer', array( $this, 'add_loader_to_footer' ) );
