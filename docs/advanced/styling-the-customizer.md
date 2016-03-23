@@ -7,8 +7,16 @@ edit: docs/advanced/styling-the-customizer.md
 Kirki allows you to change the styling of the customizer using the `kirki/config` filter:
 
 ```php
+<?php
 /**
- * Configuration sample for the Kirki Customizer
+ * Configuration sample for the Kirki Customizer.
+ * The function's argument is an array of existing config values
+ * The function returns the array with the addition of our own arguments
+ * and then that result is used in the kirki/config filter
+ *
+ * @param $config the configuration array
+ *
+ * @return array
  */
 function kirki_demo_configuration_sample_styling( $config ) {
 	return wp_parse_args( array(
