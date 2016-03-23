@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	{% include head.html %}
+	<body>
+		{% include header.html %}
+		<div id="main" class="row">
+			<div class="large-12 columns">
+				<article>
+					<div class="row">
+						{% if page.sections %}<div class="large-9 columns">{% else %}<div class="large-12 columns">{% endif %}
+							<h1 style="text-align: center; font-size: 2rem;">{{ page.title }}</h1>
+							<hr>
+							<div style="max-width: 50rem; font-size: 1.3rem; margin: auto;">
+								{{ content }}
+								<hr>
+								<div class="share-page">
+									<a class="hollow button small secondary" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" rel="nofollow" target="_blank" title="Share on Twitter">Share on Twitter</a>
+									<a class="hollow button small secondary" href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Facebook">Share on Facebook</a>
+									<a class="hollow button small secondary" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Google+">Share on Google+</a>
+								</div>
+								<hr>
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//kirki-wp.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+		{% include footer.html %}
+
+	</body>
+</html>

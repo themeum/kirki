@@ -169,8 +169,17 @@ Easily add configurations for your project, create panels, sections and add fiel
 Add Google Fonts with our [typography field](/docs/controls/typography), add [tooltips](/docs/arguments/tooltip) to help your users and build awesome products!
 
 <a href="https://github.com/aristath/kirki" class="success button">Fork on Github</a>
-
 <hr>
+
+## News:
+<ul>
+	{% for post in site.posts %}
+		<li><h4><a href="{{ post.url }}">{{ post.title }}</a></h4></li>
+		<small><time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time></small>
+	{% endfor %}
+</ul>
+<hr>
+
 <div class="awesome-themes row small-up-1 medium-up-2 large-up-3">
 	<h3>Awesome themes built with Kirki:</h3>
 	<hr>
