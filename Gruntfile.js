@@ -72,6 +72,18 @@ module.exports = function(grunt) {
 				},
 			},
 		},
+		// Convert json array to PHP array
+		json2php: {
+			convert: {
+				expand: true,
+				ext: '.php',
+				src: ['assets/json/webfonts.json']
+			}
+		},
+		// Delete the json array
+		clean: [
+			'assets/json/webfonts.json'
+		],
 		// Watch task (run with "grunt watch")
   		watch: {
 			css: {
@@ -97,8 +109,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
+	grunt.loadNpmTasks('grunt-json2php');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'makepot', 'wp_readme_to_markdown']);
-	grunt.registerTask('googlefonts', ['curl:google-fonts-source']);
+	grunt.registerTask('googlefonts', ['curl:google-fonts-source', 'json2php', 'clean']);
 
 };

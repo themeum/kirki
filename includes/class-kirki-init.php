@@ -147,10 +147,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 					 */
 					new Kirki_Control( $args );
 					/**
-					 * Create the scripts for postMessage to properly work
-					 */
-					Kirki_Customizer_Scripts_PostMessage::generate_script( $args );
-					/**
 					 * Create the scripts for tooltips.
 					 */
 					Kirki_Customizer_Scripts_Tooltips::generate_script( $args );

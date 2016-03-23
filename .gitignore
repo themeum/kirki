@@ -16,3 +16,7 @@ npm-debug.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Jekyll #
+##########
+_site

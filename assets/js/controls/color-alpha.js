@@ -7,6 +7,10 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend( {
 		var picker    = this.container.find( '.kirki-color-control' );
 		var new_color = picker.val();
 
+		if ( undefined !== control.params.choices ) {
+			picker.wpColorPicker( control.params.choices );
+		}
+
 		picker.wpColorPicker({
 			change: function( event, ui ) {
 				setTimeout( function(){

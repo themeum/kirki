@@ -1,6 +1,6 @@
 {
   "name": "kirki-toolkit",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "author": "Aristeides Stathopoulos",
   "homepage": "https://kirki.org",
   "license": "MIT",
@@ -29,6 +29,8 @@
     "grunt-wp-i18n": "^0.5.3",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-curl": "2.2.0",
-    "grunt-wp-readme-to-markdown": "^1.0.0"
+    "grunt-wp-readme-to-markdown": "^1.0.0",
+    "grunt-json2php":"^0.1.4",
+    "grunt-contrib-clean":"^1.0.0"
   }
 }

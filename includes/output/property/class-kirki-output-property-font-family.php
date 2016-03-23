@@ -6,6 +6,10 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 
 		$google_fonts_array = Kirki_Fonts::get_google_fonts();
 		$backup_fonts       = Kirki_Fonts::get_backup_fonts();
+
+		// hack for standard fonts
+		$this->value = str_replace( '&quot;', '"', $this->value );
+
 		// Add backup font
 		if ( Kirki_Fonts::is_google_font( $this->value ) ) {
 

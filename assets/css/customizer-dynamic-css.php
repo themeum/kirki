@@ -1,3 +1,5 @@
+<?php
+return '
 /** Button styles **/
 .wp-core-ui .button-primary-disabled,
 .wp-core-ui .button-primary.disabled,
@@ -63,3 +65,4 @@
 .customize-control-palette label.ui-state-active.ui-button.ui-widget span.ui-button-text {
   border-color: COLOR_ACCENT;
 }
+';

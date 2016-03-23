@@ -148,14 +148,12 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			$config = apply_filters( 'kirki/config', array() );
 			$styles = '';
 
-			Kirki_Helper::init_filesystem();
-			global $wp_filesystem;
-
 			/**
 			 * Include the width CSS if necessary
 			 */
 			if ( isset( $config['width'] ) ) {
-				$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css-width.css' );
+				$path = wp_normalize_path( Kirki::$path . '/assets/css/customizer-dynamic-css-width.php' );
+				$styles .= include $path;
 				/**
 				 * Replace width placeholder with actual value
 				 */
@@ -166,13 +164,15 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			 * Include the color modifications CSS if necessary
 			 */
 			if ( false !== $this->color_back && false !== $this->color_font ) {
-				$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css-colors.css' );
+				$path = wp_normalize_path( Kirki::$path . '/assets/css/customizer-dynamic-css-colors.php' );
+				$styles .= include $path;
 			}
 
 			/**
 			 * Include generic CSS for controls
 			 */
-			$styles .= $wp_filesystem->get_contents( Kirki::$path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'customizer-dynamic-css.css' );
+			$path = wp_normalize_path( Kirki::$path . '/assets/css/customizer-dynamic-css.php' );
+			$styles .= include $path;
 
 			return $styles;
 
