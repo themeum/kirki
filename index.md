@@ -1,6 +1,14 @@
 ---
 layout: docs
 premium_themes:
+  - name: Elon
+    market: Currl
+    url: https://currl.com/
+    thumb: https://currl.com/wp-content/uploads/2016/03/elon.jpeg
+  - name: Verb
+    market: Currl
+    url: https://currl.com/
+    thumb: https://currl.com/wp-content/uploads/2016/03/verb.jpeg
   - name: Primrose
     market: ThemeForest
     url: http://themeforest.net/item/primrose-a-minimal-woocommerce-wordpress-theme-for-creative-ecommerce-websites/14993323
