@@ -613,8 +613,8 @@ span.CodeMirror-selectedtext {
 .customize-control-color-palette .color-palette-color {
   color: transparent;
   display: block;
-  width: 31px;
-  height: 31px;
+  width: 42px;
+  height: 42px;
   overflow: hidden;
   border-radius: 50%;
   -webkit-box-shadow: inset 3px 3px 13px 2px rgba(0, 0, 0, 0.22);
