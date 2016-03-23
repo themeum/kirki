@@ -1,0 +1,60 @@
+<?php
+/**
+ * palette Customizer Control.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @since       1.0
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
+	class Kirki_Controls_Color_Palette_Control extends Kirki_Customize_Control {
+
+		public $type = 'color-palette';
+
+		public function enqueue() {
+			wp_enqueue_script( 'jquery-ui-button' );
+			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-palette', 'controls/palette', array( 'jquery', 'jquery-ui-button' ) );
+		}
+
+		public function to_json() {
+			parent::to_json();
+			// If no palette has been defined, use Material Design primary colors
+			if ( empty( $this->json['choices'] ) ) {
+				$this->json['choices'] = array(
+					'#FFFFFF', '#000000', '#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B',
+				);
+			}
+		}
+
+		protected function content_template() { ?>
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
+			<# } #>
+			<# if ( ! data.choices ) { return; } #>
+			<span class="customize-control-title">
+				{{ data.label }}
+			</span>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
+			<div id="input_{{ data.id }}" class="colors-wrapper">
+				<# for ( key in data.choices ) { #>
+					<input type="radio" value="{{ data.choices[ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices[ key ] ) { #> checked<# } #>>
+						<label for="{{ data.id }}{{ key }}">
+							<span class="color-palette-color" style='background: {{ data.choices[ key ] }}'>{{ data.choices[ key ] }}</span>
+						</label>
+					</input>
+				<# } #>
+			</div>
+			<?php
+		}
+	}
+}
