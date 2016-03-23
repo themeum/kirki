@@ -7,23 +7,18 @@ edit: docs/advanced/styling-the-customizer.md
 Kirki allows you to change the styling of the customizer using the `kirki/config` filter:
 
 ```php
-<?php
 /**
  * Configuration sample for the Kirki Customizer
  */
 function kirki_demo_configuration_sample_styling( $config ) {
-
-    $config['logo_image']   = 'http://kirki.org/img/kirki-new-logo-white.png';
-    $config['description']  = __( 'The theme description.', 'kirki' );
-    $config['color_accent'] = '#00bcd4';
-    $config['color_back']   = '#455a64';
-    $config['width']        = '20%';
-
-    return $config;
-
+	return wp_parse_args( array(
+		'logo_image'   => 'https://kirki.org/images/logo.png',
+		'description'  => esc_attr__( 'The theme description.', 'kirki' ),
+		'color_accent' => '#0091EA',
+		'color_back'   => '#FFFFFF',
+	), $config );
 }
 add_filter( 'kirki/config', 'kirki_demo_configuration_sample_styling' );
-?>
 ```
 
 * `logo_image`: Change the logo image (URL). If omitted, the default theme info will be displayed. You may want to use a relatively large image (for example 700px wide) so that it's properly displayed on retina screens as well.
