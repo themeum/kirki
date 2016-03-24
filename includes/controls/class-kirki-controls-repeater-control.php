@@ -116,7 +116,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				<# var field; var index = data['index']; #>
 
 
-				<li class="repeater-row" data-row="{{{ index }}}">
+				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
 					<div class="repeater-row-header">
 						<span class="repeater-row-number"></span>

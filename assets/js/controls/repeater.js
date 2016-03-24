@@ -121,6 +121,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             e.preventDefault();
             if ( !limit || control.currentIndex < limit ) {
                 control.addRow();
+                jQuery( control.selector + ' .repeater-row' ).last().toggleClass( 'minimized' );
             } else {
                 jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
             }
