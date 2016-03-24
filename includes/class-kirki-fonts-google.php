@@ -179,7 +179,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					// If this is not a valid variant for this font-family
 					// then unset it and move on to the next one.
 					if ( ! in_array( $variant, $font_variants ) ) {
-						unset( $this->fonts[ $font ][ $variant ] );
+						$variant_key = array_search( $variant, $this->fonts[ $font ] );
+						unset( $this->fonts[ $font ][ $variant_key ] );
 						continue;
 					}
 				}
