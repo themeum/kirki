@@ -710,7 +710,14 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
             if ( !limit || control.currentIndex < limit ) {
                 control.addRow();
             } else {
-                jQuery( control.selector + ' .limit' ).toggleClass( 'highlight' );
+                jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
+            }
+        });
+
+        this.container.on('click', '.repeater-row-remove', function (e) {
+            control.currentIndex--;
+            if ( !limit || control.currentIndex < limit ) {
+                jQuery( control.selector + ' .limit' ).removeClass( 'highlight' );
             }
         });
 
@@ -1039,7 +1046,8 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         this.setValue( currentSettings, true );
 
     }
-});/**
+});
+/**
  * KIRKI CONTROL: KIRKI-SELECT
  */
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend( {
