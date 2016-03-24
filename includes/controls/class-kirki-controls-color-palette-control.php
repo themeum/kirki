@@ -28,7 +28,8 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 			parent::to_json();
 			// If no palette has been defined, use Material Design Palette
 			if ( empty( $this->json['choices'] ) ) {
-				$this->json['choices'] = Kirki_Helper::get_material_design_colors( 'primary' );
+				$this->json['choices']['colors'] = Kirki_Helper::get_material_design_colors( 'primary' );
+				$this->json['choices']['size']   = 42;
 			}
 		}
 
@@ -44,10 +45,10 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 				<span class="description customize-control-description">{{ data.description }}</span>
 			<# } #>
 			<div id="input_{{ data.id }}" class="colors-wrapper">
-				<# for ( key in data.choices ) { #>
-					<input type="radio" value="{{ data.choices[ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices[ key ] ) { #> checked<# } #>>
+				<# for ( key in data.choices['colors'] ) { #>
+					<input type="radio" value="{{ data.choices['colors'][ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices['colors'][ key ] ) { #> checked<# } #>>
 						<label for="{{ data.id }}{{ key }}">
-							<span class="color-palette-color" style='background: {{ data.choices[ key ] }}'>{{ data.choices[ key ] }}</span>
+							<span class="color-palette-color" style='background: {{ data.choices['colors'][ key ] }}; width: {{ data.choices['size'] }}px; height: {{ data.choices['size'] }}px;'>{{ data.choices['colors'][ key ] }}</span>
 						</label>
 					</input>
 				<# } #>
