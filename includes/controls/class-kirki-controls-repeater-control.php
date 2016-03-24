@@ -28,6 +28,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			if ( empty( $this->button_label ) ) {
 				$this->button_label = $l10n['add-new-row'];
 			}
+			if ( isset( $this->choices['labels'] ) ) {
+				if ( isset( $this->choices['labels']['add-new-row'] ) ) {
+					$this->button_label = $this->choices['labels']['add-new-row'];
+				}
+			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
 				$args['fields'] = array();
