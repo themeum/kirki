@@ -235,28 +235,61 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 				),
 			);
 
-			if ( array_key_exists( $context, $colors ) ) {
-				return $colors[ $context ];
-			}
-			if ( 'all' == $context ) {
-				unset( $colors['primary'] );
-				$all_colors = array();
-				foreach ( $colors as $color_family ) {
-					foreach ( $color_family as $color ) {
-						$all_colors[] = $color;
+			switch ( $context ) {
+
+				case '50':
+				case '100':
+				case '200':
+				case '300':
+				case '400':
+				case '500':
+				case '600':
+				case '700':
+				case '800':
+				case '900':
+				case 'A100':
+				case 'A200':
+				case 'A400':
+				case 'A700':
+					if ( 'A100' == $context ) {
+						$key = 10;
+						unset( $colors['grey'] );
+					} elseif ( 'A200' == $context ) {
+						$key = 11;
+						unset( $colors['grey'] );
+					} elseif ( 'A400' == $context ) {
+						$key = 12;
+						unset( $colors['grey'] );
+					} elseif ( 'A700' == $context ) {
+						$key = 13;
+						unset( $colors['grey'] );
+					} else {
+						$key = $context / 100;
 					}
-				}
-				return $all_colors;
-			}
-			if ( is_int( $context ) ) {
-				unset( $colors['primary'] );
-				$position_colors = array();
-				foreach ( $colors as $color_family ) {
-					if ( isset( $color_family[ $context ] ) ) {
-						$position_colors[] = $color_family[ $context ];
+					unset( $colors['primary'] );
+					$position_colors = array();
+					foreach ( $colors as $color_family ) {
+						if ( isset( $color_family[ $key ] ) ) {
+							$position_colors[] = $color_family[ $key ];
+						}
 					}
-				}
-				return $position_colors;
+					return $position_colors;
+				case 'all':
+					unset( $colors['primary'] );
+					$all_colors = array();
+					foreach ( $colors as $color_family ) {
+						foreach ( $color_family as $color ) {
+							$all_colors[] = $color;
+						}
+					}
+					return $all_colors;
+				case 'primary':
+					return $colors['primary'];
+				default:
+					if ( isset( $colors[ $context ] ) ) {
+						return $colors[ $context ];
+					}
+					return $colors['primary'];
 			}
 		}
 

@@ -27,8 +27,10 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 			// If no palette has been defined, use Material Design Palette
-			if ( empty( $this->json['choices'] ) ) {
+			if ( ! isset( $this->json['choices']['colors'] ) || empty( $this->json['choices']['colors'] ) ) {
 				$this->json['choices']['colors'] = Kirki_Helper::get_material_design_colors( 'primary' );
+			}
+			if ( ! isset( $this->json['choices']['size'] ) || empty( $this->json['choices']['size'] ) ) {
 				$this->json['choices']['size']   = 42;
 			}
 		}
