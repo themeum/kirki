@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 #integration-methods.tabs {
 	border: none;
 	border-bottom: 1px solid #e6e6e6;
-	
+
 	.tabs-title > a {
 		font-size: 1rem;
 		&:focus,
@@ -166,6 +166,11 @@ h1, h2, h3, h4, h5, h6 {
 			border-bottom: none;
 		}
 	}
+}
+
+img.field-screenshot {
+	float: right;
+	padding: 0 0 1rem 2rem;
 }
 
 @import "code-highlight";
