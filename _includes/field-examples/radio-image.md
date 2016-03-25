@@ -5,7 +5,7 @@ Kirki::add_field( 'my_config', array(
 	'type'        => 'radio-image',
 	'settings'    => 'my_setting',
 	'label'       => __( 'Radio Control', 'my_textdomain' ),
-	'section'     => 'radio',
+	'section'     => 'my_section',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
