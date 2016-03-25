@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: Use an array of elements. Format <code>$key => $url</code>.
+screenshot: "images/radio-image.png"
 ---

@@ -15,4 +15,5 @@ extra_args:
     required: "no"
     type: int
     description: The number of options users will be able to select simultaneously. Use <code>1</code> for single-select controls (defaults to <code>1</code>).
+screenshot: "images/select.png"
 ---

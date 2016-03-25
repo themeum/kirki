@@ -15,4 +15,5 @@ extra_args:
     required: "no"
     type: array
     description: The array of available checkboxes formatted as <code>$key => $label</code>.
+screenshot: "images/multicheck.png"
 ---

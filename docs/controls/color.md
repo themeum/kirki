@@ -15,4 +15,5 @@ extra_args:
     required: "no"
     type: array
     description: If you want to use RGBA colors, set to <code>array( 'alpha' => true )</code>
+screenshot: "images/color.png"
 ---

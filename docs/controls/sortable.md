@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: An array of all available options, with each option being an array (<code>$key => $label</code>)
+screenshot: "images/sortable.png"
 ---

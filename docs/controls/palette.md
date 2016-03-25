@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: Use an array of elements. Format <code>$key => array( $color1, $color2, $color3 )</code>.
+screenshot: "images/palette.png"
 ---

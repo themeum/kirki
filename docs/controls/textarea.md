@@ -7,4 +7,5 @@ extra_args:
     required: "yes"
     type: string
     description: Set to <code>textarea</code>.
+screenshot: "images/textarea.png"
 ---

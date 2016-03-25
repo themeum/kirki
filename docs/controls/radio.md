@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: Use an array of elements. Format <code>$key => $label</code>.
+screenshot: "images/radio.png"
 ---

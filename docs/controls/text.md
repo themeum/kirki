@@ -7,4 +7,5 @@ extra_args:
     required: "yes"
     type: string
     description: Set to <code>text</code>.
+screenshot: "images/tetx.png"
 ---

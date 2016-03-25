@@ -11,4 +11,5 @@ extra_args:
     required: "no"
     type: array
     description: If you're using switches, you can use this to change the ON/OFF labels.
+screenshot: "images/checkbox.png"
 ---

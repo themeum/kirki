@@ -11,4 +11,5 @@ extra_args:
     required: "no"
     type: array
     description: You can use this to change the ON/OFF labels.
+screenshot: "images/switch.png"
 ---

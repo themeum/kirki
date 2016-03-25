@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: Use it to define the language to be used, the theme, and the area's height.
+screenshot: "images/code.png"
 ---

@@ -11,4 +11,5 @@ extra_args:
     required: "yes"
     type: array
     description: See "Defining active sub-fields" section.
+screenshot: "images/typography.png"
 ---

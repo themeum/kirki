@@ -11,4 +11,5 @@ extra_args:
     required: "yes"
     type: string
     description: Define the URL to an image or use an empty string (<code>'default' => ''</code>).
+screenshot: "images/image.png"
 ---

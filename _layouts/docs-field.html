@@ -24,6 +24,9 @@
 							<div id="field-description" data-magellan-target="field-description">
 								<h2 id="description">Description</h2>
 								<a class="button small hollow secondary improve-section" href="https://github.com/aristath/kirki/edit/gh-pages/_includes/field-descriptions/{{ page.title }}.md">Improve this section</a>
+								{% if page.screenshot %}
+									<img class="field-screenshot" src="{{ site.url }}/{{ page.screenshot }}" role="presentation">
+								{% endif %}
 								{% capture field-description %}
 									{% include field-descriptions/{{ page.title }}.md %}
 								{% endcapture %}

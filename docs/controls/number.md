@@ -11,4 +11,5 @@ extra_args:
     required: "yes"
     type: string|int|float
     description: Define a numeric value.
+screenshot: "images/number.png"
 ---

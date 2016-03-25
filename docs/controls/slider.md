@@ -15,4 +15,5 @@ extra_args:
     required: "yes"
     type: array
     description: Define the minimum value, maximum value, and step. Example <code>'choices' => array( 'min' => '0', 'max' => '100', 'step' => '1' )</code>.
+screenshot: "images/slider.png"
 ---
