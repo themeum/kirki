@@ -8,7 +8,6 @@ Kirki::add_field( 'my_config', array(
 	'section'     => 'my_section',
 	'default'     => 42,
 	'priority'    => 10,
-	'multiple'    => 1,
 ) );
 ?>
 ```
