@@ -2,6 +2,12 @@
 layout: docs
 title: Helper Methods
 sections:
+  - Get the ID of an image from its URL
+  - Get image details from its URL
+  - Get an array of posts
+  - Get an array of available taxonomies
+  - Get an array of available post-types
+  - Get an array of terms
 edit: docs/advanced/helper-methods.md
 ---
 
