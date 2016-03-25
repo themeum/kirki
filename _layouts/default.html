@@ -7,7 +7,7 @@
 			<div class="large-12 columns">
 				<article>
 					<div class="row">
-						{% if page.sections %}<div class="large-9 columns">{% else %}<div class="large-12 columns">{% endif %}
+						<div class="{% if page.sections %}large-9{% else %}large-12{% endif %} columns">
 							{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 							{{ content }}
 						</div>
