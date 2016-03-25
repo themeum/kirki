@@ -5,7 +5,7 @@ Kirki::add_field( 'my_config', array(
 	'type'        => 'radio-buttonset',
 	'settings'    => 'my_setting',
 	'label'       => __( 'Radio-Buttonset Control', 'my_textdomain' ),
-	'section'     => 'radio',
+	'section'     => 'my_section',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
