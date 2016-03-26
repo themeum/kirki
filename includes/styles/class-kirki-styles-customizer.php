@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
+
 	class Kirki_Styles_Customizer {
 
 		public $color_back = false;
@@ -53,9 +54,10 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 *
 		 * These files are only enqueued when debugging Kirki
 		 *
-		 * @param string       $handle
-		 * @param string|null  $file
-		 * @param array        $deps
+		 * @param $handle      string
+		 * @param $file        string|null
+		 * @param $deps        array
+		 * @param $in_footer   bool
 		 */
 		public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::is_debug() ) || false === strpos( $file, 'controls/' ) ) {
