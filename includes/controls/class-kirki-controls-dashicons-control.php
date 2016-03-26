@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Dashicons_Control' ) ) {
+
 	class Kirki_Controls_Dashicons_Control extends Kirki_Customize_Control {
 
 		public $type = 'dashicons';
@@ -158,5 +159,7 @@ if ( ! class_exists( 'Kirki_Controls_Dashicons_Control' ) ) {
 			</div>
 			<?php
 		}
+
 	}
+
 }

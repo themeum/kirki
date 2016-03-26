@@ -103,6 +103,14 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @var		array		the field arguments
 		 */
 		public static function add_field( $config_id, $args ) {
+			if ( isset( $args['type'] ) ) {
+				$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
+				$classname = str_replace( ' ', '_', ucwords( $str ) );
+				if ( class_exists( $classname ) ) {
+					new $classname;
+					return;
+				}
+			}
 			new Kirki_Field( $config_id, $args );
 		}
 

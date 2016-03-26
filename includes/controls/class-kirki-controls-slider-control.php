@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
+
 	class Kirki_Controls_Slider_Control extends Kirki_Customize_Control {
 
 		public $type = 'slider';
@@ -55,5 +56,7 @@ if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 			<?php
 
 		}
+
 	}
+
 }

@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
+
 	class Kirki_Customize_Control extends WP_Customize_Control {
 
 		public $tooltip      = '';
@@ -50,4 +51,5 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 		public function render_content() {}
 
 	}
+
 }

@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
+
 	class Kirki_Controls_Select_Control extends Kirki_Customize_Control {
 
 		public $type = 'kirki-select';
@@ -64,5 +65,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 			</label>
 			<?php
 		}
+
 	}
+
 }

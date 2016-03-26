@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
+
 	class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {
 
 		public $type = 'color-alpha';
@@ -54,5 +55,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 			</label>
 			<?php
 		}
+
 	}
+
 }
