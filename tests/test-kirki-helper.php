@@ -41,8 +41,9 @@ class Test_Kirki_Helper extends WP_UnitTestCase {
 			'all',
 		);
 		foreach ( $tests as $test ) {
-			$this->assertTrue( is_array( Kirki_Helper::get_material_design_colors( $test ) ) );
-			$this->assertTrue( ! empty( Kirki_Helper::get_material_design_colors( $test ) ) );
+			$result = Kirki_Helper::get_material_design_colors( $test );
+			$this->assertTrue( is_array( $result ) );
+			$this->assertTrue( ! empty( $result ) );
 		}
 	}
 }
