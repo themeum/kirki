@@ -1310,15 +1310,11 @@ span.CodeMirror-selectedtext {
       position: absolute;
       top: .25rem;
       width: 1.5rem;
-      -webkit-transition: left 0.15s ease-out;
-      -moz-transition: left 0.15s ease-out;
-      -o-transition: translate3d(0, 0, 0);
-      transition: left 0.15s ease-out;
-      -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-      -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0); }
+      -webkit-transition: all .25s ease-in-out;
+      -moz-transition: all .25s ease-in-out;
+      -ms-transition: all .25s ease-in-out;
+      -o-transition: all .25s ease-in-out;
+      transition: all .25s ease-in-out; }
   .customize-control-switch .switch input {
     left: 10px;
     opacity: 0;
@@ -1341,14 +1337,14 @@ span.CodeMirror-selectedtext {
         border-radius: 2rem; }
 .customize-control-switch .switch-on,
 .customize-control-switch .switch-off {
-  position: absolute;
-  font-weight: bold; }
+  font-weight: bold;
+  padding: 0 10px; }
 .customize-control-switch .switch-on {
-  left: -55px;
-  color: #fff; }
+  color: #fff;
+  padding-right: 5px; }
 .customize-control-switch .switch-off {
-  left: -25px;
-  color: #777; }
+  color: #777;
+  padding-left: 5px; }
 
 .customize-control-kirki-generic textarea {
   width: 100%;

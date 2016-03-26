@@ -32,6 +32,18 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
+			<style>
+			#customize-control-{{ data.id }} .switch label {
+				width: calc({{ data.choices['on'].length }}ch + {{ data.choices['off'].length }}ch + 40px);
+			}
+			#customize-control-{{ data.id }} .switch label:after {
+				width: calc({{ data.choices['on'].length }}ch + 10px);
+			}
+			#customize-control-{{ data.id }} .switch input:checked + label:after {
+				left: calc({{ data.choices['on'].length }}ch + 25px);
+				width: calc({{ data.choices['off'].length }}ch + 10px);
+			}
+			</style>
 			<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 				<span class="customize-control-title">
 					{{{ data.label }}}
@@ -40,7 +52,7 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<input name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
-				<label class="switch-label" for="switch_{{ data.id }}" style="width:calc({{">
+				<label class="switch-label" for="switch_{{ data.id }}">
 					<span class="switch-on">{{ data.choices['on'] }}</span>
 					<span class="switch-off">{{ data.choices['off'] }}</span>
 				</label>
