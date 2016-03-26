@@ -160,9 +160,12 @@ input[type="text"] {
     height: .8rem;
     line-height: .8rem;
     vertical-align: baseline; }
-  .kirki-reset-section:hover {
+  .kirki-reset-section:hover, .kirki-reset-section:active {
     background: #F44336;
     color: #fff; }
+  .kirki-reset-section:focus {
+    -webkit-box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8);
+    box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8); }
 
 #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content {
   position: relative;

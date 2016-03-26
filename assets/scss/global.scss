@@ -238,8 +238,13 @@ input[type="text"] {
 		line-height: .8rem;
 		vertical-align: baseline;
 	}
-	&:hover {
+	&:hover,
+	&:active {
 		background: #F44336;
 		color: #fff;
+	}
+	&:focus {
+		-webkit-box-shadow: 0 0 0 1px #F44336,0 0 2px 1px rgba(200,50,30,.8);
+		box-shadow: 0 0 0 1px #F44336,0 0 2px 1px rgba(200,50,30,.8);
 	}
 }
