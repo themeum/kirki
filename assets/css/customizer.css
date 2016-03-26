@@ -1340,6 +1340,7 @@ span.CodeMirror-selectedtext {
         border-radius: 2rem; }
 .customize-control-switch .switch-on,
 .customize-control-switch .switch-off {
+  line-height: 32px;
   font-weight: bold;
   padding: 0 10px; }
 .customize-control-switch .switch-on {
