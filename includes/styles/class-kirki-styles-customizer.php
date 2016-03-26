@@ -78,7 +78,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			if ( ! isset( $config['color_back'] ) && ! isset( $config['color_accent'] ) ) {
 				return;
 			}
-			if ( ! $config['color_back'] && ! $config['color_accent'] ); {
+			if ( ! $config['color_back'] && ! $config['color_accent'] ) {
 				return;
 			}
 			// set the $process to true.

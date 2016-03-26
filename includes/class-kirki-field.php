@@ -479,7 +479,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						$this->sanitize_callback = 'wp_kses_post';
 					}
 					break;
-				case 'date';
+				case 'date':
 				case 'datetime':
 					$this->type                 = 'kirki-datetime';
 					$this->choices['class']     = 'datetime';
@@ -487,6 +487,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					if ( 'datetime' == $this->type ) {
 						$this->choices['data-time'] = true;
 					}
+					break;
 				case 'kirki-generic':
 					if ( ! isset( $this->choices['element'] ) ) {
 						$this->choices['element'] = 'input';
@@ -656,7 +657,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$js_vars = array();
 			// Try to auto-generate js_vars.
 			// First we need to check if js_vars are empty, and that output is not empty.
-			if ( empty ( $this->js_vars ) && ! empty( $this->output ) ) {
+			if ( empty( $this->js_vars ) && ! empty( $this->output ) ) {
 				// start going through each item in the $output array
 				foreach ( $this->output as $output ) {
 					$output['function'] = 'css';
