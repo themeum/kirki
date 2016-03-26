@@ -1297,10 +1297,10 @@ span.CodeMirror-selectedtext {
     display: block;
     margin-bottom: 1rem;
     position: relative;
-    text-indent: 100%;
     transition: left 0.15s ease-out;
     height: 2rem;
-    width: 4rem; }
+    width: 4rem;
+    font-family: Monaco, "Lucida Sans Typewriter", "Lucida Typewriter", "Courier New", Courier, monospace; }
     .customize-control-switch .switch label:after {
       background: #FFFFFF;
       content: "";
@@ -1339,20 +1339,16 @@ span.CodeMirror-selectedtext {
       border-radius: 2rem; }
       .customize-control-switch .switch.round label:after {
         border-radius: 2rem; }
-.customize-control-switch .switch-on {
-  position: absolute;
-  left: -55px;
-  top: 8px;
-  color: white;
-  font-weight: bold;
-  font-size: 9px; }
+.customize-control-switch .switch-on,
 .customize-control-switch .switch-off {
   position: absolute;
+  font-weight: bold; }
+.customize-control-switch .switch-on {
+  left: -55px;
+  color: #fff; }
+.customize-control-switch .switch-off {
   left: -25px;
-  top: 8px;
-  color: white;
-  font-weight: bold;
-  font-size: 9px; }
+  color: #777; }
 
 .customize-control-kirki-generic textarea {
   width: 100%;

@@ -40,7 +40,7 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<input name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
-				<label class="switch-label" for="switch_{{ data.id }}">
+				<label class="switch-label" for="switch_{{ data.id }}" style="width:calc({{">
 					<span class="switch-on">{{ data.choices['on'] }}</span>
 					<span class="switch-off">{{ data.choices['off'] }}</span>
 				</label>

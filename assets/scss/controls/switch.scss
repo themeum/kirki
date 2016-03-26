@@ -22,10 +22,10 @@
 			display: block;
 			margin-bottom: 1rem;
 			position: relative;
-			text-indent: 100%;
 			transition: left 0.15s ease-out;
 			height: 2rem;
 		    width: 4rem;
+		    font-family: Monaco, "Lucida Sans Typewriter", "Lucida Typewriter", "Courier New", Courier, monospace;
 			&:after {
 				background: #FFFFFF;
 				content: "";
@@ -76,20 +76,17 @@
 			}
 		}
 	}
-	.switch-on {
-		position: absolute;
-		left: -55px;
-		top: 8px;
-		color: white;
-		font-weight: bold;
-		font-size: 9px;
-	}
+	.switch-on,
 	.switch-off {
 		position: absolute;
-		left: -25px;
-		top: 8px;
-		color: white;
 		font-weight: bold;
-		font-size: 9px;
+	}
+	.switch-on {
+		left: -55px;
+		color: #fff;
+	}
+	.switch-off {
+		left: -25px;
+		color: #777;
 	}
 }
