@@ -1,7 +1,8 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
-	class Kirki_Active_Callback extends Kirki_Customizer {
+
+	class Kirki_Active_Callback {
 
 		/**
 		 * Figure out whether the current object should be displayed or not.
@@ -148,4 +149,5 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 		}
 
 	}
+
 }

@@ -1,12 +1,15 @@
 <?php
 
 if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
-	class Kirki_Customizer_Scripts_Loading extends Kirki_Customizer {
+
+	class Kirki_Customizer_Scripts_Loading {
+
 		public function __construct() {
 			global $wp_customize;
 			if ( ! $wp_customize ) {
 				return;
 			}
+			$this->wp_customize = $wp_customize;
 			/**
 			 * Allow disabling the custom loader using the kirki/config filter
 			 */
@@ -100,5 +103,7 @@ if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
 		public function remove_default_loading_styles() {
 			remove_action( 'wp_head', array( $this->wp_customize, 'customize_preview_loading_style' ) );
 		}
+
 	}
+
 }

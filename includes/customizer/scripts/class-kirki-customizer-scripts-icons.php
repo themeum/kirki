@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Customizer_Scripts_Icons' ) ) {
-	class Kirki_Customizer_Scripts_Icons extends Kirki_Customizer_Scripts {
+
+	class Kirki_Customizer_Scripts_Icons {
 
 		/**
 		 * string.
