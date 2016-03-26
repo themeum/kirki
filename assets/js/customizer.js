@@ -203,7 +203,8 @@ function kirkiSetValue( setting, value ) {
 
 	}
 	/**
-	 * Typography controls
+	 * Control types:
+	 *     typography
 	 */
 	else if ( 'typography' == control_type ) {
 		if ( undefined !== value['font-family'] ) {
@@ -238,7 +239,10 @@ function kirkiSetValue( setting, value ) {
 		}
 		if ( undefined !== value['color'] ) {
 			// Update the value visually in the control
-			wp.customize.control( setting ).container.find( '.kirki-color-control' )
+			var typographyColor = wp.customize.control( setting ).container.find( '.kirki-color-control' );
+
+			typographyColor
+				.attr( 'data-default-color', value )
 				.data( 'default-color', value )
 				.wpColorPicker( 'color', value );
 		}
@@ -246,7 +250,8 @@ function kirkiSetValue( setting, value ) {
 		wp.customize.instance( setting ).set( value );
 	}
 	/**
-	 * Skip some control types
+	 * Control types:
+	 *     repeater
 	 */
 	else if ( 'repeater' == control_type ) {
 		// Do nothing
