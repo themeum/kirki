@@ -16,11 +16,13 @@
 
 {% if page.sections %}
 	<script>
+		$( "h2, h3, h4" ).each(function( index ) {
+			$( this ).attr( 'data-magellan-target', $( this ).attr( 'id' ) );
+		});
 		var $toc = $('[data-docs-toc]');
 		var $toc_magellan = new Foundation.Magellan($toc, {
 			'data-animation-duration': 250,
 			'data-active-class': 'active',
-
 		});
 	</script>
 {% endif %}

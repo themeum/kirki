@@ -7,23 +7,12 @@
 			<div id="main" class="medium-9 large-10 medium-push-3 large-push-2 columns">
 				<article>
 					<div class="row">
-						<div class="{% if page.sections %}large-9{% else %}large-12{% endif %} columns">
+						<div class="large-9 columns">
 							{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 							{% include edit-link.html %}
 							{{ content }}
 						</div>
-						{% if page.sections %}
-							<div class="large-3 columns" data-sticky-container>
-								<nav class="columns sticky" data-sticky data-sticky-on="large" data-margin-top="0">
-									<ul data-docs-toc class="vertical menu docs-side-nav" data-magellan>
-										<li class="side-nav-header">On this page:</li>
-										{% for section in page.sections %}
-											<li><a href="#{{ section|downcase|replace:' ','-' }}">{{ section }}</a></li>
-										{% endfor %}
-									</ul>
-								</nav>
-							</div>
-						{% endif %}
+						{% include sections-sidebar.html %}
 					</div>
 				</article>
 			</div>

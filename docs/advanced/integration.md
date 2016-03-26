@@ -1,11 +1,6 @@
 ---
 layout: docs
 title: Integrating Kirki
-sections:
-  - Using a custom setting in the customizer (recommended)
-  - Using TGMPA
-  - Embedding in your theme
-  - Translating Kirki strings in embedded theme
 edit: docs/advanced/integration.md
 ---
 
@@ -163,6 +158,6 @@ add_filter( 'kirki/my_config/l10n', function( $l10n ) {
 
 } );
 </pre>
-	
+
 	</div>
 </div>
