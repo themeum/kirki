@@ -155,6 +155,9 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
 				'add-new-row'           => esc_attr__( 'Add new row', 'kirki' ),
 				'limit-rows'            => esc_attr__( 'Limit: %s rows', 'kirki' ),
+				'open-section'          => esc_attr__( 'Press return or enter to open this section', 'kirki' ),
+				'back'                  => esc_attr__( 'Back', 'kirki' ),
+				'reset-with-icon'       => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-image-rotate"></span>' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

@@ -62,6 +62,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		public function register_control_types() {
 			global $wp_customize;
 
+			$wp_customize->register_section_type( 'Kirki_Sections_Default_Section' );
 			$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
 			$wp_customize->register_section_type( 'Kirki_Sections_Hover_Section' );
 

@@ -216,3 +216,30 @@ input[type="text"] {
 		}
 	}
 }
+
+.kirki-reset-section {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: #FFCDD2;
+	color: #fff;
+	font-size: .8rem;
+	border-radius: 3px;
+	padding: 0 5px;
+	-webkit-transition: background .2s ease;
+	-moz-transition: background .2s ease;
+	-ms-transition: background .2s ease;
+	-o-transition: background .2s ease;
+	transition: background .2s ease;
+	.dashicons {
+		font-size: .8rem;
+		width: .8rem;
+		height: .8rem;
+		line-height: .8rem;
+		vertical-align: baseline;
+	}
+	&:hover {
+		background: #F44336;
+		color: #fff;
+	}
+}
