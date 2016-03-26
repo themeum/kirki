@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,24 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.2.6 =
+
+March 26, 2016, dev time: 10 hours
+
+* FIX: Invalid variants for google fonts were getting enqueued due to a mischeck.
+* FIX: Repeater rows are now minimized by default.
+* FIX: Styling for the `dropdown-pages` control.
+* FIX: `switch` controls now properly resize based on the label used in the `choices` argument.
+* FIX: It is now possible to use `calc()` in CSS value controls.
+* FIX: Styles were being applied to the customizer even if they were not defined in the `kirki/config` filter.
+* FIX: Removed unnecessary class inheritances & other code cleanups.
+* NEW: Allow resetting options per-section.
+* NEW: Added new `color-palette` control.
+* NEW: Added `'transport' => 'auto'` to auto-calculate postMessage scripts from the `output` argument when possible.
+* NEW: Added Material design palettes in the `Kirki_Helper` class.
+* NEW: Allow changing the "Add Row" text on repeater fields.
+* NEW: Allow setting a limit for repeater rows.
 
 = 2.2.5 =
 
