@@ -23,9 +23,12 @@ function kirkiObjectToArray( obj ) {
 }
 
 function kirkiValidateCSSValue( value ) {
-	var valueIsValid = true;
-
+	// 0 is always a valid value
 	if ( '0' == value ) {
+		return true;
+	}
+	// if we're using calc() just return true.
+	if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
 		return true;
 	}
 
@@ -36,14 +39,13 @@ function kirkiValidateCSSValue( value ) {
 	var unit = value.replace( numericValue, '' );
 	// Check the validity of the numeric value
 	if ( NaN === numericValue ) {
-		valueIsValid = false;
+		return false;
 	}
 	// Check the validity of the units
 	if ( -1 === jQuery.inArray( unit, validUnits ) ) {
-		valueIsValid = false;
+		return false;
 	}
-
-	return valueIsValid;
+	return true;
 }
 
 function kirkiSetValue( setting, value ) {
