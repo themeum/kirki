@@ -66,6 +66,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+.row {
+	max-width: 90rem;
+}
+
 .row.expanded .row {
 	margin-left: 0;
 }
