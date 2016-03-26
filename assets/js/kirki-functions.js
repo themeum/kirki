@@ -250,7 +250,7 @@ function kirkiSetValue( setting, value ) {
 	 *     kirki-radio
 	 *     dashicons
 	 */
-	else if ( 'radio-buttonset' == control_type || 'radio-image' == control_type || 'radio' == control_type || 'kirki-radio' == control_type || 'dashicons' == sub_constrol_type ) {
+	else if ( 'radio-buttonset' == control_type || 'radio-image' == control_type || 'radio' == control_type || 'kirki-radio' == control_type || 'dashicons' == control_type ) {
 
 		/**
 		 * Update the value visually in the control
