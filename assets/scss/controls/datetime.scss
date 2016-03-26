@@ -1,0 +1,76 @@
+/////////////////////
+// datetime controls
+/////////////////////
+.wp-customizer div.ui-datepicker {
+    z-index: 500001 !important;
+	width: 255px;
+	background: #fff;
+	border: 1px solid #dedede;
+	.ui-datepicker-header {
+		padding: 10px;
+		background: #e5e5e5;
+		border-bottom: 1px solid #fff;
+		.ui-datepicker-prev,
+		.ui-datepicker-next {
+			display:block;
+			position: absolute;
+			width: 1em;
+			overflow: hidden;
+			&:before,
+			&:after {
+				font-family: dashicons;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			.ui-icon {
+				display: none;
+			}
+		}
+		.ui-datepicker-prev {
+			left: 10px;
+			&:before {
+				content: "\f341";
+			}
+		}
+		.ui-datepicker-next {
+			right: 10px;
+			&:after {
+				content: "\f345";
+			}
+		}
+		.ui-datepicker-title {
+			text-align: center;
+		}
+	}
+	.ui-datepicker-calendar {
+		border-collapse: collapse;
+		width: 100%;
+		thead {
+			background: #e5e5e5;
+			padding: 5px;
+		}
+		tr {
+			td {
+				text-align: center;
+				a {
+					display: block;
+					padding: 5px;
+					color: #333;
+					text-decoration: none;
+					&.ui-state-active,
+					&:hover {
+						color: #fff;
+						background-color: #0073aa;
+					}
+				}
+				&.ui-state-disabled,
+				&.ui-state-disabled .ui-state-default {
+					a {
+						color: #999;
+					}
+				}
+			}
+		}
+	}
+}

@@ -479,6 +479,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						$this->sanitize_callback = 'wp_kses_post';
 					}
 					break;
+				case 'date';
+				case 'datetime':
+					$this->type                 = 'kirki-datetime';
+					$this->choices['class']     = 'datetime';
+					$this->choices['data-time'] = false;
+					if ( 'datetime' == $this->type ) {
+						$this->choices['data-time'] = true;
+					}
 				case 'kirki-generic':
 					if ( ! isset( $this->choices['element'] ) ) {
 						$this->choices['element'] = 'input';

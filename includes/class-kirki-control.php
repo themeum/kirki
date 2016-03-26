@@ -90,6 +90,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
 				'color-palette'    => 'Kirki_Controls_Color_Palette_Control',
 				'custom'           => 'Kirki_Controls_Custom_Control',
+				'kirki-datetime'   => 'Kirki_Controls_Datetime_Control',
 				'dashicons'        => 'Kirki_Controls_Dashicons_Control',
 				'dimension'        => 'Kirki_Controls_Dimension_Control',
 				'editor'           => 'Kirki_Controls_Editor_Control',
