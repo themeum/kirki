@@ -20,8 +20,6 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		public function __construct( $args ) {
 
 			$this->panel_types = apply_filters( 'kirki/panel_types', $this->panel_types );
-
-			parent::__construct( $args );
 			$this->add_panel( $args );
 
 		}
