@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Customizer_Scripts_Tooltips' ) ) {
+if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 
-	class Kirki_Customizer_Scripts_Tooltips {
+	class Kirki_Scripts_Tooltips {
 
 		/**
 		 * string.

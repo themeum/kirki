@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 
 			if ( isset( $args['icon'] ) ) {
 				$args['context'] = 'section';
-				Kirki_Customizer_Scripts_Icons::generate_script( $args );
+				Kirki_Scripts_Icons::generate_script( $args );
 			}
 
 		}

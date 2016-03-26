@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Customizer_Scripts_Icons' ) ) {
+if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 
-	class Kirki_Customizer_Scripts_Icons {
+	class Kirki_Scripts_Icons {
 
 		/**
 		 * string.

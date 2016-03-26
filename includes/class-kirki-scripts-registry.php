@@ -28,8 +28,8 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		public function __construct() {
 
 			$this->dependencies = new Kirki_Enqueue();
-			$this->tooltips     = new Kirki_Customizer_Scripts_Tooltips();
-			$this->icons        = new Kirki_Customizer_Scripts_Icons();
+			$this->tooltips     = new Kirki_Scripts_Tooltips();
+			$this->icons        = new Kirki_Scripts_Icons();
 
 		}
 

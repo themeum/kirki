@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Customizer_Scripts_Loading' ) ) {
+if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 
-	class Kirki_Customizer_Scripts_Loading {
+	class Kirki_Scripts_Loading {
 
 		public function __construct() {
 			global $wp_customize;
