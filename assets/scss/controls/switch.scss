@@ -22,10 +22,10 @@
 			display: block;
 			margin-bottom: 1rem;
 			position: relative;
-			text-indent: 100%;
 			transition: left 0.15s ease-out;
 			height: 2rem;
 		    width: 4rem;
+		    font-family: Monaco, "Lucida Sans Typewriter", "Lucida Typewriter", "Courier New", Courier, monospace;
 			&:after {
 				background: #FFFFFF;
 				content: "";
@@ -35,15 +35,11 @@
 				position: absolute;
 				top: .25rem;
 				width: 1.5rem;
-				-webkit-transition: left 0.15s ease-out;
-				-moz-transition: left 0.15s ease-out;
-				-o-transition: translate3d(0, 0, 0);
-				transition: left 0.15s ease-out;
-				-webkit-transform: translate3d(0, 0, 0);
-				-moz-transform: translate3d(0, 0, 0);
-				-ms-transform: translate3d(0, 0, 0);
-				-o-transform: translate3d(0, 0, 0);
-				transform: translate3d(0, 0, 0);
+				-webkit-transition: all .25s ease-in-out;
+				-moz-transition: all .25s ease-in-out;
+				-ms-transition: all .25s ease-in-out;
+				-o-transition: all .25s ease-in-out;
+				transition: all .25s ease-in-out;
 			}
 		}
 		input {
@@ -76,20 +72,18 @@
 			}
 		}
 	}
-	.switch-on {
-		position: absolute;
-		left: -55px;
-		top: 8px;
-		color: white;
+	.switch-on,
+	.switch-off {
+		line-height: 32px;
 		font-weight: bold;
-		font-size: 9px;
+		padding: 0 10px;
+	}
+	.switch-on {
+		color: #fff;
+		padding-right: 5px;
 	}
 	.switch-off {
-		position: absolute;
-		left: -25px;
-		top: 8px;
-		color: white;
-		font-weight: bold;
-		font-size: 9px;
+		color: #777;
+		padding-left: 5px;
 	}
 }

@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
+
 	class Kirki_Styles_Customizer {
 
 		public $color_back = false;
@@ -53,9 +54,10 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 *
 		 * These files are only enqueued when debugging Kirki
 		 *
-		 * @param string       $handle
-		 * @param string|null  $file
-		 * @param array        $deps
+		 * @param $handle      string
+		 * @param $file        string|null
+		 * @param $deps        array
+		 * @param $in_footer   bool
 		 */
 		public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
 			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::is_debug() ) || false === strpos( $file, 'controls/' ) ) {
@@ -74,6 +76,9 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 			// No need to proceed if we haven't set any colors
 			if ( ! isset( $config['color_back'] ) && ! isset( $config['color_accent'] ) ) {
+				return;
+			}
+			if ( ! $config['color_back'] && ! $config['color_accent'] ); {
 				return;
 			}
 			// set the $process to true.

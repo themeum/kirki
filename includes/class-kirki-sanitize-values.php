@@ -17,7 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
-	class Kirki_Sanitize_Values extends Kirki_Customizer {
+
+	class Kirki_Sanitize_Values {
 
 		/**
 		 * Checkbox sanitization callback.
@@ -196,6 +197,10 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			if ( ! preg_match( '#[0-9]#' , $value ) ) {
 				return '';
 			}
+			// If we're using calc() then return the value
+			if ( false !== strpos( $value, 'calc(' ) ) {
+				return $value;
+			}
 			// The raw value without the units
 			$raw_value = self::filter_number( $value );
 			$unit_used = '';
@@ -286,4 +291,5 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		}
 
 	}
+
 }

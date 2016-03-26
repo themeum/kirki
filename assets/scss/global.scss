@@ -216,3 +216,41 @@ input[type="text"] {
 		}
 	}
 }
+
+.kirki-reset-section {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: #BDBDBD;
+	opacity: .5;
+	color: #fff;
+	font-size: .8rem;
+	border-radius: 3px;
+	padding: 0 5px;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	font-weight: bold;
+	// width: 12px;
+	.dashicons {
+		font-size: .8rem;
+		width: .8rem;
+		height: .8rem;
+		line-height: .8rem;
+		vertical-align: baseline;
+	}
+	&:hover,
+	&:active {
+		background: #F44336;
+		color: #fff;
+		font-weight: bold;
+		opacity: 1;
+	}
+	&:focus {
+		opacity: 1;
+		-webkit-box-shadow: 0 0 0 1px #F44336,0 0 2px 1px rgba(200,50,30,.8);
+		box-shadow: 0 0 0 1px #F44336,0 0 2px 1px rgba(200,50,30,.8);
+	}
+}

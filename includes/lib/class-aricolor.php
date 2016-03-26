@@ -26,32 +26,118 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'ariColor' ) ) {
+
 	class ariColor {
 
+		/**
+		 * Each color is a separate instance of this class.
+		 * Each instance is stored as an object in this array.
+		 * Allows easier access & performance.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $instances = array();
 
+		/**
+		 * The color as defined in the input
+		 *
+		 * @access public
+		 * @var string|array
+		 */
 		public $color;
+
+		/**
+		 * The mode of this color (hex/rgb/rgba etc.).
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $mode = 'hex';
 
+		/**
+		 * An array of word-defined colors.
+		 * Example: white = #ffffff
+		 *
+		 * @access public
+		 * @var array
+		 */
 		public $word_colors = array();
 
+		/**
+		 * The HEX value of the color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $hex;
 
+		/**
+		 * @access public
+		 * @var int|double
+		 */
 		public $red   = 0;
+
+		/**
+		 * @access public
+		 * @var int|double
+		 */
 		public $green = 0;
+
+		/**
+		 * @access public
+		 * @var int|double
+		 */
 		public $blue  = 0;
+
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $alpha = 1;
 
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $hue;
+
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $saturation;
+
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $lightness;
+
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $chroma;
 
+		/**
+		 * @access public
+		 * @var array
+		 */
 		public $brightness = array();
+
+		/**
+		 * @access public
+		 * @var int|float
+		 */
 		public $luminance;
 
 		/**
 		 * The class constructor
+		 *
+		 * @param $color    string|array    The defined color.
+		 * @param $mode     string          Color mode. Set to 'auto' if you want this auto-detected.
 		 */
 		private function __construct( $color = '', $mode = 'auto' ) {
 			$this->color = $color;
@@ -675,8 +761,5 @@ if ( ! class_exists( 'ariColor' ) ) {
 		}
 
 	}
-}
 
-function kirki_wp_color( $color = '' ) {
-	return ariColor::newColor( $color );
 }

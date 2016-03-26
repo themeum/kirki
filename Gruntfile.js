@@ -23,7 +23,8 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'assets/js/kirki-functions.js',
-					'assets/js/controls/*.js'
+					'assets/js/controls/*.js',
+					'assets/js/reset.js'
 				],
 				dest: 'assets/js/customizer.js',
 			},

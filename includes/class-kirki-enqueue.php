@@ -72,19 +72,19 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 					'variants'    => array(
 						array(
 							'id'    => 'regular',
-							'label' => $all_variants['regular']
+							'label' => $all_variants['regular'],
 						),
 						array(
 							'id'    => 'italic',
-							'label' => $all_variants['italic']
+							'label' => $all_variants['italic'],
 						),
 						array(
 							'id'    => '700',
-							'label' => $all_variants['700']
+							'label' => $all_variants['700'],
 						),
 						array(
 							'id'    => '700italic',
-							'label' => $all_variants['700italic']
+							'label' => $all_variants['700italic'],
 						),
 					),
 				);

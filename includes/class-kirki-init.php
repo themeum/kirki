@@ -62,6 +62,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		public function register_control_types() {
 			global $wp_customize;
 
+			$wp_customize->register_section_type( 'Kirki_Sections_Default_Section' );
 			$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
 			$wp_customize->register_section_type( 'Kirki_Sections_Hover_Section' );
 
@@ -70,7 +71,9 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Checkbox_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Color_Palette_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Datetime_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dashicons_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );
