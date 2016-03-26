@@ -182,7 +182,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
 		 * @param   string|false $hex1
-		 * @param   string       $hex2
+		 * @param   string|false $hex2
 		 * @param   integer      $percentage        a value between 0 and 100
 		 * @return  string       returns hex color
 		 */
