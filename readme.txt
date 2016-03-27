@@ -37,6 +37,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 2.2.7.dev =
+
+NEW: Introduce `value_pattern` argument for `output`
+TWEAK: Started refactoring the `Kirki_Field` class
+
 = 2.2.6 =
 
 March 26, 2016, dev time: 10 hours
