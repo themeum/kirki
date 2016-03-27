@@ -11,5 +11,9 @@ extra_args:
     required: "no"
     type: array
     description: If you're using switches, you can use this to change the ON/OFF labels.
+  - argument: default
+    required: "yes"
+    type: string
+    description: set to <code>'0'</code> or <code>'1'</code>
 screenshot: "images/checkbox.png"
 ---
