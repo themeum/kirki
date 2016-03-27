@@ -1,6 +1,5 @@
 ( function( $ ) {
-	var $style = $( '#twentyfifteen-color-scheme-css' ),
-		api = wp.customize;
+	var api = wp.customize;
 
 	$.each( js_vars, function( setting, jsVars ) {
 
@@ -31,11 +30,16 @@
 						if ( undefined === jsVars[ i ]['function'] ) {
 							jsVars[ i ]['function'] = 'css';
 						}
+						if ( undefined === jsVars[ i ]['value_pattern'] ) {
+							jsVars[ i ]['value_pattern'] = '$';
+						}
 
 						$.each( jsVars, function( i, args ) {
 
 							// Value is a string
 							if ( 'string' == typeof newval ) {
+								// Process the value pattern
+								newval = jsVars[ i ]['value_pattern'].replace( '$', newval );
 								// Inject HTML
 								if ( 'html' === args.function ) {
 									$( args.element ).html( args.prefix + newval + args.units + args.suffix );
