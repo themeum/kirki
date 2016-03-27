@@ -427,14 +427,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					// Instead we now just use a "custom" control.
 					$this->type = 'custom';
 					break;
-				case 'textarea':
-					$this->type               = 'kirki-generic';
-					$this->choices['element'] = 'textarea';
-					$this->choices['rows']    = '5';
-					if ( '' == $this->sanitize_callback ) {
-						$this->sanitize_callback = 'wp_kses_post';
-					}
-					break;
 				case 'text':
 					$this->type               = 'kirki-generic';
 					$this->choices['element'] = 'input';
@@ -505,7 +497,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'text'             => 'esc_textarea',
 				'kirki-text'       => 'esc_textarea',
-				'textarea'         => 'wp_kses_post',
 				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
