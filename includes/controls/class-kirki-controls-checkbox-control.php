@@ -23,12 +23,11 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 
-			if ( isset( $this->default ) ) {
+			$this->json['default'] = $this->setting->default;
+			if ( property_exists( $this, 'default' ) ) {
 				$this->json['default'] = $this->default;
-			} else {
-				$this->json['default'] = $this->setting->default;
 			}
-			$this->json['value']   = $this->value();
+			$this->json['value'] = $this->value();
 			if ( null === $this->json['value'] ) {
 				$this->json['value'] = $this->json['default'];
 			}
@@ -40,7 +39,7 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
-				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value !== false ) { #> checked<# } #> />
+				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}} <?php $this->link(); checked( $this->value() ); ?> />
 				{{ data.label }}
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>

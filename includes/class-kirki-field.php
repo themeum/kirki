@@ -203,7 +203,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$whitelisted = apply_filters( 'kirki/' . $this->kirki_config . '/fields/properties_whitelist', array(
 				'label'       => '', // this is sanitized later in the controls themselves
 				'description' => '', // this is sanitized later in the controls themselves
-				// 'default'     => '', // this is sanitized later in the controls themselves
 				'mode'        => '', // only used for backwards-compatibility reasons
 				'fields'      => array(), // Used in repeater fields
 			) );
