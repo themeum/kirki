@@ -484,11 +484,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'color'            => array( 'Kirki_Sanitize_Values', 'color' ),
-				'color-alpha'      => array( 'Kirki_Sanitize_Values', 'color' ),
 				'image'            => 'esc_url_raw',
 				'upload'           => 'esc_url_raw',
-				'radio'            => 'esc_attr',
 				'radio-image'      => 'esc_attr',
 				'radio-buttonset'  => 'esc_attr',
 				'palette'          => 'esc_attr',
