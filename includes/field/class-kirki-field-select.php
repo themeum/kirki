@@ -38,7 +38,7 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			return array( 'Kirki_Sanitize_Values', 'unfiltered' );
+			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 
 		}
 

@@ -26,7 +26,9 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		 * @access protected
 		 */
 		protected function set_sanitize_callback() {
-			return array( 'Kirki_Sanitize_Values', 'checkbox' );
+
+			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'checkbox' );
+
 		}
 
 	}
