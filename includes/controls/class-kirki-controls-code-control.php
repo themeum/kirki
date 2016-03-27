@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
+
 	class Kirki_Controls_Code_Control extends Kirki_Customize_Control {
 
 		public $type = 'code';
