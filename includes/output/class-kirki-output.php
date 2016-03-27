@@ -56,6 +56,9 @@ class Kirki_Output {
 		if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
 			// If the sanitize_callback is invalid, return the value
 			if ( ! is_callable( $output['sanitize_callback'] ) ) {
+				if ( is_string( $output['sanitize_callback'] ) && false !== strpos( '$', $output['sanitize_callback'] ) ) {
+					return str_replace( '$', $value, $output['sanitize_callback'] );
+				}
 				return $value;
 			}
 			return call_user_func( $output['sanitize_callback'], $this->value );
