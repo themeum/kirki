@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
+
 	class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 		public $type = 'repeater';
@@ -262,4 +263,5 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 	}
+
 }

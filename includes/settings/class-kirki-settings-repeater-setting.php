@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
+
 	class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 
 		public function __construct( $manager, $id, $args = array() ) {
@@ -64,4 +65,5 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 		}
 
 	}
+
 }

@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
+
 	class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 		public $type = 'sortable';
@@ -111,5 +112,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 
 			<?php
 		}
+
 	}
+
 }

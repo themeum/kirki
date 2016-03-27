@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
+
 	class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
 		public $type = 'typography';

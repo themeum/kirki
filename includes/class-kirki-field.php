@@ -420,56 +420,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			switch ( $this->type ) {
 
-				case 'checkbox':
-					$this->type = 'kirki-checkbox';
-					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 switch & toggle were part of the checkbox control.
-					if ( in_array( $this->mode, array( 'switch', 'toggle' ) ) ) {
-						$this->type = $this->mode;
-					}
-					break;
-				case 'radio':
-					$this->type = 'kirki-radio';
-					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
-					if ( in_array( $this->mode, array( 'buttonset', 'image' ) ) ) {
-						$this->type = 'radio-' . $this->mode;
-					}
-					break;
 				case 'group-title':
 				case 'group_title':
 					// Tweaks for backwards-compatibility:
 					// Prior to version 0.8 there was a group-title control.
 					// Instead we now just use a "custom" control.
 					$this->type = 'custom';
-					break;
-				case 'color-alpha':
-				case 'color_alpha':
-					// Just making sure that common typos will still work.
-					$this->type = 'color-alpha';
-					$this->choices['alpha'] = true;
-					break;
-				case 'color':
-					$this->type = 'color-alpha';
-					$this->choices['alpha'] = false;
-					// If a default value of rgba() is defined for a color control then we need to enable the alpha channel.
-					if ( false !== strpos( $this->default, 'rgba' ) ) {
-						$this->choices['alpha'] = true;
-					}
-					break;
-				case 'select':
-				case 'select2':
-				case 'select2-multiple':
-					$this->multiple = ( 'select2-multiple' == $this->type ) ? 999 : intval( $this->multiple );
-					$this->type     = 'kirki-select';
-					break;
-				case 'textarea':
-					$this->type               = 'kirki-generic';
-					$this->choices['element'] = 'textarea';
-					$this->choices['rows']    = '5';
-					if ( '' == $this->sanitize_callback ) {
-						$this->sanitize_callback = 'wp_kses_post';
-					}
 					break;
 				case 'text':
 					$this->type               = 'kirki-generic';
@@ -528,26 +484,16 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'checkbox'         => array( 'Kirki_Sanitize_Values', 'checkbox' ),
-				'toggle'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
-				'switch'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
-				'color'            => array( 'Kirki_Sanitize_Values', 'color' ),
-				'color-alpha'      => array( 'Kirki_Sanitize_Values', 'color' ),
 				'image'            => 'esc_url_raw',
 				'upload'           => 'esc_url_raw',
-				'radio'            => 'esc_attr',
 				'radio-image'      => 'esc_attr',
 				'radio-buttonset'  => 'esc_attr',
 				'palette'          => 'esc_attr',
-				'select'           => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
-				'select2'          => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
-				'select2-multiple' => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
 				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
 				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'text'             => 'esc_textarea',
 				'kirki-text'       => 'esc_textarea',
-				'textarea'         => 'wp_kses_post',
 				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
