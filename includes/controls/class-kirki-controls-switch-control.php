@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 
-	class Kirki_Controls_Switch_Control extends Kirki_Customize_Control {
+	class Kirki_Controls_Switch_Control extends Kirki_Controls_Checkbox_Control {
 
 		public $type = 'switch';
 

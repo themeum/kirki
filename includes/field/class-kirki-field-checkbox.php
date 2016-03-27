@@ -31,6 +31,23 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 
 		}
 
+		/**
+		 * Sets the default value
+		 *
+		 * @access protected
+		 */
+		protected function set_default() {
+
+			if ( false === $this->default || 0 === $this->default ) {
+				$this->default = '0';
+			}
+
+			if ( true === $this->default || 1 === $this->default ) {
+				$this->default = '1';
+			}
+
+		}
+
 	}
 
 }

@@ -20,6 +20,21 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 
 		public $type = 'kirki-checkbox';
 
+		public function to_json() {
+			parent::to_json();
+
+			if ( isset( $this->default ) ) {
+				$this->json['default'] = $this->default;
+			} else {
+				$this->json['default'] = $this->setting->default;
+			}
+			$this->json['value']   = $this->value();
+			if ( null === $this->json['value'] ) {
+				$this->json['value'] = $this->json['default'];
+			}
+
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
