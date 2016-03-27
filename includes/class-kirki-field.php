@@ -420,18 +420,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			switch ( $this->type ) {
 
-				case 'checkbox':
-					$this->type = 'kirki-checkbox';
-					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 switch & toggle were part of the checkbox control.
-					if ( in_array( $this->mode, array( 'switch', 'toggle' ) ) ) {
-						$this->type = $this->mode;
-					}
-					break;
 				case 'radio':
 					$this->type = 'kirki-radio';
 					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 radio-buttonset & radio-image were part of the checkbox control.
+					// Prior to version 0.8 radio-buttonset & radio-image were part of the radio control.
 					if ( in_array( $this->mode, array( 'buttonset', 'image' ) ) ) {
 						$this->type = 'radio-' . $this->mode;
 					}
@@ -528,9 +520,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'checkbox'         => array( 'Kirki_Sanitize_Values', 'checkbox' ),
-				'toggle'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
-				'switch'           => array( 'Kirki_Sanitize_Values', 'checkbox' ),
 				'color'            => array( 'Kirki_Sanitize_Values', 'color' ),
 				'color-alpha'      => array( 'Kirki_Sanitize_Values', 'color' ),
 				'image'            => 'esc_url_raw',
