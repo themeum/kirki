@@ -833,8 +833,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         });
     },
 
-    selectImage : function()
-    {
+    selectImage : function() {
         var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
         var image_src = attachment.url;
@@ -851,8 +850,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
         $targetDiv.find('input, textarea, select').trigger('change');
     },
 
-    removeImage : function( event )
-    {
+    removeImage : function( event ) {
         if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
 
         var $targetDiv = this.$thisButton.closest('.repeater-field-image');
