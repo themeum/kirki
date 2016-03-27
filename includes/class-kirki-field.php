@@ -420,34 +420,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 			switch ( $this->type ) {
 
-				case 'radio':
-					$this->type = 'kirki-radio';
-					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 radio-buttonset & radio-image were part of the radio control.
-					if ( in_array( $this->mode, array( 'buttonset', 'image' ) ) ) {
-						$this->type = 'radio-' . $this->mode;
-					}
-					break;
 				case 'group-title':
 				case 'group_title':
 					// Tweaks for backwards-compatibility:
 					// Prior to version 0.8 there was a group-title control.
 					// Instead we now just use a "custom" control.
 					$this->type = 'custom';
-					break;
-				case 'color-alpha':
-				case 'color_alpha':
-					// Just making sure that common typos will still work.
-					$this->type = 'color-alpha';
-					$this->choices['alpha'] = true;
-					break;
-				case 'color':
-					$this->type = 'color-alpha';
-					$this->choices['alpha'] = false;
-					// If a default value of rgba() is defined for a color control then we need to enable the alpha channel.
-					if ( false !== strpos( $this->default, 'rgba' ) ) {
-						$this->choices['alpha'] = true;
-					}
 					break;
 				case 'select':
 				case 'select2':
