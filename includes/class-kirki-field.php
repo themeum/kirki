@@ -427,14 +427,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					// Instead we now just use a "custom" control.
 					$this->type = 'custom';
 					break;
-				case 'text':
-					$this->type               = 'kirki-generic';
-					$this->choices['element'] = 'input';
-					$this->choices['type']    = 'text';
-					if ( '' == $this->sanitize_callback ) {
-						$this->sanitize_callback = 'wp_kses_post';
-					}
-					break;
 				case 'date':
 				case 'datetime':
 					$this->type                 = 'kirki-datetime';
@@ -442,11 +434,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					$this->choices['data-time'] = false;
 					if ( 'datetime' == $this->type ) {
 						$this->choices['data-time'] = true;
-					}
-					break;
-				case 'kirki-generic':
-					if ( ! isset( $this->choices['element'] ) ) {
-						$this->choices['element'] = 'input';
 					}
 					break;
 			}
@@ -492,7 +479,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
 				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
-				'text'             => 'esc_textarea',
 				'kirki-text'       => 'esc_textarea',
 				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
