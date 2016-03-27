@@ -2,15 +2,17 @@
 
 if ( ! class_exists( 'Kirki_Field_Toggle' ) ) {
 
-	class Kirki_Field_Toggle extends Kirki_Field {
+	class Kirki_Field_Toggle extends Kirki_Field_Checkbox {
 
 		/**
-		 * Sets the $sanitize_callback
+		 * Sets the control type.
 		 *
 		 * @access protected
 		 */
-		protected function set_sanitize_callback() {
-			return array( 'Kirki_Sanitize_Values', 'checkbox' );
+		protected function set_type() {
+
+			$this->type = 'toggle';
+
 		}
 
 	}
