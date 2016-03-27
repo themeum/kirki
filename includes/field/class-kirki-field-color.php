@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
+if ( ! class_exists( 'Kirki_Field_Color' ) ) {
 
 	class Kirki_Field_Color extends Kirki_Field_Color_Alpha {
 

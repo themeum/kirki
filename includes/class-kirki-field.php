@@ -427,12 +427,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					// Instead we now just use a "custom" control.
 					$this->type = 'custom';
 					break;
-				case 'select':
-				case 'select2':
-				case 'select2-multiple':
-					$this->multiple = ( 'select2-multiple' == $this->type ) ? 999 : intval( $this->multiple );
-					$this->type     = 'kirki-select';
-					break;
 				case 'textarea':
 					$this->type               = 'kirki-generic';
 					$this->choices['element'] = 'textarea';
@@ -506,9 +500,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'radio-image'      => 'esc_attr',
 				'radio-buttonset'  => 'esc_attr',
 				'palette'          => 'esc_attr',
-				'select'           => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
-				'select2'          => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
-				'select2-multiple' => array( 'Kirki_Sanitize_Values', 'unfiltered' ),
 				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
 				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
