@@ -460,15 +460,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'image'            => 'esc_url_raw',
-				'upload'           => 'esc_url_raw',
-				'radio-image'      => 'esc_attr',
-				'radio-buttonset'  => 'esc_attr',
-				'palette'          => 'esc_attr',
 				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
 				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
 				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
-				'kirki-text'       => 'esc_textarea',
 				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
