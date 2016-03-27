@@ -4,7 +4,7 @@ if ( ! class_exists( 'Kirki_Field_Kirki_Generic' ) ) {
 
 	class Kirki_Field_Kirki_Generic extends Kirki_Field {
 
-	/**
+		/**
 		 * Sets the control type.
 		 *
 		 * @access protected

@@ -418,26 +418,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_type() {
 
-			switch ( $this->type ) {
-
-				case 'group-title':
-				case 'group_title':
-					// Tweaks for backwards-compatibility:
-					// Prior to version 0.8 there was a group-title control.
-					// Instead we now just use a "custom" control.
-					$this->type = 'custom';
-					break;
-				case 'date':
-				case 'datetime':
-					$this->type                 = 'kirki-datetime';
-					$this->choices['class']     = 'datetime';
-					$this->choices['data-time'] = false;
-					if ( 'datetime' == $this->type ) {
-						$this->choices['data-time'] = true;
-					}
-					break;
-			}
-
 			// escape the control type (it doesn't hurt to be sure)
 			$this->type = esc_attr( $this->type );
 
