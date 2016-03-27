@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Fieeld_Radio_Image' ) ) {
+if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 
-	class Kirki_Fieeld_Radio_Buttonset extends Kirki_Field_Radio {
+	class Kirki_Field_Radio_Buttonset extends Kirki_Field_Radio {
 
 		/**
 		 * Sets the control type.

@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Fieeld_Radio' ) ) {
+if ( ! class_exists( 'Kirki_Field_Radio' ) ) {
 
 	class Kirki_Field_Radio extends Kirki_Field {
 
