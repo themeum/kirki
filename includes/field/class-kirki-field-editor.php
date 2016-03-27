@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
+if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 
-	class Kirki_Field_Upload extends Kirki_Field {
+	class Kirki_Field_Editor extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -11,7 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'upload';
+			$this->type = 'editor';
 
 		}
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			$this->sanitize_callback = 'esc_url_raw';
+			$this->sanitize_callback = 'wp_kses_post';
 
 		}
 

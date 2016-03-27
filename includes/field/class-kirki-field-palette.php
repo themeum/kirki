@@ -15,6 +15,17 @@ if ( ! class_exists( 'Kirki_Field_Palette' ) ) {
 
 		}
 
+		/**
+		 * Sets the control type.
+		 *
+		 * @access protected
+		 */
+		protected function set_type() {
+
+			$this->type = 'palette';
+
+		}
+
 	}
 
 }

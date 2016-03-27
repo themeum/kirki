@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
+if ( ! class_exists( 'Kirki_Field_Custom' ) ) {
 
-	class Kirki_Field_Upload extends Kirki_Field {
+	class Kirki_Field_Custom extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -11,7 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'upload';
+			$this->type = 'custom';
 
 		}
 
@@ -27,9 +27,12 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			$this->sanitize_callback = 'esc_url_raw';
+			// Custom fields don't actually save any value.
+			// just use __return_true.
+			$this->sanitize_callback = '__return_true';
 
 		}
 
 	}
+
 }

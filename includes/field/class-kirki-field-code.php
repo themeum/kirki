@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
+if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 
-	class Kirki_Field_Upload extends Kirki_Field {
+	class Kirki_Field_Code extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -11,7 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'upload';
+			$this->type = 'code';
 
 		}
 
@@ -27,9 +27,13 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			$this->sanitize_callback = 'esc_url_raw';
+			// Code fields must NOT be filtered. Their values usually contain CSS/JS.
+			// It is the responsibility of the theme/plugin that registers this field
+			// to properly apply any necessary filtering.
+			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 
 		}
 
 	}
+
 }

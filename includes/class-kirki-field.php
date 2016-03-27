@@ -460,10 +460,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'dropdown-pages'   => array( 'Kirki_Sanitize_Values', 'dropdown_pages' ),
-				'slider'           => array( 'Kirki_Sanitize_Values', 'number' ),
-				'number'           => array( 'Kirki_Sanitize_Values', 'number' ),
-				'editor'           => 'wp_kses_post',
 				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
 				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
 				'typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),

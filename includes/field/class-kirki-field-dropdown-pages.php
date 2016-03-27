@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
+if ( ! class_exists( 'Kirki_Field_Dropdown_Pages' ) ) {
 
-	class Kirki_Field_Upload extends Kirki_Field {
+	class Kirki_Field_Dropdown_Pages extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -11,7 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'upload';
+			$this->type = 'dropdown-pages';
 
 		}
 
@@ -27,9 +27,10 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			$this->sanitize_callback = 'esc_url_raw';
+			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'dropdown_pages' );
 
 		}
 
 	}
+
 }
