@@ -46,7 +46,7 @@
 								// Attach to <head>
 								} else if ( 'style' === args.function ) {
 									if ( newval !== '' ) {
-										$( 'head' ).append( '<style>' + args.element + '{' + args.property + ':' + args.prefix + newval + args.units + args.suffix + ';}</style>' );
+										$( 'body' ).append( '<style>' + args.element + '{' + args.property + ':' + args.prefix + newval + args.units + args.suffix + ';}</style>' );
 									}
 								// CSS
 								} else if ( 'css' === args.function ) {
