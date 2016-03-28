@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function sanitize( $value ) {
+		protected function set_sanitize_callback() {
 
 			// If a custom sanitize_callback has been defined,
 			// then we don't need to proceed any further.
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 		 * @since 2.2.0
 		 * @return array
 		 */
-		public static function typography( $value ) {
+		public static function sanitize( $value ) {
 			if ( ! is_array( $value ) ) {
 				return array();
 			}
@@ -74,19 +74,19 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 			}
 			// Sanitize the font-size
 			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
-				$value['font-size'] = self::css_dimension( $value['font-size'] );
-				if ( $value['font-size'] == self::filter_number( $value['font-size'] ) ) {
+				$value['font-size'] = Kirki_Sanitize_Values::css_dimension( $value['font-size'] );
+				if ( $value['font-size'] == Kirki_Sanitize_Values::filter_number( $value['font-size'] ) ) {
 					$value['font-size'] .= 'px';
 				}
 			}
 			// Sanitize the line-height
 			if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
-				$value['line-height'] = self::css_dimension( $value['line-height'] );
+				$value['line-height'] = Kirki_Sanitize_Values::css_dimension( $value['line-height'] );
 			}
 			// Sanitize the letter-spacing
 			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
-				$value['letter-spacing'] = self::css_dimension( $value['letter-spacing'] );
-				if ( $value['letter-spacing'] == self::filter_number( $value['letter-spacing'] ) ) {
+				$value['letter-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['letter-spacing'] );
+				if ( $value['letter-spacing'] == Kirki_Sanitize_Values::filter_number( $value['letter-spacing'] ) ) {
 					$value['letter-spacing'] .= 'px';
 				}
 			}
