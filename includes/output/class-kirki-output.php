@@ -86,7 +86,8 @@ class Kirki_Output {
 					if ( $skip ) {
 						continue;
 					}
-					if ( $exclude == $value ) {
+					// Skip for empty values, or if value is defined as excluded.
+					if ( empty( $value ) || $exclude == $value ) {
 						$skip = true;
 					}
 				}
