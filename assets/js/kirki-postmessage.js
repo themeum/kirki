@@ -1,3 +1,13 @@
+String.prototype.kirkiReplaceAll = function(search, replace) {
+    //if replace is not sent, return original string otherwise it will
+    //replace search string with 'undefined'.
+    if (replace === undefined) {
+        return this.toString();
+    }
+
+    return this.replace(new RegExp('[' + search + ']', 'g'), replace);
+};
+
 ( function( $ ) {
 	var api = wp.customize;
 
@@ -39,7 +49,7 @@
 							// Value is a string
 							if ( 'string' == typeof newval ) {
 								// Process the value pattern
-								newval = jsVars[ i ]['value_pattern'].replace( '$', newval );
+								newval = jsVars[ i ]['value_pattern'].kirkiReplaceAll( '$', newval );
 								// Inject HTML
 								if ( 'html' === args.function ) {
 									$( args.element ).html( args.prefix + newval + args.units + args.suffix );
