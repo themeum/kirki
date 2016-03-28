@@ -21,6 +21,13 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 	class Kirki_Sanitize_Values {
 
 		/**
+		 * Fallback for non-existing methods.
+		 */
+		public static function __callStatic( $name, $arguments ) {
+			error_log( "Kirki_Sanitize_Values::$name does not exist" );
+		}
+
+		/**
 		 * Checkbox sanitization callback.
 		 *
 		 * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
@@ -64,112 +71,6 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 
 			// If $page_id is an ID of a published page, return it; otherwise, return the default.
 			return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
-		}
-
-		/**
-		 * Sanitizes typography controls
-		 *
-		 * @since 2.2.0
-		 * @return array
-		 */
-		public static function typography( $value ) {
-			if ( ! is_array( $value ) ) {
-				return array();
-			}
-			// escape the font-family
-			if ( isset( $value['font-family'] ) ) {
-				$value['font-family'] = esc_attr( $value['font-family'] );
-			}
-			// make sure we're using a valid variant.
-			// We're adding checks for font-weight as well for backwards-compatibility
-			// Versions 2.0 - 2.2 were using an integer font-weight.
-			if ( isset( $value['variant'] ) || isset( $value['font-weight'] ) ) {
-				if ( isset( $value['font-weight'] ) && ! empty( $value['font-weight'] ) ) {
-					if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
-						$value['variant'] = $value['font-weight'];
-					}
-				}
-				$valid_variants = array(
-					'regular',
-					'italic',
-					'100',
-					'200',
-					'300',
-					'500',
-					'600',
-					'700',
-					'700italic',
-					'900',
-					'900italic',
-					'100italic',
-					'300italic',
-					'500italic',
-					'800',
-					'800italic',
-					'600italic',
-					'200italic',
-				);
-				if ( ! in_array( $value['variant'], $valid_variants ) ) {
-					$value['variant'] = 'regular';
-				}
-			}
-			// Make sure we're using a valid subset
-			if ( isset( $value['subset'] ) ) {
-				$valid_subsets = array(
-					'all',
-					'greek-ext',
-					'greek',
-					'cyrillic-ext',
-					'cyrillic',
-					'latin-ext',
-					'latin',
-					'vietnamese',
-					'arabic',
-					'gujarati',
-					'devanagari',
-					'bengali',
-					'hebrew',
-					'khmer',
-					'tamil',
-					'telugu',
-					'thai',
-				);
-				$subsets_ok = array();
-				if ( is_array( $value['subset'] ) ) {
-					foreach ( $value['subset'] as $subset ) {
-						if ( in_array( $subset, $valid_subsets ) ) {
-							$subsets_ok[] = $subset;
-						}
-					}
-					$value['subsets'] = $subsets_ok;
-				}
-			}
-			// Sanitize the font-size
-			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
-				$value['font-size'] = self::css_dimension( $value['font-size'] );
-				if ( $value['font-size'] == self::filter_number( $value['font-size'] ) ) {
-					$value['font-size'] .= 'px';
-				}
-			}
-			// Sanitize the line-height
-			if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
-				$value['line-height'] = self::css_dimension( $value['line-height'] );
-			}
-			// Sanitize the letter-spacing
-			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
-				$value['letter-spacing'] = self::css_dimension( $value['letter-spacing'] );
-				if ( $value['letter-spacing'] == self::filter_number( $value['letter-spacing'] ) ) {
-					$value['letter-spacing'] .= 'px';
-				}
-			}
-			// Sanitize the color
-			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
-				$color = ariColor::newColor( $value['color'] );
-				$value['color'] = $color->toCSS( 'hex' );
-			}
-
-			return $value;
-
 		}
 
 		/**
@@ -267,16 +168,6 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			$color = ariColor::newColor( $value );
 			// Return a CSS value, using the auto-detected mode
 			return $color->toCSS( $color->mode );
-		}
-
-		/**
-		 * multicheck callback
-		 */
-		public static function multicheck( $values ) {
-
-			$multi_values = ( ! is_array( $values ) ) ? explode( ',', $values ) : $values;
-			return ( ! empty( $multi_values ) ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
-
 		}
 
 		/**

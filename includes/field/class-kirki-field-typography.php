@@ -1,0 +1,106 @@
+<?php
+
+if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
+
+	class Kirki_Field_Typography extends Kirki_Field {
+
+		/**
+		 * Sets the control type.
+		 *
+		 * @access protected
+		 */
+		protected function set_type() {
+
+			$this->type = 'typography';
+
+		}
+
+		/**
+		 * Sets the $sanitize_callback
+		 *
+		 * @access protected
+		 */
+		protected function sanitize( $value ) {
+
+			// If a custom sanitize_callback has been defined,
+			// then we don't need to proceed any further.
+			if ( ! empty( $this->sanitize_callback ) ) {
+				return;
+			}
+			$this->sanitize_callback = array( $this, 'sanitize' );
+
+		}
+
+		/**
+		 * Sanitizes typography controls
+		 *
+		 * @since 2.2.0
+		 * @return array
+		 */
+		public static function typography( $value ) {
+			if ( ! is_array( $value ) ) {
+				return array();
+			}
+			// escape the font-family
+			if ( isset( $value['font-family'] ) ) {
+				$value['font-family'] = esc_attr( $value['font-family'] );
+			}
+			// make sure we're using a valid variant.
+			// We're adding checks for font-weight as well for backwards-compatibility
+			// Versions 2.0 - 2.2 were using an integer font-weight.
+			if ( isset( $value['variant'] ) || isset( $value['font-weight'] ) ) {
+				if ( isset( $value['font-weight'] ) && ! empty( $value['font-weight'] ) ) {
+					if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
+						$value['variant'] = $value['font-weight'];
+					}
+				}
+				$valid_variants = Kirki_Fonts::get_all_variants();
+				if ( ! array_key_exists( $value['variant'], $valid_variants ) ) {
+					$value['variant'] = 'regular';
+				}
+			}
+			// Make sure we're using a valid subset
+			if ( isset( $value['subset'] ) ) {
+				$valid_subsets = Kirki_Fonts::get_google_font_subsets();
+				$subsets_ok = array();
+				if ( is_array( $value['subset'] ) ) {
+					foreach ( $value['subset'] as $subset ) {
+						if ( array_key_exists( $subset, $valid_subsets ) ) {
+							$subsets_ok[] = $subset;
+						}
+					}
+					$value['subsets'] = $subsets_ok;
+				}
+			}
+			// Sanitize the font-size
+			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
+				$value['font-size'] = self::css_dimension( $value['font-size'] );
+				if ( $value['font-size'] == self::filter_number( $value['font-size'] ) ) {
+					$value['font-size'] .= 'px';
+				}
+			}
+			// Sanitize the line-height
+			if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
+				$value['line-height'] = self::css_dimension( $value['line-height'] );
+			}
+			// Sanitize the letter-spacing
+			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
+				$value['letter-spacing'] = self::css_dimension( $value['letter-spacing'] );
+				if ( $value['letter-spacing'] == self::filter_number( $value['letter-spacing'] ) ) {
+					$value['letter-spacing'] .= 'px';
+				}
+			}
+			// Sanitize the color
+			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
+				$color = ariColor::newColor( $value['color'] );
+				$value['color'] = $color->toCSS( 'hex' );
+			}
+
+			return $value;
+
+		}
+
+
+	}
+
+}
