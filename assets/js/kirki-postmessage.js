@@ -7,7 +7,6 @@ String.prototype.kirkiReplaceAll = function(search, replace) {
 
     return this.replace(new RegExp('[' + search + ']', 'g'), replace);
 };
-
 ( function( $ ) {
 	var api = wp.customize;
 
@@ -54,13 +53,20 @@ String.prototype.kirkiReplaceAll = function(search, replace) {
 								if ( 'html' === args.function ) {
 									$( args.element ).html( args.prefix + newval + args.units + args.suffix );
 								// Attach to <head>
-								} else if ( 'style' === args.function ) {
-									if ( newval !== '' ) {
-										$( 'body' ).append( '<style>' + args.element + '{' + args.property + ':' + args.prefix + newval + args.units + args.suffix + ';}</style>' );
+								} else {
+									// make sure we have a stylesheet with the defined ID.
+									if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
+										$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
 									}
-								// CSS
-								} else if ( 'css' === args.function ) {
-									$( args.element ).css( args.property, args.prefix + newval + args.units + args.suffix );
+									// if we have new value, replace style contents with custom css
+									if ( newval !== '' ) {
+										$( '#kirki-customizer-postmessage' + setting ).text( args.element + '{' + args.property + ':' + args.prefix + newval + args.units + args.suffix + ';}' );
+									}
+									// else let's clear it out
+									else {
+										$( '#kirki-customizer-postmessage' + setting ).text('' );
+									}
+
 								}
 
 							// Value is an object
