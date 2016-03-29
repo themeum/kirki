@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 		public function customize_controls_enqueue_scripts() {
 
-			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/kirki-tooltip.js', array( 'jquery', 'customize-controls' ) );
+			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls' ) );
 			wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-tooltip' );
@@ -135,14 +135,14 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 
 			if ( ! empty( $vars['logoImage'] ) || ! empty( $vars['description'] ) ) {
-				wp_register_script( 'kirki-branding', Kirki::$url . '/assets/js/kirki-branding.js' );
+				wp_register_script( 'kirki-branding', Kirki::$url . '/assets/js/branding.js' );
 				wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
 				wp_enqueue_script( 'kirki-branding' );
 			}
 		}
 
 		public function postmessage() {
-			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/kirki-postmessage.js', array( 'customize-preview' ), time(), true );
+			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), time(), true );
 			$js_vars_fields = array();
 			$fields = Kirki::$fields;
 			foreach ( $fields as $field ) {
