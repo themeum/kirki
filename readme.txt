@@ -37,10 +37,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 2.2.7.dev =
+= 2.2.7 =
 
-NEW: Introduce `value_pattern` argument for `output`
-TWEAK: Started refactoring the `Kirki_Field` class
+* FIX: Properly parsing `postMessage` scripts when `transport` is set to `auto`.
+* FIX: Background image was outputing CSS even if it was empty.
+* FIX: Default value for checkboxes
+* FIX: Issue with plugin URLs in the customizer, when the plugin was embedded in a theme
+* FIX: Descriptions were now shown in `sortable` fields.
+* FIX: Reset not working for textarea fields
+* NEW: Introduce `value_pattern` argument for `output` & `js_vars`.
+* NEW: Started refactoring the `Kirki_Field` class. Now each field can have its own sub-class extending the main Kirki_Field object.
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Tooltips` to `Kirki_Scripts_Tooltips`.
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Icons` to `Kirki_Scripts_Icons`.
 
 = 2.2.6 =
 
