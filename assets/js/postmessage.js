@@ -11,25 +11,31 @@
 
 					$.each( jsVars, function( i, js_var ) {
 
-						// Make sure everything is properly defined.
+						// Make sure element is defined.
 						if ( undefined === jsVars[ i ]['element'] ) {
 							jsVars[ i ]['element'] = '';
 						}
+						// Make sure property is defined.
 						if ( undefined === jsVars[ i ]['property'] ) {
 							jsVars[ i ]['property'] = '';
 						}
+						// Use empty prefix if undefined
 						if ( undefined === jsVars[ i ]['prefix'] ) {
 							jsVars[ i ]['prefix'] = '';
 						}
+						// Use empty suffix if undefined
 						if ( undefined === jsVars[ i ]['suffix'] ) {
 							jsVars[ i ]['suffix'] = '';
 						}
+						// Use empty units if undefined
 						if ( undefined === jsVars[ i ]['units'] ) {
 							jsVars[ i ]['units'] = '';
 						}
+						// Use css if method is undefined
 						if ( undefined === jsVars[ i ]['function'] ) {
 							jsVars[ i ]['function'] = 'css';
 						}
+						// Use $ (just the value) if value_pattern is undefined
 						if ( undefined === jsVars[ i ]['value_pattern'] ) {
 							jsVars[ i ]['value_pattern'] = '$';
 						}
@@ -46,6 +52,7 @@
 								// Attach to <head>
 								} else {
 									// make sure we have a stylesheet with the defined ID.
+									// If we don't then add it.
 									if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
 										$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
 									}
