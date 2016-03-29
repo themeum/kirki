@@ -131,9 +131,8 @@ function kirkiSetValue( setting, value ) {
 	/**
 	 * Control types:
 	 *     textarea
-	 *     kirki-textarea
 	 */
-	else if ( 'textarea' == control_type || 'kirki-textarea' == control_type ) {
+	else if ( 'kirki-generic' == control_type && undefined !== sub_control['choices'] && undefined !== sub_control['choices']['element'] && 'textarea' == sub_control['choices']['element'] ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
