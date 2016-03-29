@@ -7,7 +7,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * the class constructor
 		 */
 		public function __construct() {
-			$this->set_url();
+			add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 			add_action( 'customize_update_user_meta', array( $this, 'update_user_meta' ), 10, 2 );
 			add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		}
@@ -18,26 +18,33 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * and then does some calculations to get the proper URL for its CSS & JS assets
 		 */
 		public function set_url() {
-			/**
-			 * Are we on a parent theme?
-			 */
-			if ( Kirki_Toolkit::is_parent_theme( __FILE__ ) ) {
-				$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_template_directory() ), '', dirname( dirname( __FILE__ ) ) );
-				Kirki::$url = trailingslashit( get_template_directory_uri() . $relative_url );
+			// the path of the Kirki's parent-folder
+			$path = wp_normalize_path( dirname( Kirki::$path ) );
+			// get parent-theme path
+			$parent_theme_path = get_template_directory();
+			$parent_theme_path = wp_normalize_path( $parent_theme_path );
+			// Get child-theme path
+			$child_theme_path = get_stylesheet_directory_uri();
+			$child_theme_path = wp_normalize_path( $child_theme_path );
+
+			Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
+			// is Kirki included in a parent theme?
+			if ( false !== strpos( $parent_theme_path, $path ) ) {
+				Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $parent_theme_path, '', $path );
 			}
-			/**
-			 * Are we on a child theme?
-			 */
-			elseif ( Kirki_Toolkit::is_child_theme( __FILE__ ) ) {
-				$relative_url = str_replace( Kirki_Toolkit::clean_file_path( get_stylesheet_directory() ), '', dirname( dirname( __FILE__ ) ) );
-				Kirki::$url = trailingslashit( get_stylesheet_directory_uri() . $relative_url );
+			// Is there a child-theme?
+			if ( $child_theme_path != $parent_theme_path ) {
+				// is Kirki included in a child theme?
+				if ( false !== strpos( $child_theme_path, $path ) ) {
+					Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $child_theme_path, '', $path );
+				}
 			}
-			/**
-			 * Fallback to plugin
-			 */
-			else {
-				Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
+			// Apply the kirki/config filter
+			$config = apply_filters( 'kirki/config', array() );
+			if ( isset( $config['url_path'] ) ) {
+				Kirki::$url = esc_url_raw( $config['url_path'] );
 			}
+
 		}
 
 		/**

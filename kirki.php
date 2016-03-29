@@ -48,18 +48,6 @@ new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
 
-// apply the kirki/config filter to the URL
-if ( ! function_exists( 'kirki_filtered_url' ) ) {
-	function kirki_filtered_url() {
-		$config = apply_filters( 'kirki/config', array() );
-		if ( isset( $config['url_path'] ) ) {
-			Kirki::$url = esc_url_raw( $config['url_path'] );
-		}
-	}
-}
-if ( ! Kirki_Toolkit::is_plugin() ) {
-	add_action( 'after_setup_theme', 'kirki_filtered_url' );
-}
 // Include deprectaed functions & methods
 include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
 // Include the ariColor library
