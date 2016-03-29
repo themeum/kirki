@@ -1,12 +1,3 @@
-String.prototype.kirkiReplaceAll = function(search, replace) {
-    //if replace is not sent, return original string otherwise it will
-    //replace search string with 'undefined'.
-    if (replace === undefined) {
-        return this.toString();
-    }
-
-    return this.replace(new RegExp('[' + search + ']', 'g'), replace);
-};
 ( function( $ ) {
 	var api = wp.customize;
 
@@ -48,10 +39,10 @@ String.prototype.kirkiReplaceAll = function(search, replace) {
 							// Value is a string
 							if ( 'string' == typeof newval ) {
 								// Process the value pattern
-								newval = jsVars[ i ]['value_pattern'].kirkiReplaceAll( '$', newval );
+								var val = jsVars[ i ]['value_pattern'].replace( /\$/g, newval );
 								// Inject HTML
 								if ( 'html' === args.function ) {
-									$( args.element ).html( args.prefix + newval + args.units + args.suffix );
+									$( args.element ).html( args.prefix + val + args.units + args.suffix );
 								// Attach to <head>
 								} else {
 									// make sure we have a stylesheet with the defined ID.
@@ -59,8 +50,8 @@ String.prototype.kirkiReplaceAll = function(search, replace) {
 										$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
 									}
 									// if we have new value, replace style contents with custom css
-									if ( newval !== '' ) {
-										$( '#kirki-customizer-postmessage' + setting ).text( args.element + '{' + args.property + ':' + args.prefix + newval + args.units + args.suffix + ';}' );
+									if ( val !== '' ) {
+										$( '#kirki-customizer-postmessage' + setting ).text( args.element + '{' + args.property + ':' + args.prefix + val + args.units + args.suffix + ';}' );
 									}
 									// else let's clear it out
 									else {
