@@ -45,6 +45,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * FIX: Issue with plugin URLs in the customizer, when the plugin was embedded in a theme
 * FIX: Descriptions were now shown in `sortable` fields.
 * FIX: Reset not working for textarea fields
+* NEW: Added `text-align` ability in `typography` fields
 * NEW: Introduce `value_pattern` argument for `output` & `js_vars`.
 * NEW: Started refactoring the `Kirki_Field` class. Now each field can have its own sub-class extending the main Kirki_Field object.
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
