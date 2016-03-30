@@ -26,9 +26,7 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 
 		public function to_json() {
 			parent::to_json();
-			$this->json['palette']   = $this->palette;
-			$this->choices['alpha']  = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
-			$this->choices['colors'] = ( isset( $this->choices['colors'] ) ) ? $this->choices['colors'] : 2;
+			$this->json['palette']  = $this->palette;
 		}
 
 		protected function render() {
@@ -52,15 +50,13 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 				<span class="description customize-control-description">{{ data.description }}</span>
 			<# } #>
 			<div class="multicolor-group-wrapper">
-				<# var i = 0; #>
-				<# while ( i < data.choices['colors'] ) { #>
+				<# for ( key in data.choices ) { #>
 					<div class="multicolor-single-color-wrapper">
-						<# if ( data.choices['labels'][ i ] ) { #>
-							<label for="{{ data.id }}-{{ i }}">{{ data.choices['labels'][ i ] }}</label>
+						<# if ( data.choices[ key ] ) { #>
+							<label for="{{ data.id }}-{{ key }}">{{ data.choices[ key ] }}</label>
 						<# } #>
-						<input id="{{ data.id }}-{{ i }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ i ] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value[ i ] }}" class="kirki-color-control color-picker multicolor-index-{{ i }}" />
+						<input id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="true" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
 					</div>
-					<# i++; #>
 				<# } #>
 			</div>
 			<input type="hidden" value="" {{{ data.link }}} />

@@ -3,31 +3,30 @@
  */
 wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend( {
 	ready: function() {
-		var control = this;
-
-		var colors_total = control.params.choices['colors'];
-
-		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
-		var settingValue = this.params.value;
+		var control = this,
+		    colors  = control.params.choices,
+		    keys    = Object.keys( colors ),
+		    value   = this.params.value;
 
 		// The hidden field that keeps the data saved (though we never update it)
-		this.settingField = this.container.find('[data-customize-setting-link]').first();
+		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
 
 		var i = 0;
-		while ( i < colors_total ) {
-			function multicolorChangeHandler( control, value, num ) {
-				var picker = control.container.find( '.multicolor-index-' + num );
+		while ( i < Object.keys( colors ).length ) {
+			function multicolorChangeHandler( control, value, sub_setting ) {
+				var picker = control.container.find( '.multicolor-index-' + sub_setting );
 				picker.wpColorPicker({
 					change: function( event, ui ) {
 						setTimeout( function() {
-							settingValue[ num ] = picker.val();
-							control.setting.set( settingValue );
-							control.container.find( '.multicolor-index-' + num ).trigger('change');
+							value[ sub_setting ] = picker.val();
+							control.setting.set( value );
+							control.container.find( '.multicolor-index-' + sub_setting ).trigger( 'change' );
 						}, 100 );
 					},
 				});
 			}
-			multicolorChangeHandler( this, settingValue, i );
+
+			multicolorChangeHandler( this, value, keys[ i ] );
 			i++;
 		}
 	},
