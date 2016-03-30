@@ -1538,6 +1538,19 @@ span.CodeMirror-selectedtext {
   .customize-control-typography .wrapper .line-height,
   .customize-control-typography .wrapper .letter-spacing {
     width: 50%; }
+  .customize-control-typography .wrapper .text-align {
+    width: 100%; }
+  .customize-control-typography .wrapper .text-align .dashicons {
+    padding: 3px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent; }
+  .customize-control-typography .wrapper .text-align input {
+    display: none; }
+    .customize-control-typography .wrapper .text-align input:checked + label .dashicons {
+      border: 1px solid #3498DB;
+      color: #000; }
   .customize-control-typography .wrapper .color {
     width: auto; }
 

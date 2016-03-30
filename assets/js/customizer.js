@@ -1529,6 +1529,14 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			wp.customize.previewer.refresh();
 		});
 
+		this.container.on( 'change', '.text-align input', function() {
+			// add the value to the array and set the setting's value.
+			value['text-align'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
+
 		var picker = this.container.find ( '.kirki-color-control' );
 		picker.wpColorPicker ( {
 			change: function() {

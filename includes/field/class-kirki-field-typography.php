@@ -90,6 +90,12 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 					$value['letter-spacing'] .= 'px';
 				}
 			}
+			// Sanitize the text-align
+			if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
+				if ( ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ) ) ) {
+					$value['text-align'] = 'inherit';
+				}
+			}
 			// Sanitize the color
 			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
 				$color = ariColor::newColor( $value['color'] );

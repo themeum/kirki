@@ -30,6 +30,29 @@
 		.letter-spacing {
 			width: 50%;
 		}
+		.text-align {
+			width: 100%;
+		}
+		.text-align {
+			.dashicons {
+				padding: 3px;
+				font-size: 25px;
+				width: 25px;
+				height: 25px;
+				border: 1px solid transparent;
+			}
+			input {
+				display: none;
+				&:checked {
+					+ label {
+						.dashicons {
+							border: 1px solid #3498DB;
+							color: #000;
+						}
+					}
+				}
+			}
+		}
 		.color {
 			width: auto;
 		}
