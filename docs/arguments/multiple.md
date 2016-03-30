@@ -12,6 +12,7 @@ Its value is an integer and defines the number of simultaneous options the user 
 Defaults to `1`.
 
 ```php
+<?php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'select',
 	'settings'    => 'my_setting',
