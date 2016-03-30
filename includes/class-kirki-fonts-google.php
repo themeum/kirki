@@ -217,6 +217,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			$this->link .= implode( '|', $link_fonts );
 
 			if ( ! empty( $this->subsets ) ) {
+				$this->subsets = array_unique( $this->subsets );
 				$this->link .= '&subset=' . implode( ',', $this->subsets );
 			}
 
