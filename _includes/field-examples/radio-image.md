@@ -4,14 +4,14 @@
 Kirki::add_field( 'my_config', array(
 	'type'        => 'radio-image',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Radio Control', 'my_textdomain' ),
+	'label'       => esc_html__( 'Radio Control', 'my_textdomain' ),
 	'section'     => 'my_section',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
-		'red'   => 'https://my-domain.com/red.png',
-		'green' => 'https://my-domain.com/green.png',
-		'blue'  => 'https://my-domain.com/blue.png',
+		'red'   => get_template_directory_uri() . '/assets/images/red.png',
+		'green' => get_template_directory_uri() . '/assets/images/green.png',
+		'blue'  => get_template_directory_uri() . '/assets/images/blue.png',
 	),
 ) );
 ?>
