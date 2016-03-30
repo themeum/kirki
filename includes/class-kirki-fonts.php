@@ -85,8 +85,7 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 
 			if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-				$fonts_path = wp_normalize_path( dirname( dirname( __FILE__ ) ) . '/assets/json/webfonts.php' );
-				$fonts      = include $fonts_path;
+				$fonts = include wp_normalize_path( Kirki::$path . '/includes/webfonts.php' );
 
 				$google_fonts = array();
 				if ( is_array( $fonts ) ) {
