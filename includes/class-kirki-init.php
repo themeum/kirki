@@ -97,6 +97,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Palette_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Preset_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Multicheck_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Multicolor_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Sortable_Control' );
 		}
 
