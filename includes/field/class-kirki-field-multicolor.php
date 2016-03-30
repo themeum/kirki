@@ -56,6 +56,29 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 
 		}
 
+		/**
+		 * Sets the default values
+		 *
+		 * @access protected
+		 */
+		protected function set_default() {
+			// make sure we've already processed the set_choices() method.
+			// This way we know how many colors we're dealing with
+			$this->set_choices();
+			// Define a default array using #FFFFFF
+			$defaults = array_fill( 0, $this->choices['colors'], '#FFFFFF' );
+			// If we're using rgba, define default as rgba(255,255,255,0)
+			if ( $this->choices['colors'] ) {
+				$defaults = array_fill( 0, $this->choices['colors'], 'rgba(255,255,255,0)' );
+			}
+			// Make sure defaults are defined as an array
+			if ( ! is_array( $this->default ) ) {
+				$this->default = array();
+			}
+			// Merge our arrays
+			$this->default = wp_parse_args( $this->default, $defaults );
+		}
+
 		public function sanitize( $value ) {
 
 			return $value;
