@@ -11,6 +11,7 @@ Its value is an integer and defines the number of simultaneous options the user 
 
 Defaults to `1`.
 
+```php
 Kirki::add_field( 'my_config', array(
 	'type'        => 'select',
 	'settings'    => 'my_setting',
@@ -26,3 +27,4 @@ Kirki::add_field( 'my_config', array(
 		'option-4' => esc_attr__( 'Option 4', 'my_textdomain' ),
 	),
 ) );
+```
