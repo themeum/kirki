@@ -161,6 +161,12 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'back'                  => esc_attr__( 'Back', 'kirki' ),
 				'reset-with-icon'       => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-image-rotate"></span>' ),
 				'text-align'            => esc_attr__( 'Text Align', 'kirki' ),
+				'text-transform'        => esc_attr__( 'Text Transform', 'kirki' ),
+				'none'                  => esc_attr__( 'None', 'kirki' ),
+				'capitalize'            => esc_attr__( 'Capitalize', 'kirki' ),
+				'uppercase'             => esc_attr__( 'Uppercase', 'kirki' ),
+				'lowercase'             => esc_attr__( 'Lowercase', 'kirki' ),
+				'initial'               => esc_attr__( 'Initial', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

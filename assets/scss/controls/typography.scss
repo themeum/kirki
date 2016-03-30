@@ -17,6 +17,7 @@
 		.font-size,
 		.line-height,
 		.letter-spacing,
+		.text-transform,
 		.color {
 			width: 100%;
 			float: none;
@@ -52,6 +53,9 @@
 					}
 				}
 			}
+		}
+		.text-transform {
+			padding-top: 10px;
 		}
 		.color {
 			width: auto;

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kirki Toolkit 2.2.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-03-30 18:27:22+00:00\n"
+"POT-Creation-Date: 2016-03-30 18:52:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -381,6 +381,30 @@ msgstr ""
 
 #: includes/class-kirki-l10n.php:163
 msgid "Text Align"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:164
+msgid "Text Transform"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:165
+msgid "None"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:166
+msgid "Capitalize"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:167
+msgid "Uppercase"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:168
+msgid "Lowercase"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:169
+msgid "Initial"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

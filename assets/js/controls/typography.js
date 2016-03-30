@@ -4,9 +4,10 @@
 wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
-		var fontFamilySelector = control.selector + ' .font-family select';
-		var variantSelector    = control.selector + ' .variant select';
-		var subsetSelector     = control.selector + ' .subset select';
+		var fontFamilySelector    = control.selector + ' .font-family select';
+		var variantSelector       = control.selector + ' .variant select';
+		var subsetSelector        = control.selector + ' .subset select';
+		var textTransformSelector = control.selector + ' .text-transform select';
 		// Get initial values
 		var value = {};
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
@@ -16,6 +17,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
 		value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
 		value['color']          = ( undefined !== control.setting._value['color'] ) ? control.setting._value['color'] : '';
+		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
+		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
 
 		var renderSubControl = function( fontFamily, sub, startValue ) {
 			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
@@ -202,6 +205,18 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			// refresh the preview
 			wp.customize.previewer.refresh();
 		});
+
+		// text-transform
+		jQuery( textTransformSelector ).selectize();
+		this.container.on( 'change', '.text-transform select', function() {
+			// add the value to the array and set the setting's value.
+			value['text-transform'] = jQuery( this ).val();
+			control.setting.set( value );
+			// refresh the preview
+			wp.customize.previewer.refresh();
+		});
+
+
 
 		var picker = this.container.find ( '.kirki-color-control' );
 		picker.wpColorPicker ( {

@@ -48,6 +48,10 @@ class Kirki_Output_Control_Typography extends Kirki_Output {
 		if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['text-align'] = $value['text-align'];
 		}
+		// Take care of text-transform
+		if ( isset( $value['text-transform'] ) && ! empty( $value['text-transform'] ) ) {
+			$this->styles[ $output['media_query'] ][ $output['element'] ]['text-transform'] = $value['text-transform'];
+		}
 		// Take care of color
 		if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['color'] = $value['color'];

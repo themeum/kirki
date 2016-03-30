@@ -132,6 +132,20 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					</div>
 				<# } #>
 
+				<# if ( data.default['text-transform'] ) { #>
+					<div class="text-transform">
+						<h5>{{ data.l10n['text-transform'] }}</h5>
+						<select id="kirki-typography-text-transform-{{{ data.id }}}">
+							<option value="none"<# if ( 'none' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['none'] }}</option>
+							<option value="capitalize"<# if ( 'capitalize' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['capitalize'] }}</option>
+							<option value="uppercase"<# if ( 'uppercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['uppercase'] }}</option>
+							<option value="lowercase"<# if ( 'lowercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['lowercase'] }}</option>
+							<option value="initial"<# if ( 'initial' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['initial'] }}</option>
+							<option value="inherit"<# if ( 'inherit' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['inherit'] }}</option>
+						</select>
+					</div>
+				<# } #>
+
 				<# if ( data.default['color'] ) { #>
 					<div class="color">
 						<h5>{{ data.l10n['color'] }}</h5>

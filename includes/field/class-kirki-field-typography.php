@@ -96,6 +96,12 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 					$value['text-align'] = 'inherit';
 				}
 			}
+			// Sanitize the text-transform
+			if ( isset( $value['text-transform'] ) && ! empty( $value['text-transform'] ) ) {
+				if ( ! in_array( $value['text-transform'], array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ) ) ) {
+					$value['text-transform'] = 'none';
+				}
+			}
 			// Sanitize the color
 			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
 				$color = ariColor::newColor( $value['color'] );
