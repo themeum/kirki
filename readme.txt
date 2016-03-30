@@ -52,6 +52,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Tooltips` to `Kirki_Scripts_Tooltips`.
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Icons` to `Kirki_Scripts_Icons`.
+* DEPRECATED: Removed the `Kirki_Colourlovers` class.
 
 = 2.2.6 =
 
