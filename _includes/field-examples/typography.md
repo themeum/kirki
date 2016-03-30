@@ -8,7 +8,7 @@ Kirki::add_field( 'my_config', array(
 	'section'     => 'my_section',
 	'default'     => array(
 		'font-family'    => 'Roboto',
-		'variant'        => '400',
+		'variant'        => 'regular',
 		'font-size'      => '14px',
 		'line-height'    => '1.5',
 		'letter-spacing' => '0',
