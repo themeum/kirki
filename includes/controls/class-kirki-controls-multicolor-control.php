@@ -45,19 +45,24 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
-			<label>
-				<span class="customize-control-title">
-					{{{ data.label }}}
-				</span>
-				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{ data.description }}</span>
-				<# } #>
+			<span class="customize-control-title">
+				{{{ data.label }}}
+			</span>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
+			<div class="multicolor-group-wrapper">
 				<# var i = 0; #>
 				<# while ( i < data.choices['colors'] ) { #>
-					<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ i ] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value[ i ] }}" class="kirki-color-control color-picker multicolor-index-{{ i }}" />
+					<div class="multicolor-single-color-wrapper">
+						<# if ( data.choices['labels'][ i ] ) { #>
+							<label for="{{ data.id }}-{{ i }}">{{ data.choices['labels'][ i ] }}</label>
+						<# } #>
+						<input id="{{ data.id }}-{{ i }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ i ] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value[ i ] }}" class="kirki-color-control color-picker multicolor-index-{{ i }}" />
+					</div>
 					<# i++; #>
 				<# } #>
-			</label>
+			</div>
 			<input type="hidden" value="" {{{ data.link }}} />
 			<?php
 		}

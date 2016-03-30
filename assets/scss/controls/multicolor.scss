@@ -2,6 +2,13 @@
 // Color controls
 /////////////////////
 .customize-control-multicolor {
+	.multicolor-single-color-wrapper {
+		label {
+			display: block;
+			text-align: center;
+			padding: 3px;
+		}
+	}
 	.wp-picker-container {
 		width: 100%;
 		a.wp-color-result {

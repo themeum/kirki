@@ -638,6 +638,10 @@ span.CodeMirror-selectedtext {
     .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after, .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
       color: #fff; }
 
+.customize-control-multicolor .multicolor-single-color-wrapper label {
+  display: block;
+  text-align: center;
+  padding: 3px; }
 .customize-control-multicolor .wp-picker-container {
   width: 100%; }
   .customize-control-multicolor .wp-picker-container a.wp-color-result {
@@ -770,6 +774,10 @@ span.CodeMirror-selectedtext {
 .customize-control-dimension .input-wrapper.invalid input[type="text"]:focus {
   border-color: #D32F2F; }
 
+.customize-control-multicolor .multicolor-single-color-wrapper label {
+  display: block;
+  text-align: center;
+  padding: 3px; }
 .customize-control-multicolor .wp-picker-container {
   width: 100%; }
   .customize-control-multicolor .wp-picker-container a.wp-color-result {
