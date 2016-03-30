@@ -53,3 +53,11 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 		return Kirki_Color::get_brightness( $hex );
 	}
 }
+
+if ( ! class_exists( 'Kirki_Colourlovers' ) ) {
+	class Kirki_Colourlovers {
+		public static function get_palettes( $palettes_nr = 5 ) {
+			return array();
+		}
+	}
+}
