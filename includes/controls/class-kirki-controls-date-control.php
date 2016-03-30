@@ -1,6 +1,6 @@
 <?php
 /**
- * Datetime Field Control.
+ * Date Field Control.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Controls_Datetime_Control' ) ) {
-	class Kirki_Controls_Datetime_Control extends Kirki_Customize_Control {
+if ( ! class_exists( 'Kirki_Controls_Date_Control' ) ) {
+	class Kirki_Controls_Date_Control extends Kirki_Customize_Control {
 
-		public $type = 'kirki-datetime';
+		public $type = 'kirki-date';
 
 		public function enqueue() {
 			wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery', 'jquery-ui' ) );
@@ -36,7 +36,6 @@ if ( ! class_exists( 'Kirki_Controls_Datetime_Control' ) ) {
 				<# } #>
 				<div class="customize-control-content">
 					<input class="datepicker" type="text" id={{ data.id }}" value="{{ data.value }}" {{{ data.link }}} />
-					<!-- <input class="timepicker" type="text" id={{ data.id }}" value="{{ data.value }}" {{{ data.link }}} /> -->
 				</div>
 			</label>
 			<?php

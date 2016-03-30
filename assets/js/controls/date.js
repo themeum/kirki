@@ -1,7 +1,7 @@
 /**
- * KIRKI CONTROL: DATETIME
+ * KIRKI CONTROL: DATE
  */
-wp.customize.controlConstructor['kirki-datetime'] = wp.customize.Control.extend( {
+wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend( {
 	ready: function() {
 		var control = this;
 		var selector = control.selector + ' input.datepicker';
