@@ -23,12 +23,8 @@ if ( ! class_exists( 'Kirki_Field_Kirki_Generic' ) ) {
 		 */
 		protected function set_choices() {
 
-			if ( ! is_array( $this->choices ) ) {
-				$this->choices = array();
-			}
-			if ( ! isset( $this->choices['element'] ) ) {
-				$this->choices['element'] = 'input';
-			}
+			! is_array( $this->choices ) && $this->choices = array();
+			! isset( $this->choices['element'] ) && $this->choices['element'] = 'input';
 
 		}
 

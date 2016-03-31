@@ -36,7 +36,7 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 		 */
 		public function sanitize( $value ) {
 
-			$value = ( ! is_array( $value ) ) ? explode( ',', $value ) : $value;
+			! is_array( $value ) && $value = explode( ',', $value );
 			return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
 
 		}

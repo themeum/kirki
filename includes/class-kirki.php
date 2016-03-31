@@ -62,10 +62,15 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 */
 		public static function add_panel( $id = '', $args = array() ) {
 
-			$args['id']          = esc_attr( $id );
-			$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
-			$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
-			$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
+			// Set the ID
+			$args['id'] = esc_attr( $id );
+			// Sanitize the description
+			isset( $args['description'] ) && $args['description'] = esc_textarea( $args['description'] );
+			// make sure priority is an integer
+			isset( $args['priority'] ) && $args['priority'] = intval( $args['priority'] );
+			// If "type" is not specified, fallbakck to default.
+			! isset( $args['type'] ) && $args['type'] = 'default';
+			// Set active_callback
 			if ( ! isset( $args['active_callback'] ) ) {
 				$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
 			}
@@ -83,11 +88,16 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 */
 		public static function add_section( $id, $args ) {
 
-			$args['id']          = esc_attr( $id );
-			$args['panel']       = ( isset( $args['panel'] ) ) ? esc_attr( $args['panel'] ) : '';
-			$args['description'] = ( isset( $args['description'] ) ) ? esc_textarea( $args['description'] ) : '';
-			$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
-			$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
+			// escape the ID
+			$args['id'] = esc_attr( $id );
+			// escape the panel
+			isset( $args['panel'] ) && $args['panel'] = esc_attr( $args['panel'] );
+			// escape the description
+			isset( $args['description'] ) && $args['description'] = esc_textarea( $args['description'] );
+			// make sure priority is an integer
+			isset( $args['priority'] ) && $args['priority'] = esc_attr( $args['priority'] );
+			// If type is not specified, use default.
+			! isset( $args['type'] ) && $args['type'] = 'default';
 			if ( ! isset( $args['active_callback'] ) ) {
 				$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
 			}
@@ -103,16 +113,22 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @var		array		the field arguments
 		 */
 		public static function add_field( $config_id, $args ) {
+
 			if ( isset( $args['type'] ) ) {
+
 				$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
 				$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
 				if ( class_exists( $classname ) ) {
 					new $classname( $config_id, $args );
 					return;
 				}
+
 			}
+
 			new Kirki_Field( $config_id, $args );
+
 		}
 
 	}
+
 }

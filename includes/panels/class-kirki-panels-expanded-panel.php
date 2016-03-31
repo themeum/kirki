@@ -12,8 +12,8 @@ class Kirki_Panels_Expanded_Panel extends WP_Customize_Panel {
 		<?php
 	}
 
-	protected function content_template() {
-		?>
+	protected function content_template() { ?>
+
 		<li class="panel-meta customize-info accordion-section <# if ( ! data.description ) { #> cannot-expand<# } #>">
 			<div class="accordion-section-title">
 				<strong class="panel-title">{{ data.title }}</strong>
@@ -25,5 +25,7 @@ class Kirki_Panels_Expanded_Panel extends WP_Customize_Panel {
 			<# } #>
 		</li>
 		<?php
+
 	}
+
 }

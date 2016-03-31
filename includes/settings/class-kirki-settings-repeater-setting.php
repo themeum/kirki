@@ -27,9 +27,7 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 
 		public function value() {
 			$value = parent::value();
-			if ( ! is_array( $value ) ) {
-						$value = array();
-			}
+			! is_array( $value ) && $value = array();
 
 			return $value;
 		}
@@ -43,9 +41,8 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 		 */
 		public function sanitize_repeater_setting( $value ) {
 
-			if ( ! is_array( $value ) ) {
-				$value = json_decode( urldecode( $value ) );
-			}
+			! is_array( $value ) && $value = json_decode( urldecode( $value ) );
+
 			$sanitized = ( empty( $value ) || ! is_array( $value ) ) ? array() : $value;
 
 			// Make sure that every row is an array, not an object

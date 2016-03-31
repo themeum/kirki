@@ -10,26 +10,25 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 		// hack for standard fonts
 		$this->value = str_replace( '&quot;', '"', $this->value );
 
-		// Add backup font
 		if ( Kirki_Fonts::is_google_font( $this->value ) ) {
 
 			if ( isset( $google_fonts_array[ $this->value ] ) && isset( $google_fonts_array[ $this->value ]['category'] ) ) {
+
 				if ( isset( $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ] ) ) {
+
 					// add double quotes if needed
-					if ( false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) ) {
-						$this->value = '"' . $this->value . '", ' . $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ];
-					} else {
-						$this->value .= ', ' . $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ];
-					}
+					false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) && $this->value = '"' . $this->value . '"';
+					// Add backup font
+					$this->value .= ', ' . $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ];
+
 				}
+
 			}
 
 		} else {
 
 			// add double quotes if needed
-			if ( false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) ) {
-				$this->value = '"' . $this->value . '"';
-			}
+			false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) && $this->value = '"' . $this->value . '"';
 
 		}
 

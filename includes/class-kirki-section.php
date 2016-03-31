@@ -29,13 +29,7 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 			}
 			$section_classname = $this->section_types[ $args['type'] ];
 
-			$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), array(
-				'title'           => $args['title'], // already escaped in WP Core
-				'priority'        => absint( $args['priority'] ),
-				'panel'           => sanitize_key( $args['panel'] ),
-				'description'     => $args['description'], // already escaped in WP Core
-				'active_callback' => $args['active_callback'],
-			) ) );
+			$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
 
 			if ( isset( $args['icon'] ) ) {
 				$args['context'] = 'section';

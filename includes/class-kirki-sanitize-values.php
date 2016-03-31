@@ -82,10 +82,10 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		public static function css_dimension( $value ) {
 			// trim it
 			$value = trim( $value );
+
 			// if round, return 50%
-			if ( 'round' == $value ) {
-				$value = '50%';
-			}
+			'round' == $value && $value = '50%';
+
 			// if empty, return empty
 			if ( '' == $value ) {
 				return '';
@@ -108,9 +108,7 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			// An array of all valid CSS units. Their order was carefully chosen for this evaluation, don't mix it up!!!
 			$units = array( 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' );
 			foreach ( $units as $unit ) {
-				if ( false !== strpos( $value, $unit ) ) {
-					$unit_used = $unit;
-				}
+				false !== strpos( $value, $unit ) && $unit_used = $unit;
 			}
 			return $raw_value . $unit_used;
 		}
@@ -132,9 +130,8 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		public static function sortable( $value ) {
 			if ( is_serialized( $value ) ) {
 				return $value;
-			} else {
-				return serialize( $value );
 			}
+			return serialize( $value );
 		}
 
 		/**

@@ -11,9 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Text' ) ) {
 		 */
 		protected function set_choices() {
 
-			if ( ! is_array( $this->choices ) ) {
-				$this->choices = array();
-			}
+			! is_array( $this->choices ) && $this->choices = array();
 			$this->choices['element'] = 'input';
 			$this->choices['type']    = 'text';
 

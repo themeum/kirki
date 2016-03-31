@@ -119,7 +119,7 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		public static function get_instance( $id = 'global', $args = array() ) {
 
 			$id = trim( esc_attr( $id ) );
-			$id = ( '' == $id ) ? 'global' : $id;
+			empty( $id ) && $id = 'global';
 
 			$id_md5 = md5( $id );
 			if ( ! isset( self::$instances[ $id_md5 ] ) ) {

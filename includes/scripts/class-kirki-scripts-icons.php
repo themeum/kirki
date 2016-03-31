@@ -46,24 +46,17 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 */
 		public static function generate_script( $args = array() ) {
 
-			/**
-			 * If "icon" is not specified
-			 * then no need to proceed.
-			 */
+			// If "icon" is not specified then no need to proceed.
 			if ( ! isset( $args['icon'] ) || '' == $args['icon'] ) {
 				return;
 			}
-			/**
-			 * If this is not a panel or section
-			 * then no need to proceed.
-			 */
+
+			// If this is not a panel or section then no need to proceed.
 			if ( ! isset( $args['context'] ) || ! in_array( $args['context'], array( 'panel', 'section' ) ) ) {
 				return;
 			}
-			/**
-			 * If the panel or section ID is not defined
-			 * then early exit.
-			 */
+
+			// If the panel or section ID is not defined then early exit.
 			if ( ! isset( $args['id'] ) ) {
 				return;
 			}
@@ -87,11 +80,14 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 * @return  void (echoes the script)
 		 */
 		public function enqueue_script() {
+
 			if ( ! self::$script_added && '' != self::$icons_script ) {
 				self::$script_added = true;
 				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
 			}
+
 		}
 
 	}
+
 }

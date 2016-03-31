@@ -51,18 +51,16 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		final private function add_settings( $args = array() ) {
 
 			// Get the classname we'll be using to create our setting(s)
-			if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->setting_types ) ) {
-				$args['type'] = 'default';
-			}
+			! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->setting_types ) && $args['type'] = 'default';
+
 			$classname = $this->setting_types[ $args['type'] ];
 
 			// If settings are defined as an array, then we need to go through them
 			// and call add_setting for each one of them separately.
 			if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
 				// Make sure defaults have been defined
-				if ( ! isset( $args['default'] ) || ! is_array( $args['default'] ) ) {
-					$args['default'] = array();
-				}
+				! isset( $args['default'] ) || ! is_array( $args['default'] ) && $args['default'] = array();
+
 				foreach ( $args['settings'] as $key => $value ) {
 					$default   = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
 					$this->add_setting( $classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );

@@ -32,9 +32,8 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		public function add_panel( $args ) {
 			global $wp_customize;
 
-			if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->panel_types ) ) {
-				$args['type'] = 'default';
-			}
+			! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->panel_types ) && $args['type'] = 'default';
+
 			$panel_classname = $this->panel_types[ $args['type'] ];
 
 			$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), array(

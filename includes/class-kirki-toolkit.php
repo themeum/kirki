@@ -33,9 +33,7 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 		 * @return Kirki_Toolkit
 		 */
 		public static function get_instance() {
-			if ( null == self::$instance ) {
-				self::$instance = new self();
-			}
+			null == self::$instance && self::$instance = new self();
 			return self::$instance;
 		}
 
