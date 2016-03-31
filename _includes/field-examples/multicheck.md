@@ -6,7 +6,7 @@ Kirki::add_field( 'my_config', array(
 	'settings'    => 'my_setting',
 	'label'       => esc_attr__( 'My Control', 'my_textdomain' ),
 	'section'     => 'my_section',
-	'default'     => 'option-1',
+	'default'     => array('option-1', 'option-3', 'option-4'),
 	'priority'    => 10,
 	'choices'     => array(
 		'option-1' => esc_attr__( 'Option 1', 'my_textdomain' ),
