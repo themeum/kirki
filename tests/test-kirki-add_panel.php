@@ -25,6 +25,8 @@ class Test_Kirki_Add_Panel extends WP_UnitTestCase {
 		$this->assertEquals(
 			array(
 				'id'              => 'test_empty',
+				'description'     => '',
+				'priority'        => 10,
 				'active_callback' => '__return_true',
 				'type'            => 'default',
 			),
