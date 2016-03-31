@@ -66,7 +66,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			);
 
 			foreach ( $fields as $key => $field ) {
-				if ( 'image' != $field['type'] ) {
+				if ( 'image' != $field['type'] && 'cropped_image' != $field['type'] ) {
 					continue;
 				}
 
@@ -222,7 +222,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<# } #>
 								<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
-							<# } else if ( field.type === 'image' ) { #>
+							<# } else if ( field.type === 'image' || field.type === 'cropped_image' ) { #>
 
 								<label>
 									<# if ( field.label ) { #>

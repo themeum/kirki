@@ -129,13 +129,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button', function( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function (e) {
 			e.preventDefault();
 			control.$thisButton = jQuery(this);
-			control.openFrame( e );
+			control.openFrame(e);
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .remove-button', function( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function (e) {
 			e.preventDefault();
 			control.$thisButton = jQuery(this);
 			control.removeImage(e);
@@ -186,11 +186,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	 * Open the media modal.
 	 */
 	openFrame: function( event ) {
-		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
-			return;
-		}
 
-		if ( ! this.frame ) {
+		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
+
+		if(this.$thisButton.closest('.repeater-field').hasClass('repeater-field-cropped_image')){
+			this.initCropperFrame();
+		}
+		else{
 			this.initFrame();
 		}
 
@@ -198,36 +200,217 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	},
 
 	initFrame : function() {
+
 		var control = this;
 
 		this.frame = wp.media({
 			states: [
-				new wp.media.controller.Library({
-					library:  wp.media.query({ type: 'image' }),
-					multiple: false,
-					date:     false
+			new wp.media.controller.Library({
+					library:   wp.media.query({ type: 'image' }),
+					multiple:  false,
+					date:      false
 				})
 			]
 		});
 
 		// When a file is selected, run a callback.
-		this.frame.on( 'select', function( e ) {
-			control.selectImage();
+		this.frame.on( 'select', this.onSelect, this );
+	},
+	/**
+	 * Create a media modal select frame, and store it so the instance can be reused when needed.
+	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
+	 */
+	 initCropperFrame : function() {
+
+		//hack to prevent errors from WordPress Core
+		//Core media library uses params.width and params.height to calculate some values
+		//and we get undefined notice on the ajax call when not defined
+		this.params.width = this.params.fields.slide_image.width;
+		this.params.height = this.params.fields.slide_image.height;
+		this.params.flex_width = this.params.fields.slide_image.flex_width;
+		this.params.flex_height = this.params.fields.slide_image.flex_height;
+
+		var control = this;
+
+		this.frame = wp.media({
+			button: {
+				text: 'Select and Crop',
+				close: false
+			},
+			states: [
+				new wp.media.controller.Library({
+					library:   wp.media.query({ type: 'image' }),
+					multiple:  false,
+					date:      false,
+					suggestedWidth: this.params.width,
+					suggestedHeight: this.params.height
+				}),
+				new wp.media.controller.CustomizeImageCropper({
+					imgSelectOptions: this.calculateImageSelectOptions,
+					control: this
+				})
+			]
 		});
+
+		this.frame.on( 'select', this.onSelectForCrop, this );
+		this.frame.on( 'cropped', this.onCropped, this );
+		this.frame.on( 'skippedcrop', this.onSkippedCrop, this );
+
 	},
 
-	selectImage : function() {
+    onSelect : function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
-		var image_src  = attachment.url;
-		var $targetDiv = this.$thisButton.closest( '.repeater-field-image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ image_src +'">' ).hide().slideDown('slow');
-		$targetDiv.find( '.hidden-field' ).val( image_src );
-		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
-		$targetDiv.find( '.remove-button' ).show();
+		this.setImageInReaperField( attachment );
+	},
+
+	/**
+	 * After an image is selected in the media modal, switch to the cropper
+	 * state if the image isn't the right size.
+	 */
+
+	onSelectForCrop: function() {
+
+		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
+
+		if ( this.params.fields.slide_image.width === attachment.width && this.params.fields.slide_image.height === attachment.height && ! this.params.fields.slide_image.flex_width && ! this.params.fields.slide_image.flex_height ) {
+			this.setImageInReaperField( attachment );
+		} else {
+			this.frame.setState( 'cropper' );
+		}
+	},
+
+	/**
+	 * After the image has been cropped, apply the cropped image data to the setting.
+	 *
+	 * @param {object} croppedImage Cropped attachment data.
+	 */
+	onCropped: function( croppedImage ) {
+		this.setImageInReaperField( croppedImage );
+	},
+
+	/**
+	 * Returns a set of options, computed from the attached image data and
+	 * control-specific data, to be fed to the imgAreaSelect plugin in
+	 * wp.media.view.Cropper.
+	 *
+	 * @param {wp.media.model.Attachment} attachment
+	 * @param {wp.media.controller.Cropper} controller
+	 * @returns {Object} Options
+	 */
+	calculateImageSelectOptions: function( attachment, controller ) {
+		var control    = controller.get( 'control' ),
+			flexWidth  = !! parseInt( control.params.flex_width, 10 ),
+			flexHeight = !! parseInt( control.params.flex_height, 10 ),
+			realWidth  = attachment.get( 'width' ),
+			realHeight = attachment.get( 'height' ),
+			xInit = parseInt( control.params.width, 10 ),
+			yInit = parseInt( control.params.height, 10 ),
+			ratio = xInit / yInit,
+			xImg  = realWidth,
+			yImg  = realHeight,
+			x1, y1, imgSelectOptions;
+
+		controller.set( 'canSkipCrop', ! control.mustBeCropped( flexWidth, flexHeight, xInit, yInit, realWidth, realHeight ) );
+
+		if ( xImg / yImg > ratio ) {
+			yInit = yImg;
+			xInit = yInit * ratio;
+		} else {
+			xInit = xImg;
+			yInit = xInit / ratio;
+		}
+
+		x1 = ( xImg - xInit ) / 2;
+		y1 = ( yImg - yInit ) / 2;
+
+		imgSelectOptions = {
+			handles: true,
+			keys: true,
+			instance: true,
+			persistent: true,
+			imageWidth: realWidth,
+			imageHeight: realHeight,
+			x1: x1,
+			y1: y1,
+			x2: xInit + x1,
+			y2: yInit + y1
+		};
+
+		if ( flexHeight === false && flexWidth === false ) {
+			imgSelectOptions.aspectRatio = xInit + ':' + yInit;
+		}
+		if ( flexHeight === false ) {
+			imgSelectOptions.maxHeight = yInit;
+		}
+		if ( flexWidth === false ) {
+			imgSelectOptions.maxWidth = xInit;
+		}
+
+		return imgSelectOptions;
+	},
+
+	/**
+	 * Return whether the image must be cropped, based on required dimensions.
+	 *
+	 * @param {bool} flexW
+	 * @param {bool} flexH
+	 * @param {int}  dstW
+	 * @param {int}  dstH
+	 * @param {int}  imgW
+	 * @param {int}  imgH
+	 * @return {bool}
+	 */
+	mustBeCropped: function( flexW, flexH, dstW, dstH, imgW, imgH ) {
+		if ( true === flexW && true === flexH ) {
+			return false;
+		}
+
+		if ( true === flexW && dstH === imgH ) {
+			return false;
+		}
+
+		if ( true === flexH && dstW === imgW ) {
+			return false;
+		}
+
+		if ( dstW === imgW && dstH === imgH ) {
+			return false;
+		}
+
+		if ( imgW <= dstW ) {
+			return false;
+		}
+
+		return true;
+	},
+
+	/**
+	 * If cropping was skipped, apply the image data directly to the setting.
+	 */
+	onSkippedCrop: function() {
+		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
+		this.setImageInReaperField( attachment );
+	},
+
+	/**
+	 * Updates the setting and re-renders the control UI.
+	 *
+	 * @param {object} attachment
+	 */
+	setImageInReaperField: function( attachment ) {
+		var image_src = attachment.url;
+		var $targetDiv = this.$thisButton.closest('.repeater-field-image,.repeater-field-cropped_image');
+
+		$targetDiv.find('.kirki-image-attachment').html( '<img src="'+ image_src +'">' ).hide().slideDown('slow');
+
+		$targetDiv.find('.hidden-field').val(image_src);
+		this.$thisButton.text( this.$thisButton.data('alt-label') );
+		$targetDiv.find('.remove-button').show();
 
 		//This will activate the save button
-		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
+		$targetDiv.find('input, textarea, select').trigger('change');
+		this.frame.close();
 	},
 
 	removeImage : function( event ) {
@@ -447,4 +630,5 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		this.setValue( currentSettings, true );
 
 	}
+
 });
