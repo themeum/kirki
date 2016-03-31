@@ -80,7 +80,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Color_Alpha_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Color_Palette_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Datetime_Control' );
+			$wp_customize->register_control_type( 'Kirki_Controls_Date_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dashicons_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Number_Control' );

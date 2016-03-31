@@ -2,7 +2,7 @@
 
 if [ $# -lt 3 ]; then
 	echo "usage: $0 tag <old-version> <new-version>"
-	echo "OR: $0 tag <old-version> <new-version> push to directly push to both git & svn"
+	echo "OR: $0 tag <old-version> <new-version> push (to directly push to both git & svn)"
 	exit 1
 fi
 
@@ -46,6 +46,10 @@ rm -rf ../kirki-svn/trunk/.editorconfig
 rm -rf ../kirki-svn/trunk/.gitignore
 rm -rf ../kirki-svn/trunk/.simplecov
 rm -rf ../kirki-svn/trunk/.travis.yml
+rm -rf ../kirki-svn/trunk/assets/scss/
+rm -rf ../kirki-svn/trunk/assets/scss/
+rm -rf ../kirki-svn/trunk/assets/js/controls/
+rm -rf ../kirki-svn/trunk/assets/js/functions.js
 
 # Update svn
 cd ../kirki-svn

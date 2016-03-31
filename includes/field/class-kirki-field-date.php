@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Kirki_Field_Datetime' ) ) {
+if ( ! class_exists( 'Kirki_Field_Date' ) ) {
 
-	class Kirki_Field_Datetime extends Kirki_Field {
+	class Kirki_Field_Date extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -11,7 +11,7 @@ if ( ! class_exists( 'Kirki_Field_Datetime' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'kirki-datetime';
+			$this->type = 'kirki-date';
 
 		}
 
