@@ -790,13 +790,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function (e) {
+		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function ( e ) {
 			e.preventDefault();
-			control.$thisButton = jQuery(this);
-			control.openFrame(e);
+			control.$thisButton = jQuery( this );
+			control.openFrame( e );
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function (e) {
+		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function ( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery(this);
 			control.removeImage(e);
@@ -848,12 +848,13 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	 */
 	openFrame: function( event ) {
 
-		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) return;
-
-		if(this.$thisButton.closest('.repeater-field').hasClass('repeater-field-cropped_image')){
-			this.initCropperFrame();
+		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
+			return;
 		}
-		else{
+
+		if ( this.$thisButton.closest( '.repeater-field' ).hasClass( 'repeater-field-cropped_image' ) ) {
+			this.initCropperFrame();
+		} else {
 			this.initFrame();
 		}
 
@@ -867,9 +868,9 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
-					library:   wp.media.query({ type: 'image' }),
-					multiple:  false,
-					date:      false
+					library:  wp.media.query({ type: 'image' }),
+					multiple: false,
+					date:     false
 				})
 			]
 		});
@@ -886,9 +887,9 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		//hack to prevent errors from WordPress Core
 		//Core media library uses params.width and params.height to calculate some values
 		//and we get undefined notice on the ajax call when not defined
-		this.params.width = this.params.fields.slide_image.width;
-		this.params.height = this.params.fields.slide_image.height;
-		this.params.flex_width = this.params.fields.slide_image.flex_width;
+		this.params.width       = this.params.fields.slide_image.width;
+		this.params.height      = this.params.fields.slide_image.height;
+		this.params.flex_width  = this.params.fields.slide_image.flex_width;
 		this.params.flex_height = this.params.fields.slide_image.flex_height;
 
 		var control = this;
@@ -900,10 +901,10 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 			},
 			states: [
 				new wp.media.controller.Library({
-					library:   wp.media.query({ type: 'image' }),
-					multiple:  false,
-					date:      false,
-					suggestedWidth: this.params.width,
+					library:         wp.media.query({ type: 'image' }),
+					multiple:        false,
+					date:            false,
+					suggestedWidth:  this.params.width,
 					suggestedHeight: this.params.height
 				}),
 				new wp.media.controller.CustomizeImageCropper({
@@ -919,7 +920,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 	},
 
-    onSelect : function() {
+	onSelect : function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		this.setImageInReaperField( attachment );
@@ -965,11 +966,11 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 			flexHeight = !! parseInt( control.params.flex_height, 10 ),
 			realWidth  = attachment.get( 'width' ),
 			realHeight = attachment.get( 'height' ),
-			xInit = parseInt( control.params.width, 10 ),
-			yInit = parseInt( control.params.height, 10 ),
-			ratio = xInit / yInit,
-			xImg  = realWidth,
-			yImg  = realHeight,
+			xInit      = parseInt( control.params.width, 10 ),
+			yInit      = parseInt( control.params.height, 10 ),
+			ratio      = xInit / yInit,
+			xImg       = realWidth,
+			yImg       = realHeight,
 			x1, y1, imgSelectOptions;
 
 		controller.set( 'canSkipCrop', ! control.mustBeCropped( flexWidth, flexHeight, xInit, yInit, realWidth, realHeight ) );
@@ -986,25 +987,25 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		y1 = ( yImg - yInit ) / 2;
 
 		imgSelectOptions = {
-			handles: true,
-			keys: true,
-			instance: true,
-			persistent: true,
-			imageWidth: realWidth,
+			handles:     true,
+			keys:        true,
+			instance:    true,
+			persistent:  true,
+			imageWidth:  realWidth,
 			imageHeight: realHeight,
-			x1: x1,
-			y1: y1,
-			x2: xInit + x1,
-			y2: yInit + y1
+			x1:          x1,
+			y1:          y1,
+			x2:          xInit + x1,
+			y2:          yInit + y1
 		};
 
-		if ( flexHeight === false && flexWidth === false ) {
+		if ( false === flexHeight && false === flexWidth ) {
 			imgSelectOptions.aspectRatio = xInit + ':' + yInit;
 		}
-		if ( flexHeight === false ) {
+		if ( false === flexHeight ) {
 			imgSelectOptions.maxHeight = yInit;
 		}
-		if ( flexWidth === false ) {
+		if ( false === flexWidth ) {
 			imgSelectOptions.maxWidth = xInit;
 		}
 
@@ -1061,16 +1062,16 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	 */
 	setImageInReaperField: function( attachment ) {
 		var image_src = attachment.url;
-		var $targetDiv = this.$thisButton.closest('.repeater-field-image,.repeater-field-cropped_image');
+		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find('.kirki-image-attachment').html( '<img src="'+ image_src +'">' ).hide().slideDown('slow');
+		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ image_src +'">' ).hide().slideDown( 'slow' );
 
-		$targetDiv.find('.hidden-field').val(image_src);
-		this.$thisButton.text( this.$thisButton.data('alt-label') );
-		$targetDiv.find('.remove-button').show();
+		$targetDiv.find( '.hidden-field' ).val( image_src );
+		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
+		$targetDiv.find( '.remove-button' ).show();
 
 		//This will activate the save button
-		$targetDiv.find('input, textarea, select').trigger('change');
+		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
 		this.frame.close();
 	},
 
