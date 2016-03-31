@@ -22,7 +22,9 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		 */
 		protected function set_choices() {
 
-			! is_array( $this->choices ) && $this->choices = array();
+			if ( ! is_array( $this->choices ) ) {
+				$this->choices = array();
+			}
 			$this->choices['alpha'] = true;
 
 		}

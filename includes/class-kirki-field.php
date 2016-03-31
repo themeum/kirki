@@ -184,7 +184,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( 'global' != $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
 				$config_defaults = Kirki::$config[ $this->kirki_config ];
 			}
-			! is_array( $config_defaults ) && $config_defaults = array();
+			$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
 			foreach ( $config_defaults as $key => $value ) {
 				if ( isset( $defaults[ $key ] ) ) {
 					if ( ! empty( $value ) && $value != $defaults[ $key ] ) {
@@ -531,13 +531,13 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				}
 				$outputs[] = array(
 					'element'           => $output['element'],
-					'property'          => ! isset( $output['property'] ) && $output['property'] = '',
-					'media_query'       => ! isset( $output['media_query'] ) && $output['media_query'] = 'global',
-					'sanitize_callback' => ! isset( $output['sanitize_callback'] ) && $output['sanitize_callback'] = '',
-					'units'             => ! isset( $output['units'] ) && $output['units'] = '',
-					'prefix'            => ! isset( $output['prefix'] ) && $output['prefix'] = '',
-					'suffix'            => ! isset( $output['suffix'] ) && $output['suffix'] = '',
-					'exclude'           => ! isset( $output['exclude'] ) && $output['exclude'] = false,
+					'property'          => ( isset( $output['property'] ) ) ? $output['property'] : '',
+					'media_query'       => ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global',
+					'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : '',
+					'units'             => ( isset( $output['units'] ) ) ? $output['units'] : '',
+					'prefix'            => ( isset( $output['prefix'] ) ) ? $output['prefix'] : '',
+					'suffix'            => ( isset( $output['suffix'] ) ) ? $output['suffix'] : '',
+					'exclude'           => ( isset( $output['exclude'] ) ) ? $output['exclude'] : false,
 				);
 			}
 

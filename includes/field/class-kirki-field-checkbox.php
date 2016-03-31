@@ -14,7 +14,9 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 			$this->type = 'kirki-checkbox';
 			// Tweaks for backwards-compatibility:
 			// Prior to version 0.8 switch & toggle were part of the checkbox control.
-			in_array( $this->mode, array( 'switch', 'toggle' ) ) && $this->type = $this->mode;
+			if ( in_array( $this->mode, array( 'switch', 'toggle' ) ) ) {
+				$this->type = $this->mode;
+			}
 
 		}
 
@@ -36,8 +38,13 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		 */
 		protected function set_default() {
 
-			false === $this->default || 0 === $this->default && $this->default = '0';
-			true === $this->default || 1 === $this->default && $this->default = '1';
+			if ( false === $this->default || 0 === $this->default ) {
+				$this->default = '0';
+			}
+
+			if ( true === $this->default || 1 === $this->default ) {
+				$this->default = '1';
+			}
 
 		}
 

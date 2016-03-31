@@ -29,15 +29,21 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 			Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
 			// is Kirki included in a parent theme?
-			false !== strpos( $parent_theme_path, $path ) && Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $parent_theme_path, '', $path );
+			if ( false !== strpos( $parent_theme_path, $path ) ) {
+				Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $parent_theme_path, '', $path );
+			}
 			// Is there a child-theme?
 			if ( $child_theme_path != $parent_theme_path ) {
 				// is Kirki included in a child theme?
-				false !== strpos( $child_theme_path, $path ) && Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $child_theme_path, '', $path );
+				if ( false !== strpos( $child_theme_path, $path ) ) {
+					Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $child_theme_path, '', $path );
+				}
 			}
 			// Apply the kirki/config filter
 			$config = apply_filters( 'kirki/config', array() );
-			isset( $config['url_path'] ) && Kirki::$url = esc_url_raw( $config['url_path'] );
+			if ( isset( $config['url_path'] ) ) {
+				Kirki::$url = esc_url_raw( $config['url_path'] );
+			}
 
 		}
 
@@ -199,8 +205,11 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 							 * and run it through the callback function.
 							 * If no callback is defined (false) then just get the value.
 							 */
-							$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
-							$variable_callback && $variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( $field['settings'] ) );
+							if ( $variable_callback ) {
+								$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( $field['settings'] ) );
+							} else {
+								$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
+							}
 
 						}
 

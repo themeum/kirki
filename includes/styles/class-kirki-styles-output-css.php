@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
-
 	final class Kirki_Styles_Output_CSS {
 
 		public static $instance = null;
@@ -145,14 +144,12 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		public static function add_prefixes( $css ) {
 
 			if ( is_array( $css ) ) {
-
 				foreach ( $css as $media_query => $elements ) {
-
 					foreach ( $elements as $element => $style_array ) {
-
 						foreach ( $style_array as $property => $value ) {
-
-							// Add -webkit-* and -mod-*
+							/**
+							 * Add -webkit-* and -mod-*
+							 */
 							if ( is_string( $property ) && in_array( $property, array(
 								'border-radius',
 								'box-shadow',
@@ -166,8 +163,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
 							}
-
-							// Add -ms-* and -o-*
+							/**
+							 * Add -ms-* and -o-*
+							 */
 							if ( is_string( $property ) && in_array( $property, array(
 								'transform',
 								'background-size',
@@ -177,13 +175,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;
 							}
-
 						}
-
 					}
-
 				}
-
 			}
 
 			return $css;
@@ -191,5 +185,4 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		}
 
 	}
-
 }

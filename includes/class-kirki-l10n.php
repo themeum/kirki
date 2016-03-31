@@ -171,7 +171,9 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 
 			$config = apply_filters( 'kirki/config', array() );
 
-			isset( $config['i18n'] ) && $translation_strings = wp_parse_args( $config['i18n'], $translation_strings );
+			if ( isset( $config['i18n'] ) ) {
+				$translation_strings = wp_parse_args( $config['i18n'], $translation_strings );
+			}
 
 			return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 
