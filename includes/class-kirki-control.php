@@ -112,6 +112,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'toggle'           => 'Kirki_Controls_Toggle_Control',
 				'typography'       => 'Kirki_Controls_Typography_Control',
 				'image'            => 'WP_Customize_Image_Control',
+				'cropped_image'    => 'WP_Customize_Cropped_Image_Control',
 				'upload'           => 'WP_Customize_Upload_Control',
 			) );
 

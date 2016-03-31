@@ -146,6 +146,38 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected $multiple = 1;
 
 		/**
+		 * Suggested width for cropped image.
+		 *
+		 * @access protected
+		 * @var int
+		 */
+		protected $width = 150;
+
+		/**
+		 * Suggested height for cropped image.
+		 *
+		 * @access protected
+		 * @var int
+		 */
+		protected $height = 150;
+
+		/**
+		 * Whether the width is flexible for cropped image.
+		 *
+		 * @access protected
+		 * @var bool
+		 */
+		protected $flex_width = false;
+
+		/**
+		 * Whether the height is flexible for cropped image.
+		 *
+		 * @access protected
+		 * @var bool
+		 */
+		protected $flex_height = false;
+
+		/**
 		 * The class constructor.
 		 * Parses and sanitizes all field arguments.
 		 * Then it adds the field to Kirki::$fields
