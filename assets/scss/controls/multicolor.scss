@@ -8,7 +8,11 @@
 
 		.multicolor-single-color-wrapper {
 			width: 100%;
-			label {}
+			label {
+				display: block;
+				text-align: center;
+				padding: 3px;
+			}
 		}
 		.wp-picker-container {
 			width: 100%;
@@ -30,24 +34,6 @@
 
 				&:after {
 					display: none;
-				}
-
-				+ .wp-picker-input-wrap {
-					position: absolute;
-					top: 80px;
-					z-index: 999;
-					background: rgb(238,238,238);
-					left: 0;
-					width: calc(100% + 10px);
-
-					+ .wp-picker-holder {
-						position: absolute;
-						background: rgb(238,238,238);
-						z-index: 999;
-						top: 110px;
-						left: 0;
-						width: calc(100% + 10px);
-					}
 				}
 			}
 		}

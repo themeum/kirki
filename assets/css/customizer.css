@@ -642,6 +642,10 @@ span.CodeMirror-selectedtext {
   display: flex; }
   .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
     width: 100%; }
+    .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper label {
+      display: block;
+      text-align: center;
+      padding: 3px; }
   .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container {
     width: 100%; }
     .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result {
@@ -658,20 +662,6 @@ span.CodeMirror-selectedtext {
         border-bottom-right-radius: 0 !important; }
       .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result:after {
         display: none; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result + .wp-picker-input-wrap {
-        position: absolute;
-        top: 80px;
-        z-index: 999;
-        background: #eeeeee;
-        left: 0;
-        width: calc(100% + 10px); }
-        .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result + .wp-picker-input-wrap + .wp-picker-holder {
-          position: absolute;
-          background: #eeeeee;
-          z-index: 999;
-          top: 110px;
-          left: 0;
-          width: calc(100% + 10px); }
 
 .customize-control-color-palette label {
   position: relative;
@@ -788,41 +778,6 @@ span.CodeMirror-selectedtext {
   text-align: center; }
 .customize-control-dimension .input-wrapper.invalid input[type="text"]:focus {
   border-color: #D32F2F; }
-
-.customize-control-multicolor .multicolor-group-wrapper {
-  display: flex; }
-  .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
-    width: 100%; }
-  .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container {
-    width: 100%; }
-    .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result {
-      width: 100%;
-      height: 30px;
-      padding-left: 0;
-      border-radius: 0;
-      border: none;
-      margin-right: 0; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result > span {
-        border-top-left-radius: 0 !important;
-        border-bottom-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-        border-bottom-right-radius: 0 !important; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result:after {
-        display: none; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result + .wp-picker-input-wrap {
-        position: absolute;
-        top: 80px;
-        z-index: 999;
-        background: #eeeeee;
-        left: 0;
-        width: calc(100% + 10px); }
-        .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result + .wp-picker-input-wrap + .wp-picker-holder {
-          position: absolute;
-          background: #eeeeee;
-          z-index: 999;
-          top: 110px;
-          left: 0;
-          width: calc(100% + 10px); }
 
 .customize-control-number .ui-spinner.ui-widget-content {
   position: relative; }

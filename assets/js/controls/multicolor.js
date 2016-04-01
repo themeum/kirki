@@ -9,6 +9,7 @@ wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
 		    colors  = control.params.choices,
 		    keys    = Object.keys( colors ),
 		    value   = this.params.value,
+		    target  = control.container.find( '.iris-target' );
 		    i       = 0;
 
 		// The hidden field that keeps the data saved (though we never update it)
@@ -24,6 +25,7 @@ wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
 
 				// did we change the value?
 				picker.wpColorPicker({
+					target: target[0],
 					change: function( event, ui ) {
 						// Color controls require a small delay
 						setTimeout( function() {
@@ -39,6 +41,13 @@ wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
 			}
 
 			multicolorChangeHandler( this, value, keys[ i ] );
+
+			// Move colorpicker to the 'iris-target' container div
+			var irisInput  = control.container.find( '.wp-picker-container .wp-picker-input-wrap' ),
+			    irisPicker = control.container.find( '.wp-picker-container .wp-picker-holder' );
+			jQuery( irisInput[0] ).detach().appendTo( target[0] );
+			jQuery( irisPicker[0] ).detach().appendTo( target[0] );
+
 			i++;
 
 		}

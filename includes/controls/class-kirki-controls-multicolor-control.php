@@ -59,6 +59,7 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 					</div>
 				<# } #>
 			</div>
+			<div class="iris-target"></div>
 			<input type="hidden" value="" {{{ data.link }}} />
 			<?php
 		}
