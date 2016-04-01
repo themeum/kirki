@@ -3,6 +3,7 @@
  */
 wp.customize.controlConstructor['sortable'] = wp.customize.Control.extend({
 	ready: function() {
+
 		var control = this;
 
 		// The hidden field that keeps the data saved

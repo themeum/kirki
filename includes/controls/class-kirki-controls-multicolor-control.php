@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 				{{{ data.label }}}
 			</span>
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{ data.description }}</span>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="multicolor-group-wrapper">
 				<# for ( key in data.choices ) { #>
@@ -59,6 +59,7 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 					</div>
 				<# } #>
 			</div>
+			<div class="iris-target"></div>
 			<input type="hidden" value="" {{{ data.link }}} />
 			<?php
 		}

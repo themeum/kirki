@@ -1,15 +1,18 @@
 /**
  * KIRKI CONTROL: TYPOGRAPHY
  */
-wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
+wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
+
 	ready: function() {
-		var control = this;
-		var fontFamilySelector    = control.selector + ' .font-family select';
-		var variantSelector       = control.selector + ' .variant select';
-		var subsetSelector        = control.selector + ' .subset select';
-		var textTransformSelector = control.selector + ' .text-transform select';
-		// Get initial values
-		var value = {};
+
+		var control               = this,
+		    fontFamilySelector    = control.selector + ' .font-family select',
+		    variantSelector       = control.selector + ' .variant select',
+		    subsetSelector        = control.selector + ' .subset select',
+		    textTransformSelector = control.selector + ' .text-transform select',
+		    value = {};
+
+		// Make sure everything we're going to need exists.
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
 		value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
 		value['variant']        = ( undefined !== control.setting._value['variant'] ) ? control.setting._value['variant'] : '';
@@ -20,28 +23,42 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
 		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
 
+		// renders and refreshes selectize sub-controls
 		var renderSubControl = function( fontFamily, sub, startValue ) {
+
 			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
-			var is_standard = false;
-			var subList = {}
-			// destroy
+
+			var is_standard = false,
+			    subList = {}
+
+			// destroy the selectize instance
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
 				jQuery( subSelector ).selectize()[0].selectize.destroy();
 			}
+
 			// Get all items in the sub-list for the active font-family
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+				// Find the font-family we've selected in the global array of fonts.
 				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
+					// Check if this is a standard font or a google-font.
 					if ( undefined !== kirkiAllFonts[ i ]['is_standard'] && true === kirkiAllFonts[ i ]['is_standard'] ) {
 						is_standard = true;
 					}
+
 					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
+
 				}
+
 			}
+
+			// This is a googlefont, or we're talking subsets.
 			if ( false === is_standard || 'subset' !== sub ) {
 				// Determine the initial value we have to use
 				if ( null === startValue  ) {
 					if ( 'variant' == sub ) { // the context here is variants
+						// loop the variants.
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
+
 							if ( undefined !== subList[ i ]['id'] ) {
 								var activeItem = value['variant'];
 							} else {
@@ -52,10 +69,15 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 									var firstAvailable = subList[ i ]['id'];
 								}
 							}
+
 						}
+
 					} else if ( 'subset' == sub ) { // The context here is subsets
+
 						var subsetValues = {};
+
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
+
 							if ( null !== value['subset'] ) {
 								for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
 									if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
@@ -63,7 +85,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 									}
 								}
 							}
+
 						}
+
 						if ( 0 == subsetValues.length ) {
 							activeItem = ['latin']
 						} else {
@@ -72,14 +96,20 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 							});
 							activeItem = subsetValuesArray;
 						}
+
 					}
+
 					// If we have a valid setting, use it.
 					// If not, check if the default value exists.
 					// If not, then use the 1st available option.
 					subValue = ( undefined !== activeItem ) ? activeItem : ( undefined !== hasDefault ) ? 'regular' : firstAvailable;
+
 				} else {
+
 					subValue = startValue;
+
 				}
+
 				// create
 				var subSelectize;
 				subSelectize = jQuery( subSelector ).selectize({
@@ -96,22 +126,27 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
 					},
 				}).data( 'selectize' );
+
 			}
 
 
 			// If only 1 option is available then there's no reason to show this.
 			if ( 'variant' == sub ) {
-				if ( 1 === subList.length || 0 === subList.length ) {
+
+				if ( 1 >= subList.length ) {
 					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
 				} else {
 					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
 				}
+
 			} else if ( 'subset' == sub ) {
-				if ( 0 === subList.length ) {
+
+				if ( 1 > subList.length ) {
 					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );
 				} else {
 					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'block' );
 				}
+
 			}
 
 			if ( true === is_standard ) {
@@ -119,6 +154,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 			} else {
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
 			}
+
 		};
 
 		// Render the font-family
@@ -219,7 +255,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 
 
 		var picker = this.container.find ( '.kirki-color-control' );
-		picker.wpColorPicker ( {
+		// change color
+		picker.wpColorPicker ({
 			change: function() {
 				setTimeout ( function() {
 					// add the value to the array and set the setting's value
@@ -229,6 +266,8 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend( {
 					wp.customize.previewer.refresh ();
 				}, 100 );
 			}
-		} );
+		});
+
 	}
+
 });

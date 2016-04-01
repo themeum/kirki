@@ -45,7 +45,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 				{{ data.label }}
 			</span>
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{ data.description }}</span>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div id="input_{{ data.id }}" class="colors-wrapper">
 				<# for ( key in data.choices['colors'] ) { #>
