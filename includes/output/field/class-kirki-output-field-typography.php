@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Output_Control_Typography extends Kirki_Output {
+class Kirki_Output_Field_Typography extends Kirki_Output {
 
 	protected function process_output( $output, $value ) {
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
