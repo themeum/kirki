@@ -73,7 +73,13 @@
 							} else if ( 'object' == typeof newval ) {
 								cssArray[ i ] = '';
 								$.each( newval, function( subValueKey, subValueValue ) {
-									cssArray[ i ] += subValueKey, args.prefix + subValueValue + args.units + args.suffix;
+									if ( undefined !== args.choice ) {
+										if ( args.choice == subValueKey ) {
+											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+										}
+									} else {
+										cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+									}
 								});
 							}
 						});
