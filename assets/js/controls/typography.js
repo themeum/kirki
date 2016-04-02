@@ -29,7 +29,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		// renders and refreshes selectize sub-controls
 		var renderSubControl = function( fontFamily, sub, startValue ) {
 
-			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
+			subSelector = ( 'variant' === sub ) ? variantSelector : subsetSelector;
 
 			var is_standard = false,
 			    subList = {};
@@ -58,7 +58,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			if ( false === is_standard || 'subset' !== sub ) {
 				// Determine the initial value we have to use
 				if ( null === startValue  ) {
-					if ( 'variant' == sub ) { // the context here is variants
+					if ( 'variant' === sub ) { // the context here is variants
 						// loop the variants.
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
 
@@ -66,7 +66,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 								activeItem = value.variant;
 							} else {
 								var defaultValue = 'regular';
-								if ( defaultValue == subList[ i ].id ) {
+								if ( defaultValue === subList[ i ].id ) {
 									hasDefault = true;
 								} else if ( false === firstAvailable ) {
 									firstAvailable = subList[ i ].id;
@@ -75,7 +75,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 						}
 
-					} else if ( 'subset' == sub ) { // The context here is subsets
+					} else if ( 'subset' === sub ) { // The context here is subsets
 
 						var subsetValues = {};
 
@@ -83,7 +83,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 							if ( null !== value.subset ) {
 								for ( var s = 0, len = value.subset.length; s < len; s++ ) {
-									if ( undefined !== subList[ i ] && value.subset[ s ] == subList[ i ].id ) {
+									if ( undefined !== subList[ i ] && value.subset[ s ] === subList[ i ].id ) {
 										subsetValues[ value.subset[ s ] ] = value.subset[ s ];
 									}
 								}
@@ -116,14 +116,14 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 				// create
 				var subSelectize;
 				subSelectize = jQuery( subSelector ).selectize({
-					maxItems:    ( 'variant' == sub ) ? 1 : null,
+					maxItems:    ( 'variant' === sub ) ? 1 : null,
 					valueField:  'id',
 					labelField:  'label',
 					searchField: ['label'],
 					options:     subList,
-					items:       ( 'variant' == sub ) ? [ subValue ] : subValue,
+					items:       ( 'variant' === sub ) ? [ subValue ] : subValue,
 					create:      false,
-					plugins:     ( 'variant' == sub ) ? '' : ['remove_button'],
+					plugins:     ( 'variant' === sub ) ? '' : ['remove_button'],
 					render: {
 						item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
 						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
@@ -134,7 +134,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 
 			// If only 1 option is available then there's no reason to show this.
-			if ( 'variant' == sub ) {
+			if ( 'variant' === sub ) {
 
 				if ( 1 >= subList.length ) {
 					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
@@ -142,7 +142,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
 				}
 
-			} else if ( 'subset' == sub ) {
+			} else if ( 'subset' === sub ) {
 
 				if ( 1 > subList.length ) {
 					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );

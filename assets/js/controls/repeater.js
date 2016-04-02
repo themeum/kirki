@@ -616,7 +616,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		if ( 'checkbox' == type ) {
+		if ( 'checkbox' === type ) {
 			currentSettings[ row.getRowIndex() ][ fieldId ] = element.is( ':checked' );
 		} else {
 			// Update the settings

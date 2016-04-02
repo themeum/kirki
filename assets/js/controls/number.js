@@ -22,7 +22,7 @@ wp.customize.controlConstructor.number = wp.customize.Control.extend({
 
 		// Set steps
 		if ( control.params.choices.step ) {
-			if ( 'any' == control.params.choices.step ) {
+			if ( 'any' === control.params.choices.step ) {
 				jQuery( element ).spinner( 'option', 'step', '0.001' );
 			} else {
 				jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
