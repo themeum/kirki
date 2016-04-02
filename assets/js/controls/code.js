@@ -8,7 +8,6 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 
 		var control = this,
 		    element = control.container.find( '#kirki-codemirror-editor-' + control.id ),
-		    editor  = CodeMirror.fromTextArea( element[0] ),
 		    language = control.params.choices.language;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
@@ -16,16 +15,13 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 			language = { name: 'htmlmixed' };
 		}
 
-		// Set the initial value for CodeMirror
-		editor.setOption( 'value', control.setting._value );
-		// Set the language
-		editor.setOption( 'mode', language );
-		// Enable line-numbers
-		editor.setOption( 'lineNumbers', true );
-		// Set the theme
-		editor.setOption( 'theme', control.params.choices.theme );
-		// Set the height
-		editor.setOption( 'height', control.params.choices.height + 'px' );
+		var editor = CodeMirror.fromTextArea( element[0], {
+			value:       control.setting._value,
+			mode:        language,
+			lineNumbers: true,
+			theme:       control.params.choices.theme,
+			height:      control.params.choices.height + 'px'
+		});
 
 		// On change make sure we infor the Customizer API
 		editor.on( 'change', function() {
