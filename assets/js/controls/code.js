@@ -6,8 +6,8 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control = this,
-		    element = control.container.find( '#kirki-codemirror-editor-' + control.id ),
+		var control  = this,
+		    element  = control.container.find( '#kirki-codemirror-editor-' + control.id ),
 		    language = control.params.choices.language;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.

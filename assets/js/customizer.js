@@ -299,8 +299,8 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control = this,
-		    element = control.container.find( '#kirki-codemirror-editor-' + control.id ),
+		var control  = this,
+		    element  = control.container.find( '#kirki-codemirror-editor-' + control.id ),
 		    language = control.params.choices.language;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
@@ -338,8 +338,7 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
 	ready: function() {
 
 		var control   = this,
-		    picker    = this.container.find( '.kirki-color-control' ),
-		    new_color = picker.val();
+		    picker    = this.container.find( '.kirki-color-control' );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( undefined !== control.params.choices ) {
@@ -988,8 +987,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 	initFrame : function() {
 
-		var control = this;
-
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
@@ -1016,8 +1013,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.params.height      = this.params.fields.slide_image.height;
 		this.params.flex_width  = this.params.fields.slide_image.flex_width;
 		this.params.flex_height = this.params.fields.slide_image.flex_height;
-
-		var control = this;
 
 		this.frame = wp.media({
 			button: {
@@ -1252,7 +1247,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	addRow: function( data ) {
 		var control = this,
 			i,
-			row,
 			// The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
 			template = control.repeaterTemplate(),
 			// Get the current setting value
@@ -1476,7 +1470,6 @@ jQuery(document).ready(function($) {
 	$( '.kirki-slider-reset' ).click( function () {
 
 		var $this_input   = $( this ).closest( 'label' ).find( 'input' ),
-			input_name    = $this_input.data( 'customize-setting-link' ),
 			input_default = $this_input.data( 'reset_value' );
 
 		$this_input.val( input_default );

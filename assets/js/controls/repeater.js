@@ -202,8 +202,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 	initFrame : function() {
 
-		var control = this;
-
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
@@ -230,8 +228,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.params.height      = this.params.fields.slide_image.height;
 		this.params.flex_width  = this.params.fields.slide_image.flex_width;
 		this.params.flex_height = this.params.fields.slide_image.flex_height;
-
-		var control = this;
 
 		this.frame = wp.media({
 			button: {
@@ -466,7 +462,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	addRow: function( data ) {
 		var control = this,
 			i,
-			row,
 			// The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
 			template = control.repeaterTemplate(),
 			// Get the current setting value
