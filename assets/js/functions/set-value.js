@@ -18,7 +18,7 @@ function kirkiSetValue( setting, value ) {
 	 * We want the value to live-update on the controls themselves,
 	 * so depending on the control's type we'll need to do different things.
 	 */
-	var control_type = sub_control['type'];
+	var control_type = sub_control.type;
 
 	/**
 	 * Below we're starting to check the control tyype and depending on what that is,
@@ -82,7 +82,7 @@ function kirkiSetValue( setting, value ) {
 	 * Control types:
 	 *     textarea
 	 */
-	else if ( 'kirki-generic' == control_type && undefined !== sub_control['choices'] && undefined !== sub_control['choices']['element'] && 'textarea' == sub_control['choices']['element'] ) {
+	else if ( 'kirki-generic' == control_type && undefined !== sub_control.choices && undefined !== sub_control.choices.element && 'textarea' == sub_control.choices.element ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
@@ -159,22 +159,22 @@ function kirkiSetValue( setting, value ) {
 	 */
 	else if ( 'typography' == control_type ) {
 		if ( undefined !== value['font-family'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
-			var selectize = $select[0].selectize;
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
 			selectize.setValue( value['font-family'], true );
 		}
-		if ( undefined !== value['variant'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize();
-			var selectize = $select[0].selectize;
+		if ( undefined !== value.variant ) {
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
-			selectize.setValue( value['variant'], true );
+			selectize.setValue( value.variant, true );
 		}
-		if ( undefined !== value['subset'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
-			var selectize = $select[0].selectize;
+		if ( undefined !== value.subset ) {
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
-			selectize.setValue( value['subset'], true );
+			selectize.setValue( value.subset, true );
 		}
 		if ( undefined !== value['font-size'] ) {
 			// Update the value visually in the control
@@ -188,7 +188,7 @@ function kirkiSetValue( setting, value ) {
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.letter-spacing input' ) ).prop( 'value', value['letter-spacing'] );
 		}
-		if ( undefined !== value['color'] ) {
+		if ( undefined !== value.color ) {
 			// Update the value visually in the control
 			var typographyColor = wp.customize.control( setting ).container.find( '.kirki-color-control' );
 

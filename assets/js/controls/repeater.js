@@ -84,7 +84,7 @@ RepeaterRow.prototype.renderNumber = function() {
 	this.$number.text( this.getRowNumber() );
 };
 
-wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	ready: function() {
 		var control = this;
 
@@ -492,8 +492,8 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 				}
 			}
 
-			templateData['index'] = this.currentIndex;
-			templateData['ControlId'] = this.id;
+			templateData.index = this.currentIndex;
+			templateData.ControlId = this.id;
 
 			// Append the template content
 			template = template( templateData );
@@ -590,7 +590,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		// Remap the row numbers
 		var i = 1;
-		for ( prop in this.rows ) {
+		for ( var prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].setRowNumber( i );
 				i++;
@@ -617,7 +617,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( undefined == typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
+		if ( undefined === typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
 			return;
 		}
 

@@ -1,7 +1,7 @@
 /**
  * KIRKI CONTROL: DIMENSION
  */
-wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.dimension = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {

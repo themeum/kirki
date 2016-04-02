@@ -14,7 +14,7 @@ function kirkiValidateCSSValue( value ) {
 	// Get the unit
 	var unit = value.replace( numericValue, '' );
 	// Check the validity of the numeric value
-	if ( NaN === numericValue ) {
+	if ( isNaN( numericValue ) ) {
 		return false;
 	}
 	// Check the validity of the units
