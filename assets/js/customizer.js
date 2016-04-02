@@ -461,7 +461,7 @@ wp.customize.controlConstructor['dropdown-pages'] = wp.customize.Control.extend(
 	ready: function() {
 
 		var control = this,
-		    element  = this.container.find( 'select' );
+		    element = this.container.find( 'select' );
 
 		jQuery( element ).selectize();
 		this.container.on( 'change', 'select', function() {
@@ -538,19 +538,19 @@ wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
 
 		// Save the value
 		control.container.on( 'change', 'input', function() {
-			var compiled_value = [],
+			var value = [],
 			    i = 0;
 
 			// build the value as an object using the sub-values from individual checkboxes.
-			jQuery.each( control.params.choices, function( key, value ) {
+			jQuery.each( control.params.choices, function( key, subValue ) {
 				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
-					compiled_value[ i ] = key;
+					value[ i ] = key;
 					i++;
 				}
 			});
 
 			// Update the value in the customizer
-			control.setting.set( compiled_value );
+			control.setting.set( value );
 
 		});
 
