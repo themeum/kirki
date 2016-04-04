@@ -73,7 +73,13 @@
 							} else if ( 'object' == typeof newval ) {
 								cssArray[ i ] = '';
 								$.each( newval, function( subValueKey, subValueValue ) {
-									cssArray[ i ] += subValueKey, args.prefix + subValueValue + args.units + args.suffix;
+									if ( undefined !== args.choice ) {
+										if ( args.choice == subValueKey ) {
+											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+										}
+									} else {
+										cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+									}
 								});
 							}
 						});
@@ -82,18 +88,22 @@
 
 					$.each( cssArray, function( i, singleCSS ) {
 
-						if ( '' !== singleCSS ) {
-							css += singleCSS;
-						}
-						// Attach to <head>
-						if ( '' !== css ) {
-							// make sure we have a stylesheet with the defined ID.
-							// If we don't then add it.
-							if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
-								$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
+						setTimeout( function() {
+
+							if ( '' !== singleCSS ) {
+								css += singleCSS;
 							}
-							$( '#kirki-customizer-postmessage' + setting ).text( css );
-						}
+							// Attach to <head>
+							if ( '' !== css ) {
+								// make sure we have a stylesheet with the defined ID.
+								// If we don't then add it.
+								if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
+									$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
+								}
+								$( '#kirki-customizer-postmessage' + setting ).text( css );
+							}
+
+						}, 300 );
 
 					});
 

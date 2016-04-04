@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: [
-					'assets/js/functions.js',
+					'assets/js/functions/*.js',
 					'assets/js/controls/*.js',
 					'assets/js/reset.js'
 				],

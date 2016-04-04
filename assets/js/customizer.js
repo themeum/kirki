@@ -9,7 +9,6 @@ function kirkiArrayToObject( arr ) {
 	}
 	return obj;
 }
-
 function kirkiObjectToArray( obj ) {
 	var arr = [];
 	if ( null !== obj ) {
@@ -21,33 +20,6 @@ function kirkiObjectToArray( obj ) {
 	}
 	return arr;
 }
-
-function kirkiValidateCSSValue( value ) {
-	// 0 is always a valid value
-	if ( '0' == value ) {
-		return true;
-	}
-	// if we're using calc() just return true.
-	if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
-		return true;
-	}
-
-	var validUnits   = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'];
-	// Get the numeric value
-	var numericValue = parseFloat( value );
-	// Get the unit
-	var unit = value.replace( numericValue, '' );
-	// Check the validity of the numeric value
-	if ( NaN === numericValue ) {
-		return false;
-	}
-	// Check the validity of the units
-	if ( -1 === jQuery.inArray( unit, validUnits ) ) {
-		return false;
-	}
-	return true;
-}
-
 function kirkiSetValue( setting, value ) {
 	/**
 	 * Get the control of the sub-setting.
@@ -68,7 +40,7 @@ function kirkiSetValue( setting, value ) {
 	 * We want the value to live-update on the controls themselves,
 	 * so depending on the control's type we'll need to do different things.
 	 */
-	var control_type = sub_control['type'];
+	var control_type = sub_control.type;
 
 	/**
 	 * Below we're starting to check the control tyype and depending on what that is,
@@ -132,7 +104,7 @@ function kirkiSetValue( setting, value ) {
 	 * Control types:
 	 *     textarea
 	 */
-	else if ( 'kirki-generic' == control_type && undefined !== sub_control['choices'] && undefined !== sub_control['choices']['element'] && 'textarea' == sub_control['choices']['element'] ) {
+	else if ( 'kirki-generic' == control_type && undefined !== sub_control.choices && undefined !== sub_control.choices.element && 'textarea' == sub_control.choices.element ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
@@ -209,22 +181,22 @@ function kirkiSetValue( setting, value ) {
 	 */
 	else if ( 'typography' == control_type ) {
 		if ( undefined !== value['font-family'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
-			var selectize = $select[0].selectize;
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
 			selectize.setValue( value['font-family'], true );
 		}
-		if ( undefined !== value['variant'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize();
-			var selectize = $select[0].selectize;
+		if ( undefined !== value.variant ) {
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
-			selectize.setValue( value['variant'], true );
+			selectize.setValue( value.variant, true );
 		}
-		if ( undefined !== value['subset'] ) {
-			var $select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
-			var selectize = $select[0].selectize;
+		if ( undefined !== value.subset ) {
+			var $select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize(),
+			    selectize = $select[0].selectize;
 			// Update the value visually in the control
-			selectize.setValue( value['subset'], true );
+			selectize.setValue( value.subset, true );
 		}
 		if ( undefined !== value['font-size'] ) {
 			// Update the value visually in the control
@@ -238,7 +210,7 @@ function kirkiSetValue( setting, value ) {
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.letter-spacing input' ) ).prop( 'value', value['letter-spacing'] );
 		}
-		if ( undefined !== value['color'] ) {
+		if ( undefined !== value.color ) {
 			// Update the value visually in the control
 			var typographyColor = wp.customize.control( setting ).container.find( '.kirki-color-control' );
 
@@ -270,6 +242,31 @@ function kirkiSetValue( setting, value ) {
 	}
 
 }
+function kirkiValidateCSSValue( value ) {
+	// 0 is always a valid value
+	if ( '0' == value ) {
+		return true;
+	}
+	// if we're using calc() just return true.
+	if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+		return true;
+	}
+
+	var validUnits   = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'];
+	// Get the numeric value
+	var numericValue = parseFloat( value );
+	// Get the unit
+	var unit = value.replace( numericValue, '' );
+	// Check the validity of the numeric value
+	if ( isNaN( numericValue ) ) {
+		return false;
+	}
+	// Check the validity of the units
+	if ( -1 === jQuery.inArray( unit, validUnits ) ) {
+		return false;
+	}
+	return true;
+}
 /**
  * KIRKI CONTROL: CHECKBOX
  */
@@ -297,14 +294,13 @@ wp.customize.controlConstructor['kirki-checkbox'] = wp.customize.Control.extend(
 /**
  * KIRKI CONTROL: CODE
  */
-wp.customize.controlConstructor['code'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.code = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control = this,
-		    element = control.container.find( '#kirki-codemirror-editor-' + control.id ),
-		    editor  = CodeMirror.fromTextArea( element[0] ),
+		var control  = this,
+		    element  = control.container.find( '#kirki-codemirror-editor-' + control.id ),
 		    language = control.params.choices.language;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
@@ -312,16 +308,13 @@ wp.customize.controlConstructor['code'] = wp.customize.Control.extend({
 			language = { name: 'htmlmixed' };
 		}
 
-		// Set the initial value for CodeMirror
-		editor.setOption( 'value', control.setting._value );
-		// Set the language
-		editor.setOption( 'mode', language );
-		// Enable line-numbers
-		editor.setOption( 'lineNumbers', true );
-		// Set the theme
-		editor.setOption( 'theme', control.params.choices.theme );
-		// Set the height
-		editor.setOption( 'height', control.params.choices.height + 'px' );
+		var editor = CodeMirror.fromTextArea( element[0], {
+			value:       control.setting._value,
+			mode:        language,
+			lineNumbers: true,
+			theme:       control.params.choices.theme,
+			height:      control.params.choices.height + 'px'
+		});
 
 		// On change make sure we infor the Customizer API
 		editor.on( 'change', function() {
@@ -345,8 +338,7 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
 	ready: function() {
 
 		var control   = this,
-		    picker    = this.container.find( '.kirki-color-control' ),
-		    new_color = picker.val();
+		    picker    = this.container.find( '.kirki-color-control' );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( undefined !== control.params.choices ) {
@@ -387,7 +379,7 @@ wp.customize.controlConstructor['color-palette'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: RADIO-IMAGE
  */
-wp.customize.controlConstructor['dashicons'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.dashicons = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -427,7 +419,7 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: DIMENSION
  */
-wp.customize.controlConstructor['dimension'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.dimension = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -538,7 +530,7 @@ wp.customize.controlConstructor['kirki-generic'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: MULTICHECK
  */
-wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -568,7 +560,7 @@ wp.customize.controlConstructor['multicheck'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: MULTICOLOR
  */
-wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -579,35 +571,35 @@ wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
 		    target  = control.container.find( '.iris-target' );
 		    i       = 0;
 
+		// Proxy function that handles changing the individual colors
+		function kirkiMulticolorChangeHandler( control, value, sub_setting ) {
+
+			var picker = control.container.find( '.multicolor-index-' + sub_setting );
+
+			// did we change the value?
+			picker.wpColorPicker({
+				target: target[0],
+				change: function( event, ui ) {
+					// Color controls require a small delay
+					setTimeout( function() {
+						value[ sub_setting ] = picker.val();
+						// Set the value
+						control.setting.set( value );
+						// Trigger the change
+						control.container.find( '.multicolor-index-' + sub_setting ).trigger( 'change' );
+					}, 100 );
+				},
+			});
+
+		}
+
 		// The hidden field that keeps the data saved (though we never update it)
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
 
 		// colors loop
 		while ( i < Object.keys( colors ).length ) {
 
-			// Proxy function that handles changing the individual colors
-			function multicolorChangeHandler( control, value, sub_setting ) {
-
-				var picker = control.container.find( '.multicolor-index-' + sub_setting );
-
-				// did we change the value?
-				picker.wpColorPicker({
-					target: target[0],
-					change: function( event, ui ) {
-						// Color controls require a small delay
-						setTimeout( function() {
-							value[ sub_setting ] = picker.val();
-							// Set the value
-							control.setting.set( value );
-							// Trigger the change
-							control.container.find( '.multicolor-index-' + sub_setting ).trigger( 'change' );
-						}, 100 );
-					},
-				});
-
-			}
-
-			multicolorChangeHandler( this, value, keys[ i ] );
+			kirkiMulticolorChangeHandler( this, value, keys[ i ] );
 
 			// Move colorpicker to the 'iris-target' container div
 			var irisInput  = control.container.find( '.wp-picker-container .wp-picker-input-wrap' ),
@@ -641,7 +633,7 @@ wp.customize.controlConstructor['multicolor'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: NUMBER
  */
-wp.customize.controlConstructor['number'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.number = wp.customize.Control.extend({
 
 	ready: function() {
 		var control = this,
@@ -680,7 +672,7 @@ wp.customize.controlConstructor['number'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: PALETTE
  */
-wp.customize.controlConstructor['palette'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.palette = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -698,7 +690,7 @@ wp.customize.controlConstructor['palette'] = wp.customize.Control.extend({
  * KIRKI CONTROL: PRESET
  */
 
-wp.customize.controlConstructor['preset'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.preset = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -727,7 +719,7 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend({
 
 					// Each choice has an array of settings defined in it.
 					// We'll have to loop through them all and apply the changes needed to them.
-					jQuery.each( value['settings'], function( preset_setting, preset_setting_value ) {
+					jQuery.each( value.settings, function( preset_setting, preset_setting_value ) {
 						kirkiSetValue( preset_setting, preset_setting_value );
 					});
 
@@ -877,7 +869,7 @@ RepeaterRow.prototype.renderNumber = function() {
 	this.$number.text( this.getRowNumber() );
 };
 
-wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	ready: function() {
 		var control = this;
 
@@ -995,8 +987,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 	initFrame : function() {
 
-		var control = this;
-
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
@@ -1023,8 +1013,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		this.params.height      = this.params.fields.slide_image.height;
 		this.params.flex_width  = this.params.fields.slide_image.flex_width;
 		this.params.flex_height = this.params.fields.slide_image.flex_height;
-
-		var control = this;
 
 		this.frame = wp.media({
 			button: {
@@ -1259,7 +1247,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	addRow: function( data ) {
 		var control = this,
 			i,
-			row,
 			// The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
 			template = control.repeaterTemplate(),
 			// Get the current setting value
@@ -1285,8 +1272,8 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 				}
 			}
 
-			templateData['index'] = this.currentIndex;
-			templateData['ControlId'] = this.id;
+			templateData.index = this.currentIndex;
+			templateData.ControlId = this.id;
 
 			// Append the template content
 			template = template( templateData );
@@ -1383,7 +1370,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		// Remap the row numbers
 		var i = 1;
-		for ( prop in this.rows ) {
+		for ( var prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].setRowNumber( i );
 				i++;
@@ -1410,7 +1397,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( undefined == typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
+		if ( undefined === typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
 			return;
 		}
 
@@ -1483,7 +1470,6 @@ jQuery(document).ready(function($) {
 	$( '.kirki-slider-reset' ).click( function () {
 
 		var $this_input   = $( this ).closest( 'label' ).find( 'input' ),
-			input_name    = $this_input.data( 'customize-setting-link' ),
 			input_default = $this_input.data( 'reset_value' );
 
 		$this_input.val( input_default );
@@ -1494,7 +1480,7 @@ jQuery(document).ready(function($) {
 
 });
 
-wp.customize.controlConstructor['slider'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.slider = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -1508,7 +1494,7 @@ wp.customize.controlConstructor['slider'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: SORTABLE
  */
-wp.customize.controlConstructor['sortable'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 	ready: function() {
 
 		var control = this;
@@ -1588,7 +1574,7 @@ wp.customize.controlConstructor['sortable'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: SPACING
  */
-wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -1635,7 +1621,7 @@ wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: SWITCH
  */
-wp.customize.controlConstructor['switch'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.switch = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -1656,7 +1642,7 @@ wp.customize.controlConstructor['switch'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: TOGGLE
  */
-wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.toggle = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -1677,7 +1663,7 @@ wp.customize.controlConstructor['toggle'] = wp.customize.Control.extend({
 /**
  * KIRKI CONTROL: TYPOGRAPHY
  */
-wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -1686,16 +1672,19 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 		    variantSelector       = control.selector + ' .variant select',
 		    subsetSelector        = control.selector + ' .subset select',
 		    textTransformSelector = control.selector + ' .text-transform select',
+		    hasDefault            = false,
+		    firstAvailable        = false,
+		    activeItem,
 		    value = {};
 
 		// Make sure everything we're going to need exists.
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
 		value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
-		value['variant']        = ( undefined !== control.setting._value['variant'] ) ? control.setting._value['variant'] : '';
-		value['subset']         = ( undefined !== control.setting._value['subset'] ) ? control.setting._value['subset'] : '';
+		value.variant           = ( undefined !== control.setting._value.variant ) ? control.setting._value.variant : '';
+		value.subset            = ( undefined !== control.setting._value.subset ) ? control.setting._value.subset : '';
 		value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
 		value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
-		value['color']          = ( undefined !== control.setting._value['color'] ) ? control.setting._value['color'] : '';
+		value.color             = ( undefined !== control.setting._value.color ) ? control.setting._value.color : '';
 		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
 		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
 
@@ -1705,7 +1694,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 			subSelector = ( 'variant' == sub ) ? variantSelector : subsetSelector;
 
 			var is_standard = false,
-			    subList = {}
+			    subList = {};
 
 			// destroy the selectize instance
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
@@ -1715,9 +1704,9 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 			// Get all items in the sub-list for the active font-family
 			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
 				// Find the font-family we've selected in the global array of fonts.
-				if ( fontFamily === kirkiAllFonts[ i ]['family'] ) {
+				if ( fontFamily === kirkiAllFonts[ i ].family ) {
 					// Check if this is a standard font or a google-font.
-					if ( undefined !== kirkiAllFonts[ i ]['is_standard'] && true === kirkiAllFonts[ i ]['is_standard'] ) {
+					if ( undefined !== kirkiAllFonts[ i ].is_standard && true === kirkiAllFonts[ i ].is_standard ) {
 						is_standard = true;
 					}
 
@@ -1735,14 +1724,14 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 						// loop the variants.
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
 
-							if ( undefined !== subList[ i ]['id'] ) {
-								var activeItem = value['variant'];
+							if ( undefined !== subList[ i ].id ) {
+								activeItem = value.variant;
 							} else {
 								var defaultValue = 'regular';
-								if ( defaultValue == subList[ i ]['id'] ) {
-									var hasDefault = true;
-								} else if ( undefined === firstAvailable ) {
-									var firstAvailable = subList[ i ]['id'];
+								if ( defaultValue == subList[ i ].id ) {
+									hasDefault = true;
+								} else if ( false === firstAvailable ) {
+									firstAvailable = subList[ i ].id;
 								}
 							}
 
@@ -1754,18 +1743,18 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 
 						for ( var i = 0, len = subList.length; i < len; i++ ) {
 
-							if ( null !== value['subset'] ) {
-								for ( var s = 0, len = value['subset'].length; s < len; s++ ) {
-									if ( undefined !== subList[ i ] && value['subset'][ s ] == subList[ i ]['id'] ) {
-										subsetValues[ value['subset'][ s ] ] = value['subset'][ s ];
+							if ( null !== value.subset ) {
+								for ( var s = 0, len = value.subset.length; s < len; s++ ) {
+									if ( undefined !== subList[ i ] && value.subset[ s ] == subList[ i ].id ) {
+										subsetValues[ value.subset[ s ] ] = value.subset[ s ];
 									}
 								}
 							}
 
 						}
 
-						if ( 0 == subsetValues.length ) {
-							activeItem = ['latin']
+						if ( 0 === subsetValues.length ) {
+							activeItem = ['latin'];
 						} else {
 							var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
 								return [value];
@@ -1778,7 +1767,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 					// If we have a valid setting, use it.
 					// If not, check if the default value exists.
 					// If not, then use the 1st available option.
-					subValue = ( undefined !== activeItem ) ? activeItem : ( undefined !== hasDefault ) ? 'regular' : firstAvailable;
+					subValue = ( undefined !== activeItem ) ? activeItem : ( false !== hasDefault ) ? 'regular' : firstAvailable;
 
 				} else {
 
@@ -1852,12 +1841,12 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 		// Render the variants
 		// Please note that when the value of font-family changes,
 		// this will be destroyed and re-created.
-		renderSubControl( value['font-family'], 'variant', value['variant'] );
+		renderSubControl( value['font-family'], 'variant', value.variant );
 
 		// Render the subsets
 		// Please note that when the value of font-family changes,
 		// this will be destroyed and re-created.
-		renderSubControl( value['font-family'], 'subset', value['subset'] );
+		renderSubControl( value['font-family'], 'subset', value.subset );
 
 		this.container.on( 'change', '.font-family select', function() {
 			// add the value to the array and set the setting's value
@@ -1872,7 +1861,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 
 		this.container.on( 'change', '.variant select', function() {
 			// add the value to the array and set the setting's value
-			value['variant'] = jQuery( this ).val();
+			value.variant = jQuery( this ).val();
 			control.setting.set( value );
 			// refresh the preview
 			wp.customize.previewer.refresh();
@@ -1880,7 +1869,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 
 		this.container.on( 'change', '.subset select', function() {
 			// add the value to the array and set the setting's value.
-			value['subset'] = jQuery( this ).val();
+			value.subset = jQuery( this ).val();
 			control.setting.set( value );
 			// refresh the preview
 			wp.customize.previewer.refresh();
@@ -1936,7 +1925,7 @@ wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
 			change: function() {
 				setTimeout ( function() {
 					// add the value to the array and set the setting's value
-					value[ 'color' ] = picker.val ();
+					value.color = picker.val ();
 					control.setting.set ( value );
 					// refresh the preview
 					wp.customize.previewer.refresh ();
@@ -1960,8 +1949,8 @@ jQuery(document).ready(function($) { "use strict";
 			// Loop controls
 			for ( var i = 0, len = controls.length; i < len; i++ ) {
 				// set value to default
-				kirkiSetValue( controls[ i ]['id'], controls[ i ]['params']['default'] );
-			};
+				kirkiSetValue( controls[ i ].id, controls[ i ].params.default );
+			}
 
 		// }
 

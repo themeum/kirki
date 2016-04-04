@@ -1,6 +1,6 @@
 <?php
 
-class Kirki_Output_Control_Spacing extends Kirki_Output {
+class Kirki_Output_Field_Spacing extends Kirki_Output {
 
 	protected function process_output( $output, $value ) {
 

@@ -1,7 +1,7 @@
 /**
  * KIRKI CONTROL: SPACING
  */
-wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 
 	ready: function() {
 

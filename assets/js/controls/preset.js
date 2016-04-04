@@ -2,7 +2,7 @@
  * KIRKI CONTROL: PRESET
  */
 
-wp.customize.controlConstructor['preset'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.preset = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -31,7 +31,7 @@ wp.customize.controlConstructor['preset'] = wp.customize.Control.extend({
 
 					// Each choice has an array of settings defined in it.
 					// We'll have to loop through them all and apply the changes needed to them.
-					jQuery.each( value['settings'], function( preset_setting, preset_setting_value ) {
+					jQuery.each( value.settings, function( preset_setting, preset_setting_value ) {
 						kirkiSetValue( preset_setting, preset_setting_value );
 					});
 

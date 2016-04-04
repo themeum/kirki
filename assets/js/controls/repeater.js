@@ -84,7 +84,7 @@ RepeaterRow.prototype.renderNumber = function() {
 	this.$number.text( this.getRowNumber() );
 };
 
-wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
+wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	ready: function() {
 		var control = this;
 
@@ -202,8 +202,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 	initFrame : function() {
 
-		var control = this;
-
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
@@ -230,8 +228,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 		this.params.height      = this.params.fields.slide_image.height;
 		this.params.flex_width  = this.params.fields.slide_image.flex_width;
 		this.params.flex_height = this.params.fields.slide_image.flex_height;
-
-		var control = this;
 
 		this.frame = wp.media({
 			button: {
@@ -466,7 +462,6 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 	addRow: function( data ) {
 		var control = this,
 			i,
-			row,
 			// The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
 			template = control.repeaterTemplate(),
 			// Get the current setting value
@@ -492,8 +487,8 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 				}
 			}
 
-			templateData['index'] = this.currentIndex;
-			templateData['ControlId'] = this.id;
+			templateData.index = this.currentIndex;
+			templateData.ControlId = this.id;
 
 			// Append the template content
 			template = template( templateData );
@@ -590,7 +585,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		// Remap the row numbers
 		var i = 1;
-		for ( prop in this.rows ) {
+		for ( var prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].setRowNumber( i );
 				i++;
@@ -617,7 +612,7 @@ wp.customize.controlConstructor['repeater'] = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( undefined == typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
+		if ( undefined === typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
 			return;
 		}
 
