@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
+
 	class Kirki_Controls_Color_Palette_Control extends Kirki_Customize_Control {
 
 		public $type = 'color-palette';
@@ -44,7 +45,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 				{{ data.label }}
 			</span>
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{ data.description }}</span>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div id="input_{{ data.id }}" class="colors-wrapper">
 				<# for ( key in data.choices['colors'] ) { #>
@@ -57,5 +58,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 			</div>
 			<?php
 		}
+
 	}
+
 }

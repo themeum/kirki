@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.6  
+**Stable tag:** 2.2.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,31 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.2.7 ###
+
+April 5, 2016, dev time: 23 hours.
+
+* FIX: Properly parsing `postMessage` scripts when `transport` is set to `auto`.
+* FIX: Background image was outputing CSS even if it was empty.
+* FIX: Default value for checkboxes.
+* FIX: Issue with plugin URLs in the customizer, when the plugin was embedded in a theme.
+* FIX: Descriptions were now shown in `sortable` fields.
+* FIX: Reset not working for textarea fields.
+* FIX: In some cases only the first element in `output` arguments was being processed.
+* FIX: edge-case bugfix for select controls when data saved if the db was somehow mis-formatted.
+* FIX: Repeater controls now use image IDs instead of image URLs. Props @guillaumemolter
+* NEW: Added `text-align` ability in `typography` fields.
+* NEW: Added `text-transform` ability in `typography` fields.
+* NEW: Introduce `value_pattern` argument for `output` & `js_vars`.
+* NEW: Started refactoring the `Kirki_Field` class. Now each field can have its own sub-class extending the main Kirki_Field object.
+* NEW: `multicolor` control.
+* NEW: Added `cropped_image` support in `repeater`. Props @guillaumemolter
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Tooltips` to `Kirki_Scripts_Tooltips`.
+* TWEAK: Renamed `Kirki_Customizer_Scripts_Icons` to `Kirki_Scripts_Icons`.
+* TWEAK: More inline comments, docs & coding-standards improvements.
+* DEPRECATED: Removed the `Kirki_Colourlovers` class.
 
 ### 2.2.6 ###
 

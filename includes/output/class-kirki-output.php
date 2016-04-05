@@ -60,6 +60,12 @@ class Kirki_Output {
 			}
 			return call_user_func( $output['sanitize_callback'], $this->value );
 		}
+		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) ) {
+			if ( is_string( $output['value_pattern'] ) ) {
+				return str_replace( '$', $value, $output['value_pattern'] );
+			}
+		}
+
 		return $value;
 	}
 
@@ -80,7 +86,8 @@ class Kirki_Output {
 					if ( $skip ) {
 						continue;
 					}
-					if ( $exclude == $value ) {
+					// Skip for empty values, or if value is defined as excluded.
+					if ( empty( $value ) || $exclude == $value ) {
 						$skip = true;
 					}
 				}

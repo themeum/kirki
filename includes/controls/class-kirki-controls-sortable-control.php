@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
+
 	class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 		public $type = 'sortable';
@@ -79,9 +80,9 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 				<span class="customize-control-title">
 					{{{ data.label }}}
 				</span>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
+				<# } #>
 
 				<ul class="sortable">
 					<# for ( i in data.filteredValues ) { #>
@@ -111,5 +112,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 
 			<?php
 		}
+
 	}
+
 }

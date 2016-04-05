@@ -123,6 +123,8 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
 				'left'                  => esc_attr__( 'Left', 'kirki' ),
 				'right'                 => esc_attr__( 'Right', 'kirki' ),
+				'center'                => esc_attr__( 'Center', 'kirki' ),
+				'justify'               => esc_attr__( 'Justify', 'kirki' ),
 				'color'                 => esc_attr__( 'Color', 'kirki' ),
 				'add-image'             => esc_attr__( 'Add Image', 'kirki' ),
 				'change-image'          => esc_attr__( 'Change Image', 'kirki' ),
@@ -158,6 +160,13 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'open-section'          => esc_attr__( 'Press return or enter to open this section', 'kirki' ),
 				'back'                  => esc_attr__( 'Back', 'kirki' ),
 				'reset-with-icon'       => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-image-rotate"></span>' ),
+				'text-align'            => esc_attr__( 'Text Align', 'kirki' ),
+				'text-transform'        => esc_attr__( 'Text Transform', 'kirki' ),
+				'none'                  => esc_attr__( 'None', 'kirki' ),
+				'capitalize'            => esc_attr__( 'Capitalize', 'kirki' ),
+				'uppercase'             => esc_attr__( 'Uppercase', 'kirki' ),
+				'lowercase'             => esc_attr__( 'Lowercase', 'kirki' ),
+				'initial'               => esc_attr__( 'Initial', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

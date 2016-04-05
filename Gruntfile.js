@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		curl: {
 			'google-fonts-source': {
 				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
-				dest: 'assets/json/webfonts.json'
+				dest: 'includes/webfonts.json'
 			}
 		},
 		// Compile CSS
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: [
-					'assets/js/kirki-functions.js',
+					'assets/js/functions/*.js',
 					'assets/js/controls/*.js',
 					'assets/js/reset.js'
 				],
@@ -78,12 +78,12 @@ module.exports = function(grunt) {
 			convert: {
 				expand: true,
 				ext: '.php',
-				src: ['assets/json/webfonts.json']
+				src: ['includes/webfonts.json']
 			}
 		},
 		// Delete the json array
 		clean: [
-			'assets/json/webfonts.json'
+			'includes/webfonts.json'
 		],
 		// Watch task (run with "grunt watch")
   		watch: {

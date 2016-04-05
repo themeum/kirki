@@ -102,22 +102,6 @@ customize-control-upload .current .container {
   font-weight: 300;
   font-size: .9em; }
 
-.customize-control-color-alpha .wp-picker-container {
-  width: 100%; }
-  .customize-control-color-alpha .wp-picker-container a.wp-color-result {
-    width: auto;
-    display: block;
-    border: none;
-    padding-left: 40px; }
-    .customize-control-color-alpha .wp-picker-container a.wp-color-result:after {
-      background: rgba(0, 0, 0, 0.25);
-      color: #fff;
-      border: none;
-      -webkit-box-shadow: none;
-      box-shadow: none; }
-    .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after, .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
-      color: #fff; }
-
 input {
   font-size: 16px; }
 
@@ -637,6 +621,47 @@ div.CodeMirror-dragcursors {
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext {
   background: none; }
+
+.customize-control-color-alpha .wp-picker-container {
+  width: 100%; }
+  .customize-control-color-alpha .wp-picker-container a.wp-color-result {
+    width: auto;
+    display: block;
+    border: none;
+    padding-left: 40px; }
+    .customize-control-color-alpha .wp-picker-container a.wp-color-result:after {
+      background: rgba(0, 0, 0, 0.25);
+      color: #fff;
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after, .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
+      color: #fff; }
+
+.customize-control-multicolor .multicolor-group-wrapper {
+  display: flex; }
+  .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
+    width: 100%; }
+    .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper label {
+      display: block;
+      text-align: center;
+      padding: 3px; }
+  .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container {
+    width: 100%; }
+    .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result {
+      width: 100%;
+      height: 30px;
+      padding-left: 0;
+      border-radius: 0;
+      border: none;
+      margin-right: 0; }
+      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result > span {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important; }
+      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result:after {
+        display: none; }
 
 .customize-control-color-palette label {
   position: relative;
@@ -1482,6 +1507,7 @@ span.CodeMirror-selectedtext {
   .customize-control-typography .wrapper .font-size,
   .customize-control-typography .wrapper .line-height,
   .customize-control-typography .wrapper .letter-spacing,
+  .customize-control-typography .wrapper .text-transform,
   .customize-control-typography .wrapper .color {
     width: 100%;
     float: none;
@@ -1492,12 +1518,28 @@ span.CodeMirror-selectedtext {
     .customize-control-typography .wrapper .font-size h5,
     .customize-control-typography .wrapper .line-height h5,
     .customize-control-typography .wrapper .letter-spacing h5,
+    .customize-control-typography .wrapper .text-transform h5,
     .customize-control-typography .wrapper .color h5 {
       margin: .67em 0 0; }
   .customize-control-typography .wrapper .font-size,
   .customize-control-typography .wrapper .line-height,
   .customize-control-typography .wrapper .letter-spacing {
     width: 50%; }
+  .customize-control-typography .wrapper .text-align {
+    width: 100%; }
+  .customize-control-typography .wrapper .text-align .dashicons {
+    padding: 3px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent; }
+  .customize-control-typography .wrapper .text-align input {
+    display: none; }
+    .customize-control-typography .wrapper .text-align input:checked + label .dashicons {
+      border: 1px solid #3498DB;
+      color: #000; }
+  .customize-control-typography .wrapper .text-transform {
+    padding-top: 10px; }
   .customize-control-typography .wrapper .color {
     width: auto; }
 

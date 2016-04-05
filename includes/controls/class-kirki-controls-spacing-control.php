@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
+
 	class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 
 		public $type = 'spacing';
@@ -68,4 +69,5 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 		}
 
 	}
+
 }

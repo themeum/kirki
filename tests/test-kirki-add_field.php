@@ -61,7 +61,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'variables'         => array(),
 				'id'                => 'my_setting_global',
 				'transport'         => 'refresh',
-				'sanitize_callback' => 'wp_kses_post',
+				'sanitize_callback' => 'esc_textarea',
 				'choices'           => array(
 					'element' => 'input',
 					'type'    => 'text',
@@ -73,6 +73,10 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
+				'width'          	=> 150,
+				'height'         	=> 150,
+				'flex_width'        => false,
+				'flex_height'       => false,
 			),
 			Kirki::$fields['my_setting_global']
 		);
@@ -96,7 +100,7 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'output'            => array(),
 				'variables'         => array(),
 				'id'                => 'my_option_name-my_setting_test',
-				'sanitize_callback' => 'wp_kses_post',
+				'sanitize_callback' => 'esc_textarea',
 				'transport'         => 'refresh',
 				'choices'           => array(
 					'element' => 'input',
@@ -109,6 +113,10 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
+				'width'          	=> 150,
+				'height'         	=> 150,
+				'flex_width'        => false,
+				'flex_height'       => false,
 
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
@@ -159,6 +167,10 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
+				'width'          	=> 150,
+				'height'         	=> 150,
+				'flex_width'        => false,
+				'flex_height'       => false,
 			),
 			Kirki::$fields['my_setting_global']
 		);

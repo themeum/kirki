@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
+
 	class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
 		public $type = 'typography';
@@ -35,6 +36,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'line-height'    => false,
 				'letter-spacing' => false,
 				'color'          => false,
+				'text-align'     => false,
 			);
 			$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 		}
@@ -91,6 +93,56 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<div class="letter-spacing">
 						<h5>{{ data.l10n['letter-spacing'] }}</h5>
 						<input type="text" value="{{ data.value['letter-spacing'] }}"/>
+					</div>
+				<# } #>
+
+				<# if ( data.default['text-align'] ) { #>
+					<div class="text-align">
+						<h5>{{ data.l10n['text-align'] }}</h5>
+						<input type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-inherit">
+								<span class="dashicons dashicons-editor-removeformatting"></span>
+								<span class="screen-reader-text">{{ data.l10n['inherit'] }}</span>
+							</label>
+						</input>
+						<input type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-left">
+								<span class="dashicons dashicons-editor-alignleft"></span>
+								<span class="screen-reader-text">{{ data.l10n['left'] }}</span>
+							</label>
+						</input>
+						<input type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-center">
+								<span class="dashicons dashicons-editor-aligncenter"></span>
+								<span class="screen-reader-text">{{ data.l10n['center'] }}</span>
+							</label>
+						</input>
+						<input type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-right">
+								<span class="dashicons dashicons-editor-alignright"></span>
+								<span class="screen-reader-text">{{ data.l10n['right'] }}</span>
+							</label>
+						</input>
+						<input type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-justify">
+								<span class="dashicons dashicons-editor-justify"></span>
+								<span class="screen-reader-text">{{ data.l10n['justify'] }}</span>
+							</label>
+						</input>
+					</div>
+				<# } #>
+
+				<# if ( data.default['text-transform'] ) { #>
+					<div class="text-transform">
+						<h5>{{ data.l10n['text-transform'] }}</h5>
+						<select id="kirki-typography-text-transform-{{{ data.id }}}">
+							<option value="none"<# if ( 'none' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['none'] }}</option>
+							<option value="capitalize"<# if ( 'capitalize' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['capitalize'] }}</option>
+							<option value="uppercase"<# if ( 'uppercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['uppercase'] }}</option>
+							<option value="lowercase"<# if ( 'lowercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['lowercase'] }}</option>
+							<option value="initial"<# if ( 'initial' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['initial'] }}</option>
+							<option value="inherit"<# if ( 'inherit' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['inherit'] }}</option>
+						</select>
 					</div>
 				<# } #>
 

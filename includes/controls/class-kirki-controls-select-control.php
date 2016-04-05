@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
+
 	class Kirki_Controls_Select_Control extends Kirki_Customize_Control {
 
 		public $type = 'kirki-select';
@@ -50,7 +51,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 							<option value="{{ data.value[ key ] }}" selected>{{ data.choices[ data.value[ key ] ] }}</option>
 						<# } #>
 						<# for ( key in data.choices ) { #>
-							<# if ( data.value[ key ] in data.value ) { #>
+							<# if ( undefined === data.value[ key ] || data.value[ key ] in data.value ) { #>
 							<# } else { #>
 								<option value="{{ key }}">{{ data.choices[ key ] }}</option>
 							<# } #>
@@ -64,5 +65,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 			</label>
 			<?php
 		}
+
 	}
+
 }

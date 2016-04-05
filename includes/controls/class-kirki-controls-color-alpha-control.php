@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
+
 	class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {
 
 		public $type = 'color-alpha';
@@ -48,11 +49,13 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 					{{{ data.label }}}
 				</span>
 				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{ data.description }}</span>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 			</label>
 			<?php
 		}
+
 	}
+
 }

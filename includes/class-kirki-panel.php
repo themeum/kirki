@@ -20,8 +20,6 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		public function __construct( $args ) {
 
 			$this->panel_types = apply_filters( 'kirki/panel_types', $this->panel_types );
-
-			parent::__construct( $args );
 			$this->add_panel( $args );
 
 		}
@@ -49,7 +47,7 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 			// If we've got an icon then call the object to create its script.
 			if ( isset( $args['icon'] ) ) {
 				$args['context'] = 'panel';
-				Kirki_Customizer_Scripts_Icons::generate_script( $args );
+				Kirki_Scripts_Icons::generate_script( $args );
 			}
 
 		}
