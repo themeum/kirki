@@ -1,5 +1,5 @@
 
-```
+```php
 <?php
 $defaults = array(
 	'link'    => '#0088cc',
