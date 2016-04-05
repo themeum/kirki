@@ -221,13 +221,24 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	 initCropperFrame : function() {
 
-		//hack to prevent errors from WordPress Core
-		//Core media library uses params.width and params.height to calculate some values
-		//and we get undefined notice on the ajax call when not defined
-		this.params.width       = this.params.fields.slide_image.width;
-		this.params.height      = this.params.fields.slide_image.height;
-		this.params.flex_width  = this.params.fields.slide_image.flex_width;
-		this.params.flex_height = this.params.fields.slide_image.flex_height;
+		//We get the field id from which this was called
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
+		//Make sure we got it
+		if ( typeof currentFieldId === 'string' && currentFieldId !=='' ) {
+			//Make fields is defined and only do the hack for cropped_image
+			if ( typeof this.params.fields[currentFieldId] === 'object' && this.params.fields[currentFieldId].type === 'cropped_image' ) {
+				//A list of attributes to look for
+				var attrs = [ 'width' , 'height' , 'flex_width' , 'flex_height' ];
+				//Iterate over the list of attributes
+				attrs.forEach( function( el , index ) {
+					//If the attribute exists in the field
+					if( typeof this.params.fields[currentFieldId][el] !== 'undefined' ) {
+						//Set the attribute in the main object
+						this.params[el] = this.params.fields[currentFieldId][el];
+					}
+				}.bind(this));
+			}
+		}
 
 		this.frame = wp.media({
 			button: {
