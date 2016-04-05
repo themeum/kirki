@@ -10,22 +10,25 @@ wp.customize.controlConstructor.number = wp.customize.Control.extend({
 		// Init the spinner
 		jQuery( element ).spinner();
 
-		// set minimum value
-		if ( control.params.choices.min ) {
-			jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
-		}
+		// choices have been set
+		if( typeof control.params.choices !== 'undefined' ) {
+			// set minimum value
+			if ( control.params.choices.min ) {
+				jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
+			}
 
-		// Set maximum value
-		if ( control.params.choices.max ) {
-			jQuery( element ).spinner( 'option', 'max', control.params.choices.max );
-		}
+			// Set maximum value
+			if ( control.params.choices.max ) {
+				jQuery( element ).spinner( 'option', 'max', control.params.choices.max );
+			}
 
-		// Set steps
-		if ( control.params.choices.step ) {
-			if ( 'any' === control.params.choices.step ) {
-				jQuery( element ).spinner( 'option', 'step', '0.001' );
-			} else {
-				jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
+			// Set steps
+			if ( control.params.choices.step ) {
+				if ( 'any' === control.params.choices.step ) {
+					jQuery( element ).spinner( 'option', 'step', '0.001' );
+				} else {
+					jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
+				}
 			}
 		}
 
