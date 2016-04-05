@@ -221,20 +221,20 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	 initCropperFrame : function() {
 
-		//We get the field id from which this was called
+		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
-		//Make sure we got it
-		if ( typeof currentFieldId === 'string' && currentFieldId !=='' ) {
-			//Make fields is defined and only do the hack for cropped_image
-			if ( typeof this.params.fields[currentFieldId] === 'object' && this.params.fields[currentFieldId].type === 'cropped_image' ) {
-				//A list of attributes to look for
+		// Make sure we got it
+		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
+			// Make fields is defined and only do the hack for cropped_image
+			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
+				// A list of attributes to look for
 				var attrs = [ 'width' , 'height' , 'flex_width' , 'flex_height' ];
 				//Iterate over the list of attributes
 				attrs.forEach( function( el , index ) {
-					//If the attribute exists in the field
-					if( typeof this.params.fields[currentFieldId][el] !== 'undefined' ) {
-						//Set the attribute in the main object
-						this.params[el] = this.params.fields[currentFieldId][el];
+					// If the attribute exists in the field
+					if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ el ] ) {
+						// Set the attribute in the main object
+						this.params[ el ] = this.params.fields[ currentFieldId ][ el ];
 					}
 				}.bind(this));
 			}
