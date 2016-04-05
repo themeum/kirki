@@ -48,8 +48,8 @@ rm -rf ../kirki-svn/trunk/.simplecov
 rm -rf ../kirki-svn/trunk/.travis.yml
 rm -rf ../kirki-svn/trunk/assets/scss/
 rm -rf ../kirki-svn/trunk/assets/scss/
-rm -rf ../kirki-svn/trunk/assets/js/controls/
-rm -rf ../kirki-svn/trunk/assets/js/functions.js
+# rm -rf ../kirki-svn/trunk/assets/js/controls/
+# rm -rf ../kirki-svn/trunk/assets/js/functions.js
 
 # Update svn
 cd ../kirki-svn
