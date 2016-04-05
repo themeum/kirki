@@ -22,6 +22,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		public $fields = array();
 
+		//will store a filtered version of value for advenced fields (like images..)
+		protected $filtered_value = array();
+
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
 
@@ -39,6 +42,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				$args['fields'] = array();
 			}
 
+			//An array to store keys of fields that need to be filtered
+			$image_fields_to_filter = array();
+
 			foreach ( $args['fields'] as $key => $value ) {
 				if ( ! isset( $value['default'] ) ) {
 					$args['fields'][ $key ]['default'] = '';
@@ -48,9 +54,57 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					$args['fields'][ $key ]['label'] = '';
 				}
 				$args['fields'][ $key ]['id'] = $key;
+
+				//we check if the filed is an image or a cropped_image
+				if(isset($value["type"]) && ( $value["type"] === 'image' || $value["type"] === 'cropped_image' )){
+					//we add it to the list of fields that need some extra filtering/processing
+					$image_fields_to_filter[$key] = true;
+				}
 			}
 
 			$this->fields = $args['fields'];
+
+			//Now we are going to filter the fields
+
+			//First we create a copy of the value that would be used otherwise
+			$this->filtered_value = $this->value();
+
+			if(is_array($this->filtered_value) && !empty($this->filtered_value)){
+
+				//We iterate over the list of fields
+				foreach ( $this->filtered_value as &$filtered_value_field ){
+
+					if(is_array($filtered_value_field) && !empty($filtered_value_field)){
+
+						//We iterate over the list of properties for this field
+						foreach ( $filtered_value_field as $key => &$value ){
+
+							//We check if this field was marked as requiring extra filtering (in this case image,cropped_images)
+							if ( array_key_exists ( $key , $image_fields_to_filter ) ){
+
+								//What follows was made this way to preserve backward compatibility
+								//The repeater control use to store the URL for images instead of the attachment ID
+
+								//We check if the value look like an ID (otherwise it's probably a URL so don't filter it)
+								if( is_numeric($value) ){
+									//"sanitize" the value
+									$attachment_id = (int)$value;
+									//try to get the attachment_url
+									$url = wp_get_attachment_url($attachment_id);
+									//if we got a URL
+									if($url){
+										//id is needed for form hidden value, URL is needed to display the image
+										$value = array (
+											'id' => $attachment_id,
+											'url' => $url
+										);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 
 		public function to_json() {
@@ -74,6 +128,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			}
 
 			$this->json['fields'] = $fields;
+
+			//if filtered_value has been set and is not empty we use it instead of the actual value
+			if( is_array($this->filtered_value) && !empty($this->filtered_value) ) {
+				$this->json['value'] = $this->filtered_value;
+			}
 		}
 
 		public function enqueue() {
@@ -235,7 +294,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 								<figure class="kirki-image-attachment" data-placeholder="{{ field.buttonLabels.placeholder }}" >
 									<# if ( field.default ) { #>
-										<img src="{{{ field.default }}}">
+										<# if ( field.default.url ) { #>
+											<img src="{{{ field.default.url }}}">
+										<# } else { #>
+											<img src="{{{ field.default }}}">
+										<# } #>
 									<# } else { #>
 										{{ field.buttonLabels.placeholder }}
 									<# } #>
@@ -250,7 +313,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 											{{ field.buttonLabels.default }}
 										<# } #>
 									</button>
-									<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
+									<# if ( field.default.id ) { #>
+										<input type="hidden" class="hidden-field" value="{{{ field.default.id }}}" data-field="{{{ field.id }}}" >
+									<# } else { #>
+										<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
+									<# } #>
 								</div>
 
 							<# } #>
