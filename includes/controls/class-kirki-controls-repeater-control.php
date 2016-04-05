@@ -55,47 +55,47 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				}
 				$args['fields'][ $key ]['id'] = $key;
 
-				//we check if the filed is an image or a cropped_image
-				if(isset($value["type"]) && ( $value["type"] === 'image' || $value["type"] === 'cropped_image' )){
-					//we add it to the list of fields that need some extra filtering/processing
-					$image_fields_to_filter[$key] = true;
+				// we check if the filed is an image or a cropped_image
+				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value["type"] ) ) {
+					// we add it to the list of fields that need some extra filtering/processing
+					$image_fields_to_filter[ $key ] = true;
 				}
 			}
 
 			$this->fields = $args['fields'];
 
-			//Now we are going to filter the fields
+			// Now we are going to filter the fields
 
-			//First we create a copy of the value that would be used otherwise
+			// First we create a copy of the value that would be used otherwise
 			$this->filtered_value = $this->value();
 
-			if(is_array($this->filtered_value) && !empty($this->filtered_value)){
+			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 
-				//We iterate over the list of fields
-				foreach ( $this->filtered_value as &$filtered_value_field ){
+				// We iterate over the list of fields
+				foreach ( $this->filtered_value as &$filtered_value_field ) {
 
-					if(is_array($filtered_value_field) && !empty($filtered_value_field)){
+					if ( is_array( $filtered_value_field ) && ! empty( $filtered_value_field ) ) {
 
-						//We iterate over the list of properties for this field
-						foreach ( $filtered_value_field as $key => &$value ){
+						// We iterate over the list of properties for this field
+						foreach ( $filtered_value_field as $key => &$value ) {
 
-							//We check if this field was marked as requiring extra filtering (in this case image,cropped_images)
-							if ( array_key_exists ( $key , $image_fields_to_filter ) ){
+							// We check if this field was marked as requiring extra filtering (in this case image,cropped_images)
+							if ( array_key_exists ( $key , $image_fields_to_filter ) ) {
 
-								//What follows was made this way to preserve backward compatibility
-								//The repeater control use to store the URL for images instead of the attachment ID
+								// What follows was made this way to preserve backward compatibility
+								// The repeater control use to store the URL for images instead of the attachment ID
 
-								//We check if the value look like an ID (otherwise it's probably a URL so don't filter it)
-								if( is_numeric($value) ){
-									//"sanitize" the value
-									$attachment_id = (int)$value;
+								// We check if the value look like an ID (otherwise it's probably a URL so don't filter it)
+								if ( is_numeric( $value ) ) {
+									// "sanitize" the value
+									$attachment_id = (int) $value;
 									//try to get the attachment_url
-									$url = wp_get_attachment_url($attachment_id);
-									//if we got a URL
-									if($url){
+									$url = wp_get_attachment_url( $attachment_id );
+									// if we got a URL
+									if ( $url ) {
 										//id is needed for form hidden value, URL is needed to display the image
 										$value = array (
-											'id' => $attachment_id,
+											'id'  => $attachment_id,
 											'url' => $url
 										);
 									}
@@ -129,8 +129,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 			$this->json['fields'] = $fields;
 
-			//if filtered_value has been set and is not empty we use it instead of the actual value
-			if( is_array($this->filtered_value) && !empty($this->filtered_value) ) {
+			// if filtered_value has been set and is not empty we use it instead of the actual value
+			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 				$this->json['value'] = $this->filtered_value;
 			}
 		}
