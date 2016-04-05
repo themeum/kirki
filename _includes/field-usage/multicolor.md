@@ -7,16 +7,9 @@ $defaults = array(
 	'active'  => '#00ffff',
 );
 $value = get_theme_mod( 'my_setting', $defaults );
-?>
-<style>
-a {
-	color: <?php echo $value['link']; ?>;
-}
-a:hover {
-	color: <?php echo $value['hover']; ?>
-}
-a:active {
-	color: <?php echo $value['active']; ?>
-}
-</style>
+
+echo '<style>';
+echo 'a { color: ' . $value['link'] . '; }';
+echo 'a:hover { color: ' . $value['hover'] . '; }';
+echo 'a:active { color: ' . $value['active'] . '; }';
 ```
