@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.6  
+**Stable tag:** 2.2.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -38,6 +38,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 ## Changelog ##
 
 ### 2.2.7 ###
+
+April 5, 2016, dev time: 23 hours.
 
 * FIX: Properly parsing `postMessage` scripts when `transport` is set to `auto`.
 * FIX: Background image was outputing CSS even if it was empty.
