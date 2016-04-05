@@ -38,11 +38,11 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 			$suffix = ( ! Kirki_Toolkit::is_debug() ) ? '.min' : '';
 
+			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
+			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
 			wp_enqueue_script( 'jquery-ui-button' );
-
-			wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery', 'jquery-ui' ) );
 
 			$deps = array(
 				'jquery',
