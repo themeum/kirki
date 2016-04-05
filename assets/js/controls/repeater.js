@@ -281,7 +281,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
-		if ( this.params.fields.slide_image.width === attachment.width && this.params.fields.slide_image.height === attachment.height && ! this.params.fields.slide_image.flex_width && ! this.params.fields.slide_image.flex_height ) {
+		if ( this.params.width === attachment.width && this.params.height === attachment.height && ! this.params.flex_width && ! this.params.flex_height ) {
 			this.setImageInReaperField( attachment );
 		} else {
 			this.frame.setState( 'cropper' );
