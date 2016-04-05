@@ -12,4 +12,5 @@ echo '<style>';
 echo 'a { color: ' . $value['link'] . '; }';
 echo 'a:hover { color: ' . $value['hover'] . '; }';
 echo 'a:active { color: ' . $value['active'] . '; }';
+echo '</style>';
 ```
