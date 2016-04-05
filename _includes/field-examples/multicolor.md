@@ -1,5 +1,6 @@
 
 ```php
+<?php
 Kirki::add_field( 'my_config', array(
     'type'        => 'multicolor',
     'settings'    => 'my_setting',
