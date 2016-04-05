@@ -58,11 +58,6 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				$theme = $this->choices['theme'];
 			}
 			/**
-			 * Enqueue dependencies
-			 */
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'codemirror' ) );
-			/**
 			 * If we're using html mode, we'll also need to include the multiplex addon
 			 * as well as dependencies for XML, JS, CSS languages.
 			 */

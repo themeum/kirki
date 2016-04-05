@@ -135,13 +135,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			}
 		}
 
-		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-repeater', 'controls/repeater', array( 'jquery', 'customize-base' ), true );
-
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-sortable' );
-		}
-
 		public function render_content() { ?>
 			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<?php if ( '' != $this->tooltip ) : ?>

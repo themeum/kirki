@@ -27,11 +27,6 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 			$this->json['multiple'] = $this->multiple;
 		}
 
-		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-select', 'controls/select', array( 'jquery', 'selectize' ) );
-		}
-
 		protected function content_template() { ?>
 
 			<# if ( ! data.choices ) return; #>

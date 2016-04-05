@@ -20,11 +20,6 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 
 		public $type = 'color-palette';
 
-		public function enqueue() {
-			wp_enqueue_script( 'jquery-ui-button' );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-palette', 'controls/palette', array( 'jquery', 'jquery-ui-button' ) );
-		}
-
 		public function to_json() {
 			parent::to_json();
 			// If no palette has been defined, use Material Design Palette
