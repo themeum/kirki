@@ -13,6 +13,8 @@ Kirki::add_field( 'my_config', array(
 		'line-height'    => '1.5',
 		'letter-spacing' => '0',
 		'color'          => '#333333',
+		'text-transform' => 'none',
+		'text-align'     => 'left'
 	),
 	'priority'    => 10,
 	'output'      => array(
