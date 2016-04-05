@@ -27,7 +27,7 @@ wp.customize.controlConstructor.preset = wp.customize.Control.extend({
 
 				// If the current value of the control is the key of the choice,
 				// then we can continue processing, Otherwise there's no reason to do anything.
-				if ( select_value == key ) {
+				if ( select_value === key ) {
 
 					// Each choice has an array of settings defined in it.
 					// We'll have to loop through them all and apply the changes needed to them.

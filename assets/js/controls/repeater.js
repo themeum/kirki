@@ -396,12 +396,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} attachment
 	 */
 	setImageInReaperField: function( attachment ) {
-		var image_src = attachment.url;
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ image_src +'">' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ attachment.url +'">' ).hide().slideDown( 'slow' );
 
-		$targetDiv.find( '.hidden-field' ).val( image_src );
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
 		$targetDiv.find( '.remove-button' ).show();
 
@@ -616,7 +615,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		if ( 'checkbox' == type ) {
+		if ( 'checkbox' === type ) {
 			currentSettings[ row.getRowIndex() ][ fieldId ] = element.is( ':checked' );
 		} else {
 			// Update the settings

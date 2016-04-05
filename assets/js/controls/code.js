@@ -11,7 +11,7 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 		    language = control.params.choices.language;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
-		if ( control.params.choices.language == 'html' ) {
+		if ( 'html' === control.params.choices.language ) {
 			language = { name: 'htmlmixed' };
 		}
 
