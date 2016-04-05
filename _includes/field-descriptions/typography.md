@@ -9,8 +9,8 @@ It shows the following controls:
 * line-height
 * letter-spacing
 * color
-* text-align (since v 2.2.7)
-* text-transform (since v 2.2.7)
+* text-align
+* text-transform
 
 ### Defining active sub-fields
 
