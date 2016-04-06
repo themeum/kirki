@@ -179,7 +179,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 						<span class="repeater-row-number"></span>
 						<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
 						<span class="repeater-row-minimize"><i class="dashicons dashicons-arrow-up repeater-minimize"></i></span>
-						<span class="repeater-row-move"><i class="dashicons dashicons-sort repeater-move"></i></span>
 					</div>
 
 					<# for ( i in data ) { #>

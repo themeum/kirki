@@ -5,7 +5,7 @@ function RepeaterRow( rowIndex, element ) {
 	this.rowIndex   = rowIndex;
 	this.rowNumber  = rowIndex + 1;
 	this.$el        = element;
-	this.$dragger   = this.$el.find( '.repeater-row-move' );
+	this.$dragger   = this.$el.find( '.repeater-row-header' );
 	this.$minimizer = this.$el.find( '.repeater-row-minimize' );
 	this.$remover   = this.$el.find( '.repeater-row-remove' );
 	this.$number    = this.$el.find( '.repeater-row-number' );
@@ -174,7 +174,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		}
 
 		this.repeaterFieldsContainer.sortable({
-			handle: ".repeater-row-move",
+			handle: ".repeater-row-header",
 			update: function( e, ui ) {
 				control.sort();
 			}

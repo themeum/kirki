@@ -83,6 +83,10 @@
 	    font-size: 15px;
 	}
 
+	.repeater-row-header:hover {
+	  cursor:move;
+	}
+
 	.repeater-row-number {
 	    border-right: 1px solid #ddd;
 	    display: inline-block;
@@ -91,7 +95,6 @@
 	}
 
 	.repeater-row-remove,
-	.repeater-row-move,
 	.repeater-row-minimize {
 	    display: inline-block;
 	    float: right;
@@ -106,12 +109,7 @@
 		}
 	}
 
-  	.repeater-row-move:hover {
-	  cursor:move;
-	}
-
 	.repeater-remove,
-	.repeater-move,
 	.repeater-minimize {
 	    line-height: 36px;
 	}
