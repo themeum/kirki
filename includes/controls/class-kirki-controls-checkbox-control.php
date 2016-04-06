@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
-			<label><# console.log( data ); #>
+			<label>
  				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
 				{{ data.label }}
 				<# if ( data.description ) { #>
