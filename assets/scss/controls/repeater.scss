@@ -10,6 +10,15 @@
 		    background: #eee;
 		    position:relative;
 		    padding-top:48px;
+		    &.minimized{
+			    border:1px solid #dfdfdf;
+				padding: 0;
+			    height: 36px;
+			    overflow: hidden;
+			    &:hover{
+				    border:1px solid #999;
+			    }
+		    }
 
 			label {
 				margin-bottom:12px;
@@ -34,6 +43,10 @@
 						}
 					}
 				}
+				&:last-child {
+				    border-bottom:none;
+				    padding-bottom:0;
+				}
 			}
 		}
 	}
@@ -47,11 +60,6 @@
 	    clear: both;
 	    padding-bottom: 12px;
 	    border-bottom: 1px dotted #CCC;
-	}
-
-	.repeater-row .repeater-field:last-child {
-	    border-bottom:none;
-	    padding-bottom:0;
 	}
 
 	.repeater-field-select select {
@@ -81,14 +89,12 @@
 	    border-bottom: 1px solid #999;
 	    line-height: 36px;
 	    font-size: 15px;
-	}
-
-	.repeater-row-header:hover {
-	  cursor:move;
+		&:hover {
+		  cursor:move;
+		}
 	}
 
 	.repeater-row-number {
-	    border-right: 1px solid #ddd;
 	    display: inline-block;
 	    width: 35px;
 	    text-align: center;
@@ -97,33 +103,20 @@
 	.repeater-row-minimize {
 	    display: inline-block;
 	    float: right;
-	    border-left: 1px solid #ddd;
 	    width: 35px;
 	    height:36px;
 	    text-align: center;
-
-		&:hover {
-		    background:#ddd;
-		    cursor: pointer;
-		}
 	}
 
 	.repeater-row-remove {
 		color:#a00;
-	}
-
-	.repeater-row-remove:hover {
-		color:#f00;
+		&:hover {
+			color:#f00;
+		}
 	}
 
 	.repeater-minimize {
 	    line-height: 36px;
-	}
-
-	.repeater-row.minimized {
-	    padding: 0;
-	    height: 36px;
-	    overflow: hidden;
 	}
 
 	.remove-button, .upload-button{

@@ -907,6 +907,13 @@ span.CodeMirror-selectedtext {
   background: #eee;
   position: relative;
   padding-top: 48px; }
+  .customize-control-repeater .repeater-fields .repeater-row.minimized {
+    border: 1px solid #dfdfdf;
+    padding: 0;
+    height: 36px;
+    overflow: hidden; }
+    .customize-control-repeater .repeater-fields .repeater-row.minimized:hover {
+      border: 1px solid #999; }
   .customize-control-repeater .repeater-fields .repeater-row label {
     margin-bottom: 12px;
     clear: both; }
@@ -918,6 +925,9 @@ span.CodeMirror-selectedtext {
       -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
       box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
       border: 1px solid #3498DB; }
+  .customize-control-repeater .repeater-fields .repeater-row .repeater-field:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
 .customize-control-repeater button.repeater-add {
   margin-top: 1rem; }
 .customize-control-repeater .repeater-field {
@@ -926,9 +936,6 @@ span.CodeMirror-selectedtext {
   clear: both;
   padding-bottom: 12px;
   border-bottom: 1px dotted #CCC; }
-.customize-control-repeater .repeater-row .repeater-field:last-child {
-  border-bottom: none;
-  padding-bottom: 0; }
 .customize-control-repeater .repeater-field-select select {
   margin-left: 0; }
 .customize-control-repeater .repeater-field-checkbox label {
@@ -950,33 +957,24 @@ span.CodeMirror-selectedtext {
   border-bottom: 1px solid #999;
   line-height: 36px;
   font-size: 15px; }
-.customize-control-repeater .repeater-row-header:hover {
-  cursor: move; }
+  .customize-control-repeater .repeater-row-header:hover {
+    cursor: move; }
 .customize-control-repeater .repeater-row-number {
-  border-right: 1px solid #ddd;
   display: inline-block;
   width: 35px;
   text-align: center; }
 .customize-control-repeater .repeater-row-minimize {
   display: inline-block;
   float: right;
-  border-left: 1px solid #ddd;
   width: 35px;
   height: 36px;
   text-align: center; }
-  .customize-control-repeater .repeater-row-minimize:hover {
-    background: #ddd;
-    cursor: pointer; }
 .customize-control-repeater .repeater-row-remove {
   color: #a00; }
-.customize-control-repeater .repeater-row-remove:hover {
-  color: #f00; }
+  .customize-control-repeater .repeater-row-remove:hover {
+    color: #f00; }
 .customize-control-repeater .repeater-minimize {
   line-height: 36px; }
-.customize-control-repeater .repeater-row.minimized {
-  padding: 0;
-  height: 36px;
-  overflow: hidden; }
 .customize-control-repeater .remove-button, .customize-control-repeater .upload-button {
   width: 48%; }
 
