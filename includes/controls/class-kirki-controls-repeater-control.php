@@ -201,6 +201,10 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
 								</label>
 
+								<# } else if ( field.type === 'hidden' ) { #>
+
+									<input type="hidden" data-field="{{{ field.id }}}" <# if ( field.default ) { #> value="{{{ field.default }}}" <# } #> />
+
 							<# } else if ( field.type === 'checkbox' ) { #>
 
 								<label>
