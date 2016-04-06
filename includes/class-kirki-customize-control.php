@@ -44,11 +44,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			}
 		}
 
-		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-' . str_replace( 'kirki-', '', $this->type ), 'controls/' . str_replace( 'kirki-', '', $this->type ), array( 'jquery' ) );
-		}
-
-		public function render_content() {}
+		protected function render_content() {}
 
 	}
 

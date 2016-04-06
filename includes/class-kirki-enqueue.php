@@ -28,34 +28,66 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 		public function customize_controls_enqueue_scripts() {
 
-			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls' ) );
-			wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-tooltip' );
-			wp_enqueue_script( 'jquery-stepper-min-js' );
-			wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
+			// enqueue the tooltips script
+			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
+
+			// enqueue the reset script
+			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-value' ) );
+
+			// register kirki-functions
+			wp_register_script( 'kirki-array-to-object', trailingslashit( Kirki::$url ) . 'assets/js/functions/array-to-object.js' );
+			wp_register_script( 'kirki-object-to-array', trailingslashit( Kirki::$url ) . 'assets/js/functions/object-to-array.js' );
+			wp_register_script( 'kirki-set-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-value.js' );
+			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
+
+			// Register serialize.js
+			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
+
+			// Register the color-alpha picker
+			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
 			wp_enqueue_style( 'wp-color-picker' );
 
-			$suffix = ( ! Kirki_Toolkit::is_debug() ) ? '.min' : '';
+			// Register the jquery-ui-spinner
+			wp_register_script( 'jquery-ui-spinner', trailingslashit( Kirki::$url ) . 'assets/js/vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
 
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-sortable' );
-			wp_enqueue_script( 'jquery-ui-button' );
+			// register codemirror
+			wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
 
-			$deps = array(
-				'jquery',
-				'customize-base',
-				'jquery-ui-core',
-				'jquery-ui-button',
-				'jquery-ui-sortable',
-				'codemirror',
-				'jquery-ui-spinner',
-				'selectize',
+			// register selectize
+			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
+
+			// an array of control scripts and their dependencies
+			$controls_scripts = array(
+				'checkbox'        => array( 'jquery' ),
+				'code'            => array( 'jquery', 'codemirror' ),
+				'color-alpha'     => array( 'jquery', 'wp-color-picker-alpha' ),
+				'color-palette'   => array( 'jquery', 'jquery-ui-button' ),
+				'dashicons'       => array( 'jquery' ),
+				'date'            => array( 'jquery', 'jquery-ui', 'jquery-ui-datepicker' ),
+				'dimension'       => array( 'jquery', 'kirki-validate-css-value' ),
+				'dropdown-pages'  => array( 'jquery', 'selectize' ),
+				'editor'          => array( 'jquery' ),
+				'generic'         => array( 'jquery' ),
+				'multicheck'      => array( 'jquery' ),
+				'multicolor'      => array( 'jquery', 'wp-color-picker-alpha' ),
+				'number'          => array( 'jquery', 'jquery-ui-spinner' ),
+				'palette'         => array( 'jquery', 'jquery-ui-button' ),
+				'preset'          => array( 'jquery', 'selectize', 'kirki-set-value' ),
+				'radio-buttonset' => array( 'jquery' ),
+				'radio-image'     => array( 'jquery' ),
+				'radio'           => array( 'jquery' ),
+				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ),
+				'select'          => array( 'jquery', 'selectize', 'kirki-array-to-object' ),
+				'slider'          => array( 'jquery' ),
+				'sortable'        => array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
+				'spacing'         => array( 'jquery' ),
+				'switch'          => array( 'jquery' ),
+				'toggle'          => array( 'jquery' ),
+				'typography'      => array( 'jquery', 'selectize', 'wp-color-picker-alpha' ),
 			);
-
-			wp_enqueue_script( 'kirki-customizer-js', trailingslashit( Kirki::$url ) . 'assets/js/customizer' . $suffix . '.js', $deps );
+			foreach ( $controls_scripts as $id => $dependencies ) {
+				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false );
+			}
 
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
 			$standard_fonts = Kirki_Fonts::get_standard_fonts();
@@ -118,7 +150,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				);
 			}
 			$final = array_merge( $standard_fonts_final, $google_fonts_final );
-			wp_localize_script( 'kirki-customizer-js', 'kirkiAllFonts', $final );
+			wp_localize_script( 'kirki-typography', 'kirkiAllFonts', $final );
 		}
 		public function branding() {
 

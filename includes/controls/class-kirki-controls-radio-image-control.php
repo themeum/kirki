@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 		public $type = 'radio-image';
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-radio-image', 'controls/radio-image', array( 'jquery', 'jquery-ui-button' ) );
+			wp_enqueue_script( 'kirki-radio-image' );
 		}
 
 		protected function content_template() { ?>

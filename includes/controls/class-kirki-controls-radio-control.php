@@ -19,6 +19,10 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Control' ) ) {
 
 		public $type = 'kirki-radio';
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-radio' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( ! data.choices ) { return; } #>
 

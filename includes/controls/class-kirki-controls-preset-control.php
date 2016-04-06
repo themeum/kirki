@@ -22,8 +22,7 @@ if ( ! class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 		public $multiple = 1;
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-preset', 'controls/select', array( 'jquery', 'selectize' ) );
+			wp_enqueue_script( 'kirki-preset' );
 		}
 
 		protected function content_template() { ?>

@@ -23,8 +23,7 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 		public $type = 'number';
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'jquery-ui-spinner', 'vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-number', 'controls/number', array( 'jquery', 'formstone', 'formstone-number' ) );
+			wp_enqueue_script( 'kirki-number' );
 		}
 
 		protected function content_template() { ?>

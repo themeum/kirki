@@ -38,7 +38,26 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 			if ( ! empty( $this->sanitize_callback ) ) {
 				return;
 			}
-			$this->sanitize_callback = 'esc_attr';
+			$this->sanitize_callback = array( $this, 'sanitize' );
+
+		}
+
+		/**
+		 * Sanitizes select control values
+		 *
+		 * @since 2.2.8
+		 * @access public
+		 * @return string|array
+		 */
+		public function sanitize( $value ) {
+
+			if ( is_array( $value ) ) {
+				foreach ( $value as $key => $subvalue ) {
+					$value[ $key ] = esc_attr( $subvalue );
+				}
+				return $value;
+			}
+			return esc_attr( $value );
 
 		}
 

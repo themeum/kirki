@@ -22,7 +22,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		public $fields = array();
 
-		//will store a filtered version of value for advenced fields (like images..)
+		// will store a filtered version of value for advenced fields (like images..)
 		protected $filtered_value = array();
 
 		public function __construct( $manager, $id, $args = array() ) {
@@ -136,10 +136,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-repeater', 'controls/repeater', array( 'jquery', 'customize-base' ), true );
-
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'kirki-preset' );
 		}
 
 		public function render_content() { ?>
