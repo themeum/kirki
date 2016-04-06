@@ -37,6 +37,16 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 2.2.8 ###
+
+April 6, 2016, dev time: 5 hours.
+
+* FIX: Enqueued assets missing when useg WP_DEBUG & WP_DEBUG_SCRIPT
+* FIX: Checkboxes were not properly displaying their values
+* FIX: Javascript errors when `number` controls were used without `min`, `max` or `step`.
+* FIX: Multiselect controls issue with the `sanitize_callback` used.
+* NEW: Make attributes in `cropped_image` sub-controls inside repeaters dynamic (props @guillaumemolter).
+
 ### 2.2.7 ###
 
 April 5, 2016, dev time: 23 hours.
