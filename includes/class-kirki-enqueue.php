@@ -65,7 +65,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'dashicons'       => array( 'jquery' ),
 				'date'            => array( 'jquery', 'jquery-ui', 'jquery-ui-datepicker' ),
 				'dimension'       => array( 'jquery', 'kirki-validate-css-value' ),
-				'dropdown-pages'  => array( 'jquery' ),
+				'dropdown-pages'  => array( 'jquery', 'selectize' ),
 				'editor'          => array( 'jquery' ),
 				'generic'         => array( 'jquery' ),
 				'multicheck'      => array( 'jquery' ),
