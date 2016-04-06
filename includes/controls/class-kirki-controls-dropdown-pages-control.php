@@ -36,11 +36,13 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
 
-				<?php $dropdown = wp_dropdown_pages(
+				<?php
+				$l10n = Kirki_l10n::get_strings();
+				$dropdown = wp_dropdown_pages(
 					array(
 						'name'              => '_customize-dropdown-pages-' . $this->id,
 						'echo'              => 0,
-						'show_option_none'  => __( '&mdash; Select &mdash;' ),
+						'show_option_none'  => $l10n['select-page'],
 						'option_none_value' => '0',
 						'selected'          => $this->value(),
 					)
