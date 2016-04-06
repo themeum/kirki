@@ -44,7 +44,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			}
 		}
 
-		public function render_content() {}
+		protected function render_content() {}
 
 	}
 
