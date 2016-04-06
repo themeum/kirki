@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public $type = 'typography';
 
 		public function enqueue() {
-			wp_enqueue_script( 'kirki-select' );
+			wp_enqueue_script( 'kirki-typography' );
 		}
 
 		public function to_json() {

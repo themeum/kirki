@@ -54,7 +54,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
 
 			// register selectize
-			wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
+			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
 			// an array of control scripts and their dependencies
 			$controls_scripts = array(
@@ -72,18 +72,18 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'multicolor'      => array( 'jquery', 'wp-color-picker-alpha' ),
 				'number'          => array( 'jquery', 'jquery-ui-spinner' ),
 				'palette'         => array( 'jquery', 'jquery-ui-button' ),
-				'preset'          => array( 'jquery', 'selectize' ),
+				'preset'          => array( 'jquery', 'selectize', 'kirki-set-value' ),
 				'radio-buttonset' => array( 'jquery' ),
 				'radio-image'     => array( 'jquery' ),
 				'radio'           => array( 'jquery' ),
 				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ),
-				'select'          => array( 'jquery', 'selectize' ),
+				'select'          => array( 'jquery', 'selectize', 'kirki-array-to-object' ),
 				'slider'          => array( 'jquery' ),
 				'sortable'        => array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
 				'spacing'         => array( 'jquery' ),
 				'switch'          => array( 'jquery' ),
 				'toggle'          => array( 'jquery' ),
-				'typography'      => array( 'jquery', 'selectize' ),
+				'typography'      => array( 'jquery', 'selectize', 'wp-color-picker-alpha' ),
 			);
 			foreach ( $controls_scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false );
