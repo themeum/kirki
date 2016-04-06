@@ -30,17 +30,17 @@ module.exports = function(grunt) {
 		// 	},
 		// },
 		// Minify JS
-		uglify: {
-			options: {
-				compress: {},
-				mangle: true,
-				sourceMap: true
-			},
-			target: {
-				src: 'assets/js/customizer.js',
-				dest: 'assets/js/customizer.min.js'
-			}
-		},
+		// uglify: {
+		// 	options: {
+		// 		compress: {},
+		// 		mangle: true,
+		// 		sourceMap: true
+		// 	},
+		// 	target: {
+		// 		src: 'assets/js/customizer.js',
+		// 		dest: 'assets/js/customizer.min.js'
+		// 	}
+		// },
 		// Minify CSS
 		cssmin: {
 			options: {
@@ -91,10 +91,10 @@ module.exports = function(grunt) {
 				files: 'assets/**/*.scss',
 				tasks: ['sass', 'cssmin'],
 			},
-			scripts: {
-				files: 'assets/**/*.js',
-				tasks: ['concat', 'uglify'],
-			},
+			// scripts: {
+			// 	files: 'assets/**/*.js',
+			// 	tasks: ['concat', 'uglify'],
+			// },
 			readme: {
 				files: 'readme.txt',
 				tasks: ['wp_readme_to_markdown'],
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-json2php');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'makepot', 'wp_readme_to_markdown']);
+	grunt.registerTask('default', ['sass', 'cssmin', 'makepot', 'wp_readme_to_markdown']);
 	grunt.registerTask('googlefonts', ['curl:google-fonts-source', 'json2php', 'clean']);
 
 };
