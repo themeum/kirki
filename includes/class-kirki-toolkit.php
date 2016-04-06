@@ -39,16 +39,6 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			return self::$instance;
 		}
 
-		/**
-		 * Return true if we are debugging Kirki
-		 *
-		 * @access public
-		 * @return bool
-		 */
-		public static function is_debug() {
-			return (bool) ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) );
-		}
-
 	}
 
 }
