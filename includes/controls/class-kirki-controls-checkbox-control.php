@@ -20,18 +20,8 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 
 		public $type = 'kirki-checkbox';
 
-		public function to_json() {
-			parent::to_json();
-
-			$this->json['default'] = $this->setting->default;
-			if ( property_exists( $this, 'default' ) ) {
-				$this->json['default'] = $this->default;
-			}
-			$this->json['value'] = $this->value();
-			if ( null === $this->json['value'] ) {
-				$this->json['value'] = $this->json['default'];
-			}
-
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-checkbox' );
 		}
 
 		protected function content_template() { ?>
@@ -39,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
-				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}} <?php $this->link(); checked( $this->value() ); ?> />
+ 				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
 				{{ data.label }}
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>

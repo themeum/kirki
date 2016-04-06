@@ -29,6 +29,10 @@ if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 			$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
 		}
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-slider' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>

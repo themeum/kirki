@@ -38,9 +38,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 		}
 
 		public function enqueue() {
-			wp_enqueue_script( 'jquery-ui-core' );
-			wp_enqueue_script( 'jquery-ui-sortable' );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-sortable', 'controls/sortable', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+			wp_enqueue_script( 'kirki-sortable' );
 		}
 
 		public function to_json() {

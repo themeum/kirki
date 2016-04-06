@@ -8,15 +8,11 @@ notifications:
 
 php:
   - 7.0
-  - hhvm
 
 env:
   - WP_VERSION=latest WP_MULTISITE=0
 
 matrix:
-  # include:
-  #   - php: 5.6
-  #     env: WP_VERSION=latest WP_MULTISITE=1
   exclude:
     - php: hhvm
       env: WP_VERSION=latest WP_MULTISITE=1

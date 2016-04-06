@@ -29,6 +29,10 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 			$this->json['choices']['round'] = ( isset( $this->choices['round'] ) ) ? $this->choices['round'] : false;
 		}
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-switch' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>

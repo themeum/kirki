@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.7  
+**Stable tag:** 2.2.8  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,16 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.2.8 ###
+
+April 6, 2016, dev time: 5 hours.
+
+* FIX: Enqueued assets missing when useg WP_DEBUG & WP_DEBUG_SCRIPT
+* FIX: Checkboxes were not properly displaying their values
+* FIX: Javascript errors when `number` controls were used without `min`, `max` or `step`.
+* FIX: Multiselect controls issue with the `sanitize_callback` used.
+* NEW: Make attributes in `cropped_image` sub-controls inside repeaters dynamic (props @guillaumemolter).
 
 ### 2.2.7 ###
 

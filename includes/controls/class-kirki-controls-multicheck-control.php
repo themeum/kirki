@@ -18,9 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
+
 	class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
 
 		public $type = 'multicheck';
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-multicheck' );
+		}
 
 		protected function content_template() { ?>
 
@@ -49,5 +54,7 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 				<# } #>
 			</ul>
 		<?php }
+
 	}
+
 }
