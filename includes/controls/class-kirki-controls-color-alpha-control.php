@@ -30,6 +30,10 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 			$this->choices['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		}
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-color-alpha' );
+		}
+
 		protected function render() {
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 			$class = 'customize-control customize-control-' . $this->type; ?>

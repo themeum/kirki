@@ -21,6 +21,10 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 
 		public $type = 'editor';
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-editor' );
+		}
+
 		public function render_content() { ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>

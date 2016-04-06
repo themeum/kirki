@@ -85,7 +85,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 		final private function set_control_types() {
 
 			$this->control_types = apply_filters( 'kirki/control_types', array(
-				'checkbox'         => 'Kirki_Controls_Checkbox_Control',
+				'kirki-checkbox'   => 'Kirki_Controls_Checkbox_Control',
 				'code'             => 'Kirki_Controls_Code_Control',
 				'color-alpha'      => 'Kirki_Controls_Color_Alpha_Control',
 				'color-palette'    => 'Kirki_Controls_Color_Palette_Control',
@@ -114,6 +114,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'image'            => 'WP_Customize_Image_Control',
 				'cropped_image'    => 'WP_Customize_Cropped_Image_Control',
 				'upload'           => 'WP_Customize_Upload_Control',
+				'dropdown-pages'   => 'Kirki_Controls_Dropdown_Pages_Control'
 			) );
 
 			// Make sure the defined classes actually exist

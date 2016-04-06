@@ -29,6 +29,10 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 			$this->json['palette']  = $this->palette;
 		}
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-multicolor' );
+		}
+
 		protected function render() {
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
 			$class = 'customize-control customize-control-' . $this->type; ?>

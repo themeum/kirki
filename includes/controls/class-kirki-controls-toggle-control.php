@@ -19,6 +19,10 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 
 		public $type = 'toggle';
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-toggle' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
