@@ -119,15 +119,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				'placeholder' => $i18n['no-image-selected'],
 			);
 
-			foreach ( $fields as $key => $field ) {
-				if ( 'image' != $field['type'] && 'cropped_image' != $field['type'] ) {
-					continue;
-				}
-
-				$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
-			}
-
 			$this->json['fields'] = $fields;
+			$this->json['buttonLabels'] = $default_image_button_labels;
 
 			// if filtered_value has been set and is not empty we use it instead of the actual value
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
@@ -170,15 +163,15 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		public function repeater_js_template() {
 			?>
 			<script type="text/html" class="customize-control-repeater-content">
-				<# var field; var index = data['index']; #>
+				<# var field; var index = data['index']; console.log(data); #>
 
 
 				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
 					<div class="repeater-row-header">
 						<span class="repeater-row-number"></span>
-						<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
 						<span class="repeater-row-minimize"><i class="dashicons dashicons-arrow-up repeater-minimize"></i></span>
+						<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
 					</div>
 
 					<# for ( i in data ) { #>
@@ -288,7 +281,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<# } #>
 								</label>
 
-								<figure class="kirki-image-attachment" data-placeholder="{{ field.buttonLabels.placeholder }}" >
+								<figure class="kirki-image-attachment" data-placeholder="{{ data.buttonLabels.placeholder }}" >
 									<# if ( field.default ) { #>
 										<# if ( field.default.url ) { #>
 											<img src="{{{ field.default.url }}}">
@@ -296,17 +289,17 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 											<img src="{{{ field.default }}}">
 										<# } #>
 									<# } else { #>
-										{{ field.buttonLabels.placeholder }}
+										{{ data.buttonLabels.placeholder }}
 									<# } #>
 								</figure>
 
 								<div class="actions">
-									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ field.buttonLabels.remove }}</button>
-									<button type="button" class="button upload-button" data-label="{{{ field.buttonLabels.default }}}" data-alt-label="{{{ field.buttonLabels.change }}}" >
+									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ data.buttonLabels.remove }}</button>
+									<button type="button" class="button upload-button" data-label="{{{ data.buttonLabels.default }}}" data-alt-label="{{{ data.buttonLabels.change }}}" >
 										<# if ( field.default ) { #>
-											{{ field.buttonLabels.change }}
+											{{ data.buttonLabels.change }}
 										<# } else { #>
-											{{ field.buttonLabels.default }}
+											{{ data.buttonLabels.default }}
 										<# } #>
 									</button>
 									<# if ( field.default.id ) { #>
