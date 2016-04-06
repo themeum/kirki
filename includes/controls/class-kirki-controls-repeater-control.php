@@ -171,7 +171,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					<div class="repeater-row-header">
 						<span class="repeater-row-number"></span>
 						<span class="repeater-row-minimize"><i class="dashicons dashicons-arrow-up repeater-minimize"></i></span>
-						<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
 					</div>
 
 					<# for ( i in data ) { #>
@@ -313,6 +312,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 						</div>
 					<# } #>
+					<div class="repeater-row-footer">
+							<button type="button" class="button-link repeater-row-remove">{{ data.buttonLabels.remove }}</button>
+					</div>
 				</li>
 			</script>
 			<?php

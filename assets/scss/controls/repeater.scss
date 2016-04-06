@@ -94,7 +94,6 @@
 	    text-align: center;
 	}
 
-	.repeater-row-remove,
 	.repeater-row-minimize {
 	    display: inline-block;
 	    float: right;
@@ -109,7 +108,14 @@
 		}
 	}
 
-	.repeater-remove,
+	.repeater-row-remove {
+		color:#a00;
+	}
+
+	.repeater-row-remove:hover {
+		color:#f00;
+	}
+
 	.repeater-minimize {
 	    line-height: 36px;
 	}

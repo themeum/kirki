@@ -957,7 +957,6 @@ span.CodeMirror-selectedtext {
   display: inline-block;
   width: 35px;
   text-align: center; }
-.customize-control-repeater .repeater-row-remove,
 .customize-control-repeater .repeater-row-minimize {
   display: inline-block;
   float: right;
@@ -965,11 +964,13 @@ span.CodeMirror-selectedtext {
   width: 35px;
   height: 36px;
   text-align: center; }
-  .customize-control-repeater .repeater-row-remove:hover,
   .customize-control-repeater .repeater-row-minimize:hover {
     background: #ddd;
     cursor: pointer; }
-.customize-control-repeater .repeater-remove,
+.customize-control-repeater .repeater-row-remove {
+  color: #a00; }
+.customize-control-repeater .repeater-row-remove:hover {
+  color: #f00; }
 .customize-control-repeater .repeater-minimize {
   line-height: 36px; }
 .customize-control-repeater .repeater-row.minimized {
