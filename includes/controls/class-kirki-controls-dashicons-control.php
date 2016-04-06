@@ -25,6 +25,10 @@ if ( ! class_exists( 'Kirki_Controls_Dashicons_Control' ) ) {
 			$this->json['icons'] = Kirki_Helper::get_dashicons();
 		}
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-dashicons' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>

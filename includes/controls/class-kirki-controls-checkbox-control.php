@@ -20,6 +20,10 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 
 		public $type = 'kirki-checkbox';
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-checkbox' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>

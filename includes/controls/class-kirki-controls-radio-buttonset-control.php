@@ -19,6 +19,10 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Buttonset_Control' ) ) {
 
 		public $type = 'radio-buttonset';
 
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-radio-buttonset' );
+		}
+
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
