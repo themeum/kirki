@@ -136,7 +136,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		}
 
 		public function enqueue() {
-			wp_enqueue_script( 'kirki-preset' );
+			wp_enqueue_script( 'kirki-repeater' );
 		}
 
 		public function render_content() { ?>
