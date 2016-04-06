@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Controls_Date_Control' ) ) {
 		public $type = 'kirki-date';
 
 		public function enqueue() {
-			wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery', 'jquery-ui' ) );
+			wp_enqueue_script( 'kirki-dashicons' );
 		}
 
 		protected function content_template() { ?>

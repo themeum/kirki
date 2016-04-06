@@ -16,19 +16,19 @@ module.exports = function(grunt) {
 			}
 		},
 		// Combine JS files
-		concat: {
-			options: {
-				separator: '',
-			},
-			dist: {
-				src: [
-					'assets/js/functions/*.js',
-					'assets/js/controls/*.js',
-					'assets/js/reset.js'
-				],
-				dest: 'assets/js/customizer.js',
-			},
-		},
+		// concat: {
+		// 	options: {
+		// 		separator: '',
+		// 	},
+		// 	dist: {
+		// 		src: [
+		// 			'assets/js/functions/*.js',
+		// 			'assets/js/controls/*.js',
+		// 			'assets/js/reset.js'
+		// 		],
+		// 		dest: 'assets/js/customizer.js',
+		// 	},
+		// },
 		// Minify JS
 		uglify: {
 			options: {

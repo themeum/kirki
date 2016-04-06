@@ -28,8 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 		}
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-select', 'controls/select', array( 'jquery', 'selectize' ) );
+			wp_enqueue_script( 'kirki-select' );
 		}
 
 		protected function content_template() { ?>
