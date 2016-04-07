@@ -5,15 +5,14 @@ function RepeaterRow( rowIndex, element ) {
 	this.rowIndex   = rowIndex;
 	this.rowNumber  = rowIndex + 1;
 	this.$el        = element;
-	this.$dragger   = this.$el.find( '.repeater-row-header' );
-	this.$minimizer = this.$el.find( '.repeater-row-minimize' );
+	this.$header    = this.$el.find( '.repeater-row-header' );
 	this.$remover   = this.$el.find( '.repeater-row-remove' );
-	this.$number    = this.$el.find( '.repeater-row-number' );
+	this.$label     = this.$el.find( '.repeater-row-label' );
 	this.$fields    = this.$el.find( 'input,select,textarea' );
 
 	var self = this;
 
-	this.$minimizer.on( 'click', function() {
+	this.$header.on( 'click', function() {
 		self.toggleMinimize();
 	});
 
@@ -21,7 +20,7 @@ function RepeaterRow( rowIndex, element ) {
 		self.remove();
 	});
 
-	this.$dragger.on( 'mousedown', function() {
+	this.$header.on( 'mousedown', function() {
 		self.$el.trigger( 'row:start-dragging' );
 	});
 
@@ -60,14 +59,7 @@ RepeaterRow.prototype.setRowIndex = function( rowIndex ) {
 RepeaterRow.prototype.toggleMinimize = function() {
 	// Store the previous state
 	this.$el.toggleClass( 'minimized' );
-	this.$minimizer.find( '.repeater-minimize' ).toggleClass( 'dashicons-arrow-up' );
-	this.$minimizer.find( '.repeater-minimize').toggleClass( 'dashicons-arrow-down' );
-};
-
-RepeaterRow.prototype.minimize = function() {
-	this.$el.addClass( 'minimized' );
-	this.$minimizer.find( '.repeater-minimize' ).removeClass( 'dashicons-arrow-up' );
-	this.$minimizer.find( '.repeater-minimize').addClass( 'dashicons-arrow-down' );
+	this.$header.find( '.dashicons' ).toggleClass( 'dashicons-arrow-up' ).toggleClass( 'dashicons-arrow-down' );
 };
 
 RepeaterRow.prototype.remove = function() {
@@ -78,7 +70,7 @@ RepeaterRow.prototype.remove = function() {
 };
 
 RepeaterRow.prototype.renderNumber = function() {
-	this.$number.text( this.getRowNumber() );
+	this.$label.text( 'Row ' + this.getRowNumber() );
 };
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
@@ -112,8 +104,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.container.on( 'click', 'button.repeater-add', function( e ) {
 			e.preventDefault();
 			if ( ! limit || control.currentIndex < limit ) {
-				control.addRow();
-				jQuery( control.selector + ' .repeater-row' ).last().toggleClass( 'minimized' );
+				var theNewRow = control.addRow();
+				theNewRow.toggleMinimize();
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
@@ -515,15 +507,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				control.updateField.call( control, e, rowIndex, fieldName, element );
 			});
 
-			newRow.getElement().on( 'row:start-dragging', function() {
-				// Minimize all rows
-				for ( i in control.rows ) {
-					if ( control.rows.hasOwnProperty( i ) && control.rows[ i ] ) {
-						control.rows[ i ].minimize();
-					}
-				}
-			});
-
 			// Add the row to rows collection
 			this.rows[ this.currentIndex ] = newRow;
 
@@ -537,6 +520,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			this.setValue( settingValue, true );
 
 			this.currentIndex++;
+
+			return newRow;
 
 		}
 

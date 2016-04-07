@@ -901,19 +901,17 @@ span.CodeMirror-selectedtext {
     height: 100%; }
 
 .customize-control-repeater .repeater-fields .repeater-row {
-  padding: .5rem;
   border: 1px solid #999;
   margin-top: .5rem;
   background: #eee;
-  position: relative;
-  padding-top: 48px; }
+  position: relative; }
   .customize-control-repeater .repeater-fields .repeater-row.minimized {
     border: 1px solid #dfdfdf;
-    padding: 0;
-    height: 36px;
-    overflow: hidden; }
+    padding: 0; }
     .customize-control-repeater .repeater-fields .repeater-row.minimized:hover {
       border: 1px solid #999; }
+    .customize-control-repeater .repeater-fields .repeater-row.minimized .repeater-row-content {
+      display: none; }
   .customize-control-repeater .repeater-fields .repeater-row label {
     margin-bottom: 12px;
     clear: both; }
@@ -930,12 +928,20 @@ span.CodeMirror-selectedtext {
     padding-bottom: 0; }
 .customize-control-repeater button.repeater-add {
   margin-top: 1rem; }
+.customize-control-repeater .repeater-row-content {
+  padding: 10px 15px; }
 .customize-control-repeater .repeater-field {
   margin-bottom: 12px;
   width: 100%;
   clear: both;
   padding-bottom: 12px;
   border-bottom: 1px dotted #CCC; }
+  .customize-control-repeater .repeater-field .customize-control-title {
+    font-size: 13px;
+    line-height: initial; }
+  .customize-control-repeater .repeater-field .customize-control-description {
+    font-size: 13px;
+    line-height: initial; }
 .customize-control-repeater .repeater-field-select select {
   margin-left: 0; }
 .customize-control-repeater .repeater-field-checkbox label {
@@ -948,27 +954,27 @@ span.CodeMirror-selectedtext {
   resize: vertical; }
 .customize-control-repeater .repeater-row-header {
   background: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 36px;
-  color: #555;
-  border-bottom: 1px solid #999;
-  line-height: 36px;
-  font-size: 15px; }
+  border: 1px solid #dfdfdf;
+  position: relative;
+  padding: 10px 15px;
+  height: auto;
+  min-height: 20px;
+  line-height: 30px;
+  overflow: hidden;
+  word-wrap: break-word; }
   .customize-control-repeater .repeater-row-header:hover {
     cursor: move; }
-.customize-control-repeater .repeater-row-number {
-  display: inline-block;
-  width: 35px;
-  text-align: center; }
-.customize-control-repeater .repeater-row-minimize {
-  display: inline-block;
-  float: right;
-  width: 35px;
-  height: 36px;
-  text-align: center; }
+  .customize-control-repeater .repeater-row-header .dashicons {
+    font-size: 18px;
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    color: #a0a5aa; }
+.customize-control-repeater .repeater-row-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  display: block; }
 .customize-control-repeater .repeater-row-remove {
   color: #a00; }
   .customize-control-repeater .repeater-row-remove:hover {
@@ -981,7 +987,7 @@ span.CodeMirror-selectedtext {
 .kirki-image-attachment {
   margin: 0;
   text-align: center;
-  margin-bottom: 25px; }
+  margin-bottom: 10px; }
   .kirki-image-attachment img {
     display: inline-block; }
 

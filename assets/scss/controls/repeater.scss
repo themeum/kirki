@@ -4,19 +4,18 @@
 .customize-control-repeater {
 	.repeater-fields {
 		.repeater-row {
-			padding:.5rem;
 		    border:1px solid #999;
 		    margin-top:.5rem;
 		    background: #eee;
 		    position:relative;
-		    padding-top:48px;
 		    &.minimized{
 			    border:1px solid #dfdfdf;
 				padding: 0;
-			    height: 36px;
-			    overflow: hidden;
 			    &:hover{
 				    border:1px solid #999;
+			    }
+			    .repeater-row-content{
+				    display: none;
 			    }
 		    }
 
@@ -54,12 +53,27 @@
 	    margin-top:1rem;
 	}
 
+	.repeater-row-content{
+		padding: 10px 15px;
+	}
+
 	.repeater-field {
 	    margin-bottom:12px;
 	    width:100%;
 	    clear: both;
 	    padding-bottom: 12px;
 	    border-bottom: 1px dotted #CCC;
+
+	    .customize-control-title {
+		    font-size: 13px;
+		    line-height: initial;
+	    }
+
+	    .customize-control-description {
+		    font-size: 13px;
+		    line-height: initial;
+	    }
+
 	}
 
 	.repeater-field-select select {
@@ -80,32 +94,32 @@
 	}
 	.repeater-row-header {
 	    background: white;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    height: 36px;
-	    color: #555;
-	    border-bottom: 1px solid #999;
-	    line-height: 36px;
-	    font-size: 15px;
+	    border: 1px solid #dfdfdf;
+	    position: relative;
+	    padding: 10px 15px;
+	    height: auto;
+	    min-height: 20px;
+	    line-height: 30px;
+	    overflow: hidden;
+	    word-wrap: break-word;
 		&:hover {
 		  cursor:move;
 		}
+
+		.dashicons{
+			font-size: 18px;
+		    position: absolute;
+		    right: 12px;
+		    top: 2px;
+		    color: #a0a5aa;
+		}
 	}
 
-	.repeater-row-number {
-	    display: inline-block;
-	    width: 35px;
-	    text-align: center;
-	}
-
-	.repeater-row-minimize {
-	    display: inline-block;
-	    float: right;
-	    width: 35px;
-	    height:36px;
-	    text-align: center;
+	.repeater-row-label {
+	    font-size: 13px;
+	    font-weight: 600;
+	    line-height: 20px;
+	    display: block;
 	}
 
 	.repeater-row-remove {
@@ -127,7 +141,7 @@
 .kirki-image-attachment{
 	margin: 0;
 	text-align:center;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 	img{
 		display:inline-block;
 	}
