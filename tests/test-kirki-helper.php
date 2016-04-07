@@ -49,5 +49,8 @@ class Test_Kirki_Helper extends WP_UnitTestCase {
 		global $wp_filesystem;
 		Kirki_Helper::init_filesystem();
 		$this->assertTrue( ! is_null( $wp_filesystem ) );
+
+		$this->assertTrue( is_array( Kirki_Helper::get_posts( array() ) ) );
+		$this->assertTrue( is_array( Kirki_Helper::get_taxonomies() ) );
 	}
 }
