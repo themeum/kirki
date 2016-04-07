@@ -56,6 +56,7 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 
 /**
  * Class was deprecated in 2.2.7
+ *
  * @see https://github.com/aristath/kirki/commit/101805fd689fa8828920b789347f13efc378b4a7
  */
 if ( ! class_exists( 'Kirki_Colourlovers' ) ) {

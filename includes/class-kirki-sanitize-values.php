@@ -180,7 +180,5 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		public static function unfiltered( $value ) {
 			return $value;
 		}
-
 	}
-
 }

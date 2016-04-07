@@ -114,7 +114,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'image'            => 'WP_Customize_Image_Control',
 				'cropped_image'    => 'WP_Customize_Cropped_Image_Control',
 				'upload'           => 'WP_Customize_Upload_Control',
-				'dropdown-pages'   => 'Kirki_Controls_Dropdown_Pages_Control'
+				'dropdown-pages'   => 'Kirki_Controls_Dropdown_Pages_Control',
 			) );
 
 			// Make sure the defined classes actually exist
@@ -123,11 +123,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				if ( ! class_exists( $classname ) ) {
 					unset( $this->control_types[ $key ] );
 				}
-
 			}
-
 		}
-
 	}
-
 }

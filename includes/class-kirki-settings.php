@@ -117,11 +117,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 				if ( ! class_exists( $classname ) ) {
 					unset( $this->setting_types[ $key ] );
 				}
-
 			}
-
 		}
-
 	}
-
 }

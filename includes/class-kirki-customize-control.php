@@ -45,7 +45,5 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 		}
 
 		protected function render_content() {}
-
 	}
-
 }

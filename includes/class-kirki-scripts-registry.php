@@ -39,6 +39,5 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		public static function prepare( $script ) {
 			return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
 		}
-
 	}
 }

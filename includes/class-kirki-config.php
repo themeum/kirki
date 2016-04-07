@@ -71,8 +71,8 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @access private
 		 *
-		 * @param string    $id     @see Kirki_Config::get_instance()
-		 * @param array     $args   @see Kirki_Config::get_instance()
+		 * @param string $id     @see Kirki_Config::get_instance()
+		 * @param array  $args   @see Kirki_Config::get_instance()
 		 */
 		private function __construct( $id = 'global', $args = array() ) {
 
@@ -105,9 +105,9 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param string    $id     Config ID
-		 * @param array     $args   {
-		 *    Optional. Arguments to override config defaults.
+		 * @param string $id     Config ID
+		 * @param array  $args   {
+		 * Optional. Arguments to override config defaults.
 		 *
 		 *    @type string      $capability       @see https://codex.wordpress.org/Roles_and_Capabilities
 		 *    @type string      $option_type      theme_mod or option.
@@ -135,8 +135,6 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 
 		}
 
-
-
 		/**
 		 * Returns the $config_final property
 		 *
@@ -149,7 +147,5 @@ if ( ! class_exists( 'Kirki_Config' ) ) {
 			return $this->config_final;
 
 		}
-
 	}
-
 }

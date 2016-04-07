@@ -38,7 +38,5 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			}
 			return self::$instance;
 		}
-
 	}
-
 }

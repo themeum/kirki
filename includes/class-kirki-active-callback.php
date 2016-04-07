@@ -66,9 +66,7 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 						$current_setting->value(),
 						$requirement['operator']
 					);
-
 				}
-
 			}
 
 			return ( isset( $show ) && ( false === $show ) ) ? false : true;
@@ -76,8 +74,8 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 		}
 
 		/**
-		 * @param mixed $value1 the 1st value in the comparison
-		 * @param mixed $value2 the 2nd value in the comparison
+		 * @param mixed  $value1 the 1st value in the comparison
+		 * @param mixed  $value2 the 2nd value in the comparison
 		 * @param string $operator the operator we'll use for the comparison.
 		 * @return boolean whether the comparison has succeded (true) or failed (false).
 		 */
@@ -147,7 +145,5 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 
 			return true;
 		}
-
 	}
-
 }

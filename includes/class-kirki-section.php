@@ -43,7 +43,5 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 			}
 
 		}
-
 	}
-
 }

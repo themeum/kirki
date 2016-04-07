@@ -35,7 +35,6 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @var		string	the field_id (defined as 'settings' in the field arguments)
 		 *
 		 * @return 	mixed 	the saved value of the field.
-		 *
 		 */
 		public static function get_option( $config_id = '', $field_id = '' ) {
 			return Kirki_Values::get_value( $config_id, $field_id );
@@ -113,6 +112,5 @@ if ( ! class_exists( 'Kirki' ) ) {
 			}
 			new Kirki_Field( $config_id, $args );
 		}
-
 	}
 }

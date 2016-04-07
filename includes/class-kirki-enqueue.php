@@ -205,6 +205,5 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 			wp_localize_script( 'kirki_auto_postmessage', 'jsvars', $js_vars_fields );
 		}
-
 	}
 }
