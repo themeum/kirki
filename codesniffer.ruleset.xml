@@ -23,6 +23,11 @@
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.InlineComment.NotCapital" />
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="Generic.Commenting.DocComment.ShortNotCapital" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
