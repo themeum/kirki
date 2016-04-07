@@ -974,7 +974,11 @@ span.CodeMirror-selectedtext {
   font-size: 13px;
   font-weight: 600;
   line-height: 20px;
-  display: block; }
+  display: block;
+  text-transform: capitalize;
+  width: 90%;
+  overflow: hidden;
+  height: 18px; }
 .customize-control-repeater .repeater-row-remove {
   color: #a00; }
   .customize-control-repeater .repeater-row-remove:hover {

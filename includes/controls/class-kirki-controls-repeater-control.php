@@ -25,17 +25,42 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		// will store a filtered version of value for advenced fields (like images..)
 		protected $filtered_value = array();
 
+		public $row_label = array();
+
 		public function __construct( $manager, $id, $args = array() ) {
-			parent::__construct( $manager, $id, $args );
 
 			$l10n = Kirki_l10n::get_strings();
-			if ( empty( $this->button_label ) ) {
-				$this->button_label = $l10n['add-new-row'];
-			}
-			if ( isset( $this->choices['labels'] ) ) {
-				if ( isset( $this->choices['labels']['add-new-row'] ) ) {
-					$this->button_label = $this->choices['labels']['add-new-row'];
+
+			parent::__construct( $manager, $id, $args );
+
+			//set up defaults for row labels
+			$this->row_label = array(
+				'type' => 'text',
+				'value' => $l10n['row'],
+				'field' => false,
+			);
+			//validating args for row labels
+			if( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && !empty( $args['row_label'] ) ) {
+				//validating row label type
+				if( isset( $args['row_label']['type'] ) && ( $args['row_label']['type'] === 'text' || $args['row_label']['type'] === 'field' ) ) {
+					$this->row_label['type'] = $args['row_label']['type'];
 				}
+				//validating row label type
+				if( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
+					$this->row_label['value'] = esc_attr($args['row_label']['value']);
+				}
+				//validating row label field
+				if( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][esc_attr($args['row_label']['field'])] ) ) {
+					$this->row_label['field'] = esc_attr($args['row_label']['field']);
+				}
+				else{
+					//if from field is not set correctly, making sure standard is set as the type
+					$this->row_label['type'] = 'text';
+				}
+			}
+
+			if ( empty( $this->button_label ) ) {
+				$this->button_label = $l10n['add-new'].' '.$this->row_label['value'];
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
@@ -121,6 +146,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 			$this->json['fields'] = $fields;
 			$this->json['buttonLabels'] = $default_image_button_labels;
+			$this->json['row_label'] = $this->row_label;
 
 			// if filtered_value has been set and is not empty we use it instead of the actual value
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
@@ -163,7 +189,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		public function repeater_js_template() {
 			?>
 			<script type="text/html" class="customize-control-repeater-content">
-				<# var field; var index = data['index']; console.log(data); #>
+				<# var field; var index = data['index']; #>
 
 
 				<li class="repeater-row minimized" data-row="{{{ index }}}">

@@ -2,9 +2,10 @@
  * KIRKI CONTROL: REPEATER
  */
 
-var RepeaterRow = function ( rowIndex, container ) {
+var RepeaterRow = function ( rowIndex, container, label ) {
 	this.rowIndex   = rowIndex;
 	this.container  = container;
+	this.label  	= label;
 	this.header     = this.container.find( '.repeater-row-header' );
 
 	var self = this;
@@ -29,7 +30,7 @@ var RepeaterRow = function ( rowIndex, container ) {
 		this.rowIndex = rowIndex;
 		this.container.attr( 'data-row', rowIndex );
 		this.container.data( 'row', rowIndex );
-		this.renderNumber();
+		this.updateLabel();
 	};
 
 	this.toggleMinimize = function() {
@@ -45,11 +46,21 @@ var RepeaterRow = function ( rowIndex, container ) {
 		this.container.trigger( 'row:remove', [ this.rowIndex ] );
 	};
 
-	this.renderNumber = function() {
-		this.header.find( '.repeater-row-label' ).text( 'Row ' + (this.rowIndex+1) );
+	this.updateLabel = function() {
+		if( this.label.type === 'field') {
+			var rowLabelField = this.container.find( '.repeater-field [data-field="'+this.label.field+'"]' );
+			if( typeof rowLabelField.val === 'function' ) {
+				var rowLabel = rowLabelField.val();
+				if( rowLabel !== '' ) {
+					this.header.find( '.repeater-row-label' ).text( rowLabel );
+					return;
+				}
+			}
+		}
+		this.header.find( '.repeater-row-label' ).text( this.label.value + ' ' + (this.rowIndex+1) );
 	};
 
-	this.renderNumber();
+	this.updateLabel();
 }
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
@@ -475,7 +486,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			// Create a new row object and append the element
 			var newRow = new RepeaterRow(
 				control.currentIndex,
-				jQuery( template ).appendTo( control.repeaterFieldsContainer )
+				jQuery( template ).appendTo( control.repeaterFieldsContainer ),
+				control.params.row_label
 			);
 
 			newRow.container.on( 'row:remove', function( e, rowIndex ) {
@@ -484,6 +496,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			newRow.container.on( 'row:update', function( e, rowIndex, fieldName, element ) {
 				control.updateField.call( control, e, rowIndex, fieldName, element );
+				newRow.updateLabel();
 			});
 
 			// Add the row to rows collection
@@ -558,7 +571,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var i = 1;
 		for ( var prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
-				this.rows[ prop ].renderNumber();
+				this.rows[ prop ].updateLabel();
 				i++;
 			}
 		}
