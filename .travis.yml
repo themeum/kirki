@@ -11,15 +11,12 @@ php:
   - 5.6
 
 env:
-  - WP_VERSION=latest WP_MULTISITE=0
   - SNIFF=1
 
 matrix:
   exclude:
     - php: 7.0
       env: SNIFF=1
-    - php: 5.6
-      env: WP_VERSION=latest WP_MULTISITE=0
 
 before_install:
   - pip install --user codecov
@@ -27,7 +24,7 @@ before_install:
   - composer install --dev
 
 before_script:
-  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost latest
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
   - export PHPCS_DIR=/tmp/phpcs
