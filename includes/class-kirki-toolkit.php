@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -38,17 +38,5 @@ if ( ! class_exists( 'Kirki_Toolkit' ) ) {
 			}
 			return self::$instance;
 		}
-
-		/**
-		 * Return true if we are debugging Kirki
-		 *
-		 * @access public
-		 * @return bool
-		 */
-		public static function is_debug() {
-			return (bool) ( ( defined( 'KIRKI_DEBUG' ) && KIRKI_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) );
-		}
-
 	}
-
 }

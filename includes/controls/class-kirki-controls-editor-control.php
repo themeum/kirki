@@ -7,7 +7,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -20,6 +20,10 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 	class Kirki_Controls_Editor_Control extends Kirki_Customize_Control {
 
 		public $type = 'editor';
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-editor' );
+		}
 
 		public function render_content() { ?>
 			<?php if ( '' != $this->tooltip ) : ?>

@@ -51,7 +51,5 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 			}
 
 		}
-
 	}
-
 }

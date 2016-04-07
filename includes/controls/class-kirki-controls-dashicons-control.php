@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.2.4
  */
 
@@ -23,6 +23,10 @@ if ( ! class_exists( 'Kirki_Controls_Dashicons_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 			$this->json['icons'] = Kirki_Helper::get_dashicons();
+		}
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-dashicons' );
 		}
 
 		protected function content_template() { ?>

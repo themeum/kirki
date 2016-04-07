@@ -8,7 +8,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -37,35 +37,31 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		}
 
 		public function enqueue() {
-			/**
-			 * Get the language
-			 */
+
+			wp_enqueue_script( 'kirki-code' );
+
+			// Get the language
 			$lang_file = '/assets/js/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js';
 			$language  = 'css';
 			if ( file_exists( Kirki::$path . $lang_file ) || ! file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $lang_file ) ) ) {
 				$language = $this->choices['language'];
 			}
+
 			// hack for 'html' mode.
 			if ( 'html' == $language ) {
 				$language = 'htmlmixed';
 			}
-			/**
-			 * Get the theme
-			 */
+
+			// Get the theme
 			$theme_file = '/assets/js/vendor/codemirror/theme/' . $this->choices['theme'] . '.css';
 			$theme      = 'monokai';
 			if ( file_exists( Kirki::$path . $theme_file ) || file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $theme_file ) ) ) {
 				$theme = $this->choices['theme'];
 			}
-			/**
-			 * Enqueue dependencies
-			 */
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'codemirror', 'vendor/codemirror/lib/codemirror', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-code', 'controls/code', array( 'jquery', 'codemirror' ) );
-			/**
-			 * If we're using html mode, we'll also need to include the multiplex addon
-			 * as well as dependencies for XML, JS, CSS languages.
-			 */
+			wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'assets/js/controls/code.js', array( 'jquery', 'codemirror' ), false );
+
+			// If we're using html mode, we'll also need to include the multiplex addon
+			// as well as dependencies for XML, JS, CSS languages.
 			if ( in_array( $language, array( 'html', 'htmlmixed' ) ) ) {
 				wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
@@ -73,15 +69,13 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				wp_enqueue_script( 'codemirror-language-css', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/css/css.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
 			} else {
-				/**
-				 * Add language script
-				 */
+				// Add language script
 				wp_enqueue_script( 'codemirror-language-' . $language, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $language . '/' . $language . '.js', array( 'jquery', 'codemirror' ) );
 			}
-			/**
-			 * Add theme styles
-			 */
+
+			// Add theme styles
 			wp_enqueue_style( 'codemirror-theme-' . $theme, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/theme/' . $theme . '.css' );
+
 		}
 
 		protected function content_template() { ?>

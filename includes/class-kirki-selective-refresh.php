@@ -1,23 +1,5 @@
 <?php
 
-/**
- * Field "partial_refresh" argument format:
-
-	'transport'       => 'postMessage',
-	'partial_refresh' => array(
-		'header_site_title' => array(
-			'selector'        => '.site-title a',
-			'render_callback' => function() {
-				return get_bloginfo( 'name', 'display' );
-			},
-		),
-		'document_title' => array(
-			'selector'        => 'head > title',
-			'render_callback' => 'wp_get_document_title',
-		),
-	),
- *
- */
 class Kirki_Selective_Refresh {
 
 	public function __construct() {

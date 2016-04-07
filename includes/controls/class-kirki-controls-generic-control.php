@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.0
  */
 
@@ -18,6 +18,10 @@ if ( ! class_exists( 'Kirki_Controls_Generic_Control' ) ) {
 	class Kirki_Controls_Generic_Control extends Kirki_Customize_Control {
 
 		public $type = 'kirki-generic';
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-generic' );
+		}
 
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>

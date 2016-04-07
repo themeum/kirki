@@ -105,12 +105,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				if ( ! in_array( $value['variant'], $this->fonts[ $value['font-family'] ] ) ) {
 					$this->fonts[ $value['font-family'] ][] = $value['variant'];
 				}
-			}
-
-			/**
-			 * Process non-typography fields
-			 */
-			else {
+			} else {
+				// Process non-typography fields
 				if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
 					foreach ( $args['output'] as $output ) {
 						// If we don't have a typography-related output argument we can skip this.
@@ -120,22 +116,17 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 						// Get the value
 						$value = Kirki_Values::get_sanitized_field_value( $args );
 
-						// font-family
-						if ( 'font-family' == $output['property'] ) {
+						if ( 'font-family' == $output['property'] ) { // font-family
 							if ( ! array_key_exists( $value, $this->fonts ) ) {
 								$this->fonts[ $value ] = array();
 							}
-						}
-						// font-weight
-						elseif ( 'font-weight' == $output['property'] ) {
+						} elseif ( 'font-weight' == $output['property'] ) { // font-weight
 							foreach ( $this->fonts as $font => $variants ) {
 								if ( ! in_array( $value, $variants ) ) {
 									$this->fonts[ $font ][] = $value;
 								}
 							}
-						}
-						// subsets
-						elseif ( 'font-subset' == $output['property'] || 'subset' == $output['property'] ) {
+						} elseif ( 'font-subset' == $output['property'] || 'subset' == $output['property'] ) { // subsets
 							if ( ! is_array( $value ) ) {
 								if ( ! in_array( $value, $this->subsets ) ) {
 									$this->subsets[] = $value;
@@ -222,7 +213,5 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			}
 
 		}
-
 	}
-
 }

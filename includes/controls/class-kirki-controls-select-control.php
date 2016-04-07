@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -28,8 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 		}
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-select', 'controls/select', array( 'jquery', 'selectize' ) );
+			wp_enqueue_script( 'kirki-select' );
 		}
 
 		protected function content_template() { ?>
@@ -51,7 +50,7 @@ if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 							<option value="{{ data.value[ key ] }}" selected>{{ data.choices[ data.value[ key ] ] }}</option>
 						<# } #>
 						<# for ( key in data.choices ) { #>
-							<# if ( undefined === data.value[ key ] || data.value[ key ] in data.value ) { #>
+							<# if ( data.value[ key ] in data.value ) { #>
 							<# } else { #>
 								<option value="{{ key }}">{{ data.choices[ key ] }}</option>
 							<# } #>

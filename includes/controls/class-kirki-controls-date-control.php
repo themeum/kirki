@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.0
  */
 
@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Controls_Date_Control' ) ) {
 		public $type = 'kirki-date';
 
 		public function enqueue() {
-			wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery', 'jquery-ui' ) );
+			wp_enqueue_script( 'kirki-dashicons' );
 		}
 
 		protected function content_template() { ?>

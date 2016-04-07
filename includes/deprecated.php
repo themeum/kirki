@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -56,6 +56,7 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 
 /**
  * Class was deprecated in 2.2.7
+ *
  * @see https://github.com/aristath/kirki/commit/101805fd689fa8828920b789347f13efc378b4a7
  */
 if ( ! class_exists( 'Kirki_Colourlovers' ) ) {

@@ -619,7 +619,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 						continue;
 					}
 					// If we got this far, it's safe to add this.
-
 					$js_vars[] = $output;
 				}
 
@@ -715,7 +714,5 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			$this->priority = absint( $this->priority );
 
 		}
-
 	}
-
 }

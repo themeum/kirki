@@ -167,6 +167,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'uppercase'             => esc_attr__( 'Uppercase', 'kirki' ),
 				'lowercase'             => esc_attr__( 'Lowercase', 'kirki' ),
 				'initial'               => esc_attr__( 'Initial', 'kirki' ),
+				'select-page'           => esc_attr__( 'Select a Page', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );
@@ -178,7 +179,5 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 			return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 
 		}
-
 	}
-
 }

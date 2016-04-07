@@ -9,7 +9,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -44,30 +44,6 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		public function customizer_styles() {
 			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null );
 			wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
-		}
-
-		/**
-		 * Helper that enqueues a script for a control.
-		 *
-		 * Every Kirki Control should use this function to enqueue
-		 * its main JS file (not dependencies like jQuery or jQuery UI).
-		 *
-		 * These files are only enqueued when debugging Kirki
-		 *
-		 * @param $handle      string
-		 * @param $file        string|null
-		 * @param $deps        array
-		 * @param $in_footer   bool
-		 */
-		public static function enqueue_customizer_control_script( $handle, $file = null, $deps = array(), $in_footer = false ) {
-			if ( ( false !== strpos( $file, 'controls/' ) && Kirki_Toolkit::is_debug() ) || false === strpos( $file, 'controls/' ) ) {
-				$file = trailingslashit( Kirki::$url ) . 'assets/js/' . $file . '.js';
-				foreach ( $deps as $dep ) {
-					wp_enqueue_script( $dep );
-				}
-				// We are debugging, no need of version or suffix
-				wp_enqueue_script( $handle, $file, $deps, '', $in_footer );
-			}
 		}
 
 		public function get_colors() {

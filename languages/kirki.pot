@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Kirki Toolkit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kirki Toolkit 2.2.6\n"
+"Project-Id-Version: Kirki Toolkit 2.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
-"POT-Creation-Date: 2016-03-31 19:02:30+00:00\n"
+"POT-Creation-Date: 2016-04-06 21:25:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -405,6 +405,10 @@ msgstr ""
 
 #: includes/class-kirki-l10n.php:169
 msgid "Initial"
+msgstr ""
+
+#: includes/class-kirki-l10n.php:170
+msgid "Select a Page"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

@@ -60,7 +60,6 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 						$value[ $property_key ] = get_theme_mod( $field_id . '_' . $property_key, $property_default );
 					}
 				}
-
 			} elseif ( 'option' == Kirki::$config[ $config_id ]['option_type'] ) {
 				/**
 				 * We're using options.
@@ -98,7 +97,6 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 						$value = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : Kirki::$fields[ $field_id ]['default'];
 						$value = maybe_unserialize( $value );
 					}
-
 				} else {
 					/**
 					 * Each option separately saved in the db
@@ -115,9 +113,7 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 							$value[ $property_key ] = get_option( $field_id . '_' . $property_key, $property_default );
 						}
 					}
-
 				}
-
 			}
 
 			return apply_filters( 'kirki/values/get_value', $value, $field_id );

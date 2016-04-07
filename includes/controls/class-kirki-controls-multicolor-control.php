@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -27,6 +27,10 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 			$this->json['palette']  = $this->palette;
+		}
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-multicolor' );
 		}
 
 		protected function render() {

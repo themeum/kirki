@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -22,8 +22,7 @@ if ( ! class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 		public $multiple = 1;
 
 		public function enqueue() {
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'selectize', 'vendor/selectize', array( 'jquery' ) );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-preset', 'controls/select', array( 'jquery', 'selectize' ) );
+			wp_enqueue_script( 'kirki-preset' );
 		}
 
 		protected function content_template() { ?>

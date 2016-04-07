@@ -72,7 +72,7 @@ RepeaterRow.prototype.minimize = function() {
 
 RepeaterRow.prototype.remove = function() {
 	// TODO: make this translatable
-	if ( confirm( "Are you sure?" ) ) {
+	if ( confirm( 'Are you sure?' ) ) {
 		this.$el.slideUp( 300, function() {
 			jQuery( this ).detach();
 		});
@@ -221,13 +221,24 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	 initCropperFrame : function() {
 
-		//hack to prevent errors from WordPress Core
-		//Core media library uses params.width and params.height to calculate some values
-		//and we get undefined notice on the ajax call when not defined
-		this.params.width       = this.params.fields.slide_image.width;
-		this.params.height      = this.params.fields.slide_image.height;
-		this.params.flex_width  = this.params.fields.slide_image.flex_width;
-		this.params.flex_height = this.params.fields.slide_image.flex_height;
+		// We get the field id from which this was called
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
+		// Make sure we got it
+		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
+			// Make fields is defined and only do the hack for cropped_image
+			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
+				// A list of attributes to look for
+				var attrs = [ 'width' , 'height' , 'flex_width' , 'flex_height' ];
+				//Iterate over the list of attributes
+				attrs.forEach( function( el , index ) {
+					// If the attribute exists in the field
+					if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ el ] ) {
+						// Set the attribute in the main object
+						this.params[ el ] = this.params.fields[ currentFieldId ][ el ];
+					}
+				}.bind(this));
+			}
+		}
 
 		this.frame = wp.media({
 			button: {
@@ -270,7 +281,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
-		if ( this.params.fields.slide_image.width === attachment.width && this.params.fields.slide_image.height === attachment.height && ! this.params.fields.slide_image.flex_width && ! this.params.fields.slide_image.flex_height ) {
+		if ( this.params.width === attachment.width && this.params.height === attachment.height && ! this.params.flex_width && ! this.params.flex_height ) {
 			this.setImageInReaperField( attachment );
 		} else {
 			this.frame.setState( 'cropper' );
@@ -396,12 +407,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} attachment
 	 */
 	setImageInReaperField: function( attachment ) {
-		var image_src = attachment.url;
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ image_src +'">' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ attachment.url +'">' ).hide().slideDown( 'slow' );
 
-		$targetDiv.find( '.hidden-field' ).val( image_src );
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
 		$targetDiv.find( '.remove-button' ).show();
 
@@ -616,7 +626,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		if ( 'checkbox' == type ) {
+		if ( 'checkbox' === type ) {
 			currentSettings[ row.getRowIndex() ][ fieldId ] = element.is( ':checked' );
 		} else {
 			// Update the settings

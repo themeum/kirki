@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -27,6 +27,10 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 			$this->json['choices']['on']    = ( isset( $this->choices['on'] ) ) ? $this->choices['on'] : $i18n['on'];
 			$this->json['choices']['off']   = ( isset( $this->choices['off'] ) ) ? $this->choices['off'] : $i18n['off'];
 			$this->json['choices']['round'] = ( isset( $this->choices['round'] ) ) ? $this->choices['round'] : false;
+		}
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-switch' );
 		}
 
 		protected function content_template() { ?>

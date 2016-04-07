@@ -8,7 +8,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -18,9 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
+
 	class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
 
 		public $type = 'multicheck';
+
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-multicheck' );
+		}
 
 		protected function content_template() { ?>
 
@@ -49,5 +54,7 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 				<# } #>
 			</ul>
 		<?php }
+
 	}
+
 }

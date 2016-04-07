@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.2.6
+Stable tag: 2.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,24 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 2.2.9 =
+
+* FIX: Repeater controls were not working on 2.2.8 due to a typo - props @guillaumemolter
+* NEW: Repeater fields now allow more control types (email/tel/url/hidden) - props @guillaumemolter
+
+= 2.2.8 =
+
+April 6, 2016, dev time: 5 hours.
+
+* FIX: Enqueued assets missing when useg WP_DEBUG & WP_DEBUG_SCRIPT
+* FIX: Checkboxes were not properly displaying their values
+* FIX: Javascript errors when `number` controls were used without `min`, `max` or `step`.
+* FIX: Multiselect controls issue with the `sanitize_callback` used.
+* NEW: Make attributes in `cropped_image` sub-controls inside repeaters dynamic (props @guillaumemolter).
+
 = 2.2.7 =
+
+April 5, 2016, dev time: 23 hours.
 
 * FIX: Properly parsing `postMessage` scripts when `transport` is set to `auto`.
 * FIX: Background image was outputing CSS even if it was empty.
@@ -45,13 +62,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * FIX: Issue with plugin URLs in the customizer, when the plugin was embedded in a theme.
 * FIX: Descriptions were now shown in `sortable` fields.
 * FIX: Reset not working for textarea fields.
+* FIX: In some cases only the first element in `output` arguments was being processed.
+* FIX: edge-case bugfix for select controls when data saved if the db was somehow mis-formatted.
+* FIX: Repeater controls now use image IDs instead of image URLs. Props @guillaumemolter
 * NEW: Added `text-align` ability in `typography` fields.
 * NEW: Added `text-transform` ability in `typography` fields.
 * NEW: Introduce `value_pattern` argument for `output` & `js_vars`.
 * NEW: Started refactoring the `Kirki_Field` class. Now each field can have its own sub-class extending the main Kirki_Field object.
+* NEW: `multicolor` control.
+* NEW: Added `cropped_image` support in `repeater`. Props @guillaumemolter
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Tooltips` to `Kirki_Scripts_Tooltips`.
 * TWEAK: Renamed `Kirki_Customizer_Scripts_Icons` to `Kirki_Scripts_Icons`.
+* TWEAK: More inline comments, docs & coding-standards improvements.
 * DEPRECATED: Removed the `Kirki_Colourlovers` class.
 
 = 2.2.6 =

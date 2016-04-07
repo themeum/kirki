@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -20,8 +20,7 @@ if ( ! class_exists( 'Kirki_Controls_Palette_Control' ) ) {
 		public $type = 'palette';
 
 		public function enqueue() {
-			wp_enqueue_script( 'jquery-ui-button' );
-			Kirki_Styles_Customizer::enqueue_customizer_control_script( 'kirki-palette', 'controls/palette', array( 'jquery', 'jquery-ui-button' ) );
+			wp_enqueue_script( 'kirki-palette' );
 		}
 
 		protected function content_template() { ?>
