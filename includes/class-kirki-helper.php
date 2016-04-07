@@ -10,27 +10,31 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Helper' ) ) {
+	/**
+	 * A simple object containing static methods.
+	 */
 	class Kirki_Helper {
 
 		/**
 		 * Recursive replace in arrays.
 		 *
-		 * @param $array    array
-		 * @param $array1   array
-		 *
+		 * @static
+		 * @access public
+		 * @param array $array The first array.
+		 * @param array $array1 The second array.
 		 * @return mixed
 		 */
 		public static function array_replace_recursive( $array, $array1 ) {
 			if ( function_exists( 'array_replace_recursive' ) ) {
 				return array_replace_recursive( $array, $array1 );
 			}
-			// handle the arguments, merge one by one
+			// Handle the arguments, merge one by one.
 			$args  = func_get_args();
 			$array = $args[0];
 			if ( ! is_array( $array ) ) {
@@ -46,16 +50,22 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		}
 
 		/**
+		 * Helper method to be used from the array_replace_recursive method.
+		 *
+		 * @static
+		 * @access public
+		 * @param array $array The first array.
+		 * @param array $array1 The second array.
 		 * @return array
 		 */
 		public static function recurse( $array, $array1 ) {
 			foreach ( $array1 as $key => $value ) {
-				// create new key in $array, if it is empty or not an array
+				// Create new key in $array, if it is empty or not an array.
 				if ( ! isset( $array[ $key ] ) || ( isset( $array[ $key ] ) && ! is_array( $array[ $key ] ) ) ) {
 					$array[ $key ] = array();
 				}
 
-				// overwrite the value in the base array
+				// Overwrite the value in the base array.
 				if ( is_array( $value ) ) {
 					$value = self::recurse( $array[ $key ], $value );
 				}
@@ -78,8 +88,8 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		/**
 		 * Returns the attachment object
 		 *
-		 * @var 	string		URL to the image
-		 * @return 	string		numeric ID of the attachement.
+		 * @param string $url URL to the image.
+		 * @return int|string Numeric ID of the attachement.
 		 */
 		public static function get_image_id( $url ) {
 			return url_to_postid( $url );
@@ -88,8 +98,8 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		/**
 		 * Returns an array of the attachment's properties.
 		 *
-		 * @var 	string		URL to the image
-		 * @return 	array		array()
+		 * @param string $url URL to the image.
+		 * @return array
 		 */
 		public static function get_image_from_url( $url ) {
 
@@ -106,14 +116,19 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 		}
 
 		/**
-		 * Helper function that gets posts and fomats them in a way so they can be used in select fields etc.
+		 * Get an array of posts.
+		 *
+		 * @static
+		 * @access public
+		 * @param array $args Define arguments for the get_posts function.
+		 * @return array
 		 */
 		public static function get_posts( $args ) {
 
-			// Get the posts
+			// Get the posts.
 			$posts = get_posts( $args );
 
-			// properly format the array.
+			// Properly format the array.
 			$items = array();
 			foreach ( $posts as $post ) {
 				$items[ $post->ID ] = $post->post_title;
@@ -123,13 +138,20 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 		}
 
+		/**
+		 * Get an array of publicly-querable taxonomies.
+		 *
+		 * @static
+		 * @access public
+		 * @return array
+		 */
 		public static function get_taxonomies() {
 
 			$items = array();
 
-			// Get the taxonomies
+			// Get the taxonomies.
 			$taxonomies = get_taxonomies( array( 'public' => true ) );
-			// Build the array
+			// Build the array.
 			foreach ( $taxonomies as $taxonomy ) {
 				$id           = $taxonomy;
 				$taxonomy     = get_taxonomy( $taxonomy );
@@ -140,13 +162,20 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 		}
 
+		/**
+		 * Get an array of publicly-querable post-types.
+		 *
+		 * @static
+		 * @access public
+		 * @return array
+		 */
 		public static function get_post_types() {
 
 			$items = array();
 
-			// Get the post types
+			// Get the post types.
 			$post_types = get_post_types( array( 'public' => true ), 'objects' );
-			// Build the array
+			// Build the array.
 			foreach ( $post_types as $post_type ) {
 				$items[ $post_type->name ] = $post_type->labels->name;
 			}
@@ -155,13 +184,21 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 		}
 
+		/**
+		 * Get an array of terms from a taxonomy
+		 *
+		 * @static
+		 * @access public
+		 * @param string|array $taxonomies See https://developer.wordpress.org/reference/functions/get_terms/ for details.
+		 * @return array
+		 */
 		public static function get_terms( $taxonomies ) {
 
 			$items = array();
 
-			// Get the post types
+			// Get the post types.
 			$terms = get_terms( $taxonomies );
-			// Build the array
+			// Build the array.
 			foreach ( $terms as $term ) {
 				$items[ $term->term_id ] = $term->name;
 			}
@@ -170,6 +207,14 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 		}
 
+		/**
+		 * Gets an array of material-design colors.
+		 *
+		 * @static
+		 * @access public
+		 * @param false|string $context Allows us to get subsets of the palette.
+		 * @return array
+		 */
 		public static function get_material_design_colors( $context = false ) {
 
 			$colors = array(
@@ -508,16 +553,16 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 				case 'A200':
 				case 'A400':
 				case 'A700':
-					if ( 'A100' == $context ) {
+					if ( 'A100' === $context ) {
 						$key = 10;
 						unset( $colors['grey'] );
-					} elseif ( 'A200' == $context ) {
+					} elseif ( 'A200' === $context ) {
 						$key = 11;
 						unset( $colors['grey'] );
-					} elseif ( 'A400' == $context ) {
+					} elseif ( 'A400' === $context ) {
 						$key = 12;
 						unset( $colors['grey'] );
-					} elseif ( 'A700' == $context ) {
+					} elseif ( 'A700' === $context ) {
 						$key = 13;
 						unset( $colors['grey'] );
 					} else {
@@ -550,6 +595,13 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			}
 		}
 
+		/**
+		 * Get an array of all available dashicons.
+		 *
+		 * @static
+		 * @access public
+		 * @return array
+		 */
 		public static function get_dashicons() {
 
 			$admin_menu = array(

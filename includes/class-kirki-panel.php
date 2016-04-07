@@ -1,11 +1,26 @@
 <?php
+/**
+ * Handles panels added via the Kirki API.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! class_exists( 'Kirki_Panel' ) ) {
-
+	/**
+	 * Each panel is a separate instance of the Kirki_Panel object.
+	 */
 	class Kirki_Panel {
 
 		/**
-		 * An array of our panel types
+		 * An array of our panel types.
+		 *
+		 * @access private
+		 * @var array
 		 */
 		private $panel_types = array(
 			'default'  => 'Kirki_Panels_Default_Panel',
@@ -13,9 +28,10 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		);
 
 		/**
-		 * The class constructor
+		 * The class constructor.
 		 *
-		 * @var $args    the panel arguments
+		 * @access public
+		 * @param array $args The panel arguments.
 		 */
 		public function __construct( $args ) {
 
@@ -25,9 +41,9 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		}
 
 		/**
-		 * Add the panel using the Customizer API
+		 * Add the panel using the Customizer API.
 		 *
-		 * @var $args    the panel arguments
+		 * @param array $args The panel arguments.
 		 */
 		public function add_panel( $args ) {
 			global $wp_customize;
@@ -38,9 +54,9 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 			$panel_classname = $this->panel_types[ $args['type'] ];
 
 			$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), array(
-				'title'           => $args['title'], // already escaped in WP Core
+				'title'           => $args['title'], // Already escaped in WP Core.
 				'priority'        => absint( $args['priority'] ),
-				'description'     => $args['description'], // already escaped in WP Core
+				'description'     => $args['description'], // Already escaped in WP Core.
 				'active_callback' => $args['active_callback'],
 			) ) );
 
@@ -49,7 +65,6 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 				$args['context'] = 'panel';
 				Kirki_Scripts_Icons::generate_script( $args );
 			}
-
 		}
 	}
 }
