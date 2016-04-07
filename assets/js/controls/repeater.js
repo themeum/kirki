@@ -71,13 +71,10 @@ RepeaterRow.prototype.minimize = function() {
 };
 
 RepeaterRow.prototype.remove = function() {
-	// TODO: make this translatable
-	if ( confirm( "Are you sure?" ) ) {
-		this.$el.slideUp( 300, function() {
-			jQuery( this ).detach();
-		});
-		this.$el.trigger( 'row:remove', [ this.getRowIndex() ] );
-	}
+	this.$el.slideUp( 300, function() {
+		jQuery( this ).detach();
+	});
+	this.$el.trigger( 'row:remove', [ this.getRowIndex() ] );
 };
 
 RepeaterRow.prototype.renderNumber = function() {
