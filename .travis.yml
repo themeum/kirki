@@ -6,16 +6,23 @@ notifications:
   on_success: never
   on_failure: change
 
-php:
-  - 7.0
-
-env:
-  - WP_VERSION=latest WP_MULTISITE=0
-
 matrix:
-  exclude:
-    - php: hhvm
-      env: WP_VERSION=latest WP_MULTISITE=1
+	fast_finish: true
+
+	include:
+		# Current $required_php_version for WordPress: 5.2.4
+		# aliased to 5.2.17
+		- php: '5.2'
+		# aliased to a recent 5.6.x version
+    - php: '5.6'
+      env: SNIFF=1
+    # aliased to a recent 7.x version
+    - php: '7.0'
+    # aliased to a recent hhvm version
+    - php: 'hhvm'
+
+  allow_failures:
+    - php: 'hhvm'
 
 defore_install:
   - pip install --user codecov
