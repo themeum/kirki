@@ -14,6 +14,8 @@
 
 					$.each( jsVars, function( i, jsVar ) {
 
+						var val = newval;
+
 						// Make sure element is defined.
 						if ( undefined === jsVars.i.element ) {
 							jsVars.i.element = '';
@@ -56,9 +58,7 @@
 
 								// Process the value pattern
 								if ( undefined !== jsVars.i.value_pattern ) {
-									var val = jsVars.i.value_pattern.replace( /\$/g, newval );
-								} else {
-									var val = newval;
+									val = jsVars.i.value_pattern.replace( /\$/g, newval );
 								}
 
 								// Inject HTML
@@ -68,12 +68,12 @@
 								// Add CSS
 								} else {
 
-									// if we have new value, replace style contents with custom css
-									if ( val !== '' ) {
+									// If we have new value, replace style contents with custom css
+									if ( '' !== val ) {
 										cssArray[ i ] = args.element + '{' + args.property + ':' + args.prefix + val + args.units + args.suffix + ';}';
 									}
 
-									// else let's clear it out
+									// Else let's clear it out
 									else {
 										cssArray[ i ] = '';
 									}
@@ -108,7 +108,7 @@
 							// Attach to <head>
 							if ( '' !== css ) {
 
-								// make sure we have a stylesheet with the defined ID.
+								// Make sure we have a stylesheet with the defined ID.
 								// If we don't then add it.
 								if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
 									$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
