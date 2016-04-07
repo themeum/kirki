@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ */
 if ( ! class_exists( 'Kirki_Config' ) ) {
 
 	final class Kirki_Config {
