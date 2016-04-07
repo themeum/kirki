@@ -1,77 +1,56 @@
 /**
  * KIRKI CONTROL: REPEATER
  */
-function RepeaterRow( rowIndex, element ) {
+
+var RepeaterRow = function ( rowIndex, container ) {
 	this.rowIndex   = rowIndex;
-	this.rowNumber  = rowIndex + 1;
-	this.$el        = element;
-	this.$header    = this.$el.find( '.repeater-row-header' );
-	this.$remover   = this.$el.find( '.repeater-row-remove' );
-	this.$label     = this.$el.find( '.repeater-row-label' );
-	this.$fields    = this.$el.find( 'input,select,textarea' );
+	this.container  = container;
+	this.header     = this.container.find( '.repeater-row-header' );
 
 	var self = this;
 
-	this.$header.on( 'click', function() {
+	this.header.on( 'click', function() {
 		self.toggleMinimize();
 	});
 
-	this.$remover.on( 'click', function() {
+	this.container.on( 'click', '.repeater-row-remove' , function() {
 		self.remove();
 	});
 
-	this.$header.on( 'mousedown', function() {
-		self.$el.trigger( 'row:start-dragging' );
+	this.header.on( 'mousedown', function() {
+		self.container.trigger( 'row:start-dragging' );
 	});
 
-
-	this.$el.on( 'keyup change', 'input, select, textarea', function( e ) {
-		self.$el.trigger( 'row:update', [ self.getRowIndex(), jQuery( e.target ).data( 'field' ), e.target ] );
+	this.container.on( 'keyup change', 'input, select, textarea', function( e ) {
+		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ] );
 	});
+
+	this.setRowIndex = function( rowIndex ) {
+		this.rowIndex = rowIndex;
+		this.container.attr( 'data-row', rowIndex );
+		this.container.data( 'row', rowIndex );
+		this.renderNumber();
+	};
+
+	this.toggleMinimize = function() {
+		// Store the previous state
+		this.container.toggleClass( 'minimized' );
+		this.header.find( '.dashicons' ).toggleClass( 'dashicons-arrow-up' ).toggleClass( 'dashicons-arrow-down' );
+	};
+
+	this.remove = function() {
+		this.container.slideUp( 300, function() {
+			jQuery( this ).detach();
+		});
+		this.container.trigger( 'row:remove', [ this.rowIndex ] );
+	};
+
+	this.renderNumber = function() {
+		this.header.find( '.repeater-row-label' ).text( 'Row ' + (this.rowIndex+1) );
+	};
 
 	this.renderNumber();
-
 }
-
-RepeaterRow.prototype.getRowIndex = function() {
-	return this.rowIndex;
-};
-
-RepeaterRow.prototype.getRowNumber = function() {
-	return this.rowNumber;
-};
-
-RepeaterRow.prototype.setRowNumber = function( rowNumber ) {
-	this.rowNumber = rowNumber;
-	this.renderNumber();
-};
-
-RepeaterRow.prototype.getElement = function() {
-	return this.$el;
-};
-
-RepeaterRow.prototype.setRowIndex = function( rowIndex ) {
-	this.rowIndex = rowIndex;
-	this.$el.attr( 'data-row', rowIndex );
-	this.$el.data( 'row', rowIndex );
-};
-
-RepeaterRow.prototype.toggleMinimize = function() {
-	// Store the previous state
-	this.$el.toggleClass( 'minimized' );
-	this.$header.find( '.dashicons' ).toggleClass( 'dashicons-arrow-up' ).toggleClass( 'dashicons-arrow-down' );
-};
-
-RepeaterRow.prototype.remove = function() {
-	this.$el.slideUp( 300, function() {
-		jQuery( this ).detach();
-	});
-	this.$el.trigger( 'row:remove', [ this.getRowIndex() ] );
-};
-
-RepeaterRow.prototype.renderNumber = function() {
-	this.$label.text( 'Row ' + this.getRowNumber() );
-};
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	ready: function() {
@@ -499,11 +478,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				jQuery( template ).appendTo( control.repeaterFieldsContainer )
 			);
 
-			newRow.getElement().one( 'row:remove', function( e, rowIndex ) {
+			newRow.container.on( 'row:remove', function( e, rowIndex ) {
 				control.deleteRow( rowIndex );
 			});
 
-			newRow.getElement().on( 'row:update', function( e, rowIndex, fieldName, element ) {
+			newRow.container.on( 'row:update', function( e, rowIndex, fieldName, element ) {
 				control.updateField.call( control, e, rowIndex, fieldName, element );
 			});
 
@@ -542,7 +521,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		jQuery.each( newOrder, function( newPosition, oldPosition ) {
 			newRows[ newPosition ] = control.rows[ oldPosition ];
 			newRows[ newPosition ].setRowIndex( newPosition );
-			newRows[ newPosition ].setRowNumber( newPosition + 1 );
 
 			newSettings[ newPosition ] = settings[ oldPosition ];
 		});
@@ -580,7 +558,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var i = 1;
 		for ( var prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
-				this.rows[ prop ].setRowNumber( i );
+				this.rows[ prop ].renderNumber();
 				i++;
 			}
 		}
@@ -605,15 +583,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( undefined === typeof currentSettings[ row.getRowIndex() ][ fieldId ] ) {
+		if ( undefined === typeof currentSettings[ row.rowIndex ][ fieldId ] ) {
 			return;
 		}
 
 		if ( 'checkbox' === type ) {
-			currentSettings[ row.getRowIndex() ][ fieldId ] = element.is( ':checked' );
+			currentSettings[ row.rowIndex ][ fieldId ] = element.is( ':checked' );
 		} else {
 			// Update the settings
-			currentSettings[ row.getRowIndex() ][ fieldId ] = element.val();
+			currentSettings[ row.rowIndex ][ fieldId ] = element.val();
 		}
 
 		this.setValue( currentSettings, true );
