@@ -54,7 +54,7 @@ script:
   - phpunit --coverage-clover=coverage.clover
   # Search for PHP syntax errors.
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
-  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+  # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
   - if [[ "$SNIFF" == "1" ]]; then jshint .; fi
   # Run the plugin through JavaScript Code Style checker.
