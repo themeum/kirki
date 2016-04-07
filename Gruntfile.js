@@ -1,4 +1,3 @@
-'use strict';
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -70,8 +69,8 @@ module.exports = function(grunt) {
 			your_target: {
 				files: {
 					'README.md': 'readme.txt'
-				},
-			},
+				}
+			}
 		},
 		// Convert json array to PHP array
 		json2php: {
@@ -89,7 +88,7 @@ module.exports = function(grunt) {
   		watch: {
 			css: {
 				files: 'assets/**/*.scss',
-				tasks: ['sass', 'cssmin'],
+				tasks: ['sass', 'cssmin']
 			},
 			// scripts: {
 			// 	files: 'assets/**/*.js',
@@ -97,7 +96,7 @@ module.exports = function(grunt) {
 			// },
 			readme: {
 				files: 'readme.txt',
-				tasks: ['wp_readme_to_markdown'],
+				tasks: ['wp_readme_to_markdown']
 			}
 		}
 	});

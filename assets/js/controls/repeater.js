@@ -72,7 +72,7 @@ RepeaterRow.prototype.minimize = function() {
 
 RepeaterRow.prototype.remove = function() {
 	// TODO: make this translatable
-	if ( confirm( "Are you sure?" ) ) {
+	if ( confirm( 'Are you sure?' ) ) {
 		this.$el.slideUp( 300, function() {
 			jQuery( this ).detach();
 		});

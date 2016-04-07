@@ -21,7 +21,7 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
 				setTimeout( function() {
 					control.setting.set( picker.val() );
 				}, 100 );
-			},
+			}
 		});
 
 	}

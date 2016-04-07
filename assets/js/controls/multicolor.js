@@ -29,7 +29,7 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 						// Trigger the change
 						control.container.find( '.multicolor-index-' + sub_setting ).trigger( 'change' );
 					}, 100 );
-				},
+				}
 			});
 
 		}
@@ -68,6 +68,6 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 			// previewer refresh the website on Customizer
 			this.settingField.trigger( 'change' );
 		}
-	},
+	}
 
 });
