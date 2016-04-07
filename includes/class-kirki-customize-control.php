@@ -1,5 +1,9 @@
 <?php
 /**
+ * A wrapper class for WP_Customize_Control.
+ * We'll be using this to define things that all Kirki fields must inherit.
+ * Helps us keep a cleaner codebase and avoid code duplication.
+ *
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
@@ -7,21 +11,63 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
-
+	/**
+	 * The parent class for all Kirki controls.
+	 * Other controls should extend this object.
+	 */
 	class Kirki_Customize_Control extends WP_Customize_Control {
 
-		public $tooltip      = '';
-		public $js_vars      = array();
-		public $output       = array();
-		public $option_type  = 'theme_mod';
+		/**
+		 * Tooltips content.
+		 *
+		 * @access public
+		 * @var string
+		 */
+		public $tooltip = '';
+
+		/**
+		 * Used to automatically generate all postMessage scripts.
+		 *
+		 * @access public
+		 * @var array
+		 */
+		public $js_vars = array();
+
+		/**
+		 * Used to automatically generate all CSS output.
+		 *
+		 * @access public
+		 * @var array
+		 */
+		public $output = array();
+
+		/**
+		 * Data type
+		 *
+		 * @access public
+		 * @var string
+		 */
+		public $option_type = 'theme_mod';
+
+		/**
+		 * The kirki_config we're using for this control
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $kirki_config = 'global';
 
+		/**
+		 * Refresh the parameters passed to the JavaScript via JSON.
+		 *
+		 * @see WP_Customize_Control::to_json()
+		 */
 		public function to_json() {
 			parent::to_json();
 
@@ -44,6 +90,11 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			}
 		}
 
+		/**
+		 * Render the control's content.
+		 *
+		 * @see WP_Customize_Control::render_content()
+		 */
 		protected function render_content() {}
 	}
 }
