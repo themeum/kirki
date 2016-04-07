@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -206,7 +206,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							<div class="repeater-field repeater-field-{{{ field.type }}}">
 
-								<# if ( field.type === 'text' ) { #>
+								<# if ( field.type === 'text' || field.type === 'url' || field.type === 'email' || field.type === 'tel' || field.type === 'date' ) { #>
 
 									<label>
 										<# if ( field.label ) { #>
@@ -215,8 +215,12 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# if ( field.description ) { #>
 											<span class="description customize-control-description">{{ field.description }}</span>
 										<# } #>
-										<input type="text" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
+										<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
 									</label>
+
+								<# } else if ( field.type === 'hidden' ) { #>
+
+									<input type="hidden" data-field="{{{ field.id }}}" <# if ( field.default ) { #> value="{{{ field.default }}}" <# } #> />
 
 								<# } else if ( field.type === 'checkbox' ) { #>
 

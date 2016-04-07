@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Kirki Toolkit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kirki Toolkit 2.2.8\n"
+"Project-Id-Version: Kirki Toolkit 2.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kirki\n"
 "POT-Creation-Date: 2016-04-07 18:59:28+00:00\n"
 "MIME-Version: 1.0\n"

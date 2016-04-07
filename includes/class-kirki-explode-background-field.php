@@ -143,6 +143,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 
 		/**
 		 * The background choices.
+		 *
 		 * @return array<string,array>
 		 */
 		public static function background_choices() {
@@ -181,6 +182,5 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 			);
 
 		}
-
 	}
 }

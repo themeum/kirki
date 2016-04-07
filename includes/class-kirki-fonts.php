@@ -44,8 +44,8 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 		 */
 		 public static function get_standard_fonts() {
 			$i18n = Kirki_l10n::get_strings();
-			return apply_filters( 'kirki/fonts/standard_fonts', array(
-				'serif'     => array(
+			$standard_fonts = array(
+				'serif' => array(
 					'label' => $i18n['serif'],
 					'stack' => 'Georgia,Times,"Times New Roman",serif',
 				),
@@ -57,7 +57,8 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 					'label' => $i18n['monospace'],
 					'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 				),
-			) );
+			);
+			return apply_filters( 'kirki/fonts/standard_fonts', $standard_fonts );
 		}
 
 		/**
@@ -175,7 +176,5 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 			}
 			return $fonts_array;
 		}
-
 	}
-
 }

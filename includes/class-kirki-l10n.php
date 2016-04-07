@@ -180,7 +180,5 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 			return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 
 		}
-
 	}
-
 }

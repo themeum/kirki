@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -180,7 +180,5 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		public static function unfiltered( $value ) {
 			return $value;
 		}
-
 	}
-
 }

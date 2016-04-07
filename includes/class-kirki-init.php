@@ -210,14 +210,11 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 							} else {
 								$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
 							}
-
 						}
-
 					}
-
 				}
-
 			}
+
 			/**
 			 * Pass the variables through a filter ('kirki/variable')
 			 * and return the array of variables
@@ -251,12 +248,10 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 * Handle saving of settings with "user_meta" storage type.
 		 *
 		 * @param $value                 string     Value being saved
-		 * @param wp_customize_setting   object     $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
+		 * @param wp_customize_setting   object                      $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
 		 */
 		public function update_user_meta( $value, $wp_customize_setting ) {
 			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
 		}
-
 	}
-
 }

@@ -8,30 +8,69 @@ notifications:
 
 php:
   - 7.0
+  - 5.6
 
 env:
-  - WP_VERSION=latest WP_MULTISITE=0
+  - SNIFF=1
 
 matrix:
   exclude:
-    - php: hhvm
-      env: WP_VERSION=latest WP_MULTISITE=1
+    - php: 7.0
+      env: SNIFF=1
 
-defore_install:
+before_install:
   - pip install --user codecov
   - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
   - composer install --dev
 
 before_script:
-  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost latest
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
+  - export PHPCS_DIR=/tmp/phpcs
+  - export SNIFFS_DIR=/tmp/sniffs
+  # Install CodeSniffer for WordPress Coding Standards checks.
+  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
+  # Install WordPress Coding Standards.
+  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
+  # Install PHP Compatibility sniffs.
+  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/wimg/PHPCompatibility.git $SNIFFS_DIR/PHPCompatibility; fi
+  # Set install path for PHPCS sniffs.
+  # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs --config-set installed_paths $SNIFFS_DIR; fi
+  # After CodeSniffer install you should refresh your path.
+  - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
+  # Install JSCS: JavaScript Code Style checker.
+  # @link http://jscs.info/
+  - if [[ "$SNIFF" == "1" ]]; then npm install -g jscs; fi
+  # Install JSHint, a JavaScript Code Quality Tool.
+  # @link http://jshint.com/docs/
+  - if [[ "$SNIFF" == "1" ]]; then npm install -g jshint; fi
+  # Pull in the WP Core jshint rules.
+  - if [[ "$SNIFF" == "1" ]]; then wget https://develop.svn.wordpress.org/trunk/.jshintrc; fi
 
 script:
   - mkdir -p build/logs
   - phpunit --coverage-clover=coverage.clover
+  # Search for PHP syntax errors.
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
-  - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+  # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+  # Run the plugin through JSHint.
+  - if [[ "$SNIFF" == "1" ]]; then jshint .; fi
+  # Run the plugin through JavaScript Code Style checker.
+  - if [[ "$SNIFF" == "1" ]]; then jscs .; fi
+  # WordPress Coding Standards.
+  # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+  # @link http://pear.php.net/package/PHP_CodeSniffer/
+  # -p flag: Show progress of the run.
+  # -s flag: Show sniff codes in all reports.
+  # -v flag: Print verbose output.
+  # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
+  # --standard: Use WordPress as the standard.
+  # --extensions: Only sniff PHP files.
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n ./includes/*kirki*.php --standard=./codesniffer.ruleset.xml --extensions=php; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n ./includes/**/*kirki*.php --standard=./codesniffer.ruleset.xml --extensions=php; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n ./includes/**/**/*kirki*.php --standard=./codesniffer.ruleset.xml --extensions=php; fi
 
 after_script:
   - php vendor/bin/coveralls

@@ -8,7 +8,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -28,8 +28,29 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 		public function customize_controls_enqueue_scripts() {
 
-			// enqueue the tooltips script
-			wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
+			// Get an array of all our fields
+			$fields = Kirki::$fields;
+
+			// Do we have tooltips anywhere?
+			$has_tooltips = false;
+			foreach ( $fields as $field ) {
+				if ( $has_tooltips ) {
+					continue;
+				}
+				// Field has tooltip
+				if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
+					$has_tooltips = true;
+				}
+				// backwards-compatibility ("help" argument instead of "tooltip")
+				if ( isset( $field['help'] ) && ! empty( $field['help'] ) ) {
+					$has_tooltips = true;
+				}
+			}
+
+			// If we have tooltips, enqueue the tooltips script
+			if ( $has_tooltips ) {
+				wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
+			}
 
 			// enqueue the reset script
 			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-value' ) );
@@ -182,8 +203,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 					$js_vars_fields[ $field['settings'] ] = $field['js_vars'];
 				}
 			}
-			wp_localize_script( 'kirki_auto_postmessage', 'js_vars', $js_vars_fields );
+			wp_localize_script( 'kirki_auto_postmessage', 'jsvars', $js_vars_fields );
 		}
-
 	}
 }
