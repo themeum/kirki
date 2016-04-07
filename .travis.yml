@@ -55,6 +55,22 @@ script:
   - phpunit --coverage-clover=coverage.clover
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+  # Search for PHP syntax errors.
+  - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+  # Run the plugin through JSHint.
+  - if [[ "$SNIFF" == "1" ]]; then jshint .; fi
+  # Run the plugin through JavaScript Code Style checker.
+  - if [[ "$SNIFF" == "1" ]]; then jscs .; fi
+  # WordPress Coding Standards.
+  # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+  # @link http://pear.php.net/package/PHP_CodeSniffer/
+  # -p flag: Show progress of the run.
+  # -s flag: Show sniff codes in all reports.
+  # -v flag: Print verbose output.
+  # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
+  # --standard: Use WordPress as the standard.
+  # --extensions: Only sniff PHP files.
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php; fi
 
 after_script:
   - php vendor/bin/coveralls
