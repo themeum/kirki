@@ -56,7 +56,12 @@ script:
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
-  - if [[ "$SNIFF" == "1" ]]; then jshint .; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/controls/*.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/functions/*.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/branding.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/postmessage.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/reset.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/tooltip.js; fi
   # Run the plugin through JavaScript Code Style checker.
   - if [[ "$SNIFF" == "1" ]]; then jscs .; fi
   # WordPress Coding Standards.
