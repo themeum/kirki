@@ -68,7 +68,7 @@ script:
   # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*kirki*.php --standard=./codesniffer.ruleset.xml --extensions=php; fi
 
 after_script:
   - php vendor/bin/coveralls
