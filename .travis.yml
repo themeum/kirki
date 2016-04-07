@@ -52,10 +52,9 @@ before_script:
 script:
   - mkdir -p build/logs
   - phpunit --coverage-clover=coverage.clover
+  # Search for PHP syntax errors.
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
-  # Search for PHP syntax errors.
-  - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
   # Run the plugin through JSHint.
   - if [[ "$SNIFF" == "1" ]]; then jshint .; fi
   # Run the plugin through JavaScript Code Style checker.
