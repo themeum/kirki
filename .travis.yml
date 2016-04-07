@@ -19,7 +19,7 @@ matrix:
     - php: 7.0
       env: SNIFF=1
 
-defore_install:
+before_install:
   - pip install --user codecov
   - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
   - composer install --dev
