@@ -5,7 +5,7 @@ function kirkiObjectToArray( obj ) {
 			if ( undefined !== value ) {
 				arr.push( value );
 			}
-		})
+		});
 	}
 	return arr;
 }
