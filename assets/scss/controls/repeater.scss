@@ -74,6 +74,12 @@
 		    line-height: initial;
 	    }
 
+	    &.repeater-field-hidden{
+		    margin: 0;
+		    padding: 0;
+		    border: 0;
+	    }
+
 	}
 
 	.repeater-field-select select {
