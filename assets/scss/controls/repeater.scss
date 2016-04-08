@@ -4,12 +4,20 @@
 .customize-control-repeater {
 	.repeater-fields {
 		.repeater-row {
-			padding:.5rem;
 		    border:1px solid #999;
 		    margin-top:.5rem;
 		    background: #eee;
 		    position:relative;
-		    padding-top:48px;
+		    &.minimized{
+			    border:1px solid #dfdfdf;
+				padding: 0;
+			    &:hover{
+				    border:1px solid #999;
+			    }
+			    .repeater-row-content{
+				    display: none;
+			    }
+		    }
 
 			label {
 				margin-bottom:12px;
@@ -34,11 +42,19 @@
 						}
 					}
 				}
+				&:last-child {
+				    border-bottom:none;
+				    padding-bottom:0;
+				}
 			}
 		}
 	}
 	button.repeater-add {
 	    margin-top:1rem;
+	}
+
+	.repeater-row-content{
+		padding: 10px 15px;
 	}
 
 	.repeater-field {
@@ -47,11 +63,17 @@
 	    clear: both;
 	    padding-bottom: 12px;
 	    border-bottom: 1px dotted #CCC;
-	}
 
-	.repeater-row .repeater-field:last-child {
-	    border-bottom:none;
-	    padding-bottom:0;
+	    .customize-control-title {
+		    font-size: 13px;
+		    line-height: initial;
+	    }
+
+	    .customize-control-description {
+		    font-size: 13px;
+		    line-height: initial;
+	    }
+
 	}
 
 	.repeater-field-select select {
@@ -72,54 +94,47 @@
 	}
 	.repeater-row-header {
 	    background: white;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    height: 36px;
-	    color: #555;
-	    border-bottom: 1px solid #999;
-	    line-height: 36px;
-	    font-size: 15px;
-	}
-
-	.repeater-row-number {
-	    border-right: 1px solid #ddd;
-	    display: inline-block;
-	    width: 35px;
-	    text-align: center;
-	}
-
-	.repeater-row-remove,
-	.repeater-row-move,
-	.repeater-row-minimize {
-	    display: inline-block;
-	    float: right;
-	    border-left: 1px solid #ddd;
-	    width: 35px;
-	    height:36px;
-	    text-align: center;
-
+	    border: 1px solid #dfdfdf;
+	    position: relative;
+	    padding: 10px 15px;
+	    height: auto;
+	    min-height: 20px;
+	    line-height: 30px;
+	    overflow: hidden;
+	    word-wrap: break-word;
 		&:hover {
-		    background:#ddd;
-		    cursor: pointer;
+		  cursor:move;
+		}
+
+		.dashicons{
+			font-size: 18px;
+		    position: absolute;
+		    right: 12px;
+		    top: 2px;
+		    color: #a0a5aa;
 		}
 	}
 
-  	.repeater-row-move:hover {
-	  cursor:move;
+	.repeater-row-label {
+	    font-size: 13px;
+	    font-weight: 600;
+	    line-height: 20px;
+	    display: block;
+	    text-transform: capitalize;
+	    width: 90%;
+	    overflow: hidden;
+	    height: 18px;
 	}
 
-	.repeater-remove,
-	.repeater-move,
+	.repeater-row-remove {
+		color:#a00;
+		&:hover {
+			color:#f00;
+		}
+	}
+
 	.repeater-minimize {
 	    line-height: 36px;
-	}
-
-	.repeater-row.minimized {
-	    padding: 0;
-	    height: 36px;
-	    overflow: hidden;
 	}
 
 	.remove-button, .upload-button{
@@ -130,7 +145,7 @@
 .kirki-image-attachment{
 	margin: 0;
 	text-align:center;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 	img{
 		display:inline-block;
 	}
