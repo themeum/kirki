@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 * Adds actions to enqueue our assets.
 		 */
 		public function __construct() {
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 20 );
 			add_action( 'customize_controls_print_scripts', array( $this, 'branding' ) );
 			add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 		}
