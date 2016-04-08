@@ -116,7 +116,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									// If we got a URL
 									if ( $url ) {
 										// 'id' is needed for form hidden value, URL is needed to display the image
-										$value = array (
+										$value = array(
 											'id'  => $attachment_id,
 											'url' => $url,
 										);
