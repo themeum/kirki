@@ -89,7 +89,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			$this->fields = $args['fields'];
 
 			// Now we are going to filter the fields
-
 			// First we create a copy of the value that would be used otherwise
 			$this->filtered_value = $this->value();
 
@@ -108,7 +107,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 								// What follows was made this way to preserve backward compatibility
 								// The repeater control use to store the URL for images instead of the attachment ID
-
 								// We check if the value look like an ID (otherwise it's probably a URL so don't filter it)
 								if ( is_numeric( $value ) ) {
 									// "sanitize" the value

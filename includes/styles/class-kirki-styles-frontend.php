@@ -46,7 +46,6 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			// add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
 			// add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
 			// add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
-
 		}
 
 		public function inline_dynamic_css() {
