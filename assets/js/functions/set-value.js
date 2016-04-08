@@ -150,7 +150,7 @@ function kirkiSetValue( setting, value ) {
 
 		_.each( value, function( subValue, i ) {
 			jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
-		})
+		});
 
 	}
 
