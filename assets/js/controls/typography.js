@@ -13,7 +13,9 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		    hasDefault            = false,
 		    firstAvailable        = false,
 		    activeItem,
-		    value = {};
+		    value = {},
+		    renderSubControl,
+		    picker;
 
 		// Make sure everything we're going to need exists.
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
@@ -26,75 +28,88 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
 		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
 
-		// renders and refreshes selectize sub-controls
-		var renderSubControl = function( fontFamily, sub, startValue ) {
+		// Renders and refreshes selectize sub-controls.
+		renderSubControl = function( fontFamily, sub, startValue ) {
 
-			subSelector = ( 'variant' === sub ) ? variantSelector : subsetSelector;
+			var subSelector = ( 'variant' === sub ) ? variantSelector : subsetSelector,
+			    isStandard = false,
+			    subList = {},
+			    subValue,
+			    subsetValues,
+			    subsetValuesArray,
+			    subSelectize;
 
-			var is_standard = false,
-			    subList = {};
-
-			// destroy the selectize instance
+			// Destroy the selectize instance.
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
 				jQuery( subSelector ).selectize()[0].selectize.destroy();
 			}
 
-			// Get all items in the sub-list for the active font-family
-			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+			// Get all items in the sub-list for the active font-family.
+			_.each( kirkiAllFonts, function( font, i ) {
+
 				// Find the font-family we've selected in the global array of fonts.
-				if ( fontFamily === kirkiAllFonts[ i ].family ) {
+				if ( fontFamily === font.family ) {
+
 					// Check if this is a standard font or a google-font.
-					if ( undefined !== kirkiAllFonts[ i ].is_standard && true === kirkiAllFonts[ i ].is_standard ) {
-						is_standard = true;
+					if ( undefined !== font.isStandard && true === font.isStandard ) {
+						isStandard = true;
 					}
 
-					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
+					subList = font[ sub + 's' ]; // The 's' is for plural (variant/variants, subset/subsets)
 
 				}
 
-			}
+			});
 
 			// This is a googlefont, or we're talking subsets.
-			if ( false === is_standard || 'subset' !== sub ) {
+			if ( false === isStandard || 'subset' !== sub ) {
+
 				// Determine the initial value we have to use
 				if ( null === startValue  ) {
-					if ( 'variant' === sub ) { // the context here is variants
-						// loop the variants.
-						for ( var i = 0, len = subList.length; i < len; i++ ) {
 
-							if ( undefined !== subList[ i ].id ) {
+					if ( 'variant' === sub ) { // The context here is variants
+
+						// Loop the variants.
+						_.each( subList, function( variant ) {
+
+							var defaultValue;
+
+							if ( undefined !== variant.id ) {
+
 								activeItem = value.variant;
+
 							} else {
-								var defaultValue = 'regular';
-								if ( defaultValue === subList[ i ].id ) {
+
+								defaultValue = 'regular';
+
+								if ( defaultValue === variant.id ) {
 									hasDefault = true;
 								} else if ( false === firstAvailable ) {
-									firstAvailable = subList[ i ].id;
+									firstAvailable = variant.id;
 								}
+
 							}
 
-						}
+						});
 
 					} else if ( 'subset' === sub ) { // The context here is subsets
 
-						var subsetValues = {};
+						subsetValues = {};
 
-						for ( var i = 0, len = subList.length; i < len; i++ ) {
-
+						_.each( subList, function( subSet ) {
 							if ( null !== value.subset ) {
-								for ( var s = 0, len = value.subset.length; s < len; s++ ) {
-									if ( undefined !== subList[ i ] && value.subset[ s ] === subList[ i ].id ) {
-										subsetValues[ value.subset[ s ] ] = value.subset[ s ];
+								_.each( value.subset, function( item ) {
+									if ( undefined !== subSet && item === subSet.id ) {
+										subsetValues[ item ] = item;
 									}
-								}
+								});
 							}
-
-						}
+						});
 
 						if ( 0 === subsetValues.length ) {
 							activeItem = ['latin'];
 						} else {
-							var subsetValuesArray = jQuery.map( subsetValues, function(value, index) {
+							subsetValuesArray = jQuery.map( subsetValues, function( value, index ) {
 								return [value];
 							});
 							activeItem = subsetValuesArray;
@@ -113,8 +128,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 				}
 
-				// create
-				var subSelectize;
+				// Create
 				subSelectize = jQuery( subSelector ).selectize({
 					maxItems:    ( 'variant' === sub ) ? 1 : null,
 					valueField:  'id',
@@ -125,13 +139,16 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 					create:      false,
 					plugins:     ( 'variant' === sub ) ? '' : ['remove_button'],
 					render: {
-						item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
-						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
-					},
+						item: function( item, escape ) {
+							return '<div>' + escape( item.label ) + '</div>';
+						},
+						option: function( item, escape ) {
+							return '<div>' + escape( item.label ) + '</div>';
+						}
+					}
 				}).data( 'selectize' );
 
 			}
-
 
 			// If only 1 option is available then there's no reason to show this.
 			if ( 'variant' === sub ) {
@@ -152,7 +169,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 			}
 
-			if ( true === is_standard ) {
+			if ( true === isStandard ) {
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
 			} else {
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
@@ -171,9 +188,13 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			searchField: ['family', 'label', 'subsets'],
 			create:      false,
 			render: {
-				item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
-				option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
-			},
+				item: function( item, escape ) {
+					return '<div>' + escape( item.label ) + '</div>';
+				},
+				option: function( item, escape ) {
+					return '<div>' + escape( item.label ) + '</div>';
+				}
+			}
 		});
 
 		// Render the variants
@@ -187,88 +208,118 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		renderSubControl( value['font-family'], 'subset', value.subset );
 
 		this.container.on( 'change', '.font-family select', function() {
-			// add the value to the array and set the setting's value
+
+			// Add the value to the array and set the setting's value
 			value['font-family'] = jQuery( this ).val();
 			control.setting.set( value );
-			// trigger changes to variants & subsets
+
+			// Trigger changes to variants & subsets
 			renderSubControl( jQuery( this ).val(), 'variant', null );
 			renderSubControl( jQuery( this ).val(), 'subset', null );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change', '.variant select', function() {
-			// add the value to the array and set the setting's value
+
+			// Add the value to the array and set the setting's value
 			value.variant = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change', '.subset select', function() {
-			// add the value to the array and set the setting's value.
+
+			// Add the value to the array and set the setting's value.
 			value.subset = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change keyup paste', '.font-size input', function() {
-			// add the value to the array and set the setting's value
+
+			// Add the value to the array and set the setting's value
 			value['font-size'] = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change keyup paste', '.line-height input', function() {
-			// add the value to the array and set the setting's value
+
+			// Add the value to the array and set the setting's value
 			value['line-height'] = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change keyup paste', '.letter-spacing input', function() {
-			// add the value to the array and set the setting's value
+
+			// Add the value to the array and set the setting's value
 			value['letter-spacing'] = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
 		this.container.on( 'change', '.text-align input', function() {
-			// add the value to the array and set the setting's value.
+
+			// Add the value to the array and set the setting's value.
 			value['text-align'] = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
-		// text-transform
+		// Text-transform
 		jQuery( textTransformSelector ).selectize();
 		this.container.on( 'change', '.text-transform select', function() {
-			// add the value to the array and set the setting's value.
+
+			// Add the value to the array and set the setting's value.
 			value['text-transform'] = jQuery( this ).val();
 			control.setting.set( value );
-			// refresh the preview
+
+			// Refresh the preview
 			wp.customize.previewer.refresh();
+
 		});
 
+		picker = this.container.find( '.kirki-color-control' );
 
-
-		var picker = this.container.find ( '.kirki-color-control' );
-		// change color
-		picker.wpColorPicker ({
+		// Change color
+		picker.wpColorPicker({
 			change: function() {
-				setTimeout ( function() {
-					// add the value to the array and set the setting's value
-					value.color = picker.val ();
-					control.setting.set ( value );
-					// refresh the preview
-					wp.customize.previewer.refresh ();
+
+				setTimeout( function() {
+
+					// Add the value to the array and set the setting's value
+					value.color = picker.val();
+					control.setting.set( value );
+
+					// Refresh the preview
+					wp.customize.previewer.refresh();
+
 				}, 100 );
+
 			}
+
 		});
 
 	}

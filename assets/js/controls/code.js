@@ -8,14 +8,15 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 
 		var control  = this,
 		    element  = control.container.find( '#kirki-codemirror-editor-' + control.id ),
-		    language = control.params.choices.language;
+		    language = control.params.choices.language,
+		    editor;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
 		if ( 'html' === control.params.choices.language ) {
 			language = { name: 'htmlmixed' };
 		}
 
-		var editor = CodeMirror.fromTextArea( element[0], {
+		editor = CodeMirror.fromTextArea( element[0], {
 			value:       control.setting._value,
 			mode:        language,
 			lineNumbers: true,
@@ -29,7 +30,7 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 		});
 
 		// Hack to refresh the editor when we open a section
-		element.parents( '.accordion-section' ).on( 'click', function(){
+		element.parents( '.accordion-section' ).on( 'click', function() {
 		    editor.refresh();
 		});
 

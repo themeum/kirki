@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ */
 
 class Kirki_Output_Property {
 

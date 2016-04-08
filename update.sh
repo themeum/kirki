@@ -1,24 +1,26 @@
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
-	echo "usage: $0 tag <old-version> <new-version>"
-	echo "OR: $0 tag <old-version> <new-version> push (to directly push to both git & svn)"
+	echo "usage: $0 <old-version> <new-version>"
+	echo "OR: $0 <old-version> <new-version> push (to directly push to both git & svn)"
 	exit 1
 fi
 
 # Replace version number in the files
-find . -name kirki.php -exec sed -i "s/Version:       $2/Version:       $3/g" {} \;
-find . -name readme.txt -exec sed -i "s/Stable tag: $2/Stable tag: $3/g" {} \;
-find ./includes -name class-kirki-toolkit.php -exec sed -i "s/protected static $version = '$2';/protected static $version = '$3';/g" {} \;
+find . -name kirki.php -exec sed -i "s/Version:       $1/Version:       $2/g" {} \;
+find . -name readme.txt -exec sed -i "s/Stable tag: $1/Stable tag: $2/g" {} \;
+find ./includes -name class-kirki-toolkit.php -exec sed -i "s/protected static $version = '$1';/protected static $version = '$2';/g" {} \;
 
 # Run grunt
 npm install
 grunt
 grunt googlefonts
+grunt makepot
+grunt wp_readme_to_markdown
 
-if [[ $4 == 'push' ]]; then
+if [[ $3 == 'push' ]]; then
 	# Git commit
-	git add . && git commit -a -m "Version $3" && git push
+	git add . && git commit -a -m "Version $2" && git push
 fi
 
 # Remove existing kirki-svn folder and pull a fresh copy
@@ -46,17 +48,21 @@ rm -rf ../kirki-svn/trunk/.editorconfig
 rm -rf ../kirki-svn/trunk/.gitignore
 rm -rf ../kirki-svn/trunk/.simplecov
 rm -rf ../kirki-svn/trunk/.travis.yml
+rm -rf ../kirki-svn/trunk/Gruntfile.js
+rm -rf ../kirki-svn/trunk/composer.json
+rm -rf ../kirki-svn/trunk/package.json
+rm -rf ../kirki-svn/trunk/phpunit.xml
 rm -rf ../kirki-svn/trunk/assets/scss/
 rm -rf ../kirki-svn/trunk/vendor/
 
 # Update svn
 cd ../kirki-svn
-if [[ $4 == 'push' ]]; then
-	rm tags/$3
-	cp -r trunk tags/$3
+if [[ $3 == 'push' ]]; then
+	rm tags/$2
+	cp -r trunk tags/$2
 fi
 svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )
 svn add * --force
-if [[ $4 == 'push' ]]; then
-	svn ci -m "v$3"
+if [[ $3 == 'push' ]]; then
+	svn ci -m "v$2"
 fi

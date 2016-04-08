@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2015, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 

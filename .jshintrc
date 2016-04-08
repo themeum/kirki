@@ -1,0 +1,38 @@
+{
+	"boss": true,
+	"curly": true,
+	"eqeqeq": true,
+	"eqnull": true,
+	"es3": true,
+	"expr": true,
+	"immed": true,
+	"noarg": true,
+	"nonbsp": true,
+	"onevar": true,
+	"quotmark": "single",
+	"trailing": true,
+	"undef": true,
+	"unused": false,
+
+	"browser": true,
+
+	"globals": {
+		"_": false,
+		"Backbone": false,
+		"jQuery": false,
+		"JSON": false,
+		"wp": false,
+
+		"kirkiBranding":false,
+		"jsvars":false,
+		"kirkiSetValue":false,
+		"kirkiValidateCSSValue":false,
+		"kirkiArrayToObject":false,
+		"kirkiObjectToArray":false,
+		"CodeMirror":false,
+		"tinyMCE":false,
+		"unserialize":false,
+		"serialize":false,
+		"kirkiAllFonts":false
+	}
+}

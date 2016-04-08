@@ -75,7 +75,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 			// Sanitize the font-size
 			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
 				$value['font-size'] = Kirki_Sanitize_Values::css_dimension( $value['font-size'] );
-				if ( $value['font-size'] == Kirki_Sanitize_Values::filter_number( $value['font-size'] ) ) {
+				if ( Kirki_Sanitize_Values::filter_number( $value['font-size'] ) == $value['font-size'] ) {
 					$value['font-size'] .= 'px';
 				}
 			}
@@ -86,7 +86,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 			// Sanitize the letter-spacing
 			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
 				$value['letter-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['letter-spacing'] );
-				if ( $value['letter-spacing'] == Kirki_Sanitize_Values::filter_number( $value['letter-spacing'] ) ) {
+				if ( Kirki_Sanitize_Values::filter_number( $value['letter-spacing'] ) == $value['letter-spacing'] ) {
 					$value['letter-spacing'] .= 'px';
 				}
 			}

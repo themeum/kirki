@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
- 				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
+				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( data.value ) { #> checked<# } #> />
 				{{ data.label }}
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>

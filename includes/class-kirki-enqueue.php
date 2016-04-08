@@ -224,7 +224,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 					$js_vars_fields[ $field['settings'] ] = $field['js_vars'];
 				}
 			}
-			wp_localize_script( 'kirki_auto_postmessage', 'js_vars', $js_vars_fields );
+			wp_localize_script( 'kirki_auto_postmessage', 'jsvars', $js_vars_fields );
 		}
 	}
 }
