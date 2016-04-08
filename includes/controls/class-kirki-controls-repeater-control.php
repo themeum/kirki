@@ -39,22 +39,21 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				'value' => $l10n['row'],
 				'field' => false,
 			);
-			//validating args for row labels
-			if( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && !empty( $args['row_label'] ) ) {
-				//validating row label type
-				if( isset( $args['row_label']['type'] ) && ( $args['row_label']['type'] === 'text' || $args['row_label']['type'] === 'field' ) ) {
+			// Validating args for row labels.
+			if ( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && ! empty( $args['row_label'] ) ) {
+				// Validating row label type.
+				if ( isset( $args['row_label']['type'] ) && ( 'text' === $args['row_label']['type'] || 'field' === $args['row_label']['type'] ) ) {
 					$this->row_label['type'] = $args['row_label']['type'];
 				}
-				//validating row label type
-				if( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
-					$this->row_label['value'] = esc_attr($args['row_label']['value']);
+				// Validating row label type.
+				if ( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
+					$this->row_label['value'] = esc_attr( $args['row_label']['value'] );
 				}
-				//validating row label field
-				if( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][esc_attr($args['row_label']['field'])] ) ) {
-					$this->row_label['field'] = esc_attr($args['row_label']['field']);
-				}
-				else{
-					//if from field is not set correctly, making sure standard is set as the type
+				// Validating row label field.
+				if ( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][ esc_attr( $args['row_label']['field'] ) ] ) ) {
+					$this->row_label['field'] = esc_attr( $args['row_label']['field'] );
+				} else {
+					// If from field is not set correctly, making sure standard is set as the type.
 					$this->row_label['type'] = 'text';
 				}
 			}
