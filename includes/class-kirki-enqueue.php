@@ -117,7 +117,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'typography'      => array( 'jquery', 'selectize', 'wp-color-picker-alpha' ),
 			);
 			foreach ( $controls_scripts as $id => $dependencies ) {
-				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false );
+				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
 			}
 
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
