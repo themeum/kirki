@@ -56,7 +56,7 @@ script:
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
-  # - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/controls/*.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/controls/*.js; fi
   - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/functions/*.js; fi
   - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/*.js; fi
   # Run the plugin through JavaScript Code Style checker.
