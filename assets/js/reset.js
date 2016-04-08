@@ -1,20 +1,19 @@
-jQuery( document ).ready( function( $ ) {
+jQuery( document ).ready( function() {
 
 	'use strict';
 
 	jQuery( 'a.kirki-reset-section' ).on( 'click', function() {
 
 		var id       = jQuery( this ).data( 'reset-section-id' ),
-		    controls = wp.customize.section( id ).controls(),
-		    i;
+		    controls = wp.customize.section( id ).controls();
 
 		// Loop controls
-		for ( i = 0, len = controls.length; i < len; i++ ) {
+		_.each( controls, function( control, i ) {
 
 			// Set value to default
-			kirkiSetValue( controls[ i ].id, controls[ i ].params['default'] );
+			kirkiSetValue( controls[ i ].id, control.params['default'] );
 
-		}
+		});
 
 	});
 

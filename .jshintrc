@@ -24,6 +24,7 @@
 		"wp": false,
 
 		"kirkiBranding":false,
-		"jsvars":false
+		"jsvars":false,
+		"kirkiSetValue":false
 	}
 }
