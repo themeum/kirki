@@ -34,22 +34,20 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
 				</span>
-				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-				<?php
-					$settings = array(
-						'textarea_name' => $this->id,
-						'teeny'         => true,
-					);
-					add_filter( 'the_editor', array( $this, 'filter_editor_setting_link' ) );
-					wp_editor( html_entity_decode( wp_kses_post( $this->value() ) ), $this->id, $settings );
-
-					do_action( 'admin_footer' );
-					do_action( 'admin_print_footer_scripts' );
-				?>
 			</label>
+			<?php if ( ! empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<?php endif; ?>
 			<?php
+				$settings = array(
+					'textarea_name' => $this->id,
+					'teeny'         => true,
+				);
+				add_filter( 'the_editor', array( $this, 'filter_editor_setting_link' ) );
+				wp_editor( html_entity_decode( wp_kses_post( $this->value() ) ), $this->id, $settings );
+
+				do_action( 'admin_footer' );
+				do_action( 'admin_print_footer_scripts' );
 		}
 
 		/**
