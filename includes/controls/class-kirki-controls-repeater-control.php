@@ -33,7 +33,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 			parent::__construct( $manager, $id, $args );
 
-			//set up defaults for row labels
+			// Set up defaults for row labels.
 			$this->row_label = array(
 				'type' => 'text',
 				'value' => $l10n['row'],
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				$args['fields'] = array();
 			}
 
-			//An array to store keys of fields that need to be filtered
+			// An array to store keys of fields that need to be filtered.
 			$image_fields_to_filter = array();
 
 			foreach ( $args['fields'] as $key => $value ) {
@@ -79,9 +79,9 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				}
 				$args['fields'][ $key ]['id'] = $key;
 
-				// we check if the filed is an image or a cropped_image
+				// We check if the filed is an image or a cropped_image.
 				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value["type"] ) ) {
-					// we add it to the list of fields that need some extra filtering/processing
+					// We add it to the list of fields that need some extra filtering/processing.
 					$image_fields_to_filter[ $key ] = true;
 				}
 			}
@@ -113,11 +113,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								if ( is_numeric( $value ) ) {
 									// "sanitize" the value
 									$attachment_id = (int) $value;
-									//try to get the attachment_url
+									// Try to get the attachment_url
 									$url = wp_get_attachment_url( $attachment_id );
-									// if we got a URL
+									// If we got a URL
 									if ( $url ) {
-										//id is needed for form hidden value, URL is needed to display the image
+										// 'id' is needed for form hidden value, URL is needed to display the image
 										$value = array (
 											'id'  => $attachment_id,
 											'url' => $url
