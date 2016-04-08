@@ -15,7 +15,6 @@ wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 		// Set the field value for the first time
 		this.setValue( this.setting.get(), false );
 
-
 		// Init the sortable container
 		this.sortableContainer.sortable()
 			.disableSelection()

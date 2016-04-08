@@ -437,8 +437,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @return Object
 	 */
 	getValue: function() {
+
 		// The setting is saved in JSON
 		return JSON.parse( decodeURI( this.setting.get() ) );
+
 	},
 
 	/**
@@ -455,7 +457,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
-			this.settingField.trigger('change');
+			this.settingField.trigger( 'change' );
 
 		}
 

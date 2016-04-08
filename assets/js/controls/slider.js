@@ -1,7 +1,7 @@
 /**
  * KIRKI CONTROL: SLIDER
  */
-jQuery(document).ready(function() {
+jQuery( document ).ready(function() {
 
 	// Update the text value
 	jQuery( 'input[type=range]' ).on( 'mousedown', function() {
