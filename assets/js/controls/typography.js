@@ -29,10 +29,10 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		// renders and refreshes selectize sub-controls
 		var renderSubControl = function( fontFamily, sub, startValue ) {
 
-			subSelector = ( 'variant' === sub ) ? variantSelector : subsetSelector;
-
-			var is_standard = false,
-			    subList = {};
+			var subSelector = ( 'variant' === sub ) ? variantSelector : subsetSelector,
+			    is_standard = false,
+			    subList = {},
+			    subValue;
 
 			// destroy the selectize instance
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
@@ -135,7 +135,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 					render: {
 						item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
 						option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
-					},
+					}
 				}).data( 'selectize' );
 
 			}
@@ -181,7 +181,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			render: {
 				item: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; },
 				option: function( item, escape ) { return '<div>' + escape( item.label ) + '</div>'; }
-			},
+			}
 		});
 
 		// Render the variants

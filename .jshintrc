@@ -32,6 +32,7 @@
 		"CodeMirror":false,
 		"tinyMCE":false,
 		"unserialize":false,
-		"serialize":false
+		"serialize":false,
+		"kirkiAllFonts":false
 	}
 }
