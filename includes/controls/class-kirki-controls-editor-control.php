@@ -34,6 +34,7 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
 				</span>
+			</label>
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>
 				<?php endif; ?>
@@ -47,9 +48,6 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 
 					do_action( 'admin_footer' );
 					do_action( 'admin_print_footer_scripts' );
-				?>
-			</label>
-			<?php
 		}
 
 		/**
