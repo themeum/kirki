@@ -14,7 +14,8 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		    firstAvailable        = false,
 		    activeItem,
 		    value = {},
-		    renderSubControl;
+		    renderSubControl,
+		    picker;
 
 		// Make sure everything we're going to need exists.
 		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
@@ -36,8 +37,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			    subValue,
 			    subsetValues,
 			    subsetValuesArray,
-			    subSelectize,
-			    picker;
+			    subSelectize;
 
 			// Destroy the selectize instance.
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
