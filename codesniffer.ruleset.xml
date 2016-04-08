@@ -35,7 +35,6 @@
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
 		<exclude name="WordPress.Arrays.ArrayDeclaration.SpaceAfterKeyword" />
 		<exclude name="WordPress.Arrays.ArrayDeclaration.NoComma" />
-		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
 		<exclude name="Squiz.Commenting.BlockComment.NoEmptyLineBefore" />
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
