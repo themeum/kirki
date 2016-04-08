@@ -460,7 +460,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
-				if ( value.type === 'image' || value.type === 'cropped_image' ) {
+				if ( 'image' === value.type || 'cropped_image' === value.type ) {
 					filter.push( index );
 				}
 			});
