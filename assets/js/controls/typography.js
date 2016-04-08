@@ -310,7 +310,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 				setTimeout( function() {
 
 					// Add the value to the array and set the setting's value
-					value.color = picker.val ();
+					value.color = picker.val();
 					control.setting.set( value );
 
 					// Refresh the preview
