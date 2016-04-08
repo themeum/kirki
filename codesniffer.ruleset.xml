@@ -40,7 +40,6 @@
 		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
 		<exclude name="Squiz.Commenting.FunctionComment.InvalidNoReturn" />
 		<exclude name="WordPress.XSS.EscapeOutput.UnsafePrintingFunction" />
-		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
