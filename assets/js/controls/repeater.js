@@ -494,8 +494,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 
 			templateData.index = this.currentIndex;
-			templateData.ControlId = this.id;
-			templateData.buttonLabels = control.params.buttonLabels;
 
 			// Append the template content
 			template = template( templateData );
