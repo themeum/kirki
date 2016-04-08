@@ -33,7 +33,6 @@
 		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
 		<exclude name="WordPress.Arrays.ArrayDeclaration.SpaceAfterKeyword" />
-		<exclude name="WordPress.Arrays.ArrayDeclaration.NoComma" />
 		<exclude name="Squiz.Commenting.BlockComment.NoEmptyLineBefore" />
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
