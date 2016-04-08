@@ -28,6 +28,8 @@
 		"kirkiSetValue":false,
 		"kirkiValidateCSSValue":false,
 		"kirkiArrayToObject":false,
-		"kirkiObjectToArray":false
+		"kirkiObjectToArray":false,
+		"CodeMirror":false,
+		"tinyMCE":false
 	}
 }

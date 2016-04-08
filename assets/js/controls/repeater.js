@@ -61,11 +61,13 @@ var RepeaterRow = function ( rowIndex, container, label ) {
 	};
 
 	this.updateLabel();
-}
+};
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	ready: function() {
-		var control = this;
+		var control = this,
+		    limit,
+		    theNewRow;
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
@@ -86,15 +88,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.rows = [];
 
 		// Default limit choice
-		var limit = false;
+		limit = false;
 		if ( undefined !== this.params.choices.limit ) {
-			var limit = ( 0 >= this.params.choices.limit ) ? false : parseInt(this.params.choices.limit);
+			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt(this.params.choices.limit);
 		}
 
 		this.container.on( 'click', 'button.repeater-add', function( e ) {
 			e.preventDefault();
 			if ( ! limit || control.currentIndex < limit ) {
-				var theNewRow = control.addRow();
+				theNewRow = control.addRow();
 				theNewRow.toggleMinimize();
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );

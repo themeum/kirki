@@ -24,16 +24,22 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 
 				control.container.on( 'change keyup paste', '.' + dimension + ' input', function() {
 
-					subValue = jQuery( this ).val();
+					var subValue = jQuery( this ).val();
+
 					// Validate the value and show a warning if it's invalid
 					if ( false === kirkiValidateCSSValue( subValue ) ) {
+
 						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
+
 					} else {
+
 						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
+
 						// only proceed if value is valid
 						compiled_value[ dimension ] = subValue;
 						control.setting.set( compiled_value );
 						wp.customize.previewer.refresh();
+
 					}
 
 				});
