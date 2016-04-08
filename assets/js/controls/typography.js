@@ -36,7 +36,8 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			    subValue,
 			    subsetValues,
 			    subsetValuesArray,
-			    subSelectize;
+			    subSelectize,
+			    picker;
 
 			// Destroy the selectize instance.
 			if ( undefined !== jQuery( subSelector ).selectize()[0] ) {
@@ -287,7 +288,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 		});
 
-		// text-transform
+		// Text-transform
 		jQuery( textTransformSelector ).selectize();
 		this.container.on( 'change', '.text-transform select', function() {
 
@@ -300,21 +301,20 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 		});
 
+		picker = this.container.find( '.kirki-color-control' );
 
-
-		var picker = this.container.find ( '.kirki-color-control' );
-		// change color
-		picker.wpColorPicker ({
+		// Change color
+		picker.wpColorPicker({
 			change: function() {
 
-				setTimeout ( function() {
+				setTimeout( function() {
 
 					// Add the value to the array and set the setting's value
 					value.color = picker.val ();
 					control.setting.set ( value );
 
 					// Refresh the preview
-					wp.customize.previewer.refresh ();
+					wp.customize.previewer.refresh();
 
 				}, 100 );
 
