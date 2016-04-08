@@ -12,7 +12,7 @@ jQuery( document ).ready( function( $ ) {
 		for ( i = 0, len = controls.length; i < len; i++ ) {
 
 			// Set value to default
-			kirkiSetValue( controls[ i ].id, controls[ i ].params.default );
+			kirkiSetValue( controls[ i ].id, controls[ i ].params['default'] );
 
 		}
 

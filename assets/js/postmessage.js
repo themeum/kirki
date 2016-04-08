@@ -42,8 +42,8 @@
 						}
 
 						// Use css if method is undefined
-						if ( undefined === jsVars.i.function ) {
-							jsVars.i.function = 'css';
+						if ( undefined === jsVars.i['function'] ) {
+							jsVars.i['function'] = 'css';
 						}
 
 						// Use $ (just the value) if value_pattern is undefined
@@ -54,7 +54,7 @@
 						$.each( jsVars, function( i, args ) {
 
 							// Value is a string
-							if ( 'string' == typeof newval ) {
+							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
 								if ( undefined !== jsVars.i.value_pattern ) {
@@ -62,7 +62,7 @@
 								}
 
 								// Inject HTML
-								if ( 'html' === args.function ) {
+								if ( 'html' === args['function'] ) {
 									$( args.element ).html( args.prefix + val + args.units + args.suffix );
 
 								// Add CSS
@@ -81,11 +81,11 @@
 								}
 
 							// Value is an object
-							} else if ( 'object' == typeof newval ) {
+							} else if ( 'object' === typeof newval ) {
 								cssArray[ i ] = '';
 								$.each( newval, function( subValueKey, subValueValue ) {
 									if ( undefined !== args.choice ) {
-										if ( args.choice == subValueKey ) {
+										if ( args.choice === subValueKey ) {
 											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									} else {
