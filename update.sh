@@ -51,6 +51,7 @@ rm -rf ../kirki-svn/trunk/composer.json
 rm -rf ../kirki-svn/trunk/package.json
 rm -rf ../kirki-svn/trunk/phpunit.xml
 rm -rf ../kirki-svn/trunk/assets/scss/
+rm -rf ../kirki-svn/trunk/vendor/
 
 # Update svn
 cd ../kirki-svn

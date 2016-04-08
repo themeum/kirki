@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 * Adds actions to enqueue our assets.
 		 */
 		public function __construct() {
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ) );
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
 			add_action( 'customize_controls_print_scripts', array( $this, 'branding' ) );
 			add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 		}
@@ -75,8 +75,8 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
 
 			// Register the color-alpha picker.
-			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
 			wp_enqueue_style( 'wp-color-picker' );
+			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
 
 			// Register the jquery-ui-spinner.
 			wp_register_script( 'jquery-ui-spinner', trailingslashit( Kirki::$url ) . 'assets/js/vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
