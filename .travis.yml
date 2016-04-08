@@ -61,7 +61,7 @@ script:
   - if [[ "$SNIFF" == "1" ]]; then jshint ./assets/js/*.js; fi
   # Run the plugin through JavaScript Code Style checker.
   # - if [[ "$SNIFF" == "1" ]]; then jscs ./assets/js/controls/*.js; fi
-  # - if [[ "$SNIFF" == "1" ]]; then jscs ./assets/js/functions/*.js; fi
+  - if [[ "$SNIFF" == "1" ]]; then jscs ./assets/js/functions/*.js; fi
   - if [[ "$SNIFF" == "1" ]]; then jscs ./assets/js/*.js; fi
   # WordPress Coding Standards.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
