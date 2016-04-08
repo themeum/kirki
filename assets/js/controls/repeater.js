@@ -399,7 +399,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	setImageInReaperField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url +'">' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
 
 		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );

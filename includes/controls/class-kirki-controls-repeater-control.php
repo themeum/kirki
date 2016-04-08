@@ -120,7 +120,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										// 'id' is needed for form hidden value, URL is needed to display the image
 										$value = array (
 											'id'  => $attachment_id,
-											'url' => $url
+											'url' => $url,
 										);
 									}
 								}
