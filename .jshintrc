@@ -30,6 +30,8 @@
 		"kirkiArrayToObject":false,
 		"kirkiObjectToArray":false,
 		"CodeMirror":false,
-		"tinyMCE":false
+		"tinyMCE":false,
+		"unserialize":false,
+		"serialize":false
 	}
 }

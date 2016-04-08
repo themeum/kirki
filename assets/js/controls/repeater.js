@@ -156,7 +156,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		}
 
 		this.repeaterFieldsContainer.sortable({
-			handle: ".repeater-row-header",
+			handle: '.repeater-row-header',
 			update: function( e, ui ) {
 				control.sort();
 			}
@@ -474,7 +474,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( data ) {
 				for ( i in data ) {
 					if ( data.hasOwnProperty( i ) && templateData.hasOwnProperty( i ) ) {
-						templateData[ i ].default = data[ i ];
+						templateData[ i ]['default'] = data[ i ];
 					}
 				}
 			}
@@ -507,7 +507,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			for ( i in templateData ) {
 				if ( templateData.hasOwnProperty( i ) ) {
-					newRowSetting[ i ] = templateData[ i ].default;
+					newRowSetting[ i ] = templateData[ i ]['default'];
 				}
 			}
 
@@ -587,11 +587,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param e Event Object
 	 */
 	updateField: function( e, rowIndex, fieldId, element ) {
-		if ( ! this.rows[ rowIndex ] )
+		if ( ! this.rows[ rowIndex ] ) {
 			return;
+		}
 
-		if ( ! this.params.fields[ fieldId ] )
+		if ( ! this.params.fields[ fieldId ] ) {
 			return;
+		}
 
 		var type            = this.params.fields[ fieldId].type;
 		var row             = this.rows[ rowIndex ];
