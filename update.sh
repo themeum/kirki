@@ -47,6 +47,7 @@ rm -rf ../kirki-svn/trunk/.gitignore
 rm -rf ../kirki-svn/trunk/.simplecov
 rm -rf ../kirki-svn/trunk/.travis.yml
 rm -rf ../kirki-svn/trunk/assets/scss/
+rm -rf ../kirki-svn/trunk/vendor/
 
 # Update svn
 cd ../kirki-svn
