@@ -148,9 +148,9 @@ function kirkiSetValue( setting, value ) {
 			jQuery( this ).prop( 'checked', false );
 		});
 
-		for	( index = 0; index < value.length; index++ ) {
-			jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value[ index ] + '"]' ) ).prop( 'checked', true );
-		}
+		_.each( value, function( subValue, i ) {
+			jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
+		})
 
 	}
 
@@ -251,7 +251,7 @@ function kirkiSetValue( setting, value ) {
 	 * Control types:
 	 *     repeater
 	 */
-	else if ( 'repeater' == control_type ) {
+	else if ( 'repeater' === control_type ) {
 
 		// Do nothing
 	}
