@@ -171,7 +171,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				$old_values['variant'] = 'regular';
 			}
 			// letter spacing was in px, now it requires units.
-			if ( isset( $value['letter-spacing'] ) && $value['letter-spacing'] == intval( $value['letter-spacing'] ) ) {
+			if ( isset( $value['letter-spacing'] ) && intval( $value['letter-spacing'] ) == $value['letter-spacing'] ) {
 				$value['letter-spacing'] .= 'px';
 			}
 			$this->json['value'] = wp_parse_args( $value, $old_values );
