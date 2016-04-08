@@ -1,7 +1,7 @@
-( function( $ ) {
+( function() {
 	var api = wp.customize;
 
-	$.each( jsvars, function( setting, jsVars ) {
+	_.each( jsvars, function( jsVars, setting ) {
 
 		var css      = '',
 		    cssArray = {};
@@ -12,58 +12,58 @@
 
 				if ( undefined !== jsVars && 0 < jsVars.length ) {
 
-					$.each( jsVars, function( i, jsVar ) {
+					_.each( jsVars, function( jsVar ) {
 
 						var val = newval;
 
 						// Make sure element is defined.
-						if ( undefined === jsVars.i.element ) {
-							jsVars.i.element = '';
+						if ( undefined === jsVar.element ) {
+							jsVar.element = '';
 						}
 
 						// Make sure property is defined.
-						if ( undefined === jsVars.i.property ) {
-							jsVars.i.property = '';
+						if ( undefined === jsVar.property ) {
+							jsVar.property = '';
 						}
 
 						// Use empty prefix if undefined
-						if ( undefined === jsVars.i.prefix ) {
-							jsVars.i.prefix = '';
+						if ( undefined === jsVar.prefix ) {
+							jsVar.prefix = '';
 						}
 
 						// Use empty suffix if undefined
-						if ( undefined === jsVars.i.suffix ) {
-							jsVars.i.suffix = '';
+						if ( undefined === jsVar.suffix ) {
+							jsVar.suffix = '';
 						}
 
 						// Use empty units if undefined
-						if ( undefined === jsVars.i.units ) {
-							jsVars.i.units = '';
+						if ( undefined === jsVar.units ) {
+							jsVar.units = '';
 						}
 
 						// Use css if method is undefined
-						if ( undefined === jsVars.i.function ) {
-							jsVars.i.function = 'css';
+						if ( undefined === jsVar['function'] ) {
+							jsVar['function'] = 'css';
 						}
 
 						// Use $ (just the value) if value_pattern is undefined
-						if ( undefined === jsVars.i.value_pattern ) {
-							jsVars.i.value_pattern = '$';
+						if ( undefined === jsVar.value_pattern ) {
+							jsVar.value_pattern = '$';
 						}
 
-						$.each( jsVars, function( i, args ) {
+						_.each( jsVars, function( args, i ) {
 
 							// Value is a string
-							if ( 'string' == typeof newval ) {
+							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
-								if ( undefined !== jsVars.i.value_pattern ) {
-									val = jsVars.i.value_pattern.replace( /\$/g, newval );
+								if ( undefined !== jsVar.value_pattern ) {
+									val = jsVar.value_pattern.replace( /\$/g, newval );
 								}
 
 								// Inject HTML
-								if ( 'html' === args.function ) {
-									$( args.element ).html( args.prefix + val + args.units + args.suffix );
+								if ( 'html' === args['function'] ) {
+									jQuery( args.element ).html( args.prefix + val + args.units + args.suffix );
 
 								// Add CSS
 								} else {
@@ -81,23 +81,26 @@
 								}
 
 							// Value is an object
-							} else if ( 'object' == typeof newval ) {
+							} else if ( 'object' === typeof newval ) {
+
 								cssArray[ i ] = '';
-								$.each( newval, function( subValueKey, subValueValue ) {
+								_.each( newval, function( subValueValue, subValueKey ) {
 									if ( undefined !== args.choice ) {
-										if ( args.choice == subValueKey ) {
+										if ( args.choice === subValueKey ) {
 											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									} else {
 										cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 									}
 								});
+
 							}
+
 						});
 
 					});
 
-					$.each( cssArray, function( i, singleCSS ) {
+					_.each( cssArray, function( singleCSS ) {
 
 						setTimeout( function() {
 
@@ -110,10 +113,10 @@
 
 								// Make sure we have a stylesheet with the defined ID.
 								// If we don't then add it.
-								if ( ! $( '#kirki-customizer-postmessage' + setting ).size() ) {
-									$( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
+								if ( ! jQuery( '#kirki-customizer-postmessage' + setting ).size() ) {
+									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
 								}
-								$( '#kirki-customizer-postmessage' + setting ).text( css );
+								jQuery( '#kirki-customizer-postmessage' + setting ).text( css );
 							}
 
 						}, 300 );

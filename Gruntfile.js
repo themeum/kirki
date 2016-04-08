@@ -17,19 +17,6 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// Minify CSS
-		cssmin: {
-			options: {
-				shorthandCompacting: false,
-				roundingPrecision: -1
-			},
-			target: {
-				files: {
-					'assets/css/customizer.min.css': 'assets/css/customizer.css'
-				}
-			}
-		},
-
 		// Generate translation file
 		makepot: {
 			target: {
@@ -70,7 +57,7 @@ module.exports = function( grunt ) {
 		watch: {
 			css: {
 				files: 'assets/**/*.scss',
-				tasks: ['sass', 'cssmin']
+				tasks: ['sass']
 			},
 			readme: {
 				files: 'readme.txt',
@@ -82,7 +69,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-curl' );
@@ -90,7 +76,9 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-json2php' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 
-	grunt.registerTask( 'default', ['sass', 'cssmin', 'makepot', 'wp_readme_to_markdown'] );
+	grunt.registerTask( 'default', ['sass'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
+	grunt.registerTask( 'makepot', ['makepot'] );
+	grunt.registerTask( 'wp_readme_to_markdown', ['wp_readme_to_markdown'] );
 
 };

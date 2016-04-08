@@ -17,11 +17,14 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
 		// Saves our settings to the WP API
 		picker.wpColorPicker({
 			change: function( event, ui ) {
+
 				// Small hack: the picker needs a small delay
 				setTimeout( function() {
 					control.setting.set( picker.val() );
 				}, 100 );
+
 			}
+
 		});
 
 	}

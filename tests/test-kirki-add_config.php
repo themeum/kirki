@@ -32,7 +32,7 @@ class Test_Kirki_Add_Config extends WP_UnitTestCase {
 				'option_name'    => '',
 				'compiler'       => array(),
 				'disable_output' => false,
-				'postMessage'    => '',
+				// 'postMessage'    => '',
 				'id'             => 'global',
 			),
 			Kirki::$config['global']
@@ -44,7 +44,7 @@ class Test_Kirki_Add_Config extends WP_UnitTestCase {
 				'option_name'    => '',
 				'compiler'       => array(),
 				'disable_output' => false,
-				'postMessage'    => '',
+				// 'postMessage'    => '',
 				'id'             => 'test_empty',
 			),
 			Kirki::$config['test_empty']

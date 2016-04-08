@@ -15,6 +15,8 @@ find ./includes -name class-kirki-toolkit.php -exec sed -i "s/protected static $
 npm install
 grunt
 grunt googlefonts
+grunt makepot
+grunt wp_readme_to_markdown
 
 if [[ $3 == 'push' ]]; then
 	# Git commit
@@ -51,6 +53,7 @@ rm -rf ../kirki-svn/trunk/composer.json
 rm -rf ../kirki-svn/trunk/package.json
 rm -rf ../kirki-svn/trunk/phpunit.xml
 rm -rf ../kirki-svn/trunk/assets/scss/
+rm -rf ../kirki-svn/trunk/vendor/
 
 # Update svn
 cd ../kirki-svn

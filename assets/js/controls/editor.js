@@ -13,7 +13,7 @@
 						content;
 
 					if ( editor ) {
-						editor.onChange.add( function(ed, e) {
+						editor.onChange.add( function( ed, e ) {
 							ed.save();
 							content = editor.getContent();
 							clearTimeout( setChange );
@@ -23,7 +23,7 @@
 						});
 					}
 
-					tArea.css({ visibility: 'visible' }).on('keyup', function() {
+					tArea.css({ visibility: 'visible' }).on( 'keyup', function() {
 						content = tArea.val();
 						clearTimeout( setChange );
 						setChange = setTimeout( function() {

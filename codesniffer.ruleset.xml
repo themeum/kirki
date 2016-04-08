@@ -10,7 +10,32 @@
 	<rule ref="WordPress">
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.url_to_postid" />
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd" />
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<exclude name="Squiz.Commenting.VariableComment.Missing" />
+		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.InlineComment.NotCapital" />
+		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="Generic.Commenting.DocComment.ShortNotCapital" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
+		<exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
+		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
+		<exclude name="Squiz.Commenting.BlockComment.NoEmptyLineBefore" />
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
+		<exclude name="Squiz.Commenting.FunctionComment.InvalidNoReturn" />
+		<exclude name="WordPress.XSS.EscapeOutput.UnsafePrintingFunction" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->

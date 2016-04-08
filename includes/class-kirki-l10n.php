@@ -1,18 +1,46 @@
 <?php
-
+/**
+ * Internationalization helper.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! class_exists( 'Kirki_l10n' ) ) {
-
+	/**
+	 * Handles translations
+	 */
 	class Kirki_l10n {
 
+		/**
+		 * The plugin textdomain
+		 *
+		 * @access protected
+		 * @var string
+		 */
 		protected $textdomain = 'kirki';
 
+		/**
+		 * The class constructor.
+		 * Adds actions & filters to handle the rest of the methods.
+		 *
+		 * @access public
+		 */
 		public function __construct() {
 
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
 		}
 
+		/**
+		 * Load the plugin textdomain
+		 *
+		 * @access public
+		 */
 		public function load_textdomain() {
 
 			if ( null !== $this->get_path() ) {
@@ -23,7 +51,10 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 		}
 
 		/**
-		 * @return string
+		 * Gets the path to a translation file.
+		 *
+		 * @access protected
+		 * @return string Absolute path to the translation file.
 		 */
 		protected function get_path() {
 			$path_found = false;
@@ -44,6 +75,9 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 		}
 
 		/**
+		 * Returns an array of paths where translation files may be located.
+		 *
+		 * @access protected
 		 * @return array
 		 */
 		protected function get_paths() {
@@ -60,7 +94,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 *
+		 * @param string $config_id The config ID. See Kirki_Config
 		 * @return array
 		 */
 		public static function get_strings( $config_id = 'global' ) {
@@ -155,7 +189,8 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'ultra-bold'            => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
 				'ultra-bold-italic'     => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
 				'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
-				'add-new-row'           => esc_attr__( 'Add new row', 'kirki' ),
+				'add-new'           	=> esc_attr__( 'Add new', 'kirki' ),
+				'row'           		=> esc_attr__( 'row', 'kirki' ),
 				'limit-rows'            => esc_attr__( 'Limit: %s rows', 'kirki' ),
 				'open-section'          => esc_attr__( 'Press return or enter to open this section', 'kirki' ),
 				'back'                  => esc_attr__( 'Back', 'kirki' ),
