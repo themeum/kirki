@@ -1,11 +1,11 @@
 function kirkiObjectToArray( obj ) {
 	var arr = [];
 	if ( null !== obj ) {
-		for ( var i = 0; i < obj.length; ++i ) {
-			if ( undefined !== obj[ i ] ) {
-				arr.push( obj[ i ] );
+		_.each( obj, function( value ) {
+			if ( undefined !== value ) {
+				arr.push( value );
 			}
-		}
+		})
 	}
 	return arr;
 }
