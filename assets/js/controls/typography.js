@@ -40,56 +40,64 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 			}
 
 			// Get all items in the sub-list for the active font-family
-			for ( var i = 0, len = kirkiAllFonts.length; i < len; i++ ) {
+			_.each( kirkiAllFonts, function( font, i ) {
+
 				// Find the font-family we've selected in the global array of fonts.
-				if ( fontFamily === kirkiAllFonts[ i ].family ) {
+				if ( fontFamily === font.family ) {
+
 					// Check if this is a standard font or a google-font.
-					if ( undefined !== kirkiAllFonts[ i ].is_standard && true === kirkiAllFonts[ i ].is_standard ) {
+					if ( undefined !== font.is_standard && true === font.is_standard ) {
 						is_standard = true;
 					}
 
-					subList = kirkiAllFonts[ i ][ sub + 's' ]; // the 's' is for plural (variant/variants, subset/subsets)
+					subList = font[ sub + 's' ]; // The 's' is for plural (variant/variants, subset/subsets)
 
 				}
 
-			}
+			});
 
 			// This is a googlefont, or we're talking subsets.
 			if ( false === is_standard || 'subset' !== sub ) {
+
 				// Determine the initial value we have to use
 				if ( null === startValue  ) {
-					if ( 'variant' === sub ) { // the context here is variants
-						// loop the variants.
-						for ( var i = 0, len = subList.length; i < len; i++ ) {
 
-							if ( undefined !== subList[ i ].id ) {
+					if ( 'variant' === sub ) { // the context here is variants
+
+						// loop the variants.
+						_.each( subList, function( variant ) {
+
+							if ( undefined !== variant.id ) {
+
 								activeItem = value.variant;
+
 							} else {
+
 								var defaultValue = 'regular';
-								if ( defaultValue === subList[ i ].id ) {
+
+								if ( defaultValue === variant.id ) {
 									hasDefault = true;
 								} else if ( false === firstAvailable ) {
-									firstAvailable = subList[ i ].id;
+									firstAvailable = variant.id;
 								}
+
 							}
 
-						}
+						});
 
 					} else if ( 'subset' === sub ) { // The context here is subsets
 
 						var subsetValues = {};
 
-						for ( var i = 0, len = subList.length; i < len; i++ ) {
-
+						_.each( subList, function( subSet ) {
 							if ( null !== value.subset ) {
-								for ( var s = 0, len = value.subset.length; s < len; s++ ) {
-									if ( undefined !== subList[ i ] && value.subset[ s ] === subList[ i ].id ) {
-										subsetValues[ value.subset[ s ] ] = value.subset[ s ];
+								_.each( value.subset, function( item ) {
+									if ( undefined !== subSet && item === subSet.id ) {
+										subsetValues[ item ] = item;
 									}
-								}
+								});
 							}
-
-						}
+						});
 
 						if ( 0 === subsetValues.length ) {
 							activeItem = ['latin'];

@@ -1,3 +1,4 @@
+/*jshint -W065 */
 /**
  * KIRKI CONTROL: REPEATER
  */
