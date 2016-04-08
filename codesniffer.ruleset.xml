@@ -29,7 +29,6 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
 		<exclude name="Squiz.Commenting.InlineComment.SpacingAfter" />
-		<exclude name="Squiz.Commenting.InlineComment.NoSpaceBefore" />
 		<exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
 		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
