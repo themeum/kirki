@@ -43,11 +43,9 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			 * If we are in the frontend AND $config['inline_css'] == false
 			 * Then load dynamic CSS using AJAX.
 			 */
-			// if ( ! $wp_customize && ( isset( $config['inline_css'] ) && false == $config['inline_css'] ) ) {
-			// 	add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
-			// 	add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
-			// 	add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
-			// }
+			// add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
+			// add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+			// add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
 
 		}
 
