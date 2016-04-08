@@ -3,19 +3,18 @@
  * KIRKI CONTROL: REPEATER
  */
 
-var RepeaterRow = function ( rowIndex, container, label ) {
+var RepeaterRow = function( rowIndex, container, label ) {
 	this.rowIndex   = rowIndex;
 	this.container  = container;
-	this.label  	= label;
-	this.header     = this.container.find( '.repeater-row-header' );
-
-	var self = this;
+	this.label      = label;
+	this.header     = this.container.find( '.repeater-row-header' ),
+	self            = this;
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();
 	});
 
-	this.container.on( 'click', '.repeater-row-remove' , function() {
+	this.container.on( 'click', '.repeater-row-remove', function() {
 		self.remove();
 	});
 
@@ -35,7 +34,8 @@ var RepeaterRow = function ( rowIndex, container, label ) {
 	};
 
 	this.toggleMinimize = function() {
-		// Store the previous state
+
+		// Store the previous state.
 		this.container.toggleClass( 'minimized' );
 		this.header.find( '.dashicons' ).toggleClass( 'dashicons-arrow-up' ).toggleClass( 'dashicons-arrow-down' );
 	};
@@ -48,17 +48,20 @@ var RepeaterRow = function ( rowIndex, container, label ) {
 	};
 
 	this.updateLabel = function() {
-		if( this.label.type === 'field') {
-			var rowLabelField = this.container.find( '.repeater-field [data-field="'+this.label.field+'"]' );
-			if( typeof rowLabelField.val === 'function' ) {
-				var rowLabel = rowLabelField.val();
-				if( rowLabel !== '' ) {
+		var rowLabelField,
+		    rowLabel;
+
+		if ( 'field' === this.label.type ) {
+			rowLabelField = this.container.find( '.repeater-field [data-field="' + this.label.field + '"]' );
+			if ( 'function' === typeof rowLabelField.val ) {
+				rowLabel = rowLabelField.val();
+				if ( rowLabel !== '' ) {
 					this.header.find( '.repeater-row-label' ).text( rowLabel );
 					return;
 				}
 			}
 		}
-		this.header.find( '.repeater-row-label' ).text( this.label.value + ' ' + (this.rowIndex+1) );
+		this.header.find( '.repeater-row-label' ).text( this.label.value + ' ' + ( this.rowIndex + 1 ) );
 	};
 
 	this.updateLabel();
@@ -91,7 +94,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Default limit choice
 		limit = false;
 		if ( undefined !== this.params.choices.limit ) {
-			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt(this.params.choices.limit);
+			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit );
 		}
 
 		this.container.on( 'click', 'button.repeater-add', function( e ) {
@@ -111,16 +114,16 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function ( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function ( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function( e ) {
 			e.preventDefault();
-			control.$thisButton = jQuery(this);
-			control.removeImage(e);
+			control.$thisButton = jQuery( this );
+			control.removeImage( e );
 		});
 
 		/**
@@ -150,9 +153,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// When we load the control, the fields have not been filled up
 		// This is the first time that we create all the rows
 		if ( settingValue.length ) {
-			for ( var i = 0; i < settingValue.length; i++ ) {
-				control.addRow( settingValue[ i ] );
-			}
+			_.each( settingValue, function( subValue ) {
+				control.addRow( subValue );
+			});
 		}
 
 		this.repeaterFieldsContainer.sortable({
@@ -182,7 +185,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.frame.open();
 	},
 
-	initFrame : function() {
+	initFrame: function() {
 
 		this.frame = wp.media({
 			states: [
@@ -201,24 +204,28 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
 	 */
-	 initCropperFrame : function() {
+	 initCropperFrame: function() {
 
 		// We get the field id from which this was called
-		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
+		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ]; // A list of attributes to look for
+
 		// Make sure we got it
 		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
+
 			// Make fields is defined and only do the hack for cropped_image
 			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
-				// A list of attributes to look for
-				var attrs = [ 'width' , 'height' , 'flex_width' , 'flex_height' ];
+
 				//Iterate over the list of attributes
 				attrs.forEach( function( el , index ) {
+
 					// If the attribute exists in the field
 					if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ el ] ) {
+
 						// Set the attribute in the main object
 						this.params[ el ] = this.params.fields[ currentFieldId ][ el ];
 					}
-				}.bind(this));
+				}.bind( this ) );
 			}
 		}
 
