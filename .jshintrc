@@ -27,5 +27,7 @@
 		"jsvars":false,
 		"kirkiSetValue":false,
 		"kirkiValidateCSSValue":false,
+		"kirkiArrayToObject":false,
+		"kirkiObjectToArray":false
 	}
 }
