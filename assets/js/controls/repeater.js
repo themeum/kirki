@@ -173,6 +173,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		}
 
+		//once we have displayed the rows, we cleanup the values
+		this.setValue( settingValue, true, true );
+
 		this.repeaterFieldsContainer.sortable({
 			handle: ".repeater-row-move",
 			update: function( e, ui ) {
@@ -454,8 +457,28 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param newValue Object
 	 * @param refresh If we want to refresh the previewer or not
 	 */
-	setValue: function( newValue, refresh ) {
-		this.setting.set( encodeURI( JSON.stringify( newValue ) ) );
+	setValue: function( newValue, refresh , filtering ) {
+
+		//We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
+		var filteredValue = newValue;
+
+		if( filtering ) {
+			var filter = [];
+			jQuery.each(this.params.fields, function(index, value) {
+				if ( value.type === 'image' || value.type === 'cropped_image' ){
+					filter.push(index);
+				}
+			});
+			jQuery.each(newValue, function(index, value) {
+				jQuery.each(filter, function(ind, field) {
+					if( typeof value[field] !== 'undefined' && typeof value[field].id !== 'undefined' ){
+						filteredValue[index][field] = value[field].id;
+					}
+				});
+			});
+		}
+
+		this.setting.set( encodeURI( JSON.stringify( filteredValue ) ) );
 
 		if ( refresh ) {
 			// Trigger the change event on the hidden field so
