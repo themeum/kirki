@@ -4,11 +4,12 @@
  */
 
 var RepeaterRow = function( rowIndex, container, label ) {
+	var self        = this;
+
 	this.rowIndex   = rowIndex;
 	this.container  = container;
 	this.label      = label;
 	this.header     = this.container.find( '.repeater-row-header' ),
-	self            = this;
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();
@@ -55,7 +56,7 @@ var RepeaterRow = function( rowIndex, container, label ) {
 			rowLabelField = this.container.find( '.repeater-field [data-field="' + this.label.field + '"]' );
 			if ( 'function' === typeof rowLabelField.val ) {
 				rowLabel = rowLabelField.val();
-				if ( rowLabel !== '' ) {
+				if ( '' !== rowLabel ) {
 					this.header.find( '.repeater-row-label' ).text( rowLabel );
 					return;
 				}
@@ -217,7 +218,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
 
 				//Iterate over the list of attributes
-				attrs.forEach( function( el , index ) {
+				attrs.forEach( function( el, index ) {
 
 					// If the attribute exists in the field
 					if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ el ] ) {
@@ -255,7 +256,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 	},
 
-	onSelect : function() {
+	onSelect: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		this.setImageInReaperField( attachment );
@@ -398,7 +399,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	setImageInReaperField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="'+ attachment.url +'">' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url +'">' ).hide().slideDown( 'slow' );
 
 		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
@@ -409,16 +410,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.frame.close();
 	},
 
-	removeImage : function( event ) {
+	removeImage: function( event ) {
+		var $targetDiv,
+		    $uploadButton;
+
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
 		}
 
-		var $targetDiv = this.$thisButton.closest( '.repeater-field-image' );
-		var $uploadButton = $targetDiv.find( '.upload-button' );
+		$targetDiv = this.$thisButton.closest( '.repeater-field-image' );
+		$uploadButton = $targetDiv.find( '.upload-button' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
-			jQuery(this).show().html( jQuery(this).data( 'placeholder' ) );
+			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
 		});
 		$targetDiv.find( '.hidden-field' ).val( '' );
 		$uploadButton.text( $uploadButton.data( 'label' ) );
@@ -444,13 +448,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param refresh If we want to refresh the previewer or not
 	 */
 	setValue: function( newValue, refresh ) {
+
 		this.setting.set( encodeURI( JSON.stringify( newValue ) ) );
 
 		if ( refresh ) {
+
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
 			this.settingField.trigger('change');
+
 		}
+
 	},
 
 	/**
@@ -461,14 +469,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	addRow: function( data ) {
 		var control = this,
 			i,
-			// The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() )
-			template = control.repeaterTemplate(),
-			// Get the current setting value
-			settingValue = this.getValue(),
-			// Saves the new setting data
-			newRowSetting = {},
-			// Data to pass to the template
-			templateData;
+			template = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
+			settingValue = this.getValue(), // Get the current setting value.
+			newRowSetting = {}, // Saves the new setting data.
+			templateData, // Data to pass to the template
+			newRow;
 
 		if ( template ) {
 
@@ -494,7 +499,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			template = template( templateData );
 
 			// Create a new row object and append the element
-			var newRow = new RepeaterRow(
+			newRow = new RepeaterRow(
 				control.currentIndex,
 				jQuery( template ).appendTo( control.repeaterFieldsContainer ),
 				control.params.row_label
@@ -530,17 +535,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	},
 
 	sort: function() {
-		var control  = this;
-		var $rows    = this.repeaterFieldsContainer.find( '.repeater-row' );
-		var newOrder = [];
+		var control  = this,
+		    $rows    = this.repeaterFieldsContainer.find( '.repeater-row' ),
+		    newOrder = [],
+		    settings    = control.getValue(),
+		    newRows     = [],
+		    newSettings = [];
 
 		$rows.each( function( i, element ) {
 			newOrder.push( jQuery( element ).data( 'row' ) );
 		});
 
-		var settings    = control.getValue();
-		var newRows     = [];
-		var newSettings = [];
 		jQuery.each( newOrder, function( newPosition, oldPosition ) {
 			newRows[ newPosition ] = control.rows[ oldPosition ];
 			newRows[ newPosition ].setRowIndex( newPosition );
@@ -558,12 +563,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param index Position of the row in the complete Setting Array
 	 */
 	deleteRow: function( index ) {
-		var currentSettings = this.getValue();
+		var currentSettings = this.getValue(),
+		    row,
+		    i,
+		    prop;
 
 		if ( currentSettings[ index ] ) {
+
 			// Find the row
-			var row = this.rows[ index ];
+			row = this.rows[ index ];
 			if ( row ) {
+
 				// The row exists, let's delete it
 
 				// Remove the row settings
@@ -574,12 +584,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 				// Update the new setting values
 				this.setValue( currentSettings, true );
+
 			}
+
 		}
 
 		// Remap the row numbers
-		var i = 1;
-		for ( var prop in this.rows ) {
+		i = 1;
+		for ( prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].updateLabel();
 				i++;
@@ -594,6 +606,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param e Event Object
 	 */
 	updateField: function( e, rowIndex, fieldId, element ) {
+		var type,
+		    row,
+		    currentSettings;
+
 		if ( ! this.rows[ rowIndex ] ) {
 			return;
 		}
@@ -602,9 +618,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		var type            = this.params.fields[ fieldId].type;
-		var row             = this.rows[ rowIndex ];
-		var currentSettings = this.getValue();
+		type            = this.params.fields[ fieldId].type;
+		row             = this.rows[ rowIndex ];
+		currentSettings = this.getValue();
 
 		element = jQuery( element );
 
@@ -613,10 +629,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		}
 
 		if ( 'checkbox' === type ) {
+
 			currentSettings[ row.rowIndex ][ fieldId ] = element.is( ':checked' );
+
 		} else {
+
 			// Update the settings
 			currentSettings[ row.rowIndex ][ fieldId ] = element.val();
+
 		}
 
 		this.setValue( currentSettings, true );

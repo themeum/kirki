@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Handle the reset button
-	jQuery( '.kirki-slider-reset' ).click( function () {
+	jQuery( '.kirki-slider-reset' ).click( function() {
 
 		var thisInput    = jQuery( this ).closest( 'label' ).find( 'input' ),
 			inputDefault = thisInput.data( 'reset_value' );

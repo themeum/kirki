@@ -40,7 +40,7 @@ wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 		this.sortableContainer.find( 'li' ).each( function() {
 			var $this = jQuery( this );
 			if ( ! $this.is( '.invisible' ) ) {
-				newValue.push( $this.data('value' ) );
+				newValue.push( $this.data( 'value' ) );
 			}
 		});
 
@@ -53,8 +53,10 @@ wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 	 * @return Object
 	 */
 	getValue: function() {
+
 		// The setting is saved in PHP serialized format
 		return unserialize( this.setting.get() );
+
 	},
 
 	/**
@@ -64,6 +66,7 @@ wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 	 * @param refresh If we want to refresh the previewer or not
 	 */
 	setValue: function( newValue, refresh ) {
+
 		var newValueSerialized = serialize( newValue );
 		this.setting.set( newValueSerialized );
 
@@ -74,7 +77,7 @@ wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
 
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
-			this.settingField.trigger('change');
+			this.settingField.trigger( 'change' );
 
 		}
 
