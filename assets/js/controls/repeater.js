@@ -159,7 +159,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			});
 		}
 
-		//once we have displayed the rows, we cleanup the values
+		// Once we have displayed the rows, we cleanup the values
 		this.setValue( settingValue, true, true );
 
 		this.repeaterFieldsContainer.sortable({
@@ -454,19 +454,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	setValue: function( newValue, refresh, filtering ) {
 
-		//We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
+		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
 		var filteredValue = newValue;
+		var filter = [];
 
-		if( filtering ) {
-			var filter = [];
-			jQuery.each(this.params.fields, function(index, value) {
-				if ( value.type === 'image' || value.type === 'cropped_image' ){
-					filter.push(index);
+		if ( filtering ) {
+			jQuery.each( this.params.fields, function( index, value ) {
+				if ( value.type === 'image' || value.type === 'cropped_image' ) {
+					filter.push( index );
 				}
 			});
-			jQuery.each(newValue, function(index, value) {
-				jQuery.each(filter, function(ind, field) {
-					if( typeof value[field] !== 'undefined' && typeof value[field].id !== 'undefined' ){
+			jQuery.each( newValue, function( index, value ) {
+				jQuery.each( filter, function( ind, field ) {
+					if ( 'undefined' !== typeof value[field] && 'undefined' !== typeof value[field].id ) {
 						filteredValue[index][field] = value[field].id;
 					}
 				});
