@@ -1,10 +1,23 @@
 <?php
+/**
+ * Initializes Kirki
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! class_exists( 'Kirki_Init' ) ) {
+	/**
+	 * Initialize Kirki
+	 */
 	class Kirki_Init {
 
 		/**
-		 * the class constructor
+		 * The class constructor.
 		 */
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'set_url' ) );
@@ -13,33 +26,38 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		}
 
 		/**
-		 * Properly set the Kirki URL for assets
+		 * Properly set the Kirki URL for assets.
 		 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
-		 * and then does some calculations to get the proper URL for its CSS & JS assets
+		 * and then does some calculations to get the proper URL for its CSS & JS assets.
 		 */
 		public function set_url() {
-			// the path of the Kirki's parent-folder
+
+			// The path of the Kirki's parent-folder.
 			$path = wp_normalize_path( dirname( Kirki::$path ) );
-			// get parent-theme path
+
+			// Get parent-theme path.
 			$parent_theme_path = get_template_directory();
 			$parent_theme_path = wp_normalize_path( $parent_theme_path );
-			// Get child-theme path
+
+			// Get child-theme path.
 			$child_theme_path = get_stylesheet_directory_uri();
 			$child_theme_path = wp_normalize_path( $child_theme_path );
-
 			Kirki::$url = plugin_dir_url( dirname( __FILE__ ) . 'kirki.php' );
-			// is Kirki included in a parent theme?
-			if ( false !== strpos( $parent_theme_path, $path ) ) {
-				Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $parent_theme_path, '', $path );
+
+			// Is Kirki included in a parent theme?
+			if ( false !== strpos( Kirki::$path, $parent_theme_path ) ) {
+				Kirki::$url = get_template_directory_uri() . str_replace( $parent_theme_path, '', Kirki::$path );
 			}
+
 			// Is there a child-theme?
-			if ( $child_theme_path != $parent_theme_path ) {
-				// is Kirki included in a child theme?
-				if ( false !== strpos( $child_theme_path, $path ) ) {
-					Kirki::$url = trailingslashit( get_template_directory_uri() ) . str_replace( $child_theme_path, '', $path );
+			if ( $child_theme_path !== $parent_theme_path ) {
+				// Is Kirki included in a child theme?
+				if ( false !== strpos( Kirki::$path, $child_theme_path ) ) {
+					Kirki::$url = get_template_directory_uri() . str_replace( $child_theme_path, '', Kirki::$path );
 				}
 			}
-			// Apply the kirki/config filter
+
+			// Apply the kirki/config filter.
 			$config = apply_filters( 'kirki/config', array() );
 			if ( isset( $config['url_path'] ) ) {
 				Kirki::$url = esc_url_raw( $config['url_path'] );
@@ -102,10 +120,9 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		}
 
 		/**
-		 * register our panels to the WordPress Customizer
+		 * Register our panels to the WordPress Customizer.
 		 *
-		 * @var	object	The WordPress Customizer object
-		 * @return  void
+		 * @access public
 		 */
 		public function add_panels() {
 			if ( ! empty( Kirki::$panels ) ) {
@@ -116,7 +133,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		}
 
 		/**
-		 * register our sections to the WordPress Customizer
+		 * Register our sections to the WordPress Customizer.
 		 *
 		 * @var	object	The WordPress Customizer object
 		 * @return  void
@@ -139,7 +156,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 			global $wp_customize;
 			foreach ( Kirki::$fields as $args ) {
-				if ( isset( $args['type'] ) && 'background' == $args['type'] ) {
+				if ( isset( $args['type'] ) && 'background' === $args['type'] ) {
 					continue;
 				}
 				/**
@@ -174,65 +191,45 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 
 			$variables = array();
 
-			/**
-			 * Loop through all fields
-			 */
+			// Loop through all fields.
 			foreach ( Kirki::$fields as $field ) {
-				/**
-				 * Check if we have variables for this field
-				 */
-				if ( isset( $field['variables'] ) && false != $field['variables'] && ! empty( $field['variables'] ) ) {
-					/**
-					 * Loop through the array of variables
-					 */
+
+				// Check if we have variables for this field.
+				if ( isset( $field['variables'] ) && $field['variables'] && ! empty( $field['variables'] ) ) {
+
+					// Loop through the array of variables.
 					foreach ( $field['variables'] as $field_variable ) {
-						/**
-						 * Is the variable ['name'] defined?
-						 * If yes, then we can proceed.
-						 */
+
+						// Is the variable ['name'] defined? If yes, then we can proceed.
 						if ( isset( $field_variable['name'] ) ) {
-							/**
-							 * Sanitize the variable name
-							 */
+
+							// Sanitize the variable name.
 							$variable_name = esc_attr( $field_variable['name'] );
-							/**
-							 * Do we have a callback function defined?
-							 * If not then set $variable_callback to false.
-							 */
+
+							// Do we have a callback function defined? If not then set $variable_callback to false.
 							$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
-							/**
-							 * If we have a variable_callback defined then get the value of the option
-							 * and run it through the callback function.
-							 * If no callback is defined (false) then just get the value.
-							 */
+
+							// If we have a variable_callback defined then get the value of the option
+							// and run it through the callback function.
+							// If no callback is defined (false) then just get the value.
 							if ( $variable_callback ) {
 								$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( $field['settings'] ) );
 							} else {
 								$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
 							}
-
 						}
-
 					}
-
 				}
-
 			}
-			/**
-			 * Pass the variables through a filter ('kirki/variable')
-			 * and return the array of variables
-			 */
+
+			// Pass the variables through a filter ('kirki/variable') and return the array of variables.
 			return apply_filters( 'kirki/variable', $variables );
-
-		}
-
-		public static function path() {
 
 		}
 
 		/**
 		 * Process fields added using the 'kirki/fields' and 'kirki/controls' filter.
-		 * These filters are no longer used, this is simply for backwards-compatibility
+		 * These filters are no longer used, this is simply for backwards-compatibility.
 		 */
 		public function fields_from_filters() {
 
@@ -250,13 +247,11 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		/**
 		 * Handle saving of settings with "user_meta" storage type.
 		 *
-		 * @param $value                 string     Value being saved
-		 * @param wp_customize_setting   object     $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
+		 * @param string $value The value being saved.
+		 * @param object $wp_customize_setting $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
 		 */
 		public function update_user_meta( $value, $wp_customize_setting ) {
 			update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
 		}
-
 	}
-
 }
