@@ -216,15 +216,15 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php endif; ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+					<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 				<?php endif; ?>
-				<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo $this->get_link(); ?> />
+				<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo wp_kses_post( $this->get_link() ); ?> />
 			</label>
 
 			<ul class="repeater-fields"></ul>
 
 			<?php if ( isset( $this->choices['limit'] ) ) : ?>
-				<p class="limit"><?php printf( $l10n['limit-rows'], $this->choices['limit'] ); ?></p>
+				<p class="limit"><?php printf( esc_html( $l10n['limit-rows'] ), esc_html( $this->choices['limit'] ) ); ?></p>
 			<?php endif; ?>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 

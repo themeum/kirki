@@ -34,13 +34,13 @@
 			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
 				<h3 class="accordion-section-title" tabindex="0">
 					{{ data.title }}
-					<span class="screen-reader-text"><?php echo $l10n['open-section']; ?></span>
+					<span class="screen-reader-text"><?php echo esc_html( $l10n['open-section'] ); ?></span>
 				</h3>
 				<ul class="accordion-section-content">
 					<li class="customize-section-description-container">
 						<div class="customize-section-title">
 							<button class="customize-section-back" tabindex="-1">
-								<span class="screen-reader-text"><?php echo $l10n['back'] ?></span>
+								<span class="screen-reader-text"><?php echo esc_html( $l10n['back'] ); ?></span>
 							</button>
 							<h3>
 								<span class="customize-action">
@@ -48,7 +48,7 @@
 								</span>
 								{{ data.title }}
 								<a href="#" class="kirki-reset-section" data-reset-section-id="{{ data.id }}">
-									<?php echo $l10n['reset-with-icon']; ?>
+									<?php echo wp_kses_post( $l10n['reset-with-icon'] ); ?>
 								</a>
 							</h3>
 						</div>

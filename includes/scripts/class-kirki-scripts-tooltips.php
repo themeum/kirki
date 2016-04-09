@@ -114,7 +114,7 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$tooltip_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$tooltip_script . '});</script>';
+				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . wp_kses_post( self::$tooltip_script ) . '});</script>';
 			}
 		}
 	}

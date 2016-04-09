@@ -96,7 +96,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$icons_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
+				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . wp_kses_post( self::$icons_script ) . '});</script>';
 			}
 		}
 	}
