@@ -12,14 +12,6 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.url_to_postid" />
-		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
-		<exclude name="Squiz.Commenting.ClassComment.Missing" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
-		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
-		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
-		<exclude name="Squiz.Commenting.FunctionComment.InvalidNoReturn" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
