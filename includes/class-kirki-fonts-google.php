@@ -255,13 +255,15 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				}
 				$link_fonts[] = $link_font;
 			}
-			$this->link = 'https://fonts.googleapis.com/css?family=';
-			$this->link .= implode( '|', $link_fonts );
 
 			if ( ! empty( $this->subsets ) ) {
 				$this->subsets = array_unique( $this->subsets );
-				$this->link .= '&subset=' . implode( ',', $this->subsets );
 			}
+
+			$this->link = add_query_arg( array(
+				'family' => str_replace( '%2B', '+', urlencode( implode( '|', $link_fonts ) ) ),
+				'subset' => urlencode( implode( ',', $this->subsets ) ),
+			), 'https://fonts.googleapis.com/css' );
 
 		}
 	}
