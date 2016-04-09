@@ -104,14 +104,11 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 					$valid = true;
 
 					foreach ( $field['required'] as $requirement ) {
-						if (
-							! Kirki_Active_Callback::compare(
-								Kirki::get_option( $requirement['setting'] ),
-								$requirement['value'],
-								$requirement['operator']
-							)
-						) {
-							$valid = false;
+						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
+							$controller_value = Kirki::get_option( $requirement['setting'] );
+							if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+								$valid = false;
+							}
 						}
 					}
 
