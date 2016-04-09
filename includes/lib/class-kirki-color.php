@@ -236,7 +236,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			return array( 'h' => round( $h, 2 ), 's' => round( $s, 2 ), 'v' => round( $v, 2 ) );
 		}
 
-		/*
+		/**
 		 * This is a very simple algorithm that works by summing up the differences between the three color components red, green and blue.
 		 * A value higher than 500 is recommended for good readability.
 		 */
@@ -252,7 +252,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			return $color_diff;
 		}
 
-		/*
+		/**
 		 * This function tries to compare the brightness of the colors.
 		 * A return value of more than 125 is recommended.
 		 * Combining it with the color_difference function above might make sense.
@@ -267,7 +267,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			return intval( abs( $br_1 - $br_2 ) );
 		}
 
-		/*
+		/**
 		 * Uses the luminosity to calculate the difference between the given colors.
 		 * The returned value should be bigger than 5 for best readability.
 		 */
