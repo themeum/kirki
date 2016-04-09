@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Color_Alpha extends Kirki_Field {
 
 		/**

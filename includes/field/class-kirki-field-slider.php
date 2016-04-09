@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Slider' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Slider extends Kirki_Field_Number {
 
 		/**

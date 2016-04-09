@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Dropdown_Pages' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Dropdown_Pages extends Kirki_Field {
 
 		/**

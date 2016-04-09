@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Radio_Buttonset extends Kirki_Field_Radio {
 
 		/**

@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Palette' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Palette extends Kirki_Field_Radio {
 
 		/**

@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Radio' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Radio extends Kirki_Field {
 
 		/**

@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Multicheck extends Kirki_Field {
 
 		/**

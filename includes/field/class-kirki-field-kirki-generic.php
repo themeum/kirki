@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Kirki_Generic' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Kirki_Generic extends Kirki_Field {
 
 		/**

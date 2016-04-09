@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Dashicons' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Dashicons extends Kirki_Field {
 
 		/**

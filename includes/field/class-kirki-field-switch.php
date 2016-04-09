@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Field_Switch' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 
 		/**
