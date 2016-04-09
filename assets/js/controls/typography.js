@@ -18,15 +18,14 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		    picker;
 
 		// Make sure everything we're going to need exists.
-		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
-		value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
-		value.variant           = ( undefined !== control.setting._value.variant ) ? control.setting._value.variant : '';
-		value.subset            = ( undefined !== control.setting._value.subset ) ? control.setting._value.subset : '';
-		value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
-		value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
-		value.color             = ( undefined !== control.setting._value.color ) ? control.setting._value.color : '';
-		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
-		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
+		_.each( control.params.default, function( defaultParamValue, param ) {
+			if ( false !== defaultParamValue ) {
+				value[ param ] = defaultParamValue;
+				if ( undefined !== control.setting._value[ param ] ) {
+					value[ param ] = control.setting._value[ param ];
+				}
+			}
+		});
 
 		// Renders and refreshes selectize sub-controls.
 		renderSubControl = function( fontFamily, sub, startValue ) {
