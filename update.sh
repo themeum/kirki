@@ -9,7 +9,6 @@ fi
 # Replace version number in the files
 find . -name kirki.php -exec sed -i "s/Version:       $1/Version:       $2/g" {} \;
 find . -name readme.txt -exec sed -i "s/Stable tag: $1/Stable tag: $2/g" {} \;
-find ./includes -name class-kirki-toolkit.php -exec sed -i "s/protected static $version = '$1';/protected static $version = '$2';/g" {} \;
 
 # Run grunt
 npm install

@@ -37,8 +37,9 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 2.2.11 =
+= 2.3 =
 
+* FIX: Escaping google-font URLs when possible.
 * FIX: Only enqueue the tooltips script if needed.
 * FIX: WordPress Coding Standards.
 * FIX: undefined sub-controls were still being saved in typography fields
