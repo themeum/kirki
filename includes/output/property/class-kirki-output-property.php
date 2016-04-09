@@ -10,23 +10,25 @@
  * @since       2.2.0
  */
 
-class Kirki_Output_Property {
+if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 
-	protected $property;
-	protected $value;
+	class Kirki_Output_Property {
 
-	public function __construct( $property, $value ) {
-		$this->property = $property;
-		$this->value    = $value;
-		$this->process_value();
+		protected $property;
+		protected $value;
+
+		public function __construct( $property, $value ) {
+			$this->property = $property;
+			$this->value    = $value;
+			$this->process_value();
+		}
+
+		protected function process_value() {
+
+		}
+
+		public function get_value() {
+			return $this->value;
+		}
 	}
-
-	protected function process_value() {
-
-	}
-
-	public function get_value() {
-		return $this->value;
-	}
-
 }
