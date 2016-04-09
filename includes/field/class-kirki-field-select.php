@@ -55,10 +55,11 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 		}
 
 		/**
-		 * Sanitizes select control values
+		 * Sanitizes select control values.
 		 *
 		 * @since 2.2.8
 		 * @access public
+		 * @param array $value The value.
 		 * @return string|array
 		 */
 		public function sanitize( $value ) {

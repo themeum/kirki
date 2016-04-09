@@ -27,10 +27,9 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 		 * Any supplied $args override class property defaults.
 		 *
 		 * @access public
-		 * @param WP_Customize_Manager $manager
-		 * @param string               $id      An specific ID of the setting. Can be a
-		 *                                      theme mod or option name.
-		 * @param array                $args    Setting arguments.
+		 * @param WP_Customize_Manager $manager The WordPress WP_Customize_Manager object.
+		 * @param string               $id       A specific ID of the setting. Can be a theme mod or option name.
+		 * @param array                $args     Setting arguments.
 		 */
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
@@ -58,7 +57,7 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 		 * Convert the JSON encoded setting coming from Customizer to an Array.
 		 *
 		 * @access public
-		 * @param $value URL Encoded JSON Value.
+		 * @param string $value URL Encoded JSON Value.
 		 * @return array
 		 */
 		public function sanitize_repeater_setting( $value ) {

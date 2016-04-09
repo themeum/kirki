@@ -45,6 +45,8 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 
 		/**
 		 * The sanitize method that will be used as a falback
+		 *
+		 * @param string|array $value The control's value.
 		 */
 		public function sanitize( $value ) {
 

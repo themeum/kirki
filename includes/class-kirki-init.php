@@ -170,7 +170,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 				// and any other tweaks that this field may require.
 				if ( $wp_customize ) {
 
-					// Create the control
+					// Create the control.
 					new Kirki_Control( $args );
 
 					// Create the scripts for tooltips.

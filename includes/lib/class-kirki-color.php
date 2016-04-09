@@ -26,9 +26,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * A proxy for the sanitize_color method.
 		 *
-		 * @param   mixed       The color
-		 * @param   boolean     Whether we want to include a hash (#) at the beginning or not
-		 * @return  string      The sanitized hex color.
+		 * @param string|array $color The color.
+		 * @param bool         $hash  Whether we want to include a hash (#) at the beginning or not.
+		 * @return string             The sanitized hex color.
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 		 	if ( ! $hash ) {
@@ -40,7 +40,9 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * A proxy the sanitize_color method.
 		 *
-		 * @param  $color
+		 * @static
+		 * @access public
+		 * @param string $color The color.
 		 * @return string
 		 */
 		public static function sanitize_rgba( $color ) {
@@ -51,8 +53,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Sanitize colors.
 		 * Determine if the current value is a hex or an rgba color and call the appropriate method.
 		 *
+		 * @static
+		 * @access public
 		 * @since 0.8.5
-		 * @param  $color   mixed
+		 * @param string|array $color The color.
+		 * @param string       $mode  The mode to be used.
 		 * @return string
 		 */
 		public static function sanitize_color( $color = '', $mode = 'auto' ) {
@@ -69,9 +74,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Gets the rgb value of a color.
 		 *
-		 * @param   string      The color
-		 * @param   boolean     Whether we want to implode the values or not
-		 * @return  mixed       array|string
+		 * @static
+		 * @access public
+		 * @param string  $color   The color.
+		 * @param boolean $implode Whether we want to implode the values or not.
+		 * @return array|string
 		 */
 		public static function get_rgb( $color, $implode = false ) {
 			$obj = ariColor::newColor( $color );
@@ -82,20 +89,24 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 
 		/**
-		 * A proxy for the sanitize_color method
+		 * A proxy for the sanitize_color method.
 		 *
-		 * @param   mixed
-		 * @return  string  The hex value of the color.
+		 * @static
+		 * @access public
+		 * @param string|array $color The color to convert.
+		 * @return string The hex value of the color.
 		 */
 		public static function rgba2hex( $color ) {
 			return self::sanitize_color( $color, 'hex' );
 		}
 
 		/**
-		 * Get the alpha channel from an rgba color
+		 * Get the alpha channel from an rgba color.
 		 *
-		 * @param   string     The rgba color formatted like rgba(r,g,b,a)
-		 * @return  int|float  The alpha value of the color.
+		 * @static
+		 * @access public
+		 * @param string $color The rgba color formatted like rgba(r,g,b,a)
+		 * @return int|float    The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
 			$obj = ariColor::newColor( $color );
@@ -105,9 +116,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Gets the rgba value of the $color.
 		 *
-		 * @param   string      The hex value of a color
-		 * @param   int         Opacity level (0-1)
-		 * @return  string
+		 * @static
+		 * @access public
+		 * @param string    $color The hex value of a color.
+		 * @param int|float $alpha Opacity level (0-1).
+		 * @return string
 		 */
 		public static function get_rgba( $color = '#fff', $alpha = 1 ) {
 			$obj = ariColor::newColor( $color );
@@ -133,8 +146,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Strips the alpha value from an RGBA color string.
 		 *
-		 * @param 	string $color	The RGBA color string.
-		 * @return  string			The corresponding RGB string.
+		 * @static
+		 * @access public
+		 * @param string $color The RGBA color string.
+		 * @return string       The corresponding RGB string.
 		 */
 		public static function rgba_to_rgb( $color ) {
 			$obj = ariColor::newColor( $color );
@@ -144,17 +159,23 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Gets the brightness of the $hex color.
 		 *
-		 * @var     string      The hex value of a color
-		 * @return  int         Value between 0 and 255
+		 * @static
+		 * @access public
+		 * @param string $hex The hex value of a color.
+		 * @return int        Value between 0 and 255.
 		 */
 		public static function get_brightness( $hex ) {
 			$hex = self::sanitize_hex( $hex, false );
+
 			// Returns brightness value from 0 to 255.
 			return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
 		}
+
 		/**
 		 * Adjusts brightness of the $hex color.
 		 *
+		 * @static
+		 * @access public
 		 * @param   string  $hex    The hex value of a color.
 		 * @param   integer $steps  Should be between -255 and 255. Negative = darker, positive = lighter.
 		 * @return  string          Returns hex color.
@@ -162,24 +183,29 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		public static function adjust_brightness( $hex, $steps ) {
 			$hex = self::sanitize_hex( $hex, false );
 			$steps = max( -255, min( 255, $steps ) );
+
 			// Adjust number of steps and keep it inside 0 to 255.
 			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
 			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
 			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
+
 			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
 			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 		}
+
 		/**
 		 * Mixes 2 hex colors.
 		 * The "percentage" variable is the percent of the first color.
 		 * to be used it the mix. default is 50 (equal mix).
 		 *
+		 * @static
+		 * @access public
 		 * @param   string|false $hex1
 		 * @param   string|false $hex2
-		 * @param   integer      $percentage        a value between 0 and 100.
-		 * @return  string       returns hex color.
+		 * @param   integer      $percentage A value between 0 and 100.
+		 * @return  string                   Returns hex color.
 		 */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {
 			$hex1 = self::sanitize_hex( $hex1, false );
@@ -192,21 +218,27 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 		}
+
 		/**
 		 * Convert hex color to hsv.
 		 *
-		 * @var     string      The hex value of color 1.
-		 * @return  array       returns array( 'h', 's', 'v' ).
+		 * @static
+		 * @access public
+		 * @param string The hex value of color 1.
+		 * @return array Returns array( 'h', 's', 'v' ).
 		 */
 		public static function hex_to_hsv( $hex ) {
 			$rgb = (array) (array) self::get_rgb( self::sanitize_hex( $hex, false ) );
 			return self::rgb_to_hsv( $rgb );
 		}
+
 		/**
-		 * Convert hex color to hsv
+		 * Convert hex color to hsv.
 		 *
-		 * @var     array       The rgb color to conver array( 'r', 'g', 'b' ).
-		 * @return  array       returns array( 'h', 's', 'v' ).
+		 * @static
+		 * @access public
+		 * @param string $color The rgb color to convert array( 'r', 'g', 'b' ).
+		 * @return array Returns array( 'h', 's', 'v' ).
 		 */
 		public static function rgb_to_hsv( $color = array() ) {
 			$var_r = ( $color[0] / 255 );
@@ -243,6 +275,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * This is a very simple algorithm that works by summing up the differences between the three color components red, green and blue.
 		 * A value higher than 500 is recommended for good readability.
+		 *
+		 * @static
+		 * @access public
+		 * @param string $color_1 The 1st color.
+		 * @param string $color_2 The 2nd color.
+		 * @return string
 		 */
 		public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 			$color_1 = self::sanitize_hex( $color_1, false );
@@ -260,6 +298,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * This function tries to compare the brightness of the colors.
 		 * A return value of more than 125 is recommended.
 		 * Combining it with the color_difference function above might make sense.
+		 *
+		 * @static
+		 * @access public
+		 * @param string $color_1 The 1st color.
+		 * @param string $color_2 The 2nd color.
+		 * @return string
 		 */
 		public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 			$color_1 = self::sanitize_hex( $color_1, false );
@@ -274,6 +318,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Uses the luminosity to calculate the difference between the given colors.
 		 * The returned value should be bigger than 5 for best readability.
+		 *
+		 * @static
+		 * @access public
+		 * @param string $color_1 The 1st color.
+		 * @param string $color_2 The 2nd color.
+		 * @return string
 		 */
 		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
 			$color_1 = self::sanitize_hex( $color_1, false );

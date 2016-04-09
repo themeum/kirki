@@ -44,7 +44,8 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 		 *
 		 * @access public
 		 */
-		public function add_loader_to_footer() { ?>
+		public function add_loader_to_footer() {
+			?>
 			<div class="kirki-customizer-loading-wrapper">
 				<span class="kirki-customizer-loading"></span>
 			</div>
@@ -56,7 +57,8 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 		 *
 		 * @access public
 		 */
-		public function add_loader_styles_to_header() { ?>
+		public function add_loader_styles_to_header() {
+			?>
 			<style>
 				body.wp-customizer-unloading {
 					opacity: 1;

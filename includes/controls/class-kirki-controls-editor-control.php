@@ -76,6 +76,7 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 		 * Used to add a unique ID to the textarea
 		 *
 		 * @access public
+		 * @param string $output Used to filter the textarea and add the link.
 		 * @return string
 		 */
 		public function filter_editor_setting_link( $output ) {

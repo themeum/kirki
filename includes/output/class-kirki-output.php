@@ -49,12 +49,12 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		protected $value;
 
 		/**
-		 * The class constructor
+		 * The class constructor.
 		 *
 		 * @access public
-		 * @param $config_id    string
-		 * @param $output       array
-		 * @param $value        string|array
+		 * @param string       $config_id The config ID.
+		 * @param array        $output    The output argument.
+		 * @param string|array $value     The value.
 		 */
 		public function __construct( $config_id, $output, $value ) {
 
@@ -66,11 +66,10 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		}
 
 		/**
-		 * If we have a sanitize_callback defined,
-		 * apply it to the value
+		 * If we have a sanitize_callback defined, apply it to the value.
 		 *
-		 * @param $output  array         the output args
-		 * @param $value   string|array  the value
+		 * @param array        $output The output args
+		 * @param string|array $value The value
 		 *
 		 * @return string|array
 		 */
@@ -95,7 +94,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		}
 
 		/**
-		 * Parses the output arguments
+		 * Parses the output arguments.
 		 * Calls the process_output method for each of them.
 		 *
 		 * @access protected
@@ -103,14 +102,17 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		protected function parse_output() {
 			foreach ( $this->output as $output ) {
 				$skip = false;
+
 				// Apply any sanitization callbacks defined.
 				$value = $this->apply_sanitize_callback( $output, $this->value );
+
 				// No need to proceed this if the current value is the same as in the "exclude" value.
 				if ( isset( $output['exclude'] ) && false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
 					foreach ( $output['exclude'] as $exclude ) {
 						if ( $skip ) {
 							continue;
 						}
+
 						// Skip for empty values, or if value is defined as excluded.
 						if ( empty( $value ) || $exclude == $value ) {
 							$skip = true;
@@ -133,11 +135,11 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		}
 
 		/**
-		 * Parses an output and creates the styles array for it
+		 * Parses an output and creates the styles array for it.
 		 *
 		 * @access protected
-		 * @param $output array
-		 * @param $value  string
+		 * @param array  $output The field output.
+		 * @param string $value  The value.
 		 *
 		 * @return void
 		 */
@@ -158,8 +160,8 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		 * We need to tweak the value to make everything works as expected.
 		 *
 		 * @access protected
-		 * @param $property  string  the CSS property
-		 * @param $value     string  the value
+		 * @param string $property The CSS property.
+		 * @param string $value    The value
 		 *
 		 * @return array
 		 */
@@ -178,11 +180,11 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		}
 
 		/**
-		 * Returns the value
+		 * Returns the value.
 		 *
 		 * @access protected
-		 * @param string|array
-		 *
+		 * @param string|array $value The value.
+		 * @param array        $output The field "output".
 		 * @return string|array
 		 */
 		protected function process_value( $value, $output ) {

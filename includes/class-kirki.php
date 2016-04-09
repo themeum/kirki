@@ -140,7 +140,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @static
 		 * @access public
 		 * @param string $id   The ID for this section.
-		 * @param array  $args The section arguments
+		 * @param array  $args The section arguments.
 		 */
 		public static function add_section( $id, $args ) {
 
@@ -162,8 +162,8 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param string $config_id The configuration ID for this field
-		 * @param array  $args      The field arguments
+		 * @param string $config_id The configuration ID for this field.
+		 * @param array  $args      The field arguments.
 		 */
 		public static function add_field( $config_id, $args ) {
 

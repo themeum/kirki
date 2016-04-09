@@ -18,6 +18,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 
 	/**
 	 * Adds a color & color-alpha control
+	 *
 	 * @see https://github.com/23r9i0/wp-color-picker-alpha
 	 */
 	class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {

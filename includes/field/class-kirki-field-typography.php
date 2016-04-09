@@ -47,6 +47,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 		 * Sanitizes typography controls
 		 *
 		 * @since 2.2.0
+		 * @param array $value The value.
 		 * @return array
 		 */
 		public static function sanitize( $value ) {

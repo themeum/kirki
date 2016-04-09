@@ -20,7 +20,7 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 		 * Processes a single item from the `output` array.
 		 *
 		 * @access protected
-		 * @param array $output The `output` item
+		 * @param array $output The `output` item.
 		 * @param array $value  The field's value.
 		 */
 		protected function process_output( $output, $value ) {

@@ -52,7 +52,7 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 		 * This works on a per-field basis.
 		 * Once created, the script is added to the $tooltip_script property.
 		 *
-		 * @param array the field definition
+		 * @param array $args The field definition.
 		 * @return void
 		 */
 		public static function generate_script( $args = array() ) {
@@ -111,8 +111,6 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 
 		/**
 		 * Format the script in a way that will be compatible with WordPress.
-		 *
-		 * @return  void (echoes the script)
 		 */
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$tooltip_script ) {

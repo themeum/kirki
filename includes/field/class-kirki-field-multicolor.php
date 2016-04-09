@@ -102,7 +102,7 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		/**
 		 * The method that will be used as a `sanitize_callback`.
 		 *
-		 * @param array $value The value to be sanitized
+		 * @param array $value The value to be sanitized.
 		 * @return array The value.
 		 */
 		public function sanitize( $value ) {

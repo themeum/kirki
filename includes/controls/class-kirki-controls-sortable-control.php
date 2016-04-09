@@ -46,9 +46,8 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 		/**
 		 * Unserialize the setting before saving on DB
 		 *
-		 * @param $value Serialized settings
-		 *
-		 * @return Array
+		 * @param string $value Serialized settings
+		 * @return array
 		 */
 		public function customize_sanitize( $value ) {
 			$value = maybe_unserialize( $value );

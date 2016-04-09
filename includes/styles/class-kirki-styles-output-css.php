@@ -140,11 +140,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		/**
 		 * Get the CSS for a field.
 		 *
-		 * @var 	string		The setting ID.
-		 * @var 	string		theme_mod|option
-		 * @var 	array 		An array of arrays of the output arguments.
-		 * @var 	mixed		A callable function.
-		 *
+		 * @static
+		 * @access public
+		 * @param array The field.
 		 * @return array
 		 */
 		public static function css( $field ) {
@@ -184,8 +182,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		/**
 		 * Gets the array of generated styles and creates the minimized, inline CSS.
 		 *
-		 * @param array
-		 * @return string	the generated CSS.
+		 * @static
+		 * @access public
+		 * @param array $css The CSS definitions array.
+		 * @return string    The generated CSS.
 		 */
 		public static function styles_parse( $css = array() ) {
 
@@ -212,8 +212,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		/**
 		 * Add prefixes if necessary.
 		 *
-		 * @param  $css array
-		 * @return  array
+		 * @param  array $css The CSS definitions array.
+		 * @return array
 		 */
 		public static function add_prefixes( $css ) {
 

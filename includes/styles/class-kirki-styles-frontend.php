@@ -107,7 +107,9 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		/**
 		 * Loop through all fields and create an array of style definitions.
 		 *
+		 * @static
 		 * @access public
+		 * @param string $config_id The configuration ID.
 		 */
 		public static function loop_controls( $config_id ) {
 
