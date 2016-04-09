@@ -1,4 +1,13 @@
 <?php
+/**
+ * Hover sections.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.0
+ */
 
 class Kirki_Sections_Hover_Section extends WP_Customize_Section {
 

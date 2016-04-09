@@ -1,4 +1,13 @@
 <?php
+/**
+ * Adds a custom loading icon when the previewer refreshes.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.0
+ */
 
 if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 

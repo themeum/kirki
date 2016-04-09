@@ -1,4 +1,13 @@
 <?php
+/**
+ * Handles CSS output for multicolor fields.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.0
+ */
 
 class Kirki_Output_Field_Multicolor extends Kirki_Output {
 
