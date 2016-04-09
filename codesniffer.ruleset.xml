@@ -18,10 +18,8 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace" />
-		<exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped" />
 		<exclude name="Squiz.Commenting.VariableComment.MissingVar" />
 		<exclude name="Squiz.Commenting.FunctionComment.InvalidNoReturn" />
-		<exclude name="WordPress.XSS.EscapeOutput.UnsafePrintingFunction" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
