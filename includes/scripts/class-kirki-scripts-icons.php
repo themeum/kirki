@@ -20,13 +20,19 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 	class Kirki_Scripts_Icons {
 
 		/**
-		 * string.
 		 * The script generated for ALL fields
+		 *
+		 * @static
+		 * @access public
+		 * @var string
 		 */
 		public static $icons_script = '';
+
 		/**
-		 * boolean.
 		 * Whether the script has already been added to the customizer or not.
+		 * @static
+		 * @access public
+		 * @var bool
 		 */
 		public static $script_added = false;
 

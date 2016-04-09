@@ -1,6 +1,6 @@
 <?php
 /**
- * editor Customizer Control.
+ * Customizer Control: editor.
  *
  * Creates a TinyMCE textarea.
  *

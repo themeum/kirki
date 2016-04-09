@@ -1,6 +1,6 @@
 <?php
 /**
- * palette Customizer Control.
+ * Customizer Control: palette.
  *
  * @package     Kirki
  * @subpackage  Controls

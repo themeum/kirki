@@ -1,6 +1,6 @@
 <?php
 /**
- * toggle Customizer Control.
+ * Customizer Control: toggle.
  *
  * @package     Kirki
  * @subpackage  Controls

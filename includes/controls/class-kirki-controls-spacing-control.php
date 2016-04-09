@@ -1,6 +1,6 @@
 <?php
 /**
- * spacing Customizer Control.
+ * Customizer Control: spacing.
  *
  * @package     Kirki
  * @subpackage  Controls

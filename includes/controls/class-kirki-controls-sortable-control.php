@@ -1,6 +1,6 @@
 <?php
 /**
- * sortable Customizer Control.
+ * Customizer Control: sortable.
  *
  * @package     Kirki
  * @subpackage  Controls

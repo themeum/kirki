@@ -1,6 +1,6 @@
 <?php
 /**
- * switch Customizer Control.
+ * Customizer Control: switch.
  *
  * @package     Kirki
  * @subpackage  Controls

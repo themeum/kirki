@@ -1,6 +1,6 @@
 <?php
 /**
- * radio-image Customizer Control.
+ * Customizer Control: radio-image.
  *
  * @package     Kirki
  * @subpackage  Controls

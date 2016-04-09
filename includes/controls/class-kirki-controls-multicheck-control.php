@@ -1,6 +1,6 @@
 <?php
 /**
- * editor Customizer Control.
+ * Customizer Control: multicheck.
  *
  * Multiple checkbox customize control class.
  * Props @ Justin Tadlock: http://justintadlock.com/archives/2015/05/26/multiple-checkbox-customizer-control

@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic Field Control.
+ * Customizer Control: kirki-generic.
  *
  * @package     Kirki
  * @subpackage  Controls

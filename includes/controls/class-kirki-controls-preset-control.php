@@ -1,6 +1,6 @@
 <?php
 /**
- * select2 Customizer Control.
+ * Customizer Control: preset.
  *
  * @package     Kirki
  * @subpackage  Controls

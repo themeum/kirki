@@ -59,19 +59,18 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		}
 
 		/**
-		 * get the CSS for a field
+		 * Get the CSS for a field.
 		 *
-		 * @var 	string		the setting ID.
-		 * @var 	string		theme_mod / option
-		 * @var 	array 		an array of arrays of the output arguments.
-		 * @var 	mixed		a callable function.
+		 * @var 	string		The setting ID.
+		 * @var 	string		theme_mod|option
+		 * @var 	array 		An array of arrays of the output arguments.
+		 * @var 	mixed		A callable function.
 		 *
 		 * @return array
 		 */
 		public static function css( $field ) {
-			/**
-			 * Set class vars
-			 */
+
+			// Set class vars.
 			self::$settings   = $field['settings'];
 			self::$callback   = $field['sanitize_callback'];
 			self::$field_type = $field['type'];
@@ -84,14 +83,11 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					),
 				);
 			}
-			/**
-			 * Get the value of this field
-			 */
+
+			// Get the value of this field.
 			self::$value = Kirki_Values::get_sanitized_field_value( $field );
 
-			/**
-			 * Find the class that will handle the outpout for this field
-			 */
+			// Find the class that will handle the outpout for this field
 			$classname = 'Kirki_Output';
 			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames', array(
 				'spacing'    => 'Kirki_Output_Field_Spacing',
@@ -114,9 +110,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		public static function styles_parse( $css = array() ) {
 
-			/**
-			 * Process the array of CSS properties and produce the final CSS
-			 */
+			// Process the array of CSS properties and produce the final CSS.
 			$final_css = '';
 			if ( ! is_array( $css ) || empty( $css ) ) {
 				return '';
@@ -148,9 +142,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				foreach ( $css as $media_query => $elements ) {
 					foreach ( $elements as $element => $style_array ) {
 						foreach ( $style_array as $property => $value ) {
-							/**
-							 * Add -webkit-* and -mod-*
-							 */
+
+							// Add -webkit-* and -mod-*.
 							if ( is_string( $property ) && in_array( $property, array(
 								'border-radius',
 								'box-shadow',
@@ -164,9 +157,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
 							}
-							/**
-							 * Add -ms-* and -o-*
-							 */
+
+							// Add -ms-* and -o-*.
 							if ( is_string( $property ) && in_array( $property, array(
 								'transform',
 								'background-size',
@@ -184,6 +176,5 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			return $css;
 
 		}
-
 	}
 }

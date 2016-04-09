@@ -1,6 +1,6 @@
 <?php
 /**
- * code Customizer Control.
+ * Customizer Control: code.
  *
  * Creates a new custom control.
  * Custom controls accept raw HTML/JS.

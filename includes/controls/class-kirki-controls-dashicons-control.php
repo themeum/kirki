@@ -1,6 +1,6 @@
 <?php
 /**
- * Dashicons Customizer Control.
+ * Customizer Control: dashicons.
  *
  * @package     Kirki
  * @subpackage  Controls

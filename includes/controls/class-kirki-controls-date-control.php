@@ -1,6 +1,6 @@
 <?php
 /**
- * Date Field Control.
+ * Customizer Control: kirki-date.
  *
  * @package     Kirki
  * @subpackage  Controls

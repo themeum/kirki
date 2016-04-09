@@ -1,6 +1,6 @@
 <?php
 /**
- * multicolor Customizer Control.
+ * Customizer Control: multicolor.
  *
  * @package     Kirki
  * @subpackage  Controls

@@ -1,6 +1,6 @@
 <?php
 /**
- * select2 Customizer Control.
+ * Customizer Control: kirki-radio.
  *
  * @package     Kirki
  * @subpackage  Controls

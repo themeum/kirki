@@ -76,7 +76,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		}
 
 		/**
-		 * loop through all fields and create an array of style definitions
+		 * Loop through all fields and create an array of style definitions.
 		 */
 		public static function loop_controls( $config_id ) {
 
@@ -94,12 +94,12 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 			foreach ( $fields as $field ) {
 
-				// Only process fields that belong to $config_id
+				// Only process fields that belong to $config_id.
 				if ( $config_id != $field['kirki_config'] ) {
 					continue;
 				}
 
-				// Only continue if field dependencies are met
+				// Only continue if field dependencies are met.
 				if ( ! empty( $field['required'] ) ) {
 					$valid = true;
 

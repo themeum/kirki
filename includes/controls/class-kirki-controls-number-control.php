@@ -1,6 +1,6 @@
 <?php
 /**
- * number Customizer Control.
+ * Customizer Control: number.
  *
  * @package     Kirki
  * @subpackage  Controls

@@ -1,6 +1,6 @@
 <?php
 /**
- * radio-buttonset Customizer Control.
+ * Customizer Control: radio-buttonset.
  *
  * @package     Kirki
  * @subpackage  Controls

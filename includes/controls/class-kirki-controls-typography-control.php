@@ -1,6 +1,6 @@
 <?php
 /**
- * typography Customizer Control.
+ * Customizer Control: typography.
  *
  * @package     Kirki
  * @subpackage  Controls

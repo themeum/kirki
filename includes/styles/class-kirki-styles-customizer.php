@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 */
 		public function replace_placeholders( $styles ) {
 			/**
-			 * replace CSS placeholders with actual values
+			 * Replace CSS placeholders with actual values.
 			 */
 			$replacements = array(
 				'COLOR_BACK'               => $this->color_back,
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			$styles = '';
 
 			/**
-			 * Include the width CSS if necessary
+			 * Include the width CSS if necessary.
 			 */
 			if ( isset( $config['width'] ) ) {
 				$path = wp_normalize_path( Kirki::$path . '/assets/css/customizer-dynamic-css-width.php' );

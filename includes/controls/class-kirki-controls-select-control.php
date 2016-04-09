@@ -1,6 +1,6 @@
 <?php
 /**
- * select2 Customizer Control.
+ * Customizer Control: kirki-select.
  *
  * @package     Kirki
  * @subpackage  Controls

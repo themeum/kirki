@@ -1,6 +1,6 @@
 <?php
 /**
- * Dropdown Pages Control
+ * Customizer Control: dropdown-pages.
  *
  * @package     Kirki
  * @subpackage  Controls

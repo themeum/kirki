@@ -1,6 +1,6 @@
 <?php
 /**
- * color-alpha Customizer Control.
+ * Customizer Control: color-alpha.
  *
  * @package     Kirki
  * @subpackage  Controls

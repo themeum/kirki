@@ -1,6 +1,6 @@
 <?php
 /**
- * dimension Customizer Control.
+ * Customizer Control: dimension
  *
  * @package     Kirki
  * @subpackage  Controls

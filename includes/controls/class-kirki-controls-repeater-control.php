@@ -1,6 +1,6 @@
 <?php
 /**
- * Repeater Customizer Control.
+ * Customizer Control: repeater.
  *
  * @package     Kirki
  * @subpackage  Controls

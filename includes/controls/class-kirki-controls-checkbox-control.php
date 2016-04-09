@@ -1,6 +1,6 @@
 <?php
 /**
- * Checkbox Customizer Control.
+ * Customizer Control: kirki-checkbox.
  *
  * @package     Kirki
  * @subpackage  Controls
