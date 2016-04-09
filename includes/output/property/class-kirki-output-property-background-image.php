@@ -9,17 +9,18 @@
  * @since       2.2.0
  */
 
-class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
+if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
 
-	protected function process_value() {
+	class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 
-		if ( false === strrpos( $this->value, 'url(' ) ) {
-			if ( empty( $this->value ) ) {
-				return;
+		protected function process_value() {
+
+			if ( false === strrpos( $this->value, 'url(' ) ) {
+				if ( empty( $this->value ) ) {
+					return;
+				}
+				$this->value = 'url("' . $this->value . '")';
 			}
-			$this->value = 'url("' . $this->value . '")';
 		}
-
 	}
-
 }

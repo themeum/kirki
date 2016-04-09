@@ -9,38 +9,41 @@
  * @since       2.2.0
  */
 
-class Kirki_Sections_Hover_Section extends WP_Customize_Section {
+if ( ! class_exists( 'Kirki_Sections_Hover_Section' ) ) {
 
-	public $type = 'kirki-hover';
+	class Kirki_Sections_Hover_Section extends WP_Customize_Section {
 
-	protected function render_template() {
-		?>
-		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
-			<h3 class="accordion-section-title" tabindex="0">
-				{{ data.title }}
-				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this section', 'kirki' ); ?></span>
-			</h3>
-			<ul class="accordion-section-content">
-				<li class="customize-section-description-container">
-					<div class="customize-section-title">
-						<button class="customize-section-back" tabindex="-1">
-							<span class="screen-reader-text"><?php _e( 'Back', 'kirki' ); ?></span>
-						</button>
-						<h3>
-							<span class="customize-action">
-								{{{ data.customizeAction }}}
-							</span>
-							{{ data.title }}
-						</h3>
-					</div>
-					<# if ( data.description ) { #>
-						<div class="description customize-section-description">
-							{{{ data.description }}}
+		public $type = 'kirki-hover';
+
+		protected function render_template() {
+			?>
+			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
+				<h3 class="accordion-section-title" tabindex="0">
+					{{ data.title }}
+					<span class="screen-reader-text"><?php _e( 'Press return or enter to open this section', 'kirki' ); ?></span>
+				</h3>
+				<ul class="accordion-section-content">
+					<li class="customize-section-description-container">
+						<div class="customize-section-title">
+							<button class="customize-section-back" tabindex="-1">
+								<span class="screen-reader-text"><?php _e( 'Back', 'kirki' ); ?></span>
+							</button>
+							<h3>
+								<span class="customize-action">
+									{{{ data.customizeAction }}}
+								</span>
+								{{ data.title }}
+							</h3>
 						</div>
-					<# } #>
-				</li>
-			</ul>
-		</li>
-		<?php
+						<# if ( data.description ) { #>
+							<div class="description customize-section-description">
+								{{{ data.description }}}
+							</div>
+						<# } #>
+					</li>
+				</ul>
+			</li>
+			<?php
+		}
 	}
 }
