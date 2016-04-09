@@ -173,7 +173,7 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 				'greek'        => $i18n['greek'],
 				'greek-ext'    => $i18n['greek-ext'],
 				'khmer'        => $i18n['khmer'],
-				'latin'        => $i18n['latin'],
+				// 'latin'        => $i18n['latin'],
 				'latin-ext'    => $i18n['latin-ext'],
 				'vietnamese'   => $i18n['vietnamese'],
 				'hebrew'       => $i18n['hebrew'],

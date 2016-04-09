@@ -105,9 +105,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 							}
 						});
 
-						if ( 0 === subsetValues.length ) {
-							activeItem = ['latin'];
-						} else {
+						if ( 0 !== subsetValues.length ) {
 							subsetValuesArray = jQuery.map( subsetValues, function( value, index ) {
 								return [value];
 							});
@@ -149,29 +147,20 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 			}
 
-			// If only 1 option is available then there's no reason to show this.
-			if ( 'variant' === sub ) {
-
-				if ( 1 >= subList.length ) {
-					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
-				} else {
-					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
-				}
-
-			} else if ( 'subset' === sub ) {
-
-				if ( 1 > subList.length ) {
-					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );
-				} else {
-					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'block' );
-				}
-
-			}
-
 			if ( true === isStandard ) {
+
+				// Hide unrelated fields on standard fonts.
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
 			} else {
-				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
+
+				if ( 2 > subList.length ) {
+
+					// If only 1 option is available then there's no reason to show this.
+					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'none' );
+				} else {
+					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'block' );
+				}
+
 			}
 
 		};
