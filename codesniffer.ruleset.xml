@@ -14,8 +14,6 @@
 		<exclude name="WordPress.VIP.RestrictedFunctions.url_to_postid" />
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
-		<exclude name="Squiz.Commenting.VariableComment.Missing" />
-		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
