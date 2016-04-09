@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 
+	/**
+	 * A copy of WordPress core's "dropdown-pages" control.
+	 * The template has been converted to use Underscore.js
+	 * and we added a tooltip.
+	 */
 	class Kirki_Controls_Dropdown_Pages_Control extends Kirki_Customize_Control {
 
 		/**

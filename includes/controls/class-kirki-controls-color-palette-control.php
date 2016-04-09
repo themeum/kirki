@@ -16,6 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 
+	/**
+	 * Adds a color-palette control.
+	 * This is essentially a radio control, styled as a palette.
+	 */
 	class Kirki_Controls_Color_Palette_Control extends Kirki_Customize_Control {
 
 		/**
@@ -61,7 +65,8 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

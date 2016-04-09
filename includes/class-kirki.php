@@ -18,6 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki' ) ) {
+
+	/**
+	 * This class acts as an interface.
+	 * Developers may use this object to add configurations, fields, panels and sections.
+	 * You can also access all available configurations, fields, panels and sections
+	 * by accessing the object's static properties.
+	 */
 	class Kirki extends Kirki_Init {
 
 		/**
@@ -77,10 +84,11 @@ if ( ! class_exists( 'Kirki' ) ) {
 		/**
 		 * Get the value of an option from the db.
 		 *
-		 * @var 	string	the ID of the configuration corresponding to this field
-		 * @var		string	the field_id (defined as 'settings' in the field arguments)
-		 *
-		 * @return 	mixed 	the saved value of the field.
+		 * @static
+		 * @access public
+		 * @param string $config_id The ID of the configuration corresponding to this field.
+		 * @param string $field_id  The field_id (defined as 'settings' in the field arguments).
+		 * @return mixed The saved value of the field.
 		 */
 		public static function get_option( $config_id = '', $field_id = '' ) {
 
@@ -91,9 +99,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 		/**
 		 * Sets the configuration options.
 		 *
-		 * @var		string		the configuration ID.
-		 * @var		array		the configuration options.
-		 * @param string $config_id
+		 * @static
+		 * @access public
+		 * @param string $config_id The configuration ID.
+		 * @param array  $args      The configuration options.
 		 */
 		public static function add_config( $config_id, $args = array() ) {
 
@@ -106,8 +115,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 		/**
 		 * Create a new panel.
 		 *
-		 * @var		string		the ID for this panel
-		 * @var		array		the panel arguments
+		 * @static
+		 * @access public
+		 * @param string $id   The ID for this panel.
+		 * @param array  $args The panel arguments.
 		 */
 		public static function add_panel( $id = '', $args = array() ) {
 
@@ -126,9 +137,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 		/**
 		 * Create a new section.
 		 *
-		 * @var		string		the ID for this section
-		 * @var		array		the section arguments
-		 * @param string $id
+		 * @static
+		 * @access public
+		 * @param string $id   The ID for this section.
+		 * @param array  $args The section arguments
 		 */
 		public static function add_section( $id, $args ) {
 
@@ -148,8 +160,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 		/**
 		 * Create a new field.
 		 *
-		 * @var		string		the configuration ID for this field
-		 * @var		array		the field arguments
+		 * @static
+		 * @access public
+		 * @param string $config_id The configuration ID for this field
+		 * @param array  $args      The field arguments
 		 */
 		public static function add_field( $config_id, $args ) {
 

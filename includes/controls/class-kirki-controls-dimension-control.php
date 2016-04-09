@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 
+	/**
+	 * A text control with validation for CSS units.
+	 */
 	class Kirki_Controls_Dimension_Control extends Kirki_Customize_Control {
 
 		/**
@@ -45,7 +48,8 @@ if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

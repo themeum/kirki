@@ -18,6 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 
+	/**
+	 * Slider control (range).
+	 */
 	class Kirki_Controls_Slider_Control extends Kirki_Customize_Control {
 
 		/**
@@ -59,7 +62,8 @@ if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

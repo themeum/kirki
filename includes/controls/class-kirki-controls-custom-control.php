@@ -18,6 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Controls_Custom_Control' ) ) {
+
+	/**
+	 * The "custom" control allows you to add any raw HTML.
+	 */
 	class Kirki_Controls_Custom_Control extends Kirki_Customize_Control {
 
 		/**
@@ -38,7 +42,8 @@ if ( ! class_exists( 'Kirki_Controls_Custom_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

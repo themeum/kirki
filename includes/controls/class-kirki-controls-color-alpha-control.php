@@ -16,6 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 
+	/**
+	 * Adds a color & color-alpha control
+	 * @see https://github.com/23r9i0/wp-color-picker-alpha
+	 */
 	class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {
 
 		/**
@@ -65,7 +69,8 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

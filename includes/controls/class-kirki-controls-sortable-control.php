@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 
+	/**
+	 * Sortable control (uses checkboxes).
+	 */
 	class Kirki_Controls_Sortable_Control extends Kirki_Customize_Control {
 
 		/**
@@ -102,7 +105,8 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( ! data.choicesLength ) return; #>
 
 			<# if ( data.tooltip ) { #>

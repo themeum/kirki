@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 
+	/**
+	 * Creates a checkbox control in the customizer.
+	 * This is an almost verbatim copy of WordPress core's implementation
+	 * but we converted the template to use Underscore.js, and added the tooltip.
+	 */
 	class Kirki_Controls_Checkbox_Control extends Kirki_Customize_Control {
 
 		/**
@@ -45,7 +50,8 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Select_Control' ) ) {
 
+	/**
+	 * Select control.
+	 */
 	class Kirki_Controls_Select_Control extends Kirki_Customize_Control {
 
 		/**

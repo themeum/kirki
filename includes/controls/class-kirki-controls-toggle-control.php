@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 
+	/**
+	 * Toggle control (modified checkbox).
+	 */
 	class Kirki_Controls_Toggle_Control extends Kirki_Controls_Checkbox_Control {
 
 		/**
@@ -45,7 +48,8 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>

@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
+	/**
+	 * Repeater control
+	 */
 	class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
 		/**
@@ -206,7 +209,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function render_content() { ?>
+		protected function render_content() {
+			?>
 			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>

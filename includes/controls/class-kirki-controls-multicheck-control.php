@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 
+	/**
+	 * Adds a multicheck control.
+	 */
 	class Kirki_Controls_MultiCheck_Control extends Kirki_Customize_Control {
 
 		/**
@@ -48,7 +51,8 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 		 *
 		 * @access protected
 		 */
-		protected function content_template() { ?>
+		protected function content_template() {
+			?>
 
 			<# if ( ! data.choices ) { return; } #>
 
