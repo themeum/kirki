@@ -17,21 +17,97 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
+
 	final class Kirki_Styles_Output_CSS {
 
+		/**
+		 * The instance of this class (singleton pattern).
+		 *
+		 * @static
+		 * @access public
+		 * @var null|object
+		 */
 		public static $instance = null;
 
+		/**
+		 * Settings.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string|array
+		 */
 		public static $settings    = null;
+
+		/**
+		 * Output.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $output      = array();
+
+		/**
+		 * Callback.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string|array
+		 */
 		public static $callback    = null;
+
+		/**
+		 * Option Name.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string
+		 */
 		public static $option_name = null;
+
+		/**
+		 * Field Type.
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $field_type  = null;
 
+		/**
+		 * Google Fonts
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $google_fonts = null;
+
+		/**
+		 * Standard Fonts
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $backup_fonts = null;
 
+		/**
+		 * CSS
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $css;
 
+		/**
+		 * Value
+		 *
+		 * @static
+		 * @access public
+		 * @var mixed
+		 */
 		public static $value = null;
 
 		/**

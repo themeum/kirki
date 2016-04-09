@@ -22,20 +22,88 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
 	class Kirki_Styles_Customizer {
 
+		/**
+		 * Background Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $color_back = false;
+
+		/**
+		 * Font Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $color_font = false;
+
+		/**
+		 * Accent Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $color_accent;
+
+		/**
+		 * Border Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $border_color;
+
+		/**
+		 * Buttons Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $buttons_color;
+
+		/**
+		 * Controls Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $controls_color;
+
+		/**
+		 * Arrows Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $arrows_color;
+
+		/**
+		 * Accent text Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $color_accent_text;
+
+		/**
+		 * Section Background Color.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $section_background_color;
 
+		/**
+		 * Have we already processed styling?
+		 *
+		 * @access public
+		 * @var bool
+		 */
 		public $process = false;
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 *
 		 * @access public
 		 */

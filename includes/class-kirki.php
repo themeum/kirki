@@ -20,12 +20,58 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki' ) ) {
 	class Kirki extends Kirki_Init {
 
+		/**
+		 * Absolute path to the Kirki folder.
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $path;
+
+		/**
+		 * URL to the Kirki folder.
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $url;
 
+		/**
+		 * An array containing all configurations.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $config   = array();
+
+		/**
+		 * An array containing all fields.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $fields   = array();
+
+		/**
+		 * An array containing all panels.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $panels   = array();
+
+		/**
+		 * An array containing all sections.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $sections = array();
 
 		/**
