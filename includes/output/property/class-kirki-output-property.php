@@ -23,10 +23,20 @@ if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 			$this->process_value();
 		}
 
+		/**
+		 * Modifies the value.
+		 *
+		 * @access protected
+		 */
 		protected function process_value() {
 
 		}
 
+		/**
+		 * Gets the value.
+		 *
+		 * @access protected
+		 */
 		public function get_value() {
 			return $this->value;
 		}

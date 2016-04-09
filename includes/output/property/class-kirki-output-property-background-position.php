@@ -13,13 +13,21 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
 
 	class Kirki_Output_Property_Background_Position extends Kirki_Output_Property {
 
+		/**
+		 * Modifies the value.
+		 *
+		 * @access protected
+		 */
 		protected function process_value() {
+
 			$this->value = trim( $this->value );
+
 			// If you use calc() there, I suppose you know what you're doing.
 			// No need to process this any further, just exit.
 			if ( false !== strpos( $this->value, 'calc' ) ) {
 				return;
 			}
+
 			// If the value is initial or inherit, we don't need to do anything.
 			// Just exit.
 			if ( 'initial' == $this->value || 'inherit' == $this->value ) {
@@ -28,6 +36,7 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
 
 			$x_dimensions = array( 'left', 'center', 'right' );
 			$y_dimensions = array( 'top', 'center', 'bottom' );
+
 			// If there's a space, we have an X and a Y value.
 			if ( false !== strpos( $this->value, ' ' ) ) {
 				$xy = explode( ' ', $this->value );

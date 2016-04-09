@@ -111,14 +111,14 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 				return $obj->toCSS( 'rgba' );
 			}
 			// Make sure that opacity is properly formatted.
-			// Converts 1-100 values to 0-1
+			// Converts 1-100 values to 0-1.
 			if ( $alpha > 1 || $alpha < -1 ) {
-				// Divide by 100
+				// Divide by 100.
 				$alpha /= 100;
 			}
-			// Get absolute value
+			// Get absolute value.
 			$alpha = abs( $alpha );
-			// Max 1
+			// Max 1.
 			if ( 1 < $alpha ) {
 				$alpha = 1;
 			}
@@ -145,20 +145,20 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 */
 		public static function get_brightness( $hex ) {
 			$hex = self::sanitize_hex( $hex, false );
-			// Returns brightness value from 0 to 255
+			// Returns brightness value from 0 to 255.
 			return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
 		}
 		/**
 		 * Adjusts brightness of the $hex color.
 		 *
-		 * @param   string  $hex    The hex value of a color
-		 * @param   integer $steps  Should be between -255 and 255. Negative = darker, positive = lighter
-		 * @return  string          Returns hex color
+		 * @param   string  $hex    The hex value of a color.
+		 * @param   integer $steps  Should be between -255 and 255. Negative = darker, positive = lighter.
+		 * @return  string          Returns hex color.
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
 			$hex = self::sanitize_hex( $hex, false );
 			$steps = max( -255, min( 255, $steps ) );
-			// Adjust number of steps and keep it inside 0 to 255
+			// Adjust number of steps and keep it inside 0 to 255.
 			$red   = max( 0, min( 255, hexdec( substr( $hex, 0, 2 ) ) + $steps ) );
 			$green = max( 0, min( 255, hexdec( substr( $hex, 2, 2 ) ) + $steps ) );
 			$blue  = max( 0, min( 255, hexdec( substr( $hex, 4, 2 ) ) + $steps ) );
@@ -169,13 +169,13 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 		/**
 		 * Mixes 2 hex colors.
-		 * The "percentage" variable is the percent of the first color
-		 * to be used it the mix. default is 50 (equal mix)
+		 * The "percentage" variable is the percent of the first color.
+		 * to be used it the mix. default is 50 (equal mix).
 		 *
 		 * @param   string|false $hex1
 		 * @param   string|false $hex2
-		 * @param   integer      $percentage        a value between 0 and 100
-		 * @return  string       returns hex color
+		 * @param   integer      $percentage        a value between 0 and 100.
+		 * @return  string       returns hex color.
 		 */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {
 			$hex1 = self::sanitize_hex( $hex1, false );
@@ -189,10 +189,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
 		}
 		/**
-		 * Convert hex color to hsv
+		 * Convert hex color to hsv.
 		 *
-		 * @var     string      The hex value of color 1
-		 * @return  array       returns array( 'h', 's', 'v' )
+		 * @var     string      The hex value of color 1.
+		 * @return  array       returns array( 'h', 's', 'v' ).
 		 */
 		public static function hex_to_hsv( $hex ) {
 			$rgb = (array) (array) self::get_rgb( self::sanitize_hex( $hex, false ) );
@@ -201,8 +201,8 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		/**
 		 * Convert hex color to hsv
 		 *
-		 * @var     array       The rgb color to conver array( 'r', 'g', 'b' )
-		 * @return  array       returns array( 'h', 's', 'v' )
+		 * @var     array       The rgb color to conver array( 'r', 'g', 'b' ).
+		 * @return  array       returns array( 'h', 's', 'v' ).
 		 */
 		public static function rgb_to_hsv( $color = array() ) {
 			$var_r = ( $color[0] / 255 );

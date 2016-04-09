@@ -13,6 +13,11 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
 
 	class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 
+		/**
+		 * Modifies the value.
+		 *
+		 * @access protected
+		 */
 		protected function process_value() {
 
 			if ( false === strrpos( $this->value, 'url(' ) ) {

@@ -13,8 +13,22 @@ if ( ! class_exists( 'Kirki_Panels_Expanded_Panel' ) ) {
 
 	class Kirki_Panels_Expanded_Panel extends WP_Customize_Panel {
 
+		/**
+		 * The panel type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'kirki-expanded';
 
+		/**
+		 * An Underscore (JS) template for rendering this panel's container.
+		 * Class variables for this panel class are available in the `data` JS object;
+		 * export custom variables by overriding WP_Customize_Panel::json().
+		 *
+		 * @see WP_Customize_Panel::print_template()
+		 * @access protected
+		 */
 		protected function render_template() {
 			?>
 			<li id="accordion-panel-{{ data.id }}" class="control-section control-panel control-panel-{{ data.type }}">
@@ -23,6 +37,14 @@ if ( ! class_exists( 'Kirki_Panels_Expanded_Panel' ) ) {
 			<?php
 		}
 
+		/**
+		 * An Underscore (JS) template for this panel's content (but not its container).
+		 * Class variables for this panel class are available in the `data` JS object;
+		 * export custom variables by overriding WP_Customize_Panel::json().
+		 *
+		 * @see WP_Customize_Panel::print_template()
+		 * @access protected
+		 */
 		protected function content_template() {
 			?>
 			<li class="panel-meta customize-info accordion-section <# if ( ! data.description ) { #> cannot-expand<# } #>">

@@ -13,21 +13,24 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 
 	class Kirki_Scripts_Loading {
 
+		/**
+		 * Constructor.
+		 *
+		 * @access public
+		 */
 		public function __construct() {
 			global $wp_customize;
 			if ( ! $wp_customize ) {
 				return;
 			}
-			/**
-			 * Allow disabling the custom loader using the kirki/config filter
-			 */
+
+			// Allow disabling the custom loader using the kirki/config filter.
 			$config = apply_filters( 'kirki/config', array() );
 			if ( isset( $config['disable_loader'] ) && true === $config['disable_loader'] ) {
 				return;
 			}
-			/**
-			 * Add the "loading" icon
-			 */
+
+			// Add the "loading" icon.
 			add_action( 'wp_footer', array( $this, 'add_loader_to_footer' ) );
 			add_action( 'wp_head', array( $this, 'add_loader_styles_to_header' ), 99 );
 			$this->remove_default_loading_styles();
@@ -35,6 +38,8 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 
 		/**
 		 * Adds a custom "loading" div $ its styles when changes are made to the customizer.
+		 *
+		 * @access public
 		 */
 		public function add_loader_to_footer() { ?>
 			<div class="kirki-customizer-loading-wrapper">
@@ -43,6 +48,11 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 			<?php
 		}
 
+		/**
+		 * Adds the loader CSS to our `<head>`.
+		 *
+		 * @access public
+		 */
 		public function add_loader_styles_to_header() { ?>
 			<style>
 				body.wp-customizer-unloading {
@@ -108,11 +118,14 @@ if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 			<?php
 		}
 
+		/**
+		 * Removes the default loader styles from WP Core.
+		 *
+		 * @access public
+		 */
 		public function remove_default_loading_styles() {
 			global $wp_customize;
 			remove_action( 'wp_head', array( $wp_customize, 'customize_preview_loading_style' ) );
 		}
-
 	}
-
 }

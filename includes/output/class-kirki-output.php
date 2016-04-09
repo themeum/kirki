@@ -1,6 +1,5 @@
 <?php
 /**
- * @file
  * Handles CSS output for fields.
  *
  * @package     Kirki
@@ -15,24 +14,32 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 	class Kirki_Output {
 
 		/**
+		 * The Kirki configuration used in the field.
+		 *
 		 * @access protected
 		 * @var string
 		 */
 		protected $config_id = 'global';
 
 		/**
+		 * The field's `output` argument.
+		 *
 		 * @access protected
 		 * @var array
 		 */
 		protected $output = array();
 
 		/**
+		 * An array of the generated styles.
+		 *
 		 * @access protected
 		 * @var array
 		 */
 		protected $styles = array();
 
 		/**
+		 * The value.
+		 *
 		 * @access protected
 		 * @var string|array
 		 */
@@ -65,8 +72,10 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		 * @return string|array
 		 */
 		protected function apply_sanitize_callback( $output, $value ) {
+
 			if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
-				// If the sanitize_callback is invalid, return the value
+
+				// If the sanitize_callback is invalid, return the value.
 				if ( ! is_callable( $output['sanitize_callback'] ) ) {
 					return $value;
 				}
@@ -79,6 +88,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 			}
 
 			return $value;
+
 		}
 
 		/**
@@ -90,7 +100,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		protected function parse_output() {
 			foreach ( $this->output as $output ) {
 				$skip = false;
-				// Apply any sanitization callbacks defined
+				// Apply any sanitization callbacks defined.
 				$value = $this->apply_sanitize_callback( $output, $this->value );
 				// No need to proceed this if the current value is the same as in the "exclude" value.
 				if ( isset( $output['exclude'] ) && false !== $output['exclude'] && is_array( $output['exclude'] ) ) {

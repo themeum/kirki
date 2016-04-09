@@ -20,10 +20,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 	class Kirki_Styles_Frontend {
 
+		/**
+		 * Whether we've already processed this or not.
+		 *
+		 * @access public
+		 * @var bool
+		 */
 		public $processed = false;
 
+		/**
+		 * The CSS array
+		 *
+		 * @access public
+		 * @var array
+		 */
 		public static $css_array = array();
 
+		/**
+		 * Constructor
+		 *
+		 * @access public
+		 */
 		public function __construct() {
 
 			Kirki_Fonts_Google::get_instance();
@@ -48,6 +65,11 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			// This is a todo: add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
 		}
 
+		/**
+		 * Adds inline styles.
+		 *
+		 * @access public
+		 */
 		public function inline_dynamic_css() {
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
@@ -66,17 +88,29 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			}
 		}
 
+		/**
+		 * Get the dynamic-css.php file
+		 *
+		 * @access public
+		 */
 		public function ajax_dynamic_css() {
 			require( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'dynamic-css.php' );
 			exit;
 		}
 
+		/**
+		 * Enqueues the ajax stylesheet.
+		 *
+		 * @access public
+		 */
 		public function frontend_styles() {
 			wp_enqueue_style( 'kirki-styles-php', admin_url( 'admin-ajax.php' ) . '?action=kirki_dynamic_css', null, null );
 		}
 
 		/**
 		 * Loop through all fields and create an array of style definitions.
+		 *
+		 * @access public
 		 */
 		public static function loop_controls( $config_id ) {
 
@@ -117,10 +151,11 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 					}
 				}
 
-				// Only continue if $field['output'] is set
+				// Only continue if $field['output'] is set.
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 					$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
-					// Add the globals
+
+					// Add the globals.
 					if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
 						Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
 					}
@@ -136,6 +171,5 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			return;
 
 		}
-
 	}
 }

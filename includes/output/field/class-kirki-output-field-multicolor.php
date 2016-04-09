@@ -13,16 +13,23 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 
 	class Kirki_Output_Field_Multicolor extends Kirki_Output {
 
+		/**
+		 * Processes a single item from the `output` array.
+		 *
+		 * @access protected
+		 * @param array $output The `output` item
+		 * @param array $value  The field's value.
+		 */
 		protected function process_output( $output, $value ) {
 
 			foreach ( $value as $key => $sub_value ) {
 
-				// If "choice" is not defined, there's no reason to continue
+				// If "choice" is not defined, there's no reason to continue.
 				if ( ! isset( $output['choice'] ) ) {
 					continue;
 				}
 
-				// If "element" is not defined, there's no reason to continue
+				// If "element" is not defined, there's no reason to continue.
 				if ( ! isset( $output['element'] ) ) {
 					continue;
 				}

@@ -13,8 +13,22 @@ if ( ! class_exists( 'Kirki_Sections_Hover_Section' ) ) {
 
 	class Kirki_Sections_Hover_Section extends WP_Customize_Section {
 
+		/**
+		 * The section type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'kirki-hover';
 
+		/**
+		 * An Underscore (JS) template for rendering this section.
+		 *
+		 * Class variables for this section class are available in the `data` JS object;
+		 * export custom variables by overriding WP_Customize_Section::json().
+		 *
+		 * @access protected
+		 */
 		protected function render_template() {
 			?>
 			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">

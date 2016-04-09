@@ -31,15 +31,17 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		 */
 		protected function set_choices() {
 
-			// Make sure choices are defined as an array
+			// Make sure choices are defined as an array.
 			if ( ! is_array( $this->choices ) ) {
 				$this->choices = array();
 			}
-			// Properly format the 'alpha' choice as a boolean
+
+			// Properly format the 'alpha' choice as a boolean.
 			if ( ! isset( $this->choices['alpha'] ) ) {
 				$this->choices['alpha'] = true;
 			}
 			$this->choices['alpha'] = (bool) $this->choices['alpha'];
+
 			// Make sure we have more than 2 colors, and we're using an integer.
 			if ( ! isset( $this->choices['colors'] ) ) {
 				$this->choices['colors'] = 2;
@@ -71,23 +73,35 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		 * @access protected
 		 */
 		protected function set_default() {
+
 			// Make sure we've already processed the set_choices() method.
-			// This way we know how many colors we're dealing with
+			// This way we know how many colors we're dealing with.
 			$this->set_choices();
+
 			// Define a default array using #FFFFFF
 			$defaults = array_fill( 0, $this->choices['colors'], '#FFFFFF' );
-			// If we're using rgba, define default as rgba(255,255,255,0)
+
+			// If we're using rgba, define default as rgba(255,255,255,0).
 			if ( $this->choices['colors'] ) {
 				$defaults = array_fill( 0, $this->choices['colors'], 'rgba(255,255,255,0)' );
 			}
-			// Make sure defaults are defined as an array
+
+			// Make sure defaults are defined as an array.
 			if ( ! is_array( $this->default ) ) {
 				$this->default = array();
 			}
-			// Merge our arrays
+
+			// Merge our arrays.
 			$this->default = wp_parse_args( $this->default, $defaults );
+
 		}
 
+		/**
+		 * The method that will be used as a `sanitize_callback`.
+		 *
+		 * @param array $value The value to be sanitized
+		 * @return array The value.
+		 */
 		public function sanitize( $value ) {
 
 			return $value;

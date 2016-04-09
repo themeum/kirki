@@ -13,6 +13,12 @@ if ( ! class_exists( 'Kirki_Panels_Default_Panel' ) ) {
 
 	class Kirki_Panels_Default_Panel extends WP_Customize_Panel {
 
+		/**
+		 * The panel type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'kirki-default';
 
 	}

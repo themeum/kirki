@@ -87,7 +87,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			// Get the value of this field.
 			self::$value = Kirki_Values::get_sanitized_field_value( $field );
 
-			// Find the class that will handle the outpout for this field
+			// Find the class that will handle the outpout for this field.
 			$classname = 'Kirki_Output';
 			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames', array(
 				'spacing'    => 'Kirki_Output_Field_Spacing',
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		}
 
 		/**
-		 * Gets the array of generated styles and creates the minimized, inline CSS
+		 * Gets the array of generated styles and creates the minimized, inline CSS.
 		 *
 		 * @param array
 		 * @return string	the generated CSS.

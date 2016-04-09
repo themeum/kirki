@@ -12,6 +12,12 @@
 	if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 	class Kirki_Sections_Default_Section extends WP_Customize_Section {
 
+		/**
+		 * The section type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'kirki-default';
 
 		/**
@@ -20,10 +26,7 @@
 		 * Class variables for this section class are available in the `data` JS object;
 		 * export custom variables by overriding WP_Customize_Section::json().
 		 *
-		 * @since 4.3.0
 		 * @access protected
-		 *
-		 * @see WP_Customize_Section::print_template()
 		 */
 		protected function render_template() {
 			$l10n = Kirki_l10n::get_strings();

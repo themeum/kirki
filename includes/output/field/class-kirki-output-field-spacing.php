@@ -13,9 +13,17 @@ if ( ! class_exists( 'Kirki_Output_Field_Spacing' ) ) {
 
 	class Kirki_Output_Field_Spacing extends Kirki_Output {
 
+		/**
+		 * Processes a single item from the `output` array.
+		 *
+		 * @access protected
+		 * @param array $output The `output` item
+		 * @param array $value  The field's value.
+		 */
 		protected function process_output( $output, $value ) {
 
 			foreach ( $value as $key => $sub_value ) {
+
 				if ( ! isset( $output['property'] ) || empty( $output['property'] ) ) {
 					$property = $key;
 				} elseif ( false !== strpos( $output['property'], '%%' ) ) {
@@ -25,6 +33,7 @@ if ( ! class_exists( 'Kirki_Output_Field_Spacing' ) ) {
 				}
 				$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $sub_value;
+
 			}
 		}
 	}
