@@ -38,13 +38,16 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 		 * @return array
 		 */
 		public static function sanitize( $value ) {
+
 			if ( ! is_array( $value ) ) {
 				return array();
 			}
+
 			// escape the font-family
 			if ( isset( $value['font-family'] ) ) {
 				$value['font-family'] = esc_attr( $value['font-family'] );
 			}
+
 			// make sure we're using a valid variant.
 			// We're adding checks for font-weight as well for backwards-compatibility
 			// Versions 2.0 - 2.2 were using an integer font-weight.
@@ -59,6 +62,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 					$value['variant'] = 'regular';
 				}
 			}
+
 			// Make sure we're using a valid subset
 			if ( isset( $value['subset'] ) ) {
 				$valid_subsets = Kirki_Fonts::get_google_font_subsets();
@@ -72,36 +76,42 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 					$value['subsets'] = $subsets_ok;
 				}
 			}
+
 			// Sanitize the font-size
 			if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
 				$value['font-size'] = Kirki_Sanitize_Values::css_dimension( $value['font-size'] );
-				if ( Kirki_Sanitize_Values::filter_number( $value['font-size'] ) == $value['font-size'] ) {
+				if ( is_numeric( $value['font-size'] ) ) {
 					$value['font-size'] .= 'px';
 				}
 			}
+
 			// Sanitize the line-height
 			if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
 				$value['line-height'] = Kirki_Sanitize_Values::css_dimension( $value['line-height'] );
 			}
+
 			// Sanitize the letter-spacing
 			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
 				$value['letter-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['letter-spacing'] );
-				if ( Kirki_Sanitize_Values::filter_number( $value['letter-spacing'] ) == $value['letter-spacing'] ) {
+				if ( is_numeric( $value['letter-spacing'] ) ) {
 					$value['letter-spacing'] .= 'px';
 				}
 			}
+
 			// Sanitize the text-align
 			if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
 				if ( ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ) ) ) {
 					$value['text-align'] = 'inherit';
 				}
 			}
+
 			// Sanitize the text-transform
 			if ( isset( $value['text-transform'] ) && ! empty( $value['text-transform'] ) ) {
 				if ( ! in_array( $value['text-transform'], array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ) ) ) {
 					$value['text-transform'] = 'none';
 				}
 			}
+
 			// Sanitize the color
 			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
 				$color = ariColor::newColor( $value['color'] );
