@@ -142,7 +142,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param array The field.
+		 * @param array $field The field.
 		 * @return array
 		 */
 		public static function css( $field ) {

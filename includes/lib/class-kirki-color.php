@@ -105,7 +105,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param string $color The rgba color formatted like rgba(r,g,b,a)
+		 * @param string $color The rgba color formatted like rgba(r,g,b,a).
 		 * @return int|float    The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
@@ -202,10 +202,10 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param   string|false $hex1
-		 * @param   string|false $hex2
-		 * @param   integer      $percentage A value between 0 and 100.
-		 * @return  string                   Returns hex color.
+		 * @param string|false $hex1       Color.
+		 * @param string|false $hex2       Color.
+		 * @param int          $percentage A value between 0 and 100.
+		 * @return string                  Returns hex color.
 		 */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {
 			$hex1 = self::sanitize_hex( $hex1, false );
@@ -224,7 +224,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param string The hex value of color 1.
+		 * @param string $hex The hex value of color 1.
 		 * @return array Returns array( 'h', 's', 'v' ).
 		 */
 		public static function hex_to_hsv( $hex ) {

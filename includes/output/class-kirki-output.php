@@ -68,8 +68,8 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		/**
 		 * If we have a sanitize_callback defined, apply it to the value.
 		 *
-		 * @param array        $output The output args
-		 * @param string|array $value The value
+		 * @param array        $output The output args.
+		 * @param string|array $value  The value.
 		 *
 		 * @return string|array
 		 */
@@ -161,7 +161,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 		 *
 		 * @access protected
 		 * @param string $property The CSS property.
-		 * @param string $value    The value
+		 * @param string $value    The value.
 		 *
 		 * @return array
 		 */

@@ -51,7 +51,9 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 * This works on a per-field basis.
 		 * Once created, the script is added to the $icons_script property.
 		 *
-		 * @param array the field definition
+		 * @static
+		 * @access public
+		 * @param array $args The field definition.
 		 * @return void
 		 */
 		public static function generate_script( $args = array() ) {
@@ -63,6 +65,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 			if ( ! isset( $args['icon'] ) || '' == $args['icon'] ) {
 				return;
 			}
+
 			/**
 			 * If this is not a panel or section
 			 * then no need to proceed.
@@ -70,6 +73,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 			if ( ! isset( $args['context'] ) || ! in_array( $args['context'], array( 'panel', 'section' ) ) ) {
 				return;
 			}
+
 			/**
 			 * If the panel or section ID is not defined
 			 * then early exit.
