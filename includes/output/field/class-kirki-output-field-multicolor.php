@@ -45,7 +45,7 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 				// If "media_query" is not defined, use "global".
 				$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 
-				// Create the styles
+				// Create the styles.
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $sub_value;
 
 			}

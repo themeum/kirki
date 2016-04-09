@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
+
 	class Kirki_Styles_Frontend {
 
 		/**
@@ -55,14 +56,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			}
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
-			/**
-			 * If we are in the customizer, load CSS using inline-styles.
-			 * If we are in the frontend AND $config['inline_css'] == false
-			 * Then load dynamic CSS using AJAX.
-			 */
-			// This is a todo: add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
-			// This is a todo: add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
-			// This is a todo: add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+
 		}
 
 		/**

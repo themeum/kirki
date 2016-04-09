@@ -78,7 +78,7 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 			// This way we know how many colors we're dealing with.
 			$this->set_choices();
 
-			// Define a default array using #FFFFFF
+			// Define a default array using #FFFFFF.
 			$defaults = array_fill( 0, $this->choices['colors'], '#FFFFFF' );
 
 			// If we're using rgba, define default as rgba(255,255,255,0).
