@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Sections_Hover_Section' ) ) {
 
+	/**
+	 * Hover Section.
+	 */
 	class Kirki_Sections_Hover_Section extends WP_Customize_Section {
 
 		/**

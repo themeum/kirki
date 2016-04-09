@@ -17,6 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Color' ) ) {
+
+	/**
+	 * Helper class for color manipulation.
+	 */
 	final class Kirki_Color extends ariColor {
 
 		/**

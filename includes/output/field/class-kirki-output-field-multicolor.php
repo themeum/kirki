@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Field_Multicolor extends Kirki_Output {
 
 		/**

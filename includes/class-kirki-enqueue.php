@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Enqueue' ) ) {
+
 	/**
 	 * Enqueues JS & CSS assets
 	 */

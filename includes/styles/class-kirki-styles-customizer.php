@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 
+	/**
+	 * Adds styles to the customizer.
+	 */
 	class Kirki_Styles_Customizer {
 
 		/**

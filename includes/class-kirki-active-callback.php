@@ -10,6 +10,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
+
 	/**
 	 * Callback class for use with the "required" argument
 	 */

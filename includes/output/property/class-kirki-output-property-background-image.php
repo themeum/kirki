@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 
 		/**

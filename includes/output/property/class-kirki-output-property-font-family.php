@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Property_Font_Family' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 
 		/**

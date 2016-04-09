@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 
+	/**
+	 * Repeater Settings.
+	 */
 	class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 
 		/**

@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Scripts_Loading' ) ) {
 
+	/**
+	 * Modifies the loading overlay.
+	 */
 	class Kirki_Scripts_Loading {
 
 		/**

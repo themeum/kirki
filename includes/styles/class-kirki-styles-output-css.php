@@ -18,6 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 
+	/**
+	 * Handles CSS output.
+	 */
 	final class Kirki_Styles_Output_CSS {
 
 		/**

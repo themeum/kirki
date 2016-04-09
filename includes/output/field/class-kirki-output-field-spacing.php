@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Field_Spacing' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Field_Spacing extends Kirki_Output {
 
 		/**

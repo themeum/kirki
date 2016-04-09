@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Property_Background_Position extends Kirki_Output_Property {
 
 		/**

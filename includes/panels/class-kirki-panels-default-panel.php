@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Panels_Default_Panel' ) ) {
 
+	/**
+	 * Default Panel.
+	 */
 	class Kirki_Panels_Default_Panel extends WP_Customize_Panel {
 
 		/**

@@ -9,7 +9,11 @@
  * @since       2.2.0
  */
 
-	if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
+if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
+
+	/**
+	 * Default Section.
+	 */
 	class Kirki_Sections_Default_Section extends WP_Customize_Section {
 
 		/**

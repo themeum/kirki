@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_l10n' ) ) {
+
 	/**
 	 * Handles translations
 	 */

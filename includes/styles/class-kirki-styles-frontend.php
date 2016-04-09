@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
+	/**
+	 * Applies field-generated styles to the frontend.
+	 */
 	class Kirki_Styles_Frontend {
 
 		/**

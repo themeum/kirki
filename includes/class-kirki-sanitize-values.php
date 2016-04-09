@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
+
 	/**
 	 * A simple wrapper class for static methods.
 	 */

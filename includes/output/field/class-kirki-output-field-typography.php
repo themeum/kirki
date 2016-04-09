@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 
+	/**
+	 * Output overrides.
+	 */
 	class Kirki_Output_Field_Typography extends Kirki_Output {
 
 		/**

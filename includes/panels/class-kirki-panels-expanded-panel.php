@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Panels_Expanded_Panel' ) ) {
 
+	/**
+	 * Expanded Panel.
+	 */
 	class Kirki_Panels_Expanded_Panel extends WP_Customize_Panel {
 
 		/**

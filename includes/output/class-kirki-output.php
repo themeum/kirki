@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Output' ) ) {
 
+	/**
+	 * Handles field CSS output.
+	 */
 	class Kirki_Output {
 
 		/**

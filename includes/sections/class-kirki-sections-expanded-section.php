@@ -11,6 +11,9 @@
 
 if ( ! class_exists( 'Kirki_Sections_Expanded_Section' ) ) {
 
+	/**
+	 * Expanded Section.
+	 */
 	class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
 
 		/**

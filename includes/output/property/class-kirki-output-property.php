@@ -12,6 +12,9 @@
 
 if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 
+	/**
+	 * Output for CSS properties.
+	 */
 	class Kirki_Output_Property {
 
 		/**

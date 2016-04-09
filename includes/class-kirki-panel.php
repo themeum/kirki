@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Panel' ) ) {
+
 	/**
 	 * Each panel is a separate instance of the Kirki_Panel object.
 	 */

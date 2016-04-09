@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 
+	/**
+	 * Adds script for tooltips.
+	 */
 	class Kirki_Scripts_Tooltips {
 
 		/**

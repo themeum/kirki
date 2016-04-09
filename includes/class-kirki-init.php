@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Init' ) ) {
+
 	/**
 	 * Initialize Kirki
 	 */
@@ -160,24 +161,19 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 				if ( isset( $args['type'] ) && 'background' === $args['type'] ) {
 					continue;
 				}
-				/**
-				 * Create the settings.
-				 */
+
+				// Create the settings.
 				new Kirki_Settings( $args );
-				/**
-				 * Check if we're on the customizer.
-				 * If we are, then we will create the controls,
-				 * add the scripts needed for the customizer
-				 * and any other tweaks that this field may require.
-				 */
+
+				// Check if we're on the customizer.
+				// If we are, then we will create the controls, add the scripts needed for the customizer
+				// and any other tweaks that this field may require.
 				if ( $wp_customize ) {
-					/**
-					 * Create the control
-					 */
+
+					// Create the control
 					new Kirki_Control( $args );
-					/**
-					 * Create the scripts for tooltips.
-					 */
+
+					// Create the scripts for tooltips.
 					Kirki_Scripts_Tooltips::generate_script( $args );
 				}
 			}

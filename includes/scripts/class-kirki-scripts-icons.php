@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 
+	/**
+	 * Adds scripts for icons in sections & panels.
+	 */
 	class Kirki_Scripts_Icons {
 
 		/**

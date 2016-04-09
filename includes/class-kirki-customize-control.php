@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
+
 	/**
 	 * The parent class for all Kirki controls.
 	 * Other controls should extend this object.
