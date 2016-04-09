@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 						foreach ( $filtered_value_field as $key => &$value ) {
 
 							// We check if this field was marked as requiring extra filtering (in this case image,cropped_images)
-							if ( array_key_exists ( $key , $image_fields_to_filter ) ) {
+							if ( array_key_exists( $key, $image_fields_to_filter ) ) {
 
 								// What follows was made this way to preserve backward compatibility
 								// The repeater control use to store the URL for images instead of the attachment ID
