@@ -99,6 +99,27 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 					continue;
 				}
 
+				// Only continue if field dependencies are met
+				if ( ! empty( $field['required'] ) ) {
+					$valid = true;
+
+					foreach ( $field['required'] as $requirement ) {
+						if (
+							! Kirki_Active_Callback::compare(
+								Kirki::get_option( $requirement['setting'] ),
+								$requirement['value'],
+								$requirement['operator']
+							)
+						) {
+							$valid = false;
+						}
+					}
+
+					if ( ! $valid ) {
+						continue;
+					}
+				}
+
 				// Only continue if $field['output'] is set
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 					$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
