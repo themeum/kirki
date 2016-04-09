@@ -56,7 +56,5 @@ if ( ! class_exists( 'Kirki_Field_Kirki_Generic' ) ) {
 			$this->sanitize_callback = 'wp_kses_post';
 
 		}
-
 	}
-
 }

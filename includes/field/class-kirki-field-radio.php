@@ -44,7 +44,5 @@ if ( ! class_exists( 'Kirki_Field_Radio' ) ) {
 			$this->sanitize_callback = 'esc_attr';
 
 		}
-
 	}
-
 }

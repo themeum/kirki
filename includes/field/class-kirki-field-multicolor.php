@@ -107,7 +107,5 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 			return $value;
 
 		}
-
 	}
-
 }

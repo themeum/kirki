@@ -42,7 +42,5 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
 
 		}
-
 	}
-
 }

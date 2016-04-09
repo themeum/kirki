@@ -153,9 +153,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 					if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
 						Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
 					}
-
 				}
-
 			}
 
 			if ( is_array( $css ) ) {

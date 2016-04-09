@@ -22,7 +22,7 @@ if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 		 *
 		 * @access public
 		 * @param string $property The CSS property we're modifying
-		 * @param mixed $value The value.
+		 * @param mixed  $value    The value.
 		 */
 		public function __construct( $property, $value ) {
 			$this->property = $property;

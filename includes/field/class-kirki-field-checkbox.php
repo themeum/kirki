@@ -54,9 +54,6 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 			if ( true === $this->default || 1 === $this->default ) {
 				$this->default = '1';
 			}
-
 		}
-
 	}
-
 }

@@ -39,7 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Number' ) ) {
 			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
 
 		}
-
 	}
-
 }

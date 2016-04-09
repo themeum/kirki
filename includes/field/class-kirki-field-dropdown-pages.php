@@ -39,7 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Dropdown_Pages' ) ) {
 			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'dropdown_pages' );
 
 		}
-
 	}
-
 }

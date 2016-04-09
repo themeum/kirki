@@ -53,7 +53,5 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
 
 		}
-
 	}
-
 }

@@ -39,6 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Upload' ) ) {
 			$this->sanitize_callback = 'esc_url_raw';
 
 		}
-
 	}
 }

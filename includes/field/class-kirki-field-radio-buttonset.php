@@ -23,7 +23,5 @@ if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 			$this->type = 'radio-buttonset';
 
 		}
-
 	}
-
 }

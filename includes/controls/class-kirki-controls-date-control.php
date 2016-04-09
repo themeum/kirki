@@ -61,6 +61,5 @@ if ( ! class_exists( 'Kirki_Controls_Date_Control' ) ) {
 			</label>
 			<?php
 		}
-
 	}
 }

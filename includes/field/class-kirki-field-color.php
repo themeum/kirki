@@ -28,9 +28,6 @@ if ( ! class_exists( 'Kirki_Field_Color' ) ) {
 			if ( false !== strpos( $this->default, 'rgba' ) ) {
 				$this->choices['alpha'] = true;
 			}
-
 		}
-
 	}
-
 }

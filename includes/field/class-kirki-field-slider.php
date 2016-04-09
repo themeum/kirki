@@ -39,7 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Slider' ) ) {
 			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
 
 		}
-
 	}
-
 }

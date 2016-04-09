@@ -41,7 +41,5 @@ if ( ! class_exists( 'Kirki_Field_Custom' ) ) {
 			$this->sanitize_callback = '__return_true';
 
 		}
-
 	}
-
 }

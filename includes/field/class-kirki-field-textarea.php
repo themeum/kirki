@@ -27,7 +27,5 @@ if ( ! class_exists( 'Kirki_Field_Textarea' ) ) {
 			$this->choices['rows']    = '5';
 
 		}
-
 	}
-
 }

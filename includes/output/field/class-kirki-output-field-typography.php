@@ -51,7 +51,6 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 				if ( $is_italic ) {
 					$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = 'italic';
 				}
-
 			}
 
 			// Take care of font-size.

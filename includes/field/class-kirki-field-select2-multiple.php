@@ -28,7 +28,5 @@ if ( ! class_exists( 'Kirki_Field_Select2_Multiple' ) ) {
 			$this->multiple = 999;
 
 		}
-
 	}
-
 }

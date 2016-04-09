@@ -117,7 +117,5 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$tooltip_script . '});</script>';
 			}
 		}
-
 	}
-
 }

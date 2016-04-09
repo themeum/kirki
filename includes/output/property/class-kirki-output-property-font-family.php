@@ -40,7 +40,6 @@ if ( ! class_exists( 'Kirki_Output_Property_Font_Family' ) ) {
 						}
 					}
 				}
-
 			} else {
 
 				// Add double quotes if needed.

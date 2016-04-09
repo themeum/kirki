@@ -99,6 +99,5 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
 			}
 		}
-
 	}
 }

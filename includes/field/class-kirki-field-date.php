@@ -39,7 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Date' ) ) {
 			$this->sanitize_callback = 'esc_textarea';
 
 		}
-
 	}
-
 }

@@ -41,7 +41,5 @@ if ( ! class_exists( 'Kirki_Field_Dashicons' ) ) {
 			$this->sanitize_callback = 'esc_attr';
 
 		}
-
 	}
-
 }

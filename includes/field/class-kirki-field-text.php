@@ -43,7 +43,5 @@ if ( ! class_exists( 'Kirki_Field_Text' ) ) {
 			$this->sanitize_callback = 'esc_textarea';
 
 		}
-
 	}
-
 }

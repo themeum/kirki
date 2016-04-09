@@ -23,7 +23,5 @@ if ( ! class_exists( 'Kirki_Field_Switch' ) ) {
 			$this->type = 'switch';
 
 		}
-
 	}
-
 }

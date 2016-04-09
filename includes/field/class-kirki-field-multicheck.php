@@ -49,7 +49,5 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 			return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
 
 		}
-
 	}
-
 }

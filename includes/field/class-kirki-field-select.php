@@ -69,7 +69,5 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 			return esc_attr( $value );
 
 		}
-
 	}
-
 }

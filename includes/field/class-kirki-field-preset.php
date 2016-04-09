@@ -34,7 +34,5 @@ if ( ! class_exists( 'Kirki_Field_Preset' ) ) {
 			$this->multiple = '1';
 
 		}
-
 	}
-
 }

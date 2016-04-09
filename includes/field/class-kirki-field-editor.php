@@ -39,6 +39,5 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 			$this->sanitize_callback = 'wp_kses_post';
 
 		}
-
 	}
 }
