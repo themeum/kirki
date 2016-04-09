@@ -80,7 +80,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				$args['fields'][ $key ]['id'] = $key;
 
 				// We check if the filed is an image or a cropped_image.
-				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value["type"] ) ) {
+				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value['type'] ) ) {
 					// We add it to the list of fields that need some extra filtering/processing.
 					$image_fields_to_filter[ $key ] = true;
 				}
