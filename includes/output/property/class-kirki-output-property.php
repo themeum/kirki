@@ -14,7 +14,20 @@ if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 
 	class Kirki_Output_Property {
 
+		/**
+		 * The property we're modifying.
+		 *
+		 * @access protected
+		 * @var string
+		 */
 		protected $property;
+
+		/**
+		 * The value
+		 *
+		 * @access protected
+		 * @var string|array
+		 */
 		protected $value;
 
 		/**
