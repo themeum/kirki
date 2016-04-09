@@ -43,8 +43,10 @@ if ( ! function_exists( 'Kirki' ) ) {
 // Start Kirki
 global $kirki;
 $kirki = Kirki();
+
 // Make sure the path is properly set
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
+
 // Instantiate 2ndary classes
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
@@ -53,10 +55,11 @@ new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
 
-// Include deprectaed functions & methods
-include_once( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'deprecated.php' );
+// Include deprecated functions & methods
+include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php' );
+
 // Include the ariColor library
-include_once( wp_normalize_path( Kirki::$path . '/includes/lib/class-aricolor.php' ) );
+include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
 
 // Add an empty config for global fields
 Kirki::add_config( '' );
