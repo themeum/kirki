@@ -46,6 +46,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * FIX: markup in editor fields - props @manuelmoreale.
 * FIX: multiple styles in head when using js_vars
 * FIX: Sanitization for rem units
+* FIX: CSS output for multicolor controls
 * NEW: Repeater labels are now dynamic - props @guillaumemolter.
 * NEW: The entire header on repeaters is now draggable - props @guillaumemolter.
 * TWEAK: More efficient JS code for the typography control
