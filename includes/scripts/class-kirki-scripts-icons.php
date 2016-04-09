@@ -30,6 +30,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 
 		/**
 		 * Whether the script has already been added to the customizer or not.
+		 *
 		 * @static
 		 * @access public
 		 * @var bool

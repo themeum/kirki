@@ -20,13 +20,20 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 	class Kirki_Scripts_Tooltips {
 
 		/**
-		 * string.
 		 * The script generated for ALL fields
+		 *
+		 * @static
+		 * @access public
+		 * @var string
 		 */
 		public static $tooltip_script = '';
+
 		/**
-		 * boolean.
 		 * Whether the script has already been added to the customizer or not.
+		 *
+		 * @static
+		 * @access public
+		 * @var bool
 		 */
 		public static $script_added = false;
 
