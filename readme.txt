@@ -37,6 +37,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 2.2.11 =
+
+* FIX: Only enqueue the tooltips script if needed.
+* FIX: WordPress Coding Standards.
+* FIX: undefined sub-controls were still being saved in typography fields
+* FIX: Javascript Console Errors: "wp.customize" object undefined when Kirki fields were added in `customize_register`
+* FIX: markup in editor fields - props @manuelmoreale.
+* FIX: multiple styles in head when using js_vars
+* FIX: Sanitization for rem units
+* NEW: Repeater labels are now dynamic - props @guillaumemolter.
+* NEW: The entire header on repeaters is now draggable - props @guillaumemolter.
+* TWEAK: More efficient JS code for the typography control
+
 = 2.2.10 =
 
 * FIX: Issue with URLs when using Kirki embedded in a theme and not installed as a plugin.
