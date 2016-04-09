@@ -18,7 +18,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		    picker;
 
 		// Make sure everything we're going to need exists.
-		_.each( control.params.default, function( defaultParamValue, param ) {
+		_.each( control.params['default'], function( defaultParamValue, param ) {
 			if ( false !== defaultParamValue ) {
 				value[ param ] = defaultParamValue;
 				if ( undefined !== control.setting._value[ param ] ) {

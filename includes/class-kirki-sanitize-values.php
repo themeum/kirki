@@ -138,7 +138,7 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 			}
 
 			// Hack for rem values:
-			if ( 'em' == $unit_used && false!== strpos( $value, 'rem' ) ) {
+			if ( 'em' === $unit_used && false !== strpos( $value, 'rem' ) ) {
 				$unit_used = 'rem';
 			}
 
