@@ -19,17 +19,17 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 
 				// If "choice" is not defined, there's no reason to continue
 				if ( ! isset( $output['choice'] ) ) {
-					return;
+					continue;
 				}
 
 				// If "element" is not defined, there's no reason to continue
 				if ( ! isset( $output['element'] ) ) {
-					return;
+					continue;
 				}
 
 				// If the "choice" is not the same as the $key in our loop, there's no reason to proceed.
 				if ( $key != $output['choice'] ) {
-					return;
+					continue;
 				}
 
 				// If "property" is not defined, fallback to "color".
