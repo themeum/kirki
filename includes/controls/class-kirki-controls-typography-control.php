@@ -9,7 +9,7 @@
  * @since       2.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -18,12 +18,28 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 
 	class Kirki_Controls_Typography_Control extends Kirki_Customize_Control {
 
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'typography';
 
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'kirki-typography' );
 		}
 
+		/**
+		 * Refresh the parameters passed to the JavaScript via JSON.
+		 *
+		 * @access public
+		 */
 		public function to_json() {
 			parent::to_json();
 			$this->add_values_backwards_compatibility();
@@ -40,8 +56,16 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 		}
 
-		public function render_content() {}
-
+		/**
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 *
+		 * Class variables for this control class are available in the `data` JS object;
+		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+		 *
+		 * @see WP_Customize_Control::print_template()
+		 *
+		 * @access protected
+		 */
 		protected function content_template() { ?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
@@ -155,6 +179,13 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			<?php
 		}
 
+		/**
+		 * Adds backwards-compatibility for values.
+		 * Converts font-weight to variant
+		 * Adds units to letter-spacing
+		 *
+		 * @access protected
+		 */
 		protected function add_values_backwards_compatibility() {
 			$value = $this->value();
 			$old_values = array(
@@ -165,18 +196,18 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'letter-spacing' => '',
 				'color'          => '',
 			);
+
 			// Font-weight is now variant.
-			// All values are the same with the exception of 400 (becomes regular)
+			// All values are the same with the exception of 400 (becomes regular).
 			if ( '400' == $old_values['variant'] ) {
 				$old_values['variant'] = 'regular';
 			}
+
 			// Letter spacing was in px, now it requires units.
 			if ( isset( $value['letter-spacing'] ) && intval( $value['letter-spacing'] ) == $value['letter-spacing'] ) {
 				$value['letter-spacing'] .= 'px';
 			}
 			$this->json['value'] = wp_parse_args( $value, $old_values );
 		}
-
 	}
-
 }

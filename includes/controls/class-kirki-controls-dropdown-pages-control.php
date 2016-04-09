@@ -9,7 +9,7 @@
  * @since       2.2.8
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -18,12 +18,29 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 
 	class Kirki_Controls_Dropdown_Pages_Control extends Kirki_Customize_Control {
 
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'dropdown-pages';
 
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'kirki-dropdown-pages' );
 		}
 
+		/**
+		 * Render the control's content.
+		 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
+		 *
+		 * @access protected
+		 */
 		protected function render_content() { ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
@@ -54,9 +71,6 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 				?>
 			</label>
 			<?php
-
 		}
-
 	}
-
 }

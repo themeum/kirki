@@ -280,6 +280,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( is_string( $config_id ) ) {
 				$args['kirki_config'] = $config_id;
 			}
+
 			// In case the user only provides 1 argument,
 			// assume that the provided argument is $args and set $config_id = 'global'.
 			if ( is_array( $config_id ) && empty( $args ) ) {
@@ -290,8 +291,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( '' === $config_id ) {
 				$this->kirki_config = 'global';
 			}
+
 			// Get defaults from the class.
 			$defaults = get_class_vars( __CLASS__ );
+
 			// Get the config arguments, and merge them with the defaults.
 			$config_defaults = ( isset( Kirki::$config['global'] ) ) ? Kirki::$config['global'] : array();
 			if ( 'global' !== $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
@@ -305,12 +308,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					}
 				}
 			}
+
 			// Merge our args with the defaults.
 			$args = wp_parse_args( $args, $defaults );
+
 			// Set the class properties using the parsed args.
 			foreach ( $args as $key => $value ) {
 				$this->$key = $value;
 			}
+
 			// An array of whitelisted properties that don't need to be sanitized here.
 			// Format: $key => $default_value.
 			$whitelisted = apply_filters( 'kirki/' . $this->kirki_config . '/fields/properties_whitelist', array(
@@ -318,7 +324,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'description' => '', // This is sanitized later in the controls themselves.
 				'mode'        => '', // Only used for backwards-compatibility reasons.
 				'fields'      => array(), // Used in repeater fields.
-				'row_label'   => array(), // Used in repeater fields
+				'row_label'   => array(), // Used in repeater fields.
 			) );
 
 			$this->set_field( $whitelisted );

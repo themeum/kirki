@@ -12,7 +12,7 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -37,7 +37,9 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @return 	mixed 	the saved value of the field.
 		 */
 		public static function get_option( $config_id = '', $field_id = '' ) {
+
 			return Kirki_Values::get_value( $config_id, $field_id );
+
 		}
 
 		/**
@@ -48,13 +50,15 @@ if ( ! class_exists( 'Kirki' ) ) {
 		 * @param string $config_id
 		 */
 		public static function add_config( $config_id, $args = array() ) {
+
 			$config = Kirki_Config::get_instance( $config_id, $args );
 			$config_args = $config->get_config();
 			self::$config[ $config_args['id'] ] = $config_args;
+
 		}
 
 		/**
-		 * Create a new panel
+		 * Create a new panel.
 		 *
 		 * @var		string		the ID for this panel
 		 * @var		array		the panel arguments
@@ -74,7 +78,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 		}
 
 		/**
-		 * Create a new section
+		 * Create a new section.
 		 *
 		 * @var		string		the ID for this section
 		 * @var		array		the section arguments
@@ -96,12 +100,13 @@ if ( ! class_exists( 'Kirki' ) ) {
 		}
 
 		/**
-		 * Create a new field
+		 * Create a new field.
 		 *
 		 * @var		string		the configuration ID for this field
 		 * @var		array		the field arguments
 		 */
 		public static function add_field( $config_id, $args ) {
+
 			if ( isset( $args['type'] ) ) {
 				$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
 				$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
@@ -110,7 +115,9 @@ if ( ! class_exists( 'Kirki' ) ) {
 					return;
 				}
 			}
+
 			new Kirki_Field( $config_id, $args );
+
 		}
 	}
 }
