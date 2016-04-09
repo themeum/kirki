@@ -43,12 +43,12 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 				return array();
 			}
 
-			// escape the font-family
+			// Escape the font-family
 			if ( isset( $value['font-family'] ) ) {
 				$value['font-family'] = esc_attr( $value['font-family'] );
 			}
 
-			// make sure we're using a valid variant.
+			// Make sure we're using a valid variant.
 			// We're adding checks for font-weight as well for backwards-compatibility
 			// Versions 2.0 - 2.2 were using an integer font-weight.
 			if ( isset( $value['variant'] ) || isset( $value['font-weight'] ) ) {

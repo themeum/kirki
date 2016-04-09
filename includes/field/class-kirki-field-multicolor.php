@@ -62,7 +62,7 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		 * @access protected
 		 */
 		protected function set_default() {
-			// make sure we've already processed the set_choices() method.
+			// Make sure we've already processed the set_choices() method.
 			// This way we know how many colors we're dealing with
 			$this->set_choices();
 			// Define a default array using #FFFFFF

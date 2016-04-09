@@ -22,7 +22,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		public $fields = array();
 
-		// will store a filtered version of value for advenced fields (like images..)
+		// Will store a filtered version of value for advenced fields (like images..)
 		protected $filtered_value = array();
 
 		public $row_label = array();
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			$this->json['fields'] = $fields;
 			$this->json['row_label'] = $this->row_label;
 
-			// if filtered_value has been set and is not empty we use it instead of the actual value
+			// If filtered_value has been set and is not empty we use it instead of the actual value
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 				$this->json['value'] = $this->filtered_value;
 			}

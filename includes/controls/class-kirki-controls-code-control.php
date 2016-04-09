@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				$language = $this->choices['language'];
 			}
 
-			// hack for 'html' mode.
+			// Hack for 'html' mode.
 			if ( 'html' == $language ) {
 				$language = 'htmlmixed';
 			}

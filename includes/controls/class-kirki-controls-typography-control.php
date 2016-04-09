@@ -165,12 +165,12 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'letter-spacing' => '',
 				'color'          => '',
 			);
-			// font-weight is now variant.
+			// Font-weight is now variant.
 			// All values are the same with the exception of 400 (becomes regular)
 			if ( '400' == $old_values['variant'] ) {
 				$old_values['variant'] = 'regular';
 			}
-			// letter spacing was in px, now it requires units.
+			// Letter spacing was in px, now it requires units.
 			if ( isset( $value['letter-spacing'] ) && intval( $value['letter-spacing'] ) == $value['letter-spacing'] ) {
 				$value['letter-spacing'] .= 'px';
 			}

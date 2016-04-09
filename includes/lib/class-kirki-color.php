@@ -24,7 +24,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @param   mixed       The color
 		 * @param   boolean     Whether we want to include a hash (#) at the beginning or not
-		 *
 		 * @return  string      The sanitized hex color.
 		 */
 		 public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
@@ -38,7 +37,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * A proxy the sanitize_color method.
 		 *
 		 * @param  $color
-		 *
 		 * @return string
 		 */
 		public static function sanitize_rgba( $color ) {
@@ -50,9 +48,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Determine if the current value is a hex or an rgba color and call the appropriate method.
 		 *
 		 * @since 0.8.5
-		 *
 		 * @param  $color   mixed
-		 *
 		 * @return string
 		 */
 		public static function sanitize_color( $color = '', $mode = 'auto' ) {
@@ -71,7 +67,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @param   string      The color
 		 * @param   boolean     Whether we want to implode the values or not
-		 *
 		 * @return  mixed       array|string
 		 */
 		public static function get_rgb( $color, $implode = false ) {
@@ -86,7 +81,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * A proxy for the sanitize_color method
 		 *
 		 * @param   mixed
-		 *
 		 * @return  string  The hex value of the color.
 		 */
 		public static function rgba2hex( $color ) {
@@ -97,7 +91,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Get the alpha channel from an rgba color
 		 *
 		 * @param   string     The rgba color formatted like rgba(r,g,b,a)
-		 *
 		 * @return  int|float  The alpha value of the color.
 		 */
 		public static function get_alpha_from_rgba( $color ) {
@@ -110,7 +103,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 *
 		 * @param   string      The hex value of a color
 		 * @param   int         Opacity level (0-1)
-		 *
 		 * @return  string
 		 */
 		public static function get_rgba( $color = '#fff', $alpha = 1 ) {
@@ -121,12 +113,12 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			// Make sure that opacity is properly formatted.
 			// Converts 1-100 values to 0-1
 			if ( $alpha > 1 || $alpha < -1 ) {
-				// divide by 100
+				// Divide by 100
 				$alpha /= 100;
 			}
-			// get absolute value
+			// Get absolute value
 			$alpha = abs( $alpha );
-			// max 1
+			// Max 1
 			if ( 1 < $alpha ) {
 				$alpha = 1;
 			}
@@ -138,7 +130,6 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Strips the alpha value from an RGBA color string.
 		 *
 		 * @param 	string $color	The RGBA color string.
-		 *
 		 * @return  string			The corresponding RGB string.
 		 */
 		public static function rgba_to_rgb( $color ) {
@@ -150,19 +141,19 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		 * Gets the brightness of the $hex color.
 		 *
 		 * @var     string      The hex value of a color
-		 * @return  int         value between 0 and 255
+		 * @return  int         Value between 0 and 255
 		 */
 		public static function get_brightness( $hex ) {
 			$hex = self::sanitize_hex( $hex, false );
-			// returns brightness value from 0 to 255
+			// Returns brightness value from 0 to 255
 			return intval( ( ( hexdec( substr( $hex, 0, 2 ) ) * 299 ) + ( hexdec( substr( $hex, 2, 2 ) ) * 587 ) + ( hexdec( substr( $hex, 4, 2 ) ) * 114 ) ) / 1000 );
 		}
 		/**
 		 * Adjusts brightness of the $hex color.
 		 *
 		 * @param   string  $hex    The hex value of a color
-		 * @param   integer $steps  should be between -255 and 255. Negative = darker, positive = lighter
-		 * @return  string          returns hex color
+		 * @param   integer $steps  Should be between -255 and 255. Negative = darker, positive = lighter
+		 * @return  string          Returns hex color
 		 */
 		public static function adjust_brightness( $hex, $steps ) {
 			$hex = self::sanitize_hex( $hex, false );
@@ -178,7 +169,7 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 		}
 		/**
 		 * Mixes 2 hex colors.
-		 * the "percentage" variable is the percent of the first color
+		 * The "percentage" variable is the percent of the first color
 		 * to be used it the mix. default is 50 (equal mix)
 		 *
 		 * @param   string|false $hex1

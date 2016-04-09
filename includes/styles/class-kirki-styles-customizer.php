@@ -57,7 +57,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			if ( ! $config['color_back'] && ! $config['color_accent'] ) {
 				return;
 			}
-			// set the $process to true.
+			// Set the $process to true.
 			$this->process = true;
 			// Calculate the accent color
 			if ( isset( $config['color_accent'] ) ) {
