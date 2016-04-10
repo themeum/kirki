@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SVNMSG="${1//#/https\:\/\/github.com\/aristath\/kirki\/issues\/}"
+
 # Create svn directory if it doesn't exist
 if [ ! -d "./svn" ]; then
 	mkdir svn
@@ -49,5 +51,5 @@ rm -f svn/trunk/README.md
 cd svn
 svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )
 svn add trunk/* --force
-svn ci -m "$1"
+svn ci -m "$SVNMSG"
 cd ..
