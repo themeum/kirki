@@ -13,7 +13,9 @@ module.exports = function( grunt ) {
 		// Compile CSS
 		sass: {
 			dist: {
-				files: { 'assets/css/customizer.css': 'assets/scss/customizer.scss' }
+				files: {
+					'assets/css/customizer.css': 'assets/scss/customizer.scss'
+				}
 			}
 		},
 
@@ -58,10 +60,6 @@ module.exports = function( grunt ) {
 			css: {
 				files: 'assets/**/*.scss',
 				tasks: ['sass']
-			},
-			readme: {
-				files: 'readme.txt',
-				tasks: ['wp_readme_to_markdown']
 			}
 		}
 	});
@@ -79,6 +77,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', ['sass'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
 	grunt.registerTask( 'makepot', ['makepot'] );
-	grunt.registerTask( 'wp_readme_to_markdown', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 
 };

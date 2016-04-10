@@ -39,6 +39,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 2.3 =
 
+Kirki is now 100% WordPress Coding Standards compliant.
+
 * FIX: Escaping google-font URLs when possible.
 * FIX: Only enqueue the tooltips script if needed.
 * FIX: WordPress Coding Standards.

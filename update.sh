@@ -15,7 +15,7 @@ npm install
 grunt
 grunt googlefonts
 grunt makepot
-grunt wp_readme_to_markdown
+grunt readme
 
 if [[ $3 == 'push' ]]; then
 	# Git commit
