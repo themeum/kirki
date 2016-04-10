@@ -76,7 +76,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 
 			// Register the color-alpha picker.
 			wp_enqueue_style( 'wp-color-picker' );
-			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2' );
+			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
 
 			// Register the jquery-ui-spinner.
 			wp_register_script( 'jquery-ui-spinner', trailingslashit( Kirki::$url ) . 'assets/js/vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
@@ -117,7 +117,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
 			);
 			foreach ( $controls_scripts as $id => $dependencies ) {
-				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false );
+				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
 			}
 
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
