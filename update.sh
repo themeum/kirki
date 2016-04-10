@@ -51,6 +51,7 @@ rm -f svn/trunk/.editorconfig
 rm -f svn/trunk/.gitignore
 rm -f svn/trunk/.jscsrc
 rm -f svn/trunk/.jshintignore
+rm -f svn/trunk/.jshintrc
 rm -f svn/trunk/.simplecov
 rm -f svn/trunk/.travis.yml
 rm -f svn/trunk/Gruntfile.js
