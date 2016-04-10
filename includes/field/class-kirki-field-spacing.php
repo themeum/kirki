@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Field_Spacing' ) ) {
 		}
 
 		/**
-		 * Sets the $sanitize_callback
+		 * Sets the $sanitize_callback.
 		 *
 		 * @access protected
 		 */
@@ -43,21 +43,21 @@ if ( ! class_exists( 'Kirki_Field_Spacing' ) ) {
 
 		}
 
-    /**
-     * Sanitizes the value.
-     *
-     * @access public
-     * @param array $value The value
-     * @return array
-     */
-    public function sanitize( $value ) {
+		/**
+		 * Sanitizes the value.
+		 *
+		 * @access public
+		 * @param array $value The value.
+		 * @return array
+		 */
+		public function sanitize( $value ) {
 
-      // Sanitize each sub-value separately.
-      foreach ( $value as $key => $sub_value ) {
-        $value[ $key ] = Kirki_Sanitize_Values::css_dimension( $sub_value );
-      }
-      return $value;
+		  // Sanitize each sub-value separately.
+		  foreach ( $value as $key => $sub_value ) {
+			$value[ $key ] = Kirki_Sanitize_Values::css_dimension( $sub_value );
+		  }
+		  return $value;
 
-    }
+		}
 	}
 }

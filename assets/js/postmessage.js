@@ -1,7 +1,7 @@
 ( function() {
 	var api = wp.customize;
 
-	_.each( jsvars, function( jsVars, setting ) {console.log(setting);
+	_.each( jsvars, function( jsVars, setting ) {
 
 		var css      = '',
 		    cssArray = {};
