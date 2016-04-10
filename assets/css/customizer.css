@@ -915,6 +915,8 @@ span.CodeMirror-selectedtext {
   .customize-control-repeater .repeater-fields .repeater-row label {
     margin-bottom: 12px;
     clear: both; }
+  .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field- {
+    display: none; }
   .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input {
     display: none; }
     .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input img {

@@ -25,6 +25,9 @@
 			}
 
 			.repeater-field {
+				&.repeater-field- {
+					display: none;
+				}
 				&.repeater-field-radio-image {
 					input {
 						img {
