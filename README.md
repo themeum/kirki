@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.2.10  
+**Stable tag:** 2.3.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,23 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.3 ###
+
+Kirki is now 100% WordPress Coding Standards compliant.
+
+* FIX: Escaping google-font URLs when possible.
+* FIX: Only enqueue the tooltips script if needed.
+* FIX: WordPress Coding Standards.
+* FIX: undefined sub-controls were still being saved in typography fields
+* FIX: Javascript Console Errors: "wp.customize" object undefined when Kirki fields were added in `customize_register`
+* FIX: markup in editor fields - props @manuelmoreale.
+* FIX: multiple styles in head when using js_vars
+* FIX: Sanitization for rem units
+* FIX: CSS output for multicolor controls
+* NEW: Repeater labels are now dynamic - props @guillaumemolter.
+* NEW: The entire header on repeaters is now draggable - props @guillaumemolter.
+* TWEAK: More efficient JS code for the typography control
 
 ### 2.2.10 ###
 
