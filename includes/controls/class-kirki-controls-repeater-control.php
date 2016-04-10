@@ -359,12 +359,12 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-image-attachment" data-placeholder="{{ data.i18n['no-image-selected'] }}" >
+									<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $l10n['no-image-selected'] ); ?>" >
 										<# if ( field.default ) { #>
 											<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 											<img src="{{{ defaultImageURL }}}">
 										<# } else { #>
-											{{ data.i18n['no-image-selected'] }}
+											<?php echo esc_attr( $l10n['no-image-selected'] ); ?>
 										<# } #>
 									</figure>
 
