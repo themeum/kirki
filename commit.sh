@@ -11,7 +11,7 @@ fi
 # commit & push to git
 git add .
 git commit -a -m "$1"
-git push
+git push origin develop
 
 # Copy files to SVN directory
 rm -rf ../svncopytemp
