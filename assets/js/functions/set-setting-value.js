@@ -1,4 +1,4 @@
-function kirkiSetValue( setting, value ) {
+function kirkiSetSettingValue( setting, value ) {
 	/**
 	 * Get the control of the sub-setting.
 	 * This will be used to get properties we need from that control,

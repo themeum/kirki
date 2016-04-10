@@ -64,12 +64,12 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 
 			// Enqueue the reset script.
-			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-value' ) );
+			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
 
 			// Register kirki-functions.
 			wp_register_script( 'kirki-array-to-object', trailingslashit( Kirki::$url ) . 'assets/js/functions/array-to-object.js' );
 			wp_register_script( 'kirki-object-to-array', trailingslashit( Kirki::$url ) . 'assets/js/functions/object-to-array.js' );
-			wp_register_script( 'kirki-set-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-value.js' );
+			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
 
 			// Register serialize.js.
@@ -104,7 +104,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'number'          => array( 'jquery', 'customize-base', 'jquery-ui-spinner' ),
 				'palette'         => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
-				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-value' ),
+				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ),
 				'radio-buttonset' => array( 'jquery', 'customize-base' ),
 				'radio-image'     => array( 'jquery', 'customize-base' ),
 				'radio'           => array( 'jquery', 'customize-base' ),

@@ -25,7 +25,7 @@
 
 		"kirkiBranding":false,
 		"jsvars":false,
-		"kirkiSetValue":false,
+		"kirkiSetSettingValue":false,
 		"kirkiValidateCSSValue":false,
 		"kirkiArrayToObject":false,
 		"kirkiObjectToArray":false,
