@@ -112,7 +112,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'select'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-array-to-object' ),
 				'slider'          => array( 'jquery', 'customize-base' ),
 				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
-				'spacing'         => array( 'jquery', 'customize-base' ),
+				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
 				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
