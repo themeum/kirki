@@ -677,10 +677,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$this->js_vars = array();
 			}
 
-			/**
-			 * Check if transport is set to auto.
-			 * If not, then skip the auto-calculations and exit early.
-			 */
+			// Check if transport is set to auto.
+			// If not, then skip the auto-calculations and exit early.
 			if ( 'auto' !== $this->transport ) {
 				return;
 			}
@@ -688,13 +686,17 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Set transport to refresh initially.
 			// Serves as a fallback in case we failt to auto-calculate js_vars.
 			$this->transport = 'refresh';
+
 			$js_vars = array();
+
 			// Try to auto-generate js_vars.
 			// First we need to check if js_vars are empty, and that output is not empty.
 			if ( empty( $this->js_vars ) && ! empty( $this->output ) ) {
+
 				// Start going through each item in the $output array.
 				foreach ( $this->output as $output ) {
 					$output['function'] = 'css';
+
 					// If 'element' or 'property' are not defined, skip this.
 					if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 						continue;
@@ -705,10 +707,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					if ( false !== strpos( $output['element'], ':' ) ) {
 						$output['function'] = 'style';
 					}
+
 					// If there's a sanitize_callback defined, skip this.
 					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
 						continue;
 					}
+
 					// If we got this far, it's safe to add this.
 					$js_vars[] = $output;
 				}

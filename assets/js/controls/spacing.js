@@ -6,14 +6,14 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 	ready: function() {
 
 		var control = this,
-		    compiledValue = {};
+		    value = {};
 
-		jQuery.each( ['top', 'bottom', 'left', 'right'], function( index, dimension ) {
+		_.each( ['top', 'bottom', 'left', 'right'], function( dimension, index ) {
 
 			// Get initial values and pre-populate the object.
 			if ( control.container.has( '.' + dimension ).size() ) {
 
-				compiledValue[ dimension ] = control.setting._value[ dimension ];
+				value[ dimension ] = control.setting._value[ dimension ];
 
 				// Validate the value and show a warning if it's invalid.
 				jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
@@ -39,9 +39,8 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
 
 						// Only proceed if value is valid.
-						compiledValue[ dimension ] = subValue;
-						control.setting.set( compiledValue );
-						wp.customize.previewer.refresh();
+						value[ dimension ] = subValue;
+						control.setting.set( value );
 
 					}
 

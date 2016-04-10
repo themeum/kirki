@@ -1,7 +1,7 @@
 ( function() {
 	var api = wp.customize;
 
-	_.each( jsvars, function( jsVars, setting ) {
+	_.each( jsvars, function( jsVars, setting ) {console.log(setting);
 
 		var css      = '',
 		    cssArray = {};
@@ -81,7 +81,7 @@
 								}
 
 							// Value is an object
-							} else if ( 'object' === typeof newval ) {
+						} else if ( 'object' === typeof newval ) {
 
 								cssArray.i = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
