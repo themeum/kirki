@@ -16,11 +16,11 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }

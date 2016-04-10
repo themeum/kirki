@@ -1,12 +1,29 @@
 <?php
+/**
+ * Background fields are just lots of sub-fields combined.
+ * We have to actually separate the field to its sub-parts
+ * and register each one of them separately.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
+
+	/**
+	 * Explodes background fields and creates sub-fields for it.
+	 */
 	class Kirki_Explode_Background_Field {
+
 		/**
 		 * Build the background fields.
 		 * Takes a single field with type = background and explodes it to multiple controls.
 		 *
-		 * @param array
+		 * @param array $field The field arguments.
 		 * @return null|array
 		 */
 		public static function explode( $field ) {
@@ -14,7 +31,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 			$choices = self::background_choices();
 
 			// Early exit if this is not a background field.
-			if ( 'background' != $field['type'] ) {
+			if ( 'background' !== $field['type'] ) {
 				return;
 			}
 
@@ -29,7 +46,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 			foreach ( $field['default'] as $key => $value ) {
 
 				// No need to process the opacity, it is factored in the color control.
-				if ( 'opacity' == $key ) {
+				if ( 'opacity' === $key ) {
 					continue;
 				}
 
@@ -44,8 +61,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 
 				switch ( $key ) {
 					case 'color':
-						// Use 'color-alpha' instead of 'color' if default is an rgba value
-						// or if 'opacity' is set.
+						// Use 'color-alpha' instead of 'color' if default is an rgba value or if 'opacity' is set.
 						$type = ( false !== strpos( $field['default']['color'], 'rgba' ) ) ? 'color-alpha' : 'color';
 						$type = ( isset( $field['default']['opacity'] ) ) ? 'color-alpha' : $type;
 						if ( isset( $field['default']['opacity'] ) && false === strpos( $value, 'rgb' ) ) {
@@ -68,14 +84,14 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 				}
 
 				// If we're using options & option_name is set, then we need to modify the setting.
-				if ( ( isset( $field['option_type'] ) && 'option' == $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
+				if ( ( isset( $field['option_type'] ) && 'option' === $field['option_type'] && isset( $field['option_name'] ) ) && ! empty( $field['option_name'] ) ) {
 					$property_setting = str_replace( ']', '', str_replace( $field['option_name'] . '[', '', $field['settings'] ) );
 					$property_setting = esc_attr( $field['option_name'] ) . '[' . esc_attr( $property_setting ) . '_' . $setting . ']';
 				} else {
 					$property_setting = esc_attr( $field['settings'] ) . '_' . $setting;
 				}
 
-				// Build the field's output element
+				// Build the field's output element.
 				$output_element = $field['output'];
 				if ( ! empty( $field['output'] ) ) {
 					if ( is_array( $field['output'] ) ) {
@@ -121,7 +137,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 		/**
 		 * Parse all fields and add the new background fields
 		 *
-		 * @param 	array
+		 * @param 	array $fields An array of all the generated fields.
 		 * @return  array
 		 */
 		public static function process_fields( $fields ) {
@@ -130,7 +146,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 				/**
 				 * Make sure background fields are exploded
 				 */
-				if ( isset( $field['type'] ) && 'background' == $field['type'] ) {
+				if ( isset( $field['type'] ) && 'background' === $field['type'] ) {
 					$explode = self::explode( $field );
 					$fields  = array_merge( $fields, $explode );
 				}
@@ -143,6 +159,7 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 
 		/**
 		 * The background choices.
+		 *
 		 * @return array<string,array>
 		 */
 		public static function background_choices() {
@@ -181,6 +198,5 @@ if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
 			);
 
 		}
-
 	}
 }

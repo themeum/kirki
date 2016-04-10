@@ -1,7 +1,19 @@
 <?php
+/**
+ * Override field methods
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.7
+ */
 
 if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Radio_Image extends Kirki_Field_Radio {
 
 		/**
@@ -14,7 +26,5 @@ if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 			$this->type = 'radio-image';
 
 		}
-
 	}
-
 }

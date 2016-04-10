@@ -20,3 +20,8 @@ Thumbs.db
 # Jekyll #
 ##########
 _site
+
+# composer #
+############
+vendor
+composer.lock

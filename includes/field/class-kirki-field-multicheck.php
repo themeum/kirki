@@ -1,7 +1,19 @@
 <?php
+/**
+ * Override field methods
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.7
+ */
 
 if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Multicheck extends Kirki_Field {
 
 		/**
@@ -33,6 +45,8 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 
 		/**
 		 * The sanitize method that will be used as a falback
+		 *
+		 * @param string|array $value The control's value.
 		 */
 		public function sanitize( $value ) {
 
@@ -40,7 +54,5 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 			return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
 
 		}
-
 	}
-
 }

@@ -1,3 +1,4 @@
+/*jshint -W065 */
 /**
  * KIRKI CONTROL: KIRKI-SELECT
  */
@@ -7,7 +8,8 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 		var control  = this,
 		    element  = this.container.find( 'select' ),
-		    multiple = parseInt( element.data( 'multiple' ) );
+		    multiple = parseInt( element.data( 'multiple' ) ),
+		    selectValue;
 
 		// If this is a multi-select control,
 		// then we'll need to initialize selectize using the appropriate arguments.
@@ -23,13 +25,16 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 		// Change value
 		this.container.on( 'change', 'select', function() {
+
+			selectValue = jQuery( this ).val();
+
 			// If this is a multi-select, then we need to convert the value to an object.
 			if ( multiple > 1 ) {
-				var select_value = kirkiArrayToObject( jQuery( this ).val() );
-			} else {
-				var select_value = jQuery( this ).val();
+				selectValue = kirkiArrayToObject( jQuery( this ).val() );
 			}
-			control.setting.set( select_value );
+
+			control.setting.set( selectValue );
+
 		});
 
 	}

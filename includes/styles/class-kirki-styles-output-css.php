@@ -7,31 +7,110 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
+
+	/**
+	 * Handles CSS output.
+	 */
 	final class Kirki_Styles_Output_CSS {
 
+		/**
+		 * The instance of this class (singleton pattern).
+		 *
+		 * @static
+		 * @access public
+		 * @var null|object
+		 */
 		public static $instance = null;
 
+		/**
+		 * Settings.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string|array
+		 */
 		public static $settings    = null;
+
+		/**
+		 * Output.
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $output      = array();
+
+		/**
+		 * Callback.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string|array
+		 */
 		public static $callback    = null;
+
+		/**
+		 * Option Name.
+		 *
+		 * @static
+		 * @access public
+		 * @var null|string
+		 */
 		public static $option_name = null;
+
+		/**
+		 * Field Type.
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $field_type  = null;
 
+		/**
+		 * Google Fonts
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $google_fonts = null;
+
+		/**
+		 * Standard Fonts
+		 *
+		 * @static
+		 * @access public
+		 * @var array
+		 */
 		public static $backup_fonts = null;
 
+		/**
+		 * CSS
+		 *
+		 * @static
+		 * @access public
+		 * @var string
+		 */
 		public static $css;
 
+		/**
+		 * Value
+		 *
+		 * @static
+		 * @access public
+		 * @var mixed
+		 */
 		public static $value = null;
 
 		/**
@@ -59,19 +138,16 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		}
 
 		/**
-		 * get the CSS for a field
+		 * Get the CSS for a field.
 		 *
-		 * @var 	string		the setting ID.
-		 * @var 	string		theme_mod / option
-		 * @var 	array 		an array of arrays of the output arguments.
-		 * @var 	mixed		a callable function.
-		 *
+		 * @static
+		 * @access public
+		 * @param array $field The field.
 		 * @return array
 		 */
 		public static function css( $field ) {
-			/**
-			 * Set class vars
-			 */
+
+			// Set class vars.
 			self::$settings   = $field['settings'];
 			self::$callback   = $field['sanitize_callback'];
 			self::$field_type = $field['type'];
@@ -84,14 +160,11 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					),
 				);
 			}
-			/**
-			 * Get the value of this field
-			 */
+
+			// Get the value of this field.
 			self::$value = Kirki_Values::get_sanitized_field_value( $field );
 
-			/**
-			 * Find the class that will handle the outpout for this field
-			 */
+			// Find the class that will handle the outpout for this field.
 			$classname = 'Kirki_Output';
 			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames', array(
 				'spacing'    => 'Kirki_Output_Field_Spacing',
@@ -107,16 +180,16 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		}
 
 		/**
-		 * Gets the array of generated styles and creates the minimized, inline CSS
+		 * Gets the array of generated styles and creates the minimized, inline CSS.
 		 *
-		 * @param array
-		 * @return string	the generated CSS.
+		 * @static
+		 * @access public
+		 * @param array $css The CSS definitions array.
+		 * @return string    The generated CSS.
 		 */
 		public static function styles_parse( $css = array() ) {
 
-			/**
-			 * Process the array of CSS properties and produce the final CSS
-			 */
+			// Process the array of CSS properties and produce the final CSS.
 			$final_css = '';
 			if ( ! is_array( $css ) || empty( $css ) ) {
 				return '';
@@ -139,8 +212,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		/**
 		 * Add prefixes if necessary.
 		 *
-		 * @param  $css array
-		 * @return  array
+		 * @param  array $css The CSS definitions array.
+		 * @return array
 		 */
 		public static function add_prefixes( $css ) {
 
@@ -148,9 +221,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 				foreach ( $css as $media_query => $elements ) {
 					foreach ( $elements as $element => $style_array ) {
 						foreach ( $style_array as $property => $value ) {
-							/**
-							 * Add -webkit-* and -mod-*
-							 */
+
+							// Add -webkit-* and -mod-*.
 							if ( is_string( $property ) && in_array( $property, array(
 								'border-radius',
 								'box-shadow',
@@ -164,9 +236,8 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
 							}
-							/**
-							 * Add -ms-* and -o-*
-							 */
+
+							// Add -ms-* and -o-*.
 							if ( is_string( $property ) && in_array( $property, array(
 								'transform',
 								'background-size',
@@ -184,6 +255,5 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			return $css;
 
 		}
-
 	}
 }

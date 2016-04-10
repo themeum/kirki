@@ -6,27 +6,37 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.0
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 
+	/**
+	 * Adds script for tooltips.
+	 */
 	class Kirki_Scripts_Tooltips {
 
 		/**
-		 * string.
 		 * The script generated for ALL fields
+		 *
+		 * @static
+		 * @access public
+		 * @var string
 		 */
 		public static $tooltip_script = '';
+
 		/**
-		 * boolean.
 		 * Whether the script has already been added to the customizer or not.
+		 *
+		 * @static
+		 * @access public
+		 * @var bool
 		 */
 		public static $script_added = false;
 
@@ -42,7 +52,7 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 		 * This works on a per-field basis.
 		 * Once created, the script is added to the $tooltip_script property.
 		 *
-		 * @param array the field definition
+		 * @param array $args The field definition.
 		 * @return void
 		 */
 		public static function generate_script( $args = array() ) {
@@ -101,16 +111,12 @@ if ( ! class_exists( 'Kirki_Scripts_Tooltips' ) ) {
 
 		/**
 		 * Format the script in a way that will be compatible with WordPress.
-		 *
-		 * @return  void (echoes the script)
 		 */
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$tooltip_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$tooltip_script . '});</script>';
+				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . wp_kses_post( self::$tooltip_script ) . '});</script>';
 			}
 		}
-
 	}
-
 }

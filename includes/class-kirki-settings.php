@@ -1,16 +1,33 @@
 <?php
+/**
+ * Handles sections created via the Kirki API.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! class_exists( 'Kirki_Settings' ) ) {
 
+	/**
+	 * Each setting is a separate instance
+	 */
 	class Kirki_Settings {
 
 		/**
+		 * TYhe global $wp_customize object.
+		 *
 		 * @access protected
 		 * @var WP_Customize_Manager
 		 */
 		protected $wp_customize;
 
 		/**
+		 * The setting-stypes we're using.
+		 *
 		 * @access protected
 		 * @var array
 		 */
@@ -21,20 +38,20 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		 * Class constructor.
 		 *
 		 * @access public
-		 * @param $args    array    the field definition as sanitized in Kirki_Field
+		 * @param array $args The field definition as sanitized in Kirki_Field.
 		 */
 		public function __construct( $args = array() ) {
 
-			// Set the $wp_customize property
+			// Set the $wp_customize property.
 			global $wp_customize;
 			if ( ! $wp_customize ) {
 				return;
 			}
 			$this->wp_customize = $wp_customize;
 
-			// Set the setting_types
+			// Set the setting_types.
 			$this->set_setting_types();
-			// Add the settings
+			// Add the settings.
 			$this->add_settings( $args );
 
 		}
@@ -46,11 +63,11 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		 * If not an array, then it just calls add_setting
 		 *
 		 * @access private
-		 * @param $args    array    the field definition as sanitized in Kirki_Field
+		 * @param array $args The field definition as sanitized in Kirki_Field.
 		 */
 		final private function add_settings( $args = array() ) {
 
-			// Get the classname we'll be using to create our setting(s)
+			// Get the classname we'll be using to create our setting(s).
 			if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->setting_types ) ) {
 				$args['type'] = 'default';
 			}
@@ -59,7 +76,8 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 			// If settings are defined as an array, then we need to go through them
 			// and call add_setting for each one of them separately.
 			if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
-				// Make sure defaults have been defined
+
+				// Make sure defaults have been defined.
 				if ( ! isset( $args['default'] ) || ! is_array( $args['default'] ) ) {
 					$args['default'] = array();
 				}
@@ -75,15 +93,15 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		 * This is where we're finally adding the setting to the Customizer.
 		 *
 		 * @access private
-		 * @param $classname            string          the name of the class that will be used to create this setting.
-		 *                                              We're getting this from $this->setting_types
-		 * @param $setting              string          the setting-name
-		 *                                              If settings is an array, then this method is called per-setting.
-		 * @param $default              string|array    default value for this setting
-		 * @param $type                 string          theme_mod|option
-		 * @param $capability           string          @see https://codex.wordpress.org/Roles_and_Capabilities
-		 * @param $transport            string          refresh|postMessage
-		 * @param $sanitize_callback    string|array    a callable sanitization function or method.
+		 * @param string       $classname           The name of the class that will be used to create this setting.
+		 *                                          We're getting this from $this->setting_types.
+		 * @param string       $setting             The setting-name.
+		 *                                          If settings is an array, then this method is called per-setting.
+		 * @param string|array $default             Default value for this setting.
+		 * @param string       $type                The data type we're using. Valid options: theme_mod|option.
+		 * @param string       $capability          @see https://codex.wordpress.org/Roles_and_Capabilities.
+		 * @param string       $transport           Use refresh|postMessage.
+		 * @param string|array $sanitize_callback   A callable sanitization function or method.
 		 */
 		final private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
 
@@ -105,23 +123,19 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 		 */
 		final private function set_setting_types() {
 
-			// Apply the kirki/setting_types filter
+			// Apply the kirki/setting_types filter.
 			$this->setting_types = apply_filters( 'kirki/setting_types', array(
 				'default'  => 'Kirki_Settings_Default_Setting',
 				'repeater' => 'Kirki_Settings_Repeater_Setting',
 			) );
 
-			// Make sure the defined classes actually exist
+			// Make sure the defined classes actually exist.
 			foreach ( $this->setting_types as $key => $classname ) {
 
 				if ( ! class_exists( $classname ) ) {
 					unset( $this->setting_types[ $key ] );
 				}
-
 			}
-
 		}
-
 	}
-
 }

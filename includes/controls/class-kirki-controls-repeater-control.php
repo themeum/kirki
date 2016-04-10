@@ -1,48 +1,112 @@
 <?php
 /**
- * Repeater Customizer Control.
+ * Customizer Control: repeater.
  *
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.0
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
+	/**
+	 * Repeater control
+	 */
 	class Kirki_Controls_Repeater_Control extends Kirki_Customize_Control {
 
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'repeater';
 
+		/**
+		 * The fields that each container row will contain.
+		 *
+		 * @access public
+		 * @var array
+		 */
 		public $fields = array();
 
-		// will store a filtered version of value for advenced fields (like images..)
+		/**
+		 * Will store a filtered version of value for advenced fields (like images).
+		 *
+		 * @access protected
+		 * @var array
+		 */
 		protected $filtered_value = array();
 
+		/**
+		 * The row label
+		 *
+		 * @access public
+		 * @var array
+		 */
+		public $row_label = array();
+
+		/**
+		 * Constructor.
+		 * Supplied `$args` override class property defaults.
+		 * If `$args['settings']` is not defined, use the $id as the setting ID.
+		 *
+		 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+		 * @param string               $id      Control ID.
+		 * @param array                $args    {@see WP_Customize_Control::__construct}.
+		 */
 		public function __construct( $manager, $id, $args = array() ) {
-			parent::__construct( $manager, $id, $args );
 
 			$l10n = Kirki_l10n::get_strings();
-			if ( empty( $this->button_label ) ) {
-				$this->button_label = $l10n['add-new-row'];
-			}
-			if ( isset( $this->choices['labels'] ) ) {
-				if ( isset( $this->choices['labels']['add-new-row'] ) ) {
-					$this->button_label = $this->choices['labels']['add-new-row'];
+
+			parent::__construct( $manager, $id, $args );
+
+			// Set up defaults for row labels.
+			$this->row_label = array(
+				'type' => 'text',
+				'value' => $l10n['row'],
+				'field' => false,
+			);
+
+			// Validating args for row labels.
+			if ( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && ! empty( $args['row_label'] ) ) {
+
+				// Validating row label type.
+				if ( isset( $args['row_label']['type'] ) && ( 'text' === $args['row_label']['type'] || 'field' === $args['row_label']['type'] ) ) {
+					$this->row_label['type'] = $args['row_label']['type'];
 				}
+
+				// Validating row label type.
+				if ( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
+					$this->row_label['value'] = esc_attr( $args['row_label']['value'] );
+				}
+
+				// Validating row label field.
+				if ( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][ esc_attr( $args['row_label']['field'] ) ] ) ) {
+					$this->row_label['field'] = esc_attr( $args['row_label']['field'] );
+				} else {
+
+					// If from field is not set correctly, making sure standard is set as the type.
+					$this->row_label['type'] = 'text';
+				}
+			}
+
+			if ( empty( $this->button_label ) ) {
+				$this->button_label = $l10n['add-new'].' '.$this->row_label['value'];
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
 				$args['fields'] = array();
 			}
 
-			//An array to store keys of fields that need to be filtered
+			// An array to store keys of fields that need to be filtered.
 			$image_fields_to_filter = array();
 
 			foreach ( $args['fields'] as $key => $value ) {
@@ -55,48 +119,51 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				}
 				$args['fields'][ $key ]['id'] = $key;
 
-				// we check if the filed is an image or a cropped_image
-				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value["type"] ) ) {
-					// we add it to the list of fields that need some extra filtering/processing
+				// We check if the filed is an image or a cropped_image.
+				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value['type'] ) ) {
+
+					// We add it to the list of fields that need some extra filtering/processing.
 					$image_fields_to_filter[ $key ] = true;
 				}
 			}
 
 			$this->fields = $args['fields'];
 
-			// Now we are going to filter the fields
-
-			// First we create a copy of the value that would be used otherwise
+			// Now we are going to filter the fields.
+			// First we create a copy of the value that would be used otherwise.
 			$this->filtered_value = $this->value();
 
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 
-				// We iterate over the list of fields
+				// We iterate over the list of fields.
 				foreach ( $this->filtered_value as &$filtered_value_field ) {
 
 					if ( is_array( $filtered_value_field ) && ! empty( $filtered_value_field ) ) {
 
-						// We iterate over the list of properties for this field
+						// We iterate over the list of properties for this field.
 						foreach ( $filtered_value_field as $key => &$value ) {
 
-							// We check if this field was marked as requiring extra filtering (in this case image,cropped_images)
-							if ( array_key_exists ( $key , $image_fields_to_filter ) ) {
+							// We check if this field was marked as requiring extra filtering (in this case image, cropped_images).
+							if ( array_key_exists( $key, $image_fields_to_filter ) ) {
 
-								// What follows was made this way to preserve backward compatibility
-								// The repeater control use to store the URL for images instead of the attachment ID
-
-								// We check if the value look like an ID (otherwise it's probably a URL so don't filter it)
+								// What follows was made this way to preserve backward compatibility.
+								// The repeater control use to store the URL for images instead of the attachment ID.
+								// We check if the value look like an ID (otherwise it's probably a URL so don't filter it).
 								if ( is_numeric( $value ) ) {
-									// "sanitize" the value
+
+									// "sanitize" the value.
 									$attachment_id = (int) $value;
-									//try to get the attachment_url
+
+									// Try to get the attachment_url.
 									$url = wp_get_attachment_url( $attachment_id );
-									// if we got a URL
+
+									// If we got a URL.
 									if ( $url ) {
-										//id is needed for form hidden value, URL is needed to display the image
-										$value = array (
+
+										// 'id' is needed for form hidden value, URL is needed to display the image.
+										$value = array(
 											'id'  => $attachment_id,
-											'url' => $url
+											'url' => $url,
 										);
 									}
 								}
@@ -107,39 +174,43 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			}
 		}
 
+		/**
+		 * Refresh the parameters passed to the JavaScript via JSON.
+		 *
+		 * @access public
+		 */
 		public function to_json() {
 			parent::to_json();
 
 			$fields = $this->fields;
 			$i18n   = Kirki_l10n::get_strings();
-			$default_image_button_labels = array(
-				'default'     => $i18n['add-image'],
-				'remove'      => $i18n['remove'],
-				'change'      => $i18n['change-image'],
-				'placeholder' => $i18n['no-image-selected'],
-			);
-
-			foreach ( $fields as $key => $field ) {
-				if ( 'image' != $field['type'] && 'cropped_image' != $field['type'] ) {
-					continue;
-				}
-
-				$fields[ $key ]['buttonLabels'] = $default_image_button_labels;
-			}
 
 			$this->json['fields'] = $fields;
+			$this->json['row_label'] = $this->row_label;
 
-			// if filtered_value has been set and is not empty we use it instead of the actual value
+			// If filtered_value has been set and is not empty we use it instead of the actual value.
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 				$this->json['value'] = $this->filtered_value;
 			}
 		}
 
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'kirki-repeater' );
 		}
 
-		public function render_content() { ?>
+		/**
+		 * Render the control's content.
+		 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
+		 *
+		 * @access protected
+		 */
+		protected function render_content() {
+			?>
 			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<?php if ( '' != $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
@@ -149,15 +220,15 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php endif; ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+					<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 				<?php endif; ?>
-				<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo $this->get_link(); ?> />
+				<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo wp_kses_post( $this->get_link() ); ?> />
 			</label>
 
 			<ul class="repeater-fields"></ul>
 
 			<?php if ( isset( $this->choices['limit'] ) ) : ?>
-				<p class="limit"><?php printf( $l10n['limit-rows'], $this->choices['limit'] ); ?></p>
+				<p class="limit"><?php printf( esc_html( $l10n['limit-rows'] ), esc_html( $this->choices['limit'] ) ); ?></p>
 			<?php endif; ?>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
@@ -167,8 +238,15 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 		}
 
+		/**
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 * Class variables for this control class are available in the `data` JS object.
+		 *
+		 * @access public
+		 */
 		public function repeater_js_template() {
 			?>
+			<?php $l10n = Kirki_l10n::get_strings(); ?>
 			<script type="text/html" class="customize-control-repeater-content">
 				<# var field; var index = data['index']; #>
 
@@ -176,160 +254,158 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
 					<div class="repeater-row-header">
-						<span class="repeater-row-number"></span>
-						<span class="repeater-row-remove"><i class="dashicons dashicons-no-alt repeater-remove"></i></span>
-						<span class="repeater-row-minimize"><i class="dashicons dashicons-arrow-up repeater-minimize"></i></span>
-						<span class="repeater-row-move"><i class="dashicons dashicons-sort repeater-move"></i></span>
+						<span class="repeater-row-label"></span>
+						<i class="dashicons dashicons-arrow-down repeater-minimize"></i>
 					</div>
+					<div class="repeater-row-content">
+						<# for ( i in data ) { #>
+							<# if ( ! data.hasOwnProperty( i ) ) continue; #>
+							<# field = data[i]; #>
+							<# if ( ! field.type ) continue; #>
 
-					<# for ( i in data ) { #>
-						<# if ( ! data.hasOwnProperty( i ) ) continue; #>
-						<# field = data[i]; #>
-						<# if ( ! field.type ) continue; #>
+							<div class="repeater-field repeater-field-{{{ field.type }}}">
 
-						<div class="repeater-field repeater-field-{{{ field.type }}}">
+								<# if ( field.type === 'text' || field.type === 'url' || field.type === 'email' || field.type === 'tel' || field.type === 'date' ) { #>
 
-							<# if ( field.type === 'text' || field.type === 'url' || field.type === 'email' || field.type === 'tel' || field.type === 'date' ) { #>
-
-								<label>
-									<# if ( field.label ) { #>
-										<span class="customize-control-title">{{ field.label }}</span>
-									<# } #>
-									<# if ( field.description ) { #>
-										<span class="description customize-control-description">{{ field.description }}</span>
-									<# } #>
-									<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
-								</label>
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
+										<# } #>
+										<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
+									</label>
 
 								<# } else if ( field.type === 'hidden' ) { #>
 
 									<input type="hidden" data-field="{{{ field.id }}}" <# if ( field.default ) { #> value="{{{ field.default }}}" <# } #> />
 
-							<# } else if ( field.type === 'checkbox' ) { #>
+								<# } else if ( field.type === 'checkbox' ) { #>
 
-								<label>
-									<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
-									<# if ( field.description ) { #>
-										{{ field.description }}
-									<# } #>
-								</label>
+									<label>
+										<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
+										<# if ( field.description ) { #>
+											{{ field.description }}
+										<# } #>
+									</label>
 
-							<# } else if ( field.type === 'select' ) { #>
+								<# } else if ( field.type === 'select' ) { #>
 
-								<label>
-									<# if ( field.label ) { #>
-										<span class="customize-control-title">{{ field.label }}</span>
-									<# } #>
-									<# if ( field.description ) { #>
-										<span class="description customize-control-description">{{ field.description }}</span>
-									<# } #>
-									<select data-field="{{{ field.id }}}">
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
+										<# } #>
+										<select data-field="{{{ field.id }}}">
+											<# for ( i in field.choices ) { #>
+												<# if ( field.choices.hasOwnProperty( i ) ) { #>
+													<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ field.choices[i] }}</option>
+												<# } #>
+											<# } #>
+										</select>
+									</label>
+
+								<# } else if ( field.type === 'radio' ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
+										<# } #>
+
 										<# for ( i in field.choices ) { #>
 											<# if ( field.choices.hasOwnProperty( i ) ) { #>
-												<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ field.choices[i] }}</option>
+												<label>
+													<input type="radio" name="{{{ field.id }}}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
+												</label>
 											<# } #>
 										<# } #>
-									</select>
-								</label>
+									</label>
 
-							<# } else if ( field.type === 'radio' ) { #>
+								<# } else if ( field.type == 'radio-image' ) { #>
 
-								<label>
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
+										<# } #>
+
+										<# for ( i in field.choices ) { #>
+											<# if ( field.choices.hasOwnProperty( i ) ) { #>
+												<input type="radio" id="{{{ field.id }}}_{{ index }}_{{{ i }}}" name="{{{ field.id }}}{{ index }}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>>
+													<label for="{{{ field.id }}}_{{ index }}_{{{ i }}}">
+														<img src="{{ field.choices[i] }}">
+													</label>
+												</input>
+											<# } #>
+										<# } #>
+									</label>
+
+								<# } else if ( field.type == 'textarea' ) { #>
+
 									<# if ( field.label ) { #>
 										<span class="customize-control-title">{{ field.label }}</span>
 									<# } #>
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
+									<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
 
-									<# for ( i in field.choices ) { #>
-										<# if ( field.choices.hasOwnProperty( i ) ) { #>
-											<label>
-												<input type="radio" name="{{{ field.id }}}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ field.choices[i] }} <br/>
-											</label>
+								<# } else if ( field.type === 'image' || field.type === 'cropped_image' ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
 										<# } #>
-									<# } #>
-								</label>
-
-							<# } else if ( field.type == 'radio-image' ) { #>
-
-								<label>
-									<# if ( field.label ) { #>
-										<span class="customize-control-title">{{ field.label }}</span>
-									<# } #>
-									<# if ( field.description ) { #>
-										<span class="description customize-control-description">{{ field.description }}</span>
-									<# } #>
-
-									<# for ( i in field.choices ) { #>
-										<# if ( field.choices.hasOwnProperty( i ) ) { #>
-											<input type="radio" id="{{{ field.id }}}_{{ index }}_{{{ i }}}" name="{{{ field.id }}}{{ index }}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>>
-												<label for="{{{ field.id }}}_{{ index }}_{{{ i }}}">
-													<img src="{{ field.choices[i] }}">
-												</label>
-											</input>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
 										<# } #>
-									<# } #>
-								</label>
+									</label>
 
-							<# } else if ( field.type == 'textarea' ) { #>
-
-								<# if ( field.label ) { #>
-									<span class="customize-control-title">{{ field.label }}</span>
-								<# } #>
-								<# if ( field.description ) { #>
-									<span class="description customize-control-description">{{ field.description }}</span>
-								<# } #>
-								<textarea rows="5" data-field="{{{ field.id }}}">{{ field.default }}</textarea>
-
-							<# } else if ( field.type === 'image' || field.type === 'cropped_image' ) { #>
-
-								<label>
-									<# if ( field.label ) { #>
-										<span class="customize-control-title">{{ field.label }}</span>
-									<# } #>
-									<# if ( field.description ) { #>
-										<span class="description customize-control-description">{{ field.description }}</span>
-									<# } #>
-								</label>
-
-								<figure class="kirki-image-attachment" data-placeholder="{{ field.buttonLabels.placeholder }}" >
-									<# if ( field.default ) { #>
-										<# if ( field.default.url ) { #>
-											<img src="{{{ field.default.url }}}">
-										<# } else { #>
-											<img src="{{{ field.default }}}">
-										<# } #>
-									<# } else { #>
-										{{ field.buttonLabels.placeholder }}
-									<# } #>
-								</figure>
-
-								<div class="actions">
-									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ field.buttonLabels.remove }}</button>
-									<button type="button" class="button upload-button" data-label="{{{ field.buttonLabels.default }}}" data-alt-label="{{{ field.buttonLabels.change }}}" >
+									<figure class="kirki-image-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-image-selected'] ); ?>" >
 										<# if ( field.default ) { #>
-											{{ field.buttonLabels.change }}
+											<# if ( field.default.url ) { #>
+												<img src="{{{ field.default.url }}}">
+											<# } else { #>
+												<img src="{{{ field.default }}}">
+											<# } #>
 										<# } else { #>
-											{{ field.buttonLabels.default }}
+											<?php esc_attr_e( $l10n['no-image-selected'] ); ?>
 										<# } #>
-									</button>
-									<# if ( field.default.id ) { #>
-										<input type="hidden" class="hidden-field" value="{{{ field.default.id }}}" data-field="{{{ field.id }}}" >
-									<# } else { #>
-										<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
-									<# } #>
-								</div>
+									</figure>
 
-							<# } #>
+									<div class="actions">
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-image'] ); ?>" >
+											<# if ( field.default ) { #>
+												<?php esc_attr_e( $l10n['change-image'] ); ?>
+											<# } else { #>
+												<?php esc_attr_e( $l10n['add-image'] ); ?>
+											<# } #>
+										</button>
+										<# if ( field.default.id ) { #>
+											<input type="hidden" class="hidden-field" value="{{{ field.default.id }}}" data-field="{{{ field.id }}}" >
+										<# } else { #>
+											<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
+										<# } #>
+									</div>
 
-						</div>
-					<# } #>
+								<# } #>
+
+							</div>
+						<# } #>
+						<button type="button" class="button-link repeater-row-remove"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+					</div>
 				</li>
 			</script>
 			<?php
 		}
-
 	}
-
 }

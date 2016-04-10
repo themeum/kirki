@@ -3,7 +3,7 @@
  */
 wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
 
-	// When we're finished loading continue processing
+	// When we're finished loading continue processing.
 	ready: function() {
 		var control = this;
 
@@ -12,7 +12,7 @@ wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
 			var value = [],
 			    i = 0;
 
-			// build the value as an object using the sub-values from individual checkboxes.
+			// Build the value as an object using the sub-values from individual checkboxes.
 			jQuery.each( control.params.choices, function( key, subValue ) {
 				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
 					value[ i ] = key;
@@ -20,7 +20,7 @@ wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
 				}
 			});
 
-			// Update the value in the customizer
+			// Update the value in the customizer.
 			control.setting.set( value );
 
 		});

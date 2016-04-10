@@ -12,7 +12,7 @@ wp.customize.controlConstructor.number = wp.customize.Control.extend({
 
 		if ( undefined !== typeof control.params.choices.min && undefined !== typeof control.params.choices.max && undefined !== typeof control.params.choices.step ) {
 
-			// set minimum value
+			// Set minimum value
 			jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
 
 			// Set maximum value

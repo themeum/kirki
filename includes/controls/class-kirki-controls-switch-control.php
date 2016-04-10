@@ -1,25 +1,39 @@
 <?php
 /**
- * switch Customizer Control.
+ * Customizer Control: switch.
  *
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 
+	/**
+	 * Switch control (modified checkbox).
+	 */
 	class Kirki_Controls_Switch_Control extends Kirki_Controls_Checkbox_Control {
 
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'switch';
 
+		/**
+		 * Refresh the parameters passed to the JavaScript via JSON.
+		 *
+		 * @access public
+		 */
 		public function to_json() {
 			parent::to_json();
 			$i18n = Kirki_l10n::get_strings();
@@ -29,11 +43,27 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 			$this->json['choices']['round'] = ( isset( $this->choices['round'] ) ) ? $this->choices['round'] : false;
 		}
 
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'kirki-switch' );
 		}
 
-		protected function content_template() { ?>
+		/**
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 *
+		 * Class variables for this control class are available in the `data` JS object;
+		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+		 *
+		 * @see WP_Customize_Control::print_template()
+		 *
+		 * @access protected
+		 */
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
@@ -64,7 +94,5 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 			</div>
 			<?php
 		}
-
 	}
-
 }
