@@ -119,7 +119,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<textarea id="kirki-codemirror-editor-{{ data.id }}">{{{ data.value }}}</textarea>
+				<textarea class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
 			</label>
 			<?php
 		}
