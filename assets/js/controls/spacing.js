@@ -21,10 +21,6 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 					jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
 				}
 
-			}
-
-			if ( control.container.has( '.' + dimension ).size() ) {
-
 				control.container.on( 'change keyup paste', '.' + dimension + ' input', function() {
 
 					var subValue = jQuery( this ).val();
