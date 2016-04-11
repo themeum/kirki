@@ -80,7 +80,7 @@
 
 								}
 
-							// Value is an object
+						// Value is an object
 						} else if ( 'object' === typeof newval ) {
 
 								cssArray.i = '';
@@ -90,7 +90,11 @@
 											cssArray.i += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									} else {
-										cssArray.i += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+										if ( _.contains( [ 'top', 'bottom', 'left', 'right' ], subValueKey ) ) {
+											cssArray.i += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+										} else {
+											cssArray.i += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+										}
 									}
 								});
 
