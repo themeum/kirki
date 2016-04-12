@@ -1,7 +1,19 @@
 <?php
+/**
+ * Override field methods
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.7
+ */
 
 if ( ! class_exists( 'Kirki_Field_Radio' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Radio extends Kirki_Field {
 
 		/**
@@ -35,7 +47,5 @@ if ( ! class_exists( 'Kirki_Field_Radio' ) ) {
 			$this->sanitize_callback = 'esc_attr';
 
 		}
-
 	}
-
 }

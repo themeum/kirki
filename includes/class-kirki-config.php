@@ -10,6 +10,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Config' ) ) {
+
 	/**
 	 * The Kirki_Config object
 	 */

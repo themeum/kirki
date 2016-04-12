@@ -1,7 +1,19 @@
 <?php
+/**
+ * Override field methods
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.7
+ */
 
 if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 
+	/**
+	 * Field overrides.
+	 */
 	class Kirki_Field_Select extends Kirki_Field {
 
 		/**
@@ -43,10 +55,11 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 		}
 
 		/**
-		 * Sanitizes select control values
+		 * Sanitizes select control values.
 		 *
 		 * @since 2.2.8
 		 * @access public
+		 * @param array $value The value.
 		 * @return string|array
 		 */
 		public function sanitize( $value ) {
@@ -60,7 +73,5 @@ if ( ! class_exists( 'Kirki_Field_Select' ) ) {
 			return esc_attr( $value );
 
 		}
-
 	}
-
 }

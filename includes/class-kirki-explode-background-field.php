@@ -13,10 +13,12 @@
  */
 
 if ( ! class_exists( 'Kirki_Explode_Background_Field' ) ) {
+
 	/**
 	 * Explodes background fields and creates sub-fields for it.
 	 */
 	class Kirki_Explode_Background_Field {
+
 		/**
 		 * Build the background fields.
 		 * Takes a single field with type = background and explodes it to multiple controls.

@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Field' ) ) {
+
 	/**
 	 * Please do not use this class directly.
 	 * You should instead extend it per-field-type.
@@ -280,6 +281,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( is_string( $config_id ) ) {
 				$args['kirki_config'] = $config_id;
 			}
+
 			// In case the user only provides 1 argument,
 			// assume that the provided argument is $args and set $config_id = 'global'.
 			if ( is_array( $config_id ) && empty( $args ) ) {
@@ -290,8 +292,10 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			if ( '' === $config_id ) {
 				$this->kirki_config = 'global';
 			}
+
 			// Get defaults from the class.
 			$defaults = get_class_vars( __CLASS__ );
+
 			// Get the config arguments, and merge them with the defaults.
 			$config_defaults = ( isset( Kirki::$config['global'] ) ) ? Kirki::$config['global'] : array();
 			if ( 'global' !== $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
@@ -305,12 +309,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					}
 				}
 			}
+
 			// Merge our args with the defaults.
 			$args = wp_parse_args( $args, $defaults );
+
 			// Set the class properties using the parsed args.
 			foreach ( $args as $key => $value ) {
 				$this->$key = $value;
 			}
+
 			// An array of whitelisted properties that don't need to be sanitized here.
 			// Format: $key => $default_value.
 			$whitelisted = apply_filters( 'kirki/' . $this->kirki_config . '/fields/properties_whitelist', array(
@@ -318,7 +325,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				'description' => '', // This is sanitized later in the controls themselves.
 				'mode'        => '', // Only used for backwards-compatibility reasons.
 				'fields'      => array(), // Used in repeater fields.
-				'row_label'   => array(), // Used in repeater fields
+				'row_label'   => array(), // Used in repeater fields.
 			) );
 
 			$this->set_field( $whitelisted );
@@ -670,10 +677,8 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$this->js_vars = array();
 			}
 
-			/**
-			 * Check if transport is set to auto.
-			 * If not, then skip the auto-calculations and exit early.
-			 */
+			// Check if transport is set to auto.
+			// If not, then skip the auto-calculations and exit early.
 			if ( 'auto' !== $this->transport ) {
 				return;
 			}
@@ -681,13 +686,17 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Set transport to refresh initially.
 			// Serves as a fallback in case we failt to auto-calculate js_vars.
 			$this->transport = 'refresh';
+
 			$js_vars = array();
+
 			// Try to auto-generate js_vars.
 			// First we need to check if js_vars are empty, and that output is not empty.
 			if ( empty( $this->js_vars ) && ! empty( $this->output ) ) {
+
 				// Start going through each item in the $output array.
 				foreach ( $this->output as $output ) {
 					$output['function'] = 'css';
+
 					// If 'element' or 'property' are not defined, skip this.
 					if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 						continue;
@@ -698,10 +707,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					if ( false !== strpos( $output['element'], ':' ) ) {
 						$output['function'] = 'style';
 					}
+
 					// If there's a sanitize_callback defined, skip this.
 					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
 						continue;
 					}
+
 					// If we got this far, it's safe to add this.
 					$js_vars[] = $output;
 				}

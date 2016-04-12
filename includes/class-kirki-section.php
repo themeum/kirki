@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Section' ) ) {
+
 	/**
 	 * Each section is a separate instrance of the Kirki_Section object.
 	 */

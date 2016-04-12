@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Settings' ) ) {
+
 	/**
 	 * Each setting is a separate instance
 	 */
@@ -75,6 +76,7 @@ if ( ! class_exists( 'Kirki_Settings' ) ) {
 			// If settings are defined as an array, then we need to go through them
 			// and call add_setting for each one of them separately.
 			if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
+
 				// Make sure defaults have been defined.
 				if ( ! isset( $args['default'] ) || ! is_array( $args['default'] ) ) {
 					$args['default'] = array();

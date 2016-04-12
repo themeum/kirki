@@ -12,6 +12,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
+
 	/**
 	 * Manages the way Google Fonts are enqueued.
 	 */
@@ -57,10 +58,12 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		private function __construct() {
 
 			$config = apply_filters( 'kirki/config', array() );
+
 			// If we have set $config['disable_google_fonts'] to true then do not proceed any further.
 			if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
 				return;
 			}
+
 			// Enqueue link.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
 
@@ -83,12 +86,16 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		 * Calls all the other necessary methods to populate and create the link.
 		 */
 		public function enqueue() {
+
 			// Go through our fields and populate $this->fonts.
 			$this->loop_fields();
+
 			// Goes through $this->fonts and adds or removes things as needed.
 			$this->process_fonts();
+
 			// Go through $this->fonts and populate $this->link.
 			$this->create_link();
+
 			// If $this->link is not empty then enqueue it.
 			if ( '' !== $this->link ) {
 				wp_enqueue_style( 'kirki_google_fonts', $this->link, array(), null );
@@ -115,22 +122,27 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 
 			// Process typography fields.
 			if ( isset( $args['type'] ) && 'typography' === $args['type'] ) {
+
 				// Get the value.
 				$value = Kirki_Values::get_sanitized_field_value( $args );
+
 				// If we don't have a font-family then we can skip this.
 				if ( ! isset( $value['font-family'] ) ) {
 					return;
 				}
+
 				// Add support for older formats of the typography control.
 				// We used to have font-weight instead of variant.
 				if ( isset( $value['font-weight'] ) && ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) ) {
 					$value['variant'] = $value['font-weight'];
 				}
+
 				// Set a default value for variants.
 				if ( ! isset( $value['variant'] ) ) {
 					$value['variant'] = 'regular';
 				}
 				if ( isset( $value['subset'] ) ) {
+
 					// Add the subset directly to the array of subsets in the Kirki_GoogleFonts_Manager object.
 					// Subsets must be applied to ALL fonts if possible.
 					if ( ! is_array( $value['subset'] ) ) {
@@ -141,6 +153,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 						}
 					}
 				}
+
 				// Add the requested google-font.
 				if ( ! isset( $this->fonts[ $value['font-family'] ] ) ) {
 					$this->fonts[ $value['font-family'] ] = array();
@@ -149,13 +162,16 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					$this->fonts[ $value['font-family'] ][] = $value['variant'];
 				}
 			} else {
+
 				// Process non-typography fields.
 				if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
 					foreach ( $args['output'] as $output ) {
+
 						// If we don't have a typography-related output argument we can skip this.
 						if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ), true ) ) {
 							continue;
 						}
+
 						// Get the value.
 						$value = Kirki_Values::get_sanitized_field_value( $args );
 
@@ -185,7 +201,6 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					}
 				}
 			}
-
 		}
 
 		/**
@@ -194,27 +209,32 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		 * does not contain any invalid options.
 		 */
 		private function process_fonts() {
+
 			// Early exit if font-family is empty.
 			if ( empty( $this->fonts ) ) {
 				return;
 			}
+
 			// Get an array of all available google fonts.
 			$google_fonts = Kirki_Fonts::get_google_fonts();
 
 			$valid_subsets = array();
 			foreach ( $this->fonts as $font => $variants ) {
+
 				// Determine if this is indeed a google font or not.
 				// If it's not, then just remove it from the array.
 				if ( ! array_key_exists( $font, $google_fonts ) ) {
 					unset( $this->fonts[ $font ] );
 					continue;
 				}
+
 				// Get all valid font variants for this font.
 				$font_variants = array();
 				if ( isset( $google_fonts[ $font ]['variants'] ) ) {
 					$font_variants = $google_fonts[ $font ]['variants'];
 				}
 				foreach ( $variants as $variant ) {
+
 					// If this is not a valid variant for this font-family
 					// then unset it and move on to the next one.
 					if ( ! in_array( $variant, $font_variants, true ) ) {
@@ -223,6 +243,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 						continue;
 					}
 				}
+
 				// Check if the selected subsets exist, even in one of the selected fonts.
 				// If they don't, then they have to be removed otherwise the link will fail.
 				if ( isset( $google_fonts[ $font ]['subsets'] ) ) {
@@ -240,10 +261,12 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		 * Creates the google-fonts link.
 		 */
 		private function create_link() {
+
 			// If we don't have any fonts then we can exit.
 			if ( empty( $this->fonts ) ) {
 				return;
 			}
+
 			// Get font-family + subsets.
 			$link_fonts = array();
 			foreach ( $this->fonts as $font => $variants ) {
@@ -255,13 +278,15 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				}
 				$link_fonts[] = $link_font;
 			}
-			$this->link = 'https://fonts.googleapis.com/css?family=';
-			$this->link .= implode( '|', $link_fonts );
 
 			if ( ! empty( $this->subsets ) ) {
 				$this->subsets = array_unique( $this->subsets );
-				$this->link .= '&subset=' . implode( ',', $this->subsets );
 			}
+
+			$this->link = add_query_arg( array(
+				'family' => str_replace( '%2B', '+', urlencode( implode( '|', $link_fonts ) ) ),
+				'subset' => urlencode( implode( ',', $this->subsets ) ),
+			), 'https://fonts.googleapis.com/css' );
 
 		}
 	}

@@ -11,6 +11,7 @@
  */
 
 if ( ! class_exists( 'Kirki_l10n' ) ) {
+
 	/**
 	 * Handles translations
 	 */
@@ -94,7 +95,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 		 *
 		 * @static
 		 * @access public
-		 * @param string $config_id The config ID. See Kirki_Config
+		 * @param string $config_id The config ID. See Kirki_Config.
 		 * @return array
 		 */
 		public static function get_strings( $config_id = 'global' ) {

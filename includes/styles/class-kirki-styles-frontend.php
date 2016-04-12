@@ -12,18 +12,39 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
+
+	/**
+	 * Applies field-generated styles to the frontend.
+	 */
 	class Kirki_Styles_Frontend {
 
+		/**
+		 * Whether we've already processed this or not.
+		 *
+		 * @access public
+		 * @var bool
+		 */
 		public $processed = false;
 
+		/**
+		 * The CSS array
+		 *
+		 * @access public
+		 * @var array
+		 */
 		public static $css_array = array();
 
+		/**
+		 * Constructor
+		 *
+		 * @access public
+		 */
 		public function __construct() {
 
 			Kirki_Fonts_Google::get_instance();
@@ -38,16 +59,14 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			}
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
-			/**
-			 * If we are in the customizer, load CSS using inline-styles.
-			 * If we are in the frontend AND $config['inline_css'] == false
-			 * Then load dynamic CSS using AJAX.
-			 */
-			// add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
-			// add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
-			// add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+
 		}
 
+		/**
+		 * Adds inline styles.
+		 *
+		 * @access public
+		 */
 		public function inline_dynamic_css() {
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
@@ -66,17 +85,31 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			}
 		}
 
+		/**
+		 * Get the dynamic-css.php file
+		 *
+		 * @access public
+		 */
 		public function ajax_dynamic_css() {
 			require( Kirki::$path . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'dynamic-css.php' );
 			exit;
 		}
 
+		/**
+		 * Enqueues the ajax stylesheet.
+		 *
+		 * @access public
+		 */
 		public function frontend_styles() {
 			wp_enqueue_style( 'kirki-styles-php', admin_url( 'admin-ajax.php' ) . '?action=kirki_dynamic_css', null, null );
 		}
 
 		/**
-		 * loop through all fields and create an array of style definitions
+		 * Loop through all fields and create an array of style definitions.
+		 *
+		 * @static
+		 * @access public
+		 * @param string $config_id The configuration ID.
 		 */
 		public static function loop_controls( $config_id ) {
 
@@ -94,21 +127,38 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 			foreach ( $fields as $field ) {
 
-				// Only process fields that belong to $config_id
+				// Only process fields that belong to $config_id.
 				if ( $config_id != $field['kirki_config'] ) {
 					continue;
 				}
 
-				// Only continue if $field['output'] is set
+				// Only continue if field dependencies are met.
+				if ( ! empty( $field['required'] ) ) {
+					$valid = true;
+
+					foreach ( $field['required'] as $requirement ) {
+						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
+							$controller_value = Kirki::get_option( $requirement['setting'] );
+							if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+								$valid = false;
+							}
+						}
+					}
+
+					if ( ! $valid ) {
+						continue;
+					}
+				}
+
+				// Only continue if $field['output'] is set.
 				if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
 					$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Styles_Output_CSS::css( $field ) );
-					// Add the globals
+
+					// Add the globals.
 					if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
 						Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
 					}
-
 				}
-
 			}
 
 			if ( is_array( $css ) ) {
@@ -118,6 +168,5 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			return;
 
 		}
-
 	}
 }

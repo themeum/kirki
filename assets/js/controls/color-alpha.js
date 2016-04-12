@@ -6,8 +6,8 @@ wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control   = this,
-		    picker    = this.container.find( '.kirki-color-control' );
+		var control = this,
+		    picker  = this.container.find( '.kirki-color-control' );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( undefined !== control.params.choices ) {

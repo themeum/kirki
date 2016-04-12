@@ -7,26 +7,36 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       1.0
+ * @since       2.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 
+	/**
+	 * Adds scripts for icons in sections & panels.
+	 */
 	class Kirki_Scripts_Icons {
 
 		/**
-		 * string.
 		 * The script generated for ALL fields
+		 *
+		 * @static
+		 * @access public
+		 * @var string
 		 */
 		public static $icons_script = '';
+
 		/**
-		 * boolean.
 		 * Whether the script has already been added to the customizer or not.
+		 *
+		 * @static
+		 * @access public
+		 * @var bool
 		 */
 		public static $script_added = false;
 
@@ -41,7 +51,9 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 * This works on a per-field basis.
 		 * Once created, the script is added to the $icons_script property.
 		 *
-		 * @param array the field definition
+		 * @static
+		 * @access public
+		 * @param array $args The field definition.
 		 * @return void
 		 */
 		public static function generate_script( $args = array() ) {
@@ -53,6 +65,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 			if ( ! isset( $args['icon'] ) || '' == $args['icon'] ) {
 				return;
 			}
+
 			/**
 			 * If this is not a panel or section
 			 * then no need to proceed.
@@ -60,6 +73,7 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 			if ( ! isset( $args['context'] ) || ! in_array( $args['context'], array( 'panel', 'section' ) ) ) {
 				return;
 			}
+
 			/**
 			 * If the panel or section ID is not defined
 			 * then early exit.
@@ -83,15 +97,12 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 
 		/**
 		 * Format the script in a way that will be compatible with WordPress.
-		 *
-		 * @return  void (echoes the script)
 		 */
 		public function enqueue_script() {
 			if ( ! self::$script_added && '' != self::$icons_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
+				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . wp_kses_post( self::$icons_script ) . '});</script>';
 			}
 		}
-
 	}
 }

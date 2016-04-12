@@ -18,15 +18,14 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 		    picker;
 
 		// Make sure everything we're going to need exists.
-		value['font-family']    = ( undefined !== control.setting._value['font-family'] ) ? control.setting._value['font-family'] : '';
-		value['font-size']      = ( undefined !== control.setting._value['font-size'] ) ? control.setting._value['font-size'] : '';
-		value.variant           = ( undefined !== control.setting._value.variant ) ? control.setting._value.variant : '';
-		value.subset            = ( undefined !== control.setting._value.subset ) ? control.setting._value.subset : '';
-		value['line-height']    = ( undefined !== control.setting._value['line-height'] ) ? control.setting._value['line-height'] : '';
-		value['letter-spacing'] = ( undefined !== control.setting._value['letter-spacing'] ) ? control.setting._value['letter-spacing'] : '';
-		value.color             = ( undefined !== control.setting._value.color ) ? control.setting._value.color : '';
-		value['text-align']     = ( undefined !== control.setting._value['text-align'] ) ? control.setting._value['text-align'] : 'inherit';
-		value['text-transform'] = ( undefined !== control.setting._value['text-transform'] ) ? control.setting._value['text-transform'] : 'inherit';
+		_.each( control.params['default'], function( defaultParamValue, param ) {
+			if ( false !== defaultParamValue ) {
+				value[ param ] = defaultParamValue;
+				if ( undefined !== control.setting._value[ param ] ) {
+					value[ param ] = control.setting._value[ param ];
+				}
+			}
+		});
 
 		// Renders and refreshes selectize sub-controls.
 		renderSubControl = function( fontFamily, sub, startValue ) {
@@ -106,9 +105,7 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 							}
 						});
 
-						if ( 0 === subsetValues.length ) {
-							activeItem = ['latin'];
-						} else {
+						if ( 0 !== subsetValues.length ) {
 							subsetValuesArray = jQuery.map( subsetValues, function( value, index ) {
 								return [value];
 							});
@@ -150,29 +147,20 @@ wp.customize.controlConstructor.typography = wp.customize.Control.extend({
 
 			}
 
-			// If only 1 option is available then there's no reason to show this.
-			if ( 'variant' === sub ) {
-
-				if ( 1 >= subList.length ) {
-					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'none' );
-				} else {
-					control.container.find( '.kirki-variant-wrapper' ).css( 'display', 'block' );
-				}
-
-			} else if ( 'subset' === sub ) {
-
-				if ( 1 > subList.length ) {
-					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'none' );
-				} else {
-					control.container.find( '.kirki-subset-wrapper' ).css( 'display', 'block' );
-				}
-
-			}
-
 			if ( true === isStandard ) {
+
+				// Hide unrelated fields on standard fonts.
 				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'none' );
 			} else {
-				control.container.find( '.hide-on-standard-fonts' ).css( 'display', 'block' );
+
+				if ( 2 > subList.length ) {
+
+					// If only 1 option is available then there's no reason to show this.
+					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'none' );
+				} else {
+					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'block' );
+				}
+
 			}
 
 		};

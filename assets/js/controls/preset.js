@@ -33,7 +33,7 @@ wp.customize.controlConstructor.preset = wp.customize.Control.extend({
 					// Each choice has an array of settings defined in it.
 					// We'll have to loop through them all and apply the changes needed to them.
 					jQuery.each( value.settings, function( presetSetting, presetSettingValue ) {
-						kirkiSetValue( presetSetting, presetSettingValue );
+						kirkiSetSettingValue( presetSetting, presetSettingValue );
 					});
 
 				}

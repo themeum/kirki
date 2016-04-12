@@ -1,6 +1,6 @@
 <?php
 /**
- * select2 Customizer Control.
+ * Customizer Control: kirki-radio.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -9,21 +9,47 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Controls_Radio_Control' ) ) {
+
+	/**
+	 * Radio control
+	 */
 	class Kirki_Controls_Radio_Control extends Kirki_Customize_Control {
 
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
 		public $type = 'kirki-radio';
 
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'kirki-radio' );
 		}
 
-		protected function content_template() { ?>
+		/**
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 *
+		 * Class variables for this control class are available in the `data` JS object;
+		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+		 *
+		 * @see WP_Customize_Control::print_template()
+		 *
+		 * @access protected
+		 */
+		protected function content_template() {
+			?>
 			<# if ( ! data.choices ) { return; } #>
 
 			<# if ( data.tooltip ) { #>
@@ -48,6 +74,5 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Control' ) ) {
 			<# } #>
 			<?php
 		}
-
 	}
 }

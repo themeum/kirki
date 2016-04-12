@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
+
 	/**
 	 * A simple wrapper class for static methods.
 	 */
@@ -96,31 +97,39 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		 * @return string
 		 */
 		public static function css_dimension( $value ) {
+
 			// Trim it.
 			$value = trim( $value );
+
 			// If the value is round, then return 50%.
 			if ( 'round' === $value ) {
 				$value = '50%';
 			}
+
 			// If the value is empty, return empty.
 			if ( '' === $value ) {
 				return '';
 			}
+
 			// If auto, return auto.
 			if ( 'auto' === $value ) {
 				return 'auto';
 			}
+
 			// Return empty if there are no numbers in the value.
 			if ( ! preg_match( '#[0-9]#' , $value ) ) {
 				return '';
 			}
+
 			// If we're using calc() then return the value.
 			if ( false !== strpos( $value, 'calc(' ) ) {
 				return $value;
 			}
+
 			// The raw value without the units.
 			$raw_value = self::filter_number( $value );
 			$unit_used = '';
+
 			// An array of all valid CSS units. Their order was carefully chosen for this evaluation, don't mix it up!!!
 			$units = array( 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' );
 			foreach ( $units as $unit ) {
@@ -128,6 +137,12 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 					$unit_used = $unit;
 				}
 			}
+
+			// Hack for rem values.
+			if ( 'em' === $unit_used && false !== strpos( $value, 'rem' ) ) {
+				$unit_used = 'rem';
+			}
+
 			return $raw_value . $unit_used;
 		}
 

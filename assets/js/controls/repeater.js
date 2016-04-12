@@ -159,6 +159,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			});
 		}
 
+		// Once we have displayed the rows, we cleanup the values
+		this.setValue( settingValue, true, true );
+
 		this.repeaterFieldsContainer.sortable({
 			handle: '.repeater-row-header',
 			update: function( e, ui ) {
@@ -449,9 +452,28 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param newValue Object
 	 * @param refresh If we want to refresh the previewer or not
 	 */
-	setValue: function( newValue, refresh ) {
+	setValue: function( newValue, refresh, filtering ) {
 
-		this.setting.set( encodeURI( JSON.stringify( newValue ) ) );
+		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
+		var filteredValue = newValue;
+		var filter = [];
+
+		if ( filtering ) {
+			jQuery.each( this.params.fields, function( index, value ) {
+				if ( 'image' === value.type || 'cropped_image' === value.type ) {
+					filter.push( index );
+				}
+			});
+			jQuery.each( newValue, function( index, value ) {
+				jQuery.each( filter, function( ind, field ) {
+					if ( 'undefined' !== typeof value[field] && 'undefined' !== typeof value[field].id ) {
+						filteredValue[index][field] = value[field].id;
+					}
+				});
+			});
+		}
+
+		this.setting.set( encodeURI( JSON.stringify( filteredValue ) ) );
 
 		if ( refresh ) {
 
@@ -494,8 +516,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 
 			templateData.index = this.currentIndex;
-			templateData.ControlId = this.id;
-			templateData.buttonLabels = control.params.buttonLabels;
 
 			// Append the template content
 			template = template( templateData );

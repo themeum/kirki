@@ -10,6 +10,7 @@
  */
 
 if ( ! class_exists( 'Kirki_Control' ) ) {
+
 	/**
 	 * Our main Kirki_Control object
 	 */

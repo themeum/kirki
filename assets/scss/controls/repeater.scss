@@ -25,6 +25,9 @@
 			}
 
 			.repeater-field {
+				&.repeater-field- {
+					display: none;
+				}
 				&.repeater-field-radio-image {
 					input {
 						img {
@@ -72,6 +75,12 @@
 	    .customize-control-description {
 		    font-size: 13px;
 		    line-height: initial;
+	    }
+
+	    &.repeater-field-hidden{
+		    margin: 0;
+		    padding: 0;
+		    border: 0;
 	    }
 
 	}

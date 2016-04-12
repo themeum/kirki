@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Helper' ) ) {
+
 	/**
 	 * A simple object containing static methods.
 	 */
@@ -34,6 +35,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			if ( function_exists( 'array_replace_recursive' ) ) {
 				return array_replace_recursive( $array, $array1 );
 			}
+
 			// Handle the arguments, merge one by one.
 			$args  = func_get_args();
 			$array = $args[0];
@@ -151,6 +153,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 			// Get the taxonomies.
 			$taxonomies = get_taxonomies( array( 'public' => true ) );
+
 			// Build the array.
 			foreach ( $taxonomies as $taxonomy ) {
 				$id           = $taxonomy;
@@ -175,6 +178,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 			// Get the post types.
 			$post_types = get_post_types( array( 'public' => true ), 'objects' );
+
 			// Build the array.
 			foreach ( $post_types as $post_type ) {
 				$items[ $post_type->name ] = $post_type->labels->name;
@@ -198,6 +202,7 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 
 			// Get the post types.
 			$terms = get_terms( $taxonomies );
+
 			// Build the array.
 			foreach ( $terms as $term ) {
 				$items[ $term->term_id ] = $term->name;

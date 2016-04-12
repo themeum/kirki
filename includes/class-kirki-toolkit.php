@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kirki_Toolkit' ) ) {
+
 	/**
 	 * Singleton class
 	 */

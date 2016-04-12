@@ -915,6 +915,8 @@ span.CodeMirror-selectedtext {
   .customize-control-repeater .repeater-fields .repeater-row label {
     margin-bottom: 12px;
     clear: both; }
+  .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field- {
+    display: none; }
   .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input {
     display: none; }
     .customize-control-repeater .repeater-fields .repeater-row .repeater-field.repeater-field-radio-image input img {
@@ -942,6 +944,10 @@ span.CodeMirror-selectedtext {
   .customize-control-repeater .repeater-field .customize-control-description {
     font-size: 13px;
     line-height: initial; }
+  .customize-control-repeater .repeater-field.repeater-field-hidden {
+    margin: 0;
+    padding: 0;
+    border: 0; }
 .customize-control-repeater .repeater-field-select select {
   margin-left: 0; }
 .customize-control-repeater .repeater-field-checkbox label {

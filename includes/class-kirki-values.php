@@ -14,10 +14,12 @@
  */
 
 if ( ! class_exists( 'Kirki_Values' ) ) {
+
 	/**
 	 * Wrapper class for static methods.
 	 */
 	class Kirki_Values {
+
 		/**
 		 * Get the value of a field.
 		 *
