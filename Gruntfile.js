@@ -50,6 +50,20 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		// Check JS syntax
+		jscs: {
+		    src: [
+                'Gruntfile.js',
+                'assets/js/**/*.js',
+                '!assets/js/**/*.min.js',
+                '!assets/js/vendor/*'
+            ],
+		    options: {
+		        config: '.jscsrc',
+		        verbose: true
+		    }
+		},
+
 		// Delete the json array
 		clean: [
 			'includes/webfonts.json'
@@ -60,6 +74,13 @@ module.exports = function( grunt ) {
 			css: {
 				files: 'assets/**/*.scss',
 				tasks: ['sass']
+			},
+			scripts: {
+				files: [
+					'assets/**/*.js',
+					'Gruntfile.js'
+				],
+				tasks: ['jscs']
 			}
 		}
 	});
@@ -73,8 +94,10 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-json2php' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-jscs' );
 
 	grunt.registerTask( 'default', ['sass'] );
+	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
 	grunt.registerTask( 'makepot', ['makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
