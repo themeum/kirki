@@ -204,5 +204,7 @@ class Test_Kirki_Color extends WP_UnitTestCase {
 
 		$this->assertEquals( 'rgba(255,255,255,0)', Kirki_Color::get_rgba( '#fff', 0 ) );
 
+		$this->assertEquals( '#ffffff', Kirki_Color::adjust_brightness( '#000000', 255 ) );
+
 	}
 }
