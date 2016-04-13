@@ -37,7 +37,18 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 2.3 =
+= 2.3.1 =
+
+* FIX: Spacing control JS dependencies.
+* FIX: Output property ignored in multicolor field.
+* FIX: Image sub-controls in repeaters were causing a JS error.
+* FIX: Text Domain Compliance with Themecheck.
+* FIX: postMessage scripts when using more than 1 elements for the output.
+* FIX: default values for swithes, toggles & checkboxes.
+
+= 2.3.0 =
+
+April 10, 2016, dev time: 21 hours.
 
 Kirki is now 100% WordPress Coding Standards compliant.
 
