@@ -161,9 +161,12 @@ free_themes:
 
 {% include mailchimp.html %}
 
+
 # What is Kirki?
 
 Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
+
+<a href="/docs/advanced/integration.html" class="large button expanded">See how to Integrate Kirki in your project</a>
 
 **Kirki does not replace the WordPress Customizer API**, you can still use the default WordPress methods and we advise you to familiarize yourselves with it.
 An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/advanced-topics/customizer-api/) website.
