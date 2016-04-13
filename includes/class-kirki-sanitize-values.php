@@ -40,8 +40,8 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		/**
 		 * Checkbox sanitization callback.
 		 *
-		 * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
-		 * as a boolean value, either TRUE or FALSE.
+		 * Sanitization callback for 'checkbox' type controls.
+		 * This callback sanitizes `$value` as a boolean value, either TRUE or FALSE.
 		 *
 		 * Deprecated. Use Kirki_Field_Checkbox::sanitize() instead.
 		 *
@@ -51,8 +51,8 @@ if ( ! class_exists( 'Kirki_Sanitize_Values' ) ) {
 		 * @param bool|string $value Whether the checkbox is checked.
 		 * @return bool Whether the checkbox is checked.
 		 */
-		public static function checkbox( $checked ) {
-			return Kirki_Field_Checkbox::sanitize( $checked );
+		public static function checkbox( $value ) {
+			return Kirki_Field_Checkbox::sanitize( $value );
 		}
 
 		/**

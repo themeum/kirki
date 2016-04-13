@@ -53,7 +53,7 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		 */
 		public static function sanitize( $value = null ) {
 
-			// If the value is not set, return false
+			// If the value is not set, return false.
 			if ( is_null( $value ) ) {
 				return false;
 			}
