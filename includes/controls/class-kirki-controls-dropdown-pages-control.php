@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'dropdown-pages';
+		public $type = 'kirki-dropdown-pages';
 
 		/**
 		 * Enqueue control related scripts/styles.
