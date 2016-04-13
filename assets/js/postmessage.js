@@ -119,10 +119,10 @@
 
 								// Make sure we have a stylesheet with the defined ID.
 								// If we don't then add it.
-								if ( ! jQuery( '#kirki-customizer-postmessage' + setting ).size() ) {
-									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
+								if ( ! jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).size() ) {
+									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) + '"></style>' );
 								}
-								jQuery( '#kirki-customizer-postmessage' + setting ).text( css );
+								jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
 							}
 
 						}, 100 );
