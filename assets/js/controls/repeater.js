@@ -262,7 +262,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	onSelect: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
-		this.setImageInReaperField( attachment );
+		this.setImageInRepeaterField( attachment );
 	},
 
 	/**
@@ -275,7 +275,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		if ( this.params.width === attachment.width && this.params.height === attachment.height && ! this.params.flex_width && ! this.params.flex_height ) {
-			this.setImageInReaperField( attachment );
+			this.setImageInRepeaterField( attachment );
 		} else {
 			this.frame.setState( 'cropper' );
 		}
@@ -287,7 +287,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} croppedImage Cropped attachment data.
 	 */
 	onCropped: function( croppedImage ) {
-		this.setImageInReaperField( croppedImage );
+		this.setImageInRepeaterField( croppedImage );
 	},
 
 	/**
@@ -391,7 +391,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	onSkippedCrop: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
-		this.setImageInReaperField( attachment );
+		this.setImageInRepeaterField( attachment );
 	},
 
 	/**
@@ -399,7 +399,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 *
 	 * @param {object} attachment
 	 */
-	setImageInReaperField: function( attachment ) {
+	setImageInRepeaterField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
