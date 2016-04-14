@@ -359,22 +359,22 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $l10n['no-image-selected'] ); ?>" >
+									<figure class="kirki-image-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-image-selected'] ); ?>" >
 										<# if ( field.default ) { #>
 											<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 											<img src="{{{ defaultImageURL }}}">
 										<# } else { #>
-											<?php echo esc_attr( $l10n['no-image-selected'] ); ?>
+											<?php esc_attr_e( $l10n['no-image-selected'] ); ?>
 										<# } #>
 									</figure>
 
 									<div class="actions">
-										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr( $l10n['remove'] ); ?></button>
-										<button type="button" class="button upload-button" data-label="<?php esc_attr( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr( $l10n['change-image'] ); ?>" >
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-image'] ); ?>" >
 											<# if ( field.default ) { #>
-												<?php esc_attr( $l10n['change-image'] ); ?>
+												<?php esc_attr_e( $l10n['change-image'] ); ?>
 											<# } else { #>
-												<?php esc_attr( $l10n['add-image'] ); ?>
+												<?php esc_attr_e( $l10n['add-image'] ); ?>
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -388,7 +388,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							</div>
 						<# }); #>
-						<button type="button" class="button-link repeater-row-remove"><?php esc_attr( $l10n['remove'] ); ?></button>
+						<button type="button" class="button-link repeater-row-remove"><?php esc_attr_e( $l10n['remove'] ); ?></button>
 					</div>
 				</li>
 			</script>
