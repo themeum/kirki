@@ -421,7 +421,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		$targetDiv = this.$thisButton.closest( '.repeater-field-image' );
+		$targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 		$uploadButton = $targetDiv.find( '.upload-button' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
