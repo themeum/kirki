@@ -33,18 +33,43 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		}
 
 		/**
-		 * Sets the $sanitize_callback
+		 * Sets the $sanitize_callback.
 		 *
 		 * @access protected
 		 */
 		protected function set_sanitize_callback() {
 
-			$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'checkbox' );
+			$this->sanitize_callback = array( 'Kirki_Field_Checkbox', 'sanitize' );
 
 		}
 
 		/**
-		 * Sets the default value
+		 * Sanitizes checkbox values.
+		 *
+		 * @static
+		 * @access public
+		 * @param bool|string $value The checkbox value.
+		 * @return bool
+		 */
+		public static function sanitize( $value = null ) {
+
+			// If the value is not set, return false.
+			if ( is_null( $value ) ) {
+				return false;
+			}
+
+			// Check for checked values.
+			if ( 1 === $value || '1' === $value || true === $value || 'on' === $value ) {
+				return true;
+			}
+
+			// Fallback to false.
+			return false;
+
+		}
+
+		/**
+		 * Sets the default value.
 		 *
 		 * @access protected
 		 */

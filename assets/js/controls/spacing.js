@@ -38,6 +38,10 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 						value[ dimension ] = subValue;
 						control.setting.set( value );
 
+						// Refresh the preview.
+						// The `postMessage` implementation is still incomplete for this field.
+						wp.customize.previewer.refresh();
+
 					}
 
 				});

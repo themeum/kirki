@@ -138,7 +138,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Kirki::get_option( $requirement['setting'] );
+							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
 							if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
 								$valid = false;
 							}

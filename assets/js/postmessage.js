@@ -70,30 +70,30 @@
 
 									// If we have new value, replace style contents with custom css
 									if ( '' !== val ) {
-										cssArray.i = args.element + '{' + args.property + ':' + args.prefix + val + args.units + args.suffix + ';}';
+										cssArray[ i ] = args.element + '{' + args.property + ':' + args.prefix + val + args.units + args.suffix + ';}';
 									}
 
 									// Else let's clear it out
 									else {
-										cssArray.i = '';
+										cssArray[ i ] = '';
 									}
 
 								}
 
-						// Value is an object
-						} else if ( 'object' === typeof newval ) {
+							// Value is an object
+							} else if ( 'object' === typeof newval ) {
 
-								cssArray.i = '';
+								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
 									if ( undefined !== args.choice ) {
 										if ( args.choice === subValueKey ) {
-											cssArray.i += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									} else {
 										if ( _.contains( [ 'top', 'bottom', 'left', 'right' ], subValueKey ) ) {
-											cssArray.i += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+											cssArray[ i ] += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										} else {
-											cssArray.i += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									}
 								});
@@ -119,13 +119,13 @@
 
 								// Make sure we have a stylesheet with the defined ID.
 								// If we don't then add it.
-								if ( ! jQuery( '#kirki-customizer-postmessage' + setting ).size() ) {
-									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting + '"></style>' );
+								if ( ! jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).size() ) {
+									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) + '"></style>' );
 								}
-								jQuery( '#kirki-customizer-postmessage' + setting ).text( css );
+								jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
 							}
 
-						}, 300 );
+						}, 100 );
 
 					});
 

@@ -29,12 +29,38 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		private static $instance = null;
 
 		/**
+		 * If set to true, forces loading ALL variants.
+		 *
+		 * @static
+		 * @access public
+		 * @var bool
+		 */
+		public static $force_load_all_variants = false;
+
+		/**
+		 * If set to true, forces loading ALL subsets.
+		 *
+		 * @static
+		 * @access public
+		 * @var bool
+		 */
+		public static $force_load_all_subsets = false;
+
+		/**
 		 * The array of fonts
 		 *
 		 * @access private
 		 * @var array
 		 */
 		private $fonts = array();
+
+		/**
+		 * An array of all google fonts.
+		 *
+		 * @access private
+		 * @var array
+		 */
+		private $google_fonts = array();
 
 		/**
 		 * The array of subsets
@@ -63,6 +89,9 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
 				return;
 			}
+
+			// Populate the array of google fonts
+			$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
 			// Enqueue link.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
@@ -215,23 +244,20 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				return;
 			}
 
-			// Get an array of all available google fonts.
-			$google_fonts = Kirki_Fonts::get_google_fonts();
-
 			$valid_subsets = array();
 			foreach ( $this->fonts as $font => $variants ) {
 
 				// Determine if this is indeed a google font or not.
 				// If it's not, then just remove it from the array.
-				if ( ! array_key_exists( $font, $google_fonts ) ) {
+				if ( ! array_key_exists( $font, $this->google_fonts ) ) {
 					unset( $this->fonts[ $font ] );
 					continue;
 				}
 
 				// Get all valid font variants for this font.
 				$font_variants = array();
-				if ( isset( $google_fonts[ $font ]['variants'] ) ) {
-					$font_variants = $google_fonts[ $font ]['variants'];
+				if ( isset( $this->google_fonts[ $font ]['variants'] ) ) {
+					$font_variants = $this->google_fonts[ $font ]['variants'];
 				}
 				foreach ( $variants as $variant ) {
 
@@ -246,9 +272,9 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 
 				// Check if the selected subsets exist, even in one of the selected fonts.
 				// If they don't, then they have to be removed otherwise the link will fail.
-				if ( isset( $google_fonts[ $font ]['subsets'] ) ) {
+				if ( isset( $this->google_fonts[ $font ]['subsets'] ) ) {
 					foreach ( $this->subsets as $subset ) {
-						if ( in_array( $subset, $google_fonts[ $font ]['subsets'], true ) ) {
+						if ( in_array( $subset, $this->google_fonts[ $font ]['subsets'], true ) ) {
 							$valid_subsets[] = $subset;
 						}
 					}
@@ -270,6 +296,14 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			// Get font-family + subsets.
 			$link_fonts = array();
 			foreach ( $this->fonts as $font => $variants ) {
+
+				// Are we force-loading all variants?
+				if ( true === self::$force_load_all_variants ) {
+
+					if ( isset( $this->fonts[ $font ]['variants'] ) ) {
+						$variants = $this->fonts[ $font ]['variants'];
+					}
+				}
 				$variants = implode( ',', $variants );
 
 				$link_font = str_replace( ' ', '+', $font );
@@ -277,6 +311,16 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					$link_font .= ':' . $variants;
 				}
 				$link_fonts[] = $link_font;
+			}
+
+			// Are we force-loading all subsets?
+			if ( true === self::$force_load_all_subsets ) {
+
+				if ( isset( $this->fonts[ $font ]['subsets'] ) ) {
+					foreach ( $this->fonts[ $font ]['subsets'] as $subset ) {
+						$this->subsets[] = $subset;
+					}
+				}
 			}
 
 			if ( ! empty( $this->subsets ) ) {
