@@ -303,7 +303,6 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					if ( isset( $this->fonts[ $font ]['variants'] ) ) {
 						$variants = $this->fonts[ $font ]['variants'];
 					}
-
 				}
 				$variants = implode( ',', $variants );
 
@@ -322,7 +321,6 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 						$this->subsets[] = $subset;
 					}
 				}
-
 			}
 
 			if ( ! empty( $this->subsets ) ) {
