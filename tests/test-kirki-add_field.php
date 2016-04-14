@@ -73,11 +73,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global']
 		);
@@ -114,11 +115,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
 		);
@@ -167,11 +169,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global']
 		);
@@ -215,11 +218,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global45']
 		);
@@ -277,12 +281,13 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
 				'label'             => '',
+				'mime_type'         => '',
 			),
 			Kirki::$fields['spacing_field']
 		);
@@ -319,11 +324,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
 		);
