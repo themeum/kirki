@@ -260,6 +260,15 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected $row_label = array();
 
 		/**
+		 * Use only on image, cropped_image, upload controls.
+		 * Limit the Media library to a specific mime type
+		 *
+		 * @access protected
+		 * @var array
+		 */
+		protected $mime_type = '';
+
+		/**
 		 * The class constructor.
 		 * Parses and sanitizes all field arguments.
 		 * Then it adds the field to Kirki::$fields.
