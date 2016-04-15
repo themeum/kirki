@@ -1001,6 +1001,16 @@ span.CodeMirror-selectedtext {
   .kirki-image-attachment img {
     display: inline-block; }
 
+.kirki-file-attachment {
+  margin: 0;
+  text-align: center;
+  margin-bottom: 10px; }
+  .kirki-file-attachment .file {
+    display: block;
+    padding: 10px 5px;
+    border: 1px dotted #c3c3c3;
+    background: #f9f9f9; }
+
 .limit {
   padding: 3px;
   border-radius: 3px; }
