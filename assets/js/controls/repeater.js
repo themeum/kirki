@@ -103,6 +103,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( ! limit || control.currentIndex < limit ) {
 				theNewRow = control.addRow();
 				theNewRow.toggleMinimize();
+				control.initColorPicker();
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
@@ -162,6 +163,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( settingValue.length ) {
 			_.each( settingValue, function( subValue ) {
 				control.addRow( subValue );
+				control.initColorPicker();
 			});
 		}
 
@@ -738,9 +740,38 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			currentSettings[ row.rowIndex ][ fieldId ] = element.val();
 
 		}
-
 		this.setValue( currentSettings, true );
 
+	},
+
+	/**
+	 * Init the color picker on color fields
+	 * Called after AddRow
+	 *
+	 */
+	initColorPicker: function() {
+		var control = this,
+			colorPicker = control.container.find( '.color-picker-hex' ),
+			options = {},
+			fieldId = colorPicker.data( 'field' );
+
+		// We check if the color palete parameter is defined and
+		if ( undefined !== typeof control.params.fields[ fieldId ] && undefined !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
+			options.palettes = control.params.fields[ fieldId ].palettes;
+		}
+
+		// When the color picker value is changed we update the value of the field
+		options.change = function( event, ui ) {
+			var currentPicker = jQuery( event.target );
+			var row = currentPicker.closest( '.repeater-row' );
+			var rowIndex = row.data( 'row' );
+			var currentSettings = control.getValue();
+			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
+			control.setValue( currentSettings, true );
+		};
+
+		// Init the color picker
+		control.container.find( '.color-picker-hex' ).wpColorPicker( options );
 	}
 
 });

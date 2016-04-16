@@ -202,6 +202,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 * @access public
 		 */
 		public function enqueue() {
+
+			// If we have a color picker field we need to enqueue the Wordpress Color Picker style and script
+			if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
+				foreach ( $this->fields as $field ) {
+					if ( isset( $field['type'] ) && 'color' === $field['type'] ) {
+						wp_enqueue_script( 'wp-color-picker' );
+						wp_enqueue_style( 'wp-color-picker' );
+						break;
+					}
+				}
+			}
+
 			wp_enqueue_script( 'kirki-repeater' );
 		}
 
@@ -341,6 +353,28 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# }); #>
 									</label>
 
+								<# } else if ( 'color' === field.type ) { #>
+
+									<# var defaultValue = '';
+							        if ( field.default ) {
+							            if ( '#' !== field.default.substring( 0, 1 ) ) {
+							                defaultValue = '#' + field.default;
+							            } else {
+							                defaultValue = field.default;
+							            }
+							            defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+							        } #>
+							        <label>
+							            <# if ( field.label ) { #>
+							                <span class="customize-control-title">{{{ field.label }}}</span>
+							            <# } #>
+							            <# if ( field.description ) { #>
+							                <span class="description customize-control-description">{{{ field.description }}}</span>
+							            <# } #>
+							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+
+							        </label>
+
 								<# } else if ( 'textarea' === field.type ) { #>
 
 									<# if ( field.label ) { #>
@@ -424,8 +458,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									</div>
 
 								<# } #>
-
-
 
 							</div>
 						<# }); #>
