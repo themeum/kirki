@@ -55,16 +55,16 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 
 			// If the value is not set, return false.
 			if ( is_null( $value ) ) {
-				return false;
+				return '0';
 			}
 
 			// Check for checked values.
-			if ( 1 === $value || '1' === $value || true === $value || 'on' === $value ) {
-				return true;
+			if ( 1 === $value || '1' === $value || true === $value || 'true' === $value || 'on' === $value ) {
+				return '1';
 			}
 
 			// Fallback to false.
-			return false;
+			return '0';
 
 		}
 
@@ -75,12 +75,10 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		 */
 		protected function set_default() {
 
-			if ( false === $this->default || 0 === $this->default ) {
-				$this->default = '0';
-			}
-
-			if ( true === $this->default || 1 === $this->default ) {
+			if ( 1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default ) {
 				$this->default = '1';
+			} else {
+				$this->default = '0';
 			}
 		}
 	}
