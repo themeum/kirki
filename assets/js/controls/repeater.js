@@ -460,10 +460,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'upload' === this.params.fields[ currentFieldId ].type ) {
 
 				// If the attribute exists in the field
-				if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ 'mime_type' ] ) {
+				if ( 'undefined' !== typeof this.params.fields[ currentFieldId ].mime_type ) {
 
 					// Set the attribute in the main object
-					return this.params.fields[ currentFieldId ][ 'mime_type' ];
+					return this.params.fields[ currentFieldId ].mime_type;
 				}
 			}
 		}
