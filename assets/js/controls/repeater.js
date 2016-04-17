@@ -755,8 +755,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			options = {},
 			fieldId = colorPicker.data( 'field' );
 
-		// We check if the color palete parameter is defined and
-		if ( undefined !== typeof control.params.fields[ fieldId ] && undefined !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
+		// We check if the color palette parameter is defined.
+		if ( 'undefined' !== typeof fieldId && 'undefined' !== typeof control.params.fields[ fieldId ] && 'undefined' !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
 			options.palettes = control.params.fields[ fieldId ].palettes;
 		}
 
