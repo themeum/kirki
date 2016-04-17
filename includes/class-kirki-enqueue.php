@@ -69,6 +69,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
+			wp_register_script( 'kirki-rebuild-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/rebuild-value.js' );
 
 			// Register serialize.js.
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
@@ -113,7 +114,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
-				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
+				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
 			);
 			foreach ( $controls_scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );

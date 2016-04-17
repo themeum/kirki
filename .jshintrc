@@ -31,6 +31,7 @@
 		"tinyMCE":false,
 		"unserialize":false,
 		"serialize":false,
-		"kirkiAllFonts":false
+		"kirkiAllFonts":false,
+		"kirkiRebuildValue":false
 	}
 }
