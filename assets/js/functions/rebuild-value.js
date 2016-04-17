@@ -1,6 +1,6 @@
 function kirkiRebuildValue( value ) {
 	var newValue = {};
-	_.each( value , function( newSubValue, i ) {
+	_.each( value, function( newSubValue, i ) {
 		newValue[ i ] = newSubValue;
 	});
 
