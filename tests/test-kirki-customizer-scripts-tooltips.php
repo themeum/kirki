@@ -4,6 +4,8 @@ class Test_Kirki_Scripts_Tooltips extends WP_UnitTestCase {
 
 	public function test_empty() {
 
+		new Kirki_Scripts_Tooltips();
+
 		Kirki_Scripts_Tooltips::generate_script();
 		Kirki_Scripts_Tooltips::generate_script( array(
 			'type' => 'foo'
