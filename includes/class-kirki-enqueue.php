@@ -67,8 +67,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
 
 			// Register kirki-functions.
-			wp_register_script( 'kirki-array-to-object', trailingslashit( Kirki::$url ) . 'assets/js/functions/array-to-object.js' );
-			wp_register_script( 'kirki-object-to-array', trailingslashit( Kirki::$url ) . 'assets/js/functions/object-to-array.js' );
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
 
@@ -109,7 +107,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'radio-image'     => array( 'jquery', 'customize-base' ),
 				'radio'           => array( 'jquery', 'customize-base' ),
 				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ),
-				'select'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-array-to-object' ),
+				'select'          => array( 'jquery', 'customize-base', 'selectize' ),
 				'slider'          => array( 'jquery', 'customize-base' ),
 				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
 				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
