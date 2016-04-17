@@ -217,7 +217,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 * The rest is handled via JS.
 		 */
 		public function postmessage() {
-			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), time(), true );
+			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), false, true );
 			$js_vars_fields = array();
 			$fields = Kirki::$fields;
 			foreach ( $fields as $field ) {
