@@ -115,7 +115,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
@@ -125,6 +125,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeImage( e );
+		});
+
+		this.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
+			e.preventDefault();
+			control.$thisButton = jQuery( this );
+			control.removeFile( e );
 		});
 
 		/**
@@ -191,10 +197,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 	initFrame: function() {
 
+		var libMediaType = this.getMimeType();
+
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
-					library:  wp.media.query({ type: 'image' }),
+					library:  wp.media.query({ type: libMediaType }),
 					multiple: false,
 					date:     false
 				})
@@ -208,11 +216,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
 	 */
-	 initCropperFrame: function() {
+	initCropperFrame: function() {
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
-		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ]; // A list of attributes to look for
+		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
+			libMediaType   = this.getMimeType();
 
 		// Make sure we got it
 		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
@@ -240,7 +249,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			},
 			states: [
 				new wp.media.controller.Library({
-					library:         wp.media.query({ type: 'image' }),
+					library:         wp.media.query({ type: libMediaType }),
 					multiple:        false,
 					date:            false,
 					suggestedWidth:  this.params.width,
@@ -262,7 +271,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	onSelect: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
-		this.setImageInRepeaterField( attachment );
+		if ( this.$thisButton.closest( '.repeater-field' ).hasClass( 'repeater-field-upload' ) ) {
+			this.setFileInRepeaterField( attachment );
+		} else {
+			this.setImageInRepeaterField( attachment );
+		}
 	},
 
 	/**
@@ -413,6 +426,50 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.frame.close();
 	},
 
+	/**
+	 * Updates the setting and re-renders the control UI.
+	 *
+	 * @param {object} attachment
+	 */
+	setFileInRepeaterField: function( attachment ) {
+		var $targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
+		$targetDiv.find( '.kirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
+
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
+		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
+		$targetDiv.find( '.upload-button' ).show();
+		$targetDiv.find( '.remove-button' ).show();
+
+		//This will activate the save button
+		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
+		this.frame.close();
+	},
+
+	getMimeType: function() {
+
+		// We get the field id from which this was called
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
+		    attrs          = [ 'mime_type' ]; // A list of attributes to look for
+
+		// Make sure we got it
+		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
+
+			// Make fields is defined and only do the hack for cropped_image
+			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'upload' === this.params.fields[ currentFieldId ].type ) {
+
+				// If the attribute exists in the field
+				if ( 'undefined' !== typeof this.params.fields[ currentFieldId ][ 'mime_type' ] ) {
+
+					// Set the attribute in the main object
+					return this.params.fields[ currentFieldId ][ 'mime_type' ];
+				}
+			}
+		}
+
+		return 'image';
+
+	},
+
 	removeImage: function( event ) {
 		var $targetDiv,
 		    $uploadButton;
@@ -421,10 +478,31 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		$targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
+		$targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image,.repeater-field-upload' );
 		$uploadButton = $targetDiv.find( '.upload-button' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
+			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
+		});
+		$targetDiv.find( '.hidden-field' ).val( '' );
+		$uploadButton.text( $uploadButton.data( 'label' ) );
+		this.$thisButton.hide();
+
+		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
+	},
+
+	removeFile: function( event ) {
+		var $targetDiv,
+		    $uploadButton;
+
+		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
+			return;
+		}
+
+		$targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
+		$uploadButton = $targetDiv.find( '.upload-button' );
+
+		$targetDiv.find( '.kirki-file-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
 		});
 		$targetDiv.find( '.hidden-field' ).val( '' );
@@ -460,7 +538,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
-				if ( 'image' === value.type || 'cropped_image' === value.type ) {
+				if ( 'image' === value.type || 'cropped_image' === value.type || 'upload' === value.type ) {
 					filter.push( index );
 				}
 			});
