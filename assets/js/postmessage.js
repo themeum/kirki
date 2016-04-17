@@ -57,8 +57,10 @@
 							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
-								if ( undefined !== jsVar.value_pattern ) {
-									val = jsVar.value_pattern.replace( /\$/g, newval );
+								if ( undefined !== args.value_pattern ) {
+									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
+								} else {
+									val = args.prefix + newval + args.units + args.suffix;
 								}
 
 								// Inject HTML
@@ -70,7 +72,7 @@
 
 									// If we have new value, replace style contents with custom css
 									if ( '' !== val ) {
-										cssArray[ i ] = args.element + '{' + args.property + ':' + args.prefix + val + args.units + args.suffix + ';}';
+										cssArray[ i ] = args.element + '{' + args.property + ':' + val + ';}';
 									}
 
 									// Else let's clear it out
