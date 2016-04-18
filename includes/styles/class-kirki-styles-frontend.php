@@ -41,11 +41,30 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		public static $css_array = array();
 
 		/**
+		 * Set to true if you want to use the AJAX method.
+		 *
+		 * @access public
+		 * @var bool
+		 */
+		public static $ajax = false;
+
+		/**
 		 * Constructor
 		 *
 		 * @access public
 		 */
 		public function __construct() {
+
+			add_action( 'init', array( $this, 'init' ) );
+
+		}
+
+		/**
+		 * Init.
+		 *
+		 * @access public
+		 */
+		public function init() {
 
 			Kirki_Fonts_Google::get_instance();
 
@@ -54,12 +73,20 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			$config   = apply_filters( 'kirki/config', array() );
 			$priority = ( isset( $config['styles_priority'] ) ) ? intval( $config['styles_priority'] ) : 999;
 
+			// Allow completely disabling Kirki CSS output.
 			if ( ( defined( 'KIRKI_NO_OUTPUT' ) && KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true !== $config['disable_output'] ) ) {
 				return;
 			}
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
-
+			// If we are in the customizer, load CSS using inline-styles.
+			// If we are in the frontend AND self::$ajax is true, then load dynamic CSS using AJAX.
+			if ( ! $wp_customize && ( ( true === self::$ajax ) || ( isset( $config['inline_css'] ) && false === $config['inline_css'] ) ) ) {
+				add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ), $priority );
+				add_action( 'wp_ajax_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+				add_action( 'wp_ajax_nopriv_kirki_dynamic_css', array( $this, 'ajax_dynamic_css' ) );
+			} else {
+				add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
+			}
 		}
 
 		/**

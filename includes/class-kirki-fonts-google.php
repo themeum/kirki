@@ -90,7 +90,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				return;
 			}
 
-			// Populate the array of google fonts
+			// Populate the array of google fonts.
 			$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
 			// Enqueue link.

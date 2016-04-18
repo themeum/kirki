@@ -107,7 +107,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			}
 
 			// An array to store keys of fields that need to be filtered.
-			$image_fields_to_filter = array();
+			$media_fields_to_filter = array();
 
 			foreach ( $args['fields'] as $key => $value ) {
 				if ( ! isset( $value['default'] ) ) {
@@ -119,11 +119,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				}
 				$args['fields'][ $key ]['id'] = $key;
 
-				// We check if the filed is an image or a cropped_image.
-				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value['type'] ) ) {
+				// We check if the filed is an uploaded media ( image , file, video, etc.. ).
+				if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value['type'] || 'upload' === $value['type'] ) ) {
 
 					// We add it to the list of fields that need some extra filtering/processing.
-					$image_fields_to_filter[ $key ] = true;
+					$media_fields_to_filter[ $key ] = true;
 				}
 			}
 
@@ -143,8 +143,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 						// We iterate over the list of properties for this field.
 						foreach ( $filtered_value_field as $key => &$value ) {
 
-							// We check if this field was marked as requiring extra filtering (in this case image, cropped_images).
-							if ( array_key_exists( $key, $image_fields_to_filter ) ) {
+							// We check if this field was marked as requiring extra filtering (in this case image, cropped_images, upload).
+							if ( array_key_exists( $key, $media_fields_to_filter ) ) {
 
 								// What follows was made this way to preserve backward compatibility.
 								// The repeater control use to store the URL for images instead of the attachment ID.
@@ -157,6 +157,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									// Try to get the attachment_url.
 									$url = wp_get_attachment_url( $attachment_id );
 
+									$filename = basename( get_attached_file( $attachment_id ) );
+
 									// If we got a URL.
 									if ( $url ) {
 
@@ -164,6 +166,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										$value = array(
 											'id'  => $attachment_id,
 											'url' => $url,
+											'filename' => $filename,
 										);
 									}
 								}
@@ -199,6 +202,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 * @access public
 		 */
 		public function enqueue() {
+
+			// If we have a color picker field we need to enqueue the Wordpress Color Picker style and script.
+			if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
+				foreach ( $this->fields as $field ) {
+					if ( isset( $field['type'] ) && 'color' === $field['type'] ) {
+						wp_enqueue_script( 'wp-color-picker' );
+						wp_enqueue_style( 'wp-color-picker' );
+						break;
+					}
+				}
+			}
+
 			wp_enqueue_script( 'kirki-repeater' );
 		}
 
@@ -338,6 +353,28 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# }); #>
 									</label>
 
+								<# } else if ( 'color' === field.type ) { #>
+
+									<# var defaultValue = '';
+							        if ( field.default ) {
+							            if ( '#' !== field.default.substring( 0, 1 ) ) {
+							                defaultValue = '#' + field.default;
+							            } else {
+							                defaultValue = field.default;
+							            }
+							            defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+							        } #>
+							        <label>
+							            <# if ( field.label ) { #>
+							                <span class="customize-control-title">{{{ field.label }}}</span>
+							            <# } #>
+							            <# if ( field.description ) { #>
+							                <span class="description customize-control-description">{{{ field.description }}}</span>
+							            <# } #>
+							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+
+							        </label>
+
 								<# } else if ( 'textarea' === field.type ) { #>
 
 									<# if ( field.label ) { #>
@@ -359,22 +396,58 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $l10n['no-image-selected'] ); ?>" >
+									<figure class="kirki-image-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-image-selected'] ); ?>" >
 										<# if ( field.default ) { #>
 											<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 											<img src="{{{ defaultImageURL }}}">
 										<# } else { #>
-											<?php echo esc_attr( $l10n['no-image-selected'] ); ?>
+											<?php esc_attr_e( $l10n['no-image-selected'] ); ?>
 										<# } #>
 									</figure>
 
 									<div class="actions">
-										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr( $l10n['remove'] ); ?></button>
-										<button type="button" class="button upload-button" data-label="<?php esc_attr( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr( $l10n['change-image'] ); ?>" >
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-image'] ); ?>" >
 											<# if ( field.default ) { #>
-												<?php esc_attr( $l10n['change-image'] ); ?>
+												<?php esc_attr_e( $l10n['change-image'] ); ?>
 											<# } else { #>
-												<?php esc_attr( $l10n['add-image'] ); ?>
+												<?php esc_attr_e( $l10n['add-image'] ); ?>
+											<# } #>
+										</button>
+										<# if ( field.default.id ) { #>
+											<input type="hidden" class="hidden-field" value="{{{ field.default.id }}}" data-field="{{{ field.id }}}" >
+										<# } else { #>
+											<input type="hidden" class="hidden-field" value="{{{ field.default }}}" data-field="{{{ field.id }}}" >
+										<# } #>
+									</div>
+
+								<# } else if ( field.type === 'upload' ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{ field.label }}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{ field.description }}</span>
+										<# } #>
+									</label>
+
+									<figure class="kirki-file-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-file-selected'] ); ?>" >
+										<# if ( field.default ) { #>
+											<# var defaultFilename = ( field.default.filename ) ? field.default.filename : field.default; #>
+											<span class="file"><span class="dashicons dashicons-media-default"></span> {{ defaultFilename }}</span>
+										<# } else { #>
+											<?php esc_attr_e( $l10n['no-file-selected'] ); ?>
+										<# } #>
+									</figure>
+
+									<div class="actions">
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-file'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-file'] ); ?>" >
+											<# if ( field.default ) { #>
+												<?php esc_attr_e( $l10n['change-file'] ); ?>
+											<# } else { #>
+												<?php esc_attr_e( $l10n['add-file'] ); ?>
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -388,7 +461,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							</div>
 						<# }); #>
-						<button type="button" class="button-link repeater-row-remove"><?php esc_attr( $l10n['remove'] ); ?></button>
+						<button type="button" class="button-link repeater-row-remove"><?php esc_attr_e( $l10n['remove'] ); ?></button>
 					</div>
 				</li>
 			</script>
