@@ -771,7 +771,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		};
 
 		// Init the color picker
-		control.container.find( '.color-picker-hex' ).wpColorPicker( options );
+		if ( 0 !== colorPicker.length ) {
+			colorPicker.wpColorPicker( options );
+		}
 	}
 
 });
