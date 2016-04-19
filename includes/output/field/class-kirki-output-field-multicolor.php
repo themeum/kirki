@@ -43,10 +43,14 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 				}
 
 				// If "property" is not defined, fallback to "color".
-				$output['property'] = ( ! isset( $output['property'] ) || empty( $output['property'] ) ) ? 'color' : $output['property'] = 'color';
+				if ( ! isset( $output['property'] ) || empty( $output['property'] ) ) {
+					$output['property'] = 'color';
+				}
 
 				// If "media_query" is not defined, use "global".
-				$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
+				if ( ! isset( $output['media_query'] ) || empty( $output['media_query'] ) ) {
+					$output['media_query'] = 'global';
+				}
 
 				// Create the styles.
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $sub_value;

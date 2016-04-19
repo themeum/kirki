@@ -1,7 +1,7 @@
 /**
  * KIRKI CONTROL: DROPDOWN-PAGES
  */
-wp.customize.controlConstructor['dropdown-pages'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-dropdown-pages'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {

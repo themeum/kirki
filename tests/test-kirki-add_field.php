@@ -73,11 +73,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global']
 		);
@@ -114,11 +115,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_option_name[my_setting_test]']
 		);
@@ -167,11 +169,12 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global']
 		);
@@ -215,13 +218,120 @@ class Test_Kirki_Add_Field extends WP_UnitTestCase {
 				'multiple'          => 1,
 				'description'       => '',
 				'fields'            => array(),
-				'width'          	=> 150,
-				'height'         	=> 150,
+				'width'             => 150,
+				'height'            => 150,
 				'flex_width'        => false,
 				'flex_height'       => false,
 				'row_label'         => array(),
+				'mime_type'         => '',
 			),
 			Kirki::$fields['my_setting_global45']
+		);
+
+	}
+
+	public function test_spacing_field() {
+
+		Kirki::add_field( 'global', array(
+			'settings' => 'spacing_field',
+			'section'  => 'my_section',
+			'type'     => 'text',
+			'priority' => 10,
+			'default'  => array(
+				'top'    => '1.5em',
+				'bottom' => '10px',
+				'left'   => '40%',
+				'right'  => '2rem',
+			),
+		) );
+
+		$this->assertEquals(
+			array(
+				'settings'          => 'spacing_field',
+				'section'           => 'my_section',
+				'type'              => 'kirki-generic',
+				'priority'          => 10,
+				'default'  => array(
+					'top'    => '1.5em',
+					'bottom' => '10px',
+					'left'   => '40%',
+					'right'  => '2rem',
+				),
+				'kirki_config'      => 'global',
+				'option_name'       => '',
+				'option_type'       => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'disable_output'    => false,
+				'tooltip'           => '',
+				'active_callback'   => '__return_true',
+				'choices'           => array(),
+				'output'            => array(),
+				'variables'         => array(),
+				'id'                => 'spacing_field',
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'esc_textarea',
+				'choices'           => array(
+					'element' => 'input',
+					'type'    => 'text',
+				),
+				'js_vars'           => array(),
+				'help'              => '',
+				'mode'              => '',
+				'required'          => array(),
+				'multiple'          => 1,
+				'description'       => '',
+				'fields'            => array(),
+				'width'             => 150,
+				'height'            => 150,
+				'flex_width'        => false,
+				'flex_height'       => false,
+				'row_label'         => array(),
+				'label'             => '',
+				'mime_type'         => '',
+			),
+			Kirki::$fields['spacing_field']
+		);
+
+		$this->assertEquals(
+			array(
+				'settings'          => 'my_option_name[my_setting_test]',
+				'label'             => 'My custom control',
+				'section'           => 'my_section',
+				'type'              => 'kirki-generic',
+				'priority'          => 10,
+				'default'           => 'some-default-value',
+				'kirki_config'      => 'test',
+				'option_name'       => 'my_option_name',
+				'option_type'       => 'option',
+				'capability'        => 'manage_network_options',
+				'disable_output'    => true,
+				'tooltip'           => '',
+				'active_callback'   => '__return_true',
+				'choices'           => array(),
+				'output'            => array(),
+				'variables'         => array(),
+				'id'                => 'my_option_name-my_setting_test',
+				'sanitize_callback' => 'esc_textarea',
+				'transport'         => 'refresh',
+				'choices'           => array(
+					'element' => 'input',
+					'type'    => 'text',
+				),
+				'js_vars'           => array(),
+				'help'              => '',
+				'mode'              => '',
+				'required'          => array(),
+				'multiple'          => 1,
+				'description'       => '',
+				'fields'            => array(),
+				'width'             => 150,
+				'height'            => 150,
+				'flex_width'        => false,
+				'flex_height'       => false,
+				'row_label'         => array(),
+				'mime_type'         => '',
+			),
+			Kirki::$fields['my_option_name[my_setting_test]']
 		);
 
 	}

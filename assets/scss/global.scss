@@ -163,7 +163,11 @@ input {
 /////////////////////
 // text controls
 /////////////////////
-input[type="text"] {
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="url"],
+input[type="tel"] {
     border: 1px solid rgba(0,0,0,0.1);
 	background-image: none;
 	background-position: 0% 0%;

@@ -25,6 +25,9 @@
 			}
 
 			.repeater-field {
+				&.repeater-field- {
+					display: none;
+				}
 				&.repeater-field-radio-image {
 					input {
 						img {
@@ -154,6 +157,18 @@
 	margin-bottom: 10px;
 	img{
 		display:inline-block;
+	}
+}
+
+.kirki-file-attachment{
+	margin: 0;
+	text-align:center;
+	margin-bottom: 10px;
+	.file{
+		display: block;
+	    padding: 10px 5px;
+	    border: 1px dotted #c3c3c3;
+	    background: #f9f9f9;
 	}
 }
 

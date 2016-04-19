@@ -64,13 +64,12 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 
 			// Enqueue the reset script.
-			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-value' ) );
+			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
 
 			// Register kirki-functions.
-			wp_register_script( 'kirki-array-to-object', trailingslashit( Kirki::$url ) . 'assets/js/functions/array-to-object.js' );
-			wp_register_script( 'kirki-object-to-array', trailingslashit( Kirki::$url ) . 'assets/js/functions/object-to-array.js' );
-			wp_register_script( 'kirki-set-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-value.js' );
+			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
+			wp_register_script( 'kirki-rebuild-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/rebuild-value.js' );
 
 			// Register serialize.js.
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
@@ -104,18 +103,18 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'number'          => array( 'jquery', 'customize-base', 'jquery-ui-spinner' ),
 				'palette'         => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
-				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-value' ),
+				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ),
 				'radio-buttonset' => array( 'jquery', 'customize-base' ),
 				'radio-image'     => array( 'jquery', 'customize-base' ),
 				'radio'           => array( 'jquery', 'customize-base' ),
 				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ),
-				'select'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-array-to-object' ),
+				'select'          => array( 'jquery', 'customize-base', 'selectize' ),
 				'slider'          => array( 'jquery', 'customize-base' ),
 				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
-				'spacing'         => array( 'jquery', 'customize-base' ),
+				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
-				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
+				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
 			);
 			foreach ( $controls_scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
@@ -217,7 +216,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 * The rest is handled via JS.
 		 */
 		public function postmessage() {
-			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), time(), true );
+			wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), false, true );
 			$js_vars_fields = array();
 			$fields = Kirki::$fields;
 			foreach ( $fields as $field ) {

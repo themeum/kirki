@@ -7,7 +7,7 @@ wp.customize.controlConstructor.code = wp.customize.Control.extend({
 	ready: function() {
 
 		var control  = this,
-		    element  = control.container.find( '#kirki-codemirror-editor-' + control.id ),
+		    element  = control.container.find( '.kirki-codemirror-editor' ),
 		    language = control.params.choices.language,
 		    editor;
 

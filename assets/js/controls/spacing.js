@@ -6,24 +6,20 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 	ready: function() {
 
 		var control = this,
-		    compiledValue = {};
+		    value = {};
 
-		jQuery.each( ['top', 'bottom', 'left', 'right'], function( index, dimension ) {
+		_.each( ['top', 'bottom', 'left', 'right'], function( dimension, index ) {
 
 			// Get initial values and pre-populate the object.
 			if ( control.container.has( '.' + dimension ).size() ) {
 
-				compiledValue[ dimension ] = control.setting._value[ dimension ];
+				value[ dimension ] = control.setting._value[ dimension ];
 
 				// Validate the value and show a warning if it's invalid.
 				jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
 				if ( false === kirkiValidateCSSValue( control.setting._value[ dimension ] ) ) {
 					jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
 				}
-
-			}
-
-			if ( control.container.has( '.' + dimension ).size() ) {
 
 				control.container.on( 'change keyup paste', '.' + dimension + ' input', function() {
 
@@ -39,8 +35,11 @@ wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
 						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
 
 						// Only proceed if value is valid.
-						compiledValue[ dimension ] = subValue;
-						control.setting.set( compiledValue );
+						value[ dimension ] = subValue;
+						control.setting.set( value );
+
+						// Refresh the preview.
+						// The `postMessage` implementation is still incomplete for this field.
 						wp.customize.previewer.refresh();
 
 					}

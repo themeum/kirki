@@ -25,3 +25,8 @@ _site
 ############
 vendor
 composer.lock
+
+# SVN #
+#######
+.svn
+svn
