@@ -188,6 +188,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 * @return string    The generated CSS.
 		 */
 		public static function styles_parse( $css = array() ) {
+			
+			// Pass our styles from the kirki/styles_array filter.
+			$css = apply_filters( 'kirki/styles_array', $css );
 
 			// Process the array of CSS properties and produce the final CSS.
 			$final_css = '';
