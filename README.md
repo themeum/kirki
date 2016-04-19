@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 2.3.0  
+**Stable tag:** 2.3.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -43,8 +43,16 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * FIX: Output property ignored in multicolor field.
 * FIX: Image sub-controls in repeaters were causing a JS error.
 * FIX: Text Domain Compliance with Themecheck.
-* FIX: postMessage scripts when using more than 1 elements for the output.
-* FIX: default values for swithes, toggles & checkboxes.
+* FIX: PostMessage scripts when using more than 1 elements for the output.
+* FIX: Default values for swithes, toggles & checkboxes.
+* FIX: Conflict with WP Core's `dropdown-pages` control.
+* FIX: Auto-transport not working when using serialized options instead of theme_mods.
+* FIX: `value_pattern` was not working properly when used in `js_vars`.
+* FIX: Repeater control bugfixes (props @guillaumemolter).
+* FIX: multi-selects saving single value.
+* NEW: Added support for `upload` controls in repeaters (props @guillaumemolter).
+* NEW: Adding mime_type parameter for image, cropped_image, upload controls in repeaters (props @guillaumemolter).
+* NEW: Added color-picker support in repeater fields (props @guillaumemolter).
 
 ### 2.3.0 ###
 
