@@ -299,9 +299,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 
 				// Are we force-loading all variants?
 				if ( true === self::$force_load_all_variants ) {
-
-					if ( isset( $this->fonts[ $font ]['variants'] ) ) {
-						$variants = $this->fonts[ $font ]['variants'];
+					if ( isset( $this->google_fonts[ $font ]['variants'] ) ) {
+						$variants = $this->google_fonts[ $font ]['variants'];
 					}
 				}
 				$variants = implode( ',', $variants );
@@ -316,8 +315,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			// Are we force-loading all subsets?
 			if ( true === self::$force_load_all_subsets ) {
 
-				if ( isset( $this->fonts[ $font ]['subsets'] ) ) {
-					foreach ( $this->fonts[ $font ]['subsets'] as $subset ) {
+				if ( isset( $this->google_fonts[ $font ]['subsets'] ) ) {
+					foreach ( $this->google_fonts[ $font ]['subsets'] as $subset ) {
 						$this->subsets[] = $subset;
 					}
 				}
