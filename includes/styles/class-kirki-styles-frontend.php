@@ -98,7 +98,7 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
 				foreach ( $configs as $config_id => $args ) {
-					if ( true === $args['disable_output'] ) {
+					if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
 						continue;
 					}
 					$styles = self::loop_controls( $config_id );
