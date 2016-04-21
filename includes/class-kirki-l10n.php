@@ -207,6 +207,8 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'lowercase'             => esc_attr__( 'Lowercase', 'kirki' ),
 				'initial'               => esc_attr__( 'Initial', 'kirki' ),
 				'select-page'           => esc_attr__( 'Select a Page', 'kirki' ),
+				'open-editor'           => esc_attr__( 'Open Editor', 'kirki' ),
+				'close-editor'          => esc_attr__( 'Close Editor', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

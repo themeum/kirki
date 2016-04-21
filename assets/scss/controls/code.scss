@@ -3,6 +3,49 @@
 /////////////////////
 /* BASICS */
 
+.customize-control-code {
+    a.close {
+        display: none;
+    }
+    .CodeMirror {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        opacity: .9;
+        z-index: 9998;
+        width: 100%;
+        -webkit-transition: all 250ms ease-in-out;
+        -moz-transition: all 250ms ease-in-out;
+        -ms-transition: all 250ms ease-in-out;
+        -o-transition: all 250ms ease-in-out;
+        transition: all 250ms ease-in-out;
+    }
+    .kirki-codemirror-editor {
+        &.collapsed {
+        }
+        &.expanded {
+            + .CodeMirror {
+                left: 0;
+
+                + a.close {
+                    display: block;
+                    position: fixed;
+                    right: 0;
+                    top: 0;
+                    opacity: .9;
+                    z-index: 9999;
+                    background: #fff;
+                    background: rgba(255,255,255,.85);
+                    color: #333;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;

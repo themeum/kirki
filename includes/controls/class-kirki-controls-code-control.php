@@ -38,16 +38,17 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		 * @access public
 		 */
 		public function to_json() {
-			parent::to_json();
+			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
 			if ( ! isset( $this->choices['language'] ) ) {
 				$this->choices['language'] = 'css';
 			}
 			if ( ! isset( $this->choices['theme'] ) ) {
 				$this->choices['theme'] = 'monokai';
 			}
-			if ( ! isset( $this->choices['height'] ) ) {
-				$this->choices['height'] = 200;
+			if ( ! isset( $this->choices['label'] ) ) {
+				$this->choices['label'] = $l10n['open-editor'];
 			}
+			parent::to_json();
 		}
 
 		/**
@@ -119,7 +120,12 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<textarea class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
+				<a href="#" class="button edit button-primary">{{ data.choices.label }}</a>
+				<textarea class="kirki-codemirror-editor collapsed">{{{ data.value }}}</textarea>
+				<a href="#" class="close">
+					<span class="dashicons dashicons-no"></span>
+					<span class="screen-reader-text">{{ data.i18n['close-editor'] }}</span>
+				</a>
 			</label>
 			<?php
 		}
