@@ -1,38 +1,42 @@
 /**
  * KIRKI CONTROL: EDITOR
  */
-( function( $ ) {
-	wp.customizerCtrlEditor = {
-		init: function() {
-			$( window ).load( function() {
-				$( 'textarea.wp-editor-area' ).each( function() {
-					var tArea  = $( this ),
-					    id     = tArea.attr( 'id' ),
-						editor = tinyMCE.get( id ),
-						setChange,
-						content;
+wp.customize.controlConstructor.editor = wp.customize.Control.extend({
 
-					if ( editor ) {
-						editor.onChange.add( function( ed, e ) {
-							ed.save();
-							content = editor.getContent();
-							clearTimeout( setChange );
-							setChange = setTimeout( function() {
-								tArea.val( content ).trigger( 'change' );
-							}, 500 );
-						});
-					}
+	// When we're finished loading continue processing
+	ready: function() {
 
-					tArea.css({ visibility: 'visible' }).on( 'keyup', function() {
-						content = tArea.val();
-						clearTimeout( setChange );
-						setChange = setTimeout( function() {
-							content.trigger( 'change' );
-						}, 500 );
-					});
+		var control = this;
+
+		jQuery( window ).load( function() {
+
+			var element    = control.container.find( 'textarea.wp-editor-area' ),
+				textareaID = element.attr( 'id' ),
+				editor     = tinyMCE.get( textareaID ),
+				setChange,
+				content;
+
+			if ( editor ) {
+				editor.onChange.add( function( ed, e ) {
+					ed.save();
+					content = editor.getContent();
+					clearTimeout( setChange );
+					setChange = setTimeout( function() {
+						element.val( content ).trigger( 'change' );
+					}, 500 );
 				});
+			}
+
+			element.css({ visibility: 'visible' }).on( 'keyup', function() {
+				content = element.val();
+				clearTimeout( setChange );
+				setChange = setTimeout( function() {
+					content.trigger( 'change' );
+				}, 500 );
 			});
-		}
-	};
-	wp.customizerCtrlEditor.init();
-})( jQuery );
+
+		});
+
+	}
+
+});
