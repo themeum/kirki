@@ -100,7 +100,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'editor'          => array( 'jquery', 'customize-base' ),
 				'generic'         => array( 'jquery', 'customize-base' ),
 				'multicheck'      => array( 'jquery', 'customize-base' ),
-				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
+				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
 				'number'          => array( 'jquery', 'customize-base', 'jquery-ui-spinner' ),
 				'palette'         => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ),

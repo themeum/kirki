@@ -29,7 +29,7 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 						value[ subSetting ] = picker.val();
 
 						// Set the value
-						control.setting.set( value );
+						control.setValue( value, false );
 
 						// Trigger the change
 						control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
@@ -68,7 +68,7 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 	 * @param refresh If we want to refresh the previewer or not
 	 */
 	setValue: function( newValue, refresh ) {
-		this.setting.set( newValue );
+		this.setting.set( kirkiRebuildValue( newValue ) );
 
 		if ( refresh ) {
 
