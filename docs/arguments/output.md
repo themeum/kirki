@@ -51,5 +51,5 @@ Kirki::add_field( 'my_config', array(
 * `units`: (**string**) The value entered here will be appended to the value of the field (for example `px`, `em`, `rem` etc.)
 * `suffix`: (**string**) The value entered here will be appended to the value of the field **after** the `suffix`. Example: ` !important`.
 * `media_query`: (**string**) Allows you to define a custom CSS media query for this output. Example: `@media (max-width: 600px)`.
-* `exclude`: (**string**) Define a value that will be excluded. If your example you use `'exclude' => '14',` then if the value of the field is 14, the field will not output any CSS.
+* `exclude`: (**array**) Define a value that will be excluded. If your example you use `'exclude' => array( '14', '17' ),` then if the value of the field is 14 or 17, the field will not output any CSS.
 * `value_pattern`: (**string**) Define a value pattern you want to use. you can use this to calculate complex CSS values, and use the dollar sign ( `$` ) as a placeholder for the value. Example: `'value_pattern' => 'calc(100% - $em)'` or `'value_pattern' => '10px 0 0 $'` or `'value_pattern' => '10px 0 0 $, -10px 0 0 $'`
