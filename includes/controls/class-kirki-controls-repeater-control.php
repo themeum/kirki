@@ -126,8 +126,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					$media_fields_to_filter[ $key ] = true;
 				}
 
-				//If the field is a dropdown-pages field then add it to args
-				if( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
+				// If the field is a dropdown-pages field then add it to args.
+				if ( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
 
 					$l10n = Kirki_l10n::get_strings();
 					$dropdown = wp_dropdown_pages(
@@ -145,7 +145,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 					$args['fields'][ $key ]['dropdown'] = $dropdown;
 				}
-
 			}
 
 			$this->fields = $args['fields'];

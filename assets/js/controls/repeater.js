@@ -786,18 +786,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} data the data for the row if we're initializing a pre-existing row
 	 *
 	 */
-	initDropdownPages: function( theNewRow, data ) {
+	initDropdownPages: function ( theNewRow, data ) {
+		var control = this,
+			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
+			$select = jQuery( dropdown ).selectize(),
+			selectize = $select[0].selectize,
+			dataField = dropdown.data( 'field' );
 
-		if(data) {
-			var control = this,
-				dropdown = theNewRow.container.find('.repeater-dropdown-pages select'),
-				$select = jQuery( dropdown ).selectize(),
-				selectize = $select[0].selectize,
-				dataField = dropdown.data( 'field' );
-			selectize.setValue(data[dataField]);
+		if ( data ) {
+			selectize.setValue( data[dataField] );
 		}
 
-		this.container.on( 'change', '.repeater-dropdown-pages select', function(event) {
+		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
 			var currentDropdown = jQuery( event.target ),
 				row = currentDropdown.closest( '.repeater-row' ),
 				rowIndex = row.data( 'row' ),
