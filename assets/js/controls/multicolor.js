@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: MULTICOLOR
- */
-wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
 
 	ready: function() {
 

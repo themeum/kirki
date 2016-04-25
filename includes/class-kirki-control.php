@@ -108,7 +108,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-dashicons'      => 'Kirki_Controls_Dashicons_Control',
 				'kirki-dimension'      => 'Kirki_Controls_Dimension_Control',
 				'kirki-editor'         => 'Kirki_Controls_Editor_Control',
-				'multicolor'           => 'Kirki_Controls_Multicolor_Control',
+				'kirki-multicolor'     => 'Kirki_Controls_Multicolor_Control',
 				'kirki-multicheck'     => 'Kirki_Controls_MultiCheck_Control',
 				'number'               => 'Kirki_Controls_Number_Control',
 				'palette'              => 'Kirki_Controls_Palette_Control',

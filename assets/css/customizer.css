@@ -672,29 +672,29 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-color .wp-picker-container a.wp-color-result:focus:after, .customize-control-kirki-color .wp-picker-container a.wp-color-result:hover:after {
       color: #fff; }
 
-.customize-control-multicolor .multicolor-group-wrapper {
+.customize-control-kirki-multicolor .multicolor-group-wrapper {
   display: flex; }
-  .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
+  .customize-control-kirki-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
     width: 100%; }
-    .customize-control-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper label {
+    .customize-control-kirki-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper label {
       display: block;
       text-align: center;
       padding: 3px; }
-  .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container {
+  .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container {
     width: 100%; }
-    .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result {
+    .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result {
       width: 100%;
       height: 30px;
       padding-left: 0;
       border-radius: 0;
       border: none;
       margin-right: 0; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result > span {
+      .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result > span {
         border-top-left-radius: 0 !important;
         border-bottom-left-radius: 0 !important;
         border-top-right-radius: 0 !important;
         border-bottom-right-radius: 0 !important; }
-      .customize-control-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result:after {
+      .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container a.wp-color-result:after {
         display: none; }
 
 .customize-control-kirki-color-palette label {

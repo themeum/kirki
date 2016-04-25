@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Multicolor_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'multicolor';
+		public $type = 'kirki-multicolor';
 
 		/**
 		 * Color Palette.
