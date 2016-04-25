@@ -118,7 +118,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-radio-image'     => 'Kirki_Controls_Radio_Image_Control',
 				'repeater'              => 'Kirki_Controls_Repeater_Control',
 				'kirki-select'          => 'Kirki_Controls_Select_Control',
-				'slider'                => 'Kirki_Controls_Slider_Control',
+				'kirki-slider'          => 'Kirki_Controls_Slider_Control',
 				'sortable'              => 'Kirki_Controls_Sortable_Control',
 				'spacing'               => 'Kirki_Controls_Spacing_Control',
 				'switch'                => 'Kirki_Controls_Switch_Control',

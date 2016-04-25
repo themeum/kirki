@@ -1299,7 +1299,7 @@ span.CodeMirror-selectedtext {
   overflow-x: hidden;
   max-height: 200px; }
 
-.customize-control-slider input[type=range] {
+.customize-control-kirki-slider input[type=range] {
   -webkit-appearance: none;
   -webkit-transition: background .3s;
   -moz-transition: background .3s;
@@ -1308,56 +1308,56 @@ span.CodeMirror-selectedtext {
   height: 5px;
   width: calc(100% - 70px);
   padding: 0; }
-  .customize-control-slider input[type=range]:focus {
+  .customize-control-kirki-slider input[type=range]:focus {
     box-shadow: none;
     outline: none; }
-  .customize-control-slider input[type=range]:hover {
+  .customize-control-kirki-slider input[type=range]:hover {
     background-color: rgba(0, 0, 0, 0.25); }
-  .customize-control-slider input[type=range]::-webkit-slider-thumb {
+  .customize-control-kirki-slider input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     background-color: #3498D9; }
-  .customize-control-slider input[type=range]::-webkit-slider-thumb {
+  .customize-control-kirki-slider input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 15px;
     height: 15px;
     border: none;
     border-radius: 50%;
     background-color: #3498D9; }
-  .customize-control-slider input[type=range]::-moz-range-thumb {
+  .customize-control-kirki-slider input[type=range]::-moz-range-thumb {
     width: 15px;
     height: 15px;
     border: none;
     border-radius: 50%;
     background-color: #3498D9; }
-  .customize-control-slider input[type=range]::-ms-thumb {
+  .customize-control-kirki-slider input[type=range]::-ms-thumb {
     width: 15px;
     height: 15px;
     border-radius: 50%;
     border: 0;
     background-color: #3498D9; }
-  .customize-control-slider input[type=range]::-moz-range-track {
+  .customize-control-kirki-slider input[type=range]::-moz-range-track {
     border: inherit;
     background: transparent; }
-  .customize-control-slider input[type=range]::-ms-track {
+  .customize-control-kirki-slider input[type=range]::-ms-track {
     border: inherit;
     color: transparent;
     background: transparent; }
-  .customize-control-slider input[type=range]::-ms-fill-lower, .customize-control-slider input[type=range]::-ms-fill-upper {
+  .customize-control-kirki-slider input[type=range]::-ms-fill-lower, .customize-control-kirki-slider input[type=range]::-ms-fill-upper {
     background: transparent; }
-  .customize-control-slider input[type=range]::-ms-tooltip {
+  .customize-control-kirki-slider input[type=range]::-ms-tooltip {
     display: none; }
-.customize-control-slider .kirki_range_value {
+.customize-control-kirki-slider .kirki_range_value {
   display: inline-block;
   font-size: 14px;
   padding: 0 5px;
   font-weight: 400;
   position: relative;
   top: 2px; }
-.customize-control-slider .kirki-slider-reset {
+.customize-control-kirki-slider .kirki-slider-reset {
   color: rgba(0, 0, 0, 0.2);
   float: right;
   -webkit-transition: color .5s ease-in;
@@ -1365,10 +1365,10 @@ span.CodeMirror-selectedtext {
   -ms-transition: color .5s ease-in;
   -o-transition: color .5s ease-in;
   transition: color .5s ease-in; }
-  .customize-control-slider .kirki-slider-reset span {
+  .customize-control-kirki-slider .kirki-slider-reset span {
     font-size: 16px;
     line-height: 22px; }
-  .customize-control-slider .kirki-slider-reset:hover {
+  .customize-control-kirki-slider .kirki-slider-reset:hover {
     color: red; }
 
 .customize-control-sortable ul.ui-sortable li {

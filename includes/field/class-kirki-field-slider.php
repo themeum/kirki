@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Slider' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'slider';
+			$this->type = 'kirki-slider';
 
 		}
 
