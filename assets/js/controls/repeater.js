@@ -104,6 +104,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				theNewRow = control.addRow();
 				theNewRow.toggleMinimize();
 				control.initColorPicker();
+				control.initDropdownPages( theNewRow );
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
@@ -162,8 +163,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// This is the first time that we create all the rows
 		if ( settingValue.length ) {
 			_.each( settingValue, function( subValue ) {
-				control.addRow( subValue );
+				theNewRow = control.addRow( subValue );
 				control.initColorPicker();
+				control.initDropdownPages( theNewRow, subValue );
 			});
 		}
 
@@ -774,6 +776,36 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( 0 !== colorPicker.length ) {
 			colorPicker.wpColorPicker( options );
 		}
+	},
+
+	/**
+	 * Init the dropdown-pages field with selectize
+	 * Called after AddRow
+	 *
+	 * @param {object} theNewRow the row that was added to the repeater
+	 * @param {object} data the data for the row if we're initializing a pre-existing row
+	 *
+	 */
+	initDropdownPages: function( theNewRow, data ) {
+
+		if(data) {
+			var control = this,
+				dropdown = theNewRow.container.find('.repeater-dropdown-pages select'),
+				$select = jQuery( dropdown ).selectize(),
+				selectize = $select[0].selectize,
+				dataField = dropdown.data( 'field' );
+			selectize.setValue(data[dataField]);
+		}
+
+		this.container.on( 'change', '.repeater-dropdown-pages select', function(event) {
+			var currentDropdown = jQuery( event.target ),
+				row = currentDropdown.closest( '.repeater-row' ),
+				rowIndex = row.data( 'row' ),
+				currentSettings = control.getValue();
+
+			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
+			control.setValue( currentSettings );
+		});
 	}
 
 });

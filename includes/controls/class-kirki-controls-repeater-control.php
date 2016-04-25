@@ -125,6 +125,27 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					// We add it to the list of fields that need some extra filtering/processing.
 					$media_fields_to_filter[ $key ] = true;
 				}
+
+				//If the field is a dropdown-pages field then add it to args
+				if( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
+
+					$l10n = Kirki_l10n::get_strings();
+					$dropdown = wp_dropdown_pages(
+						array(
+							'name'              => '',
+							'echo'              => 0,
+							'show_option_none'  => esc_attr( $l10n['select-page'] ),
+							'option_none_value' => '0',
+							'selected'          => '',
+						)
+					);
+
+					// Hackily add in the data link parameter.
+					$dropdown = str_replace( '<select', '<select data-field="'.esc_attr( $args['fields'][ $key ]['id'] ).'"' . $this->get_link(), $dropdown );
+
+					$args['fields'][ $key ]['dropdown'] = $dropdown;
+				}
+
 			}
 
 			$this->fields = $args['fields'];
@@ -175,6 +196,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					}
 				}
 			}
+
 		}
 
 		/**
@@ -194,6 +216,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 				$this->json['value'] = $this->filtered_value;
 			}
+
 		}
 
 		/**
@@ -209,6 +232,13 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					if ( isset( $field['type'] ) && 'color' === $field['type'] ) {
 						wp_enqueue_script( 'wp-color-picker' );
 						wp_enqueue_style( 'wp-color-picker' );
+						break;
+					}
+				}
+
+				foreach ( $this->fields as $field ) {
+					if ( isset( $field['type'] ) && 'dropdown-pages' === $field['type'] ) {
+						wp_enqueue_script( 'kirki-dropdown-pages' );
 						break;
 					}
 				}
@@ -264,7 +294,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			<script type="text/html" class="customize-control-repeater-content">
 				<# var field; var index = data.index; #>
 
-
 				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
 					<div class="repeater-row-header">
@@ -315,6 +344,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 												<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ choice }}</option>
 											<# }); #>
 										</select>
+									</label>
+
+								<# } else if ( 'dropdown-pages' === field.type ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{{ data.label }}}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{{ field.description }}}</span>
+										<# } #>
+										<div class="customize-control-content repeater-dropdown-pages">{{{ field.dropdown }}}</div>
 									</label>
 
 								<# } else if ( 'radio' === field.type ) { #>
