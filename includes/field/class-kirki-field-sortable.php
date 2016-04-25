@@ -9,12 +9,12 @@
  * @since       2.3.2
  */
 
-if ( ! class_exists( 'Kirki_Field_Dimension' ) ) {
+if ( ! class_exists( 'Kirki_Field_Sortable' ) ) {
 
 	/**
 	 * Field overrides.
 	 */
-	class Kirki_Field_Dimension extends Kirki_Field {
+	class Kirki_Field_Sortable extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -23,8 +23,9 @@ if ( ! class_exists( 'Kirki_Field_Dimension' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'kirki-dimension';
+			$this->type = 'kirki-sortable';
 
 		}
+
 	}
 }

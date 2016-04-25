@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'sortable';
+		public $type = 'kirki-sortable';
 
 		/**
 		 * Constructor.
