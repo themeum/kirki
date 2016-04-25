@@ -124,11 +124,11 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-switch'          => 'Kirki_Controls_Switch_Control',
 				'kirki-generic'         => 'Kirki_Controls_Generic_Control',
 				'kirki-toggle'          => 'Kirki_Controls_Toggle_Control',
-				'typography'            => 'Kirki_Controls_Typography_Control',
+				'kirki-typography'      => 'Kirki_Controls_Typography_Control',
+				'kirki-dropdown-pages'  => 'Kirki_Controls_Dropdown_Pages_Control',
 				'image'                 => 'WP_Customize_Image_Control',
 				'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
 				'upload'                => 'WP_Customize_Upload_Control',
-				'kirki-dropdown-pages'  => 'Kirki_Controls_Dropdown_Pages_Control',
 			) );
 
 			// Make sure the defined classes actually exist.

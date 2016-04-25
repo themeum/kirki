@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'typography';
+		public $type = 'kirki-typography';
 
 		/**
 		 * Enqueue control related scripts/styles.

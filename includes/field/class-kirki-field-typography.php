@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'typography';
+			$this->type = 'kirki-typography';
 
 		}
 
