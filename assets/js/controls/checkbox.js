@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: CHECKBOX
- */
 wp.customize.controlConstructor['kirki-checkbox'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing

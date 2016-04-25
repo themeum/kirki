@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: SLIDER
- */
 jQuery( document ).ready(function() {
 
 	// Update the text value

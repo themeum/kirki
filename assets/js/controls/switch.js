@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: SWITCH
- */
 wp.customize.controlConstructor['switch'] = wp.customize.Control.extend({
 
 	ready: function() {

@@ -1,8 +1,4 @@
 /*jshint -W065 */
-/**
- * KIRKI CONTROL: REPEATER
- */
-
 var RepeaterRow = function( rowIndex, container, label ) {
 	var self        = this;
 

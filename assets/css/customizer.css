@@ -238,7 +238,6 @@ input[type="tel"] {
   .customize-control-repeater input[type="checkbox"]:checked:after {
     background: #fff; }
 
-/* BASICS */
 .customize-control-kirki-code a.close {
   display: none; }
 .customize-control-kirki-code .CodeMirror {

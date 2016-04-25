@@ -1,7 +1,4 @@
 /*jshint -W065 */
-/**
- * KIRKI CONTROL: KIRKI-SELECT
- */
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 	ready: function() {
