@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: NUMBER
- */
-wp.customize.controlConstructor.number = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 
 	ready: function() {
 		var control = this,

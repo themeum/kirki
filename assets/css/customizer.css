@@ -813,9 +813,9 @@ span.CodeMirror-selectedtext {
 .customize-control-kirki-dimension .input-wrapper.invalid input[type="text"]:focus {
   border-color: #D32F2F; }
 
-.customize-control-number .ui-spinner.ui-widget-content {
+.customize-control-kirki-number .ui-spinner.ui-widget-content {
   position: relative; }
-  .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button {
+  .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button {
     position: absolute;
     right: 0;
     color: rgba(0, 0, 0, 0.3);
@@ -830,21 +830,21 @@ span.CodeMirror-selectedtext {
     background: transparent;
     background: none;
     margin: 0; }
-    .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button .ui-button-text {
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button .ui-button-text {
       display: none; }
-    .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before, .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before {
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before, .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before {
       font-family: dashicons;
       position: absolute;
       left: 0; }
-    .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up {
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up {
       top: -50%; }
-      .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before {
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before {
         content: "\f343"; }
-    .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down {
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down {
       top: 50%; }
-      .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before {
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before {
         content: "\f347"; }
-    .customize-control-number .ui-spinner.ui-widget-content .ui-spinner-button:hover {
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button:hover {
       color: rgba(0, 0, 0, 0.7); }
 
 .customize-control-palette input[type="radio"] {
