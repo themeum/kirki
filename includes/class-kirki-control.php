@@ -102,7 +102,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-checkbox'       => 'Kirki_Controls_Checkbox_Control',
 				'kirki-code'           => 'Kirki_Controls_Code_Control',
 				'kirki-color'          => 'Kirki_Controls_Color_Control',
-				'color-palette'        => 'Kirki_Controls_Color_Palette_Control',
+				'kirki-color-palette'  => 'Kirki_Controls_Color_Palette_Control',
 				'custom'               => 'Kirki_Controls_Custom_Control',
 				'kirki-date'           => 'Kirki_Controls_Date_Control',
 				'dashicons'            => 'Kirki_Controls_Dashicons_Control',
