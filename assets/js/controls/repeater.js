@@ -788,8 +788,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	initDropdownPages: function( theNewRow, data ) {
 		var control = this,
-			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
-			$select = jQuery( dropdown ).selectize(),
+			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' );
+
+		if ( dropdown.length === 0 ) {
+			return;
+		}
+
+		var $select = jQuery( dropdown ).selectize(),
 			selectize = $select[0].selectize,
 			dataField = dropdown.data( 'field' );
 
