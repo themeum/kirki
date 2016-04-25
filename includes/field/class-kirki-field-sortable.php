@@ -26,6 +26,5 @@ if ( ! class_exists( 'Kirki_Field_Sortable' ) ) {
 			$this->type = 'kirki-sortable';
 
 		}
-
 	}
 }
