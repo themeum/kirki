@@ -129,7 +129,7 @@ function kirkiSetSettingValue( setting, value ) {
 	 * Control types:
 	 *     multicheck
 	 */
-	else if ( 'multicheck' === controlType ) {
+	else if ( 'kirki-multicheck' === controlType ) {
 
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
