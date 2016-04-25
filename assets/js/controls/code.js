@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: CODE
- */
 wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing

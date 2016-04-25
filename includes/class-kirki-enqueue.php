@@ -91,7 +91,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			$controls_scripts = array(
 				'checkbox'        => array( 'jquery', 'customize-base' ),
 				'code'            => array( 'jquery', 'customize-base', 'codemirror' ),
-				'color-alpha'     => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
+				'color'           => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
 				'date'            => array( 'jquery', 'customize-base', 'jquery-ui', 'jquery-ui-datepicker' ),

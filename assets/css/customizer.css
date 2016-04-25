@@ -656,20 +656,20 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext {
   background: none; }
 
-.customize-control-color-alpha .wp-picker-container {
+.customize-control-kirki-color .wp-picker-container {
   width: 100%; }
-  .customize-control-color-alpha .wp-picker-container a.wp-color-result {
+  .customize-control-kirki-color .wp-picker-container a.wp-color-result {
     width: auto;
     display: block;
     border: none;
     padding-left: 40px; }
-    .customize-control-color-alpha .wp-picker-container a.wp-color-result:after {
+    .customize-control-kirki-color .wp-picker-container a.wp-color-result:after {
       background: rgba(0, 0, 0, 0.25);
       color: #fff;
       border: none;
       -webkit-box-shadow: none;
       box-shadow: none; }
-    .customize-control-color-alpha .wp-picker-container a.wp-color-result:focus:after, .customize-control-color-alpha .wp-picker-container a.wp-color-result:hover:after {
+    .customize-control-kirki-color .wp-picker-container a.wp-color-result:focus:after, .customize-control-kirki-color .wp-picker-container a.wp-color-result:hover:after {
       color: #fff; }
 
 .customize-control-multicolor .multicolor-group-wrapper {

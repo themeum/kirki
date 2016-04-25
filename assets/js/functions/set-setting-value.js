@@ -110,10 +110,8 @@ function kirkiSetSettingValue( setting, value ) {
 	/**
 	 * Control types:
 	 *     color
-	 *     kirki-color
-	 *     color-alpha
 	 */
-	else if ( 'color-alpha' === controlType || 'kirki-color' === controlType || 'color' === controlType ) {
+	else if ( 'kirki-color' === controlType ) {
 
 		// Update the value visually in the control
 		alphaColorControl = wp.customize.control( setting ).container.find( '.kirki-color-control' );

@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: COLOR-ALPHA
- */
-wp.customize.controlConstructor['color-alpha'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {

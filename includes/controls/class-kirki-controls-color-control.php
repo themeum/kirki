@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Control: color-alpha.
+ * Customizer Control: color.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -14,14 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
+if ( ! class_exists( 'Kirki_Controls_Color_Control' ) ) {
 
 	/**
 	 * Adds a color & color-alpha control
 	 *
 	 * @see https://github.com/23r9i0/wp-color-picker-alpha
 	 */
-	class Kirki_Controls_Color_Alpha_Control extends Kirki_Customize_Control {
+	class Kirki_Controls_Color_Control extends Kirki_Customize_Control {
 
 		/**
 		 * The control type.
@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'color-alpha';
+		public $type = 'kirki-color';
 
 		/**
 		 * Colorpicker palette
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Alpha_Control' ) ) {
 		 * @access public
 		 */
 		public function enqueue() {
-			wp_enqueue_script( 'kirki-color-alpha' );
+			wp_enqueue_script( 'kirki-color' );
 		}
 
 		/**
