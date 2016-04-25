@@ -150,7 +150,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		private function generate_google_font( $args ) {
 
 			// Process typography fields.
-			if ( isset( $args['type'] ) && 'typography' === $args['type'] ) {
+			if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
 
 				// Get the value.
 				$value = Kirki_Values::get_sanitized_field_value( $args );
