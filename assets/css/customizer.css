@@ -847,18 +847,18 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button:hover {
       color: rgba(0, 0, 0, 0.7); }
 
-.customize-control-palette input[type="radio"] {
+.customize-control-kirki-palette input[type="radio"] {
   display: none; }
-  .customize-control-palette input[type="radio"]:checked + label {
+  .customize-control-kirki-palette input[type="radio"]:checked + label {
     border: 3px solid rgba(0, 0, 0, 0.4); }
-.customize-control-palette label {
+.customize-control-kirki-palette label {
   background: none;
   padding: 0;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   margin-bottom: 5px;
   display: flex; }
-  .customize-control-palette label span {
+  .customize-control-kirki-palette label span {
     padding: 10px 0;
     flex-grow: 1;
     font-size: 0;
@@ -871,11 +871,11 @@ span.CodeMirror-selectedtext {
     transition: all 200ms ease-in-out;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    .customize-control-palette label span:first-child {
+    .customize-control-kirki-palette label span:first-child {
       border-left: 1px solid rgba(0, 0, 0, 0.1); }
-    .customize-control-palette label span:last-child {
+    .customize-control-kirki-palette label span:last-child {
       border-right: 1px solid rgba(0, 0, 0, 0.1); }
-    .customize-control-palette label span:hover {
+    .customize-control-kirki-palette label span:hover {
       padding: 10px;
       flex-grow: 3;
       min-width: 60px;

@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: PALETTE
- */
-wp.customize.controlConstructor.palette = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-palette'] = wp.customize.Control.extend({
 
 	ready: function() {
 
