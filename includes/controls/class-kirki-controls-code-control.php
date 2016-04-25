@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'code';
+		public $type = 'kirki-code';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.

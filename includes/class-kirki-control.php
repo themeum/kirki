@@ -100,7 +100,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 
 			$this->control_types = apply_filters( 'kirki/control_types', array(
 				'kirki-checkbox'       => 'Kirki_Controls_Checkbox_Control',
-				'code'                 => 'Kirki_Controls_Code_Control',
+				'kirki-code'           => 'Kirki_Controls_Code_Control',
 				'color-alpha'          => 'Kirki_Controls_Color_Alpha_Control',
 				'color-palette'        => 'Kirki_Controls_Color_Palette_Control',
 				'custom'               => 'Kirki_Controls_Custom_Control',

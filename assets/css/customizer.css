@@ -239,9 +239,9 @@ input[type="tel"] {
     background: #fff; }
 
 /* BASICS */
-.customize-control-code a.close {
+.customize-control-kirki-code a.close {
   display: none; }
-.customize-control-code .CodeMirror {
+.customize-control-kirki-code .CodeMirror {
   position: fixed;
   left: -100%;
   top: 0;
@@ -254,9 +254,9 @@ input[type="tel"] {
   -ms-transition: all 250ms ease-in-out;
   -o-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out; }
-.customize-control-code .kirki-codemirror-editor.expanded + .CodeMirror {
+.customize-control-kirki-code .kirki-codemirror-editor.expanded + .CodeMirror {
   left: 0; }
-  .customize-control-code .kirki-codemirror-editor.expanded + .CodeMirror + a.close {
+  .customize-control-kirki-code .kirki-codemirror-editor.expanded + .CodeMirror + a.close {
     display: block;
     position: fixed;
     right: 0;
