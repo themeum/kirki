@@ -786,7 +786,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} data the data for the row if we're initializing a pre-existing row
 	 *
 	 */
-	initDropdownPages: function ( theNewRow, data ) {
+	initDropdownPages: function( theNewRow, data ) {
 		var control = this,
 			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
 			$select = jQuery( dropdown ).selectize(),
