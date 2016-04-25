@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Image_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'radio-image';
+		public $type = 'kirki-radio-image';
 
 		/**
 		 * Enqueue control related scripts/styles.
