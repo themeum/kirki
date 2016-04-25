@@ -162,7 +162,7 @@ function kirkiSetSettingValue( setting, value ) {
 	 *     color-pallette
 	 *     palette
 	 */
-	else if ( 'radio-buttonset' === controlType || 'radio-image' === controlType || 'radio' === controlType || 'kirki-radio' === controlType || 'dashicons' === controlType || 'kirki-color-palette' === controlType || 'palette' === controlType ) {
+	else if ( 'radio-buttonset' === controlType || 'radio-image' === controlType || 'radio' === controlType || 'kirki-radio' === controlType || 'kirki-dashicons' === controlType || 'kirki-color-palette' === controlType || 'palette' === controlType ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value + '"]' ) ).prop( 'checked', true );

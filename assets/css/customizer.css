@@ -777,24 +777,24 @@ span.CodeMirror-selectedtext {
       .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled a, .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled .ui-state-default a {
         color: #999; }
 
-.customize-control-dashicons label {
+.customize-control-kirki-dashicons label {
   position: relative;
   display: inline-block; }
-.customize-control-dashicons .icons-wrapper {
+.customize-control-kirki-dashicons .icons-wrapper {
   max-height: 300px;
   overflow-y: scroll; }
-  .customize-control-dashicons .icons-wrapper h4 {
+  .customize-control-kirki-dashicons .icons-wrapper h4 {
     font-weight: 300;
     margin: .7em 0; }
-  .customize-control-dashicons .icons-wrapper .dashicons {
+  .customize-control-kirki-dashicons .icons-wrapper .dashicons {
     padding: 3px;
     font-size: 25px;
     width: 25px;
     height: 25px;
     border: 1px solid transparent; }
-  .customize-control-dashicons .icons-wrapper input {
+  .customize-control-kirki-dashicons .icons-wrapper input {
     display: none; }
-    .customize-control-dashicons .icons-wrapper input:checked + label .dashicons {
+    .customize-control-kirki-dashicons .icons-wrapper input:checked + label .dashicons {
       border: 1px solid #3498DB;
       color: #000; }
 

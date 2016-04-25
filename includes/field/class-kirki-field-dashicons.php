@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Dashicons' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'dashicons';
+			$this->type = 'kirki-dashicons';
 
 		}
 
