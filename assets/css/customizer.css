@@ -1384,29 +1384,29 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-sortable ul.ui-sortable li.invisible .dashicons.visibility {
       color: #aaa; }
 
-.customize-control-spacing .wrapper {
+.customize-control-kirki-spacing .wrapper {
   -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
   width: 96%;
   padding: 3%; }
-  .customize-control-spacing .wrapper .control {
+  .customize-control-kirki-spacing .wrapper .control {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; }
-    .customize-control-spacing .wrapper .control > div {
+    .customize-control-kirki-spacing .wrapper .control > div {
       width: 48%; }
-      .customize-control-spacing .wrapper .control > div h5 {
+      .customize-control-kirki-spacing .wrapper .control > div h5 {
         margin: 10px 0 7px 0; }
-      .customize-control-spacing .wrapper .control > div .inner {
+      .customize-control-kirki-spacing .wrapper .control > div .inner {
         display: flex; }
-        .customize-control-spacing .wrapper .control > div .inner input[type="number"] {
+        .customize-control-kirki-spacing .wrapper .control > div .inner input[type="number"] {
           width: 50%;
           height: 36px; }
-        .customize-control-spacing .wrapper .control > div .inner .selectize-control.single {
+        .customize-control-kirki-spacing .wrapper .control > div .inner .selectize-control.single {
           width: 50%; }
-          .customize-control-spacing .wrapper .control > div .inner .selectize-control.single > .selectize-input {
+          .customize-control-kirki-spacing .wrapper .control > div .inner .selectize-control.single > .selectize-input {
             height: 36px; }
-  .customize-control-spacing .wrapper .input-wrapper .invalid-value {
+  .customize-control-kirki-spacing .wrapper .input-wrapper .invalid-value {
     display: none;
     background: #D32F2F;
     font-size: .85em;
@@ -1414,11 +1414,11 @@ span.CodeMirror-selectedtext {
     float: left;
     padding: 2px 0;
     border-radius: 3px; }
-  .customize-control-spacing .wrapper .input-wrapper.invalid .invalid-value {
+  .customize-control-kirki-spacing .wrapper .input-wrapper.invalid .invalid-value {
     display: block;
     width: 98%;
     text-align: center; }
-  .customize-control-spacing .wrapper .input-wrapper.invalid input[type="text"]:focus {
+  .customize-control-kirki-spacing .wrapper .input-wrapper.invalid input[type="text"]:focus {
     border-color: #D32F2F; }
 
 .customize-control-switch input[type="checkbox"] {

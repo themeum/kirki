@@ -1,4 +1,4 @@
-wp.customize.controlConstructor.spacing = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 
 	ready: function() {
 

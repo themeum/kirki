@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Spacing' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'spacing';
+			$this->type = 'kirki-spacing';
 
 		}
 

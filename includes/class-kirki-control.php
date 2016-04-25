@@ -120,7 +120,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-select'          => 'Kirki_Controls_Select_Control',
 				'kirki-slider'          => 'Kirki_Controls_Slider_Control',
 				'kirki-sortable'        => 'Kirki_Controls_Sortable_Control',
-				'spacing'               => 'Kirki_Controls_Spacing_Control',
+				'kirki-spacing'         => 'Kirki_Controls_Spacing_Control',
 				'switch'                => 'Kirki_Controls_Switch_Control',
 				'kirki-generic'         => 'Kirki_Controls_Generic_Control',
 				'toggle'                => 'Kirki_Controls_Toggle_Control',
