@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'editor';
+		public $type = 'kirki-editor';
 
 		/**
 		 * Enqueue control related scripts/styles.
