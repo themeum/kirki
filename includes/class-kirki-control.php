@@ -123,7 +123,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-spacing'         => 'Kirki_Controls_Spacing_Control',
 				'kirki-switch'          => 'Kirki_Controls_Switch_Control',
 				'kirki-generic'         => 'Kirki_Controls_Generic_Control',
-				'toggle'                => 'Kirki_Controls_Toggle_Control',
+				'kirki-toggle'          => 'Kirki_Controls_Toggle_Control',
 				'typography'            => 'Kirki_Controls_Typography_Control',
 				'image'                 => 'WP_Customize_Image_Control',
 				'cropped_image'         => 'WP_Customize_Cropped_Image_Control',

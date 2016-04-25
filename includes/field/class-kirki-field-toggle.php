@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Toggle' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'toggle';
+			$this->type = 'kirki-toggle';
 
 		}
 	}

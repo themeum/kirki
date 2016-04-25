@@ -1,4 +1,4 @@
-wp.customize.controlConstructor.toggle = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-toggle'] = wp.customize.Control.extend({
 
 	ready: function() {
 
