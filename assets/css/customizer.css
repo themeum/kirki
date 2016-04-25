@@ -798,7 +798,7 @@ span.CodeMirror-selectedtext {
       border: 1px solid #3498DB;
       color: #000; }
 
-.customize-control-dimension .input-wrapper .invalid-value {
+.customize-control-kirki-dimension .input-wrapper .invalid-value {
   display: none;
   background: #D32F2F;
   font-size: .85em;
@@ -806,11 +806,11 @@ span.CodeMirror-selectedtext {
   float: left;
   padding: 2px 0;
   border-radius: 3px; }
-.customize-control-dimension .input-wrapper.invalid .invalid-value {
+.customize-control-kirki-dimension .input-wrapper.invalid .invalid-value {
   display: block;
   width: 98%;
   text-align: center; }
-.customize-control-dimension .input-wrapper.invalid input[type="text"]:focus {
+.customize-control-kirki-dimension .input-wrapper.invalid input[type="text"]:focus {
   border-color: #D32F2F; }
 
 .customize-control-number .ui-spinner.ui-widget-content {

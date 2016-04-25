@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'dimension';
+		public $type = 'kirki-dimension';
 
 		/**
 		 * Enqueue control related scripts/styles.
