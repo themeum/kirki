@@ -42,7 +42,7 @@ if ( ! class_exists( 'Kirki_Field_Color' ) ) {
 			}
 			if ( ! isset( $this->choices['alpha'] ) || true != $this->choices['alpha'] ) {
 				$this->choices['alpha'] = true;
-				if ( false === strpos( 'rgba', $this->default ) ) {
+				if ( property_exists( $this, 'default' ) && ! empty( $this->default ) && false === strpos( 'rgba', $this->default ) ) {
 					$this->choices['alpha'] = false;
 				}
 			}
