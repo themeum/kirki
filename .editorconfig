@@ -21,5 +21,9 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
+[*.scss]
+indent_style = space
+indent_size = 2
+
 [*.txt]
 end_of_line = crlf
