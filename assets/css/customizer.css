@@ -102,20 +102,15 @@ customize-control-upload .current .container {
   font-weight: 300;
   font-size: .9em; }
 
-input {
+[class*=" customize-control-kirki-"] input {
   font-size: 16px; }
-
-input[type="text"],
-input[type="date"],
-input[type="email"],
-input[type="url"],
-input[type="tel"] {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-image: none;
-  background-position: 0% 0%;
-  background-repeat: repeat;
-  border-radius: 3px;
-  padding: .5em; }
+  [class*=" customize-control-kirki-"] input[type="text"], [class*=" customize-control-kirki-"] input[type="date"], [class*=" customize-control-kirki-"] input[type="email"], [class*=" customize-control-kirki-"] input[type="url"], [class*=" customize-control-kirki-"] input[type="tel"] {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    border-radius: 3px;
+    padding: .5em; }
 
 .wp-full-overlay.expanded #customize-footer-actions .kirki-footer-thanks {
   position: fixed;

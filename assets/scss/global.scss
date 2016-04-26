@@ -156,24 +156,22 @@ customize-control-upload {
 /////////////////////
 // text controls
 /////////////////////
-input {
-    font-size: 16px;
-}
-
-/////////////////////
-// text controls
-/////////////////////
-input[type="text"],
-input[type="date"],
-input[type="email"],
-input[type="url"],
-input[type="tel"] {
-    border: 1px solid rgba(0,0,0,0.1);
-	background-image: none;
-	background-position: 0% 0%;
-	background-repeat: repeat;
-	border-radius: 3px;
-	padding: .5em;
+[class*=" customize-control-kirki-"] {
+	input {
+	    font-size: 16px;
+		&[type="text"],
+		&[type="date"],
+		&[type="email"],
+		&[type="url"],
+		&[type="tel"] {
+		    border: 1px solid rgba(0,0,0,0.1);
+			background-image: none;
+			background-position: 0% 0%;
+			background-repeat: repeat;
+			border-radius: 3px;
+			padding: .5em;
+		}
+	}
 }
 
 /////////////////////
