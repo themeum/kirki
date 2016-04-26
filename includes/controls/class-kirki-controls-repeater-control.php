@@ -295,7 +295,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<# } else if ( 'checkbox' === field.type ) { #>
 
 									<label>
-										<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
+										<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> /> {{ field.label }}
 										<# if ( field.description ) { #>
 											{{ field.description }}
 										<# } #>
