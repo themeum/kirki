@@ -329,8 +329,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 										<# _.each( field.choices, function( choice, i ) { #>
 											<label>
-												<input type="radio" name="{{{ field.id }}}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ choice }} <br/>
-												</label>
+												<input type="radio" name="{{{ field.id }}}{{ index }}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ choice }} <br/>
+											</label>
 										<# }); #>
 									</label>
 
