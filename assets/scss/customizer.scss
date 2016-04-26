@@ -1,4 +1,4 @@
-@import "global.scss";
+@import "global";
 
 @import "panels/expanded";
 
@@ -27,3 +27,5 @@
 @import "controls/generic";
 @import "controls/toggle";
 @import "controls/typography";
+
+@import "tooltips";
