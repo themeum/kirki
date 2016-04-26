@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: SORTABLE
- */
-wp.customize.controlConstructor.sortable = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
 	ready: function() {
 
 		var control = this;

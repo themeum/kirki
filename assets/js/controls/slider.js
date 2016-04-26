@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: SLIDER
- */
 jQuery( document ).ready(function() {
 
 	// Update the text value
@@ -29,7 +26,7 @@ jQuery( document ).ready(function() {
 
 });
 
-wp.customize.controlConstructor.slider = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 
 	ready: function() {
 

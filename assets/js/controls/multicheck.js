@@ -1,7 +1,4 @@
-/**
- * KIRKI CONTROL: MULTICHECK
- */
-wp.customize.controlConstructor.multicheck = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing.
 	ready: function() {

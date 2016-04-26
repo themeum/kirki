@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'editor';
+			$this->type = 'kirki-editor';
 
 		}
 

@@ -6,15 +6,15 @@
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @since       2.3.2
  */
 
-if ( ! class_exists( 'Kirki_Field_Toggle' ) ) {
+if ( ! class_exists( 'Kirki_Field_Sortable' ) ) {
 
 	/**
 	 * Field overrides.
 	 */
-	class Kirki_Field_Toggle extends Kirki_Field_Checkbox {
+	class Kirki_Field_Sortable extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Toggle' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'kirki-toggle';
+			$this->type = 'kirki-sortable';
 
 		}
 	}

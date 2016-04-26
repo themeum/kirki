@@ -30,14 +30,7 @@ function kirkiSetSettingValue( setting, value ) {
 	 * make the necessary adjustments to it.
 	 */
 
-	/**
-	 * Control types:
-	 *     checkbox
-	 *     switch
-	 *     toggle
-	 *     kirki-checkbox
-	 */
-	if ( 'checkbox' === controlType || 'switch' === controlType || 'toggle' === controlType || 'kirki-checkbox' === controlType ) {
+	if ( 'kirki-checkbox' === controlType || 'kirki-switch' === controlType || 'kirki-toggle' === controlType ) {
 
 		if ( 1 === value || '1' === value || true === value ) {
 
@@ -57,15 +50,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 		}
 
-	}
-	/**
-	 * Control types:
-	 *     select
-	 *     select2
-	 *     select2-multiple
-	 *     kirki-select
-	 */
-	else if ( 'select' === controlType || 'select2' === controlType || 'select2-multiple' === controlType || 'kirki-select' === controlType || 'preset' === controlType ) {
+	} else if ( 'kirki-select' === controlType || 'kirki-preset' === controlType ) {
 
 		// Update the value visually in the control
 		$select = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).selectize();
@@ -75,13 +60,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	}
-
-	/**
-	 * Control types:
-	 *     slider
-	 */
-	else if ( 'slider' === controlType ) {
+	} else if ( 'kirki-slider' === controlType ) {
 
 		// Update the value visually in the control (slider)
 		jQuery( wp.customize.control( setting ).container.find( 'input' ) ).prop( 'value', value );
@@ -92,13 +71,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	}
-
-	/**
-	 * Control types:
-	 *     textarea
-	 */
-	else if ( 'kirki-generic' === controlType && undefined !== subControl.choices && undefined !== subControl.choices.element && 'textarea' === subControl.choices.element ) {
+	} else if ( 'kirki-generic' === controlType && undefined !== subControl.choices && undefined !== subControl.choices.element && 'textarea' === subControl.choices.element ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
@@ -106,14 +79,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize( setting ).set( value );
 
-	}
-	/**
-	 * Control types:
-	 *     color
-	 *     kirki-color
-	 *     color-alpha
-	 */
-	else if ( 'color-alpha' === controlType || 'kirki-color' === controlType || 'color' === controlType ) {
+	} else if ( 'kirki-color' === controlType ) {
 
 		// Update the value visually in the control
 		alphaColorControl = wp.customize.control( setting ).container.find( '.kirki-color-control' );
@@ -126,12 +92,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	}
-	/**
-	 * Control types:
-	 *     multicheck
-	 */
-	else if ( 'multicheck' === controlType ) {
+	} else if ( 'kirki-multicheck' === controlType ) {
 
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
@@ -152,19 +113,7 @@ function kirkiSetSettingValue( setting, value ) {
 			jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
 		});
 
-	}
-
-	/**
-	 * Control types:
-	 *     radio-buttonset
-	 *     radio-image
-	 *     radio
-	 *     kirki-radio
-	 *     dashicons
-	 *     color-pallette
-	 *     palette
-	 */
-	else if ( 'radio-buttonset' === controlType || 'radio-image' === controlType || 'radio' === controlType || 'kirki-radio' === controlType || 'dashicons' === controlType || 'color-palette' === controlType || 'palette' === controlType ) {
+	} else if ( 'kirki-radio-buttonset' === controlType || 'kirki-radio-image' === controlType || 'kirki-radio' === controlType || 'kirki-dashicons' === controlType || 'kirki-color-palette' === controlType || 'kirki-palette' === controlType ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'input[value="' + value + '"]' ) ).prop( 'checked', true );
@@ -172,13 +121,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	}
-
-	/**
-	 * Control types:
-	 *     typography
-	 */
-	else if ( 'typography' === controlType ) {
+	} else if ( 'kirki-typography' === controlType ) {
 
 		if ( undefined !== value['font-family'] ) {
 
@@ -245,13 +188,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	}
-
-	/**
-	 * Control types:
-	 *     repeater
-	 */
-	else if ( 'repeater' === controlType ) {
+	} else if ( 'kirki-repeater' === controlType ) {
 
 		// Do nothing
 	}

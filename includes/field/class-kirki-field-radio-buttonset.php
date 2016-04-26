@@ -9,7 +9,7 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
+if ( ! class_exists( 'Kirki_Field_Radio_Buttonset' ) ) {
 
 	/**
 	 * Field overrides.
@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'radio-buttonset';
+			$this->type = 'kirki-radio-buttonset';
 
 		}
 	}

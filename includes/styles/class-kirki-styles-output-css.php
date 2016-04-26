@@ -167,9 +167,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 			// Find the class that will handle the outpout for this field.
 			$classname = 'Kirki_Output';
 			$field_output_classes = apply_filters( 'kirki/' . $field['kirki_config'] . '/output/control-classnames', array(
-				'spacing'    => 'Kirki_Output_Field_Spacing',
-				'typography' => 'Kirki_Output_Field_Typography',
-				'multicolor' => 'Kirki_Output_Field_Multicolor',
+				'kirki-spacing'    => 'Kirki_Output_Field_Spacing',
+				'kirki-typography' => 'Kirki_Output_Field_Typography',
+				'kirki-multicolor' => 'Kirki_Output_Field_Multicolor',
 			) );
 			if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 				$classname = $field_output_classes[ self::$field_type ];
@@ -188,6 +188,9 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 * @return string    The generated CSS.
 		 */
 		public static function styles_parse( $css = array() ) {
+
+			// Pass our styles from the kirki/styles_array filter.
+			$css = apply_filters( 'kirki/styles_array', $css );
 
 			// Process the array of CSS properties and produce the final CSS.
 			$final_css = '';

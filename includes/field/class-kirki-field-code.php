@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'code';
+			$this->type = 'kirki-code';
 
 		}
 

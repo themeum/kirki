@@ -163,8 +163,11 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'color'                 => esc_attr__( 'Color', 'kirki' ),
 				'add-image'             => esc_attr__( 'Add Image', 'kirki' ),
 				'change-image'          => esc_attr__( 'Change Image', 'kirki' ),
-				'remove'                => esc_attr__( 'Remove', 'kirki' ),
 				'no-image-selected'     => esc_attr__( 'No Image Selected', 'kirki' ),
+				'add-file'              => esc_attr__( 'Add File', 'kirki' ),
+				'change-file'           => esc_attr__( 'Change File', 'kirki' ),
+				'no-file-selected'      => esc_attr__( 'No File Selected', 'kirki' ),
+				'remove'                => esc_attr__( 'Remove', 'kirki' ),
 				'select-font-family'    => esc_attr__( 'Select a font-family', 'kirki' ),
 				'variant'               => esc_attr__( 'Variant', 'kirki' ),
 				'subsets'               => esc_attr__( 'Subset', 'kirki' ),
@@ -204,6 +207,8 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'lowercase'             => esc_attr__( 'Lowercase', 'kirki' ),
 				'initial'               => esc_attr__( 'Initial', 'kirki' ),
 				'select-page'           => esc_attr__( 'Select a Page', 'kirki' ),
+				'open-editor'           => esc_attr__( 'Open Editor', 'kirki' ),
+				'close-editor'          => esc_attr__( 'Close Editor', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );

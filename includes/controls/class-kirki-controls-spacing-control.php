@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'spacing';
+		public $type = 'kirki-spacing';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.

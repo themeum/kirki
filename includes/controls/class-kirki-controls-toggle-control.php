@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'toggle';
+		public $type = 'kirki-toggle';
 
 		/**
 		 * Enqueue control related scripts/styles.

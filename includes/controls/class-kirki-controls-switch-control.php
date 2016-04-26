@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'switch';
+		public $type = 'kirki-switch';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.

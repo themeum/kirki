@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Controls_Custom_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'custom';
+		public $type = 'kirki-custom';
 
 		/**
 		 * An Underscore (JS) template for this control's content (but not its container).

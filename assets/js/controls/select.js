@@ -1,7 +1,4 @@
 /*jshint -W065 */
-/**
- * KIRKI CONTROL: KIRKI-SELECT
- */
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 	ready: function() {
@@ -30,7 +27,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 			// If this is a multi-select, then we need to convert the value to an object.
 			if ( multiple > 1 ) {
-				selectValue = kirkiArrayToObject( jQuery( this ).val() );
+				selectValue = _.extend( {}, jQuery( this ).val() );
 			}
 
 			control.setting.set( selectValue );

@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Dashicons_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'dashicons';
+		public $type = 'kirki-dashicons';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.

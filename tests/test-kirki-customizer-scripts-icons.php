@@ -4,6 +4,8 @@ class Test_Kirki_Scripts_Icons extends WP_UnitTestCase {
 
 	public function test_empty() {
 
+		new Kirki_Scripts_Icons();
+
 		Kirki_Scripts_Icons::generate_script();
 		Kirki_Scripts_Icons::generate_script( array(
 			'icon' => 'foo',

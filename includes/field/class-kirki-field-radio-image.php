@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Radio_Image' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'radio-image';
+			$this->type = 'kirki-radio-image';
 
 		}
 	}

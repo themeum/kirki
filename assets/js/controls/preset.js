@@ -1,8 +1,4 @@
-/**
- * KIRKI CONTROL: PRESET
- */
-
-wp.customize.controlConstructor.preset = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-preset'] = wp.customize.Control.extend({
 
 	ready: function() {
 

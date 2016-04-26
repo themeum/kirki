@@ -1,6 +1,3 @@
-/**
- * KIRKI CONTROL: DATE
- */
 wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing

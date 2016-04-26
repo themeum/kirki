@@ -9,12 +9,12 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
+if ( ! class_exists( 'Kirki_Field_Multicolor' ) ) {
 
 	/**
 	 * Field overrides.
 	 */
-	class Kirki_Field_Color_Alpha extends Kirki_Field {
+	class Kirki_Field_Multicolor extends Kirki_Field {
 
 		/**
 		 * Sets the control type.
@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'multicolor';
+			$this->type = 'kirki-multicolor';
 
 		}
 
@@ -38,19 +38,6 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 			if ( ! is_array( $this->choices ) ) {
 				$this->choices = array();
 			}
-
-			// Properly format the 'alpha' choice as a boolean.
-			if ( ! isset( $this->choices['alpha'] ) ) {
-				$this->choices['alpha'] = true;
-			}
-			$this->choices['alpha'] = (bool) $this->choices['alpha'];
-
-			// Make sure we have more than 2 colors, and we're using an integer.
-			if ( ! isset( $this->choices['colors'] ) ) {
-				$this->choices['colors'] = 2;
-			}
-			$this->choices['colors'] = absint( $this->choices['colors'] );
-			$this->choices['colors'] = min( 2, $this->choices['colors'] );
 
 		}
 
@@ -67,35 +54,6 @@ if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
 				return;
 			}
 			$this->sanitize_callback = array( $this, 'sanitize' );
-
-		}
-
-		/**
-		 * Sets the default values
-		 *
-		 * @access protected
-		 */
-		protected function set_default() {
-
-			// Make sure we've already processed the set_choices() method.
-			// This way we know how many colors we're dealing with.
-			$this->set_choices();
-
-			// Define a default array using #FFFFFF.
-			$defaults = array_fill( 0, $this->choices['colors'], '#FFFFFF' );
-
-			// If we're using rgba, define default as rgba(255,255,255,0).
-			if ( $this->choices['colors'] ) {
-				$defaults = array_fill( 0, $this->choices['colors'], 'rgba(255,255,255,0)' );
-			}
-
-			// Make sure defaults are defined as an array.
-			if ( ! is_array( $this->default ) ) {
-				$this->default = array();
-			}
-
-			// Merge our arrays.
-			$this->default = wp_parse_args( $this->default, $defaults );
 
 		}
 

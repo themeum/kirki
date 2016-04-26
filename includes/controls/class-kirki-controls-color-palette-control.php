@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'color-palette';
+		public $type = 'kirki-color-palette';
 
 		/**
 		 * Enqueue control related scripts/styles.

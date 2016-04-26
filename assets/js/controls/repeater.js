@@ -1,8 +1,4 @@
 /*jshint -W065 */
-/**
- * KIRKI CONTROL: REPEATER
- */
-
 var RepeaterRow = function( rowIndex, container, label ) {
 	var self        = this;
 
@@ -103,6 +99,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( ! limit || control.currentIndex < limit ) {
 				theNewRow = control.addRow();
 				theNewRow.toggleMinimize();
+				control.initColorPicker();
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
@@ -115,7 +112,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button', function( e ) {
+		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
@@ -125,6 +122,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeImage( e );
+		});
+
+		this.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
+			e.preventDefault();
+			control.$thisButton = jQuery( this );
+			control.removeFile( e );
 		});
 
 		/**
@@ -156,6 +159,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( settingValue.length ) {
 			_.each( settingValue, function( subValue ) {
 				control.addRow( subValue );
+				control.initColorPicker();
 			});
 		}
 
@@ -191,10 +195,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 	initFrame: function() {
 
+		var libMediaType = this.getMimeType();
+
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
-					library:  wp.media.query({ type: 'image' }),
+					library:  wp.media.query({ type: libMediaType }),
 					multiple: false,
 					date:     false
 				})
@@ -208,11 +214,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
 	 */
-	 initCropperFrame: function() {
+	initCropperFrame: function() {
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
-		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ]; // A list of attributes to look for
+		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
+			libMediaType   = this.getMimeType();
 
 		// Make sure we got it
 		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
@@ -240,7 +247,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			},
 			states: [
 				new wp.media.controller.Library({
-					library:         wp.media.query({ type: 'image' }),
+					library:         wp.media.query({ type: libMediaType }),
 					multiple:        false,
 					date:            false,
 					suggestedWidth:  this.params.width,
@@ -262,7 +269,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	onSelect: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
-		this.setImageInReaperField( attachment );
+		if ( this.$thisButton.closest( '.repeater-field' ).hasClass( 'repeater-field-upload' ) ) {
+			this.setFileInRepeaterField( attachment );
+		} else {
+			this.setImageInRepeaterField( attachment );
+		}
 	},
 
 	/**
@@ -275,7 +286,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		if ( this.params.width === attachment.width && this.params.height === attachment.height && ! this.params.flex_width && ! this.params.flex_height ) {
-			this.setImageInReaperField( attachment );
+			this.setImageInRepeaterField( attachment );
 		} else {
 			this.frame.setState( 'cropper' );
 		}
@@ -287,7 +298,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} croppedImage Cropped attachment data.
 	 */
 	onCropped: function( croppedImage ) {
-		this.setImageInReaperField( croppedImage );
+		this.setImageInRepeaterField( croppedImage );
 	},
 
 	/**
@@ -391,7 +402,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	onSkippedCrop: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
-		this.setImageInReaperField( attachment );
+		this.setImageInRepeaterField( attachment );
 	},
 
 	/**
@@ -399,7 +410,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 *
 	 * @param {object} attachment
 	 */
-	setImageInReaperField: function( attachment ) {
+	setImageInRepeaterField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
@@ -413,6 +424,50 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.frame.close();
 	},
 
+	/**
+	 * Updates the setting and re-renders the control UI.
+	 *
+	 * @param {object} attachment
+	 */
+	setFileInRepeaterField: function( attachment ) {
+		var $targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
+		$targetDiv.find( '.kirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
+
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
+		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
+		$targetDiv.find( '.upload-button' ).show();
+		$targetDiv.find( '.remove-button' ).show();
+
+		//This will activate the save button
+		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
+		this.frame.close();
+	},
+
+	getMimeType: function() {
+
+		// We get the field id from which this was called
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
+		    attrs          = [ 'mime_type' ]; // A list of attributes to look for
+
+		// Make sure we got it
+		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
+
+			// Make fields is defined and only do the hack for cropped_image
+			if ( 'object' === typeof this.params.fields[ currentFieldId ] && 'upload' === this.params.fields[ currentFieldId ].type ) {
+
+				// If the attribute exists in the field
+				if ( 'undefined' !== typeof this.params.fields[ currentFieldId ].mime_type ) {
+
+					// Set the attribute in the main object
+					return this.params.fields[ currentFieldId ].mime_type;
+				}
+			}
+		}
+
+		return 'image';
+
+	},
+
 	removeImage: function( event ) {
 		var $targetDiv,
 		    $uploadButton;
@@ -421,10 +476,31 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			return;
 		}
 
-		$targetDiv = this.$thisButton.closest( '.repeater-field-image' );
+		$targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image,.repeater-field-upload' );
 		$uploadButton = $targetDiv.find( '.upload-button' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
+			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
+		});
+		$targetDiv.find( '.hidden-field' ).val( '' );
+		$uploadButton.text( $uploadButton.data( 'label' ) );
+		this.$thisButton.hide();
+
+		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
+	},
+
+	removeFile: function( event ) {
+		var $targetDiv,
+		    $uploadButton;
+
+		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
+			return;
+		}
+
+		$targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
+		$uploadButton = $targetDiv.find( '.upload-button' );
+
+		$targetDiv.find( '.kirki-file-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
 		});
 		$targetDiv.find( '.hidden-field' ).val( '' );
@@ -460,7 +536,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
-				if ( 'image' === value.type || 'cropped_image' === value.type ) {
+				if ( 'image' === value.type || 'cropped_image' === value.type || 'upload' === value.type ) {
 					filter.push( index );
 				}
 			});
@@ -660,9 +736,40 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			currentSettings[ row.rowIndex ][ fieldId ] = element.val();
 
 		}
-
 		this.setValue( currentSettings, true );
 
+	},
+
+	/**
+	 * Init the color picker on color fields
+	 * Called after AddRow
+	 *
+	 */
+	initColorPicker: function() {
+		var control = this,
+			colorPicker = control.container.find( '.color-picker-hex' ),
+			options = {},
+			fieldId = colorPicker.data( 'field' );
+
+		// We check if the color palette parameter is defined.
+		if ( 'undefined' !== typeof fieldId && 'undefined' !== typeof control.params.fields[ fieldId ] && 'undefined' !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
+			options.palettes = control.params.fields[ fieldId ].palettes;
+		}
+
+		// When the color picker value is changed we update the value of the field
+		options.change = function( event, ui ) {
+			var currentPicker = jQuery( event.target );
+			var row = currentPicker.closest( '.repeater-row' );
+			var rowIndex = row.data( 'row' );
+			var currentSettings = control.getValue();
+			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
+			control.setValue( currentSettings, true );
+		};
+
+		// Init the color picker
+		if ( 0 !== colorPicker.length ) {
+			colorPicker.wpColorPicker( options );
+		}
 	}
 
 });
