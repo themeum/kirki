@@ -195,7 +195,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					}
 				}
 			}
-
 		}
 
 		/**
@@ -215,7 +214,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 				$this->json['value'] = $this->filtered_value;
 			}
-
 		}
 
 		/**
@@ -255,7 +253,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		protected function render_content() {
 			?>
 			<?php $l10n = Kirki_l10n::get_strings(); ?>
-			<?php if ( '' != $this->tooltip ) : ?>
+			<?php if ( '' !== $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
 			<label>

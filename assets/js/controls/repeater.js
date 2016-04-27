@@ -748,10 +748,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 *
 	 */
 	initColorPicker: function() {
-		var control = this,
+		var control     = this,
 			colorPicker = control.container.find( '.color-picker-hex' ),
-			options = {},
-			fieldId = colorPicker.data( 'field' );
+			options     = {},
+			fieldId     = colorPicker.data( 'field' );
 
 		// We check if the color palette parameter is defined.
 		if ( 'undefined' !== typeof fieldId && 'undefined' !== typeof control.params.fields[ fieldId ] && 'undefined' !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
@@ -760,12 +760,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// When the color picker value is changed we update the value of the field
 		options.change = function( event, ui ) {
-			var currentPicker = jQuery( event.target );
-			var row = currentPicker.closest( '.repeater-row' );
-			var rowIndex = row.data( 'row' );
-			var currentSettings = control.getValue();
+
+			var currentPicker   = jQuery( event.target ),
+			    row             = currentPicker.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
+				currentSettings = control.getValue();
+
 			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
 			control.setValue( currentSettings, true );
+
 		};
 
 		// Init the color picker
@@ -783,17 +786,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 *
 	 */
 	initDropdownPages: function( theNewRow, data ) {
-		var control = this,
+		var control  = this,
 			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
 			$select,
 			selectize,
 			dataField;
 
-		if ( dropdown.length === 0 ) {
+		if ( 0 === dropdown.length ) {
 			return;
 		}
 
-		$select = jQuery( dropdown ).selectize();
+		$select   = jQuery( dropdown ).selectize();
 		selectize = $select[0].selectize;
 		dataField = dropdown.data( 'field' );
 
@@ -802,13 +805,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		}
 
 		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
+
 			var currentDropdown = jQuery( event.target ),
-				row = currentDropdown.closest( '.repeater-row' ),
-				rowIndex = row.data( 'row' ),
+				row             = currentDropdown.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
 				currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );
+
 		});
 	}
 
