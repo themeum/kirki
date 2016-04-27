@@ -537,6 +537,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_active_callback() {
 
+			if ( is_array( $this->active_callback ) && ! is_callable( $this->active_callback ) ) {
+				if ( isset( $this->active_callback[0] ) && is_array( $this->active_callback[0] ) ) {
+					$this->required = $this->active_callback;
+				}
+			}
+
 			if ( ! empty( $this->required ) ) {
 				$this->active_callback = array( 'Kirki_Active_Callback', 'evaluate' );
 				return;
