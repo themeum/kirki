@@ -72,14 +72,15 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 		public function add_editor() {
 			wp_enqueue_script( 'tiny_mce' );
 
-			echo '<div id="kirki-editor-editor-pane" class="hidden">';
+			echo '<div id="kirki_editor_pane" class="hidden">';
 			wp_editor( '', 'kirki-editor', array(
 				'_content_editor_dfw' => false,
 				'drag_drop_upload'    => true,
 				'tabfocus_elements'   => 'content-html,save-post',
 				'editor_height'       => 200,
 				'default_editor'      => 'tinymce',
-				'quicktags'           => false,
+				// 'quicktags'           => false,
+				'teenty' => false,
 				'tinymce'             => array(
 					'resize'             => false,
 					'wp_autoresize_on'   => false,

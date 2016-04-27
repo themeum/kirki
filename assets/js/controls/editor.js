@@ -6,7 +6,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		var control       = this,
 		    element       = control.container.find( 'textarea' ),
 		    toggler       = control.container.find( '.toggle-editor' ),
-		    editorWrapper = jQuery( '#kirki-editor-editor-pane' ),
+		    editorWrapper = jQuery( '#kirki_editor_pane' ),
 		    setChange,
 		    content;
 
@@ -56,7 +56,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	changeButton: function() {
 
 		var control       = this,
-			editorWrapper = jQuery( '#kirki-editor-editor-pane' );
+			editorWrapper = jQuery( '#kirki_editor_pane' );
 
 		// Reset all editor buttons.
 		// Necessary if we have multiple editor fields.
@@ -78,7 +78,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	toggleEditor: function() {
 
 		var control = this,
-		    editorWrapper = jQuery( '#kirki-editor-editor-pane' );
+		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
 		if ( ! control.getEditorWrapperSetting() || control.id !== control.getEditorWrapperSetting() ) {
 			editorWrapper.removeClass();
@@ -96,7 +96,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	setEditorContent: function( editor ) {
 
 		var control = this,
-		    editorWrapper = jQuery( '#kirki-editor-editor-pane' );
+		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
 		editor.setContent( control.setting._value );
 
@@ -107,12 +107,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 */
 	getEditorWrapperSetting: function() {
 
-		if ( jQuery( '#kirki-editor-editor-pane' ).hasClass( 'hidden' ) ) {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
 			return false;
 		}
 
-		if ( jQuery( '#kirki-editor-editor-pane' ).attr( 'class' ) ) {
-			return jQuery( '#kirki-editor-editor-pane' ).attr( 'class' );
+		if ( jQuery( '#kirki_editor_pane' ).attr( 'class' ) ) {
+			return jQuery( '#kirki_editor_pane' ).attr( 'class' );
 		} else {
 			return false;
 		}

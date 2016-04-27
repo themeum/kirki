@@ -587,7 +587,7 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-color .wp-picker-container a.wp-color-result:focus:after, .customize-control-kirki-color .wp-picker-container a.wp-color-result:hover:after {
       color: #fff; }
 
-#kirki-editor-editor-pane {
+#kirki_editor_pane {
   background: #fff;
   padding-top: 5px;
   border-top: 1px solid #dedede;
