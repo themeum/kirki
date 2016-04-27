@@ -595,6 +595,9 @@ span.CodeMirror-selectedtext {
   bottom: 0;
   width: 100%; }
 
+.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in {
+  z-index: 99999999 !important; }
+
 .customize-control-kirki-multicolor .multicolor-group-wrapper {
   display: flex; }
   .customize-control-kirki-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {

@@ -9,3 +9,6 @@
   bottom: 0;
   width: 100%;
 }
+.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in {
+  z-index: 99999999 !important;
+}
