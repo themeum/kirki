@@ -221,7 +221,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
 		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
-			libMediaType   = this.getMimeType();
+		    libMediaType   = this.getMimeType();
 
 		// Make sure we got it
 		if ( 'string' === typeof currentFieldId && '' !== currentFieldId ) {
@@ -314,16 +314,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	calculateImageSelectOptions: function( attachment, controller ) {
 		var control    = controller.get( 'control' ),
-			flexWidth  = !! parseInt( control.params.flex_width, 10 ),
-			flexHeight = !! parseInt( control.params.flex_height, 10 ),
-			realWidth  = attachment.get( 'width' ),
-			realHeight = attachment.get( 'height' ),
-			xInit      = parseInt( control.params.width, 10 ),
-			yInit      = parseInt( control.params.height, 10 ),
-			ratio      = xInit / yInit,
-			xImg       = realWidth,
-			yImg       = realHeight,
-			x1, y1, imgSelectOptions;
+		    flexWidth  = !! parseInt( control.params.flex_width, 10 ),
+		    flexHeight = !! parseInt( control.params.flex_height, 10 ),
+		    realWidth  = attachment.get( 'width' ),
+		    realHeight = attachment.get( 'height' ),
+		    xInit      = parseInt( control.params.width, 10 ),
+		    yInit      = parseInt( control.params.height, 10 ),
+		    ratio      = xInit / yInit,
+		    xImg       = realWidth,
+		    yImg       = realHeight,
+		    x1,
+		    y1,
+		    imgSelectOptions;
 
 		controller.set( 'canSkipCrop', ! control.mustBeCropped( flexWidth, flexHeight, xInit, yInit, realWidth, realHeight ) );
 
@@ -533,8 +535,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	setValue: function( newValue, refresh, filtering ) {
 
 		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
-		var filteredValue = newValue;
-		var filter = [];
+		var filteredValue = newValue,
+		    filter        = [];
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
@@ -569,13 +571,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param data (Optional) Object of field => value pairs (undefined if you want to get the default values)
 	 */
 	addRow: function( data ) {
-		var control = this,
-			i,
-			template = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
-			settingValue = this.getValue(), // Get the current setting value.
-			newRowSetting = {}, // Saves the new setting data.
-			templateData, // Data to pass to the template
-			newRow;
+		var control       = this,
+		    template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
+		    settingValue  = this.getValue(), // Get the current setting value.
+		    newRowSetting = {}, // Saves the new setting data.
+		    templateData, // Data to pass to the template
+		    newRow,
+		    i;
 
 		if ( template ) {
 
@@ -635,9 +637,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	},
 
 	sort: function() {
-		var control  = this,
-		    $rows    = this.repeaterFieldsContainer.find( '.repeater-row' ),
-		    newOrder = [],
+		var control     = this,
+		    $rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
+		    newOrder    = [],
 		    settings    = control.getValue(),
 		    newRows     = [],
 		    newSettings = [];
@@ -749,9 +751,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	initColorPicker: function() {
 		var control     = this,
-			colorPicker = control.container.find( '.color-picker-hex' ),
-			options     = {},
-			fieldId     = colorPicker.data( 'field' );
+		    colorPicker = control.container.find( '.color-picker-hex' ),
+		    options     = {},
+		    fieldId     = colorPicker.data( 'field' );
 
 		// We check if the color palette parameter is defined.
 		if ( 'undefined' !== typeof fieldId && 'undefined' !== typeof control.params.fields[ fieldId ] && 'undefined' !== typeof control.params.fields[ fieldId ].palettes && 'object' === typeof control.params.fields[ fieldId ].palettes ) {
@@ -787,10 +789,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 */
 	initDropdownPages: function( theNewRow, data ) {
 		var control  = this,
-			dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
-			$select,
-			selectize,
-			dataField;
+		    dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
+		    $select,
+		    selectize,
+		    dataField;
 
 		if ( 0 === dropdown.length ) {
 			return;

@@ -6,8 +6,8 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		var control     = this,
 		    element     = control.container.find( '.kirki-codemirror-editor' ),
 		    language    = control.params.choices.language,
-				openButton  = control.container.find( 'a.edit' ),
-				closeButton = control.container.find( 'a.close' ),
+		    openButton  = control.container.find( 'a.edit' ),
+		    closeButton = control.container.find( 'a.close' ),
 		    editor;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.

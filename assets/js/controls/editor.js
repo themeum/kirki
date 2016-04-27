@@ -5,10 +5,10 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		var control       = this,
 		    element       = control.container.find( 'textarea' ),
-			toggler       = control.container.find( '.toggle-editor' ),
-			editorWrapper = jQuery( '#kirki-editor-editor-pane' ),
-			setChange,
-			content;
+		    toggler       = control.container.find( '.toggle-editor' ),
+		    editorWrapper = jQuery( '#kirki-editor-editor-pane' ),
+		    setChange,
+		    content;
 
 		jQuery( window ).load( function() {
 

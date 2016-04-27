@@ -3,7 +3,7 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control = this,
+		var control  = this,
 		    selector = control.selector + ' input.datepicker';
 
 		// Init the datepicker
