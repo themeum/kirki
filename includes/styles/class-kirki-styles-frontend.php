@@ -188,6 +188,8 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 				}
 			}
 
+			$css = apply_filters( 'kirki/' . $config_id . '/styles' );
+
 			if ( is_array( $css ) ) {
 				return Kirki_Styles_Output_CSS::styles_parse( Kirki_Styles_Output_CSS::add_prefixes( $css ) );
 			}
