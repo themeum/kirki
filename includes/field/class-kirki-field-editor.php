@@ -125,6 +125,7 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 			if ( ! in_array( 'code', $buttons ) ) {
 				$buttons[] = 'code';
 			}
+
 			/*
 			// Remove advanced mode?
 			if ( false !== ( $key = array_search( 'wp_adv', $buttons ) ) ) {
