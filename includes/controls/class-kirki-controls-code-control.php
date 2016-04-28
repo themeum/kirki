@@ -65,7 +65,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 
 			// If we're using html mode, we'll also need to include the multiplex addon
 			// as well as dependencies for XML, JS, CSS languages.
-			if ( in_array( $language, array( 'html', 'htmlmixed' ) ) ) {
+			if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ) ) ) {
 				wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
