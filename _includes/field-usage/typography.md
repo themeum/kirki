@@ -12,11 +12,11 @@ if ( isset( $value['font-family'] ) ) {
 if ( isset( $value['variant'] ) ) {
 	echo '<p>' . sprintf( esc_attr_e( 'Variant: %s', 'my-textdomain' ), $value['variant'] ) . '</p>';
 }
-if ( isset( $value['subset'] ) ) {
-	if ( is_array( $value['subset'] ) ) {
-		echo '<p>' . sprintf( esc_attr_e( 'Subsets: %s', 'my-textdomain' ), implode( ', ', $value['subset'] ) ) . '</p>';
+if ( isset( $value['subsets'] ) ) {
+	if ( is_array( $value['subsets'] ) ) {
+		echo '<p>' . sprintf( esc_attr_e( 'Subsets: %s', 'my-textdomain' ), implode( ', ', $value['subsets'] ) ) . '</p>';
 	} else {
-		echo '<p>' . sprintf( esc_attr_e( 'Subset: %s', 'my-textdomain' ), $value['subset'] ) . '</p>';
+		echo '<p>' . sprintf( esc_attr_e( 'Subset: %s', 'my-textdomain' ), $value['subsets'] ) . '</p>';
 	}
 }
 if ( isset( $value['font-size'] ) ) {
