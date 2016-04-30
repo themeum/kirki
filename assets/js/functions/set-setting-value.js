@@ -143,7 +143,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 		}
 
-		if ( undefined !== value.subset ) {
+		if ( undefined !== value.subsets ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
 			selectize = $select[0].selectize;
