@@ -69,6 +69,7 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 					if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
 						$value['variant'] = $value['font-weight'];
 					}
+					unset( $value['font-weight'] );
 				}
 				$valid_variants = Kirki_Fonts::get_all_variants();
 				if ( ! array_key_exists( $value['variant'], $valid_variants ) ) {
@@ -76,12 +77,23 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 				}
 			}
 
-			// Make sure we're using a valid subset.
+			// Make sure the saved value is "subsets" (plural) and not "subset".
+			// This is for compatibility with older versions.
 			if ( isset( $value['subset'] ) ) {
+				if ( ! empty( $value['subset'] ) ) {
+					if ( ! isset( $value['subsets'] ) || empty( $value['subset'] ) ) {
+						$value['subsets'] = $value['subset'];
+					}
+				}
+				unset( $value['subset'] );
+			}
+
+			// Make sure we're using a valid subset.
+			if ( isset( $value['subsets'] ) ) {
 				$valid_subsets = Kirki_Fonts::get_google_font_subsets();
 				$subsets_ok = array();
-				if ( is_array( $value['subset'] ) ) {
-					foreach ( $value['subset'] as $subset ) {
+				if ( is_array( $value['subsets'] ) ) {
+					foreach ( $value['subsets'] as $subset ) {
 						if ( array_key_exists( $subset, $valid_subsets ) ) {
 							$subsets_ok[] = $subset;
 						}

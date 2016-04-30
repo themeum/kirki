@@ -1489,7 +1489,7 @@ span.CodeMirror-selectedtext {
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
   .customize-control-kirki-typography .wrapper .line-height,
-  .customize-control-kirki-typography .wrapper .subset,
+  .customize-control-kirki-typography .wrapper .subsets,
   .customize-control-kirki-typography .wrapper .text-transform,
   .customize-control-kirki-typography .wrapper .variant {
     width: 100%;
@@ -1500,7 +1500,7 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-typography .wrapper .font-size h5,
     .customize-control-kirki-typography .wrapper .letter-spacing h5,
     .customize-control-kirki-typography .wrapper .line-height h5,
-    .customize-control-kirki-typography .wrapper .subset h5,
+    .customize-control-kirki-typography .wrapper .subsets h5,
     .customize-control-kirki-typography .wrapper .text-transform h5,
     .customize-control-kirki-typography .wrapper .variant h5 {
       margin: 0.67em 0 0; }
