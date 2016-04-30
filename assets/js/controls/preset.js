@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.Control.extend({
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this,
 		    element = this.container.find( 'select' ),
 		    selectValue;

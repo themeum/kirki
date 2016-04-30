@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 	ready: function() {
 
+		'use strict';
+
 		var control               = this,
 		    fontFamilySelector    = control.selector + ' .font-family select',
 		    variantSelector       = control.selector + ' .variant select',
@@ -322,14 +324,15 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	 * Saves the value.
 	 */
 	saveValue: function( value ) {
+
+		'use strict';
+
 		var control  = this,
 		    newValue = {};
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
 		});
-
-		console.log( newValue );
 
 		control.setting.set( newValue );
 	}

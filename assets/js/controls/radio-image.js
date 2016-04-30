@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.Control.exte
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this;
 
 		// Change the value

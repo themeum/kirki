@@ -3,6 +3,8 @@ wp.customize.controlConstructor['kirki-dropdown-pages'] = wp.customize.Control.e
 	// When we're finished loading continue processing
 	ready: function() {
 
+		'use strict';
+
 		var control = this,
 		    element = this.container.find( 'select' );
 

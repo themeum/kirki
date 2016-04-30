@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.Control.
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this;
 
 		// Change the value

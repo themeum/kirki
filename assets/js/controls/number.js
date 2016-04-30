@@ -1,6 +1,9 @@
 wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
+
 		var control = this,
 		    element = this.container.find( 'input' ),
 		    min     = -99999,

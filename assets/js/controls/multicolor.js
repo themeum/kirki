@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this,
 		    colors  = control.params.choices,
 		    keys    = Object.keys( colors ),

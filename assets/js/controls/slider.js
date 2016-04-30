@@ -1,5 +1,7 @@
 jQuery( document ).ready(function() {
 
+	'use strict';
+
 	// Update the text value
 	jQuery( 'input[type=range]' ).on( 'mousedown', function() {
 
@@ -29,6 +31,8 @@ jQuery( document ).ready(function() {
 wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
 
 		var control = this;
 		this.container.on( 'change', 'input', function() {

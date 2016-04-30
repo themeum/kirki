@@ -3,6 +3,8 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
+		'use strict';
+
 		var control     = this,
 		    element     = control.container.find( '.kirki-codemirror-editor' ),
 		    language    = control.params.choices.language,

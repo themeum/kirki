@@ -3,6 +3,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	// When we're finished loading continue processing
 	ready: function() {
 
+		'use strict';
+
 		var control       = this,
 		    element       = control.container.find( 'textarea' ),
 		    toggler       = control.container.find( '.toggle-editor' ),
@@ -55,6 +57,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 */
 	changeButton: function() {
 
+		'use strict';
+
 		var control       = this,
 			editorWrapper = jQuery( '#kirki_editor_pane' );
 
@@ -77,6 +81,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 */
 	toggleEditor: function() {
 
+		'use strict';
+
 		var control = this,
 		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
@@ -95,6 +101,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 */
 	setEditorContent: function( editor ) {
 
+		'use strict';
+
 		var control = this,
 		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
@@ -106,6 +114,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Gets the setting from the editor wrapper class.
 	 */
 	getEditorWrapperSetting: function() {
+
+		'use strict';
 
 		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
 			return false;
