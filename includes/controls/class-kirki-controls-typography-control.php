@@ -220,7 +220,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 
 			$this->json['value'] = wp_parse_args( $value, $old_values );
 
-			// Cleanup
+			// Cleanup.
 			if ( isset( $this->json['value']['font-weight'] ) ) {
 				unset( $this->json['value']['font-weight'] );
 			}

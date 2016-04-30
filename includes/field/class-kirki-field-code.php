@@ -63,7 +63,7 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 				'textile',
 				'twig',
 				'xml',
-				'yaml'
+				'yaml',
 			);
 			// Make sure the defined language exists.
 			// If not, fallback to CSS.
