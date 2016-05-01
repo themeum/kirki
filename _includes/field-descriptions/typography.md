@@ -4,7 +4,7 @@ It shows the following controls:
 
 * font-family
 * variant
-* subset
+* subsets
 * font-size
 * line-height
 * letter-spacing
@@ -20,9 +20,9 @@ Since defining a default value is **mandatory** for all fields, this way you can
 
 If for example you wanted to hide the `line-height` and `letter-spacing` controls, you'd delete these 2 lines from the defaults specified in the above example.
 
-The exception to the above rule is the `variant` and `subset` controls.
+The exception to the above rule is the `variant` and `subsets` controls.
 
-Since the `typography` control uses google fonts, in order to ensure that your fonts will be properly enqueued we have to add the variant & subset controls for google fonts.
+Since the `typography` control uses google fonts, in order to ensure that your fonts will be properly enqueued we have to add the variant & subsets controls for google fonts.
 So if you add `font-family`, all 3 controls will be automatically displayed when the selected font requires it.
 
 ### Output
