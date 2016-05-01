@@ -46,4 +46,3 @@ Available arguments you can use on each item inside each array:
 * `units` (string): In some cases you may want to add units. The string entered here will be appended to the value. Example: If you have a slider control that should change the border-radius of an element, then you will have to use `px` or `%` as units since sliders output a simple numeric value.
 * `prefix` (string): Will be used before the value
 * `suffix` (string): Will be used after the value and units.
-* `js_callback` (string): a custom JS callback you want to use.
