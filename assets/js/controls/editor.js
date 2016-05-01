@@ -9,6 +9,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		    element       = control.container.find( 'textarea' ),
 		    toggler       = control.container.find( '.toggle-editor' ),
 		    editorWrapper = jQuery( '#kirki_editor_pane' ),
+		    wpEditorArea  = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
 		    setChange,
 		    content;
 
@@ -48,6 +49,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 				});
 
 			}
+
+			// Handle text mode.
+			wpEditorArea.on( 'change keyup paste', function() {
+				wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
+			});
+
 		});
 
 	},

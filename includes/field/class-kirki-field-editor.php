@@ -35,13 +35,6 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 			// Add the editor.
 			add_action( 'customize_controls_print_footer_scripts', array( $this, 'add_editor' ) );
 
-			global $wp_customize;
-			if ( $wp_customize ) {
-				// Add the tinyMCE code plugin.
-				add_filter( 'mce_external_plugins', array( $this, 'add_code_plugin' ) );
-				add_filter( 'mce_buttons', array( $this, 'tinymce_code_button' ) );
-			}
-
 		}
 
 		/**
@@ -86,7 +79,7 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 				'tabfocus_elements'   => 'content-html,save-post',
 				'editor_height'       => 200,
 				'default_editor'      => 'tinymce',
-				'quicktags'           => false,
+				'teeny'               => true,
 				'tinymce'             => array(
 					'resize'             => false,
 					'wp_autoresize_on'   => false,
@@ -96,44 +89,6 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 			echo '</div>';
 			do_action( 'admin_footer' );
 			do_action( 'admin_print_footer_scripts' );
-		}
-
-		/**
-		 * Add the "code" tinyMCE plugin.
-		 *
-		 * @access public
-		 * @see https://www.tinymce.com/docs/plugins/code/
-		 * @param array $plugins All tinyMCE plugins.
-		 * @return array
-		 */
-		public function add_code_plugin( $plugins ) {
-
-			$plugins['code'] = trailingslashit( Kirki::$url ) . 'assets/js/vendor/tinymce.plugin.code.js';
-			return $plugins;
-
-		}
-
-		/**
-		 * Add the "code" tinyMCE button.
-		 *
-		 * @access public
-		 * @param array $buttons TinyMCE buttons.
-		 * @return array
-		 */
-		public function tinymce_code_button( $buttons ) {
-
-			if ( ! in_array( 'code', $buttons ) ) {
-				$buttons[] = 'code';
-			}
-
-			/*
-			// Remove advanced mode?
-			if ( false !== ( $key = array_search( 'wp_adv', $buttons ) ) ) {
-				unset( $buttons[ $key ] );
-			}
-			*/
-			return $buttons;
-
 		}
 	}
 }
