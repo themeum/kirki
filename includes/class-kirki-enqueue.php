@@ -69,7 +69,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
-			wp_register_script( 'kirki-rebuild-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/rebuild-value.js' );
 
 			// Register serialize.js.
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
@@ -104,7 +103,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'editor'          => array( 'jquery', 'customize-base', 'kirki-l10n' ),
 				'generic'         => array( 'jquery', 'customize-base' ),
 				'multicheck'      => array( 'jquery', 'customize-base' ),
-				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
+				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'number'          => array( 'jquery', 'customize-base', 'jquery-ui-spinner' ),
 				'palette'         => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ),
@@ -118,7 +117,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
-				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
+				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
 			);
 			foreach ( $scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
