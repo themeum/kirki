@@ -83,6 +83,21 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 				}
 				return call_user_func( $output['sanitize_callback'], $this->value );
 			}
+
+			return $value;
+
+		}
+
+		/**
+		 * If we have a value_pattern defined, apply it to the value.
+		 *
+		 * @param array        $output The output args.
+		 * @param string|array $value  The value.
+		 *
+		 * @return string|array
+		 */
+		protected function apply_value_pattern( $output, $value ) {
+
 			if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) ) {
 				if ( is_string( $output['value_pattern'] ) ) {
 					return str_replace( '$', $value, $output['value_pattern'] );
@@ -106,6 +121,11 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 				// Apply any sanitization callbacks defined.
 				$value = $this->apply_sanitize_callback( $output, $this->value );
 
+				// Skip if value is empty.
+				if ( '' === $this->value ) {
+					$skip = true;
+				}
+
 				// No need to proceed this if the current value is the same as in the "exclude" value.
 				if ( isset( $output['exclude'] ) && false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
 					foreach ( $output['exclude'] as $exclude ) {
@@ -113,8 +133,8 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 							continue;
 						}
 
-						// Skip for empty values, or if value is defined as excluded.
-						if ( empty( $value ) || $exclude == $value ) {
+						// Skip if value is defined as excluded.
+						if ( $exclude === $value ) {
 							$skip = true;
 						}
 					}
@@ -122,6 +142,9 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 				if ( $skip ) {
 					continue;
 				}
+
+				// Apply any value patterns defined.
+				$value = $this->apply_value_pattern( $output, $this->value );
 
 				if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 					$output['element'] = array_unique( $output['element'] );

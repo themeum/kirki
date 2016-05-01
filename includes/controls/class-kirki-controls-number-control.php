@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'number';
+		public $type = 'kirki-number';
 
 		/**
 		 * Enqueue control related scripts/styles.

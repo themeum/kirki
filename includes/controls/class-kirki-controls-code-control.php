@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'code';
+		public $type = 'kirki-code';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.
@@ -38,16 +38,17 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		 * @access public
 		 */
 		public function to_json() {
-			parent::to_json();
+			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
 			if ( ! isset( $this->choices['language'] ) ) {
 				$this->choices['language'] = 'css';
 			}
 			if ( ! isset( $this->choices['theme'] ) ) {
 				$this->choices['theme'] = 'monokai';
 			}
-			if ( ! isset( $this->choices['height'] ) ) {
-				$this->choices['height'] = 200;
+			if ( ! isset( $this->choices['label'] ) ) {
+				$this->choices['label'] = $l10n['open-editor'];
 			}
+			parent::to_json();
 		}
 
 		/**
@@ -59,29 +60,12 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 
 			wp_enqueue_script( 'kirki-code' );
 
-			// Get the language.
-			$lang_file = '/assets/js/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js';
-			$language  = 'css';
-			if ( file_exists( Kirki::$path . $lang_file ) || ! file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $lang_file ) ) ) {
-				$language = $this->choices['language'];
-			}
-
-			// Hack for 'html' mode.
-			if ( 'html' == $language ) {
-				$language = 'htmlmixed';
-			}
-
-			// Get the theme.
 			$theme_file = '/assets/js/vendor/codemirror/theme/' . $this->choices['theme'] . '.css';
-			$theme      = 'monokai';
-			if ( file_exists( Kirki::$path . $theme_file ) || file_exists( Kirki::$path . str_replace( '/', DIRECTORY_SEPARATOR, $theme_file ) ) ) {
-				$theme = $this->choices['theme'];
-			}
 			wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'assets/js/controls/code.js', array( 'jquery', 'codemirror' ), false );
 
 			// If we're using html mode, we'll also need to include the multiplex addon
 			// as well as dependencies for XML, JS, CSS languages.
-			if ( in_array( $language, array( 'html', 'htmlmixed' ) ) ) {
+			if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ) ) ) {
 				wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
@@ -89,11 +73,11 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
 			} else {
 				// Add language script.
-				wp_enqueue_script( 'codemirror-language-' . $language, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $language . '/' . $language . '.js', array( 'jquery', 'codemirror' ) );
+				wp_enqueue_script( 'codemirror-language-' . $this->choices['language'], trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js', array( 'jquery', 'codemirror' ) );
 			}
 
 			// Add theme styles.
-			wp_enqueue_style( 'codemirror-theme-' . $theme, trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/theme/' . $theme . '.css' );
+			wp_enqueue_style( 'codemirror-theme-' . $this->choices['theme'], trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/theme/' . $this->choices['theme'] . '.css' );
 
 		}
 
@@ -119,7 +103,12 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<textarea class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
+				<a href="#" class="button edit button-primary">{{ data.choices.label }}</a>
+				<textarea class="kirki-codemirror-editor collapsed">{{{ data.value }}}</textarea>
+				<a href="#" class="close">
+					<span class="dashicons dashicons-no"></span>
+					<span class="screen-reader-text">{{ data.i18n['close-editor'] }}</span>
+				</a>
 			</label>
 			<?php
 		}

@@ -1,9 +1,8 @@
-/**
- * KIRKI CONTROL: RADIO
- */
 wp.customize.controlConstructor['kirki-radio'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
 
 		var control = this;
 

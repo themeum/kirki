@@ -1,10 +1,9 @@
-/**
- * KIRKI CONTROL: DROPDOWN-PAGES
- */
 wp.customize.controlConstructor['kirki-dropdown-pages'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
+
+		'use strict';
 
 		var control = this,
 		    element = this.container.find( 'select' );

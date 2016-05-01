@@ -1,9 +1,8 @@
-/**
- * KIRKI CONTROL: MULTICOLOR
- */
-wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
 
 		var control = this,
 		    colors  = control.params.choices,
@@ -29,7 +28,7 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 						value[ subSetting ] = picker.val();
 
 						// Set the value
-						control.setting.set( value );
+						control.setValue( value, false );
 
 						// Trigger the change
 						control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
@@ -67,14 +66,24 @@ wp.customize.controlConstructor.multicolor = wp.customize.Control.extend({
 	 * @param newValue Object
 	 * @param refresh If we want to refresh the previewer or not
 	 */
-	setValue: function( newValue, refresh ) {
-		this.setting.set( newValue );
+	setValue: function( value, refresh ) {
+
+		'use strict';
+
+		var control  = this,
+		    newValue = {};
+
+		_.each( value, function( newSubValue, i ) {
+			newValue[ i ] = newSubValue;
+		});
+
+		control.setting.set( newValue );
 
 		if ( refresh ) {
 
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
-			this.settingField.trigger( 'change' );
+			control.settingField.trigger( 'change' );
 
 		}
 

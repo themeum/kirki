@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'typography';
+		public $type = 'kirki-typography';
 
 		/**
 		 * Enqueue control related scripts/styles.
@@ -101,9 +101,9 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 						</div>
 					<# } #>
 					<# if ( true === data.show_subsets ) { #>
-						<div class="subset hide-on-standard-fonts kirki-subset-wrapper">
+						<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
 							<h5>{{ data.l10n['subsets'] }}</h5>
-							<select class="subset" id="kirki-typography-subset-{{{ data.id }}}"></select>
+							<select class="subset" id="kirki-typography-subsets-{{{ data.id }}}"></select>
 						</div>
 					<# } #>
 				<# } #>
@@ -217,7 +217,23 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 			if ( isset( $value['letter-spacing'] ) && is_numeric( $value['letter-spacing'] ) && $value['letter-spacing'] ) {
 				$value['letter-spacing'] .= 'px';
 			}
+
 			$this->json['value'] = wp_parse_args( $value, $old_values );
+
+			// Cleanup.
+			if ( isset( $this->json['value']['font-weight'] ) ) {
+				unset( $this->json['value']['font-weight'] );
+			}
+
+			// Make sure we use "subsets" instead of "subset".
+			if ( isset( $this->json['value']['subset'] ) ) {
+				if ( ! empty( $this->json['value']['subset'] ) ) {
+					if ( ! isset( $this->json['value']['subsets'] ) || empty( $this->json['value']['subsets'] ) ) {
+						$this->json['value']['subsets'] = $this->json['value']['subset'];
+					}
+				}
+				unset( $this->json['value']['subset'] );
+			}
 		}
 	}
 }

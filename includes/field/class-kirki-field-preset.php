@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Preset' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'preset';
+			$this->type = 'kirki-preset';
 
 		}
 

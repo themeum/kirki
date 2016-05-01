@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'slider';
+		public $type = 'kirki-slider';
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.

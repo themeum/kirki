@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Buttonset_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'radio-buttonset';
+		public $type = 'kirki-radio-buttonset';
 
 		/**
 		 * Enqueue control related scripts/styles.

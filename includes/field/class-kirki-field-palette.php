@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Palette' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'palette';
+			$this->type = 'kirki-palette';
 
 		}
 	}

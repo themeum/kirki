@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Switch' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'switch';
+			$this->type = 'kirki-switch';
 
 		}
 	}

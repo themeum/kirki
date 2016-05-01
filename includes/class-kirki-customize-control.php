@@ -92,6 +92,17 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 		}
 
 		/**
+		 * Renders the control wrapper and calls $this->render_content() for the internals.
+		 */
+		protected function render() {
+			$id    = 'customize-control-' . str_replace( array( '[', ']' ), array( '-', '' ), $this->id );
+			$class = 'customize-control customize-control-kirki customize-control-' . $this->type;
+			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
+				<?php $this->render_content(); ?>
+			</li><?php
+		}
+
+		/**
 		 * Render the control's content.
 		 *
 		 * @see WP_Customize_Control::render_content()

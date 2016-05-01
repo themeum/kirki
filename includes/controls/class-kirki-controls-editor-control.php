@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'editor';
+		public $type = 'kirki-editor';
 
 		/**
 		 * Enqueue control related scripts/styles.
@@ -41,46 +41,37 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 		}
 
 		/**
-		 * Render the control's content.
-		 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 *
+		 * Class variables for this control class are available in the `data` JS object;
+		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+		 *
+		 * The actual editor is added from the Kirki_Field_Editor class.
+		 * All this template contains is a button that triggers the global editor on/off
+		 * and a hidden textarea element that is used to mirror save the options.
+		 *
+		 * @see WP_Customize_Control::print_template()
 		 *
 		 * @access protected
 		 */
-		protected function render_content() {
+		protected function content_template() {
 			?>
-			<?php if ( '' != $this->tooltip ) : ?>
-				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
-			<?php endif; ?>
-
+			<# if ( data.tooltip ) { #>
+				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
+			<# } #>
 			<label>
-				<span class="customize-control-title">
-					<?php echo esc_html( $this->label ); ?>
-				</span>
+				<# if ( data.label ) { #>
+					<span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+				<# if ( data.description ) { #>
+					<span class="description customize-control-description">{{{ data.description }}}</span>
+				<# } #>
+				<div class="customize-control-content">
+					<a href="#" class="button button-primary toggle-editor"></a>
+					<textarea class="hidden" {{{ data.link }}}>{{ data.value }}</textarea>
+				</div>
 			</label>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
-			<?php endif; ?>
 			<?php
-				$settings = array(
-					'textarea_name' => $this->id,
-					'teeny'         => true,
-				);
-				add_filter( 'the_editor', array( $this, 'filter_editor_setting_link' ) );
-				wp_editor( html_entity_decode( wp_kses_post( $this->value() ) ), $this->id, $settings );
-
-				do_action( 'admin_footer' );
-				do_action( 'admin_print_footer_scripts' );
-		}
-
-		/**
-		 * Used to add a unique ID to the textarea
-		 *
-		 * @access public
-		 * @param string $output Used to filter the textarea and add the link.
-		 * @return string
-		 */
-		public function filter_editor_setting_link( $output ) {
-			return preg_replace( '/<textarea/', '<textarea ' . $this->get_link(), $output, 1 );
 		}
 	}
 }

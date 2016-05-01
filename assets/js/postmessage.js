@@ -65,7 +65,7 @@
 
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
-									jQuery( args.element ).html( args.prefix + val + args.units + args.suffix );
+									jQuery( args.element ).html( val );
 
 								// Add CSS
 								} else {

@@ -135,10 +135,7 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 			$config = apply_filters( 'kirki/config', array() );
 
 			// No need to proceed if we haven't set any colors.
-			if ( ! isset( $config['color_back'] ) && ! isset( $config['color_accent'] ) ) {
-				return;
-			}
-			if ( ! $config['color_back'] && ! $config['color_accent'] ) {
+			if ( ( ! isset( $config['color_back'] ) || ! $config['color_back'] ) && ( ! isset( $config['color_accent'] ) || ! $config['color_accent'] ) ) {
 				return;
 			}
 			// Set the $process to true.

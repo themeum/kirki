@@ -1,31 +1,39 @@
-/**
- * KIRKI CONTROL: NUMBER
- */
-wp.customize.controlConstructor.number = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
+
 		var control = this,
-		    element = this.container.find( 'input' );
+		    element = this.container.find( 'input' ),
+		    min     = -99999,
+		    max     = 99999,
+		    step    = 1;
+
+		// Set minimum value.
+		if ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.min ) {
+			min = control.params.choices.min;
+		}
+
+		// Set maximum value.
+		if ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.max ) {
+			max = control.params.choices.max;
+		}
+
+		// Set step value.
+		if ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.step ) {
+			step = control.params.choices.step;
+			if ( 'any' === control.params.choices.step ) {
+				step = '0.001';
+			}
+		}
 
 		// Init the spinner
-		jQuery( element ).spinner();
-
-		if ( undefined !== typeof control.params.choices.min && undefined !== typeof control.params.choices.max && undefined !== typeof control.params.choices.step ) {
-
-			// Set minimum value
-			jQuery( element ).spinner( 'option', 'min', control.params.choices.min );
-
-			// Set maximum value
-			jQuery( element ).spinner( 'option', 'max', control.params.choices.max );
-
-			// Set steps
-			if ( 'any' === control.params.choices.step ) {
-				jQuery( element ).spinner( 'option', 'step', '0.001' );
-			} else {
-				jQuery( element ).spinner( 'option', 'step', control.params.choices.step );
-			}
-
-		}
+		jQuery( element ).spinner({
+			min: min,
+			max: max,
+			step: step
+		});
 
 		// On change
 		this.container.on( 'change click keyup paste', 'input', function() {

@@ -1,10 +1,9 @@
 /*jshint -W065 */
-/**
- * KIRKI CONTROL: KIRKI-SELECT
- */
 wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
 
 		var control  = this,
 		    element  = this.container.find( 'select' ),

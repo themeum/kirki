@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'preset';
+		public $type = 'kirki-preset';
 
 		/**
 		 * Enqueue control related scripts/styles.

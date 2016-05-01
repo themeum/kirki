@@ -150,7 +150,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		private function generate_google_font( $args ) {
 
 			// Process typography fields.
-			if ( isset( $args['type'] ) && 'typography' === $args['type'] ) {
+			if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
 
 				// Get the value.
 				$value = Kirki_Values::get_sanitized_field_value( $args );
@@ -170,14 +170,14 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				if ( ! isset( $value['variant'] ) ) {
 					$value['variant'] = 'regular';
 				}
-				if ( isset( $value['subset'] ) ) {
+				if ( isset( $value['subsets'] ) ) {
 
 					// Add the subset directly to the array of subsets in the Kirki_GoogleFonts_Manager object.
 					// Subsets must be applied to ALL fonts if possible.
-					if ( ! is_array( $value['subset'] ) ) {
-						$this->subsets[] = $value['subset'];
+					if ( ! is_array( $value['subsets'] ) ) {
+						$this->subsets[] = $value['subsets'];
 					} else {
-						foreach ( $value['subset'] as $subset ) {
+						foreach ( $value['subsets'] as $subset ) {
 							$this->subsets[] = $subset;
 						}
 					}
@@ -197,7 +197,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 					foreach ( $args['output'] as $output ) {
 
 						// If we don't have a typography-related output argument we can skip this.
-						if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset' ), true ) ) {
+						if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset', 'subsets' ), true ) ) {
 							continue;
 						}
 
@@ -214,7 +214,7 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 									$this->fonts[ $font ][] = $value;
 								}
 							}
-						} elseif ( 'font-subset' === $output['property'] || 'subset' === $output['property'] ) {
+						} elseif ( 'font-subset' === $output['property'] || 'subset' === $output['property'] || 'subsets' === $output['property'] ) {
 							if ( ! is_array( $value ) ) {
 								if ( ! in_array( $value, $this->subsets, true ) ) {
 									$this->subsets[] = $value;

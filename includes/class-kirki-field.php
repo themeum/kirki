@@ -537,6 +537,12 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_active_callback() {
 
+			if ( is_array( $this->active_callback ) && ! is_callable( $this->active_callback ) ) {
+				if ( isset( $this->active_callback[0] ) && is_array( $this->active_callback[0] ) ) {
+					$this->required = $this->active_callback;
+				}
+			}
+
 			if ( ! empty( $this->required ) ) {
 				$this->active_callback = array( 'Kirki_Active_Callback', 'evaluate' );
 				return;
@@ -592,9 +598,9 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			}
 
 			$default_callbacks = array(
-				'multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
-				'sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
-				'typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
+				'kirki-multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
+				'kirki-sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
+				'kirki-typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
 			);
 
 			if ( array_key_exists( $this->type, $default_callbacks ) ) {
@@ -649,7 +655,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				if ( ! isset( $output['element'] ) ) {
 					continue;
 				}
-				if ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'typography', 'background' ), true ) ) {
+				if ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'kirki-typography', 'background' ), true ) ) {
 					continue;
 				}
 				if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {

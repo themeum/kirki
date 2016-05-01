@@ -1,20 +1,31 @@
-/**
- * KIRKI CONTROL: CODE
- */
-wp.customize.controlConstructor.code = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control  = this,
-		    element  = control.container.find( '.kirki-codemirror-editor' ),
-		    language = control.params.choices.language,
+		'use strict';
+
+		var control     = this,
+		    element     = control.container.find( '.kirki-codemirror-editor' ),
+		    language    = control.params.choices.language,
+		    openButton  = control.container.find( 'a.edit' ),
+		    closeButton = control.container.find( 'a.close' ),
 		    editor;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
 		if ( 'html' === control.params.choices.language ) {
 			language = { name: 'htmlmixed' };
 		}
+
+		// When the edit button is clicked, change the textarea class to expanded.
+		openButton.on( 'click', function() {
+			element.removeClass( 'collapsed' ).addClass( 'expanded' );
+		});
+
+		// When the close button is clicked, change the textarea class to collapsed.
+		closeButton.on( 'click', function() {
+			element.removeClass( 'expanded' ).addClass( 'collapsed' );
+		});
 
 		editor = CodeMirror.fromTextArea( element[0], {
 			value:       control.setting._value,

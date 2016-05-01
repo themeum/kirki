@@ -1,60 +1,57 @@
-/////////////////////
-// spacing controls
-/////////////////////
-.customize-control-spacing {
-	.wrapper {
-		-webkit-box-shadow:inset 0 0 5px 2px rgba(0,0,0,.1);
-		box-shadow:inset 0 0 5px 2px rgba(0,0,0,.1);
-		width: 96%;
-		padding: 3%;
-		.control {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			> div {
-				width: 48%;
-				h5 {
-					margin: 10px 0 7px 0;
-				}
-				.inner {
-					display: flex;
-					input[type="number"] {
-						width: 50%;
-						height: 36px;
-					}
-					.selectize-control.single {
-						width: 50%;
-						> .selectize-input {
-							height: 36px;
-						}
-					}
-				}
-			}
-		}
-		.input-wrapper {
-			.invalid-value {
-				display: none;
-				background: #D32F2F;
-				font-size: .85em;
-				color: #fff;
-				float: left;
-				padding: 2px 0;
-				border-radius: 3px;
-			}
-			&.invalid {
-				.invalid-value {
-					display: block;
-					width: 98%;
-					text-align: center;
-				}
-				input[type="text"] {
-					// -webkit-box-shadow:inset 0 0 7px 0 #D32F2F;
-					// box-shadow:inset 0 0 7px 0 #D32F2F;
-					&:focus {
-						border-color: #D32F2F;
-					}
-				}
-			}
-		}
-	}
+.customize-control-kirki-spacing {
+  .wrapper {
+    -webkit-box-shadow: inset 0 0 5px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 5px 2px rgba(0,0,0,.1);
+    width: 96%;
+    padding: 3%;
+    .control {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      > div {
+        width: 48%;
+        h5 {
+          margin: 10px 0 7px;
+        }
+        .inner {
+          display: flex;
+          input[type="number"] {
+            width: 50%;
+            height: 36px;
+          }
+          .selectize-control.single {
+            width: 50%;
+            > .selectize-input {
+              height: 36px;
+            }
+          }
+        }
+      }
+    }
+    .input-wrapper {
+      .invalid-value {
+        display: none;
+        background: #D32F2F;
+        font-size: 0.85em;
+        color: #fff;
+        float: left;
+        padding: 2px 0;
+        border-radius: 3px;
+      }
+      &.invalid {
+        .invalid-value {
+          display: block;
+          width: 98%;
+          text-align: center;
+        }
+        input[type="text"] {
+          // -webkit-box-shadow:inset 0 0 7px 0 #D32F2F;
+          // box-shadow:inset 0 0 7px 0 #D32F2F;
+          &:focus {
+            border-color: #D32F2F;
+          }
+        }
+      }
+    }
+  }
 }

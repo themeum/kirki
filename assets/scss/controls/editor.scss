@@ -1,0 +1,14 @@
+.customize-control-kirki-editor {
+}
+
+#kirki_editor_pane {
+  background: #fff;
+  padding-top: 5px;
+  border-top: 1px solid #dedede;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in {
+  z-index: 99999999 !important;
+}

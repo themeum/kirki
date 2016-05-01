@@ -69,7 +69,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
-			wp_register_script( 'kirki-rebuild-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/rebuild-value.js' );
 
 			// Register serialize.js.
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
@@ -87,17 +86,21 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register selectize.
 			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
+			// Register the l10n script.
+			wp_register_script( 'kirki-l10n', trailingslashit( Kirki::$url ) . 'assets/js/l10n.js' );
+
 			// An array of control scripts and their dependencies.
-			$controls_scripts = array(
+			$scripts = array(
+				// Add controls scripts.
 				'checkbox'        => array( 'jquery', 'customize-base' ),
 				'code'            => array( 'jquery', 'customize-base', 'codemirror' ),
-				'color-alpha'     => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
+				'color'           => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
 				'date'            => array( 'jquery', 'customize-base', 'jquery-ui', 'jquery-ui-datepicker' ),
 				'dimension'       => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'dropdown-pages'  => array( 'jquery', 'customize-base', 'selectize' ),
-				'editor'          => array( 'jquery', 'customize-base' ),
+				'editor'          => array( 'jquery', 'customize-base', 'kirki-l10n' ),
 				'generic'         => array( 'jquery', 'customize-base' ),
 				'multicheck'      => array( 'jquery', 'customize-base' ),
 				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
@@ -114,12 +117,17 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
-				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha', 'kirki-rebuild-value' ),
+				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
 			);
-			foreach ( $controls_scripts as $id => $dependencies ) {
+			foreach ( $scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
 			}
 
+			// Add localization strings.
+			$l10n = Kirki_l10n::get_strings();
+			wp_localize_script( 'kirki-l10n', 'kirkiL10n', $l10n );
+
+			// Add fonts to our JS objects.
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
 			$standard_fonts = Kirki_Fonts::get_standard_fonts();
 			$all_variants   = Kirki_Fonts::get_all_variants();

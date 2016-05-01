@@ -1,4 +1,4 @@
-@import "global.scss";
+@import "global";
 
 @import "panels/expanded";
 
@@ -8,6 +8,7 @@
 @import "controls/checkbox";
 @import "controls/code";
 @import "controls/color";
+@import "controls/editor";
 @import "controls/multicolor";
 @import "controls/color-palette";
 @import "controls/date";
@@ -27,3 +28,5 @@
 @import "controls/generic";
 @import "controls/toggle";
 @import "controls/typography";
+
+@import "tooltips";

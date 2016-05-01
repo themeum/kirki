@@ -1,9 +1,8 @@
-/**
- * KIRKI CONTROL: RADIO-BUTTONSET
- */
-wp.customize.controlConstructor['radio-buttonset'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.Control.extend({
 
 	ready: function() {
+
+		'use strict';
 
 		var control = this;
 

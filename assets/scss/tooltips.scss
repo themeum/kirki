@@ -1,0 +1,107 @@
+.hint,
+[data-hint] {
+    position: relative;
+    display: inline-block;
+    &:before,
+    &:after {
+        position: absolute;
+        // HACK: Trigger hardware accelerated rendering, otherwise transform was not
+        // working on a hidden element
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        // HACK: visibility is set to hidden because IE & Opera don't support
+        // pointer-events on HTML content yet because of which hovering a hidden tooltip
+        // shows the tooltip.
+        visibility: hidden;
+        opacity: 0;
+        z-index: 998;
+        // shouldn't receive pointer events, otherwise even hovering tooltip will make it appear
+        pointer-events: none;
+        transition: 0.3s ease;
+        transition-delay: 250ms;
+    }
+    &:hover:before,
+    &:hover:after,
+    &:focus:before,
+    &:focus:after {
+        visibility: visible;
+        opacity: 1;
+    }
+    &:hover:before,
+    &:hover:after {
+        transition-delay: 0;
+    }
+    // tooltip arrow
+    &:before {
+        content: '';
+        position: absolute;
+        background: transparent;
+        border: none;
+        // move z-index 1 up than :after so that it shows over box-shadow
+        z-index: 999;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid #333;
+        left: -5px;
+        top: 5px;
+    }
+    // tooltip body
+    &:after {
+        content: attr(data-hint);
+        // The magic!
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 14px;
+        height: auto;
+        margin-bottom: -14px;
+        width: 170px;
+        max-width: 170px;
+        display: block;
+        white-space: normal;
+        text-align: right;
+        position: relative;
+        top: -22px;
+        left: -195px;
+    }
+}
+// apply to all controls for tooltips
+li.customize-control {
+    position: relative;
+    a.tooltip.hint--left {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: -10px;
+        border-radius: 50%;
+        color: #999;
+        border: none;
+        line-height: 8px;
+        width: 20px;
+        height: 20px;
+        z-index: 10;
+    }
+}
+.rtl {
+    li.customize-control {
+        a.tooltip.hint--left {
+            right: auto;
+            left: 0;
+        }
+    }
+    .hint,
+    [data-hint] {
+        &:before {
+            left: 20px;
+            border-left: none;
+            border-right: 5px solid #333;
+        }
+        &:after {
+            left: 195px;
+        }
+    }
+}

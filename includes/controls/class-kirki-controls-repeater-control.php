@@ -125,6 +125,26 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 					// We add it to the list of fields that need some extra filtering/processing.
 					$media_fields_to_filter[ $key ] = true;
 				}
+
+				// If the field is a dropdown-pages field then add it to args.
+				if ( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
+
+					$l10n = Kirki_l10n::get_strings();
+					$dropdown = wp_dropdown_pages(
+						array(
+							'name'              => '',
+							'echo'              => 0,
+							'show_option_none'  => esc_attr( $l10n['select-page'] ),
+							'option_none_value' => '0',
+							'selected'          => '',
+						)
+					);
+
+					// Hackily add in the data link parameter.
+					$dropdown = str_replace( '<select', '<select data-field="'.esc_attr( $args['fields'][ $key ]['id'] ).'"' . $this->get_link(), $dropdown );
+
+					$args['fields'][ $key ]['dropdown'] = $dropdown;
+				}
 			}
 
 			$this->fields = $args['fields'];
@@ -212,6 +232,13 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 						break;
 					}
 				}
+
+				foreach ( $this->fields as $field ) {
+					if ( isset( $field['type'] ) && 'dropdown-pages' === $field['type'] ) {
+						wp_enqueue_script( 'kirki-dropdown-pages' );
+						break;
+					}
+				}
 			}
 
 			wp_enqueue_script( 'kirki-repeater' );
@@ -226,7 +253,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		protected function render_content() {
 			?>
 			<?php $l10n = Kirki_l10n::get_strings(); ?>
-			<?php if ( '' != $this->tooltip ) : ?>
+			<?php if ( '' !== $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
 			<label>
@@ -264,7 +291,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			<script type="text/html" class="customize-control-repeater-content">
 				<# var field; var index = data.index; #>
 
-
 				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
 					<div class="repeater-row-header">
@@ -295,7 +321,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 								<# } else if ( 'checkbox' === field.type ) { #>
 
 									<label>
-										<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> />
+										<input type="checkbox" value="true" data-field="{{{ field.id }}}" <# if ( field.default ) { #> checked="checked" <# } #> /> {{ field.label }}
 										<# if ( field.description ) { #>
 											{{ field.description }}
 										<# } #>
@@ -317,6 +343,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										</select>
 									</label>
 
+								<# } else if ( 'dropdown-pages' === field.type ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{{ data.label }}}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{{ field.description }}}</span>
+										<# } #>
+										<div class="customize-control-content repeater-dropdown-pages">{{{ field.dropdown }}}</div>
+									</label>
+
 								<# } else if ( 'radio' === field.type ) { #>
 
 									<label>
@@ -329,8 +367,8 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 										<# _.each( field.choices, function( choice, i ) { #>
 											<label>
-												<input type="radio" name="{{{ field.id }}}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ choice }} <br/>
-												</label>
+												<input type="radio" name="{{{ field.id }}}{{ index }}" data-field="{{{ field.id }}}" value="{{{ i }}}" <# if ( field.default == i ) { #> checked="checked" <# } #>> {{ choice }} <br/>
+											</label>
 										<# }); #>
 									</label>
 

@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Multicheck' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'multicheck';
+			$this->type = 'kirki-multicheck';
 
 		}
 

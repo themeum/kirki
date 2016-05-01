@@ -30,7 +30,7 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 		 * @access public
 		 * @var string
 		 */
-		public $type = 'multicheck';
+		public $type = 'kirki-multicheck';
 
 		/**
 		 * Enqueue control related scripts/styles.
