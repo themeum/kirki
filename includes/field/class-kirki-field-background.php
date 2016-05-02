@@ -33,7 +33,8 @@ if ( ! class_exists( 'Kirki_Field_Background' ) ) {
 			parent::__construct( $config_id, $args );
 
 			// Apply migration filters for theme_mods.
-			foreach( array( 'color', 'repeat', 'size', 'attach', 'position' ) as $property ) {
+			$properties = array( 'color', 'repeat', 'size', 'attach', 'position' );
+			foreach ( $properties as $property ) {
 				add_filter( 'theme_mod_' . $this->settings . '_' . $property, array( $this, 'get_theme_mod_' . $property ) );
 			}
 		}
