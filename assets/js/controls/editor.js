@@ -101,7 +101,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			editorWrapper.addClass( control.id );
 		} else {
 			editorWrapper.removeClass();
-			editorWrapper.addClass( 'hidden' );
+			editorWrapper.addClass( 'hide' );
 		}
 
 	},
@@ -127,7 +127,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
 			return false;
 		}
 
@@ -143,7 +143,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Modifies the height of the preview area.
 	 */
 	previewHeight: function() {
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
 			if ( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
 				jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
 			}

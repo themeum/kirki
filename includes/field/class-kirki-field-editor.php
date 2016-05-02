@@ -72,7 +72,7 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 		public function add_editor() {
 			wp_enqueue_script( 'tiny_mce' );
 
-			echo '<div id="kirki_editor_pane" class="hidden">';
+			echo '<div id="kirki_editor_pane" class="hide">';
 			wp_editor( '', 'kirki-editor', array(
 				'_content_editor_dfw' => false,
 				'drag_drop_upload'    => true,
