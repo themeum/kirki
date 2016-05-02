@@ -65,7 +65,11 @@
 
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
-									jQuery( args.element ).html( val );
+									if ( 'undefined' !== typeof args.attr && undefined !== args.attr ) {
+										jQuery( args.element ).attr( args.attr, val );
+									} else {
+										jQuery( args.element ).html( val );
+									}
 
 								// Add CSS
 								} else {
