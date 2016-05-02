@@ -99,7 +99,7 @@
 										if ( _.contains( [ 'top', 'bottom', 'left', 'right' ], subValueKey ) ) {
 											cssArray[ i ] += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										} else {
-											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+											cssArray[ i ] += args.element + '{' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									}
 								});
