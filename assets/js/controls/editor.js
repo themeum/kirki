@@ -9,6 +9,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		    element       = control.container.find( 'textarea' ),
 		    toggler       = control.container.find( '.toggle-editor' ),
 		    editorWrapper = jQuery( '#kirki_editor_pane' ),
+		    wpEditorArea  = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
 		    setChange,
 		    content;
 
@@ -30,6 +31,9 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 				// Add the content to the editor.
 				control.setEditorContent( editor );
 
+				// Modify the preview-area height.
+				control.previewHeight();
+
 			});
 
 			// Update the option from the editor contents on change.
@@ -48,6 +52,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 				});
 
 			}
+
+			// Handle text mode.
+			wpEditorArea.on( 'change keyup paste', function() {
+				wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
+			});
+
 		});
 
 	},
@@ -91,7 +101,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			editorWrapper.addClass( control.id );
 		} else {
 			editorWrapper.removeClass();
-			editorWrapper.addClass( 'hidden' );
+			editorWrapper.addClass( 'hide' );
 		}
 
 	},
@@ -117,7 +127,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
 			return false;
 		}
 
@@ -127,6 +137,21 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			return false;
 		}
 
+	},
+
+	/**
+	 * Modifies the height of the preview area.
+	 */
+	previewHeight: function() {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
+			if ( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
+			}
+		} else {
+			if ( ! jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).addClass( 'is-kirki-editor-open' );
+			}
+		}
 	}
 
 });

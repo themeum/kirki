@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,28 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 2.3.2 =
+
+May 2, 2016, dev time: 52 hours.
+
+* NEW: Completely refactored `editor` controls.
+* NEW: Completely re-styled `code` controls.
+* NEW: Added a new `kirki/{$config_id}/styles` filter ([#908](https://github.com/aristath/kirki/issues/908)).
+* NEW: Added a `customize-control-kirki` class to all Kirki controls.
+* FIX: Field type number : Cannot read property 'min' of undefined ([#911](https://github.com/aristath/kirki/issues/911)).
+* FIX: All controls are now prefixed ([#918](https://github.com/aristath/kirki/issues/918))
+* FIX: `alpha` argument in color-alpha controls ([#932](https://github.com/aristath/kirki/issues/932)).
+* FIX: Name attribute in repeaters (props @guillaumemolter).
+* FIX: Missing label for checkbox controls inside repeaters (props @guillaumemolter).
+* FIX: Placing 2 editor controls in the customizer leads to odd behaviour ([#140](https://github.com/aristath/kirki/issues/140)).
+* FIX: `active_callback` conbined with the old `required` argument. ([#906](https://github.com/aristath/kirki/issues/906)).
+* FIX: Double prefix and suffix in `js_vars` ([#943](https://github.com/aristath/kirki/issues/943)).
+* FIX: Typography control returns both 'subset' and 'subsets' indexes with the same value ([#948](https://github.com/aristath/kirki/issues/948)).
+* FIX: Use `strict` JS mode in all controls.
+
 = 2.3.1 =
+
+April 19, 2016, dev time: 30 hours.
 
 * FIX: Spacing control JS dependencies.
 * FIX: Output property ignored in multicolor field.
