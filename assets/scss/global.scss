@@ -17,6 +17,12 @@
 	}
 }
 
+#customize-preview {
+	&.is-kirki-editor-open{
+		height: calc(100% - 300px);
+	}
+}
+
 .customize-control-kirki {
 	.description {
 		font-style: normal;

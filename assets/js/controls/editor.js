@@ -31,6 +31,9 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 				// Add the content to the editor.
 				control.setEditorContent( editor );
 
+				// Modify the preview-area height.
+				control.previewHeight();
+
 			});
 
 			// Update the option from the editor contents on change.
@@ -134,6 +137,21 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			return false;
 		}
 
+	},
+
+	/**
+	 * Modifies the height of the preview area.
+	 */
+	previewHeight: function() {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
+			if ( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
+			}
+		} else {
+			if ( ! jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).addClass( 'is-kirki-editor-open' );
+			}
+		}
 	}
 
 });
