@@ -32,8 +32,10 @@ if ( ! class_exists( 'Kirki_Field_Background' ) ) {
 			// Call the parent-class constructor.
 			parent::__construct( $config_id, $args );
 
-			// Apply color filters for theme_mods.
-			add_filter( $this->settings . '_color', array( $this, 'get_theme_mod_color' ) );
+			// Apply migration filters for theme_mods.
+			foreach( array( 'color', 'repeat', 'size', 'attach', 'position' ) as $property ) {
+				add_filter( 'theme_mod_' . $this->settings . '_' . $property, array( $this, 'get_theme_mod_' . $property ) );
+			}
 		}
 
 		/**
@@ -52,32 +54,94 @@ if ( ! class_exists( 'Kirki_Field_Background' ) ) {
 		 * and returning the right value.
 		 *
 		 * @access public
-		 * @param string $value The color value.
+		 * @param string $value The value.
 		 * @return string
 		 */
 		public function get_theme_mod_color( $value ) {
+			return $this->get_theme_mod( 'color', $value );
+		}
+
+
+		/**
+		 * Takes care of migrating previous versions to the new format
+		 * and returning the right value.
+		 *
+		 * @access public
+		 * @param string $value The value.
+		 * @return string
+		 */
+		public function get_theme_mod_repeat( $value ) {
+			return $this->get_theme_mod( 'repeat', $value );
+		}
+
+		/**
+		 * Takes care of migrating previous versions to the new format
+		 * and returning the right value.
+		 *
+		 * @access public
+		 * @param string $value The value.
+		 * @return string
+		 */
+		public function get_theme_mod_size( $value ) {
+			return $this->get_theme_mod( 'size', $value );
+		}
+
+		/**
+		 * Takes care of migrating previous versions to the new format
+		 * and returning the right value.
+		 *
+		 * @access public
+		 * @param string $value The value.
+		 * @return string
+		 */
+		public function get_theme_mod_attach( $value ) {
+			return $this->get_theme_mod( 'attach', $value );
+		}
+
+		/**
+		 * Takes care of migrating previous versions to the new format
+		 * and returning the right value.
+		 *
+		 * @access public
+		 * @param string $value The value.
+		 * @return string
+		 */
+		public function get_theme_mod_position( $value ) {
+			return $this->get_theme_mod( 'position', $value );
+		}
+
+		/**
+		 * Takes care of migrating previous versions to the new format
+		 * and returning the right value.
+		 *
+		 * @access public
+		 * @param string $context The sub-control.
+		 * @param string $value   The value.
+		 * @return string
+		 */
+		public function get_theme_mod( $context = '', $value ) {
 
 			// If this field is not using theme_mods, then just return the value.
 			if ( 'theme_mod' !== $this->option_type ) {
 				return $value;
 			}
 			// Make sure we're using a color field for this background.
-			if ( ! is_array( $this->default ) || ! isset( $this->default['color'] ) ) {
+			if ( ! is_array( $this->default ) || ! isset( $this->default[ $context ] ) ) {
 				return $value;
 			}
 
 			// If we don't have a $this->settings . '_color' theme_mod then we don't need to migrate anything.
-			if ( false !== get_theme_mod( $this->settings . '_color', false ) ) {
+			if ( false === get_theme_mod( $this->settings . '_' . $context, false ) ) {
 				return $value;
 			}
 
 			// Update the new format value and delete the old theme-mod.
 			$new_value          = get_theme_mod( $this->settings, array() );
-			$new_value['color'] = get_theme_mod( $this->settings . '_color', false );
+			$new_value['color'] = get_theme_mod( $this->settings . '_' . $context, false );
 			set_theme_mod( $this->settings, $new_value );
-			remove_theme_mod( $this->settings . '_color' );
+			remove_theme_mod( $this->settings . '_' . $context );
 
-			return $new_value['color'];
+			return $new_value[ $context ];
 		}
 	}
 }
