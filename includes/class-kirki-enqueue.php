@@ -110,7 +110,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'radio-buttonset' => array( 'jquery', 'customize-base' ),
 				'radio-image'     => array( 'jquery', 'customize-base' ),
 				'radio'           => array( 'jquery', 'customize-base' ),
-				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ),
+				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'kirki-l10n' ),
 				'select'          => array( 'jquery', 'customize-base', 'selectize' ),
 				'slider'          => array( 'jquery', 'customize-base' ),
 				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),

@@ -286,7 +286,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 * @access public
 		 */
 		public function repeater_js_template() {
-			$l10n = Kirki_l10n::get_strings();
 			?>
 			<script type="text/html" class="customize-control-repeater-content">
 				<# var field; var index = data.index; #>
@@ -434,22 +433,22 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-image-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-image-selected'] ); ?>" >
+									<figure class="kirki-image-attachment" data-placeholder="{{ window.kirki.l10n['no-image-selected'] }}" >
 										<# if ( field.default ) { #>
 											<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 											<img src="{{{ defaultImageURL }}}">
 										<# } else { #>
-											<?php esc_attr_e( $l10n['no-image-selected'] ); ?>
+											{{ window.kirki.l10n['no-image-selected'] }}
 										<# } #>
 									</figure>
 
 									<div class="actions">
-										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
-										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-image'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-image'] ); ?>" >
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ window.kirki.l10n['remove'] }}</button>
+										<button type="button" class="button upload-button" data-label=" {{ window.kirki.l10n['add-image'] }}" data-alt-label="{{ window.kirki.l10n['change-image'] }}" >
 											<# if ( field.default ) { #>
-												<?php esc_attr_e( $l10n['change-image'] ); ?>
+												{{ window.kirki.l10n['change-image'] }}
 											<# } else { #>
-												<?php esc_attr_e( $l10n['add-image'] ); ?>
+												{{ window.kirki.l10n['add-image'] }}
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -470,22 +469,22 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-file-attachment" data-placeholder="<?php esc_attr_e( $l10n['no-file-selected'] ); ?>" >
+									<figure class="kirki-file-attachment" data-placeholder="{{ window.kirki.l10n['no-file-selected'] }}" >
 										<# if ( field.default ) { #>
 											<# var defaultFilename = ( field.default.filename ) ? field.default.filename : field.default; #>
 											<span class="file"><span class="dashicons dashicons-media-default"></span> {{ defaultFilename }}</span>
 										<# } else { #>
-											<?php esc_attr_e( $l10n['no-file-selected'] ); ?>
+											{{ window.kirki.l10n['no-file-selected'] }}
 										<# } #>
 									</figure>
 
 									<div class="actions">
-										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_attr_e( $l10n['remove'] ); ?></button>
-										<button type="button" class="button upload-button" data-label="<?php esc_attr_e( $l10n['add-file'] ); ?>" data-alt-label="<?php esc_attr_e( $l10n['change-file'] ); ?>" >
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>">{{ window.kirki.l10n.remove }}</button>
+										<button type="button" class="button upload-button" data-label="{{ window.kirki.l10n['add-file'] }}" data-alt-label="{{ window.kirki.l10n['change-file'] }}" >
 											<# if ( field.default ) { #>
-												<?php esc_attr_e( $l10n['change-file'] ); ?>
+												{{ window.kirki.l10n['change-file'] }}
 											<# } else { #>
-												<?php esc_attr_e( $l10n['add-file'] ); ?>
+												{{ window.kirki.l10n['add-file'] }}
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -499,7 +498,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							</div>
 						<# }); #>
-						<button type="button" class="button-link repeater-row-remove"><?php esc_attr_e( $l10n['remove'] ); ?></button>
+						<button type="button" class="button-link repeater-row-remove">{{ window.kirki.l10n.remove }}</button>
 					</div>
 				</li>
 			</script>
