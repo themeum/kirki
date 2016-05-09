@@ -41,8 +41,8 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 				foreach ( $field['required'] as $requirement ) {
 					// Handles "AND" functionality.
 					$show = self::evaluate_requirement( $object, $field, $requirement );
-					// No need to process further if one requirement returns false
-					if( ! $show ) {
+					// No need to process further if one requirement returns false.
+					if ( ! $show ) {
 						return false;
 					}
 				}
@@ -65,12 +65,12 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 		private static function evaluate_requirement( $object, $field, $requirement ) {
 
 			$show = true;
-			// Test for callables first
+			// Test for callables first.
 			if ( is_callable( $requirement ) ) {
 
 				$show = call_user_func_array( $requirement, array( $field, $object ) );
 
-			// Look for comparison array
+			// Look for comparison array.
 			} elseif ( is_array( $requirement ) && isset( $requirement['operator'], $requirement['value'], $requirement['setting'] ) ) {
 
 				if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 				}
 
 				$current_setting = $object->manager->get_setting( $requirement['setting'] );
-				
+
 				/**
 				 * Depending on the 'operator' argument we use,
 				 * we'll need to perform the appropriate comparison
@@ -95,9 +95,9 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 					$show = false;
 					foreach ( $requirement as $sub_requirement ) {
 						$show = self::evaluate_requirement( $object, $field, $sub_requirement );
-						// No need to go on if one sub_requirement returns true
+						// No need to go on if one sub_requirement returns true.
 						if ( $show ) {
-							return true; 
+							return true;
 						}
 					}
 				} else {
