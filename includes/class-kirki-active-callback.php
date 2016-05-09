@@ -103,7 +103,6 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 				} else {
 					return true;
 				}
-
 			}
 
 			return $show;
