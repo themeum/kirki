@@ -63,6 +63,13 @@
 									val = args.prefix + newval + args.units + args.suffix;
 								}
 
+								// Simple tweak for background-image properties.
+								if ( 'background-image' === args.property ) {
+									if ( 0 > val.indexOf( 'url(' ) ) {
+										val = 'url("' + val + '")';
+									}
+								}
+
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
 									if ( 'undefined' !== typeof args.attr && undefined !== args.attr ) {
