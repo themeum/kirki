@@ -36,13 +36,13 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 
 			$field = $fields[ $object->setting->id ];
 
-			if ( isset( $field['required'] ) && is_array( $field['required'] ) ) {
+			if ( isset( $field['required'] ) ) {
 
 				foreach ( $field['required'] as $requirement ) {
 					// Handles "AND" functionality.
-					if ( $show ) {
-						$show = self::evaluate_requirement( $object, $field, $requirement );
-					} else {
+					$show = self::evaluate_requirement( $object, $field, $requirement );
+					// No need to process further if one requirement returns false
+					if( ! $show ) {
 						return false;
 					}
 				}
@@ -63,24 +63,15 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 		 * @return boolean
 		 */
 		private static function evaluate_requirement( $object, $field, $requirement ) {
+
 			$show = true;
-			if ( ! isset( $requirement['operator'] ) || ! isset( $requirement['value'] ) || ! isset( $requirement['setting'] ) ) {
-				if ( is_array( $requirement ) ) {
-					$show = false;
-					foreach ( $requirement as $sub_requirement ) {
-						if ( ! isset( $sub_requirement['operator'] ) || ! isset( $sub_requirement['value'] ) || ! isset( $sub_requirement['setting'] ) ) {
-							return true;
-						} else {
-							// Handles "OR" functionality.
-							if ( ! $show ) {
-								$show = self::evaluate_requirement( $object, $field, $sub_requirement );
-							}
-						}
-					}
-				} else {
-					return true;
-				}
-			} else {
+			// Test for callables first
+			if ( is_callable( $requirement ) ) {
+
+				$show = call_user_func_array( $requirement, array( $field, $object ) );
+
+			// Look for comparison array
+			} elseif ( is_array( $requirement ) && isset( $requirement['operator'], $requirement['value'], $requirement['setting'] ) ) {
 
 				if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
 					if ( false === strpos( $requirement['setting'], '[' ) ) {
@@ -89,23 +80,30 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 				}
 
 				$current_setting = $object->manager->get_setting( $requirement['setting'] );
-
-				/**
-				 * If one of the conditions is false,
-				 * then we don't need to further proceed.
-				 * ALL conditions must be met in order to show the control,
-				 * so we'll return early and terminate the loop.
-				 */
-				if ( ! $show ) {
-					return false;
-				}
-
+				
 				/**
 				 * Depending on the 'operator' argument we use,
 				 * we'll need to perform the appropriate comparison
 				 * and figure out if the control will be shown or not.
 				 */
 				$show = self::compare( $requirement['value'], $current_setting->value(), $requirement['operator'] );
+
+			} else {
+
+				if ( is_array( $requirement ) ) {
+					// Handles "OR" functionality.
+					$show = false;
+					foreach ( $requirement as $sub_requirement ) {
+						$show = self::evaluate_requirement( $object, $field, $sub_requirement );
+						// No need to go on if one sub_requirement returns true
+						if ( $show ) {
+							return true; 
+						}
+					}
+				} else {
+					return true;
+				}
+
 			}
 
 			return $show;
