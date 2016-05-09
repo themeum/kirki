@@ -97,7 +97,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'color'           => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
-				'date'            => array( 'jquery', 'customize-base', 'jquery-ui', 'jquery-ui-datepicker' ),
+				'date'            => array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ),
 				'dimension'       => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
 				'dropdown-pages'  => array( 'jquery', 'customize-base', 'selectize' ),
 				'editor'          => array( 'jquery', 'customize-base', 'kirki-l10n' ),
