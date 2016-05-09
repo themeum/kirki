@@ -1,0 +1,24 @@
+.customize-control-kirki-editor {
+}
+
+#kirki_editor_pane {
+  background: #fff;
+  z-index: 1;
+  padding-top: 5px;
+  border-top: 1px solid #dedede;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: bottom .2s;
+  -moz-transition: bottom .2s;
+  -ms-transition: bottom .2s;
+  -o-transition: bottom .2s;
+  transition: bottom .2s;
+  &.hide {
+    bottom: -301px;
+    z-index: -999;
+  }
+}
+.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in {
+  z-index: 99999999 !important;
+}

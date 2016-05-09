@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-palette'] = wp.customize.Control.extend({
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this;
 
 		// Change the value

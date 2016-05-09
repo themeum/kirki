@@ -2,7 +2,6 @@
 
 if [ $# -lt 3 ]; then
 	echo "usage: $0 message <old-version> <new-version>"
-	echo "OR: $0 <old-version> <new-version> push (to directly push to both git & svn)"
 	exit 1
 fi
 

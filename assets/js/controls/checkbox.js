@@ -3,10 +3,10 @@ wp.customize.controlConstructor['kirki-checkbox'] = wp.customize.Control.extend(
 	// When we're finished loading continue processing
 	ready: function() {
 
-		var control = this;
+		'use strict';
 
-		// Get the initial value
-		var value = control.setting._value;
+		var control = this,
+		    value   = control.setting._value;
 
 		// Change the value
 		this.container.on( 'change', 'input', function() {

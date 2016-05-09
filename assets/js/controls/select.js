@@ -3,6 +3,8 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 	ready: function() {
 
+		'use strict';
+
 		var control  = this,
 		    element  = this.container.find( 'select' ),
 		    multiple = parseInt( element.data( 'multiple' ) ),

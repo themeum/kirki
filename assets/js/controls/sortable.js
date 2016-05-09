@@ -1,5 +1,8 @@
 wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
+
 	ready: function() {
+
+		'use strict';
 
 		var control = this;
 
@@ -32,6 +35,9 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 	 * Updates the sorting list
 	 */
 	sort: function() {
+
+		'use strict';
+
 		var newValue = [];
 		this.sortableContainer.find( 'li' ).each( function() {
 			var $this = jQuery( this );
@@ -41,6 +47,7 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		});
 
 		this.setValue( newValue, true );
+
 	},
 
 	/**
@@ -49,6 +56,8 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 	 * @return Object
 	 */
 	getValue: function() {
+
+		'use strict';
 
 		// The setting is saved in PHP serialized format
 		return unserialize( this.setting.get() );
@@ -63,7 +72,10 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 	 */
 	setValue: function( newValue, refresh ) {
 
+		'use strict';
+
 		var newValueSerialized = serialize( newValue );
+
 		this.setting.set( newValueSerialized );
 
 		// Update the hidden field

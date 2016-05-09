@@ -2,6 +2,8 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 	ready: function() {
 
+		'use strict';
+
 		var control = this,
 		    colors  = control.params.choices,
 		    keys    = Object.keys( colors ),
@@ -64,14 +66,24 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 	 * @param newValue Object
 	 * @param refresh If we want to refresh the previewer or not
 	 */
-	setValue: function( newValue, refresh ) {
-		this.setting.set( kirkiRebuildValue( newValue ) );
+	setValue: function( value, refresh ) {
+
+		'use strict';
+
+		var control  = this,
+		    newValue = {};
+
+		_.each( value, function( newSubValue, i ) {
+			newValue[ i ] = newSubValue;
+		});
+
+		control.setting.set( newValue );
 
 		if ( refresh ) {
 
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
-			this.settingField.trigger( 'change' );
+			control.settingField.trigger( 'change' );
 
 		}
 

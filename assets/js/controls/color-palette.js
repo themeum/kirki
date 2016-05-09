@@ -3,6 +3,8 @@ wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.Control.ex
 	// When we're finished loading continue processing
 	ready: function() {
 
+		'use strict';
+
 		var control = this;
 
 		// Save the value

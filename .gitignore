@@ -21,11 +21,6 @@ Thumbs.db
 ##########
 _site
 
-# composer #
-############
-vendor
-composer.lock
-
 # SVN #
 #######
 .svn
