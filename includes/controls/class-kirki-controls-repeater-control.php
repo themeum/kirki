@@ -408,7 +408,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 							            <# if ( field.description ) { #>
 							                <span class="description customize-control-description">{{{ field.description }}}</span>
 							            <# } #>
-							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="{{ window.kirki.l10n['hex-value'] }}"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							        </label>
 

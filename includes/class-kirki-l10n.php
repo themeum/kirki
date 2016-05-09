@@ -210,6 +210,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'open-editor'           => esc_attr__( 'Open Editor', 'kirki' ),
 				'close-editor'          => esc_attr__( 'Close Editor', 'kirki' ),
 				'switch-editor'         => esc_attr__( 'Switch Editor', 'kirki' ),
+				'hex-value'             => esc_attr__( 'Hex Value', 'kirki' ),
 			);
 
 			$config = apply_filters( 'kirki/config', array() );
