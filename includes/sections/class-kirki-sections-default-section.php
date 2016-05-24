@@ -71,7 +71,6 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 						</div>
 						<# if ( data.description ) { #>
 							<div class="description customize-section-description">
-								<# console.log( data.description ); #>
 								{{{ data.description }}}
 							</div>
 						<# } #>
