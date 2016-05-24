@@ -67,7 +67,7 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 			}
 
 			// Take care of letter-spacing.
-			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
+			if ( isset( $value['letter-spacing'] ) && ( ! empty( $value['letter-spacing'] ) || '0' == $value['letter-spacing'] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['letter-spacing'] = $value['letter-spacing'];
 			}
 
