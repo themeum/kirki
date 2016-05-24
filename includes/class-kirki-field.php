@@ -260,6 +260,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected $row_label = array();
 
 		/**
+		 * Partial Refreshes array.
+		 *
+		 * @access protected
+		 * @var array
+		 */
+		protected $partial_refresh = array();
+
+		/**
 		 * Use only on image, cropped_image, upload controls.
 		 * Limit the Media library to a specific mime type
 		 *
@@ -481,6 +489,26 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 			// Take care of common typos.
 			if ( 'theme_mods' === $this->option_type ) {
 				$this->option_type = 'theme_mod';
+			}
+		}
+
+		/**
+		 * Modifications for partial refreshes.
+		 *
+		 * @access protected
+		 */
+		protected function set_partial_refresh() {
+			if ( ! is_array( $this->partial_refresh ) ) {
+				$this->partial_refresh = array();
+			}
+			foreach ( $this->partial_refresh as $id => $args ) {
+				if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
+					unset( $this->partial_refresh[ $id ] );
+					continue;
+				}
+			}
+			if ( ! empty( $this->partial_refresh ) ) {
+				$this->transport = 'postMessage';
 			}
 		}
 
