@@ -126,6 +126,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Add localization strings.
 			$l10n = Kirki_l10n::get_strings();
 			wp_localize_script( 'kirki-l10n', 'kirkiL10n', $l10n );
+			wp_enqueue_script( 'kirki-l10n' );
 
 			// Add fonts to our JS objects.
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
