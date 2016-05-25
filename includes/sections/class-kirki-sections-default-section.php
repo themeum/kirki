@@ -25,6 +25,19 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 		public $type = 'kirki-default';
 
 		/**
+		 * Gather the parameters passed to client JavaScript via JSON.
+		 *
+		 * @since 2.3.3
+		 *
+		 * @return array The array to be exported to the client as JSON.
+		 */
+		public function json() {
+			$array = parent::json();
+			$array['description'] = html_entity_decode( $array['description'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			return $array;
+		}
+
+		/**
 		 * An Underscore (JS) template for rendering this section.
 		 *
 		 * Class variables for this section class are available in the `data` JS object;
@@ -38,13 +51,13 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
 				<h3 class="accordion-section-title" tabindex="0">
 					{{ data.title }}
-					<span class="screen-reader-text"><?php echo esc_html( $l10n['open-section'] ); ?></span>
+					<span class="screen-reader-text">{{ window.kirki.l10n['open-section'] }}</span>
 				</h3>
 				<ul class="accordion-section-content">
 					<li class="customize-section-description-container">
 						<div class="customize-section-title">
 							<button class="customize-section-back" tabindex="-1">
-								<span class="screen-reader-text"><?php echo esc_html( $l10n['back'] ); ?></span>
+								<span class="screen-reader-text">{{ window.kirki.l10n.back }}</span>
 							</button>
 							<h3>
 								<span class="customize-action">
@@ -52,7 +65,7 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 								</span>
 								{{ data.title }}
 								<a href="#" class="kirki-reset-section" data-reset-section-id="{{ data.id }}">
-									<?php echo wp_kses_post( $l10n['reset-with-icon'] ); ?>
+									{{{ window.kirki.l10n['reset-with-icon'] }}}
 								</a>
 							</h3>
 						</div>

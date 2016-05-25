@@ -51,9 +51,8 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 				// Is this italic?
 				$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-weight'] = $font_weight;
-				if ( $is_italic ) {
-					$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = 'italic';
-				}
+				$font_style = $is_italic ? 'italic' : 'normal' ;
+				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = $font_style;
 			}
 
 			// Take care of font-size.
@@ -67,7 +66,7 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 			}
 
 			// Take care of letter-spacing.
-			if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
+			if ( isset( $value['letter-spacing'] ) && ( ! empty( $value['letter-spacing'] ) || '0' == $value['letter-spacing'] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['letter-spacing'] = $value['letter-spacing'];
 			}
 
