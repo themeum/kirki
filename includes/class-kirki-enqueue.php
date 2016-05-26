@@ -29,9 +29,31 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 * Adds actions to enqueue our assets.
 		 */
 		public function __construct() {
+			add_action( 'admin_enqueue_scripts', array( $this, 'customize_controls_l10n' ), 1 );
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
 			add_action( 'customize_controls_print_scripts', array( $this, 'branding' ) );
 			add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
+		}
+
+		/**
+		 * l10n helper for controls.
+		 */
+		public function customize_controls_l10n() {
+
+			// Register the l10n script.
+			wp_register_script( 'kirki-l10n', trailingslashit( Kirki::$url ) . 'assets/js/l10n.js' );
+
+			// Add localization strings.
+			// We'll do this on a per-config basis so that the filters are properly applied.
+			$configs = Kirki::$config;
+			$l10n    = array();
+			foreach( $configs as $id => $args ) {
+				$l10n[ $id ] = Kirki_l10n::get_strings( $id );
+			}
+
+			wp_localize_script( 'kirki-l10n', 'kirkiL10n', $l10n );
+			wp_enqueue_script( 'kirki-l10n' );
+
 		}
 
 		/**
@@ -86,9 +108,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register selectize.
 			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
-			// Register the l10n script.
-			wp_register_script( 'kirki-l10n', trailingslashit( Kirki::$url ) . 'assets/js/l10n.js' );
-
 			// An array of control scripts and their dependencies.
 			$scripts = array(
 				// Add controls scripts.
@@ -122,11 +141,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			foreach ( $scripts as $id => $dependencies ) {
 				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
 			}
-
-			// Add localization strings.
-			$l10n = Kirki_l10n::get_strings();
-			wp_localize_script( 'kirki-l10n', 'kirkiL10n', $l10n );
-			wp_enqueue_script( 'kirki-l10n' );
 
 			// Add fonts to our JS objects.
 			$google_fonts   = Kirki_Fonts::get_google_fonts();

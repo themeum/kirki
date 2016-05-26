@@ -47,12 +47,12 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 		 */
 		public function to_json() {
 			parent::to_json();
-			$l10n = Kirki_l10n::get_strings();
+			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
 			$dropdown = wp_dropdown_pages(
 				array(
 					'name'              => '_customize-dropdown-pages-' . esc_attr( $this->id ),
 					'echo'              => 0,
-					'show_option_none'  => esc_attr( $l10n['select-page'] ),
+					'show_option_none'  => $l10n['select-page'],
 					'option_none_value' => '0',
 					'selected'          => esc_attr( $this->value() ),
 				)

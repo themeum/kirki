@@ -46,7 +46,6 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 		public function to_json() {
 			parent::to_json();
 			$this->add_values_backwards_compatibility();
-			$this->json['l10n'] = Kirki_l10n::get_strings();
 			$defaults = array(
 				'font-family'    => false,
 				'font-size'      => false,
@@ -92,7 +91,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 					<div class="font-family">
 						<h5>{{ data.l10n['font-family'] }}</h5>
-						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.i18n['select-font-family'] }}"></select>
+						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
 					</div>
 					<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 						<div class="variant hide-on-standard-fonts kirki-variant-wrapper">
