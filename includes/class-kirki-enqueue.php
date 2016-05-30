@@ -36,7 +36,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		}
 
 		/**
-		 * l10n helper for controls.
+		 * L10n helper for controls.
 		 */
 		public function customize_controls_l10n() {
 
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// We'll do this on a per-config basis so that the filters are properly applied.
 			$configs = Kirki::$config;
 			$l10n    = array();
-			foreach( $configs as $id => $args ) {
+			foreach ( $configs as $id => $args ) {
 				$l10n[ $id ] = Kirki_l10n::get_strings( $id );
 			}
 

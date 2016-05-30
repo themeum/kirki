@@ -52,7 +52,7 @@ if ( ! class_exists( 'Kirki_Controls_Dropdown_Pages_Control' ) ) {
 				array(
 					'name'              => '_customize-dropdown-pages-' . esc_attr( $this->id ),
 					'echo'              => 0,
-					'show_option_none'  => $l10n['select-page'],
+					'show_option_none'  => esc_attr( $l10n['select-page'] ),
 					'option_none_value' => '0',
 					'selected'          => esc_attr( $this->value() ),
 				)
