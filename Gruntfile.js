@@ -19,19 +19,6 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// Generate translation file
-		makepot: {
-			target: {
-				options: {
-					type: 'wp-plugin',
-					domainPath: 'languages',
-					exclude: [
-						'tests/.*'
-					]
-				}
-			}
-		},
-
 		// Convert readme.txt to readme.md
 		wp_readme_to_markdown: {
 			your_target: {
@@ -88,7 +75,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-curl' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
@@ -99,7 +85,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', ['sass'] );
 	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
-	grunt.registerTask( 'makepot', ['makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 
 };
