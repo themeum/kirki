@@ -26,6 +26,12 @@ if ( ! class_exists( 'Kirki_Output_Property_Font_Family' ) ) {
 			$google_fonts_array = Kirki_Fonts::get_google_fonts();
 			$backup_fonts       = Kirki_Fonts::get_backup_fonts();
 
+			// Make sure the value is a string.
+			// If not, then early exit.
+			if ( ! is_string( $this->value ) ) {
+				return;
+			}
+
 			// Hack for standard fonts.
 			$this->value = str_replace( '&quot;', '"', $this->value );
 
