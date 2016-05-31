@@ -37,6 +37,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 2.3.4 ###
+
+June 1, 2016, dev time: 30 minutes.
+
+* FIX: Repeater JS issues due to error in translation strings.
+
 ### 2.3.3 ###
 
 May 31, 2016, dev time: 17 hours.
