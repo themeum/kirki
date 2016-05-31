@@ -126,30 +126,39 @@ function kirkiSetSettingValue( setting, value ) {
 		if ( undefined !== value['font-family'] ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
-			selectize = $select[0].selectize;
 
-			// Update the value visually in the control
-			selectize.setValue( value['font-family'], true );
+			if ( 'undefined' !== typeof select ) {
+				selectize = $select[0].selectize;
+
+				// Update the value visually in the control
+				selectize.setValue( value['font-family'], true );
+			}
 
 		}
 
 		if ( undefined !== value.variant ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize();
-			selectize = $select[0].selectize;
 
-			// Update the value visually in the control
-			selectize.setValue( value.variant, true );
+			if ( 'undefined' !== typeof select ) {
+				selectize = $select[0].selectize;
+
+				// Update the value visually in the control
+				selectize.setValue( value.variant, true );
+			}
 
 		}
 
 		if ( undefined !== value.subsets ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
-			selectize = $select[0].selectize;
 
-			// Update the value visually in the control
-			selectize.setValue( value.subset, true );
+			if ( 'undefined' !== typeof select ) {
+				selectize = $select[0].selectize;
+
+				// Update the value visually in the control
+				selectize.setValue( value.subset, true );
+			}
 
 		}
 

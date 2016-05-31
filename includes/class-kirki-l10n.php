@@ -210,14 +210,19 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'open-editor'           => esc_attr__( 'Open Editor', 'kirki' ),
 				'close-editor'          => esc_attr__( 'Close Editor', 'kirki' ),
 				'switch-editor'         => esc_attr__( 'Switch Editor', 'kirki' ),
+				'hex-value'             => esc_attr__( 'Hex Value', 'kirki' ),
 			);
 
+			// Apply global changes from the kirki/config filter.
+			// This is generally to be avoided.
+			// It is ONLY provided here for backwards-compatibility reasons.
+			// Please use the kirki/{$config_id}/l10n filter instead.
 			$config = apply_filters( 'kirki/config', array() );
-
 			if ( isset( $config['i18n'] ) ) {
 				$translation_strings = wp_parse_args( $config['i18n'], $translation_strings );
 			}
 
+			// Apply l10n changes using the kirki/{$config_id}/l10n filter.
 			return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 
 		}

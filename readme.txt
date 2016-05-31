@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,29 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.3.3 =
+
+May 31, 2016, dev time: 17 hours.
+
+* FIX: Editor field covering the content ([#955](https://github.com/aristath/kirki/issues/955)).
+* FIX: Smoother transition for editor switching.
+* FIX: Code field JS error when using "php" mode ([#958](https://github.com/aristath/kirki/issues/958)).
+* FIX: `postMessage` for typography fields ([#528](https://github.com/aristath/kirki/issues/528)).
+* FIX: translation strings ([#960](https://github.com/aristath/kirki/issues/960)).
+* FIX: `postMessage` for `background-image` properties ([#963](https://github.com/aristath/kirki/issues/963)).
+* FIX: Reset Typography Control without font-family default value ([#951](https://github.com/aristath/kirki/issues/951)).
+* FIX: Typography field: font-style missing in CSS output if variant is regular/400 ([#977](https://github.com/aristath/kirki/issues/977)).
+* FIX: Placing two editor controls in the customizer leads to odd behavior ([#140](https://github.com/aristath/kirki/issues/140)).
+* FIX: Typography field: letter-spacing missing in CSS output if its value is 0 ([#978](https://github.com/aristath/kirki/issues/978)).
+* FIX: Allow using HTML in section descriptions ([#976](https://github.com/aristath/kirki/issues/976)).
+* FIX: Bug preventing partial refreshes from working properly ([#991](https://github.com/aristath/kirki/issues/991)).
+* FIX: Better internationalization handling.
+* FIX: Output errors on typography settings ([#975](https://github.com/aristath/kirki/issues/975)).
+* NEW: Added a new `attr` argument to `js_vars` ([#957](https://github.com/aristath/kirki/issues/957)).
+* NEW: Implemented both `AND` and `OR` conditionals in `active_callback` arrays ([#839](https://github.com/aristath/kirki/issues/839)).
+* NEW: Allow defining an array of dashicons to use.
+* NEW: Added a `link` control type.
 
 = 2.3.2 =
 

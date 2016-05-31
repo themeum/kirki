@@ -32,57 +32,80 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 				return true;
 			}
 
-			$current_object = $fields[ $object->setting->id ];
+			$show = true;
 
-			if ( isset( $current_object['required'] ) && is_array( $current_object['required'] ) ) {
+			$field = $fields[ $object->setting->id ];
 
-				foreach ( $current_object['required'] as $requirement ) {
-					if ( ! isset( $requirement['operator'] ) || ! isset( $requirement['value'] ) || ! isset( $requirement['setting'] ) ) {
-						return true;
-					}
+			if ( isset( $field['required'] ) ) {
 
-					if ( isset( $current_object['option_name'] ) && '' !== $current_object['option_name'] ) {
-						if ( false === strpos( $requirement['setting'], '[' ) ) {
-							$requirement['setting'] = $current_object['option_name'] . '[' . $requirement['setting'] . ']';
-						}
-					}
-
-					$current_setting = $object->manager->get_setting( $requirement['setting'] );
-
-					/**
-					 * If the setting required does not exist, then show the control.
-					 * This ensures that even if we enter the wrong settings,
-					 * the field will not mysteriously disappear.
-					 */
-					if ( ! is_object( $current_setting ) ) {
-						$show = true;
-					}
-
-					/**
-					 * If one of the conditions is false,
-					 * then we don't need to further proceed.
-					 * ALL conditions must be met in order to show the control,
-					 * so we'll return early and terminate the loop.
-					 */
-					if ( isset( $show ) && ! $show ) {
+				foreach ( $field['required'] as $requirement ) {
+					// Handles "AND" functionality.
+					$show = self::evaluate_requirement( $object, $field, $requirement );
+					// No need to process further if one requirement returns false.
+					if ( ! $show ) {
 						return false;
 					}
-
-					/**
-					 * Depending on the 'operator' argument we use,
-					 * we'll need to perform the appropriate comparison
-					 * and figure out if the control will be shown or not.
-					 */
-					$show = self::compare(
-						$requirement['value'],
-						$current_setting->value(),
-						$requirement['operator']
-					);
 				}
 			}
 
-			return ( isset( $show ) && ( false === $show ) ) ? false : true;
+			return $show;
 
+		}
+
+		/**
+		 * Figure out whether the current object should be displayed or not.
+		 * We're only parsing a single requirement here from the array of requirements.
+		 * This is a proxy function that facilitates evaluating and/or conditions.
+		 *
+		 * @param  WP_Customize_Setting $object      The current field.
+		 * @param  object               $field       The current object.
+		 * @param  array                $requirement A single requirement.
+		 * @return boolean
+		 */
+		private static function evaluate_requirement( $object, $field, $requirement ) {
+
+			$show = true;
+			// Test for callables first.
+			if ( is_callable( $requirement ) ) {
+
+				$show = call_user_func_array( $requirement, array( $field, $object ) );
+
+			// Look for comparison array.
+			} elseif ( is_array( $requirement ) && isset( $requirement['operator'], $requirement['value'], $requirement['setting'] ) ) {
+
+				if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
+					if ( false === strpos( $requirement['setting'], '[' ) ) {
+						$requirement['setting'] = $field['option_name'] . '[' . $requirement['setting'] . ']';
+					}
+				}
+
+				$current_setting = $object->manager->get_setting( $requirement['setting'] );
+
+				/**
+				 * Depending on the 'operator' argument we use,
+				 * we'll need to perform the appropriate comparison
+				 * and figure out if the control will be shown or not.
+				 */
+				$show = self::compare( $requirement['value'], $current_setting->value(), $requirement['operator'] );
+
+			} else {
+
+				if ( is_array( $requirement ) ) {
+					// Handles "OR" functionality.
+					$show = false;
+					foreach ( $requirement as $sub_requirement ) {
+						$show = self::evaluate_requirement( $object, $field, $sub_requirement );
+						// No need to go on if one sub_requirement returns true.
+						if ( $show ) {
+							return true;
+						}
+					}
+				} else {
+					return true;
+				}
+			}
+
+			return $show;
 		}
 
 		/**

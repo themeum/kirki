@@ -246,9 +246,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			value['font-size'] = jQuery( this ).val();
 			control.saveValue( value );
 
-			// Refresh the preview
-			wp.customize.previewer.refresh();
-
 		});
 
 		this.container.on( 'change keyup paste', '.line-height input', function() {
@@ -256,9 +253,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			// Add the value to the array and set the setting's value
 			value['line-height'] = jQuery( this ).val();
 			control.saveValue( value );
-
-			// Refresh the preview
-			wp.customize.previewer.refresh();
 
 		});
 
@@ -268,9 +262,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			value['letter-spacing'] = jQuery( this ).val();
 			control.saveValue( value );
 
-			// Refresh the preview
-			wp.customize.previewer.refresh();
-
 		});
 
 		this.container.on( 'change', '.text-align input', function() {
@@ -278,9 +269,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			// Add the value to the array and set the setting's value.
 			value['text-align'] = jQuery( this ).val();
 			control.saveValue( value );
-
-			// Refresh the preview
-			wp.customize.previewer.refresh();
 
 		});
 
@@ -291,9 +279,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			// Add the value to the array and set the setting's value.
 			value['text-transform'] = jQuery( this ).val();
 			control.saveValue( value );
-
-			// Refresh the preview
-			wp.customize.previewer.refresh();
 
 		});
 
@@ -308,9 +293,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 					// Add the value to the array and set the setting's value
 					value.color = picker.val();
 					control.saveValue( value );
-
-					// Refresh the preview
-					wp.customize.previewer.refresh();
 
 				}, 100 );
 

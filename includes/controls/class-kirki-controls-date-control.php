@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kirki_Controls_Date_Control' ) ) {
 		 * @access public
 		 */
 		public function enqueue() {
-			wp_enqueue_script( 'kirki-dashicons' );
+			wp_enqueue_script( 'kirki-date' );
 		}
 
 		/**

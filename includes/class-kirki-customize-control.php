@@ -77,14 +77,15 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			} else {
 				$this->json['default'] = $this->setting->default;
 			}
-			$this->json['js_vars'] = $this->js_vars;
-			$this->json['output']  = $this->output;
-			$this->json['value']   = $this->value();
-			$this->json['choices'] = $this->choices;
-			$this->json['link']    = $this->get_link();
-			$this->json['tooltip'] = $this->tooltip;
-			$this->json['id']      = $this->id;
-			$this->json['i18n']    = Kirki_l10n::get_strings( $this->kirki_config );
+			$this->json['js_vars']     = $this->js_vars;
+			$this->json['output']      = $this->output;
+			$this->json['value']       = $this->value();
+			$this->json['choices']     = $this->choices;
+			$this->json['link']        = $this->get_link();
+			$this->json['tooltip']     = $this->tooltip;
+			$this->json['id']          = $this->id;
+			$this->json['l10n']        = Kirki_l10n::get_strings( $this->kirki_config );
+			$this->json['kirkiConfig'] = $this->kirki_config;
 
 			if ( 'user_meta' == $this->option_type ) {
 				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );

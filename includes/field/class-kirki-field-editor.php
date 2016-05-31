@@ -33,7 +33,7 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 			parent::__construct( $config_id, $args );
 
 			// Add the editor.
-			add_action( 'customize_controls_print_footer_scripts', array( $this, 'add_editor' ) );
+			add_action( 'customize_controls_print_footer_scripts', array( __CLASS__, 'add_editor' ) );
 
 		}
 
@@ -67,12 +67,13 @@ if ( ! class_exists( 'Kirki_Field_Editor' ) ) {
 		/**
 		 * Adds the global textarea
 		 *
+		 * @static
 		 * @access public
 		 */
-		public function add_editor() {
+		public static function add_editor() {
 			wp_enqueue_script( 'tiny_mce' );
 
-			echo '<div id="kirki_editor_pane" class="hidden">';
+			echo '<div id="kirki_editor_pane" class="hide">';
 			wp_editor( '', 'kirki-editor', array(
 				'_content_editor_dfw' => false,
 				'drag_drop_upload'    => true,

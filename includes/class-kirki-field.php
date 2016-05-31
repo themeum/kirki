@@ -260,6 +260,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected $row_label = array();
 
 		/**
+		 * Partial Refreshes array.
+		 *
+		 * @access protected
+		 * @var array
+		 */
+		protected $partial_refresh = array();
+
+		/**
 		 * Use only on image, cropped_image, upload controls.
 		 * Limit the Media library to a specific mime type
 		 *
@@ -485,6 +493,26 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		}
 
 		/**
+		 * Modifications for partial refreshes.
+		 *
+		 * @access protected
+		 */
+		protected function set_partial_refresh() {
+			if ( ! is_array( $this->partial_refresh ) ) {
+				$this->partial_refresh = array();
+			}
+			foreach ( $this->partial_refresh as $id => $args ) {
+				if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
+					unset( $this->partial_refresh[ $id ] );
+					continue;
+				}
+			}
+			if ( ! empty( $this->partial_refresh ) ) {
+				$this->transport = 'postMessage';
+			}
+		}
+
+		/**
 		 * Sets the settings.
 		 * If we're using serialized options it makes sure that settings are properly formatted.
 		 * We'll also be escaping all setting names here for consistency.
@@ -538,7 +566,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected function set_active_callback() {
 
 			if ( is_array( $this->active_callback ) && ! is_callable( $this->active_callback ) ) {
-				if ( isset( $this->active_callback[0] ) && is_array( $this->active_callback[0] ) ) {
+				if ( isset( $this->active_callback[0] ) ) {
 					$this->required = $this->active_callback;
 				}
 			}

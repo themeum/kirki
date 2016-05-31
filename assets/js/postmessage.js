@@ -63,9 +63,20 @@
 									val = args.prefix + newval + args.units + args.suffix;
 								}
 
+								// Simple tweak for background-image properties.
+								if ( 'background-image' === args.property ) {
+									if ( 0 > val.indexOf( 'url(' ) ) {
+										val = 'url("' + val + '")';
+									}
+								}
+
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
-									jQuery( args.element ).html( val );
+									if ( 'undefined' !== typeof args.attr && undefined !== args.attr ) {
+										jQuery( args.element ).attr( args.attr, val );
+									} else {
+										jQuery( args.element ).html( val );
+									}
 
 								// Add CSS
 								} else {
@@ -95,7 +106,7 @@
 										if ( _.contains( [ 'top', 'bottom', 'left', 'right' ], subValueKey ) ) {
 											cssArray[ i ] += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										} else {
-											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+											cssArray[ i ] += args.element + '{' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									}
 								});

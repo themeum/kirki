@@ -18,7 +18,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			var editor  = tinyMCE.get( 'kirki-editor' );
 
 			// Add the button text
-			toggler.html( window.kirki.l10n['open-editor'] );
+			toggler.html( window.kirki.l10n[ control.params.kirkiConfig ]['open-editor'] );
 
 			toggler.on( 'click', function() {
 
@@ -30,6 +30,9 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 				// Add the content to the editor.
 				control.setEditorContent( editor );
+
+				// Modify the preview-area height.
+				control.previewHeight();
 
 			});
 
@@ -71,14 +74,14 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		// Reset all editor buttons.
 		// Necessary if we have multiple editor fields.
-		jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n['switch-editor'] );
+		jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['switch-editor'] );
 
 		// Change the button text & color.
 		if ( false !== control.getEditorWrapperSetting() ) {
-			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n['switch-editor'] );
-			jQuery( '#customize-control-' + control.getEditorWrapperSetting() + ' .toggle-editor' ).html( window.kirki.l10n['close-editor'] );
+			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['switch-editor'] );
+			jQuery( '#customize-control-' + control.getEditorWrapperSetting() + ' .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['close-editor'] );
 		} else {
-			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n['open-editor'] );
+			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['open-editor'] );
 		}
 
 	},
@@ -98,7 +101,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			editorWrapper.addClass( control.id );
 		} else {
 			editorWrapper.removeClass();
-			editorWrapper.addClass( 'hidden' );
+			editorWrapper.addClass( 'hide' );
 		}
 
 	},
@@ -124,7 +127,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hidden' ) ) {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
 			return false;
 		}
 
@@ -134,6 +137,21 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			return false;
 		}
 
+	},
+
+	/**
+	 * Modifies the height of the preview area.
+	 */
+	previewHeight: function() {
+		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
+			if ( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
+			}
+		} else {
+			if ( ! jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).addClass( 'is-kirki-editor-open' );
+			}
+		}
 	}
 
 });
