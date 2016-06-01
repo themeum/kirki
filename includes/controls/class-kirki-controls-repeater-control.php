@@ -499,7 +499,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							</div>
 						<# }); #>
-						<button type="button" class="button-link repeater-row-remove"></button>
+						<button type="button" class="button-link repeater-row-remove"><?php echo esc_attr( $l10n['remove'] ); ?></button>
 					</div>
 				</li>
 			</script>
