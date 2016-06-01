@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 								</span>
 								{{ data.title }}
 								<a href="#" class="kirki-reset-section" data-reset-section-id="{{ data.id }}">
-									<?php echo $l10n['reset-with-icon']; ?>
+									<?php echo html_entity_decode( $l10n['reset-with-icon'] ); ?>
 								</a>
 							</h3>
 						</div>
