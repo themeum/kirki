@@ -503,7 +503,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
-									<div data-field="{{{ field.id }}}">{{ field.default }}</div>
+									<div data-field="{{{ field.id }}}">{{{ field.default }}}</div>
 									
 								<# } #>
 
