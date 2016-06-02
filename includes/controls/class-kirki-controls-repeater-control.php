@@ -495,6 +495,16 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</div>
 
+								<# } else if ( 'custom' === field.type ) { #>
+
+									<# if ( field.label ) { #>
+										<span class="customize-control-title">{{ field.label }}</span>
+									<# } #>
+									<# if ( field.description ) { #>
+										<span class="description customize-control-description">{{ field.description }}</span>
+									<# } #>
+									<div data-field="{{{ field.id }}}">{{ field.default }}</div>
+									
 								<# } #>
 
 							</div>
