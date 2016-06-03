@@ -334,12 +334,24 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 											<span class="customize-control-title">{{ field.label }}</span>
 										<# } #>
 										<# if ( field.description ) { #>
-											<span class="description customize-control-description">{{ field.description }}</span>
+											<span class="description customize-control-description">{{{ field.description }}}</span>
 										<# } #>
-										<select data-field="{{{ field.id }}}">
-											<# _.each( field.choices, function( choice, i ) { #>
-												<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ choice }}</option>
-											<# }); #>
+										<select data-field="{{{ field.id }}}" field-multiple="{{ field.multiple }}"<# if ( 1 < field.multiple ) { #> multiple<# } #>>
+											<# if ( 1 < field.multiple && field.value ) { #>
+												<# for ( key in field.value ) { #>
+													<option value="{{ field.value[ key ] }}" selected>{{ field.choices[ field.value[ key ] ] }}</option>
+												<# } #>
+												<# for ( key in field.choices ) { #>
+													<# if ( field.value[ key ] in field.value ) { #>
+													<# } else { #>
+														<option value="{{ key }}">{{ field.choices[ key ] }}</option>
+													<# } #>
+												<# } #>
+											<# } else { #>
+												<# for ( key in field.choices ) { #>
+													<option value="{{ key }}"<# if ( key === field.value ) { #>selected<# } #>>{{ field.choices[ key ] }}</option>
+												<# } #>
+											<# } #>
 										</select>
 									</label>
 
