@@ -34,10 +34,14 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 		 */
 		protected function set_choices() {
 
+			// Get l10n strings
+			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
+
 			// Make sure we have some defaults in case none are defined.
 			$defaults = array(
 				'language' => 'css',
 				'theme'    => 'kirki-dark',
+				'label'    => $l10n['open-editor'],
 			);
 			$this->choices = wp_parse_args( $this->choices, $defaults );
 
