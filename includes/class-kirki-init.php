@@ -199,6 +199,13 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 					// Loop through the array of variables.
 					foreach ( $field['variables'] as $field_variable ) {
 
+						// If we're using a string, convert to array for consistency.
+						if ( is_string( $field_variable ) ) {
+							$field_variable = array(
+								'name' => $field_variable,
+							);
+						}
+
 						// Is the variable ['name'] defined? If yes, then we can proceed.
 						if ( isset( $field_variable['name'] ) ) {
 
