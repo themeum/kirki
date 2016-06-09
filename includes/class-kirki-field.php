@@ -778,9 +778,13 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 * @access protected
 		 */
 		protected function set_variables() {
-
+			$variable = '';
 			if ( ! is_array( $this->variables ) ) {
+				$variable = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
 				$this->variables = array();
+				if ( $variable && empty( $this->variables ) ) {
+					$this->variables[0]['name'] = $variable;
+				}
 			}
 
 		}
