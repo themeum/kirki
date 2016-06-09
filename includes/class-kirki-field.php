@@ -786,7 +786,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 					$this->variables[0]['name'] = $variable;
 				}
 			}
-
 		}
 
 		/**
