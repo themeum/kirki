@@ -25,6 +25,18 @@ foreach ( $configs as $config_id => $args ) {
 	}
 
 	$styles = Kirki_Styles_Frontend::loop_controls( $config_id );
-	$filtered_styles = apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
-	echo wp_kses_post( $filtered_styles );
+	$styles = apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
+
+	// Some people put weird stuff in their CSS, KSES tends to be greedy
+	$styles = str_replace( '<=', '&lt;=', $styles );
+	
+	$styles = wp_kses_post( $styles );
+
+	// kses replaces lone '>' with &gt;
+	$styles = str_replace( '&gt;', '>', $styles ); 
+
+	// Why both KSES and strip_tags? Because we just added some '>'.
+	$styles = strip_tags( $styles );
+
+	echo $styles;
 }
