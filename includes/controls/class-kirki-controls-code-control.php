@@ -33,21 +33,6 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 		public $type = 'kirki-code';
 
 		/**
-		 * Refresh the parameters passed to the JavaScript via JSON.
-		 *
-		 * @access public
-		 */
-		public function to_json() {
-			if ( ! isset( $this->choices['language'] ) ) {
-				$this->choices['language'] = 'css';
-			}
-			if ( ! isset( $this->choices['theme'] ) ) {
-				$this->choices['theme'] = 'monokai';
-			}
-			parent::to_json();
-		}
-
-		/**
 		 * Enqueue control related scripts/styles.
 		 *
 		 * @access public

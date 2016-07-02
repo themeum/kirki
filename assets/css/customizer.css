@@ -1454,6 +1454,7 @@ span.CodeMirror-selectedtext {
   background: #ccc;
   vertical-align: middle;
   position: relative;
+  top: 4px;
   cursor: pointer;
   user-select: none;
   transition: background 350ms ease; }
@@ -1604,7 +1605,6 @@ li.customize-control {
   li.customize-control a.tooltip.hint--left {
     display: block;
     position: absolute;
-    top: 5px;
     right: -10px;
     border-radius: 50%;
     color: #999;

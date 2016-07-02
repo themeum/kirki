@@ -34,10 +34,14 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 		 */
 		protected function set_choices() {
 
+			// Get l10n strings.
+			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
+
 			// Make sure we have some defaults in case none are defined.
 			$defaults = array(
 				'language' => 'css',
 				'theme'    => 'kirki-dark',
+				'label'    => $l10n['open-editor'],
 			);
 			$this->choices = wp_parse_args( $this->choices, $defaults );
 
@@ -67,19 +71,19 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 			);
 			// Make sure the defined language exists.
 			// If not, fallback to CSS.
-			if ( ! in_array( $this->choices['language'], $valid_languages ) ) {
+			if ( ! in_array( $this->choices['language'], $valid_languages, true ) ) {
 				$this->choices['language'] = 'css';
 			}
 			// Hack for 'html' mode.
-			if ( 'html' == $this->choices['language'] ) {
+			if ( 'html' === $this->choices['language'] ) {
 				$this->choices['language'] = 'htmlmixed';
 			}
 
 			// Set the theme.
-			if ( in_array( $this->choices['theme'], array( 'kirki-dark', 'kirki-light' ) ) ) {
+			if ( in_array( $this->choices['theme'], array( 'kirki-dark', 'kirki-light' ), true ) ) {
 				return;
 			}
-			if ( in_array( $this->choices['theme'], array( 'light', 'dark' ) ) ) {
+			if ( in_array( $this->choices['theme'], array( 'light', 'dark' ), true ) ) {
 				$this->choices['theme'] = 'kirki-' . $this->choices['theme'];
 				return;
 			}

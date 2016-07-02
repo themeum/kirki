@@ -144,7 +144,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 				}
 
 				// Apply any value patterns defined.
-				$value = $this->apply_value_pattern( $output, $this->value );
+				$value = $this->apply_value_pattern( $output, $value );
 
 				if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 					$output['element'] = array_unique( $output['element'] );

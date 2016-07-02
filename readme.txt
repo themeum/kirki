@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,16 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 2.3.5 =
+
+July 2, 2016. dev time: 6 hours.
+
+FIX: Missing button labels in `repeater` fields.
+FIX: Missing button label in `code` fields ([#1017](https://github.com/aristath/kirki/issues/1017)).
+FIX: Better implementation when embedding Kirki in a theme ([#1025](https://github.com/aristath/kirki/issues/1025)).
+FIX: Updated google-fonts ([#1041](https://github.com/aristath/kirki/issues/1041)).
+NEW: Allow simpler format for `variables` argument ([#1020](https://github.com/aristath/kirki/issues/1020)).
 
 = 2.3.4 =
 

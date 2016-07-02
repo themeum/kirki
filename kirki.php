@@ -5,12 +5,11 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       2.3.4
+ * Version:       2.3.5
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
  * GitHub Plugin URI: https://github.com/aristath/kirki
- *
  *
  * @package     Kirki
  * @category    Core
@@ -25,12 +24,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// No need to proceed if Kirki already exists
+// No need to proceed if Kirki already exists.
 if ( class_exists( 'Kirki' ) ) {
 	return;
 }
 
-// Include the autoloader
+// Include the autoloader.
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
 // Gets an instance of the main Kirki object.
@@ -40,14 +39,14 @@ if ( ! function_exists( 'Kirki' ) ) {
 		return $kirki;
 	}
 }
-// Start Kirki
+// Start Kirki.
 global $kirki;
 $kirki = Kirki();
 
-// Make sure the path is properly set
+// Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 
-// Instantiate 2ndary classes
+// Instantiate 2ndary classes.
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
 new Kirki_Styles_Customizer();
@@ -55,11 +54,11 @@ new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
 
-// Include deprecated functions & methods
+// Include deprecated functions & methods.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php' );
 
-// Include the ariColor library
+// Include the ariColor library.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
 
-// Add an empty config for global fields
+// Add an empty config for global fields.
 Kirki::add_config( '' );

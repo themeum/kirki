@@ -64,14 +64,12 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 */
 		public function __construct( $manager, $id, $args = array() ) {
 
-			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
-
 			parent::__construct( $manager, $id, $args );
 
 			// Set up defaults for row labels.
 			$this->row_label = array(
 				'type' => 'text',
-				'value' => $l10n['row'],
+				'value' => $this->l10n['row'],
 				'field' => false,
 			);
 
@@ -99,7 +97,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			}
 
 			if ( empty( $this->button_label ) ) {
-				$this->button_label = $l10n['add-new'] . ' ' . $this->row_label['value'];
+				$this->button_label = $this->l10n['add-new'] . ' ' . $this->row_label['value'];
 			}
 
 			if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
@@ -129,12 +127,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				// If the field is a dropdown-pages field then add it to args.
 				if ( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
 
-					$l10n = Kirki_l10n::get_strings( $this->kirki_config );
 					$dropdown = wp_dropdown_pages(
 						array(
 							'name'              => '',
 							'echo'              => 0,
-							'show_option_none'  => esc_attr( $l10n['select-page'] ),
+							'show_option_none'  => esc_attr( $this->l10n['select-page'] ),
 							'option_none_value' => '0',
 							'selected'          => '',
 						)
@@ -252,7 +249,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 */
 		protected function render_content() {
 			?>
-			<?php $l10n = Kirki_l10n::get_strings( $this->kirki_config ); ?>
 			<?php if ( '' !== $this->tooltip ) : ?>
 				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
 			<?php endif; ?>
@@ -269,7 +265,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 			<ul class="repeater-fields"></ul>
 
 			<?php if ( isset( $this->choices['limit'] ) ) : ?>
-				<p class="limit"><?php printf( esc_html( $l10n['limit-rows'] ), esc_html( $this->choices['limit'] ) ); ?></p>
+				<p class="limit"><?php printf( esc_html( $this->l10n['limit-rows'] ), esc_html( $this->choices['limit'] ) ); ?></p>
 			<?php endif; ?>
 			<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
@@ -286,10 +282,10 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 * @access public
 		 */
 		public function repeater_js_template() {
-			$l10n = Kirki_l10n::get_strings( $this->kirki_config );
 			?>
 			<script type="text/html" class="customize-control-repeater-content">
 				<# var field; var index = data.index; #>
+				<# data.kirki_config = '<?php echo esc_attr( $this->kirki_config ); ?>'; #>
 
 				<li class="repeater-row minimized" data-row="{{{ index }}}">
 
@@ -409,7 +405,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 							            <# if ( field.description ) { #>
 							                <span class="description customize-control-description">{{{ field.description }}}</span>
 							            <# } #>
-							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $l10n['hex-value'] ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+							            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $this->l10n['hex-value'] ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							        </label>
 
@@ -434,22 +430,22 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $l10n['no-image-selected'] ); ?>" >
+									<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $this->l10n['no-image-selected'] ); ?>" >
 										<# if ( field.default ) { #>
 											<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 											<img src="{{{ defaultImageURL }}}">
 										<# } else { #>
-											<?php echo esc_attr( $l10n['no-image-selected'] ); ?>
+											<?php echo esc_attr( $this->l10n['no-image-selected'] ); ?>
 										<# } #>
 									</figure>
 
 									<div class="actions">
-										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php echo esc_attr( $l10n['remove'] ); ?></button>
-										<button type="button" class="button upload-button" data-label=" <?php echo esc_attr( $l10n['add-image'] ); ?>" data-alt-label="<?php echo esc_attr( $l10n['change-image'] ); ?>" >
+										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php echo esc_attr( $this->l10n['remove'] ); ?></button>
+										<button type="button" class="button upload-button" data-label=" <?php echo esc_attr( $this->l10n['add-image'] ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n['change-image'] ); ?>" >
 											<# if ( field.default ) { #>
-												<?php echo esc_attr( $l10n['change-image'] ); ?>
+												<?php echo esc_attr( $this->l10n['change-image'] ); ?>
 											<# } else { #>
-												<?php echo esc_attr( $l10n['add-image'] ); ?>
+												<?php echo esc_attr( $this->l10n['add-image'] ); ?>
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -470,22 +466,22 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</label>
 
-									<figure class="kirki-file-attachment" data-placeholder="<?php echo esc_attr( $l10n['no-file-selected'] ); ?>" >
+									<figure class="kirki-file-attachment" data-placeholder="<?php echo esc_attr( $this->l10n['no-file-selected'] ); ?>" >
 										<# if ( field.default ) { #>
 											<# var defaultFilename = ( field.default.filename ) ? field.default.filename : field.default; #>
 											<span class="file"><span class="dashicons dashicons-media-default"></span> {{ defaultFilename }}</span>
 										<# } else { #>
-											<?php echo esc_attr( $l10n['no-file-selected'] ); ?>
+											<?php echo esc_attr( $this->l10n['no-file-selected'] ); ?>
 										<# } #>
 									</figure>
 
 									<div class="actions">
 										<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"></button>
-										<button type="button" class="button upload-button" data-label="<?php echo esc_attr( $l10n['add-file'] ); ?>" data-alt-label="<?php echo esc_attr( $l10n['change-file'] ); ?>" >
+										<button type="button" class="button upload-button" data-label="<?php echo esc_attr( $this->l10n['add-file'] ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n['change-file'] ); ?>" >
 											<# if ( field.default ) { #>
-												<?php echo esc_attr( $l10n['change-file'] ); ?>
+												<?php echo esc_attr( $this->l10n['change-file'] ); ?>
 											<# } else { #>
-												<?php echo esc_attr( $l10n['add-file'] ); ?>
+												<?php echo esc_attr( $this->l10n['add-file'] ); ?>
 											<# } #>
 										</button>
 										<# if ( field.default.id ) { #>
@@ -495,11 +491,21 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<# } #>
 									</div>
 
+								<# } else if ( 'custom' === field.type ) { #>
+
+									<# if ( field.label ) { #>
+										<span class="customize-control-title">{{ field.label }}</span>
+									<# } #>
+									<# if ( field.description ) { #>
+										<span class="description customize-control-description">{{ field.description }}</span>
+									<# } #>
+									<div data-field="{{{ field.id }}}">{{{ field.default }}}</div>
+
 								<# } #>
 
 							</div>
 						<# }); #>
-						<button type="button" class="button-link repeater-row-remove"></button>
+						<button type="button" class="button-link repeater-row-remove"><?php echo esc_attr( $this->l10n['remove'] ); ?></button>
 					</div>
 				</li>
 			</script>
