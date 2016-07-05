@@ -225,7 +225,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 					foreach ( $elements as $element => $style_array ) {
 						foreach ( $style_array as $property => $value ) {
 
-							// Add -webkit-* and -mod-*.
+							// Add -webkit-* and -moz-*.
 							if ( is_string( $property ) && in_array( $property, array(
 								'border-radius',
 								'box-shadow',
@@ -236,8 +236,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								'transition',
 								'transition-property',
 							) ) ) {
+								unset( $css[ $media_query ][ $element ][ $property ] );
 								$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
+								$css[ $media_query ][ $element ][ $property ]              = $value;
 							}
 
 							// Add -ms-* and -o-*.
@@ -247,8 +249,10 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 								'transition',
 								'transition-property',
 							) ) ) {
+								unset( $css[ $media_query ][ $element ][ $property ] );
 								$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
 								$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;
+								$css[ $media_query ][ $element ][ $property ]          = $value;
 							}
 						}
 					}
