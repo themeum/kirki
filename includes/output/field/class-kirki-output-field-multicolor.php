@@ -52,8 +52,11 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 					$output['media_query'] = 'global';
 				}
 
+				// If "suffix" is defined, add it to the value.
+				$output['suffix'] = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
+
 				// Create the styles.
-				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $sub_value;
+				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $sub_value . $output['suffix'];
 
 			}
 		}
