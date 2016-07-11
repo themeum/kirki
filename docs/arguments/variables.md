@@ -22,15 +22,15 @@ Kirki::add_field( 'my_config', array(
 	'default'   => '25',
 	'variables' => array(
 		array(
-			'name'     => 'font-size-h1'
+			'name'     => 'font-size-h1',
 			'callback' => 'intval'
 		),
 		array(
-			'name'     => 'font-size-h2'
+			'name'     => 'font-size-h2',
 			'callback' => 'my_h2_calc'
 		),
 		array(
-			'name'     => 'font-size-h3'
+			'name'     => 'font-size-h3',
 			'callback' => 'my_h3_calc'
 		),
 	),
