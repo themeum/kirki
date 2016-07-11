@@ -186,7 +186,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 		 *
 		 * @return array 	('variable-name' => value)
 		 */
-		public function get_variables() {
+		public static function get_variables() {
 
 			$variables = array();
 
