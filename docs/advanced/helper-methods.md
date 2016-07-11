@@ -134,6 +134,7 @@ Kirki::add_field( 'my_config', array(
 	'default'     => 'option-1',
 	'priority'    => 10,
 	'multiple'    => 1,
-	'choices'     => Kirki_Helper::get_terms( 'category' ),
+	'choices'     => Kirki_Helper::get_terms( array('taxonomy' => 'category') )),
 ) );
 ```
+For full list of choices https://developer.wordpress.org/reference/functions/get_terms/#source
