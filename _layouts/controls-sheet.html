@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	{% include head.html %}
+	<body>
+		{% include header.html %}
+		<div id="main" class="expanded row">
+			<div id="main" class="medium-9 large-10 medium-push-3 large-push-2 columns">
+				<article>
+					<div class="row">
+						<div class="large-12 columns">
+							<h1>{{ page.title }}</h1>
+
+							<div class="controls-grid">
+							{% for node in site.pages %}
+								{% if node.url contains "docs/controls" and node.screenshot %}
+								<div class="grid-item">
+									<a href="{{ node.url }}">
+										<h2>{{ node.title }}</h2>
+										<img src="{{ site.url }}/{{ node.screenshot }}" role="presentation">
+									</a>
+								</div>
+								{% endif %}
+							{% endfor %}
+							</div>
+							
+							<script>
+								window.onload = function() {
+									new Masonry('.controls-grid', {
+										itemSelector: '.grid-item',
+										columnWidth: 300,
+										gutter: 15
+									});
+								};
+							</script>
+
+						</div>
+					</div>
+				</article>
+			</div>
+			<div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+				{% include docs-sidebar.html %}
+			</div>
+		</div>
+		{% include footer.html %}
+	</body>
+</html>

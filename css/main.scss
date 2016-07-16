@@ -177,4 +177,21 @@ img.field-screenshot {
 	padding: 0 0 1rem 2rem;
 }
 
+.controls-grid {
+
+	.grid-item {
+		margin-bottom: 15px;	
+	}
+	
+	h2 {
+		font-size: 1.2em;
+		text-align: center;
+		margin: 0;
+		padding: 10px;
+		color: #fff;
+		background: #2199E6;
+	}
+
+}
+
 @import "code-highlight";
