@@ -8,6 +8,10 @@ Kirki::add_field( 'my_config', array(
 	'label'       => esc_attr__( 'Repeater Control', 'my_textdomain' ),
 	'section'     => 'my_section',
 	'priority'    => 10,
+	'row_label' => array(               
+        	'type' => 'text',
+        	'value' => esc_attr__('your custom value', 'my_textdomain' ),
+	),
 	'settings'    => 'my_setting',
 	'default'     => array(
 		array(
