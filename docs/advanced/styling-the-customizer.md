@@ -34,4 +34,4 @@ add_filter( 'kirki/config', 'kirki_demo_configuration_sample_styling' );
 * `color_accent`: The accent color. This will be used on selected items and control details.
 * `color_back`: The background color. This will be used on sections & panels titles.
 * `width`: The width of the customizer. Use any valid CSS value like for example `24%`, `400px`, `25em` etc. In case you decide to change the width, please take into account mobile users as well.
-* `disable_loader`: set to `true` if you want  odisable the custom Kirki loader and use the WP Core default. 
+* `disable_loader`: set to `true` if you want to disable the custom Kirki loader and use the WP Core default. 
