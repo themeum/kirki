@@ -1,12 +1,12 @@
 # Kirki #
-**Contributors:** aristath, fovoc, igmoweb  
-**Tags:** customizer,options framework, theme, mods, toolkit  
-**Donate link:** http://kirki.org/  
-**Requires at least:** 4.4  
-**Tested up to:** 4.5  
-**Stable tag:** 2.3.5  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** aristath, fovoc, igmoweb
+**Tags:** customizer,options framework, theme, mods, toolkit
+**Donate link:** http://kirki.org/
+**Requires at least:** 4.4
+**Tested up to:** 4.5
+**Stable tag:** 2.3.5
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate toolkit for theme developers using the WordPress Customizer
 
@@ -34,6 +34,8 @@ You can find detailed documentation on how to use Kirki on [https://kirki.org](h
 Simply install as a normal WordPress plugin and activate.
 
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
+
+Also reference the included sample-config-file.php.
 
 ## Changelog ##
 
