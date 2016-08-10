@@ -145,6 +145,27 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 					$args['fields'][ $key ]['dropdown'] = $dropdown;
 				}
+				
+				// If the field is a dropdown-categories field then add it to args.
+				if ( isset( $value['type'] ) && ( 'dropdown-categories' === $value['type'] ) ) {
+
+					$dropdown = wp_dropdown_categories(
+						array(
+							'name'              => '',
+							'echo'              => 0,
+							'show_option_none'  => esc_attr( $this->l10n['select-category'] ),
+							'option_none_value' => '-1',
+							'selected'          => '',
+							'show_count'	    => 1,
+							'orderby' 	    => 'name',
+						)
+					);
+
+					// Hackily add in the data link parameter.
+					$dropdown = str_replace( '<select', '<select data-field="'.esc_attr( $args['fields'][ $key ]['id'] ).'"'. $this->get_link(), $dropdown );
+
+					$args['fields'][ $key ]['dropdown'] = $dropdown;
+				}
 			}
 
 			$this->fields = $args['fields'];
@@ -236,6 +257,13 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				foreach ( $this->fields as $field ) {
 					if ( isset( $field['type'] ) && 'dropdown-pages' === $field['type'] ) {
 						wp_enqueue_script( 'kirki-dropdown-pages' );
+						break;
+					}
+				}
+				
+				foreach ( $this->fields as $field ) {
+					if ( isset( $field['type'] ) && 'dropdown-categories' === $field['type'] ) {
+						wp_enqueue_script( 'kirki-dropdown-categories' );
 						break;
 					}
 				}
@@ -355,6 +383,18 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 										<div class="customize-control-content repeater-dropdown-pages">{{{ field.dropdown }}}</div>
 									</label>
 
+								<# } else if ( 'dropdown-categories' === field.type ) { #>
+
+									<label>
+										<# if ( field.label ) { #>
+											<span class="customize-control-title">{{{ field.label }}}</span>
+										<# } #>
+										<# if ( field.description ) { #>
+											<span class="description customize-control-description">{{{ field.description }}}</span>
+										<# } #>
+										<div class="customize-control-content repeater-dropdown-categories">{{{ field.dropdown }}}</div>
+									</label>
+									
 								<# } else if ( 'radio' === field.type ) { #>
 
 									<label>
