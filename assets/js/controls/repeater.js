@@ -864,35 +864,42 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control  = this,
-		    dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
-		    $select,
-		    selectize,
-		    dataField;
+		// New repeater controls (like dropdown roles, languages and users) can be easily added to this array
+		var targetElement = [".repeater-dropdown-pages select", ".repeater-dropdown-categories select"];
 
-		if ( 0 === dropdown.length ) {
-			return;
-		}
+		for (var i = 0; i < targetElement.length; i++) {
 
-		$select   = jQuery( dropdown ).selectize();
-		selectize = $select[0].selectize;
-		dataField = dropdown.data( 'field' );
+			var control  = this,
+			    dropdown = theNewRow.container.find( targetElement[i] ),
+			    $select,
+			    selectize,
+			    dataField;
 
-		if ( data ) {
-			selectize.setValue( data[dataField] );
-		}
+			if ( 0 === dropdown.length ) {
+				return;
+			}
 
-		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
+			$select   = jQuery( dropdown ).selectize();
+			selectize = $select[0].selectize;
+			dataField = dropdown.data( 'field' );
 
-			var currentDropdown = jQuery( event.target ),
-				row             = currentDropdown.closest( '.repeater-row' ),
-				rowIndex        = row.data( 'row' ),
-				currentSettings = control.getValue();
+			if ( data ) {
+				selectize.setValue( data[dataField] );
+			}
 
-			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
-			control.setValue( currentSettings );
+			this.container.on( 'change', targetElement[i], function( event ) {
 
-		});
+				var currentDropdown = jQuery( event.target ),
+					row             = currentDropdown.closest( '.repeater-row' ),
+					rowIndex        = row.data( 'row' ),
+					currentSettings = control.getValue();
+
+				currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
+				control.setValue( currentSettings );
+
+			});
+
+		};
 
 	}
 
