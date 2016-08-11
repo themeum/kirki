@@ -864,35 +864,46 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control  = this,
-		    dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
+		// New repeater controls (like dropdown roles, languages and users) can be easily added to this array
+		var targetElement = ['.repeater-dropdown-pages select', '.repeater-dropdown-categories select'];
+
+		var control,
+		    dropdown,
 		    $select,
 		    selectize,
-		    dataField;
+		    dataField,
+		    i;
 
-		if ( 0 === dropdown.length ) {
-			return;
+		for ( i = 0; i < targetElement.length; i++ ) {
+
+			control  = this,
+			dropdown = theNewRow.container.find( targetElement[i] );
+
+			if ( 0 === dropdown.length ) {
+				return;
+			}
+
+			$select   = jQuery( dropdown ).selectize();
+			selectize = $select[0].selectize;
+			dataField = dropdown.data( 'field' );
+
+			if ( data ) {
+				selectize.setValue( data[dataField] );
+			}
+
+			this.container.on( 'change', targetElement[i], function( event ) {
+
+				var currentDropdown = jQuery( event.target ),
+					row             = currentDropdown.closest( '.repeater-row' ),
+					rowIndex        = row.data( 'row' ),
+					currentSettings = control.getValue();
+
+				currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
+				control.setValue( currentSettings );
+
+			});
+
 		}
-
-		$select   = jQuery( dropdown ).selectize();
-		selectize = $select[0].selectize;
-		dataField = dropdown.data( 'field' );
-
-		if ( data ) {
-			selectize.setValue( data[dataField] );
-		}
-
-		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
-
-			var currentDropdown = jQuery( event.target ),
-				row             = currentDropdown.closest( '.repeater-row' ),
-				rowIndex        = row.data( 'row' ),
-				currentSettings = control.getValue();
-
-			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
-			control.setValue( currentSettings );
-
-		});
 
 	}
 
