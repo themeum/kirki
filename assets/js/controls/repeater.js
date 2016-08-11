@@ -865,15 +865,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		// New repeater controls (like dropdown roles, languages and users) can be easily added to this array
-		var targetElement = [".repeater-dropdown-pages select", ".repeater-dropdown-categories select"];
+		var targetElement = ['.repeater-dropdown-pages select', '.repeater-dropdown-categories select'];
 
-		for (var i = 0; i < targetElement.length; i++) {
+		var control,
+		    dropdown,
+		    $select,
+		    selectize,
+		    dataField,
+		    i;
 
-			var control  = this,
-			    dropdown = theNewRow.container.find( targetElement[i] ),
-			    $select,
-			    selectize,
-			    dataField;
+		for ( i = 0; i < targetElement.length; i++ ) {
+
+			control  = this,
+			dropdown = theNewRow.container.find( targetElement[i] );
 
 			if ( 0 === dropdown.length ) {
 				return;
@@ -899,7 +903,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			});
 
-		};
+		}
 
 	}
 
