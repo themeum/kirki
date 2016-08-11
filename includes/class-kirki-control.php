@@ -109,7 +109,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-dimension'       	=> 'Kirki_Controls_Dimension_Control',
 				'kirki-editor'          	=> 'Kirki_Controls_Editor_Control',
 				'kirki-multicolor'      	=> 'Kirki_Controls_Multicolor_Control',
-				'kirki-multicheck		=> 'Kirki_Controls_MultiCheck_Control',
+				'kirki-multicheck'		=> 'Kirki_Controls_MultiCheck_Control',
 				'kirki-number'          	=> 'Kirki_Controls_Number_Control',
 				'kirki-palette'         	=> 'Kirki_Controls_Palette_Control',
 				'kirki-preset'          	=> 'Kirki_Controls_Preset_Control',
