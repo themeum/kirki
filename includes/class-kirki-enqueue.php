@@ -183,16 +183,20 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
 
 				$available_variants = array();
-				foreach ( $variants as $variant ) {
-					if ( array_key_exists( $variant, $all_variants ) ) {
-						$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
+				if (is_array($variants)) {
+					foreach ( $variants as $variant ) {
+						if ( array_key_exists( $variant, $all_variants ) ) {
+							$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
+						}
 					}
 				}
 
 				$available_subsets = array();
-				foreach ( $subsets as $subset ) {
-					if ( array_key_exists( $subset, $all_subsets ) ) {
-						$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
+				if (is_array($subsets)) {
+					foreach ( $subsets as $subset ) {
+						if ( array_key_exists( $subset, $all_subsets ) ) {
+							$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
+						}
 					}
 				}
 
