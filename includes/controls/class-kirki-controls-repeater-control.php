@@ -142,7 +142,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 					// Hackily add in the data link parameter.
 					$dropdown = str_replace( '<select', '<select data-field="'.esc_attr( $args['fields'][ $key ]['id'] ).'"' . $this->get_link(), $dropdown );
-
 					$args['fields'][ $key ]['dropdown'] = $dropdown;
 				}
 				
@@ -163,7 +162,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 					// Hackily add in the data link parameter.
 					$dropdown = str_replace( '<select', '<select data-field="'.esc_attr( $args['fields'][ $key ]['id'] ).'"'. $this->get_link(), $dropdown );
-
 					$args['fields'][ $key ]['dropdown'] = $dropdown;
 				}
 			}
