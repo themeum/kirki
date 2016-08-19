@@ -1,6 +1,26 @@
 ---
 layout: docs
 premium_themes:
+  - name: Setwood
+    market: ThemeForest
+    url: https://themeforest.net/item/setwood-wordpress-blog-shop-theme/16165800
+    thumb: https://image-tf.s3.envato.com/files/200359203/00_preview.__large_preview.jpg
+  - name: BeOnePage
+    market: betheme.me
+    url: https://betheme.me/themes/beonepage/
+    thumb: https://betheme.me/wp-content/uploads/edd/2015/11/beonepage-screenshot.png
+  - name: BeAgency
+    market: betheme.me
+    url: https://betheme.me/themes/beagency/
+    thumb: https://betheme.me/wp-content/uploads/edd/2015/09/beagency-screenshot.png
+  - name: Grand News
+    market: ThemeForest
+    url: https://themeforest.net/item/grand-news-news-magazine/15885465
+    thumb: https://image-tf.s3.envato.com/files/199754751/GrandNews-Screenshot/01_Cover.__large_preview.png
+  - name: Realtyspace
+    market: ThemeForest
+    url: https://themeforest.net/item/realtyspace-real-estate-wordpress-theme/15965811
+    thumb: https://image-tf.s3.envato.com/files/200362466/realtyspace_presentation/0.__large_preview.jpg
   - name: Elon
     market: Currl
     url: https://currl.com/
