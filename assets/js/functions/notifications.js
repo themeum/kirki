@@ -15,7 +15,6 @@ function kirkiNotifications( settingName, type, configID ) {
 							message: window.kirki.l10n[ configID ]['invalid-value']
 						}
 					) );
-					console.log( configID );
 				} else {
 					setting.notifications.remove( code );
 				}
