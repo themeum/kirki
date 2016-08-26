@@ -88,7 +88,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<a href="#" class="button edit button-primary">{{ data.choices.label }}</a>
-				<textarea class="kirki-codemirror-editor collapsed">{{{ data.value }}}</textarea>
+				<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor collapsed">{{{ data.value }}}</textarea>
 				<a href="#" class="close">
 					<span class="dashicons dashicons-no"></span>
 					<span class="screen-reader-text">{{ data.l10n['close-editor'] }}</span>

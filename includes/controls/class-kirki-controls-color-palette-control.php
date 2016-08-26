@@ -79,7 +79,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Palette_Control' ) ) {
 			<# } #>
 			<div id="input_{{ data.id }}" class="colors-wrapper">
 				<# for ( key in data.choices['colors'] ) { #>
-					<input type="radio" value="{{ data.choices['colors'][ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices['colors'][ key ] ) { #> checked<# } #>>
+					<input type="radio" {{{ data.inputAttrs }}} value="{{ data.choices['colors'][ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices['colors'][ key ] ) { #> checked<# } #>>
 						<label for="{{ data.id }}{{ key }}">
 							<span class="color-palette-color" style='background: {{ data.choices['colors'][ key ] }}; width: {{ data.choices['size'] }}px; height: {{ data.choices['size'] }}px;'>{{ data.choices['colors'][ key ] }}</span>
 						</label>

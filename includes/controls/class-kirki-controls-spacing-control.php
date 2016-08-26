@@ -92,7 +92,7 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 							<div class="{{ choiceKey }}">
 								<h5>{{ data.l10n[ choiceKey ] }}</h5>
 								<div class="{{ choiceKey }} input-wrapper">
-									<input type="text" value="{{ data.value[ choiceKey ] }}"/>
+									<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ] }}"/>
 									<span class="invalid-value">{{ data.l10n['invalid-value'] }}</span>
 								</div>
 							</div>

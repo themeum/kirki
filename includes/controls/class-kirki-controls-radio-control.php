@@ -63,7 +63,7 @@ if ( ! class_exists( 'Kirki_Controls_Radio_Control' ) ) {
 			<# } #>
 			<# for ( key in data.choices ) { #>
 				<label>
-					<input type="radio" value="{{ key }}" name="_customize-radio-{{ data.id }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked<# } #> />
+					<input {{{ data.inputAttrs }}} type="radio" value="{{ key }}" name="_customize-radio-{{ data.id }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked<# } #> />
 					<# if ( _.isArray( data.choices[ key ] ) ) { #>
 						{{ data.choices[ key ][0] }}
 						<span class="option-description">{{ data.choices[ key ][1] }}</span>

@@ -82,7 +82,7 @@ if ( ! class_exists( 'Kirki_Controls_Color_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+				<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 			</label>
 			<?php
 		}

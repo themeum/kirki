@@ -61,7 +61,7 @@ if ( ! class_exists( 'Kirki_Controls_Number_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="customize-control-content">
-					<input type="text" {{{ data.link }}} value="{{ data.value }}" />
+					<input {{{ data.inputAttrs }}} type="text" {{{ data.link }}} value="{{ data.value }}" />
 				</div>
 			</label>
 			<?php

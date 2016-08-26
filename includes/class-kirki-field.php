@@ -46,6 +46,14 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected $option_name = '';
 
 		/**
+		 * Vustom input attributes (defined as an array).
+		 *
+		 * @access protected
+		 * @var array
+		 */
+		protected $input_attrs = array();
+
+		/**
 		 * Use "theme_mod" or "option".
 		 *
 		 * @access protected
@@ -444,7 +452,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 
 		}
 
-
 		/**
 		 * Escape the $section.
 		 *
@@ -453,6 +460,19 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		protected function set_section() {
 
 			$this->section = sanitize_key( $this->section );
+
+		}
+
+		/**
+		 * Escape the $section.
+		 *
+		 * @access protected
+		 */
+		protected function set_input_attrs() {
+
+			if ( ! is_array( $this->input_attrs ) ) {
+				$this->input_attrs = array();
+			}
 
 		}
 

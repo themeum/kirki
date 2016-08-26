@@ -56,7 +56,7 @@ if ( ! class_exists( 'Kirki_Controls_Checkbox_Control' ) ) {
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
 			<label>
-				<input type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' === data.value || 1 === data.value || true === data.value || 'on' === data.value ) { #> checked<# } #> />
+				<input type="checkbox" {{{ data.inputAttrs }}} value="{{ data.value }}" {{{ data.link }}}<# if ( '1' === data.value || 1 === data.value || true === data.value || 'on' === data.value ) { #> checked<# } #> />
 				{{ data.label }}
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>

@@ -68,7 +68,7 @@ if ( ! class_exists( 'Kirki_Controls_Editor_Control' ) ) {
 				<# } #>
 				<div class="customize-control-content">
 					<a href="#" class="button button-primary toggle-editor"></a>
-					<textarea class="hidden" {{{ data.link }}}>{{ data.value }}</textarea>
+					<textarea {{{ data.inputAttrs }}} class="hidden" {{{ data.link }}}>{{ data.value }}</textarea>
 				</div>
 			</label>
 			<?php

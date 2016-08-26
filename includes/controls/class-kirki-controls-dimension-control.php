@@ -61,7 +61,7 @@ if ( ! class_exists( 'Kirki_Controls_Dimension_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="input-wrapper">
-					<input type="text" value="{{ data.value }}"/>
+					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value }}"/>
 					<span class="invalid-value">{{ data.l10n['invalid-value'] }}</span>
 				</div>
 			</label>

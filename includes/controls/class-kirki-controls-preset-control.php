@@ -58,7 +58,7 @@ if ( ! class_exists( 'Kirki_Controls_Preset_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<select {{{ data.link }}} data-multiple="1">
+				<select {{{ data.inputAttrs }}} {{{ data.link }}} data-multiple="1">
 					<# for ( key in data.choices ) { #>
 						<option value="{{ key }}"<# if ( key === data.value ) { #>selected<# } #>>
 							{{ data.choices[ key ]['label'] }}
