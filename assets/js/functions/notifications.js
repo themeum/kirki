@@ -3,25 +3,26 @@ function kirkiNotifications( settingName, type, configID ) {
 	wp.customize( settingName, function( setting ) {
 		setting.bind( function( value ) {
 			var code = 'long_title',
-			    subs = {};
+			    subs = {},
+			    message;
 
 			// Dimension fields.
 			if ( 'kirki-dimension' === type ) {
 
+				message = window.kirki.l10n[ configID ]['invalid-value'];
+
 				if ( false === kirkiValidateCSSValue( value ) ) {
-					setting.notifications.add( code, new wp.customize.Notification(
-						code,
-						{
-							type: 'warning',
-							message: window.kirki.l10n[ configID ]['invalid-value']
-						}
-					) );
+					kirkiNotificationsWarning( setting, code, message );
 				} else {
 					setting.notifications.remove( code );
 				}
 
-			} else if ( 'kirki-spacing' === type ) {
+			}
 
+			// Spacing fields.
+			if ( 'kirki-spacing' === type ) {
+
+				setting.notifications.remove( code );
 				if ( 'undefined' !== typeof value.top ) {
 					if ( false === kirkiValidateCSSValue( value.top ) ) {
 						subs.top = window.kirki.l10n[ configID ].top;
@@ -55,14 +56,8 @@ function kirkiNotifications( settingName, type, configID ) {
 				}
 
 				if ( ! _.isEmpty( subs ) ) {
-
-					setting.notifications.add( code, new wp.customize.Notification(
-						code,
-						{
-							type: 'warning',
-							message: window.kirki.l10n[ configID ]['invalid-value']
-						}
-					) );
+					message = window.kirki.l10n[ configID ]['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
+					kirkiNotificationsWarning( setting, code, message );
 				} else {
 					setting.notifications.remove( code );
 				}
@@ -72,5 +67,17 @@ function kirkiNotifications( settingName, type, configID ) {
 	    } );
 
 	} );
+
+}
+
+function kirkiNotificationsWarning( setting, code, message ) {
+
+	setting.notifications.add( code, new wp.customize.Notification(
+		code,
+		{
+			type: 'warning',
+			message: message
+		}
+	) );
 
 }
