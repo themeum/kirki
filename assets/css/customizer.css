@@ -1331,20 +1331,6 @@ span.CodeMirror-selectedtext {
           width: 50%; }
           .customize-control-kirki-spacing .wrapper .control > div .inner .selectize-control.single > .selectize-input {
             height: 36px; }
-  .customize-control-kirki-spacing .wrapper .input-wrapper .invalid-value {
-    display: none;
-    background: #D32F2F;
-    font-size: 0.85em;
-    color: #fff;
-    float: left;
-    padding: 2px 0;
-    border-radius: 3px; }
-  .customize-control-kirki-spacing .wrapper .input-wrapper.invalid .invalid-value {
-    display: block;
-    width: 98%;
-    text-align: center; }
-  .customize-control-kirki-spacing .wrapper .input-wrapper.invalid input[type="text"]:focus {
-    border-color: #D32F2F; }
 
 .customize-control-kirki-switch input[type="checkbox"] {
   display: none; }

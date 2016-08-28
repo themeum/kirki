@@ -28,30 +28,5 @@
         }
       }
     }
-    .input-wrapper {
-      .invalid-value {
-        display: none;
-        background: #D32F2F;
-        font-size: 0.85em;
-        color: #fff;
-        float: left;
-        padding: 2px 0;
-        border-radius: 3px;
-      }
-      &.invalid {
-        .invalid-value {
-          display: block;
-          width: 98%;
-          text-align: center;
-        }
-        input[type="text"] {
-          // -webkit-box-shadow:inset 0 0 7px 0 #D32F2F;
-          // box-shadow:inset 0 0 7px 0 #D32F2F;
-          &:focus {
-            border-color: #D32F2F;
-          }
-        }
-      }
-    }
   }
 }
