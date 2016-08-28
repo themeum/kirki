@@ -91,18 +91,18 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 					<div class="font-family">
 						<h5>{{ data.l10n['font-family'] }}</h5>
-						<select id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
+						<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
 					</div>
 					<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 						<div class="variant hide-on-standard-fonts kirki-variant-wrapper">
 							<h5>{{ data.l10n['variant'] }}</h5>
-							<select class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
+							<select {{{ data.inputAttrs }}} class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 						</div>
 					<# } #>
 					<# if ( true === data.show_subsets ) { #>
 						<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
 							<h5>{{ data.l10n['subsets'] }}</h5>
-							<select class="subset" id="kirki-typography-subsets-{{{ data.id }}}"></select>
+							<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}"></select>
 						</div>
 					<# } #>
 				<# } #>
@@ -110,52 +110,52 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.default['font-size'] ) { #>
 					<div class="font-size">
 						<h5>{{ data.l10n['font-size'] }}</h5>
-						<input type="text" value="{{ data.value['font-size'] }}"/>
+						<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.default['line-height'] ) { #>
 					<div class="line-height">
 						<h5>{{ data.l10n['line-height'] }}</h5>
-						<input type="text" value="{{ data.value['line-height'] }}"/>
+						<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.default['letter-spacing'] ) { #>
 					<div class="letter-spacing">
 						<h5>{{ data.l10n['letter-spacing'] }}</h5>
-						<input type="text" value="{{ data.value['letter-spacing'] }}"/>
+						<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
 					</div>
 				<# } #>
 
 				<# if ( data.default['text-align'] ) { #>
 					<div class="text-align">
 						<h5>{{ data.l10n['text-align'] }}</h5>
-						<input type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
+						<input {{{ data.inputAttrs }}} type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
 							<label for="{{ data.id }}-text-align-inherit">
 								<span class="dashicons dashicons-editor-removeformatting"></span>
 								<span class="screen-reader-text">{{ data.l10n['inherit'] }}</span>
 							</label>
 						</input>
-						<input type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
+						<input {{{ data.inputAttrs }}} type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
 							<label for="{{ data.id }}-text-align-left">
 								<span class="dashicons dashicons-editor-alignleft"></span>
 								<span class="screen-reader-text">{{ data.l10n['left'] }}</span>
 							</label>
 						</input>
-						<input type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
+						<input {{{ data.inputAttrs }}} type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
 							<label for="{{ data.id }}-text-align-center">
 								<span class="dashicons dashicons-editor-aligncenter"></span>
 								<span class="screen-reader-text">{{ data.l10n['center'] }}</span>
 							</label>
 						</input>
-						<input type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
+						<input {{{ data.inputAttrs }}} type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
 							<label for="{{ data.id }}-text-align-right">
 								<span class="dashicons dashicons-editor-alignright"></span>
 								<span class="screen-reader-text">{{ data.l10n['right'] }}</span>
 							</label>
 						</input>
-						<input type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
+						<input {{{ data.inputAttrs }}} type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
 							<label for="{{ data.id }}-text-align-justify">
 								<span class="dashicons dashicons-editor-justify"></span>
 								<span class="screen-reader-text">{{ data.l10n['justify'] }}</span>
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.default['text-transform'] ) { #>
 					<div class="text-transform">
 						<h5>{{ data.l10n['text-transform'] }}</h5>
-						<select id="kirki-typography-text-transform-{{{ data.id }}}">
+						<select {{{ data.inputAttrs }}} id="kirki-typography-text-transform-{{{ data.id }}}">
 							<option value="none"<# if ( 'none' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['none'] }}</option>
 							<option value="capitalize"<# if ( 'capitalize' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['capitalize'] }}</option>
 							<option value="uppercase"<# if ( 'uppercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['uppercase'] }}</option>
@@ -181,7 +181,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				<# if ( data.default['color'] ) { #>
 					<div class="color">
 						<h5>{{ data.l10n['color'] }}</h5>
-						<input type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+						<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 					</div>
 				<# } #>
 			</div>

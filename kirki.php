@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       2.3.5
+ * Version:       2.3.6
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -32,8 +32,10 @@ if ( class_exists( 'Kirki' ) ) {
 // Include the autoloader.
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
-// Gets an instance of the main Kirki object.
 if ( ! function_exists( 'Kirki' ) ) {
+	/**
+	 * Returns an instance of the Kirki object.
+	 */
 	function Kirki() {
 		$kirki = Kirki_Toolkit::get_instance();
 		return $kirki;

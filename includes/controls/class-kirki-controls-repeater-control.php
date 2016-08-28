@@ -259,7 +259,7 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 				<?php if ( ! empty( $this->description ) ) : ?>
 					<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 				<?php endif; ?>
-				<input type="hidden" <?php $this->input_attrs(); ?> value="" <?php echo wp_kses_post( $this->get_link() ); ?> />
+				<input type="hidden" {{{ data.inputAttrs }}} value="" <?php echo wp_kses_post( $this->get_link() ); ?> />
 			</label>
 
 			<ul class="repeater-fields"></ul>

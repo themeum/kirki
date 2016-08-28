@@ -72,7 +72,7 @@ if ( ! class_exists( 'Kirki_Controls_MultiCheck_Control' ) ) {
 				<# for ( key in data.choices ) { #>
 					<li>
 						<label>
-							<input type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />
+							<input {{{ data.inputAttrs }}} type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />
 							{{ data.choices[ key ] }}
 						</label>
 					</li>

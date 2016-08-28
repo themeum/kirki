@@ -62,7 +62,7 @@ if ( ! class_exists( 'Kirki_Controls_Palette_Control' ) ) {
 			<# } #>
 			<div id="input_{{ data.id }}" class="buttonset">
 				<# for ( key in data.choices ) { #>
-					<input type="radio" value="{{ key }}" name="_customize-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == key ) { #> checked<# } #>>
+					<input {{{ data.inputAttrs }}} type="radio" value="{{ key }}" name="_customize-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == key ) { #> checked<# } #>>
 						<label for="{{ data.id }}{{ key }}">
 							<# for ( color in data.choices[ key ] ) { #>
 								<span style='background: {{ data.choices[ key ][ color ] }}'>{{ data.choices[ key ][ color ] }}</span>
