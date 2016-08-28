@@ -37,9 +37,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### dev ###
+
+* Fix: `spacing` controls were not updating after save
+* New: Now using the WP Notifications API in the customizer for spacing & dimension controls (requires WP 4.6).
+
 ### 2.3.6 ###
 
-August 28, 2016
+August 28, 2016, dev time: 3 hours.
 
 * Fix: CSS prefixes order fixes ([#1042](https://github.com/aristath/kirki/pull/1042)).
 * Fix: `suffix` output argument support in Multicolor control ([#1042](https://github.com/aristath/kirki/pull/1042)).
