@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.Control.extend
 		    value;
 
 		// Notifications.
-		kirkiNotifications( this.id, 'kirki-dimension', this.params.kirkiConfig );
+		kirkiNotifications( control.id, 'kirki-dimension', control.params.kirkiConfig );
 
 		// Save the value
 		this.container.on( 'change keyup paste', 'input', function() {

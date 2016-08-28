@@ -4,51 +4,62 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-		    value = {};
+		var control     = this,
+		    subControls = control.params.choices.controls,
+		    value       = {},
+		    subsArray   = [],
+		    i;
 
-		_.each( ['top', 'bottom', 'left', 'right'], function( dimension, index ) {
-
-			// Get initial values and pre-populate the object.
-			if ( control.container.has( '.' + dimension ).size() ) {
-
-				value[ dimension ] = control.setting._value[ dimension ];
-
-				// Validate the value and show a warning if it's invalid.
-				jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
-				if ( false === kirkiValidateCSSValue( control.setting._value[ dimension ] ) ) {
-					jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
-				}
-
-				control.container.on( 'change keyup paste', '.' + dimension + ' input', function() {
-
-					var subValue = jQuery( this ).val();
-
-					// Validate the value and show a warning if it's invalid.
-					if ( false === kirkiValidateCSSValue( subValue ) ) {
-
-						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).addClass( 'invalid' );
-
-					} else {
-
-						jQuery( control.selector + ' .' + dimension + '.input-wrapper' ).removeClass( 'invalid' );
-
-						// Only proceed if value is valid.
-						value[ dimension ] = subValue;
-						control.setting.set( value );
-
-						// Refresh the preview.
-						// The `postMessage` implementation is still incomplete for this field.
-						wp.customize.previewer.refresh();
-
-					}
-
-				});
-
+		_.each( subControls, function( v, i ) {
+			if ( true === v ) {
+				subsArray.push( i );
 			}
+		} );
 
+		for ( i = 0; i < subsArray.length; i++ ) {
+
+			value[ subsArray[ i ] ] = control.setting._value[ subsArray[ i ] ];
+
+			control.updateSpacingValue( subsArray[ i ], value );
+
+		}
+
+	},
+
+	/**
+	 * Updates the value.
+	 */
+	updateSpacingValue: function( context, value ) {
+
+		var control = this;
+
+		control.container.on( 'change keyup paste', '.' + context + ' input', function() {
+			value[ context ] = jQuery( this ).val();
+
+			// Notifications.
+			kirkiNotifications( control.id, 'kirki-spacing', control.params.kirkiConfig );
+
+			// Save the value
+			control.saveValue( value );
 		});
 
+	},
+
+	/**
+	 * Saves the value.
+	 */
+	saveValue: function( value ) {
+
+		'use strict';
+
+		var control  = this,
+		    newValue = {};
+
+		_.each( value, function( newSubValue, i ) {
+			newValue[ i ] = newSubValue;
+		});
+
+		control.setting.set( newValue );
 	}
 
 });
