@@ -123,7 +123,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 				<ul class="sortable">
 					<# for ( i in data.filteredValues ) { #>
 						<# if ( data.filteredValues.hasOwnProperty( i ) ) { #>
-							<li class='kirki-sortable-item' data-value='{{ data.filteredValues[i] }}'>
+							<li {{{ data.inputAttrs }}} class='kirki-sortable-item' data-value='{{ data.filteredValues[i] }}'>
 								<i class='dashicons dashicons-menu'></i>
 								<i class="dashicons dashicons-visibility visibility"></i>
 								{{{ data.choices[ data.filteredValues[i] ] }}}
@@ -133,7 +133,7 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 
 					<# for ( i in data.invisibleKeys ) { #>
 						<# if ( data.invisibleKeys.hasOwnProperty( i ) ) { #>
-							<li class='kirki-sortable-item invisible' data-value='{{ data.invisibleKeys[i] }}'>
+							<li {{{ data.inputAttrs }}} class='kirki-sortable-item invisible' data-value='{{ data.invisibleKeys[i] }}'>
 								<i class='dashicons dashicons-menu'></i>
 								<i class="dashicons dashicons-visibility visibility"></i>
 								{{{ data.choices[ data.invisibleKeys[i] ] }}}

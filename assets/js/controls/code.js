@@ -28,11 +28,12 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		});
 
 		editor = CodeMirror.fromTextArea( element[0], {
-			value:       control.setting._value,
-			mode:        language,
-			lineNumbers: true,
-			theme:       control.params.choices.theme,
-			height:      control.params.choices.height + 'px'
+			value:        control.setting._value,
+			mode:         language,
+			lineNumbers:  true,
+			lineWrapping: true,
+			theme:        control.params.choices.theme,
+			height:       control.params.choices.height + 'px'
 		});
 
 		// On change make sure we infor the Customizer API

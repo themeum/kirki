@@ -119,6 +119,7 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 
 			// Add translation strings.
 			$this->l10n = Kirki_l10n::get_strings( $this->kirki_config );
+
 		}
 
 		/**
@@ -147,6 +148,12 @@ if ( ! class_exists( 'Kirki_Customize_Control' ) ) {
 			if ( 'user_meta' === $this->option_type ) {
 				$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
 			}
+
+			$this->json['inputAttrs'] = '';
+			foreach ( $this->input_attrs as $attr => $value ) {
+				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
+			}
+
 		}
 
 		/**

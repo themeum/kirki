@@ -75,7 +75,7 @@ if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
 				<div class="wrapper">
-					<input type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
+					<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
 					<div class="kirki_range_value">
 						<span class="value">{{ data.value }}</span>
 						<# if ( data.choices['suffix'] ) { #>

@@ -46,11 +46,10 @@ class Kirki_Selective_Refresh {
 				foreach ( $args['partial_refresh'] as $partial_refresh => $partial_refresh_args ) {
 					// If we have all we need, create the selective refresh call.
 					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
-						$wp_customize->selective_refresh->add_partial( $partial_refresh, array(
-							'selector'        => $partial_refresh_args['selector'],
-							'settings'        => array( $args['settings'] ),
-							'render_callback' => $partial_refresh_args['render_callback'],
+						$partial_refresh_args = wp_parse_args( $partial_refresh_args, array(
+							'settings' => $args['settings'],
 						) );
+						$wp_customize->selective_refresh->add_partial( $partial_refresh, $partial_refresh_args );
 					}
 				}
 			}

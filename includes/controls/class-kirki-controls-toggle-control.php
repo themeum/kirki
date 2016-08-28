@@ -60,8 +60,8 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 				<# if ( data.description ) { #>
 					<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>
-				<input name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> hidden />
-				<span  class="switch"></span>
+				<input {{{ data.inputAttrs }}} name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> hidden />
+				<span class="switch"></span>
 			</label>
 			<?php
 		}
