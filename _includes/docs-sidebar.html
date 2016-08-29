@@ -4,28 +4,28 @@
 	<li class="docs-nav-title">Getting Started</li>
 	{% for node in site.pages %}
 		{% if node.url contains "docs/getting-started" %}
-			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
 	{% endfor %}
 
 	<li class="docs-nav-title">Controls</li>
 	{% for node in site.pages %}
 		{% if node.url contains "docs/controls" %}
-			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
 	{% endfor %}
 
 	<li class="docs-nav-title">Field Arguments</li>
 	{% for node in site.pages %}
 		{% if node.url contains "docs/arguments" %}
-			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
 	{% endfor %}
 
 	<li class="docs-nav-title">Advanced Topics</li>
 	{% for node in site.pages %}
 		{% if node.url contains "docs/advanced" %}
-			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ node.title }}</a></li>
+			<li {% if page.url == node.url %}class="active"{% endif %}><a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
 	{% endfor %}
 </ul>
