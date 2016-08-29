@@ -186,7 +186,7 @@ free_themes:
 
 Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
 
-<a href="/docs/advanced/integration.html" class="large button expanded">See how to Integrate Kirki in your project</a>
+<a href="https://aristath.github.io/kirki/docs/advanced/integration.html" class="large button expanded">See how to Integrate Kirki in your project</a>
 
 **Kirki does not replace the WordPress Customizer API**, you can still use the default WordPress methods and we advise you to familiarize yourselves with it.
 An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/advanced-topics/customizer-api/) website.
@@ -195,9 +195,9 @@ What Kirki does is save you time... LOTS of time!
 
 Easily add configurations for your project, create panels, sections and add fields with ease.
 
-[Automatically create CSS from your fields](/docs/arguments/output), and make the customizer's preview instant with our [automatic postMessage scripts creation](/docs/arguments/js_vars)!
+[Automatically create CSS from your fields](https://aristath.github.io/kirki/docs/arguments/output), and make the customizer's preview instant with our [automatic postMessage scripts creation](https://aristath.github.io/kirki/docs/arguments/js_vars)!
 
-Add Google Fonts with our [typography field](/docs/controls/typography), add [tooltips](/docs/arguments/tooltip) to help your users and build awesome products!
+Add Google Fonts with our [typography field](https://aristath.github.io/kirki/docs/controls/typography), add [tooltips](https://aristath.github.io/kirki/docs/arguments/tooltip) to help your users and build awesome products!
 
 <a href="https://github.com/aristath/kirki" class="success button">Fork on Github</a>
 <hr>

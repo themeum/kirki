@@ -12,7 +12,7 @@ Kirki::add_field( 'my_config', array(
 	'default'     => array(
 		array(
 			'link_text' => esc_attr__( 'Kirki Site', 'my_textdomain' ),
-			'link_url'  => 'https://kirki.org',
+			'link_url'  => 'https://aristath.github.io/kirki/',
 		),
 		array(
 			'link_text' => esc_attr__( 'Kirki Repository', 'my_textdomain' ),

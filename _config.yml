@@ -11,7 +11,7 @@ email: aristath@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Documentation for the Kirki WordPress Customizer plugin.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://kirki.org" # the base hostname & protocol for your site
+url: "https://aristath.github.io/kirki/" # the base hostname & protocol for your site
 twitter_username: aristath
 github_username:  aristath
 
