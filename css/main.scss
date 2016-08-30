@@ -126,6 +126,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .awesome-themes {
 	text-align: center;
+	.columns.item {
+		padding-left: .2rem;
+		padding-right: .2rem;
+	}
 	h3 {
 		margin: 3rem 0;
 	}
