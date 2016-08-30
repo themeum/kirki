@@ -132,13 +132,16 @@ h1, h2, h3, h4, h5, h6 {
 	.item {
 		padding-bottom: 2rem;
 		.inner {
-			-webkit-box-shadow: 1px 1px 6px 1px rgba(0,0,0,.2);
-			box-shadow: 1px 1px 6px 1px rgba(0,0,0,.2);
-			padding: .25rem;
+			// -webkit-box-shadow: 1px 1px 6px 1px rgba(0,0,0,.2);
+			// box-shadow: 1px 1px 6px 1px rgba(0,0,0,.2);
+			// padding: .25rem;
 			a {
 				color: #000;
 				h4 {
-					font-size: 1.35rem;
+					font-size: 1.1rem;
+				}
+				hr {
+					margin: .5rem auto
 				}
 			}
 		}
@@ -180,9 +183,9 @@ img.field-screenshot {
 .controls-grid {
 
 	.grid-item {
-		margin-bottom: 15px;	
+		margin-bottom: 15px;
 	}
-	
+
 	h2 {
 		font-size: 1.2em;
 		text-align: center;
