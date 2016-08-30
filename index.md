@@ -1,6 +1,10 @@
 ---
 layout: docs
 premium_themes:
+  - name: Carbis
+    market: sculptureqode
+    url: https://sculptureqode.com/themes/carbis/
+    thumb: https://9zmsdzbekt2r9oto3b3h0eik-wpengine.netdna-ssl.com/wp-content/uploads/edd/2016/08/SQ-carbis-showcase-image.png
   - name: Setwood
     market: ThemeForest
     url: https://themeforest.net/item/setwood-wordpress-blog-shop-theme/16165800
