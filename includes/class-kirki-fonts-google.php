@@ -119,6 +119,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 			// Go through our fields and populate $this->fonts.
 			$this->loop_fields();
 
+			$this->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->fonts );
+
 			// Goes through $this->fonts and adds or removes things as needed.
 			$this->process_fonts();
 
