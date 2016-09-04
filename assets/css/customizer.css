@@ -1348,9 +1348,10 @@ span.CodeMirror-selectedtext {
     background: rgba(0, 0, 0, 0.2);
     color: transparent;
     cursor: pointer;
-    display: block;
+    display: table;
     margin-bottom: 1rem;
     position: relative;
+    table-layout: fixed;
     transition: left 0.15s ease-out;
     height: 2rem;
     width: 4rem;
@@ -1391,15 +1392,19 @@ span.CodeMirror-selectedtext {
         border-radius: 2rem; }
 .customize-control-kirki-switch .switch-off,
 .customize-control-kirki-switch .switch-on {
-  line-height: 32px;
+  display: table-cell;
+  font-size: .9em;
   font-weight: bold;
-  padding: 0 10px; }
+  line-height: 32px;
+  padding: 0;
+  text-align: center;
+  width: 50%; }
 .customize-control-kirki-switch .switch-on {
   color: #fff;
-  padding-right: 5px; }
+  padding-left: 0.25rem; }
 .customize-control-kirki-switch .switch-off {
   color: #777;
-  padding-left: 5px; }
+  padding-right: 0.25rem; }
 
 .customize-control-kirki-generic textarea {
   width: 100%;
