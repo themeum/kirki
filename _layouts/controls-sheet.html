@@ -14,7 +14,7 @@
 							{% for node in site.pages %}
 								{% if node.url contains "docs/controls" and node.screenshot %}
 								<div class="grid-item">
-									<a href="{{ node.url }}">
+									<a href="{{ site.baseurl}}{{ node.url }}">
 										<h2>{{ node.title }}</h2>
 										<img src="{{ site.url }}/{{ node.screenshot }}" role="presentation">
 									</a>
