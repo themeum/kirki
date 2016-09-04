@@ -1336,7 +1336,6 @@ span.CodeMirror-selectedtext {
   display: none; }
 .customize-control-kirki-switch .switch {
   border: none;
-  margin-bottom: 1.5rem;
   outline: 0;
   padding: 0;
   position: relative;
@@ -1349,7 +1348,6 @@ span.CodeMirror-selectedtext {
     color: transparent;
     cursor: pointer;
     display: table;
-    margin-bottom: 1rem;
     position: relative;
     table-layout: fixed;
     transition: left 0.15s ease-out;
