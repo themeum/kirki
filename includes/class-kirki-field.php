@@ -498,10 +498,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_option_type() {
 
-			// If we have an option_name then make sure we're using options and not theme_mods.
-			if ( '' !== $this->option_name ) {
-				$this->option_type = 'option';
-			}
 			// Take care of common typos.
 			if ( 'options' === $this->option_type ) {
 				$this->option_type = 'option';
