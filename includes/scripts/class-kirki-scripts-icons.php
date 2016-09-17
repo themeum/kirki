@@ -85,9 +85,11 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 * Format the script in a way that will be compatible with WordPress.
 		 */
 		public function enqueue_script() {
-			if ( ! self::$script_added && '' != self::$icons_script ) {
+			if ( ! self::$script_added && '' !== self::$icons_script ) {
 				self::$script_added = true;
+				// @codingStandardsIgnoreStart
 				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
+				// @codingStandardsIgnoreEnd
 			}
 		}
 	}
