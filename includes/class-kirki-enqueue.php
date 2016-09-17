@@ -81,9 +81,9 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 
 			// If we have tooltips, enqueue the tooltips script.
-			if ( $has_tooltips ) {
+			/* TODO: if ( $has_tooltips ) { */
 				wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
-			}
+			/* TODO: } */
 
 			// Enqueue the reset script.
 			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
