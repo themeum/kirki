@@ -41,6 +41,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 * Fix: `spacing` controls were not updating after save
 * New: Now using the WP Notifications API in the customizer for spacing & dimension controls (requires WP 4.6).
+* Fix: Allow overriding `option_type` with `theme_mod` when global config uses `option` by using the `option_type` argument in the fields.
+* Fix: Disabled the custom kirki-preview loader. THis will have to be built more modular in future versions.
+* Fix: Refactored panel & section icons.
+* Fix: postMessage now works better with slider controls.
+* Fix: Reset button not working unless tooltips are loaded.
 
 = 2.3.6 =
 
