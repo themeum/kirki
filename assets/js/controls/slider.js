@@ -29,7 +29,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 		});
 
 		if ( 'postMessage' === control.setting.transport ) {
-			changeAction = 'mousemove';
+			changeAction = 'mousemove change';
 		} else {
 			changeAction = 'change';
 		}
