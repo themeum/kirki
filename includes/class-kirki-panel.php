@@ -24,8 +24,8 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 		 * @var array
 		 */
 		private $panel_types = array(
-			'default'  => 'Kirki_Panels_Default_Panel',
-			'expanded' => 'Kirki_Panels_Expanded_Panel',
+			'kirki-default'  => 'Kirki_Panels_Default_Panel',
+			'kirki-expanded' => 'Kirki_Panels_Expanded_Panel',
 		);
 
 		/**
@@ -50,22 +50,17 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 			global $wp_customize;
 
 			if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->panel_types ) ) {
-				$args['type'] = 'default';
+				$args['type'] = 'kirki-default';
 			}
 			$panel_classname = $this->panel_types[ $args['type'] ];
 
-			$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), array(
-				'title'           => $args['title'], // Already escaped in WP Core.
-				'priority'        => absint( $args['priority'] ),
-				'description'     => $args['description'], // Already escaped in WP Core.
-				'active_callback' => $args['active_callback'],
-			) ) );
-
 			// If we've got an icon then call the object to create its script.
 			if ( isset( $args['icon'] ) ) {
-				$args['context'] = 'panel';
 				Kirki_Scripts_Icons::generate_script( $args );
 			}
+
+			$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
+
 		}
 	}
 }

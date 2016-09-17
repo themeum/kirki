@@ -25,5 +25,4 @@ if ( ! class_exists( 'Kirki_Panels_Default_Panel' ) ) {
 		public $type = 'kirki-default';
 
 	}
-
 }

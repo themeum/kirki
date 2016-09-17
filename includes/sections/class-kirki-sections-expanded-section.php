@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kirki_Sections_Expanded_Section' ) ) {
 					<li class="customize-section-description-container">
 						<div class="customize-section-title">
 							<h3>
-								{{ data.title }}
+								{{{ data.title }}}
 							</h3>
 						</div>
 						<# if ( data.description ) { #>
