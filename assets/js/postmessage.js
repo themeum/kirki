@@ -4,10 +4,13 @@
 	_.each( jsvars, function( jsVars, setting ) {
 
 		var css      = '',
-		    cssArray = {};
+		    cssArray = {},
+		    previousVal;
 
 		api( setting, function( value ) {
-
+			
+			previousVal = value();
+			
 			value.bind( function( newval ) {
 
 				if ( undefined !== jsVars && 0 < jsVars.length ) {
@@ -59,8 +62,10 @@
 								// Process the value pattern
 								if ( undefined !== args.value_pattern ) {
 									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
+									previousVal = args.value_pattern.replace( /\$/g, args.prefix + previousVal + args.units + args.suffix );
 								} else {
 									val = args.prefix + newval + args.units + args.suffix;
+									previousVal = args.prefix + previousVal + args.units + args.suffix;
 								}
 
 								// Simple tweak for background-image properties.
@@ -78,6 +83,12 @@
 										jQuery( args.element ).html( val );
 									}
 
+// Inject HTML
+								}else if ( 'class' === args['function'] ) {
+									
+									jQuery( args.element ).removeClass( previousVal ).addClass( val );
+									previousVal = value();
+				
 								// Add CSS
 								} else {
 
