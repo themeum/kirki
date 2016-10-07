@@ -1,6 +1,6 @@
-if (typeof String.prototype.parseFunction != 'function') {
+if (typeof String.prototype.parseFunction !== "function") {
     String.prototype.parseFunction = function () {
-        var funcReg = /function *\(([^()]*)\)[ \n\t]*{(.*)}/gmi;
+        var funcReg = new RegExp(/function\s*\(([^()]*)\)[\s\n\t]*{(.*)}/, gmi);
         var match = funcReg.exec(this.replace(/\n/g, ' '));
 
         if(match) {
