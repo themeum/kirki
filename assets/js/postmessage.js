@@ -1,15 +1,27 @@
+if (typeof String.prototype.parseFunction != 'function') {
+    String.prototype.parseFunction = function () {
+        var funcReg = /function *\(([^()]*)\)[ \n\t]*{(.*)}/gmi;
+        var match = funcReg.exec(this.replace(/\n/g, ' '));
+
+        if(match) {
+            return new Function(match[1].split(','), match[2]);
+        }
+
+        return null;
+    };
+}
+
 ( function() {
 	var api = wp.customize;
 
 	_.each( jsvars, function( jsVars, setting ) {
 
 		var css      = '',
-		    cssArray = {},
-		    previousVal;
+		    cssArray = {};
 
 		api( setting, function( value ) {
 			
-			previousVal = value();
+			var oldval = value();
 			
 			value.bind( function( newval ) {
 
@@ -18,6 +30,7 @@
 					_.each( jsVars, function( jsVar ) {
 
 						var val = newval;
+						var oval = oldval;
 
 						// Make sure element is defined.
 						if ( undefined === jsVar.element ) {
@@ -55,17 +68,17 @@
 						}
 
 						_.each( jsVars, function( args, i ) {
-
+					
 							// Value is a string
 							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
 								if ( undefined !== args.value_pattern ) {
 									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
-									previousVal = args.value_pattern.replace( /\$/g, args.prefix + previousVal + args.units + args.suffix );
+									oval = args.value_pattern.replace( /\$/g, args.prefix + oldval + args.units + args.suffix );
 								} else {
 									val = args.prefix + newval + args.units + args.suffix;
-									previousVal = args.prefix + previousVal + args.units + args.suffix;
+									oval = args.prefix + oldval + args.units + args.suffix;
 								}
 
 								// Simple tweak for background-image properties.
@@ -83,13 +96,12 @@
 										jQuery( args.element ).html( val );
 									}
 
-// Inject HTML
+								// Set Class
 								}else if ( 'class' === args['function'] ) {
 									
-									jQuery( args.element ).removeClass( previousVal ).addClass( val );
-									previousVal = value();
-				
-								// Add CSS
+									jQuery( args.element ).removeClass( oval ).addClass( val );
+									
+								// Add CSS	
 								} else {
 
 									// If we have new value, replace style contents with custom css
@@ -123,7 +135,34 @@
 								});
 
 							}
-
+							
+							// Check if Callback Function
+							var func = args['function'].parseFunction();
+							
+							if ( func instanceof Function ) {
+							
+								if(func.length === 3) {
+									
+									// callback with element, value & old value
+									func(args.element, val, oval);
+									
+								}else if(func.length === 2) {
+									
+									// callback with element & value
+									func(args.element, val);
+									
+								}else if(func.length === 1) {
+									
+									// callback with element
+									func(args.element);
+									
+								}else{
+									
+									// callback with no arguments
+									func();
+								}
+							}
+	
 						});
 
 					});
@@ -154,6 +193,9 @@
 					});
 
 				}
+										
+				//Set previous value to current one
+				oldval = newval;
 
 			});
 
