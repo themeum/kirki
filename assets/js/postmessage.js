@@ -1,16 +1,3 @@
-if (typeof String.prototype.parseFunction !== "function") {
-    String.prototype.parseFunction = function () {
-        var funcReg = new RegExp(/function\s*\(([^()]*)\)[\s\n\t]*{(.*)}/, gmi);
-        var match = funcReg.exec(this.replace(/\n/g, ' '));
-
-        if(match) {
-            return new Function(match[1].split(','), match[2]);
-        }
-
-        return null;
-    };
-}
-
 ( function() {
 	var api = wp.customize;
 
@@ -68,7 +55,7 @@ if (typeof String.prototype.parseFunction !== "function") {
 						}
 
 						_.each( jsVars, function( args, i ) {
-					
+				
 							// Value is a string
 							if ( 'string' === typeof newval ) {
 
@@ -98,9 +85,9 @@ if (typeof String.prototype.parseFunction !== "function") {
 
 								// Set Class
 								}else if ( 'class' === args['function'] ) {
-									
+		
 									jQuery( args.element ).removeClass( oval ).addClass( val );
-									
+								
 								// Add CSS	
 								} else {
 
@@ -135,34 +122,7 @@ if (typeof String.prototype.parseFunction !== "function") {
 								});
 
 							}
-							
-							// Check if Callback Function
-							var func = args['function'].parseFunction();
-							
-							if ( func instanceof Function ) {
-							
-								if(func.length === 3) {
-									
-									// callback with element, value & old value
-									func(args.element, val, oval);
-									
-								}else if(func.length === 2) {
-									
-									// callback with element & value
-									func(args.element, val);
-									
-								}else if(func.length === 1) {
-									
-									// callback with element
-									func(args.element);
-									
-								}else{
-									
-									// callback with no arguments
-									func();
-								}
-							}
-	
+
 						});
 
 					});
