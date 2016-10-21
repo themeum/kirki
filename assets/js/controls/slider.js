@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-slider'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -15,17 +15,17 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 			value = jQuery( this ).attr( 'value' );
 			jQuery( this ).mousemove( function() {
 				value = jQuery( this ).attr( 'value' );
-				jQuery( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( value );
+				jQuery( this ).closest( 'label' ).find( '.xtkirki_range_value .value' ).text( value );
 			});
 		});
 
 		// Handle the reset button
-		jQuery( '.kirki-slider-reset' ).click( function() {
+		jQuery( '.xtkirki-slider-reset' ).click( function() {
 			thisInput    = jQuery( this ).closest( 'label' ).find( 'input' );
 			inputDefault = thisInput.data( 'reset_value' );
 			thisInput.val( inputDefault );
 			thisInput.change();
-			jQuery( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( inputDefault );
+			jQuery( this ).closest( 'label' ).find( '.xtkirki_range_value .value' ).text( inputDefault );
 		});
 
 		if ( 'postMessage' === control.setting.transport ) {

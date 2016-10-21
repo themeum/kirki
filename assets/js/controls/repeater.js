@@ -76,7 +76,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		    limit,
 		    theNewRow;
 
-		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
+		// The current value set in Control Class (set in XTKirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
 
 		// The hidden field that keeps the data saved (though we never update it)
@@ -451,7 +451,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.xtkirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
 
 		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
@@ -474,7 +474,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
 
-		$targetDiv.find( '.kirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
+		$targetDiv.find( '.xtkirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
 
 		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
@@ -528,7 +528,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		$targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image,.repeater-field-upload' );
 		$uploadButton = $targetDiv.find( '.upload-button' );
 
-		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
+		$targetDiv.find( '.xtkirki-image-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
 		});
 		$targetDiv.find( '.hidden-field' ).val( '' );
@@ -553,7 +553,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		$targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
 		$uploadButton = $targetDiv.find( '.upload-button' );
 
-		$targetDiv.find( '.kirki-file-attachment' ).slideUp( 'fast', function() {
+		$targetDiv.find( '.xtkirki-file-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
 		});
 		$targetDiv.find( '.hidden-field' ).val( '' );
@@ -630,7 +630,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control       = this,
-		    template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
+		    template      = control.repeaterTemplate(), // The template for the new row (defined on XTKirki_Customize_Repeater_Control::render_content() ).
 		    settingValue  = this.getValue(), // Get the current setting value.
 		    newRowSetting = {}, // Saves the new setting data.
 		    templateData, // Data to pass to the template

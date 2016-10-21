@@ -1,4 +1,4 @@
-function kirkiValidateCSSValue( value ) {
+function xtkirkiValidateCSSValue( value ) {
 
 	var validUnits = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'],
 	    numericValue,

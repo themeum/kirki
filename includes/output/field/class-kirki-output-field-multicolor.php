@@ -2,19 +2,19 @@
 /**
  * Handles CSS output for multicolor fields.
  *
- * @package     Kirki
+ * @package     XTKirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
+if ( ! class_exists( 'XTKirki_Output_Field_Multicolor' ) ) {
 
 	/**
 	 * Output overrides.
 	 */
-	class Kirki_Output_Field_Multicolor extends Kirki_Output {
+	class XTKirki_Output_Field_Multicolor extends XTKirki_Output {
 
 		/**
 		 * Processes a single item from the `output` array.

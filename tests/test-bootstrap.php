@@ -8,7 +8,7 @@ if ( ! $_tests_dir ) {
 require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/kirki.php';
+	require dirname( dirname( __FILE__ ) ) . '/xtkirki.php';
 }
 tests_add_filter( 'after_setup_theme', '_manually_load_plugin' );
 

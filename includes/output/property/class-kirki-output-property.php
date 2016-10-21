@@ -3,19 +3,19 @@
  * Handles CSS properties.
  * Extend this class in order to handle exceptions.
  *
- * @package     Kirki
+ * @package     XTKirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Property' ) ) {
+if ( ! class_exists( 'XTKirki_Output_Property' ) ) {
 
 	/**
 	 * Output for CSS properties.
 	 */
-	class Kirki_Output_Property {
+	class XTKirki_Output_Property {
 
 		/**
 		 * The property we're modifying.

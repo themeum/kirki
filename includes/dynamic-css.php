@@ -2,7 +2,7 @@
 /**
  * Generates & echo the styles when using the AJAx method.
  *
- * @package     Kirki
+ * @package     XTKirki
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
@@ -10,7 +10,7 @@
  */
 
 // Do not allow directly accessing this file.
-if ( ! class_exists( 'Kirki' ) ) {
+if ( ! class_exists( 'XTKirki' ) ) {
 	die( 'File can\'t be accessed directly' );
 }
 
@@ -18,14 +18,14 @@ if ( ! class_exists( 'Kirki' ) ) {
 header( 'Content-Type: text/css' );
 
 // Echo the styles.
-$configs = Kirki::$config;
+$configs = XTKirki::$config;
 foreach ( $configs as $config_id => $args ) {
 	if ( true === $args['disable_output'] ) {
 		continue;
 	}
 
-	$styles = Kirki_Styles_Frontend::loop_controls( $config_id );
-	$styles = apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
+	$styles = XTKirki_Styles_Frontend::loop_controls( $config_id );
+	$styles = apply_filters( 'xtkirki/' . $config_id . '/dynamic_css', $styles );
 
 	// Some people put weird stuff in their CSS, KSES tends to be greedy.
 	$styles = str_replace( '<=', '&lt;=', $styles );

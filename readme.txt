@@ -1,7 +1,7 @@
-=== Kirki ===
+=== XTKirki ===
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
-Donate link: http://kirki.org/
+Donate link: http://xtkirki.org/
 Requires at least: 4.4
 Tested up to: 4.5
 Stable tag: 2.3.6
@@ -13,13 +13,13 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 == Description ==
 
-[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE) [![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/aristath/xtkirki.svg?branch=master)](https://travis-ci.org/aristath/xtkirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/xtkirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/xtkirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/xtkirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/xtkirki) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/xtkirki/master/LICENSE) [![Join the chat at https://gitter.im/aristath/xtkirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/xtkirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
+XTKirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
 
-Kirki does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with it. An excellent handbook for the WordPress Customizer can be found on the developer.wordpress.org website.
+XTKirki does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with it. An excellent handbook for the WordPress Customizer can be found on the developer.wordpress.org website.
 
-What Kirki does is save you time… LOTS of time!
+What XTKirki does is save you time… LOTS of time!
 
 Easily add configurations for your project, create panels, sections and add fields with ease.
 
@@ -27,13 +27,13 @@ Automatically create CSS from your fields, and make the customizer’s preview i
 
 Add Google Fonts with our typography field, add tooltips to help your users and build awesome products!
 
-You can find detailed documentation on how to use Kirki on [https://kirki.org](https://kirki.org)
+You can find detailed documentation on how to use XTKirki on [https://xtkirki.org](https://xtkirki.org)
 
 == Installation ==
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate XTKirki in your theme or plugin, please read the instructions on [our ducumentation site](https://xtkirki.org/docs/advanced/integration.html).
 
 == Changelog ==
 
@@ -42,7 +42,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `spacing` controls were not updating after save
 * New: Now using the WP Notifications API in the customizer for spacing & dimension controls (requires WP 4.6).
 * Fix: Allow overriding `option_type` with `theme_mod` when global config uses `option` by using the `option_type` argument in the fields.
-* Fix: Disabled the custom kirki-preview loader. THis will have to be built more modular in future versions.
+* Fix: Disabled the custom xtkirki-preview loader. THis will have to be built more modular in future versions.
 * Fix: Refactored panel & section icons.
 * Fix: postMessage now works better with slider controls.
 * Fix: Reset button not working unless tooltips are loaded.
@@ -51,23 +51,23 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 August 28, 2016, dev time: 3 hours.
 
-* Fix: CSS prefixes order fixes ([#1042](https://github.com/aristath/kirki/pull/1042)).
-* Fix: `suffix` output argument support in Multicolor control ([#1042](https://github.com/aristath/kirki/pull/1042)).
-* Fix: `Kirki::get_variables()` method should be static ([#1050](https://github.com/aristath/kirki/pull/1050)).
-* Fix: Add line wrapping to CodeMirror ([#1079](https://github.com/aristath/kirki/pull/1079)).
-* Fix: `container_inclusive` is disregarded on the selective refresh class ([#1089](https://github.com/aristath/kirki/issues/1089)).
-* Fix: Support `input_attrs` parameter for controls ([#1074](https://github.com/aristath/kirki/issues/1074)).
-* Fix: Outdated Google-Fonts list ([#1091](https://github.com/aristath/kirki/issues/1091)).
+* Fix: CSS prefixes order fixes ([#1042](https://github.com/aristath/xtkirki/pull/1042)).
+* Fix: `suffix` output argument support in Multicolor control ([#1042](https://github.com/aristath/xtkirki/pull/1042)).
+* Fix: `XTKirki::get_variables()` method should be static ([#1050](https://github.com/aristath/xtkirki/pull/1050)).
+* Fix: Add line wrapping to CodeMirror ([#1079](https://github.com/aristath/xtkirki/pull/1079)).
+* Fix: `container_inclusive` is disregarded on the selective refresh class ([#1089](https://github.com/aristath/xtkirki/issues/1089)).
+* Fix: Support `input_attrs` parameter for controls ([#1074](https://github.com/aristath/xtkirki/issues/1074)).
+* Fix: Outdated Google-Fonts list ([#1091](https://github.com/aristath/xtkirki/issues/1091)).
 
 = 2.3.5 =
 
 July 2, 2016. dev time: 6 hours.
 
 * FIX: Missing button labels in `repeater` fields.
-* FIX: Missing button label in `code` fields ([#1017](https://github.com/aristath/kirki/issues/1017)).
-* FIX: Better implementation when embedding Kirki in a theme ([#1025](https://github.com/aristath/kirki/issues/1025)).
-* FIX: Updated google-fonts ([#1041](https://github.com/aristath/kirki/issues/1041)).
-* NEW: Allow simpler format for `variables` argument ([#1020](https://github.com/aristath/kirki/issues/1020)).
+* FIX: Missing button label in `code` fields ([#1017](https://github.com/aristath/xtkirki/issues/1017)).
+* FIX: Better implementation when embedding XTKirki in a theme ([#1025](https://github.com/aristath/xtkirki/issues/1025)).
+* FIX: Updated google-fonts ([#1041](https://github.com/aristath/xtkirki/issues/1041)).
+* NEW: Allow simpler format for `variables` argument ([#1020](https://github.com/aristath/xtkirki/issues/1020)).
 
 = 2.3.4 =
 
@@ -79,22 +79,22 @@ June 1, 2016, dev time: 30 minutes.
 
 May 31, 2016, dev time: 17 hours.
 
-* FIX: Editor field covering the content ([#955](https://github.com/aristath/kirki/issues/955)).
+* FIX: Editor field covering the content ([#955](https://github.com/aristath/xtkirki/issues/955)).
 * FIX: Smoother transition for editor switching.
-* FIX: Code field JS error when using "php" mode ([#958](https://github.com/aristath/kirki/issues/958)).
-* FIX: `postMessage` for typography fields ([#528](https://github.com/aristath/kirki/issues/528)).
-* FIX: translation strings ([#960](https://github.com/aristath/kirki/issues/960)).
-* FIX: `postMessage` for `background-image` properties ([#963](https://github.com/aristath/kirki/issues/963)).
-* FIX: Reset Typography Control without font-family default value ([#951](https://github.com/aristath/kirki/issues/951)).
-* FIX: Typography field: font-style missing in CSS output if variant is regular/400 ([#977](https://github.com/aristath/kirki/issues/977)).
-* FIX: Placing two editor controls in the customizer leads to odd behavior ([#140](https://github.com/aristath/kirki/issues/140)).
-* FIX: Typography field: letter-spacing missing in CSS output if its value is 0 ([#978](https://github.com/aristath/kirki/issues/978)).
-* FIX: Allow using HTML in section descriptions ([#976](https://github.com/aristath/kirki/issues/976)).
-* FIX: Bug preventing partial refreshes from working properly ([#991](https://github.com/aristath/kirki/issues/991)).
+* FIX: Code field JS error when using "php" mode ([#958](https://github.com/aristath/xtkirki/issues/958)).
+* FIX: `postMessage` for typography fields ([#528](https://github.com/aristath/xtkirki/issues/528)).
+* FIX: translation strings ([#960](https://github.com/aristath/xtkirki/issues/960)).
+* FIX: `postMessage` for `background-image` properties ([#963](https://github.com/aristath/xtkirki/issues/963)).
+* FIX: Reset Typography Control without font-family default value ([#951](https://github.com/aristath/xtkirki/issues/951)).
+* FIX: Typography field: font-style missing in CSS output if variant is regular/400 ([#977](https://github.com/aristath/xtkirki/issues/977)).
+* FIX: Placing two editor controls in the customizer leads to odd behavior ([#140](https://github.com/aristath/xtkirki/issues/140)).
+* FIX: Typography field: letter-spacing missing in CSS output if its value is 0 ([#978](https://github.com/aristath/xtkirki/issues/978)).
+* FIX: Allow using HTML in section descriptions ([#976](https://github.com/aristath/xtkirki/issues/976)).
+* FIX: Bug preventing partial refreshes from working properly ([#991](https://github.com/aristath/xtkirki/issues/991)).
 * FIX: Better internationalization handling.
-* FIX: Output errors on typography settings ([#975](https://github.com/aristath/kirki/issues/975)).
-* NEW: Added a new `attr` argument to `js_vars` ([#957](https://github.com/aristath/kirki/issues/957)).
-* NEW: Implemented both `AND` and `OR` conditionals in `active_callback` arrays ([#839](https://github.com/aristath/kirki/issues/839)).
+* FIX: Output errors on typography settings ([#975](https://github.com/aristath/xtkirki/issues/975)).
+* NEW: Added a new `attr` argument to `js_vars` ([#957](https://github.com/aristath/xtkirki/issues/957)).
+* NEW: Implemented both `AND` and `OR` conditionals in `active_callback` arrays ([#839](https://github.com/aristath/xtkirki/issues/839)).
 * NEW: Allow defining an array of dashicons to use.
 * NEW: Added a `link` control type.
 
@@ -104,17 +104,17 @@ May 2, 2016, dev time: 52 hours.
 
 * NEW: Completely refactored `editor` controls.
 * NEW: Completely re-styled `code` controls.
-* NEW: Added a new `kirki/{$config_id}/styles` filter ([#908](https://github.com/aristath/kirki/issues/908)).
-* NEW: Added a `customize-control-kirki` class to all Kirki controls.
-* FIX: Field type number : Cannot read property 'min' of undefined ([#911](https://github.com/aristath/kirki/issues/911)).
-* FIX: All controls are now prefixed ([#918](https://github.com/aristath/kirki/issues/918))
-* FIX: `alpha` argument in color-alpha controls ([#932](https://github.com/aristath/kirki/issues/932)).
+* NEW: Added a new `xtkirki/{$config_id}/styles` filter ([#908](https://github.com/aristath/xtkirki/issues/908)).
+* NEW: Added a `customize-control-xtkirki` class to all XTKirki controls.
+* FIX: Field type number : Cannot read property 'min' of undefined ([#911](https://github.com/aristath/xtkirki/issues/911)).
+* FIX: All controls are now prefixed ([#918](https://github.com/aristath/xtkirki/issues/918))
+* FIX: `alpha` argument in color-alpha controls ([#932](https://github.com/aristath/xtkirki/issues/932)).
 * FIX: Name attribute in repeaters (props @guillaumemolter).
 * FIX: Missing label for checkbox controls inside repeaters (props @guillaumemolter).
-* FIX: Placing 2 editor controls in the customizer leads to odd behaviour ([#140](https://github.com/aristath/kirki/issues/140)).
-* FIX: `active_callback` conbined with the old `required` argument. ([#906](https://github.com/aristath/kirki/issues/906)).
-* FIX: Double prefix and suffix in `js_vars` ([#943](https://github.com/aristath/kirki/issues/943)).
-* FIX: Typography control returns both 'subset' and 'subsets' indexes with the same value ([#948](https://github.com/aristath/kirki/issues/948)).
+* FIX: Placing 2 editor controls in the customizer leads to odd behaviour ([#140](https://github.com/aristath/xtkirki/issues/140)).
+* FIX: `active_callback` conbined with the old `required` argument. ([#906](https://github.com/aristath/xtkirki/issues/906)).
+* FIX: Double prefix and suffix in `js_vars` ([#943](https://github.com/aristath/xtkirki/issues/943)).
+* FIX: Typography control returns both 'subset' and 'subsets' indexes with the same value ([#948](https://github.com/aristath/xtkirki/issues/948)).
 * FIX: Use `strict` JS mode in all controls.
 
 = 2.3.1 =
@@ -140,13 +140,13 @@ April 19, 2016, dev time: 30 hours.
 
 April 10, 2016, dev time: 21 hours.
 
-Kirki is now 100% WordPress Coding Standards compliant.
+XTKirki is now 100% WordPress Coding Standards compliant.
 
 * FIX: Escaping google-font URLs when possible.
 * FIX: Only enqueue the tooltips script if needed.
 * FIX: WordPress Coding Standards.
 * FIX: undefined sub-controls were still being saved in typography fields
-* FIX: Javascript Console Errors: "wp.customize" object undefined when Kirki fields were added in `customize_register`
+* FIX: Javascript Console Errors: "wp.customize" object undefined when XTKirki fields were added in `customize_register`
 * FIX: markup in editor fields - props @manuelmoreale.
 * FIX: multiple styles in head when using js_vars
 * FIX: Sanitization for rem units
@@ -157,7 +157,7 @@ Kirki is now 100% WordPress Coding Standards compliant.
 
 = 2.2.10 =
 
-* FIX: Issue with URLs when using Kirki embedded in a theme and not installed as a plugin.
+* FIX: Issue with URLs when using XTKirki embedded in a theme and not installed as a plugin.
 
 = 2.2.9 =
 
@@ -190,14 +190,14 @@ April 5, 2016, dev time: 23 hours.
 * NEW: Added `text-align` ability in `typography` fields.
 * NEW: Added `text-transform` ability in `typography` fields.
 * NEW: Introduce `value_pattern` argument for `output` & `js_vars`.
-* NEW: Started refactoring the `Kirki_Field` class. Now each field can have its own sub-class extending the main Kirki_Field object.
+* NEW: Started refactoring the `XTKirki_Field` class. Now each field can have its own sub-class extending the main XTKirki_Field object.
 * NEW: `multicolor` control.
 * NEW: Added `cropped_image` support in `repeater`. Props @guillaumemolter
-* TWEAK: Renamed `Kirki_Customizer_Scripts_Loading` to `Kirki_Scripts_Loading`.
-* TWEAK: Renamed `Kirki_Customizer_Scripts_Tooltips` to `Kirki_Scripts_Tooltips`.
-* TWEAK: Renamed `Kirki_Customizer_Scripts_Icons` to `Kirki_Scripts_Icons`.
+* TWEAK: Renamed `XTKirki_Customizer_Scripts_Loading` to `XTKirki_Scripts_Loading`.
+* TWEAK: Renamed `XTKirki_Customizer_Scripts_Tooltips` to `XTKirki_Scripts_Tooltips`.
+* TWEAK: Renamed `XTKirki_Customizer_Scripts_Icons` to `XTKirki_Scripts_Icons`.
 * TWEAK: More inline comments, docs & coding-standards improvements.
-* DEPRECATED: Removed the `Kirki_Colourlovers` class.
+* DEPRECATED: Removed the `XTKirki_Colourlovers` class.
 
 = 2.2.6 =
 
@@ -208,12 +208,12 @@ March 26, 2016, dev time: 10 hours
 * FIX: Styling for the `dropdown-pages` control.
 * FIX: `switch` controls now properly resize based on the label used in the `choices` argument.
 * FIX: It is now possible to use `calc()` in CSS value controls.
-* FIX: Styles were being applied to the customizer even if they were not defined in the `kirki/config` filter.
+* FIX: Styles were being applied to the customizer even if they were not defined in the `xtkirki/config` filter.
 * FIX: Removed unnecessary class inheritances & other code cleanups.
 * NEW: Allow resetting options per-section.
 * NEW: Added new `color-palette` control.
 * NEW: Added `'transport' => 'auto'` to auto-calculate postMessage scripts from the `output` argument when possible.
-* NEW: Added Material design palettes in the `Kirki_Helper` class.
+* NEW: Added Material design palettes in the `XTKirki_Helper` class.
 * NEW: Allow changing the "Add Row" text on repeater fields.
 * NEW: Allow setting a limit for repeater rows.
 
@@ -227,7 +227,7 @@ March 23, 2016, dev time: 7 hours
 * FIX: Missing textdomain on a string.
 * NEW: Refactored postMessage scripts.
 * NEW: Allow passing options to iris using the `choices` argument on color controls.
-* NEW: Allow disabling the custom loader using the `disable_loader` argument in the `kirki/config` filter.
+* NEW: Allow disabling the custom loader using the `disable_loader` argument in the `xtkirki/config` filter.
 
 = 2.2.4 =
 
@@ -264,9 +264,9 @@ March 17, 2016, dev time: 10 minutes
 March 17, 2016, dev time: 3 hours
 
 * FIX: Alpha channel was always enabled for color controls
-* FIX: PHP Notices in the class-kirki-output-control-typography.php file
+* FIX: PHP Notices in the class-xtkirki-output-control-typography.php file
 * FIX: PHP Fatal error on PHP 5.2
-* FIX: PHP Notice in the class-kirki-field.php file
+* FIX: PHP Notice in the class-xtkirki-field.php file
 * FIX: PHP Fatal error when using background-position in the output argument
 * TWEAK: Removed unused languages from CodeMirror to reduce the plugin's size
 
@@ -281,7 +281,7 @@ March 16, 2016, dev time: 120 hours
 * FIX: Bugfix for radio controls.
 * FIX: Fixed repeater remove image not triggering save button to activate, and added a placeholder when the image is removed. (props @sayedwp)
 * FIX: Fixed bug when using negative numbers as min value in the `number` field
-* FIX: Typo in the textdomain for some strings (some strings were using "Kirki" instead of "kirki").
+* FIX: Typo in the textdomain for some strings (some strings were using "XTKirki" instead of "xtkirki").
 * FIX: Complete refactor & rewrite of the google-fonts implementation.
 * FIX: IE11 bug on radio-image controls.
 * FIX: Radio-image bug when used with serialized options.
@@ -292,11 +292,11 @@ March 16, 2016, dev time: 120 hours
 * NEW: Google fonts now only show valid variants & subsets in typography controls.
 * NEW: Implemented partial refreshes for WP 4.5 using a "partial_refresh" argument (formatted as an array).
 * NEW: Better autoloader & improved file structure.
-* NEW: Deprecated the `Kirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
-* NEW: Completely refactored the `Kirki_Field` class, we're migrating to a more OOP model.
-* NEW: Added a new `kirki-generic` control.
-* NEW: Deprecated the custom text control and used the new `kirki-generic` control instead.
-* NEW: Deprecated the custom textarea control and used the new `kirki-generic` control instead.
+* NEW: Deprecated the `XTKirki_Field_Sanitize` class in favor of a more simplified & robust implementation.
+* NEW: Completely refactored the `XTKirki_Field` class, we're migrating to a more OOP model.
+* NEW: Added a new `xtkirki-generic` control.
+* NEW: Deprecated the custom text control and used the new `xtkirki-generic` control instead.
+* NEW: Deprecated the custom textarea control and used the new `xtkirki-generic` control instead.
 * NEW: Renamed the `help` argument to `tooltip`. `help` will continue to work as an alias.
 * NEW: Merged the `color` & color-alpha` controls. We now use the `color-alpha` control for all colors, and just modify the `data-alpha` property it has.
 * NEW: Started an OOP rewrite of many classes
@@ -335,10 +335,10 @@ February 13, 2016, dev time: 1 hour.
 
 February 10, 2016, dev time: 2 hours
 
-* FIX: Only load Kirki styles when in the customizer
+* FIX: Only load XTKirki styles when in the customizer
 * FIX: Performance issue with Google Fonts
 * NEW: Added radio-image controls to repeaters
-* TWEAK: Better color handling in the Kirki_Color class
+* TWEAK: Better color handling in the XTKirki_Color class
 
 = 2.0.7 =
 
@@ -359,7 +359,7 @@ January 18, 2016, dev time: 7 hours
 * NEW: Added an image sub-field to repeater fields (props @sayedwp)
 * NEW: Added a JS callback to js_vars (props @pingram3541)
 * TWEAK: Settings sanitization
-* TWEAK: Removed demo theme from the plugin. This is now provided separately on https://github.com/aristath/kirki-demo
+* TWEAK: Removed demo theme from the plugin. This is now provided separately on https://github.com/aristath/xtkirki-demo
 
 = 2.0.5 =
 
@@ -419,8 +419,8 @@ December 6, 2015, dev time > 140 hours
 * NEW: Demo theme.
 * NEW: Spacing Control.
 * REMOVED: Redux Framework compatibility.
-* FIX: Minor bugfixes to the Kirki_Color class.
-* FIX: kirki_get_option now uses Kirki::get_option().
+* FIX: Minor bugfixes to the XTKirki_Color class.
+* FIX: xtkirki_get_option now uses XTKirki::get_option().
 * FIX: Various bugfixes.
 * TWEAK: Converted the `checkbox` control to use the JS templating system.
 * TWEAK: Converted the `custom` control to use the JS templating system.
@@ -473,23 +473,23 @@ July 11, 2014, dev time: 177 hours
 * NEW: Use wp_add_inline_style to add customizer styles
 * NEW: Rebuilt the background fields calculation
 * NEW: Now using Formstone for switches & toggles
-* NEW: Added a new API. See https://github.com/aristath/kirki/wiki for documentation.
+* NEW: Added a new API. See https://github.com/aristath/xtkirki/wiki for documentation.
 * NEW: Minimum PHP requirement is now PHP 5.2
 * NEW: Added a Select2 field type.
-* NEW: Introducing the Kirki::get_option() method to get values.
+* NEW: Introducing the XTKirki::get_option() method to get values.
 * NEW: added 'media_query' argument to output.
-* NEW: Added ability to get variables for CSS preprocessors from the customizer values. See https://github.com/aristath/kirki/wiki/variables for documentation
+* NEW: Added ability to get variables for CSS preprocessors from the customizer values. See https://github.com/aristath/xtkirki/wiki/variables for documentation
 * NEW: now supporting 'units' to all outputs to support '!important'
 * NEW: Ability to create panels & sections using the new API.
-* NEW: added a get_posts method to the Kirki class.
-* NEW: Implement width argument in the styling options. See https://github.com/aristath/kirki/wiki/Styling-the-Customizer
-* NEW: add 'kirki/control_types' filter
+* NEW: added a get_posts method to the XTKirki class.
+* NEW: Implement width argument in the styling options. See https://github.com/aristath/xtkirki/wiki/Styling-the-Customizer
+* NEW: add 'xtkirki/control_types' filter
 * FIX: Properly saving values in the db when using serialized options
 * FIX: Check if classes & functions exist before adding them (allows for better compatibility when embedded in a theme)
 * FIX: PHP Warnings & Notices
 * FIX: Other minor bugfixes
 * FIX: Now using consistently `option_type` instead of `options_type` everywhere
-* FIX: `Kirki::get_option()` method now works for all fields, including background fields.
+* FIX: `XTKirki::get_option()` method now works for all fields, including background fields.
 * FIX: avoid errors when Color is undefined in background fields
 * FIX: Use WP_Filesystem to get the google fonts array from a json file
 * FIX: Radio-Button styling
@@ -500,20 +500,20 @@ July 11, 2014, dev time: 177 hours
 * FIX: Make sure all variables are escaped on output
 * TWEAK: Simplify the Colourlovers integration.
 * TWEAK: Improve sanitization
-* TWEAK: Improve the Kirki_Styles_Customizer class
+* TWEAK: Improve the XTKirki_Styles_Customizer class
 * TWEAK: Code cleanups
 * TWEAK: Added more inline docs (lots of them)
 * TWEAK: Use active_callback for required arguments instead of custom JS
 * TWEAK: Updated translation files
-* TWEAK: Better color manipulation in the Kirki_Color class
-* TWEAK: Move secondary classes instantiation to the Kirki() function.
-* TWEAK: set a $kirki global
-* TWEAK: deprecate getOrThrow method in the Kirki_Config class.
-* TWEAK: Move sanitisation functions to a Kirki_Sanitize class.
-* TWEAK: Rename Kirki_Framework to Kirki_Toolkit.
+* TWEAK: Better color manipulation in the XTKirki_Color class
+* TWEAK: Move secondary classes instantiation to the XTKirki() function.
+* TWEAK: set a $xtkirki global
+* TWEAK: deprecate getOrThrow method in the XTKirki_Config class.
+* TWEAK: Move sanitisation functions to a XTKirki_Sanitize class.
+* TWEAK: Rename XTKirki_Framework to XTKirki_Toolkit.
 * TWEAK: Move variables to the new API
-* TWEAK: simplify Kirki_Controls class
-* TWEAK: move the kirki/fields & kirki/controls filters to the new API
+* TWEAK: simplify XTKirki_Controls class
+* TWEAK: move the xtkirki/fields & xtkirki/controls filters to the new API
 * REMOVED: remove the 'stylesheet_id' from the configuration.
 
 = 0.8.4 =
@@ -547,7 +547,7 @@ April 5, 2014, dev time: 28 hours
 * NEW: Allow using rgba values for background colors
 * FIX: CSS fix - :focus color for active section
 * NEW: Add a static 'prepare' method to the ScriptRegistry class
-* FIX: Issues with the URL when Kirki is embedded in a theme
+* FIX: Issues with the URL when XTKirki is embedded in a theme
 
 = 0.8.2 =
 
@@ -569,14 +569,14 @@ March 30, 2015, dev time: 32 hours
 * NEW: Added Palette control
 * NEW: Added Editor control (WYSIWYG - uses TinyMCE)
 * NEW: Added Custom control (free html)
-* NEW: Added a Kirki_Colourlovers class to use palettes from the colourlovers API
+* NEW: Added a XTKirki_Colourlovers class to use palettes from the colourlovers API
 * NEW: Added a composer file (props @vpratfr)
 * FIX: Wrong settings IDs
 * FIX: Color calculation on RGBA functions were off
 * TWEAK: Restructuring the plugin (props @vpratfr)
-* NEW: added a functional kirki_get_option() function
+* NEW: added a functional xtkirki_get_option() function
 * TWEAK: Simplified configuration options.
-* NEW: Turn Kirki into a singleton and a facade (props @vpratfr)
+* NEW: Turn XTKirki into a singleton and a facade (props @vpratfr)
 * TWEAK: Completely re-written the customizer styles
 * NEW: Using SASS for customizer styles
 * TWEAK: Deprecating the group_title control in favor of the new custom control
@@ -586,10 +586,10 @@ March 30, 2015, dev time: 32 hours
 
 March 15, 2015, dev time: 2 hours
 
-* REMOVED: Remove the `kirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
+* REMOVED: Remove the `xtkirki_get_option` function that was introduced in 0.7 as it's not working properly yet.
 * FIX: Undefined index notice when a default value for the control was not defined
 * TWEAK: `logo_image` now injects an `img` element instead of a `div` with custom background
-* NEW: Added `description` argument in the kirki configuration (replaces the theme description)
+* NEW: Added `description` argument in the xtkirki configuration (replaces the theme description)
 
 = 0.7 =
 
@@ -598,7 +598,7 @@ March 14, 2015, dev time: 10 hours
 * FIX: Array to string conversion that happened conditionally when used with googlefonts. (props @groucho75)
 * FIX: Background opacity affects background-position of bg image
 * FIX: font-weight not being applied on google fonts
-* NEW: Added `kirki_get_option( $setting );` function that also gets default values
+* NEW: Added `xtkirki_get_option( $setting );` function that also gets default values
 * TWEAK: Singleton for main plugin class
 * FIX: Prevent empty help tooltips
 * NEW: Added `toggle` control
@@ -642,7 +642,7 @@ February 25, 2015, dev time: 9 hours
 * FIX: Re-structuring files hierarchy
 * FIX: Simplify the way controls are loaded
 * NEW: Only load control classes when they are needed
-* NEW: Introducing Kirki_Customize_Control class
+* NEW: Introducing XTKirki_Customize_Control class
 * FIX: CSS tweaks
 * NEW: Sortable control (creating one is identical to a select control, but with `\'type\' => \'sortable\'`)
 * FIX: Double output CSS (props @agusmu)
@@ -678,7 +678,7 @@ January 21, 2015
 October 25, 2014
 
 * FIX: bugfix for selector
-* NEW: Change the Kirki theme based on which admin theme is selected.
+* NEW: Change the XTKirki theme based on which admin theme is selected.
 * FIX: Tranlsation domain issue
 * NEW: Added a \"group_title\" control
 * FIX: Updated the required script

@@ -1,4 +1,4 @@
-.customize-control-kirki-slider {
+.customize-control-xtkirki-slider {
   input[type=range] {
     -webkit-appearance: none;
     -webkit-transition: background 0.3s;
@@ -62,7 +62,7 @@
       display: none;
     }
   }
-  .kirki_range_value {
+  .xtkirki_range_value {
     display: inline-block;
     font-size: 14px;
     padding: 0 5px;
@@ -70,7 +70,7 @@
     position: relative;
     top: 2px;
   }
-  .kirki-slider-reset {
+  .xtkirki-slider-reset {
     color: rgba(0,0,0,.2);
     float: right;
     -webkit-transition: color 0.5s ease-in;

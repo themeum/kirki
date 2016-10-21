@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-date'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {

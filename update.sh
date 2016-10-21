@@ -5,12 +5,12 @@ if [ $# -lt 3 ]; then
 	exit 1
 fi
 
-rm -Rf ../kirki-release
-git clone git@github.com:aristath/kirki.git ../kirki-release
-cd ../kirki-release
+rm -Rf ../xtkirki-release
+git clone git@github.com:aristath/xtkirki.git ../xtkirki-release
+cd ../xtkirki-release
 
 # Replace version number in the files
-find . -name kirki.php -exec sed -i "s/Version:       $2/Version:       $3/g" {} \;
+find . -name xtkirki.php -exec sed -i "s/Version:       $2/Version:       $3/g" {} \;
 find . -name readme.txt -exec sed -i "s/Stable tag: $2/Stable tag: $3/g" {} \;
 
 # Run grunt
@@ -25,7 +25,7 @@ if [[ '' != $1 ]]; then
 fi
 
 mkdir svn
-svn co https://plugins.svn.wordpress.org/kirki svn
+svn co https://plugins.svn.wordpress.org/xtkirki svn
 
 # remove trunk
 rm -rf svn/trunk
@@ -70,5 +70,5 @@ if [[ '' != $1 ]]; then
 	svn add * --force
 	svn ci -m "$1"
 	cd ../..
-	rm -rf kirki-release
+	rm -rf xtkirki-release
 fi

@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-sortable'] = wp.customize.Control.extend({
 
 	ready: function() {
 

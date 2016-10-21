@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-radio'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-radio'] = wp.customize.Control.extend({
 
 	ready: function() {
 

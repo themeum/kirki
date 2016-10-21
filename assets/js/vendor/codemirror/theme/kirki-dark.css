@@ -1,111 +1,111 @@
-.cm-s-kirki-dark.CodeMirror {
+.cm-s-xtkirki-dark.CodeMirror {
   background: #272822;
   color: #f8f8f2;
 }
 
-.cm-s-kirki-dark div.CodeMirror-selected {
+.cm-s-xtkirki-dark div.CodeMirror-selected {
   background: #49483E;
 }
 
-.cm-s-kirki-dark .CodeMirror-line::selection,
-.cm-s-kirki-dark .CodeMirror-line > span::selection,
-.cm-s-kirki-dark .CodeMirror-line > span > span::selection {
+.cm-s-xtkirki-dark .CodeMirror-line::selection,
+.cm-s-xtkirki-dark .CodeMirror-line > span::selection,
+.cm-s-xtkirki-dark .CodeMirror-line > span > span::selection {
   background: rgba(73, 72, 62, .99);
 }
 
-.cm-s-kirki-dark .CodeMirror-line::-moz-selection,
-.cm-s-kirki-dark .CodeMirror-line > span::-moz-selection,
-.cm-s-kirki-dark .CodeMirror-line > span > span::-moz-selection {
+.cm-s-xtkirki-dark .CodeMirror-line::-moz-selection,
+.cm-s-xtkirki-dark .CodeMirror-line > span::-moz-selection,
+.cm-s-xtkirki-dark .CodeMirror-line > span > span::-moz-selection {
   background: rgba(73, 72, 62, .99);
 }
 
-.cm-s-kirki-dark .CodeMirror-gutters {
+.cm-s-xtkirki-dark .CodeMirror-gutters {
   background: #272822;
   border-right: 0px;
 }
 
-.cm-s-kirki-dark .CodeMirror-guttermarker {
+.cm-s-xtkirki-dark .CodeMirror-guttermarker {
   color: white;
 }
 
-.cm-s-kirki-dark .CodeMirror-guttermarker-subtle {
+.cm-s-xtkirki-dark .CodeMirror-guttermarker-subtle {
   color: #d0d0d0;
 }
 
-.cm-s-kirki-dark .CodeMirror-linenumber {
+.cm-s-xtkirki-dark .CodeMirror-linenumber {
   color: #d0d0d0;
 }
 
-.cm-s-kirki-dark .CodeMirror-cursor {
+.cm-s-xtkirki-dark .CodeMirror-cursor {
   border-left: 1px solid #f8f8f0;
 }
 
-.cm-s-kirki-dark span.cm-comment {
+.cm-s-xtkirki-dark span.cm-comment {
   color: #75715e;
 }
 
-.cm-s-kirki-dark span.cm-atom {
+.cm-s-xtkirki-dark span.cm-atom {
   color: #ae81ff;
 }
 
-.cm-s-kirki-dark span.cm-number {
+.cm-s-xtkirki-dark span.cm-number {
   color: #ae81ff;
 }
 
-.cm-s-kirki-dark span.cm-property, .cm-s-kirki-dark span.cm-attribute {
+.cm-s-xtkirki-dark span.cm-property, .cm-s-xtkirki-dark span.cm-attribute {
   color: #a6e22e;
 }
 
-.cm-s-kirki-dark span.cm-keyword {
+.cm-s-xtkirki-dark span.cm-keyword {
   color: #f92672;
 }
 
-.cm-s-kirki-dark span.cm-string {
+.cm-s-xtkirki-dark span.cm-string {
   color: #e6db74;
 }
 
-.cm-s-kirki-dark span.cm-variable {
+.cm-s-xtkirki-dark span.cm-variable {
   color: #f8f8f2;
 }
 
-.cm-s-kirki-dark span.cm-variable-2 {
+.cm-s-xtkirki-dark span.cm-variable-2 {
   color: #9effff;
 }
 
-.cm-s-kirki-dark span.cm-variable-3 {
+.cm-s-xtkirki-dark span.cm-variable-3 {
   color: #66d9ef;
 }
 
-.cm-s-kirki-dark span.cm-def {
+.cm-s-xtkirki-dark span.cm-def {
   color: #fd971f;
 }
 
-.cm-s-kirki-dark span.cm-bracket {
+.cm-s-xtkirki-dark span.cm-bracket {
   color: #f8f8f2;
 }
 
-.cm-s-kirki-dark span.cm-tag {
+.cm-s-xtkirki-dark span.cm-tag {
   color: #f92672;
 }
 
-.cm-s-kirki-dark span.cm-header {
+.cm-s-xtkirki-dark span.cm-header {
   color: #ae81ff;
 }
 
-.cm-s-kirki-dark span.cm-link {
+.cm-s-xtkirki-dark span.cm-link {
   color: #ae81ff;
 }
 
-.cm-s-kirki-dark span.cm-error {
+.cm-s-xtkirki-dark span.cm-error {
   background: #f92672;
   color: #f8f8f0;
 }
 
-.cm-s-kirki-dark .CodeMirror-activeline-background {
+.cm-s-xtkirki-dark .CodeMirror-activeline-background {
   background: #373831;
 }
 
-.cm-s-kirki-dark .CodeMirror-matchingbracket {
+.cm-s-xtkirki-dark .CodeMirror-matchingbracket {
   text-decoration: underline;
   color: white !important;
 }

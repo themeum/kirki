@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-palette'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-palette'] = wp.customize.Control.extend({
 
 	ready: function() {
 

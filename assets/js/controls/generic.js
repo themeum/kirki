@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-generic'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-generic'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {

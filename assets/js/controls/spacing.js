@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-spacing'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -37,7 +37,7 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 			value[ context ] = jQuery( this ).val();
 
 			// Notifications.
-			kirkiNotifications( control.id, 'kirki-spacing', control.params.kirkiConfig );
+			xtkirkiNotifications( control.id, 'xtkirki-spacing', control.params.xtkirkiConfig );
 
 			// Save the value
 			control.saveValue( value );

@@ -1,5 +1,5 @@
 /*jshint -W065 */
-wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-select'] = wp.customize.Control.extend({
 
 	ready: function() {
 

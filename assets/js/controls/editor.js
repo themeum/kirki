@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-editor'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -8,17 +8,17 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		var control       = this,
 		    element       = control.container.find( 'textarea' ),
 		    toggler       = control.container.find( '.toggle-editor' ),
-		    editorWrapper = jQuery( '#kirki_editor_pane' ),
-		    wpEditorArea  = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
+		    editorWrapper = jQuery( '#xtkirki_editor_pane' ),
+		    wpEditorArea  = jQuery( '#xtkirki_editor_pane textarea.wp-editor-area' ),
 		    setChange,
 		    content;
 
 		jQuery( window ).load( function() {
 
-			var editor  = tinyMCE.get( 'kirki-editor' );
+			var editor  = tinyMCE.get( 'xtkirki-editor' );
 
 			// Add the button text
-			toggler.html( window.kirki.l10n[ control.params.kirkiConfig ]['open-editor'] );
+			toggler.html( window.xtkirki.l10n[ control.params.xtkirkiConfig ]['open-editor'] );
 
 			toggler.on( 'click', function() {
 
@@ -70,18 +70,18 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control       = this,
-			editorWrapper = jQuery( '#kirki_editor_pane' );
+			editorWrapper = jQuery( '#xtkirki_editor_pane' );
 
 		// Reset all editor buttons.
 		// Necessary if we have multiple editor fields.
-		jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['switch-editor'] );
+		jQuery( '.customize-control-xtkirki-editor .toggle-editor' ).html( window.xtkirki.l10n[ control.params.xtkirkiConfig ]['switch-editor'] );
 
 		// Change the button text & color.
 		if ( false !== control.getEditorWrapperSetting() ) {
-			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['switch-editor'] );
-			jQuery( '#customize-control-' + control.getEditorWrapperSetting() + ' .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['close-editor'] );
+			jQuery( '.customize-control-xtkirki-editor .toggle-editor' ).html( window.xtkirki.l10n[ control.params.xtkirkiConfig ]['switch-editor'] );
+			jQuery( '#customize-control-' + control.getEditorWrapperSetting() + ' .toggle-editor' ).html( window.xtkirki.l10n[ control.params.xtkirkiConfig ]['close-editor'] );
 		} else {
-			jQuery( '.customize-control-kirki-editor .toggle-editor' ).html( window.kirki.l10n[ control.params.kirkiConfig ]['open-editor'] );
+			jQuery( '.customize-control-xtkirki-editor .toggle-editor' ).html( window.xtkirki.l10n[ control.params.xtkirkiConfig ]['open-editor'] );
 		}
 
 	},
@@ -94,7 +94,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-		    editorWrapper = jQuery( '#kirki_editor_pane' );
+		    editorWrapper = jQuery( '#xtkirki_editor_pane' );
 
 		if ( ! control.getEditorWrapperSetting() || control.id !== control.getEditorWrapperSetting() ) {
 			editorWrapper.removeClass();
@@ -114,7 +114,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-		    editorWrapper = jQuery( '#kirki_editor_pane' );
+		    editorWrapper = jQuery( '#xtkirki_editor_pane' );
 
 		editor.setContent( control.setting._value );
 
@@ -127,12 +127,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
+		if ( jQuery( '#xtkirki_editor_pane' ).hasClass( 'hide' ) ) {
 			return false;
 		}
 
-		if ( jQuery( '#kirki_editor_pane' ).attr( 'class' ) ) {
-			return jQuery( '#kirki_editor_pane' ).attr( 'class' );
+		if ( jQuery( '#xtkirki_editor_pane' ).attr( 'class' ) ) {
+			return jQuery( '#xtkirki_editor_pane' ).attr( 'class' );
 		} else {
 			return false;
 		}
@@ -143,13 +143,13 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Modifies the height of the preview area.
 	 */
 	previewHeight: function() {
-		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
-			if ( jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
-				jQuery( '#customize-preview' ).removeClass( 'is-kirki-editor-open' );
+		if ( jQuery( '#xtkirki_editor_pane' ).hasClass( 'hide' ) ) {
+			if ( jQuery( '#customize-preview' ).hasClass( 'is-xtkirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).removeClass( 'is-xtkirki-editor-open' );
 			}
 		} else {
-			if ( ! jQuery( '#customize-preview' ).hasClass( 'is-kirki-editor-open' ) ) {
-				jQuery( '#customize-preview' ).addClass( 'is-kirki-editor-open' );
+			if ( ! jQuery( '#customize-preview' ).hasClass( 'is-xtkirki-editor-open' ) ) {
+				jQuery( '#customize-preview' ).addClass( 'is-xtkirki-editor-open' );
 			}
 		}
 	}

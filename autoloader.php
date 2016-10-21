@@ -1,13 +1,13 @@
 <?php
 
-if ( ! function_exists( 'kirki_autoload_classes' ) ) {
+if ( ! function_exists( 'xtkirki_autoload_classes' ) ) {
 	/**
-	 * The Kirki class autoloader.
+	 * The XTKirki class autoloader.
 	 * Finds the path to a class that we're requiring and includes the file.
 	 */
-	function kirki_autoload_classes( $class_name ) {
+	function xtkirki_autoload_classes( $class_name ) {
 		$paths = array();
-		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
+		if ( 0 === stripos( $class_name, 'XTKirki' ) ) {
 
 			$path     = dirname( __FILE__ ) . '/includes/';
 			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
@@ -15,7 +15,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 			$paths[] = $path . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/lib/' . $filename;
 
-			$substr   = str_replace( 'Kirki_', '', $class_name );
+			$substr   = str_replace( 'XTKirki_', '', $class_name );
 			$exploded = explode( '_', $substr );
 			$levels   = count( $exploded );
 
@@ -37,5 +37,5 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 	}
 	// Run the autoloader
-	spl_autoload_register( 'kirki_autoload_classes' );
+	spl_autoload_register( 'xtkirki_autoload_classes' );
 }
