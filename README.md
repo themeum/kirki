@@ -3,8 +3,8 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
-**Tested up to:** 4.5  
-**Stable tag:** 2.3.6  
+**Tested up to:** 4.6.1  
+**Stable tag:** 2.3.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -37,9 +37,23 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 2.3.7 ###
+
+October 22, 2016, dev time: 12 hours.
+
+* Fix: `spacing` controls were not updating after save
+* New: Now using the WP Notifications API in the customizer for spacing & dimension controls (requires WP 4.6).
+* Fix: Allow overriding `option_type` with `theme_mod` when global config uses `option` by using the `option_type` argument in the fields.
+* Fix: Disabled the custom kirki-preview loader. This will have to be built more modular in future versions.
+* Fix: Refactored panel & section icons.
+* Fix: postMessage now works better with slider controls.
+* Fix: Reset button not working unless tooltips are loaded.
+* Fix: Properly sanitize `link` and `url` fields.
+* Fix: Automate sanitization for `repeater` fields.
+
 ### 2.3.6 ###
 
-August 28, 2016
+August 28, 2016, dev time: 3 hours.
 
 * Fix: CSS prefixes order fixes ([#1042](https://github.com/aristath/kirki/pull/1042)).
 * Fix: `suffix` output argument support in Multicolor control ([#1042](https://github.com/aristath/kirki/pull/1042)).

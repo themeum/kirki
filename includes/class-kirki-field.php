@@ -498,10 +498,6 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 		 */
 		protected function set_option_type() {
 
-			// If we have an option_name then make sure we're using options and not theme_mods.
-			if ( '' !== $this->option_name ) {
-				$this->option_type = 'option';
-			}
 			// Take care of common typos.
 			if ( 'options' === $this->option_type ) {
 				$this->option_type = 'option';
@@ -552,7 +548,7 @@ if ( ! class_exists( 'Kirki_Field' ) ) {
 				$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
 				// If we're using serialized options then we need to spice this up.
 				if ( 'option' === $this->option_type && '' !== $this->option_name && ( false === strpos( $setting_key, '[' ) ) ) {
-					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->option_name ) . '[' . esc_attr( $setting_value ).']';
+					$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->option_name ) . '[' . esc_attr( $setting_value ) . ']';
 				}
 			}
 			$this->settings = $settings;

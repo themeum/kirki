@@ -37,7 +37,6 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 		 */
 		public function to_json() {
 			parent::to_json();
-			$this->json['choices'] = array();
 			if ( is_array( $this->choices ) ) {
 				foreach ( $this->choices as $choice => $value ) {
 					if ( true === $value ) {
@@ -93,7 +92,6 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 								<h5>{{ data.l10n[ choiceKey ] }}</h5>
 								<div class="{{ choiceKey }} input-wrapper">
 									<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ] }}"/>
-									<span class="invalid-value">{{ data.l10n['invalid-value'] }}</span>
 								</div>
 							</div>
 						<# } #>

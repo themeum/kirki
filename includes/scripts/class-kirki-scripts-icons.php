@@ -58,36 +58,22 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 */
 		public static function generate_script( $args = array() ) {
 
-			/**
-			 * If "icon" is not specified
-			 * then no need to proceed.
-			 */
-			if ( ! isset( $args['icon'] ) || '' == $args['icon'] ) {
+			// If "icon" is not specified then no need to proceed.
+			if ( ! isset( $args['icon'] ) || '' === $args['icon'] ) {
 				return;
 			}
 
-			/**
-			 * If this is not a panel or section
-			 * then no need to proceed.
-			 */
-			if ( ! isset( $args['context'] ) || ! in_array( $args['context'], array( 'panel', 'section' ) ) ) {
-				return;
-			}
-
-			/**
-			 * If the panel or section ID is not defined
-			 * then early exit.
-			 */
+			// If the panel or section ID is not defined then early exit.
 			if ( ! isset( $args['id'] ) ) {
 				return;
 			}
 
-			$element = '#accordion-' . $args['context'] . '-' . $args['id'] . ' h3';
+			$element = '#accordion-panel-' . $args['id'] . ' > h3, #accordion-panel-' . $args['id'] . ' .panel-title';
 			if ( false !== strpos( $args['icon'], 'dashicons' ) ) {
 				$args['icon'] = 'dashicons ' . $args['icon'];
 			}
 
-			$script = '$("' . $element . '").prepend(\'<span class="' . esc_attr( $args['icon'] ) . '"></span>\');';
+			$script = '$("' . $element . '").prepend(\'<span class="' . esc_attr( $args['icon'] ) . '" style="vertical-align:text-bottom"></span> \');';
 
 			if ( false === strpos( self::$icons_script, $script ) ) {
 				self::$icons_script .= $script;
@@ -99,9 +85,11 @@ if ( ! class_exists( 'Kirki_Scripts_Icons' ) ) {
 		 * Format the script in a way that will be compatible with WordPress.
 		 */
 		public function enqueue_script() {
-			if ( ! self::$script_added && '' != self::$icons_script ) {
+			if ( ! self::$script_added && '' !== self::$icons_script ) {
 				self::$script_added = true;
-				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . wp_kses_post( self::$icons_script ) . '});</script>';
+				// @codingStandardsIgnoreStart
+				echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
+				// @codingStandardsIgnoreEnd
 			}
 		}
 	}

@@ -78,7 +78,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 			add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
 			add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
-			new Kirki_Scripts_Loading();
+			/* new Kirki_Scripts_Loading(); */
 		}
 
 		/**

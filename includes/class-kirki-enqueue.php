@@ -81,9 +81,9 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			}
 
 			// If we have tooltips, enqueue the tooltips script.
-			if ( $has_tooltips ) {
+			/* TODO: if ( $has_tooltips ) { */
 				wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
-			}
+			/* TODO: } */
 
 			// Enqueue the reset script.
 			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
@@ -91,6 +91,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
+			wp_register_script( 'kirki-notifications', trailingslashit( Kirki::$url ) . 'assets/js/functions/notifications.js', array( 'kirki-l10n', 'kirki-validate-css-value' ) );
 
 			// Register serialize.js.
 			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
@@ -117,7 +118,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
 				'date'            => array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ),
-				'dimension'       => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
+				'dimension'       => array( 'jquery', 'customize-base', 'kirki-notifications' ),
 				'dropdown-pages'  => array( 'jquery', 'customize-base', 'selectize' ),
 				'editor'          => array( 'jquery', 'customize-base', 'kirki-l10n' ),
 				'generic'         => array( 'jquery', 'customize-base' ),
@@ -133,7 +134,7 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				'select'          => array( 'jquery', 'customize-base', 'selectize' ),
 				'slider'          => array( 'jquery', 'customize-base' ),
 				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
-				'spacing'         => array( 'jquery', 'customize-base', 'kirki-validate-css-value' ),
+				'spacing'         => array( 'jquery', 'customize-base', 'kirki-notifications' ),
 				'switch'          => array( 'jquery', 'customize-base' ),
 				'toggle'          => array( 'jquery', 'customize-base' ),
 				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),

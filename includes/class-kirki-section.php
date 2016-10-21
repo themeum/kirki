@@ -24,9 +24,9 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 		 * @var array
 		 */
 		private $section_types = array(
-			'default'  => 'Kirki_Sections_Default_Section',
-			'expanded' => 'Kirki_Sections_Expanded_Section',
-			'hover'    => 'Kirki_Sections_Hover_Section',
+			'kirki-default'  => 'Kirki_Sections_Default_Section',
+			'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
+			'kirki-hover'    => 'Kirki_Sections_Hover_Section',
 		);
 
 		/**
@@ -53,22 +53,17 @@ if ( ! class_exists( 'Kirki_Section' ) ) {
 			global $wp_customize;
 
 			if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->section_types ) ) {
-				$args['type'] = 'default';
+				$args['type'] = 'kirki-default';
 			}
 			$section_classname = $this->section_types[ $args['type'] ];
 
-			$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), array(
-				'title'           => $args['title'], // Already escaped in WP Core.
-				'priority'        => absint( $args['priority'] ),
-				'panel'           => sanitize_key( $args['panel'] ),
-				'description'     => $args['description'], // Already escaped in WP Core.
-				'active_callback' => $args['active_callback'],
-			) ) );
-
-			if ( isset( $args['icon'] ) ) {
-				$args['context'] = 'section';
-				Kirki_Scripts_Icons::generate_script( $args );
+			if ( isset( $args['icon'] ) && ! empty( $args['icon'] ) ) {
+				$args['title'] = '<span class="dashicons ' . esc_attr( $args['icon'] ) . '"></span> ' . esc_html( $args['title'] );
 			}
+
+			// Add the section.
+			$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
+
 		}
 	}
 }

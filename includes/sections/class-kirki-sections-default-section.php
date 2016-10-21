@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 			?>
 			<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
 				<h3 class="accordion-section-title" tabindex="0">
-					{{ data.title }}
+					{{{ data.title }}}
 					<span class="screen-reader-text">{{ window.kirki.l10n.global['open-section'] }}</span>
 				</h3>
 				<ul class="accordion-section-content">
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Kirki_Sections_Default_Section' ) ) {
 								<span class="customize-action">
 									{{{ data.customizeAction }}}
 								</span>
-								{{ data.title }}
+								{{{ data.title }}}
 								<a href="#" class="kirki-reset-section" data-reset-section-id="{{ data.id }}">
 									{{{ window.kirki.l10n.global['reset-with-icon'] }}}
 								</a>

@@ -51,7 +51,7 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - phpunit # --coverage-clover=coverage.clover
+  # - phpunit # --coverage-clover=coverage.clover
   # Search for PHP syntax errors.
   - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml

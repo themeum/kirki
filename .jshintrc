@@ -32,6 +32,7 @@
 		"unserialize":false,
 		"serialize":false,
 		"kirkiAllFonts":false,
-		"kirkiL10n": false
+		"kirkiL10n": false,
+		"kirkiNotifications": false
 	}
 }

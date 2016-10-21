@@ -5,9 +5,10 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-			value,
-			thisInput,
-			inputDefault;
+		    value,
+		    thisInput,
+		    inputDefault,
+		    changeAction;
 
 		// Update the text value
 		jQuery( 'input[type=range]' ).on( 'mousedown', function() {
@@ -27,8 +28,14 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 			jQuery( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( inputDefault );
 		});
 
+		if ( 'postMessage' === control.setting.transport ) {
+			changeAction = 'mousemove change';
+		} else {
+			changeAction = 'change';
+		}
+
 		// Save changes.
-		this.container.on( 'change', 'input', function() {
+		this.container.on( changeAction, 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}

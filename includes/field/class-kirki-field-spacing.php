@@ -71,5 +71,22 @@ if ( ! class_exists( 'Kirki_Field_Spacing' ) ) {
 			$this->js_vars   = array();
 			$this->transport = 'refresh';
 		}
+
+		/**
+		 * Set the choices.
+		 * Adds a pseudo-element "controls" that helps with the JS API.
+		 *
+		 * @access protected
+		 */
+		protected function set_choices() {
+
+			$this->choices['controls'] = array();
+
+			$this->choices['controls']['top']    = ( isset( $this->default['top'] ) );
+			$this->choices['controls']['bottom'] = ( isset( $this->default['bottom'] ) );
+			$this->choices['controls']['left']   = ( isset( $this->default['left'] ) );
+			$this->choices['controls']['right']  = ( isset( $this->default['right'] ) );
+
+		}
 	}
 }
