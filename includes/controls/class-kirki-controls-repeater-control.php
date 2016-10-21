@@ -298,7 +298,11 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 
 							<div class="repeater-field repeater-field-{{{ field.type }}}">
 
-								<# if ( 'text' === field.type || 'url' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type ) { #>
+								<# if ( 'text' === field.type || 'url' === field.type || 'link' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type ) { #>
+
+									<# if ( 'link' === field.type ) { #>
+										<# field.type = 'url' #>
+									<# } #>
 
 									<label>
 										<# if ( field.label ) { #>
