@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-SVNMSG="${1//#/https\:\/\/github.com\/aristath\/kirki\/issues\/}"
+SVNMSG="${1//#/https\:\/\/github.com\/aristath\/xtkirki\/issues\/}"
 
 # Create svn directory if it doesn't exist
 if [ ! -d "./svn" ]; then
 	mkdir svn
-	svn co https://plugins.svn.wordpress.org/kirki svn
+	svn co https://plugins.svn.wordpress.org/xtkirki svn
 fi
 
 # commit & push to git

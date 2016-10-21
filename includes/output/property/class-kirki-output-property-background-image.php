@@ -2,19 +2,19 @@
 /**
  * Handles CSS output for background-image.
  *
- * @package     Kirki
+ * @package     XTKirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
+if ( ! class_exists( 'XTKirki_Output_Property_Background_Image' ) ) {
 
 	/**
 	 * Output overrides.
 	 */
-	class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
+	class XTKirki_Output_Property_Background_Image extends XTKirki_Output_Property {
 
 		/**
 		 * Modifies the value.

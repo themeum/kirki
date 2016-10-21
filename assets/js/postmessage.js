@@ -7,7 +7,9 @@
 		    cssArray = {};
 
 		api( setting, function( value ) {
-
+			
+			var oldval = value();
+			
 			value.bind( function( newval ) {
 
 				if ( undefined !== jsVars && 0 < jsVars.length ) {
@@ -15,6 +17,7 @@
 					_.each( jsVars, function( jsVar ) {
 
 						var val = newval;
+						var oval = oldval;
 
 						// Make sure element is defined.
 						if ( undefined === jsVar.element ) {
@@ -52,15 +55,17 @@
 						}
 
 						_.each( jsVars, function( args, i ) {
-
+				
 							// Value is a string
 							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
 								if ( undefined !== args.value_pattern ) {
 									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
+									oval = args.value_pattern.replace( /\$/g, args.prefix + oldval + args.units + args.suffix );
 								} else {
 									val = args.prefix + newval + args.units + args.suffix;
+									oval = args.prefix + oldval + args.units + args.suffix;
 								}
 
 								// Simple tweak for background-image properties.
@@ -78,7 +83,12 @@
 										jQuery( args.element ).html( val );
 									}
 
-								// Add CSS
+								// Set Class
+								}else if ( 'class' === args['function'] ) {
+		
+									jQuery( args.element ).removeClass( oval ).addClass( val );
+								
+								// Add CSS	
 								} else {
 
 									// If we have new value, replace style contents with custom css
@@ -132,10 +142,10 @@
 
 								// Make sure we have a stylesheet with the defined ID.
 								// If we don't then add it.
-								if ( ! jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).size() ) {
-									jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) + '"></style>' );
+								if ( ! jQuery( '#xtkirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).size() ) {
+									jQuery( 'head' ).append( '<style id="xtkirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) + '"></style>' );
 								}
-								jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
+								jQuery( '#xtkirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
 							}
 
 						}, 100 );
@@ -143,6 +153,9 @@
 					});
 
 				}
+										
+				//Set previous value to current one
+				oldval = newval;
 
 			});
 

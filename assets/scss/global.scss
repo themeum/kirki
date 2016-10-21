@@ -18,12 +18,12 @@
 }
 
 #customize-preview {
-	&.is-kirki-editor-open{
+	&.is-xtkirki-editor-open{
 		height: calc(100% - 301px);
 	}
 }
 
-.customize-control-kirki {
+.customize-control-xtkirki {
 	.description {
 		font-style: normal;
 		font-weight: 300;
@@ -46,24 +46,24 @@
 	}
 }
 
-// Custom Kirki Logo
+// Custom XTKirki Logo
 .wp-full-overlay.expanded {
 	#customize-footer-actions {
-		.kirki-footer-thanks {
+		.xtkirki-footer-thanks {
 			position: fixed;
 			bottom: 8px;
 			left: 150px;
 			padding: 0;
 			width: 90px;
 			height: 25px;
-			background-image: url("../images/kirki-bottom.png");
+			background-image: url("../images/xtkirki-bottom.png");
 			background-repeat: no-repeat;
 			background-position: center center;
 		}
 	}
 }
 
-.kirki-reset-section {
+.xtkirki-reset-section {
 	position: absolute;
 	top: 10px;
 	right: 10px;

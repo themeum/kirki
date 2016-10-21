@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-code'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -6,7 +6,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control     = this,
-		    element     = control.container.find( '.kirki-codemirror-editor' ),
+		    element     = control.container.find( '.xtkirki-codemirror-editor' ),
 		    language    = control.params.choices.language,
 		    openButton  = control.container.find( 'a.edit' ),
 		    closeButton = control.container.find( 'a.close' ),

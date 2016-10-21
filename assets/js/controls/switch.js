@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-switch'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-switch'] = wp.customize.Control.extend({
 
 	ready: function() {
 

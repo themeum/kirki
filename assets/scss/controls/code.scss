@@ -1,4 +1,4 @@
-.customize-control-kirki-code {
+.customize-control-xtkirki-code {
   a.close {
     display: none;
   }
@@ -16,7 +16,7 @@
     -o-transition: all 250ms ease-in-out;
     transition: all 250ms ease-in-out;
   }
-  .kirki-codemirror-editor {
+  .xtkirki-codemirror-editor {
     &.expanded {
       + .CodeMirror {
         left: 0;

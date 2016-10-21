@@ -2,19 +2,19 @@
 /**
  * Handles CSS output for background-position.
  *
- * @package     Kirki
+ * @package     XTKirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
+if ( ! class_exists( 'XTKirki_Output_Property_Background_Position' ) ) {
 
 	/**
 	 * Output overrides.
 	 */
-	class Kirki_Output_Property_Background_Position extends Kirki_Output_Property {
+	class XTKirki_Output_Property_Background_Position extends XTKirki_Output_Property {
 
 		/**
 		 * Modifies the value.
@@ -49,10 +49,10 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
 
 				// If x is not left/center/right, we need to sanitize it.
 				if ( ! in_array( $x, $x_dimensions ) ) {
-					$x = Kirki_Sanitize_Values::css_dimension( $x );
+					$x = XTKirki_Sanitize_Values::css_dimension( $x );
 				}
 				if ( ! in_array( $y, $y_dimensions ) ) {
-					$y = Kirki_Sanitize_Values::css_dimension( $y );
+					$y = XTKirki_Sanitize_Values::css_dimension( $y );
 				}
 				$this->value = $x . ' ' . $y;
 				return;

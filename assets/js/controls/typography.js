@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-typography'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -48,7 +48,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			}
 
 			// Get all items in the sub-list for the active font-family.
-			_.each( kirkiAllFonts, function( font, i ) {
+			_.each( xtkirkiAllFonts, function( font, i ) {
 
 				// Find the font-family we've selected in the global array of fonts.
 				if ( fontFamily === font.family ) {
@@ -164,9 +164,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 				if ( 2 > subList.length ) {
 
 					// If only 1 option is available then there's no reason to show this.
-					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'none' );
+					control.container.find( '.xtkirki-' + sub + '-wrapper' ).css( 'display', 'none' );
 				} else {
-					control.container.find( '.kirki-' + sub + '-wrapper' ).css( 'display', 'block' );
+					control.container.find( '.xtkirki-' + sub + '-wrapper' ).css( 'display', 'block' );
 				}
 
 			}
@@ -175,7 +175,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		// Render the font-family
 		jQuery( fontFamilySelector ).selectize({
-			options:     kirkiAllFonts,
+			options:     xtkirkiAllFonts,
 			items:       [ control.setting._value['font-family'] ],
 			persist:     false,
 			maxItems:    1,
@@ -282,7 +282,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		});
 
-		picker = this.container.find( '.kirki-color-control' );
+		picker = this.container.find( '.xtkirki-color-control' );
 
 		// Change color
 		picker.wpColorPicker({

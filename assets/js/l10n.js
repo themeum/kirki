@@ -1,4 +1,4 @@
-if ( undefined === window.kirki || 'undefined' === typeof window.kirki ) {
-	window.kirki = {};
+if ( undefined === window.xtkirki || 'undefined' === typeof window.xtkirki ) {
+	window.xtkirki = {};
 }
-window.kirki.l10n = kirkiL10n;
+window.xtkirki.l10n = xtkirkiL10n;

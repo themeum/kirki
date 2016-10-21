@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-number'] = wp.customize.Control.extend({
 
 	ready: function() {
 

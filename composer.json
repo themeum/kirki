@@ -1,8 +1,8 @@
 {
-  "name": "aristath/kirki",
+  "name": "aristath/xtkirki",
   "type": "wordpress-plugin",
   "description": "Extending the WordPress customizer",
-  "homepage": "http://kirki.org",
+  "homepage": "http://xtkirki.org",
   "license": "GPLv2 or later",
   "authors": [
     {

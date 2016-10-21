@@ -1,0 +1,4 @@
+Kirki Renamed (Text and files)
+
+Kirki -> XTKirki
+kirki -> xtkirki

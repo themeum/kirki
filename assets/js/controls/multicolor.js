@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['xtkirki-multicolor'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -14,7 +14,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    irisPicker;
 
 		// Proxy function that handles changing the individual colors
-		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
+		function xtkirkiMulticolorChangeHandler( control, value, subSetting ) {
 
 			var picker = control.container.find( '.multicolor-index-' + subSetting );
 
@@ -46,7 +46,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		// Colors loop
 		while ( i < Object.keys( colors ).length ) {
 
-			kirkiMulticolorChangeHandler( this, value, keys[ i ] );
+			xtkirkiMulticolorChangeHandler( this, value, keys[ i ] );
 
 			// Move colorpicker to the 'iris-target' container div
 			irisInput  = control.container.find( '.wp-picker-container .wp-picker-input-wrap' ),

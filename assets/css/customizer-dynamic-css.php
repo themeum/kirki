@@ -38,7 +38,7 @@ return '
 .customize-control-slider input[type=range]::-webkit-slider-thumb,
 .customize-control-slider input[type=range]::-moz-range-thumb,
 .customize-control-slider input[type=range]::-ms-thumb,
-.customize-control-slider .kirki_range_value {
+.customize-control-slider .xtkirki_range_value {
   background-color: COLOR_ACCENT !important;
 }
 
