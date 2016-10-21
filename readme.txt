@@ -3,8 +3,8 @@ Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.4
-Tested up to: 4.5
-Stable tag: 2.3.6
+Tested up to: 4.6.1
+Stable tag: 2.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
