@@ -197,7 +197,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	} else if ('kirki-spacing' === controlType) {
+	} else if ( 'kirki-spacing' === controlType ) {
 
 		if ( undefined !== value.top ) {
 			jQuery( wp.customize.control( setting ).container.find( '.top input' ) ).prop( 'value', value.top );
