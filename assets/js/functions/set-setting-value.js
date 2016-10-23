@@ -197,6 +197,27 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
+	} else if ( 'kirki-spacing' === controlType ) {
+
+		if ( undefined !== value.top ) {
+			jQuery( wp.customize.control( setting ).container.find( '.top input' ) ).prop( 'value', value.top );
+		}
+
+		if ( undefined !== value.bottom ) {
+			jQuery( wp.customize.control( setting ).container.find( '.bottom input' ) ).prop( 'value', value.bottom );
+		}
+
+		if ( undefined !== value.left ) {
+			jQuery( wp.customize.control( setting ).container.find( '.left input' ) ).prop( 'value', value.left );
+		}
+
+		if ( undefined !== value.right ) {
+			jQuery( wp.customize.control( setting ).container.find( '.right input' ) ).prop( 'value', value.right );
+		}
+
+		// Update the value in the customizer object
+		wp.customize.instance( setting ).set( value );
+
 	} else if ( 'kirki-repeater' === controlType ) {
 
 		// Do nothing
