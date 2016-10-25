@@ -24,6 +24,22 @@ if ( ! class_exists( 'XTKirki_Output_Field_Typography' ) ) {
 		 * @param array $value  The field's value.
 		 */
 		protected function process_output( $output, $value ) {
+			
+			if($this->is_multiple_outputs($output)) {
+				
+				foreach($output as $_output) {
+					$this->_process_output($_output, $value);
+				}
+				
+			}else{
+				
+				$this->_process_output($output, $value);
+			} 
+		}
+
+		
+		protected function _process_output( $output, $value ) {
+
 			$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 			$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 
@@ -84,6 +100,53 @@ if ( ! class_exists( 'XTKirki_Output_Field_Typography' ) ) {
 			if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['color'] = $value['color'];
 			}
+			
+		}	
+		
+
+		 /**
+		 * If we have a value_pattern defined, apply it to the value.
+		 *
+		 * @param array        $output The output args.
+		 *
+		 * @return array
+		 */
+		protected function apply_value_pattern( $output, $value ) {
+
+			if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) ) {
+				if ( is_string( $output['value_pattern'] ) ) {
+					
+					foreach($value as $key => $val) {
+						if(is_string($val)) {
+							$value[$key] = str_replace( '$', $val, $output['value_pattern'] );
+						}	
+					}
+					
+					
+				}else if ( is_array( $output['value_pattern'] ) ) {
+					
+					foreach($output['value_pattern'] as $key => $val) {
+						if(is_string($val) && isset($value[$key])) {
+							$value[$key] = str_replace( '$', $value[$key], $output['value_pattern'][$key] );
+						}	
+					}
+				}
+			}
+			
+			return $value;
+		}
+		
+				
+		/**
+		 * check if we have multiple array values.
+		 *
+		 * @param array        $output The output args.
+		 *
+		 * @return array
+		 */				
+		protected function is_multiple_outputs($output) {
+			
+			return is_array($output) && empty($output['element']) && empty($output[0]['element']);
 		}
 	}
 }

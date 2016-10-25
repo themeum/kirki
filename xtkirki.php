@@ -1,21 +1,22 @@
 <?php
 /**
- * Plugin Name:   XTKirki Toolkit
- * Plugin URI:    http://xtkirki.org
- * Description:   The ultimate WordPress Customizer Toolkit
- * Author:        Aristeides Stathopoulos
- * Author URI:    http://aristeides.com
+ * Plugin Name:   XT Customizer Kit
+ * Plugin URI:    http://xplodedthemes.com
+ * Description:   XplodedThemes Customizer Kit
+ * Author:        XplodedThemes
+ * Author URI:    http://xplodedthemes.com
  * Version:       2.3.6
  * Text Domain:   xtkirki
  *
  * GitHub Plugin URI: aristath/xtkirki
  * GitHub Plugin URI: https://github.com/aristath/xtkirki
  *
- * @package     XTKirki
+ * Original Package Modified
+ * @package     Kirki
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license     https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
