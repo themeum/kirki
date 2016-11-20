@@ -199,19 +199,19 @@ function kirkiSetSettingValue( setting, value ) {
 
 	} else if ( 'kirki-spacing' === controlType ) {
 
-		if ( undefined !== value.top ) {
+		if ( 'undefined' !== typeof value.top ) {
 			jQuery( wp.customize.control( setting ).container.find( '.top input' ) ).prop( 'value', value.top );
 		}
 
-		if ( undefined !== value.bottom ) {
+		if ( 'undefined' !== typeof value.bottom ) {
 			jQuery( wp.customize.control( setting ).container.find( '.bottom input' ) ).prop( 'value', value.bottom );
 		}
 
-		if ( undefined !== value.left ) {
+		if ( 'undefined' !== typeof value.left ) {
 			jQuery( wp.customize.control( setting ).container.find( '.left input' ) ).prop( 'value', value.left );
 		}
 
-		if ( undefined !== value.right ) {
+		if ( 'undefined' !== typeof value.right ) {
 			jQuery( wp.customize.control( setting ).container.find( '.right input' ) ).prop( 'value', value.right );
 		}
 
