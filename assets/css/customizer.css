@@ -604,11 +604,7 @@ span.CodeMirror-selectedtext {
   -o-transition: bottom .2s;
   transition: bottom .2s; }
   #kirki_editor_pane.hide {
-    bottom: -301px;
-    z-index: -999; }
-
-.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in {
-  z-index: 99999999 !important; }
+    bottom: -301px; }
 
 .customize-control-kirki-multicolor .multicolor-group-wrapper {
   display: flex; }
