@@ -37,6 +37,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= Development =
+
+* Fix: Spacing controls now work with presets.
+* Fix: Spacing controls now properly resetting.
+* New: Allow modifying values instead of replacing them when using `js_vars` with `function` set to `html` by using the `value_pattern` parameter and the `%value%` placeholder. See comment on https://github.com/aristath/kirki/pull/1137#issuecomment-261765175
+* New: Updated CodeMirror.
+* Fix: PHP mode on CodeMirror.
+
 = 2.3.7 =
 
 October 22, 2016, dev time: 12 hours.

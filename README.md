@@ -33,9 +33,17 @@ You can find detailed documentation on how to use Kirki on [https://kirki.org](h
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### Development ###
+
+* Fix: Spacing controls now work with presets.
+* Fix: Spacing controls now properly resetting.
+* New: Allow modifying values instead of replacing them when using `js_vars` with `function` set to `html` by using the `value_pattern` parameter and the `%value%` placeholder. See comment on https://github.com/aristath/kirki/pull/1137#issuecomment-261765175
+* New: Updated CodeMirror.
+* Fix: PHP mode on CodeMirror.
 
 ### 2.3.7 ###
 
