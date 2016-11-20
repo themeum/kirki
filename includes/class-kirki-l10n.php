@@ -154,6 +154,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				'line-height'           => esc_attr__( 'Line Height', 'kirki' ),
 				'font-style'            => esc_attr__( 'Font Style', 'kirki' ),
 				'letter-spacing'        => esc_attr__( 'Letter Spacing', 'kirki' ),
+				'word-spacing'          => esc_attr__( 'Word Spacing', 'kirki' ),
 				'top'                   => esc_attr__( 'Top', 'kirki' ),
 				'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
 				'left'                  => esc_attr__( 'Left', 'kirki' ),

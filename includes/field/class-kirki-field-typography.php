@@ -181,6 +181,14 @@ if ( ! class_exists( 'Kirki_Field_Typography' ) ) {
 				}
 			}
 
+			// Sanitize the word-spacing.
+			if ( isset( $value['word-spacing'] ) && ! empty( $value['word-spacing'] ) ) {
+				$value['word-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['word-spacing'] );
+				if ( is_numeric( $value['word-spacing'] ) ) {
+					$value['word-spacing'] .= 'px';
+				}
+			}
+
 			// Sanitize the text-align.
 			if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
 				if ( ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ) ) ) {

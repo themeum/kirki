@@ -70,6 +70,11 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['letter-spacing'] = $value['letter-spacing'];
 			}
 
+			// Take care of word-spacing.
+			if ( isset( $value['word-spacing'] ) && ( ! empty( $value['word-spacing'] ) || '0' == $value['word-spacing'] ) ) {
+				$this->styles[ $output['media_query'] ][ $output['element'] ]['word-spacing'] = $value['word-spacing'];
+			}
+
 			// Take care of text-align.
 			if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['text-align'] = $value['text-align'];

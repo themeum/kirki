@@ -183,6 +183,13 @@ function kirkiSetSettingValue( setting, value ) {
 
 		}
 
+		if ( undefined !== value['word-spacing'] ) {
+
+			// Update the value visually in the control
+			jQuery( wp.customize.control( setting ).container.find( '.word-spacing input' ) ).prop( 'value', value['word-spacing'] );
+
+		}
+
 		if ( undefined !== value.color ) {
 
 			// Update the value visually in the control

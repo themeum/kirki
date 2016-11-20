@@ -1468,6 +1468,7 @@ span.CodeMirror-selectedtext {
   .customize-control-kirki-typography .wrapper .font-family,
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
+  .customize-control-kirki-typography .wrapper .word-spacing,
   .customize-control-kirki-typography .wrapper .line-height,
   .customize-control-kirki-typography .wrapper .subsets,
   .customize-control-kirki-typography .wrapper .text-transform,
@@ -1479,6 +1480,7 @@ span.CodeMirror-selectedtext {
     .customize-control-kirki-typography .wrapper .font-family h5,
     .customize-control-kirki-typography .wrapper .font-size h5,
     .customize-control-kirki-typography .wrapper .letter-spacing h5,
+    .customize-control-kirki-typography .wrapper .word-spacing h5,
     .customize-control-kirki-typography .wrapper .line-height h5,
     .customize-control-kirki-typography .wrapper .subsets h5,
     .customize-control-kirki-typography .wrapper .text-transform h5,
@@ -1486,6 +1488,7 @@ span.CodeMirror-selectedtext {
       margin: 0.67em 0 0; }
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
+  .customize-control-kirki-typography .wrapper .word-spacing,
   .customize-control-kirki-typography .wrapper .line-height {
     width: 50%; }
   .customize-control-kirki-typography .wrapper .text-align {

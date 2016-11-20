@@ -52,6 +52,7 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 				'variant'        => false,
 				'line-height'    => false,
 				'letter-spacing' => false,
+				'word-spacing'   => false,
 				'color'          => false,
 				'text-align'     => false,
 			);
@@ -125,6 +126,13 @@ if ( ! class_exists( 'Kirki_Controls_Typography_Control' ) ) {
 					<div class="letter-spacing">
 						<h5>{{ data.l10n['letter-spacing'] }}</h5>
 						<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
+					</div>
+				<# } #>
+
+				<# if ( data.default['word-spacing'] ) { #>
+					<div class="word-spacing">
+						<h5>{{ data.l10n['word-spacing'] }}</h5>
+						<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
 					</div>
 				<# } #>
 

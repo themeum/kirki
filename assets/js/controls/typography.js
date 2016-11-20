@@ -264,6 +264,14 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		});
 
+		this.container.on( 'change keyup paste', '.word-spacing input', function() {
+
+			// Add the value to the array and set the setting's value
+			value['word-spacing'] = jQuery( this ).val();
+			control.saveValue( value );
+
+		});
+
 		this.container.on( 'change', '.text-align input', function() {
 
 			// Add the value to the array and set the setting's value.
