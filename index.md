@@ -209,7 +209,7 @@ Add Google Fonts with our [typography field](https://aristath.github.io/kirki/do
 ## News:
 <ul>
 	{% for post in site.posts %}
-		<li><h4><a href="{{ post.url }}">{{ post.title }}</a></h4></li>
+		<li><h4><a href="https://aristath.github.io/kirki{{ post.url }}">{{ post.title }}</a></h4></li>
 		<small><time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time></small>
 	{% endfor %}
 </ul>
