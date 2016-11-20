@@ -80,15 +80,20 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 			}
 
 			// Set the theme.
-			if ( in_array( $this->choices['theme'], array( 'kirki-dark', 'kirki-light' ), true ) ) {
-				return;
+			$valid_themes = array(
+				'kirki-light' => 'elegant',
+				'light'       => 'elegant',
+				'elegant'     => 'elegant',
+				'kirki-dark'  => 'monokai',
+				'dark'        => 'monokai',
+				'monokai'     => 'monokai',
+				'material'    => 'material',
+			);
+			if ( isset( $valid_themes[ $this->choices['theme'] ] ) ) {
+				$this->choices['theme'] = $valid_themes[ $this->choices['theme'] ];
+			} else {
+				$valid_themes[ $this->choices['theme'] ] = 'elegant';
 			}
-			if ( in_array( $this->choices['theme'], array( 'light', 'dark' ), true ) ) {
-				$this->choices['theme'] = 'kirki-' . $this->choices['theme'];
-				return;
-			}
-			$this->choices['theme'] = $defaults['theme'];
-
 		}
 
 		/**

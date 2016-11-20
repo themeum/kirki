@@ -46,7 +46,7 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 
 			// If we're using html mode, we'll also need to include the multiplex addon
 			// as well as dependencies for XML, JS, CSS languages.
-			if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ) ) ) {
+			if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ), true ) ) {
 				wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
 				wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
@@ -54,7 +54,8 @@ if ( ! class_exists( 'Kirki_Controls_Code_Control' ) ) {
 				wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
 			} elseif ( 'php' === $this->choices['language'] ) {
 				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-php', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/php/php.js', array( 'jquery', 'codemirror' ) );
+				wp_enqueue_script( 'codemirror-language-clike', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/clike/clike.js', array( 'jquery', 'codemirror' ) );
+				wp_enqueue_script( 'codemirror-language-php', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/php/php.js', array( 'jquery', 'codemirror', 'codemirror-language-xml', 'codemirror-language-clike' ) );
 			} else {
 				// Add language script.
 				wp_enqueue_script( 'codemirror-language-' . $this->choices['language'], trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js', array( 'jquery', 'codemirror' ) );

@@ -17,6 +17,10 @@
      "  [[[variable-2 c], [variable y] ]] [operator =] [variable-2 c];",
      "})();");
 
+  MT("destructure_trailing_comma",
+    "[keyword let] {[def a], [def b],} [operator =] [variable foo];",
+    "[keyword let] [def c];"); // Parser still in good state?
+
   MT("class_body",
      "[keyword class] [def Foo] {",
      "  [property constructor]() {}",
@@ -27,18 +31,31 @@
 
   MT("class",
      "[keyword class] [def Point] [keyword extends] [variable SuperThing] {",
-     "  [property get] [property prop]() { [keyword return] [number 24]; }",
+     "  [keyword get] [property prop]() { [keyword return] [number 24]; }",
      "  [property constructor]([def x], [def y]) {",
      "    [keyword super]([string 'something']);",
      "    [keyword this].[property x] [operator =] [variable-2 x];",
      "  }",
      "}");
 
+  MT("anonymous_class_expression",
+     "[keyword const] [def Adder] [operator =] [keyword class] [keyword extends] [variable Arithmetic] {",
+     "  [property add]([def a], [def b]) {}",
+     "};");
+
+  MT("named_class_expression",
+     "[keyword const] [def Subber] [operator =] [keyword class] [def Subtract] {",
+     "  [property sub]([def a], [def b]) {}",
+     "};");
+
   MT("import",
      "[keyword function] [def foo]() {",
      "  [keyword import] [def $] [keyword from] [string 'jquery'];",
      "  [keyword import] { [def encrypt], [def decrypt] } [keyword from] [string 'crypto'];",
      "}");
+
+  MT("import_trailing_comma",
+     "[keyword import] {[def foo], [def bar],} [keyword from] [string 'baz']")
 
   MT("const",
      "[keyword function] [def f]() {",
@@ -69,12 +86,6 @@
   MT("spread",
      "[keyword function] [def f]([def a], [meta ...][def b]) {",
      "  [variable something]([variable-2 a], [meta ...][variable-2 b]);",
-     "}");
-
-  MT("comprehension",
-     "[keyword function] [def f]() {",
-     "  [[([variable x] [operator +] [number 1]) [keyword for] ([keyword var] [def x] [keyword in] [variable y]) [keyword if] [variable pred]([variable-2 x]) ]];",
-     "  ([variable u] [keyword for] ([keyword var] [def u] [keyword of] [variable generateValues]()) [keyword if] ([variable-2 u].[property color] [operator ===] [string 'blue']));",
      "}");
 
   MT("quasi",
@@ -139,6 +150,19 @@
      "    [number 1];",
      "[number 2];");
 
+  MT("indent_semicolonless_if",
+     "[keyword function] [def foo]() {",
+     "  [keyword if] ([variable x])",
+     "    [variable foo]()",
+     "}")
+
+  MT("indent_semicolonless_if_with_statement",
+     "[keyword function] [def foo]() {",
+     "  [keyword if] ([variable x])",
+     "    [variable foo]()",
+     "  [variable bar]()",
+     "}")
+
   MT("multilinestring",
      "[keyword var] [def x] [operator =] [string 'foo\\]",
      "[string bar'];");
@@ -165,6 +189,23 @@
      "      .[keyword target];",
      "  }",
      "}");
+
+  var ts_mode = CodeMirror.getMode({indentUnit: 2}, "application/typescript")
+  function TS(name) {
+    test.mode(name, ts_mode, Array.prototype.slice.call(arguments, 1))
+  }
+
+  TS("extend_type",
+     "[keyword class] [def Foo] [keyword extends] [variable-3 Some][operator <][variable-3 Type][operator >] {}")
+
+  TS("arrow_type",
+     "[keyword let] [def x]: ([variable arg]: [variable-3 Type]) [operator =>] [variable-3 ReturnType]")
+
+  TS("typescript_class",
+     "[keyword class] [def Foo] {",
+     "  [keyword public] [keyword static] [property main]() {}",
+     "  [keyword private] [property _foo]: [variable-3 string];",
+     "}")
 
   var jsonld_mode = CodeMirror.getMode(
     {indentUnit: 2},
