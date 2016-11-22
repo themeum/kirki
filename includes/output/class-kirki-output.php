@@ -148,7 +148,6 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 
 				if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 					$output['element'] = array_unique( $output['element'] );
-					sort( $output['element'] );
 					$output['element'] = implode( ',', $output['element'] );
 				}
 
