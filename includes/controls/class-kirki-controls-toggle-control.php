@@ -19,7 +19,7 @@ if ( ! class_exists( 'Kirki_Controls_Toggle_Control' ) ) {
 	/**
 	 * Toggle control (modified checkbox).
 	 */
-	class Kirki_Controls_Toggle_Control extends Kirki_Controls_Checkbox_Control {
+	class Kirki_Controls_Toggle_Control extends Kirki_Control_Checkbox {
 
 		/**
 		 * The control type.

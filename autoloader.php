@@ -23,6 +23,14 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 				$paths[] = $path . $filename;
 			}
 
+			// Handle controls loading.
+			if ( isset( $name_parts[0] ) && 'Control' === $name_parts[0] ) {
+				$path  = dirname( __FILE__ ) . '/controls/';
+				$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Control_', '', $class_name ) ) ) . '/';
+
+				$paths[] = $path . $filename;
+			}
+
 			$paths[] = dirname( __FILE__ ) . '/core/' . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/' . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/lib/' . $filename;

@@ -109,7 +109,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// An array of control scripts and their dependencies.
 			$scripts = array(
 				// Add controls scripts.
-				'checkbox'        => array( 'jquery', 'customize-base' ),
 				'code'            => array( 'jquery', 'customize-base', 'codemirror' ),
 				'color'           => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
 				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
