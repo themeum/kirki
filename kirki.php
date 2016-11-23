@@ -51,7 +51,7 @@ Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 // Instantiate 2ndary classes.
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
-new Kirki_Styles_Customizer();
+new Kirki_Modules_Customizer_Styling();
 new Kirki_Selective_Refresh();
 new Kirki();
 
