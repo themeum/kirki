@@ -85,9 +85,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 				wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
 			/* TODO: } */
 
-			// Enqueue the reset script.
-			wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'assets/js/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
-
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
