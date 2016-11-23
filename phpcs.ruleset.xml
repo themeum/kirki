@@ -8,11 +8,13 @@
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.url_to_postid" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.error_log" />
+		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" />
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->

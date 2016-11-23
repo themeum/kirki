@@ -44,7 +44,7 @@ rm -f svn/trunk/Gruntfile.js
 rm -f svn/trunk/composer.json
 rm -f svn/trunk/package.json
 rm -f svn/trunk/phpunit.xml
-rm -f svn/trunk/codesniffer.ruleset.xml
+rm -f svn/trunk/phpcs.ruleset.xml
 rm -f svn/trunk/README.md
 
 # commit to SVN

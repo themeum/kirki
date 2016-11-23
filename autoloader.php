@@ -9,10 +9,21 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 		$paths = array();
 		if ( 0 === stripos( $class_name, 'Kirki' ) ) {
 
-			$path     = dirname( __FILE__ ) . '/includes/';
+			// Build the filename.
 			$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 
-			$paths[] = $path . $filename;
+			// Break class-name is parts.
+			$name_parts = explode( '_', str_replace( 'Kirki_', '', $class_name ) );
+
+			// Handle modules loading.
+			if ( isset( $name_parts[0] ) && 'Modules' === $name_parts[0] ) {
+				$path  = dirname( __FILE__ ) . '/modules/';
+				$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Modules_', '', $class_name ) ) ) . '/';
+
+				$paths[] = $path . $filename;
+			}
+
+			$paths[] = dirname( __FILE__ ) . '/includes/' . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/lib/' . $filename;
 
 			$substr   = str_replace( 'Kirki_', '', $class_name );
@@ -21,7 +32,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 			$previous_path = '';
 			for ( $i = 0; $i < $levels; $i++ ) {
-				$paths[] = $path . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
+				$paths[] = dirname( __FILE__ ) . '/includes/' . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
 				$previous_path .= strtolower( $exploded[ $i ] ) . '/';
 			}
 

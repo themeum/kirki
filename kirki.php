@@ -52,7 +52,6 @@ Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
 new Kirki_Styles_Customizer();
-new Kirki_Styles_Frontend();
 new Kirki_Selective_Refresh();
 new Kirki();
 
@@ -62,8 +61,8 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php'
 // Include the ariColor library.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
 
-include_once wp_normalize_path( dirname( __FILE__ ) . '/modules/reset/class-kirki-modules-reset.php' );
 new Kirki_Modules_Reset( 'global' );
+new Kirki_Modules_CSS_Output( 'global' );
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );

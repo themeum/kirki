@@ -16,12 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
+if ( ! class_exists( 'Kirki_Modules_CSS_Output_Generator' ) ) {
 
 	/**
 	 * Handles CSS output.
 	 */
-	final class Kirki_Styles_Output_CSS {
+	final class Kirki_Modules_CSS_Output_Generator {
 
 		/**
 		 * The instance of this class (singleton pattern).
@@ -132,7 +132,7 @@ if ( ! class_exists( 'Kirki_Styles_Output_CSS' ) ) {
 		 */
 		public static function get_instance() {
 			if ( null === self::$instance ) {
-				self::$instance = new Kirki_Styles_Output_CSS();
+				self::$instance = new Kirki_Modules_CSS_Output_Generator();
 			}
 			return self::$instance;
 		}
