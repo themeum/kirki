@@ -2,6 +2,14 @@ jQuery( document ).ready( function() {
 
 	'use strict';
 
+	wp.customize.section.each( function( section ) {
+
+		var link = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + window.kirki.l10n.global['reset-with-icon'] + '</a>';
+
+		jQuery( link ).appendTo( '.customize-section-title > h3' );
+
+	});
+
 	jQuery( 'a.kirki-reset-section' ).on( 'click', function() {
 
 		var id       = jQuery( this ).data( 'reset-section-id' ),

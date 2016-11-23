@@ -62,5 +62,8 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php'
 // Include the ariColor library.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
 
+include_once wp_normalize_path( dirname( __FILE__ ) . '/modules/reset/class-kirki-modules-reset.php' );
+new Kirki_Modules_Reset( 'global' );
+
 // Add an empty config for global fields.
 Kirki::add_config( '' );

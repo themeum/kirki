@@ -3,7 +3,7 @@
  * Handles the resrt buttons on sections.
  *
  * @package     Kirki
- * @category    Core
+ * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
