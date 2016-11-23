@@ -61,30 +61,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 */
 		public function customize_controls_enqueue_scripts() {
 
-			// Get an array of all our fields.
-			$fields = Kirki::$fields;
-
-			// Do we have tooltips anywhere?
-			$has_tooltips = false;
-			foreach ( $fields as $field ) {
-				if ( $has_tooltips ) {
-					continue;
-				}
-				// Field has tooltip.
-				if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
-					$has_tooltips = true;
-				}
-				// Backwards-compatibility ("help" argument instead of "tooltip").
-				if ( isset( $field['help'] ) && ! empty( $field['help'] ) ) {
-					$has_tooltips = true;
-				}
-			}
-
-			// If we have tooltips, enqueue the tooltips script.
-			/* TODO: if ( $has_tooltips ) { */
-				wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'assets/js/tooltip.js', array( 'jquery', 'customize-controls', 'jquery-ui-tooltip' ) );
-			/* TODO: } */
-
 			// Register kirki-functions.
 			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
 			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );

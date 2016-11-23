@@ -175,8 +175,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 					// Create the control.
 					new Kirki_Control( $args );
 
-					// Create the scripts for tooltips.
-					Kirki_Scripts_Tooltips::generate_script( $args );
 				}
 			}
 		}

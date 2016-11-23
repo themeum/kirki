@@ -75,9 +75,6 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 		 */
 		protected function content_template() {
 			?>
-			<# if ( data.tooltip ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
-			<# } #>
 			<label>
 				<# if ( data.label ) { #>
 					<span class="customize-control-title">{{{ data.label }}}</span>

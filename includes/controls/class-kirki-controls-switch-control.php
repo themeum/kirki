@@ -50,9 +50,6 @@ if ( ! class_exists( 'Kirki_Controls_Switch_Control' ) ) {
 		 */
 		protected function content_template() {
 			?>
-			<# if ( data.tooltip ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
-			<# } #>
 			<style>
 			#customize-control-{{ data.id }} .switch label {
 				width: calc({{ data.choices['on'].length }}ch + {{ data.choices['off'].length }}ch + 40px);

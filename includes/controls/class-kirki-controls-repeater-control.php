@@ -249,9 +249,6 @@ if ( ! class_exists( 'Kirki_Controls_Repeater_Control' ) ) {
 		 */
 		protected function render_content() {
 			?>
-			<?php if ( '' !== $this->tooltip ) : ?>
-				<a href="#" class="tooltip hint--left" data-hint="<?php echo esc_html( $this->tooltip ); ?>"><span class='dashicons dashicons-info'></span></a>
-			<?php endif; ?>
 			<label>
 				<?php if ( ! empty( $this->label ) ) : ?>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>

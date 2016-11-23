@@ -108,10 +108,6 @@ if ( ! class_exists( 'Kirki_Controls_Sortable_Control' ) ) {
 			?>
 			<# if ( ! data.choicesLength ) return; #>
 
-			<# if ( data.tooltip ) { #>
-				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
-			<# } #>
-
 			<label class='kirki-sortable'>
 				<span class="customize-control-title">
 					{{{ data.label }}}

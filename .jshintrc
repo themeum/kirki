@@ -33,6 +33,8 @@
 		"serialize":false,
 		"kirkiAllFonts":false,
 		"kirkiL10n": false,
-		"kirkiNotifications": false
+		"kirkiNotifications": false,
+		"kirkiTooltips": false,
+		"Popper": false
 	}
 }

@@ -34,7 +34,7 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		 * Tooltips
 		 *
 		 * @access public
-		 * @var object Kirki_Scripts_Tooltips.
+		 * @var object Kirki_Modules_Tooltips.
 		 */
 		public $tooltips;
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
 		public function __construct() {
 
 			$this->dependencies = new Kirki_Enqueue();
-			$this->tooltips     = new Kirki_Scripts_Tooltips();
+			$this->tooltips     = new Kirki_Modules_Tooltips();
 			$this->icons        = new Kirki_Scripts_Icons();
 
 		}
