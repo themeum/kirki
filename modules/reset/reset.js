@@ -6,7 +6,7 @@ jQuery( document ).ready( function() {
 
 		var link = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + window.kirki.l10n.global['reset-with-icon'] + '</a>';
 
-		jQuery( link ).appendTo( '.customize-section-title > h3' );
+		jQuery( link ).appendTo( '#sub-accordion-section-' + section.id + ' .customize-section-title > h3' );
 
 	});
 
