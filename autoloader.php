@@ -23,6 +23,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 				$paths[] = $path . $filename;
 			}
 
+			$paths[] = dirname( __FILE__ ) . '/core/' . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/' . $filename;
 			$paths[] = dirname( __FILE__ ) . '/includes/lib/' . $filename;
 
