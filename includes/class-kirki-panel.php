@@ -56,7 +56,7 @@ if ( ! class_exists( 'Kirki_Panel' ) ) {
 
 			// If we've got an icon then call the object to create its script.
 			if ( isset( $args['icon'] ) ) {
-				Kirki_Scripts_Icons::generate_script( $args );
+				Kirki_Modules_Icons::generate_script( $args );
 			}
 
 			$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds scripts for icons in sections & panels.
  */
-class Kirki_Scripts_Icons {
+class Kirki_Modules_Icons {
 
 	/**
 	 * The script generated for ALL fields
