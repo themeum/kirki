@@ -56,7 +56,7 @@ new Kirki_Selective_Refresh();
 new Kirki();
 
 // Include deprecated functions & methods.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php' );
+include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
 // Include the ariColor library.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );

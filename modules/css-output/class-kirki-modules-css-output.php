@@ -124,7 +124,7 @@ class Kirki_Modules_CSS_Output {
 	 * @access public
 	 */
 	public function ajax_dynamic_css() {
-		require wp_normalize_path( Kirki::$path . '/includes/dynamic-css.php' );
+		require wp_normalize_path( Kirki::$path . '/core/dynamic-css.php' );
 		exit;
 	}
 
