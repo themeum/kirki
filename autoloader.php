@@ -32,8 +32,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 			}
 
 			$paths[] = dirname( __FILE__ ) . '/core/' . $filename;
-			$paths[] = dirname( __FILE__ ) . '/includes/' . $filename;
-			$paths[] = dirname( __FILE__ ) . '/includes/lib/' . $filename;
+			$paths[] = dirname( __FILE__ ) . '/lib/' . $filename;
 
 			$substr   = str_replace( 'Kirki_', '', $class_name );
 			$exploded = explode( '_', $substr );
@@ -41,7 +40,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 
 			$previous_path = '';
 			for ( $i = 0; $i < $levels; $i++ ) {
-				$paths[] = dirname( __FILE__ ) . '/includes/' . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
+				$paths[] = dirname( __FILE__ ) . '/' . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
 				$previous_path .= strtolower( $exploded[ $i ] ) . '/';
 			}
 

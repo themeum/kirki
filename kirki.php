@@ -59,7 +59,7 @@ new Kirki();
 include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
 // Include the ariColor library.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
+include_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
 
 new Kirki_Modules_Reset( 'global' );
 new Kirki_Modules_CSS_Output( 'global' );
