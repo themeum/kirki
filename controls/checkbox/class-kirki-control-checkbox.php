@@ -147,9 +147,6 @@ class Kirki_Control_Checkbox extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<# if ( data.tooltip ) { #>
-			<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
-		<# } #>
 		<label>
 			<input type="checkbox" {{{ data.inputAttrs }}} value="{{ data.value }}" {{{ data.link }}}<# if ( '1' === data.value || 1 === data.value || true === data.value || 'on' === data.value ) { #> checked<# } #> />
 			{{ data.label }}
