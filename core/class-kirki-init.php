@@ -111,7 +111,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Radio_Image_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Select_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Slider_Control' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Spacing_Control' );
+			$wp_customize->register_control_type( 'Kirki_Control_Spacing' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Switch_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Generic_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Toggle_Control' );
