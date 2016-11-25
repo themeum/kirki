@@ -17,7 +17,8 @@ module.exports = function( grunt ) {
 					'assets/css/customizer.css': 'assets/scss/customizer.scss',
 					'controls/checkbox/checkbox.css': 'controls/checkbox/checkbox.scss',
 					'controls/color/color.css': 'controls/color/color.scss',
-					'controls/spacing/spacing.css': 'controls/spacing/spacing.scss'
+					'controls/spacing/spacing.css': 'controls/spacing/spacing.scss',
+					'controls/color-palette/color-palette.css': 'controls/color-palette/color-palette.scss'
 				}
 			}
 		},

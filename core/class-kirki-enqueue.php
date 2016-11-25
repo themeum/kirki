@@ -86,7 +86,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			$scripts = array(
 				// Add controls scripts.
 				'code'            => array( 'jquery', 'customize-base', 'codemirror' ),
-				'color-palette'   => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
 				'date'            => array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ),
 				'dimension'       => array( 'jquery', 'customize-base', 'kirki-notifications' ),
