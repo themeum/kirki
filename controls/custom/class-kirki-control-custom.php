@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The "custom" control allows you to add any raw HTML.
  */
-class Kirki_Control_Custom extends Kirki_Customize_Control {
+class Kirki_Control_Custom extends WP_Customize_Control {
 
 	/**
 	 * The control type.
