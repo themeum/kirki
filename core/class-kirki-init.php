@@ -99,7 +99,7 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Controls_Code_Control' );
 			$wp_customize->register_control_type( 'Kirki_Control_Color' );
 			$wp_customize->register_control_type( 'Kirki_Control_Color_Palette' );
-			$wp_customize->register_control_type( 'Kirki_Controls_Custom_Control' );
+			$wp_customize->register_control_type( 'Kirki_Control_Custom' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Date_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dashicons_Control' );
 			$wp_customize->register_control_type( 'Kirki_Controls_Dimension_Control' );
