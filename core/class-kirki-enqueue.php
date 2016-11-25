@@ -76,16 +76,12 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register the jquery-ui-spinner.
 			wp_register_script( 'jquery-ui-spinner', trailingslashit( Kirki::$url ) . 'assets/js/vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
 
-			// Register codemirror.
-			wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/js/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
-
 			// Register selectize.
 			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
 			// An array of control scripts and their dependencies.
 			$scripts = array(
 				// Add controls scripts.
-				'code'            => array( 'jquery', 'customize-base', 'codemirror' ),
 				'dashicons'       => array( 'jquery', 'customize-base' ),
 				'date'            => array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ),
 				'dimension'       => array( 'jquery', 'customize-base', 'kirki-notifications' ),

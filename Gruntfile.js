@@ -18,7 +18,8 @@ module.exports = function( grunt ) {
 					'controls/checkbox/checkbox.css': 'controls/checkbox/checkbox.scss',
 					'controls/color/color.css': 'controls/color/color.scss',
 					'controls/spacing/spacing.css': 'controls/spacing/spacing.scss',
-					'controls/color-palette/color-palette.css': 'controls/color-palette/color-palette.scss'
+					'controls/color-palette/color-palette.css': 'controls/color-palette/color-palette.scss',
+					'controls/code/code.css': 'controls/code/code.scss'
 				}
 			}
 		},
