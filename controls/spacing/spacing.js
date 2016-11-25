@@ -77,7 +77,7 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 
 				setting.notifications.remove( code );
 				if ( 'undefined' !== typeof value.top ) {
-					if ( false === kirkiValidateCSSValue( value.top ) ) {
+					if ( false === control.kirkiValidateCSSValue( value.top ) ) {
 						subs.top = window.kirki.l10n[ control.params.kirkiConfig ].top;
 					} else {
 						delete subs.top;
@@ -85,7 +85,7 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 				}
 
 				if ( 'undefined' !== typeof value.bottom ) {
-					if ( false === kirkiValidateCSSValue( value.bottom ) ) {
+					if ( false === control.kirkiValidateCSSValue( value.bottom ) ) {
 						subs.bottom = window.kirki.l10n[ control.params.kirkiConfig ].bottom;
 					} else {
 						delete subs.bottom;
@@ -93,7 +93,7 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 				}
 
 				if ( 'undefined' !== typeof value.left ) {
-					if ( false === kirkiValidateCSSValue( value.left ) ) {
+					if ( false === control.kirkiValidateCSSValue( value.left ) ) {
 						subs.left = window.kirki.l10n[ control.params.kirkiConfig ].left;
 					} else {
 						delete subs.left;
@@ -101,7 +101,7 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 				}
 
 				if ( 'undefined' !== typeof value.right ) {
-					if ( false === kirkiValidateCSSValue( value.right ) ) {
+					if ( false === control.kirkiValidateCSSValue( value.right ) ) {
 						subs.right = window.kirki.l10n[ control.params.kirkiConfig ].right;
 					} else {
 						delete subs.right;
@@ -124,6 +124,42 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 		    } );
 
 		} );
+	},
+	kirkiValidateCSSValue: function( value ) {
+
+		var validUnits = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'],
+		    numericValue,
+		    unit;
+
+		// 0 is always a valid value
+		if ( '0' === value ) {
+			return true;
+		}
+
+		// If we're using calc() just return true.
+		if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+			return true;
+		}
+
+		// Get the numeric value.
+		numericValue = parseFloat( value );
+
+		// Get the unit
+		unit = value.replace( numericValue, '' );
+
+		// Check the validity of the numeric value.
+		if ( isNaN( numericValue ) ) {
+			return false;
+		}
+
+		// Check the validity of the units.
+		if ( -1 === jQuery.inArray( unit, validUnits ) ) {
+			return false;
+		}
+
+		return true;
+
 	}
+
 
 });
