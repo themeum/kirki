@@ -34,7 +34,7 @@ class Kirki_Modules_Reset {
 
 		$this->config = $config;
 
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
+		// add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 20 );
 
 	}
 
@@ -47,8 +47,8 @@ class Kirki_Modules_Reset {
 	public function customize_controls_enqueue_scripts() {
 
 		// Enqueue the reset script.
-		wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
-		wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'modules/reset/reset.js', array( 'jquery', 'kirki-set-setting-value' ) );
+		wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js', array( 'jquery', 'customize-base' ) );
+		wp_enqueue_script( 'kirki-reset', trailingslashit( Kirki::$url ) . 'modules/reset/reset.js', array( 'jquery', 'customize-base', 'kirki-set-setting-value' ) );
 
 	}
 }
