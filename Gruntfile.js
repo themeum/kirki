@@ -14,7 +14,10 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
-					'assets/css/customizer.css': 'assets/scss/customizer.scss'
+					'assets/css/customizer.css': 'assets/scss/customizer.scss',
+					'controls/checkbox/checkbox.css': 'controls/checkbox/checkbox.scss',
+					'controls/color/color.css': 'controls/color/color.scss',
+					'controls/spacing/spacing.css': 'controls/spacing/spacing.scss'
 				}
 			}
 		},
@@ -41,7 +44,8 @@ module.exports = function( grunt ) {
 		jscs: {
 		    src: [
                 'Gruntfile.js',
-                'assets/js/**/*.js',
+				'assets/js/**/*.js',
+				'controls/**/*.js',
                 '!assets/js/**/*.min.js',
                 '!assets/js/vendor/*'
             ],
@@ -59,7 +63,10 @@ module.exports = function( grunt ) {
 		// Watch task (run with "grunt watch")
 		watch: {
 			css: {
-				files: 'assets/**/*.scss',
+				files: [
+					'assets/**/*.scss',
+					'controls/**/*.scss'
+				],
 				tasks: ['sass']
 			},
 			scripts: {
