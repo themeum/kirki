@@ -16,75 +16,72 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Controls_Slider_Control' ) ) {
+/**
+ * Slider control (range).
+ */
+class Kirki_Control_Slider extends Kirki_Customize_Control {
 
 	/**
-	 * Slider control (range).
+	 * The control type.
+	 *
+	 * @access public
+	 * @var string
 	 */
-	class Kirki_Controls_Slider_Control extends Kirki_Customize_Control {
+	public $type = 'kirki-slider';
 
-		/**
-		 * The control type.
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $type = 'kirki-slider';
+	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 */
+	public function to_json() {
+		parent::to_json();
+		$this->json['choices']['min']  = ( isset( $this->choices['min'] ) ) ? $this->choices['min'] : '0';
+		$this->json['choices']['max']  = ( isset( $this->choices['max'] ) ) ? $this->choices['max'] : '100';
+		$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
+	}
 
-		/**
-		 * Refresh the parameters passed to the JavaScript via JSON.
-		 *
-		 * @access public
-		 */
-		public function to_json() {
-			parent::to_json();
-			$this->json['choices']['min']  = ( isset( $this->choices['min'] ) ) ? $this->choices['min'] : '0';
-			$this->json['choices']['max']  = ( isset( $this->choices['max'] ) ) ? $this->choices['max'] : '100';
-			$this->json['choices']['step'] = ( isset( $this->choices['step'] ) ) ? $this->choices['step'] : '1';
-		}
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		wp_enqueue_script( 'kirki-slider' );
+	}
 
-		/**
-		 * Enqueue control related scripts/styles.
-		 *
-		 * @access public
-		 */
-		public function enqueue() {
-			wp_enqueue_script( 'kirki-slider' );
-		}
-
-		/**
-		 * An Underscore (JS) template for this control's content (but not its container).
-		 *
-		 * Class variables for this control class are available in the `data` JS object;
-		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
-		 *
-		 * @see WP_Customize_Control::print_template()
-		 *
-		 * @access protected
-		 */
-		protected function content_template() {
-			?>
-			<label>
-				<# if ( data.label ) { #>
-					<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
-				<div class="wrapper">
-					<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
-					<div class="kirki_range_value">
-						<span class="value">{{ data.value }}</span>
-						<# if ( data.choices['suffix'] ) { #>
-							{{ data.choices['suffix'] }}
-						<# } #>
-					</div>
-					<div class="kirki-slider-reset">
-						<span class="dashicons dashicons-image-rotate"></span>
-					</div>
+	/**
+	 * An Underscore (JS) template for this control's content (but not its container).
+	 *
+	 * Class variables for this control class are available in the `data` JS object;
+	 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+	 *
+	 * @see WP_Customize_Control::print_template()
+	 *
+	 * @access protected
+	 */
+	protected function content_template() {
+		?>
+		<label>
+			<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div class="wrapper">
+				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
+				<div class="kirki_range_value">
+					<span class="value">{{ data.value }}</span>
+					<# if ( data.choices['suffix'] ) { #>
+						{{ data.choices['suffix'] }}
+					<# } #>
 				</div>
-			</label>
-			<?php
-		}
+				<div class="kirki-slider-reset">
+					<span class="dashicons dashicons-image-rotate"></span>
+				</div>
+			</div>
+		</label>
+		<?php
 	}
 }
