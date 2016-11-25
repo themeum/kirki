@@ -12,7 +12,7 @@
 /**
  * Modifies the loading overlay.
  */
-class Kirki_Module_Loading {
+class Kirki_Modules_Loading {
 
 	/**
 	 * Constructor.

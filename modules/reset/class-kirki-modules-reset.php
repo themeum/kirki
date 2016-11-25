@@ -16,23 +16,12 @@
 class Kirki_Modules_Reset {
 
 	/**
-	 * The config-ID.
-	 *
-	 * @access private
-	 * @since 2.4.0
-	 * @var string
-	 */
-	private $config;
-
-	/**
 	 * Constructor.
 	 *
 	 * @access public
 	 * @param string $config The config-ID.
 	 */
-	public function __construct( $config ) {
-
-		$this->config = $config;
+	public function __construct() {
 
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 20 );
 
