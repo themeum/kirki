@@ -227,5 +227,29 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 			return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 
 		}
+
+		/**
+		 * Echoes a translated string.
+		 *
+		 * @static
+		 * @access public
+		 * @since 2.4.0
+		 * @param string $key    The translation key.
+		 * @param string $config The config to be used in the filter.
+		 * @return string
+		 */
+		public static function get_string( $key, $config = 'global' ) {
+
+			$strings = self::get_strings();
+
+			// No need to proceed if the key is invalid.
+			if ( ! isset( $strings[ $key ] ) ) {
+				return;
+			}
+
+			$strings = apply_filters( 'kirki/' . $config_id . '/l10n', $strings );
+
+			return $strings[ $key ];
+		}
 	}
 }
