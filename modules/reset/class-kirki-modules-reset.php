@@ -34,7 +34,7 @@ class Kirki_Modules_Reset {
 
 		$this->config = $config;
 
-		// add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 20 );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 20 );
 
 	}
 
