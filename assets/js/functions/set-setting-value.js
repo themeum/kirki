@@ -30,7 +30,7 @@ function kirkiSetSettingValue( setting, value ) {
 	 * make the necessary adjustments to it.
 	 */
 
-	if ( 'kirki-checkbox' === controlType || 'kirki-switch' === controlType || 'kirki-toggle' === controlType ) {
+	if ( 'checkbox' === controlType || 'kirki-switch' === controlType || 'kirki-toggle' === controlType ) {
 
 		if ( 1 === value || '1' === value || true === value ) {
 

@@ -15,7 +15,6 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'assets/css/customizer.css': 'assets/scss/customizer.scss',
-					'controls/checkbox/checkbox.css': 'controls/checkbox/checkbox.scss',
 					'controls/color/color.css': 'controls/color/color.scss',
 					'controls/spacing/spacing.css': 'controls/spacing/spacing.scss',
 					'controls/color-palette/color-palette.css': 'controls/color-palette/color-palette.scss',
@@ -71,13 +70,13 @@ module.exports = function( grunt ) {
 				],
 				tasks: ['sass']
 			},
-			scripts: {
-				files: [
-					'assets/**/*.js',
-					'Gruntfile.js'
-				],
-				tasks: ['jscs']
-			}
+			// scripts: {
+			// 	files: [
+			// 		'assets/**/*.js',
+			// 		'Gruntfile.js'
+			// 	],
+			// 	tasks: ['jscs']
+			// }
 		}
 	});
 
