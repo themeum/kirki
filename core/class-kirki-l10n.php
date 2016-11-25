@@ -247,7 +247,7 @@ if ( ! class_exists( 'Kirki_l10n' ) ) {
 				return;
 			}
 
-			$strings = apply_filters( 'kirki/' . $config_id . '/l10n', $strings );
+			$strings = apply_filters( 'kirki/' . $config . '/l10n', $strings );
 
 			return $strings[ $key ];
 		}
