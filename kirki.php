@@ -33,6 +33,7 @@ if ( class_exists( 'Kirki' ) ) {
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
 if ( ! function_exists( 'Kirki' ) ) {
+	// @codingStandardsIgnoreStart
 	/**
 	 * Returns an instance of the Kirki object.
 	 */
@@ -40,6 +41,8 @@ if ( ! function_exists( 'Kirki' ) ) {
 		$kirki = Kirki_Toolkit::get_instance();
 		return $kirki;
 	}
+	// @codingStandardsIgnoreEnd
+
 }
 // Start Kirki.
 global $kirki;

@@ -19,7 +19,6 @@ class Kirki_Modules_Reset {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @param string $config The config-ID.
 	 */
 	public function __construct() {
 
