@@ -92,7 +92,7 @@ if ( ! class_exists( 'Kirki_Field_Code' ) ) {
 			if ( isset( $valid_themes[ $this->choices['theme'] ] ) ) {
 				$this->choices['theme'] = $valid_themes[ $this->choices['theme'] ];
 			} else {
-				$valid_themes[ $this->choices['theme'] ] = 'elegant';
+				$this->choices['theme'] = 'elegant';
 			}
 		}
 
