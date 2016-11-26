@@ -5,6 +5,8 @@
     	"**.min.js",
     	"assets/js/vendor/*",
     	"assets/js/vendor/**",
-    	"assets/js/vendor"
+    	"assets/js/vendor",
+		"controls/sortable/serialize.js",
+		"controls/**/selectize.js"
     ]
 }
