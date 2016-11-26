@@ -59,6 +59,22 @@ class Kirki_Modules_Tooltips {
 				);
 			}
 		}
+	}
+
+	/**
+	 * Allows us to add a tooltip to any control.
+	 *
+	 * @access public
+	 * @since 4.2.0
+	 * @param string $field_id The field-ID.
+	 * @param string $tooltip  The tooltip content.
+	 */
+	public function add_tooltip( $field_id, $tooltip ) {
+
+		$this->tooltips_content[ $field_id ] = array(
+			'id'      => sanitize_key( $field_id ),
+			'content' => wp_kses_post( $tooltip ),
+		);
 
 	}
 
