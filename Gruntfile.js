@@ -15,6 +15,9 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'assets/css/customizer.css':                    'assets/scss/customizer.scss',
+
+					'modules/reset/reset.css':                      'modules/reset/reset.scss',
+
 					'controls/code/code.css':                       'controls/code/code.scss',
 					'controls/color/color.css':                     'controls/color/color.scss',
 					'controls/color-palette/color-palette.css':     'controls/color-palette/color-palette.scss',

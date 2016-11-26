@@ -38,38 +38,6 @@
   background-repeat: no-repeat;
   background-position: center center; }
 
-.kirki-reset-section {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #BDBDBD;
-  opacity: .5;
-  color: #fff;
-  font-size: .8rem;
-  border-radius: 3px;
-  padding: 0 5px;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  font-weight: bold; }
-  .kirki-reset-section .dashicons {
-    font-size: .8rem;
-    width: .8rem;
-    height: .8rem;
-    line-height: .8rem;
-    vertical-align: baseline; }
-  .kirki-reset-section:hover, .kirki-reset-section:active {
-    background: #F44336;
-    color: #fff;
-    font-weight: bold;
-    opacity: 1; }
-  .kirki-reset-section:focus {
-    opacity: 1;
-    -webkit-box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8);
-    box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8); }
-
 #customize-theme-controls .control-panel.control-panel-kirki-expanded > ul.control-panel-content {
   position: relative;
   left: 0;
