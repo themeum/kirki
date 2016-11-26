@@ -67,3 +67,13 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' 
 Kirki::add_config( '' );
 
 new Kirki_Modules();
+Kirki::add_field( 'global', array(
+	'type'        => 'dimension',
+	'settings'    => 'my_setting',
+	'label'       => __( 'Dimension Control', 'my_textdomain' ),
+	'description' => 'Values are sanitized both on input and on save. If the user enters an invalid value, a warning message appears below the input field informing them that the entered value is invalid.',
+	'tooltip'     => 'Invalid values are not saved, and the preview refresh is only triggered once a valid value has been entered.',
+	'section'     => 'colors',
+	'default'     => '1.5em',
+	'priority'    => 10,
+) );
