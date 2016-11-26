@@ -26,7 +26,8 @@
     background: rgba(255, 255, 255, 0.85);
     color: #333;
     padding: 10px;
-    cursor: pointer; }
+    cursor: pointer;
+    text-decoration: none; }
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */

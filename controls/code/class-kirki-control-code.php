@@ -89,8 +89,6 @@ class Kirki_Control_Code extends Kirki_Customize_Control {
 		// Register codemirror.
 		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/lib/codemirror.js', array( 'jquery' ) );
 
-		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'assets/js/controls/code.js', array( 'jquery', 'codemirror' ), false );
-
 		// If we're using html mode, we'll also need to include the multiplex addon
 		// as well as dependencies for XML, JS, CSS languages.
 		if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ), true ) ) {
