@@ -133,13 +133,14 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 	protected function content_template() {
 		?>
 		<style>
-		#customize-control-{{ data.id }} .switch label {
+		<# var cssID = data.id.replace( '[', '-' ).replace( ']', '' ); #>
+		#customize-control-{{ cssID }} .switch label {
 			width: calc({{ data.choices['on'].length }}ch + {{ data.choices['off'].length }}ch + 40px);
 		}
-		#customize-control-{{ data.id }} .switch label:after {
+		#customize-control-{{ cssID }} .switch label:after {
 			width: calc({{ data.choices['on'].length }}ch + 10px);
 		}
-		#customize-control-{{ data.id }} .switch input:checked + label:after {
+		#customize-control-{{ cssID }} .switch input:checked + label:after {
 			left: calc({{ data.choices['on'].length }}ch + 25px);
 			width: calc({{ data.choices['off'].length }}ch + 10px);
 		}
