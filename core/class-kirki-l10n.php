@@ -197,7 +197,7 @@ class Kirki_l10n {
 			'limit-rows'            => esc_attr__( 'Limit: %s rows', 'kirki' ),
 			'open-section'          => esc_attr__( 'Press return or enter to open this section', 'kirki' ),
 			'back'                  => esc_attr__( 'Back', 'kirki' ),
-			'reset-with-icon'       => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-image-rotate"></span><span class="label">' ) . '</span>',
+			'reset-with-icon'       => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-update"></span><span class="label">' ) . '</span>',
 			'text-align'            => esc_attr__( 'Text Align', 'kirki' ),
 			'text-transform'        => esc_attr__( 'Text Transform', 'kirki' ),
 			'none'                  => esc_attr__( 'None', 'kirki' ),
