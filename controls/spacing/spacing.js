@@ -131,13 +131,8 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 		    numericValue,
 		    unit;
 
-		// 0 is always a valid value
-		if ( '0' === value ) {
-			return true;
-		}
-
-		// If we're using calc() just return true.
-		if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+		// 0 is always a valid value, and we can't check calc() values effectively.
+		if ( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) {
 			return true;
 		}
 
@@ -147,13 +142,8 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 		// Get the unit
 		unit = value.replace( numericValue, '' );
 
-		// Check the validity of the numeric value.
-		if ( isNaN( numericValue ) ) {
-			return false;
-		}
-
-		// Check the validity of the units.
-		if ( -1 === jQuery.inArray( unit, validUnits ) ) {
+		// Check the validity of the numeric value and units.
+		if ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) ) {
 			return false;
 		}
 
