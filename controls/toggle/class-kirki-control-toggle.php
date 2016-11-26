@@ -33,7 +33,8 @@ class Kirki_Control_Toggle extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-toggle' );
+		wp_enqueue_script( 'kirki-toggle', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-toggle-css', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.css', null );
 	}
 
 	/**

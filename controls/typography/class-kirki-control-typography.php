@@ -33,7 +33,8 @@ class Kirki_Control_Typography extends Kirki_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-typography' );
+		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 	}
 
 	/**

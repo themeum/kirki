@@ -33,7 +33,8 @@ class Kirki_Control_Radio extends Kirki_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-radio' );
+		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-radio-css', trailingslashit( Kirki::$url ) . 'controls/radio/radio.css', null );
 	}
 
 	/**

@@ -79,34 +79,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 			// Register selectize.
 			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
-			// An array of control scripts and their dependencies.
-			$scripts = array(
-				// Add controls scripts.
-				'dashicons'       => array( 'jquery', 'customize-base' ),
-				'date'            => array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ),
-				'dimension'       => array( 'jquery', 'customize-base', 'kirki-notifications' ),
-				'dropdown-pages'  => array( 'jquery', 'customize-base', 'selectize' ),
-				'editor'          => array( 'jquery', 'customize-base', 'kirki-l10n' ),
-				'generic'         => array( 'jquery', 'customize-base' ),
-				'multicheck'      => array( 'jquery', 'customize-base' ),
-				'multicolor'      => array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ),
-				'number'          => array( 'jquery', 'customize-base', 'jquery-ui-spinner' ),
-				'palette'         => array( 'jquery', 'customize-base', 'jquery-ui-button' ),
-				'preset'          => array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ),
-				'radio-buttonset' => array( 'jquery', 'customize-base' ),
-				'radio-image'     => array( 'jquery', 'customize-base' ),
-				'radio'           => array( 'jquery', 'customize-base' ),
-				'repeater'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'kirki-l10n' ),
-				'select'          => array( 'jquery', 'customize-base', 'selectize' ),
-				'slider'          => array( 'jquery', 'customize-base' ),
-				'sortable'        => array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ),
-				'toggle'          => array( 'jquery', 'customize-base' ),
-				'typography'      => array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ),
-			);
-			foreach ( $scripts as $id => $dependencies ) {
-				wp_register_script( 'kirki-' . $id, trailingslashit( Kirki::$url ) . 'assets/js/controls/' . $id . '.js', $dependencies, false, true );
-			}
-
 			// Add fonts to our JS objects.
 			$google_fonts   = Kirki_Fonts::get_google_fonts();
 			$standard_fonts = Kirki_Fonts::get_standard_fonts();

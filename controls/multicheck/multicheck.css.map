@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEI,+DAAuB;EACrB,MAAM,EAAE,UAAU;EAEhB,8EAAS;IACP,IAAI,EAAE,GAAG",
+"sources": ["multicheck.scss"],
+"names": [],
+"file": "multicheck.css"
+}

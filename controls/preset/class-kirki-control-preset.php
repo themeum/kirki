@@ -33,7 +33,8 @@ class Kirki_Control_Preset extends Kirki_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-preset' );
+		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/preset/preset.js', array( 'jquery', 'customize-base', 'selectize', 'kirki-set-setting-value' ), false, true );
+		wp_enqueue_style( 'kirki-preset-css', trailingslashit( Kirki::$url ) . 'controls/preset/preset.css', null );
 	}
 
 	/**

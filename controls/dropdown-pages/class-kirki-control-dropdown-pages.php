@@ -35,7 +35,8 @@ class Kirki_Control_Dropdown_Pages extends Kirki_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-dropdown-pages' );
+		wp_enqueue_script( 'kirki-dropdown-pages', trailingslashit( Kirki::$url ) . 'controls/dropdown-pages/dropdown-pages.js', array( 'jquery', 'customize-base', 'selectize' ), false, true );
+		wp_enqueue_style( 'kirki-dropdown-pages-css', trailingslashit( Kirki::$url ) . 'controls/dropdown-pages/dropdown-pages.css', null );
 	}
 
 	/**

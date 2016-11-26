@@ -34,7 +34,8 @@ class Kirki_Control_Generic extends Kirki_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-generic' );
+		wp_enqueue_script( 'kirki-generic', trailingslashit( Kirki::$url ) . 'controls/generic/generic.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-generic-css', trailingslashit( Kirki::$url ) . 'controls/generic/generic.css', null );
 	}
 
 	/**

@@ -1,0 +1,21 @@
+.customize-control-kirki-radio-image label {
+  position: relative;
+  display: inline-block; }
+.customize-control-kirki-radio-image input {
+  display: none; }
+  .customize-control-kirki-radio-image input img {
+    border: 1px solid transparent; }
+  .customize-control-kirki-radio-image input:checked + label img {
+    -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    border: 1px solid #3498DB; }
+  .customize-control-kirki-radio-image input + label .image-clickable {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; }
+
+/*# sourceMappingURL=radio-image.css.map */

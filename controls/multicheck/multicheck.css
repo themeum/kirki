@@ -1,0 +1,6 @@
+.rtl .customize-control-kirki-multicheck input[type="checkbox"] {
+  margin: 0 0 0 1rem; }
+  .rtl .customize-control-kirki-multicheck input[type="checkbox"]:checked:before {
+    left: 2px; }
+
+/*# sourceMappingURL=multicheck.css.map */
