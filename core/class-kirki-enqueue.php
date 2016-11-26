@@ -61,21 +61,6 @@ if ( ! class_exists( 'Kirki_Enqueue' ) ) {
 		 */
 		public function customize_controls_enqueue_scripts() {
 
-			// Register kirki-functions.
-			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/set-setting-value.js' );
-			wp_register_script( 'kirki-validate-css-value', trailingslashit( Kirki::$url ) . 'assets/js/functions/validate-css-value.js' );
-			wp_register_script( 'kirki-notifications', trailingslashit( Kirki::$url ) . 'assets/js/functions/notifications.js', array( 'kirki-l10n', 'kirki-validate-css-value' ) );
-
-			// Register serialize.js.
-			wp_register_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'assets/js/vendor/serialize.js' );
-
-			// Register the color-alpha picker.
-			wp_enqueue_style( 'wp-color-picker' );
-			wp_register_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/js/vendor/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-
-			// Register the jquery-ui-spinner.
-			wp_register_script( 'jquery-ui-spinner', trailingslashit( Kirki::$url ) . 'assets/js/vendor/jquery-ui-spinner', array( 'jquery', 'jquery-ui-core', 'jquery-ui-button' ) );
-
 			// Register selectize.
 			wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 

@@ -97,8 +97,10 @@ class Kirki_Control_Sortable extends WP_Customize_Control {
 	 * @return array
 	 */
 	public function customize_sanitize( $value ) {
+
 		$value = maybe_unserialize( $value );
 		return $value;
+
 	}
 
 	/**
@@ -107,8 +109,11 @@ class Kirki_Control_Sortable extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
+
+		wp_enqueue_script( 'serialize-js', trailingslashit( Kirki::$url ) . 'controls/sortable/serialize.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'kirki-sortable', trailingslashit( Kirki::$url ) . 'controls/sortable/sortable.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'serialize-js' ), false, true );
 		wp_enqueue_style( 'kirki-sortable-css', trailingslashit( Kirki::$url ) . 'controls/sortable/sortable.css', null );
+
 	}
 
 	/**
