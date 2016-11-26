@@ -26,7 +26,7 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 			$this->type = 'checkbox';
 			// Tweaks for backwards-compatibility:
 			// Prior to version 0.8 switch & toggle were part of the checkbox control.
-			if ( in_array( $this->mode, array( 'switch', 'toggle' ) ) ) {
+			if ( in_array( $this->mode, array( 'switch', 'toggle' ), true ) ) {
 				$this->type = $this->mode;
 			}
 
