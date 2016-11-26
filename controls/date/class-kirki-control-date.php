@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * A simple date control, using jQuery UI.
  */
-class Kirki_Control_Date extends Kirki_Customize_Control {
+class Kirki_Control_Date extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -26,6 +26,55 @@ class Kirki_Control_Date extends Kirki_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'kirki-date';
+
+	/**
+	 * Tooltips content.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $tooltip = '';
+
+	/**
+	 * Used to automatically generate all postMessage scripts.
+	 *
+	 * @access public
+	 * @var array
+	 */
+	public $js_vars = array();
+
+	/**
+	 * Used to automatically generate all CSS output.
+	 *
+	 * @access public
+	 * @var array
+	 */
+	public $output = array();
+
+	/**
+	 * Data type
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $option_type = 'theme_mod';
+
+	/**
+	 * The kirki_config we're using for this control
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $kirki_config = 'global';
+
+	/**
+	 * The translation strings.
+	 *
+	 * @access protected
+	 * @since 2.3.5
+	 * @var array
+	 */
+	protected $l10n = array();
 
 	/**
 	 * Enqueue control related scripts/styles.
