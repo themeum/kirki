@@ -161,5 +161,4 @@ wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
 
 	}
 
-
 });

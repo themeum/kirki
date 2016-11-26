@@ -86,16 +86,6 @@ class Kirki_Control_Select extends WP_Customize_Control {
 	public $multiple = 1;
 
 	/**
-	 * Refresh the parameters passed to the JavaScript via JSON.
-	 *
-	 * @access public
-	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['multiple'] = $this->multiple;
-	}
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -137,7 +127,9 @@ class Kirki_Control_Select extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
+		$this->json['multiple'] = $this->multiple;
 	}
+
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).

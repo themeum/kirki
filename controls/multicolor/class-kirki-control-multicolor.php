@@ -36,16 +36,6 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	public $palette = true;
 
 	/**
-	 * Refresh the parameters passed to the JavaScript via JSON.
-	 *
-	 * @access public
-	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['palette']  = $this->palette;
-	}
-
-	/**
 	 * Tooltips content.
 	 *
 	 * @access public
@@ -136,6 +126,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
+		$this->json['palette']  = $this->palette;
 	}
 
 	/**
