@@ -34,46 +34,12 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.Control.extend
 					subs = {},
 					message;
 
-				setting.notifications.remove( code );
-				if ( 'undefined' !== typeof value.top ) {
-					if ( false === control.kirkiValidateCSSValue( value.top ) ) {
-						subs.top = window.kirki.l10n[ control.params.kirkiConfig ].top;
-					} else {
-						delete subs.top;
-					}
-				}
-
-				if ( 'undefined' !== typeof value.bottom ) {
-					if ( false === control.kirkiValidateCSSValue( value.bottom ) ) {
-						subs.bottom = window.kirki.l10n[ control.params.kirkiConfig ].bottom;
-					} else {
-						delete subs.bottom;
-					}
-				}
-
-				if ( 'undefined' !== typeof value.left ) {
-					if ( false === control.kirkiValidateCSSValue( value.left ) ) {
-						subs.left = window.kirki.l10n[ control.params.kirkiConfig ].left;
-					} else {
-						delete subs.left;
-					}
-				}
-
-				if ( 'undefined' !== typeof value.right ) {
-					if ( false === control.kirkiValidateCSSValue( value.right ) ) {
-						subs.right = window.kirki.l10n[ control.params.kirkiConfig ].right;
-					} else {
-						delete subs.right;
-					}
-				}
-
-				if ( ! _.isEmpty( subs ) ) {
-					message = window.kirki.l10n[ control.params.kirkiConfig ]['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
+				if ( false === control.kirkiValidateCSSValue( value ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{
 							type: 'warning',
-							message: message
+							message: window.kirki.l10n[ control.params.kirkiConfig ]['invalid-value']
 						}
 					) );
 				} else {
