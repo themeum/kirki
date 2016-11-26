@@ -127,7 +127,7 @@ class Kirki_Helper {
 
 		// Get the posts.
 		if ( ! isset( $args['suppress_filters'] ) ) {
-			'suppress_filters' => false;
+			$args['suppress_filters'] = false;
 		}
 		$posts = get_posts( $args );
 
