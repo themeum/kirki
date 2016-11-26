@@ -53,6 +53,13 @@ if ( ! class_exists( 'Kirki_Field_Checkbox' ) ) {
 		 */
 		public static function sanitize( $value = null ) {
 
+			if ( '0' === $value || 0 === $value || 'false' === $value ) {
+				return false;
+			}
+			if ( '1' === $value || 1 === $value || 'true' === $value ) {
+				return true;
+			}
+
 			return (bool) $value;
 
 		}
