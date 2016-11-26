@@ -23,7 +23,7 @@ if ( ! class_exists( 'Kirki_Field_Dropdown_Pages' ) ) {
 		 */
 		protected function set_type() {
 
-			$this->type = 'kirki-dropdown-pages';
+			$this->type = 'dropdown-pages';
 
 		}
 

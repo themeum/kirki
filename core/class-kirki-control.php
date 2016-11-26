@@ -99,7 +99,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 		final private function set_control_types() {
 
 			$this->control_types = apply_filters( 'kirki/control_types', array(
-				'kirki-checkbox'        => 'WP_Customize_Control',
+				'checkbox'              => 'WP_Customize_Control',
 				'kirki-code'            => 'Kirki_Control_Code',
 				'kirki-color'           => 'Kirki_Control_Color',
 				'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
@@ -125,7 +125,7 @@ if ( ! class_exists( 'Kirki_Control' ) ) {
 				'kirki-generic'         => 'Kirki_Control_Generic',
 				'kirki-toggle'          => 'Kirki_Control_Toggle',
 				'kirki-typography'      => 'Kirki_Control_Typography',
-				'kirki-dropdown-pages'  => 'Kirki_Control_Dropdown_Pages',
+				'dropdown-pages'        => 'Kirki_Control_Dropdown_Pages',
 				'image'                 => 'WP_Customize_Image_Control',
 				'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
 				'upload'                => 'WP_Customize_Upload_Control',

@@ -102,7 +102,6 @@ if ( ! class_exists( 'Kirki_Init' ) ) {
 			$wp_customize->register_control_type( 'Kirki_Control_Date' );
 			$wp_customize->register_control_type( 'Kirki_Control_Dashicons' );
 			$wp_customize->register_control_type( 'Kirki_Control_Dimension' );
-			$wp_customize->register_control_type( 'Kirki_Control_Dropdown_Pages' );
 			$wp_customize->register_control_type( 'Kirki_Control_Editor' );
 			$wp_customize->register_control_type( 'Kirki_Control_Number' );
 			$wp_customize->register_control_type( 'Kirki_Control_Radio' );

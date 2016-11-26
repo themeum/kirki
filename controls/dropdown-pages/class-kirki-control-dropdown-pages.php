@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * The template has been converted to use Underscore.js
  * and we added a tooltip.
  */
-class Kirki_Control_Dropdown_Pages extends Kirki_Customize_Control {
+class Kirki_Control_Dropdown_Pages extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -27,7 +27,56 @@ class Kirki_Control_Dropdown_Pages extends Kirki_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-dropdown-pages';
+	public $type = 'dropdown-pages';
+
+	/**
+	 * Tooltips content.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $tooltip = '';
+
+	/**
+	 * Used to automatically generate all postMessage scripts.
+	 *
+	 * @access public
+	 * @var array
+	 */
+	public $js_vars = array();
+
+	/**
+	 * Used to automatically generate all CSS output.
+	 *
+	 * @access public
+	 * @var array
+	 */
+	public $output = array();
+
+	/**
+	 * Data type
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $option_type = 'theme_mod';
+
+	/**
+	 * The kirki_config we're using for this control
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $kirki_config = 'global';
+
+	/**
+	 * The translation strings.
+	 *
+	 * @access protected
+	 * @since 2.3.5
+	 * @var array
+	 */
+	protected $l10n = array();
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -36,54 +85,6 @@ class Kirki_Control_Dropdown_Pages extends Kirki_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-dropdown-pages', trailingslashit( Kirki::$url ) . 'controls/dropdown-pages/dropdown-pages.js', array( 'jquery', 'customize-base', 'selectize' ), false, true );
-		wp_enqueue_style( 'kirki-dropdown-pages-css', trailingslashit( Kirki::$url ) . 'controls/dropdown-pages/dropdown-pages.css', null );
-	}
-
-	/**
-	 * Refresh the parameters passed to the JavaScript via JSON.
-	 *
-	 * @access public
-	 */
-	public function to_json() {
-		parent::to_json();
-		$l10n = Kirki_l10n::get_strings( $this->kirki_config );
-		$dropdown = wp_dropdown_pages(
-			array(
-				'name'              => '_customize-dropdown-pages-' . esc_attr( $this->id ),
-				'echo'              => 0,
-				'show_option_none'  => esc_attr( $l10n['select-page'] ),
-				'option_none_value' => '0',
-				'selected'          => esc_attr( $this->value() ),
-			)
-		);
-
-		// Hackily add in the data link parameter.
-		$dropdown = str_replace( '<select', '<select ' . $this->get_link(), $dropdown );
-
-		$this->json['dropdown'] = $dropdown;
-	}
-
-	/**
-	 * An Underscore (JS) template for this control's content (but not its container).
-	 *
-	 * Class variables for this control class are available in the `data` JS object;
-	 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
-	 *
-	 * @see WP_Customize_Control::print_template()
-	 *
-	 * @access protected
-	 */
-	protected function content_template() {
-		?>
-		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
-			<div class="customize-control-content">{{{ data.dropdown }}}</div>
-		</label>
-		<?php
+		wp_enqueue_style( 'selectize-css', trailingslashit( Kirki::$url ) . 'controls/dropdown-pages/selectize.css', null );
 	}
 }
