@@ -9,33 +9,30 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Preset' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Preset extends Kirki_Field_Select {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Preset extends Kirki_Field_Select {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-preset';
 
-			$this->type = 'kirki-preset';
+	}
 
-		}
+	/**
+	 * Sets the $multiple
+	 *
+	 * @access protected
+	 */
+	protected function set_multiple() {
 
-		/**
-		 * Sets the $multiple
-		 *
-		 * @access protected
-		 */
-		protected function set_multiple() {
+		$this->multiple = '1';
 
-			$this->multiple = '1';
-
-		}
 	}
 }

@@ -9,26 +9,23 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Textarea' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Textarea extends Kirki_Field_Kirki_Generic {
 
 	/**
-	 * Field overrides.
+	 * Sets the $choices
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Textarea extends Kirki_Field_Kirki_Generic {
+	protected function set_choices() {
 
-		/**
-		 * Sets the $choices
-		 *
-		 * @access protected
-		 */
-		protected function set_choices() {
-
-			if ( ! is_array( $this->choices ) ) {
-				$this->choices = array();
-			}
-			$this->choices['element'] = 'textarea';
-			$this->choices['rows']    = '5';
-
+		if ( ! is_array( $this->choices ) ) {
+			$this->choices = array();
 		}
+		$this->choices['element'] = 'textarea';
+		$this->choices['rows']    = '5';
+
 	}
 }

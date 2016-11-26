@@ -9,22 +9,19 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Palette' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Palette extends Kirki_Field_Radio {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Palette extends Kirki_Field_Radio {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-palette';
 
-			$this->type = 'kirki-palette';
-
-		}
 	}
 }

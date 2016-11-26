@@ -15,48 +15,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Kirki_Scripts_Registry' ) ) {
+/**
+ * Instantiates dependent classes
+ */
+class Kirki_Scripts_Registry {
 
 	/**
-	 * Instantiates dependent classes
+	 * Dependencies
+	 *
+	 * @access public
+	 * @var object Kirki_Enqueue.
 	 */
-	class Kirki_Scripts_Registry {
+	public $dependencies;
 
-		/**
-		 * Dependencies
-		 *
-		 * @access public
-		 * @var object Kirki_Enqueue.
-		 */
-		public $dependencies;
+	/**
+	 * Icons
+	 *
+	 * @access public
+	 * @var object Kirki_Modules_Icons.
+	 */
+	public $icons;
 
-		/**
-		 * Icons
-		 *
-		 * @access public
-		 * @var object Kirki_Modules_Icons.
-		 */
-		public $icons;
+	/**
+	 * The main class constructor.
+	 * Instantiates secondary classes.
+	 */
+	public function __construct() {
 
-		/**
-		 * The main class constructor.
-		 * Instantiates secondary classes.
-		 */
-		public function __construct() {
+		$this->dependencies = new Kirki_Enqueue();
 
-			$this->dependencies = new Kirki_Enqueue();
+	}
 
-		}
-
-		/**
-		 * Prepares a script for echoing.
-		 * Wraps it in <script> and jQuery.
-		 *
-		 * @param string $script The contents of the script.
-		 * @return string
-		 */
-		public static function prepare( $script ) {
-			return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
-		}
+	/**
+	 * Prepares a script for echoing.
+	 * Wraps it in <script> and jQuery.
+	 *
+	 * @param string $script The contents of the script.
+	 * @return string
+	 */
+	public static function prepare( $script ) {
+		return '<script>jQuery(document).ready(function($) { "use strict"; ' . $script . '});</script>';
 	}
 }

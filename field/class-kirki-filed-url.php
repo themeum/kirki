@@ -9,10 +9,7 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Url' ) ) {
-
-	/**
-	 * This is simply an alias for the Kirki_Field_Link class.
-	 */
-	class Kirki_Field_Url extends Kirki_Field_Link {}
-}
+/**
+ * This is simply an alias for the Kirki_Field_Link class.
+ */
+class Kirki_Field_Url extends Kirki_Field_Link {}

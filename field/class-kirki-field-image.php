@@ -9,11 +9,7 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Image' ) ) {
-
-	/**
-	 * Field overrides.
-	 */
-	class Kirki_Field_Image extends Kirki_Field_Upload {}
-
-}
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Image extends Kirki_Field_Upload {}

@@ -9,11 +9,7 @@
  * @since       2.3.2
  */
 
-if ( ! class_exists( 'Kirki_Field_Generic' ) ) {
-
-	/**
-	 * This is simply an alias for the Kirki_Field_Kirki_Generic class.
-	 */
-	class Kirki_Field_Generic extends Kirki_Field_Kirki_Generic {}
-
-}
+/**
+ * This is simply an alias for the Kirki_Field_Kirki_Generic class.
+ */
+class Kirki_Field_Generic extends Kirki_Field_Kirki_Generic {}

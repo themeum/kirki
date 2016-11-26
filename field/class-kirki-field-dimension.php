@@ -9,22 +9,19 @@
  * @since       2.3.2
  */
 
-if ( ! class_exists( 'Kirki_Field_Dimension' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Dimension extends Kirki_Field {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Dimension extends Kirki_Field {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-dimension';
 
-			$this->type = 'kirki-dimension';
-
-		}
 	}
 }

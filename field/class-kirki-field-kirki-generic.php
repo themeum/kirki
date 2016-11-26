@@ -9,55 +9,52 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Kirki_Generic' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Kirki_Generic extends Kirki_Field {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Kirki_Generic extends Kirki_Field {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-generic';
 
-			$this->type = 'kirki-generic';
+	}
 
+
+	/**
+	 * Sets the $choices
+	 *
+	 * @access protected
+	 */
+	protected function set_choices() {
+
+		if ( ! is_array( $this->choices ) ) {
+			$this->choices = array();
+		}
+		if ( ! isset( $this->choices['element'] ) ) {
+			$this->choices['element'] = 'input';
 		}
 
+	}
 
-		/**
-		 * Sets the $choices
-		 *
-		 * @access protected
-		 */
-		protected function set_choices() {
+	/**
+	 * Sets the $sanitize_callback
+	 *
+	 * @access protected
+	 */
+	protected function set_sanitize_callback() {
 
-			if ( ! is_array( $this->choices ) ) {
-				$this->choices = array();
-			}
-			if ( ! isset( $this->choices['element'] ) ) {
-				$this->choices['element'] = 'input';
-			}
-
+		// If a custom sanitize_callback has been defined,
+		// then we don't need to proceed any further.
+		if ( ! empty( $this->sanitize_callback ) ) {
+			return;
 		}
+		$this->sanitize_callback = 'wp_kses_post';
 
-		/**
-		 * Sets the $sanitize_callback
-		 *
-		 * @access protected
-		 */
-		protected function set_sanitize_callback() {
-
-			// If a custom sanitize_callback has been defined,
-			// then we don't need to proceed any further.
-			if ( ! empty( $this->sanitize_callback ) ) {
-				return;
-			}
-			$this->sanitize_callback = 'wp_kses_post';
-
-		}
 	}
 }

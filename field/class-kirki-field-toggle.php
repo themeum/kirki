@@ -9,22 +9,19 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Toggle' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Toggle extends Kirki_Field_Checkbox {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Toggle extends Kirki_Field_Checkbox {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-toggle';
 
-			$this->type = 'kirki-toggle';
-
-		}
 	}
 }

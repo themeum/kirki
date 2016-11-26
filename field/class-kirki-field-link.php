@@ -9,11 +9,7 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Link' ) ) {
-
-	/**
-	 * Field overrides.
-	 */
-	class Kirki_Field_Link extends Kirki_Field_Kirki_URL {}
-
-}
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Link extends Kirki_Field_Kirki_URL {}

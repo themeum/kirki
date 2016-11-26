@@ -9,25 +9,22 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Color_Alpha' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Color_Alpha extends Kirki_Field_Color {
 
 	/**
-	 * Field overrides.
+	 * Sets the $choices
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Color_Alpha extends Kirki_Field_Color {
+	protected function set_choices() {
 
-		/**
-		 * Sets the $choices
-		 *
-		 * @access protected
-		 */
-		protected function set_choices() {
-
-			if ( ! is_array( $this->choices ) ) {
-				$this->choices = array();
-			}
-			$this->choices['alpha'] = true;
-
+		if ( ! is_array( $this->choices ) ) {
+			$this->choices = array();
 		}
+		$this->choices['alpha'] = true;
+
 	}
 }

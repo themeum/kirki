@@ -9,22 +9,19 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Radio_Buttonset' ) ) {
+/**
+ * Field overrides.
+ */
+class Kirki_Field_Radio_Buttonset extends Kirki_Field_Radio {
 
 	/**
-	 * Field overrides.
+	 * Sets the control type.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Radio_Buttonset extends Kirki_Field_Radio {
+	protected function set_type() {
 
-		/**
-		 * Sets the control type.
-		 *
-		 * @access protected
-		 */
-		protected function set_type() {
+		$this->type = 'kirki-radio-buttonset';
 
-			$this->type = 'kirki-radio-buttonset';
-
-		}
 	}
 }

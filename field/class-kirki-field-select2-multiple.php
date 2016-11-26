@@ -9,24 +9,21 @@
  * @since       2.2.7
  */
 
-if ( ! class_exists( 'Kirki_Field_Select2_Multiple' ) ) {
+/**
+ * This is nothing more than an alias for the Kirki_Field_Select class.
+ * In older versions of Kirki there was a separate 'select2' field.
+ * This exists here just for compatibility purposes.
+ */
+class Kirki_Field_Select2_Multiple extends Kirki_Field_Select {
 
 	/**
-	 * This is nothing more than an alias for the Kirki_Field_Select class.
-	 * In older versions of Kirki there was a separate 'select2' field.
-	 * This exists here just for compatibility purposes.
+	 * Sets the $multiple
+	 *
+	 * @access protected
 	 */
-	class Kirki_Field_Select2_Multiple extends Kirki_Field_Select {
+	protected function set_multiple() {
 
-		/**
-		 * Sets the $multiple
-		 *
-		 * @access protected
-		 */
-		protected function set_multiple() {
+		$this->multiple = 999;
 
-			$this->multiple = 999;
-
-		}
 	}
 }
