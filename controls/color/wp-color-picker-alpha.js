@@ -10,9 +10,11 @@
  * Licensed under the GPLv2 license.
  */
 ( function( $ ) {
+
 	// Variable for some backgrounds
 	var image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAAHnlligAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHJJREFUeNpi+P///4EDBxiAGMgCCCAGFB5AADGCRBgYDh48CCRZIJS9vT2QBAggFBkmBiSAogxFBiCAoHogAKIKAlBUYTELAiAmEtABEECk20G6BOmuIl0CIMBQ/IEMkO0myiSSraaaBhZcbkUOs0HuBwDplz5uFJ3Z4gAAAABJRU5ErkJggg==';
-	// html stuff for wpColorPicker copy of the original color-picker.js
+
+	// HTML stuff for wpColorPicker copy of the original color-picker.js
 	var	_before = '<a tabindex="0" class="wp-color-result" />',
 		_after = '<div class="wp-picker-holder" />',
 		_wrap = '<div class="wp-picker-container" />',
@@ -23,16 +25,22 @@
 	 * for enable support rbga
 	 */
 	Color.fn.toString = function() {
-		if ( this._alpha < 1 )
+
+		var hex,
+		    i;
+
+		if ( this._alpha < 1 ) {
 			return this.toCSS( 'rgba', this._alpha ).replace( /\s+/g, '' );
+		}
 
-		var hex = parseInt( this._color, 10 ).toString( 16 );
+		hex = parseInt( this._color, 10 ).toString( 16 );
 
-		if ( this.error )
+		if ( this.error ) {
 			return '';
+		}
 
 		if ( hex.length < 6 ) {
-			for ( var i = 6 - hex.length - 1; i >= 0; i-- ) {
+			for ( i = 6 - hex.length - 1; i >= 0; i-- ) {
 				hex = '0' + hex;
 			}
 		}
@@ -43,19 +51,23 @@
 	/**
 	 * Overwrite wpColorPicker
 	 */
-	$.widget( 'wp.wpColorPicker', $.wp.wpColorPicker, {
+	jQuery.widget( 'wp.wpColorPicker', $.wp.wpColorPicker, {
 		_create: function() {
-			// bail early for unsupported Iris.
+
+			var self,
+			    el;
+
+			// Bail early for unsupported Iris.
 			if ( ! $.support.iris ) {
 				return;
 			}
 
-			var self = this,
-				el = self.element;
+			self = this;
+			el   = self.element;
 
 			$.extend( self.options, el.data() );
 
-			// keep close bound so it can be attached to a body listener
+			// Keep close bound so it can be attached to a body listener.
 			self.close = $.proxy( self.close, self );
 
 			self.initialValue = el.val();
@@ -63,7 +75,7 @@
 			// Set up HTML structure, hide things
 			el.addClass( 'wp-color-picker' ).hide().wrap( _wrap );
 			self.wrap = el.parent();
-			self.toggler = $( _before ).insertBefore( el ).css( { backgroundColor: self.initialValue } ).attr( 'title', wpColorPickerL10n.pick ).attr( 'data-current', wpColorPickerL10n.current );
+			self.toggler = jQuery( _before ).insertBefore( el ).css( { backgroundColor: self.initialValue } ).attr( 'title', wpColorPickerL10n.pick ).attr( 'data-current', wpColorPickerL10n.current );
 			self.pickerContainer = $( _after ).insertAfter( el );
 			self.button = $( _button );
 
@@ -73,7 +85,7 @@
 				self.button.addClass( 'wp-picker-clear' ).val( wpColorPickerL10n.clear );
 			}
 
-			el.wrap( '<span class="wp-picker-input-wrap" />' ).after(self.button);
+			el.wrap( '<span class="wp-picker-input-wrap" />' ).after( self.button );
 
 			el.iris( {
 				target: self.pickerContainer,
@@ -83,8 +95,8 @@
 				palettes: self.options.palettes,
 				change: function( event, ui ) {
 					if ( self.options.alpha ) {
-						self.toggler.css( { 'background-image': 'url(' + image + ')' } ).html('<span />');
-						self.toggler.find('span').css({
+						self.toggler.css( { 'background-image': 'url(' + image + ')' } ).html( '<span />' );
+						self.toggler.find( 'span' ).css( {
 							'width': '100%',
 							'height': '100%',
 							'position': 'absolute',
@@ -97,7 +109,8 @@
 					} else {
 						self.toggler.css( { backgroundColor: ui.color.toString() } );
 					}
-					// check for a custom cb
+
+					// Check for a custom cb
 					if ( $.isFunction( self.options.change ) ) {
 						self.options.change.call( this, event, ui );
 					}
@@ -113,12 +126,12 @@
 		_addListeners: function() {
 			var self = this;
 
-			// prevent any clicks inside this widget from leaking to the top and closing it
+			// Prevent any clicks inside this widget from leaking to the top and closing it.
 			self.wrap.on( 'click.wpcolorpicker', function( event ) {
 				event.stopPropagation();
 			});
 
-			self.toggler.click( function(){
+			self.toggler.click( function() {
 				if ( self.toggler.hasClass( 'wp-picker-open' ) ) {
 					self.close();
 				} else {
@@ -127,26 +140,28 @@
 			});
 
 			self.element.change( function( event ) {
-				var me = $( this ),
-					val = me.val();
+				var me  = $( this ),
+				    val = me.val();
+
 				// Empty or Error = clear
-				if ( val === '' || self.element.hasClass('iris-error') ) {
+				if ( '' === val || self.element.hasClass( 'iris-error' ) ) {
 					if ( self.options.alpha ) {
-						self.toggler.removeAttr('style');
-						self.toggler.find('span').css( 'backgroundColor', '' );
+						self.toggler.removeAttr( 'style' );
+						self.toggler.find( 'span' ).css( 'backgroundColor', '' );
 					} else {
 						self.toggler.css( 'backgroundColor', '' );
 					}
-					// fire clear callback if we have one
+
+					// Fire clear callback if we have one.
 					if ( $.isFunction( self.options.clear ) ) {
 						self.options.clear.call( this, event );
 					}
 				}
 			});
 
-			// open a keyboard-focused closed picker with space or enter
+			// Open a keyboard-focused closed picker with space or enter.
 			self.toggler.on( 'keyup', function( event ) {
-				if ( event.keyCode === 13 || event.keyCode === 32 ) {
+				if ( 13 === event.keyCode || 32 === event.keyCode ) {
 					event.preventDefault();
 					self.toggler.trigger( 'click' ).next().focus();
 				}
@@ -157,8 +172,8 @@
 				if ( me.hasClass( 'wp-picker-clear' ) ) {
 					self.element.val( '' );
 					if ( self.options.alpha ) {
-						self.toggler.removeAttr('style');
-						self.toggler.find('span').css( 'backgroundColor', '' );
+						self.toggler.removeAttr( 'style' );
+						self.toggler.find( 'span' ).css( 'backgroundColor', '' );
 					} else {
 						self.toggler.css( 'backgroundColor', '' );
 					}
@@ -177,6 +192,17 @@
 	 */
 	$.widget( 'a8c.iris', $.a8c.iris, {
 		_create: function() {
+
+			var self,
+			    el,
+			    _html,
+			    aContainer,
+			    aSlider,
+			    controls,
+			    emptyWidth,
+			    stripsMargin,
+			    stripsWidth;
+
 			this._super();
 
 			// Global option for check is mode rbga is enabled
@@ -187,19 +213,19 @@
 				this.options.alpha = false;
 			}
 
-			if ( typeof this.options.alpha !== 'undefined' && this.options.alpha ) {
-				var self = this,
-					el = self.element,
-					_html = '<div class="iris-strip iris-slider iris-alpha-slider"><div class="iris-slider-offset iris-slider-offset-alpha"></div></div>',
-					aContainer = $( _html ).appendTo( self.picker.find( '.iris-picker-inner' ) ),
-					aSlider = aContainer.find( '.iris-slider-offset-alpha' ),
-					controls = {
-						aContainer: aContainer,
-						aSlider: aSlider
-					};
+			if ( 'undefined' !== typeof this.options.alpha && this.options.alpha ) {
+				self       = this;
+				el         = self.element;
+				_html      = '<div class="iris-strip iris-slider iris-alpha-slider"><div class="iris-slider-offset iris-slider-offset-alpha"></div></div>';
+				aContainer = $( _html ).appendTo( self.picker.find( '.iris-picker-inner' ) );
+				aSlider    = aContainer.find( '.iris-slider-offset-alpha' );
+				controls   = {
+					aContainer: aContainer,
+					aSlider: aSlider
+				};
 
-				if ( typeof el.data( 'custom-width' ) !== 'undefined' ) {
-					self.options.customWidth = parseInt( el.data( 'custom-width' ) ) || 0;
+				if ( 'undefined' !== typeof el.data( 'custom-width' ) ) {
+					self.options.customWidth = parseInt( el.data( 'custom-width' ), 10 ) || 0;
 				} else {
 					self.options.customWidth = 100;
 				}
@@ -208,20 +234,20 @@
 				self.options.defaultWidth = el.width();
 
 				// Update width for input
-				if ( self._color._alpha < 1 || self._color.toString().indexOf('rgb') != 1 ) {
-					el.width( parseInt( self.options.defaultWidth + self.options.customWidth ) );
+				if ( self._color._alpha < 1 || 1 !== self._color.toString().indexOf( 'rgb' ) ) {
+					el.width( parseInt( self.options.defaultWidth + self.options.customWidth, 10 ) );
 				}
 
 				// Push new controls
-				$.each( controls, function( k, v ){
+				jQuery.each( controls, function( k, v ) {
 					self.controls[k] = v;
 				});
 
-				// Change size strip and add margin for sliders
-				self.controls.square.css({'margin-right': '0'});
-				var emptyWidth = ( self.picker.width() - self.controls.square.width() - 20 ),
-					stripsMargin = emptyWidth/6,
-					stripsWidth = (emptyWidth/2) - stripsMargin;
+				// Change size strip and add margin for sliders.
+				self.controls.square.css( { 'margin-right': '0' } );
+				emptyWidth   = ( self.picker.width() - self.controls.square.width() - 20 );
+				stripsMargin = emptyWidth / 6;
+				stripsWidth  = ( emptyWidth / 2 ) - stripsMargin;
 
 				$.each( [ 'aContainer', 'strip' ], function( k, v ) {
 					self.controls[v].width( stripsWidth ).css({ 'margin-left': stripsMargin + 'px' });
@@ -235,48 +261,68 @@
 			}
 		},
 		_initControls: function() {
+
+			var self,
+			    controls;
+
 			this._super();
 
 			if ( this.options.alpha ) {
-				var self = this,
-					controls = self.controls;
+				self     = this;
+				controls = self.controls;
 
 				controls.aSlider.slider({
 					orientation: 'vertical',
 					min: 0,
 					max: 100,
 					step: 1,
-					value: parseInt( self._color._alpha*100 ),
+					value: parseInt( self._color._alpha * 100, 10 ),
 					slide: function( event, ui ) {
+
 						// Update alpha value
-						self._color._alpha = parseFloat( ui.value/100 );
+						self._color._alpha = parseFloat( ui.value / 100 );
 						self._change.apply( self, arguments );
 					}
 				});
 			}
 		},
 		_change: function() {
+
+			var self,
+			    el,
+			    controls,
+			    alpha,
+			    color,
+			    gradient,
+			    defaultWidth,
+			    customWidth,
+			    target,
+			    style,
+			    reset;
+
 			this._super();
-			var self = this,
-				el = self.element;
+
+			self = this;
+			el   = self.element;
 
 			if ( this.options.alpha ) {
-				var	controls = self.controls,
-					alpha = parseInt( self._color._alpha*100 ),
-					color = self._color.toRgb(),
-					gradient = [
-						'rgb(' + color.r + ',' + color.g + ',' + color.b + ') 0%',
-						'rgba(' + color.r + ',' + color.g + ',' + color.b + ', 0) 100%'
-					],
-					defaultWidth = self.options.defaultWidth,
-					customWidth = self.options.customWidth,
-					target = self.picker.closest('.wp-picker-container').find( '.wp-color-result' );
+				controls     = self.controls;
+				alpha        = parseInt( self._color._alpha * 100, 10 );
+				color        = self._color.toRgb();
+				gradient     = [
+					'rgb(' + color.r + ',' + color.g + ',' + color.b + ') 0%',
+					'rgba(' + color.r + ',' + color.g + ',' + color.b + ', 0) 100%'
+				];
+				defaultWidth = self.options.defaultWidth;
+				customWidth  = self.options.customWidth;
+				target       = self.picker.closest( '.wp-picker-container' ).find( '.wp-color-result' );
 
 				// Generate background slider alpha, only for CSS3 old browser fuck!! :)
 				controls.aContainer.css({ 'background': 'linear-gradient(to bottom, ' + gradient.join( ', ' ) + '), url(' + image + ')' });
 
-				if ( target.hasClass('wp-picker-open') ) {
-					// Update alpha value
+				if ( target.hasClass( 'wp-picker-open' ) ) {
+
+					// Update alpha value.
 					controls.aSlider.slider( 'value', alpha );
 
 					/**
@@ -284,18 +330,18 @@
 					 * and change input width for view all value
 					 */
 					if ( self._color._alpha < 1 ) {
-						var style = controls.strip.attr( 'style' ).replace( /rgba\(([0-9]+,)(\s+)?([0-9]+,)(\s+)?([0-9]+)(,(\s+)?[0-9\.]+)\)/g, 'rgb($1$3$5)' );
+						style = controls.strip.attr( 'style' ).replace( /rgba\(([0-9]+,)(\s+)?([0-9]+,)(\s+)?([0-9]+)(,(\s+)?[0-9\.]+)\)/g, 'rgb($1$3$5)' );
 
 						controls.strip.attr( 'style', style );
 
-						el.width( parseInt( defaultWidth + customWidth ) );
+						el.width( parseInt( defaultWidth + customWidth, 10 ) );
 					} else {
 						el.width( defaultWidth );
 					}
 				}
 			}
 
-			var reset = el.data('reset-alpha') || false;
+			reset = el.data( 'reset-alpha' ) || false;
 			if ( reset ) {
 				self.picker.find( '.iris-palette-container' ).on( 'click.palette', '.iris-palette', function() {
 					self._color._alpha = 1;
@@ -307,21 +353,24 @@
 		_addInputListeners: function( input ) {
 			var self = this,
 				debounceTimeout = 100,
-				callback = function( event ){
+				callback = function( event ) {
 					var color = new Color( input.val() ),
 						val = input.val();
 
 					input.removeClass( 'iris-error' );
-					// we gave a bad color
+
+					// We gave a bad color.
 					if ( color.error ) {
-						// don't error on an empty input
-						if ( val !== '' ) {
+
+						// Don't error on an empty input.
+						if ( '' !== val ) {
 							input.addClass( 'iris-error' );
 						}
 					} else {
 						if ( color.toString() !== self._color.toString() ) {
-							// let's not do this on keyup for hex shortcodes
-							if ( ! ( event.type === 'keyup' && val.match( /^[0-9a-fA-F]{3}$/ ) ) ) {
+
+							// Let's not do this on keyup for hex shortcodes.
+							if ( ! ( 'keyup' === event.type && val.match( /^[0-9a-fA-F]{3}$/ ) ) ) {
 								self._setOption( 'color', color.toString() );
 							}
 						}
