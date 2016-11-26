@@ -43,7 +43,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 		// Hack to refresh the editor when we open a section
 		element.parents( '.accordion-section' ).on( 'click', function() {
-		    editor.refresh();
+			editor.refresh();
 		});
 
 	}
