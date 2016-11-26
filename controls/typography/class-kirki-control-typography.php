@@ -82,9 +82,76 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
+
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'controls/typography/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
+
 		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ), false, true );
+		// Add fonts to our JS objects.
+		$google_fonts   = Kirki_Fonts::get_google_fonts();
+		$standard_fonts = Kirki_Fonts::get_standard_fonts();
+		$all_variants   = Kirki_Fonts::get_all_variants();
+		$all_subsets    = Kirki_Fonts::get_google_font_subsets();
+
+		$standard_fonts_final = array();
+		foreach ( $standard_fonts as $key => $value ) {
+			$standard_fonts_final[] = array(
+				'family'      => $value['stack'],
+				'label'       => $value['label'],
+				'subsets'     => array(),
+				'is_standard' => true,
+				'variants'    => array(
+					array(
+						'id'    => 'regular',
+						'label' => $all_variants['regular'],
+					),
+					array(
+						'id'    => 'italic',
+						'label' => $all_variants['italic'],
+					),
+					array(
+						'id'    => '700',
+						'label' => $all_variants['700'],
+					),
+					array(
+						'id'    => '700italic',
+						'label' => $all_variants['700italic'],
+					),
+				),
+			);
+		}
+
+		$google_fonts_final = array();
+		foreach ( $google_fonts as $family => $args ) {
+			$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
+			$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
+			$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
+
+			$available_variants = array();
+			foreach ( $variants as $variant ) {
+				if ( array_key_exists( $variant, $all_variants ) ) {
+					$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
+				}
+			}
+
+			$available_subsets = array();
+			foreach ( $subsets as $subset ) {
+				if ( array_key_exists( $subset, $all_subsets ) ) {
+					$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
+				}
+			}
+
+			$google_fonts_final[] = array(
+				'family'       => $family,
+				'label'        => $label,
+				'variants'     => $available_variants,
+				'subsets'      => $available_subsets,
+			);
+		}
+		$final = array_merge( $standard_fonts_final, $google_fonts_final );
+		wp_localize_script( 'kirki-typography', 'kirkiAllFonts', $final );
+
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
+
 	}
 
 	/**
