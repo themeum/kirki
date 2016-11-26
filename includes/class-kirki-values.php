@@ -145,6 +145,15 @@ if ( ! class_exists( 'Kirki_Values' ) ) {
 				}
 			}
 
+			if ( is_array( $value ) ) {
+				foreach ( $value as $key => $v ) {
+					$value[$key] = html_entity_decode( $v );
+				}
+			}
+			else {
+				$value = html_entity_decode( $value );
+			}
+
 			return $value;
 
 		}
