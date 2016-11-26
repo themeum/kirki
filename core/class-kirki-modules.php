@@ -63,6 +63,7 @@ class Kirki_Modules {
 			'Kirki_Modules_Loading',
 			'Kirki_Modules_Reset',
 			'Kirki_Modules_Tooltips',
+			'Kirki_Modules_Customizer_Branding',
 		) );
 
 	}
