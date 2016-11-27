@@ -30,14 +30,6 @@ class Kirki_Control_Dropdown_Pages extends WP_Customize_Control {
 	public $type = 'dropdown-pages';
 
 	/**
-	 * Tooltips content.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $tooltip = '';
-
-	/**
 	 * Used to automatically generate all CSS output.
 	 *
 	 * @access public

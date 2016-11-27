@@ -1,9 +1,9 @@
 jQuery( document ).ready( function() {
 
-	_.each( kirkiTooltips, function( tooltip, setting ) {
+	_.each( kirkiTooltips, function( tooltip ) {
 
-		var trigger   = '<span class="tooltip-trigger" id="tooltip-' + tooltip.id + '" data-setting="' + setting + '"><span class="dashicons dashicons-editor-help"></span></span>',
-		    controlID = '#customize-control-' + setting,
+		var trigger   = '<span class="tooltip-trigger" id="tooltip-' + tooltip.id + '" data-setting="' + tooltip.id + '"><span class="dashicons dashicons-editor-help"></span></span>',
+		    controlID = '#customize-control-' + tooltip.id,
 		    content   = '<div class="tooltip-content" id="tooltip-content-' + tooltip.id + '">' + tooltip.content + '</div>';
 
 		// Add the trigger & content.

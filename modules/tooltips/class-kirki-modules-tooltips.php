@@ -53,8 +53,9 @@ class Kirki_Modules_Tooltips {
 		$fields = Kirki::$fields;
 		foreach ( $fields as $field ) {
 			if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
-				$this->tooltips_content[ $field['settings'] ] = array(
-					'id'      => sanitize_key( $field['settings'] ),
+				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+				$this->tooltips_content[ $id ] = array(
+					'id'      => $id,
 					'content' => wp_kses_post( $field['tooltip'] ),
 				);
 			}

@@ -17,6 +17,7 @@ module.exports = function( grunt ) {
 					'assets/css/customizer.css':                    'assets/scss/customizer.scss',
 
 					'modules/reset/reset.css':                      'modules/reset/reset.scss',
+					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 
 					'controls/code/code.css':                       'controls/code/code.scss',
 					'controls/color/color.css':                     'controls/color/color.scss',

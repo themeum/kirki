@@ -31,14 +31,6 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 	public $type = 'kirki-multicheck';
 
 	/**
-	 * Tooltips content.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $tooltip = '';
-
-	/**
 	 * Used to automatically generate all CSS output.
 	 *
 	 * @access public
@@ -97,7 +89,6 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 		$this->json['value']       = $this->value();
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
-		$this->json['tooltip']     = $this->tooltip;
 		$this->json['id']          = $this->id;
 		$this->json['l10n']        = $this->l10n;
 		$this->json['kirkiConfig'] = $this->kirki_config;

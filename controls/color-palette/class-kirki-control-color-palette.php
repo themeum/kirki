@@ -29,14 +29,6 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 	public $type = 'kirki-color-palette';
 
 	/**
-	 * Tooltips content.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $tooltip = '';
-
-	/**
 	 * Used to automatically generate all CSS output.
 	 *
 	 * @access public
@@ -96,7 +88,6 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 		$this->json['value']       = $this->value();
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
-		$this->json['tooltip']     = $this->tooltip;
 		$this->json['id']          = $this->id;
 		$this->json['l10n']        = Kirki_l10n::get_strings( $this->kirki_config );
 		$this->json['kirkiConfig'] = $this->kirki_config;
