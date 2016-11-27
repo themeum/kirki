@@ -162,10 +162,9 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
+		$this->json['default'] = $this->setting->default;
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
-		} else {
-			$this->json['default'] = $this->setting->default;
 		}
 		$this->json['js_vars']     = $this->js_vars;
 		$this->json['output']      = $this->output;
@@ -354,7 +353,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 		// Font-weight is now variant.
 		// All values are the same with the exception of 400 (becomes regular).
-		if ( '400' == $old_values['variant'] ) {
+		if ( '400' === $old_values['variant'] || 400 === $old_values['variant'] ) {
 			$old_values['variant'] = 'regular';
 		}
 

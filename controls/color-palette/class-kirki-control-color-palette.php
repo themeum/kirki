@@ -96,10 +96,9 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 
 		parent::to_json();
 
+		$this->json['default'] = $this->setting->default;
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
-		} else {
-			$this->json['default'] = $this->setting->default;
 		}
 		$this->json['js_vars']     = $this->js_vars;
 		$this->json['output']      = $this->output;
