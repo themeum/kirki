@@ -3,17 +3,17 @@
  * Handles sections created via the Kirki API.
  *
  * @package     Kirki
- * @category    Core
+ * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       1.0
+ * @since       2.4.0
  */
 
 /**
  * Handle selective refreshes introduced in WordPress 4.5.
  */
-class Kirki_Selective_Refresh {
+class Kirki_Modules_Selective_Refresh {
 
 	/**
 	 * Adds any necessary actions & filters.
