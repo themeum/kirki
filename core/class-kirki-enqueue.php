@@ -29,7 +29,6 @@ class Kirki_Enqueue {
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'customize_controls_l10n' ), 1 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
-		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 	}
 
 	/**
@@ -61,22 +60,5 @@ class Kirki_Enqueue {
 		// Register selectize.
 		wp_register_script( 'selectize', trailingslashit( Kirki::$url ) . 'assets/js/vendor/selectize.js', array( 'jquery' ) );
 
-	}
-
-	/**
-	 * Enqueues the postMessage script
-	 * and adds variables to it using the wp_localize_script function.
-	 * The rest is handled via JS.
-	 */
-	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'assets/js/postmessage.js', array( 'customize-preview' ), false, true );
-		$js_vars_fields = array();
-		$fields = Kirki::$fields;
-		foreach ( $fields as $field ) {
-			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
-				$js_vars_fields[ $field['settings'] ] = $field['js_vars'];
-			}
-		}
-		wp_localize_script( 'kirki_auto_postmessage', 'jsvars', $js_vars_fields );
 	}
 }

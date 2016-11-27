@@ -36,14 +36,6 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	public $tooltip = '';
 
 	/**
-	 * Used to automatically generate all postMessage scripts.
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $js_vars = array();
-
-	/**
 	 * Used to automatically generate all CSS output.
 	 *
 	 * @access public
@@ -98,7 +90,6 @@ class Kirki_Control_Date extends WP_Customize_Control {
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
-		$this->json['js_vars']     = $this->js_vars;
 		$this->json['output']      = $this->output;
 		$this->json['value']       = $this->value();
 		$this->json['choices']     = $this->choices;

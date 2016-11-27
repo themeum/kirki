@@ -57,13 +57,14 @@ class Kirki_Modules {
 	private function default_modules() {
 
 		self::$modules = apply_filters( 'kirki/modules', array(
-			'Kirki_Modules_CSS_Output',
-			'Kirki_Modules_Customizer_Styling',
-			'Kirki_Modules_Icons',
-			'Kirki_Modules_Loading',
-			'Kirki_Modules_Reset',
-			'Kirki_Modules_Tooltips',
-			'Kirki_Modules_Customizer_Branding',
+			'css-output'         => 'Kirki_Modules_CSS_Output',
+			'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
+			'icons'              => 'Kirki_Modules_Icons',
+			'loading'            => 'Kirki_Modules_Loading',
+			'reset'              => 'Kirki_Modules_Reset',
+			'tooltips'           => 'Kirki_Modules_Tooltips',
+			'branding'           => 'Kirki_Modules_Customizer_Branding',
+			'postMessage'        => 'Kirki_Modules_postMessage',
 		) );
 
 	}
@@ -76,8 +77,8 @@ class Kirki_Modules {
 	 */
 	private function init() {
 
-		foreach ( self::$modules as $module ) {
-			self::$active_modules[ $module ] = new $module();
+		foreach ( self::$modules as $key => $module_class ) {
+			self::$active_modules[ $key ] = new $module_class();
 		}
 
 	}
