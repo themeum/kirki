@@ -29,14 +29,6 @@ class Kirki_Scripts_Registry {
 	public $dependencies;
 
 	/**
-	 * Icons
-	 *
-	 * @access public
-	 * @var object Kirki_Modules_Icons.
-	 */
-	public $icons;
-
-	/**
 	 * The main class constructor.
 	 * Instantiates secondary classes.
 	 */

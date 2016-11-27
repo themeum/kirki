@@ -53,10 +53,6 @@ class Kirki_Section {
 			$section_classname = $this->section_types[ $args['type'] ];
 		}
 
-		if ( isset( $args['icon'] ) && ! empty( $args['icon'] ) ) {
-			$args['title'] = '<span class="dashicons ' . esc_attr( $args['icon'] ) . '"></span> ' . esc_html( $args['title'] );
-		}
-
 		// Add the section.
 		$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
 

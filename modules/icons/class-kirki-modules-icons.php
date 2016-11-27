@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.0
+ * @since       2.4.0
  */
 
 // Exit if accessed directly.
@@ -21,73 +21,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Icons {
 
 	/**
-	 * The script generated for ALL fields
+	 * An array of panels and sections with icons.
 	 *
 	 * @static
-	 * @access public
+	 * @access private
 	 * @var string
 	 */
-	public static $icons_script = '';
-
-	/**
-	 * Whether the script has already been added to the customizer or not.
-	 *
-	 * @static
-	 * @access public
-	 * @var bool
-	 */
-	public static $script_added = false;
+	private static $icons = array();
 
 	/**
 	 * The class constructor
 	 */
 	public function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'enqueue_script' ), 99 );
+
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 99 );
+
 	}
 
 	/**
-	 * This works on a per-field basis.
-	 * Once created, the script is added to the $icons_script property.
+	 * Adds icon for a section/panel.
 	 *
-	 * @static
 	 * @access public
-	 * @param array $args The field definition.
-	 * @return void
+	 * @since 2.4.0
+	 * @param string $id      The panel or section ID.
+	 * @param string $icon    The icon to add.
+	 * @param string $context Lowercase 'section' or 'panel'.
 	 */
-	public static function generate_script( $args = array() ) {
+	public function add_icon( $id, $icon, $context = 'section' ) {
 
-		// If "icon" is not specified then no need to proceed.
-		if ( ! isset( $args['icon'] ) || '' === $args['icon'] ) {
-			return;
-		}
-
-		// If the panel or section ID is not defined then early exit.
-		if ( ! isset( $args['id'] ) ) {
-			return;
-		}
-
-		$element = '#accordion-panel-' . $args['id'] . ' > h3, #accordion-panel-' . $args['id'] . ' .panel-title';
-		if ( false !== strpos( $args['icon'], 'dashicons' ) ) {
-			$args['icon'] = 'dashicons ' . $args['icon'];
-		}
-
-		$script = '$("' . $element . '").prepend(\'<span class="' . esc_attr( $args['icon'] ) . '" style="vertical-align:text-bottom"></span> \');';
-
-		if ( false === strpos( self::$icons_script, $script ) ) {
-			self::$icons_script .= $script;
-		}
+		self::$icons[ $context ][ $id ] = trim( $icon );
 
 	}
 
 	/**
 	 * Format the script in a way that will be compatible with WordPress.
 	 */
-	public function enqueue_script() {
-		if ( ! self::$script_added && '' !== self::$icons_script ) {
-			self::$script_added = true;
-			// @codingStandardsIgnoreStart
-			echo '<script>jQuery(document).ready(function($) { "use strict"; ' . self::$icons_script . '});</script>';
-			// @codingStandardsIgnoreEnd
+	public function customize_controls_enqueue_scripts() {
+
+		$sections = Kirki::$sections;
+		$panels   = Kirki::$panels;
+
+		// Parse sections and find ones with icons.
+		foreach ( $sections as $section ) {
+			if ( isset( $section['icon'] ) ) {
+				$this->add_icon( $section['id'], $section['icon'], 'section' );
+			}
 		}
+
+		// Parse panels and find ones with icons.
+		foreach ( $panels as $panel ) {
+			if ( isset( $panel['icon'] ) ) {
+				$this->add_icon( $section['id'], $section['icon'], 'panel' );
+			}
+		}
+
+		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', array( 'jquery', 'customize-base', 'customize-controls' ), false, true );
+		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
+
 	}
 }
