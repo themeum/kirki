@@ -26,7 +26,6 @@
 		"kirkiBranding":false,
 		"jsvars":false,
 		"kirkiSetSettingValue":false,
-		"kirkiValidateCSSValue":false,
 		"CodeMirror":false,
 		"tinyMCE":false,
 		"unserialize":false,
