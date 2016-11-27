@@ -11,9 +11,9 @@
  */
 
 /**
- * The Kirki_Modules_CSS_Output object.
+ * The Kirki_Modules_CSS object.
  */
-class Kirki_Modules_CSS_Output {
+class Kirki_Modules_CSS {
 
 	/**
 	 * Whether we've already processed this or not.
@@ -48,7 +48,7 @@ class Kirki_Modules_CSS_Output {
 
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-output-generator.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-generator.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-output.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-multicolor.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-spacing.php' );
@@ -124,7 +124,7 @@ class Kirki_Modules_CSS_Output {
 	 * @access public
 	 */
 	public function ajax_dynamic_css() {
-		require wp_normalize_path( Kirki::$path . '/core/dynamic-css.php' );
+		require wp_normalize_path( Kirki::$path . '/modules/css/dynamic-css.php' );
 		exit;
 	}
 
@@ -146,9 +146,9 @@ class Kirki_Modules_CSS_Output {
 	 */
 	public static function loop_controls( $config_id ) {
 
-		// Get an instance of the Kirki_Modules_CSS_Output_Generator class.
+		// Get an instance of the Kirki_Modules_CSS_Generator class.
 		// This will make sure google fonts and backup fonts are loaded.
-		Kirki_Modules_CSS_Output_Generator::get_instance();
+		Kirki_Modules_CSS_Generator::get_instance();
 
 		$fields = Kirki::$fields;
 		$css    = array();
@@ -185,7 +185,7 @@ class Kirki_Modules_CSS_Output {
 
 			// Only continue if $field['output'] is set.
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
-				$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Output_Generator::css( $field ) );
+				$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
 
 				// Add the globals.
 				if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
@@ -197,7 +197,7 @@ class Kirki_Modules_CSS_Output {
 		$css = apply_filters( 'kirki/' . $config_id . '/styles', $css );
 
 		if ( is_array( $css ) ) {
-			return Kirki_Modules_CSS_Output_Generator::styles_parse( Kirki_Modules_CSS_Output_Generator::add_prefixes( $css ) );
+			return Kirki_Modules_CSS_Generator::styles_parse( Kirki_Modules_CSS_Generator::add_prefixes( $css ) );
 		}
 
 		return;
