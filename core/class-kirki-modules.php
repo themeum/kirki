@@ -80,7 +80,9 @@ class Kirki_Modules {
 	private function init() {
 
 		foreach ( self::$modules as $key => $module_class ) {
-			self::$active_modules[ $key ] = new $module_class();
+			if ( class_exists( $module_class ) ) {
+				self::$active_modules[ $key ] = new $module_class();
+			}
 		}
 
 	}
