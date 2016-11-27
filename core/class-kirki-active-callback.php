@@ -30,8 +30,6 @@ class Kirki_Active_Callback {
 			return true;
 		}
 
-		$show = true;
-
 		$field = $fields[ $object->setting->id ];
 
 		if ( isset( $field['required'] ) ) {
@@ -46,7 +44,7 @@ class Kirki_Active_Callback {
 			}
 		}
 
-		return $show;
+		return true;
 
 	}
 

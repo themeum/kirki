@@ -32,9 +32,6 @@ class Kirki_Init {
 	 */
 	public function set_url() {
 
-		// The path of the Kirki's parent-folder.
-		$path = wp_normalize_path( dirname( Kirki::$path ) );
-
 		// Get parent-theme path.
 		$parent_theme_path = get_template_directory();
 		$parent_theme_path = wp_normalize_path( $parent_theme_path );

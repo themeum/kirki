@@ -60,7 +60,7 @@ class Kirki_Sanitize_Values {
 	 * @access public
 	 * @since 0.5
 	 * @param int|float|double|string $value The value to be sanitized.
-	 * @return int|float|double
+	 * @return integer|double|string
 	 */
 	public static function number( $value ) {
 		return ( is_numeric( $value ) ) ? $value : intval( $value );
@@ -159,22 +159,6 @@ class Kirki_Sanitize_Values {
 	 */
 	public static function filter_number( $value ) {
 		return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-	}
-
-	/**
-	 * Sanitize sortable controls
-	 *
-	 * @static
-	 * @since 0.8.3
-	 * @param string|array $value The value to be sanitized.
-	 * @return string
-	 */
-	public static function sortable( $value ) {
-		if ( is_serialized( $value ) ) {
-			return $value;
-		} else {
-			return serialize( $value );
-		}
 	}
 
 	/**

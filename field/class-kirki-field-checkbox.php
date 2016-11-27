@@ -46,7 +46,7 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 *
 	 * @static
 	 * @access public
-	 * @param bool|string $value The checkbox value.
+	 * @param boolean|integer|string|null $value The checkbox value.
 	 * @return bool
 	 */
 	public static function sanitize( $value = null ) {

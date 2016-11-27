@@ -32,7 +32,7 @@ class Kirki_Field_Preset extends Kirki_Field_Select {
 	 */
 	protected function set_multiple() {
 
-		$this->multiple = '1';
+		$this->multiple = 1;
 
 	}
 }

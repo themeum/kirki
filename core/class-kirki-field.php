@@ -221,7 +221,7 @@ class Kirki_Field {
 	 * is the number defined here.
 	 *
 	 * @access protected
-	 * @var int
+	 * @var integer
 	 */
 	protected $multiple = 1;
 
@@ -281,6 +281,15 @@ class Kirki_Field {
 	 * @var array
 	 */
 	protected $mime_type = '';
+
+	/**
+	 * Used only on repeaters.
+	 * Contains an array of the fields.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $fields = array();
 
 	/**
 	 * The class constructor.
@@ -792,7 +801,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_variables() {
-		$variable = '';
 		if ( ! is_array( $this->variables ) ) {
 			$variable = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
 			$this->variables = array();
