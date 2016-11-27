@@ -14,8 +14,6 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
-					'assets/css/customizer.css':                    'assets/scss/customizer.scss',
-
 					'modules/reset/reset.css':                      'modules/reset/reset.scss',
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
