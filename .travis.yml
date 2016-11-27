@@ -10,14 +10,6 @@ php:
   - 7.0
   - 5.6
 
-env:
-  - SNIFF=1
-
-matrix:
-  exclude:
-    - php: 7.0
-      env: SNIFF=1
-
 before_install:
   - pip install --user codecov
   - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
@@ -57,11 +49,9 @@ script:
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
   - jshint ./controls/**/*.js
-  - jshint ./assets/js/functions/*.js
   - jshint ./assets/js/*.js
   # Run the plugin through JavaScript Code Style checker.
   - jscs ./controls/**/*.js
-  - jscs ./assets/js/functions/*.js
   - jscs ./assets/js/*.js
   # WordPress Coding Standards.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
