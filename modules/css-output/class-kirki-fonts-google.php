@@ -137,8 +137,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 		 * Goes through all our fields and then populates the $this->fonts property.
 		 */
 		private function loop_fields() {
-			foreach ( Kirki::$fields as $field_id => $args ) {
-				$this->generate_google_font( $args );
+			foreach ( Kirki::$fields as $field ) {
+				$this->generate_google_font( $field );
 			}
 		}
 

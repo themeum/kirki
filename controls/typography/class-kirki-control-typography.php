@@ -93,10 +93,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_subsets    = Kirki_Fonts::get_google_font_subsets();
 
 		$standard_fonts_final = array();
-		foreach ( $standard_fonts as $key => $value ) {
+		foreach ( $standard_fonts as $font ) {
 			$standard_fonts_final[] = array(
-				'family'      => $value['stack'],
-				'label'       => $value['label'],
+				'family'      => $font['stack'],
+				'label'       => $font['label'],
 				'subsets'     => array(),
 				'is_standard' => true,
 				'variants'    => array(
