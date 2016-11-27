@@ -10,44 +10,44 @@
 
 			value.bind( function( newval ) {
 
-				if ( undefined !== jsVars && 0 < jsVars.length ) {
+				if ( 'undefined' !== typeof jsVars && 0 < jsVars.length ) {
 
 					_.each( jsVars, function( jsVar ) {
 
 						var val = newval;
 
 						// Make sure element is defined.
-						if ( undefined === jsVar.element ) {
+						if ( 'undefined' === typeof jsVar.element ) {
 							jsVar.element = '';
 						}
 
 						// Make sure property is defined.
-						if ( undefined === jsVar.property ) {
+						if ( 'undefined' === typeof jsVar.property ) {
 							jsVar.property = '';
 						}
 
 						// Use empty prefix if undefined
-						if ( undefined === jsVar.prefix ) {
+						if ( 'undefined' === typeof jsVar.prefix ) {
 							jsVar.prefix = '';
 						}
 
 						// Use empty suffix if undefined
-						if ( undefined === jsVar.suffix ) {
+						if ( 'undefined' === typeof jsVar.suffix ) {
 							jsVar.suffix = '';
 						}
 
 						// Use empty units if undefined
-						if ( undefined === jsVar.units ) {
+						if ( 'undefined' === typeof jsVar.units ) {
 							jsVar.units = '';
 						}
 
 						// Use css if method is undefined
-						if ( undefined === jsVar['function'] ) {
+						if ( 'undefined' === typeof jsVar['function'] ) {
 							jsVar['function'] = 'css';
 						}
 
 						// Use $ (just the value) if value_pattern is undefined
-						if ( undefined === jsVar.value_pattern ) {
+						if ( 'undefined' === typeof jsVar.value_pattern ) {
 							jsVar.value_pattern = '$';
 						}
 
@@ -57,7 +57,7 @@
 							if ( 'string' === typeof newval ) {
 
 								// Process the value pattern
-								if ( undefined !== args.value_pattern ) {
+								if ( 'undefined' !== typeof args.value_pattern ) {
 									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
 								} else {
 									val = args.prefix + newval + args.units + args.suffix;
@@ -75,11 +75,11 @@
 
 									// Allow using %value% as a placeholder for the old value.
 									// This way we can append or prepend CSS classes for example instead of replacing them.
-									if ( undefined !== args.value_pattern ) {
+									if ( 'undefined' !== typeof args.value_pattern ) {
 										val = args.value_pattern.replace( /\%value%/g, jQuery( args.element ).attr( args.attr ) );
 									}
 
-									if ( 'undefined' !== typeof args.attr && undefined !== args.attr ) {
+									if ( 'undefined' !== typeof args.attr && 'undefined' !== typeof args.attr ) {
 										jQuery( args.element ).attr( args.attr, val );
 									} else {
 										jQuery( args.element ).html( val );
@@ -105,7 +105,7 @@
 
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
-									if ( undefined !== args.choice ) {
+									if ( 'undefined' !== typeof args.choice ) {
 										if ( args.choice === subValueKey ) {
 											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
