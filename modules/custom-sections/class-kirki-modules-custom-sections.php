@@ -34,6 +34,9 @@ class Kirki_Modules_Custom_Sections {
 		// Include the section-type files.
 		add_action( 'customize_register', array( $this, 'include_sections' ) );
 
+		// Enqueue styles & scripts.
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scrips' ), 999 );
+
 	}
 
 	/**
@@ -68,6 +71,19 @@ class Kirki_Modules_Custom_Sections {
 		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-default-section.php' );
 		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-expanded-section.php' );
 		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-hover-section.php' );
+
+	}
+
+	/**
+	 * Enqueues any necessary scripts and styles.
+	 *
+	 * @access public
+	 * @since 2.4.0
+	 */
+	public function enqueue_scrips() {
+
+		wp_enqueue_style( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.css' );
+		wp_enqueue_script( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.js', array( 'jquery', 'customize-base', 'customize-controls' ) );
 
 	}
 
