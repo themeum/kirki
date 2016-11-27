@@ -84,9 +84,10 @@ class Kirki_Init {
 	public function register_control_types() {
 		global $wp_customize;
 
-		$wp_customize->register_section_type( 'Kirki_Sections_Default_Section' );
-		$wp_customize->register_section_type( 'Kirki_Sections_Expanded_Section' );
-		$wp_customize->register_section_type( 'Kirki_Sections_Hover_Section' );
+		$section_types = apply_filters( 'kirki/section_types', array() );
+		foreach ( $section_types as $section_type ) {
+			$wp_customize->register_section_type( $section_type );
+		}
 
 		$wp_customize->register_panel_type( 'Kirki_Panels_Expanded_Panel' );
 

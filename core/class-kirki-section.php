@@ -21,11 +21,7 @@ class Kirki_Section {
 	 * @access private
 	 * @var array
 	 */
-	private $section_types = array(
-		'kirki-default'  => 'Kirki_Sections_Default_Section',
-		'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
-		'kirki-hover'    => 'Kirki_Sections_Hover_Section',
-	);
+	private $section_types = array();
 
 	/**
 	 * The object constructor.
@@ -50,10 +46,12 @@ class Kirki_Section {
 
 		global $wp_customize;
 
-		if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->section_types ) ) {
-			$args['type'] = 'kirki-default';
+		// The default class to be used when creating a section.
+		$section_classname = 'WP_Customize_Section';
+
+		if ( isset( $args['type'] ) && array_key_exists( $args['type'], $this->section_types ) ) {
+			$section_classname = $this->section_types[ $args['type'] ];
 		}
-		$section_classname = $this->section_types[ $args['type'] ];
 
 		if ( isset( $args['icon'] ) && ! empty( $args['icon'] ) ) {
 			$args['title'] = '<span class="dashicons ' . esc_attr( $args['icon'] ) . '"></span> ' . esc_html( $args['title'] );
