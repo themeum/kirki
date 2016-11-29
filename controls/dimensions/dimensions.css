@@ -1,0 +1,24 @@
+.customize-control-kirki-spacing .wrapper {
+  -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  width: 96%;
+  padding: 3%; }
+  .customize-control-kirki-spacing .wrapper .control {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    .customize-control-kirki-spacing .wrapper .control > div {
+      width: 48%; }
+      .customize-control-kirki-spacing .wrapper .control > div h5 {
+        margin: 10px 0 7px; }
+      .customize-control-kirki-spacing .wrapper .control > div .inner {
+        display: flex; }
+        .customize-control-kirki-spacing .wrapper .control > div .inner input[type="number"] {
+          width: 50%;
+          height: 36px; }
+        .customize-control-kirki-spacing .wrapper .control > div .inner .selectize-control.single {
+          width: 50%; }
+          .customize-control-kirki-spacing .wrapper .control > div .inner .selectize-control.single > .selectize-input {
+            height: 36px; }
+
+/*# sourceMappingURL=spacing.css.map */

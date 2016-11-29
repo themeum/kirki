@@ -210,6 +210,8 @@ class Kirki_l10n {
 			'close-editor'          => esc_attr__( 'Close Editor', 'kirki' ),
 			'switch-editor'         => esc_attr__( 'Switch Editor', 'kirki' ),
 			'hex-value'             => esc_attr__( 'Hex Value', 'kirki' ),
+			'width'                 => esc_attr__( 'Width', 'kirki' ),
+			'height'                => esc_attr__( 'Height', 'kirki' ),
 		);
 
 		// Apply global changes from the kirki/config filter.

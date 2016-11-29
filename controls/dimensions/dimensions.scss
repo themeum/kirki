@@ -1,0 +1,32 @@
+.customize-control-kirki-spacing {
+  .wrapper {
+    -webkit-box-shadow: inset 0 0 5px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 5px 2px rgba(0,0,0,.1);
+    width: 96%;
+    padding: 3%;
+    .control {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      > div {
+        width: 48%;
+        h5 {
+          margin: 10px 0 7px;
+        }
+        .inner {
+          display: flex;
+          input[type="number"] {
+            width: 50%;
+            height: 36px;
+          }
+          .selectize-control.single {
+            width: 50%;
+            > .selectize-input {
+              height: 36px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
