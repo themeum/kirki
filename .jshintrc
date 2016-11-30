@@ -35,6 +35,7 @@
 		"kirkiTooltips": false,
 		"Color": false,
 		"wpColorPickerL10n": false,
-		"kirkiIcons": false
+		"kirkiIcons": false,
+		"fieldDependencies": false
 	}
 }
