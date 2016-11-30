@@ -33,6 +33,7 @@ if ( class_exists( 'Kirki' ) ) {
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
 if ( ! function_exists( 'Kirki' ) ) {
+	// @codingStandardsIgnoreStart
 	/**
 	 * Returns an instance of the Kirki object.
 	 */
@@ -40,10 +41,14 @@ if ( ! function_exists( 'Kirki' ) ) {
 		$kirki = Kirki_Toolkit::get_instance();
 		return $kirki;
 	}
+	// @codingStandardsIgnoreEnd
+
 }
 // Start Kirki.
 global $kirki;
 $kirki = Kirki();
+// Instamtiate the modules.
+$kirki->modules = new Kirki_Modules();
 
 // Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
@@ -51,16 +56,13 @@ Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 // Instantiate 2ndary classes.
 new Kirki_l10n();
 new Kirki_Scripts_Registry();
-new Kirki_Styles_Customizer();
-new Kirki_Styles_Frontend();
-new Kirki_Selective_Refresh();
 new Kirki();
 
 // Include deprecated functions & methods.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php' );
+include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
 // Include the ariColor library.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
+include_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );

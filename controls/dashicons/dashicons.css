@@ -1,0 +1,22 @@
+.customize-control-kirki-dashicons label {
+  position: relative;
+  display: inline-block; }
+.customize-control-kirki-dashicons .icons-wrapper {
+  max-height: 300px;
+  overflow-y: scroll; }
+  .customize-control-kirki-dashicons .icons-wrapper h4 {
+    font-weight: 300;
+    margin: 0.7em 0; }
+  .customize-control-kirki-dashicons .icons-wrapper .dashicons {
+    padding: 3px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent; }
+  .customize-control-kirki-dashicons .icons-wrapper input {
+    display: none; }
+    .customize-control-kirki-dashicons .icons-wrapper input:checked + label .dashicons {
+      border: 1px solid #3498DB;
+      color: #000; }
+
+/*# sourceMappingURL=dashicons.css.map */

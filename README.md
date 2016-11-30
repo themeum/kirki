@@ -41,9 +41,23 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 * Fix: Spacing controls now work with presets.
 * Fix: Spacing controls now properly resetting.
+* Fix: PHP mode on CodeMirror.
 * New: Allow modifying values instead of replacing them when using `js_vars` with `function` set to `html` by using the `value_pattern` parameter and the `%value%` placeholder. See comment on https://github.com/aristath/kirki/pull/1137#issuecomment-261765175
 * New: Updated CodeMirror.
-* Fix: PHP mode on CodeMirror.
+* New: Added word-spacing to the typography control.
+* New: Refactored file structure to make fields self-contained entities, easier to decouple & debug.
+* New: Introducing "modules".
+* New: Refactored the reset feature (now a module).
+* New: Refactored the tooltips feature (now a module).
+* New: Selective refreshes are now a module.
+* New: postMessage is now a module.
+* New: loading is now a module (deactivated by default, WIP).
+* New: Refactored section & panel icons (now a module).
+* New: Customizer-Styling is now a module.
+* New: Customizer-Branding is now a module.
+* New: CSS-Output is now a module.
+* New: Abstracted the "spacing" control and created a new "dimensions" control from it.
+* Deprecated: Custom Sections & Custom Panels have been disabled for the time being.
 
 ### 2.3.7 ###
 

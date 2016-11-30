@@ -26,13 +26,15 @@
 		"kirkiBranding":false,
 		"jsvars":false,
 		"kirkiSetSettingValue":false,
-		"kirkiValidateCSSValue":false,
 		"CodeMirror":false,
 		"tinyMCE":false,
 		"unserialize":false,
 		"serialize":false,
 		"kirkiAllFonts":false,
 		"kirkiL10n": false,
-		"kirkiNotifications": false
+		"kirkiTooltips": false,
+		"Color": false,
+		"wpColorPickerL10n": false,
+		"kirkiIcons": false
 	}
 }

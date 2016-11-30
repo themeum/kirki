@@ -1,0 +1,17 @@
+.customize-control-kirki-dimensions .wrapper {
+  -webkit-box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  width: 96%;
+  padding: 3%; }
+  .customize-control-kirki-dimensions .wrapper .control {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    .customize-control-kirki-dimensions .wrapper .control > div {
+      width: 48%; }
+      .customize-control-kirki-dimensions .wrapper .control > div h5 {
+        margin: 10px 0 7px; }
+      .customize-control-kirki-dimensions .wrapper .control > div .inner {
+        display: flex; }
+
+/*# sourceMappingURL=dimensions.css.map */
