@@ -60,14 +60,13 @@ class Kirki_Active_Callback {
 	 */
 	private static function evaluate_requirement( $object, $field, $requirement ) {
 
-		$show = true;
 		// Test for callables first.
 		if ( is_callable( $requirement ) ) {
-
-			$show = call_user_func_array( $requirement, array( $field, $object ) );
+			return call_user_func_array( $requirement, array( $field, $object ) );
+		}
 
 		// Look for comparison array.
-		} elseif ( is_array( $requirement ) && isset( $requirement['operator'], $requirement['value'], $requirement['setting'] ) ) {
+		if ( is_array( $requirement ) && isset( $requirement['operator'], $requirement['value'], $requirement['setting'] ) ) {
 
 			if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
 				if ( false === strpos( $requirement['setting'], '[' ) ) {
@@ -85,6 +84,9 @@ class Kirki_Active_Callback {
 			$show = self::compare( $requirement['value'], $current_setting->value(), $requirement['operator'] );
 
 		} else {
+			if ( ! is_array( $requirement ) ) {
+				return true;
+			}
 
 			if ( is_array( $requirement ) ) {
 				// Handles "OR" functionality.
@@ -96,8 +98,6 @@ class Kirki_Active_Callback {
 						return true;
 					}
 				}
-			} else {
-				return true;
 			}
 		}
 
