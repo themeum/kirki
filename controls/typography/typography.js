@@ -20,7 +20,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		_.each( control.params['default'], function( defaultParamValue, param ) {
 			if ( false !== defaultParamValue ) {
 				value[ param ] = defaultParamValue;
-				if ( undefined !== control.setting._value[ param ] ) {
+				if ( 'undefined' !== typeof control.setting._value[ param ] ) {
 					value[ param ] = control.setting._value[ param ];
 				}
 			}

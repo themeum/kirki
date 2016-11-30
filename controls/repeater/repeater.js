@@ -96,7 +96,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// Default limit choice
 		limit = false;
-		if ( undefined !== this.params.choices.limit ) {
+		if ( 'undefined' !== typeof this.params.choices.limit ) {
 			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit );
 		}
 
@@ -795,7 +795,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( undefined === typeof currentSettings[ row.rowIndex ][ fieldId ] ) {
+		if ( 'undefined' === typeof currentSettings[ row.rowIndex ][ fieldId ] ) {
 			return;
 		}
 
