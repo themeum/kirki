@@ -106,7 +106,6 @@ class Kirki_Init {
 		$wp_customize->register_control_type( 'Kirki_Control_Radio_Image' );
 		$wp_customize->register_control_type( 'Kirki_Control_Select' );
 		$wp_customize->register_control_type( 'Kirki_Control_Slider' );
-		$wp_customize->register_control_type( 'Kirki_Control_Spacing' );
 		$wp_customize->register_control_type( 'Kirki_Control_Switch' );
 		$wp_customize->register_control_type( 'Kirki_Control_Generic' );
 		$wp_customize->register_control_type( 'Kirki_Control_Toggle' );

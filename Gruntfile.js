@@ -24,6 +24,7 @@ module.exports = function( grunt ) {
 					'controls/dashicons/dashicons.css':             'controls/dashicons/dashicons.scss',
 					'controls/date/date.css':                       'controls/date/date.scss',
 					'controls/dimension/dimension.css':             'controls/dimension/dimension.scss',
+					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
 					'controls/dropdown-pages/selectize.css':        'controls/dropdown-pages/selectize.scss',
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
@@ -39,7 +40,6 @@ module.exports = function( grunt ) {
 					'controls/select/select.css':                   'controls/select/select.scss',
 					'controls/slider/slider.css':                   'controls/slider/slider.scss',
 					'controls/sortable/sortable.css':               'controls/sortable/sortable.scss',
-					'controls/spacing/spacing.css':                 'controls/spacing/spacing.scss',
 					'controls/switch/switch.css':                   'controls/switch/switch.scss',
 					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
 					'controls/typography/typography.css':           'controls/typography/typography.scss'

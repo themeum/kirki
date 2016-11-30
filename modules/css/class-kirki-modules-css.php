@@ -51,7 +51,7 @@ class Kirki_Modules_CSS {
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-generator.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-output.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-multicolor.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-spacing.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-dimensions.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-typography.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property-background-image.php' );

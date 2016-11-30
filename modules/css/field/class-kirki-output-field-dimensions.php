@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles CSS output for spacing fields.
+ * Handles CSS output for dimensions fields.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -9,12 +9,12 @@
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Field_Spacing' ) ) {
+if ( ! class_exists( 'Kirki_Output_Field_Dimensions' ) ) {
 
 	/**
 	 * Output overrides.
 	 */
-	class Kirki_Output_Field_Spacing extends Kirki_Output {
+	class Kirki_Output_Field_Dimensions extends Kirki_Output {
 
 		/**
 		 * Processes a single item from the `output` array.

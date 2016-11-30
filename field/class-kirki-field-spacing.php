@@ -21,7 +21,7 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 	 */
 	protected function set_type() {
 
-		$this->type = 'kirki-spacing';
+		$this->type = 'kirki-dimensions';
 
 	}
 
@@ -78,12 +78,22 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 	 */
 	protected function set_choices() {
 
-		$this->choices['controls'] = array();
+		$default_args = array(
+			'controls' => array(
+				'top'    => ( isset( $this->default['top'] ) ),
+				'bottom' => ( isset( $this->default['top'] ) ),
+				'left'   => ( isset( $this->default['top'] ) ),
+				'right'  => ( isset( $this->default['top'] ) ),
+			),
+			'labels' => array(
+				'top'    => Kirki_l10n::get_string( 'top', $this->kirki_config ),
+				'bottom' => Kirki_l10n::get_string( 'bottom', $this->kirki_config ),
+				'left'   => Kirki_l10n::get_string( 'left', $this->kirki_config ),
+				'right'  => Kirki_l10n::get_string( 'right', $this->kirki_config ),
+			),
+		);
 
-		$this->choices['controls']['top']    = ( isset( $this->default['top'] ) );
-		$this->choices['controls']['bottom'] = ( isset( $this->default['bottom'] ) );
-		$this->choices['controls']['left']   = ( isset( $this->default['left'] ) );
-		$this->choices['controls']['right']  = ( isset( $this->default['right'] ) );
+		$this->choices = wp_parse_args( $this->choices, $default_args );
 
 	}
 }

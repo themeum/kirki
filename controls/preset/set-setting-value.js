@@ -204,23 +204,11 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	} else if ( 'kirki-spacing' === controlType ) {
+	} else if ( 'kirki-dimensions' === controlType ) {
 
-		if ( 'undefined' !== typeof value.top ) {
-			jQuery( wp.customize.control( setting ).container.find( '.top input' ) ).prop( 'value', value.top );
-		}
-
-		if ( 'undefined' !== typeof value.bottom ) {
-			jQuery( wp.customize.control( setting ).container.find( '.bottom input' ) ).prop( 'value', value.bottom );
-		}
-
-		if ( 'undefined' !== typeof value.left ) {
-			jQuery( wp.customize.control( setting ).container.find( '.left input' ) ).prop( 'value', value.left );
-		}
-
-		if ( 'undefined' !== typeof value.right ) {
-			jQuery( wp.customize.control( setting ).container.find( '.right input' ) ).prop( 'value', value.right );
-		}
+		_.each( value, function( subValue, id ) {
+			jQuery( wp.customize.control( setting ).container.find( '.' + id + ' input' ) ).prop( 'value', subValue );
+		} );
 
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
