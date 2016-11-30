@@ -712,10 +712,7 @@ class Kirki_Field {
 		}
 		$outputs = array();
 		foreach ( $this->output as $output ) {
-			if ( ! isset( $output['element'] ) ) {
-				continue;
-			}
-			if ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'kirki-typography', 'background' ), true ) ) {
+			if ( ! isset( $output['element'] ) || ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'kirki-typography', 'background' ), true ) ) ) {
 				continue;
 			}
 			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
@@ -738,7 +735,6 @@ class Kirki_Field {
 				'exclude'           => ( isset( $output['exclude'] ) ) ? $output['exclude'] : false,
 			);
 		}
-
 	}
 
 	/**
