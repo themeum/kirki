@@ -2,6 +2,9 @@
 engines:
   csslint:
     enabled: true
+    checks:
+      fallback-colors:
+        enabled: false
   duplication:
     enabled: false
     config:
@@ -14,6 +17,8 @@ engines:
     enabled: true
     checks:
       Controversial/CamelCaseMethodName:
+        enabled: false
+      Naming/ShortVariable:
         enabled: false
 ratings:
   paths:
