@@ -292,6 +292,15 @@ class Kirki_Field {
 	protected $fields = array();
 
 	/**
+	 * Used by image fields.
+	 *
+	 * @access protected
+	 * @var array
+	 * @since 2.4.0
+	 */
+	protected $button_labels = array();
+
+	/**
 	 * The class constructor.
 	 * Parses and sanitizes all field arguments.
 	 * Then it adds the field to Kirki::$fields.
