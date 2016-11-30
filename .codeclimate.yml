@@ -48,5 +48,6 @@ exclude_paths:
 - controls/code/codemirror/*
 - controls/**/selectize.js
 - assets/js/vendor/*
+- lib/class-aricolor.php
 - tests/*
 - bin/*
