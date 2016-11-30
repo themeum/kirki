@@ -136,10 +136,8 @@ class Kirki_Field_Typography extends Kirki_Field {
 		// Make sure the saved value is "subsets" (plural) and not "subset".
 		// This is for compatibility with older versions.
 		if ( isset( $value['subset'] ) ) {
-			if ( ! empty( $value['subset'] ) ) {
-				if ( ! isset( $value['subsets'] ) || empty( $value['subset'] ) ) {
-					$value['subsets'] = $value['subset'];
-				}
+			if ( ! empty( $value['subset'] ) && ! isset( $value['subsets'] ) || empty( $value['subset'] ) ) {
+				$value['subsets'] = $value['subset'];
 			}
 			unset( $value['subset'] );
 		}
@@ -158,56 +156,24 @@ class Kirki_Field_Typography extends Kirki_Field {
 			}
 		}
 
-		// Sanitize the font-size.
-		if ( isset( $value['font-size'] ) && ! empty( $value['font-size'] ) ) {
-			$value['font-size'] = Kirki_Sanitize_Values::css_dimension( $value['font-size'] );
-			if ( is_numeric( $value['font-size'] ) ) {
-				$value['font-size'] .= 'px';
-			}
-		}
+		foreach ( $value as $key => $subvalue ) {
 
-		// Sanitize the line-height.
-		if ( isset( $value['line-height'] ) && ! empty( $value['line-height'] ) ) {
-			$value['line-height'] = Kirki_Sanitize_Values::css_dimension( $value['line-height'] );
-		}
-
-		// Sanitize the letter-spacing.
-		if ( isset( $value['letter-spacing'] ) && ! empty( $value['letter-spacing'] ) ) {
-			$value['letter-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['letter-spacing'] );
-			if ( is_numeric( $value['letter-spacing'] ) ) {
-				$value['letter-spacing'] .= 'px';
-			}
-		}
-
-		// Sanitize the word-spacing.
-		if ( isset( $value['word-spacing'] ) && ! empty( $value['word-spacing'] ) ) {
-			$value['word-spacing'] = Kirki_Sanitize_Values::css_dimension( $value['word-spacing'] );
-			if ( is_numeric( $value['word-spacing'] ) ) {
-				$value['word-spacing'] .= 'px';
-			}
-		}
-
-		// Sanitize the text-align.
-		if ( isset( $value['text-align'] ) && ! empty( $value['text-align'] ) ) {
-			if ( ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+			// Sanitize the font-size.
+			if ( 'font-size' === $key || 'letter-spacing' === $key || 'word-spacing' === $key ) {
+				$value[ $key ] = Kirki_Sanitize_Values::css_dimension( $value[ $key ] );
+				if ( is_numeric( $value[ $key ] ) ) {
+					$value['font-size'] .= 'px';
+				}
+			} elseif ( 'line-height' === $key ) {
+				$value['line-height'] = Kirki_Sanitize_Values::css_dimension( $value['line-height'] );
+			} elseif ( 'text-align' === $key && ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
 				$value['text-align'] = 'inherit';
-			}
-		}
-
-		// Sanitize the text-transform.
-		if ( isset( $value['text-transform'] ) && ! empty( $value['text-transform'] ) ) {
-			if ( ! in_array( $value['text-transform'], array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
+			} elseif ( 'text-transform' === $key && ! in_array( $value['text-transform'], array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
 				$value['text-transform'] = 'none';
+			} elseif ( 'color' === $key ) {
+				$value['color'] = ariColor::newColor( $value['color'] )->toCSS( 'hex' );
 			}
 		}
-
-		// Sanitize the color.
-		if ( isset( $value['color'] ) && ! empty( $value['color'] ) ) {
-			$color = ariColor::newColor( $value['color'] );
-			$value['color'] = $color->toCSS( 'hex' );
-		}
-
 		return $value;
-
 	}
 }
