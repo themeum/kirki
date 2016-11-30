@@ -13,12 +13,5 @@
         margin: 10px 0 7px; }
       .customize-control-kirki-dimensions .wrapper .control > div .inner {
         display: flex; }
-        .customize-control-kirki-dimensions .wrapper .control > div .inner input[type="number"] {
-          width: 50%;
-          height: 36px; }
-        .customize-control-kirki-dimensions .wrapper .control > div .inner .selectize-control.single {
-          width: 50%; }
-          .customize-control-kirki-dimensions .wrapper .control > div .inner .selectize-control.single > .selectize-input {
-            height: 36px; }
 
 /*# sourceMappingURL=dimensions.css.map */
