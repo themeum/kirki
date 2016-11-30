@@ -5,6 +5,12 @@ engines:
     checks:
       fallback-colors:
         enabled: false
+      qualified-headings:
+        enabled: false
+      important:
+        enabled: false
+      universal-selector:
+        enabled: false
   duplication:
     enabled: false
     config:
@@ -16,7 +22,11 @@ engines:
   phpmd:
     enabled: true
     checks:
+      Controversial/CamelCaseClassName:
+        enabled: false
       Controversial/CamelCaseMethodName:
+        enabled: false
+      Controversial/CamelCaseVariableName:
         enabled: false
       Naming/ShortVariable:
         enabled: false
