@@ -11,6 +11,12 @@ engines:
         enabled: false
       universal-selector:
         enabled: false
+      compatible-vendor-prefixes:
+        enabled: false
+      box-sizing:
+        enabled: false
+      star-property-hack:
+        enabled: false
   duplication:
     enabled: false
     config:
@@ -28,6 +34,8 @@ engines:
         enabled: false
       Controversial/CamelCaseVariableName:
         enabled: false
+      Controversial/CamelCasePropertyName:
+        enabled: false
       Naming/ShortVariable:
         enabled: false
 ratings:
@@ -37,6 +45,7 @@ ratings:
   - "**.php"
 exclude_paths:
 - controls/sortable/serialize.js
+- controls/code/codemirror/*
 - controls/**/selectize.js
 - assets/js/vendor/*
 - tests/*
