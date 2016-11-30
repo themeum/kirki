@@ -68,7 +68,6 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 	kirkiNotifications: function() {
 
 		var control = this;
-		console.log( control );
 
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
