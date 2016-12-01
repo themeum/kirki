@@ -187,6 +187,22 @@ if ( ! class_exists( 'Kirki_Helper' ) ) {
 			return $items;
 
 		}
+		
+		public static function get_categories() {
+
+			$items = array();
+
+			// Get the post types
+			$categories = get_categories( array( 'public' => true ) );
+
+			// Build the array
+			foreach ( $categories as $category ) {
+				$items[ $category->term_id ] = $category->name;
+			}
+
+			return $items;
+
+		}
 
 		/**
 		 * Get an array of terms from a taxonomy
