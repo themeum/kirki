@@ -52,15 +52,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * The translation strings.
-	 *
-	 * @access protected
-	 * @since 2.3.5
-	 * @var array
-	 */
-	protected $l10n = array();
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -155,7 +146,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
 		$this->json['id']          = $this->id;
-		$this->json['l10n']        = $this->l10n;
+		$this->json['l10n']        = $this->l10n();
 		$this->json['kirkiConfig'] = $this->kirki_config;
 
 		if ( 'user_meta' === $this->option_type ) {
@@ -360,5 +351,43 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			}
 			unset( $this->json['value']['subset'] );
 		}
+	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'inherit'        => esc_attr__( 'Inherit', 'kirki' ),
+			'font-family'    => esc_attr__( 'Font Family', 'kirki' ),
+			'font-size'      => esc_attr__( 'Font Size', 'kirki' ),
+			'line-height'    => esc_attr__( 'Line Height', 'kirki' ),
+			'letter-spacing' => esc_attr__( 'Letter Spacing', 'kirki' ),
+			'word-spacing'   => esc_attr__( 'Word Spacing', 'kirki' ),
+			'left'           => esc_attr__( 'Left', 'kirki' ),
+			'right'          => esc_attr__( 'Right', 'kirki' ),
+			'center'         => esc_attr__( 'Center', 'kirki' ),
+			'justify'        => esc_attr__( 'Justify', 'kirki' ),
+			'color'          => esc_attr__( 'Color', 'kirki' ),
+			'variant'        => esc_attr__( 'Variant', 'kirki' ),
+			'subsets'        => esc_attr__( 'Subset', 'kirki' ),
+			'text-align'     => esc_attr__( 'Text Align', 'kirki' ),
+			'text-transform' => esc_attr__( 'Text Transform', 'kirki' ),
+			'none'           => esc_attr__( 'None', 'kirki' ),
+			'capitalize'     => esc_attr__( 'Capitalize', 'kirki' ),
+			'uppercase'      => esc_attr__( 'Uppercase', 'kirki' ),
+			'lowercase'      => esc_attr__( 'Lowercase', 'kirki' ),
+			'initial'        => esc_attr__( 'Initial', 'kirki' ),
+		);
+		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		if ( false === $id ) {
+			return $translation_strings;
+		}
+		return $translation_strings[ $id ];
 	}
 }
