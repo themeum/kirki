@@ -157,4 +157,19 @@ class Kirki_Control_Code extends WP_Customize_Control {
 		</label>
 		<?php
 	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'close-editor' => esc_attr__( 'Close Editor', 'kirki' ),
+		);
+		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+	}
 }
