@@ -71,4 +71,17 @@ class Kirki_Field_Select extends Kirki_Field {
 		return esc_attr( $value );
 
 	}
+
+	/**
+	 * Sets the default value.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 */
+	protected function set_default() {
+
+		if ( 1 < $this->multiple && ! is_array( $this->default ) ) {
+			$this->default = array( $this->default );
+		}
+	}
 }
