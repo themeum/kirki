@@ -46,8 +46,6 @@ class Kirki_Modules_CSS {
 	 */
 	public function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-generator.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-output.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-multicolor.php' );
