@@ -1,18 +1,19 @@
 .customize-control-kirki-radio-buttonset {
   .buttonset {
+    display: flex;
+    flex-wrap: wrap;
     .switch-label {
       background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.1);
       color: #555;
-      border-right: 1px solid rgba(0,0,0,.2);
-      padding: 4px 7px;
       margin: 0;
-      font-size: 12px;
+      text-align: center;
+      padding: .5em 1em;
+      flex-grow: 1;
       &:last-child {
-        border-right: none;
       }
     }
     .switch-input {
-      display: none;
       &:checked {
         + .switch-label {
           background-color: #3498DB;
