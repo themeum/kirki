@@ -5,8 +5,6 @@
     width: calc(100% - 55px); }
   .customize-control-kirki-toggle label .description {
     order: 99; }
-.customize-control-kirki-toggle input[type="checkbox"] {
-  display: none; }
 .customize-control-kirki-toggle .switch {
   border: 1px solid rgba(0, 0, 0, 0.1);
   display: inline-block;
