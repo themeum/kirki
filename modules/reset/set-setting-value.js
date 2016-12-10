@@ -53,7 +53,7 @@ function kirkiSetSettingValue( setting, value ) {
 	} else if ( 'kirki-select' === controlType || 'kirki-preset' === controlType ) {
 
 		// Update the value visually in the control
-		$select = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).selectize();
+		$select   = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).selectize();
 		selectize = $select[0].selectize;
 		selectize.setValue( value, true );
 
@@ -127,7 +127,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
 
-			if ( 'undefined' !== typeof select ) {
+			if ( 'undefined' !== typeof $select ) {
 				selectize = $select[0].selectize;
 
 				// Update the value visually in the control
@@ -140,7 +140,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize();
 
-			if ( 'undefined' !== typeof select ) {
+			if ( 'undefined' !== typeof $select ) {
 				selectize = $select[0].selectize;
 
 				// Update the value visually in the control
@@ -153,7 +153,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
 
-			if ( 'undefined' !== typeof select ) {
+			if ( 'undefined' !== typeof $select ) {
 				selectize = $select[0].selectize;
 
 				// Update the value visually in the control
