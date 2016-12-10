@@ -52,15 +52,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * The translation strings.
-	 *
-	 * @access protected
-	 * @since 2.3.5
-	 * @var array
-	 */
-	protected $l10n = array();
-
-	/**
 	 * The fields that each container row will contain.
 	 *
 	 * @access public
@@ -100,35 +91,15 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		// Set up defaults for row labels.
 		$this->row_label = array(
 			'type' => 'text',
-			'value' => $this->l10n['row'],
+			'value' => $this->l10n( 'row' ),
 			'field' => false,
 		);
 
-		// Validating args for row labels.
-		if ( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && ! empty( $args['row_label'] ) ) {
-
-			// Validating row label type.
-			if ( isset( $args['row_label']['type'] ) && ( 'text' === $args['row_label']['type'] || 'field' === $args['row_label']['type'] ) ) {
-				$this->row_label['type'] = $args['row_label']['type'];
-			}
-
-			// Validating row label type.
-			if ( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
-				$this->row_label['value'] = esc_attr( $args['row_label']['value'] );
-			}
-
-			// Validating row label field.
-			if ( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][ esc_attr( $args['row_label']['field'] ) ] ) ) {
-				$this->row_label['field'] = esc_attr( $args['row_label']['field'] );
-			} else {
-
-				// If from field is not set correctly, making sure standard is set as the type.
-				$this->row_label['type'] = 'text';
-			}
-		}
+		// Validate row-labels.
+		$this->row_label( $args );
 
 		if ( empty( $this->button_label ) ) {
-			$this->button_label = $this->l10n['add-new'] . ' ' . $this->row_label['value'];
+			$this->button_label = $this->l10n( 'add-new' ) . ' ' . $this->row_label['value'];
 		}
 
 		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
@@ -139,39 +110,36 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		$media_fields_to_filter = array();
 
 		foreach ( $args['fields'] as $key => $value ) {
-			if ( ! isset( $value['default'] ) ) {
-				$args['fields'][ $key ]['default'] = '';
-			}
-
-			if ( ! isset( $value['label'] ) ) {
-				$args['fields'][ $key ]['label'] = '';
-			}
-			$args['fields'][ $key ]['id'] = $key;
+			$args['fields'][ $key ]['default'] = ( ! isset( $value['default'] ) ) ? '' :;
+			$args['fields'][ $key ]['label']   = ( ! isset( $value['label'] ) ) ? '' :;
+			$args['fields'][ $key ]['id']      = $key;
 
 			// We check if the filed is an uploaded media ( image , file, video, etc.. ).
-			if ( isset( $value['type'] ) && ( 'image' === $value['type'] || 'cropped_image' === $value['type'] || 'upload' === $value['type'] ) ) {
+			if ( isset( $value['type'] ) ) {
+				switch ( $value['type'] ) {
+					case 'image':
+					case 'cropped_image':
+					case 'upload':
+						// We add it to the list of fields that need some extra filtering/processing.
+						$media_fields_to_filter[ $key ] = true;
+						break;
 
-				// We add it to the list of fields that need some extra filtering/processing.
-				$media_fields_to_filter[ $key ] = true;
-			}
-
-			// If the field is a dropdown-pages field then add it to args.
-			if ( isset( $value['type'] ) && ( 'dropdown-pages' === $value['type'] ) ) {
-
-				$dropdown = wp_dropdown_pages(
-					array(
-						'name'              => '',
-						'echo'              => 0,
-						'show_option_none'  => esc_attr( $this->l10n['select-page'] ),
-						'option_none_value' => '0',
-						'selected'          => '',
-					)
-				);
-
-				// Hackily add in the data link parameter.
-				$dropdown = str_replace( '<select', '<select data-field="' . esc_attr( $args['fields'][ $key ]['id'] ) . '"' . $this->get_link(), $dropdown );
-
-				$args['fields'][ $key ]['dropdown'] = $dropdown;
+					case 'dropdown-pages':
+						// If the field is a dropdown-pages field then add it to args.
+						$dropdown = wp_dropdown_pages(
+							array(
+								'name'              => '',
+								'echo'              => 0,
+								'show_option_none'  => esc_attr( $this->l10n( 'select-page' ) ),
+								'option_none_value' => '0',
+								'selected'          => '',
+							)
+						);
+						// Hackily add in the data link parameter.
+						$dropdown = str_replace( '<select', '<select data-field="' . esc_attr( $args['fields'][ $key ]['id'] ) . '"' . $this->get_link(), $dropdown );
+						$args['fields'][ $key ]['dropdown'] = $dropdown;
+						break;
+				}
 			}
 		}
 
@@ -233,17 +201,12 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
-		if ( isset( $this->default ) ) {
-			$this->json['default'] = $this->default;
-		} else {
-			$this->json['default'] = $this->setting->default;
-		}
+		$this->json['default']     = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
 		$this->json['output']      = $this->output;
 		$this->json['value']       = $this->value();
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
 		$this->json['id']          = $this->id;
-		$this->json['l10n']        = $this->l10n;
 		$this->json['kirkiConfig'] = $this->kirki_config;
 
 		if ( 'user_meta' === $this->option_type ) {
@@ -291,7 +254,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			}
 		}
 
-		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/repeater/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable', 'kirki-l10n' ), false, true );
+		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/repeater/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
 		wp_enqueue_style( 'kirki-repeater-css', trailingslashit( Kirki::$url ) . 'controls/repeater/repeater.css', null );
 	}
 
@@ -316,7 +279,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		<ul class="repeater-fields"></ul>
 
 		<?php if ( isset( $this->choices['limit'] ) ) : ?>
-			<p class="limit"><?php printf( esc_html( $this->l10n['limit-rows'] ), esc_html( $this->choices['limit'] ) ); ?></p>
+			<p class="limit"><?php printf( esc_html( $this->l10n( 'limit-rows' ) ), esc_html( $this->choices['limit'] ) ); ?></p>
 		<?php endif; ?>
 		<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
@@ -460,7 +423,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 						            <# if ( field.description ) { #>
 						                <span class="description customize-control-description">{{{ field.description }}}</span>
 						            <# } #>
-						            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $this->l10n['hex-value'] ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+						            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $this->l10n( 'hex-value' ) ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 						        </label>
 
@@ -485,22 +448,22 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# } #>
 								</label>
 
-								<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $this->l10n['no-image-selected'] ); ?>" >
+								<figure class="kirki-image-attachment" data-placeholder="<?php echo esc_attr( $this->l10n( 'no-image-selected' ) ); ?>" >
 									<# if ( field.default ) { #>
 										<# var defaultImageURL = ( field.default.url ) ? field.default.url : field.default; #>
 										<img src="{{{ defaultImageURL }}}">
 									<# } else { #>
-										<?php echo esc_attr( $this->l10n['no-image-selected'] ); ?>
+										<?php echo esc_attr( $this->l10n( 'no-image-selected' ) ); ?>
 									<# } #>
 								</figure>
 
 								<div class="actions">
-									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php echo esc_attr( $this->l10n['remove'] ); ?></button>
-									<button type="button" class="button upload-button" data-label=" <?php echo esc_attr( $this->l10n['add-image'] ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n['change-image'] ); ?>" >
+									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php echo esc_attr( $this->l10n( 'remove' ) ); ?></button>
+									<button type="button" class="button upload-button" data-label=" <?php echo esc_attr( $this->l10n( 'add-image' ) ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n( 'change-image' ) ); ?>" >
 										<# if ( field.default ) { #>
-											<?php echo esc_attr( $this->l10n['change-image'] ); ?>
+											<?php echo esc_attr( $this->l10n( 'change-image' ) ); ?>
 										<# } else { #>
-											<?php echo esc_attr( $this->l10n['add-image'] ); ?>
+											<?php echo esc_attr( $this->l10n( 'add-image' ) ); ?>
 										<# } #>
 									</button>
 									<# if ( field.default.id ) { #>
@@ -521,22 +484,22 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# } #>
 								</label>
 
-								<figure class="kirki-file-attachment" data-placeholder="<?php echo esc_attr( $this->l10n['no-file-selected'] ); ?>" >
+								<figure class="kirki-file-attachment" data-placeholder="<?php echo esc_attr( $this->l10n( 'no-file-selected' ) ); ?>" >
 									<# if ( field.default ) { #>
 										<# var defaultFilename = ( field.default.filename ) ? field.default.filename : field.default; #>
 										<span class="file"><span class="dashicons dashicons-media-default"></span> {{ defaultFilename }}</span>
 									<# } else { #>
-										<?php echo esc_attr( $this->l10n['no-file-selected'] ); ?>
+										<?php echo esc_attr( $this->l10n( 'no-file-selected' ) ); ?>
 									<# } #>
 								</figure>
 
 								<div class="actions">
 									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"></button>
-									<button type="button" class="button upload-button" data-label="<?php echo esc_attr( $this->l10n['add-file'] ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n['change-file'] ); ?>" >
+									<button type="button" class="button upload-button" data-label="<?php echo esc_attr( $this->l10n( 'add-file' ) ); ?>" data-alt-label="<?php echo esc_attr( $this->l10n( 'change-file' ) ); ?>" >
 										<# if ( field.default ) { #>
-											<?php echo esc_attr( $this->l10n['change-file'] ); ?>
+											<?php echo esc_attr( $this->l10n( 'change-file' ) ); ?>
 										<# } else { #>
-											<?php echo esc_attr( $this->l10n['add-file'] ); ?>
+											<?php echo esc_attr( $this->l10n( 'add-file' ) ); ?>
 										<# } #>
 									</button>
 									<# if ( field.default.id ) { #>
@@ -560,10 +523,72 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 
 						</div>
 					<# }); #>
-					<button type="button" class="button-link repeater-row-remove"><?php echo esc_attr( $this->l10n['remove'] ); ?></button>
+					<button type="button" class="button-link repeater-row-remove"><?php echo esc_attr( $this->l10n( 'remove' ) ); ?></button>
 				</div>
 			</li>
 		</script>
 		<?php
+	}
+
+	/**
+	 * Validate row-labels.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param array $args {@see WP_Customize_Control::__construct}.
+	 */
+	protected function row_label( $args ) {
+
+		// Validating args for row labels.
+		if ( isset( $args['row_label'] ) && is_array( $args['row_label'] ) && ! empty( $args['row_label'] ) ) {
+
+			// Validating row label type.
+			if ( isset( $args['row_label']['type'] ) && ( 'text' === $args['row_label']['type'] || 'field' === $args['row_label']['type'] ) ) {
+				$this->row_label['type'] = $args['row_label']['type'];
+			}
+
+			// Validating row label type.
+			if ( isset( $args['row_label']['value'] ) && ! empty( $args['row_label']['value'] ) ) {
+				$this->row_label['value'] = esc_attr( $args['row_label']['value'] );
+			}
+
+			// Validating row label field.
+			if ( isset( $args['row_label']['field'] ) && ! empty( $args['row_label']['field'] ) && isset( $args['fields'][ esc_attr( $args['row_label']['field'] ) ] ) ) {
+				$this->row_label['field'] = esc_attr( $args['row_label']['field'] );
+			} else {
+				// If from field is not set correctly, making sure standard is set as the type.
+				$this->row_label['type'] = 'text';
+			}
+		}
+	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'row'               => esc_attr__( 'row', 'kirki' ),
+			'add-new'           => esc_attr__( 'Add new', 'kirki' ),
+			'select-page'       => esc_attr__( 'Select a Page', 'kirki' ),
+			'limit-rows'        => esc_attr__( 'Limit: %s rows', 'kirki' ),
+			'hex-value'         => esc_attr__( 'Hex Value', 'kirki' ),
+			'no-image-selected' => esc_attr__( 'No Image Selected', 'kirki' ),
+			'remove'            => esc_attr__( 'Remove', 'kirki' ),
+			'add-image'         => esc_attr__( 'Add Image', 'kirki' ),
+			'change-image'      => esc_attr__( 'Change Image', 'kirki' ),
+			'no-file-selected'  => esc_attr__( 'No File Selected', 'kirki' ),
+			'add-file'          => esc_attr__( 'Add File', 'kirki' ),
+			'change-file'       => esc_attr__( 'Change File', 'kirki' ),
+		);
+		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		if ( false === $id ) {
+			return $translation_strings;
+		}
+		return $translation_strings[ $id ];
 	}
 }
