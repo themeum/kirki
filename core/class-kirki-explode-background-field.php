@@ -26,7 +26,7 @@ class Kirki_Explode_Background_Field {
 	 */
 	public static function explode( $field ) {
 		$l10n    = self::l10n( $field['kirki_config'] );
-		$choices = self::background_choices();
+		$choices = self::background_choices( $field );
 
 		// Early exit if this is not a background field.
 		if ( 'background' !== $field['type'] ) {
@@ -158,9 +158,10 @@ class Kirki_Explode_Background_Field {
 	/**
 	 * The background choices.
 	 *
+	 * @param array $field The field arguments.
 	 * @return array<string,array>
 	 */
-	public static function background_choices() {
+	public static function background_choices( $field ) {
 
 		$l10n = self::l10n( $field['kirki_config'] );
 

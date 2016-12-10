@@ -22,6 +22,8 @@ class Kirki_Active_Callback {
 	 */
 	public static function evaluate( $object ) {
 
+		$show = true;
+
 		// Get all fields.
 		$fields = Kirki::$fields;
 

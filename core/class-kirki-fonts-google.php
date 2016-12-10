@@ -295,6 +295,9 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 				return;
 			}
 
+			// Add a fallback to Roboto.
+			$font = 'Roboto';
+
 			// Get font-family + subsets.
 			$link_fonts = array();
 			foreach ( $this->fonts as $font => $variants ) {
