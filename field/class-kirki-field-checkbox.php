@@ -22,11 +22,6 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	protected function set_type() {
 
 		$this->type = 'checkbox';
-		// Tweaks for backwards-compatibility:
-		// Prior to version 0.8 switch & toggle were part of the checkbox control.
-		if ( in_array( $this->mode, array( 'switch', 'toggle' ), true ) ) {
-			$this->type = $this->mode;
-		}
 
 	}
 
@@ -53,8 +48,7 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 
 		if ( '0' === $value || 0 === $value || 'false' === $value ) {
 			return false;
-		}
-		if ( '1' === $value || 1 === $value || 'true' === $value ) {
+		} elseif ( '1' === $value || 1 === $value || 'true' === $value ) {
 			return true;
 		}
 
