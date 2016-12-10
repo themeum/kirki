@@ -110,8 +110,8 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		$media_fields_to_filter = array();
 
 		foreach ( $args['fields'] as $key => $value ) {
-			$args['fields'][ $key ]['default'] = ( ! isset( $value['default'] ) ) ? '' :;
-			$args['fields'][ $key ]['label']   = ( ! isset( $value['label'] ) ) ? '' :;
+			$args['fields'][ $key ]['default'] = ( isset( $value['default'] ) ) ?: '';
+			$args['fields'][ $key ]['label']   = ( isset( $value['label'] ) ) ?: '';
 			$args['fields'][ $key ]['id']      = $key;
 
 			// We check if the filed is an uploaded media ( image , file, video, etc.. ).
