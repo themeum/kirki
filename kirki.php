@@ -55,7 +55,6 @@ Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 
 // Instantiate 2ndary classes.
 new Kirki_l10n();
-new Kirki_Scripts_Registry();
 new Kirki();
 
 // Include deprecated functions & methods.
