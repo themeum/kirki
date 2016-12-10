@@ -68,6 +68,7 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_localize_script( 'kirki-dimension', 'kirkiL10n', $this->l10n() );
 		wp_enqueue_style( 'kirki-dimension-css', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.css', null );
 
 	}
@@ -127,5 +128,20 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php
+	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
+		);
+		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
 	}
 }

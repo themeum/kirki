@@ -115,7 +115,7 @@ class Kirki_Control_Code extends WP_Customize_Control {
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
 		$this->json['id']          = $this->id;
-		$this->json['l10n']        = Kirki_l10n::get_strings( $this->kirki_config );
+		$this->json['l10n']        = $this->l10n();
 		$this->json['kirkiConfig'] = $this->kirki_config;
 
 		if ( 'user_meta' === $this->option_type ) {

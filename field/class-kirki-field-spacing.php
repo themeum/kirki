@@ -85,12 +85,12 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 				'left'   => ( isset( $this->default['top'] ) ),
 				'right'  => ( isset( $this->default['top'] ) ),
 			),
-			'labels' => array(
-				'top'    => Kirki_l10n::get_string( 'top', $this->kirki_config ),
-				'bottom' => Kirki_l10n::get_string( 'bottom', $this->kirki_config ),
-				'left'   => Kirki_l10n::get_string( 'left', $this->kirki_config ),
-				'right'  => Kirki_l10n::get_string( 'right', $this->kirki_config ),
-			),
+			'labels' => apply_filters( 'kirki/' . $this->kirki_config . '/l10n', array(
+				'top'    => esc_attr__( 'Top', 'kirki' ),
+				'bottom' => esc_attr__( 'Bottom', 'kirki' ),
+				'left'   => esc_attr__( 'Left', 'kirki' ),
+				'right'  => esc_attr__( 'Right', 'kirki' ),
+			) ),
 		);
 
 		$this->choices = wp_parse_args( $this->choices, $default_args );

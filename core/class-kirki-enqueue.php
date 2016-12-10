@@ -27,29 +27,7 @@ class Kirki_Enqueue {
 	 * Adds actions to enqueue our assets.
 	 */
 	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'customize_controls_l10n' ), 1 );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 7 );
-	}
-
-	/**
-	 * L10n helper for controls.
-	 */
-	public function customize_controls_l10n() {
-
-		// Register the l10n script.
-		wp_register_script( 'kirki-l10n', trailingslashit( Kirki::$url ) . 'assets/js/l10n.js' );
-
-		// Add localization strings.
-		// We'll do this on a per-config basis so that the filters are properly applied.
-		$configs = Kirki::$config;
-		$l10n    = array();
-		foreach ( $configs as $id => $args ) {
-			$l10n[ $id ] = Kirki_l10n::get_strings( $id );
-		}
-
-		wp_localize_script( 'kirki-l10n', 'kirkiL10n', $l10n );
-		wp_enqueue_script( 'kirki-l10n' );
-
 	}
 
 	/**

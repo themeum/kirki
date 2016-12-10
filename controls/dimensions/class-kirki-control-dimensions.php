@@ -113,6 +113,7 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-dimensions', trailingslashit( Kirki::$url ) . 'controls/dimensions/dimensions.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_localize_script( 'kirki-dimensions', 'kirkiL10n', $this->l10n() );
 		wp_enqueue_style( 'kirki-dimensions-css', trailingslashit( Kirki::$url ) . 'controls/dimensions/dimensions.css', null );
 	}
 
@@ -166,46 +167,47 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 */
 	protected function render_content() {}
 
-		/**
-		 * Returns an array of translation strings.
-		 *
-		 * @access protected
-		 * @since 2.4.0
-		 * @param string|false $id The string-ID.
-		 * @return string
-		 */
-		protected function l10n( $id = false ) {
-			$translation_strings = array(
-				'left-top'              => esc_attr__( 'Left Top', 'kirki' ),
-				'left-center'           => esc_attr__( 'Left Center', 'kirki' ),
-				'left-bottom'           => esc_attr__( 'Left Bottom', 'kirki' ),
-				'right-top'             => esc_attr__( 'Right Top', 'kirki' ),
-				'right-center'          => esc_attr__( 'Right Center', 'kirki' ),
-				'right-bottom'          => esc_attr__( 'Right Bottom', 'kirki' ),
-				'center-top'            => esc_attr__( 'Center Top', 'kirki' ),
-				'center-center'         => esc_attr__( 'Center Center', 'kirki' ),
-				'center-bottom'         => esc_attr__( 'Center Bottom', 'kirki' ),
-				'font-size'             => esc_attr__( 'Font Size', 'kirki' ),
-				'font-weight'           => esc_attr__( 'Font Weight', 'kirki' ),
-				'line-height'           => esc_attr__( 'Line Height', 'kirki' ),
-				'font-style'            => esc_attr__( 'Font Style', 'kirki' ),
-				'letter-spacing'        => esc_attr__( 'Letter Spacing', 'kirki' ),
-				'word-spacing'          => esc_attr__( 'Word Spacing', 'kirki' ),
-				'top'                   => esc_attr__( 'Top', 'kirki' ),
-				'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
-				'left'                  => esc_attr__( 'Left', 'kirki' ),
-				'right'                 => esc_attr__( 'Right', 'kirki' ),
-				'center'                => esc_attr__( 'Center', 'kirki' ),
-				'size'                  => esc_attr__( 'Size', 'kirki' ),
-				'height'                => esc_attr__( 'Height', 'kirki' ),
-				'spacing'               => esc_attr__( 'Spacing', 'kirki' ),
-				'width'                 => esc_attr__( 'Width', 'kirki' ),
-				'height'                => esc_attr__( 'Height', 'kirki' ),
-			);
-			$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
-			if ( false === $id ) {
-				return $translation_strings;
-			}
-			return $translation_strings[ $id ];
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'left-top'              => esc_attr__( 'Left Top', 'kirki' ),
+			'left-center'           => esc_attr__( 'Left Center', 'kirki' ),
+			'left-bottom'           => esc_attr__( 'Left Bottom', 'kirki' ),
+			'right-top'             => esc_attr__( 'Right Top', 'kirki' ),
+			'right-center'          => esc_attr__( 'Right Center', 'kirki' ),
+			'right-bottom'          => esc_attr__( 'Right Bottom', 'kirki' ),
+			'center-top'            => esc_attr__( 'Center Top', 'kirki' ),
+			'center-center'         => esc_attr__( 'Center Center', 'kirki' ),
+			'center-bottom'         => esc_attr__( 'Center Bottom', 'kirki' ),
+			'font-size'             => esc_attr__( 'Font Size', 'kirki' ),
+			'font-weight'           => esc_attr__( 'Font Weight', 'kirki' ),
+			'line-height'           => esc_attr__( 'Line Height', 'kirki' ),
+			'font-style'            => esc_attr__( 'Font Style', 'kirki' ),
+			'letter-spacing'        => esc_attr__( 'Letter Spacing', 'kirki' ),
+			'word-spacing'          => esc_attr__( 'Word Spacing', 'kirki' ),
+			'top'                   => esc_attr__( 'Top', 'kirki' ),
+			'bottom'                => esc_attr__( 'Bottom', 'kirki' ),
+			'left'                  => esc_attr__( 'Left', 'kirki' ),
+			'right'                 => esc_attr__( 'Right', 'kirki' ),
+			'center'                => esc_attr__( 'Center', 'kirki' ),
+			'size'                  => esc_attr__( 'Size', 'kirki' ),
+			'height'                => esc_attr__( 'Height', 'kirki' ),
+			'spacing'               => esc_attr__( 'Spacing', 'kirki' ),
+			'width'                 => esc_attr__( 'Width', 'kirki' ),
+			'height'                => esc_attr__( 'Height', 'kirki' ),
+			'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
+		);
+		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		if ( false === $id ) {
+			return $translation_strings;
 		}
+		return $translation_strings[ $id ];
+	}
 }

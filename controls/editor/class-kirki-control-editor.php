@@ -69,6 +69,7 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base', 'kirki-l10n' ), false, true );
+		wp_localize_script( 'kirki-editor', 'kirkiL10n', $this->l10n() );
 		wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
 	}
 
@@ -89,7 +90,7 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
 		$this->json['id']          = $this->id;
-		$this->json['l10n']        = $this->l10n;
+		$this->json['l10n']        = $this->l10n();
 		$this->json['kirkiConfig'] = $this->kirki_config;
 
 		if ( 'user_meta' === $this->option_type ) {
@@ -132,5 +133,22 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php
+	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
+			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
+			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),
+		);
+		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
 	}
 }

@@ -82,18 +82,17 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 		 * @return array    Standard websafe fonts.
 		 */
 		 public static function get_standard_fonts() {
-			$i18n = Kirki_l10n::get_strings();
 			$standard_fonts = array(
 				'serif' => array(
-					'label' => $i18n['serif'],
+					'label' => 'Serif',
 					'stack' => 'Georgia,Times,"Times New Roman",serif',
 				),
 				'sans-serif' => array(
-					'label'  => $i18n['sans-serif'],
+					'label'  => 'Sans Serif',
 					'stack'  => 'Helvetica,Arial,sans-serif',
 				),
 				'monospace' => array(
-					'label' => $i18n['monospace'],
+					'label' => 'Monospace',
 					'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 				),
 			);
@@ -164,25 +163,23 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 		 * @return array
 		 */
 		public static function get_google_font_subsets() {
-			$i18n = Kirki_l10n::get_strings();
 			return array(
-				// 'all'          => $i18n['all'],
-				'cyrillic'     => $i18n['cyrillic'],
-				'cyrillic-ext' => $i18n['cyrillic-ext'],
-				'devanagari'   => $i18n['devanagari'],
-				'greek'        => $i18n['greek'],
-				'greek-ext'    => $i18n['greek-ext'],
-				'khmer'        => $i18n['khmer'],
-				// 'latin'        => $i18n['latin'],
-				'latin-ext'    => $i18n['latin-ext'],
-				'vietnamese'   => $i18n['vietnamese'],
-				'hebrew'       => $i18n['hebrew'],
-				'arabic'       => $i18n['arabic'],
-				'bengali'      => $i18n['bengali'],
-				'gujarati'     => $i18n['gujarati'],
-				'tamil'        => $i18n['tamil'],
-				'telugu'       => $i18n['telugu'],
-				'thai'         => $i18n['thai'],
+				'cyrillic'     => 'Cyrillic',
+				'cyrillic-ext' => 'Cyrillic Extended',
+				'devanagari'   => 'Devanagari',
+				'greek'        => 'Greek',
+				'greek-ext'    => 'Greek Extended',
+				'khmer'        => 'Khmer',
+				'latin'        => 'Latin',
+				'latin-ext'    => 'Latin Extended',
+				'vietnamese'   => 'Vietnamese',
+				'hebrew'       => 'Hebrew',
+				'arabic'       => 'Arabic',
+				'bengali'      => 'Bengali',
+				'gujarati'     => 'Gujarati',
+				'tamil'        => 'Tamil',
+				'telugu'       => 'Telugu',
+				'thai'         => 'Thai',
 			);
 		}
 
@@ -194,27 +191,26 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 		 * @return array
 		 */
 		public static function get_all_variants() {
-			$i18n = Kirki_l10n::get_strings();
-			return array(
-				'100'       => $i18n['ultra-light'],
-				'100italic' => $i18n['ultra-light-italic'],
-				'200'       => $i18n['light'],
-				'200italic' => $i18n['light-italic'],
-				'300'       => $i18n['book'],
-				'300italic' => $i18n['book-italic'],
-				'regular'   => $i18n['regular'],
-				'italic'    => $i18n['italic'],
-				'500'       => $i18n['medium'],
-				'500italic' => $i18n['medium-italic'],
-				'600'       => $i18n['semi-bold'],
-				'600italic' => $i18n['semi-bold-italic'],
-				'700'       => $i18n['bold'],
-				'700italic' => $i18n['bold-italic'],
-				'800'       => $i18n['extra-bold'],
-				'800italic' => $i18n['extra-bold-italic'],
-				'900'       => $i18n['ultra-bold'],
-				'900italic' => $i18n['ultra-bold-italic'],
-			);
+			return apply_filters( 'kirki/l10n', array(
+				'100light'  => esc_attr__( 'Ultra-Light 100', 'kirki' ),
+				'100italic' => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ),
+				'200'       => esc_attr__( 'Light 200', 'kirki' ),
+				'200italic' => esc_attr__( 'Light 200 Italic', 'kirki' ),
+				'300'       => esc_attr__( 'Book 300', 'kirki' ),
+				'300italic' => esc_attr__( 'Book 300 Italic', 'kirki' ),
+				'regular'   => esc_attr__( 'Normal 400', 'kirki' ),
+				'italic'    => esc_attr__( 'Normal 400 Italic', 'kirki' ),
+				'500'       => esc_attr__( 'Medium 500', 'kirki' ),
+				'500italic' => esc_attr__( 'Medium 500 Italic', 'kirki' ),
+				'600bold'   => esc_attr__( 'Semi-Bold 600', 'kirki' ),
+				'600italic' => esc_attr__( 'Semi-Bold 600 Italic', 'kirki' ),
+				'700'       => esc_attr__( 'Bold 700', 'kirki' ),
+				'700italic' => esc_attr__( 'Bold 700 Italic', 'kirki' ),
+				'800bold'   => esc_attr__( 'Extra-Bold 800', 'kirki' ),
+				'800italic' => esc_attr__( 'Extra-Bold 800 Italic', 'kirki' ),
+				'900bold'   => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
+				'900italic' => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
+			) );
 		}
 
 		/**

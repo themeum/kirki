@@ -32,8 +32,10 @@ class Kirki_Field_Code extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
-		// Get l10n strings.
-		$l10n = Kirki_l10n::get_strings( $this->kirki_config );
+		$l10n = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', array(
+			'close-editor' => esc_attr__( 'Close Editor', 'kirki' ),
+			'open-editor'  => esc_attr__( 'Open Editor', 'kirki' ),
+		) );
 
 		// Make sure we have some defaults in case none are defined.
 		$defaults = array(

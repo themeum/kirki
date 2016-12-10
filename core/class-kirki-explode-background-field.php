@@ -25,7 +25,7 @@ class Kirki_Explode_Background_Field {
 	 * @return null|array
 	 */
 	public static function explode( $field ) {
-		$i18n    = Kirki_l10n::get_strings( $field['kirki_config'] );
+		$l10n    = self::l10n( $field['kirki_config'] );
 		$choices = self::background_choices();
 
 		// Early exit if this is not a background field.
@@ -51,7 +51,7 @@ class Kirki_Explode_Background_Field {
 			$key               = esc_attr( $key );
 			$setting           = $key;
 			$tooltip           = $field['tooltip'];
-			$description       = isset( $i18n[ 'background-' . $key ] ) ? $i18n[ 'background-' . $key ] : '';
+			$description       = isset( $l10n[ 'background-' . $key ] ) ? $l10n[ 'background-' . $key ] : '';
 			$output_property   = 'background-' . $key;
 			$label             = ( 0 === $i ) ? $field['label'] : '';
 			$type              = 'select';
@@ -74,7 +74,7 @@ class Kirki_Explode_Background_Field {
 				case 'attach':
 					// Small hack so that background attachments properly work.
 					$output_property = 'background-attachment';
-					$description     = $i18n['background-attachment'];
+					$description     = $l10n['background-attachment'];
 					break;
 				default:
 					$tooltip = '';
@@ -162,38 +162,77 @@ class Kirki_Explode_Background_Field {
 	 */
 	public static function background_choices() {
 
-		$i18n = Kirki_l10n::get_strings();
+		$l10n = self::l10n( $field['kirki_config'] );
 
 		return array(
 			'repeat'        => array(
-				'no-repeat' => $i18n['no-repeat'],
-				'repeat'    => $i18n['repeat-all'],
-				'repeat-x'  => $i18n['repeat-x'],
-				'repeat-y'  => $i18n['repeat-y'],
-				'inherit'   => $i18n['inherit'],
+				'no-repeat' => $l10n['no-repeat'],
+				'repeat'    => $l10n['repeat-all'],
+				'repeat-x'  => $l10n['repeat-x'],
+				'repeat-y'  => $l10n['repeat-y'],
+				'inherit'   => $l10n['inherit'],
 			),
 			'size'        => array(
-				'inherit' => $i18n['inherit'],
-				'cover'   => $i18n['cover'],
-				'contain' => $i18n['contain'],
+				'inherit' => $l10n['inherit'],
+				'cover'   => $l10n['cover'],
+				'contain' => $l10n['contain'],
 			),
 			'attach'      => array(
-				'inherit' => $i18n['inherit'],
-				'fixed'   => $i18n['fixed'],
-				'scroll'  => $i18n['scroll'],
+				'inherit' => $l10n['inherit'],
+				'fixed'   => $l10n['fixed'],
+				'scroll'  => $l10n['scroll'],
 			),
 			'position'          => array(
-				'left-top'      => $i18n['left-top'],
-				'left-center'   => $i18n['left-center'],
-				'left-bottom'   => $i18n['left-bottom'],
-				'right-top'     => $i18n['right-top'],
-				'right-center'  => $i18n['right-center'],
-				'right-bottom'  => $i18n['right-bottom'],
-				'center-top'    => $i18n['center-top'],
-				'center-center' => $i18n['center-center'],
-				'center-bottom' => $i18n['center-bottom'],
+				'left-top'      => $l10n['left-top'],
+				'left-center'   => $l10n['left-center'],
+				'left-bottom'   => $l10n['left-bottom'],
+				'right-top'     => $l10n['right-top'],
+				'right-center'  => $l10n['right-center'],
+				'right-bottom'  => $l10n['right-bottom'],
+				'center-top'    => $l10n['center-top'],
+				'center-center' => $l10n['center-center'],
+				'center-bottom' => $l10n['center-bottom'],
 			),
 		);
+	}
 
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @static
+	 * @access protected
+	 * @since 2.4.0
+	 * @param string|false $id The string-ID.
+	 * @return array
+	 */
+	protected static function l10n( $config_id ) {
+		$translation_strings = array(
+			'background-color'      => esc_attr__( 'Background Color', 'kirki' ),
+			'background-image'      => esc_attr__( 'Background Image', 'kirki' ),
+			'no-repeat'             => esc_attr__( 'No Repeat', 'kirki' ),
+			'repeat-all'            => esc_attr__( 'Repeat All', 'kirki' ),
+			'repeat-x'              => esc_attr__( 'Repeat Horizontally', 'kirki' ),
+			'repeat-y'              => esc_attr__( 'Repeat Vertically', 'kirki' ),
+			'inherit'               => esc_attr__( 'Inherit', 'kirki' ),
+			'background-repeat'     => esc_attr__( 'Background Repeat', 'kirki' ),
+			'cover'                 => esc_attr__( 'Cover', 'kirki' ),
+			'contain'               => esc_attr__( 'Contain', 'kirki' ),
+			'background-size'       => esc_attr__( 'Background Size', 'kirki' ),
+			'fixed'                 => esc_attr__( 'Fixed', 'kirki' ),
+			'scroll'                => esc_attr__( 'Scroll', 'kirki' ),
+			'background-attachment' => esc_attr__( 'Background Attachment', 'kirki' ),
+			'left-top'              => esc_attr__( 'Left Top', 'kirki' ),
+			'left-center'           => esc_attr__( 'Left Center', 'kirki' ),
+			'left-bottom'           => esc_attr__( 'Left Bottom', 'kirki' ),
+			'right-top'             => esc_attr__( 'Right Top', 'kirki' ),
+			'right-center'          => esc_attr__( 'Right Center', 'kirki' ),
+			'right-bottom'          => esc_attr__( 'Right Bottom', 'kirki' ),
+			'center-top'            => esc_attr__( 'Center Top', 'kirki' ),
+			'center-center'         => esc_attr__( 'Center Center', 'kirki' ),
+			'center-bottom'         => esc_attr__( 'Center Bottom', 'kirki' ),
+			'background-position'   => esc_attr__( 'Background Position', 'kirki' ),
+			'background-opacity'    => esc_attr__( 'Background Opacity', 'kirki' ),
+		);
+		return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
 	}
 }
