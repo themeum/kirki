@@ -22,8 +22,7 @@ class Kirki_Panel {
 	 * @var array
 	 */
 	private $panel_types = array(
-		'kirki-default'  => 'Kirki_Panels_Default_Panel',
-		'kirki-expanded' => 'Kirki_Panels_Expanded_Panel',
+		'default' => 'WP_Customize_Panel',
 	);
 
 	/**
@@ -48,7 +47,7 @@ class Kirki_Panel {
 		global $wp_customize;
 
 		if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->panel_types ) ) {
-			$args['type'] = 'kirki-default';
+			$args['type'] = 'default';
 		}
 		$panel_classname = $this->panel_types[ $args['type'] ];
 
