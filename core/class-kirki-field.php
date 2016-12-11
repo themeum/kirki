@@ -659,7 +659,6 @@ class Kirki_Field {
 
 		$default_callbacks = array(
 			'kirki-multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
-			'kirki-sortable'         => array( 'Kirki_Sanitize_Values', 'sortable' ),
 			'kirki-typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
 		);
 
