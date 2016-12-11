@@ -136,4 +136,11 @@ class Kirki_Control_Sortable extends WP_Customize_Control {
 
 		<?php
 	}
+
+	/**
+	 * Render the control's content.
+	 *
+	 * @see WP_Customize_Control::render_content()
+	 */
+	protected function render_content() {}
 }

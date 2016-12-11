@@ -139,4 +139,11 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 		</ul>
 		<?php
 	}
+
+	/**
+	 * Render the control's content.
+	 *
+	 * @see WP_Customize_Control::render_content()
+	 */
+	protected function render_content() {}
 }

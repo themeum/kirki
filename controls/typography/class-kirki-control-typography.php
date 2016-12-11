@@ -391,4 +391,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		}
 		return $translation_strings[ $id ];
 	}
+
+	/**
+	 * Render the control's content.
+	 *
+	 * @see WP_Customize_Control::render_content()
+	 */
+	protected function render_content() {}
 }
