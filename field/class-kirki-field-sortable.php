@@ -32,7 +32,7 @@ class Kirki_Field_Sortable extends Kirki_Field {
 	 */
 	protected function set_sanitize_callback() {
 
-		// $this->sanitize_callback = array( 'Kirki_Field_Sortable', 'sanitize' );
+		$this->sanitize_callback = array( 'Kirki_Field_Sortable', 'sanitize' );
 
 	}
 
