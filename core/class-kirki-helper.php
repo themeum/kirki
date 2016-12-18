@@ -96,11 +96,20 @@ class Kirki_Helper {
 	 */
 	public static function get_image_id( $url ) {
 		global $wpdb;
-		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
-		if ( ! is_array( $attachment ) || ! isset( $attachment[0] ) ) {
+		if ( empty( $url ) ) {
 			return 0;
 		}
-		return $attachment[0];
+
+		$attachment = wp_cache_get( 'kirki_image_id_' . md5( $url ), null );
+		if ( false === $attachment ) {
+			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = '%s';", $url ) );
+			wp_cache_add( 'kirki_image_id_' . md5( $url ), $attachment, null );
+		}
+
+		if ( ! empty( $attachment ) ) {
+			return $attachment[0];
+		}
+		return 0;
 	}
 
 	/**
