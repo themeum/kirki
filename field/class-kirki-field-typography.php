@@ -158,14 +158,8 @@ class Kirki_Field_Typography extends Kirki_Field {
 
 		foreach ( $value as $key => $subvalue ) {
 
-			// Sanitize the font-size.
-			if ( 'font-size' === $key || 'letter-spacing' === $key || 'word-spacing' === $key ) {
+			if ( in_array( $key, array( 'font-size', 'letter-spacing', 'word-spacing', 'line-height' ), true ) ) {
 				$value[ $key ] = Kirki_Sanitize_Values::css_dimension( $value[ $key ] );
-				if ( is_numeric( $value[ $key ] ) ) {
-					$value['font-size'] .= 'px';
-				}
-			} elseif ( 'line-height' === $key ) {
-				$value['line-height'] = Kirki_Sanitize_Values::css_dimension( $value['line-height'] );
 			} elseif ( 'text-align' === $key && ! in_array( $value['text-align'], array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
 				$value['text-align'] = 'inherit';
 			} elseif ( 'text-transform' === $key && ! in_array( $value['text-transform'], array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
