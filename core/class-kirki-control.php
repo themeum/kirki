@@ -28,7 +28,7 @@ class Kirki_Control {
 	 * @access protected
 	 * @var array
 	 */
-	protected $control_types = array();
+	protected static $control_types = array();
 
 	/**
 	 * The class constructor.
@@ -66,8 +66,8 @@ class Kirki_Control {
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
 		// Get the classname from the array of control classnames.
-		if ( array_key_exists( $args['type'], $this->control_types ) ) {
-			$class_name = $this->control_types[ $args['type'] ];
+		if ( array_key_exists( $args['type'], self::$control_types ) ) {
+			$class_name = self::$control_types[ $args['type'] ];
 		}
 		return $class_name;
 
@@ -89,14 +89,21 @@ class Kirki_Control {
 	}
 
 	/**
-	 * Sets the $this->control_types property.
+	 * Sets the $control_types property.
 	 * Makes sure the kirki/control_types filter is applied
 	 * and that the defined classes actually exist.
 	 * If a defined class does not exist, it is removed.
+	 *
+	 * @access private
 	 */
 	final private function set_control_types() {
 
-		$this->control_types = apply_filters( 'kirki/control_types', array(
+		// Early exit if this has already run.
+		if ( ! empty( self::$control_types ) ) {
+			return;
+		}
+
+		self::$control_types = apply_filters( 'kirki/control_types', array(
 			'checkbox'              => 'WP_Customize_Control',
 			'kirki-code'            => 'Kirki_Control_Code',
 			'kirki-color'           => 'Kirki_Control_Color',
@@ -131,10 +138,10 @@ class Kirki_Control {
 		) );
 
 		// Make sure the defined classes actually exist.
-		foreach ( $this->control_types as $key => $classname ) {
+		foreach ( self::$control_types as $key => $classname ) {
 
 			if ( ! class_exists( $classname ) ) {
-				unset( $this->control_types[ $key ] );
+				unset( self::$control_types[ $key ] );
 			}
 		}
 	}
