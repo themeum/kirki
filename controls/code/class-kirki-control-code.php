@@ -55,15 +55,6 @@ class Kirki_Control_Code extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * The translation strings.
-	 *
-	 * @access protected
-	 * @since 2.3.5
-	 * @var array
-	 */
-	protected $l10n = array();
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -115,7 +106,6 @@ class Kirki_Control_Code extends WP_Customize_Control {
 		$this->json['choices']     = $this->choices;
 		$this->json['link']        = $this->get_link();
 		$this->json['id']          = $this->id;
-		$this->json['l10n']        = $this->l10n();
 		$this->json['kirkiConfig'] = $this->kirki_config;
 
 		if ( 'user_meta' === $this->option_type ) {
@@ -148,28 +138,8 @@ class Kirki_Control_Code extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<a href="#" class="button edit button-primary">{{ data.choices.label }}</a>
-			<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor collapsed">{{{ data.value }}}</textarea>
-			<a href="#" class="close">
-				<span class="dashicons dashicons-no"></span>
-				<span class="screen-reader-text">{{ data.l10n['close-editor'] }}</span>
-			</a>
+			<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
 		</label>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 2.4.0
-	 * @param string|false $id The string-ID.
-	 * @return string
-	 */
-	protected function l10n( $id = false ) {
-		$translation_strings = array(
-			'close-editor' => esc_attr__( 'Close Editor', 'kirki' ),
-		);
-		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
 	}
 }

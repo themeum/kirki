@@ -1,38 +1,10 @@
-.customize-control-kirki-code a.close {
-  display: none; }
 .customize-control-kirki-code .CodeMirror {
-  position: fixed;
-  left: -100%;
-  top: 0;
-  height: 100vh;
-  opacity: 0.9;
-  z-index: 9998;
-  width: 100%;
-  -webkit-transition: all 250ms ease-in-out;
-  -moz-transition: all 250ms ease-in-out;
-  -ms-transition: all 250ms ease-in-out;
-  -o-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out; }
-.customize-control-kirki-code .kirki-codemirror-editor.expanded + .CodeMirror {
-  left: 0; }
-  .customize-control-kirki-code .kirki-codemirror-editor.expanded + .CodeMirror + a.close {
-    display: block;
-    position: fixed;
-    right: 0;
-    top: 0;
-    opacity: 0.9;
-    z-index: 9999;
-    background: #fff;
-    background: rgba(255, 255, 255, 0.85);
-    color: #333;
-    padding: 10px;
-    cursor: pointer;
-    text-decoration: none; }
+  margin-left: -12px;
+  margin-right: -12px; }
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
-  height: 300px;
   color: black; }
 
 /* PADDING */

@@ -32,16 +32,10 @@ class Kirki_Field_Code extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
-		$l10n = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', array(
-			'close-editor' => esc_attr__( 'Close Editor', 'kirki' ),
-			'open-editor'  => esc_attr__( 'Open Editor', 'kirki' ),
-		) );
-
 		// Make sure we have some defaults in case none are defined.
 		$defaults = array(
 			'language' => 'css',
-			'theme'    => 'kirki-dark',
-			'label'    => $l10n['open-editor'],
+			'theme'    => 'elegant',
 		);
 		$this->choices = wp_parse_args( $this->choices, $defaults );
 
