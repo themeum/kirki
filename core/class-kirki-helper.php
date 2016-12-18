@@ -97,6 +97,9 @@ class Kirki_Helper {
 	public static function get_image_id( $url ) {
 		global $wpdb;
 		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
+		if ( ! is_array( $attachment ) || ! isset( $attachment[0] ) ) {
+			return 0;
+		}
 		return $attachment[0];
 	}
 
