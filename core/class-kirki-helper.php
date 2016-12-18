@@ -88,11 +88,16 @@ class Kirki_Helper {
 	/**
 	 * Returns the attachment object
 	 *
+	 * @static
+	 * @access public
+	 * @see https://pippinsplugins.com/retrieve-attachment-id-from-image-url/
 	 * @param string $url URL to the image.
 	 * @return int|string Numeric ID of the attachement.
 	 */
 	public static function get_image_id( $url ) {
-		return url_to_postid( $url );
+		global $wpdb;
+		$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
+		return $attachment[0];
 	}
 
 	/**
