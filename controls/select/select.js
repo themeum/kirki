@@ -7,35 +7,48 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 
 		var control  = this,
 		    element  = this.container.find( 'select' ),
-		    multiple = parseInt( element.data( 'multiple' ) ),
-		    selectValue;
-
-		// If this is a multi-select control,
-		// then we'll need to initialize selectize using the appropriate arguments.
-		// If this is a single-select, then we can initialize selectize without any arguments.
-		if ( multiple > 1 ) {
-			jQuery( element ).selectize({
-				maxItems: multiple,
-				plugins: ['remove_button', 'drag_drop']
-			});
-		} else {
-			jQuery( element ).selectize();
-		}
+			hidden   = this.container.find( 'input' ),
+		    multiple = parseInt( element.data( 'multiple' ) );
 
 		// Change value
-		this.container.on( 'change', 'select', function() {
-
-			selectValue = jQuery( this ).val();
-
-			// If this is a multi-select, then we need to convert the value to an object.
-			if ( multiple > 1 ) {
-				selectValue = _.extend( {}, jQuery( this ).val() );
-			}
-
-			control.setting.set( selectValue );
-
+		this.container.on( 'change', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
 		});
 
-	}
+		// Instantiate select2
+		jQuery( hidden ).select2({
 
+			// Add the options.
+			tags: jQuery.map( control.params.choices, function( value, index ) {
+				return [ index ];
+		    }),
+
+			// Handle multi-select.
+			multiple: ( 1 < multiple ) ? true : false,
+			maximumSelectionSize: multiple,
+
+			// Initial values.
+			initSelection: function( element, callback ) {
+			}
+		});
+
+		jQuery( hidden ).on( 'change', function() {
+			jQuery( control.container.find( '.target' ) ).html(
+				jQuery( hidden ).val()
+			);
+		});
+
+		// Make sortable.
+		if ( 1 < multiple ) {
+			jQuery( hidden ).select2( 'container' ).find( 'ul.select2-choices' ).sortable({
+				containment: 'parent',
+				start: function() {
+					jQuery( hidden ).select2( 'onSortStart' );
+				},
+				update: function() {
+					jQuery( hidden ).select2( 'onSortEnd' );
+				}
+			});
+		}
+	}
 });

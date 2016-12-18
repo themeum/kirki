@@ -75,9 +75,9 @@ class Kirki_Control_Select extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'selectize', trailingslashit( Kirki::$url ) . 'controls/select/selectize.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'kirki-select', trailingslashit( Kirki::$url ) . 'controls/select/select.js', array( 'jquery', 'customize-base', 'selectize' ), false, true );
-		wp_enqueue_style( 'kirki-select-css', trailingslashit( Kirki::$url ) . 'controls/select/select.css', null );
+		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'controls/select/select2.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'kirki-select', trailingslashit( Kirki::$url ) . 'controls/select/select.js', array( 'jquery', 'customize-base', 'select2' ), false, true );
+		wp_enqueue_style( 'kirki-select-css', trailingslashit( Kirki::$url ) . 'controls/select/select.css' );
 	}
 
 	/**
@@ -133,23 +133,8 @@ class Kirki_Control_Select extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<select {{{ data.inputAttrs }}} {{{ data.link }}} data-multiple="{{ data.multiple }}"<# if ( 1 < data.multiple ) { #> multiple<# } #>>
-				<# if ( 1 < data.multiple && data.value ) { #>
-					<# for ( key in data.value ) { #>
-						<option value="{{ data.value[ key ] }}" selected>{{ data.choices[ data.value[ key ] ] }}</option>
-					<# } #>
-					<# for ( key in data.choices ) { #>
-						<# if ( data.value[ key ] in data.value ) { #>
-						<# } else { #>
-							<option value="{{ key }}">{{ data.choices[ key ] }}</option>
-						<# } #>
-					<# } #>
-				<# } else { #>
-					<# for ( key in data.choices ) { #>
-						<option value="{{ key }}"<# if ( key === data.value ) { #>selected<# } #>>{{ data.choices[ key ] }}</option>
-					<# } #>
-				<# } #>
-			</select>
+			<input type="hidden" />
+			<div class="target"></div>
 		</label>
 		<?php
 	}
