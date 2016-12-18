@@ -4,7 +4,7 @@ jQuery( document ).ready( function() {
 
 	wp.customize.section.each( function( section ) {
 
-		var link = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + kirkiL10n['reset-with-icon'] + '</a>';
+		var link = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + kirkiResetButtonLabel['reset-with-icon'] + '</a>';
 
 		jQuery( link ).appendTo( '#sub-accordion-section-' + section.id + ' .customize-section-title > h3' );
 
