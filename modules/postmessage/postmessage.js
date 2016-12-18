@@ -73,12 +73,6 @@
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
 
-									// Allow using %value% as a placeholder for the old value.
-									// This way we can append or prepend CSS classes for example instead of replacing them.
-									if ( 'undefined' !== typeof args.value_pattern ) {
-										val = args.value_pattern.replace( /\%value%/g, jQuery( args.element ).attr( args.attr ) );
-									}
-
 									if ( 'undefined' !== typeof args.attr && 'undefined' !== typeof args.attr ) {
 										jQuery( args.element ).attr( args.attr, val );
 									} else {
