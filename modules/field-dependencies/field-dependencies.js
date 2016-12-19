@@ -57,21 +57,17 @@ jQuery( document ).ready( function() {
 
 		    var setupControl = function( control ) {
 
-		        var setActiveState,
-				    isDisplayed;
-
-		        isDisplayed = function() {
-					var show = true;
-					_.each( args, function( dependency ) {
-						show = kirkiCompareValues( dependency.value, setting.get(), dependency.operator, [targetControlID, dependency.setting] );
-					} );
-					return show;
-		        };
-		        setActiveState = function() {
-		            control.active.set( isDisplayed() );
-		        };
-		        setActiveState();
-		        setting.bind( setActiveState );
+		        setting.bind( function() {
+		            control.active.set( function() {
+						var show = true;
+						_.each( args, function( dependency ) {
+							if ( show ) {
+								show = kirkiCompareValues( dependency.value, setting.get(), dependency.operator, [targetControlID, dependency.setting] );
+							}
+						} );
+						return show;
+			        } );
+		        } );
 
 		    };
 			_.each( args, function( dependency ) {
