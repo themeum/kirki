@@ -2,17 +2,19 @@
   .buttonset {
     display: flex;
     flex-wrap: wrap;
+
     .switch-label {
       background: rgba(0,0,0,.05);
       border: 1px solid rgba(0,0,0,.1);
       color: #555;
       margin: 0;
       text-align: center;
-      padding: .5em 1em;
+      padding: 0.5em 1em;
       flex-grow: 1;
-      &:last-child {
-      }
+
+      &:last-child {}
     }
+
     .switch-input {
       &:checked {
         + .switch-label {

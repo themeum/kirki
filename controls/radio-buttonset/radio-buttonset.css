@@ -7,7 +7,7 @@
     color: #555;
     margin: 0;
     text-align: center;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     flex-grow: 1; }
   .customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label {
     background-color: #3498DB;

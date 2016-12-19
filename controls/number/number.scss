@@ -1,6 +1,7 @@
 .customize-control-kirki-number {
   .ui-spinner.ui-widget-content {
     position: relative;
+
     .ui-spinner-button {
       position: absolute;
       right: 0;
@@ -17,9 +18,11 @@
       background: transparent;
       background: none;
       margin: 0;
+
       .ui-button-text {
         display: none;
       }
+
       &.ui-spinner-down,
       &.ui-spinner-up {
         &:before {
@@ -28,18 +31,23 @@
           left: 0;
         }
       }
+
       &.ui-spinner-up {
         top: -50%;
+
         &:before {
           content: "\f343";
         }
       }
+
       &.ui-spinner-down {
         top: 50%;
+
         &:before {
           content: "\f347";
         }
       }
+
       &:hover {
         color: rgba(0,0,0,.7);
       }

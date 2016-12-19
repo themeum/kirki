@@ -1,11 +1,13 @@
 .customize-control-kirki-color {
   .wp-picker-container {
     width: 100%;
+
     a.wp-color-result {
       width: auto;
       display: block;
       border: none;
       padding-left: 40px;
+
       &:after {
         background: rgba(0,0,0,.25);
         color: #fff;
@@ -13,6 +15,7 @@
         -webkit-box-shadow: none;
         box-shadow: none;
       }
+
       &:focus:after,
       &:hover:after {
         color: #fff;

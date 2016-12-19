@@ -1,12 +1,14 @@
 .customize-control-kirki-palette {
   input[type="radio"] {
     display: none;
+
     &:checked {
       + label {
         border: 3px solid rgba(0,0,0,.4);
       }
     }
   }
+
   label {
     background: none;
     padding: 0;
@@ -14,6 +16,7 @@
     border-bottom: 3px solid transparent;
     margin-bottom: 5px;
     display: flex;
+
     span {
       padding: 10px 0;
       flex-grow: 1;
@@ -27,12 +30,15 @@
       transition: all 200ms ease-in-out;
       border-top: 1px solid rgba(0,0,0,.1);
       border-bottom: 1px solid rgba(0,0,0,.1);
+
       &:first-child {
         border-left: 1px solid rgba(0,0,0,.1);
       }
+
       &:last-child {
         border-right: 1px solid rgba(0,0,0,.1);
       }
+
       &:hover {
         padding: 10px;
         flex-grow: 3;

@@ -8,13 +8,16 @@
     height: 5px;
     width: calc(100% - 70px);
     padding: 0;
+
     &:focus {
       box-shadow: none;
       outline: none;
     }
+
     &:hover {
       background-color: rgba(0,0,0,.25);
     }
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 15px;
@@ -23,6 +26,7 @@
       -webkit-border-radius: 50%;
       background-color: #3498D9;
     }
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 15px;
@@ -31,6 +35,7 @@
       border-radius: 50%;
       background-color: #3498D9;
     }
+
     &::-moz-range-thumb {
       width: 15px;
       height: 15px;
@@ -38,6 +43,7 @@
       border-radius: 50%;
       background-color: #3498D9;
     }
+
     &::-ms-thumb {
       width: 15px;
       height: 15px;
@@ -45,23 +51,28 @@
       border: 0;
       background-color: #3498D9;
     }
+
     &::-moz-range-track {
       border: inherit;
       background: transparent;
     }
+
     &::-ms-track {
       border: inherit;
       color: transparent;
       background: transparent;
     }
+
     &::-ms-fill-lower,
     &::-ms-fill-upper {
       background: transparent;
     }
+
     &::-ms-tooltip {
       display: none;
     }
   }
+
   .kirki_range_value {
     display: inline-block;
     font-size: 14px;
@@ -70,6 +81,7 @@
     position: relative;
     top: 2px;
   }
+
   .kirki-slider-reset {
     color: rgba(0,0,0,.2);
     float: right;
@@ -78,10 +90,12 @@
     -ms-transition: color 0.5s ease-in;
     -o-transition: color 0.5s ease-in;
     transition: color 0.5s ease-in;
+
     span {
       font-size: 16px;
       line-height: 22px;
     }
+
     &:hover {
       color: red;
     }

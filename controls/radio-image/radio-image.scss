@@ -3,11 +3,13 @@
     position: relative;
     display: inline-block;
   }
+
   input {
     img {
       border: 1px solid transparent;
     }
     display: none;
+
     &:checked {
       + label {
         img {
@@ -17,6 +19,7 @@
         }
       }
     }
+
     + label .image-clickable {
       position: absolute;
       top: 0;

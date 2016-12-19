@@ -6,11 +6,11 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  -webkit-transition: bottom .2s;
-  -moz-transition: bottom .2s;
-  -ms-transition: bottom .2s;
-  -o-transition: bottom .2s;
-  transition: bottom .2s; }
+  -webkit-transition: bottom 0.2s;
+  -moz-transition: bottom 0.2s;
+  -ms-transition: bottom 0.2s;
+  -o-transition: bottom 0.2s;
+  transition: bottom 0.2s; }
   #kirki_editor_pane.hide {
     bottom: -301px; }
 
