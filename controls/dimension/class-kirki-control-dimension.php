@@ -52,15 +52,6 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * The translation strings.
-	 *
-	 * @access protected
-	 * @since 2.3.5
-	 * @var array
-	 */
-	protected $l10n = array();
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -85,13 +76,12 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
-		$this->json['output']      = $this->output;
-		$this->json['value']       = $this->value();
-		$this->json['choices']     = $this->choices;
-		$this->json['link']        = $this->get_link();
-		$this->json['id']          = $this->id;
-		$this->json['l10n']        = $this->l10n;
-		$this->json['kirkiConfig'] = $this->kirki_config;
+		$this->json['output']  = $this->output;
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['id']      = $this->id;
+		$this->json['l10n']    = $this->l10n();
 
 		if ( 'user_meta' === $this->option_type ) {
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );

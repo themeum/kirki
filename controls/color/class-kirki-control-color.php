@@ -54,14 +54,6 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
-	 * The kirki_config we're using for this control
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $kirki_config = 'global';
-
-	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
@@ -73,12 +65,11 @@ class Kirki_Control_Color extends WP_Customize_Control {
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
-		$this->json['output']      = $this->output;
-		$this->json['value']       = $this->value();
-		$this->json['choices']     = $this->choices;
-		$this->json['link']        = $this->get_link();
-		$this->json['id']          = $this->id;
-		$this->json['kirkiConfig'] = $this->kirki_config;
+		$this->json['output']  = $this->output;
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['id']      = $this->id;
 
 		if ( 'user_meta' === $this->option_type ) {
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );

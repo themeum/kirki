@@ -201,13 +201,12 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
-		$this->json['default']     = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
-		$this->json['output']      = $this->output;
-		$this->json['value']       = $this->value();
-		$this->json['choices']     = $this->choices;
-		$this->json['link']        = $this->get_link();
-		$this->json['id']          = $this->id;
-		$this->json['kirkiConfig'] = $this->kirki_config;
+		$this->json['default'] = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
+		$this->json['output']  = $this->output;
+		$this->json['value']   = $this->value();
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['id']      = $this->id;
 
 		if ( 'user_meta' === $this->option_type ) {
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
@@ -299,7 +298,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		?>
 		<script type="text/html" class="customize-control-repeater-content">
 			<# var field; var index = data.index; #>
-			<# data.kirki_config = '<?php echo esc_attr( $this->kirki_config ); ?>'; #>
 
 			<li class="repeater-row minimized" data-row="{{{ index }}}">
 
