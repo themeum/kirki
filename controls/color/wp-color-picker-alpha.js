@@ -250,7 +250,7 @@
 				stripsWidth  = ( emptyWidth / 2 ) - stripsMargin;
 
 				$.each( [ 'aContainer', 'strip' ], function( k, v ) {
-					self.controls[v].width( stripsWidth ).css({ 'margin-left': stripsMargin + 'px' });
+					self.controls[v].width( stripsWidth ).css({ 'margin-left': Math.floor( stripsMargin ) + 'px' });
 				});
 
 				// Add new slider
