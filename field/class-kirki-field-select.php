@@ -15,6 +15,17 @@
 class Kirki_Field_Select extends Kirki_Field {
 
 	/**
+	 * Use only on select controls.
+	 * Defines if this is a multi-select or not.
+	 * If value is > 1, then the maximum number of selectable options
+	 * is the number defined here.
+	 *
+	 * @access protected
+	 * @var integer
+	 */
+	protected $multiple = 1;
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected

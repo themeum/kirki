@@ -15,6 +15,14 @@
 class Kirki_Field_Radio extends Kirki_Field {
 
 	/**
+	 * Whitelisting for backwards-compatibility.
+	 *
+	 * @access protected
+	 * @var string
+	 */
+	protected $mode = '';
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
