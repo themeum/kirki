@@ -1,3 +1,13 @@
-
+#customize-theme-controls .control-section-kirki-expanded .accordion-section-title {
+  display: none; }
+#customize-theme-controls .control-section-kirki-expanded .customize-section-back {
+  display: none; }
+#customize-theme-controls .customize-pane-child.control-section-kirki-expanded {
+  position: relative;
+  visibility: visible;
+  height: auto;
+  margin-left: -300px; }
+  #customize-theme-controls .customize-pane-child.control-section-kirki-expanded h3 .customize-action {
+    display: none; }
 
 /*# sourceMappingURL=sections.css.map */

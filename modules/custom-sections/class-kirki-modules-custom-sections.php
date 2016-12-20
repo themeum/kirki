@@ -52,7 +52,6 @@ class Kirki_Modules_Custom_Sections {
 		$new_types = array(
 			'kirki-default'  => 'Kirki_Sections_Default_Section',
 			'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
-			'kirki-hover'    => 'Kirki_Sections_Hover_Section',
 		);
 		return array_merge( $section_types, $new_types );
 
@@ -70,7 +69,6 @@ class Kirki_Modules_Custom_Sections {
 
 		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-default-section.php' );
 		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-expanded-section.php' );
-		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-hover-section.php' );
 
 	}
 

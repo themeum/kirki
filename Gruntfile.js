@@ -90,7 +90,8 @@ module.exports = function( grunt ) {
 			css: {
 				files: [
 					'assets/**/*.scss',
-					'controls/**/*.scss'
+					'controls/**/*.scss',
+					'modules/**/*.scss'
 				],
 				tasks: ['sass']
 			},

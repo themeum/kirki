@@ -1,0 +1,26 @@
+#customize-theme-controls {
+  .control-section-kirki-expanded {
+    .accordion-section-title {
+      display: none;
+    }
+
+    .customize-section-back {
+      display: none;
+    }
+  }
+
+  .customize-pane-child {
+    &.control-section-kirki-expanded {
+      position: relative;
+      visibility: visible;
+      height: auto;
+      margin-left: -300px;
+
+      h3 {
+        .customize-action {
+          display: none;
+        }
+      }
+    }
+  }
+}
