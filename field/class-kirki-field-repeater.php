@@ -15,6 +15,15 @@
 class Kirki_Field_Repeater extends Kirki_Field {
 
 	/**
+	 * Used only on repeaters.
+	 * Contains an array of the fields.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $fields = array();
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected

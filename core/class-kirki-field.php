@@ -264,15 +264,6 @@ class Kirki_Field {
 	protected $mime_type = '';
 
 	/**
-	 * Used only on repeaters.
-	 * Contains an array of the fields.
-	 *
-	 * @access protected
-	 * @var array
-	 */
-	protected $fields = array();
-
-	/**
 	 * Used by image fields.
 	 *
 	 * @access protected
