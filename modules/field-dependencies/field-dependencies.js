@@ -55,10 +55,10 @@ jQuery( document ).ready( function() {
 
 		wp.customize( targetControlID, function( setting ) {
 
-		    var setupControl = function( control ) {
+			var setupControl = function( control ) {
 
-		        setting.bind( function() {
-		            control.active.set( function() {
+				setting.bind( function() {
+					control.active.set( function() {
 						var show = true;
 						_.each( args, function( dependency ) {
 							if ( show ) {
@@ -66,10 +66,10 @@ jQuery( document ).ready( function() {
 							}
 						} );
 						return show;
-			        } );
-		        } );
+					} );
+				} );
 
-		    };
+			};
 			_.each( args, function( dependency ) {
 				wp.customize.control( dependency.setting, setupControl );
 			} );
