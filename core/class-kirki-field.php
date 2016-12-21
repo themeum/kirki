@@ -842,17 +842,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Sets the $multiple
-	 *
-	 * @access protected
-	 */
-	protected function set_multiple() {
-
-		$this->multiple = absint( $this->multiple );
-
-	}
-
-	/**
 	 * Sets the $priority
 	 *
 	 * @access protected
