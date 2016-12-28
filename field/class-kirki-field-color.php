@@ -15,6 +15,14 @@
 class Kirki_Field_Color extends Kirki_Field {
 
 	/**
+	 * Backwards compatibility.
+	 *
+	 * @access protected
+	 * @var bool
+	 */
+	protected $alpha = false;
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
@@ -34,6 +42,9 @@ class Kirki_Field_Color extends Kirki_Field {
 
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
+		}
+		if ( true === $this->alpha ) {
+			$this->choices['alpha'] = true;
 		}
 		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
 			$this->choices['alpha'] = true;
