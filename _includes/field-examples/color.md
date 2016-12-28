@@ -9,7 +9,7 @@ Kirki::add_field( 'my_config', array(
 	'default'     => '#0088CC',
 	'priority'    => 10,
 	'choices'     => array(
-		'alpha'       => true,
+		'alpha' => true,
 	),
 ) );
 ?>
