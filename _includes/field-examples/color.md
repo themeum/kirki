@@ -8,7 +8,9 @@ Kirki::add_field( 'my_config', array(
 	'section'     => 'my_section',
 	'default'     => '#0088CC',
 	'priority'    => 10,
-	'alpha'       => true,
+	'choices'     => array(
+		'alpha'       => true,
+	),
 ) );
 ?>
 ```
