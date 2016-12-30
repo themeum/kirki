@@ -26,4 +26,14 @@ jQuery( document ).ready( function() {
 
 	});
 
+	// Close tooltips if we click anywhere else.
+	jQuery( document ).mouseup( function( e ) {
+
+		var container = jQuery( '.tooltip-content' );
+
+		if ( ! container.is( e.target ) ) {
+			container.removeClass( 'open' );
+	    }
+	});
+
 } );
