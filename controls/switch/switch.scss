@@ -4,7 +4,6 @@
     margin-bottom: 1.5rem;
     outline: 0;
     padding: 0;
-    position: relative;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -40,12 +39,6 @@
     }
 
     input {
-      left: 10px;
-      opacity: 0;
-      padding: 0;
-      position: absolute;
-      top: 9px;
-
       + label {
         margin-left: 0;
         margin-right: 0;
