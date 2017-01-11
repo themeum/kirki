@@ -63,7 +63,7 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/deprecated.php'
 include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-aricolor.php' );
 
 //The editor fix
-if( $pagenow == 'customize.php' )
+if ( $pagenow == 'customize.php' )
 {
 	add_action( 'admin_enqueue_scripts', 'kirki_type_editor_fixer' );
 }
