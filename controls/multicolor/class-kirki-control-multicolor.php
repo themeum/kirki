@@ -28,14 +28,6 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	public $type = 'kirki-multicolor';
 
 	/**
-	 * Color Palette.
-	 *
-	 * @access public
-	 * @var bool
-	 */
-	public $palette = true;
-
-	/**
 	 * Used to automatically generate all CSS output.
 	 *
 	 * @access public
@@ -88,8 +80,6 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
-
-		$this->json['palette']  = $this->palette;
 	}
 
 	/**
@@ -112,12 +102,14 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 		<# } #>
 		<div class="multicolor-group-wrapper">
 			<# for ( key in data.choices ) { #>
-				<div class="multicolor-single-color-wrapper">
-					<# if ( data.choices[ key ] ) { #>
-						<label for="{{ data.id }}-{{ key }}">{{ data.choices[ key ] }}</label>
-					<# } #>
-					<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="true" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
-				</div>
+				<# if ( 'irisArgs' !== key ) { #>
+					<div class="multicolor-single-color-wrapper">
+						<# if ( data.choices[ key ] ) { #>
+							<label for="{{ data.id }}-{{ key }}">{{ data.choices[ key ] }}</label>
+						<# } #>
+						<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="true" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
+					</div>
+				<# } #>
 			<# } #>
 		</div>
 		<div class="iris-target"></div>

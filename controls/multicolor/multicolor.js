@@ -16,27 +16,32 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
 
-			var picker = control.container.find( '.multicolor-index-' + subSetting );
+			var picker = control.container.find( '.multicolor-index-' + subSetting ),
+			    args   = {
+					target: target[0],
+					change: function( event, ui ) {
+
+						// Color controls require a small delay.
+						setTimeout( function() {
+							value[ subSetting ] = picker.val();
+
+							// Set the value.
+							control.setValue( value, false );
+
+							// Trigger the change.
+							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
+						}, 100 );
+
+					}
+				};
+			if ( 'object' === typeof colors.irisArgs ) {
+				_.each( colors.irisArgs, function( irisValue, irisKey ) {
+					args[ irisKey ] = irisValue;
+				});
+			}
 
 			// Did we change the value?
-			picker.wpColorPicker({
-				target: target[0],
-				change: function( event, ui ) {
-
-					// Color controls require a small delay
-					setTimeout( function() {
-						value[ subSetting ] = picker.val();
-
-						// Set the value
-						control.setValue( value, false );
-
-						// Trigger the change
-						control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
-					}, 100 );
-
-				}
-
-			});
+			picker.wpColorPicker( args );
 
 		}
 
