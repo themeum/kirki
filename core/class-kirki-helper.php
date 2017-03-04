@@ -153,6 +153,7 @@ class Kirki_Helper {
 		foreach ( $posts as $post ) {
 			$items[ $post->ID ] = $post->post_title;
 		}
+		wp_reset_postdata();
 
 		return $items;
 
