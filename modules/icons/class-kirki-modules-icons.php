@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 // Exit if accessed directly.
@@ -42,7 +42,7 @@ class Kirki_Modules_Icons {
 	 * Adds icon for a section/panel.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @param string $id      The panel or section ID.
 	 * @param string $icon    The icon to add.
 	 * @param string $context Lowercase 'section' or 'panel'.

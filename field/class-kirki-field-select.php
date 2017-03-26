@@ -90,7 +90,7 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * Sets the default value.
 	 *
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	protected function set_default() {
 

@@ -529,7 +529,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 * Validate row-labels.
 	 *
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @param array $args {@see WP_Customize_Control::__construct}.
 	 */
 	protected function row_label( $args ) {
@@ -561,7 +561,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 * Returns an array of translation strings.
 	 *
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @param string|false $id The string-ID.
 	 * @return string
 	 */

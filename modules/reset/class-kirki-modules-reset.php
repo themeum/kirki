@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 /**
@@ -30,7 +30,7 @@ class Kirki_Modules_Reset {
 	 * Enqueue scripts
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function customize_controls_enqueue_scripts() {
 

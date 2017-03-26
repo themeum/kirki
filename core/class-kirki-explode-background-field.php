@@ -202,7 +202,7 @@ class Kirki_Explode_Background_Field {
 	 *
 	 * @static
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @param string|false $config_id The string-ID.
 	 * @return array
 	 */

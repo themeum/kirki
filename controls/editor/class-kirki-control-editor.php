@@ -138,7 +138,7 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	 * Returns an array of translation strings.
 	 *
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @param string|false $id The string-ID.
 	 * @return string
 	 */

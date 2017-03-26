@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 /**
@@ -20,7 +20,7 @@ class Kirki_Modules {
 	 *
 	 * @static
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @var array
 	 */
 	private static $modules = array();
@@ -30,7 +30,7 @@ class Kirki_Modules {
 	 *
 	 * @static
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @var array
 	 */
 	private static $active_modules = array();
@@ -39,7 +39,7 @@ class Kirki_Modules {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function __construct() {
 
@@ -52,7 +52,7 @@ class Kirki_Modules {
 	 * Set the default modules and apply the 'kirki/modules' filter.
 	 *
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	private function default_modules() {
 
@@ -76,7 +76,7 @@ class Kirki_Modules {
 	 * Instantiates the modules.
 	 *
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	private function init() {
 
@@ -94,7 +94,7 @@ class Kirki_Modules {
 	 * @static
 	 * @access public
 	 * @param string $module The classname of the module to add.
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public static function add_module( $module ) {
 
@@ -110,7 +110,7 @@ class Kirki_Modules {
 	 * @static
 	 * @access public
 	 * @param string $module The classname of the module to add.
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public static function remove_module( $module ) {
 
@@ -125,7 +125,7 @@ class Kirki_Modules {
 	 *
 	 * @static
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @return array
 	 */
 	public static function get_modules() {
@@ -139,7 +139,7 @@ class Kirki_Modules {
 	 *
 	 * @static
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @return array
 	 */
 	public static function get_active_modules() {

@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ class Kirki_Modules_Field_Dependencies {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function __construct() {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'field_dependencies' ) );

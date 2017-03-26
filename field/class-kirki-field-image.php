@@ -29,7 +29,7 @@ class Kirki_Field_Image extends Kirki_Field_Upload {
 	 * Sets the button labels.
 	 *
 	 * @access protected
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	protected function set_button_labels() {
 

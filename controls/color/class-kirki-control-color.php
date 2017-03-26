@@ -60,7 +60,7 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	 *
 	 * If `$args['settings']` is not defined, use the $id as the setting ID.
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.

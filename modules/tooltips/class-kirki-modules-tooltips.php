@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ class Kirki_Modules_Tooltips {
 	 * An array containing field identifieds and their tooltips.
 	 *
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @var array
 	 */
 	private $tooltips_content = array();
@@ -33,7 +33,7 @@ class Kirki_Modules_Tooltips {
 	 * The class constructor
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function __construct() {
 
@@ -46,7 +46,7 @@ class Kirki_Modules_Tooltips {
 	 * object's $tooltips_content property.
 	 *
 	 * @access private
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	private function parse_fields() {
 
@@ -83,7 +83,7 @@ class Kirki_Modules_Tooltips {
 	 * Enqueue scripts.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function customize_controls_print_footer_scripts() {
 

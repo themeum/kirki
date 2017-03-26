@@ -9,7 +9,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       2.4.0
+ * @since       3.0.0
  */
 
 // Exit if accessed directly.
@@ -26,7 +26,7 @@ class Kirki_Modules_Customizer_Branding {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function __construct() {
 
@@ -40,7 +40,7 @@ class Kirki_Modules_Customizer_Branding {
 	 * The actual branding is handled via JS.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	public function customize_controls_print_scripts() {
 

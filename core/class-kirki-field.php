@@ -268,7 +268,7 @@ class Kirki_Field {
 	 *
 	 * @access protected
 	 * @var array
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 	protected $button_labels = array();
 

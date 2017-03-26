@@ -83,7 +83,7 @@ class Kirki extends Kirki_Init {
 	 * Modules object.
 	 *
 	 * @access public
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 * @var object
 	 */
 	public $modules;
