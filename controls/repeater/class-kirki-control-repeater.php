@@ -248,13 +248,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 					break;
 				}
 			}
-
-			foreach ( $this->fields as $field ) {
-				if ( isset( $field['type'] ) && 'dropdown-pages' === $field['type'] ) {
-					wp_enqueue_script( 'kirki-dropdown-pages' );
-					break;
-				}
-			}
 		}
 
 		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/repeater/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );

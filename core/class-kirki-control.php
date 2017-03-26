@@ -131,7 +131,6 @@ class Kirki_Control {
 			'kirki-generic'         => 'Kirki_Control_Generic',
 			'kirki-toggle'          => 'Kirki_Control_Toggle',
 			'kirki-typography'      => 'Kirki_Control_Typography',
-			'dropdown-pages'        => 'Kirki_Control_Dropdown_Pages',
 			'image'                 => 'WP_Customize_Image_Control',
 			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
 			'upload'                => 'WP_Customize_Upload_Control',
