@@ -121,7 +121,7 @@ class Kirki_Control_Select extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<select {{{ data.inputAttrs }}} {{{ data.link }}} data-multiple="{{ data.multiple }}"<# if ( 1 < data.multiple ) { #> multiple="multiple"<# } #>>
+			<select {{{ data.inputAttrs }}} {{{ data.link }}}<# if ( 1 < data.multiple ) { #> data-multiple="{{ data.multiple }}" multiple="multiple"<# } #>>
 				<# for ( key in data.choices ) { #>
 					<#
 					selected = ( data.value === key );
@@ -139,4 +139,19 @@ class Kirki_Control_Select extends WP_Customize_Control {
 		</label>
 		<?php
 	}
+
+
+	/**
+	 * Render the control's content.
+	 *
+	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
+	 *
+	 * Supports basic input types `text`, `checkbox`, `textarea`, `radio`, `select` and `dropdown-pages`.
+	 * Additional input types such as `email`, `url`, `number`, `hidden` and `date` are supported implicitly.
+	 *
+	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
+	 *
+	 * @since 3.0.0
+	 */
+	protected function render_content() {}
 }
