@@ -123,6 +123,11 @@ function kirkiSetSettingValue( setting, value ) {
 
 	} else if ( 'kirki-typography' === controlType ) {
 
+		_.each( value, function( subValue, id ) {
+			if( false === value[id] )
+				delete value[id]; 
+		});
+
 		if ( 'undefined' !== typeof value['font-family'] ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
@@ -133,7 +138,6 @@ function kirkiSetSettingValue( setting, value ) {
 				// Update the value visually in the control
 				selectize.setValue( value['font-family'], true );
 			}
-
 		}
 
 		if ( 'undefined' !== typeof value.variant ) {
