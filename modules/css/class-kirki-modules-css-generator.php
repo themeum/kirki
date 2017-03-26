@@ -256,11 +256,11 @@ if ( ! class_exists( 'Kirki_Modules_CSS_Generator' ) ) {
 							}
 						}
 					}
-				}
-			}
+				} // End foreach().
+			} // End if().
 
 			return $css;
 
 		}
 	}
-}
+} // End if().

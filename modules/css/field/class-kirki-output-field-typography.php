@@ -93,4 +93,4 @@ if ( ! class_exists( 'Kirki_Output_Field_Typography' ) ) {
 			}
 		}
 	}
-}
+} // End if().

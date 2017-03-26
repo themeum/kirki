@@ -126,7 +126,7 @@ class Kirki_Explode_Background_Field {
 				) : array(),
 			) );
 			$i++;
-		}
+		} // End foreach().
 
 		return $fields;
 

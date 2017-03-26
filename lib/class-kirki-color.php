@@ -11,6 +11,8 @@
  * @since       1.0
  */
 
+// @codingStandardsIgnoreFile
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -269,7 +271,11 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 					$h--;
 				}
 			}
-			return array( 'h' => round( $h, 2 ), 's' => round( $s, 2 ), 'v' => round( $v, 2 ) );
+			return array(
+				'h' => round( $h, 2 ),
+				's' => round( $s, 2 ),
+				'v' => round( $v, 2 ),
+			);
 		}
 
 		/**
@@ -336,4 +342,4 @@ if ( ! class_exists( 'Kirki_Color' ) ) {
 			return round( $lum_diff, 2 );
 		}
 	}
-}
+} // End if().

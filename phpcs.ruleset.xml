@@ -12,6 +12,8 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta_get_user_meta" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.user_meta_update_user_meta" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.url_to_postid" />
 		<exclude name="WordPress.VIP.RestrictedFunctions.error_log" />
 		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" />

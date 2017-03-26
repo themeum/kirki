@@ -1,4 +1,15 @@
 <?php
+/**
+ * Contains CSS with placeholders to change the styling of the customizer.
+ *
+ * @package     Kirki
+ * @category    Modules
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.4.0
+ */
+
 return '
 /** Button styles **/
 .wp-core-ui .button-primary-disabled,

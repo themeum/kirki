@@ -1,9 +1,22 @@
 <?php
+/**
+ * The Kirki autoloader.
+ * Handles locating and loading other class-files.
+ *
+ * @package     Kirki
+ * @category    Core
+ * @author      Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 	/**
 	 * The Kirki class autoloader.
 	 * Finds the path to a class that we're requiring and includes the file.
+	 *
+	 * @param string $class_name The name of the class we're trying to load.
 	 */
 	function kirki_autoload_classes( $class_name ) {
 		$paths = array();
@@ -51,10 +64,9 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 					return;
 				}
 			}
-
-		}
+} // End if().
 
 	}
-	// Run the autoloader
+	// Run the autoloader.
 	spl_autoload_register( 'kirki_autoload_classes' );
-}
+} // End if().

@@ -64,4 +64,4 @@ if ( ! class_exists( 'Kirki_Output_Property' ) ) {
 			return $this->value;
 		}
 	}
-}
+} // End if().

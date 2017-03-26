@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds styles to the customizer.
  */
-class Kirki_Modules_postMessage {
+class Kirki_Modules_PostMessage {
 
 	/**
 	 * Constructor.

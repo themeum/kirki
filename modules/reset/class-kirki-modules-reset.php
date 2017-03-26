@@ -35,6 +35,7 @@ class Kirki_Modules_Reset {
 	public function customize_controls_enqueue_scripts() {
 
 		$translation_strings = apply_filters( 'kirki/l10n', array(
+			/* translators: Icon followed by reset label. */
 			'reset-with-icon' => sprintf( esc_attr__( '%s Reset', 'kirki' ), '<span class="dashicons dashicons-update"></span><span class="label">' ) . '</span>',
 		) );
 		// Enqueue the reset script.

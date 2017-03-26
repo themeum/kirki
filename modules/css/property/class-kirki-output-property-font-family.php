@@ -58,4 +58,4 @@ if ( ! class_exists( 'Kirki_Output_Property_Font_Family' ) ) {
 			}
 		}
 	}
-}
+} // End if().

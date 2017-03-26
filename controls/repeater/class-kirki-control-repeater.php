@@ -145,7 +145,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 						break;
 				}
 			}
-		}
+		} // End foreach().
 
 		$this->fields = $args['fields'];
 
@@ -193,8 +193,8 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 						}
 					}
 				}
-			}
-		}
+			} // End foreach().
+		} // End if().
 	}
 
 	/**
@@ -570,6 +570,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			'row'               => esc_attr__( 'row', 'kirki' ),
 			'add-new'           => esc_attr__( 'Add new', 'kirki' ),
 			'select-page'       => esc_attr__( 'Select a Page', 'kirki' ),
+			/* translators: %s represents the number of rows we're limiting the repeater to allow. */
 			'limit-rows'        => esc_attr__( 'Limit: %s rows', 'kirki' ),
 			'hex-value'         => esc_attr__( 'Hex Value', 'kirki' ),
 			'no-image-selected' => esc_attr__( 'No Image Selected', 'kirki' ),

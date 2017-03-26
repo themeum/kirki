@@ -11,7 +11,6 @@
  * GitHub Plugin URI: aristath/ariColor
  * GitHub Plugin URI: https://github.com/aristath/ariColor
  *
- *
  * @package     ariColor
  * @category    Core
  * @author      Aristeides Stathopoulos
@@ -19,6 +18,8 @@
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
  * @since       1.0
  */
+
+// @codingStandardsIgnoreFile
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -199,16 +200,14 @@ if ( ! class_exists( 'ariColor' ) ) {
 				$this->blue  = max( 0, min( 255, $this->blue ) );
 				$this->alpha = max( 0, min( 255, $this->alpha ) );
 				return self::newColor( 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')', 'rgba' );
-			}
-			// Check if we're changing any of the hsl values
+			} // End if().
 			elseif ( in_array( $property, array( 'hue', 'saturation', 'lightness' ) ) ) {
 				$this->$property  = $value;
 				$this->hue        = max( 0, min( 360, $this->hue ) );
 				$this->saturation = max( 0, min( 100, $this->saturation ) );
 				$this->lightness  = max( 0, min( 100, $this->lightness ) );
 				return self::newColor( 'hsla(' . $this->hue . ',' . $this->saturation . '%,' . $this->lightness . '%,' . $this->alpha . ')', 'hsla' );
-			}
-			// Check if we're changing the brightness
+			} // Check if we're changing the brightness
 			elseif ( 'brightness' == $property ) {
 				if ( $value < $this->brightness['total'] ) {
 					$this->red   = max( 0, min( 255, $this->red - ( $this->brightness['total'] - $value ) ) );
@@ -231,7 +230,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * Figure out what mode we're using.
 		 *
 		 * @param string|array
-		 * @param string $color
+		 * @param string       $color
 		 *
 		 * @return string|null
 		 */
@@ -242,8 +241,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 				if ( isset( $color['rgba'] ) ) {
 					$this->color = $color['rgba'];
 					return 'rgba';
-				}
-				// Does the array have a 'color' key?
+				} // End if().
 				elseif ( isset( $color['color'] ) ) {
 					$this->color = $color['color'];
 					return 'hex';
@@ -252,8 +250,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 				if ( 4 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) && isset( $color[3] ) ) {
 					$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . intval( $color[3] ) . ')';
 					return 'rgba';
-				}
-				// Is this a simple array with 3 items?
+				} // End if().
 				elseif ( 3 == count( $color ) && isset( $color[0] ) && isset( $color[1] ) && isset( $color[2] ) ) {
 					$this->color = 'rgba(' . intval( $color[0] ) . ',' . intval( $color[1] ) . ',' . intval( $color[2] ) . ',' . '1)';
 					return 'rgba';
@@ -284,9 +281,8 @@ if ( ! class_exists( 'ariColor' ) ) {
 				// We did not fail, so use rgba values recovered above.
 				$this->color = 'rgba(' . $this->red . ',' . $this->green . ',' . $this->blue . ',' . $this->alpha . ')';
 				return 'rgba';
-			}
+			} // End if().
 			// If we got this far, it's not an array.
-
 			// Check for key identifiers in the value
 			$finders_keepers = array(
 				'#'    => 'hex',
@@ -452,6 +448,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 
 		/**
 		 * Calculates the red, green, blue values of an HSL color
+		 *
 		 * @see https://gist.github.com/brandonheyer/5254516
 		 */
 		private function from_hsl_array() {
@@ -504,7 +501,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 						$b = $mid2;
 						break;
 				}
-			}
+			} // End if().
 			$this->red   = round( $r * 255, 0 );
 			$this->green = round( $g * 255, 0 );
 			$this->blue  = round( $b * 255, 0 );
@@ -590,7 +587,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 				'red'   => round( $this->red * .299 ),
 				'green' => round( $this->green * .587 ),
 				'blue'  => round( $this->blue * .114 ),
-				'total' => intval( ( $this->red * .299 ) + ( $this->green * .587 ) + ( $this->blue * .114 ) )
+				'total' => intval( ( $this->red * .299 ) + ( $this->green * .587 ) + ( $this->blue * .114 ) ),
 			);
 		}
 
@@ -762,4 +759,4 @@ if ( ! class_exists( 'ariColor' ) ) {
 
 	}
 
-}
+} // End if().

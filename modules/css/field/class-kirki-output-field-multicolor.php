@@ -61,4 +61,4 @@ if ( ! class_exists( 'Kirki_Output_Field_Multicolor' ) ) {
 			}
 		}
 	}
-}
+} // End if().

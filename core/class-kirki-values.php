@@ -112,8 +112,8 @@ class Kirki_Values {
 						$value[ $property_key ] = get_option( $field_id . '_' . $property_key, $property_default );
 					}
 				}
-			}
-		}
+			} // End if().
+		} // End if().
 
 		return apply_filters( 'kirki/values/get_value', $value, $field_id );
 

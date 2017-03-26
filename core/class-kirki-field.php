@@ -540,7 +540,9 @@ class Kirki_Field {
 		// This is just to allow us to process everything the same way and avoid code duplication.
 		// if settings is not an array then it will not be set as an array in the end.
 		if ( ! is_array( $this->settings ) ) {
-			$this->settings = array( 'kirki_placeholder_setting' => $this->settings );
+			$this->settings = array(
+				'kirki_placeholder_setting' => $this->settings,
+			);
 		}
 		$settings = array();
 		foreach ( $this->settings as $setting_key => $setting_value ) {
@@ -686,7 +688,11 @@ class Kirki_Field {
 			return;
 		}
 		if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
-			$this->output = array( array( 'element' => $this->output ) );
+			$this->output = array(
+				array(
+					'element' => $this->output,
+				),
+			);
 		}
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {

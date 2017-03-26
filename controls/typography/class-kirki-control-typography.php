@@ -154,14 +154,20 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$available_variants = array();
 			foreach ( $variants as $variant ) {
 				if ( array_key_exists( $variant, $all_variants ) ) {
-					$available_variants[] = array( 'id' => $variant, 'label' => $all_variants[ $variant ] );
+					$available_variants[] = array(
+						'id' => $variant,
+						'label' => $all_variants[ $variant ],
+					);
 				}
 			}
 
 			$available_subsets = array();
 			foreach ( $subsets as $subset ) {
 				if ( array_key_exists( $subset, $all_subsets ) ) {
-					$available_subsets[] = array( 'id' => $subset, 'label' => $all_subsets[ $subset ] );
+					$available_subsets[] = array(
+						'id' => $subset,
+						'label' => $all_subsets[ $subset ],
+					);
 				}
 			}
 
@@ -174,7 +180,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		}
 		$final = array(
 			'standard' => $standard_fonts_final,
-			'google'   => $google_fonts_final ,
+			'google'   => $google_fonts_final,
 		);
 		wp_localize_script( 'kirki-typography', 'kirkiAllFonts', $final );
 

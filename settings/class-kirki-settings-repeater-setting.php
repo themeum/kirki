@@ -83,4 +83,4 @@ if ( ! class_exists( 'Kirki_Settings_Repeater_Setting' ) ) {
 
 		}
 	}
-}
+} // End if().

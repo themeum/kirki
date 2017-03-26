@@ -172,7 +172,7 @@ class Kirki_Active_Callback {
 			default:
 				$show = ( $value1 == $value2 ) ? true : false;
 
-		}
+		} // End switch().
 
 		if ( isset( $show ) ) {
 			return $show;

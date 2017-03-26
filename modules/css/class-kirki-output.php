@@ -154,7 +154,7 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 
 				$value = $this->process_value( $value, $output );
 				$this->process_output( $output, $value );
-			}
+			} // End foreach().
 		}
 
 		/**
@@ -227,4 +227,4 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 			return $this->styles;
 		}
 	}
-}
+} // End if().

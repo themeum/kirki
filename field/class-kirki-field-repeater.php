@@ -132,11 +132,11 @@ class Kirki_Field_Repeater extends Kirki_Field {
 						case 'textarea':
 							$subfield_value = wp_kses_post( $subfield_value );
 
-					}
-				}
+					} // End switch().
+				} // End if().
 				$value[ $row_id ][ $subfield_id ] = $subfield_value;
-			}
-		}
+			} // End foreach().
+		} // End foreach().
 
 		return $value;
 	}

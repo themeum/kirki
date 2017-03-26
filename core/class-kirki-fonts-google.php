@@ -230,8 +230,8 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 							}
 						}
 					}
-				}
-			}
+				} // End if().
+			} // End if().
 		}
 
 		/**
@@ -338,4 +338,4 @@ if ( ! class_exists( 'Kirki_Fonts_Google' ) ) {
 
 		}
 	}
-}
+} // End if().

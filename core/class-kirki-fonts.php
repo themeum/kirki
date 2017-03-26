@@ -241,4 +241,4 @@ if ( ! class_exists( 'Kirki_Fonts' ) ) {
 			return $fonts_array;
 		}
 	}
-}
+} // End if().

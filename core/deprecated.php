@@ -11,6 +11,8 @@
  * @since       1.0
  */
 
+// @codingStandardsIgnoreFile
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

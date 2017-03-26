@@ -72,4 +72,4 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Position' ) ) {
 			$this->value = $x . ' ' . $y;
 		}
 	}
-}
+} // End if().

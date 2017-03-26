@@ -13,7 +13,7 @@
 /**
  * Handles translations
  */
-class Kirki_l10n {
+class Kirki_L10n {
 
 	/**
 	 * The plugin textdomain
