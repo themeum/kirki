@@ -105,9 +105,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'selectize', trailingslashit( Kirki::$url ) . 'controls/typography/selectize.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'controls/select/select2/js/select2.full.js', array( 'jquery' ), false, true );
+		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'controls/select/select2/css/select2.min.css', null );
+		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'controls/typography/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'selectize', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
 
 		// Add fonts to our JS objects.
 		$google_fonts   = Kirki_Fonts::get_google_fonts();
@@ -170,7 +172,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				'subsets'      => $available_subsets,
 			);
 		}
-		$final = array_merge( $standard_fonts_final, $google_fonts_final );
+		$final = array(
+			'standard' => $standard_fonts_final,
+			'google'   => $google_fonts_final ,
+		);
 		wp_localize_script( 'kirki-typography', 'kirkiAllFonts', $final );
 
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
@@ -219,6 +224,24 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 		$this->json['show_variants'] = ( true === Kirki_Fonts_Google::$force_load_all_variants ) ? false : true;
 		$this->json['show_subsets']  = ( true === Kirki_Fonts_Google::$force_load_all_subsets ) ? false : true;
+		$this->json['languages'] = array(
+			'cyrillic'     => 'Cyrillic',
+			'cyrillic-ext' => 'Cyrillic Extended',
+			'devanagari'   => 'Devanagari',
+			'greek'        => 'Greek',
+			'greek-ext'    => 'Greek Extended',
+			'khmer'        => 'Khmer',
+			'latin'        => 'Latin',
+			'latin-ext'    => 'Latin Extended',
+			'vietnamese'   => 'Vietnamese',
+			'hebrew'       => 'Hebrew',
+			'arabic'       => 'Arabic',
+			'bengali'      => 'Bengali',
+			'gujarati'     => 'Gujarati',
+			'tamil'        => 'Tamil',
+			'telugu'       => 'Telugu',
+			'thai'         => 'Thai',
+		);
 	}
 
 	/**
@@ -249,7 +272,9 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 				<div class="font-family">
 					<h5>{{ data.l10n['font-family'] }}</h5>
-					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
+					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}">
+						<option value="{{ data.value['font-family'] }}" selected="selected">{{ data.value['font-family'] }}</option>
+					</select>
 				</div>
 				<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 					<div class="variant hide-on-standard-fonts kirki-variant-wrapper">
@@ -260,7 +285,12 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# if ( true === data.show_subsets ) { #>
 					<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
 						<h5>{{ data.l10n['subsets'] }}</h5>
-						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}"></select>
+						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}" multiple>
+							<# console.log( data.value.subsets ); #>
+							<# _.each( data.value.subsets, function( subset ) { #>
+								<option value="{{ subset }}" selected="selected">{{ data.languages[ subset ] }}</option>
+							<# } ); #>
+						</select>
 					</div>
 				<# } #>
 			<# } #>

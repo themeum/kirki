@@ -273,6 +273,17 @@ class Kirki_Field {
 	protected $button_labels = array();
 
 	/**
+	 * Use only on select controls.
+	 * Defines if this is a multi-select or not.
+	 * If value is > 1, then the maximum number of selectable options
+	 * is the number defined here.
+	 *
+	 * @access protected
+	 * @var integer
+	 */
+	protected $multiple = 1;
+
+	/**
 	 * The class constructor.
 	 * Parses and sanitizes all field arguments.
 	 * Then it adds the field to Kirki::$fields.

@@ -25,7 +25,6 @@ module.exports = function( grunt ) {
 					'controls/date/date.css':                       'controls/date/date.scss',
 					'controls/dimension/dimension.css':             'controls/dimension/dimension.scss',
 					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
-					'controls/dropdown-pages/selectize.css':        'controls/dropdown-pages/selectize.scss',
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
