@@ -218,7 +218,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		var variants = false;
 
 		_.each( kirkiAllFonts.google, function( font ) {
-			// console.log( font.family );
 			if ( font.family === fontFamily ) {
 				variants = font.variants;
 			}
