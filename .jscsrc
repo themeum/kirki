@@ -7,6 +7,5 @@
     	"assets/js/vendor/**",
     	"assets/js/vendor",
 		"controls/sortable/serialize.js",
-		"controls/**/selectize.js"
     ]
 }

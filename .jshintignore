@@ -2,4 +2,3 @@
 assets/js/vendor/
 Gruntfile.js
 controls/sortable/serialize.js
-controls/**/selectize.js

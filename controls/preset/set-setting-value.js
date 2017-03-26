@@ -6,7 +6,6 @@ function kirkiSetSettingValue( setting, value ) {
 	 */
 	var subControl = wp.customize.settings.controls[ setting ],
 	    $select,
-	    selectize,
 	    controlType,
 	    alphaColorControl,
 	    typographyColor;
@@ -53,9 +52,7 @@ function kirkiSetSettingValue( setting, value ) {
 	} else if ( 'kirki-select' === controlType || 'kirki-preset' === controlType ) {
 
 		// Update the value visually in the control
-		$select = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).selectize();
-		selectize = $select[0].selectize;
-		selectize.setValue( value, true );
+		$select = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).select2().val( value );
 
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
@@ -125,40 +122,19 @@ function kirkiSetSettingValue( setting, value ) {
 
 		if ( 'undefined' !== typeof value['font-family'] ) {
 
-			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).selectize();
-
-			if ( 'undefined' !== typeof select ) {
-				selectize = $select[0].selectize;
-
-				// Update the value visually in the control
-				selectize.setValue( value['font-family'], true );
-			}
+			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).select2().val( value['font-family'] );
 
 		}
 
 		if ( 'undefined' !== typeof value.variant ) {
 
-			$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).selectize();
-
-			if ( 'undefined' !== typeof select ) {
-				selectize = $select[0].selectize;
-
-				// Update the value visually in the control
-				selectize.setValue( value.variant, true );
-			}
+			$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).select2().val( value.variant );
 
 		}
 
 		if ( 'undefined' !== typeof value.subsets ) {
 
-			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).selectize();
-
-			if ( 'undefined' !== typeof select ) {
-				selectize = $select[0].selectize;
-
-				// Update the value visually in the control
-				selectize.setValue( value.subset, true );
-			}
+			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).select2().val( value.subset );
 
 		}
 

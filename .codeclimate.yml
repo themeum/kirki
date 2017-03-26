@@ -46,7 +46,6 @@ ratings:
 exclude_paths:
 - controls/sortable/serialize.js
 - controls/code/codemirror/*
-- controls/**/selectize.js
 - assets/js/vendor/*
 - lib/class-aricolor.php
 - tests/*

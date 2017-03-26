@@ -853,7 +853,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	},
 
 	/**
-	 * Init the dropdown-pages field with selectize
+	 * Init the dropdown-pages field with select2
 	 * Called after AddRow
 	 *
 	 * @param {object} theNewRow the row that was added to the repeater
@@ -867,20 +867,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var control  = this,
 		    dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
 		    $select,
-		    selectize,
 		    dataField;
 
 		if ( 0 === dropdown.length ) {
 			return;
 		}
 
-		$select   = jQuery( dropdown ).selectize();
-		selectize = $select[0].selectize;
 		dataField = dropdown.data( 'field' );
-
-		if ( data ) {
-			selectize.setValue( data[dataField] );
-		}
+		$select   = jQuery( dropdown ).select2().val( data[ dataField ] );
 
 		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
 

@@ -5,11 +5,7 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-		    element = this.container.find( 'select' ),
 		    selectValue;
-
-		// Init selectize
-		jQuery( element ).selectize();
 
 		// Trigger a change
 		this.container.on( 'change', 'select', function() {
