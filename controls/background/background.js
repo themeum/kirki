@@ -48,9 +48,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 					    preview,
 					    removeButton;
 
-					if ( undefined !== uploadedImage.toJSON().sizes.medium ) {
+					if ( 'undefined' !== typeof uploadedImage.toJSON().sizes.medium ) {
 						previewImage = uploadedImage.toJSON().sizes.medium.url;
-					} else if ( undefined !== uploadedImage.toJSON().sizes.thumbnail ) {
+					} else if ( 'undefined' !== typeof uploadedImage.toJSON().sizes.thumbnail ) {
 						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
 					}
 
