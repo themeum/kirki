@@ -27,8 +27,8 @@ if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
 				if ( empty( $this->value ) ) {
 					return;
 				}
-				
-				if( preg_match('/^\d+$/', $this->value) ){
+
+				if ( preg_match( '/^\d+$/', $this->value ) ) {
 					$this->value = 'url("' . wp_get_attachment_url( $this->value ) . '")';
 				} else {
 					$this->value = 'url("' . $this->value . '")';
