@@ -1,0 +1,25 @@
+.customize-control-kirki-background .background-attachment h4,
+.customize-control-kirki-background .background-color h4,
+.customize-control-kirki-background .background-position h4,
+.customize-control-kirki-background .background-repeat h4,
+.customize-control-kirki-background .background-size h4 {
+  margin-bottom: 5px; }
+.customize-control-kirki-background .background-attachment .buttonset,
+.customize-control-kirki-background .background-size .buttonset {
+  display: flex;
+  flex-wrap: wrap; }
+  .customize-control-kirki-background .background-attachment .buttonset .switch-label,
+  .customize-control-kirki-background .background-size .buttonset .switch-label {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #555;
+    padding: 0.5em 1em;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1; }
+  .customize-control-kirki-background .background-attachment .buttonset .switch-input:checked + .switch-label,
+  .customize-control-kirki-background .background-size .buttonset .switch-input:checked + .switch-label {
+    background-color: #3498DB;
+    color: #fff; }
+
+/*# sourceMappingURL=background.css.map */

@@ -414,11 +414,6 @@ class Kirki_Field {
 		// Add the field to the static $fields variable properly indexed.
 		Kirki::$fields[ $this->settings ] = $args;
 
-		if ( 'background' === $this->type ) {
-			// Build the background fields.
-			Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
-		}
-
 	}
 
 	/**

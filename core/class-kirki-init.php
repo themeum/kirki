@@ -89,6 +89,7 @@ class Kirki_Init {
 			$wp_customize->register_section_type( $section_type );
 		}
 
+		$wp_customize->register_control_type( 'Kirki_Control_Background' );
 		$wp_customize->register_control_type( 'Kirki_Control_Code' );
 		$wp_customize->register_control_type( 'Kirki_Control_Color' );
 		$wp_customize->register_control_type( 'Kirki_Control_Color_Palette' );

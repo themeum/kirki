@@ -105,6 +105,7 @@ class Kirki_Control {
 
 		self::$control_types = apply_filters( 'kirki/control_types', array(
 			'checkbox'              => 'WP_Customize_Control',
+			'kirki-background'      => 'Kirki_Control_Background',
 			'kirki-code'            => 'Kirki_Control_Code',
 			'kirki-color'           => 'Kirki_Control_Color',
 			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
