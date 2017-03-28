@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
 
+					'controls/background/background.css':           'controls/background/background.scss',
 					'controls/code/code.css':                       'controls/code/code.scss',
 					'controls/color/color.css':                     'controls/color/color.scss',
 					'controls/color-palette/color-palette.css':     'controls/color-palette/color-palette.scss',

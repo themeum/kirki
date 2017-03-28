@@ -416,7 +416,7 @@ class Kirki_Field {
 
 		if ( 'background' === $this->type ) {
 			// Build the background fields.
-			Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
+			// Kirki::$fields = Kirki_Explode_Background_Field::process_fields( Kirki::$fields );
 		}
 
 	}
