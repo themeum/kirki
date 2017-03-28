@@ -26,6 +26,18 @@ class Kirki_Field_Background extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the $transport
+	 *
+	 * @access protected
+	 */
+	protected function set_transport() {
+
+		// Force using 'refresh' (WIP).
+		$this->transport = 'refresh';
+
+	}
+
+	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
