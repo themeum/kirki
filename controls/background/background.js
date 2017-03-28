@@ -39,7 +39,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			var image = wp.media({ multiple: false }).open().on( 'select', function( e ) {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
-					var uploadedImage = image.state().get('selection').first(),
+					var uploadedImage = image.state().get( 'selection' ).first(),
 					    previewImage   = uploadedImage.toJSON().sizes.full.url,
 					    imageUrl,
 					    imageID,
