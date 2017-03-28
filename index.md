@@ -1,6 +1,18 @@
 ---
 layout: docs
 premium_themes:
+  - name: Eram
+    url: https://themeforest.net/item/eram-innovative-photography-portfolio-theme/19287480
+    thumb: https://image-tf.s3.envato.com/files/222587342/eram-banner-discount.__large_preview.jpg
+  - name: Enderson
+    url: https://themeforest.net/item/henderson-vcard-wordpress-theme/18404329
+    thumb: https://image-tf.s3.envato.com/files/218799078/08_henderson_theme_preview.__large_preview.__large_preview.png
+  - name: Outlook Pro
+    url: https://www.wpfreeware.com/outlook-pro/
+    thumb: https://i2.wp.com/www.wpfreeware.com/wp-content/uploads/2016/11/shop.jpg?zoom=2&fit=900%2C660&ssl=1
+  - name: Redxun
+    url: https://www.wowthemes.net/themes/redxun/
+    thumb: https://www.wowthemes.net/presentation/redxun-presentation-1-features.png
   - name: Carbis
     market: sculptureqode
     url: https://sculptureqode.com/themes/carbis/
@@ -106,6 +118,15 @@ premium_themes:
     url: http://themeforest.net/item/darina-elegant-minimal-blog-theme/14345937
     thumb: https://image-tf.s3.envato.com/files/177891615/darina-preview.__large_preview.jpg
 free_themes:
+  - name: Advance
+    url: https://wordpress.org/themes/advance/
+    thumb: https://i0.wp.com/themes.svn.wordpress.org/advance/1.4.0/screenshot.jpg?w=1142&strip=all
+  - name : Promote Lite
+    url: https://themezwp.com/promote-lite/
+    thumb: https://themezwp.com/wp-content/uploads/2017/01/single-free-2.png
+  - name: Green Ink
+    url: http://pressfore.com/item/green-ink-wordpress-theme/
+    thumb: http://pressfore.com/wp-content/uploads/2017/03/green-ink-item-screenshot-750x400.jpg
   - name: Agama
     url: https://wordpress.org/themes/agama/
     thumb: https://i0.wp.com/themes.svn.wordpress.org/agama/1.2.0/screenshot.png
