@@ -39,8 +39,8 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			var image = wp.media({ multiple: false }).open().on( 'select', function( e ) {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
-					var uploaded_image = image.state().get('selection').first(),
-					    previewImage   = uploaded_image.toJSON().sizes.full.url,
+					var uploadedImage = image.state().get('selection').first(),
+					    previewImage   = uploadedImage.toJSON().sizes.full.url,
 					    imageUrl,
 					    imageID,
 					    imageWidth,
@@ -48,16 +48,16 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 					    preview,
 					    removeButton;
 
-					if ( undefined !== uploaded_image.toJSON().sizes.medium ) {
-						previewImage = uploaded_image.toJSON().sizes.medium.url;
-					} else if ( undefined !== uploaded_image.toJSON().sizes.thumbnail ) {
-						previewImage = uploaded_image.toJSON().sizes.thumbnail.url;
+					if ( undefined !== uploadedImage.toJSON().sizes.medium ) {
+						previewImage = uploadedImage.toJSON().sizes.medium.url;
+					} else if ( undefined !== uploadedImage.toJSON().sizes.thumbnail ) {
+						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
 					}
 
-					imageUrl    = uploaded_image.toJSON().sizes.full.url;
-					imageID     = uploaded_image.toJSON().id;
-					imageWidth  = uploaded_image.toJSON().width;
-					imageHeight = uploaded_image.toJSON().height;
+					imageUrl    = uploadedImage.toJSON().sizes.full.url;
+					imageID     = uploadedImage.toJSON().id;
+					imageWidth  = uploadedImage.toJSON().width;
+					imageHeight = uploadedImage.toJSON().height;
 
 					value['background-image'] = imageUrl;
 					control.saveValue( value );
