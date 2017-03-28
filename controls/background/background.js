@@ -3,8 +3,8 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	ready: function() {
 
 		var control = this,
-		    value   = {},
-		    picker  = this.container.find( '.kirki-color-control' );
+		    value   = control.getValue(),
+		    picker  = control.container.find( '.kirki-color-control' );
 
 		// Color.
 		picker.wpColorPicker({
@@ -61,11 +61,10 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 					value['background-image'] = imageUrl;
 					control.saveValue( value );
+					preview      = control.container.find( '.placeholder, .thumbnail' );
+					removeButton = control.container.find( '.background-image-upload-remove-button' );
 
-					preview      = jQuery( this ).parents( '.background-image-upload' ).find( '.placeholder, .thumbnail' );
-					removeButton = jQuery( this ).parents( '.background-image-upload' ).find( '.background-image-upload-remove-button' );
-
-					if ( previewImage.length ) {
+					if ( preview.length ) {
 						preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
 					}
 					if ( removeButton.length ) {
@@ -76,18 +75,51 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			e.preventDefault();
 		});
 
-		jQuery( 'background-image-upload-remove-button' ).click( function( e ) {
+		jQuery( '.background-image-upload-remove-button' ).click( function( e ) {
 
-			var preview;
+			var preview,
+			    removeButton;
 
 			e.preventDefault();
-			jQuery( this ).parents( '.background-image-upload' ).find( 'input.url' ).val( '' ).trigger( 'change' );
-			preview = jQuery( this ).parents( '.background-image-upload' ).find( '.thumbnail' );
+
+			value['background-image'] = '';
+			control.saveValue( value );
+
+			preview      = control.container.find( '.placeholder, .thumbnail' );
+			removeButton = control.container.find( '.background-image-upload-remove-button' );
+
 			if ( preview.length ) {
 				preview.removeClass().addClass( 'placeholder' ).html( 'No file selected' );
 			}
-			jQuery( this ).hide();
+			if ( removeButton.length ) {
+				removeButton.hide();
+			}
 		});
+	},
+
+	/**
+	 * Gets the value.
+	 */
+	getValue: function() {
+
+		var control = this,
+		    value   = {};
+
+		// Make sure everything we're going to need exists.
+		_.each( control.params['default'], function( defaultParamValue, param ) {
+			if ( false !== defaultParamValue ) {
+				value[ param ] = defaultParamValue;
+				if ( 'undefined' !== typeof control.setting._value[ param ] ) {
+					value[ param ] = control.setting._value[ param ];
+				}
+			}
+		});
+		_.each( control.setting._value, function( subValue, param ) {
+			if ( undefined === value[ param ] || 'undefined' === typeof value[ param ] ) {
+				value[ param ] = subValue;
+			}
+		});
+		return value;
 	},
 
 	/**
