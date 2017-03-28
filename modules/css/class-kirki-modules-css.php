@@ -48,6 +48,7 @@ class Kirki_Modules_CSS {
 
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-generator.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-output.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-background.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-multicolor.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-dimensions.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-typography.php' );
@@ -182,7 +183,7 @@ class Kirki_Modules_CSS {
 			}
 
 			// Only continue if $field['output'] is set.
-			if ( isset( $field['output'] ) && ! empty( $field['output'] ) && 'background' != $field['type'] ) {
+			if ( isset( $field['output'] ) && ! empty( $field['output'] ) ) {
 				$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
 
 				// Add the globals.

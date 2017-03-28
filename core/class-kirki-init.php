@@ -153,9 +153,6 @@ class Kirki_Init {
 
 		global $wp_customize;
 		foreach ( Kirki::$fields as $args ) {
-			if ( isset( $args['type'] ) && 'background' === $args['type'] ) {
-				continue;
-			}
 
 			// Create the settings.
 			new Kirki_Settings( $args );
