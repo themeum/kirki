@@ -109,7 +109,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 			<!-- background-color -->
 			<div class="background-color">
 				<h4>{{ data.l10n['background-color'] }}</h4>
-				<input type="text" data-default-color="{{ data.default['background-color'] }}" value="{{ data.value['background-color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+				<input type="text" data-default-color="{{ data.default['background-color'] }}" data-alpha="true" value="{{ data.value['background-color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 			</div>
 
 			<!-- background-image -->
@@ -154,28 +154,6 @@ class Kirki_Control_Background extends WP_Customize_Control {
 				</select>
 			</div>
 
-			<!-- background-size -->
-			<div class="background-size">
-				<h4>{{ data.l10n['background-size'] }}</h4>
-				<#
-				var sizes = [
-						'cover',
-						'contain',
-						'auto'
-					];
-				#>
-				<select {{{ data.inputAttrs }}} {{{ data.link }}}>
-					<# _.each( sizes, function( size ) { #>
-						<option value="{{ size }}"<# if ( size === data.value['background-size'] ) { #> selected <# } #>>{{ data.l10n[ size ] }}</option>
-					<# }); #>
-				</select>
-			</div>
-
-			<!-- background-attachment -->
-			<!-- <div class="background-attachment">
-				<h4>{{ data.l10n['background-attachment'] }}</h4>
-			</div> -->
-
 			<!-- background-position -->
 			<div class="background-position">
 				<h4>{{ data.l10n['background-position'] }}</h4>
@@ -197,6 +175,48 @@ class Kirki_Control_Background extends WP_Customize_Control {
 						<option value="{{ position }}"<# if ( position === data.value['background-position'] ) { #> selected <# } #>>{{ data.l10n[ position ] }}</option>
 					<# }); #>
 				</select>
+			</div>
+
+			<!-- background-size -->
+			<div class="background-size">
+				<h4>{{ data.l10n['background-size'] }}</h4>
+				<#
+				var sizes = [
+						'cover',
+						'contain',
+						'auto'
+					];
+				#>
+				<div class="buttonset">
+					<# _.each( sizes, function( size ) { #>
+						<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="{{ size }}" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}{{ size }}" {{{ data.link }}}<# if ( size === data.value['background-size'] ) { #> checked="checked" <# } #>>
+							<label class="switch-label switch-label-<# if ( size === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ size }}">
+								{{ data.l10n[ size ] }}
+							</label>
+						</input>
+					<# }); #>
+				</div>
+			</div>
+
+			<!-- background-attachment -->
+			<div class="background-attachment">
+				<h4>{{ data.l10n['background-attachment'] }}</h4>
+				<#
+				var attachments = [
+						'scroll',
+						'fixed',
+						'local'
+					];
+				#>
+				<div class="buttonset">
+					<# _.each( attachments, function( attachment ) { #>
+						<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="{{ attachment }}" name="_customize-bg-{{{ data.id }}}-attachment" id="{{ data.id }}{{ attachment }}" {{{ data.link }}}<# if ( attachment === data.value['background-attachment'] ) { #> checked="checked" <# } #>>
+							<label class="switch-label switch-label-<# if ( attachment === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ attachment }}">
+								{{ data.l10n[ attachment ] }}
+							</label>
+						</input>
+					<# }); #>
+				</div>
 			</div>
 		<?php
 	}
@@ -230,6 +250,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 
 			'fixed'                 => esc_attr__( 'Fixed', 'kirki' ),
 			'scroll'                => esc_attr__( 'Scroll', 'kirki' ),
+			'local'                 => esc_attr__( 'Local', 'kirki' ),
 
 			'left top'              => esc_attr__( 'Left Top', 'kirki' ),
 			'left center'           => esc_attr__( 'Left Center', 'kirki' ),

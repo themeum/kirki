@@ -22,15 +22,21 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			control.saveValue( value );
 		});
 
-		// Background-Repeat.
-		control.container.on( 'change', '.background-size select', function() {
+		// Background-Size.
+		control.container.on( 'change click', '.background-size input', function() {
 			value['background-size'] = jQuery( this ).val();
 			control.saveValue( value );
 		});
 
-		// Background-Repeat.
+		// Background-Position.
 		control.container.on( 'change', '.background-position select', function() {
 			value['background-position'] = jQuery( this ).val();
+			control.saveValue( value );
+		});
+
+		// Background-Attachment.
+		control.container.on( 'change click', '.background-attachment input', function() {
+			value['background-attachment'] = jQuery( this ).val();
 			control.saveValue( value );
 		});
 
