@@ -20,10 +20,12 @@
 }
 
 div.mce-inline-toolbar-grp {
-  .ui-autocomplete {
-    &.wplink-autocomplete {
-      z-index: 500000 !important;
-    }
+  z-index: 500000 !important;
+}
+
+.ui-autocomplete {
+  &.wplink-autocomplete {
+    z-index: 500000 !important;
   }
 }
 

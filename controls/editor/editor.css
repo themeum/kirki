@@ -14,7 +14,10 @@
   #kirki_editor_pane.hide {
     bottom: -301px; }
 
-div.mce-inline-toolbar-grp .ui-autocomplete.wplink-autocomplete {
+div.mce-inline-toolbar-grp {
+  z-index: 500000 !important; }
+
+.ui-autocomplete.wplink-autocomplete {
   z-index: 500000 !important; }
 
 #wp-link-wrap,
