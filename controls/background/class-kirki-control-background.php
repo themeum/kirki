@@ -1,4 +1,16 @@
 <?php
+/**
+ * Customizer Control: background.
+ *
+ * Creates a new custom control.
+ * Custom controls contains all background-related options.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       1.0
+ */
 
 class Kirki_Control_Background extends WP_Customize_Control {
 
@@ -37,7 +49,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 
 		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
 		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
-    }
+	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
