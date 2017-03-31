@@ -1,5 +1,5 @@
 .customize-control-repeater .repeater-fields .repeater-row {
-  border: 1px solid #999;
+  border: 1px solid #e5e5e5;
   margin-top: 0.5rem;
   background: #eee;
   position: relative; }
@@ -7,7 +7,7 @@
     border: 1px solid #dfdfdf;
     padding: 0; }
     .customize-control-repeater .repeater-fields .repeater-row.minimized:hover {
-      border: 1px solid #999; }
+      border: 1px solid #e5e5e5; }
     .customize-control-repeater .repeater-fields .repeater-row.minimized .repeater-row-content {
       display: none; }
   .customize-control-repeater .repeater-fields .repeater-row label {
@@ -29,7 +29,8 @@
 .customize-control-repeater button.repeater-add {
   margin-top: 1rem; }
 .customize-control-repeater .repeater-row-content {
-  padding: 10px 15px; }
+  padding: 10px 15px;
+  background: #fff; }
 .customize-control-repeater .repeater-field {
   margin-bottom: 12px;
   width: 100%;
@@ -58,7 +59,7 @@
   resize: vertical; }
 .customize-control-repeater .repeater-row-header {
   background: white;
-  border: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
   position: relative;
   padding: 10px 15px;
   height: auto;

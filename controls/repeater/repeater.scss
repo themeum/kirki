@@ -1,7 +1,7 @@
 .customize-control-repeater {
   .repeater-fields {
     .repeater-row {
-      border: 1px solid #999;
+      border: 1px solid #e5e5e5;
       margin-top: 0.5rem;
       background: #eee;
       position: relative;
@@ -11,7 +11,7 @@
         padding: 0;
 
         &:hover {
-          border: 1px solid #999;
+          border: 1px solid #e5e5e5;
         }
 
         .repeater-row-content {
@@ -62,6 +62,7 @@
 
   .repeater-row-content {
     padding: 10px 15px;
+    background: #fff;
   }
 
   .repeater-field {
@@ -110,7 +111,7 @@
 
   .repeater-row-header {
     background: white;
-    border: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
     position: relative;
     padding: 10px 15px;
     height: auto;
