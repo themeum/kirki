@@ -32,12 +32,53 @@ class Kirki_Field_Number extends Kirki_Field {
 	 */
 	protected function set_sanitize_callback() {
 
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
-		}
-		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'number' );
+		$this->sanitize_callback = array( $this, 'sanitize' );
 
 	}
+
+	/**
+	 * Sanitizes checkbox values.
+	 *
+	 * @static
+	 * @access public
+	 * @param boolean|integer|string|null $value The checkbox value.
+	 * @return bool
+	 */
+	public static function sanitize( $value = null ) {
+
+		$value = ( is_numeric( $value ) ) ? $value : intval( $value );
+
+		// Minimum value limit.
+		if ( isset( $this->choices['min'] ) ) {
+			$min = ( is_numeric( $this->choices['min'] ) ) ? $this->choices['min'] : intval( $this->choices['min'] );
+			if ( $value < $min ) {
+				$value = $min;
+			}
+		}
+
+		// Maximum value limit.
+		if ( isset( $this->choices['max'] ) ) {
+			$max = ( is_numeric( $this->choices['max'] ) ) ? $this->choices['max'] : intval( $this->choices['max'] );
+			if ( $value > $max ) {
+				$value = $max;
+			}
+		}
+
+		// Step divider.
+		if ( isset( $this->choices['min'] ) && isset( $this->choices['step'] ) ) {
+			$min   = ( is_numeric( $this->choices['min'] ) ) ? $this->choices['min'] : intval( $this->choices['min'] );
+			$max   = ( is_numeric( $this->choices['max'] ) ) ? $this->choices['max'] : intval( $this->choices['max'] );
+			$step  = ( is_numeric( $this->choices['step'] ) ) ? $this->choices['step'] : intval( $this->choices['step'] );
+			$valid = range( $min, $max, $step );
+			foreach ( $valid as $possible_value ) {
+				$smallest[ $possible_value ] = abs( $possible_value - $value );
+			}
+			asort( $smallest );
+			$value = key( $smallest );
+		}
+
+		return $value;
+
+	}
+
 }

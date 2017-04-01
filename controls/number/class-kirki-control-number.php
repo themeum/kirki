@@ -44,12 +44,21 @@ class Kirki_Control_Number extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
+	 * The kirki_config we're using for this control
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $kirki_config = 'global';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
+		wp_localize_script( 'kirki-number', 'kirkiL10n', $this->l10n() );
 		wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
 	}
 
@@ -70,6 +79,7 @@ class Kirki_Control_Number extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
+		$this->json['l10n']    = $this->l10n();
 
 		if ( 'user_meta' === $this->option_type ) {
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
@@ -106,5 +116,22 @@ class Kirki_Control_Number extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php
+	}
+
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = false ) {
+		$translation_strings = array(
+			'min-error'  => esc_attr__( 'Value lower than allowed minimum', 'kirki' ),
+			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),
+			'step-error' => esc_attr__( 'Invalid Value', 'kirki' ),
+		);
+		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
 	}
 }
