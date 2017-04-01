@@ -292,7 +292,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 					<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
 						<h5>{{ data.l10n['subsets'] }}</h5>
 						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}" multiple>
-							<# console.log( data.value.subsets ); #>
 							<# _.each( data.value.subsets, function( subset ) { #>
 								<option value="{{ subset }}" selected="selected">{{ data.languages[ subset ] }}</option>
 							<# } ); #>
