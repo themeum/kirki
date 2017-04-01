@@ -126,6 +126,9 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							break;
 						case 'select':
 							if ( isset( $this->fields[ $subfield_id ]['multiple'] ) ) {
+								if ( true === $this->fields[ $subfield_id ]['multiple'] ) {
+									$multiple = 2;
+								}
 								$multiple = (int) $this->fields[ $subfield_id ]['multiple'];
 								if ( 1 < $multiple ) {
 									$subfield_value = (array) $subfield_value;
