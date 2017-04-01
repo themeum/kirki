@@ -1,10 +1,9 @@
 /*jshint -W065 */
-var RepeaterRow = function( rowIndex, container, label ) {
+var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	'use strict';
 
 	var self        = this;
-
 	this.rowIndex   = rowIndex;
 	this.container  = container;
 	this.label      = label;
@@ -56,6 +55,17 @@ var RepeaterRow = function( rowIndex, container, label ) {
 			if ( 'function' === typeof rowLabelField.val ) {
 				rowLabel = rowLabelField.val();
 				if ( '' !== rowLabel ) {
+					if ( 'undefined' !== typeof control.params.fields[ this.label.field ] ) {
+						if ( 'undefined' !== typeof control.params.fields[ this.label.field ].type ) {
+							if ( 'select' === control.params.fields[ this.label.field ].type ) {
+								if ( 'undefined' !== typeof control.params.fields[ this.label.field ].choices ) {
+									if ( 'undefined' !== typeof control.params.fields[ this.label.field ].choices[ rowLabelField.val() ] ) {
+										rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
+									}
+								}
+							}
+						}
+					}
 					this.header.find( '.repeater-row-label' ).text( rowLabel );
 					return;
 				}
@@ -662,7 +672,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			newRow = new RepeaterRow(
 				control.currentIndex,
 				jQuery( template ).appendTo( control.repeaterFieldsContainer ),
-				control.params.row_label
+				control.params.row_label,
+				control
 			);
 
 			newRow.container.on( 'row:remove', function( e, rowIndex ) {
