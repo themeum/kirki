@@ -65,3 +65,9 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' 
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );
+
+$custom_config_path = dirname( __FILE__ ) . '/custom-config.php';
+$custom_config_path = wp_normalize_path( $custom_config_path );
+if ( file_exists( $custom_config_path ) ) {
+	include_once( $custom_config_path );
+}
