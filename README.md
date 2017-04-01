@@ -1,12 +1,12 @@
 # Kirki #
-**Contributors:** aristath, fovoc, igmoweb
-**Tags:** customizer,options framework, theme, mods, toolkit
-**Donate link:** http://kirki.org/
-**Requires at least:** 4.4
-**Tested up to:** 4.6.1
-**Stable tag:** 2.3.7
-**License:** GPLv2 or later
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+**Contributors:** aristath, fovoc, igmoweb  
+**Tags:** customizer,options framework, theme, mods, toolkit  
+**Donate link:** http://kirki.org/  
+**Requires at least:** 4.4  
+**Tested up to:** 4.7.3  
+**Stable tag:** 2.3.7  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
 The ultimate toolkit for theme developers using the WordPress Customizer
 
@@ -42,8 +42,15 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Spacing controls now work with presets.
 * Fix: Spacing controls now properly resetting.
 * Fix: PHP mode on CodeMirror.
+* Fix: Dynamic repeater labels now use the label instead of value when picking up label from select field.
+* Fix: Multi-selects in repeater fields.
+* Fix: Sanitization for repeater fields using multi-selects.
+* Fix: Sanitization for number fields.
+* Fix: Checkboxes sanitization.
+* Fix: Link functionality in editor field.
 * New: Added new background control-type.
 * New: Replaced selectize with select2.
+* New: Notifications for number fields when value is invalid depending on min/max/step values.
 * New: Rebuilt typography control using select2.
 * New: Allow modifying values instead of replacing them when using `js_vars` with `function` set to `html` by using the `value_pattern` parameter and the `%value%` placeholder. See comment on https://github.com/aristath/kirki/pull/1137#issuecomment-261765175
 * New: Updated CodeMirror.

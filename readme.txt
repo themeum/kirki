@@ -42,8 +42,15 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Spacing controls now work with presets.
 * Fix: Spacing controls now properly resetting.
 * Fix: PHP mode on CodeMirror.
+* Fix: Dynamic repeater labels now use the label instead of value when picking up label from select field.
+* Fix: Multi-selects in repeater fields.
+* Fix: Sanitization for repeater fields using multi-selects.
+* Fix: Sanitization for number fields.
+* Fix: Checkboxes sanitization.
+* Fix: Link functionality in editor field.
 * New: Added new background control-type.
 * New: Replaced selectize with select2.
+* New: Notifications for number fields when value is invalid depending on min/max/step values.
 * New: Rebuilt typography control using select2.
 * New: Allow modifying values instead of replacing them when using `js_vars` with `function` set to `html` by using the `value_pattern` parameter and the `%value%` placeholder. See comment on https://github.com/aristath/kirki/pull/1137#issuecomment-261765175
 * New: Updated CodeMirror.
