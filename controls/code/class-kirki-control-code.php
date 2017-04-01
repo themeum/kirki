@@ -54,27 +54,27 @@ class Kirki_Control_Code extends WP_Customize_Control {
 	public function enqueue() {
 
 		// Register codemirror.
-		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/lib/codemirror.js', array( 'jquery' ) );
+		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
 
 		// If we're using html mode, we'll also need to include the multiplex addon
 		// as well as dependencies for XML, JS, CSS languages.
 		if ( in_array( $this->choices['language'], array( 'html', 'htmlmixed' ), true ) ) {
-			wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-css', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/css/css.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
+			wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-css', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/css/css.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
 		} elseif ( 'php' === $this->choices['language'] ) {
-			wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-clike', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/clike/clike.js', array( 'jquery', 'codemirror' ) );
-			wp_enqueue_script( 'codemirror-language-php', trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/php/php.js', array( 'jquery', 'codemirror', 'codemirror-language-xml', 'codemirror-language-clike' ) );
+			wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-clike', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/clike/clike.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-php', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/php/php.js', array( 'jquery', 'codemirror', 'codemirror-language-xml', 'codemirror-language-clike' ) );
 		} else {
 			// Add language script.
-			wp_enqueue_script( 'codemirror-language-' . $this->choices['language'], trailingslashit( Kirki::$url ) . 'controls/code/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js', array( 'jquery', 'codemirror' ) );
+			wp_enqueue_script( 'codemirror-language-' . $this->choices['language'], trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js', array( 'jquery', 'codemirror' ) );
 		}
 
 		// Add theme styles.
-		wp_enqueue_style( 'codemirror-theme-' . $this->choices['theme'], trailingslashit( Kirki::$url ) . 'controls/code/codemirror/theme/' . $this->choices['theme'] . '.css' );
+		wp_enqueue_style( 'codemirror-theme-' . $this->choices['theme'], trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/theme/' . $this->choices['theme'] . '.css' );
 
 		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'controls/code/code.js', array( 'jquery', 'customize-base', 'codemirror' ), false, true );
 		wp_enqueue_style( 'kirki-code-css', trailingslashit( Kirki::$url ) . 'controls/code/code.css', null );
