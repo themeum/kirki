@@ -78,7 +78,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 				setting.notifications.remove( code );
 				if ( 'undefined' !== typeof value.top ) {
 					if ( false === control.kirkiValidateCSSValue( value.top ) ) {
-						subs.top = kirkiL10n.top;
+						subs.top = dimensionkirkiL10n.top;
 					} else {
 						delete subs.top;
 					}
@@ -86,7 +86,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 
 				if ( 'undefined' !== typeof value.bottom ) {
 					if ( false === control.kirkiValidateCSSValue( value.bottom ) ) {
-						subs.bottom = kirkiL10n.bottom;
+						subs.bottom = dimensionkirkiL10n.bottom;
 					} else {
 						delete subs.bottom;
 					}
@@ -94,7 +94,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 
 				if ( 'undefined' !== typeof value.left ) {
 					if ( false === control.kirkiValidateCSSValue( value.left ) ) {
-						subs.left = kirkiL10n.left;
+						subs.left = dimensionkirkiL10n.left;
 					} else {
 						delete subs.left;
 					}
@@ -102,14 +102,14 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 
 				if ( 'undefined' !== typeof value.right ) {
 					if ( false === control.kirkiValidateCSSValue( value.right ) ) {
-						subs.right = kirkiL10n.right;
+						subs.right = dimensionkirkiL10n.right;
 					} else {
 						delete subs.right;
 					}
 				}
 
 				if ( ! _.isEmpty( subs ) ) {
-					message = kirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
+					message = dimensionkirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{

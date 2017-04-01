@@ -39,7 +39,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.Control.extend
 						code,
 						{
 							type: 'warning',
-							message: kirkiL10n['invalid-value']
+							message: dimensionkirkiL10n['invalid-value']
 						}
 					) );
 				} else {

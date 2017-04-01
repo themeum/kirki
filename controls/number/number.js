@@ -75,7 +75,7 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 						code,
 						{
 							type: 'warning',
-							message: kirkiL10n[ invalid ]
+							message: numberKirkiL10n[ invalid ]
 						}
 					) );
 				} else {
