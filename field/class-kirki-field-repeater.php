@@ -125,6 +125,18 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							$subfield_value = (string) intval( $subfield_value );
 							break;
 						case 'select':
+							if ( isset( $this->fields[ $subfield_id ]['multiple'] ) ) {
+								$multiple = (int) $this->fields[ $subfield_id ]['multiple'];
+								if ( 1 < $multiple ) {
+									$subfield_value = (array) $subfield_value;
+									foreach ( $subfield_value as $sub_subfield_key => $sub_subfield_value ) {
+										$subfield_value[ $sub_subfield_key ] = esc_attr( $sub_subfield_value );
+									}
+								} else {
+									$subfield_value = esc_attr( $subfield_value );
+								}
+							}
+							break;
 						case 'radio':
 						case 'radio-image':
 							$subfield_value = esc_attr( $subfield_value );

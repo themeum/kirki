@@ -106,7 +106,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				theNewRow = control.addRow();
 				theNewRow.toggleMinimize();
 				control.initColorPicker();
-				control.initDropdownPages( theNewRow );
+				control.initSelect( theNewRow );
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
@@ -167,7 +167,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			_.each( settingValue, function( subValue ) {
 				theNewRow = control.addRow( subValue );
 				control.initColorPicker();
-				control.initDropdownPages( theNewRow, subValue );
+				control.initSelect( theNewRow, subValue );
 			});
 		}
 
@@ -860,12 +860,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	 * @param {object} data the data for the row if we're initializing a pre-existing row
 	 *
 	 */
-	initDropdownPages: function( theNewRow, data ) {
+	initSelect: function( theNewRow, data ) {
 
 		'use strict';
 
 		var control  = this,
-		    dropdown = theNewRow.container.find( '.repeater-dropdown-pages select' ),
+		    dropdown = theNewRow.container.find( '.repeater-field select' ),
 		    $select,
 		    dataField;
 
@@ -876,7 +876,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		dataField = dropdown.data( 'field' );
 		$select   = jQuery( dropdown ).select2().val( data[ dataField ] );
 
-		this.container.on( 'change', '.repeater-dropdown-pages select', function( event ) {
+		this.container.on( 'change', '.repeater-field select', function( event ) {
 
 			var currentDropdown = jQuery( event.target ),
 				row             = currentDropdown.closest( '.repeater-row' ),

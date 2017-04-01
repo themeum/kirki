@@ -242,10 +242,19 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		// If we have a color picker field we need to enqueue the Wordpress Color Picker style and script.
 		if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
 			foreach ( $this->fields as $field ) {
-				if ( isset( $field['type'] ) && 'color' === $field['type'] ) {
-					wp_enqueue_script( 'wp-color-picker' );
-					wp_enqueue_style( 'wp-color-picker' );
-					break;
+				if ( isset( $field['type'] ) ) {
+
+					// Some field-types require extra scripts.
+					switch ( $field['type'] ) {
+						case 'color':
+							wp_enqueue_script( 'wp-color-picker' );
+							wp_enqueue_style( 'wp-color-picker' );
+							break;
+						case 'select':
+							wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'controls/repeater/select2/js/select2.full.js', array( 'jquery' ), false, true );
+							wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'controls/repeater/select2/css/select2.min.css', null );
+							break;
+					}
 				}
 			}
 		}
@@ -345,7 +354,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
-									<select data-field="{{{ field.id }}}">
+									<select data-field="{{{ field.id }}}"<# if ( 'undefined' !== field.multiple && false !== field.multiple ) { #> multiple="multiple"<# } #>>
 										<# _.each( field.choices, function( choice, i ) { #>
 											<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ choice }}</option>
 										<# }); #>
