@@ -37,14 +37,13 @@ class Kirki_Field_Number extends Kirki_Field {
 	}
 
 	/**
-	 * Sanitizes checkbox values.
+	 * Sanitizes numeric values.
 	 *
-	 * @static
 	 * @access public
 	 * @param boolean|integer|string|null $value The checkbox value.
 	 * @return bool
 	 */
-	public static function sanitize( $value = null ) {
+	public function sanitize( $value = null ) {
 
 		$value = ( is_numeric( $value ) ) ? $value : intval( $value );
 
