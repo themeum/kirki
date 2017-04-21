@@ -35,6 +35,20 @@ class Kirki_Field_Repeater extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the $transport
+	 *
+	 * @access protected
+	 */
+	protected function set_transport() {
+
+		// Force using refresh mode.
+		// Currently the repeater control does not support postMessage.
+		$this->transport = 'refresh';
+
+	}
+
+
+	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
