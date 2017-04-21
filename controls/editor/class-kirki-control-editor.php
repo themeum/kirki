@@ -69,7 +69,7 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_localize_script( 'kirki-editor', 'editorkirkiL10n', $this->l10n() );
+		wp_localize_script( 'kirki-editor', 'editorKirkiL10n', $this->l10n() );
 		wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
 	}
 
