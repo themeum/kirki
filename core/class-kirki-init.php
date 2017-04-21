@@ -41,6 +41,9 @@ class Kirki_Init {
 	 * and then does some calculations to get the proper URL for its CSS & JS assets.
 	 */
 	public function set_url() {
+		if ( Kirki::$url ) {
+			return;
+		}
 		if ( defined( 'ABSPATH' ) ) {
 			// Replace path with URL.
 			$kirki_url  = str_replace( ABSPATH, '', Kirki::$path );
