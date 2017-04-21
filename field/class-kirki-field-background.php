@@ -60,7 +60,7 @@ class Kirki_Field_Background extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public static function sanitize( $value ) {
+	public function sanitize( $value ) {
 
 		if ( ! is_array( $value ) ) {
 			return array();
