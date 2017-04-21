@@ -412,24 +412,24 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 							<# } else if ( 'color' === field.type ) { #>
 
 								<# var defaultValue = '';
-						        if ( field.default ) {
-						            if ( '#' !== field.default.substring( 0, 1 ) ) {
-						                defaultValue = '#' + field.default;
-						            } else {
-						                defaultValue = field.default;
-						            }
-						            defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
-						        } #>
-						        <label>
-						            <# if ( field.label ) { #>
-						                <span class="customize-control-title">{{{ field.label }}}</span>
-						            <# } #>
-						            <# if ( field.description ) { #>
-						                <span class="description customize-control-description">{{{ field.description }}}</span>
-						            <# } #>
-						            <input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $this->l10n( 'hex-value' ) ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+								if ( field.default ) {
+									if ( '#' !== field.default.substring( 0, 1 ) ) {
+										defaultValue = '#' + field.default;
+									} else {
+										defaultValue = field.default;
+									}
+									defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+								} #>
+								<label>
+									<# if ( field.label ) { #>
+										<span class="customize-control-title">{{{ field.label }}}</span>
+									<# } #>
+									<# if ( field.description ) { #>
+										<span class="description customize-control-description">{{{ field.description }}}</span>
+									<# } #>
+									<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php echo esc_attr( $this->l10n( 'hex-value' ) ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
-						        </label>
+								</label>
 
 							<# } else if ( 'textarea' === field.type ) { #>
 
