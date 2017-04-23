@@ -129,6 +129,14 @@ if ( ! class_exists( 'Kirki_Output' ) ) {
 				// No need to proceed this if the current value is the same as in the "exclude" value.
 				if ( isset( $output['exclude'] ) && false !== $output['exclude'] && is_array( $output['exclude'] ) ) {
 					foreach ( $output['exclude'] as $exclude ) {
+						if ( is_array( $value ) && is_array( $exclude ) ) {
+							$diff1 = array_diff( $value, $exclude );
+							$diff2 = array_diff( $exclude, $value );
+
+							if ( empty( $diff1 ) && empty( $diff2 ) ) {
+								$skip = true;
+							}
+						}
 						if ( $skip ) {
 							continue;
 						}
