@@ -6,6 +6,11 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		    value   = control.getValue(),
 		    picker  = control.container.find( '.kirki-color-control' );
 
+		// Hide unnecessary controls if the value doesn't have an image.
+		if ( 'undefined' === typeof value['background-image'] || '' === value['background-image'] ) {
+			control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).hide();
+		}
+
 		// Color.
 		picker.wpColorPicker({
 			change: function() {
@@ -66,6 +71,12 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 					imageHeight = uploadedImage.toJSON().height;
 
 					value['background-image'] = imageUrl;
+
+					// Show extra controls if the value has an image.
+					if ( '' !== value['background-image'] ) {
+						control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).show();
+					}
+
 					control.saveValue( value );
 					preview      = control.container.find( '.placeholder, .thumbnail' );
 					removeButton = control.container.find( '.background-image-upload-remove-button' );
@@ -93,6 +104,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 			preview      = control.container.find( '.placeholder, .thumbnail' );
 			removeButton = control.container.find( '.background-image-upload-remove-button' );
+
+			// Hide unnecessary controls.
+			control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).hide();
 
 			if ( preview.length ) {
 				preview.removeClass().addClass( 'placeholder' ).html( 'No file selected' );
