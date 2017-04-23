@@ -139,10 +139,9 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n() {
 		$translation_strings = array(
 			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
 			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),

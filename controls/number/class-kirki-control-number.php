@@ -123,10 +123,9 @@ class Kirki_Control_Number extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n() {
 		$translation_strings = array(
 			'min-error'  => esc_attr__( 'Value lower than allowed minimum', 'kirki' ),
 			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),

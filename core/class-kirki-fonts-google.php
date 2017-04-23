@@ -77,11 +77,39 @@ final class Kirki_Fonts_Google {
 	private $link = '';
 
 	/**
+	 * Which method to use when loading googlefonts.
+	 * Available options: link, js, embed.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var string
+	 */
+	private static $method = array(
+		'global' => 'embed',
+	);
+
+	/**
+	 * Whether we should fallback to the link method or not.
+	 *
+	 * @access private
+	 * @since 3.0.0
+	 * @var bool
+	 */
+	private $fallback_to_link = false;
+
+	/**
 	 * The class constructor.
 	 */
 	private function __construct() {
 
 		$config = apply_filters( 'kirki/config', array() );
+
+		// Get the $fallback_to_link value from transient.
+		$fallback_to_link = get_transient( 'kirki_googlefonts_fallback_to_link' );
+		if ( 'yes' === $fallback_to_link ) {
+			$this->fallback_to_link = true;
+		}
 
 		// If we have set $config['disable_google_fonts'] to true then do not proceed any further.
 		if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
@@ -91,9 +119,47 @@ final class Kirki_Fonts_Google {
 		// Populate the array of google fonts.
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
-		// Enqueue link.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
+		// Process the request.
+		$this->process_request();
 
+	}
+
+	/**
+	 * Processes the request according to the method we're using.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 */
+	protected function process_request() {
+
+		// Figure out which method to use for all.
+		$method = 'link';
+		foreach ( self::$method as $config_id => $method ) {
+			if ( 'embed' === $method && true !== $this->fallback_to_link ) {
+				$method = 'embed';
+			}
+		}
+		foreach ( self::$method as $config_id => $config_method ) {
+
+			switch ( $method ) {
+
+				case 'embed':
+					add_filter( 'kirki/' . $config_id . '/dynamic_css', array( $this, 'embed_css' ) );
+
+					if ( true === $this->fallback_to_link ) {
+						// Fallback to enqueue method.
+						add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
+					}
+					break;
+				case 'js':
+					// TODO: Build a JS method.
+					break;
+				case 'link':
+					// Enqueue link.
+					add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
+					break;
+			}
+		}
 	}
 
 	/**
@@ -334,5 +400,115 @@ final class Kirki_Fonts_Google {
 			'subset' => urlencode( implode( ',', $this->subsets ) ),
 		), 'https://fonts.googleapis.com/css' );
 
+	}
+
+	/**
+	 * Sets the method to use for loading the fonts.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @param string $config_id The config ID. Will be used in a filter later.
+	 * @param string $method    The method to use.
+	 */
+	public static function set_method( $config_id = 'global', $method = 'link' ) {
+
+		$valid_methods = array(
+			'link',
+			'js',
+			'embed',
+		);
+		// Early exit if the defined method is invalid.
+		if ( ! in_array( $method, $valid_methods ) ) {
+			$method = 'embed';
+		}
+		self::$method[ $config_id ] = $method;
+	}
+
+	/**
+	 * Get the contents of a remote google-fonts link.
+	 * Responses get cached for 1 day.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param string $url The link we want to get.
+	 * @return string|false Returns false if there's an error.
+	 */
+	protected function get_url_contents( $url = '' ) {
+
+		// If $url is not set, use $this->link.
+		$url = ( '' === $url ) ? $this->link : $url;
+
+		// Sanitize the URL.
+		$url = esc_url_raw( $url );
+
+		// The transient name.
+		$transient_name = 'kirki_googlefonts_contents_' . md5( $url );
+
+		// Get the transient value.
+		$html = get_transient( $transient_name );
+
+		// Check for transient, if none, grab remote HTML file.
+		if ( false === $html ) {
+
+			// Get remote HTML file.
+			$response = wp_remote_get( $url );
+
+			// Check for error.
+			if ( is_wp_error( $response ) ) {
+				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
+				return false;
+			}
+
+			// Parse remote HTML file.
+			$data = wp_remote_retrieve_body( $response );
+
+			// Check for error.
+			if ( is_wp_error( $data ) ) {
+				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
+				return false;
+			}
+
+			// If empty, return false.
+			if ( ! $data ) {
+				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
+				return false;
+			}
+
+			// Store remote HTML file in transient, expire after 24 hours.
+			set_transient( $transient_name, $data, DAY_IN_SECONDS );
+			set_transient( 'kirki_googlefonts_fallback_to_link', 'no', DAY_IN_SECONDS );
+		}
+
+		return $html;
+
+	}
+
+	/**
+	 * Embeds the CSS from googlefonts API inside the Kirki output CSS.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @param string $css The original CSS.
+	 * @return string     The modified CSS.
+	 */
+	public function embed_css( $css ) {
+
+		// Go through our fields and populate $this->fonts.
+		$this->loop_fields();
+
+		$this->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->fonts );
+
+		// Goes through $this->fonts and adds or removes things as needed.
+		$this->process_fonts();
+
+		// Go through $this->fonts and populate $this->link.
+		$this->create_link();
+
+		// If $this->link is not empty then enqueue it.
+		if ( '' !== $this->link ) {
+			return $this->get_url_contents( $this->link ) . "\n" . $css;
+		}
+		return $css;
 	}
 }
