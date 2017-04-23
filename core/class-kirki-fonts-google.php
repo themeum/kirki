@@ -86,7 +86,7 @@ final class Kirki_Fonts_Google {
 	 * @var string
 	 */
 	private static $method = array(
-		'global' => 'link',
+		'global' => 'embed',
 	);
 
 	/**
@@ -406,7 +406,7 @@ final class Kirki_Fonts_Google {
 		);
 		// Early exit if the defined method is invalid.
 		if ( ! in_array( $method, $valid_methods ) ) {
-			$method = 'link';
+			$method = 'embed';
 		}
 		self::$method[ $config_id ] = $method;
 	}
