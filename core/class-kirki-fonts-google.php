@@ -395,7 +395,8 @@ final class Kirki_Fonts_Google {
 	 * @static
 	 * @access public
 	 * @since 3.0.0
-	 * @param string $method The method to use.
+	 * @param string $config_id The config ID. Will be used in a filter later.
+	 * @param string $method    The method to use.
 	 */
 	public static function set_method( $config_id = 'global', $method = 'link' ) {
 
@@ -417,22 +418,22 @@ final class Kirki_Fonts_Google {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string $link The link we want to get.
+	 * @param string url The link we want to get.
 	 * @return string|false Returns false if there's an error.
 	 */
 	protected function get_url_contents( $url = '' ) {
 
 		// If $url is not set, use $this->link.
 		$url = ( '' === $url ) ? $this->link : $url;
-
 		// Sanitize the URL.
 		$url = esc_url_raw( $url );
+		// The transient name.
+		$transient_name = 'kirki_googlefonts_contents_' . md5( $url );
 
 		// Get the $fallback_to_link value from transient.
 		$fallback_to_link = get_transient( 'kirki_googlefonts_fallback_to_link' );
 
-		// Check for transient, if none, grab remote HTML file
-		$transient_name = 'kirki_googlefonts_contents_' . md5( $url );
+		// Check for transient, if none, grab remote HTML file.
 		if ( false === ( $html = get_transient( $transient_name ) ) ) {
 
 			// Get remote HTML file.
@@ -491,7 +492,6 @@ final class Kirki_Fonts_Google {
 
 		// If $this->link is not empty then enqueue it.
 		if ( '' !== $this->link ) {
-			// var_dump( $this->get_url_contents( $this->link ) . "\n" . $css );
 			return $this->get_url_contents( $this->link ) . "\n" . $css;
 		}
 		return $css;
