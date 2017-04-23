@@ -48,7 +48,8 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	this.updateLabel = function() {
 		var rowLabelField,
-		    rowLabel;
+		    rowLabel,
+		    rowLabelSelector;
 
 		if ( 'field' === this.label.type ) {
 			rowLabelField = this.container.find( '.repeater-field [data-field="' + this.label.field + '"]' );
@@ -63,6 +64,9 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 										rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
 									}
 								}
+							} else if ( 'radio' === control.params.fields[ this.label.field ].type || 'radio-image' === control.params.fields[ this.label.field ].type ) {
+								rowLabelSelector = rowLabelField.selector + ':checked';
+								rowLabel = jQuery( rowLabelSelector ).val();
 							}
 						}
 					}
