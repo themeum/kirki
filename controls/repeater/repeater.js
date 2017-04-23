@@ -882,14 +882,23 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		var control  = this,
 		    dropdown = theNewRow.container.find( '.repeater-field select' ),
 		    $select,
-		    dataField;
+		    dataField,
+		    multiple,
+		    select2Options = {};
 
 		if ( 0 === dropdown.length ) {
 			return;
 		}
 
 		dataField = dropdown.data( 'field' );
-		$select   = jQuery( dropdown ).select2().val( data[ dataField ] );
+		multiple  = jQuery( dropdown ).data( 'multiple' );
+		if ( 'undefed' !== multiple && jQuery.isNumeric( multiple ) ) {
+			multiple = parseInt( multiple );
+			if ( 1 < multiple ) {
+				select2Options.maximumSelectionLength = multiple;
+			}
+		}
+		$select   = jQuery( dropdown ).select2( select2Options ).val( data[ dataField ] );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 

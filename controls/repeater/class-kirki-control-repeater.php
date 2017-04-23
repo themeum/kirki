@@ -355,7 +355,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
-									<select data-field="{{{ field.id }}}"<# if ( 'undefined' !== field.multiple && false !== field.multiple ) { #> multiple="multiple"<# } #>>
+									<select data-field="{{{ field.id }}}"<# if ( 'undefined' !== typeof field.multiple && false !== field.multiple ) { #> multiple="multiple" data-multiple="{{ field.multiple }}"<# } #>>
 										<# _.each( field.choices, function( choice, i ) { #>
 											<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ choice }}</option>
 										<# }); #>
