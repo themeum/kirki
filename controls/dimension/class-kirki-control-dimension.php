@@ -125,10 +125,9 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n() {
 		$translation_strings = array(
 			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
