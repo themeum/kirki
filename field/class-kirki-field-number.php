@@ -69,6 +69,8 @@ class Kirki_Field_Number extends Kirki_Field {
 			$max   = ( is_numeric( $this->choices['max'] ) ) ? $this->choices['max'] : intval( $this->choices['max'] );
 			$step  = ( is_numeric( $this->choices['step'] ) ) ? $this->choices['step'] : intval( $this->choices['step'] );
 			$valid = range( $min, $max, $step );
+
+			$smallest = array();
 			foreach ( $valid as $possible_value ) {
 				$smallest[ $possible_value ] = abs( $possible_value - $value );
 			}
