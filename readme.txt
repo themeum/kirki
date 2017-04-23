@@ -48,6 +48,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Sanitization for number fields.
 * Fix: Checkboxes sanitization.
 * Fix: Link functionality in editor field.
+* New: Added "collapsible" argument to fields.
 * New: Added new background control-type.
 * New: Replaced selectize with select2.
 * New: Notifications for number fields when value is invalid depending on min/max/step values.

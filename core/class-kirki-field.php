@@ -284,6 +284,15 @@ class Kirki_Field {
 	protected $multiple = 1;
 
 	/**
+	 * Allows fields to be collapsible.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @var bool
+	 */
+	protected $collapsible = false;
+
+	/**
 	 * The class constructor.
 	 * Parses and sanitizes all field arguments.
 	 * Then it adds the field to Kirki::$fields.
@@ -852,6 +861,17 @@ class Kirki_Field {
 	protected function set_priority() {
 
 		$this->priority = absint( $this->priority );
+
+	}
+
+	/**
+	 * Sets the $collapsible var.
+	 *
+	 * @access protected
+	 */
+	protected function set_collapsible() {
+
+		$this->collapsible = (bool) $this->collapsible;
 
 	}
 }

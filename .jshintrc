@@ -40,6 +40,7 @@
 		"wpColorPickerL10n": false,
 		"kirkiIcons": false,
 		"fieldDependencies": false,
-		"kirkiResetButtonLabel": false
+		"kirkiResetButtonLabel": false,
+		"collapsible": false
 	}
 }
