@@ -119,6 +119,19 @@ final class Kirki_Fonts_Google {
 		// Populate the array of google fonts.
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
+		// Process the request.
+		$this->process_request();
+
+	}
+
+	/**
+	 * Processes the request according to the method we're using.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 */
+	protected function process_request() {
+
 		// Figure out which method to use for all.
 		$method = 'link';
 		foreach ( self::$method as $config_id => $method ) {
