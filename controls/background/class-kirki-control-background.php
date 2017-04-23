@@ -85,6 +85,20 @@ class Kirki_Control_Background extends WP_Customize_Control {
 	}
 
 	/**
+	 * Render the control's content.
+	 *
+	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
+	 *
+	 * Supports basic input types `text`, `checkbox`, `textarea`, `radio`, `select` and `dropdown-pages`.
+	 * Additional input types such as `email`, `url`, `number`, `hidden` and `date` are supported implicitly.
+	 *
+	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
+	 *
+	 * @since 3.4.0
+	 */
+	protected function render_content() {}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
