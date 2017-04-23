@@ -77,6 +77,17 @@ final class Kirki_Fonts_Google {
 	private $link = '';
 
 	/**
+	 * Which method to use when loading googlefonts.
+	 * Available options: link, js, embed.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var string
+	 */
+	private static $method = 'link';
+
+	/**
 	 * The class constructor.
 	 */
 	private function __construct() {
@@ -91,8 +102,19 @@ final class Kirki_Fonts_Google {
 		// Populate the array of google fonts.
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
-		// Enqueue link.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
+		switch ( self::$method ) {
+
+			case 'embed':
+				// TODO: Build a method for embeds.
+				break;
+			case 'js':
+				// TODO: Build a JS method.
+				break;
+			default:
+				// Enqueue link.
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
+				break;
+		}
 
 	}
 
@@ -334,5 +356,27 @@ final class Kirki_Fonts_Google {
 			'subset' => urlencode( implode( ',', $this->subsets ) ),
 		), 'https://fonts.googleapis.com/css' );
 
+	}
+
+	/**
+	 * Sets the method to use for loading the fonts.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @param string $method The method to use.
+	 */
+	public function set_method( $method = 'link' ) {
+
+		$valid_methods = array(
+			'link',
+			'js',
+			'embed',
+		);
+		// Early exit if the defined method is invalid.
+		if ( ! in_array( $method, $valid_methods ) ) {
+			return;
+		}
+		self::$method = $method;
 	}
 }
