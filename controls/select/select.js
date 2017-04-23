@@ -9,7 +9,11 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 		    element  = this.container.find( 'select' ),
 		    multiple = parseInt( element.data( 'multiple' ) ),
 		    selectValue,
-		    select2Options = {};
+		    select2Options = {
+				escapeMarkup: function( markup ) {
+					return markup;
+				}
+		    };
 
 		if ( 1 < multiple ) {
 			select2Options.maximumSelectionLength = multiple;
