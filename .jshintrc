@@ -32,6 +32,7 @@
 		"serialize":false,
 		"kirkiAllFonts":false,
 		"dimensionkirkiL10n": false,
+		"dimensionskirkiL10n": false,
 		"numberKirkiL10n": false,
 		"dimensionsKirkiL10n": false,
 		"editorKirkiL10n": false,

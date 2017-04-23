@@ -59,18 +59,6 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 	}
 
 	/**
-	 * Sets the $js_vars.
-	 * Currentlly postMessage does not work with spacing fields
-	 * so we have to force using the `refresh` mode.
-	 *
-	 * @access protected
-	 */
-	protected function set_js_vars() {
-		$this->js_vars   = array();
-		$this->transport = 'refresh';
-	}
-
-	/**
 	 * Set the choices.
 	 * Adds a pseudo-element "controls" that helps with the JS API.
 	 *
