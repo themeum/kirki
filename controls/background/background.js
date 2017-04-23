@@ -121,7 +121,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			}
 		});
 		_.each( control.setting._value, function( subValue, param ) {
-			if ( undefined === value[ param ] || 'undefined' === typeof value[ param ] ) {
+			if ( 'undefined' === typeof value[ param ] ) {
 				value[ param ] = subValue;
 			}
 		});
