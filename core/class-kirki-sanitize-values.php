@@ -50,7 +50,8 @@ class Kirki_Sanitize_Values {
 	 * @return bool Whether the checkbox is checked.
 	 */
 	public static function checkbox( $value ) {
-		return (bool) Kirki_Field_Checkbox::sanitize( $value );
+		$obj = new Kirki_Field_Checkbox();
+		return (bool) $obj->sanitize( $value );
 	}
 
 	/**
