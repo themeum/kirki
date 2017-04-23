@@ -448,9 +448,6 @@ final class Kirki_Fonts_Google {
 		// Get the transient value.
 		$html = get_transient( $transient_name );
 
-		// Get the $fallback_to_link value from transient.
-		$fallback_to_link = get_transient( 'kirki_googlefonts_fallback_to_link' );
-
 		// Check for transient, if none, grab remote HTML file.
 		if ( false === $html ) {
 
