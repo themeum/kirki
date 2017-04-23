@@ -10,58 +10,55 @@
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Property' ) ) {
+/**
+ * Output for CSS properties.
+ */
+class Kirki_Output_Property {
 
 	/**
-	 * Output for CSS properties.
+	 * The property we're modifying.
+	 *
+	 * @access protected
+	 * @var string
 	 */
-	class Kirki_Output_Property {
+	protected $property;
 
-		/**
-		 * The property we're modifying.
-		 *
-		 * @access protected
-		 * @var string
-		 */
-		protected $property;
+	/**
+	 * The value
+	 *
+	 * @access protected
+	 * @var string|array
+	 */
+	protected $value;
 
-		/**
-		 * The value
-		 *
-		 * @access protected
-		 * @var string|array
-		 */
-		protected $value;
-
-		/**
-		 * Constructor.
-		 *
-		 * @access public
-		 * @param string $property The CSS property we're modifying.
-		 * @param mixed  $value    The value.
-		 */
-		public function __construct( $property, $value ) {
-			$this->property = $property;
-			$this->value    = $value;
-			$this->process_value();
-		}
-
-		/**
-		 * Modifies the value.
-		 *
-		 * @access protected
-		 */
-		protected function process_value() {
-
-		}
-
-		/**
-		 * Gets the value.
-		 *
-		 * @access protected
-		 */
-		public function get_value() {
-			return $this->value;
-		}
+	/**
+	 * Constructor.
+	 *
+	 * @access public
+	 * @param string $property The CSS property we're modifying.
+	 * @param mixed  $value    The value.
+	 */
+	public function __construct( $property, $value ) {
+		$this->property = $property;
+		$this->value    = $value;
+		$this->process_value();
 	}
-} // End if().
+
+	/**
+	 * Modifies the value.
+	 *
+	 * @access protected
+	 */
+	protected function process_value() {
+
+	}
+
+	/**
+	 * Gets the value.
+	 *
+	 * @access protected
+	 */
+	public function get_value() {
+		return $this->value;
+	}
+}

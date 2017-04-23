@@ -9,30 +9,27 @@
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Output_Property_Background_Image' ) ) {
+/**
+ * Output overrides.
+ */
+class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 
 	/**
-	 * Output overrides.
+	 * Modifies the value.
+	 *
+	 * @access protected
 	 */
-	class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
+	protected function process_value() {
 
-		/**
-		 * Modifies the value.
-		 *
-		 * @access protected
-		 */
-		protected function process_value() {
+		if ( false === strrpos( $this->value, 'url(' ) ) {
+			if ( empty( $this->value ) ) {
+				return;
+			}
 
-			if ( false === strrpos( $this->value, 'url(' ) ) {
-				if ( empty( $this->value ) ) {
-					return;
-				}
-
-				if ( preg_match( '/^\d+$/', $this->value ) ) {
-					$this->value = 'url("' . wp_get_attachment_url( $this->value ) . '")';
-				} else {
-					$this->value = 'url("' . $this->value . '")';
-				}
+			if ( preg_match( '/^\d+$/', $this->value ) ) {
+				$this->value = 'url("' . wp_get_attachment_url( $this->value ) . '")';
+			} else {
+				$this->value = 'url("' . $this->value . '")';
 			}
 		}
 	}

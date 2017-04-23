@@ -46,16 +46,24 @@ class Kirki_Modules_CSS {
 	 */
 	public function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-modules-css-generator.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-output.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-background.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-multicolor.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-dimensions.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/field/class-kirki-output-field-typography.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property-background-image.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property-background-position.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/property/class-kirki-output-property-font-family.php' );
+		$class_files = array(
+			'Kirki_Modules_CSS_Generator'               => '/class-kirki-modules-css-generator.php',
+			'Kirki_Output'                              => '/class-kirki-output.php',
+			'Kirki_Output_Field_Background'             => '/field/class-kirki-output-field-background.php',
+			'Kirki_Output_Field_Multicolor'             => '/field/class-kirki-output-field-multicolor.php',
+			'Kirki_Output_Field_Dimensions'             => '/field/class-kirki-output-field-dimensions.php',
+			'Kirki_Output_Field_Typography'             => '/field/class-kirki-output-field-typography.php',
+			'Kirki_Output_Property'                     => '/property/class-kirki-output-property.php',
+			'Kirki_Output_Property_Background_Image'    => '/property/class-kirki-output-property-background-image.php',
+			'Kirki_Output_Property_Background_Position' => '/property/class-kirki-output-property-background-position.php',
+			'Kirki_Output_Property_Font_Family'         => '/property/class-kirki-output-property-font-family.php',
+		);
+
+		foreach ( $class_files as $class_name => $file ) {
+			if ( ! class_exists( $class_name ) ) {
+				include_once wp_normalize_path( dirname( __FILE__ ) . $file );
+			}
+		}
 
 		add_action( 'init', array( $this, 'init' ) );
 

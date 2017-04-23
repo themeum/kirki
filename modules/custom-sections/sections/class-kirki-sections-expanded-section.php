@@ -9,21 +9,17 @@
  * @since       2.2.0
  */
 
-if ( ! class_exists( 'Kirki_Sections_Expanded_Section' ) ) {
+/**
+ * Expanded Section.
+ */
+class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
 
 	/**
-	 * Expanded Section.
+	 * The section type.
+	 *
+	 * @access public
+	 * @var string
 	 */
-	class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
-
-		/**
-		 * The section type.
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $type = 'kirki-expanded';
-
-	}
+	public $type = 'kirki-expanded';
 
 }

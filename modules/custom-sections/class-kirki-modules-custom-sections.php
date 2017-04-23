@@ -67,9 +67,21 @@ class Kirki_Modules_Custom_Sections {
 
 		$folder_path = dirname( __FILE__ ) . '/sections/';
 
-		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-default-section.php' );
-		include_once wp_normalize_path( $folder_path . 'class-kirki-sections-expanded-section.php' );
+		$section_types = apply_filters( 'kirki/section_types', array() );
 
+		foreach ( $section_types as $id => $class ) {
+			if ( ! class_exists( $class ) ) {
+				$path = wp_normalize_path( $folder_path . 'class-kirki-sections-' . $id . '-section.php' );
+				if ( file_exists( $path ) ) {
+					include_once $path;
+					continue;
+				}
+				$path = str_replace( 'class-kirki-sections-kirki-', 'class-kirki-sections-', $path );
+				if ( file_exists( $path ) ) {
+					include_once $path;
+				}
+			}
+		}
 	}
 
 	/**
