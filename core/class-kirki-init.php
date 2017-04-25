@@ -33,6 +33,7 @@ class Kirki_Init {
 		add_action( 'customize_update_user_meta', array( $this, 'update_user_meta' ), 10, 2 );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
+		add_filter( 'acf/settings/select2_version', array( $this, 'acf_select2_version' ), 99 );
 	}
 
 	/**
@@ -267,5 +268,20 @@ class Kirki_Init {
 	 */
 	public function update_user_meta( $value, $wp_customize_setting ) {
 		update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
+	}
+
+	/**
+	 * Changes select2 version in ACF.
+	 * Fixes a plugin conflict that was causing select fields to crash
+	 * because of a version mismatch between ACF's and Kirki's select2 scripts.
+	 * Props @hellor0bot
+	 *
+	 * @see https://github.com/aristath/kirki/issues/1302
+	 * @access public
+	 * @since 3.0.0
+	 * @return int
+	 */
+	public function acf_select2_version() {
+		return 4;
 	}
 }
