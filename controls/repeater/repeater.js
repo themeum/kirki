@@ -65,7 +65,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 									}
 								}
 							} else if ( 'radio' === control.params.fields[ this.label.field ].type || 'radio-image' === control.params.fields[ this.label.field ].type ) {
-								rowLabelSelector = rowLabelField.selector + ':checked';
+								rowLabelSelector = control.selector + ' [data-row="' + this.rowIndex + '"] .repeater-field [data-field="' + this.label.field + '"]:checked';
 								rowLabel = jQuery( rowLabelSelector ).val();
 							}
 						}
