@@ -183,6 +183,13 @@ class Kirki extends Kirki_Init {
 				new $classname( $config_id, $args );
 				return;
 			}
+			if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
+				$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
+				if ( class_exists( $classname ) ) {
+					new $classname( $config_id, $args );
+					return;
+				}
+			}
 		}
 
 		new Kirki_Field( $config_id, $args );

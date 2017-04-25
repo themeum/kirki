@@ -99,6 +99,13 @@
 
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
+									// Simple tweak for background-image properties.
+									if ( 'background-image' === subValueKey ) {
+										if ( 0 > subValueValue.indexOf( 'url(' ) ) {
+											subValueValue = 'url("' + subValueValue + '")';
+										}
+									}
+
 									if ( 'undefined' !== typeof args.choice ) {
 										if ( args.choice === subValueKey ) {
 											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
