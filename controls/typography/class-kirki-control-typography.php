@@ -412,6 +412,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$old_values['variant'] = 'regular';
 		}
 
+		if ( isset( $value['variant'] ) && in_array( $value['variant'], array( '100light', '600bold', '800bold', '900bold' ) ) ) {
+			$value['variant'] = (string) intval( $value['variant'] );
+		}
+
 		// Letter spacing was in px, now it requires units.
 		if ( isset( $value['letter-spacing'] ) && is_numeric( $value['letter-spacing'] ) && $value['letter-spacing'] ) {
 			$value['letter-spacing'] .= 'px';
