@@ -141,6 +141,7 @@ final class Kirki_Fonts_Google {
 		// Figure out which method to use for all.
 		$method = 'link';
 		foreach ( self::$method as $config_id => $method ) {
+			$method = apply_filters( "kirki/{$config_id}/googlefonts_load_method", 'link' );
 			if ( 'embed' === $method && true !== $this->fallback_to_link ) {
 				$method = 'embed';
 			}
@@ -150,7 +151,7 @@ final class Kirki_Fonts_Google {
 			switch ( $method ) {
 
 				case 'embed':
-					add_filter( 'kirki/' . $config_id . '/dynamic_css', array( $this, 'embed_css' ) );
+					add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
 
 					if ( true === $this->fallback_to_link ) {
 						// Fallback to enqueue method.
@@ -406,29 +407,6 @@ final class Kirki_Fonts_Google {
 			'subset' => urlencode( implode( ',', $this->subsets ) ),
 		), 'https://fonts.googleapis.com/css' );
 
-	}
-
-	/**
-	 * Sets the method to use for loading the fonts.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.0
-	 * @param string $config_id The config ID. Will be used in a filter later.
-	 * @param string $method    The method to use.
-	 */
-	public static function set_method( $config_id = 'global', $method = 'link' ) {
-
-		$valid_methods = array(
-			'link',
-			'js',
-			'embed',
-		);
-		// Early exit if the defined method is invalid.
-		if ( ! in_array( $method, $valid_methods ) ) {
-			$method = 'embed';
-		}
-		self::$method[ $config_id ] = $method;
 	}
 
 	/**
