@@ -111,6 +111,12 @@ final class Kirki_Fonts_Google {
 			$this->fallback_to_link = true;
 		}
 
+		// Use links when in the customizer.
+		global $wp_customize;
+		if ( $wp_customize ) {
+			$this->fallback_to_link = true;
+		}
+
 		// If we have set $config['disable_google_fonts'] to true then do not proceed any further.
 		if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
 			return;
