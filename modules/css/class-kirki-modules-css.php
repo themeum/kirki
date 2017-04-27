@@ -97,7 +97,7 @@ class Kirki_Modules_CSS {
 		}
 
 		// Allow completely disabling Kirki CSS output.
-		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true !== $config['disable_output'] ) ) {
+		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {
 			return;
 		}
 
