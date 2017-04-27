@@ -281,7 +281,10 @@ class Kirki_Init {
 	 * @since 3.0.0
 	 * @return int
 	 */
-	public function acf_select2_version() {
-		return 4;
+	public function acf_select2_version( $ver ) {
+		if ( is_customize_preview() ) {
+			return 4;
+		}
+		return $ver;
 	}
 }
