@@ -147,6 +147,6 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
 			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),
 		);
-		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		return apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 	}
 }

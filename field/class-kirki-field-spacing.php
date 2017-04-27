@@ -73,7 +73,7 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 				'left'   => ( isset( $this->default['top'] ) ),
 				'right'  => ( isset( $this->default['top'] ) ),
 			),
-			'labels' => apply_filters( 'kirki/' . $this->kirki_config . '/l10n', array(
+			'labels' => apply_filters( "kirki/{$this->kirki_config}/l10n", array(
 				'top'    => esc_attr__( 'Top', 'kirki' ),
 				'bottom' => esc_attr__( 'Bottom', 'kirki' ),
 				'left'   => esc_attr__( 'Left', 'kirki' ),

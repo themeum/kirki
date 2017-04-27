@@ -131,6 +131,6 @@ class Kirki_Control_Number extends WP_Customize_Control {
 			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),
 			'step-error' => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
-		return apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		return apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 	}
 }

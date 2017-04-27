@@ -194,7 +194,7 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 			'height'                => esc_attr__( 'Height', 'kirki' ),
 			'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
-		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 		if ( false === $id ) {
 			return $translation_strings;
 		}

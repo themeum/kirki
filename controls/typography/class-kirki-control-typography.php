@@ -470,7 +470,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'lowercase'      => esc_attr__( 'Lowercase', 'kirki' ),
 			'initial'        => esc_attr__( 'Initial', 'kirki' ),
 		);
-		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 		if ( false === $id ) {
 			return $translation_strings;
 		}

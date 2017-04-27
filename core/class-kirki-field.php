@@ -353,7 +353,7 @@ class Kirki_Field {
 
 		// An array of whitelisted properties that don't need to be sanitized here.
 		// Format: $key => $default_value.
-		$whitelisted = apply_filters( 'kirki/' . $this->kirki_config . '/fields/properties_whitelist', array(
+		$whitelisted = apply_filters( "kirki/{$this->kirki_config}/fields/properties_whitelist", array(
 			'label'       => '', // This is sanitized later in the controls themselves.
 			'description' => '', // This is sanitized later in the controls themselves.
 			'mode'        => '', // Only used for backwards-compatibility reasons.

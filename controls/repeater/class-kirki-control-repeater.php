@@ -591,7 +591,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			'add-file'          => esc_attr__( 'Add File', 'kirki' ),
 			'change-file'       => esc_attr__( 'Change File', 'kirki' ),
 		);
-		$translation_strings = apply_filters( 'kirki/' . $this->kirki_config . '/l10n', $translation_strings );
+		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 		if ( false === $id ) {
 			return $translation_strings;
 		}

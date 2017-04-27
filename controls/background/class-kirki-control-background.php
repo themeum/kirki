@@ -280,6 +280,6 @@ class Kirki_Control_Background extends WP_Customize_Control {
 			'remove'                => esc_attr__( 'Remove', 'kirki' ),
 			'select-file'           => esc_attr__( 'Select File', 'kirki' ),
 		);
-		return apply_filters( 'kirki/' . $config_id . '/l10n', $translation_strings );
+		return apply_filters( "kirki/{$config_id}/l10n", $translation_strings );
 	}
 }
