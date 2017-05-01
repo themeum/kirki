@@ -8,7 +8,9 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		var control     = this,
 		    element     = control.container.find( '.kirki-codemirror-editor' ),
 		    language    = control.params.choices.language,
-		    editor;
+		    editor,
+		    container,
+		    height;
 
 		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
 		if ( 'html' === control.params.choices.language ) {
@@ -20,9 +22,19 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 			mode:         language,
 			lineNumbers:  true,
 			lineWrapping: true,
-			theme:        control.params.choices.theme,
-			height:       control.params.choices.height + 'px'
+			theme:        control.params.choices.theme
 		});
+
+		if ( 'undefined' !== typeof control.params.choices.height ) {
+			height = Number( control.params.choices.height );
+			if ( ! isNaN( height ) ) {
+				container = control.container.find( '.codemirror-kirki-wrapper' );
+				jQuery( container ).css( 'max-height', function() {
+					return control.params.choices.height;
+				} );
+				editor.setSize( null, control.params.choices.height );
+			}
+		}
 
 		// On change make sure we infor the Customizer API
 		editor.on( 'change', function() {

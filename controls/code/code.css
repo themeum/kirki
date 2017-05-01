@@ -25,7 +25,8 @@
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
-  white-space: nowrap; }
+  white-space: nowrap;
+  height: 100% !important; }
 
 .CodeMirror-linenumber {
   padding: 0 3px 0 5px;

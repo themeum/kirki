@@ -129,7 +129,9 @@ class Kirki_Control_Code extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
+			<div class="codemirror-kirki-wrapper">
+				<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
+			</div>
 		</label>
 		<?php
 	}
