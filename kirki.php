@@ -53,19 +53,9 @@ $kirki->modules = new Kirki_Modules();
 // Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 
-// Check if Kirki is installed a plugin.
-$is_plugin = false;
-if ( ! function_exists( 'get_plugins' ) ) {
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
-$plugins = get_plugins();
-foreach ( $plugins as $plugin ) {
-	if ( isset( $plugin['Name'] ) && ( 'Kirki' === $plugin['Name'] || 'Kirki Toolkit' === $plugin['Name'] ) ) {
-		$is_plugin = true;
-	}
-}
 // If Kirki is installed as a plugin, use plugin_dir_url().
-if ( $is_plugin ) {
+$kirki_is_plugin = Kirki_Init::is_plugin();
+if ( $kirki_is_plugin ) {
 	Kirki::$url = plugin_dir_url( __FILE__ );
 } elseif ( function_exists( 'is_link' ) && is_link( dirname( __FILE__ ) ) && function_exists( 'readlink' ) ) {
 	// If the path is a symlink, get the target.

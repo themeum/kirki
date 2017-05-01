@@ -288,4 +288,49 @@ class Kirki_Init {
 		}
 		return $ver;
 	}
+
+	/**
+	 * Determine if Kirki is installed as a plugin.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return bool
+	 */
+	public static function is_plugin() {
+
+		$is_plugin = false;
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		// Get all plugins.
+		$plugins = get_plugins();
+		$_plugin = '';
+		foreach ( $plugins as $plugin => $args ) {
+			if ( ! $is_plugin && isset( $args['Name'] ) && ( 'Kirki' === $args['Name'] || 'Kirki Toolkit' === $args['Name'] ) ) {
+				$is_plugin = true;
+				$_plugin   = $plugin;
+			}
+		}
+
+		// No need to proceed any further if Kirki wasn't found in the list of plugins.
+		if ( ! $is_plugin ) {
+			return false;
+		}
+
+		// Extra logic in case the plugin is installed but not activated.
+		if ( is_customize_preview() ) {
+
+			// Make sure the is_plugins_loaded function is loaded.
+			if ( ! function_exists( 'is_plugin_active' ) ) {
+				include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+
+			if ( $_plugin && ! is_plugin_active( $_plugin ) ) {
+				return false;
+			}
+		}
+		return $is_plugin;
+	}
 }
