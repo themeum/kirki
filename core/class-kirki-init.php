@@ -279,6 +279,7 @@ class Kirki_Init {
 	 * @see https://github.com/aristath/kirki/issues/1302
 	 * @access public
 	 * @since 3.0.0
+	 * @param string $ver The Select2 script version.
 	 * @return int
 	 */
 	public function acf_select2_version( $ver ) {

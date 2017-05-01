@@ -120,7 +120,6 @@ class Kirki_Modules_CSS {
 			}
 		}
 
-
 		// If we are in the customizer, load CSS using inline-styles.
 		// If we are in the frontend AND self::$ajax is true, then load dynamic CSS using AJAX.
 		if ( ( true === self::$ajax ) || ( isset( $config['inline_css'] ) && false === $config['inline_css'] ) ) {
