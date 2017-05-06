@@ -42,6 +42,8 @@
 		"kirkiIcons": false,
 		"fieldDependencies": false,
 		"kirkiResetButtonLabel": false,
-		"collapsible": false
+		"collapsible": false,
+		"kirkiFieldsSearch": false,
+		"Fuse": false
 	}
 }
