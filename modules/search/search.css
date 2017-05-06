@@ -1,0 +1,38 @@
+#customize-header-actions .kirki-customize-controls-search {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 48px;
+  width: 45px;
+  height: 41px;
+  padding: 0 2px 0 0;
+  background: #eee;
+  border: none;
+  border-top: 4px solid #eee;
+  border-right: 1px solid #ddd;
+  color: #444;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out,border-color 0.15s ease-in-out,background 0.15s ease-in-out;
+  box-sizing: content-box;
+  text-decoration: none; }
+  #customize-header-actions .kirki-customize-controls-search:before {
+    font: 400 22px/45px dashicons;
+    content: "\f179";
+    position: relative;
+    top: -3px;
+    left: 13px; }
+#customize-header-actions .kirki-search-form-wrapper #kirki-search {
+  width: calc(100% - 46px);
+  position: absolute;
+  top: 45px;
+  left: 46px; }
+#customize-header-actions .kirki-search-results {
+  background: #fff;
+  position: relative;
+  width: calc(100% - 46px);
+  position: absolute;
+  top: 70px;
+  left: 46px; }
+
+/*# sourceMappingURL=search.css.map */

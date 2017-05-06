@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css':          'modules/collapsible/collapsible.scss',
+					'modules/search/search.css':                    'modules/search/search.scss',
 
 					'controls/background/background.css':           'controls/background/background.scss',
 					'controls/code/code.css':                       'controls/code/code.scss',
@@ -29,6 +30,7 @@ module.exports = function( grunt ) {
 					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
+					'controls/gradient/gradient.css':               'controls/gradient/gradient.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
 					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
 					'controls/number/number.css':                   'controls/number/number.scss',

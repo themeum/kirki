@@ -69,6 +69,7 @@ class Kirki_Modules {
 			'field-dependencies' => 'Kirki_Modules_Field_Dependencies',
 			'custom-sections'    => 'Kirki_Modules_Custom_Sections',
 			'collapsible'        => 'Kirki_Modules_Collapsible',
+			// 'search'             => 'Kirki_Modules_Search',
 		) );
 
 	}
