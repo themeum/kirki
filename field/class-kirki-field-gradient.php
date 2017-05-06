@@ -41,7 +41,7 @@ class Kirki_Field_Gradient extends Kirki_Field_Color {
 			'direction' => 'top-to-bottom',
 			'colors'    => array(
 				'rgba(255,255,255,0)',
-				'rgba(255,255,255,0)'
+				'rgba(255,255,255,0)',
 			),
 		);
 		$this->choices = wp_parse_args( $this->choices, $defaults );
