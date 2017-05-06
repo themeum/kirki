@@ -163,8 +163,9 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<div class="gradient-preview"></div>
-			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[0] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[0] }}" class="kirki-gradient-control-0 color-picker" {{{ data.link }}} />
-			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[1] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[1] }}" class="kirki-gradient-control-1 color-picker" {{{ data.link }}} />
+			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[0] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[0] }}" class="kirki-gradient-control-0 color-picker" {{{ data.link }}}/>
+			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[1] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[1] }}" class="kirki-gradient-control-1 color-picker" />
+			<input type="hidden" class="hidden-gradient-input" {{{ data.link }}} />
 		</label>
 		<?php
 	}

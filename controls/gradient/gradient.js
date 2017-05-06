@@ -9,7 +9,8 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 		    value       = control.getValue(),
 		    picker0     = control.container.find( '.kirki-gradient-control-0' ),
 		    picker1     = control.container.find( '.kirki-gradient-control-1' ),
-		    previewArea = control.container.find( '.gradient-preview' );
+		    previewArea = control.container.find( '.gradient-preview' ),
+		    hiddenInput = control.container.find( '.hidden-gradient-input' );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( 'undefined' !== typeof control.params.choices.iris ) {
@@ -26,13 +27,8 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 				// Small hack: the picker needs a small delay
 				setTimeout( function() {
 					value.colors[0] = picker0.val();
-					// control.saveValue( value );
-
-					jQuery( previewArea ).css( 'background', function() {
-						return 'background: linear-gradient(to bottom, ' + value.colors[0] + ' 0%,' + value.colors[1] + ' 100%)';
-					});
-
-					control.setting.set( value );
+					hiddenInput.attr( 'value', JSON.stringify( value ) );
+					jQuery( hiddenInput ).trigger( 'change' );
 				}, 100 );
 			}
 		});
@@ -42,12 +38,8 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 				// Small hack: the picker needs a small delay
 				setTimeout( function() {
 					value.colors[1] = picker1.val();
-					// control.saveValue( value );
-					jQuery( previewArea ).css( 'background', function() {
-						return 'background: linear-gradient(to bottom, ' + value.colors[0] + ' 0%,' + value.colors[1] + ' 100%)';
-					});
-
-					control.setting.set( value );
+					hiddenInput.attr( 'value', JSON.stringify( value ) );
+					jQuery( hiddenInput ).trigger( 'change' );
 				}, 100 );
 			}
 		});
@@ -76,23 +68,5 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 			}
 		});
 		return value;
-	},
-
-	/**
-	 * Saves the value.
-	 */
-	saveValue: function( value ) {
-
-		'use strict';
-
-		var control  = this,
-			newValue = {};
-
-		_.each( value, function( newSubValue, i ) {
-			newValue[ i ] = newSubValue;
-		});
-
-		control.setting.set( newValue );
 	}
-
 });
