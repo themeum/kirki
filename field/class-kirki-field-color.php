@@ -53,6 +53,10 @@ class Kirki_Field_Color extends Kirki_Field {
 			}
 		}
 
+		if ( ( ! isset( $this->choices['mode'] ) ) || ( 'hex' !== $this->choices['mode'] || 'hue' !== $this->choices['mode'] ) ) {
+			$this->choices['mode'] = 'hex';
+		}
+
 	}
 
 	/**

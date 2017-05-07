@@ -54,6 +54,14 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
+	 * The kirki_config we're using for this control
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $kirki_config = 'global';
+
+	/**
 	 * Constructor.
 	 *
 	 * Supplied `$args` override class property defaults.
@@ -127,8 +135,9 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
-		$this->json['palette'] = $this->palette;
+		$this->json['palette']  = $this->palette;
 		$this->choices['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
+		$this->json['l10n']     = $this->l10n();
 	}
 
 	/**
@@ -162,11 +171,42 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<div class="gradient-preview"></div>
-			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[0] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[0] }}" class="kirki-gradient-control-0 color-picker" {{{ data.link }}}/>
-			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.colors[1] }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.colors[1] }}" class="kirki-gradient-control-1 color-picker" />
-			<input type="hidden" class="hidden-gradient-input" {{{ data.link }}} />
 		</label>
+		<div class="gradient-preview"></div>
+		<div class="angle">
+			<h4>{{ data.l10n.angle }}</h4>
+			<input type="range" class="angle gradient-{{ data.id }}" value="{{ data.value.angle }}" min="-90" max="90">
+		</div>
+		<div class="colors">
+			<# _.each( ['start', 'end'], function( index ) { #>
+				<div class="color-{{ index }}">
+					<h4>{{ data.l10n[ index + 'color' ] }}</h4>
+					<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default[ index ].color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value[ index ].color }}" class="kirki-gradient-control-{{ index }} color-picker" />
+					<h4>{{ data.l10n['color_stop'] }}</h4>
+					<input type="range" class="position gradient-{{ data.id }}-{{ index }}" value="{{ data.value[ index ].position }}" min="0" max="100">
+				</div>
+			<# }) #>
+		</div>
 		<?php
+	}
+	/**
+	 * Returns an array of translation strings.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param string|false $id The string-ID.
+	 * @return string
+	 */
+	protected function l10n( $id = 'global' ) {
+		$translation_strings = array(
+			'angle'      => esc_attr__( 'Angle', 'kirki' ),
+			'startcolor' => esc_attr__( 'Start Color', 'kirki' ),
+			'endcolor'   => esc_attr__( 'End Color', 'kirki' ),
+			'color_stop' => esc_attr__( 'Color Stop', 'kirki' ),
+			'linear'     => esc_attr__( 'Linear', 'kirki' ),
+			'radia'      => esc_attr__( 'Radial', 'kirki' ),
+		);
+		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
+		return $translation_strings;
 	}
 }

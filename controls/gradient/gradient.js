@@ -5,44 +5,67 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 		'use strict';
 
-		var control     = this,
-		    value       = control.getValue(),
-		    picker0     = control.container.find( '.kirki-gradient-control-0' ),
-		    picker1     = control.container.find( '.kirki-gradient-control-1' ),
-		    previewArea = control.container.find( '.gradient-preview' ),
-		    hiddenInput = control.container.find( '.hidden-gradient-input' );
+		var control        = this,
+		    value          = control.getValue(),
+		    pickerStart    = control.container.find( '.kirki-gradient-control-start' ),
+		    pickerEnd      = control.container.find( '.kirki-gradient-control-end' ),
+		    angleElement = jQuery( '.angle.gradient-' + control.id );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( 'undefined' !== typeof control.params.choices.iris ) {
-			picker0.wpColorPicker( control.params.choices.iris );
-			picker1.wpColorPicker( control.params.choices.iris );
+			pickerStart.wpColorPicker( control.params.choices.iris );
+			pickerEnd.wpColorPicker( control.params.choices.iris );
 		}
 
-		jQuery( previewArea ).css( 'background', 'background: linear-gradient(to bottom, ' + value.colors[0] + ' 0%,' + value.colors[1] + ' 100%)' );
+		control.updatePreview( value );
 
-		// Saves our settings to the WP API
-		picker0.wpColorPicker({
-			change: function( event, ui ) {
+		_.each( {'start': pickerStart, 'end': pickerEnd}, function ( obj, index ) {
 
-				// Small hack: the picker needs a small delay
-				setTimeout( function() {
-					value.colors[0] = picker0.val();
-					hiddenInput.attr( 'value', JSON.stringify( value ) );
-					jQuery( hiddenInput ).trigger( 'change' );
-				}, 100 );
-			}
+			// Saves our settings to the WP API
+			obj.wpColorPicker({
+				change: function( event, ui ) {
+					setTimeout( function() {
+
+						// Add the value to the object.
+						value[ index ].color = obj.val();
+
+						// Update the preview.
+						control.updatePreview( value );
+
+						// Set the value.
+						control.setValue( value );
+
+					}, 100 );
+				}
+			});
 		});
-		picker1.wpColorPicker({
-			change: function( event, ui ) {
 
-				// Small hack: the picker needs a small delay
-				setTimeout( function() {
-					value.colors[1] = picker1.val();
-					hiddenInput.attr( 'value', JSON.stringify( value ) );
-					jQuery( hiddenInput ).trigger( 'change' );
-				}, 100 );
-			}
+		// Angle (-90° - 90°).
+		angleElement.on( 'change', function() {
+			value.angle = angleElement.val();
+
+			// Update the preview.
+			control.updatePreview( value );
+
+			// Set the value.
+			control.setValue( value );
 		});
+
+		// Position( 0% - 100%);
+		_.each( ['start', 'end'], function( index ) {
+			var positionElement = jQuery( '.position.gradient-' + control.id + '-' + index );
+
+			positionElement.on( 'change', function() {
+				value[ index ].position = positionElement.val();
+
+				// Update the preview.
+				control.updatePreview( value );
+
+				// Set the value.
+				control.setValue( value );
+			});
+		});
+
 	},
 
 	/**
@@ -68,5 +91,37 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 			}
 		});
 		return value;
+	},
+
+	/**
+	 * Updates the preview area.
+	 */
+	updatePreview: function( value ) {
+		var control     = this,
+		    previewArea = control.container.find( '.gradient-preview' );
+
+		jQuery( previewArea ).css(
+			'background',
+			'linear-gradient(' + value.angle + 'deg, ' + value.start.color + ' ' + value.start.position + '%,' + value.end.color + ' ' + value.end.position + '%)'
+		);
+	},
+
+	/**
+	 * Saves the value.
+	 */
+	setValue: function( value ) {
+
+		var control = this;
+
+		wp.customize( control.id, function( obj ) {
+
+			// Reset the setting value, so that the change is triggered
+			obj.set( '' );
+
+			// Set the right value
+			obj.set( value );
+
+		});
+
 	}
 });

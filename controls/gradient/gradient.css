@@ -3,5 +3,64 @@
   width: 100%;
   height: 100px;
   margin-bottom: 1em; }
+.customize-control-kirki-gradient h4 {
+  margin: 0.5em 0; }
+.customize-control-kirki-gradient .colors .color-end,
+.customize-control-kirki-gradient .colors .color-start {
+  box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 3px;
+  margin: 0.5em 0; }
+.customize-control-kirki-gradient input[type=range] {
+  -webkit-appearance: none;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  transition: background 0.3s;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 5px;
+  width: 100%;
+  padding: 0; }
+  .customize-control-kirki-gradient input[type=range]:focus {
+    box-shadow: none;
+    outline: none; }
+  .customize-control-kirki-gradient input[type=range]:hover {
+    background-color: rgba(0, 0, 0, 0.25); }
+  .customize-control-kirki-gradient input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: #3498D9; }
+  .customize-control-kirki-gradient input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3498D9; }
+  .customize-control-kirki-gradient input[type=range]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3498D9; }
+  .customize-control-kirki-gradient input[type=range]::-ms-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #3498D9; }
+  .customize-control-kirki-gradient input[type=range]::-moz-range-track {
+    border: inherit;
+    background: transparent; }
+  .customize-control-kirki-gradient input[type=range]::-ms-track {
+    border: inherit;
+    color: transparent;
+    background: transparent; }
+  .customize-control-kirki-gradient input[type=range]::-ms-fill-lower, .customize-control-kirki-gradient input[type=range]::-ms-fill-upper {
+    background: transparent; }
+  .customize-control-kirki-gradient input[type=range]::-ms-tooltip {
+    display: none; }
 
 /*# sourceMappingURL=gradient.css.map */
