@@ -68,7 +68,7 @@ class Kirki_Modules {
 			'selective-refresh'  => 'Kirki_Modules_Selective_Refresh',
 			'field-dependencies' => 'Kirki_Modules_Field_Dependencies',
 			'custom-sections'    => 'Kirki_Modules_Custom_Sections',
-			'collapsible'        => 'Kirki_Modules_Collapsible',
+			// 'collapsible'        => 'Kirki_Modules_Collapsible',
 			// 'search'             => 'Kirki_Modules_Search',
 		) );
 
