@@ -45,7 +45,16 @@ class Kirki_Init {
 		if ( Kirki::$url ) {
 			return;
 		}
-		if ( defined( 'ABSPATH' ) ) {
+		Kirki::$path = wp_normalize_path( Kirki::$path );
+		$parent_theme_path = wp_normalize_path( get_template_directory() );
+		$child_theme_path  = wp_normalize_path( get_stylesheet_directory() );
+		if ( false === strpos( Kirki::$path, $child_theme_path ) ) {
+			Kirki::$url = str_replace( $child_theme_path, get_stylesheet_directory_uri(), Kirki::$path );
+		} elseif ( false === strpos( Kirki::$path, $parent_theme_path ) ) {
+			Kirki::$url = str_replace( $parent_theme_path, get_stylesheet_directory_uri(), Kirki::$path );
+		} elseif ( self::is_plugin() ) {
+			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
+		} elseif ( defined( 'ABSPATH' ) ) {
 			// Replace path with URL.
 			$kirki_url  = str_replace( ABSPATH, '', Kirki::$path );
 			Kirki::$url = site_url( $kirki_url );
@@ -55,8 +64,9 @@ class Kirki_Init {
 		// Apply the kirki/config filter.
 		$config = apply_filters( 'kirki/config', array() );
 		if ( isset( $config['url_path'] ) ) {
-			Kirki::$url = esc_url_raw( $config['url_path'] );
+			Kirki::$url = $config['url_path'];
 		}
+		Kirki::$url = esc_url_raw( Kirki::$url );
 	}
 
 	/**

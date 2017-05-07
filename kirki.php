@@ -32,6 +32,10 @@ if ( class_exists( 'Kirki' ) ) {
 // Include the autoloader.
 include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
 
+if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
+	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
+}
+
 if ( ! function_exists( 'Kirki' ) ) {
 	// @codingStandardsIgnoreStart
 	/**
