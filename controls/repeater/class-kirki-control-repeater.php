@@ -317,10 +317,22 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 
 						<div class="repeater-field repeater-field-{{{ field.type }}}">
 
-							<# if ( 'text' === field.type || 'url' === field.type || 'link' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type ) { #>
-
+							<# if ( 'text' === field.type || 'url' === field.type || 'link' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type || 'number' === field.type ) { #>
+								<# var fieldExtras = ''; #>
 								<# if ( 'link' === field.type ) { #>
 									<# field.type = 'url' #>
+								<# } #>
+
+								<# if ( 'number' === field.type ) { #>
+									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.min ) { #>
+										<# fieldExtras += ' min="' + field.choices.min + '"'; #>
+									<# } #>
+									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.max ) { #>
+										<# fieldExtras += ' max="' + field.choices.max + '"'; #>
+									<# } #>
+									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.step ) { #>
+										<# fieldExtras += ' step="' + field.choices.step + '"'; #>
+									<# } #>
 								<# } #>
 
 								<label>
@@ -330,7 +342,19 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
-									<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}">
+									<input type="{{field.type}}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}"{{ fieldExtras }}>
+								</label>
+
+							<# } else if ( 'number' === field.type ) { #>
+
+								<label>
+									<# if ( field.label ) { #>
+										<span class="customize-control-title">{{ field.label }}</span>
+									<# } #>
+									<# if ( field.description ) { #>
+										<span class="description customize-control-description">{{ field.description }}</span>
+									<# } #>
+									<input type="{{ field.type }}" name="" value="{{{ field.default }}}" data-field="{{{ field.id }}}"{{ numberFieldExtras }}>
 								</label>
 
 							<# } else if ( 'hidden' === field.type ) { #>
