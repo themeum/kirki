@@ -91,6 +91,7 @@ class Kirki_Init {
 			'kirki-dimension'       => 'Kirki_Control_Dimension',
 			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
 			'kirki-editor'          => 'Kirki_Control_Editor',
+			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
 			'kirki-gradient'        => 'Kirki_Control_Gradient',
 			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
