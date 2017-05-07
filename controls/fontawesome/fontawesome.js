@@ -23,14 +23,12 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.exte
 		    },
 		    select;
 
-
 		_.each( icons.icons, function( icon ) {
 			select2Options.data.push({
 				id: icon.id,
 				text: icon.name
 			});
 		});
-		// '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
 
 		select = jQuery( element ).select2( select2Options );
 

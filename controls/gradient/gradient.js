@@ -19,7 +19,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 		control.updatePreview( value );
 
-		_.each( {'start': pickerStart, 'end': pickerEnd}, function ( obj, index ) {
+		_.each( { 'start': pickerStart, 'end': pickerEnd }, function( obj, index ) {
 
 			// Saves our settings to the WP API
 			obj.wpColorPicker({
