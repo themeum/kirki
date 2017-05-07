@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,kBAAmB;EAClB,SAAS,EAAE,KAAK;EAChB,KAAK,EAAE,eAAe;EAErB;mDACyB;IACxB,OAAO,EAAE,OAAO;IAChB,SAAS,EAAE,KAAK",
+"sources": ["fontawesome.scss"],
+"names": [],
+"file": "fontawesome.css"
+}

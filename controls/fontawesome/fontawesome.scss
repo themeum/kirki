@@ -1,0 +1,11 @@
+.select2-container {
+	min-width: 100px;
+	width: 100% !important;
+	&--open {
+		.select2-dropdown--below,
+		.select2-dropdown--above {
+			z-index: 9999999;
+			min-width: 100px;
+		}
+	}
+}

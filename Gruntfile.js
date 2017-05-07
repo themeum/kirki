@@ -29,6 +29,7 @@ module.exports = function( grunt ) {
 					'controls/dimension/dimension.css':             'controls/dimension/dimension.scss',
 					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
+					'controls/fontawesome/fontawesome.css':         'controls/fontawesome/fontawesome.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
 					'controls/gradient/gradient.css':               'controls/gradient/gradient.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
