@@ -4,7 +4,8 @@
   height: 100px;
   margin-bottom: 1em; }
 .customize-control-kirki-gradient h4 {
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+  font-weight: 400; }
 .customize-control-kirki-gradient .colors .color-end,
 .customize-control-kirki-gradient .colors .color-start {
   box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.1);
