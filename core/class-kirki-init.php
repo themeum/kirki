@@ -42,15 +42,12 @@ class Kirki_Init {
 	 * and then does some calculations to get the proper URL for its CSS & JS assets.
 	 */
 	public function set_url() {
-		if ( Kirki::$url ) {
-			return;
-		}
 		Kirki::$path = wp_normalize_path( Kirki::$path );
 		$parent_theme_path = wp_normalize_path( get_template_directory() );
 		$child_theme_path  = wp_normalize_path( get_stylesheet_directory() );
-		if ( false === strpos( Kirki::$path, $child_theme_path ) ) {
+		if ( false === strpos( $child_theme_path, Kirki::$path ) ) {
 			Kirki::$url = str_replace( $child_theme_path, get_stylesheet_directory_uri(), Kirki::$path );
-		} elseif ( false === strpos( Kirki::$path, $parent_theme_path ) ) {
+		} elseif ( false === strpos( $parent_theme_path, Kirki::$path ) ) {
 			Kirki::$url = str_replace( $parent_theme_path, get_stylesheet_directory_uri(), Kirki::$path );
 		} elseif ( self::is_plugin() ) {
 			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
