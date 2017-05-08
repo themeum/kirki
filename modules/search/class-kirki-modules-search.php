@@ -37,6 +37,10 @@ class Kirki_Modules_Search {
 	 */
 	public function __construct() {
 
+		// Add the custom section.
+		add_action( 'customize_register', array( $this, 'customize_register' ) );
+
+		// Enqueue styles and scripts.
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
 
 	}
@@ -82,5 +86,42 @@ class Kirki_Modules_Search {
 		wp_localize_script( 'kirki-search', 'kirkiFieldsSearch', $vars );
 		wp_enqueue_style( 'kirki-search', trailingslashit( Kirki::$url ) . 'modules/search/search.css', null );
 
+	}
+
+	/**
+	 * Adds the section to the customizer.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @param object $wp_customize The customizer object.
+	 */
+	public function customize_register( $wp_customize ) {
+
+		// Include the custom search section.
+		if ( ! class_exists( 'Kirki_Modules_Search_Section' ) ) {
+			include_once 'class-kirki-modules-search-section.php';
+		}
+
+		// Add section.
+		$wp_customize->add_section( new Kirki_Modules_Search_Section( $wp_customize, 'kirki_search_module', array(
+			'title'       => esc_attr__( 'Search', 'kirki' ),
+			'priority'    => 999,
+		) ) );
+
+		// Add setting & control.
+		// THose these are not actually necessary,
+		// the section is not displayed without them.
+		$wp_customize->add_setting( 'kirki_search', array(
+			'type'              => 'theme_mod',
+			'capability'        => 'edit_theme_options',
+			'default'           => '',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => '__return_empty_string',
+		) );
+		$wp_customize->add_control( 'kirki_search', array(
+			'label'   => esc_attr__( 'Search Controls', 'kirki' ),
+			'type'    => 'text',
+			'section' => 'kirki_search_module',
+		) );
 	}
 }

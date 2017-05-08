@@ -1,47 +1,33 @@
-#customize-header-actions {
-  .kirki-customize-controls-search {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 48px;
-    width: 45px;
-    height: 41px;
-    padding: 0 2px 0 0;
-    background: #eee;
-    border: none;
-    border-top: 4px solid #eee;
-    border-right: 1px solid #ddd;
-    color: #444;
-    text-align: left;
-    cursor: pointer;
-    transition: color 0.15s ease-in-out,border-color 0.15s ease-in-out,background 0.15s ease-in-out;
-    box-sizing: content-box;
-    text-decoration: none;
+#customize-theme-controls {
+  .control-section-kirki-search-module-section {
+    .accordion-section-title {
+      display: none;
+    }
 
-    &:before {
-      font: 400 22px/45px dashicons;
-      content: "\f179";
+    .customize-section-back {
+      display: none;
+    }
+
+    .customize-section-title {
+      display: none;
+    }
+    .customize-section-description-container {
+      display: none;
+    }
+  }
+
+  .customize-pane-child {
+    &.control-section-kirki-search-module-section {
       position: relative;
-      top: -3px;
-      left: 13px;
-    }
-  }
+      visibility: visible;
+      height: auto;
+      margin-left: -300px;
 
-  .kirki-search-form-wrapper {
-    #kirki-search {
-      width: calc(100% - 46px);
-      position: absolute;
-      top: 45px;
-      left: 46px;
+      h3 {
+        .customize-action {
+          display: none;
+        }
+      }
     }
-  }
-
-  .kirki-search-results {
-    background: #fff;
-    position: relative;
-    width: calc(100% - 46px);
-    position: absolute;
-    top: 70px;
-    left: 46px;
   }
 }
