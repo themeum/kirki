@@ -41,13 +41,7 @@ class Kirki_Modules_Field_Dependencies {
 		$field_dependencies = array();
 		$fields = Kirki::$fields;
 		foreach ( $fields as $field ) {
-			$process_field = false;
-			if ( isset( $field['active_callback'] ) && is_array( $field['active_callback'] ) ) {
-				if ( array( 'Kirki_Active_Callback', 'evaluate' ) === $field['active_callback'] ) {
-					$process_field = true;
-				}
-			}
-			if ( $process_field && isset( $field['required'] ) && ! empty( $field['required'] ) ) {
+			if ( isset( $field['required'] ) && is_array( $field['required'] ) && ! empty( $field['required'] ) ) {
 				$field_dependencies[ $field['id'] ] = $field['required'];
 			}
 		}
