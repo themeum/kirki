@@ -57,7 +57,7 @@ jQuery( document ).ready( function() {
 		var kirkiControlDependenciesMasterControls = [],
 
 		    slaveControl = wp.customize.control( slaveControlID ),
-			showControl  = true;
+			showControl  = {};
 
 		// Populate the kirkiControlDependenciesMasterControls array.
 		_.each( args, function( dependency ) {
@@ -71,17 +71,17 @@ jQuery( document ).ready( function() {
 				// Listen for changes to the master control values.
 				masterSetting.bind( function() {
 					var show = true;
-					_.each( args, function( dependency ) {
-						if ( show ) {
-							show = kirkiCompareValues(
-								dependency.value,
-								masterSetting.get(),
-								dependency.operator,
-								[
-									slaveControlID,
-									dependency.setting
-								]
-							);
+					_.each( args, function( dependency, index ) {
+						showControl[ masterControlID ] = kirkiCompareValues(
+							dependency.value,
+							masterSetting.get(),
+							dependency.operator,
+							[slaveControlID, dependency.setting]
+						);
+					});
+					_.each( showControl, function( val ) {
+						if ( false === val ) {
+							show = false;
 						}
 					});
 					if ( false === show ) {
