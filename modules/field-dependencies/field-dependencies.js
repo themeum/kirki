@@ -61,6 +61,13 @@ jQuery( document ).ready( function() {
 
 		// Populate the kirkiControlDependenciesMasterControls array.
 		_.each( args, function( dependency ) {
+			if ( 'object' === typeof dependency ) {
+				_.each( dependency, function( subDependency ) {
+					if ( 'undefined' !== subDependency.setting ) {
+						kirkiControlDependenciesMasterControls.push( subDependency.setting );
+					}
+				});
+			}
 			kirkiControlDependenciesMasterControls.push( dependency.setting );
 		});
 
@@ -72,12 +79,36 @@ jQuery( document ).ready( function() {
 				masterSetting.bind( function() {
 					var show = true;
 					_.each( args, function( dependency, index ) {
-						showControl[ masterControlID ] = kirkiCompareValues(
-							dependency.value,
-							masterSetting.get(),
-							dependency.operator,
-							[slaveControlID, dependency.setting]
-						);
+						if ( 'undefined' !== typeof dependency[0] && 'undefined' !== typeof dependency[0].setting ) {
+							// var orConditionShow = {},
+							//     orConditionID   = '';
+							//
+							// _.each( dependency, function( subDependency, subIndex ) {
+							// 	orConditionShow[ masterControlID ] = kirkiCompareValues(
+							// 		subDependency.value,
+							// 		masterSetting.get(),
+							// 		subDependency.operator,
+							// 		[slaveControlID, subDependency.setting]
+							// 	);
+							// });
+							// _.each( dependency, function( subDependency ) {
+							// 	orConditionID += subDependency.setting;
+							// });
+							//
+							// _.each( orConditionShow, function( val ) {
+							// 	console.log( val );
+							// 	if ( true === val ) {
+							// 		showControl[ orConditionID ] = true;
+							// 	}
+							// });
+						} else {
+							showControl[ masterControlID ] = kirkiCompareValues(
+								dependency.value,
+								masterSetting.get(),
+								dependency.operator,
+								[slaveControlID, dependency.setting]
+							);
+						}
 					});
 					_.each( showControl, function( val ) {
 						if ( false === val ) {
