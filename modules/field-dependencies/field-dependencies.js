@@ -30,8 +30,8 @@ jQuery( document ).ready( function() {
 				return value1 < value2;
 			case 'contains':
 			case 'in':
-				if ( 'object' === typeof value2 ) {
-					if ( 'undefined' !== typeof value2[ value1 ] ) {
+				if ( _.isObject( value2 ) ) {
+					if ( ! _.isUndefined( value2[ value1 ] ) ) {
 						return true;
 					}
 					window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = false;
@@ -41,7 +41,7 @@ jQuery( document ).ready( function() {
 						}
 					});
 					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
-				} else if ( 'string' === typeof value2 ) {
+				} else if ( typeof value2 === 'string' ) {
 					return value2.indexOf( value1 );
 				}
 				break;
@@ -61,9 +61,9 @@ jQuery( document ).ready( function() {
 
 		// Populate the kirkiControlDependenciesMasterControls array.
 		_.each( args, function( dependency ) {
-			if ( 'object' === typeof dependency ) {
+			if ( _.isObject( dependency ) ) {
 				_.each( dependency, function( subDependency ) {
-					if ( 'undefined' !== subDependency.setting ) {
+					if ( ! _.isUndefined( subDependency.setting ) ) {
 						kirkiControlDependenciesMasterControls.push( subDependency.setting );
 					}
 				});
@@ -79,7 +79,7 @@ jQuery( document ).ready( function() {
 				masterSetting.bind( function() {
 					var show = true;
 					_.each( args, function( dependency, index ) {
-						if ( 'undefined' !== typeof dependency[0] && 'undefined' !== typeof dependency[0].setting ) {
+						if ( ! _.isUndefined( dependency[0] ) && ! _.isUndefined( dependency[0].setting ) ) {
 							// var orConditionShow = {},
 							//     orConditionID   = '';
 							//
