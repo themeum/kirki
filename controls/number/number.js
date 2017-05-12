@@ -9,14 +9,14 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 		    step    = 1;
 
 		// Set step value.
-		if ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.step ) {
+		if ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.step ) ) {
 			step = ( 'any' === control.params.choices.step ) ? '0.001' : control.params.choices.step;
 		}
 
 		// Init the spinner
 		jQuery( element ).spinner({
-			min: ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.min ) ? control.params.choices.min : -99999,
-			max: ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.max ) ? control.params.choices.max : 99999,
+			min: ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.min ) ) ? control.params.choices.min : -99999,
+			max: ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.max ) ) ? control.params.choices.max : 99999,
 			step: step
 		});
 
@@ -50,13 +50,13 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 				// Make sure value is a number.
 				value = Number( value );
 
-				if ( 'undefined' !== typeof control.params.choices.min ) {
+				if ( ! _.isUndefined( control.params.choices.min ) ) {
 					min = Number( control.params.choices.min );
 				}
-				if ( 'undefined' !== typeof control.params.choices.max ) {
+				if ( ! _.isUndefined( control.params.choices.max ) ) {
 					max = Number( control.params.choices.max );
 				}
-				if ( 'undefined' !== typeof control.params.choices.step ) {
+				if ( ! _.isUndefined( control.params.choices.step ) ) {
 					step = Number( control.params.choices.step );
 				}
 

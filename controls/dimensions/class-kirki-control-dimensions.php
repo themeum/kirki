@@ -131,9 +131,9 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 					<# for ( choiceKey in data.default ) { #>
 						<div class="{{ choiceKey }}">
 							<h5>
-								<# if ( 'undefined' !== typeof data.choices.labels && 'undefined' !== typeof data.choices.labels[ choiceKey ] ) { #>
+								<# if ( ! _.isUndefined( data.choices.labels ) && ! _.isUndefined( data.choices.labels[ choiceKey ] ) ) { #>
 									{{ data.choices.labels[ choiceKey ] }}
-								<# } else if ( 'undefined' !== typeof data.l10n[ choiceKey ] ) { #>
+								<# } else if ( ! _.isUndefined( data.l10n[ choiceKey ] ) ) { #>
 									{{ data.l10n[ choiceKey ] }}
 								<# } else { #>
 									{{ choiceKey }}

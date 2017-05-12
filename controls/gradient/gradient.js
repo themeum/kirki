@@ -12,7 +12,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 		    angleElement = jQuery( '.angle.gradient-' + control.id );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
-		if ( 'undefined' !== typeof control.params.choices.iris ) {
+		if ( ! _.isUndefined( control.params.choices.iris ) ) {
 			pickerStart.wpColorPicker( control.params.choices.iris );
 			pickerEnd.wpColorPicker( control.params.choices.iris );
 		}
@@ -80,13 +80,13 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 		_.each( control.params['default'], function( defaultParamValue, param ) {
 			if ( false !== defaultParamValue ) {
 				value[ param ] = defaultParamValue;
-				if ( 'undefined' !== typeof control.setting._value[ param ] ) {
+				if ( ! _.isUndefined( control.setting._value[ param ] ) ) {
 					value[ param ] = control.setting._value[ param ];
 				}
 			}
 		});
 		_.each( control.setting._value, function( subValue, param ) {
-			if ( 'undefined' === typeof value[ param ] ) {
+			if ( ! _.isUndefined( value[ param ] ) ) {
 				value[ param ] = subValue;
 			}
 		});

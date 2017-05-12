@@ -76,7 +76,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 				    message;
 
 				setting.notifications.remove( code );
-				if ( 'undefined' !== typeof value.top ) {
+				if ( ! _.isUndefined( value.top ) ) {
 					if ( false === control.kirkiValidateCSSValue( value.top ) ) {
 						subs.top = dimensionskirkiL10n.top;
 					} else {
@@ -84,7 +84,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 					}
 				}
 
-				if ( 'undefined' !== typeof value.bottom ) {
+				if ( ! _.isUndefined( value.bottom ) ) {
 					if ( false === control.kirkiValidateCSSValue( value.bottom ) ) {
 						subs.bottom = dimensionskirkiL10n.bottom;
 					} else {
@@ -92,7 +92,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 					}
 				}
 
-				if ( 'undefined' !== typeof value.left ) {
+				if ( ! _.isUndefined( value.left ) ) {
 					if ( false === control.kirkiValidateCSSValue( value.left ) ) {
 						subs.left = dimensionskirkiL10n.left;
 					} else {
@@ -100,7 +100,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 					}
 				}
 
-				if ( 'undefined' !== typeof value.right ) {
+				if ( ! _.isUndefined( value.right ) ) {
 					if ( false === control.kirkiValidateCSSValue( value.right ) ) {
 						subs.right = dimensionskirkiL10n.right;
 					} else {

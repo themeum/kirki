@@ -13,7 +13,7 @@ function kirkiSetSettingValue( setting, value ) {
 	 * Check if the control we want to affect actually exists.
 	 * If not then skip the item,
 	 */
-	if ( 'undefined' === typeof subControl ) {
+	if ( _.isUndefined( subControl ) ) {
 		return true;
 	}
 
@@ -68,7 +68,7 @@ function kirkiSetSettingValue( setting, value ) {
 		// Update the value in the customizer object
 		wp.customize.instance( setting ).set( value );
 
-	} else if ( 'kirki-generic' === controlType && 'undefined' !== typeof subControl.choices && 'undefined' !== typeof subControl.choices.element && 'textarea' === subControl.choices.element ) {
+	} else if ( 'kirki-generic' === controlType && ! _.isUndefined( subControl.choices ) && ! _.isUndefined( subControl.choices.element ) && 'textarea' === subControl.choices.element ) {
 
 		// Update the value visually in the control
 		jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
@@ -120,53 +120,53 @@ function kirkiSetSettingValue( setting, value ) {
 
 	} else if ( 'kirki-typography' === controlType ) {
 
-		if ( 'undefined' !== typeof value['font-family'] ) {
+		if ( ! _.isUndefined( value['font-family'] ) ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).select2().val( value['font-family'] );
 
 		}
 
-		if ( 'undefined' !== typeof value.variant ) {
+		if ( ! _.isUndefined( value.variant ) ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).select2().val( value.variant );
 
 		}
 
-		if ( 'undefined' !== typeof value.subsets ) {
+		if ( ! _.isUndefined( value.subsets ) ) {
 
 			$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).select2().val( value.subset );
 
 		}
 
-		if ( 'undefined' !== typeof value['font-size'] ) {
+		if ( ! _.isUndefined( value['font-size'] ) ) {
 
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.font-size input' ) ).prop( 'value', value['font-size'] );
 
 		}
 
-		if ( 'undefined' !== typeof value['line-height'] ) {
+		if ( ! _.isUndefined( value['line-height'] ) ) {
 
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.line-height input' ) ).prop( 'value', value['line-height'] );
 
 		}
 
-		if ( 'undefined' !== typeof value['letter-spacing'] ) {
+		if ( ! _.isUndefined( value['letter-spacing'] ) ) {
 
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.letter-spacing input' ) ).prop( 'value', value['letter-spacing'] );
 
 		}
 
-		if ( 'undefined' !== typeof value['word-spacing'] ) {
+		if ( ! _.isUndefined( value['word-spacing'] ) ) {
 
 			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( '.word-spacing input' ) ).prop( 'value', value['word-spacing'] );
 
 		}
 
-		if ( 'undefined' !== typeof value.color ) {
+		if ( ! _.isUndefined( value.color ) ) {
 
 			// Update the value visually in the control
 			typographyColor = wp.customize.control( setting ).container.find( '.kirki-color-control' );

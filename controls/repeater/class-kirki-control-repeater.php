@@ -324,13 +324,13 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 								<# } #>
 
 								<# if ( 'number' === field.type ) { #>
-									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.min ) { #>
+									<# if ( ! _.isUndefined( field.choices ) && ! _.isUndefined( field.choices.min ) ) { #>
 										<# fieldExtras += ' min="' + field.choices.min + '"'; #>
 									<# } #>
-									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.max ) { #>
+									<# if ( ! _.isUndefined( field.choices ) && ! _.isUndefined( field.choices.max ) ) { #>
 										<# fieldExtras += ' max="' + field.choices.max + '"'; #>
 									<# } #>
-									<# if ( 'undefined' !== typeof field.choices && 'undefined' !== typeof field.choices.step ) { #>
+									<# if ( ! _.isUndefined( field.choices ) && ! _.isUndefined( field.choices.step ) ) { #>
 										<# fieldExtras += ' step="' + field.choices.step + '"'; #>
 									<# } #>
 								<# } #>
@@ -379,7 +379,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 									<# if ( field.description ) { #>
 										<span class="description customize-control-description">{{ field.description }}</span>
 									<# } #>
-									<select data-field="{{{ field.id }}}"<# if ( 'undefined' !== typeof field.multiple && false !== field.multiple ) { #> multiple="multiple" data-multiple="{{ field.multiple }}"<# } #>>
+									<select data-field="{{{ field.id }}}"<# if ( ! _.isUndefined( field.multiple ) && false !== field.multiple ) { #> multiple="multiple" data-multiple="{{ field.multiple }}"<# } #>>
 										<# _.each( field.choices, function( choice, i ) { #>
 											<option value="{{{ i }}}" <# if ( field.default == i ) { #> selected="selected" <# } #>>{{ choice }}</option>
 										<# }); #>

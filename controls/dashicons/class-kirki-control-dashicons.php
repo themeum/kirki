@@ -101,7 +101,7 @@ class Kirki_Control_Dashicons extends WP_Customize_Control {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<div class="icons-wrapper">
-			<# if ( 'undefined' !== typeof data.choices && 1 < _.size( data.choices ) ) { #>
+			<# if ( ! _.isUndefined( data.choices ) && 1 < _.size( data.choices ) ) { #>
 				<# for ( key in data.choices ) { #>
 					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ key }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}{{ key }}">

@@ -41,7 +41,7 @@ jQuery( document ).ready( function() {
 						}
 					});
 					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
-				} else if ( typeof value2 === 'string' ) {
+				} else if ( _.isString( value2 ) ) {
 					return value2.indexOf( value1 );
 				}
 				break;

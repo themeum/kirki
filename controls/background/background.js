@@ -7,7 +7,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		    picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
-		if ( 'undefined' === typeof value['background-image'] || '' === value['background-image'] ) {
+		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
 			control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).hide();
 		}
 
@@ -59,9 +59,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 					    preview,
 					    removeButton;
 
-					if ( 'undefined' !== typeof uploadedImage.toJSON().sizes.medium ) {
+					if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
 						previewImage = uploadedImage.toJSON().sizes.medium.url;
-					} else if ( 'undefined' !== typeof uploadedImage.toJSON().sizes.thumbnail ) {
+					} else if ( ! _.isUndefined( uploadedImage.toJSON().sizes.thumbnail ) ) {
 						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
 					}
 
@@ -129,13 +129,13 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		_.each( control.params['default'], function( defaultParamValue, param ) {
 			if ( false !== defaultParamValue ) {
 				value[ param ] = defaultParamValue;
-				if ( 'undefined' !== typeof control.setting._value[ param ] ) {
+				if ( ! _.isUndefined( control.setting._value[ param ] ) ) {
 					value[ param ] = control.setting._value[ param ];
 				}
 			}
 		});
 		_.each( control.setting._value, function( subValue, param ) {
-			if ( 'undefined' === typeof value[ param ] ) {
+			if ( _.isUndefined( value[ param ] ) ) {
 				value[ param ] = subValue;
 			}
 		});

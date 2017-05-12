@@ -34,7 +34,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 					}
 				};
-			if ( 'object' === typeof colors.irisArgs ) {
+			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
 					args[ irisKey ] = irisValue;
 				});

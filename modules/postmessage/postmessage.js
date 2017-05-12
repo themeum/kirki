@@ -10,54 +10,54 @@
 
 			value.bind( function( newval ) {
 
-				if ( 'undefined' !== typeof jsVars && 0 < jsVars.length ) {
+				if ( ! _.isUndefined( jsVars ) && 0 < jsVars.length ) {
 
 					_.each( jsVars, function( jsVar ) {
 
 						var val = newval;
 
 						// Make sure element is defined.
-						if ( 'undefined' === typeof jsVar.element ) {
+						if ( _.isUndefined( jsVar.element ) ) {
 							jsVar.element = '';
 						}
 
 						// Make sure property is defined.
-						if ( 'undefined' === typeof jsVar.property ) {
+						if ( _.isUndefined( jsVar.property ) ) {
 							jsVar.property = '';
 						}
 
 						// Use empty prefix if undefined
-						if ( 'undefined' === typeof jsVar.prefix ) {
+						if ( _.isUndefined( jsVar.prefix ) ) {
 							jsVar.prefix = '';
 						}
 
 						// Use empty suffix if undefined
-						if ( 'undefined' === typeof jsVar.suffix ) {
+						if ( _.isUndefined( jsVar.suffix ) ) {
 							jsVar.suffix = '';
 						}
 
 						// Use empty units if undefined
-						if ( 'undefined' === typeof jsVar.units ) {
+						if ( _.isUndefined( jsVar.units ) ) {
 							jsVar.units = '';
 						}
 
 						// Use css if method is undefined
-						if ( 'undefined' === typeof jsVar['function'] ) {
+						if ( _.isUndefined( jsVar['function'] ) ) {
 							jsVar['function'] = 'css';
 						}
 
 						// Use $ (just the value) if value_pattern is undefined
-						if ( 'undefined' === typeof jsVar.value_pattern ) {
+						if ( _.isUndefined( jsVar.value_pattern ) ) {
 							jsVar.value_pattern = '$';
 						}
 
 						_.each( jsVars, function( args, i ) {
 
 							// Value is a string
-							if ( 'string' === typeof newval ) {
+							if ( _.isString( newval ) ) {
 
 								// Process the value pattern
-								if ( 'undefined' !== typeof args.value_pattern ) {
+								if ( ! _.isUndefined( args.value_pattern ) ) {
 									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
 								} else {
 									val = args.prefix + newval + args.units + args.suffix;
@@ -73,7 +73,7 @@
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
 
-									if ( 'undefined' !== typeof args.attr && 'undefined' !== typeof args.attr ) {
+									if ( ! _.isUndefined( args.attr ) && ! _.isUndefined( args.attr ) ) {
 										jQuery( args.element ).attr( args.attr, val );
 									} else {
 										jQuery( args.element ).html( val );
@@ -95,7 +95,7 @@
 								}
 
 							// Value is an object
-							} else if ( 'object' === typeof newval ) {
+							} else if ( _.isObject( newval ) ) {
 
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
@@ -106,7 +106,7 @@
 										}
 									}
 
-									if ( 'undefined' !== typeof args.choice ) {
+									if ( ! _.isUndefined( args.choice ) ) {
 										if ( args.choice === subValueKey ) {
 											cssArray[ i ] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}

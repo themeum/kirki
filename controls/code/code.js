@@ -25,7 +25,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 			theme:        control.params.choices.theme
 		});
 
-		if ( 'undefined' !== typeof control.params.choices.height ) {
+		if ( ! _.isUndefined( control.params.choices.height ) ) {
 			height = Number( control.params.choices.height );
 			if ( ! isNaN( height ) ) {
 				container = control.container.find( '.codemirror-kirki-wrapper' );

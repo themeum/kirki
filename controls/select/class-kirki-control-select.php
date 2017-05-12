@@ -110,7 +110,7 @@ class Kirki_Control_Select extends WP_Customize_Control {
 		<# if ( ! data.choices ) {
 			return;
 		}
-		if ( 1 < data.multiple && data.value && 'string' === typeof data.value ) {
+		if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 			data.value = [ data.value ];
 		}
 		#>

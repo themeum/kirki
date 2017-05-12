@@ -82,7 +82,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    fontSelect;
 
 		// Format standard fonts as an array.
-		if ( 'undefined' !== typeof kirkiAllFonts.standard ) {
+		if ( ! _.isUndefined( kirkiAllFonts.standard ) ) {
 			_.each( kirkiAllFonts.standard, function( font ) {
 				standardFonts.push({
 					id: font.family,
@@ -92,7 +92,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		}
 
 		// Format google fonts as an array.
-		if ( 'undefined' !== typeof kirkiAllFonts.standard ) {
+		if ( ! _.isUndefined( kirkiAllFonts.standard ) ) {
 			_.each( kirkiAllFonts.google, function( font ) {
 				googleFonts.push({
 					id: font.family,
@@ -252,13 +252,13 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		_.each( control.params['default'], function( defaultParamValue, param ) {
 			if ( false !== defaultParamValue ) {
 				value[ param ] = defaultParamValue;
-				if ( 'undefined' !== typeof control.setting._value[ param ] ) {
+				if ( ! _.isUndefined( control.setting._value[ param ] ) ) {
 					value[ param ] = control.setting._value[ param ];
 				}
 			}
 		});
 		_.each( control.setting._value, function( subValue, param ) {
-			if ( 'undefined' === typeof value[ param ] ) {
+			if ( _.isUndefined( value[ param ] ) ) {
 				value[ param ] = subValue;
 			}
 		});
