@@ -600,7 +600,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n( $config_id = false ) {
 		$translation_strings = array(
 			'row'               => esc_attr__( 'row', 'kirki' ),
 			'add-new'           => esc_attr__( 'Add new', 'kirki' ),
@@ -617,9 +617,9 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			'change-file'       => esc_attr__( 'Change File', 'kirki' ),
 		);
 		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
-		if ( false === $id ) {
+		if ( false === $config_id ) {
 			return $translation_strings;
 		}
-		return $translation_strings[ $id ];
+		return $translation_strings[ $config_id ];
 	}
 }

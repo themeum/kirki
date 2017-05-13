@@ -431,10 +431,8 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 		// Make sure we use "subsets" instead of "subset".
 		if ( isset( $this->json['value']['subset'] ) ) {
-			if ( ! empty( $this->json['value']['subset'] ) ) {
-				if ( ! isset( $this->json['value']['subsets'] ) || empty( $this->json['value']['subsets'] ) ) {
-					$this->json['value']['subsets'] = $this->json['value']['subset'];
-				}
+			if ( ! empty( $this->json['value']['subset'] ) && ! isset( $this->json['value']['subsets'] ) || empty( $this->json['value']['subsets'] ) ) {
+				$this->json['value']['subsets'] = $this->json['value']['subset'];
 			}
 			unset( $this->json['value']['subset'] );
 		}
@@ -445,10 +443,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
+	 * @param string|false $config_id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n( $config_id = false ) {
 		$translation_strings = array(
 			'inherit'        => esc_attr__( 'Inherit', 'kirki' ),
 			'font-family'    => esc_attr__( 'Font Family', 'kirki' ),
@@ -472,10 +470,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'initial'        => esc_attr__( 'Initial', 'kirki' ),
 		);
 		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
-		if ( false === $id ) {
+		if ( false === $config_id ) {
 			return $translation_strings;
 		}
-		return $translation_strings[ $id ];
+		return $translation_strings[ $config_id ];
 	}
 
 	/**

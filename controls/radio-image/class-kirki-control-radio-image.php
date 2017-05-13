@@ -81,9 +81,9 @@ class Kirki_Control_Radio_Image extends WP_Customize_Control {
 		foreach ( $this->input_attrs as $attr => $value ) {
 			if ( 'style' !== $attr ) {
 				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
-			} else {
-				$this->json['labelStyle'] = 'style="' . esc_attr( $value ) . '" ';
+				continue;
 			}
+			$this->json['labelStyle'] = 'style="' . esc_attr( $value ) . '" ';
 		}
 
 	}

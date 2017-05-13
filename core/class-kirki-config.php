@@ -85,10 +85,10 @@ final class Kirki_Config {
 	 *
 	 * @access private
 	 *
-	 * @param string $id     @see Kirki_Config::get_instance().
-	 * @param array  $args   @see Kirki_Config::get_instance().
+	 * @param string $config_id @see Kirki_Config::get_instance().
+	 * @param array  $args      @see Kirki_Config::get_instance().
 	 */
-	private function __construct( $id = 'global', $args = array() ) {
+	private function __construct( $config_id = 'global', $args = array() ) {
 
 		// Get defaults from the class.
 		$defaults = get_class_vars( __CLASS__ );
@@ -109,7 +109,7 @@ final class Kirki_Config {
 		}
 
 		$this->config_final       = $args;
-		$this->config_final['id'] = $id;
+		$this->config_final['id'] = $config_id;
 
 	}
 
