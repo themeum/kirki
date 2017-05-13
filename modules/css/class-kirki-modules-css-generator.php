@@ -200,10 +200,10 @@ final class Kirki_Modules_CSS_Generator {
 			$final_css .= ( 'global' != $media_query ) ? $media_query . '{' : '';
 			foreach ( $styles as $style => $style_array ) {
 				$final_css .= $style . '{';
-					foreach ( $style_array as $property => $value ) {
-						$value = ( is_string( $value ) ) ? $value : '';
-						$final_css .= $property . ':' . $value . ';';
-					}
+				foreach ( $style_array as $property => $value ) {
+					$value = ( is_string( $value ) ) ? $value : '';
+					$final_css .= $property . ':' . $value . ';';
+				}
 				$final_css .= '}';
 			}
 			$final_css .= ( 'global' != $media_query ) ? '}' : '';

@@ -213,6 +213,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		$this->json['id']      = $this->id;
 
 		if ( 'user_meta' === $this->option_type ) {
+			// @codingStandardsIgnoreLine
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
 		}
 

@@ -79,7 +79,7 @@ final class Kirki_Fonts {
 	 *
 	 * @return array    Standard websafe fonts.
 	 */
-	 public static function get_standard_fonts() {
+	public static function get_standard_fonts() {
 		$standard_fonts = array(
 			'serif' => array(
 				'label' => 'Serif',
