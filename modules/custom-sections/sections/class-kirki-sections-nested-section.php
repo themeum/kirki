@@ -58,10 +58,8 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 
 		$array['customizeAction'] = esc_attr__( 'Customizing', 'kirki' );
 		if ( $this->panel ) {
-			$array['customizeAction'] = sprintf(
-				esc_attr__( 'Customizing &#9656; %s', 'kirki' ),
-				esc_html( $this->manager->get_panel( $this->panel )->title )
-			);
+			/* translators: The title. */
+			$array['customizeAction'] = sprintf( esc_attr__( 'Customizing &#9656; %s', 'kirki' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
 		}
 		return $array;
 	}
