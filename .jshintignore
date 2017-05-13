@@ -1,4 +1,2 @@
 **/**.min.js
-assets/js/vendor/
-Gruntfile.js
-controls/sortable/serialize.js
+assets/vendor/
