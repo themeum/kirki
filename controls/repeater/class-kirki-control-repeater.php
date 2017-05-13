@@ -597,7 +597,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
+	 * @param string|false $config_id The string-ID.
 	 * @return string
 	 */
 	protected function l10n( $config_id = false ) {
