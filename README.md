@@ -13,7 +13,7 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 ## Description ##
 
-[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=master) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://raw.githubusercontent.com/aristath/kirki/master/LICENSE) [![Join the chat at https://gitter.im/aristath/kirki](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aristath/kirki?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=master)](https://travis-ci.org/aristath/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
 
