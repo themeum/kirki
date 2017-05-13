@@ -25,6 +25,10 @@ engines:
       - php
   fixme:
     enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "Wordpress"
   phpmd:
     enabled: true
     checks:

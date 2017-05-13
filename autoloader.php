@@ -64,8 +64,7 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 					return;
 				}
 			}
-} // End if().
-
+		} // End if().
 	}
 	// Run the autoloader.
 	spl_autoload_register( 'kirki_autoload_classes' );
