@@ -60,7 +60,7 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 					setting.notifications.add( code, new wp.customize.Notification( code, {
 						type: 'warning',
 						message: numberKirkiL10n[ invalid ]
-					}));
+					} ) );
 				} else {
 					setting.notifications.remove( code );
 				}

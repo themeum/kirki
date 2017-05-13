@@ -195,7 +195,6 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
 	protected function l10n() {
