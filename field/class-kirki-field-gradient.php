@@ -77,7 +77,7 @@ class Kirki_Field_Gradient extends Kirki_Field {
 			if ( ! isset( $value[ $context ]['color'] ) ) {
 				$value[ $context ]['color'] = '';
 			}
-			$value[ $context ]['color'] =  esc_attr( $value[ $context ]['color'] );
+			$value[ $context ]['color'] = esc_attr( $value[ $context ]['color'] );
 
 			// Sanitize positions.
 			if ( ! isset( $value[ $context ]['position'] ) ) {
@@ -92,7 +92,7 @@ class Kirki_Field_Gradient extends Kirki_Field {
 			$value['angle'] = 0;
 		}
 		$value['angle'] = (int) $value['angle'];
-		$value['angle'] = max( min( $value['angle'], 90 ), -90 )
+		$value['angle'] = max( min( $value['angle'], 90 ), -90 );
 
 		// Sanitize the type.
 		$value['type'] = ( ! isset( $value['type'] ) || 'linear' !== $value['type'] || 'radial' !== $value['type'] ) ? 'linear' : $value['type'];
