@@ -299,6 +299,7 @@ class Kirki_Init {
 	 * @param object $wp_customize_setting $WP_Customize_Setting The WP_Customize_Setting instance when saving is happening.
 	 */
 	public function update_user_meta( $value, $wp_customize_setting ) {
+		// @codingStandardsIgnoreLine
 		update_user_meta( get_current_user_id(), $wp_customize_setting->id, $value );
 	}
 

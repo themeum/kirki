@@ -208,6 +208,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['l10n']    = $this->l10n();
 
 		if ( 'user_meta' === $this->option_type ) {
+			// @codingStandardsIgnoreLine
 			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
 		}
 
