@@ -64,10 +64,8 @@
 								}
 
 								// Simple tweak for background-image properties.
-								if ( 'background-image' === args.property ) {
-									if ( 0 > val.indexOf( 'url(' ) ) {
-										val = 'url("' + val + '")';
-									}
+								if ( 'background-image' === args.property && 0 > val.indexOf( 'url(' ) ) {
+									val = 'url("' + val + '")';
 								}
 
 								// Inject HTML
@@ -83,13 +81,9 @@
 								} else {
 
 									// If we have new value, replace style contents with custom css
+									cssArray[ i ] = '';
 									if ( '' !== val ) {
 										cssArray[ i ] = args.element + '{' + args.property + ':' + val + ';}';
-									}
-
-									// Else let's clear it out
-									else {
-										cssArray[ i ] = '';
 									}
 
 								}
@@ -100,10 +94,8 @@
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
 									// Simple tweak for background-image properties.
-									if ( 'background-image' === subValueKey ) {
-										if ( 0 > subValueValue.indexOf( 'url(' ) ) {
-											subValueValue = 'url("' + subValueValue + '")';
-										}
+									if ( 'background-image' === subValueKey && 0 > subValueValue.indexOf( 'url(' ) ) {
+										subValueValue = 'url("' + subValueValue + '")';
 									}
 
 									if ( ! _.isUndefined( args.choice ) ) {

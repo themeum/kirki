@@ -59,10 +59,8 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 					if ( ! _.isUndefined( control.params.fields[ this.label.field ] ) ) {
 						if ( ! _.isUndefined( control.params.fields[ this.label.field ].type ) ) {
 							if ( 'select' === control.params.fields[ this.label.field ].type ) {
-								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) ) {
-									if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ] ) ) {
-										rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
-									}
+								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) && ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ] ) ) {
+									rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
 								}
 							} else if ( 'radio' === control.params.fields[ this.label.field ].type || 'radio-image' === control.params.fields[ this.label.field ].type ) {
 								rowLabelSelector = control.selector + ' [data-row="' + this.rowIndex + '"] .repeater-field [data-field="' + this.label.field + '"]:checked';

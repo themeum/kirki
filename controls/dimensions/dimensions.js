@@ -76,37 +76,16 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 				    message;
 
 				setting.notifications.remove( code );
-				if ( ! _.isUndefined( value.top ) ) {
-					if ( false === control.kirkiValidateCSSValue( value.top ) ) {
-						subs.top = dimensionskirkiL10n.top;
-					} else {
-						delete subs.top;
-					}
-				}
 
-				if ( ! _.isUndefined( value.bottom ) ) {
-					if ( false === control.kirkiValidateCSSValue( value.bottom ) ) {
-						subs.bottom = dimensionskirkiL10n.bottom;
-					} else {
-						delete subs.bottom;
+				_.each( ['top', 'bottom', 'left', 'right'], function( direction ) {
+					if ( ! _.isUndefined( value[ direction ] ) ) {
+						if ( false === control.kirkiValidateCSSValue( value[ direction ] ) ) {
+							subs[ direction ] = dimensionskirkiL10n[ direction ];
+						} else {
+							delete subs[ direction ];
+						}
 					}
-				}
-
-				if ( ! _.isUndefined( value.left ) ) {
-					if ( false === control.kirkiValidateCSSValue( value.left ) ) {
-						subs.left = dimensionskirkiL10n.left;
-					} else {
-						delete subs.left;
-					}
-				}
-
-				if ( ! _.isUndefined( value.right ) ) {
-					if ( false === control.kirkiValidateCSSValue( value.right ) ) {
-						subs.right = dimensionskirkiL10n.right;
-					} else {
-						delete subs.right;
-					}
-				}
+				});
 
 				if ( ! _.isEmpty( subs ) ) {
 					message = dimensionskirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
