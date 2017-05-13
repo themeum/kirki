@@ -19,7 +19,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			var picker = control.container.find( '.multicolor-index-' + subSetting ),
 			    args   = {
 					target: target[0],
-					change: function( event, ui ) {
+					change: function() {
 
 						// Color controls require a small delay.
 						setTimeout( function() {

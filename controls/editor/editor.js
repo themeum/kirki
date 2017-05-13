@@ -5,11 +5,10 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control       = this,
-		    element       = control.container.find( 'textarea' ),
-		    toggler       = control.container.find( '.toggle-editor' ),
-		    editorWrapper = jQuery( '#kirki_editor_pane' ),
-		    wpEditorArea  = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
+		var control      = this,
+		    element      = control.container.find( 'textarea' ),
+		    toggler      = control.container.find( '.toggle-editor' ),
+		    wpEditorArea = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
 		    setChange,
 		    content;
 
@@ -39,7 +38,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 			// Update the option from the editor contents on change.
 			if ( editor ) {
 
-				editor.onChange.add( function( ed, e ) {
+				editor.onChange.add( function( ed ) {
 
 					ed.save();
 					content = editor.getContent();
@@ -69,8 +68,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control       = this,
-			editorWrapper = jQuery( '#kirki_editor_pane' );
+		var control = this;
 
 		// Reset all editor buttons.
 		// Necessary if we have multiple editor fields.

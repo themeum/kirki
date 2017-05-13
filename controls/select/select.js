@@ -18,7 +18,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 		if ( 1 < multiple ) {
 			select2Options.maximumSelectionLength = multiple;
 		}
-		jQuery( element ).select2( select2Options ).on( 'change', function( e ) {
+		jQuery( element ).select2( select2Options ).on( 'change', function() {
 			selectValue = jQuery( this ).val();
 			control.setting.set( selectValue );
 		});

@@ -40,12 +40,10 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code    = 'long_title',
-					subs    = {},
 					min     = false,
 					max     = false,
 					step    = false,
-					invalid = false,
-					message;
+					invalid = false;
 
 				// Make sure value is a number.
 				value = Number( value );

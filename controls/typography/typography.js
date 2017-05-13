@@ -5,9 +5,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		'use strict';
 
 		var control               = this,
-		    fontFamilySelector    = control.selector + ' .font-family select',
-		    variantSelector       = control.selector + ' .variant select',
-		    subsetSelector        = control.selector + ' .subsets select',
 		    textTransformSelector = control.selector + ' .text-transform select',
 		    value                 = control.getValue(),
 		    picker;
@@ -78,7 +75,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			value           = control.getValue(),
 			variantSelector = control.selector + ' .variant select',
 		    subsetSelector  = control.selector + ' .subsets select',
-		    selectValue,
 		    fontSelect;
 
 		// Format standard fonts as an array.
@@ -122,7 +118,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		.val( value['font-family'] )
 
 		// When the value changes
-		.on( 'change', function( e ) {
+		.on( 'change', function() {
 
 			// Set the value.
 			value['font-family'] = jQuery( this ).val();
@@ -168,7 +164,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		// Instantiate select2 with the data.
 		variantSelector = jQuery( selector ).select2({
 			data: data
-		}).val( value.variant ).on( 'change', function( e ) {
+		}).val( value.variant ).on( 'change', function() {
 			value.variant = jQuery( this ).val();
 			control.saveValue( value );
 		});
@@ -204,7 +200,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		// Instantiate select2 with the data.
 		subsetSelector = jQuery( selector ).select2({
 			data: data
-		}).val( value.subsets ).on( 'change', function( e ) {
+		}).val( value.subsets ).on( 'change', function() {
 			value.subsets = jQuery( this ).val();
 			control.saveValue( value );
 		});

@@ -30,9 +30,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.Control.extend
 
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
-				var code = 'long_title',
-					subs = {},
-					message;
+				var code = 'long_title';
 
 				if ( false === control.kirkiValidateCSSValue( value ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(

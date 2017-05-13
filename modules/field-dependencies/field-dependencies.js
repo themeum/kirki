@@ -54,31 +54,29 @@ jQuery( document ).ready( function() {
 	_.each( fieldDependencies, function( args, slaveControlID ) {
 
 		// An array of all master controls for this slave.
-		var kirkiControlDependenciesMasterControls = [],
+		var DependenciesMasterControls = [],
+			showControl                = {};
 
-		    slaveControl = wp.customize.control( slaveControlID ),
-			showControl  = {};
-
-		// Populate the kirkiControlDependenciesMasterControls array.
+		// Populate the DependenciesMasterControls array.
 		_.each( args, function( dependency ) {
 			if ( _.isObject( dependency ) ) {
 				_.each( dependency, function( subDependency ) {
 					if ( ! _.isUndefined( subDependency.setting ) ) {
-						kirkiControlDependenciesMasterControls.push( subDependency.setting );
+						DependenciesMasterControls.push( subDependency.setting );
 					}
 				});
 			}
-			kirkiControlDependenciesMasterControls.push( dependency.setting );
+			DependenciesMasterControls.push( dependency.setting );
 		});
 
-		_.each( kirkiControlDependenciesMasterControls, function( masterControlID ) {
+		_.each( DependenciesMasterControls, function( masterControlID ) {
 
 			wp.customize( masterControlID, function( masterSetting ) {
 
 				// Listen for changes to the master control values.
 				masterSetting.bind( function() {
 					var show = true;
-					_.each( args, function( dependency, index ) {
+					_.each( args, function( dependency ) {
 						if ( ! _.isUndefined( dependency[0] ) && ! _.isUndefined( dependency[0].setting ) ) {
 							// var orConditionShow = {},
 							//     orConditionID   = '';

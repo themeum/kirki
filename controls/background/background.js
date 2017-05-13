@@ -47,7 +47,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 		// Background-Image.
 		jQuery( '.background-image-upload-button' ).click( function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function( e ) {
+			var image = wp.media({ multiple: false }).open().on( 'select', function() {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),

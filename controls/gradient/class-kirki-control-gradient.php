@@ -198,7 +198,7 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = 'global' ) {
+	protected function l10n() {
 		$translation_strings = array(
 			'angle'      => esc_attr__( 'Angle', 'kirki' ),
 			'startcolor' => esc_attr__( 'Start Color', 'kirki' ),

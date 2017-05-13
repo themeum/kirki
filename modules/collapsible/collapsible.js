@@ -1,5 +1,4 @@
 ( function() {
-	var api = wp.customize;
 
 	_.each( collapsible, function( label, setting ) {
 

@@ -15,15 +15,6 @@
 class Kirki_CSS_To_File {
 
 	/**
-	 * The config ID.
-	 *
-	 * @access private
-	 * @since 3.0.0
-	 * @var string
-	 */
-	private $config_id = 'global';
-
-	/**
 	 * Fallback to inline CSS?
 	 *
 	 * @access protected

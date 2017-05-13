@@ -32,7 +32,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.exte
 
 		select = jQuery( element ).select2( select2Options );
 
-		select.on( 'change', function( e ) {
+		select.on( 'change', function() {
 			selectValue = jQuery( this ).val();
 			control.setting.set( selectValue );
 		});

@@ -24,7 +24,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 
 		// Saves our settings to the WP API
 		picker.wpColorPicker({
-			change: function( event, ui ) {
+			change: function() {
 
 				// Small hack: the picker needs a small delay
 				setTimeout( function() {

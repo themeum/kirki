@@ -126,7 +126,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		});
 
-		this.container.on( 'click', '.repeater-row-remove', function( e ) {
+		this.container.on( 'click', '.repeater-row-remove', function() {
 			control.currentIndex--;
 			if ( ! limit || control.currentIndex < limit ) {
 				jQuery( control.selector + ' .limit' ).removeClass( 'highlight' );
@@ -190,7 +190,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		this.repeaterFieldsContainer.sortable({
 			handle: '.repeater-row-header',
-			update: function( e, ui ) {
+			update: function() {
 				control.sort();
 			}
 		});
@@ -256,7 +256,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( _.isObject( this.params.fields[ currentFieldId ] ) && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
 
 				//Iterate over the list of attributes
-				attrs.forEach( function( el, index ) {
+				attrs.forEach( function( el ) {
 
 					// If the attribute exists in the field
 					if ( ! _.isUndefined( this.params.fields[ currentFieldId ][ el ] ) ) {
@@ -506,8 +506,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		// We get the field id from which this was called
-		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
-		    attrs          = [ 'mime_type' ]; // A list of attributes to look for
+		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
 
 		// Make sure we got it
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
