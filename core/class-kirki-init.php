@@ -43,19 +43,34 @@ class Kirki_Init {
 	 */
 	public function set_url() {
 
-		Kirki::$path = wp_normalize_path( Kirki::$path );
+		Kirki::$path = wp_normalize_path( dirname( KIRKI_PLUGIN_FILE ) );
 
-		$parent_theme_path = wp_normalize_path( get_template_directory() );
-		Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
+		// Works in most cases.
+		// Serves as a fallback in case all other checks fail.
+		if ( defined( 'WP_CONTENT_DIR' ) ) {
+			$content_dir = wp_normalize_path( WP_CONTENT_DIR );
+			if ( false !== strpos( Kirki::$path, $content_dir ) ) {
+				$relative_path = str_replace( $content_dir, '', Kirki::$path );
+				Kirki::$url = content_url( $relative_path );
+			}
+		}
 
-		// Is Kirki included in a parent theme?
-		if ( false !== strpos( Kirki::$path, $parent_theme_path ) ) {
-			Kirki::$url = get_template_directory_uri() . str_replace( $parent_theme_path, '', Kirki::$path );
+		// If Kirki is installed as a plugin, use that for the URL.
+		if ( $this->is_plugin() ) {
+			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
+		}
+
+		// Get the path to the theme.
+		$theme_path = wp_normalize_path( get_template_directory() );
+
+		// Is Kirki included in the theme?
+		if ( false !== strpos( Kirki::$path, $theme_path ) ) {
+			Kirki::$url = get_template_directory_uri() . str_replace( $theme_path, '', Kirki::$path );
 		}
 
 		// Is there a child-theme?
-		if ( is_child_theme() ) {
-			$child_theme_path = wp_normalize_path( get_stylesheet_directory_uri() );
+		$child_theme_path = wp_normalize_path( get_stylesheet_directory_uri() );
+		if ( $child_theme_path !== $theme_path ) {
 			// Is Kirki included in a child theme?
 			if ( false !== strpos( Kirki::$path, $child_theme_path ) ) {
 				Kirki::$url = get_template_directory_uri() . str_replace( $child_theme_path, '', Kirki::$path );
@@ -68,7 +83,10 @@ class Kirki_Init {
 			Kirki::$url = $config['url_path'];
 		}
 
+		// Escapes the URL.
 		Kirki::$url = esc_url_raw( Kirki::$url );
+		// Make sure the right protocol is used.
+		Kirki::$url = set_url_scheme( Kirki::$url );
 	}
 
 	/**
