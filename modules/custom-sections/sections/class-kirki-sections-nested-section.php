@@ -49,7 +49,7 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 			'type',
 			'description_hidden',
 			'section',
-		));
+		) );
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();

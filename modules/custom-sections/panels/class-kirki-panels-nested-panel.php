@@ -47,7 +47,7 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 			'priority',
 			'type',
 			'panel',
-		));
+		) );
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();
