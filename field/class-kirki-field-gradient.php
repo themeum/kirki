@@ -71,22 +71,28 @@ class Kirki_Field_Gradient extends Kirki_Field {
 		$value['start'] = ( ! isset( $value['start'] ) ) ? array() : $value['start'];
 		$value['end']   = ( ! isset( $value['end'] ) )   ? array() : $value['end'];
 
-		// Sanitie colors.
-		$value['start']['color'] = ( ! isset( $value['start']['color'] ) ) ? '' : esc_attr( $value['start']['color'] );
-		$value['end']['color']   = ( ! isset( $value['end']['color'] ) ) ? '' : esc_attr( $value['end']['color'] );
+		foreach ( array( 'start', 'end' ) as $context ) {
 
-		// Sanitize positions.
-		$value['start']['position'] = ( ! isset( $value['start']['position'] ) ) ? 0 : (int) $value['start']['position'];
-		$value['start']['position'] = ( 0 > $value['start']['position'] ) ? 0 : $value['start']['position'];
-		$value['start']['position'] = ( 100 < $value['start']['position'] ) ? 100 : $value['start']['position'];
-		$value['end']['position']   = ( ! isset( $value['end']['position'] ) ) ? 0 : (int) $value['end']['position'];
-		$value['end']['position']   = ( 0 > $value['end']['position'] ) ? 0 : $value['end']['position'];
-		$value['end']['position']   = ( 100 < $value['end']['position'] ) ? 100 : $value['end']['position'];
+			// Sanitize colors.
+			if ( ! isset( $value[ $context ]['color'] ) ) {
+				$value[ $context ]['color'] = '';
+			}
+			$value[ $context ]['color'] =  esc_attr( $value[ $context ]['color'] );
+
+			// Sanitize positions.
+			if ( ! isset( $value[ $context ]['position'] ) ) {
+				$value[ $context ]['position'] = 0;
+			};
+			$value[ $context ]['position'] = (int) $value[ $context ]['position'];
+			$value[ $context ]['position'] = max( min( $value[ $context ]['position'], 100 ), 0 );
+		}
 
 		// Sanitize angle.
-		$value['angle'] = ( ! isset( $value['angle'] ) ) ? 0 : (int) $value['angle'];
-		$value['angle'] = ( -90 > $value['angle'] ) ? -90 : $value['angle'];
-		$value['angle'] = ( 90 < $value['angle'] ) ? 90 : $value['angle'];
+		if ( ! isset( $value['angle'] ) ) {
+			$value['angle'] = 0;
+		}
+		$value['angle'] = (int) $value['angle'];
+		$value['angle'] = max( min( $value['angle'], 90 ), -90 )
 
 		// Sanitize the type.
 		$value['type'] = ( ! isset( $value['type'] ) || 'linear' !== $value['type'] || 'radial' !== $value['type'] ) ? 'linear' : $value['type'];
