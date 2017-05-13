@@ -219,7 +219,6 @@ class Kirki_Init {
 						}
 					}
 				}
-				var_dump( $section_args );
 				new Kirki_Section( $section_args );
 			}
 		}
