@@ -121,7 +121,7 @@ class Kirki_Sanitize_Values {
 		}
 
 		// Return empty if there are no numbers in the value.
-		if ( ! preg_match( '#[0-9]#' , $value ) ) {
+		if ( ! preg_match( '#[0-9]#', $value ) ) {
 			return '';
 		}
 

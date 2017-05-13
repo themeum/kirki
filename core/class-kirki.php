@@ -50,7 +50,7 @@ class Kirki extends Kirki_Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $config   = array();
+	public static $config = array();
 
 	/**
 	 * An array containing all fields.
@@ -59,7 +59,7 @@ class Kirki extends Kirki_Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $fields   = array();
+	public static $fields = array();
 
 	/**
 	 * An array containing all panels.
@@ -68,7 +68,7 @@ class Kirki extends Kirki_Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $panels   = array();
+	public static $panels = array();
 
 	/**
 	 * An array containing all sections.
