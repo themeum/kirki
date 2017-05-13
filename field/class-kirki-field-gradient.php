@@ -60,7 +60,7 @@ class Kirki_Field_Gradient extends Kirki_Field {
 	 *
 	 * @access public
 	 * @param boolean|integer|string|null $value The checkbox value.
-	 * @return bool
+	 * @return array
 	 */
 	public function sanitize( $value = null ) {
 
