@@ -10,4 +10,11 @@
   #customize-theme-controls .customize-pane-child.control-section-kirki-expanded h3 .customize-action {
     display: none; }
 
+#customize-theme-controls .customize-pane-child.current-section-parent,
+.in-sub-panel #customize-theme-controls .customize-pane-child.current-panel-parent {
+  transform: translateX(-100%); }
+
+.control-section-kirki-nested {
+  margin: 0 -12px; }
+
 /*# sourceMappingURL=sections.css.map */

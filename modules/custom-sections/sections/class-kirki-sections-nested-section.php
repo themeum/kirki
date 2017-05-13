@@ -1,10 +1,36 @@
 <?php
+/**
+ * Nested section.
+ *
+ * @package     Kirki
+ * @subpackage  Custom Sections Module
+ * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.2.0
+ */
 
-class Kirki_Modules_Custom_Sections_Nested_Section extends WP_Customize_Section {
+/**
+ * Nested section.
+ */
+class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 
+	/**
+	 * The parent section.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @var string
+	 */
 	public $section;
 
-	public $type = 'kirki_nested_section';
+	/**
+	 * The section type.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @var string
+	 */
+	public $type = 'kirki-nested';
 
 	public function json() {
 

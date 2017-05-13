@@ -185,6 +185,14 @@ class Kirki_Init {
 	public function add_panels() {
 		if ( ! empty( Kirki::$panels ) ) {
 			foreach ( Kirki::$panels as $panel_args ) {
+				// Extra checks for nested panels.
+				if ( isset( $panel_args['panel'] ) ) {
+					if ( isset( Kirki::$panels[ $panel_args['panel'] ] ) ) {
+						// Set the type to nested.
+						$panel_args['type'] = 'kirki-nested';
+					}
+				}
+
 				new Kirki_Panel( $panel_args );
 			}
 		}
@@ -199,6 +207,19 @@ class Kirki_Init {
 	public function add_sections() {
 		if ( ! empty( Kirki::$sections ) ) {
 			foreach ( Kirki::$sections as $section_args ) {
+				// Extra checks for nested sections.
+				if ( isset( $section_args['section'] ) ) {
+					if ( isset( Kirki::$sections[ $section_args['section'] ] ) ) {
+						// Set the type to nested.
+						$section_args['type'] = 'kirki-nested';
+						// We need to check if the parent section is nested inside a panel.
+						$parent_section = Kirki::$sections[ $section_args['section'] ];
+						if ( isset( $parent_section['panel'] ) ) {
+							$section_args['panel'] = $parent_section['panel'];
+						}
+					}
+				}
+				var_dump( $section_args );
 				new Kirki_Section( $section_args );
 			}
 		}
