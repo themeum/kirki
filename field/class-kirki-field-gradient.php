@@ -67,11 +67,12 @@ class Kirki_Field_Gradient extends Kirki_Field {
 		// Make sure value in an array.
 		$value = ( ! is_array( $value ) ) ? array() : $value;
 
-		// Make sure start & end values are arrays.
-		$value['start'] = ( ! isset( $value['start'] ) ) ? array() : $value['start'];
-		$value['end']   = ( ! isset( $value['end'] ) )   ? array() : $value['end'];
-
 		foreach ( array( 'start', 'end' ) as $context ) {
+
+			// Make sure value is array.
+			if ( ! isset( $value[ $context ] ) ) {
+				$value[ $context ] = array();
+			}
 
 			// Sanitize colors.
 			if ( ! isset( $value[ $context ]['color'] ) ) {

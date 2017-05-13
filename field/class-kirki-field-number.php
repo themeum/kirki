@@ -46,7 +46,7 @@ class Kirki_Field_Number extends Kirki_Field {
 	public function sanitize( $value = null ) {
 
 		// Make sure min, max & step are all numeric.
-		$min  = ( isset( $this->choices['min'] ) && ! is_numeric( $this->choices['min'] ) ) ? filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : -999999999
+		$min  = ( isset( $this->choices['min'] ) && ! is_numeric( $this->choices['min'] ) ) ? filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : -999999999;
 		$max  = ( isset( $this->choices['max'] ) && ! is_numeric( $this->choices['max'] ) ) ? filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 999999999;
 		$step = ( isset( $this->choices['step'] ) && ! is_numeric( $this->choices['step'] ) ) ? filter_var( $this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
 
