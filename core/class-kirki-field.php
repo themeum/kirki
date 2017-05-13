@@ -476,7 +476,6 @@ class Kirki_Field {
 		if ( ! is_array( $this->input_attrs ) ) {
 			$this->input_attrs = array();
 		}
-
 	}
 
 	/**
@@ -486,12 +485,14 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_capability() {
+
 		// Early exit if we're using 'edit_theme_options'.
 		if ( 'edit_theme_options' === $this->capability ) {
 			return;
 		}
 		// Escape & trim the capability.
 		$this->capability = trim( esc_attr( $this->capability ) );
+
 	}
 
 	/**
@@ -517,6 +518,7 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_partial_refresh() {
+
 		if ( ! is_array( $this->partial_refresh ) ) {
 			$this->partial_refresh = array();
 		}
@@ -574,7 +576,6 @@ class Kirki_Field {
 			$this->tooltip = wp_strip_all_tags( $this->tooltip );
 			return;
 		}
-
 	}
 
 	/**
@@ -604,7 +605,6 @@ class Kirki_Field {
 		if ( ! is_callable( $this->active_callback ) ) {
 			$this->active_callback = '__return_true';
 		}
-
 	}
 
 	/**
@@ -667,7 +667,6 @@ class Kirki_Field {
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
-
 	}
 
 	/**
@@ -789,7 +788,6 @@ class Kirki_Field {
 			$this->transport = 'postMessage';
 
 		}
-
 	}
 
 	/**
@@ -798,6 +796,7 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_variables() {
+
 		if ( ! is_array( $this->variables ) ) {
 			$variable = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
 			$this->variables = array();
@@ -824,7 +823,6 @@ class Kirki_Field {
 			$this->help = '';
 			return;
 		}
-
 	}
 
 	/**
@@ -837,7 +835,6 @@ class Kirki_Field {
 		if ( 'postmessage' === trim( strtolower( $this->transport ) ) ) {
 			$this->transport = 'postMessage';
 		}
-
 	}
 
 	/**
@@ -850,7 +847,6 @@ class Kirki_Field {
 		if ( ! is_array( $this->required ) ) {
 			$this->required = array();
 		}
-
 	}
 
 	/**
