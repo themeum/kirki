@@ -23,7 +23,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 			// Saves our settings to the WP API
 			obj.wpColorPicker({
-				change: function( event ) {
+				change: function() {
 					setTimeout( function() {
 
 						// Add the value to the object.
