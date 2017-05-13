@@ -45,29 +45,27 @@ class Kirki_Field_Number extends Kirki_Field {
 	 */
 	public function sanitize( $value = null ) {
 
-		$value = ( is_numeric( $value ) ) ? $value : intval( $value );
+		// Make sure min, max & step are all numeric.
+		$min  = ( isset( $this->choices['min'] ) && ! is_numeric( $this->choices['min'] ) ) ? filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : -999999999
+		$max  = ( isset( $this->choices['max'] ) && ! is_numeric( $this->choices['max'] ) ) ? filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 999999999;
+		$step = ( isset( $this->choices['step'] ) && ! is_numeric( $this->choices['step'] ) ) ? filter_var( $this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
+
+		if ( ! is_numeric( $value ) ) {
+			$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		}
 
 		// Minimum value limit.
-		if ( isset( $this->choices['min'] ) ) {
-			$min = ( is_numeric( $this->choices['min'] ) ) ? $this->choices['min'] : intval( $this->choices['min'] );
-			if ( $value < $min ) {
-				$value = $min;
-			}
+		if ( $value < $min ) {
+			return $min;
 		}
 
 		// Maximum value limit.
-		if ( isset( $this->choices['max'] ) ) {
-			$max = ( is_numeric( $this->choices['max'] ) ) ? $this->choices['max'] : intval( $this->choices['max'] );
-			if ( $value > $max ) {
-				$value = $max;
-			}
+		if ( $value > $max ) {
+			return $max;
 		}
 
 		// Step divider.
 		if ( isset( $this->choices['min'] ) && isset( $this->choices['step'] ) ) {
-			$min   = ( is_numeric( $this->choices['min'] ) ) ? $this->choices['min'] : intval( $this->choices['min'] );
-			$max   = ( is_numeric( $this->choices['max'] ) ) ? $this->choices['max'] : intval( $this->choices['max'] );
-			$step  = ( is_numeric( $this->choices['step'] ) ) ? $this->choices['step'] : intval( $this->choices['step'] );
 			$valid = range( $min, $max, $step );
 
 			$smallest = array();
