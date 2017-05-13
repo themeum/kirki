@@ -36,6 +36,5 @@ class Kirki_Modules_Resize {
 
 		wp_enqueue_script( 'kirki-customizer-resize', trailingslashit( Kirki::$url ) . 'modules/resize/resize.js', array( 'jquery-ui-resizable' ) );
 		wp_enqueue_style( 'kirki-customizer-resize', trailingslashit( Kirki::$url ) . 'modules/resize/resize.css' );
-
 	}
 }
