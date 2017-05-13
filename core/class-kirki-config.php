@@ -92,7 +92,7 @@ final class Kirki_Config {
 
 		// Get defaults from the class.
 		$defaults = get_class_vars( __CLASS__ );
-		// Skip the what we don't need in this context.
+		// Skip what we don't need in this context.
 		unset( $defaults['config_final'] );
 		unset( $defaults['instances'] );
 		// Apply any kirki/config global filters.
