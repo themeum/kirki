@@ -37,7 +37,7 @@ final class Kirki_Modules_CSS_Generator {
 	 * @access public
 	 * @var null|string|array
 	 */
-	public static $settings    = null;
+	public static $settings = null;
 
 	/**
 	 * Output.
@@ -46,7 +46,7 @@ final class Kirki_Modules_CSS_Generator {
 	 * @access public
 	 * @var array
 	 */
-	public static $output      = array();
+	public static $output = array();
 
 	/**
 	 * Callback.
@@ -55,7 +55,7 @@ final class Kirki_Modules_CSS_Generator {
 	 * @access public
 	 * @var null|string|array
 	 */
-	public static $callback    = null;
+	public static $callback = null;
 
 	/**
 	 * Option Name.
@@ -73,7 +73,7 @@ final class Kirki_Modules_CSS_Generator {
 	 * @access public
 	 * @var string
 	 */
-	public static $field_type  = null;
+	public static $field_type = null;
 
 	/**
 	 * Google Fonts

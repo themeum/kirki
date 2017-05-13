@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles the resrt buttons on sections.
+ * Handles the reset buttons on sections.
  *
  * @package     Kirki
  * @category    Modules
