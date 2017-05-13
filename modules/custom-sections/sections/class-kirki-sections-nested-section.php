@@ -32,6 +32,13 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 	 */
 	public $type = 'kirki-nested';
 
+	/**
+	 * Gather the parameters passed to client JavaScript via JSON.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @return array The array to be exported to the client as JSON.
+	 */
 	public function json() {
 
 		$array = wp_array_slice_assoc( (array) $this, array(
