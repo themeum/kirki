@@ -36,12 +36,23 @@ if ( ! function_exists( 'kirki_autoload_classes' ) ) {
 				$paths[] = $path . $filename;
 			}
 
-			// Handle controls loading.
-			if ( isset( $name_parts[0] ) && 'Control' === $name_parts[0] ) {
-				$path  = dirname( __FILE__ ) . '/controls/';
-				$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Control_', '', $class_name ) ) ) . '/';
+			if ( isset( $name_parts[0] ) ) {
 
-				$paths[] = $path . $filename;
+				// Handle controls loading.
+				if ( 'Control' === $name_parts[0] ) {
+					$path  = dirname( __FILE__ ) . '/controls/';
+					$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Control_', '', $class_name ) ) ) . '/';
+
+					$paths[] = $path . $filename;
+				}
+
+				// Handle settings loading.
+				if ( 'Settings' === $name_parts[0] ) {
+					$path  = dirname( __FILE__ ) . '/controls/';
+					$path .= strtolower( str_replace( '_', '-', str_replace( array( 'Kirki_Settings_', '_Setting' ), '', $class_name ) ) ) . '/';
+
+					$paths[] = $path . $filename;
+				}
 			}
 
 			$paths[] = dirname( __FILE__ ) . '/core/' . $filename;

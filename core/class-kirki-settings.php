@@ -123,7 +123,7 @@ class Kirki_Settings {
 
 		// Apply the kirki/setting_types filter.
 		$this->setting_types = apply_filters( 'kirki/setting_types', array(
-			'default'  => 'Kirki_Settings_Default_Setting',
+			'default'  => 'WP_Customize_Setting',
 			'repeater' => 'Kirki_Settings_Repeater_Setting',
 		) );
 
