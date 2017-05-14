@@ -24,86 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Customizer_Styling {
 
 	/**
-	 * Background Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $color_back = false;
-
-	/**
-	 * Font Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $color_font = false;
-
-	/**
-	 * Accent Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $color_accent;
-
-	/**
-	 * Border Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $border_color;
-
-	/**
-	 * Buttons Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $buttons_color;
-
-	/**
-	 * Controls Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $controls_color;
-
-	/**
-	 * Arrows Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $arrows_color;
-
-	/**
-	 * Accent text Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $color_accent_text;
-
-	/**
-	 * Section Background Color.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $section_background_color;
-
-	/**
-	 * Have we already processed styling?
-	 *
-	 * @access public
-	 * @var bool
-	 */
-	public $process = false;
-
-	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -118,47 +38,8 @@ class Kirki_Modules_Customizer_Styling {
 	 * @access public
 	 */
 	public function customizer_styles() {
-		wp_add_inline_style( 'common-css', $this->custom_css() );
+		echo '<style>' . $this->custom_css() . '</style>';
 	}
-
-	/**
-	 * Gets the colors used.
-	 *
-	 * @access public
-	 * @return null|void
-	 */
-	public function get_colors() {
-
-		$config = apply_filters( 'kirki/config', array() );
-
-		// No need to proceed if we haven't set any colors.
-		if ( ( ! isset( $config['color_back'] ) || ! $config['color_back'] ) && ( ! isset( $config['color_accent'] ) || ! $config['color_accent'] ) ) {
-			return;
-		}
-		// Set the $process to true.
-		$this->process = true;
-		// Calculate the accent color.
-		if ( isset( $config['color_accent'] ) ) {
-			$this->color_accent = Kirki_Color::sanitize_hex( $config['color_accent'] );
-		}
-
-		// Calculate the background & font colors.
-		if ( isset( $config['color_back'] ) ) {
-			$this->color_back = Kirki_Color::sanitize_hex( $config['color_back'] );
-			$this->color_font = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? '#f2f2f2' : '#222';
-		}
-
-		if ( $this->color_back ) {
-			$this->buttons_color = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 80 ) : Kirki_Color::adjust_brightness( $this->color_back, -80 );
-			$this->border_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? 'rgba(255,255,255,.2)' : 'rgba(0,0,0,.2)';
-			$this->arrows_color             = ( 170 > Kirki_Color::get_brightness( $this->color_back ) ) ? Kirki_Color::adjust_brightness( $this->color_back, 120 ) : Kirki_Color::adjust_brightness( $this->color_back, -120 );
-			$this->section_background_color = Kirki_Color::mix_colors( $this->color_back, '#ffffff', 10 );
-		}
-		$this->controls_color           = ( ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ) ? '#ffffff;' : '#333333';
-		$this->color_accent_text        = ( 170 > Kirki_Color::get_brightness( $this->color_accent ) ) ? Kirki_Color::adjust_brightness( $this->color_accent, 120 ) : Kirki_Color::adjust_brightness( $this->color_accent, -120 );
-
-	}
-
 
 	/**
 	 * Add custom CSS rules to the head, applying our custom styles.
@@ -167,77 +48,215 @@ class Kirki_Modules_Customizer_Styling {
 	 */
 	public function custom_css() {
 
-		$this->get_colors();
-		if ( ! $this->process ) {
-			return;
-		}
-		$styles = $this->include_stylesheets();
-		$styles = $this->replace_placeholders( $styles );
-
-		return $styles;
-
-	}
-
-	/**
-	 * Replaces CSS placefolders with our settings.
-	 *
-	 * @access public
-	 * @param string $styles The CSS.
-	 * @return string
-	 */
-	public function replace_placeholders( $styles ) {
-
-		// Replace CSS placeholders with actual values.
-		$replacements = array(
-			'COLOR_BACK'               => $this->color_back,
-			'COLOR_ACCENT_TEXT'        => $this->color_accent_text,
-			'COLOR_ACCENT'             => $this->color_accent,
-			'BORDER_COLOR'             => $this->border_color,
-			'BUTTONS_COLOR'            => $this->buttons_color,
-			'COLOR_FONT'               => $this->color_font,
-			'CONTROLS_COLOR'           => $this->controls_color,
-			'ARROWS_COLOR'             => $this->arrows_color,
-			'SECTION_BACKGROUND_COLOR' => $this->section_background_color,
-		);
-		foreach ( $replacements as $placeholder => $replacement ) {
-			$styles = str_replace( $placeholder, $replacement, $styles );
-		}
-
-		return $styles;
-
-	}
-
-	/**
-	 * Get the stylesheets.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function include_stylesheets() {
-
 		$config = apply_filters( 'kirki/config', array() );
-		$styles = '';
-
-		// Include the width CSS if necessary.
-		if ( isset( $config['width'] ) ) {
-			$path = wp_normalize_path( Kirki::$path . '/modules/customizer-styling/dynamic-css-width.php' );
-			$styles .= include $path;
-
-			// Replace width placeholder with actual value.
-			$styles = str_replace( 'WIDTH', $config['width'], $styles );
+		?>
+		<style>
+		.wp-full-overlay-sidebar,
+		#customize-controls .customize-info .accordion-section-title,
+		#customize-controls .panel-meta.customize-info .accordion-section-title:hover,
+		#customize-theme-controls .accordion-section-title,
+		.customize-section-title,
+		#customize-theme-controls .control-section-themes .accordion-section-title,
+		#customize-theme-controls .control-section-themes .accordion-section-title:hover {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				background: <?php echo esc_attr( $config['color_back'] ); ?>;
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				color: <?php echo esc_attr( $text_color ); ?>
+			<?php endif; ?>
 		}
 
-		// Include the color modifications CSS if necessary.
-		if ( false !== $this->color_back && false !== $this->color_font ) {
-			$path = wp_normalize_path( Kirki::$path . '/modules/customizer-styling/dynamic-css-colors.php' );
-			$styles .= include $path;
+		#customize-theme-controls .control-section-themes .accordion-section-title,
+		#customize-theme-controls .control-section-themes .accordion-section-title:hover {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				color: <?php echo esc_attr( $text_color ); ?>
+			<?php endif; ?>
 		}
 
-		// Include generic CSS for controls.
-		$path = wp_normalize_path( Kirki::$path . '/modules/customizer-styling/dynamic-css.php' );
-		$styles .= include $path;
+		#customize-controls .control-section .accordion-section-title:focus,
+		#customize-controls .control-section .accordion-section-title:hover,
+		#customize-controls .control-section.open .accordion-section-title,
+		#customize-controls .control-section:hover > .accordion-section-title,
+		.customize-panel-back:focus,
+		.customize-panel-back:hover,
+		.customize-section-back:focus,
+		.customize-section-back:hover {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $hover_color = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 3 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 3 )->toCSS( $color_obj->mode ); ?>
+				background: <?php echo esc_attr( $hover_color ); ?>;
+			<?php endif; ?>
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+				border-left-color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+			<?php endif; ?>
+		}
 
-		return $styles;
+		#customize-controls .customize-info,
+		#customize-header-actions,
+		.customize-section-title {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+			<?php endif; ?>
+		}
+
+		.wp-full-overlay-sidebar .wp-full-overlay-header,
+		.customize-controls-close,
+		.expanded .wp-full-overlay-footer {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $bg_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 5 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 5 )->toCSS( $color_obj->mode ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				color: <?php echo esc_attr( $text_color ); ?>;
+				background-color: <?php echo esc_attr( $bg_color ); ?>;
+				border-color: <?php echo esc_attr( $border_color ); ?>;
+			<?php endif; ?>
+		}
+
+		.customize-controls-close:hover {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				background-color: <?php echo esc_attr( $config['color_back'] ); ?>;
+			<?php endif; ?>
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+				border-color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+			<?php endif; ?>
+		}
+
+		#accordion-section-themes+.control-section,
+		#customize-theme-controls .control-section:last-of-type.open,
+		#customize-theme-controls .control-section:last-of-type > .accordion-section-title,
+		#customize-theme-controls .control-section.open {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+				border-top-color: <?php echo esc_attr( $border_color ); ?>;
+			<?php endif; ?>
+		}
+
+		#customize-theme-controls .accordion-section-title {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+			<?php endif; ?>
+			border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+			border-left-color: <?php echo esc_attr( $border_color ); ?>;
+		}
+
+		#customize-theme-controls .control-section-themes .accordion-section-title,
+		#customize-theme-controls .control-section-themes .accordion-section-title:hover {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+			<?php endif; ?>
+			border-top-color: <?php echo esc_attr( $border_color ); ?>;
+			border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+		}
+
+		#customize-theme-controls .accordion-section-title:after {
+			<?php if ( isset( $config['color_back'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
+				<?php $arrows_color = ( 50 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 30 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 30 )->toCSS( $color_obj->mode ); ?>
+				color: <?php echo esc_attr( $arrows_color ); ?>;
+			<?php endif; ?>
+		}
+
+		#customize-theme-controls .control-section .accordion-section-title:focus:after,
+		#customize-theme-controls .control-section .accordion-section-title:hover:after,
+		#customize-theme-controls .control-section.open .accordion-section-title:after,
+		#customize-theme-controls .control-section:hover>.accordion-section-title:after {
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+			<?php endif; ?>
+		}
+
+		.wp-core-ui .button-primary {
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness -15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				background-color: <?php echo esc_attr( $config['color_accent'] ); ?>;
+				border-color: <?php echo esc_attr( $border_color ); ?>;
+				box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?>;
+				-webkit-box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?>;
+				text-shadow: 0 -1px 1px <?php echo esc_attr( $border_color ); ?>, 1px 0 1px <?php echo esc_attr( $border_color ); ?>, 0 1px 1px <?php echo esc_attr( $border_color ); ?>, -1px 0 1px <?php echo esc_attr( $border_color ); ?>;
+				color: <?php echo esc_attr( $text_color ); ?>;
+			<?php endif; ?>
+		}
+
+		.wp-core-ui .button-primary.focus,
+		.wp-core-ui .button-primary.hover,
+		.wp-core-ui .button-primary:focus,
+		.wp-core-ui .button-primary:hover {
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
+				<?php $color_obj = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 3 ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 3 ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness -15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				background-color: <?php echo esc_attr( $color_obj->toCSS( $color_obj->mode ) ); ?>;
+				border-color: <?php echo esc_attr( $border_color ); ?>;
+				box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?>;
+				-webkit-box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?>;
+				text-shadow: 0 -1px 1px <?php echo esc_attr( $border_color ); ?>, 1px 0 1px <?php echo esc_attr( $border_color ); ?>, 0 1px 1px <?php echo esc_attr( $border_color ); ?>, -1px 0 1px <?php echo esc_attr( $border_color ); ?>;
+				color: <?php echo esc_attr( $text_color ); ?>;
+			<?php endif; ?>
+		}
+
+		.wp-core-ui .button-primary-disabled,
+		.wp-core-ui .button-primary.disabled,
+		.wp-core-ui .button-primary:disabled,
+		.wp-core-ui .button-primary[disabled] {
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
+				<?php $color_obj = ( 35 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 30 ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 30 ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness -15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				background-color: <?php echo esc_attr( $color_obj->toCSS( $color_obj->mode ) ); ?> !important;
+				border-color: <?php echo esc_attr( $border_color ); ?> !important;
+				box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?> !important;
+				-webkit-box-shadow: 0 1px 0 <?php echo esc_attr( $border_color ); ?> !important;
+				text-shadow: 0 -1px 1px <?php echo esc_attr( $border_color ); ?>, 1px 0 1px <?php echo esc_attr( $border_color ); ?>, 0 1px 1px <?php echo esc_attr( $border_color ); ?>, -1px 0 1px <?php echo esc_attr( $border_color ); ?> !important;
+				color: <?php echo esc_attr( $text_color ); ?> !important;
+			<?php endif; ?>
+		}
+		<?php if ( isset( $config['color_back'] ) ) : ?>
+			.wp-full-overlay-footer .devices {
+				background: none;
+				background: transparent;
+				box-shadow: none;
+				-webkit-box-shadow: none;
+			}
+		<?php endif; ?>
+		<?php if ( isset( $config['width'] ) ) : ?>
+			.wp-full-overlay-sidebar {
+			  width: <?php echo esc_attr( $config['width'] ); ?>;
+			}
+			.expanded .wp-full-overlay-footer {
+				<?php if ( false === strpos( $config['width'], 'calc' ) ) : ?>
+					width: calc(<?php echo esc_attr( $config['width'] ); ?> - 1px);
+				<?php else : ?>
+					width: <?php echo esc_attr( $config['width'] ); ?>
+				<?php endif; ?>
+			}
+
+			.wp-full-overlay.expanded {
+				margin-left: <?php echo esc_attr( $config['width'] ); ?>;
+			}
+			.wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+				margin-left: -<?php echo esc_attr( $config['width'] ); ?>;
+			}
+		<?php endif; ?>
+
+		</style>
+		<?php
 
 	}
 }
