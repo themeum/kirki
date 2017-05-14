@@ -2,6 +2,31 @@
   label {
     position: relative;
     display: inline-block;
+
+    .image-label {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,.7);
+      font-weight: bold;
+
+      .inner {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 0.5em;
+        vertical-align: middle;
+      }
+    }
+
+    &:hover {
+      .image-label {
+        display: block;
+      }
+    }
   }
 
   input {
