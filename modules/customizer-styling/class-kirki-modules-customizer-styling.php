@@ -76,7 +76,7 @@ class Kirki_Modules_Customizer_Styling {
 		.customize-section-back:hover {
 			<?php if ( isset( $config['color_back'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
-				<?php $hover_color = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 3 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 3 )->toCSS( $color_obj->mode ); ?>
+				<?php $hover_color = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 3 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 3 )->toCSS( $color_obj->mode ); ?>
 				background: <?php echo esc_attr( $hover_color ); ?>;
 			<?php endif; ?>
 			<?php if ( isset( $config['color_accent'] ) ) : ?>
@@ -90,7 +90,7 @@ class Kirki_Modules_Customizer_Styling {
 		.customize-section-title {
 			<?php if ( isset( $config['color_back'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
-				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
 		}
@@ -125,7 +125,7 @@ class Kirki_Modules_Customizer_Styling {
 		#customize-theme-controls .control-section.open {
 			<?php if ( isset( $config['color_back'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
-				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 				border-top-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
@@ -134,7 +134,7 @@ class Kirki_Modules_Customizer_Styling {
 		#customize-theme-controls .accordion-section-title {
 			<?php if ( isset( $config['color_back'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
-				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
 			border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
@@ -145,7 +145,7 @@ class Kirki_Modules_Customizer_Styling {
 		#customize-theme-controls .control-section-themes .accordion-section-title:hover {
 			<?php if ( isset( $config['color_back'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
-				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
 			border-top-color: <?php echo esc_attr( $border_color ); ?>;
@@ -189,8 +189,8 @@ class Kirki_Modules_Customizer_Styling {
 		.wp-core-ui .button-primary:hover {
 			<?php if ( isset( $config['color_accent'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
-				<?php $color_obj = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 3 ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 3 ); ?>
-				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness -15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $color_obj = ( 90 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 3 ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 3 ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
 				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
 				background-color: <?php echo esc_attr( $color_obj->toCSS( $color_obj->mode ) ); ?>;
 				border-color: <?php echo esc_attr( $border_color ); ?>;
@@ -207,7 +207,7 @@ class Kirki_Modules_Customizer_Styling {
 		.wp-core-ui .button-primary[disabled] {
 			<?php if ( isset( $config['color_accent'] ) ) : ?>
 				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
-				<?php $color_obj = ( 35 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 30 ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 30 ); ?>
+				<?php $color_obj = ( 35 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 30 ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 30 ); ?>
 				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness -15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
 				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
 				background-color: <?php echo esc_attr( $color_obj->toCSS( $color_obj->mode ) ); ?> !important;
