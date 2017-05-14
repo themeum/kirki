@@ -38,7 +38,9 @@ function kirkiSetSettingValue( setting, value ) {
 
 			// Update the value in the customizer object
 			wp.customize.instance( setting ).set({});
-			setTimeout( function() { wp.customize.instance( setting ).set( value ); }, 100 );
+			setTimeout( function() {
+				wp.customize.instance( setting ).set( value );
+			}, 100 );
 			break;
 
 		case 'checkbox':
@@ -86,7 +88,7 @@ function kirkiSetSettingValue( setting, value ) {
 			break;
 
 		case 'kirki-generic':
-		 	if ( ! _.isUndefined( subControl.choices ) && ! _.isUndefined( subControl.choices.element ) && 'textarea' === subControl.choices.element ) {
+			if ( ! _.isUndefined( subControl.choices ) && ! _.isUndefined( subControl.choices.element ) && 'textarea' === subControl.choices.element ) {
 
 				// Update the value visually in the control
 				jQuery( wp.customize.control( setting ).container.find( 'textarea' ) ).prop( 'value', value );
