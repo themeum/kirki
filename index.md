@@ -9,7 +9,7 @@ premium_themes:
     thumb: https://image-tf.s3.envato.com/files/218799078/08_henderson_theme_preview.__large_preview.__large_preview.png
   - name: Outlook Pro
     url: https://www.wpfreeware.com/outlook-pro/
-    thumb: https://i2.wp.com/www.wpfreeware.com/wp-content/uploads/2016/11/shop.jpg?zoom=2&fit=900%2C660&ssl=1
+    thumb: https://i1.wp.com/www.wpfreeware.com/wp-content/uploads/2016/12/outlook-pro.jpg?w=960&ssl=1
   - name: Redxun
     url: https://www.wowthemes.net/themes/redxun/
     thumb: https://www.wowthemes.net/presentation/redxun-presentation-1-features.png
