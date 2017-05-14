@@ -29,16 +29,7 @@ class Kirki_Modules_Customizer_Styling {
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'customize_controls_print_styles', array( $this, 'customizer_styles' ), 99 );
-	}
-
-	/**
-	 * Enqueue the stylesheets required.
-	 *
-	 * @access public
-	 */
-	public function customizer_styles() {
-		echo '<style>' . $this->custom_css() . '</style>';
+		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 99 );
 	}
 
 	/**
