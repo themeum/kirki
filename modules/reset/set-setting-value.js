@@ -28,8 +28,19 @@ function kirkiSetSettingValue( setting, value ) {
 	 * Below we're starting to check the control tyype and depending on what that is,
 	 * make the necessary adjustments to it.
 	 */
-
 	switch ( controlType ) {
+
+		case 'kirki-background':
+			if ( ! _.isUndefined( value['background-color'] ) ) {
+				wp.customize.control( setting ).container.find( '.kirki-color-control' ).wpColorPicker( 'color', value['background-color'] );
+			}
+			wp.customize.control( setting ).container.find( '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
+
+			// Update the value in the customizer object
+			wp.customize.instance( setting ).set({});
+			setTimeout( function() { wp.customize.instance( setting ).set( value ); }, 100 );
+			break;
+
 		case 'checkbox':
 		case 'kirki-switch':
 		case 'kirki-toggle':
@@ -53,6 +64,7 @@ function kirkiSetSettingValue( setting, value ) {
 
 		case 'kirki-select':
 		case 'kirki-preset':
+		case 'kirki-fontawesome':
 
 			// Update the value visually in the control
 			$select   = jQuery( wp.customize.control( setting ).container.find( 'select' ) ).select2().val( value );
@@ -197,7 +209,7 @@ function kirkiSetSettingValue( setting, value ) {
 			 * Fallback for all other controls.
 			 */
 
-			 // Update the value visually in the control
+			// Update the value visually in the control
 			jQuery( wp.customize.control( setting ).container.find( 'input' ) ).prop( 'value', value );
 
 			// Update the value in the customizer object
