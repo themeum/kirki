@@ -101,13 +101,19 @@ class Kirki_Modules_CSS {
 			return;
 		}
 
-		// If we're in the customizer, load inline no matter what.
+		$method = apply_filters( 'kirki/dynamic_css/method', 'inline' );
 		if ( $wp_customize ) {
+			// If we're in the customizer, load inline no matter what.
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
+
+			// If we're using file method, on save write the new styles.
+			if ( 'file' === $method ) {
+				$this->css_to_file = new Kirki_CSS_To_File();
+				add_action( 'customize_save_after', array( $this->css_to_file, 'write_file' ) );
+			}
 			return;
 		}
 
-		$method = apply_filters( 'kirki/dynamic_css/method', 'inline' );
 		if ( 'file' === $method ) {
 			// Attempt to write the CSS to file.
 			$this->css_to_file = new Kirki_CSS_To_File();
