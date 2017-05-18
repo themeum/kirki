@@ -97,6 +97,9 @@ class Kirki_Field_Repeater extends Kirki_Field {
 					unset( $value[ $row_id ][ $subfield_id ] );
 				}
 				// Get the subfield-type.
+				if ( ! isset( $this->fields[ $subfield_id ]['type'] ) ) {
+					continue;
+				}
 				$subfield_type = $this->fields[ $subfield_id ]['type'];
 
 				// Allow using a sanitize-callback on a per-field basis.
