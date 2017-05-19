@@ -6,49 +6,45 @@
   flex-wrap: wrap;
   justify-content: space-between; }
   .customize-control-kirki-typography .wrapper .color,
+  .customize-control-kirki-typography .wrapper .font-backup,
   .customize-control-kirki-typography .wrapper .font-family,
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
   .customize-control-kirki-typography .wrapper .line-height,
   .customize-control-kirki-typography .wrapper .subsets,
-  .customize-control-kirki-typography .wrapper .text-transform,
-  .customize-control-kirki-typography .wrapper .variant,
-  .customize-control-kirki-typography .wrapper .word-spacing {
+  .customize-control-kirki-typography .wrapper .variant {
     width: 100%;
     float: none;
     clear: both; }
     .customize-control-kirki-typography .wrapper .color h5,
+    .customize-control-kirki-typography .wrapper .font-backup h5,
     .customize-control-kirki-typography .wrapper .font-family h5,
     .customize-control-kirki-typography .wrapper .font-size h5,
     .customize-control-kirki-typography .wrapper .letter-spacing h5,
     .customize-control-kirki-typography .wrapper .line-height h5,
     .customize-control-kirki-typography .wrapper .subsets h5,
-    .customize-control-kirki-typography .wrapper .text-transform h5,
-    .customize-control-kirki-typography .wrapper .variant h5,
-    .customize-control-kirki-typography .wrapper .word-spacing h5 {
+    .customize-control-kirki-typography .wrapper .variant h5 {
       margin: 0.67em 0 0; }
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
-  .customize-control-kirki-typography .wrapper .line-height,
-  .customize-control-kirki-typography .wrapper .word-spacing {
+  .customize-control-kirki-typography .wrapper .line-height {
     width: 50%; }
-  .customize-control-kirki-typography .wrapper .text-align {
-    width: 100%; }
-  .customize-control-kirki-typography .wrapper .text-align .dashicons {
-    padding: 3px;
-    font-size: 25px;
-    width: 25px;
-    height: 25px;
-    border: 1px solid transparent; }
-  .customize-control-kirki-typography .wrapper .text-align input {
-    display: none; }
-    .customize-control-kirki-typography .wrapper .text-align input:checked + label .dashicons {
-      border: 1px solid #3498DB;
-      color: #000; }
-  .customize-control-kirki-typography .wrapper .text-transform {
-    padding-top: 10px; }
   .customize-control-kirki-typography .wrapper .color {
     width: auto; }
+.customize-control-kirki-typography .select2-container--default .select2-selection--multiple, .customize-control-kirki-typography .select2-container--default .select2-selection--single {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent; }
+.customize-control-kirki-typography .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
+  border: none;
+  border-radius: 0; }
+
+.select2-dropdown {
+  border-radius: 0; }
 
 .select2-container {
   min-width: 100px;

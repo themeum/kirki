@@ -8,14 +8,13 @@
     justify-content: space-between;
 
     .color,
+    .font-backup,
     .font-family,
     .font-size,
     .letter-spacing,
     .line-height,
     .subsets,
-    .text-transform,
-    .variant,
-    .word-spacing {
+    .variant {
       width: 100%;
       float: none;
       clear: both;
@@ -27,46 +26,42 @@
 
     .font-size,
     .letter-spacing,
-    .line-height,
-    .word-spacing {
+    .line-height {
       width: 50%;
-    }
-
-    .text-align {
-      width: 100%;
-    }
-
-    .text-align {
-      .dashicons {
-        padding: 3px;
-        font-size: 25px;
-        width: 25px;
-        height: 25px;
-        border: 1px solid transparent;
-      }
-
-      input {
-        display: none;
-
-        &:checked {
-          + label {
-            .dashicons {
-              border: 1px solid #3498DB;
-              color: #000;
-            }
-          }
-        }
-      }
-    }
-
-    .text-transform {
-      padding-top: 10px;
     }
 
     .color {
       width: auto;
     }
   }
+
+  .select2-container {
+    &--default {
+      .select2-selection {
+        &--multiple,
+        &--single {
+          border: none;
+          border-bottom: 1px solid rgba(0,0,0,.2);
+          border-radius: 0;
+          background-color: rgba(255,255,255,0);
+          background-color: transparent;
+        }
+
+        &--multiple {
+          .select2-selection__choice {
+            background-color: rgba(255,255,255,0);
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.select2-dropdown {
+  border-radius: 0;
 }
 
 .select2-container {
