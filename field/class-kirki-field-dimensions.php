@@ -12,7 +12,7 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Dimensions extends Kirki_Field_Number {
+class Kirki_Field_Dimensions extends Kirki_Field {
 
 	/**
 	 * Sets the control type.
