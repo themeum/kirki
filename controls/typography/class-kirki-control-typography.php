@@ -279,9 +279,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 				<div class="font-family">
 					<h5>{{ data.l10n['font-family'] }}</h5>
-					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}">
-						<option value="{{ data.value['font-family'] }}" selected="selected">{{ data.value['font-family'] }}</option>
-					</select>
+					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
 				</div>
 				<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 					<div class="variant hide-on-standard-fonts kirki-variant-wrapper">
@@ -386,6 +384,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				</div>
 			<# } #>
 		</div>
+		<input class="typography-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ).replace( /'/g, '&#39' ) }}}' {{{ data.link }}}>
 		<?php
 	}
 

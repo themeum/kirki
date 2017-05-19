@@ -15,37 +15,31 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		// Font-size.
 		this.container.on( 'change keyup paste', '.font-size input', function() {
-			value['font-size'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'font-size', jQuery( this ).val() );
 		});
 
 		// Line-height.
 		this.container.on( 'change keyup paste', '.line-height input', function() {
-			value['line-height'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'line-height', jQuery( this ).val() );
 		});
 
 		// Letter-spacing.
 		this.container.on( 'change keyup paste', '.letter-spacing input', function() {
-			value['letter-spacing'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'letter-spacing', jQuery( this ).val() );
 		});
 
 		// Word-spacing.
 		this.container.on( 'change keyup paste', '.word-spacing input', function() {
-			value['word-spacing'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'word-spacing', jQuery( this ).val() );
 		});
 
 		this.container.on( 'change', '.text-align input', function() {
-			value['text-align'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'text-align', jQuery( this ).val() );
 		});
 
 		// Text-transform
 		jQuery( textTransformSelector ).select2().on( 'change', function() {
-			value['text-transform'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'text-transform', jQuery( this ).val() );
 		});
 
 		picker = this.container.find( '.kirki-color-control' );
@@ -54,8 +48,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		picker.wpColorPicker({
 			change: function() {
 				setTimeout( function() {
-					value.color = picker.val();
-					control.saveValue( value );
+					control.saveValue( 'color', picker.val() );
 				}, 100 );
 			}
 		});
@@ -99,30 +92,23 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		// Combine forces and build the final data.
 		data = [
-			{
-				text: 'Standard Fonts',
-				children: standardFonts
-			},
-			{
-				text: 'Google Fonts',
-				children: googleFonts
-			}
+			{ text: 'Standard Fonts', children: standardFonts },
+			{ text: 'Google Fonts',   children: googleFonts   }
 		];
 
 		// Instantiate select2 with the data.
 		fontSelect = jQuery( selector ).select2({
 			data: data
-		})
+		});
 
 		// Set the initial value.
-		.val( value['font-family'] )
+		fontSelect.val( value['font-family'] ).trigger( 'change' );
 
 		// When the value changes
-		.on( 'change', function() {
+		fontSelect.on( 'change', function() {
 
 			// Set the value.
-			value['font-family'] = jQuery( this ).val();
-			control.saveValue( value );
+			control.saveValue( 'font-family', jQuery( this ).val() );
 
 			// Re-init variants selector.
 			jQuery( variantSelector ).select2( 'destroy' );
@@ -164,9 +150,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		// Instantiate select2 with the data.
 		variantSelector = jQuery( selector ).select2({
 			data: data
-		}).val( value.variant ).on( 'change', function() {
-			value.variant = jQuery( this ).val();
-			control.saveValue( value );
+		});
+		variantSelector.val( value.variant );
+		variantSelector.on( 'change', function() {
+			control.saveValue( 'variant', jQuery( this ).val() );
 		});
 	},
 
@@ -200,9 +187,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		// Instantiate select2 with the data.
 		subsetSelector = jQuery( selector ).select2({
 			data: data
-		}).val( value.subsets ).on( 'change', function() {
-			value.subsets = jQuery( this ).val();
-			control.saveValue( value );
+		});
+		subsetSelector.val( value.subsets );
+		subsetSelector.on( 'change', function() {
+			control.saveValue( 'subsets', jQuery( this ).val() );
 		});
 	},
 
@@ -241,40 +229,30 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	 */
 	getValue: function() {
 
-		var control = this,
-		    value   = {};
+		'use strict';
 
-		// Make sure everything we're going to need exists.
-		_.each( control.params['default'], function( defaultParamValue, param ) {
-			if ( false !== defaultParamValue ) {
-				value[ param ] = defaultParamValue;
-				if ( ! _.isUndefined( control.setting._value[ param ] ) ) {
-					value[ param ] = control.setting._value[ param ];
-				}
-			}
-		});
-		_.each( control.setting._value, function( subValue, param ) {
-			if ( _.isUndefined( value[ param ] ) ) {
-				value[ param ] = subValue;
-			}
-		});
-		return value;
+		var control   = this,
+		    input     = control.container.find( '.typography-hidden-value' ),
+		    valueJSON = jQuery( input ).val();
+
+		return JSON.parse( valueJSON );
 	},
 
 	/**
 	 * Saves the value.
 	 */
-	saveValue: function( value ) {
+	saveValue: function( property, value ) {
 
 		'use strict';
 
-		var control  = this,
-		    newValue = {};
+		var control   = this,
+		    input     = control.container.find( '.typography-hidden-value' ),
+		    valueJSON = jQuery( input ).val(),
+		    valueObj  = JSON.parse( valueJSON );
 
-		_.each( value, function( newSubValue, i ) {
-			newValue[ i ] = newSubValue;
-		});
+		valueObj[ property ] = value;
+		control.setting.set( valueObj );
+		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
 
-		control.setting.set( newValue );
 	}
 });
