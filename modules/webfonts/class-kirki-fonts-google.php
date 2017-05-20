@@ -47,10 +47,10 @@ final class Kirki_Fonts_Google {
 	/**
 	 * The array of fonts
 	 *
-	 * @access private
+	 * @access public
 	 * @var array
 	 */
-	private $fonts = array();
+	public $fonts = array();
 
 	/**
 	 * An array of all google fonts.
@@ -77,45 +77,11 @@ final class Kirki_Fonts_Google {
 	private $link = '';
 
 	/**
-	 * Which method to use when loading googlefonts.
-	 * Available options: link, js, embed.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var string
-	 */
-	private static $method = array(
-		'global' => 'embed',
-	);
-
-	/**
-	 * Whether we should fallback to the link method or not.
-	 *
-	 * @access private
-	 * @since 3.0.0
-	 * @var bool
-	 */
-	private $fallback_to_link = false;
-
-	/**
 	 * The class constructor.
 	 */
 	private function __construct() {
 
 		$config = apply_filters( 'kirki/config', array() );
-
-		// Get the $fallback_to_link value from transient.
-		$fallback_to_link = get_transient( 'kirki_googlefonts_fallback_to_link' );
-		if ( 'yes' === $fallback_to_link ) {
-			$this->fallback_to_link = true;
-		}
-
-		// Use links when in the customizer.
-		global $wp_customize;
-		if ( $wp_customize ) {
-			$this->fallback_to_link = true;
-		}
 
 		// If we have set $config['disable_google_fonts'] to true then do not proceed any further.
 		if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
@@ -125,53 +91,6 @@ final class Kirki_Fonts_Google {
 		// Populate the array of google fonts.
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
-		// Process the request.
-		$this->process_request();
-
-	}
-
-	/**
-	 * Processes the request according to the method we're using.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 */
-	protected function process_request() {
-
-		// Figure out which method to use for all.
-		$method = 'link';
-		foreach ( self::$method as $config_id => $method ) {
-			$method = apply_filters( "kirki/{$config_id}/googlefonts_load_method", 'link' );
-			if ( 'embed' === $method && true !== $this->fallback_to_link ) {
-				$method = 'embed';
-			}
-		}
-		// Force using the JS method while in the customizer.
-		// This will help us work-out the live-previews for typography fields.
-		if ( is_customize_preview() ) {
-			$method = 'async';
-		}
-		foreach ( self::$method as $config_id => $config_method ) {
-
-			switch ( $method ) {
-
-				case 'embed':
-					add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
-
-					if ( true === $this->fallback_to_link ) {
-						// Fallback to enqueue method.
-						add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
-					}
-					break;
-				case 'async':
-					add_action( 'wp_head', array( $this, 'webfont_loader' ) );
-					break;
-				case 'link':
-					// Enqueue link.
-					add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
-					break;
-			}
-		}
 	}
 
 	/**
@@ -210,22 +129,13 @@ final class Kirki_Fonts_Google {
 	}
 
 	/**
-	 * Goes through all our fields and then populates the $this->fonts property.
-	 */
-	private function loop_fields() {
-		foreach ( Kirki::$fields as $field ) {
-			$this->generate_google_font( $field );
-		}
-	}
-
-	/**
 	 * Processes the arguments of a field
 	 * determines if it's a typography field
 	 * and if it is, then takes appropriate actions.
 	 *
 	 * @param array $args The field arguments.
 	 */
-	private function generate_google_font( $args ) {
+	public function generate_google_font( $args ) {
 
 		// Process typography fields.
 		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
@@ -315,7 +225,7 @@ final class Kirki_Fonts_Google {
 	 * This is vital to make sure that the google-font script that we'll generate later
 	 * does not contain any invalid options.
 	 */
-	private function process_fonts() {
+	public function process_fonts() {
 
 		// Early exit if font-family is empty.
 		if ( empty( $this->fonts ) ) {
@@ -499,39 +409,5 @@ final class Kirki_Fonts_Google {
 			return $this->get_url_contents( $this->link ) . "\n" . $css;
 		}
 		return $css;
-	}
-
-	/**
-	 * Webfont Loader for Google Fonts.
-	 *
-	 * @access public
-	 * @since 3.0.0
-	 */
-	public function webfont_loader() {
-
-		// Go through our fields and populate $this->fonts.
-		$this->loop_fields();
-
-		$this->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->fonts );
-
-		// Goes through $this->fonts and adds or removes things as needed.
-		$this->process_fonts();
-
-		$fonts_to_load = array();
-		foreach ( $this->fonts as $font => $weights ) {
-			$fonts_to_load[] = esc_attr( $font ) . ':' . esc_attr( join( ',', $weights ) );
-		}
-
-		?>
-		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-		<script id="kirki-webfont-loader">
-			window.kirkiWebontsLoaderFonts = '<?php echo esc_attr( join( '\', \'', $fonts_to_load ) ); ?>';
-			WebFont.load({
-				google: {
-					families: [ window.kirkiWebontsLoaderFonts ]
-				}
-			});
-		</script>
-		<?php
 	}
 }
