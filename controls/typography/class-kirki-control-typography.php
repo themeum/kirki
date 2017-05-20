@@ -118,30 +118,19 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_subsets    = Kirki_Fonts::get_google_font_subsets();
 
 		$standard_fonts_final = array();
+		$default_variants = $this->format_variants_array( array(
+			'regular',
+			'italic',
+			'700',
+			'700italic',
+		) );
 		foreach ( $standard_fonts as $font ) {
 			$standard_fonts_final[] = array(
 				'family'      => $font['stack'],
 				'label'       => $font['label'],
 				'subsets'     => array(),
 				'is_standard' => true,
-				'variants'    => array(
-					array(
-						'id'    => 'regular',
-						'label' => $all_variants['regular'],
-					),
-					array(
-						'id'    => 'italic',
-						'label' => $all_variants['italic'],
-					),
-					array(
-						'id'    => '700',
-						'label' => $all_variants['700'],
-					),
-					array(
-						'id'    => '700italic',
-						'label' => $all_variants['700italic'],
-					),
-				),
+				'variants'    => ( isset( $font['variants'] ) ) ? $this->format_variants_array( $font['variants'] ) : $default_variants,
 			);
 		}
 
@@ -282,7 +271,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
 				</div>
 				<# if ( true === data.show_variants || false !== data.default.variant ) { #>
-					<div class="variant hide-on-standard-fonts kirki-variant-wrapper">
+					<div class="variant kirki-variant-wrapper">
 						<h5>{{ data.l10n['variant'] }}</h5>
 						<select {{{ data.inputAttrs }}} class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 					</div>
@@ -479,6 +468,31 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			return $translation_strings;
 		}
 		return $translation_strings[ $config_id ];
+	}
+
+	/**
+	 * Formats variants.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $variants The variants.
+	 * @return array
+	 */
+	protected function format_variants_array( $variants ) {
+
+		$all_variants = Kirki_Fonts::get_all_variants();
+		$final_variants = array();
+		foreach ( $variants as $variant ) {
+			if ( is_string( $variant ) ) {
+				$final_variants[] = array(
+					'id'    => $variant,
+					'label' => isset( $all_variants[ $variant ] ) ? $all_variants[ $variant ] : $variant,
+				);
+			} elseif ( is_array( $variant ) && isset( $variant['id'] ) && isset( $variant['label'] ) ) {
+				$final_variants[] = $variant;
+			}
+		}
+		return $final_variants;
 	}
 
 	/**
