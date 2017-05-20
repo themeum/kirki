@@ -93,7 +93,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		// Combine forces and build the final data.
 		data = [
 			{ text: 'Standard Fonts', children: standardFonts },
-			{ text: 'Google Fonts',   children: googleFonts   }
+			{ text: 'Google Fonts',   children: googleFonts }
 		];
 
 		// Instantiate select2 with the data.
