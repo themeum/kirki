@@ -159,7 +159,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			variantSelector = jQuery( selector ).select2({
 				data: data
 			});
-			variantSelector.val( value.variant );
+			variantSelector.val( value.variant ).trigger( 'change' );
 			variantSelector.on( 'change', function() {
 				control.saveValue( 'variant', jQuery( this ).val() );
 			});
@@ -180,11 +180,21 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			subsets    = control.getSubsets( fontFamily ),
 		    selector   = control.selector + ' .subsets select',
 		    data       = [],
+		    validValue = value.subsets,
 		    subsetSelector;
 
 		if ( false !== subsets ) {
 			jQuery( control.selector + ' .subsets' ).show();
 			_.each( subsets, function( subset ) {
+
+				if ( _.isObject( validValue ) ) {
+					if ( -1 === validValue.indexOf( subset.id ) ) {
+						validValue = _.reject( validValue, function( subValue ) {
+							return subValue === subset.id;
+						});
+					}
+				}
+
 				data.push({
 					id: subset.id,
 					text: subset.label
@@ -204,7 +214,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		subsetSelector = jQuery( selector ).select2({
 			data: data
 		});
-		subsetSelector.val( value.subsets );
+		subsetSelector.val( validValue ).trigger( 'change' );
 		subsetSelector.on( 'change', function() {
 			control.saveValue( 'subsets', jQuery( this ).val() );
 		});
