@@ -6,7 +6,7 @@ module.exports = function( grunt ) {
 		curl: {
 			'google-fonts-source': {
 				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
-				dest: 'core/webfonts.json'
+				dest: 'modules/webfonts/webfonts.json'
 			}
 		},
 
@@ -66,7 +66,7 @@ module.exports = function( grunt ) {
 			convert: {
 				expand: true,
 				ext: '.php',
-				src: ['core/webfonts.json']
+				src: ['modules/webfonts/webfonts.json']
 			}
 		},
 
@@ -87,7 +87,7 @@ module.exports = function( grunt ) {
 
 		// Delete the json array
 		clean: [
-			'core/webfonts.json'
+			'modules/webfonts/webfonts.json'
 		],
 
 		// Watch task (run with "grunt watch")
