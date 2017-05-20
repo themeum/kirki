@@ -106,12 +106,22 @@
 										}
 										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + subValueValue + ':' + kirkiGetFontWeight( newval.variant ) + '\']}});}</script>' );
 										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
+										if ( -1 !== newval.variant.indexOf( 'italic' ) ) {
+											cssArray[ i ] += args.element + '{font-style:italic;}';
+										} else {
+											cssArray[ i ] += args.element + '{font-style:normal;}';
+										}
 									}
 
 									// Tweak for variants.
 									if ( 'variant' === subValueKey && ! _.isUndefined( newval['font-family'] ) ) {
-										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + subValueValue + ':' + kirkiGetFontWeight( newval.variant ) + '\']}});}</script>' );
-										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
+										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + newval['font-family'] + ':' + kirkiGetFontWeight( subValueValue ) + '\']}});}</script>' );
+										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( subValueValue ) + '}';
+										if ( -1 !== subValueValue.indexOf( 'italic' ) ) {
+											cssArray[ i ] += args.element + '{font-style:italic;}';
+										} else {
+											cssArray[ i ] += args.element + '{font-style:normal;}';
+										}
 									}
 
 									if ( ! _.isUndefined( args.choice ) ) {
