@@ -40,7 +40,7 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @since 3.0.0
 	 * @var object
 	 */
-	protected $goglefonts;
+	protected $googlefonts;
 
 	/**
 	 * Constructor.
@@ -48,7 +48,7 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @access public
 	 * @since 3.0
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts ) {
+	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
 
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;

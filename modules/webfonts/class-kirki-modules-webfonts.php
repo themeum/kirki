@@ -80,20 +80,10 @@ class Kirki_Modules_Webfonts {
 		foreach ( self::$method as $config_id => $config_method ) {
 
 			$method = $this->get_method( $config_id );
+			$method = 'link';
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
 
-			// switch ( $method ) {
-			//
-			// 	case 'embed':
-			// 		break;
-			// 	case 'async':
-			// 		break;
-			// 	case 'link':
-			// 		// Enqueue link.
-			// 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
-			// 		break;
-			// }
 		}
 	}
 

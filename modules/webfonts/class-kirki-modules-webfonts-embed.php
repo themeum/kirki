@@ -16,12 +16,44 @@
 final class Kirki_Modules_Webfonts_Embed {
 
 	/**
+	 * The config ID.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @var string
+	 */
+	protected $config_id;
+
+	/**
+	 * The Kirki_Modules_Webfonts object.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @var object
+	 */
+	protected $webfonts;
+
+	/**
+	 * The Kirki_Fonts_Google object.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @var object
+	 */
+	protected $googlefonts;
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
 	 * @since 3.0
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts ) {
+	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
+
+		$this->config_id   = $config_id;
+		$this->webfonts    = $webfonts;
+		$this->googlefonts = $googlefonts;
+
 		add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
 	}
 }
