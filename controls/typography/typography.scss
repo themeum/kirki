@@ -29,21 +29,6 @@
       width: 50%;
     }
 
-    input[type="text"] {
-      border: none;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      background-color: transparent;
-      border-bottom: 1px solid rgba(0,0,0,.1);
-      margin-bottom: 1px;
-
-      &:focus {
-        border-color: #5b9dd9;
-        border-width: 2px;
-        margin-bottom: 0;
-      }
-    }
-
     .color {
       width: auto;
     }
@@ -54,11 +39,8 @@
       .select2-selection {
         &--multiple,
         &--single {
-          border: none;
-          border-bottom: 1px solid rgba(0,0,0,.1);
+          border-color: rgba(0,0,0,.1);
           border-radius: 0;
-          background-color: rgba(255,255,255,0);
-          background-color: transparent;
         }
 
         &--multiple {
@@ -75,6 +57,7 @@
 }
 
 .select2-dropdown {
+  border-color: rgba(0,0,0,.1);
   border-radius: 0;
 }
 
@@ -87,6 +70,14 @@
     .select2-dropdown--below {
       z-index: 9999999;
       min-width: 100px;
+    }
+  }
+
+  &--default {
+    .select2-search--dropdown {
+      .select2-search__field {
+        border-color: rgba(0,0,0,.1);
+      }
     }
   }
 }
