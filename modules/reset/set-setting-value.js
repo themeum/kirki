@@ -151,15 +151,15 @@ function kirkiSetSettingValue( setting, value ) {
 		case 'kirki-typography':
 
 			if ( ! _.isUndefined( value['font-family'] ) ) {
-				$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).select2().val( value['font-family'] );
+				$select = jQuery( wp.customize.control( setting ).container.find( '.font-family select' ) ).select2().val( value['font-family'] ).trigger( 'change' );
 			}
 
 			if ( ! _.isUndefined( value.variant ) ) {
-				$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).select2().val( value.variant );
+				$select = jQuery( wp.customize.control( setting ).container.find( '.variant select' ) ).select2().val( value.variant ).trigger( 'change' );
 			}
 
 			if ( ! _.isUndefined( value.subsets ) ) {
-				$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).select2().val( value.subset );
+				$select = jQuery( wp.customize.control( setting ).container.find( '.subset select' ) ).select2().val( value.subset ).trigger( 'change' );
 			}
 
 			if ( ! _.isUndefined( value['font-size'] ) ) {
