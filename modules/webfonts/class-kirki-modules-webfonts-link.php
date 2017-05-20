@@ -45,10 +45,10 @@ final class Kirki_Modules_Webfonts_Link {
 	/**
 	 * The google link
 	 *
-	 * @access private
+	 * @access public
 	 * @var string
 	 */
-	private $link = '';
+	public $link = '';
 
 	/**
 	 * Constructor.
@@ -92,7 +92,7 @@ final class Kirki_Modules_Webfonts_Link {
 	/**
 	 * Creates the google-fonts link.
 	 */
-	private function create_link() {
+	public function create_link() {
 
 		// If we don't have any fonts then we can exit.
 		if ( empty( $this->googlefonts->fonts ) ) {
