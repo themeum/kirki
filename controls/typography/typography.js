@@ -111,11 +111,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			control.saveValue( 'font-family', jQuery( this ).val() );
 
 			// Re-init variants selector.
-			jQuery( variantSelector ).select2( 'destroy' );
 			control.renderVariantSelector();
 
+
 			// Re-init subsets selector.
-			jQuery( subsetSelector ).select2( 'destroy' );
 			control.renderSubsetSelector();
 		});
 	},
@@ -132,29 +131,41 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			variants   = control.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
+		    isValid    = false,
 		    variantSelector;
 
 		if ( false !== variants ) {
 			jQuery( control.selector + ' .variant' ).show();
 			_.each( variants, function( variant ) {
+				if ( value.variant === variant.id ) {
+					isValid = true;
+				}
 				data.push({
 					id: variant.id,
 					text: variant.label
 				});
 			});
+			if ( ! isValid ) {
+				value.variant = 'regular';
+				control.saveValue( 'variant', value.variant );
+			}
 
+			if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
+				jQuery( selector ).select2( 'destroy' );
+				jQuery( selector ).empty();
+			}
+
+			// Instantiate select2 with the data.
+			variantSelector = jQuery( selector ).select2({
+				data: data
+			});
+			variantSelector.val( value.variant );
+			variantSelector.on( 'change', function() {
+				control.saveValue( 'variant', jQuery( this ).val() );
+			});
 		} else {
 			jQuery( control.selector + ' .variant' ).hide();
 		}
-
-		// Instantiate select2 with the data.
-		variantSelector = jQuery( selector ).select2({
-			data: data
-		});
-		variantSelector.val( value.variant );
-		variantSelector.on( 'change', function() {
-			control.saveValue( 'variant', jQuery( this ).val() );
-		});
 	},
 
 	/**
@@ -182,6 +193,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		} else {
 			jQuery( control.selector + ' .subsets' ).hide();
+		}
+
+		if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
+			jQuery( selector ).select2( 'destroy' );
+			jQuery( selector ).empty();
 		}
 
 		// Instantiate select2 with the data.
