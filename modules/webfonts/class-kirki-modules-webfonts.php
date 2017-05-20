@@ -21,14 +21,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Webfonts {
 
 	/**
+	 * The Kirki_Fonts_Google object.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @var object
+	 */
+	protected $fonts_google;
+
+
+	/**
 	 * The class constructor
 	 *
 	 * @access public
 	 * @since 3.0.0
 	 */
 	public function __construct() {
+
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
+
+		$this->fonts_google = Kirki_Fonts_Google::get_instance();
+
 	}
 
 	/**

@@ -86,7 +86,7 @@ class Kirki_Modules_CSS {
 	 */
 	public function init() {
 
-		Kirki_Fonts_Google::get_instance();
+		new Kirki_Modules_Webfonts();
 
 		global $wp_customize;
 
