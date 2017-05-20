@@ -58,7 +58,7 @@ class Kirki_Modules {
 
 		self::$modules = apply_filters( 'kirki/modules', array(
 			'css'                => 'Kirki_Modules_CSS',
-			// 'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
+			'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
 			'icons'              => 'Kirki_Modules_Icons',
 			// 'loading'            => 'Kirki_Modules_Loading',
 			// 'reset'              => 'Kirki_Modules_Reset',

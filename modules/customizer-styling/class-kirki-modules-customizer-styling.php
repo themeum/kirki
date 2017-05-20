@@ -40,6 +40,9 @@ class Kirki_Modules_Customizer_Styling {
 	public function custom_css() {
 
 		$config = apply_filters( 'kirki/config', array() );
+		if ( ! isset( $config['color_accent'] ) && ! isset( $config['color_back'] ) ) {
+			return;
+		}
 		?>
 		<style>
 		.wp-full-overlay-sidebar,
@@ -136,9 +139,9 @@ class Kirki_Modules_Customizer_Styling {
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
 				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+				border-left-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
-			border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
-			border-left-color: <?php echo esc_attr( $border_color ); ?>;
 		}
 
 		#customize-theme-controls .control-section-themes .accordion-section-title,
@@ -147,9 +150,9 @@ class Kirki_Modules_Customizer_Styling {
 				<?php $color_obj = ariColor::newColor( $config['color_back'] ); ?>
 				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 4 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 4 )->toCSS( $color_obj->mode ); ?>
 				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
+				border-top-color: <?php echo esc_attr( $border_color ); ?>;
+				border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 			<?php endif; ?>
-			border-top-color: <?php echo esc_attr( $border_color ); ?>;
-			border-bottom-color: <?php echo esc_attr( $border_color ); ?>;
 		}
 
 		#customize-theme-controls .accordion-section-title:after {
