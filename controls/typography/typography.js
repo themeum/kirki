@@ -74,7 +74,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		if ( ! _.isUndefined( kirkiAllFonts.standard ) ) {
 			_.each( kirkiAllFonts.standard, function( font ) {
 				standardFonts.push({
-					id: font.family,
+					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
 				});
 			});
