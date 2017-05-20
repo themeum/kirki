@@ -88,7 +88,7 @@
 
 								}
 
-							// Value is an object
+								// Value is an object
 							} else if ( _.isObject( newval ) ) {
 
 								cssArray[ i ] = '';

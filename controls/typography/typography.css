@@ -1,10 +1,9 @@
 .customize-control-kirki-typography .wrapper {
-  box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  border-radius: 3px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
   .customize-control-kirki-typography .wrapper .color,
   .customize-control-kirki-typography .wrapper .font-backup,
   .customize-control-kirki-typography .wrapper .font-family,
@@ -29,11 +28,22 @@
   .customize-control-kirki-typography .wrapper .letter-spacing,
   .customize-control-kirki-typography .wrapper .line-height {
     width: 50%; }
+  .customize-control-kirki-typography .wrapper input[type="text"] {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px; }
+    .customize-control-kirki-typography .wrapper input[type="text"]:focus {
+      border-color: #5b9dd9;
+      border-width: 2px;
+      margin-bottom: 0; }
   .customize-control-kirki-typography .wrapper .color {
     width: auto; }
 .customize-control-kirki-typography .select2-container--default .select2-selection--multiple, .customize-control-kirki-typography .select2-container--default .select2-selection--single {
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0;
   background-color: rgba(255, 255, 255, 0);
   background-color: transparent; }
