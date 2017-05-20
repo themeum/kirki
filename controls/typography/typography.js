@@ -102,7 +102,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		});
 
 		// Set the initial value.
-		fontSelect.val( value['font-family'] ).trigger( 'change' );
+		fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
 
 		// When the value changes
 		fontSelect.on( 'change', function() {
