@@ -254,7 +254,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 						case 'select':
 						case 'dropdown-pages':
 							wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), false, true );
-							wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/css/select2.min.css', null );
+							wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
 							break;
 					}
 				}

@@ -14,6 +14,7 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
+					'assets/vendor/select2/kirki.css':              'assets/vendor/select2/kirki.scss',
 					'modules/reset/reset.css':                      'modules/reset/reset.scss',
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',

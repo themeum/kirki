@@ -117,12 +117,4 @@
     background: #D32F2F;
     color: #fff; }
 
-.select2-container {
-  min-width: 100px;
-  width: 100% !important; }
-  .select2-container--open .select2-dropdown--above,
-  .select2-container--open .select2-dropdown--below {
-    z-index: 9999999;
-    min-width: 100px; }
-
 /*# sourceMappingURL=repeater.css.map */
