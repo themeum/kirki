@@ -93,9 +93,25 @@
 
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
+
 									// Simple tweak for background-image properties.
 									if ( 'background-image' === subValueKey && 0 > subValueValue.indexOf( 'url(' ) ) {
 										subValueValue = 'url("' + subValueValue + '")';
+									}
+
+									// Dirty hack to make google-fonts work.
+									if ( 'font-family' === subValueKey ) {
+										if ( _.isUndefined( newval.variant ) ) {
+											newval.variant = 400;
+										}
+										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + subValueValue + ':' + kirkiGetFontWeight( newval.variant ) + '\']}});}</script>' );
+										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
+									}
+
+									// Tweak for variants.
+									if ( 'variant' === subValueKey && ! _.isUndefined( newval['font-family'] ) ) {
+										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + subValueValue + ':' + kirkiGetFontWeight( newval.variant ) + '\']}});}</script>' );
+										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
 									}
 
 									if ( ! _.isUndefined( args.choice ) ) {
@@ -146,5 +162,19 @@
 		});
 
 	});
+
+	function kirkiGetFontWeight( value ) {
+		var numericVal = 400,
+		    calculated;
+
+		if ( ! _.isString( value ) ) {
+			return numericVal;
+		}
+		calculated = value.match( /\d/g );
+		if ( ! _.isObject( calculated ) ) {
+			return numericVal;
+		}
+		return calculated.join( '' );
+	}
 
 })( jQuery );
