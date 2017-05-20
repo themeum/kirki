@@ -55,6 +55,10 @@ final class Kirki_Modules_Webfonts_Link {
 	 *
 	 * @access public
 	 * @since 3.0
+	 * @param string $config_id   The config-ID.
+	 * @param object $webfonts    The Kirki_Modules_Webfonts object.
+	 * @param object $googlefonts The Kirki_Fonts_Google object.
+	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
 

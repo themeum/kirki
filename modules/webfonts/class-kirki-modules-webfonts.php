@@ -87,20 +87,6 @@ class Kirki_Modules_Webfonts {
 	}
 
 	/**
-	 * Parses fields and if any tooltips are found, they are added to the
-	 * object's $tooltips_content property.
-	 *
-	 * @access private
-	 * @since 3.0.0
-	 */
-	private function parse_fields() {
-
-		$fields = Kirki::$fields;
-		foreach ( $fields as $field ) {
-		}
-	}
-
-	/**
 	 * Get the method we're going to use.
 	 *
 	 * @access public

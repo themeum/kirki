@@ -47,6 +47,10 @@ final class Kirki_Modules_Webfonts_Async {
 	 *
 	 * @access public
 	 * @since 3.0
+	 * @param string $config_id   The config-ID.
+	 * @param object $webfonts    The Kirki_Modules_Webfonts object.
+	 * @param object $googlefonts The Kirki_Fonts_Google object.
+	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
 
@@ -77,17 +81,11 @@ final class Kirki_Modules_Webfonts_Async {
 		foreach ( $this->googlefonts->fonts as $font => $weights ) {
 			$fonts_to_load[] = esc_attr( $font ) . ':' . esc_attr( join( ',', $weights ) );
 		}
-
-		?>
-		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-		<script id="kirki-webfont-loader">
-			window.kirkiWebontsLoaderFonts = '<?php echo esc_attr( join( '\', \'', $fonts_to_load ) ); ?>';
-			WebFont.load({
-				google: {
-					families: [ window.kirkiWebontsLoaderFonts ]
-				}
-			});
-		</script>
-		<?php
+		wp_enqueue_script( 'webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' );
+		wp_add_inline_script(
+			'webfont-loader',
+			'WebFont.load({google:{families:[\'' . esc_attr( join( '\', \'', $fonts_to_load ) ) . '\']}});',
+			'after'
+		);
 	}
 }
