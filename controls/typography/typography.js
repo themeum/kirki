@@ -113,7 +113,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			// Re-init variants selector.
 			control.renderVariantSelector();
 
-
 			// Re-init subsets selector.
 			control.renderSubsetSelector();
 		});
