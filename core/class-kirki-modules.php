@@ -71,6 +71,7 @@ class Kirki_Modules {
 			// 'collapsible'        => 'Kirki_Modules_Collapsible',
 			// 'search'             => 'Kirki_Modules_Search',
 			// 'resize'             => 'Kirki_Modules_Resize',
+			'webfonts'           => 'Kirki_Modules_Webfonts',
 		) );
 
 	}

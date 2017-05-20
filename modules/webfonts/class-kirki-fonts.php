@@ -122,7 +122,7 @@ final class Kirki_Fonts {
 
 		if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-			$fonts = include wp_normalize_path( Kirki::$path . '/core/webfonts.php' );
+			$fonts = include_once wp_normalize_path( dirname( __FILE__ ). '/webfonts.php' );
 
 			$google_fonts = array();
 			if ( is_array( $fonts ) ) {

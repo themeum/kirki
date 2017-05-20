@@ -146,6 +146,11 @@ final class Kirki_Fonts_Google {
 				$method = 'embed';
 			}
 		}
+		// Force using the JS method while in the customizer.
+		// This will help us work-out the live-previews for typography fields.
+		if ( is_customize_preview() ) {
+			$method = 'async';
+		}
 		foreach ( self::$method as $config_id => $config_method ) {
 
 			switch ( $method ) {
@@ -158,8 +163,8 @@ final class Kirki_Fonts_Google {
 						add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 105 );
 					}
 					break;
-				case 'js':
-					// TODO: Build a JS method.
+				case 'async':
+					add_action( 'wp_head', array( $this, 'webfont_loader' ) );
 					break;
 				case 'link':
 					// Enqueue link.
@@ -494,5 +499,39 @@ final class Kirki_Fonts_Google {
 			return $this->get_url_contents( $this->link ) . "\n" . $css;
 		}
 		return $css;
+	}
+
+	/**
+	 * Webfont Loader for Google Fonts.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 */
+	public function webfont_loader() {
+
+		// Go through our fields and populate $this->fonts.
+		$this->loop_fields();
+
+		$this->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->fonts );
+
+		// Goes through $this->fonts and adds or removes things as needed.
+		$this->process_fonts();
+
+		$fonts_to_load = array();
+		foreach ( $this->fonts as $font => $weights ) {
+			$fonts_to_load[] = esc_attr( $font ) . ':' . esc_attr( join( ',', $weights ) );
+		}
+
+		?>
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+		<script id="kirki-webfont-loader">
+			window.kirkiWebontsLoaderFonts = '<?php echo esc_attr( join( '\', \'', $fonts_to_load ) ); ?>';
+			WebFont.load({
+				google: {
+					families: [ window.kirkiWebontsLoaderFonts ]
+				}
+			});
+		</script>
+		<?php
 	}
 }
