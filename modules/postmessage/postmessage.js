@@ -94,34 +94,25 @@
 								cssArray[ i ] = '';
 								_.each( newval, function( subValueValue, subValueKey ) {
 
+									// Helper for google-fonts if needed.
+									var subsetsString = '';
+
 									// Simple tweak for background-image properties.
 									if ( 'background-image' === subValueKey && 0 > subValueValue.indexOf( 'url(' ) ) {
 										subValueValue = 'url("' + subValueValue + '")';
 									}
 
 									// Dirty hack to make google-fonts work.
-									if ( 'font-family' === subValueKey ) {
-										if ( _.isUndefined( newval.variant ) ) {
-											newval.variant = 400;
-										}
-										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + subValueValue + ':' + kirkiGetFontWeight( newval.variant ) + '\']}});}</script>' );
-										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
-										if ( -1 !== newval.variant.indexOf( 'italic' ) ) {
-											cssArray[ i ] += args.element + '{font-style:italic;}';
-										} else {
-											cssArray[ i ] += args.element + '{font-style:normal;}';
-										}
-									}
+									if ( 'font-family' === subValueKey || 'variant' === subValueKey || 'subsets' === subValueKey ) {
+										newval['font-family'] = ( _.isUndefined( newval['font-family'] ) ) ? '' : newval['font-family'];
+										newval.variant        = ( _.isUndefined( newval.variant ) ) ? 400 : newval.variant;
+										newval.subsets        = ( _.isUndefined( newval.subsets ) ) ? [] : newval.subsets;
+										subsetsString         = ( _.isObject( newval.subsets ) ) ? ':' + newval.subsets.join( ',' ) : '';
 
-									// Tweak for variants.
-									if ( 'variant' === subValueKey && ! _.isUndefined( newval['font-family'] ) ) {
-										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + newval['font-family'] + ':' + kirkiGetFontWeight( subValueValue ) + '\']}});}</script>' );
-										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( subValueValue ) + '}';
-										if ( -1 !== subValueValue.indexOf( 'italic' ) ) {
-											cssArray[ i ] += args.element + '{font-style:italic;}';
-										} else {
-											cssArray[ i ] += args.element + '{font-style:normal;}';
-										}
+										jQuery( 'head' ).append( '<script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:[\'' + newval['font-family'] + ':' + newval.variant + subsetsString + '\']}});}</script>' );
+
+										cssArray[ i ] += args.element + '{font-weight:' + kirkiGetFontWeight( newval.variant ) + '}';
+										cssArray[ i ] += ( -1 !== newval.variant.indexOf( 'italic' ) ) ? args.element + '{font-style:italic;}' : args.element + '{font-style:normal;}';
 									}
 
 									if ( ! _.isUndefined( args.choice ) ) {
@@ -131,7 +122,7 @@
 									} else {
 										if ( _.contains( [ 'top', 'bottom', 'left', 'right' ], subValueKey ) ) {
 											cssArray[ i ] += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
-										} else {
+										} else if ( 'subsets' !== subValueKey && 'variant' !== subValueKey ) {
 											cssArray[ i ] += args.element + '{' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
 										}
 									}
