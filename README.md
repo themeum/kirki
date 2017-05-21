@@ -51,6 +51,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Disabled the "reset" module by default. Use the `kirki/modules` filter to enable.
 * Fix: Disabled the "loading" module by default. Use the `kirki/modules` filter to enable.
 * Fix: Disabled the "custom-sections" module by default. Use the `kirki/modules` filter to enable.
+* Fix: Refactored saving user-meta (`'option_type' => 'user_meta'`).
+* New: Allow saving site-options(`'option_type' => 'site_option'`)
 * New: Typography fields now support live-updating using `'transport' => 'auto'`.
 * New: Typography fields now support filtering the available fonts.
 * New: Typography fields now support loading multiple variants.
