@@ -42,6 +42,8 @@ engines:
         enabled: false
       Controversial/CamelCaseParameterName:
         enabled: false
+      WordPress NamingConventions ValidHookName UseUnderscores:
+        enabled: false
       Naming/ShortVariable:
         enabled: false
       Naming/LongVariable:
