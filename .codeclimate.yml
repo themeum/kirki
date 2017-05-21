@@ -42,6 +42,8 @@ engines:
         enabled: false
       Naming/ShortVariable:
         enabled: false
+      Naming/LongVariable:
+        enabled: false
 ratings:
   paths:
   - "**.css"
@@ -50,5 +52,6 @@ ratings:
 exclude_paths:
 - assets/vendor/*
 - lib/class-aricolor.php
+- modules/webfonts/webfonts.php
 - tests/*
 - bin/*
