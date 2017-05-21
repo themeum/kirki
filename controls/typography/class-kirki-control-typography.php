@@ -161,24 +161,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 		$this->json['show_variants'] = ( true === Kirki_Fonts_Google::$force_load_all_variants ) ? false : true;
 		$this->json['show_subsets']  = ( true === Kirki_Fonts_Google::$force_load_all_subsets ) ? false : true;
-		$this->json['languages'] = array(
-			'cyrillic'     => 'Cyrillic',
-			'cyrillic-ext' => 'Cyrillic Extended',
-			'devanagari'   => 'Devanagari',
-			'greek'        => 'Greek',
-			'greek-ext'    => 'Greek Extended',
-			'khmer'        => 'Khmer',
-			'latin'        => 'Latin',
-			'latin-ext'    => 'Latin Extended',
-			'vietnamese'   => 'Vietnamese',
-			'hebrew'       => 'Hebrew',
-			'arabic'       => 'Arabic',
-			'bengali'      => 'Bengali',
-			'gujarati'     => 'Gujarati',
-			'tamil'        => 'Tamil',
-			'telugu'       => 'Telugu',
-			'thai'         => 'Thai',
-		);
+		$this->json['languages']     = Kirki_Fonts::get_google_font_subsets();
 	}
 
 	/**
