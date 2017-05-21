@@ -158,7 +158,7 @@ class Kirki_Active_Callback {
 					$string = $value1;
 				}
 				if ( isset( $array ) && isset( $string ) ) {
-					if ( ! in_array( $string, $array ) ) {
+					if ( ! in_array( $string, $array, true ) ) {
 						$show = false;
 					}
 				} else {

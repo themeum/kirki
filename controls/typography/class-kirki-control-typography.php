@@ -390,7 +390,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'700italic',
 		) );
 		foreach ( $standard_fonts as $key => $font ) {
-			if ( ! empty( $standardfonts_user_keys ) && ! in_array( $key, $standardfonts_user_keys ) ) {
+			if ( ! empty( $standardfonts_user_keys ) && ! in_array( $key, $standardfonts_user_keys, true ) ) {
 				continue;
 			}
 			$standard_fonts_final[] = array(
@@ -421,7 +421,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 		$google_fonts_final = array();
 		foreach ( $google_fonts as $family => $args ) {
-			if ( ! empty( $googlefonts_user_keys ) && ! in_array( $family, $googlefonts_user_keys ) ) {
+			if ( ! empty( $googlefonts_user_keys ) && ! in_array( $family, $googlefonts_user_keys, true ) ) {
 				continue;
 			}
 

@@ -46,7 +46,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 
 			// Get the font_weight.
 			$font_weight = str_replace( 'italic', '', $value['variant'] );
-			$font_weight = ( in_array( $font_weight, array( '', 'regular' ) ) ) ? '400' : $output['prefix'] . $font_weight . $output['suffix'];
+			$font_weight = ( in_array( $font_weight, array( '', 'regular' ), true ) ) ? '400' : $output['prefix'] . $font_weight . $output['suffix'];
 
 			// Is this italic?
 			$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );

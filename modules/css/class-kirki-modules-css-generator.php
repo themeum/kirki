@@ -234,7 +234,7 @@ final class Kirki_Modules_CSS_Generator {
 							'background-size',
 							'transition',
 							'transition-property',
-						) ) ) {
+						), true ) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 							$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
@@ -247,7 +247,7 @@ final class Kirki_Modules_CSS_Generator {
 							'background-size',
 							'transition',
 							'transition-property',
-						) ) ) {
+						), true ) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
 							$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;

@@ -170,7 +170,7 @@ class Kirki_Init {
 			'Kirki_Control_Repeater',
 		) );
 		foreach ( $this->control_types as $control_type ) {
-			if ( 0 === strpos( $control_type, 'Kirki' ) && ! in_array( $control_type, $do_not_register_control_types ) ) {
+			if ( 0 === strpos( $control_type, 'Kirki' ) && ! in_array( $control_type, $do_not_register_control_types, true ) ) {
 				$wp_customize->register_control_type( $control_type );
 			}
 		}
