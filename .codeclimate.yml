@@ -29,6 +29,9 @@ engines:
     enabled: true
     config:
       standard: "Wordpress"
+    checks:
+      WordPress NamingConventions ValidHookName UseUnderscores:
+        enabled: false
   phpmd:
     enabled: true
     checks:
@@ -41,8 +44,6 @@ engines:
       Controversial/CamelCasePropertyName:
         enabled: false
       Controversial/CamelCaseParameterName:
-        enabled: false
-      WordPress NamingConventions ValidHookName UseUnderscores:
         enabled: false
       Naming/ShortVariable:
         enabled: false
