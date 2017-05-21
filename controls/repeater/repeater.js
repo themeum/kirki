@@ -465,7 +465,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
 
-		$targetDiv.find( '.hidden-field' ).val( attachment.url );
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
 		$targetDiv.find( '.remove-button' ).show();
 
@@ -488,7 +488,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
 
-		$targetDiv.find( '.hidden-field' ).val( attachment.url );
+		$targetDiv.find( '.hidden-field' ).val( attachment.id );
 		this.$thisButton.text( this.$thisButton.data( 'alt-label' ) );
 		$targetDiv.find( '.upload-button' ).show();
 		$targetDiv.find( '.remove-button' ).show();
