@@ -16,35 +16,14 @@
 
 						var val = newval;
 
-						// Make sure element is defined.
-						if ( _.isUndefined( jsVar.element ) ) {
-							jsVar.element = '';
-						}
-
-						// Make sure property is defined.
-						if ( _.isUndefined( jsVar.property ) ) {
-							jsVar.property = '';
-						}
-
-						// Use empty prefix if undefined
-						if ( _.isUndefined( jsVar.prefix ) ) {
-							jsVar.prefix = '';
-						}
-
-						// Use empty suffix if undefined
-						if ( _.isUndefined( jsVar.suffix ) ) {
-							jsVar.suffix = '';
-						}
-
-						// Use empty units if undefined
-						if ( _.isUndefined( jsVar.units ) ) {
-							jsVar.units = '';
-						}
-
-						// Use css if method is undefined
-						if ( _.isUndefined( jsVar['function'] ) ) {
-							jsVar['function'] = 'css';
-						}
+						jsVar = _.defaults( jsVar, {
+							element: '',
+							property: '',
+							prefix: '',
+							suffix: '',
+							units: '',
+							'function': 'css'
+						});
 
 						// Use $ (just the value) if value_pattern is undefined
 						if ( _.isUndefined( jsVar.value_pattern ) ) {
@@ -127,11 +106,8 @@
 										}
 									}
 								});
-
 							}
-
 						});
-
 					});
 
 					_.each( cssArray, function( singleCSS ) {
