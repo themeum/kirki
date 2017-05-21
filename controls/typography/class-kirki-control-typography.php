@@ -176,7 +176,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				'variants'     => $available_variants,
 				'subsets'      => $available_subsets,
 			);
-		}
+		} // End foreach().
 		$final = array(
 			'standard' => $standard_fonts_final,
 			'google'   => $google_fonts_final,
