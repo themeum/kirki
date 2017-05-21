@@ -32,6 +32,8 @@ engines:
     checks:
       WordPress NamingConventions ValidHookName UseUnderscores:
         enabled: false
+      WordPress WP AlternativeFunctions file_system_read_file_get_contents:
+        enabled: false
   phpmd:
     enabled: true
     checks:
