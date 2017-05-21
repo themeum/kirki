@@ -73,17 +73,18 @@ module.exports = function( grunt ) {
 
 		// Check JS syntax
 		jscs: {
-		    src: [
-                'Gruntfile.js',
-				'assets/js/**/*.js',
+			src: [
+				'Gruntfile.js',
 				'controls/**/*.js',
-                '!assets/js/**/*.min.js',
-                '!assets/js/vendor/*'
-            ],
-		    options: {
-		        config: '.jscsrc',
-		        verbose: true
-		    }
+				'modules/**/*.js',
+				'!modules/search/fuse.js',
+				'!modules/search/fuse.min.js',
+				'!assets/vendor/*'
+			],
+			options: {
+				config: '.jscsrc',
+				verbose: true
+			}
 		},
 
 		// Delete the json array
@@ -101,13 +102,14 @@ module.exports = function( grunt ) {
 				],
 				tasks: ['sass']
 			},
-			// scripts: {
-			// 	files: [
-			// 		'assets/**/*.js',
-			// 		'Gruntfile.js'
-			// 	],
-			// 	tasks: ['jscs']
-			// }
+			scripts: {
+				files: [
+					'Gruntfile.js',
+					'controls/**/*.js',
+					'modules/**/*.js'
+				],
+				tasks: ['jscs']
+			}
 		}
 	});
 

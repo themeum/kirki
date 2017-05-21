@@ -49,6 +49,7 @@ script:
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
   - jshint ./controls/**/*.js
+  - jshint ./modules/**/*.js
   # Run the plugin through JavaScript Code Style checker.
   - jscs ./controls/**/*.js
   # WordPress Coding Standards.

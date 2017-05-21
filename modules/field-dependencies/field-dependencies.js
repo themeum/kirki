@@ -78,7 +78,8 @@ jQuery( document ).ready( function() {
 					var show = true;
 					_.each( args, function( dependency ) {
 						if ( ! _.isUndefined( dependency[0] ) && ! _.isUndefined( dependency[0].setting ) ) {
-							// var orConditionShow = {},
+
+							// Var orConditionShow = {},
 							//     orConditionID   = '';
 							//
 							// _.each( dependency, function( subDependency, subIndex ) {

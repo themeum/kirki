@@ -23,6 +23,7 @@ jQuery( document ).ready( function() {
 		if ( 1 > searchWrapper.length ) {
 			jQuery( '#customize-control-kirki_search' ).append( '<div class="kirki-search-results"></div>' );
 		}
+
 		// Clear previous results.
 		jQuery( '.kirki-search-results' ).empty();
 

@@ -156,7 +156,7 @@ jQuery( document ).ready( function() {
 					activeCount += 1;
 				}
 			});
-			return ( activeCount !== 0 );
+			return ( 0 !== activeCount );
 		}
 	});
 
@@ -250,7 +250,7 @@ jQuery( document ).ready( function() {
 				}
 			});
 
-			return ( activeCount !== 0 );
+			return ( 0 !== activeCount );
 		}
 	});
 })( jQuery );
