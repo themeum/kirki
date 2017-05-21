@@ -170,4 +170,26 @@ class Kirki_Field_Typography extends Kirki_Field {
 		}
 		return $value;
 	}
+
+	/**
+	 * Sets the $choices
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 */
+	protected function set_choices() {
+
+		if ( ! is_array( $this->choices ) ) {
+			$this->choices = array();
+		}
+		if ( ! isset( $this->choices['fonts'] ) ) {
+			$this->choices['fonts'] = array();
+		}
+		if ( ! isset( $this->choices['fonts']['standard'] ) ) {
+			$this->choices['fonts']['standard'] = array();
+		}
+		if ( ! isset( $this->choices['fonts']['google'] ) ) {
+			$this->choices['fonts']['google'] = array();
+		}
+	}
 }

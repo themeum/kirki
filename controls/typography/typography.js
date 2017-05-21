@@ -71,8 +71,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    fontSelect;
 
 		// Format standard fonts as an array.
-		if ( ! _.isUndefined( kirkiAllFonts.standard ) ) {
-			_.each( kirkiAllFonts.standard, function( font ) {
+		if ( ! _.isUndefined( window[ 'kirkiFonts' + control.id ].standard ) ) {
+			_.each( window[ 'kirkiFonts' + control.id ].standard, function( font ) {
 				standardFonts.push({
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
@@ -81,8 +81,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		}
 
 		// Format google fonts as an array.
-		if ( ! _.isUndefined( kirkiAllFonts.standard ) ) {
-			_.each( kirkiAllFonts.google, function( font ) {
+		if ( ! _.isUndefined( window[ 'kirkiFonts' + control.id ].standard ) ) {
+			_.each( window[ 'kirkiFonts' + control.id ].google, function( font ) {
 				googleFonts.push({
 					id: font.family,
 					text: font.label
@@ -223,16 +223,17 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	 * Get variants for a font-family.
 	 */
 	getVariants: function( fontFamily ) {
+		var control = this;
 
 		var variants = false;
-		_.each( kirkiAllFonts.standard, function( font ) {
+		_.each( window[ 'kirkiFonts' + control.id ].standard, function( font ) {
 			if ( font.family === fontFamily.replace( /'/g, '"' ) ) {
 				variants = font.variants;
 				return font.variants;
 			}
 		});
 
-		_.each( kirkiAllFonts.google, function( font ) {
+		_.each( window[ 'kirkiFonts' + control.id ].google, function( font ) {
 			if ( font.family === fontFamily ) {
 				variants = font.variants;
 				return font.variants;
@@ -246,9 +247,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	 */
 	getSubsets: function( fontFamily ) {
 
-		var subsets = false;
+		var control = this,
+		    subsets = false;
 
-		_.each( kirkiAllFonts.google, function( font ) {
+		_.each( window[ 'kirkiFonts' + control.id ].google, function( font ) {
 			if ( font.family === fontFamily ) {
 				subsets = font.subsets;
 			}

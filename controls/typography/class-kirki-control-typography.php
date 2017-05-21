@@ -117,6 +117,9 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_variants   = Kirki_Fonts::get_all_variants();
 		$all_subsets    = Kirki_Fonts::get_google_font_subsets();
 
+		$standardfonts_user_keys = $this->choices['fonts']['standard'];
+		$googlefonts_user_keys   = $this->choices['fonts']['google'];
+
 		$standard_fonts_final = array();
 		$default_variants = $this->format_variants_array( array(
 			'regular',
@@ -124,7 +127,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'700',
 			'700italic',
 		) );
-		foreach ( $standard_fonts as $font ) {
+		foreach ( $standard_fonts as $key => $font ) {
+			if ( ! empty( $standardfonts_user_keys ) && ! in_array( $key, $standardfonts_user_keys ) ) {
+				continue;
+			}
 			$standard_fonts_final[] = array(
 				'family'      => $font['stack'],
 				'label'       => $font['label'],
@@ -136,6 +142,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 		$google_fonts_final = array();
 		foreach ( $google_fonts as $family => $args ) {
+			if ( ! empty( $googlefonts_user_keys ) && ! in_array( $family, $googlefonts_user_keys ) ) {
+				continue;
+			}
+
 			$label    = ( isset( $args['label'] ) ) ? $args['label'] : $family;
 			$variants = ( isset( $args['variants'] ) ) ? $args['variants'] : array( 'regular', '700' );
 			$subsets  = ( isset( $args['subsets'] ) ) ? $args['subsets'] : array();
@@ -171,7 +181,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'standard' => $standard_fonts_final,
 			'google'   => $google_fonts_final,
 		);
-		wp_localize_script( 'kirki-typography', 'kirkiAllFonts', $final );
+		wp_localize_script( 'kirki-typography', 'kirkiFonts' . $this->id, $final );
 
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 
