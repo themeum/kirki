@@ -48,7 +48,13 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Sanitization for number fields.
 * Fix: Checkboxes sanitization.
 * Fix: Link functionality in editor field.
-* New: Added "collapsible" argument to fields.
+* Fix: Disabled the "reset" module by default. Use the `kirki/modules` filter to enable.
+* Fix: Disabled the "loading" module by default. Use the `kirki/modules` filter to enable.
+* Fix: Disabled the "custom-sections" module by default. Use the `kirki/modules` filter to enable.
+* New: Typography fields now support live-updating using `'transport' => 'auto'`.
+* New: Typography fields now support filtering the available fonts.
+* New: Typography fields now support loading multiple variants.
+* New: Added "collapsible" support to fields (module disabled by default).
 * New: Added new background control-type.
 * New: Replaced selectize with select2.
 * New: Notifications for number fields when value is invalid depending on min/max/step values.
@@ -68,7 +74,6 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: Customizer-Branding is now a module.
 * New: CSS-Output is now a module.
 * New: Abstracted the "spacing" control and created a new "dimensions" control from it.
-* Deprecated: Custom Sections & Custom Panels have been disabled for the time being.
 
 = 2.3.7 =
 
