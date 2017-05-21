@@ -216,7 +216,7 @@ class Kirki_Modules_CSS {
 		foreach ( $fields as $field ) {
 
 			// Only process fields that belong to $config_id.
-			if ( $config_id != $field['kirki_config'] ) {
+			if ( $config_id !== $field['kirki_config'] ) {
 				continue;
 			}
 
@@ -254,8 +254,5 @@ class Kirki_Modules_CSS {
 		if ( is_array( $css ) ) {
 			return Kirki_Modules_CSS_Generator::styles_parse( Kirki_Modules_CSS_Generator::add_prefixes( $css ) );
 		}
-
-		return;
-
 	}
 }

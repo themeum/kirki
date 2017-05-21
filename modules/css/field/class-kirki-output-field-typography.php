@@ -66,12 +66,12 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 		}
 
 		// Take care of letter-spacing.
-		if ( isset( $value['letter-spacing'] ) && ( ! empty( $value['letter-spacing'] ) || '0' == $value['letter-spacing'] ) ) {
+		if ( isset( $value['letter-spacing'] ) && ( ! empty( $value['letter-spacing'] ) || ( '0' === $value['letter-spacing'] || 0 === $value['letter-spacing'] ) ) ) {
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['letter-spacing'] = $output['prefix'] . $value['letter-spacing'] . $output['suffix'];
 		}
 
 		// Take care of word-spacing.
-		if ( isset( $value['word-spacing'] ) && ( ! empty( $value['word-spacing'] ) || '0' == $value['word-spacing'] ) ) {
+		if ( isset( $value['word-spacing'] ) && ( ! empty( $value['word-spacing'] ) || ( '0' === $value['word-spacing'] || 0 === $value['word-spacing'] ) ) ) {
 			$this->styles[ $output['media_query'] ][ $output['element'] ]['word-spacing'] = $output['prefix'] . $value['word-spacing'] . $output['suffix'];
 		}
 

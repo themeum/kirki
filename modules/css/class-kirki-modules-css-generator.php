@@ -197,7 +197,7 @@ final class Kirki_Modules_CSS_Generator {
 			return '';
 		}
 		foreach ( $css as $media_query => $styles ) {
-			$final_css .= ( 'global' != $media_query ) ? $media_query . '{' : '';
+			$final_css .= ( 'global' !== $media_query ) ? $media_query . '{' : '';
 			foreach ( $styles as $style => $style_array ) {
 				$final_css .= $style . '{';
 				foreach ( $style_array as $property => $value ) {
@@ -206,7 +206,7 @@ final class Kirki_Modules_CSS_Generator {
 				}
 				$final_css .= '}';
 			}
-			$final_css .= ( 'global' != $media_query ) ? '}' : '';
+			$final_css .= ( 'global' !== $media_query ) ? '}' : '';
 		}
 		return $final_css;
 	}

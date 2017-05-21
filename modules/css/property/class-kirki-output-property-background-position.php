@@ -31,7 +31,7 @@ class Kirki_Output_Property_Background_Position extends Kirki_Output_Property {
 
 		// If the value is initial or inherit, we don't need to do anything.
 		// Just exit.
-		if ( 'initial' == $this->value || 'inherit' == $this->value ) {
+		if ( 'initial' === $this->value || 'inherit' === $this->value ) {
 			return;
 		}
 

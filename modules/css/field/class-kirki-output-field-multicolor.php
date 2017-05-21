@@ -36,7 +36,7 @@ class Kirki_Output_Field_Multicolor extends Kirki_Output {
 			}
 
 			// If the "choice" is not the same as the $key in our loop, there's no reason to proceed.
-			if ( $key != $output['choice'] ) {
+			if ( $key !== $output['choice'] ) {
 				continue;
 			}
 
