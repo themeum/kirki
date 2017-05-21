@@ -127,9 +127,10 @@ class Kirki_Settings {
 
 		// Apply the kirki/setting_types filter.
 		$this->setting_types = apply_filters( 'kirki/setting_types', array(
-			'default'   => 'WP_Customize_Setting',
-			'repeater'  => 'Kirki_Settings_Repeater_Setting',
-			'user_meta' => 'Kirki_Setting_User_Meta',
+			'default'     => 'WP_Customize_Setting',
+			'repeater'    => 'Kirki_Settings_Repeater_Setting',
+			'user_meta'   => 'Kirki_Setting_User_Meta',
+			'site_option' => 'Kirki_Setting_Site_Option',
 		) );
 
 		// Make sure the defined classes actually exist.
