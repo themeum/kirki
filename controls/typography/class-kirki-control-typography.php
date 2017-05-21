@@ -505,7 +505,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				'variants'     => $available_variants,
 				'subsets'      => $available_subsets,
 			);
-		}
+		} // End foreach().
 		return $google_fonts_final;
 	}
 
