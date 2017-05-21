@@ -71,11 +71,6 @@ class Kirki_Control_Palette extends WP_Customize_Control {
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
 
-		if ( 'user_meta' === $this->option_type ) {
-			// @codingStandardsIgnoreLine
-			$this->json['value'] = get_user_meta( get_current_user_id(), $this->id, true );
-		}
-
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';

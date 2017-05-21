@@ -66,10 +66,14 @@ class Kirki_Settings {
 	final private function add_settings( $args = array() ) {
 
 		// Get the classname we'll be using to create our setting(s).
+		$classname = false;
+		if ( isset( $args['option_type'] ) && array_key_exists( $args['option_type'], $this->setting_types ) ) {
+			$classname = $this->setting_types[ $args['option_type'] ];
+		}
 		if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->setting_types ) ) {
 			$args['type'] = 'default';
 		}
-		$classname = $this->setting_types[ $args['type'] ];
+		$classname = ! $classname ? $this->setting_types[ $args['type'] ] : $classname;
 
 		// If settings are defined as an array, then we need to go through them
 		// and call add_setting for each one of them separately.
@@ -123,8 +127,9 @@ class Kirki_Settings {
 
 		// Apply the kirki/setting_types filter.
 		$this->setting_types = apply_filters( 'kirki/setting_types', array(
-			'default'  => 'WP_Customize_Setting',
-			'repeater' => 'Kirki_Settings_Repeater_Setting',
+			'default'   => 'WP_Customize_Setting',
+			'repeater'  => 'Kirki_Settings_Repeater_Setting',
+			'user_meta' => 'Kirki_Setting_User_Meta',
 		) );
 
 		// Make sure the defined classes actually exist.
