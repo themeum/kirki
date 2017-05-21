@@ -191,5 +191,8 @@ class Kirki_Field_Typography extends Kirki_Field {
 		if ( ! isset( $this->choices['fonts']['google'] ) ) {
 			$this->choices['fonts']['google'] = array();
 		}
+		if ( ! isset( $this->choices['variant'] ) ) {
+			$this->choices['variant'] = array();
+		}
 	}
 }

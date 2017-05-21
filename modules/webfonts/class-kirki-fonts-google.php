@@ -148,6 +148,11 @@ final class Kirki_Fonts_Google {
 			if ( ! in_array( $value['variant'], $this->fonts[ $value['font-family'] ], true ) ) {
 				$this->fonts[ $value['font-family'] ][] = $value['variant'];
 			}
+			if ( ! empty( $args['choices']['variant'] ) ) {
+				foreach ( $args['choices']['variant'] as $extra_variant ) {
+					$this->fonts[ $value['font-family'] ][] = $extra_variant;
+				}
+			}
 		} else {
 
 			// Process non-typography fields.
