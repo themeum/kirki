@@ -147,7 +147,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
-		$this->add_values_backwards_compatibility();
 		$defaults = array(
 			'font-family'    => false,
 			'font-size'      => false,
@@ -305,55 +304,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		#>
 		<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
 		<?php
-	}
-
-	/**
-	 * Adds backwards-compatibility for values.
-	 * Converts font-weight to variant
-	 * Adds units to letter-spacing
-	 *
-	 * @access protected
-	 */
-	protected function add_values_backwards_compatibility() {
-		$value = $this->value();
-		$old_values = array(
-			'font-family'    => '',
-			'font-size'      => '',
-			'variant'        => ( isset( $value['font-weight'] ) ) ? $value['font-weight'] : 'regular',
-			'line-height'    => '',
-			'letter-spacing' => '',
-			'color'          => '',
-		);
-
-		// Font-weight is now variant.
-		// All values are the same with the exception of 400 (becomes regular).
-		if ( '400' === $old_values['variant'] || 400 === $old_values['variant'] ) {
-			$old_values['variant'] = 'regular';
-		}
-
-		if ( isset( $value['variant'] ) && in_array( $value['variant'], array( '100light', '600bold', '800bold', '900bold' ) ) ) {
-			$value['variant'] = (string) intval( $value['variant'] );
-		}
-
-		// Letter spacing was in px, now it requires units.
-		if ( isset( $value['letter-spacing'] ) && is_numeric( $value['letter-spacing'] ) && $value['letter-spacing'] ) {
-			$value['letter-spacing'] .= 'px';
-		}
-
-		$this->json['value'] = wp_parse_args( $value, $old_values );
-
-		// Cleanup.
-		if ( isset( $this->json['value']['font-weight'] ) ) {
-			unset( $this->json['value']['font-weight'] );
-		}
-
-		// Make sure we use "subsets" instead of "subset".
-		if ( isset( $this->json['value']['subset'] ) ) {
-			if ( ! empty( $this->json['value']['subset'] ) && ! isset( $this->json['value']['subsets'] ) || empty( $this->json['value']['subsets'] ) ) {
-				$this->json['value']['subsets'] = $this->json['value']['subset'];
-			}
-			unset( $this->json['value']['subset'] );
-		}
 	}
 
 	/**
