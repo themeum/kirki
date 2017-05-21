@@ -1,6 +1,20 @@
 ( function() {
 	var api = wp.customize;
 
+	function kirkiGetFontWeight( value ) {
+		var numericVal = 400,
+		    calculated;
+
+		if ( ! _.isString( value ) ) {
+			return numericVal;
+		}
+		calculated = value.match( /\d/g );
+		if ( ! _.isObject( calculated ) ) {
+			return numericVal;
+		}
+		return calculated.join( '' );
+	}
+
 	_.each( jsvars, function( jsVars, setting ) {
 
 		var css      = '',
@@ -129,29 +143,9 @@
 							jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
 
 						}, 100 );
-
 					});
-
 				}
-
 			});
-
 		});
-
 	});
-
-	function kirkiGetFontWeight( value ) {
-		var numericVal = 400,
-		    calculated;
-
-		if ( ! _.isString( value ) ) {
-			return numericVal;
-		}
-		calculated = value.match( /\d/g );
-		if ( ! _.isObject( calculated ) ) {
-			return numericVal;
-		}
-		return calculated.join( '' );
-	}
-
 })( jQuery );
