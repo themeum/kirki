@@ -102,9 +102,11 @@ var kirkiPostMessage = {
 	 * @return object
 	 */
 	generateCSS: function( value, args, setting ) {
-		var $this = this,
-		    css = '',
+		var $this    = this,
+		    settings = window.wp.customize.get(),
+		    css      = '',
 		    regex;
+
 
 		// Value is string.
 		if ( _.isString( value ) ) {
@@ -113,24 +115,39 @@ var kirkiPostMessage = {
 			if ( '' === value ) {
 				return '';
 			}
-			/*
-			If ( ! _.isUndefined( args.value_pattern ) && '' !== args.value_pattern && '$' !== args.value_pattern && ! _.isUndefined( args.replacements ) ) {
+
+			// WIP. Ignore.
+			if ( ! _.isUndefined( args.value_pattern ) && '' !== args.value_pattern && '$' !== args.value_pattern && ! _.isUndefined( args.replacements ) ) {
 				_.each( args.replacements, function( replace, search ) {
+					var item;
 					if ( 'this' === replace ) {
-						// TODO: Get current value
+						if ( _.isUndefined( settings ) || _.isUndefined( settings[ setting ] ) ) {
+							return; // Continue.
+						}
+						replace = settings[ setting ];
 					} else {
-						// TODO: Get other value
+						if ( -1 !== replace.indexOf( '[' ) ) {
+							item = replace.replace( ']', '' ).split( '[' );
+							if ( _.isUndefined( settings ) || _.isUndefined( settings[ item[0] ] ) || _.isUndefined( settings[ item[0] ][ item[1] ] ) ) {
+								return; // Continue.
+							}
+							replace = settings[ item[0] ][ item[1] ];
+						}
+						if ( _.isUndefined( settings ) || _.isUndefined( settings[ replace ] ) ) {
+							return; // Continue.
+						}
+						replace = settings[ replace ];
 					}
 					regex = new RegExp( search, 'g' );
 					args.value_pattern = args.value_pattern.replace( regex, replace );
 				});
 				args.value_pattern.replace( /\$/g, args.prefix + value + args.units + args.suffix );
 			}
-			*/
 
 			// Calculate and return the CSS.
 			value = args.value_pattern.replace( /\$/g, args.prefix + value + args.units + args.suffix );
 			value = $this.applyBackgroundImage( args.property, value );
+
 			return args.element + '{' + args.property + ':' + value + ';}';
 
 		// Value is an object.
