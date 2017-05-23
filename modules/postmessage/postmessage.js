@@ -1,33 +1,27 @@
 ( function() {
 	var api = wp.customize;
 
+	/**
+	 * Gets the font-weight from the variant.
+	 */
 	function kirkiGetFontWeight( value ) {
-		var numericVal = 400,
-		    calculated;
+		var calculated;
 
 		if ( ! _.isString( value ) ) {
-			return numericVal;
+			return 400;
 		}
 		calculated = value.match( /\d/g );
-		if ( ! _.isObject( calculated ) ) {
-			return numericVal;
-		}
-		return calculated.join( '' );
+		return ( ! _.isObject( calculated ) ) ? 400 : calculated.join( '' );
 	}
 
 	_.each( jsvars, function( jsVars, setting ) {
-
 		var css      = '',
 		    cssArray = {};
 
 		api( setting, function( value ) {
-
 			value.bind( function( newval ) {
-
 				if ( ! _.isUndefined( jsVars ) && 0 < jsVars.length ) {
-
 					_.each( jsVars, function( jsVar ) {
-
 						var val = newval;
 
 						jsVar = _.defaults( jsVar, {
@@ -36,25 +30,15 @@
 							prefix: '',
 							suffix: '',
 							units: '',
-							'function': 'css'
+							'function': 'css',
+							value_pattern: '$'
 						});
-
-						// Use $ (just the value) if value_pattern is undefined
-						if ( _.isUndefined( jsVar.value_pattern ) ) {
-							jsVar.value_pattern = '$';
-						}
 
 						_.each( jsVars, function( args, i ) {
 
 							// Value is a string
 							if ( _.isString( newval ) ) {
-
-								// Process the value pattern
-								if ( ! _.isUndefined( args.value_pattern ) ) {
-									val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
-								} else {
-									val = args.prefix + newval + args.units + args.suffix;
-								}
+								val = args.value_pattern.replace( /\$/g, args.prefix + newval + args.units + args.suffix );
 
 								// Simple tweak for background-image properties.
 								if ( 'background-image' === args.property && 0 > val.indexOf( 'url(' ) ) {
@@ -64,7 +48,7 @@
 								// Inject HTML
 								if ( 'html' === args['function'] ) {
 
-									if ( ! _.isUndefined( args.attr ) && ! _.isUndefined( args.attr ) ) {
+									if ( ! _.isUndefined( args.attr ) ) {
 										jQuery( args.element ).attr( args.attr, val );
 									} else {
 										jQuery( args.element ).html( val );
@@ -73,12 +57,8 @@
 								// Add CSS
 								} else {
 
-									// If we have new value, replace style contents with custom css
-									cssArray[ i ] = '';
-									if ( '' !== val ) {
-										cssArray[ i ] = args.element + '{' + args.property + ':' + val + ';}';
-									}
-
+									// If we have new value, replace style contents with custom css.
+									cssArray[ i ] = ( '' !== val ) ? args.element + '{' + args.property + ':' + val + ';}' : '';
 								}
 
 								// Value is an object
@@ -95,7 +75,7 @@
 										subValueValue = 'url("' + subValueValue + '")';
 									}
 
-									// Dirty hack to make google-fonts work.
+									// Dirty hack to make typography fields work.
 									if ( 'font-family' === subValueKey || 'variant' === subValueKey || 'subsets' === subValueKey ) {
 										newval['font-family'] = ( _.isUndefined( newval['font-family'] ) ) ? '' : newval['font-family'];
 										newval.variant        = ( _.isUndefined( newval.variant ) ) ? 400 : newval.variant;
@@ -125,23 +105,19 @@
 					});
 
 					_.each( cssArray, function( singleCSS ) {
-
 						css = '';
-
 						setTimeout( function() {
 
 							if ( '' !== singleCSS ) {
 								css += singleCSS;
 							}
 
-							// Attach to <head>
-							// Make sure we have a stylesheet with the defined ID.
-							// If we don't then add it.
+							// Attach to <head>. Make sure we have a stylesheet with the defined ID,
+							// and if we don't then add it.
 							if ( ! jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).size() ) {
 								jQuery( 'head' ).append( '<style id="kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) + '"></style>' );
 							}
 							jQuery( '#kirki-customizer-postmessage' + setting.replace( /\[/g, '-' ).replace( /\]/g, '' ) ).text( css );
-
 						}, 100 );
 					});
 				}
