@@ -32,7 +32,9 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 */
 	protected function set_sanitize_callback() {
 
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		if ( ! $this->sanitize_callback ) {
+			$this->sanitize_callback = array( $this, 'sanitize' );
+		}
 
 	}
 
