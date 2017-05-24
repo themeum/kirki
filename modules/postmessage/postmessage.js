@@ -107,6 +107,9 @@ var kirkiPostMessage = {
 		    css      = '',
 		    regex;
 
+		if ( _.isUndefined( value ) || _.isUndefined( args ) || _.isUndefined( setting ) ) {
+			return '';
+		}
 
 		// Value is string.
 		if ( _.isString( value ) ) {
@@ -145,7 +148,9 @@ var kirkiPostMessage = {
 			}
 
 			// Calculate and return the CSS.
-			value = args.value_pattern.replace( /\$/g, args.prefix + value + args.units + args.suffix );
+			if ( ! _.isUndefined( args.value_pattern ) && '' !== args.value_pattern ) {
+				value = args.value_pattern.replace( /\$/g, args.prefix + value + args.units + args.suffix );
+			}
 			value = $this.applyBackgroundImage( args.property, value );
 
 			return args.element + '{' + args.property + ':' + value + ';}';
@@ -195,27 +200,35 @@ var kirkiPostMessage = {
 
 			wp.customize( setting, function( value ) {
 				value.bind( function( newval ) {
+
 					if ( ! _.isUndefined( jsVars ) && 0 < jsVars.length ) {
-						_.each( jsVars, function( jsVar ) {
-							var val = newval;
+						_.each( jsVars, function( args, i ) {
 
-							jsVar = $this.getVarComplete( jsVar );
+							// Make sure the object is properly formatted.
+							args = $this.getVarComplete( args );
 
-							_.each( jsVars, function( args, i ) {
-
-								// If we're using "html" instead of "css" then add the HTML.
-								if ( _.isString( newval ) && 'html' === args['function'] ) {
-									if ( ! _.isUndefined( args.attr ) ) {
-										jQuery( args.element ).attr( args.attr, val );
-									} else {
-										jQuery( args.element ).html( val );
-									}
+							// Add support for js_callback.
+							if ( _.isObject( args.js_callback ) && _.isFunction( args.js_callback[0] ) ) {
+								if ( ! _.isUndefined( args.js_callback[1] ) ) {
+									console.log( 'here' );
+									newval = window[ args.js_callback[0] ]( args.js_callback[1] );
 								} else {
-
-									// Generate the CSS.
-									cssArray[ i ] = $this.generateCSS( newval, args, setting );
+									newval = window[ args.js_callback[0] ]();
 								}
-							});
+							}
+
+							// If we're using "html" instead of "css" then add the HTML.
+							if ( _.isString( newval ) && 'html' === args['function'] ) {
+								if ( ! _.isUndefined( args.attr ) ) {
+									jQuery( args.element ).attr( args.attr, newval );
+								} else {
+									jQuery( args.element ).html( newval );
+								}
+							} else {
+
+								// Generate the CSS.
+								cssArray[ i ] = $this.generateCSS( newval, args, setting );
+							}
 						});
 
 						// Adds the CSS to the document.
