@@ -67,6 +67,11 @@ class Kirki_Control_Toggle extends WP_Customize_Control {
 		}
 		$this->json['output']  = $this->output;
 		$this->json['value']   = $this->value();
+		if ( '1' === $this->json['value'] ) {
+			$this->json['value'] = true;
+		} elseif ( '0' === $this->json['value'] ) {
+			$this->json['value'] = false;
+		}
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
