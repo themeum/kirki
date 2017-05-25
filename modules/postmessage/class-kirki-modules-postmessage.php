@@ -92,12 +92,9 @@ class Kirki_Modules_PostMessage {
 		if ( '' !== $args['prefix'] ) {
 			$value = $args['prefix'] . '+' . $value_key;
 		}
-		if ( '' !== $args['units'] || '' !== $args['suffix'] ) {
-			$value .= '+' . $args['units'] . $args['suffix'];
-		}
 		return array(
 			'script' => $property_script . $script,
-			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value_key . '+\';}',
+			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}',
 		);
 	}
 
