@@ -71,22 +71,6 @@ class Kirki_Modules_PostMessage {
 		$value_key = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
 
-		// Make sure everything is defined to avoid "undefined index" errors.
-		$args = wp_parse_args( $args, array(
-			'element'       => '',
-			'property'      => '',
-			'prefix'        => '',
-			'suffix'        => '',
-			'units'         => '',
-			'js_callback'   => array( '', '' ),
-			'value_pattern' => '',
-		));
-
-		// Element should be a string.
-		if ( is_array( $args['element'] ) ) {
-			$args['element'] = implode( ',', $args['element'] );
-		}
-
 		// Make sure arguments that are passed-on to callbacks are strings.
 		if ( is_array( $args['js_callback'] ) && isset( $args['js_callback'][1] ) && is_array( $args['js_callback'][1] ) ) {
 			$args['js_callback'][1] = wp_json_encode( $args['js_callback'][1] );
@@ -111,11 +95,10 @@ class Kirki_Modules_PostMessage {
 		if ( '' !== $args['units'] || '' !== $args['suffix'] ) {
 			$value .= '+' . $args['units'] . $args['suffix'];
 		}
-		$scripts_array = array();
-		$scripts_array[ sanitize_key( $args['element'] ) ][ sanitize_key( $args['property'] ) ]['script'] = $property_script . $script;
-		$scripts_array[ sanitize_key( $args['element'] ) ][ sanitize_key( $args['property'] ) ]['css']    = $args['element'] . '{' . $args['property'] . ':\'+' . $value_key . '+\';}';
-
-		return $scripts_array;
+		return array(
+			'script' => $property_script . $script,
+			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value_key . '+\';}',
+		);
 	}
 
 	/**
@@ -136,17 +119,27 @@ class Kirki_Modules_PostMessage {
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
 			$js_var['index_key'] = $key;
-			$field['scripts'][ $key ] = $this->_script( $js_var );
+
+			// Element should be a string.
+			if ( isset( $js_var['element'] ) && is_array( $js_var['element'] ) ) {
+				$js_var['element'] = implode( ',', $js_var['element'] );
+			}
+
+			$field['scripts'][ $key ] = $this->_script( wp_parse_args( $js_var, array(
+				'element'       => '',
+				'property'      => '',
+				'prefix'        => '',
+				'suffix'        => '',
+				'units'         => '',
+				'js_callback'   => array( '', '' ),
+				'value_pattern' => '',
+			) );
 		}
 		$combo_extra_script = '';
 		$combo_css_script   = '';
-		foreach ( $field['scripts'] as $script_l1 ) {
-			foreach ( $script_l1 as $script_l2 ) {
-				foreach ( $script_l2 as $script_array ) {
-					$combo_extra_script .= $script_array['script'];
-					$combo_css_script   .= $script_array['css'];
-				}
-			}
+		foreach ( $field['scripts'] as $script_array ) {
+			$combo_extra_script .= $script_array['script'];
+			$combo_css_script   .= $script_array['css'];
 		}
 		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
 		$script .= '});});';
