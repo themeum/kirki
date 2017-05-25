@@ -382,7 +382,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		// Add fonts to our JS objects.
 		$standard_fonts = Kirki_Fonts::get_standard_fonts();
 
-		$standardfonts_user_keys = $this->choices['fonts']['standard'];
+		$std_user_keys = $this->choices['fonts']['standard'];
 
 		$standard_fonts_final = array();
 		$default_variants = $this->format_variants_array( array(
@@ -392,7 +392,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'700italic',
 		) );
 		foreach ( $standard_fonts as $key => $font ) {
-			if ( ! empty( $standardfonts_user_keys ) && ! in_array( $key, $standardfonts_user_keys, true ) ) {
+			if ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) {
 				continue;
 			}
 			$standard_fonts_final[] = array(
@@ -419,11 +419,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_variants = Kirki_Fonts::get_all_variants();
 		$all_subsets  = Kirki_Fonts::get_google_font_subsets();
 
-		$googlefonts_user_keys = $this->choices['fonts']['google'];
+		$gf_user_keys = $this->choices['fonts']['google'];
 
 		$google_fonts_final = array();
 		foreach ( $google_fonts as $family => $args ) {
-			if ( ! empty( $googlefonts_user_keys ) && ! in_array( $family, $googlefonts_user_keys, true ) ) {
+			if ( ! empty( $gf_user_keys ) && ! in_array( $family, $gf_user_keys, true ) ) {
 				continue;
 			}
 

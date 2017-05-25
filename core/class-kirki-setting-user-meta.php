@@ -81,7 +81,6 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 	 * @return bool The result of saving the value.
 	 */
 	protected function update( $value ) {
-		$id_base = $this->id_data['base'];
 		return $this->set_root_value( $value );
 	}
 
