@@ -133,27 +133,27 @@ class Kirki_Modules_PostMessage {
 		$field_scripts = array();
 
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
-			// append unique style tag if not exist
-			// The style ID.
-			$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
-			$script .= 'if(!jQuery(\'' . $style_id . '\').size()){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
+		// append unique style tag if not exist
+		// The style ID.
+		$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
+		$script .= 'if(!jQuery(\'' . $style_id . '\').size()){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
 
-			// Loop through the js_vars and generate the script.
-			foreach ( $args['js_vars'] as $key => $js_var ) {
-				$js_var['index_key'] = $key;
-				$field['scripts'][ $key ] = $this->_script( $js_var );
-			}
-			$combo_extra_script = '';
-			$combo_css_script   = '';
-			foreach ( $field['scripts'] as $script_l1 ) {
-				foreach ( $script_l1 as $script_l2 ) {
-					foreach ( $script_l2 as $script_array ) {
-						$combo_extra_script .= $script_array['script'];
-						$combo_css_script   .= $script_array['css'];
-					}
+		// Loop through the js_vars and generate the script.
+		foreach ( $args['js_vars'] as $key => $js_var ) {
+			$js_var['index_key'] = $key;
+			$field['scripts'][ $key ] = $this->_script( $js_var );
+		}
+		$combo_extra_script = '';
+		$combo_css_script   = '';
+		foreach ( $field['scripts'] as $script_l1 ) {
+			foreach ( $script_l1 as $script_l2 ) {
+				foreach ( $script_l2 as $script_array ) {
+					$combo_extra_script .= $script_array['script'];
+					$combo_css_script   .= $script_array['css'];
 				}
 			}
-			$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
+		}
+		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
 		$script .= '});});';
 		return $script;
 	}
