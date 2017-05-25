@@ -27,7 +27,7 @@ class Kirki_Modules_PostMessage {
 	 * @since 3.0.0
 	 * @var string
 	 */
-	protected $script ='';
+	protected $script = '';
 
 	/**
 	 * Constructor.
@@ -47,9 +47,8 @@ class Kirki_Modules_PostMessage {
 	public function postmessage() {
 
 		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', array( 'jquery', 'customize-preview' ), false, true );
-		$js_vars_fields = array();
 		$fields = Kirki::$fields;
-		foreach ( $fields as $id => $field ) {
+		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
 				$this->script .= $this->script( $field );
 			}
@@ -91,7 +90,7 @@ class Kirki_Modules_PostMessage {
 		// Make sure arguments that are passed-on to callbacks are strings.
 		if ( is_array( $args['js_callback'] ) ) {
 			if ( isset( $args['js_callback'][1] ) && is_array( $args['js_callback'][1] ) ) {
-				$args['js_callback'][1] = json_encode( $args['js_callback'][1] );
+				$args['js_callback'][1] = wp_json_encode( $args['js_callback'][1] );
 			}
 		}
 
@@ -129,8 +128,6 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args The arguments.
 	 */
 	protected function script( $args ) {
-
-		$field_scripts = array();
 
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
 		// append unique style tag if not exist
