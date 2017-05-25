@@ -133,7 +133,7 @@ class Kirki_Modules_PostMessage {
 				'units'         => '',
 				'js_callback'   => array( '', '' ),
 				'value_pattern' => '',
-			) );
+			) ) );
 		}
 		$combo_extra_script = '';
 		$combo_css_script   = '';
