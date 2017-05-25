@@ -88,10 +88,8 @@ class Kirki_Modules_PostMessage {
 		}
 
 		// Make sure arguments that are passed-on to callbacks are strings.
-		if ( is_array( $args['js_callback'] ) ) {
-			if ( isset( $args['js_callback'][1] ) && is_array( $args['js_callback'][1] ) ) {
-				$args['js_callback'][1] = wp_json_encode( $args['js_callback'][1] );
-			}
+		if ( is_array( $args['js_callback'] ) && isset( $args['js_callback'][1] ) && is_array( $args['js_callback'][1] ) ) {
+			$args['js_callback'][1] = wp_json_encode( $args['js_callback'][1] );
 		}
 
 		// Apply callback to the value if a callback is defined.
