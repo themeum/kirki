@@ -82,8 +82,7 @@ class Kirki_Modules_PostMessage {
 
 		// Apply the value_pattern.
 		if ( '' !== $args['value_pattern'] ) {
-			$value_pattern = str_replace( '$', '\'+' . $value_key . '+\'', $value_key );
-			$script .= $value_key . '=' . trim( $value_pattern, '\'+' ) . ';';
+			$script .= $this->value_pattern_replacements( $value_key, $args );
 		}
 
 		// Apply prefix, units, suffix.
@@ -175,8 +174,7 @@ class Kirki_Modules_PostMessage {
 		$script .= '_.each(' . $value_key . ', function(subValue,subKey){';
 		// Apply the value_pattern.
 		if ( '' !== $args['value_pattern'] ) {
-			$value_pattern = str_replace( '$', '\'+subValue+\'', $value_key );
-			$script .= 'subValue=' . trim( $value_pattern, '\'+' ) . ';';
+			$script .= $this->value_pattern_replacements( 'subValue', $args );
 		}
 		// Apply prefix, units, suffix.
 		$value = $value_key;
@@ -235,5 +233,30 @@ class Kirki_Modules_PostMessage {
 		}
 		return $args;
 
+	}
+
+	/**
+	 * Returns script for value_pattern & replacements.
+	 *
+	 * @access private
+	 * @since 3.0.0
+	 * @param string $value   The value placeholder.
+	 * @param array  $js_vars The js_vars argument.
+	 * @return string         The script.
+	 */
+	private function value_pattern_replacements( $value, $js_vars ) {
+		$script = '';
+		$alias  = $value;
+		if ( isset( $js_vars['replacements'] ) ) {
+			$script .= 'settings=window.wp.customize.get();';
+			foreach ( $js_vars['replacements'] as $search => $replace ) {
+				$replace = '\'+settings["' . $replace . '"]+\'';
+				$value = str_replace( $search, $replace, $js_vars['value_pattern'] );
+				$value = trim( $value, '+' );
+			}
+		}
+		$value_compiled = str_replace( '$', '\'+' . $alias . '+\'', $value );
+		$value_compiled = trim( $value_compiled, '+' );
+		return $script . $alias . '=\''. $value_compiled . '\';';
 	}
 }
