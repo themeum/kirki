@@ -770,8 +770,8 @@ class Kirki_Field {
 					$output['function'] = 'style';
 				}
 
-				// If there's a sanitize_callback defined, skip this.
-				if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) ) {
+				// If there's a sanitize_callback defined skip this, unless we also have a js_callback defined.
+				if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) && ( ! isset( $output['js_callback'] ) || empty( $output['js_callback'] ) ) ) {
 					continue;
 				}
 
