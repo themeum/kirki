@@ -257,6 +257,6 @@ class Kirki_Modules_PostMessage {
 		}
 		$value_compiled = str_replace( '$', '\'+' . $alias . '+\'', $value );
 		$value_compiled = trim( $value_compiled, '+' );
-		return $script . $alias . '=\''. $value_compiled . '\';';
+		return $script . $alias . '=\'' . $value_compiled . '\';';
 	}
 }
