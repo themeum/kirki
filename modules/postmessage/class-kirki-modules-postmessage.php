@@ -128,7 +128,11 @@ class Kirki_Modules_PostMessage {
 			$combo_extra_script .= $script_array['script'];
 			$combo_css_script   .= $script_array['css'];
 		}
-		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
+		if ( 'css' === $combo_css_script ) {
+			$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(css);';
+		} else {
+			$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
+		}
 		$script .= '});});';
 		return $script;
 	}
