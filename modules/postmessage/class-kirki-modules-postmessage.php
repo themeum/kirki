@@ -64,9 +64,8 @@ class Kirki_Modules_PostMessage {
 	 * @access protected
 	 * @since 3.0.0
 	 * @param array $args  The arguments for this js_var.
-	 * @param array $field The whole field arguments.
 	 */
-	protected function script_var( $args, $field ) {
+	protected function script_var( $args ) {
 		$script = '';
 		$property_script = '';
 
@@ -127,11 +126,8 @@ class Kirki_Modules_PostMessage {
 			$combo_extra_script .= $script_array['script'];
 			$combo_css_script   .= $script_array['css'];
 		}
-		if ( 'css' === $combo_css_script ) {
-			$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(css);';
-		} else {
-			$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(\'' . $combo_css_script . '\');';
-		}
+		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
+		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(' . $text . ');';
 		$script .= '});});';
 		return $script;
 	}
@@ -154,13 +150,11 @@ class Kirki_Modules_PostMessage {
 	 * @access protected
 	 * @since 3.0.0
 	 * @param array $args  The arguments for this js_var.
-	 * @param array $field The whole field arguments.
 	 */
-	protected function script_var_array( $args, $field ) {
+	protected function script_var_array( $args ) {
 
 		$script = 'css=\'\';';
 		$property_script = '';
-		$css = '';
 
 		$value_key = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
