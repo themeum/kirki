@@ -124,6 +124,7 @@ class Kirki_Output {
 							case 'user_meta':
 								$user_id = get_current_user_id();
 								if ( $user_id ) {
+									// @codingStandardsIgnoreLine
 									$replacement = get_user_meta( $user_id, $replace, true );
 								}
 								break;
@@ -133,8 +134,8 @@ class Kirki_Output {
 						$replacement = ( false === $replacement ) ? '' : $replacement;
 						$value = str_replace( $search, $replacement, $value );
 					}
-				}
-			}
+				} // End if().
+			} // End if().
 		}
 
 		return $value;

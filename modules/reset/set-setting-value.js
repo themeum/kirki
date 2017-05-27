@@ -1,6 +1,6 @@
 /* jshint -W079 */
 if ( _.isUndefined( kirkiSetSettingValue ) ) {
-	var kirkiSetSettingValue = {
+	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
 
 		/**
 		 * Set the value of the control.
