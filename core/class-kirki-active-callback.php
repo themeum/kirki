@@ -133,20 +133,20 @@ class Kirki_Active_Callback {
 			case '>=':
 			case 'greater or equal':
 			case 'equal or greater':
-				$show = ( $value1 >= $value2 ) ? true : false;
+				$show = ( $value2 >= $value1 ) ? true : false;
 				break;
 			case '<=':
 			case 'smaller or equal':
 			case 'equal or smaller':
-				$show = ( $value1 <= $value2 ) ? true : false;
+				$show = ( $value2 <= $value1 ) ? true : false;
 				break;
 			case '>':
 			case 'greater':
-				$show = ( $value1 > $value2 ) ? true : false;
+				$show = ( $value2 > $value1 ) ? true : false;
 				break;
 			case '<':
 			case 'smaller':
-				$show = ( $value1 < $value2 ) ? true : false;
+				$show = ( $value2 < $value1 ) ? true : false;
 				break;
 			case 'contains':
 			case 'in':
