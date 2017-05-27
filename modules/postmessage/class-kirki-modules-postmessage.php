@@ -59,43 +59,6 @@ class Kirki_Modules_PostMessage {
 	}
 
 	/**
-	 * Generates script for a single js_var.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param array $args  The arguments for this js_var.
-	 */
-	protected function script_var( $args ) {
-		$script = '';
-		$property_script = '';
-
-		$value_key = 'newval' . $args['index_key'];
-		$property_script .= $value_key . '=newval;';
-
-		$args = $this->get_args( $args );
-
-		// Apply callback to the value if a callback is defined.
-		if ( ! empty( $args['js_callback'][0] ) ) {
-			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
-		}
-
-		// Apply the value_pattern.
-		if ( '' !== $args['value_pattern'] ) {
-			$script .= $this->value_pattern_replacements( $value_key, $args );
-		}
-
-		// Apply prefix, units, suffix.
-		$value = $value_key;
-		if ( '' !== $args['prefix'] ) {
-			$value = $args['prefix'] . '+' . $value_key;
-		}
-		return array(
-			'script' => $property_script . $script,
-			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}',
-		);
-	}
-
-	/**
 	 * Generates script for a single field.
 	 *
 	 * @access protected
@@ -133,15 +96,41 @@ class Kirki_Modules_PostMessage {
 	}
 
 	/**
-	 * Processes values for dimensions fields.
+	 * Generates script for a single js_var.
 	 *
 	 * @access protected
 	 * @since 3.0.0
 	 * @param array $args  The arguments for this js_var.
-	 * @param array $field The whole field arguments.
 	 */
-	protected function script_var_dimensions( $args, $field ) {
-		return $this->script_var_array( $args, $field );
+	protected function script_var( $args ) {
+		$script = '';
+		$property_script = '';
+
+		$value_key = 'newval' . $args['index_key'];
+		$property_script .= $value_key . '=newval;';
+
+		$args = $this->get_args( $args );
+
+		// Apply callback to the value if a callback is defined.
+		if ( ! empty( $args['js_callback'][0] ) ) {
+			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
+		}
+
+		// Apply the value_pattern.
+		if ( '' !== $args['value_pattern'] ) {
+			$script .= $this->value_pattern_replacements( $value_key, $args );
+		}
+
+		// Apply prefix.
+		$value = $value_key;
+		if ( '' !== $args['prefix'] ) {
+			$value = $args['prefix'] . '+' . $value_key;
+		}
+
+		return array(
+			'script' => $property_script . $script,
+			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}',
+		);
 	}
 
 	/**
@@ -170,7 +159,7 @@ class Kirki_Modules_PostMessage {
 		if ( '' !== $args['value_pattern'] ) {
 			$script .= $this->value_pattern_replacements( 'subValue', $args );
 		}
-		// Apply prefix, units, suffix.
+		// Apply prefix.
 		$value = $value_key;
 		if ( '' !== $args['prefix'] ) {
 			$value = '\'' . $args['prefix'] . '\'+subValue';
@@ -193,6 +182,18 @@ class Kirki_Modules_PostMessage {
 			'script' => $property_script . $script,
 			'css'    => 'css',
 		);
+	}
+
+	/**
+	 * Processes values for dimensions fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 * @param array $field The whole field arguments.
+	 */
+	protected function script_var_dimensions( $args, $field ) {
+		return $this->script_var_array( $args, $field );
 	}
 
 	/**
