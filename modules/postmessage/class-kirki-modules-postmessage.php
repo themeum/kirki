@@ -71,7 +71,7 @@ class Kirki_Modules_PostMessage {
 		// append unique style tag if not exist
 		// The style ID.
 		$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
-		$script .= 'if(!jQuery(\'' . $style_id . '\').size()){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
+		$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
 
 		// Add anything we need before the main script.
 		$script .= $this->before_script( $args );
