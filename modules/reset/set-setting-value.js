@@ -18,9 +18,6 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 			 */
 			var $this = this,
 			    subControl = wp.customize.settings.controls[ setting ],
-			    $select,
-			    alphaColorControl,
-			    typographyColor,
 			    valueJSON;
 
 			// If the control doesn't exist then return.
