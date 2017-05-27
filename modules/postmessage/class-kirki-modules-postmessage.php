@@ -168,9 +168,9 @@ class Kirki_Modules_PostMessage {
 		}
 
 		// Tweak to add url() for background-images.
-		if ( 'background-image' === $args['property'] ) {
-			$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'");}';
-		}
+		$script .= 'if(\'background-image\'===\'' . $args['property'] . '\'||\'background-image\'===subKey){';
+		$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'")\';}';
+		$script .= '}';
 
 		// Apply prefix.
 		$value = $value_key;
