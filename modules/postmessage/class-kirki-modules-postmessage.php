@@ -86,14 +86,12 @@ class Kirki_Modules_PostMessage {
 				continue;
 			}
 			$js_var['index_key'] = $key;
-			if ( isset( $args['function'] ) && 'html' !== $args['function'] ) {
-				$callback = $this->get_callback( $args );
-				if ( is_callable( $callback ) ) {
-					$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
-					continue;
-				}
-				$field['scripts'][ $key ] = $this->script_var( $js_var );
+			$callback = $this->get_callback( $args );
+			if ( is_callable( $callback ) ) {
+				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
+				continue;
 			}
+			$field['scripts'][ $key ] = $this->script_var( $js_var );
 		}
 		$combo_extra_script = '';
 		$combo_css_script   = '';
