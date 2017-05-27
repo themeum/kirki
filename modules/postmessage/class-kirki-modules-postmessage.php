@@ -374,9 +374,9 @@ class Kirki_Modules_PostMessage {
 	private function value_pattern_replacements( $value, $js_vars ) {
 		$script = '';
 		$alias  = $value;
-		if ( isset( $js_vars['replacements'] ) ) {
+		if ( isset( $js_vars['pattern_replace'] ) ) {
 			$script .= 'settings=window.wp.customize.get();';
-			foreach ( $js_vars['replacements'] as $search => $replace ) {
+			foreach ( $js_vars['pattern_replace'] as $search => $replace ) {
 				$replace = '\'+settings["' . $replace . '"]+\'';
 				$value = str_replace( $search, $replace, $js_vars['value_pattern'] );
 				$value = trim( $value, '+' );
