@@ -124,7 +124,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 				unset( $value['font-weight'] );
 			}
 			$valid_variants = Kirki_Fonts::get_all_variants();
-			if ( ! array_key_exists( $value['variant'], $valid_variants ) ) {
+			if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) || ! array_key_exists( $value['variant'], $valid_variants ) ) {
 				$value['variant'] = 'regular';
 			}
 		}
