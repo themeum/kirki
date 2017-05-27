@@ -152,6 +152,10 @@ class Kirki_Modules_PostMessage {
 		$script = 'css=\'\';';
 		$property_script = '';
 
+		// Define choice.
+		$choice  = ( isset( $args['choice'] ) && '' !== $args['choice'] ) ? $args['choice'] : '';
+		$script .= ( '' !== $choice ) ? 'choice=\'' . $choice . '\';' : '';
+
 		$value_key = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
 
@@ -169,9 +173,11 @@ class Kirki_Modules_PostMessage {
 		}
 
 		// Tweak to add url() for background-images.
-		$script .= 'if(\'background-image\'===\'' . $args['property'] . '\'||\'background-image\'===subKey){';
-		$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'")\';}';
-		$script .= '}';
+		if ( '' === $choice || 'background-image' === $choice ) {
+			$script .= 'if(\'background-image\'===\'' . $args['property'] . '\'||\'background-image\'===subKey){';
+			$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'")\';}';
+			$script .= '}';
+		}
 
 		// Apply prefix.
 		$value = $value_key;
@@ -179,19 +185,25 @@ class Kirki_Modules_PostMessage {
 			$value = '\'' . $args['prefix'] . '\'+subValue';
 		}
 
-		// Allows us to apply this just for a specific choice in the array of the values.
-		$script .= 'if(!_.isUndefined(' . $value_key . '.choice)){if(' . $value_key . '.choice===subKey){';
-		$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
-		$script .= '}}else{';
-
 		// Mostly used for padding, margin & position properties.
-		$script .= 'if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
-		$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
-		$script .= '}else{';
+		$direction_script  ='if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
+		$direction_script .='css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
+		// Allows us to apply this just for a specific choice in the array of the values.
+		if ( '' !== $choice ) {
+			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
+			$script .= 'choice=\'' . $choice . '\';';
+			$script .= 'if(\'' . $choice . '\'===subKey){';
+			$script .= ( $choice_is_direction ) ? $direction_script . 'else{' : '';
+			$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
+			$script .= ( $choice_is_direction ) ? '}' : '';
+			$script .= '}';
+		} else {
+			$script .= $direction_script .'else{';
 
-		// This is where most object-based fields will go.
-		$script .= 'css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
-		$script .= '}}';
+			// This is where most object-based fields will go.
+			$script .= 'css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
+			$script .= '}';
+		}
 		$script .= '});';
 
 		return array(
@@ -353,6 +365,8 @@ class Kirki_Modules_PostMessage {
 		switch ( $args['type'] ) {
 			case 'kirki-background':
 			case 'kirki-dimensions':
+			case 'kirki-multicolor':
+			case 'kirki-sortable':
 				$callback = array( $this, 'script_var_array' );
 				break;
 			case 'kirki-typography':
