@@ -186,8 +186,8 @@ class Kirki_Modules_PostMessage {
 		}
 
 		// Mostly used for padding, margin & position properties.
-		$direction_script  ='if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
-		$direction_script .='css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
+		$direction_script  = 'if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
+		$direction_script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
 		// Allows us to apply this just for a specific choice in the array of the values.
 		if ( '' !== $choice ) {
 			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
@@ -198,7 +198,7 @@ class Kirki_Modules_PostMessage {
 			$script .= ( $choice_is_direction ) ? '}' : '';
 			$script .= '}';
 		} else {
-			$script .= $direction_script .'else{';
+			$script .= $direction_script . 'else{';
 
 			// This is where most object-based fields will go.
 			$script .= 'css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
