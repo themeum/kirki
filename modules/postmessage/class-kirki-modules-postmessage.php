@@ -158,10 +158,13 @@ class Kirki_Modules_PostMessage {
 		if ( '' !== $args['prefix'] ) {
 			$value = $args['prefix'] . '+' . $value_key;
 		}
-
+		$css = $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}';
+		if ( isset( $args['media_query'] ) ) {
+			$css = $args['media_query'] . '{' . $css . '}';
+		}
 		return array(
 			'script' => $property_script . $script,
-			'css'    => $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}',
+			'css'    => $css,
 		);
 	}
 
@@ -231,6 +234,10 @@ class Kirki_Modules_PostMessage {
 		}
 		$script .= '});';
 
+		if ( isset( $args['media_query'] ) ) {
+			$script .= 'css=\'' . $args['media_query'] . '{\'+css+\'}\';';
+		}
+
 		return array(
 			'script' => $property_script . $script,
 			'css'    => 'css',
@@ -277,6 +284,9 @@ class Kirki_Modules_PostMessage {
 		}
 
 		$script .= $css;
+		if ( isset( $args['media_query'] ) ) {
+			$script .= 'css=\'' . $args['media_query'] . '{\'+css+\'}\';';
+		}
 		return array(
 			'script' => $script,
 			'css'    => 'css',
