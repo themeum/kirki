@@ -136,7 +136,7 @@ class Kirki_Output {
 					}
 				} // End if().
 			} // End if().
-		}
+		} // End if().
 
 		return $value;
 
