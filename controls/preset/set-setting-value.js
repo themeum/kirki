@@ -1,6 +1,6 @@
 /* jshint -W079 */
 if ( _.isUndefined( kirkiSetSettingValue ) ) {
-	var kirkiSetSettingValue = {
+	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
 
 		/**
 		 * Set the value of the control.
@@ -18,10 +18,8 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 			 */
 			var $this = this,
 			    subControl = wp.customize.settings.controls[ setting ],
-			    $select,
-			    alphaColorControl,
-			    typographyColor,
-			    valueJSON;
+			    valueJSON,
+			    el;
 
 			// If the control doesn't exist then return.
 			if ( _.isUndefined( subControl ) ) {
@@ -49,6 +47,10 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 					});
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
 					jQuery( $this.findElement( setting, '.background-hidden-value' ).attr( 'value', valueJSON ) ).trigger( 'change' );
+					break;
+
+				case 'kirki-code':
+					jQuery( $this.findElement( setting, '.CodeMirror' ) )[0].CodeMirror.setValue( value );
 					break;
 
 				case 'checkbox':
@@ -87,6 +89,12 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 					});
 					_.each( value, function( subValue, i ) {
 						jQuery( $this.findElement( setting, 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
+					});
+					break;
+
+				case 'kirki-multicolor':
+					_.each( value, function( subVal, index ) {
+						$this.setColorPicker( $this.findElement( setting, '.multicolor-index-' + index ), subVal );
 					});
 					break;
 
@@ -129,6 +137,10 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 					// Not yet implemented.
 					break;
 
+				case 'kirki-custom':
+
+					// Do nothing.
+					break;
 				default:
 					jQuery( $this.findElement( setting, 'input' ) ).prop( 'value', value );
 			}
