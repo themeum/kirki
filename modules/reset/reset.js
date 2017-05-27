@@ -19,7 +19,7 @@ jQuery( document ).ready( function() {
 		_.each( controls, function( control, i ) {
 
 			// Set value to default
-			kirkiSetSettingValue( controls[ i ].id, control.params['default'] );
+			kirkiSetSettingValue.set( controls[ i ].id, control.params['default'] );
 
 		});
 

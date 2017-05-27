@@ -309,7 +309,7 @@ class Kirki_Modules_PostMessage {
 			switch ( $args['type'] ) {
 				case 'kirki-typography':
 					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
-					$script .= 'variant=(_.isUndefined(newval.variant))?400:newval.variant;';
+					$script .= 'variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;';
 					$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
 					$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
 					$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
@@ -319,8 +319,10 @@ class Kirki_Modules_PostMessage {
 					$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
 					$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
 					$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
-					$script .= 'fontWeight=(!_.isObject(variant.match(/\d/g)))?400:variant.match(/\d/g).join(\'\');';
-					$script .= 'fontStyle=(-1!==newval.variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
+
+					$script .= 'fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);';
+					$script .= 'fontWeight=(!_.isObject(fw))?400:fw.join(\'\');';
+					$script .= 'fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
 					$script .= 'css=\'\';';
 					break;
 			}
