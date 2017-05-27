@@ -91,7 +91,6 @@ class Kirki_Field_Background extends Kirki_Field {
 
 			// Start going through each item in the $output array.
 			foreach ( $this->output as $output ) {
-				$output['function'] = 'css';
 
 				// If 'element' is not defined, skip this.
 				if ( ! isset( $output['element'] ) ) {
@@ -99,9 +98,6 @@ class Kirki_Field_Background extends Kirki_Field {
 				}
 				if ( is_array( $output['element'] ) ) {
 					$output['element'] = implode( ',', $output['element'] );
-				}
-				if ( false !== strpos( $output['element'], ':' ) ) {
-					$output['function'] = 'style';
 				}
 
 				// If there's a sanitize_callback defined, skip this.

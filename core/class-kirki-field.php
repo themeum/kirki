@@ -757,7 +757,7 @@ class Kirki_Field {
 
 			// Start going through each item in the $output array.
 			foreach ( $this->output as $output ) {
-				$output['function'] = 'css';
+				$output['function'] = ( isset( $output['function'] ) ) ? $output['function'] : 'style';
 
 				// If 'element' or 'property' are not defined, skip this.
 				if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
@@ -765,9 +765,6 @@ class Kirki_Field {
 				}
 				if ( is_array( $output['element'] ) ) {
 					$output['element'] = implode( ',', $output['element'] );
-				}
-				if ( false !== strpos( $output['element'], ':' ) ) {
-					$output['function'] = 'style';
 				}
 
 				// If there's a sanitize_callback defined skip this, unless we also have a js_callback defined.

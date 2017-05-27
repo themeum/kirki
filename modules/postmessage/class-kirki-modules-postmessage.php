@@ -75,15 +75,25 @@ class Kirki_Modules_PostMessage {
 
 		// Add anything we need before the main script.
 		$script .= $this->before_script( $args );
+
+		$field = array(
+			'scripts' => array(),
+		);
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
-			$js_var['index_key'] = $key;
-			$callback = $this->get_callback( $args );
-			if ( is_callable( $callback ) ) {
-				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
+			if ( isset( $js_var['function'] ) && 'html' === $js_var['function'] ) {
+				$script .= $this->script_html_var( $js_var );
 				continue;
 			}
-			$field['scripts'][ $key ] = $this->script_var( $js_var, $args );
+			$js_var['index_key'] = $key;
+			if ( isset( $args['function'] ) && 'html' !== $function['function'] ) {
+				$callback = $this->get_callback( $args );
+				if ( is_callable( $callback ) ) {
+					$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
+					continue;
+				}
+				$field['scripts'][ $key ] = $this->script_var( $js_var );
+			}
 		}
 		$combo_extra_script = '';
 		$combo_css_script   = '';
@@ -94,6 +104,23 @@ class Kirki_Modules_PostMessage {
 		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
 		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(' . $text . ');';
 		$script .= '});});';
+		return $script;
+	}
+
+	/**
+	 * Generates script for a single js_var when using "html" as function.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 */
+	protected function script_html_var( $args ) {
+
+		$script  = ( isset( $args['choice'] ) ) ? 'newval=newval[\'' . $args['choice'] . '\'];' : '';
+		$script .= 'jQuery(\'' . $args['element'] . '\').html(newval);';
+		if ( isset( $args['attr'] ) ) {
+			$script = 'jQuery(\'' . $args['element'] . '\').attr(\'' . $args['attr'] . '\',newval);';
+		}
 		return $script;
 	}
 
