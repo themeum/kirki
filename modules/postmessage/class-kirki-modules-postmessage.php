@@ -121,6 +121,11 @@ class Kirki_Modules_PostMessage {
 			$script .= $this->value_pattern_replacements( $value_key, $args );
 		}
 
+		// Tweak to add url() for background-images.
+		if ( 'background-image' === $args['property'] ) {
+			$script .= 'if(-1===' . $value_key . '.indexOf(\'url(\')){' . $value_key . '=\'url("\'+' . $value_key . '+\'");}';
+		}
+
 		// Apply prefix.
 		$value = $value_key;
 		if ( '' !== $args['prefix'] ) {
@@ -155,15 +160,24 @@ class Kirki_Modules_PostMessage {
 			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
 		}
 		$script .= '_.each(' . $value_key . ', function(subValue,subKey){';
+
 		// Apply the value_pattern.
 		if ( '' !== $args['value_pattern'] ) {
 			$script .= $this->value_pattern_replacements( 'subValue', $args );
 		}
+
+		// Tweak to add url() for background-images.
+		if ( 'background-image' === $args['property'] ) {
+			$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'");}';
+		}
+
 		// Apply prefix.
 		$value = $value_key;
 		if ( '' !== $args['prefix'] ) {
 			$value = '\'' . $args['prefix'] . '\'+subValue';
 		}
+
+		// Allows us to apply this just for a specific choice in the array of the values.
 		$script .= 'if(!_.isUndefined(' . $value_key . '.choice)){if(' . $value_key . '.choice===subKey){';
 		$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
 		$script .= '}}else{';
