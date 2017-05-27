@@ -73,10 +73,11 @@ class Kirki_Modules_PostMessage {
 		$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
 		$script .= 'if(!jQuery(\'' . $style_id . '\').size()){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
 
+		// Add anything we need before the main script.
+		$script .= $this->before_script( $args );
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
 			$js_var['index_key'] = $key;
-			$func_name = 'script_var_' . str_replace( array( 'kirki-', '-' ), array( '', '_' ), $args['type'] );
 			$callback = $this->get_callback( $args );
 			if ( is_callable( $callback ) ) {
 				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
@@ -88,7 +89,7 @@ class Kirki_Modules_PostMessage {
 		$combo_css_script   = '';
 		foreach ( $field['scripts'] as $script_array ) {
 			$combo_extra_script .= $script_array['script'];
-			$combo_css_script   .= $script_array['css'];
+			$combo_css_script   .= ( 'css' !== $combo_css_script ) ? $script_array['css'] : '';
 		}
 		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
 		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(' . $text . ');';
@@ -211,28 +212,11 @@ class Kirki_Modules_PostMessage {
 		$script = '';
 		$css    = '';
 
-		// Make sure variants and subsets are defined.
-		$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
-		$script .= 'variant=(_.isUndefined(newval.variant))?400:newval.variant;';
-		$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
-		$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
-		$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
-		$script .= 'lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];';
-		$script .= 'letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];';
-		$script .= 'wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];';
-		$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
-		$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
-		$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
-		$script .= 'fontWeight=(!_.isObject(variant.match(/\d/g)))?400:variant.match(/\d/g).join(\'\');';
-		$script .= 'fontStyle=(-1!==newval.variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
-
 		// Load the font using WenFontloader.
 		// This is a bit ugly because wp_add_inline_script doesn't allow adding <script> directly.
-		$script .= 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:["\'+fontFamily+\':\'+variant+subsetsString+\'"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
+		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:["\'+fontFamily+\':\'+variant+subsetsString+\'"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
 
 		// Add the css.
-		$script .= 'element=\'' . $args['element'] . '\';';
-		$css .= 'css=\'\';';
 		$css_build_array = array(
 			'font-family'    => 'fontFamily',
 			'font-size'      => 'fontSize',
@@ -246,10 +230,13 @@ class Kirki_Modules_PostMessage {
 			'font-style'     => 'fontStyle',
 		);
 		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $css_build_array[ $args['choice'] ] ) );
+		$script .= ( ! $choice_condition ) ? $webfont_loader : '';
 		foreach ( $css_build_array as $property => $var ) {
-			$css .= ( $choice_condition ) ? 'if(\'\'!==choice&&\'' . $property . '\'===choice){' : '';
-			$css .= 'css+=(\'\'!==' . $var . ')?element+\'{' . $property . ':\'+' . $var . '+\'}\':\'\';';
-			$css .= ( $choice_condition ) ? '}' : '';
+			if ( $choice_condition && $property !== $args['choice'] ) {
+				continue;
+			}
+			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
+			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\'}\':\'\';';
 		}
 
 		$script .= $css;
@@ -257,6 +244,41 @@ class Kirki_Modules_PostMessage {
 			'script' => $script,
 			'css'    => 'css',
 		);
+	}
+
+	/**
+	 * Adds anything we need before the main script.
+	 *
+	 * @access private
+	 * @since 3.0.0
+	 * @param array $args The field args.
+	 * @return string;
+	 */
+	private function before_script( $args ) {
+
+		$script = '';
+
+		if ( isset( $args['type'] ) ) {
+			switch ( $args['type'] ) {
+				case 'kirki-typography':
+					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
+					$script .= 'variant=(_.isUndefined(newval.variant))?400:newval.variant;';
+					$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
+					$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
+					$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
+					$script .= 'lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];';
+					$script .= 'letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];';
+					$script .= 'wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];';
+					$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
+					$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
+					$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
+					$script .= 'fontWeight=(!_.isObject(variant.match(/\d/g)))?400:variant.match(/\d/g).join(\'\');';
+					$script .= 'fontStyle=(-1!==newval.variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
+					$script .= 'css=\'\';';
+					break;
+			}
+		}
+		return $script;
 	}
 
 	/**
