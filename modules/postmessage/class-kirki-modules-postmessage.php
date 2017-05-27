@@ -200,6 +200,59 @@ class Kirki_Modules_PostMessage {
 	}
 
 	/**
+	 * Processes script generation for typography fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 */
+	protected function script_var_typography( $args ) {
+
+		$script = '';
+		$css    = '';
+
+		// Make sure variants and subsets are defined.
+		$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
+		$script .= 'variant=(_.isUndefined(newval.variant))?400:newval.variant;';
+		$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
+		$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
+		$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
+		$script .= 'lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];';
+		$script .= 'letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];';
+		$script .= 'wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];';
+		$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
+		$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
+		$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
+		$script .= 'fontWeight=(!_.isObject(variant.match(/\d/g)))?400:variant.match(/\d/g).join(\'\');';
+		$script .= 'fontStyle=(-1!==newval.variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
+
+		// Load the font using WenFontloader.
+		// This is a bit ugly because wp_add_inline_script doesn't allow adding <script> directly.
+		$script .= 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)){WebFont.load({google:{families:["\'+fontFamily+\':\'+variant+subsetsString+\'"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
+
+		// Add the css.
+		$script .= 'element=\'' . $args['element'] . '\';';
+		$css .= 'css=\'\';';
+		$css .= 'css+=(\'\'!==fontFamily)?element+\'{font-family:\'+fontFamily+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==fontSize)?element+\'{font-size:\'+fontSize+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==lineHeight)?element+\'{line-height:\'+lineHeight+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==letterSpacing)?element+\'{letter-spacing:\'+letterSpacing+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==wordSpacing)?element+\'{word-spacing:\'+wordSpacing+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==textAlign)?element+\'{text-align:\'+textAlign+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==textTransform)?element+\'{text-transform:\'+textTransform+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==color)?element+\'{color:\'+color+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==fontWeight)?element+\'{font-weight:\'+fontWeight+\'}\':\'\';';
+		$css .= 'css+=(\'\'!==fontStyle)?element+\'{font-style:\'+fontStyle+\'}\':\'\';';
+
+		$from_script_var_array = $this->script_var_array( $args );
+		$script .= 'css=' . $css;
+		return array(
+			'script' => $script,
+			'css'    => 'css',
+		);
+	}
+
+	/**
 	 * Sanitizes the arguments and makes sure they are all there.
 	 *
 	 * @access private
@@ -272,6 +325,9 @@ class Kirki_Modules_PostMessage {
 			case 'kirki-background':
 			case 'kirki-dimensions':
 				$callback = array( $this, 'script_var_array' );
+				break;
+			case 'kirki-typography':
+				$callback = array( $this, 'script_var_typography' );
 				break;
 			default:
 				$callback = array( $this, 'script_var' );
