@@ -137,6 +137,10 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 					// Not yet implemented.
 					break;
 
+				case 'kirki-custom':
+
+					// Do nothing.
+					break;
 				default:
 					jQuery( $this.findElement( setting, 'input' ) ).prop( 'value', value );
 			}
