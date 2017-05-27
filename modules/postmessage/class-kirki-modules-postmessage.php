@@ -77,8 +77,9 @@ class Kirki_Modules_PostMessage {
 		foreach ( $args['js_vars'] as $key => $js_var ) {
 			$js_var['index_key'] = $key;
 			$func_name = 'script_var_' . str_replace( array( 'kirki-', '-' ), array( '', '_' ), $args['type'] );
-			if ( method_exists( $this, $func_name ) ) {
-				$field['scripts'][ $key ] = call_user_func_array( array( $this, $func_name ), array( $js_var, $args ) );
+			$callback = $this->get_callback( $args );
+			if ( is_callable( $callback ) ) {
+				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
 				continue;
 			}
 			$field['scripts'][ $key ] = $this->script_var( $js_var, $args );
@@ -199,18 +200,6 @@ class Kirki_Modules_PostMessage {
 	}
 
 	/**
-	 * Processes values for dimensions fields.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param array $args  The arguments for this js_var.
-	 * @param array $field The whole field arguments.
-	 */
-	protected function script_var_dimensions( $args, $field ) {
-		return $this->script_var_array( $args, $field );
-	}
-
-	/**
 	 * Sanitizes the arguments and makes sure they are all there.
 	 *
 	 * @access private
@@ -267,5 +256,26 @@ class Kirki_Modules_PostMessage {
 		$value_compiled = str_replace( '$', '\'+' . $alias . '+\'', $value );
 		$value_compiled = trim( $value_compiled, '+' );
 		return $script . $alias . '=\'' . $value_compiled . '\';';
+	}
+
+	/**
+	 * Get the callback function/method we're going to use for this field.
+	 *
+	 * @access private
+	 * @since 3.0.0
+	 * @param array $args The field args.
+	 * @return string|array A callable function or method.
+	 */
+	protected function get_callback( $args ) {
+
+		switch ( $args['type'] ) {
+			case 'kirki-background':
+			case 'kirki-dimensions':
+				$callback = array( $this, 'script_var_array' );
+				break;
+			default:
+				$callback = array( $this, 'script_var' );
+		}
+		return $callback;
 	}
 }
