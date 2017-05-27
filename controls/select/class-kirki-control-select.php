@@ -118,19 +118,25 @@ class Kirki_Control_Select extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			<select {{{ data.inputAttrs }}} {{{ data.link }}}<# if ( 1 < data.multiple ) { #> data-multiple="{{ data.multiple }}" multiple="multiple"<# } #>>
-				<# for ( key in data.choices ) { #>
-					<#
-					selected = ( data.value === key );
-					if ( 1 < data.multiple && data.value ) {
-						_.each( data.value, function( value ) {
-							if ( key === value ) {
-								selected = true;
-							}
-						});
-					}
-					#>
-					<option value="{{ key }}"<# if ( selected ) { #> selected <# } #>>{{ data.choices[ key ] }}</option>
-				<# } #>
+				<# _.each( data.choices, function( optionLabel, optionKey ) { #>
+					<# selected = ( data.value === optionKey ); #>
+					<# if ( 1 < data.multiple && data.value ) { #>
+						<# selected = _.contains( data.value, optionKey ); #>
+					<# } #>
+					<# if ( _.isObject( optionLabel ) ) { #>
+						<optgroup label="{{ optionLabel[0] }}">
+							<# _.each( optionLabel[1], function( optgroupOptionLabel, optgroupOptionKey ) { #>
+								<# selected = ( data.value === optgroupOptionKey ); #>
+								<# if ( 1 < data.multiple && data.value ) { #>
+									<# selected = _.contains( data.value, optgroupOptionKey ); #>
+								<# } #>
+								<option value="{{ optgroupOptionKey }}"<# if ( selected ) { #> selected <# } #>>{{ optgroupOptionLabel }}</option>
+							<# }); #>
+						</optgroup>
+					<# } else { #>
+						<option value="{{ optionKey }}"<# if ( selected ) { #> selected <# } #>>{{ optionLabel }}</option>
+					<# } #>
+				<# }); #>
 			</select>
 		</label>
 		<?php
