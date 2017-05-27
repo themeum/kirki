@@ -208,8 +208,6 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_var_typography( $args ) {
 
-		$args['choice'] = ( ! isset( $args['choice'] ) ) ? '' : $args['choice'];
-
 		$script = '';
 		$css    = '';
 
@@ -234,20 +232,26 @@ class Kirki_Modules_PostMessage {
 
 		// Add the css.
 		$script .= 'element=\'' . $args['element'] . '\';';
-		$css .= 'choice=\'' . $args['choice'] . '\';';
 		$css .= 'css=\'\';';
-		$css .= 'if(\'\'!==choice&&\'font-family\'===choice){css+=(\'\'!==fontFamily)?element+\'{font-family:\'+fontFamily+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'font-size\'===choice){css+=(\'\'!==fontSize)?element+\'{font-size:\'+fontSize+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'line-height\'===choice){css+=(\'\'!==lineHeight)?element+\'{line-height:\'+lineHeight+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'letter-spacing\'===choice){css+=(\'\'!==letterSpacing)?element+\'{letter-spacing:\'+letterSpacing+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'word-spacing\'===choice){css+=(\'\'!==wordSpacing)?element+\'{word-spacing:\'+wordSpacing+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'text-align\'===choice){css+=(\'\'!==textAlign)?element+\'{text-align:\'+textAlign+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'text-transform\'===choice){css+=(\'\'!==textTransform)?element+\'{text-transform:\'+textTransform+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'color\'===choice){css+=(\'\'!==color)?element+\'{color:\'+color+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'font-weight\'===choice){css+=(\'\'!==fontWeight)?element+\'{font-weight:\'+fontWeight+\'}\':\'\';}';
-		$css .= 'if(\'\'!==choice&&\'font-style\'===choice){css+=(\'\'!==fontStyle)?element+\'{font-style:\'+fontStyle+\'}\':\'\';}';
+		$css_build_array = array(
+			'font-family'    => 'fontFamily',
+			'font-size'      => 'fontSize',
+			'line-height'    => 'lineHeight',
+			'letter-spacing' => 'letterSpacing',
+			'word-spacing'   => 'wordSpacing',
+			'text-align'     => 'textAlign',
+			'text-transform' => 'textTransform',
+			'color'          => 'color',
+			'font-weight'    => 'fontWeight',
+			'font-style'     => 'fontStyle',
+		);
+		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $css_build_array[ $args['choice'] ] ) );
+		foreach ( $css_build_array as $property => $var ) {
+			$css .= ( $choice_condition ) ? 'if(\'\'!==choice&&\'' . $property . '\'===choice){' : '';
+			$css .= 'css+=(\'\'!==' . $var . ')?element+\'{' . $property . ':\'+' . $var . '+\'}\':\'\';';
+			$css .= ( $choice_condition ) ? '}' : '';
+		}
 
-		$from_script_var_array = $this->script_var_array( $args );
 		$script .= $css;
 		return array(
 			'script' => $script,
