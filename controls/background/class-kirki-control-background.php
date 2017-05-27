@@ -215,7 +215,6 @@ class Kirki_Control_Background extends WP_Customize_Control {
 				var attachments = [
 						'scroll',
 						'fixed',
-						'local'
 					];
 				#>
 				<div class="buttonset">
@@ -260,7 +259,6 @@ class Kirki_Control_Background extends WP_Customize_Control {
 
 			'fixed'                 => esc_attr__( 'Fixed', 'kirki' ),
 			'scroll'                => esc_attr__( 'Scroll', 'kirki' ),
-			'local'                 => esc_attr__( 'Local', 'kirki' ),
 
 			'left top'              => esc_attr__( 'Left Top', 'kirki' ),
 			'left center'           => esc_attr__( 'Left Center', 'kirki' ),
