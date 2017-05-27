@@ -5,17 +5,12 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control     = this,
-		    element     = control.container.find( '.kirki-codemirror-editor' ),
-		    language    = control.params.choices.language,
+		var control  = this,
+		    element  = control.container.find( '.kirki-codemirror-editor' ),
+		    language = ( 'html' === control.params.choices.language ) ? { name: 'htmlmixed' } : control.params.choices.language,
 		    editor,
 		    container,
 		    height;
-
-		// HTML mode requires a small hack because CodeMirror uses 'htmlmixed'.
-		if ( 'html' === control.params.choices.language ) {
-			language = { name: 'htmlmixed' };
-		}
 
 		editor = CodeMirror.fromTextArea( element[0], {
 			value:        control.setting._value,

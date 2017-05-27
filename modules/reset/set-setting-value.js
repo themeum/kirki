@@ -18,7 +18,8 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 			 */
 			var $this = this,
 			    subControl = wp.customize.settings.controls[ setting ],
-			    valueJSON;
+			    valueJSON,
+			    el;
 
 			// If the control doesn't exist then return.
 			if ( _.isUndefined( subControl ) ) {
@@ -46,6 +47,10 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 					});
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
 					jQuery( $this.findElement( setting, '.background-hidden-value' ).attr( 'value', valueJSON ) ).trigger( 'change' );
+					break;
+
+				case 'kirki-code':
+					jQuery( $this.findElement( setting, '.CodeMirror' ) )[0].CodeMirror.setValue( value );
 					break;
 
 				case 'checkbox':
