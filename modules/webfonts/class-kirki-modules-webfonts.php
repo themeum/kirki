@@ -97,16 +97,22 @@ class Kirki_Modules_Webfonts {
 	public function get_method( $config_id ) {
 
 		// Figure out which method to use.
-		$method = apply_filters( "kirki/{$config_id}/googlefonts_load_method", 'link' );
-		if ( 'embed' === $method && true !== $this->fallback_to_link ) {
+		$method = apply_filters( "kirki/{$config_id}/googlefonts_load_method", 'embed' );
+
+		// Fallback to 'embed' if value is invalid.
+		if ( 'async' !== $method || 'embed' !== $method || 'link' !== $method ) {
 			$method = 'embed';
 		}
+
+		// Fallback to 'link' if embed was not possible.
+		if ( 'embed' === $method && $this->fallback_to_link ) {
+			$method = 'link';
+		}
+
 		// Force using the JS method while in the customizer.
 		// This will help us work-out the live-previews for typography fields.
-		if ( is_customize_preview() ) {
-			$method = 'async';
-		}
-		return $method;
+		// If we're not in the customizer use the defined method.
+		return ( is_customize_preview() ) ? 'async' : $method;
 	}
 
 	/**
