@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       2.3.7
+ * Version:       2.3.8
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -64,3 +64,35 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/includes/lib/class-arico
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );
+
+/**
+ * Fires at the end of the update message container in each
+ * row of the plugins list table.
+ * Allows us to add important notices about updates should they be needed.
+ *
+ * @since 2.3.8
+ * @param array $plugin_data An array of plugin metadata.
+ * @param array $response    An array of metadata about the available plugin update.
+ */
+function kirki_show_upgrade_notification( $plugin_data, $response ) {
+
+    // Check "upgrade_notice".
+    if ( isset( $response->upgrade_notice ) && strlen( trim( $response->upgrade_notice ) ) > 0 ) : ?>
+        <style>
+        .kirki-upgrade-notification {
+            background-color: #d54e21;
+            padding: 10px;
+            color: #f9f9f9;
+            margin-top: 10px;
+        }
+        .kirki-upgrade-notification + p {
+            display: none;
+        }
+        </style>
+        <div class="kirki-upgrade-notification">
+            <strong><?php esc_attr_e( 'Important Upgrade Notice:', 'kirki' ); ?></strong>
+            <?php echo wp_strip_all_tags( $response->upgrade_notice ); ?>
+        </div>
+    <?php endif;
+}
+add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), 'kirki_show_upgrade_notification', 10, 2 );
