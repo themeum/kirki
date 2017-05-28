@@ -3,8 +3,8 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
-**Tested up to:** 4.6.1  
-**Stable tag:** 2.3.7  
+**Tested up to:** 4.8  
+**Stable tag:** 2.3.8  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,15 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 2.3.8 ###
+
+May 28, 2017, dev time: 15 minutes.
+
+This is a maintenance release that prepares for 3.0.0 coming soon.
+
+* Fix: Updating webfonts.
+* New: Added ability to use upgrade notices. Needed for v3.0 in a few days.
 
 ### 2.3.7 ###
 
