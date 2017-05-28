@@ -441,7 +441,6 @@ class Kirki_Modules_Customizer_Styling {
 				$css .= '.expanded .wp-full-overlay-footer{width:' . $width . '}';
 				$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
 				$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
-				$css .= '#customize-theme-controls .customize-pane-child.control-section-kirki-expanded{margin-left:-' . $width . ';width:' . $width . ';}';
 			}
 		}
 

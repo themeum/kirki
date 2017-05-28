@@ -6,7 +6,7 @@
   position: relative;
   visibility: visible;
   height: auto;
-  margin-left: -300px; }
+  margin-left: -100%; }
   #customize-theme-controls .customize-pane-child.control-section-kirki-expanded h3 .customize-action {
     display: none; }
 
