@@ -40,6 +40,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 = 3.0.0 =
 
 Date TBT, dev time: 230 hours.
+
 This is a major release. Many things have been refactored and optimized. Please keep a backup before updating.
 
 * Fix: Refactored the reset module. [#1334](https://github.com/aristath/kirki/pull/1334)
