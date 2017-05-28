@@ -51,9 +51,9 @@ class Kirki_Modules_Customizer_Styling {
 			$text_on_back = ( 60 > $back_obj->lightness ) ?
 				$back_obj->getNew( 'lightness', $back_obj->lightness + 60 )->toCSS( $back_obj->mode ) :
 				$back_obj->getNew( 'lightness', $back_obj->lightness - 60 )->toCSS( $back_obj->mode );
-			$border_on_back = ( 50 < $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 4 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 4 )->toCSS( $back_obj->mode );
+			$border_on_back = ( 80 < $back_obj->lightness ) ?
+				$back_obj->getNew( 'lightness', $back_obj->lightness - 13 )->toCSS( $back_obj->mode ) :
+				$back_obj->getNew( 'lightness', $back_obj->lightness + 13 )->toCSS( $back_obj->mode );
 			$back_on_back = ( 90 < $back_obj->lightness ) ?
 				$back_obj->getNew( 'lightness', $back_obj->lightness - 6 )->toCSS( $back_obj->mode ) :
 				$back_obj->getNew( 'lightness', $back_obj->lightness + 11 )->toCSS( $back_obj->mode );
@@ -306,7 +306,7 @@ class Kirki_Modules_Customizer_Styling {
 			$css .= '.customize-control-kirki-slider input[type=range]::-moz-range-thumb{background-color:' . $accent . ';}';
 			$css .= '.customize-control-kirki-slider input[type=range]::-ms-thumb{background-color:' . $accent . ';}';
 
-			$css .= '.customize-control-kirki-slider input[type=range]{background:' . $back . ';}';
+			$css .= '.customize-control-kirki-slider input[type=range]{background:' . $border_on_back . ';}';
 
 			$elements = array(
 				'.select2-container--default .select2-selection--single .select2-selection__rendered',
@@ -442,6 +442,7 @@ class Kirki_Modules_Customizer_Styling {
 			$css .= '}';
 			$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
 			$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
+			$css .= '#customize-theme-controls .customize-pane-child.control-section-kirki-expanded{margin-left:-' . $width . '}';
 		}
 
 		echo '<style>' . $css . '</style>'; // WPCS: XSS ok.
