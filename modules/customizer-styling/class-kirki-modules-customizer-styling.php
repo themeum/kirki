@@ -221,6 +221,19 @@ class Kirki_Modules_Customizer_Styling {
 				color: <?php echo esc_attr( $text_color ); ?> !important;
 			<?php endif; ?>
 		}
+
+		.customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label,
+		.customize-control-kirki-background .background-attachment .buttonset .switch-input:checked + .switch-label,
+		.customize-control-kirki-background .background-size .buttonset .switch-input:checked + .switch-label {
+			<?php if ( isset( $config['color_accent'] ) ) : ?>
+				<?php $color_obj = ariColor::newColor( $config['color_accent'] ); ?>
+				<?php $border_color = ( 50 < $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness - 15 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness + 15 )->toCSS( $color_obj->mode ); ?>
+				<?php $text_color = ( 60 > $color_obj->lightness ) ? $color_obj->getNew( 'lightness', $color_obj->lightness + 60 )->toCSS( $color_obj->mode ) : $color_obj->getNew( 'lightness', $color_obj->lightness - 60 )->toCSS( $color_obj->mode ); ?>
+				background-color: <?php echo esc_attr( $color_obj->toCSS() ); ?>;
+				border-color: <?php echo esc_attr( $border_color ); ?>;
+				color: <?php echo esc_attr( $text_color ); ?>;
+			<?php endif; ?>
+		}
 		<?php if ( isset( $config['color_back'] ) ) : ?>
 			.wp-full-overlay-footer .devices {
 				background: none;
