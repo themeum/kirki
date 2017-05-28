@@ -435,14 +435,14 @@ class Kirki_Modules_Customizer_Styling {
 		} // End if().
 
 		if ( isset( $config['width'] ) ) {
-			$width = esc_attr( $config['width'] );
-			$css .= '.wp-full-overlay-sidebar{width:' . $width . ';}';
-			$css .= '.expanded .wp-full-overlay-footer{';
-			$css .= ( false === strpos( $config['width'], 'calc' ) ) ? 'width:calc(' . $width . ' - 1px);' : 'width:' . $width;
-			$css .= '}';
-			$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
-			$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
-			$css .= '#customize-theme-controls .customize-pane-child.control-section-kirki-expanded{margin-left:-' . $width . '}';
+			if ( false === strpos( $config['width'], 'calc' ) ) {
+				$width = esc_attr( $config['width'] );
+				$css .= '.wp-full-overlay-sidebar{width:' . $width . ';}';
+				$css .= '.expanded .wp-full-overlay-footer{width:' . $width . '}';
+				$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
+				$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
+				$css .= '#customize-theme-controls .customize-pane-child.control-section-kirki-expanded{margin-left:-' . $width . ';width:' . $width . ';}';
+			}
 		}
 
 		echo '<style>' . $css . '</style>'; // WPCS: XSS ok.
