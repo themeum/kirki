@@ -327,7 +327,7 @@ class Kirki_Modules_Customizer_Styling {
 
 			$css .= '.kirki-reset-section .dashicons{color:' . $back_on_back . ';}';
 
-		}
+		} // End if().
 
 		if ( $back || $accent ) {
 			$elements = array(
@@ -432,7 +432,7 @@ class Kirki_Modules_Customizer_Styling {
 			$css .= 'border-color:' . $border_on_accent . ';';
 			$css .= 'color:' . $text_on_accent . ';';
 			$css .= '}';
-		}
+		} // End if().
 
 		if ( isset( $config['width'] ) ) {
 			$width = esc_attr( $config['width'] );
@@ -441,7 +441,7 @@ class Kirki_Modules_Customizer_Styling {
 			$css .= ( false === strpos( $config['width'], 'calc' ) ) ? 'width:calc(' . $width . ' - 1px);' : 'width:' . $width;
 			$css .= '}';
 			$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
-			$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $Width . ';}';
+			$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
 		}
 
 		echo '<style>' . $css . '</style>'; // WPCS: XSS ok.
