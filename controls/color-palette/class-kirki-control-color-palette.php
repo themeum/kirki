@@ -83,7 +83,7 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 			$this->json['choices']['colors'] = Kirki_Helper::get_material_design_colors( 'primary' );
 		}
 		if ( ! isset( $this->json['choices']['size'] ) || empty( $this->json['choices']['size'] ) ) {
-			$this->json['choices']['size'] = 16;
+			$this->json['choices']['size'] = 20;
 		}
 	}
 
