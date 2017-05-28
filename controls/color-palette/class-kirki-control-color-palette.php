@@ -83,7 +83,7 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 			$this->json['choices']['colors'] = Kirki_Helper::get_material_design_colors( 'primary' );
 		}
 		if ( ! isset( $this->json['choices']['size'] ) || empty( $this->json['choices']['size'] ) ) {
-			$this->json['choices']['size']   = 42;
+			$this->json['choices']['size'] = 16;
 		}
 	}
 
@@ -106,11 +106,11 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 		<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
-		<div id="input_{{ data.id }}" class="colors-wrapper">
+		<div id="input_{{ data.id }}" class="colors-wrapper <# if ( ! _.isUndefined( data.choices.style ) && 'round' === data.choices.style ) { #>round<# } else { #>square<# } #><# if ( ! _.isUndefined( data.choices['box-shadow'] ) && true === data.choices['box-shadow'] ) { #> box-shadow<# } #><# if ( ! _.isUndefined( data.choices['margin'] ) && true === data.choices['margin'] ) { #> with-margin<# } #>">
 			<# for ( key in data.choices['colors'] ) { #>
 				<input type="radio" {{{ data.inputAttrs }}} value="{{ data.choices['colors'][ key ] }}" name="_customize-color-palette-{{ data.id }}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( data.value == data.choices['colors'][ key ] ) { #> checked<# } #>>
-					<label for="{{ data.id }}{{ key }}">
-						<span class="color-palette-color" style='background: {{ data.choices['colors'][ key ] }}; width: {{ data.choices['size'] }}px; height: {{ data.choices['size'] }}px;'>{{ data.choices['colors'][ key ] }}</span>
+					<label for="{{ data.id }}{{ key }}" style="width: {{ data.choices['size'] }}px; height: {{ data.choices['size'] }}px;">
+						<span class="color-palette-color" style='background: {{ data.choices['colors'][ key ] }};'>{{ data.choices['colors'][ key ] }}</span>
 					</label>
 				</input>
 			<# } #>
