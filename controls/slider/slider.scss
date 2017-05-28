@@ -8,6 +8,7 @@
     height: 5px;
     width: calc(100% - 70px);
     padding: 0;
+    border-radius: 2px;
 
     &:focus {
       box-shadow: none;
@@ -22,17 +23,9 @@
       -webkit-appearance: none;
       width: 15px;
       height: 15px;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      background-color: #3498D9;
-    }
-
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
       border: none;
       border-radius: 50%;
+      -webkit-border-radius: 50%;
       background-color: #3498D9;
     }
 

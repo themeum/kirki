@@ -6,7 +6,8 @@
   background-color: rgba(0, 0, 0, 0.1);
   height: 5px;
   width: calc(100% - 70px);
-  padding: 0; }
+  padding: 0;
+  border-radius: 2px; }
   .customize-control-kirki-slider input[type=range]:focus {
     box-shadow: none;
     outline: none; }
@@ -16,15 +17,9 @@
     -webkit-appearance: none;
     width: 15px;
     height: 15px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background-color: #3498D9; }
-  .customize-control-kirki-slider input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
     border: none;
     border-radius: 50%;
+    -webkit-border-radius: 50%;
     background-color: #3498D9; }
   .customize-control-kirki-slider input[type=range]::-moz-range-thumb {
     width: 15px;
