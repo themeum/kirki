@@ -3,8 +3,8 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.4  
-**Tested up to:** 4.8.0  
-**Stable tag:** 3.0.0  
+**Tested up to:** 4.8  
+**Stable tag:** 2.3.8  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -107,6 +107,15 @@ This is a major release. Many things have been refactored and optimized. Please 
 * New: Allow saving site-options(`'option_type' => 'site_option'`) [#1326](https://github.com/aristath/kirki/issues/1326)
 * New: Added 2 new methods for enqueueing google fonts. See the [`kirki/{$config_id}/googlefonts_load_method`](https://github.com/aristath/kirki/blob/9e3e4a6928339bdcd0f7520d305c145a80a06c8a/modules/webfonts/class-kirki-modules-webfonts.php#L100) filter.
 * New: Googlefonts now by default added inline in the stylesheet to avoid an extra call to the GoogleFonts API. (SEO & performance improvement).
+
+### 2.3.8 ###
+
+May 28, 2017, dev time: 15 minutes.
+
+This is a maintenance release that prepares for 3.0.0 coming soon.
+
+* Fix: Updating webfonts.
+* New: Added ability to use upgrade notices. Needed for v3.0 in a few days.
 
 ### 2.3.7 ###
 
