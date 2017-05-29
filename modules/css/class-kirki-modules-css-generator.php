@@ -199,12 +199,17 @@ final class Kirki_Modules_CSS_Generator {
 		foreach ( $css as $media_query => $styles ) {
 			$final_css .= ( 'global' !== $media_query ) ? $media_query . '{' : '';
 			foreach ( $styles as $style => $style_array ) {
-				$final_css .= $style . '{';
+				$css_for_style = '';
+
 				foreach ( $style_array as $property => $value ) {
 					$value = ( is_string( $value ) ) ? $value : '';
-					$final_css .= $property . ':' . $value . ';';
+					if ( '' !== $value ) {
+						$css_for_style .= $property . ':' . $value . ';';
+					}
 				}
-				$final_css .= '}';
+				if ( '' !== $css_for_style ) {
+					$final_css .= $style . '{' . $css_for_style . '}';
+				}
 			}
 			$final_css .= ( 'global' !== $media_query ) ? '}' : '';
 		}
