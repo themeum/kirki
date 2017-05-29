@@ -138,8 +138,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$this->json['default'] = $this->default;
 		}
 		$this->json['output']  = $this->output;
-		$this->json['value']   = $this->value();
-		$this->json['value']   = $this->get_value_complete( $this->json['value'] );
+		$this->json['value']   = Kirki_Field_Typography::sanitize( $this->value() );
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
@@ -467,47 +466,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			);
 		} // End foreach().
 		return $google_fonts_final;
-	}
-
-	/**
-	 * Gets the complete value, properly compiled.
-	 * Takes into account missing values depending on our options
-	 * and fills-in the gaps.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param array $value The value.
-	 * @return array       The value with any mods required.
-	 */
-	protected function get_value_complete( $value ) {
-
-		// Get variant fron font-weight and font-style.
-		if ( ! isset( $value['variant'] ) && isset( $value['font-weight'] ) ) {
-			$value['variant'] = $value['font-weight'];
-			if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
-				$value['variant'] = ( '400' !== $value['font-weight'] || 400 !== $value['font-weight'] ) ? $value['variant'] . 'italic' : 'italic';
-			}
-		}
-
-		// Use 'regular' instead of 400 for font-variant.
-		$value['variant'] = ( 400 === $value['variant'] || '400' === $value['variant'] ) ? 'regular' : $value['variant'];
-
-		// Get font-weight from variant.
-		if ( ! isset( $value['font-weight'] ) && isset( $value['variant'] ) ) {
-			$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-			$value['font-weight'] = absint( $value['font-weight'] );
-
-			if ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) {
-				$value['font-weight'] = 400;
-			}
-		}
-
-		// Get font-style from variant.
-		if ( ! isset( $value['font-style'] ) && isset( $value['variant'] ) ) {
-			$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
-		}
-
-		return $value;
 	}
 
 	/**

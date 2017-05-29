@@ -37,7 +37,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array( __CLASS__, 'sanitize' );
 
 	}
 
@@ -98,11 +98,12 @@ class Kirki_Field_Typography extends Kirki_Field {
 	/**
 	 * Sanitizes typography controls
 	 *
+	 * @static
 	 * @since 2.2.0
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public function sanitize( $value ) {
+	public static function sanitize( $value ) {
 
 		if ( ! is_array( $value ) ) {
 			return array();
@@ -113,20 +114,30 @@ class Kirki_Field_Typography extends Kirki_Field {
 			$value['font-family'] = esc_attr( $value['font-family'] );
 		}
 
-		// Make sure we're using a valid variant.
-		// We're adding checks for font-weight as well for backwards-compatibility
-		// Versions 2.0 - 2.2 were using an integer font-weight.
-		if ( isset( $value['variant'] ) || isset( $value['font-weight'] ) ) {
-			if ( isset( $value['font-weight'] ) && ! empty( $value['font-weight'] ) ) {
-				if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) {
-					$value['variant'] = $value['font-weight'];
-				}
-				unset( $value['font-weight'] );
+		// Get variant from font-weight and font-style.
+		if ( ! isset( $value['variant'] ) && isset( $value['font-weight'] ) ) {
+			$value['variant'] = $value['font-weight'];
+			if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
+				$value['variant'] = ( '400' !== $value['font-weight'] || 400 !== $value['font-weight'] ) ? $value['variant'] . 'italic' : 'italic';
 			}
-			$valid_variants = Kirki_Fonts::get_all_variants();
-			if ( ! isset( $value['variant'] ) || empty( $value['variant'] ) || ! array_key_exists( $value['variant'], $valid_variants ) ) {
-				$value['variant'] = 'regular';
+		}
+
+		// Use 'regular' instead of 400 for font-variant.
+		$value['variant'] = ( 400 === $value['variant'] || '400' === $value['variant'] ) ? 'regular' : $value['variant'];
+
+		// Get font-weight from variant.
+		if ( ! isset( $value['font-weight'] ) && isset( $value['variant'] ) ) {
+			$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+			$value['font-weight'] = absint( $value['font-weight'] );
+
+			if ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) {
+				$value['font-weight'] = 400;
 			}
+		}
+
+		// Get font-style from variant.
+		if ( ! isset( $value['font-style'] ) && isset( $value['variant'] ) ) {
+			$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
 		}
 
 		// Make sure the saved value is "subsets" (plural) and not "subset".
