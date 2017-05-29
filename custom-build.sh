@@ -25,3 +25,6 @@ for controlDir in ./controls/*; do
 		done
 	fi
 done
+
+sass --update build.scss:build.css
+sass --update build.scss:build.min.css --style compressed
