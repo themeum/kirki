@@ -1,0 +1,3 @@
+div.mce-inline-toolbar-grp, .ui-autocomplete.wplink-autocomplete, #wp-link-wrap, .mce-tooltip {
+  z-index: 500000 !important;
+}
