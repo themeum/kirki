@@ -310,7 +310,6 @@ class Kirki_Modules_PostMessage {
 				case 'kirki-typography':
 					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
 					$script .= 'variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;';
-					$script .= 'variant=(\'regular\'===variant||\'italic\'===variant)?\'\':variant;';
 					$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
 					$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
 					$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
