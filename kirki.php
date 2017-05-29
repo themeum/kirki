@@ -85,6 +85,7 @@ if ( file_exists( $custom_config_path ) ) {
 	include_once( $custom_config_path );
 }
 
+if ( ! function_exists( 'kirki_show_upgrade_notification' ) ) :
 /**
  * Fires at the end of the update message container in each
  * row of the plugins list table.
@@ -107,4 +108,5 @@ function kirki_show_upgrade_notification( $plugin_data, $response ) {
 		</div>
 	<?php endif;
 }
+endif;
 add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), 'kirki_show_upgrade_notification', 10, 2 );
