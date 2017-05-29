@@ -86,7 +86,6 @@ final class Kirki_Modules_Webfonts_Async {
 				}
 			}
 			$fonts_to_load[] = $font . ':' . join( ',', $weights );
-			https://fonts.googleapis.com/css?family=Roboto:300,300i,400&amp;subset=cyrillic,greek
 		}
 		wp_enqueue_script( 'webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' );
 		wp_add_inline_script(

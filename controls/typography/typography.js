@@ -145,6 +145,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		if ( _.isUndefined( value['font-backup'] ) || null === value['font-backup'] ) {
 			value['font-backup'] = '';
 		}
+
 		// Hide if we're not on a google-font.
 		if ( false !== variants ) {
 			jQuery( control.selector + ' .font-backup' ).show();
