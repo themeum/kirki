@@ -118,12 +118,6 @@ final class Kirki_Fonts_Google {
 				return;
 			}
 
-			// Add support for older formats of the typography control.
-			// We used to have font-weight instead of variant.
-			if ( isset( $value['font-weight'] ) && ( ! isset( $value['variant'] ) || empty( $value['variant'] ) ) ) {
-				$value['variant'] = $value['font-weight'];
-			}
-
 			// Set a default value for variants.
 			if ( ! isset( $value['variant'] ) ) {
 				$value['variant'] = 'regular';
