@@ -149,7 +149,7 @@ class Kirki_Modules_PostMessage {
 		}
 
 		// Tweak to add url() for background-images.
-		if ( 'background-image' === $args['property'] ) {
+		if ( 'background-image' === $args['property'] && ( ! isset( $args['value_pattern'] ) || false === strpos( $args['value_pattern'], 'gradient' ) ) ) {
 			$script .= 'if(-1===' . $value_key . '.indexOf(\'url(\')){' . $value_key . '=\'url("\'+' . $value_key . '+\'");}';
 		}
 
