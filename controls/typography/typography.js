@@ -25,8 +25,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		});
 
 		// Letter-spacing.
+		value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 		this.container.on( 'change keyup paste', '.letter-spacing input', function() {
-			control.saveValue( 'letter-spacing', jQuery( this ).val() );
+			value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
+			control.saveValue( 'letter-spacing', value['letter-spacing'] );
 		});
 
 		// Word-spacing.
