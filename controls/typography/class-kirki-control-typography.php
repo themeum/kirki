@@ -139,6 +139,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		}
 		$this->json['output']  = $this->output;
 		$this->json['value']   = $this->value();
+		$this->json['value']   = $this->get_value_complete( $this->json['value'] );
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
@@ -195,6 +196,12 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 					<h5>{{ data.l10n['font-family'] }}</h5>
 					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
 				</div>
+				<# if ( ! _.isUndefined( data.choices['font-backup'] ) && true === data.choices['font-backup'] ) { #>
+					<div class="font-backup hide-on-standard-fonts kirki-font-backup-wrapper">
+						<h5>{{ data.l10n['font-backup'] }}</h5>
+						<select {{{ data.inputAttrs }}} id="kirki-typography-font-backup-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
+					</div>
+				<# } #>
 				<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 					<div class="variant kirki-variant-wrapper">
 						<h5>{{ data.l10n['variant'] }}</h5>
@@ -204,7 +211,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# if ( true === data.show_subsets ) { #>
 					<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
 						<h5>{{ data.l10n['subsets'] }}</h5>
-						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}" multiple>
+						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}"<# if ( _.isUndefined( data.choices['disable-multiple-variants'] ) || false === data.choices['disable-multiple-variants'] ) { #> multiple<# } #>>
 							<# _.each( data.value.subsets, function( subset ) { #>
 								<option value="{{ subset }}" selected="selected">{{ data.languages[ subset ] }}</option>
 							<# } ); #>
@@ -320,6 +327,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$translation_strings = array(
 			'inherit'        => esc_attr__( 'Inherit', 'kirki' ),
 			'font-family'    => esc_attr__( 'Font Family', 'kirki' ),
+			'font-backup'    => esc_attr__( 'Backup Font', 'kirki' ),
 			'font-size'      => esc_attr__( 'Font Size', 'kirki' ),
 			'line-height'    => esc_attr__( 'Line Height', 'kirki' ),
 			'letter-spacing' => esc_attr__( 'Letter Spacing', 'kirki' ),
@@ -459,6 +467,47 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			);
 		} // End foreach().
 		return $google_fonts_final;
+	}
+
+	/**
+	 * Gets the complete value, properly compiled.
+	 * Takes into account missing values depending on our options
+	 * and fills-in the gaps.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $value The value.
+	 * @return array       The value with any mods required.
+	 */
+	protected function get_value_complete( $value ) {
+
+		// Get variant fron font-weight and font-style.
+		if ( ! isset( $value['variant'] ) && isset( $value['font-weight'] ) ) {
+			$value['variant'] = $value['font-weight'];
+			if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
+				$value['variant'] = ( '400' !== $value['font-weight'] || 400 !== $value['font-weight'] ) ? $value['variant'] . 'italic' : 'italic';
+			}
+		}
+
+		// Use 'regular' instead of 400 for font-variant.
+		$value['variant'] = ( 400 === $value['variant'] || '400' === $value['variant'] ) ? 'regular' : $value['variant'];
+
+		// Get font-weight from variant.
+		if ( ! isset( $value['font-weight'] ) && isset( $value['variant'] ) ) {
+			$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+			$value['font-weight'] = absint( $value['font-weight'] );
+
+			if ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) {
+				$value['font-weight'] = 400;
+			}
+		}
+
+		// Get font-style from variant.
+		if ( ! isset( $value['font-style'] ) && isset( $value['variant'] ) ) {
+			$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
+		}
+
+		return $value;
 	}
 
 	/**
