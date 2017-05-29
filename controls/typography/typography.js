@@ -140,6 +140,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    fonts         = control.getFonts(),
 		    fontSelect;
 
+		if ( _.isUndefined( value['font-backup'] ) || null === value['font-backup'] ) {
+			value['font-backup'] = '';
+		}
 		// Hide if we're not on a google-font.
 		if ( false !== variants ) {
 			jQuery( control.selector + ' .font-backup' ).show();
@@ -203,7 +206,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			});
 			if ( ! isValid ) {
 				value.variant = 'regular';
-				control.saveValue( 'variant', value.variant );
 			}
 
 			if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
@@ -372,8 +374,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    valueObj  = JSON.parse( valueJSON );
 
 		valueObj[ property ] = value;
-		control.setting.set( valueObj );
 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
+		control.setting.set( valueObj );
 
 	}
 });
