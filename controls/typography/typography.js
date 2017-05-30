@@ -55,8 +55,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 				}, 100 );
 			}
 		});
-
-		control.saveValue( 'font-options', '' );
 	},
 
 	/**
@@ -231,11 +229,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 				control.saveValue( 'font-weight', fontWeight );
 				control.saveValue( 'font-style', fontStyle );
 			});
-
-			control.saveValue( 'google', 'true' );
 		} else {
 			jQuery( control.selector + ' .variant' ).hide();
-			control.saveValue( 'google', 'false' );
 		}
 	},
 
