@@ -24,6 +24,16 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			control.saveValue( 'line-height', jQuery( this ).val() );
 		});
 
+		// Margin-top.
+		this.container.on( 'change keyup paste', '.margin-top input', function() {
+			control.saveValue( 'margin-top', jQuery( this ).val() );
+		});
+
+		// Margin-bottom.
+		this.container.on( 'change keyup paste', '.margin-bottom input', function() {
+			control.saveValue( 'margin-bottom', jQuery( this ).val() );
+		});
+
 		// Letter-spacing.
 		value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 		this.container.on( 'change keyup paste', '.letter-spacing input', function() {

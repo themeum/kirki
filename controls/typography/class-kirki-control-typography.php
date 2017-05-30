@@ -303,6 +303,20 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
 				</div>
 			<# } #>
+
+			<# if ( data.default['margin-top'] ) { #>
+				<div class="margin-top">
+					<h5>{{ data.l10n['margin-top'] }}</h5>
+					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
+				</div>
+			<# } #>
+
+			<# if ( data.default['margin-bottom'] ) { #>
+				<div class="margin-bottom">
+					<h5>{{ data.l10n['margin-bottom'] }}</h5>
+					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
+				</div>
+			<# } #>
 		</div>
 		<#
 		if ( ! _.isUndefined( data.value['font-family'] ) ) {
@@ -345,6 +359,8 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'uppercase'      => esc_attr__( 'Uppercase', 'kirki' ),
 			'lowercase'      => esc_attr__( 'Lowercase', 'kirki' ),
 			'initial'        => esc_attr__( 'Initial', 'kirki' ),
+			'margin-top'     => esc_attr__( 'Margin Top', 'kirki' ),
+			'margin-bottom'  => esc_attr__( 'Margin Bottom', 'kirki' ),
 		);
 		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 		if ( false === $config_id ) {
