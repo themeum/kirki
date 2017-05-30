@@ -116,7 +116,16 @@ class Kirki_Output {
 						$replacement = '';
 						switch ( $option_type ) {
 							case 'option':
-								$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_option( $replace );
+								if ( is_array( $options ) ) {
+									if ( $option_name ) {
+										$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
+										$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
+										break;
+									}
+									$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
+									break;
+								}
+								$replacement = get_option( $replace );
 								break;
 							case 'site_option':
 								$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
