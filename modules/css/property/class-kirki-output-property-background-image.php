@@ -21,7 +21,7 @@ class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 	 */
 	protected function process_value() {
 
-		if ( false === strrpos( $this->value, 'url(' ) ) {
+		if ( false === strpos( $this->value, 'gradient' ) && false === strpos( $this->value, 'url(' ) ) {
 			if ( empty( $this->value ) ) {
 				return;
 			}

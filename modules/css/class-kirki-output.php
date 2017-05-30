@@ -217,6 +217,19 @@ class Kirki_Output {
 		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
 
+		// Properties that can accept multiple values.
+		// Useful for example for gradients where all browsers use the "background-image" property
+		// and the browser prefixes go in the value_pattern arg.
+		$accepts_multiple = array(
+			'background-image',
+		);
+		if ( in_array( $output['property'], $accepts_multiple ) ) {
+			if ( isset( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) && ! is_array( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) ) {
+				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = (array) $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ];
+			}
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ][] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
+			return;
+		}
 		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 	}
 

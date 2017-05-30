@@ -202,10 +202,16 @@ final class Kirki_Modules_CSS_Generator {
 				$css_for_style = '';
 
 				foreach ( $style_array as $property => $value ) {
-					$value = ( is_string( $value ) ) ? $value : '';
-					if ( '' !== $value ) {
+					if ( is_string( $value ) && '' !== $value ) {
 						$css_for_style .= $property . ':' . $value . ';';
+					} elseif ( is_array( $value ) ) {
+						foreach ( $value as $subvalue ) {
+							if ( is_string( $subvalue ) && '' !== $subvalue ) {
+								$css_for_style .= $property . ':' . $subvalue . ';';
+							}
+						}
 					}
+					$value = ( is_string( $value ) ) ? $value : '';
 				}
 				if ( '' !== $css_for_style ) {
 					$final_css .= $style . '{' . $css_for_style . '}';

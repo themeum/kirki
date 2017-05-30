@@ -240,7 +240,7 @@ class Kirki_Modules_CSS {
 
 			// Only continue if $field['output'] is set.
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) ) {
-				$css  = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
+				$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
 
 				// Add the globals.
 				if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
