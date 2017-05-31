@@ -101,6 +101,7 @@ class Kirki_Modules_PostMessage {
 		}
 		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
 		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(' . $text . ');';
+		$script .= 'jQuery(\'#' . $style_id . '\').appendTo(\'head\');';
 		$script .= '});});';
 		return $script;
 	}
