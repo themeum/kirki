@@ -156,7 +156,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 			<# } #>
 		</div>
 		<div class="iris-target"></div>
-		<input type="hidden" value="" {{{ data.link }}} />
+		<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
 		<?php
 	}
 

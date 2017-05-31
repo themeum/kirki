@@ -203,12 +203,11 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_var_array( $args ) {
 
-		$script = 'css=\'\';';
+		$script = ( 0 === $args['index_key'] ) ? 'css=\'\';' : '';
 		$property_script = '';
 
 		// Define choice.
 		$choice  = ( isset( $args['choice'] ) && '' !== $args['choice'] ) ? $args['choice'] : '';
-		$script .= ( '' !== $choice ) ? 'choice=\'' . $choice . '\';' : '';
 
 		$value_key = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
@@ -245,7 +244,6 @@ class Kirki_Modules_PostMessage {
 		// Allows us to apply this just for a specific choice in the array of the values.
 		if ( '' !== $choice ) {
 			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
-			$script .= 'choice=\'' . $choice . '\';';
 			$script .= 'if(\'' . $choice . '\'===subKey){';
 			$script .= ( $choice_is_direction ) ? $direction_script . 'else{' : '';
 			$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
