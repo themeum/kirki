@@ -22,6 +22,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
+
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
@@ -30,11 +31,6 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 		if ( ! isset( $value['variant'] ) || ! isset( $value['font-weight'] ) || ! isset( $value['font-style'] ) ) {
 			$value = Kirki_Field_Typography::sanitize( $value );
 			$this->value = $value;
-		}
-		// Take care of font-families.
-		if ( isset( $value['font-family'] ) && ! empty( $value['font-family'] ) ) {
-			$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
-			$this->styles[ $output['media_query'] ][ $output['element'] ]['font-family'] = $output['prefix'] . $this->process_property_value( 'font-family', $value['font-family'] ) . $output['suffix'];
 		}
 
 		$properties = array(
@@ -50,14 +46,18 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			'color',
 		);
 
-		if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) ) {
+		if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) && ! empty( $value['font-family'] ) ) {
 			$value['font-family'] .= ', ' . $value['font-backup'];
 		}
 		foreach ( $properties as $property ) {
 			if ( ! isset( $value[ $property ] ) || '' === $value[ $property ] ) {
 				continue;
 			}
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $value[ $property ] . $output['suffix'];
+			if ( isset( $output['choice'] ) && $output['choice'] !== $property ) {
+				continue;
+			}
+
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $property ] ) . $output['suffix'];
 		}
 	}
 }
