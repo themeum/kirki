@@ -13,7 +13,9 @@
     .letter-spacing,
     .line-height,
     .subsets,
-    .variant {
+    .variant,
+    .margin-top,
+    .margin-bottom {
       width: 100%;
       float: none;
       clear: both;
@@ -25,7 +27,9 @@
 
     .font-size,
     .letter-spacing,
-    .line-height {
+    .line-height,
+    .margin-top,
+    .margin-bottom {
       width: 50%;
     }
 
