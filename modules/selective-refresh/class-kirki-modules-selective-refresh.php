@@ -16,10 +16,38 @@
 class Kirki_Modules_Selective_Refresh {
 
 	/**
-	 * Adds any necessary actions & filters.
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
 	 */
-	public function __construct() {
+	private static $instance;
+
+	/**
+	 * Adds any necessary actions & filters.
+	 *
+	 * @access protected
+	 */
+	protected function __construct() {
 		add_action( 'customize_register', array( $this, 'register_partials' ), 99 );
+	}
+
+	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**

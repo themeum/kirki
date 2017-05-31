@@ -21,6 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Tooltips {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * An array containing field identifieds and their tooltips.
 	 *
 	 * @access private
@@ -32,13 +42,27 @@ class Kirki_Modules_Tooltips {
 	/**
 	 * The class constructor
 	 *
-	 * @access public
+	 * @access protected
 	 * @since 3.0.0
 	 */
-	public function __construct() {
-
+	protected function __construct() {
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+	}
 
+	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**

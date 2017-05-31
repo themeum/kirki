@@ -86,7 +86,7 @@ class Kirki_Modules {
 
 		foreach ( self::$modules as $key => $module_class ) {
 			if ( class_exists( $module_class ) ) {
-				self::$active_modules[ $key ] = new $module_class();
+				self::$active_modules[ $key ] = $module_class::get_instance();
 			}
 		}
 

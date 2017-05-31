@@ -22,25 +22,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Custom_Sections {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * Constructor.
 	 *
-	 * @access public
+	 * @access protected
 	 * @since 3.0.0
 	 */
-	public function __construct() {
-
+	protected function __construct() {
 		// Register the new section types.
 		add_filter( 'kirki/section_types', array( $this, 'set_section_types' ) );
-
 		// Register the new panel types.
 		add_filter( 'kirki/panel_types', array( $this, 'set_panel_types' ) );
-
 		// Include the section-type files.
 		add_action( 'customize_register', array( $this, 'include_sections_and_panels' ) );
-
 		// Enqueue styles & scripts.
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scrips' ), 999 );
+	}
 
+	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**

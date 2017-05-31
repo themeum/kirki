@@ -24,12 +24,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Customizer_Styling {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * Constructor.
 	 *
-	 * @access public
+	 * @access protected
 	 */
-	public function __construct() {
+	protected function __construct() {
 		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 99 );
+	}
+
+	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**

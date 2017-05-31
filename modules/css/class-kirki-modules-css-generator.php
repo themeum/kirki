@@ -130,7 +130,7 @@ final class Kirki_Modules_CSS_Generator {
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
-			self::$instance = new Kirki_Modules_CSS_Generator();
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}

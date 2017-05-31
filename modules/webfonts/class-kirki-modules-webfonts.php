@@ -21,6 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Modules_Webfonts {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * Which method to use when loading googlefonts.
 	 * Available options: link, js, embed.
 	 *
@@ -55,10 +65,10 @@ class Kirki_Modules_Webfonts {
 	/**
 	 * The class constructor
 	 *
-	 * @access public
+	 * @access protected
 	 * @since 3.0.0
 	 */
-	public function __construct() {
+	protected function __construct() {
 
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
@@ -67,6 +77,22 @@ class Kirki_Modules_Webfonts {
 		$this->maybe_fallback_to_link();
 		$this->init();
 
+	}
+
+	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**

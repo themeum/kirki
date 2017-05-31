@@ -16,6 +16,16 @@
 class Kirki_Modules_CSS {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.0
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * Whether we've already processed this or not.
 	 *
 	 * @access public
@@ -51,9 +61,9 @@ class Kirki_Modules_CSS {
 	/**
 	 * Constructor
 	 *
-	 * @access public
+	 * @access protected
 	 */
-	public function __construct() {
+	protected function __construct() {
 
 		$class_files = array(
 			'Kirki_CSS_To_File'                         => '/class-kirki-css-to-file.php',
@@ -80,13 +90,29 @@ class Kirki_Modules_CSS {
 	}
 
 	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.0
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * Init.
 	 *
 	 * @access public
 	 */
 	public function init() {
 
-		new Kirki_Modules_Webfonts();
+		Kirki_Modules_Webfonts::get_instance();
 
 		global $wp_customize;
 
