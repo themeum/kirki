@@ -279,10 +279,10 @@ class Kirki_Modules_PostMessage {
 			if ( $choice_condition && $property !== $args['choice'] ) {
 				continue;
 			}
+			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
 			if ( 'font-family' === $args['choice'] ) {
 				$script .= 'if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamily=\'"\'+fontFamily+\'"\';}';
 			}
-			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 
