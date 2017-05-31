@@ -83,8 +83,9 @@ class Kirki_Active_Callback {
 			 * we'll need to perform the appropriate comparison
 			 * and figure out if the control will be shown or not.
 			 */
-			$show = self::compare( $requirement['value'], $current_setting->value(), $requirement['operator'] );
-
+			if ( method_exists( $current_setting, 'value' ) ) {
+				return self::compare( $requirement['value'], $current_setting->value(), $requirement['operator'] );
+			}
 		} else {
 			if ( ! is_array( $requirement ) ) {
 				return true;
@@ -99,9 +100,10 @@ class Kirki_Active_Callback {
 					return true;
 				}
 			}
+			return $show;
 		}
 
-		return $show;
+		return true;
 	}
 
 	/**
