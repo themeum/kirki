@@ -280,8 +280,10 @@ class Kirki_Modules_PostMessage {
 				continue;
 			}
 			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
+
 			if ( 'font-family' === $args['choice'] ) {
-				$script .= 'if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamily=\'"\'+fontFamily+\'"\';}';
+				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
+				$var = 'fontFamilyCSS';
 			}
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
