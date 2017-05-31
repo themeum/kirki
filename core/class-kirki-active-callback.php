@@ -105,7 +105,7 @@ class Kirki_Active_Callback {
 				}
 			}
 			return $show;
-		}
+		} // End if().
 
 		return true;
 	}
