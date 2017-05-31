@@ -63,21 +63,21 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 	},
 
 	/**
- 	 * Saves the value.
- 	 */
- 	saveValue: function( property, value ) {
+	 * Saves the value.
+	 */
+	saveValue: function( property, value ) {
 
- 		'use strict';
+		'use strict';
 
- 		var control   = this,
- 		    input     = control.container.find( '.multicolor-hidden-value' ),
- 		    valueJSON = jQuery( input ).val(),
- 		    valueObj  = JSON.parse( valueJSON );
+		var control   = this,
+		    input     = control.container.find( '.multicolor-hidden-value' ),
+		    valueJSON = jQuery( input ).val(),
+		    valueObj  = JSON.parse( valueJSON );
 
- 		valueObj[ property ] = value;
- 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
- 		control.setting.set( valueObj );
+		valueObj[ property ] = value;
+		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
+		control.setting.set( valueObj );
 
- 	}
+	}
 
 });
