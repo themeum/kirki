@@ -24,35 +24,41 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 		$google_fonts_array = Kirki_Fonts::get_google_fonts();
 		$backup_fonts       = Kirki_Fonts::get_backup_fonts();
 
+		$family = $this->value;
+		$backup = '';
+		if ( is_array( $this->value ) && isset( $this->value[0] ) && isset( $this->value[1] ) ) {
+			$family = $this->value[0];
+			$backup = $this->value[1];
+		}
+
 		// Make sure the value is a string.
 		// If not, then early exit.
-		if ( ! is_string( $this->value ) ) {
+		if ( ! is_string( $family ) ) {
 			return;
 		}
 
 		// Hack for standard fonts.
-		$this->value = str_replace( '&quot;', '"', $this->value );
+		$family = str_replace( '&quot;', '"', $family );
 
 		// Add backup font.
-		if ( Kirki_Fonts::is_google_font( $this->value ) ) {
+		if ( Kirki_Fonts::is_google_font( $family ) ) {
 
-			if ( isset( $google_fonts_array[ $this->value ] ) && isset( $google_fonts_array[ $this->value ]['category'] ) ) {
-				if ( isset( $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ] ) ) {
-
-					// Add double quotes if needed.
-					if ( false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) ) {
-						$this->value = '"' . $this->value . '", ' . $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ];
-					} else {
-						$this->value .= ', ' . $backup_fonts[ $google_fonts_array[ $this->value ]['category'] ];
-					}
-				}
+			if ( '' === $backup && isset( $google_fonts_array[ $family ] ) && isset( $backup_fonts[ $google_fonts_array[ $family ]['category'] ] ) ) {
+				$backup = $backup_fonts[ $google_fonts_array[ $family ]['category'] ];
 			}
-		} else {
 
 			// Add double quotes if needed.
-			if ( false !== strpos( $this->value, ' ' ) && false === strpos( $this->value, '"' ) ) {
-				$this->value = '"' . $this->value . '"';
+			if ( false !== strpos( $family, ' ' ) && false === strpos( $family, '"' ) ) {
+				$this->value = '"' . $family . '", ' . $backup;
+				return;
 			}
+			$this->value = $family . ', ' . $backup;
+			return;
+		}
+
+		// Add double quotes if needed.
+		if ( false !== strpos( $family, ' ' ) && false === strpos( $family, '"' ) ) {
+			$this->value = '"' . $family . '"';
 		}
 	}
 }

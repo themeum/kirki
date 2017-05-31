@@ -46,9 +46,6 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			'color',
 		);
 
-		if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) && ! empty( $value['font-family'] ) ) {
-			$value['font-family'] .= ', ' . $value['font-backup'];
-		}
 		foreach ( $properties as $property ) {
 			if ( ! isset( $value[ $property ] ) || '' === $value[ $property ] ) {
 				continue;
@@ -57,7 +54,15 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 				continue;
 			}
 
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $property ] ) . $output['suffix'];
+			$property_value = $this->process_property_value( $property, $value[ $property ] );
+			if ( 'font-family' === $property ) {
+				$value['font-backup'] = ( isset( $value['font-backup'] ) ) ? $value['font-backup'] : '';
+				$property_value = $this->process_property_value( $property, array(
+					$value['font-family'],
+					$value['font-backup'],
+				) );
+			}
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
 		}
 	}
 }
