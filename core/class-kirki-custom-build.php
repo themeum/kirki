@@ -41,7 +41,7 @@ class Kirki_Custom_Build {
 	 * @access public
 	 * @since 3.0.0
 	 */
-	public function __construcr() {
+	public function __construct() {
 		if ( ! self::is_custom_build() ) {
 			return;
 		}
