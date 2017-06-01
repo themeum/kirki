@@ -49,12 +49,22 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
+
+		Kirki_Custom_Build::register_dependency( 'jquery' );
+		Kirki_Custom_Build::register_dependency( 'customize-base' );
+		Kirki_Custom_Build::register_dependency( 'select2' );
+		Kirki_Custom_Build::register_dependency( 'jquery-ui-sortable' );
+
+		$script_to_localize = 'kirki-build';
+		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+			$script_to_localize = 'kirki-fontawesome';
+			wp_enqueue_script( 'kirki-fontawesome', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
+			wp_enqueue_style( 'kirki-fontawesome-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.css', null );
+			wp_enqueue_style( 'kirki-fontawesome-font-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/font-awesome.css', null );
+		}
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), false, true );
 		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
-		wp_enqueue_script( 'kirki-fontawesome', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
-		wp_localize_script( 'kirki-fontawesome', 'fontAwesomeJSON', file_get_contents( Kirki::$path . '/controls/fontawesome/fontawesome.json' ) );
-		wp_enqueue_style( 'kirki-fontawesome-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.css', null );
-		wp_enqueue_style( 'kirki-fontawesome-font-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/font-awesome.css', null );
+		wp_localize_script( $script_to_localize, 'fontAwesomeJSON', file_get_contents( Kirki::$path . '/controls/fontawesome/fontawesome.json' ) );
 	}
 
 	/**

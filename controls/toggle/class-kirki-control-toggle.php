@@ -49,8 +49,14 @@ class Kirki_Control_Toggle extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-toggle', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_style( 'kirki-toggle-css', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.css', null );
+
+		Kirki_Custom_Build::register_dependency( 'jquery' );
+		Kirki_Custom_Build::register_dependency( 'customize-base' );
+
+		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+			wp_enqueue_script( 'kirki-toggle', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.js', array( 'jquery', 'customize-base' ), false, true );
+			wp_enqueue_style( 'kirki-toggle-css', trailingslashit( Kirki::$url ) . 'controls/toggle/toggle.css', null );
+		}
 	}
 
 	/**

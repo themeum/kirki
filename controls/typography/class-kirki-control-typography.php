@@ -105,23 +105,34 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
+		Kirki_Custom_Build::register_dependency( 'jquery' );
+		Kirki_Custom_Build::register_dependency( 'customize-base' );
+		Kirki_Custom_Build::register_dependency( 'select2' );
+		Kirki_Custom_Build::register_dependency( 'wp-color-picker-alpha' );
+
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
+		wp_enqueue_style( 'wp-color-picker' );
+
+		$script_to_localize = 'kirki-build';
+		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+			$script_to_localize = 'kirki-typography';
+			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
+			wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
+		}
+
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), false, true );
 		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
+
 		$custom_fonts_array = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
 		$localize_script_var_name = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';
 		wp_localize_script(
-			'kirki-typography',
+			$script_to_localize,
 			$localize_script_var_name,
 			array(
 				'standard' => $this->get_standard_fonts(),
 				'google'   => $this->get_google_fonts(),
 			)
 		);
-
-		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 
 	}
 

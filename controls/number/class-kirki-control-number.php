@@ -57,9 +57,19 @@ class Kirki_Control_Number extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
-		wp_localize_script( 'kirki-number', 'numberKirkiL10n', $this->l10n() );
-		wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
+
+		Kirki_Custom_Build::register_dependency( 'jquery' );
+		Kirki_Custom_Build::register_dependency( 'customize-base' );
+		Kirki_Custom_Build::register_dependency( 'jquery-ui-spinner' );
+		Kirki_Custom_Build::register_dependency( 'jquery-ui-button' );
+
+		$script_to_localize = 'kirki-build';
+		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+			$script_to_localize = 'kirki-number';
+			wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
+			wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
+		}
+		wp_localize_script( $script_to_localize, 'numberKirkiL10n', $this->l10n() );
 	}
 
 	/**
