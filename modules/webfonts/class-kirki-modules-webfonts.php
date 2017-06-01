@@ -73,10 +73,20 @@ class Kirki_Modules_Webfonts {
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
 
+		add_action( 'after_setup_theme', array( $this, 'run' ) );
+
+	}
+
+	/**
+	 * Run on after_setup_theme.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 */
+	public function run() {
 		$this->fonts_google = Kirki_Fonts_Google::get_instance();
 		$this->maybe_fallback_to_link();
 		$this->init();
-
 	}
 
 	/**
