@@ -33,6 +33,8 @@ class Kirki_Init {
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 		add_filter( 'acf/settings/select2_version', array( $this, 'acf_select2_version' ), 99 );
+
+		new Kirki_Custom_Build();
 	}
 
 	/**
