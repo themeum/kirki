@@ -305,7 +305,7 @@ class Kirki_Modules_PostMessage {
 			}
 			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
 
-			if ( ! isset( $args['choice'] ) || 'font-family' === $args['choice'] ) {
+			if ( 'font-family' === $property || ( isset( $args['choice'] ) && 'font-family' === $args['choice'] ) ) {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var = 'fontFamilyCSS';
 			}
