@@ -48,7 +48,11 @@ class Kirki_Field_Image_Array extends Kirki_Field {
 	 */
 	public function sanitize( $value ) {
 
-		return $value;
-
+		return array(
+			'id'     => ( isset( $value['id'] && '' !== $value['id'] ) ) ? (int) $value['id'] : '',
+			'url'    => ( isset( $value['url'] && '' !== $value['url'] ) ) ? esc_url_raw( $value['url'] ) : '',
+			'width'  => ( isset( $value['width'] && '' !== $value['width'] ) ) ? (int) $value['width'] : '',
+			'height' => ( isset( $value['height'] && '' !== $value['height'] ) ) ? (int) $value['height'] : '',
+		)
 	}
 }
