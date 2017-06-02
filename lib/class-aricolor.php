@@ -396,7 +396,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 			}
 			// Perhaps we're using a word like "orange"?
 			$wordcolors = $this->get_word_colors();
-			if ( array_key_exists( $color, $wordcolors ) ) {
+			if ( is_string( $color ) && array_key_exists( $color, $wordcolors ) ) {
 				$this->color = '#' . $wordcolors[ $color ];
 				return 'hex';
 			}
@@ -418,7 +418,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 			}
 			// Is this perhaps a word-color?
 			$word_colors = $this->get_word_colors();
-			if ( array_key_exists( $this->color, $word_colors ) ) {
+			if ( is_string( $this->color ) && array_key_exists( $this->color, $word_colors ) ) {
 				$this->color = '#' . $word_colors[ $this->color ];
 			}
 			// Sanitize color.
