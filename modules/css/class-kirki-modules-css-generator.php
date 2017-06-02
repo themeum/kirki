@@ -167,7 +167,6 @@ final class Kirki_Modules_CSS_Generator {
 		$field_output_classes = apply_filters( "kirki/{$field['kirki_config']}/output/control-classnames", array(
 			'kirki-background'  => 'Kirki_Output_Field_Background',
 			'kirki-dimensions'  => 'Kirki_Output_Field_Dimensions',
-			'kirki-image-array' => 'Kirki_Output_Field_Image_Array',
 			'kirki-typography'  => 'Kirki_Output_Field_Typography',
 			'kirki-multicolor'  => 'Kirki_Output_Field_Multicolor',
 		) );
