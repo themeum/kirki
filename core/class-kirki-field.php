@@ -768,7 +768,7 @@ class Kirki_Field {
 				}
 
 				// If there's a sanitize_callback defined skip this, unless we also have a js_callback defined.
-				if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) && ( ! isset( $output['js_callback'] ) || empty( $output['js_callback'] ) ) ) {
+				if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) && ! isset( $output['js_callback'] ) ) {
 					continue;
 				}
 

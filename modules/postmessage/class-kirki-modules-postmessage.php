@@ -175,7 +175,7 @@ class Kirki_Modules_PostMessage {
 		$args = $this->get_args( $args );
 
 		// Apply callback to the value if a callback is defined.
-		if ( ! empty( $args['js_callback'][0] ) ) {
+		if ( ! empty( $args['js_callback'] ) && is_array( $args['js_callback'] ) && isset( $args['js_callback'][0] ) && ! empty( $args['js_callback'][0] ) ) {
 			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
 		}
 
@@ -225,7 +225,7 @@ class Kirki_Modules_PostMessage {
 		$args = $this->get_args( $args );
 
 		// Apply callback to the value if a callback is defined.
-		if ( ! empty( $args['js_callback'][0] ) ) {
+		if ( ! empty( $args['js_callback'] ) && is_array( $args['js_callback'] ) && isset( $args['js_callback'][0] ) && ! empty( $args['js_callback'][0] ) ) {
 			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
 		}
 		$script .= '_.each(' . $value_key . ', function(subValue,subKey){';
