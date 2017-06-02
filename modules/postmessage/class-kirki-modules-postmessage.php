@@ -309,6 +309,13 @@ class Kirki_Modules_PostMessage {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var = 'fontFamilyCSS';
 			}
+			
+			if ( isset( $args['element'] ) && is_array( $args['element'] ) ) {
+				$args['element'] = array_unique( $args['element'] );
+				sort( $args['element'] );
+				$args['element'] = implode( ',', $args['element'] );
+			}
+			
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 
