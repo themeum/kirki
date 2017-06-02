@@ -106,6 +106,16 @@ class Kirki_Modules_PostMessage {
 		);
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
+
+			if ( isset( $js_var['element'] ) ) {
+				// Array to string.
+				if ( is_array( $js_var['element'] ) ) {
+					$js_var['element'] = array_unique( $js_var['element'] );
+					$js_var['element'] = implode( ',', $js_var['element'] );
+				}
+				// Replace single quotes with double quotes to avoid issues with the compiled JS.
+				$js_var['element'] = str_replace( '\'', '"', $js_var['element'] );
+			}
 			if ( isset( $js_var['function'] ) && 'html' === $js_var['function'] ) {
 				$script .= $this->script_html_var( $js_var );
 				continue;
