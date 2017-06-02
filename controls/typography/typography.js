@@ -116,7 +116,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		});
 
 		// Set the initial value.
-		fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
+		if ( value['font-family'] ) {
+			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
+		}
 
 		// When the value changes
 		fontSelect.on( 'change', function() {
@@ -323,7 +325,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		var variants = false;
 		_.each( fonts.standard, function( font ) {
-			if ( font.family === fontFamily.replace( /'/g, '"' ) ) {
+			if ( fontFamily && font.family === fontFamily.replace( /'/g, '"' ) ) {
 				variants = font.variants;
 				return font.variants;
 			}
