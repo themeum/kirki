@@ -333,6 +333,21 @@ class Kirki_Modules_PostMessage {
 	}
 
 	/**
+	 * Processes script generation for typography fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 */
+	protected function script_var_image_array( $args ) {
+		$return = $this->script_var( $args );
+		return array(
+			'script' => 'newval=(!_.isUndefined(newval.url))?newval.url:newval;' . $return['script'],
+			'css'    => $return['css'],
+		);
+	}
+
+	/**
 	 * Adds anything we need before the main script.
 	 *
 	 * @access private
@@ -447,6 +462,9 @@ class Kirki_Modules_PostMessage {
 				break;
 			case 'kirki-typography':
 				$callback = array( $this, 'script_var_typography' );
+				break;
+			case 'kirki-image-array':
+				$callback = array( $this, 'script_var_image_array' );
 				break;
 			default:
 				$callback = array( $this, 'script_var' );
