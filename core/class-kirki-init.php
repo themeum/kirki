@@ -114,6 +114,7 @@ class Kirki_Init {
 			'kirki-editor'          => 'Kirki_Control_Editor',
 			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
 			'kirki-gradient'        => 'Kirki_Control_Gradient',
+			'kirki-image-array'     => 'Kirki_Control_Image_Array',
 			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
 			'kirki-number'          => 'Kirki_Control_Number',
