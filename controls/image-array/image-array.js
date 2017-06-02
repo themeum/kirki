@@ -11,10 +11,6 @@ wp.customize.controlConstructor['kirki-image-array'] = wp.customize.Control.exte
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
 					    previewImage   = uploadedImage.toJSON().sizes.full.url,
-					    imageUrl,
-					    imageID,
-					    imageWidth,
-					    imageHeight,
 					    preview,
 					    removeButton;
 
@@ -24,15 +20,10 @@ wp.customize.controlConstructor['kirki-image-array'] = wp.customize.Control.exte
 						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
 					}
 
-					imageUrl    = uploadedImage.toJSON().sizes.full.url;
-					imageID     = uploadedImage.toJSON().id;
-					imageWidth  = uploadedImage.toJSON().width;
-					imageHeight = uploadedImage.toJSON().height;
-
-					control.saveValue( 'id', imageID );
-					control.saveValue( 'url', imageUrl );
-					control.saveValue( 'width', imageWidth );
-					control.saveValue( 'height', imageHeight );
+					control.saveValue( 'id', uploadedImage.toJSON().id );
+					control.saveValue( 'url', uploadedImage.toJSON().sizes.full.url );
+					control.saveValue( 'width', uploadedImage.toJSON().width );
+					control.saveValue( 'height', uploadedImage.toJSON().height );
 
 					preview      = control.container.find( '.placeholder, .thumbnail' );
 					removeButton = control.container.find( '.image-array-image-upload-remove-button' );
