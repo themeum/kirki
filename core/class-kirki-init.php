@@ -323,10 +323,8 @@ class Kirki_Init {
 	 * @see https://github.com/aristath/kirki/issues/1302
 	 * @access public
 	 * @since 3.0.0
-	 * @param string $ver The Select2 script version.
-	 * @return int
 	 */
-	public function acf_pro_compatibility( $ver ) {
+	public function acf_pro_compatibility() {
 		if ( is_customize_preview() ) {
 			add_filter( 'acf/settings/enqueue_select2', '__return_false', 99 );
 		}
