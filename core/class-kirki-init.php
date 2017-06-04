@@ -32,7 +32,7 @@ class Kirki_Init {
 		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
-		add_filter( 'acf/settings/select2_version', array( $this, 'acf_select2_version' ), 99 );
+		add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) );
 
 		new Kirki_Custom_Build();
 	}
@@ -326,11 +326,10 @@ class Kirki_Init {
 	 * @param string $ver The Select2 script version.
 	 * @return int
 	 */
-	public function acf_select2_version( $ver ) {
+	public function acf_pro_compatibility( $ver ) {
 		if ( is_customize_preview() ) {
-			return 4;
+			add_filter( 'acf/settings/enqueue_select2', '__return_false', 99 );
 		}
-		return $ver;
 	}
 
 	/**
