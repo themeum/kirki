@@ -430,6 +430,10 @@ class Kirki_Modules_PostMessage {
 	private function value_pattern_replacements( $value, $js_vars ) {
 		$script = '';
 		$alias  = $value;
+		if ( ! isset( $js_vars['value_pattern'] ) ) {
+			return $value;
+		}
+		$value = $js_vars['value_pattern'];
 		if ( isset( $js_vars['pattern_replace'] ) ) {
 			$script .= 'settings=window.wp.customize.get();';
 			foreach ( $js_vars['pattern_replace'] as $search => $replace ) {
@@ -440,6 +444,7 @@ class Kirki_Modules_PostMessage {
 		}
 		$value_compiled = str_replace( '$', '\'+' . $alias . '+\'', $value );
 		$value_compiled = trim( $value_compiled, '+' );
+
 		return $script . $alias . '=\'' . $value_compiled . '\';';
 	}
 
