@@ -123,7 +123,9 @@ class Kirki_Field_Typography extends Kirki_Field {
 		}
 
 		// Use 'regular' instead of 400 for font-variant.
-		$value['variant'] = ( 400 === $value['variant'] || '400' === $value['variant'] ) ? 'regular' : $value['variant'];
+		if ( isset( $value['variant'] ) ) {
+			$value['variant'] = ( 400 === $value['variant'] || '400' === $value['variant'] ) ? 'regular' : $value['variant'];
+		}
 
 		// Get font-weight from variant.
 		if ( ! isset( $value['font-weight'] ) && isset( $value['variant'] ) ) {
