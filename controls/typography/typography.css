@@ -12,6 +12,7 @@
   .customize-control-kirki-typography .wrapper .line-height,
   .customize-control-kirki-typography .wrapper .subsets,
   .customize-control-kirki-typography .wrapper .variant,
+  .customize-control-kirki-typography .wrapper .text-transform,
   .customize-control-kirki-typography .wrapper .margin-top,
   .customize-control-kirki-typography .wrapper .margin-bottom {
     width: 100%;
@@ -25,12 +26,14 @@
     .customize-control-kirki-typography .wrapper .line-height h5,
     .customize-control-kirki-typography .wrapper .subsets h5,
     .customize-control-kirki-typography .wrapper .variant h5,
+    .customize-control-kirki-typography .wrapper .text-transform h5,
     .customize-control-kirki-typography .wrapper .margin-top h5,
     .customize-control-kirki-typography .wrapper .margin-bottom h5 {
       margin: 0.67em 0 0; }
   .customize-control-kirki-typography .wrapper .font-size,
   .customize-control-kirki-typography .wrapper .letter-spacing,
   .customize-control-kirki-typography .wrapper .line-height,
+  .customize-control-kirki-typography .wrapper .text-transform,
   .customize-control-kirki-typography .wrapper .margin-top,
   .customize-control-kirki-typography .wrapper .margin-bottom {
     width: 48%; }

@@ -114,7 +114,7 @@ class Kirki_Init {
 			'kirki-editor'          => 'Kirki_Control_Editor',
 			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
 			'kirki-gradient'        => 'Kirki_Control_Gradient',
-			'kirki-image-array'     => 'Kirki_Control_Image_Array',
+			'kirki-image'           => 'Kirki_Control_Image',
 			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
 			'kirki-number'          => 'Kirki_Control_Number',
@@ -132,7 +132,7 @@ class Kirki_Init {
 			'kirki-generic'         => 'Kirki_Control_Generic',
 			'kirki-toggle'          => 'Kirki_Control_Toggle',
 			'kirki-typography'      => 'Kirki_Control_Typography',
-			'image'                 => 'WP_Customize_Image_Control',
+			'image'                 => 'Kirki_Control_Image',
 			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
 			'upload'                => 'WP_Customize_Upload_Control',
 		);

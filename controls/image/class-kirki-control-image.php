@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Control: image-array.
+ * Customizer Control: image.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -10,9 +10,9 @@
  */
 
 /**
- * Adds the image-array control.
+ * Adds the image control.
  */
-class Kirki_Control_Image_Array extends WP_Customize_Control {
+class Kirki_Control_Image extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -20,7 +20,7 @@ class Kirki_Control_Image_Array extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-image-array';
+	public $type = 'kirki-image';
 
 	/**
 	 * Used to automatically generate all CSS output.
@@ -48,8 +48,8 @@ class Kirki_Control_Image_Array extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'jquery' );
 
 		if ( ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-image-array', trailingslashit( Kirki::$url ) . 'controls/image-array/image-array.js', array( 'jquery', 'customize-base' ) );
-			wp_enqueue_style( 'kirki-image-array', trailingslashit( Kirki::$url ) . 'controls/image-array/image-array.css', null );
+			wp_enqueue_script( 'kirki-image', trailingslashit( Kirki::$url ) . 'controls/image/image.js', array( 'jquery', 'customize-base' ) );
+			wp_enqueue_style( 'kirki-image', trailingslashit( Kirki::$url ) . 'controls/image/image.css', null );
 		}
 	}
 
@@ -106,7 +106,7 @@ class Kirki_Control_Image_Array extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 		</label>
-		<div class="image-array-wrapper attachment-media-view image-array-image-upload">
+		<div class="image-wrapper attachment-media-view image-upload">
 			<# if ( data.value['url'] ) { #>
 				<div class="thumbnail thumbnail-image">
 					<img src="{{ data.value['url'] }}" alt="" />
@@ -117,15 +117,17 @@ class Kirki_Control_Image_Array extends WP_Customize_Control {
 				</div>
 			<# } #>
 			<div class="actions">
-				<button class="button image-array-image-upload-remove-button<# if ( ! data.value['url'] ) { #> hidden <# } #>">
+				<button class="button image-upload-remove-button<# if ( ! data.value['url'] ) { #> hidden <# } #>">
 					{{ data.l10n['remove'] }}
 				</button>
-				<button type="button" class="button image-array-image-upload-button">
+				<button type="button" class="button image-upload-button">
 					{{ data.l10n['select-file'] }}
 				</button>
 			</div>
 		</div>
-		<input class="image-array-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
+		<# value = ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) && 'array' === data.choices.save_as ) ? JSON.stringify( data.value ) : data.value; #>
+
+		<input class="image-hidden-value" type="hidden" value='{{{ value }}}' {{{ data.link }}}>
 		<?php
 	}
 
