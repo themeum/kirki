@@ -51,6 +51,17 @@ module.exports = function( grunt ) {
 					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
 					'controls/typography/typography.css':           'controls/typography/typography.scss'
 				}
+			},
+
+			customBuild: {
+				dist: {
+					options: {
+						style: 'compressed'
+					},
+					files: {
+						'build.css': 'build.scss'
+					}
+				}
 			}
 		},
 
@@ -111,6 +122,17 @@ module.exports = function( grunt ) {
 				],
 				tasks: ['jscs']
 			}
+		},
+
+		uglify: {
+			options: {
+				mangle: false
+			},
+			customBuild: {
+				files: {
+					'build.min.js': ['build.js']
+				}
+			}
 		}
 	});
 
@@ -124,9 +146,10 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
-	grunt.registerTask( 'default', ['sass', 'curl:google-fonts-source', 'json2php', 'clean', 'wp_readme_to_markdown'] );
+	grunt.registerTask( 'default', ['sass:dist', 'curl:google-fonts-source', 'json2php', 'clean', 'wp_readme_to_markdown'] );
 	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'customBuild', ['sass:customBuild', 'uglify:customBuild'] );
 
 };
