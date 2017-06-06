@@ -6,6 +6,20 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
+		    section = control.section.get();
+
+		jQuery( '#accordion-section-' + section ).on( 'click', function() {
+			control.initKirkiControl();
+		});
+
+		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
+			control.initKirkiControl();
+		}
+	},
+
+	initKirkiControl: function() {
+		var control = this,
+		    section = control.section.get(),
 		    picker  = this.container.find( '.kirki-color-control' ),
 		    clear;
 
@@ -32,9 +46,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 				}, 100 );
 
 			}
-
 		});
-
 	}
 
 });

@@ -312,7 +312,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# if ( data.default['color'] ) { #>
 				<div class="color">
 					<h5>{{ data.l10n['color'] }}</h5>
-					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control color-picker" {{{ data.link }}} />
+					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control" {{{ data.link }}} />
 				</div>
 			<# } #>
 

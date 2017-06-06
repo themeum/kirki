@@ -124,7 +124,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 			<!-- background-color -->
 			<div class="background-color">
 				<h4>{{ data.l10n['background-color'] }}</h4>
-				<input type="text" data-default-color="{{ data.default['background-color'] }}" data-alpha="true" value="{{ data.value['background-color'] }}" class="kirki-color-control color-picker"/>
+				<input type="text" data-default-color="{{ data.default['background-color'] }}" data-alpha="true" value="{{ data.value['background-color'] }}" class="kirki-color-control"/>
 			</div>
 
 			<!-- background-image -->
