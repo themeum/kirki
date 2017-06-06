@@ -80,7 +80,25 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 };
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
+
+	// When we're finished loading continue processing
 	ready: function() {
+
+		'use strict';
+
+		var control = this,
+		    section = control.section.get();
+
+		jQuery( '#accordion-section-' + section ).on( 'click', function() {
+			control.initKirkiControl();
+		});
+
+		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
+			control.initKirkiControl();
+		}
+	},
+
+	initKirkiControl: function() {
 
 		'use strict';
 

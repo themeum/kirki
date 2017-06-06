@@ -5,6 +5,22 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 		'use strict';
 
+		var control = this,
+		    section = control.section.get();
+
+		jQuery( '#accordion-section-' + section ).on( 'click', function() {
+			control.initKirkiControl();
+		});
+
+		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
+			control.initKirkiControl();
+		}
+	},
+
+	initKirkiControl: function() {
+
+		'use strict';
+
 		var control  = this,
 		    element  = control.container.find( '.kirki-codemirror-editor' ),
 		    language = ( 'html' === control.params.choices.language ) ? { name: 'htmlmixed' } : control.params.choices.language,

@@ -5,6 +5,22 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 		'use strict';
 
+		var control = this,
+		    section = control.section.get();
+
+		jQuery( '#accordion-section-' + section ).on( 'click', function() {
+			control.initKirkiControl();
+		});
+
+		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
+			control.initKirkiControl();
+		}
+	},
+
+	initKirkiControl: function() {
+
+		'use strict';
+
 		var control        = this,
 		    value          = control.getValue(),
 		    pickerStart    = control.container.find( '.kirki-gradient-control-start' ),
