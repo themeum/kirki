@@ -165,7 +165,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		'use strict';
 
 		var control   = this,
-		    input     = jQuery( '#customize-control-' + control.id + ' .background-hidden-value' ),
+		    input     = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
 		    valueJSON = jQuery( input ).val(),
 		    valueObj  = JSON.parse( valueJSON );
 
