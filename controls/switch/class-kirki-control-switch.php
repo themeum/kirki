@@ -101,19 +101,6 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<style>
-		<# var cssID = data.id.replace( '[', '-' ).replace( ']', '' ); #>
-		#customize-control-{{ cssID }} .switch label {
-			width: calc({{ data.choices['on'].length }}ch + {{ data.choices['off'].length }}ch + 40px);
-		}
-		#customize-control-{{ cssID }} .switch label:after {
-			width: calc({{ data.choices['on'].length }}ch + 10px);
-		}
-		#customize-control-{{ cssID }} .switch input:checked + label:after {
-			left: calc({{ data.choices['on'].length }}ch + 25px);
-			width: calc({{ data.choices['off'].length }}ch + 10px);
-		}
-		</style>
 		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">
 				{{{ data.label }}}
