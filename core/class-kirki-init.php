@@ -34,6 +34,8 @@ class Kirki_Init {
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 		add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) );
 
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 999 );
+
 		new Kirki_Custom_Build();
 	}
 
@@ -328,6 +330,16 @@ class Kirki_Init {
 		if ( is_customize_preview() ) {
 			add_filter( 'acf/settings/enqueue_select2', '__return_false', 99 );
 		}
+	}
+
+	/**
+	 * Enqueues extra scripts on customize_controls_enqueue_scripts.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 */
+	public function customize_controls_enqueue_scripts() {
+		wp_enqueue_script( 'kirki', trailingslashit( Kirki::$url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-base') );
 	}
 
 	/**

@@ -45,7 +45,7 @@ class Kirki_Custom_Build {
 		if ( ! self::is_custom_build() ) {
 			return;
 		}
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 999 );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 500 );
 	}
 
 	/**
