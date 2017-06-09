@@ -53,7 +53,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		}
 
 		// Run if force-loading and not busy.
-		if ( true === forceLoad || window.kirkiControlsLoader.busy === false ) {
+		if ( true === forceLoad || false === window.kirkiControlsLoader.busy ) {
 
 			// Set to busy.
 			window.kirkiControlsLoader.busy = true;

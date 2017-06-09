@@ -54,7 +54,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.exte
 		}
 
 		// Run if force-loading and not busy.
-		if ( true === forceLoad || window.kirkiControlsLoader.busy === false ) {
+		if ( true === forceLoad || false === window.kirkiControlsLoader.busy ) {
 
 			// Set to busy.
 			window.kirkiControlsLoader.busy = true;
