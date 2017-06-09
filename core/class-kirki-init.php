@@ -339,7 +339,7 @@ class Kirki_Init {
 	 * @since 3.0.0
 	 */
 	public function customize_controls_enqueue_scripts() {
-		wp_enqueue_script( 'kirki', trailingslashit( Kirki::$url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-base') );
+		wp_enqueue_script( 'kirki', trailingslashit( Kirki::$url ) . 'assets/js/customizer.js', array( 'jquery', 'customize-base' ) );
 	}
 
 	/**
