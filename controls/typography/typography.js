@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 30 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

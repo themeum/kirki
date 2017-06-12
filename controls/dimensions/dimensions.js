@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 3 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

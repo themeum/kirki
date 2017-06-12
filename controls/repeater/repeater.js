@@ -90,7 +90,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 150 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

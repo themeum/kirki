@@ -10,7 +10,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 10 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

@@ -1,5 +1,5 @@
 // Add control to a queue and load when the time is right.
-function kirkiControlLoader( control, waitTime, forceLoad ) {
+function kirkiControlLoader( control, forceLoad ) {
 	var i;
 
 	if ( _.isUndefined( window.kirkiControlsLoader ) ) {
@@ -22,9 +22,9 @@ function kirkiControlLoader( control, waitTime, forceLoad ) {
 
 	// If we're busy check back again later.
 	if ( true === window.kirkiControlsLoader.busy ) {
-		setTimeout( function() {
-			kirkiControlLoader( control, waitTime, forceLoad );
-		}, waitTime );
+		_.defer( function() {
+			kirkiControlLoader( control, forceLoad );
+		} );
 		return;
 	}
 
@@ -44,13 +44,13 @@ function kirkiControlLoader( control, waitTime, forceLoad ) {
 		window.kirkiControlsLoader.queue.splice( i, 1 );
 
 		// Set busy to false after waitTime has passed.
-		setTimeout( function() {
+		_.defer( function() {
 			window.kirkiControlsLoader.busy = false;
-		}, waitTime );
+		} );
 		return;
 	}
 
 	if ( control.id === window.kirkiControlsLoader.queue[0] ) {
-		kirkiControlLoader( control, waitTime, true );
+		kirkiControlLoader( control, true );
 	}
 }

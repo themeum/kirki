@@ -10,7 +10,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.exte
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 15 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

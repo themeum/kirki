@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.Control.ex
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 0 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

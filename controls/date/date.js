@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.Control.extend({
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 50 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 50 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {

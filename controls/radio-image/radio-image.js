@@ -9,7 +9,7 @@ wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.Control.exte
 		    section = control.section.get();
 
 		// Add to the queue.
-		kirkiControlLoader( control, 0 );
+		kirkiControlLoader( control );
 	},
 
 	initKirkiControl: function() {
