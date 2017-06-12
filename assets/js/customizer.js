@@ -10,6 +10,14 @@ function kirkiControlLoader( control, forceLoad ) {
 		};
 	}
 
+	// Init the control JS.
+	// WIP: THIS IS HERE UNTIL WE RESOLVE THE LOADER ISSUES.
+	// AFTER THAT POINT IT CAN BE REMOVED.
+	control.initKirkiControl();
+	jQuery( control.container.find( '.kirki-controls-loading-spinner' ) ).hide();
+	return;
+
+	/* WIP
 	// No need to proceed if this control has already been initialized.
 	if ( -1 !== window.kirkiControlsLoader.done.indexOf( control.id ) ) {
 		return;
@@ -53,4 +61,5 @@ function kirkiControlLoader( control, forceLoad ) {
 	if ( control.id === window.kirkiControlsLoader.queue[0] ) {
 		kirkiControlLoader( control, true );
 	}
+	*/
 }
