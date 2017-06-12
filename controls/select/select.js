@@ -9,14 +9,6 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 		var control = this,
 		    section = control.section.get();
 
-		// Force-load the control if we open the section.
-		jQuery( '#accordion-section-' + section ).on( 'click', function() {
-			control.initKirkiControl();
-		});
-		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
-			control.initKirkiControl();
-		}
-
 		// Add to the queue.
 		control.kirkiLoader();
 	},
@@ -24,7 +16,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 	// Add control to a queue and load when the time is right.
 	kirkiLoader: function( forceLoad ) {
 		var control  = this,
-		    waitTime = 100,
+		    waitTime = 30,
 		    i;
 
 		if ( _.isUndefined( window.kirkiControlsLoader ) ) {

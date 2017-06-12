@@ -8,14 +8,6 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 		var control = this,
 		    section = control.section.get();
 
-		// Force-load the control if we open the section.
-		jQuery( '#accordion-section-' + section ).on( 'click', function() {
-			control.initKirkiControl();
-		});
-		if ( jQuery( '#sub-accordion-section-' + section ).hasClass( 'open' ) ) {
-			control.initKirkiControl();
-		}
-
 		// Add to the queue.
 		control.kirkiLoader();
 	},
