@@ -269,6 +269,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 */
 	protected function render_content() {
 		?>
+		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>

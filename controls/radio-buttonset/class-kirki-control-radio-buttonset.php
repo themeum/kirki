@@ -97,6 +97,7 @@ class Kirki_Control_Radio_Buttonset extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
+		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{{ data.label }}}</span>
 		<# } #>

@@ -98,6 +98,7 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
+		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# saveAs = ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) && 'array' === data.choices.save_as ) ? 'array' : url; #>
 		<# url = ( 'array' === saveAs && data.value['url'] ) ? data.value['url'] : data.value; #>
 		<label>

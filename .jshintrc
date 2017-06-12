@@ -45,6 +45,8 @@
 		"collapsible": false,
 		"kirkiFieldsSearch": false,
 		"Fuse": false,
-		"fontAwesomeJSON": false
+		"fontAwesomeJSON": false,
+		"kirkiControlLoader": false,
+		"module": false
 	}
 }

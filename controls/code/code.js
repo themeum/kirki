@@ -15,7 +15,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 	// Add control to a queue and load when the time is right.
 	kirkiLoader: function( forceLoad ) {
 		var control  = this,
-			waitTime = 10,
+			waitTime = 100,
 			i;
 
 		if ( _.isUndefined( window.kirkiControlsLoader ) ) {
@@ -52,6 +52,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 			// Init the control JS.
 			control.initKirkiControl();
+			jQuery( control.container.find( '.kirki-controls-loading-spinner' ) ).hide();
 
 			// Mark as done and remove from queue.
 			window.kirkiControlsLoader.done.push( control.id );
