@@ -15,7 +15,7 @@ wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.Control.exte
 	// Add control to a queue and load when the time is right.
 	kirkiLoader: function( forceLoad ) {
 		var control  = this,
-		    waitTime = 30,
+		    waitTime = 10,
 		    i;
 
 		if ( _.isUndefined( window.kirkiControlsLoader ) ) {

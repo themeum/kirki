@@ -96,7 +96,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 	// Add control to a queue and load when the time is right.
 	kirkiLoader: function( forceLoad ) {
 		var control  = this,
-		    waitTime = 30,
+		    waitTime = 10,
 		    i;
 
 		if ( _.isUndefined( window.kirkiControlsLoader ) ) {
