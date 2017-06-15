@@ -120,10 +120,10 @@ final class Kirki_Modules_Webfonts_Embed {
 		$transient_name = 'kirki_googlefonts_contents_' . md5( $url );
 
 		// Get the transient value.
-		$html = get_transient( $transient_name );
+		$data = get_transient( $transient_name );
 
 		// Check for transient, if none, grab remote HTML file.
-		if ( false === $html ) {
+		if ( false === $data ) {
 
 			// Get remote HTML file.
 			$response = wp_remote_get( $url );
@@ -154,7 +154,7 @@ final class Kirki_Modules_Webfonts_Embed {
 			set_transient( 'kirki_googlefonts_fallback_to_link', 'no', DAY_IN_SECONDS );
 		}
 
-		return $html;
+		return $data;
 
 	}
 }
