@@ -80,7 +80,7 @@ final class Kirki_Modules_Webfonts_Embed {
 	public function embed_css( $css ) {
 
 		// Go through our fields and populate $this->fonts.
-		$this->webfonts->loop_fields();
+		$this->webfonts->loop_fields( $this->config_id );
 
 		$this->googlefonts->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->googlefonts->fonts );
 
