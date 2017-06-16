@@ -59,7 +59,7 @@ class Kirki_Init {
 		}
 
 		// If Kirki is installed as a plugin, use that for the URL.
-		if ( $this->is_plugin() ) {
+		if ( self::is_plugin() ) {
 			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
 		}
 
