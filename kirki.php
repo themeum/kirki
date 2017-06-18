@@ -87,3 +87,6 @@ if ( file_exists( $custom_config_path ) ) {
 
 // Add upgrade notifications.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
+
+// Handle localization when kirki is included in a theme.
+include_once wp_normalize_path( dirname( __FILE__ ) . '/l10n.php' );

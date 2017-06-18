@@ -373,16 +373,13 @@ class Kirki_Init {
 		}
 
 		// Extra logic in case the plugin is installed but not activated.
-		if ( is_customize_preview() ) {
+		// Make sure the is_plugins_loaded function is loaded.
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
 
-			// Make sure the is_plugins_loaded function is loaded.
-			if ( ! function_exists( 'is_plugin_active' ) ) {
-				include_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
-
-			if ( $_plugin && ! is_plugin_active( $_plugin ) ) {
-				return false;
-			}
+		if ( $_plugin && ! is_plugin_active( $_plugin ) ) {
+			return false;
 		}
 		return $is_plugin;
 	}
