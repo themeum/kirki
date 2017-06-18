@@ -174,6 +174,7 @@ class Kirki_Modules_Webfonts {
 	 * Goes through all our fields and then populates the $this->fonts property.
 	 *
 	 * @access public
+	 * @param string $config_id The config-ID.
 	 */
 	public function loop_fields( $config_id ) {
 		foreach ( Kirki::$fields as $field ) {

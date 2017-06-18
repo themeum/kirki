@@ -39,6 +39,7 @@ if ( ! function_exists( 'kirki_override_load_textdomain' ) ) {
 			// If the theme's textdomain is loaded, assign the theme's translations
 			// to the "kirki" textdomain.
 			if ( isset( $l10n[ $theme_textdomain ] ) ) {
+				// @codingStandardsIgnoreLine
 				$l10n[ $domain ] = $l10n[ $theme_textdomain ];
 			}
 
