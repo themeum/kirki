@@ -60,5 +60,6 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 		if ( false !== strpos( $family, ' ' ) && false === strpos( $family, '"' ) ) {
 			$this->value = '"' . $family . '"';
 		}
+		$this->value = html_entity_decode( $family, ENT_QUOTES );
 	}
 }
