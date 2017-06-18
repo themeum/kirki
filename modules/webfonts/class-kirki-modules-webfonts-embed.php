@@ -67,6 +67,17 @@ final class Kirki_Modules_Webfonts_Embed {
 		$this->googlefonts = $googlefonts;
 
 		add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'inline_css' ), 999 );
+	}
+
+	/**
+	 * Adds inline css.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 */
+	public function inline_css() {
+		wp_add_inline_style( 'kirki-styles', $this->embed_css() );
 	}
 
 	/**
@@ -77,7 +88,7 @@ final class Kirki_Modules_Webfonts_Embed {
 	 * @param string $css The original CSS.
 	 * @return string     The modified CSS.
 	 */
-	public function embed_css( $css ) {
+	public function embed_css( $css = '' ) {
 
 		// Go through our fields and populate $this->fonts.
 		$this->webfonts->loop_fields( $this->config_id );
