@@ -781,3 +781,9 @@ May 26, 2014
 May 9, 2014
 
 * Initial version
+
+## Upgrade Notice ##
+
+### 3.0.0 ###
+
+This is a major update, please keep a backup of your files and database before updating.
