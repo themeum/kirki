@@ -78,6 +78,7 @@ This is a major release. Many things have been refactored and optimized. Please 
 * Fix: Default dimension value does not process well percent units [#1254](https://github.com/aristath/kirki/issues/1254), [#497](https://github.com/aristath/kirki/issues/497)
 * Fix: Editor field issue with RTL languages [#340](https://github.com/aristath/kirki/issues/340)
 * Fix: Windows Server Issues [#1318](https://github.com/aristath/kirki/issues/1318)
+* New: Added code to automatically handle translations when Kirki is embedded in a theme [#1381](https://github.com/aristath/kirki/issues/1381)
 * New: Automating postMessage for composite fields. [#694](https://github.com/aristath/kirki/issues/694)
 * New: OR logic in field dependencies. [#839](https://github.com/aristath/kirki/issues/839)
 * New: Radio-image labels. [#1090](https://github.com/aristath/kirki/issues/1090), [#1220](https://github.com/aristath/kirki/issues/1220)
