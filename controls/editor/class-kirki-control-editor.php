@@ -54,15 +54,6 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * The translation strings.
-	 *
-	 * @access protected
-	 * @since 2.3.5
-	 * @var array
-	 */
-	protected $l10n = array();
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -78,7 +69,11 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 			wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base' ), false, true );
 			wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
 		}
-		wp_localize_script( $script_to_localize, 'editorKirkiL10n', $this->l10n() );
+		wp_localize_script( $script_to_localize, 'editorKirkiL10n', array(
+			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
+			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
+			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),
+		) );
 	}
 
 	/**
@@ -98,7 +93,6 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
-		$this->json['l10n']    = $this->l10n();
 
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
@@ -137,20 +131,5 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @return string
-	 */
-	protected function l10n() {
-		return array(
-			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
-			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
-			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),
-		);
 	}
 }

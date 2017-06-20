@@ -76,7 +76,6 @@ class Kirki_Control_Image extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 		$config_id = 'global';
-		$this->json['l10n'] = $this->l10n( $config_id );
 	}
 
 	/**
@@ -116,36 +115,20 @@ class Kirki_Control_Image extends WP_Customize_Control {
 				</div>
 			<# } else { #>
 				<div class="placeholder">
-					{{ data.l10n['no-file-selected'] }}
+					<?php esc_attr_e( 'No File Selected', 'kirki' ); ?>
 				</div>
 			<# } #>
 			<div class="actions">
 				<button class="button image-upload-remove-button<# if ( '' === url ) { #> hidden <# } #>">
-					{{ data.l10n['remove'] }}
+					<?php esc_attr_e( 'Remove', 'kirki' ); ?>
 				</button>
 				<button type="button" class="button image-upload-button">
-					{{ data.l10n['select-file'] }}
+					<?php esc_attr_e( 'Select File', 'kirki' ); ?>
 				</button>
 			</div>
 		</div>
 		<# value = ( 'array' === saveAs ) ? JSON.stringify( data.value ) : data.value; #>
 		<input class="image-hidden-value" type="hidden" value='{{{ value }}}' {{{ data.link }}}>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param string|false $config_id The string-ID.
-	 * @return array
-	 */
-	protected function l10n( $config_id ) {
-		return array(
-			'no-file-selected'      => esc_attr__( 'No File Selected', 'kirki' ),
-			'remove'                => esc_attr__( 'Remove', 'kirki' ),
-			'select-file'           => esc_attr__( 'Select File', 'kirki' ),
-		);
 	}
 }

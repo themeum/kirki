@@ -133,7 +133,6 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 
 		$this->json['palette']  = $this->palette;
 		$this->choices['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
-		$this->json['l10n']     = $this->l10n();
 	}
 
 	/**
@@ -179,36 +178,23 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 		</label>
 		<div class="gradient-preview"></div>
 		<div class="angle">
-			<h4>{{ data.l10n.angle }}</h4>
+			<h4><?php esc_attr_e( 'Angle', 'kirki' ); ?></h4>
 			<input type="range" class="angle gradient-{{ data.id }}" value="{{ data.value.angle }}" min="-90" max="90">
 		</div>
 		<div class="colors">
-			<# _.each( ['start', 'end'], function( index ) { #>
-				<div class="color-{{ index }}">
-					<h4>{{ data.l10n[ index + 'color' ] }}</h4>
-					<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default[ index ].color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value[ index ].color }}" class="kirki-gradient-control-{{ index }} color-picker" />
-					<h4>{{ data.l10n['color_stop'] }}</h4>
-					<input type="range" class="position gradient-{{ data.id }}-{{ index }}" value="{{ data.value[ index ].position }}" min="0" max="100">
-				</div>
-			<# }) #>
+			<div class="color-start">
+				<h4><?php esc_attr_e( 'Start Color', 'kirki' ); ?></h4>
+				<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.start.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.start.color }}" class="kirki-gradient-control-start color-picker" />
+				<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
+				<input type="range" class="position gradient-{{ data.id }}-start" value="{{ data.value.start.position }}" min="0" max="100">
+			</div>
+			<div class="color-end">
+				<h4><?php esc_attr_e( 'End Color', 'kirki' ); ?></h4>
+				<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.end.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.end.color }}" class="kirki-gradient-control-end color-picker" />
+				<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
+				<input type="range" class="position gradient-{{ data.id }}-end" value="{{ data.value.end.position }}" min="0" max="100">
+			</div>
 		</div>
 		<?php
-	}
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @return string
-	 */
-	protected function l10n() {
-		return array(
-			'angle'      => esc_attr__( 'Angle', 'kirki' ),
-			'startcolor' => esc_attr__( 'Start Color', 'kirki' ),
-			'endcolor'   => esc_attr__( 'End Color', 'kirki' ),
-			'color_stop' => esc_attr__( 'Color Stop', 'kirki' ),
-			'linear'     => esc_attr__( 'Linear', 'kirki' ),
-			'radia'      => esc_attr__( 'Radial', 'kirki' ),
-		);
 	}
 }

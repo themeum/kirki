@@ -67,7 +67,9 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 			wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base' ), false, true );
 			wp_enqueue_style( 'kirki-dimension-css', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.css', null );
 		}
-		wp_localize_script( $script_to_localize, 'dimensionkirkiL10n', $this->l10n() );
+		wp_localize_script( $script_to_localize, 'dimensionkirkiL10n', array(
+			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
+		) );
 	}
 
 	/**
@@ -87,7 +89,6 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
-		$this->json['l10n']    = $this->l10n();
 
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
@@ -121,18 +122,5 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 			</div>
 		</label>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @return string
-	 */
-	protected function l10n() {
-		return array(
-			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
-		);
 	}
 }

@@ -154,7 +154,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
-		$this->json['l10n']    = $this->l10n();
 
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
@@ -205,24 +204,24 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# if ( '' == data.value['font-family'] ) { data.value['font-family'] = data.default['font-family']; } #>
 				<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 				<div class="font-family">
-					<h5>{{ data.l10n['font-family'] }}</h5>
-					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
+					<h5><?php esc_attr_e( 'Font Family', 'kirki' ); ?></h5>
+					<select {{{ data.inputAttrs }}} id="kirki-typography-font-family-{{{ data.id }}}" placeholder="<?php esc_attr_e( 'Select Font Family', 'kirki' ); ?>"></select>
 				</div>
 				<# if ( ! _.isUndefined( data.choices['font-backup'] ) && true === data.choices['font-backup'] ) { #>
 					<div class="font-backup hide-on-standard-fonts kirki-font-backup-wrapper">
-						<h5>{{ data.l10n['font-backup'] }}</h5>
-						<select {{{ data.inputAttrs }}} id="kirki-typography-font-backup-{{{ data.id }}}" placeholder="{{ data.l10n['select-font-family'] }}"></select>
+						<h5><?php esc_attr_e( 'Backup Font', 'kirki' ); ?></h5>
+						<select {{{ data.inputAttrs }}} id="kirki-typography-font-backup-{{{ data.id }}}" placeholder="<?php esc_attr_e( 'Select Font Family', 'kirki' ); ?>"></select>
 					</div>
 				<# } #>
 				<# if ( true === data.show_variants || false !== data.default.variant ) { #>
 					<div class="variant kirki-variant-wrapper">
-						<h5>{{ data.l10n['variant'] }}</h5>
+						<h5><?php esc_attr_e( 'Variant', 'kirki' ); ?></h5>
 						<select {{{ data.inputAttrs }}} class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
 					</div>
 				<# } #>
 				<# if ( true === data.show_subsets ) { #>
 					<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
-						<h5>{{ data.l10n['subsets'] }}</h5>
+						<h5><?php esc_attr_e( 'Subset(s)', 'kirki' ); ?></h5>
 						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}"<# if ( _.isUndefined( data.choices['disable-multiple-variants'] ) || false === data.choices['disable-multiple-variants'] ) { #> multiple<# } #>>
 							<# _.each( data.value.subsets, function( subset ) { #>
 								<option value="{{ subset }}" selected="selected">{{ data.languages[ subset ] }}</option>
@@ -234,63 +233,63 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 			<# if ( data.default['font-size'] ) { #>
 				<div class="font-size">
-					<h5>{{ data.l10n['font-size'] }}</h5>
+					<h5><?php esc_attr_e( 'Font Size', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['line-height'] ) { #>
 				<div class="line-height">
-					<h5>{{ data.l10n['line-height'] }}</h5>
+					<h5><?php esc_attr_e( 'Line Height', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['letter-spacing'] ) { #>
 				<div class="letter-spacing">
-					<h5>{{ data.l10n['letter-spacing'] }}</h5>
+					<h5><?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['word-spacing'] ) { #>
 				<div class="word-spacing">
-					<h5>{{ data.l10n['word-spacing'] }}</h5>
+					<h5><?php esc_attr_e( 'Word Spacing', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['text-align'] ) { #>
 				<div class="text-align">
-					<h5>{{ data.l10n['text-align'] }}</h5>
+					<h5><?php esc_attr_e( 'Text Align', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}-text-align-inherit">
 							<span class="dashicons dashicons-editor-removeformatting"></span>
-							<span class="screen-reader-text">{{ data.l10n['inherit'] }}</span>
+							<span class="screen-reader-text"><?php esc_attr_e( 'Inherit', 'kirki' ); ?></span>
 						</label>
 					</input>
 					<input {{{ data.inputAttrs }}} type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}-text-align-left">
 							<span class="dashicons dashicons-editor-alignleft"></span>
-							<span class="screen-reader-text">{{ data.l10n['left'] }}</span>
+							<span class="screen-reader-text"><?php esc_attr_e( 'Left', 'kirki' ); ?></span>
 						</label>
 					</input>
 					<input {{{ data.inputAttrs }}} type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}-text-align-center">
 							<span class="dashicons dashicons-editor-aligncenter"></span>
-							<span class="screen-reader-text">{{ data.l10n['center'] }}</span>
+							<span class="screen-reader-text"><?php esc_attr_e( 'Center', 'kirki' ); ?></span>
 						</label>
 					</input>
 					<input {{{ data.inputAttrs }}} type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}-text-align-right">
 							<span class="dashicons dashicons-editor-alignright"></span>
-							<span class="screen-reader-text">{{ data.l10n['right'] }}</span>
+							<span class="screen-reader-text"><?php esc_attr_e( 'Right', 'kirki' ); ?></span>
 						</label>
 					</input>
 					<input {{{ data.inputAttrs }}} type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
 						<label for="{{ data.id }}-text-align-justify">
 							<span class="dashicons dashicons-editor-justify"></span>
-							<span class="screen-reader-text">{{ data.l10n['justify'] }}</span>
+							<span class="screen-reader-text"><?php esc_attr_e( 'Justify', 'kirki' ); ?></span>
 						</label>
 					</input>
 				</div>
@@ -298,35 +297,35 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 
 			<# if ( data.default['text-transform'] ) { #>
 				<div class="text-transform">
-					<h5>{{ data.l10n['text-transform'] }}</h5>
+					<h5><?php esc_attr_e( 'Text Transform', 'kirki' ); ?></h5>
 					<select {{{ data.inputAttrs }}} id="kirki-typography-text-transform-{{{ data.id }}}">
-						<option value="none"<# if ( 'none' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['none'] }}</option>
-						<option value="capitalize"<# if ( 'capitalize' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['capitalize'] }}</option>
-						<option value="uppercase"<# if ( 'uppercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['uppercase'] }}</option>
-						<option value="lowercase"<# if ( 'lowercase' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['lowercase'] }}</option>
-						<option value="initial"<# if ( 'initial' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['initial'] }}</option>
-						<option value="inherit"<# if ( 'inherit' === data.value['text-transform'] ) { #>selected<# } #>>{{ data.l10n['inherit'] }}</option>
+						<option value="none"<# if ( 'none' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'None', 'kirki' ); ?></option>
+						<option value="capitalize"<# if ( 'capitalize' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'Capitalize', 'kirki' ); ?></option>
+						<option value="uppercase"<# if ( 'uppercase' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'Uppercase', 'kirki' ); ?></option>
+						<option value="lowercase"<# if ( 'lowercase' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'Lowercase', 'kirki' ); ?></option>
+						<option value="initial"<# if ( 'initial' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'Initial', 'kirki' ); ?></option>
+						<option value="inherit"<# if ( 'inherit' === data.value['text-transform'] ) { #>selected<# } #>><?php esc_attr_e( 'Inherit', 'kirki' ); ?></option>
 					</select>
 				</div>
 			<# } #>
 
 			<# if ( data.default['color'] ) { #>
 				<div class="color">
-					<h5>{{ data.l10n['color'] }}</h5>
+					<h5><?php esc_attr_e( 'Color', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control" {{{ data.link }}} />
 				</div>
 			<# } #>
 
 			<# if ( data.default['margin-top'] ) { #>
 				<div class="margin-top">
-					<h5>{{ data.l10n['margin-top'] }}</h5>
+					<h5><?php esc_attr_e( 'Margin Top', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['margin-bottom'] ) { #>
 				<div class="margin-bottom">
-					<h5>{{ data.l10n['margin-bottom'] }}</h5>
+					<h5><?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
 				</div>
 			<# } #>
@@ -339,42 +338,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		#>
 		<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param string|false $config_id The string-ID.
-	 * @return string
-	 */
-	protected function l10n( $config_id = false ) {
-		return array(
-			'inherit'        => esc_attr__( 'Inherit', 'kirki' ),
-			'font-family'    => esc_attr__( 'Font Family', 'kirki' ),
-			'font-backup'    => esc_attr__( 'Backup Font', 'kirki' ),
-			'font-size'      => esc_attr__( 'Font Size', 'kirki' ),
-			'line-height'    => esc_attr__( 'Line Height', 'kirki' ),
-			'letter-spacing' => esc_attr__( 'Letter Spacing', 'kirki' ),
-			'word-spacing'   => esc_attr__( 'Word Spacing', 'kirki' ),
-			'left'           => esc_attr__( 'Left', 'kirki' ),
-			'right'          => esc_attr__( 'Right', 'kirki' ),
-			'center'         => esc_attr__( 'Center', 'kirki' ),
-			'justify'        => esc_attr__( 'Justify', 'kirki' ),
-			'color'          => esc_attr__( 'Color', 'kirki' ),
-			'variant'        => esc_attr__( 'Variant', 'kirki' ),
-			'subsets'        => esc_attr__( 'Subset', 'kirki' ),
-			'text-align'     => esc_attr__( 'Text Align', 'kirki' ),
-			'text-transform' => esc_attr__( 'Text Transform', 'kirki' ),
-			'none'           => esc_attr__( 'None', 'kirki' ),
-			'capitalize'     => esc_attr__( 'Capitalize', 'kirki' ),
-			'uppercase'      => esc_attr__( 'Uppercase', 'kirki' ),
-			'lowercase'      => esc_attr__( 'Lowercase', 'kirki' ),
-			'initial'        => esc_attr__( 'Initial', 'kirki' ),
-			'margin-top'     => esc_attr__( 'Margin Top', 'kirki' ),
-			'margin-bottom'  => esc_attr__( 'Margin Bottom', 'kirki' ),
-		);
 	}
 
 	/**
