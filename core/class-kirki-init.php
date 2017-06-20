@@ -302,8 +302,11 @@ class Kirki_Init {
 	/**
 	 * Process fields added using the 'kirki/fields' and 'kirki/controls' filter.
 	 * These filters are no longer used, this is simply for backwards-compatibility.
+	 *
+	 * @access private
+	 * @since 2.0.0
 	 */
-	public function fields_from_filters() {
+	private function fields_from_filters() {
 
 		$fields = apply_filters( 'kirki/controls', array() );
 		$fields = apply_filters( 'kirki/fields', $fields );
@@ -313,7 +316,6 @@ class Kirki_Init {
 				Kirki::add_field( 'global', $field );
 			}
 		}
-
 	}
 
 	/**
