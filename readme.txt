@@ -15,19 +15,13 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 [![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=develop)](https://travis-ci.org/aristath/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d6d8b6a4654cd18686ed1cd9f1bfb3)](https://www.codacy.com/app/aristath/kirki?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aristath/kirki&amp;utm_campaign=Badge_Grade)
 
-Kirki is a Toolkit allowing WordPress developers to use the Customizer and take advantage of its advanced features and flexibility by abstracting the code and making it easier for everyone to create beautiful and meaningful user experiences.
+Using Kirki theme developers can create rich experiences for the WordPress Customizer using best coding practices.
 
-Kirki does not replace the WordPress Customizer API, you can still use the default WordPress methods and we advise you to familiarize yourselves with it. An excellent handbook for the WordPress Customizer can be found on the developer.wordpress.org website.
+Included are 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
-What Kirki does is save you time… LOTS of time!
+We advise you to familiarize yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
-Easily add configurations for your project, create panels, sections and add fields with ease.
-
-Automatically create CSS from your fields, and make the customizer’s preview instant with our automatic postMessage scripts creation!
-
-Add Google Fonts with our typography field, add tooltips to help your users and build awesome products!
-
-You can find detailed documentation on how to use Kirki on [https://kirki.org](https://kirki.org)
+You can find detailed documentation on how to use Kirki on [https://aristath.github.io/kirki/](https://aristath.github.io/kirki/)
 
 == Installation ==
 
@@ -39,7 +33,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.0 =
 
-Date TBT, dev time: 230 hours.
+Date TBT, dev time: 240 hours.
 
 This is a major release. Many things have been refactored and optimized. Please keep a backup before updating.
 
