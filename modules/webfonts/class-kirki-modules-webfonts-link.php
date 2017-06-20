@@ -141,7 +141,7 @@ final class Kirki_Modules_Webfonts_Link {
 
 		$this->link = add_query_arg( array(
 			'family' => str_replace( '%2B', '+', urlencode( implode( '|', $link_fonts ) ) ),
-			'subset' => urlencode( implode( ',', $this->googlefonts->subsets ) ),
+			'subset' => rawurlencode( implode( ',', $this->googlefonts->subsets ) ),
 		), 'https://fonts.googleapis.com/css' );
 
 	}

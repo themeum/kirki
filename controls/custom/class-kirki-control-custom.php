@@ -53,12 +53,8 @@ class Kirki_Control_Custom extends WP_Customize_Control {
 	protected function content_template() {
 		?>
 		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<?php
 				/**
 				 * The value is defined by the developer in the field configuration as 'default'.

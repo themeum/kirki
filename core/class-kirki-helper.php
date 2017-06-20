@@ -240,10 +240,10 @@ class Kirki_Helper {
 	 *
 	 * @static
 	 * @access public
-	 * @param false|string $context Allows us to get subsets of the palette.
+	 * @param string $context Allows us to get subsets of the palette.
 	 * @return array
 	 */
-	public static function get_material_design_colors( $context = false ) {
+	public static function get_material_design_colors( $context = 'primary' ) {
 
 		$colors = array(
 			'primary' => array(

@@ -121,12 +121,8 @@ class Kirki_Control_Select extends WP_Customize_Control {
 		}
 		#>
 		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{ data.label }}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<select {{{ data.inputAttrs }}} {{{ data.link }}}<# if ( 1 < data.multiple ) { #> data-multiple="{{ data.multiple }}" multiple="multiple"<# } #>>
 				<# _.each( data.choices, function( optionLabel, optionKey ) { #>
 					<# selected = ( data.value === optionKey ); #>

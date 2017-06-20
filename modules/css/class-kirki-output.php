@@ -232,7 +232,7 @@ class Kirki_Output {
 		$accepts_multiple = array(
 			'background-image',
 		);
-		if ( in_array( $output['property'], $accepts_multiple ) ) {
+		if ( in_array( $output['property'], $accepts_multiple, true ) ) {
 			if ( isset( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) && ! is_array( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = (array) $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ];
 			}

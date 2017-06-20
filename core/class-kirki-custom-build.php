@@ -77,7 +77,7 @@ class Kirki_Custom_Build {
 	 * @param string $dependency The script's identifier.
 	 */
 	public static function register_dependency( $dependency ) {
-		if ( in_array( $dependency, self::$dependencies ) ) {
+		if ( in_array( $dependency, self::$dependencies, true ) ) {
 			return;
 		}
 		self::$dependencies[] = $dependency;

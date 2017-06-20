@@ -125,12 +125,8 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 		?>
 		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="wrapper">
 				<div class="control">
 					<# for ( choiceKey in data.default ) { #>
@@ -170,7 +166,7 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 * @param string|false $id The string-ID.
 	 * @return string
 	 */
-	protected function l10n( $id = false ) {
+	protected function l10n() {
 		return array(
 			'left-top'              => esc_attr__( 'Left Top', 'kirki' ),
 			'left-center'           => esc_attr__( 'Left Center', 'kirki' ),

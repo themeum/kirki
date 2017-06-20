@@ -100,12 +100,8 @@ class Kirki_Control_Preset extends WP_Customize_Control {
 		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( ! data.choices ) return; #>
 		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{ data.label }}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<select {{{ data.inputAttrs }}} {{{ data.link }}} data-multiple="1">
 				<# for ( key in data.choices ) { #>
 					<option value="{{ key }}"<# if ( key === data.value ) { #>selected<# } #>>

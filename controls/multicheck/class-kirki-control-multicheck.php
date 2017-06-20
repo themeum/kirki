@@ -102,22 +102,12 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( ! data.choices ) { return; } #>
 
-		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
-		<# } #>
-
-		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{{ data.description }}}</span>
-		<# } #>
+		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 
 		<ul>
 			<# for ( key in data.choices ) { #>
-				<li>
-					<label>
-						<input {{{ data.inputAttrs }}} type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />
-						{{ data.choices[ key ] }}
-					</label>
-				</li>
+				<li><label><input {{{ data.inputAttrs }}} type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />{{ data.choices[ key ] }}</label></li>
 			<# } #>
 		</ul>
 		<?php

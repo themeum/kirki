@@ -111,12 +111,8 @@ class Kirki_Control_Background extends WP_Customize_Control {
 		?>
 		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
-			<span class="customize-control-title">
-				{{{ data.label }}}
-			</span>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<span class="customize-control-title">{{{ data.label }}}</span>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		</label>
 		<div class="background-wrapper">
 
@@ -131,21 +127,13 @@ class Kirki_Control_Background extends WP_Customize_Control {
 				<h4><?php esc_attr_e( 'Background Image', 'kirki' ); ?></h4>
 				<div class="attachment-media-view background-image-upload">
 					<# if ( data.value['background-image'] ) { #>
-						<div class="thumbnail thumbnail-image">
-							<img src="{{ data.value['background-image'] }}" alt="" />
-						</div>
+						<div class="thumbnail thumbnail-image"><img src="{{ data.value['background-image'] }}" alt="" /></div>
 					<# } else { #>
-						<div class="placeholder">
-							<?php esc_attr_e( 'No File Selected', 'kirki' ); ?>
-						</div>
+						<div class="placeholder"><?php esc_attr_e( 'No File Selected', 'kirki' ); ?></div>
 					<# } #>
 					<div class="actions">
-						<button class="button background-image-upload-remove-button<# if ( ! data.value['background-image'] ) { #> hidden <# } #>">
-							<?php esc_attr_e( 'Remove', 'kirki' ); ?>
-						</button>
-						<button type="button" class="button background-image-upload-button">
-							<?php esc_attr_e( 'Select File', 'kirki' ); ?>
-						</button>
+						<button class="button background-image-upload-remove-button<# if ( ! data.value['background-image'] ) { #> hidden <# } #>"><?php esc_attr_e( 'Remove', 'kirki' ); ?></button>
+						<button type="button" class="button background-image-upload-button"><?php esc_attr_e( 'Select File', 'kirki' ); ?></button>
 					</div>
 				</div>
 			</div>
@@ -182,19 +170,13 @@ class Kirki_Control_Background extends WP_Customize_Control {
 				<h4><?php esc_attr_e( 'Background Size', 'kirki' ); ?></h4>
 				<div class="buttonset">
 					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="cover" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}cover" <# if ( 'cover' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'cover' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}cover">
-							<?php esc_attr_e( 'Cover', 'kirki' ); ?>
-						</label>
+						<label class="switch-label switch-label-<# if ( 'cover' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}cover"><?php esc_attr_e( 'Cover', 'kirki' ); ?></label>
 					</input>
 					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="contain" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}contain" <# if ( 'contain' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'contain' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}contain">
-							<?php esc_attr_e( 'Contain', 'kirki' ); ?>
-						</label>
+						<label class="switch-label switch-label-<# if ( 'contain' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}contain"><?php esc_attr_e( 'Contain', 'kirki' ); ?></label>
 					</input>
 					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="auto" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}auto" <# if ( 'auto' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'auto' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}auto">
-							<?php esc_attr_e( 'Auto', 'kirki' ); ?>
-						</label>
+						<label class="switch-label switch-label-<# if ( 'auto' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}auto"><?php esc_attr_e( 'Auto', 'kirki' ); ?></label>
 					</input>
 				</div>
 			</div>
@@ -204,14 +186,10 @@ class Kirki_Control_Background extends WP_Customize_Control {
 				<h4><?php esc_attr_e( 'Background Attachment', 'kirki' ); ?></h4>
 				<div class="buttonset">
 					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="scroll" name="_customize-bg-{{{ data.id }}}-attachment" id="{{ data.id }}scroll" <# if ( 'scroll' === data.value['background-attachment'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'scroll' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}scroll">
-							<?php esc_attr_e( 'Scroll', 'kirki' ); ?>
-						</label>
+						<label class="switch-label switch-label-<# if ( 'scroll' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}scroll"><?php esc_attr_e( 'Scroll', 'kirki' ); ?></label>
 					</input>
 					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="fixed" name="_customize-bg-{{{ data.id }}}-attachment" id="{{ data.id }}fixed" <# if ( 'fixed' === data.value['background-attachment'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'fixed' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}fixed">
-							<?php esc_attr_e( 'Fixed', 'kirki' ); ?>
-						</label>
+						<label class="switch-label switch-label-<# if ( 'fixed' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}fixed"><?php esc_attr_e( 'Fixed', 'kirki' ); ?></label>
 					</input>
 				</div>
 			</div>

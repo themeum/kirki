@@ -115,12 +115,8 @@ class Kirki_Control_Number extends WP_Customize_Control {
 		?>
 		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
-			<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-			<# } #>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="customize-control-content">
 				<input {{{ data.inputAttrs }}} type="text" {{{ data.link }}} value="{{ data.value }}" />
 			</div>

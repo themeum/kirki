@@ -75,7 +75,6 @@ class Kirki_Control_Image extends WP_Customize_Control {
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
-		$config_id = 'global';
 	}
 
 	/**

@@ -154,7 +154,7 @@ final class Kirki_Modules_Webfonts_Embed {
 				return false;
 			}
 
-			// If empty, return false.
+			// Return false if the data is empty.
 			if ( ! $data ) {
 				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
