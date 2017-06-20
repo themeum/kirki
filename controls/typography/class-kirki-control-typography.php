@@ -350,7 +350,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 * @return string
 	 */
 	protected function l10n( $config_id = false ) {
-		$translation_strings = array(
+		return array(
 			'inherit'        => esc_attr__( 'Inherit', 'kirki' ),
 			'font-family'    => esc_attr__( 'Font Family', 'kirki' ),
 			'font-backup'    => esc_attr__( 'Backup Font', 'kirki' ),
@@ -375,11 +375,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'margin-top'     => esc_attr__( 'Margin Top', 'kirki' ),
 			'margin-bottom'  => esc_attr__( 'Margin Bottom', 'kirki' ),
 		);
-		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
-		if ( false === $config_id ) {
-			return $translation_strings;
-		}
-		return $translation_strings[ $config_id ];
 	}
 
 	/**

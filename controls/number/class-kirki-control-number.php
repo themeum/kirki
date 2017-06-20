@@ -133,11 +133,10 @@ class Kirki_Control_Number extends WP_Customize_Control {
 	 * @return string
 	 */
 	protected function l10n() {
-		$translation_strings = array(
+		return array(
 			'min-error'  => esc_attr__( 'Value lower than allowed minimum', 'kirki' ),
 			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),
 			'step-error' => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
-		return apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 	}
 }

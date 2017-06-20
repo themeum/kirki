@@ -142,11 +142,10 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	 * @return array
 	 */
 	protected function l10n( $config_id ) {
-		$translation_strings = array(
+		return array(
 			'no-file-selected'      => esc_attr__( 'No File Selected', 'kirki' ),
 			'remove'                => esc_attr__( 'Remove', 'kirki' ),
 			'select-file'           => esc_attr__( 'Select File', 'kirki' ),
 		);
-		return apply_filters( "kirki/{$config_id}/l10n", $translation_strings );
 	}
 }

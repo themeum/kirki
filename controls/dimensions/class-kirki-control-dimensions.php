@@ -171,7 +171,7 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 * @return string
 	 */
 	protected function l10n( $id = false ) {
-		$translation_strings = array(
+		return array(
 			'left-top'              => esc_attr__( 'Left Top', 'kirki' ),
 			'left-center'           => esc_attr__( 'Left Center', 'kirki' ),
 			'left-bottom'           => esc_attr__( 'Left Bottom', 'kirki' ),
@@ -199,10 +199,5 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 			'height'                => esc_attr__( 'Height', 'kirki' ),
 			'invalid-value'         => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
-		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
-		if ( false === $id ) {
-			return $translation_strings;
-		}
-		return $translation_strings[ $id ];
 	}
 }

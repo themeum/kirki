@@ -202,7 +202,7 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 	 * @return string
 	 */
 	protected function l10n() {
-		$translation_strings = array(
+		return array(
 			'angle'      => esc_attr__( 'Angle', 'kirki' ),
 			'startcolor' => esc_attr__( 'Start Color', 'kirki' ),
 			'endcolor'   => esc_attr__( 'End Color', 'kirki' ),
@@ -210,7 +210,5 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 			'linear'     => esc_attr__( 'Linear', 'kirki' ),
 			'radia'      => esc_attr__( 'Radial', 'kirki' ),
 		);
-		$translation_strings = apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
-		return $translation_strings;
 	}
 }

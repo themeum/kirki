@@ -189,7 +189,7 @@ final class Kirki_Fonts {
 	 * @return array
 	 */
 	public static function get_all_variants() {
-		return apply_filters( 'kirki/l10n', array(
+		return array(
 			'100'       => esc_attr__( 'Ultra-Light 100', 'kirki' ),
 			'100light'  => esc_attr__( 'Ultra-Light 100', 'kirki' ),
 			'100italic' => esc_attr__( 'Ultra-Light 100 Italic', 'kirki' ),
@@ -213,7 +213,7 @@ final class Kirki_Fonts {
 			'900'       => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
 			'900bold'   => esc_attr__( 'Ultra-Bold 900', 'kirki' ),
 			'900italic' => esc_attr__( 'Ultra-Bold 900 Italic', 'kirki' ),
-		) );
+		);
 	}
 
 	/**

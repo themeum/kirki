@@ -36,10 +36,10 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 			$this->choices = array();
 		}
 
-		$l10n = apply_filters( "kirki/{$this->kirki_config}/l10n", array(
+		$l10n = array(
 			'on'  => esc_attr__( 'On', 'kirki' ),
 			'off' => esc_attr__( 'Off', 'kirki' ),
-		) );
+		);
 
 		if ( ! isset( $this->choices['on'] ) ) {
 			$this->choices['on'] = $l10n['on'];

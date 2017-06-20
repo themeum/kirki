@@ -131,9 +131,8 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	 * @return string
 	 */
 	protected function l10n() {
-		$translation_strings = array(
+		return array(
 			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
 		);
-		return apply_filters( "kirki/{$this->kirki_config}/l10n", $translation_strings );
 	}
 }
