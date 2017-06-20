@@ -1,6 +1,9 @@
 ---
 layout: docs
 premium_themes:
+  - name: Heset
+    url: https://themeforest.net/item/heset-magazine-blog-wordpress-theme/19909146
+    thumb: https://image-tf.s3.envato.com/files/228101564/00_preview.__large_preview.jpg
   - name: Eram
     url: https://themeforest.net/item/eram-innovative-photography-portfolio-theme/19287480
     thumb: https://image-tf.s3.envato.com/files/222587342/eram-banner-discount.__large_preview.jpg
