@@ -23,6 +23,8 @@ We advise you to familiarize yourself with the Customizer API before you start w
 
 You can find detailed documentation on how to use Kirki on [https://aristath.github.io/kirki/](https://aristath.github.io/kirki/)
 
+[Development and issues on github](https://github.com/aristath/kirki).
+
 == Installation ==
 
 Simply install as a normal WordPress plugin and activate.
