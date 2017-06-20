@@ -173,7 +173,7 @@ class Kirki_Modules_CSS {
 	 */
 	public function enqueue_compiled_file() {
 
-		wp_enqueue_style( 'kirki-styles', $this->css_to_file->get_url() );
+		wp_enqueue_style( 'kirki-styles', $this->css_to_file->get_url(), array(), $this->css_to_file->get_timestamp() );
 
 	}
 	/**

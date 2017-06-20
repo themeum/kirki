@@ -82,6 +82,22 @@ class Kirki_CSS_To_File {
 	}
 
 	/**
+	 * Gets the timestamp of the file.
+	 * This will be used as "version" for cache-busting purposes.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @return string|bool
+	 */
+	public function get_timestamp() {
+
+		if ( file_exists( $this->get_path( 'file' ) ) ) {
+			return filemtime( $this->get_path( 'file' ) );
+		}
+		return false;
+	}
+
+	/**
 	 * Writes the file to disk.
 	 *
 	 * @access public
