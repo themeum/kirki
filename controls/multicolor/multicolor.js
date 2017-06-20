@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );
@@ -42,7 +41,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 							// Trigger the change.
 							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
 						}, 100 );
-
 					}
 				};
 
@@ -54,7 +52,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 			// Did we change the value?
 			picker.wpColorPicker( args );
-
 		}
 
 		// Colors loop
@@ -71,7 +68,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			i++;
 
 		}
-
 	},
 
 	/**
@@ -89,7 +85,5 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		valueObj[ property ] = value;
 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
 		control.setting.set( valueObj );
-
 	}
-
 });

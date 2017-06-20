@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );

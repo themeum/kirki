@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );
@@ -40,16 +39,11 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 			jQuery( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( inputDefault );
 		});
 
-		if ( 'postMessage' === control.setting.transport ) {
-			changeAction = 'mousemove change';
-		} else {
-			changeAction = 'change';
-		}
+		changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change';
 
 		// Save changes.
 		this.container.on( changeAction, 'input', function() {
 			control.setting.set( jQuery( this ).val() );
 		});
 	}
-
 });

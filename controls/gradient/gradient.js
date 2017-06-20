@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );
@@ -76,7 +75,6 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 				control.setValue( value );
 			});
 		});
-
 	},
 
 	/**
@@ -133,6 +131,5 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 			obj.set( value );
 
 		});
-
 	}
 });

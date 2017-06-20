@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-			section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		control.kirkiLoader();
@@ -110,7 +109,5 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		element.parents( '.accordion-section' ).on( 'click', function() {
 			editor.refresh();
 		});
-
 	}
-
 });

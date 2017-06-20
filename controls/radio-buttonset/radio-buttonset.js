@@ -5,8 +5,7 @@ wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.Control.
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );
@@ -23,5 +22,4 @@ wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.Control.
 			control.setting.set( jQuery( this ).val() );
 		});
 	}
-
 });

@@ -75,7 +75,6 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 		}
 		this.header.find( '.repeater-row-label' ).text( this.label.value + ' ' + ( this.rowIndex + 1 ) );
 	};
-
 	this.updateLabel();
 };
 
@@ -86,8 +85,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-		    section = control.section.get();
+		var control = this;
 
 		// Add to the queue.
 		kirkiControlLoader( control );
@@ -533,7 +531,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				}
 			}
 		}
-
 		return 'image';
 
 	},
@@ -629,7 +626,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 					}
 				});
 			});
-
 		}
 
 		this.setting.set( encodeURI( JSON.stringify( filteredValue ) ) );
@@ -639,9 +635,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			// Trigger the change event on the hidden field so
 			// previewer refresh the website on Customizer
 			this.settingField.trigger( 'change' );
-
 		}
-
 	},
 
 	/**
@@ -714,9 +708,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			this.currentIndex++;
 
 			return newRow;
-
 		}
-
 	},
 
 	sort: function() {
@@ -766,8 +758,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			row = this.rows[ index ];
 			if ( row ) {
 
-				// The row exists, let's delete it
-
 				// Remove the row settings
 				delete currentSettings[ index ];
 
@@ -789,7 +779,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				i++;
 			}
 		}
-
 	},
 
 	/**
@@ -825,17 +814,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		}
 
 		if ( 'checkbox' === type ) {
-
 			currentSettings[ row.rowIndex ][ fieldId ] = element.is( ':checked' );
-
 		} else {
 
 			// Update the settings
 			currentSettings[ row.rowIndex ][ fieldId ] = element.val();
-
 		}
 		this.setValue( currentSettings, true );
-
 	},
 
 	/**
@@ -874,7 +859,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( 0 !== colorPicker.length ) {
 			colorPicker.wpColorPicker( options );
 		}
-
 	},
 
 	/**
@@ -921,7 +905,5 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			control.setValue( currentSettings );
 
 		});
-
 	}
-
 });
