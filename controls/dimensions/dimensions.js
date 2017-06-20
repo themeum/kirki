@@ -7,8 +7,12 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 
 		var control = this;
 
-		// Add to the queue.
-		kirkiControlLoader( control );
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
 	},
 
 	initKirkiControl: function() {
