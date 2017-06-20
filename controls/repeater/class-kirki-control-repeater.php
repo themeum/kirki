@@ -99,6 +99,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		$this->row_label( $args );
 
 		if ( empty( $this->button_label ) ) {
+			/* translators: %s represents the label of the row. */
 			$this->button_label = sprintf( esc_attr__( 'Add new %s', 'kirki' ), $this->row_label['value'] );
 		}
 
