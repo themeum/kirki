@@ -125,4 +125,12 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 		</div>
 		<?php
 	}
+
+	/**
+	 * Render the control's content.
+	 *
+	 * @since 3.4.0
+	 */
+	protected function render_content() {}
+
 }
