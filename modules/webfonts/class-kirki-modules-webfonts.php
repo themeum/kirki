@@ -121,7 +121,7 @@ class Kirki_Modules_Webfonts {
 		$method = apply_filters( 'kirki/googlefonts_load_method', 'embed' );
 
 		// Fallback to 'embed' if value is invalid.
-		if ( 'async' !== $method || 'embed' !== $method || 'link' !== $method ) {
+		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
 			$method = 'embed';
 		}
 
