@@ -97,7 +97,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    googleFonts     = [],
 			value           = control.getValue(),
 			variantSelector = control.selector + ' .variant select',
-		    subsetSelector  = control.selector + ' .subsets select',
 			fonts           = control.getFonts(),
 		    fontSelect;
 
@@ -219,7 +218,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
-		    variantSelector,
 		    fontWeight,
 		    fontStyle;
 

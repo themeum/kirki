@@ -18,8 +18,7 @@ if ( _.isUndefined( kirkiSetSettingValue ) ) {
 			 */
 			var $this = this,
 			    subControl = wp.customize.settings.controls[ setting ],
-			    valueJSON,
-			    el;
+			    valueJSON;
 
 			// If the control doesn't exist then return.
 			if ( _.isUndefined( subControl ) ) {

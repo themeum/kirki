@@ -426,7 +426,7 @@ class Kirki_Init {
 	 */
 	public function is_plugin_active( $plugins ) {
 		global $pagenow;
-		if ( is_array( $plugins ) && 'plugins.php' !== $pagenow ) {
+		if ( is_array( $plugins ) && 'plugins.php' !== $pagenow && 'network/plugins.php' !== $pagenow ) {
 			$exists = false;
 			foreach ( $plugins as $plugin ) {
 				if ( false !== strpos( $plugin, 'kirki.php' ) ) {

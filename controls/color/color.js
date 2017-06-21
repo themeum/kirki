@@ -17,7 +17,6 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 
 	initKirkiControl: function() {
 		var control = this,
-		    section = control.section.get(),
 		    picker  = this.container.find( '.kirki-color-control' ),
 		    clear;
 

@@ -31,19 +31,6 @@ class Kirki_Modules_Webfonts {
 	private static $instance;
 
 	/**
-	 * Which method to use when loading googlefonts.
-	 * Available options: link, js, embed.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var string
-	 */
-	private static $method = array(
-		'global' => 'embed',
-	);
-
-	/**
 	 * Whether we should fallback to the link method or not.
 	 *
 	 * @access private

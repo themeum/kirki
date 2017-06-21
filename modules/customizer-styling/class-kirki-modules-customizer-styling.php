@@ -92,13 +92,6 @@ class Kirki_Modules_Customizer_Styling {
 			$back_disabled_obj = ( 35 < $back_obj->lightness ) ?
 				$back_obj->getNew( 'lightness', $back_obj->lightness - 30 ) :
 				$back_obj->getNew( 'lightness', $back_obj->lightness + 30 );
-			$back_disabled = $back_disabled_obj->toCSS( $back_disabled_obj->mode );
-			$text_on_back_disabled = ( 60 > $back_disabled_obj->lightness ) ?
-				$back_disabled_obj->getNew( 'lightness', $back_disabled_obj->lightness + 60 )->toCSS( $back_disabled_obj->mode ) :
-				$back_disabled_obj->getNew( 'lightness', $back_disabled_obj->lightness - 60 )->toCSS( $back_disabled_obj->mode );
-			$border_on_back_disabled = ( 50 < $back_disabled_obj->lightness ) ?
-				$back_disabled_obj->getNew( 'lightness', $back_disabled_obj->lightness - 4 )->toCSS( $back_disabled_obj->mode ) :
-				$back_disabled_obj->getNew( 'lightness', $back_disabled_obj->lightness + 4 )->toCSS( $back_disabled_obj->mode );
 		}
 		$accent     = ( isset( $config['color_accent'] ) ) ? $config['color_accent'] : false;
 		$accent_obj = ( $accent ) ? ariColor::newColor( $accent ) : false;

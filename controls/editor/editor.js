@@ -120,8 +120,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 
 		'use strict';
 
-		var control = this,
-		    editorWrapper = jQuery( '#kirki_editor_pane' );
+		var control = this;
 
 		editor.setContent( control.setting._value );
 	},
