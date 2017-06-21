@@ -13,7 +13,7 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 ## Description ##
 
-[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=develop)](https://travis-ci.org/aristath/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d6d8b6a4654cd18686ed1cd9f1bfb3)](https://www.codacy.com/app/aristath/kirki?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aristath/kirki&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=develop)](https://travis-ci.org/aristath/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d6d8b6a4654cd18686ed1cd9f1bfb3)](https://www.codacy.com/app/aristath/kirki?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aristath/kirki&amp;utm_campaign=Badge_Grade) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=develop)
 
 Using Kirki theme developers can create rich experiences for the WordPress Customizer using best coding practices.
 
