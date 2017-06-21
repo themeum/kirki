@@ -50,9 +50,11 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		Kirki_Custom_Build::register_dependency( 'jquery' );
-		Kirki_Custom_Build::register_dependency( 'customize-base' );
-		Kirki_Custom_Build::register_dependency( 'jquery-ui-datepicker' );
+		if ( class_exists( 'Kirki_Custom_Build' ) ) {
+			Kirki_Custom_Build::register_dependency( 'jquery' );
+			Kirki_Custom_Build::register_dependency( 'customize-base' );
+			Kirki_Custom_Build::register_dependency( 'jquery-ui-datepicker' );
+		}
 
 		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			wp_enqueue_script( 'kirki-date', trailingslashit( Kirki::$url ) . 'controls/date/date.js', array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ), false, true );

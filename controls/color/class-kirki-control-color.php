@@ -134,9 +134,11 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		Kirki_Custom_Build::register_dependency( 'jquery' );
-		Kirki_Custom_Build::register_dependency( 'wp-color-picker-alpha' );
-		Kirki_Custom_Build::register_dependency( 'customize-base' );
+		if ( class_exists( 'Kirki_Custom_Build' ) ) {
+			Kirki_Custom_Build::register_dependency( 'jquery' );
+			Kirki_Custom_Build::register_dependency( 'wp-color-picker-alpha' );
+			Kirki_Custom_Build::register_dependency( 'customize-base' );
+		}
 
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
 
