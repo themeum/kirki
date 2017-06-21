@@ -23,6 +23,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		    preview = control.container.find( '.placeholder, .thumbnail' ),
 		    previewImage = ( 'array' === saveAs ) ? value.url : value;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		if ( '' !== previewImage ) {
 			preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
 		}

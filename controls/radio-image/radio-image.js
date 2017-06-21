@@ -21,6 +21,8 @@ wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.Control.exte
 
 		var control = this;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Change the value
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );

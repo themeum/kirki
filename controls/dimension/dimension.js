@@ -22,6 +22,8 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.Control.extend
 		var control = this,
 		    value;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Notifications.
 		control.kirkiNotifications();
 

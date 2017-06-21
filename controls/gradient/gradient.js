@@ -31,6 +31,8 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 			pickerEnd.wpColorPicker( control.params.choices.iris );
 		}
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		control.updatePreview( value );
 
 		_.each( { 'start': pickerStart, 'end': pickerEnd }, function( obj, index ) {

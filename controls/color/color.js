@@ -21,6 +21,8 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 		    picker  = this.container.find( '.kirki-color-control' ),
 		    clear;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( ! _.isUndefined( control.params.choices ) ) {
 			picker.wpColorPicker( control.params.choices );

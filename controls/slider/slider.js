@@ -25,6 +25,8 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.Control.extend({
 		    inputDefault,
 		    changeAction;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Update the text value
 		jQuery( 'input[type=range]' ).on( 'mousedown', function() {
 			value = jQuery( this ).attr( 'value' );

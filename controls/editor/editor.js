@@ -26,6 +26,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 		    setChange,
 		    content;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 		jQuery( window ).load( function() {
 
 			var editor  = tinyMCE.get( 'kirki-editor' );

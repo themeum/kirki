@@ -28,6 +28,8 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    irisInput,
 		    irisPicker;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
 

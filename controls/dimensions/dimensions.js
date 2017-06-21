@@ -25,6 +25,8 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.Control.exten
 		    subsArray   = [],
 		    i;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		_.each( subControls, function( v, i ) {
 			if ( true === v ) {
 				subsArray.push( i );

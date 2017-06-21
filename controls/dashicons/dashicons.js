@@ -21,6 +21,8 @@ wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.Control.extend
 
 		var control = this;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		// Save the value
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );

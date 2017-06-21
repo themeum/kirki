@@ -81,6 +81,8 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		    container,
 		    height;
 
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
 		editor = CodeMirror.fromTextArea( element[0], {
 			value:        control.setting._value,
 			mode:         language,
