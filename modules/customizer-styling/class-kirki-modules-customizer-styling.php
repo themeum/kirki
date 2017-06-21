@@ -126,10 +126,7 @@ class Kirki_Modules_Customizer_Styling {
 				'#customize-theme-controls .control-section-themes .accordion-section-title:hover',
 			);
 
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background:' . $back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background:{$back};color:{$text_on_back};}";
 
 			$elements = array(
 				'#customize-controls .customize-info .panel-title',
@@ -138,37 +135,27 @@ class Kirki_Modules_Customizer_Styling {
 				'.customize-control',
 				'#customize-controls .description',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$text_on_back};}";
 
 			$elements = array(
 				'#customize-controls .customize-info',
 				'#customize-header-actions',
 				'.customize-section-title',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-bottom-color: ' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-bottom-color:{$border_on_back};}";
 
 			$elements = array(
 				'.wp-full-overlay-sidebar .wp-full-overlay-header',
 				'.customize-controls-close',
 				'.expanded .wp-full-overlay-footer',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= 'background-color:' . $back_on_back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$text_on_back};background-color:{$back_on_back};border-color:{$border_on_back};}";
 
 			$elements = array(
 				'.accordion-section',
 				'#customize-theme-controls .customize-pane-child.accordion-section-content',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background:' . $back_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background:{$back_on_back};}";
 
 			$elements = array(
 				'#accordion-section-themes+.control-section',
@@ -176,57 +163,31 @@ class Kirki_Modules_Customizer_Styling {
 				'#customize-theme-controls .control-section:last-of-type > .accordion-section-title',
 				'#customize-theme-controls .control-section.open',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-bottom-color:' . $border_on_back . ';';
-			$css .= 'border-top-color:' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-bottom-color:{$border_on_back};border-top-color:{$border_on_back};}";
 
 			$elements = array(
 				'#customize-theme-controls .accordion-section-title',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-bottom-color:' . $border_on_back . ';';
-			$css .= 'border-left-color:' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-bottom-color:{$border_on_back};border-left-color:{$border_on_back};}";
 
 			$elements = array(
 				'#customize-theme-controls .control-section-themes .accordion-section-title',
 				'#customize-theme-controls .control-section-themes .accordion-section-title:hover',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-bottom-color:' . $border_on_back . ';';
-			$css .= 'border-top-color:' . $border_on_back . ';';
-			$css .= 'border-bottom-color:' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-bottom-color:{$border_on_back};border-top-color:{$border_on_back};border-bottom-color:{$border_on_back};}";
 
 			$elements = array(
 				'#customize-theme-controls .accordion-section-title:after',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $arrows_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$arrows_on_back};}";
 
 			$elements = array(
 				'.wp-core-ui .button',
 				'.wp-core-ui .button-secondary',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'box-shadow:0 1px 0 ' . $border_on_back . ';';
-			$css .= '-webkit-box-shadow:0 1px 0 ' . $border_on_back . ';';
-			$css .= 'text-shadow:0 -1px 1px ' . $border_on_back . ', 1px 0 1px ' . $border_on_back . ', 0 1px 1px ' . $border_on_back . ', -1px 0 1px ' . $border_on_back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$back};border-color:{$border_on_back};box-shadow:0 1px 0 {$border_on_back};-webkit-box-shadow:0 1px 0 {$border_on_back};text-shadow:0 -1px 1px {$border_on_back}, 1px 0 1px {$border_on_back}, 0 1px 1px {$border_on_back}, -1px 0 1px {$border_on_back};color:{$text_on_back};}";
 
-			$css .= '@media screen and (max-width: 640px) {.customize-controls-preview-toggle{';
-			$css .= 'background-color:' . $back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'box-shadow:0 1px 0 ' . $border_on_back . ';';
-			$css .= '-webkit-box-shadow:0 1px 0 ' . $border_on_back . ';';
-			$css .= 'text-shadow:0 -1px 1px ' . $border_on_back . ', 1px 0 1px ' . $border_on_back . ', 0 1px 1px ' . $border_on_back . ', -1px 0 1px ' . $border_on_back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}}';
+			$css .= "@media screen and (max-width: 640px) {.customize-controls-preview-toggle{background-color:{$back};border-color:{$border_on_back};box-shadow:0 1px 0 {$border_on_back};-webkit-box-shadow:0 1px 0 {$border_on_back};text-shadow:0 -1px 1px {$border_on_back}, 1px 0 1px {$border_on_back}, 0 1px 1px {$border_on_back}, -1px 0 1px {$border_on_back};color:{$text_on_back};}}";
 
 			$elements = array(
 				'.wp-core-ui .button.focus',
@@ -240,66 +201,38 @@ class Kirki_Modules_Customizer_Styling {
 				'.customize-panel-back',
 				'.customize-section-back',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $back_on_back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= '-webkit-box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= 'text-shadow: 0 -1px 1px ' . $border_on_back . ', 1px 0 1px ' . $border_on_back . ', 0 1px 1px ' . $border_on_back . ', -1px 0 1px ' . $border_on_back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$back_on_back};border-color:{$border_on_back};box-shadow: 0 1px 0 {$border_on_back};-webkit-box-shadow: 0 1px 0 {$border_on_back};text-shadow: 0 -1px 1px {$border_on_back}, 1px 0 1px {$border_on_back}, 0 1px 1px {$border_on_back}, -1px 0 1px {$border_on_back};color:{$text_on_back};}";
 
-			$css .= '@media screen and (max-width: 640px) {.customize-controls-preview-toggle.focus,.customize-controls-preview-toggle.hover,.customize-controls-preview-toggle:focus,.customize-controls-preview-toggle:hover{';
-			$css .= 'background-color:' . $back_on_back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= '-webkit-box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= 'text-shadow: 0 -1px 1px ' . $border_on_back . ', 1px 0 1px ' . $border_on_back . ', 0 1px 1px ' . $border_on_back . ', -1px 0 1px ' . $border_on_back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}}';
+			$css .= "@media screen and (max-width: 640px) {.customize-controls-preview-toggle.focus,.customize-controls-preview-toggle.hover,.customize-controls-preview-toggle:focus,.customize-controls-preview-toggle:hover{background-color:{$back_on_back};border-color:{$border_on_back};box-shadow: 0 1px 0 {$border_on_back};-webkit-box-shadow: 0 1px 0 {$border_on_back};text-shadow: 0 -1px 1px {$border_on_back}, 1px 0 1px {$border_on_back}, 0 1px 1px {$border_on_back}, -1px 0 1px {$border_on_back};color:{$text_on_back};}}";
+
 			$elements = array(
 				'.customize-control-kirki-background .background-attachment .buttonset .switch-label',
 				'.customize-control-kirki-background .background-size .buttonset .switch-label',
 				'.customize-control-kirki-radio-buttonset .buttonset .switch-label',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$text_on_back};}";
 
 			$elements = array(
 				'.wp-color-result',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= '-webkit-box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= 'box-shadow: 0 1px 0 ' . $border_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-color:{$border_on_back};-webkit-box-shadow: 0 1px 0 {$border_on_back};box-shadow: 0 1px 0 {$border_on_back};}";
 
 			$elements = array(
 				'.wp-color-result:focus',
 				'.wp-color-result:hover',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'background:' . $back_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-color:{$border_on_back};background:{$back_on_back};}";
 
 			$elements = array(
 				'.wp-color-result:after',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'background:' . $back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{border-color:{$border_on_back};background:{$back};color:{$text_on_back};}";
 
 			$elements = array(
 				'.wp-color-result:focus:after',
 				'.wp-color-result:hover:after',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$text_on_back};}";
 
 			$elements = array(
 				'.customize-control input[type=tel]',
@@ -315,36 +248,25 @@ class Kirki_Modules_Customizer_Styling {
 				'.select2-container--default .select2-selection--single',
 				'.select2-container--default .select2-selection--multiple',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background:' . $back . ';';
-			$css .= 'border-color:' . $border_on_back . ';';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background:{$back};border-color:{$border_on_back};color:{$text_on_back};}";
 
-			$css .= '.customize-control-kirki-slider input[type=range]::-webkit-slider-thumb{background-color:' . $accent . ';}';
-			$css .= '.customize-control-kirki-slider input[type=range]::-moz-range-thumb{background-color:' . $accent . ';}';
-			$css .= '.customize-control-kirki-slider input[type=range]::-ms-thumb{background-color:' . $accent . ';}';
+			$css .= ".customize-control-kirki-slider input[type=range]::-webkit-slider-thumb{background-color:{$accent};}";
+			$css .= ".customize-control-kirki-slider input[type=range]::-moz-range-thumb{background-color:{$accent};}";
+			$css .= ".customize-control-kirki-slider input[type=range]::-ms-thumb{background-color:{$accent};}";
 
-			$css .= '.customize-control-kirki-slider input[type=range]{background:' . $border_on_back . ';}';
+			$css .= ".customize-control-kirki-slider input[type=range]{background:{$border_on_back};}";
 
 			$elements = array(
 				'.select2-container--default .select2-selection--single .select2-selection__rendered',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $text_on_back . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$text_on_back};}";
 
 			$elements = array(
 				'.wp-full-overlay-footer .devices',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background: none;';
-			$css .= 'background: transparent;';
-			$css .= 'box-shadow: none;';
-			$css .= '-webkit-box-shadow: none;';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . '{background:none;background:transparent;box-shadow:none;-webkit-box-shadow:none;}';
 
-			$css .= '.kirki-reset-section .dashicons{color:' . $back_on_back . ';}';
+			$css .= ".kirki-reset-section .dashicons{color:{$back_on_back};}";
 
 		} // End if().
 
@@ -360,13 +282,13 @@ class Kirki_Modules_Customizer_Styling {
 				'.customize-section-back:hover',
 			);
 			$css .= implode( ',', $elements ) . '{';
-			$css .= ( $back ) ? 'background:' . $hover_on_back . ';' : '';
-			$css .= ( $accent ) ? 'color:' . $accent . ';border-left-color:' . $accent . ';' : '';
+			$css .= ( $back ) ? "background:{$hover_on_back};" : '';
+			$css .= ( $accent ) ? "color:{$accent};border-left-color:{$accent};" : '';
 			$css .= '}';
 
 			$css .= '.customize-controls-close:hover{';
-			$css .= ( $back ) ? 'background-color:' . $back . ';' : '';
-			$css .= ( $accent ) ? 'color:' . $accent . ';border-color:' . $accent . ';' : '';
+			$css .= ( $back ) ? "background-color:{$back};" : '';
+			$css .= ( $accent ) ? "color:{$accent};border-color:{$accent};" : '';
 			$css .= '}';
 
 		}
@@ -378,21 +300,12 @@ class Kirki_Modules_Customizer_Styling {
 				'#customize-theme-controls .control-section.open .accordion-section-title:after',
 				'#customize-theme-controls .control-section:hover>.accordion-section-title:after',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'color:' . $accent . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{color:{$accent};}";
 
 			$elements = array(
 				'.wp-core-ui .button.button-primary',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $accent . ';';
-			$css .= 'border-color:' . $border_on_accent . ';';
-			$css .= 'box-shadow:0 1px 0 ' . $border_on_accent . ';';
-			$css .= '-webkit-box-shadow:0 1px 0 ' . $border_on_accent . ';';
-			$css .= 'text-shadow:0 -1px 1px ' . $border_on_accent . ', 1px 0 1px ' . $border_on_accent . ', 0 1px 1px ' . $border_on_accent . ', -1px 0 1px ' . $border_on_accent . ';';
-			$css .= 'color:' . $text_on_accent . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$accent};border-color:{$border_on_accent};box-shadow:0 1px 0 {$border_on_accent};-webkit-box-shadow:0 1px 0 {$border_on_accent};text-shadow:0 -1px 1px {$border_on_accent}, 1px 0 1px {$border_on_accent}, 0 1px 1px {$border_on_accent}, -1px 0 1px {$border_on_accent};color:{$text_on_accent};}";
 
 			$elements = array(
 				'.wp-core-ui .button.button-primary.focus',
@@ -400,14 +313,7 @@ class Kirki_Modules_Customizer_Styling {
 				'.wp-core-ui .button.button-primary:focus',
 				'.wp-core-ui .button.button-primary:hover',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $accent . ';';
-			$css .= 'border-color:' . $border_on_accent . ';';
-			$css .= 'box-shadow: 0 1px 0 ' . $border_on_accent . ';';
-			$css .= '-webkit-box-shadow: 0 1px 0 ' . $border_on_accent . ';';
-			$css .= 'text-shadow: 0 -1px 1px ' . $border_on_accent . ', 1px 0 1px ' . $border_on_accent . ', 0 1px 1px ' . $border_on_accent . ', -1px 0 1px ' . $border_on_accent . ';';
-			$css .= 'color:' . $text_on_accent . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$accent};border-color:{$border_on_accent};box-shadow: 0 1px 0 {$border_on_accent};-webkit-box-shadow: 0 1px 0 {$border_on_accent};text-shadow: 0 -1px 1px {$border_on_accent}, 1px 0 1px {$border_on_accent}, 0 1px 1px {$border_on_accent}, -1px 0 1px {$border_on_accent};color:{$text_on_accent};}";
 
 			$elements = array(
 				'.wp-core-ui .button.button-primary-disabled',
@@ -415,51 +321,32 @@ class Kirki_Modules_Customizer_Styling {
 				'.wp-core-ui .button.button-primary:disabled',
 				'.wp-core-ui .button.button-primary[disabled]',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $accent_disabled . ' !important;';
-			$css .= 'border-color: ' . $border_on_accent_disabled . ' !important;';
-			$css .= 'box-shadow: 0 1px 0 ' . $border_on_accent_disabled . ' !important;';
-			$css .= '-webkit-box-shadow: 0 1px 0 ' . $border_on_accent_disabled . ' !important;';
-			$css .= 'text-shadow: 0 -1px 1px ' . $border_on_accent_disabled . ', 1px 0 1px ' . $border_on_accent_disabled . ', 0 1px 1px ' . $border_on_accent_disabled . ', -1px 0 1px ' . $border_on_accent_disabled . ' !important;';
-			$css .= 'color:' . $text_on_accent_disabled . ' !important;';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$accent_disabled} !important;border-color: {$border_on_accent_disabled} !important;box-shadow: 0 1px 0 {$border_on_accent_disabled} !important;-webkit-box-shadow: 0 1px 0 {$border_on_accent_disabled} !important;text-shadow: 0 -1px 1px {$border_on_accent_disabled}, 1px 0 1px {$border_on_accent_disabled}, 0 1px 1px {$border_on_accent_disabled}, -1px 0 1px {$border_on_accent_disabled} !important;color:{$text_on_accent_disabled} !important;}";
 
 			$elements = array(
 				'input[type=checkbox]:checked:before',
 			);
 			if ( $accent ) {
-				$css .= implode( ',', $elements ) . '{';
-				$css .= 'color:' . $accent . ';';
-				$css .= '}';
+				$css .= implode( ',', $elements ) . "{color:{$accent}}";
 			}
 
 			$elements = array(
 				'.select2-container--default .select2-results__option--highlighted[aria-selected]',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $accent . ';';
-			$css .= 'color:' . $text_on_accent . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$accent}color:{$text_on_accent}}";
 
 			$elements = array(
 				'.customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label',
 				'.customize-control-kirki-background .background-attachment .buttonset .switch-input:checked + .switch-label',
 				'.customize-control-kirki-background .background-size .buttonset .switch-input:checked + .switch-label',
 			);
-			$css .= implode( ',', $elements ) . '{';
-			$css .= 'background-color:' . $accent . ';';
-			$css .= 'border-color:' . $border_on_accent . ';';
-			$css .= 'color:' . $text_on_accent . ';';
-			$css .= '}';
+			$css .= implode( ',', $elements ) . "{background-color:{$accent};border-color:{$border_on_accent};color:{$text_on_accent};}";
 		} // End if().
 
 		if ( isset( $config['width'] ) ) {
 			if ( false === strpos( $config['width'], 'calc' ) ) {
 				$width = esc_attr( $config['width'] );
-				$css .= '.wp-full-overlay-sidebar{width:' . $width . ';}';
-				$css .= '.expanded .wp-full-overlay-footer{width:' . $width . '}';
-				$css .= '.wp-full-overlay.expanded{margin-left:' . $width . ';}';
-				$css .= '.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -' . $width . ';}';
+				$css .= ".wp-full-overlay-sidebar{width:{$width};}.expanded .wp-full-overlay-footer{width:{$width};}.wp-full-overlay.expanded{margin-left:{$width};}.wp-full-overlay.collapsed .wp-full-overlay-sidebar{margin-left: -{$width};}";
 			}
 		}
 
