@@ -35,6 +35,9 @@ class Kirki_Init {
 		add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) );
 
 		new Kirki_Custom_Build();
+
+		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
+		add_filter( 'option_active_plugins', array( $this, 'is_plugin_active' ) );
 	}
 
 	/**
@@ -371,5 +374,69 @@ class Kirki_Init {
 			return false;
 		}
 		return $is_plugin;
+	}
+
+	/**
+	 * HTTP Request injection.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @param array  $r The request params.
+	 * @param string $url The request URL.
+	 * @return array
+	 */
+	public function http_request( $r = array(), $url = '' ) {
+		// Early exit if not a request to wordpress.org.
+		if ( false === strpos( $url, 'wordpress.org' ) ) {
+			return $r;
+		}
+		// Early exit if Kirki is installed as a plugin.
+		if ( self::is_plugin() ) {
+			return $r;
+		}
+		// Early exit if we don't have everything we need.
+		if ( ! isset( $r['body'] ) || ! isset( $r['body']['plugins'] ) || ! isset( $r['body']['translations'] ) || ! isset( $r['body']['locale'] ) || ! isset( $r['body']['all'] ) ) {
+			return $r;
+		}
+		// Inject data.
+		$plugins = json_decode( $r['body']['plugins'], true );
+		if ( isset( $plugins['plugins'] ) ) {
+			$exists = false;
+			foreach ( $plugins['plugins'] as $plugin ) {
+				if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
+					$exists = true;
+				}
+			}
+			if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
+				$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
+			}
+			$r['body']['plugins'] = json_encode( $plugins );
+			return $r;
+		}
+		return $r;
+	}
+
+	/**
+	 * Plugin is active.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 * @param array $plugins An array of active plugins.
+	 * @return array Active plugins.
+	 */
+	public function is_plugin_active( $plugins ) {
+		global $pagenow;
+		if ( is_array( $plugins ) && 'plugins.php' !== $pagenow ) {
+			$exists = false;
+			foreach ( $plugins as $plugin ) {
+				if ( false !== strpos( $plugin, 'kirki.php' ) ) {
+					$exists = true;
+				}
+			}
+			if ( ! $exists ) {
+				$plugins[] = 'kirki/kirki.php';
+			}
+		}
+		return $plugins;
 	}
 }
