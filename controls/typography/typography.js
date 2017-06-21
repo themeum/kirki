@@ -95,9 +95,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    data            = [],
 		    standardFonts   = [],
 		    googleFonts     = [],
-			value           = control.getValue(),
-			variantSelector = control.selector + ' .variant select',
-			fonts           = control.getFonts(),
+		    value           = control.getValue(),
+		    variantSelector = control.selector + ' .variant select',
+		    fonts           = control.getFonts(),
 		    fontSelect;
 
 		// Format standard fonts as an array.
@@ -213,12 +213,13 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		var control    = this,
 		    value      = control.getValue(),
-			fontFamily = value['font-family'],
-			variants   = control.getVariants( fontFamily ),
+		    fontFamily = value['font-family'],
+		    variants   = control.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
 		    fontWeight,
+		    variantSelector,
 		    fontStyle;
 
 		if ( false !== variants ) {
@@ -269,8 +270,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		var control    = this,
 		    value      = control.getValue(),
-			fontFamily = value['font-family'],
-			subsets    = control.getSubsets( fontFamily ),
+		    fontFamily = value['font-family'],
+		    subsets    = control.getSubsets( fontFamily ),
 		    selector   = control.selector + ' .subsets select',
 		    data       = [],
 		    validValue = value.subsets,
