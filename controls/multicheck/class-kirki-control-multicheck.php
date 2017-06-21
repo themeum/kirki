@@ -56,7 +56,7 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'jquery' );
 		Kirki_Custom_Build::register_dependency( 'customize-base' );
 
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			wp_enqueue_script( 'kirki-multicheck', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.js', array( 'jquery', 'customize-base' ), false, true );
 			wp_enqueue_style( 'kirki-multicheck-css', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.css', null );
 		}

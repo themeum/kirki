@@ -64,7 +64,7 @@ class Kirki_Control_Number extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'jquery-ui-button' );
 
 		$script_to_localize = 'kirki-build';
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			$script_to_localize = 'kirki-number';
 			wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
 			wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );

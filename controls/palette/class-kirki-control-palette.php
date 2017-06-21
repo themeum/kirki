@@ -54,7 +54,7 @@ class Kirki_Control_Palette extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'customize-base' );
 		Kirki_Custom_Build::register_dependency( 'jquery-ui-button' );
 
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			wp_enqueue_script( 'kirki-palette', trailingslashit( Kirki::$url ) . 'controls/palette/palette.js', array( 'jquery', 'customize-base', 'jquery-ui-button' ), false, true );
 			wp_enqueue_style( 'kirki-palette-css', trailingslashit( Kirki::$url ) . 'controls/palette/palette.css', null );
 		}

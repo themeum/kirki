@@ -64,7 +64,7 @@ class Kirki_Control_Select extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'select2' );
 		Kirki_Custom_Build::register_dependency( 'jquery-ui-sortable' );
 
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			wp_enqueue_script( 'kirki-select', trailingslashit( Kirki::$url ) . 'controls/select/select.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
 			wp_enqueue_style( 'kirki-select-css', trailingslashit( Kirki::$url ) . 'controls/select/select.css', null );
 		}

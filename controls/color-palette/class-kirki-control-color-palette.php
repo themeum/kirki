@@ -55,7 +55,7 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'customize-base' );
 		Kirki_Custom_Build::register_dependency( 'jquery-ui-button' );
 
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			wp_enqueue_script( 'kirki-color-palette', trailingslashit( Kirki::$url ) . 'controls/color-palette/color-palette.js', array( 'jquery', 'customize-base', 'jquery-ui-button' ), false, true );
 			wp_enqueue_style( 'kirki-color-palette-css', trailingslashit( Kirki::$url ) . 'controls/color-palette/color-palette.css', null );
 		}

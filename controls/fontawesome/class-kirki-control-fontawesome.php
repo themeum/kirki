@@ -56,7 +56,7 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 		Kirki_Custom_Build::register_dependency( 'jquery-ui-sortable' );
 
 		$script_to_localize = 'kirki-build';
-		if ( ! Kirki_Custom_Build::is_custom_build() ) {
+		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
 			$script_to_localize = 'kirki-fontawesome';
 			wp_enqueue_script( 'kirki-fontawesome', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
 			wp_enqueue_style( 'kirki-fontawesome-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.css', null );
