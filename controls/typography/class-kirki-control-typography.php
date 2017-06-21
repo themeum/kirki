@@ -124,11 +124,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/css/select2.css', array(), '4.0.3' );
 		wp_enqueue_style( 'kirki-select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
 
-		$custom_fonts_array = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
-		$localize_script_var_name = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';
+		$custom_fonts_array  = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
+		$localize_script_var = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';
 		wp_localize_script(
 			$script_to_localize,
-			$localize_script_var_name,
+			$localize_script_var,
 			array(
 				'standard' => $this->get_standard_fonts(),
 				'google'   => $this->get_google_fonts(),
