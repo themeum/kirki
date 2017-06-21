@@ -102,7 +102,7 @@ This is a major release. Many things have been refactored and optimized. Please 
 * New: CSS-Output is now a module.
 * New: Abstracted the "spacing" control and created a new "dimensions" control from it.
 * New: Allow saving site-options(`'option_type' => 'site_option'`) [#1326](https://github.com/aristath/kirki/issues/1326)
-* New: Added 2 new methods for enqueueing google fonts. See the [`kirki/{$config_id}/googlefonts_load_method`](https://github.com/aristath/kirki/blob/9e3e4a6928339bdcd0f7520d305c145a80a06c8a/modules/webfonts/class-kirki-modules-webfonts.php#L100) filter.
+* New: Added 2 new methods for enqueueing google fonts. See the [`kirki/googlefonts_load_method`](https://github.com/aristath/kirki/blob/9e3e4a6928339bdcd0f7520d305c145a80a06c8a/modules/webfonts/class-kirki-modules-webfonts.php#L100) filter.
 * New: Googlefonts now by default added inline in the stylesheet to avoid an extra call to the GoogleFonts API. (SEO & performance improvement).
 
 = 2.3.8 =
