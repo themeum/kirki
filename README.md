@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.8  
 **Tested up to:** 4.8  
-**Stable tag:** 2.3.8  
+**Stable tag:** 3.0.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -35,7 +35,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.0 ###
 
-Date TBT, dev time: 240 hours.
+June 22, 2017, dev time: 243 hours.
 
 This is a major release. Many things have been refactored and optimized. Please keep a backup before updating.
 
