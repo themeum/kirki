@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: http://kirki.org/
 Requires at least: 4.8
 Tested up to: 4.8
-Stable tag: 3.0.1
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,9 +33,16 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.0.1 =
+= 3.0.3 =
 
-June 22, 2017, dev time: 5 minutes
+* Fix: Error when color is not properly formatted.
+
+= 3.0.2 =
+
+* Fix: CSS bugfixes in the `editor` control.
+* Fix: Improvements when embedding Kirki in a theme.
+
+= 3.0.1 =
 
 * Fix: Undefined index PHP Notice.
 
