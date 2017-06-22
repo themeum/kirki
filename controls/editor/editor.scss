@@ -87,3 +87,9 @@ div.mce-inline-toolbar-grp {
     z-index: 500000 !important;
   }
 }
+
+#customize-preview {
+	&.is-kirki-editor-open{
+		height: calc(100% - 301px);
+	}
+}
