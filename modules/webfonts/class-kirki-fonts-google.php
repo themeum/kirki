@@ -191,7 +191,7 @@ final class Kirki_Fonts_Google {
 							}
 						}
 					}
-				}
+				} // End foreach().
 			} // End if().
 		} // End if().
 	}
