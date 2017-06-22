@@ -118,6 +118,11 @@ final class Kirki_Fonts_Google {
 				return;
 			}
 
+			// If not a google-font, then we can skip this.
+			if ( ! Kirki_Fonts::is_google_font( $family ) ) {
+				return;
+			}
+
 			// Set a default value for variants.
 			if ( ! isset( $value['variant'] ) ) {
 				$value['variant'] = 'regular';
