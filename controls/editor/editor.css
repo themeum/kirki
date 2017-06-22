@@ -63,4 +63,7 @@ div.mce-inline-toolbar-grp {
 .ui-autocomplete.wplink-autocomplete {
   z-index: 500000 !important; }
 
+#customize-preview.is-kirki-editor-open {
+  height: calc(100% - 301px); }
+
 /*# sourceMappingURL=editor.css.map */
