@@ -152,7 +152,7 @@ final class Kirki_Fonts_Google {
 					$this->fonts[ $value['font-family'] ][] = $extra_variant;
 				}
 			}
-		} else {
+		} elseif ( is_string( $value ) ) {
 
 			// Process non-typography fields.
 			if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
