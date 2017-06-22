@@ -117,7 +117,6 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 		<?php
 	}
 
-
 	/**
 	 * Render the control's content.
 	 *
