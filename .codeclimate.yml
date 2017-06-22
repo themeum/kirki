@@ -2,6 +2,21 @@
 engines:
   csslint:
     enabled: true
+    checks:
+      fallback-colors:
+        enabled: false
+      qualified-headings:
+        enabled: false
+      important:
+        enabled: false
+      universal-selector:
+        enabled: false
+      compatible-vendor-prefixes:
+        enabled: false
+      box-sizing:
+        enabled: false
+      star-property-hack:
+        enabled: false
   duplication:
     enabled: false
     config:
@@ -10,10 +25,31 @@ engines:
       - php
   fixme:
     enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "Wordpress"
+    checks:
+      WordPress NamingConventions ValidHookName UseUnderscores:
+        enabled: false
+      WordPress WP AlternativeFunctions file_system_read_file_get_contents:
+        enabled: false
   phpmd:
     enabled: true
     checks:
+      Controversial/CamelCaseClassName:
+        enabled: false
       Controversial/CamelCaseMethodName:
+        enabled: false
+      Controversial/CamelCaseVariableName:
+        enabled: false
+      Controversial/CamelCasePropertyName:
+        enabled: false
+      Controversial/CamelCaseParameterName:
+        enabled: false
+      Naming/ShortVariable:
+        enabled: false
+      Naming/LongVariable:
         enabled: false
 ratings:
   paths:
@@ -21,8 +57,8 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths:
-- controls/sortable/serialize.js
-- controls/**/selectize.js
-- assets/js/vendor/*
+- assets/vendor/*
+- lib/class-aricolor.php
+- modules/webfonts/webfonts.php
 - tests/*
 - bin/*

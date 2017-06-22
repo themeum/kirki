@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 
 class Test_ariColor extends WP_UnitTestCase {
 
@@ -212,8 +213,8 @@ class Test_ariColor extends WP_UnitTestCase {
 
 					}
 				}
-			}
-		}
+			} // End foreach().
+		} // End foreach().
 	}
 
 	public function test_color_conversions() {
@@ -363,7 +364,7 @@ class Test_ariColor extends WP_UnitTestCase {
 			'FF5722',
 			'795548',
 			'9E9E9E',
-			'607D8B'
+			'607D8B',
 		);
 		foreach ( $colors as $color ) {
 			$mdc[] = '#' . $color;

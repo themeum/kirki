@@ -1,3 +1,4 @@
 **/**.min.js
-assets/js/vendor/
-Gruntfile.js
+assets/vendor/
+modules/search/fuse.js
+modules/search/fuse.min.js

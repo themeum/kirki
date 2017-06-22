@@ -1,0 +1,79 @@
+.customize-control-kirki-number {
+  position: relative; }
+  .customize-control-kirki-number .ui-spinner.ui-widget-content {
+    position: relative; }
+    .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button {
+      position: absolute;
+      right: 0;
+      color: rgba(0, 0, 0, 0.3);
+      border: none;
+      padding: 0 5px;
+      width: 20px;
+      height: calc(50% + 0.5em);
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      background: transparent;
+      background: none;
+      margin: 0; }
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button .ui-button-text {
+        display: none; }
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before, .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before {
+        font-family: dashicons;
+        position: absolute;
+        left: 0; }
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up {
+        top: -50%; }
+        .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-up:before {
+          content: "\f343"; }
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down {
+        top: 50%; }
+        .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button.ui-spinner-down:before {
+          content: "\f347"; }
+      .customize-control-kirki-number .ui-spinner.ui-widget-content .ui-spinner-button:hover {
+        color: rgba(0, 0, 0, 0.7); }
+  .customize-control-kirki-number .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee; }
+    .customize-control-kirki-number .kirki-controls-loading-spinner > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both; }
+    .customize-control-kirki-number .kirki-controls-loading-spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s; }
+    .customize-control-kirki-number .kirki-controls-loading-spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s; }
+
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+/*# sourceMappingURL=number.css.map */

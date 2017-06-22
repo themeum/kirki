@@ -1,0 +1,105 @@
+.customize-control-kirki-switch {
+  position: relative; }
+  .customize-control-kirki-switch .switch {
+    border: none;
+    margin-bottom: 1.5rem;
+    outline: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+    .customize-control-kirki-switch .switch label {
+      background: rgba(0, 0, 0, 0.2);
+      color: transparent;
+      cursor: pointer;
+      display: block;
+      margin-bottom: 1rem;
+      position: relative;
+      transition: left 0.15s ease-out;
+      height: 2rem;
+      width: 4rem;
+      font-family: Monaco, "Lucida Sans Typewriter", "Lucida Typewriter", "Courier New", Courier, monospace; }
+      .customize-control-kirki-switch .switch label:after {
+        background: #FFFFFF;
+        content: "";
+        display: block;
+        height: 1.5rem;
+        left: 0.25rem;
+        position: absolute;
+        top: 0.25rem;
+        width: 1.5rem;
+        -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
+        -ms-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out; }
+    .customize-control-kirki-switch .switch input + label {
+      margin-left: 0;
+      margin-right: 0; }
+    .customize-control-kirki-switch .switch input:checked + label {
+      background: #3498DB; }
+      .customize-control-kirki-switch .switch input:checked + label:after {
+        left: 2.25rem;
+        background: #ffffff; }
+    .customize-control-kirki-switch .switch.round {
+      border-radius: 1000px; }
+      .customize-control-kirki-switch .switch.round label {
+        border-radius: 2rem; }
+        .customize-control-kirki-switch .switch.round label:after {
+          border-radius: 2rem; }
+  .customize-control-kirki-switch .switch-off,
+  .customize-control-kirki-switch .switch-on {
+    line-height: 32px;
+    font-weight: bold;
+    padding: 0 10px; }
+  .customize-control-kirki-switch .switch-on {
+    color: #fff;
+    padding-right: 5px; }
+  .customize-control-kirki-switch .switch-off {
+    color: #777;
+    padding-left: 5px; }
+  .customize-control-kirki-switch .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee; }
+    .customize-control-kirki-switch .kirki-controls-loading-spinner > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both; }
+    .customize-control-kirki-switch .kirki-controls-loading-spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s; }
+    .customize-control-kirki-switch .kirki-controls-loading-spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s; }
+
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+/*# sourceMappingURL=switch.css.map */

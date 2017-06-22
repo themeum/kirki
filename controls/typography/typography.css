@@ -1,0 +1,87 @@
+.customize-control-kirki-typography {
+  position: relative; }
+  .customize-control-kirki-typography .wrapper {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.1); }
+    .customize-control-kirki-typography .wrapper .color,
+    .customize-control-kirki-typography .wrapper .font-backup,
+    .customize-control-kirki-typography .wrapper .font-family,
+    .customize-control-kirki-typography .wrapper .font-size,
+    .customize-control-kirki-typography .wrapper .letter-spacing,
+    .customize-control-kirki-typography .wrapper .line-height,
+    .customize-control-kirki-typography .wrapper .margin-bottom,
+    .customize-control-kirki-typography .wrapper .margin-top,
+    .customize-control-kirki-typography .wrapper .subsets,
+    .customize-control-kirki-typography .wrapper .text-transform,
+    .customize-control-kirki-typography .wrapper .variant {
+      width: 100%;
+      float: none;
+      clear: both; }
+      .customize-control-kirki-typography .wrapper .color h5,
+      .customize-control-kirki-typography .wrapper .font-backup h5,
+      .customize-control-kirki-typography .wrapper .font-family h5,
+      .customize-control-kirki-typography .wrapper .font-size h5,
+      .customize-control-kirki-typography .wrapper .letter-spacing h5,
+      .customize-control-kirki-typography .wrapper .line-height h5,
+      .customize-control-kirki-typography .wrapper .margin-bottom h5,
+      .customize-control-kirki-typography .wrapper .margin-top h5,
+      .customize-control-kirki-typography .wrapper .subsets h5,
+      .customize-control-kirki-typography .wrapper .text-transform h5,
+      .customize-control-kirki-typography .wrapper .variant h5 {
+        margin: 0.67em 0 0; }
+    .customize-control-kirki-typography .wrapper .font-size,
+    .customize-control-kirki-typography .wrapper .letter-spacing,
+    .customize-control-kirki-typography .wrapper .line-height,
+    .customize-control-kirki-typography .wrapper .margin-bottom,
+    .customize-control-kirki-typography .wrapper .margin-top,
+    .customize-control-kirki-typography .wrapper .text-transform {
+      width: 48%; }
+    .customize-control-kirki-typography .wrapper .color {
+      width: auto; }
+  .customize-control-kirki-typography .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee; }
+    .customize-control-kirki-typography .kirki-controls-loading-spinner > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both; }
+    .customize-control-kirki-typography .kirki-controls-loading-spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s; }
+    .customize-control-kirki-typography .kirki-controls-loading-spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s; }
+
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+/*# sourceMappingURL=typography.css.map */

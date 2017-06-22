@@ -1,0 +1,34 @@
+.kirki-reset-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  color: #fff;
+  font-size: .8rem;
+  border-radius: 3px;
+  padding: 0 5px;
+  transition: all .2s ease-in-out;
+  font-weight: 400;
+  text-decoration: none; }
+  .kirki-reset-section .dashicons {
+    font-size: .8rem;
+    color: rgba(0, 0, 0, 0.1);
+    height: .8rem;
+    vertical-align: middle; }
+  .kirki-reset-section .label {
+    width: 0;
+    overflow: hidden;
+    display: none; }
+  .kirki-reset-section:hover, .kirki-reset-section:active {
+    background: #F44336;
+    color: #fff; }
+    .kirki-reset-section:hover .dashicons, .kirki-reset-section:active .dashicons {
+      color: #fff; }
+    .kirki-reset-section:hover .label, .kirki-reset-section:active .label {
+      width: auto;
+      display: inline; }
+  .kirki-reset-section:focus {
+    -webkit-box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8);
+    box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8); }
+
+/*# sourceMappingURL=reset.css.map */

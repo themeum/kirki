@@ -1,0 +1,111 @@
+.customize-control-kirki-gradient {
+  position: relative; }
+  .customize-control-kirki-gradient .gradient-preview {
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1em; }
+  .customize-control-kirki-gradient h4 {
+    margin: 0.5em 0;
+    font-weight: 400; }
+  .customize-control-kirki-gradient .colors .color-end,
+  .customize-control-kirki-gradient .colors .color-start {
+    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 3px;
+    margin: 0.5em 0; }
+  .customize-control-kirki-gradient input[type=range] {
+    -webkit-appearance: none;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    transition: background 0.3s;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 5px;
+    width: 100%;
+    padding: 0; }
+    .customize-control-kirki-gradient input[type=range]:focus {
+      box-shadow: none;
+      outline: none; }
+    .customize-control-kirki-gradient input[type=range]:hover {
+      background-color: rgba(0, 0, 0, 0.25); }
+    .customize-control-kirki-gradient input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      background-color: #3498D9; }
+    .customize-control-kirki-gradient input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border: none;
+      border-radius: 50%;
+      background-color: #3498D9; }
+    .customize-control-kirki-gradient input[type=range]::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border: none;
+      border-radius: 50%;
+      background-color: #3498D9; }
+    .customize-control-kirki-gradient input[type=range]::-ms-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 0;
+      background-color: #3498D9; }
+    .customize-control-kirki-gradient input[type=range]::-moz-range-track {
+      border: inherit;
+      background: transparent; }
+    .customize-control-kirki-gradient input[type=range]::-ms-track {
+      border: inherit;
+      color: transparent;
+      background: transparent; }
+    .customize-control-kirki-gradient input[type=range]::-ms-fill-lower, .customize-control-kirki-gradient input[type=range]::-ms-fill-upper {
+      background: transparent; }
+    .customize-control-kirki-gradient input[type=range]::-ms-tooltip {
+      display: none; }
+  .customize-control-kirki-gradient .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee; }
+    .customize-control-kirki-gradient .kirki-controls-loading-spinner > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both; }
+    .customize-control-kirki-gradient .kirki-controls-loading-spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s; }
+    .customize-control-kirki-gradient .kirki-controls-loading-spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s; }
+
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+/*# sourceMappingURL=gradient.css.map */

@@ -1,0 +1,150 @@
+.wp-customizer div.ui-datepicker {
+  z-index: 500001 !important;
+  width: 255px;
+  background: #fff;
+  border: 1px solid #dedede;
+
+  .ui-datepicker-header {
+    padding: 10px;
+    background: #e5e5e5;
+    border-bottom: 1px solid #fff;
+
+    .ui-datepicker-next,
+    .ui-datepicker-prev {
+      display: block;
+      position: absolute;
+      width: 1em;
+      overflow: hidden;
+
+      &:after,
+      &:before {
+        font-family: dashicons;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .ui-icon {
+        display: none;
+      }
+    }
+
+    .ui-datepicker-prev {
+      left: 10px;
+
+      &:before {
+        content: "\f341";
+      }
+    }
+
+    .ui-datepicker-next {
+      right: 10px;
+
+      &:after {
+        content: "\f345";
+      }
+    }
+
+    .ui-datepicker-title {
+      text-align: center;
+    }
+  }
+
+  .ui-datepicker-calendar {
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+      background: #e5e5e5;
+      padding: 5px;
+    }
+
+    tr {
+      td {
+        text-align: center;
+
+        a {
+          display: block;
+          padding: 5px;
+          color: #333;
+          text-decoration: none;
+
+          &.ui-state-active,
+          &:hover {
+            color: #fff;
+            background-color: #0073aa;
+          }
+        }
+
+        &.ui-state-disabled,
+        &.ui-state-disabled .ui-state-default {
+          a {
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+}
+
+.customize-control-kirki-date {
+  position: relative;
+
+  .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee;
+
+    > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+    }
+
+    .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+  }
+}
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1.0);
+  }
+}
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

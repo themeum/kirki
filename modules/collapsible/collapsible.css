@@ -1,0 +1,13 @@
+.kirki-collapsible.kirki-collapsed-control {
+  display: none !important; }
+.kirki-collapsible.kirki-expanded-control .customize-control-title {
+  cursor: pointer; }
+  .kirki-collapsible.kirki-expanded-control .customize-control-title:hover {
+    color: #000; }
+
+.kirki-collapsed-control-header {
+  cursor: pointer; }
+  .kirki-collapsed-control-header:hover {
+    color: #000; }
+
+/*# sourceMappingURL=collapsible.css.map */

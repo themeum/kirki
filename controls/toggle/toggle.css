@@ -1,0 +1,96 @@
+.customize-control-kirki-toggle {
+  position: relative; }
+  .customize-control-kirki-toggle label {
+    display: flex;
+    flex-wrap: wrap; }
+    .customize-control-kirki-toggle label .customize-control-title {
+      width: calc(100% - 55px); }
+    .customize-control-kirki-toggle label .description {
+      order: 99; }
+  .customize-control-kirki-toggle .switch {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 35px;
+    height: 12px;
+    border-radius: 8px;
+    background: #ccc;
+    vertical-align: middle;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 350ms ease; }
+    .customize-control-kirki-toggle .switch:after, .customize-control-kirki-toggle .switch:before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: -3px;
+      transition: all 350ms cubic-bezier(0, 0.95, 0.38, 0.98), background 150ms ease; }
+    .customize-control-kirki-toggle .switch:before {
+      background: rgba(0, 0, 0, 0.2);
+      transform: translate3d(0, -50%, 0) scale(0); }
+    .customize-control-kirki-toggle .switch:after {
+      background: #999;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transform: translate3d(0, -50%, 0); }
+    .customize-control-kirki-toggle .switch:active:before {
+      transform: translate3d(0, -50%, 0) scale(3); }
+  .customize-control-kirki-toggle input:checked + .switch {
+    background: rgba(52, 152, 222, 0.3); }
+    .customize-control-kirki-toggle input:checked + .switch:before {
+      background: rgba(52, 152, 222, 0.075);
+      transform: translate3d(100%, -50%, 0) scale(1); }
+    .customize-control-kirki-toggle input:checked + .switch:after {
+      background: #3498DE;
+      transform: translate3d(100%, -50%, 0); }
+    .customize-control-kirki-toggle input:checked + .switch:active:before {
+      background: rgba(52, 152, 222, 0.075);
+      transform: translate3d(100%, -50%, 0) scale(3); }
+  .customize-control-kirki-toggle .kirki-controls-loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    text-align: center;
+    background-color: #eee; }
+    .customize-control-kirki-toggle .kirki-controls-loading-spinner > div {
+      margin-top: 20px;
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: kirkibouncedelay 1.4s infinite ease-in-out both;
+      animation: kirkibouncedelay 1.4s infinite ease-in-out both; }
+    .customize-control-kirki-toggle .kirki-controls-loading-spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s; }
+    .customize-control-kirki-toggle .kirki-controls-loading-spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s; }
+
+@-webkit-keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes kirkibouncedelay {
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+/*# sourceMappingURL=toggle.css.map */
