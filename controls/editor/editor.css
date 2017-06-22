@@ -63,8 +63,4 @@ div.mce-inline-toolbar-grp {
 .ui-autocomplete.wplink-autocomplete {
   z-index: 500000 !important; }
 
-#wp-link-wrap,
-.mce-tooltip {
-  z-index: 500000 !important; }
-
 /*# sourceMappingURL=editor.css.map */
