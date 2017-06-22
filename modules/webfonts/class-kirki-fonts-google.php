@@ -166,25 +166,27 @@ final class Kirki_Fonts_Google {
 					// Get the value.
 					$value = Kirki_Values::get_sanitized_field_value( $args );
 
-					if ( 'font-family' === $output['property'] ) {
-						if ( ! array_key_exists( $value, $this->fonts ) ) {
-							$this->fonts[ $value ] = array();
-						}
-					} elseif ( 'font-weight' === $output['property'] ) {
-						foreach ( $this->fonts as $font => $variants ) {
-							if ( ! in_array( $value, $variants, true ) ) {
-								$this->fonts[ $font ][] = $value;
+					if ( is_string( $value ) ) {
+						if ( 'font-family' === $output['property'] ) {
+							if ( ! array_key_exists( $value, $this->fonts ) ) {
+								$this->fonts[ $value ] = array();
 							}
-						}
-					} elseif ( 'font-subset' === $output['property'] || 'subset' === $output['property'] || 'subsets' === $output['property'] ) {
-						if ( ! is_array( $value ) ) {
-							if ( ! in_array( $value, $this->subsets, true ) ) {
-								$this->subsets[] = $value;
+						} elseif ( 'font-weight' === $output['property'] ) {
+							foreach ( $this->fonts as $font => $variants ) {
+								if ( ! in_array( $value, $variants, true ) ) {
+									$this->fonts[ $font ][] = $value;
+								}
 							}
-						} else {
-							foreach ( $value as $subset ) {
-								if ( ! in_array( $subset, $this->subsets, true ) ) {
-									$this->subsets[] = $subset;
+						} elseif ( 'font-subset' === $output['property'] || 'subset' === $output['property'] || 'subsets' === $output['property'] ) {
+							if ( ! is_array( $value ) ) {
+								if ( ! in_array( $value, $this->subsets, true ) ) {
+									$this->subsets[] = $value;
+								}
+							} else {
+								foreach ( $value as $subset ) {
+									if ( ! in_array( $subset, $this->subsets, true ) ) {
+										$this->subsets[] = $subset;
+									}
 								}
 							}
 						}

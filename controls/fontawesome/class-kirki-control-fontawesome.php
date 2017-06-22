@@ -67,8 +67,11 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), '4.0.3', true );
 		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/css/select2.css', array(), '4.0.3' );
 		wp_enqueue_style( 'kirki-select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
+		ob_start();
 		$json_path = wp_normalize_path( dirname( __FILE__ ) . '/fontawesome.json' );
-		wp_localize_script( $script_to_localize, 'fontAwesomeJSON', include( $json_path ) );
+		include( $json_path );
+		$font_awesome_json = ob_get_clean();
+		wp_localize_script( $script_to_localize, 'fontAwesomeJSON', $font_awesome_json );
 	}
 
 	/**
