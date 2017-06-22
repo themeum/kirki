@@ -30,7 +30,7 @@ if ( class_exists( 'Kirki' ) ) {
 }
 
 // Include the autoloader.
-include_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php' );
+include_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
@@ -82,7 +82,7 @@ Kirki::add_config( '' );
 $custom_config_path = dirname( __FILE__ ) . '/custom-config.php';
 $custom_config_path = wp_normalize_path( $custom_config_path );
 if ( file_exists( $custom_config_path ) ) {
-	include_once( $custom_config_path );
+	include_once $custom_config_path;
 }
 
 // Add upgrade notifications.
