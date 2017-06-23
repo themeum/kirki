@@ -97,7 +97,7 @@ class Kirki_Modules_Icons {
 		// Parse panels and find ones with icons.
 		foreach ( $panels as $panel ) {
 			if ( isset( $panel['icon'] ) ) {
-				$this->add_icon( $section['id'], $section['icon'], 'panel' );
+				$this->add_icon( $panel['id'], $panel['icon'], 'panel' );
 			}
 		}
 
