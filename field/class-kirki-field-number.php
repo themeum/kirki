@@ -64,20 +64,12 @@ class Kirki_Field_Number extends Kirki_Field {
 			return $max;
 		}
 
-		// Step divider.
+		// Only multiple of steps.
 		if ( isset( $this->choices['min'] ) && isset( $this->choices['step'] ) ) {
-			// Keep calculation simple to avoid memory issues.
-			if ( 1 > $step || $max - $min > 100 ) {
-				return $value;
+			$steps = ( $value - $min ) / $step;
+			if ( (int) $steps !== $steps ) {
+				$value = $min + ( round( $steps ) * $step );
 			}
-			$valid = range( $min, $max, $step );
-
-			$smallest = array();
-			foreach ( $valid as $possible_value ) {
-				$smallest[ $possible_value ] = abs( $possible_value - $value );
-			}
-			asort( $smallest );
-			$value = key( $smallest );
 		}
 
 		return $value;
