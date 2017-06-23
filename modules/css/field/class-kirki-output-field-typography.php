@@ -28,10 +28,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 
-		if ( ! isset( $value['variant'] ) || ! isset( $value['font-weight'] ) || ! isset( $value['font-style'] ) ) {
-			$value = Kirki_Field_Typography::sanitize( $value );
-			$this->value = $value;
-		}
+		$value = Kirki_Field_Typography::sanitize( $value );
 
 		$properties = array(
 			'font-family',

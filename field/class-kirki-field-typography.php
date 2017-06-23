@@ -128,7 +128,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 		}
 
 		// Get font-weight from variant.
-		if ( ! isset( $value['font-weight'] ) && isset( $value['variant'] ) ) {
+		if ( isset( $value['variant'] ) ) {
 			$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 			$value['font-weight'] = absint( $value['font-weight'] );
 
