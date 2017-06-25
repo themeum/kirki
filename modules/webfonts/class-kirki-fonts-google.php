@@ -147,6 +147,12 @@ final class Kirki_Fonts_Google {
 			if ( ! in_array( $value['variant'], $this->fonts[ $value['font-family'] ], true ) ) {
 				$this->fonts[ $value['font-family'] ][] = $value['variant'];
 			}
+			// Are we force-loading all variants?
+			if ( true === self::$force_load_all_variants ) {
+				$all_variants = Kirki_Fonts::get_all_variants();
+				$args['choices']['variant'] = array_keys( $all_variants );
+			}
+
 			if ( ! empty( $args['choices']['variant'] ) ) {
 				foreach ( $args['choices']['variant'] as $extra_variant ) {
 					$this->fonts[ $value['font-family'] ][] = $extra_variant;

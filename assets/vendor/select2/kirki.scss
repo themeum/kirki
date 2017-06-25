@@ -40,3 +40,8 @@
     }
   }
 }
+
+.wp-customizer .select2-container {
+  // @See https://github.com/aristath/kirki/issues/1418
+  z-index: 999999 !important;
+}

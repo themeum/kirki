@@ -44,7 +44,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 		);
 
 		foreach ( $properties as $property ) {
-			if ( ! isset( $value[ $property ] ) || '' === $value[ $property ] ) {
+			if ( ! isset( $value[ $property ] ) || ! $value[ $property ] ) {
 				continue;
 			}
 			if ( isset( $output['choice'] ) && $output['choice'] !== $property ) {
