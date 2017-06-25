@@ -426,7 +426,7 @@ class Kirki_Init {
 	 */
 	public function is_plugin_active( $plugins ) {
 		global $pagenow;
-		$referer = ( isset( $_SERVER ) && isset( $_SERVER['HTTP_REFERER'] ) ) ? $_SERVER['HTTP_REFERER'] : '';
+		$referer = ( isset( $_SERVER ) && isset( $_SERVER['HTTP_REFERER'] ) ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
 		if ( is_array( $plugins ) && 'plugins.php' !== $pagenow && 'network/plugins.php' !== $pagenow && false === strpos( $referer, 'plugins.php' ) ) {
 			$exists = false;
 			foreach ( $plugins as $plugin ) {
