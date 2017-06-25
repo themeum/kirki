@@ -45,6 +45,7 @@ June 25, 2017, dev time: 5 hours.
 * Fix: PHP Warning in typography control when the value was corrupted [#1426](https://github.com/aristath/kirki/issues/1426)
 * Fix: Notice about incorrect `wp_add_inline_style` when googlefont URL was throwing error [#1410](https://github.com/aristath/kirki/issues/1410)
 * Fix: Unable to delete the plugin when it's also embedded in the active theme and plugin version is deactivated [#1421](https://github.com/aristath/kirki/issues/1421)
+* Fix: PHP 5.2 compatibility.
 
 ### 3.0.4 ###
 
