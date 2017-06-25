@@ -145,6 +145,10 @@ final class Kirki_Modules_Webfonts_Embed {
 				return false;
 			}
 
+			if ( ! isset( $response['response'] ) || 200 !== $response['response'] ) {
+				return false;
+			}
+
 			// Parse remote HTML file.
 			$data = wp_remote_retrieve_body( $response );
 
