@@ -75,7 +75,9 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 		}
 
 		// Reindex array.
-		$sanitized = array_values( $sanitized );
+		if ( is_array( $sanitized ) ) {
+			$sanitized = array_values( $sanitized );
+		}
 
 		return $sanitized;
 
