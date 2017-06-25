@@ -20,4 +20,7 @@
     border: none;
     border-radius: 0; }
 
+.wp-customizer .select2-container {
+  z-index: 999999 !important; }
+
 /*# sourceMappingURL=kirki.css.map */
