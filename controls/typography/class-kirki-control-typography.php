@@ -173,6 +173,13 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'text-align'     => false,
 		);
 		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
+
+		// Fix for https://github.com/aristath/kirki/issues/1405
+		foreach ( $this->json['value'] as $key => $val ) {
+			if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
+				unset( $this->json['value'][ $key ] );
+			}
+		}
 		$this->json['show_variants'] = ( true === Kirki_Fonts_Google::$force_load_all_variants ) ? false : true;
 		$this->json['show_subsets']  = ( true === Kirki_Fonts_Google::$force_load_all_subsets ) ? false : true;
 		$this->json['languages']     = Kirki_Fonts::get_google_font_subsets();
@@ -307,7 +314,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				</div>
 			<# } #>
 
-			<# if ( data.default['color'] ) { #>
+			<# if ( false !== data.default['color'] && data.default['color'] ) { #>
 				<div class="color">
 					<h5><?php esc_attr_e( 'Color', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control" {{{ data.link }}} />
