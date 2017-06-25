@@ -85,10 +85,11 @@ class Kirki_Modules {
 
 		foreach ( self::$modules as $key => $module_class ) {
 			if ( class_exists( $module_class ) ) {
-				self::$active_modules[ $key ] = $module_class::get_instance();
+				// Use this syntax instead of $module_class::get_instance()
+				// for PHP 5.2 compatibility.
+				self::$active_modules[ $key ] = call_user_func( $module_class, 'get_instance' );
 			}
 		}
-
 	}
 
 	/**
