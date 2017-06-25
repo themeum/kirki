@@ -4,7 +4,7 @@
 **Donate link:** http://kirki.org/  
 **Requires at least:** 4.8  
 **Tested up to:** 4.8  
-**Stable tag:** 3.0.4  
+**Stable tag:** 3.0.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,7 +33,22 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.5 ###
+
+June 25, 2017, dev time: 5 hours.
+
+* Fix: Conflict with the MaxStore Pro theme [#1405](https://github.com/aristath/kirki/issues/1405)
+* Fix: CSS Output for Typography controls [#1423](https://github.com/aristath/kirki/issues/1423)
+* Fix: PHP Warning in Repeater control. [#1417](https://github.com/aristath/kirki/issues/1417)
+* Fix: CSS conflict with the Shortcake plugin [#1418](https://github.com/aristath/kirki/issues/1418)
+* Fix: `Kirki_Fonts_Google::$force_load_all_variants` was not working in version 3.0
+* Fix: PHP Warning in typography control when the value was corrupted [#1426](https://github.com/aristath/kirki/issues/1426)
+* Fix: Notice about incorrect `wp_add_inline_style` when googlefont URL was throwing error [#1410](https://github.com/aristath/kirki/issues/1410)
+* Fix: Unable to delete the plugin when it's also embedded in the active theme and plugin version is deactivated [#1421](https://github.com/aristath/kirki/issues/1421)
+
 ### 3.0.4 ###
+
+June 23, 2017, dev time: 2 hours.
 
 * Fix: Added extra checks to avoid PHP Warning in the `Kirki_Fonts_Google` class [#1402](https://github.com/aristath/kirki/issues/1402).
 * Fix: `fontawesome` control was throwing a warning in the theme-check plugin.
@@ -44,14 +59,20 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.3 ###
 
+June 22, 2017, dev time: 10 minutes/
+
 * Fix: Error when color is not properly formatted.
 
 ### 3.0.2 ###
+
+June 22, 2017, dev time: 15 minutes.
 
 * Fix: CSS bugfixes in the `editor` control.
 * Fix: Improvements when embedding Kirki in a theme.
 
 ### 3.0.1 ###
+
+June 22, 2017, dev time: 5 minutes.
 
 * Fix: Undefined index PHP Notice.
 
