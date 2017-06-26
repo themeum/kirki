@@ -87,7 +87,7 @@ class Kirki_Modules {
 			if ( class_exists( $module_class ) ) {
 				// Use this syntax instead of $module_class::get_instance()
 				// for PHP 5.2 compatibility.
-				self::$active_modules[ $key ] = call_user_func( $module_class, 'get_instance' );
+				self::$active_modules[ $key ] = call_user_func( array( $module_class, 'get_instance' ) );
 			}
 		}
 	}
