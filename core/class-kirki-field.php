@@ -319,7 +319,7 @@ class Kirki_Field {
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			$args = $config_id;
-			$this->kirki_config = 'global';
+			$config_id = 'global';
 		}
 		$this->kirki_config = trim( esc_attr( $config_id ) );
 		if ( '' === $config_id ) {
