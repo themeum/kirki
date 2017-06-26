@@ -36,6 +36,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 ### 3.0.7 ###
 
 * Fix: GoogleFonts links were not getting properly created [#1430](https://github.com/aristath/kirki/issues/1430)
+* Fix: Incorrect logic when `Kirki::add_field()` only has 1 argument defined [#1429](https://github.com/aristath/kirki/issues/1429)
 
 ### 3.0.6 ###
 
