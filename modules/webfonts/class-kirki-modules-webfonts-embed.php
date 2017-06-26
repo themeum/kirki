@@ -145,7 +145,7 @@ final class Kirki_Modules_Webfonts_Embed {
 				return false;
 			}
 
-			if ( ! isset( $response['response'] ) || 200 !== $response['response'] ) {
+			if ( ! isset( $response['response'] ) || ! is_array( $response['response'] ) || ! isset( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 				return false;
 			}
 
