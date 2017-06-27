@@ -38,6 +38,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Typography controls without a variant defined were adding font-weight in the customizer [#1436](https://github.com/aristath/kirki/issues/1436)
 * Fix: Set default webfonts loading method to `link` [#1438](https://github.com/aristath/kirki/issues/1438)
 * Fix: Bug that prevents custom args from being passed to custom controls [#1425](https://github.com/aristath/kirki/issues/1425). Props @danielortiz
+* Fix: `exclude` argument in `output` when combined with `choice` [#1416](https://github.com/aristath/kirki/issues/1416)
 
 = 3.0.7 =
 
