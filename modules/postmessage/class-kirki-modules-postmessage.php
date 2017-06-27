@@ -324,8 +324,8 @@ class Kirki_Modules_PostMessage {
 				( 'text-align' === $property && ! isset( $field['default']['text-align'] ) ) ||
 				( 'text-transform' === $property && ! isset( $field['default']['text-transform'] ) ) ||
 				( 'color' === $property && ! isset( $field['default']['color'] ) ) ||
-				( 'font-weight' === $property && ( ! isset( $field['default']['variant'] ) || ! isset( $field['default']['font-weight'] ) ) ) ||
-				( 'font-style' === $property && ( ! isset( $field['default']['variant'] ) || ! isset( $field['default']['font-style'] ) ) )
+				( 'font-weight' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-weight'] ) ) ||
+				( 'font-style' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-style'] ) )
 				) ) {
 				continue;
 			}
