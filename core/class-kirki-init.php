@@ -426,8 +426,18 @@ class Kirki_Init {
 	 */
 	public function is_plugin_active( $plugins ) {
 		global $pagenow;
+		$exclude = array(
+			'plugins.php',
+			'plugin-install.php',
+		);
 		$referer = ( isset( $_SERVER ) && isset( $_SERVER['HTTP_REFERER'] ) ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
-		if ( is_array( $plugins ) && 'plugins.php' !== $pagenow && 'network/plugins.php' !== $pagenow && false === strpos( $referer, 'plugins.php' ) ) {
+		$refered = false;
+		foreach ( $exclude as $exception ) {
+			if ( false !== strpos( $referer, $exception ) ) {
+				$refered = true;
+			}
+		}
+		if ( is_array( $plugins ) && ! in_array( $pagenow, $exclude, true ) && ! $refered ) {
 			$exists = false;
 			foreach ( $plugins as $plugin ) {
 				if ( false !== strpos( $plugin, 'kirki.php' ) ) {
