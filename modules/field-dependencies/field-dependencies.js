@@ -17,17 +17,17 @@ jQuery( document ).ready( function() {
 			case '>=':
 			case 'greater or equal':
 			case 'equal or greater':
-				return value1 >= value2;
+				return value2 >= value1;
 			case '<=':
 			case 'smaller or equal':
 			case 'equal or smaller':
-				return value1 <= value2;
+				return value2 <= value1;
 			case '>':
 			case 'greater':
-				return value1 > value2;
+				return value2 > value1;
 			case '<':
 			case 'smaller':
-				return value1 < value2;
+				return value2 < value1;
 			case 'contains':
 			case 'in':
 				if ( _.isObject( value2 ) ) {
