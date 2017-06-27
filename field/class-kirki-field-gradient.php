@@ -40,7 +40,7 @@ class Kirki_Field_Gradient extends Kirki_Field {
 			'alpha'   => true,
 			'preview' => array(
 				'width'  => '100%',
-				'height' => '60px'
+				'height' => '60px',
 			),
 		);
 		$this->choices = wp_parse_args( $this->choices, $defaults );
