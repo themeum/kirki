@@ -407,7 +407,7 @@ class Kirki_Field {
 		}
 
 		// Get all arguments with their values.
-		$args = get_class_vars( __CLASS__ );
+		$args = get_object_vars( $this );
 		foreach ( $args as $key => $default_value ) {
 			$args[ $key ] = $this->$key;
 		}

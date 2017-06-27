@@ -1,23 +1,4 @@
 <?php
-/**
- * Plugin Name:   ariColor
- * Plugin URI:    http://aristath.github.io/ariColor/
- * Description:   A PHP library for color manipulation in WordPress themes and plugins
- * Author:        Aristeides Stathopoulos
- * Author URI:    http://aristeides.com
- * Version:       1.1.0
- * Text Domain:   aricolor
- *
- * GitHub Plugin URI: aristath/ariColor
- * GitHub Plugin URI: https://github.com/aristath/ariColor
- *
- * @package     ariColor
- * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.0
- */
 // @codingStandardsIgnoreFile
 
 // Exit if accessed directly.
@@ -229,7 +210,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * @since 1.0.0
 		 * @param string|array $color The color.
 		 * @param string       $mode  Mode to be used.
-		 * @return Avada_Color (object)
+		 * @return ariColor    (object)
 		 */
 		public static function newColor( $color, $mode = 'auto' ) {
 
@@ -250,7 +231,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 * @since 1.1
 		 * @param string|array $color The color.
 		 * @param string       $mode  Mode to be used.
-		 * @return Avada_Color (object)
+		 * @return ariColor    (object)
 		 */
 		public static function new_color( $color, $mode = 'auto' ) {
 			return self::newColor( $color, $mode );
@@ -271,7 +252,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *                             lightness,
 		 *                             brightness.
 		 * @param int|float|string $value      The new value.
-		 * @return Avada_Color|null
+		 * @return ariColor|null
 		 */
 		public function getNew( $property = '', $value = '' ) {
 
@@ -332,7 +313,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *                             lightness,
 		 *                             brightness.
 		 * @param int|float|string $value      The new value.
-		 * @return Avada_Color|null
+		 * @return ariColor|null
 		 */
 		public function get_new( $property = '', $value = '' ) {
 			return $this->getNew( $property, $value );

@@ -94,7 +94,7 @@ class Kirki_Modules_Custom_Sections {
 	public function set_panel_types( $panel_types ) {
 
 		$new_types = array(
-			'kirki-nested-panel' => 'Kirki_Sections_Nested_Panel',
+			'kirki-nested' => 'Kirki_Panels_Nested_Panel',
 		);
 		return array_merge( $panel_types, $new_types );
 
