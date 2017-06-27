@@ -284,8 +284,9 @@ class Kirki_Modules_PostMessage {
 	 * @access protected
 	 * @since 3.0.0
 	 * @param array $args  The arguments for this js_var.
+	 * @param array $field The field arguments.
 	 */
-	protected function script_var_typography( $args ) {
+	protected function script_var_typography( $args, $field ) {
 
 		$script = '';
 		$css    = '';
@@ -311,6 +312,21 @@ class Kirki_Modules_PostMessage {
 		$script .= ( ! $choice_condition ) ? $webfont_loader : '';
 		foreach ( $css_build_array as $property => $var ) {
 			if ( $choice_condition && $property !== $args['choice'] ) {
+				continue;
+			}
+			// Fixes https://github.com/aristath/kirki/issues/1436.
+			if ( ! isset( $field['default'] ) || (
+				( 'font-family' === $property && ! isset( $field['default']['font-family'] ) ) ||
+				( 'font-size' === $property && ! isset( $field['default']['font-size'] ) ) ||
+				( 'line-height' === $property && ! isset( $field['default']['line-height'] ) ) ||
+				( 'letter-spacing' === $property && ! isset( $field['default']['letter-spacing'] ) ) ||
+				( 'word-spacing' === $property && ! isset( $field['default']['word-spacing'] ) ) ||
+				( 'text-align' === $property && ! isset( $field['default']['text-align'] ) ) ||
+				( 'text-transform' === $property && ! isset( $field['default']['text-transform'] ) ) ||
+				( 'color' === $property && ! isset( $field['default']['color'] ) ) ||
+				( 'font-weight' === $property && ( ! isset( $field['default']['variant'] ) || ! isset( $field['default']['font-weight'] ) ) ) ||
+				( 'font-style' === $property && ( ! isset( $field['default']['variant'] ) || ! isset( $field['default']['font-style'] ) ) )
+				) ) {
 				continue;
 			}
 			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
