@@ -227,6 +227,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 			$this->json['value'] = $this->filtered_value;
 		}
+		$this->json['value'] = apply_filters( "kirki/controls/repeater/value/{$this->id}", $this->json['value'] );
 	}
 
 	/**
