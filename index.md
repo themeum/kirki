@@ -1,6 +1,21 @@
 ---
 layout: docs
 premium_themes:
+  - name: Albiorix
+    url: https://gumroad.com/l/currl-albiorix
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/4aec6765bfd1fc8c2b54ee04042e9600/retina/browser_402x.jpg
+  - name: Bestla
+    url: https://gumroad.com/l/currl-bestla
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/2fe6119fba2e0820774ca483ae68215d/retina/browser_402x.jpg
+  - name: Caliban
+    url: https://gumroad.com/l/currl-caliban
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/0be37e92ead7534dab3493572db09412/retina/browser_402x.jpg
+  - name: Daphnis
+    url: https://gumroad.com/l/currl-daphnis
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/019ee39a031df7574972d1a885ea8e02/retina/Browser_402x.jpg
+  - name: Epimetheus
+    url: https://gumroad.com/l/currl-epimetheus
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/cab91718cac1845dc7682dd28d178517/retina/browser_402x.jpg
   - name: Heset
     url: https://themeforest.net/item/heset-magazine-blog-wordpress-theme/19909146
     thumb: https://image-tf.s3.envato.com/files/228101564/00_preview.__large_preview.jpg
