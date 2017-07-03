@@ -37,8 +37,11 @@ class Kirki_Field_Gradient extends Kirki_Field {
 		}
 
 		$defaults = array(
-			'alpha'     => true,
-			'direction' => 'top-to-bottom',
+			'alpha'   => true,
+			'preview' => array(
+				'width'  => '100%',
+				'height' => '60px',
+			),
 		);
 		$this->choices = wp_parse_args( $this->choices, $defaults );
 
@@ -67,6 +70,9 @@ class Kirki_Field_Gradient extends Kirki_Field {
 		// Make sure value in an array.
 		$value = ( ! is_array( $value ) ) ? array() : $value;
 
+		if ( ! isset( $value['mode'] ) || 'linear' !== $value['mode'] || 'radial' !== $value['mode'] ) {
+			$value['mode'] = 'linear';
+		}
 		foreach ( array( 'start', 'end' ) as $context ) {
 
 			// Make sure value is array.

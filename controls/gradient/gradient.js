@@ -19,11 +19,16 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 		'use strict';
 
-		var control        = this,
-		    value          = control.getValue(),
-		    pickerStart    = control.container.find( '.kirki-gradient-control-start' ),
-		    pickerEnd      = control.container.find( '.kirki-gradient-control-end' ),
-		    angleElement = jQuery( '.angle.gradient-' + control.id );
+		var control      = this,
+		    value        = control.getValue(),
+		    pickerStart  = control.container.find( '.kirki-gradient-control-start' ),
+		    pickerEnd    = control.container.find( '.kirki-gradient-control-end' ),
+		    angleElement = jQuery( '.angle.gradient-' + control.id ),
+		    throttledAngleChange,
+		    throttledPositionStartChange,
+		    throttledPositionEndChange,
+		    startPositionElement = jQuery( '.position.gradient-' + control.id + '-start' ),
+		    endPositionElement   = jQuery( '.position.gradient-' + control.id + '-end' );
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( ! _.isUndefined( control.params.choices.iris ) ) {
@@ -56,8 +61,24 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 			});
 		});
 
-		// Angle (-90° - 90°).
-		angleElement.on( 'change', function() {
+		jQuery( control.container.find( '.global .angle' ) ).show();
+		if ( ! _.isUndefined( value.mode && 'radial' === value.mode ) ) {
+			jQuery( control.container.find( '.global .angle' ) ).hide();
+		}
+
+		// Mode (linear/radial).
+		jQuery( control.container.find( '.mode .switch-input' ) ).on( 'click input', function() {
+			value.mode = jQuery( this ).val();
+			control.updatePreview( value );
+			control.setValue( value );
+			jQuery( control.container.find( '.global .angle' ) ).show();
+			if ( 'radial' === value.mode ) {
+				jQuery( control.container.find( '.global .angle' ) ).hide();
+			}
+		});
+
+		// Angle (-90° -to 90°).
+		throttledAngleChange = _.throttle( function() {
 			value.angle = angleElement.val();
 
 			// Update the preview.
@@ -65,21 +86,37 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 
 			// Set the value.
 			control.setValue( value );
+		}, 20 );
+		angleElement.on( 'input change oninput', function() {
+			throttledAngleChange();
 		});
 
-		// Position( 0% - 100%);
-		_.each( ['start', 'end'], function( index ) {
-			var positionElement = jQuery( '.position.gradient-' + control.id + '-' + index );
+		// Start Position( 0% - 100%);
+		throttledPositionStartChange = _.throttle( function() {
+			value.start.position = startPositionElement.val();
 
-			positionElement.on( 'change', function() {
-				value[ index ].position = positionElement.val();
+			// Update the preview.
+			control.updatePreview( value );
 
-				// Update the preview.
-				control.updatePreview( value );
+			// Set the value.
+			control.setValue( value );
+		}, 20 );
+		startPositionElement.on( 'input change oninput', function() {
+			throttledPositionStartChange();
+		});
 
-				// Set the value.
-				control.setValue( value );
-			});
+		// End Position( 0% - 100%);
+		throttledPositionEndChange = _.throttle( function() {
+			value.end.position = endPositionElement.val();
+
+			// Update the preview.
+			control.updatePreview( value );
+
+			// Set the value.
+			control.setValue( value );
+		}, 20 );
+		endPositionElement.on( 'input change oninput', function() {
+			throttledPositionEndChange();
 		});
 	},
 
@@ -115,10 +152,17 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.Control.extend(
 		var control     = this,
 		    previewArea = control.container.find( '.gradient-preview' );
 
-		jQuery( previewArea ).css(
-			'background',
-			'linear-gradient(' + value.angle + 'deg, ' + value.start.color + ' ' + value.start.position + '%,' + value.end.color + ' ' + value.end.position + '%)'
-		);
+		if ( ! _.isUndefined( value.mode ) && 'radial' === value.mode ) {
+			jQuery( previewArea ).css(
+				'background',
+				'radial-gradient(ellipse at center, ' + value.start.color + ' ' + value.start.position + '%,' + value.end.color + ' ' + value.end.position + '%)'
+			);
+		} else {
+			jQuery( previewArea ).css(
+				'background',
+				'linear-gradient(' + value.angle + 'deg, ' + value.start.color + ' ' + value.start.position + '%,' + value.end.color + ' ' + value.end.position + '%)'
+			);
+		}
 	},
 
 	/**
