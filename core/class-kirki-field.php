@@ -311,20 +311,16 @@ class Kirki_Field {
 			error_log( 'Kirki: Typo found in field ' . $args['settings'] . ' ("setting" instead of "settings").' );
 		}
 
-		if ( is_string( $config_id ) ) {
-			$args['kirki_config'] = $config_id;
-		}
-
 		// In case the user only provides 1 argument,
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			$args = $config_id;
 			$config_id = 'global';
 		}
-		$this->kirki_config = trim( esc_attr( $config_id ) );
-		if ( '' === $config_id ) {
-			$this->kirki_config = 'global';
-		}
+
+		$args['kirki_config'] = $config_id;
+
+		$this->kirki_config = ( '' === $config_id ) ? 'global' : trim( esc_attr( $config_id ) );
 
 		// Get defaults from the class.
 		$defaults = get_class_vars( __CLASS__ );
@@ -336,10 +332,8 @@ class Kirki_Field {
 		}
 		$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
 		foreach ( $config_defaults as $key => $value ) {
-			if ( isset( $defaults[ $key ] ) ) {
-				if ( ! empty( $value ) && $value != $defaults[ $key ] ) {
-					$defaults[ $key ] = $value;
-				}
+			if ( isset( $defaults[ $key ] ) && ! empty( $value ) && $value != $defaults[ $key ] ) {
+				$defaults[ $key ] = $value;
 			}
 		}
 
