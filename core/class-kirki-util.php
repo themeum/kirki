@@ -177,18 +177,12 @@ class Kirki_Util {
 	 * @return array
 	 */
 	public function http_request( $r = array(), $url = '' ) {
-		// Early exit if not a request to wordpress.org.
-		if ( false === strpos( $url, 'wordpress.org' ) ) {
+		// Early exit if installed as a plugin or not a request to wordpress.org,
+		// or finally if we don't have everything we need.
+		if ( self::is_plugin() || false === strpos( $url, 'wordpress.org' ) || ( ! isset( $r['body'] ) || ! isset( $r['body']['plugins'] ) || ! isset( $r['body']['translations'] ) || ! isset( $r['body']['locale'] ) || ! isset( $r['body']['all'] ) ) ) {
 			return $r;
 		}
-		// Early exit if Kirki is installed as a plugin.
-		if ( self::is_plugin() ) {
-			return $r;
-		}
-		// Early exit if we don't have everything we need.
-		if ( ! isset( $r['body'] ) || ! isset( $r['body']['plugins'] ) || ! isset( $r['body']['translations'] ) || ! isset( $r['body']['locale'] ) || ! isset( $r['body']['all'] ) ) {
-			return $r;
-		}
+
 		// Inject data.
 		$plugins = json_decode( $r['body']['plugins'], true );
 		if ( isset( $plugins['plugins'] ) ) {
