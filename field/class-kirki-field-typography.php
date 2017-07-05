@@ -138,11 +138,12 @@ class Kirki_Field_Typography extends Kirki_Field {
 					$value['font-family'] = esc_attr( $val );
 					break;
 				case 'font-weight':
-					if ( ! isset( $value['variant'] ) ) {
-						$value['variant'] = $val;
-						if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
-							$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
-						}
+					if ( isset( $value['variant'] ) ) {
+						break;
+					}
+					$value['variant'] = $val;
+					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
+						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
 					}
 					break;
 				case 'variant':
@@ -150,10 +151,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 					$value['variant'] = ( 400 === $val || '400' === $val ) ? 'regular' : $val;
 					// Get font-weight from variant.
 					$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-					$value['font-weight'] = absint( $value['font-weight'] );
-					if ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) {
-						$value['font-weight'] = 400;
-					}
+					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? 400 : absint( $value['font-weight'] );
 					// Get font-style from variant.
 					if ( ! isset( $value['font-style'] ) ) {
 						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
@@ -169,14 +167,13 @@ class Kirki_Field_Typography extends Kirki_Field {
 					// Make sure we're using a valid subset.
 					$valid_subsets = Kirki_Fonts::get_google_font_subsets();
 					$subsets_ok = array();
-					if ( is_array( $value['subsets'] ) ) {
-						foreach ( $value['subsets'] as $subset ) {
-							if ( array_key_exists( $subset, $valid_subsets ) ) {
-								$subsets_ok[] = $subset;
-							}
+					$value['subsets'] = (array) $value['subsets'];
+					foreach ( $value['subsets'] as $subset ) {
+						if ( array_key_exists( $subset, $valid_subsets ) ) {
+							$subsets_ok[] = $subset;
 						}
-						$value['subsets'] = $subsets_ok;
 					}
+					$value['subsets'] = $subsets_ok;
 					break;
 				case 'font-size':
 				case 'letter-spacing':
