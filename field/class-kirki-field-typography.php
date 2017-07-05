@@ -34,7 +34,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 
 		// Accomodate the use of font-weight and convert to variant.
 		if ( isset( $this->default['font-weight'] ) ) {
-			$this->default['variant'] = ( 'regular' === $this->default['font-weight'] ) ? 400 : (string) intval( $this->default['font-weight' ] );
+			$this->default['variant'] = ( 'regular' === $this->default['font-weight'] ) ? 400 : (string) intval( $this->default['font-weight'] );
 		}
 
 		// Make sure letter-spacing has units.
@@ -46,7 +46,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 		if ( isset( $this->default['subset'] ) && ! empty( $this->default['subset'] ) && ( ! isset( $this->default['subsets'] ) || empty( $this->default['subsets'] ) ) ) {
 			$this->default['subsets'] = $this->default['subset'];
 		}
-		// var_dump( $this->default );
 	}
 
 	/**
