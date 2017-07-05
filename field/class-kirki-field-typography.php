@@ -26,6 +26,30 @@ class Kirki_Field_Typography extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the default value.
+	 *
+	 * @access protected
+	 */
+	protected function set_default() {
+
+		// Accomodate the use of font-weight and convert to variant.
+		if ( isset( $this->default['font-weight'] ) ) {
+			$this->default['variant'] = ( 'regular' === $this->default['font-weight'] ) ? 400 : (string) intval( $this->default['font-weight' ] );
+		}
+
+		// Make sure letter-spacing has units.
+		if ( isset( $this->default['letter-spacing'] ) && is_numeric( $this->default['letter-spacing'] ) && $this->default['letter-spacing'] ) {
+			$this->default['letter-spacing'] .= 'px';
+		}
+
+		// Make sure we use "subsets" instead of "subset".
+		if ( isset( $this->default['subset'] ) && ! empty( $this->default['subset'] ) && ( ! isset( $this->default['subsets'] ) || empty( $this->default['subsets'] ) ) ) {
+			$this->default['subsets'] = $this->default['subset'];
+		}
+		// var_dump( $this->default );
+	}
+
+	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
