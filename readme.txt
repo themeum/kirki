@@ -1,7 +1,7 @@
 === Kirki ===
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
-Donate link: http://aristath.github.io/donate
+Donate link: https://aristath.github.io/donate
 Requires at least: 4.8
 Tested up to: 4.8
 Stable tag: 3.0.8
