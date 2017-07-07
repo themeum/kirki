@@ -158,7 +158,7 @@ class Kirki_Output {
 						return $value;
 					}
 					$value = str_replace( $search, $replacement, $value );
-				}
+				} // End foreach().
 			} // End if().
 		} // End if().
 

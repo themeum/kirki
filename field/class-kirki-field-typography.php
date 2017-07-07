@@ -182,7 +182,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 					$value[ $key ] = Kirki_Sanitize_Values::css_dimension( $val );
 					break;
 				case 'text-align':
-				 	if ( ! in_array( $val, array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+					if ( ! in_array( $val, array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
 						$value['text-align'] = 'inherit';
 					}
 					break;
@@ -194,8 +194,8 @@ class Kirki_Field_Typography extends Kirki_Field {
 				case 'color':
 					$value['color'] = ariColor::newColor( $val )->toCSS( 'hex' );
 					break;
-			}
-		}
+			} // End switch().
+		} // End foreach().
 		return $value;
 	}
 
