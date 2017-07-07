@@ -58,20 +58,9 @@ class Kirki_Control_Number extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-			Kirki_Custom_Build::register_dependency( 'jquery-ui-spinner' );
-			Kirki_Custom_Build::register_dependency( 'jquery-ui-button' );
-		}
-
-		$script_to_localize = 'kirki-build';
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			$script_to_localize = 'kirki-number';
-			wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
-			wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
-		}
-		wp_localize_script( $script_to_localize, 'numberKirkiL10n', array(
+		wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
+		wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
+		wp_localize_script( 'kirki-number', 'numberKirkiL10n', array(
 			'min-error'  => esc_attr__( 'Value lower than allowed minimum', 'kirki' ),
 			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),
 			'step-error' => esc_attr__( 'Invalid Value', 'kirki' ),

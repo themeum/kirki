@@ -50,16 +50,9 @@ class Kirki_Control_Preset extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'controls/preset/set-setting-value.js' );
-			wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/preset/preset.js', array( 'jquery', 'customize-base', 'kirki-set-setting-value' ), false, true );
-			wp_enqueue_style( 'kirki-preset-css', trailingslashit( Kirki::$url ) . 'controls/preset/preset.css', null );
-		}
+		wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'controls/preset/set-setting-value.js' );
+		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/preset/preset.js', array( 'jquery', 'customize-base', 'kirki-set-setting-value' ), false, true );
+		wp_enqueue_style( 'kirki-preset-css', trailingslashit( Kirki::$url ) . 'controls/preset/preset.css', null );
 	}
 
 	/**

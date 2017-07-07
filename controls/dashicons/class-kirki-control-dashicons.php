@@ -75,15 +75,8 @@ class Kirki_Control_Dashicons extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-dashicons', trailingslashit( Kirki::$url ) . 'controls/dashicons/dashicons.js', array( 'jquery', 'customize-base' ), false, true );
-			wp_enqueue_style( 'kirki-dashicons-css', trailingslashit( Kirki::$url ) . 'controls/dashicons/dashicons.css', null );
-		}
+		wp_enqueue_script( 'kirki-dashicons', trailingslashit( Kirki::$url ) . 'controls/dashicons/dashicons.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-dashicons-css', trailingslashit( Kirki::$url ) . 'controls/dashicons/dashicons.css', null );
 	}
 
 	/**
