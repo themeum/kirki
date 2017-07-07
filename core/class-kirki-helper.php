@@ -142,10 +142,15 @@ class Kirki_Helper {
 	 */
 	public static function get_posts( $args ) {
 
-		// Get the posts.
-		if ( ! isset( $args['suppress_filters'] ) ) {
+		if ( is_string( $args ) ) {
+			$args = add_query_arg( array(
+				'suppress_filters' => false,
+			) );
+		} elseif ( is_array( $args ) && ! isset( $args['suppress_filters'] ) ) {
 			$args['suppress_filters'] = false;
 		}
+
+		// Get the posts.
 		$posts = get_posts( $args );
 
 		// Properly format the array.
