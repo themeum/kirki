@@ -53,6 +53,6 @@ cp -r svn/trunk svn/tags/$1
 cd svn
 svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )
 svn add trunk/* --force
-svn add tags/$1/* --force
+svn add tags/* --force
 svn ci -m "Version $1"
 cd ..
