@@ -3,11 +3,12 @@
 Grunt
 npm install && grunt
 
-# Create svn directory if it doesn't exist
-if [ ! -d "./svn" ]; then
-	mkdir svn
-	svn co https://plugins.svn.wordpress.org/kirki svn
+# Create svn directory.
+if [ -d "./svn" ]; then
+	rm -rf svn
 fi
+mkdir svn
+svn co https://plugins.svn.wordpress.org/kirki svn
 
 # Copy files to SVN directory
 # We're using a dummy dir for convenience here.
