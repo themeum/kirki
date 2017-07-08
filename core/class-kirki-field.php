@@ -306,7 +306,7 @@ class Kirki_Field {
 	public function __construct( $config_id = 'global', $args = array() ) {
 
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki: Typo found in field %s - setting instead of settings.', 'kirki' ), $args['settings'] ) '3.1' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki: Typo found in field %s - setting instead of settings.', 'kirki' ), $args['settings'] ), '3.1' );
 			$args['settings'] = $args['setting'];
 			unset( $args['setting'] );
 		}
