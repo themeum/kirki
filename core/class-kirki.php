@@ -176,6 +176,10 @@ class Kirki extends Kirki_Init {
 	 */
 	public static function add_field( $config_id, $args ) {
 
+		if ( doing_action( 'customize_register' ) ) {
+			_doing_it_wrong( __METHOD__, esc_attr__( 'Kirki fields should not be added on customize_register. Please add them directly, or on init.', 'kirki' ), '3.1' );
+		}
+
 		if ( isset( $args['type'] ) ) {
 			$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
 			$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
