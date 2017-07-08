@@ -107,6 +107,14 @@ class Kirki_Modules_PostMessage {
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
 
+			// Skip styles if "exclude" is defined and value is excluded.
+			if ( isset( $js_var['exclude'] ) ) {
+				$js_var['exclude'] = (array) $js_var['exclude'];
+				$script .= 'exclude=false;';
+				foreach ( $js_var['exclude'] as $exclussion ) {
+					$script .= "if(newval=={$exclussion}){exclude=true;}";
+				}
+			}
 			if ( isset( $js_var['element'] ) ) {
 				// Array to string.
 				if ( is_array( $js_var['element'] ) ) {
@@ -135,8 +143,14 @@ class Kirki_Modules_PostMessage {
 			$combo_css_script   .= ( 'css' !== $combo_css_script ) ? $script_array['css'] : '';
 		}
 		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
-		$script .= $combo_extra_script . 'jQuery(\'#' . $style_id . '\').text(' . $text . ');';
-		$script .= 'jQuery(\'#' . $style_id . '\').appendTo(\'head\');';
+
+		$script .= $combo_extra_script;
+		$script .= "var cssContent={$text};";
+		if ( isset( $js_var['exclude'] ) ) {
+			$script .= 'if(true===exclude){cssContent="";}';
+		}
+		$script .= "jQuery('#{$style_id}').text(cssContent);";
+		$script .= "jQuery('#{$style_id}').appendTo('head');";
 		$script .= '});});';
 		return $script;
 	}
@@ -150,10 +164,10 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_html_var( $args ) {
 
-		$script  = ( isset( $args['choice'] ) ) ? 'newval=newval[\'' . $args['choice'] . '\'];' : '';
-		$script .= 'jQuery(\'' . $args['element'] . '\').html(newval);';
+		$script  = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
+		$script .= "jQuery('{$args['element']}').html(newval);";
 		if ( isset( $args['attr'] ) ) {
-			$script = 'jQuery(\'' . $args['element'] . '\').attr(\'' . $args['attr'] . '\',newval);';
+			$script = "jQuery('{$args['element']}').attr('{$args['attr']}',newval);";
 		}
 		return $script;
 	}

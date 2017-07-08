@@ -50,15 +50,8 @@ class Kirki_Control_Switch extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-switch', trailingslashit( Kirki::$url ) . 'controls/switch/switch.js', array( 'jquery', 'customize-base' ), false, true );
-			wp_enqueue_style( 'kirki-switch-css', trailingslashit( Kirki::$url ) . 'controls/switch/switch.css', null );
-		}
+		wp_enqueue_script( 'kirki-switch', trailingslashit( Kirki::$url ) . 'controls/switch/switch.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-switch-css', trailingslashit( Kirki::$url ) . 'controls/switch/switch.css', null );
 	}
 
 	/**

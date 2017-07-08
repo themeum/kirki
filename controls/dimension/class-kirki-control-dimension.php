@@ -58,18 +58,9 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		$script_to_localize = 'kirki-build';
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			$script_to_localize = 'kirki-dimension';
-			wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base' ), false, true );
-			wp_enqueue_style( 'kirki-dimension-css', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.css', null );
-		}
-		wp_localize_script( $script_to_localize, 'dimensionkirkiL10n', array(
+		wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-dimension-css', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.css', null );
+		wp_localize_script( 'kirki-dimension', 'dimensionkirkiL10n', array(
 			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
 		) );
 	}

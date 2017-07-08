@@ -13,7 +13,7 @@
 // if ( ! isset( ))
 // If kirki is a plugin and not inside a theme,
 // then there's no need to proceed any further.
-if ( Kirki_Init::is_plugin() ) {
+if ( Kirki_Util::is_plugin() ) {
 	return;
 }
 

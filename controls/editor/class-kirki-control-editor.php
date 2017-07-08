@@ -60,18 +60,9 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		$script_to_localize = 'kirki-build';
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			$script_to_localize = 'kirki-editor';
-			wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base' ), false, true );
-			wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
-		}
-		wp_localize_script( $script_to_localize, 'editorKirkiL10n', array(
+		wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
+		wp_localize_script( 'kirki-editor', 'editorKirkiL10n', array(
 			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
 			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
 			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),

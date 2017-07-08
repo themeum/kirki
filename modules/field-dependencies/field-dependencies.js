@@ -115,9 +115,13 @@ jQuery( document ).ready( function() {
 						}
 					});
 					if ( false === show ) {
-						wp.customize.control( slaveControlID ).deactivate();
+						if ( ! _.isUndefined( wp.customize.control( slaveControlID ) ) && _.isFunction( wp.customize.control( slaveControlID ).deactivate ) ) {
+							wp.customize.control( slaveControlID ).deactivate();
+						}
 					} else {
-						wp.customize.control( slaveControlID ).activate();
+						if ( ! _.isUndefined( wp.customize.control( slaveControlID ) ) && _.isFunction( wp.customize.control( slaveControlID ).activate ) ) {
+							wp.customize.control( slaveControlID ).activate();
+						}
 					}
 				});
 			});

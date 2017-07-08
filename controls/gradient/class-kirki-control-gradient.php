@@ -142,18 +142,9 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-			Kirki_Custom_Build::register_dependency( 'wp-color-picker-alpha' );
-		}
-
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-gradient', trailingslashit( Kirki::$url ) . 'controls/gradient/gradient.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
-			wp_enqueue_style( 'kirki-gradient-css', trailingslashit( Kirki::$url ) . 'controls/gradient/gradient.css', null );
-		}
+		wp_enqueue_script( 'kirki-gradient', trailingslashit( Kirki::$url ) . 'controls/gradient/gradient.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_style( 'kirki-gradient-css', trailingslashit( Kirki::$url ) . 'controls/gradient/gradient.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -178,23 +169,44 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 		</label>
-		<div class="gradient-preview"></div>
-		<div class="angle">
-			<h4><?php esc_attr_e( 'Angle', 'kirki' ); ?></h4>
-			<input type="range" class="angle gradient-{{ data.id }}" value="{{ data.value.angle }}" min="-90" max="90">
+		<div class="gradient-preview" style="width:{{ data.choices.preview.width }};height:{{ data.choices.preview.height }}"></div>
+		<div class="global">
+			<!-- <div class="mode">
+				<h4><?php esc_attr_e( 'Mode', 'kirki' ); ?></h4>
+				<input class="switch-input screen-reader-text" type="radio" value="linear" name="_customize-gradient-{{{ data.id }}}" id="{{ data.id }}linear" <# if ( ! _.isUndefined( data.value.mode ) && 'linear' === data.value.mode ) { #> checked="checked" <# } #>>
+					<label class="switch-label switch-label-<# if ( ! _.isUndefined( data.value.mode ) && 'linear' === data.value.mode ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}linear"><span class="dashicons dashicons-minus"></span><span class="screen-reader-text"><?php esc_attr_e( 'Linear', 'kirki' ); ?></span></label>
+				</input>
+				<input class="switch-input screen-reader-text" type="radio" value="radial" name="_customize-gradient-{{{ data.id }}}" id="{{ data.id }}radial" <# if ( ! _.isUndefined( data.value.mode ) && 'radial' === data.value.mode ) { #> checked="checked" <# } #>>
+					<label class="switch-label switch-label-<# if ( ! _.isUndefined( data.value.mode ) && 'radial' === data.value.mode ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}radial"><span class="dashicons dashicons-marker"></span><span class="screen-reader-text"><?php esc_attr_e( 'Radial', 'kirki' ); ?></span></label>
+				</input>
+			</div> -->
+			<div class="angle">
+				<h4><?php esc_attr_e( 'Angle', 'kirki' ); ?></h4>
+				<input type="range" class="angle gradient-{{ data.id }}" value="{{ data.value.angle }}" min="-90" max="90">
+			</div>
 		</div>
+		<hr>
 		<div class="colors">
 			<div class="color-start">
-				<h4><?php esc_attr_e( 'Start Color', 'kirki' ); ?></h4>
-				<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.start.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.start.color }}" class="kirki-gradient-control-start color-picker" />
-				<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
-				<input type="range" class="position gradient-{{ data.id }}-start" value="{{ data.value.start.position }}" min="0" max="100">
+				<div class="color">
+					<h4><?php esc_attr_e( 'Start Color', 'kirki' ); ?></h4>
+					<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.start.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.start.color }}" class="kirki-gradient-control-start color-picker" />
+				</div>
+				<div class="position">
+					<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
+					<input type="range" class="position gradient-{{ data.id }}-start" value="{{ data.value.start.position }}" min="0" max="100">
+				</div>
 			</div>
+			<hr>
 			<div class="color-end">
-				<h4><?php esc_attr_e( 'End Color', 'kirki' ); ?></h4>
-				<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.end.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.end.color }}" class="kirki-gradient-control-end color-picker" />
-				<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
-				<input type="range" class="position gradient-{{ data.id }}-end" value="{{ data.value.end.position }}" min="0" max="100">
+				<div class="color">
+					<h4><?php esc_attr_e( 'End Color', 'kirki' ); ?></h4>
+					<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default.end.color }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value.end.color }}" class="kirki-gradient-control-end color-picker" />
+				</div>
+				<div class="position">
+					<h4><?php esc_attr_e( 'Color Stop', 'kirki' ); ?></h4>
+					<input type="range" class="position gradient-{{ data.id }}-end" value="{{ data.value.end.position }}" min="0" max="100">
+				</div>
 			</div>
 		</div>
 		<?php

@@ -37,8 +37,11 @@ class Kirki_Field_Gradient extends Kirki_Field {
 		}
 
 		$defaults = array(
-			'alpha'     => true,
-			'direction' => 'top-to-bottom',
+			'alpha'   => true,
+			'preview' => array(
+				'width'  => '100%',
+				'height' => '60px',
+			),
 		);
 		$this->choices = wp_parse_args( $this->choices, $defaults );
 
@@ -56,6 +59,15 @@ class Kirki_Field_Gradient extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the $transport.
+	 *
+	 * @access protected
+	 */
+	protected function set_transport() {
+		$this->transport = 'refresh';
+	}
+
+	/**
 	 * Sanitizes checkbox values.
 	 *
 	 * @access public
@@ -65,8 +77,12 @@ class Kirki_Field_Gradient extends Kirki_Field {
 	public function sanitize( $value = null ) {
 
 		// Make sure value in an array.
-		$value = ( ! is_array( $value ) ) ? array() : $value;
+		$value = (array) $value;
 
+		// Sanitize the type.
+		if ( ! isset( $value['mode'] ) || 'linear' !== $value['mode'] || 'radial' !== $value['mode'] ) {
+			$value['mode'] = 'linear';
+		}
 		foreach ( array( 'start', 'end' ) as $context ) {
 
 			// Make sure value is array.
@@ -74,29 +90,30 @@ class Kirki_Field_Gradient extends Kirki_Field {
 				$value[ $context ] = array();
 			}
 
-			// Sanitize colors.
+			// Make sure color is defined.
 			if ( ! isset( $value[ $context ]['color'] ) ) {
 				$value[ $context ]['color'] = '';
 			}
-			$value[ $context ]['color'] = esc_attr( $value[ $context ]['color'] );
+			// Sanitize colors.
+			$color_obj = ariColor::newColor( $value[ $context ]['color'] );
+			$value[ $context ]['color'] = $color_obj->toCSS( $color_obj->mode );
 
-			// Sanitize positions.
+			// Make sure position is defined.
 			if ( ! isset( $value[ $context ]['position'] ) ) {
 				$value[ $context ]['position'] = 0;
 			};
+			// Sanitize positions.
 			$value[ $context ]['position'] = (int) $value[ $context ]['position'];
 			$value[ $context ]['position'] = max( min( $value[ $context ]['position'], 100 ), 0 );
 		}
 
-		// Sanitize angle.
+		// Make siure angle exists.
 		if ( ! isset( $value['angle'] ) ) {
 			$value['angle'] = 0;
 		}
+		// Sanitize angle.
 		$value['angle'] = (int) $value['angle'];
 		$value['angle'] = max( min( $value['angle'], 90 ), -90 );
-
-		// Sanitize the type.
-		$value['type'] = ( ! isset( $value['type'] ) || 'linear' !== $value['type'] || 'radial' !== $value['type'] ) ? 'linear' : $value['type'];
 
 		return $value;
 

@@ -44,6 +44,14 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
+	 * Enable/Disable Alpha channel on color pickers
+	 *
+	 * @access public
+	 * @var boolean
+	 */
+	public $alpha = true;
+
+	/**
 	 * Constructor.
 	 *
 	 * Supplied `$args` override class property defaults.
@@ -72,6 +80,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	 *     @type array                $choices         List of choices for 'radio' or 'select' type controls, where
 	 *                                                 values are the keys, and labels are the values.
 	 *                                                 Default empty array.
+	 *     @type boolean              $alpha           Enables/Disables alpha channel on color pickers
 	 *     @type array                $input_attrs     List of custom input attributes for control output, where
 	 *                                                 attribute names are the keys and values are the values. Not
 	 *                                                 used for 'checkbox', 'radio', 'select', 'textarea', or
@@ -97,18 +106,9 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-			Kirki_Custom_Build::register_dependency( 'wp-color-picker-alpha' );
-		}
-
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
-			wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.css', null );
-		}
+		wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -129,6 +129,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
+		$this->json['alpha']   = $this->alpha;
 
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
@@ -162,7 +163,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 						<# if ( data.choices[ key ] ) { #>
 							<label for="{{ data.id }}-{{ key }}">{{ data.choices[ key ] }}</label>
 						<# } #>
-						<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="true" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
+						<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
 					</div>
 				<# } #>
 			<# } #>

@@ -51,15 +51,8 @@ class Kirki_Control_Generic extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-		}
-
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			wp_enqueue_script( 'kirki-generic', trailingslashit( Kirki::$url ) . 'controls/generic/generic.js', array( 'jquery', 'customize-base' ), false, true );
-			wp_enqueue_style( 'kirki-generic-css', trailingslashit( Kirki::$url ) . 'controls/generic/generic.css', null );
-		}
+		wp_enqueue_script( 'kirki-generic', trailingslashit( Kirki::$url ) . 'controls/generic/generic.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-generic-css', trailingslashit( Kirki::$url ) . 'controls/generic/generic.css', null );
 	}
 
 	/**

@@ -1,10 +1,10 @@
 === Kirki ===
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
-Donate link: http://kirki.org/
+Donate link: https://aristath.github.io/donate
 Requires at least: 4.8
 Tested up to: 4.8
-Stable tag: 3.0.8
+Stable tag: 3.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.9 =
+
+July 8 2017, dev time: 7 hours.
+
+* Fix: Add alpha option to multicolor control. Props @danielortiz [#1321](https://github.com/aristath/kirki/issues/1321), [#1449](https://github.com/aristath/kirki/pull/1449)
+* Fix: Googlefonts output when `default` argument contains `font-weight` instead of `variant` [#1443](https://github.com/aristath/kirki/issues/1443)
+* Fix: Removed the `Kirki_Custom_Build` class.
+* Fix: Plugin does not exist error when Kirki is embedded in a theme [#1448](https://github.com/aristath/kirki/issues/1448)
+* Fix: Code simplifications and optimizations.
+
 = 3.0.8 =
+
+June 27 2017, dev time: 4 hours.
 
 * Fix: Typography controls without a variant defined were adding font-weight in the customizer [#1436](https://github.com/aristath/kirki/issues/1436)
 * Fix: Set default webfonts loading method to `link` [#1438](https://github.com/aristath/kirki/issues/1438)
@@ -42,6 +54,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `active_callback` operators for greater/smaller etc [#1427](https://github.com/aristath/kirki/issues/1427)
 
 = 3.0.7 =
+
+June 26 2017, dev time: 1 hour.
 
 * Fix: GoogleFonts links were not getting properly created [#1430](https://github.com/aristath/kirki/issues/1430)
 * Fix: Incorrect logic when `Kirki::add_field()` only has 1 argument defined [#1429](https://github.com/aristath/kirki/issues/1429)

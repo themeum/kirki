@@ -4,16 +4,36 @@
     display: block;
     width: 100%;
     height: 100px;
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    border-radius: 3px; }
   .customize-control-kirki-gradient h4 {
-    margin: 0.5em 0;
+    margin: 0.3em 0;
     font-weight: 400; }
+  .customize-control-kirki-gradient .global {
+    display: flex;
+    flex-wrap: wrap; }
+    .customize-control-kirki-gradient .global .mode {
+      display: flex;
+      flex-wrap: wrap; }
+      .customize-control-kirki-gradient .global .mode h4 {
+        width: 100%; }
+      .customize-control-kirki-gradient .global .mode .switch-label {
+        color: #555;
+        margin: 0;
+        text-align: center;
+        flex-grow: 1; }
+      .customize-control-kirki-gradient .global .mode .switch-input:checked + .switch-label {
+        color: #3498DB; }
+    .customize-control-kirki-gradient .global .angle {
+      width: 100%;
+      display: flex;
+      align-items: center; }
+      .customize-control-kirki-gradient .global .angle h4 {
+        padding-right: 1em; }
   .customize-control-kirki-gradient .colors .color-end,
   .customize-control-kirki-gradient .colors .color-start {
-    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 3px;
-    margin: 0.5em 0; }
+    display: flex;
+    flex-wrap: wrap; }
   .customize-control-kirki-gradient input[type=range] {
     -webkit-appearance: none;
     -webkit-transition: background 0.3s;

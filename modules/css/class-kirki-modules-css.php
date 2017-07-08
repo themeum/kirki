@@ -72,6 +72,7 @@ class Kirki_Modules_CSS {
 			'Kirki_Output_Field_Background'             => '/field/class-kirki-output-field-background.php',
 			'Kirki_Output_Field_Multicolor'             => '/field/class-kirki-output-field-multicolor.php',
 			'Kirki_Output_Field_Dimensions'             => '/field/class-kirki-output-field-dimensions.php',
+			'Kirki_Output_Field_Gradient'               => '/field/class-kirki-output-field-gradient.php',
 			'Kirki_Output_Field_Typography'             => '/field/class-kirki-output-field-typography.php',
 			'Kirki_Output_Property'                     => '/property/class-kirki-output-property.php',
 			'Kirki_Output_Property_Background_Image'    => '/property/class-kirki-output-property-background-image.php',

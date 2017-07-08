@@ -96,54 +96,69 @@ class Kirki_Output {
 	 */
 	protected function apply_value_pattern( $output, $value ) {
 
-		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) ) {
-			if ( is_string( $output['value_pattern'] ) ) {
+		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) && is_string( $output['value_pattern'] ) ) {
+			if ( is_string( $value ) ) {
 				$value = str_replace( '$', $value, $output['value_pattern'] );
-				if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-					$option_type = 'theme_mod';
-					$option_name = false;
-					if ( isset( Kirki::$config[ $this->config_id ] ) ) {
-						$config = Kirki::$config[ $this->config_id ];
-						$option_type = ( isset( $config['option_type'] ) ) ? $config['option_type'] : 'theme_mod';
-						if ( 'option' === $option_type || 'site_option' === $option_type ) {
-							$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
-						}
+			}
+			if ( is_array( $value ) ) {
+				if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) ) {
+					$value[ $output['choice'] ] = str_replace( '$', $value[ $output['choice'] ], $output['value_pattern'] );
+				} else {
+					foreach ( $value as $k => $v ) {
+						$value[ $k ] = str_replace( '$', $value[ $k ], $output['value_pattern'] );
 					}
-					if ( $option_name ) {
-						$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
+				}
+			}
+			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
+				$option_type = 'theme_mod';
+				$option_name = false;
+				if ( isset( Kirki::$config[ $this->config_id ] ) ) {
+					$config = Kirki::$config[ $this->config_id ];
+					$option_type = ( isset( $config['option_type'] ) ) ? $config['option_type'] : 'theme_mod';
+					if ( 'option' === $option_type || 'site_option' === $option_type ) {
+						$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
 					}
-					foreach ( $output['pattern_replace'] as $search => $replace ) {
-						$replacement = '';
-						switch ( $option_type ) {
-							case 'option':
-								if ( is_array( $options ) ) {
-									if ( $option_name ) {
-										$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
-										$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
-										break;
-									}
-									$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
+				}
+				if ( $option_name ) {
+					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
+				}
+				foreach ( $output['pattern_replace'] as $search => $replace ) {
+					$replacement = '';
+					switch ( $option_type ) {
+						case 'option':
+							if ( is_array( $options ) ) {
+								if ( $option_name ) {
+									$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
+									$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
 									break;
 								}
-								$replacement = get_option( $replace );
+								$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
 								break;
-							case 'site_option':
-								$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
-								break;
-							case 'user_meta':
-								$user_id = get_current_user_id();
-								if ( $user_id ) {
-									// @codingStandardsIgnoreLine
-									$replacement = get_user_meta( $user_id, $replace, true );
-								}
-								break;
-							default:
-								$replacement = get_theme_mod( $replace );
-						}
-						$replacement = ( false === $replacement ) ? '' : $replacement;
-						$value = str_replace( $search, $replacement, $value );
+							}
+							$replacement = get_option( $replace );
+							break;
+						case 'site_option':
+							$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
+							break;
+						case 'user_meta':
+							$user_id = get_current_user_id();
+							if ( $user_id ) {
+								// @codingStandardsIgnoreLine
+								$replacement = get_user_meta( $user_id, $replace, true );
+							}
+							break;
+						default:
+							$replacement = get_theme_mod( $replace );
 					}
-				} // End if().
+					$replacement = ( false === $replacement ) ? '' : $replacement;
+					if ( is_array( $value ) ) {
+						foreach ( $value as $k => $v ) {
+							$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
+						}
+						return $value;
+					}
+					$value = str_replace( $search, $replacement, $value );
+				} // End foreach().
 			} // End if().
 		} // End if().
 
@@ -183,7 +198,7 @@ class Kirki_Output {
 						}
 						// If 'choice' is defined check for sub-values too.
 						// Fixes https://github.com/aristath/kirki/issues/1416.
-						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude === $value[ $output['choice'] ] ) {
+						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude == $value[ $output['choice'] ] ) {
 							$skip = true;
 						}
 					}
@@ -238,6 +253,7 @@ class Kirki_Output {
 		// and the browser prefixes go in the value_pattern arg.
 		$accepts_multiple = array(
 			'background-image',
+			'background',
 		);
 		if ( in_array( $output['property'], $accepts_multiple, true ) ) {
 			if ( isset( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) && ! is_array( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) ) {

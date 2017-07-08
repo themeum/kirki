@@ -50,20 +50,9 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		if ( class_exists( 'Kirki_Custom_Build' ) ) {
-			Kirki_Custom_Build::register_dependency( 'jquery' );
-			Kirki_Custom_Build::register_dependency( 'customize-base' );
-			Kirki_Custom_Build::register_dependency( 'select2' );
-			Kirki_Custom_Build::register_dependency( 'jquery-ui-sortable' );
-		}
-
-		$script_to_localize = 'kirki-build';
-		if ( ! class_exists( 'Kirki_Custom_Build' ) || ! Kirki_Custom_Build::is_custom_build() ) {
-			$script_to_localize = 'kirki-fontawesome';
-			wp_enqueue_script( 'kirki-fontawesome', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
-			wp_enqueue_style( 'kirki-fontawesome-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.css', null );
-			wp_enqueue_style( 'kirki-fontawesome-font-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/font-awesome.css', null );
-		}
+		wp_enqueue_script( 'kirki-fontawesome', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.js', array( 'jquery', 'customize-base', 'select2', 'jquery-ui-sortable' ), false, true );
+		wp_enqueue_style( 'kirki-fontawesome-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/fontawesome.css', null );
+		wp_enqueue_style( 'kirki-fontawesome-font-css', trailingslashit( Kirki::$url ) . 'controls/fontawesome/font-awesome.css', null );
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), '4.0.3', true );
 		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/css/select2.css', array(), '4.0.3' );
 		wp_enqueue_style( 'kirki-select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
@@ -71,7 +60,7 @@ class Kirki_Control_FontAwesome extends WP_Customize_Control {
 		$json_path = wp_normalize_path( dirname( __FILE__ ) . '/fontawesome.json' );
 		include( $json_path );
 		$font_awesome_json = ob_get_clean();
-		wp_localize_script( $script_to_localize, 'fontAwesomeJSON', $font_awesome_json );
+		wp_localize_script( 'kirki-fontawesome', 'fontAwesomeJSON', $font_awesome_json );
 	}
 
 	/**
