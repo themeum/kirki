@@ -307,7 +307,7 @@ class Kirki_Field {
 
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki: Typo found in field %s - setting instead of settings.', 'kirki' ), $args['settings'] ), '3.1' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki: Typo found in field %s - setting instead of settings.', 'kirki' ), esc_attr( $args['settings'] ) ), '3.1' );
 			$args['settings'] = $args['setting'];
 			unset( $args['setting'] );
 		}
