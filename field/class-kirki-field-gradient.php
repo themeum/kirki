@@ -59,6 +59,15 @@ class Kirki_Field_Gradient extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the $transport.
+	 *
+	 * @access protected
+	 */
+	protected function set_transport() {
+		$this->transport = 'refresh';
+	}
+
+	/**
 	 * Sanitizes checkbox values.
 	 *
 	 * @access public

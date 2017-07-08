@@ -171,7 +171,7 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 		</label>
 		<div class="gradient-preview" style="width:{{ data.choices.preview.width }};height:{{ data.choices.preview.height }}"></div>
 		<div class="global">
-			<div class="mode">
+			<!-- <div class="mode">
 				<h4><?php esc_attr_e( 'Mode', 'kirki' ); ?></h4>
 				<input class="switch-input screen-reader-text" type="radio" value="linear" name="_customize-gradient-{{{ data.id }}}" id="{{ data.id }}linear" <# if ( ! _.isUndefined( data.value.mode ) && 'linear' === data.value.mode ) { #> checked="checked" <# } #>>
 					<label class="switch-label switch-label-<# if ( ! _.isUndefined( data.value.mode ) && 'linear' === data.value.mode ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}linear"><span class="dashicons dashicons-minus"></span><span class="screen-reader-text"><?php esc_attr_e( 'Linear', 'kirki' ); ?></span></label>
@@ -179,12 +179,13 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 				<input class="switch-input screen-reader-text" type="radio" value="radial" name="_customize-gradient-{{{ data.id }}}" id="{{ data.id }}radial" <# if ( ! _.isUndefined( data.value.mode ) && 'radial' === data.value.mode ) { #> checked="checked" <# } #>>
 					<label class="switch-label switch-label-<# if ( ! _.isUndefined( data.value.mode ) && 'radial' === data.value.mode ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}radial"><span class="dashicons dashicons-marker"></span><span class="screen-reader-text"><?php esc_attr_e( 'Radial', 'kirki' ); ?></span></label>
 				</input>
-			</div>
+			</div> -->
 			<div class="angle">
 				<h4><?php esc_attr_e( 'Angle', 'kirki' ); ?></h4>
 				<input type="range" class="angle gradient-{{ data.id }}" value="{{ data.value.angle }}" min="-90" max="90">
 			</div>
 		</div>
+		<hr>
 		<div class="colors">
 			<div class="color-start">
 				<div class="color">
@@ -196,6 +197,7 @@ class Kirki_Control_Gradient extends WP_Customize_Control {
 					<input type="range" class="position gradient-{{ data.id }}-start" value="{{ data.value.start.position }}" min="0" max="100">
 				</div>
 			</div>
+			<hr>
 			<div class="color-end">
 				<div class="color">
 					<h4><?php esc_attr_e( 'End Color', 'kirki' ); ?></h4>

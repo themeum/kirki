@@ -10,7 +10,7 @@
   }
 
   h4 {
-    margin: 0.5em 0;
+    margin: 0.3em 0;
     font-weight: 400;
   }
 
@@ -43,6 +43,16 @@
         }
       }
     }
+
+    .angle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      h4 {
+        padding-right: 1em;
+      }
+    }
   }
 
   .colors {
@@ -50,10 +60,10 @@
     .color-start {
       display: flex;
       flex-wrap: wrap;
-      box-shadow: inset 0 0 4px 1px rgba(0,0,0,.1);
-      padding: 10px;
-      border-radius: 3px;
-      margin: 0.5em 0;
+      // box-shadow: inset 0 0 4px 1px rgba(0,0,0,.1);
+      // padding: 10px;
+      // border-radius: 3px;
+      // margin: 0.5em 0;
     }
 
     .color-start {}

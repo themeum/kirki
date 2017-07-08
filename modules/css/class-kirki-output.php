@@ -253,6 +253,7 @@ class Kirki_Output {
 		// and the browser prefixes go in the value_pattern arg.
 		$accepts_multiple = array(
 			'background-image',
+			'background',
 		);
 		if ( in_array( $output['property'], $accepts_multiple, true ) ) {
 			if ( isset( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) && ! is_array( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) ) {
