@@ -87,7 +87,7 @@ class Kirki_CSS_To_File {
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @return string|bool
+	 * @return integer|false
 	 */
 	public function get_timestamp() {
 
