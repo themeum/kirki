@@ -75,43 +75,32 @@ class Kirki_Modules_Customizer_Styling {
 		$back_obj = ( $back ) ? ariColor::newColor( $back ) : false;
 		if ( $back ) {
 			$text_on_back = ( 60 > $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 60 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 60 )->toCSS( $back_obj->mode );
+				$back_obj->getNew( 'lightness', $back_obj->lightness + 60 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness - 60 )->toCSS( $back_obj->mode );
 			$border_on_back = ( 80 < $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 13 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 13 )->toCSS( $back_obj->mode );
+				$back_obj->getNew( 'lightness', $back_obj->lightness - 13 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 13 )->toCSS( $back_obj->mode );
 			$back_on_back = ( 90 < $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 6 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 11 )->toCSS( $back_obj->mode );
+				$back_obj->getNew( 'lightness', $back_obj->lightness - 6 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 11 )->toCSS( $back_obj->mode );
 			$hover_on_back = ( 90 < $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 3 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 3 )->toCSS( $back_obj->mode );
+				$back_obj->getNew( 'lightness', $back_obj->lightness - 3 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 3 )->toCSS( $back_obj->mode );
 			$arrows_on_back = ( 50 > $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 30 )->toCSS( $back_obj->mode ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 30 )->toCSS( $back_obj->mode );
+				$back_obj->getNew( 'lightness', $back_obj->lightness + 30 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness - 30 )->toCSS( $back_obj->mode );
 			$back_disabled_obj = ( 35 < $back_obj->lightness ) ?
-				$back_obj->getNew( 'lightness', $back_obj->lightness - 30 ) :
-				$back_obj->getNew( 'lightness', $back_obj->lightness + 30 );
+				$back_obj->getNew( 'lightness', $back_obj->lightness - 30 ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 30 );
 		}
 		$accent     = ( isset( $config['color_accent'] ) ) ? $config['color_accent'] : false;
 		$accent_obj = ( $accent ) ? ariColor::newColor( $accent ) : false;
 		if ( $accent ) {
 			$text_on_accent = ( 60 > $accent_obj->lightness ) ?
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness + 60 )->toCSS( $accent_obj->mode ) :
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness - 60 )->toCSS( $accent_obj->mode );
+				$accent_obj->getNew( 'lightness', $accent_obj->lightness + 60 )->toCSS( $accent_obj->mode ) : $accent_obj->getNew( 'lightness', $accent_obj->lightness - 60 )->toCSS( $accent_obj->mode );
 			$border_on_accent = ( 50 < $accent_obj->lightness ) ?
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness - 4 )->toCSS( $accent_obj->mode ) :
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness + 4 )->toCSS( $accent_obj->mode );
+				$accent_obj->getNew( 'lightness', $accent_obj->lightness - 4 )->toCSS( $accent_obj->mode ) : $accent_obj->getNew( 'lightness', $accent_obj->lightness + 4 )->toCSS( $accent_obj->mode );
 			$accent_disabled_obj = ( 35 < $accent_obj->lightness ) ?
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness - 30 ) :
-				$accent_obj->getNew( 'lightness', $accent_obj->lightness + 30 );
+				$accent_obj->getNew( 'lightness', $accent_obj->lightness - 30 ) : $accent_obj->getNew( 'lightness', $accent_obj->lightness + 30 );
 			$accent_disabled = $accent_disabled_obj->toCSS( $accent_disabled_obj->mode );
 			$text_on_accent_disabled = ( 60 > $accent_disabled_obj->lightness ) ?
-				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness + 60 )->toCSS( $accent_disabled_obj->mode ) :
-				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness - 60 )->toCSS( $accent_disabled_obj->mode );
+				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness + 60 )->toCSS( $accent_disabled_obj->mode ) : $accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness - 60 )->toCSS( $accent_disabled_obj->mode );
 			$border_on_accent_disabled = ( 50 < $accent_disabled_obj->lightness ) ?
-				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness - 4 )->toCSS( $accent_disabled_obj->mode ) :
-				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness + 4 )->toCSS( $accent_disabled_obj->mode );
+				$accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness - 4 )->toCSS( $accent_disabled_obj->mode ) : $accent_disabled_obj->getNew( 'lightness', $accent_disabled_obj->lightness + 4 )->toCSS( $accent_disabled_obj->mode );
 		}
 
 		if ( $back ) {
