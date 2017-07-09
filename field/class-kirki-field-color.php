@@ -44,6 +44,7 @@ class Kirki_Field_Color extends Kirki_Field {
 			$this->choices = array();
 		}
 		if ( true === $this->alpha ) {
+			_doing_it_wrong( 'Kirki::add_field', esc_attr__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
 			$this->choices['alpha'] = true;
 		}
 		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
@@ -56,7 +57,6 @@ class Kirki_Field_Color extends Kirki_Field {
 		if ( ( ! isset( $this->choices['mode'] ) ) || ( 'hex' !== $this->choices['mode'] || 'hue' !== $this->choices['mode'] ) ) {
 			$this->choices['mode'] = 'hex';
 		}
-
 	}
 
 	/**

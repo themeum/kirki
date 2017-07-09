@@ -307,7 +307,7 @@ class Kirki_Field {
 
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki: Typo found in field %s - setting instead of settings.', 'kirki' ), esc_attr( $args['settings'] ) ), '3.1' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - setting instead of settings.', 'kirki' ), esc_attr( $args['settings'] ) ), '3.1' );
 			$args['settings'] = $args['setting'];
 			unset( $args['setting'] );
 		}
@@ -315,13 +315,18 @@ class Kirki_Field {
 		// In case the user only provides 1 argument,
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
 			$args = $config_id;
 			$config_id = 'global';
 		}
 
 		$args['kirki_config'] = $config_id;
 
-		$this->kirki_config = ( '' === $config_id ) ? 'global' : trim( esc_attr( $config_id ) );
+		$this->kirki_config = trim( esc_attr( $config_id ) );
+		if ( '' === $config_id ) {
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
+			$this->kirki_config = 'global';
+		}
 
 		// Get defaults from the class.
 		$defaults = get_class_vars( __CLASS__ );
@@ -503,6 +508,7 @@ class Kirki_Field {
 		}
 		// Take care of common typos.
 		if ( 'theme_mods' === $this->option_type ) {
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
 			$this->option_type = 'theme_mod';
 		}
 	}
@@ -519,6 +525,7 @@ class Kirki_Field {
 		}
 		foreach ( $this->partial_refresh as $id => $args ) {
 			if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
+				_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
 				unset( $this->partial_refresh[ $id ] );
 				continue;
 			}
