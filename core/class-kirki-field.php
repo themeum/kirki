@@ -106,7 +106,7 @@ class Kirki_Field {
 	 * The default value for this field.
 	 *
 	 * @access protected
-	 * @var string|array
+	 * @var string|array|bool
 	 */
 	protected $default = '';
 
