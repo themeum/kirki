@@ -1,4 +1,4 @@
-
+<?php
 /**
  * Creates and validates field parameters.
  *
