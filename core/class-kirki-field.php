@@ -638,26 +638,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * This is a fallback method:
-	 * $help has now become $tooltip, so this just migrates the data
-	 *
-	 * @access protected
-	 */
-	protected function set_help() {
-
-		if ( '' !== $this->tooltip ) {
-			return;
-		}
-		if ( '' !== $this->help ) {
-			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"help" argument has been deprecated in favor of "tooltip". Error in field %s.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
-			$this->tooltip = wp_strip_all_tags( $this->help );
-			$this->help = '';
-			return;
-		}
-	}
-
-	/**
 	 * Sets the $transport
 	 *
 	 * @access protected
@@ -689,15 +669,5 @@ class Kirki_Field {
 	protected function set_priority() {
 
 		$this->priority = absint( $this->priority );
-	}
-
-	/**
-	 * Sets the $collapsible var.
-	 *
-	 * @access protected
-	 */
-	protected function set_collapsible() {
-
-		$this->collapsible = (bool) $this->collapsible;
 	}
 }
