@@ -51,6 +51,14 @@ final class Kirki_Modules_Webfonts_Link {
 	public $link = '';
 
 	/**
+	 * An array of subsets.
+	 *
+	 * @access public
+	 * @var array
+	 */
+	public $subsets = '';
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
