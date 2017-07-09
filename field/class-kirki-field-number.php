@@ -56,7 +56,7 @@ class Kirki_Field_Number extends Kirki_Field {
 
 		// Minimum & maximum value limits.
 		if ( $value < $min || $value > $max ) {
-			return = max( min( $value, $max ), $min );
+			return max( min( $value, $max ), $min );
 		}
 
 		// Only multiple of steps.
