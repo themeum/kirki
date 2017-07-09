@@ -352,7 +352,6 @@ class Kirki_Field {
 		foreach ( $args as $key => $value ) {
 			$this->$key = $value;
 		}
-
 	}
 
 	/**
@@ -365,22 +364,13 @@ class Kirki_Field {
 		$properties = get_class_vars( __CLASS__ );
 
 		// Some things must run before the others.
-		$priorities = array(
-			'option_name',
-			'option_type',
-			'settings',
-		);
+		$this->set_option_name();
+		$this->set_option_type();
+		$this->set_settings();
 
-		foreach ( $priorities as $priority ) {
-			if ( method_exists( $this, 'set_' . $priority ) ) {
-				$method_name = 'set_' . $priority;
-				$this->$method_name();
-			}
-		}
-
-		// Sanitize the properties, skipping the ones run from the $priorities.
+		// Sanitize the properties, skipping the ones that have already run above.
 		foreach ( $properties as $property => $value ) {
-			if ( in_array( $property, $priorities, true ) ) {
+			if ( in_array( $property, array( 'option_name', 'option_type', 'settings' ), true ) ) {
 				continue;
 			}
 			if ( method_exists( $this, 'set_' . $property ) ) {
