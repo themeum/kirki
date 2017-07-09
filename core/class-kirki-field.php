@@ -353,35 +353,16 @@ class Kirki_Field {
 			$this->$key = $value;
 		}
 
-		// An array of whitelisted properties that don't need to be sanitized here.
-		// Format: $key => $default_value.
-		$whitelisted = apply_filters( "kirki/{$this->kirki_config}/fields/properties_whitelist", array(
-			'label'       => '', // This is sanitized later in the controls themselves.
-			'description' => '', // This is sanitized later in the controls themselves.
-			'mode'        => '', // Only used for backwards-compatibility reasons.
-			'fields'      => array(), // Used in repeater fields.
-			'row_label'   => array(), // Used in repeater fields.
-		) );
-
-		$this->set_field( $whitelisted );
-
 	}
 
 	/**
 	 * Processes the field arguments
 	 *
-	 * @param array $whitelisted_properties Defines an array of arguments that will skip validation at this point.
+	 * @access protected
 	 */
-	protected function set_field( $whitelisted_properties = array() ) {
+	protected function set_field() {
 
 		$properties = get_class_vars( __CLASS__ );
-		// Remove any whitelisted properties from above.
-		// These will get a free pass, completely unfiltered.
-		foreach ( $whitelisted_properties as $key => $default_value ) {
-			if ( isset( $properties[ $key ] ) ) {
-				unset( $properties[ $key ] );
-			}
-		}
 
 		// Some things must run before the others.
 		$priorities = array(
@@ -414,18 +395,47 @@ class Kirki_Field {
 			$args[ $key ] = $this->$key;
 		}
 
-		// Add the whitelisted properties through the back door.
-		foreach ( $whitelisted_properties as $key => $default_value ) {
-			if ( ! isset( $this->$key ) ) {
-				$this->$key = $default_value;
-			}
-			$args[ $key ] = $this->$key;
-		}
-
 		// Add the field to the static $fields variable properly indexed.
 		Kirki::$fields[ $this->settings ] = $args;
 
 	}
+
+	/**
+	 * No need to do anything, these are escaped on the fields themselves.
+	 *
+	 * @access protected
+	 */
+	protected function set_label() {}
+
+	/**
+	 * No need to do anything, these are escaped on the fields themselves.
+	 *
+	 * @access protected
+	 */
+	protected function set_description() {}
+
+	/**
+	 * No need to do anything, these are escaped on the fields themselves.
+	 *
+	 * @access protected
+	 */
+	protected function set_mode() {}
+
+	/**
+	 * No need to do anything, these are escaped on the fields themselves.
+	 * Only used in repeaters.
+	 *
+	 * @access protected
+	 */
+	protected function set_fields() {}
+
+	/**
+	 * No need to do anything, these are escaped on the fields themselves.
+	 * Only used in repeaters.
+	 *
+	 * @access protected
+	 */
+	protected function set_row_label() {}
 
 	/**
 	 * This allows us to process this on a field-basis
