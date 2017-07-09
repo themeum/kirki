@@ -112,10 +112,9 @@ class Kirki_Modules_Webfonts {
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @param string $config_id The config-ID.
 	 * @return string
 	 */
-	public function get_method( $config_id ) {
+	public function get_method() {
 
 		// Figure out which method to use.
 		$method = apply_filters( 'kirki/googlefonts_load_method', 'link' );

@@ -167,7 +167,7 @@ class Kirki_Init {
 		$this->control_types = $this->default_control_types( apply_filters( 'kirki/control_types', $this->control_types ) );
 		foreach ( $this->control_types as $key => $classname ) {
 			if ( ! class_exists( $classname ) ) {
-				unset( $control_types[ $key ] );
+				unset( $this->control_types[ $key ] );
 			}
 		}
 

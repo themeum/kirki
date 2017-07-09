@@ -262,7 +262,7 @@ class Kirki_Field {
 		}
 		$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
 		foreach ( $config_defaults as $key => $value ) {
-			if ( isset( $defaults[ $key ] ) && ! empty( $value ) && $value != $defaults[ $key ] ) {
+			if ( isset( $defaults[ $key ] ) && ! empty( $value ) && $value !== $defaults[ $key ] ) {
 				$defaults[ $key ] = $value;
 			}
 		}
@@ -312,7 +312,7 @@ class Kirki_Field {
 
 		// Get all arguments with their values.
 		$args = get_object_vars( $this );
-		foreach ( $args as $key => $default_value ) {
+		foreach ( array_keys( $args ) ) {
 			$args[ $key ] = $this->$key;
 		}
 
