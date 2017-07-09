@@ -245,9 +245,9 @@ class Kirki_Output {
 			return;
 		}
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
-		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
-		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
-		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
+		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
+		$output['units']       = ( isset( $output['units'] ) ) ? $output['units'] : '';
+		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 
 		// Properties that can accept multiple values.
 		// Useful for example for gradients where all browsers use the "background-image" property
