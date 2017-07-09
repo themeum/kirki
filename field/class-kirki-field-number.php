@@ -66,9 +66,6 @@ class Kirki_Field_Number extends Kirki_Field {
 				$value = $min + ( round( $steps ) * $step );
 			}
 		}
-
 		return $value;
-
 	}
-
 }
