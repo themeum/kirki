@@ -1,4 +1,4 @@
-<?php
+
 /**
  * Creates and validates field parameters.
  *
@@ -560,6 +560,59 @@ class Kirki_Field {
 	protected function set_disable_output() {
 
 		$this->disable_output = (bool) $this->disable_output;
+
+	}
+
+	/**
+	 * Sets the $sanitize_callback
+	 *
+	 * @access protected
+	 */
+	protected function set_output() {
+
+		if ( empty( $this->output ) ) {
+			return;
+		}
+		if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
+			/* translators: %s represents the field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			$this->output = array(
+				array(
+					'element' => $this->output,
+				),
+			);
+		}
+		// Convert to array of arrays if needed.
+		if ( isset( $this->output['element'] ) ) {
+			/* translators: %s represents the field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			$this->output = array( $this->output );
+		}
+		$outputs = array();
+		foreach ( $this->output as $output ) {
+			if ( ! isset( $output['element'] ) || ( ! isset( $output['property'] ) && ! in_array( $this->type, array( 'kirki-typography', 'kirki-background' ), true ) ) ) {
+				continue;
+			}
+			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+				$output['sanitize_callback'] = $output['callback'];
+			}
+			// Convert element arrays to strings.
+			if ( is_array( $output['element'] ) ) {
+				$output['element'] = array_unique( $output['element'] );
+				sort( $output['element'] );
+				$output['element'] = implode( ',', $output['element'] );
+			}
+			$outputs[] = array(
+				'element'           => $output['element'],
+				'property'          => ( isset( $output['property'] ) ) ? $output['property'] : '',
+				'media_query'       => ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global',
+				'sanitize_callback' => ( isset( $output['sanitize_callback'] ) ) ? $output['sanitize_callback'] : '',
+				'units'             => ( isset( $output['units'] ) ) ? $output['units'] : '',
+				'prefix'            => ( isset( $output['prefix'] ) ) ? $output['prefix'] : '',
+				'suffix'            => ( isset( $output['suffix'] ) ) ? $output['suffix'] : '',
+				'exclude'           => ( isset( $output['exclude'] ) ) ? $output['exclude'] : false,
+			);
+		}
 	}
 
 	/**
