@@ -640,24 +640,7 @@ class Kirki_Field {
 	 *
 	 * @access protected
 	 */
-	protected function set_sanitize_callback() {
-
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
-		}
-
-		$default_callbacks = array(
-			'kirki-multicheck'       => array( 'Kirki_Sanitize_Values', 'multicheck' ),
-			'kirki-typography'       => array( 'Kirki_Sanitize_Values', 'typography' ),
-		);
-
-		if ( array_key_exists( $this->type, $default_callbacks ) ) {
-			$this->sanitize_callback = $default_callbacks[ $this->type ];
-		}
-
-	}
+	protected function set_sanitize_callback() {}
 
 	/**
 	 * Sets the $choices.
