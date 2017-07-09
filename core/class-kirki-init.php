@@ -285,7 +285,7 @@ class Kirki_Init {
 	 * @return bool
 	 */
 	public static function is_plugin() {
-		_doing_it_wrong( __METHOD__, esc_attr__( 'We detected you\'re using Kirki_Init::is_plugin(). Please use Kirki_Util::is_plugin() instead.', 'kirki' ), '3.1' );
+		_doing_it_wrong( __METHOD__, esc_attr__( 'We detected you\'re using Kirki_Init::is_plugin(). Please use Kirki_Util::is_plugin() instead.', 'kirki' ), '3.0.10' );
 		// Return result using the Kirki_Util class.
 		return Kirki_Util::is_plugin();
 	}
@@ -301,7 +301,7 @@ class Kirki_Init {
 	 */
 	public static function get_variables() {
 		// Log error for developers.
-		_doing_it_wrong( __METHOD__, esc_attr__( 'We detected you\'re using Kirki_Init::get_variables(). Please use Kirki_Util::get_variables() instead.', 'kirki' ), '3.1' );
+		_doing_it_wrong( __METHOD__, esc_attr__( 'We detected you\'re using Kirki_Init::get_variables(). Please use Kirki_Util::get_variables() instead.', 'kirki' ), '3.0.10' );
 		// Return result using the Kirki_Util class.
 		return Kirki_Util::get_variables();
 	}
