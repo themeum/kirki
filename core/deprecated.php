@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'kirki_get_option' ) ) {
 	/**
 	 * Get the value of a field.
-	 * This is a deprecated function that we useD when there was no API.
+	 * This is a deprecated function that we used when there was no API.
 	 * Please use the Kirki::get_option() method instead.
 	 * Documentation is available for the new method on https://github.com/aristath/kirki/wiki/Getting-the-values
 	 *
