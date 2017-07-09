@@ -174,14 +174,6 @@ class Kirki_Field {
 	protected $tooltip = '';
 
 	/**
-	 * Whitelisting for backwards-compatibility.
-	 *
-	 * @access protected
-	 * @var string
-	 */
-	protected $help = '';
-
-	/**
 	 * A custom callback to determine if the field should be visible or not.
 	 *
 	 * @access protected
@@ -215,90 +207,12 @@ class Kirki_Field {
 	protected $required = array();
 
 	/**
-	 * Suggested width for cropped image.
-	 *
-	 * @access protected
-	 * @var int
-	 */
-	protected $width = 150;
-
-	/**
-	 * Suggested height for cropped image.
-	 *
-	 * @access protected
-	 * @var int
-	 */
-	protected $height = 150;
-
-	/**
-	 * Whether the width is flexible for cropped image.
-	 *
-	 * @access protected
-	 * @var bool
-	 */
-	protected $flex_width = false;
-
-	/**
-	 * Whether the height is flexible for cropped image.
-	 *
-	 * @access protected
-	 * @var bool
-	 */
-	protected $flex_height = false;
-
-	/**
-	 * Contain the settings for the repeater rows labels
-	 *
-	 * @access protected
-	 * @var array
-	 */
-	protected $row_label = array();
-
-	/**
 	 * Partial Refreshes array.
 	 *
 	 * @access protected
 	 * @var array
 	 */
 	protected $partial_refresh = array();
-
-	/**
-	 * Use only on image, cropped_image, upload controls.
-	 * Limit the Media library to a specific mime type
-	 *
-	 * @access protected
-	 * @var array
-	 */
-	protected $mime_type = '';
-
-	/**
-	 * Used by image fields.
-	 *
-	 * @access protected
-	 * @var array
-	 * @since 3.0.0
-	 */
-	protected $button_labels = array();
-
-	/**
-	 * Use only on select controls.
-	 * Defines if this is a multi-select or not.
-	 * If value is > 1, then the maximum number of selectable options
-	 * is the number defined here.
-	 *
-	 * @access protected
-	 * @var integer
-	 */
-	protected $multiple = 1;
-
-	/**
-	 * Allows fields to be collapsible.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @var bool
-	 */
-	protected $collapsible = false;
 
 	/**
 	 * The class constructor.
@@ -428,51 +342,6 @@ class Kirki_Field {
 		}
 		return 'Kirki_Field_Property_' . implode( '_', $property_parts );
 	}
-
-	/**
-	 * No need to do anything, these are escaped on the fields themselves.
-	 *
-	 * @access protected
-	 */
-	protected function set_label() {}
-
-	/**
-	 * No need to do anything, these are escaped on the fields themselves.
-	 *
-	 * @access protected
-	 */
-	protected function set_description() {}
-
-	/**
-	 * No need to do anything, these are escaped on the fields themselves.
-	 *
-	 * @access protected
-	 */
-	protected function set_mode() {}
-
-	/**
-	 * No need to do anything, these are escaped on the fields themselves.
-	 * Only used in repeaters.
-	 *
-	 * @access protected
-	 */
-	protected function set_fields() {}
-
-	/**
-	 * No need to do anything, these are escaped on the fields themselves.
-	 * Only used in repeaters.
-	 *
-	 * @access protected
-	 */
-	protected function set_row_label() {}
-
-	/**
-	 * This allows us to process this on a field-basis
-	 * by using sub-classes which can override this method.
-	 *
-	 * @access protected
-	 */
-	protected function set_default() {}
 
 	/**
 	 * Escape $kirki_config.
@@ -672,13 +541,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Sets the $sanitize_callback
-	 *
-	 * @access protected
-	 */
-	protected function set_sanitize_callback() {}
-
-	/**
 	 * Sets the $choices.
 	 *
 	 * @access protected
@@ -827,7 +689,6 @@ class Kirki_Field {
 	protected function set_priority() {
 
 		$this->priority = absint( $this->priority );
-
 	}
 
 	/**
@@ -838,6 +699,5 @@ class Kirki_Field {
 	protected function set_collapsible() {
 
 		$this->collapsible = (bool) $this->collapsible;
-
 	}
 }
