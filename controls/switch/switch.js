@@ -20,13 +20,16 @@ wp.customize.controlConstructor['kirki-switch'] = wp.customize.Control.extend({
 		'use strict';
 
 		var control       = this,
-		    checkboxValue = control.setting._value;
+		    checkboxValue = control.setting._value,
+		    on            = jQuery( control.container.find( '.switch-on' ) ),
+		    off           = jQuery( control.container.find( '.switch-off' ) );
 
 		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// CSS modifications depending on label sizes.
+		jQuery( control.container.find( '.switch label ' ) ).css( 'width', ( on.width() + off.width() + 40 ) + 'px' );
 		jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) ).append(
-			'<style>#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .switch label{width:calc(' + control.params.choices.on.length + 'ch + ' + control.params.choices.off.length + 'ch + 40px);}#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .switch label:after{width:calc(' + control.params.choices.on.length + 'ch + 10px);}#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .switch input:checked + label:after{left:calc(' + control.params.choices.on.length + 'ch + 25px);width:calc(' + control.params.choices.off.length + 'ch + 10px);}</style>'
+			'<style>#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .switch label:after{width:' + ( on.width() + 10 ) + 'px;}#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .switch input:checked + label:after{left:' + ( on.width() + 25 ) + 'px;width:' + ( off.width() + 10 ) + 'px;}</style>'
 		);
 
 		// Save the value
