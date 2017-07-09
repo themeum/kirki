@@ -47,10 +47,16 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 */
 	public function sanitize( $value = null ) {
 
-		if ( '0' === $value || 0 === $value || 'false' === $value ) {
-			return 0;
-		} elseif ( '1' === $value || 1 === $value || 'true' === $value ) {
-			return 1;
+		switch ( $value ) {
+
+			case '0':
+			case 0:
+			case 'false':
+				return false;
+			case '1':
+			case 1:
+			case 'true':
+				return true;
 		}
 
 		return (bool) $value;
@@ -64,7 +70,7 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 */
 	protected function set_default() {
 
-		$this->default = ( 1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default );
+		$this->default = (bool) ( 1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default );
 
 	}
 }
