@@ -352,6 +352,8 @@ class Kirki_Field {
 		foreach ( $args as $key => $value ) {
 			$this->$key = $value;
 		}
+
+		$this->set_field();
 	}
 
 	/**
