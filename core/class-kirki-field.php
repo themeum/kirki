@@ -408,10 +408,10 @@ class Kirki_Field {
 	private function get_property_classname( $property ) {
 		$property_parts = (array) $property;
 		if ( false !== strpos( $property, '-' ) ) {
-			$property_parts = explode( '-' );
+			$property_parts = explode( '-', $property );
 		}
 		if ( false !== strpos( $property, '_' ) ) {
-			$property_parts = explode( '_' );
+			$property_parts = explode( '_', $property );
 		}
 		foreach( $property_parts as $property_part_k => $property_part_v ) {
 			$property_parts[ $property_part_k ] = ucfirst( $property_part_v );
