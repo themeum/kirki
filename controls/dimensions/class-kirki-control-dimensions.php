@@ -156,7 +156,7 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 * @since 3.0.0
-	 * @return string
+	 * @return array
 	 */
 	protected function l10n() {
 		return array(
