@@ -315,6 +315,7 @@ class Kirki_Field {
 		// In case the user only provides 1 argument,
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
+			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
 			$args = $config_id;
 			$config_id = 'global';
@@ -324,6 +325,7 @@ class Kirki_Field {
 
 		$this->kirki_config = trim( esc_attr( $config_id ) );
 		if ( '' === $config_id ) {
+			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
 			$this->kirki_config = 'global';
 		}
@@ -508,6 +510,7 @@ class Kirki_Field {
 		}
 		// Take care of common typos.
 		if ( 'theme_mods' === $this->option_type ) {
+			/* translators: %1$s represents the field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
 			$this->option_type = 'theme_mod';
 		}
@@ -525,6 +528,7 @@ class Kirki_Field {
 		}
 		foreach ( $this->partial_refresh as $id => $args ) {
 			if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
+				/* translators: %1$s represents the field ID where the error occurs. */
 				_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
 				unset( $this->partial_refresh[ $id ] );
 				continue;
