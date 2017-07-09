@@ -511,7 +511,7 @@ class Kirki_Field {
 		// Take care of common typos.
 		if ( 'theme_mods' === $this->option_type ) {
 			/* translators: %1$s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
 			$this->option_type = 'theme_mod';
 		}
 	}
@@ -529,7 +529,7 @@ class Kirki_Field {
 		foreach ( $this->partial_refresh as $id => $args ) {
 			if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
 				/* translators: %1$s represents the field ID where the error occurs. */
-				_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
+				_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
 				unset( $this->partial_refresh[ $id ] );
 				continue;
 			}
@@ -680,14 +680,16 @@ class Kirki_Field {
 			return;
 		}
 		if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
-			$this->output = array(
-				array(
-					'element' => $this->output,
-				),
-			);
+			/* translators: %s represents the field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			$this->output = array( array(
+				'element' => $this->output,
+			) );
 		}
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {
+			/* translators: %s represents the field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
 			$this->output = array( $this->output );
 		}
 		$outputs = array();
@@ -804,8 +806,9 @@ class Kirki_Field {
 			return;
 		}
 		if ( '' !== $this->help ) {
+			/* translators: %s represents the field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"help" argument has been deprecated in favor of "tooltip". Error in field %s.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
 			$this->tooltip = wp_strip_all_tags( $this->help );
-			// $help has been deprecated
 			$this->help = '';
 			return;
 		}
