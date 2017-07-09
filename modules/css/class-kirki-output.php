@@ -119,6 +119,7 @@ class Kirki_Output {
 						$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
 					}
 				}
+				$options = array();
 				if ( $option_name ) {
 					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
 				}
