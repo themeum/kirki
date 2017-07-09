@@ -27,7 +27,7 @@ class Kirki_Field_Property_Output extends Kirki_Field_Property {
 		}
 		if ( ! empty( $this->args['output'] ) && ! is_array( $this->args['output'] ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->args['settings'] ) ), '3.0.10' );
 			$this->args['output'] = array(
 				array(
 					'element' => $this->args['output'],
@@ -37,7 +37,7 @@ class Kirki_Field_Property_Output extends Kirki_Field_Property {
 		// Convert to array of arrays if needed.
 		if ( isset( $this->args['output']['element'] ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->args['settings'] ) ), '3.0.10' );
 			$this->args['output'] = array( $this->args['output'] );
 		}
 		$outputs = array();
