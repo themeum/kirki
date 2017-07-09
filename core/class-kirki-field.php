@@ -682,9 +682,11 @@ class Kirki_Field {
 		if ( ! empty( $this->output ) && ! is_array( $this->output ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
-			$this->output = array( array(
-				'element' => $this->output,
-			) );
+			$this->output = array(
+				array(
+					'element' => $this->output,
+				),
+			);
 		}
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {
