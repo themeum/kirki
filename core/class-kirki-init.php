@@ -134,7 +134,7 @@ class Kirki_Init {
 			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
 			'upload'                => 'WP_Customize_Upload_Control',
 		);
-		return array_merge( $control_types, $this->control_types );
+		return array_merge( $this->control_types, $control_types );
 
 	}
 
@@ -164,19 +164,16 @@ class Kirki_Init {
 			$wp_customize->register_section_type( $section_type );
 		}
 
-		if ( empty( $this->control_types ) ) {
-			$control_types = apply_filters( 'kirki/control_types', array() );
-			foreach ( $control_types as $key => $classname ) {
-				if ( ! class_exists( $classname ) ) {
-					unset( $control_types[ $key ] );
-				}
+		$this->control_types = $this->default_control_types( apply_filters( 'kirki/control_types', $this->control_types ) );
+		foreach ( $this->control_types as $key => $classname ) {
+			if ( ! class_exists( $classname ) ) {
+				unset( $control_types[ $key ] );
 			}
-
-			$this->control_types = array_merge( $control_types, $this->control_types );
 		}
 
 		$do_not_register_control_types = apply_filters( 'kirki/control_types/exclude', array(
 			'Kirki_Control_Repeater',
+			'WP_Customize_Control',
 		) );
 
 		foreach ( $this->control_types as $control_type ) {
