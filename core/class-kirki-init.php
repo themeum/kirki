@@ -163,14 +163,24 @@ class Kirki_Init {
 		foreach ( $section_types as $section_type ) {
 			$wp_customize->register_section_type( $section_type );
 		}
+
 		if ( empty( $this->control_types ) ) {
-			$this->control_types = $this->default_control_types();
+			$control_types = apply_filters( 'kirki/control_types', array() );
+			foreach ( $control_types as $key => $classname ) {
+				if ( ! class_exists( $classname ) ) {
+					unset( $control_types[ $key ] );
+				}
+			}
+
+			$this->control_types = array_merge( $control_types, $this->control_types );
 		}
+
 		$do_not_register_control_types = apply_filters( 'kirki/control_types/exclude', array(
 			'Kirki_Control_Repeater',
 		) );
+
 		foreach ( $this->control_types as $control_type ) {
-			if ( 0 === strpos( $control_type, 'Kirki' ) && ! in_array( $control_type, $do_not_register_control_types, true ) && class_exists( $control_type ) ) {
+			if ( ! in_array( $control_type, $do_not_register_control_types, true ) && class_exists( $control_type ) ) {
 				$wp_customize->register_control_type( $control_type );
 			}
 		}
