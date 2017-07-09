@@ -383,7 +383,7 @@ class Kirki_Modules_PostMessage {
 	 * @access private
 	 * @since 3.0.0
 	 * @param array $args The field args.
-	 * @return string;
+	 * @return string
 	 */
 	private function before_script( $args ) {
 
