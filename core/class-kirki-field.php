@@ -337,7 +337,7 @@ class Kirki_Field {
 		if ( false !== strpos( $property, '_' ) ) {
 			$property_parts = explode( '_', $property );
 		}
-		foreach( $property_parts as $property_part_k => $property_part_v ) {
+		foreach ( $property_parts as $property_part_k => $property_part_v ) {
 			$property_parts[ $property_part_k ] = ucfirst( $property_part_v );
 		}
 		return 'Kirki_Field_Property_' . implode( '_', $property_parts );
