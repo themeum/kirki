@@ -312,7 +312,7 @@ class Kirki_Field {
 
 		// Get all arguments with their values.
 		$args = get_object_vars( $this );
-		foreach ( array_keys( $args ) ) {
+		foreach ( array_keys( $args ) {
 			$args[ $key ] = $this->$key;
 		}
 
