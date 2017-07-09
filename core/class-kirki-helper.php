@@ -289,6 +289,7 @@ class Kirki_Helper {
 			case 'A200':
 			case 'A400':
 			case 'A700':
+				$key = $context / 100;
 				if ( 'A100' === $context ) {
 					$key = 10;
 					unset( $colors['grey'] );
@@ -301,8 +302,6 @@ class Kirki_Helper {
 				} elseif ( 'A700' === $context ) {
 					$key = 13;
 					unset( $colors['grey'] );
-				} else {
-					$key = $context / 100;
 				}
 				unset( $colors['primary'] );
 				$position_colors = array();

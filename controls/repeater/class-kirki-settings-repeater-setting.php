@@ -67,10 +67,9 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 
 		// Make sure that every row is an array, not an object.
 		foreach ( $sanitized as $key => $_value ) {
+			$sanitized[ $key ] = (array) $_value;
 			if ( empty( $_value ) ) {
 				unset( $sanitized[ $key ] );
-			} else {
-				$sanitized[ $key ] = (array) $_value;
 			}
 		}
 
