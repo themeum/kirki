@@ -457,10 +457,10 @@ class Kirki_Field {
 		}
 		$settings = array();
 		foreach ( $this->settings as $setting_key => $setting_value ) {
-			$settings[ sanitize_key( $setting_key ) ] = esc_attr( $setting_value );
+			$settings[ $setting_key ] = $setting_value;
 			// If we're using serialized options then we need to spice this up.
 			if ( 'option' === $this->option_type && '' !== $this->option_name && ( false === strpos( $setting_key, '[' ) ) ) {
-				$settings[ sanitize_key( $setting_key ) ] = esc_attr( $this->option_name ) . '[' . esc_attr( $setting_value ) . ']';
+				$settings[ $setting_key ] = "{$this->option_name}[{$setting_value}]";
 			}
 		}
 		$this->settings = $settings;
