@@ -299,11 +299,6 @@ class Kirki_Field {
 			if ( in_array( $property, array( 'option_name', 'option_type', 'settings' ), true ) ) {
 				continue;
 			}
-			$property_class_name = $this->get_property_classname( $property );
-			if ( class_exists( $property_class_name ) ) {
-				$property_obj    = new $property_class_name( $this->args );
-				$this->$property = $property_obj->get_property();
-			}
 			if ( method_exists( $this, 'set_' . $property ) ) {
 				$method_name = 'set_' . $property;
 				$this->$method_name();
