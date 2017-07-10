@@ -87,7 +87,7 @@ class Kirki_Autoload {
 	 *
 	 * @access protected
 	 * @since 3.0.10
-	 * @param $class_name The name of the class we're looking for.
+	 * @param string $class_name The name of the class we're trying to load.
 	 * @return array
 	 */
 	protected function get_paths( $class_name ) {
