@@ -375,7 +375,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'700italic',
 		) );
 		foreach ( $standard_fonts as $key => $font ) {
-			if ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) {
+			if ( ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) || ! isset( $font['stack'] ) || ! isset( $font['label'] ) ) {
 				continue;
 			}
 			$standard_fonts_final[] = array(
