@@ -51,11 +51,11 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 
 			case '0':
 			case 0:
-			case 'false':
+			case 'false' === $value:
 				return false;
 			case '1':
 			case 1:
-			case 'true':
+			case 'true' === $value:
 				return true;
 		}
 
