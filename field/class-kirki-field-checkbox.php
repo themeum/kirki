@@ -47,16 +47,8 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 */
 	public function sanitize( $value = null ) {
 
-		switch ( $value ) {
-
-			case '0':
-			case 0:
-			case 'false':
-				return false;
-			case '1':
-			case 1:
-			case 'true':
-				return true;
+		if ( '0' === $value || 'false' === $value ) {
+			return false;
 		}
 
 		return (bool) $value;
