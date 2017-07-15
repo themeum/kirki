@@ -94,10 +94,6 @@ class Kirki_Values {
 		$get_option = ( $site_option ) ? 'get_site_option' : 'get_option';
 		if ( '' !== Kirki::$config[ $config_id ]['option_name'] ) {
 
-			if ( false !== strpos( $field_id, Kirki::$config[ $config_id ]['option_name'] . '[' ) ) {
-				$field_id = str_replace( array( Kirki::$config[ $config_id ]['option_name'], '[', ']' ), '', $field_id );
-			}
-
 			// Options are serialized as a single option in the db.
 			// We'll have to get the option and then get the item from the array.
 			$options = $get_option( Kirki::$config[ $config_id ]['option_name'] );
