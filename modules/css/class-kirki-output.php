@@ -112,48 +112,9 @@ class Kirki_Output {
 				}
 			}
 			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-				$option_type = 'theme_mod';
-				$option_name = false;
-				if ( isset( Kirki::$config[ $this->config_id ] ) ) {
-					$config = Kirki::$config[ $this->config_id ];
-					$option_type = ( isset( $config['option_type'] ) ) ? $config['option_type'] : 'theme_mod';
-					if ( 'option' === $option_type || 'site_option' === $option_type ) {
-						$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
-					}
-				}
-				$options = array();
-				if ( $option_name ) {
-					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
-				}
 				foreach ( $output['pattern_replace'] as $search => $replace ) {
-					$replacement = '';
-					switch ( $option_type ) {
-						case 'option':
-							if ( is_array( $options ) ) {
-								if ( $option_name ) {
-									$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
-									$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
-									break;
-								}
-								$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
-								break;
-							}
-							$replacement = get_option( $replace );
-							break;
-						case 'site_option':
-							$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
-							break;
-						case 'user_meta':
-							$user_id = get_current_user_id();
-							if ( $user_id ) {
-								// @codingStandardsIgnoreLine
-								$replacement = get_user_meta( $user_id, $replace, true );
-							}
-							break;
-						default:
-							$replacement = get_theme_mod( $replace );
-					}
-					$replacement = ( false === $replacement ) ? '' : $replacement;
+					$replacement = Kirki_Values::get_value( $replace );
+					$replacement = ( false === $replacement || null === $replacement ) ? '' : $replacement;
 					if ( is_array( $value ) ) {
 						foreach ( $value as $k => $v ) {
 							$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
