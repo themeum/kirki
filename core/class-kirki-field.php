@@ -584,7 +584,8 @@ class Kirki_Field {
 			$this->output = array( $this->output );
 		}
 		foreach ( $this->output as $key => $output ) {
-			if ( ! isset( $output['element'] ) || ( ! isset( $output['property'] ) ) ) {
+			if ( empty( $output ) || ! isset( $output['element'] ) || ( ! isset( $output['property'] ) ) ) {
+				unset( $this->output[ $key ] );
 				continue;
 			}
 			$this->output[ $key ] = $this->get_single_output( $output );
@@ -617,7 +618,7 @@ class Kirki_Field {
 			'units'             => '',
 			'prefix'            => '',
 			'suffix'            => '',
-			'exclude'           => false,
+			'exclude'           => array(),
 		) );
 	}
 
