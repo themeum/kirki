@@ -51,13 +51,13 @@ class Kirki_Values {
 			case 'option':
 			case 'site_option':
 				$site_option = (bool) ( 'site_option' === Kirki::$config[ $config_id ] );
-				return apply_filters( 'kirki/values/get_value', self::get_from_option( $config_id, $field_id, $site_option ), $field_id );
+				return apply_filters( 'kirki/values/get_value', $this->get_from_option( $config_id, $field_id, $site_option ), $field_id );
 			case 'user_meta':
 				$user_id = get_current_user_id();
 				// @codingStandardsIgnoreLine
 				return ( $user_id ) ? get_user_meta( $user_id, $field_id, true ) : null;
 			default:
-				return apply_filters( 'kirki/values/get_value', self::get_from_theme_mod( $field_id ), $field_id );
+				return apply_filters( 'kirki/values/get_value', $this->get_from_theme_mod( $field_id ), $field_id );
 		}
 	}
 
