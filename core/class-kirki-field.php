@@ -588,38 +588,16 @@ class Kirki_Field {
 				unset( $this->output[ $key ] );
 				continue;
 			}
-			$this->output[ $key ] = $this->get_single_output( $output );
+			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+				$this->output[ $key ]['sanitize_callback'] = $output['callback'];
+			}
+			// Convert element arrays to strings.
+			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
+				$this->output[ $key ]['element'] = array_unique( $this->output[ $key ]['element'] );
+				sort( $this->output[ $key ]['element'] );
+				$this->output[ $key ]['element'] = implode( ',', $this->output[ $key ]['element'] );
+			}
 		}
-	}
-
-	/**
-	 * Sanitizes a single output argument.
-	 *
-	 * @access protected
-	 * @since 3.0.10
-	 * @param array $output An output argument.
-	 * @return array
-	 */
-	protected function get_single_output( $output ) {
-		if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
-			$output['sanitize_callback'] = $output['callback'];
-		}
-		// Convert element arrays to strings.
-		if ( is_array( $output['element'] ) ) {
-			$output['element'] = array_unique( $output['element'] );
-			sort( $output['element'] );
-			$output['element'] = implode( ',', $output['element'] );
-		}
-		return wp_parse_args( $output, array(
-			'element'           => '',
-			'property'          => '',
-			'media_query'       => 'global',
-			'sanitize_callback' => '',
-			'units'             => '',
-			'prefix'            => '',
-			'suffix'            => '',
-			'exclude'           => array(),
-		) );
 	}
 
 	/**
