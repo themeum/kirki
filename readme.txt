@@ -33,6 +33,15 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.10 =
+
+Fix: Custom control types were not being registered (props @danielortiz) [#1455](https://github.com/aristath/kirki/pull/1455)
+Fix: Inline docs improvements.
+Fix: `$subsets` not defined in the `Kirki_Modules_Webfonts_Link` class.
+Fix: Coding improvements in the `Kirki_Field` class.
+Fix: Performance Improvements in the autoloader [see commit](https://github.com/aristath/kirki/pull/1454/commits/dd518f7dc35cacf4f2ed571b033519b353aa2545)
+New: Added warnings for deprecated functions/methods.
+
 = 3.0.9 =
 
 July 8 2017, dev time: 7 hours.
