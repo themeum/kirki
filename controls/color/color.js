@@ -33,7 +33,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 			clear.click( function() {
 				control.setting.set( '' );
 			});
-		}, 500 );
+		}, 200 );
 
 		// Saves our settings to the WP API
 		picker.wpColorPicker({
@@ -42,7 +42,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.Control.extend({
 				// Small hack: the picker needs a small delay
 				setTimeout( function() {
 					control.setting.set( picker.val() );
-				}, 100 );
+				}, 20 );
 
 			}
 		});
