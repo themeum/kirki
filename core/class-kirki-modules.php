@@ -65,6 +65,7 @@ class Kirki_Modules {
 			'tooltips'           => 'Kirki_Modules_Tooltips',
 			'branding'           => 'Kirki_Modules_Customizer_Branding',
 			'postMessage'        => 'Kirki_Modules_PostMessage',
+			// 'post_meta'          => 'Kirki_Modules_Post_Meta',
 			'selective-refresh'  => 'Kirki_Modules_Selective_Refresh',
 			'field-dependencies' => 'Kirki_Modules_Field_Dependencies',
 			'custom-sections'    => 'Kirki_Modules_Custom_Sections',
