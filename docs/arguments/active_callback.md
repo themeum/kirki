@@ -29,7 +29,7 @@ It is formatted as an array of arrays so you can add multiple dependencies.
 * `operator`: you can use any of the following:
   * `===` : uses PHP's `===` to evaluate the value
   * `==`, `=`, `equal`, `equals` : uses PHP's `==` to evaluate the value
-  * `!==1` : uses PHP's `!==` to evaluate the value
+  * `!==` : uses PHP's `!==` to evaluate the value
   * `!=`, `not equal` : uses PHP's `!==` to evaluate the value
   * `>=`, `greater or equal`, `equal or greater` : uses PHP's `>=` to evaluate the value
   * `<=`, `smaller or equal`, `equal or smaller`: uses PHP's `<=` to evaluate the value
