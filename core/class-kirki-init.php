@@ -233,7 +233,7 @@ class Kirki_Init {
 	/**
 	 * Create the settings and controls from the $fields array and register them.
 	 *
-	 * @var	object The WordPress Customizer object
+	 * @var object The WordPress Customizer object.
 	 * @return void
 	 */
 	public function add_fields() {
