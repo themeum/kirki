@@ -174,8 +174,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control      = this,
 			    value        = control.getValue(),
 			    pickerStart  = control.container.find( '.kirki-gradient-control-start' ),

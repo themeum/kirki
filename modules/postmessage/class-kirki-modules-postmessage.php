@@ -160,7 +160,7 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $js_var['exclude'] ) ) {
 			$script .= 'if(true===exclude){cssContent="";}';
 		}
-		if ( $add_css) {
+		if ( $add_css ) {
 			$script .= "jQuery('#{$style_id}').text(cssContent);";
 			$script .= "jQuery('#{$style_id}').appendTo('head');";
 		}

@@ -284,6 +284,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		<ul class="repeater-fields"></ul>
 
 		<?php if ( isset( $this->choices['limit'] ) ) : ?>
+			<?php // @codingStandardsIgnoreLine ?>
 			<?php /* translators: %s represents the number of rows we're limiting the repeater to allow. */ ?>
 			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), esc_html( $this->choices['limit'] ) ); ?></p>
 		<?php endif; ?>
