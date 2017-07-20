@@ -175,54 +175,50 @@
 		initKirkiControl: function() {
 
 			var control      = this,
-				element      = control.container.find( 'textarea' ),
-				toggler      = control.container.find( '.toggle-editor' ),
-				wpEditorArea = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
-				setChange,
-				content;
+			    element      = control.container.find( 'textarea' ),
+			    toggler      = control.container.find( '.toggle-editor' ),
+			    wpEditorArea = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
+			    editor       = tinyMCE.get( 'kirki-editor' ),
+			    setChange,
+			    content;
 
-			jQuery( window ).load( function() {
+			// Add the button text
+			toggler.html( editorKirkiL10n['open-editor'] );
 
-				var editor  = tinyMCE.get( 'kirki-editor' );
+			toggler.on( 'click', function() {
 
-				// Add the button text
-				toggler.html( editorKirkiL10n['open-editor'] );
+				// Toggle the editor.
+				control.toggleEditor();
 
-				toggler.on( 'click', function() {
+				// Change button.
+				control.changeButton();
 
-					// Toggle the editor.
-					control.toggleEditor();
+				// Add the content to the editor.
+				control.setEditorContent( editor );
 
-					// Change button.
-					control.changeButton();
+				// Modify the preview-area height.
+				control.previewHeight();
 
-					// Add the content to the editor.
-					control.setEditorContent( editor );
+			});
 
-					// Modify the preview-area height.
-					control.previewHeight();
+			// Update the option from the editor contents on change.
+			if ( editor ) {
 
+				editor.onChange.add( function( ed ) {
+
+					ed.save();
+					content = editor.getContent();
+					clearTimeout( setChange );
+					setChange = setTimeout( function() {
+						element.val( content ).trigger( 'change' );
+						wp.customize.instance( control.getEditorWrapperSetting() ).set( content );
+					}, 500 );
 				});
+			}
 
-				// Update the option from the editor contents on change.
-				if ( editor ) {
-
-					editor.onChange.add( function( ed ) {
-
-						ed.save();
-						content = editor.getContent();
-						clearTimeout( setChange );
-						setChange = setTimeout( function() {
-							element.val( content ).trigger( 'change' );
-							wp.customize.instance( control.getEditorWrapperSetting() ).set( content );
-						}, 500 );
-					});
-				}
-
-				// Handle text mode.
-				wpEditorArea.on( 'change keyup paste', function() {
-					wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
-				});
+			// Handle text mode.
+			wpEditorArea.on( 'change keyup paste', function() {
+				wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
 			});
 		},
 
