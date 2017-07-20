@@ -21,8 +21,6 @@ wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.Control.ex
 
 		var control = this;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the value
 		this.container.on( 'click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );

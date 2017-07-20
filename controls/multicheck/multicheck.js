@@ -21,8 +21,6 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.Control.exten
 
 		var control = this;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the value
 		control.container.on( 'change', 'input', function() {
 			var value = [],

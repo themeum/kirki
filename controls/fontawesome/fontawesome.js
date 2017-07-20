@@ -38,8 +38,6 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.Control.exte
 		    },
 		    select;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		_.each( icons.icons, function( icon ) {
 			select2Options.data.push({
 				id: icon.id,

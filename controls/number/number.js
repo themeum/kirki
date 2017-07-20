@@ -23,8 +23,6 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.Control.extend({
 		    element = this.container.find( 'input' ),
 		    step    = 1;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Set step value.
 		if ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.step ) ) {
 			step = ( 'any' === control.params.choices.step ) ? '0.001' : control.params.choices.step;

@@ -25,8 +25,6 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		    removeButton  = control.container.find( '.image-upload-remove-button' ),
 		    defaultButton = control.container.find( '.image-default-button' );
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// If value is not empty, hide the "default" button.
 		if ( ( 'url' === saveAs && '' !== value ) || ( 'array' === saveAs && ! _.isUndefined( value.url ) && '' !== value.url ) ) {
 			control.container.find( 'image-default-button' ).hide();

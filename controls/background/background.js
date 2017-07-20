@@ -21,8 +21,6 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		    value   = control.getValue(),
 		    picker  = control.container.find( '.kirki-color-control' );
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Hide unnecessary controls if the value doesn't have an image.
 		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
 			control.container.find( '.background-wrapper > .background-repeat' ).hide();

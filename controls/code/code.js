@@ -51,7 +51,6 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 
 			// Init the control JS.
 			control.initKirkiControl();
-			jQuery( control.container.find( '.kirki-controls-loading-spinner' ) ).hide();
 
 			// Mark as done and remove from queue.
 			window.kirkiControlsLoader.done.push( control.id );
@@ -80,8 +79,6 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.Control.extend({
 		    editor,
 		    container,
 		    height;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		editor = CodeMirror.fromTextArea( element[0], {
 			value:        control.setting._value,

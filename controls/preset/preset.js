@@ -22,8 +22,6 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.Control.extend({
 		var control = this,
 		    selectValue;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Trigger a change
 		this.container.on( 'change', 'select', function() {
 

@@ -24,8 +24,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    value                 = control.getValue(),
 		    picker;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();

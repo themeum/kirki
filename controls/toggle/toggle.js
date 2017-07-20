@@ -22,8 +22,6 @@ wp.customize.controlConstructor['kirki-toggle'] = wp.customize.Control.extend({
 		var control = this,
 		    checkboxValue = control.setting._value;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the value
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;

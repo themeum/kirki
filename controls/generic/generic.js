@@ -21,8 +21,6 @@ wp.customize.controlConstructor['kirki-generic'] = wp.customize.Control.extend({
 
 		var control = this;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the value
 		this.container.on( 'change keyup paste', control.params.choices.element, function() {
 			control.setting.set( jQuery( this ).val() );

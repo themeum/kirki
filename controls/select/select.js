@@ -30,8 +30,6 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.Control.extend({
 				}
 		    };
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		if ( 1 < multiple ) {
 			select2Options.maximumSelectionLength = multiple;
 		}
