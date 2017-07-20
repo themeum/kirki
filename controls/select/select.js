@@ -176,7 +176,7 @@
 
 			var control  = this,
 			    element  = this.container.find( 'select' ),
-			    multiple = parseInt( element.data( 'multiple' ) ),
+			    multiple = parseInt( element.data( 'multiple' ), 10 ),
 			    selectValue,
 			    select2Options = {
 					escapeMarkup: function( markup ) {
