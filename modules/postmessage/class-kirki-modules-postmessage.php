@@ -93,10 +93,21 @@ class Kirki_Modules_PostMessage {
 	protected function script( $args ) {
 
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
-		// append unique style tag if not exist
-		// The style ID.
-		$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
-		$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
+
+		$add_css = false;
+		foreach ( $args['js_vars'] as $js_var ) {
+			if ( ! isset( $js_var['function'] ) || 'html' !== $js_var['function'] ) {
+				$add_css = true;
+			}
+		}
+
+		if ( $add_css ) {
+
+			// append unique style tag if not exist
+			// The style ID.
+			$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
+			$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
+		}
 
 		// Add anything we need before the main script.
 		$script .= $this->before_script( $args );
@@ -149,8 +160,10 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $js_var['exclude'] ) ) {
 			$script .= 'if(true===exclude){cssContent="";}';
 		}
-		$script .= "jQuery('#{$style_id}').text(cssContent);";
-		$script .= "jQuery('#{$style_id}').appendTo('head');";
+		if ( $add_css) {
+			$script .= "jQuery('#{$style_id}').text(cssContent);";
+			$script .= "jQuery('#{$style_id}').appendTo('head');";
+		}
 		$script .= '});});';
 		return $script;
 	}
@@ -165,10 +178,17 @@ class Kirki_Modules_PostMessage {
 	protected function script_html_var( $args ) {
 
 		$script  = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
-		$script .= "jQuery('{$args['element']}').html(newval);";
-		if ( isset( $args['attr'] ) ) {
-			$script = "jQuery('{$args['element']}').attr('{$args['attr']}',newval);";
+
+		// Apply the value_pattern.
+		if ( '' !== $args['value_pattern'] ) {
+			$script .= $this->value_pattern_replacements( 'newval', $args );
 		}
+
+		if ( isset( $args['attr'] ) ) {
+			$script .= "jQuery('{$args['element']}').attr('{$args['attr']}',newval);";
+			return $script;
+		}
+		$script .= "jQuery('{$args['element']}').html(newval);";
 		return $script;
 	}
 
