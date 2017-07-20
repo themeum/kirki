@@ -42,8 +42,7 @@
 			    nodes   = control.container.find( '[data-customize-setting-link]' );
 
 			nodes.each( function() {
-				var node = jQuery( this ),
-				    name;
+				var node = jQuery( this );
 
 				api( node.data( 'customizeSettingLink' ), function( setting ) {
 					var element = new api.Element( node );
@@ -72,7 +71,6 @@
 
 			nodes.each( function() {
 				var node = jQuery( this ),
-				    name,
 				    element,
 				    propertyName = node.data( 'customizeSettingPropertyLink' );
 
