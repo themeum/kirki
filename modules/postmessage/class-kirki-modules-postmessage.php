@@ -180,7 +180,7 @@ class Kirki_Modules_PostMessage {
 		$script  = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
 
 		// Apply the value_pattern.
-		if ( '' !== $args['value_pattern'] ) {
+		if ( isset( $args['value_pattern'] ) && '' !== $args['value_pattern'] ) {
 			$script .= $this->value_pattern_replacements( 'newval', $args );
 		}
 
