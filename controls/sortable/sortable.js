@@ -1,66 +1,221 @@
-wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
-
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
-		// Set the sortable container.
-		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
-
-		// Init sortable.
-		control.sortableContainer.sortable({
-
-			// Update value when we stop sorting.
-			stop: function() {
-				control.updateValue();
-			}
-		}).disableSelection().find( 'li' ).each( function() {
-
-			// Enable/disable options when we click on the eye of Thundera.
-			jQuery( this ).find( 'i.visibility' ).click( function() {
-				jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
-			});
-		}).click( function() {
-
-			// Update value on click.
-			control.updateValue();
-		});
-	},
+( function( api, $ ) {
+	'use strict';
 
 	/**
-	 * Updates the sorting list
+	 * A dynamic sortable control.
+	 *
+	 * @class
+	 * @augments wp.customize.Control
+	 * @augments wp.customize.Class
 	 */
-	updateValue: function() {
+	api.kirkSortableControl = api.Control.extend({
 
-		'use strict';
+		initialize: function( id, options ) {
+			var control = this,
+			    args    = options || {};
 
-		var control = this,
-		    newValue = [];
-
-		this.sortableContainer.find( 'li' ).each( function() {
-			if ( ! jQuery( this ).is( '.invisible' ) ) {
-				newValue.push( jQuery( this ).data( 'value' ) );
+			args.params = args.params || {};
+			if ( ! args.params.type ) {
+				args.params.type = 'kirki-sortable';
 			}
-		});
-		control.setting.set( newValue );
-	}
-});
+			if ( ! args.params.content ) {
+				args.params.content = jQuery( '<li></li>' );
+				args.params.content.attr( 'id', 'customize-control-' + id.replace( /]/g, '' ).replace( /\[/g, '-' ) );
+				args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
+			}
+
+			control.propertyElements = [];
+			api.Control.prototype.initialize.call( control, id, args );
+		},
+
+		/**
+		 * Add bidirectional data binding links between inputs and the setting(s).
+		 *
+		 * This is copied from wp.customize.Control.prototype.initialize(). It
+		 * should be changed in Core to be applied once the control is embedded.
+		 *
+		 * @private
+		 * @returns {void}
+		 */
+		_setUpSettingRootLinks: function() {
+			var control = this,
+			    nodes   = control.container.find( '[data-customize-setting-link]' );
+
+			nodes.each( function() {
+				var node = jQuery( this ),
+				    name;
+
+				api( node.data( 'customizeSettingLink' ), function( setting ) {
+					var element = new api.Element( node );
+					control.elements.push( element );
+					element.sync( setting );
+					element.set( setting() );
+				});
+			});
+		},
+
+		/**
+		 * Add bidirectional data binding links between inputs and the setting properties.
+		 *
+		 * @private
+		 * @returns {void}
+		 */
+		_setUpSettingPropertyLinks: function() {
+			var control = this,
+			    nodes;
+
+			if ( ! control.setting ) {
+				return;
+			}
+
+			nodes = control.container.find( '[data-customize-setting-property-link]' );
+
+			nodes.each( function() {
+				var node = jQuery( this ),
+				    name,
+				    element,
+				    propertyName = node.data( 'customizeSettingPropertyLink' );
+
+				element = new api.Element( node );
+				control.propertyElements.push( element );
+				element.set( control.setting()[ propertyName ] );
+
+				element.bind( function( newPropertyValue ) {
+					var newSetting = control.setting();
+					if ( newPropertyValue === newSetting[ propertyName ] ) {
+						return;
+					}
+					newSetting = _.clone( newSetting );
+					newSetting[ propertyName ] = newPropertyValue;
+					control.setting.set( newSetting );
+				} );
+				control.setting.bind( function( newValue ) {
+					if ( newValue[ propertyName ] !== element.get() ) {
+						element.set( newValue[ propertyName ] );
+					}
+				} );
+			});
+		},
+
+		/**
+		 * @inheritdoc
+		 */
+		ready: function() {
+			var control = this;
+
+			control._setUpSettingRootLinks();
+			control._setUpSettingPropertyLinks();
+
+			api.Control.prototype.ready.call( control );
+
+			control.deferred.embedded.done( function() {
+				control.initKirkiControl();
+			});
+		},
+
+		/**
+		 * Embed the control in the document.
+		 *
+		 * Override the embed() method to do nothing,
+		 * so that the control isn't embedded on load,
+		 * unless the containing section is already expanded.
+		 *
+		 * @returns {void}
+		 */
+		embed: function() {
+			var control   = this,
+			    sectionId = control.section();
+
+			if ( ! sectionId ) {
+				return;
+			}
+
+			api.section( sectionId, function( section ) {
+				if ( section.expanded() || api.settings.autofocus.control === control.id ) {
+					control.actuallyEmbed();
+				} else {
+					section.expanded.bind( function( expanded ) {
+						if ( expanded ) {
+							control.actuallyEmbed();
+						}
+					} );
+				}
+			} );
+		},
+
+		/**
+		 * Deferred embedding of control when actually
+		 *
+		 * This function is called in Section.onChangeExpanded() so the control
+		 * will only get embedded when the Section is first expanded.
+		 *
+		 * @returns {void}
+		 */
+		actuallyEmbed: function() {
+			var control = this;
+			if ( 'resolved' === control.deferred.embedded.state() ) {
+				return;
+			}
+			control.renderContent();
+			control.deferred.embedded.resolve(); // This triggers control.ready().
+		},
+
+		/**
+		 * This is not working with autofocus.
+		 *
+		 * @param {object} [args] Args.
+		 * @returns {void}
+		 */
+		focus: function( args ) {
+			var control = this;
+			control.actuallyEmbed();
+			api.Control.prototype.focus.call( control, args );
+		},
+
+		initKirkiControl: function() {
+
+			var control = this;
+
+			// Set the sortable container.
+			control.sortableContainer = control.container.find( 'ul.sortable' ).first();
+
+			// Init sortable.
+			control.sortableContainer.sortable({
+
+				// Update value when we stop sorting.
+				stop: function() {
+					control.updateValue();
+				}
+			}).disableSelection().find( 'li' ).each( function() {
+
+				// Enable/disable options when we click on the eye of Thundera.
+				jQuery( this ).find( 'i.visibility' ).click( function() {
+					jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
+				});
+			}).click( function() {
+
+				// Update value on click.
+				control.updateValue();
+			});
+		},
+
+		/**
+		 * Updates the sorting list
+		 */
+		updateValue: function() {
+
+			var control = this,
+			    newValue = [];
+
+			this.sortableContainer.find( 'li' ).each( function() {
+				if ( ! jQuery( this ).is( '.invisible' ) ) {
+					newValue.push( jQuery( this ).data( 'value' ) );
+				}
+			});
+			control.setting.set( newValue );
+		}
+	});
+
+	api.controlConstructor['kirki-sortable'] = api.kirkiSortableControl;
+
+})( wp.customize, jQuery );
