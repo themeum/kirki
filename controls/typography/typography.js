@@ -529,12 +529,8 @@
 		 * Gets the value.
 		 */
 		getValue: function() {
-
-			var control   = this,
-			    input     = control.container.find( '.typography-hidden-value' ),
-			    valueJSON = jQuery( input ).val();
-
-			return JSON.parse( valueJSON );
+			var control = this;
+			return _.defaults( control.params.value, control.params.default );
 		},
 
 		/**
