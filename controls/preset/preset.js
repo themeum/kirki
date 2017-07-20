@@ -174,8 +174,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control = this,
 			    selectValue;
 

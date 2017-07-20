@@ -174,8 +174,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control = this,
 			    element = this.container.find( 'input' ),
 			    step    = 1;

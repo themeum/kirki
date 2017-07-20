@@ -175,8 +175,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control  = this,
 			    element  = this.container.find( 'select' ),
 				icons    = jQuery.parseJSON( fontAwesomeJSON ),

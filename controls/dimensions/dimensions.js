@@ -174,8 +174,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control     = this,
 				subControls = control.params.choices.controls,
 				value       = {},
@@ -216,8 +214,6 @@
 		 * Saves the value.
 		 */
 		saveValue: function( value ) {
-
-			'use strict';
 
 			var control  = this,
 				newValue = {};

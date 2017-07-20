@@ -174,8 +174,6 @@
 
 		initKirkiControl: function() {
 
-			'use strict';
-
 			var control  = this,
 			    element  = control.container.find( '.kirki-codemirror-editor' ),
 			    language = ( 'html' === control.params.choices.language ) ? { name: 'htmlmixed' } : control.params.choices.language,
