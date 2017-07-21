@@ -112,16 +112,9 @@ class Kirki_Output {
 				}
 			}
 			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-				$option_type = 'theme_mod';
-				$option_name = false;
-				if ( isset( Kirki::$config[ $this->config_id ] ) ) {
-					$config = Kirki::$config[ $this->config_id ];
-					$option_type = ( isset( $config['option_type'] ) ) ? $config['option_type'] : 'theme_mod';
-					if ( 'option' === $option_type || 'site_option' === $option_type ) {
-						$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
-					}
-				}
-				$options = array();
+				$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
+				$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
+				$options     = array();
 				if ( $option_name ) {
 					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
 				}
