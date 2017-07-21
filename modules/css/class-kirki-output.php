@@ -97,7 +97,7 @@ class Kirki_Output {
 	protected function apply_value_pattern( $output, $value ) {
 
 		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) && is_string( $output['value_pattern'] ) ) {
-			if ( is_string( $value ) ) {
+			if ( ! is_array( $value ) ) {
 				$value = str_replace( '$', $value, $output['value_pattern'] );
 			}
 			if ( is_array( $value ) ) {
