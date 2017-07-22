@@ -170,6 +170,14 @@
 			wp.customize.Control.prototype.focus.call( control, args );
 		},
 
-		initKirkiControl: function() {}
+		initKirkiControl: function() {
+
+			var control = this;
+
+			// Save the value
+			this.container.on( 'change keyup paste click', 'input', function() {
+				control.setting.set( jQuery( this ).val() );
+			});
+		}
 	});
 })();
