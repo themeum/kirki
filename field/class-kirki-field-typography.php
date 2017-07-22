@@ -210,12 +210,14 @@ class Kirki_Field_Typography extends Kirki_Field {
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
-		$this->choices = wp_parse_args( $this->choices, array(
-			'variant' => array(),
-			'fonts'   => array(
-				'standard' => array(),
-				'google'   => array(),
-			),
-		) );
+		$this->choices = wp_parse_args(
+			$this->choices, array(
+				'variant' => array(),
+				'fonts'   => array(
+					'standard' => array(),
+					'google'   => array(),
+				),
+			)
+		);
 	}
 }

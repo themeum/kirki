@@ -36,10 +36,12 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 			$this->choices = array();
 		}
 
-		$this->choices = wp_parse_args( $this->choices, array(
-			'on'    => esc_attr__( 'On', 'kirki' ),
-			'off'   => esc_attr__( 'Off', 'kirki' ),
-			'round' => false,
-		) );
+		$this->choices = wp_parse_args(
+			$this->choices, array(
+				'on'    => esc_attr__( 'On', 'kirki' ),
+				'off'   => esc_attr__( 'Off', 'kirki' ),
+				'round' => false,
+			)
+		);
 	}
 }
