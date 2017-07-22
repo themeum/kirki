@@ -91,7 +91,6 @@ class Kirki_Output {
 	 *
 	 * @param array        $output The output args.
 	 * @param string|array $value  The value.
-	 *
 	 * @return string|array
 	 */
 	protected function apply_value_pattern( $output, $value ) {
@@ -114,55 +113,65 @@ class Kirki_Output {
 					$value[ $value_k ] = str_replace( '$', $value[ $value_k ], $output['value_pattern'] );
 				}
 			}
-			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-				$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
-				$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
-				$options     = array();
-				if ( $option_name ) {
-					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
-				}
-				foreach ( $output['pattern_replace'] as $search => $replace ) {
-					$replacement = '';
-					switch ( $option_type ) {
-						case 'option':
-							if ( is_array( $options ) ) {
-								if ( $option_name ) {
-									$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
-									$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
-									break;
-								}
-								$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
+			$value = $this->apply_pattern_replace( $output, $value );
+		} // End if().
+		return $value;
+	}
+
+	/**
+	 * If we have a value_pattern defined, apply it to the value.
+	 *
+	 * @param array        $output The output args.
+	 * @param string|array $value  The value.
+	 * @return string|array
+	 */
+	protected function apply_pattern_replace( $output, $value ) {
+		if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
+			$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
+			$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
+			$options     = array();
+			if ( $option_name ) {
+				$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
+			}
+			foreach ( $output['pattern_replace'] as $search => $replace ) {
+				$replacement = '';
+				switch ( $option_type ) {
+					case 'option':
+						if ( is_array( $options ) ) {
+							if ( $option_name ) {
+								$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
+								$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
 								break;
 							}
-							$replacement = get_option( $replace );
+							$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
 							break;
-						case 'site_option':
-							$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
-							break;
-						case 'user_meta':
-							$user_id = get_current_user_id();
-							if ( $user_id ) {
-								// @codingStandardsIgnoreLine
-								$replacement = get_user_meta( $user_id, $replace, true );
-							}
-							break;
-						default:
-							$replacement = get_theme_mod( $replace );
-					}
-					$replacement = ( false === $replacement ) ? '' : $replacement;
-					if ( is_array( $value ) ) {
-						foreach ( $value as $k => $v ) {
-							$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
 						}
-						return $value;
+						$replacement = get_option( $replace );
+						break;
+					case 'site_option':
+						$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
+						break;
+					case 'user_meta':
+						$user_id = get_current_user_id();
+						if ( $user_id ) {
+							// @codingStandardsIgnoreLine
+							$replacement = get_user_meta( $user_id, $replace, true );
+						}
+						break;
+					default:
+						$replacement = get_theme_mod( $replace );
+				}
+				$replacement = ( false === $replacement ) ? '' : $replacement;
+				if ( is_array( $value ) ) {
+					foreach ( $value as $k => $v ) {
+						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
 					}
-					$value = str_replace( $search, $replacement, $value );
-				} // End foreach().
-			} // End if().
+					return $value;
+				}
+				$value = str_replace( $search, $replacement, $value );
+			} // End foreach().
 		} // End if().
-
 		return $value;
-
 	}
 
 	/**
