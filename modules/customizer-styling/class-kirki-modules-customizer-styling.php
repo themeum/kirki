@@ -257,7 +257,6 @@ class Kirki_Modules_Customizer_Styling {
 
 		$css .= ".kirki-reset-section .dashicons{color:{$back_on_back};}";
 
-
 		$elements = array(
 			'#customize-controls .control-section .accordion-section-title:focus',
 			'#customize-controls .control-section .accordion-section-title:hover',
