@@ -101,14 +101,17 @@ class Kirki_Output {
 				$value = str_replace( '$', $value, $output['value_pattern'] );
 			}
 			if ( is_array( $value ) ) {
-				if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) ) {
-					$value[ $output['choice'] ] = str_replace( '$', $value[ $output['choice'] ], $output['value_pattern'] );
-				} else {
-					foreach ( array_keys( $value ) as $value_k ) {
-						if ( is_string( $value[ $value_k ] ) ) {
-							$value[ $value_k ] = str_replace( '$', $value[ $value_k ], $output['value_pattern'] );
-						}
+				foreach ( array_keys( $value ) as $value_k ) {
+					if ( ! is_string( $value[ $value_k ] ) ) {
+						continue;
 					}
+					if ( isset( $output['choice'] ) ) {
+						if ( $output['choice'] === $value_k ) {
+							$value[ $output['choice'] ] = str_replace( '$', $value[ $output['choice'] ], $output['value_pattern'] );
+						}
+						continue;
+					}
+					$value[ $value_k ] = str_replace( '$', $value[ $value_k ], $output['value_pattern'] );
 				}
 			}
 			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
