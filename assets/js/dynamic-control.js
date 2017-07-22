@@ -1,3 +1,11 @@
+/**
+ * The majority of the code in this file
+ * is derived from the wp-customize-posts plugin
+ * and the work of @westonruter to whom I am very grateful.
+ *
+ * @see https://github.com/xwp/wp-customize-posts
+ */
+
 ( function() {
 	'use strict';
 
