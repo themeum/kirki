@@ -80,7 +80,8 @@ class Kirki_Control_Slider extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-slider', trailingslashit( Kirki::$url ) . 'controls/slider/slider.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-slider', trailingslashit( Kirki::$url ) . 'controls/slider/slider.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-slider-css', trailingslashit( Kirki::$url ) . 'controls/slider/slider.css', null );
 	}
 
