@@ -1,4 +1,3 @@
-/* global wp, console */
 ( function( api ) {
 
 	var self;

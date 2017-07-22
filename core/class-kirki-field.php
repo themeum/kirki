@@ -317,28 +317,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Gets the classname from a property.
-	 *
-	 * @access private
-	 * @since 3.0.10
-	 * @param string $property The property.
-	 * @return string          A classname derived from the property.
-	 */
-	private function get_property_classname( $property ) {
-		$property_parts = (array) $property;
-		if ( false !== strpos( $property, '-' ) ) {
-			$property_parts = explode( '-', $property );
-		}
-		if ( false !== strpos( $property, '_' ) ) {
-			$property_parts = explode( '_', $property );
-		}
-		foreach ( $property_parts as $property_part_k => $property_part_v ) {
-			$property_parts[ $property_part_k ] = ucfirst( $property_part_v );
-		}
-		return 'Kirki_Field_Property_' . implode( '_', $property_parts );
-	}
-
-	/**
 	 * Escape $kirki_config.
 	 *
 	 * @access protected
