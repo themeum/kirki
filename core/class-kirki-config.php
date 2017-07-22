@@ -109,7 +109,7 @@ final class Kirki_Config {
 
 		$this->config_final = wp_parse_args(
 			array(
-				'id' => $config_id
+				'id' => $config_id,
 			),
 			$args
 		);
