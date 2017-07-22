@@ -3,7 +3,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 	initKirkiControl: function() {
 
 		var control = this,
-			value;
+		    value;
 
 		// Notifications.
 		control.kirkiNotifications();
@@ -13,7 +13,6 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 			value = jQuery( this ).val();
 			control.setting.set( value );
-
 		});
 	},
 

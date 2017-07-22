@@ -25,7 +25,6 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 
 		// Notifications.
 		control.kirkiNotifications();
-
 	},
 
 	/**
@@ -38,10 +37,10 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code    = 'long_title',
-					min     = ( ! _.isUndefined( control.params.choices.min ) ) ? Number( control.params.choices.min ) : false,
-					max     = ( ! _.isUndefined( control.params.choices.max ) ) ? Number( control.params.choices.max ) : false,
-					step    = ( ! _.isUndefined( control.params.choices.step ) ) ? Number( control.params.choices.step ) : false,
-					invalid = false;
+				    min     = ( ! _.isUndefined( control.params.choices.min ) ) ? Number( control.params.choices.min ) : false,
+				    max     = ( ! _.isUndefined( control.params.choices.max ) ) ? Number( control.params.choices.max ) : false,
+				    step    = ( ! _.isUndefined( control.params.choices.step ) ) ? Number( control.params.choices.step ) : false,
+				    invalid = false;
 
 				// Make sure value is a number.
 				value = Number( value );

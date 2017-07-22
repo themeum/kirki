@@ -107,7 +107,7 @@ wp.customize.controlConstructor['kirki-gradient'] = wp.customize.kirkiDynamicCon
 	getValue: function() {
 
 		var control = this,
-			value   = {};
+		    value   = {};
 
 		// Make sure everything we're going to need exists.
 		_.each( control.params['default'], function( defaultParamValue, param ) {

@@ -3,10 +3,10 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	initKirkiControl: function() {
 
 		var control     = this,
-			subControls = control.params.choices.controls,
-			value       = {},
-			subsArray   = [],
-			i;
+		    subControls = control.params.choices.controls,
+		    value       = {},
+		    subsArray   = [],
+		    i;
 
 		_.each( subControls, function( v, i ) {
 			if ( true === v ) {
@@ -44,7 +44,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	saveValue: function( value ) {
 
 		var control  = this,
-			newValue = {};
+		    newValue = {};
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
@@ -63,8 +63,8 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code = 'long_title',
-					subs = {},
-					message;
+				    subs = {},
+				    message;
 
 				setting.notifications.remove( code );
 

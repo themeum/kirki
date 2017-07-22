@@ -4,7 +4,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 
 		var control  = this,
 		    element  = this.container.find( 'select' ),
-			icons    = jQuery.parseJSON( fontAwesomeJSON ),
+		    icons    = jQuery.parseJSON( fontAwesomeJSON ),
 		    selectValue,
 		    select2Options = {
 				data: [],

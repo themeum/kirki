@@ -62,43 +62,43 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		control.container.on( 'click', '.background-image-upload-button', function( e ) {
 			var image = wp.media({ multiple: false }).open().on( 'select', function() {
 
-					// This will return the selected image from the Media Uploader, the result is an object.
-					var uploadedImage = image.state().get( 'selection' ).first(),
-					    previewImage   = uploadedImage.toJSON().sizes.full.url,
-					    imageUrl,
-					    imageID,
-					    imageWidth,
-					    imageHeight,
-					    preview,
-					    removeButton;
+				// This will return the selected image from the Media Uploader, the result is an object.
+				var uploadedImage = image.state().get( 'selection' ).first(),
+				    previewImage   = uploadedImage.toJSON().sizes.full.url,
+				    imageUrl,
+				    imageID,
+				    imageWidth,
+				    imageHeight,
+				    preview,
+				    removeButton;
 
-					if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
-						previewImage = uploadedImage.toJSON().sizes.medium.url;
-					} else if ( ! _.isUndefined( uploadedImage.toJSON().sizes.thumbnail ) ) {
-						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
-					}
+				if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
+					previewImage = uploadedImage.toJSON().sizes.medium.url;
+				} else if ( ! _.isUndefined( uploadedImage.toJSON().sizes.thumbnail ) ) {
+					previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
+				}
 
-					imageUrl    = uploadedImage.toJSON().sizes.full.url;
-					imageID     = uploadedImage.toJSON().id;
-					imageWidth  = uploadedImage.toJSON().width;
-					imageHeight = uploadedImage.toJSON().height;
+				imageUrl    = uploadedImage.toJSON().sizes.full.url;
+				imageID     = uploadedImage.toJSON().id;
+				imageWidth  = uploadedImage.toJSON().width;
+				imageHeight = uploadedImage.toJSON().height;
 
-					// Show extra controls if the value has an image.
-					if ( '' !== imageUrl ) {
-						control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).show();
-					}
+				// Show extra controls if the value has an image.
+				if ( '' !== imageUrl ) {
+					control.container.find( '.background-wrapper > .background-repeat, .background-wrapper > .background-position, .background-wrapper > .background-size, .background-wrapper > .background-attachment' ).show();
+				}
 
-					control.saveValue( 'background-image', imageUrl );
-					preview      = control.container.find( '.placeholder, .thumbnail' );
-					removeButton = control.container.find( '.background-image-upload-remove-button' );
+				control.saveValue( 'background-image', imageUrl );
+				preview      = control.container.find( '.placeholder, .thumbnail' );
+				removeButton = control.container.find( '.background-image-upload-remove-button' );
 
-					if ( preview.length ) {
-						preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
-					}
-					if ( removeButton.length ) {
-						removeButton.show();
-					}
-			    });
+				if ( preview.length ) {
+					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
+				}
+				if ( removeButton.length ) {
+					removeButton.show();
+				}
+		    });
 
 			e.preventDefault();
 		});
@@ -170,6 +170,5 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		valueObj[ property ] = value;
 		control.setting.set( valueObj );
 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-
 	}
 });

@@ -2,8 +2,8 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 
 	initKirkiControl: function() {
 		var control = this,
-			picker  = control.container.find( '.kirki-color-control' ),
-			clear;
+		    picker  = control.container.find( '.kirki-color-control' ),
+		    clear;
 
 		// If we have defined any extra choices, make sure they are passed-on to Iris.
 		if ( ! _.isUndefined( control.params.choices ) ) {
@@ -26,7 +26,6 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 				setTimeout( function() {
 					control.setting.set( picker.val() );
 				}, 20 );
-
 			}
 		});
 	}

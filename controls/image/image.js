@@ -113,8 +113,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		control.container.on( 'click', '.image-default-button', function( e ) {
 
 			var preview,
-				removeButton,
-				defaultButton;
+			    removeButton,
+			    defaultButton;
 
 			e.preventDefault();
 

@@ -76,13 +76,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 	toggleEditor: function() {
 
 		var control = this,
-			editorWrapper = jQuery( '#kirki_editor_pane' );
+		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
+		editorWrapper.removeClass();
 		if ( ! control.getEditorWrapperSetting() || control.id !== control.getEditorWrapperSetting() ) {
-			editorWrapper.removeClass();
 			editorWrapper.addClass( control.id );
 		} else {
-			editorWrapper.removeClass();
 			editorWrapper.addClass( 'hide' );
 		}
 	},
