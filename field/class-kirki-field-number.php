@@ -43,6 +43,9 @@ class Kirki_Field_Number extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
+		if ( ! is_customize_preview() ) {
+			return;
+		}
 		$this->choices = wp_parse_args(
 			$this->choices,
 			array(
