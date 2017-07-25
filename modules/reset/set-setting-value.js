@@ -201,7 +201,9 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 */
 		setValue: function( setting, value, timeout ) {
 			timeout = ( _.isUndefined( timeout ) ) ? 100 : parseInt( timeout, 10 );
-			wp.customize.instance( setting ).set({});
+			if ( ! _.isString( value ) ) {
+				wp.customize.instance( setting ).set({});
+			}
 			setTimeout( function() {
 				wp.customize.instance( setting ).set( value );
 			}, timeout );
