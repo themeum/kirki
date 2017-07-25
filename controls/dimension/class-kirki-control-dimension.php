@@ -107,7 +107,7 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="input-wrapper">
-				<input {{{ data.inputAttrs }}} type="text" value="{{ data.value }}"/>
+				<input {{{ data.inputAttrs }}} type="text" value="{{ data.value.replace( '%%', '%' ) }}"/>
 			</div>
 		</label>
 		<?php

@@ -134,7 +134,8 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 								<# } #>
 							</h5>
 							<div class="{{ choiceKey }} input-wrapper">
-								<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ] }}"/>
+								<?php // See https://core.trac.wordpress.org/ticket/34290 for the reason why we use .replace. ?>
+								<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ].replace( '%%', '%' ) }}"/>
 							</div>
 						</div>
 					<# } #>
