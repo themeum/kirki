@@ -74,14 +74,14 @@ class Kirki_Field_Number extends Kirki_Field {
 		$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
 		// Minimum & maximum value limits.
-		if ( $value < $min || $value > $max ) {
-			return max( min( $value, $max ), $min );
+		if ( $value < $this->choices['min'] || $value > $this->choices['max'] ) {
+			return max( min( $value, $this->choices['max'] ), $this->choices['min'] );
 		}
 
 		// Only multiple of steps.
-		$steps = ( $value - $min ) / $step;
+		$steps = ( $value - $this->choices['min'] ) / $this->choices['step'];
 		if ( ! is_int( $steps ) ) {
-			$value = $min + ( round( $steps ) * $step );
+			$value = $this->choices['min'] + ( round( $steps ) * $this->choices['step'] );
 		}
 		return $value;
 	}
