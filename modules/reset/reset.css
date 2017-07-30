@@ -25,7 +25,6 @@
     .kirki-reset-section:hover .dashicons, .kirki-reset-section:active .dashicons {
       color: #fff; }
     .kirki-reset-section:hover .label, .kirki-reset-section:active .label {
-      width: auto;
       display: inline; }
   .kirki-reset-section:focus {
     -webkit-box-shadow: 0 0 0 1px #F44336, 0 0 2px 1px rgba(200, 50, 30, 0.8);
