@@ -19,7 +19,6 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css':          'modules/collapsible/collapsible.scss',
-					'modules/resize/resize.css':                    'modules/resize/resize.scss',
 
 					'controls/background/background.css':           'controls/background/background.scss',
 					'controls/code/code.css':                       'controls/code/code.scss',
