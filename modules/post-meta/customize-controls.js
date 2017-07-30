@@ -1,14 +1,14 @@
-( function( api ) {
+jQuery( document ).ready( function() {
 
 	var self;
 
 	self = {
-		queriedPost: new api.Value()
+		queriedPost: new wp.customize.Value()
 	};
 
 	// Listen for queried-post messages from the preview.
-	api.bind( 'ready', function() {
-		api.previewer.bind( 'queried-post', function( queriedPost ) {
+	wp.customize.bind( 'ready', function() {
+		wp.customize.previewer.bind( 'queried-post', function( queriedPost ) {
 			self.queriedPost.set( queriedPost || false );
 		} );
 	} );
@@ -20,4 +20,4 @@
 			window.kirkiPost = ( newPost ) ? newPost : oldPost;
 		}
 	} );
-} )( wp.customize );
+} );

@@ -1,5 +1,5 @@
 /* global wp, _customizePostPreviewedQueriedObject */
-( function() {
+jQuery( document ).ready( function() {
 
 	var self;
 
@@ -16,4 +16,4 @@
 			wp.customize.preview.send( 'queried-post', self.queriedPost );
 		} );
 	} );
-} )( wp.customize );
+} );
