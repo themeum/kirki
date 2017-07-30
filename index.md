@@ -1,6 +1,10 @@
 ---
 layout: docs
 premium_themes:
+  - name: Newark
+    market: ThemeForest
+    url: https://themeforest.net/item/newark-a-responsive-wordpress-blog-theme/18928614
+    thumb: https://s3.envato.com/files/230900020/features/590x300.__large_preview.png
   - name: Albiorix
     url: https://gumroad.com/l/currl-albiorix
     thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/4aec6765bfd1fc8c2b54ee04042e9600/retina/browser_402x.jpg
