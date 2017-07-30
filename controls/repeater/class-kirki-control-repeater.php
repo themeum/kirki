@@ -237,7 +237,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		// If we have a color picker field we need to enqueue the Wordpress Color Picker style and script.
+		// If we have a color picker field we need to enqueue the WordPress Color Picker style and script.
 		if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
 			foreach ( $this->fields as $field ) {
 				if ( isset( $field['type'] ) ) {

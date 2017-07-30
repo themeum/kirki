@@ -147,7 +147,7 @@ class Kirki_CSS_To_File {
 	 */
 	protected function get_filesystem() {
 
-		// The Wordpress filesystem.
+		// The WordPress filesystem.
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {
