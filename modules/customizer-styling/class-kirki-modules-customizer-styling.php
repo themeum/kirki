@@ -67,8 +67,6 @@ class Kirki_Modules_Customizer_Styling {
 	 */
 	public function custom_css() {
 
-		$css = '';
-
 		$config = apply_filters( 'kirki/config', array() );
 		if ( ! isset( $config['color_accent'] ) && ! isset( $config['color_back'] ) ) {
 			return;

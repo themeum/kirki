@@ -159,7 +159,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
 
 		// Fix for https://github.com/aristath/kirki/issues/1405.
-		foreach ( $this->json['value'] as $key => $val ) {
+		foreach ( array_keys( $this->json['value'] ) as $key ) {
 			if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
 				unset( $this->json['value'][ $key ] );
 			}
