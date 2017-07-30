@@ -118,9 +118,9 @@ class Kirki_Util {
 						// If we have a variable_callback defined then get the value of the option
 						// and run it through the callback function.
 						// If no callback is defined (false) then just get the value.
-						$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
+						$variables[ $variable_name ] = Kirki_Values::get_value( $field['settings'] );
 						if ( $variable_callback ) {
-							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( $field['settings'] ) );
+							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki_Values::get_value( $field['settings'] ) );
 						}
 					}
 				}

@@ -19,6 +19,46 @@
 class Kirki_Values {
 
 	/**
+	 * Constructor.
+	 *
+	 * @access public
+	 * @since 3.0.10
+	 */
+	public function __construct() {
+
+		add_filter( 'kirki/values/get_value', array( $this, 'typography_field_tweaks' ), 10, 2 );
+	}
+
+	/**
+	 * Tweaks for typography fields.
+	 *
+	 * @access public
+	 * @since 3.0.10
+	 * @param string|array $value    The value.
+	 * @param string       $field_id The field-ID.
+	 * @return array
+	 */
+	public function typography_field_tweaks( $value, $field_id ) {
+
+		if ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['type'] ) ) {
+			if ( 'kirki-typography' === Kirki::$fields[ $field_id ]['type'] ) {
+
+				// Sanitize the value.
+				// This also adds font-weight if it doesn't already exist.
+				$value = Kirki_Field_Typography::sanitize( $value );
+
+				// Combine font-family and font-backup.
+				if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) ) {
+					$value['font-family'] .= ', ' . $value['font-backup'];
+					unset( $value['font-backup'] );
+				}
+			}
+		}
+		return $value;
+	}
+
+
+	/**
 	 * Get the value of a field.
 	 *
 	 * @static
