@@ -53,6 +53,8 @@ engines:
         enabled: false
       Naming/LongVariable:
         enabled: false
+      CleanCode/StaticAccess:
+        enabled: false
 ratings:
   paths:
   - "**.css"
