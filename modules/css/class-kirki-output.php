@@ -242,8 +242,8 @@ class Kirki_Output {
 	 * Parses an output and creates the styles array for it.
 	 *
 	 * @access protected
-	 * @param array  $output The field output.
-	 * @param string $value  The value.
+	 * @param array        $output The field output.
+	 * @param string|array $value  The value.
 	 *
 	 * @return void
 	 */
