@@ -172,19 +172,19 @@ class Kirki_Util {
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @param array  $r The request params.
-	 * @param string $url The request URL.
+	 * @param array  $request The request params.
+	 * @param string $url     The request URL.
 	 * @return array
 	 */
-	public function http_request( $r = array(), $url = '' ) {
+	public function http_request( $request = array(), $url = '' ) {
 		// Early exit if installed as a plugin or not a request to wordpress.org,
 		// or finally if we don't have everything we need.
-		if ( self::is_plugin() || false === strpos( $url, 'wordpress.org' ) || ( ! isset( $r['body'] ) || ! isset( $r['body']['plugins'] ) || ! isset( $r['body']['translations'] ) || ! isset( $r['body']['locale'] ) || ! isset( $r['body']['all'] ) ) ) {
-			return $r;
+		if ( self::is_plugin() || false === strpos( $url, 'wordpress.org' ) || ( ! isset( $request['body'] ) || ! isset( $request['body']['plugins'] ) || ! isset( $request['body']['translations'] ) || ! isset( $request['body']['locale'] ) || ! isset( $request['body']['all'] ) ) ) {
+			return $request;
 		}
 
 		// Inject data.
-		$plugins = json_decode( $r['body']['plugins'], true );
+		$plugins = json_decode( $request['body']['plugins'], true );
 		if ( isset( $plugins['plugins'] ) ) {
 			$exists = false;
 			foreach ( $plugins['plugins'] as $plugin ) {
@@ -195,9 +195,9 @@ class Kirki_Util {
 			if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
 				$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
 			}
-			$r['body']['plugins'] = wp_json_encode( $plugins );
-			return $r;
+			$request['body']['plugins'] = wp_json_encode( $plugins );
+			return $request;
 		}
-		return $r;
+		return $request;
 	}
 }
