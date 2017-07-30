@@ -171,7 +171,7 @@ class Kirki_Init {
 			}
 		}
 
-		$do_not_register_control_types = apply_filters(
+		$skip_control_types = apply_filters(
 			'kirki/control_types/exclude', array(
 				'Kirki_Control_Repeater',
 				'WP_Customize_Control',
@@ -179,7 +179,7 @@ class Kirki_Init {
 		);
 
 		foreach ( $this->control_types as $control_type ) {
-			if ( ! in_array( $control_type, $do_not_register_control_types, true ) && class_exists( $control_type ) ) {
+			if ( ! in_array( $control_type, $skip_control_types, true ) && class_exists( $control_type ) ) {
 				$wp_customize->register_control_type( $control_type );
 			}
 		}
