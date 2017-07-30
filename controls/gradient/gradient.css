@@ -53,7 +53,6 @@
       width: 15px;
       height: 15px;
       border-radius: 50%;
-      -webkit-border-radius: 50%;
       background-color: #3498D9; }
     .customize-control-kirki-gradient input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
