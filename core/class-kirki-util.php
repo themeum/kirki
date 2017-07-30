@@ -127,25 +127,34 @@ class Kirki_Util {
 	public function http_request( $request = array(), $url = '' ) {
 		// Early exit if installed as a plugin or not a request to wordpress.org,
 		// or finally if we don't have everything we need.
-		if ( self::is_plugin() || false === strpos( $url, 'wordpress.org' ) || ( ! isset( $request['body'] ) || ! isset( $request['body']['plugins'] ) || ! isset( $request['body']['translations'] ) || ! isset( $request['body']['locale'] ) || ! isset( $request['body']['all'] ) ) ) {
+		if (
+			self::is_plugin() ||
+			false === strpos( $url, 'wordpress.org' ) || (
+				! isset( $request['body'] ) ||
+				! isset( $request['body']['plugins'] ) ||
+				! isset( $request['body']['translations'] ) ||
+				! isset( $request['body']['locale'] ) ||
+				! isset( $request['body']['all'] )
+			)
+		) {
 			return $request;
 		}
 
-		// Inject data.
 		$plugins = json_decode( $request['body']['plugins'], true );
-		if ( isset( $plugins['plugins'] ) ) {
-			$exists = false;
-			foreach ( $plugins['plugins'] as $plugin ) {
-				if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
-					$exists = true;
-				}
-			}
-			if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
-				$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
-			}
-			$request['body']['plugins'] = wp_json_encode( $plugins );
+		if ( ! isset( $plugins['plugins'] ) ) {
 			return $request;
 		}
+		$exists = false;
+		foreach ( $plugins['plugins'] as $plugin ) {
+			if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
+				$exists = true;
+			}
+		}
+		// Inject data.
+		if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
+			$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
+		}
+		$request['body']['plugins'] = wp_json_encode( $plugins );
 		return $request;
 	}
 }
