@@ -22,25 +22,8 @@ class Kirki_Util {
 	 * @access public
 	 */
 	public function __construct() {
-		/* add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) ); */
-		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
-		/* add_filter( 'option_active_plugins', array( $this, 'is_plugin_active' ) ); */
-	}
 
-	/**
-	 * Changes select2 version in ACF.
-	 * Fixes a plugin conflict that was causing select fields to crash
-	 * because of a version mismatch between ACF's and Kirki's select2 scripts.
-	 * Props @hellor0bot
-	 *
-	 * @see https://github.com/aristath/kirki/issues/1302
-	 * @access public
-	 * @since 3.0.0
-	 */
-	public function acf_pro_compatibility() {
-		if ( is_customize_preview() ) {
-			add_filter( 'acf/settings/enqueue_select2', '__return_false', 99 );
-		}
+		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
 	}
 
 	/**
@@ -130,41 +113,6 @@ class Kirki_Util {
 		// Pass the variables through a filter ('kirki/variable') and return the array of variables.
 		return apply_filters( 'kirki/variable', $variables );
 
-	}
-
-	/**
-	 * Plugin is active.
-	 *
-	 * @since 3.0.0
-	 * @access public
-	 * @param array $plugins An array of active plugins.
-	 * @return array Active plugins.
-	 */
-	public function is_plugin_active( $plugins ) {
-		global $pagenow;
-		$exclude = array(
-			'plugins.php',
-			'plugin-install.php',
-		);
-		$referer = ( isset( $_SERVER ) && isset( $_SERVER['HTTP_REFERER'] ) ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
-		$refered = false;
-		foreach ( $exclude as $exception ) {
-			if ( false !== strpos( $referer, $exception ) ) {
-				$refered = true;
-			}
-		}
-		if ( is_array( $plugins ) && ! in_array( $pagenow, $exclude, true ) && ! $refered ) {
-			$exists = false;
-			foreach ( $plugins as $plugin ) {
-				if ( false !== strpos( $plugin, 'kirki.php' ) ) {
-					$exists = true;
-				}
-			}
-			if ( ! $exists ) {
-				$plugins[] = 'kirki/kirki.php';
-			}
-		}
-		return $plugins;
 	}
 
 	/**
