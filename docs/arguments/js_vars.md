@@ -4,6 +4,12 @@ title: js_vars
 edit: docs/arguments/js_vars.md
 ---
 
+<div class="callout warning">
+<h5>Use <code>output</code> and set <code>transport</code> to <code>auto</code> instead.</h5>
+<p>Using <code>js_vars</code> is almost never needed. This argument should only be used in special cases as it will be internally calculated from the <code>output</code> argument if you set <code>transport</code> to <code>auto</code>.</p>
+<p>See the <a href="https://aristath.github.io/kirki/docs/arguments/transport.html"><code>transport</code> and <a href=" https://aristath.github.io/kirki/docs/arguments/output.html"><code>output</code> arguments for more details.</p>
+</div>
+
 
 If you set `transport` to `postMessage` you can write your own scripts, or you can use the `js_vars` argument and let Kirki automatically create these for you.
 
