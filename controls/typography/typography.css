@@ -6,6 +6,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid rgba(0, 0, 0, 0.1); }
+    .customize-control-kirki-typography .wrapper h5 {
+      margin: 0.67em 0 0; }
     .customize-control-kirki-typography .wrapper .color,
     .customize-control-kirki-typography .wrapper .font-backup,
     .customize-control-kirki-typography .wrapper .font-family,
@@ -20,18 +22,6 @@
       width: 100%;
       float: none;
       clear: both; }
-      .customize-control-kirki-typography .wrapper .color h5,
-      .customize-control-kirki-typography .wrapper .font-backup h5,
-      .customize-control-kirki-typography .wrapper .font-family h5,
-      .customize-control-kirki-typography .wrapper .font-size h5,
-      .customize-control-kirki-typography .wrapper .letter-spacing h5,
-      .customize-control-kirki-typography .wrapper .line-height h5,
-      .customize-control-kirki-typography .wrapper .margin-bottom h5,
-      .customize-control-kirki-typography .wrapper .margin-top h5,
-      .customize-control-kirki-typography .wrapper .subsets h5,
-      .customize-control-kirki-typography .wrapper .text-transform h5,
-      .customize-control-kirki-typography .wrapper .variant h5 {
-        margin: 0.67em 0 0; }
     .customize-control-kirki-typography .wrapper .font-size,
     .customize-control-kirki-typography .wrapper .letter-spacing,
     .customize-control-kirki-typography .wrapper .line-height,
