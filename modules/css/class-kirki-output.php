@@ -278,8 +278,8 @@ class Kirki_Output {
 	 * We need to tweak the value to make everything works as expected.
 	 *
 	 * @access protected
-	 * @param string $property The CSS property.
-	 * @param string $value    The value.
+	 * @param string       $property The CSS property.
+	 * @param string|array $value    The value.
 	 *
 	 * @return array
 	 */
