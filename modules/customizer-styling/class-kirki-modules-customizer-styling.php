@@ -349,12 +349,12 @@ class Kirki_Modules_Customizer_Styling {
 		.wp-core-ui .button.button-primary.disabled,
 		.wp-core-ui .button.button-primary:disabled,
 		.wp-core-ui .button.button-primary[disabled] {
-			background-color: <?php echo $accent_disabled; ?> !important;
-			border-color: <?php echo $border_on_accent_disabled; ?> !important;
-			box-shadow: 0 1px 0 <?php echo $border_on_accent_disabled; ?> !important;
-			-webkit-box-shadow: 0 1px 0 <?php echo $border_on_accent_disabled; ?> !important;
-			text-shadow: 0 -1px 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, 1px 0 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, 0 1px 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, -1px 0 1px <?php echo $border_on_accent_disabled; ?> !important;
-			color: <?php echo $text_on_accent_disabled; ?> !important;
+			background-color: <?php echo $accent_disabled; // WPCS: XSS ok. ?> !important;
+			border-color: <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?> !important;
+			box-shadow: 0 1px 0 <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?> !important;
+			-webkit-box-shadow: 0 1px 0 <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?> !important;
+			text-shadow: 0 -1px 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, 1px 0 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, 0 1px 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?>, -1px 0 1px <?php echo $border_on_accent_disabled; // WPCS: XSS ok. ?> !important;
+			color: <?php echo $text_on_accent_disabled; // WPCS: XSS ok. ?> !important;
 		}
 
 		input[type=checkbox]:checked:before {
