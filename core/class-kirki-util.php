@@ -195,7 +195,7 @@ class Kirki_Util {
 			if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
 				$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
 			}
-			$r['body']['plugins'] = json_encode( $plugins );
+			$r['body']['plugins'] = wp_json_encode( $plugins );
 			return $r;
 		}
 		return $r;
