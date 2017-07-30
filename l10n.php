@@ -13,7 +13,8 @@
 // if ( ! isset( ))
 // If kirki is a plugin and not inside a theme,
 // then there's no need to proceed any further.
-if ( Kirki_Util::is_plugin() ) {
+global $wp_customize;
+if ( ! $wp_customize || Kirki_Util::is_plugin() ) {
 	return;
 }
 
