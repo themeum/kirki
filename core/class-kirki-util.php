@@ -22,7 +22,7 @@ class Kirki_Util {
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) );
+		/* add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) ); */
 		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
 		/* add_filter( 'option_active_plugins', array( $this, 'is_plugin_active' ) ); */
 	}
