@@ -63,3 +63,4 @@ exclude_paths:
 - modules/webfonts/webfonts.php
 - tests/*
 - bin/*
+- lib/*
