@@ -164,7 +164,7 @@ class Kirki_Init {
 			$wp_customize->register_section_type( $section_type );
 		}
 
-		$this->control_types = $this->default_control_types( apply_filters( 'kirki/control_types', $this->control_types ) );
+		$this->control_types = $this->default_control_types();
 		foreach ( $this->control_types as $key => $classname ) {
 			if ( ! class_exists( $classname ) ) {
 				unset( $this->control_types[ $key ] );
