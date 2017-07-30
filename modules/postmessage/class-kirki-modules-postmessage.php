@@ -226,7 +226,7 @@ class Kirki_Modules_PostMessage {
 		// Apply prefix.
 		$value = $value_key;
 		if ( '' !== $args['prefix'] ) {
-			$value = $args['prefix'] . '+' . $value_key;
+			$value = "'" . $args['prefix'] . "'+" . $value_key;
 		}
 		$css = $args['element'] . '{' . $args['property'] . ':\'+' . $value . '+\'' . $args['units'] . $args['suffix'] . ';}';
 		if ( isset( $args['media_query'] ) ) {
