@@ -123,7 +123,7 @@ class Kirki_Modules_PostMessage {
 				$js_var['exclude'] = (array) $js_var['exclude'];
 				$script .= 'exclude=false;';
 				foreach ( $js_var['exclude'] as $exclussion ) {
-					$script .= "if(newval=={$exclussion}){exclude=true;}";
+					$script .= "if(newval=='{$exclussion}'){exclude=true;}";
 				}
 			}
 			if ( isset( $js_var['element'] ) ) {
