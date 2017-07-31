@@ -17,19 +17,22 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			 * and determine if we need to do any further work based on those.
 			 */
 			var $this = this,
-			    subControl = wp.customize.settings.controls[ setting ],
-			    valueJSON;
+				control = wp.customize.control(setting),
+				controlParams,
+				valueJSON;
 
-			// If the control doesn't exist then return.
-			if ( _.isUndefined( subControl ) ) {
+			// If the control and control params don't exist then return.
+			if ( _.isUndefined( control ) && _.isUndefined( control.params ) ) {
 				return true;
 			}
+
+			controlParams = control.params;
 
 			// First set the value in the wp object. The control type doesn't matter here.
 			$this.setValue( setting, value );
 
 			// Process visually changing the value based on the control type.
-			switch ( subControl.type ) {
+			switch ( controlParams.type ) {
 
 				case 'kirki-background':
 					if ( ! _.isUndefined( value['background-color'] ) ) {
@@ -72,10 +75,10 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-generic':
-					if ( _.isUndefined( subControl.choices ) || _.isUndefined( subControl.choices.element ) ) {
-						subControl.choices.element = 'input';
+					if ( _.isUndefined( controlParams.choices ) || _.isUndefined( controlParams.choices.element ) ) {
+						controlParams.choices.element = 'input';
 					}
-					jQuery( $this.findElement( setting, subControl.choices.element ) ).prop( 'value', value );
+					jQuery( $this.findElement( setting, controlParams.choices.element ) ).prop( 'value', value );
 					break;
 
 				case 'kirki-color':
@@ -141,7 +144,12 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					// Do nothing.
 					break;
 				default:
-					jQuery( $this.findElement( setting, 'input' ) ).prop( 'value', value );
+					// If control provides reset fallback, call it
+					if ( ! _.isUndefined( control.onKirkiSetSettingValue ) && _.isFunction( control.onKirkiSetSettingValue ) ) {
+						control.onKirkiSetSettingValue( value );
+					} else {
+						jQuery( $this.findElement( setting, 'input' ) ).prop( 'value', value );
+					}
 			}
 		},
 
