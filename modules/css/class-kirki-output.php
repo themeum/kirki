@@ -215,7 +215,7 @@ class Kirki_Output {
 					}
 
 					// Skip if value is defined as excluded.
-					if ( $exclude === $value ) {
+					if ( $exclude === $value || ( '' === $exclude && empty( $value ) ) ) {
 						$skip = true;
 					}
 				}
