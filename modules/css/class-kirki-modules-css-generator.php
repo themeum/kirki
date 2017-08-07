@@ -168,6 +168,7 @@ final class Kirki_Modules_CSS_Generator {
 			'kirki-background'  => 'Kirki_Output_Field_Background',
 			'kirki-dimensions'  => 'Kirki_Output_Field_Dimensions',
 			'kirki-gradient'    => 'Kirki_Output_Field_Gradient',
+			'kirki-image'       => 'Kirki_Output_Field_Image',
 			'kirki-typography'  => 'Kirki_Output_Field_Typography',
 			'kirki-multicolor'  => 'Kirki_Output_Field_Multicolor',
 		) );
