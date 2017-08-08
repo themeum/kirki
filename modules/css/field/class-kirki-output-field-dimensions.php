@@ -25,11 +25,15 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 
 		foreach ( $value as $key => $sub_value ) {
 
+			if ( isset( $output['choice'] ) && $key !== $output['choice'] ) {
+				continue;
+			}
+
 			if ( ! isset( $output['property'] ) || empty( $output['property'] ) ) {
 				$property = $key;
 			} elseif ( false !== strpos( $output['property'], '%%' ) ) {
 				$property = str_replace( '%%', $key, $output['property'] );
-			} else {
+			} elseif ( ! isset( $output['choice'] ) || empty( $output['choice'] ) ) {
 				$property = $output['property'] . '-' . $key;
 			}
 			$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
