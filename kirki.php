@@ -58,22 +58,18 @@ $kirki->modules = new Kirki_Modules();
 // Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 
-global $wp_customize;
-if ( $wp_customize ) {
-	// If Kirki is installed as a plugin, use plugin_dir_url().
-	$kirki_is_plugin = Kirki_Util::is_plugin();
-	if ( $kirki_is_plugin ) {
-		Kirki::$url = plugin_dir_url( __FILE__ );
-	} elseif ( function_exists( 'is_link' ) && is_link( dirname( __FILE__ ) ) && function_exists( 'readlink' ) ) {
-		// If the path is a symlink, get the target.
-		Kirki::$path = readlink( Kirki::$path );
-	}
+// If Kirki is installed as a plugin, use plugin_dir_url().
+$kirki_is_plugin = Kirki_Util::is_plugin();
+if ( $kirki_is_plugin ) {
+	Kirki::$url = plugin_dir_url( __FILE__ );
+} elseif ( function_exists( 'is_link' ) && is_link( dirname( __FILE__ ) ) && function_exists( 'readlink' ) ) {
+	// If the path is a symlink, get the target.
+	Kirki::$path = readlink( Kirki::$path );
 }
 
 // Instantiate 2ndary classes.
 new Kirki_L10n();
 new Kirki();
-
 // Include deprecated functions & methods.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
