@@ -93,20 +93,13 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	protected function content_template() {
 		?>
 		<#
-		var saveAs = 'url',
-		    url    = '';
-
+		var saveAs = 'url';
 		if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
 			saveAs = data.choices.save_as;
 		}
-		if ( 'url' === saveAs ) {
-			url = data.value;
-		}
-		if ( 'array' === saveAs && data.value['url'] ) {
-			url = data.value['url'];
-		}
-		if ( 'id' === saveAs ) {
-			url = <?php echo ( is_int( $this->value() ) ) ? wp_get_attachment_url( $this->value() ) : "''"; ?>
+		url = data.value;
+		if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
+			url = data.value.url;
 		}
 		#>
 		<label>

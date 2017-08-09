@@ -27,6 +27,16 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
 		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
+		// Tweaks for save_as = id.
+		if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
+			wp.media.attachment( value ).fetch().then( function( mediaData ) {
+				setTimeout( function() {
+					var url = wp.media.attachment( value ).get( 'url' );
+					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
+				}, 700 );
+			} );
+		}
+
 		// If value is not empty, hide the "default" button.
 		if ( ( 'url' === saveAs && '' !== value ) || ( 'array' === saveAs && ! _.isUndefined( value.url ) && '' !== value.url ) ) {
 			control.container.find( 'image-default-button' ).hide();
