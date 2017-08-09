@@ -92,8 +92,23 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<# saveAs = ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) && 'array' === data.choices.save_as ) ? 'array' : 'url'; #>
-		<# url = ( 'array' === saveAs && data.value['url'] ) ? data.value['url'] : data.value; #>
+		<#
+		var saveAs = 'url',
+		    url    = '';
+
+		if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
+			saveAs = data.choices.save_as;
+		}
+		if ( 'url' === saveAs ) {
+			url = data.value;
+		}
+		if ( 'array' === saveAs && data.value['url'] ) {
+			url = data.value['url'];
+		}
+		if ( 'id' === saveAs ) {
+			url = <?php echo ( is_int( $this->value() ) ) ? wp_get_attachment_url( $this->value() ) : "''"; ?>
+		}
+		#>
 		<label>
 			<span class="customize-control-title">
 				{{{ data.label }}}
@@ -103,7 +118,7 @@ class Kirki_Control_Image extends WP_Customize_Control {
 			<# } #>
 		</label>
 		<div class="image-wrapper attachment-media-view image-upload">
-			<# if ( data.value['url'] ) { #>
+			<# if ( data.value['url'] || '' !== url ) { #>
 				<div class="thumbnail thumbnail-image">
 					<img src="{{ url }}" alt="" />
 				</div>
