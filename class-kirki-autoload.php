@@ -106,14 +106,6 @@ class Kirki_Autoload {
 			$paths[] = $path . $filename;
 		}
 
-		if ( isset( $name_parts[0] ) ) {
-
-			// Handle controls loading.
-			if ( 'Control' === $name_parts[0] || 'Settings' === $name_parts[0] ) {
-				$paths[] = dirname( __FILE__ ) . '/controls/classes/' . $filename;
-			}
-		}
-
 		$paths[] = dirname( __FILE__ ) . '/core/' . $filename;
 		$paths[] = dirname( __FILE__ ) . '/lib/' . $filename;
 

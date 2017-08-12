@@ -37,6 +37,10 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
+// Include controls.
+include_once dirname( __FILE__ ) . '/controls/class-kirki-controls-bootstrap.php';
+new Kirki_Controls_Bootstrap();
+
 if ( ! function_exists( 'Kirki' ) ) {
 	// @codingStandardsIgnoreStart
 	/**
