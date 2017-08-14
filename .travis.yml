@@ -62,7 +62,7 @@ script:
   # --extensions: Only sniff PHP files.
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/*.php,./tests/*.php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./modules/webfonts/webfonts.php,./vendor/**/*.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./controls/classes/webfonts.php,./vendor/**/*.php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/**/*.php
 
 after_script:
