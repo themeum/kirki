@@ -221,6 +221,7 @@ class Kirki_Modules_PostMessage {
 
 		// Apply callback to the value if a callback is defined.
 		if ( ! empty( $args['js_callback'] ) && is_array( $args['js_callback'] ) && isset( $args['js_callback'][0] ) && ! empty( $args['js_callback'][0] ) ) {
+			$args['js_callback'][1] = isset( $args['js_callback'][1] ) ? $args['js_callback'][1] : '';
 			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
 		}
 
