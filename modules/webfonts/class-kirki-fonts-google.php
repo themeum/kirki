@@ -81,6 +81,9 @@ final class Kirki_Fonts_Google {
 		}
 
 		// Populate the array of google fonts.
+		if ( ! class_exists( 'Kirki_Fonts' ) ) {
+			include_once KIRKI_CONTROLS_PATH . '/classes/class-kirki-fonts.php';
+		}
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
 	}
