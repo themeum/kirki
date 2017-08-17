@@ -2,12 +2,15 @@ jQuery( document ).ready( function() {
 	wp.customize.control.each( function( control, key ) {
 		// Console.log( control );
 		if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) || ! _.isUndefined( kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ] ) ) {
-			control.kirkiControlHook = function() {
+			control.initKirkiControl = function() {
 				var control = this,
 				    tooltip = false,
 				    trigger,
 				    controlID,
 				    content;
+
+				// First of all, call the parent method.
+				wp.customize.kirkiDynamicControl.prototype.initKirkiControl.call( control );
 
 				if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) ) {
 					tooltip = kirkiTooltips[ control.id ];
@@ -22,9 +25,6 @@ jQuery( document ).ready( function() {
 
 					// Add the trigger & content.
 					jQuery( '<div class="tooltip-wrapper">' + trigger + content + '</div>' ).prependTo( controlID );
-
-					// Hide the tooltips content by default.
-					jQuery( '.tooltip-content' ).hide();
 
 					// Handle onclick events.
 					jQuery( '.tooltip-trigger' ).on( 'click', function() {
