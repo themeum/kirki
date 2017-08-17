@@ -79,6 +79,11 @@ class Kirki_Output {
 			if ( ! is_callable( $output['sanitize_callback'] ) ) {
 				return $value;
 			}
+
+			if ( is_array( $value ) && isset( $output['choice'] ) && isset( $this->value[ $output['choice'] ] ) ) {
+				$value[ $output['choice'] ] = call_user_func( $output['sanitize_callback'], $this->value[ $output['choice'] ] );
+				return $value;
+			}
 			return call_user_func( $output['sanitize_callback'], $this->value );
 		}
 
