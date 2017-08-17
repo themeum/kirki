@@ -164,13 +164,13 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
-						if ( 'Montserrat' === $k ) {
-							var_dump( 'LALALA' );
+						if ( isset( $output['choice'] ) ) {
+							if ( $k === $output['choice'] ) {
+								$value[ $k ] = str_replace( $search, $replacement, $v );
+							}
+							continue;
 						}
-						if ( 'Montserrat' === $v ) {
-							var_dump( 'LOLOLO' );
-						}
-						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
+						$value[ $k ] = str_replace( $search, $replacement, $v );
 					}
 					return $value;
 				}
