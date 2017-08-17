@@ -164,6 +164,12 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
+						if ( 'Montserrat' === $k ) {
+							var_dump( 'LALALA' );
+						}
+						if ( 'Montserrat' === $v ) {
+							var_dump( 'LOLOLO' );
+						}
 						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
 					}
 					return $value;
