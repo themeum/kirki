@@ -1,6 +1,6 @@
 jQuery( document ).ready( function() {
 	wp.customize.control.each( function( control, key ) {
-		// Console.log( control );
+
 		if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) || ! _.isUndefined( kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ] ) ) {
 			control.initKirkiControl = function() {
 				var control = this,
