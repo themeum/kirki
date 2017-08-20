@@ -21,7 +21,7 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 */
 	protected function set_type() {
 
-		$this->type = 'checkbox';
+		$this->type = 'kirki-checkbox';
 
 	}
 
