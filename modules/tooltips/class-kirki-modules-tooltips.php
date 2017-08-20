@@ -111,7 +111,7 @@ class Kirki_Modules_Tooltips {
 
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki-dynamic-control', Kirki_Controls_Bootstrap::get_url( 'assets/js/dynamic-control.js' ), array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', kirki_controls()->get_url( 'js/dynamic-control.js' ), array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery', 'kirki-dynamic-control' ) );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
 		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', null );
