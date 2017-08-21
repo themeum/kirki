@@ -30,7 +30,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 	 */
 	protected function set_type() {
 
-		$this->type = 'repeater';
+		$this->type = 'kirki-repeater';
 
 	}
 
