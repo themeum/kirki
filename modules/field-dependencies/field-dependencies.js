@@ -30,19 +30,19 @@ jQuery( document ).ready( function() {
 				return value2 < value1;
 			case 'contains':
 			case 'in':
-				if ( _.isObject( value2 ) ) {
-					if ( ! _.isUndefined( value2[ value1 ] ) ) {
-						return true;
-					}
-					window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = false;
-					_.each( value2, function( subValue ) {
-						if ( value1 === subValue ) {
-							window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = true;
-						}
-					});
-					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
-				} else if ( _.isString( value2 ) ) {
-					return value2.indexOf( value1 );
+				if ( _.isArray(value2) ) {
+					var found = false;
+				    _.each(value2, function(index, value) {
+				    	if ( _.isNumeric(value ) )
+				    		value = parseInt(value);
+
+				    	if (value1.indexOf(value) > -1)
+				            found = true;
+				    });
+
+				    return found;
+				} else {
+				    return value1.indexOf(value2) > -1;
 				}
 				break;
 			default:
