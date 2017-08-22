@@ -33,11 +33,13 @@ jQuery( document ).ready( function() {
 				if ( _.isArray(value2) ) {
 					var found = false;
 				    _.each(value2, function(index, value) {
-				    	if ( _.isNumeric(value ) )
+				    	if ( _.isNumeric(value ) ) {
 				    		value = parseInt(value);
+				    	}
 
-				    	if (value1.indexOf(value) > -1)
+				    	if (value1.indexOf(value) > -1) {
 				            found = true;
+				    	}
 				    });
 
 				    return found;
