@@ -31,20 +31,27 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 			'suffix'      => '',
 		) );
 
-		foreach ( $value as $key => $sub_value ) {
+		if ( is_array( $value ) ) {
+			foreach ( $value as $key => $sub_value ) {
 
-			$property = ( empty( $output['property'] ) ) ? $key : $output['property'] . '-' . $key;
-			if ( isset( $output['choice'] ) && $output['property'] ) {
-				if ( $key === $output['choice'] ) {
-					$property = $output['property'];
-				} else {
-					continue;
+				$property = ( empty( $output['property'] ) ) ? $key : $output['property'] . '-' . $key;
+				if ( isset( $output['choice'] ) && $output['property'] ) {
+					if ( $key === $output['choice'] ) {
+						$property = $output['property'];
+					} else {
+						continue;
+					}
 				}
+				if ( false !== strpos( $output['property'], '%%' ) ) {
+					$property = str_replace( '%%', $key, $output['property'] );
+				}
+				$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $key ] ) . $output['suffix'];
 			}
+		} elseif ( isset( $output['choice'] ) ) {
 			if ( false !== strpos( $output['property'], '%%' ) ) {
-				$property = str_replace( '%%', $key, $output['property'] );
+				$output['property'] = str_replace( '%%', $key, $output['property'] );
 			}
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $key ] ) . $output['suffix'];
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $this->process_property_value( $output['property'], $value ) . $output['suffix'];
 		}
 	}
 }

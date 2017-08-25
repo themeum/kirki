@@ -313,7 +313,6 @@ class Kirki_Field {
 
 		// Add the field to the static $fields variable properly indexed.
 		Kirki::$fields[ $this->settings ] = $args;
-
 	}
 
 	/**

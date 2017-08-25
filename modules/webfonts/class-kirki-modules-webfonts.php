@@ -57,7 +57,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
 
 		add_action( 'wp_loaded', array( $this, 'run' ) );

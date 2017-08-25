@@ -48,10 +48,9 @@ script:
   # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
   # Run the plugin through JSHint.
-  - jshint ./controls/**/*.js
   - jshint ./modules/**/*.js
   # Run the plugin through JavaScript Code Style checker.
-  - jscs ./controls/**/*.js
+  - jscs ./modules/**/*.js
   # WordPress Coding Standards.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link http://pear.php.net/package/PHP_CodeSniffer/
@@ -62,9 +61,9 @@ script:
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/*.php,./tests/*.php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./modules/webfonts/webfonts.php,./vendor/**/*.php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/**/*.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/*.php,./tests/*.php,controls/*.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./controls/classes/webfonts.php,./vendor/**/*.php,controls/**/*.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/**/*.php,controls/**/**/*.php
 
 after_script:
   # - php vendor/bin/coveralls

@@ -35,7 +35,6 @@ class Kirki_Init {
 			add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		}
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
-		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 
 		new Kirki_Values();
 	}
@@ -94,63 +93,13 @@ class Kirki_Init {
 	}
 
 	/**
-	 * Add the default Kirki control types.
-	 *
-	 * @access public
-	 * @since 3.0.0
-	 * @param array $control_types The control types array.
-	 * @return array
-	 */
-	public function default_control_types( $control_types = array() ) {
-
-		$this->control_types = array(
-			'checkbox'              => 'WP_Customize_Control',
-			'kirki-background'      => 'Kirki_Control_Background',
-			'kirki-code'            => 'Kirki_Control_Code',
-			'kirki-color'           => 'Kirki_Control_Color',
-			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
-			'kirki-custom'          => 'Kirki_Control_Custom',
-			'kirki-date'            => 'Kirki_Control_Date',
-			'kirki-dashicons'       => 'Kirki_Control_Dashicons',
-			'kirki-dimension'       => 'Kirki_Control_Dimension',
-			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
-			'kirki-editor'          => 'Kirki_Control_Editor',
-			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
-			'kirki-gradient'        => 'Kirki_Control_Gradient',
-			'kirki-image'           => 'Kirki_Control_Image',
-			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
-			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
-			'kirki-number'          => 'Kirki_Control_Number',
-			'kirki-palette'         => 'Kirki_Control_Palette',
-			'kirki-preset'          => 'Kirki_Control_Preset',
-			'kirki-radio'           => 'Kirki_Control_Radio',
-			'kirki-radio-buttonset' => 'Kirki_Control_Radio_ButtonSet',
-			'kirki-radio-image'     => 'Kirki_Control_Radio_Image',
-			'repeater'              => 'Kirki_Control_Repeater',
-			'kirki-select'          => 'Kirki_Control_Select',
-			'kirki-slider'          => 'Kirki_Control_Slider',
-			'kirki-sortable'        => 'Kirki_Control_Sortable',
-			'kirki-spacing'         => 'Kirki_Control_Dimensions',
-			'kirki-switch'          => 'Kirki_Control_Switch',
-			'kirki-generic'         => 'Kirki_Control_Generic',
-			'kirki-toggle'          => 'Kirki_Control_Toggle',
-			'kirki-typography'      => 'Kirki_Control_Typography',
-			'image'                 => 'Kirki_Control_Image',
-			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
-			'upload'                => 'WP_Customize_Upload_Control',
-		);
-		return array_merge( $this->control_types, $control_types );
-
-	}
-
-	/**
 	 * Helper function that adds the fields, sections and panels to the customizer.
 	 *
 	 * @return void
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
-		add_action( 'customize_register', array( $this, 'register_control_types' ) );
+		add_action( 'customize_register', array( $this, 'register_section_types' ) );
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
 		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
@@ -161,32 +110,12 @@ class Kirki_Init {
 	 *
 	 * @return  void
 	 */
-	public function register_control_types() {
+	public function register_section_types() {
 		global $wp_customize;
 
 		$section_types = apply_filters( 'kirki/section_types', array() );
 		foreach ( $section_types as $section_type ) {
 			$wp_customize->register_section_type( $section_type );
-		}
-
-		$this->control_types = $this->default_control_types();
-		foreach ( $this->control_types as $key => $classname ) {
-			if ( ! class_exists( $classname ) ) {
-				unset( $this->control_types[ $key ] );
-			}
-		}
-
-		$skip_control_types = apply_filters(
-			'kirki/control_types/exclude', array(
-				'Kirki_Control_Repeater',
-				'WP_Customize_Control',
-			)
-		);
-
-		foreach ( $this->control_types as $control_type ) {
-			if ( ! in_array( $control_type, $skip_control_types, true ) && class_exists( $control_type ) ) {
-				$wp_customize->register_control_type( $control_type );
-			}
 		}
 	}
 
