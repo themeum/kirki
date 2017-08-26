@@ -19,15 +19,6 @@
 class Kirki_Autoload {
 
 	/**
-	 * The transient name.
-	 *
-	 * @access private
-	 * @since 3.0.10
-	 * @var string
-	 */
-	private $transient_name = 'kirki_autoload_paths';
-
-	/**
 	 * Cached paths.
 	 *
 	 * @access private
@@ -44,7 +35,6 @@ class Kirki_Autoload {
 	 */
 	public function __construct() {
 
-		$this->cached_paths = get_transient( $this->transient_name );
 		spl_autoload_register( array( $this, 'autoload' ) );
 	}
 
@@ -79,7 +69,6 @@ class Kirki_Autoload {
 				return;
 			}
 		}
-		set_transient( $this->transient_name, $this->cached_paths, 5 * MINUTE_IN_SECONDS );
 	}
 
 	/**
