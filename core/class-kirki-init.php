@@ -29,11 +29,8 @@ class Kirki_Init {
 	 */
 	public function __construct() {
 
-		global $wp_customize;
-		if ( $wp_customize ) {
-			$this->set_url();
-			add_action( 'after_setup_theme', array( $this, 'set_url' ) );
-		}
+		$this->set_url();
+		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 

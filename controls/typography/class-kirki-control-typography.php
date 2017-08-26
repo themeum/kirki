@@ -364,7 +364,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		// Add fonts to our JS objects.
 		$standard_fonts = Kirki_Fonts::get_standard_fonts();
 
-		$std_user_keys = $this->choices['fonts']['standard'];
+		$std_user_keys = array();
+		if ( isset( $this->choices['fonts'] ) && isset( $this->choices['fonts']['standard'] ) ) {
+			$std_user_keys = $this->choices['fonts']['standard'];
+		}
 
 		$standard_fonts_final = array();
 		$default_variants = $this->format_variants_array( array(
@@ -401,7 +404,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_variants = Kirki_Fonts::get_all_variants();
 		$all_subsets  = Kirki_Fonts::get_google_font_subsets();
 
-		$gf_user_keys = $this->choices['fonts']['google'];
+		$gf_user_keys = array();
+		if ( isset( $this->choices['fonts'] ) && isset( $this->choices['fonts']['google'] ) ) {
+			$gf_user_keys = $this->choices['fonts']['google'];
+		}
 
 		$google_fonts_final = array();
 		foreach ( $google_fonts as $family => $args ) {
