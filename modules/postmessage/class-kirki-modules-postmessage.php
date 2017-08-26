@@ -331,6 +331,8 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_var_typography( $args, $field ) {
 
+		$args = $this->get_args( $args );
+
 		$script = '';
 		$css    = '';
 
@@ -378,6 +380,7 @@ class Kirki_Modules_PostMessage {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var = 'fontFamilyCSS';
 			}
+			$var = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 
