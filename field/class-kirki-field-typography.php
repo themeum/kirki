@@ -196,6 +196,12 @@ class Kirki_Field_Typography extends Kirki_Field {
 					break;
 			} // End switch().
 		} // End foreach().
+
+		foreach ( array( 'font-size', 'letter-spacing', 'word-spacing', 'line-height', 'text-align', 'color' ) as $property ) {
+			if ( is_array( $this->default ) && ! isset( $this->default[ $property ] ) ) {
+				unset( $value[ $property ] );
+			}
+		}
 		return $value;
 	}
 
