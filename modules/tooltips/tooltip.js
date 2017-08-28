@@ -7,6 +7,10 @@ jQuery( document ).ready( function() {
 				return;
 			}
 
+			if ( control.container.find( '.tooltip-content' ).length ) {
+				return;
+			}
+
 			var trigger   = '<span class="tooltip-trigger" data-setting="' + tooltip.id + '"><span class="dashicons dashicons-editor-help"></span></span>',
 			    controlID = '#customize-control-' + tooltip.id,
 			    content   = '<div class="tooltip-content hidden" data-setting="' + tooltip.id + '">' + tooltip.content + '</div>';
