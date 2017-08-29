@@ -1,4 +1,5 @@
 jQuery( document ).ready( function() {
+	wp.customize.control.each( function( control, key ) {
 
 	function kirkiTooltipAdd( control ) {
 		_.each( kirkiTooltips, function( tooltip ) {
@@ -15,8 +16,11 @@ jQuery( document ).ready( function() {
 			    controlID = '#customize-control-' + tooltip.id,
 			    content   = '<div class="tooltip-content hidden" data-setting="' + tooltip.id + '">' + tooltip.content + '</div>';
 
-			// Add the trigger & content.
-			jQuery( '<div class="tooltip-wrapper">' + trigger + content + '</div>' ).prependTo( controlID );
+				if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) ) {
+					tooltip = kirkiTooltips[ control.id ];
+				} else if ( ! _.isUndefined( kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ] ) ) {
+					tooltip = kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ];
+				}
 
 			// Handle onclick events.
 			jQuery( '.tooltip-trigger[data-setting="' + tooltip.id + '"]' ).on( 'click', function() {

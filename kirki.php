@@ -37,6 +37,9 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
+// Include controls.
+include_once dirname( __FILE__ ) . '/controls/kirki-controls.php';
+
 if ( ! function_exists( 'Kirki' ) ) {
 	// @codingStandardsIgnoreStart
 	/**

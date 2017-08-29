@@ -1,0 +1,3 @@
+[submodule "controls"]
+	path = controls
+	url = https://github.com/aristath/kirki-controls.git

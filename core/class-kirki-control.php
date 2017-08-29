@@ -28,7 +28,7 @@ class Kirki_Control {
 	 * @access protected
 	 * @var array
 	 */
-	protected static $control_types = array();
+	protected $control_types = array();
 
 	/**
 	 * The class constructor.
@@ -39,15 +39,16 @@ class Kirki_Control {
 	 */
 	public function __construct( $args ) {
 
-		// Set the $wp_customize property.
-		global $wp_customize;
-		if ( ! $wp_customize ) {
+		$this->control_types = apply_filters( 'kirki/control_types', array() );
+
+		if ( ! is_customize_preview() ) {
 			return;
 		}
+
+		// Set the $wp_customize property.
+		global $wp_customize;
 		$this->wp_customize = $wp_customize;
 
-		// Set the control types.
-		$this->set_control_types();
 		// Add the control.
 		$this->add_control( $args );
 
@@ -66,8 +67,8 @@ class Kirki_Control {
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
 		// Get the classname from the array of control classnames.
-		if ( array_key_exists( $args['type'], self::$control_types ) ) {
-			$class_name = self::$control_types[ $args['type'] ];
+		if ( array_key_exists( $args['type'], $this->control_types ) ) {
+			$class_name = $this->control_types[ $args['type'] ];
 		}
 		return $class_name;
 
@@ -86,31 +87,5 @@ class Kirki_Control {
 		// Add the control.
 		$this->wp_customize->add_control( new $class_name( $this->wp_customize, $args['settings'], $args ) );
 
-	}
-
-	/**
-	 * Sets the $control_types property.
-	 * Makes sure the kirki/control_types filter is applied
-	 * and that the defined classes actually exist.
-	 * If a defined class does not exist, it is removed.
-	 *
-	 * @access private
-	 */
-	final private function set_control_types() {
-
-		// Early exit if this has already run.
-		if ( ! empty( self::$control_types ) ) {
-			return;
-		}
-
-		self::$control_types = apply_filters( 'kirki/control_types', array() );
-
-		// Make sure the defined classes actually exist.
-		foreach ( self::$control_types as $key => $classname ) {
-
-			if ( ! class_exists( $classname ) ) {
-				unset( self::$control_types[ $key ] );
-			}
-		}
 	}
 }

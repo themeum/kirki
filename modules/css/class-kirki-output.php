@@ -79,6 +79,11 @@ class Kirki_Output {
 			if ( ! is_callable( $output['sanitize_callback'] ) ) {
 				return $value;
 			}
+
+			if ( is_array( $value ) && isset( $output['choice'] ) && isset( $this->value[ $output['choice'] ] ) ) {
+				$value[ $output['choice'] ] = call_user_func( $output['sanitize_callback'], $this->value[ $output['choice'] ] );
+				return $value;
+			}
 			return call_user_func( $output['sanitize_callback'], $this->value );
 		}
 
@@ -164,7 +169,13 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
-						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
+						if ( isset( $output['choice'] ) ) {
+							if ( $k === $output['choice'] ) {
+								$value[ $k ] = str_replace( $search, $replacement, $v );
+							}
+							continue;
+						}
+						$value[ $k ] = str_replace( $search, $replacement, $v );
 					}
 					return $value;
 				}
