@@ -1,15 +1,20 @@
 jQuery( document ).ready( function() {
 	wp.customize.control.each( function( control, key ) {
 
-		if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) || ! _.isUndefined( kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ] ) ) {
-			control.initKirkiControl = function() {
-				var control = this,
-				    tooltip = false,
-				    trigger,
-				    content;
+	function kirkiTooltipAdd( control ) {
+		_.each( kirkiTooltips, function( tooltip ) {
 
-				// First of all, call the parent method.
-				wp.customize.kirkiDynamicControl.prototype.initKirkiControl.call( control );
+			if ( tooltip.id !== control.id ) {
+				return;
+			}
+
+			if ( control.container.find( '.tooltip-content' ).length ) {
+				return;
+			}
+
+			var trigger   = '<span class="tooltip-trigger" data-setting="' + tooltip.id + '"><span class="dashicons dashicons-editor-help"></span></span>',
+			    controlID = '#customize-control-' + tooltip.id,
+			    content   = '<div class="tooltip-content hidden" data-setting="' + tooltip.id + '">' + tooltip.content + '</div>';
 
 				if ( ! _.isUndefined( kirkiTooltips[ control.id ] ) ) {
 					tooltip = kirkiTooltips[ control.id ];
@@ -17,24 +22,34 @@ jQuery( document ).ready( function() {
 					tooltip = kirkiTooltips[ control.id.replace( '[', '-' ).replace( ']', '' ) ];
 				}
 
-				if ( tooltip ) {
-				    trigger   = '<span class="tooltip-trigger"><span class="dashicons dashicons-editor-help"></span></span>',
-				    content   = '<div class="tooltip-content">' + tooltip.content + '</div>';
+			// Handle onclick events.
+			jQuery( '.tooltip-trigger[data-setting="' + tooltip.id + '"]' ).on( 'click', function() {
+				jQuery( '.tooltip-content[data-setting="' + tooltip.id + '"]' ).toggleClass( 'hidden' );
+			});
+		});
 
-					// Add the trigger & content.
-					jQuery( '<div class="tooltip-wrapper">' + trigger + content + '</div>' ).prependTo( '#customize-control-' + tooltip.id );
+		// Close tooltips if we click anywhere else.
+		jQuery( document ).mouseup( function( e ) {
 
-					// Handle onclick events.
-					jQuery( '#customize-control-' + tooltip.id + ' .tooltip-trigger' ).on( 'click', function() {
-						jQuery( '#customize-control-' + tooltip.id + ' .tooltip-content' ).toggleClass( 'open' );
-					});
-
-					// Close tooltips if we click anywhere else.
-					jQuery( document ).mouseup( function( e ) {
-						jQuery( '.tooltip-content.open' ).removeClass( 'open' );
-					});
+			if ( ! jQuery( '.tooltip-content' ).is( e.target ) ) {
+				if ( ! jQuery( '.tooltip-content' ).hasClass( 'hidden' ) ) {
+					jQuery( '.tooltip-content' ).addClass( 'hidden' );
 				}
-			};
-		}
+		    }
+		});
+	}
+
+	wp.customize.control.each( function( control, key ) {
+		wp.customize.section( control.section(), function( section ) {
+			if ( section.expanded() || wp.customize.settings.autofocus.control === control.id ) {
+				kirkiTooltipAdd( control );
+			} else {
+				section.expanded.bind( function( expanded ) {
+					if ( expanded ) {
+						kirkiTooltipAdd( control );
+					}
+				} );
+			}
+		} );
 	});
 } );

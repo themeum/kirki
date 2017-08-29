@@ -19,8 +19,6 @@
     display: none; }
     .tooltip-wrapper .tooltip-content a {
       color: #000; }
-    .tooltip-wrapper .tooltip-content.open {
-      display: block; }
     .tooltip-wrapper .tooltip-content:after {
       content: "\f139";
       font-family: dashicons;
