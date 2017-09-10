@@ -146,17 +146,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
-		$defaults = array(
-			'font-family'    => false,
-			'font-size'      => false,
-			'variant'        => false,
-			'line-height'    => false,
-			'letter-spacing' => false,
-			'word-spacing'   => false,
-			'color'          => false,
-			'text-align'     => false,
-		);
-		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
+		foreach ( array_keys( $this->json['value'] ) as $key ) {
+			if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ) ) && ! isset( $this->json['default'][ $key ] ) ) {
+				unset( $this->json['value'][ $key ] );
+			}
+		}
 
 		// Fix for https://github.com/aristath/kirki/issues/1405.
 		foreach ( array_keys( $this->json['value'] ) as $key ) {
