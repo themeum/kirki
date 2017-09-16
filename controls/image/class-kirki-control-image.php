@@ -134,8 +134,6 @@ class Kirki_Control_Image extends WP_Customize_Control {
 				</button>
 			</div>
 		</div>
-		<# value = ( 'array' === saveAs ) ? JSON.stringify( data.value ) : data.value; #>
-		<input class="image-hidden-value" type="hidden" value='{{{ value }}}' {{{ data.link }}}>
 		<?php
 	}
 }

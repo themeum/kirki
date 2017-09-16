@@ -148,16 +148,14 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 	 * Gets the value.
 	 */
 	getValue: function() {
-
-		'use strict';
-
 		var control = this,
-		    input   = control.container.find( '.image-hidden-value' ),
-		    value   = jQuery( input ).val(),
+		    value   = control.setting._value,
 		    saveAs  = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
 
-		if ( 'array' === saveAs ) {
-			return JSON.parse( value );
+		if ( 'array' === saveAs && _.isString( value ) ) {
+			value = {
+				url: value
+			};
 		}
 		return value;
 	},
@@ -166,22 +164,20 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 	 * Saves the value.
 	 */
 	saveValue: function( property, value ) {
-
-		'use strict';
-
 		var control   = this,
-		    input     = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .image-hidden-value' ),
-		    valueJSON = jQuery( input ).val(),
-		    saveAs    = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
-		    valueObj  = 'array' === saveAs ? JSON.parse( valueJSON ) : {};
+		    valueOld  = control.setting._value,
+		    saveAs    = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
 
 		if ( 'array' === saveAs ) {
-			valueObj[ property ] = value;
-			control.setting.set( valueObj );
-			jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-		} else {
-			control.setting.set( value );
-			jQuery( input ).attr( 'value', value ).trigger( 'change' );
+			if ( _.isString( valueOld ) ) {
+				valueOld = {};
+			}
+			valueOld[ property ] = value;
+			control.setting.set( valueOld );
+			control.container.find( 'button' ).trigger( 'change' );
+			return;
 		}
+		control.setting.set( value );
+		control.container.find( 'button' ).trigger( 'change' );
 	}
 });
