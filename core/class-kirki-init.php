@@ -46,7 +46,7 @@ class Kirki_Init {
 	 */
 	public static function set_url() {
 
-		// Get correct URL and path to wp-content
+		// Get correct URL and path to wp-content.
 		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
 		$content_dir = wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) );
 
