@@ -448,19 +448,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Escapes the tooltip messages.
-	 *
-	 * @access protected
-	 */
-	protected function set_tooltip() {
-
-		if ( '' !== $this->tooltip ) {
-			$this->tooltip = wp_strip_all_tags( $this->tooltip );
-			return;
-		}
-	}
-
-	/**
 	 * Sets the active_callback
 	 * If we're using the $required argument,
 	 * Then this is where the switch is made to our evaluation method.
