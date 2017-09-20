@@ -35,6 +35,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.10 =
 
+* Fix: Allow HTML tags in tooltips [#1536](https://github.com/aristath/kirki/issues/1536)
+* Fix: Default System Font Stack for Sans Serif Fonts in Typography Fields [#1530](https://github.com/aristath/kirki/issues/1530)
+* Fix: HTML entities in repeater text field being encoded on each save? [#1523](https://github.com/aristath/kirki/issues/1523)
+* Fix: Some resetting issues [#1474](https://github.com/aristath/kirki/issues/1474)
+* Fix: Allow saving image fields as arrays (url,id,width,height) [#1529](https://github.com/aristath/kirki/issues/1529)
+* Fix: Allow saving image fields as ID [#1498](https://github.com/aristath/kirki/issues/1498)
 * Fix: Inline docs improvements.
 * Fix: `$subsets` not defined in the `Kirki_Modules_Webfonts_Link` class.
 * Fix: Coding improvements in the `Kirki_Field` class.
