@@ -50,6 +50,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 
 		wp_enqueue_style( 'wp-color-picker-alpha' );
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
+		wp_enqueue_style( 'wp-color-picker' );
 
 		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
 		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
@@ -105,7 +106,6 @@ class Kirki_Control_Background extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>

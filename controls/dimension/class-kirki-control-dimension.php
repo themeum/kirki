@@ -58,7 +58,8 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dimension', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-dimension-css', trailingslashit( Kirki::$url ) . 'controls/dimension/dimension.css', null );
 		wp_localize_script( 'kirki-dimension', 'dimensionkirkiL10n', array(
 			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
@@ -102,12 +103,11 @@ class Kirki_Control_Dimension extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label class="customizer-text">
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="input-wrapper">
-				<input {{{ data.inputAttrs }}} type="text" value="{{ data.value }}"/>
+				<input {{{ data.inputAttrs }}} type="text" value="{{ data.value.replace( '%%', '%' ) }}"/>
 			</div>
 		</label>
 		<?php

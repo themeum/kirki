@@ -37,43 +37,52 @@ class Kirki_Field_Number extends Kirki_Field {
 	}
 
 	/**
+	 * Sets the $choices
+	 *
+	 * @access protected
+	 */
+	protected function set_choices() {
+
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+		$this->choices = wp_parse_args(
+			$this->choices,
+			array(
+				'min'  => -999999999,
+				'max'  => 999999999,
+				'step' => 1,
+			)
+		);
+		// Make sure min, max & step are all numeric.
+		$this->choices['min']  = filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		$this->choices['max']  = filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		$this->choices['step'] = filter_var( $this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+	}
+
+	/**
 	 * Sanitizes numeric values.
 	 *
 	 * @access public
-	 * @param boolean|integer|string|null $value The checkbox value.
+	 * @param integer|string $value The checkbox value.
 	 * @return bool
 	 */
-	public function sanitize( $value = null ) {
+	public function sanitize( $value = 0 ) {
 
-		// Make sure min, max & step are all numeric.
-		$min  = ( isset( $this->choices['min'] ) && ! is_numeric( $this->choices['min'] ) ) ? filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : -999999999;
-		$max  = ( isset( $this->choices['max'] ) && ! is_numeric( $this->choices['max'] ) ) ? filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 999999999;
-		$step = ( isset( $this->choices['step'] ) && ! is_numeric( $this->choices['step'] ) ) ? filter_var( $this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
+		$this->set_choices();
 
-		if ( ! is_numeric( $value ) ) {
-			$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-		}
+		$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
-		// Minimum value limit.
-		if ( $value < $min ) {
-			return $min;
-		}
-
-		// Maximum value limit.
-		if ( $value > $max ) {
-			return $max;
+		// Minimum & maximum value limits.
+		if ( $value < $this->choices['min'] || $value > $this->choices['max'] ) {
+			return max( min( $value, $this->choices['max'] ), $this->choices['min'] );
 		}
 
 		// Only multiple of steps.
-		if ( isset( $this->choices['min'] ) && isset( $this->choices['step'] ) ) {
-			$steps = ( $value - $min ) / $step;
-			if ( (int) $steps !== $steps ) {
-				$value = $min + ( round( $steps ) * $step );
-			}
+		$steps = ( $value - $this->choices['min'] ) / $this->choices['step'];
+		if ( ! is_int( $steps ) ) {
+			$value = $this->choices['min'] + ( round( $steps ) * $this->choices['step'] );
 		}
-
 		return $value;
-
 	}
-
 }

@@ -31,7 +31,8 @@ if ( ! function_exists( 'kirki_show_upgrade_notification' ) ) :
 				<?php $upgrade_notice = wp_strip_all_tags( $response->upgrade_notice ); ?>
 				<?php echo esc_html( $upgrade_notice ); ?>
 			</div>
-		<?php endif;
+			<?php
+		endif;
 	}
 endif;
 add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), 'kirki_show_upgrade_notification', 10, 2 );

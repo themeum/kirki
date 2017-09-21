@@ -50,8 +50,9 @@ class Kirki_Control_Preset extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'controls/preset/set-setting-value.js' );
-		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/preset/preset.js', array( 'jquery', 'customize-base', 'kirki-set-setting-value' ), false, true );
+		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/preset/preset.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-set-setting-value' ), false, true );
 		wp_enqueue_style( 'kirki-preset-css', trailingslashit( Kirki::$url ) . 'controls/preset/preset.css', null );
 	}
 
@@ -92,7 +93,6 @@ class Kirki_Control_Preset extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( ! data.choices ) return; #>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>

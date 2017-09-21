@@ -26,6 +26,32 @@ class Kirki_Field_Typography extends Kirki_Field {
 	}
 
 	/**
+	 * Helper for the static sanitization.
+	 *
+	 * @static
+	 * @since 3.0.10
+	 * @var array
+	 */
+	private static $static_default = array();
+
+	/**
+	 * The class constructor.
+	 * Parses and sanitizes all field arguments.
+	 * Then it adds the field to Kirki::$fields.
+	 *
+	 * @access public
+	 * @param string $config_id    The ID of the config we want to use.
+	 *                             Defaults to "global".
+	 *                             Configs are handled by the Kirki_Config class.
+	 * @param array  $args         The arguments of the field.
+	 */
+	public function __construct( $config_id = 'global', $args = array() ) {
+		parent::__construct( $config_id, $args );
+		$this->set_default();
+		self::$static_default = $this->default;
+	}
+
+	/**
 	 * Sets the default value.
 	 *
 	 * @access protected
@@ -196,6 +222,12 @@ class Kirki_Field_Typography extends Kirki_Field {
 					break;
 			} // End switch().
 		} // End foreach().
+
+		foreach ( array( 'font-size', 'letter-spacing', 'word-spacing', 'line-height', 'text-align', 'color' ) as $property ) {
+			if ( is_array( self::$static_default ) && ! isset( self::$static_default[ $property ] ) ) {
+				unset( $value[ $property ] );
+			}
+		}
 		return $value;
 	}
 
@@ -207,15 +239,20 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
+		if ( ! is_customize_preview() ) {
+			return;
+		}
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
-		$this->choices = wp_parse_args( $this->choices, array(
-			'variant' => array(),
-			'fonts'   => array(
-				'standard' => array(),
-				'google'   => array(),
-			),
-		) );
+		$this->choices = wp_parse_args(
+			$this->choices, array(
+				'variant' => array(),
+				'fonts'   => array(
+					'standard' => array(),
+					'google'   => array(),
+				),
+			)
+		);
 	}
 }

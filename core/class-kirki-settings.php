@@ -107,13 +107,15 @@ class Kirki_Settings {
 	 */
 	final private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
 
-		$this->wp_customize->add_setting( new $classname( $this->wp_customize, $setting, array(
-			'default'           => $default,
-			'type'              => $type,
-			'capability'        => $capability,
-			'transport'         => $transport,
-			'sanitize_callback' => $sanitize_callback,
-		) ) );
+		$this->wp_customize->add_setting(
+			new $classname( $this->wp_customize, $setting, array(
+				'default'           => $default,
+				'type'              => $type,
+				'capability'        => $capability,
+				'transport'         => $transport,
+				'sanitize_callback' => $sanitize_callback,
+			) )
+		);
 
 	}
 
@@ -126,12 +128,14 @@ class Kirki_Settings {
 	final private function set_setting_types() {
 
 		// Apply the kirki/setting_types filter.
-		$this->setting_types = apply_filters( 'kirki/setting_types', array(
-			'default'     => 'WP_Customize_Setting',
-			'repeater'    => 'Kirki_Settings_Repeater_Setting',
-			'user_meta'   => 'Kirki_Setting_User_Meta',
-			'site_option' => 'Kirki_Setting_Site_Option',
-		) );
+		$this->setting_types = apply_filters(
+			'kirki/setting_types', array(
+				'default'     => 'WP_Customize_Setting',
+				'repeater'    => 'Kirki_Settings_Repeater_Setting',
+				'user_meta'   => 'Kirki_Setting_User_Meta',
+				'site_option' => 'Kirki_Setting_Site_Option',
+			)
+		);
 
 		// Make sure the defined classes actually exist.
 		foreach ( $this->setting_types as $key => $classname ) {

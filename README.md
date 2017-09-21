@@ -33,6 +33,54 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.10 ###
+
+* Fix: Allow HTML tags in tooltips [#1536](https://github.com/aristath/kirki/issues/1536)
+* Fix: Default System Font Stack for Sans Serif Fonts in Typography Fields [#1530](https://github.com/aristath/kirki/issues/1530)
+* Fix: HTML entities in repeater text field being encoded on each save? [#1523](https://github.com/aristath/kirki/issues/1523)
+* Fix: Some resetting issues [#1474](https://github.com/aristath/kirki/issues/1474)
+* Fix: Allow saving image fields as arrays (url,id,width,height) [#1529](https://github.com/aristath/kirki/issues/1529)
+* Fix: Allow saving image fields as ID [#1498](https://github.com/aristath/kirki/issues/1498)
+* Fix: Inline docs improvements.
+* Fix: `$subsets` not defined in the `Kirki_Modules_Webfonts_Link` class.
+* Fix: Coding improvements in the `Kirki_Field` class.
+* Fix: Performance Improvements in the autoloader [see commit](https://github.com/aristath/kirki/pull/1454/commits/dd518f7dc35cacf4f2ed571b033519b353aa2545)
+* Fix: Undefined index notice in the `Kirki_Output` class.
+* Fix: Sanitization for `checkbox`, `switch` and `toggle` controls.
+* Fix: `select2` CSS fix for `z-index` [#1459](https://github.com/aristath/kirki/issues/1459)
+* Fix: Remove button in image controls when there's no image [#1469](https://github.com/aristath/kirki/issues/1469)
+* Fix: Background control styling issue when no other color control exists [#1472](https://github.com/aristath/kirki/issues/1472)
+* Fix: Checkbox and Toggle don't respect "value_pattern" [#1467](https://github.com/aristath/kirki/issues/1467)
+* Fix: Array to string conversion when clicking reset button [#1477](https://github.com/aristath/kirki/issues/1477)
+* Fix: Input Field Validation Issue [#1486](https://github.com/aristath/kirki/issues/1486)
+* Fix: Typography: output property not working [#1484](https://github.com/aristath/kirki/issues/1484)
+* Fix: postMessage does not work properly when using `prefix` [#1479](https://github.com/aristath/kirki/issues/1479)
+* Fix: Use `wp_json_encode` instead of `json_encode`.
+* Fix: Use `rawurlencode` instead of `urlencode`.
+* New: Added warnings for deprecated functions/methods.
+* New: `code` control now loads dynamically (performance improvement).
+* New: `color-palette` control now loads dynamically (performance improvement).
+* New: `color` control now loads dynamically (performance improvement).
+* New: `dashicons` control now loads dynamically (performance improvement).
+* New: `date` control now loads dynamically (performance improvement).
+* New: `dimension` control now loads dynamically (performance improvement).
+* New: `dimensions` control now loads dynamically (performance improvement).
+* New: `editor` control now loads dynamically (performance improvement).
+* New: `fontawesome` control now loads dynamically (performance improvement).
+* New: `generic` control now loads dynamically (performance improvement).
+* New: `gradient` control now loads dynamically (performance improvement).
+* New: `multicheck` control now loads dynamically (performance improvement).
+* New: `number` control now loads dynamically (performance improvement).
+* New: `palette` control now loads dynamically (performance improvement).
+* New: `preset` control now loads dynamically (performance improvement).
+* New: `radio-buttonset` control now loads dynamically (performance improvement).
+* New: `radio-image` control now loads dynamically (performance improvement).
+* New: `radio` control now loads dynamically (performance improvement).
+* New: `select` control now loads dynamically (performance improvement).
+* New: `slider` control now loads dynamically (performance improvement).
+* New: `switch` control now loads dynamically (performance improvement).
+* New: `toggle` control now loads dynamically (performance improvement).
+
 ### 3.0.9 ###
 
 July 8 2017, dev time: 7 hours.

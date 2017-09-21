@@ -34,6 +34,8 @@ engines:
         enabled: false
       WordPress WP AlternativeFunctions file_system_read_file_get_contents:
         enabled: false
+      Squiz PHP CommentedOutCode Found:
+        enabled: false
   phpmd:
     enabled: true
     checks:
@@ -51,6 +53,8 @@ engines:
         enabled: false
       Naming/LongVariable:
         enabled: false
+      CleanCode/StaticAccess:
+        enabled: false
 ratings:
   paths:
   - "**.css"
@@ -59,6 +63,8 @@ ratings:
 exclude_paths:
 - assets/vendor/*
 - lib/class-aricolor.php
+- core/deprecated.php
 - modules/webfonts/webfonts.php
 - tests/*
 - bin/*
+- lib/*

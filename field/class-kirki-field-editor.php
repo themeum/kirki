@@ -72,19 +72,21 @@ class Kirki_Field_Editor extends Kirki_Field {
 		wp_enqueue_script( 'tiny_mce' );
 
 		echo '<div id="kirki_editor_pane" class="hide">';
-		wp_editor( '', 'kirki-editor', array(
-			'_content_editor_dfw' => false,
-			'drag_drop_upload'    => true,
-			'tabfocus_elements'   => 'content-html,save-post',
-			'editor_height'       => 200,
-			'default_editor'      => 'tinymce',
-			'teeny'               => true,
-			'tinymce'             => array(
-				'resize'             => false,
-				'wp_autoresize_on'   => false,
-				'add_unload_trigger' => false,
-			),
-		) );
+		wp_editor(
+			'', 'kirki-editor', array(
+				'_content_editor_dfw' => false,
+				'drag_drop_upload'    => true,
+				'tabfocus_elements'   => 'content-html,save-post',
+				'editor_height'       => 200,
+				'default_editor'      => 'tinymce',
+				'teeny'               => true,
+				'tinymce'             => array(
+					'resize'             => false,
+					'wp_autoresize_on'   => false,
+					'add_unload_trigger' => false,
+				),
+			)
+		);
 		echo '</div>';
 		do_action( 'admin_footer' );
 		do_action( 'admin_print_footer_scripts' );

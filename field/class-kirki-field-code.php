@@ -32,6 +32,9 @@ class Kirki_Field_Code extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
+		if ( ! is_customize_preview() ) {
+			return;
+		}
 		// Make sure we have some defaults in case none are defined.
 		$defaults = array(
 			'language' => 'css',

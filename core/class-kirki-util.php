@@ -22,25 +22,8 @@ class Kirki_Util {
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'acf_pro_compatibility' ) );
-		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
-		/* add_filter( 'option_active_plugins', array( $this, 'is_plugin_active' ) ); */
-	}
 
-	/**
-	 * Changes select2 version in ACF.
-	 * Fixes a plugin conflict that was causing select fields to crash
-	 * because of a version mismatch between ACF's and Kirki's select2 scripts.
-	 * Props @hellor0bot
-	 *
-	 * @see https://github.com/aristath/kirki/issues/1302
-	 * @access public
-	 * @since 3.0.0
-	 */
-	public function acf_pro_compatibility() {
-		if ( is_customize_preview() ) {
-			add_filter( 'acf/settings/enqueue_select2', '__return_false', 99 );
-		}
+		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
 	}
 
 	/**
@@ -73,12 +56,10 @@ class Kirki_Util {
 			return false;
 		}
 
-		// Extra logic in case the plugin is installed but not activated.
 		// Make sure the is_plugins_loaded function is loaded.
-		if ( ! function_exists( 'is_plugin_active' ) ) {
-			include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
+		// Extra logic in case the plugin is installed but not activated.
 		if ( $_plugin && ! is_plugin_active( $_plugin ) ) {
 			return false;
 		}
@@ -118,9 +99,9 @@ class Kirki_Util {
 						// If we have a variable_callback defined then get the value of the option
 						// and run it through the callback function.
 						// If no callback is defined (false) then just get the value.
-						$variables[ $variable_name ] = Kirki::get_option( $field['settings'] );
+						$variables[ $variable_name ] = Kirki_Values::get_value( $field['settings'] );
 						if ( $variable_callback ) {
-							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki::get_option( $field['settings'] ) );
+							$variables[ $variable_name ] = call_user_func( $field_variable['callback'], Kirki_Values::get_value( $field['settings'] ) );
 						}
 					}
 				}
@@ -133,71 +114,45 @@ class Kirki_Util {
 	}
 
 	/**
-	 * Plugin is active.
-	 *
-	 * @since 3.0.0
-	 * @access public
-	 * @param array $plugins An array of active plugins.
-	 * @return array Active plugins.
-	 */
-	public function is_plugin_active( $plugins ) {
-		global $pagenow;
-		$exclude = array(
-			'plugins.php',
-			'plugin-install.php',
-		);
-		$referer = ( isset( $_SERVER ) && isset( $_SERVER['HTTP_REFERER'] ) ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
-		$refered = false;
-		foreach ( $exclude as $exception ) {
-			if ( false !== strpos( $referer, $exception ) ) {
-				$refered = true;
-			}
-		}
-		if ( is_array( $plugins ) && ! in_array( $pagenow, $exclude, true ) && ! $refered ) {
-			$exists = false;
-			foreach ( $plugins as $plugin ) {
-				if ( false !== strpos( $plugin, 'kirki.php' ) ) {
-					$exists = true;
-				}
-			}
-			if ( ! $exists ) {
-				$plugins[] = 'kirki/kirki.php';
-			}
-		}
-		return $plugins;
-	}
-
-	/**
 	 * HTTP Request injection.
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @param array  $r The request params.
-	 * @param string $url The request URL.
+	 * @param array  $request The request params.
+	 * @param string $url     The request URL.
 	 * @return array
 	 */
-	public function http_request( $r = array(), $url = '' ) {
+	public function http_request( $request = array(), $url = '' ) {
 		// Early exit if installed as a plugin or not a request to wordpress.org,
 		// or finally if we don't have everything we need.
-		if ( self::is_plugin() || false === strpos( $url, 'wordpress.org' ) || ( ! isset( $r['body'] ) || ! isset( $r['body']['plugins'] ) || ! isset( $r['body']['translations'] ) || ! isset( $r['body']['locale'] ) || ! isset( $r['body']['all'] ) ) ) {
-			return $r;
+		if (
+			self::is_plugin() ||
+			false === strpos( $url, 'wordpress.org' ) || (
+				! isset( $request['body'] ) ||
+				! isset( $request['body']['plugins'] ) ||
+				! isset( $request['body']['translations'] ) ||
+				! isset( $request['body']['locale'] ) ||
+				! isset( $request['body']['all'] )
+			)
+		) {
+			return $request;
 		}
 
-		// Inject data.
-		$plugins = json_decode( $r['body']['plugins'], true );
-		if ( isset( $plugins['plugins'] ) ) {
-			$exists = false;
-			foreach ( $plugins['plugins'] as $plugin ) {
-				if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
-					$exists = true;
-				}
-			}
-			if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
-				$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
-			}
-			$r['body']['plugins'] = json_encode( $plugins );
-			return $r;
+		$plugins = json_decode( $request['body']['plugins'], true );
+		if ( ! isset( $plugins['plugins'] ) ) {
+			return $request;
 		}
-		return $r;
+		$exists = false;
+		foreach ( $plugins['plugins'] as $plugin ) {
+			if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
+				$exists = true;
+			}
+		}
+		// Inject data.
+		if ( ! $exists && defined( 'KIRKI_PLUGIN_FILE' ) ) {
+			$plugins['plugins']['kirki/kirki.php'] = get_plugin_data( KIRKI_PLUGIN_FILE );
+		}
+		$request['body']['plugins'] = wp_json_encode( $plugins );
+		return $request;
 	}
 }

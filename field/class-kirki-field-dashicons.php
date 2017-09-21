@@ -37,9 +37,6 @@ class Kirki_Field_Dashicons extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		// Custom fields don't actually save any value.
-		// just use __return_true.
 		$this->sanitize_callback = 'esc_attr';
-
 	}
 }

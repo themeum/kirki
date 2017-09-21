@@ -92,9 +92,16 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
-		<# saveAs = ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) && 'array' === data.choices.save_as ) ? 'array' : 'url'; #>
-		<# url = ( 'array' === saveAs && data.value['url'] ) ? data.value['url'] : data.value; #>
+		<#
+		var saveAs = 'url';
+		if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
+			saveAs = data.choices.save_as;
+		}
+		url = data.value;
+		if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
+			url = data.value.url;
+		}
+		#>
 		<label>
 			<span class="customize-control-title">
 				{{{ data.label }}}
@@ -104,7 +111,7 @@ class Kirki_Control_Image extends WP_Customize_Control {
 			<# } #>
 		</label>
 		<div class="image-wrapper attachment-media-view image-upload">
-			<# if ( data.value['url'] ) { #>
+			<# if ( data.value['url'] || '' !== url ) { #>
 				<div class="thumbnail thumbnail-image">
 					<img src="{{ url }}" alt="" />
 				</div>
@@ -127,8 +134,6 @@ class Kirki_Control_Image extends WP_Customize_Control {
 				</button>
 			</div>
 		</div>
-		<# value = ( 'array' === saveAs ) ? JSON.stringify( data.value ) : data.value; #>
-		<input class="image-hidden-value" type="hidden" value='{{{ value }}}' {{{ data.link }}}>
 		<?php
 	}
 }

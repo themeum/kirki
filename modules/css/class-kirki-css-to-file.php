@@ -87,7 +87,7 @@ class Kirki_CSS_To_File {
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @return string|bool
+	 * @return integer|false
 	 */
 	public function get_timestamp() {
 
@@ -147,7 +147,7 @@ class Kirki_CSS_To_File {
 	 */
 	protected function get_filesystem() {
 
-		// The Wordpress filesystem.
+		// The WordPress filesystem.
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {

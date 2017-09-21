@@ -50,7 +50,8 @@ class Kirki_Control_Radio extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base' ), false, true );
 		wp_enqueue_style( 'kirki-radio-css', trailingslashit( Kirki::$url ) . 'controls/radio/radio.css', null );
 	}
 
@@ -91,7 +92,6 @@ class Kirki_Control_Radio extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( ! data.choices ) { return; } #>
 
 		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>

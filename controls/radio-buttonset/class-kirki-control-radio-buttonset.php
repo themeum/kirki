@@ -50,7 +50,8 @@ class Kirki_Control_Radio_Buttonset extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-radio-buttonset', trailingslashit( Kirki::$url ) . 'controls/radio-buttonset/radio-buttonset.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-radio-buttonset', trailingslashit( Kirki::$url ) . 'controls/radio-buttonset/radio-buttonset.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-radio-buttonset-css', trailingslashit( Kirki::$url ) . 'controls/radio-buttonset/radio-buttonset.css', null );
 	}
 
@@ -62,11 +63,7 @@ class Kirki_Control_Radio_Buttonset extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
-		if ( isset( $this->default ) ) {
-			$this->json['default'] = $this->default;
-		} else {
-			$this->json['default'] = $this->setting->default;
-		}
+		$this->json['default'] = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
 		$this->json['output']  = $this->output;
 		$this->json['value']   = $this->value();
 		$this->json['choices'] = $this->choices;
@@ -92,7 +89,6 @@ class Kirki_Control_Radio_Buttonset extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		<div id="input_{{ data.id }}" class="buttonset">

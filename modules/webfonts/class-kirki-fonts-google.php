@@ -153,7 +153,7 @@ final class Kirki_Fonts_Google {
 				$args['choices']['variant'] = array_keys( $all_variants );
 			}
 
-			if ( ! empty( $args['choices']['variant'] ) ) {
+			if ( ! empty( $args['choices']['variant'] ) && is_array( $args['choices']['variant'] ) ) {
 				foreach ( $args['choices']['variant'] as $extra_variant ) {
 					$this->fonts[ $value['font-family'] ][] = $extra_variant;
 				}

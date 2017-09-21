@@ -237,7 +237,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		// If we have a color picker field we need to enqueue the Wordpress Color Picker style and script.
+		// If we have a color picker field we need to enqueue the WordPress Color Picker style and script.
 		if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
 			foreach ( $this->fields as $field ) {
 				if ( isset( $field['type'] ) ) {
@@ -271,7 +271,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 */
 	protected function render_content() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -285,6 +284,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 		<ul class="repeater-fields"></ul>
 
 		<?php if ( isset( $this->choices['limit'] ) ) : ?>
+			<?php // @codingStandardsIgnoreLine ?>
 			<?php /* translators: %s represents the number of rows we're limiting the repeater to allow. */ ?>
 			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), esc_html( $this->choices['limit'] ) ); ?></p>
 		<?php endif; ?>

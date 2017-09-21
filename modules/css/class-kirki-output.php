@@ -91,79 +91,87 @@ class Kirki_Output {
 	 *
 	 * @param array        $output The output args.
 	 * @param string|array $value  The value.
-	 *
 	 * @return string|array
 	 */
 	protected function apply_value_pattern( $output, $value ) {
 
 		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) && is_string( $output['value_pattern'] ) ) {
-			if ( is_string( $value ) ) {
+			if ( ! is_array( $value ) ) {
 				$value = str_replace( '$', $value, $output['value_pattern'] );
 			}
 			if ( is_array( $value ) ) {
-				if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) ) {
-					$value[ $output['choice'] ] = str_replace( '$', $value[ $output['choice'] ], $output['value_pattern'] );
-				} else {
-					foreach ( $value as $k => $v ) {
-						$value[ $k ] = str_replace( '$', $value[ $k ], $output['value_pattern'] );
+				foreach ( array_keys( $value ) as $value_k ) {
+					if ( ! is_string( $value[ $value_k ] ) ) {
+						continue;
 					}
+					if ( isset( $output['choice'] ) ) {
+						if ( $output['choice'] === $value_k ) {
+							$value[ $output['choice'] ] = str_replace( '$', $value[ $output['choice'] ], $output['value_pattern'] );
+						}
+						continue;
+					}
+					$value[ $value_k ] = str_replace( '$', $value[ $value_k ], $output['value_pattern'] );
 				}
 			}
-			if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-				$option_type = 'theme_mod';
-				$option_name = false;
-				if ( isset( Kirki::$config[ $this->config_id ] ) ) {
-					$config = Kirki::$config[ $this->config_id ];
-					$option_type = ( isset( $config['option_type'] ) ) ? $config['option_type'] : 'theme_mod';
-					if ( 'option' === $option_type || 'site_option' === $option_type ) {
-						$option_name = ( isset( $config['option_name'] ) ) ? $config['option_name'] : false;
-					}
-				}
-				if ( $option_name ) {
-					$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
-				}
-				foreach ( $output['pattern_replace'] as $search => $replace ) {
-					$replacement = '';
-					switch ( $option_type ) {
-						case 'option':
-							if ( is_array( $options ) ) {
-								if ( $option_name ) {
-									$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
-									$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
-									break;
-								}
-								$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
+			$value = $this->apply_pattern_replace( $output, $value );
+		} // End if().
+		return $value;
+	}
+
+	/**
+	 * If we have a value_pattern defined, apply it to the value.
+	 *
+	 * @param array        $output The output args.
+	 * @param string|array $value  The value.
+	 * @return string|array
+	 */
+	protected function apply_pattern_replace( $output, $value ) {
+		if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
+			$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
+			$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
+			$options     = array();
+			if ( $option_name ) {
+				$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
+			}
+			foreach ( $output['pattern_replace'] as $search => $replace ) {
+				$replacement = '';
+				switch ( $option_type ) {
+					case 'option':
+						if ( is_array( $options ) ) {
+							if ( $option_name ) {
+								$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
+								$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
 								break;
 							}
-							$replacement = get_option( $replace );
+							$replacement = ( isset( $options[ $replace ] ) ) ? $options[ $replace ] : '';
 							break;
-						case 'site_option':
-							$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
-							break;
-						case 'user_meta':
-							$user_id = get_current_user_id();
-							if ( $user_id ) {
-								// @codingStandardsIgnoreLine
-								$replacement = get_user_meta( $user_id, $replace, true );
-							}
-							break;
-						default:
-							$replacement = get_theme_mod( $replace );
-					}
-					$replacement = ( false === $replacement ) ? '' : $replacement;
-					if ( is_array( $value ) ) {
-						foreach ( $value as $k => $v ) {
-							$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
 						}
-						return $value;
+						$replacement = get_option( $replace );
+						break;
+					case 'site_option':
+						$replacement = ( is_array( $options ) && isset( $options[ $replace ] ) ) ? $options[ $replace ] : get_site_option( $replace );
+						break;
+					case 'user_meta':
+						$user_id = get_current_user_id();
+						if ( $user_id ) {
+							// @codingStandardsIgnoreLine
+							$replacement = get_user_meta( $user_id, $replace, true );
+						}
+						break;
+					default:
+						$replacement = get_theme_mod( $replace );
+				}
+				$replacement = ( false === $replacement ) ? '' : $replacement;
+				if ( is_array( $value ) ) {
+					foreach ( $value as $k => $v ) {
+						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
 					}
-					$value = str_replace( $search, $replacement, $value );
-				} // End foreach().
-			} // End if().
+					return $value;
+				}
+				$value = str_replace( $search, $replacement, $value );
+			} // End foreach().
 		} // End if().
-
 		return $value;
-
 	}
 
 	/**
@@ -207,7 +215,7 @@ class Kirki_Output {
 					}
 
 					// Skip if value is defined as excluded.
-					if ( $exclude === $value ) {
+					if ( $exclude === $value || ( '' === $exclude && empty( $value ) ) ) {
 						$skip = true;
 					}
 				}
@@ -234,8 +242,8 @@ class Kirki_Output {
 	 * Parses an output and creates the styles array for it.
 	 *
 	 * @access protected
-	 * @param array  $output The field output.
-	 * @param string $value  The value.
+	 * @param array        $output The field output.
+	 * @param string|array $value  The value.
 	 *
 	 * @return void
 	 */
@@ -244,9 +252,9 @@ class Kirki_Output {
 			return;
 		}
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
-		$output['prefix']      = ( isset( $output['prefix'] ) )      ? $output['prefix']      : '';
-		$output['units']       = ( isset( $output['units'] ) )       ? $output['units']       : '';
-		$output['suffix']      = ( isset( $output['suffix'] ) )      ? $output['suffix']      : '';
+		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
+		$output['units']       = ( isset( $output['units'] ) ) ? $output['units'] : '';
+		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 
 		// Properties that can accept multiple values.
 		// Useful for example for gradients where all browsers use the "background-image" property
@@ -262,7 +270,7 @@ class Kirki_Output {
 			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ][] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 			return;
 		}
-		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
+		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $this->process_property_value( $output['property'], $value ) . $output['units'] . $output['suffix'];
 	}
 
 	/**
@@ -270,8 +278,8 @@ class Kirki_Output {
 	 * We need to tweak the value to make everything works as expected.
 	 *
 	 * @access protected
-	 * @param string $property The CSS property.
-	 * @param string $value    The value.
+	 * @param string       $property The CSS property.
+	 * @param string|array $value    The value.
 	 *
 	 * @return array
 	 */

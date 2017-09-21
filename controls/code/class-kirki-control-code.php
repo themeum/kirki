@@ -55,6 +55,7 @@ class Kirki_Control_Code extends WP_Customize_Control {
 
 		// Register codemirror.
 		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
 		// If we're using html mode, we'll also need to include the multiplex addon
 		// as well as dependencies for XML, JS, CSS languages.
@@ -81,7 +82,7 @@ class Kirki_Control_Code extends WP_Customize_Control {
 		// Add theme styles.
 		wp_enqueue_style( 'codemirror-theme-' . $this->choices['theme'], trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/theme/' . $this->choices['theme'] . '.css' );
 
-		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'controls/code/code.js', array( 'jquery', 'customize-base', 'codemirror' ), false, true );
+		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'controls/code/code.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'codemirror' ), false, true );
 		wp_enqueue_style( 'kirki-code-css', trailingslashit( Kirki::$url ) . 'controls/code/code.css', null );
 
 	}
@@ -123,7 +124,6 @@ class Kirki_Control_Code extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>

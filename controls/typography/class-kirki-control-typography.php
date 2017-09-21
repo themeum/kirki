@@ -146,20 +146,14 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
 
-		$defaults = array(
-			'font-family'    => false,
-			'font-size'      => false,
-			'variant'        => false,
-			'line-height'    => false,
-			'letter-spacing' => false,
-			'word-spacing'   => false,
-			'color'          => false,
-			'text-align'     => false,
-		);
-		$this->json['default'] = wp_parse_args( $this->json['default'], $defaults );
+		foreach ( array_keys( $this->json['value'] ) as $key ) {
+			if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ) ) && ! isset( $this->json['default'][ $key ] ) ) {
+				unset( $this->json['value'][ $key ] );
+			}
+		}
 
 		// Fix for https://github.com/aristath/kirki/issues/1405.
-		foreach ( $this->json['value'] as $key => $val ) {
+		foreach ( array_keys( $this->json['value'] ) as $key ) {
 			if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
 				unset( $this->json['value'][ $key ] );
 			}
@@ -181,7 +175,6 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label class="customizer-text">
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
@@ -365,7 +358,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		// Add fonts to our JS objects.
 		$standard_fonts = Kirki_Fonts::get_standard_fonts();
 
-		$std_user_keys = $this->choices['fonts']['standard'];
+		$std_user_keys = array();
+		if ( isset( $this->choices['fonts'] ) && isset( $this->choices['fonts']['standard'] ) ) {
+			$std_user_keys = $this->choices['fonts']['standard'];
+		}
 
 		$standard_fonts_final = array();
 		$default_variants = $this->format_variants_array( array(
@@ -375,7 +371,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			'700italic',
 		) );
 		foreach ( $standard_fonts as $key => $font ) {
-			if ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) {
+			if ( ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) || ! isset( $font['stack'] ) || ! isset( $font['label'] ) ) {
 				continue;
 			}
 			$standard_fonts_final[] = array(
@@ -402,7 +398,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		$all_variants = Kirki_Fonts::get_all_variants();
 		$all_subsets  = Kirki_Fonts::get_google_font_subsets();
 
-		$gf_user_keys = $this->choices['fonts']['google'];
+		$gf_user_keys = array();
+		if ( isset( $this->choices['fonts'] ) && isset( $this->choices['fonts']['google'] ) ) {
+			$gf_user_keys = $this->choices['fonts']['google'];
+		}
 
 		$google_fonts_final = array();
 		foreach ( $google_fonts as $family => $args ) {

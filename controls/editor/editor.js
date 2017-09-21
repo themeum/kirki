@@ -1,74 +1,52 @@
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
+wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
-
-		'use strict';
 
 		var control      = this,
 		    element      = control.container.find( 'textarea' ),
 		    toggler      = control.container.find( '.toggle-editor' ),
 		    wpEditorArea = jQuery( '#kirki_editor_pane textarea.wp-editor-area' ),
+		    editor       = tinyMCE.get( 'kirki-editor' ),
 		    setChange,
 		    content;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-		jQuery( window ).load( function() {
+		// Add the button text
+		toggler.html( editorKirkiL10n['open-editor'] );
 
-			var editor  = tinyMCE.get( 'kirki-editor' );
+		toggler.on( 'click', function() {
 
-			// Add the button text
-			toggler.html( editorKirkiL10n['open-editor'] );
+			// Toggle the editor.
+			control.toggleEditor();
 
-			toggler.on( 'click', function() {
+			// Change button.
+			control.changeButton();
 
-				// Toggle the editor.
-				control.toggleEditor();
+			// Add the content to the editor.
+			control.setEditorContent( editor );
 
-				// Change button.
-				control.changeButton();
+			// Modify the preview-area height.
+			control.previewHeight();
 
-				// Add the content to the editor.
-				control.setEditorContent( editor );
+		});
 
-				// Modify the preview-area height.
-				control.previewHeight();
+		// Update the option from the editor contents on change.
+		if ( editor ) {
 
+			editor.onChange.add( function( ed ) {
+
+				ed.save();
+				content = editor.getContent();
+				clearTimeout( setChange );
+				setChange = setTimeout( function() {
+					element.val( content ).trigger( 'change' );
+					wp.customize.instance( control.getEditorWrapperSetting() ).set( content );
+				}, 500 );
 			});
+		}
 
-			// Update the option from the editor contents on change.
-			if ( editor ) {
-
-				editor.onChange.add( function( ed ) {
-
-					ed.save();
-					content = editor.getContent();
-					clearTimeout( setChange );
-					setChange = setTimeout( function() {
-						element.val( content ).trigger( 'change' );
-						wp.customize.instance( control.getEditorWrapperSetting() ).set( content );
-					}, 500 );
-				});
-			}
-
-			// Handle text mode.
-			wpEditorArea.on( 'change keyup paste', function() {
-				wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
-			});
+		// Handle text mode.
+		wpEditorArea.on( 'change keyup paste', function() {
+			wp.customize.instance( control.getEditorWrapperSetting() ).set( jQuery( this ).val() );
 		});
 	},
 
@@ -76,8 +54,6 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Modify the button text and classes.
 	 */
 	changeButton: function() {
-
-		'use strict';
 
 		var control = this;
 
@@ -99,16 +75,13 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 */
 	toggleEditor: function() {
 
-		'use strict';
-
 		var control = this,
 		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
+		editorWrapper.removeClass();
 		if ( ! control.getEditorWrapperSetting() || control.id !== control.getEditorWrapperSetting() ) {
-			editorWrapper.removeClass();
 			editorWrapper.addClass( control.id );
 		} else {
-			editorWrapper.removeClass();
 			editorWrapper.addClass( 'hide' );
 		}
 	},
@@ -117,8 +90,6 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Set the content.
 	 */
 	setEditorContent: function( editor ) {
-
-		'use strict';
 
 		var control = this;
 
@@ -129,8 +100,6 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.Control.extend({
 	 * Gets the setting from the editor wrapper class.
 	 */
 	getEditorWrapperSetting: function() {
-
-		'use strict';
 
 		if ( jQuery( '#kirki_editor_pane' ).hasClass( 'hide' ) ) {
 			return false;

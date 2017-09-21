@@ -24,10 +24,6 @@
       color: #000;
     }
 
-    &.open {
-      display: block !important;
-    }
-
     &:after {
       content: "\f139";
       font-family: dashicons;

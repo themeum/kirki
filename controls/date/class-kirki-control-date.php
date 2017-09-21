@@ -50,7 +50,8 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-date', trailingslashit( Kirki::$url ) . 'controls/date/date.js', array( 'jquery', 'customize-base', 'jquery-ui-datepicker' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-date', trailingslashit( Kirki::$url ) . 'controls/date/date.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'jquery-ui-datepicker' ), false, true );
 		wp_enqueue_style( 'kirki-date-css', trailingslashit( Kirki::$url ) . 'controls/date/date.css', null );
 	}
 
@@ -91,7 +92,6 @@ class Kirki_Control_Date extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>

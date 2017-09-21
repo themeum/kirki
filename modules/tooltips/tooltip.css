@@ -18,8 +18,6 @@
     line-height: 1.4em; }
     .tooltip-wrapper .tooltip-content a {
       color: #000; }
-    .tooltip-wrapper .tooltip-content.open {
-      display: block !important; }
     .tooltip-wrapper .tooltip-content:after {
       content: "\f139";
       font-family: dashicons;

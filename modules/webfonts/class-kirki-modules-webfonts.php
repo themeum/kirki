@@ -100,7 +100,7 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function init() {
 
-		foreach ( Kirki::$config as $config_id => $args ) {
+		foreach ( array_keys( Kirki::$config ) as $config_id ) {
 			$method = $this->get_method( $config_id );
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
@@ -112,10 +112,9 @@ class Kirki_Modules_Webfonts {
 	 *
 	 * @access public
 	 * @since 3.0.0
-	 * @param string $config_id The config-ID.
 	 * @return string
 	 */
-	public function get_method( $config_id ) {
+	public function get_method() {
 
 		// Figure out which method to use.
 		$method = apply_filters( 'kirki/googlefonts_load_method', 'link' );

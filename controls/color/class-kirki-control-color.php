@@ -135,7 +135,8 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-		wp_enqueue_script( 'kirki-color', trailingslashit( Kirki::$url ) . 'controls/color/color.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-color', trailingslashit( Kirki::$url ) . 'controls/color/color.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'wp-color-picker-alpha' ), false, true );
 		wp_enqueue_style( 'kirki-color-css', trailingslashit( Kirki::$url ) . 'controls/color/color.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
@@ -152,7 +153,6 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<div class="kirki-controls-loading-spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 		<label>
 			<span class="customize-control-title">
 				{{{ data.label }}}
