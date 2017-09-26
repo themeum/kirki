@@ -10,7 +10,6 @@
  * @since       3.0.0
  */
 
-// if ( ! isset( ))
 // If kirki is a plugin and not inside a theme,
 // then there's no need to proceed any further.
 global $wp_customize;
