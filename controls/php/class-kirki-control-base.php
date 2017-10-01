@@ -47,10 +47,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	 * @return array
 	 */
 	public function kirki_script_dependencies() {
-
-		return array(
-			'wp-color-picker-alpha',
-		);
+		return array();
 	}
 
 	/**
