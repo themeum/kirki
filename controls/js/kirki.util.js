@@ -46,7 +46,6 @@ kirki.util = {
 	 * @returns {bool}
 	 */
 	kirkiValidateCSSValue: function( value ) {
-console.log( value );
 		var validUnits = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'],
 			numericValue,
 			unit;
