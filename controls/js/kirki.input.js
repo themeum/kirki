@@ -153,15 +153,17 @@ kirki.input = {
 		 * @returns {string}      The HTML for the input element.
 		 */
 		template: function( args ) {
-			return kirki.input.generic.template( _.defaults( args, {
-				type: 'text',
+			args = _.defaults( args, {
 				inputAttrs: '',
 				'data-palette': args.palette || '',
 				'data-default-color': args['default'] || '',
 				'data-alpha': args.arpha || true,
 				value: '',
 				'class': 'kirki-color-control'
-			} ) );
+			} );
+			args.type = 'text';
+
+			return kirki.input.generic.template( args );
 		},
 
 		/**
@@ -238,7 +240,8 @@ kirki.input = {
 				id: '',
 				value: '',
 				inputAttrs: '',
-				choices: {}
+				choices: {},
+				type: 'text'
 			} );
 
 			args.choices.content = args.choices.content || '';
@@ -253,10 +256,11 @@ kirki.input = {
 			delete args.priority;
 			delete args.section;
 			delete args.settings;
+			delete args.ajaxurl;
 
 			html += '<' + args.element;
 			_.each( args, function( val, key ) {
-				if ( 'link' === key ) {
+				if ( 'link' === key || 'inputattrs' === key || 'element' === key ) {
 					return;
 				}
 				if ( _.isString( val ) ) {

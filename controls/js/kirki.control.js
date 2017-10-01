@@ -65,6 +65,7 @@ kirki.control = {
 				html += ( '' !== args.label ) ? '<span class="customize-control-title">' + args.label + '</span>' : '';
 				html += ( '' !== args.description ) ? '<span class="description customize-control-description">' + args.description + '</span>' : '';
 
+				args.type = 'text';
 				html += kirki.input.generic.template( args );
 			html += '</label>';
 

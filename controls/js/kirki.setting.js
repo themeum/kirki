@@ -74,7 +74,7 @@ kirki.setting = {
 		if ( jQuery( element ).attr( 'data-id' ) ) {
 			setting = jQuery( element ).attr( 'data-id' );
 		} else {
-			setting = jQuery( element ).parents( '.kirki-control-wrapper' ).attr( 'data-id' );
+			setting = jQuery( element ).parents( '[data-id]' ).attr( 'data-id' );
 		}
 		parts = setting.split( '[' ),
 
