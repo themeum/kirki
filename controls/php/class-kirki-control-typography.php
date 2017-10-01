@@ -147,7 +147,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		}
 
 		foreach ( array_keys( $this->json['value'] ) as $key ) {
-			if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ) ) && ! isset( $this->json['default'][ $key ] ) ) {
+			if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
 				unset( $this->json['value'][ $key ] );
 			}
 		}
