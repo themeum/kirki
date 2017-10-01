@@ -31,7 +31,6 @@ module.exports = function( grunt ) {
 					'controls/editor/editor.css':                   'controls/editor/editor.scss',
 					'controls/fontawesome/fontawesome.css':         'controls/fontawesome/fontawesome.scss',
 					'controls/generic/generic.css':                 'controls/generic/generic.scss',
-					'controls/gradient/gradient.css':               'controls/gradient/gradient.scss',
 					'controls/image/image.css':                     'controls/image/image.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
 					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
