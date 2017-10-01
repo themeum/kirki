@@ -1,43 +1,43 @@
 var kirki = kirki || {};
 kirki.control = {
 
-	background: {},
+	'kirki-background': {},
 
-	code: {},
+	'kirki-code': {},
 
-	color: {},
+	'kirki-color': {},
 
-	'colol-palette': {},
+	'kirki-colol-palette': {},
 
-	custom: {},
+	'kirki-custom': {},
 
-	dashicons: {},
+	'kirki-dashicons': {},
 
-	date: {},
+	'kirki-date': {},
 
-	dimension: {},
+	'kirki-dimension': {},
 
-	dimensions: {},
+	'kirki-dimensions': {},
 
-	editor: {},
+	'kirki-editor': {},
 
-	fontawesome: {},
+	'kirki-fontawesome': {},
 
-	generic: {},
+	'kirki-generic': {},
 
-	image: {},
+	'kirki-image': {},
 
-	multicheck: {},
+	'kirki-multicheck': {},
 
-	multicolor: {},
+	'kirki-multicolor': {},
 
-	number: {},
+	'kirki-number': {},
 
-	palette: {},
+	'kirki-palette': {},
 
-	preset: {},
+	'kirki-preset': {},
 
-	radio: {
+	'kirki-radio': {
 
 		/**
 		 * Get the HTML for the control.
@@ -73,23 +73,23 @@ kirki.control = {
 		}
 	},
 
-	'radio-buttonset': {},
+	'kirki-radio-buttonset': {},
 
-	'radio-image': {},
+	'kirki-radio-image': {},
 
-	repeater: {},
+	'kirki-repeater': {},
 
-	select: {},
+	'kirki-select': {},
 
-	slider: {},
+	'kirki-slider': {},
 
-	sortable: {},
+	'kirki-sortable': {},
 
-	'switch': {},
+	'kirki-switch': {},
 
-	toggle: {},
+	'kirki-toggle': {},
 
-	typography: {},
+	'kirki-typography': {},
 
 	/**
 	 * An object containing template-specific functions.
