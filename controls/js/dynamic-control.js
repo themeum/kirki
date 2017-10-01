@@ -1,3 +1,4 @@
+/* global kirki */
 /**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
@@ -115,6 +116,15 @@
 			wp.customize.Control.prototype.ready.call( control );
 
 			control.deferred.embedded.done( function() {
+				if (
+					! _.isUndefined( kirki ) &&
+					! _.isUndefined( kirki.control ) &&
+					! _.isUndefined( kirki.control[ control.params.type ] ) &&
+					! _.isUndefined( kirki.control[ control.params.type ].template )
+				) {
+					control.container.html( kirki.control['kirki-radio'].template( control.params ) );
+					kirki.control['kirki-radio'].init( control.params );
+				}
 				control.initKirkiControl();
 			});
 		},
