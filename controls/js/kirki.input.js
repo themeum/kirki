@@ -288,5 +288,58 @@ kirki.input = {
 				kirki.setting.set( jQuery( this ), jQuery );
 			} );
 		}
+	},
+
+	image: {
+
+		/**
+		 * Get the template for a generic input element.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments for the input element.
+		 * @returns {string}      The HTML for the input element.
+		 */
+		template: function( args ) {
+			var html      = '',
+			    saveAs    = args.save_as || 'url',
+			    isDefault = false,
+			    url;
+
+			args = _.defaults( args, {
+				id: '',
+				value: '',
+				'default': ''
+			} );
+
+			url = ( _.isObject( args.value ) && ! _.isUndefined( args.value.url ) ) ? args.value.url : args.value;
+
+			html += '<div class="image-wrapper attachment-media-view image-upload" data-id="' + args.id + '">';
+				if ( args.value.url || '' !== url ) {
+					html += '<div class="thumbnail thumbnail-image">';
+						html += '<img src="' + url + '" alt="" />';
+					html += '</div>';
+				} else {
+					html += '<div class="placeholder">';
+						html += 'No File Selected';
+					html += '</div>';
+				}
+				html += '<div class="actions">';
+					html += '<button class="button image-upload-remove-button' + ( ( '' === url ) ? ' hidden' : '' ) + '">';
+						html += 'Remove';
+					html += '</button>';
+					if ( args['default'] && '' !== args['default'] ) {
+						isDefault = ( args['default'] === args.value || ( ! _.isUndefined( args.value.url ) && args['default'] === args.value.url ) );
+						html += '<button type="button" class="button image-default-button"' + ( isDefault ? ' style="display:none;"' : '' ) + '>';
+							html += 'Default';
+						html += '</button>';
+					}
+					html += '<button type="button" class="button image-upload-button">';
+						html += 'Select File';
+					html += '</button>';
+				html += '</div>';
+			html += '</div>';
+
+			return html;
+		}
 	}
 };
