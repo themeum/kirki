@@ -46,7 +46,7 @@ class Kirki_Control_Image extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'kirki-image', trailingslashit( Kirki::$url ) . 'controls/image/image.js', array( 'jquery', 'customize-base' ) );
-		wp_enqueue_style( 'kirki-image', trailingslashit( Kirki::$url ) . 'controls/controls.css', null );
+		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 
 	/**
