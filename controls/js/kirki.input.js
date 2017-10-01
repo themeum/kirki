@@ -240,11 +240,34 @@ kirki.input = {
 				inputAttrs: '',
 				choices: {}
 			} );
-			html += '<' + args.element + ' data-id="' + args.id + '" value="' + args.value + '" ' + args.inputAttrs + ' ';
-			_.each( args.choices, function( value, key ) {
-				html += key += '"' + value + '"';
+
+			args.choices.content = args.choices.content || '';
+
+			// Delete blacklisted.
+			delete args.content;
+			delete args.description;
+			delete args.instanceNumber;
+			delete args.label;
+			delete args.link;
+			delete args.output;
+			delete args.priority;
+			delete args.section;
+			delete args.settings;
+
+			html += '<' + args.element;
+			_.each( args, function( val, key ) {
+				if ( 'link' === key ) {
+					return;
+				}
+				if ( _.isString( val ) ) {
+					key = ( 'id' === key ) ? 'data-id' : key;
+					html += ' ' + key + '="' + val + '"';
+				}
 			} );
-			html += ( ! _.isUndefined( args.choices.content ) && args.choices.content ) ? '>' + args.choices.content + '</' + args.element + '>' : '/>';
+			_.each( args.choices, function( value, key ) {
+				html += ' ' + key + '="' + value + '"';
+			} );
+			html += ( '' !== args.choices.content ) ? '>' + args.choices.content + '</' + args.element + '>' : '/>';
 			return html;
 		}
 	}

@@ -122,8 +122,8 @@
 					! _.isUndefined( kirki.control[ control.params.type ] ) &&
 					! _.isUndefined( kirki.control[ control.params.type ].template )
 				) {
-					control.container.html( kirki.control['kirki-radio'].template( control.params ) );
-					kirki.control['kirki-radio'].init( control.params );
+					control.container.html( kirki.control[ control.params.type ].template( control.params ) );
+					kirki.control[ control.params.type ].init( control.params );
 				}
 				control.initKirkiControl();
 			});

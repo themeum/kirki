@@ -135,10 +135,17 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-color', trailingslashit( Kirki::$url ) . 'controls/js/color.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'wp-color-picker-alpha' ), false, true );
-		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
+
+		wp_enqueue_script( 'kirki-control', trailingslashit( Kirki::$url ) . 'controls/js/kirki.control.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_script( 'kirki-input', trailingslashit( Kirki::$url ) . 'controls/js/kirki.input.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-setting', trailingslashit( Kirki::$url ) . 'controls/js/kirki.setting.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-util', trailingslashit( Kirki::$url ) . 'controls/js/kirki.util.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-value', trailingslashit( Kirki::$url ) . 'controls/js/kirki.value.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base', 'kirki-control', 'kirki-input', 'kirki-setting', 'kirki-util', 'kirki-value' ), false, true );
+
+		wp_enqueue_script( 'kirki-controls', trailingslashit( Kirki::$url ) . 'controls/js/controls.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 
 	/**
@@ -151,17 +158,5 @@ class Kirki_Control_Color extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() {
-		?>
-		<label>
-			<span class="customize-control-title">
-				{{{ data.label }}}
-			</span>
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
-			<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control" {{{ data.link }}} />
-		</label>
-		<?php
-	}
+	protected function content_template() {}
 }
