@@ -50,14 +50,14 @@ class Kirki_Control_Radio extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-control', trailingslashit( Kirki::$url ) . 'controls/kirki.control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-input', trailingslashit( Kirki::$url ) . 'controls/kirki.input.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-setting', trailingslashit( Kirki::$url ) . 'controls/kirki.setting.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-util', trailingslashit( Kirki::$url ) . 'controls/kirki.util.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-value', trailingslashit( Kirki::$url ) . 'controls/kirki.value.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-control', trailingslashit( Kirki::$url ) . 'controls/js/kirki.control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-input', trailingslashit( Kirki::$url ) . 'controls/js/kirki.input.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-setting', trailingslashit( Kirki::$url ) . 'controls/js/kirki.setting.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-util', trailingslashit( Kirki::$url ) . 'controls/js/kirki.util.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-value', trailingslashit( Kirki::$url ) . 'controls/js/kirki.value.js', array( 'jquery', 'customize-base' ), false, true );
 
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base', 'kirki-control', 'kirki-input', 'kirki-setting', 'kirki-util', 'kirki-value' ), false, true );
+		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/js/radio.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base', 'kirki-control', 'kirki-input', 'kirki-setting', 'kirki-util', 'kirki-value' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 

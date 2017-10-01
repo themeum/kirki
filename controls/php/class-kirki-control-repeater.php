@@ -259,7 +259,7 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			}
 		}
 
-		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/repeater/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
+		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/js/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 

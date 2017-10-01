@@ -107,7 +107,7 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
-		wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/js/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
