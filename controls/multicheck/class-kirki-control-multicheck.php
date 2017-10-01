@@ -55,7 +55,7 @@ class Kirki_Control_MultiCheck extends WP_Customize_Control {
 
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-multicheck', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
-		wp_enqueue_style( 'kirki-multicheck-css', trailingslashit( Kirki::$url ) . 'controls/multicheck/multicheck.css', null );
+		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 
 	/**

@@ -52,7 +52,7 @@ class Kirki_Control_Radio_Buttonset extends WP_Customize_Control {
 
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-radio-buttonset', trailingslashit( Kirki::$url ) . 'controls/radio-buttonset/radio-buttonset.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
-		wp_enqueue_style( 'kirki-radio-buttonset-css', trailingslashit( Kirki::$url ) . 'controls/radio-buttonset/radio-buttonset.css', null );
+		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
 
 	/**

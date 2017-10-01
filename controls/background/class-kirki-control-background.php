@@ -53,7 +53,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 		wp_enqueue_style( 'wp-color-picker' );
 
 		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
-		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
+		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/controls.css', null );
 	}
 
 	/**

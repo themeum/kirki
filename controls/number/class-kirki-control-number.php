@@ -60,7 +60,7 @@ class Kirki_Control_Number extends WP_Customize_Control {
 
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-number', trailingslashit( Kirki::$url ) . 'controls/number/number.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'jquery-ui-button', 'jquery-ui-spinner' ), false, true );
-		wp_enqueue_style( 'kirki-number-css', trailingslashit( Kirki::$url ) . 'controls/number/number.css', null );
+		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 		wp_localize_script( 'kirki-number', 'numberKirkiL10n', array(
 			'min-error'  => esc_attr__( 'Value lower than allowed minimum', 'kirki' ),
 			'max-error'  => esc_attr__( 'Value higher than allowed maximum', 'kirki' ),
