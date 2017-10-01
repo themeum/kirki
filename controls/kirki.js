@@ -159,7 +159,7 @@ var kirki = {
 			 */
 			init: function( args ) {
 				var id      = args.id || '',
-				    element = '.kirki-color-control[data-setting=' + id + ']';
+				    element = '.kirki-color-control[data-id=' + id + ']';
 
 				// If we have defined any extra choices, make sure they are passed-on to Iris.
 				if ( ! _.isUndefined( args.choices ) ) {
@@ -276,6 +276,13 @@ var kirki = {
 
 		radio: {
 
+			/**
+			 * Get the HTML for the control.
+			 *
+			 * @since 3.1.0
+			 * @param {object} [args] The control arguments.
+			 * @returns {string}
+			 */
 			template: function( args ) {
 				var html = '';
 				args = _.defaults( args, {
@@ -411,10 +418,10 @@ var kirki = {
 			    subSettingParts;
 
 			// Get the setting from the element.
-			if ( jQuery( element ).attr( 'data-setting' ) ) {
-				setting = jQuery( element ).attr( 'data-setting' );
+			if ( jQuery( element ).attr( 'data-id' ) ) {
+				setting = jQuery( element ).attr( 'data-id' );
 			} else {
-				setting = jQuery( element ).parents( '.kirki-control-wrapper' ).attr( 'data-setting' );
+				setting = jQuery( element ).parents( '.kirki-control-wrapper' ).attr( 'data-id' );
 			}
 			parts = setting.split( '[' ),
 

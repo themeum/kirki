@@ -7,6 +7,7 @@ wp.customize.controlConstructor['kirki-radio'] = wp.customize.kirkiDynamicContro
 
 		control.deferred.embedded.done( function() {
 			control.container.html( kirki.control.radio.template( control.params ) );
+			kirki.control.radio.init( control.params );
 		});
 	}
 });
