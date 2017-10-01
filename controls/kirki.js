@@ -274,7 +274,23 @@ var kirki = {
 
 		preset: {},
 
-		radio: {},
+		radio: {
+
+			template: function( args ) {
+				var html = '';
+				args = _.defaults( args, {
+					choices: {},
+					label: '',
+					description: ''
+				} );
+
+				html += ( '' !== args.label ) ? '<span class="customize-control-title">' + args.label + '</span>' : '';
+				html += ( '' !== args.description ) ? '<span class="description customize-control-description">' + args.description + '</span>' : '';
+				html += kirki.input.radio.template( args );
+
+				return html;
+			}
+		},
 
 		'radio-buttonset': {},
 

@@ -51,7 +51,8 @@ class Kirki_Control_Radio extends WP_Customize_Control {
 	public function enqueue() {
 
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki', trailingslashit( Kirki::$url ) . 'controls/kirki.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-radio', trailingslashit( Kirki::$url ) . 'controls/radio/radio.js', array( 'jquery', 'kirki-dynamic-control', 'customize-base', 'kirki' ), false, true );
 		wp_enqueue_style( 'kirki-radio-css', trailingslashit( Kirki::$url ) . 'controls/radio/radio.css', null );
 	}
 
@@ -90,23 +91,5 @@ class Kirki_Control_Radio extends WP_Customize_Control {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() {
-		?>
-		<# if ( ! data.choices ) { return; } #>
-
-		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
-		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-		<# for ( key in data.choices ) { #>
-			<label>
-				<input {{{ data.inputAttrs }}} type="radio" value="{{ key }}" name="_customize-radio-{{ data.id }}" {{{ data.link }}}<# if ( data.value === key ) { #> checked<# } #> />
-				<# if ( _.isArray( data.choices[ key ] ) ) { #>
-					{{ data.choices[ key ][0] }}
-					<span class="option-description">{{ data.choices[ key ][1] }}</span>
-				<# } else { #>
-					{{ data.choices[ key ] }}
-				<# } #>
-			</label>
-		<# } #>
-		<?php
-	}
+	protected function content_template() {}
 }
