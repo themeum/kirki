@@ -47,7 +47,71 @@ kirki.control = {
 
 	'kirki-date': {},
 
-	'kirki-dimension': {},
+	'kirki-dimension': {
+
+		/**
+		 * Get the HTML for the control.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The control arguments.
+		 * @returns {string}
+		 */
+		template: function( args ) {
+			var html = '';
+
+			args.value = args.value.replace( '%%', '%' );
+
+			html += '<label>';
+				html += ( '' !== args.label ) ? '<span class="customize-control-title">' + args.label + '</span>' : '';
+				html += ( '' !== args.description ) ? '<span class="description customize-control-description">' + args.description + '</span>' : '';
+
+				html += kirki.input.generic.template( args );
+			html += '</label>';
+
+			return html;
+		},
+
+		/**
+		 * Init the control.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		init: function( args ) {
+			var self = this;
+
+			// Init.
+			kirki.input.generic.init( args );
+
+			// Notifications.
+			// this.notifications( args );
+		},
+
+		/**
+		 * Handles notifications.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		notifications: function( args ) {
+			wp.customize( args.id, function( setting ) {
+				setting.bind( function( value ) {
+					var code = 'long_title';
+
+					if ( false === kirki.util.kirkiValidateCSSValue( value ) ) {
+						setting.notifications.add( code, new wp.customize.Notification( code, {
+							type: 'warning',
+							message: args.l10n.invalidValue
+						} ) );
+					} else {
+						setting.notifications.remove( code );
+					}
+				} );
+			} );
+		}
+	},
 
 	'kirki-dimensions': {},
 

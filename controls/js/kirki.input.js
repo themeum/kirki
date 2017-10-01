@@ -269,6 +269,20 @@ kirki.input = {
 			} );
 			html += ( '' !== args.choices.content ) ? '>' + args.choices.content + '</' + args.element + '>' : '/>';
 			return html;
+		},
+
+		/**
+		 * Init for radio input.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		init: function( args ) {
+			jQuery( 'input[data-id=' + args.id + ']' ).on( 'change keyup paste', function( event ) {
+				var value = jQuery( 'input[data-id=' + args.id + ']' ).val();
+				kirki.setting.set( jQuery( this ), jQuery );
+			} );
 		}
 	}
 };
