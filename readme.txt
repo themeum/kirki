@@ -70,7 +70,6 @@ September 21 2017, dev time: 74 hours.
 * New: `editor` control now loads dynamically (performance improvement).
 * New: `fontawesome` control now loads dynamically (performance improvement).
 * New: `generic` control now loads dynamically (performance improvement).
-* New: `gradient` control now loads dynamically (performance improvement).
 * New: `multicheck` control now loads dynamically (performance improvement).
 * New: `number` control now loads dynamically (performance improvement).
 * New: `palette` control now loads dynamically (performance improvement).

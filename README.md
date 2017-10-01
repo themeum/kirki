@@ -1,12 +1,12 @@
 # Kirki #
-**Contributors:** aristath, fovoc, igmoweb  
-**Tags:** customizer,options framework, theme, mods, toolkit  
-**Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.8  
-**Tested up to:** 4.8  
-**Stable tag:** 3.0.9  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** aristath, fovoc, igmoweb
+**Tags:** customizer,options framework, theme, mods, toolkit
+**Donate link:** https://aristath.github.io/donate
+**Requires at least:** 4.8
+**Tested up to:** 4.8
+**Stable tag:** 3.0.9
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate toolkit for theme developers using the WordPress Customizer
 
@@ -68,7 +68,6 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: `editor` control now loads dynamically (performance improvement).
 * New: `fontawesome` control now loads dynamically (performance improvement).
 * New: `generic` control now loads dynamically (performance improvement).
-* New: `gradient` control now loads dynamically (performance improvement).
 * New: `multicheck` control now loads dynamically (performance improvement).
 * New: `number` control now loads dynamically (performance improvement).
 * New: `palette` control now loads dynamically (performance improvement).
