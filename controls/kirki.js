@@ -238,6 +238,62 @@ var kirki = {
 
 	control: {
 
+		background: {},
+
+		code: {},
+
+		color: {},
+
+		'colol-palette': {},
+
+		custom: {},
+
+		dashicons: {},
+
+		date: {},
+
+		dimension: {},
+
+		dimensions: {},
+
+		editor: {},
+
+		fontawesome: {},
+
+		generic: {},
+
+		image: {},
+
+		multicheck: {},
+
+		multicolor: {},
+
+		number: {},
+
+		palette: {},
+
+		preset: {},
+
+		radio: {},
+
+		'radio-buttonset': {},
+
+		'radio-image': {},
+
+		repeater: {},
+
+		select: {},
+
+		slider: {},
+
+		sortable: {},
+
+		'switch': {},
+
+		toggle: {},
+
+		typography: {},
+
 		/**
 		 * An object containing template-specific functions.
 		 *
@@ -266,6 +322,7 @@ var kirki = {
 		setValue: function() {}
 
 	},
+
 	setting: {
 		/**
 		 * Gets the value of a setting.
