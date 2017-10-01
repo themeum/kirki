@@ -55,7 +55,7 @@ class Kirki_Control_Code extends WP_Customize_Control {
 
 		// Register codemirror.
 		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
 		// If we're using html mode, we'll also need to include the multiplex addon
 		// as well as dependencies for XML, JS, CSS languages.

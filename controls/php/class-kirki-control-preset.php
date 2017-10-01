@@ -50,7 +50,7 @@ class Kirki_Control_Preset extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_register_script( 'kirki-set-setting-value', trailingslashit( Kirki::$url ) . 'controls/js/set-setting-value.js' );
 		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'controls/js/preset.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-set-setting-value' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );

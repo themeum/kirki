@@ -51,7 +51,7 @@ class Kirki_Control_Color_Palette extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-color-palette', trailingslashit( Kirki::$url ) . 'controls/js/color-palette.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'jquery-ui-button' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 	}
