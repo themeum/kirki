@@ -2,7 +2,9 @@
   position: relative; }
   .customize-control-kirki-code .CodeMirror {
     margin-left: -12px;
-    margin-right: -12px; }
+    margin-right: -12px;
+    text-align: left;
+    direction: ltr;}
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
