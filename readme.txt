@@ -33,6 +33,13 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.11 =
+
+* Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
+* Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
+* Fix: Other code cleanup.
+* Fix: Updated google-fonts.
+
 = 3.0.10 =
 
 September 21 2017, dev time: 74 hours.
