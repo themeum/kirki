@@ -58,10 +58,10 @@ if ( ! function_exists( 'Kirki' ) ) {
 global $kirki;
 $kirki = Kirki();
 
-// Instamtiate the modules.
+// Instantiate the modules.
 $kirki->modules = new Kirki_Modules();
 
-Kirki::$url  = str_replace( wp_normalize_path( WP_CONTENT_DIR ), WP_CONTENT_URL, Kirki::$path );
+Kirki::$url = plugins_url( '', __FILE__ );
 
 // Instantiate 2ndary classes.
 new Kirki_L10n();
