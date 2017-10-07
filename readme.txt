@@ -37,7 +37,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 * Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
 * Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
-* Fix: CSS Output fo multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
+* Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
 * Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
 * Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
 * Fix: Other code cleanup.
