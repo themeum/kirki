@@ -57,6 +57,9 @@ class Kirki_Control_Code extends WP_Customize_Control {
 		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'controls/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
+		// Make sure $this->choices['language'] is defined.
+		$this->choices['language'] = ( ! isset( $this->choices['language'] ) ) ? 'css' : $this->choices['language'];
+
 		// If we're using html mode, we'll also need to include the multiplex addon
 		// as well as dependencies for XML, JS, CSS languages.
 		switch ( $this->choices['language'] ) {

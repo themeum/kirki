@@ -136,7 +136,10 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			$this->json['default'] = $this->default;
 		}
 		$this->json['output']  = $this->output;
-		$this->json['value']   = Kirki_Field_Typography::sanitize( $this->value() );
+		$this->json['value']   = wp_parse_args(
+			Kirki_Field_Typography::sanitize( $this->value() ),
+			$this->json['default']
+		);
 		$this->json['choices'] = $this->choices;
 		$this->json['link']    = $this->get_link();
 		$this->json['id']      = $this->id;
@@ -183,7 +186,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		<div class="wrapper">
 
 			<# if ( data.default['font-family'] ) { #>
-				<# if ( '' == data.value['font-family'] ) { data.value['font-family'] = data.default['font-family']; } #>
+				<# data.value['font-family'] = data.value['font-family'] || data['default']['font-family']; #>
 				<# if ( data.choices['fonts'] ) { data.fonts = data.choices['fonts']; } #>
 				<div class="font-family">
 					<h5><?php esc_attr_e( 'Font Family', 'kirki' ); ?></h5>
@@ -214,6 +217,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['font-size'] ) { #>
+				<# data.value['font-size'] = data.value['font-size'] || data['default']['font-size']; #>
 				<div class="font-size">
 					<h5><?php esc_attr_e( 'Font Size', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
@@ -221,6 +225,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['line-height'] ) { #>
+				<# data.value['line-height'] = data.value['line-height'] || data['default']['line-height']; #>
 				<div class="line-height">
 					<h5><?php esc_attr_e( 'Line Height', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
@@ -228,6 +233,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['letter-spacing'] ) { #>
+				<# data.value['letter-spacing'] = data.value['letter-spacing'] || data['default']['letter-spacing']; #>
 				<div class="letter-spacing">
 					<h5><?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
@@ -235,6 +241,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['word-spacing'] ) { #>
+				<# data.value['word-spacing'] = data.value['word-spacing'] || data['default']['word-spacing']; #>
 				<div class="word-spacing">
 					<h5><?php esc_attr_e( 'Word Spacing', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
@@ -242,6 +249,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['text-align'] ) { #>
+				<# data.value['text-align'] = data.value['text-align'] || data['default']['text-align']; #>
 				<div class="text-align">
 					<h5><?php esc_attr_e( 'Text Align', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
@@ -278,6 +286,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['text-transform'] ) { #>
+				<# data.value['text-transform'] = data.value['text-transform'] || data['default']['text-transform']; #>
 				<div class="text-transform">
 					<h5><?php esc_attr_e( 'Text Transform', 'kirki' ); ?></h5>
 					<select {{{ data.inputAttrs }}} id="kirki-typography-text-transform-{{{ data.id }}}">
@@ -292,13 +301,15 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( false !== data.default['color'] && data.default['color'] ) { #>
+				<# data.value['color'] = data.value['color'] || data['default']['color']; #>
 				<div class="color">
 					<h5><?php esc_attr_e( 'Color', 'kirki' ); ?></h5>
-					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control" {{{ data.link }}} />
+					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control"/>
 				</div>
 			<# } #>
 
 			<# if ( data.default['margin-top'] ) { #>
+				<# data.value['margin-top'] = data.value['margin-top'] || data['default']['margin-top']; #>
 				<div class="margin-top">
 					<h5><?php esc_attr_e( 'Margin Top', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
@@ -306,6 +317,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.default['margin-bottom'] ) { #>
+				<# data.value['margin-bottom'] = data.value['margin-bottom'] || data['default']['margin-bottom']; #>
 				<div class="margin-bottom">
 					<h5><?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?></h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>

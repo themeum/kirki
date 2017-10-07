@@ -414,7 +414,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    valueObj  = JSON.parse( valueJSON );
 
 		valueObj[ property ] = value;
+		wp.customize.control( control.id ).setting.set( valueObj );
 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-		control.setting.set( valueObj );
 	}
 });
