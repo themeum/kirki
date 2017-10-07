@@ -85,7 +85,7 @@ kirki.control = {
 			// Init.
 			kirki.input.generic.init( args );
 
-			// Notifications.
+			// TODO: Notifications.
 			// this.notifications( args );
 		},
 
