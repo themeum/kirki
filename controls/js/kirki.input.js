@@ -340,6 +340,146 @@ kirki.input = {
 			html += '</div>';
 
 			return html;
+		},
+
+		/**
+		 * Init for image input.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		init: function( args ) {
+			var saveAs         = args.save_as || 'url',
+			    inputContainer = jQuery( '.image-wrapper[data-id=' + args.id + ']' ),
+			    preview        = inputContainer.find( '.placeholder, .thumbnail' ),
+			    removeButton   = inputContainer.find( '.image-upload-remove-button' ),
+			    defaultButton  = inputContainer.find( '.image-default-button' ),
+			    previewImage;
+
+			args = _.defaults( args, {
+				id: '',
+				value: '',
+				'default': ''
+			} );
+
+			previewImage = ( 'array' === saveAs ) ? args.value.url : args.value;
+
+			// Tweaks for save_as = id.
+			if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== args.value ) {
+				wp.media.attachment( args.value ).fetch().then( function( mediaData ) {
+					setTimeout( function() {
+						var url = wp.media.attachment( args.value ).get( 'url' );
+						preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
+					}, 700 );
+				} );
+			}
+
+			// If value is not empty, hide the "default" button.
+			if ( ( 'url' === saveAs && '' !== args.value ) || ( 'array' === saveAs && ! _.isUndefined( args.value.url ) && '' !== args.value.url ) ) {
+				inputContainer.find( 'image-default-button' ).hide();
+			}
+
+			// If value is empty, hide the "remove" button.
+			if ( ( 'url' === saveAs && '' === args.value ) || ( 'array' === saveAs && ( _.isUndefined( args.value.url ) || '' === args.value.url ) ) ) {
+				removeButton.hide();
+			}
+
+			// If value is default, hide the default button.
+			if ( args.value === args['default'] ) {
+				inputContainer.find( 'image-default-button' ).hide();
+			}
+
+			if ( '' !== previewImage ) {
+				preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
+			}
+
+			inputContainer.on( 'click', '.image-upload-button', function( e ) {
+				var image = wp.media({ multiple: false }).open().on( 'select', function() {
+
+						// This will return the selected image from the Media Uploader, the result is an object.
+						var uploadedImage = image.state().get( 'selection' ).first(),
+							previewImage  = uploadedImage.toJSON().sizes.full.url;
+
+						if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
+							previewImage = uploadedImage.toJSON().sizes.medium.url;
+						} else if ( ! _.isUndefined( uploadedImage.toJSON().sizes.thumbnail ) ) {
+							previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
+						}
+
+						if ( 'array' === saveAs ) {
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().id, 'id' );
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().sizes.full.url, 'url' );
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().width, 'width' );
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().height, 'height' );
+						} else if ( 'id' === saveAs ) {
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().id, 'id' );
+						} else {
+							kirki.setting.set( inputContainer, uploadedImage.toJSON().sizes.full.url, 'url' );
+						}
+
+						if ( preview.length ) {
+							preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
+						}
+						if ( removeButton.length ) {
+							removeButton.show();
+							defaultButton.hide();
+						}
+					});
+
+				e.preventDefault();
+			});
+
+			inputContainer.on( 'click', '.image-upload-remove-button', function( e ) {
+
+				var preview,
+					removeButton,
+					defaultButton;
+
+				e.preventDefault();
+
+				kirki.setting.set( inputContainer, '', 'id' );
+				kirki.setting.set( inputContainer, '', 'url' );
+				kirki.setting.set( inputContainer, '', 'width' );
+				kirki.setting.set( inputContainer, '', 'height' );
+
+				preview       = inputContainer.find( '.placeholder, .thumbnail' );
+				removeButton  = inputContainer.find( '.image-upload-remove-button' );
+				defaultButton = inputContainer.find( '.image-default-button' );
+
+				if ( preview.length ) {
+					preview.removeClass().addClass( 'placeholder' ).html( 'No file selected' );
+				}
+				if ( removeButton.length ) {
+					removeButton.hide();
+					if ( jQuery( defaultButton ).hasClass( 'button' ) ) {
+						defaultButton.show();
+					}
+				}
+			});
+
+			inputContainer.on( 'click', '.image-default-button', function( e ) {
+
+				var preview,
+					removeButton,
+					defaultButton;
+
+				e.preventDefault();
+
+				kirki.setting.set( inputContainer, args['default'], 'url' );
+
+				preview       = inputContainer.find( '.placeholder, .thumbnail' );
+				removeButton  = inputContainer.find( '.image-upload-remove-button' );
+				defaultButton = inputContainer.find( '.image-default-button' );
+
+				if ( preview.length ) {
+					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + args['default'] + '" alt="" />' );
+				}
+				if ( removeButton.length ) {
+					removeButton.show();
+					defaultButton.hide();
+				}
+			});
 		}
 	}
 };

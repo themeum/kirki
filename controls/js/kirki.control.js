@@ -122,7 +122,44 @@ kirki.control = {
 
 	'kirki-generic': {},
 
-	'kirki-image': {},
+	'kirki-image': {
+
+		/**
+		 * Get the HTML for the control.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The control arguments.
+		 * @returns {string}
+		 */
+		template: function( args ) {
+			var html = '';
+
+			html += '<label>';
+				html += ( '' !== args.label ) ? '<span class="customize-control-title">' + args.label + '</span>' : '';
+				html += ( '' !== args.description ) ? '<span class="description customize-control-description">' + args.description + '</span>' : '';
+
+				args.type = 'text';
+			html += '</label>';
+
+			html += kirki.input.image.template( args );
+
+			return html;
+		},
+
+		/**
+		 * Init the control.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		init: function( args ) {
+			var self = this;
+
+			// Init.
+			kirki.input.image.init( args );
+		}
+	},
 
 	'kirki-multicheck': {},
 
