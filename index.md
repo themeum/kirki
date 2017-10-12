@@ -38,11 +38,11 @@ premium_themes:
   - name: Carbis
     market: sculptureqode
     url: https://sculptureqode.com/themes/carbis/
-    thumb: https://9zmsdzbekt2r9oto3b3h0eik-wpengine.netdna-ssl.com/wp-content/uploads/edd/2016/08/SQ-carbis-showcase-image.png
+    thumb: https://sculptureqode.com/wp-content/uploads/edd/2016/08/Carbis-–-thumbnail@2x.jpg
   - name: Setwood
     market: ThemeForest
     url: https://themeforest.net/item/setwood-wordpress-blog-shop-theme/16165800
-    thumb: https://image-tf.s3.envato.com/files/200359203/00_preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/229610123/00_preview.__large_preview.jpg
   - name: BeOnePage
     market: betheme.me
     url: https://betheme.me/themes/beonepage/
@@ -54,91 +54,79 @@ premium_themes:
   - name: Grand News
     market: ThemeForest
     url: https://themeforest.net/item/grand-news-news-magazine/15885465
-    thumb: https://image-tf.s3.envato.com/files/199754751/GrandNews-Screenshot/01_Cover.__large_preview.png
+    thumb: https://s3.envato.com/files/233954618/GrandNews-Screenshot/01_Cover.__large_preview.png
   - name: Realtyspace
     market: ThemeForest
     url: https://themeforest.net/item/realtyspace-real-estate-wordpress-theme/15965811
-    thumb: https://image-tf.s3.envato.com/files/200362466/realtyspace_presentation/0.__large_preview.jpg
+    thumb: https://s3.envato.com/files/221727208/realtyspace_presentation/0.__large_preview.jpg
   - name: Elon
     market: Currl
-    url: https://currl.com/
-    thumb: https://currl.com/wp-content/uploads/2016/03/elon.jpeg
-  - name: Verb
-    market: Currl
-    url: https://currl.com/
-    thumb: https://currl.com/wp-content/uploads/2016/03/verb.jpeg
+    url: http://currl.com/
+    thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/15bcb226bc8f70d3217cb17242cbde29/retina/browser_402x-1200x900-3.jpg
   - name: Primrose
     market: ThemeForest
     url: http://themeforest.net/item/primrose-a-minimal-woocommerce-wordpress-theme-for-creative-ecommerce-websites/14993323
-    thumb: https://image-tf.s3.envato.com/files/177230528/tf-preview.__large_preview.png
+    thumb: https://s3.envato.com/files/232768938/tf-preview.__large_preview.png
   - name: Jack & Rose
     market: ThemeForest
     url: http://themeforest.net/item/jack-rose-a-whimsical-wordpress-wedding-theme/13722583
-    thumb: https://image-tf.s3.envato.com/files/166381336/tf-preview.__large_preview.png
-  - name: Vela
-    market: ThemeForest
-    url: http://themeforest.net/item/vela-exquisite-restaurant-wordpress-theme/11733592
-    thumb: https://image-tf.s3.envato.com/files/160365237/preview_590x300.__large_preview.jpg
+    thumb: https://s3.envato.com/files/234461214/tf-preview.__large_preview.png
   - name: WhiteBlack
     market: ThemeForest
     url: http://themeforest.net/item/whiteblack-a-responsive-wordpress-blog-theme/13344725
-    thumb: https://image-tf.s3.envato.com/files/158626755/01_preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/158626755/01_preview.__large_preview.jpg
   - name: Dixie
     market: ThemeForest
     url: http://themeforest.net/item/dixie-a-responsive-wordpress-blog-theme/9089982
-    thumb: https://image-tf.s3.envato.com/files/119082490/tf-preview.__large_preview.png
+    thumb: https://s3.envato.com/files/119082490/tf-preview.__large_preview.png
   - name: Grand Restaurant
     market: ThemeForest
     url: http://themeforest.net/item/grand-restaurant-restaurant-cafe-theme/11812117
-    thumb: https://image-tf.s3.envato.com/files/175473621/Grandrestaurant-Screenshot/01_Cover.__large_preview.png
+    thumb: https://s3.envato.com/files/233708488/Grandrestaurant-Screenshot/01_Cover.__large_preview.png
   - name: Larix
     market: ThemeForest
     url: http://themeforest.net/item/larix-creative-multipurpose-wp-theme/13421403
-    thumb: https://image-tf.s3.envato.com/files/175917363/Main_item_image.__large_preview.png
+    thumb: https://s3.envato.com/files/184544384/LARIX_main_item_image.__large_preview.png
   - name: FlatBook
     market: ThemeForest
     url: http://themeforest.net/item/flatbook-flat-ebook-selling-wordpress-theme/6023410
-    thumb: https://image-tf.s3.envato.com/files/159696524/01_preview.__large_preview.png
+    thumb: https://s3.envato.com/files/159696524/01_preview.__large_preview.png
   - name: Evoke
     market: ThemeForest
     url: http://themeforest.net/item/evoke-photo-stories-wordpress-blog-theme/10707534
-    thumb: https://image-tf.s3.envato.com/files/125666340/evoke-preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/125666340/evoke-preview.__large_preview.jpg
   - name: Transport
     market: ThemeForest
     url: http://themeforest.net/item/transport-transport-logistic-warehouse-wp-/12054479
-    thumb: https://image-tf.s3.envato.com/files/176235827/preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/226804423/preview.__large_preview.jpg
   - name: Newton
     market: ThemeForest
     url: http://themeforest.net/item/creative-photography-responsive-newton-theme/11048492
-    thumb: https://image-tf.s3.envato.com/files/151967977/Newton-Screenshot/01_Cover.__large_preview.png
+    thumb: https://s3.envato.com/files/223838698/Newton-Screenshot/01_Cover.__large_preview.png
   - name: Pixie
     market: ThemeForest
     url: http://themeforest.net/item/pixie-modern-wordpress-blog-theme-for-creatives/11623840
-    thumb: https://image-tf.s3.envato.com/files/166393444/tf-preview.__large_preview.png
+    thumb: https://s3.envato.com/files/166393444/tf-preview.__large_preview.png
   - name: FlatLove
     market: ThemeForest
     url: http://themeforest.net/item/flatlove-flat-onepage-wedding-wordpress-theme/12692792
-    thumb: https://image-tf.s3.envato.com/files/148764439/01_preview.__large_preview.png
+    thumb: https://s3.envato.com/files/148764439/01_preview.__large_preview.png
   - name: Avocet
     market: ThemeForest
     url: http://themeforest.net/item/fashion-food-and-travel-wordpress-blog-theme-avocet/13851747
-    thumb: https://image-tf.s3.envato.com/files/174029209/avocet-profile-image.__large_preview.jpg
+    thumb: https://s3.envato.com/files/229334874/avocet-profile-image.__large_preview.jpg
   - name: Renovation
     market: ThemeForest
     url: http://themeforest.net/item/renovation-home-maintenance-repair-service-theme/11444549
-    thumb: https://image-tf.s3.envato.com/files/177288441/preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/226797404/preview.__large_preview.jpg
   - name: Bohopeople
     market: ThemeForest
     url: http://themeforest.net/item/bohopeople-personal-wordpress-blog-theme/14558638
-    thumb: https://image-tf.s3.envato.com/files/177688440/preview.__large_preview.png
+    thumb: https://s3.envato.com/files/228632017/preview.__large_preview.png
   - name: Almond
     market: ThemeForest
     url: http://themeforest.net/item/almond-inspiring-blog-wordpress-theme/12684784
-    thumb: https://image-tf.s3.envato.com/files/163387743/preview.__large_preview.jpg
-  - name: Darina
-    market: ThemeForest
-    url: http://themeforest.net/item/darina-elegant-minimal-blog-theme/14345937
-    thumb: https://image-tf.s3.envato.com/files/177891615/darina-preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/225719563/P%20almond.__large_preview.jpg
 free_themes:
   - name: Advance
     url: https://wordpress.org/themes/advance/
