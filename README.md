@@ -29,7 +29,7 @@ You can find detailed documentation on how to use Kirki on [https://aristath.git
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
 
@@ -40,6 +40,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
 * Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
 * Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
+* Fix: Uncaught TypeError: data.value[choiceKey].replace is not a function [#1578](https://github.com/aristath/kirki/issues/1578)
 * Fix: Other code cleanup.
 * Fix: Updated google-fonts.
 
