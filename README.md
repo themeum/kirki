@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8  
 **Tested up to:** 4.8.2  
-**Stable tag:** 3.0.10  
+**Stable tag:** 3.0.11  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -34,6 +34,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 ## Changelog ##
 
 ### 3.0.11 ###
+
+October 12 2017, dev time: 3 hours.
 
 * Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
 * Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
