@@ -300,8 +300,9 @@ kirki.input = {
 		 * @returns {string}      The HTML for the input element.
 		 */
 		template: function( args ) {
-			var html      = '',
-			    saveAs    = args.save_as || 'url',
+			var self      = this,
+			    html      = '',
+			    saveAs    = self.getSaveAs( args ),
 			    isDefault = false,
 			    url;
 
@@ -350,7 +351,8 @@ kirki.input = {
 		 * @returns {void}
 		 */
 		init: function( args ) {
-			var saveAs         = args.save_as || 'url',
+			var self           = this,
+			    saveAs         = self.getSaveAs( args ),
 			    inputContainer = jQuery( '.image-wrapper[data-id=' + args.id + ']' ),
 			    preview        = inputContainer.find( '.placeholder, .thumbnail' ),
 			    removeButton   = inputContainer.find( '.image-upload-remove-button' ),
@@ -366,6 +368,7 @@ kirki.input = {
 			previewImage = ( 'array' === saveAs ) ? args.value.url : args.value;
 
 			// Tweaks for save_as = id.
+			// This will get the image URL from the ID and add it in the template.
 			if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== args.value ) {
 				wp.media.attachment( args.value ).fetch().then( function( mediaData ) {
 					setTimeout( function() {
@@ -376,7 +379,7 @@ kirki.input = {
 			}
 
 			// If value is not empty, hide the "default" button.
-			if ( ( 'url' === saveAs && '' !== args.value ) || ( 'array' === saveAs && ! _.isUndefined( args.value.url ) && '' !== args.value.url ) ) {
+			if ( ( ( 'url' === saveAs || 'id' === saveAs ) && '' !== args.value ) || ( 'array' === saveAs && ! _.isUndefined( args.value.url ) && '' !== args.value.url ) ) {
 				inputContainer.find( 'image-default-button' ).hide();
 			}
 
@@ -393,6 +396,28 @@ kirki.input = {
 			if ( '' !== previewImage ) {
 				preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
 			}
+
+			self.uploadButton( args );
+			self.removeButton( args );
+			self.defaultButton( args );
+
+		},
+
+		/**
+		 * Handle clicking on the upload button.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		uploadButton: function( args ) {
+			var self           = this,
+				saveAs         = self.getSaveAs( args ),
+				inputContainer = jQuery( '.image-wrapper[data-id=' + args.id + ']' ),
+				preview        = inputContainer.find( '.placeholder, .thumbnail' ),
+				removeButton   = inputContainer.find( '.image-upload-remove-button' ),
+				defaultButton  = inputContainer.find( '.image-default-button' ),
+				previewImage;
 
 			inputContainer.on( 'click', '.image-upload-button', function( e ) {
 				var image = wp.media({ multiple: false }).open().on( 'select', function() {
@@ -429,6 +454,23 @@ kirki.input = {
 
 				e.preventDefault();
 			});
+		},
+
+		/**
+		 * Handle clicking on the remove button.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		removeButton: function( args ) {
+			var self           = this,
+				saveAs         = self.getSaveAs( args ),
+				inputContainer = jQuery( '.image-wrapper[data-id=' + args.id + ']' ),
+				preview        = inputContainer.find( '.placeholder, .thumbnail' ),
+				removeButton   = inputContainer.find( '.image-upload-remove-button' ),
+				defaultButton  = inputContainer.find( '.image-default-button' ),
+				previewImage;
 
 			inputContainer.on( 'click', '.image-upload-remove-button', function( e ) {
 
@@ -457,6 +499,23 @@ kirki.input = {
 					}
 				}
 			});
+		},
+
+		/**
+		 * Handle clicking on the default button.
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {void}
+		 */
+		defaultButton: function( args ) {
+			var self           = this,
+				saveAs         = self.getSaveAs( args ),
+				inputContainer = jQuery( '.image-wrapper[data-id=' + args.id + ']' ),
+				preview        = inputContainer.find( '.placeholder, .thumbnail' ),
+				removeButton   = inputContainer.find( '.image-upload-remove-button' ),
+				defaultButton  = inputContainer.find( '.image-default-button' ),
+				previewImage;
 
 			inputContainer.on( 'click', '.image-default-button', function( e ) {
 
@@ -480,6 +539,25 @@ kirki.input = {
 					defaultButton.hide();
 				}
 			});
+		},
+
+		/**
+		 * Figure out what we're saving this as (array|url|id).
+		 *
+		 * @since 3.1.0
+		 * @param {object} [args] The arguments.
+		 * @returns {string}
+		 */
+		getSaveAs: function( args ) {
+			if ( _.isUndefined( args.save_as ) ) {
+				args.save_as = 'url';
+				if ( ! _.isUndefined( args.choices ) && ! _.isUndefined( args.choices.save_as ) ) {
+					args.save_as = args.choices.save_as;
+				}
+			}
+			args.save_as = ( 'ID' === args.save_as ) ? 'id' : args.save_as;
+			args.save_as = ( 'url' !== args.save_as && 'array' !== args.save_as && 'id' !== args.save_as ) ? 'url' : args.save_as;
+			return args.save_as;
 		}
 	}
 };
