@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8  
 **Tested up to:** 4.8.2  
-**Stable tag:** 3.0.10  
+**Stable tag:** 3.0.11  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -35,11 +35,15 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.11 ###
 
+October 12 2017, dev time: 3 hours.
+
 * Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
 * Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
 * Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
 * Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
 * Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
+* Fix: Remove Reset in default sections [#1580](https://github.com/aristath/kirki/issues/1580)
+* Fix: Uncaught TypeError: data.value[choiceKey].replace is not a function [#1578](https://github.com/aristath/kirki/issues/1578)
 * Fix: Other code cleanup.
 * Fix: Updated google-fonts.
 
