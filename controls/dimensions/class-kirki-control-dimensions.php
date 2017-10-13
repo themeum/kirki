@@ -134,7 +134,8 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 								<# } #>
 							</h5>
 							<div class="{{ choiceKey }} input-wrapper">
-								<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ].replace( '%%', '%' ) }}"/>
+								<# var val = ( ! _.isUndefined( data.value ) && ! _.isUndefined( data.value[ choiceKey ] ) ) ? data.value[ choiceKey ].replace( '%%', '%' ) : ''; #>
+								<input {{{ data.inputAttrs }}} type="text" value="{{ val }}"/>
 							</div>
 						</div>
 					<# } #>

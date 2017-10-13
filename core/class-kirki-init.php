@@ -46,6 +46,10 @@ class Kirki_Init {
 	 */
 	public static function set_url() {
 
+		if ( Kirki_Util::is_plugin() ) {
+			return;
+		}
+
 		// Get correct URL and path to wp-content.
 		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
 		$content_dir = wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) );
@@ -85,7 +89,6 @@ class Kirki_Init {
 			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
 			'kirki-editor'          => 'Kirki_Control_Editor',
 			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
-			'kirki-gradient'        => 'Kirki_Control_Gradient',
 			'kirki-image'           => 'Kirki_Control_Image',
 			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',

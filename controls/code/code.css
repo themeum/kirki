@@ -395,4 +395,8 @@ div.CodeMirror-dragcursors {
 span.CodeMirror-selectedtext {
   background: none; }
 
+.rtl .customize-control-kirki-code .CodeMirror {
+  text-align: left;
+  direction: ltr; }
+
 /*# sourceMappingURL=code.css.map */

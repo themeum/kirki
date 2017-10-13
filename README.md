@@ -3,8 +3,8 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8  
-**Tested up to:** 4.8  
-**Stable tag:** 3.0.9  
+**Tested up to:** 4.8.2  
+**Stable tag:** 3.0.11  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,7 +33,23 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.11 ###
+
+October 12 2017, dev time: 3 hours.
+
+* Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
+* Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
+* Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
+* Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
+* Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
+* Fix: Remove Reset in default sections [#1580](https://github.com/aristath/kirki/issues/1580)
+* Fix: Uncaught TypeError: data.value[choiceKey].replace is not a function [#1578](https://github.com/aristath/kirki/issues/1578)
+* Fix: Other code cleanup.
+* Fix: Updated google-fonts.
+
 ### 3.0.10 ###
+
+September 21 2017, dev time: 74 hours.
 
 * Fix: Allow HTML tags in tooltips [#1536](https://github.com/aristath/kirki/issues/1536)
 * Fix: Default System Font Stack for Sans Serif Fonts in Typography Fields [#1530](https://github.com/aristath/kirki/issues/1530)
@@ -68,7 +84,6 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: `editor` control now loads dynamically (performance improvement).
 * New: `fontawesome` control now loads dynamically (performance improvement).
 * New: `generic` control now loads dynamically (performance improvement).
-* New: `gradient` control now loads dynamically (performance improvement).
 * New: `multicheck` control now loads dynamically (performance improvement).
 * New: `number` control now loads dynamically (performance improvement).
 * New: `palette` control now loads dynamically (performance improvement).
