@@ -71,10 +71,13 @@ kirki.setting = {
 			subSettingParts;
 
 		// Get the setting from the element.
-		if ( jQuery( element ).attr( 'data-id' ) ) {
-			setting = jQuery( element ).attr( 'data-id' );
-		} else {
-			setting = jQuery( element ).parents( '[data-id]' ).attr( 'data-id' );
+		setting = element;
+		if ( _.isObject( element ) ) {
+			if ( jQuery( element ).attr( 'data-id' ) ) {
+				setting = element.attr( 'data-id' );
+			} else {
+				setting = element.parents( '[data-id]' ).attr( 'data-id' );
+			}
 		}
 		parts = setting.split( '[' ),
 

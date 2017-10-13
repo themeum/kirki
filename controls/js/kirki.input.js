@@ -94,7 +94,7 @@ kirki.input = {
 				},
 				maximumSelectionLength: args.multiple
 			} ).on( 'change', function() {
-				kirki.setting.set( this, jQuery( this ).val() );
+				kirki.setting.set( args.id, jQuery( this ).val() );
 			} );
 		}
 	},
@@ -138,7 +138,7 @@ kirki.input = {
 		init: function( args ) {
 			jQuery( 'input[data-id=' + args.id + ']' ).on( 'change click', function( event ) {
 				var value = jQuery( 'input[data-id=' + args.id + ']:checked' ).val();
-				kirki.setting.set( event.target, value );
+				kirki.setting.set( args.id, value );
 			} );
 		}
 	},
@@ -187,7 +187,7 @@ kirki.input = {
 			setTimeout( function() {
 				var clear = jQuery( element ).closest( '.wp-picker-clear' );
 				clear.click( function() {
-					kirki.setting.set( jQuery( element ), '' );
+					kirki.setting.set( args.id, '' );
 				});
 			}, 200 );
 
@@ -197,7 +197,7 @@ kirki.input = {
 
 					// Small hack: the picker needs a small delay
 					setTimeout( function() {
-						kirki.setting.set( jQuery( element ), jQuery( element ).val() );
+						kirki.setting.set( args.id, jQuery( element ).val() );
 					}, 20 );
 				}
 			});
@@ -285,7 +285,7 @@ kirki.input = {
 		init: function( args ) {
 			jQuery( 'input[data-id=' + args.id + ']' ).on( 'change keyup paste', function( event ) {
 				var value = jQuery( 'input[data-id=' + args.id + ']' ).val();
-				kirki.setting.set( jQuery( this ), jQuery );
+				kirki.setting.set( args.id, jQuery );
 			} );
 		}
 	},
@@ -433,14 +433,14 @@ kirki.input = {
 						}
 
 						if ( 'array' === saveAs ) {
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().id, 'id' );
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().sizes.full.url, 'url' );
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().width, 'width' );
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().height, 'height' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().id, 'id' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().sizes.full.url, 'url' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().width, 'width' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().height, 'height' );
 						} else if ( 'id' === saveAs ) {
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().id, 'id' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().id, 'id' );
 						} else {
-							kirki.setting.set( inputContainer, uploadedImage.toJSON().sizes.full.url, 'url' );
+							kirki.setting.set( args.id, uploadedImage.toJSON().sizes.full.url, 'url' );
 						}
 
 						if ( preview.length ) {
@@ -480,10 +480,14 @@ kirki.input = {
 
 				e.preventDefault();
 
-				kirki.setting.set( inputContainer, '', 'id' );
-				kirki.setting.set( inputContainer, '', 'url' );
-				kirki.setting.set( inputContainer, '', 'width' );
-				kirki.setting.set( inputContainer, '', 'height' );
+				if ( 'array' === saveAs ) {
+					kirki.setting.set( args.id, '', 'id' );
+					kirki.setting.set( args.id, '', 'url' );
+					kirki.setting.set( args.id, '', 'width' );
+					kirki.setting.set( args.id, '', 'height' );
+				} else {
+					kirki.setting.set( args.id, '' );
+				}
 
 				preview       = inputContainer.find( '.placeholder, .thumbnail' );
 				removeButton  = inputContainer.find( '.image-upload-remove-button' );
@@ -525,7 +529,7 @@ kirki.input = {
 
 				e.preventDefault();
 
-				kirki.setting.set( inputContainer, args['default'], 'url' );
+				kirki.setting.set( args.id, args['default'], 'url' );
 
 				preview       = inputContainer.find( '.placeholder, .thumbnail' );
 				removeButton  = inputContainer.find( '.image-upload-remove-button' );
