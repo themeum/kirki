@@ -38,7 +38,7 @@ premium_themes:
   - name: Carbis
     market: sculptureqode
     url: https://sculptureqode.com/themes/carbis/
-    thumb: https://s3.envato.com/files/233286867/00_preview.__large_preview.jpg
+    thumb: https://sculptureqode.com/wp-content/uploads/edd/2016/08/Carbis-–-thumbnail@2x.jpg
   - name: Setwood
     market: ThemeForest
     url: https://themeforest.net/item/setwood-wordpress-blog-shop-theme/16165800
