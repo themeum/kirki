@@ -25,10 +25,10 @@ premium_themes:
     thumb: https://image-tf.s3.envato.com/files/228101564/00_preview.__large_preview.jpg
   - name: Eram
     url: https://themeforest.net/item/eram-innovative-photography-portfolio-theme/19287480
-    thumb: https://image-tf.s3.envato.com/files/222587342/eram-banner-discount.__large_preview.jpg
+    thumb: https://s3.envato.com/files/232041009/eram-banner.__large_preview.jpg
   - name: Enderson
     url: https://themeforest.net/item/henderson-vcard-wordpress-theme/18404329
-    thumb: https://image-tf.s3.envato.com/files/218799078/08_henderson_theme_preview.__large_preview.__large_preview.png
+    thumb: https://s3.envato.com/files/218799078/08_henderson_theme_preview.__large_preview.__large_preview.png
   - name: Outlook Pro
     url: https://www.wpfreeware.com/outlook-pro/
     thumb: https://i1.wp.com/www.wpfreeware.com/wp-content/uploads/2016/12/outlook-pro.jpg?w=960&ssl=1
@@ -38,7 +38,7 @@ premium_themes:
   - name: Carbis
     market: sculptureqode
     url: https://sculptureqode.com/themes/carbis/
-    thumb: https://sculptureqode.com/wp-content/uploads/edd/2016/08/Carbis-–-thumbnail@2x.jpg
+    thumb: https://s3.envato.com/files/233286867/00_preview.__large_preview.jpg
   - name: Setwood
     market: ThemeForest
     url: https://themeforest.net/item/setwood-wordpress-blog-shop-theme/16165800
