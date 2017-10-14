@@ -22,7 +22,7 @@ premium_themes:
     thumb: https://static-2.gumroad.com/res/gumroad/5085838339108/asset_previews/cab91718cac1845dc7682dd28d178517/retina/browser_402x.jpg
   - name: Heset
     url: https://themeforest.net/item/heset-magazine-blog-wordpress-theme/19909146
-    thumb: https://image-tf.s3.envato.com/files/228101564/00_preview.__large_preview.jpg
+    thumb: https://s3.envato.com/files/233286867/00_preview.__large_preview.jpg
   - name: Eram
     url: https://themeforest.net/item/eram-innovative-photography-portfolio-theme/19287480
     thumb: https://s3.envato.com/files/232041009/eram-banner.__large_preview.jpg
