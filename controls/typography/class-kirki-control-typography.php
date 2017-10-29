@@ -117,7 +117,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
 			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
 		} else {
-			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography-legacy.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );			
+			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography-legacy.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
 		}
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 
@@ -334,15 +334,15 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				</div>
 			<# } #>
 		</div>
-		<#
-		if ( ! _.isUndefined( data.value['font-family'] ) ) {
-			data.value['font-family'] = data.value['font-family'].replace( /&quot;/g, '&#39' );
-		}
-		valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
-		#>
 		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
 			<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php else : ?>
+			<#
+			if ( ! _.isUndefined( data.value['font-family'] ) ) {
+				data.value['font-family'] = data.value['font-family'].replace( /&quot;/g, '&#39' );
+			}
+			valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
+			#>
 			<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
 		<?php endif; ?>
 		<?php
