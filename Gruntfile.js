@@ -46,7 +46,9 @@ module.exports = function( grunt ) {
 					'controls/sortable/sortable.css':               'controls/sortable/sortable.scss',
 					'controls/switch/switch.css':                   'controls/switch/switch.scss',
 					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
-					'controls/typography/typography.css':           'controls/typography/typography.scss'
+					'controls/typography/typography.css':           'controls/typography/typography.scss',
+
+					'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css': 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.scss'
 				}
 			},
 

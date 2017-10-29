@@ -105,7 +105,13 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
+		$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js';
+		if ( Kirki_Util::is_colorpicker_script_new() ) {
+			$colorpicker_script_url = str_replace( '.js', '-new.js', $colorpicker_script_url );
+			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
+		}
+
+		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
