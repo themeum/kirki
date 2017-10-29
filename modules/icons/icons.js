@@ -1,3 +1,4 @@
+/* global kirkiIcons */
 jQuery( document ).ready( function() {
 
 	'use strict';

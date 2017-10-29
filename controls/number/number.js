@@ -1,3 +1,4 @@
+/* global numberKirkiL10n */
 wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {

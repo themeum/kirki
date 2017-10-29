@@ -1,3 +1,4 @@
+/* global CodeMirror */
 wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {

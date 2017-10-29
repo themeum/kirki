@@ -1,3 +1,4 @@
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing

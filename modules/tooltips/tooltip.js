@@ -1,3 +1,4 @@
+/* global kirkiTooltips */
 jQuery( document ).ready( function() {
 
 	function kirkiTooltipAdd( control ) {

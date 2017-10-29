@@ -1,3 +1,4 @@
+/* global kirkiSetSettingValue */
 wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {

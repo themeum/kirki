@@ -1,3 +1,4 @@
+/* global collapsible */
 ( function() {
 
 	_.each( collapsible, function( label, setting ) {

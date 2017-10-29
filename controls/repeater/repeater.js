@@ -1,4 +1,4 @@
-/*jshint -W065 */
+/* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	'use strict';
@@ -126,7 +126,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Default limit choice
 		limit = false;
 		if ( ! _.isUndefined( this.params.choices.limit ) ) {
-			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit );
+			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit, 10 );
 		}
 
 		this.container.on( 'click', 'button.repeater-add', function( e ) {
@@ -877,7 +877,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		dataField = dropdown.data( 'field' );
 		multiple  = jQuery( dropdown ).data( 'multiple' );
 		if ( 'undefed' !== multiple && jQuery.isNumeric( multiple ) ) {
-			multiple = parseInt( multiple );
+			multiple = parseInt( multiple, 10 );
 			if ( 1 < multiple ) {
 				select2Options.maximumSelectionLength = multiple;
 			}

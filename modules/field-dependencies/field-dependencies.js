@@ -1,3 +1,4 @@
+/* global fieldDependencies */
 jQuery( document ).ready( function() {
 
 	function kirkiCompareValues( value1, value2, operator, extras ) {
