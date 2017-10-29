@@ -57,7 +57,11 @@ class Kirki_Control_Background extends WP_Customize_Control {
 		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
+		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
+			wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
+		} else {
+			wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background-legacy.js', array( 'jquery', 'wp-color-picker-alpha' ) );
+		}
 		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
 	}
 
@@ -194,8 +198,12 @@ class Kirki_Control_Background extends WP_Customize_Control {
 					</input>
 				</div>
 			</div>
-			<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
-			<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+				<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
+			<?php else : ?>
+				<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
+				<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<?php endif; ?>
 		<?php
 	}
 }

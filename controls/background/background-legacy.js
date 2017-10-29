@@ -19,7 +19,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	initKirkiControl: function() {
 
 		var control = this,
-		    value   = control.setting._value,
+		    value   = control.getValue(),
 		    picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
@@ -132,17 +132,44 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	},
 
 	/**
+	 * Gets the value.
+	 */
+	getValue: function() {
+
+		var control = this,
+		    value   = {};
+
+		// Make sure everything we're going to need exists.
+		_.each( control.params['default'], function( defaultParamValue, param ) {
+			if ( false !== defaultParamValue ) {
+				value[ param ] = defaultParamValue;
+				if ( ! _.isUndefined( control.setting._value[ param ] ) ) {
+					value[ param ] = control.setting._value[ param ];
+				}
+			}
+		});
+		_.each( control.setting._value, function( subValue, param ) {
+			if ( _.isUndefined( value[ param ] ) ) {
+				value[ param ] = subValue;
+			}
+		});
+		return value;
+	},
+
+	/**
 	 * Saves the value.
 	 */
 	saveValue: function( property, value ) {
 
-		var control = this,
-		    input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
-		    val     = control.setting._value;
+		'use strict';
 
-		val[ property ] = value;
+		var control   = this,
+		    input     = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
+		    valueJSON = jQuery( input ).val(),
+		    valueObj  = JSON.parse( valueJSON );
 
-		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
-		control.setting.set( val );
+		valueObj[ property ] = value;
+		control.setting.set( valueObj );
+		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
 	}
 });
