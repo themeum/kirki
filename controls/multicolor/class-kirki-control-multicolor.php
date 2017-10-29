@@ -110,11 +110,15 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
 			$colorpicker_script_url = str_replace( '.js', '-new.js', $colorpicker_script_url );
 			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
+			wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
+			wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+			wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.css', null );
+		} else {
+			wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
+			wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor-legacy.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+			wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor-legacy.css', null );
 		}
 
-		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
-		wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
-		wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.css', null );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -174,7 +178,11 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 			<# } #>
 		</div>
 		<div class="iris-target"></div>
-		<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
+		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+			<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
+		<?php else : ?>
+			<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
+		<?php endif; ?>
 		<?php
 	}
 

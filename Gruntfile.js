@@ -34,6 +34,7 @@ module.exports = function( grunt ) {
 					'controls/image/image.css':                     'controls/image/image.scss',
 					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
 					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
+					'controls/multicolor/multicolor-legacy.css':    'controls/multicolor/multicolor-legacy.scss',
 					'controls/number/number.css':                   'controls/number/number.scss',
 					'controls/palette/palette.css':                 'controls/palette/palette.scss',
 					'controls/preset/preset.css':                   'controls/preset/preset.scss',
