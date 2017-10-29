@@ -36,6 +36,9 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 = 3.0.12 =
 
 * Fix: WordPress 4.9 compatibility for colorpickers.
+* Fix: WordPress 4.9 compatibility for typography controls.
+* Fix: WordPress 4.9 compatibility for multicolor contols.
+* Fix: WordPress 4.9 compatibility for background contols.
 
 = 3.0.11 =
 
