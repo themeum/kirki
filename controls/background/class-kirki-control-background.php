@@ -48,20 +48,18 @@ class Kirki_Control_Background extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha-legacy.js';
+		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
+
+		$script_filename = 'wp-color-picker-alpha-legacy.js';
 		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js';
+			$script_filename = 'wp-color-picker-alpha.js';
 			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
 		}
-		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/' . $script_filename, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
-		} else {
-			wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background-legacy.js', array( 'jquery', 'wp-color-picker-alpha' ) );
-		}
-		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
+		$script_filename = ( Kirki_Util::get_wp_version() >= 4.9 ) ? 'background.js' : 'background-legacy.js';
+		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/' . $script_filename, array( 'jquery', 'wp-color-picker-alpha' ) );
 	}
 
 	/**

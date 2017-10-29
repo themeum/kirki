@@ -105,19 +105,16 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha-legacy.js';
+		$script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha-legacy.js';
 		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js';
+			$script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js';
 			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
 		}
-		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', $script_url, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
-		} else {
-			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography-legacy.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
-		}
+		$script_filename = ( Kirki_Util::get_wp_version() >= 4.9 ) ? 'typography.js' : 'typography-legacy.js';
+		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/' . $script_filename, array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), '4.0.3', true );

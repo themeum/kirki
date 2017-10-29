@@ -106,20 +106,17 @@ class Kirki_Control_Multicolor extends WP_Customize_Control {
 	 */
 	public function enqueue_scripts() {
 
-		$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha-legacy.js';
+		$script_filename = 'wp-color-picker-alpha-legacy.js';
 		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			$colorpicker_script_url = trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js';
+			$script_filename = 'wp-color-picker-alpha.js';
 			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
 		}
-		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/' . $script_filename, array( 'wp-color-picker' ), false, true );
 
-		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
-			wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
-			wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor.css', null );
-		} else {
-			wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor-legacy.js', array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
-			wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/multicolor-legacy.css', null );
-		}
+		$script_filename = ( Kirki_Util::get_wp_version() >= 4.9 ) ? 'multicolor.js' : 'multicolor-legacy.js';
+		$style_filename  = ( Kirki_Util::get_wp_version() >= 4.9 ) ? 'multicolor.css' : 'multicolor-legacy.css';
+		wp_enqueue_script( 'kirki-multicolor', trailingslashit( Kirki::$url ) . 'controls/multicolor/' . $script_filename, array( 'jquery', 'customize-base', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_style( 'kirki-multicolor-css', trailingslashit( Kirki::$url ) . 'controls/multicolor/' . $style_filename, null );
 
 		wp_enqueue_style( 'wp-color-picker' );
 	}
