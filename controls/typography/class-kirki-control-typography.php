@@ -114,7 +114,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		wp_enqueue_script( 'wp-color-picker-alpha', $colorpicker_script_url, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
+		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
+			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
+		} else {
+			wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/typography/typography-legacy.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );			
+		}
 		wp_enqueue_style( 'kirki-typography-css', trailingslashit( Kirki::$url ) . 'controls/typography/typography.css', null );
 
 		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), '4.0.3', true );
@@ -336,7 +340,11 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		}
 		valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
 		#>
-		<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+			<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>
+		<?php else : ?>
+			<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+		<?php endif; ?>
 		<?php
 	}
 
