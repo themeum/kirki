@@ -90,6 +90,8 @@ foreach ( $sections as $section_id => $section ) {
 
 /**
  * Background Control.
+ *
+ * @todo Triggers change on load.
  */
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'background',
@@ -340,4 +342,112 @@ Kirki::add_field( 'kirki_demo', array(
 	'description' => esc_attr__( 'Description Here.', 'kirki' ),
 	'section'     => 'fontawesome_section',
 	'default'     => 'bath',
+) );
+
+/**
+ * Image Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'image',
+	'settings'    => 'image_setting_url',
+	'label'       => esc_attr__( 'Image Control (URL)', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'image_section',
+	'default'     => '',
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'image',
+	'settings'    => 'image_setting_id',
+	'label'       => esc_attr__( 'Image Control (ID)', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'image_section',
+	'default'     => '',
+	'choices'     => array(
+		'save_as' => 'id',
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'image',
+	'settings'    => 'image_setting_array',
+	'label'       => esc_attr__( 'Image Control (array)', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'image_section',
+	'default'     => '',
+	'choices'     => array(
+		'save_as' => 'array',
+	),
+) );
+
+/**
+ * Multicheck Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'multicheck',
+	'settings'    => 'multicheck_setting',
+	'label'       => esc_attr__( 'Multickeck Control', 'kirki' ),
+	'section'     => 'multicheck_section',
+	'default'     => array( 'option-1', 'option-3', 'option-4' ),
+	'priority'    => 10,
+	'choices'     => array(
+		'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+		'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+		'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+	),
+) );
+
+/**
+ * Multicolor Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+    'type'        => 'multicolor',
+    'settings'    => 'multicolor_setting',
+    'label'       => esc_attr__( 'Label', 'kirki' ),
+    'section'     => 'multicolor_section',
+    'priority'    => 10,
+    'choices'     => array(
+        'link'    => esc_attr__( 'Color', 'kirki' ),
+        'hover'   => esc_attr__( 'Hover', 'kirki' ),
+        'active'  => esc_attr__( 'Active', 'kirki' ),
+    ),
+    'default'     => array(
+        'link'    => '#0088cc',
+        'hover'   => '#00aaff',
+        'active'  => '#00ffff',
+    ),
+) );
+
+/**
+ * Number Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+    'type'        => 'number',
+    'settings'    => 'number_setting',
+    'label'       => esc_attr__( 'Label', 'kirki' ),
+    'section'     => 'number_section',
+    'priority'    => 10,
+    'choices'     => array(
+		'min'  => -5,
+		'max'  => 5,
+		'step' => 1,
+    ),
+) );
+/**
+ * Palette Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+    'type'        => 'palette',
+    'settings'    => 'palette_setting',
+    'label'       => esc_attr__( 'Label', 'kirki' ),
+    'section'     => 'palette_section',
+	'default'     => 'blue',
+    'choices'     => array(
+		'a200'  => Kirki_Helper::get_material_design_colors( 'A200' ),
+		'blue'  => Kirki_Helper::get_material_design_colors( 'blue' ),
+		'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
+		'bnw'   => array( '#000000', '#ffffff' ),
+    ),
 ) );
