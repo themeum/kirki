@@ -79,9 +79,8 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 		var control = this,
 		    editorWrapper = jQuery( '#kirki_editor_pane' );
 
-		editorWrapper.removeClass();
 		if ( ! control.getEditorWrapperSetting() || control.id !== control.getEditorWrapperSetting() ) {
-			editorWrapper.addClass( control.id );
+			editorWrapper.removeClass( 'hide' ).addClass( control.id );
 		} else {
 			editorWrapper.addClass( 'hide' );
 		}
