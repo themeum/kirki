@@ -288,3 +288,56 @@ Kirki::add_field( 'kirki_demo', array(
 	'section'     => 'dashicons_section',
 	'default'     => 'menu',
 ) );
+
+/**
+ * Dimension Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'dimension',
+	'settings'    => 'dimension_0',
+	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'dimension_section',
+	'default'     => '10px',
+) );
+
+/**
+ * Dimensions Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'dimensions',
+	'settings'    => 'dimensions_0',
+	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'dimensions_section',
+	'default'     => array(
+		'width'  => '100px',
+		'height' => '100px',
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'dimensions',
+	'settings'    => 'dimensions_1',
+	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'dimensions_section',
+	'default'     => array(
+		'padding-top'    => '1em',
+		'padding-bottom' => '10rem',
+		'padding-left'   => '1vh',
+		'padding-right'  => '10px',
+	),
+) );
+
+/**
+ * Font-Awesome Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'fontawesome',
+	'settings'    => 'fontawesome_setting',
+	'label'       => esc_attr__( 'Font Awesome Control', 'kirki' ),
+	'description' => esc_attr__( 'Description Here.', 'kirki' ),
+	'section'     => 'fontawesome_section',
+	'default'     => 'bath',
+) );
