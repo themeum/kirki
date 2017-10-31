@@ -164,3 +164,24 @@ Kirki::add_field( 'kirki_demo', array(
 		'alpha' => true,
 	),
 ) );
+
+/**
+ * Editor Controls
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'editor',
+	'settings'    => 'editor_1',
+	'label'       => __( 'First Editor Control', 'textdomain' ),
+	'description' => esc_attr__( 'This is an editor control.', 'textdomain' ),
+	'section'     => 'editor_section',
+	'default'     => '',
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'editor',
+	'settings'    => 'editor_2',
+	'label'       => __( 'Second Editor Control', 'textdomain' ),
+	'description' => esc_attr__( 'This is a 2nd editor control just to check that we do not have issues with multiple instances.', 'textdomain' ),
+	'section'     => 'editor_section',
+	'default'     => esc_attr__( 'Default Text', 'textdomain' ),
+) );
