@@ -81,7 +81,7 @@ $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'textdomain' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
-	Kirki::add_section( $section_id . '_section', array(
+	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', array(
 		'title'       => $section[0],
 		'description' => $section[1],
 		'panel'       => 'kirki_demo_panel',
@@ -171,7 +171,7 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'editor',
 	'settings'    => 'editor_1',
-	'label'       => __( 'First Editor Control', 'textdomain' ),
+	'label'       => esc_attr__( 'First Editor Control', 'textdomain' ),
 	'description' => esc_attr__( 'This is an editor control.', 'textdomain' ),
 	'section'     => 'editor_section',
 	'default'     => '',
@@ -180,8 +180,79 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'editor',
 	'settings'    => 'editor_2',
-	'label'       => __( 'Second Editor Control', 'textdomain' ),
+	'label'       => esc_attr__( 'Second Editor Control', 'textdomain' ),
 	'description' => esc_attr__( 'This is a 2nd editor control just to check that we do not have issues with multiple instances.', 'textdomain' ),
 	'section'     => 'editor_section',
 	'default'     => esc_attr__( 'Default Text', 'textdomain' ),
+) );
+
+/**
+ * Color-Palette Controls.
+ *
+ * @link https://aristath.github.io/kirki/docs/controls/color-palette.html
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color-palette',
+	'settings'    => 'color_palette_setting_0',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'This is a color-palette control', 'textdomain' ),
+	'section'     => 'color_palette_section',
+	'default'     => '#888888',
+	'choices'     => array(
+		'colors' => array( '#000000', '#222222', '#444444', '#666666', '#888888', '#aaaaaa', '#cccccc', '#eeeeee', '#ffffff' ),
+		'style'  => 'round',
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color-palette',
+	'settings'    => 'color_palette_setting_4',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - all', 'textdomain' ),
+	'section'     => 'color_palette_section',
+	'default'     => '#F44336',
+	'choices'     => array(
+		'colors' => Kirki_Helper::get_material_design_colors( 'all' ),
+		'size'   => 17,
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color-palette',
+	'settings'    => 'color_palette_setting_1',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - primary', 'textdomain' ),
+	'section'     => 'color_palette_section',
+	'default'     => '#000000',
+	'choices'     => array(
+		'colors' => Kirki_Helper::get_material_design_colors( 'primary' ),
+		'size'   => 25,
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color-palette',
+	'settings'    => 'color_palette_setting_2',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - red', 'textdomain' ),
+	'section'     => 'color_palette_section',
+	'default'     => '#FF1744',
+	'choices'     => array(
+		'colors' => Kirki_Helper::get_material_design_colors( 'red' ),
+		'size'   => 16,
+	),
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color-palette',
+	'settings'    => 'color_palette_setting_3',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - A100', 'textdomain' ),
+	'section'     => 'color_palette_section',
+	'default'     => '#FF80AB',
+	'choices'     => array(
+		'colors' => Kirki_Helper::get_material_design_colors( 'A100' ),
+		'size'   => 60,
+		'style'  => 'round',
+	),
 ) );
