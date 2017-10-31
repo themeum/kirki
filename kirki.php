@@ -88,4 +88,4 @@ include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
 include_once wp_normalize_path( dirname( __FILE__ ) . '/l10n.php' );
 
 // Uncomment this line to see the demo controls in the customizer.
-// include_once dirname( __FILE__ ) . '/example.php';
+/* include_once dirname( __FILE__ ) . '/example.php'; */
