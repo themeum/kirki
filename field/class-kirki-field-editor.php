@@ -28,7 +28,11 @@ class Kirki_Field_Editor extends Kirki_Field {
 		}
 		// Fallback for older WordPress versions.
 		$this->type = 'kirki-generic';
+		if ( ! is_array( $this->choices ) ) {
+			$this->choices = array();
+		}
 		$this->choices['element'] = 'textarea';
+		$this->choices['rows']    = '5';
 
 	}
 
