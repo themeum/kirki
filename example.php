@@ -138,3 +138,29 @@ Kirki::add_field( 'kirki_demo', array(
     'section'     => 'checkbox_section',
     'default'     => true,
 ) );
+
+/**
+ * Color Controls.
+ *
+ * @link https://aristath.github.io/kirki/docs/controls/color.html
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color',
+	'settings'    => 'color_setting_hex',
+	'label'       => __( 'Color Control (hex-only)', 'textdomain' ),
+    'description' => esc_attr__( 'This is a color control - without alpha channel.', 'textdomain' ),
+	'section'     => 'color_section',
+	'default'     => '#0088CC',
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color',
+	'settings'    => 'color_setting_rgba',
+	'label'       => __( 'Color Control (with alpha channel)', 'textdomain' ),
+    'description' => esc_attr__( 'This is a color control - with alpha channel.', 'textdomain' ),
+	'section'     => 'color_section',
+	'default'     => '#0088CC',
+	'choices'     => array(
+		'alpha' => true,
+	),
+) );
