@@ -52,7 +52,7 @@ class Kirki_Control_Date extends WP_Customize_Control {
 		global $wp_version;
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
-		$dependencies = array( 'jquery', 'customize-base', 'kirki-dynamic-control' )
+		$dependencies = array( 'jquery', 'customize-base', 'kirki-dynamic-control' );
 		// Only add extra scripts for WP 4.9-.
 		if ( version_compare( $wp_version, '4.9-beta' ) < 0 ) {
 			wp_enqueue_style( 'kirki-date-css', trailingslashit( Kirki::$url ) . 'controls/date/date.css', null );
