@@ -23,7 +23,7 @@ class Kirki_Field_Textarea extends Kirki_Field_Kirki_Generic {
 
 		$this->choices = array(
 			'element' => 'textarea',
-			'rows'    => 5
+			'rows'    => 5,
 		);
 	}
 }
