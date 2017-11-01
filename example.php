@@ -451,54 +451,54 @@ Kirki::add_field( 'kirki_demo', array(
  * Multicolor Control.
  */
 Kirki::add_field( 'kirki_demo', array(
-    'type'        => 'multicolor',
-    'settings'    => 'multicolor_setting',
-    'label'       => esc_attr__( 'Label', 'kirki' ),
-    'section'     => 'multicolor_section',
-    'priority'    => 10,
-    'choices'     => array(
-        'link'    => esc_attr__( 'Color', 'kirki' ),
-        'hover'   => esc_attr__( 'Hover', 'kirki' ),
-        'active'  => esc_attr__( 'Active', 'kirki' ),
-    ),
-    'default'     => array(
-        'link'    => '#0088cc',
-        'hover'   => '#00aaff',
-        'active'  => '#00ffff',
-    ),
+	'type'        => 'multicolor',
+	'settings'    => 'multicolor_setting',
+	'label'       => esc_attr__( 'Label', 'kirki' ),
+	'section'     => 'multicolor_section',
+	'priority'    => 10,
+	'choices'     => array(
+		'link'    => esc_attr__( 'Color', 'kirki' ),
+		'hover'   => esc_attr__( 'Hover', 'kirki' ),
+		'active'  => esc_attr__( 'Active', 'kirki' ),
+	),
+	'default'     => array(
+		'link'    => '#0088cc',
+		'hover'   => '#00aaff',
+		'active'  => '#00ffff',
+	),
 ) );
 
 /**
  * Number Control.
  */
 Kirki::add_field( 'kirki_demo', array(
-    'type'        => 'number',
-    'settings'    => 'number_setting',
-    'label'       => esc_attr__( 'Label', 'kirki' ),
-    'section'     => 'number_section',
-    'priority'    => 10,
-    'choices'     => array(
+	'type'        => 'number',
+	'settings'    => 'number_setting',
+	'label'       => esc_attr__( 'Label', 'kirki' ),
+	'section'     => 'number_section',
+	'priority'    => 10,
+	'choices'     => array(
 		'min'  => -5,
 		'max'  => 5,
 		'step' => 1,
-    ),
+	),
 ) );
 
 /**
  * Palette Control.
  */
 Kirki::add_field( 'kirki_demo', array(
-    'type'        => 'palette',
-    'settings'    => 'palette_setting',
-    'label'       => esc_attr__( 'Label', 'kirki' ),
-    'section'     => 'palette_section',
+	'type'        => 'palette',
+	'settings'    => 'palette_setting',
+	'label'       => esc_attr__( 'Label', 'kirki' ),
+	'section'     => 'palette_section',
 	'default'     => 'blue',
-    'choices'     => array(
+	'choices'     => array(
 		'a200'  => Kirki_Helper::get_material_design_colors( 'A200' ),
 		'blue'  => Kirki_Helper::get_material_design_colors( 'blue' ),
 		'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
 		'bnw'   => array( '#000000', '#ffffff' ),
-    ),
+	),
 ) );
 
 /**
