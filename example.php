@@ -357,6 +357,27 @@ Kirki::add_field( 'kirki_demo', array(
 ) );
 
 /**
+ * Generic Controls.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'text',
+	'settings'    => 'generic_text_setting',
+	'label'       => esc_attr__( 'Text Control' ),
+	'description' => esc_attr__( 'Description' ),
+	'section'     => 'generic_section',
+	'default'     => '',
+) );
+
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'textarea',
+	'settings'    => 'generic_textarea_setting',
+	'label'       => esc_attr__( 'Textarea Control' ),
+	'description' => esc_attr__( 'Description' ),
+	'section'     => 'generic_section',
+	'default'     => '',
+) );
+
+/**
  * Image Control.
  */
 Kirki::add_field( 'kirki_demo', array(
@@ -571,4 +592,28 @@ Kirki::add_field( 'kirki_demo', array(
 		'option5' => esc_attr__( 'Option 5', 'kirki' ),
 		'option6' => esc_attr__( 'Option 6', 'kirki' ),
 	),
+) );
+
+/**
+ * Switch control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'switch',
+	'settings'    => 'switch_setting',
+	'label'       => esc_attr__( 'Switch Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
+	'section'     => 'switch_section',
+	'default'     => true,
+) );
+
+/**
+ * Toggle control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'toggle',
+	'settings'    => 'toggle_setting',
+	'label'       => esc_attr__( 'Toggle Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
+	'section'     => 'toggle_section',
+	'default'     => true,
 ) );
