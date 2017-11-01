@@ -41,6 +41,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: WordPress 4.9 compatibility for background contols.
 * Fix: Refactored editor controls to make them compatible with WP 4.9
 * Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
+* Fix: Use new DateTimeControl if in WP 4.9+.
 * Tweak: Improved styling of color-palette controls.
 
 = 3.0.11 =

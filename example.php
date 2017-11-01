@@ -168,6 +168,18 @@ Kirki::add_field( 'kirki_demo', array(
 ) );
 
 /**
+ * DateTime Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'date',
+	'settings'    => 'date_setting',
+	'label'       => esc_attr__( 'Date Control', 'kirki' ),
+	'description' => esc_attr__( 'This is a date control.', 'kirki' ),
+	'section'     => 'date_section',
+	'default'     => '',
+) );
+
+/**
  * Editor Controls
  */
 Kirki::add_field( 'kirki_demo', array(
