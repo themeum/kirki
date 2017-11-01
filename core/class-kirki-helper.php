@@ -102,7 +102,7 @@ class Kirki_Helper {
 
 		$attachment = wp_cache_get( 'kirki_image_id_' . md5( $url ), null );
 		if ( false === $attachment ) {
-			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = '%s';", $url ) );
+			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) );
 			wp_cache_add( 'kirki_image_id_' . md5( $url ), $attachment, null );
 		}
 
