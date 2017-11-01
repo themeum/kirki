@@ -44,6 +44,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Use new DateTimeControl if in WP 4.9+.
 * Fix: Text field styling.
 * Fix: Switch controls labels.
+* Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
 * Tweak: Improved styling of color-palette controls.
 * Tweak: Radio-Image controls now display images inline (using flexbox).
 * Tweak: Removed the reset switch from slider controls & improved their styling.
