@@ -43,6 +43,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
 * Fix: Use new DateTimeControl if in WP 4.9+.
 * Tweak: Improved styling of color-palette controls.
+* Tweak: Radio-Image controls now display images inline (using flexbox).
+* Tweak: Removed the reset switch from slider controls & improved their styling.
 
 = 3.0.11 =
 
