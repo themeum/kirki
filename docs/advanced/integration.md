@@ -45,18 +45,6 @@ This way your users will always have the latest version of the plugin, including
 			</li>
 		</ul>
 		<p>Kirki will auto-detect that it's embedded in a theme and the URLs & paths will automatically be adjusted.</p>
-		<p>If for some reason the URLs are not properly detected in your setup, you can add the following code in your theme:</p>
-
-
-<pre>
-if ( ! function_exists( 'my_theme_kirki_update_url' ) ) {
-    function my_theme_kirki_update_url( $config ) {
-        $config['url_path'] = get_stylesheet_directory_uri() . '/inc/kirki/';
-        return $config;
-    }
-}
-add_filter( 'kirki/config', 'my_theme_kirki_update_url' );
-</pre>
-
+        <p>Translations will automatically be used from your theme and users can translate kirki using your theme's textdomain.</p>
 	</div>
 </div>
