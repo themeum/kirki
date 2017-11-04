@@ -45,6 +45,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Text field styling.
 * Fix: Switch controls labels.
 * Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
+* Fix: Overriding Kirki translations from a theme when Kirki is embedded.
 * Tweak: Improved styling of color-palette controls.
 * Tweak: Radio-Image controls now display images inline (using flexbox).
 * Tweak: Removed the reset switch from slider controls & improved their styling.

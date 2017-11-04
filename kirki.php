@@ -63,9 +63,10 @@ $kirki->modules = new Kirki_Modules();
 
 Kirki::$url = plugins_url( '', __FILE__ );
 
-// Instantiate 2ndary classes.
-new Kirki_L10n();
+// Instantiate classes.
 new Kirki();
+new Kirki_L10n();
+
 // Include deprecated functions & methods.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
@@ -83,9 +84,6 @@ if ( file_exists( $custom_config_path ) ) {
 
 // Add upgrade notifications.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
-
-// Handle localization when kirki is included in a theme.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/l10n.php' );
 
 // Uncomment this line to see the demo controls in the customizer.
 /* include_once dirname( __FILE__ ) . '/example.php'; */
