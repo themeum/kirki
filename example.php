@@ -651,7 +651,7 @@ Kirki::add_field( 'kirki_demo', array(
 		'subsets'        => array( 'latin-ext' ),
 		'color'          => '#333333',
 		'text-transform' => 'none',
-		'text-align'     => 'left'
+		'text-align'     => 'left',
 	),
 	'priority'    => 10,
 ) );
