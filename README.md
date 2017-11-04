@@ -1,5 +1,5 @@
 # Kirki #
-**Contributors:** aristath, fovoc, igmoweb  
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [fovoc](https://profiles.wordpress.org/fovoc), [igmoweb](https://profiles.wordpress.org/igmoweb)  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8.2  
