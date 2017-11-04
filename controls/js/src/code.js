@@ -22,7 +22,7 @@ wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl
 					mode: control.params.choices.language
 				}
 			},
-			setting: control.id
+			settings: { 'default': control.id }
 		} ) );
 	}
 });

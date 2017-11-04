@@ -622,7 +622,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 					mode: control.params.choices.language
 				}
 			},
-			setting: control.id
+			settings: { 'default': control.id }
 		} ) );
 	}
 });
