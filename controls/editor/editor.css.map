@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACE,wCAAS;EACP,KAAK,EAAE,IAAI",
-"sources": ["editor.scss"],
-"names": [],
-"file": "editor.css"
-}

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEI,mDAAG;EACD,OAAO,EAAE,QAAQ;EACjB,MAAM,EAAE,cAAc;EACtB,UAAU,EAAE,IAAI;EAGd,6EAAiB;IACf,KAAK,EAAE,KAAK;EAGd,yEAAa;IACX,YAAY,EAAE,IAAI;EAItB,6DAAY;IACV,KAAK,EAAE,IAAI;IACX,MAAM,EAAE,eAAe;IAEvB,mFAAsB;MACpB,KAAK,EAAE,IAAI",
-"sources": ["sortable.scss"],
-"names": [],
-"file": "sortable.css"
-}
