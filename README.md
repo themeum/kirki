@@ -2,7 +2,7 @@
 **Contributors:** aristath, fovoc, igmoweb  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.8  
+**Requires at least:** 4.8.2  
 **Tested up to:** 4.9  
 **Stable tag:** 3.0.11  
 **License:** GPLv2 or later  
