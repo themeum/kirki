@@ -1,3 +1,4 @@
+/* global module */
 module.exports = function( grunt ) {
 
 	grunt.initConfig({
@@ -14,7 +15,7 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
-					'assets/vendor/select2/kirki.css':              'assets/vendor/select2/kirki.scss',
+					'assets/vendor/selectWoo/kirki.css':            'assets/vendor/selectWoo/kirki.scss',
 					'modules/reset/reset.css':                      'modules/reset/reset.scss',
 					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',

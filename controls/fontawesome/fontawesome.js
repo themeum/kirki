@@ -7,7 +7,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 		    element  = this.container.find( 'select' ),
 		    icons    = jQuery.parseJSON( fontAwesomeJSON ),
 		    selectValue,
-		    select2Options = {
+		    selectWooOptions = {
 				data: [],
 				escapeMarkup: function( markup ) {
 					return markup;
@@ -22,13 +22,13 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 		    select;
 
 		_.each( icons.icons, function( icon ) {
-			select2Options.data.push({
+			selectWooOptions.data.push({
 				id: icon.id,
 				text: icon.name
 			});
 		});
 
-		select = jQuery( element ).select2( select2Options );
+		select = jQuery( element ).selectWoo( selectWooOptions );
 
 		select.on( 'change', function() {
 			selectValue = jQuery( this ).val();

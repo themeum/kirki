@@ -38,7 +38,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					$this.findElement( setting, '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
 					_.each( ['background-repeat', 'background-position'], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
-							$this.setSelect2( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
 					});
 					_.each( ['background-size', 'background-attachment'], function( subVal ) {
@@ -63,7 +63,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-select':
 				case 'kirki-preset':
 				case 'kirki-fontawesome':
-					$this.setSelect2( $this.findElement( setting, 'select' ), value );
+					$this.setSelectWoo( $this.findElement( setting, 'select' ), value );
 					break;
 
 				case 'kirki-slider':
@@ -109,7 +109,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-typography':
 					_.each( ['font-family', 'variant', 'subsets'], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
-							$this.setSelect2( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
 					});
 					_.each( ['font-size', 'line-height', 'letter-spacing', 'word-spacing'], function( subVal ) {
@@ -158,15 +158,15 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		},
 
 		/**
-		 * Sets the value in a select2 element.
+		 * Sets the value in a selectWoo element.
 		 * CAUTION: This only sets the value visually, it does not change it in th wp object.
 		 *
 		 * @since 3.0.0
-		 * @param string selector The CSS identifier for this select2.
+		 * @param string selector The CSS identifier for this selectWoo.
 		 * @param string value    The value we want to set.
 		 */
-		setSelect2: function( selector, value ) {
-			jQuery( selector ).select2().val( value ).trigger( 'change' );
+		setSelectWoo: function( selector, value ) {
+			jQuery( selector ).selectWoo().val( value ).trigger( 'change' );
 		},
 
 		/**
