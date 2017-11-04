@@ -258,36 +258,38 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				<# data.value['text-align'] = data.value['text-align'] || data['default']['text-align']; #>
 				<div class="text-align">
 					<h5><?php esc_attr_e( 'Text Align', 'kirki' ); ?></h5>
-					<input {{{ data.inputAttrs }}} type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}-text-align-inherit">
-							<span class="dashicons dashicons-editor-removeformatting"></span>
-							<span class="screen-reader-text"><?php esc_attr_e( 'Inherit', 'kirki' ); ?></span>
-						</label>
-					</input>
-					<input {{{ data.inputAttrs }}} type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}-text-align-left">
-							<span class="dashicons dashicons-editor-alignleft"></span>
-							<span class="screen-reader-text"><?php esc_attr_e( 'Left', 'kirki' ); ?></span>
-						</label>
-					</input>
-					<input {{{ data.inputAttrs }}} type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}-text-align-center">
-							<span class="dashicons dashicons-editor-aligncenter"></span>
-							<span class="screen-reader-text"><?php esc_attr_e( 'Center', 'kirki' ); ?></span>
-						</label>
-					</input>
-					<input {{{ data.inputAttrs }}} type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}-text-align-right">
-							<span class="dashicons dashicons-editor-alignright"></span>
-							<span class="screen-reader-text"><?php esc_attr_e( 'Right', 'kirki' ); ?></span>
-						</label>
-					</input>
-					<input {{{ data.inputAttrs }}} type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}-text-align-justify">
-							<span class="dashicons dashicons-editor-justify"></span>
-							<span class="screen-reader-text"><?php esc_attr_e( 'Justify', 'kirki' ); ?></span>
-						</label>
-					</input>
+					<div class="text-align-choices">
+						<input {{{ data.inputAttrs }}} type="radio" value="inherit" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-inherit" <# if ( data.value['text-align'] === 'inherit' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-inherit">
+								<span class="dashicons dashicons-editor-removeformatting"></span>
+								<span class="screen-reader-text"><?php esc_attr_e( 'Inherit', 'kirki' ); ?></span>
+							</label>
+						</input>
+						<input {{{ data.inputAttrs }}} type="radio" value="left" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-left" <# if ( data.value['text-align'] === 'left' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-left">
+								<span class="dashicons dashicons-editor-alignleft"></span>
+								<span class="screen-reader-text"><?php esc_attr_e( 'Left', 'kirki' ); ?></span>
+							</label>
+						</input>
+						<input {{{ data.inputAttrs }}} type="radio" value="center" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-center" <# if ( data.value['text-align'] === 'center' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-center">
+								<span class="dashicons dashicons-editor-aligncenter"></span>
+								<span class="screen-reader-text"><?php esc_attr_e( 'Center', 'kirki' ); ?></span>
+							</label>
+						</input>
+						<input {{{ data.inputAttrs }}} type="radio" value="right" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-right" <# if ( data.value['text-align'] === 'right' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-right">
+								<span class="dashicons dashicons-editor-alignright"></span>
+								<span class="screen-reader-text"><?php esc_attr_e( 'Right', 'kirki' ); ?></span>
+							</label>
+						</input>
+						<input {{{ data.inputAttrs }}} type="radio" value="justify" name="_customize-typography-text-align-radio-{{ data.id }}" id="{{ data.id }}-text-align-justify" <# if ( data.value['text-align'] === 'justify' ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}-text-align-justify">
+								<span class="dashicons dashicons-editor-justify"></span>
+								<span class="screen-reader-text"><?php esc_attr_e( 'Justify', 'kirki' ); ?></span>
+							</label>
+						</input>
+					</div>
 				</div>
 			<# } #>
 

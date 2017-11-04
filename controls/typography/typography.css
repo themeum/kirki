@@ -17,6 +17,7 @@
     .customize-control-kirki-typography .wrapper .margin-bottom,
     .customize-control-kirki-typography .wrapper .margin-top,
     .customize-control-kirki-typography .wrapper .subsets,
+    .customize-control-kirki-typography .wrapper .text-align,
     .customize-control-kirki-typography .wrapper .text-transform,
     .customize-control-kirki-typography .wrapper .variant {
       width: 100%;
@@ -29,6 +30,17 @@
     .customize-control-kirki-typography .wrapper .margin-top,
     .customize-control-kirki-typography .wrapper .text-transform {
       width: 48%; }
+    .customize-control-kirki-typography .wrapper .text-align .text-align-choices {
+      display: flex; }
+      .customize-control-kirki-typography .wrapper .text-align .text-align-choices label {
+        width: 100%;
+        padding: 5px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0); }
+      .customize-control-kirki-typography .wrapper .text-align .text-align-choices input {
+        display: none; }
+        .customize-control-kirki-typography .wrapper .text-align .text-align-choices input:checked + label {
+          border-color: #0085ba; }
     .customize-control-kirki-typography .wrapper .color {
       width: auto; }
 
