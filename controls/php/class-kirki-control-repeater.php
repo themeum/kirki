@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Repeater control
  */
-class Kirki_Control_Repeater extends WP_Customize_Control {
+class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -26,30 +26,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'repeater';
-
-	/**
-	 * Used to automatically generate all CSS output.
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $output = array();
-
-	/**
-	 * Data type
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $option_type = 'theme_mod';
-
-	/**
-	 * The kirki_config we're using for this control
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $kirki_config = 'global';
 
 	/**
 	 * The fields that each container row will contain.
@@ -206,18 +182,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 
-		$this->json['default'] = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
-		$this->json['output']  = $this->output;
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['id']      = $this->id;
-
-		$this->json['inputAttrs'] = '';
-		foreach ( $this->input_attrs as $attr => $value ) {
-			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
-		}
-
 		$fields = $this->fields;
 
 		$this->json['fields'] = $fields;
@@ -228,39 +192,6 @@ class Kirki_Control_Repeater extends WP_Customize_Control {
 			$this->json['value'] = $this->filtered_value;
 		}
 		$this->json['value'] = apply_filters( "kirki/controls/repeater/value/{$this->id}", $this->json['value'] );
-	}
-
-	/**
-	 * Enqueue control related scripts/styles.
-	 *
-	 * @access public
-	 */
-	public function enqueue() {
-
-		// If we have a color picker field we need to enqueue the WordPress Color Picker style and script.
-		if ( is_array( $this->fields ) && ! empty( $this->fields ) ) {
-			foreach ( $this->fields as $field ) {
-				if ( isset( $field['type'] ) ) {
-
-					// Some field-types require extra scripts.
-					switch ( $field['type'] ) {
-						case 'color':
-							wp_enqueue_script( 'wp-color-picker' );
-							wp_enqueue_style( 'wp-color-picker' );
-							break;
-						case 'select':
-						case 'dropdown-pages':
-							wp_enqueue_script( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/js/selectWoo.full.js', array( 'jquery' ), '1.0.1', true );
-							wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
-							wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', null );
-							break;
-					}
-				}
-			}
-		}
-
-		wp_enqueue_script( 'kirki-repeater', trailingslashit( Kirki::$url ) . 'controls/js/repeater.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
-		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', null );
 	}
 
 	/**

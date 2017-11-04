@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The "custom" control allows you to add any raw HTML.
  */
-class Kirki_Control_Custom extends WP_Customize_Control {
+class Kirki_Control_Custom extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -29,16 +29,6 @@ class Kirki_Control_Custom extends WP_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'kirki-custom';
-
-	/**
-	 * Refresh the parameters passed to the JavaScript via JSON.
-	 *
-	 * @see WP_Customize_Control::to_json()
-	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['value'] = $this->value();
-	}
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).

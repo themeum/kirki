@@ -5,16 +5,8 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 		var control  = this,
 		    selector = control.selector + ' input.datepicker';
 
-		// Add the control (fallback for older versions of WP).
+		// Only add in WP 4.9+.
 		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
-
-			// Init the datepicker
-			jQuery( selector ).datepicker();
-
-			// Save the changes
-			this.container.on( 'change keyup paste', 'input.datepicker', function() {
-				control.setting.set( jQuery( this ).val() );
-			} );
 			return;
 		}
 

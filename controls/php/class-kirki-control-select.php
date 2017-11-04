@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Select control.
  */
-class Kirki_Control_Select extends WP_Customize_Control {
+class Kirki_Control_Select extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -26,22 +26,6 @@ class Kirki_Control_Select extends WP_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'kirki-select';
-
-	/**
-	 * Used to automatically generate all CSS output.
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $output = array();
-
-	/**
-	 * Data type
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $option_type = 'theme_mod';
 
 	/**
 	 * Maximum number of options the user will be able to select.
@@ -53,42 +37,12 @@ class Kirki_Control_Select extends WP_Customize_Control {
 	public $multiple = 1;
 
 	/**
-	 * Enqueue control related scripts/styles.
-	 *
-	 * @access public
-	 */
-	public function enqueue() {
-
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-select', trailingslashit( Kirki::$url ) . 'controls/js/select.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'selectWoo', 'jquery-ui-sortable' ), false, true );
-		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', null );
-		wp_enqueue_script( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/js/selectWoo.full.js', array( 'jquery' ), '1.0.1', true );
-		wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
-		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', null );
-	}
-
-	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
 	 */
 	public function to_json() {
 		parent::to_json();
-
-		$this->json['default'] = $this->setting->default;
-		if ( isset( $this->default ) ) {
-			$this->json['default'] = $this->default;
-		}
-		$this->json['output']  = $this->output;
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['id']      = $this->id;
-
-		$this->json['inputAttrs'] = '';
-		foreach ( $this->input_attrs as $attr => $value ) {
-			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
-		}
 
 		$this->json['multiple'] = $this->multiple;
 	}
@@ -140,19 +94,4 @@ class Kirki_Control_Select extends WP_Customize_Control {
 		</label>
 		<?php
 	}
-
-
-	/**
-	 * Render the control's content.
-	 *
-	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
-	 *
-	 * Supports basic input types `text`, `checkbox`, `textarea`, `radio`, `select` and `dropdown-pages`.
-	 * Additional input types such as `email`, `url`, `number`, `hidden` and `date` are supported implicitly.
-	 *
-	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
-	 *
-	 * @since 3.0.0
-	 */
-	protected function render_content() {}
 }

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Dimensions control.
  * multiple fields with CSS units validation.
  */
-class Kirki_Control_Dimensions extends WP_Customize_Control {
+class Kirki_Control_Dimensions extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -29,52 +29,12 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	public $type = 'kirki-dimensions';
 
 	/**
-	 * Used to automatically generate all CSS output.
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $output = array();
-
-	/**
-	 * Data type
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $option_type = 'theme_mod';
-
-	/**
-	 * The kirki_config we're using for this control
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $kirki_config = 'global';
-
-	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
 	 */
 	public function to_json() {
 		parent::to_json();
-
-		$this->json['default'] = $this->setting->default;
-		if ( isset( $this->default ) ) {
-			$this->json['default'] = $this->default;
-		}
-		$this->json['output']  = $this->output;
-		$this->json['value']   = $this->value();
-		$this->json['choices'] = $this->choices;
-		$this->json['link']    = $this->get_link();
-		$this->json['id']      = $this->id;
-		$this->json['l10n']    = $this->l10n();
-
-		$this->json['inputAttrs'] = '';
-		foreach ( $this->input_attrs as $attr => $value ) {
-			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
-		}
 
 		if ( is_array( $this->choices ) ) {
 			foreach ( $this->choices as $choice => $value ) {
@@ -99,10 +59,8 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-dimensions', trailingslashit( Kirki::$url ) . 'controls/js/dimensions.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', null );
-		wp_localize_script( 'kirki-dimensions', 'dimensionskirkiL10n', $this->l10n() );
+		wp_localize_script( 'kirki-script', 'dimensionskirkiL10n', $this->l10n() );
 	}
 
 	/**
@@ -144,13 +102,6 @@ class Kirki_Control_Dimensions extends WP_Customize_Control {
 		</label>
 		<?php
 	}
-
-	/**
-	 * Render the control's content.
-	 *
-	 * @see WP_Customize_Control::render_content()
-	 */
-	protected function render_content() {}
 
 	/**
 	 * Returns an array of translation strings.
