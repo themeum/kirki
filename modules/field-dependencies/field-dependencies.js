@@ -2,6 +2,9 @@
 jQuery( document ).ready( function() {
 
 	function kirkiCompareValues( value1, value2, operator, extras ) {
+		var found = false,
+		    value;
+
 		switch ( operator ) {
 			case '===':
 				return value1 === value2;
@@ -42,8 +45,18 @@ jQuery( document ).ready( function() {
 						}
 					});
 					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
+				} else if ( _.isArray( value2 ) ) {
+					_.each( value2, function( index, value ) {
+						if ( _.isNumeric( value ) ) {
+							value = parseInt( value, 10 );
+						}
+						if ( value1.indexOf( value ) > -1 ) {
+							found = true;
+						}
+					} );
+					return found;
 				} else if ( _.isString( value2 ) ) {
-					return value2.indexOf( value1 );
+					return value1.indexOf( value2 ) > -1;
 				}
 				break;
 			default:
