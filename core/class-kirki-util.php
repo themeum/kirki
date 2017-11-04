@@ -155,4 +155,24 @@ class Kirki_Util {
 		$request['body']['plugins'] = wp_json_encode( $plugins );
 		return $request;
 	}
+
+	/**
+	 * Checks the WP version and returns true if the version is >= 4.9,
+	 * or false if the version is < 4.9.
+	 *
+	 * In WordPress 4.9 the colorpicker script changed so we are forced to use
+	 * separate scripts depending on the WordPress version used.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.12
+	 * @return boolean
+	 */
+	public static function is_colorpicker_script_new() {
+		global $wp_version;
+		if ( version_compare( $wp_version, '4.9-beta', '<' ) ) {
+			return false;
+		}
+		return true;
+	}
 }

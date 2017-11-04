@@ -21,32 +21,6 @@
 		"Backbone": false,
 		"jQuery": false,
 		"JSON": false,
-		"wp": false,
-
-		"kirkiBranding":false,
-		"jsvars":false,
-		"kirkiSetSettingValue":false,
-		"CodeMirror":false,
-		"tinyMCE":false,
-		"unserialize":false,
-		"serialize":false,
-		"kirkiAllFonts":false,
-		"dimensionkirkiL10n": false,
-		"dimensionskirkiL10n": false,
-		"numberKirkiL10n": false,
-		"dimensionsKirkiL10n": false,
-		"editorKirkiL10n": false,
-		"kirkiTooltips": false,
-		"Color": false,
-		"wpColorPickerL10n": false,
-		"kirkiIcons": false,
-		"fieldDependencies": false,
-		"kirkiResetButtonLabel": false,
-		"collapsible": false,
-		"kirkiFieldsSearch": false,
-		"Fuse": false,
-		"fontAwesomeJSON": false,
-		"kirkiControlLoader": false,
-		"module": false
+		"wp": false
 	}
 }
