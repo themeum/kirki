@@ -108,9 +108,6 @@ class Kirki_Control_Slider extends WP_Customize_Control {
 						{{ data.choices['suffix'] }}
 					<# } #>
 				</div>
-				<div class="kirki-slider-reset">
-					<span class="dashicons dashicons-image-rotate"></span>
-				</div>
 			</div>
 		</label>
 		<?php

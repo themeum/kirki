@@ -447,6 +447,7 @@ Kirki::add_field( 'kirki_demo', array(
 		'step' => 1,
     ),
 ) );
+
 /**
  * Palette Control.
  */
@@ -462,4 +463,112 @@ Kirki::add_field( 'kirki_demo', array(
 		'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
 		'bnw'   => array( '#000000', '#ffffff' ),
     ),
+) );
+
+/**
+ * Radio Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'radio',
+	'settings'    => 'radio_setting',
+	'label'       => esc_attr__( 'Radio Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'radio_section',
+	'default'     => 'option-3',
+	'choices'     => array(
+		'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+		'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+		'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+	),
+) );
+
+/**
+ * Radio-Buttonset Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'radio-buttonset',
+	'settings'    => 'radio_buttonset_setting',
+	'label'       => esc_attr__( 'Radio-Buttonset Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'radio_buttonset_section',
+	'default'     => 'option-2',
+	'choices'     => array(
+		'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+		'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+		'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+	),
+) );
+
+/**
+ * Radio-Image Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'radio-image',
+	'settings'    => 'radio_image_setting',
+	'label'       => esc_attr__( 'Radio-Image Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'radio_image_section',
+	'default'     => 'travel',
+	'choices'     => array(
+		'moto'    => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-moto.png',
+		'cossack' => 'https://raw.githubusercontent.com/templatemonster/cossack-wapuula/master/cossack-wapuula.png',
+		'travel'  => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-travel.png',
+	),
+) );
+
+/**
+ * Select Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'select',
+	'settings'    => 'select_setting',
+	'label'       => esc_attr__( 'Select Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'select_section',
+	'default'     => 'option-3',
+	'choices'     => array(
+		'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+		'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+		'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+	),
+) );
+
+/**
+ * Slider Control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'slider',
+	'settings'    => 'slider_setting',
+	'label'       => esc_attr__( 'Slider Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'slider_section',
+	'default'     => '10',
+	'choices'     => array(
+		'min'  => 0,
+		'max'  => 20,
+		'step' => .1,
+	),
+) );
+
+/**
+ * Sortable control.
+ */
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'sortable',
+	'settings'    => 'sortable_setting',
+	'label'       => __( 'This is a sortable control.', 'kirki' ),
+	'section'     => 'sortable_section',
+	'default'     => array( 'option3', 'option1', 'option4' ),
+	'choices'     => array(
+		'option1' => esc_attr__( 'Option 1', 'kirki' ),
+		'option2' => esc_attr__( 'Option 2', 'kirki' ),
+		'option3' => esc_attr__( 'Option 3', 'kirki' ),
+		'option4' => esc_attr__( 'Option 4', 'kirki' ),
+		'option5' => esc_attr__( 'Option 5', 'kirki' ),
+		'option6' => esc_attr__( 'Option 6', 'kirki' ),
+	),
 ) );

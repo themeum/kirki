@@ -295,7 +295,7 @@ class Kirki_Helper {
 			case 'A200':
 			case 'A400':
 			case 'A700':
-				$key = $context / 100;
+				$key = absint( $context ) / 100;
 				if ( 'A100' === $context ) {
 					$key = 10;
 					unset( $colors['grey'] );
