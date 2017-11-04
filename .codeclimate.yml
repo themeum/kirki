@@ -62,6 +62,8 @@ ratings:
   - "**.php"
 exclude_paths:
 - assets/vendor/*
+- controls/js/dist/*
+- controls/css/*
 - lib/class-aricolor.php
 - core/deprecated.php
 - modules/webfonts/webfonts.php
