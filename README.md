@@ -1,11 +1,11 @@
 # Kirki #
-**Contributors:** aristath, fovoc, igmoweb
-**Tags:** customizer,options framework, theme, mods, toolkit
-**Donate link:** https://aristath.github.io/donate
-**Requires at least:** 4.8
-**Tested up to:** 4.8
-**Stable tag:** 3.0.9
-**License:** GPLv2 or later
+**Contributors:** aristath, fovoc, igmoweb  
+**Tags:** customizer,options framework, theme, mods, toolkit  
+**Donate link:** https://aristath.github.io/donate  
+**Requires at least:** 4.8  
+**Tested up to:** 4.9  
+**Stable tag:** 3.0.11  
+**License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate toolkit for theme developers using the WordPress Customizer
@@ -33,8 +33,47 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.12 ###
+
+* Fix: WordPress 4.9 compatibility for colorpickers.
+* Fix: WordPress 4.9 compatibility for typography controls.
+* Fix: WordPress 4.9 compatibility for multicolor contols.
+* Fix: WordPress 4.9 compatibility for background contols.
+* Fix: Refactored editor controls to make them compatible with WP 4.9
+* Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
+* Fix: Use new DateTimeControl if in WP 4.9+.
+* Fix: Text field styling.
+* Fix: Switch controls labels.
+* Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
+* Fix: Overriding Kirki translations from a theme when Kirki is embedded.
+* Tweak: Improved styling of color-palette controls.
+* Tweak: Radio-Image controls now display images inline (using flexbox).
+* Tweak: Removed the reset switch from slider controls & improved their styling.
+
+### 3.0.11 ###
+
+October 12 2017, dev time: 3 hours.
+
+* Fix: Typography controls were not properly saving some sub-values [#1521](https://github.com/aristath/kirki/issues/1521), [#1560](https://github.com/aristath/kirki/issues/1560)
+* Fix: Undefined index in the code control [#1567](https://github.com/aristath/kirki/issues/1567)
+* Fix: CSS Output for multicolor fields [#1564](https://github.com/aristath/kirki/issues/1564)
+* Fix: JS instantiation of controls in expanded sections [#1559](https://github.com/aristath/kirki/issues/1559)
+* Fix: LTR for code controls [#1558](https://github.com/aristath/kirki/issues/1558)
+* Fix: Remove Reset in default sections [#1580](https://github.com/aristath/kirki/issues/1580)
+* Fix: Uncaught TypeError: data.value[choiceKey].replace is not a function [#1578](https://github.com/aristath/kirki/issues/1578)
+* Fix: Other code cleanup.
+* Fix: Updated google-fonts.
+
 ### 3.0.10 ###
 
+September 21 2017, dev time: 74 hours.
+
+* Fix: Allow HTML tags in tooltips [#1536](https://github.com/aristath/kirki/issues/1536)
+* Fix: Default System Font Stack for Sans Serif Fonts in Typography Fields [#1530](https://github.com/aristath/kirki/issues/1530)
+* Fix: HTML entities in repeater text field being encoded on each save? [#1523](https://github.com/aristath/kirki/issues/1523)
+* Fix: Some resetting issues [#1474](https://github.com/aristath/kirki/issues/1474)
+* Fix: Allow saving image fields as arrays (url,id,width,height) [#1529](https://github.com/aristath/kirki/issues/1529)
+* Fix: Allow saving image fields as ID [#1498](https://github.com/aristath/kirki/issues/1498)
 * Fix: Inline docs improvements.
 * Fix: `$subsets` not defined in the `Kirki_Modules_Webfonts_Link` class.
 * Fix: Coding improvements in the `Kirki_Field` class.
@@ -62,7 +101,6 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: `editor` control now loads dynamically (performance improvement).
 * New: `fontawesome` control now loads dynamically (performance improvement).
 * New: `generic` control now loads dynamically (performance improvement).
-* New: `gradient` control now loads dynamically (performance improvement).
 * New: `multicheck` control now loads dynamically (performance improvement).
 * New: `number` control now loads dynamically (performance improvement).
 * New: `palette` control now loads dynamically (performance improvement).

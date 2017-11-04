@@ -87,7 +87,7 @@ final class Kirki_Fonts {
 			),
 			'sans-serif' => array(
 				'label'  => 'Sans Serif',
-				'stack'  => 'Helvetica,Arial,sans-serif',
+				'stack'  => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 			),
 			'monospace' => array(
 				'label' => 'Monospace',

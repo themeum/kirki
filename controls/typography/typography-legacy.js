@@ -21,7 +21,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		'use strict';
 
 		var control = this,
-		    value   = control.setting._value,
+		    value   = control.getValue(),
 		    picker;
 
 		control.renderFontSelector();
@@ -111,7 +111,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    data            = [],
 		    standardFonts   = [],
 		    googleFonts     = [],
-		    value           = control.setting._value,
+		    value           = control.getValue(),
 		    fonts           = control.getFonts(),
 		    fontSelect;
 
@@ -177,7 +177,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		var control       = this,
 		    selector      = control.selector + ' .font-backup select',
 		    standardFonts = [],
-		    value         = control.setting._value,
+		    value         = control.getValue(),
 		    fontFamily    = value['font-family'],
 		    variants      = control.getVariants( fontFamily ),
 		    fonts         = control.getFonts(),
@@ -227,7 +227,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	renderVariantSelector: function() {
 
 		var control    = this,
-		    value      = control.setting._value,
+		    value      = control.getValue(),
 		    fontFamily = value['font-family'],
 		    variants   = control.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
@@ -284,7 +284,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	renderSubsetSelector: function() {
 
 		var control    = this,
-		    value      = control.setting._value,
+		    value      = control.getValue(),
 		    fontFamily = value['font-family'],
 		    subsets    = control.getSubsets( fontFamily ),
 		    selector   = control.selector + ' .subsets select',
@@ -389,17 +389,33 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	},
 
 	/**
+	 * Gets the value.
+	 */
+	getValue: function() {
+
+		'use strict';
+
+		var control   = this,
+		    input     = control.container.find( '.typography-hidden-value' ),
+		    valueJSON = jQuery( input ).val();
+
+		return JSON.parse( valueJSON );
+	},
+
+	/**
 	 * Saves the value.
 	 */
 	saveValue: function( property, value ) {
 
-		var control = this,
-		    input   = control.container.find( '.typography-hidden-value' ),
-		    val     = control.setting._value;
+		'use strict';
 
-		val[ property ] = value;
+		var control   = this,
+		    input     = control.container.find( '.typography-hidden-value' ),
+		    valueJSON = jQuery( input ).val(),
+		    valueObj  = JSON.parse( valueJSON );
 
-		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
-		control.setting.set( val );
+		valueObj[ property ] = value;
+		wp.customize.control( control.id ).setting.set( valueObj );
+		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
 	}
 });

@@ -63,11 +63,6 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 		wp_enqueue_script( 'kirki-editor', trailingslashit( Kirki::$url ) . 'controls/editor/editor.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-editor-css', trailingslashit( Kirki::$url ) . 'controls/editor/editor.css', null );
-		wp_localize_script( 'kirki-editor', 'editorKirkiL10n', array(
-			'open-editor'   => esc_attr__( 'Open Editor', 'kirki' ),
-			'close-editor'  => esc_attr__( 'Close Editor', 'kirki' ),
-			'switch-editor' => esc_attr__( 'Switch Editor', 'kirki' ),
-		) );
 	}
 
 	/**
@@ -114,11 +109,8 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="customize-control-content">
-				<a href="#" class="button button-primary toggle-editor"></a>
-				<textarea {{{ data.inputAttrs }}} class="hidden" {{{ data.link }}}>{{ data.value }}</textarea>
-			</div>
 		</label>
+		<textarea id="kirki-editor-{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}" {{{ data.inputAttrs }}} {{{ data.link }}}>{{ data.value }}</textarea>
 		<?php
 	}
 }

@@ -48,12 +48,18 @@ class Kirki_Control_Background extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_style( 'wp-color-picker-alpha' );
-		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
+		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
+
+		$script_filename = 'wp-color-picker-alpha-legacy.js';
+		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
+			$script_filename = 'wp-color-picker-alpha.js';
+			wp_enqueue_style( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css', null );
+		}
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/' . $script_filename, array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.js', array( 'jquery', 'wp-color-picker-alpha' ) );
-		wp_enqueue_style( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/background.css', null );
+		$script_filename = ( Kirki_Util::get_wp_version() >= 4.9 ) ? 'background.js' : 'background-legacy.js';
+		wp_enqueue_script( 'kirki-background', trailingslashit( Kirki::$url ) . 'controls/background/' . $script_filename, array( 'jquery', 'wp-color-picker-alpha' ) );
 	}
 
 	/**
@@ -189,8 +195,12 @@ class Kirki_Control_Background extends WP_Customize_Control {
 					</input>
 				</div>
 			</div>
-			<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
-			<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+				<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
+			<?php else : ?>
+				<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
+				<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<?php endif; ?>
 		<?php
 	}
 }

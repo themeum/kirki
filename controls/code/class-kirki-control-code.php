@@ -53,36 +53,12 @@ class Kirki_Control_Code extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		// Register codemirror.
-		wp_register_script( 'codemirror', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/lib/codemirror.js', array( 'jquery' ) );
 		wp_enqueue_script( 'kirki-dynamic-control', trailingslashit( Kirki::$url ) . 'assets/js/dynamic-control.js', array( 'jquery', 'customize-base' ), false, true );
 
-		// If we're using html mode, we'll also need to include the multiplex addon
-		// as well as dependencies for XML, JS, CSS languages.
-		switch ( $this->choices['language'] ) {
-			case 'html':
-			case 'htmlmixed':
-				wp_enqueue_script( 'codemirror-multiplex', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/addon/mode/multiplex.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-javascript', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/javascript/javascript.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-css', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/css/css.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-htmlmixed', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js', array( 'jquery', 'codemirror', 'codemirror-multiplex', 'codemirror-language-xml', 'codemirror-language-javascript', 'codemirror-language-css' ) );
-				break;
-			case 'php':
-				wp_enqueue_script( 'codemirror-language-xml', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/xml/xml.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-clike', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/clike/clike.js', array( 'jquery', 'codemirror' ) );
-				wp_enqueue_script( 'codemirror-language-php', trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/php/php.js', array( 'jquery', 'codemirror', 'codemirror-language-xml', 'codemirror-language-clike' ) );
-				break;
-			default:
-				// Add language script.
-				wp_enqueue_script( 'codemirror-language-' . $this->choices['language'], trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/mode/' . $this->choices['language'] . '/' . $this->choices['language'] . '.js', array( 'jquery', 'codemirror' ) );
-				break;
-		}
+		// Make sure $this->choices['language'] is defined.
+		$this->choices['language'] = ( ! isset( $this->choices['language'] ) ) ? 'css' : $this->choices['language'];
 
-		// Add theme styles.
-		wp_enqueue_style( 'codemirror-theme-' . $this->choices['theme'], trailingslashit( Kirki::$url ) . 'assets/vendor/codemirror/theme/' . $this->choices['theme'] . '.css' );
-
-		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'controls/code/code.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control', 'codemirror' ), false, true );
+		wp_enqueue_script( 'kirki-code', trailingslashit( Kirki::$url ) . 'controls/code/code.js', array( 'jquery', 'customize-base', 'kirki-dynamic-control' ), false, true );
 		wp_enqueue_style( 'kirki-code-css', trailingslashit( Kirki::$url ) . 'controls/code/code.css', null );
 
 	}
@@ -123,12 +99,17 @@ class Kirki_Control_Code extends WP_Customize_Control {
 	 * @access protected
 	 */
 	protected function content_template() {
+		global $wp_version;
+		// If we're on WP 4.9+, then we don't need to add anything here.
+		if ( version_compare( $wp_version, '4.9-beta' ) >= 0 ) {
+			return;
+		}
 		?>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="codemirror-kirki-wrapper">
-				<textarea {{{ data.inputAttrs }}} class="kirki-codemirror-editor">{{{ data.value }}}</textarea>
+				<textarea {{{ data.inputAttrs }}} data-language="{{ data.choices.language }}" class="kirki-codemirror-editor" {{{ data.link }}}>{{{ data.value }}}</textarea>
 			</div>
 		</label>
 		<?php

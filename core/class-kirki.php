@@ -176,19 +176,22 @@ class Kirki extends Kirki_Init {
 			_doing_it_wrong( __METHOD__, esc_attr__( 'Kirki fields should not be added on customize_register. Please add them directly, or on init.', 'kirki' ), '3.0.10' );
 		}
 
-		if ( isset( $args['type'] ) ) {
-			$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
-			$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
+		// Early exit if 'type' is not defined.
+		if ( ! isset( $args['type'] ) ) {
+			return;
+		}
+
+		$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
+		$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
+		if ( class_exists( $classname ) ) {
+			new $classname( $config_id, $args );
+			return;
+		}
+		if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
+			$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
 			if ( class_exists( $classname ) ) {
 				new $classname( $config_id, $args );
 				return;
-			}
-			if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
-				$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
-				if ( class_exists( $classname ) ) {
-					new $classname( $config_id, $args );
-					return;
-				}
 			}
 		}
 

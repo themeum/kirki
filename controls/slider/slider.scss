@@ -1,14 +1,21 @@
 .customize-control-kirki-slider {
   position: relative;
 
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   input[type=range] {
     -webkit-appearance: none;
-    -webkit-transition: background 0.3s;
-    -moz-transition: background 0.3s;
-    transition: background 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
     background-color: rgba(0,0,0,.1);
     height: 5px;
-    width: calc(100% - 70px);
+    width: calc(100% - 45px);
     padding: 0;
     border-radius: 2px;
 

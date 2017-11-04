@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEI,2DAAsB;EACpB,OAAO,EAAE,IAAI;EAEb,iEAAM;IACJ,KAAK,EAAE,IAAI;IAEX,uEAAM;MACJ,KAAK,EAAE,eAAe",
+"sources": ["wp-color-picker-alpha.scss"],
+"names": [],
+"file": "wp-color-picker-alpha.css"
+}

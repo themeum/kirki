@@ -126,7 +126,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							$$subfield_value = $color_obj->toCSS( $color_obj->mode );
 							break;
 						case 'text':
-							$subfield_value = esc_textarea( $subfield_value );
+							$subfield_value = sanitize_text_field( $subfield_value );
 							break;
 						case 'url':
 						case 'link':
@@ -162,7 +162,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							$subfield_value = esc_attr( $subfield_value );
 							break;
 						case 'textarea':
-							$subfield_value = wp_kses_post( $subfield_value );
+							$subfield_value = html_entity_decode( wp_kses_post( $subfield_value ) );
 
 					} // End switch().
 				} // End if().

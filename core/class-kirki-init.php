@@ -29,7 +29,7 @@ class Kirki_Init {
 	 */
 	public function __construct() {
 
-		$this->set_url();
+		self::set_url();
 		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
@@ -39,44 +39,22 @@ class Kirki_Init {
 
 	/**
 	 * Properly set the Kirki URL for assets.
-	 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
-	 * and then does some calculations to get the proper URL for its CSS & JS assets.
+	 *
+	 * @static
+	 * @access public
+	 * @return void
 	 */
-	public function set_url() {
+	public static function set_url() {
 
-		Kirki::$path = wp_normalize_path( dirname( KIRKI_PLUGIN_FILE ) );
-
-		// Works in most cases.
-		// Serves as a fallback in case all other checks fail.
-		if ( defined( 'WP_CONTENT_DIR' ) ) {
-			$content_dir = wp_normalize_path( WP_CONTENT_DIR );
-			if ( false !== strpos( Kirki::$path, $content_dir ) ) {
-				$relative_path = str_replace( $content_dir, '', Kirki::$path );
-				Kirki::$url = content_url( $relative_path );
-			}
-		}
-
-		// If Kirki is installed as a plugin, use that for the URL.
 		if ( Kirki_Util::is_plugin() ) {
-			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
+			return;
 		}
 
-		// Get the path to the theme.
-		$theme_path = wp_normalize_path( get_template_directory() );
+		// Get correct URL and path to wp-content.
+		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
+		$content_dir = wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) );
 
-		// Is Kirki included in the theme?
-		if ( false !== strpos( Kirki::$path, $theme_path ) ) {
-			Kirki::$url = get_template_directory_uri() . str_replace( $theme_path, '', Kirki::$path );
-		}
-
-		// Is there a child-theme?
-		$child_theme_path = wp_normalize_path( get_stylesheet_directory_uri() );
-		if ( $child_theme_path !== $theme_path ) {
-			// Is Kirki included in a child theme?
-			if ( false !== strpos( Kirki::$path, $child_theme_path ) ) {
-				Kirki::$url = get_template_directory_uri() . str_replace( $child_theme_path, '', Kirki::$path );
-			}
-		}
+		Kirki::$url = str_replace( $content_dir, $content_url, wp_normalize_path( Kirki::$path ) );
 
 		// Apply the kirki/config filter.
 		$config = apply_filters( 'kirki/config', array() );
@@ -84,8 +62,6 @@ class Kirki_Init {
 			Kirki::$url = $config['url_path'];
 		}
 
-		// Escapes the URL.
-		Kirki::$url = esc_url_raw( Kirki::$url );
 		// Make sure the right protocol is used.
 		Kirki::$url = set_url_scheme( Kirki::$url );
 	}
@@ -113,7 +89,6 @@ class Kirki_Init {
 			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
 			'kirki-editor'          => 'Kirki_Control_Editor',
 			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
-			'kirki-gradient'        => 'Kirki_Control_Gradient',
 			'kirki-image'           => 'Kirki_Control_Image',
 			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',

@@ -137,7 +137,7 @@
 			}
 
 			wp.customize.section( sectionId, function( section ) {
-				if ( section.expanded() || wp.customize.settings.autofocus.control === control.id ) {
+				if ( 'kirki-expanded' === section.params.type || section.expanded() || wp.customize.settings.autofocus.control === control.id ) {
 					control.actuallyEmbed();
 				} else {
 					section.expanded.bind( function( expanded ) {
