@@ -651,7 +651,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			priority: control.params.priority,
 			label: control.params.label,
 			description: control.params.description,
-			setting: control.id,
+			settings: { 'default': control.id },
 			'default': control.params['default']
 		} ) );
 	}
