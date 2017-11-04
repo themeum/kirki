@@ -6,7 +6,7 @@
     	"assets/js/vendor/*",
     	"assets/js/vendor/**",
     	"assets/js/vendor",
-		"controls/sortable/serialize.js",
+		"controls/vendor/**",
 		"modules/search/fuse.js",
 		"modules/search/fuse.min.js"
     ]

@@ -15,42 +15,12 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
-					'assets/vendor/selectWoo/kirki.css':            'assets/vendor/selectWoo/kirki.scss',
-					'modules/reset/reset.css':                      'modules/reset/reset.scss',
-					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
-					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
-					'modules/collapsible/collapsible.css':          'modules/collapsible/collapsible.scss',
-
-					'controls/background/background.css':           'controls/background/background.scss',
-					'controls/code/code.css':                       'controls/code/code.scss',
-					'controls/color/color.css':                     'controls/color/color.scss',
-					'controls/color-palette/color-palette.css':     'controls/color-palette/color-palette.scss',
-					'controls/dashicons/dashicons.css':             'controls/dashicons/dashicons.scss',
-					'controls/date/date.css':                       'controls/date/date.scss',
-					'controls/dimension/dimension.css':             'controls/dimension/dimension.scss',
-					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
-					'controls/editor/editor.css':                   'controls/editor/editor.scss',
-					'controls/fontawesome/fontawesome.css':         'controls/fontawesome/fontawesome.scss',
-					'controls/generic/generic.css':                 'controls/generic/generic.scss',
-					'controls/image/image.css':                     'controls/image/image.scss',
-					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
-					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
-					'controls/multicolor/multicolor-legacy.css':    'controls/multicolor/multicolor-legacy.scss',
-					'controls/number/number.css':                   'controls/number/number.scss',
-					'controls/palette/palette.css':                 'controls/palette/palette.scss',
-					'controls/preset/preset.css':                   'controls/preset/preset.scss',
-					'controls/radio/radio.css':                     'controls/radio/radio.scss',
-					'controls/radio-buttonset/radio-buttonset.css': 'controls/radio-buttonset/radio-buttonset.scss',
-					'controls/radio-image/radio-image.css':         'controls/radio-image/radio-image.scss',
-					'controls/repeater/repeater.css':               'controls/repeater/repeater.scss',
-					'controls/select/select.css':                   'controls/select/select.scss',
-					'controls/slider/slider.css':                   'controls/slider/slider.scss',
-					'controls/sortable/sortable.css':               'controls/sortable/sortable.scss',
-					'controls/switch/switch.css':                   'controls/switch/switch.scss',
-					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
-					'controls/typography/typography.css':           'controls/typography/typography.scss',
-
-					'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css': 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.scss'
+					'assets/vendor/selectWoo/kirki.css':    'assets/vendor/selectWoo/kirki.scss',
+					'modules/reset/reset.css':              'modules/reset/reset.scss',
+					'modules/tooltips/tooltip.css':         'modules/tooltips/tooltip.scss',
+					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
+					'modules/collapsible/collapsible.css':  'modules/collapsible/collapsible.scss',
+					'controls/css/controls.css':            'controls/scss/controls.scss'
 				}
 			},
 
