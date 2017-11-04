@@ -1,3 +1,4 @@
+/* global kirkiControlLoader, kirkiAllFonts */
 wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing

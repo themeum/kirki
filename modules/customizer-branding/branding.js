@@ -1,3 +1,4 @@
+/* global kirkiBranding */
 jQuery( document ).ready( function() {
 
 	'use strict';

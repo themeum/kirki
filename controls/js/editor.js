@@ -1,3 +1,4 @@
+/* global tinyMCE, editorKirkiL10n */
 wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {

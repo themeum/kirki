@@ -1,3 +1,4 @@
+/* global dimensionskirkiL10n */
 wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
