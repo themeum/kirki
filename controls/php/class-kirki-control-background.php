@@ -189,8 +189,7 @@ class Kirki_Control_Background extends WP_Customize_Control {
 					</input>
 				</div>
 			</div>
-			<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
-			<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php
 	}
 }
