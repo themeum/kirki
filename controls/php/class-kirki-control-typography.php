@@ -108,12 +108,12 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '1.2', true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/js/typography.js', array( 'jquery', 'customize-base', 'select2', 'wp-color-picker-alpha' ), false, true );
+		wp_enqueue_script( 'kirki-typography', trailingslashit( Kirki::$url ) . 'controls/js/typography.js', array( 'jquery', 'customize-base', 'selectWoo', 'wp-color-picker-alpha' ), false, true );
 		wp_enqueue_style( 'kirki-controls-css', trailingslashit( Kirki::$url ) . 'controls/css/controls.css', null );
 
-		wp_enqueue_script( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/js/select2.full.js', array( 'jquery' ), '4.0.3', true );
-		wp_enqueue_style( 'select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/css/select2.css', array(), '4.0.3' );
-		wp_enqueue_style( 'kirki-select2', trailingslashit( Kirki::$url ) . 'assets/vendor/select2/kirki.css', null );
+		wp_enqueue_script( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/js/selectWoo.full.js', array( 'jquery' ), '4.0.3', true );
+		wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '4.0.3' );
+		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', null );
 
 		$custom_fonts_array  = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
 		$localize_script_var = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';

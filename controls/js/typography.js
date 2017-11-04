@@ -82,7 +82,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 		// Text-transform.
 		if ( control.params['default']['text-transform'] ) {
-			jQuery( control.selector + ' .text-transform select' ).select2().on( 'change', function() {
+			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
 			});
 		}
@@ -102,7 +102,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 	/**
 	 * Adds the font-families to the font-family dropdown
-	 * and instantiates select2.
+	 * and instantiates selectWoo.
 	 */
 	renderFontSelector: function() {
 
@@ -141,8 +141,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			{ text: 'Google Fonts',   children: googleFonts }
 		];
 
-		// Instantiate select2 with the data.
-		fontSelect = jQuery( selector ).select2({
+		// Instantiate selectWoo with the data.
+		fontSelect = jQuery( selector ).selectWoo({
 			data: data
 		});
 
@@ -170,7 +170,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 
 	/**
 	 * Adds the font-families to the font-family dropdown
-	 * and instantiates select2.
+	 * and instantiates selectWoo.
 	 */
 	renderBackupFontSelector: function() {
 
@@ -204,8 +204,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			});
 		}
 
-		// Instantiate select2 with the data.
-		fontSelect = jQuery( selector ).select2({
+		// Instantiate selectWoo with the data.
+		fontSelect = jQuery( selector ).selectWoo({
 			data: standardFonts
 		});
 
@@ -221,7 +221,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	},
 
 	/**
-	 * Renders the variants selector using select2
+	 * Renders the variants selector using selectWoo
 	 * Displays font-variants for the currently selected font-family.
 	 */
 	renderVariantSelector: function() {
@@ -253,12 +253,12 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			}
 
 			if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
-				jQuery( selector ).select2( 'destroy' );
+				jQuery( selector ).selectWoo( 'destroy' );
 				jQuery( selector ).empty();
 			}
 
-			// Instantiate select2 with the data.
-			variantSelector = jQuery( selector ).select2({
+			// Instantiate selectWoo with the data.
+			variantSelector = jQuery( selector ).selectWoo({
 				data: data
 			});
 			variantSelector.val( value.variant ).trigger( 'change' );
@@ -278,7 +278,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	},
 
 	/**
-	 * Renders the subsets selector using select2
+	 * Renders the subsets selector using selectWoo
 	 * Displays font-subsets for the currently selected font-family.
 	 */
 	renderSubsetSelector: function() {
@@ -315,12 +315,12 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		}
 
 		if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
-			jQuery( selector ).select2( 'destroy' );
+			jQuery( selector ).selectWoo( 'destroy' );
 			jQuery( selector ).empty();
 		}
 
-		// Instantiate select2 with the data.
-		subsetSelector = jQuery( selector ).select2({
+		// Instantiate selectWoo with the data.
+		subsetSelector = jQuery( selector ).selectWoo({
 			data: data
 		});
 		subsetSelector.val( validValue ).trigger( 'change' );

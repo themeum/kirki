@@ -2,7 +2,7 @@
 **Contributors:** aristath, fovoc, igmoweb  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.8  
+**Requires at least:** 4.8.2  
 **Tested up to:** 4.9  
 **Stable tag:** 3.0.11  
 **License:** GPLv2 or later  
@@ -29,7 +29,7 @@ You can find detailed documentation on how to use Kirki on [https://aristath.git
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
 
@@ -45,9 +45,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Text field styling.
 * Fix: Switch controls labels.
 * Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
+* Fix: Overriding Kirki translations from a theme when Kirki is embedded.
+* New: Replaced select2 with selectWoo.
 * Tweak: Improved styling of color-palette controls.
 * Tweak: Radio-Image controls now display images inline (using flexbox).
 * Tweak: Removed the reset switch from slider controls & improved their styling.
+* Tweak: Improved typography controls styling for text-align.
 
 ### 3.0.11 ###
 
