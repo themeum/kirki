@@ -16,7 +16,7 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 			priority: control.params.priority,
 			label: control.params.label,
 			description: control.params.description,
-			setting: control.id,
+			settings: { 'default': control.id },
 			'default': control.params['default']
 		} ) );
 	}
