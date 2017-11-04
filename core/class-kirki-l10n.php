@@ -113,7 +113,7 @@ class Kirki_L10n {
 	 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
 	 * @param string $mofile   Path to the MO file.
 	 * @return bool
-   	 */
+	 */
 	public function override_load_textdomain( $override, $domain, $mofile ) {
 
 		global $l10n;
