@@ -108,14 +108,17 @@ class Kirki_L10n {
 	 * Allows overriding the "kirki" textdomain from a theme.
 	 *
 	 * @since 3.0.12
-	 * @param bool   $override Whether to override the text domain. Default false.
+	 * @access public
+	 * @param bool   $override Whether to override the .mo file loading. Default false.
 	 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
+	 * @param string $mofile   Path to the MO file.
 	 * @return bool
-	 */
-	function override_load_textdomain( $override, $domain, $mofile ) {
+   	 */
+	public function override_load_textdomain( $override, $domain, $mofile ) {
 
 		global $l10n;
 		if ( isset( $l10n[ $this->get_theme_textdomain() ] ) ) {
+			// @codingStandardsIgnoreLine WordPress.Variables.GlobalVariables.OverrideProhibited
 			$l10n['kirki'] = $l10n[ $this->get_theme_textdomain() ];
 		}
 
