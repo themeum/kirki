@@ -16,7 +16,6 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'assets/vendor/selectWoo/kirki.css': 'assets/vendor/selectWoo/kirki.scss',
-					'modules/reset/reset.css': 'modules/reset/reset.scss',
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
