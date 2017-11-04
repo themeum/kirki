@@ -15,41 +15,13 @@ module.exports = function( grunt ) {
 		sass: {
 			dist: {
 				files: {
-					'assets/vendor/selectWoo/kirki.css':            'assets/vendor/selectWoo/kirki.scss',
-					'modules/reset/reset.css':                      'modules/reset/reset.scss',
-					'modules/tooltips/tooltip.css':                 'modules/tooltips/tooltip.scss',
-					'modules/custom-sections/sections.css':         'modules/custom-sections/sections.scss',
-					'modules/collapsible/collapsible.css':          'modules/collapsible/collapsible.scss',
-
-					'controls/background/background.css':           'controls/background/background.scss',
-					'controls/code/code.css':                       'controls/code/code.scss',
-					'controls/color/color.css':                     'controls/color/color.scss',
-					'controls/color-palette/color-palette.css':     'controls/color-palette/color-palette.scss',
-					'controls/dashicons/dashicons.css':             'controls/dashicons/dashicons.scss',
-					'controls/date/date.css':                       'controls/date/date.scss',
-					'controls/dimension/dimension.css':             'controls/dimension/dimension.scss',
-					'controls/dimensions/dimensions.css':           'controls/dimensions/dimensions.scss',
-					'controls/editor/editor.css':                   'controls/editor/editor.scss',
-					'controls/fontawesome/fontawesome.css':         'controls/fontawesome/fontawesome.scss',
-					'controls/generic/generic.css':                 'controls/generic/generic.scss',
-					'controls/image/image.css':                     'controls/image/image.scss',
-					'controls/multicheck/multicheck.css':           'controls/multicheck/multicheck.scss',
-					'controls/multicolor/multicolor.css':           'controls/multicolor/multicolor.scss',
-					'controls/multicolor/multicolor-legacy.css':    'controls/multicolor/multicolor-legacy.scss',
-					'controls/number/number.css':                   'controls/number/number.scss',
-					'controls/palette/palette.css':                 'controls/palette/palette.scss',
-					'controls/preset/preset.css':                   'controls/preset/preset.scss',
-					'controls/radio/radio.css':                     'controls/radio/radio.scss',
-					'controls/radio-buttonset/radio-buttonset.css': 'controls/radio-buttonset/radio-buttonset.scss',
-					'controls/radio-image/radio-image.css':         'controls/radio-image/radio-image.scss',
-					'controls/repeater/repeater.css':               'controls/repeater/repeater.scss',
-					'controls/select/select.css':                   'controls/select/select.scss',
-					'controls/slider/slider.css':                   'controls/slider/slider.scss',
-					'controls/sortable/sortable.css':               'controls/sortable/sortable.scss',
-					'controls/switch/switch.css':                   'controls/switch/switch.scss',
-					'controls/toggle/toggle.css':                   'controls/toggle/toggle.scss',
-					'controls/typography/typography.css':           'controls/typography/typography.scss',
-
+					'assets/vendor/selectWoo/kirki.css': 'assets/vendor/selectWoo/kirki.scss',
+					'modules/reset/reset.css': 'modules/reset/reset.scss',
+					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
+					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
+					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
+					'controls/css/styles.css': 'controls/scss/styles.scss',
+					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss',
 					'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css': 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.scss'
 				}
 			},
@@ -125,14 +97,98 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		uglify: {
+		concat: {
 			options: {
-				mangle: false
+				separator: ';'
 			},
-			customBuild: {
-				files: {
-					'build.min.js': ['build.js']
-				}
+			dist: {
+				src: [
+					'controls/js/src/set-setting-value.js',
+					'controls/js/src/dynamic-control.js',
+
+					'controls/js/src/background.js',
+					'controls/js/src/code.js',
+					'controls/js/src/color-palette.js',
+					'controls/js/src/color.js',
+					'controls/js/src/dashicons.js',
+					'controls/js/src/date.js',
+					'controls/js/src/dimension.js',
+					'controls/js/src/dimensions.js',
+					'controls/js/src/editor.js',
+					'controls/js/src/fontawesome.js',
+					'controls/js/src/generic.js',
+					'controls/js/src/image.js',
+					'controls/js/src/multicheck.js',
+					'controls/js/src/multicolor.js',
+					'controls/js/src/number.js',
+					'controls/js/src/palette.js',
+					'controls/js/src/preset.js',
+					'controls/js/src/radio-buttonset.js',
+					'controls/js/src/radio-image.js',
+					'controls/js/src/radio.js',
+					'controls/js/src/repeater.js',
+					'controls/js/src/select.js',
+					'controls/js/src/slider.js',
+					'controls/js/src/sortable.js',
+					'controls/js/src/switch.js',
+					'controls/js/src/toggle.js',
+					'controls/js/src/typography.js'
+				],
+				dest: 'controls/js/dist/script.js'
+			},
+			legacy: {
+				src: [
+					'controls/js/src/set-setting-value.js',
+					'controls/js/src/dynamic-control.js',
+
+					'controls/js/src/background-legacy.js',
+					'controls/js/src/code.js',
+					'controls/js/src/color-palette.js',
+					'controls/js/src/color.js',
+					'controls/js/src/dashicons.js',
+					'controls/js/src/date.js',
+					'controls/js/src/dimension.js',
+					'controls/js/src/dimensions.js',
+					'controls/js/src/editor.js',
+					'controls/js/src/fontawesome.js',
+					'controls/js/src/generic.js',
+					'controls/js/src/image.js',
+					'controls/js/src/multicheck.js',
+					'controls/js/src/multicolor-legacy.js',
+					'controls/js/src/number.js',
+					'controls/js/src/palette.js',
+					'controls/js/src/preset.js',
+					'controls/js/src/radio-buttonset.js',
+					'controls/js/src/radio-image.js',
+					'controls/js/src/radio.js',
+					'controls/js/src/repeater.js',
+					'controls/js/src/select.js',
+					'controls/js/src/slider.js',
+					'controls/js/src/sortable.js',
+					'controls/js/src/switch.js',
+					'controls/js/src/toggle.js',
+					'controls/js/src/typography-legacy.js'
+				],
+				dest: 'controls/js/dist/script-legacy.js'
+			}
+		},
+
+		uglify: {
+			dev: {
+				options: {
+					mangle: {
+						reserved: ['jQuery', 'wp', '_']
+					}
+				},
+				files: [{
+					expand: true,
+					src: ['controls/js/dist/*.js', '!controls/js/dist/*.min.js'],
+					dest: '.',
+					cwd: '.',
+					rename: function( dst, src ) {
+						return dst + '/' + src.replace( '.js', '.min.js' );
+					}
+				}]
 			}
 		}
 	});
@@ -147,7 +203,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
-	grunt.registerTask( 'default', ['sass:dist', 'curl:google-fonts-source', 'json2php', 'clean', 'wp_readme_to_markdown'] );
+	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify', 'curl:google-fonts-source', 'json2php', 'clean', 'wp_readme_to_markdown'] );
 	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
 	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
