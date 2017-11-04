@@ -324,13 +324,7 @@ class Kirki_Control_Typography extends WP_Customize_Control {
 				</div>
 			<# } #>
 		</div>
-		<#
-		if ( ! _.isUndefined( data.value['font-family'] ) ) {
-			data.value['font-family'] = data.value['font-family'].replace( /&quot;/g, '&#39' );
-		}
-		valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
-		#>
-		<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+		<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php
 	}
 
