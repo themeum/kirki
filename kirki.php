@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       3.0.9
+ * Version:       3.0.11
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -37,8 +37,9 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
-// Include controls.
-include_once dirname( __FILE__ ) . '/controls/kirki-controls.php';
+// Make sure the path is properly set.
+Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
+Kirki_Init::set_url();
 
 if ( ! function_exists( 'Kirki' ) ) {
 	// @codingStandardsIgnoreStart
@@ -52,27 +53,20 @@ if ( ! function_exists( 'Kirki' ) ) {
 	// @codingStandardsIgnoreEnd
 
 }
+
 // Start Kirki.
 global $kirki;
 $kirki = Kirki();
-// Instamtiate the modules.
+
+// Instantiate the modules.
 $kirki->modules = new Kirki_Modules();
 
-// Make sure the path is properly set.
-Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
+Kirki::$url = plugins_url( '', __FILE__ );
 
-// If Kirki is installed as a plugin, use plugin_dir_url().
-$kirki_is_plugin = Kirki_Util::is_plugin();
-if ( $kirki_is_plugin ) {
-	Kirki::$url = plugin_dir_url( __FILE__ );
-} elseif ( function_exists( 'is_link' ) && is_link( dirname( __FILE__ ) ) && function_exists( 'readlink' ) ) {
-	// If the path is a symlink, get the target.
-	Kirki::$path = readlink( Kirki::$path );
-}
-
-// Instantiate 2ndary classes.
-new Kirki_L10n();
+// Instantiate classes.
 new Kirki();
+new Kirki_L10n();
+
 // Include deprecated functions & methods.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
@@ -91,5 +85,5 @@ if ( file_exists( $custom_config_path ) ) {
 // Add upgrade notifications.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
 
-// Handle localization when kirki is included in a theme.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/l10n.php' );
+// Uncomment this line to see the demo controls in the customizer.
+/* include_once dirname( __FILE__ ) . '/example.php'; */

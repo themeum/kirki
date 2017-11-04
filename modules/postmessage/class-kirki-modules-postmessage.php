@@ -73,23 +73,12 @@ class Kirki_Modules_PostMessage {
 
 		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', array( 'jquery', 'customize-preview' ), false, true );
 		$fields = Kirki::$fields;
-		$script_id = '';
 		foreach ( $fields as $field ) {
-			if ( ! isset( $field['settings'] ) || ! is_string( $field['settings'] ) ) {
-				continue;
+			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
+				$this->script .= $this->script( $field );
 			}
-			$script_id .= $field['settings'];
 		}
-		$this->script = get_transient( 'kirki_auto_postmessage' . md5( $script_id ) );
-		if ( ! $this->script ) {
-			foreach ( $fields as $field ) {
-				if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
-					$this->script .= $this->script( $field );
-				}
-			}
-			$this->script = apply_filters( 'kirki/postmessage/script', $this->script );
-			set_transient( 'kirki_auto_postmessage' . md5( $script_id ), $this->script, 30 * MINUTE_IN_SECONDS );
-		}
+		$this->script = apply_filters( 'kirki/postmessage/script', $this->script );
 		wp_add_inline_script( 'kirki_auto_postmessage', $this->script, 'after' );
 
 	}
@@ -221,7 +210,6 @@ class Kirki_Modules_PostMessage {
 
 		// Apply callback to the value if a callback is defined.
 		if ( ! empty( $args['js_callback'] ) && is_array( $args['js_callback'] ) && isset( $args['js_callback'][0] ) && ! empty( $args['js_callback'][0] ) ) {
-			$args['js_callback'][1] = isset( $args['js_callback'][1] ) ? $args['js_callback'][1] : '';
 			$script .= $value_key . '=' . $args['js_callback'][0] . '(' . $value_key . ',' . $args['js_callback'][1] . ');';
 		}
 
@@ -294,16 +282,19 @@ class Kirki_Modules_PostMessage {
 			$value = '\'' . $args['prefix'] . '\'+subValue';
 		}
 
+		// Mostly used for padding, margin & position properties.
+		$direction_script  = 'if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
+		$direction_script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
 		// Allows us to apply this just for a specific choice in the array of the values.
 		if ( '' !== $choice ) {
+			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
 			$script .= 'if(\'' . $choice . '\'===subKey){';
+			$script .= ( $choice_is_direction ) ? $direction_script . 'else{' : '';
 			$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
+			$script .= ( $choice_is_direction ) ? '}' : '';
 			$script .= '}';
 		} else {
-			// Mostly used for padding, margin & position properties.
-			$script .= 'if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
-			$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
-			$script .= 'else{';
+			$script .= $direction_script . 'else{';
 
 			// This is where most object-based fields will go.
 			$script .= 'css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
@@ -330,6 +321,8 @@ class Kirki_Modules_PostMessage {
 	 * @param array $field The field arguments.
 	 */
 	protected function script_var_typography( $args, $field ) {
+
+		$args = $this->get_args( $args );
 
 		$script = '';
 		$css    = '';
@@ -378,6 +371,7 @@ class Kirki_Modules_PostMessage {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var = 'fontFamilyCSS';
 			}
+			$var = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 

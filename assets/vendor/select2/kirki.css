@@ -1,0 +1,28 @@
+.select2-dropdown {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0; }
+
+.select2-container {
+  min-width: 100px;
+  width: 100% !important; }
+  .select2-container--open .select2-dropdown--above,
+  .select2-container--open .select2-dropdown--below {
+    z-index: 9999999;
+    min-width: 100px; }
+  .select2-container--default .select2-search--dropdown .select2-search__field {
+    border-color: rgba(0, 0, 0, 0.1); }
+  .select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single {
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0; }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: rgba(255, 255, 255, 0);
+    background-color: transparent;
+    border: none;
+    border-radius: 0; }
+
+.wp-customizer .select2-container {
+  z-index: 8 !important; }
+  .wp-customizer .select2-container.select2-container--open {
+    z-index: 999999 !important; }
+
+/*# sourceMappingURL=kirki.css.map */

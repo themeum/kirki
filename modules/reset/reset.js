@@ -1,29 +1,26 @@
+/* global kirkiResetButtonLabel, kirkiSetSettingValue */
 jQuery( document ).ready( function() {
+
 	'use strict';
 
-	// Add reset buttons to sections.
 	wp.customize.section.each( function( section ) {
-		var link = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + kirkiResetButtonLabel['reset-with-icon'] + '</a>';
-		jQuery( link ).appendTo( '#sub-accordion-section-' + section.id + ' .customize-section-title > h3' );
-	});
+		var sectionID = '#sub-accordion-section-' + section.id,
+		    link      = '<a href="#" class="kirki-reset-section" data-reset-section-id="' + section.id + '">' + kirkiResetButtonLabel['reset-with-icon'] + '</a>';
 
-	// Reset controls on click.
+		if ( jQuery( sectionID ).hasClass( 'control-section-kirki-default' ) ) {
+			jQuery( link ).appendTo( sectionID + ' .customize-section-title > h3' );
+		}
+	} );
+
 	jQuery( 'a.kirki-reset-section' ).on( 'click', function() {
 		var id       = jQuery( this ).data( 'reset-section-id' ),
 		    controls = wp.customize.section( id ).controls();
 
+		// Loop controls
 		_.each( controls, function( control, i ) {
 
 			// Set value to default
-			control.setting.set( control.params['default'] );
-			if ( _.isFunction( control.kirkiSetValue ) ) {
-				control.kirkiSetValue( control.params['default'] );
-			}
-
-			// Reset the controls visually.
-			if ( _.isFunction( control.kirkiSetControlValue ) ) {
-				control.kirkiSetControlValue( control.params['default'] );
-			}
+			kirkiSetSettingValue.set( controls[ i ].id, control.params['default'] );
 		});
 	});
 });

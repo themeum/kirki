@@ -1,0 +1,8 @@
+.wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+  display: flex; }
+  .wp-picker-container.wp-picker-active .wp-picker-input-wrap label {
+    width: 100%; }
+    .wp-picker-container.wp-picker-active .wp-picker-input-wrap label input {
+      width: 100% !important; }
+
+/*# sourceMappingURL=wp-color-picker-alpha.css.map */

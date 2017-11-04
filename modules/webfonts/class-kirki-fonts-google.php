@@ -81,9 +81,6 @@ final class Kirki_Fonts_Google {
 		}
 
 		// Populate the array of google fonts.
-		if ( ! class_exists( 'Kirki_Fonts' ) ) {
-			include_once KIRKI_CONTROLS_PATH . '/php/class-kirki-fonts.php';
-		}
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
 
 	}
@@ -156,7 +153,7 @@ final class Kirki_Fonts_Google {
 				$args['choices']['variant'] = array_keys( $all_variants );
 			}
 
-			if ( ! empty( $args['choices']['variant'] ) ) {
+			if ( ! empty( $args['choices']['variant'] ) && is_array( $args['choices']['variant'] ) ) {
 				foreach ( $args['choices']['variant'] as $extra_variant ) {
 					$this->fonts[ $value['font-family'] ][] = $extra_variant;
 				}

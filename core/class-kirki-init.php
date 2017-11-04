@@ -29,56 +29,32 @@ class Kirki_Init {
 	 */
 	public function __construct() {
 
-		global $wp_customize;
-		if ( $wp_customize ) {
-			$this->set_url();
-			add_action( 'after_setup_theme', array( $this, 'set_url' ) );
-		}
+		self::set_url();
+		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
+		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 
 		new Kirki_Values();
 	}
 
 	/**
 	 * Properly set the Kirki URL for assets.
-	 * Determines if Kirki is installed as a plugin, in a child theme, or a parent theme
-	 * and then does some calculations to get the proper URL for its CSS & JS assets.
+	 *
+	 * @static
+	 * @access public
+	 * @return void
 	 */
-	public function set_url() {
+	public static function set_url() {
 
-		Kirki::$path = wp_normalize_path( dirname( KIRKI_PLUGIN_FILE ) );
-
-		// Works in most cases.
-		// Serves as a fallback in case all other checks fail.
-		if ( defined( 'WP_CONTENT_DIR' ) ) {
-			$content_dir = wp_normalize_path( WP_CONTENT_DIR );
-			if ( false !== strpos( Kirki::$path, $content_dir ) ) {
-				$relative_path = str_replace( $content_dir, '', Kirki::$path );
-				Kirki::$url = content_url( $relative_path );
-			}
-		}
-
-		// If Kirki is installed as a plugin, use that for the URL.
 		if ( Kirki_Util::is_plugin() ) {
-			Kirki::$url = plugin_dir_url( KIRKI_PLUGIN_FILE );
+			return;
 		}
 
-		// Get the path to the theme.
-		$theme_path = wp_normalize_path( get_template_directory() );
+		// Get correct URL and path to wp-content.
+		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
+		$content_dir = wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) );
 
-		// Is Kirki included in the theme?
-		if ( false !== strpos( Kirki::$path, $theme_path ) ) {
-			Kirki::$url = get_template_directory_uri() . str_replace( $theme_path, '', Kirki::$path );
-		}
-
-		// Is there a child-theme?
-		$child_theme_path = wp_normalize_path( get_stylesheet_directory_uri() );
-		if ( $child_theme_path !== $theme_path ) {
-			// Is Kirki included in a child theme?
-			if ( false !== strpos( Kirki::$path, $child_theme_path ) ) {
-				Kirki::$url = get_template_directory_uri() . str_replace( $child_theme_path, '', Kirki::$path );
-			}
-		}
+		Kirki::$url = str_replace( $content_dir, $content_url, wp_normalize_path( Kirki::$path ) );
 
 		// Apply the kirki/config filter.
 		$config = apply_filters( 'kirki/config', array() );
@@ -86,10 +62,57 @@ class Kirki_Init {
 			Kirki::$url = $config['url_path'];
 		}
 
-		// Escapes the URL.
-		Kirki::$url = esc_url_raw( Kirki::$url );
 		// Make sure the right protocol is used.
 		Kirki::$url = set_url_scheme( Kirki::$url );
+	}
+
+	/**
+	 * Add the default Kirki control types.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 * @param array $control_types The control types array.
+	 * @return array
+	 */
+	public function default_control_types( $control_types = array() ) {
+
+		$this->control_types = array(
+			'checkbox'              => 'WP_Customize_Control',
+			'kirki-background'      => 'Kirki_Control_Background',
+			'kirki-code'            => 'Kirki_Control_Code',
+			'kirki-color'           => 'Kirki_Control_Color',
+			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
+			'kirki-custom'          => 'Kirki_Control_Custom',
+			'kirki-date'            => 'Kirki_Control_Date',
+			'kirki-dashicons'       => 'Kirki_Control_Dashicons',
+			'kirki-dimension'       => 'Kirki_Control_Dimension',
+			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
+			'kirki-editor'          => 'Kirki_Control_Editor',
+			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
+			'kirki-image'           => 'Kirki_Control_Image',
+			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
+			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
+			'kirki-number'          => 'Kirki_Control_Number',
+			'kirki-palette'         => 'Kirki_Control_Palette',
+			'kirki-preset'          => 'Kirki_Control_Preset',
+			'kirki-radio'           => 'Kirki_Control_Radio',
+			'kirki-radio-buttonset' => 'Kirki_Control_Radio_ButtonSet',
+			'kirki-radio-image'     => 'Kirki_Control_Radio_Image',
+			'repeater'              => 'Kirki_Control_Repeater',
+			'kirki-select'          => 'Kirki_Control_Select',
+			'kirki-slider'          => 'Kirki_Control_Slider',
+			'kirki-sortable'        => 'Kirki_Control_Sortable',
+			'kirki-spacing'         => 'Kirki_Control_Dimensions',
+			'kirki-switch'          => 'Kirki_Control_Switch',
+			'kirki-generic'         => 'Kirki_Control_Generic',
+			'kirki-toggle'          => 'Kirki_Control_Toggle',
+			'kirki-typography'      => 'Kirki_Control_Typography',
+			'image'                 => 'Kirki_Control_Image',
+			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
+			'upload'                => 'WP_Customize_Upload_Control',
+		);
+		return array_merge( $this->control_types, $control_types );
+
 	}
 
 	/**
@@ -99,7 +122,7 @@ class Kirki_Init {
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
-		add_action( 'customize_register', array( $this, 'register_section_types' ) );
+		add_action( 'customize_register', array( $this, 'register_control_types' ) );
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
 		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
@@ -110,12 +133,32 @@ class Kirki_Init {
 	 *
 	 * @return  void
 	 */
-	public function register_section_types() {
+	public function register_control_types() {
 		global $wp_customize;
 
 		$section_types = apply_filters( 'kirki/section_types', array() );
 		foreach ( $section_types as $section_type ) {
 			$wp_customize->register_section_type( $section_type );
+		}
+
+		$this->control_types = $this->default_control_types();
+		foreach ( $this->control_types as $key => $classname ) {
+			if ( ! class_exists( $classname ) ) {
+				unset( $this->control_types[ $key ] );
+			}
+		}
+
+		$skip_control_types = apply_filters(
+			'kirki/control_types/exclude', array(
+				'Kirki_Control_Repeater',
+				'WP_Customize_Control',
+			)
+		);
+
+		foreach ( $this->control_types as $control_type ) {
+			if ( ! in_array( $control_type, $skip_control_types, true ) && class_exists( $control_type ) ) {
+				$wp_customize->register_control_type( $control_type );
+			}
 		}
 	}
 

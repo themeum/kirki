@@ -15,12 +15,9 @@
     padding: 10px;
     z-index: 99999;
     border-radius: 3px;
-    line-height: 1.4em;
-    display: none; }
+    line-height: 1.4em; }
     .tooltip-wrapper .tooltip-content a {
       color: #000; }
-    .tooltip-wrapper .tooltip-content.open {
-      display: block; }
     .tooltip-wrapper .tooltip-content:after {
       content: "\f139";
       font-family: dashicons;

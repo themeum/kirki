@@ -66,9 +66,6 @@ class Kirki_Field_Dimensions extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
-		if ( ! is_customize_preview() ) {
-			return;
-		}
 		$this->choices['controls'] = array();
 		if ( is_array( $this->default ) ) {
 			foreach ( $this->default as $key => $value ) {

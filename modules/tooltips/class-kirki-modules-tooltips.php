@@ -74,10 +74,12 @@ class Kirki_Modules_Tooltips {
 	 */
 	private function parse_fields() {
 
-		foreach ( Kirki::$fields as $field ) {
+		$fields = Kirki::$fields;
+		foreach ( $fields as $field ) {
 			if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
-				$this->tooltips_content[ $field['settings'] ] = array(
-					'id'      => str_replace( array( '[', ']' ), array( '-', '' ), $field['settings'] ),
+				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+				$this->tooltips_content[ $id ] = array(
+					'id'      => $id,
 					'content' => wp_kses_post( $field['tooltip'] ),
 				);
 			}
@@ -111,8 +113,7 @@ class Kirki_Modules_Tooltips {
 
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki', kirki_controls()->get_url( 'js/kirki.js' ), array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery', 'kirki' ) );
+		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery' ) );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
 		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', null );
 

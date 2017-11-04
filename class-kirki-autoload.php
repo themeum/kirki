@@ -19,15 +19,6 @@
 class Kirki_Autoload {
 
 	/**
-	 * The transient name.
-	 *
-	 * @access private
-	 * @since 3.0.10
-	 * @var string
-	 */
-	private $transient_name = 'kirki_autoload_paths';
-
-	/**
 	 * Cached paths.
 	 *
 	 * @access private
@@ -44,7 +35,6 @@ class Kirki_Autoload {
 	 */
 	public function __construct() {
 
-		$this->cached_paths = get_transient( $this->transient_name );
 		spl_autoload_register( array( $this, 'autoload' ) );
 	}
 
@@ -79,7 +69,6 @@ class Kirki_Autoload {
 				return;
 			}
 		}
-		set_transient( $this->transient_name, $this->cached_paths, 5 * MINUTE_IN_SECONDS );
 	}
 
 	/**
@@ -104,6 +93,25 @@ class Kirki_Autoload {
 			$path  = dirname( __FILE__ ) . '/modules/';
 			$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Modules_', '', $class_name ) ) ) . '/';
 			$paths[] = $path . $filename;
+		}
+
+		if ( isset( $name_parts[0] ) ) {
+
+			// Handle controls loading.
+			if ( 'Control' === $name_parts[0] ) {
+				$path  = dirname( __FILE__ ) . '/controls/';
+				$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Control_', '', $class_name ) ) ) . '/';
+
+				$paths[] = $path . $filename;
+			}
+
+			// Handle settings loading.
+			if ( 'Settings' === $name_parts[0] ) {
+				$path  = dirname( __FILE__ ) . '/controls/';
+				$path .= strtolower( str_replace( '_', '-', str_replace( array( 'Kirki_Settings_', '_Setting' ), '', $class_name ) ) ) . '/';
+
+				$paths[] = $path . $filename;
+			}
 		}
 
 		$paths[] = dirname( __FILE__ ) . '/core/' . $filename;
