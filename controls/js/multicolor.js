@@ -79,15 +79,13 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 	 */
 	saveValue: function( property, value ) {
 
-		'use strict';
+		var control = this,
+		    input   = control.container.find( '.multicolor-hidden-value' ),
+		    val     = control.setting._value;
 
-		var control   = this,
-		    input     = control.container.find( '.multicolor-hidden-value' ),
-		    valueJSON = jQuery( input ).val(),
-		    valueObj  = JSON.parse( valueJSON );
+		val[ property ] = value;
 
-		valueObj[ property ] = value;
-		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-		control.setting.set( valueObj );
+		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
+		control.setting.set( val );
 	}
 });
