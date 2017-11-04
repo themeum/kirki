@@ -660,6 +660,29 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	}
 });
 ;wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
+;wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
+
+	initKirkiControl: function() {
+
+		var control  = this,
+		    selector = control.selector + ' input.datepicker';
+
+		// Only add in WP 4.9+.
+		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
+			return;
+		}
+
+		// New method for the DateTime control.
+		wp.customize.control.add( new wp.customize.DateTimeControl( control.id, {
+			section: control.params.section,
+			priority: control.params.priority,
+			label: control.params.label,
+			description: control.params.description,
+			setting: control.id,
+			'default': control.params['default']
+		} ) );
+	}
+});
 ;/* global dimensionkirkiL10n */
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
 
