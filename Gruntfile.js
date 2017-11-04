@@ -82,7 +82,7 @@ module.exports = function( grunt ) {
 			css: {
 				files: [
 					'assets/**/*.scss',
-					'controls/**/*.scss',
+					'controls/scss/*.scss',
 					'modules/**/*.scss'
 				],
 				tasks: ['sass']
@@ -90,10 +90,10 @@ module.exports = function( grunt ) {
 			scripts: {
 				files: [
 					'Gruntfile.js',
-					'controls/**/*.js',
+					'controls/js/src/*.js',
 					'modules/**/*.js'
 				],
-				tasks: ['jscs']
+				tasks: ['concat', 'uglify']
 			}
 		},
 
