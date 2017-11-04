@@ -114,11 +114,8 @@ class Kirki_Control_Editor extends WP_Customize_Control {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="customize-control-content">
-				<a href="#" class="button button-primary toggle-editor"></a>
-				<textarea {{{ data.inputAttrs }}} class="hidden" {{{ data.link }}}>{{ data.value }}</textarea>
-			</div>
 		</label>
+		<textarea id="kirki-editor-{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}" {{{ data.inputAttrs }}} {{{ data.link }}}>{{ data.value }}</textarea>
 		<?php
 	}
 }
