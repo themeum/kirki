@@ -66,9 +66,6 @@ class Kirki_Field_Spacing extends Kirki_Field_Number {
 	 */
 	protected function set_choices() {
 
-		if ( ! is_customize_preview() ) {
-			return;
-		}
 		$default_args = array(
 			'controls' => array(
 				'top'    => ( isset( $this->default['top'] ) ),

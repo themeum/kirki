@@ -3,8 +3,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 		var control = this,
 		    value,
-		    thisInput,
-		    inputDefault,
 		    changeAction;
 
 		// Update the text value
