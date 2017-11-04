@@ -39,6 +39,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: WordPress 4.9 compatibility for typography controls.
 * Fix: WordPress 4.9 compatibility for multicolor contols.
 * Fix: WordPress 4.9 compatibility for background contols.
+* Fix: Refactored editor controls to make them compatible with WP 4.9
+* Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
 
 ### 3.0.11 ###
 
