@@ -1,11 +1,8 @@
-/* global CodeMirror */
 wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
-		var control  = this,
-		    element  = control.container.find( '.kirki-codemirror-editor' ),
-		    language = ( 'html' === control.params.choices.language ) ? { name: 'htmlmixed' } : control.params.choices.language;
+		var control  = this;
 
 		// Early exit if wp.customize.CodeEditorControl is not available.
 		if ( _.isUndefined( wp.customize.CodeEditorControl ) ) {
