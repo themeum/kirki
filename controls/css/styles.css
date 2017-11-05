@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .customize-control-kirki-background {
   position: relative; }
   .customize-control-kirki-background .background-attachment h4,
@@ -494,78 +495,43 @@
     background: #D32F2F;
     color: #fff; }
 
-.customize-control-kirki-slider {
-  position: relative; }
-  .customize-control-kirki-slider .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%; }
-  .customize-control-kirki-slider input[type=range] {
+.customize-control-kirki-slider .wrapper {
+  display: flex;
+  align-items: center; }
+  .customize-control-kirki-slider .wrapper input[type="range"] {
+    display: block;
     -webkit-appearance: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #bdc3c7;
+    width: 300px;
     height: 5px;
-    width: calc(100% - 45px);
-    padding: 0;
-    border-radius: 2px; }
-    .customize-control-kirki-slider input[type=range]:focus {
-      box-shadow: none;
-      outline: none; }
-    .customize-control-kirki-slider input[type=range]:hover {
-      background-color: rgba(0, 0, 0, 0.25); }
-    .customize-control-kirki-slider input[type=range]::-webkit-slider-thumb {
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0; }
+    .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
-      border: none;
+      background-color: #0085ba;
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
-      background-color: #3498D9; }
-    .customize-control-kirki-slider input[type=range]::-moz-range-thumb {
-      width: 15px;
-      height: 15px;
-      border: none;
-      border-radius: 50%;
-      background-color: #3498D9; }
-    .customize-control-kirki-slider input[type=range]::-ms-thumb {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      border: 0;
-      background-color: #3498D9; }
-    .customize-control-kirki-slider input[type=range]::-moz-range-track {
-      border: inherit;
-      background: transparent; }
-    .customize-control-kirki-slider input[type=range]::-ms-track {
-      border: inherit;
-      color: transparent;
-      background: transparent; }
-    .customize-control-kirki-slider input[type=range]::-ms-fill-lower, .customize-control-kirki-slider input[type=range]::-ms-fill-upper {
-      background: transparent; }
-    .customize-control-kirki-slider input[type=range]::-ms-tooltip {
-      display: none; }
-  .customize-control-kirki-slider .kirki_range_value {
-    display: inline-block;
-    font-size: 14px;
-    padding: 0 5px;
-    font-weight: 400;
-    position: relative;
-    top: 2px; }
-  .customize-control-kirki-slider .kirki-slider-reset {
-    color: rgba(0, 0, 0, 0.2);
-    float: right;
-    -webkit-transition: color 0.5s ease-in;
-    -moz-transition: color 0.5s ease-in;
-    -ms-transition: color 0.5s ease-in;
-    -o-transition: color 0.5s ease-in;
-    transition: color 0.5s ease-in; }
-    .customize-control-kirki-slider .kirki-slider-reset span {
-      font-size: 16px;
-      line-height: 22px; }
-    .customize-control-kirki-slider .kirki-slider-reset:hover {
-      color: red; }
+      border: 1px solid #006799;
+      cursor: pointer;
+      transition: 0.3s ease-in-out; }
+    ​ .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb:hover {
+      background-color: #006799;
+      border: 2px solid #0085ba; }
+    .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.2); }
+  .customize-control-kirki-slider .wrapper input[type="text"] {
+    font-size: 13px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: right;
+    padding: 0;
+    width: 50px; }
+  .customize-control-kirki-slider .wrapper .value {
+    display: flex;
+    align-items: baseline; }
 
 .customize-control-kirki-sortable ul.ui-sortable li {
   padding: 5px 10px;

@@ -2201,24 +2201,33 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 ;wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
-		var control = this,
-		    value,
-		    changeAction;
+		var control      = this,
+		    changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
+			rangeInput   = control.container.find( 'input[type="range"]' ),
+			textInput    = control.container.find( 'input[type="text"]' ),
+		    value        = control.setting._value;
 
-		// Update the text value
-		jQuery( 'input[type=range]' ).on( 'mousedown', function() {
-			value = jQuery( this ).attr( 'value' );
-			jQuery( this ).mousemove( function() {
-				value = jQuery( this ).attr( 'value' );
-				jQuery( this ).closest( 'label' ).find( '.kirki_range_value .value' ).text( value );
-			});
+		// Set the initial value in the text input.
+		textInput.attr( 'value', value );
+
+		// The range input changed.
+		rangeInput.on( changeAction, function() {
+
+			// Update value in text input.
+			textInput.attr( 'value', rangeInput.val() );
+
+			// Save value.
+			control.setting.set( rangeInput.val() );
 		});
 
-		changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change';
+		// The text input changed.
+		textInput.on( 'input paste change', function() {
 
-		// Save changes.
-		control.container.on( changeAction, 'input', function() {
-			control.setting.set( jQuery( this ).val() );
+			// Update value in text input.
+			rangeInput.attr( 'value', textInput.val() );
+
+			// Save value.
+			control.setting.set( textInput.val() );
 		});
 	}
 });

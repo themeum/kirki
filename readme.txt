@@ -51,6 +51,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: Added a Kirki_Control_Base class and abstracted controls.
 * New: Better file structure.
 * New: Compiled JS & CSS files.
+* New: Added ability to manually enter numeric values in slider controls.
 * Tweak: Improved styling of color-palette controls.
 * Tweak: Radio-Image controls now display images inline (using flexbox).
 * Tweak: Removed the reset switch from slider controls & improved their styling.

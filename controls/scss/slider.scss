@@ -1,104 +1,54 @@
 .customize-control-kirki-slider {
-  position: relative;
-
   .wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
 
-  input[type=range] {
-    -webkit-appearance: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    background-color: rgba(0,0,0,.1);
-    height: 5px;
-    width: calc(100% - 45px);
-    padding: 0;
-    border-radius: 2px;
+    input {
+      &[type="range"] {
+        display: block;
+        -webkit-appearance: none;
+        background-color: #bdc3c7;
+        width: 300px;
+        height: 5px;
+        border-radius: 5px;
+        margin: 0 auto;
+        outline: 0;
 
-    &:focus {
-      box-shadow: none;
-      outline: none;
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          background-color: #0085ba;
+          width: 17px;
+          height: 17px;
+          border-radius: 50%;
+          border: 1px solid #006799;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+        }
+
+        ​ &::-webkit-slider-thumb:hover {
+          background-color: #006799;
+          border: 2px solid #0085ba;
+        }
+
+        &::-webkit-slider-thumb:active {
+          transform: scale(1.2);
+        }
+      }
+
+      &[type="text"] {
+        font-size: 13px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        text-align: right;
+        padding: 0;
+        width: 50px;
+      }
     }
 
-    &:hover {
-      background-color: rgba(0,0,0,.25);
-    }
-
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
-      border: none;
-      border-radius: 50%;
-      background-color: #3498D9;
-    }
-
-    &::-moz-range-thumb {
-      width: 15px;
-      height: 15px;
-      border: none;
-      border-radius: 50%;
-      background-color: #3498D9;
-    }
-
-    &::-ms-thumb {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      border: 0;
-      background-color: #3498D9;
-    }
-
-    &::-moz-range-track {
-      border: inherit;
-      background: transparent;
-    }
-
-    &::-ms-track {
-      border: inherit;
-      color: transparent;
-      background: transparent;
-    }
-
-    &::-ms-fill-lower,
-    &::-ms-fill-upper {
-      background: transparent;
-    }
-
-    &::-ms-tooltip {
-      display: none;
-    }
-  }
-
-  .kirki_range_value {
-    display: inline-block;
-    font-size: 14px;
-    padding: 0 5px;
-    font-weight: 400;
-    position: relative;
-    top: 2px;
-  }
-
-  .kirki-slider-reset {
-    color: rgba(0,0,0,.2);
-    float: right;
-    -webkit-transition: color 0.5s ease-in;
-    -moz-transition: color 0.5s ease-in;
-    -ms-transition: color 0.5s ease-in;
-    -o-transition: color 0.5s ease-in;
-    transition: color 0.5s ease-in;
-
-    span {
-      font-size: 16px;
-      line-height: 22px;
-    }
-
-    &:hover {
-      color: red;
+    .value {
+      display: flex;
+      align-items: baseline;
     }
   }
 }
