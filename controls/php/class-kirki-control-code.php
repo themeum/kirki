@@ -50,7 +50,7 @@ class Kirki_Control_Code extends Kirki_Control_Base {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<!-- Hardcoded error message for older WordPress versions. -->
-			<ul><li class="notice notice-warning"><?php esc_attr_e( 'Please Update to WordPress 4.9 or greater for syntax highlighting.', 'kirki' ); ?></li></ul>
+			<ul><li class="notice notice-warning"><?php esc_attr_e( 'Update to WordPress 4.9 or greater for syntax highlighting.', 'kirki' ); ?></li></ul>
 
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="codemirror-kirki-wrapper">
