@@ -167,6 +167,19 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 
+Kirki::add_field( 'kirki_demo', array(
+	'type'        => 'color',
+	'settings'    => 'color_setting_hue',
+	'label'       => __( 'Color Control - hue only.', 'kirki' ),
+	'description' => esc_attr__( 'This is a color control - hue only.', 'kirki' ),
+	'section'     => 'color_section',
+	'default'     => '#0088CC',
+	'mode' => 'hue',
+	'choices'     => array(
+		'mode' => 'hue',
+	),
+) );
+
 /**
  * DateTime Control.
  */

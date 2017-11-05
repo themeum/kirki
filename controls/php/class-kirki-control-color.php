@@ -38,6 +38,14 @@ class Kirki_Control_Color extends Kirki_Control_Base {
 	public $palette = true;
 
 	/**
+	 * Mode.
+	 *
+	 * @since 3.0.12
+	 * @var string
+	 */
+	public $mode = 'full';
+
+	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
@@ -46,7 +54,8 @@ class Kirki_Control_Color extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['palette'] = $this->palette;
-		$this->choices['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
+		$this->json['choices']['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
+		$this->json['mode'] = $this->mode;
 	}
 
 	/**
@@ -69,7 +78,7 @@ class Kirki_Control_Color extends Kirki_Control_Base {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 		</label>
-		<input type="text" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control" {{{ data.link }}} />
+		<input type="text" data-type="{{{ data.mode }}}" {{{ data.inputAttrs }}} data-palette="{{ data.palette }}" data-default-color="{{ data.default }}" data-alpha="{{ data.choices['alpha'] }}" value="{{ data.value }}" class="kirki-color-control" {{{ data.link }}} />
 		<?php
 	}
 }
