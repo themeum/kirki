@@ -664,8 +664,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 	initKirkiControl: function() {
 
-		var control  = this,
-		    selector = control.selector + ' input.datepicker';
+		var control  = this;
 
 		// Only add in WP 4.9+.
 		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
