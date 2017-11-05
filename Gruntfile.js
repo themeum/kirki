@@ -20,8 +20,7 @@ module.exports = function( grunt ) {
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
 					'controls/css/styles.css': 'controls/scss/styles.scss',
-					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss',
-					'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.css': 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.scss'
+					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss'
 				}
 			},
 
