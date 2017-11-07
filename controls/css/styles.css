@@ -204,7 +204,7 @@
           border-top-right-radius: 0 !important;
           border-bottom-right-radius: 0 !important; }
         .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container .wp-color-result .wp-color-result-text {
-          display: none; }
+          display: none !important; }
 
 .customize-control-kirki-number {
   position: relative; }

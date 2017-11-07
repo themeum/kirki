@@ -88,14 +88,10 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			)
 		);
 
-		// Build the suffix for the style.
-		$suffix  = '';
-		$suffix .= ( Kirki_Util::get_wp_version() >= 4.9 ) ? '' : '-legacy';
-
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
-			"{$kirki_url}controls/css/styles{$suffix}.css",
+			"{$kirki_url}controls/css/styles.css",
 			null
 		);
 	}
