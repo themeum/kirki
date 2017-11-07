@@ -36,25 +36,25 @@ jQuery( document ).ready( function() {
 			case 'in':
 				if ( _.isArray( value2 ) ) {
 					_.each( value2, function( index, value ) {
-						if ( _.isNumeric( value ) ) {
+						if ( _.isNumber( value ) ) {
 							value = parseInt( value, 10 );
 						}
 						if ( value1.indexOf( value ) > -1 ) {
-							found = true;
+							return true;
 						}
 					} );
-					return found;
+					return false;
 				} else if ( _.isObject( value2 ) ) {
 					if ( ! _.isUndefined( value2[ value1 ] ) ) {
 						return true;
 					}
-					window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = false;
+					
 					_.each( value2, function( subValue ) {
 						if ( value1 === subValue ) {
-							window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = true;
+							return true;
 						}
 					});
-					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
+					return false;
 				} else if ( _.isString( value2 ) ) {
 					return value1.indexOf( value2 ) > -1;
 				}
