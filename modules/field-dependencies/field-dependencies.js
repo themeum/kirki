@@ -1,6 +1,10 @@
+/* global fieldDependencies */
 jQuery( document ).ready( function() {
 
 	function kirkiCompareValues( value1, value2, operator, extras ) {
+		var found = false,
+		    value;
+
 		switch ( operator ) {
 			case '===':
 				return value1 === value2;
@@ -30,19 +34,29 @@ jQuery( document ).ready( function() {
 				return value2 < value1;
 			case 'contains':
 			case 'in':
-				if ( _.isObject( value2 ) ) {
+				if ( _.isArray( value2 ) ) {
+					_.each( value2, function( index, value ) {
+						if ( _.isNumber( value ) ) {
+							value = parseInt( value, 10 );
+						}
+						if ( value1.indexOf( value ) > -1 ) {
+							return true;
+						}
+					} );
+					return false;
+				} else if ( _.isObject( value2 ) ) {
 					if ( ! _.isUndefined( value2[ value1 ] ) ) {
 						return true;
 					}
-					window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = false;
+					
 					_.each( value2, function( subValue ) {
 						if ( value1 === subValue ) {
-							window.kirkiControlDependencies[ extras[0] ][ extras[1] ] = true;
+							return true;
 						}
 					});
-					return window.kirkiControlDependencies[ extras[0] ][ extras[1] ];
+					return false;
 				} else if ( _.isString( value2 ) ) {
-					return value2.indexOf( value1 );
+					return value1.indexOf( value2 ) > -1;
 				}
 				break;
 			default:

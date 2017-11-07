@@ -2,9 +2,9 @@
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
-Requires at least: 4.8
-Tested up to: 4.8.2
-Stable tag: 3.0.11
+Requires at least: 4.8.2
+Tested up to: 4.9
+Stable tag: 3.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,9 +29,38 @@ You can find detailed documentation on how to use Kirki on [https://aristath.git
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our ducumentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
 
 == Changelog ==
+
+= 3.0.12 =
+
+November 7 2017, dev time: 42 hours.
+
+This update significantly reduces the plugin size by removing 3rd-party libraries (particularly CodeMirror) and uses the new controls and scripts that become available in WordPress 4.9.
+It also changes the file structure and paves the way for a 3.1 rewrite which will be a significant improvement, making Kirki a mostly JS-based app fully integrated in WordPress's JS API and moving away from the PHP API.
+
+* Fix: WordPress 4.9 compatibility for colorpickers.
+* Fix: WordPress 4.9 compatibility for typography controls.
+* Fix: WordPress 4.9 compatibility for multicolor contols.
+* Fix: WordPress 4.9 compatibility for background contols.
+* Fix: Refactored `editor` controls to make them compatible with WP 4.9
+* Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
+* Fix: Use new `DateTimeControl` if in WP 4.9+ for date control.
+* Fix: Text field styling.
+* Fix: Switch controls labels.
+* Fix: 'choices' arguments were not getting passed-on due to `is_customize_preview` checks in latest WP Versions.
+* Fix: Overriding Kirki translations from a theme when Kirki is embedded.
+* New: Replaced `select2` with `selectWoo`.
+* New: Added a `Kirki_Control_Base` class and abstracted controls.
+* New: Better file structure.
+* New: Compiled JS & CSS files.
+* New: Added ability to manually enter numeric values in slider controls.
+* Tweak: Improved styling of color-palette controls.
+* Tweak: Radio-Image controls now display images inline (using flexbox).
+* Tweak: Removed the reset switch from slider controls & improved their styling.
+* Tweak: Improved typography controls styling for text-align.
+* Removed: Reset module.
 
 = 3.0.11 =
 

@@ -155,4 +155,38 @@ class Kirki_Util {
 		$request['body']['plugins'] = wp_json_encode( $plugins );
 		return $request;
 	}
+
+	/**
+	 * Returns the $wp_version.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.12
+	 * @param string  $context      Use 'minor' or 'major'.
+	 * @param boolean $only_numeric Set to true if you want to skip the alpha/beta etc parts.
+	 * @return int|float|string     Returns integer when getting the 'major' version.
+	 *                              Returns float when getting the 'minor' version with $only_numeric set to true.
+	 *                              Returns string when getting the 'minor' version with $only_numeric set to false.
+	 */
+	public static function get_wp_version( $context = 'minor', $only_numeric = true ) {
+		global $wp_version;
+
+		// We only need the major version.
+		if ( 'major' === $context ) {
+			$version_parts = explode( '.', $wp_version );
+			return ( $only_numeric ) ? absint( $version_parts[0] ) : $version_parts[0];
+		}
+
+		// If we got this far, we want the full monty.
+		if ( $only_numeric ) {
+			// Get the numeric part of the version without any beta, alpha etc parts.
+			if ( false !== strpos( $wp_version, '-' ) ) {
+				// We're on a dev version.
+				$version_parts = explode( '-', $wp_version );
+				return floatval( $version_parts[0] );
+			}
+			return floatval( $wp_version );
+		}
+		return $wp_version;
+	}
 }

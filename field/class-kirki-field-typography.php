@@ -224,9 +224,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
-		if ( ! is_customize_preview() ) {
-			return;
-		}
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}

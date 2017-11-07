@@ -62,7 +62,6 @@ class Kirki_Modules {
 				'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
 				'icons'              => 'Kirki_Modules_Icons',
 				'loading'            => 'Kirki_Modules_Loading',
-				'reset'              => 'Kirki_Modules_Reset',
 				'tooltips'           => 'Kirki_Modules_Tooltips',
 				'branding'           => 'Kirki_Modules_Customizer_Branding',
 				'postMessage'        => 'Kirki_Modules_PostMessage',

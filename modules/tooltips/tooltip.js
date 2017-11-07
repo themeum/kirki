@@ -1,7 +1,11 @@
+/* global kirkiTooltips */
 jQuery( document ).ready( function() {
 
 	function kirkiTooltipAdd( control ) {
 		_.each( kirkiTooltips, function( tooltip ) {
+			var trigger,
+			    controlID,
+			    content;
 
 			if ( tooltip.id !== control.id ) {
 				return;
@@ -11,9 +15,9 @@ jQuery( document ).ready( function() {
 				return;
 			}
 
-			var trigger   = '<span class="tooltip-trigger" data-setting="' + tooltip.id + '"><span class="dashicons dashicons-editor-help"></span></span>',
-			    controlID = '#customize-control-' + tooltip.id,
-			    content   = '<div class="tooltip-content hidden" data-setting="' + tooltip.id + '">' + tooltip.content + '</div>';
+			trigger   = '<span class="tooltip-trigger" data-setting="' + tooltip.id + '"><span class="dashicons dashicons-editor-help"></span></span>';
+			controlID = '#customize-control-' + tooltip.id;
+			content   = '<div class="tooltip-content hidden" data-setting="' + tooltip.id + '">' + tooltip.content + '</div>';
 
 			// Add the trigger & content.
 			jQuery( '<div class="tooltip-wrapper">' + trigger + content + '</div>' ).prependTo( controlID );

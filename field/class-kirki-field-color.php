@@ -23,6 +23,14 @@ class Kirki_Field_Color extends Kirki_Field {
 	protected $alpha = false;
 
 	/**
+	 * Mode (hue)
+	 *
+	 * @access protected
+	 * @var string
+	 */
+	protected $mode = 'full';
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
@@ -40,9 +48,6 @@ class Kirki_Field_Color extends Kirki_Field {
 	 */
 	protected function set_choices() {
 
-		if ( ! is_customize_preview() ) {
-			return;
-		}
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
@@ -72,6 +77,10 @@ class Kirki_Field_Color extends Kirki_Field {
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
 		if ( ! empty( $this->sanitize_callback ) ) {
+			return;
+		}
+		if ( 'hue' === $this->mode ) {
+			$this->sanitize_callback = 'absint';
 			return;
 		}
 		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
