@@ -10,7 +10,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-
 		// If the range input value changes,
 		// copy the value to the text input
 		// and then save.
