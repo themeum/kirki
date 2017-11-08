@@ -2238,7 +2238,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-
 		// If the range input value changes,
 		// copy the value to the text input
 		// and then save.
@@ -2710,7 +2709,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		if ( ! _.isUndefined( window[ 'kirkiFonts' + control.id ] ) ) {
 			return window[ 'kirkiFonts' + control.id ];
 		}
-		if ( ! _.isUndefined( kirkiAllFonts ) ) {
+		if ( 'undefined' !== typeof kirkiAllFonts ) {
 			return kirkiAllFonts;
 		}
 		return {

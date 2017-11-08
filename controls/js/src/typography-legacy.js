@@ -338,7 +338,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		if ( ! _.isUndefined( window[ 'kirkiFonts' + control.id ] ) ) {
 			return window[ 'kirkiFonts' + control.id ];
 		}
-		if ( ! _.isUndefined( kirkiAllFonts ) ) {
+		if ( 'undefined' !== typeof kirkiAllFonts ) {
 			return kirkiAllFonts;
 		}
 		return {

@@ -2209,7 +2209,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-
 		// If the range input value changes,
 		// copy the value to the text input
 		// and then save.
