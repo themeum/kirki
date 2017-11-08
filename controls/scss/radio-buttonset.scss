@@ -4,9 +4,9 @@
     flex-wrap: wrap;
 
     .switch-label {
-      background: rgba(0,0,0,.05);
-      border: 1px solid rgba(0,0,0,.1);
-      color: #555;
+      background: $color--gray-light-100;
+      border: 1px solid $color--gray-light-200;
+      color: $textcolor-dark-mid;
       margin: 0;
       text-align: center;
       padding: 0.5em 1em;
@@ -18,8 +18,8 @@
     .switch-input {
       &:checked {
         + .switch-label {
-          background-color: #3498DB;
-          color: #fff;
+          background-color: $color-medium-blue;
+          color: $textcolor-light;
         }
       }
     }

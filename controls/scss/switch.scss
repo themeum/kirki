@@ -12,7 +12,7 @@
     user-select: none;
 
     label {
-      background: rgba(0,0,0,.2);
+      background: $color-light-silver-gray;
       color: transparent;
       cursor: pointer;
       display: block;
@@ -47,7 +47,7 @@
 
       &:checked {
         + label {
-          background: #3498DB;
+          background: $color-wp-blue;
 
           &:after {
             left: 2.25rem;

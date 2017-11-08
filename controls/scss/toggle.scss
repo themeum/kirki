@@ -15,12 +15,12 @@
   }
 
   .switch {
-    border: 1px solid rgba(0,0,0,.1);
+    border: 1px solid $color-light-silver-gray;
     display: inline-block;
     width: 35px;
     height: 12px;
     border-radius: 8px;
-    background: #ccc;
+    background: $color-light-silver-gray;
     vertical-align: middle;
     position: relative;
     top: 4px;
@@ -60,21 +60,20 @@
   }
 
   input:checked + .switch {
-    background: rgba(#3498DE,.3);
 
     &:before {
-      background: rgba(#3498DE, 0.075);
+      background: rgba($color-wp-blue, 0.075);
       transform: translate3d(100%, -50%, 0) scale(1);
     }
 
     &:after {
-      background: #3498DE;
+      background: $color-wp-blue;
       transform: translate3d(100%, -50%, 0);
     }
 
     &:active {
       &:before {
-        background: rgba(#3498DE, 0.075);
+        background: rgba($color-wp-blue, 0.075);
         transform: translate3d(100%, -50%, 0) scale(3);
       }
     }
