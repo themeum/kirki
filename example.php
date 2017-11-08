@@ -670,7 +670,7 @@ Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'typography',
 	'settings'    => 'typography_setting_1',
 	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
-	'description' => esc_attr__( 'Just the font-family.', 'Kirki' ),
+	'description' => esc_attr__( 'Just the font-family.', 'kirki' ),
 	'section'     => 'typography_section',
 	'default'     => array(
 		'font-family'    => 'Roboto',
