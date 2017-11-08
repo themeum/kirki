@@ -372,8 +372,8 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'text',
 	'settings'    => 'generic_text_setting',
-	'label'       => esc_attr__( 'Text Control' ),
-	'description' => esc_attr__( 'Description' ),
+	'label'       => esc_attr__( 'Text Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
 ) );
@@ -381,8 +381,8 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'textarea',
 	'settings'    => 'generic_textarea_setting',
-	'label'       => esc_attr__( 'Textarea Control' ),
-	'description' => esc_attr__( 'Description' ),
+	'label'       => esc_attr__( 'Textarea Control', 'kirki' ),
+	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
 ) );
@@ -390,7 +390,7 @@ Kirki::add_field( 'kirki_demo', array(
 Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'generic',
 	'settings'    => 'generic_custom_setting',
-	'label'       => esc_attr__( 'Custom input Control.' ),
+	'label'       => esc_attr__( 'Custom input Control.', 'kirki' ),
 	'description' => esc_attr__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
@@ -670,7 +670,7 @@ Kirki::add_field( 'kirki_demo', array(
 	'type'        => 'typography',
 	'settings'    => 'typography_setting_1',
 	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
-	'description' => esc_attr__( 'Just the font-family.', 'Kirki' ),
+	'description' => esc_attr__( 'Just the font-family.', 'kirki' ),
 	'section'     => 'typography_section',
 	'default'     => array(
 		'font-family'    => 'Roboto',
