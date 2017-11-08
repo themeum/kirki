@@ -294,7 +294,8 @@
     color: #fff; }
 
 .customize-control-kirki-radio-image > .image {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
 .customize-control-kirki-radio-image label {
   position: relative;
   display: inline-block; }
