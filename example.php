@@ -596,7 +596,8 @@ Kirki::add_field( 'kirki_demo', array(
 	'choices'     => array(
 		'min'  => 0,
 		'max'  => 20,
-		'step' => .1,
+		'step' => 1,
+		'suffix' => 'px',
 	),
 ) );
 
