@@ -52,19 +52,5 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() {
-		?>
-		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="wrapper">
-				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
-				<span class="value">
-					<input {{{ data.inputAttrs }}} type="text"/>
-					<# if ( data.choices['suffix'] ) { #>{{ data.choices['suffix'] }}<# } #>
-				</span>
-			</div>
-		</label>
-		<?php
-	}
+	protected function content_template() {}
 }
