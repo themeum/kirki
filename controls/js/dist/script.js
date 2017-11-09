@@ -2209,25 +2209,30 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-		// The range input changed.
+		// If the range input value changes,
+		// copy the value to the text input
+		// and then save.
 		rangeInput.on( changeAction, function() {
-
-			// Update value in text input.
 			textInput.attr( 'value', rangeInput.val() );
-
-			// Save value.
 			control.setting.set( rangeInput.val() );
-		});
+		} );
 
-		// The text input changed.
+		// If the text input value changes,
+		// copy the value to the range input
+		// and then save.
 		textInput.on( 'input paste change', function() {
-
-			// Update value in text input.
 			rangeInput.attr( 'value', textInput.val() );
-
-			// Save value.
 			control.setting.set( textInput.val() );
-		});
+		} );
+
+		// If the reset button is clicked,
+		// set slider and text input values to default
+		// and hen save.
+		control.container.find( '.slider-reset' ).on( 'click', function() {
+			textInput.attr( 'value', control.params['default'] );
+			rangeInput.attr( 'value', control.params['default'] );
+			control.setting.set( textInput.val() );
+		} );
 	}
 });
 ;/* global kirkiControlLoader */

@@ -2,13 +2,29 @@
   .wrapper {
     display: flex;
     align-items: center;
+    padding: 15px 0 7px;
+    position: relative;
+
+    .slider-reset {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+      transition: 0.3s ease-in-out;
+      color: rgba(0,0,0,.3);
+
+      &:hover {
+        transform: scale(1.3);
+        color: #DC3232;
+      }
+    }
 
     input {
       &[type="range"] {
         display: block;
         -webkit-appearance: none;
         background-color: #bdc3c7;
-        width: 300px;
+        width: 100%;
         height: 5px;
         border-radius: 5px;
         margin: 0 auto;
@@ -42,7 +58,7 @@
         box-shadow: none;
         text-align: right;
         padding: 0;
-        width: 50px;
+        width: 40px;
       }
     }
 

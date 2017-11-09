@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8.2  
 **Tested up to:** 4.9  
-**Stable tag:** 3.0.12  
+**Stable tag:** 3.0.13  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -32,6 +32,16 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 3.0.13 ###
+
+Novermber 9 2017, dev time: 3 hours.
+
+* Fix: textdomain typo in a string.
+* Fix: radio-image styling.
+* Fix: JS error (underscore's `_.isUndefined` for some reason doesn't always work as expected).
+* Tweak: Added reset back to sliders.
+* Tweak: CSS improvements.
 
 ### 3.0.12 ###
 
