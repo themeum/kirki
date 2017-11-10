@@ -4,6 +4,7 @@ title: Open-Source Customizer Framework
 subtitle: A complete toolkit for WordPress theme Developers.
 showButtons: true
 skipWrapper: true
+bodyClasses: home
 ---
 <div id="main" class="grid-container grid-margin-x">
     <div class="cell">
