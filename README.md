@@ -35,7 +35,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.13 ###
 
-Novermber 9 2017, dev time: 3 hours.
+November 9 2017, dev time: 3 hours.
 
 * Fix: textdomain typo in a string.
 * Fix: radio-image styling.
