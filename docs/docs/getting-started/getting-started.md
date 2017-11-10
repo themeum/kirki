@@ -3,6 +3,7 @@ layout: default
 title: Getting Started
 subtitle: How to add kirki to your project.
 mainMaxWidth: 50rem;
+bodyClasses: page
 ---
 
 If you are building a WordPress theme that will be distributed (either free or premium), the first thing you have to decide when using Kirki is how your clients will get the plugin on your site.
@@ -35,7 +36,7 @@ Though we do do not recommend embedding kirki in your theme it is still possible
 Keep in mind that if you choose to follow this method Kirki will be "invisible" as a plugin to your clients and they will therefore be unable to update to future versions in case of bugfixes and/or security updates.
 
 ---------------------
-<div class="callout secondary">
+<div class="callout warning ribbon-full">
     <h5>A word of caution for themes on wordpress.org:</h5>
     <p>If your theme will be distributed via wordpress.org you cannot require the installation of plugins but you can recommend them. That means that the theme will still have to work when kirki is not installed, for which we have already build a fallback PHP Class you can use in your themes <a href="https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php">here</a>.</p>
 </div>

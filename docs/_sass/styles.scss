@@ -16,35 +16,6 @@ body {
   font-family: 'ibm-plex-sans', 'Helvetica Neue', Arial, sans-serif;
 
   &.home {
-    .hero {
-      padding: 7rem 2rem 10rem;
-      background-color: #306ffd;
-      background-image: linear-gradient(60deg,#306efe,#003ab7);
-      color: #fff;
-      position: relative;
-      text-align: center;
-      font-size: 1.3em;
-
-      h1 {
-        text-transform: uppercase;
-        font-family: Antonio,Helvetica Neue,Helvetica,Arial,"sans-serif";
-        font-size: 1.8rem;
-        font-weight: 300;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      .hero__div {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: auto;
-        margin-bottom: -1px;
-      }
-    }
-
     .features {
       .feature {
         padding-bottom: 2rem;
@@ -72,12 +43,42 @@ body {
   }
 }
 
+.hero {
+  padding: 7rem 2rem 10rem;
+  background-color: #306ffd;
+  background-image: linear-gradient(60deg,#306efe,#003ab7);
+  color: #fff;
+  position: relative;
+  text-align: center;
+  font-size: 1.3em;
+
+  h1 {
+    text-transform: uppercase;
+    font-family: Antonio,Helvetica Neue,Helvetica,Arial,"sans-serif";
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .hero__div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    margin-bottom: -1px;
+  }
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: 'ibm-plex-serif', 'Georgia', Times, serif;
   font-weight: bold;
 }
 
@@ -322,6 +323,16 @@ input {
   }
 }
 
-h3 {
-  font-family: 'ibm-plex-serif', 'Georgia', Times, serif;
+.page {
+  h3 {
+    margin-top: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+  }
+}
+
+.ribbon-full {
+  margin-left: -100vw;
+  padding-left: 100vw;
+  margin-right: -100vw;
+  padding-right: 100vw;
 }
