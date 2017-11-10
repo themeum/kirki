@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+
+<body class="home">
+	{% include header.html %}
+	{% include hero.html %}
+	{% if page.skipWrapper %}{% else %}<div id="main" class="grid-container grid-margin-x">{% endif %}
+		{{ content }}
+	{% if page.skipWrapper %}{% else %}</div>{% endif %}
+	{% include footer.html %}
+</body>
+</html>
