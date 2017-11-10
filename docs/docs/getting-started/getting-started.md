@@ -12,7 +12,11 @@ Currently there are 2 options:
 1. Recommend (or require) the installation of Kirki as a plugin
 2. Embed Kirki in your theme.
 
+### Use a 3rd-party script to require/recommend the installation of Kirki
+
 If you are using [TGMPA](http://tgmpluginactivation.com/) or [MerlinWP](https://merlinwp.com/) in your theme, then you can use those to recommend - or require - the installation of the Kirki plugin with your theme.
+
+### Use a custom script to recommend the installation of Kirki
 
 If you don't use one of the above scripts, then you can use [this simple script](https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php) in your theme to recommend the installation of Kirki.
 
@@ -23,6 +27,13 @@ Copy the file from [here](https://github.com/aristath/kirki/tree/master/docs/fil
 ```php
 include_once get_theme_file_path( 'inc/recommend-kirki.php' );
 ```
+
+### Embed in your theme
+
+Though we do do not recommend embedding kirki in your theme it is still possible to do. You can simply copy the plugin in your theme and then include the main plugin file in your theme's `functions.php` file.
+
+Keep in mind that if you choose to follow this method Kirki will be "invisible" as a plugin to your clients and they will therefore be unable to update to future versions in case of bugfixes and/or security updates.
+
 ---------------------
 <div class="callout secondary">
     <h5>A word of caution for themes on wordpress.org:</h5>
