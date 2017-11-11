@@ -4,6 +4,19 @@ title: Getting Started
 subtitle: How to add kirki to your project.
 mainMaxWidth: 50rem;
 bodyClasses: page
+heroButtons:
+  - url: config
+    class: white button border-only
+    icon: fa fa-cogs
+    label: Configuring Project
+  - url: adding-panels-and-sections
+    class: white button border-only
+    icon: fa fa-th-list
+    label: Add Panels and Sections
+  - url: controls
+    class: white button
+    icon: fa fa-diamond
+    label: Controls
 ---
 
 If you are building a WordPress theme that will be distributed (either free or premium), the first thing you have to decide when using Kirki is how your clients will get the plugin on your site.

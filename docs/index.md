@@ -11,6 +11,10 @@ heroButtons:
     class: white button
     icon: fa fa-github
     label: Github Project
+  - url: docs/getting-started
+    class: white button border-only
+    icon: fa fa-play
+    label: Get Started
 skipWrapper: true
 bodyClasses: home
 ---
