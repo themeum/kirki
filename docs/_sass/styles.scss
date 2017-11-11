@@ -141,6 +141,17 @@ h6 {
           }
         }
       }
+
+      &.dropdown {
+        > li {
+          &.opens-right {
+            > .is-dropdown-submenu {
+              border: none;
+              background-color: mix(#1259fe,#003098);
+            }
+          }
+        }
+      }
     }
   }
 
