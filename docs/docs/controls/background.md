@@ -10,7 +10,7 @@ returns: array
 
 The `background` control allows you to have every CSS background property under one roof.
 
-Example:
+### Example
 
 ```php
 Kirki::add_field( 'kirki_demo', array(

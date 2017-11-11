@@ -12,6 +12,21 @@ The `dashicons` control allows you to select an available icons from the WordPre
 
 The returned value is a string and does not contain the `dashicons dashicons-` prefix, and allows you to handle the selected values as you see fit.
 
+### Example
+
+```php
+<?php
+Kirki::add_field( 'my_config', array(
+	'type'     => 'dashicons',
+	'settings' => 'my_setting',
+	'label'    => __( 'Dashicons Control', 'my_textdomain' ),
+	'section'  => 'my_section',
+	'default'  => 'menu',
+	'priority' => 10,
+) );
+?>
+```
+
 ### Usage
 
 ```php

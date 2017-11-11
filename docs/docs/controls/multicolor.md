@@ -14,6 +14,28 @@ The saved options will be in the form of an array of the form `$key => $value`. 
 
 > Please keep in mind that you should always use WordPress's i18n functions for your labels and descriptions so they are translatable. More information on WordPress's i18n functions can be found on the [WordPress Codex](https://codex.wordpress.org/I18n_for_WordPress_Developers).
 
+### Example
+
+```php
+Kirki::add_field( 'my_config', array(
+    'type'        => 'multicolor',
+    'settings'    => 'my_setting',
+    'label'       => esc_attr__( 'Label', 'my_textdomain' ),
+    'section'     => 'color',
+    'priority'    => 10,
+    'choices'     => array(
+        'link'    => esc_attr__( 'Color', 'my_textdomain' ),
+        'hover'   => esc_attr__( 'Hover', 'my_textdomain' ),
+        'active'  => esc_attr__( 'Active', 'my_textdomain' ),
+    ),
+    'default'     => array(
+        'link'    => '#0088cc',
+        'hover'   => '#00aaff',
+        'active'  => '#00ffff',
+    ),
+) );
+```
+
 ### Usage
 
 ```php

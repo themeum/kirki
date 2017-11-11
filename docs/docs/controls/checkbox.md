@@ -12,7 +12,7 @@ returns: boolean
 
 If a checkbox is not what you're after visually, you can also use a [`switch`](switch) or a [`toggle`](toggle). They are both internally checkboxes, so you use them the exact same way, their only difference is the way they present the options.
 
-Example:
+### Example
 
 ```php
 Kirki::add_field( 'kirki_demo', array(
@@ -26,7 +26,6 @@ Kirki::add_field( 'kirki_demo', array(
 ```
 
 ### Usage
-
 
 ```php
 <?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>

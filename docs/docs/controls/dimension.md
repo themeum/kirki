@@ -10,7 +10,7 @@ returns: string
 
 The `dimension` control allows you create an input where users can enter any valid dimension CSS value. It automatically detects invalid values and notifies the user when that happens.
 
-Example:
+### Example:
 
 ```php
 Kirki::add_field( 'kirki_demo', array(

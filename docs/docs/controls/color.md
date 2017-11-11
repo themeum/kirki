@@ -10,7 +10,7 @@ returns: string
 
 The `color` control allows you to create colorpickers. WordPress uses [iris](http://automattic.github.io/Iris/) for colorpickers and Kirki extends the default WordPress Color controls adding the ability to select `rgba` colors with the addition of an opacity slider.
 
-Examples:
+### Example
 
 #### Adding a hex-only colorpicker
 

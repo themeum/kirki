@@ -64,6 +64,34 @@ The available options for variants are:
 
 When selecting a default value for the variant, please make sure that the value is valid for the selected google font.
 
+### Example
+
+```php
+Kirki::add_field( 'my_config', array(
+	'type'        => 'typography',
+	'settings'    => 'my_setting',
+	'label'       => esc_attr__( 'Control Label', 'kirki' ),
+	'section'     => 'my_section',
+	'default'     => array(
+		'font-family'    => 'Roboto',
+		'variant'        => 'regular',
+		'font-size'      => '14px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'subsets'        => array( 'latin-ext' ),
+		'color'          => '#333333',
+		'text-transform' => 'none',
+		'text-align'     => 'left'
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'body',
+		),
+	),
+) );
+```
+
 ### Usage
 
 It is advised to use this field with the `output` argument to directly apply the generated CSS and automatically generate and enqueue the script necessary for Google Fonts to function.

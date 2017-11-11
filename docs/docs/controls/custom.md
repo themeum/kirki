@@ -12,6 +12,24 @@ Custom controls allow you to add raw HTML in a control. Mostly used for informat
 
 You can enter your custom HTML in the field's `default` argument.
 
+### Example
+
+```php
+<?php
+Kirki::add_field( 'my_config', array(
+	'type'        => 'custom',
+	'settings'    => 'my_setting',
+	'label'       => __( 'This is the label', 'my_textdomain' ),
+	'section'     => 'my_section',
+	'default'     => '<div style="padding: 30px;background-color: #333; color: #fff; border-radius: 50px;">' . esc_html__( 'You can enter custom markup in this control and use it however you want', 'my_textdomain' ) . '</div>',
+	'priority'    => 10,
+) );
+?>
+```
+
+The content of the field is defined in the `default` argument.
+You can use valid HTML.
+
 ### Usage
 
 The `custom` control does not return any value. Its function is usually decorative and informational in the customizer.
