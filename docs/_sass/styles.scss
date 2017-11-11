@@ -14,6 +14,7 @@
 
 body {
   font-family: 'ibm-plex-sans', 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
 
   &.home {
     .features {
