@@ -7,3 +7,5 @@ mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: string|int|float
 ---
+
+`slider` controls are numeric fields that allow you to set a minimum value, a maximum value and a step.

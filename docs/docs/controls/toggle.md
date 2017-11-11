@@ -7,3 +7,7 @@ mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: boolean
 ---
+
+Toggles provide a simple way to turn on/off options. They return a `boolean` so you can easily check their value in your code and act on them (check the examples for more details).
+
+Toggle controls are internally [`checkbox`](checkbox) controls styled differently.

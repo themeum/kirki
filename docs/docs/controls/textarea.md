@@ -7,3 +7,5 @@ mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: string
 ---
+
+`textarea` controls allow you to add a simple, multi-line text input.

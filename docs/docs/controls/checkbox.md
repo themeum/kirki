@@ -10,6 +10,8 @@ returns: boolean
 
 `checkbox` controls provide a simple true/false choice to users.
 
+If a checkbox is not what you're after visually, you can also use a [`switch`](switch) or a [`toggle`](toggle). They are both internally checkboxes, so you use them the exact same way, their only difference is the way they present the options.
+
 Example:
 
 ```php
