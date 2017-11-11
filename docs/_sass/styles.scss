@@ -351,11 +351,19 @@ pre {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   -webkit-tab-size: 4;
+
   code {
     width: 100%;
     color: rgb(171, 178, 191);
     tab-size: 4;
     -moz-tab-size: 4;
     -o-tab-size: 4;
-    -webkit-tab-size: 4;  }
+    -webkit-tab-size: 4;
+  }
+}
+
+.rewrite-banner {
+  background: #DC3232;
+  color: #fff;
+  padding: 1rem;
 }
