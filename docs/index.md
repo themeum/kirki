@@ -17,6 +17,7 @@ heroButtons:
     label: Documentation
 skipWrapper: true
 bodyClasses: home
+hideEditLink: true
 ---
 <div id="main" class="grid-container grid-margin-x">
     <div class="cell">

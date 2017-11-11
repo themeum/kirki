@@ -14,7 +14,7 @@
 		{% if page.skipWrapper %}</div>{% endif %}
 		<!-- END UNDER CONSTRUCTION WARNING -->
 		{{ content }}
-		<a class="contribute edit-link" href="{{ site.repository }}/edit/develop/docs/{{ page.path }}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit this page</a>
+		{% if page.hideEditLink %}{% else %}<a class="contribute edit-link" href="{{ site.repository }}/edit/develop/docs/{{ page.path }}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit this page</a>{% endif %}
 	{% if page.skipWrapper %}{% else %}</div>{% endif %}
 	{% include footer.html %}
 </body>
