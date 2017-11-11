@@ -59,6 +59,10 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 					$value['font-backup'],
 				) );
 			}
+			// Fix for https://github.com/aristath/kirki/issues/1619
+			if ( 'font-weight' === $property ) {
+				$value['font-weight'] = ( 'regular' === $value['font-weight'] ) ? '400' : $value['font-weight'];
+			}
 			$property = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 			$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
 			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];

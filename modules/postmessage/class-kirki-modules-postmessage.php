@@ -429,6 +429,8 @@ class Kirki_Modules_PostMessage {
 
 					$script .= 'fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);';
 					$script .= 'fontWeight=(!_.isObject(fw))?400:fw.join(\'\');';
+					// Fix for https://github.com/aristath/kirki/issues/1619
+					$script .= 'fontWeight=("regular"===fontWeight)?400:fontWeight;';
 					$script .= 'fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
 					$script .= 'css=\'\';';
 					break;
