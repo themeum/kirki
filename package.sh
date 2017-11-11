@@ -5,10 +5,12 @@ echo "**                                      **"
 echo "** Cloning repository...                **"
 if [ -d "../kirki-package" ]; then
 	rm -rf ../kirki-package &> /dev/null
+	mkdir ../kirki-package
 fi
-git clone https://github.com/aristath/kirki.git ../kirki-package &> /dev/null
 
-cd ../kirki-package
+git clone https://github.com/aristath/kirki.git ../kirki-package/kirki &> /dev/null
+
+cd ../kirki-package/kirki
 
 echo "** Running npm install...               **"
 npm install &> /dev/null
@@ -50,6 +52,9 @@ rm phpcs.ruleset.xml
 rm phpunit.xml
 rm README.md
 rm *.sh
+
+cd ..
+zip -rq kirki.zip kirki
 
 echo "** All done.                            **"
 echo "** Final plugin ready for release       **"
