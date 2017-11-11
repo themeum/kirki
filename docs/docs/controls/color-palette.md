@@ -30,7 +30,7 @@ Kirki::add_field( 'kirki_demo', array(
 ```
 The result of the above example would look like this:
 
-![color-palette control example 1](https://github.com/aristath/kirki/tree/master/docs/assets/images/color-palette-bw-round.png)
+![color-palette control example 1](https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-bw-round.png)
 
 Additionally the `Kirki_Helper` class provides helper methods in case you want to use Google's [Material Design color palettes](https://material.io/guidelines/style/color.html#color-color-palette).
 
@@ -52,7 +52,7 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 ```
-![color-palette control example 2](https://github.com/aristath/kirki/tree/master/docs/assets/images/color-palette-md-all.png)
+![color-palette control example 2](https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-all.png)
 
 #### Material-design Colors - Primary
 
@@ -70,7 +70,7 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 ```
-![color-palette control example 3](https://github.com/aristath/kirki/tree/master/docs/assets/images/color-palette-md-primary.png)
+![color-palette control example 3](https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-primary.png)
 
 #### All Material-design Colors - Reds
 
@@ -88,7 +88,7 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 ```
-![color-palette control example 3](https://github.com/aristath/kirki/tree/master/docs/assets/images/color-palette-md-red.png)
+![color-palette control example 3](https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-red.png)
 
 #### All Material-design Colors - A100 variation.
 
@@ -107,4 +107,4 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 ```
-![color-palette control example 2](https://github.com/aristath/kirki/tree/master/docs/assets/images/color-palette-md-a100.png)
+![color-palette control example 2](https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-a100.png)
