@@ -10,7 +10,7 @@ returns: string
 
 The `dimension` control allows you create an input where users can enter any valid dimension CSS value. It automatically detects invalid values and notifies the user when that happens.
 
-Example:
+### Example:
 
 ```php
 Kirki::add_field( 'kirki_demo', array(
@@ -24,3 +24,11 @@ Kirki::add_field( 'kirki_demo', array(
 ```
 
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/dimension.gif" alt="dimension control example" style="max-width:300px;">
+
+### Usage
+
+```php
+<div style="font-size: <?php echo get_theme_mod( 'my_setting', '1em' ); ?>">
+	<p>The font-size of this paragraph is controlled by "my_setting".</p>
+</div>
+```

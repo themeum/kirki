@@ -15,7 +15,7 @@ heroButtons:
 
 The `generic` control is one of the most versatile controls in Kirki. It allows you to create any HTML `input` type you want using any attributes you can imagine.
 
-Example:
+### Example
 
 ```php
 Kirki::add_field( 'kirki_demo', array(

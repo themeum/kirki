@@ -12,7 +12,7 @@ The `color-palette` control allows you to define an array of colors and users ca
 
 You can define inside the `choices` arguments an array of colors, the style (`round` or not) and also the size each color will have. See the examples below.
 
-Example:
+### Example
 
 ```php
 Kirki::add_field( 'kirki_demo', array(

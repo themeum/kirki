@@ -2,4 +2,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk=" crossorigin="anonymous"></script>
 
 <script>$( document ).foundation();</script>
+
+<script>
+var headers = $( 'h1,h2,h3,h4,h5,h6' );
+$.each( headers, function( i, header ) {
+	var id = $( header ).attr( 'id' );
+	if ( id ) {
+		$( header ).prepend( '<a class="anchor-injected" href="#' + id + '"><i class="fa fa-link" aria-hidden="true"></i></a>' );
+	}
+	console.log( header );
+});
+</script>
 {% include ga.html %}

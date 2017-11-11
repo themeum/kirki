@@ -82,6 +82,25 @@ h5,
 h6 {
   font-family: 'ibm-plex-serif', 'Georgia', Times, serif;
   font-weight: bold;
+  position: relative;
+
+  .anchor-injected {
+    display: none;
+  }
+
+  &:hover {
+    padding-left: 1em;
+    margin-left: -1em;
+
+    .anchor-injected {
+      position: absolute;
+      display: inline-block;
+      text-decoration: none;
+      color: #82878C;
+      left: -.7em;
+      padding: 0 0.5em;
+    }
+  }
 }
 
 #main {
@@ -335,7 +354,6 @@ input {
 .page {
   h3 {
     margin-top: 1.5rem;
-    border-bottom: 1px solid rgba(0,0,0,.2);
   }
 }
 

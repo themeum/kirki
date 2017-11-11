@@ -13,7 +13,7 @@ Internally this control uses the `CodeMirror` library available in WordPress.
 
 `CodeMirror` is only available in WordPress 4.9+ so if used in an older WordPress installation we gracefully fallback to a textarea field.
 
-Example:
+### Example
 
 ```php
 Kirki::add_field( 'kirki_demo', array(
@@ -27,4 +27,10 @@ Kirki::add_field( 'kirki_demo', array(
 		'language' => 'css',
 	),
 ) );
+```
+
+### Usage
+
+```php
+<?php echo get_theme_mod( 'my_setting', '' ); ?>
 ```

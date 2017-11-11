@@ -10,7 +10,7 @@ returns: string
 
 The `color` control allows you to create colorpickers. WordPress uses [iris](http://automattic.github.io/Iris/) for colorpickers and Kirki extends the default WordPress Color controls adding the ability to select `rgba` colors with the addition of an opacity slider.
 
-Examples:
+### Example
 
 #### Adding a hex-only colorpicker
 
@@ -67,3 +67,13 @@ Kirki::add_field( 'kirki_demo', array(
     <h5>Caution:</h5>
     <p>If you use a hue-only control the saved value will not be a hex or rgba color. Instead the value will be an integer. You can use that value in HSL or HSLA colors in your themes. For more info on HSLA you can read <a href="https://css-tricks.com/yay-for-hsla/" target="_blank">this article</a></p>
 </div>
+
+### Usage
+
+Most times you won't have to manually retrieve the value of `color` controls since the `output` argument can cover most use-cases.
+
+```php
+<div style="color:<?php echo get_theme_mod( 'my_setting', '#FFFFFF' ); ?>">
+	<p>The text-color of this div is controlled by "my_setting".
+</div>
+```
