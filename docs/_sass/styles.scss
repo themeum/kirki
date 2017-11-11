@@ -337,3 +337,18 @@ input {
   margin-right: -100vw;
   padding-right: 100vw;
 }
+
+code {
+  background-color: transparent;
+  border: none;
+}
+
+pre {
+  background-color: rgb(40, 44, 52);
+  width: 100%;
+  padding: 1rem;
+  code {
+    width: 100%;
+    color: rgb(171, 178, 191);
+  }
+}
