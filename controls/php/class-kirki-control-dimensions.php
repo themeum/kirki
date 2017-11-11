@@ -59,7 +59,7 @@ class Kirki_Control_Dimensions extends Kirki_Control_Base {
 	 */
 	public function enqueue() {
 
-		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', null );
+		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', array(), KIRKI_VERSION );
 		wp_localize_script( 'kirki-script', 'dimensionskirkiL10n', $this->l10n() );
 	}
 

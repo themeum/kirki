@@ -97,7 +97,7 @@ final class Kirki_Modules_Webfonts_Link {
 
 		// If $this->link is not empty then enqueue it.
 		if ( '' !== $this->link ) {
-			wp_enqueue_style( 'kirki_google_fonts', $this->link, array(), null );
+			wp_enqueue_style( 'kirki_google_fonts', $this->link, array(), KIRKI_VERSION );
 		}
 	}
 

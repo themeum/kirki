@@ -37,6 +37,16 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
+// Define the KIRKI_VERSION constant.
+if ( ! defined( 'KIRKI_VERSION' ) ) {
+	if ( ! function_exists( 'get_plugin_data' ) ) {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+	$data = get_plugin_data( KIRKI_PLUGIN_FILE );
+	$version = ( isset( $data['Version'] ) ) ? $data['Version'] : false;
+	define( 'KIRKI_VERSION', $version );
+}
+
 // Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 Kirki_Init::set_url();
