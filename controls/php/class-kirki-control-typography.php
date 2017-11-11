@@ -50,18 +50,18 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 	public function to_json() {
 		parent::to_json();
 
-		foreach ( array_keys( $this->json['value'] ) as $key ) {
-			if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
-				unset( $this->json['value'][ $key ] );
+		if ( is_array( $this->json['value'] ) ) {
+			foreach ( array_keys( $this->json['value'] ) as $key ) {
+				if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
+					unset( $this->json['value'][ $key ] );
+				}
+				// Fix for https://github.com/aristath/kirki/issues/1405.
+				if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
+					unset( $this->json['value'][ $key ] );
+				}
 			}
 		}
 
-		// Fix for https://github.com/aristath/kirki/issues/1405.
-		foreach ( array_keys( $this->json['value'] ) as $key ) {
-			if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
-				unset( $this->json['value'][ $key ] );
-			}
-		}
 		$this->json['show_variants'] = ( true === Kirki_Fonts_Google::$force_load_all_variants ) ? false : true;
 		$this->json['show_subsets']  = ( true === Kirki_Fonts_Google::$force_load_all_subsets ) ? false : true;
 		$this->json['languages']     = Kirki_Fonts::get_google_font_subsets();

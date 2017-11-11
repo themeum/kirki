@@ -66,8 +66,8 @@ class Kirki_Modules_Collapsible {
 	 */
 	public function customize_controls_print_scripts() {
 
-		wp_enqueue_script( 'kirki-collapsible', trailingslashit( Kirki::$url ) . 'modules/collapsible/collapsible.js', array( 'customize-preview' ), false, true );
-		wp_enqueue_style( 'kirki-collapsible', trailingslashit( Kirki::$url ) . 'modules/collapsible/collapsible.css' );
+		wp_enqueue_script( 'kirki-collapsible', trailingslashit( Kirki::$url ) . 'modules/collapsible/collapsible.js', array( 'customize-preview' ), KIRKI_VERSION, true );
+		wp_enqueue_style( 'kirki-collapsible', trailingslashit( Kirki::$url ) . 'modules/collapsible/collapsible.css', array(), KIRKI_VERSION );
 
 		$collapsible_fields = array();
 		$fields = Kirki::$fields;

@@ -81,7 +81,7 @@ class Kirki_Modules_Customizer_Branding {
 		}
 
 		if ( ! empty( $vars['logoImage'] ) || ! empty( $vars['description'] ) ) {
-			wp_register_script( 'kirki-branding', Kirki::$url . '/modules/customizer-branding/branding.js' );
+			wp_register_script( 'kirki-branding', Kirki::$url . '/modules/customizer-branding/branding.js', array(), KIRKI_VERSION );
 			wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
 			wp_enqueue_script( 'kirki-branding' );
 		}

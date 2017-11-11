@@ -101,7 +101,7 @@ class Kirki_Modules_Icons {
 			}
 		}
 
-		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', array( 'jquery', 'customize-base', 'customize-controls' ), false, true );
+		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, true );
 		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
 
 	}

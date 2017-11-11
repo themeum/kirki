@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristeides.com
- * Version:       3.0.13
+ * Version:       3.0.14
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -35,6 +35,16 @@ new Kirki_Autoload();
 
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
+}
+
+// Define the KIRKI_VERSION constant.
+if ( ! defined( 'KIRKI_VERSION' ) ) {
+	if ( ! function_exists( 'get_plugin_data' ) ) {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+	$data = get_plugin_data( KIRKI_PLUGIN_FILE );
+	$version = ( isset( $data['Version'] ) ) ? $data['Version'] : false;
+	define( 'KIRKI_VERSION', $version );
 }
 
 // Make sure the path is properly set.
@@ -86,4 +96,4 @@ if ( file_exists( $custom_config_path ) ) {
 include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
 
 // Uncomment this line to see the demo controls in the customizer.
-include_once dirname( __FILE__ ) . '/example.php';
+/* include_once dirname( __FILE__ ) . '/example.php'; */

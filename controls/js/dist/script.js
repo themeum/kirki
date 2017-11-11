@@ -2552,7 +2552,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		});
 
 		// Set the initial value.
-		fontSelect.val( value['font-backup'].replace( /'/g, '"' ) ).trigger( 'change' );
+		if ( 'undefined' !== typeof value['font-backup'] ) {
+			fontSelect.val( value['font-backup'].replace( /'/g, '"' ) ).trigger( 'change' );
+		}
 
 		// When the value changes
 		fontSelect.on( 'change', function() {

@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.8.2
 Tested up to: 4.9
-Stable tag: 3.0.13
+Stable tag: 3.0.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,9 +33,18 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.14 =
+
+November 11 2017, dev time: 4 hours.
+
+* Fix: Duplicate subsets output in the Google Fonts URLs [#1618](https://github.com/aristath/kirki/issues/1618)
+* Fix: Theme Check Warnings [#1613](https://github.com/aristath/kirki/issues/1613)
+* Fix: Add Kirki version number when enqueueing scripts & styles (cache-busting) [#1623](https://github.com/aristath/kirki/issues/1623)
+* Fix: JS conflict and PHP warning in typography fields when they are not properly defined [#1621](https://github.com/aristath/kirki/issues/1621)
+
 = 3.0.13 =
 
-Novermber 9 2017, dev time: 3 hours.
+November 9 2017, dev time: 3 hours.
 
 * Fix: textdomain typo in a string.
 * Fix: radio-image styling.

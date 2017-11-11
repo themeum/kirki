@@ -87,7 +87,7 @@ final class Kirki_Modules_Webfonts_Async {
 			}
 			$fonts_to_load[] = $font . ':' . join( ',', $weights );
 		}
-		wp_enqueue_script( 'webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' );
+		wp_enqueue_script( 'webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), KIRKI_VERSION );
 		if ( empty( $fonts_to_load ) ) {
 			return;
 		}
