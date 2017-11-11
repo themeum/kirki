@@ -1,4 +1,10 @@
 <?php
+/**
+ * Wrapper Class for kirki which also acts as a fallback for CSS generation
+ * when the kirki plugin is disabled.
+ *
+ * @package kirki
+ */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class My_Theme_Kirki {
 
 	/**
+	 * The config ID.
+	 *
 	 * @static
 	 * @access protected
 	 * @var array
@@ -23,6 +31,8 @@ class My_Theme_Kirki {
 	protected static $config = array();
 
 	/**
+	 * An array of all our fields.
+	 *
 	 * @static
 	 * @access protected
 	 * @var array
@@ -33,23 +43,23 @@ class My_Theme_Kirki {
 	 * The class constructor
 	 */
 	public function __construct() {
-		// If Kirki exists then there's no reason to procedd
+		// If Kirki exists then there's no reason to proceed.
 		if ( class_exists( 'Kirki' ) ) {
 			return;
 		}
-		// Add our CSS
+		// Add our CSS.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 20 );
-		// Add google fonts
+		// Add google fonts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_fonts' ) );
 	}
 
 	/**
 	 * Get the value of an option from the db.
 	 *
-	 * @param    string    $config_id    The ID of the configuration corresponding to this field
-	 * @param    string    $field_id     The field_id (defined as 'settings' in the field arguments)
+	 * @param string $config_id The ID of the configuration corresponding to this field.
+	 * @param string $field_id  The field_id (defined as 'settings' in the field arguments).
 	 *
-	 * @return 	mixed 	the saved value of the field.
+	 * @return mixed The saved value of the field.
 	 */
 	public static function get_option( $config_id = '', $field_id = '' ) {
 		// if Kirki exists, use it.
@@ -57,17 +67,17 @@ class My_Theme_Kirki {
 			return Kirki::get_option( $config_id, $field_id );
 		}
 		// Kirki does not exist, continue with our custom implementation.
-		// Get the default value of the field
+		// Get the default value of the field.
 		$default = '';
 		if ( isset( self::$fields[ $field_id ] ) && isset( self::$fields[ $field_id ]['default'] ) ) {
 			$default = self::$fields[ $field_id ]['default'];
 		}
-		// Make sure the config is defined
+		// Make sure the config is defined.
 		if ( isset( self::$config[ $config_id ] ) ) {
 			if ( 'option' == self::$config[ $config_id ]['option_type'] ) {
-				// check if we're using serialized options
+				// check if we're using serialized options.
 				if ( isset( self::$config[ $config_id ]['option_name'] ) && ! empty( self::$config[ $config_id ]['option_name'] ) ) {
-					// Get all our options
+					// Get all our options.
 					$all_options = get_option( self::$config[ $config_id ]['option_name'], array() );
 					// If our option is not saved, return the default value.
 					if ( ! isset( $all_options[ $field_id ] ) ) {
@@ -93,7 +103,7 @@ class My_Theme_Kirki {
 	}
 
 	/**
-	 * Create a new panel
+	 * Create a new panel.
 	 *
 	 * @param   string      the ID for this panel
 	 * @param   array       the panel arguments
@@ -108,8 +118,8 @@ class My_Theme_Kirki {
 	/**
 	 * Create a new section
 	 *
-	 * @param   string      the ID for this section
-	 * @param   array       the section arguments
+	 * @param   string      the ID for this section.
+	 * @param   array       the section arguments.
 	 */
 	public static function add_section( $id, $args ) {
 		if ( class_exists( 'Kirki' ) ) {
