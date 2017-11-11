@@ -258,7 +258,7 @@
       flex-grow: 1;
       font-size: 0;
       line-height: 10px;
-      color: transparent;
+      color: rgba(0, 0, 0, 0);
       -webkit-transition: all 200ms ease-in-out;
       -moz-transition: all 200ms ease-in-out;
       -ms-transition: all 200ms ease-in-out;
