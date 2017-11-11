@@ -59,7 +59,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 					$value['font-backup'],
 				) );
 			}
-			// Fix for https://github.com/aristath/kirki/issues/1619
+			// Fix for https://github.com/aristath/kirki/issues/1619.
 			if ( 'font-weight' === $property ) {
 				$value['font-weight'] = ( 'regular' === $value['font-weight'] ) ? '400' : $value['font-weight'];
 			}
