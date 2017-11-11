@@ -1,0 +1,23 @@
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+
+repository: https://github.com/aristath/kirki
+
+defaults:
+  -
+    scope:
+      path: "_docs"
+      type: "docs"
+    values:
+      layout: "docs"
+
+plugins:
+  - jekyll-avatar
+  - jekyll-feed
+  - jekyll-mentions
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji

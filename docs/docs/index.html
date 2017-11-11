@@ -1,0 +1,43 @@
+---
+layout: default
+title: Documentation
+subtitle: We are currently rewriting all documentation, please be patient.
+---
+
+<div class="grid-x grid-margin-x features">
+    <div class="cell medium-6">
+        <h3>Getting Started</h3>
+        {% for node in site.pages %}
+        	{% if node.url contains "docs/getting-started" %}
+        		<a class="button small alert" href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+        	{% endif %}
+        {% endfor %}
+    </div>
+    <div class="cell medium-6">
+        <h3>Features</h3>
+        {% for node in site.pages %}
+    		{% if node.url contains "docs/advanced" %}
+    			<a class="button small success" href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+    		{% endif %}
+    	{% endfor %}
+    </div>
+</div>
+
+<div class="grid-x grid-margin-x features">
+    <div class="cell medium-6">
+        <h3>Controls</h3>
+        {% for node in site.pages %}
+            {% if node.url contains "docs/controls" %}
+				{% if node.slug %}<a class="button small" href="{{ site.baseurl }}{{ node.url }}">{{ node.slug }}</a>{% endif %}
+			{% endif %}
+    	{% endfor %}
+    </div>
+    <div class="cell medium-6">
+        <h3>Field Arguments</h3>
+        {% for node in site.pages %}
+    		{% if node.url contains "docs/arguments" %}
+    			<a class="button small warning" href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+    		{% endif %}
+    	{% endfor %}
+    </div>
+</div>
