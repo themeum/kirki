@@ -36,20 +36,19 @@ If you don't use one of the above scripts, then you can use [this simple script]
 
 Usage:
 
-Copy the file from [here](https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php) to your theme (for example in `mytheme/inc/recommend-kirki.php`), and then in your `functions.php` file add this:
+Copy the file from [here](https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php) to your theme (for example in `mytheme/inc/class-kirki-installer-section.php`), and then in your `functions.php` file add this:
 
 ```php
-include_once get_theme_file_path( 'inc/recommend-kirki.php' );
+include_once get_theme_file_path( 'inc/class-kirki-installer-section.php' );
 ```
+
+<div class="callout warning ribbon-full">
+    <h5>A word of caution for themes on wordpress.org:</h5>
+    <p>If your theme will be distributed via wordpress.org you cannot require the installation of plugins but you can recommend them. That means that the theme will still have to work when kirki is not installed, for which we have already build a fallback PHP Class you can use in your themes <a href="https://github.com/aristath/kirki/tree/master/docs/files/class-my-theme-kirki.php">here</a>.</p>
+</div>
 
 ### Embed in your theme
 
 Though we do do not recommend embedding kirki in your theme it is still possible to do. You can simply copy the plugin in your theme and then include the main plugin file in your theme's `functions.php` file.
 
 Keep in mind that if you choose to follow this method Kirki will be "invisible" as a plugin to your clients and they will therefore be unable to update to future versions in case of bugfixes and/or security updates.
-
----------------------
-<div class="callout warning ribbon-full">
-    <h5>A word of caution for themes on wordpress.org:</h5>
-    <p>If your theme will be distributed via wordpress.org you cannot require the installation of plugins but you can recommend them. That means that the theme will still have to work when kirki is not installed, for which we have already build a fallback PHP Class you can use in your themes <a href="https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php">here</a>.</p>
-</div>
