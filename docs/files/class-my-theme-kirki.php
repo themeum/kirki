@@ -102,7 +102,7 @@ class My_Theme_Kirki {
 				return ( $dummy === $value ) ? $default : $value;
 			}
 
-			// We're not using options so fallback to theme_mod
+			// We're not using options so fallback to theme_mod.
 			return get_theme_mod( $field_id, $default );
 		}
 	}
