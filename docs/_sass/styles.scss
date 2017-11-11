@@ -14,6 +14,7 @@
 
 body {
   font-family: 'ibm-plex-sans', 'Helvetica Neue', Arial, sans-serif;
+  max-width: 100%;
   overflow-x: hidden;
 
   &.home {
@@ -373,4 +374,19 @@ pre {
   background: #DC3232;
   color: #fff;
   padding: 1rem;
+}
+
+.contribute {
+  &.edit-link {
+    display: block;
+    padding: 2rem 0;
+    color: #82878C;
+    text-decoration: none;
+    font-size: 0.8rem;
+
+    &:hover {
+      color: #191E23;
+      text-decoration: none;
+    }
+  }
 }
