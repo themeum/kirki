@@ -28,8 +28,8 @@ subtitle: We are currently rewriting all documentation, please be patient.
         <h3>Controls</h3>
         {% for node in site.pages %}
             {% if node.url contains "docs/controls" %}
-                <a class="button small" href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
-    		{% endif %}
+				{% if node.slug %}<a class="button small" href="{{ site.baseurl }}{{ node.url }}">{{ node.slug }}</a>{% endif %}
+			{% endif %}
     	{% endfor %}
     </div>
     <div class="cell medium-6">
