@@ -23,3 +23,13 @@ By default the labels are ON/OFF. To change them you can use the `choices` argum
     'off' => esc_attr__( 'Disable', 'textdomain' )
 )
 ```
+
+### Usage
+
+```php
+<?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>
+	<p>Switch is ON</p>
+<?php else : ?>
+	<p>Switch is OFF</p>
+<?php endif; ?>
+```

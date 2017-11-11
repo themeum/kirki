@@ -28,3 +28,9 @@ Kirki::add_field( 'kirki_demo', array(
 	),
 ) );
 ```
+
+### Usage
+
+```php
+<?php echo get_theme_mod( 'my_setting', '' ); ?>
+```

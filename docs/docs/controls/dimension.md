@@ -24,3 +24,11 @@ Kirki::add_field( 'kirki_demo', array(
 ```
 
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/dimension.gif" alt="dimension control example" style="max-width:300px;">
+
+### Usage
+
+```php
+<div style="font-size: <?php echo get_theme_mod( 'my_setting', '1em' ); ?>">
+	<p>The font-size of this paragraph is controlled by "my_setting".</p>
+</div>
+```
