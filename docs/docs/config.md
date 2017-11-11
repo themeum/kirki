@@ -22,18 +22,16 @@ heroButtons:
 When you create a project in Kirki, the first thing you have to do is **create a configuration**. Configurations allow each project to use a different setup and act as identifiers so it's important you create one. Fields that belong to your configuration will inherit your config properties.
 
 ```php
-<?php Kirki::add_config( $config_id, $args ); ?>
+Kirki::add_config( $config_id, $args );
 ```
 
 ### Example:
 
 ```php
-<?php
 Kirki::add_config( 'my_theme', array(
 	'capability'    => 'edit_theme_options',
 	'option_type'   => 'theme_mod',
 ) );
-?>
 ```
 
 
@@ -46,5 +44,5 @@ Kirki::add_config( 'my_theme', array(
 
 To create a field that will then use this configuration you can add your fields like this:
 ```php
-<?php Kirki::add_field( 'my_theme', $field_args ); ?>
+Kirki::add_field( 'my_theme', $field_args );
 ```

@@ -25,13 +25,11 @@ Panels are wrappers for sections, a way to group multiple sections together. To 
 
 Using Kirki:
 ```php
-<?php
 Kirki::add_panel( 'panel_id', array(
     'priority'    => 10,
     'title'       => esc_attr__( 'My Title', 'textdomain' ),
     'description' => esc_attr__( 'My Description', 'textdomain' ),
 ) );
-?>
 ```
 
 The `Kirki::add_panel()` method is nothing more than a wrapper for the WordPress customizer API and therefore follows the exact same syntax. More information on WordPress Customizer Panels can be found on the [WordPress Codex](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#panels).
@@ -43,13 +41,11 @@ Sections are wrappers for controls, a way to group multiple controls together. A
 
 Using Kirki:
 ```php
-<?php
 Kirki::add_section( 'custom_css', array(
     'title'          => esc_attr__( 'Custom CSS', 'textdomain' ),
     'description'    => esc_attr__( 'Add custom CSS here', 'textdomain' ),
     'priority'       => 160,
 ) );
-?>
 ```
 
 The `Kirki::add_section()` method is nothing more than a wrapper for the WordPress customizer API and therefore follows the exact same syntax. More information on WordPress Customizer Sections can be found on the [WordPress Codex](https://developer.wordpress.org/themes/advanced-topics/customizer-api/#sections)
