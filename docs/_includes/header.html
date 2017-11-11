@@ -1,6 +1,6 @@
 <div class="top-bar">
 	<div class="top-bar-left">
-		<ul class="menu">
+		<ul class="dropdown menu" data-dropdown-menu>
 			<li class="menu-text logo">
 				<a href="{{ site.baseurl }}" alt="Home">
 					<span class="logo-piggy">
@@ -19,7 +19,15 @@
 				</a>
 			</li>
 			<li><a href="{{ site.baseurl }}/">Home</a></li>
-			<li><a href="{{ site.baseurl }}/docs/">Documentation</a></li>
+			<li>
+				<a href="{{ site.baseurl }}/docs/">Documentation</a>
+				<ul class="menu vertical">
+					<li><a href="{{ site.baseurl }}/docs/integration">Integration</a></li>
+					<li><a href="{{ site.baseurl }}/docs/config">Config</a></li>
+					<li><a href="{{ site.baseurl }}/docs/adding-panels-and-sections">Panels and Sections</a></li>
+					<li><a href="{{ site.baseurl }}/docs/controls">Controls</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 	<div class="top-bar-right">

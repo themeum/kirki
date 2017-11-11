@@ -14,6 +14,7 @@
 
 body {
   font-family: 'ibm-plex-sans', 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
 
   &.home {
     .features {
@@ -138,6 +139,17 @@ h6 {
         &:hover {
           .menu-label {
             width: auto;
+          }
+        }
+      }
+
+      &.dropdown {
+        > li {
+          &.opens-right {
+            > .is-dropdown-submenu {
+              border: none;
+              background-color: mix(#1259fe,#003098);
+            }
           }
         }
       }
@@ -279,11 +291,6 @@ h6 {
   }
 }
 
-img.field-screenshot {
-  float: right;
-  padding: 0 0 1rem 2rem;
-}
-
 .controls-grid {
   .grid-item {
     margin-bottom: 15px;
@@ -351,11 +358,19 @@ pre {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   -webkit-tab-size: 4;
+
   code {
     width: 100%;
     color: rgb(171, 178, 191);
     tab-size: 4;
     -moz-tab-size: 4;
     -o-tab-size: 4;
-    -webkit-tab-size: 4;  }
+    -webkit-tab-size: 4;
+  }
+}
+
+.rewrite-banner {
+  background: #DC3232;
+  color: #fff;
+  padding: 1rem;
 }
