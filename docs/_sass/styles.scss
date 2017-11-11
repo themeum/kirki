@@ -375,3 +375,18 @@ pre {
   color: #fff;
   padding: 1rem;
 }
+
+.contribute {
+  &.edit-link {
+    display: block;
+    padding: 2rem 0;
+    color: #82878C;
+    text-decoration: none;
+    font-size: 0.8rem;
+
+    &:hover {
+      color: #191E23;
+      text-decoration: none;
+    }
+  }
+}
