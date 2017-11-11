@@ -2,7 +2,15 @@
 layout: default
 title: Open-Source Customizer Framework
 subtitle: A complete toolkit for WordPress theme Developers.
-showButtons: true
+heroButtons:
+  - url: https://wordpress.org/plugins/kirki
+    class: white button
+    icon: fa fa-wordpress
+    label: WordPress Page
+  - url: https://github.com/aristath/kirki
+    class: white button
+    icon: fa fa-github
+    label: Github Project
 skipWrapper: true
 bodyClasses: home
 ---
