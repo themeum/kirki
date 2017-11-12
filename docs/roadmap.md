@@ -10,6 +10,9 @@ Below is a list of things I want to accomplish in the next versions. The items o
 
 #### Rewrite the `postMessage` module
 
+<span class="secondary label">Planned for</span><span class="alert label">future version</span>
+
+
 When Kirki started almost 4 years ago WordPress's APIs for the customizer were limited.
 However these past 4 years a lot has changed and unfortunately the code behind this module hasn't changed a lot.
 This module requires a complete rewrite, and it will all be in JS. No more auto-generating scripts.
