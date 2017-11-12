@@ -32,7 +32,7 @@ body {
 
     #featured-themes {
       padding: 3em;
-      margin: 3em 0 0;
+      margin: 0;
       color: #fff;
       text-align: center;
       background-color: #2d68ee;
@@ -330,7 +330,6 @@ h6 {
 .button,
 input {
   &.white {
-    border-radius: 50px;
     color: #333 !important;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0,0,0,.2);
@@ -340,6 +339,10 @@ input {
     &:hover {
       box-shadow: 0 0 20px rgba(0,0,0,.7);
     }
+  }
+
+  &.round {
+    border-radius: 50px;
   }
 
   &.force-dark-text {
@@ -421,4 +424,83 @@ pre {
 
 .highlight {
   margin: 1rem 0 2rem;
+}
+
+#testimonials {
+  background: darken(#fff, 4%);
+  padding: 3rem 1rem 5rem;
+  border-top: 1px solid darken(#fff, 7%);
+  margin-top: 3rem;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px dashed rgba(0,0,0,.1);
+    padding-bottom: 3rem;
+  }
+
+  .single-testimonial {
+    .person {
+      width: 110px;
+      min-width: 110px;
+      max-width: 110px;
+
+      .missing-person-wrapper,
+      a {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      img {
+        width: 80px;
+        border-radius: 50%;
+      }
+
+      .missing-avatar {
+        font-size: 80px;
+        color: darken(#fff, 11%);
+      }
+    }
+
+    h4 {
+      font-size: 1.3rem;
+
+      a {
+        color: #333;
+      }
+    }
+  }
+
+  .testimonial-author {
+    color: darken(#fff, 15%);
+    font-style: italic;
+
+    .author-name {
+      font-size: 1.2em;
+      color: darken(#fff, 65%);
+    }
+
+    .author-wpusername {
+      color: darken(#fff, 15%);
+    }
+  }
+}
+
+#footer {
+  padding: 5rem 3rem;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  background-color: #2d68ee;
+  background-image: linear-gradient(60deg,#1259fe,#003098);
+
+  a {
+    color: #fff;
+  }
+
+  .contribute,
+  .legal {
+    text-align: left;
+  }
 }

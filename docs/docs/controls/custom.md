@@ -8,7 +8,7 @@ bodyClasses: control page
 returns: void
 heroButtons:
   - url: ../controls
-    class: white button border-only
+    class: white button round border-only
     icon: fa fa-arrow-circle-o-left
     label: Back to Controls
 ---
