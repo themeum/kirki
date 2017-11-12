@@ -26,9 +26,7 @@
 		<ul class="menu">
 			{% for node in site.pages %}
 				{% if node.url contains "docs/modules" %}
-					{% if node.slug %}
-						<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.slug }}</a></li>
-					{% endif %}
+					<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
 				{% endif %}
 			{% endfor %}
 		</ul>
