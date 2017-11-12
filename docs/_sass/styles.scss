@@ -366,7 +366,8 @@ input {
 }
 
 code {
-  background-color: transparent;
+  background-color: darken(#fff, 3%);
+  color: darken(#fff, 60%);
   border: none;
 }
 
@@ -386,6 +387,7 @@ pre {
     -moz-tab-size: 4;
     -o-tab-size: 4;
     -webkit-tab-size: 4;
+    background-color: transparent;
   }
 }
 
@@ -415,4 +417,8 @@ pre {
     justify-content: center;
     background: none;
   }
+}
+
+.highlight {
+  margin: 1rem 0 2rem;
 }
