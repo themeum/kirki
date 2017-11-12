@@ -408,3 +408,10 @@ pre {
     }
   }
 }
+
+.menu {
+  &.docs-nav-secondary {
+    justify-content: center;
+    background: none;
+  }
+}
