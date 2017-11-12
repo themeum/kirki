@@ -479,3 +479,21 @@ pre {
     }
   }
 }
+
+#footer {
+  padding: 5rem 3rem;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  background-color: #2d68ee;
+  background-image: linear-gradient(60deg,#1259fe,#003098);
+
+  a {
+    color: #fff;
+  }
+
+  .contribute,
+  .legal {
+    text-align: left;
+  }
+}
