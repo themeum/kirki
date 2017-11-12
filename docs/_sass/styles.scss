@@ -82,22 +82,23 @@ h5,
 h6 {
   font-family: 'ibm-plex-serif', 'Georgia', Times, serif;
   font-weight: bold;
-  position: relative;
 
   .anchor-injected {
-    display: none;
+    opacity: 0;
+    text-decoration: none;
+    -webkit-transition: all 300ms ease-in-out;
+    color: #82878C;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
   }
 
   &:hover {
-    padding-left: 1em;
-    margin-left: -1em;
-
     .anchor-injected {
-      position: absolute;
-      display: inline-block;
+      opacity: 1;
       text-decoration: none;
       color: #82878C;
-      left: -.7em;
       padding: 0 0.5em;
     }
   }
@@ -358,10 +359,10 @@ input {
 }
 
 .ribbon-full {
-  margin-left: -100vw;
-  padding-left: 100vw;
-  margin-right: -100vw;
-  padding-right: 100vw;
+  // margin-left: -100vw;
+  // padding-left: 100vw;
+  // margin-right: -100vw;
+  // padding-right: 100vw;
 }
 
 code {
@@ -406,5 +407,12 @@ pre {
       color: #191E23;
       text-decoration: none;
     }
+  }
+}
+
+.menu {
+  &.docs-nav-secondary {
+    justify-content: center;
+    background: none;
   }
 }

@@ -8,9 +8,9 @@ bodyClasses: control page
 returns: string
 heroButtons:
   - url: ../controls
-    class: white button
-    icon: fa fa-diamond
-    label: Controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 The `generic` control is one of the most versatile controls in Kirki. It allows you to create any HTML `input` type you want using any attributes you can imagine.

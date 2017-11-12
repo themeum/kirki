@@ -44,16 +44,48 @@ body {
 }
 ```
 
-### Advanced Arguments
+### Output Arguments
 
-`element` and `property` in a lot of cases are all you need. But sometimes you need something more, so we have a plethora of additional arguments you can use:
+#### `element`
 
+<span class="warning label">string|array</span>
+Defines a CSS element in your document that you want to affect. If you want to affect multiple elements, format them as an array. Example: `'element' => array( 'h1', 'h2', 'h3' )`.
 
-* `element`: (**string, array**) Defines a CSS element in your document that you want to affect. If you want to affect multiple elements, format them as an array. Example: `'element' => array( 'h1', 'h2', 'h3' )`.
-* `property`: (**string**) Use any valid CSS property.
-* `prefix`: (**string**) The value entered here will be prepended to the value of the field.
-* `units`: (**string**) The value entered here will be appended to the value of the field (for example `px`, `em`, `rem` etc.)
-* `suffix`: (**string**) The value entered here will be appended to the value of the field. Example: ` !important`.
-* `media_query`: (**string**) Allows you to define a custom CSS media query for this output. Example: `@media (max-width: 600px)`.
-* `exclude`: (**array**) Define an array of values that will be excluded. If for example you use `'exclude' => array( '14', '17' ),` then if the value of the field is 14 or 17, the field will not output any CSS.
-* `value_pattern`: (**string**) Define a value pattern you want to use. you can use this to calculate complex CSS values, and use the dollar sign ( `$` ) as a placeholder for the value. Example: `'value_pattern' => 'calc(100% - $em)'` or `'value_pattern' => '10px 0 0 $'` or `'value_pattern' => '10px 0 0 $, -10px 0 0 $'`
+#### `property`
+
+<span class="success label">string</span>
+Use any valid CSS property (`font-weight`, `padding-right`, `background-color` etc).
+
+#### `prefix`
+
+<span class="success label">string</span>
+The value entered in the `prefix` argument will be used before the value.
+
+#### `units`
+
+<span class="success label">string</span>
+The value entered in the `units` argument will be used after tha value (but before the `suffix` argument).
+
+#### `suffix`
+
+<span class="success label">string</span>
+The value entered here will be appended to the value of the field - and after the `suffix`.
+
+Example: ` !important`.
+
+#### `media_query`
+
+<span class="success label">string</span>
+Allows you to define a custom CSS media query for this output.
+
+Example: `@media (max-width: 600px)`.
+
+#### `exclude`
+<span class="warning label">array</span>
+Define an array of values that will be excluded. If for example don't want to output any CSS if the value of the control equals 14 OR 17, then you can use `'exclude' => array( '14', '17' ),`.
+
+#### `value_pattern`
+<span class="success label">string</span>
+Define a value pattern you want to use. you can use this to calculate complex CSS values, and use the dollar sign ( `$` ) as a placeholder for the value.
+
+Example: `'value_pattern' => 'calc(100% - $em)'` or `'value_pattern' => '10px 0 0 $'` or `'value_pattern' => '10px 0 0 $, -10px 0 0 $'`

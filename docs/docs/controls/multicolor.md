@@ -6,6 +6,11 @@ subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: array
+heroButtons:
+  - url: ../controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 On multicolor fields, you can specify the options that will be available to your users by editing the `choices` argument and specifying an array of options in the form of `key => label`.
