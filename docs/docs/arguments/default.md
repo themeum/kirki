@@ -1,9 +1,9 @@
 ---
 layout: default
 title: default
-published: false
+published: true
+mainMaxWidth: 50rem;
 ---
-
 
 You can use the `default` argument to define a default value for your controls.
 

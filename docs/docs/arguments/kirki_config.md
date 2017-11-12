@@ -2,6 +2,7 @@
 layout: default
 title: kirki_config
 published: false
+mainMaxWidth: 50rem;
 ---
 
 

@@ -11,7 +11,6 @@ heroButtons:
     class: white button border-only
     icon: fa fa-arrow-circle-o-left
     label: Back to Controls
-
 ---
 
 `checkbox` controls provide a simple true/false choice to users.

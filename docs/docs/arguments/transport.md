@@ -4,7 +4,6 @@ title: transport
 published: false
 ---
 
-
 You can use the `transport` argument to define how your options will be applied to the preview.
 
 There are 3 choices available: `refresh`, `postMessage` and `auto`.

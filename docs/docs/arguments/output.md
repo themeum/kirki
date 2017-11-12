@@ -4,7 +4,6 @@ title: output
 published: false
 ---
 
-
 Using the `output` argument you can specify if you want Kirki to automatically generate and apply CSS for various elements of your page.
 
 Based on these values Kirki will then automatically generate the necessary CSS and properly enqueue it to the `<head>` of your document so that your changes take effect immediately without the need to write any additional code.

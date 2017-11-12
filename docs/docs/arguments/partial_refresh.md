@@ -4,7 +4,6 @@ title: partial_refresh
 published: false
 ---
 
-
 WordPress 4.5 introduced partial (or selective) refreshes to the customizer.
 
 As documented in announcement on [make.wordpress.org/core](https://make.wordpress.org/core/2016/02/16/selective-refresh-in-the-customizer/), the syntax that we have to use would look like this:

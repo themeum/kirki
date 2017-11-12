@@ -1,7 +1,8 @@
 ---
 layout: default
 title: description
-published: false
+published: true
+mainMaxWidth: 50rem;
 ---
 
 

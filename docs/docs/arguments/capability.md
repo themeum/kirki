@@ -1,14 +1,15 @@
 ---
 layout: default
 title: capability
-published: false
+published: true
+mainMaxWidth: 50rem;
 ---
 
 The `capability` argument allows you to define the the capability that a user must have in order to access the control for a field.
 
 If left undefined it defaults to `edit_theme_options`.
 
-You can set the `capability in your config, as well as on individual fields.
+You can set the `capability` in your config, as well as on individual fields.
 
 Example:
 
