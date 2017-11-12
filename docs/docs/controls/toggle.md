@@ -6,6 +6,11 @@ subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: boolean
+heroButtons:
+  - url: ../controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 Toggles provide a simple way to turn on/off options. They return a `boolean` so you can easily check their value in your code and act on them (check the examples for more details).

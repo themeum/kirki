@@ -6,6 +6,11 @@ subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: string
+heroButtons:
+  - url: ../controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 Palette controls are essentially [`radio`](radio) controls. The difference between palette controls and radio controls is purely presentational: Palette controls allow you to define an array of colors for each option which will be used to show users a palette.

@@ -6,6 +6,11 @@ subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: string
+heroButtons:
+  - url: ../controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 The `color-palette` control allows you to define an array of colors and users can choose from those colors. Internally the control is a simple radio control with some additional styling to make color selection easier.

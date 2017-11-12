@@ -6,6 +6,11 @@ subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 50rem;
 bodyClasses: control page
 returns: string|array|int
+heroButtons:
+  - url: ../controls
+    class: white button border-only
+    icon: fa fa-arrow-circle-o-left
+    label: Back to Controls
 ---
 
 The `image` control allows you create a control where users can upload images, or select images from their media-library.
