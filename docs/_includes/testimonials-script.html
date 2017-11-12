@@ -34,7 +34,7 @@ function getMediaObjectHTML( key ) {
 		if ( 'undefined' !== typeof testimonial.avatar && testimonial.avatar ) {
 			html += '<img src="' + testimonial.avatar + '">';
 		} else {
-			html += '<i class="fa fa-user missing-avatar" aria-hidden="true"></i>';
+			html += '<span class="missing-person-wrapper"><i class="fa fa-user missing-avatar" aria-hidden="true"></i></span>';
 		}
 		html += '</div>';
 		html += '<div class="media-object-section">'
