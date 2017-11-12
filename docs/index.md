@@ -45,7 +45,7 @@ hideEditLink: true
     </div>
 </div>
 
-<div style="text-align:center;"><a class="button round large white"><i class="fa fa-map-signs" aria-hidden="true"></i> Roadmap</a></div>
+<div style="text-align:center;"><a href="roadmap" class="button round large white"><i class="fa fa-map-signs" aria-hidden="true"></i> Roadmap</a></div>
 
 <div id="featured-themes" class="grid-x grid-margin-x">
     <div class="cell auto">
