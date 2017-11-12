@@ -445,6 +445,13 @@ pre {
       min-width: 110px;
       max-width: 110px;
 
+      .missing-person-wrapper,
+      a {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
       img {
         width: 80px;
         border-radius: 50%;
