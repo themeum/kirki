@@ -11,7 +11,6 @@ heroButtons:
     class: white button border-only
     icon: fa fa-arrow-circle-o-left
     label: Back to Controls
-
 ---
 
 The `background` control allows you to have every CSS background property under one roof.
