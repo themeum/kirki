@@ -9,6 +9,10 @@ You can use the `transport` argument to define how your options will be applied 
 
 There are 3 choices available: `refresh`, `auto` and `postMessage`.
 
+<div class="callout success">
+  <h5>Read the <code>postMessage</code> docs too</h5>
+  <p>This argument uses the <code>postMessage</code> module. Please make sure you read the <a href="../modules/postmessage">documentation for the postMessage module</a></p>
+</div>
 
 ### `refresh`:
 
