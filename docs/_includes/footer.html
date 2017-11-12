@@ -12,4 +12,7 @@ $.each( headers, function( i, header ) {
 	}
 });
 </script>
+{% if page.script %}
+	{% include {{ page.script }} %}
+{% endif %}
 {% include ga.html %}

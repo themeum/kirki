@@ -18,6 +18,7 @@ heroButtons:
 skipWrapper: true
 bodyClasses: home
 hideEditLink: true
+script: testimonials-script.html
 ---
 
 <div id="main" class="grid-container grid-margin-x">
@@ -46,6 +47,8 @@ hideEditLink: true
 </div>
 
 <div style="text-align:center;"><a href="roadmap" class="button round large white"><i class="fa fa-map-signs" aria-hidden="true"></i> Roadmap</a></div>
+
+{% include testimonials.html testimonials=site.data.testimonials %}
 
 <div id="featured-themes" class="grid-x grid-margin-x">
     <div class="cell auto">
