@@ -6,15 +6,15 @@ mainMaxWidth: 50rem;
 bodyClasses: page
 heroButtons:
   - url: config
-    class: white button border-only
+    class: white button round border-only
     icon: fa fa-cogs
     label: Configuring Project
   - url: adding-panels-and-sections
-    class: white button border-only
+    class: white button round border-only
     icon: fa fa-th-list
     label: Add Panels and Sections
   - url: controls
-    class: white button
+    class: white button round
     icon: fa fa-diamond
     label: Controls
 ---

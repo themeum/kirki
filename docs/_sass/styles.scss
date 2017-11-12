@@ -330,7 +330,6 @@ h6 {
 .button,
 input {
   &.white {
-    border-radius: 50px;
     color: #333 !important;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0,0,0,.2);
@@ -340,6 +339,10 @@ input {
     &:hover {
       box-shadow: 0 0 20px rgba(0,0,0,.7);
     }
+  }
+
+  &.round {
+    border-radius: 50px;
   }
 
   &.force-dark-text {

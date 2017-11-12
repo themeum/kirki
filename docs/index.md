@@ -4,15 +4,15 @@ title: Open-Source Customizer Framework
 subtitle: A complete toolkit for WordPress theme Developers.
 heroButtons:
   - url: https://wordpress.org/plugins/kirki
-    class: white button
+    class: white button round
     icon: fa fa-wordpress
     label: WordPress Page
   - url: https://github.com/aristath/kirki
-    class: white button
+    class: white button round
     icon: fa fa-github
     label: Github Project
   - url: docs
-    class: white button border-only
+    class: white button round border-only
     icon: fa fa-play
     label: Documentation
 skipWrapper: true
