@@ -33,6 +33,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.15 =
+
+November 12 2017, dev time: 5 minutes.
+
+* Fix: PHP Warning in the `Kirki_Modules_Webfonts_Link` class [#1626](https://github.com/aristath/kirki/issues/1626)
+
 = 3.0.14 =
 
 November 11 2017, dev time: 4 hours.
