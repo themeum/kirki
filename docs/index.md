@@ -19,6 +19,7 @@ skipWrapper: true
 bodyClasses: home
 hideEditLink: true
 ---
+
 <div id="main" class="grid-container grid-margin-x">
     <div class="cell">
         <div class="grid-x grid-margin-x features">
@@ -43,6 +44,9 @@ hideEditLink: true
         </div>
     </div>
 </div>
+
+<div style="text-align:center;"><a class="button round large white"><i class="fa fa-map-signs" aria-hidden="true"></i> Roadmap</a></div>
+
 <div id="featured-themes" class="grid-x grid-margin-x">
     <div class="cell auto">
         <span class="logo-piggy">
