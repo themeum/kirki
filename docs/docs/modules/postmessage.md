@@ -59,7 +59,11 @@ Kirki::add_field( 'kirki_demo', array(
 
 ```js
 wp.customize( 'color_setting_hex', function( value ) {
+
+	// When the value changes.
 	value.bind( function( newval ) {
+
+		// Add CSS to elements.
 		jQuery( 'body' ).css( 'color', newval );
 		jQuery( '.my-super-cool-css-class' ).css( 'background-color', newval );
 	} );
@@ -81,19 +85,26 @@ Unminimized/beautified this is what it would look like:
 
 ```js
 wp.customize( 'color_setting_hex', function( value ) {
+
+	// When the value changes.
 	value.bind( function( newval ) {
 
+		// Generate the CSS.
 		var cssContent = 'body{color:' + newval + ';}.my-super-cool-css-class{background-color:' + newval + ';}';
 
+		// Check if we already have a <style> in the <head> referencing this control.
 		if (
 			null === document.getElementById( 'kirki-postmessage-color_setting_hex' ) ||
 			'undefined' === typeof document.getElementById( 'kirki-postmessage-color_setting_hex' )
 		) {
+
+			// Append the <style> to the <head>.
 			jQuery( 'head' ).append( '<style id="kirki-postmessage-color_setting_hex"></style>' );
 		}
 
+		// Add the CSS to the <style> and append.
 		jQuery( '#kirki-postmessage-color_setting_hex' ).text( cssContent );
-		jQuery( '#kirki-postmessage-color_setting_hex').appendTo( 'head' );
+		jQuery( '#kirki-postmessage-color_setting_hex' ).appendTo( 'head' );
 	} );
 } );
 ```
