@@ -1,15 +1,14 @@
 ---
 layout: default
 title: partial_refresh
-published: false
+published: true
+mainMaxWidth: 50rem;
 ---
-
 WordPress 4.5 introduced partial (or selective) refreshes to the customizer.
 
 As documented in announcement on [make.wordpress.org/core](https://make.wordpress.org/core/2016/02/16/selective-refresh-in-the-customizer/), the syntax that we have to use would look like this:
 
 ```php
-<?php
 
 function my_register_blogname_partials( WP_Customize_Manager $wp_customize ) {
 
@@ -33,16 +32,12 @@ function my_register_blogname_partials( WP_Customize_Manager $wp_customize ) {
     ) );
 }
 add_action( 'customize_register', 'my_register_blogname_partials' );
-?>
 ```
-
 
 Kirki simplifies that process and you can add the arguments for partial refreshes in your fields using the `partial_refresh` argument. The example from above when combined with a text field would become like this:
 
 
 ```php
-<?php
-
 Kirki::add_field( 'my_config', array(
 	'type'     => 'text',
 	'settings' => 'my_setting',

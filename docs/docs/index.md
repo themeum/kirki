@@ -17,7 +17,9 @@ Kirki was created to satisfy a personal need. While building WordPress themes I 
 
 Our target is WordPress developers building complex themes or plugins that require dozens of controls in the customizer, complex CSS generation based on the values of those controls, live-updating the customizer preview without a refresh (using `postMessage`) and other features that Kirki includes.
 
-**If you do not have a deep knowledge of the WordPress Customizer and its APIs you should not use Kirki.**
+<div class="callout alert">
+	<p>If you do not have an understanding of PHP, JS, the WordPress Customizer and its APIs you should not use Kirki.</p>
+</div>
 
 ### Getting Started
 
