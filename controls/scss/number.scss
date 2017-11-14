@@ -1,56 +1,28 @@
 .customize-control-kirki-number {
-  position: relative;
+  .customize-control-content {
+    display: flex;
+    align-items: stretch;
 
-  .ui-spinner.ui-widget-content {
-    position: relative;
+    input {
+      width: 100%;
+      -moz-appearance: textfield;
 
-    .ui-spinner-button {
-      position: absolute;
-      right: 0;
-      color: rgba(0,0,0,.3);
-      border: none;
-      padding: 0 5px;
-      width: 20px;
-      height: calc(50% + 0.5em);
-      // font-size: 19px;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
-      background: none;
-      margin: 0;
-
-      .ui-button-text {
-        display: none;
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
       }
+    }
 
-      &.ui-spinner-down,
-      &.ui-spinner-up {
-        &:before {
-          font-family: dashicons;
-          position: absolute;
-          left: 0;
-        }
-      }
+    .quantity {
+      min-width: 2rem;
+      max-width: 2rem;
+      text-align: center;
+      line-height: 24px;
 
-      &.ui-spinner-up {
-        top: -50%;
+      &.minus {}
 
-        &:before {
-          content: "\f343";
-        }
-      }
-
-      &.ui-spinner-down {
-        top: 50%;
-
-        &:before {
-          content: "\f347";
-        }
-      }
-
-      &:hover {
-        color: rgba(0,0,0,.7);
-      }
+      &.plus {}
     }
   }
 }

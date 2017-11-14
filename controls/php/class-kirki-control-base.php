@@ -84,7 +84,6 @@ class Kirki_Control_Base extends WP_Customize_Control {
 				'wp-color-picker-alpha',
 				'selectWoo',
 				'jquery-ui-button',
-				'jquery-ui-spinner',
 			),
 			KIRKI_VERSION
 		);
