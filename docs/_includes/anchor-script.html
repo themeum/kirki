@@ -1,0 +1,9 @@
+<script>
+var headers = $( 'h1,h2,h3,h4,h5,h6' );
+$.each( headers, function( i, header ) {
+	var id = $( header ).attr( 'id' );
+	if ( id ) {
+		$( header ).append( '<a class="anchor-injected" href="#' + id + '" aria-label="section anchor link"><i class="fa fa-link" aria-hidden="true"></i></a>' );
+	}
+});
+</script>
