@@ -646,8 +646,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		    html = kirki.input.color.template( data ),
 		    picker,
 		    clear;
-console.log( control.params );
-console.log( data );
+
 		// Add the HTML for the control.
 		control.container.html( html );
 
@@ -1200,66 +1199,73 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 
 		var control = this,
-		    element = this.container.find( 'input' ),
-		    step    = 1;
+		    value   = control.setting._value,
+		    html    = '',
+		    input,
+		    up,
+		    down;
 
-		// Set step value.
-		if ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.step ) ) {
-			step = ( 'any' === control.params.choices.step ) ? '0.001' : control.params.choices.step;
+		// Make sure we use default values if none are define for some arguments.
+		control.params.choices = _.defaults( control.params.choices, {
+			min: 0,
+			max: 100,
+			step: 1
+		} );
+
+		// Make sure we have a valid value.
+		if ( isNaN( value ) || '' === value ) {
+			value = ( 0 > control.params.choices.min && 0 < control.params.choices.max ) ? 0 : control.params.choices.min;
 		}
+		value = parseFloat( value );
 
-		// Init the spinner
-		jQuery( element ).spinner({
-			min: ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.min ) ) ? control.params.choices.min : -99999,
-			max: ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.max ) ) ? control.params.choices.max : 99999,
-			step: step
-		});
+		// If step is 'any', set to 0.001.
+		control.params.choices.step = ( 'any' === control.params.choices.step ) ? 0.001 : control.params.choices.step;
 
-		// On change
-		this.container.on( 'change click keyup paste', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
+		// Make sure choices are properly formtted as numbers.
+		control.params.choices.min  = parseFloat( control.params.choices.min );
+		control.params.choices.max  = parseFloat( control.params.choices.max );
+		control.params.choices.step = parseFloat( control.params.choices.step );
 
-		// Notifications.
-		control.kirkiNotifications();
-	},
+		// Build the HTML for the control.
+		html += '<label>';
+		if ( control.params.label ) {
+			html += '<span class="customize-control-title">' + control.params.label + '</span>';
+		}
+		if ( control.params.description ) {
+			html += '<span class="description customize-control-description">' + control.params.description + '</span>';
+		}
+		html += '<div class="customize-control-content">';
+		html += '<input ' + control.params.inputAttrs + ' type="text" ' + control.params.link + ' value="' + value + '" />';
+		html += '<div class="quantity button minus">-</div>';
+		html += '<div class="quantity button plus">+</div>';
+		html += '</div>';
+		html += '</label>';
 
-	/**
-	 * Handles notifications.
-	 */
-	kirkiNotifications: function() {
+		control.container.html( html );
 
-		var control = this;
+		input = control.container.find( 'input' );
+		up    = control.container.find( '.plus' );
+		down  = control.container.find( '.minus' );
 
-		wp.customize( control.id, function( setting ) {
-			setting.bind( function( value ) {
-				var code    = 'long_title',
-				    min     = ( ! _.isUndefined( control.params.choices.min ) ) ? Number( control.params.choices.min ) : false,
-				    max     = ( ! _.isUndefined( control.params.choices.max ) ) ? Number( control.params.choices.max ) : false,
-				    step    = ( ! _.isUndefined( control.params.choices.step ) ) ? Number( control.params.choices.step ) : false,
-				    invalid = false;
+		up.click( function() {
+			var oldVal = parseFloat( input.val() ),
+			    newVal;
 
-				// Make sure value is a number.
-				value = Number( value );
+			newVal = ( oldVal >= control.params.choices.max ) ? oldVal : oldVal + control.params.choices.step;
 
-				if ( false !== min && value < min ) {
-					invalid = 'min-error';
-				} else if ( false !== max && value > max ) {
-					invalid = 'max-error';
-				} else if ( false !== step && false !== min && ! Number.isInteger( ( value - min ) / step ) ) {
-					invalid = 'step-error';
-				}
+			input.val( newVal );
+			input.trigger( 'change' );
+		} );
 
-				if ( false !== invalid ) {
-					setting.notifications.add( code, new wp.customize.Notification( code, {
-						type: 'warning',
-						message: numberKirkiL10n[ invalid ]
-					} ) );
-				} else {
-					setting.notifications.remove( code );
-				}
-			});
-		});
+		down.click( function() {
+			var oldVal = parseFloat( input.val() ),
+			    newVal;
+
+			newVal = ( oldVal <= control.params.choices.min ) ? oldVal : oldVal - control.params.choices.step;
+
+			input.val( newVal );
+			input.trigger( 'change' );
+		} );
 	}
 });
 ;wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});
@@ -2235,11 +2241,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-		// If the range input value changes,
-		// copy the value to the text input
-		// and then save.
-		rangeInput.on( changeAction, function() {
+		// If the range input value changes copy the value to the text input.
+		rangeInput.on( 'mousemove change', function() {
 			textInput.attr( 'value', rangeInput.val() );
+		} );
+
+		// Save the value when the range input value changes.
+		// This is separate from the above because of the postMessage differences.
+		// If the control refreshes the preview pane,
+		// we don't want a refresh for every change
+		// but 1 final refresh when the value is changed.
+		rangeInput.on( changeAction, function() {
 			control.setting.set( rangeInput.val() );
 		} );
 

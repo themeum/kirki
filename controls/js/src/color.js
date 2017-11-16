@@ -17,8 +17,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		    html = kirki.input.color.template( data ),
 		    picker,
 		    clear;
-console.log( control.params );
-console.log( data );
+
 		// Add the HTML for the control.
 		control.container.html( html );
 
