@@ -26,7 +26,9 @@ Instead we can simply have a JS file that will parse the controls, check their a
 
 I recently introduced a `kirkiDynamicControl` object in Kirki - derived from the [wp-customize-posts](https://github.com/xwp/wp-customize-posts) plugin. When a Kirki control extends that object we're able to initialize the control not when the customizer loads, but when the control's section is activated. This makes the initial customizer load a lot faster, but the actual markup for many controls is still added on load. By moving the markup to the JS files we'll be able to render the controls only when they are needed instead of on load.
 
-**EDIT**: Work on this has already started in the develop branch and it will be Implemented in stages, starting with version 3.0.16. The plan is to have everything finished by the time we reach 3.1.0
+<div class="callout success">
+<strong>EDIT</strong>: Work on this has already started in the develop branch and it will be Implemented in stages, starting with version 3.0.16. The plan is to have everything finished by the time we reach 3.1.0
+</div>
 
 ---
 
@@ -39,6 +41,8 @@ The `typography` control wouldn't need to create everything from scratch.
 Instead we'd add all input fields that consitute the typography control using the `kirki` object, and everything else would be taken care of automatically.
 Repeaters would be able to act as wrapper for complete control structures instead of wrappers for simple input elements.
 
-**EDIT**: Work on this has already started in the develop branch and it will be Implemented in stages, starting with version 3.0.16. The plan is to have everything finished by the time we reach 3.1.0
+<div class="callout success">
+<strong>EDIT</strong>: Work on this has already started in the develop branch and it will be Implemented in stages, starting with version 3.0.16. The plan is to have everything finished by the time we reach 3.1.0
+</div>
 
 ---
