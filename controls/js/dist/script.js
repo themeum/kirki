@@ -1186,6 +1186,7 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 			max: 100,
 			step: 1
 		} );
+
 		// Make sure we have a valid value.
 		if ( isNaN( value ) || '' === value ) {
 			value = ( 0 > control.params.choices.min && 0 < control.params.choices.max ) ? 0 : control.params.choices.min;
