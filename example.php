@@ -25,21 +25,25 @@ if ( ! class_exists( 'Kirki' ) ) {
  *
  * @link https://aristath.github.io/kirki/docs/getting-started/config.html
  */
-Kirki::add_config( 'kirki_demo', array(
-	'capability'  => 'edit_theme_options',
-	'option_type' => 'theme_mod',
-) );
+Kirki::add_config(
+	'kirki_demo', array(
+		'capability'  => 'edit_theme_options',
+		'option_type' => 'theme_mod',
+	)
+);
 
 /**
  * Add a panel.
  *
  * @link https://aristath.github.io/kirki/docs/getting-started/panels.html
  */
-Kirki::add_panel( 'kirki_demo_panel', array(
-	'priority'    => 10,
-	'title'       => esc_attr__( 'Kirki Demo Panel', 'kirki' ),
-	'description' => esc_attr__( 'Contains sections for all kirki controls.', 'kirki' ),
-) );
+Kirki::add_panel(
+	'kirki_demo_panel', array(
+		'priority'    => 10,
+		'title'       => esc_attr__( 'Kirki Demo Panel', 'kirki' ),
+		'description' => esc_attr__( 'Contains sections for all kirki controls.', 'kirki' ),
+	)
+);
 
 /**
  * Add Sections.
@@ -81,11 +85,22 @@ $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'kirki' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
-	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', array(
-		'title'       => $section[0],
-		'description' => $section[1],
-		'panel'       => 'kirki_demo_panel',
-	) );
+	Kirki::add_section(
+		str_replace( '-', '_', $section_id ) . '_section', array(
+			'title'       => $section[0],
+			'description' => $section[1],
+			'panel'       => 'kirki_demo_panel',
+		)
+	);
+}
+
+/**
+ * A proxy function. Automatically passes-on the config-id.
+ *
+ * @param array $args The field arguments.
+ */
+function my_config_kirki_add_field( $args ) {
+	Kirki::add_field( 'kirki_demo', $args );
 }
 
 /**
@@ -93,7 +108,7 @@ foreach ( $sections as $section_id => $section ) {
  *
  * @todo Triggers change on load.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'background',
 	'settings'    => 'background_setting',
 	'label'       => esc_attr__( 'Background Control', 'kirki' ),
@@ -107,14 +122,14 @@ Kirki::add_field( 'kirki_demo', array(
 		'background-size'       => 'cover',
 		'background-attachment' => 'scroll',
 	),
-) );
+);
 
 /**
  * Code control.
  *
  * @link https://aristath.github.io/kirki/docs/controls/code.html
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'code',
 	'settings'    => 'code_setting',
 	'label'       => esc_attr__( 'Code Control', 'kirki' ),
@@ -125,37 +140,37 @@ Kirki::add_field( 'kirki_demo', array(
 		'language' => 'css',
 		'theme'    => 'monokai',
 	),
-) );
+);
 
 /**
  * Checkbox control.
  *
  * @link https://aristath.github.io/kirki/docs/controls/checkbox.html
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'checkbox',
 	'settings'    => 'checkbox_setting',
 	'label'       => esc_attr__( 'Checkbox Control', 'kirki' ),
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'checkbox_section',
 	'default'     => true,
-) );
+);
 
 /**
  * Color Controls.
  *
  * @link https://aristath.github.io/kirki/docs/controls/color.html
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_hex',
 	'label'       => __( 'Color Control (hex-only)', 'kirki' ),
 	'description' => esc_attr__( 'This is a color control - without alpha channel.', 'kirki' ),
 	'section'     => 'color_section',
-	'default'     => '#0088CC',
-) );
+	'default'     => '#0008DC',
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_rgba',
 	'label'       => __( 'Color Control (with alpha channel)', 'kirki' ),
@@ -165,57 +180,57 @@ Kirki::add_field( 'kirki_demo', array(
 	'choices'     => array(
 		'alpha' => true,
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_hue',
 	'label'       => __( 'Color Control - hue only.', 'kirki' ),
 	'description' => esc_attr__( 'This is a color control - hue only.', 'kirki' ),
 	'section'     => 'color_section',
-	'default'     => '#0088CC',
+	'default'     => 160,
 	'mode'        => 'hue',
-) );
+);
 
 /**
  * DateTime Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'date',
 	'settings'    => 'date_setting',
 	'label'       => esc_attr__( 'Date Control', 'kirki' ),
 	'description' => esc_attr__( 'This is a date control.', 'kirki' ),
 	'section'     => 'date_section',
 	'default'     => '',
-) );
+);
 
 /**
  * Editor Controls
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'editor',
 	'settings'    => 'editor_1',
 	'label'       => esc_attr__( 'First Editor Control', 'kirki' ),
 	'description' => esc_attr__( 'This is an editor control.', 'kirki' ),
 	'section'     => 'editor_section',
 	'default'     => '',
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'editor',
 	'settings'    => 'editor_2',
 	'label'       => esc_attr__( 'Second Editor Control', 'kirki' ),
 	'description' => esc_attr__( 'This is a 2nd editor control just to check that we do not have issues with multiple instances.', 'kirki' ),
 	'section'     => 'editor_section',
 	'default'     => esc_attr__( 'Default Text', 'kirki' ),
-) );
+);
 
 /**
  * Color-Palette Controls.
  *
  * @link https://aristath.github.io/kirki/docs/controls/color-palette.html
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_0',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
@@ -226,9 +241,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'colors' => array( '#000000', '#222222', '#444444', '#666666', '#888888', '#aaaaaa', '#cccccc', '#eeeeee', '#ffffff' ),
 		'style'  => 'round',
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_4',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
@@ -239,9 +254,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'all' ),
 		'size'   => 17,
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_1',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
@@ -252,9 +267,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'primary' ),
 		'size'   => 25,
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_2',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
@@ -265,9 +280,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'red' ),
 		'size'   => 16,
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_3',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
@@ -279,14 +294,14 @@ Kirki::add_field( 'kirki_demo', array(
 		'size'   => 60,
 		'style'  => 'round',
 	),
-) );
+);
 
 /**
  * Dashicons control.
  *
  * @link https://aristath.github.io/kirki/docs/controls/dashicons.html
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'dashicons',
 	'settings'    => 'dashicons_setting_0',
 	'label'       => esc_attr__( 'Dashicons Control', 'kirki' ),
@@ -302,33 +317,33 @@ Kirki::add_field( 'kirki_demo', array(
 		'admin-links',
 		'admin-page',
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'dashicons',
 	'settings'    => 'dashicons_setting_1',
 	'label'       => esc_attr__( 'All Dashicons', 'kirki' ),
 	'description' => esc_attr__( 'Showing all dashicons', 'kirki' ),
 	'section'     => 'dashicons_section',
 	'default'     => 'menu',
-) );
+);
 
 /**
  * Dimension Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'dimension',
 	'settings'    => 'dimension_0',
 	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
 	'description' => esc_attr__( 'Description Here.', 'kirki' ),
 	'section'     => 'dimension_section',
 	'default'     => '10px',
-) );
+);
 
 /**
  * Dimensions Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_0',
 	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
@@ -338,9 +353,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'width'  => '100px',
 		'height' => '100px',
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_1',
 	'label'       => esc_attr__( 'Dimension Control', 'kirki' ),
@@ -352,42 +367,42 @@ Kirki::add_field( 'kirki_demo', array(
 		'padding-left'   => '1vh',
 		'padding-right'  => '10px',
 	),
-) );
+);
 
 /**
  * Font-Awesome Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'fontawesome',
 	'settings'    => 'fontawesome_setting',
 	'label'       => esc_attr__( 'Font Awesome Control', 'kirki' ),
 	'description' => esc_attr__( 'Description Here.', 'kirki' ),
 	'section'     => 'fontawesome_section',
 	'default'     => 'bath',
-) );
+);
 
 /**
  * Generic Controls.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'text',
 	'settings'    => 'generic_text_setting',
 	'label'       => esc_attr__( 'Text Control', 'kirki' ),
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'textarea',
 	'settings'    => 'generic_textarea_setting',
 	'label'       => esc_attr__( 'Textarea Control', 'kirki' ),
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'generic_section',
 	'default'     => '',
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'generic',
 	'settings'    => 'generic_custom_setting',
 	'label'       => esc_attr__( 'Custom input Control.', 'kirki' ),
@@ -400,21 +415,21 @@ Kirki::add_field( 'kirki_demo', array(
 		'style'    => 'background-color:black;color:red;',
 		'data-foo' => 'bar',
 	),
-) );
+);
 
 /**
  * Image Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_url',
 	'label'       => esc_attr__( 'Image Control (URL)', 'kirki' ),
 	'description' => esc_attr__( 'Description Here.', 'kirki' ),
 	'section'     => 'image_section',
 	'default'     => '',
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_id',
 	'label'       => esc_attr__( 'Image Control (ID)', 'kirki' ),
@@ -424,9 +439,9 @@ Kirki::add_field( 'kirki_demo', array(
 	'choices'     => array(
 		'save_as' => 'id',
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_array',
 	'label'       => esc_attr__( 'Image Control (array)', 'kirki' ),
@@ -436,12 +451,12 @@ Kirki::add_field( 'kirki_demo', array(
 	'choices'     => array(
 		'save_as' => 'array',
 	),
-) );
+);
 
 /**
  * Multicheck Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'multicheck',
 	'settings'    => 'multicheck_setting',
 	'label'       => esc_attr__( 'Multickeck Control', 'kirki' ),
@@ -455,12 +470,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
 		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
 	),
-) );
+);
 
 /**
  * Multicolor Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'multicolor',
 	'settings'    => 'multicolor_setting',
 	'label'       => esc_attr__( 'Label', 'kirki' ),
@@ -476,12 +491,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'hover'   => '#00aaff',
 		'active'  => '#00ffff',
 	),
-) );
+);
 
 /**
  * Number Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'number',
 	'settings'    => 'number_setting',
 	'label'       => esc_attr__( 'Label', 'kirki' ),
@@ -492,12 +507,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'max'  => 5,
 		'step' => 1,
 	),
-) );
+);
 
 /**
  * Palette Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'palette',
 	'settings'    => 'palette_setting',
 	'label'       => esc_attr__( 'Label', 'kirki' ),
@@ -509,12 +524,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
 		'bnw'   => array( '#000000', '#ffffff' ),
 	),
-) );
+);
 
 /**
  * Radio Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'radio',
 	'settings'    => 'radio_setting',
 	'label'       => esc_attr__( 'Radio Control', 'kirki' ),
@@ -528,12 +543,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
 		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
 	),
-) );
+);
 
 /**
  * Radio-Buttonset Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'radio-buttonset',
 	'settings'    => 'radio_buttonset_setting',
 	'label'       => esc_attr__( 'Radio-Buttonset Control', 'kirki' ),
@@ -545,12 +560,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'option-2' => esc_attr__( 'Option 2', 'kirki' ),
 		'option-3' => esc_attr__( 'Option 3', 'kirki' ),
 	),
-) );
+);
 
 /**
  * Radio-Image Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'radio-image',
 	'settings'    => 'radio_image_setting',
 	'label'       => esc_attr__( 'Radio-Image Control', 'kirki' ),
@@ -562,12 +577,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'cossack' => 'https://raw.githubusercontent.com/templatemonster/cossack-wapuula/master/cossack-wapuula.png',
 		'travel'  => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-travel.png',
 	),
-) );
+);
 
 /**
  * Select Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'select',
 	'settings'    => 'select_setting',
 	'label'       => esc_attr__( 'Select Control', 'kirki' ),
@@ -581,12 +596,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'option-4' => esc_attr__( 'Option 4', 'kirki' ),
 		'option-5' => esc_attr__( 'Option 5', 'kirki' ),
 	),
-) );
+);
 
 /**
  * Slider Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'slider',
 	'settings'    => 'slider_setting',
 	'label'       => esc_attr__( 'Slider Control', 'kirki' ),
@@ -599,12 +614,12 @@ Kirki::add_field( 'kirki_demo', array(
 		'step' => 1,
 		'suffix' => 'px',
 	),
-) );
+);
 
 /**
  * Sortable control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'sortable',
 	'settings'    => 'sortable_setting',
 	'label'       => __( 'This is a sortable control.', 'kirki' ),
@@ -618,36 +633,36 @@ Kirki::add_field( 'kirki_demo', array(
 		'option5' => esc_attr__( 'Option 5', 'kirki' ),
 		'option6' => esc_attr__( 'Option 6', 'kirki' ),
 	),
-) );
+);
 
 /**
  * Switch control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'switch',
 	'settings'    => 'switch_setting',
 	'label'       => esc_attr__( 'Switch Control', 'kirki' ),
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'switch_section',
 	'default'     => true,
-) );
+);
 
 /**
  * Toggle control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'toggle',
 	'settings'    => 'toggle_setting',
 	'label'       => esc_attr__( 'Toggle Control', 'kirki' ),
 	'description' => esc_attr__( 'Description', 'kirki' ),
 	'section'     => 'toggle_section',
 	'default'     => true,
-) );
+);
 
 /**
  * Typography Control.
  */
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'typography',
 	'settings'    => 'typography_setting_0',
 	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
@@ -665,9 +680,9 @@ Kirki::add_field( 'kirki_demo', array(
 		'text-align'     => 'left',
 	),
 	'priority'    => 10,
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'typography',
 	'settings'    => 'typography_setting_1',
 	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
@@ -676,9 +691,9 @@ Kirki::add_field( 'kirki_demo', array(
 	'default'     => array(
 		'font-family'    => 'Roboto',
 	),
-) );
+);
 
-Kirki::add_field( 'kirki_demo', array(
+my_config_kirki_add_field( array(
 	'type'        => 'typography',
 	'settings'    => 'typography_setting_2',
 	'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
@@ -690,4 +705,4 @@ Kirki::add_field( 'kirki_demo', array(
 		'letter-spacing' => '0',
 		'color'          => '#333333',
 	),
-) );
+);
