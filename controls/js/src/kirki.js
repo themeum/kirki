@@ -43,13 +43,13 @@ var kirki = {
 				control.container.html( kirki.input.color.getTemplate( {
 					label: control.params.label,
 					description: control.params.description,
+					id: control.id,
 					mode: control.params.mode,
 					inputAttrs: control.params.inputAttrs,
 					'data-palette': control.params.palette,
 					'data-default-color': control.params['default'],
 					'data-alpha': control.params.choices.alpha,
-					value: control.setting._value,
-					link: control.params.link
+					value: control.setting._value
 				} ) );
 			}
 		}
@@ -89,7 +89,7 @@ var kirki = {
 					'data-default-color': data['data-default-color'] ? data['data-default-color'] : '',
 					'data-alpha': data['data-alpha'] ? data['data-alpha'] : false,
 					value: '',
-					link: ''
+					id: ''
 				} );
 
 				html += '<label>';
@@ -100,9 +100,9 @@ var kirki = {
 					html += '<span class="description customize-control-description">' + data.description + '</span>';
 				}
 				html += '</label>';
-				html += '<input type="text" data-type="' + data.mode + '" ' + data.inputAttrs + ' data-palette="' +  data['data-palette'] + '" data-default-color="' +  data['data-default-color'] + '" data-alpha="' + data['data-alpha'] + '" value="' + data.value + '" class="kirki-color-control" ' + data.link + '/>';
+				html += '<input type="text" data-type="' + data.mode + '" ' + data.inputAttrs + ' data-palette="' +  data['data-palette'] + '" data-default-color="' +  data['data-default-color'] + '" data-alpha="' + data['data-alpha'] + '" value="' + data.value + '" class="kirki-color-control" data-id="' + data.id + '"/>';
 
-				return html;
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
 			},
 
 			/**
@@ -113,21 +113,27 @@ var kirki = {
 			 * @returns {void}
 			 */
 			init: function( control ) {
-
-				var picker = control.container.find( '.kirki-color-control' ),
+				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
 				    clear;
 
+				control.choices = control.choices || {};
+				if ( _.isEmpty( control.choices ) && control.params.choices ) {
+					control.choices = control.params.choices;
+				}
+
 				// If we have defined any extra choices, make sure they are passed-on to Iris.
-				if ( ! _.isUndefined( control.params.choices ) ) {
-					picker.wpColorPicker( control.params.choices );
+				if ( ! _.isEmpty( control.choices ) ) {
+					picker.wpColorPicker( control.choices );
 				}
 
 				// Tweaks to make the "clear" buttons work.
 				setTimeout( function() {
-					clear = control.container.find( '.wp-picker-clear' );
-					clear.click( function() {
-						control.setting.set( '' );
-					});
+					clear = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .wp-picker-clear' );
+					if ( clear.length ) {
+						clear.click( function() {
+							control.setting.set( '' );
+						});
+					}
 				}, 200 );
 
 				// Saves our settings to the WP API
@@ -136,7 +142,7 @@ var kirki = {
 
 						// Small hack: the picker needs a small delay
 						setTimeout( function() {
-							control.setting.set( picker.val() );
+							kirki.setting.set( control.id, picker.val() );
 						}, 20 );
 					}
 				});
