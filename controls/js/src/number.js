@@ -5,7 +5,7 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 
 		var control = this,
 		    value   = control.setting._value,
-		    html,
+		    html    = '',
 		    input,
 		    up,
 		    down;
@@ -16,13 +16,11 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 			max: 100,
 			step: 1
 		} );
-
 		// Make sure we have a valid value.
-		if ( isNaN( value ) ) {
+		if ( isNaN( value ) || '' === value ) {
 			value = ( 0 > control.params.choices.min && 0 < control.params.choices.max ) ? 0 : control.params.choices.min;
-		} else {
-			value = parseFloat( value );
 		}
+		value = parseFloat( value );
 
 		// If step is 'any', set to 0.001.
 		control.params.choices.step = ( 'any' === control.params.choices.step ) ? 0.001 : control.params.choices.step;
