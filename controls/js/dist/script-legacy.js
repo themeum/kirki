@@ -2238,11 +2238,17 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
-		// If the range input value changes,
-		// copy the value to the text input
-		// and then save.
-		rangeInput.on( changeAction, function() {
+		// If the range input value changes copy the value to the text input.
+		rangeInput.on( 'mousemove change', function() {
 			textInput.attr( 'value', rangeInput.val() );
+		} );
+
+		// Save the value when the range input value changes.
+		// This is separate from the above because of the postMessage differences.
+		// If the control refreshes the preview pane,
+		// we don't want a refresh for every change
+		// but 1 final refresh when the value is changed.
+		rangeInput.on( changeAction, function() {
 			control.setting.set( rangeInput.val() );
 		} );
 
