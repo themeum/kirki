@@ -1,3 +1,4 @@
+/* global kirki */
 /**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
@@ -181,6 +182,11 @@
 		initKirkiControl: function() {
 
 			var control = this;
+
+			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
+				kirki.control[ control.params.type ].init( control );
+				return;
+			}
 
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {

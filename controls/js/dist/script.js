@@ -208,7 +208,8 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	};
 }
-;/**
+;/* global kirki */
+/**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
  * and the work of @westonruter to whom I am very grateful.
@@ -392,6 +393,11 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 
 			var control = this;
 
+			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
+				kirki.control[ control.params.type ].init( control );
+				return;
+			}
+
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
@@ -426,27 +432,82 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 ;var kirki = {
 
 	/**
+	 * An object containing definitions for controls.
+	 *
+	 * @since 3.0.16
+	 */
+	control: {
+
+		/**
+		 * The color control.
+		 *
+		 * @since 3.0.16
+		 */
+		'kirki-color': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.16
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.color.init( control );
+
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.16
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				control.container.html( kirki.input.color.getTemplate( {
+					label: control.params.label,
+					description: control.params.description,
+					mode: control.params.mode,
+					inputAttrs: control.params.inputAttrs,
+					'data-palette': control.params.palette,
+					'data-default-color': control.params['default'],
+					'data-alpha': control.params.choices.alpha,
+					value: control.setting._value,
+					link: control.params.link
+				} ) );
+			}
+		}
+	},
+
+	/**
 	 * An object containing definitions for input fields.
 	 *
-	 * @since 3.1.0
+	 * @since 3.0.16
 	 */
 	input: {
 
 		/**
 		 * Color input fields.
 		 *
-		 * @since 3.1.0
+		 * @since 3.0.16
 		 */
 		color: {
 
 			/**
 			 * Get the HTML for color inputs.
 			 *
-			 * @since 3.1.0
+			 * @since 3.0.16
 			 * @param {object} [data] The arguments.
 			 * @returns {string}
 			 */
-			template: function( data ) {
+			getTemplate: function( data ) {
 
 				var html = '';
 
@@ -478,7 +539,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			/**
 			 * Init the control.
 			 *
-			 * @since 3.1.0
+			 * @since 3.0.16
 			 * @param {object} [control] The control object.
 			 * @returns {void}
 			 */
@@ -514,6 +575,8 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	}
 };
+
+wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend({});
 ;/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend({
 
@@ -691,34 +754,6 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	}
 });
 ;wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});
-;/* global kirki */
-wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend({
-
-	initKirkiControl: function() {
-		var control = this,
-			data    = {
-				label: control.params.label,
-				description: control.params.description,
-				mode: control.params.mode,
-				inputAttrs: control.params.inputAttrs,
-				'data-palette': control.params.palette,
-				'data-default-color': control.params['default'],
-				'data-alpha': control.params.choices.alpha,
-				value: control.setting._value,
-				link: control.params.link
-		    },
-		    html = kirki.input.color.template( data ),
-		    picker,
-		    clear;
-
-		// Add the HTML for the control.
-		control.container.html( html );
-
-		// Init the control.
-		kirki.input.color.init( control );
-
-	}
-});
 ;wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
 ;wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
 

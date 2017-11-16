@@ -1,27 +1,82 @@
 var kirki = {
 
 	/**
+	 * An object containing definitions for controls.
+	 *
+	 * @since 3.0.16
+	 */
+	control: {
+
+		/**
+		 * The color control.
+		 *
+		 * @since 3.0.16
+		 */
+		'kirki-color': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.16
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.color.init( control );
+
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.16
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				control.container.html( kirki.input.color.getTemplate( {
+					label: control.params.label,
+					description: control.params.description,
+					mode: control.params.mode,
+					inputAttrs: control.params.inputAttrs,
+					'data-palette': control.params.palette,
+					'data-default-color': control.params['default'],
+					'data-alpha': control.params.choices.alpha,
+					value: control.setting._value,
+					link: control.params.link
+				} ) );
+			}
+		}
+	},
+
+	/**
 	 * An object containing definitions for input fields.
 	 *
-	 * @since 3.1.0
+	 * @since 3.0.16
 	 */
 	input: {
 
 		/**
 		 * Color input fields.
 		 *
-		 * @since 3.1.0
+		 * @since 3.0.16
 		 */
 		color: {
 
 			/**
 			 * Get the HTML for color inputs.
 			 *
-			 * @since 3.1.0
+			 * @since 3.0.16
 			 * @param {object} [data] The arguments.
 			 * @returns {string}
 			 */
-			template: function( data ) {
+			getTemplate: function( data ) {
 
 				var html = '';
 
@@ -53,7 +108,7 @@ var kirki = {
 			/**
 			 * Init the control.
 			 *
-			 * @since 3.1.0
+			 * @since 3.0.16
 			 * @param {object} [control] The control object.
 			 * @returns {void}
 			 */
@@ -89,3 +144,5 @@ var kirki = {
 		}
 	}
 };
+
+wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend({});
