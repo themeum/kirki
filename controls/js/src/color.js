@@ -1,32 +1,29 @@
+/* global kirki */
 wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 		var control = this,
-		    picker  = control.container.find( '.kirki-color-control' ),
+			data    = {
+				label: control.params.label,
+				description: control.params.description,
+				mode: control.params.mode,
+				inputAttrs: control.params.inputAttrs,
+				'data-palette': control.params.palette,
+				'data-default-color': control.params['default'],
+				'data-alpha': control.params.choices.alpha,
+				value: control.setting._value,
+				link: control.params.link
+		    },
+		    html = kirki.input.color.template( data ),
+		    picker,
 		    clear;
+console.log( control.params );
+console.log( data );
+		// Add the HTML for the control.
+		control.container.html( html );
 
-		// If we have defined any extra choices, make sure they are passed-on to Iris.
-		if ( ! _.isUndefined( control.params.choices ) ) {
-			picker.wpColorPicker( control.params.choices );
-		}
+		// Init the control.
+		kirki.input.color.init( control );
 
-		// Tweaks to make the "clear" buttons work.
-		setTimeout( function() {
-			clear = control.container.find( '.wp-picker-clear' );
-			clear.click( function() {
-				control.setting.set( '' );
-			});
-		}, 200 );
-
-		// Saves our settings to the WP API
-		picker.wpColorPicker({
-			change: function() {
-
-				// Small hack: the picker needs a small delay
-				setTimeout( function() {
-					control.setting.set( picker.val() );
-				}, 20 );
-			}
-		});
 	}
 });

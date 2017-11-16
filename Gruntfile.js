@@ -102,6 +102,7 @@ module.exports = function( grunt ) {
 				src: [
 					'controls/js/src/set-setting-value.js',
 					'controls/js/src/dynamic-control.js',
+					'controls/js/src/kirki.js',
 
 					'controls/js/src/background.js',
 					'controls/js/src/code.js',
