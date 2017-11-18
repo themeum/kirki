@@ -759,32 +759,3 @@ my_config_kirki_add_field(
 		'priority'    => 10,
 	)
 );
-
-my_config_kirki_add_field(
-	array(
-		'type'        => 'typography',
-		'settings'    => 'typography_setting_1',
-		'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
-		'description' => esc_attr__( 'Just the font-family.', 'kirki' ),
-		'section'     => 'typography_section',
-		'default'     => array(
-			'font-family'    => 'Roboto',
-		),
-	)
-);
-
-my_config_kirki_add_field(
-	array(
-		'type'        => 'typography',
-		'settings'    => 'typography_setting_2',
-		'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
-		'description' => esc_attr__( 'Only font-size, line-height, letter-spacing and color.', 'kirki' ),
-		'section'     => 'typography_section',
-		'default'     => array(
-			'font-size'      => '14px',
-			'line-height'    => '1.5',
-			'letter-spacing' => '0',
-			'color'          => '#333333',
-		),
-	)
-);
