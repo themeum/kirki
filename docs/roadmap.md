@@ -45,4 +45,10 @@ Repeaters would be able to act as wrapper for complete control structures instea
 <strong>EDIT</strong>: Work on this has already started in the develop branch and it will be Implemented in stages, starting with version 3.0.16. The plan is to have everything finished by the time we reach 3.1.0
 </div>
 
+#### Deprecate the `customizer-styling` module
+
+<span class="secondary label">Planned for</span><span class="alert label">future version</span>
+
+This module will be deprecated. It should not be part of the plugin's core. We can provide it as a separate module that developers can add if they want it.
+
 ---
