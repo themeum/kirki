@@ -83,7 +83,7 @@ class Kirki_Control {
 
 		// Get the name of the class we're going to use.
 		$class_name = $this->get_control_class_name( $args );
-		// Fixes https://github.com/aristath/kirki/issues/1622
+		// Fixes https://github.com/aristath/kirki/issues/1622.
 		if ( 'kirki-code' === $args['type'] && class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
 			$this->wp_customize->add_control(
 				new WP_Customize_Code_Editor_Control(
