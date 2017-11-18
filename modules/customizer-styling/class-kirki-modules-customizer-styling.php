@@ -92,9 +92,6 @@ class Kirki_Modules_Customizer_Styling {
 			$back_on_back   = ( 90 < $back_obj->lightness ) ? $back_obj->getNew( 'lightness', $back_obj->lightness - 6 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 11 )->toCSS( $back_obj->mode );
 			$hover_on_back  = ( 90 < $back_obj->lightness ) ? $back_obj->getNew( 'lightness', $back_obj->lightness - 3 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness + 3 )->toCSS( $back_obj->mode );
 			$arrows_on_back = ( 50 > $back_obj->lightness ) ? $back_obj->getNew( 'lightness', $back_obj->lightness + 30 )->toCSS( $back_obj->mode ) : $back_obj->getNew( 'lightness', $back_obj->lightness - 30 )->toCSS( $back_obj->mode );
-
-			$red_obj        = ariColor::newColor( '#a00' );
-			$red            = ( 90 < $back_obj->lightness ) ? '#FF8A80' : '#a00';
 		}
 		$accent     = ( isset( $config['color_accent'] ) ) ? $config['color_accent'] : false;
 		if ( $accent ) {
@@ -132,7 +129,7 @@ class Kirki_Modules_Customizer_Styling {
 				background: none;
 			}
 			.wp-core-ui .button-link-delete {
-				color: <?php echo $red; // WPCS: XSS ok. ?>;
+				color: <?php echo ( 90 > $back_obj->lightness ) ? '#FF8A80' : '#a00'; // WPCS: XSS ok. ?>;
 			}
 			.button.wp-color-result {
 				text-shadow: none !important;
