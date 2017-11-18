@@ -43,7 +43,7 @@ var kirki = {
 				control.container.html( kirki.input.color.getTemplate( {
 					label: control.params.label,
 					description: control.params.description,
-					id: control.id,
+					'data-id': control.id,
 					mode: control.params.mode,
 					inputAttrs: control.params.inputAttrs,
 					'data-palette': control.params.palette,
@@ -89,7 +89,7 @@ var kirki = {
 					'data-default-color': data['data-default-color'] ? data['data-default-color'] : '',
 					'data-alpha': data['data-alpha'] ? data['data-alpha'] : false,
 					value: '',
-					id: ''
+					'data-id': ''
 				} );
 
 				html += '<label>';
@@ -100,7 +100,7 @@ var kirki = {
 					html += '<span class="description customize-control-description">' + data.description + '</span>';
 				}
 				html += '</label>';
-				html += '<input type="text" data-type="' + data.mode + '" ' + data.inputAttrs + ' data-palette="' +  data['data-palette'] + '" data-default-color="' +  data['data-default-color'] + '" data-alpha="' + data['data-alpha'] + '" value="' + data.value + '" class="kirki-color-control" data-id="' + data.id + '"/>';
+				html += '<input type="text" data-type="' + data.mode + '" ' + data.inputAttrs + ' data-palette="' +  data['data-palette'] + '" data-default-color="' +  data['data-default-color'] + '" data-alpha="' + data['data-alpha'] + '" value="' + data.value + '" class="kirki-color-control" data-id="' + data['data-id'] + '"/>';
 
 				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
 			},
@@ -295,4 +295,3 @@ var kirki = {
 		}
 	}
 };
-wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend({});

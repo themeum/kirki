@@ -219,3 +219,7 @@
 		}
 	});
 })();
+
+_.each( kirki.control, function( obj, type ) {
+	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
+} );
