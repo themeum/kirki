@@ -71,5 +71,9 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 			input.val( newVal );
 			input.trigger( 'change' );
 		} );
+
+		this.container.on( 'change keyup paste click', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
 	}
 });
