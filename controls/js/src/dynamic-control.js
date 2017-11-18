@@ -116,7 +116,7 @@
 			wp.customize.Control.prototype.ready.call( control );
 
 			control.deferred.embedded.done( function() {
-				control.initKirkiControl();
+				control.initKirkiControl( control );
 			});
 		},
 
@@ -179,10 +179,13 @@
 			wp.customize.Control.prototype.focus.call( control, args );
 		},
 
-		initKirkiControl: function() {
-
-			var control = this;
-
+		/**
+		 * Additional actions that run on ready.
+		 *
+		 * @param {object} [args] Args.
+		 * @returns {void}
+		 */
+		initKirkiControl: function( control ) {
 			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
 				kirki.control[ control.params.type ].init( control );
 				return;
