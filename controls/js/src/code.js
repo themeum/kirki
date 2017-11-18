@@ -1,6 +1,6 @@
 wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
 
-	ready: function() {
+	initKirkiControl: function() {
 
 		var control  = this;
 
