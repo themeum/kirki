@@ -24,7 +24,7 @@ foreach ( $configs as $config_id => $args ) {
 		continue;
 	}
 
-	$styles = Kirki_Styles_Frontend::loop_controls( $config_id );
+	$styles = Kirki_Modules_CSS::loop_controls( $config_id );
 	$styles = apply_filters( "kirki/{$config_id}/dynamic_css", $styles );
 
 	// Some people put weird stuff in their CSS, KSES tends to be greedy.
