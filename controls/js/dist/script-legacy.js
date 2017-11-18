@@ -623,7 +623,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			wp.customize.Control.prototype.ready.call( control );
 
 			control.deferred.embedded.done( function() {
-				control.initKirkiControl();
+				control.initKirkiControl( control );
 			});
 		},
 
@@ -686,10 +686,13 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			wp.customize.Control.prototype.focus.call( control, args );
 		},
 
-		initKirkiControl: function() {
-
-			var control = this;
-
+		/**
+		 * Additional actions that run on ready.
+		 *
+		 * @param {object} [args] Args.
+		 * @returns {void}
+		 */
+		initKirkiControl: function( control ) {
 			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
 				kirki.control[ control.params.type ].init( control );
 				return;
@@ -1545,6 +1548,10 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 			input.val( newVal );
 			input.trigger( 'change' );
 		} );
+
+		this.container.on( 'change keyup paste click', 'input', function() {
+			control.setting.set( jQuery( this ).val() );
+		});
 	}
 });
 ;wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});

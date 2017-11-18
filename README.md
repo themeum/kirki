@@ -39,6 +39,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `slider` controls were not updating the numeric value visually in their textfield when the control was not using `postMessage` [#1633](https://github.com/aristath/kirki/issues/1627)
 * Fix: Deprecated call to non-existing `Kirki_Styles_Frontend`, props @FrankM1 [#1644](https://github.com/aristath/kirki/issues/1644)
 * Fix: Updated the customizer-styling module for compatibility with WP 4.9 [#1639](https://github.com/aristath/kirki/issues/1639)
+* Fix: `code` controls were not using the corect `priority` [#1622](https://github.com/aristath/kirki/issues/1622)
 * Fix: Reports of errors in the console.
 * New: Refactored the `number` controls [#1631](https://github.com/aristath/kirki/issues/1627)
 * New: Refactored the `color` controls. [#1646](https://github.com/aristath/kirki/issues/1646)
