@@ -263,8 +263,8 @@
   display: flex;
   flex-wrap: wrap; }
   .customize-control-kirki-radio-buttonset .buttonset .switch-label {
-    background: #fbfbfc;
-    border: 1px solid #f3f4f5;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px rgba(0, 0, 0, 0.1);
     color: rgba(50, 55, 60, 0.5);
     margin: 0;
     text-align: center;
