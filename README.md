@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.8.2  
 **Tested up to:** 4.9  
-**Stable tag:** 3.0.15  
+**Stable tag:** 3.0.16  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -32,6 +32,19 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
 
 ## Changelog ##
+
+### 3.0.16 ###
+
+November 19 2017, dev time: 8 hours
+
+* Fix: `typography` controls not working when they are the only fields used [#1627](https://github.com/aristath/kirki/issues/1627)
+* Fix: `slider` controls were not updating the numeric value visually in their textfield when the control was not using `postMessage` [#1633](https://github.com/aristath/kirki/issues/1627)
+* Fix: Deprecated call to non-existing `Kirki_Styles_Frontend`, props @FrankM1 [#1644](https://github.com/aristath/kirki/issues/1644)
+* Fix: Updated the customizer-styling module for compatibility with WP 4.9 [#1639](https://github.com/aristath/kirki/issues/1639)
+* Fix: `code` controls were not using the corect `priority` [#1622](https://github.com/aristath/kirki/issues/1622)
+* Fix: Multiple reports of errors in the console.
+* New: Refactored the `number` controls [#1631](https://github.com/aristath/kirki/issues/1627)
+* New: Refactored the `color` controls. [#1646](https://github.com/aristath/kirki/issues/1646)
 
 ### 3.0.15 ###
 

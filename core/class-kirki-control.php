@@ -83,6 +83,27 @@ class Kirki_Control {
 
 		// Get the name of the class we're going to use.
 		$class_name = $this->get_control_class_name( $args );
+		// Fixes https://github.com/aristath/kirki/issues/1622.
+		if ( 'kirki-code' === $args['type'] && class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
+			$this->wp_customize->add_control(
+				new WP_Customize_Code_Editor_Control(
+					$this->wp_customize,
+					$args['settings'],
+					array(
+						'label'       => $args['label'],
+						'section'     => $args['section'],
+						'settings'    => $args['settings'],
+						'code_type'   => $args['choices']['language'],
+						'priority'    => $args['priority'],
+						'input_attrs' => array(
+							'aria-describedby' => 'editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',
+						),
+					)
+				)
+			);
+			return;
+		}
+
 		// Add the control.
 		$this->wp_customize->add_control( new $class_name( $this->wp_customize, $args['settings'], $args ) );
 

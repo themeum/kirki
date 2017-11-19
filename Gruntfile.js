@@ -101,12 +101,12 @@ module.exports = function( grunt ) {
 			dist: {
 				src: [
 					'controls/js/src/set-setting-value.js',
+					'controls/js/src/kirki.js',
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background.js',
 					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
-					'controls/js/src/color.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
 					'controls/js/src/dimension.js',
@@ -136,12 +136,12 @@ module.exports = function( grunt ) {
 			legacy: {
 				src: [
 					'controls/js/src/set-setting-value.js',
+					'controls/js/src/kirki.js',
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background-legacy.js',
 					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
-					'controls/js/src/color.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
 					'controls/js/src/dimension.js',

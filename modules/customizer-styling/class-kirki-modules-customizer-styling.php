@@ -112,9 +112,34 @@ class Kirki_Modules_Customizer_Styling {
 		.customize-section-title,
 		#customize-theme-controls .control-section-themes .accordion-section-title,
 		#customize-theme-controls .control-section-themes .accordion-section-title,
-		#customize-theme-controls .control-section-themes .accordion-section-title:hover {
+		#customize-theme-controls .control-section-themes .accordion-section-title:hover,
+		.outer-section-open #customize-controls .wp-full-overlay-sidebar-content,
+		#customize-sidebar-outer-content,
+		#customize-control-changeset_status .customize-inside-control-row,
+		#customize-control-changeset_preview_link input,
+		#customize-control-changeset_scheduled_date,
+		.wp-core-ui .wp-full-overlay .collapse-sidebar {
 			background: <?php echo $back; // WPCS: XSS ok. ?>;
+			background-color: <?php echo $back; // WPCS: XSS ok. ?>;
 			color: <?php echo $text_on_back; // WPCS: XSS ok. ?>;
+		}
+
+		<?php if ( $back ) : ?>
+			.media-widget-preview.media_image, .media-widget-preview.media_audio, .attachment-media-view {
+				background: none;
+			}
+			.wp-core-ui .button-link-delete {
+				color: <?php echo ( 90 > $back_obj->lightness ) ? '#FF8A80' : '#a00'; // WPCS: XSS ok. ?>;
+			}
+			.button.wp-color-result {
+				text-shadow: none !important;
+			}
+		<?php endif; ?>
+
+
+		#customize-sidebar-outer-content {
+			border-left-color: <?php echo $border_on_back; // WPCS: XSS ok. ?>;
+			border-right-color: <?php echo $border_on_back; // WPCS: XSS ok. ?>;
 		}
 
 		#customize-controls .customize-info .panel-title,
@@ -372,6 +397,12 @@ class Kirki_Modules_Customizer_Styling {
 			background-color: <?php echo $accent; // WPCS: XSS ok. ?>;
 			border-color: <?php echo $border_on_accent; // WPCS: XSS ok. ?>;
 			color: <?php echo $text_on_accent; // WPCS: XSS ok. ?>;
+		}
+
+		.notice,
+		div.updated,
+		div.error {
+			color: #444 !important;
 		}
 
 		<?php if ( isset( $config['width'] ) ) : ?>

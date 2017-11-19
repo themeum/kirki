@@ -1,3 +1,4 @@
+/* global kirki */
 /**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
@@ -115,7 +116,7 @@
 			wp.customize.Control.prototype.ready.call( control );
 
 			control.deferred.embedded.done( function() {
-				control.initKirkiControl();
+				control.initKirkiControl( control );
 			});
 		},
 
@@ -178,9 +179,17 @@
 			wp.customize.Control.prototype.focus.call( control, args );
 		},
 
-		initKirkiControl: function() {
-
-			var control = this;
+		/**
+		 * Additional actions that run on ready.
+		 *
+		 * @param {object} [args] Args.
+		 * @returns {void}
+		 */
+		initKirkiControl: function( control ) {
+			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
+				kirki.control[ control.params.type ].init( control );
+				return;
+			}
 
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
@@ -213,3 +222,7 @@
 		}
 	});
 })();
+
+_.each( kirki.control, function( obj, type ) {
+	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
+} );
