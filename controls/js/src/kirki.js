@@ -52,6 +52,59 @@ var kirki = {
 					value: control.setting._value
 				} ) );
 			}
+		},
+
+		/**
+		 * The generic control.
+		 *
+		 * @since 3.0.16
+		 */
+		'kirki-generic': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
+					kirki.input.textarea.init( control );
+					return;
+				}
+				kirki.input.genericInput.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				var args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: control.setting._value
+				    };
+
+				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
+					control.container.html( kirki.input.textarea.getTemplate( args ) );
+					return;
+				}
+				control.container.html( kirki.input.genericInput.getTemplate( args ) );
+			}
 		}
 	},
 
