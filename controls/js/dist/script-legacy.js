@@ -259,8 +259,61 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					'data-palette': control.params.palette,
 					'data-default-color': control.params['default'],
 					'data-alpha': control.params.choices.alpha,
-					value: control.setting._value
+					value: kirki.setting.get( control.id )
 				} ) );
+			}
+		},
+
+		/**
+		 * The generic control.
+		 *
+		 * @since 3.0.16
+		 */
+		'kirki-generic': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
+					kirki.input.textarea.init( control );
+					return;
+				}
+				kirki.input.genericInput.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				var args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id )
+				    };
+
+				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
+					control.container.html( kirki.input.textarea.getTemplate( args ) );
+					return;
+				}
+				control.container.html( kirki.input.genericInput.getTemplate( args ) );
 			}
 		}
 	},
@@ -355,6 +408,135 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 							kirki.setting.set( control.id, picker.val() );
 						}, 20 );
 					}
+				});
+			}
+		},
+
+		/**
+		 * Generic input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		genericInput: {
+
+			/**
+			 * Get the HTML.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html    = '',
+				    element = ( data.choices.element ) ? data.choices.element : 'input';
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					choices: {}
+				} );
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '<div class="customize-control-content">';
+				html += '<' + element + ' data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' value="' + data.value + '" ' + data.link;
+				_.each( data.choices, function( val, key ) {
+					html += ' ' + key + '="' + val + '"';
+				});
+				if ( data.choices.content ) {
+					html += '>' + data.choices.content + '</' + element + '>';
+				} else {
+					html += '/>';
+				}
+				html += '</div>';
+				html += '</label>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+
+				// Save the value
+				input.on( 'change keyup paste click', function() {
+					control.setting.set( jQuery( this ).val() );
+				});
+			}
+		},
+
+		/**
+		 * Generic input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		textarea: {
+
+			/**
+			 * Get the HTML for textarea inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html    = '';
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					choices: {}
+				} );
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '<div class="customize-control-content">';
+				html += '<textarea data-id="' + data['data-id'] + '"' + data.inputAttrs + ' ' + data.link + 'value="' + data.value + '"';
+				_.each( data.choices, function( val, key ) {
+					html += ' ' + key + '="' + val + '"';
+				});
+				html += '>' + data.value + '</textarea>';
+				html += '</div>';
+				html += '</label>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var textarea = jQuery( 'textarea[data-id="' + control.id + '"]' );
+
+				// Save the value
+				textarea.on( 'change keyup paste click', function() {
+					control.setting.set( jQuery( this ).val() );
 				});
 			}
 		}
@@ -1173,7 +1355,6 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 		select.val( control.setting._value ).trigger( 'change' );
 	}
 });
-;wp.customize.controlConstructor['kirki-generic'] = wp.customize.kirkiDynamicControl.extend({});
 ;/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
