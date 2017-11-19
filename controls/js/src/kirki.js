@@ -147,6 +147,135 @@ var kirki = {
 					}
 				});
 			}
+		},
+
+		/**
+		 * Generic input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		genericInput: {
+
+			/**
+			 * Get the HTML.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html    = '',
+				    element = ( data.choices.element ) ? data.choices.element : 'input';
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					choices: {}
+				} );
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '<div class="customize-control-content">';
+				html += '<' + element + ' data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' value="' + data.value + '" ' + data.link;
+				_.each( data.choices, function( val, key ) {
+					html += ' ' + key + '="' + val + '"';
+				});
+				if ( data.choices.content ) {
+					html += '>' + data.choices.content + '</' + element + '>';
+				} else {
+					html += '/>';
+				}
+				html += '</div>';
+				html += '</label>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+
+				// Save the value
+				input.on( 'change keyup paste click', function() {
+					control.setting.set( jQuery( this ).val() );
+				});
+			}
+		},
+
+		/**
+		 * Generic input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		textarea: {
+
+			/**
+			 * Get the HTML for textarea inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html    = '';
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					choices: {}
+				} );
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '<div class="customize-control-content">';
+				html += '<textarea data-id="' + data['data-id'] + '"' + data.inputAttrs + ' ' + data.link;
+				_.each( data.choices, function( val, key ) {
+					html += ' ' + key + '="' + val + '"';
+				});
+				html += '>' + data.value + '</textarea>';
+				html += '</div>';
+				html += '</label>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var textarea = jQuery( 'input[data-id="' + control.id + '"]' );
+
+				// Save the value
+				textarea.on( 'change keyup paste click', function() {
+					control.setting.set( jQuery( this ).val() );
+				});
+			}
 		}
 	},
 
