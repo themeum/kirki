@@ -49,7 +49,7 @@ var kirki = {
 					'data-palette': control.params.palette,
 					'data-default-color': control.params['default'],
 					'data-alpha': control.params.choices.alpha,
-					value: control.setting._value
+					value: kirki.setting.get( control.id )
 				} ) );
 			}
 		},
@@ -96,7 +96,7 @@ var kirki = {
 						'data-id': control.id,
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
-						value: control.setting._value
+						value: kirki.setting.get( control.id )
 				    };
 
 				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
