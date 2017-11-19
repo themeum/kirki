@@ -410,7 +410,7 @@ var kirki = {
 					html += '<span class="description customize-control-description">' + data.description + '</span>';
 				}
 				html += '<select data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' ' + data.link;
-			 	if ( 1 < data.multiple ) {
+				if ( 1 < data.multiple ) {
 					html += ' data-multiple="' + data.multiple + '" multiple="multiple"';
 				}
 				html += '>';
