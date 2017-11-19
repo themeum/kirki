@@ -28,7 +28,7 @@ Kirki::add_config( $config_id, $args );
 ### Example:
 
 ```php
-Kirki::add_config( 'my_theme', array(
+Kirki::add_config( 'theme_config_id', array(
 	'capability'    => 'edit_theme_options',
 	'option_type'   => 'theme_mod',
 ) );
@@ -44,5 +44,5 @@ Kirki::add_config( 'my_theme', array(
 
 To create a field that will then use this configuration you can add your fields like this:
 ```php
-Kirki::add_field( 'my_theme', $field_args );
+Kirki::add_field( 'theme_config_id', $field_args );
 ```
