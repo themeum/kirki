@@ -105,6 +105,47 @@ var kirki = {
 				}
 				control.container.html( kirki.input.genericInput.getTemplate( args ) );
 			}
+		},
+
+		'kirki-select': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.select.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				var args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id ),
+						multiple: control.params.multiple
+				    };
+
+				control.container.html( kirki.input.select.getTemplate( args ) );
+			}
 		}
 	},
 
