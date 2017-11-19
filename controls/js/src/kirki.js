@@ -18,7 +18,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -36,7 +36,19 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}     control - The customizer control object.
+			 * @param {Object}     control.params - The control parameters.
+			 * @param {string}     control.params.label - The control label.
+			 * @param {string}     control.params.description - The control description.
+			 * @param {string}     control.params.mode - The colorpicker mode. Can be 'full' or 'hue'.
+			 * @param {bool|array} control.params.palette - false if we don't want a palette,
+			 *                                              true to use the default palette,
+			 *                                              array of custom hex colors if we want a custom palette.
+			 * @param {string}     control.params.inputAttrs - extra input arguments.
+			 * @param {string}     control.params.default - The default value.
+			 * @param {Object}     control.params.choices - Any extra choices we may need.
+			 * @param {boolean}    control.params.choices.alpha - should we add an alpha channel?
+			 * @param {string}     control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -65,7 +77,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -86,7 +98,15 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - Any extra choices we may need.
+			 * @param {boolean} control.params.choices.alpha - should we add an alpha channel?
+			 * @param {string}  control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -113,7 +133,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -130,7 +150,15 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - The choices for the select dropdown.
+			 * @param {integer} control.params.multiple - Is this a multi-select? How many options max?
+			 * @param {string}  control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -167,7 +195,7 @@ var kirki = {
 			 * Get the HTML for color inputs.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -203,7 +231,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -254,7 +282,7 @@ var kirki = {
 			 * Get the HTML.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -297,7 +325,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -321,7 +349,7 @@ var kirki = {
 			 * Get the HTML for textarea inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -359,7 +387,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -378,7 +406,7 @@ var kirki = {
 			 * Get the HTML for select inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -450,7 +478,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -479,7 +507,7 @@ var kirki = {
 			 * Get the HTML for image inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -537,7 +565,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -560,7 +588,7 @@ var kirki = {
 		 * customizer API is "control".
 		 *
 		 * @since 3.0.16
-		 * @param {string} [setting] The setting for which we're getting the value.
+		 * @param {string} setting - The setting for which we're getting the value.
 		 * @returns {mixed} Depends on the value.
 		 */
 		get: function( setting ) {
@@ -604,10 +632,10 @@ var kirki = {
 		 * and also take into account any defined "key" arguments which take this even deeper.
 		 *
 		 * @since 3.0.16
-		 * @param {object|string} [element] The DOM element whose value has changed,
+		 * @param {object|string} element - The DOM element whose value has changed,
 		 *                                  or an ID.
-		 * @param {mixed}         [value]   Depends on the control-type.
-		 * @param {string}        [key]     If we only want to save an item in an object
+		 * @param {mixed}         value - Depends on the control-type.
+		 * @param {string}        key - If we only want to save an item in an object
 		 *                                  we can define the key here.
 		 * @returns {void}
 		 */
