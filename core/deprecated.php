@@ -60,3 +60,9 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 		return Kirki_Color::get_brightness( $hex );
 	}
 }
+
+if ( ! function_exists( 'Kirki' ) ) {
+	function Kirki() {
+		return kirki();
+	}
+}
