@@ -88,6 +88,17 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			KIRKI_VERSION
 		);
 
+		wp_localize_script(
+			'kirki-script',
+			'kirki.l10n',
+			array(
+				'noFileSelected' => esc_attr__( 'No File Selected', 'kirki' ),
+				'remove'         => esc_attr__( 'Remove', 'kirki' ),
+				'default'        => esc_attr__( 'Default', 'kirki' ),
+				'selectFile'     => esc_attr__( 'Select File', 'kirki' ),
+			)
+		);
+
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
