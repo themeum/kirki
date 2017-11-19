@@ -382,7 +382,7 @@ var kirki = {
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
-				var html,
+				var html = '',
 				    selected;
 
 				data = _.defaults( data, {
