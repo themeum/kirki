@@ -38,10 +38,12 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 
 		$custom_fonts_array  = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
 		$localize_script_var = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';
-		wp_localize_script( 'kirki-script', $localize_script_var, array(
-			'standard' => $this->get_standard_fonts(),
-			'google'   => $this->get_google_fonts(),
-		) );
+		wp_localize_script(
+			'kirki-script', $localize_script_var, array(
+				'standard' => $this->get_standard_fonts(),
+				'google'   => $this->get_google_fonts(),
+			)
+		);
 	}
 
 	/**
@@ -231,15 +233,15 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 		</div>
 		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
 			<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>
-		<?php else : ?>
-			<#
-			if ( ! _.isUndefined( data.value['font-family'] ) ) {
-				data.value['font-family'] = data.value['font-family'].replace( /&quot;/g, '&#39' );
-			}
-			valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
-			#>
-			<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
+			<?php return; ?>
 		<?php endif; ?>
+		<#
+		if ( ! _.isUndefined( data.value['font-family'] ) ) {
+			data.value['font-family'] = data.value['font-family'].replace( /&quot;/g, '&#39' );
+		}
+		valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' );
+		#>
+		<input class="typography-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
 		<?php
 	}
 
@@ -285,12 +287,14 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 		}
 
 		$standard_fonts_final = array();
-		$default_variants = $this->format_variants_array( array(
-			'regular',
-			'italic',
-			'700',
-			'700italic',
-		) );
+		$default_variants = $this->format_variants_array(
+			array(
+				'regular',
+				'italic',
+				'700',
+				'700italic',
+			)
+		);
 		foreach ( $standard_fonts as $key => $font ) {
 			if ( ( ! empty( $std_user_keys ) && ! in_array( $key, $std_user_keys, true ) ) || ! isset( $font['stack'] ) || ! isset( $font['label'] ) ) {
 				continue;
