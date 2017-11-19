@@ -532,6 +532,16 @@ var kirki = {
 
 				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
 			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+			}
 		}
 	},
 
