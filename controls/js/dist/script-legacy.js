@@ -315,6 +315,47 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				}
 				control.container.html( kirki.input.genericInput.getTemplate( args ) );
 			}
+		},
+
+		'kirki-select': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.select.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The customizer control object.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				var args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id ),
+						multiple: control.params.multiple
+				    };
+
+				control.container.html( kirki.input.select.getTemplate( args ) );
+			}
 		}
 	},
 
@@ -474,7 +515,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 
 				// Save the value
 				input.on( 'change keyup paste click', function() {
-					control.setting.set( jQuery( this ).val() );
+					kirki.setting.set( control.id, jQuery( this ).val() );
 				});
 			}
 		},
@@ -536,7 +577,108 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
-					control.setting.set( jQuery( this ).val() );
+					kirki.setting.set( control.id, jQuery( this ).val() );
+				});
+			}
+		},
+
+		select: {
+
+			/**
+			 * Get the HTML for select inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html,
+				    selected;
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					'data-id': '',
+					choices: {},
+					multiple: 1,
+					value: ( 1 < data.multiple ) ? [] : ''
+				} );
+
+				if ( ! data.choices ) {
+					return;
+				}
+				if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
+					data.value = [ data.value ];
+				}
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '<select data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' ' + data.link;
+			 	if ( 1 < data.multiple ) {
+					html += ' data-multiple="' + data.multiple + '" multiple="multiple"';
+				}
+				html += '>';
+				_.each( data.choices, function( optionLabel, optionKey ) {
+					selected = ( data.value === optionKey );
+					if ( 1 < data.multiple && data.value ) {
+						selected = _.contains( data.value, optionKey );
+					}
+					if ( _.isObject( optionLabel ) ) {
+						html += '<optgroup label="' + optionLabel[0] + '">';
+						_.each( optionLabel[1], function( optgroupOptionLabel, optgroupOptionKey ) {
+							selected = ( data.value === optgroupOptionKey );
+							if ( 1 < data.multiple && data.value ) {
+								selected = _.contains( data.value, optgroupOptionKey );
+							}
+							html += '<option value="' + optgroupOptionKey + '"';
+							if ( selected ) {
+								html += ' selected';
+							}
+							html += '>' + optgroupOptionLabel + '</option>';
+						} );
+						html += '</optgroup>';
+					} else {
+						html += '<option value="' + optionKey + '"';
+						if ( selected ) {
+							html += ' selected';
+						}
+						html += '>' + optionLabel + '</option>';
+					}
+				} );
+				html += '</select></label>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var element  = jQuery( 'select[data-id="' + control.id + '"' ),
+				    multiple = parseInt( element.data( 'multiple' ), 10 ),
+				    selectValue,
+				    selectWooOptions = {
+						escapeMarkup: function( markup ) {
+							return markup;
+						}
+				    };
+
+				if ( 1 < multiple ) {
+					selectWooOptions.maximumSelectionLength = multiple;
+				}
+				jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
+					selectValue = jQuery( this ).val();
+					kirki.setting.set( control.id, selectValue );
 				});
 			}
 		}
@@ -2670,29 +2812,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );
-		});
-	}
-});
-;wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicControl.extend({
-
-	initKirkiControl: function() {
-
-		var control  = this,
-		    element  = this.container.find( 'select' ),
-		    multiple = parseInt( element.data( 'multiple' ), 10 ),
-		    selectValue,
-		    selectWooOptions = {
-				escapeMarkup: function( markup ) {
-					return markup;
-				}
-		    };
-
-		if ( 1 < multiple ) {
-			selectWooOptions.maximumSelectionLength = multiple;
-		}
-		jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
-			selectValue = jQuery( this ).val();
-			control.setting.set( selectValue );
 		});
 	}
 });
