@@ -32,11 +32,11 @@ If you are using [TGMPA](http://tgmpluginactivation.com/) or [MerlinWP](https://
 
 ### Use a custom script to recommend the installation of Kirki
 
-If you don't use one of the above scripts, then you can use [this simple script](https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php) in your theme to recommend the installation of Kirki.
+If you don't use one of the above scripts, then you can include [this simple script](https://github.com/aristath/kirki/tree/master/docs/files/class-kirki-installer-section.php) in your theme to recommend the installation of Kirki from inside the customizer.
 
 Usage:
 
-Copy the file from [here](https://github.com/aristath/kirki/tree/master/docs/files/recommend-kirki.php) to your theme (for example in `mytheme/inc/class-kirki-installer-section.php`), and then in your `functions.php` file add this:
+Copy the file from [here](https://github.com/aristath/kirki/tree/master/docs/files/class-kirki-installer-section.php) to your theme (for example in `mytheme/inc/class-kirki-installer-section.php`), and then in your `functions.php` file add this:
 
 ```php
 include_once get_theme_file_path( 'inc/class-kirki-installer-section.php' );
