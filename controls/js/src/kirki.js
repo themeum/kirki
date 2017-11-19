@@ -471,6 +471,67 @@ var kirki = {
 					kirki.setting.set( control.id, selectValue );
 				});
 			}
+		},
+
+		image: {
+
+			/**
+			 * Get the HTML for image inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html   = '',
+				    saveAs = 'url',
+				    url;
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					'data-id': '',
+					choices: {},
+					value: ''
+				} );
+
+				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
+					saveAs = data.choices.save_as;
+				}
+				url = data.value;
+				if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
+					url = data.value.url;
+				}
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '</label>';
+				html += '<div class="image-wrapper attachment-media-view image-upload">';
+				if ( data.value.url || '' !== url ) {
+					html += '<div class="thumbnail thumbnail-image"><img src="' + url + '" alt="" /></div>';
+				} else {
+					html += '<div class="placeholder">' + kirki.l10n.noFileSelected + '</div>';
+				}
+				html += '<div class="actions">';
+				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirki.l10n.remove + '</button>';
+				if ( data['default'] && '' !== data['default'] ) {
+					html += '<button type="button" class="button image-default-button"';
+					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
+						html += ' style="display:none;"';
+					}
+					html += '>' + kirki.l10n['default'] + '</button>';
+				}
+				html += '<button type="button" class="button image-upload-button">' + kirki.l10n.selectFile + '</button>';
+				html += '</div></div>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
 		}
 	},
 
