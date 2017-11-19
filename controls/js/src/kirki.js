@@ -264,7 +264,7 @@ var kirki = {
 
 				// Save the value
 				input.on( 'change keyup paste click', function() {
-					control.setting.set( jQuery( this ).val() );
+					kirki.setting.set( control.id, jQuery( this ).val() );
 				});
 			}
 		},
@@ -326,7 +326,7 @@ var kirki = {
 
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
-					control.setting.set( jQuery( this ).val() );
+					kirki.setting.set( control.id, jQuery( this ).val() );
 				});
 			}
 		}
