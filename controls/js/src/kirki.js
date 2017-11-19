@@ -303,7 +303,7 @@ var kirki = {
 					html += '<span class="description customize-control-description">' + data.description + '</span>';
 				}
 				html += '<div class="customize-control-content">';
-				html += '<textarea data-id="' + data['data-id'] + '"' + data.inputAttrs + ' ' + data.link;
+				html += '<textarea data-id="' + data['data-id'] + '"' + data.inputAttrs + ' ' + data.link + 'value="' + data.value + '"';
 				_.each( data.choices, function( val, key ) {
 					html += ' ' + key + '="' + val + '"';
 				});
@@ -322,7 +322,7 @@ var kirki = {
 			 * @returns {void}
 			 */
 			init: function( control ) {
-				var textarea = jQuery( 'input[data-id="' + control.id + '"]' );
+				var textarea = jQuery( 'textarea[data-id="' + control.id + '"]' );
 
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
