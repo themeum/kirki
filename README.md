@@ -33,6 +33,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.17 ###
+
+* New: Moved `select` controls to new JS implementation.
+* New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
+
 ### 3.0.16 ###
 
 November 19 2017, dev time: 8 hours

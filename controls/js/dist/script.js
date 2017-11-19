@@ -208,7 +208,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	};
 }
-;var kirki = {
+var kirki = {
 
 	/**
 	 * An object containing definitions for controls.
@@ -592,7 +592,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
-				var html,
+				var html = '',
 				    selected;
 
 				data = _.defaults( data, {
@@ -680,6 +680,77 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					selectValue = jQuery( this ).val();
 					kirki.setting.set( control.id, selectValue );
 				});
+			}
+		},
+
+		image: {
+
+			/**
+			 * Get the HTML for image inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [data] The arguments.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html   = '',
+				    saveAs = 'url',
+				    url;
+
+				data = _.defaults( data, {
+					label: '',
+					description: '',
+					inputAttrs: '',
+					'data-id': '',
+					choices: {},
+					value: ''
+				} );
+
+				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
+					saveAs = data.choices.save_as;
+				}
+				url = data.value;
+				if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
+					url = data.value.url;
+				}
+
+				html += '<label>';
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				html += '</label>';
+				html += '<div class="image-wrapper attachment-media-view image-upload">';
+				if ( data.value.url || '' !== url ) {
+					html += '<div class="thumbnail thumbnail-image"><img src="' + url + '" alt="" /></div>';
+				} else {
+					html += '<div class="placeholder">' + kirki.l10n.noFileSelected + '</div>';
+				}
+				html += '<div class="actions">';
+				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirki.l10n.remove + '</button>';
+				if ( data['default'] && '' !== data['default'] ) {
+					html += '<button type="button" class="button image-default-button"';
+					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
+						html += ' style="display:none;"';
+					}
+					html += '>' + kirki.l10n['default'] + '</button>';
+				}
+				html += '<button type="button" class="button image-upload-button">' + kirki.l10n.selectFile + '</button>';
+				html += '</div></div>';
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {object} [control] The control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
 			}
 		}
 	},
@@ -829,7 +900,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	}
 };
-;/* global kirki */
+/* global kirki */
 /**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
@@ -1057,7 +1128,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
 } );
-;/* global kirkiControlLoader */
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -1205,7 +1276,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		control.setting.set( val );
 	}
 });
-;wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -1233,9 +1304,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		} ) );
 	}
 });
-;wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});
-;wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
-;wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});
+wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
+wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -1257,7 +1328,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		} ) );
 	}
 });
-;/* global dimensionkirkiL10n */
+/* global dimensionkirkiL10n */
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1302,7 +1373,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 		} );
 	}
 });
-;/* global dimensionskirkiL10n */
+/* global dimensionskirkiL10n */
 wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1399,7 +1470,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 		} );
 	}
 });
-;/* global tinyMCE */
+/* global tinyMCE */
 wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1431,7 +1502,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 		}
 	}
 });
-;/* global fontAwesomeJSON */
+/* global fontAwesomeJSON */
 wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1470,7 +1541,7 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 		select.val( control.setting._value ).trigger( 'change' );
 	}
 });
-;/* global kirkiControlLoader */
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -1654,7 +1725,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		control.container.find( 'button' ).trigger( 'change' );
 	}
 });
-;wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -1678,7 +1749,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		});
 	}
 });
-;/* global kirkiControlLoader */
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -1769,7 +1840,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		control.setting.set( val );
 	}
 });
-;/* global numberKirkiL10n */
+/* global numberKirkiL10n */
 wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1848,8 +1919,8 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 		});
 	}
 });
-;wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});
-;/* global kirkiSetSettingValue */
+wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});
+/* global kirkiSetSettingValue */
 wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1885,10 +1956,10 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 		});
 	}
 });
-;wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend({});
-;wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend({});
-;wp.customize.controlConstructor['kirki-radio'] = wp.customize.kirkiDynamicControl.extend({});
-;/* global kirkiControlLoader */
+wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend({});
+wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend({});
+wp.customize.controlConstructor['kirki-radio'] = wp.customize.kirkiDynamicControl.extend({});
+/* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	'use strict';
@@ -2786,7 +2857,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		});
 	}
 });
-;wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 		var control      = this,
@@ -2830,7 +2901,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		} );
 	}
 });
-;/* global kirkiControlLoader */
+/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -2897,7 +2968,7 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		control.setting.set( newValue );
 	}
 });
-;wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -2921,7 +2992,7 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		});
 	}
 });
-;wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -2935,7 +3006,7 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		});
 	}
 });
-;/* global kirkiControlLoader, kirkiAllFonts */
+/* global kirkiControlLoader, kirkiAllFonts */
 wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
