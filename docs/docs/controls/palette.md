@@ -18,11 +18,11 @@ Palette controls are essentially [`radio`](radio) controls. The difference betwe
 ### Example
 
 ```php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'palette',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Palette Control', 'my_textdomain' ),
-	'section'     => 'my_section',
+	'label'       => __( 'Palette Control', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => 'light',
 	'priority'    => 10,
 	'choices'     => array(

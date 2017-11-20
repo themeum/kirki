@@ -20,12 +20,12 @@ You can define inside the `choices` arguments an array of colors, the style (`ro
 ### Example
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_0',
-	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'This is a color-palette control', 'kirki' ),
-	'section'     => 'color_palette_section',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'This is a color-palette control', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#888888',
 	'choices'     => array(
 		'colors' => array( '#000000', '#222222', '#444444', '#666666', '#888888', '#aaaaaa', '#cccccc', '#eeeeee', '#ffffff' ),
@@ -44,12 +44,12 @@ Some additional examples using those helper methods:
 #### Material-design Colors - All.
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_4',
-	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'Material Design Colors - all', 'kirki' ),
-	'section'     => 'color_palette_section',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - all', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#F44336',
 	'choices'     => array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'all' ),
@@ -62,12 +62,12 @@ Kirki::add_field( 'kirki_demo', array(
 #### Material-design Colors - Primary
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_1',
-	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'Material Design Colors - primary', 'kirki' ),
-	'section'     => 'color_palette_section',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - primary', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#000000',
 	'choices'     => array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'primary' ),
@@ -80,15 +80,15 @@ Kirki::add_field( 'kirki_demo', array(
 #### All Material-design Colors - Reds
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_2',
 	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'Material Design Colors - red', 'kirki' ),
-	'section'     => 'color_palette_section',
+	'description' => esc_attr__( 'Material Design Colors - red', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#FF1744',
 	'choices'     => array(
-		'colors' => Kirki_Helper::get_material_design_colors( 'red' ),
+		'colors' => Kirki_Helper::get_material_design_colors( 'textdomain' ),
 		'size'   => 16,
 	),
 ) );
@@ -98,12 +98,12 @@ Kirki::add_field( 'kirki_demo', array(
 #### All Material-design Colors - A100 variation.
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_3',
-	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'Material Design Colors - A100', 'kirki' ),
-	'section'     => 'color_palette_section',
+	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_attr__( 'Material Design Colors - A100', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#FF80AB',
 	'choices'     => array(
 		'colors' => Kirki_Helper::get_material_design_colors( 'A100' ),

@@ -18,17 +18,17 @@ You can define the available options using the `choices` argument and formating 
 ### Example
 
 ```php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'radio',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Radio Control', 'my_textdomain' ),
-	'section'     => 'radio',
+	'label'       => __( 'Radio Control', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
-		'red'   => esc_attr__( 'Red', 'my_textdomain' ),
-		'green' => esc_attr__( 'Green', 'my_textdomain' ),
-		'blue'  => esc_attr__( 'Blue', 'my_textdomain' ),
+		'red'   => esc_attr__( 'Red', 'textdomain' ),
+		'green' => esc_attr__( 'Green', 'textdomain' ),
+		'blue'  => esc_attr__( 'Blue', 'textdomain' ),
 	),
 ) );
 ```
@@ -36,25 +36,25 @@ Kirki::add_field( 'my_config', array(
 In case you need to add additional, extra-long descriptions to your radio options you can use a format like this:
 
 ```php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'radio',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Radio Control', 'my_textdomain' ),
-	'section'     => 'my_section',
+	'label'       => __( 'Radio Control', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
 		'red'   => array(
 			esc_attr__( 'Red', 'my_textdomain' ),
-			esc_attr__( 'These are some extra details about Red', 'my_textdomain' ),
+			esc_attr__( 'These are some extra details about Red', 'textdomain' ),
 		),
 		'green' => array(
 			esc_attr__( 'Green', 'kirki' ),
-			esc_attr__( 'These are some extra details about Green', 'my_textdomain' ),
+			esc_attr__( 'These are some extra details about Green', 'textdomain' ),
 		),
 		'blue'  => array(
 			esc_attr__( 'Blue', 'kirki' ),
-			esc_attr__( 'These are some extra details about Blue', 'my_textdomain' ),
+			esc_attr__( 'These are some extra details about Blue', 'textdomain' ),
 		),
 	),
 ) );

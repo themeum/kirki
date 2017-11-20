@@ -22,16 +22,16 @@ The saved options will be in the form of an array of the form `$key => $value`. 
 ### Example
 
 ```php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'theme_config_id', array(
     'type'        => 'multicolor',
     'settings'    => 'my_setting',
-    'label'       => esc_attr__( 'Label', 'my_textdomain' ),
-    'section'     => 'color',
+    'label'       => esc_attr__( 'Label', 'textdomain' ),
+    'section'     => 'section_id',
     'priority'    => 10,
     'choices'     => array(
-        'link'    => esc_attr__( 'Color', 'my_textdomain' ),
-        'hover'   => esc_attr__( 'Hover', 'my_textdomain' ),
-        'active'  => esc_attr__( 'Active', 'my_textdomain' ),
+        'link'    => esc_attr__( 'Color', 'textdomain' ),
+        'hover'   => esc_attr__( 'Hover', 'textdomain' ),
+        'active'  => esc_attr__( 'Active', 'textdomain' ),
     ),
     'default'     => array(
         'link'    => '#0088cc',
