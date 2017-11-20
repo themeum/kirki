@@ -208,7 +208,30 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	};
 }
+/* global ajaxurl, kirkiL10n */
 var kirki = {
+
+	initialized: false,
+
+	/**
+	 * Initialize the object.
+	 *
+	 * @since 3.0.17
+	 * @returns {void}
+	 */
+	initialize: function() {
+		var self = this;
+
+		// We only need to initialize once.
+		if ( self.initialized ) {
+			return;
+		}
+
+		self.util.webfonts.google.initialize();
+
+		// Mark as initialized.
+		self.initialized = true;
+	},
 
 	/**
 	 * An object containing definitions for controls.
@@ -216,6 +239,58 @@ var kirki = {
 	 * @since 3.0.16
 	 */
 	control: {
+
+		/**
+		 * The radio control.
+		 *
+		 * @since 3.0.17
+		 */
+		'kirki-radio': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.radio.init( control );
+
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @param {Object} control.params - The control parameters.
+			 * @param {string} control.params.label - The control label.
+			 * @param {string} control.params.description - The control description.
+			 * @param {string} control.params.inputAttrs - extra input arguments.
+			 * @param {string} control.params.default - The default value.
+			 * @param {Object} control.params.choices - Any extra choices we may need.
+			 * @param {string} control.id - The setting.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				control.container.html( kirki.input.radio.getTemplate( {
+					label: control.params.label,
+					description: control.params.description,
+					'data-id': control.id,
+					inputAttrs: control.params.inputAttrs,
+					'default': control.params['default'],
+					value: kirki.setting.get( control.id ),
+					choices: control.params.choices
+				} ) );
+			}
+		},
 
 		/**
 		 * The color control.
@@ -228,7 +303,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -246,7 +321,19 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}     control - The customizer control object.
+			 * @param {Object}     control.params - The control parameters.
+			 * @param {string}     control.params.label - The control label.
+			 * @param {string}     control.params.description - The control description.
+			 * @param {string}     control.params.mode - The colorpicker mode. Can be 'full' or 'hue'.
+			 * @param {bool|array} control.params.palette - false if we don't want a palette,
+			 *                                              true to use the default palette,
+			 *                                              array of custom hex colors if we want a custom palette.
+			 * @param {string}     control.params.inputAttrs - extra input arguments.
+			 * @param {string}     control.params.default - The default value.
+			 * @param {Object}     control.params.choices - Any extra choices we may need.
+			 * @param {boolean}    control.params.choices.alpha - should we add an alpha channel?
+			 * @param {string}     control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -275,7 +362,10 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
+			 * @param {Object} control.params - Control parameters.
+			 * @param {Object} control.params.choices - Define the specifics for this input.
+			 * @param {string} control.params.choices.element - The HTML element we want to use ('input', 'div', 'span' etc).
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -296,7 +386,15 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - Any extra choices we may need.
+			 * @param {boolean} control.params.choices.alpha - should we add an alpha channel?
+			 * @param {string}  control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -323,7 +421,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object} control - The customizer control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -340,7 +438,14 @@ var kirki = {
 			 * Render the template.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The customizer control object.
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {Object}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - The choices for the select dropdown.
+			 * @param {string}  control.id - The setting.
 			 * @returns {void}
 			 */
 			template: function( control ) {
@@ -350,8 +455,7 @@ var kirki = {
 						'data-id': control.id,
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
-						value: kirki.setting.get( control.id ),
-						multiple: control.params.multiple
+						value: kirki.setting.get( control.id )
 				    };
 
 				control.container.html( kirki.input.select.getTemplate( args ) );
@@ -367,6 +471,76 @@ var kirki = {
 	input: {
 
 		/**
+		 * Radio input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		radio: {
+			/**
+			 * Get the HTML for color inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} data - The arguments.
+			 * @param {string} data.label - The control label.
+			 * @param {string} data.description - The control description.
+			 * @param {string} data.inputAttrs - extra input arguments.
+			 * @param {string} data.default - The default value.
+			 * @param {Object} data.choices - The choices for the select dropdown.
+			 * @param {string} data.id - The setting.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html = '';
+
+				data = _.defaults( data, {
+					choices: {},
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					'default': ''
+				} );
+
+				if ( ! data.choices ) {
+					return;
+				}
+
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				_.each( data.choices, function( val, key ) {
+					html += '<label>';
+					html += '<input ' + data.inputAttrs + ' type="radio" data-id="' + data['data-id'] + '" value="' + key + '" name="_customize-radio-' + data.id + '" ' + data.link + ( data.value === key ? ' checked' : '' ) + '/>';
+					html += ( _.isArray( val ) ) ? val[0] + '<span class="option-description">' + val[1] + '</span>' : val;
+					html += '</label>';
+				} );
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+
+				// Save the value
+				input.on( 'change keyup paste click', function() {
+					kirki.setting.set( control.id, jQuery( this ).val() );
+				});
+			}
+		},
+
+		/**
 		 * Color input fields.
 		 *
 		 * @since 3.0.16
@@ -377,7 +551,7 @@ var kirki = {
 			 * Get the HTML for color inputs.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -413,7 +587,12 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.16
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
+			 * @param {Object} control.choices - Additional options for the colorpickers.
+			 * @param {Object} control.params - Control parameters.
+			 * @param {Object} control.params.choices - alias for control.choices.
+
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -464,7 +643,7 @@ var kirki = {
 			 * Get the HTML.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -507,7 +686,8 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -531,7 +711,7 @@ var kirki = {
 			 * Get the HTML for textarea inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -569,7 +749,8 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -588,7 +769,7 @@ var kirki = {
 			 * Get the HTML for select inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -620,7 +801,7 @@ var kirki = {
 					html += '<span class="description customize-control-description">' + data.description + '</span>';
 				}
 				html += '<select data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' ' + data.link;
-			 	if ( 1 < data.multiple ) {
+				if ( 1 < data.multiple ) {
 					html += ' data-multiple="' + data.multiple + '" multiple="multiple"';
 				}
 				html += '>';
@@ -660,7 +841,8 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -689,7 +871,7 @@ var kirki = {
 			 * Get the HTML for image inputs.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [data] The arguments.
+			 * @param {Object} data - The arguments.
 			 * @returns {string}
 			 */
 			getTemplate: function( data ) {
@@ -726,18 +908,18 @@ var kirki = {
 				if ( data.value.url || '' !== url ) {
 					html += '<div class="thumbnail thumbnail-image"><img src="' + url + '" alt="" /></div>';
 				} else {
-					html += '<div class="placeholder">' + kirki.l10n.noFileSelected + '</div>';
+					html += '<div class="placeholder">' + kirkiL10n.noFileSelected + '</div>';
 				}
 				html += '<div class="actions">';
-				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirki.l10n.remove + '</button>';
+				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirkiL10n.remove + '</button>';
 				if ( data['default'] && '' !== data['default'] ) {
 					html += '<button type="button" class="button image-default-button"';
 					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
 						html += ' style="display:none;"';
 					}
-					html += '>' + kirki.l10n['default'] + '</button>';
+					html += '>' + kirkiL10n['default'] + '</button>';
 				}
-				html += '<button type="button" class="button image-upload-button">' + kirki.l10n.selectFile + '</button>';
+				html += '<button type="button" class="button image-upload-button">' + kirkiL10n.selectFile + '</button>';
 				html += '</div></div>';
 
 				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
@@ -747,7 +929,7 @@ var kirki = {
 			 * Init the control.
 			 *
 			 * @since 3.0.17
-			 * @param {object} [control] The control object.
+			 * @param {Object} control - The control object.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -770,7 +952,7 @@ var kirki = {
 		 * customizer API is "control".
 		 *
 		 * @since 3.0.16
-		 * @param {string} [setting] The setting for which we're getting the value.
+		 * @param {string} setting - The setting for which we're getting the value.
 		 * @returns {mixed} Depends on the value.
 		 */
 		get: function( setting ) {
@@ -814,10 +996,10 @@ var kirki = {
 		 * and also take into account any defined "key" arguments which take this even deeper.
 		 *
 		 * @since 3.0.16
-		 * @param {object|string} [element] The DOM element whose value has changed,
+		 * @param {object|string} element - The DOM element whose value has changed,
 		 *                                  or an ID.
-		 * @param {mixed}         [value]   Depends on the control-type.
-		 * @param {string}        [key]     If we only want to save an item in an object
+		 * @param {mixed}         value - Depends on the control-type.
+		 * @param {string}        key - If we only want to save an item in an object
 		 *                                  we can define the key here.
 		 * @returns {void}
 		 */
@@ -898,8 +1080,146 @@ var kirki = {
 			}
 			wp.customize.control( foundNode ).setting.set( value );
 		}
+	},
+
+	/**
+	 * A collection of utility methods.
+	 *
+	 * @since 3.0.17
+	 */
+	util: {
+
+		/**
+		 * A collection of utility methods for webfonts.
+		 *
+		 * @since 3.0.17
+		 */
+		webfonts: {
+
+			/**
+			 * Google-fonts related methods.
+			 *
+			 * @since 3.0.17
+			 */
+			google: {
+
+				/**
+				 * An object containing all Google fonts.
+				 *
+				 * to set this call this.setFonts();
+				 *
+				 * @since 3.0.17
+				 */
+				fonts: {},
+
+				/**
+				 * Init for google-fonts.
+				 *
+				 * @since 3.0.17
+				 * @returns {void}
+				 */
+				initialize: function() {
+					var self = this;
+
+					self.setFonts();
+				},
+
+				/**
+				 * Set fonts in this.fonts
+				 *
+				 * @since 3.0.17
+				 * @returns {void}
+				 */
+				setFonts: function() {
+					var self = this,
+					    fonts;
+
+					// No need to run if we already have the fonts.
+					if ( ! _.isEmpty( self.fonts ) ) {
+						return;
+					}
+
+					// Make an AJAX call to set the fonts object.
+					jQuery.post( ajaxurl, { 'action': 'kirki_fonts_google_all_get' }, function( response ) {
+
+						// Get fonts from the JSON array.
+						fonts = JSON.parse( response );
+
+						_.each( fonts.items, function( font ) {
+							self.fonts[ font.family ] = font;
+						} );
+					} );
+				},
+
+				/**
+				 * Gets all properties of a font-family.
+				 *
+				 * @since 3.0.17
+				 * @param {string} family - The font-family we're interested in.
+				 * @returns {Object}
+				 */
+				getFont: function( family ) {
+					var self = this;
+
+					return _.isUndefined( self.fonts[ family ] ) ? false : self.fonts[ family ];
+				},
+
+				/**
+				 * Gets the variants for a font-family.
+				 *
+				 * @since 3.0.17
+				 * @param {string} family - The font-family we're interested in.
+				 * @returns {Object}
+				 */
+				getVariants: function( family ) {
+					var self = this,
+					    font = self.getFont( family );
+
+					// Early exit if font was not found.
+					if ( ! font ) {
+						return false;
+					}
+
+					// Early exit if font doesn't have variants.
+					if ( _.isUndefined( font.variants ) ) {
+						return false;
+					}
+
+					// Return the variants.
+					return font.variants;
+				},
+
+				/**
+				 * Get the subsets for a font-family.
+				 *
+				 * @since 3.0.17
+				 * @param {string} family - The font-family we're interested in.
+				 * @returns {Object}
+				 */
+				getSubsets: function( family ) {
+					var self = this,
+					    font = self.getFont( family );
+
+					// Early exit if font was not found.
+					if ( ! font ) {
+						return false;
+					}
+
+					// Early exit if font doesn't have subsets.
+					if ( _.isUndefined( font.subsets ) ) {
+						return false;
+					}
+
+					// Return the variants.
+					return font.subsets;
+				}
+			}
+		}
 	}
 };
+
+// Initialize the kirki object.
+kirki.initialize();
 /* global kirki */
 /**
  * The majority of the code in this file
@@ -1869,7 +2189,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		control.setting.set( valueObj );
 	}
 });
-/* global numberKirkiL10n */
 wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
@@ -1987,7 +2306,6 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 });
 wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend({});
 wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-radio'] = wp.customize.kirkiDynamicControl.extend({});
 /* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
