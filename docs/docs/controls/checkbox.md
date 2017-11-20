@@ -20,12 +20,12 @@ If a checkbox is not what you're after visually, you can also use a [`switch`](s
 ### Example
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'checkbox',
 	'settings'    => 'checkbox_setting',
-	'label'       => esc_attr__( 'Checkbox Control', 'kirki' ),
-	'description' => esc_attr__( 'Description', 'kirki' ),
-	'section'     => 'checkbox_section',
+	'label'       => esc_attr__( 'Checkbox Control', 'textdomain' ),
+	'description' => esc_attr__( 'Description', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => true,
 ) );
 ```
@@ -33,7 +33,7 @@ Kirki::add_field( 'kirki_demo', array(
 ### Usage
 
 ```php
-<?php if ( true == get_theme_mod( 'my_setting', true ) ) : ?>
+<?php if ( true == get_theme_mod( 'checkbox_setting', true ) ) : ?>
 	<p>Checkbox is checked</p>
 <?php else : ?>
 	<p>Checkbox is unchecked</p>
@@ -43,7 +43,7 @@ Kirki::add_field( 'kirki_demo', array(
 Adding a class to a `<div>` if the checkbox is checked:
 
 ```php
-<?php $value = get_theme_mod( 'my_setting', true ); ?>
+<?php $value = get_theme_mod( 'checkbox_setting', true ); ?>
 <div class="<?php echo ( $value ) ? 'checkbox-on' : 'checkbox-off'; ?>">
 	If the checkbox is checked, the class will have a class "checkbox-on".
 	If the checkbox is unchecked, the class will have a class "checkbox-off".
