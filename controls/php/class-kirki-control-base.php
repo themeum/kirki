@@ -90,7 +90,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 
 		wp_localize_script(
 			'kirki-script',
-			'kirki.l10n',
+			'kirkiL10n',
 			array(
 				'noFileSelected' => esc_attr__( 'No File Selected', 'kirki' ),
 				'remove'         => esc_attr__( 'Remove', 'kirki' ),
