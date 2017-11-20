@@ -69,11 +69,6 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// Delete the json array
-		clean: [
-			'modules/webfonts/webfonts.json'
-		],
-
 		// Watch task (run with "grunt watch")
 		watch: {
 			css: {
@@ -191,12 +186,11 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-curl' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-json2php' );
-	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
-	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify', 'curl:google-fonts-source', 'json2php', 'clean', 'wp_readme_to_markdown'] );
+	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify', 'curl:google-fonts-source', 'json2php', 'wp_readme_to_markdown'] );
 	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
-	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php', 'clean'] );
+	grunt.registerTask( 'googlefonts', ['curl:google-fonts-source', 'json2php'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 	grunt.registerTask( 'customBuild', ['sass:customBuild', 'uglify:customBuild'] );
 
