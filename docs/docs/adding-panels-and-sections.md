@@ -44,6 +44,7 @@ Using Kirki:
 Kirki::add_section( 'section_id', array(
     'title'          => esc_attr__( 'My Section', 'textdomain' ),
     'description'    => esc_attr__( 'My section description.', 'textdomain' ),
+		'panel'					 => 'panel_id',
     'priority'       => 160,
 ) );
 ```
