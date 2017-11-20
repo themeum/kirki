@@ -544,18 +544,18 @@ var kirki = {
 				if ( data.value.url || '' !== url ) {
 					html += '<div class="thumbnail thumbnail-image"><img src="' + url + '" alt="" /></div>';
 				} else {
-					html += '<div class="placeholder">' + kirki.l10n.noFileSelected + '</div>';
+					html += '<div class="placeholder">' + kirkiL10n.noFileSelected + '</div>';
 				}
 				html += '<div class="actions">';
-				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirki.l10n.remove + '</button>';
+				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirkiL10n.remove + '</button>';
 				if ( data['default'] && '' !== data['default'] ) {
 					html += '<button type="button" class="button image-default-button"';
 					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
 						html += ' style="display:none;"';
 					}
-					html += '>' + kirki.l10n['default'] + '</button>';
+					html += '>' + kirkiL10n['default'] + '</button>';
 				}
-				html += '<button type="button" class="button image-upload-button">' + kirki.l10n.selectFile + '</button>';
+				html += '<button type="button" class="button image-upload-button">' + kirkiL10n.selectFile + '</button>';
 				html += '</div></div>';
 
 				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
