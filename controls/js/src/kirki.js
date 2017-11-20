@@ -31,6 +31,58 @@ var kirki = {
 	control: {
 
 		/**
+		 * The radio control.
+		 *
+		 * @since 3.0.17
+		 */
+		'kirki-radio': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.radio.init( control );
+
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @param {Object} control.params - The control parameters.
+			 * @param {string} control.params.label - The control label.
+			 * @param {string} control.params.description - The control description.
+			 * @param {string} control.params.inputAttrs - extra input arguments.
+			 * @param {string} control.params.default - The default value.
+			 * @param {Object} control.params.choices - Any extra choices we may need.
+			 * @param {string} control.id - The setting.
+			 * @returns {void}
+			 */
+			template: function( control ) {
+				control.container.html( kirki.input.radio.getTemplate( {
+					label: control.params.label,
+					description: control.params.description,
+					'data-id': control.id,
+					inputAttrs: control.params.inputAttrs,
+					'default': control.params['default'],
+					value: kirki.setting.get( control.id ),
+					choices: control.params.choices
+				} ) );
+			}
+		},
+
+		/**
 		 * The color control.
 		 *
 		 * @since 3.0.16
@@ -206,6 +258,76 @@ var kirki = {
 	 * @since 3.0.16
 	 */
 	input: {
+
+		/**
+		 * Radio input fields.
+		 *
+		 * @since 3.0.17
+		 */
+		radio: {
+			/**
+			 * Get the HTML for color inputs.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} data - The arguments.
+			 * @param {string} data.label - The control label.
+			 * @param {string} data.description - The control description.
+			 * @param {string} data.inputAttrs - extra input arguments.
+			 * @param {string} data.default - The default value.
+			 * @param {Object} data.choices - The choices for the select dropdown.
+			 * @param {string} data.id - The setting.
+			 * @returns {string}
+			 */
+			getTemplate: function( data ) {
+				var html = '';
+
+				data = _.defaults( data, {
+					choices: {},
+					label: '',
+					description: '',
+					inputAttrs: '',
+					value: '',
+					'data-id': '',
+					'default': ''
+				} );
+
+				if ( ! data.choices ) {
+					return;
+				}
+
+				if ( data.label ) {
+					html += '<span class="customize-control-title">' + data.label + '</span>';
+				}
+				if ( data.description ) {
+					html += '<span class="description customize-control-description">' + data.description + '</span>';
+				}
+				_.each( data.choices, function( val, key ) {
+					html += '<label>';
+					html += '<input ' + data.inputAttrs + ' type="radio" data-id="' + data['data-id'] + '" value="' + key + '" name="_customize-radio-' + data.id + '" ' + data.link + ( data.value === key ? ' checked' : '' ) + '/>';
+					html += ( _.isArray( val ) ) ? val[0] + '<span class="option-description">' + val[1] + '</span>' : val;
+					html += '</label>';
+				} );
+
+				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
+			},
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
+			 * @returns {void}
+			 */
+			init: function( control ) {
+				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+
+				// Save the value
+				input.on( 'change keyup paste click', function() {
+					kirki.setting.set( control.id, jQuery( this ).val() );
+				});
+			}
+		},
 
 		/**
 		 * Color input fields.
