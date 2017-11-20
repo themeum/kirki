@@ -20,11 +20,11 @@ Toggle controls are internally [`checkbox`](checkbox) controls styled differentl
 ### Example
 
 ```php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'toggle',
 	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'This is the label', 'my_textdomain' ),
-	'section'     => 'my_section',
+	'label'       => esc_attr__( 'This is the label', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '1',
 	'priority'    => 10,
 ) );
