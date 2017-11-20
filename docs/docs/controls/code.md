@@ -21,12 +21,12 @@ Internally this control uses the `CodeMirror` library available in WordPress.
 ### Example
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'code',
 	'settings'    => 'code_setting',
-	'label'       => esc_attr__( 'Code Control', 'kirki' ),
-	'description' => esc_attr__( 'Description', 'kirki' ),
-	'section'     => 'code_section',
+	'label'       => esc_attr__( 'Code Control', 'textdomain' ),
+	'description' => esc_attr__( 'Description', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '',
 	'choices'     => array(
 		'language' => 'css',
@@ -37,5 +37,5 @@ Kirki::add_field( 'kirki_demo', array(
 ### Usage
 
 ```php
-<?php echo get_theme_mod( 'my_setting', '' ); ?>
+<?php echo get_theme_mod( 'code_setting', '' ); ?>
 ```

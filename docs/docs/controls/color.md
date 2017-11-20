@@ -20,12 +20,12 @@ The `color` control allows you to create colorpickers. WordPress uses [iris](htt
 #### Adding a hex-only colorpicker
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_hex',
-	'label'       => __( 'Color Control (hex-only)', 'kirki' ),
-	'description' => esc_attr__( 'This is a color control - without alpha channel.', 'kirki' ),
-	'section'     => 'color_section',
+	'label'       => __( 'Color Control (hex-only)', 'textdomain' ),
+	'description' => esc_attr__( 'This is a color control - without alpha channel.', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#0088CC',
 ) );
 ```
@@ -37,12 +37,12 @@ Kirki::add_field( 'kirki_demo', array(
 #### Adding an rgba colorpicker
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_rgba',
-	'label'       => __( 'Color Control (with alpha channel)', 'kirki' ),
-	'description' => esc_attr__( 'This is a color control - with alpha channel.', 'kirki' ),
-	'section'     => 'color_section',
+	'label'       => __( 'Color Control (with alpha channel)', 'textdomain' ),
+	'description' => esc_attr__( 'This is a color control - with alpha channel.', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#0088CC',
 	'choices'     => array(
 		'alpha' => true,
@@ -56,12 +56,12 @@ Kirki::add_field( 'kirki_demo', array(
 #### Adding a hue-only colorpicker
 
 ```php
-Kirki::add_field( 'kirki_demo', array(
+Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color',
 	'settings'    => 'color_setting_hue',
-	'label'       => __( 'Color Control - hue only.', 'kirki' ),
-	'description' => esc_attr__( 'This is a color control - hue only.', 'kirki' ),
-	'section'     => 'color_section',
+	'label'       => __( 'Color Control - hue only.', 'textdomain' ),
+	'description' => esc_attr__( 'This is a color control - hue only.', 'textdomain' ),
+	'section'     => 'section_id',
 	'default'     => '#0088CC',
 	'mode'        => 'hue',
 ) );
