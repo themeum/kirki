@@ -153,6 +153,9 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The customizer control object.
+			 * @param {Object} control.params - Control parameters.
+			 * @param {Object} control.params.choices - Define the specifics for this input.
+			 * @param {string} control.params.choices.element - The HTML element we want to use ('input', 'div', 'span' etc).
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -230,9 +233,8 @@ var kirki = {
 			 * @param {string}  control.params.label - The control label.
 			 * @param {string}  control.params.description - The control description.
 			 * @param {string}  control.params.inputAttrs - extra input arguments.
-			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.default - The default value.
 			 * @param {Object}  control.params.choices - The choices for the select dropdown.
-			 * @param {integer} control.params.multiple - Is this a multi-select? How many options max?
 			 * @param {string}  control.id - The setting.
 			 * @returns {void}
 			 */
@@ -243,8 +245,7 @@ var kirki = {
 						'data-id': control.id,
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
-						value: kirki.setting.get( control.id ),
-						multiple: control.params.multiple
+						value: kirki.setting.get( control.id )
 				    };
 
 				control.container.html( kirki.input.select.getTemplate( args ) );
@@ -377,6 +378,11 @@ var kirki = {
 			 *
 			 * @since 3.0.16
 			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
+			 * @param {Object} control.choices - Additional options for the colorpickers.
+			 * @param {Object} control.params - Control parameters.
+			 * @param {Object} control.params.choices - alias for control.choices.
+
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -471,6 +477,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -533,6 +540,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
@@ -624,6 +632,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
 			 * @returns {void}
 			 */
 			init: function( control ) {
