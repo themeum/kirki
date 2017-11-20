@@ -1,20 +1,5 @@
-/* global kirkiControlLoader, kirkiAllFonts */
-wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
+/* global kirkiControlLoader, kirkiAllFonts, kirki */
+wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
 
@@ -126,11 +111,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		}
 
 		// Format google fonts as an array.
-		if ( ! _.isUndefined( fonts.standard ) ) {
+		if ( ! _.isUndefined( fonts.google ) ) {
 			_.each( fonts.google, function( font ) {
 				googleFonts.push({
 					id: font.family,
-					text: font.label
+					text: font.family
 				});
 			});
 		}
@@ -179,7 +164,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    standardFonts = [],
 		    value         = control.setting._value,
 		    fontFamily    = value['font-family'],
-		    variants      = control.getVariants( fontFamily ),
+		    variants      = kirki.util.webfonts.google.getVariants( fontFamily ),
 		    fonts         = control.getFonts(),
 		    fontSelect;
 
@@ -231,7 +216,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		var control    = this,
 		    value      = control.setting._value,
 		    fontFamily = value['font-family'],
-		    variants   = control.getVariants( fontFamily ),
+		    variants   = kirki.util.webfonts.google.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
@@ -239,15 +224,15 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		    variantSelector,
 		    fontStyle;
 
-		if ( false !== variants ) {
+		if ( variants ) {
 			jQuery( control.selector + ' .variant' ).show();
 			_.each( variants, function( variant ) {
-				if ( value.variant === variant.id ) {
+				if ( value.variant === variant ) {
 					isValid = true;
 				}
 				data.push({
-					id: variant.id,
-					text: variant.label
+					id: variant,
+					text: variant
 				});
 			});
 			if ( ! isValid ) {
@@ -288,7 +273,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 		var control    = this,
 		    value      = control.setting._value,
 		    fontFamily = value['font-family'],
-		    subsets    = control.getSubsets( fontFamily ),
+		    subsets    = kirki.util.webfonts.google.getSubsets( fontFamily ),
 		    selector   = control.selector + ' .subsets select',
 		    data       = [],
 		    validValue = value.subsets,
@@ -299,16 +284,16 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 			_.each( subsets, function( subset ) {
 
 				if ( _.isObject( validValue ) ) {
-					if ( -1 === validValue.indexOf( subset.id ) ) {
+					if ( -1 === validValue.indexOf( subset ) ) {
 						validValue = _.reject( validValue, function( subValue ) {
-							return subValue === subset.id;
+							return subValue === subset;
 						});
 					}
 				}
 
 				data.push({
-					id: subset.id,
-					text: subset.label
+					id: subset,
+					text: subset
 				});
 			});
 
@@ -337,57 +322,19 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.Control.exten
 	getFonts: function() {
 		var control = this;
 
-		if ( ! _.isUndefined( window[ 'kirkiFonts' + control.id ] ) ) {
+		if ( 'undefined' !== typeof window[ 'kirkiFonts' + control.id ] ) {
 			return window[ 'kirkiFonts' + control.id ];
 		}
-		if ( ! _.isUndefined( kirkiAllFonts ) ) {
-			return kirkiAllFonts;
+		if ( ! _.isEmpty( kirki.util.webfonts.google.fonts ) ) {
+			return {
+				google: kirki.util.webfonts.google.fonts,
+				standard: kirkiAllFonts.standard
+			};
 		}
 		return {
 			google: [],
 			standard: []
 		};
-	},
-
-	/**
-	 * Get variants for a font-family.
-	 */
-	getVariants: function( fontFamily ) {
-		var control = this,
-		    fonts   = control.getFonts();
-
-		var variants = false;
-		_.each( fonts.standard, function( font ) {
-			if ( fontFamily && font.family === fontFamily.replace( /'/g, '"' ) ) {
-				variants = font.variants;
-				return font.variants;
-			}
-		});
-
-		_.each( fonts.google, function( font ) {
-			if ( font.family === fontFamily ) {
-				variants = font.variants;
-				return font.variants;
-			}
-		});
-		return variants;
-	},
-
-	/**
-	 * Get subsets for a font-family.
-	 */
-	getSubsets: function( fontFamily ) {
-
-		var control = this,
-		    subsets = false,
-		    fonts   = control.getFonts();
-
-		_.each( fonts.google, function( font ) {
-			if ( font.family === fontFamily ) {
-				subsets = font.subsets;
-			}
-		});
-		return subsets;
 	},
 
 	/**
