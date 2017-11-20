@@ -1,4 +1,27 @@
+/* global ajaxurl, kirkiL10n */
 var kirki = {
+
+	initialized: false,
+
+	/**
+	 * Initialize the object.
+	 *
+	 * @since 3.0.17
+	 * @returns {void}
+	 */
+	initialize: function() {
+		var self = this;
+
+		// We only need to initialize once.
+		if ( self.initialized ) {
+			return;
+		}
+
+		self.util.webfonts.google.initialize();
+
+		// Mark as initialized.
+		self.initialized = true;
+	},
 
 	/**
 	 * An object containing definitions for controls.
@@ -853,3 +876,6 @@ var kirki = {
 		}
 	}
 };
+
+// Initialize the kirki object.
+kirki.initialize();
