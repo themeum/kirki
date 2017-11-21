@@ -12,4 +12,4 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Link extends Kirki_Field_Kirki_URL {}
+class Kirki_Field_Link extends Kirki_Field_URL {}
