@@ -90,11 +90,11 @@ class Kirki_Control {
 					$this->wp_customize,
 					$args['settings'],
 					array(
-						'label'       => $args['label'],
+						'label'       => isset( $args['label'] ) ? $args['label'] : '',
 						'section'     => $args['section'],
 						'settings'    => $args['settings'],
-						'code_type'   => $args['choices']['language'],
-						'priority'    => $args['priority'],
+						'code_type'   => isset( $args['choices'] ) ? $args['choices']['language'] : 'text/css',
+						'priority'    => isset( $args['priority'] ) ? $args['priority'] : 10,
 						'input_attrs' => array(
 							'aria-describedby' => 'editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',
 						),
