@@ -813,6 +813,11 @@ var kirki = {
 				}
 			}
 
+			if ( 'undefined' !== typeof wp.customize.control( setting ) ) {
+				wp.customize.control( setting ).setting.set( value );
+				return;
+			}
+
 			parts = setting.split( '[' ),
 
 			// Find the setting we're using in the control using the customizer API.
