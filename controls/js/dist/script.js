@@ -280,7 +280,8 @@ var kirki = {
 			 * @returns {void}
 			 */
 			template: function( control ) {
-				control.container.html( kirki.input.radio.getTemplate( {
+				var template = wp.template( 'kirki-input-radio' );
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -476,51 +477,6 @@ var kirki = {
 		 * @since 3.0.17
 		 */
 		radio: {
-			/**
-			 * Get the HTML for color inputs.
-			 *
-			 * @since 3.0.17
-			 * @param {Object} data - The arguments.
-			 * @param {string} data.label - The control label.
-			 * @param {string} data.description - The control description.
-			 * @param {string} data.inputAttrs - extra input arguments.
-			 * @param {string} data.default - The default value.
-			 * @param {Object} data.choices - The choices for the select dropdown.
-			 * @param {string} data.id - The setting.
-			 * @returns {string}
-			 */
-			getTemplate: function( data ) {
-				var html = '';
-
-				data = _.defaults( data, {
-					choices: {},
-					label: '',
-					description: '',
-					inputAttrs: '',
-					value: '',
-					'data-id': '',
-					'default': ''
-				} );
-
-				if ( ! data.choices ) {
-					return;
-				}
-
-				if ( data.label ) {
-					html += '<span class="customize-control-title">' + data.label + '</span>';
-				}
-				if ( data.description ) {
-					html += '<span class="description customize-control-description">' + data.description + '</span>';
-				}
-				_.each( data.choices, function( val, key ) {
-					html += '<label>';
-					html += '<input ' + data.inputAttrs + ' type="radio" data-id="' + data['data-id'] + '" value="' + key + '" name="_customize-radio-' + data.id + '" ' + data.link + ( data.value === key ? ' checked' : '' ) + '/>';
-					html += ( _.isArray( val ) ) ? val[0] + '<span class="option-description">' + val[1] + '</span>' : val;
-					html += '</label>';
-				} );
-
-				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
-			},
 
 			/**
 			 * Init the control.
