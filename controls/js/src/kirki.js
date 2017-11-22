@@ -197,13 +197,15 @@ var kirki = {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-				    };
+				    },
+				    template;
 
 				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
 					control.container.html( kirki.input.textarea.getTemplate( args ) );
 					return;
 				}
-				control.container.html( kirki.input.genericInput.getTemplate( args ) );
+				template = wp.template( 'kirki-input-generic' );
+				control.container.html( template( args ) );
 			}
 		},
 
@@ -349,49 +351,6 @@ var kirki = {
 		 * @since 3.0.17
 		 */
 		genericInput: {
-
-			/**
-			 * Get the HTML.
-			 *
-			 * @since 3.0.17
-			 * @param {Object} data - The arguments.
-			 * @returns {string}
-			 */
-			getTemplate: function( data ) {
-				var html    = '',
-				    element = ( data.choices.element ) ? data.choices.element : 'input';
-
-				data = _.defaults( data, {
-					label: '',
-					description: '',
-					inputAttrs: '',
-					value: '',
-					'data-id': '',
-					choices: {}
-				} );
-
-				html += '<label>';
-				if ( data.label ) {
-					html += '<span class="customize-control-title">' + data.label + '</span>';
-				}
-				if ( data.description ) {
-					html += '<span class="description customize-control-description">' + data.description + '</span>';
-				}
-				html += '<div class="customize-control-content">';
-				html += '<' + element + ' data-id="' + data['data-id'] + '" ' + data.inputAttrs + ' value="' + data.value + '" ' + data.link;
-				_.each( data.choices, function( val, key ) {
-					html += ' ' + key + '="' + val + '"';
-				});
-				if ( data.choices.content ) {
-					html += '>' + data.choices.content + '</' + element + '>';
-				} else {
-					html += '/>';
-				}
-				html += '</div>';
-				html += '</label>';
-
-				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
-			},
 
 			/**
 			 * Init the control.

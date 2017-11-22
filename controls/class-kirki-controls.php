@@ -23,6 +23,7 @@ class Kirki_Controls {
 	 */
 	private $templates = array(
 		'input-color',
+		'input-generic',
 		'input-radio',
 	);
 
