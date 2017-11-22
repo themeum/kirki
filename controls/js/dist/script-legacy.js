@@ -338,7 +338,8 @@ var kirki = {
 			 * @returns {void}
 			 */
 			template: function( control ) {
-				control.container.html( kirki.input.color.getTemplate( {
+				var template = wp.template( 'kirki-input-color' );
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -502,42 +503,6 @@ var kirki = {
 		 * @since 3.0.16
 		 */
 		color: {
-
-			/**
-			 * Get the HTML for color inputs.
-			 *
-			 * @since 3.0.16
-			 * @param {Object} data - The arguments.
-			 * @returns {string}
-			 */
-			getTemplate: function( data ) {
-
-				var html = '';
-
-				data = _.defaults( data, {
-					label: '',
-					description: '',
-					mode: 'full',
-					inputAttrs: '',
-					'data-palette': data['data-palette'] ? data['data-palette'] : true,
-					'data-default-color': data['data-default-color'] ? data['data-default-color'] : '',
-					'data-alpha': data['data-alpha'] ? data['data-alpha'] : false,
-					value: '',
-					'data-id': ''
-				} );
-
-				html += '<label>';
-				if ( data.label ) {
-					html += '<span class="customize-control-title">' + data.label + '</span>';
-				}
-				if ( data.description ) {
-					html += '<span class="description customize-control-description">' + data.description + '</span>';
-				}
-				html += '</label>';
-				html += '<input type="text" data-type="' + data.mode + '" ' + data.inputAttrs + ' data-palette="' +  data['data-palette'] + '" data-default-color="' +  data['data-default-color'] + '" data-alpha="' + data['data-alpha'] + '" value="' + data.value + '" class="kirki-color-control" data-id="' + data['data-id'] + '"/>';
-
-				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
-			},
 
 			/**
 			 * Init the control.
