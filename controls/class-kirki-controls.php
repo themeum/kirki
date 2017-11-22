@@ -22,9 +22,11 @@ class Kirki_Controls {
 	 * @var array
 	 */
 	private $templates = array(
-		'input-color',
-		'input-generic',
-		'input-radio',
+		'color',
+		'generic',
+		'radio',
+		'select',
+		'textarea',
 	);
 
 	/**
@@ -60,7 +62,7 @@ class Kirki_Controls {
 	public function underscore_templates() {
 		foreach ( $this->templates as $template ) {
 			if ( file_exists( $this->views_path . $template . '.php' ) ) {
-				echo '<script type="text/html" id="tmpl-kirki-' . esc_attr( $template ) . '">';
+				echo '<script type="text/html" id="tmpl-kirki-input-' . esc_attr( $template ) . '">';
 				include $this->views_path . $template . '.php';
 				echo '</script>';
 			}
