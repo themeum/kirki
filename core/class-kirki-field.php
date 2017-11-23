@@ -568,9 +568,9 @@ class Kirki_Field {
 				$this->output[ $key ]['element'] = implode( ',', $this->output[ $key ]['element'] );
 			}
 
-			// Fix for https://github.com/aristath/kirki/issues/1659#issuecomment-346229751
+			// Fix for https://github.com/aristath/kirki/issues/1659#issuecomment-346229751.
 			$this->output[ $key ]['element'] = str_replace( array( "\t", "\n", "\r", "\0", "\x0B" ), ' ', $this->output[ $key ]['element'] );
-			$this->output[ $key ]['element'] = trim( preg_replace('/\s+/', ' ', $this->output[ $key ]['element'] ) );
+			$this->output[ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $this->output[ $key ]['element'] ) );
 		}
 	}
 
