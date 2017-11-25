@@ -407,7 +407,7 @@ var kirki = {
 			 * @returns {void}
 			 */
 			init: function( control ) {
-				var element  = jQuery( 'select[data-id="' + control.id + '"' ),
+				var element  = jQuery( 'select[data-id="' + control.id + '"]' ),
 				    multiple = parseInt( element.data( 'multiple' ), 10 ),
 				    selectValue,
 				    selectWooOptions = {

@@ -13,7 +13,7 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 	data.value = [ data.value ];
 }
 #>
-<div class="kirki-input-container" data-id="' + data.id + '">
+<div class="kirki-input-container" data-id="{{ data.id }}">
 	<label>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{ data.label }}</span>
