@@ -35,6 +35,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.17 ###
 
+* Fix: In some cases options were not saved when using `option` instead of the default `theme_mod` [#1665](https://github.com/aristath/kirki/issues/1665)
+* Fix: `link` control-type (alias of `url`) was not working [#1660](https://github.com/aristath/kirki/issues/1660)
+* Fix: Allow using tabs & linebreaks when defining elements in the `output` argument [#1659](https://github.com/aristath/kirki/issues/1659)
+* Fix: PHP Warning when using `code` controls without a `label` defined [#1658](https://github.com/aristath/kirki/issues/1658)
+* Fix: Buttons inside `number` controls were not increasing/decreasing the values [#1648](https://github.com/aristath/kirki/issues/1648)
+* New: Transitioned to a JS-based webfont loader method to load google-fonts instead of using a link.
 * New: Moved `select` controls to new JS implementation.
 * New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
 
