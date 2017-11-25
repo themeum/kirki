@@ -24,7 +24,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    colors  = control.params.choices,
 		    keys    = Object.keys( colors ),
 		    value   = this.params.value,
-		    target  = control.container.find( '.iris-target' ),
 		    i       = 0,
 		    irisInput,
 		    irisPicker;
@@ -34,7 +33,6 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 			var picker = control.container.find( '.multicolor-index-' + subSetting ),
 			    args   = {
-					target: target[0],
 					change: function() {
 
 						// Color controls require a small delay.
@@ -61,15 +59,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 		// Colors loop
 		while ( i < Object.keys( colors ).length ) {
-
 			kirkiMulticolorChangeHandler( this, value, keys[ i ] );
-
-			// Move colorpicker to the 'iris-target' container div
-			irisInput  = control.container.find( '.wp-picker-container .wp-picker-input-wrap' ),
-			irisPicker = control.container.find( '.wp-picker-container .wp-picker-holder' );
-			jQuery( irisInput[0] ).detach().appendTo( target[0] );
-			jQuery( irisPicker[0] ).detach().appendTo( target[0] );
-
 			i++;
 		}
 	},

@@ -102,7 +102,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
-			"{$kirki_url}controls/css/styles.css",
+			"{$kirki_url}controls/css/styles{$suffix}.css",
 			array(),
 			KIRKI_VERSION
 		);

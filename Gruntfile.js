@@ -19,7 +19,8 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
-					'controls/css/styles.css': 'controls/scss/styles.scss'
+					'controls/css/styles.css': 'controls/scss/styles.scss',
+					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss'
 				}
 			},
 
