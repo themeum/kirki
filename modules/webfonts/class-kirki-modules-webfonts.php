@@ -117,11 +117,11 @@ class Kirki_Modules_Webfonts {
 	public function get_method() {
 
 		// Figure out which method to use.
-		$method = apply_filters( 'kirki/googlefonts_load_method', 'link' );
+		$method = apply_filters( 'kirki/googlefonts_load_method', 'async' );
 
 		// Fallback to 'link' if value is invalid.
 		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
-			$method = 'link';
+			$method = 'async';
 		}
 
 		// Fallback to 'link' if embed was not possible.
