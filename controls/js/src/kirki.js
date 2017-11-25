@@ -328,7 +328,7 @@ var kirki = {
 					clear = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .wp-picker-clear' );
 					if ( clear.length ) {
 						clear.click( function() {
-							control.setting.set( '' );
+							kirki.setting.set( control.id, '' );
 						});
 					}
 				}, 200 );
