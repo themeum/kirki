@@ -71,7 +71,8 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 				<?php return; ?>
 			<?php endif; ?>
 			<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
-		<?php return; ?>
+			<?php return; ?>
+		<?php endif; ?>
 
 		<span class="customize-control-title">
 			{{{ data.label }}}
@@ -92,10 +93,6 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 			<# } #>
 		</div>
 		<div class="iris-target"></div>
-		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
-			<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
-			<?php return; ?>
-		<?php endif; ?>
 		<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
 		<?php
 	}
