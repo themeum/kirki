@@ -76,6 +76,10 @@ class Kirki_Helper {
 
 	/**
 	 * Initialize the WP_Filesystem
+	 *
+	 * @static
+	 * @access public
+	 * @return object WP_Filesystem
 	 */
 	public static function init_filesystem() {
 		global $wp_filesystem;
@@ -83,6 +87,7 @@ class Kirki_Helper {
 			require_once( ABSPATH . '/wp-admin/includes/file.php' );
 			WP_Filesystem();
 		}
+		return $wp_filesystem;
 	}
 
 	/**
