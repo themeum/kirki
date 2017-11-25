@@ -263,7 +263,7 @@ final class Kirki_Fonts_Google {
 	 * @return void
 	 */
 	public function get_googlefonts_json() {
-		echo file_get_contents( wp_normalize_path( dirname( __FILE__ ) . '/webfonts.json' ) ); // WPCS: XSS ok.
+		include wp_normalize_path( dirname( __FILE__ ) . '/webfonts.json' );
 		exit();
 	}
 }
