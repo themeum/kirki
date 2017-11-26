@@ -58,10 +58,7 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 				<# for ( key in data.choices ) { #>
 					<# if ( 'irisArgs' !== key ) { #>
 						<div class="multicolor-single-color-wrapper">
-							<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" />
-							<# if ( data.choices[ key ] ) { #>
-								<label class="multicolor-single-label" for="{{ data.id }}-{{ key }}">{{ data.choices[ key ] }}</label>
-							<# } #>
+							<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" data-label="<# if ( data.choices[ key ] ) { #>{{ data.choices[ key ] }}<# } else { #>{{ key }}<# } #>" />
 						</div>
 					<# } #>
 				<# } #>

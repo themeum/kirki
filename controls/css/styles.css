@@ -184,8 +184,12 @@
   justify-content: space-between; }
 .customize-control-kirki-multicolor .multicolor-single-label {
   order: 2; }
-.customize-control-kirki-multicolor .wp-picker-container.wp-picker-active + .multicolor-single-label {
-  display: none; }
+.customize-control-kirki-multicolor .wp-picker-container {
+  width: 100%; }
+  .customize-control-kirki-multicolor .wp-picker-container > .wp-color-result {
+    width: 100%; }
+  .customize-control-kirki-multicolor .wp-picker-container.wp-picker-active + .multicolor-single-label {
+    display: none; }
 
 .customize-control-kirki-number .customize-control-content {
   display: flex;
