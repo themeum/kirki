@@ -14,7 +14,7 @@ data = _.defaults( data, {
 			<span class="customize-control-title">{{ data.label }}</span>
 		<# } #>
 		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{ ata.description }}</span>
+			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 		<div class="customize-control-content">
 			<textarea
