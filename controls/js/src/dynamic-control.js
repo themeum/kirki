@@ -208,6 +208,10 @@
 				return true;
 			}
 
+			if ( 'auto' === value || 'inherit' === value || 'initial' === value ) {
+				return true;
+			}
+
 			// Get the numeric value.
 			numericValue = parseFloat( value );
 

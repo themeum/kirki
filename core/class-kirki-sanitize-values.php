@@ -116,9 +116,9 @@ class Kirki_Sanitize_Values {
 			return '';
 		}
 
-		// If auto, return auto.
-		if ( 'auto' === $value ) {
-			return 'auto';
+		// If auto, inherit or initial, return the value.
+		if ( 'auto' === $value || 'initial' === $value || 'inherit' === $value ) {
+			return $value;
 		}
 
 		// Return empty if there are no numbers in the value.
