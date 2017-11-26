@@ -1,89 +1,81 @@
 .customize-control-kirki-switch {
   position: relative;
 
+  .switch-off,
+  .switch-on {
+    opacity: 1;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .switch-on {
+    color: #fff;
+    opacity: 0;
+  }
+
+  .switch-off {
+    color: #777;
+  }
+
   .switch {
     border: none;
     margin-bottom: 1.5rem;
     outline: 0;
     padding: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
+    border-radius: 3rem;
+  }
 
-    label {
-      background: $color-light-silver-gray;
-      color: transparent;
-      cursor: pointer;
+  label {
+    background: $color-light-silver-gray;
+    float: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: left 0.15s ease-out;
+    border-radius: 3rem;
+
+    &:after {
+      background: #FFFFFF;
+      content: "";
       display: block;
-      margin-bottom: 1rem;
-      position: relative;
-      transition: left 0.15s ease-out;
-      height: 2rem;
-      width: 4rem;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: calc(.85rem + 10px);
+      height: calc(.85rem + 10px);
+      transition: all 0.25s ease-in-out;
+      border-radius: 3rem;
+    }
+  }
 
-      &:after {
-        background: #FFFFFF;
-        content: "";
-        display: block;
-        height: 1.5rem;
-        left: 0.25rem;
-        position: absolute;
-        top: 0.25rem;
-        width: 1.5rem;
-        -webkit-transition: all 0.25s ease-in-out;
-        -moz-transition: all 0.25s ease-in-out;
-        -ms-transition: all 0.25s ease-in-out;
-        -o-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out;
-      }
+  input {
+    + label {
+      margin-left: 0;
+      margin-right: 0;
     }
 
-    input {
+    &:checked {
       + label {
-        margin-left: 0;
-        margin-right: 0;
-      }
-
-      &:checked {
-        + label {
-          background: $color-wp-blue;
-
-          &:after {
-            left: 2.25rem;
-            background: #ffffff;
-          }
-        }
-      }
-    }
-
-    &.round {
-      border-radius: 1000px;
-
-      label {
-        border-radius: 2rem;
+        background: $color-wp-blue;
 
         &:after {
-          border-radius: 2rem;
+          left: auto;
+          right: 5px;
+          background: #ffffff;
+        }
+
+        .switch-on {
+          opacity: 1;
+        }
+
+        .switch-off {
+          opacity: 0;
         }
       }
     }
-  }
-
-  .switch-off,
-  .switch-on {
-    line-height: 32px;
-    font-weight: bold;
-    padding: 0 10px;
-  }
-
-  .switch-on {
-    color: #fff;
-    padding-right: 5px;
-  }
-
-  .switch-off {
-    color: #777;
-    padding-left: 5px;
   }
 }
