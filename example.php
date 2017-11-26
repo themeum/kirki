@@ -541,7 +541,7 @@ my_config_kirki_add_field(
 			'hover'   => esc_attr__( 'Hover', 'kirki' ),
 			'active'  => esc_attr__( 'Active', 'kirki' ),
 		),
-		'alpha'       =>true,
+		'alpha'       => true,
 		'default'     => array(
 			'link'    => '#0088cc',
 			'hover'   => '#00aaff',
@@ -649,7 +649,7 @@ my_config_kirki_add_field(
 /**
  * Select Control.
  */
- my_config_kirki_add_field(
+my_config_kirki_add_field(
 	array(
 		'type'        => 'select',
 		'settings'    => 'select_setting',
@@ -665,9 +665,9 @@ my_config_kirki_add_field(
 			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
 		),
 	)
- );
+);
 
- my_config_kirki_add_field(
+my_config_kirki_add_field(
 	array(
 		'type'        => 'select',
 		'settings'    => 'select_setting_multiple',
@@ -684,7 +684,7 @@ my_config_kirki_add_field(
 			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
 		),
 	)
- );
+);
 
 /**
  * Slider Control.
@@ -730,7 +730,7 @@ my_config_kirki_add_field(
 /**
  * Switch control.
  */
- my_config_kirki_add_field(
+my_config_kirki_add_field(
 	array(
 		'type'        => 'switch',
 		'settings'    => 'switch_setting',
@@ -739,9 +739,9 @@ my_config_kirki_add_field(
 		'section'     => 'switch_section',
 		'default'     => true,
 	)
- );
+);
 
- my_config_kirki_add_field(
+my_config_kirki_add_field(
 	array(
 		'type'        => 'switch',
 		'settings'    => 'switch_setting_custom_label',
@@ -754,7 +754,7 @@ my_config_kirki_add_field(
 			'off' => esc_attr__( 'Disabled', 'kirki' ),
 		),
 	)
- );
+);
 
 /**
  * Toggle control.
