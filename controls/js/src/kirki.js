@@ -422,6 +422,7 @@ var kirki = {
 				}
 				jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
 					selectValue = jQuery( this ).val();
+					selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
 					kirki.setting.set( control.id, selectValue );
 				});
 			}
