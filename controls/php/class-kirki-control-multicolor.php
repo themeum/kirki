@@ -36,6 +36,17 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 	public $alpha = true;
 
 	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 */
+	public function to_json() {
+		parent::to_json();
+
+		$this->json['alpha'] = (bool) $this->alpha;
+	}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
