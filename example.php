@@ -541,6 +541,7 @@ my_config_kirki_add_field(
 			'hover'   => esc_attr__( 'Hover', 'kirki' ),
 			'active'  => esc_attr__( 'Active', 'kirki' ),
 		),
+		'alpha'       =>true,
 		'default'     => array(
 			'link'    => '#0088cc',
 			'hover'   => '#00aaff',
@@ -648,23 +649,42 @@ my_config_kirki_add_field(
 /**
  * Select Control.
  */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'select',
-		'settings'    => 'select_setting',
-		'label'       => esc_attr__( 'Select Control', 'kirki' ),
-		'description' => esc_attr__( 'The description here.', 'kirki' ),
-		'section'     => 'select_section',
-		'default'     => 'option-3',
-		'choices'     => array(
-			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
-			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
-			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
-			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
-			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
-		),
-	)
-);
+ my_config_kirki_add_field(
+ 	array(
+ 		'type'        => 'select',
+ 		'settings'    => 'select_setting',
+ 		'label'       => esc_attr__( 'Select Control', 'kirki' ),
+ 		'description' => esc_attr__( 'The description here.', 'kirki' ),
+ 		'section'     => 'select_section',
+ 		'default'     => 'option-3',
+ 		'choices'     => array(
+ 			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+ 			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+ 			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+ 			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+ 			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+ 		),
+ 	)
+ );
+
+ my_config_kirki_add_field(
+ 	array(
+ 		'type'        => 'select',
+ 		'settings'    => 'select_setting_multiple',
+ 		'label'       => esc_attr__( 'Select Control', 'kirki' ),
+ 		'description' => esc_attr__( 'The description here.', 'kirki' ),
+ 		'section'     => 'select_section',
+ 		'default'     => 'option-3',
+		'multiple'    => 3,
+ 		'choices'     => array(
+ 			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+ 			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+ 			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+ 			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+ 			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+ 		),
+ 	)
+ );
 
 /**
  * Slider Control.
@@ -710,16 +730,31 @@ my_config_kirki_add_field(
 /**
  * Switch control.
  */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'switch',
-		'settings'    => 'switch_setting',
-		'label'       => esc_attr__( 'Switch Control', 'kirki' ),
-		'description' => esc_attr__( 'Description', 'kirki' ),
-		'section'     => 'switch_section',
-		'default'     => true,
-	)
-);
+ my_config_kirki_add_field(
+ 	array(
+ 		'type'        => 'switch',
+ 		'settings'    => 'switch_setting',
+ 		'label'       => esc_attr__( 'Switch Control', 'kirki' ),
+ 		'description' => esc_attr__( 'Description', 'kirki' ),
+ 		'section'     => 'switch_section',
+ 		'default'     => true,
+ 	)
+ );
+
+ my_config_kirki_add_field(
+ 	array(
+ 		'type'        => 'switch',
+ 		'settings'    => 'switch_setting_custom_label',
+ 		'label'       => esc_attr__( 'Switch Control with custom labels', 'kirki' ),
+ 		'description' => esc_attr__( 'Description', 'kirki' ),
+ 		'section'     => 'switch_section',
+ 		'default'     => true,
+ 		'choices'     => array(
+ 			'on'  => esc_attr__( 'Enabled', 'kirki' ),
+ 			'off' => esc_attr__( 'Disabled', 'kirki' ),
+ 		),
+ 	)
+ );
 
 /**
  * Toggle control.
