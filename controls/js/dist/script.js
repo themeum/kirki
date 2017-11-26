@@ -462,7 +462,8 @@ var kirki = {
 					'data-id': control.id,
 					inputAttrs: control.params.inputAttrs,
 					choices: control.params.choices,
-					value: kirki.setting.get( control.id )
+					value: kirki.setting.get( control.id ),
+					multiple: control.params.multiple || 1
 			    } ) );
 			}
 		}
@@ -631,6 +632,7 @@ var kirki = {
 				}
 				jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
 					selectValue = jQuery( this ).val();
+					selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
 					kirki.setting.set( control.id, selectValue );
 				});
 			}
