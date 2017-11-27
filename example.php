@@ -407,6 +407,22 @@ my_config_kirki_add_field(
 	)
 );
 
+my_config_kirki_add_field(
+	array(
+		'type'        => 'spacing',
+		'settings'    => 'spacing_0',
+		'label'       => esc_attr__( 'Spacing Control', 'kirki' ),
+		'description' => esc_attr__( 'Description Here.', 'kirki' ),
+		'section'     => 'dimensions_section',
+		'default'     => array(
+			'top'    => '1em',
+			'bottom' => '10rem',
+			'left'   => '1vh',
+			'right'  => '10px',
+		),
+	)
+);
+
 /**
  * Font-Awesome Control.
  */
