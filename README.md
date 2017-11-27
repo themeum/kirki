@@ -41,9 +41,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: PHP Warning when using `code` controls without a `label` defined [#1658](https://github.com/aristath/kirki/issues/1658)
 * Fix: Buttons inside `number` controls were not increasing/decreasing the values [#1648](https://github.com/aristath/kirki/issues/1648)
 * Fix: JS error  - only on Safari - for Select controls [#1662](https://github.com/aristath/kirki/issues/1662)
+* Fix: Unable to deselect all options from multiselect controls [#1670](https://github.com/aristath/kirki/issues/1670)
+* Fix: `multicolor` controls missing the `alpha` channel [#1657](https://github.com/aristath/kirki/issues/1657)
+* Fix: Unable to manually edit value in `multicolor` controls [#1666](https://github.com/aristath/kirki/issues/1666)
 * New: Transitioned to a JS-based webfont loader method to load google-fonts instead of using a link.
 * New: Moved `select` controls to new JS implementation.
 * New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
+* Tweak: Validation & Sanitization for `dimension` and `dimensions` controls.
+* Tweak: Refactored `multicolor` controls a bit
 
 ### 3.0.16 ###
 
