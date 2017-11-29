@@ -44,7 +44,7 @@
 		 * should be changed in Core to be applied once the control is embedded.
 		 *
 		 * @private
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		_setUpSettingRootLinks: function() {
 			var control = this,
@@ -66,7 +66,7 @@
 		 * Add bidirectional data binding links between inputs and the setting properties.
 		 *
 		 * @private
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		_setUpSettingPropertyLinks: function() {
 			var control = this,
@@ -127,7 +127,7 @@
 		 * so that the control isn't embedded on load,
 		 * unless the containing section is already expanded.
 		 *
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		embed: function() {
 			var control   = this,
@@ -156,7 +156,7 @@
 		 * This function is called in Section.onChangeExpanded() so the control
 		 * will only get embedded when the Section is first expanded.
 		 *
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		actuallyEmbed: function() {
 			var control = this;
@@ -171,7 +171,7 @@
 		 * This is not working with autofocus.
 		 *
 		 * @param {object} [args] Args.
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		focus: function( args ) {
 			var control = this;
@@ -183,7 +183,7 @@
 		 * Additional actions that run on ready.
 		 *
 		 * @param {object} [args] Args.
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		initKirkiControl: function( control ) {
 			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {

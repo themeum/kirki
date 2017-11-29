@@ -161,7 +161,7 @@ class My_Theme_Kirki {
 	 *
 	 * @param string $config_id The configuration ID.
 	 * @param array  $args      The field's arguments.
-	 * @return void
+	 * @return null
 	 */
 	public static function add_field( $config_id, $args ) {
 
@@ -188,7 +188,7 @@ class My_Theme_Kirki {
 	 * Enqueues the stylesheet.
 	 *
 	 * @access public
-	 * @return void
+	 * @return null
 	 */
 	public function enqueue_styles() {
 
@@ -360,7 +360,7 @@ class My_Theme_Kirki {
 	 * Enqueue google fonts.
 	 *
 	 * @access public
-	 * @return void
+	 * @return null
 	 */
 	public function enqueue_fonts() {
 

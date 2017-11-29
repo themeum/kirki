@@ -427,7 +427,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return void
+		 * @return null
 		 */
 		protected function from_hex() {
 
@@ -471,7 +471,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return void
+		 * @return null
 		 */
 		protected function from_rgb() {
 			$value = explode( ',', str_replace( array( ' ', 'rgb', '(', ')' ), '', $this->color ) );
@@ -493,7 +493,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return void
+		 * @return null
 		 */
 		protected function from_rgba() {
 			// Set r, g, b, a properties.
@@ -521,7 +521,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return void
+		 * @return null
 		 */
 		protected function from_hsl() {
 			$value = explode( ',', str_replace( array( ' ', 'hsl', '(', ')', '%' ), '', $this->color ) );
@@ -536,7 +536,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 		 *
 		 * @access protected
 		 * @since 1.0.0
-		 * @return void
+		 * @return null
 		 */
 		protected function from_hsla() {
 			$value = explode( ',', str_replace( array( ' ', 'hsla', '(', ')', '%' ), '', $this->color ) );

@@ -249,7 +249,7 @@ class Kirki_Output {
 	 * @param array        $output The field output.
 	 * @param string|array $value  The value.
 	 *
-	 * @return void
+	 * @return null
 	 */
 	protected function process_output( $output, $value ) {
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {

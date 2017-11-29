@@ -217,7 +217,7 @@ var kirki = {
 	 * Initialize the object.
 	 *
 	 * @since 3.0.17
-	 * @returns {void}
+	 * @returns {null}
 	 */
 	initialize: function() {
 		var self = this;
@@ -252,7 +252,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The customizer control object.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var self = this;
@@ -277,7 +277,7 @@ var kirki = {
 			 * @param {string} control.params.default - The default value.
 			 * @param {Object} control.params.choices - Any extra choices we may need.
 			 * @param {string} control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-radio' );
@@ -305,7 +305,7 @@ var kirki = {
 			 *
 			 * @since 3.0.16
 			 * @param {Object} control - The customizer control object.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var self = this;
@@ -335,7 +335,7 @@ var kirki = {
 			 * @param {Object}     control.params.choices - Any extra choices we may need.
 			 * @param {boolean}    control.params.choices.alpha - should we add an alpha channel?
 			 * @param {string}     control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-color' );
@@ -368,7 +368,7 @@ var kirki = {
 			 * @param {Object} control.params - Control parameters.
 			 * @param {Object} control.params.choices - Define the specifics for this input.
 			 * @param {string} control.params.choices.element - The HTML element we want to use ('input', 'div', 'span' etc).
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var self = this;
@@ -397,7 +397,7 @@ var kirki = {
 			 * @param {Object}  control.params.choices - Any extra choices we may need.
 			 * @param {boolean} control.params.choices.alpha - should we add an alpha channel?
 			 * @param {string}  control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			template: function( control ) {
 				var args = {
@@ -427,7 +427,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The customizer control object.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var self = this;
@@ -451,7 +451,7 @@ var kirki = {
 			 * @param {Object}  control.params.default - The default value.
 			 * @param {Object}  control.params.choices - The choices for the select dropdown.
 			 * @param {string}  control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-select' );
@@ -489,7 +489,7 @@ var kirki = {
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
 			 * @param {Object} control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var input = jQuery( 'input[data-id="' + control.id + '"]' );
@@ -518,7 +518,7 @@ var kirki = {
 			 * @param {Object} control.params - Control parameters.
 			 * @param {Object} control.params.choices - alias for control.choices.
 
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
@@ -570,7 +570,7 @@ var kirki = {
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
 			 * @param {Object} control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var input = jQuery( 'input[data-id="' + control.id + '"]' );
@@ -595,7 +595,7 @@ var kirki = {
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
 			 * @param {Object} control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var textarea = jQuery( 'textarea[data-id="' + control.id + '"]' );
@@ -615,7 +615,7 @@ var kirki = {
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
 			 * @param {Object} control.id - The setting.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 				var element  = jQuery( 'select[data-id="' + control.id + '"]' ),
@@ -703,7 +703,7 @@ var kirki = {
 			 *
 			 * @since 3.0.17
 			 * @param {Object} control - The control object.
-			 * @returns {void}
+			 * @returns {null}
 			 */
 			init: function( control ) {
 			}
@@ -774,7 +774,7 @@ var kirki = {
 		 * @param {mixed}         value - Depends on the control-type.
 		 * @param {string}        key - If we only want to save an item in an object
 		 *                                  we can define the key here.
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		set: function( element, value, key ) {
 			var setting,
@@ -894,7 +894,7 @@ var kirki = {
 				 * Init for google-fonts.
 				 *
 				 * @since 3.0.17
-				 * @returns {void}
+				 * @returns {null}
 				 */
 				initialize: function() {
 					var self = this;
@@ -906,7 +906,7 @@ var kirki = {
 				 * Set fonts in this.fonts
 				 *
 				 * @since 3.0.17
-				 * @returns {void}
+				 * @returns {null}
 				 */
 				setFonts: function() {
 					var self = this,
@@ -1044,7 +1044,7 @@ kirki.initialize();
 		 * should be changed in Core to be applied once the control is embedded.
 		 *
 		 * @private
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		_setUpSettingRootLinks: function() {
 			var control = this,
@@ -1066,7 +1066,7 @@ kirki.initialize();
 		 * Add bidirectional data binding links between inputs and the setting properties.
 		 *
 		 * @private
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		_setUpSettingPropertyLinks: function() {
 			var control = this,
@@ -1127,7 +1127,7 @@ kirki.initialize();
 		 * so that the control isn't embedded on load,
 		 * unless the containing section is already expanded.
 		 *
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		embed: function() {
 			var control   = this,
@@ -1156,7 +1156,7 @@ kirki.initialize();
 		 * This function is called in Section.onChangeExpanded() so the control
 		 * will only get embedded when the Section is first expanded.
 		 *
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		actuallyEmbed: function() {
 			var control = this;
@@ -1171,7 +1171,7 @@ kirki.initialize();
 		 * This is not working with autofocus.
 		 *
 		 * @param {object} [args] Args.
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		focus: function( args ) {
 			var control = this;
@@ -1183,7 +1183,7 @@ kirki.initialize();
 		 * Additional actions that run on ready.
 		 *
 		 * @param {object} [args] Args.
-		 * @returns {void}
+		 * @returns {null}
 		 */
 		initKirkiControl: function( control ) {
 			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
