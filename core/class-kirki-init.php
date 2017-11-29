@@ -42,7 +42,6 @@ class Kirki_Init {
 	 *
 	 * @static
 	 * @access public
-	 * @return null
 	 */
 	public static function set_url() {
 
@@ -117,8 +116,6 @@ class Kirki_Init {
 
 	/**
 	 * Helper function that adds the fields, sections and panels to the customizer.
-	 *
-	 * @return null
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
@@ -187,7 +184,6 @@ class Kirki_Init {
 	 * Register our sections to the WordPress Customizer.
 	 *
 	 * @var object The WordPress Customizer object
-	 * @return null
 	 */
 	public function add_sections() {
 		if ( ! empty( Kirki::$sections ) ) {
@@ -213,7 +209,6 @@ class Kirki_Init {
 	 * Create the settings and controls from the $fields array and register them.
 	 *
 	 * @var object The WordPress Customizer object.
-	 * @return null
 	 */
 	public function add_fields() {
 
