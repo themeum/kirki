@@ -167,24 +167,6 @@ class Kirki_Modules_Webfonts {
 			if ( isset( $field['kirki_config'] ) && $config_id !== $field['kirki_config'] ) {
 				continue;
 			}
-			// Only continue if field dependencies are met.
-			if ( ! empty( $field['required'] ) ) {
-				$valid = true;
-
-				foreach ( $field['required'] as $requirement ) {
-					if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-						$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-						if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
-							$valid = false;
-						}
-					}
-				}
-
-				if ( ! $valid ) {
-					continue;
-				}
-			}
-
 			$this->fonts_google->generate_google_font( $field );
 		}
 	}

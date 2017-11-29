@@ -132,9 +132,6 @@ class Kirki extends Kirki_Init {
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
-		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
-		}
 
 		self::$panels[ $args['id'] ] = $args;
 	}
@@ -155,9 +152,6 @@ class Kirki extends Kirki_Init {
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
-		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
-		}
 
 		self::$sections[ $args['id'] ] = $args;
 	}
