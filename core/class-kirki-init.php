@@ -127,8 +127,6 @@ class Kirki_Init {
 
 	/**
 	 * Register control types
-	 *
-	 * @return  null
 	 */
 	public function register_control_types() {
 		global $wp_customize;
