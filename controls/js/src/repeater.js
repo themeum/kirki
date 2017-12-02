@@ -882,7 +882,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				selectWooOptions.maximumSelectionLength = multiple;
 			}
 		}
-		$select   = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
+
+		data = data || {};
+		data[ dataField ] = data[ dataField ] || '';
+
+		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 

@@ -46,6 +46,7 @@ rm .simplecov
 rm .travis.yml
 rm CODE_OF_CONDUCT.md
 rm composer.json
+rm example.php
 rm Gruntfile.js
 rm package.json
 rm phpcs.ruleset.xml

@@ -72,6 +72,13 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			});
 		}
 
+		// Text-decoration.
+		if ( control.params['default']['text-decoration'] ) {
+			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
+				control.saveValue( 'text-decoration', jQuery( this ).val() );
+			});
+		}
+
 		// Color.
 		if ( control.params['default'].color ) {
 			picker = this.container.find( '.kirki-color-control' );

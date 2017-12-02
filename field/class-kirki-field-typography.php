@@ -207,6 +207,11 @@ class Kirki_Field_Typography extends Kirki_Field {
 						$value['text-transform'] = 'none';
 					}
 					break;
+				case 'text-decoration':
+					if ( ! in_array( $val, array( 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+						$value['text-transform'] = 'none';
+					}
+					break;
 				case 'color':
 					$value['color'] = ariColor::newColor( $val )->toCSS( 'hex' );
 					break;

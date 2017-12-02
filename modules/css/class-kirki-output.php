@@ -53,12 +53,14 @@ class Kirki_Output {
 	 * @param string       $config_id The config ID.
 	 * @param array        $output    The output argument.
 	 * @param string|array $value     The value.
+	 * @param array        $field     The field.
 	 */
-	public function __construct( $config_id, $output, $value ) {
+	public function __construct( $config_id, $output, $value, $field ) {
 
 		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;
+		$this->field     = $field;
 
 		$this->parse_output();
 	}

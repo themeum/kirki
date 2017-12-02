@@ -663,6 +663,55 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Repeater Control.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'repeater',
+		'settings'    => 'repeater_setting',
+		'label'       => esc_attr__( 'Repeater Control', 'kirki' ),
+		'description' => esc_attr__( 'The description here.', 'kirki' ),
+		'section'     => 'repeater_section',
+		'default'     => array(
+			array(
+				'link_text'   => esc_attr__( 'Kirki Site', 'kirki' ),
+				'link_url'    => 'https://aristath.github.io/kirki/',
+				'link_target' => '_self',
+			),
+			array(
+				'link_text'   => esc_attr__( 'Kirki Repository', 'kirki' ),
+				'link_url'    => 'https://github.com/aristath/kirki',
+				'link_target' => '_self',
+			),
+		),
+		'fields' => array(
+			'link_text' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Link Text', 'kirki' ),
+				'description' => esc_attr__( 'This will be the label for your link', 'kirki' ),
+				'default'     => '',
+			),
+			'link_url' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Link URL', 'kirki' ),
+				'description' => esc_attr__( 'This will be the link URL', 'kirki' ),
+				'default'     => '',
+			),
+			'link_target' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Link Target', 'kirki' ),
+				'description' => esc_attr__( 'This will be the link target', 'kirki' ),
+				'default'     => '_self',
+				'choices'     => array(
+					'_blank'  => esc_attr__( 'New Window', 'kirki' ),
+					'_self'   => esc_attr__( 'Same Frame', 'kirki' ),
+				),
+			),
+		),
+	)
+);
+
+/**
  * Select Control.
  */
 my_config_kirki_add_field(
@@ -803,17 +852,26 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
 		'description' => esc_attr__( 'The full set of options.', 'kirki' ),
 		'section'     => 'typography_section',
-		'default'     => array(
-			'font-family'    => 'Roboto',
-			'variant'        => 'regular',
-			'font-size'      => '14px',
-			'line-height'    => '1.5',
-			'letter-spacing' => '0',
-			'subsets'        => array( 'latin-ext' ),
-			'color'          => '#333333',
-			'text-transform' => 'none',
-			'text-align'     => 'left',
-		),
 		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => array(
+			'font-family'     => 'Roboto',
+			'variant'         => 'regular',
+			'font-size'       => '14px',
+			'line-height'     => '1.5',
+			'letter-spacing'  => '0',
+			'subsets'         => array( 'latin-ext' ),
+			'color'           => '#333333',
+			'text-transform'  => 'none',
+			'text-decoration' => 'none',
+			'text-align'      => 'left',
+			'margin-top'      => '0',
+			'margin-bottom'   => '0',
+		),
+		'output'      => array(
+			array(
+				'element' => 'body, p',
+			),
+		),
 	)
 );

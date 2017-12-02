@@ -174,7 +174,7 @@ final class Kirki_Modules_CSS_Generator {
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 			$classname = $field_output_classes[ self::$field_type ];
 		}
-		$obj = new $classname( $field['kirki_config'], self::$output, self::$value );
+		$obj = new $classname( $field['kirki_config'], self::$output, self::$value, $field );
 		return $obj->get_styles();
 
 	}

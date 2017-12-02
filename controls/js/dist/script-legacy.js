@@ -208,7 +208,6 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	};
 }
-/* global ajaxurl, kirkiL10n */
 var kirki = {
 
 	initialized: false,
@@ -227,11 +226,28 @@ var kirki = {
 			return;
 		}
 
-		self.util.webfonts.google.initialize();
+		if (
+			'undefined' !== typeof self.util &&
+			'undefined' !== typeof self.util.webfonts &&
+			'undefined' !== typeof self.util.webfonts.google &&
+			'function' === typeof self.util.webfonts.google.initialize
+		) {
+			self.util.webfonts.google.initialize();
+		} else {
+			setTimeout( function() {
+				self.initialize();
+			}, 150 );
+			return;
+		}
 
 		// Mark as initialized.
 		self.initialized = true;
-	},
+	}
+};
+
+// Initialize the kirki object.
+kirki.initialize();
+var kirki = jQuery.extend( kirki, {
 
 	/**
 	 * An object containing definitions for controls.
@@ -467,8 +483,10 @@ var kirki = {
 			    } ) );
 			}
 		}
-	},
-
+	}
+} );
+/* global kirkiL10n */
+var kirki = jQuery.extend( kirki, {
 	/**
 	 * An object containing definitions for input fields.
 	 *
@@ -708,8 +726,9 @@ var kirki = {
 			init: function( control ) {
 			}
 		}
-	},
-
+	}
+} );
+var kirki = jQuery.extend( kirki, {
 	/**
 	 * An object containing definitions for settings.
 	 *
@@ -858,8 +877,10 @@ var kirki = {
 			}
 			wp.customize.control( foundNode ).setting.set( value );
 		}
-	},
-
+	}
+} );
+/* global ajaxurl */
+var kirki = jQuery.extend( kirki, {
 	/**
 	 * A collection of utility methods.
 	 *
@@ -994,10 +1015,7 @@ var kirki = {
 			}
 		}
 	}
-};
-
-// Initialize the kirki object.
-kirki.initialize();
+} );
 /* global kirki */
 /**
  * The majority of the code in this file
@@ -2967,7 +2985,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				selectWooOptions.maximumSelectionLength = multiple;
 			}
 		}
-		$select   = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
+
+		data = data || {};
+		data[ dataField ] = data[ dataField ] || '';
+
+		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 

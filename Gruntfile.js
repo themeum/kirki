@@ -98,6 +98,10 @@ module.exports = function( grunt ) {
 				src: [
 					'controls/js/src/set-setting-value.js',
 					'controls/js/src/kirki.js',
+					'controls/js/src/kirki.control.js',
+					'controls/js/src/kirki.input.js',
+					'controls/js/src/kirki.setting.js',
+					'controls/js/src/kirki.util.js',
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background.js',
@@ -130,6 +134,11 @@ module.exports = function( grunt ) {
 				src: [
 					'controls/js/src/set-setting-value.js',
 					'controls/js/src/kirki.js',
+					'controls/js/src/kirki.control.js',
+					'controls/js/src/kirki.input.js',
+					'controls/js/src/kirki.setting.js',
+					'controls/js/src/kirki.util.js',
+					'controls/js/src/dynamic-control.js',
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background-legacy.js',
