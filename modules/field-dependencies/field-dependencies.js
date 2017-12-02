@@ -55,7 +55,11 @@ var kirkiDependencies = {
 
 		// Loop control requirements.
 		_.each( control.params.required, function( requirement ) {
-			var requirementShow = self.evaluate( requirement.value, wp.customize( requirement.setting ).get(), requirement.operator );
+			if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
+				show = true;
+				return;
+			}
+			var requirementShow = self.evaluate( requirement.value, wp.customize.control( requirement.setting ).setting._value, requirement.operator );
 
 			self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
 			if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
