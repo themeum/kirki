@@ -35,6 +35,7 @@ class Kirki_Init {
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 
 		new Kirki_Values();
+		new Kirki_Sections();
 	}
 
 	/**

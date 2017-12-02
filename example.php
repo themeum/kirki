@@ -82,16 +82,18 @@ $sections = array(
 	'sortable'        => array( esc_attr__( 'Sortable', 'kirki' ), '' ),
 	'switch'          => array( esc_attr__( 'Switch', 'kirki' ), '' ),
 	'toggle'          => array( esc_attr__( 'Toggle', 'kirki' ), '' ),
-	'typography'      => array( esc_attr__( 'Typography', 'kirki' ), '' ),
+	'typography'      => array( esc_attr__( 'Typography', 'kirki' ), '', 'outer' ),
 );
 foreach ( $sections as $section_id => $section ) {
-	Kirki::add_section(
-		str_replace( '-', '_', $section_id ) . '_section', array(
-			'title'       => $section[0],
-			'description' => $section[1],
-			'panel'       => 'kirki_demo_panel',
-		)
+	$section_args = array(
+		'title'       => $section[0],
+		'description' => $section[1],
+		'panel'       => 'kirki_demo_panel',
 	);
+	if ( isset( $section[2] ) ) {
+		$section_args['type'] = $section[2];
+	}
+	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
 }
 
 /**
