@@ -59,6 +59,8 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths:
+- Gruntfile.js
+- example.php
 - assets/vendor/*
 - controls/js/dist/*
 - controls/css/*
