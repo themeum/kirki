@@ -84,7 +84,6 @@ var kirkiDependencies = {
 	 */
 	evaluate: function( value1, value2, operator ) {
 		var found = false,
-		    value,
 		    result = null;
 
 		if ( '===' === operator ) {
