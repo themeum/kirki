@@ -166,11 +166,8 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
-						if ( isset( $value[ $v ] ) ) {
-							$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
-						} else {
-							$value[ $k ] = str_replace( $search, $replacement, $v );
-						}
+						$_val = ( isset( $value[ $v ] ) ) ? $value[ $v ] : $v;
+						$value[ $k ] = str_replace( $search, $replacement, $_val );
 					}
 					return $value;
 				}
