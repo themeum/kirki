@@ -1,6 +1,4 @@
-var kirki = kirki || {};
-kirki.util = kirki.util || {};
-kirki.util.dependencies = {
+var kirkiDependencies = {
 
 	listenTo: {},
 
@@ -150,5 +148,5 @@ kirki.util.dependencies = {
 };
 
 jQuery( document ).ready( function() {
-	kirki.util.dependencies.init();
+	kirkiDependencies.init();
 } );
