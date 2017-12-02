@@ -369,4 +369,41 @@ class Kirki_Helper {
 		);
 
 	}
+
+	/**
+	 * Compares the 2 values given the condition
+	 *
+	 * @param mixed  $value1   The 1st value in the comparison.
+	 * @param mixed  $value2   The 2nd value in the comparison.
+	 * @param string $operator The operator we'll use for the comparison.
+	 * @return boolean whether The comparison has succeded (true) or failed (false).
+	 */
+	public static function compare_values( $value1, $value2, $operator ) {
+		if ( '===' === $operator ) {
+			$show = ( $value1 === $value2 ) ? true : false;
+		} elseif ( '!==' === $operator ) {
+			$show = ( $value1 !== $value2 ) ? true : false;
+		} elseif ( '!=' === $operator || 'not equal' === $operator ) {
+			$show = ( $value1 != $value2 ) ? true : false;
+		} elseif ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) {
+			$show = ( $value2 >= $value1 ) ? true : false;
+		} elseif ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) {
+			$show = ( $value2 <= $value1 ) ? true : false;
+		} elseif ( '>' === $operator || 'greater' === $operator ) {
+			$show = ( $value2 > $value1 ) ? true : false;
+		} elseif ( '<' === $operator || 'smaller' === $operator ) {
+			$show = ( $value2 < $value1 ) ? true : false;
+		} elseif ( 'contains' === $operator || 'in' === $operator ) {
+			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+				$show = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
+			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+				$show = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
+			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+				$show = false;
+			}
+		} else {
+			$show = ( $value1 == $value2 ) ? true : false;
+		}
+		return ( isset( $show ) ) ? $show : true;
+	}
 }

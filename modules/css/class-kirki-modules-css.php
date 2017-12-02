@@ -254,7 +254,7 @@ class Kirki_Modules_CSS {
 				foreach ( $field['required'] as $requirement ) {
 					if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
 						$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-						if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+						if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
 							$valid = false;
 						}
 					}

@@ -818,6 +818,13 @@ my_config_kirki_add_field(
 			'on'  => esc_attr__( 'Enabled', 'kirki' ),
 			'off' => esc_attr__( 'Disabled', 'kirki' ),
 		),
+		'active_callback'    => array(
+			array(
+				'setting'  => 'switch_setting',
+				'operator' => '==',
+				'value'    => true,
+			),
+		),
 	)
 );
 

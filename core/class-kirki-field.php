@@ -463,7 +463,7 @@ class Kirki_Field {
 		}
 
 		if ( ! empty( $this->required ) ) {
-			$this->active_callback = array( 'Kirki_Active_Callback', 'evaluate' );
+			$this->active_callback = '__return_true';
 			return;
 		}
 		// No need to proceed any further if we're using the default value.
