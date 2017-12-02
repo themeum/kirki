@@ -28,13 +28,19 @@ class Kirki_Sections {
 	 * The object constructor.
 	 *
 	 * @access public
-	 * @param array $args The section parameters.
+	 * @since 3.0.17
 	 */
 	public function __construct() {
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'outer_sections_css' ) );
 	}
 
-
+	/**
+	 * Generate CSS for the outer sections.
+	 * These are by default hidden, we need to expose them.
+	 *
+	 * @since 3.0.17
+	 * @return void
+	 */
 	public function outer_sections_css() {
 		$css = '';
 		if ( ! empty( Kirki::$sections ) ) {
