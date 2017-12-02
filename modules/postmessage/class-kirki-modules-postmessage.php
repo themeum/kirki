@@ -129,7 +129,6 @@ class Kirki_Modules_PostMessage {
 			if ( isset( $js_var['element'] ) ) {
 				// Array to string.
 				if ( is_array( $js_var['element'] ) ) {
-					$js_var['element'] = array_unique( $js_var['element'] );
 					$js_var['element'] = implode( ',', $js_var['element'] );
 				}
 				// Replace single quotes with double quotes to avoid issues with the compiled JS.
@@ -155,14 +154,12 @@ class Kirki_Modules_PostMessage {
 		}
 		$text = ( 'css' === $combo_css_script ) ? 'css' : '\'' . $combo_css_script . '\'';
 
-		$script .= $combo_extra_script;
-		$script .= "var cssContent={$text};";
+		$script .= $combo_extra_script . "var cssContent={$text};";
 		if ( isset( $js_var['exclude'] ) ) {
 			$script .= 'if(true===exclude){cssContent="";}';
 		}
 		if ( $add_css ) {
-			$script .= "jQuery('#{$style_id}').text(cssContent);";
-			$script .= "jQuery('#{$style_id}').appendTo('head');";
+			$script .= "jQuery('#{$style_id}').text(cssContent);jQuery('#{$style_id}').appendTo('head');";
 		}
 		$script .= '});});';
 		return $script;
@@ -271,9 +268,7 @@ class Kirki_Modules_PostMessage {
 
 		// Tweak to add url() for background-images.
 		if ( '' === $choice || 'background-image' === $choice ) {
-			$script .= 'if(\'background-image\'===\'' . $args['property'] . '\'||\'background-image\'===subKey){';
-			$script .= 'if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'")\';}';
-			$script .= '}';
+			$script .= 'if(\'background-image\'===\'' . $args['property'] . '\'||\'background-image\'===subKey){if(-1===subValue.indexOf(\'url(\')){subValue=\'url("\'+subValue+\'")\';}}';
 		}
 
 		// Apply prefix.
@@ -294,11 +289,9 @@ class Kirki_Modules_PostMessage {
 			$script .= ( $choice_is_direction ) ? '}' : '';
 			$script .= '}';
 		} else {
-			$script .= $direction_script . 'else{';
 
 			// This is where most object-based fields will go.
-			$script .= 'css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';';
-			$script .= '}';
+			$script .= $direction_script . 'else{css+=\'' . $args['element'] . '{\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
 		}
 		$script .= '});';
 
@@ -417,23 +410,7 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $args['type'] ) ) {
 			switch ( $args['type'] ) {
 				case 'kirki-typography':
-					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];';
-					$script .= 'variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;';
-					$script .= 'subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;';
-					$script .= 'subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';';
-					$script .= 'fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];';
-					$script .= 'lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];';
-					$script .= 'letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];';
-					$script .= 'wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];';
-					$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
-					$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
-					$script .= 'textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];';
-					$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
-
-					$script .= 'fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);';
-					$script .= 'fontWeight=(!_.isObject(fw))?400:fw.join(\'\');';
-					$script .= 'fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';';
-					$script .= 'css=\'\';';
+					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];color=(_.isUndefined(newval.color))?\'\':newval.color;fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);fontWeight=(!_.isObject(fw))?400:fw.join(\'\');fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';css=\'\';';
 					break;
 			}
 		}
