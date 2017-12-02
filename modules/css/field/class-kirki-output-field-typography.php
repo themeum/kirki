@@ -46,6 +46,11 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 
 		foreach ( $properties as $property ) {
 
+			// Early exit if the value is not in the defaults.
+			if ( ! isset( $this->field['default'][ $property ] ) ) {
+				continue;
+			}
+
 			// Early exit if the value is not saved in the values.
 			if ( ! isset( $value[ $property ] ) || ! $value[ $property ] ) {
 				continue;
