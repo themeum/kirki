@@ -379,69 +379,40 @@ class Kirki_Helper {
 	 * @return boolean whether The comparison has succeded (true) or failed (false).
 	 */
 	public static function compare_values( $value1, $value2, $operator ) {
-		switch ( $operator ) {
-			case '===':
-				$show = ( $value1 === $value2 ) ? true : false;
-				break;
-			case '==':
-			case '=':
-			case 'equals':
-			case 'equal':
-				$show = ( $value1 == $value2 ) ? true : false;
-				break;
-			case '!==':
-				$show = ( $value1 !== $value2 ) ? true : false;
-				break;
-			case '!=':
-			case 'not equal':
-				$show = ( $value1 != $value2 ) ? true : false;
-				break;
-			case '>=':
-			case 'greater or equal':
-			case 'equal or greater':
-				$show = ( $value2 >= $value1 ) ? true : false;
-				break;
-			case '<=':
-			case 'smaller or equal':
-			case 'equal or smaller':
-				$show = ( $value2 <= $value1 ) ? true : false;
-				break;
-			case '>':
-			case 'greater':
-				$show = ( $value2 > $value1 ) ? true : false;
-				break;
-			case '<':
-			case 'smaller':
-				$show = ( $value2 < $value1 ) ? true : false;
-				break;
-			case 'contains':
-			case 'in':
-				if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-					$array  = $value1;
-					$string = $value2;
-				} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-					$array  = $value2;
-					$string = $value1;
+		if ( '===' === $operator ) {
+			$show = ( $value1 === $value2 ) ? true : false;
+		} elseif ( '!==' === $operator ) {
+			$show = ( $value1 !== $value2 ) ? true : false;
+		} elseif ( '!=' === $operator || 'not equal' === $operator ) {
+			$show = ( $value1 != $value2 ) ? true : false;
+		} elseif ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) {
+			$show = ( $value2 >= $value1 ) ? true : false;
+		} elseif ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) {
+			$show = ( $value2 <= $value1 ) ? true : false;
+		} elseif ( '>' === $operator || 'greater' === $operator ) {
+			$show = ( $value2 > $value1 ) ? true : false;
+		} elseif ( '<' === $operator || 'smaller' === $operator ) {
+			$show = ( $value2 < $value1 ) ? true : false;
+		} elseif ( 'contains' === $operator || 'in' === $operator ) {
+			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+				$array  = $value1;
+				$string = $value2;
+			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+				$array  = $value2;
+				$string = $value1;
+			}
+			if ( isset( $array ) && isset( $string ) ) {
+				if ( ! in_array( $string, $array, true ) ) {
+					$show = false;
 				}
-				if ( isset( $array ) && isset( $string ) ) {
-					if ( ! in_array( $string, $array, true ) ) {
-						$show = false;
-					}
-				} else {
-					if ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
-						$show = false;
-					}
+			} else {
+				if ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+					$show = false;
 				}
-				break;
-			default:
-				$show = ( $value1 == $value2 ) ? true : false;
-
-		} // End switch().
-
-		if ( isset( $show ) ) {
-			return $show;
+			}
+		} else {
+			$show = ( $value1 == $value2 ) ? true : false;
 		}
-
-		return true;
+		return ( isset( $show ) ) ? $show : true;
 	}
 }

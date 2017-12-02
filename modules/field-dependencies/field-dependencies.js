@@ -48,23 +48,14 @@ var kirkiDependencies = {
 			control = wp.customize.control( control );
 		}
 
-		// Exit early if control not found.
-		if ( 'undefined' === typeof control ) {
-			return true;
-		}
-
-		// Exit early if "required" argument is not defined.
-		if ( _.isEmpty( control.params.required ) ) {
+		// Exit early if control not found or if "required" argument is not defined.
+		if ( 'undefined' === typeof control || ( control.params && _.isEmpty( control.params.required ) ) ) {
 			return true;
 		}
 
 		// Loop control requirements.
 		_.each( control.params.required, function( requirement ) {
-			var requirementShow = self.evaluate(
-				requirement.value,
-				wp.customize( requirement.setting ).get(),
-				requirement.operator
-			);
+			var requirementShow = self.evaluate( requirement.value, wp.customize( requirement.setting ).get(), requirement.operator );
 
 			self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
 			if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
@@ -89,33 +80,26 @@ var kirkiDependencies = {
 	 */
 	evaluate: function( value1, value2, operator ) {
 		var found = false,
-			value;
+		    value,
+		    result = null;
 
 		if ( '===' === operator ) {
-			return value1 === value2;
-		}
-		if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
-			return value1 == value2; // jshint ignore:line
-		}
-		if ( '!==' === operator ) {
-			return value1 !== value2;
-		}
-		if ( '!=' === operator || 'not equal' === operator ) {
-			return value1 != value2; // jshint ignore:line
-		}
-		if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
-			return value2 >= value1;
-		}
-		if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
-			return value2 <= value1;
-		}
-		if ( '>' === operator || 'greater' === operator ) {
-			return value2 > value1;
-		}
-		if ( '<' === operator || 'smaller' === operator ) {
-			return value2 < value1;
-		}
-		if ( 'contains' === operator || 'in' === operator ) {
+			result = value1 === value2;
+		} else if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
+			result = value1 == value2; // jshint ignore:line
+		} else if ( '!==' === operator ) {
+			result = value1 !== value2;
+		} else if ( '!=' === operator || 'not equal' === operator ) {
+			result = value1 != value2; // jshint ignore:line
+		} else if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
+			result = value2 >= value1;
+		} else if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
+			result = value2 <= value1;
+		} else if ( '>' === operator || 'greater' === operator ) {
+			result = value2 > value1;
+		} else if ( '<' === operator || 'smaller' === operator ) {
+			result = value2 < value1;
+		} else if ( 'contains' === operator || 'in' === operator ) {
 			if ( _.isArray( value2 ) ) {
 				found = false;
 				_.each( value2, function( index, value ) {
@@ -143,7 +127,10 @@ var kirkiDependencies = {
 				return value1.indexOf( value2 ) > -1;
 			}
 		}
-		return true;
+		if ( null === result ) {
+			return true;
+		}
+		return result;
 	}
 };
 
