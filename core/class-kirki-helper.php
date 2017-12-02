@@ -395,20 +395,11 @@ class Kirki_Helper {
 			$show = ( $value2 < $value1 ) ? true : false;
 		} elseif ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				$array  = $value1;
-				$string = $value2;
+				$show = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
 			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				$array  = $value2;
-				$string = $value1;
-			}
-			if ( isset( $array ) && isset( $string ) ) {
-				if ( ! in_array( $string, $array, true ) ) {
-					$show = false;
-				}
-			} else {
-				if ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
-					$show = false;
-				}
+				$show = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
+			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+				$show = false;
 			}
 		} else {
 			$show = ( $value1 == $value2 ) ? true : false;
