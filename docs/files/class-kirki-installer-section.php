@@ -88,6 +88,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 				public static function is_dismissed() {
 					// Get the user-meta.
 					$user_id   = get_current_user_id();
+					// @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.user_meta_get_user_meta)
 					$user_meta = get_user_meta( $user_id, 'dismiss-kirki-recommendation', true );
 
 					return ( true === $user_meta || '1' === $user_meta || 1 === $user_meta );
@@ -159,7 +160,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 
 							jQuery.post( ajaxurl, {
 								action: 'kirki_installer_dismiss',
-								security: '<?php echo $ajax_nonce; ?>',
+								security: '<?php echo esc_attr( $ajax_nonce ); ?>',
 							}, function( response ) {
 								jQuery( '#accordion-section-kirki_installer' ).remove();
 							} );
@@ -212,6 +213,7 @@ if ( ! function_exists( 'kirki_installer_dismiss' ) ) {
 	function kirki_installer_dismiss() {
 		check_ajax_referer( 'dismiss-kirki-recommendation', 'security' );
 		$user_id   = get_current_user_id();
+		// @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.user_meta_update_user_meta
 		if ( update_user_meta( $user_id, 'dismiss-kirki-recommendation', true ) ) {
 			echo 'success! :-)';
 			wp_die();
