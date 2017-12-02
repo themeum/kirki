@@ -247,7 +247,8 @@ var kirki = {
 
 // Initialize the kirki object.
 kirki.initialize();
-var kirki = jQuery.extend( kirki, {
+var kirki = kirki || {};
+kirki = jQuery.extend( kirki, {
 
 	/**
 	 * An object containing definitions for controls.
@@ -486,7 +487,8 @@ var kirki = jQuery.extend( kirki, {
 	}
 } );
 /* global kirkiL10n */
-var kirki = jQuery.extend( kirki, {
+var kirki = kirki || {};
+kirki = jQuery.extend( kirki, {
 	/**
 	 * An object containing definitions for input fields.
 	 *
@@ -728,7 +730,8 @@ var kirki = jQuery.extend( kirki, {
 		}
 	}
 } );
-var kirki = jQuery.extend( kirki, {
+var kirki = kirki || {};
+kirki = jQuery.extend( kirki, {
 	/**
 	 * An object containing definitions for settings.
 	 *
@@ -880,7 +883,8 @@ var kirki = jQuery.extend( kirki, {
 	}
 } );
 /* global ajaxurl */
-var kirki = jQuery.extend( kirki, {
+var kirki = kirki || {};
+kirki = jQuery.extend( kirki, {
 	/**
 	 * A collection of utility methods.
 	 *

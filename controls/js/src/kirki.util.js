@@ -1,5 +1,6 @@
 /* global ajaxurl */
-var kirki = jQuery.extend( kirki, {
+var kirki = kirki || {};
+kirki = jQuery.extend( kirki, {
 	/**
 	 * A collection of utility methods.
 	 *
