@@ -174,7 +174,7 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_html_var( $args ) {
 
-		$script  = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
+		$script = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
 
 		// Apply the value_pattern.
 		if ( isset( $args['value_pattern'] ) && '' !== $args['value_pattern'] ) {
@@ -248,7 +248,7 @@ class Kirki_Modules_PostMessage {
 		$property_script = '';
 
 		// Define choice.
-		$choice  = ( isset( $args['choice'] ) && '' !== $args['choice'] ) ? $args['choice'] : '';
+		$choice = ( isset( $args['choice'] ) && '' !== $args['choice'] ) ? $args['choice'] : '';
 
 		$value_key = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
