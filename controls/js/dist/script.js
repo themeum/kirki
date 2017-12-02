@@ -208,7 +208,6 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		}
 	};
 }
-/* global ajaxurl, kirkiL10n */
 var kirki = {
 
 	initialized: false,
