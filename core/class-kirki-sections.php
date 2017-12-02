@@ -16,15 +16,6 @@
 class Kirki_Sections {
 
 	/**
-	 * An array of sections along with their types.
-	 *
-	 * @static
-	 * @since 3.0.17
-	 * @var array
-	 */
-	private $sections = array();
-
-	/**
 	 * The object constructor.
 	 *
 	 * @access public
