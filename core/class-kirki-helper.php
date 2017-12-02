@@ -379,31 +379,32 @@ class Kirki_Helper {
 	 * @return boolean whether The comparison has succeded (true) or failed (false).
 	 */
 	public static function compare_values( $value1, $value2, $operator ) {
-		if ( '===' === $operator ) {
-			$show = ( $value1 === $value2 ) ? true : false;
-		} elseif ( '!==' === $operator ) {
-			$show = ( $value1 !== $value2 ) ? true : false;
-		} elseif ( '!=' === $operator || 'not equal' === $operator ) {
-			$show = ( $value1 != $value2 ) ? true : false;
-		} elseif ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) {
-			$show = ( $value2 >= $value1 ) ? true : false;
-		} elseif ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) {
-			$show = ( $value2 <= $value1 ) ? true : false;
-		} elseif ( '>' === $operator || 'greater' === $operator ) {
-			$show = ( $value2 > $value1 ) ? true : false;
-		} elseif ( '<' === $operator || 'smaller' === $operator ) {
-			$show = ( $value2 < $value1 ) ? true : false;
+		$return = false;
+		if ( '===' === $operator && $value1 === $value2 ) {
+			$return = true;
+		} elseif ( '!==' === $operator && $value1 !== $value2 ) {
+			$return = true;
+		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) {
+			$return = true;
+		} elseif ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) && $value2 >= $value1 ) {
+			$return = true;
+		} elseif ( ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) && $value2 <= $value1 ) {
+			$return = true;
+		} elseif ( ( '>' === $operator || 'greater' === $operator ) && $value2 > $value1 ) {
+			$return = true;
+		} elseif ( ( '<' === $operator || 'smaller' === $operator ) && $value2 < $value1 ) {
+			$return = true;
 		} elseif ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				$show = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
+				$return = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
 			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				$show = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
+				$return = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
 			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
-				$show = false;
+				$return = false;
 			}
 		} else {
-			$show = ( $value1 == $value2 ) ? true : false;
+			$return = ( $value1 == $value2 ) ? true : false;
 		}
-		return ( isset( $show ) ) ? $show : true;
+		return $return;
 	}
 }
