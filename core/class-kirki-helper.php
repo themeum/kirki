@@ -369,4 +369,79 @@ class Kirki_Helper {
 		);
 
 	}
+
+	/**
+	 * Compares the 2 values given the condition
+	 *
+	 * @param mixed  $value1   The 1st value in the comparison.
+	 * @param mixed  $value2   The 2nd value in the comparison.
+	 * @param string $operator The operator we'll use for the comparison.
+	 * @return boolean whether The comparison has succeded (true) or failed (false).
+	 */
+	public static function compare_values( $value1, $value2, $operator ) {
+		switch ( $operator ) {
+			case '===':
+				$show = ( $value1 === $value2 ) ? true : false;
+				break;
+			case '==':
+			case '=':
+			case 'equals':
+			case 'equal':
+				$show = ( $value1 == $value2 ) ? true : false;
+				break;
+			case '!==':
+				$show = ( $value1 !== $value2 ) ? true : false;
+				break;
+			case '!=':
+			case 'not equal':
+				$show = ( $value1 != $value2 ) ? true : false;
+				break;
+			case '>=':
+			case 'greater or equal':
+			case 'equal or greater':
+				$show = ( $value2 >= $value1 ) ? true : false;
+				break;
+			case '<=':
+			case 'smaller or equal':
+			case 'equal or smaller':
+				$show = ( $value2 <= $value1 ) ? true : false;
+				break;
+			case '>':
+			case 'greater':
+				$show = ( $value2 > $value1 ) ? true : false;
+				break;
+			case '<':
+			case 'smaller':
+				$show = ( $value2 < $value1 ) ? true : false;
+				break;
+			case 'contains':
+			case 'in':
+				if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+					$array  = $value1;
+					$string = $value2;
+				} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+					$array  = $value2;
+					$string = $value1;
+				}
+				if ( isset( $array ) && isset( $string ) ) {
+					if ( ! in_array( $string, $array, true ) ) {
+						$show = false;
+					}
+				} else {
+					if ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+						$show = false;
+					}
+				}
+				break;
+			default:
+				$show = ( $value1 == $value2 ) ? true : false;
+
+		} // End switch().
+
+		if ( isset( $show ) ) {
+			return $show;
+		}
+
+		return true;
+	}
 }
