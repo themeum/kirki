@@ -207,11 +207,18 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 				</div>
 			<# } #>
 
-			<# if ( false !== data.default['color'] && data.default['color'] ) { #>
-				<# data.value['color'] = data.value['color'] || data['default']['color']; #>
-				<div class="color">
-					<h5><?php esc_attr_e( 'Color', 'kirki' ); ?></h5>
-					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control"/>
+			<# if ( data.default['text-decoration'] ) { #>
+				<# data.value['text-decoration'] = data.value['text-decoration'] || data['default']['text-decoration']; #>
+				<div class="text-decoration">
+					<h5><?php esc_attr_e( 'Text Decoration', 'kirki' ); ?></h5>
+					<select {{{ data.inputAttrs }}} id="kirki-typography-text-decoration-{{{ data.id }}}">
+						<option value="none"<# if ( 'none' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'None', 'kirki' ); ?></option>
+						<option value="underline"<# if ( 'underline' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'Underline', 'kirki' ); ?></option>
+						<option value="overline"<# if ( 'overline' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'Overline', 'kirki' ); ?></option>
+						<option value="line-through"<# if ( 'line-through' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'Line-Through', 'kirki' ); ?></option>
+						<option value="initial"<# if ( 'initial' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'Initial', 'kirki' ); ?></option>
+						<option value="inherit"<# if ( 'inherit' === data.value['text-decoration'] ) { #>selected<# } #>><?php esc_attr_e( 'Inherit', 'kirki' ); ?></option>
+					</select>
 				</div>
 			<# } #>
 
@@ -230,6 +237,15 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
 				</div>
 			<# } #>
+
+			<# if ( false !== data.default['color'] && data.default['color'] ) { #>
+				<# data.value['color'] = data.value['color'] || data['default']['color']; #>
+				<div class="color">
+					<h5><?php esc_attr_e( 'Color', 'kirki' ); ?></h5>
+					<input {{{ data.inputAttrs }}} type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default['color'] }}" value="{{ data.value['color'] }}" class="kirki-color-control"/>
+				</div>
+			<# } #>
+
 		</div>
 		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
 			<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>

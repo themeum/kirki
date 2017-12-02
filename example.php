@@ -845,17 +845,26 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
 		'description' => esc_attr__( 'The full set of options.', 'kirki' ),
 		'section'     => 'typography_section',
-		'default'     => array(
-			'font-family'    => 'Roboto',
-			'variant'        => 'regular',
-			'font-size'      => '14px',
-			'line-height'    => '1.5',
-			'letter-spacing' => '0',
-			'subsets'        => array( 'latin-ext' ),
-			'color'          => '#333333',
-			'text-transform' => 'none',
-			'text-align'     => 'left',
-		),
 		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => array(
+			'font-family'     => 'Roboto',
+			'variant'         => 'regular',
+			'font-size'       => '14px',
+			'line-height'     => '1.5',
+			'letter-spacing'  => '0',
+			'subsets'         => array( 'latin-ext' ),
+			'color'           => '#333333',
+			'text-transform'  => 'none',
+			'text-decoration' => 'none',
+			'text-align'      => 'left',
+			'margin-top'      => '0',
+			'margin-bottom'   => '0',
+		),
+		'output'      => array(
+			array(
+				'element' => 'body, p',
+			),
+		),
 	)
 );

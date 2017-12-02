@@ -333,16 +333,17 @@ class Kirki_Modules_PostMessage {
 
 		// Add the css.
 		$css_build_array = array(
-			'font-family'    => 'fontFamily',
-			'font-size'      => 'fontSize',
-			'line-height'    => 'lineHeight',
-			'letter-spacing' => 'letterSpacing',
-			'word-spacing'   => 'wordSpacing',
-			'text-align'     => 'textAlign',
-			'text-transform' => 'textTransform',
-			'color'          => 'color',
-			'font-weight'    => 'fontWeight',
-			'font-style'     => 'fontStyle',
+			'font-family'     => 'fontFamily',
+			'font-size'       => 'fontSize',
+			'line-height'     => 'lineHeight',
+			'letter-spacing'  => 'letterSpacing',
+			'word-spacing'    => 'wordSpacing',
+			'text-align'      => 'textAlign',
+			'text-transform'  => 'textTransform',
+			'text-decoration' => 'textDecoration',
+			'color'           => 'color',
+			'font-weight'     => 'fontWeight',
+			'font-style'      => 'fontStyle',
 		);
 		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $css_build_array[ $args['choice'] ] ) );
 		$script .= ( ! $choice_condition ) ? $webfont_loader : '';
@@ -359,6 +360,7 @@ class Kirki_Modules_PostMessage {
 				( 'word-spacing' === $property && ! isset( $field['default']['word-spacing'] ) ) ||
 				( 'text-align' === $property && ! isset( $field['default']['text-align'] ) ) ||
 				( 'text-transform' === $property && ! isset( $field['default']['text-transform'] ) ) ||
+				( 'text-decoration' === $property && ! isset( $field['default']['text-decoration'] ) ) ||
 				( 'color' === $property && ! isset( $field['default']['color'] ) ) ||
 				( 'font-weight' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-weight'] ) ) ||
 				( 'font-style' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-style'] ) )
@@ -425,6 +427,7 @@ class Kirki_Modules_PostMessage {
 					$script .= 'wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];';
 					$script .= 'textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];';
 					$script .= 'textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];';
+					$script .= 'textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];';
 					$script .= 'color=(_.isUndefined(newval.color))?\'\':newval.color;';
 
 					$script .= 'fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);';

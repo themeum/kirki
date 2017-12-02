@@ -40,6 +40,7 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			'line-height',
 			'text-align',
 			'text-transform',
+			'text-decoration',
 			'color',
 		);
 

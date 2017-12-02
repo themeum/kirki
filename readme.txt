@@ -47,6 +47,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: Transitioned to a JS-based webfont loader method to load google-fonts instead of using a link.
 * New: Moved `select` controls to new JS implementation.
 * New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
+* New: Added `text-transform` to `typography` fields [#1642](https://github.com/aristath/kirki/issues/1642)
 * Tweak: Validation & Sanitization for `dimension` and `dimensions` controls.
 * Tweak: Refactored `multicolor` controls a bit
 
