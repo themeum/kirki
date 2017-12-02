@@ -39,6 +39,14 @@ class Kirki_Output {
 	protected $styles = array();
 
 	/**
+	 * The field.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $field = array();
+
+	/**
 	 * The value.
 	 *
 	 * @access protected
