@@ -13,23 +13,22 @@ kirki.util.dependencies = {
 
 		_.each( self.listenTo, function( slaves, master ) {
 			_.each( slaves, function( slave ) {
-				wp.customize( slave, function( setting ) {
+				wp.customize( master, function( setting ) {
 				    var setupControl = function( control ) {
 				        var setActiveState,
 						    isDisplayed;
 
-						control.active.validate = isDisplayed;
+						isDisplayed = function() {
+							return self.showKirkiControl( wp.customize.control( slave ) );
+						};
+						setActiveState = function() {
+							control.active.set( isDisplayed() );
+						};
 
-				        isDisplayed = function() {
-				            return self.showKirkiControl( wp.customize.control( slave ) );
-				        };
-				        setActiveState = function() {
-				            control.active.set( isDisplayed() );
-				        };
-				        setActiveState();
-				        setting.bind( setActiveState );
+						setActiveState();
+						setting.bind( setActiveState );
+						control.active.validate = isDisplayed;
 				    };
-				    wp.customize.control( master, setupControl );
 				    wp.customize.control( slave, setupControl );
 				} );
 			});
@@ -53,18 +52,18 @@ kirki.util.dependencies = {
 
 		// Exit early if control not found.
 		if ( 'undefined' === typeof control ) {
-			return;
+			return true;
 		}
 
 		// Exit early if "required" argument is not defined.
 		if ( _.isEmpty( control.params.required ) ) {
-			return;
+			return true;
 		}
 
 		// Loop control requirements.
 		_.each( control.params.required, function( requirement ) {
 			var requirementShow = self.evaluate(
-				control.setting.get(),
+				requirement.value,
 				wp.customize( requirement.setting ).get(),
 				requirement.operator
 			);
