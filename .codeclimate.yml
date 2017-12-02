@@ -64,6 +64,7 @@ exclude_paths:
 - assets/vendor/*
 - controls/js/dist/*
 - controls/css/*
+- docs/files/*
 - lib/class-aricolor.php
 - core/deprecated.php
 - modules/webfonts/webfonts.php
