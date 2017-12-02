@@ -23,6 +23,11 @@ var kirki = {
 			'function' === typeof self.util.webfonts.google.initialize
 		) {
 			self.util.webfonts.google.initialize();
+		} else {
+			setTimeout( function() {
+				self.initialize();
+			}, 150 );
+			return;
 		}
 
 		// Mark as initialized.
