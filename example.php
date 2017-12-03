@@ -879,7 +879,7 @@ my_config_kirki_add_field(
 			'fonts' => array(
 				'google' => array( 'popularity', 60 ),
 			),
-		)
+		),
 	)
 );
 
