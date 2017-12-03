@@ -882,3 +882,23 @@ my_config_kirki_add_field(
 		)
 	)
 );
+
+my_config_kirki_add_field(
+	array(
+		'type'        => 'typography',
+		'settings'    => 'typography_setting_1',
+		'label'       => esc_attr__( 'Typography Control Label', 'kirki' ),
+		'description' => esc_attr__( 'The full set of options.', 'kirki' ),
+		'section'     => 'typography_section',
+		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => array(
+			'font-family'     => 'Roboto',
+		),
+		'output'      => array(
+			array(
+				'element' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ),
+			),
+		),
+	)
+);
