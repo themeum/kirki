@@ -44,6 +44,96 @@ So if you add `font-family`, all 3 controls will be automatically displayed when
 The `typography` field requires you to use only the `element` argument in order to properly generate its CSS.
 Of course you can define multiple elements as documented in the documentation of the `output` argument, but you do not have to define a `property` since it will be automatically applies for each sub-element of the control.
 
+### Choosing which fonts-families to use
+
+#### Google Fonts
+
+You can choose which google-fonts to use by defining an array in the `choices` argument:
+
+```php
+'choices' => array(
+	'fonts' => array(
+		'google' => array(
+			'Roboto',
+			'Open Sans',
+			'Lato',
+			'Roboto Condensed',
+			'Slabo 27px',
+			'Montserrat',
+			'Oswald',
+			'Source Sans Pro',
+			'Raleway',
+			'PT Sans',
+			'Merriweather',
+		),
+	),
+),
+```
+
+To use the top 30 google-fonts sorted by `popularity`:
+```php
+'choices' => array(
+	'fonts' => array(
+		'google' => array( 'popularity', 30 ),
+	),
+),
+```
+
+To use the top 30 google-fonts sorted by `trending`:
+```php
+'choices' => array(
+	'fonts' => array(
+		'google' => array( 'trending', 30 ),
+	),
+),
+```
+
+#### Standard Fonts
+
+You can choose which standard fonts to use by defining an array in the `choices` argument:
+
+```php
+'choices' => array(
+	'fonts' => array(
+		'standard' => array(
+			'serif',
+			'sans-serif',
+		),
+	),
+),
+```
+
+The `serif`, `sans-serif` and `monospace` keywords automatically load these font-families:
+
+
+* `serif`: `Georgia,Times,"Times New Roman",serif`
+* `sans-serif`: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`
+* `monospace`: `Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace`
+
+If you want to use custom definitions you can also do that:
+'choices' => array(
+	'fonts' => array(
+		'standard' => array(
+			'Georgia,Times,"Times New Roman",serif',
+			'Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
+		),
+	),
+),
+
+#### Combining custom google-fonts & standard fonts
+
+```php
+'choices' => array(
+	'fonts' => array(
+		'google'   => array( 'popularity', 50 ),
+		'standard' => array(
+			'Georgia,Times,"Times New Roman",serif',
+			'Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
+		),
+	),
+),
+```
+
 ### Variants
 
 The available options for variants are:

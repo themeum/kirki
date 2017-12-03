@@ -226,19 +226,10 @@ var kirki = {
 			return;
 		}
 
-		if (
-			'undefined' !== typeof self.util &&
-			'undefined' !== typeof self.util.webfonts &&
-			'undefined' !== typeof self.util.webfonts.google &&
-			'function' === typeof self.util.webfonts.google.initialize
-		) {
-			self.util.webfonts.google.initialize();
-		} else {
-			setTimeout( function() {
-				self.initialize();
-			}, 150 );
-			return;
-		}
+		setTimeout( function() {
+			kirki.util.webfonts.standard.initialize();
+			kirki.util.webfonts.google.initialize();
+		}, 150 );
 
 		// Mark as initialized.
 		self.initialized = true;
@@ -942,15 +933,11 @@ kirki = jQuery.extend( kirki, {
 						return;
 					}
 
-					// Make an AJAX call to set the fonts object.
+					// Make an AJAX call to set the fonts object (alpha).
 					jQuery.post( ajaxurl, { 'action': 'kirki_fonts_google_all_get' }, function( response ) {
 
 						// Get fonts from the JSON array.
-						fonts = JSON.parse( response );
-
-						_.each( fonts.items, function( font ) {
-							self.fonts[ font.family ] = font;
-						} );
+						self.fonts = JSON.parse( response );
 					} );
 				},
 
@@ -962,9 +949,46 @@ kirki = jQuery.extend( kirki, {
 				 * @returns {Object}
 				 */
 				getFont: function( family ) {
-					var self = this;
+					var self = this,
+					    fonts = self.getFonts();
 
-					return _.isUndefined( self.fonts[ family ] ) ? false : self.fonts[ family ];
+					if ( 'undefined' === typeof fonts[ family ] ) {
+						return false;
+					}
+					return fonts[ family ];
+				},
+
+				/**
+				 * Gets all properties of a font-family.
+				 *
+				 * @since 3.0.17
+				 * @param {string} order - How to order the fonts (alpha|popularity|trending).
+				 * @param {int}    number - How many to get. 0 for all.
+				 * @returns {Object}
+				 */
+				getFonts: function( order, number ) {
+					var self    = this,
+					    ordered = {},
+					    partial = [];
+
+					// Make sure order is correct.
+					order  = order || 'alpha';
+					order  = ( 'alpha' !== order && 'popularity' !== order && 'trending' !== order ) ? 'alpha' : order;
+
+					// Make sure number is correct.
+					number = number || 0;
+					number = parseInt( number, 10 );
+
+					if ( 'alpha' === order || 0 === number ) {
+						ordered = self.fonts.items;
+					} else {
+						partial = _.first( self.fonts.order[ order ], number );
+						_.each( partial, function( family ) {
+							ordered[ family ] = self.fonts.items[ family ];
+						} );
+					}
+
+					return ordered;
 				},
 
 				/**
@@ -972,7 +996,7 @@ kirki = jQuery.extend( kirki, {
 				 *
 				 * @since 3.0.17
 				 * @param {string} family - The font-family we're interested in.
-				 * @returns {Object}
+				 * @returns {Array}
 				 */
 				getVariants: function( family ) {
 					var self = this,
@@ -1015,6 +1039,68 @@ kirki = jQuery.extend( kirki, {
 
 					// Return the variants.
 					return font.subsets;
+				}
+			},
+
+			/**
+			 * Standard fonts related methods.
+			 *
+			 * @since 3.0.17
+			 */
+			standard: {
+
+				/**
+				 * An object containing all Standard fonts.
+				 *
+				 * to set this call this.setFonts();
+				 *
+				 * @since 3.0.17
+				 */
+				fonts: {},
+
+				/**
+				 * Init for google-fonts.
+				 *
+				 * @since 3.0.17
+				 * @returns {null}
+				 */
+				initialize: function() {
+					var self = this;
+
+					self.setFonts();
+				},
+
+				/**
+				 * Set fonts in this.fonts
+				 *
+				 * @since 3.0.17
+				 * @returns {null}
+				 */
+				setFonts: function() {
+					var self = this,
+						fonts;
+
+					// No need to run if we already have the fonts.
+					if ( ! _.isEmpty( self.fonts ) ) {
+						return;
+					}
+
+					// Make an AJAX call to set the fonts object.
+					jQuery.post( ajaxurl, { 'action': 'kirki_fonts_standard_all_get' }, function( response ) {
+
+						// Get fonts from the JSON array.
+						self.fonts = JSON.parse( response );
+					} );
+				},
+
+				/**
+				 * Gets the variants for a font-family.
+				 *
+				 * @since 3.0.17
+				 * @returns {Array}
+				 */
+				getVariants: function( family ) {
+					return ['regular', 'italic', '700', '700italic'];
 				}
 			}
 		}

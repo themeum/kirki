@@ -16,19 +16,10 @@ var kirki = {
 			return;
 		}
 
-		if (
-			'undefined' !== typeof self.util &&
-			'undefined' !== typeof self.util.webfonts &&
-			'undefined' !== typeof self.util.webfonts.google &&
-			'function' === typeof self.util.webfonts.google.initialize
-		) {
-			self.util.webfonts.google.initialize();
-		} else {
-			setTimeout( function() {
-				self.initialize();
-			}, 150 );
-			return;
-		}
+		setTimeout( function() {
+			kirki.util.webfonts.standard.initialize();
+			kirki.util.webfonts.google.initialize();
+		}, 150 );
 
 		// Mark as initialized.
 		self.initialized = true;

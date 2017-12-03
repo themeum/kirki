@@ -105,6 +105,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 				'remove'         => esc_attr__( 'Remove', 'kirki' ),
 				'default'        => esc_attr__( 'Default', 'kirki' ),
 				'selectFile'     => esc_attr__( 'Select File', 'kirki' ),
+				'standardFonts'  => esc_attr__( 'Standard Fonts', 'kirki' ),
+				'googleFonts'    => esc_attr__( 'Google Fonts', 'kirki' ),
 			)
 		);
 

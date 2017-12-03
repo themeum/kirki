@@ -875,5 +875,10 @@ my_config_kirki_add_field(
 				'element' => 'body, p',
 			),
 		),
+		'choices' => array(
+			'fonts' => array(
+				'google' => array( 'popularity', 60 ),
+			),
+		)
 	)
 );

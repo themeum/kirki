@@ -36,6 +36,9 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 
 		parent::enqueue();
 
+		if ( Kirki_Util::get_wp_version() >= 4.9 ) {
+			return;
+		}
 		$custom_fonts_array  = ( isset( $this->choices['fonts'] ) && ( isset( $this->choices['fonts']['google'] ) || isset( $this->choices['fonts']['standard'] ) ) && ( ! empty( $this->choices['fonts']['google'] ) || ! empty( $this->choices['fonts']['standard'] ) ) );
 		$localize_script_var = ( $custom_fonts_array ) ? 'kirkiFonts' . $this->id : 'kirkiAllFonts';
 		wp_localize_script(
