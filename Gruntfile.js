@@ -16,6 +16,10 @@ module.exports = function( grunt ) {
 			'google-fonts-trending': {
 				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=trending&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
 				dest: 'modules/webfonts/webfonts-trending.json'
+			},
+			'jshintrc': {
+				src: 'https://develop.svn.wordpress.org/trunk/.jshintrc',
+				dest: '.jshintrc'
 			}
 		},
 
