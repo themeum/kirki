@@ -259,7 +259,7 @@ class Kirki extends Kirki_Init {
 	 * @since 3.0.17
 	 * @param string $id The field ID.
 	 */
-	public static function add_field( $id ) {
+	public static function remove_field( $id ) {
 		if ( ! in_array( $id, self::$controls_to_remove, true ) ) {
 			self::$controls_to_remove[] = $id;
 		}
