@@ -50,8 +50,7 @@ kirki = jQuery.extend( kirki, {
 				 * @returns {null}
 				 */
 				setFonts: function() {
-					var self = this,
-					    fonts;
+					var self = this;
 
 					// No need to run if we already have the fonts.
 					if ( ! _.isEmpty( self.fonts ) ) {
@@ -202,8 +201,7 @@ kirki = jQuery.extend( kirki, {
 				 * @returns {null}
 				 */
 				setFonts: function() {
-					var self = this,
-						fonts;
+					var self = this;
 
 					// No need to run if we already have the fonts.
 					if ( ! _.isEmpty( self.fonts ) ) {
@@ -224,7 +222,7 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) {
+				getVariants: function( family ) { // jshint ignore: line
 					return ['regular', 'italic', '700', '700italic'];
 				}
 			}

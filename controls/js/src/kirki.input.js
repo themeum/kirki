@@ -237,7 +237,7 @@ kirki = jQuery.extend( kirki, {
 			 * @param {Object} control - The control object.
 			 * @returns {null}
 			 */
-			init: function( control ) {
+			init: function( control ) { // jshint ignore:line
 			}
 		}
 	}
