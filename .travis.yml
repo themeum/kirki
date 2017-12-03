@@ -12,14 +12,12 @@ php:
 
 before_install:
   - pip install --user codecov
-  - composer require phpunit/phpunit:4.8.* satooshi/php-coveralls:dev-master
-  - composer install --dev
 
 before_script:
   - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost latest
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
-  - composer install
+  - composer install --dev
   # After CodeSniffer install you should refresh your path.
   - phpenv rehash
   # Install JSCS: JavaScript Code Style checker.
