@@ -148,7 +148,7 @@ class My_Theme_Kirki {
 		}
 
 		// Kirki does not exist, set the config arguments.
-		$config[ $config_id ] = $args;
+		self::$config[ $config_id ] = $args;
 
 		// Make sure an option_type is defined.
 		if ( ! isset( self::$config[ $config_id ]['option_type'] ) ) {
