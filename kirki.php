@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:   Kirki Toolkit
- * Plugin URI:    http://kirki.org
+ * Plugin URI:    http://aristath.github.io/kirki
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
- * Author URI:    http://aristeides.com
- * Version:       3.0.17-dev
+ * Author URI:    http://aristath.github.io
+ * Version:       3.0.17
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
