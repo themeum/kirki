@@ -48,8 +48,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * New: Moved `select` controls to new JS implementation.
 * New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
 * New: Added `text-transform` to `typography` fields [#1642](https://github.com/aristath/kirki/issues/1642)
+* New: Refactored typography controls loading for better efficiency and performance
 * New: Removed PHP implementation for field dependencies, now using a pure JS solution.
 * New: Added support for "outer" sections [#1683](https://github.com/aristath/kirki/issues/1683)
+* New: Added new `Kirki::remove_control()`, `Kirki::remove_section()` and `Kirki::remove_panel()` methods.
+* New: Added 2 new filters: `kirki/{$config_id}/webfonts/skip_hidden` and `kirki/{$config_id}/css/skip_hidden` [#1678](https://github.com/aristath/kirki/issues/1678)
 * Tweak: Validation & Sanitization for `dimension` and `dimensions` controls.
 * Tweak: Refactored `multicolor` controls a bit.
 

@@ -1,4 +1,5 @@
 /* jshint -W079 */
+/* jshint unused:false */
 if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
 
@@ -716,7 +717,7 @@ kirki = jQuery.extend( kirki, {
 			 * @param {Object} control - The control object.
 			 * @returns {null}
 			 */
-			init: function( control ) {
+			init: function( control ) { // jshint ignore:line
 			}
 		}
 	}
@@ -925,8 +926,7 @@ kirki = jQuery.extend( kirki, {
 				 * @returns {null}
 				 */
 				setFonts: function() {
-					var self = this,
-					    fonts;
+					var self = this;
 
 					// No need to run if we already have the fonts.
 					if ( ! _.isEmpty( self.fonts ) ) {
@@ -1077,8 +1077,7 @@ kirki = jQuery.extend( kirki, {
 				 * @returns {null}
 				 */
 				setFonts: function() {
-					var self = this,
-						fonts;
+					var self = this;
 
 					// No need to run if we already have the fonts.
 					if ( ! _.isEmpty( self.fonts ) ) {
@@ -1099,7 +1098,7 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) {
+				getVariants: function( family ) { // jshint ignore: line
 					return ['regular', 'italic', '700', '700italic'];
 				}
 			}
@@ -1778,7 +1777,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
 		// Tweaks for save_as = id.
 		if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
-			wp.media.attachment( value ).fetch().then( function( mediaData ) {
+			wp.media.attachment( value ).fetch().then( function() {
 				setTimeout( function() {
 					var url = wp.media.attachment( value ).get( 'url' );
 					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
@@ -1980,9 +1979,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		    colors  = control.params.choices,
 		    keys    = Object.keys( colors ),
 		    value   = this.params.value,
-		    i       = 0,
-		    irisInput,
-		    irisPicker;
+		    i       = 0;
 
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
