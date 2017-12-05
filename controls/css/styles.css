@@ -179,32 +179,17 @@
   -webkit-box-shadow: none;
   box-shadow: none; }
 
-.customize-control-kirki-multicolor {
-  position: relative; }
-  .customize-control-kirki-multicolor .multicolor-group-wrapper {
-    display: flex; }
-    .customize-control-kirki-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper {
-      width: 100%; }
-      .customize-control-kirki-multicolor .multicolor-group-wrapper .multicolor-single-color-wrapper label {
-        display: block;
-        text-align: center;
-        padding: 3px; }
-    .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container {
-      width: 100%; }
-      .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container .wp-color-result {
-        width: 100%;
-        height: 30px;
-        padding-left: 0;
-        border-radius: 0;
-        border: none;
-        margin-right: 0; }
-        .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container .wp-color-result > span {
-          border-top-left-radius: 0 !important;
-          border-bottom-left-radius: 0 !important;
-          border-top-right-radius: 0 !important;
-          border-bottom-right-radius: 0 !important; }
-        .customize-control-kirki-multicolor .multicolor-group-wrapper .wp-picker-container .wp-color-result .wp-color-result-text {
-          display: none !important; }
+.customize-control-kirki-multicolor .multicolor-single-color-wrapper {
+  display: flex;
+  justify-content: space-between; }
+.customize-control-kirki-multicolor .multicolor-single-label {
+  order: 2; }
+.customize-control-kirki-multicolor .wp-picker-container {
+  width: 100%; }
+  .customize-control-kirki-multicolor .wp-picker-container > .wp-color-result {
+    width: 100%; }
+  .customize-control-kirki-multicolor .wp-picker-container.wp-picker-active + .multicolor-single-label {
+    display: none; }
 
 .customize-control-kirki-number .customize-control-content {
   display: flex;
@@ -519,64 +504,58 @@
 
 .customize-control-kirki-switch {
   position: relative; }
+  .customize-control-kirki-switch .switch-off,
+  .customize-control-kirki-switch .switch-on {
+    opacity: 1;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 18px; }
+  .customize-control-kirki-switch .switch-on {
+    color: #fff;
+    opacity: 0; }
+  .customize-control-kirki-switch .switch-off {
+    color: #777; }
   .customize-control-kirki-switch .switch {
     border: none;
     margin-bottom: 1.5rem;
     outline: 0;
     padding: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-    .customize-control-kirki-switch .switch label {
-      background: #b4b9be;
-      color: transparent;
-      cursor: pointer;
+    user-select: none;
+    border-radius: 3rem; }
+  .customize-control-kirki-switch label {
+    background: #b4b9be;
+    float: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: left 0.15s ease-out;
+    border-radius: 3rem; }
+    .customize-control-kirki-switch label:after {
+      background: #FFFFFF;
+      content: "";
       display: block;
-      margin-bottom: 1rem;
-      position: relative;
-      transition: left 0.15s ease-out;
-      height: 2rem;
-      width: 4rem; }
-      .customize-control-kirki-switch .switch label:after {
-        background: #FFFFFF;
-        content: "";
-        display: block;
-        height: 1.5rem;
-        left: 0.25rem;
-        position: absolute;
-        top: 0.25rem;
-        width: 1.5rem;
-        -webkit-transition: all 0.25s ease-in-out;
-        -moz-transition: all 0.25s ease-in-out;
-        -ms-transition: all 0.25s ease-in-out;
-        -o-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out; }
-    .customize-control-kirki-switch .switch input + label {
-      margin-left: 0;
-      margin-right: 0; }
-    .customize-control-kirki-switch .switch input:checked + label {
-      background: #0073aa; }
-      .customize-control-kirki-switch .switch input:checked + label:after {
-        left: 2.25rem;
-        background: #ffffff; }
-    .customize-control-kirki-switch .switch.round {
-      border-radius: 1000px; }
-      .customize-control-kirki-switch .switch.round label {
-        border-radius: 2rem; }
-        .customize-control-kirki-switch .switch.round label:after {
-          border-radius: 2rem; }
-  .customize-control-kirki-switch .switch-off,
-  .customize-control-kirki-switch .switch-on {
-    line-height: 32px;
-    font-weight: bold;
-    padding: 0 10px; }
-  .customize-control-kirki-switch .switch-on {
-    color: #fff;
-    padding-right: 5px; }
-  .customize-control-kirki-switch .switch-off {
-    color: #777;
-    padding-left: 5px; }
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: calc(.85rem + 10px);
+      height: calc(.85rem + 10px);
+      transition: all 0.25s ease-in-out;
+      border-radius: 3rem; }
+  .customize-control-kirki-switch input + label {
+    margin-left: 0;
+    margin-right: 0; }
+  .customize-control-kirki-switch input:checked + label {
+    background: #0073aa; }
+    .customize-control-kirki-switch input:checked + label:after {
+      left: auto;
+      right: 5px;
+      background: #ffffff; }
+    .customize-control-kirki-switch input:checked + label .switch-on {
+      opacity: 1; }
+    .customize-control-kirki-switch input:checked + label .switch-off {
+      opacity: 0; }
 
 .customize-control-kirki-toggle {
   position: relative; }

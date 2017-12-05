@@ -76,6 +76,10 @@ class Kirki_Helper {
 
 	/**
 	 * Initialize the WP_Filesystem
+	 *
+	 * @static
+	 * @access public
+	 * @return object WP_Filesystem
 	 */
 	public static function init_filesystem() {
 		global $wp_filesystem;
@@ -83,6 +87,7 @@ class Kirki_Helper {
 			require_once( ABSPATH . '/wp-admin/includes/file.php' );
 			WP_Filesystem();
 		}
+		return $wp_filesystem;
 	}
 
 	/**
@@ -363,5 +368,43 @@ class Kirki_Helper {
 			'misc'           => array( 'location', 'location-alt', 'vault', 'shield', 'shield-alt', 'sos', 'search', 'slides', 'analytics', 'chart-pie', 'chart-bar', 'chart-line', 'chart-area', 'groups', 'businessman', 'id', 'id-alt', 'products', 'awards', 'forms', 'testimonial', 'portfolio', 'book', 'book-alt', 'download', 'upload', 'backup', 'clock', 'lightbulb', 'microphone', 'desktop', 'tablet', 'smartphone', 'phone', 'index-card', 'carrot', 'building', 'store', 'album', 'palmtree', 'tickets-alt', 'money', 'smiley', 'thumbs-up', 'thumbs-down', 'layout' ),
 		);
 
+	}
+
+	/**
+	 * Compares the 2 values given the condition
+	 *
+	 * @param mixed  $value1   The 1st value in the comparison.
+	 * @param mixed  $value2   The 2nd value in the comparison.
+	 * @param string $operator The operator we'll use for the comparison.
+	 * @return boolean whether The comparison has succeded (true) or failed (false).
+	 */
+	public static function compare_values( $value1, $value2, $operator ) {
+		$return = false;
+		if ( '===' === $operator && $value1 === $value2 ) {
+			$return = true;
+		} elseif ( '!==' === $operator && $value1 !== $value2 ) {
+			$return = true;
+		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) {
+			$return = true;
+		} elseif ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) && $value2 >= $value1 ) {
+			$return = true;
+		} elseif ( ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) && $value2 <= $value1 ) {
+			$return = true;
+		} elseif ( ( '>' === $operator || 'greater' === $operator ) && $value2 > $value1 ) {
+			$return = true;
+		} elseif ( ( '<' === $operator || 'smaller' === $operator ) && $value2 < $value1 ) {
+			$return = true;
+		} elseif ( 'contains' === $operator || 'in' === $operator ) {
+			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+				$return = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
+			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+				$return = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
+			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
+				$return = false;
+			}
+		} else {
+			$return = ( $value1 == $value2 ) ? true : false;
+		}
+		return $return;
 	}
 }

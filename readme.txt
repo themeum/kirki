@@ -3,12 +3,12 @@ Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.8.2
-Tested up to: 4.9
+Tested up to: 4.9.2
 Stable tag: 3.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The ultimate toolkit for theme developers using the WordPress Customizer
+The ultimate framework for theme developers using the WordPress Customizer
 
 
 == Description ==
@@ -17,7 +17,7 @@ The ultimate toolkit for theme developers using the WordPress Customizer
 
 Using Kirki theme developers can create rich experiences for the WordPress Customizer using best coding practices.
 
-Included are 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
+Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
 We advise you to familiarize yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
@@ -29,9 +29,34 @@ You can find detailed documentation on how to use Kirki on [https://aristath.git
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/advanced/integration.html).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.17 =
+
+December 5 2017, dev time: 46 hours
+
+* Fix: In some cases options were not saved when using `option` instead of the default `theme_mod` [#1665](https://github.com/aristath/kirki/issues/1665)
+* Fix: `link` control-type (alias of `url`) was not working [#1660](https://github.com/aristath/kirki/issues/1660)
+* Fix: Allow using tabs & linebreaks when defining elements in the `output` argument [#1659](https://github.com/aristath/kirki/issues/1659)
+* Fix: PHP Warning when using `code` controls without a `label` defined [#1658](https://github.com/aristath/kirki/issues/1658)
+* Fix: Buttons inside `number` controls were not increasing/decreasing the values [#1648](https://github.com/aristath/kirki/issues/1648)
+* Fix: JS error  - only on Safari - for Select controls [#1662](https://github.com/aristath/kirki/issues/1662)
+* Fix: Unable to deselect all options from multiselect controls [#1670](https://github.com/aristath/kirki/issues/1670)
+* Fix: `multicolor` controls missing the `alpha` channel [#1657](https://github.com/aristath/kirki/issues/1657)
+* Fix: Unable to manually edit value in `multicolor` controls [#1666](https://github.com/aristath/kirki/issues/1666)
+* New: Transitioned to a JS-based webfont loader method to load google-fonts instead of using a link.
+* New: Moved `select` controls to new JS implementation.
+* New: Moved `text` and `textarea` controls (`generic` controls) to new JS implementation.
+* New: Added `text-transform` to `typography` fields [#1642](https://github.com/aristath/kirki/issues/1642)
+* New: Refactored typography controls loading for better efficiency and performance
+* New: Removed PHP implementation for field dependencies, now using a pure JS solution.
+* New: Added support for "outer" sections [#1683](https://github.com/aristath/kirki/issues/1683)
+* New: Added new `Kirki::remove_control()`, `Kirki::remove_section()` and `Kirki::remove_panel()` methods.
+* New: Added 2 new filters: `kirki/{$config_id}/webfonts/skip_hidden` and `kirki/{$config_id}/css/skip_hidden` [#1678](https://github.com/aristath/kirki/issues/1678)
+* Tweak: Validation & Sanitization for `dimension` and `dimensions` controls.
+* Tweak: Refactored `multicolor` controls a bit.
 
 = 3.0.16 =
 

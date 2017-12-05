@@ -34,7 +34,12 @@ class Kirki_Init {
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
 		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
 
+		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
+		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
+		add_action( 'customize_register', array( $this, 'remove_controls' ), 99999 );
+
 		new Kirki_Values();
+		new Kirki_Sections();
 	}
 
 	/**
@@ -42,7 +47,6 @@ class Kirki_Init {
 	 *
 	 * @static
 	 * @access public
-	 * @return void
 	 */
 	public static function set_url() {
 
@@ -117,8 +121,6 @@ class Kirki_Init {
 
 	/**
 	 * Helper function that adds the fields, sections and panels to the customizer.
-	 *
-	 * @return void
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
@@ -130,8 +132,6 @@ class Kirki_Init {
 
 	/**
 	 * Register control types
-	 *
-	 * @return  void
 	 */
 	public function register_control_types() {
 		global $wp_customize;
@@ -187,7 +187,6 @@ class Kirki_Init {
 	 * Register our sections to the WordPress Customizer.
 	 *
 	 * @var object The WordPress Customizer object
-	 * @return void
 	 */
 	public function add_sections() {
 		if ( ! empty( Kirki::$sections ) ) {
@@ -213,7 +212,6 @@ class Kirki_Init {
 	 * Create the settings and controls from the $fields array and register them.
 	 *
 	 * @var object The WordPress Customizer object.
-	 * @return void
 	 */
 	public function add_fields() {
 
@@ -284,4 +282,42 @@ class Kirki_Init {
 		return Kirki_Util::get_variables();
 	}
 
+	/**
+	 * Remove panels.
+	 *
+	 * @since 3.0.17
+	 * @param object $wp_customize The customizer object.
+	 * @return void
+	 */
+	public function remove_panels( $wp_customize ) {
+		foreach ( Kirki::$panels_to_remove as $panel ) {
+			$wp_customize->remove_panel( $panel );
+		}
+	}
+
+	/**
+	 * Remove sections.
+	 *
+	 * @since 3.0.17
+	 * @param object $wp_customize The customizer object.
+	 * @return void
+	 */
+	public function remove_sections( $wp_customize ) {
+		foreach ( Kirki::$sections_to_remove as $section ) {
+			$wp_customize->remove_section( $section );
+		}
+	}
+
+	/**
+	 * Remove controls.
+	 *
+	 * @since 3.0.17
+	 * @param object $wp_customize The customizer object.
+	 * @return void
+	 */
+	public function remove_controls( $wp_customize ) {
+		foreach ( Kirki::$controls_to_remove as $control ) {
+			$wp_customize->remove_control( $control );
+		}
+	}
 }

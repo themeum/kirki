@@ -23,13 +23,19 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 	 */
 	protected function process_output( $output, $value ) {
 
-		$output = wp_parse_args( $output, array(
-			'element'     => '',
-			'property'    => '',
-			'media_query' => 'global',
-			'prefix'      => '',
-			'suffix'      => '',
-		) );
+		$output = wp_parse_args(
+			$output, array(
+				'element'     => '',
+				'property'    => '',
+				'media_query' => 'global',
+				'prefix'      => '',
+				'suffix'      => '',
+			)
+		);
+
+		if ( ! is_array( $value ) ) {
+			return;
+		}
 
 		foreach ( $value as $key => $sub_value ) {
 

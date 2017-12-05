@@ -80,6 +80,36 @@ class Kirki extends Kirki_Init {
 	public static $sections = array();
 
 	/**
+	 * An array containing all panels to be removed.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @var array
+	 */
+	public static $panels_to_remove = array();
+
+	/**
+	 * An array containing all sections to be removed.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @var array
+	 */
+	public static $sections_to_remove = array();
+
+	/**
+	 * An array containing all controls to be removed.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @var array
+	 */
+	public static $controls_to_remove = array();
+
+	/**
 	 * Modules object.
 	 *
 	 * @access public
@@ -132,11 +162,22 @@ class Kirki extends Kirki_Init {
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
-		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
-		}
 
 		self::$panels[ $args['id'] ] = $args;
+	}
+
+	/**
+	 * Remove a panel.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @param string $id   The ID for this panel.
+	 */
+	public static function remove_panel( $id = '' ) {
+		if ( ! in_array( $id, self::$panels_to_remove, true ) ) {
+			self::$panels_to_remove[] = $id;
+		}
 	}
 
 	/**
@@ -155,11 +196,22 @@ class Kirki extends Kirki_Init {
 		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
-		if ( ! isset( $args['active_callback'] ) ) {
-			$args['active_callback'] = ( isset( $args['required'] ) ) ? array( 'Kirki_Active_Callback', 'evaluate' ) : '__return_true';
-		}
 
 		self::$sections[ $args['id'] ] = $args;
+	}
+
+	/**
+	 * Remove a section.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @param string $id   The ID for this panel.
+	 */
+	public static function remove_section( $id = '' ) {
+		if ( ! in_array( $id, self::$sections_to_remove, true ) ) {
+			self::$sections_to_remove[] = $id;
+		}
 	}
 
 	/**
@@ -197,6 +249,20 @@ class Kirki extends Kirki_Init {
 
 		new Kirki_Field( $config_id, $args );
 
+	}
+
+	/**
+	 * Remove a control.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.17
+	 * @param string $id The field ID.
+	 */
+	public static function remove_control( $id ) {
+		if ( ! in_array( $id, self::$controls_to_remove, true ) ) {
+			self::$controls_to_remove[] = $id;
+		}
 	}
 
 	/**

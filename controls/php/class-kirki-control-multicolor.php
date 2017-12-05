@@ -36,6 +36,17 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 	public $alpha = true;
 
 	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 */
+	public function to_json() {
+		parent::to_json();
+
+		$this->json['alpha'] = (bool) $this->alpha;
+	}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
@@ -47,6 +58,30 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 	 */
 	protected function content_template() {
 		?>
+		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+			<span class="customize-control-title">
+				{{{ data.label }}}
+			</span>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div class="multicolor-group-wrapper">
+				<# for ( key in data.choices ) { #>
+					<# if ( 'irisArgs' !== key ) { #>
+						<div class="multicolor-single-color-wrapper">
+							<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" data-label="<# if ( data.choices[ key ] ) { #>{{ data.choices[ key ] }}<# } else { #>{{ key }}<# } #>" />
+						</div>
+					<# } #>
+				<# } #>
+			</div>
+			<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
+				<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
+				<?php return; ?>
+			<?php endif; ?>
+			<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
+			<?php return; ?>
+		<?php endif; ?>
+
 		<span class="customize-control-title">
 			{{{ data.label }}}
 		</span>
@@ -66,11 +101,7 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 			<# } #>
 		</div>
 		<div class="iris-target"></div>
-		<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
-			<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
-		<?php else : ?>
-			<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
-		<?php endif; ?>
+		<input class="multicolor-hidden-value" type="hidden" value='{{{ JSON.stringify( data.value ) }}}' {{{ data.link }}}>
 		<?php
 	}
 }

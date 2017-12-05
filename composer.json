@@ -6,14 +6,14 @@
   "license": "GPLv2 or later",
   "authors": [
     {
-      "name" : "aristath",
-      "email" : "aristath@gmail.com",
-      "homepage" : "http://aristeides.com"
+      "name": "aristath",
+      "email": "aristath@gmail.com",
+      "homepage": "http://aristeides.com"
     },
     {
-      "name" : "fovoc",
-      "email" : "kalliris.d@gmail.com",
-      "homepage" : "https://github.com/fovoc"
+      "name": "fovoc",
+      "email": "kalliris.d@gmail.com",
+      "homepage": "https://github.com/fovoc"
     }
   ],
   "require": {
@@ -21,6 +21,9 @@
     "composer/installers": "~1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0"
+    "phpunit/phpunit": "~4.8",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "wimg/php-compatibility": "*",
+    "wp-coding-standards/wpcs": "*"
   }
 }

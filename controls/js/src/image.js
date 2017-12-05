@@ -30,7 +30,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 
 		// Tweaks for save_as = id.
 		if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
-			wp.media.attachment( value ).fetch().then( function( mediaData ) {
+			wp.media.attachment( value ).fetch().then( function() {
 				setTimeout( function() {
 					var url = wp.media.attachment( value ).get( 'url' );
 					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );

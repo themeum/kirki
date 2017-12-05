@@ -41,6 +41,15 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
+	 * Whitelisting the "required" argument.
+	 *
+	 * @since 3.0.17
+	 * @access public
+	 * @var array
+	 */
+	public $required = array();
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @since 3.1.0
@@ -88,10 +97,23 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			KIRKI_VERSION
 		);
 
+		wp_localize_script(
+			'kirki-script',
+			'kirkiL10n',
+			array(
+				'noFileSelected' => esc_attr__( 'No File Selected', 'kirki' ),
+				'remove'         => esc_attr__( 'Remove', 'kirki' ),
+				'default'        => esc_attr__( 'Default', 'kirki' ),
+				'selectFile'     => esc_attr__( 'Select File', 'kirki' ),
+				'standardFonts'  => esc_attr__( 'Standard Fonts', 'kirki' ),
+				'googleFonts'    => esc_attr__( 'Google Fonts', 'kirki' ),
+			)
+		);
+
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
-			"{$kirki_url}controls/css/styles.css",
+			"{$kirki_url}controls/css/styles{$suffix}.css",
 			array(),
 			KIRKI_VERSION
 		);
@@ -110,6 +132,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
+		// Required.
+		$this->json['required'] = $this->required;
 		// Output.
 		$this->json['output'] = $this->output;
 		// Value.

@@ -1,4 +1,5 @@
 /* jshint -W079 */
+/* jshint unused:false */
 if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
 

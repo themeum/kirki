@@ -32,8 +32,6 @@ engines:
     checks:
       WordPress NamingConventions ValidHookName UseUnderscores:
         enabled: false
-      WordPress WP AlternativeFunctions file_system_read_file_get_contents:
-        enabled: false
       Squiz PHP CommentedOutCode Found:
         enabled: false
   phpmd:
@@ -61,9 +59,12 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths:
+- Gruntfile.js
+- example.php
 - assets/vendor/*
 - controls/js/dist/*
 - controls/css/*
+- docs/files/*
 - lib/class-aricolor.php
 - core/deprecated.php
 - modules/webfonts/webfonts.php

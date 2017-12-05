@@ -463,7 +463,7 @@ class Kirki_Field {
 		}
 
 		if ( ! empty( $this->required ) ) {
-			$this->active_callback = array( 'Kirki_Active_Callback', 'evaluate' );
+			$this->active_callback = '__return_true';
 			return;
 		}
 		// No need to proceed any further if we're using the default value.
@@ -560,8 +560,17 @@ class Kirki_Field {
 			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 				$this->output[ $key ]['element'] = array_unique( $this->output[ $key ]['element'] );
 				sort( $this->output[ $key ]['element'] );
+
+				// Trim each element in the array.
+				foreach ( $this->output[ $key ]['element'] as $index => $element ) {
+					$this->output[ $key ]['element'][ $index ] = trim( $element );
+				}
 				$this->output[ $key ]['element'] = implode( ',', $this->output[ $key ]['element'] );
 			}
+
+			// Fix for https://github.com/aristath/kirki/issues/1659#issuecomment-346229751.
+			$this->output[ $key ]['element'] = str_replace( array( "\t", "\n", "\r", "\0", "\x0B" ), ' ', $this->output[ $key ]['element'] );
+			$this->output[ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $this->output[ $key ]['element'] ) );
 		}
 	}
 

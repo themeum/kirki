@@ -247,21 +247,23 @@ class Kirki_Modules_CSS {
 				continue;
 			}
 
-			// Only continue if field dependencies are met.
-			if ( ! empty( $field['required'] ) ) {
-				$valid = true;
+			if ( true === apply_filters( "kirki/{$config_id}/css/skip_hidden", true ) ) {
+				// Only continue if field dependencies are met.
+				if ( ! empty( $field['required'] ) ) {
+					$valid = true;
 
-				foreach ( $field['required'] as $requirement ) {
-					if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-						$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-						if ( ! Kirki_Active_Callback::compare( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
-							$valid = false;
+					foreach ( $field['required'] as $requirement ) {
+						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
+							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
+							if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+								$valid = false;
+							}
 						}
 					}
-				}
 
-				if ( ! $valid ) {
-					continue;
+					if ( ! $valid ) {
+						continue;
+					}
 				}
 			}
 

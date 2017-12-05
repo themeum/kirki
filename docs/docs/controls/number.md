@@ -26,7 +26,7 @@ Kirki::add_field( 'theme_config_id', array(
 	'default'     => 42,
 	'choices'     => array(
 		'min'  => 0,
-		'max'  => 30,
+		'max'  => 80,
 		'step' => 1,
 	),
 ) );

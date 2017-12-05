@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:   Kirki Toolkit
- * Plugin URI:    http://kirki.org
+ * Plugin URI:    http://aristath.github.io/kirki
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
- * Author URI:    http://aristeides.com
- * Version:       3.0.16
+ * Author URI:    http://aristath.github.io
+ * Version:       3.0.17
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -51,6 +51,8 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
 Kirki_Init::set_url();
 
+new Kirki_Controls();
+
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
 	 * Returns an instance of the Kirki object.
@@ -92,5 +94,13 @@ if ( file_exists( $custom_config_path ) ) {
 // Add upgrade notifications.
 include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
 
-// Uncomment this line to see the demo controls in the customizer.
-/* include_once dirname( __FILE__ ) . '/example.php'; */
+/**
+ * To enable tests, add this line to your wp-config.php file (or anywhere alse):
+ * define( 'KIRKI_TEST', true );
+ *
+ * Please note that the example.php file is not included in the wordpress.org distribution
+ * and will only be included in dev versions of the plugin in the github repository.
+ */
+if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
+	include_once dirname( __FILE__ ) . '/example.php';
+}

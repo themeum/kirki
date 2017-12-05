@@ -69,28 +69,23 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 				setting.notifications.remove( code );
 
-				_.each( ['top', 'bottom', 'left', 'right'], function( direction ) {
-					if ( ! _.isUndefined( value[ direction ] ) ) {
-						if ( false === control.kirkiValidateCSSValue( value[ direction ] ) ) {
-							subs[ direction ] = dimensionskirkiL10n[ direction ];
-						} else {
-							delete subs[ direction ];
-						}
+				_.each( value, function( val, direction ) {
+					if ( false === control.kirkiValidateCSSValue( val ) ) {
+						subs[ direction ] = val;
+					} else {
+						delete subs[ direction ];
 					}
-				});
+				} );
 
 				if ( ! _.isEmpty( subs ) ) {
 					message = dimensionskirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
-					setting.notifications.add( code, new wp.customize.Notification(
-						code,
-						{
-							type: 'warning',
-							message: message
-						}
-					) );
-				} else {
-					setting.notifications.remove( code );
+					setting.notifications.add( code, new wp.customize.Notification( code, {
+						type: 'warning',
+						message: message
+					} ) );
+					return;
 				}
+				setting.notifications.remove( code );
 			} );
 		} );
 	}

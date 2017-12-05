@@ -52,6 +52,10 @@ class Kirki_Section {
 		if ( isset( $args['type'] ) && array_key_exists( $args['type'], $this->section_types ) ) {
 			$section_classname = $this->section_types[ $args['type'] ];
 		}
+		if ( isset( $args['type'] ) && 'kirki-outer' === $args['type'] ) {
+			$args['type'] = 'outer';
+			$section_classname = 'WP_Customize_Section';
+		}
 
 		// Add the section.
 		$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );

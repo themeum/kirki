@@ -39,6 +39,14 @@ class Kirki_Output {
 	protected $styles = array();
 
 	/**
+	 * The field.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $field = array();
+
+	/**
 	 * The value.
 	 *
 	 * @access protected
@@ -53,12 +61,14 @@ class Kirki_Output {
 	 * @param string       $config_id The config ID.
 	 * @param array        $output    The output argument.
 	 * @param string|array $value     The value.
+	 * @param array        $field     The field.
 	 */
-	public function __construct( $config_id, $output, $value ) {
+	public function __construct( $config_id, $output, $value, $field ) {
 
 		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;
+		$this->field     = $field;
 
 		$this->parse_output();
 	}
@@ -164,7 +174,8 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
-						$value[ $k ] = str_replace( $search, $replacement, $value[ $v ] );
+						$_val = ( isset( $value[ $v ] ) ) ? $value[ $v ] : $v;
+						$value[ $k ] = str_replace( $search, $replacement, $_val );
 					}
 					return $value;
 				}
@@ -245,7 +256,7 @@ class Kirki_Output {
 	 * @param array        $output The field output.
 	 * @param string|array $value  The value.
 	 *
-	 * @return void
+	 * @return null
 	 */
 	protected function process_output( $output, $value ) {
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
@@ -284,11 +295,13 @@ class Kirki_Output {
 	 * @return array
 	 */
 	protected function process_property_value( $property, $value ) {
-		$properties = apply_filters( "kirki/{$this->config_id}/output/property-classnames", array(
-			'font-family'         => 'Kirki_Output_Property_Font_Family',
-			'background-image'    => 'Kirki_Output_Property_Background_Image',
-			'background-position' => 'Kirki_Output_Property_Background_Position',
-		) );
+		$properties = apply_filters(
+			"kirki/{$this->config_id}/output/property-classnames", array(
+				'font-family'         => 'Kirki_Output_Property_Font_Family',
+				'background-image'    => 'Kirki_Output_Property_Background_Image',
+				'background-position' => 'Kirki_Output_Property_Background_Position',
+			)
+		);
 		if ( array_key_exists( $property, $properties ) ) {
 			$classname = $properties[ $property ];
 			$obj = new $classname( $property, $value );

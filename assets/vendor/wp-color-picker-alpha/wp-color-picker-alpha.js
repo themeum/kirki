@@ -106,7 +106,11 @@
 				.insertBefore( self.wrappingLabel )
 				.css( { backgroundColor: self.initialValue } );
 			// Set the toggle button span element text.
-			self.toggler.find( '.wp-color-result-text' ).text( wpColorPickerL10n.pick );
+			if ( el.data( 'label' ) ) {
+				self.toggler.find( '.wp-color-result-text' ).text( el.data( 'label' ) );
+			} else {
+				self.toggler.find( '.wp-color-result-text' ).text( wpColorPickerL10n.pick );
+			}
 			// Set up the Iris container and insert it after the wrapping label.
 			self.pickerContainer = $( _after ).insertAfter( self.wrappingLabel );
 			// Store a reference to the Clear/Default button.
