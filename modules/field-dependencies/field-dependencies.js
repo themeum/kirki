@@ -105,11 +105,8 @@ var kirkiDependencies = {
 		} else if ( 'contains' === operator || 'in' === operator ) {
 			if ( _.isArray( value2 ) ) {
 				found = false;
-				_.each( value2, function( index, value ) {
-					if ( _.isNumber( value ) ) {
-						value = parseInt( value, 10 );
-					}
-					if ( value1.indexOf( value ) > -1 ) {
+				_.each( value2, function( value ) {
+					if ( value == value1 ) { // jshint ignore:line
 						found = true;
 					}
 				} );
