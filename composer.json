@@ -19,6 +19,9 @@
       "role":"Developer"
     }
   ],
+  "autoload": {
+      "files": ["kirki.php"]
+  },
   "require": {
     "php": ">=5.2"
   },
