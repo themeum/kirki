@@ -396,15 +396,17 @@ class Kirki_Helper {
 			$return = true;
 		} elseif ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				$return = ( ! in_array( $value2, $value1, true ) ) ? false : $show;
+				// @codingStandardsIgnoreLine
+				$return = ( in_array( $value2, $value1 ) );
 			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				$return = ( ! in_array( $value1, $value2, true ) ) ? false : $show;
+				// @codingStandardsIgnoreLine
+				$return = ( in_array( $value1, $value2 ) );
 			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
 				$return = false;
 			}
 		} else {
 			$return = ( $value1 == $value2 ) ? true : false;
 		}
-		return $return;
+		return (bool) $return;
 	}
 }
