@@ -10,13 +10,13 @@
       "name": "aristath",
       "email": "aristath@gmail.com",
       "homepage": "https://aristath.github.io",
-      "role":"Developer",
+      "role":"Developer"
     },
     {
       "name": "fovoc",
       "email": "kalliris.d@gmail.com",
       "homepage": "https://github.com/fovoc",
-      "role":"Developer",
+      "role":"Developer"
     }
   ],
   "require": {
