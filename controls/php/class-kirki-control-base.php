@@ -110,6 +110,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			)
 		);
 
+		$suffix = str_replace( '.min', '', $suffix );
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
