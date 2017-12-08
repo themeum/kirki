@@ -20,7 +20,6 @@ data = _.defaults( data, {
 			<textarea
 				data-id="{{ data['data-id'] }}"
 				{{{ data.inputAttrs }}}
-				value="{{{ data.value }}}"
 				<# _.each( data.choices, function( val, key ) { #>
 					{{ key }}="{{ val }}"
 				<# }); #>
