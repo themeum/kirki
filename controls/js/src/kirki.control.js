@@ -9,6 +9,15 @@ kirki = jQuery.extend( kirki, {
 	control: {
 
 		/**
+		 * The code control.
+		 *
+		 * @since 3.0.18
+		 */
+		'kirki-code': {
+
+		},
+
+		/**
 		 * The radio control.
 		 *
 		 * @since 3.0.17

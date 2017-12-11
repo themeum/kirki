@@ -22,6 +22,7 @@ class Kirki_Controls {
 	 * @var array
 	 */
 	private $templates = array(
+		'code',
 		'color',
 		'generic',
 		'radio',

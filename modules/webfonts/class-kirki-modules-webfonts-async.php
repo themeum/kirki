@@ -80,9 +80,10 @@ final class Kirki_Modules_Webfonts_Async {
 		$fonts_to_load = array();
 		foreach ( $this->googlefonts->fonts as $font => $weights ) {
 			foreach ( $weights as $key => $value ) {
-				$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
-				if ( 'i' === $value ) {
+				if ( 'italic' === $value ) {
 					$weights[ $key ] = '400i';
+				} else {
+					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
 				}
 			}
 			$fonts_to_load[] = $font . ':' . join( ',', $weights );
