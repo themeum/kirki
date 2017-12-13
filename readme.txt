@@ -41,6 +41,7 @@ December 13 2017, dev time: 1.5 hours
 * Fix: Use `set_url_scheme()` when outputing images [#1697](https://github.com/aristath/kirki/issues/1697)
 * Fix: `textarea` control is broken with HTML content [#1694](https://github.com/aristath/kirki/issues/1694) props @tutv95
 * Fix: Typo in `radio` controls [#1699](https://github.com/aristath/kirki/issues/1699)
+* Fix: variants selection for standard font-families.
 
 = 3.0.19 =
 
