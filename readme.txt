@@ -37,6 +37,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 * Fix: Use `repeat` instead of `repeat-all` in background controls [#1701](https://github.com/aristath/kirki/issues/1701)
 * Fix: Use `set_url_scheme()` when outputing images [#1697](https://github.com/aristath/kirki/issues/1697)
+* Fix: `textarea` control is broken with HTML content [#1694](https://github.com/aristath/kirki/issues/1694) props @tutv95
+* Fix: Typo in `radio` controls [#1699](https://github.com/aristath/kirki/issues/1699)
 
 = 3.0.19 =
 
