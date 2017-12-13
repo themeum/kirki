@@ -70,7 +70,7 @@ class Kirki_Control_Background extends Kirki_Control_Base {
 				<h4><?php esc_attr_e( 'Background Repeat', 'kirki' ); ?></h4>
 				<select {{{ data.inputAttrs }}}>
 					<option value="no-repeat"<# if ( 'no-repeat' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_attr_e( 'No Repeat', 'kirki' ); ?></option>
-					<option value="repeat-all"<# if ( 'repeat-all' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_attr_e( 'Repeat All', 'kirki' ); ?></option>
+					<option value="repeat"<# if ( 'repeat' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_attr_e( 'Repeat All', 'kirki' ); ?></option>
 					<option value="repeat-x"<# if ( 'repeat-x' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_attr_e( 'Repeat Horizontally', 'kirki' ); ?></option>
 					<option value="repeat-y"<# if ( 'repeat-y' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_attr_e( 'Repeat Vertically', 'kirki' ); ?></option>
 				</select>

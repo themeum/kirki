@@ -33,6 +33,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.20 =
+
+* Fix: Use `repeat` instead of `repeat-all` in background controls.
+
 = 3.0.19 =
 
 December 8 2017, dev time: 20 minutes.
