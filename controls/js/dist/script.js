@@ -1110,6 +1110,35 @@ kirki = jQuery.extend( kirki, {
 				getVariants: function( family ) { // jshint ignore: line
 					return ['regular', 'italic', '700', '700italic'];
 				}
+			},
+
+			/**
+			 * Figure out what this font-family is (google/standard)
+			 *
+			 * @since 3.0.20
+			 * @param {string} family - The font-family.
+			 * @returns {string|false} - Returns string if found (google|standard)
+			 *                           and false in case the font-family is an arbitrary value
+			 *                           not found anywhere in our font definitions.
+			 */
+			getFontType: function( family ) {
+				var self = this;
+
+				// Check for standard fonts first.
+				if (
+					'undefined' !== typeof self.standard.fonts[ family ] || (
+						'undefined' !== typeof self.standard.fonts.stack &&
+						'undefined' !== typeof self.standard.fonts.stack[ family ]
+					)
+				) {
+					return 'standard';
+				}
+
+				// Check in googlefonts.
+				if ( 'undefined' !== typeof self.google.fonts.items[ family ] ) {
+					return 'google';
+				}
+				return false;
 			}
 		}
 	}
@@ -3382,7 +3411,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( false === kirki.util.webfonts.google.getFont( fontFamily ) ) {
+		if ( 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -3425,17 +3454,17 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		var control    = this,
 		    value      = control.setting._value,
 		    fontFamily = value['font-family'],
-		    variants   = kirki.util.webfonts.google.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
+		    fontType   = kirki.util.webfonts.getFontType( fontFamily ),
+		    variants   = ['regular', 'italic', '700', '700italic'],
 		    fontWeight,
 		    variantSelector,
 		    fontStyle;
 
-		if ( false === kirki.util.webfonts.google.getFont( fontFamily ) ) {
-			jQuery( control.selector + ' .variant' ).hide();
-			return;
+		if ( 'google' === fontType ) {
+			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
 		jQuery( control.selector + ' .variant' ).show();

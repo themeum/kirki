@@ -179,7 +179,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( false === kirki.util.webfonts.google.getFont( fontFamily ) ) {
+		if ( 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -222,17 +222,17 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		var control    = this,
 		    value      = control.setting._value,
 		    fontFamily = value['font-family'],
-		    variants   = kirki.util.webfonts.google.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
+		    fontType   = kirki.util.webfonts.getFontType( fontFamily ),
+		    variants   = ['regular', 'italic', '700', '700italic'],
 		    fontWeight,
 		    variantSelector,
 		    fontStyle;
 
-		if ( false === kirki.util.webfonts.google.getFont( fontFamily ) ) {
-			jQuery( control.selector + ' .variant' ).hide();
-			return;
+		if ( 'google' === fontType ) {
+			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
 		jQuery( control.selector + ' .variant' ).show();

@@ -31,9 +31,9 @@ class Kirki_Output_Property_Background_Image extends Kirki_Output_Property {
 			}
 
 			if ( preg_match( '/^\d+$/', $this->value ) ) {
-				$this->value = 'url("' . wp_get_attachment_url( $this->value ) . '")';
+				$this->value = 'url("' . set_url_scheme( wp_get_attachment_url( $this->value ) ) . '")';
 			} else {
-				$this->value = 'url("' . $this->value . '")';
+				$this->value = 'url("' . set_url_scheme( $this->value ) . '")';
 			}
 		}
 	}

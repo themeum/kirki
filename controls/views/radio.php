@@ -23,7 +23,7 @@
 				type="radio"
 				data-id="{{ data['data-id'] }}"
 				value="{{ key }}"
-				name="_customize-radio-{{ data.id }}"
+				name="_customize-radio-{{ data['data-id'] }}"
 				<# if ( data.value === key ) { #> checked<# } #>
 			/>
 			<# if ( _.isArray( val ) ) { #>

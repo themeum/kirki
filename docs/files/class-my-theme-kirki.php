@@ -310,7 +310,7 @@ class My_Theme_Kirki {
 								$output['property'] = $output['property'] . '-' . $key;
 							}
 							if ( 'background-image' === $output['property'] && false === strpos( $subvalue, 'url(' ) ) {
-								$subvalue = 'url("' . $subvalue . '")';
+								$subvalue = 'url("' . set_url_scheme( $subvalue ) . '")';
 							}
 							if ( $subvalue ) {
 								$css[ $output['media_query'] ][ $output['element'] ][ $property ] = $subvalue;
@@ -342,6 +342,7 @@ class My_Theme_Kirki {
 					// Make sure background-images are properly formatted.
 					if ( 'background-image' === $property ) {
 						if ( false === strrpos( $value, 'url(' ) ) {
+							$value = set_url_scheme( $value );
 							$value = 'url("' . esc_url_raw( $value ) . '")';
 						}
 					} else {

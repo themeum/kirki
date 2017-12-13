@@ -254,6 +254,7 @@ module.exports = function( grunt ) {
 		grunt.task.run( 'googlefontsProcess' );
 		grunt.task.run( 'json2php' );
 	} );
-	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify', 'googlefonts', 'wp_readme_to_markdown'] );
+	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'all', ['default', 'googlefonts', 'wp_readme_to_markdown'] );
 };
