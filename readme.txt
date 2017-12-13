@@ -3,8 +3,8 @@ Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.8.2
-Tested up to: 4.9.2
-Stable tag: 3.0.19
+Tested up to: 4.9.1
+Stable tag: 3.0.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 == Changelog ==
 
 = 3.0.20 =
+
+December 13 2017, dev time: 1.5 hours
 
 * Fix: Use `repeat` instead of `repeat-all` in background controls [#1701](https://github.com/aristath/kirki/issues/1701)
 * Fix: Use `set_url_scheme()` when outputing images [#1697](https://github.com/aristath/kirki/issues/1697)
