@@ -35,7 +35,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.20 =
 
-* Fix: Use `repeat` instead of `repeat-all` in background controls.
+* Fix: Use `repeat` instead of `repeat-all` in background controls [#1701](https://github.com/aristath/kirki/issues/1701)
+* Fix: Use `set_url_scheme()` when outputing images [#1697](https://github.com/aristath/kirki/issues/1697)
 
 = 3.0.19 =
 
