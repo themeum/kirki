@@ -902,3 +902,28 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+function kirki_sidebars_select_example() {
+	$sidebars = array();
+	if ( isset( $GLOBALS['wp_registered_sidebars'] ) ) {
+		$sidebars = $GLOBALS['wp_registered_sidebars'];
+	}
+	$sidebars_choices = array();
+	foreach ( $sidebars as $sidebar ) {
+		$sidebars_choices[ $sidebar['id'] ] = $sidebar['name'];
+	}
+	if ( ! class_exists( 'Kirki' ) ) {
+		return;
+	}
+	Kirki::add_field( 'kirki_demo', array(
+		'type'        => 'select',
+		'settings'    => 'select_setting',
+		'label'       => esc_attr__( 'Sidebars Select', 'kirki' ),
+		'description' => esc_attr__( 'An example of how to implement sidebars selection.', 'kirki' ),
+		'section'     => 'select_section',
+		'default'     => 'primary',
+		'choices'     => $sidebars_choices,
+		'priority'    => 30,
+	) );
+}
+add_action( 'init', 'kirki_sidebars_select_example', 999 );
