@@ -222,13 +222,18 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		var control    = this,
 		    value      = control.setting._value,
 		    fontFamily = value['font-family'],
-		    variants   = kirki.util.webfonts.google.getVariants( fontFamily ),
 		    selector   = control.selector + ' .variant select',
 		    data       = [],
 		    isValid    = false,
+		    fontType   = kirki.util.webfonts.getFontType( fontFamily ),
+		    variants   = ['regular', 'italic', '700', '700italic'],
 		    fontWeight,
 		    variantSelector,
 		    fontStyle;
+
+		if ( 'google' === fontType ) {
+			variants = kirki.util.webfonts.google.getVariants( fontFamily );
+		}
 
 		jQuery( control.selector + ' .variant' ).show();
 		_.each( variants, function( variant ) {

@@ -27,7 +27,7 @@ Kirki::add_field( 'theme_config_id', array(
 	'default'     => array(
 		'background-color'      => 'rgba(20,20,20,.8)',
 		'background-image'      => '',
-		'background-repeat'     => 'repeat-all',
+		'background-repeat'     => 'repeat',
 		'background-position'   => 'center center',
 		'background-size'       => 'cover',
 		'background-attachment' => 'scroll',
