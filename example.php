@@ -917,7 +917,7 @@ function kirki_sidebars_select_example() {
 	}
 	Kirki::add_field( 'kirki_demo', array(
 		'type'        => 'select',
-		'settings'    => 'select_setting',
+		'settings'    => 'sidebars_select',
 		'label'       => esc_attr__( 'Sidebars Select', 'kirki' ),
 		'description' => esc_attr__( 'An example of how to implement sidebars selection.', 'kirki' ),
 		'section'     => 'select_section',
