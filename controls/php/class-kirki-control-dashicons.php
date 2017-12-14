@@ -50,7 +50,7 @@ class Kirki_Control_Dashicons extends Kirki_Control_Base {
 	 */
 	protected function content_template() {
 		?>
-		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+		<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		<div class="icons-wrapper">
 			<# if ( ! _.isUndefined( data.choices ) && 1 < _.size( data.choices ) ) { #>

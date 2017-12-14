@@ -16,10 +16,10 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 <div class="kirki-input-container" data-id="{{ data.id }}">
 	<label>
 		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
+			<span class="customize-control-title">{{{ data.label }}}</span>
 		<# } #>
 		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{ data.description }}</span>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<select
 			data-id="{{ data['data-id'] }}"

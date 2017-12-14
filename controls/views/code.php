@@ -9,7 +9,7 @@ data = _.defaults( data, {
 <div class="kirki-input-container" data-id="{{ data.id }}">
 	<# if ( data.label ) { #>
 		<label for="{{ elementIdPrefix }}_editor" class="customize-control-title">
-			{{ data.label }}
+			{{{ data.label }}}
 		</label>
 	<# } #>
 	<# if ( data.description ) { #>

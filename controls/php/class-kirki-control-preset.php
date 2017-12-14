@@ -41,7 +41,7 @@ class Kirki_Control_Preset extends Kirki_Control_Base {
 		?>
 		<# if ( ! data.choices ) return; #>
 		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<select {{{ data.inputAttrs }}} {{{ data.link }}} data-multiple="1">
 				<# for ( key in data.choices ) { #>

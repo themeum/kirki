@@ -11,10 +11,10 @@
 
 <div class="kirki-input-container" data-id="' + data.id + '">
 	<# if ( data.label ) { #>
-		<span class="customize-control-title">{{ data.label }}</span>
+		<span class="customize-control-title">{{{ data.label }}}</span>
 	<# } #>
 	<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+		<span class="description customize-control-description">{{{ data.description }}}</span>
 	<# } #>
 	<# _.each( data.choices, function( val, key ) { #>
 		<label>
