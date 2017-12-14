@@ -33,6 +33,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.21 =
+
+* Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)
+
 = 3.0.20 =
 
 December 13 2017, dev time: 1.5 hours
