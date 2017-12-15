@@ -92,7 +92,7 @@ class Kirki_Control_Dimensions extends Kirki_Control_Base {
 								<# } #>
 							</h5>
 							<div class="{{ choiceKey }} input-wrapper">
-								<# var val = ( ! _.isUndefined( data.value ) && ! _.isUndefined( data.value[ choiceKey ] ) ) ? data.value[ choiceKey ].replace( '%%', '%' ) : ''; #>
+								<# var val = ( ! _.isUndefined( data.value ) && ! _.isUndefined( data.value[ choiceKey ] ) ) ? data.value[ choiceKey ].toString().replace( '%%', '%' ) : ''; #>
 								<input {{{ data.inputAttrs }}} type="text" data-choice="{{ choiceKey }}" value="{{ val }}"/>
 							</div>
 						</div>
