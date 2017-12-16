@@ -28,6 +28,15 @@ class Kirki_Control_Select extends Kirki_Control_Base {
 	public $type = 'kirki-select';
 
 	/**
+	 * Placeholder text.
+	 *
+	 * @access public
+	 * @since 3.0.21
+	 * @var string|false
+	 */
+	public $placeholder = false;
+
+	/**
 	 * Maximum number of options the user will be able to select.
 	 * Set to 1 for single-select.
 	 *
@@ -45,5 +54,6 @@ class Kirki_Control_Select extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['multiple'] = $this->multiple;
+		$this->json['placeholder'] = $this->placeholder;
 	}
 }

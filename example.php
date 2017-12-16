@@ -724,6 +724,7 @@ my_config_kirki_add_field(
 		'description' => esc_attr__( 'The description here.', 'kirki' ),
 		'section'     => 'select_section',
 		'default'     => 'option-3',
+		'placeholder' => esc_attr__( 'Select an option', 'kirki' ),
 		'choices'     => array(
 			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
 			'option-2' => esc_attr__( 'Option 2', 'kirki' ),

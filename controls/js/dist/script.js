@@ -472,7 +472,8 @@ kirki = jQuery.extend( kirki, {
 					inputAttrs: control.params.inputAttrs,
 					choices: control.params.choices,
 					value: kirki.setting.get( control.id ),
-					multiple: control.params.multiple || 1
+					multiple: control.params.multiple || 1,
+					placeholder: control.params.placeholder
 			    } ) );
 			}
 		}
@@ -638,6 +639,10 @@ kirki = jQuery.extend( kirki, {
 							return markup;
 						}
 				    };
+					if ( control.params.placeholder ) {
+						selectWooOptions.placeholder = control.params.placeholder;
+						selectWooOptions.allowClear = true;
+					}
 
 				if ( 1 < multiple ) {
 					selectWooOptions.maximumSelectionLength = multiple;
