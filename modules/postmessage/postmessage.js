@@ -203,6 +203,10 @@ var kirkiPostMessage = {
 		 */
 		fromOutput: function( output, value ) {
 
+			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
+				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
+			}
+
 			if ( _.isObject( value ) || _.isArray( value ) ) {
 				if ( ! output.choice ) {
 					return;
