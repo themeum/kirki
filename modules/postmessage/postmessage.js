@@ -194,7 +194,7 @@ var kirkiPostMessage = {
 	html: {
 
 		/**
-		 * Generates the CSS from the output (js_vars) parameter.
+		 * Modifies the HTML from the output (js_vars) parameter.
 		 *
 		 * @since 3.0.21
 		 * @param {Object} output - The output (js_vars) argument.
@@ -236,7 +236,7 @@ var kirkiPostMessage = {
 	toggleClass: {
 
 		/**
-		 * Generates the CSS from the output (js_vars) parameter.
+		 * Toggles a CSS class from the output (js_vars) parameter.
 		 *
 		 * @since 3.0.21
 		 * @param {Object} output - The output (js_vars) argument.
