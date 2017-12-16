@@ -186,6 +186,11 @@ var kirkiPostMessage = {
 		}
 	},
 
+	/**
+	 * A collection of utilities to change the HTML in the document.
+	 *
+	 * @since 3.0.21
+	 */
 	html: {
 
 		/**
@@ -194,7 +199,6 @@ var kirkiPostMessage = {
 		 * @since 3.0.21
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
-		 * @param {string} controlType - The control-type.
 		 * @returns {string}
 		 */
 		fromOutput: function( output, value ) {
