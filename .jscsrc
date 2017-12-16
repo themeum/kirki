@@ -5,6 +5,6 @@
 		"**.min.js",
 		"assets/js/vendor/*",
 		"assets/js/vendor/**","assets/js/vendor",
-		"controls/js/dist/*.js"
+		"controls/js/*.js"
 	]
 }

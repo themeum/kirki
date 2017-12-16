@@ -128,7 +128,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/toggle.js',
 					'controls/js/src/typography.js'
 				],
-				dest: 'controls/js/dist/script.js'
+				dest: 'controls/js/script.js'
 			},
 			legacy: {
 				src: [
@@ -164,7 +164,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/toggle.js',
 					'controls/js/src/typography-legacy.js'
 				],
-				dest: 'controls/js/dist/script-legacy.js'
+				dest: 'controls/js/script-legacy.js'
 			}
 		},
 
@@ -177,7 +177,7 @@ module.exports = function( grunt ) {
 				},
 				files: [{
 					expand: true,
-					src: ['controls/js/dist/*.js', '!controls/js/dist/*.min.js'],
+					src: ['controls/js/*.js', '!controls/js/*.min.js'],
 					dest: '.',
 					cwd: '.',
 					rename: function( dst, src ) {
