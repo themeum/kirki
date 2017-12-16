@@ -143,7 +143,6 @@ my_config_kirki_add_field(
 		'default'     => '',
 		'choices'     => array(
 			'language' => 'css',
-			'theme'    => 'monokai',
 		),
 	)
 );
