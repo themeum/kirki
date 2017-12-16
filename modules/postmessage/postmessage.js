@@ -48,96 +48,11 @@ var kirkiPostMessage = {
 	},
 
 	/**
-	 * A collection of utilities for CSS generation.
+	 * Common utilities.
 	 *
 	 * @since 3.0.21
 	 */
-	css: {
-
-		/**
-		 * Generates the CSS from the output (js_vars) parameter.
-		 *
-		 * @since 3.0.21
-		 * @param {Object} output - The output (js_vars) argument.
-		 * @param {mixed}  value - The value.
-		 * @param {string} controlType - The control-type.
-		 * @returns {string}
-		 */
-		fromOutput: function( output, value, controlType ) {
-			var self        = this,
-			    styles      = '',
-			    kirkiParent = window.parent.kirki,
-			    googleFont  = '';
-
-			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
-				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
-			}
-			switch ( controlType ) {
-				case 'kirki-typography':
-					styles += output.element + '{';
-					_.each( value, function( val, key ) {
-						if ( output.choice && key !== output.choice ) {
-							return;
-						}
-						styles += key + ':' + self.processValue( output, val ); +';';
-					} );
-					styles += '}';
-
-					// Check if this is a googlefont so that we may load it.
-					if ( ! _.isUndefined( WebFont ) && value['font-family'] && 'google' === kirkiParent.util.webfonts.getFontType( value['font-family'] ) ) {
-
-						// Calculate the googlefont params.
-						googleFont = value['font-family'].replace( /\"/g, '&quot;' );
-						if ( value.variant ) {
-							if ( 'regular' === value.variant ) {
-								googleFont += ':400';
-							} else if ( 'italic' === value.variant ) {
-								googleFont += ':400i';
-							} else {
-								googleFont += ':' + value.variant;
-							}
-						}
-						if ( value.subsets && ! _.isEmpty( value.subsets ) ) {
-							googleFont += ':' + value.subsets.join( ',' );
-						}
-						WebFont.load( {
-							google: {
-								families: [ googleFont ]
-							}
-						} );
-					}
-					break;
-				case 'kirki-background':
-				case 'kirki-dimensions':
-				case 'kirki-multicolor':
-				case 'kirki-sortable':
-					styles += output.element + '{';
-					_.each( value, function( val, key ) {
-						if ( output.choice && key !== output.choice ) {
-							return;
-						}
-						if ( 'background-image' === key ) {
-							val = self.backgroundImageValue( val );
-						}
-
-						// Mostly used for padding, margin & position properties.
-						if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
-							styles += output.element + '{' + output.property + '-' + key + ':' + self.processValue( output, val ) + ';';
-						} else {
-							styles += key + ':' + self.processValue( output, val ); +';';
-						}
-					} );
-					styles += '}';
-					break;
-				default:
-					if ( 'kirki-image' === controlType ) {
-						value = ( ! _.isUndefined( value.url ) ) ? self.backgroundImageValue( value.url ) : self.backgroundImageValue( value );
-					}
-					styles += output.element + '{' + output.property + ':' + self.processValue( output, value ); +';}';
-					break;
-			}
-			return styles;
-		},
+	util: {
 
 		/**
 		 * Processes the value and applies any replacements and/or additions.
@@ -181,6 +96,133 @@ var kirkiPostMessage = {
 		backgroundImageValue: function( url ) {
 			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
 		}
+	},
+
+	/**
+	 * A collection of utilities for CSS generation.
+	 *
+	 * @since 3.0.21
+	 */
+	css: {
+
+		/**
+		 * Generates the CSS from the output (js_vars) parameter.
+		 *
+		 * @since 3.0.21
+		 * @param {Object} output - The output (js_vars) argument.
+		 * @param {mixed}  value - The value.
+		 * @param {string} controlType - The control-type.
+		 * @returns {string}
+		 */
+		fromOutput: function( output, value, controlType ) {
+			var self        = this,
+			    styles      = '',
+			    kirkiParent = window.parent.kirki,
+			    googleFont  = '';
+
+			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
+				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
+			}
+			switch ( controlType ) {
+				case 'kirki-typography':
+					styles += output.element + '{';
+					_.each( value, function( val, key ) {
+						if ( output.choice && key !== output.choice ) {
+							return;
+						}
+						styles += key + ':' + kirkiPostMessage.util.processValue( output, val ); +';';
+					} );
+					styles += '}';
+
+					// Check if this is a googlefont so that we may load it.
+					if ( ! _.isUndefined( WebFont ) && value['font-family'] && 'google' === kirkiParent.util.webfonts.getFontType( value['font-family'] ) ) {
+
+						// Calculate the googlefont params.
+						googleFont = value['font-family'].replace( /\"/g, '&quot;' );
+						if ( value.variant ) {
+							if ( 'regular' === value.variant ) {
+								googleFont += ':400';
+							} else if ( 'italic' === value.variant ) {
+								googleFont += ':400i';
+							} else {
+								googleFont += ':' + value.variant;
+							}
+						}
+						if ( value.subsets && ! _.isEmpty( value.subsets ) ) {
+							googleFont += ':' + value.subsets.join( ',' );
+						}
+						WebFont.load( {
+							google: {
+								families: [ googleFont ]
+							}
+						} );
+					}
+					break;
+				case 'kirki-background':
+				case 'kirki-dimensions':
+				case 'kirki-multicolor':
+				case 'kirki-sortable':
+					styles += output.element + '{';
+					_.each( value, function( val, key ) {
+						if ( output.choice && key !== output.choice ) {
+							return;
+						}
+						if ( 'background-image' === key ) {
+							val = kirkiPostMessage.util.backgroundImageValue( val );
+						}
+
+						// Mostly used for padding, margin & position properties.
+						if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
+							styles += output.element + '{' + output.property + '-' + key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+						} else {
+							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ); +';';
+						}
+					} );
+					styles += '}';
+					break;
+				default:
+					if ( 'kirki-image' === controlType ) {
+						value = ( ! _.isUndefined( value.url ) ) ? kirkiPostMessage.util.backgroundImageValue( value.url ) : kirkiPostMessage.util.backgroundImageValue( value );
+					}
+					styles += output.element + '{' + output.property + ':' + kirkiPostMessage.util.processValue( output, value ); +';}';
+					break;
+			}
+			return styles;
+		}
+	},
+
+	html: {
+
+		/**
+		 * Generates the CSS from the output (js_vars) parameter.
+		 *
+		 * @since 3.0.21
+		 * @param {Object} output - The output (js_vars) argument.
+		 * @param {mixed}  value - The value.
+		 * @param {string} controlType - The control-type.
+		 * @returns {string}
+		 */
+		fromOutput: function( output, value ) {
+
+			if ( _.isObject( value ) || _.isArray( value ) ) {
+				if ( ! output.choice ) {
+					return;
+				}
+				_.each( value, function( val, key ) {
+					if ( output.choice && key !== output.choice ) {
+						return;
+					}
+					value = val;
+				} );
+			}
+			value = kirkiPostMessage.util.processValue( output, value );
+
+			if ( output.attr ) {
+				jQuery( output.element ).attr( output.attr, value );
+			} else {
+				jQuery( output.element ).html( value );
+			}
+		}
 	}
 };
 
@@ -191,7 +233,11 @@ jQuery( document ).ready( function() {
 			value.bind( function( newVal ) {
 				var styles = '';
 				_.each( field.js_vars, function( output ) {
-					styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+					if ( output['function'] && 'html' === output['function'] ) {
+						styles += kirkiPostMessage.html.fromOutput( output, newVal );
+					} else {
+						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+					}
 				} );
 				kirkiPostMessage.styleTag.addData( field.settings, styles );
 			} );
