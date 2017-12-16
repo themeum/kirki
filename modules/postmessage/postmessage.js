@@ -23,9 +23,8 @@ var kirkiPostMessage = {
 		 * @returns {void}
 		 */
 		add: function( id ) {
-			var styleID = 'kirki-postmessage-' + id;
-			if ( null === document.getElementById( styleID ) || 'undefined' === typeof document.getElementById( styleID ) ) {
-				jQuery( 'head' ).append( '<style id="' + styleID + '"></style>' );
+			if ( null === document.getElementById( 'kirki-postmessage-' + id ) || 'undefined' === typeof document.getElementById( 'kirki-postmessage-' + id ) ) {
+				jQuery( 'head' ).append( '<style id="kirki-postmessage-' + id + '"></style>' );
 			}
 		},
 
@@ -39,11 +38,8 @@ var kirkiPostMessage = {
 		 * @returns {void}
 		 */
 		addData: function( id, styles ) {
-			var self    = this,
-			    styleID = 'kirki-postmessage-' + id;
-
-			self.add( id );
-			jQuery( '#' + styleID ).text( styles );
+			kirkiPostMessage.styleTag.add( id );
+			jQuery( '#kirki-postmessage-' + id ).text( styles );
 		}
 	},
 
@@ -236,10 +232,13 @@ jQuery( document ).ready( function() {
 			value.bind( function( newVal ) {
 				var styles = '';
 				_.each( field.js_vars, function( output ) {
-					if ( output['function'] && 'html' === output['function'] ) {
-						styles += kirkiPostMessage.html.fromOutput( output, newVal );
-					} else {
+					if ( ! output['function'] || 'undefined' === typeof kirkiPostMessage[ output['function'] ] ) {
+						output['function'] = 'css';
+					}
+					if ( 'css' === output['function'] ) {
 						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+					} else {
+						kirkiPostMessage[ output['function'] ].fromOutput( output, newVal, field.type );
 					}
 				} );
 				kirkiPostMessage.styleTag.addData( field.settings, styles );
