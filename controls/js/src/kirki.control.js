@@ -9,15 +9,6 @@ kirki = jQuery.extend( kirki, {
 	control: {
 
 		/**
-		 * The code control.
-		 *
-		 * @since 3.0.18
-		 */
-		'kirki-code': {
-
-		},
-
-		/**
 		 * The radio control.
 		 *
 		 * @since 3.0.17
@@ -240,7 +231,8 @@ kirki = jQuery.extend( kirki, {
 					inputAttrs: control.params.inputAttrs,
 					choices: control.params.choices,
 					value: kirki.setting.get( control.id ),
-					multiple: control.params.multiple || 1
+					multiple: control.params.multiple || 1,
+					placeholder: control.params.placeholder
 			    } ) );
 			}
 		}

@@ -250,15 +250,6 @@ kirki = jQuery.extend( kirki, {
 	control: {
 
 		/**
-		 * The code control.
-		 *
-		 * @since 3.0.18
-		 */
-		'kirki-code': {
-
-		},
-
-		/**
 		 * The radio control.
 		 *
 		 * @since 3.0.17
@@ -481,7 +472,8 @@ kirki = jQuery.extend( kirki, {
 					inputAttrs: control.params.inputAttrs,
 					choices: control.params.choices,
 					value: kirki.setting.get( control.id ),
-					multiple: control.params.multiple || 1
+					multiple: control.params.multiple || 1,
+					placeholder: control.params.placeholder
 			    } ) );
 			}
 		}
@@ -647,6 +639,10 @@ kirki = jQuery.extend( kirki, {
 							return markup;
 						}
 				    };
+					if ( control.params.placeholder ) {
+						selectWooOptions.placeholder = control.params.placeholder;
+						selectWooOptions.allowClear = true;
+					}
 
 				if ( 1 < multiple ) {
 					selectWooOptions.maximumSelectionLength = multiple;
@@ -1548,34 +1544,6 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		valueObj[ property ] = value;
 		control.setting.set( valueObj );
 		jQuery( input ).attr( 'value', JSON.stringify( valueObj ) ).trigger( 'change' );
-	}
-});
-wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
-
-	initKirkiControl: function() {
-
-		var control  = this;
-
-		// Early exit if wp.customize.CodeEditorControl is not available.
-		if ( _.isUndefined( wp.customize.CodeEditorControl ) ) {
-			return;
-		}
-
-		// Hide the textarea.
-		jQuery( control.container.find( 'textarea.kirki-codemirror-editor' ) ).hide();
-
-		// Add the control.
-		wp.customize.control.add( new wp.customize.CodeEditorControl( control.id, {
-			section: control.params.section,
-			priority: control.params.priority,
-			label: control.params.label,
-			editor_settings: {
-				codemirror: {
-					mode: control.params.choices.language
-				}
-			},
-			settings: { 'default': control.id }
-		} ) );
 	}
 });
 wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});

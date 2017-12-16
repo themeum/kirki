@@ -158,6 +158,10 @@ kirki = jQuery.extend( kirki, {
 							return markup;
 						}
 				    };
+					if ( control.params.placeholder ) {
+						selectWooOptions.placeholder = control.params.placeholder;
+						selectWooOptions.allowClear = true;
+					}
 
 				if ( 1 < multiple ) {
 					selectWooOptions.maximumSelectionLength = multiple;

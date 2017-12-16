@@ -143,7 +143,6 @@ my_config_kirki_add_field(
 		'default'     => '',
 		'choices'     => array(
 			'language' => 'css',
-			'theme'    => 'monokai',
 		),
 	)
 );
@@ -679,11 +678,13 @@ my_config_kirki_add_field(
 				'link_text'   => esc_attr__( 'Kirki Site', 'kirki' ),
 				'link_url'    => 'https://aristath.github.io/kirki/',
 				'link_target' => '_self',
+				'checkbox'    => false,
 			),
 			array(
 				'link_text'   => esc_attr__( 'Kirki Repository', 'kirki' ),
 				'link_url'    => 'https://github.com/aristath/kirki',
 				'link_target' => '_self',
+				'checkbox'    => false,
 			),
 		),
 		'fields' => array(
@@ -709,6 +710,11 @@ my_config_kirki_add_field(
 					'_self'   => esc_attr__( 'Same Frame', 'kirki' ),
 				),
 			),
+			'checkbox' => array(
+				'type'			=> 'checkbox',
+				'label'			=> esc_attr__( 'Checkbox', 'kirki' ),
+				'default'		=> false,
+			),
 		),
 	)
 );
@@ -724,6 +730,7 @@ my_config_kirki_add_field(
 		'description' => esc_attr__( 'The description here.', 'kirki' ),
 		'section'     => 'select_section',
 		'default'     => 'option-3',
+		'placeholder' => esc_attr__( 'Select an option', 'kirki' ),
 		'choices'     => array(
 			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
 			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
