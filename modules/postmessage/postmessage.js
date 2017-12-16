@@ -111,11 +111,27 @@ var kirkiPostMessage = {
 				case 'kirki-dimensions':
 				case 'kirki-multicolor':
 				case 'kirki-sortable':
+					styles += output.element + '{';
+					_.each( value, function( val, key ) {
+						if ( output.choice && key !== output.choice ) {
+							return;
+						}
+						if ( 'background-image' === key ) {
+							val = self.backgroundImageValue( val );
+						}
+
+						// Mostly used for padding, margin & position properties.
+						if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
+							styles += output.element + '{' + output.property + '-' + key + ':' + self.processValue( output, val ) + ';';
+						} else {
+							styles += key + ':' + self.processValue( output, val ); +';';
+						}
+					} );
+					styles += '}';
 					break;
 				default:
 					if ( 'kirki-image' === controlType ) {
-						value = ( ! _.isUndefined( value.url ) ) ? value.url : value;
-						value = ( -1 === value.indexOf( 'url(' ) ) ? 'url(' + value + ')' : value;
+						value = ( ! _.isUndefined( value.url ) ) ? self.backgroundImageValue( value.url ) : self.backgroundImageValue( value );
 					}
 					styles += output.element + '{' + output.property + ':' + self.processValue( output, value ); +';}';
 					break;
@@ -153,8 +169,18 @@ var kirkiPostMessage = {
 				}
 			} );
 			return output.prefix + output.units + value + output.suffix;
-		}
+		},
 
+		/**
+		 * Make sure urls are properly formatted for background-image properties.
+		 *
+		 * @since 3.0.21
+		 * @param {string} url - The URL.
+		 * @returns {string}
+		 */
+		backgroundImageValue: function( url ) {
+			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
+		}
 	}
 };
 
