@@ -36,6 +36,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 = 3.0.21 =
 
 * Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)
+* Fix: Code controls minor refactor (now extends the `WP_Customize_Code_Editor_Control` class)
 
 = 3.0.20 =
 
