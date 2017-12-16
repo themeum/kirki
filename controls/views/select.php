@@ -29,6 +29,9 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 				data-multiple="{{ data.multiple }}" multiple="multiple"
 			<# } #>
 			>
+			<# if ( data.placeholder ) { #>
+				<option value=""<# if ( '' === data.value ) { #> selected<# } #>></option>
+			<# } #>
 			<# _.each( data.choices, function( optionLabel, optionKey ) { #>
 				<#
 				selected = ( data.value === optionKey );
