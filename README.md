@@ -38,6 +38,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)
 * Fix: Code controls minor refactor (now extends the `WP_Customize_Code_Editor_Control` class)
 * New: Add `placeholder` argument in `select` controls [#1593](https://github.com/aristath/kirki/issues/1593)
+* Fix: Checkbox values sanitization inside repeater controls [#1715](https://github.com/aristath/kirki/issues/1715)
 
 ### 3.0.20 ###
 
