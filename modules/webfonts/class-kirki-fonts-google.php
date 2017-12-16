@@ -266,7 +266,7 @@ final class Kirki_Fonts_Google {
 	 */
 	public function get_googlefonts_json() {
 		include wp_normalize_path( dirname( __FILE__ ) . '/webfonts.json' );
-		exit();
+		wp_die();
 	}
 
 	/**
@@ -277,6 +277,6 @@ final class Kirki_Fonts_Google {
 	 */
 	public function get_strandardfonts_json() {
 		echo wp_json_encode( Kirki_Fonts::get_standard_fonts() ); // WPCS: XSS ok.
-		exit();
+		wp_die();
 	}
 }
