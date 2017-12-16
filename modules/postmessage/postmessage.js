@@ -226,6 +226,33 @@ var kirkiPostMessage = {
 				jQuery( output.element ).html( value );
 			}
 		}
+	},
+
+	/**
+	 * A collection of utilities to allow toggling a CSS class.
+	 *
+	 * @since 3.0.21
+	 */
+	toggleClass: {
+
+		/**
+		 * Generates the CSS from the output (js_vars) parameter.
+		 *
+		 * @since 3.0.21
+		 * @param {Object} output - The output (js_vars) argument.
+		 * @param {mixed}  value - The value.
+		 * @returns {string}
+		 */
+		fromOutput: function( output, value ) {
+			if ( 'undefined' === typeof output['class'] || 'undefined' === typeof output.value ) {
+				return;
+			}
+			if ( value === output.value && ! jQuery( output.element ).hasClass( output['class'] ) ) {
+				jQuery( output.element ).addClass( output['class'] );
+			} else {
+				jQuery( output.element ).removeClass( output['class'] );
+			}
+		}
 	}
 };
 
