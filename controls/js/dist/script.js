@@ -250,15 +250,6 @@ kirki = jQuery.extend( kirki, {
 	control: {
 
 		/**
-		 * The code control.
-		 *
-		 * @since 3.0.18
-		 */
-		'kirki-code': {
-
-		},
-
-		/**
 		 * The radio control.
 		 *
 		 * @since 3.0.17
@@ -1521,34 +1512,6 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
-	}
-});
-wp.customize.controlConstructor['kirki-code'] = wp.customize.kirkiDynamicControl.extend({
-
-	initKirkiControl: function() {
-
-		var control  = this;
-
-		// Early exit if wp.customize.CodeEditorControl is not available.
-		if ( _.isUndefined( wp.customize.CodeEditorControl ) ) {
-			return;
-		}
-
-		// Hide the textarea.
-		jQuery( control.container.find( 'textarea.kirki-codemirror-editor' ) ).hide();
-
-		// Add the control.
-		wp.customize.control.add( new wp.customize.CodeEditorControl( control.id, {
-			section: control.params.section,
-			priority: control.params.priority,
-			label: control.params.label,
-			editor_settings: {
-				codemirror: {
-					mode: control.params.choices.language
-				}
-			},
-			settings: { 'default': control.id }
-		} ) );
 	}
 });
 wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});

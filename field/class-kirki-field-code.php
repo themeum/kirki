@@ -15,14 +15,42 @@
 class Kirki_Field_Code extends Kirki_Field {
 
 	/**
+	 * The code_type (MIME type).
+	 *
+	 * @access public
+	 * @since 3.0.21
+	 * @var string
+	 */
+	public $code_type = 'text/css';
+
+	/**
+	 * Code editor settings.
+	 *
+	 * @see wp_enqueue_code_editor()
+	 * @since 3.0.21
+	 * @access public
+	 * @var array|false
+	 */
+	public $editor_settings = array();
+
+	/**
+	 * Custom input attributes (defined as an array).
+	 *
+	 * @access public
+	 * @since 3.0.21
+	 * @var array
+	 */
+	public $input_attrs = array(
+		'aria-describedby' => 'kirki-code editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',
+	);
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
 	 */
 	protected function set_type() {
-
-		$this->type = 'kirki-code';
-
+		$this->type = 'code_editor';
 	}
 
 	/**
@@ -31,62 +59,62 @@ class Kirki_Field_Code extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
-		// Make sure we have some defaults in case none are defined.
-		$defaults = array(
-			'language' => 'css',
-			'theme'    => 'elegant',
-		);
-		$this->choices = wp_parse_args( $this->choices, $defaults );
-
-		// Make sure the choices are defined and set as an array.
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+		if ( ! isset( $this->choices['language'] ) ) {
+			return;
 		}
 
-		// An array of valid languages.
-		$valid_languages = array(
-			'coffescript',
-			'css',
-			'haml',
-			'htmlembedded',
-			'htmlmixed',
-			'javascript',
-			'markdown',
-			'php',
-			'sass',
-			'smarty',
-			'sql',
-			'stylus',
-			'textile',
-			'twig',
-			'xml',
-			'yaml',
-		);
-		// Make sure the defined language exists.
-		// If not, fallback to CSS.
-		if ( ! in_array( $this->choices['language'], $valid_languages, true ) ) {
-			$this->choices['language'] = 'css';
+		switch ( $this->choices['language'] ) {
+			case 'css':
+			case 'html':
+			case 'htmlmixed':
+			case 'htm':
+			case 'json':
+			case 'jsx':
+			case 'markdown':
+			case 'md':
+			case 'xml':
+				if ( 'md' === $this->choices['language'] ) {
+					$this->choices['language'] = 'markdown';
+				} elseif ( 'htm' === $this->choices['language'] || 'htmlmixed' === $this->choices['language'] ) {
+					$this->choices['language'] = 'html';
+				}
+				$this->code_type = 'text/' . $this->choices['language'];
+				if ( 'html' === $this->choices['language'] ) {
+					$this->choices['language'] = 'htmlmixed';
+				}
+				break;
+			case 'http':
+			case 'javascript':
+			case 'js':
+			case 'php':
+			case 'phtml':
+			case 'php3':
+			case 'php4':
+			case 'php5':
+			case 'php7':
+			case 'phps':
+				if ( 'js' === $this->choices['language'] ) {
+					$this->choices['language'] = 'javascript';
+				} elseif ( in_array( $this->choices['language'], array( 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps' ), true ) ) {
+					$this->choices['language'] = 'php';
+				}
+				$this->code_type = 'application/' . $this->choices['language'];
+				break;
+			case 'svg':
+				$this->code_type = 'image/svg-xml';
+				break;
+			case 'text':
+				$this->code_type = 'text/plain';
+				break;
+			default:
+				$this->code_type = 'text/x-' . $this->choices['language'];
+				break;
 		}
-		// Hack for 'html' mode.
-		if ( 'html' === $this->choices['language'] ) {
-			$this->choices['language'] = 'htmlmixed';
+		if ( ! isset( $this->editor_settings['codemirror'] ) ) {
+			$this->editor_settings['codemirror'] = array();
 		}
-
-		// Set the theme.
-		$valid_themes = array(
-			'kirki-light' => 'elegant',
-			'light'       => 'elegant',
-			'elegant'     => 'elegant',
-			'kirki-dark'  => 'monokai',
-			'dark'        => 'monokai',
-			'monokai'     => 'monokai',
-			'material'    => 'material',
-		);
-		if ( isset( $valid_themes[ $this->choices['theme'] ] ) ) {
-			$this->choices['theme'] = $valid_themes[ $this->choices['theme'] ];
-		} else {
-			$this->choices['theme'] = 'elegant';
+		if ( ! isset( $this->editor_settings['codemirror']['mode'] ) ) {
+			$this->editor_settings['codemirror']['mode'] = $this->choices['language'];
 		}
 	}
 

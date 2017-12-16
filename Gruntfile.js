@@ -106,7 +106,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background.js',
-					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
@@ -143,7 +142,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background-legacy.js',
-					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
