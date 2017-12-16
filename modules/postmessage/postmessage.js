@@ -125,7 +125,7 @@ var kirkiPostMessage = {
 						if ( output.choice && key !== output.choice ) {
 							return;
 						}
-						styles += key + ':' + kirkiPostMessage.util.processValue( output, val ); +';';
+						styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
 					} );
 					styles += '}';
 
@@ -179,7 +179,7 @@ var kirkiPostMessage = {
 					if ( 'kirki-image' === controlType ) {
 						value = ( ! _.isUndefined( value.url ) ) ? kirkiPostMessage.util.backgroundImageValue( value.url ) : kirkiPostMessage.util.backgroundImageValue( value );
 					}
-					styles += output.element + '{' + output.property + ':' + kirkiPostMessage.util.processValue( output, value ); +';}';
+					styles += output.element + '{' + output.property + ':' + kirkiPostMessage.util.processValue( output, value ) + ';}';
 					break;
 			}
 			return styles;
