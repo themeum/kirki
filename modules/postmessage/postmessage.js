@@ -115,8 +115,7 @@ var kirkiPostMessage = {
 		 * @returns {string}
 		 */
 		fromOutput: function( output, value, controlType ) {
-			var self        = this,
-			    styles      = '',
+			var styles      = '',
 			    kirkiParent = window.parent.kirki,
 			    googleFont  = '';
 
