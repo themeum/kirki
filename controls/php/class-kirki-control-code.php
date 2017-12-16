@@ -18,6 +18,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Adds a "code" control, alias of the WP_Customize_Code_Editor_Control class.
+ * Show warning if old WordPress.
  */
-class Kirki_Control_Code extends WP_Customize_Code_Editor_Control {}
+if ( ! class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
+	/**
+	 * Adds a warning message instead of the control.
+	 */
+	class Kirki_Control_Code extends Kirki_Control_Base {
+
+		/**
+		 * The message.
+		 *
+		 * @since 3.0.21
+		 */
+		protected function content_template() {
+			?>
+			<div class="notice notice-error" data-type="error"><div class="notification-message">
+				<?php esc_attr_e( 'Please update your WordPress installation to a version newer than 4.9 to access the code control.', 'kirki' ); ?>
+			</div></div>
+			<?php
+		}
+	}
+} else {
+
+	/**
+	 * Adds a "code" control, alias of the WP_Customize_Code_Editor_Control class.
+	 */
+	class Kirki_Control_Code extends WP_Customize_Code_Editor_Control {}
+}
