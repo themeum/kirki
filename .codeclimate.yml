@@ -62,7 +62,7 @@ exclude_paths:
 - Gruntfile.js
 - example.php
 - assets/vendor/*
-- controls/js/dist/*
+- controls/js/*.js
 - controls/css/*
 - docs/files/*
 - lib/class-aricolor.php
