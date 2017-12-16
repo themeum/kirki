@@ -679,11 +679,13 @@ my_config_kirki_add_field(
 				'link_text'   => esc_attr__( 'Kirki Site', 'kirki' ),
 				'link_url'    => 'https://aristath.github.io/kirki/',
 				'link_target' => '_self',
+				'checkbox'    => false,
 			),
 			array(
 				'link_text'   => esc_attr__( 'Kirki Repository', 'kirki' ),
 				'link_url'    => 'https://github.com/aristath/kirki',
 				'link_target' => '_self',
+				'checkbox'    => false,
 			),
 		),
 		'fields' => array(
@@ -708,6 +710,11 @@ my_config_kirki_add_field(
 					'_blank'  => esc_attr__( 'New Window', 'kirki' ),
 					'_self'   => esc_attr__( 'Same Frame', 'kirki' ),
 				),
+			),
+			'checkbox' => array(
+				'type'			=> 'checkbox',
+				'label'			=> esc_attr__( 'Checkbox', 'kirki' ),
+				'default'		=> false,
 			),
 		),
 	)

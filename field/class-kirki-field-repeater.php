@@ -139,7 +139,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							$subfield_value = esc_attr( $subfield_value );
 							break;
 						case 'checkbox':
-							$subfield_value = (string) intval( $subfield_value );
+							$subfield_value = (bool) $subfield_value;
 							break;
 						case 'select':
 							if ( isset( $this->fields[ $subfield_id ]['multiple'] ) ) {
