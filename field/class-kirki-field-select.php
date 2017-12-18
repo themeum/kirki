@@ -26,6 +26,15 @@ class Kirki_Field_Select extends Kirki_Field {
 	protected $multiple = 1;
 
 	/**
+	 * Placeholder text.
+	 *
+	 * @access protected
+	 * @since 3.0.21
+	 * @var string|false
+	 */
+	protected $placeholder = false;
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
@@ -42,9 +51,17 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_multiple() {
-
 		$this->multiple = absint( $this->multiple );
+	}
 
+	/**
+	 * The placeholder text.
+	 *
+	 * @access protected
+	 * @since 3.0.21
+	 */
+	protected function set_placeholder() {
+		$this->placeholder = esc_attr( $this->placeholder );
 	}
 
 	/**

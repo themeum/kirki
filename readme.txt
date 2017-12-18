@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.8.2
 Tested up to: 4.9.1
-Stable tag: 3.0.20
+Stable tag: 3.0.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,17 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.21 =
+
+December 18 2017, dev time: 3 hours
+
+* Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)
+* Fix: Code controls minor refactor (now extends the `WP_Customize_Code_Editor_Control` class)
+* Fix: Checkbox values sanitization inside repeater controls [#1715](https://github.com/aristath/kirki/issues/1715)
+* Fix: JS error in dimension controls when not using a CSS unit [#1711](https://github.com/aristath/kirki/pull/1711) props @FrankM1
+* Fix: AJAX issue on a host with weird config.
+* New: Add `placeholder` argument in `select` controls [#1593](https://github.com/aristath/kirki/issues/1593)
 
 = 3.0.20 =
 

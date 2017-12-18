@@ -86,7 +86,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		// Enqueue the script.
 		wp_enqueue_script(
 			'kirki-script',
-			"{$kirki_url}controls/js/dist/script{$suffix}.js",
+			"{$kirki_url}controls/js/script{$suffix}.js",
 			array(
 				'jquery',
 				'customize-base',

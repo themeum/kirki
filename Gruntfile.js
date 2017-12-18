@@ -106,7 +106,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background.js',
-					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
@@ -129,7 +128,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/toggle.js',
 					'controls/js/src/typography.js'
 				],
-				dest: 'controls/js/dist/script.js'
+				dest: 'controls/js/script.js'
 			},
 			legacy: {
 				src: [
@@ -143,7 +142,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/dynamic-control.js',
 
 					'controls/js/src/background-legacy.js',
-					'controls/js/src/code.js',
 					'controls/js/src/color-palette.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
@@ -166,7 +164,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/toggle.js',
 					'controls/js/src/typography-legacy.js'
 				],
-				dest: 'controls/js/dist/script-legacy.js'
+				dest: 'controls/js/script-legacy.js'
 			}
 		},
 
@@ -179,7 +177,7 @@ module.exports = function( grunt ) {
 				},
 				files: [{
 					expand: true,
-					src: ['controls/js/dist/*.js', '!controls/js/dist/*.min.js'],
+					src: ['controls/js/*.js', '!controls/js/*.min.js'],
 					dest: '.',
 					cwd: '.',
 					rename: function( dst, src ) {

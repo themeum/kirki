@@ -1,3 +1,14 @@
+<?php
+/**
+ * Customizer controls underscore.js template.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       3.0.17
+ */
+?>
 <#
 data = _.defaults( data, {
 	label: '',
@@ -6,7 +17,8 @@ data = _.defaults( data, {
 	'data-id': '',
 	choices: {},
 	multiple: 1,
-	value: ( 1 < data.multiple ) ? [] : ''
+	value: ( 1 < data.multiple ) ? [] : '',
+	placeholder: false
 } );
 
 if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
@@ -16,10 +28,10 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 <div class="kirki-input-container" data-id="{{ data.id }}">
 	<label>
 		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
+			<span class="customize-control-title">{{{ data.label }}}</span>
 		<# } #>
 		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{ data.description }}</span>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<select
 			data-id="{{ data['data-id'] }}"
@@ -28,6 +40,9 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 				data-multiple="{{ data.multiple }}" multiple="multiple"
 			<# } #>
 			>
+			<# if ( data.placeholder ) { #>
+				<option value=""<# if ( '' === data.value ) { #> selected<# } #>></option>
+			<# } #>
 			<# _.each( data.choices, function( optionLabel, optionKey ) { #>
 				<#
 				selected = ( data.value === optionKey );

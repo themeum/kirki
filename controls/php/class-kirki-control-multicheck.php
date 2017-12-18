@@ -44,7 +44,7 @@ class Kirki_Control_MultiCheck extends Kirki_Control_Base {
 		?>
 		<# if ( ! data.choices ) { return; } #>
 
-		<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+		<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 
 		<ul>

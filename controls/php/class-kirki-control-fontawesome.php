@@ -58,7 +58,7 @@ class Kirki_Control_FontAwesome extends Kirki_Control_Base {
 	protected function content_template() {
 		?>
 		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{ data.label }}</span><# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<select {{{ data.inputAttrs }}} {{{ data.link }}}></select>
 		</label>
