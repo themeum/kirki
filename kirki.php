@@ -104,5 +104,3 @@ require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
 if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
 	include_once dirname( __FILE__ ) . '/example.php';
 }
-
-var_dump( json_decode( file_get_contents( 'https://wptide.org/api/tide/v1/audit/wporg/kirki?details=all' ), true ) );
