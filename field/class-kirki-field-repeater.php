@@ -122,7 +122,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							break;
 						case 'color':
 							// Instantiate the object.
-							$color_obj = ariColor::newColor( $subfield_value );
+							$color_obj       = ariColor::newColor( $subfield_value );
 							$$subfield_value = $color_obj->toCSS( $color_obj->mode );
 							break;
 						case 'text':

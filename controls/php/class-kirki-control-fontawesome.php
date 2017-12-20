@@ -39,7 +39,7 @@ class Kirki_Control_FontAwesome extends Kirki_Control_Base {
 
 		ob_start();
 		$json_path = wp_normalize_path( Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json' );
-		include( $json_path );
+		include $json_path;
 		$font_awesome_json = ob_get_clean();
 
 		wp_localize_script( 'kirki-script', 'fontAwesomeJSON', $font_awesome_json );

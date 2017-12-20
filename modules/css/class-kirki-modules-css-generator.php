@@ -163,13 +163,13 @@ final class Kirki_Modules_CSS_Generator {
 		self::$value = Kirki_Values::get_sanitized_field_value( $field );
 
 		// Find the class that will handle the outpout for this field.
-		$classname = 'Kirki_Output';
+		$classname            = 'Kirki_Output';
 		$field_output_classes = apply_filters( "kirki/{$field['kirki_config']}/output/control-classnames", array(
-			'kirki-background'  => 'Kirki_Output_Field_Background',
-			'kirki-dimensions'  => 'Kirki_Output_Field_Dimensions',
-			'kirki-image'       => 'Kirki_Output_Field_Image',
-			'kirki-typography'  => 'Kirki_Output_Field_Typography',
-			'kirki-multicolor'  => 'Kirki_Output_Field_Multicolor',
+			'kirki-background' => 'Kirki_Output_Field_Background',
+			'kirki-dimensions' => 'Kirki_Output_Field_Dimensions',
+			'kirki-image'      => 'Kirki_Output_Field_Image',
+			'kirki-typography' => 'Kirki_Output_Field_Typography',
+			'kirki-multicolor' => 'Kirki_Output_Field_Multicolor',
 		) );
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 			$classname = $field_output_classes[ self::$field_type ];

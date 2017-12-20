@@ -106,7 +106,7 @@ class Kirki_CSS_To_File {
 	 */
 	public function write_file() {
 
-		$css = array();
+		$css     = array();
 		$configs = Kirki::$config;
 		foreach ( $configs as $config_id => $args ) {
 			// Get the CSS we want to write.

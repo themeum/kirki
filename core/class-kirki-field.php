@@ -239,7 +239,7 @@ class Kirki_Field {
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
-			$args = $config_id;
+			$args      = $config_id;
 			$config_id = 'global';
 		}
 
@@ -641,7 +641,7 @@ class Kirki_Field {
 	protected function set_variables() {
 
 		if ( ! is_array( $this->variables ) ) {
-			$variable = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
+			$variable        = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
 			$this->variables = array();
 			if ( $variable && empty( $this->variables ) ) {
 				$this->variables[0]['name'] = $variable;

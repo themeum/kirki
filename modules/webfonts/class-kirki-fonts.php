@@ -81,15 +81,15 @@ final class Kirki_Fonts {
 	 */
 	public static function get_standard_fonts() {
 		$standard_fonts = array(
-			'serif' => array(
+			'serif'      => array(
 				'label' => 'Serif',
 				'stack' => 'Georgia,Times,"Times New Roman",serif',
 			),
 			'sans-serif' => array(
-				'label'  => 'Sans Serif',
-				'stack'  => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+				'label' => 'Sans Serif',
+				'stack' => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 			),
-			'monospace' => array(
+			'monospace'  => array(
 				'label' => 'Monospace',
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 			),
@@ -236,7 +236,7 @@ final class Kirki_Fonts {
 	 * @return array
 	 */
 	public static function get_font_choices() {
-		$fonts = self::get_all_fonts();
+		$fonts       = self::get_all_fonts();
 		$fonts_array = array();
 		foreach ( $fonts as $key => $args ) {
 			$fonts_array[ $key ] = $key;

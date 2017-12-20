@@ -83,7 +83,7 @@ class Kirki_Modules_Post_Meta {
 		$wp_scripts   = wp_scripts();
 		$queried_post = null;
 		if ( is_singular() && get_queried_object() ) {
-			$queried_post = get_queried_object();
+			$queried_post       = get_queried_object();
 			$queried_post->meta = get_post_custom( $queried_post->id );
 		}
 		$wp_scripts->add_data( 'kirki_post_meta_previewed_preview', 'data', sprintf( 'var _customizePostPreviewedQueriedObject = %s;', wp_json_encode( $queried_post ) ) );

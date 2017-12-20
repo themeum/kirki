@@ -70,7 +70,7 @@ class Kirki_Modules_Collapsible {
 		wp_enqueue_style( 'kirki-collapsible', trailingslashit( Kirki::$url ) . 'modules/collapsible/collapsible.css', array(), KIRKI_VERSION );
 
 		$collapsible_fields = array();
-		$fields = Kirki::$fields;
+		$fields             = Kirki::$fields;
 		foreach ( $fields as $field ) {
 			if ( isset( $field['collapsible'] ) && true === $field['collapsible'] && isset( $field['settings'] ) && isset( $field['label'] ) ) {
 				$collapsible_fields[ $field['settings'] ] = $field['label'];
