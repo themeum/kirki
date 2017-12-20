@@ -49,7 +49,7 @@ script:
   # --extensions: Only sniff PHP files.
   - vendor/bin/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
   - vendor/bin/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/*.php,./tests/*.php
-  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./modules/webfonts/webfonts.php,./vendor/**/*.php
+  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/*.php
   - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/**/*.php
 
 after_script:
