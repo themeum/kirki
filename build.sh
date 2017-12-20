@@ -54,6 +54,7 @@ rm phpcs.ruleset.xml
 rm phpunit.xml
 rm README.md
 rm *.sh
+rm package-lock.json
 
 cd ..
 zip -rq kirki.zip kirki
