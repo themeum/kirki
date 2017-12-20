@@ -31,6 +31,7 @@ class Kirki_Helper {
 	 */
 	public static function array_replace_recursive( $array, $array1 ) {
 		if ( function_exists( 'array_replace_recursive' ) ) {
+			// @codingStandardsIgnoreLine PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
 			return array_replace_recursive( $array, $array1 ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
 		}
 
@@ -107,6 +108,7 @@ class Kirki_Helper {
 
 		$attachment = wp_cache_get( 'kirki_image_id_' . md5( $url ), null );
 		if ( false === $attachment ) {
+			// @codingStandardsIgnoreLine WordPress.VIP.DirectDatabaseQuery.DirectQuery
 			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) ); // phpcs:ignore WordPress.VIP.DirectDatabaseQuery.DirectQuery
 			wp_cache_add( 'kirki_image_id_' . md5( $url ), $attachment, null );
 		}
@@ -385,6 +387,7 @@ class Kirki_Helper {
 			$return = true;
 		} elseif ( '!==' === $operator && $value1 !== $value2 ) {
 			$return = true;
+			// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
 		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 			$return = true;
 		} elseif ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) && $value2 >= $value1 ) {
@@ -406,6 +409,7 @@ class Kirki_Helper {
 				$return = false;
 			}
 		} else {
+			// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
 			$return = ( $value1 == $value2 ) ? true : false; // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 		}
 		return (bool) $return;

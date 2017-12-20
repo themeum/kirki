@@ -217,6 +217,7 @@ class Kirki_Output {
 						}
 						// If 'choice' is defined check for sub-values too.
 						// Fixes https://github.com/aristath/kirki/issues/1416.
+						// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
 						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude == $value[ $output['choice'] ] ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 							$skip = true;
 						}

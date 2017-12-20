@@ -136,7 +136,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		// Check for transient, if none, grab remote HTML file.
 		if ( false === $data ) {
 
-			// Get remote HTML file.
+			// Get remote HTML file. @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.wp_remote_get_wp_remote_get
 			$response = wp_remote_get( $url ); // phpcs:ignore WordPress.VIP.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			// Check for error.
