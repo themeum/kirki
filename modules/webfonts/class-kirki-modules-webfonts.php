@@ -103,7 +103,12 @@ class Kirki_Modules_Webfonts {
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
 			$method    = $this->get_method( $config_id );
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
-			new $classname( $config_id, $this, $this->fonts_google );
+			if ( class_exists( $classname ) ) {
+				new $classname( $config_id, $this, $this->fonts_google );
+				return;
+			}
+			// Fallback to the async method.
+			new Kirki_Modules_Webfonts_Async( $config_id, $this, $this->fonts_google );
 		}
 	}
 
