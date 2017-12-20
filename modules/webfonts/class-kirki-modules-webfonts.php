@@ -129,6 +129,11 @@ class Kirki_Modules_Webfonts {
 			$method = 'link';
 		}
 
+		$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
+		if ( ! class_exists( $classname ) ) {
+			$method = 'async';
+		}
+
 		// Force using the JS method while in the customizer.
 		// This will help us work-out the live-previews for typography fields.
 		// If we're not in the customizer use the defined method.
