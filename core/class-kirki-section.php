@@ -31,7 +31,7 @@ class Kirki_Section {
 	 */
 	public function __construct( $args ) {
 
-		$this->section_types = apply_filters( 'kirki/section_types', $this->section_types );
+		$this->section_types = apply_filters( 'kirki_section_types', $this->section_types );
 		$this->add_section( $args );
 
 	}

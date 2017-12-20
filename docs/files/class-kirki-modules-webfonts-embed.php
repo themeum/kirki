@@ -66,7 +66,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
+		add_filter( "kirki_{$config_id}_dynamic_css", array( $this, 'embed_css' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'inline_css' ), 999 );
 	}
 
@@ -93,7 +93,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		// Go through our fields and populate $this->fonts.
 		$this->webfonts->loop_fields( $this->config_id );
 
-		$this->googlefonts->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->googlefonts->fonts );
+		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();

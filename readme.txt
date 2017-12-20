@@ -35,6 +35,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.21 =
 
+December 20 2017, dev time: 2 hours.
+
+* Fix: Files cleanup. Removed webfonts.php and now use the json file.
+* Fix: WordPress Coding Standards fixes.
+* New: Removed inline methods for webfonts and now use [typekit/webfontloader](https://github.com/typekit/webfontloader).
+
+= 3.0.21 =
+
 December 18 2017, dev time: 3 hours
 
 * Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)

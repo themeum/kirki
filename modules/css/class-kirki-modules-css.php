@@ -117,7 +117,7 @@ class Kirki_Modules_CSS {
 
 		global $wp_customize;
 
-		$config   = apply_filters( 'kirki/config', array() );
+		$config   = apply_filters( 'kirki_config', array() );
 		$priority = 999;
 		if ( isset( $config['styles_priority'] ) ) {
 			$priority = absint( $config['styles_priority'] );
@@ -128,7 +128,7 @@ class Kirki_Modules_CSS {
 			return;
 		}
 
-		$method = apply_filters( 'kirki/dynamic_css/method', 'inline' );
+		$method = apply_filters( 'kirki_dynamic_css_method', 'inline' );
 		if ( $wp_customize ) {
 			// If we're in the customizer, load inline no matter what.
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
@@ -190,7 +190,7 @@ class Kirki_Modules_CSS {
 					continue;
 				}
 				$styles = self::loop_controls( $config_id );
-				$styles = apply_filters( "kirki/{$config_id}/dynamic_css", $styles );
+				$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
 				if ( ! empty( $styles ) ) {
 					wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', array(), KIRKI_VERSION );
 					wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );
@@ -247,7 +247,7 @@ class Kirki_Modules_CSS {
 				continue;
 			}
 
-			if ( true === apply_filters( "kirki/{$config_id}/css/skip_hidden", true ) ) {
+			if ( true === apply_filters( "kirki_{$config_id}_css_skip_hidden", true ) ) {
 				// Only continue if field dependencies are met.
 				if ( ! empty( $field['required'] ) ) {
 					$valid = true;
@@ -278,7 +278,7 @@ class Kirki_Modules_CSS {
 			}
 		}
 
-		$css = apply_filters( "kirki/{$config_id}/styles", $css );
+		$css = apply_filters( "kirki_{$config_id}_styles", $css );
 
 		if ( is_array( $css ) ) {
 			return Kirki_Modules_CSS_Generator::styles_parse( Kirki_Modules_CSS_Generator::add_prefixes( $css ) );

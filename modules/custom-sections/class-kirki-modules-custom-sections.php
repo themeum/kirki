@@ -39,9 +39,9 @@ class Kirki_Modules_Custom_Sections {
 	 */
 	protected function __construct() {
 		// Register the new section types.
-		add_filter( 'kirki/section_types', array( $this, 'set_section_types' ) );
+		add_filter( 'kirki_section_types', array( $this, 'set_section_types' ) );
 		// Register the new panel types.
-		add_filter( 'kirki/panel_types', array( $this, 'set_panel_types' ) );
+		add_filter( 'kirki_panel_types', array( $this, 'set_panel_types' ) );
 		// Include the section-type files.
 		add_action( 'customize_register', array( $this, 'include_sections_and_panels' ) );
 		// Enqueue styles & scripts.
@@ -110,7 +110,7 @@ class Kirki_Modules_Custom_Sections {
 
 		// Sections.
 		$folder_path   = dirname( __FILE__ ) . '/sections/';
-		$section_types = apply_filters( 'kirki/section_types', array() );
+		$section_types = apply_filters( 'kirki_section_types', array() );
 
 		foreach ( $section_types as $id => $class ) {
 			if ( ! class_exists( $class ) ) {
@@ -128,7 +128,7 @@ class Kirki_Modules_Custom_Sections {
 
 		// Panels.
 		$folder_path = dirname( __FILE__ ) . '/panels/';
-		$panel_types = apply_filters( 'kirki/panel_types', array() );
+		$panel_types = apply_filters( 'kirki_panel_types', array() );
 
 		foreach ( $panel_types as $id => $class ) {
 			if ( ! class_exists( $class ) ) {

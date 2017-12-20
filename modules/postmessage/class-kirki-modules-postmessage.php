@@ -78,7 +78,7 @@ class Kirki_Modules_PostMessage {
 				$this->script .= $this->script( $field );
 			}
 		}
-		$this->script = apply_filters( 'kirki/postmessage/script', $this->script );
+		$this->script = apply_filters( 'kirki_postmessage_script', $this->script );
 		wp_add_inline_script( 'kirki_auto_postmessage', $this->script, 'after' );
 
 	}

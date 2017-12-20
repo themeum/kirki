@@ -25,7 +25,7 @@ foreach ( $configs as $config_id => $args ) {
 	}
 
 	$styles = Kirki_Modules_CSS::loop_controls( $config_id );
-	$styles = apply_filters( "kirki/{$config_id}/dynamic_css", $styles );
+	$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
 
 	// Some people put weird stuff in their CSS, KSES tends to be greedy.
 	$styles = str_replace( '<=', '&lt;=', $styles );

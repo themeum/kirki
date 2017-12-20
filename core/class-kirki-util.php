@@ -108,8 +108,8 @@ class Kirki_Util {
 			}
 		}
 
-		// Pass the variables through a filter ('kirki/variable') and return the array of variables.
-		return apply_filters( 'kirki/variable', $variables );
+		// Pass the variables through a filter ('kirki_variable') and return the array of variables.
+		return apply_filters( 'kirki_variable', $variables );
 
 	}
 

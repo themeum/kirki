@@ -71,7 +71,7 @@ final class Kirki_Fonts {
 		$standard_fonts = self::get_standard_fonts();
 		$google_fonts   = self::get_google_fonts();
 
-		return apply_filters( 'kirki/fonts/all', array_merge( $standard_fonts, $google_fonts ) );
+		return apply_filters( 'kirki_fonts_all', array_merge( $standard_fonts, $google_fonts ) );
 	}
 
 	/**
@@ -94,7 +94,7 @@ final class Kirki_Fonts {
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 			),
 		);
-		return apply_filters( 'kirki/fonts/standard_fonts', $standard_fonts );
+		return apply_filters( 'kirki_fonts_standard_fonts', $standard_fonts );
 	}
 
 	/**
@@ -110,7 +110,7 @@ final class Kirki_Fonts {
 			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
 			'monospace'   => '"Lucida Console", Monaco, monospace',
 		);
-		return apply_filters( 'kirki/fonts/backup_fonts', $backup_fonts );
+		return apply_filters( 'kirki_fonts_backup_fonts', $backup_fonts );
 	}
 
 	/**
@@ -139,7 +139,7 @@ final class Kirki_Fonts {
 				}
 			}
 
-			self::$google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
+			self::$google_fonts = apply_filters( 'kirki_fonts_google_fonts', $google_fonts );
 
 		}
 

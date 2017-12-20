@@ -77,7 +77,7 @@ new Kirki();
 new Kirki_L10n();
 
 // Include deprecated functions & methods.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/deprecated/deprecated.php' );
 
 // Include the ariColor library.
 require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
