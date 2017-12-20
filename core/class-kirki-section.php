@@ -53,7 +53,7 @@ class Kirki_Section {
 			$section_classname = $this->section_types[ $args['type'] ];
 		}
 		if ( isset( $args['type'] ) && 'kirki-outer' === $args['type'] ) {
-			$args['type'] = 'outer';
+			$args['type']      = 'outer';
 			$section_classname = 'WP_Customize_Section';
 		}
 

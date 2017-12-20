@@ -84,7 +84,7 @@ class Kirki_Settings {
 				$args['default'] = array();
 			}
 			foreach ( $args['settings'] as $key => $value ) {
-				$default   = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
+				$default = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
 				$this->add_setting( $classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );
 			}
 		}

@@ -149,7 +149,7 @@ class Kirki_Output {
 					case 'option':
 						if ( is_array( $options ) ) {
 							if ( $option_name ) {
-								$subkey = str_replace( array( $option_name, '[', ']' ), '', $replace );
+								$subkey      = str_replace( array( $option_name, '[', ']' ), '', $replace );
 								$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
 								break;
 							}
@@ -174,7 +174,7 @@ class Kirki_Output {
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
 					foreach ( $value as $k => $v ) {
-						$_val = ( isset( $value[ $v ] ) ) ? $value[ $v ] : $v;
+						$_val        = ( isset( $value[ $v ] ) ) ? $value[ $v ] : $v;
 						$value[ $k ] = str_replace( $search, $replacement, $_val );
 					}
 					return $value;
@@ -217,7 +217,7 @@ class Kirki_Output {
 						}
 						// If 'choice' is defined check for sub-values too.
 						// Fixes https://github.com/aristath/kirki/issues/1416.
-						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude == $value[ $output['choice'] ] ) {
+						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude == $value[ $output['choice'] ] ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 							$skip = true;
 						}
 					}
@@ -304,7 +304,7 @@ class Kirki_Output {
 		);
 		if ( array_key_exists( $property, $properties ) ) {
 			$classname = $properties[ $property ];
-			$obj = new $classname( $property, $value );
+			$obj       = new $classname( $property, $value );
 			return $obj->get_value();
 		}
 		return $value;

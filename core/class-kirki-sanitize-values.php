@@ -22,21 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki_Sanitize_Values {
 
 	/**
-	 * Fallback for non-existing methods.
-	 *
-	 * @static
-	 * @access public
-	 * @param string $name The method we're trying to access.
-	 * @param mixed  $arguments The arguments the method we're trying to call accepts.
-	 * @return mixed The $arguments provided.
-	 */
-	public static function __callStatic( $name, $arguments ) {
-		/* translators: %s represents the method that was called and does not exist. */
-		_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Kirki_Sanitize_Values::%s does not exist', 'kirki' ), esc_attr( $name ) ), '3.0.10' );
-		return $arguments;
-	}
-
-	/**
 	 * Checkbox sanitization callback.
 	 *
 	 * Sanitization callback for 'checkbox' type controls.

@@ -137,7 +137,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		if ( false === $data ) {
 
 			// Get remote HTML file.
-			$response = wp_remote_get( $url );
+			$response = wp_remote_get( $url ); // phpcs:ignore WordPress.VIP.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			// Check for error.
 			if ( is_wp_error( $response ) ) {

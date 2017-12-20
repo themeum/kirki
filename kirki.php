@@ -30,7 +30,7 @@ if ( class_exists( 'Kirki' ) ) {
 }
 
 // Include the autoloader.
-include_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php';
+require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php';
 new Kirki_Autoload();
 
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
@@ -42,7 +42,7 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 	if ( ! function_exists( 'get_plugin_data' ) ) {
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
-	$data = get_plugin_data( KIRKI_PLUGIN_FILE );
+	$data    = get_plugin_data( KIRKI_PLUGIN_FILE );
 	$version = ( isset( $data['Version'] ) ) ? $data['Version'] : false;
 	define( 'KIRKI_VERSION', $version );
 }
@@ -77,10 +77,10 @@ new Kirki();
 new Kirki_L10n();
 
 // Include deprecated functions & methods.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/core/deprecated.php' );
 
 // Include the ariColor library.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );
@@ -88,11 +88,11 @@ Kirki::add_config( '' );
 $custom_config_path = dirname( __FILE__ ) . '/custom-config.php';
 $custom_config_path = wp_normalize_path( $custom_config_path );
 if ( file_exists( $custom_config_path ) ) {
-	include_once $custom_config_path;
+	require_once $custom_config_path;
 }
 
 // Add upgrade notifications.
-include_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
 
 /**
  * To enable tests, add this line to your wp-config.php file (or anywhere alse):

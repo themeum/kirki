@@ -81,15 +81,15 @@ final class Kirki_Fonts {
 	 */
 	public static function get_standard_fonts() {
 		$standard_fonts = array(
-			'serif' => array(
+			'serif'      => array(
 				'label' => 'Serif',
 				'stack' => 'Georgia,Times,"Times New Roman",serif',
 			),
 			'sans-serif' => array(
-				'label'  => 'Sans Serif',
-				'stack'  => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+				'label' => 'Sans Serif',
+				'stack' => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 			),
-			'monospace' => array(
+			'monospace'  => array(
 				'label' => 'Monospace',
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 			),
@@ -122,7 +122,10 @@ final class Kirki_Fonts {
 
 		if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-			$fonts = include_once wp_normalize_path( dirname( __FILE__ ) . '/webfonts.php' );
+			ob_start();
+			include wp_normalize_path( dirname( __FILE__ ) . '/webfonts.json' );
+			$fonts_json = ob_get_clean();
+			$fonts      = json_decode( $fonts_json, true );
 
 			$google_fonts = array();
 			if ( is_array( $fonts ) ) {
@@ -236,7 +239,7 @@ final class Kirki_Fonts {
 	 * @return array
 	 */
 	public static function get_font_choices() {
-		$fonts = self::get_all_fonts();
+		$fonts       = self::get_all_fonts();
 		$fonts_array = array();
 		foreach ( $fonts as $key => $args ) {
 			$fonts_array[ $key ] = $key;

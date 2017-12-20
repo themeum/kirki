@@ -28,7 +28,6 @@
     "grunt-contrib-watch": "*",
     "grunt-curl": "*",
     "grunt-wp-readme-to-markdown": "*",
-    "grunt-json2php":"*",
     "grunt-contrib-clean":"*",
     "grunt-jscs":"*"
   }

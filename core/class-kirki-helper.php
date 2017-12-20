@@ -31,7 +31,7 @@ class Kirki_Helper {
 	 */
 	public static function array_replace_recursive( $array, $array1 ) {
 		if ( function_exists( 'array_replace_recursive' ) ) {
-			return array_replace_recursive( $array, $array1 );
+			return array_replace_recursive( $array, $array1 ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
 		}
 
 		// Handle the arguments, merge one by one.
@@ -84,7 +84,7 @@ class Kirki_Helper {
 	public static function init_filesystem() {
 		global $wp_filesystem;
 		if ( empty( $wp_filesystem ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/file.php' );
+			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
 		return $wp_filesystem;
@@ -107,7 +107,7 @@ class Kirki_Helper {
 
 		$attachment = wp_cache_get( 'kirki_image_id_' . md5( $url ), null );
 		if ( false === $attachment ) {
-			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) );
+			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) ); // phpcs:ignore WordPress.VIP.DirectDatabaseQuery.DirectQuery
 			wp_cache_add( 'kirki_image_id_' . md5( $url ), $attachment, null );
 		}
 
@@ -158,6 +158,7 @@ class Kirki_Helper {
 		}
 
 		// Get the posts.
+		// TODO: WordPress.VIP.RestrictedFunctions.get_posts_get_posts
 		$posts = get_posts( $args );
 
 		// Properly format the array.
@@ -384,7 +385,7 @@ class Kirki_Helper {
 			$return = true;
 		} elseif ( '!==' === $operator && $value1 !== $value2 ) {
 			$return = true;
-		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) {
+		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 			$return = true;
 		} elseif ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) && $value2 >= $value1 ) {
 			$return = true;
@@ -405,7 +406,7 @@ class Kirki_Helper {
 				$return = false;
 			}
 		} else {
-			$return = ( $value1 == $value2 ) ? true : false;
+			$return = ( $value1 == $value2 ) ? true : false; // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 		}
 		return (bool) $return;
 	}

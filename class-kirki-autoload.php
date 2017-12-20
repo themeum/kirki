@@ -90,8 +90,8 @@ class Kirki_Autoload {
 
 		// Handle modules loading.
 		if ( isset( $name_parts[0] ) && 'Modules' === $name_parts[0] ) {
-			$path  = dirname( __FILE__ ) . '/modules/';
-			$path .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Modules_', '', $class_name ) ) ) . '/';
+			$path    = dirname( __FILE__ ) . '/modules/';
+			$path   .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Modules_', '', $class_name ) ) ) . '/';
 			$paths[] = $path . $filename;
 		}
 
@@ -99,7 +99,7 @@ class Kirki_Autoload {
 
 			// Handle controls loading.
 			if ( 'Control' === $name_parts[0] || 'Settings' === $name_parts[0] ) {
-				$path  = dirname( __FILE__ ) . '/controls/php/';
+				$path    = dirname( __FILE__ ) . '/controls/php/';
 				$paths[] = $path . $filename;
 			}
 		}
@@ -113,7 +113,7 @@ class Kirki_Autoload {
 
 		$previous_path = '';
 		for ( $i = 0; $i < $levels; $i++ ) {
-			$paths[] = dirname( __FILE__ ) . '/' . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
+			$paths[]        = dirname( __FILE__ ) . '/' . $previous_path . strtolower( $exploded[ $i ] ) . '/' . $filename;
 			$previous_path .= strtolower( $exploded[ $i ] ) . '/';
 		}
 		return $paths;

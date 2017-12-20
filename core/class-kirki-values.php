@@ -113,8 +113,8 @@ class Kirki_Values {
 				$setting_modified = str_replace( ']', '', str_replace( Kirki::$config[ $config_id ]['option_name'] . '[', '', $field_id ) );
 
 				$default_value = ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['default'] ) ) ? Kirki::$fields[ $field_id ]['default'] : '';
-				$value = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : $default_value;
-				$value = maybe_unserialize( $value );
+				$value         = ( isset( $options[ $setting_modified ] ) ) ? $options[ $setting_modified ] : $default_value;
+				$value         = maybe_unserialize( $value );
 				return apply_filters( 'kirki/values/get_value', $value, $field_id );
 			}
 
@@ -142,7 +142,7 @@ class Kirki_Values {
 			$value = get_theme_mod( $field['settings'], $field['default'] );
 		} elseif ( isset( $field['option_type'] ) && 'option' === $field['option_type'] ) {
 			if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
-				$all_values = get_option( $field['option_name'], array() );
+				$all_values     = get_option( $field['option_name'], array() );
 				$sub_setting_id = str_replace( array( ']', $field['option_name'] . '[' ), '', $field['settings'] );
 				if ( isset( $all_values[ $sub_setting_id ] ) ) {
 					$value = $all_values[ $sub_setting_id ];

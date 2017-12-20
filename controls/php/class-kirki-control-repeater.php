@@ -66,7 +66,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 		// Set up defaults for row labels.
 		$this->row_label = array(
-			'type' => 'text',
+			'type'  => 'text',
 			'value' => esc_attr__( 'row', 'kirki' ),
 			'field' => false,
 		);
@@ -93,7 +93,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 			if ( ! isset( $value['label'] ) ) {
 				$args['fields'][ $key ]['label'] = '';
 			}
-			$args['fields'][ $key ]['id']      = $key;
+			$args['fields'][ $key ]['id'] = $key;
 
 			// We check if the filed is an uploaded media ( image , file, video, etc.. ).
 			if ( isset( $value['type'] ) ) {
@@ -161,8 +161,8 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 									// 'id' is needed for form hidden value, URL is needed to display the image.
 									$value = array(
-										'id'  => $attachment_id,
-										'url' => $url,
+										'id'       => $attachment_id,
+										'url'      => $url,
 										'filename' => $filename,
 									);
 								}
@@ -184,7 +184,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 		$fields = $this->fields;
 
-		$this->json['fields'] = $fields;
+		$this->json['fields']    = $fields;
 		$this->json['row_label'] = $this->row_label;
 
 		// If filtered_value has been set and is not empty we use it instead of the actual value.

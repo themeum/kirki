@@ -154,7 +154,7 @@ final class Kirki_Fonts_Google {
 			}
 			// Are we force-loading all variants?
 			if ( true === self::$force_load_all_variants ) {
-				$all_variants = Kirki_Fonts::get_all_variants();
+				$all_variants               = Kirki_Fonts::get_all_variants();
 				$args['choices']['variant'] = array_keys( $all_variants );
 			}
 
