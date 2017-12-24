@@ -2,7 +2,7 @@
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
-Requires at least: 4.8.2
+Requires at least: 4.9
 Tested up to: 4.9.1
 Stable tag: 3.0.22
 License: GPLv2 or later
@@ -32,6 +32,11 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.23 =
+
+* Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
+* Tweak: Removed legacy code
 
 = 3.0.22 =
 
