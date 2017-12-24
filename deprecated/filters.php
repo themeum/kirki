@@ -67,6 +67,14 @@ add_action( 'init', function() {
 				$kirki_deprecated_filters_iteration[1] = str_replace( '-', '_', $kirki_deprecated_filters_iteration[1] );
 				return apply_filters( "kirki/{$kirki_deprecated_filters_iteration[0]}/{$kirki_deprecated_filters_iteration[1]}", $args );
 			}, 99 );
+			if ( false !== strpos( $kirki_deprecated_filters_iteration[1], '-' ) ) {
+				$kirki_deprecated_filters_iteration[1] = str_replace( '-', '_', $kirki_deprecated_filters_iteration[1] );
+				add_filter( "kirki_{$config_id}_{$filter_suffix}", function( $args ) {
+					global $kirki_deprecated_filters_iteration;
+					$kirki_deprecated_filters_iteration[1] = str_replace( '-', '_', $kirki_deprecated_filters_iteration[1] );
+					return apply_filters( "kirki/{$kirki_deprecated_filters_iteration[0]}/{$kirki_deprecated_filters_iteration[1]}", $args );
+				}, 99 );
+			}
 		}
 	}
 }, 99 );

@@ -160,7 +160,7 @@ class Kirki_Helper {
 		}
 
 		// Get the posts.
-		// TODO: WordPress.VIP.RestrictedFunctions.get_posts_get_posts
+		// TODO: WordPress.VIP.RestrictedFunctions.get_posts_get_posts.
 		$posts = get_posts( $args );
 
 		// Properly format the array.
