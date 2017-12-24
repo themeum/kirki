@@ -68,7 +68,6 @@ class Kirki_Control_Base extends WP_Customize_Control {
 
 		// Build the suffix for the script.
 		$suffix  = '';
-		$suffix .= ( Kirki_Util::get_wp_version() >= 4.9 ) ? '' : '-legacy';
 		$suffix .= ( ! defined( 'SCRIPT_DEBUG' ) || true !== SCRIPT_DEBUG ) ? '.min' : '';
 
 		// The Kirki plugin URL.

@@ -31,8 +31,7 @@ module.exports = function( grunt ) {
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
 					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
-					'controls/css/styles.css': 'controls/scss/styles.scss',
-					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss'
+					'controls/css/styles.css': 'controls/scss/styles.scss'
 				}
 			}
 		},
@@ -120,42 +119,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/typography.js'
 				],
 				dest: 'controls/js/script.js'
-			},
-			legacy: {
-				src: [
-					'controls/js/src/set-setting-value.js',
-					'controls/js/src/kirki.js',
-					'controls/js/src/kirki.control.js',
-					'controls/js/src/kirki.input.js',
-					'controls/js/src/kirki.setting.js',
-					'controls/js/src/kirki.util.js',
-					'controls/js/src/dynamic-control.js',
-					'controls/js/src/dynamic-control.js',
-
-					'controls/js/src/background-legacy.js',
-					'controls/js/src/color-palette.js',
-					'controls/js/src/dashicons.js',
-					'controls/js/src/date.js',
-					'controls/js/src/dimension.js',
-					'controls/js/src/dimensions.js',
-					'controls/js/src/editor.js',
-					'controls/js/src/fontawesome.js',
-					'controls/js/src/image.js',
-					'controls/js/src/multicheck.js',
-					'controls/js/src/multicolor-legacy.js',
-					'controls/js/src/number.js',
-					'controls/js/src/palette.js',
-					'controls/js/src/preset.js',
-					'controls/js/src/radio-buttonset.js',
-					'controls/js/src/radio-image.js',
-					'controls/js/src/repeater.js',
-					'controls/js/src/slider.js',
-					'controls/js/src/sortable.js',
-					'controls/js/src/switch.js',
-					'controls/js/src/toggle.js',
-					'controls/js/src/typography-legacy.js'
-				],
-				dest: 'controls/js/script-legacy.js'
 			}
 		},
 
