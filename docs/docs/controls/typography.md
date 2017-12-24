@@ -197,28 +197,28 @@ It is advised to use this field with the `output` argument to directly apply the
 $value = get_theme_mod( 'my_setting', array() );
 
 if ( isset( $value['font-family'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Font Family: %s', 'textdomain' ), $value['font-family'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Font Family: %s', 'textdomain' ), $value['font-family'] ) . '</p>';
 }
 if ( isset( $value['variant'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Variant: %s', 'textdomain' ), $value['variant'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Variant: %s', 'textdomain' ), $value['variant'] ) . '</p>';
 }
 if ( isset( $value['subsets'] ) ) {
 	if ( is_array( $value['subsets'] ) ) {
-		echo '<p>' . sprintf( esc_attr_e( 'Subsets: %s', 'textdomain' ), implode( ', ', $value['subsets'] ) ) . '</p>';
+		echo '<p>' . sprintf( esc_attr__( 'Subsets: %s', 'textdomain' ), implode( ', ', $value['subsets'] ) ) . '</p>';
 	} else {
-		echo '<p>' . sprintf( esc_attr_e( 'Subset: %s', 'textdomain' ), $value['subsets'] ) . '</p>';
+		echo '<p>' . sprintf( esc_attr__( 'Subset: %s', 'textdomain' ), $value['subsets'] ) . '</p>';
 	}
 }
 if ( isset( $value['font-size'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Font Size: %s', 'textdomain' ), $value['font-size'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Font Size: %s', 'textdomain' ), $value['font-size'] ) . '</p>';
 }
 if ( isset( $value['line-height'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Line Height: %s', 'textdomain' ), $value['line-height'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Line Height: %s', 'textdomain' ), $value['line-height'] ) . '</p>';
 }
 if ( isset( $value['letter-spacing'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Letter Spacing: %s', 'textdomain' ), $value['letter-spacing'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Letter Spacing: %s', 'textdomain' ), $value['letter-spacing'] ) . '</p>';
 }
 if ( isset( $value['color'] ) ) {
-	echo '<p>' . sprintf( esc_attr_e( 'Color: %s', 'textdomain' ), $value['color'] ) . '</p>';
+	echo '<p>' . sprintf( esc_attr__( 'Color: %s', 'textdomain' ), $value['color'] ) . '</p>';
 }
 ```
