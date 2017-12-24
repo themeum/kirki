@@ -68,7 +68,7 @@ class Kirki_Modules_Customizer_Branding {
 	 */
 	public function customize_controls_print_scripts() {
 
-		$config = apply_filters( 'kirki/config', array() );
+		$config = apply_filters( 'kirki_config', array() );
 		$vars   = array(
 			'logoImage'   => '',
 			'description' => '',

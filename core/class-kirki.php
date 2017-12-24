@@ -142,8 +142,8 @@ class Kirki extends Kirki_Init {
 	 */
 	public static function add_config( $config_id, $args = array() ) {
 
-		$config = Kirki_Config::get_instance( $config_id, $args );
-		$config_args = $config->get_config();
+		$config                             = Kirki_Config::get_instance( $config_id, $args );
+		$config_args                        = $config->get_config();
 		self::$config[ $config_args['id'] ] = $config_args;
 	}
 
@@ -233,7 +233,7 @@ class Kirki extends Kirki_Init {
 			return;
 		}
 
-		$str = str_replace( array( '-', '_' ), ' ', $args['type'] );
+		$str       = str_replace( array( '-', '_' ), ' ', $args['type'] );
 		$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
 		if ( class_exists( $classname ) ) {
 			new $classname( $config_id, $args );

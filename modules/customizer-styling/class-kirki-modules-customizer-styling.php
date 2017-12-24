@@ -1,7 +1,7 @@
 <?php
 /**
  * Changes the styling of the customizer
- * based on the settings set using the kirki/config filter.
+ * based on the settings set using the kirki_config filter.
  * For documentation please see
  * https://github.com/aristath/kirki/wiki/Styling-the-Customizer
  *
@@ -67,7 +67,7 @@ class Kirki_Modules_Customizer_Styling {
 	 */
 	public function custom_css() {
 
-		$config = apply_filters( 'kirki/config', array() );
+		$config = apply_filters( 'kirki_config', array() );
 		if ( ! isset( $config['color_accent'] ) && ! isset( $config['color_back'] ) ) {
 			return;
 		}

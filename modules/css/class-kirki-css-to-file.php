@@ -106,11 +106,11 @@ class Kirki_CSS_To_File {
 	 */
 	public function write_file() {
 
-		$css = array();
+		$css     = array();
 		$configs = Kirki::$config;
 		foreach ( $configs as $config_id => $args ) {
 			// Get the CSS we want to write.
-			$css[ $config_id ] = apply_filters( "kirki/{$config_id}/dynamic_css", Kirki_Modules_CSS::loop_controls( $config_id ) );
+			$css[ $config_id ] = apply_filters( "kirki_{$config_id}_dynamic_css", Kirki_Modules_CSS::loop_controls( $config_id ) );
 		}
 		$css = implode( $css, '' );
 

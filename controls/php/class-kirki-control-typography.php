@@ -278,7 +278,7 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 	 */
 	protected function format_variants_array( $variants ) {
 
-		$all_variants = Kirki_Fonts::get_all_variants();
+		$all_variants   = Kirki_Fonts::get_all_variants();
 		$final_variants = array();
 		foreach ( $variants as $variant ) {
 			if ( is_string( $variant ) ) {
@@ -310,7 +310,7 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 		}
 
 		$standard_fonts_final = array();
-		$default_variants = $this->format_variants_array(
+		$default_variants     = $this->format_variants_array(
 			array(
 				'regular',
 				'italic',
@@ -366,7 +366,7 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 				foreach ( $variants as $variant ) {
 					if ( array_key_exists( $variant, $all_variants ) ) {
 						$available_variants[] = array(
-							'id' => $variant,
+							'id'    => $variant,
 							'label' => $all_variants[ $variant ],
 						);
 					}
@@ -378,7 +378,7 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 				foreach ( $subsets as $subset ) {
 					if ( array_key_exists( $subset, $all_subsets ) ) {
 						$available_subsets[] = array(
-							'id' => $subset,
+							'id'    => $subset,
 							'label' => $all_subsets[ $subset ],
 						);
 					}
@@ -386,10 +386,10 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 			}
 
 			$google_fonts_final[] = array(
-				'family'       => $family,
-				'label'        => $label,
-				'variants'     => $available_variants,
-				'subsets'      => $available_subsets,
+				'family'   => $family,
+				'label'    => $label,
+				'variants' => $available_variants,
+				'subsets'  => $available_subsets,
 			);
 		} // End foreach().
 		return $google_fonts_final;

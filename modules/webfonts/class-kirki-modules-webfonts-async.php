@@ -72,7 +72,7 @@ final class Kirki_Modules_Webfonts_Async {
 		// Go through our fields and populate $this->fonts.
 		$this->webfonts->loop_fields( $this->config_id );
 
-		$this->googlefonts->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->googlefonts->fonts );
+		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();

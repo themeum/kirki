@@ -90,7 +90,7 @@ class Kirki_Control {
 
 	/**
 	 * Sets the $control_types property.
-	 * Makes sure the kirki/control_types filter is applied
+	 * Makes sure the kirki_control_types filter is applied
 	 * and that the defined classes actually exist.
 	 * If a defined class does not exist, it is removed.
 	 *
@@ -103,7 +103,7 @@ class Kirki_Control {
 			return;
 		}
 
-		self::$control_types = apply_filters( 'kirki/control_types', array() );
+		self::$control_types = apply_filters( 'kirki_control_types', array() );
 
 		// Make sure the defined classes actually exist.
 		foreach ( self::$control_types as $key => $classname ) {

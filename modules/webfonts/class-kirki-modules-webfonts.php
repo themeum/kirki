@@ -101,7 +101,7 @@ class Kirki_Modules_Webfonts {
 	protected function init() {
 
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
-			$method = $this->get_method( $config_id );
+			$method    = $this->get_method( $config_id );
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
 		}
@@ -117,7 +117,7 @@ class Kirki_Modules_Webfonts {
 	public function get_method() {
 
 		// Figure out which method to use.
-		$method = apply_filters( 'kirki/googlefonts_load_method', 'async' );
+		$method = apply_filters( 'kirki_googlefonts_load_method', 'async' );
 
 		// Fallback to 'link' if value is invalid.
 		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
@@ -127,6 +127,11 @@ class Kirki_Modules_Webfonts {
 		// Fallback to 'link' if embed was not possible.
 		if ( 'embed' === $method && $this->fallback_to_link ) {
 			$method = 'link';
+		}
+
+		$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
+		if ( ! class_exists( $classname ) ) {
+			$method = 'async';
 		}
 
 		// Force using the JS method while in the customizer.
@@ -167,7 +172,7 @@ class Kirki_Modules_Webfonts {
 			if ( isset( $field['kirki_config'] ) && $config_id !== $field['kirki_config'] ) {
 				continue;
 			}
-			if ( true === apply_filters( "kirki/{$config_id}/webfonts/skip_hidden", true ) ) {
+			if ( true === apply_filters( "kirki_{$config_id}_webfonts_skip_hidden", true ) ) {
 				// Only continue if field dependencies are met.
 				if ( ! empty( $field['required'] ) ) {
 					$valid = true;

@@ -23,13 +23,12 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-sass": "*",
-    "grunt-contrib-concat" : "*",
+    "grunt-contrib-concat": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-curl": "*",
     "grunt-wp-readme-to-markdown": "*",
-    "grunt-json2php":"*",
-    "grunt-contrib-clean":"*",
-    "grunt-jscs":"*"
+    "grunt-contrib-clean": "*",
+    "grunt-jscs": "*"
   }
 }

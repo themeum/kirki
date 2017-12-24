@@ -78,7 +78,7 @@ class Kirki_Modules_PostMessage {
 				$this->script .= $this->script( $field );
 			}
 		}
-		$this->script = apply_filters( 'kirki/postmessage/script', $this->script );
+		$this->script = apply_filters( 'kirki_postmessage_script', $this->script );
 		wp_add_inline_script( 'kirki_auto_postmessage', $this->script, 'after' );
 
 	}
@@ -106,7 +106,7 @@ class Kirki_Modules_PostMessage {
 			// append unique style tag if not exist
 			// The style ID.
 			$style_id = 'kirki-postmessage-' . str_replace( array( '[', ']' ), '', $args['settings'] );
-			$script .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
+			$script  .= 'if(null===document.getElementById(\'' . $style_id . '\')||\'undefined\'===typeof document.getElementById(\'' . $style_id . '\')){jQuery(\'head\').append(\'<style id="' . $style_id . '"></style>\');}';
 		}
 
 		// Add anything we need before the main script.
@@ -121,7 +121,7 @@ class Kirki_Modules_PostMessage {
 			// Skip styles if "exclude" is defined and value is excluded.
 			if ( isset( $js_var['exclude'] ) ) {
 				$js_var['exclude'] = (array) $js_var['exclude'];
-				$script .= 'exclude=false;';
+				$script           .= 'exclude=false;';
 				foreach ( $js_var['exclude'] as $exclussion ) {
 					$script .= "if(newval=='{$exclussion}'||(''==='{$exclussion}'&&_.isObject(newval)&&_.isEmpty(newval))){exclude=true;}";
 				}
@@ -139,7 +139,7 @@ class Kirki_Modules_PostMessage {
 				continue;
 			}
 			$js_var['index_key'] = $key;
-			$callback = $this->get_callback( $args );
+			$callback            = $this->get_callback( $args );
 			if ( is_callable( $callback ) ) {
 				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
 				continue;
@@ -197,10 +197,10 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args  The arguments for this js_var.
 	 */
 	protected function script_var( $args ) {
-		$script = '';
+		$script          = '';
 		$property_script = '';
 
-		$value_key = 'newval' . $args['index_key'];
+		$value_key        = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
 
 		$args = $this->get_args( $args );
@@ -244,13 +244,13 @@ class Kirki_Modules_PostMessage {
 	 */
 	protected function script_var_array( $args ) {
 
-		$script = ( 0 === $args['index_key'] ) ? 'css=\'\';' : '';
+		$script          = ( 0 === $args['index_key'] ) ? 'css=\'\';' : '';
 		$property_script = '';
 
 		// Define choice.
 		$choice = ( isset( $args['choice'] ) && '' !== $args['choice'] ) ? $args['choice'] : '';
 
-		$value_key = 'newval' . $args['index_key'];
+		$value_key        = 'newval' . $args['index_key'];
 		$property_script .= $value_key . '=newval;';
 
 		$args = $this->get_args( $args );
@@ -283,6 +283,7 @@ class Kirki_Modules_PostMessage {
 		// Allows us to apply this just for a specific choice in the array of the values.
 		if ( '' !== $choice ) {
 			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
+			// The script.
 			$script .= 'if(\'' . $choice . '\'===subKey){';
 			$script .= ( $choice_is_direction ) ? $direction_script . 'else{' : '';
 			$script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . ':\'+subValue+\';}\';';
@@ -325,7 +326,7 @@ class Kirki_Modules_PostMessage {
 		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+subsetsString+\'"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
 
 		// Add the css.
-		$css_build_array = array(
+		$css_build_array  = array(
 			'font-family'     => 'fontFamily',
 			'font-size'       => 'fontSize',
 			'line-height'     => 'lineHeight',
@@ -339,7 +340,7 @@ class Kirki_Modules_PostMessage {
 			'font-style'      => 'fontStyle',
 		);
 		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $css_build_array[ $args['choice'] ] ) );
-		$script .= ( ! $choice_condition ) ? $webfont_loader : '';
+		$script          .= ( ! $choice_condition ) ? $webfont_loader : '';
 		foreach ( $css_build_array as $property => $var ) {
 			if ( $choice_condition && $property !== $args['choice'] ) {
 				continue;
@@ -364,9 +365,9 @@ class Kirki_Modules_PostMessage {
 
 			if ( 'font-family' === $property || ( isset( $args['choice'] ) && 'font-family' === $args['choice'] ) ) {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
-				$var = 'fontFamilyCSS';
+				$var  = 'fontFamilyCSS';
 			}
-			$var = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
+			$var  = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
 
@@ -477,8 +478,8 @@ class Kirki_Modules_PostMessage {
 			$script .= 'settings=window.wp.customize.get();';
 			foreach ( $js_vars['pattern_replace'] as $search => $replace ) {
 				$replace = '\'+settings["' . $replace . '"]+\'';
-				$value = str_replace( $search, $replace, $js_vars['value_pattern'] );
-				$value = trim( $value, '+' );
+				$value   = str_replace( $search, $replace, $js_vars['value_pattern'] );
+				$value   = trim( $value, '+' );
 			}
 		}
 		$value_compiled = str_replace( '$', '\'+' . $alias . '+\'', $value );

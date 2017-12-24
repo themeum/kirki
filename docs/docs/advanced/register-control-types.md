@@ -24,7 +24,7 @@ add_action( 'customize_register', function( $wp_customize ) {
 		}
 	}
 	// Register our custom control with Kirki
-	add_filter( 'kirki/control_types', function( $controls ) {
+	add_filter( 'kirki_control_types', function( $controls ) {
 		$controls['notice'] = 'Kirki_Controls_Notice_Control';
 		return $controls;
 	} );

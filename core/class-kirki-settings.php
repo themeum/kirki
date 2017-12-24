@@ -84,7 +84,7 @@ class Kirki_Settings {
 				$args['default'] = array();
 			}
 			foreach ( $args['settings'] as $key => $value ) {
-				$default   = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
+				$default = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
 				$this->add_setting( $classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );
 			}
 		}
@@ -121,15 +121,15 @@ class Kirki_Settings {
 
 	/**
 	 * Sets the $this->setting_types property.
-	 * Makes sure the kirki/setting_types filter is applied
+	 * Makes sure the kirki_setting_types filter is applied
 	 * and that the defined classes actually exist.
 	 * If a defined class does not exist, it is removed.
 	 */
 	final private function set_setting_types() {
 
-		// Apply the kirki/setting_types filter.
+		// Apply the kirki_setting_types filter.
 		$this->setting_types = apply_filters(
-			'kirki/setting_types', array(
+			'kirki_setting_types', array(
 				'default'     => 'WP_Customize_Setting',
 				'repeater'    => 'Kirki_Settings_Repeater_Setting',
 				'user_meta'   => 'Kirki_Setting_User_Meta',

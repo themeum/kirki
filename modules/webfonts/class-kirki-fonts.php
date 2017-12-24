@@ -71,7 +71,7 @@ final class Kirki_Fonts {
 		$standard_fonts = self::get_standard_fonts();
 		$google_fonts   = self::get_google_fonts();
 
-		return apply_filters( 'kirki/fonts/all', array_merge( $standard_fonts, $google_fonts ) );
+		return apply_filters( 'kirki_fonts_all', array_merge( $standard_fonts, $google_fonts ) );
 	}
 
 	/**
@@ -81,20 +81,20 @@ final class Kirki_Fonts {
 	 */
 	public static function get_standard_fonts() {
 		$standard_fonts = array(
-			'serif' => array(
+			'serif'      => array(
 				'label' => 'Serif',
 				'stack' => 'Georgia,Times,"Times New Roman",serif',
 			),
 			'sans-serif' => array(
-				'label'  => 'Sans Serif',
-				'stack'  => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+				'label' => 'Sans Serif',
+				'stack' => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 			),
-			'monospace' => array(
+			'monospace'  => array(
 				'label' => 'Monospace',
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 			),
 		);
-		return apply_filters( 'kirki/fonts/standard_fonts', $standard_fonts );
+		return apply_filters( 'kirki_fonts_standard_fonts', $standard_fonts );
 	}
 
 	/**
@@ -110,7 +110,7 @@ final class Kirki_Fonts {
 			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
 			'monospace'   => '"Lucida Console", Monaco, monospace',
 		);
-		return apply_filters( 'kirki/fonts/backup_fonts', $backup_fonts );
+		return apply_filters( 'kirki_fonts_backup_fonts', $backup_fonts );
 	}
 
 	/**
@@ -122,7 +122,10 @@ final class Kirki_Fonts {
 
 		if ( null === self::$google_fonts || empty( self::$google_fonts ) ) {
 
-			$fonts = include_once wp_normalize_path( dirname( __FILE__ ) . '/webfonts.php' );
+			ob_start();
+			include wp_normalize_path( dirname( __FILE__ ) . '/webfonts.json' );
+			$fonts_json = ob_get_clean();
+			$fonts      = json_decode( $fonts_json, true );
 
 			$google_fonts = array();
 			if ( is_array( $fonts ) ) {
@@ -136,7 +139,7 @@ final class Kirki_Fonts {
 				}
 			}
 
-			self::$google_fonts = apply_filters( 'kirki/fonts/google_fonts', $google_fonts );
+			self::$google_fonts = apply_filters( 'kirki_fonts_google_fonts', $google_fonts );
 
 		}
 
@@ -236,7 +239,7 @@ final class Kirki_Fonts {
 	 * @return array
 	 */
 	public static function get_font_choices() {
-		$fonts = self::get_all_fonts();
+		$fonts       = self::get_all_fonts();
 		$fonts_array = array();
 		foreach ( $fonts as $key => $args ) {
 			$fonts_array[ $key ] = $key;
