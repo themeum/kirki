@@ -971,10 +971,11 @@ kirki = jQuery.extend( kirki, {
 				 * @param {int}    number - How many to get. 0 for all.
 				 * @returns {Object}
 				 */
-				getFonts: function( order, number ) {
-					var self    = this,
-					    ordered = {},
-					    partial = [];
+				getFonts: function( order, category, number ) {
+					var self        = this,
+					    ordered     = {},
+					    categorized = {},
+					    plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -984,16 +985,35 @@ kirki = jQuery.extend( kirki, {
 					number = number || 0;
 					number = parseInt( number, 10 );
 
-					if ( 'alpha' === order || 0 === number ) {
-						ordered = self.fonts.items;
+					// Order fonts by the 'order' argument.
+					if ( 'alpha' === order ) {
+						ordered = jQuery.extend( {}, self.fonts.items );
 					} else {
-						partial = _.first( self.fonts.order[ order ], number );
-						_.each( partial, function( family ) {
+						_.each( self.fonts.order[ order ], function( family ) {
 							ordered[ family ] = self.fonts.items[ family ];
 						} );
 					}
 
-					return ordered;
+					// If we have a category defined get only the fonts in that category.
+					if ( '' === category || ! category ) {
+						categorized = ordered;
+					} else {
+						_.each( ordered, function( font, family ) {
+							if ( category === font.category ) {
+								categorized[ family ] = font;
+							}
+						} );
+					}
+
+					// If we only want a number of font-families get the 1st items from the results.
+					if ( 0 < number ) {
+						_.each( _.first( _.keys( categorized ), number ), function( family ) {
+							plucked[ family ] = categorized[ family ];
+						} );
+						return plucked;
+					}
+
+					return categorized;
 				},
 
 				/**
@@ -3541,7 +3561,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				if ( ! isNaN( control.params.choices.fonts.google[1] ) ) {
 					googleFontsNumber = parseInt( control.params.choices.fonts.google[1], 10 );
 				}
-				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 
 			} else {
 				_.each( control.params.choices.fonts.google, function( fontName ) {
@@ -3551,7 +3571,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				} );
 			}
 		} else {
-			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 		}
 
 		// Get standard fonts.

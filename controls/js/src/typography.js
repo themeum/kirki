@@ -341,7 +341,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				if ( ! isNaN( control.params.choices.fonts.google[1] ) ) {
 					googleFontsNumber = parseInt( control.params.choices.fonts.google[1], 10 );
 				}
-				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 
 			} else {
 				_.each( control.params.choices.fonts.google, function( fontName ) {
@@ -351,7 +351,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				} );
 			}
 		} else {
-			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 		}
 
 		// Get standard fonts.
