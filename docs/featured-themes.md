@@ -35,7 +35,7 @@ title: Awesome themes built with Kirki
     {% for theme in free_themes %}
 		<div class="cell item">
 			<div class="inner">
-				<a href="{{ theme.url }} target="_blank">
+				<a href="{{ theme.url }}" target="_blank">
 					<h4>{{ theme.name }}</h4>
 					<hr>
 					<img src="{{ theme.thumb }}">
