@@ -1,3 +1,28 @@
+- name: Writeup
+  market: ThemeForest
+  url: http://alxmedia.se/themes/writeup/
+  thumb: http://demo.alxmedia.se/wp-content/themes/writeup/screenshot.png  
+  
+- name: Split
+  market: ThemeForest
+  url: http://alxmedia.se/themes/split/
+  thumb: http://demo.alxmedia.se/wp-content/themes/split/screenshot.png  
+  
+- name: Magaziner
+  market: ThemeForest
+  url: http://alxmedia.se/themes/magaziner/
+  thumb: http://demo.alxmedia.se/wp-content/themes/magaziner/screenshot.png 
+  
+- name: Agnar
+  market: ThemeForest
+  url: http://alxmedia.se/themes/agnar/
+  thumb: http://demo.alxmedia.se/wp-content/themes/agnar/screenshot.png
+  
+- name: Anew
+  market: ThemeForest
+  url: http://alxmedia.se/themes/anew/
+  thumb: http://demo.alxmedia.se/wp-content/themes/anew/screenshot.png
+  
 - name: Newark
   market: ThemeForest
   url: https://themeforest.net/item/newark-a-responsive-wordpress-blog-theme/18928614
