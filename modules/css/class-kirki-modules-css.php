@@ -192,6 +192,11 @@ class Kirki_Modules_CSS {
 				$styles = self::loop_controls( $config_id );
 				$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
 				if ( ! empty( $styles ) ) {
+					$stylesheet = apply_filters( "kirki_{$config_id}_stylesheet", false );
+					if ( $stylesheet ) {
+						wp_add_inline_style( $stylesheet, $styles );
+						continue;
+					}
 					wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', array(), KIRKI_VERSION );
 					wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );
 				}
