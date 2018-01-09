@@ -3,6 +3,10 @@ layout: default
 title: Awesome themes built with Kirki
 ---
 
+<div class="callout success">
+	<p>Are you a theme author? Add your <a href="https://github.com/aristath/kirki/edit/master/docs/_data/themes_premium.yml" target="_blank">Premium</a> and <a href="https://github.com/aristath/kirki/edit/master/docs/_data/themes_free.yml" target="_blank">Free</a> themes on this page!</p>
+</div>
+
 <hr>
 <h2>Premium Themes</h2>
 <hr>
@@ -31,7 +35,7 @@ title: Awesome themes built with Kirki
     {% for theme in free_themes %}
 		<div class="cell item">
 			<div class="inner">
-				<a href="{{ theme.url }}{% if 'ThemeForest' == theme.market %}?ref=aristath{% endif %}" target="_blank">
+				<a href="{{ theme.url }}" target="_blank">
 					<h4>{{ theme.name }}</h4>
 					<hr>
 					<img src="{{ theme.thumb }}">
@@ -40,5 +44,3 @@ title: Awesome themes built with Kirki
 		</div>
 	{% endfor %}
 </div>
-
-Are you a theme author? [Tell us about your project](mailto:aristath@gmail.com)!
