@@ -1,3 +1,27 @@
+- name: Enspire
+  url: http://alxmedia.se/themes/enspire/
+  thumb: http://demo.alxmedia.se/wp-content/themes/enspire/screenshot.png
+
+- name: Typecore
+  url: http://alxmedia.se/themes/typecore/
+  thumb: http://demo.alxmedia.se/wp-content/themes/typecore/screenshot.png
+
+- name: Kontrast
+  url: http://alxmedia.se/themes/kontrast/
+  thumb: http://demo.alxmedia.se/wp-content/themes/kontrast/screenshot.png
+
+- name: Slanted
+  url: http://alxmedia.se/themes/slanted/
+  thumb: http://demo.alxmedia.se/wp-content/themes/slanted/screenshot.png
+  
+- name: Blogline
+  url: http://alxmedia.se/themes/blogline/
+  thumb: http://demo.alxmedia.se/wp-content/themes/blogline/screenshot.png
+  
+- name: Blogrow
+  url: http://alxmedia.se/themes/blogrow/
+  thumb: http://demo.alxmedia.se/wp-content/themes/blogrow/screenshot.png
+
 - name: Advance
   url: https://wordpress.org/themes/advance/
   thumb: https://i0.wp.com/themes.svn.wordpress.org/advance/1.4.0/screenshot.jpg?w=1142&strip=all
