@@ -113,7 +113,7 @@ class Kirki_Init {
 			'kirki-typography'      => 'Kirki_Control_Typography',
 			'image'                 => 'Kirki_Control_Image',
 			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
-			'upload'                => 'WP_Customize_Upload_Control',
+			'upload'                => 'Kirki_Control_Upload',
 		);
 		return array_merge( $this->control_types, $control_types );
 
