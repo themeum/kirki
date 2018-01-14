@@ -485,12 +485,19 @@ my_config_kirki_add_field(
  */
 my_config_kirki_add_field(
 	array(
-		'type'        => 'image',
+		'type'        => 'upload',
 		'settings'    => 'image_setting_url',
 		'label'       => esc_attr__( 'Image Control (URL)', 'kirki' ),
 		'description' => esc_attr__( 'Description Here.', 'kirki' ),
 		'section'     => 'image_section',
 		'default'     => '',
+		'active_callback' => array(
+			array(
+				'setting' => 'switch_setting',
+				'operator' => '==',
+				'value' => true,
+			)
+		)
 	)
 );
 
@@ -607,23 +614,26 @@ my_config_kirki_add_field(
 /**
  * Radio Control.
  */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'radio',
-		'settings'    => 'radio_setting',
-		'label'       => esc_attr__( 'Radio Control', 'kirki' ),
-		'description' => esc_attr__( 'The description here.', 'kirki' ),
-		'section'     => 'radio_section',
-		'default'     => 'option-3',
-		'choices'     => array(
-			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
-			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
-			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
-			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
-			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+Kirki::add_field( 'my_config', array(
+	'type'        => 'radio',
+	'settings'    => 'radio_setting',
+	'label'       => esc_attr__( 'Radio Control', 'kirki' ),
+	'description' => esc_attr__( 'The description here.', 'kirki' ),
+	'section'     => 'radio_section',
+	'default'     => 'option-3',
+	'choices'     => array(
+		'c00' => esc_attr__( 'Red', 'kirki' ),
+		'fff' => esc_attr__( 'White', 'kirki' ),
+		'000' => esc_attr__( 'Black', 'kirki' ),
+	),
+	'output'      => array(
+		array(
+			'element'       => 'body',
+			'property'      => 'background-color',
+			'value_pattern' => '#$' // $ is a placeholder for the value.
 		),
-	)
-);
+	),
+) );
 
 /**
  * Radio-Buttonset Control.
@@ -810,7 +820,7 @@ my_config_kirki_add_field(
 		'settings'    => 'switch_setting',
 		'label'       => esc_attr__( 'Switch Control', 'kirki' ),
 		'description' => esc_attr__( 'Description', 'kirki' ),
-		'section'     => 'switch_section',
+		'section'     => 'image_section',
 		'default'     => true,
 	)
 );
@@ -934,3 +944,92 @@ function kirki_sidebars_select_example() {
 	) );
 }
 add_action( 'init', 'kirki_sidebars_select_example', 999 );
+
+Kirki::add_config( 'theme', array(
+	'option_type' => 'option',
+	// 'option_name' => 'llaalala',
+	'capability'  => 'edit_theme_options',
+) );
+
+ Kirki::add_field( 'theme', array(
+        'type'        => 'switch',
+        'settings'    => 'theme_my_account_display',
+        'label'       => __( 'Display "My account" button in header', 'theme' ),
+        'section'     => 'select_section',
+        'default'     => true,
+        'priority'    => 10,
+        'choices'     => array(
+           	'on'  => esc_attr__( 'Show', 'theme' ),
+            'off' => esc_attr__( 'Hide', 'theme' ),
+        ),
+    ) );
+// var_dump(get_option('theme_my_account_display', true));
+
+Kirki::add_config( 'alphamedia-blacklab-option', array(
+  'capability'    => 'edit_theme_options',
+  'option_type'   => 'option',
+  'option_name'   => 'alphamedia_options'
+) );
+
+Kirki::add_field( 'alphamedia-blacklab-option', array(
+  'type'        => 'repeater',
+  'settings'    => 'audio-player-multiple-options',
+  'label'       => esc_attr__( 'Streams', 'alphamedia-blacklab' ),
+  'description' => esc_attr__( 'Setup the audio player streams.', 'alphamedia-blacklab' ),
+  'section'     => 'checkbox_section',
+  'row_label' => array(
+    'type' => 'text',
+    'value' =>  esc_attr__( 'Audio Stream', 'alphamedia-blacklab' ),
+  ),
+  'fields' => array(
+    'station_name' => array(
+      'type'        => 'text',
+      'label'       => esc_attr__( 'Station Name', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Enter the station name that will appear with the audio stream.', 'alphamedia-blacklab' ),
+    ),
+    'station_logo' => array(
+      'type'        => 'image',
+      'label'       => esc_attr__( 'Station Logo', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Upload the station logo for the stream here.', 'alphamedia-blacklab' ),
+    ),
+    'provider' => array(
+      'type'        => 'select',
+      'label'       => esc_attr__( 'Streaming Provider', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Select a streaming provider if the station plays music and needs playlist data.', 'alphamedia-blacklab' ),
+      'choices' => array(
+        'wide-orbit' => 'Wide Orbit',
+        'triton' => 'Triton',
+        'first-streaming' => 'First Streaming',
+      ),
+    ),
+    'playlist_id' => array(
+      'type'        => 'text',
+      'label'       => esc_attr__( 'Playlist ID', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Enter the playlist ID provided by the streaming provider. This will allow song history to work.', 'alphamedia-blacklab' ),
+    ),
+    'aac_link' => array(
+      'type'        => 'text',
+      'label'       => esc_attr__( 'AAC Stream Link', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Enter the URL to the AAC version of the audio stream.', 'alphamedia-blacklab' ),
+    ),
+    'mp3_link' => array(
+      'type'        => 'text',
+      'label'       => esc_attr__( 'MP3 Stream Link', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Enter the URL to the MP3 version of the audio stream.', 'alphamedia-blacklab' ),
+    ),
+    'dfp_id' => array(
+      'type'        => 'text',
+      'label'       => esc_attr__( 'DFP ID', 'alphamedia-blacklab' ),
+      'description' => esc_attr__( 'Enter the DFP ID for the station.', 'alphamedia-blacklab' ),
+    ),
+  ),
+  'active_callback' => array(
+    array(
+      'setting' => 'audio-player-mode',
+      'operator' => '==',
+      'value'    => 'multiple',
+    ),
+  ),
+) );
+
+var_dump( get_option( 'alphamedia_options' ) );

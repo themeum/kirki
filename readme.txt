@@ -36,6 +36,13 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 = 3.0.23 =
 
 * Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
+* Fix: PHP mode in code controls.
+* Fix: `active_callback` not working for upload fields [#1732](https://github.com/aristath/kirki/issues/1732)
+* Fix: accessibility issue on radio-buttonset controls [#1722](https://github.com/aristath/kirki/issues/1722)
+* Fix: `active_callback` not working for cropped-image controls [#1752](https://github.com/aristath/kirki/issues/1752)
+* Fix: added support for `button_labels` in image fields [#1173](https://github.com/aristath/kirki/issues/1173)
+* Fix: Support for adding inline CSS to an already defined stylesheet.
+* New: Added googlefonts resource hints. Props @aryaprakasa.
 * Tweak: Removed legacy code
 
 = 3.0.22 =
@@ -44,7 +51,7 @@ December 20 2017, dev time: 3.5 hours.
 
 * Fix: Files cleanup. Removed webfonts.php and now use the json file.
 * Fix: WordPress Coding Standards fixes.
-* New: Converted all filter names to use `_` instead of `/` (WPCS)
+* New: Converted all filter names to use `_` instead of `/` (WPCS). Fallback methods included.
 * New: Removed inline methods for webfonts and now use [typekit/webfontloader](https://github.com/typekit/webfontloader).
 * New: Update GoogleFonts list.
 
