@@ -2,19 +2,18 @@
 
 // Asyncronously add webfontloader.
 ( function( document ) {
-	var wf      = document.createElement( 'script' ),
-	    scripts = document.scripts[0];
+	let wfScript = document.createElement( 'script' ),
+	    scripts  = document.scripts[0];
 
-	wf.src   = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-	wf.id    = 'webfontloader',
-	wf.async = true;
+	wfScript.src   = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+	wfScript.id    = 'webfontloader';
+	wfScript.async = true;
 
-	scripts.parentNode.insertBefore( wf, scripts );
+	scripts.parentNode.insertBefore( wfScript, scripts );
 } )( document );
 
 jQuery( document ).ready( function() {
-	var script  = document.querySelector( '#webfontloader' ),
-	    subsets = ['cyrillic', 'cyrillic-ext', 'devanagari', 'greek', 'greek-ext', 'khmer', 'latin', 'latin-ext', 'vietnamese', 'hebrew', 'arabic', 'bengali', 'gujarati', 'tamil', 'telugu', 'thai'];
+	let script  = document.querySelector( '#webfontloader' );
 
 	// Check when the webfontloader finishes loading.
 	script.addEventListener( 'load', function() {
@@ -25,7 +24,7 @@ jQuery( document ).ready( function() {
 			// Add font.
 			WebFont.load( {
 				google:{
-					families: [ family + ':' + weights.join( ',' ) + subsets.join( ',' ) ]
+					families: [ family + ':' + weights.join( ',' ) + 'cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai' ]
 				}
 			} );
 		} );
