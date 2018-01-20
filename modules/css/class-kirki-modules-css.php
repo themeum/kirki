@@ -203,6 +203,9 @@ class Kirki_Modules_CSS {
 			}
 			$this->processed = true;
 		}
+		if ( apply_filters( 'kirki_load_fontawesome', true ) ) {
+			wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
+		}
 	}
 
 	/**
