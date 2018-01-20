@@ -143,9 +143,7 @@ var kirkiPostMessage = {
 								googleFont += ':' + value.variant;
 							}
 						}
-						if ( value.subsets && ! _.isEmpty( value.subsets ) ) {
-							googleFont += ':' + value.subsets.join( ',' );
-						}
+						googleFont += ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 						WebFont.load( {
 							google: {
 								families: [ googleFont ]
