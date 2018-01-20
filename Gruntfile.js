@@ -174,11 +174,11 @@ module.exports = function( grunt ) {
 			finalObject.items[ alphaFonts.items[ i ].family ] = {
 				family: alphaFonts.items[ i ].family,
 				category: alphaFonts.items[ i ].category,
-				variants: alphaFonts.items[ i ].variants.sort(),
+				variants: alphaFonts.items[ i ].variants.sort()
 				/* Deprecated
 				subsets: alphaFonts.items[ i ].subsets.sort(),
-				*/
 				files: alphaFonts.items[ i ].files
+				*/
 			};
 		}
 
