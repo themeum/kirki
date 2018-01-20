@@ -175,7 +175,9 @@ module.exports = function( grunt ) {
 				family: alphaFonts.items[ i ].family,
 				category: alphaFonts.items[ i ].category,
 				variants: alphaFonts.items[ i ].variants.sort(),
+				/* Deprecated
 				subsets: alphaFonts.items[ i ].subsets.sort(),
+				*/
 				files: alphaFonts.items[ i ].files
 			};
 		}

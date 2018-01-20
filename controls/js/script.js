@@ -108,7 +108,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each( ['font-family', 'variant', 'subsets'], function( subVal ) {
+					_.each( ['font-family', 'variant'], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
 							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
@@ -3237,7 +3237,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
-		control.renderSubsetSelector();
 
 		// Font-size.
 		if ( control.params['default']['font-size'] ) {
@@ -3379,10 +3378,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			// Re-init variants selector.
 			control.renderVariantSelector();
-
-			// Re-init subsets selector.
-			control.renderSubsetSelector();
-		});
+		} );
 	},
 
 	/**
@@ -3493,58 +3489,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			control.saveValue( 'font-weight', fontWeight );
 			control.saveValue( 'font-style', fontStyle );
-		});
-	},
-
-	/**
-	 * Renders the subsets selector using selectWoo
-	 * Displays font-subsets for the currently selected font-family.
-	 */
-	renderSubsetSelector: function() {
-
-		var control    = this,
-		    value      = control.setting._value,
-		    fontFamily = value['font-family'],
-		    subsets    = kirki.util.webfonts.google.getSubsets( fontFamily ),
-		    selector   = control.selector + ' .subsets select',
-		    data       = [],
-		    validValue = value.subsets,
-		    subsetSelector;
-
-		if ( false !== subsets ) {
-			jQuery( control.selector + ' .subsets' ).show();
-			_.each( subsets, function( subset ) {
-
-				if ( _.isObject( validValue ) ) {
-					if ( -1 === validValue.indexOf( subset ) ) {
-						validValue = _.reject( validValue, function( subValue ) {
-							return subValue === subset;
-						});
-					}
-				}
-
-				data.push({
-					id: subset,
-					text: subset
-				});
-			});
-
-		} else {
-			jQuery( control.selector + ' .subsets' ).hide();
-		}
-
-		if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
-			jQuery( selector ).selectWoo( 'destroy' );
-			jQuery( selector ).empty();
-		}
-
-		// Instantiate selectWoo with the data.
-		subsetSelector = jQuery( selector ).selectWoo({
-			data: data
-		});
-		subsetSelector.val( validValue ).trigger( 'change' );
-		subsetSelector.on( 'change', function() {
-			control.saveValue( 'subsets', jQuery( this ).val() );
 		});
 	},
 

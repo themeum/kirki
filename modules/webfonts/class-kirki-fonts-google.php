@@ -36,15 +36,6 @@ final class Kirki_Fonts_Google {
 	public static $force_load_all_variants = false;
 
 	/**
-	 * If set to true, forces loading ALL subsets.
-	 *
-	 * @static
-	 * @access public
-	 * @var bool
-	 */
-	public static $force_load_all_subsets = false;
-
-	/**
 	 * The array of fonts
 	 *
 	 * @access public
@@ -59,14 +50,6 @@ final class Kirki_Fonts_Google {
 	 * @var array
 	 */
 	private $google_fonts = array();
-
-	/**
-	 * The array of subsets
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $subsets = array();
 
 	/**
 	 * The class constructor.
@@ -131,18 +114,6 @@ final class Kirki_Fonts_Google {
 			if ( ! isset( $value['variant'] ) ) {
 				$value['variant'] = 'regular';
 			}
-			if ( isset( $value['subsets'] ) ) {
-
-				// Add the subset directly to the array of subsets in the Kirki_GoogleFonts_Manager object.
-				// Subsets must be applied to ALL fonts if possible.
-				if ( ! is_array( $value['subsets'] ) ) {
-					$this->subsets[] = $value['subsets'];
-				} else {
-					foreach ( $value['subsets'] as $subset ) {
-						$this->subsets[] = $subset;
-					}
-				}
-			}
 
 			// Add the requested google-font.
 			if ( ! isset( $this->fonts[ $value['font-family'] ] ) ) {
@@ -169,7 +140,7 @@ final class Kirki_Fonts_Google {
 				foreach ( $args['output'] as $output ) {
 
 					// If we don't have a typography-related output argument we can skip this.
-					if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight', 'font-subset', 'subset', 'subsets' ), true ) ) {
+					if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight' ), true ) ) {
 						continue;
 					}
 
@@ -185,18 +156,6 @@ final class Kirki_Fonts_Google {
 							foreach ( $this->fonts as $font => $variants ) {
 								if ( ! in_array( $value, $variants, true ) ) {
 									$this->fonts[ $font ][] = $value;
-								}
-							}
-						} elseif ( 'font-subset' === $output['property'] || 'subset' === $output['property'] || 'subsets' === $output['property'] ) {
-							if ( ! is_array( $value ) ) {
-								if ( ! in_array( $value, $this->subsets, true ) ) {
-									$this->subsets[] = $value;
-								}
-							} else {
-								foreach ( $value as $subset ) {
-									if ( ! in_array( $subset, $this->subsets, true ) ) {
-										$this->subsets[] = $subset;
-									}
 								}
 							}
 						}
@@ -218,7 +177,6 @@ final class Kirki_Fonts_Google {
 			return;
 		}
 
-		$valid_subsets = array();
 		foreach ( $this->fonts as $font => $variants ) {
 
 			// Determine if this is indeed a google font or not.
@@ -243,18 +201,7 @@ final class Kirki_Fonts_Google {
 					continue;
 				}
 			}
-
-			// Check if the selected subsets exist, even in one of the selected fonts.
-			// If they don't, then they have to be removed otherwise the link will fail.
-			if ( isset( $this->google_fonts[ $font ]['subsets'] ) ) {
-				foreach ( $this->subsets as $subset ) {
-					if ( in_array( $subset, $this->google_fonts[ $font ]['subsets'], true ) ) {
-						$valid_subsets[] = $subset;
-					}
-				}
-			}
 		}
-		$this->subsets = $valid_subsets;
 	}
 
 	/**

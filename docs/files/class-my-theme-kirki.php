@@ -271,11 +271,6 @@ class My_Theme_Kirki {
 
 						foreach ( $value as $key => $subvalue ) {
 
-							// Exclude subsets as a property.
-							if ( 'subsets' === $key ) {
-								continue;
-							}
-
 							// Add double quotes if needed to font-families.
 							if ( 'font-family' == $key && false !== strpos( $subvalue, ' ' ) && false === strpos( $subvalue, '"' ) ) {
 								$css[ $output['media_query'] ][ $output['element'] ]['font-family'] = '"' . $subvalue . '"';
@@ -384,13 +379,8 @@ class My_Theme_Kirki {
 					$url = '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $value['font-family'] );
 					$value['variant'] = ( isset( $value['variant'] ) ) ? $value['variant'] : '';
 					$url .= ( empty( $value['variant'] ) ) ? '' : ':' . $value['variant'];
-					$value['subset'] = ( isset( $value['subset'] ) ) ? $value['subset'] : '';
 
-					if ( ! empty( $value['subset'] ) ) {
-						$value['subset'] = ( is_array( $value['subset'] ) ) ? implode( ',', $value['subsets'] ) : $value['subset'];
-						$url .= '&subset=' . $value['subset'];
-					}
-					$key = md5( $value['font-family'] . $value['variant'] . $value['subset'] );
+					$key = md5( $value['font-family'] . $value['variant'] );
 
 					// Check that the URL is valid. we're going to use transients to make this faster.
 					$url_is_valid = get_transient( $key );

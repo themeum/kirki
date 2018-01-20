@@ -35,10 +35,4 @@ class Test_Kirki_Fonts extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'handwriting', Kirki_Fonts::get_backup_fonts() );
 		$this->assertArrayHasKey( 'monospace', Kirki_Fonts::get_backup_fonts() );
 	}
-
-	public function test_get_google_font_subsets() {
-		$this->assertTrue( is_array( Kirki_Fonts::get_google_font_subsets() ) );
-		$this->assertEquals( Kirki_Fonts::get_google_font_subsets(), Kirki_Fonts::get_google_font_subsets() );
-	}
-
 }

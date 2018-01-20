@@ -13,7 +13,8 @@
 } )( document );
 
 jQuery( document ).ready( function() {
-	var script = document.querySelector( '#webfontloader' );
+	var script  = document.querySelector( '#webfontloader' ),
+	    subsets = ['cyrillic', 'cyrillic-ext', 'devanagari', 'greek', 'greek-ext', 'khmer', 'latin', 'latin-ext', 'vietnamese', 'hebrew', 'arabic', 'bengali', 'gujarati', 'tamil', 'telugu', 'thai'];
 
 	// Check when the webfontloader finishes loading.
 	script.addEventListener( 'load', function() {
@@ -24,7 +25,7 @@ jQuery( document ).ready( function() {
 			// Add font.
 			WebFont.load( {
 				google:{
-					families: [ family + ':' + weights.join( ',' )]
+					families: [ family + ':' + weights.join( ',' ) + subsets.join( ',' ) ]
 				}
 			} );
 		} );
