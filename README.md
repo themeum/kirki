@@ -46,6 +46,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `active_callback` support when using serialized options [#1745](https://github.com/aristath/kirki/issues/1745)
 * Fix: Remove timepicker from date control [#1750](https://github.com/aristath/kirki/issues/1750)
 * New: Added googlefonts resource hints. Props @aryaprakasa.
+* New: Now loading fontawesome from a CDN. smaller footprint for the plugin and async loading will improve performance for everyone [#1763](https://github.com/aristath/kirki/issues/1763)
 * Tweak: Removed legacy code.
 * Tweak: Code cleanups.
 
