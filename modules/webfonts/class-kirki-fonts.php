@@ -123,6 +123,11 @@ final class Kirki_Fonts {
 		// Get fonts from cache.
 		self::$google_fonts = get_site_transient( 'kirki_googlefonts_cache' );
 
+		// If we're debugging, don't use cached.
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			self::$google_fonts = false;
+		}
+
 		// If cache is populated, return cached fonts array.
 		if ( self::$google_fonts ) {
 			return self::$google_fonts;
