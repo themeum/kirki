@@ -1,16 +1,4 @@
 <?php
-/**
- * This file contains all the deprecated functions.
- * We could easily delete all these but they are kept for backwards-compatibility purposes.
- *
- * @package     Kirki
- * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       1.0
- */
-
 // @codingStandardsIgnoreFile
 
 // Exit if accessed directly.
@@ -64,23 +52,5 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 if ( ! function_exists( 'Kirki' ) ) {
 	function Kirki() {
 		return kirki();
-	}
-}
-
-if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
-	// Removed in https://github.com/aristath/kirki/pull/1682/files
-	class Kirki_Active_Callback {
-		public static function evaluate() {
-			_deprecated_function( __METHOD__, '3.0.17', null );
-			return true;
-		}
-		private static function evaluate_requirement() {
-			_deprecated_function( __METHOD__, '3.0.17', null );
-			return true;
-		}
-		public static function compare( $value1, $value2, $operator ) {
-			_deprecated_function( __METHOD__, '3.0.17', 'Kirki_Helper::compare_values' );
-			return Kirki_Helper::compare_values( $value1, $value2, $operator );
-		}
 	}
 }

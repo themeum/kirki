@@ -120,12 +120,7 @@ class Kirki_Control_Background extends Kirki_Control_Base {
 					</input>
 				</div>
 			</div>
-			<?php if ( Kirki_Util::get_wp_version() >= 4.9 ) : ?>
-				<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
-			<?php else : ?>
-				<# valueJSON = JSON.stringify( data.value ).replace( /'/g, '&#39' ); #>
-				<input class="background-hidden-value" type="hidden" value='{{{ valueJSON }}}' {{{ data.link }}}>
-			<?php endif; ?>
+			<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php
 	}
 }

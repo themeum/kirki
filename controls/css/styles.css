@@ -250,7 +250,7 @@
   .customize-control-kirki-radio-buttonset .buttonset .switch-label {
     background: rgba(0, 0, 0, 0.1);
     border: 1px rgba(0, 0, 0, 0.1);
-    color: rgba(50, 55, 60, 0.5);
+    color: #555d66;
     margin: 0;
     text-align: center;
     padding: 0.5em 1em;
@@ -626,7 +626,6 @@
     .customize-control-kirki-typography .wrapper .line-height,
     .customize-control-kirki-typography .wrapper .margin-bottom,
     .customize-control-kirki-typography .wrapper .margin-top,
-    .customize-control-kirki-typography .wrapper .subsets,
     .customize-control-kirki-typography .wrapper .text-align,
     .customize-control-kirki-typography .wrapper .text-transform,
     .customize-control-kirki-typography .wrapper .variant {

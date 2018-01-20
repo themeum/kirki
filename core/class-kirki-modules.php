@@ -49,7 +49,7 @@ class Kirki_Modules {
 	}
 
 	/**
-	 * Set the default modules and apply the 'kirki/modules' filter.
+	 * Set the default modules and apply the 'kirki_modules' filter.
 	 *
 	 * @access private
 	 * @since 3.0.0
@@ -57,7 +57,7 @@ class Kirki_Modules {
 	private function default_modules() {
 
 		self::$modules = apply_filters(
-			'kirki/modules', array(
+			'kirki_modules', array(
 				'css'                => 'Kirki_Modules_CSS',
 				'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
 				'icons'              => 'Kirki_Modules_Icons',
@@ -65,11 +65,9 @@ class Kirki_Modules {
 				'tooltips'           => 'Kirki_Modules_Tooltips',
 				'branding'           => 'Kirki_Modules_Customizer_Branding',
 				'postMessage'        => 'Kirki_Modules_PostMessage',
-				// 'post_meta'          => 'Kirki_Modules_Post_Meta',
 				'selective-refresh'  => 'Kirki_Modules_Selective_Refresh',
 				'field-dependencies' => 'Kirki_Modules_Field_Dependencies',
 				'custom-sections'    => 'Kirki_Modules_Custom_Sections',
-				// 'collapsible'        => 'Kirki_Modules_Collapsible',
 				'webfonts'           => 'Kirki_Modules_Webfonts',
 			)
 		);

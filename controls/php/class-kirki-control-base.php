@@ -33,6 +33,14 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
+	 * Option name (if using options).
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $option_name = false;
+
+	/**
 	 * The kirki_config we're using for this control
 	 *
 	 * @access public
@@ -68,7 +76,6 @@ class Kirki_Control_Base extends WP_Customize_Control {
 
 		// Build the suffix for the script.
 		$suffix  = '';
-		$suffix .= ( Kirki_Util::get_wp_version() >= 4.9 ) ? '' : '-legacy';
 		$suffix .= ( ! defined( 'SCRIPT_DEBUG' ) || true !== SCRIPT_DEBUG ) ? '.min' : '';
 
 		// The Kirki plugin URL.
@@ -154,6 +161,12 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
+		// The kirki-config.
+		$this->json['kirkiConfig'] = $this->kirki_config;
+		// The option-type.
+		$this->json['kirkiOptionType'] = $this->option_type;
+		// The option-name.
+		$this->json['kirkiOptionName'] = $this->option_name;
 	}
 
 	/**

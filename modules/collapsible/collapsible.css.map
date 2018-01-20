@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACE,0CAA0B;EACxB,OAAO,EAAE,eAAe;AAIxB,kEAAyB;EACvB,MAAM,EAAE,OAAO;EAEf,wEAAQ;IACN,KAAK,EAAE,IAAI;;AAMnB,+BAAgC;EAC9B,MAAM,EAAE,OAAO;EAEf,qCAAQ;IACN,KAAK,EAAE,IAAI",
-"sources": ["collapsible.scss"],
-"names": [],
-"file": "collapsible.css"
-}

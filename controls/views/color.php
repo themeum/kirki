@@ -1,3 +1,15 @@
+<?php
+/**
+ * Customizer controls underscore.js template.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       3.0.17
+ */
+
+?>
 <#
 data = _.defaults( data, {
 	label: '',
@@ -12,7 +24,7 @@ data = _.defaults( data, {
 } );
 #>
 
-<div class="kirki-input-container" data-id="{{ data.id }}">
+<div class="kirki-input-container" data-id="{{ data['data-id'] }}">
 	<label>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{{ data.label }}}</span>

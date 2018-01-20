@@ -1,3 +1,15 @@
+<?php
+/**
+ * Customizer controls underscore.js template.
+ *
+ * @package     Kirki
+ * @subpackage  Controls
+ * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       3.0.17
+ */
+
+?>
 <#
 element = ( data.choices.element ) ? data.choices.element : 'input';
 data = _.defaults( data, {

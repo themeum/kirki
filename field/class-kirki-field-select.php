@@ -93,7 +93,7 @@ class Kirki_Field_Select extends Kirki_Field {
 		if ( is_array( $value ) ) {
 			foreach ( $value as $key => $subvalue ) {
 				if ( '' !== $subvalue || isset( $this->choices[''] ) ) {
-					$key = sanitize_key( $key );
+					$key           = sanitize_key( $key );
 					$value[ $key ] = esc_attr( $subvalue );
 				}
 			}

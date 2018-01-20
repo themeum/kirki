@@ -26,8 +26,6 @@ rm -rf controls/css/*.map
 rm -rf controls/js/src
 rm -rf controls/scss
 rm -rf docs
-rm modules/collapsible/*.scss
-rm modules/collapsible/*.map
 rm modules/custom-sections/*.scss
 rm modules/custom-sections/*.map
 rm modules/tooltips/*.scss
@@ -54,6 +52,7 @@ rm phpcs.ruleset.xml
 rm phpunit.xml
 rm README.md
 rm *.sh
+rm package-lock.json
 
 cd ..
 zip -rq kirki.zip kirki

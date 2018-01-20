@@ -2,9 +2,9 @@
 Contributors: aristath, fovoc, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
-Requires at least: 4.8.2
-Tested up to: 4.9.1
-Stable tag: 3.0.20
+Requires at least: 4.9
+Tested up to: 4.9.2
+Stable tag: 3.0.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,12 +33,45 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.23 =
+
+* Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
+* Fix: PHP mode in code controls.
+* Fix: `active_callback` not working for upload fields [#1732](https://github.com/aristath/kirki/issues/1732)
+* Fix: accessibility issue on radio-buttonset controls [#1722](https://github.com/aristath/kirki/issues/1722)
+* Fix: `active_callback` not working for cropped-image controls [#1752](https://github.com/aristath/kirki/issues/1752)
+* Fix: added support for `button_labels` in image fields [#1173](https://github.com/aristath/kirki/issues/1173)
+* Fix: Support for adding inline CSS to an already defined stylesheet.
+* Fix: Sanitization in section & panel descriptions and priorities [#1759](https://github.com/aristath/kirki/issues/1759)
+* Fix: `active_callback` support when using serialized options [#1745](https://github.com/aristath/kirki/issues/1745)
+* Fix: Remove timepicker from date control [#1750](https://github.com/aristath/kirki/issues/1750)
+* Fix: WebfontLoader improvements.
+* New: Added googlefonts resource hints. Props @aryaprakasa.
+* New: Now loading fontawesome from a CDN. smaller footprint for the plugin and async loading will improve performance for everyone [#1763](https://github.com/aristath/kirki/issues/1763)
+* Tweak: Removed legacy code.
+* Tweak: Code cleanups.
+* Deprecated: Typography controls no longer require the "subset" dropdown.
+
+= 3.0.22 =
+
+December 20 2017, dev time: 3.5 hours.
+
+* Fix: Files cleanup. Removed webfonts.php and now use the json file.
+* Fix: WordPress Coding Standards fixes.
+* New: Converted all filter names to use `_` instead of `/` (WPCS). Fallback methods included.
+* New: Removed inline methods for webfonts and now use [typekit/webfontloader](https://github.com/typekit/webfontloader).
+* New: Update GoogleFonts list.
+
 = 3.0.21 =
+
+December 18 2017, dev time: 3 hours
 
 * Fix: Allow HTML in labels and descriptions [#1705](https://github.com/aristath/kirki/issues/1705)
 * Fix: Code controls minor refactor (now extends the `WP_Customize_Code_Editor_Control` class)
-* New: Add `placeholder` argument in `select` controls [#1593](https://github.com/aristath/kirki/issues/1593)
 * Fix: Checkbox values sanitization inside repeater controls [#1715](https://github.com/aristath/kirki/issues/1715)
+* Fix: JS error in dimension controls when not using a CSS unit [#1711](https://github.com/aristath/kirki/pull/1711) props @FrankM1
+* Fix: AJAX issue on a host with weird config.
+* New: Add `placeholder` argument in `select` controls [#1593](https://github.com/aristath/kirki/issues/1593)
 
 = 3.0.20 =
 

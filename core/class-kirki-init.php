@@ -32,7 +32,7 @@ class Kirki_Init {
 		self::set_url();
 		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
-		add_filter( 'kirki/control_types', array( $this, 'default_control_types' ) );
+		add_filter( 'kirki_control_types', array( $this, 'default_control_types' ) );
 
 		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
@@ -60,8 +60,8 @@ class Kirki_Init {
 
 		Kirki::$url = str_replace( $content_dir, $content_url, wp_normalize_path( Kirki::$path ) );
 
-		// Apply the kirki/config filter.
-		$config = apply_filters( 'kirki/config', array() );
+		// Apply the kirki_config filter.
+		$config = apply_filters( 'kirki_config', array() );
 		if ( isset( $config['url_path'] ) ) {
 			Kirki::$url = $config['url_path'];
 		}
@@ -112,8 +112,8 @@ class Kirki_Init {
 			'kirki-toggle'          => 'Kirki_Control_Toggle',
 			'kirki-typography'      => 'Kirki_Control_Typography',
 			'image'                 => 'Kirki_Control_Image',
-			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
-			'upload'                => 'WP_Customize_Upload_Control',
+			'cropped_image'         => 'Kirki_Control_Cropped_Image',
+			'upload'                => 'Kirki_Control_Upload',
 		);
 		return array_merge( $this->control_types, $control_types );
 
@@ -136,7 +136,7 @@ class Kirki_Init {
 	public function register_control_types() {
 		global $wp_customize;
 
-		$section_types = apply_filters( 'kirki/section_types', array() );
+		$section_types = apply_filters( 'kirki_section_types', array() );
 		foreach ( $section_types as $section_type ) {
 			$wp_customize->register_section_type( $section_type );
 		}
@@ -149,7 +149,7 @@ class Kirki_Init {
 		}
 
 		$skip_control_types = apply_filters(
-			'kirki/control_types/exclude', array(
+			'kirki_control_types_exclude', array(
 				'Kirki_Control_Repeater',
 				'WP_Customize_Control',
 			)
@@ -234,7 +234,7 @@ class Kirki_Init {
 	}
 
 	/**
-	 * Process fields added using the 'kirki/fields' and 'kirki/controls' filter.
+	 * Process fields added using the 'kirki_fields' and 'kirki_controls' filter.
 	 * These filters are no longer used, this is simply for backwards-compatibility.
 	 *
 	 * @access private
@@ -242,8 +242,8 @@ class Kirki_Init {
 	 */
 	private function fields_from_filters() {
 
-		$fields = apply_filters( 'kirki/controls', array() );
-		$fields = apply_filters( 'kirki/fields', $fields );
+		$fields = apply_filters( 'kirki_controls', array() );
+		$fields = apply_filters( 'kirki_fields', $fields );
 
 		if ( ! empty( $fields ) ) {
 			foreach ( $fields as $field ) {

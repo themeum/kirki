@@ -55,11 +55,27 @@ var kirkiDependencies = {
 
 		// Loop control requirements.
 		_.each( control.params.required, function( requirement ) {
+			let requirementShow;
+
+			// Tweak for using active callbacks with serialized options instead of theme_mods.
+			if (
+				control.params && // Check if control.params exists.
+				control.params.kirkiOptionType &&  // Check if option_type exists.
+				'option' === control.params.kirkiOptionType &&  // We're using options.
+				control.params.kirkiOptionName && // Check if option_name exists.
+				! _.isEmpty( control.params.kirkiOptionName ) && // Check if option_name is not empty.
+				-1 === requirement.setting.indexOf( control.params.kirkiOptionName + '[' ) // Make sure we don't already have the option_name in there.
+			) {
+				requirement.setting = control.params.kirkiOptionName + '[' + requirement.setting + ']';
+			}
+
+			// Early exit if setting is not defined.
 			if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
 				show = true;
 				return;
 			}
-			var requirementShow = self.evaluate( requirement.value, wp.customize.control( requirement.setting ).setting._value, requirement.operator );
+
+			requirementShow = self.evaluate( requirement.value, wp.customize.control( requirement.setting ).setting._value, requirement.operator );
 
 			self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
 			if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
@@ -83,7 +99,7 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	evaluate: function( value1, value2, operator ) {
-		var found = false,
+		var found  = false,
 		    result = null;
 
 		if ( '===' === operator ) {
@@ -104,7 +120,6 @@ var kirkiDependencies = {
 			result = value2 < value1;
 		} else if ( 'contains' === operator || 'in' === operator ) {
 			if ( _.isArray( value2 ) ) {
-				found = false;
 				_.each( value2, function( value ) {
 					if ( value == value1 ) { // jshint ignore:line
 						found = true;
@@ -112,7 +127,6 @@ var kirkiDependencies = {
 				} );
 				return found;
 			} else if ( _.isObject( value2 ) ) {
-				found = false;
 				if ( ! _.isUndefined( value2[ value1 ] ) ) {
 					found = true;
 				}

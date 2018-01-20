@@ -1,0 +1,135 @@
+- name: Enspire
+  url: http://alxmedia.se/themes/enspire/
+  thumb: http://demo.alxmedia.se/wp-content/themes/enspire/screenshot.png
+
+- name: Typecore
+  url: http://alxmedia.se/themes/typecore/
+  thumb: http://demo.alxmedia.se/wp-content/themes/typecore/screenshot.png
+
+- name: Kontrast
+  url: http://alxmedia.se/themes/kontrast/
+  thumb: http://demo.alxmedia.se/wp-content/themes/kontrast/screenshot.png
+
+- name: Slanted
+  url: http://alxmedia.se/themes/slanted/
+  thumb: http://demo.alxmedia.se/wp-content/themes/slanted/screenshot.png
+  
+- name: Blogline
+  url: http://alxmedia.se/themes/blogline/
+  thumb: http://demo.alxmedia.se/wp-content/themes/blogline/screenshot.png
+  
+- name: Blogrow
+  url: http://alxmedia.se/themes/blogrow/
+  thumb: http://demo.alxmedia.se/wp-content/themes/blogrow/screenshot.png
+
+- name: Advance
+  url: https://wordpress.org/themes/advance/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/advance/1.4.0/screenshot.jpg?w=1142&strip=all
+
+- name : Promote Lite
+  url: https://themezwp.com/promote-lite/
+  thumb: https://themezwp.com/wp-content/uploads/2017/01/single-free-2.png
+
+- name: Green Ink
+  url: http://pressfore.com/item/green-ink-wordpress-theme/
+  thumb: http://pressfore.com/wp-content/uploads/2017/03/green-ink-item-screenshot-750x400.jpg
+
+- name: Agama
+  url: https://wordpress.org/themes/agama/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/agama/1.2.0/screenshot.png
+
+- name: BlogMaster
+  url: https://wordpress.org/themes/blogmaster/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/blogmaster/1.0.5/screenshot.png
+
+- name: BlogR
+  url: https://wordpress.org/themes/blogr/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/blogr/1.1.2/screenshot.png
+
+- name: BootFrame Core
+  url: https://wordpress.org/themes/bootframe-core/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/bootframe-core/1.2.3/screenshot.png
+
+- name: Causes
+  url: https://wordpress.org/themes/causes
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/causes/1.0.6/screenshot.png
+
+- name: First Mag
+  url: https://wordpress.org/themes/first-mag/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/first-mag/1.1.4/screenshot.png
+
+- name: Gently
+  url: https://wordpress.org/themes/gently/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/gently/1.0.4/screenshot.jpg
+
+- name: i-craft
+  url: https://wordpress.org/themes/i-craft/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/i-craft/1.1.4/screenshot.png
+
+- name: i-excel
+  url: https://wordpress.org/themes/i-excel/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/i-excel/1.1.6/screenshot.png
+
+- name: i-max
+  url: https://wordpress.org/themes/i-max/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/i-max/1.1.6/screenshot.png
+
+- name: infiword
+  url: https://wordpress.org/themes/infiword/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/infiword/2.1.3/screenshot.png
+
+- name: kyma
+  url: https://wordpress.org/themes/kyma/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/kyma/1.4.8/screenshot.png
+
+- name: Lindeza
+  url: https://wordpress.org/themes/lindeza/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/lindeza/1.0.3/screenshot.png
+
+- name: Lucy
+  url: https://wordpress.org/themes/lucy/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/lucy/1.0.7/screenshot.png
+
+- name: matrix
+  url: https://wordpress.org/themes/matrix/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/matrix/2.2/screenshot.png
+
+- name: ophelia
+  url: https://wordpress.org/themes/ophelia/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/ophelia/1.0.3/screenshot.png
+
+- name: Ornea
+  url: https://wordpress.org/themes/ornea/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/ornea/1.0.3/screenshot.png
+
+- name: PressNews
+  url: https://wordpress.org/themes/pressnews/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/pressnews/1.0.7/screenshot.png
+
+- name: Quidus
+  url: https://wordpress.org/themes/quidus/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/quidus/2.107/screenshot.png
+
+- name: Shamrock
+  url: https://wordpress.org/themes/shamrock/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/shamrock/1.0.7/screenshot.png
+
+- name: Some Like it Neat
+  url: https://wordpress.org/themes/some-like-it-neat/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/some-like-it-neat/1.1.10/screenshot.png
+
+- name: Supernova
+  url: https://wordpress.org/themes/supernova/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/supernova/2.0.6/screenshot.png
+
+- name: TheWest
+  url: https://wordpress.org/themes/thewest/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/thewest/1.5/screenshot.png
+
+- name: Topcat Lite
+  url: https://wordpress.org/themes/topcat-lite/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/topcat-lite/1.0.18/screenshot.png
+
+- name: Vivacity Lite
+  url: https://wordpress.org/themes/vivacity-lite/
+  thumb: https://i0.wp.com/themes.svn.wordpress.org/vivacity-lite/1.11/screenshot.png

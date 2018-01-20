@@ -5,7 +5,7 @@ mainMaxWidth: 50rem;
 bodyClasses: page
 ---
 
-Kirki allows you to change the styling of the customizer using the `kirki/config` filter:
+Kirki allows you to change the styling of the customizer using the `kirki_config` filter:
 
 ```php
 <?php
@@ -13,7 +13,7 @@ Kirki allows you to change the styling of the customizer using the `kirki/config
  * Configuration sample for the Kirki Customizer.
  * The function's argument is an array of existing config values
  * The function returns the array with the addition of our own arguments
- * and then that result is used in the kirki/config filter
+ * and then that result is used in the kirki_config filter
  *
  * @param $config the configuration array
  *
@@ -27,7 +27,7 @@ function kirki_demo_configuration_sample_styling( $config ) {
 		'color_back'   => '#FFFFFF',
 	), $config );
 }
-add_filter( 'kirki/config', 'kirki_demo_configuration_sample_styling' );
+add_filter( 'kirki_config', 'kirki_demo_configuration_sample_styling' );
 ```
 
 * `logo_image`: Change the logo image (URL). If omitted, the default theme info will be displayed. You may want to use a relatively large image (for example 700px wide) so that it's properly displayed on retina screens as well.

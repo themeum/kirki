@@ -77,7 +77,9 @@ class Kirki_Modules_Tooltips {
 		$fields = Kirki::$fields;
 		foreach ( $fields as $field ) {
 			if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
+				// Get the control ID and properly format it for the tooltips
 				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+				// Add the tooltips content.
 				$this->tooltips_content[ $id ] = array(
 					'id'      => $id,
 					'content' => wp_kses_post( $field['tooltip'] ),

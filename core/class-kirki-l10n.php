@@ -142,7 +142,7 @@ class Kirki_L10n {
 		if ( '' === $this->theme_textdomain ) {
 
 			// Get the textdomain.
-			$theme = wp_get_theme();
+			$theme                  = wp_get_theme();
 			$this->theme_textdomain = $theme->get( 'TextDomain' );
 
 			// If no texdomain was found, use the template folder name.

@@ -33,7 +33,7 @@ class Kirki_Panel {
 	 */
 	public function __construct( $args ) {
 
-		$this->panel_types = apply_filters( 'kirki/panel_types', $this->panel_types );
+		$this->panel_types = apply_filters( 'kirki_panel_types', $this->panel_types );
 		$this->add_panel( $args );
 
 	}

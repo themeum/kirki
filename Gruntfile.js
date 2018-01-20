@@ -16,11 +16,11 @@ module.exports = function( grunt ) {
 			'google-fonts-trending': {
 				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=trending&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
 				dest: 'modules/webfonts/webfonts-trending.json'
-			},
-			'jshintrc': {
-				src: 'https://develop.svn.wordpress.org/trunk/.jshintrc',
-				dest: '.jshintrc'
 			}
+			// 'jshintrc': {
+			// 	src: 'https://develop.svn.wordpress.org/trunk/.jshintrc',
+			// 	dest: '.jshintrc'
+			// }
 		},
 
 		// Compile CSS
@@ -30,9 +30,7 @@ module.exports = function( grunt ) {
 					'assets/vendor/selectWoo/kirki.css': 'assets/vendor/selectWoo/kirki.scss',
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
-					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
-					'controls/css/styles.css': 'controls/scss/styles.scss',
-					'controls/css/styles-legacy.css': 'controls/scss/styles-legacy.scss'
+					'controls/css/styles.css': 'controls/scss/styles.scss'
 				}
 			}
 		},
@@ -43,15 +41,6 @@ module.exports = function( grunt ) {
 				files: {
 					'README.md': 'readme.txt'
 				}
-			}
-		},
-
-		// Convert json array to PHP array
-		json2php: {
-			convert: {
-				expand: true,
-				ext: '.php',
-				src: ['modules/webfonts/webfonts.json']
 			}
 		},
 
@@ -129,42 +118,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/typography.js'
 				],
 				dest: 'controls/js/script.js'
-			},
-			legacy: {
-				src: [
-					'controls/js/src/set-setting-value.js',
-					'controls/js/src/kirki.js',
-					'controls/js/src/kirki.control.js',
-					'controls/js/src/kirki.input.js',
-					'controls/js/src/kirki.setting.js',
-					'controls/js/src/kirki.util.js',
-					'controls/js/src/dynamic-control.js',
-					'controls/js/src/dynamic-control.js',
-
-					'controls/js/src/background-legacy.js',
-					'controls/js/src/color-palette.js',
-					'controls/js/src/dashicons.js',
-					'controls/js/src/date.js',
-					'controls/js/src/dimension.js',
-					'controls/js/src/dimensions.js',
-					'controls/js/src/editor.js',
-					'controls/js/src/fontawesome.js',
-					'controls/js/src/image.js',
-					'controls/js/src/multicheck.js',
-					'controls/js/src/multicolor-legacy.js',
-					'controls/js/src/number.js',
-					'controls/js/src/palette.js',
-					'controls/js/src/preset.js',
-					'controls/js/src/radio-buttonset.js',
-					'controls/js/src/radio-image.js',
-					'controls/js/src/repeater.js',
-					'controls/js/src/slider.js',
-					'controls/js/src/sortable.js',
-					'controls/js/src/switch.js',
-					'controls/js/src/toggle.js',
-					'controls/js/src/typography-legacy.js'
-				],
-				dest: 'controls/js/script-legacy.js'
 			}
 		},
 
@@ -194,7 +147,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-curl' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.loadNpmTasks( 'grunt-json2php' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
 	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
@@ -222,9 +174,11 @@ module.exports = function( grunt ) {
 			finalObject.items[ alphaFonts.items[ i ].family ] = {
 				family: alphaFonts.items[ i ].family,
 				category: alphaFonts.items[ i ].category,
-				variants: alphaFonts.items[ i ].variants.sort(),
+				variants: alphaFonts.items[ i ].variants.sort()
+				/* Deprecated
 				subsets: alphaFonts.items[ i ].subsets.sort(),
 				files: alphaFonts.items[ i ].files
+				*/
 			};
 		}
 
@@ -250,7 +204,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'googlefonts', function() {
 		grunt.task.run( 'curl' );
 		grunt.task.run( 'googlefontsProcess' );
-		grunt.task.run( 'json2php' );
 	} );
 	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );

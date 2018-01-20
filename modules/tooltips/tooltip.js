@@ -3,7 +3,7 @@ jQuery( document ).ready( function() {
 
 	function kirkiTooltipAdd( control ) {
 		_.each( kirkiTooltips, function( tooltip ) {
-			var trigger,
+			let trigger,
 			    controlID,
 			    content;
 

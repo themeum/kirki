@@ -66,7 +66,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_filter( "kirki/{$config_id}/dynamic_css", array( $this, 'embed_css' ) );
+		add_filter( "kirki_{$config_id}_dynamic_css", array( $this, 'embed_css' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'inline_css' ), 999 );
 	}
 
@@ -93,7 +93,7 @@ final class Kirki_Modules_Webfonts_Embed {
 		// Go through our fields and populate $this->fonts.
 		$this->webfonts->loop_fields( $this->config_id );
 
-		$this->googlefonts->fonts = apply_filters( 'kirki/enqueue_google_fonts', $this->googlefonts->fonts );
+		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();
@@ -136,12 +136,11 @@ final class Kirki_Modules_Webfonts_Embed {
 		// Check for transient, if none, grab remote HTML file.
 		if ( false === $data ) {
 
-			// Get remote HTML file.
-			$response = wp_remote_get( $url );
+			// Get remote HTML file. @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.wp_remote_get_wp_remote_get
+			$response = wp_remote_get( $url ); // phpcs:ignore WordPress.VIP.RestrictedFunctions.wp_remote_get_wp_remote_get
 
 			// Check for error.
 			if ( is_wp_error( $response ) ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
@@ -154,19 +153,16 @@ final class Kirki_Modules_Webfonts_Embed {
 
 			// Check for error.
 			if ( is_wp_error( $data ) ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
 			// Return false if the data is empty.
 			if ( ! $data ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
 			// Store remote HTML file in transient, expire after 24 hours.
 			set_transient( $transient_name, $data, DAY_IN_SECONDS );
-			set_transient( 'kirki_googlefonts_fallback_to_link', 'no', DAY_IN_SECONDS );
 		}
 
 		return $data;
