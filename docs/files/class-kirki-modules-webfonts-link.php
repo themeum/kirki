@@ -51,14 +51,6 @@ final class Kirki_Modules_Webfonts_Link {
 	public $link = '';
 
 	/**
-	 * An array of subsets.
-	 *
-	 * @access public
-	 * @var array
-	 */
-	public $subsets = array();
-
-	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -114,7 +106,7 @@ final class Kirki_Modules_Webfonts_Link {
 		// Add a fallback to Roboto.
 		$font = 'Roboto';
 
-		// Get font-family + subsets.
+		// Get font-family.
 		$link_fonts = array();
 		foreach ( $this->googlefonts->fonts as $font => $variants ) {
 
@@ -127,23 +119,8 @@ final class Kirki_Modules_Webfonts_Link {
 			$link_fonts[] = $link_font;
 		}
 
-		// Are we force-loading all subsets?
-		if ( true === Kirki_Fonts_Google::$force_load_all_subsets ) {
-
-			if ( isset( $this->googlefonts->fonts[ $font ]['subsets'] ) ) {
-				foreach ( $this->googlefonts->fonts[ $font ]['subsets'] as $subset ) {
-					$this->subsets[] = $subset;
-				}
-			}
-		}
-
-		if ( ! empty( $this->googlefonts->subsets ) ) {
-			$this->subsets = array_unique( $this->googlefonts->subsets );
-		}
-
 		$this->link = add_query_arg( array(
 			'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
-			'subset' => rawurlencode( implode( ',', $this->subsets ) ),
 		), 'https://fonts.googleapis.com/css' );
 
 	}

@@ -52,8 +52,6 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 		}
 
 		$this->json['show_variants'] = ( true === Kirki_Fonts_Google::$force_load_all_variants ) ? false : true;
-		$this->json['show_subsets']  = ( true === Kirki_Fonts_Google::$force_load_all_subsets ) ? false : true;
-		$this->json['languages']     = Kirki_Fonts::get_google_font_subsets();
 	}
 
 	/**
@@ -92,16 +90,6 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 					<div class="variant kirki-variant-wrapper">
 						<h5><?php esc_attr_e( 'Variant', 'kirki' ); ?></h5>
 						<select {{{ data.inputAttrs }}} class="variant" id="kirki-typography-variant-{{{ data.id }}}"></select>
-					</div>
-				<# } #>
-				<# if ( true === data.show_subsets ) { #>
-					<div class="subsets hide-on-standard-fonts kirki-subsets-wrapper">
-						<h5><?php esc_attr_e( 'Subset(s)', 'kirki' ); ?></h5>
-						<select {{{ data.inputAttrs }}} class="subset" id="kirki-typography-subsets-{{{ data.id }}}"<# if ( _.isUndefined( data.choices['disable-multiple-variants'] ) || false === data.choices['disable-multiple-variants'] ) { #> multiple<# } #>>
-							<# _.each( data.value.subsets, function( subset ) { #>
-								<option value="{{ subset }}" selected="selected">{{ data.languages[ subset ] }}</option>
-							<# } ); #>
-						</select>
 					</div>
 				<# } #>
 			<# } #>

@@ -31,15 +31,6 @@ class Kirki_Modules_Webfonts {
 	private static $instance;
 
 	/**
-	 * Whether we should fallback to the link method or not.
-	 *
-	 * @access private
-	 * @since 3.0.0
-	 * @var bool
-	 */
-	private $fallback_to_link = false;
-
-	/**
 	 * The Kirki_Fonts_Google object.
 	 *
 	 * @access protected
@@ -72,7 +63,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	public function run() {
 		$this->fonts_google = Kirki_Fonts_Google::get_instance();
-		$this->maybe_fallback_to_link();
 		$this->init();
 	}
 
@@ -124,11 +114,6 @@ class Kirki_Modules_Webfonts {
 			$method = 'async';
 		}
 
-		// Fallback to 'link' if embed was not possible.
-		if ( 'embed' === $method && $this->fallback_to_link ) {
-			$method = 'link';
-		}
-
 		$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 		if ( ! class_exists( $classname ) ) {
 			$method = 'async';
@@ -138,27 +123,6 @@ class Kirki_Modules_Webfonts {
 		// This will help us work-out the live-previews for typography fields.
 		// If we're not in the customizer use the defined method.
 		return ( is_customize_preview() ) ? 'async' : $method;
-	}
-
-	/**
-	 * Should we fallback to link method?
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 */
-	protected function maybe_fallback_to_link() {
-
-		// Get the $fallback_to_link value from transient.
-		$fallback_to_link = get_transient( 'kirki_googlefonts_fallback_to_link' );
-		if ( 'yes' === $fallback_to_link ) {
-			$this->fallback_to_link = true;
-		}
-
-		// Use links when in the customizer.
-		global $wp_customize;
-		if ( $wp_customize ) {
-			$this->fallback_to_link = true;
-		}
 	}
 
 	/**

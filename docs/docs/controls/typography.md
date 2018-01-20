@@ -18,7 +18,6 @@ It shows the following controls:
 
 * font-family
 * variant
-* subsets
 * font-size
 * line-height
 * letter-spacing
@@ -34,9 +33,9 @@ Since defining a default value is **mandatory** for all fields, this way you can
 
 If for example you wanted to hide the `line-height` and `letter-spacing` controls, you'd delete these 2 lines from the defaults specified in the above example.
 
-The exception to the above rule is the `variant` and `subsets` controls.
+The exception to the above rule is the `variant` control.
 
-Since the `typography` control uses google fonts, in order to ensure that your fonts will be properly enqueued we have to add the variant & subsets controls for google fonts.
+Since the `typography` control uses google fonts, in order to ensure that your fonts will be properly enqueued we have to add the variant control for google fonts.
 So if you add `font-family`, all 3 controls will be automatically displayed when the selected font requires it.
 
 ### Output
@@ -173,7 +172,6 @@ Kirki::add_field( 'theme_config_id', array(
 		'font-size'      => '14px',
 		'line-height'    => '1.5',
 		'letter-spacing' => '0',
-		'subsets'        => array( 'latin-ext' ),
 		'color'          => '#333333',
 		'text-transform' => 'none',
 		'text-align'     => 'left'
@@ -201,13 +199,6 @@ if ( isset( $value['font-family'] ) ) {
 }
 if ( isset( $value['variant'] ) ) {
 	echo '<p>' . sprintf( esc_attr__( 'Variant: %s', 'textdomain' ), $value['variant'] ) . '</p>';
-}
-if ( isset( $value['subsets'] ) ) {
-	if ( is_array( $value['subsets'] ) ) {
-		echo '<p>' . sprintf( esc_attr__( 'Subsets: %s', 'textdomain' ), implode( ', ', $value['subsets'] ) ) . '</p>';
-	} else {
-		echo '<p>' . sprintf( esc_attr__( 'Subset: %s', 'textdomain' ), $value['subsets'] ) . '</p>';
-	}
 }
 if ( isset( $value['font-size'] ) ) {
 	echo '<p>' . sprintf( esc_attr__( 'Font Size: %s', 'textdomain' ), $value['font-size'] ) . '</p>';
