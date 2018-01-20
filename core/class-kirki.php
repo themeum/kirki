@@ -159,7 +159,7 @@ class Kirki extends Kirki_Init {
 
 		$args['id']          = esc_attr( $id );
 		$args['description'] = ( isset( $args['description'] ) ) ? $args['description'] : '';
-		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
+		$args['priority']    = ( isset( $args['priority'] ) ) ? absint( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
 
@@ -193,7 +193,7 @@ class Kirki extends Kirki_Init {
 		$args['id']          = esc_attr( $id );
 		$args['panel']       = ( isset( $args['panel'] ) ) ? esc_attr( $args['panel'] ) : '';
 		$args['description'] = ( isset( $args['description'] ) ) ? $args['description'] : '';
-		$args['priority']    = ( isset( $args['priority'] ) ) ? esc_attr( $args['priority'] ) : 10;
+		$args['priority']    = ( isset( $args['priority'] ) ) ? absint( $args['priority'] ) : 10;
 		$args['type']        = ( isset( $args['type'] ) ) ? $args['type'] : 'default';
 		$args['type']        = 'kirki-' . $args['type'];
 
