@@ -3,7 +3,7 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
-**Tested up to:** 4.9.1  
+**Tested up to:** 4.9.2  
 **Stable tag:** 3.0.22  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
@@ -42,8 +42,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `active_callback` not working for cropped-image controls [#1752](https://github.com/aristath/kirki/issues/1752)
 * Fix: added support for `button_labels` in image fields [#1173](https://github.com/aristath/kirki/issues/1173)
 * Fix: Support for adding inline CSS to an already defined stylesheet.
+* Fix: Sanitization in section & panel descriptions and priorities [#1759](https://github.com/aristath/kirki/issues/1759)
+* Fix: `active_callback` support when using serialized options [#1745](https://github.com/aristath/kirki/issues/1745)
+* Fix: Remove timepicker from date control [#1750](https://github.com/aristath/kirki/issues/1750)
 * New: Added googlefonts resource hints. Props @aryaprakasa.
-* Tweak: Removed legacy code
+* Tweak: Removed legacy code.
+* Tweak: Code cleanups.
 
 ### 3.0.22 ###
 
