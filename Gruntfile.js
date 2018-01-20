@@ -30,7 +30,6 @@ module.exports = function( grunt ) {
 					'assets/vendor/selectWoo/kirki.css': 'assets/vendor/selectWoo/kirki.scss',
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
 					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
-					'modules/collapsible/collapsible.css': 'modules/collapsible/collapsible.scss',
 					'controls/css/styles.css': 'controls/scss/styles.scss'
 				}
 			}
