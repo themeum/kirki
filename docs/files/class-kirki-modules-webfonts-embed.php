@@ -141,7 +141,6 @@ final class Kirki_Modules_Webfonts_Embed {
 
 			// Check for error.
 			if ( is_wp_error( $response ) ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
@@ -154,19 +153,16 @@ final class Kirki_Modules_Webfonts_Embed {
 
 			// Check for error.
 			if ( is_wp_error( $data ) ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
 			// Return false if the data is empty.
 			if ( ! $data ) {
-				set_transient( 'kirki_googlefonts_fallback_to_link', 'yes', HOUR_IN_SECONDS );
 				return false;
 			}
 
 			// Store remote HTML file in transient, expire after 24 hours.
 			set_transient( $transient_name, $data, DAY_IN_SECONDS );
-			set_transient( 'kirki_googlefonts_fallback_to_link', 'no', DAY_IN_SECONDS );
 		}
 
 		return $data;

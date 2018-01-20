@@ -87,7 +87,6 @@ final class Kirki_Fonts_Google {
 
 		// Populate the array of google fonts.
 		$this->google_fonts = Kirki_Fonts::get_google_fonts();
-
 	}
 
 	/**
