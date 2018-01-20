@@ -26,8 +26,8 @@
     "php": ">=5.2"
   },
   "require-dev": {
-    "composer/installers": "~1.0",
-    "phpunit/phpunit": "~4.8",
+    "composer/installers": "*",
+    "phpunit/phpunit": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wimg/php-compatibility": "*",
     "wp-coding-standards/wpcs": "*"
