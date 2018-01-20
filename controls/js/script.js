@@ -1039,31 +1039,6 @@ kirki = jQuery.extend( kirki, {
 
 					// Return the variants.
 					return font.variants;
-				},
-
-				/**
-				 * Get the subsets for a font-family.
-				 *
-				 * @since 3.0.17
-				 * @param {string} family - The font-family we're interested in.
-				 * @returns {Object}
-				 */
-				getSubsets: function( family ) {
-					var self = this,
-					    font = self.getFont( family );
-
-					// Early exit if font was not found.
-					if ( ! font ) {
-						return false;
-					}
-
-					// Early exit if font doesn't have subsets.
-					if ( _.isUndefined( font.subsets ) ) {
-						return false;
-					}
-
-					// Return the variants.
-					return font.subsets;
 				}
 			},
 
