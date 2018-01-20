@@ -55,7 +55,7 @@ var kirkiDependencies = {
 
 		// Loop control requirements.
 		_.each( control.params.required, function( requirement ) {
-			var requirementShow;
+			let requirementShow;
 
 			// Tweak for using active callbacks with serialized options instead of theme_mods.
 			if (
@@ -99,7 +99,7 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	evaluate: function( value1, value2, operator ) {
-		var found = false,
+		var found  = false,
 		    result = null;
 
 		if ( '===' === operator ) {
@@ -120,7 +120,6 @@ var kirkiDependencies = {
 			result = value2 < value1;
 		} else if ( 'contains' === operator || 'in' === operator ) {
 			if ( _.isArray( value2 ) ) {
-				found = false;
 				_.each( value2, function( value ) {
 					if ( value == value1 ) { // jshint ignore:line
 						found = true;
@@ -128,7 +127,6 @@ var kirkiDependencies = {
 				} );
 				return found;
 			} else if ( _.isObject( value2 ) ) {
-				found = false;
 				if ( ! _.isUndefined( value2[ value1 ] ) ) {
 					found = true;
 				}
