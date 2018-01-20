@@ -133,35 +133,35 @@ final class Kirki_Fonts_Google {
 					$this->fonts[ $value['font-family'] ][] = $extra_variant;
 				}
 			}
-		} else {
+			return;
+		}
 
-			// Process non-typography fields.
-			if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
-				foreach ( $args['output'] as $output ) {
+		// Process non-typography fields.
+		if ( isset( $args['output'] ) && is_array( $args['output'] ) ) {
+			foreach ( $args['output'] as $output ) {
 
-					// If we don't have a typography-related output argument we can skip this.
-					if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight' ), true ) ) {
-						continue;
-					}
+				// If we don't have a typography-related output argument we can skip this.
+				if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight' ), true ) ) {
+					continue;
+				}
 
-					// Get the value.
-					$value = Kirki_Values::get_sanitized_field_value( $args );
+				// Get the value.
+				$value = Kirki_Values::get_sanitized_field_value( $args );
 
-					if ( is_string( $value ) ) {
-						if ( 'font-family' === $output['property'] ) {
-							if ( ! array_key_exists( $value, $this->fonts ) ) {
-								$this->fonts[ $value ] = array();
-							}
-						} elseif ( 'font-weight' === $output['property'] ) {
-							foreach ( $this->fonts as $font => $variants ) {
-								if ( ! in_array( $value, $variants, true ) ) {
-									$this->fonts[ $font ][] = $value;
-								}
+				if ( is_string( $value ) ) {
+					if ( 'font-family' === $output['property'] ) {
+						if ( ! array_key_exists( $value, $this->fonts ) ) {
+							$this->fonts[ $value ] = array();
+						}
+					} elseif ( 'font-weight' === $output['property'] ) {
+						foreach ( $this->fonts as $font => $variants ) {
+							if ( ! in_array( $value, $variants, true ) ) {
+								$this->fonts[ $font ][] = $value;
 							}
 						}
 					}
-				} // End foreach().
-			} // End if().
+				}
+			} // End foreach().
 		} // End if().
 	}
 
