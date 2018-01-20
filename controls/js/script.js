@@ -1219,8 +1219,8 @@ kirki = jQuery.extend( kirki, {
 					control.elements.push( element );
 					element.sync( setting );
 					element.set( setting() );
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -1262,7 +1262,7 @@ kirki = jQuery.extend( kirki, {
 						element.set( newValue[ propertyName ] );
 					}
 				} );
-			});
+			} );
 		},
 
 		/**
@@ -1278,7 +1278,7 @@ kirki = jQuery.extend( kirki, {
 
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
-			});
+			} );
 		},
 
 		/**
@@ -1355,7 +1355,7 @@ kirki = jQuery.extend( kirki, {
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
-			});
+			} );
 		},
 
 		kirkiValidateCSSValue: function( value ) {
@@ -1385,9 +1385,8 @@ kirki = jQuery.extend( kirki, {
 			}
 			return true;
 		}
-	});
-})();
-
+	} );
+}() );
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
 } );

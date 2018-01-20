@@ -58,8 +58,8 @@
 					control.elements.push( element );
 					element.sync( setting );
 					element.set( setting() );
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -101,7 +101,7 @@
 						element.set( newValue[ propertyName ] );
 					}
 				} );
-			});
+			} );
 		},
 
 		/**
@@ -117,7 +117,7 @@
 
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
-			});
+			} );
 		},
 
 		/**
@@ -194,7 +194,7 @@
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
-			});
+			} );
 		},
 
 		kirkiValidateCSSValue: function( value ) {
@@ -224,9 +224,8 @@
 			}
 			return true;
 		}
-	});
-})();
-
+	} );
+}() );
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
 } );
