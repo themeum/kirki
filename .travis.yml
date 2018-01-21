@@ -32,7 +32,6 @@ script:
   # Search for PHP syntax errors.
   # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
-  - cp ./build/logs/clover.xml ./clover.xml && cop clover.xml coverage.xml
   # Run the plugin through JSHint.
   - jshint ./controls/js/src/*.js
   - jshint ./modules/**/*.js
