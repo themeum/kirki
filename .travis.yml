@@ -58,6 +58,7 @@ after_script:
   # - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
 
 after_success:
+  - travis_retry php vendor/bin/php-coveralls
   # - coveralls
   # - codecov
   # - bash <(curl -s https://codecov.io/bash)
