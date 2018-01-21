@@ -231,6 +231,25 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
+		if ( 1 === variants.length ) {
+			jQuery( control.selector + ' .variant' ).hide();
+
+			value.variant = variants[0];
+
+			control.saveValue( 'variant', value.variant );
+
+			fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
+			fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
+			fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+
+			control.saveValue( 'font-weight', fontWeight );
+			control.saveValue( 'font-style', fontStyle );
+
+			return;
+		}
+
+		jQuery( control.selector + ' .font-backup' ).show();
+
 		jQuery( control.selector + ' .variant' ).show();
 		_.each( variants, function( variant ) {
 			if ( value.variant === variant ) {
