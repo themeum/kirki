@@ -35,6 +35,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.23 =
 
+January 22 2018, dev time: 23 hours.
+
 * Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
 * Fix: PHP mode in code controls.
 * Fix: `active_callback` not working for upload fields [#1732](https://github.com/aristath/kirki/issues/1732)
