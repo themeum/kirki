@@ -4,23 +4,19 @@ module.exports = function( grunt ) {
 	grunt.initConfig({
 
 		// Get json file from the google-fonts API
-		curl: {
+		http: {
 			'google-fonts-alpha': {
-				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
+				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
 				dest: 'modules/webfonts/webfonts-alpha.json'
 			},
 			'google-fonts-popularity': {
-				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
+				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
 				dest: 'modules/webfonts/webfonts-popularity.json'
 			},
 			'google-fonts-trending': {
-				src: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=trending&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs',
+				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=trending&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
 				dest: 'modules/webfonts/webfonts-trending.json'
 			}
-			// 'jshintrc': {
-			// 	src: 'https://develop.svn.wordpress.org/trunk/.jshintrc',
-			// 	dest: '.jshintrc'
-			// }
 		},
 
 		// Compile CSS
@@ -145,7 +141,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-curl' );
+	grunt.loadNpmTasks( 'grunt-http' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
@@ -202,7 +198,7 @@ module.exports = function( grunt ) {
 		grunt.file.delete( 'modules/webfonts/webfonts-trending.json' ); // jshint ignore:line
 	} );
 	grunt.registerTask( 'googlefonts', function() {
-		grunt.task.run( 'curl' );
+		grunt.task.run( 'http' );
 		grunt.task.run( 'googlefontsProcess' );
 	} );
 	grunt.registerTask( 'default', ['sass:dist', 'concat', 'uglify'] );
