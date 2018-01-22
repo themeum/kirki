@@ -40,22 +40,6 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		// Check JS syntax
-		jscs: {
-			src: [
-				'Gruntfile.js',
-				'controls/**/*.js',
-				'modules/**/*.js',
-				'!modules/search/fuse.js',
-				'!modules/search/fuse.min.js',
-				'!assets/vendor/*'
-			],
-			options: {
-				config: '.jscsrc',
-				verbose: true
-			}
-		},
-
 		// Watch task (run with "grunt watch")
 		watch: {
 			css: {
@@ -143,9 +127,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-http' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.loadNpmTasks( 'grunt-jscs' );
 
-	grunt.registerTask( 'dev', ['sass', 'jscs', 'watch'] );
+	grunt.registerTask( 'dev', ['sass', 'watch'] );
 	grunt.registerTask( 'googlefontsProcess', function() {
 		var alphaFonts,
 		    popularityFonts,
