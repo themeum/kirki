@@ -3328,6 +3328,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		// Combine forces and build the final data.
 		data = [
+			{ text: kirkiL10n.defaultCSSValues, children: [{ id: 'inherit', text: 'inherit' }] },
 			{ text: kirkiL10n.standardFonts, children: standardFonts },
 			{ text: kirkiL10n.googleFonts, children: googleFonts }
 		];
@@ -3375,7 +3376,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
+		if ( 'inherit' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -3431,16 +3432,27 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
-		if ( 1 === variants.length ) {
+		if ( 'inherit' === fontFamily ) {
+			value.variant = 'inherit';
+			variants      = [''];
+			jQuery( control.selector + ' .variant' ).hide();
+		}
+
+		if ( 1 >= variants.length ) {
 			jQuery( control.selector + ' .variant' ).hide();
 
 			value.variant = variants[0];
 
 			control.saveValue( 'variant', value.variant );
 
-			fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
-			fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
-			fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+			if ( '' === value.variant ) {
+				fontWeight = '';
+				fontStyle  = '';
+			} else {
+				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
+				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
+				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+			}
 
 			control.saveValue( 'font-weight', fontWeight );
 			control.saveValue( 'font-style', fontStyle );
