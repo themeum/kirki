@@ -323,7 +323,7 @@ class Kirki_Modules_PostMessage {
 
 		// Load the font using WenFontloader.
 		// This is a bit ugly because wp_add_inline_script doesn't allow adding <script> directly.
-		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+subsetsString+\'"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
+		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+\'cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
 
 		// Add the css.
 		$css_build_array  = array(
@@ -411,7 +411,7 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $args['type'] ) ) {
 			switch ( $args['type'] ) {
 				case 'kirki-typography':
-					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;subsets=(_.isUndefined(newval.subsets))?[]:newval.subsets;subsetsString=(_.isObject(newval.subsets))?\':\'+newval.subsets.join(\',\'):\'\';fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];color=(_.isUndefined(newval.color))?\'\':newval.color;fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);fontWeight=(!_.isObject(fw))?400:fw.join(\'\');fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';css=\'\';';
+					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];color=(_.isUndefined(newval.color))?\'\':newval.color;fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);fontWeight=(!_.isObject(fw))?400:fw.join(\'\');fontStyle=(-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';css=\'\';';
 					break;
 			}
 		}

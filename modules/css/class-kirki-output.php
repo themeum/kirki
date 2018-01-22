@@ -297,7 +297,7 @@ class Kirki_Output {
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters(
-			"kirki_{$this->config_id}_output_property-classnames", array(
+			"kirki_{$this->config_id}_output_property_classnames", array(
 				'font-family'         => 'Kirki_Output_Property_Font_Family',
 				'background-image'    => 'Kirki_Output_Property_Background_Image',
 				'background-position' => 'Kirki_Output_Property_Background_Position',

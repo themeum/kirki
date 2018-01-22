@@ -869,7 +869,6 @@ my_config_kirki_add_field(
 			'font-size'       => '14px',
 			'line-height'     => '1.5',
 			'letter-spacing'  => '0',
-			'subsets'         => array( 'latin-ext' ),
 			'color'           => '#333333',
 			'text-transform'  => 'none',
 			'text-decoration' => 'none',

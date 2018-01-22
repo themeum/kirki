@@ -1,22 +1,19 @@
 wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
+		var control  = this,
+		    selector = control.selector + ' input.datepicker';
 
-		var control  = this;
+		// Init the datepicker
+		jQuery( selector ).datepicker( {
+			dateFormat: 'yy-mm-dd'
+		} );
 
-		// Only add in WP 4.9+.
-		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
-			return;
-		}
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
-		// New method for the DateTime control.
-		wp.customize.control.add( new wp.customize.DateTimeControl( control.id, {
-			section: control.params.section,
-			priority: control.params.priority,
-			label: control.params.label,
-			description: control.params.description,
-			settings: { 'default': control.id },
-			'default': control.params['default']
-		} ) );
+		// Save the changes
+		this.container.on( 'change keyup paste', 'input.datepicker', function() {
+			control.setting.set( jQuery( this ).val() );
+		} );
 	}
-});
+} );

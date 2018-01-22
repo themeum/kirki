@@ -33,6 +33,14 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public $option_type = 'theme_mod';
 
 	/**
+	 * Option name (if using options).
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $option_name = false;
+
+	/**
 	 * The kirki_config we're using for this control
 	 *
 	 * @access public
@@ -68,7 +76,6 @@ class Kirki_Control_Base extends WP_Customize_Control {
 
 		// Build the suffix for the script.
 		$suffix  = '';
-		$suffix .= ( Kirki_Util::get_wp_version() >= 4.9 ) ? '' : '-legacy';
 		$suffix .= ( ! defined( 'SCRIPT_DEBUG' ) || true !== SCRIPT_DEBUG ) ? '.min' : '';
 
 		// The Kirki plugin URL.
@@ -93,6 +100,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 				'wp-color-picker-alpha',
 				'selectWoo',
 				'jquery-ui-button',
+				'jquery-ui-datepicker',
 			),
 			KIRKI_VERSION
 		);
@@ -101,12 +109,13 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			'kirki-script',
 			'kirkiL10n',
 			array(
-				'noFileSelected' => esc_attr__( 'No File Selected', 'kirki' ),
-				'remove'         => esc_attr__( 'Remove', 'kirki' ),
-				'default'        => esc_attr__( 'Default', 'kirki' ),
-				'selectFile'     => esc_attr__( 'Select File', 'kirki' ),
-				'standardFonts'  => esc_attr__( 'Standard Fonts', 'kirki' ),
-				'googleFonts'    => esc_attr__( 'Google Fonts', 'kirki' ),
+				'noFileSelected'   => esc_attr__( 'No File Selected', 'kirki' ),
+				'remove'           => esc_attr__( 'Remove', 'kirki' ),
+				'default'          => esc_attr__( 'Default', 'kirki' ),
+				'selectFile'       => esc_attr__( 'Select File', 'kirki' ),
+				'standardFonts'    => esc_attr__( 'Standard Fonts', 'kirki' ),
+				'googleFonts'      => esc_attr__( 'Google Fonts', 'kirki' ),
+				'defaultCSSValues' => esc_attr__( 'Default CSS Values', 'kirki' ),
 			)
 		);
 
@@ -154,6 +163,12 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
+		// The kirki-config.
+		$this->json['kirkiConfig'] = $this->kirki_config;
+		// The option-type.
+		$this->json['kirkiOptionType'] = $this->option_type;
+		// The option-name.
+		$this->json['kirkiOptionName'] = $this->option_name;
 	}
 
 	/**

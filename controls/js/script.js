@@ -108,7 +108,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each( ['font-family', 'variant', 'subsets'], function( subVal ) {
+					_.each( ['font-family', 'variant'], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
 							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
@@ -971,10 +971,11 @@ kirki = jQuery.extend( kirki, {
 				 * @param {int}    number - How many to get. 0 for all.
 				 * @returns {Object}
 				 */
-				getFonts: function( order, number ) {
-					var self    = this,
-					    ordered = {},
-					    partial = [];
+				getFonts: function( order, category, number ) {
+					var self        = this,
+					    ordered     = {},
+					    categorized = {},
+					    plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -984,16 +985,35 @@ kirki = jQuery.extend( kirki, {
 					number = number || 0;
 					number = parseInt( number, 10 );
 
-					if ( 'alpha' === order || 0 === number ) {
-						ordered = self.fonts.items;
+					// Order fonts by the 'order' argument.
+					if ( 'alpha' === order ) {
+						ordered = jQuery.extend( {}, self.fonts.items );
 					} else {
-						partial = _.first( self.fonts.order[ order ], number );
-						_.each( partial, function( family ) {
+						_.each( self.fonts.order[ order ], function( family ) {
 							ordered[ family ] = self.fonts.items[ family ];
 						} );
 					}
 
-					return ordered;
+					// If we have a category defined get only the fonts in that category.
+					if ( '' === category || ! category ) {
+						categorized = ordered;
+					} else {
+						_.each( ordered, function( font, family ) {
+							if ( category === font.category ) {
+								categorized[ family ] = font;
+							}
+						} );
+					}
+
+					// If we only want a number of font-families get the 1st items from the results.
+					if ( 0 < number ) {
+						_.each( _.first( _.keys( categorized ), number ), function( family ) {
+							plucked[ family ] = categorized[ family ];
+						} );
+						return plucked;
+					}
+
+					return categorized;
 				},
 
 				/**
@@ -1019,31 +1039,6 @@ kirki = jQuery.extend( kirki, {
 
 					// Return the variants.
 					return font.variants;
-				},
-
-				/**
-				 * Get the subsets for a font-family.
-				 *
-				 * @since 3.0.17
-				 * @param {string} family - The font-family we're interested in.
-				 * @returns {Object}
-				 */
-				getSubsets: function( family ) {
-					var self = this,
-					    font = self.getFont( family );
-
-					// Early exit if font was not found.
-					if ( ! font ) {
-						return false;
-					}
-
-					// Early exit if font doesn't have subsets.
-					if ( _.isUndefined( font.subsets ) ) {
-						return false;
-					}
-
-					// Return the variants.
-					return font.subsets;
 				}
 			},
 
@@ -1199,8 +1194,8 @@ kirki = jQuery.extend( kirki, {
 					control.elements.push( element );
 					element.sync( setting );
 					element.set( setting() );
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -1242,7 +1237,7 @@ kirki = jQuery.extend( kirki, {
 						element.set( newValue[ propertyName ] );
 					}
 				} );
-			});
+			} );
 		},
 
 		/**
@@ -1258,7 +1253,7 @@ kirki = jQuery.extend( kirki, {
 
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
-			});
+			} );
 		},
 
 		/**
@@ -1335,7 +1330,7 @@ kirki = jQuery.extend( kirki, {
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
-			});
+			} );
 		},
 
 		kirkiValidateCSSValue: function( value ) {
@@ -1365,9 +1360,8 @@ kirki = jQuery.extend( kirki, {
 			}
 			return true;
 		}
-	});
-})();
-
+	} );
+}() );
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
 } );
@@ -1524,25 +1518,22 @@ wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicCo
 wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
 
 	initKirkiControl: function() {
+		var control  = this,
+		    selector = control.selector + ' input.datepicker';
 
-		var control  = this;
+		// Init the datepicker
+		jQuery( selector ).datepicker( {
+			dateFormat: 'yy-mm-dd'
+		} );
 
-		// Only add in WP 4.9+.
-		if ( _.isUndefined( wp.customize.DateTimeControl ) ) {
-			return;
-		}
+		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
-		// New method for the DateTime control.
-		wp.customize.control.add( new wp.customize.DateTimeControl( control.id, {
-			section: control.params.section,
-			priority: control.params.priority,
-			label: control.params.label,
-			description: control.params.description,
-			settings: { 'default': control.id },
-			'default': control.params['default']
-		} ) );
+		// Save the changes
+		this.container.on( 'change keyup paste', 'input.datepicker', function() {
+			control.setting.set( jQuery( this ).val() );
+		} );
 	}
-});
+} );
 /* global dimensionkirkiL10n */
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
 
@@ -3212,34 +3203,33 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
-		control.renderSubsetSelector();
 
 		// Font-size.
 		if ( control.params['default']['font-size'] ) {
 			this.container.on( 'change keyup paste', '.font-size input', function() {
 				control.saveValue( 'font-size', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Line-height.
 		if ( control.params['default']['line-height'] ) {
 			this.container.on( 'change keyup paste', '.line-height input', function() {
 				control.saveValue( 'line-height', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Margin-top.
 		if ( control.params['default']['margin-top'] ) {
 			this.container.on( 'change keyup paste', '.margin-top input', function() {
 				control.saveValue( 'margin-top', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Margin-bottom.
 		if ( control.params['default']['margin-bottom'] ) {
 			this.container.on( 'change keyup paste', '.margin-bottom input', function() {
 				control.saveValue( 'margin-bottom', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Letter-spacing.
@@ -3248,35 +3238,35 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 				value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
 				control.saveValue( 'letter-spacing', value['letter-spacing'] );
-			});
+			} );
 		}
 
 		// Word-spacing.
 		if ( control.params['default']['word-spacing'] ) {
 			this.container.on( 'change keyup paste', '.word-spacing input', function() {
 				control.saveValue( 'word-spacing', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-align.
 		if ( control.params['default']['text-align'] ) {
 			this.container.on( 'change', '.text-align input', function() {
 				control.saveValue( 'text-align', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-transform.
 		if ( control.params['default']['text-transform'] ) {
 			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-decoration.
 		if ( control.params['default']['text-decoration'] ) {
 			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-decoration', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Color.
@@ -3288,7 +3278,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 						control.saveValue( 'color', picker.val() );
 					}, 100 );
 				}
-			});
+			} );
 		}
 	},
 
@@ -3313,8 +3303,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				standardFonts.push({
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
-				});
-			});
+				} );
+			} );
 		}
 
 		// Format google fonts as an array.
@@ -3323,12 +3313,13 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				googleFonts.push({
 					id: font.family,
 					text: font.family
-				});
-			});
+				} );
+			} );
 		}
 
 		// Combine forces and build the final data.
 		data = [
+			{ text: kirkiL10n.defaultCSSValues, children: [{ id: 'inherit', text: 'inherit' }] },
 			{ text: kirkiL10n.standardFonts, children: standardFonts },
 			{ text: kirkiL10n.googleFonts, children: googleFonts }
 		];
@@ -3336,7 +3327,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Instantiate selectWoo with the data.
 		fontSelect = jQuery( selector ).selectWoo({
 			data: data
-		});
+		} );
 
 		// Set the initial value.
 		if ( value['font-family'] ) {
@@ -3354,10 +3345,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			// Re-init variants selector.
 			control.renderVariantSelector();
-
-			// Re-init subsets selector.
-			control.renderSubsetSelector();
-		});
+		} );
 	},
 
 	/**
@@ -3379,7 +3367,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
+		if ( 'inherit' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -3391,14 +3379,14 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				standardFonts.push({
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
-				});
-			});
+				} );
+			} );
 		}
 
 		// Instantiate selectWoo with the data.
 		fontSelect = jQuery( selector ).selectWoo({
 			data: standardFonts
-		});
+		} );
 
 		// Set the initial value.
 		if ( 'undefined' !== typeof value['font-backup'] ) {
@@ -3410,7 +3398,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			// Set the value.
 			control.saveValue( 'font-backup', jQuery( this ).val() );
-		});
+		} );
 	},
 
 	/**
@@ -3435,6 +3423,36 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
+		if ( 'inherit' === fontFamily ) {
+			value.variant = 'inherit';
+			variants      = [''];
+			jQuery( control.selector + ' .variant' ).hide();
+		}
+
+		if ( 1 >= variants.length ) {
+			jQuery( control.selector + ' .variant' ).hide();
+
+			value.variant = variants[0];
+
+			control.saveValue( 'variant', value.variant );
+
+			if ( '' === value.variant ) {
+				fontWeight = '';
+				fontStyle  = '';
+			} else {
+				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
+				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
+				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+			}
+
+			control.saveValue( 'font-weight', fontWeight );
+			control.saveValue( 'font-style', fontStyle );
+
+			return;
+		}
+
+		jQuery( control.selector + ' .font-backup' ).show();
+
 		jQuery( control.selector + ' .variant' ).show();
 		_.each( variants, function( variant ) {
 			if ( value.variant === variant ) {
@@ -3443,8 +3461,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			data.push({
 				id: variant,
 				text: variant
-			});
-		});
+			} );
+		} );
 		if ( ! isValid ) {
 			value.variant = 'regular';
 		}
@@ -3457,7 +3475,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Instantiate selectWoo with the data.
 		variantSelector = jQuery( selector ).selectWoo({
 			data: data
-		});
+		} );
 		variantSelector.val( value.variant ).trigger( 'change' );
 		variantSelector.on( 'change', function() {
 			control.saveValue( 'variant', jQuery( this ).val() );
@@ -3468,59 +3486,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			control.saveValue( 'font-weight', fontWeight );
 			control.saveValue( 'font-style', fontStyle );
-		});
-	},
-
-	/**
-	 * Renders the subsets selector using selectWoo
-	 * Displays font-subsets for the currently selected font-family.
-	 */
-	renderSubsetSelector: function() {
-
-		var control    = this,
-		    value      = control.setting._value,
-		    fontFamily = value['font-family'],
-		    subsets    = kirki.util.webfonts.google.getSubsets( fontFamily ),
-		    selector   = control.selector + ' .subsets select',
-		    data       = [],
-		    validValue = value.subsets,
-		    subsetSelector;
-
-		if ( false !== subsets ) {
-			jQuery( control.selector + ' .subsets' ).show();
-			_.each( subsets, function( subset ) {
-
-				if ( _.isObject( validValue ) ) {
-					if ( -1 === validValue.indexOf( subset ) ) {
-						validValue = _.reject( validValue, function( subValue ) {
-							return subValue === subset;
-						});
-					}
-				}
-
-				data.push({
-					id: subset,
-					text: subset
-				});
-			});
-
-		} else {
-			jQuery( control.selector + ' .subsets' ).hide();
-		}
-
-		if ( jQuery( selector ).hasClass( 'select2-hidden-accessible' ) ) {
-			jQuery( selector ).selectWoo( 'destroy' );
-			jQuery( selector ).empty();
-		}
-
-		// Instantiate selectWoo with the data.
-		subsetSelector = jQuery( selector ).selectWoo({
-			data: data
-		});
-		subsetSelector.val( validValue ).trigger( 'change' );
-		subsetSelector.on( 'change', function() {
-			control.saveValue( 'subsets', jQuery( this ).val() );
-		});
+		} );
 	},
 
 	/**
@@ -3541,7 +3507,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				if ( ! isNaN( control.params.choices.fonts.google[1] ) ) {
 					googleFontsNumber = parseInt( control.params.choices.fonts.google[1], 10 );
 				}
-				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 
 			} else {
 				_.each( control.params.choices.fonts.google, function( fontName ) {
@@ -3551,7 +3517,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				} );
 			}
 		} else {
-			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, googleFontsNumber );
+			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 		}
 
 		// Get standard fonts.
@@ -3604,4 +3570,4 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
+} );

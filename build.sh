@@ -26,8 +26,6 @@ rm -rf controls/css/*.map
 rm -rf controls/js/src
 rm -rf controls/scss
 rm -rf docs
-rm modules/collapsible/*.scss
-rm modules/collapsible/*.map
 rm modules/custom-sections/*.scss
 rm modules/custom-sections/*.map
 rm modules/tooltips/*.scss

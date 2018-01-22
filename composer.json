@@ -23,13 +23,16 @@
       "files": ["kirki.php"]
   },
   "require": {
-    "php": ">=5.2"
+    "php": ">=5.2",
+    "php-coveralls/php-coveralls": "^2.0",
+    "phpunit/phpunit": "^6.5"
   },
   "require-dev": {
-    "composer/installers": "~1.0",
-    "phpunit/phpunit": "~4.8",
+    "composer/installers": "*",
+    "phpunit/phpunit": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wimg/php-compatibility": "*",
-    "wp-coding-standards/wpcs": "*"
+    "wp-coding-standards/wpcs": "*",
+    "codacy/coverage": "dev-master"
   }
 }

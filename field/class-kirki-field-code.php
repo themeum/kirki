@@ -62,59 +62,39 @@ class Kirki_Field_Code extends Kirki_Field {
 		if ( ! isset( $this->choices['language'] ) ) {
 			return;
 		}
-
-		switch ( $this->choices['language'] ) {
-			case 'css':
-			case 'html':
-			case 'htmlmixed':
-			case 'htm':
+		$language = $this->choices['language'];
+		switch ( $language ) {
 			case 'json':
-			case 'jsx':
-			case 'markdown':
-			case 'md':
 			case 'xml':
-				if ( 'md' === $this->choices['language'] ) {
-					$this->choices['language'] = 'markdown';
-				} elseif ( 'htm' === $this->choices['language'] || 'htmlmixed' === $this->choices['language'] ) {
-					$this->choices['language'] = 'html';
-				}
-				$this->code_type = 'text/' . $this->choices['language'];
-				if ( 'html' === $this->choices['language'] ) {
-					$this->choices['language'] = 'htmlmixed';
-				}
+				$language = 'application/' . $language;
 				break;
 			case 'http':
-			case 'javascript':
+				$language = 'message/' . $language;
+				break;
 			case 'js':
-			case 'php':
-			case 'phtml':
-			case 'php3':
-			case 'php4':
-			case 'php5':
-			case 'php7':
-			case 'phps':
-				if ( 'js' === $this->choices['language'] ) {
-					$this->choices['language'] = 'javascript';
-				} elseif ( in_array( $this->choices['language'], array( 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps' ), true ) ) {
-					$this->choices['language'] = 'php';
-				}
-				$this->code_type = 'application/' . $this->choices['language'];
+			case 'javascript':
+				$language = 'text/javascript';
 				break;
-			case 'svg':
-				$this->code_type = 'image/svg-xml';
+			case 'txt':
+				$language = 'text/plain';
 				break;
-			case 'text':
-				$this->code_type = 'text/plain';
+			case 'css':
+			case 'jsx':
+			case 'html':
+				$language = 'text/' . $language;
 				break;
 			default:
-				$this->code_type = 'text/x-' . $this->choices['language'];
+				$language = ( 'js' === $language ) ? 'javascript' : $language;
+				$language = ( 'htm' === $language ) ? 'html' : $language;
+				$language = ( 'yml' === $language ) ? 'yaml' : $language;
+				$language = 'text/x-' . $language;
 				break;
 		}
 		if ( ! isset( $this->editor_settings['codemirror'] ) ) {
 			$this->editor_settings['codemirror'] = array();
 		}
 		if ( ! isset( $this->editor_settings['codemirror']['mode'] ) ) {
-			$this->editor_settings['codemirror']['mode'] = $this->choices['language'];
+			$this->editor_settings['codemirror']['mode'] = $language;
 		}
 	}
 

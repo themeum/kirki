@@ -15,6 +15,16 @@
 class Kirki_Field_Image extends Kirki_Field {
 
 	/**
+	 * Custom labels.
+	 * This only exists here for backwards-compatibility purposes.
+	 *
+	 * @access public
+	 * @since 3.0.23
+	 * @var string
+	 */
+	public $button_labels = array();
+
+	/**
 	 * Sets the control type.
 	 *
 	 * @access protected
@@ -23,6 +33,20 @@ class Kirki_Field_Image extends Kirki_Field {
 
 		$this->type = 'kirki-image';
 
+	}
+
+	protected function set_button_labels() {
+		$this->button_labels = wp_parse_args( $this->button_labels,
+			array(
+				'select'       => esc_attr__( 'Select image', 'kirki' ),
+				'change'       => esc_attr__( 'Change image', 'kirki' ),
+				'default'      => esc_attr__( 'Default', 'kirki' ),
+				'remove'       => esc_attr__( 'Remove', 'kirki' ),
+				'placeholder'  => esc_attr__( 'No image selected', 'kirki' ),
+				'frame_title'  => esc_attr__( 'Select image', 'kirki' ),
+				'frame_button' => esc_attr__( 'Choose image', 'kirki' ),
+			)
+		);
 	}
 
 	/**
@@ -39,6 +63,11 @@ class Kirki_Field_Image extends Kirki_Field {
 		if ( ! isset( $this->choices['save_as'] ) ) {
 			$this->choices['save_as'] = 'url';
 		}
+		if ( ! isset( $this->choices['labels'] ) ) {
+			$this->choices['labels'] = array();
+		}
+		$this->set_button_labels();
+		$this->choices['labels'] = wp_parse_args( $this->choices['labels'], $this->button_labels );
 	}
 
 	/**

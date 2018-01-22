@@ -2,9 +2,9 @@
 **Contributors:** [aristath](https://profiles.wordpress.org/aristath), [fovoc](https://profiles.wordpress.org/fovoc), [igmoweb](https://profiles.wordpress.org/igmoweb)  
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.8.2  
-**Tested up to:** 4.9.1  
-**Stable tag:** 3.0.22  
+**Requires at least:** 4.9  
+**Tested up to:** 4.9.2  
+**Stable tag:** 3.0.23  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -19,7 +19,7 @@ Using Kirki theme developers can create rich experiences for the WordPress Custo
 
 Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
-We advise you to familiarize yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+We advise you to familiarise yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
 You can find detailed documentation on how to use Kirki on [https://aristath.github.io/kirki/](https://aristath.github.io/kirki/)
 
@@ -33,13 +33,34 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.23 ###
+
+* Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
+* Fix: PHP mode in code controls.
+* Fix: `active_callback` not working for upload fields [#1732](https://github.com/aristath/kirki/issues/1732)
+* Fix: accessibility issue on radio-buttonset controls [#1722](https://github.com/aristath/kirki/issues/1722)
+* Fix: `active_callback` not working for cropped-image controls [#1752](https://github.com/aristath/kirki/issues/1752)
+* Fix: added support for `button_labels` in image fields [#1173](https://github.com/aristath/kirki/issues/1173)
+* Fix: Support for adding inline CSS to an already defined stylesheet.
+* Fix: Sanitization in section & panel descriptions and priorities [#1759](https://github.com/aristath/kirki/issues/1759)
+* Fix: `active_callback` support when using serialized options [#1745](https://github.com/aristath/kirki/issues/1745)
+* Fix: Remove timepicker from date control [#1750](https://github.com/aristath/kirki/issues/1750)
+* Fix: WebfontLoader improvements.
+* Fix: Now using a datepicker for the `date` control [#1767](https://github.com/aristath/kirki/issues/1767)
+* New: Added "inherit" in the typography control's font-family option [w.org ticket](https://wordpress.org/support/topic/inherit-and-typography-control/)
+* New: Added googlefonts resource hints. Props @aryaprakasa.
+* New: Now loading fontawesome from a CDN. smaller footprint for the plugin and async loading will improve performance for everyone [#1763](https://github.com/aristath/kirki/issues/1763)
+* Tweak: Removed legacy code.
+* Tweak: Code cleanups.
+* Deprecated: Typography controls no longer require the "subset" dropdown.
+
 ### 3.0.22 ###
 
 December 20 2017, dev time: 3.5 hours.
 
 * Fix: Files cleanup. Removed webfonts.php and now use the json file.
 * Fix: WordPress Coding Standards fixes.
-* New: Converted all filter names to use `_` instead of `/` (WPCS)
+* New: Converted all filter names to use `_` instead of `/` (WPCS). Fallback methods included.
 * New: Removed inline methods for webfonts and now use [typekit/webfontloader](https://github.com/typekit/webfontloader).
 * New: Update GoogleFonts list.
 

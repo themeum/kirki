@@ -117,7 +117,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 							)
 						);
 						// Hackily add in the data link parameter.
-						$dropdown = str_replace( '<select', '<select data-field="' . esc_attr( $args['fields'][ $key ]['id'] ) . '"' . $this->get_link(), $dropdown );
+						$dropdown = str_replace( '<select', '<select data-field="' . esc_attr( $args['fields'][ $key ]['id'] ) . '"' . $this->get_link(), $dropdown ); // phpcs:ignore Generic.Formatting.MultipleStatementAlignment.NotSameWarning
 						$args['fields'][ $key ]['dropdown'] = $dropdown;
 						break;
 				}

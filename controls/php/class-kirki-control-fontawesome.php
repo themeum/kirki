@@ -35,7 +35,7 @@ class Kirki_Control_FontAwesome extends Kirki_Control_Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		wp_enqueue_style( 'kirki-fontawesome-font-css', trailingslashit( Kirki::$url ) . 'assets/vendor/fontawesome/css/font-awesome.min.css', array(), KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7' );
 
 		ob_start();
 		$json_path = wp_normalize_path( Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json' );

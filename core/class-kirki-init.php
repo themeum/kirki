@@ -112,8 +112,8 @@ class Kirki_Init {
 			'kirki-toggle'          => 'Kirki_Control_Toggle',
 			'kirki-typography'      => 'Kirki_Control_Typography',
 			'image'                 => 'Kirki_Control_Image',
-			'cropped_image'         => 'WP_Customize_Cropped_Image_Control',
-			'upload'                => 'WP_Customize_Upload_Control',
+			'cropped_image'         => 'Kirki_Control_Cropped_Image',
+			'upload'                => 'Kirki_Control_Upload',
 		);
 		return array_merge( $this->control_types, $control_types );
 

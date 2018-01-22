@@ -8,7 +8,6 @@ notifications:
 
 php:
   - 7.0
-  - 5.6
 
 before_install:
   - pip install --user codecov
@@ -29,10 +28,10 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  # - phpunit # --coverage-clover=coverage.clover
+  - phpunit --coverage-clover=coverage.clover
   # Search for PHP syntax errors.
   # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
-  # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
   # Run the plugin through JSHint.
   - jshint ./controls/js/src/*.js
   - jshint ./modules/**/*.js
@@ -48,16 +47,18 @@ script:
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
   - vendor/bin/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - vendor/bin/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/*.php,./tests/*.php
-  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/*.php
-  - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./vendor/**/**/*.php
+  - vendor/bin/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
 
 after_script:
-  # - php vendor/bin/coveralls
+  - php vendor/bin/coveralls
   - wget https://scrutinizer-ci.com/ocular.phar
-  # - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
+  - php vendor/bin/codacycoverage clover ./build/logs/clover.xml
 
 after_success:
-  # - coveralls
-  # - codecov
-  # - bash <(curl -s https://codecov.io/bash)
+  - travis_retry php vendor/bin/php-coveralls
+  - coveralls
+  - codecov
+  - bash <(curl -s https://codecov.io/bash)
