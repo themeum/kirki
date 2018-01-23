@@ -27,6 +27,15 @@ final class Kirki_Fonts_Google {
 	private static $instance = null;
 
 	/**
+     * DUMMY. DOESN'T DO ANYTHING, SIMPLY BACKWARDS-COMPATIBILITY.
+     *
+     * @static
+     * @access public
+     * @var bool
+     */
+    public static $force_load_all_subsets = false;
+
+	/**
 	 * If set to true, forces loading ALL variants.
 	 *
 	 * @static
