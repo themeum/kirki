@@ -162,6 +162,34 @@ final class Kirki_Fonts {
 	}
 
 	/**
+	 * Returns an array of all available subsets.
+	 *
+	 * @static
+	 * @access public
+	 * @return array
+	 */
+	public static function get_google_font_subsets() {
+		return array(
+			'cyrillic'     => 'Cyrillic',
+			'cyrillic-ext' => 'Cyrillic Extended',
+			'devanagari'   => 'Devanagari',
+			'greek'        => 'Greek',
+			'greek-ext'    => 'Greek Extended',
+			'khmer'        => 'Khmer',
+			'latin'        => 'Latin',
+			'latin-ext'    => 'Latin Extended',
+			'vietnamese'   => 'Vietnamese',
+			'hebrew'       => 'Hebrew',
+			'arabic'       => 'Arabic',
+			'bengali'      => 'Bengali',
+			'gujarati'     => 'Gujarati',
+			'tamil'        => 'Tamil',
+			'telugu'       => 'Telugu',
+			'thai'         => 'Thai',
+		);
+	}
+
+	/**
 	 * Dummy function to avoid issues with backwards-compatibility.
 	 * This is not functional, but it will prevent PHP Fatal errors.
 	 *
