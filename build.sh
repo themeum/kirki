@@ -40,6 +40,7 @@ rm .gitignore
 rm .jscsrc
 rm .jshintignore
 rm .jshintrc
+rm .jhintrc
 rm .simplecov
 rm .travis.yml
 rm CODE_OF_CONDUCT.md
@@ -50,6 +51,7 @@ rm Gruntfile.js
 rm package.json
 rm phpcs.ruleset.xml
 rm phpunit.xml
+rm phpunit.xml.dist
 rm README.md
 rm *.sh
 rm package-lock.json

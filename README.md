@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 4.9.2  
-**Stable tag:** 3.0.23  
+**Stable tag:** 3.0.24  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,7 +33,15 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.24 ###
+
+January 23 2018, dev time: 10 minutes.
+
+* Fix: Added back the `get_google_font_subsets()` method. Although it was alays meant just to be used internally apparently a couple of themes out there use it and its removal caused a fatal error.
+
 ### 3.0.23 ###
+
+January 22 2018, dev time: 23 hours.
 
 * Fix: clear button on color controls [#1720](https://github.com/aristath/kirki/issues/1720)
 * Fix: PHP mode in code controls.
