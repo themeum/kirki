@@ -111,7 +111,7 @@ final class Kirki_Modules_Webfonts_Async {
 					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
 				}
 			}
-			$fonts_to_load[] = $font . ':' . join( ',', $weights );
+			$fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 		}
 		wp_enqueue_script( 'webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), KIRKI_VERSION );
 		if ( empty( $fonts_to_load ) ) {
