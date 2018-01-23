@@ -33,11 +33,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.25 ###
+
+January 23 2018, dev time: 1 hour.
+
+Please note that the typography controls since v3.0.23 no longer require subsets. This is not a bug or omission, subsets are simply no longer necessary because there's an implementation now that loads them properly without requiring the user to define it.
+
+* Fix: partial reversion of webfontloader improvements in order to resolve an issue with incorect font-weights loading.
+
 ### 3.0.24 ###
 
 January 23 2018, dev time: 10 minutes.
 
-* Fix: Added back the `get_google_font_subsets()` method. Although it was alays meant just to be used internally apparently a couple of themes out there use it and its removal caused a fatal error.
+* Fix: Added back the `get_google_font_subsets()` method. Although it was always meant just to be used internally apparently a couple of themes out there use it and its removal caused a fatal error.
 
 ### 3.0.23 ###
 
