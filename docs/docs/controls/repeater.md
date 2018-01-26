@@ -100,6 +100,49 @@ Kirki::add_field( 'theme_config_id', array(
 ) );
 ```
 
+Creating repeater control with limiting number of rows to 3:
+
+```php
+Kirki::add_field( 'theme_config_id', array(
+	'type'        => 'repeater',
+	'label'       => esc_attr__( 'Repeater Control', 'textdomain' ),
+	'section'     => 'section_id',
+	'priority'    => 10,
+	'row_label' => array(
+		'type' => 'text',
+		'value' => esc_attr__('your custom value', 'textdomain' ),
+	),
+	'settings'    => 'my_setting',
+	'default'     => array(
+		array(
+			'link_text' => esc_attr__( 'Kirki Site', 'textdomain' ),
+			'link_url'  => 'https://aristath.github.io/kirki/',
+		),
+		array(
+			'link_text' => esc_attr__( 'Kirki Repository', 'textdomain' ),
+			'link_url'  => 'https://github.com/aristath/kirki',
+		),
+	),
+	'choices' => array(
+		'limit' => 3
+	),
+	'fields' => array(
+		'link_text' => array(
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Link Text', 'textdomain' ),
+			'description' => esc_attr__( 'This will be the label for your link', 'textdomain' ),
+			'default'     => '',
+		),
+		'link_url' => array(
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Link URL', 'textdomain' ),
+			'description' => esc_attr__( 'This will be the link URL', 'textdomain' ),
+			'default'     => '',
+		),
+	)
+) );
+```
+
 ### Usage
 
 ```php
