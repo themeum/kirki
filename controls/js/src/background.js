@@ -19,11 +19,11 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	initKirkiControl: function() {
 
 		var control = this,
-		    value   = control.setting._value,
-		    picker  = control.container.find( '.kirki-color-control' );
+			value   = control.setting._value,
+			picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
-		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
+		if ( _.isUndefined( value['background-image']) || '' === value['background-image']) {
 			control.container.find( '.background-wrapper > .background-repeat' ).hide();
 			control.container.find( '.background-wrapper > .background-position' ).hide();
 			control.container.find( '.background-wrapper > .background-size' ).hide();
@@ -65,13 +65,13 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 				// This will return the selected image from the Media Uploader, the result is an object.
 				var uploadedImage = image.state().get( 'selection' ).first(),
-				    previewImage   = uploadedImage.toJSON().sizes.full.url,
-				    imageUrl,
-				    imageID,
-				    imageWidth,
-				    imageHeight,
-				    preview,
-				    removeButton;
+					previewImage   = uploadedImage.toJSON().sizes.full.url,
+					imageUrl,
+					imageID,
+					imageWidth,
+					imageHeight,
+					preview,
+					removeButton;
 
 				if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
 					previewImage = uploadedImage.toJSON().sizes.medium.url;
@@ -99,7 +99,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 				if ( removeButton.length ) {
 					removeButton.show();
 				}
-		    });
+			});
 
 			e.preventDefault();
 		});
@@ -107,7 +107,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		control.container.on( 'click', '.background-image-upload-remove-button', function( e ) {
 
 			var preview,
-			    removeButton;
+				removeButton;
 
 			e.preventDefault();
 
@@ -137,8 +137,8 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	saveValue: function( property, value ) {
 
 		var control = this,
-		    input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
-		    val     = control.setting._value;
+			input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
+			val     = control.setting._value;
 
 		val[ property ] = value;
 

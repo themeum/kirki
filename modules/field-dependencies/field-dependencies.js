@@ -7,14 +7,14 @@ var kirkiDependencies = {
 
 		wp.customize.control.each( function( control ) {
 			self.showKirkiControl( control );
-		} );
+		});
 
 		_.each( self.listenTo, function( slaves, master ) {
 			_.each( slaves, function( slave ) {
 				wp.customize( master, function( setting ) {
-				    var setupControl = function( control ) {
-				        var setActiveState,
-						    isDisplayed;
+					var setupControl = function( control ) {
+						var setActiveState,
+							isDisplayed;
 
 						isDisplayed = function() {
 							return self.showKirkiControl( wp.customize.control( slave ) );
@@ -26,9 +26,9 @@ var kirkiDependencies = {
 						setActiveState();
 						setting.bind( setActiveState );
 						control.active.validate = isDisplayed;
-				    };
-				    wp.customize.control( slave, setupControl );
-				} );
+					};
+					wp.customize.control( slave, setupControl );
+				});
 			});
 		});
 	},
@@ -42,7 +42,7 @@ var kirkiDependencies = {
 	 */
 	showKirkiControl: function( control ) {
 		var self = this,
-		    show = true;
+			show = true;
 
 		if ( _.isString( control ) ) {
 			control = wp.customize.control( control );
@@ -85,7 +85,7 @@ var kirkiDependencies = {
 			if ( ! requirementShow ) {
 				show = false;
 			}
-		} );
+		});
 		return show;
 	},
 
@@ -100,7 +100,7 @@ var kirkiDependencies = {
 	 */
 	evaluate: function( value1, value2, operator ) {
 		var found  = false,
-		    result = null;
+			result = null;
 
 		if ( '===' === operator ) {
 			result = value1 === value2;
@@ -124,10 +124,10 @@ var kirkiDependencies = {
 					if ( value == value1 ) { // jshint ignore:line
 						found = true;
 					}
-				} );
+				});
 				return found;
 			} else if ( _.isObject( value2 ) ) {
-				if ( ! _.isUndefined( value2[ value1 ] ) ) {
+				if ( ! _.isUndefined( value2[ value1 ]) ) {
 					found = true;
 				}
 
@@ -135,10 +135,10 @@ var kirkiDependencies = {
 					if ( value1 === subValue ) {
 						found = true;
 					}
-				} );
+				});
 				return found;
 			} else if ( _.isString( value2 ) ) {
-				return value1.indexOf( value2 ) > -1;
+				return -1 < value1.indexOf( value2 );
 			}
 		}
 		if ( null === result ) {
@@ -150,4 +150,4 @@ var kirkiDependencies = {
 
 jQuery( document ).ready( function() {
 	kirkiDependencies.init();
-} );
+});

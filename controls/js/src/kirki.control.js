@@ -49,15 +49,15 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-radio' );
-				control.container.html( template( {
+				control.container.html( template({
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
 					inputAttrs: control.params.inputAttrs,
-					'default': control.params['default'],
+					'default': control.params.default,
 					value: kirki.setting.get( control.id ),
 					choices: control.params.choices
-				} ) );
+				}) );
 			}
 		},
 
@@ -107,17 +107,17 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-color' );
-				control.container.html( template( {
+				control.container.html( template({
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
 					mode: control.params.mode,
 					inputAttrs: control.params.inputAttrs,
 					'data-palette': control.params.palette,
-					'data-default-color': control.params['default'],
+					'data-default-color': control.params.default,
 					'data-alpha': control.params.choices.alpha,
 					value: kirki.setting.get( control.id )
-				} ) );
+				}) );
 			}
 		},
 
@@ -175,8 +175,8 @@ kirki = jQuery.extend( kirki, {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-				    },
-				    template;
+					},
+					template;
 
 				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
 					template = wp.template( 'kirki-input-textarea' );
@@ -224,7 +224,7 @@ kirki = jQuery.extend( kirki, {
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-select' );
 
-				control.container.html( template( {
+				control.container.html( template({
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -233,8 +233,8 @@ kirki = jQuery.extend( kirki, {
 					value: kirki.setting.get( control.id ),
 					multiple: control.params.multiple || 1,
 					placeholder: control.params.placeholder
-			    } ) );
+				}) );
 			}
 		}
 	}
-} );
+});

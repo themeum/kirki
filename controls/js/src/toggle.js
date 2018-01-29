@@ -3,7 +3,7 @@ wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 
 		var control = this,
-		    checkboxValue = control.setting._value;
+			checkboxValue = control.setting._value;
 
 		// Save the value
 		this.container.on( 'change', 'input', function() {

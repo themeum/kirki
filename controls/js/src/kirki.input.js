@@ -1,6 +1,7 @@
 /* global kirkiL10n */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * An object containing definitions for input fields.
 	 *
@@ -54,7 +55,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			init: function( control ) {
 				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
-				    clear;
+					clear;
 
 				control.choices = control.choices || {};
 				if ( _.isEmpty( control.choices ) && control.params.choices ) {
@@ -151,13 +152,13 @@ kirki = jQuery.extend( kirki, {
 			 */
 			init: function( control ) {
 				var element  = jQuery( 'select[data-id="' + control.id + '"]' ),
-				    multiple = parseInt( element.data( 'multiple' ), 10 ),
-				    selectValue,
-				    selectWooOptions = {
+					multiple = parseInt( element.data( 'multiple' ), 10 ),
+					selectValue,
+					selectWooOptions = {
 						escapeMarkup: function( markup ) {
 							return markup;
 						}
-				    };
+					};
 					if ( control.params.placeholder ) {
 						selectWooOptions.placeholder = control.params.placeholder;
 						selectWooOptions.allowClear = true;
@@ -185,8 +186,8 @@ kirki = jQuery.extend( kirki, {
 			 */
 			getTemplate: function( data ) {
 				var html   = '',
-				    saveAs = 'url',
-				    url;
+					saveAs = 'url',
+					url;
 
 				data = _.defaults( data, {
 					label: '',
@@ -195,7 +196,7 @@ kirki = jQuery.extend( kirki, {
 					'data-id': '',
 					choices: {},
 					value: ''
-				} );
+				});
 
 				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
 					saveAs = data.choices.save_as;
@@ -221,12 +222,12 @@ kirki = jQuery.extend( kirki, {
 				}
 				html += '<div class="actions">';
 				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirkiL10n.remove + '</button>';
-				if ( data['default'] && '' !== data['default'] ) {
+				if ( data.default && '' !== data.default ) {
 					html += '<button type="button" class="button image-default-button"';
-					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
+					if ( data.default === data.value || ( ! _.isUndefined( data.value.url ) && data.default === data.value.url ) ) {
 						html += ' style="display:none;"';
 					}
-					html += '>' + kirkiL10n['default'] + '</button>';
+					html += '>' + kirkiL10n.default + '</button>';
 				}
 				html += '<button type="button" class="button image-upload-button">' + kirkiL10n.selectFile + '</button>';
 				html += '</div></div>';
@@ -241,8 +242,8 @@ kirki = jQuery.extend( kirki, {
 			 * @param {Object} control - The control object.
 			 * @returns {null}
 			 */
-			init: function( control ) { // jshint ignore:line
+			init: function( control ) {
 			}
 		}
 	}
-} );
+});

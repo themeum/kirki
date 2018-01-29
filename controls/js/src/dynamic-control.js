@@ -21,7 +21,7 @@
 
 		initialize: function( id, options ) {
 			var control = this,
-			    args    = options || {};
+				args    = options || {};
 
 			args.params = args.params || {};
 			if ( ! args.params.type ) {
@@ -48,7 +48,7 @@
 		 */
 		_setUpSettingRootLinks: function() {
 			var control = this,
-			    nodes   = control.container.find( '[data-customize-setting-link]' );
+				nodes   = control.container.find( '[data-customize-setting-link]' );
 
 			nodes.each( function() {
 				var node = jQuery( this );
@@ -58,8 +58,8 @@
 					control.elements.push( element );
 					element.sync( setting );
 					element.set( setting() );
-				} );
-			} );
+				});
+			});
 		},
 
 		/**
@@ -70,7 +70,7 @@
 		 */
 		_setUpSettingPropertyLinks: function() {
 			var control = this,
-			    nodes;
+				nodes;
 
 			if ( ! control.setting ) {
 				return;
@@ -80,28 +80,28 @@
 
 			nodes.each( function() {
 				var node = jQuery( this ),
-				    element,
-				    propertyName = node.data( 'customizeSettingPropertyLink' );
+					element,
+					propertyName = node.data( 'customizeSettingPropertyLink' );
 
 				element = new wp.customize.Element( node );
 				control.propertyElements.push( element );
-				element.set( control.setting()[ propertyName ] );
+				element.set( control.setting()[ propertyName ]);
 
 				element.bind( function( newPropertyValue ) {
 					var newSetting = control.setting();
-					if ( newPropertyValue === newSetting[ propertyName ] ) {
+					if ( newPropertyValue === newSetting[ propertyName ]) {
 						return;
 					}
 					newSetting = _.clone( newSetting );
 					newSetting[ propertyName ] = newPropertyValue;
 					control.setting.set( newSetting );
-				} );
+				});
 				control.setting.bind( function( newValue ) {
 					if ( newValue[ propertyName ] !== element.get() ) {
-						element.set( newValue[ propertyName ] );
+						element.set( newValue[ propertyName ]);
 					}
-				} );
-			} );
+				});
+			});
 		},
 
 		/**
@@ -117,7 +117,7 @@
 
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
-			} );
+			});
 		},
 
 		/**
@@ -131,7 +131,7 @@
 		 */
 		embed: function() {
 			var control   = this,
-			    sectionId = control.section();
+				sectionId = control.section();
 
 			if ( ! sectionId ) {
 				return;
@@ -145,9 +145,9 @@
 						if ( expanded ) {
 							control.actuallyEmbed();
 						}
-					} );
+					});
 				}
-			} );
+			});
 		},
 
 		/**
@@ -186,7 +186,7 @@
 		 * @returns {null}
 		 */
 		initKirkiControl: function( control ) {
-			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
+			if ( 'undefined' !== typeof kirki.control[ control.params.type ]) {
 				kirki.control[ control.params.type ].init( control );
 				return;
 			}
@@ -194,12 +194,12 @@
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
-			} );
+			});
 		},
 
 		kirkiValidateCSSValue: function( value ) {
 
-			var validUnits = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'],
+			var validUnits = [ 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
 				numericValue,
 				unit;
 
@@ -224,8 +224,8 @@
 			}
 			return true;
 		}
-	} );
+	});
 }() );
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
-} );
+});

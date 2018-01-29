@@ -4,10 +4,10 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 	initKirkiControl: function() {
 
 		var control  = this,
-		    element  = this.container.find( 'select' ),
-		    icons    = jQuery.parseJSON( fontAwesomeJSON ),
-		    selectValue,
-		    selectWooOptions = {
+			element  = this.container.find( 'select' ),
+			icons    = jQuery.parseJSON( fontAwesomeJSON ),
+			selectValue,
+			selectWooOptions = {
 				data: [],
 				escapeMarkup: function( markup ) {
 					return markup;
@@ -18,8 +18,8 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 				templateSelection: function( val ) {
 					return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
 				}
-		    },
-		    select;
+			},
+			select;
 
 		_.each( icons.icons, function( icon ) {
 			selectWooOptions.data.push({

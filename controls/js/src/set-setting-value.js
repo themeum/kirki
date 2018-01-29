@@ -1,7 +1,7 @@
 /* jshint -W079 */
 /* jshint unused:false */
 if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
-	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
+	var kirkiSetSettingValue = { // eslint-disable-line vars-on-top
 
 		/**
 		 * Set the value of the control.
@@ -18,8 +18,8 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			 * and determine if we need to do any further work based on those.
 			 */
 			var $this = this,
-			    subControl = wp.customize.settings.controls[ setting ],
-			    valueJSON;
+				subControl = wp.customize.settings.controls[ setting ],
+				valueJSON;
 
 			// If the control doesn't exist then return.
 			if ( _.isUndefined( subControl ) ) {
@@ -33,16 +33,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			switch ( subControl.type ) {
 
 				case 'kirki-background':
-					if ( ! _.isUndefined( value['background-color'] ) ) {
-						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color'] );
+					if ( ! _.isUndefined( value['background-color']) ) {
+						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color']);
 					}
 					$this.findElement( setting, '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
-					_.each( ['background-repeat', 'background-position'], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ] ) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
+					_.each([ 'background-repeat', 'background-position' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ]) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
 						}
 					});
-					_.each( ['background-size', 'background-attachment'], function( subVal ) {
+					_.each([ 'background-size', 'background-attachment' ], function( subVal ) {
 						jQuery( $this.findElement( setting, '.' + subVal + ' input[value="' + value + '"]' ) ).prop( 'checked', true );
 					});
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
@@ -108,14 +108,14 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each( ['font-family', 'variant'], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ] ) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
+					_.each([ 'font-family', 'variant' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ]) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
 						}
 					});
-					_.each( ['font-size', 'line-height', 'letter-spacing', 'word-spacing'], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ] ) ) {
-							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ] );
+					_.each([ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ]) ) {
+							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ]);
 						}
 					});
 

@@ -4,7 +4,7 @@ jQuery( document ).ready( function() {
 
 		// Get the pane element.
 		var pane      = jQuery( '#sub-accordion-section-' + section.id ),
-		    sectionLi = jQuery( '#accordion-section-' + section.id );
+			sectionLi = jQuery( '#accordion-section-' + section.id );
 
 		// Check if the section is expanded.
 		if ( sectionLi.hasClass( 'control-section-kirki-expanded' ) ) {
@@ -14,9 +14,9 @@ jQuery( document ).ready( function() {
 
 		}
 
-	} );
+	});
 
-} );
+});
 
 /**
  * @see https://wordpress.stackexchange.com/a/256103/17078
@@ -24,16 +24,16 @@ jQuery( document ).ready( function() {
 ( function() {
 
 	var _panelEmbed,
-	    _panelIsContextuallyActive,
-	    _panelAttachEvents,
-	    _sectionEmbed,
-	    _sectionIsContextuallyActive,
-	    _sectionAttachEvents;
+		_panelIsContextuallyActive,
+		_panelAttachEvents,
+		_sectionEmbed,
+		_sectionIsContextuallyActive,
+		_sectionAttachEvents;
 
 	wp.customize.bind( 'pane-contents-reflowed', function() {
 
 		var panels   = [],
-		    sections = [];
+			sections = [];
 
 		// Reflow Sections.
 		wp.customize.section.each( function( section ) {
@@ -112,7 +112,7 @@ jQuery( document ).ready( function() {
 		embed: function() {
 
 			var panel = this,
-			    parentContainer;
+				parentContainer;
 			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.panel ) ) {
 				_panelEmbed.call( this );
 				return;
@@ -128,8 +128,8 @@ jQuery( document ).ready( function() {
 		isContextuallyActive: function() {
 
 			var panel = this,
-			    children,
-			    activeCount = 0;
+				children,
+				activeCount = 0;
 
 			if ( 'kirki-nested' !== this.params.type ) {
 				return _panelIsContextuallyActive.call( this );
@@ -201,7 +201,7 @@ jQuery( document ).ready( function() {
 		embed: function() {
 
 			var section = this,
-			    parentContainer;
+				parentContainer;
 
 			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.section ) ) {
 				_sectionEmbed.call( section );
@@ -217,8 +217,8 @@ jQuery( document ).ready( function() {
 
 		isContextuallyActive: function() {
 			var section = this,
-			    children,
-			    activeCount = 0;
+				children,
+				activeCount = 0;
 			if ( 'kirki-nested' !== this.params.type ) {
 				return _sectionIsContextuallyActive.call( this );
 			}
@@ -253,4 +253,4 @@ jQuery( document ).ready( function() {
 			return ( 0 !== activeCount );
 		}
 	});
-})( jQuery );
+}( jQuery ) );

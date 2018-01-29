@@ -55,7 +55,7 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		'use strict';
 
 		var control = this,
-		    newValue = [];
+			newValue = [];
 
 		this.sortableContainer.find( 'li' ).each( function() {
 			if ( ! jQuery( this ).is( '.invisible' ) ) {

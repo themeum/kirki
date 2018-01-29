@@ -19,12 +19,9 @@ before_script:
   - composer install --dev
   # After CodeSniffer install you should refresh your path.
   - phpenv rehash
-  # Install JSCS: JavaScript Code Style checker.
-  # @link http://jscs.info/
-  - npm install -g jscs
-  # Install JSHint, a JavaScript Code Quality Tool.
-  # @link http://jshint.com/docs/
-  - npm install -g jshint
+  # Install ESLint.
+  - npm install -g eslint
+  - npm install -g eslint-config-wordpress
 
 script:
   - mkdir -p build/logs
@@ -32,11 +29,9 @@ script:
   # Search for PHP syntax errors.
   # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
   - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
-  # Run the plugin through JSHint.
-  - jshint ./controls/js/src/*.js
-  - jshint ./modules/**/*.js
-  # Run the plugin through JavaScript Code Style checker.
-  - jscs ./controls/js/src/*.js
+  # Run the plugin through ESLint.
+  - eslint ./controls/js/src/*.js
+  - eslint ./modules/**/*.js
   # WordPress Coding Standards.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link http://pear.php.net/package/PHP_CodeSniffer/

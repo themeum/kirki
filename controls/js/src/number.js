@@ -3,18 +3,18 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 
 		var control = this,
-		    value   = control.setting._value,
-		    html    = '',
-		    input,
-		    up,
-		    down;
+			value   = control.setting._value,
+			html    = '',
+			input,
+			up,
+			down;
 
 		// Make sure we use default values if none are define for some arguments.
 		control.params.choices = _.defaults( control.params.choices, {
 			min: 0,
 			max: 100,
 			step: 1
-		} );
+		});
 
 		// Make sure we have a valid value.
 		if ( isNaN( value ) || '' === value ) {
@@ -53,23 +53,23 @@ wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicContr
 
 		up.click( function() {
 			var oldVal = parseFloat( input.val() ),
-			    newVal;
+				newVal;
 
 			newVal = ( oldVal >= control.params.choices.max ) ? oldVal : oldVal + control.params.choices.step;
 
 			input.val( newVal );
 			input.trigger( 'change' );
-		} );
+		});
 
 		down.click( function() {
 			var oldVal = parseFloat( input.val() ),
-			    newVal;
+				newVal;
 
 			newVal = ( oldVal <= control.params.choices.min ) ? oldVal : oldVal - control.params.choices.step;
 
 			input.val( newVal );
 			input.trigger( 'change' );
-		} );
+		});
 
 		this.container.on( 'change keyup paste click', 'input', function() {
 			control.setting.set( jQuery( this ).val() );

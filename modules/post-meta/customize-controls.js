@@ -10,8 +10,8 @@ jQuery( document ).ready( function() {
 	wp.customize.bind( 'ready', function() {
 		wp.customize.previewer.bind( 'queried-post', function( queriedPost ) {
 			self.queriedPost.set( queriedPost || false );
-		} );
-	} );
+		});
+	});
 
 	// Listen for post
 	self.queriedPost.bind( function( newPost, oldPost ) {
@@ -19,5 +19,5 @@ jQuery( document ).ready( function() {
 		if ( newPost || oldPost ) {
 			window.kirkiPost = ( newPost ) ? newPost : oldPost;
 		}
-	} );
-} );
+	});
+});

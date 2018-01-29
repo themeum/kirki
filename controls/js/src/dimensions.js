@@ -4,16 +4,16 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	initKirkiControl: function() {
 
 		var control     = this,
-		    subControls = control.params.choices.controls,
-		    value       = {},
-		    subsArray   = [],
-		    i;
+			subControls = control.params.choices.controls,
+			value       = {},
+			subsArray   = [],
+			i;
 
 		_.each( subControls, function( v, i ) {
 			if ( true === v ) {
 				subsArray.push( i );
 			}
-		} );
+		});
 
 		for ( i = 0; i < subsArray.length; i++ ) {
 			value[ subsArray[ i ] ] = control.setting._value[ subsArray[ i ] ];
@@ -45,7 +45,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	saveValue: function( value ) {
 
 		var control  = this,
-		    newValue = {};
+			newValue = {};
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
@@ -64,8 +64,8 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code = 'long_title',
-				    subs = {},
-				    message;
+					subs = {},
+					message;
 
 				setting.notifications.remove( code );
 
@@ -75,18 +75,18 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 					} else {
 						delete subs[ direction ];
 					}
-				} );
+				});
 
 				if ( ! _.isEmpty( subs ) ) {
 					message = dimensionskirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
 					setting.notifications.add( code, new wp.customize.Notification( code, {
 						type: 'warning',
 						message: message
-					} ) );
+					}) );
 					return;
 				}
 				setting.notifications.remove( code );
-			} );
-		} );
+			});
+		});
 	}
 });

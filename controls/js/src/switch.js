@@ -5,7 +5,7 @@ wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicContr
 		'use strict';
 
 		var control       = this,
-		    checkboxValue = control.setting._value;
+			checkboxValue = control.setting._value;
 
 		// Save the value
 		this.container.on( 'change', 'input', function() {

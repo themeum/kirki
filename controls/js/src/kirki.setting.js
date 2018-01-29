@@ -1,5 +1,6 @@
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * An object containing definitions for settings.
 	 *
@@ -20,9 +21,9 @@ kirki = jQuery.extend( kirki, {
 		 */
 		get: function( setting ) {
 			var parts        = setting.split( '[' ),
-			    foundSetting = '',
-			    foundInStep  = 0,
-			    currentVal   = '';
+				foundSetting = '',
+				foundInStep  = 0,
+				currentVal   = '';
 
 			_.each( parts, function( part, i ) {
 				part = part.replace( ']', '' );
@@ -39,7 +40,7 @@ kirki = jQuery.extend( kirki, {
 				}
 
 				if ( foundInStep < i ) {
-					if ( _.isObject( currentVal ) && ! _.isUndefined( currentVal[ part ] ) ) {
+					if ( _.isObject( currentVal ) && ! _.isUndefined( currentVal[ part ]) ) {
 						currentVal = currentVal[ part ];
 					}
 				}
@@ -68,13 +69,13 @@ kirki = jQuery.extend( kirki, {
 		 */
 		set: function( element, value, key ) {
 			var setting,
-			    parts,
-			    currentNode   = '',
-			    foundNode     = '',
-			    subSettingObj = {},
-			    currentVal,
-			    subSetting,
-			    subSettingParts;
+				parts,
+				currentNode   = '',
+				foundNode     = '',
+				subSettingObj = {},
+				currentVal,
+				subSetting,
+				subSettingParts;
 
 			// Get the setting from the element.
 			setting = element;
@@ -106,7 +107,7 @@ kirki = jQuery.extend( kirki, {
 					foundNode  = currentNode;
 					currentVal = wp.customize.instance( foundNode ).get();
 				}
-			} );
+			});
 
 			// Get the remaining part of the setting that was unused.
 			subSetting = setting.replace( foundNode, '' );
@@ -123,7 +124,7 @@ kirki = jQuery.extend( kirki, {
 				subSettingParts = subSetting.split( '[' );
 				_.each( subSettingParts, function( subSettingPart, i ) {
 					subSettingParts[ i ] = subSettingPart.replace( ']', '' );
-				} );
+				});
 
 				// If using a key, we need to go 1 level deeper.
 				if ( key ) {
@@ -149,4 +150,4 @@ kirki = jQuery.extend( kirki, {
 			wp.customize.control( foundNode ).setting.set( value );
 		}
 	}
-} );
+});

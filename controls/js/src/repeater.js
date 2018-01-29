@@ -22,7 +22,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	});
 
 	this.container.on( 'keyup change', 'input, select, textarea', function( e ) {
-		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ] );
+		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ]);
 	});
 
 	this.setRowIndex = function( rowIndex ) {
@@ -43,23 +43,23 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 		this.container.slideUp( 300, function() {
 			jQuery( this ).detach();
 		});
-		this.container.trigger( 'row:remove', [ this.rowIndex ] );
+		this.container.trigger( 'row:remove', [ this.rowIndex ]);
 	};
 
 	this.updateLabel = function() {
 		var rowLabelField,
-		    rowLabel,
-		    rowLabelSelector;
+			rowLabel,
+			rowLabelSelector;
 
 		if ( 'field' === this.label.type ) {
 			rowLabelField = this.container.find( '.repeater-field [data-field="' + this.label.field + '"]' );
 			if ( _.isFunction( rowLabelField.val ) ) {
 				rowLabel = rowLabelField.val();
 				if ( '' !== rowLabel ) {
-					if ( ! _.isUndefined( control.params.fields[ this.label.field ] ) ) {
+					if ( ! _.isUndefined( control.params.fields[ this.label.field ]) ) {
 						if ( ! _.isUndefined( control.params.fields[ this.label.field ].type ) ) {
 							if ( 'select' === control.params.fields[ this.label.field ].type ) {
-								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) && ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ] ) ) {
+								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) && ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ]) ) {
 									rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
 								}
 							} else if ( 'radio' === control.params.fields[ this.label.field ].type || 'radio-image' === control.params.fields[ this.label.field ].type ) {
@@ -100,8 +100,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-		    limit,
-		    theNewRow;
+			limit,
+			theNewRow;
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
@@ -112,7 +112,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
 
 		// Set the field value for the first time, we'll fill it up later
-		this.setValue( [], false );
+		this.setValue([], false );
 
 		// The DIV that holds all the rows
 		this.repeaterFieldsContainer = this.container.find( '.repeater-fields' ).first();
@@ -171,18 +171,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		 */
 		this.repeaterTemplate = _.memoize( function() {
 			var compiled,
-			    /*
-			     * Underscore's default ERB-style templates are incompatible with PHP
-			     * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
-			     *
-			     * @see trac ticket #22344.
-			     */
-			    options = {
+
+				/*
+				 * Underscore's default ERB-style templates are incompatible with PHP
+				 * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
+				 *
+				 * @see trac ticket #22344.
+				 */
+				options = {
 					evaluate: /<#([\s\S]+?)#>/g,
 					interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
 					escape: /\{\{([^\}]+?)\}\}(?!\})/g,
 					variable: 'data'
-			    };
+				};
 
 			return function( data ) {
 				compiled = _.template( control.container.find( '.customize-control-repeater-content' ).first().html(), null, options );
@@ -241,9 +242,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.frame = wp.media({
 			states: [
 			new wp.media.controller.Library({
-					library:  wp.media.query({ type: libMediaType }),
+					library: wp.media.query({ type: libMediaType }),
 					multiple: false,
-					date:     false
+					date: false
 				})
 			]
 		});
@@ -251,6 +252,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// When a file is selected, run a callback.
 		this.frame.on( 'select', this.onSelect, this );
 	},
+
 	/**
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
@@ -261,20 +263,20 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
-		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
-		    libMediaType   = this.getMimeType();
+			attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
+			libMediaType   = this.getMimeType();
 
 		// Make sure we got it
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
 
 			// Make fields is defined and only do the hack for cropped_image
-			if ( _.isObject( this.params.fields[ currentFieldId ] ) && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
+			if ( _.isObject( this.params.fields[ currentFieldId ]) && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
 
 				//Iterate over the list of attributes
 				attrs.forEach( function( el ) {
 
 					// If the attribute exists in the field
-					if ( ! _.isUndefined( this.params.fields[ currentFieldId ][ el ] ) ) {
+					if ( ! _.isUndefined( this.params.fields[ currentFieldId ][ el ]) ) {
 
 						// Set the attribute in the main object
 						this.params[ el ] = this.params.fields[ currentFieldId ][ el ];
@@ -290,10 +292,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			},
 			states: [
 				new wp.media.controller.Library({
-					library:         wp.media.query({ type: libMediaType }),
-					multiple:        false,
-					date:            false,
-					suggestedWidth:  this.params.width,
+					library: wp.media.query({ type: libMediaType }),
+					multiple: false,
+					date: false,
+					suggestedWidth: this.params.width,
 					suggestedHeight: this.params.height
 				}),
 				new wp.media.controller.CustomizeImageCropper({
@@ -367,18 +369,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control    = controller.get( 'control' ),
-		    flexWidth  = !! parseInt( control.params.flex_width, 10 ),
-		    flexHeight = !! parseInt( control.params.flex_height, 10 ),
-		    realWidth  = attachment.get( 'width' ),
-		    realHeight = attachment.get( 'height' ),
-		    xInit      = parseInt( control.params.width, 10 ),
-		    yInit      = parseInt( control.params.height, 10 ),
-		    ratio      = xInit / yInit,
-		    xImg       = realWidth,
-		    yImg       = realHeight,
-		    x1,
-		    y1,
-		    imgSelectOptions;
+			flexWidth  = !! parseInt( control.params.flex_width, 10 ),
+			flexHeight = !! parseInt( control.params.flex_height, 10 ),
+			realWidth  = attachment.get( 'width' ),
+			realHeight = attachment.get( 'height' ),
+			xInit      = parseInt( control.params.width, 10 ),
+			yInit      = parseInt( control.params.height, 10 ),
+			ratio      = xInit / yInit,
+			xImg       = realWidth,
+			yImg       = realHeight,
+			x1,
+			y1,
+			imgSelectOptions;
 
 		controller.set( 'canSkipCrop', ! control.mustBeCropped( flexWidth, flexHeight, xInit, yInit, realWidth, realHeight ) );
 
@@ -394,16 +396,16 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		y1 = ( yImg - yInit ) / 2;
 
 		imgSelectOptions = {
-			handles:     true,
-			keys:        true,
-			instance:    true,
-			persistent:  true,
-			imageWidth:  realWidth,
+			handles: true,
+			keys: true,
+			instance: true,
+			persistent: true,
+			imageWidth: realWidth,
 			imageHeight: realHeight,
-			x1:          x1,
-			y1:          y1,
-			x2:          xInit + x1,
-			y2:          yInit + y1
+			x1: x1,
+			y1: y1,
+			x2: xInit + x1,
+			y2: yInit + y1
 		};
 
 		if ( false === flexHeight && false === flexWidth ) {
@@ -511,7 +513,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
 
 			// Make fields is defined and only do the hack for cropped_image
-			if ( _.isObject( this.params.fields[ currentFieldId ] ) && 'upload' === this.params.fields[ currentFieldId ].type ) {
+			if ( _.isObject( this.params.fields[ currentFieldId ]) && 'upload' === this.params.fields[ currentFieldId ].type ) {
 
 				// If the attribute exists in the field
 				if ( ! _.isUndefined( this.params.fields[ currentFieldId ].mime_type ) ) {
@@ -530,7 +532,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var $targetDiv,
-		    $uploadButton;
+			$uploadButton;
 
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
@@ -555,7 +557,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var $targetDiv,
-		    $uploadButton;
+			$uploadButton;
 
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
@@ -601,7 +603,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
 		var filteredValue = newValue,
-		    filter        = [];
+			filter        = [];
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
@@ -611,7 +613,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			});
 			jQuery.each( newValue, function( index, value ) {
 				jQuery.each( filter, function( ind, field ) {
-					if ( ! _.isUndefined( value[ field ] ) && ! _.isUndefined( value[ field ].id ) ) {
+					if ( ! _.isUndefined( value[ field ]) && ! _.isUndefined( value[ field ].id ) ) {
 						filteredValue[index][ field ] = value[ field ].id;
 					}
 				});
@@ -638,12 +640,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control       = this,
-		    template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
-		    settingValue  = this.getValue(), // Get the current setting value.
-		    newRowSetting = {}, // Saves the new setting data.
-		    templateData, // Data to pass to the template
-		    newRow,
-		    i;
+			template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
+			settingValue  = this.getValue(), // Get the current setting value.
+			newRowSetting = {}, // Saves the new setting data.
+			templateData, // Data to pass to the template
+			newRow,
+			i;
 
 		if ( template ) {
 
@@ -656,7 +658,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( data ) {
 				for ( i in data ) {
 					if ( data.hasOwnProperty( i ) && templateData.hasOwnProperty( i ) ) {
-						templateData[ i ]['default'] = data[ i ];
+						templateData[ i ].default = data[ i ];
 					}
 				}
 			}
@@ -688,7 +690,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			for ( i in templateData ) {
 				if ( templateData.hasOwnProperty( i ) ) {
-					newRowSetting[ i ] = templateData[ i ]['default'];
+					newRowSetting[ i ] = templateData[ i ].default;
 				}
 			}
 
@@ -706,11 +708,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control     = this,
-		    $rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
-		    newOrder    = [],
-		    settings    = control.getValue(),
-		    newRows     = [],
-		    newSettings = [];
+			$rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
+			newOrder    = [],
+			settings    = control.getValue(),
+			newRows     = [],
+			newSettings = [];
 
 		$rows.each( function( i, element ) {
 			newOrder.push( jQuery( element ).data( 'row' ) );
@@ -738,11 +740,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var currentSettings = this.getValue(),
-		    row,
-		    i,
-		    prop;
+			row,
+			i,
+			prop;
 
-		if ( currentSettings[ index ] ) {
+		if ( currentSettings[ index ]) {
 
 			// Find the row
 			row = this.rows[ index ];
@@ -764,7 +766,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Remap the row numbers
 		i = 1;
 		for ( prop in this.rows ) {
-			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
+			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ]) {
 				this.rows[ prop ].updateLabel();
 				i++;
 			}
@@ -782,14 +784,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var type,
-		    row,
-		    currentSettings;
+			row,
+			currentSettings;
 
-		if ( ! this.rows[ rowIndex ] ) {
+		if ( ! this.rows[ rowIndex ]) {
 			return;
 		}
 
-		if ( ! this.params.fields[ fieldId ] ) {
+		if ( ! this.params.fields[ fieldId ]) {
 			return;
 		}
 
@@ -799,7 +801,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( _.isUndefined( currentSettings[ row.rowIndex ][ fieldId ] ) ) {
+		if ( _.isUndefined( currentSettings[ row.rowIndex ][ fieldId ]) ) {
 			return;
 		}
 
@@ -823,12 +825,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control     = this,
-		    colorPicker = control.container.find( '.color-picker-hex' ),
-		    options     = {},
-		    fieldId     = colorPicker.data( 'field' );
+			colorPicker = control.container.find( '.color-picker-hex' ),
+			options     = {},
+			fieldId     = colorPicker.data( 'field' );
 
 		// We check if the color palette parameter is defined.
-		if ( ! _.isUndefined( fieldId ) && ! _.isUndefined( control.params.fields[ fieldId ] ) && ! _.isUndefined( control.params.fields[ fieldId ].palettes ) && _.isObject( control.params.fields[ fieldId ].palettes ) ) {
+		if ( ! _.isUndefined( fieldId ) && ! _.isUndefined( control.params.fields[ fieldId ]) && ! _.isUndefined( control.params.fields[ fieldId ].palettes ) && _.isObject( control.params.fields[ fieldId ].palettes ) ) {
 			options.palettes = control.params.fields[ fieldId ].palettes;
 		}
 
@@ -836,9 +838,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		options.change = function( event, ui ) {
 
 			var currentPicker   = jQuery( event.target ),
-			    row             = currentPicker.closest( '.repeater-row' ),
-			    rowIndex        = row.data( 'row' ),
-			    currentSettings = control.getValue();
+				row             = currentPicker.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
+				currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
 			control.setValue( currentSettings, true );
@@ -864,11 +866,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control  = this,
-		    dropdown = theNewRow.container.find( '.repeater-field select' ),
-		    $select,
-		    dataField,
-		    multiple,
-		    selectWooOptions = {};
+			dropdown = theNewRow.container.find( '.repeater-field select' ),
+			$select,
+			dataField,
+			multiple,
+			selectWooOptions = {};
 
 		if ( 0 === dropdown.length ) {
 			return;
@@ -886,14 +888,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		data = data || {};
 		data[ dataField ] = data[ dataField ] || '';
 
-		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
+		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ]);
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 
 			var currentDropdown = jQuery( event.target ),
-			    row             = currentDropdown.closest( '.repeater-row' ),
-			    rowIndex        = row.data( 'row' ),
-			    currentSettings = control.getValue();
+				row             = currentDropdown.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
+				currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );

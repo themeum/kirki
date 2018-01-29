@@ -4,8 +4,8 @@ jQuery( document ).ready( function() {
 	function kirkiTooltipAdd( control ) {
 		_.each( kirkiTooltips, function( tooltip ) {
 			let trigger,
-			    controlID,
-			    content;
+				controlID,
+				content;
 
 			if ( tooltip.id !== control.id ) {
 				return;
@@ -35,7 +35,7 @@ jQuery( document ).ready( function() {
 				if ( ! jQuery( '.tooltip-content' ).hasClass( 'hidden' ) ) {
 					jQuery( '.tooltip-content' ).addClass( 'hidden' );
 				}
-		    }
+			}
 		});
 	}
 
@@ -48,8 +48,8 @@ jQuery( document ).ready( function() {
 					if ( expanded ) {
 						kirkiTooltipAdd( control );
 					}
-				} );
+				});
 			}
-		} );
+		});
 	});
-} );
+});

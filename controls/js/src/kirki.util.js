@@ -1,6 +1,7 @@
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * A collection of utility methods.
 	 *
@@ -62,7 +63,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					} );
+					});
 				},
 
 				/**
@@ -74,9 +75,9 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFont: function( family ) {
 					var self = this,
-					    fonts = self.getFonts();
+						fonts = self.getFonts();
 
-					if ( 'undefined' === typeof fonts[ family ] ) {
+					if ( 'undefined' === typeof fonts[ family ]) {
 						return false;
 					}
 					return fonts[ family ];
@@ -92,9 +93,9 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFonts: function( order, category, number ) {
 					var self        = this,
-					    ordered     = {},
-					    categorized = {},
-					    plucked     = {};
+						ordered     = {},
+						categorized = {},
+						plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -106,11 +107,11 @@ kirki = jQuery.extend( kirki, {
 
 					// Order fonts by the 'order' argument.
 					if ( 'alpha' === order ) {
-						ordered = jQuery.extend( {}, self.fonts.items );
+						ordered = jQuery.extend({}, self.fonts.items );
 					} else {
 						_.each( self.fonts.order[ order ], function( family ) {
 							ordered[ family ] = self.fonts.items[ family ];
-						} );
+						});
 					}
 
 					// If we have a category defined get only the fonts in that category.
@@ -121,14 +122,14 @@ kirki = jQuery.extend( kirki, {
 							if ( category === font.category ) {
 								categorized[ family ] = font;
 							}
-						} );
+						});
 					}
 
 					// If we only want a number of font-families get the 1st items from the results.
 					if ( 0 < number ) {
 						_.each( _.first( _.keys( categorized ), number ), function( family ) {
 							plucked[ family ] = categorized[ family ];
-						} );
+						});
 						return plucked;
 					}
 
@@ -144,7 +145,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getVariants: function( family ) {
 					var self = this,
-					    font = self.getFont( family );
+						font = self.getFont( family );
 
 					// Early exit if font was not found.
 					if ( ! font ) {
@@ -208,7 +209,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					} );
+					});
 				},
 
 				/**
@@ -217,8 +218,8 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) { // jshint ignore: line
-					return ['regular', 'italic', '700', '700italic'];
+				getVariants: function( family ) {
+					return [ 'regular', 'italic', '700', '700italic' ];
 				}
 			},
 
@@ -245,11 +246,11 @@ kirki = jQuery.extend( kirki, {
 				}
 
 				// Check in googlefonts.
-				if ( 'undefined' !== typeof self.google.fonts.items[ family ] ) {
+				if ( 'undefined' !== typeof self.google.fonts.items[ family ]) {
 					return 'google';
 				}
 				return false;
 			}
 		}
 	}
-} );
+});

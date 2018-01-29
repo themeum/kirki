@@ -4,7 +4,7 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 
 		var control = this,
-		    selectValue;
+			selectValue;
 
 		// Trigger a change
 		this.container.on( 'change', 'select', function() {

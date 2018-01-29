@@ -7,7 +7,7 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicC
 		// Save the value
 		control.container.on( 'change', 'input', function() {
 			var value = [],
-			    i = 0;
+				i = 0;
 
 			// Build the value as an object using the sub-values from individual checkboxes.
 			jQuery.each( control.params.choices, function( key ) {
