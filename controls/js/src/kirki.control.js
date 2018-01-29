@@ -188,6 +188,60 @@ kirki = jQuery.extend( kirki, {
 			}
 		},
 
+		/**
+		 * The number control.
+		 *
+		 * @since 3.0.26
+		 */
+		'kirki-number': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.26
+			 * @param {Object} control - The customizer control object.
+			 * @returns {null}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.number.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.27
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - Any extra choices we may need.
+			 * @param {string}  control.id - The setting.
+			 * @returns {null}
+			 */
+			template: function( control ) {
+				var template = wp.template( 'kirki-input-number' );
+
+				control.container.html(
+					template( args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id )
+					})
+				);
+			}
+		},
+
 		'kirki-select': {
 
 			/**
