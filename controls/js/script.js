@@ -33,18 +33,18 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			switch ( subControl.type ) {
 
 				case 'kirki-background':
-					if ( ! _.isUndefined( value['background-color']) ) {
-						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color']);
+					if ( ! _.isUndefined( value['background-color'] ) ) {
+						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color'] );
 					}
 					$this.findElement( setting, '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
-					_.each([ 'background-repeat', 'background-position' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
+					_.each( [ 'background-repeat', 'background-position' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each([ 'background-size', 'background-attachment' ], function( subVal ) {
+					} );
+					_.each( [ 'background-size', 'background-attachment' ], function( subVal ) {
 						jQuery( $this.findElement( setting, '.' + subVal + ' input[value="' + value + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
 					jQuery( $this.findElement( setting, '.background-hidden-value' ).attr( 'value', valueJSON ) ).trigger( 'change' );
 					break;
@@ -86,16 +86,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-multicheck':
 					$this.findElement( setting, 'input' ).each( function() {
 						jQuery( this ).prop( 'checked', false );
-					});
+					} );
 					_.each( value, function( subValue, i ) {
 						jQuery( $this.findElement( setting, 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					break;
 
 				case 'kirki-multicolor':
 					_.each( value, function( subVal, index ) {
 						$this.setColorPicker( $this.findElement( setting, '.multicolor-index-' + index ), subVal );
-					});
+					} );
 					break;
 
 				case 'kirki-radio-buttonset':
@@ -108,16 +108,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each([ 'font-family', 'variant' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
+					_.each( [ 'font-family', 'variant' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each([ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ]);
+					} );
+					_.each( [ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ] );
 						}
-					});
+					} );
 
 					if ( ! _.isUndefined( value.color ) ) {
 						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value.color );
@@ -129,7 +129,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-dimensions':
 					_.each( value, function( subValue, id ) {
 						jQuery( $this.findElement( setting, '.' + id + ' input' ) ).prop( 'value', subValue );
-					});
+					} );
 					break;
 
 				case 'kirki-repeater':
@@ -202,7 +202,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 */
 		setValue: function( setting, value, timeout ) {
 			timeout = ( _.isUndefined( timeout ) ) ? 100 : parseInt( timeout, 10 );
-			wp.customize.instance( setting ).set({});
+			wp.customize.instance( setting ).set( {} );
 			setTimeout( function() {
 				wp.customize.instance( setting ).set( value );
 			}, timeout );
@@ -290,7 +290,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-radio' );
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -298,7 +298,7 @@ kirki = jQuery.extend( kirki, {
 					'default': control.params.default,
 					value: kirki.setting.get( control.id ),
 					choices: control.params.choices
-				}) );
+				} ) );
 			}
 		},
 
@@ -348,7 +348,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-color' );
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -358,7 +358,7 @@ kirki = jQuery.extend( kirki, {
 					'data-default-color': control.params.default,
 					'data-alpha': control.params.choices.alpha,
 					value: kirki.setting.get( control.id )
-				}) );
+				} ) );
 			}
 		},
 
@@ -478,7 +478,7 @@ kirki = jQuery.extend( kirki, {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-					})
+					} )
 				);
 			}
 		},
@@ -519,7 +519,7 @@ kirki = jQuery.extend( kirki, {
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-select' );
 
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -528,11 +528,11 @@ kirki = jQuery.extend( kirki, {
 					value: kirki.setting.get( control.id ),
 					multiple: control.params.multiple || 1,
 					placeholder: control.params.placeholder
-				}) );
+				} ) );
 			}
 		}
 	}
-});
+} );
 /* global kirkiL10n */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
@@ -565,7 +565,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -608,12 +608,12 @@ kirki = jQuery.extend( kirki, {
 					if ( clear.length ) {
 						clear.click( function() {
 							kirki.setting.set( control.id, '' );
-						});
+						} );
 					}
 				}, 200 );
 
 				// Saves our settings to the WP API
-				picker.wpColorPicker({
+				picker.wpColorPicker( {
 					change: function() {
 
 						// Small hack: the picker needs a small delay
@@ -621,7 +621,7 @@ kirki = jQuery.extend( kirki, {
 							kirki.setting.set( control.id, picker.val() );
 						}, 20 );
 					}
-				});
+				} );
 			}
 		},
 
@@ -646,7 +646,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -671,7 +671,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -706,7 +706,7 @@ kirki = jQuery.extend( kirki, {
 					selectValue = jQuery( this ).val();
 					selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
 					kirki.setting.set( control.id, selectValue );
-				});
+				} );
 			}
 		},
 
@@ -737,7 +737,7 @@ kirki = jQuery.extend( kirki, {
 					min: 0,
 					max: 100,
 					step: 1
-				});
+				} );
 
 				// Make sure we have a valid value.
 				if ( isNaN( value ) || '' === value ) {
@@ -764,7 +764,7 @@ kirki = jQuery.extend( kirki, {
 
 					element.val( newVal );
 					element.trigger( 'change' );
-				});
+				} );
 
 				down.click( function() {
 					var oldVal = parseFloat( element.val() ),
@@ -774,11 +774,11 @@ kirki = jQuery.extend( kirki, {
 
 					element.val( newVal );
 					element.trigger( 'change' );
-				});
+				} );
 
 				element.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 
 		},
@@ -804,7 +804,7 @@ kirki = jQuery.extend( kirki, {
 					'data-id': '',
 					choices: {},
 					value: ''
-				});
+				} );
 
 				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
 					saveAs = data.choices.save_as;
@@ -854,7 +854,7 @@ kirki = jQuery.extend( kirki, {
 			}
 		}
 	}
-});
+} );
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
 
@@ -897,11 +897,11 @@ kirki = jQuery.extend( kirki, {
 				}
 
 				if ( foundInStep < i ) {
-					if ( _.isObject( currentVal ) && ! _.isUndefined( currentVal[ part ]) ) {
+					if ( _.isObject( currentVal ) && ! _.isUndefined( currentVal[ part ] ) ) {
 						currentVal = currentVal[ part ];
 					}
 				}
-			});
+			} );
 
 			return currentVal;
 		},
@@ -964,7 +964,7 @@ kirki = jQuery.extend( kirki, {
 					foundNode  = currentNode;
 					currentVal = wp.customize.instance( foundNode ).get();
 				}
-			});
+			} );
 
 			// Get the remaining part of the setting that was unused.
 			subSetting = setting.replace( foundNode, '' );
@@ -981,7 +981,7 @@ kirki = jQuery.extend( kirki, {
 				subSettingParts = subSetting.split( '[' );
 				_.each( subSettingParts, function( subSettingPart, i ) {
 					subSettingParts[ i ] = subSettingPart.replace( ']', '' );
-				});
+				} );
 
 				// If using a key, we need to go 1 level deeper.
 				if ( key ) {
@@ -1007,7 +1007,7 @@ kirki = jQuery.extend( kirki, {
 			wp.customize.control( foundNode ).setting.set( value );
 		}
 	}
-});
+} );
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
@@ -1073,7 +1073,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					});
+					} );
 				},
 
 				/**
@@ -1087,7 +1087,7 @@ kirki = jQuery.extend( kirki, {
 					var self = this,
 						fonts = self.getFonts();
 
-					if ( 'undefined' === typeof fonts[ family ]) {
+					if ( 'undefined' === typeof fonts[ family ] ) {
 						return false;
 					}
 					return fonts[ family ];
@@ -1117,11 +1117,11 @@ kirki = jQuery.extend( kirki, {
 
 					// Order fonts by the 'order' argument.
 					if ( 'alpha' === order ) {
-						ordered = jQuery.extend({}, self.fonts.items );
+						ordered = jQuery.extend( {}, self.fonts.items );
 					} else {
 						_.each( self.fonts.order[ order ], function( family ) {
 							ordered[ family ] = self.fonts.items[ family ];
-						});
+						} );
 					}
 
 					// If we have a category defined get only the fonts in that category.
@@ -1132,14 +1132,14 @@ kirki = jQuery.extend( kirki, {
 							if ( category === font.category ) {
 								categorized[ family ] = font;
 							}
-						});
+						} );
 					}
 
 					// If we only want a number of font-families get the 1st items from the results.
 					if ( 0 < number ) {
 						_.each( _.first( _.keys( categorized ), number ), function( family ) {
 							plucked[ family ] = categorized[ family ];
-						});
+						} );
 						return plucked;
 					}
 
@@ -1219,7 +1219,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					});
+					} );
 				},
 
 				/**
@@ -1256,14 +1256,14 @@ kirki = jQuery.extend( kirki, {
 				}
 
 				// Check in googlefonts.
-				if ( 'undefined' !== typeof self.google.fonts.items[ family ]) {
+				if ( 'undefined' !== typeof self.google.fonts.items[ family ] ) {
 					return 'google';
 				}
 				return false;
 			}
 		}
 	}
-});
+} );
 /* global kirki */
 /**
  * The majority of the code in this file
@@ -1283,7 +1283,7 @@ kirki = jQuery.extend( kirki, {
 	 * @augments wp.customize.Control
 	 * @augments wp.customize.Class
 	 */
-	wp.customize.kirkiDynamicControl = wp.customize.Control.extend({
+	wp.customize.kirkiDynamicControl = wp.customize.Control.extend( {
 
 		initialize: function( id, options ) {
 			var control = this,
@@ -1324,8 +1324,8 @@ kirki = jQuery.extend( kirki, {
 					control.elements.push( element );
 					element.sync( setting );
 					element.set( setting() );
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -1351,23 +1351,23 @@ kirki = jQuery.extend( kirki, {
 
 				element = new wp.customize.Element( node );
 				control.propertyElements.push( element );
-				element.set( control.setting()[ propertyName ]);
+				element.set( control.setting()[ propertyName ] );
 
 				element.bind( function( newPropertyValue ) {
 					var newSetting = control.setting();
-					if ( newPropertyValue === newSetting[ propertyName ]) {
+					if ( newPropertyValue === newSetting[ propertyName ] ) {
 						return;
 					}
 					newSetting = _.clone( newSetting );
 					newSetting[ propertyName ] = newPropertyValue;
 					control.setting.set( newSetting );
-				});
+				} );
 				control.setting.bind( function( newValue ) {
 					if ( newValue[ propertyName ] !== element.get() ) {
-						element.set( newValue[ propertyName ]);
+						element.set( newValue[ propertyName ] );
 					}
-				});
-			});
+				} );
+			} );
 		},
 
 		/**
@@ -1383,7 +1383,7 @@ kirki = jQuery.extend( kirki, {
 
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
-			});
+			} );
 		},
 
 		/**
@@ -1411,9 +1411,9 @@ kirki = jQuery.extend( kirki, {
 						if ( expanded ) {
 							control.actuallyEmbed();
 						}
-					});
+					} );
 				}
-			});
+			} );
 		},
 
 		/**
@@ -1452,7 +1452,7 @@ kirki = jQuery.extend( kirki, {
 		 * @returns {null}
 		 */
 		initKirkiControl: function( control ) {
-			if ( 'undefined' !== typeof kirki.control[ control.params.type ]) {
+			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
 				kirki.control[ control.params.type ].init( control );
 				return;
 			}
@@ -1460,7 +1460,7 @@ kirki = jQuery.extend( kirki, {
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
-			});
+			} );
 		},
 
 		kirkiValidateCSSValue: function( value ) {
@@ -1490,13 +1490,13 @@ kirki = jQuery.extend( kirki, {
 			}
 			return true;
 		}
-	});
+	} );
 }() );
 _.each( kirki.control, function( obj, type ) {
-	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
-});
+	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -1520,7 +1520,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
-		if ( _.isUndefined( value['background-image']) || '' === value['background-image']) {
+		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
 			control.container.find( '.background-wrapper > .background-repeat' ).hide();
 			control.container.find( '.background-wrapper > .background-position' ).hide();
 			control.container.find( '.background-wrapper > .background-size' ).hide();
@@ -1528,37 +1528,37 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		}
 
 		// Color.
-		picker.wpColorPicker({
+		picker.wpColorPicker( {
 			change: function() {
 				setTimeout( function() {
 					control.saveValue( 'background-color', picker.val() );
 				}, 100 );
 			}
-		});
+		} );
 
 		// Background-Repeat.
 		control.container.on( 'change', '.background-repeat select', function() {
 			control.saveValue( 'background-repeat', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Size.
 		control.container.on( 'change click', '.background-size input', function() {
 			control.saveValue( 'background-size', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Position.
 		control.container.on( 'change', '.background-position select', function() {
 			control.saveValue( 'background-position', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Attachment.
 		control.container.on( 'change click', '.background-attachment input', function() {
 			control.saveValue( 'background-attachment', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Image.
 		control.container.on( 'click', '.background-image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 				// This will return the selected image from the Media Uploader, the result is an object.
 				var uploadedImage = image.state().get( 'selection' ).first(),
@@ -1596,10 +1596,10 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 				if ( removeButton.length ) {
 					removeButton.show();
 				}
-			});
+			} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.background-image-upload-remove-button', function( e ) {
 
@@ -1625,7 +1625,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			if ( removeButton.length ) {
 				removeButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -1642,30 +1642,30 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
-wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control  = this,
 			selector = control.selector + ' input.datepicker';
 
 		// Init the datepicker
-		jQuery( selector ).datepicker({
+		jQuery( selector ).datepicker( {
 			dateFormat: 'yy-mm-dd'
-		});
+		} );
 
 		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// Save the changes
 		this.container.on( 'change keyup paste', 'input.datepicker', function() {
 			control.setting.set( jQuery( this ).val() );
-		});
+		} );
 	}
-});
+} );
 /* global dimensionkirkiL10n */
-wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -1680,7 +1680,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 			value = jQuery( this ).val();
 			control.setting.set( value );
-		});
+		} );
 	},
 
 	/**
@@ -1705,12 +1705,12 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 				} else {
 					setting.notifications.remove( code );
 				}
-			});
-		});
+			} );
+		} );
 	}
-});
+} );
 /* global dimensionskirkiL10n */
-wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -1724,7 +1724,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 			if ( true === v ) {
 				subsArray.push( i );
 			}
-		});
+		} );
 
 		for ( i = 0; i < subsArray.length; i++ ) {
 			value[ subsArray[ i ] ] = control.setting._value[ subsArray[ i ] ];
@@ -1747,7 +1747,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 			// Save the value
 			control.saveValue( value );
-		});
+		} );
 	},
 
 	/**
@@ -1760,7 +1760,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
-		});
+		} );
 
 		control.setting.set( newValue );
 	},
@@ -1786,23 +1786,23 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 					} else {
 						delete subs[ direction ];
 					}
-				});
+				} );
 
 				if ( ! _.isEmpty( subs ) ) {
 					message = dimensionskirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
 					setting.notifications.add( code, new wp.customize.Notification( code, {
 						type: 'warning',
 						message: message
-					}) );
+					} ) );
 					return;
 				}
 				setting.notifications.remove( code );
-			});
-		});
+			} );
+		} );
 	}
-});
+} );
 /* global tinyMCE */
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -1817,7 +1817,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 			},
 			quicktags: true,
 			mediaButtons: true
-		});
+		} );
 
 		editor = tinyMCE.get( id );
 
@@ -1829,12 +1829,12 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 				content = editor.getContent();
 				element.val( content ).trigger( 'change' );
 				wp.customize.instance( control.id ).set( content );
-			});
+			} );
 		}
 	}
-});
+} );
 /* global fontAwesomeJSON */
-wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -1857,23 +1857,23 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 			select;
 
 		_.each( icons.icons, function( icon ) {
-			selectWooOptions.data.push({
+			selectWooOptions.data.push( {
 				id: icon.id,
 				text: icon.name
-			});
-		});
+			} );
+		} );
 
 		select = jQuery( element ).selectWoo( selectWooOptions );
 
 		select.on( 'change', function() {
 			selectValue = jQuery( this ).val();
 			control.setting.set( selectValue );
-		});
+		} );
 		select.val( control.setting._value ).trigger( 'change' );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -1909,7 +1909,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 					var url = wp.media.attachment( value ).get( 'url' );
 					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
 				}, 700 );
-			});
+			} );
 		}
 
 		// If value is not empty, hide the "default" button.
@@ -1932,7 +1932,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		}
 
 		control.container.on( 'click', '.image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
@@ -1962,10 +1962,10 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 						removeButton.show();
 						defaultButton.hide();
 					}
-				});
+				} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.image-upload-remove-button', function( e ) {
 
@@ -1993,7 +1993,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 					defaultButton.show();
 				}
 			}
-		});
+		} );
 
 		control.container.on( 'click', '.image-default-button', function( e ) {
 
@@ -2016,7 +2016,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 				removeButton.show();
 				defaultButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -2055,8 +2055,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		control.setting.set( value );
 		control.container.find( 'button' ).trigger( 'change' );
 	}
-});
-wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -2073,15 +2073,15 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicC
 					value[ i ] = key;
 					i++;
 				}
-			});
+			} );
 
 			// Update the value in the customizer.
 			control.setting.set( value );
-		});
+		} );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -2130,7 +2130,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
 					args[ irisKey ] = irisValue;
-				});
+				} );
 			}
 
 			// Did we change the value?
@@ -2139,7 +2139,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 		// Colors loop
 		while ( i < Object.keys( colors ).length ) {
-			kirkiMulticolorChangeHandler( this, value, keys[ i ]);
+			kirkiMulticolorChangeHandler( this, value, keys[ i ] );
 			i++;
 		}
 	},
@@ -2158,10 +2158,10 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
-wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});
+} );
+wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
 /* global kirkiSetSettingValue */
-wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -2189,15 +2189,15 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 					// We'll have to loop through them all and apply the changes needed to them.
 					jQuery.each( value.settings, function( presetSetting, presetSettingValue ) {
 						kirkiSetSettingValue.set( presetSetting, presetSettingValue );
-					});
+					} );
 				}
-			});
+			} );
 			wp.customize.previewer.refresh();
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend({});
+} );
+wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend( {} );
 /* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
@@ -2211,19 +2211,19 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();
-	});
+	} );
 
 	this.container.on( 'click', '.repeater-row-remove', function() {
 		self.remove();
-	});
+	} );
 
 	this.header.on( 'mousedown', function() {
 		self.container.trigger( 'row:start-dragging' );
-	});
+	} );
 
 	this.container.on( 'keyup change', 'input, select, textarea', function( e ) {
-		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ]);
-	});
+		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ] );
+	} );
 
 	this.setRowIndex = function( rowIndex ) {
 		this.rowIndex = rowIndex;
@@ -2242,8 +2242,8 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.remove = function() {
 		this.container.slideUp( 300, function() {
 			jQuery( this ).detach();
-		});
-		this.container.trigger( 'row:remove', [ this.rowIndex ]);
+		} );
+		this.container.trigger( 'row:remove', [ this.rowIndex ] );
 	};
 
 	this.updateLabel = function() {
@@ -2256,10 +2256,10 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 			if ( _.isFunction( rowLabelField.val ) ) {
 				rowLabel = rowLabelField.val();
 				if ( '' !== rowLabel ) {
-					if ( ! _.isUndefined( control.params.fields[ this.label.field ]) ) {
+					if ( ! _.isUndefined( control.params.fields[ this.label.field ] ) ) {
 						if ( ! _.isUndefined( control.params.fields[ this.label.field ].type ) ) {
 							if ( 'select' === control.params.fields[ this.label.field ].type ) {
-								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) && ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ]) ) {
+								if ( ! _.isUndefined( control.params.fields[ this.label.field ].choices ) && ! _.isUndefined( control.params.fields[ this.label.field ].choices[ rowLabelField.val() ] ) ) {
 									rowLabel = control.params.fields[ this.label.field ].choices[ rowLabelField.val() ];
 								}
 							} else if ( 'radio' === control.params.fields[ this.label.field ].type || 'radio-image' === control.params.fields[ this.label.field ].type ) {
@@ -2278,7 +2278,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.updateLabel();
 };
 
-wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
+wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -2312,7 +2312,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
 
 		// Set the field value for the first time, we'll fill it up later
-		this.setValue([], false );
+		this.setValue( [], false );
 
 		// The DIV that holds all the rows
 		this.repeaterFieldsContainer = this.container.find( '.repeater-fields' ).first();
@@ -2339,32 +2339,32 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
-		});
+		} );
 
 		this.container.on( 'click', '.repeater-row-remove', function() {
 			control.currentIndex--;
 			if ( ! limit || control.currentIndex < limit ) {
 				jQuery( control.selector + ' .limit' ).removeClass( 'highlight' );
 			}
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeImage( e );
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeFile( e );
-		});
+		} );
 
 		/**
 		 * Function that loads the Mustache template
@@ -2389,7 +2389,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				compiled = _.template( control.container.find( '.customize-control-repeater-content' ).first().html(), null, options );
 				return compiled( data );
 			};
-		});
+		} );
 
 		// When we load the control, the fields have not been filled up
 		// This is the first time that we create all the rows
@@ -2398,18 +2398,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				theNewRow = control.addRow( subValue );
 				control.initColorPicker();
 				control.initSelect( theNewRow, subValue );
-			});
+			} );
 		}
 
 		// Once we have displayed the rows, we cleanup the values
 		this.setValue( settingValue, true, true );
 
-		this.repeaterFieldsContainer.sortable({
+		this.repeaterFieldsContainer.sortable( {
 			handle: '.repeater-row-header',
 			update: function() {
 				control.sort();
 			}
-		});
+		} );
 
 	},
 
@@ -2439,15 +2439,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var libMediaType = this.getMimeType();
 
-		this.frame = wp.media({
+		this.frame = wp.media( {
 			states: [
-			new wp.media.controller.Library({
-					library: wp.media.query({ type: libMediaType }),
+			new wp.media.controller.Library( {
+					library: wp.media.query( { type: libMediaType } ),
 					multiple: false,
 					date: false
-				})
+				} )
 			]
-		});
+		} );
 
 		// When a file is selected, run a callback.
 		this.frame.on( 'select', this.onSelect, this );
@@ -2470,13 +2470,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
 
 			// Make fields is defined and only do the hack for cropped_image
-			if ( _.isObject( this.params.fields[ currentFieldId ]) && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
+			if ( _.isObject( this.params.fields[ currentFieldId ] ) && 'cropped_image' === this.params.fields[ currentFieldId ].type ) {
 
 				//Iterate over the list of attributes
 				attrs.forEach( function( el ) {
 
 					// If the attribute exists in the field
-					if ( ! _.isUndefined( this.params.fields[ currentFieldId ][ el ]) ) {
+					if ( ! _.isUndefined( this.params.fields[ currentFieldId ][ el ] ) ) {
 
 						// Set the attribute in the main object
 						this.params[ el ] = this.params.fields[ currentFieldId ][ el ];
@@ -2485,25 +2485,25 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		}
 
-		this.frame = wp.media({
+		this.frame = wp.media( {
 			button: {
 				text: 'Select and Crop',
 				close: false
 			},
 			states: [
-				new wp.media.controller.Library({
-					library: wp.media.query({ type: libMediaType }),
+				new wp.media.controller.Library( {
+					library: wp.media.query( { type: libMediaType } ),
 					multiple: false,
 					date: false,
 					suggestedWidth: this.params.width,
 					suggestedHeight: this.params.height
-				}),
-				new wp.media.controller.CustomizeImageCropper({
+				} ),
+				new wp.media.controller.CustomizeImageCropper( {
 					imgSelectOptions: this.calculateImageSelectOptions,
 					control: this
-				})
+				} )
 			]
-		});
+		} );
 
 		this.frame.on( 'select', this.onSelectForCrop, this );
 		this.frame.on( 'cropped', this.onCropped, this );
@@ -2713,7 +2713,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
 
 			// Make fields is defined and only do the hack for cropped_image
-			if ( _.isObject( this.params.fields[ currentFieldId ]) && 'upload' === this.params.fields[ currentFieldId ].type ) {
+			if ( _.isObject( this.params.fields[ currentFieldId ] ) && 'upload' === this.params.fields[ currentFieldId ].type ) {
 
 				// If the attribute exists in the field
 				if ( ! _.isUndefined( this.params.fields[ currentFieldId ].mime_type ) ) {
@@ -2743,7 +2743,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
-		});
+		} );
 		$targetDiv.find( '.hidden-field' ).val( '' );
 		$uploadButton.text( $uploadButton.data( 'label' ) );
 		this.$thisButton.hide();
@@ -2768,7 +2768,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-file-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
-		});
+		} );
 		$targetDiv.find( '.hidden-field' ).val( '' );
 		$uploadButton.text( $uploadButton.data( 'label' ) );
 		this.$thisButton.hide();
@@ -2810,14 +2810,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				if ( 'image' === value.type || 'cropped_image' === value.type || 'upload' === value.type ) {
 					filter.push( index );
 				}
-			});
+			} );
 			jQuery.each( newValue, function( index, value ) {
 				jQuery.each( filter, function( ind, field ) {
-					if ( ! _.isUndefined( value[ field ]) && ! _.isUndefined( value[ field ].id ) ) {
+					if ( ! _.isUndefined( value[ field ] ) && ! _.isUndefined( value[ field ].id ) ) {
 						filteredValue[index][ field ] = value[ field ].id;
 					}
-				});
-			});
+				} );
+			} );
 		}
 
 		this.setting.set( encodeURI( JSON.stringify( filteredValue ) ) );
@@ -2878,12 +2878,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			newRow.container.on( 'row:remove', function( e, rowIndex ) {
 				control.deleteRow( rowIndex );
-			});
+			} );
 
 			newRow.container.on( 'row:update', function( e, rowIndex, fieldName, element ) {
 				control.updateField.call( control, e, rowIndex, fieldName, element );
 				newRow.updateLabel();
-			});
+			} );
 
 			// Add the row to rows collection
 			this.rows[ this.currentIndex ] = newRow;
@@ -2916,14 +2916,14 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$rows.each( function( i, element ) {
 			newOrder.push( jQuery( element ).data( 'row' ) );
-		});
+		} );
 
 		jQuery.each( newOrder, function( newPosition, oldPosition ) {
 			newRows[ newPosition ] = control.rows[ oldPosition ];
 			newRows[ newPosition ].setRowIndex( newPosition );
 
 			newSettings[ newPosition ] = settings[ oldPosition ];
-		});
+		} );
 
 		control.rows = newRows;
 		control.setValue( newSettings );
@@ -2944,7 +2944,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			i,
 			prop;
 
-		if ( currentSettings[ index ]) {
+		if ( currentSettings[ index ] ) {
 
 			// Find the row
 			row = this.rows[ index ];
@@ -2966,7 +2966,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		// Remap the row numbers
 		i = 1;
 		for ( prop in this.rows ) {
-			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ]) {
+			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].updateLabel();
 				i++;
 			}
@@ -2987,11 +2987,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			row,
 			currentSettings;
 
-		if ( ! this.rows[ rowIndex ]) {
+		if ( ! this.rows[ rowIndex ] ) {
 			return;
 		}
 
-		if ( ! this.params.fields[ fieldId ]) {
+		if ( ! this.params.fields[ fieldId ] ) {
 			return;
 		}
 
@@ -3001,7 +3001,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		element = jQuery( element );
 
-		if ( _.isUndefined( currentSettings[ row.rowIndex ][ fieldId ]) ) {
+		if ( _.isUndefined( currentSettings[ row.rowIndex ][ fieldId ] ) ) {
 			return;
 		}
 
@@ -3030,7 +3030,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			fieldId     = colorPicker.data( 'field' );
 
 		// We check if the color palette parameter is defined.
-		if ( ! _.isUndefined( fieldId ) && ! _.isUndefined( control.params.fields[ fieldId ]) && ! _.isUndefined( control.params.fields[ fieldId ].palettes ) && _.isObject( control.params.fields[ fieldId ].palettes ) ) {
+		if ( ! _.isUndefined( fieldId ) && ! _.isUndefined( control.params.fields[ fieldId ] ) && ! _.isUndefined( control.params.fields[ fieldId ].palettes ) && _.isObject( control.params.fields[ fieldId ].palettes ) ) {
 			options.palettes = control.params.fields[ fieldId ].palettes;
 		}
 
@@ -3088,7 +3088,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		data = data || {};
 		data[ dataField ] = data[ dataField ] || '';
 
-		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ]);
+		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 
@@ -3099,10 +3099,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control      = this,
@@ -3117,7 +3117,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// If the range input value changes copy the value to the text input.
 		rangeInput.on( 'mousemove change', function() {
 			textInput.attr( 'value', rangeInput.val() );
-		});
+		} );
 
 		// Save the value when the range input value changes.
 		// This is separate from the above because of the postMessage differences.
@@ -3126,7 +3126,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// but 1 final refresh when the value is changed.
 		rangeInput.on( changeAction, function() {
 			control.setting.set( rangeInput.val() );
-		});
+		} );
 
 		// If the text input value changes,
 		// copy the value to the range input
@@ -3134,7 +3134,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		textInput.on( 'input paste change', function() {
 			rangeInput.attr( 'value', textInput.val() );
 			control.setting.set( textInput.val() );
-		});
+		} );
 
 		// If the reset button is clicked,
 		// set slider and text input values to default
@@ -3143,11 +3143,11 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			textInput.attr( 'value', control.params.default );
 			rangeInput.attr( 'value', control.params.default );
 			control.setting.set( textInput.val() );
-		});
+		} );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -3176,23 +3176,23 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
 
 		// Init sortable.
-		control.sortableContainer.sortable({
+		control.sortableContainer.sortable( {
 
 			// Update value when we stop sorting.
 			stop: function() {
 				control.updateValue();
 			}
-		}).disableSelection().find( 'li' ).each( function() {
+		} ).disableSelection().find( 'li' ).each( function() {
 
 			// Enable/disable options when we click on the eye of Thundera.
 			jQuery( this ).find( 'i.visibility' ).click( function() {
 				jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
-			});
-		}).click( function() {
+			} );
+		} ).click( function() {
 
 			// Update value on click.
 			control.updateValue();
-		});
+		} );
 	},
 
 	/**
@@ -3209,11 +3209,11 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 			if ( ! jQuery( this ).is( '.invisible' ) ) {
 				newValue.push( jQuery( this ).data( 'value' ) );
 			}
-		});
+		} );
 		control.setting.set( newValue );
 	}
-});
-wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -3226,10 +3226,10 @@ wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicContr
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -3240,11 +3240,11 @@ wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicContr
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
-		});
+		} );
 	}
-});
+} );
 /* global kirkiL10n, kirki */
-wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -3259,80 +3259,80 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderVariantSelector();
 
 		// Font-size.
-		if ( control.params.default['font-size']) {
+		if ( control.params.default['font-size'] ) {
 			this.container.on( 'change keyup paste', '.font-size input', function() {
 				control.saveValue( 'font-size', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Line-height.
-		if ( control.params.default['line-height']) {
+		if ( control.params.default['line-height'] ) {
 			this.container.on( 'change keyup paste', '.line-height input', function() {
 				control.saveValue( 'line-height', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Margin-top.
-		if ( control.params.default['margin-top']) {
+		if ( control.params.default['margin-top'] ) {
 			this.container.on( 'change keyup paste', '.margin-top input', function() {
 				control.saveValue( 'margin-top', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Margin-bottom.
-		if ( control.params.default['margin-bottom']) {
+		if ( control.params.default['margin-bottom'] ) {
 			this.container.on( 'change keyup paste', '.margin-bottom input', function() {
 				control.saveValue( 'margin-bottom', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Letter-spacing.
-		if ( control.params.default['letter-spacing']) {
-			value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing']) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
+		if ( control.params.default['letter-spacing'] ) {
+			value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 			this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 				value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
-				control.saveValue( 'letter-spacing', value['letter-spacing']);
-			});
+				control.saveValue( 'letter-spacing', value['letter-spacing'] );
+			} );
 		}
 
 		// Word-spacing.
-		if ( control.params.default['word-spacing']) {
+		if ( control.params.default['word-spacing'] ) {
 			this.container.on( 'change keyup paste', '.word-spacing input', function() {
 				control.saveValue( 'word-spacing', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-align.
-		if ( control.params.default['text-align']) {
+		if ( control.params.default['text-align'] ) {
 			this.container.on( 'change', '.text-align input', function() {
 				control.saveValue( 'text-align', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-transform.
-		if ( control.params.default['text-transform']) {
+		if ( control.params.default['text-transform'] ) {
 			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Text-decoration.
-		if ( control.params.default['text-decoration']) {
+		if ( control.params.default['text-decoration'] ) {
 			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-decoration', jQuery( this ).val() );
-			});
+			} );
 		}
 
 		// Color.
 		if ( control.params.default.color ) {
 			picker = this.container.find( '.kirki-color-control' );
-			picker.wpColorPicker({
+			picker.wpColorPicker( {
 				change: function() {
 					setTimeout( function() {
 						control.saveValue( 'color', picker.val() );
 					}, 100 );
 				}
-			});
+			} );
 		}
 	},
 
@@ -3354,21 +3354,21 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Format standard fonts as an array.
 		if ( ! _.isUndefined( fonts.standard ) ) {
 			_.each( fonts.standard, function( font ) {
-				standardFonts.push({
+				standardFonts.push( {
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
-				});
-			});
+				} );
+			} );
 		}
 
 		// Format google fonts as an array.
 		if ( ! _.isUndefined( fonts.google ) ) {
 			_.each( fonts.google, function( font ) {
-				googleFonts.push({
+				googleFonts.push( {
 					id: font.family,
 					text: font.family
-				});
-			});
+				} );
+			} );
 		}
 
 		// Combine forces and build the final data.
@@ -3379,12 +3379,12 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		];
 
 		// Instantiate selectWoo with the data.
-		fontSelect = jQuery( selector ).selectWoo({
+		fontSelect = jQuery( selector ).selectWoo( {
 			data: data
-		});
+		} );
 
 		// Set the initial value.
-		if ( value['font-family']) {
+		if ( value['font-family'] ) {
 			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
 		}
 
@@ -3399,7 +3399,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			// Re-init variants selector.
 			control.renderVariantSelector();
-		});
+		} );
 	},
 
 	/**
@@ -3416,7 +3416,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			fonts         = control.getFonts(),
 			fontSelect;
 
-		if ( _.isUndefined( value['font-backup']) || null === value['font-backup']) {
+		if ( _.isUndefined( value['font-backup'] ) || null === value['font-backup'] ) {
 			value['font-backup'] = '';
 		}
 
@@ -3430,20 +3430,20 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Format standard fonts as an array.
 		if ( ! _.isUndefined( fonts.standard ) ) {
 			_.each( fonts.standard, function( font ) {
-				standardFonts.push({
+				standardFonts.push( {
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
-				});
-			});
+				} );
+			} );
 		}
 
 		// Instantiate selectWoo with the data.
-		fontSelect = jQuery( selector ).selectWoo({
+		fontSelect = jQuery( selector ).selectWoo( {
 			data: standardFonts
-		});
+		} );
 
 		// Set the initial value.
-		if ( 'undefined' !== typeof value['font-backup']) {
+		if ( 'undefined' !== typeof value['font-backup'] ) {
 			fontSelect.val( value['font-backup'].replace( /'/g, '"' ) ).trigger( 'change' );
 		}
 
@@ -3452,7 +3452,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			// Set the value.
 			control.saveValue( 'font-backup', jQuery( this ).val() );
-		});
+		} );
 	},
 
 	/**
@@ -3512,11 +3512,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			if ( value.variant === variant ) {
 				isValid = true;
 			}
-			data.push({
+			data.push( {
 				id: variant,
 				text: variant
-			});
-		});
+			} );
+		} );
 		if ( ! isValid ) {
 			value.variant = 'regular';
 		}
@@ -3527,9 +3527,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Instantiate selectWoo with the data.
-		variantSelector = jQuery( selector ).selectWoo({
+		variantSelector = jQuery( selector ).selectWoo( {
 			data: data
-		});
+		} );
 		variantSelector.val( value.variant ).trigger( 'change' );
 		variantSelector.on( 'change', function() {
 			control.saveValue( 'variant', jQuery( this ).val() );
@@ -3540,7 +3540,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			control.saveValue( 'font-weight', fontWeight );
 			control.saveValue( 'font-style', fontStyle );
-		});
+		} );
 	},
 
 	/**
@@ -3556,19 +3556,19 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		// Get google fonts.
 		if ( ! _.isEmpty( control.params.choices.fonts.google ) ) {
-			if ( 'alpha' === control.params.choices.fonts.google[0] || 'popularity' === control.params.choices.fonts.google[0] || 'trending' === control.params.choices.fonts.google[0]) {
+			if ( 'alpha' === control.params.choices.fonts.google[0] || 'popularity' === control.params.choices.fonts.google[0] || 'trending' === control.params.choices.fonts.google[0] ) {
 				googleFontsSort = control.params.choices.fonts.google[0];
-				if ( ! isNaN( control.params.choices.fonts.google[1]) ) {
+				if ( ! isNaN( control.params.choices.fonts.google[1] ) ) {
 					googleFontsNumber = parseInt( control.params.choices.fonts.google[1], 10 );
 				}
 				googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
 
 			} else {
 				_.each( control.params.choices.fonts.google, function( fontName ) {
-					if ( 'undefined' !== typeof initialGoogleFonts[ fontName ] && ! _.isEmpty( initialGoogleFonts[ fontName ]) ) {
+					if ( 'undefined' !== typeof initialGoogleFonts[ fontName ] && ! _.isEmpty( initialGoogleFonts[ fontName ] ) ) {
 						googleFonts[ fontName ] = initialGoogleFonts[ fontName ];
 					}
-				});
+				} );
 			}
 		} else {
 			googleFonts = kirki.util.webfonts.google.getFonts( googleFontsSort, '', googleFontsNumber );
@@ -3577,7 +3577,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Get standard fonts.
 		if ( ! _.isEmpty( control.params.choices.fonts.standard ) ) {
 			_.each( control.params.choices.fonts.standard, function( fontName ) {
-				if ( 'undefined' !== typeof kirki.util.webfonts.standard.fonts[ fontName ] && ! _.isEmpty( kirki.util.webfonts.standard.fonts[ fontName ]) ) {
+				if ( 'undefined' !== typeof kirki.util.webfonts.standard.fonts[ fontName ] && ! _.isEmpty( kirki.util.webfonts.standard.fonts[ fontName ] ) ) {
 					standardFonts[ fontName ] = {};
 					if ( 'undefined' !== kirki.util.webfonts.standard.fonts[ fontName ].stack && ! _.isEmpty( kirki.util.webfonts.standard.fonts[ fontName ].stack ) ) {
 						standardFonts[ fontName ].family = kirki.util.webfonts.standard.fonts[ fontName ].stack;
@@ -3586,7 +3586,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 					}
 					if ( 'undefined' !== kirki.util.webfonts.standard.fonts[ fontName ].label && ! _.isEmpty( kirki.util.webfonts.standard.fonts[ fontName ].label ) ) {
 						standardFonts[ fontName ].label = kirki.util.webfonts.standard.fonts[ fontName ].label;
-					} else if ( ! _.isEmpty( standardFonts[ fontName ]) ) {
+					} else if ( ! _.isEmpty( standardFonts[ fontName ] ) ) {
 						standardFonts[ fontName ].label = standardFonts[ fontName ];
 					}
 				} else {
@@ -3595,14 +3595,14 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 						label: fontName
 					};
 				}
-			});
+			} );
 		} else {
 			_.each( kirki.util.webfonts.standard.fonts, function( font, id ) {
 				standardFonts[ id ] = {
 					family: font.stack,
 					label: font.label
 				};
-			});
+			} );
 		}
 		return {
 			google: googleFonts,
@@ -3624,4 +3624,4 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
+} );

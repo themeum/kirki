@@ -9,6 +9,6 @@ jQuery( document ).ready( function() {
 	wp.customize.bind( 'preview-ready', function() {
 		wp.customize.preview.bind( 'active', function() {
 			wp.customize.preview.send( 'queried-post', self.queriedPost );
-		});
-	});
-});
+		} );
+	} );
+} );

@@ -7,7 +7,7 @@ var kirkiDependencies = {
 
 		wp.customize.control.each( function( control ) {
 			self.showKirkiControl( control );
-		});
+		} );
 
 		_.each( self.listenTo, function( slaves, master ) {
 			_.each( slaves, function( slave ) {
@@ -28,9 +28,9 @@ var kirkiDependencies = {
 						control.active.validate = isDisplayed;
 					};
 					wp.customize.control( slave, setupControl );
-				});
-			});
-		});
+				} );
+			} );
+		} );
 	},
 
 	/**
@@ -85,7 +85,7 @@ var kirkiDependencies = {
 			if ( ! requirementShow ) {
 				show = false;
 			}
-		});
+		} );
 		return show;
 	},
 
@@ -124,10 +124,10 @@ var kirkiDependencies = {
 					if ( value == value1 ) { // jshint ignore:line
 						found = true;
 					}
-				});
+				} );
 				return found;
 			} else if ( _.isObject( value2 ) ) {
-				if ( ! _.isUndefined( value2[ value1 ]) ) {
+				if ( ! _.isUndefined( value2[ value1 ] ) ) {
 					found = true;
 				}
 
@@ -135,7 +135,7 @@ var kirkiDependencies = {
 					if ( value1 === subValue ) {
 						found = true;
 					}
-				});
+				} );
 				return found;
 			} else if ( _.isString( value2 ) ) {
 				return -1 < value1.indexOf( value2 );
@@ -150,4 +150,4 @@ var kirkiDependencies = {
 
 jQuery( document ).ready( function() {
 	kirkiDependencies.init();
-});
+} );

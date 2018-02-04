@@ -25,8 +25,8 @@ jQuery( document ).ready( function() {
 			// Handle onclick events.
 			jQuery( '.tooltip-trigger[data-setting="' + tooltip.id + '"]' ).on( 'click', function() {
 				jQuery( '.tooltip-content[data-setting="' + tooltip.id + '"]' ).toggleClass( 'hidden' );
-			});
-		});
+			} );
+		} );
 
 		// Close tooltips if we click anywhere else.
 		jQuery( document ).mouseup( function( e ) {
@@ -36,7 +36,7 @@ jQuery( document ).ready( function() {
 					jQuery( '.tooltip-content' ).addClass( 'hidden' );
 				}
 			}
-		});
+		} );
 	}
 
 	wp.customize.control.each( function( control ) {
@@ -48,8 +48,8 @@ jQuery( document ).ready( function() {
 					if ( expanded ) {
 						kirkiTooltipAdd( control );
 					}
-				});
+				} );
 			}
-		});
-	});
-});
+		} );
+	} );
+} );
