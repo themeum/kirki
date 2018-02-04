@@ -49,7 +49,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-radio' );
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -57,7 +57,7 @@ kirki = jQuery.extend( kirki, {
 					'default': control.params.default,
 					value: kirki.setting.get( control.id ),
 					choices: control.params.choices
-				}) );
+				} ) );
 			}
 		},
 
@@ -107,7 +107,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-color' );
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -117,7 +117,7 @@ kirki = jQuery.extend( kirki, {
 					'data-default-color': control.params.default,
 					'data-alpha': control.params.choices.alpha,
 					value: kirki.setting.get( control.id )
-				}) );
+				} ) );
 			}
 		},
 
@@ -237,7 +237,7 @@ kirki = jQuery.extend( kirki, {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-					})
+					} )
 				);
 			}
 		},
@@ -278,7 +278,7 @@ kirki = jQuery.extend( kirki, {
 			template: function( control ) {
 				var template = wp.template( 'kirki-input-select' );
 
-				control.container.html( template({
+				control.container.html( template( {
 					label: control.params.label,
 					description: control.params.description,
 					'data-id': control.id,
@@ -287,8 +287,8 @@ kirki = jQuery.extend( kirki, {
 					value: kirki.setting.get( control.id ),
 					multiple: control.params.multiple || 1,
 					placeholder: control.params.placeholder
-				}) );
+				} ) );
 			}
 		}
 	}
-});
+} );

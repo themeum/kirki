@@ -1,5 +1,5 @@
 /* global tinyMCE */
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -14,7 +14,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 			},
 			quicktags: true,
 			mediaButtons: true
-		});
+		} );
 
 		editor = tinyMCE.get( id );
 
@@ -26,7 +26,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 				content = editor.getContent();
 				element.val( content ).trigger( 'change' );
 				wp.customize.instance( control.id ).set( content );
-			});
+			} );
 		}
 	}
-});
+} );

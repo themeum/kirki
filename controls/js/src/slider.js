@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control      = this,
@@ -13,7 +13,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// If the range input value changes copy the value to the text input.
 		rangeInput.on( 'mousemove change', function() {
 			textInput.attr( 'value', rangeInput.val() );
-		});
+		} );
 
 		// Save the value when the range input value changes.
 		// This is separate from the above because of the postMessage differences.
@@ -22,7 +22,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// but 1 final refresh when the value is changed.
 		rangeInput.on( changeAction, function() {
 			control.setting.set( rangeInput.val() );
-		});
+		} );
 
 		// If the text input value changes,
 		// copy the value to the range input
@@ -30,7 +30,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		textInput.on( 'input paste change', function() {
 			rangeInput.attr( 'value', textInput.val() );
 			control.setting.set( textInput.val() );
-		});
+		} );
 
 		// If the reset button is clicked,
 		// set slider and text input values to default
@@ -39,6 +39,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			textInput.attr( 'value', control.params.default );
 			rangeInput.attr( 'value', control.params.default );
 			control.setting.set( textInput.val() );
-		});
+		} );
 	}
-});
+} );

@@ -1,5 +1,5 @@
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -48,7 +48,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
 					args[ irisKey ] = irisValue;
-				});
+				} );
 			}
 
 			// Did we change the value?
@@ -57,7 +57,7 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 		// Colors loop
 		while ( i < Object.keys( colors ).length ) {
-			kirkiMulticolorChangeHandler( this, value, keys[ i ]);
+			kirkiMulticolorChangeHandler( this, value, keys[ i ] );
 			i++;
 		}
 	},
@@ -76,4 +76,4 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
+} );

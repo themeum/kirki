@@ -30,7 +30,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -73,12 +73,12 @@ kirki = jQuery.extend( kirki, {
 					if ( clear.length ) {
 						clear.click( function() {
 							kirki.setting.set( control.id, '' );
-						});
+						} );
 					}
 				}, 200 );
 
 				// Saves our settings to the WP API
-				picker.wpColorPicker({
+				picker.wpColorPicker( {
 					change: function() {
 
 						// Small hack: the picker needs a small delay
@@ -86,7 +86,7 @@ kirki = jQuery.extend( kirki, {
 							kirki.setting.set( control.id, picker.val() );
 						}, 20 );
 					}
-				});
+				} );
 			}
 		},
 
@@ -111,7 +111,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -136,7 +136,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -171,7 +171,7 @@ kirki = jQuery.extend( kirki, {
 					selectValue = jQuery( this ).val();
 					selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
 					kirki.setting.set( control.id, selectValue );
-				});
+				} );
 			}
 		},
 
@@ -202,7 +202,7 @@ kirki = jQuery.extend( kirki, {
 					min: 0,
 					max: 100,
 					step: 1
-				});
+				} );
 
 				// Make sure we have a valid value.
 				if ( isNaN( value ) || '' === value ) {
@@ -229,7 +229,7 @@ kirki = jQuery.extend( kirki, {
 
 					element.val( newVal );
 					element.trigger( 'change' );
-				});
+				} );
 
 				down.click( function() {
 					var oldVal = parseFloat( element.val() ),
@@ -239,11 +239,11 @@ kirki = jQuery.extend( kirki, {
 
 					element.val( newVal );
 					element.trigger( 'change' );
-				});
+				} );
 
 				element.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 
 		},
@@ -269,7 +269,7 @@ kirki = jQuery.extend( kirki, {
 					'data-id': '',
 					choices: {},
 					value: ''
-				});
+				} );
 
 				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
 					saveAs = data.choices.save_as;
@@ -319,4 +319,4 @@ kirki = jQuery.extend( kirki, {
 			}
 		}
 	}
-});
+} );

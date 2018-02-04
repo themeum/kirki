@@ -33,18 +33,18 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			switch ( subControl.type ) {
 
 				case 'kirki-background':
-					if ( ! _.isUndefined( value['background-color']) ) {
-						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color']);
+					if ( ! _.isUndefined( value['background-color'] ) ) {
+						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color'] );
 					}
 					$this.findElement( setting, '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
-					_.each([ 'background-repeat', 'background-position' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
+					_.each( [ 'background-repeat', 'background-position' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each([ 'background-size', 'background-attachment' ], function( subVal ) {
+					} );
+					_.each( [ 'background-size', 'background-attachment' ], function( subVal ) {
 						jQuery( $this.findElement( setting, '.' + subVal + ' input[value="' + value + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
 					jQuery( $this.findElement( setting, '.background-hidden-value' ).attr( 'value', valueJSON ) ).trigger( 'change' );
 					break;
@@ -86,16 +86,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-multicheck':
 					$this.findElement( setting, 'input' ).each( function() {
 						jQuery( this ).prop( 'checked', false );
-					});
+					} );
 					_.each( value, function( subValue, i ) {
 						jQuery( $this.findElement( setting, 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					break;
 
 				case 'kirki-multicolor':
 					_.each( value, function( subVal, index ) {
 						$this.setColorPicker( $this.findElement( setting, '.multicolor-index-' + index ), subVal );
-					});
+					} );
 					break;
 
 				case 'kirki-radio-buttonset':
@@ -108,16 +108,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each([ 'font-family', 'variant' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ]);
+					_.each( [ 'font-family', 'variant' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each([ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
-						if ( ! _.isUndefined( value[ subVal ]) ) {
-							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ]);
+					} );
+					_.each( [ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
+						if ( ! _.isUndefined( value[ subVal ] ) ) {
+							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ] );
 						}
-					});
+					} );
 
 					if ( ! _.isUndefined( value.color ) ) {
 						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value.color );
@@ -129,7 +129,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-dimensions':
 					_.each( value, function( subValue, id ) {
 						jQuery( $this.findElement( setting, '.' + id + ' input' ) ).prop( 'value', subValue );
-					});
+					} );
 					break;
 
 				case 'kirki-repeater':
@@ -202,7 +202,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 */
 		setValue: function( setting, value, timeout ) {
 			timeout = ( _.isUndefined( timeout ) ) ? 100 : parseInt( timeout, 10 );
-			wp.customize.instance( setting ).set({});
+			wp.customize.instance( setting ).set( {} );
 			setTimeout( function() {
 				wp.customize.instance( setting ).set( value );
 			}, timeout );

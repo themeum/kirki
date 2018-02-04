@@ -63,7 +63,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					});
+					} );
 				},
 
 				/**
@@ -77,7 +77,7 @@ kirki = jQuery.extend( kirki, {
 					var self = this,
 						fonts = self.getFonts();
 
-					if ( 'undefined' === typeof fonts[ family ]) {
+					if ( 'undefined' === typeof fonts[ family ] ) {
 						return false;
 					}
 					return fonts[ family ];
@@ -107,11 +107,11 @@ kirki = jQuery.extend( kirki, {
 
 					// Order fonts by the 'order' argument.
 					if ( 'alpha' === order ) {
-						ordered = jQuery.extend({}, self.fonts.items );
+						ordered = jQuery.extend( {}, self.fonts.items );
 					} else {
 						_.each( self.fonts.order[ order ], function( family ) {
 							ordered[ family ] = self.fonts.items[ family ];
-						});
+						} );
 					}
 
 					// If we have a category defined get only the fonts in that category.
@@ -122,14 +122,14 @@ kirki = jQuery.extend( kirki, {
 							if ( category === font.category ) {
 								categorized[ family ] = font;
 							}
-						});
+						} );
 					}
 
 					// If we only want a number of font-families get the 1st items from the results.
 					if ( 0 < number ) {
 						_.each( _.first( _.keys( categorized ), number ), function( family ) {
 							plucked[ family ] = categorized[ family ];
-						});
+						} );
 						return plucked;
 					}
 
@@ -209,7 +209,7 @@ kirki = jQuery.extend( kirki, {
 
 						// Get fonts from the JSON array.
 						self.fonts = JSON.parse( response );
-					});
+					} );
 				},
 
 				/**
@@ -246,11 +246,11 @@ kirki = jQuery.extend( kirki, {
 				}
 
 				// Check in googlefonts.
-				if ( 'undefined' !== typeof self.google.fonts.items[ family ]) {
+				if ( 'undefined' !== typeof self.google.fonts.items[ family ] ) {
 					return 'google';
 				}
 				return false;
 			}
 		}
 	}
-});
+} );

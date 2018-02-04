@@ -1,5 +1,5 @@
 /* global dimensionskirkiL10n */
-wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -13,7 +13,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 			if ( true === v ) {
 				subsArray.push( i );
 			}
-		});
+		} );
 
 		for ( i = 0; i < subsArray.length; i++ ) {
 			value[ subsArray[ i ] ] = control.setting._value[ subsArray[ i ] ];
@@ -36,7 +36,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 			// Save the value
 			control.saveValue( value );
-		});
+		} );
 	},
 
 	/**
@@ -49,7 +49,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
-		});
+		} );
 
 		control.setting.set( newValue );
 	},
@@ -75,18 +75,18 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 					} else {
 						delete subs[ direction ];
 					}
-				});
+				} );
 
 				if ( ! _.isEmpty( subs ) ) {
 					message = dimensionskirkiL10n['invalid-value'] + ' (' + _.values( subs ).toString() + ') ';
 					setting.notifications.add( code, new wp.customize.Notification( code, {
 						type: 'warning',
 						message: message
-					}) );
+					} ) );
 					return;
 				}
 				setting.notifications.remove( code );
-			});
-		});
+			} );
+		} );
 	}
-});
+} );

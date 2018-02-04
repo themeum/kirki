@@ -1,5 +1,5 @@
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -35,7 +35,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 					var url = wp.media.attachment( value ).get( 'url' );
 					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
 				}, 700 );
-			});
+			} );
 		}
 
 		// If value is not empty, hide the "default" button.
@@ -58,7 +58,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		}
 
 		control.container.on( 'click', '.image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
@@ -88,10 +88,10 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 						removeButton.show();
 						defaultButton.hide();
 					}
-				});
+				} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.image-upload-remove-button', function( e ) {
 
@@ -119,7 +119,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 					defaultButton.show();
 				}
 			}
-		});
+		} );
 
 		control.container.on( 'click', '.image-default-button', function( e ) {
 
@@ -142,7 +142,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 				removeButton.show();
 				defaultButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -181,4 +181,4 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		control.setting.set( value );
 		control.container.find( 'button' ).trigger( 'change' );
 	}
-});
+} );

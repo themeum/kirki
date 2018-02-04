@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -15,10 +15,10 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicC
 					value[ i ] = key;
 					i++;
 				}
-			});
+			} );
 
 			// Update the value in the customizer.
 			control.setting.set( value );
-		});
+		} );
 	}
-});
+} );

@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -9,6 +9,6 @@ wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicContr
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
-		});
+		} );
 	}
-});
+} );

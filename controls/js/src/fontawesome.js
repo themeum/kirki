@@ -1,5 +1,5 @@
 /* global fontAwesomeJSON */
-wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -22,18 +22,18 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 			select;
 
 		_.each( icons.icons, function( icon ) {
-			selectWooOptions.data.push({
+			selectWooOptions.data.push( {
 				id: icon.id,
 				text: icon.name
-			});
-		});
+			} );
+		} );
 
 		select = jQuery( element ).selectWoo( selectWooOptions );
 
 		select.on( 'change', function() {
 			selectValue = jQuery( this ).val();
 			control.setting.set( selectValue );
-		});
+		} );
 		select.val( control.setting._value ).trigger( 'change' );
 	}
-});
+} );
