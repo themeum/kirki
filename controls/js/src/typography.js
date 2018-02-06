@@ -245,7 +245,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			control.saveValue( 'variant', value.variant );
 
-			if ( '' === value.variant ) {
+			if ( '' === value.variant || ! value.variant ) {
 				fontWeight = '';
 				fontStyle  = '';
 			} else {
@@ -288,6 +288,9 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		variantSelector.val( value.variant ).trigger( 'change' );
 		variantSelector.on( 'change', function() {
 			control.saveValue( 'variant', jQuery( this ).val() );
+			if ( 'string' !== typeof value.variant ) {
+				value.variant = variants[0];
+			}
 
 			fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 			fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
