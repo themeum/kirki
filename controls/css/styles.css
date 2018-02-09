@@ -62,7 +62,7 @@
       position: relative;
       left: -25%;
       top: -25%;
-      z-index: 99; }
+      z-index: 1; }
     .customize-control-kirki-color-palette .colors-wrapper.with-margin label {
       margin: 3px; }
     .customize-control-kirki-color-palette .colors-wrapper input {
