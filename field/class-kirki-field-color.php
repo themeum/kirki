@@ -57,7 +57,7 @@ class Kirki_Field_Color extends Kirki_Field {
 		}
 		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
 			$this->choices['alpha'] = true;
-			if ( property_exists( $this, 'default' ) && ! empty( $this->default ) && false === strpos( 'rgba', $this->default ) ) {
+			if ( property_exists( $this, 'default' ) && $this->default != null && ! empty( $this->default ) && (is_string($this->default) || is_numeric($this->default)) && strpos('rgba', $this->default) === false ) {
 				$this->choices['alpha'] = false;
 			}
 		}
