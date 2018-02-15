@@ -1469,6 +1469,10 @@ kirki = jQuery.extend( kirki, {
 				numericValue,
 				unit;
 
+			if ( 'string' !== typeof value ) {
+				return true;
+			}
+
 			// 0 is always a valid value, and we can't check calc() values effectively.
 			if ( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) {
 				return true;
