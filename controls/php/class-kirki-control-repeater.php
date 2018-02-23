@@ -52,6 +52,14 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 	public $row_label = array();
 
 	/**
+	 * The button label
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $button_label = '';
+
+	/**
 	 * Constructor.
 	 * Supplied `$args` override class property defaults.
 	 * If `$args['settings']` is not defined, use the $id as the setting ID.
