@@ -138,7 +138,7 @@ var kirkiDependencies = {
 				} );
 				return found;
 			} else if ( _.isString( value2 ) ) {
-				return -1 < value1.indexOf( value2 );
+				return -1 < value2.indexOf( value1 );
 			}
 		}
 		if ( null === result ) {
