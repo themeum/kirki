@@ -3356,7 +3356,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			googleFonts     = [],
 			value           = control.setting._value,
 			fonts           = control.getFonts(),
-			fontSelect;
+			fontSelect,
+			controlFontFamilies;
 
 		// Format standard fonts as an array.
 		if ( ! _.isUndefined( fonts.standard ) ) {
@@ -3378,15 +3379,34 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			} );
 		}
 
+		// Do we have custom fonts?
+		controlFontFamilies = {};
+		if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.fonts ) && ! _.isUndefined( control.params.choices.fonts.families ) ) {
+			controlFontFamilies = control.params.choices.fonts.families;
+		}
+
 		// Combine forces and build the final data.
-		data = [
-			{ text: kirkiL10n.defaultCSSValues, children: [
-				{ id: '', text: '' },
-				{ id: 'inherit', text: 'inherit' }
-			] },
-			{ text: kirkiL10n.standardFonts, children: standardFonts },
-			{ text: kirkiL10n.googleFonts, children: googleFonts }
-		];
+		data = jQuery.extend( {}, controlFontFamilies, {
+			default: {
+				text: kirkiL10n.defaultCSSValues,
+				children: [ { id: '', text: '' }, { id: 'inherit', text: 'inherit' } ]
+			},
+			standard: {
+				text: kirkiL10n.standardFonts,
+				children: standardFonts
+			},
+			google: {
+				text: kirkiL10n.googleFonts,
+				children: googleFonts
+			}
+		} );
+
+		if ( kirkiL10n.isScriptDebug ) {
+			console.info( 'Kirki Debug: Font families for control "' + control.id + '":' );
+			console.info( data );
+		}
+
+		data = _.values( data );
 
 		// Instantiate selectWoo with the data.
 		fontSelect = jQuery( selector ).selectWoo( {
@@ -3485,6 +3505,19 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		if ( 'google' === fontType ) {
 			variants = kirki.util.webfonts.google.getVariants( fontFamily );
+		}
+
+		// Check if we've got custom variants defined for this font.
+		if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.fonts ) && ! _.isUndefined( control.params.choices.fonts.variants ) ) {
+
+			// Check if we have variants for this font-family.
+			if ( ! _.isUndefined( control.params.choices.fonts.variants[ fontFamily ] ) ) {
+				variants = control.params.choices.fonts.variants[ fontFamily ];
+			}
+		}
+		if ( kirkiL10n.isScriptDebug ) {
+			console.info( 'Kirki Debug: Font variants for font-family "' + fontFamily + '":' );
+			console.info( variants );
 		}
 
 		if ( 'inherit' === fontFamily ) {

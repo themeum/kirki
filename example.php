@@ -883,7 +883,20 @@ my_config_kirki_add_field(
 		),
 		'choices' => array(
 			'fonts' => array(
-				'google' => array( 'popularity', 60 ),
+				'google'   => array( 'popularity', 60 ),
+				'families' => array(
+					'custom' => array(
+						'text'     => 'My Custom Fonts (demo only)',
+						'children' => array(
+							array( 'id' => 'helvetica-neue', 'text' => 'Helvetica Neue' ),
+							array( 'id' => 'linotype-authentic', 'text' => 'Linotype Authentic' ),
+						),
+					),
+				),
+				'variants' => array(
+					'helvetica-neue'     => array( 'regular', '900' ),
+					'linotype-authentic' => array( 'regular', '100', '300' ),
+				)
 			),
 		),
 	)
