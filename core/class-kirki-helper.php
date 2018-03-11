@@ -410,6 +410,7 @@ class Kirki_Helper {
 						return true;
 					}
 				}
+				return false;
 			}
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
 				return in_array( $value2, $value1 );
