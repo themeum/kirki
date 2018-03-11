@@ -47,6 +47,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `active_callback` not working for checkboxes [#1809](https://github.com/aristath/kirki/issues/1809).
 * Fix: Updated google-fonts.
 * Fix: Display typography with no default values [#1797](https://github.com/aristath/kirki/issues/1797).
+* Fix: Define "normal" as a valid css-value for sanitizations [#1814](https://github.com/aristath/kirki/issues/1814).
 * New: Migrated `number` control to new structure.
 
 = 3.0.25 =

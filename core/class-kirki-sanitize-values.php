@@ -102,7 +102,7 @@ class Kirki_Sanitize_Values {
 		}
 
 		// If auto, inherit or initial, return the value.
-		if ( 'auto' === $value || 'initial' === $value || 'inherit' === $value ) {
+		if ( 'auto' === $value || 'initial' === $value || 'inherit' === $value || 'normal' === $value ) {
 			return $value;
 		}
 
