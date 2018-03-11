@@ -44,6 +44,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `button_label` argument for repeater fields (props @felipeelia).
 * Fix: Allow html on radio-buttonset choices [#1818](https://github.com/aristath/kirki/issues/1818).
 * Fix: `Kirki_Helper::compare_values` vs. `field-dependencies.js` boolean issue (props @CaptJiggly) [#1825](https://github.com/aristath/kirki/issues/1825).
+* Fix: `active_callback` not working for checkboxes [#1809](https://github.com/aristath/kirki/issues/1809).
 * Fix: Updated google-fonts.
 * New: Migrated `number` control to new structure.
 ###
