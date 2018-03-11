@@ -41,8 +41,17 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	showKirkiControl: function( control ) {
-		var self = this,
-			show = true;
+		var self     = this,
+			show     = true,
+			isOption = (
+				control.params && // Check if control.params exists.
+				control.params.kirkiOptionType &&  // Check if option_type exists.
+				'option' === control.params.kirkiOptionType &&  // We're using options.
+				control.params.kirkiOptionName && // Check if option_name exists.
+				! _.isEmpty( control.params.kirkiOptionName ) // Check if option_name is not empty.
+			),
+			i;
+
 
 		if ( _.isString( control ) ) {
 			control = wp.customize.control( control );
@@ -54,39 +63,71 @@ var kirkiDependencies = {
 		}
 
 		// Loop control requirements.
-		_.each( control.params.required, function( requirement ) {
-			let requirementShow;
-
-			// Tweak for using active callbacks with serialized options instead of theme_mods.
-			if (
-				control.params && // Check if control.params exists.
-				control.params.kirkiOptionType &&  // Check if option_type exists.
-				'option' === control.params.kirkiOptionType &&  // We're using options.
-				control.params.kirkiOptionName && // Check if option_name exists.
-				! _.isEmpty( control.params.kirkiOptionName ) && // Check if option_name is not empty.
-				-1 === requirement.setting.indexOf( control.params.kirkiOptionName + '[' ) // Make sure we don't already have the option_name in there.
-			) {
-				requirement.setting = control.params.kirkiOptionName + '[' + requirement.setting + ']';
-			}
-
-			// Early exit if setting is not defined.
-			if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
-				show = true;
-				return;
-			}
-
-			requirementShow = self.evaluate( requirement.value, wp.customize.control( requirement.setting ).setting._value, requirement.operator );
-
-			self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
-			if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
-				self.listenTo[ requirement.setting ].push( control.id );
-			}
-
-			if ( ! requirementShow ) {
+		for ( i = 0; i < control.params.required.length; i++ ) {
+			if ( ! self.checkCondition( control.params.required[ i ], control, isOption, 'AND' ) ) {
 				show = false;
 			}
-		} );
+		}
 		return show;
+	},
+
+	/**
+	 * Check a condition.
+	 *
+	 * @param {Object} requirement - The requirement, inherited from showKirkiControl.
+	 * @param {Object} control - The control object.
+	 * @param {bool}   isOption - Whether it's an option or not.
+	 * @param {string} relation - Can be one of 'AND' or 'OR'.
+	 */
+	checkCondition: function( requirement, control, isOption, relation ) {
+		var self          = this,
+			childRelation = ( 'AND' === relation ) ? 'OR' : 'AND',
+			requirementShow,
+			nestedItems,
+			i;
+
+		// Tweak for using active callbacks with serialized options instead of theme_mods.
+		if ( isOption && requirement.setting ) {
+
+			// Make sure we don't already have the option_name in there.
+			if ( -1 === requirement.setting.indexOf( control.params.kirkiOptionName + '[' ) ) {
+				requirement.setting = control.params.kirkiOptionName + '[' + requirement.setting + ']';
+			}
+		}
+
+		// If an array of other requirements nested, we need to process them separately.
+		if ( 'undefined' !== typeof requirement[0] && 'undefined' === typeof requirement.setting ) {
+			nestedItems = [];
+
+			// Loop sub-requirements.
+			for ( i = 0; i < requirement.length; i++ ) {
+				nestedItems.push( self.checkCondition( requirement[ i ], control, isOption, childRelation ) );
+			}
+
+			// OR relation. Check that true is part of the array.
+			if ( 'OR' === childRelation ) {
+				return ( -1 !== nestedItems.indexOf( true ) );
+			}
+
+			// AND relation. Check that false is not part of the array.
+			return ( -1 === nestedItems.indexOf( false ) );
+		}
+
+		// Early exit if setting is not defined.
+		if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
+			return true;
+		}
+
+		self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
+		if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
+			self.listenTo[ requirement.setting ].push( control.id );
+		}
+
+		return self.evaluate(
+			requirement.value,
+			wp.customize.control( requirement.setting ).setting._value,
+			requirement.operator
+		);
 	},
 
 	/**

@@ -45,6 +45,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Allow html on radio-buttonset choices [#1818](https://github.com/aristath/kirki/issues/1818).
 * Fix: `Kirki_Helper::compare_values` vs. `field-dependencies.js` boolean issue (props @CaptJiggly) [#1825](https://github.com/aristath/kirki/issues/1825).
 * Fix: `active_callback` not working for checkboxes [#1809](https://github.com/aristath/kirki/issues/1809).
+* Fix: Nested `active_callback` args not working properly (AND|OR relations) [#1809](https://github.com/aristath/kirki/issues/1809).
 * Fix: Updated google-fonts.
 * Fix: Display typography with no default values [#1797](https://github.com/aristath/kirki/issues/1797).
 * Fix: Define "normal" as a valid css-value for sanitizations [#1814](https://github.com/aristath/kirki/issues/1814).
