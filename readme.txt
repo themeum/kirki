@@ -33,6 +33,20 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.26
+
+* Fix: Color Palette: material colors 'light-blue' doesn't work [#1783](https://github.com/aristath/kirki/issues/1783).
+* Fix: Google Fonts switch error [#1791](https://github.com/aristath/kirki/issues/1791).
+* Fix: FontAwesome JS is being loaded even if you don't need it on front end [#1786](https://github.com/aristath/kirki/issues/1786).
+* Fix: Color Palette: Active color before section title [#1782](https://github.com/aristath/kirki/issues/1782).
+* Fix: Removed version from the webfont script.
+* Fix: Validation error for dimension fields.
+* Fix: `button_label` argument for repeater fields (props @felipeelia).
+* Fix: Allow html on radio-buttonset choices [#1818](https://github.com/aristath/kirki/issues/1818).
+* Fix: `Kirki_Helper::compare_values` vs. `field-dependencies.js` boolean issue (props @CaptJiggly) [#1825](https://github.com/aristath/kirki/issues/1825).
+* Fix: Updated google-fonts.
+* New: Migrated `number` control to new structure.
+
 = 3.0.25 =
 
 January 23 2018, dev time: 1 hour.
