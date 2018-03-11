@@ -103,22 +103,39 @@ var kirkiDependencies = {
 			result = null;
 
 		if ( '===' === operator ) {
-			result = value1 === value2;
-		} else if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
-			result = value1 == value2; // jshint ignore:line
-		} else if ( '!==' === operator ) {
-			result = value1 !== value2;
-		} else if ( '!=' === operator || 'not equal' === operator ) {
-			result = value1 != value2; // jshint ignore:line
-		} else if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
-			result = value2 >= value1;
-		} else if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
-			result = value2 <= value1;
-		} else if ( '>' === operator || 'greater' === operator ) {
-			result = value2 > value1;
-		} else if ( '<' === operator || 'smaller' === operator ) {
-			result = value2 < value1;
-		} else if ( 'contains' === operator || 'in' === operator ) {
+			return value1 === value2;
+		}
+		if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
+			return value1 == value2;
+		}
+		if ( '!==' === operator ) {
+			return value1 !== value2;
+		}
+		if ( '!=' === operator || 'not equal' === operator ) {
+			return value1 != value2;
+		}
+		if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
+			return value2 >= value1;
+		}
+		if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
+			return value2 <= value1;
+		}
+		if ( '>' === operator || 'greater' === operator ) {
+			return value2 > value1;
+		}
+		if ( '<' === operator || 'smaller' === operator ) {
+			return value2 < value1;
+		}
+		if ( 'contains' === operator || 'in' === operator ) {
+			if ( _.isArray( value1 ) && _.isArray( value2 ) ) {
+				_.each( value2, function( value ) {
+					if ( value1.includes( value ) ) {
+						found = true;
+						return false;
+					}
+                } );
+				return found;
+			}
 			if ( _.isArray( value2 ) ) {
 				_.each( value2, function( value ) {
 					if ( value == value1 ) { // jshint ignore:line
@@ -126,25 +143,23 @@ var kirkiDependencies = {
 					}
 				} );
 				return found;
-			} else if ( _.isObject( value2 ) ) {
+			}
+			if ( _.isObject( value2 ) ) {
 				if ( ! _.isUndefined( value2[ value1 ] ) ) {
 					found = true;
 				}
-
 				_.each( value2, function( subValue ) {
 					if ( value1 === subValue ) {
 						found = true;
 					}
 				} );
 				return found;
-			} else if ( _.isString( value2 ) ) {
+			}
+			if ( _.isString( value2 ) ) {
 				return -1 < value1.indexOf( value2 );
 			}
 		}
-		if ( null === result ) {
-			return true;
-		}
-		return result;
+		return ( null === result ) ? true : result;
 	}
 };
 

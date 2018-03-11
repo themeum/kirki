@@ -382,36 +382,43 @@ class Kirki_Helper {
 	 * @return boolean whether The comparison has succeded (true) or failed (false).
 	 */
 	public static function compare_values( $value1, $value2, $operator ) {
-		$return = false;
-		if ( '===' === $operator && $value1 === $value2 ) {
-			$return = true;
-		} elseif ( '!==' === $operator && $value1 !== $value2 ) {
-			$return = true;
-			// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
-		} elseif ( ( '!=' === $operator || 'not equal' === $operator ) && $value1 != $value2 ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
-			$return = true;
-		} elseif ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) && $value2 >= $value1 ) {
-			$return = true;
-		} elseif ( ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) && $value2 <= $value1 ) {
-			$return = true;
-		} elseif ( ( '>' === $operator || 'greater' === $operator ) && $value2 > $value1 ) {
-			$return = true;
-		} elseif ( ( '<' === $operator || 'smaller' === $operator ) && $value2 < $value1 ) {
-			$return = true;
-		} elseif ( 'contains' === $operator || 'in' === $operator ) {
-			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				// @codingStandardsIgnoreLine
-				$return = ( in_array( $value2, $value1 ) );
-			} elseif ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				// @codingStandardsIgnoreLine
-				$return = ( in_array( $value1, $value2 ) );
-			} elseif ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) ) {
-				$return = false;
-			}
-		} else {
-			// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
-			$return = ( $value1 == $value2 ) ? true : false; // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+		if ( '===' === $operator ) {
+			return $value1 === $value2;
 		}
-		return (bool) $return;
+		if ( '!==' === $operator ) {
+			return $value1 !== $value2;
+		}
+		if ( ( '!=' === $operator || 'not equal' === $operator ) ) {
+			return $value1 != $value2;
+		}
+		if ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) ) {
+			return $value2 >= $value1;
+		}
+		if ( ( '<=' === $operator || 'smaller or equal' === $operator || 'equal or smaller' === $operator ) ) {
+			return $value2 <= $value1;
+		}
+		if ( ( '>' === $operator || 'greater' === $operator ) ) {
+			return $value2 > $value1;
+		}
+		if ( ( '<' === $operator || 'smaller' === $operator ) ) {
+			return $value2 < $value1;
+		}
+		if ( 'contains' === $operator || 'in' === $operator ) {
+			if ( is_array( $value1 ) && is_array( $value2 ) ) {
+				foreach ( $value2 as $val ) {
+					if ( in_array( $val, $value1 ) ) {
+						return true;
+					}
+				}
+			}
+			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
+				return in_array( $value2, $value1 );
+			}
+			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
+				return in_array( $value1, $value2 );
+			}
+			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
+		}
+		return $value1 == $value2;
 	}
 }
