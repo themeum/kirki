@@ -34,6 +34,12 @@ class Kirki_Output_Field_Background extends Kirki_Output {
 		);
 
 		foreach ( array( 'background-image', 'background-color', 'background-repeat', 'background-position', 'background-size', 'background-attachment' ) as $property ) {
+
+			// See https://github.com/aristath/kirki/issues/1808.
+			if ( 'background-color' === $property && ( ! isset( $value['background-image'] ) || empty( $value['background-image'] ) ) ) {
+				$this->styles[ $output['media_query'] ][ $output['element'] ]['background'] = $output['prefix'] . $this->process_property_value( $property, $value[ $property ] ) . $output['suffix'];
+			}
+
 			if ( isset( $value[ $property ] ) && ! empty( $value[ $property ] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $property ] ) . $output['suffix'];
 			}
