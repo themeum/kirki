@@ -218,7 +218,7 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) {
+				getVariants: function() {
 					return [ 'regular', 'italic', '700', '700italic' ];
 				}
 			},

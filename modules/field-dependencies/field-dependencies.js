@@ -82,7 +82,6 @@ var kirkiDependencies = {
 	checkCondition: function( requirement, control, isOption, relation ) {
 		var self          = this,
 			childRelation = ( 'AND' === relation ) ? 'OR' : 'AND',
-			requirementShow,
 			nestedItems,
 			i;
 
