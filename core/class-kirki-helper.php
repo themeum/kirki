@@ -404,12 +404,12 @@ class Kirki_Helper {
 			return $value2 < $value1;
 		}
 		if ( 'contains' === $operator || 'in' === $operator ) {
-            if ( is_array( $value1 ) && is_array( $value2 ) ){
-                foreach ( $value2 as $val ){
-                    if ( in_array( $val, $value1 ) ) {
-                        return true;
-                    }
-                }
+			if ( is_array( $value1 ) && is_array( $value2 ) ){
+				foreach ( $value2 as $val ) {
+					if ( in_array( $val, $value1 ) ) {
+						return true;
+					}
+				}
 			}
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
 				return in_array( $value2, $value1 );
