@@ -417,7 +417,7 @@ class Kirki_Helper {
 			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
 				return in_array( $value1, $value2 );
 			}
-			return ( false === strrpos( $value1, $value2 ) && false === strpos( $value2, $value1 ) );
+			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}
 		return $value1 == $value2;
 	}
