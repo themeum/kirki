@@ -37,3 +37,16 @@ Kirki::add_field( 'theme_config_id', array(
 	'priority'    => 10,
 ) );
 ```
+
+Example of how to load template parts based on the value of the control in a template:
+
+```php
+<?php
+// Get the parts.
+$template_parts = get_theme_mod( 'my_setting', array( 'option3', 'option1', 'option4' ) );
+
+// Loop parts.
+foreach ( $template_parts as $template_part ) {
+	get_template_part( 'partial-templates/' . $template_part );
+}
+```
