@@ -3331,7 +3331,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Color.
-		if ( control.params.default.color ) {
+		if ( ! _.isUndefined( control.params.default.color ) ) {
 			picker = this.container.find( '.kirki-color-control' );
 			picker.wpColorPicker( {
 				change: function() {
@@ -3380,7 +3380,10 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		// Combine forces and build the final data.
 		data = [
-			{ text: kirkiL10n.defaultCSSValues, children: [ { id: 'inherit', text: 'inherit' } ] },
+			{ text: kirkiL10n.defaultCSSValues, children: [
+				{ id: '', text: '' },
+				{ id: 'inherit', text: 'inherit' }
+			] },
 			{ text: kirkiL10n.standardFonts, children: standardFonts },
 			{ text: kirkiL10n.googleFonts, children: googleFonts }
 		];
@@ -3475,7 +3478,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			data       = [],
 			isValid    = false,
 			fontType   = kirki.util.webfonts.getFontType( fontFamily ),
-			variants   = [ 'regular', 'italic', '700', '700italic' ],
+			variants   = [ '', 'regular', 'italic', '700', '700italic' ],
 			fontWeight,
 			variantSelector,
 			fontStyle;

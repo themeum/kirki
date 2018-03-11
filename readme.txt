@@ -46,6 +46,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: `Kirki_Helper::compare_values` vs. `field-dependencies.js` boolean issue (props @CaptJiggly) [#1825](https://github.com/aristath/kirki/issues/1825).
 * Fix: `active_callback` not working for checkboxes [#1809](https://github.com/aristath/kirki/issues/1809).
 * Fix: Updated google-fonts.
+* Fix: Display typography with no default values [#1797](https://github.com/aristath/kirki/issues/1797).
 * New: Migrated `number` control to new structure.
 
 = 3.0.25 =
