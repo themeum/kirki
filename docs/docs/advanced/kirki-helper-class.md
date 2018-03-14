@@ -143,14 +143,14 @@ Example:
 
 ```php
 add_action( 'init', function() {
-    Kirki::add_field( 'my_settings', array(
-        'type'        => 'select',
-        'settings'    => 'my_setting',
-        'label'       => __( 'This is the label', 'my_textdomain' ),
-        'section'     => 'title_tagline',
-        'default'     => '',
-        'priority'    => 10,
-        'choices'     => Kirki_Helper::get_terms( 'product_cat' ),
+	Kirki::add_field( 'my_settings', array(
+		'type'     => 'select',
+		'settings' => 'my_setting',
+		'label'    => __( 'This is the label', 'my_textdomain' ),
+		'section'  => 'title_tagline',
+		'default'  => '',
+		'priority' => 10,
+		'choices'  => Kirki_Helper::get_terms( 'product_cat' ),
     ) );
-});
+} );
 ```
