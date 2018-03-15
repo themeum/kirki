@@ -83,15 +83,15 @@ final class Kirki_Fonts {
 		$standard_fonts = array(
 			'serif'      => array(
 				'label' => 'Serif',
-				'stack' => 'Georgia,Times,"Times New Roman",serif',
+				'stack' => 'Georgia,Times, Times New Roman ,serif',
 			),
 			'sans-serif' => array(
 				'label' => 'Sans Serif',
-				'stack' => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+				'stack' => '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif',
 			),
 			'monospace'  => array(
 				'label' => 'Monospace',
-				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
+				'stack' => 'Monaco,Lucida Sans Typewriter,Lucida Typewriter,Courier New,Courier,monospace',
 			),
 		);
 		return apply_filters( 'kirki_fonts_standard_fonts', $standard_fonts );
