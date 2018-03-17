@@ -195,6 +195,9 @@ var kirkiDependencies = {
 				return found;
 			}
 			if ( _.isString( value2 ) ) {
+				if ( _.isString( value1 ) ) {
+					return ( -1 < value1.indexOf( value2 ) && -1 < value2.indexOf( value1 ) );
+				}
 				return -1 < value1.indexOf( value2 );
 			}
 		}
