@@ -7,7 +7,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.rowIndex   = rowIndex;
 	this.container  = container;
 	this.label      = label;
-	this.header     = this.container.find( '.repeater-row-header' ),
+	this.header     = this.container.find( '.repeater-row-header' );
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();

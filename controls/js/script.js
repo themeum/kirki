@@ -949,7 +949,7 @@ kirki = jQuery.extend( kirki, {
 				return;
 			}
 
-			parts = setting.split( '[' ),
+			parts = setting.split( '[' );
 
 			// Find the setting we're using in the control using the customizer API.
 			_.each( parts, function( part, i ) {
@@ -1469,16 +1469,11 @@ kirki = jQuery.extend( kirki, {
 				numericValue,
 				unit;
 
-			if ( 'string' !== typeof value ) {
-				return true;
-			}
-
-			// 0 is always a valid value, and we can't check calc() values effectively.
-			if ( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) {
-				return true;
-			}
-
-			if ( 'auto' === value || 'inherit' === value || 'initial' === value ) {
+			if (
+				'string' !== typeof value ||
+				( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) ||
+				( 'auto' === value || 'inherit' === value || 'initial' === value )
+			) {
 				return true;
 			}
 
@@ -1489,10 +1484,7 @@ kirki = jQuery.extend( kirki, {
 			unit = value.replace( numericValue, '' );
 
 			// Check the validity of the numeric value and units.
-			if ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) ) {
-				return false;
-			}
-			return true;
+			return ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) );
 		}
 	} );
 }() );
@@ -2214,7 +2206,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.rowIndex   = rowIndex;
 	this.container  = container;
 	this.label      = label;
-	this.header     = this.container.find( '.repeater-row-header' ),
+	this.header     = this.container.find( '.repeater-row-header' );
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();

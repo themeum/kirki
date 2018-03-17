@@ -92,7 +92,7 @@ kirki = jQuery.extend( kirki, {
 				return;
 			}
 
-			parts = setting.split( '[' ),
+			parts = setting.split( '[' );
 
 			// Find the setting we're using in the control using the customizer API.
 			_.each( parts, function( part, i ) {

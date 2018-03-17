@@ -37,7 +37,7 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 			return;
 		}
 
-		foreach ( $value as $key => $sub_value ) {
+		foreach ( array_keys( $value ) as $key ) {
 
 			$property = ( empty( $output['property'] ) ) ? $key : $output['property'] . '-' . $key;
 			if ( isset( $output['choice'] ) && $output['property'] ) {
