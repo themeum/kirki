@@ -177,7 +177,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 				 * @return string
 				 */
 				private function get_plugin_install_url() {
-					if ( $this->plugin_install_url ) {
+					if ( ! $this->plugin_install_url ) {
 						// Get the plugin-installation URL.
 						$this->plugin_install_url = add_query_arg(
 							array(
@@ -186,7 +186,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 							),
 							self_admin_url( 'update.php' )
 						);
-						$this->plugin_install_url = wp_nonce_url( $plugin_install_url, 'install-plugin_kirki' );
+						$this->plugin_install_url = wp_nonce_url( $this->plugin_install_url, 'install-plugin_kirki' );
 					}
 					return $this->plugin_install_url;
 				}
