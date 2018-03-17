@@ -4,21 +4,21 @@ var kirkiPostMessage = {
 	/**
 	 * The fields.
 	 *
-	 * @since 3.0.20
+	 * @since 3.0.26
 	 */
 	fields: {},
 
 	/**
 	 * A collection of methods for the <style> tags.
 	 *
-	 * @since 3.0.20
+	 * @since 3.0.26
 	 */
 	styleTag: {
 
 		/**
 		 * Add a <style> tag in <head> if it doesn't already exist.
 		 *
-		 * @since 3.0.20
+		 * @since 3.0.26
 		 * @param {string} id - The field-ID.
 		 * @returns {void}
 		 */
@@ -32,7 +32,7 @@ var kirkiPostMessage = {
 		 * Add a <style> tag in <head> if it doesn't already exist,
 		 * by calling the this.add method, and then add styles inside it.
 		 *
-		 * @since 3.0.20
+		 * @since 3.0.26
 		 * @param {string} id - The field-ID.
 		 * @param {string} styles - The styles to add.
 		 * @returns {void}
@@ -46,14 +46,14 @@ var kirkiPostMessage = {
 	/**
 	 * Common utilities.
 	 *
-	 * @since 3.0.21
+	 * @since 3.0.26
 	 */
 	util: {
 
 		/**
 		 * Processes the value and applies any replacements and/or additions.
 		 *
-		 * @since 3.0.21
+		 * @since 3.0.26
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
 		 * @param {string} controlType - The control-type.
@@ -89,7 +89,7 @@ var kirkiPostMessage = {
 		/**
 		 * Make sure urls are properly formatted for background-image properties.
 		 *
-		 * @since 3.0.21
+		 * @since 3.0.26
 		 * @param {string} url - The URL.
 		 * @returns {string}
 		 */
@@ -101,14 +101,14 @@ var kirkiPostMessage = {
 	/**
 	 * A collection of utilities for CSS generation.
 	 *
-	 * @since 3.0.21
+	 * @since 3.0.26
 	 */
 	css: {
 
 		/**
 		 * Generates the CSS from the output (js_vars) parameter.
 		 *
-		 * @since 3.0.21
+		 * @since 3.0.26
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
 		 * @param {string} controlType - The control-type.
@@ -191,14 +191,14 @@ var kirkiPostMessage = {
 	/**
 	 * A collection of utilities to change the HTML in the document.
 	 *
-	 * @since 3.0.21
+	 * @since 3.0.26
 	 */
 	html: {
 
 		/**
 		 * Modifies the HTML from the output (js_vars) parameter.
 		 *
-		 * @since 3.0.21
+		 * @since 3.0.26
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
 		 * @returns {string}
@@ -233,7 +233,7 @@ var kirkiPostMessage = {
 	/**
 	 * A collection of utilities to allow toggling a CSS class.
 	 *
-	 * @since 3.0.21
+	 * @since 3.0.26
 	 */
 	toggleClass: {
 
