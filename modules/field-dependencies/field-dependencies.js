@@ -139,8 +139,7 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	evaluate: function( value1, value2, operator ) {
-		var found  = false,
-			result = null;
+		var found = false;
 
 		if ( '===' === operator ) {
 			return value1 === value2;
@@ -199,7 +198,7 @@ var kirkiDependencies = {
 				return -1 < value1.indexOf( value2 );
 			}
 		}
-		return ( null === result ) ? true : result;
+		return value1 == value2;
 	}
 };
 
