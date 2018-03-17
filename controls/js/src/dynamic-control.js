@@ -203,16 +203,11 @@
 				numericValue,
 				unit;
 
-			if ( 'string' !== typeof value ) {
-				return true;
-			}
-
-			// 0 is always a valid value, and we can't check calc() values effectively.
-			if ( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) {
-				return true;
-			}
-
-			if ( 'auto' === value || 'inherit' === value || 'initial' === value ) {
+			if (
+				'string' !== typeof value ||
+				( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) ||
+				( 'auto' === value || 'inherit' === value || 'initial' === value )
+			) {
 				return true;
 			}
 
@@ -223,10 +218,7 @@
 			unit = value.replace( numericValue, '' );
 
 			// Check the validity of the numeric value and units.
-			if ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) ) {
-				return false;
-			}
-			return true;
+			return ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) );
 		}
 	} );
 }() );
