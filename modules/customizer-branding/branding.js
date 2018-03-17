@@ -11,4 +11,4 @@ jQuery( document ).ready( function() {
 		jQuery( 'div#customize-info > .customize-panel-description' ).replaceWith( '<div class="customize-panel-description">' + kirkiBranding.description + '</div>' );
 	}
 
-});
+} );

@@ -12,9 +12,9 @@ var kirkiDependencies = {
 		_.each( self.listenTo, function( slaves, master ) {
 			_.each( slaves, function( slave ) {
 				wp.customize( master, function( setting ) {
-				    var setupControl = function( control ) {
-				        var setActiveState,
-						    isDisplayed;
+					var setupControl = function( control ) {
+						var setActiveState,
+							isDisplayed;
 
 						isDisplayed = function() {
 							return self.showKirkiControl( wp.customize.control( slave ) );
@@ -26,11 +26,11 @@ var kirkiDependencies = {
 						setActiveState();
 						setting.bind( setActiveState );
 						control.active.validate = isDisplayed;
-				    };
-				    wp.customize.control( slave, setupControl );
+					};
+					wp.customize.control( slave, setupControl );
 				} );
-			});
-		});
+			} );
+		} );
 	},
 
 	/**
@@ -41,8 +41,17 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	showKirkiControl: function( control ) {
-		var self = this,
-		    show = true;
+		var self     = this,
+			show     = true,
+			isOption = (
+				control.params && // Check if control.params exists.
+				control.params.kirkiOptionType &&  // Check if option_type exists.
+				'option' === control.params.kirkiOptionType &&  // We're using options.
+				control.params.kirkiOptionName && // Check if option_name exists.
+				! _.isEmpty( control.params.kirkiOptionName ) // Check if option_name is not empty.
+			),
+			i;
+
 
 		if ( _.isString( control ) ) {
 			control = wp.customize.control( control );
@@ -54,39 +63,70 @@ var kirkiDependencies = {
 		}
 
 		// Loop control requirements.
-		_.each( control.params.required, function( requirement ) {
-			let requirementShow;
-
-			// Tweak for using active callbacks with serialized options instead of theme_mods.
-			if (
-				control.params && // Check if control.params exists.
-				control.params.kirkiOptionType &&  // Check if option_type exists.
-				'option' === control.params.kirkiOptionType &&  // We're using options.
-				control.params.kirkiOptionName && // Check if option_name exists.
-				! _.isEmpty( control.params.kirkiOptionName ) && // Check if option_name is not empty.
-				-1 === requirement.setting.indexOf( control.params.kirkiOptionName + '[' ) // Make sure we don't already have the option_name in there.
-			) {
-				requirement.setting = control.params.kirkiOptionName + '[' + requirement.setting + ']';
-			}
-
-			// Early exit if setting is not defined.
-			if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
-				show = true;
-				return;
-			}
-
-			requirementShow = self.evaluate( requirement.value, wp.customize.control( requirement.setting ).setting._value, requirement.operator );
-
-			self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
-			if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
-				self.listenTo[ requirement.setting ].push( control.id );
-			}
-
-			if ( ! requirementShow ) {
+		for ( i = 0; i < control.params.required.length; i++ ) {
+			if ( ! self.checkCondition( control.params.required[ i ], control, isOption, 'AND' ) ) {
 				show = false;
 			}
-		} );
+		}
 		return show;
+	},
+
+	/**
+	 * Check a condition.
+	 *
+	 * @param {Object} requirement - The requirement, inherited from showKirkiControl.
+	 * @param {Object} control - The control object.
+	 * @param {bool}   isOption - Whether it's an option or not.
+	 * @param {string} relation - Can be one of 'AND' or 'OR'.
+	 */
+	checkCondition: function( requirement, control, isOption, relation ) {
+		var self          = this,
+			childRelation = ( 'AND' === relation ) ? 'OR' : 'AND',
+			nestedItems,
+			i;
+
+		// Tweak for using active callbacks with serialized options instead of theme_mods.
+		if ( isOption && requirement.setting ) {
+
+			// Make sure we don't already have the option_name in there.
+			if ( -1 === requirement.setting.indexOf( control.params.kirkiOptionName + '[' ) ) {
+				requirement.setting = control.params.kirkiOptionName + '[' + requirement.setting + ']';
+			}
+		}
+
+		// If an array of other requirements nested, we need to process them separately.
+		if ( 'undefined' !== typeof requirement[0] && 'undefined' === typeof requirement.setting ) {
+			nestedItems = [];
+
+			// Loop sub-requirements.
+			for ( i = 0; i < requirement.length; i++ ) {
+				nestedItems.push( self.checkCondition( requirement[ i ], control, isOption, childRelation ) );
+			}
+
+			// OR relation. Check that true is part of the array.
+			if ( 'OR' === childRelation ) {
+				return ( -1 !== nestedItems.indexOf( true ) );
+			}
+
+			// AND relation. Check that false is not part of the array.
+			return ( -1 === nestedItems.indexOf( false ) );
+		}
+
+		// Early exit if setting is not defined.
+		if ( 'undefined' === typeof wp.customize.control( requirement.setting ) ) {
+			return true;
+		}
+
+		self.listenTo[ requirement.setting ] = self.listenTo[ requirement.setting ] || [];
+		if ( -1 === self.listenTo[ requirement.setting ].indexOf( control.id ) ) {
+			self.listenTo[ requirement.setting ].push( control.id );
+		}
+
+		return self.evaluate(
+			requirement.value,
+			wp.customize.control( requirement.setting ).setting._value,
+			requirement.operator
+		);
 	},
 
 	/**
@@ -99,26 +139,42 @@ var kirkiDependencies = {
 	 * @returns {bool}
 	 */
 	evaluate: function( value1, value2, operator ) {
-		var found  = false,
-		    result = null;
+		var found = false;
 
 		if ( '===' === operator ) {
-			result = value1 === value2;
-		} else if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
-			result = value1 == value2; // jshint ignore:line
-		} else if ( '!==' === operator ) {
-			result = value1 !== value2;
-		} else if ( '!=' === operator || 'not equal' === operator ) {
-			result = value1 != value2; // jshint ignore:line
-		} else if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
-			result = value2 >= value1;
-		} else if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
-			result = value2 <= value1;
-		} else if ( '>' === operator || 'greater' === operator ) {
-			result = value2 > value1;
-		} else if ( '<' === operator || 'smaller' === operator ) {
-			result = value2 < value1;
-		} else if ( 'contains' === operator || 'in' === operator ) {
+			return value1 === value2;
+		}
+		if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
+			return value1 == value2;
+		}
+		if ( '!==' === operator ) {
+			return value1 !== value2;
+		}
+		if ( '!=' === operator || 'not equal' === operator ) {
+			return value1 != value2;
+		}
+		if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
+			return value2 >= value1;
+		}
+		if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
+			return value2 <= value1;
+		}
+		if ( '>' === operator || 'greater' === operator ) {
+			return value2 > value1;
+		}
+		if ( '<' === operator || 'smaller' === operator ) {
+			return value2 < value1;
+		}
+		if ( 'contains' === operator || 'in' === operator ) {
+			if ( _.isArray( value1 ) && _.isArray( value2 ) ) {
+				_.each( value2, function( value ) {
+					if ( value1.includes( value ) ) {
+						found = true;
+						return false;
+					}
+                } );
+				return found;
+			}
 			if ( _.isArray( value2 ) ) {
 				_.each( value2, function( value ) {
 					if ( value == value1 ) { // jshint ignore:line
@@ -126,25 +182,26 @@ var kirkiDependencies = {
 					}
 				} );
 				return found;
-			} else if ( _.isObject( value2 ) ) {
+			}
+			if ( _.isObject( value2 ) ) {
 				if ( ! _.isUndefined( value2[ value1 ] ) ) {
 					found = true;
 				}
-
 				_.each( value2, function( subValue ) {
 					if ( value1 === subValue ) {
 						found = true;
 					}
 				} );
 				return found;
-			} else if ( _.isString( value2 ) ) {
-				return value1.indexOf( value2 ) > -1;
+			}
+			if ( _.isString( value2 ) ) {
+				if ( _.isString( value1 ) ) {
+					return ( -1 < value1.indexOf( value2 ) && -1 < value2.indexOf( value1 ) );
+				}
+				return -1 < value1.indexOf( value2 );
 			}
 		}
-		if ( null === result ) {
-			return true;
-		}
-		return result;
+		return value1 == value2;
 	}
 };
 

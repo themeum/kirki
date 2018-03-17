@@ -1,11 +1,11 @@
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control      = this,
-		    changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
+			changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
 			rangeInput   = control.container.find( 'input[type="range"]' ),
 			textInput    = control.container.find( 'input[type="text"]' ),
-		    value        = control.setting._value;
+			value        = control.setting._value;
 
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
@@ -36,9 +36,9 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// set slider and text input values to default
 		// and hen save.
 		control.container.find( '.slider-reset' ).on( 'click', function() {
-			textInput.attr( 'value', control.params['default'] );
-			rangeInput.attr( 'value', control.params['default'] );
+			textInput.attr( 'value', control.params.default );
+			rangeInput.attr( 'value', control.params.default );
 			control.setting.set( textInput.val() );
 		} );
 	}
-});
+} );

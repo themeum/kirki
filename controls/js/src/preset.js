@@ -1,10 +1,10 @@
 /* global kirkiSetSettingValue */
-wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    selectValue;
+			selectValue;
 
 		// Trigger a change
 		this.container.on( 'change', 'select', function() {
@@ -27,10 +27,10 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 					// We'll have to loop through them all and apply the changes needed to them.
 					jQuery.each( value.settings, function( presetSetting, presetSettingValue ) {
 						kirkiSetSettingValue.set( presetSetting, presetSettingValue );
-					});
+					} );
 				}
-			});
+			} );
 			wp.customize.previewer.refresh();
-		});
+		} );
 	}
-});
+} );

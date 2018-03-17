@@ -43,6 +43,15 @@ final class Kirki_Modules_Webfonts_Async {
 	protected $googlefonts;
 
 	/**
+	 * Fonts to load.
+	 *
+	 * @access protected
+	 * @since 3.0.26
+	 * @var array
+	 */
+	protected $fonts_to_load = array();
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -58,7 +67,9 @@ final class Kirki_Modules_Webfonts_Async {
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'webfont_loader' ) );
+		add_action( 'wp_head', array( $this, 'webfont_loader' ) );
+		add_action( 'wp_head', array( $this, 'webfont_loader_script' ), 30 );
+
 		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
 
 	}
@@ -82,6 +93,7 @@ final class Kirki_Modules_Webfonts_Async {
 			);
 		}
 		return $urls;
+
 	}
 
 	/**
@@ -95,14 +107,40 @@ final class Kirki_Modules_Webfonts_Async {
 		// Go through our fields and populate $this->fonts.
 		$this->webfonts->loop_fields( $this->config_id );
 
-		// Apply the 'kirki_enqueue_google_fonts' filter.
 		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();
 
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-webfonts', trailingslashit( Kirki::$url ) . 'modules/webfonts/kirki-webfonts.js', array( 'underscore' ), KIRKI_VERSION );
-		wp_localize_script( 'kirki-webfonts', 'kirkiWebfonts', $this->googlefonts->fonts );
+		foreach ( $this->googlefonts->fonts as $font => $weights ) {
+			foreach ( $weights as $key => $value ) {
+				if ( 'italic' === $value ) {
+					$weights[ $key ] = '400i';
+				} else {
+					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
+				}
+			}
+			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
+		}
+		if ( ! empty( $this->fonts_to_load ) ) {
+			Kirki_Modules_Webfont_Loader::$load = true;
+		}
+	}
+
+	/**
+	 * Webfont Loader script for Google Fonts.
+	 *
+	 * @access public
+	 * @since 3.0.0
+	 */
+	public function webfont_loader_script() {
+
+		if ( ! empty( $this->fonts_to_load ) ) {
+			wp_add_inline_script(
+				'webfont-loader',
+				'WebFont.load({google:{families:[\'' . join( '\', \'', $this->fonts_to_load ) . '\']}});',
+				'after'
+			);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * A collection of utility methods.
 	 *
@@ -74,7 +75,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFont: function( family ) {
 					var self = this,
-					    fonts = self.getFonts();
+						fonts = self.getFonts();
 
 					if ( 'undefined' === typeof fonts[ family ] ) {
 						return false;
@@ -92,9 +93,9 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFonts: function( order, category, number ) {
 					var self        = this,
-					    ordered     = {},
-					    categorized = {},
-					    plucked     = {};
+						ordered     = {},
+						categorized = {},
+						plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -144,7 +145,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getVariants: function( family ) {
 					var self = this,
-					    font = self.getFont( family );
+						font = self.getFont( family );
 
 					// Early exit if font was not found.
 					if ( ! font ) {
@@ -217,8 +218,8 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) { // jshint ignore: line
-					return ['regular', 'italic', '700', '700italic'];
+				getVariants: function() {
+					return [ 'regular', 'italic', '700', '700italic' ];
 				}
 			},
 

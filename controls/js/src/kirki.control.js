@@ -54,7 +54,7 @@ kirki = jQuery.extend( kirki, {
 					description: control.params.description,
 					'data-id': control.id,
 					inputAttrs: control.params.inputAttrs,
-					'default': control.params['default'],
+					'default': control.params.default,
 					value: kirki.setting.get( control.id ),
 					choices: control.params.choices
 				} ) );
@@ -114,7 +114,7 @@ kirki = jQuery.extend( kirki, {
 					mode: control.params.mode,
 					inputAttrs: control.params.inputAttrs,
 					'data-palette': control.params.palette,
-					'data-default-color': control.params['default'],
+					'data-default-color': control.params.default,
 					'data-alpha': control.params.choices.alpha,
 					value: kirki.setting.get( control.id )
 				} ) );
@@ -175,8 +175,8 @@ kirki = jQuery.extend( kirki, {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-				    },
-				    template;
+					},
+					template;
 
 				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
 					template = wp.template( 'kirki-input-textarea' );
@@ -185,6 +185,60 @@ kirki = jQuery.extend( kirki, {
 				}
 				template = wp.template( 'kirki-input-generic' );
 				control.container.html( template( args ) );
+			}
+		},
+
+		/**
+		 * The number control.
+		 *
+		 * @since 3.0.26
+		 */
+		'kirki-number': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.26
+			 * @param {Object} control - The customizer control object.
+			 * @returns {null}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.number.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.27
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - Any extra choices we may need.
+			 * @param {string}  control.id - The setting.
+			 * @returns {null}
+			 */
+			template: function( control ) {
+				var template = wp.template( 'kirki-input-number' );
+
+				control.container.html(
+					template( args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id )
+					} )
+				);
 			}
 		},
 
@@ -233,7 +287,7 @@ kirki = jQuery.extend( kirki, {
 					value: kirki.setting.get( control.id ),
 					multiple: control.params.multiple || 1,
 					placeholder: control.params.placeholder
-			    } ) );
+				} ) );
 			}
 		}
 	}

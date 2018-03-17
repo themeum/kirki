@@ -1,10 +1,10 @@
 /* global dimensionkirkiL10n */
-wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    value;
+			value;
 
 		// Notifications.
 		control.kirkiNotifications();
@@ -14,7 +14,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 			value = jQuery( this ).val();
 			control.setting.set( value );
-		});
+		} );
 	},
 
 	/**
@@ -42,4 +42,4 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			} );
 		} );
 	}
-});
+} );

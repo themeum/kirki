@@ -1,5 +1,5 @@
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -19,8 +19,8 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	initKirkiControl: function() {
 
 		var control = this,
-		    value   = control.setting._value,
-		    picker  = control.container.find( '.kirki-color-control' );
+			value   = control.setting._value,
+			picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
 		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
@@ -31,47 +31,47 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		}
 
 		// Color.
-		picker.wpColorPicker({
+		picker.wpColorPicker( {
 			change: function() {
 				setTimeout( function() {
 					control.saveValue( 'background-color', picker.val() );
 				}, 100 );
 			}
-		});
+		} );
 
 		// Background-Repeat.
 		control.container.on( 'change', '.background-repeat select', function() {
 			control.saveValue( 'background-repeat', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Size.
 		control.container.on( 'change click', '.background-size input', function() {
 			control.saveValue( 'background-size', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Position.
 		control.container.on( 'change', '.background-position select', function() {
 			control.saveValue( 'background-position', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Attachment.
 		control.container.on( 'change click', '.background-attachment input', function() {
 			control.saveValue( 'background-attachment', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Image.
 		control.container.on( 'click', '.background-image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 				// This will return the selected image from the Media Uploader, the result is an object.
 				var uploadedImage = image.state().get( 'selection' ).first(),
-				    previewImage   = uploadedImage.toJSON().sizes.full.url,
-				    imageUrl,
-				    imageID,
-				    imageWidth,
-				    imageHeight,
-				    preview,
-				    removeButton;
+					previewImage   = uploadedImage.toJSON().sizes.full.url,
+					imageUrl,
+					imageID,
+					imageWidth,
+					imageHeight,
+					preview,
+					removeButton;
 
 				if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
 					previewImage = uploadedImage.toJSON().sizes.medium.url;
@@ -99,15 +99,15 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 				if ( removeButton.length ) {
 					removeButton.show();
 				}
-		    });
+			} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.background-image-upload-remove-button', function( e ) {
 
 			var preview,
-			    removeButton;
+				removeButton;
 
 			e.preventDefault();
 
@@ -128,7 +128,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			if ( removeButton.length ) {
 				removeButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -137,12 +137,12 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	saveValue: function( property, value ) {
 
 		var control = this,
-		    input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
-		    val     = control.setting._value;
+			input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
+			val     = control.setting._value;
 
 		val[ property ] = value;
 
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
+} );

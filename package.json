@@ -22,13 +22,14 @@
   },
   "devDependencies": {
     "grunt": "*",
-    "grunt-contrib-sass": "*",
+    "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
+    "grunt-contrib-sass": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-curl": "*",
-    "grunt-wp-readme-to-markdown": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-jscs": "*"
+    "grunt-http": "*",
+    "grunt-jscs": "*",
+    "grunt-wp-readme-to-markdown": "*"
   }
 }

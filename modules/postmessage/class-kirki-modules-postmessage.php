@@ -71,6 +71,5 @@ class Kirki_Modules_PostMessage {
 			}
 		}
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
-
 	}
 }

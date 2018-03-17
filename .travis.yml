@@ -8,7 +8,6 @@ notifications:
 
 php:
   - 7.0
-  - 5.6
 
 before_install:
   - pip install --user codecov
@@ -20,24 +19,19 @@ before_script:
   - composer install --dev
   # After CodeSniffer install you should refresh your path.
   - phpenv rehash
-  # Install JSCS: JavaScript Code Style checker.
-  # @link http://jscs.info/
-  - npm install -g jscs
-  # Install JSHint, a JavaScript Code Quality Tool.
-  # @link http://jshint.com/docs/
-  - npm install -g jshint
+  # Install ESLint.
+  - npm install -g eslint
+  - npm install -g eslint-config-wordpress
 
 script:
   - mkdir -p build/logs
-  # - phpunit # --coverage-clover=coverage.clover
+  - phpunit --coverage-clover=coverage.clover
   # Search for PHP syntax errors.
   # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
-  # - ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
-  # Run the plugin through JSHint.
-  - jshint ./controls/js/src/*.js
-  - jshint ./modules/**/*.js
-  # Run the plugin through JavaScript Code Style checker.
-  - jscs ./controls/js/src/*.js
+  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
+  # Run the plugin through ESLint.
+  - eslint ./controls/js/src/*.js
+  - eslint ./modules/**/*.js
   # WordPress Coding Standards.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link http://pear.php.net/package/PHP_CodeSniffer/
@@ -53,11 +47,13 @@ script:
   - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
 
 after_script:
-  # - php vendor/bin/coveralls
+  - php vendor/bin/coveralls
   - wget https://scrutinizer-ci.com/ocular.phar
-  # - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
+  - php vendor/bin/codacycoverage clover ./build/logs/clover.xml
 
 after_success:
-  # - coveralls
-  # - codecov
-  # - bash <(curl -s https://codecov.io/bash)
+  - travis_retry php vendor/bin/php-coveralls
+  - coveralls
+  - codecov
+  - bash <(curl -s https://codecov.io/bash)
