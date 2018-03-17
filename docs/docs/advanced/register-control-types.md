@@ -16,7 +16,7 @@ add_action( 'customize_register', function( $wp_customize ) {
 	/**
 	 * The custom control class
 	 */
-	class Kirki_Controls_Notice_Control extends WP_Customize_Control {
+	class Kirki_Controls_Notice_Control extends Kirki_Control_Base {
 		public $type = 'notice';
 		public function render_content() { ?>
 			THE CONTROL CONTENT HERE
