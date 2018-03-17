@@ -172,7 +172,7 @@ var kirkiPostMessage = {
 						if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
 							styles += output.element + '{' + output.property + '-' + key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
 						} else {
-							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ); +';';
+							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
 						}
 					} );
 					styles += '}';
