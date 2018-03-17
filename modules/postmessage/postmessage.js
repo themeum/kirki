@@ -112,8 +112,8 @@ var kirkiPostMessage = {
 		 */
 		fromOutput: function( output, value, controlType ) {
 			var styles      = '',
-			    kirkiParent = window.parent.kirki,
-			    googleFont  = '';
+				kirkiParent = window.parent.kirki,
+				googleFont  = '';
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
@@ -242,13 +242,13 @@ var kirkiPostMessage = {
 		 * @returns {string}
 		 */
 		fromOutput: function( output, value ) {
-			if ( 'undefined' === typeof output['class'] || 'undefined' === typeof output.value ) {
+			if ( 'undefined' === typeof output.class || 'undefined' === typeof output.value ) {
 				return;
 			}
-			if ( value === output.value && ! jQuery( output.element ).hasClass( output['class'] ) ) {
-				jQuery( output.element ).addClass( output['class'] );
+			if ( value === output.value && ! jQuery( output.element ).hasClass( output.class ) ) {
+				jQuery( output.element ).addClass( output.class );
 			} else {
-				jQuery( output.element ).removeClass( output['class'] );
+				jQuery( output.element ).removeClass( output.class );
 			}
 		}
 	}
@@ -261,13 +261,13 @@ jQuery( document ).ready( function() {
 			value.bind( function( newVal ) {
 				var styles = '';
 				_.each( field.js_vars, function( output ) {
-					if ( ! output['function'] || 'undefined' === typeof kirkiPostMessage[ output['function'] ] ) {
-						output['function'] = 'css';
+					if ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) {
+						output.function = 'css';
 					}
-					if ( 'css' === output['function'] ) {
+					if ( 'css' === output.function ) {
 						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
 					} else {
-						kirkiPostMessage[ output['function'] ].fromOutput( output, newVal, field.type );
+						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );
 					}
 				} );
 				kirkiPostMessage.styleTag.addData( field.settings, styles );
