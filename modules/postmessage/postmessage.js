@@ -60,9 +60,13 @@ var kirkiPostMessage = {
 		 * @returns {string}
 		 */
 		processValue: function( output, value ) {
-			var settings = window.parent.wp.customize.get();
+			var self     = this,
+				settings = window.parent.wp.customize.get();
 
 			if ( 'string' !== typeof value ) {
+				_.each( value, function( subValue, key ) {
+					value[ key ] = self.processValue( output, subValue );
+				} );
 				return value;
 			}
 			output = _.defaults( output, {
@@ -73,13 +77,13 @@ var kirkiPostMessage = {
 				pattern_replace: {}
 			} );
 
-			value = output.value_pattern.replace( /$/g, value );
-			_.each( output.pattern_replace, function( placeholder, id ) {
+			value = output.value_pattern.replace( new RegExp( '\\$', 'g' ), value );
+			_.each( output.pattern_replace, function( id, placeholder ) {
 				if ( ! _.isUndefined( settings[ id ] ) ) {
 					value = value.replace( placeholder, settings[ id ] );
 				}
 			} );
-			return output.prefix + output.units + value + output.suffix;
+			return output.prefix + value + output.units + output.suffix;
 		},
 
 		/**
