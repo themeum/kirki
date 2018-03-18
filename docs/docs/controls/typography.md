@@ -127,7 +127,7 @@ If you want to use custom definitions you can also do that:
 		'google'   => array( 'popularity', 50 ),
 		'standard' => array(
 			'Georgia,Times,"Times New Roman",serif',
-			'Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
+			'Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 		),
 	),
 ),
@@ -174,7 +174,7 @@ Kirki::add_field( 'theme_config_id', array(
 		'letter-spacing' => '0',
 		'color'          => '#333333',
 		'text-transform' => 'none',
-		'text-align'     => 'left'
+		'text-align'     => 'left',
 	),
 	'priority'    => 10,
 	'output'      => array(
