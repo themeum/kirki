@@ -346,6 +346,10 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 							<# } else if ( 'color' === field.type ) { #>
 
+								<label>
+									<# if ( field.label ) { #><span class="customize-control-title">{{{ field.label }}}</span><# } #>
+									<# if ( field.description ) { #><span class="description customize-control-description">{{{ field.description }}}</span><# } #>
+								</label>
 								<# var defaultValue = '';
 								if ( field.default ) {
 									if ( -1 === field.default.indexOf( 'rgba' ) ) {
@@ -355,12 +359,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
 									}
 								} #>
-								<label>
-									<# if ( field.label ) { #><span class="customize-control-title">{{{ field.label }}}</span><# } #>
-									<# if ( field.description ) { #><span class="description customize-control-description">{{{ field.description }}}</span><# } #>
-									<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
-
-								</label>
+								<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							<# } else if ( 'textarea' === field.type ) { #>
 
