@@ -348,8 +348,12 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 								<# var defaultValue = '';
 								if ( field.default ) {
-									defaultValue = ( '#' !== field.default.substring( 0, 1 ) ) ? '#' + field.default : field.default;
-									defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+									if ( -1 === field.default.indexOf( 'rgba' ) ) {
+										defaultValue = ( '#' !== field.default.substring( 0, 1 ) ) ? '#' + field.default : field.default;
+										defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+									} else {
+										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
+									}
 								} #>
 								<label>
 									<# if ( field.label ) { #><span class="customize-control-title">{{{ field.label }}}</span><# } #>
