@@ -255,7 +255,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 				<div class="repeater-row-content">
 					<# _.each( data, function( field, i ) { #>
 
-						<div class="repeater-field repeater-field-{{{ field.type }}}">
+						<div class="repeater-field repeater-field-{{{ field.type }}} repeater-field-{{ field.id }}">
 
 							<# if ( 'text' === field.type || 'url' === field.type || 'link' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type || 'number' === field.type ) { #>
 								<# var fieldExtras = ''; #>
