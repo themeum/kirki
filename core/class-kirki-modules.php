@@ -70,6 +70,7 @@ class Kirki_Modules {
 				'custom-sections'    => 'Kirki_Modules_Custom_Sections',
 				'webfonts'           => 'Kirki_Modules_Webfonts',
 				'webfont-loader'     => 'Kirki_Modules_Webfont_Loader',
+				'preset'             => 'Kirki_Modules_Preset',
 			)
 		);
 
