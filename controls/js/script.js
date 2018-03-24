@@ -3381,7 +3381,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		data = jQuery.extend( {}, controlFontFamilies, {
 			default: {
 				text: kirkiL10n.defaultCSSValues,
-				children: [ { id: '', text: '' }, { id: 'inherit', text: 'inherit' } ]
+				children: [
+					{ id: '', text: kirkiL10n.defaultBrowserFamily },
+					{ id: 'inherit', text: 'initial' },
+					{ id: 'inherit', text: 'inherit' }
+				]
 			},
 			standard: {
 				text: kirkiL10n.standardFonts,
