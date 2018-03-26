@@ -33,6 +33,6 @@ class Kirki_Field_Dimension extends Kirki_Field {
 	 * @return string
 	 */
 	public function sanitize( $value ) {
-		return Kirki_Sanitize_Values::css_dimension( $value );
+		return sanitize_text_field( $value );
 	}
 }
