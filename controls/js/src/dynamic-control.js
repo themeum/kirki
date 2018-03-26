@@ -195,30 +195,6 @@
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
 			} );
-		},
-
-		kirkiValidateCSSValue: function( value ) {
-
-			var validUnits = [ 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
-				numericValue,
-				unit;
-
-			if (
-				'string' !== typeof value ||
-				( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) ||
-				( 'auto' === value || 'inherit' === value || 'initial' === value )
-			) {
-				return true;
-			}
-
-			// Get the numeric value.
-			numericValue = parseFloat( value );
-
-			// Get the unit
-			unit = value.replace( numericValue, '' );
-
-			// Check the validity of the numeric value and units.
-			return ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) );
 		}
 	} );
 }() );

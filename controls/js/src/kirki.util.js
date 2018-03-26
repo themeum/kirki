@@ -251,6 +251,39 @@ kirki = jQuery.extend( kirki, {
 				}
 				return false;
 			}
+		},
+
+		validate: {
+			cssValue: function( value ) {
+
+				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+					numericValue,
+					unit;
+
+				// Whitelist values.
+				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
+					return true;
+				}
+
+				// Skip checking if calc().
+				if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+					return true;
+				}
+
+				// Get the numeric value.
+				numericValue = parseFloat( value );
+
+				// Get the unit
+				unit = value.replace( numericValue, '' );
+
+				// Allow unitless.
+				if ( ! value ) {
+					return;
+				}
+
+				// Check the validity of the numeric value and units.
+				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
+			}
 		}
 	}
 } );

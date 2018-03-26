@@ -1261,6 +1261,39 @@ kirki = jQuery.extend( kirki, {
 				}
 				return false;
 			}
+		},
+
+		validate: {
+			cssValue: function( value ) {
+
+				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+					numericValue,
+					unit;
+
+				// Whitelist values.
+				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
+					return true;
+				}
+
+				// Skip checking if calc().
+				if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+					return true;
+				}
+
+				// Get the numeric value.
+				numericValue = parseFloat( value );
+
+				// Get the unit
+				unit = value.replace( numericValue, '' );
+
+				// Allow unitless.
+				if ( ! value ) {
+					return;
+				}
+
+				// Check the validity of the numeric value and units.
+				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
+			}
 		}
 	}
 } );
@@ -1461,30 +1494,6 @@ kirki = jQuery.extend( kirki, {
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
 			} );
-		},
-
-		kirkiValidateCSSValue: function( value ) {
-
-			var validUnits = [ 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
-				numericValue,
-				unit;
-
-			if (
-				'string' !== typeof value ||
-				( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) ||
-				( 'auto' === value || 'inherit' === value || 'initial' === value )
-			) {
-				return true;
-			}
-
-			// Get the numeric value.
-			numericValue = parseFloat( value );
-
-			// Get the unit
-			unit = value.replace( numericValue, '' );
-
-			// Check the validity of the numeric value and units.
-			return ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) );
 		}
 	} );
 }() );
@@ -1690,7 +1699,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			setting.bind( function( value ) {
 				var code = 'long_title';
 
-				if ( false === control.kirkiValidateCSSValue( value ) ) {
+				if ( false === kirki.util.validate.cssValue( value ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{
@@ -1777,7 +1786,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 				setting.notifications.remove( code );
 
 				_.each( value, function( val, direction ) {
-					if ( false === control.kirkiValidateCSSValue( val ) ) {
+					if ( false === kirki.util.validate.cssValue( val ) ) {
 						subs[ direction ] = val;
 					} else {
 						delete subs[ direction ];

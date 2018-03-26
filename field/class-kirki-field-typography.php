@@ -172,7 +172,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 				case 'letter-spacing':
 				case 'word-spacing':
 				case 'line-height':
-					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : Kirki_Sanitize_Values::css_dimension( $val );
+					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
 					break;
 				case 'text-align':
 					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {

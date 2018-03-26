@@ -28,7 +28,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			setting.bind( function( value ) {
 				var code = 'long_title';
 
-				if ( false === control.kirkiValidateCSSValue( value ) ) {
+				if ( false === kirki.util.validate.cssValue( value ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{
