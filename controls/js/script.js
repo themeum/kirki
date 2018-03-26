@@ -1266,7 +1266,7 @@ kirki = jQuery.extend( kirki, {
 		validate: {
 			cssValue: function( value ) {
 
-				var validUnits = [ 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
 					numericValue,
 					unit;
 
