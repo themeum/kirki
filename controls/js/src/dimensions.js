@@ -70,7 +70,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 				setting.notifications.remove( code );
 
 				_.each( value, function( val, direction ) {
-					if ( false === control.kirkiValidateCSSValue( val ) ) {
+					if ( false === kirki.util.validate.cssValue( val ) ) {
 						subs[ direction ] = val;
 					} else {
 						delete subs[ direction ];
