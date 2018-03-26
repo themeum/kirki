@@ -56,7 +56,7 @@ class Kirki_Control_Dimension extends Kirki_Control_Base {
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="input-wrapper">
-				<# var val = ( ! _.isUndefined( data.value ) ) ? data.value.replace( '%%', '%' ) : ''; #>
+				<# var val = ( data.value && _.isString( data.value ) ) ? data.value.replace( '%%', '%' ) : ''; #>
 				<input {{{ data.inputAttrs }}} type="text" value="{{ val }}"/>
 			</div>
 		</label>
