@@ -1,7 +1,7 @@
 /* jshint -W079 */
 /* jshint unused:false */
 if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
-	var kirkiSetSettingValue = { // jscs:ignore requireVarDeclFirst
+	var kirkiSetSettingValue = { // eslint-disable-line vars-on-top
 
 		/**
 		 * Set the value of the control.
@@ -18,8 +18,8 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 			 * and determine if we need to do any further work based on those.
 			 */
 			var $this = this,
-			    subControl = wp.customize.settings.controls[ setting ],
-			    valueJSON;
+				subControl = wp.customize.settings.controls[ setting ],
+				valueJSON;
 
 			// If the control doesn't exist then return.
 			if ( _.isUndefined( subControl ) ) {
@@ -37,14 +37,14 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value['background-color'] );
 					}
 					$this.findElement( setting, '.placeholder, .thumbnail' ).removeClass().addClass( 'placeholder' ).html( 'No file selected' );
-					_.each( ['background-repeat', 'background-position'], function( subVal ) {
+					_.each( [ 'background-repeat', 'background-position' ], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
 							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each( ['background-size', 'background-attachment'], function( subVal ) {
+					} );
+					_.each( [ 'background-size', 'background-attachment' ], function( subVal ) {
 						jQuery( $this.findElement( setting, '.' + subVal + ' input[value="' + value + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					valueJSON = JSON.stringify( value ).replace( /'/g, '&#39' );
 					jQuery( $this.findElement( setting, '.background-hidden-value' ).attr( 'value', valueJSON ) ).trigger( 'change' );
 					break;
@@ -86,16 +86,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-multicheck':
 					$this.findElement( setting, 'input' ).each( function() {
 						jQuery( this ).prop( 'checked', false );
-					});
+					} );
 					_.each( value, function( subValue, i ) {
 						jQuery( $this.findElement( setting, 'input[value="' + value[ i ] + '"]' ) ).prop( 'checked', true );
-					});
+					} );
 					break;
 
 				case 'kirki-multicolor':
 					_.each( value, function( subVal, index ) {
 						$this.setColorPicker( $this.findElement( setting, '.multicolor-index-' + index ), subVal );
-					});
+					} );
 					break;
 
 				case 'kirki-radio-buttonset':
@@ -108,16 +108,16 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 					break;
 
 				case 'kirki-typography':
-					_.each( ['font-family', 'variant'], function( subVal ) {
+					_.each( [ 'font-family', 'variant' ], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
 							$this.setSelectWoo( $this.findElement( setting, '.' + subVal + ' select' ), value[ subVal ] );
 						}
-					});
-					_.each( ['font-size', 'line-height', 'letter-spacing', 'word-spacing'], function( subVal ) {
+					} );
+					_.each( [ 'font-size', 'line-height', 'letter-spacing', 'word-spacing' ], function( subVal ) {
 						if ( ! _.isUndefined( value[ subVal ] ) ) {
 							jQuery( $this.findElement( setting, '.' + subVal + ' input' ) ).prop( 'value', value[ subVal ] );
 						}
-					});
+					} );
 
 					if ( ! _.isUndefined( value.color ) ) {
 						$this.setColorPicker( $this.findElement( setting, '.kirki-color-control' ), value.color );
@@ -129,7 +129,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 				case 'kirki-dimensions':
 					_.each( value, function( subValue, id ) {
 						jQuery( $this.findElement( setting, '.' + id + ' input' ) ).prop( 'value', subValue );
-					});
+					} );
 					break;
 
 				case 'kirki-repeater':
@@ -202,7 +202,7 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 */
 		setValue: function( setting, value, timeout ) {
 			timeout = ( _.isUndefined( timeout ) ) ? 100 : parseInt( timeout, 10 );
-			wp.customize.instance( setting ).set({});
+			wp.customize.instance( setting ).set( {} );
 			setTimeout( function() {
 				wp.customize.instance( setting ).set( value );
 			}, timeout );
@@ -295,7 +295,7 @@ kirki = jQuery.extend( kirki, {
 					description: control.params.description,
 					'data-id': control.id,
 					inputAttrs: control.params.inputAttrs,
-					'default': control.params['default'],
+					'default': control.params.default,
 					value: kirki.setting.get( control.id ),
 					choices: control.params.choices
 				} ) );
@@ -355,7 +355,7 @@ kirki = jQuery.extend( kirki, {
 					mode: control.params.mode,
 					inputAttrs: control.params.inputAttrs,
 					'data-palette': control.params.palette,
-					'data-default-color': control.params['default'],
+					'data-default-color': control.params.default,
 					'data-alpha': control.params.choices.alpha,
 					value: kirki.setting.get( control.id )
 				} ) );
@@ -416,8 +416,8 @@ kirki = jQuery.extend( kirki, {
 						inputAttrs: control.params.inputAttrs,
 						choices: control.params.choices,
 						value: kirki.setting.get( control.id )
-				    },
-				    template;
+					},
+					template;
 
 				if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.element ) && 'textarea' === control.params.choices.element ) {
 					template = wp.template( 'kirki-input-textarea' );
@@ -426,6 +426,60 @@ kirki = jQuery.extend( kirki, {
 				}
 				template = wp.template( 'kirki-input-generic' );
 				control.container.html( template( args ) );
+			}
+		},
+
+		/**
+		 * The number control.
+		 *
+		 * @since 3.0.26
+		 */
+		'kirki-number': {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.26
+			 * @param {Object} control - The customizer control object.
+			 * @returns {null}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				// Init the control.
+				kirki.input.number.init( control );
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.27
+			 * @param {Object}  control - The customizer control object.
+			 * @param {Object}  control.params - The control parameters.
+			 * @param {string}  control.params.label - The control label.
+			 * @param {string}  control.params.description - The control description.
+			 * @param {string}  control.params.inputAttrs - extra input arguments.
+			 * @param {string}  control.params.default - The default value.
+			 * @param {Object}  control.params.choices - Any extra choices we may need.
+			 * @param {string}  control.id - The setting.
+			 * @returns {null}
+			 */
+			template: function( control ) {
+				var template = wp.template( 'kirki-input-number' );
+
+				control.container.html(
+					template( args = {
+						label: control.params.label,
+						description: control.params.description,
+						'data-id': control.id,
+						inputAttrs: control.params.inputAttrs,
+						choices: control.params.choices,
+						value: kirki.setting.get( control.id )
+					} )
+				);
 			}
 		},
 
@@ -474,7 +528,7 @@ kirki = jQuery.extend( kirki, {
 					value: kirki.setting.get( control.id ),
 					multiple: control.params.multiple || 1,
 					placeholder: control.params.placeholder
-			    } ) );
+				} ) );
 			}
 		}
 	}
@@ -482,6 +536,7 @@ kirki = jQuery.extend( kirki, {
 /* global kirkiL10n */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * An object containing definitions for input fields.
 	 *
@@ -510,7 +565,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -535,7 +590,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			init: function( control ) {
 				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
-				    clear;
+					clear;
 
 				control.choices = control.choices || {};
 				if ( _.isEmpty( control.choices ) && control.params.choices ) {
@@ -553,12 +608,12 @@ kirki = jQuery.extend( kirki, {
 					if ( clear.length ) {
 						clear.click( function() {
 							kirki.setting.set( control.id, '' );
-						});
+						} );
 					}
 				}, 200 );
 
 				// Saves our settings to the WP API
-				picker.wpColorPicker({
+				picker.wpColorPicker( {
 					change: function() {
 
 						// Small hack: the picker needs a small delay
@@ -566,7 +621,7 @@ kirki = jQuery.extend( kirki, {
 							kirki.setting.set( control.id, picker.val() );
 						}, 20 );
 					}
-				});
+				} );
 			}
 		},
 
@@ -591,7 +646,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				input.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -616,7 +671,7 @@ kirki = jQuery.extend( kirki, {
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
 					kirki.setting.set( control.id, jQuery( this ).val() );
-				});
+				} );
 			}
 		},
 
@@ -632,13 +687,13 @@ kirki = jQuery.extend( kirki, {
 			 */
 			init: function( control ) {
 				var element  = jQuery( 'select[data-id="' + control.id + '"]' ),
-				    multiple = parseInt( element.data( 'multiple' ), 10 ),
-				    selectValue,
-				    selectWooOptions = {
+					multiple = parseInt( element.data( 'multiple' ), 10 ),
+					selectValue,
+					selectWooOptions = {
 						escapeMarkup: function( markup ) {
 							return markup;
 						}
-				    };
+					};
 					if ( control.params.placeholder ) {
 						selectWooOptions.placeholder = control.params.placeholder;
 						selectWooOptions.allowClear = true;
@@ -651,8 +706,81 @@ kirki = jQuery.extend( kirki, {
 					selectValue = jQuery( this ).val();
 					selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
 					kirki.setting.set( control.id, selectValue );
-				});
+				} );
 			}
+		},
+
+		/**
+		 * Number fields.
+		 *
+		 * @since 3.0.26
+		 */
+		number: {
+
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The control object.
+			 * @param {Object} control.id - The setting.
+			 * @returns {null}
+			 */
+			init: function( control ) {
+
+				var element = jQuery( 'input[data-id="' + control.id + '"]' ),
+					value   = control.setting._value,
+					up,
+					down;
+
+				// Make sure we use default values if none are define for some arguments.
+				control.params.choices = _.defaults( control.params.choices, {
+					min: 0,
+					max: 100,
+					step: 1
+				} );
+
+				// Make sure we have a valid value.
+				if ( isNaN( value ) || '' === value ) {
+					value = ( 0 > control.params.choices.min && 0 < control.params.choices.max ) ? 0 : control.params.choices.min;
+				}
+				value = parseFloat( value );
+
+				// If step is 'any', set to 0.001.
+				control.params.choices.step = ( 'any' === control.params.choices.step ) ? 0.001 : control.params.choices.step;
+
+				// Make sure choices are properly formtted as numbers.
+				control.params.choices.min  = parseFloat( control.params.choices.min );
+				control.params.choices.max  = parseFloat( control.params.choices.max );
+				control.params.choices.step = parseFloat( control.params.choices.step );
+
+				up   = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .plus' );
+				down = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .minus' );
+
+				up.click( function() {
+					var oldVal = parseFloat( element.val() ),
+						newVal;
+
+					newVal = ( oldVal >= control.params.choices.max ) ? oldVal : oldVal + control.params.choices.step;
+
+					element.val( newVal );
+					element.trigger( 'change' );
+				} );
+
+				down.click( function() {
+					var oldVal = parseFloat( element.val() ),
+						newVal;
+
+					newVal = ( oldVal <= control.params.choices.min ) ? oldVal : oldVal - control.params.choices.step;
+
+					element.val( newVal );
+					element.trigger( 'change' );
+				} );
+
+				element.on( 'change keyup paste click', function() {
+					kirki.setting.set( control.id, jQuery( this ).val() );
+				} );
+			}
+
 		},
 
 		image: {
@@ -666,8 +794,8 @@ kirki = jQuery.extend( kirki, {
 			 */
 			getTemplate: function( data ) {
 				var html   = '',
-				    saveAs = 'url',
-				    url;
+					saveAs = 'url',
+					url;
 
 				data = _.defaults( data, {
 					label: '',
@@ -702,12 +830,12 @@ kirki = jQuery.extend( kirki, {
 				}
 				html += '<div class="actions">';
 				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirkiL10n.remove + '</button>';
-				if ( data['default'] && '' !== data['default'] ) {
+				if ( data.default && '' !== data.default ) {
 					html += '<button type="button" class="button image-default-button"';
-					if ( data['default'] === data.value || ( ! _.isUndefined( data.value.url ) && data['default'] === data.value.url ) ) {
+					if ( data.default === data.value || ( ! _.isUndefined( data.value.url ) && data.default === data.value.url ) ) {
 						html += ' style="display:none;"';
 					}
-					html += '>' + kirkiL10n['default'] + '</button>';
+					html += '>' + kirkiL10n.default + '</button>';
 				}
 				html += '<button type="button" class="button image-upload-button">' + kirkiL10n.selectFile + '</button>';
 				html += '</div></div>';
@@ -722,13 +850,14 @@ kirki = jQuery.extend( kirki, {
 			 * @param {Object} control - The control object.
 			 * @returns {null}
 			 */
-			init: function( control ) { // jshint ignore:line
+			init: function( control ) {
 			}
 		}
 	}
 } );
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * An object containing definitions for settings.
 	 *
@@ -749,9 +878,9 @@ kirki = jQuery.extend( kirki, {
 		 */
 		get: function( setting ) {
 			var parts        = setting.split( '[' ),
-			    foundSetting = '',
-			    foundInStep  = 0,
-			    currentVal   = '';
+				foundSetting = '',
+				foundInStep  = 0,
+				currentVal   = '';
 
 			_.each( parts, function( part, i ) {
 				part = part.replace( ']', '' );
@@ -772,7 +901,7 @@ kirki = jQuery.extend( kirki, {
 						currentVal = currentVal[ part ];
 					}
 				}
-			});
+			} );
 
 			return currentVal;
 		},
@@ -797,13 +926,13 @@ kirki = jQuery.extend( kirki, {
 		 */
 		set: function( element, value, key ) {
 			var setting,
-			    parts,
-			    currentNode   = '',
-			    foundNode     = '',
-			    subSettingObj = {},
-			    currentVal,
-			    subSetting,
-			    subSettingParts;
+				parts,
+				currentNode   = '',
+				foundNode     = '',
+				subSettingObj = {},
+				currentVal,
+				subSetting,
+				subSettingParts;
 
 			// Get the setting from the element.
 			setting = element;
@@ -820,7 +949,7 @@ kirki = jQuery.extend( kirki, {
 				return;
 			}
 
-			parts = setting.split( '[' ),
+			parts = setting.split( '[' );
 
 			// Find the setting we're using in the control using the customizer API.
 			_.each( parts, function( part, i ) {
@@ -882,6 +1011,7 @@ kirki = jQuery.extend( kirki, {
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * A collection of utility methods.
 	 *
@@ -955,7 +1085,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFont: function( family ) {
 					var self = this,
-					    fonts = self.getFonts();
+						fonts = self.getFonts();
 
 					if ( 'undefined' === typeof fonts[ family ] ) {
 						return false;
@@ -973,9 +1103,9 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFonts: function( order, category, number ) {
 					var self        = this,
-					    ordered     = {},
-					    categorized = {},
-					    plucked     = {};
+						ordered     = {},
+						categorized = {},
+						plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -1025,7 +1155,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getVariants: function( family ) {
 					var self = this,
-					    font = self.getFont( family );
+						font = self.getFont( family );
 
 					// Early exit if font was not found.
 					if ( ! font ) {
@@ -1098,8 +1228,8 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) { // jshint ignore: line
-					return ['regular', 'italic', '700', '700italic'];
+				getVariants: function() {
+					return [ 'regular', 'italic', '700', '700italic' ];
 				}
 			},
 
@@ -1131,6 +1261,39 @@ kirki = jQuery.extend( kirki, {
 				}
 				return false;
 			}
+		},
+
+		validate: {
+			cssValue: function( value ) {
+
+				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+					numericValue,
+					unit;
+
+				// Whitelist values.
+				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
+					return true;
+				}
+
+				// Skip checking if calc().
+				if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+					return true;
+				}
+
+				// Get the numeric value.
+				numericValue = parseFloat( value );
+
+				// Get the unit
+				unit = value.replace( numericValue, '' );
+
+				// Allow unitless.
+				if ( ! value ) {
+					return;
+				}
+
+				// Check the validity of the numeric value and units.
+				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
+			}
 		}
 	}
 } );
@@ -1153,11 +1316,11 @@ kirki = jQuery.extend( kirki, {
 	 * @augments wp.customize.Control
 	 * @augments wp.customize.Class
 	 */
-	wp.customize.kirkiDynamicControl = wp.customize.Control.extend({
+	wp.customize.kirkiDynamicControl = wp.customize.Control.extend( {
 
 		initialize: function( id, options ) {
 			var control = this,
-			    args    = options || {};
+				args    = options || {};
 
 			args.params = args.params || {};
 			if ( ! args.params.type ) {
@@ -1184,7 +1347,7 @@ kirki = jQuery.extend( kirki, {
 		 */
 		_setUpSettingRootLinks: function() {
 			var control = this,
-			    nodes   = control.container.find( '[data-customize-setting-link]' );
+				nodes   = control.container.find( '[data-customize-setting-link]' );
 
 			nodes.each( function() {
 				var node = jQuery( this );
@@ -1206,7 +1369,7 @@ kirki = jQuery.extend( kirki, {
 		 */
 		_setUpSettingPropertyLinks: function() {
 			var control = this,
-			    nodes;
+				nodes;
 
 			if ( ! control.setting ) {
 				return;
@@ -1216,8 +1379,8 @@ kirki = jQuery.extend( kirki, {
 
 			nodes.each( function() {
 				var node = jQuery( this ),
-				    element,
-				    propertyName = node.data( 'customizeSettingPropertyLink' );
+					element,
+					propertyName = node.data( 'customizeSettingPropertyLink' );
 
 				element = new wp.customize.Element( node );
 				control.propertyElements.push( element );
@@ -1267,7 +1430,7 @@ kirki = jQuery.extend( kirki, {
 		 */
 		embed: function() {
 			var control   = this,
-			    sectionId = control.section();
+				sectionId = control.section();
 
 			if ( ! sectionId ) {
 				return;
@@ -1331,42 +1494,14 @@ kirki = jQuery.extend( kirki, {
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
 			} );
-		},
-
-		kirkiValidateCSSValue: function( value ) {
-
-			var validUnits = ['rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax'],
-				numericValue,
-				unit;
-
-			// 0 is always a valid value, and we can't check calc() values effectively.
-			if ( '0' === value || ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) ) {
-				return true;
-			}
-
-			if ( 'auto' === value || 'inherit' === value || 'initial' === value ) {
-				return true;
-			}
-
-			// Get the numeric value.
-			numericValue = parseFloat( value );
-
-			// Get the unit
-			unit = value.replace( numericValue, '' );
-
-			// Check the validity of the numeric value and units.
-			if ( isNaN( numericValue ) || -1 === jQuery.inArray( unit, validUnits ) ) {
-				return false;
-			}
-			return true;
 		}
 	} );
 }() );
 _.each( kirki.control, function( obj, type ) {
-	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend({});
+	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
 } );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -1386,8 +1521,8 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	initKirkiControl: function() {
 
 		var control = this,
-		    value   = control.setting._value,
-		    picker  = control.container.find( '.kirki-color-control' );
+			value   = control.setting._value,
+			picker  = control.container.find( '.kirki-color-control' );
 
 		// Hide unnecessary controls if the value doesn't have an image.
 		if ( _.isUndefined( value['background-image'] ) || '' === value['background-image'] ) {
@@ -1398,47 +1533,47 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		}
 
 		// Color.
-		picker.wpColorPicker({
+		picker.wpColorPicker( {
 			change: function() {
 				setTimeout( function() {
 					control.saveValue( 'background-color', picker.val() );
 				}, 100 );
 			}
-		});
+		} );
 
 		// Background-Repeat.
 		control.container.on( 'change', '.background-repeat select', function() {
 			control.saveValue( 'background-repeat', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Size.
 		control.container.on( 'change click', '.background-size input', function() {
 			control.saveValue( 'background-size', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Position.
 		control.container.on( 'change', '.background-position select', function() {
 			control.saveValue( 'background-position', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Attachment.
 		control.container.on( 'change click', '.background-attachment input', function() {
 			control.saveValue( 'background-attachment', jQuery( this ).val() );
-		});
+		} );
 
 		// Background-Image.
 		control.container.on( 'click', '.background-image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 				// This will return the selected image from the Media Uploader, the result is an object.
 				var uploadedImage = image.state().get( 'selection' ).first(),
-				    previewImage   = uploadedImage.toJSON().sizes.full.url,
-				    imageUrl,
-				    imageID,
-				    imageWidth,
-				    imageHeight,
-				    preview,
-				    removeButton;
+					previewImage   = uploadedImage.toJSON().sizes.full.url,
+					imageUrl,
+					imageID,
+					imageWidth,
+					imageHeight,
+					preview,
+					removeButton;
 
 				if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
 					previewImage = uploadedImage.toJSON().sizes.medium.url;
@@ -1466,15 +1601,15 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 				if ( removeButton.length ) {
 					removeButton.show();
 				}
-		    });
+			} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.background-image-upload-remove-button', function( e ) {
 
 			var preview,
-			    removeButton;
+				removeButton;
 
 			e.preventDefault();
 
@@ -1495,7 +1630,7 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 			if ( removeButton.length ) {
 				removeButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -1504,22 +1639,22 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	saveValue: function( property, value ) {
 
 		var control = this,
-		    input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
-		    val     = control.setting._value;
+			input   = jQuery( '#customize-control-' + control.id.replace( '[', '-' ).replace( ']', '' ) + ' .background-hidden-value' ),
+			val     = control.setting._value;
 
 		val[ property ] = value;
 
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
-wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control  = this,
-		    selector = control.selector + ' input.datepicker';
+			selector = control.selector + ' input.datepicker';
 
 		// Init the datepicker
 		jQuery( selector ).datepicker( {
@@ -1535,12 +1670,12 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 	}
 } );
 /* global dimensionkirkiL10n */
-wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    value;
+			value;
 
 		// Notifications.
 		control.kirkiNotifications();
@@ -1550,7 +1685,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 			value = jQuery( this ).val();
 			control.setting.set( value );
-		});
+		} );
 	},
 
 	/**
@@ -1564,7 +1699,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			setting.bind( function( value ) {
 				var code = 'long_title';
 
-				if ( false === control.kirkiValidateCSSValue( value ) ) {
+				if ( false === kirki.util.validate.cssValue( value ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{
@@ -1578,17 +1713,17 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			} );
 		} );
 	}
-});
+} );
 /* global dimensionskirkiL10n */
-wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control     = this,
-		    subControls = control.params.choices.controls,
-		    value       = {},
-		    subsArray   = [],
-		    i;
+			subControls = control.params.choices.controls,
+			value       = {},
+			subsArray   = [],
+			i;
 
 		_.each( subControls, function( v, i ) {
 			if ( true === v ) {
@@ -1617,7 +1752,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 
 			// Save the value
 			control.saveValue( value );
-		});
+		} );
 	},
 
 	/**
@@ -1626,11 +1761,11 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	saveValue: function( value ) {
 
 		var control  = this,
-		    newValue = {};
+			newValue = {};
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
-		});
+		} );
 
 		control.setting.set( newValue );
 	},
@@ -1645,13 +1780,13 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code = 'long_title',
-				    subs = {},
-				    message;
+					subs = {},
+					message;
 
 				setting.notifications.remove( code );
 
 				_.each( value, function( val, direction ) {
-					if ( false === control.kirkiValidateCSSValue( val ) ) {
+					if ( false === kirki.util.validate.cssValue( val ) ) {
 						subs[ direction ] = val;
 					} else {
 						delete subs[ direction ];
@@ -1670,16 +1805,16 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 			} );
 		} );
 	}
-});
+} );
 /* global tinyMCE */
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    element = control.container.find( 'textarea' ),
-		    id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' ),
-		    editor;
+			element = control.container.find( 'textarea' ),
+			id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' ),
+			editor;
 
 		wp.editor.initialize( id, {
 			tinymce: {
@@ -1687,7 +1822,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 			},
 			quicktags: true,
 			mediaButtons: true
-		});
+		} );
 
 		editor = tinyMCE.get( id );
 
@@ -1699,20 +1834,20 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 				content = editor.getContent();
 				element.val( content ).trigger( 'change' );
 				wp.customize.instance( control.id ).set( content );
-			});
+			} );
 		}
 	}
-});
+} );
 /* global fontAwesomeJSON */
-wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control  = this,
-		    element  = this.container.find( 'select' ),
-		    icons    = jQuery.parseJSON( fontAwesomeJSON ),
-		    selectValue,
-		    selectWooOptions = {
+			element  = this.container.find( 'select' ),
+			icons    = jQuery.parseJSON( fontAwesomeJSON ),
+			selectValue,
+			selectWooOptions = {
 				data: [],
 				escapeMarkup: function( markup ) {
 					return markup;
@@ -1723,27 +1858,27 @@ wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamic
 				templateSelection: function( val ) {
 					return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
 				}
-		    },
-		    select;
+			},
+			select;
 
 		_.each( icons.icons, function( icon ) {
-			selectWooOptions.data.push({
+			selectWooOptions.data.push( {
 				id: icon.id,
 				text: icon.name
-			});
-		});
+			} );
+		} );
 
 		select = jQuery( element ).selectWoo( selectWooOptions );
 
 		select.on( 'change', function() {
 			selectValue = jQuery( this ).val();
 			control.setting.set( selectValue );
-		});
+		} );
 		select.val( control.setting._value ).trigger( 'change' );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -1763,12 +1898,12 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 	initKirkiControl: function() {
 
 		var control       = this,
-		    value         = control.getValue(),
-		    saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
-		    preview       = control.container.find( '.placeholder, .thumbnail' ),
-		    previewImage  = ( 'array' === saveAs ) ? value.url : value,
-		    removeButton  = control.container.find( '.image-upload-remove-button' ),
-		    defaultButton = control.container.find( '.image-default-button' );
+			value         = control.getValue(),
+			saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
+			preview       = control.container.find( '.placeholder, .thumbnail' ),
+			previewImage  = ( 'array' === saveAs ) ? value.url : value,
+			removeButton  = control.container.find( '.image-upload-remove-button' ),
+			defaultButton = control.container.find( '.image-default-button' );
 
 		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
@@ -1793,7 +1928,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		}
 
 		// If value is default, hide the default button.
-		if ( value === control.params['default'] ) {
+		if ( value === control.params.default ) {
 			control.container.find( 'image-default-button' ).hide();
 		}
 
@@ -1802,11 +1937,11 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		}
 
 		control.container.on( 'click', '.image-upload-button', function( e ) {
-			var image = wp.media({ multiple: false }).open().on( 'select', function() {
+			var image = wp.media( { multiple: false } ).open().on( 'select', function() {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
-					    previewImage  = uploadedImage.toJSON().sizes.full.url;
+						previewImage  = uploadedImage.toJSON().sizes.full.url;
 
 					if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
 						previewImage = uploadedImage.toJSON().sizes.medium.url;
@@ -1832,16 +1967,16 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 						removeButton.show();
 						defaultButton.hide();
 					}
-			    });
+				} );
 
 			e.preventDefault();
-		});
+		} );
 
 		control.container.on( 'click', '.image-upload-remove-button', function( e ) {
 
 			var preview,
-			    removeButton,
-			    defaultButton;
+				removeButton,
+				defaultButton;
 
 			e.preventDefault();
 
@@ -1863,30 +1998,30 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 					defaultButton.show();
 				}
 			}
-		});
+		} );
 
 		control.container.on( 'click', '.image-default-button', function( e ) {
 
 			var preview,
-			    removeButton,
-			    defaultButton;
+				removeButton,
+				defaultButton;
 
 			e.preventDefault();
 
-			control.saveValue( 'url', control.params['default'] );
+			control.saveValue( 'url', control.params.default );
 
 			preview       = control.container.find( '.placeholder, .thumbnail' );
 			removeButton  = control.container.find( '.image-upload-remove-button' );
 			defaultButton = control.container.find( '.image-default-button' );
 
 			if ( preview.length ) {
-				preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + control.params['default'] + '" alt="" />' );
+				preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + control.params.default + '" alt="" />' );
 			}
 			if ( removeButton.length ) {
 				removeButton.show();
 				defaultButton.hide();
 			}
-		});
+		} );
 	},
 
 	/**
@@ -1894,8 +2029,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 	 */
 	getValue: function() {
 		var control = this,
-		    value   = control.setting._value,
-		    saveAs  = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
+			value   = control.setting._value,
+			saveAs  = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
 
 		if ( 'array' === saveAs && _.isString( value ) ) {
 			value = {
@@ -1910,8 +2045,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 	 */
 	saveValue: function( property, value ) {
 		var control   = this,
-		    valueOld  = control.setting._value,
-		    saveAs    = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
+			valueOld  = control.setting._value,
+			saveAs    = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
 
 		if ( 'array' === saveAs ) {
 			if ( _.isString( valueOld ) ) {
@@ -1925,8 +2060,8 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend({
 		control.setting.set( value );
 		control.container.find( 'button' ).trigger( 'change' );
 	}
-});
-wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
@@ -1935,23 +2070,26 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicC
 		// Save the value
 		control.container.on( 'change', 'input', function() {
 			var value = [],
-			    i = 0;
+				i = 0;
 
 			// Build the value as an object using the sub-values from individual checkboxes.
 			jQuery.each( control.params.choices, function( key ) {
 				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
+					control.container.find( 'input[value="' + key + '"]' ).parent().addClass( 'checked' );
 					value[ i ] = key;
 					i++;
+				} else {
+					control.container.find( 'input[value="' + key + '"]' ).parent().removeClass( 'checked' );
 				}
-			});
+			} );
 
 			// Update the value in the customizer.
 			control.setting.set( value );
-		});
+		} );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -1973,16 +2111,16 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 		'use strict';
 
 		var control = this,
-		    colors  = control.params.choices,
-		    keys    = Object.keys( colors ),
-		    value   = this.params.value,
-		    i       = 0;
+			colors  = control.params.choices,
+			keys    = Object.keys( colors ),
+			value   = this.params.value,
+			i       = 0;
 
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {
 
 			var picker = control.container.find( '.multicolor-index-' + subSetting ),
-			    args   = {
+				args   = {
 					change: function() {
 
 						// Color controls require a small delay.
@@ -1995,12 +2133,12 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
 						}, 100 );
 					}
-			    };
+				};
 
 			if ( _.isObject( colors.irisArgs ) ) {
 				_.each( colors.irisArgs, function( irisValue, irisKey ) {
 					args[ irisKey ] = irisValue;
-				});
+				} );
 			}
 
 			// Did we change the value?
@@ -2020,101 +2158,23 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 	saveValue: function( property, value ) {
 
 		var control = this,
-		    input   = control.container.find( '.multicolor-hidden-value' ),
-		    val     = control.setting._value;
+			input   = control.container.find( '.multicolor-hidden-value' ),
+			val     = control.setting._value;
 
 		val[ property ] = value;
 
 		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
 		control.setting.set( val );
 	}
-});
-wp.customize.controlConstructor['kirki-number'] = wp.customize.kirkiDynamicControl.extend({
-
-	initKirkiControl: function() {
-
-		var control = this,
-		    value   = control.setting._value,
-		    html    = '',
-		    input,
-		    up,
-		    down;
-
-		// Make sure we use default values if none are define for some arguments.
-		control.params.choices = _.defaults( control.params.choices, {
-			min: 0,
-			max: 100,
-			step: 1
-		} );
-
-		// Make sure we have a valid value.
-		if ( isNaN( value ) || '' === value ) {
-			value = ( 0 > control.params.choices.min && 0 < control.params.choices.max ) ? 0 : control.params.choices.min;
-		}
-		value = parseFloat( value );
-
-		// If step is 'any', set to 0.001.
-		control.params.choices.step = ( 'any' === control.params.choices.step ) ? 0.001 : control.params.choices.step;
-
-		// Make sure choices are properly formtted as numbers.
-		control.params.choices.min  = parseFloat( control.params.choices.min );
-		control.params.choices.max  = parseFloat( control.params.choices.max );
-		control.params.choices.step = parseFloat( control.params.choices.step );
-
-		// Build the HTML for the control.
-		html += '<label>';
-		if ( control.params.label ) {
-			html += '<span class="customize-control-title">' + control.params.label + '</span>';
-		}
-		if ( control.params.description ) {
-			html += '<span class="description customize-control-description">' + control.params.description + '</span>';
-		}
-		html += '<div class="customize-control-content">';
-		html += '<input ' + control.params.inputAttrs + ' type="text" ' + control.params.link + ' value="' + value + '" />';
-		html += '<div class="quantity button minus">-</div>';
-		html += '<div class="quantity button plus">+</div>';
-		html += '</div>';
-		html += '</label>';
-
-		control.container.html( html );
-
-		input = control.container.find( 'input' );
-		up    = control.container.find( '.plus' );
-		down  = control.container.find( '.minus' );
-
-		up.click( function() {
-			var oldVal = parseFloat( input.val() ),
-			    newVal;
-
-			newVal = ( oldVal >= control.params.choices.max ) ? oldVal : oldVal + control.params.choices.step;
-
-			input.val( newVal );
-			input.trigger( 'change' );
-		} );
-
-		down.click( function() {
-			var oldVal = parseFloat( input.val() ),
-			    newVal;
-
-			newVal = ( oldVal <= control.params.choices.min ) ? oldVal : oldVal - control.params.choices.step;
-
-			input.val( newVal );
-			input.trigger( 'change' );
-		} );
-
-		this.container.on( 'change keyup paste click', 'input', function() {
-			control.setting.set( jQuery( this ).val() );
-		});
-	}
-});
-wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend({});
+} );
+wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
 /* global kirkiSetSettingValue */
-wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    selectValue;
+			selectValue;
 
 		// Trigger a change
 		this.container.on( 'change', 'select', function() {
@@ -2137,15 +2197,15 @@ wp.customize.controlConstructor['kirki-preset'] = wp.customize.kirkiDynamicContr
 					// We'll have to loop through them all and apply the changes needed to them.
 					jQuery.each( value.settings, function( presetSetting, presetSettingValue ) {
 						kirkiSetSettingValue.set( presetSetting, presetSettingValue );
-					});
+					} );
 				}
-			});
+			} );
 			wp.customize.previewer.refresh();
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend({});
-wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend({});
+} );
+wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend( {} );
 /* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 
@@ -2155,23 +2215,23 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.rowIndex   = rowIndex;
 	this.container  = container;
 	this.label      = label;
-	this.header     = this.container.find( '.repeater-row-header' ),
+	this.header     = this.container.find( '.repeater-row-header' );
 
 	this.header.on( 'click', function() {
 		self.toggleMinimize();
-	});
+	} );
 
 	this.container.on( 'click', '.repeater-row-remove', function() {
 		self.remove();
-	});
+	} );
 
 	this.header.on( 'mousedown', function() {
 		self.container.trigger( 'row:start-dragging' );
-	});
+	} );
 
 	this.container.on( 'keyup change', 'input, select, textarea', function( e ) {
 		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ] );
-	});
+	} );
 
 	this.setRowIndex = function( rowIndex ) {
 		this.rowIndex = rowIndex;
@@ -2190,14 +2250,14 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.remove = function() {
 		this.container.slideUp( 300, function() {
 			jQuery( this ).detach();
-		});
+		} );
 		this.container.trigger( 'row:remove', [ this.rowIndex ] );
 	};
 
 	this.updateLabel = function() {
 		var rowLabelField,
-		    rowLabel,
-		    rowLabelSelector;
+			rowLabel,
+			rowLabelSelector;
 
 		if ( 'field' === this.label.type ) {
 			rowLabelField = this.container.find( '.repeater-field [data-field="' + this.label.field + '"]' );
@@ -2226,7 +2286,7 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 	this.updateLabel();
 };
 
-wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
+wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -2248,8 +2308,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control = this,
-		    limit,
-		    theNewRow;
+			limit,
+			theNewRow;
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
@@ -2287,56 +2347,57 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			} else {
 				jQuery( control.selector + ' .limit' ).addClass( 'highlight' );
 			}
-		});
+		} );
 
 		this.container.on( 'click', '.repeater-row-remove', function() {
 			control.currentIndex--;
 			if ( ! limit || control.currentIndex < limit ) {
 				jQuery( control.selector + ' .limit' ).removeClass( 'highlight' );
 			}
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeImage( e );
-		});
+		} );
 
 		this.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeFile( e );
-		});
+		} );
 
 		/**
 		 * Function that loads the Mustache template
 		 */
 		this.repeaterTemplate = _.memoize( function() {
 			var compiled,
-			    /*
-			     * Underscore's default ERB-style templates are incompatible with PHP
-			     * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
-			     *
-			     * @see trac ticket #22344.
-			     */
-			    options = {
+
+				/*
+				 * Underscore's default ERB-style templates are incompatible with PHP
+				 * when asp_tags is enabled, so WordPress uses Mustache-inspired templating syntax.
+				 *
+				 * @see trac ticket #22344.
+				 */
+				options = {
 					evaluate: /<#([\s\S]+?)#>/g,
 					interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
 					escape: /\{\{([^\}]+?)\}\}(?!\})/g,
 					variable: 'data'
-			    };
+				};
 
 			return function( data ) {
 				compiled = _.template( control.container.find( '.customize-control-repeater-content' ).first().html(), null, options );
 				return compiled( data );
 			};
-		});
+		} );
 
 		// When we load the control, the fields have not been filled up
 		// This is the first time that we create all the rows
@@ -2345,18 +2406,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 				theNewRow = control.addRow( subValue );
 				control.initColorPicker();
 				control.initSelect( theNewRow, subValue );
-			});
+			} );
 		}
 
 		// Once we have displayed the rows, we cleanup the values
 		this.setValue( settingValue, true, true );
 
-		this.repeaterFieldsContainer.sortable({
+		this.repeaterFieldsContainer.sortable( {
 			handle: '.repeater-row-header',
 			update: function() {
 				control.sort();
 			}
-		});
+		} );
 
 	},
 
@@ -2386,19 +2447,20 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		var libMediaType = this.getMimeType();
 
-		this.frame = wp.media({
+		this.frame = wp.media( {
 			states: [
-			new wp.media.controller.Library({
-					library:  wp.media.query({ type: libMediaType }),
+			new wp.media.controller.Library( {
+					library: wp.media.query( { type: libMediaType } ),
 					multiple: false,
-					date:     false
-				})
+					date: false
+				} )
 			]
-		});
+		} );
 
 		// When a file is selected, run a callback.
 		this.frame.on( 'select', this.onSelect, this );
 	},
+
 	/**
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
@@ -2409,8 +2471,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
-		    attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
-		    libMediaType   = this.getMimeType();
+			attrs          = [ 'width', 'height', 'flex_width', 'flex_height' ], // A list of attributes to look for
+			libMediaType   = this.getMimeType();
 
 		// Make sure we got it
 		if ( _.isString( currentFieldId ) && '' !== currentFieldId ) {
@@ -2431,25 +2493,25 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			}
 		}
 
-		this.frame = wp.media({
+		this.frame = wp.media( {
 			button: {
 				text: 'Select and Crop',
 				close: false
 			},
 			states: [
-				new wp.media.controller.Library({
-					library:         wp.media.query({ type: libMediaType }),
-					multiple:        false,
-					date:            false,
-					suggestedWidth:  this.params.width,
+				new wp.media.controller.Library( {
+					library: wp.media.query( { type: libMediaType } ),
+					multiple: false,
+					date: false,
+					suggestedWidth: this.params.width,
 					suggestedHeight: this.params.height
-				}),
-				new wp.media.controller.CustomizeImageCropper({
+				} ),
+				new wp.media.controller.CustomizeImageCropper( {
 					imgSelectOptions: this.calculateImageSelectOptions,
 					control: this
-				})
+				} )
 			]
-		});
+		} );
 
 		this.frame.on( 'select', this.onSelectForCrop, this );
 		this.frame.on( 'cropped', this.onCropped, this );
@@ -2515,18 +2577,18 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control    = controller.get( 'control' ),
-		    flexWidth  = !! parseInt( control.params.flex_width, 10 ),
-		    flexHeight = !! parseInt( control.params.flex_height, 10 ),
-		    realWidth  = attachment.get( 'width' ),
-		    realHeight = attachment.get( 'height' ),
-		    xInit      = parseInt( control.params.width, 10 ),
-		    yInit      = parseInt( control.params.height, 10 ),
-		    ratio      = xInit / yInit,
-		    xImg       = realWidth,
-		    yImg       = realHeight,
-		    x1,
-		    y1,
-		    imgSelectOptions;
+			flexWidth  = !! parseInt( control.params.flex_width, 10 ),
+			flexHeight = !! parseInt( control.params.flex_height, 10 ),
+			realWidth  = attachment.get( 'width' ),
+			realHeight = attachment.get( 'height' ),
+			xInit      = parseInt( control.params.width, 10 ),
+			yInit      = parseInt( control.params.height, 10 ),
+			ratio      = xInit / yInit,
+			xImg       = realWidth,
+			yImg       = realHeight,
+			x1,
+			y1,
+			imgSelectOptions;
 
 		controller.set( 'canSkipCrop', ! control.mustBeCropped( flexWidth, flexHeight, xInit, yInit, realWidth, realHeight ) );
 
@@ -2542,16 +2604,16 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		y1 = ( yImg - yInit ) / 2;
 
 		imgSelectOptions = {
-			handles:     true,
-			keys:        true,
-			instance:    true,
-			persistent:  true,
-			imageWidth:  realWidth,
+			handles: true,
+			keys: true,
+			instance: true,
+			persistent: true,
+			imageWidth: realWidth,
 			imageHeight: realHeight,
-			x1:          x1,
-			y1:          y1,
-			x2:          xInit + x1,
-			y2:          yInit + y1
+			x1: x1,
+			y1: y1,
+			x2: xInit + x1,
+			y2: yInit + y1
 		};
 
 		if ( false === flexHeight && false === flexWidth ) {
@@ -2678,7 +2740,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var $targetDiv,
-		    $uploadButton;
+			$uploadButton;
 
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
@@ -2689,7 +2751,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-image-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
-		});
+		} );
 		$targetDiv.find( '.hidden-field' ).val( '' );
 		$uploadButton.text( $uploadButton.data( 'label' ) );
 		this.$thisButton.hide();
@@ -2703,7 +2765,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var $targetDiv,
-		    $uploadButton;
+			$uploadButton;
 
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
@@ -2714,7 +2776,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		$targetDiv.find( '.kirki-file-attachment' ).slideUp( 'fast', function() {
 			jQuery( this ).show().html( jQuery( this ).data( 'placeholder' ) );
-		});
+		} );
 		$targetDiv.find( '.hidden-field' ).val( '' );
 		$uploadButton.text( $uploadButton.data( 'label' ) );
 		this.$thisButton.hide();
@@ -2749,21 +2811,21 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
 		var filteredValue = newValue,
-		    filter        = [];
+			filter        = [];
 
 		if ( filtering ) {
 			jQuery.each( this.params.fields, function( index, value ) {
 				if ( 'image' === value.type || 'cropped_image' === value.type || 'upload' === value.type ) {
 					filter.push( index );
 				}
-			});
+			} );
 			jQuery.each( newValue, function( index, value ) {
 				jQuery.each( filter, function( ind, field ) {
 					if ( ! _.isUndefined( value[ field ] ) && ! _.isUndefined( value[ field ].id ) ) {
 						filteredValue[index][ field ] = value[ field ].id;
 					}
-				});
-			});
+				} );
+			} );
 		}
 
 		this.setting.set( encodeURI( JSON.stringify( filteredValue ) ) );
@@ -2786,12 +2848,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control       = this,
-		    template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
-		    settingValue  = this.getValue(), // Get the current setting value.
-		    newRowSetting = {}, // Saves the new setting data.
-		    templateData, // Data to pass to the template
-		    newRow,
-		    i;
+			template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
+			settingValue  = this.getValue(), // Get the current setting value.
+			newRowSetting = {}, // Saves the new setting data.
+			templateData, // Data to pass to the template
+			newRow,
+			i;
 
 		if ( template ) {
 
@@ -2804,7 +2866,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			if ( data ) {
 				for ( i in data ) {
 					if ( data.hasOwnProperty( i ) && templateData.hasOwnProperty( i ) ) {
-						templateData[ i ]['default'] = data[ i ];
+						templateData[ i ].default = data[ i ];
 					}
 				}
 			}
@@ -2824,19 +2886,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
 			newRow.container.on( 'row:remove', function( e, rowIndex ) {
 				control.deleteRow( rowIndex );
-			});
+			} );
 
 			newRow.container.on( 'row:update', function( e, rowIndex, fieldName, element ) {
 				control.updateField.call( control, e, rowIndex, fieldName, element );
 				newRow.updateLabel();
-			});
+			} );
 
 			// Add the row to rows collection
 			this.rows[ this.currentIndex ] = newRow;
 
 			for ( i in templateData ) {
 				if ( templateData.hasOwnProperty( i ) ) {
-					newRowSetting[ i ] = templateData[ i ]['default'];
+					newRowSetting[ i ] = templateData[ i ].default;
 				}
 			}
 
@@ -2854,22 +2916,22 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control     = this,
-		    $rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
-		    newOrder    = [],
-		    settings    = control.getValue(),
-		    newRows     = [],
-		    newSettings = [];
+			$rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
+			newOrder    = [],
+			settings    = control.getValue(),
+			newRows     = [],
+			newSettings = [];
 
 		$rows.each( function( i, element ) {
 			newOrder.push( jQuery( element ).data( 'row' ) );
-		});
+		} );
 
 		jQuery.each( newOrder, function( newPosition, oldPosition ) {
 			newRows[ newPosition ] = control.rows[ oldPosition ];
 			newRows[ newPosition ].setRowIndex( newPosition );
 
 			newSettings[ newPosition ] = settings[ oldPosition ];
-		});
+		} );
 
 		control.rows = newRows;
 		control.setValue( newSettings );
@@ -2886,9 +2948,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var currentSettings = this.getValue(),
-		    row,
-		    i,
-		    prop;
+			row,
+			i,
+			prop;
 
 		if ( currentSettings[ index ] ) {
 
@@ -2930,8 +2992,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var type,
-		    row,
-		    currentSettings;
+			row,
+			currentSettings;
 
 		if ( ! this.rows[ rowIndex ] ) {
 			return;
@@ -2971,9 +3033,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control     = this,
-		    colorPicker = control.container.find( '.color-picker-hex' ),
-		    options     = {},
-		    fieldId     = colorPicker.data( 'field' );
+			colorPicker = control.container.find( '.color-picker-hex' ),
+			options     = {},
+			fieldId     = colorPicker.data( 'field' );
 
 		// We check if the color palette parameter is defined.
 		if ( ! _.isUndefined( fieldId ) && ! _.isUndefined( control.params.fields[ fieldId ] ) && ! _.isUndefined( control.params.fields[ fieldId ].palettes ) && _.isObject( control.params.fields[ fieldId ].palettes ) ) {
@@ -2984,9 +3046,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		options.change = function( event, ui ) {
 
 			var currentPicker   = jQuery( event.target ),
-			    row             = currentPicker.closest( '.repeater-row' ),
-			    rowIndex        = row.data( 'row' ),
-			    currentSettings = control.getValue();
+				row             = currentPicker.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
+				currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentPicker.data( 'field' ) ] = ui.color.toString();
 			control.setValue( currentSettings, true );
@@ -3012,11 +3074,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		'use strict';
 
 		var control  = this,
-		    dropdown = theNewRow.container.find( '.repeater-field select' ),
-		    $select,
-		    dataField,
-		    multiple,
-		    selectWooOptions = {};
+			dropdown = theNewRow.container.find( '.repeater-field select' ),
+			$select,
+			dataField,
+			multiple,
+			selectWooOptions = {};
 
 		if ( 0 === dropdown.length ) {
 			return;
@@ -3039,23 +3101,23 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 
 			var currentDropdown = jQuery( event.target ),
-			    row             = currentDropdown.closest( '.repeater-row' ),
-			    rowIndex        = row.data( 'row' ),
-			    currentSettings = control.getValue();
+				row             = currentDropdown.closest( '.repeater-row' ),
+				rowIndex        = row.data( 'row' ),
+				currentSettings = control.getValue();
 
 			currentSettings[ rowIndex ][ currentDropdown.data( 'field' ) ] = jQuery( this ).val();
 			control.setValue( currentSettings );
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		var control      = this,
-		    changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
+			changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
 			rangeInput   = control.container.find( 'input[type="range"]' ),
 			textInput    = control.container.find( 'input[type="text"]' ),
-		    value        = control.setting._value;
+			value        = control.setting._value;
 
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
@@ -3086,14 +3148,14 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// set slider and text input values to default
 		// and hen save.
 		control.container.find( '.slider-reset' ).on( 'click', function() {
-			textInput.attr( 'value', control.params['default'] );
-			rangeInput.attr( 'value', control.params['default'] );
+			textInput.attr( 'value', control.params.default );
+			rangeInput.attr( 'value', control.params.default );
 			control.setting.set( textInput.val() );
 		} );
 	}
-});
+} );
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -3122,23 +3184,23 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
 
 		// Init sortable.
-		control.sortableContainer.sortable({
+		control.sortableContainer.sortable( {
 
 			// Update value when we stop sorting.
 			stop: function() {
 				control.updateValue();
 			}
-		}).disableSelection().find( 'li' ).each( function() {
+		} ).disableSelection().find( 'li' ).each( function() {
 
 			// Enable/disable options when we click on the eye of Thundera.
 			jQuery( this ).find( 'i.visibility' ).click( function() {
 				jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
-			});
-		}).click( function() {
+			} );
+		} ).click( function() {
 
 			// Update value on click.
 			control.updateValue();
-		});
+		} );
 	},
 
 	/**
@@ -3149,91 +3211,91 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		'use strict';
 
 		var control = this,
-		    newValue = [];
+			newValue = [];
 
 		this.sortableContainer.find( 'li' ).each( function() {
 			if ( ! jQuery( this ).is( '.invisible' ) ) {
 				newValue.push( jQuery( this ).data( 'value' ) );
 			}
-		});
+		} );
 		control.setting.set( newValue );
 	}
-});
-wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		'use strict';
 
 		var control       = this,
-		    checkboxValue = control.setting._value;
+			checkboxValue = control.setting._value;
 
 		// Save the value
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
-		});
+		} );
 	}
-});
-wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend({
+} );
+wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
-		    checkboxValue = control.setting._value;
+			checkboxValue = control.setting._value;
 
 		// Save the value
 		this.container.on( 'change', 'input', function() {
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
-		});
+		} );
 	}
-});
+} );
 /* global kirkiL10n, kirki */
-wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend({
+wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		'use strict';
 
 		var control = this,
-		    value   = control.setting._value,
-		    picker;
+			value   = control.setting._value,
+			picker;
 
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
 
 		// Font-size.
-		if ( control.params['default']['font-size'] ) {
+		if ( control.params.default['font-size'] ) {
 			this.container.on( 'change keyup paste', '.font-size input', function() {
 				control.saveValue( 'font-size', jQuery( this ).val() );
 			} );
 		}
 
 		// Line-height.
-		if ( control.params['default']['line-height'] ) {
+		if ( control.params.default['line-height'] ) {
 			this.container.on( 'change keyup paste', '.line-height input', function() {
 				control.saveValue( 'line-height', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-top.
-		if ( control.params['default']['margin-top'] ) {
+		if ( control.params.default['margin-top'] ) {
 			this.container.on( 'change keyup paste', '.margin-top input', function() {
 				control.saveValue( 'margin-top', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-bottom.
-		if ( control.params['default']['margin-bottom'] ) {
+		if ( control.params.default['margin-bottom'] ) {
 			this.container.on( 'change keyup paste', '.margin-bottom input', function() {
 				control.saveValue( 'margin-bottom', jQuery( this ).val() );
 			} );
 		}
 
 		// Letter-spacing.
-		if ( control.params['default']['letter-spacing'] ) {
+		if ( control.params.default['letter-spacing'] ) {
 			value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 			this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 				value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
@@ -3242,37 +3304,37 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Word-spacing.
-		if ( control.params['default']['word-spacing'] ) {
+		if ( control.params.default['word-spacing'] ) {
 			this.container.on( 'change keyup paste', '.word-spacing input', function() {
 				control.saveValue( 'word-spacing', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-align.
-		if ( control.params['default']['text-align'] ) {
+		if ( control.params.default['text-align'] ) {
 			this.container.on( 'change', '.text-align input', function() {
 				control.saveValue( 'text-align', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-transform.
-		if ( control.params['default']['text-transform'] ) {
+		if ( control.params.default['text-transform'] ) {
 			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-decoration.
-		if ( control.params['default']['text-decoration'] ) {
+		if ( control.params.default['text-decoration'] ) {
 			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-decoration', jQuery( this ).val() );
 			} );
 		}
 
 		// Color.
-		if ( control.params['default'].color ) {
+		if ( ! _.isUndefined( control.params.default.color ) ) {
 			picker = this.container.find( '.kirki-color-control' );
-			picker.wpColorPicker({
+			picker.wpColorPicker( {
 				change: function() {
 					setTimeout( function() {
 						control.saveValue( 'color', picker.val() );
@@ -3289,18 +3351,19 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 	renderFontSelector: function() {
 
 		var control         = this,
-		    selector        = control.selector + ' .font-family select',
-		    data            = [],
-		    standardFonts   = [],
-		    googleFonts     = [],
-		    value           = control.setting._value,
-		    fonts           = control.getFonts(),
-		    fontSelect;
+			selector        = control.selector + ' .font-family select',
+			data            = [],
+			standardFonts   = [],
+			googleFonts     = [],
+			value           = control.setting._value,
+			fonts           = control.getFonts(),
+			fontSelect,
+			controlFontFamilies;
 
 		// Format standard fonts as an array.
 		if ( ! _.isUndefined( fonts.standard ) ) {
 			_.each( fonts.standard, function( font ) {
-				standardFonts.push({
+				standardFonts.push( {
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
 				} );
@@ -3310,22 +3373,48 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Format google fonts as an array.
 		if ( ! _.isUndefined( fonts.google ) ) {
 			_.each( fonts.google, function( font ) {
-				googleFonts.push({
+				googleFonts.push( {
 					id: font.family,
 					text: font.family
 				} );
 			} );
 		}
 
+		// Do we have custom fonts?
+		controlFontFamilies = {};
+		if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.fonts ) && ! _.isUndefined( control.params.choices.fonts.families ) ) {
+			controlFontFamilies = control.params.choices.fonts.families;
+		}
+
 		// Combine forces and build the final data.
-		data = [
-			{ text: kirkiL10n.defaultCSSValues, children: [{ id: 'inherit', text: 'inherit' }] },
-			{ text: kirkiL10n.standardFonts, children: standardFonts },
-			{ text: kirkiL10n.googleFonts, children: googleFonts }
-		];
+		data = jQuery.extend( {}, controlFontFamilies, {
+			default: {
+				text: kirkiL10n.defaultCSSValues,
+				children: [
+					{ id: '', text: kirkiL10n.defaultBrowserFamily },
+					{ id: 'inherit', text: 'initial' },
+					{ id: 'inherit', text: 'inherit' }
+				]
+			},
+			standard: {
+				text: kirkiL10n.standardFonts,
+				children: standardFonts
+			},
+			google: {
+				text: kirkiL10n.googleFonts,
+				children: googleFonts
+			}
+		} );
+
+		if ( kirkiL10n.isScriptDebug ) {
+			console.info( 'Kirki Debug: Font families for control "' + control.id + '":' );
+			console.info( data );
+		}
+
+		data = _.values( data );
 
 		// Instantiate selectWoo with the data.
-		fontSelect = jQuery( selector ).selectWoo({
+		fontSelect = jQuery( selector ).selectWoo( {
 			data: data
 		} );
 
@@ -3355,12 +3444,12 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 	renderBackupFontSelector: function() {
 
 		var control       = this,
-		    selector      = control.selector + ' .font-backup select',
-		    standardFonts = [],
-		    value         = control.setting._value,
-		    fontFamily    = value['font-family'],
-		    fonts         = control.getFonts(),
-		    fontSelect;
+			selector      = control.selector + ' .font-backup select',
+			standardFonts = [],
+			value         = control.setting._value,
+			fontFamily    = value['font-family'],
+			fonts         = control.getFonts(),
+			fontSelect;
 
 		if ( _.isUndefined( value['font-backup'] ) || null === value['font-backup'] ) {
 			value['font-backup'] = '';
@@ -3376,7 +3465,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		// Format standard fonts as an array.
 		if ( ! _.isUndefined( fonts.standard ) ) {
 			_.each( fonts.standard, function( font ) {
-				standardFonts.push({
+				standardFonts.push( {
 					id: font.family.replace( /&quot;/g, '&#39' ),
 					text: font.label
 				} );
@@ -3384,7 +3473,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Instantiate selectWoo with the data.
-		fontSelect = jQuery( selector ).selectWoo({
+		fontSelect = jQuery( selector ).selectWoo( {
 			data: standardFonts
 		} );
 
@@ -3408,24 +3497,37 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 	renderVariantSelector: function() {
 
 		var control    = this,
-		    value      = control.setting._value,
-		    fontFamily = value['font-family'],
-		    selector   = control.selector + ' .variant select',
-		    data       = [],
-		    isValid    = false,
-		    fontType   = kirki.util.webfonts.getFontType( fontFamily ),
-		    variants   = ['regular', 'italic', '700', '700italic'],
-		    fontWeight,
-		    variantSelector,
-		    fontStyle;
+			value      = control.setting._value,
+			fontFamily = value['font-family'],
+			selector   = control.selector + ' .variant select',
+			data       = [],
+			isValid    = false,
+			fontType   = kirki.util.webfonts.getFontType( fontFamily ),
+			variants   = [ '', 'regular', 'italic', '700', '700italic' ],
+			fontWeight,
+			variantSelector,
+			fontStyle;
 
 		if ( 'google' === fontType ) {
 			variants = kirki.util.webfonts.google.getVariants( fontFamily );
 		}
 
+		// Check if we've got custom variants defined for this font.
+		if ( ! _.isUndefined( control.params ) && ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.fonts ) && ! _.isUndefined( control.params.choices.fonts.variants ) ) {
+
+			// Check if we have variants for this font-family.
+			if ( ! _.isUndefined( control.params.choices.fonts.variants[ fontFamily ] ) ) {
+				variants = control.params.choices.fonts.variants[ fontFamily ];
+			}
+		}
+		if ( kirkiL10n.isScriptDebug ) {
+			console.info( 'Kirki Debug: Font variants for font-family "' + fontFamily + '":' );
+			console.info( variants );
+		}
+
 		if ( 'inherit' === fontFamily ) {
 			value.variant = 'inherit';
-			variants      = [''];
+			variants      = [ '' ];
 			jQuery( control.selector + ' .variant' ).hide();
 		}
 
@@ -3436,7 +3538,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			control.saveValue( 'variant', value.variant );
 
-			if ( '' === value.variant ) {
+			if ( '' === value.variant || ! value.variant ) {
 				fontWeight = '';
 				fontStyle  = '';
 			} else {
@@ -3458,7 +3560,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			if ( value.variant === variant ) {
 				isValid = true;
 			}
-			data.push({
+			data.push( {
 				id: variant,
 				text: variant
 			} );
@@ -3473,12 +3575,15 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Instantiate selectWoo with the data.
-		variantSelector = jQuery( selector ).selectWoo({
+		variantSelector = jQuery( selector ).selectWoo( {
 			data: data
 		} );
 		variantSelector.val( value.variant ).trigger( 'change' );
 		variantSelector.on( 'change', function() {
 			control.saveValue( 'variant', jQuery( this ).val() );
+			if ( 'string' !== typeof value.variant ) {
+				value.variant = variants[0];
+			}
 
 			fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 			fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
@@ -3494,11 +3599,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 	 */
 	getFonts: function() {
 		var control            = this,
-		    initialGoogleFonts = kirki.util.webfonts.google.getFonts(),
-		    googleFonts        = {},
-		    googleFontsSort    = 'alpha',
+			initialGoogleFonts = kirki.util.webfonts.google.getFonts(),
+			googleFonts        = {},
+			googleFontsSort    = 'alpha',
 			googleFontsNumber  = 0,
-		    standardFonts      = {};
+			standardFonts      = {};
 
 		// Get google fonts.
 		if ( ! _.isEmpty( control.params.choices.fonts.google ) ) {
@@ -3562,8 +3667,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 	saveValue: function( property, value ) {
 
 		var control = this,
-		    input   = control.container.find( '.typography-hidden-value' ),
-		    val     = control.setting._value;
+			input   = control.container.find( '.typography-hidden-value' ),
+			val     = control.setting._value;
 
 		val[ property ] = value;
 

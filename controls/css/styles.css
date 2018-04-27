@@ -62,7 +62,7 @@
       position: relative;
       left: -25%;
       top: -25%;
-      z-index: 99; }
+      z-index: 1; }
     .customize-control-kirki-color-palette .colors-wrapper.with-margin label {
       margin: 3px; }
     .customize-control-kirki-color-palette .colors-wrapper input {
@@ -73,6 +73,8 @@
 
 .customize-control-kirki-color input[data-type="hue"] + .iris-strip-horiz .iris-slider {
   background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, magenta, #ff0080, red) !important; }
+.customize-control-kirki-color .iris-picker .iris-square-handle {
+  z-index: 8; }
 
 .customize-control-kirki-dashicons {
   position: relative; }

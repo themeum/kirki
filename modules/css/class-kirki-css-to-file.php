@@ -114,7 +114,8 @@ class Kirki_CSS_To_File {
 		}
 		$css = implode( $css, '' );
 
-		// Minimize the CSS a bit.
+		/*
+		WIP: Minimize the CSS a bit. Commented-out because of https://github.com/aristath/kirki/issues/1787
 		$css = str_replace( array( "\n", "\t", "\r\n" ), '', $css );
 		$css = str_replace( array( '{ ', '{  ', '{   ' ), '{', $css );
 		$css = str_replace( ': ', ':', $css );
@@ -122,6 +123,7 @@ class Kirki_CSS_To_File {
 		$css = explode( '}', $css );
 		$css = array_unique( $css );
 		$css = implode( $css, '}' );
+		*/
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $this->get_path( 'folder' ) ) ) {

@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 4.9.2  
-**Stable tag:** 3.0.24  
+**Stable tag:** 3.0.26  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,6 +33,33 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.26
+
+April 27 2018, dev time: 43 hours.
+
+* Fix: Color Palette: material colors 'light-blue' doesn't work [#1783](https://github.com/aristath/kirki/issues/1783).
+* Fix: Google Fonts switch error [#1791](https://github.com/aristath/kirki/issues/1791).
+* Fix: FontAwesome JS is being loaded even if you don't need it on front end [#1786](https://github.com/aristath/kirki/issues/1786).
+* Fix: Color Palette: Active color before section title [#1782](https://github.com/aristath/kirki/issues/1782).
+* Fix: Removed version from the webfont script.
+* Fix: Validation error for dimension fields.
+* Fix: `button_label` argument for repeater fields (props @felipeelia).
+* Fix: Allow html on radio-buttonset choices [#1818](https://github.com/aristath/kirki/issues/1818).
+* Fix: `Kirki_Helper::compare_values` vs. `field-dependencies.js` boolean issue (props @CaptJiggly) [#1825](https://github.com/aristath/kirki/issues/1825).
+* Fix: `active_callback` not working for checkboxes [#1809](https://github.com/aristath/kirki/issues/1809).
+* Fix: Nested `active_callback` args not working properly (AND|OR relations) [#1809](https://github.com/aristath/kirki/issues/1809).
+* Fix: Updated google-fonts.
+* Fix: Display typography with no default values [#1797](https://github.com/aristath/kirki/issues/1797).
+* Fix: Define "normal" as a valid css-value for sanitizations [#1814](https://github.com/aristath/kirki/issues/1814).
+* Fix: `background` controls now output `background-color` as simply `background` if no `background-image` is defined in the value [#1808](https://github.com/aristath/kirki/issues/1808).
+* Fix: @media-queries fix due to minimized CSS. [#1787](https://github.com/aristath/kirki/issues/1787).
+* Fix: `Kirki_Helper::compare_values` contains/in PHP warning if value doesn't exist in array [#1828](https://github.com/aristath/kirki/issues/1828).
+* Fix: Invalid Value in the Dimension control [#1844](https://github.com/aristath/kirki/issues/1844).
+* Fix: Add `fr` to the array of valid units used in validations [
+86adedb](https://github.com/aristath/kirki/pull/1784/commits/86adedb8cd4c06c7e6538c3087233a6840dee562)
+* Fix: Updated webfonts.
+* New: Migrated `number` control to new structure.
+###
 ### 3.0.25 ###
 
 January 23 2018, dev time: 1 hour.

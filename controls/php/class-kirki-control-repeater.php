@@ -52,6 +52,14 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 	public $row_label = array();
 
 	/**
+	 * The button label
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $button_label = '';
+
+	/**
 	 * Constructor.
 	 * Supplied `$args` override class property defaults.
 	 * If `$args['settings']` is not defined, use the $id as the setting ID.
@@ -247,7 +255,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 				<div class="repeater-row-content">
 					<# _.each( data, function( field, i ) { #>
 
-						<div class="repeater-field repeater-field-{{{ field.type }}}">
+						<div class="repeater-field repeater-field-{{{ field.type }}} repeater-field-{{ field.id }}">
 
 							<# if ( 'text' === field.type || 'url' === field.type || 'link' === field.type || 'email' === field.type || 'tel' === field.type || 'date' === field.type || 'number' === field.type ) { #>
 								<# var fieldExtras = ''; #>
@@ -338,17 +346,20 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 
 							<# } else if ( 'color' === field.type ) { #>
 
-								<# var defaultValue = '';
-								if ( field.default ) {
-									defaultValue = ( '#' !== field.default.substring( 0, 1 ) ) ? '#' + field.default : field.default;
-									defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
-								} #>
 								<label>
 									<# if ( field.label ) { #><span class="customize-control-title">{{{ field.label }}}</span><# } #>
 									<# if ( field.description ) { #><span class="description customize-control-description">{{{ field.description }}}</span><# } #>
-									<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
-
 								</label>
+								<# var defaultValue = '';
+								if ( field.default ) {
+									if ( -1 === field.default.indexOf( 'rgba' ) ) {
+										defaultValue = ( '#' !== field.default.substring( 0, 1 ) ) ? '#' + field.default : field.default;
+										defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+									} else {
+										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
+									}
+								} #>
+								<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							<# } else if ( 'textarea' === field.type ) { #>
 

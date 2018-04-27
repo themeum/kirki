@@ -58,6 +58,15 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public $required = array();
 
 	/**
+	 * Whitelisting the "preset" argument.
+	 *
+	 * @since 3.0.26
+	 * @access public
+	 * @var array
+	 */
+	public $preset = array();
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @since 3.1.0
@@ -109,13 +118,15 @@ class Kirki_Control_Base extends WP_Customize_Control {
 			'kirki-script',
 			'kirkiL10n',
 			array(
-				'noFileSelected'   => esc_attr__( 'No File Selected', 'kirki' ),
-				'remove'           => esc_attr__( 'Remove', 'kirki' ),
-				'default'          => esc_attr__( 'Default', 'kirki' ),
-				'selectFile'       => esc_attr__( 'Select File', 'kirki' ),
-				'standardFonts'    => esc_attr__( 'Standard Fonts', 'kirki' ),
-				'googleFonts'      => esc_attr__( 'Google Fonts', 'kirki' ),
-				'defaultCSSValues' => esc_attr__( 'Default CSS Values', 'kirki' ),
+				'isScriptDebug'        => ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ),
+				'noFileSelected'       => esc_attr__( 'No File Selected', 'kirki' ),
+				'remove'               => esc_attr__( 'Remove', 'kirki' ),
+				'default'              => esc_attr__( 'Default', 'kirki' ),
+				'selectFile'           => esc_attr__( 'Select File', 'kirki' ),
+				'standardFonts'        => esc_attr__( 'Standard Fonts', 'kirki' ),
+				'googleFonts'          => esc_attr__( 'Google Fonts', 'kirki' ),
+				'defaultCSSValues'     => esc_attr__( 'CSS Defaults', 'kirki' ),
+				'defaultBrowserFamily' => esc_attr__( 'Default Browser Font-Family', 'kirki' ),
 			)
 		);
 
@@ -169,6 +180,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		$this->json['kirkiOptionType'] = $this->option_type;
 		// The option-name.
 		$this->json['kirkiOptionName'] = $this->option_name;
+		// The preset.
+		$this->json['preset'] = $this->preset;
 	}
 
 	/**

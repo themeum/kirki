@@ -1,5 +1,6 @@
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * An object containing definitions for settings.
 	 *
@@ -20,9 +21,9 @@ kirki = jQuery.extend( kirki, {
 		 */
 		get: function( setting ) {
 			var parts        = setting.split( '[' ),
-			    foundSetting = '',
-			    foundInStep  = 0,
-			    currentVal   = '';
+				foundSetting = '',
+				foundInStep  = 0,
+				currentVal   = '';
 
 			_.each( parts, function( part, i ) {
 				part = part.replace( ']', '' );
@@ -43,7 +44,7 @@ kirki = jQuery.extend( kirki, {
 						currentVal = currentVal[ part ];
 					}
 				}
-			});
+			} );
 
 			return currentVal;
 		},
@@ -68,13 +69,13 @@ kirki = jQuery.extend( kirki, {
 		 */
 		set: function( element, value, key ) {
 			var setting,
-			    parts,
-			    currentNode   = '',
-			    foundNode     = '',
-			    subSettingObj = {},
-			    currentVal,
-			    subSetting,
-			    subSettingParts;
+				parts,
+				currentNode   = '',
+				foundNode     = '',
+				subSettingObj = {},
+				currentVal,
+				subSetting,
+				subSettingParts;
 
 			// Get the setting from the element.
 			setting = element;
@@ -91,7 +92,7 @@ kirki = jQuery.extend( kirki, {
 				return;
 			}
 
-			parts = setting.split( '[' ),
+			parts = setting.split( '[' );
 
 			// Find the setting we're using in the control using the customizer API.
 			_.each( parts, function( part, i ) {

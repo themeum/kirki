@@ -134,3 +134,23 @@ Kirki::add_field( 'my_config', array(
 ) );
 ```
 For full list of choices https://developer.wordpress.org/reference/functions/get_terms/#source
+
+### Custom Post Types and Custom Taxnonomy
+
+Please note that to make the custom post types and taxonomies work you must add the fields and sections in 'init' action.
+
+Example:
+
+```php
+add_action( 'init', function() {
+	Kirki::add_field( 'my_settings', array(
+		'type'     => 'select',
+		'settings' => 'my_setting',
+		'label'    => __( 'This is the label', 'my_textdomain' ),
+		'section'  => 'title_tagline',
+		'default'  => '',
+		'priority' => 10,
+		'choices'  => Kirki_Helper::get_terms( 'product_cat' ),
+    ) );
+} );
+```

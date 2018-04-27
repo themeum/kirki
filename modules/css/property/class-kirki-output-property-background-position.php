@@ -47,10 +47,10 @@ class Kirki_Output_Property_Background_Position extends Kirki_Output_Property {
 
 			// If x is not left/center/right, we need to sanitize it.
 			if ( ! in_array( $x, $x_dimensions, true ) ) {
-				$x = Kirki_Sanitize_Values::css_dimension( $x );
+				$x = sanitize_text_field( $x );
 			}
 			if ( ! in_array( $y, $y_dimensions, true ) ) {
-				$y = Kirki_Sanitize_Values::css_dimension( $y );
+				$y = sanitize_text_field( $y );
 			}
 			$this->value = $x . ' ' . $y;
 			return;

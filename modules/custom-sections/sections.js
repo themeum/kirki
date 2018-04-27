@@ -4,7 +4,7 @@ jQuery( document ).ready( function() {
 
 		// Get the pane element.
 		var pane      = jQuery( '#sub-accordion-section-' + section.id ),
-		    sectionLi = jQuery( '#accordion-section-' + section.id );
+			sectionLi = jQuery( '#accordion-section-' + section.id );
 
 		// Check if the section is expanded.
 		if ( sectionLi.hasClass( 'control-section-kirki-expanded' ) ) {
@@ -24,16 +24,16 @@ jQuery( document ).ready( function() {
 ( function() {
 
 	var _panelEmbed,
-	    _panelIsContextuallyActive,
-	    _panelAttachEvents,
-	    _sectionEmbed,
-	    _sectionIsContextuallyActive,
-	    _sectionAttachEvents;
+		_panelIsContextuallyActive,
+		_panelAttachEvents,
+		_sectionEmbed,
+		_sectionIsContextuallyActive,
+		_sectionAttachEvents;
 
 	wp.customize.bind( 'pane-contents-reflowed', function() {
 
 		var panels   = [],
-		    sections = [];
+			sections = [];
 
 		// Reflow Sections.
 		wp.customize.section.each( function( section ) {
@@ -42,7 +42,7 @@ jQuery( document ).ready( function() {
 				return;
 			}
 			sections.push( section );
-		});
+		} );
 
 		sections.sort( wp.customize.utils.prioritySort ).reverse();
 
@@ -50,7 +50,7 @@ jQuery( document ).ready( function() {
 			var parentContainer = jQuery( '#sub-accordion-section-' + section.params.section );
 
 			parentContainer.children( '.section-meta' ).after( section.headContainer );
-		});
+		} );
 
 		// Reflow Panels.
 		wp.customize.panel.each( function( panel ) {
@@ -58,7 +58,7 @@ jQuery( document ).ready( function() {
 				return;
 			}
 			panels.push( panel );
-		});
+		} );
 
 		panels.sort( wp.customize.utils.prioritySort ).reverse();
 
@@ -66,15 +66,15 @@ jQuery( document ).ready( function() {
 			var parentContainer = jQuery( '#sub-accordion-panel-' + panel.params.panel );
 
 			parentContainer.children( '.panel-meta' ).after( panel.headContainer );
-		});
-	});
+		} );
+	} );
 
 	// Extend Panel.
 	_panelEmbed = wp.customize.Panel.prototype.embed;
 	_panelIsContextuallyActive = wp.customize.Panel.prototype.isContextuallyActive;
 	_panelAttachEvents = wp.customize.Panel.prototype.attachEvents;
 
-	wp.customize.Panel = wp.customize.Panel.extend({
+	wp.customize.Panel = wp.customize.Panel.extend( {
 		attachEvents: function() {
 			var panel;
 
@@ -95,7 +95,7 @@ jQuery( document ).ready( function() {
 				} else {
 					parent.contentContainer.removeClass( 'current-panel-parent' );
 				}
-			});
+			} );
 
 			panel.container.find( '.customize-panel-back' ).off( 'click keydown' ).on( 'click keydown', function( event ) {
 				if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -106,13 +106,13 @@ jQuery( document ).ready( function() {
 				if ( panel.expanded() ) {
 					wp.customize.panel( panel.params.panel ).expand();
 				}
-			});
+			} );
 		},
 
 		embed: function() {
 
 			var panel = this,
-			    parentContainer;
+				parentContainer;
 			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.panel ) ) {
 				_panelEmbed.call( this );
 				return;
@@ -128,8 +128,8 @@ jQuery( document ).ready( function() {
 		isContextuallyActive: function() {
 
 			var panel = this,
-			    children,
-			    activeCount = 0;
+				children,
+				activeCount = 0;
 
 			if ( 'kirki-nested' !== this.params.type ) {
 				return _panelIsContextuallyActive.call( this );
@@ -147,7 +147,7 @@ jQuery( document ).ready( function() {
 				}
 
 				children.push( child );
-			});
+			} );
 
 			children.sort( wp.customize.utils.prioritySort );
 
@@ -155,17 +155,17 @@ jQuery( document ).ready( function() {
 				if ( child.active() && child.isContextuallyActive() ) {
 					activeCount += 1;
 				}
-			});
+			} );
 			return ( 0 !== activeCount );
 		}
-	});
+	} );
 
 	// Extend Section.
 	_sectionEmbed = wp.customize.Section.prototype.embed;
 	_sectionIsContextuallyActive = wp.customize.Section.prototype.isContextuallyActive;
 	_sectionAttachEvents = wp.customize.Section.prototype.attachEvents;
 
-	wp.customize.Section = wp.customize.Section.extend({
+	wp.customize.Section = wp.customize.Section.extend( {
 		attachEvents: function() {
 
 			var section = this;
@@ -185,7 +185,7 @@ jQuery( document ).ready( function() {
 				} else {
 					parent.contentContainer.removeClass( 'current-section-parent' );
 				}
-			});
+			} );
 
 			section.container.find( '.customize-section-back' ).off( 'click keydown' ).on( 'click keydown', function( event ) {
 				if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -195,13 +195,13 @@ jQuery( document ).ready( function() {
 				if ( section.expanded() ) {
 					wp.customize.section( section.params.section ).expand();
 				}
-			});
+			} );
 		},
 
 		embed: function() {
 
 			var section = this,
-			    parentContainer;
+				parentContainer;
 
 			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.section ) ) {
 				_sectionEmbed.call( section );
@@ -217,8 +217,8 @@ jQuery( document ).ready( function() {
 
 		isContextuallyActive: function() {
 			var section = this,
-			    children,
-			    activeCount = 0;
+				children,
+				activeCount = 0;
 			if ( 'kirki-nested' !== this.params.type ) {
 				return _sectionIsContextuallyActive.call( this );
 			}
@@ -234,7 +234,7 @@ jQuery( document ).ready( function() {
 					return;
 				}
 				children.push( child );
-			});
+			} );
 
 			children.sort( wp.customize.utils.prioritySort );
 
@@ -248,9 +248,9 @@ jQuery( document ).ready( function() {
 						activeCount += 1;
 					}
 				}
-			});
+			} );
 
 			return ( 0 !== activeCount );
 		}
-	});
-})( jQuery );
+	} );
+}( jQuery ) );

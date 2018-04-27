@@ -1,6 +1,7 @@
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
+
 	/**
 	 * A collection of utility methods.
 	 *
@@ -74,7 +75,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFont: function( family ) {
 					var self = this,
-					    fonts = self.getFonts();
+						fonts = self.getFonts();
 
 					if ( 'undefined' === typeof fonts[ family ] ) {
 						return false;
@@ -92,9 +93,9 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getFonts: function( order, category, number ) {
 					var self        = this,
-					    ordered     = {},
-					    categorized = {},
-					    plucked     = {};
+						ordered     = {},
+						categorized = {},
+						plucked     = {};
 
 					// Make sure order is correct.
 					order  = order || 'alpha';
@@ -144,7 +145,7 @@ kirki = jQuery.extend( kirki, {
 				 */
 				getVariants: function( family ) {
 					var self = this,
-					    font = self.getFont( family );
+						font = self.getFont( family );
 
 					// Early exit if font was not found.
 					if ( ! font ) {
@@ -217,8 +218,8 @@ kirki = jQuery.extend( kirki, {
 				 * @since 3.0.17
 				 * @returns {Array}
 				 */
-				getVariants: function( family ) { // jshint ignore: line
-					return ['regular', 'italic', '700', '700italic'];
+				getVariants: function() {
+					return [ 'regular', 'italic', '700', '700italic' ];
 				}
 			},
 
@@ -249,6 +250,39 @@ kirki = jQuery.extend( kirki, {
 					return 'google';
 				}
 				return false;
+			}
+		},
+
+		validate: {
+			cssValue: function( value ) {
+
+				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+					numericValue,
+					unit;
+
+				// Whitelist values.
+				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
+					return true;
+				}
+
+				// Skip checking if calc().
+				if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
+					return true;
+				}
+
+				// Get the numeric value.
+				numericValue = parseFloat( value );
+
+				// Get the unit
+				unit = value.replace( numericValue, '' );
+
+				// Allow unitless.
+				if ( ! value ) {
+					return;
+				}
+
+				// Check the validity of the numeric value and units.
+				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
 			}
 		}
 	}

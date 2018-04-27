@@ -102,7 +102,7 @@ class Kirki_Sanitize_Values {
 		}
 
 		// If auto, inherit or initial, return the value.
-		if ( 'auto' === $value || 'initial' === $value || 'inherit' === $value ) {
+		if ( 'auto' === $value || 'initial' === $value || 'inherit' === $value || 'normal' === $value ) {
 			return $value;
 		}
 
@@ -121,7 +121,7 @@ class Kirki_Sanitize_Values {
 		$unit_used = '';
 
 		// An array of all valid CSS units. Their order was carefully chosen for this evaluation, don't mix it up!!!
-		$units = array( 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' );
+		$units = array( 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' );
 		foreach ( $units as $unit ) {
 			if ( false !== strpos( $value, $unit ) ) {
 				$unit_used = $unit;

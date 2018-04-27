@@ -27,4 +27,4 @@ jQuery( document ).ready( function() {
 
 	}
 
-});
+} );

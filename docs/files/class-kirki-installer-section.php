@@ -36,6 +36,14 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 				public $type = 'kirki_installer';
 
 				/**
+				 * The plugin install URL.
+				 *
+				 * @access private
+				 * @var string
+				 */
+				public $plugin_install_url;
+
+				/**
 				 * Render the section.
 				 *
 				 * @access protected
@@ -55,15 +63,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 							$installed = true;
 						}
 					}
-					// Get the plugin-installation URL.
-					$plugin_install_url = add_query_arg(
-						array(
-							'action' => 'install-plugin',
-							'plugin' => 'kirki',
-						),
-						self_admin_url( 'update.php' )
-					);
-					$plugin_install_url = wp_nonce_url( $plugin_install_url, 'install-plugin_kirki' );
+					$plugin_install_url = $this->get_plugin_install_url();
 					$classes = 'cannot-expand accordion-section control-section control-section-themes control-section-' . $this->type;
 					?>
 					<li id="accordion-section-<?php echo esc_attr( $this->id ); ?>" class="<?php echo esc_attr( $classes ); ?>" style="border-top:none;border-bottom:1px solid #ddd;padding:7px 14px 16px 14px;text-align:right;">
@@ -105,7 +105,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 					<p style="text-align:left;margin-top:0;">
 						<?php esc_attr_e( 'Please install the Kirki plugin to take full advantage of this theme\s customizer capabilities', 'textdomain' ); ?>
 					</p>
-					<a class="install-now button-primary button" data-slug="kirki" href="<?php echo esc_url_raw( $plugin_install_url ); ?>" aria-label="<?php esc_attr_e( 'Install Kirki Toolkit now', 'textdomain' ); ?>" data-name="Kirki Toolkit">
+					<a class="install-now button-primary button" data-slug="kirki" href="<?php echo esc_url_raw( $this->get_plugin_install_url() ); ?>" aria-label="<?php esc_attr_e( 'Install Kirki Toolkit now', 'textdomain' ); ?>" data-name="Kirki Toolkit">
 						<?php esc_html_e( 'Install Now', 'textdomain' ); ?>
 					</a>
 					<?php
@@ -168,6 +168,27 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 					} );
 					</script>
 					<?php
+				}
+
+				/**
+				 * Get the plugin install URL.
+				 *
+				 * @access private
+				 * @return string
+				 */
+				private function get_plugin_install_url() {
+					if ( ! $this->plugin_install_url ) {
+						// Get the plugin-installation URL.
+						$this->plugin_install_url = add_query_arg(
+							array(
+								'action' => 'install-plugin',
+								'plugin' => 'kirki',
+							),
+							self_admin_url( 'update.php' )
+						);
+						$this->plugin_install_url = wp_nonce_url( $this->plugin_install_url, 'install-plugin_kirki' );
+					}
+					return $this->plugin_install_url;
 				}
 			}
 		}

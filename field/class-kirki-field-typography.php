@@ -172,25 +172,25 @@ class Kirki_Field_Typography extends Kirki_Field {
 				case 'letter-spacing':
 				case 'word-spacing':
 				case 'line-height':
-					$value[ $key ] = Kirki_Sanitize_Values::css_dimension( $val );
+					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
 					break;
 				case 'text-align':
-					if ( ! in_array( $val, array( 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
-						$value['text-align'] = 'inherit';
+					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+						$value['text-align'] = '';
 					}
 					break;
 				case 'text-transform':
-					if ( ! in_array( $val, array( 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
-						$value['text-transform'] = 'none';
+					if ( ! in_array( $val, array( '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
+						$value['text-transform'] = '';
 					}
 					break;
 				case 'text-decoration':
-					if ( ! in_array( $val, array( 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
-						$value['text-transform'] = 'none';
+					if ( ! in_array( $val, array( ''. 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+						$value['text-transform'] = '';
 					}
 					break;
 				case 'color':
-					$value['color'] = ariColor::newColor( $val )->toCSS( 'hex' );
+					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
 					break;
 			} // End switch().
 		} // End foreach().

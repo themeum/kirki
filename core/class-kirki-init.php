@@ -81,7 +81,7 @@ class Kirki_Init {
 	public function default_control_types( $control_types = array() ) {
 
 		$this->control_types = array(
-			'checkbox'              => 'WP_Customize_Control',
+			'checkbox'              => 'Kirki_Control_Checkbox',
 			'kirki-background'      => 'Kirki_Control_Background',
 			'code_editor'           => 'Kirki_Control_Code',
 			'kirki-color'           => 'Kirki_Control_Color',
@@ -142,6 +142,9 @@ class Kirki_Init {
 		}
 
 		$this->control_types = $this->default_control_types();
+		if ( ! class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
+			unset( $this->control_types['code_editor'] );
+		}
 		foreach ( $this->control_types as $key => $classname ) {
 			if ( ! class_exists( $classname ) ) {
 				unset( $this->control_types[ $key ] );
