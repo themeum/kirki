@@ -23,11 +23,11 @@
       "files": ["kirki.php"]
   },
   "require": {
-    "php": ">=5.2",
-    "php-coveralls/php-coveralls": "^2.0",
-    "phpunit/phpunit": "*"
+    "php": ">=5.2"
   },
   "require-dev": {
+    "php-coveralls/php-coveralls": "^2.0",
+    "phpunit/phpunit": "*"
     "composer/installers": "*",
     "phpunit/phpunit": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
