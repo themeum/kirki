@@ -62,7 +62,6 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend( {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
-						// previewImage  = uploadedImage.toJSON().sizes.full.url;
 						jsonImg       = uploadedImage.toJSON(),
 						previewImage  = jsonImg.url;
 
