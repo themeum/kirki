@@ -27,9 +27,8 @@
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
-    "phpunit/phpunit": "*"
-    "composer/installers": "*",
     "phpunit/phpunit": "*",
+    "composer/installers": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wimg/php-compatibility": "*",
     "wp-coding-standards/wpcs": "*",
