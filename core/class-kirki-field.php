@@ -68,6 +68,14 @@ class Kirki_Field {
 	protected $preset = array();
 
 	/**
+	 * CSS Variables.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $css_var = array();
+
+	/**
 	 * Use "theme_mod" or "option".
 	 *
 	 * @access protected
