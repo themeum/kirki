@@ -33,6 +33,13 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.28 ###
+
+* Fix: Repeater control JS issue if saved value is malformatted [#1879](https://github.com/aristath/kirki/issues/1879) - props @asilcetin.
+* Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
+* Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
+
+
 ### 3.0.27 ###
 
 April 30 2018. dev time: 1 hour.
