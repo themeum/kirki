@@ -44,6 +44,7 @@ class Kirki_Modules_CSS_Vars {
 	 */
 	protected function __construct() {
 		add_action( 'wp_head', array( $this, 'the_style' ), 0 );
+		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 	}
 
 	/**
@@ -89,5 +90,26 @@ class Kirki_Modules_CSS_Vars {
 		}
 		echo '}';
 		echo '</style>';
+	}
+
+	/**
+	 * Enqueues the script that handles postMessage
+	 * and adds variables to it using the wp_localize_script function.
+	 * The rest is handled via JS.
+	 *
+	 * @access public
+	 * @since 3.0.28
+	 * @return void
+	 */
+	public function postmessage() {
+		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'modules/css-vars/script.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
+		$fields = Kirki::$fields;
+		$data   = array();
+		foreach ( $fields as $field ) {
+			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_var'] ) && ! empty( $field['css_var'] ) ) {
+				$data[] = $field;
+			}
+		}
+		wp_localize_script( 'kirki_auto_css_vars', 'kirkiCssVarFields', $data );
 	}
 }
