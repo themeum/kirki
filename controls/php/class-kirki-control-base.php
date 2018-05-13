@@ -191,6 +191,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		$this->json['kirkiOptionName'] = $this->option_name;
 		// The preset.
 		$this->json['preset'] = $this->preset;
+		// The CSS-Variables.
+		$this->json['css-var'] = $this->css_var;
 	}
 
 	/**
