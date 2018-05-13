@@ -103,7 +103,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/multicolor.js',
 					'controls/js/src/number.js',
 					'controls/js/src/palette.js',
-					'controls/js/src/preset.js',
 					'controls/js/src/radio-buttonset.js',
 					'controls/js/src/radio-image.js',
 					'controls/js/src/repeater.js',

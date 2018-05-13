@@ -98,7 +98,6 @@ class Kirki_Init {
 			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
 			'kirki-number'          => 'Kirki_Control_Number',
 			'kirki-palette'         => 'Kirki_Control_Palette',
-			'kirki-preset'          => 'Kirki_Control_Preset',
 			'kirki-radio'           => 'Kirki_Control_Radio',
 			'kirki-radio-buttonset' => 'Kirki_Control_Radio_ButtonSet',
 			'kirki-radio-image'     => 'Kirki_Control_Radio_Image',
