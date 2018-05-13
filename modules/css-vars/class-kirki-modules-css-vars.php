@@ -75,12 +75,13 @@ class Kirki_Modules_CSS_Vars {
 		echo '<style id="kirki-css-vars">';
 		echo ':root{';
 		foreach ( $fields as $id => $args ) {
-			if ( isset( $args['css_var'] ) && ! empty( $args['css_var'] ) ) {
-				if ( is_string( $args['css_var'] ) ) {
-					$args['css_var'] = array( $args['css_var'], '$' );
-				}
-				echo esc_attr( $args['css_var'][0] ) . ':' . esc_attr( str_replace( '$', Kirki_Values::get_value( $args['kirki_config'], $id ), $args['css_var'][1] ) ) . ';';
+			if ( ! isset( $args['css_var'] ) || empty( $args['css_var'] ) ) {
+				continue;
 			}
+			if ( is_string( $args['css_var'] ) ) {
+				$args['css_var'] = array( $args['css_var'], '$' );
+			}
+			echo esc_attr( $args['css_var'][0] ) . ':' . esc_attr( str_replace( '$', Kirki_Values::get_value( $args['kirki_config'], $id ), $args['css_var'][1] ) ) . ';';
 		}
 		echo '}';
 		echo '</style>';
