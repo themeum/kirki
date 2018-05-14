@@ -76,17 +76,16 @@ class Kirki_Modules_CSS_Vars {
 		echo '<style id="kirki-css-vars">';
 		echo ':root{';
 		foreach ( $fields as $id => $args ) {
-			if ( ! isset( $args['css_var'] ) || empty( $args['css_var'] ) ) {
+			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
 				continue;
 			}
-			if ( is_string( $args['css_var'] ) ) {
-				$args['css_var'] = array( $args['css_var'], '$' );
-			}
 			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
-			if ( isset( $args['css_var'][2] ) && is_array( $val ) && isset( $val[ $args['css_var'][2] ] ) ) {
-				$val = $val[ $args['css_var'][2] ];
+			foreach ( $args['css_vars'] as $css_var ) {
+			if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
+				$val = $val[ $css_var[2] ];
 			}
-			echo esc_attr( $args['css_var'][0] ) . ':' . esc_attr( str_replace( '$', $val, $args['css_var'][1] ) ) . ';';
+			echo esc_attr( $css_var[0] ) . ':' . esc_attr( str_replace( '$', $val, $css_var[1] ) ) . ';';
+		}
 		}
 		echo '}';
 		echo '</style>';
@@ -106,7 +105,7 @@ class Kirki_Modules_CSS_Vars {
 		$fields = Kirki::$fields;
 		$data   = array();
 		foreach ( $fields as $field ) {
-			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_var'] ) && ! empty( $field['css_var'] ) ) {
+			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_vars'] ) && ! empty( $field['css_vars'] ) ) {
 				$data[] = $field;
 			}
 		}

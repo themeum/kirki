@@ -45,13 +45,13 @@ jQuery( document ).ready( function() {
 			value.bind( function( newVal ) {
 				var val = newVal;
 				styles = kirkiCssVars.getStyles();
-				if ( _.isString( field['css_var'] ) ) {
-					field['css_var'] = [ field['css_var'], '$' ];
-				}
-				if ( ! field['css_var'][2] && _.isObject( value ) && value[ field['css_var'][2] ] ) {
-					newVal = value[ field['css_var'][2] ];
-				}
-				styles[ field['css_var'][0] ] = field['css_var'][1].replace( '$', newVal );
+
+				_.each( field.css_vars, function( cssVar ) {
+					if ( cssVar[2] && _.isObject( value ) && value[ cssVar[2] ] ) {
+						newVal = value[ cssVar[2] ];
+					}
+					styles[ cssVar[0] ] = cssVar[1].replace( '$', newVal );
+				} );
 				jQuery( '#kirki-css-vars' ).html( kirkiCssVars.buildStyle( styles ) )				;
 			} );
 		} );
