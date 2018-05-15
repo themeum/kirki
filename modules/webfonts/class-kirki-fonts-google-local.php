@@ -115,7 +115,7 @@ final class Kirki_Fonts_Google_Local {
 		if ( ! $this->files ) {
 			return;
 		}
-		$key = md5( $this->files );
+		$key = md5( json_encode( $this->files ) );
 		$cached = get_transient( $key );
 		if ( $cached ) {
 			return $cached;
