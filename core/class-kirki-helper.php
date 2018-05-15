@@ -117,7 +117,7 @@ class Kirki_Helper {
 			}
 		}
 
-		// The Wordpress filesystem.
+		// The WordPress filesystem.
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {
