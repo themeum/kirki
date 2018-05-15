@@ -91,7 +91,7 @@ final class Kirki_Modules_Webfonts_Local {
 		$fonts = array_keys( $this->googlefonts->fonts );
 		$fonts = array_unique( $fonts );
 		foreach ( $fonts as $family ) {
-			$css .= Kirki_Fonts_Google_Local::do( $family )->get_css();
+			$css .= Kirki_Fonts_Google_Local::init( $family )->get_css();
 		}
 		if ( $css ) {
 			echo '<style id="kirki-local-webfonts-' . esc_attr( sanitize_key( $this->config_id ) ) . '">' . $css . '</style>'; // WPCS: XSS ok.
