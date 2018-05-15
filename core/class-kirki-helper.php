@@ -83,11 +83,48 @@ class Kirki_Helper {
 	 * @return object WP_Filesystem
 	 */
 	public static function init_filesystem() {
-		global $wp_filesystem;
-		if ( empty( $wp_filesystem ) ) {
-			require_once ABSPATH . '/wp-admin/includes/file.php';
-			WP_Filesystem();
+		$credentials = array();
+
+		if ( ! defined( 'FS_METHOD' ) ) {
+			define( 'FS_METHOD', 'direct' );
 		}
+
+		$method = defined( 'FS_METHOD' ) ? FS_METHOD : false;
+
+		if ( 'ftpext' === $method ) {
+			// If defined, set it to that, Else, set to NULL.
+			$credentials['hostname'] = defined( 'FTP_HOST' ) ? preg_replace( '|\w+://|', '', FTP_HOST ) : null;
+			$credentials['username'] = defined( 'FTP_USER' ) ? FTP_USER : null;
+			$credentials['password'] = defined( 'FTP_PASS' ) ? FTP_PASS : null;
+
+			// Set FTP port.
+			if ( strpos( $credentials['hostname'], ':' ) && null !== $credentials['hostname'] ) {
+				list( $credentials['hostname'], $credentials['port'] ) = explode( ':', $credentials['hostname'], 2 );
+				if ( ! is_numeric( $credentials['port'] ) ) {
+					unset( $credentials['port'] );
+				}
+			} else {
+				unset( $credentials['port'] );
+			}
+
+			// Set connection type.
+			if ( ( defined( 'FTP_SSL' ) && FTP_SSL ) && 'ftpext' === $method ) {
+				$credentials['connection_type'] = 'ftps';
+			} elseif ( ! array_filter( $credentials ) ) {
+				$credentials['connection_type'] = null;
+			} else {
+				$credentials['connection_type'] = 'ftp';
+			}
+		}
+
+		// The WordPress filesystem.
+		global $wp_filesystem;
+
+		if ( empty( $wp_filesystem ) ) {
+			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+			WP_Filesystem( $credentials );
+		}
+
 		return $wp_filesystem;
 	}
 
