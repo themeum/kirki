@@ -80,7 +80,7 @@ final class Kirki_Fonts_Google_Local {
 	 * @param string $family The font-family name.
 	 * @return Kirki_Fonts_Google_Local
 	 */
-	public static function do( $family ) {
+	public static function init( $family ) {
 		$key = sanitize_key( $family );
 		if ( ! isset( self::$instances[ $key ] ) ) {
 			self::$instances[ $key ] = new self( $family );
