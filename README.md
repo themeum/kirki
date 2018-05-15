@@ -41,6 +41,7 @@ May 15 2018, dev time: 12 hours.
 * Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
 * Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
 * New: GDPR-Compliance: Google-Fonts are now downloaded server-side bypassing the google-CDN which collects user's IP addresses and personal data without their consent.
+* New: Added support for css-variables.
 
 ### 3.0.27 ###
 
