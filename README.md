@@ -38,7 +38,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Repeater control JS issue if saved value is malformatted [#1879](https://github.com/aristath/kirki/issues/1879) - props @asilcetin.
 * Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
 * Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
-
+* New: GDPR-Compliance: Google-Fonts are now downloaded server-side bypassing the google-CDN which collects user's IP addresses and personal data without their consent.
 
 ### 3.0.27 ###
 
