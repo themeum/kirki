@@ -103,7 +103,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/multicolor.js',
 					'controls/js/src/number.js',
 					'controls/js/src/palette.js',
-					'controls/js/src/preset.js',
 					'controls/js/src/radio-buttonset.js',
 					'controls/js/src/radio-image.js',
 					'controls/js/src/repeater.js',
@@ -159,6 +158,7 @@ module.exports = function( grunt ) {
 			},
 			finalJSON,
 			i,
+			fontFiles = {};
 			fontNames = [];
 
 		// Get file contents.
@@ -191,10 +191,16 @@ module.exports = function( grunt ) {
 			finalObject.order.trending.push( trendingFonts.items[ i ].family );
 		}
 
+		// Generate the font-files object.
+		for ( i = 0; i < popularityFonts.items.length; i++ ) {
+			fontFiles[ popularityFonts.items[ i ].family ] = popularityFonts.items[ i ].files;
+		}
+
 		// Write the final object to json.
 		finalJSON = JSON.stringify( finalObject );
 		grunt.file.write( 'modules/webfonts/webfonts.json', finalJSON );
 		grunt.file.write( 'modules/webfonts/webfont-names.json', JSON.stringify( fontNames ) );
+		grunt.file.write( 'modules/webfonts/webfont-files.json', JSON.stringify( fontFiles ) );
 
 		// Delete files no longer needed.
 		grunt.file.delete( 'modules/webfonts/webfonts-alpha.json' ); // jshint ignore:line

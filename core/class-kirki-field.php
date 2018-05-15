@@ -60,6 +60,22 @@ class Kirki_Field {
 	protected $input_attrs = array();
 
 	/**
+	 * Preset choices.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $preset = array();
+
+	/**
+	 * CSS Variables.
+	 *
+	 * @access protected
+	 * @var array
+	 */
+	protected $css_vars = array();
+
+	/**
 	 * Use "theme_mod" or "option".
 	 *
 	 * @access protected
@@ -681,5 +697,24 @@ class Kirki_Field {
 	protected function set_priority() {
 
 		$this->priority = absint( $this->priority );
+	}
+
+	/**
+	 * Sets the $css_vars
+	 *
+	 * @access protected
+	 */
+	protected function set_css_vars() {
+		if ( is_string( $this->css_vars ) ) {
+			$this->css_vars = array( $this->css_vars );
+		}
+		if ( isset( $this->css_vars[0] ) && is_string( $this->css_vars[0] ) ) {
+			$this->css_vars = array( $this->css_vars );
+		}
+		foreach ( $this->css_vars as $key => $val ) {
+			if ( ! isset( $val[1] ) ) {
+				$this->css_vars[ $key ][1] = '$';
+			}
+		}
 	}
 }

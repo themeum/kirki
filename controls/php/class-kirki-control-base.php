@@ -67,6 +67,15 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public $preset = array();
 
 	/**
+	 * Whitelisting the "css_vars" argument.
+	 *
+	 * @since 3.0.28
+	 * @access public
+	 * @var string
+	 */
+	public $css_vars = '';
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @since 3.1.0
@@ -182,6 +191,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		$this->json['kirkiOptionName'] = $this->option_name;
 		// The preset.
 		$this->json['preset'] = $this->preset;
+		// The CSS-Variables.
+		$this->json['css-var'] = $this->css_vars;
 	}
 
 	/**

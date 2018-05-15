@@ -21,18 +21,24 @@ class Kirki_Field_Preset extends Kirki_Field_Select {
 	 */
 	protected function set_type() {
 
-		$this->type = 'kirki-preset';
+		$this->type = 'kirki-select';
 
 	}
 
 	/**
-	 * Sets the $multiple
+	 * Set the preset.
 	 *
 	 * @access protected
+	 * @since 3.0.28
 	 */
-	protected function set_multiple() {
+	protected function set_preset() {
 
-		$this->multiple = 1;
+		// Set preset from the choices.
+		$this->preset = $this->choices;
 
+		// We're using a flat select.
+		foreach ( $this->choices as $key => $args ) {
+			$this->choices[ $key ] = $args['label'];
+		}
 	}
 }

@@ -139,7 +139,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				text: kirkiL10n.defaultCSSValues,
 				children: [
 					{ id: '', text: kirkiL10n.defaultBrowserFamily },
-					{ id: 'inherit', text: 'initial' },
+					{ id: 'initial', text: 'initial' },
 					{ id: 'inherit', text: 'inherit' }
 				]
 			},
@@ -203,7 +203,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( 'inherit' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
+		if ( 'inherit' === fontFamily || 'initial' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -272,7 +272,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			console.info( variants );
 		}
 
-		if ( 'inherit' === fontFamily ) {
+		if ( 'inherit' === fontFamily || 'initial' === fontFamily || '' === fontFamily ) {
 			value.variant = 'inherit';
 			variants      = [ '' ];
 			jQuery( control.selector + ' .variant' ).hide();

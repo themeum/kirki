@@ -4,8 +4,8 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 4.9.2
-Stable tag: 3.0.27
-License: GPLv2 or later
+Stable tag: 3.0.28
+License: MIT
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate framework for theme developers using the WordPress Customizer
@@ -33,9 +33,19 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.28 =
+
+May 15 2018, dev time: 12 hours.
+
+* Fix: Repeater control JS issue if saved value is malformatted [#1879](https://github.com/aristath/kirki/issues/1879) - props @asilcetin.
+* Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
+* Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
+* New: GDPR-Compliance: Google-Fonts are now downloaded server-side bypassing the google-CDN which collects user's IP addresses and personal data without their consent.
+* New: Added support for css-variables.
+
 = 3.0.27 =
 
-April 30 2018. dev time: 1 hour.
+April 30 2018, dev time: 1 hour.
 
 * Fix: multiselect in repeaters. Props @asilcetin [#1876](https://github.com/aristath/kirki/issues/1876).
 * Fix: CSS output on numeric values. [issue link](https://wordpress.org/support/topic/all-css-output-from-kirki-stop-working-on-version-3-0-26/).

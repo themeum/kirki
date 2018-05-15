@@ -307,7 +307,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 									<# if ( field.description ) { #><span class="description customize-control-description">{{{ field.description }}}</span><# } #>
 									<select data-field="{{{ field.id }}}"<# if ( ! _.isUndefined( field.multiple ) && false !== field.multiple ) { #> multiple="multiple" data-multiple="{{ field.multiple }}"<# } #>>
 										<# _.each( field.choices, function( choice, i ) { #>
-											<option value="{{{ i }}}" <# if ( field.default.indexOf(i) != -1 ) { #> selected="selected" <# } #>>{{ choice }}</option>
+											<option value="{{{ i }}}" <# if ( -1 !== jQuery.inArray( i, field.default ) ) { #> selected="selected" <# } #>>{{ choice }}</option>
 										<# }); #>
 									</select>
 								</label>
