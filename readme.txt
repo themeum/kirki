@@ -35,6 +35,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.28 =
 
+May 15 2018, dev time: 12 hours.
+
 * Fix: Repeater control JS issue if saved value is malformatted [#1879](https://github.com/aristath/kirki/issues/1879) - props @asilcetin.
 * Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
 * Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
@@ -42,7 +44,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.0.27 =
 
-April 30 2018. dev time: 1 hour.
+April 30 2018, dev time: 1 hour.
 
 * Fix: multiselect in repeaters. Props @asilcetin [#1876](https://github.com/aristath/kirki/issues/1876).
 * Fix: CSS output on numeric values. [issue link](https://wordpress.org/support/topic/all-css-output-from-kirki-stop-working-on-version-3-0-26/).
