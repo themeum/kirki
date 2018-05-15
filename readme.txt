@@ -4,8 +4,8 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 4.9.2
-Stable tag: 3.0.27
-License: GPLv2 or later
+Stable tag: 3.0.28
+License: MIT
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate framework for theme developers using the WordPress Customizer
