@@ -108,7 +108,7 @@ class Kirki_Modules_Webfonts {
 	public function get_method() {
 
 		// Figure out which method to use.
-		$method = apply_filters( 'kirki_googlefonts_load_method', 'local' );
+		$method = apply_filters( 'kirki_googlefonts_load_method', 'async' );
 
 		// Fallback to 'async' if value is invalid.
 		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method && 'local' !== $method ) {
