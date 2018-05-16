@@ -115,7 +115,7 @@ final class Kirki_Fonts_Google_Local {
 		if ( ! $this->files ) {
 			return;
 		}
-		$key = md5( $this->files );
+		$key = md5( json_encode( $this->files ) );
 		$cached = get_transient( $key );
 		if ( $cached ) {
 			return $cached;
@@ -169,6 +169,10 @@ final class Kirki_Fonts_Google_Local {
 
 		// Get the font-url.
 		$font_url = $this->get_variant_local_url( $variant );
+		$paths    = $this->get_font_files_paths();
+		if ( ! file_exists( $paths[ $variant ] ) ) {
+			$font_url = $this->files[ $variant ];
+		}
 
 		// Get the font-format.
 		$font_format = ( strpos( $font_url, '.woff2' ) ) ? 'woff2' : 'truetype';

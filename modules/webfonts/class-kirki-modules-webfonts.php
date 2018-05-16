@@ -39,7 +39,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected $fonts_google;
 
-
 	/**
 	 * The class constructor
 	 *
@@ -96,6 +95,8 @@ class Kirki_Modules_Webfonts {
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
 		}
+		new Kirki_Modules_Webfonts_Local( $this, $this->fonts_google );
+
 	}
 
 	/**
@@ -108,10 +109,10 @@ class Kirki_Modules_Webfonts {
 	public function get_method() {
 
 		// Figure out which method to use.
-		$method = apply_filters( 'kirki_googlefonts_load_method', 'local' );
+		$method = apply_filters( 'kirki_googlefonts_load_method', 'async' );
 
 		// Fallback to 'async' if value is invalid.
-		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method && 'local' !== $method ) {
+		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
 			$method = 'async';
 		}
 

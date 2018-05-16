@@ -3232,6 +3232,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
+		control.localFontsCheckbox();
 
 		// Font-size.
 		if ( control.params.default['font-size'] ) {
@@ -3626,6 +3627,22 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			google: googleFonts,
 			standard: standardFonts
 		};
+	},
+
+	localFontsCheckbox: function() {
+		var control           = this,
+			checkboxContainer = control.container.find( '.kirki-host-font-locally' ),
+			checkbox          = control.container.find( '.kirki-host-font-locally input' ),
+			checked           = jQuery( checkbox ).is( ':checked' );
+
+		if ( control.setting._value && control.setting._value.downloadFont ) {
+			jQuery( checkbox ).attr( 'checked', 'checked' );
+		}
+
+		jQuery( checkbox ).on( 'change', function() {
+			checked = jQuery( checkbox ).is( ':checked' );
+			control.saveValue( 'downloadFont', checked );
+		} );
 	},
 
 	/**
