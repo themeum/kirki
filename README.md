@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 4.9.2  
-**Stable tag:** 3.0.29  
+**Stable tag:** 3.0.31  
 **License:** MIT  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,7 +33,22 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.31 ###
+
+May 16 2018
+
+* Fix: Added fallback to google-CDN if locally-hosted google-fonts can't be found.
+* Fix: Updated google-fonts list.
+
+### 3.0.30 ###
+
+May 15 2018
+
+* Fix: Fixed caching for locally-downloaded google-fonts (GDPR compliance helper).
+
 ### 3.0.29 ###
+
+May 15 2018
 
 * Fix: PHP error in some PHP versions because of the "do" method-name.
 

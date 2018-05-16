@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 4.9.2
-Stable tag: 3.0.30
+Stable tag: 3.0.31
 License: MIT
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,13 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.31 =
+
+May 16 2018
+
+* Fix: Added fallback to google-CDN if locally-hosted google-fonts can't be found.
+* Fix: Updated google-fonts list.
 
 = 3.0.30 =
 
