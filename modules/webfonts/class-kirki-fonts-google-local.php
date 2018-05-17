@@ -331,7 +331,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $this->folder_path ) ) {
-			Kirki_Helper::init_filesystem()->mkdir( $this->folder_path, FS_CHMOD_FILE );
+			Kirki_Helper::init_filesystem()->mkdir( $this->folder_path, FS_CHMOD_DIR );
 		}
 		// If the file exists no reason to do anything.
 		if ( file_exists( $path ) ) {
@@ -405,7 +405,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $path ) ) {
-			Kirki_Helper::init_filesystem()->mkdir( $path, FS_CHMOD_FILE );
+			Kirki_Helper::init_filesystem()->mkdir( $path, FS_CHMOD_DIR );
 		}
 
 		// Return the path.
