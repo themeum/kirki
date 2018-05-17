@@ -4,7 +4,7 @@ Tags: customizer,options framework, theme, mods, toolkit
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 4.9.2
-Stable tag: 3.0.32
+Stable tag: 3.0.33
 License: MIT
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,14 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.33 =
+
+May 17 2018
+
+* Fix: Google-Fonts folder permissions improperly set in v3.0.28.
+* Fix: Select issues in repeater controls [#1892](https://github.com/aristath/kirki/issues/1892), [#1888](https://github.com/aristath/kirki/issues/1888) props @asilcetin.
+* Fix: Updated Google Fonts to include latest font-family additions.
 
 = 3.0.32 =
 
