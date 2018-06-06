@@ -130,7 +130,7 @@ final class Kirki_Fonts_Google {
 			}
 
 			// If not a google-font, then we can skip this.
-			if ( ! Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
+			if ( ! isset( $value['font-family'] ) || ! Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
 				return;
 			}
 
