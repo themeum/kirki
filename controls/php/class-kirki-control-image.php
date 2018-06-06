@@ -66,7 +66,7 @@ class Kirki_Control_Image extends Kirki_Control_Base {
 		<div class="image-wrapper attachment-media-view image-upload">
 			<# if ( data.value['url'] || '' !== url ) { #>
 				<div class="thumbnail thumbnail-image">
-					<img src="{{ url }}" alt="" />
+					<img src="{{ url }}"/>
 				</div>
 			<# } else { #>
 				<div class="placeholder">{{ data.choices.labels.placeholder }}</div>

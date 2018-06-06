@@ -54,7 +54,7 @@ class Kirki_Control_Background extends Kirki_Control_Base {
 				<h4><?php esc_attr_e( 'Background Image', 'kirki' ); ?></h4>
 				<div class="attachment-media-view background-image-upload">
 					<# if ( data.value['background-image'] ) { #>
-						<div class="thumbnail thumbnail-image"><img src="{{ data.value['background-image'] }}" alt="" /></div>
+						<div class="thumbnail thumbnail-image"><img src="{{ data.value['background-image'] }}"/></div>
 					<# } else { #>
 						<div class="placeholder"><?php esc_attr_e( 'No File Selected', 'kirki' ); ?></div>
 					<# } #>
