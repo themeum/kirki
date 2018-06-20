@@ -100,7 +100,7 @@ final class Kirki_Fonts_Google_Local {
 		$key               = sanitize_key( $this->family );
 		$this->folder_path = $this->get_root_path() . "/$key";
 		$this->folder_url  = $this->get_root_url() . "/$key";
-		$this->files        = $this->get_font_family();
+		$this->files       = $this->get_font_family();
 	}
 
 	/**
@@ -437,6 +437,7 @@ final class Kirki_Fonts_Google_Local {
 				$url = str_replace( $original_domain, $mapped_domain, $url );
 			}
 		}
+		$url = set_url_scheme( $url );
 		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
 	}
 
