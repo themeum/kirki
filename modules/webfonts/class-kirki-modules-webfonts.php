@@ -39,7 +39,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected $fonts_google;
 
-
 	/**
 	 * The class constructor
 	 *
@@ -50,6 +49,7 @@ class Kirki_Modules_Webfonts {
 
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google-local.php' );
 
 		add_action( 'wp_loaded', array( $this, 'run' ) );
 
@@ -95,6 +95,8 @@ class Kirki_Modules_Webfonts {
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
 		}
+		new Kirki_Modules_Webfonts_Local( $this, $this->fonts_google );
+
 	}
 
 	/**
@@ -109,7 +111,7 @@ class Kirki_Modules_Webfonts {
 		// Figure out which method to use.
 		$method = apply_filters( 'kirki_googlefonts_load_method', 'async' );
 
-		// Fallback to 'link' if value is invalid.
+		// Fallback to 'async' if value is invalid.
 		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
 			$method = 'async';
 		}

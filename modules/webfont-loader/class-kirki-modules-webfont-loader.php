@@ -75,7 +75,8 @@ class Kirki_Modules_Webfont_Loader {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		if ( self::$load ) {
+		global $wp_customize;
+		if ( self::$load || $wp_customize || is_customize_preview() ) {
 			wp_enqueue_script( 'webfont-loader', trailingslashit( Kirki::$url ) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', array(), '3.0.28', true );
 		}
 	}

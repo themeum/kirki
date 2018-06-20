@@ -62,23 +62,27 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.Control.extend( {
 
 					// This will return the selected image from the Media Uploader, the result is an object.
 					var uploadedImage = image.state().get( 'selection' ).first(),
-						previewImage  = uploadedImage.toJSON().sizes.full.url;
+						jsonImg       = uploadedImage.toJSON(),
+						previewImage  = jsonImg.url;
 
-					if ( ! _.isUndefined( uploadedImage.toJSON().sizes.medium ) ) {
-						previewImage = uploadedImage.toJSON().sizes.medium.url;
-					} else if ( ! _.isUndefined( uploadedImage.toJSON().sizes.thumbnail ) ) {
-						previewImage = uploadedImage.toJSON().sizes.thumbnail.url;
+					if ( ! _.isUndefined( jsonImg.sizes ) ) {
+						previewImg = jsonImg.sizes.full.url;
+						if ( ! _.isUndefined( jsonImg.sizes.medium ) ) {
+							previewImage = jsonImg.sizes.medium.url;
+						} else if ( ! _.isUndefined( jsonImg.sizes.thumbnail ) ) {
+							previewImage = jsonImg.sizes.thumbnail.url;
+						}
 					}
 
 					if ( 'array' === saveAs ) {
-						control.saveValue( 'id', uploadedImage.toJSON().id );
-						control.saveValue( 'url', uploadedImage.toJSON().sizes.full.url );
-						control.saveValue( 'width', uploadedImage.toJSON().width );
-						control.saveValue( 'height', uploadedImage.toJSON().height );
+						control.saveValue( 'id', jsonImg.id );
+						control.saveValue( 'url', jsonImg.sizes.full.url );
+						control.saveValue( 'width', jsonImg.width );
+						control.saveValue( 'height', jsonImg.height );
 					} else if ( 'id' === saveAs ) {
-						control.saveValue( 'id', uploadedImage.toJSON().id );
+						control.saveValue( 'id', jsonImg.id );
 					} else {
-						control.saveValue( 'url', uploadedImage.toJSON().sizes.full.url );
+						control.saveValue( 'url', ( ( ! _.isUndefined( jsonImg.sizes ) ) ? jsonImg.sizes.full.url : jsonImg.url ) );
 					}
 
 					if ( preview.length ) {

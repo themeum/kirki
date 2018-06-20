@@ -12,6 +12,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
+		control.localFontsCheckbox();
 
 		// Font-size.
 		if ( control.params.default['font-size'] ) {
@@ -139,7 +140,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				text: kirkiL10n.defaultCSSValues,
 				children: [
 					{ id: '', text: kirkiL10n.defaultBrowserFamily },
-					{ id: 'inherit', text: 'initial' },
+					{ id: 'initial', text: 'initial' },
 					{ id: 'inherit', text: 'inherit' }
 				]
 			},
@@ -203,7 +204,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Hide if we're not on a google-font.
-		if ( 'inherit' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
+		if ( 'inherit' === fontFamily || 'initial' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
 			jQuery( control.selector + ' .font-backup' ).hide();
 			return;
 		}
@@ -272,7 +273,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			console.info( variants );
 		}
 
-		if ( 'inherit' === fontFamily ) {
+		if ( 'inherit' === fontFamily || 'initial' === fontFamily || '' === fontFamily ) {
 			value.variant = 'inherit';
 			variants      = [ '' ];
 			jQuery( control.selector + ' .variant' ).hide();
@@ -406,6 +407,22 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			google: googleFonts,
 			standard: standardFonts
 		};
+	},
+
+	localFontsCheckbox: function() {
+		var control           = this,
+			checkboxContainer = control.container.find( '.kirki-host-font-locally' ),
+			checkbox          = control.container.find( '.kirki-host-font-locally input' ),
+			checked           = jQuery( checkbox ).is( ':checked' );
+
+		if ( control.setting._value && control.setting._value.downloadFont ) {
+			jQuery( checkbox ).attr( 'checked', 'checked' );
+		}
+
+		jQuery( checkbox ).on( 'change', function() {
+			checked = jQuery( checkbox ).is( ':checked' );
+			control.saveValue( 'downloadFont', checked );
+		} );
 	},
 
 	/**

@@ -4,8 +4,8 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 4.9.2  
-**Stable tag:** 3.0.25  
-**License:** GPLv2 or later  
+**Stable tag:** 3.0.33  
+**License:** MIT  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
 The ultimate framework for theme developers using the WordPress Customizer
@@ -33,7 +33,60 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.33 ###
+
+May 17 2018
+
+* Fix: Google-Fonts folder permissions improperly set in v3.0.28.
+* Fix: Select issues in repeater controls [#1892](https://github.com/aristath/kirki/issues/1892), [#1888](https://github.com/aristath/kirki/issues/1888) props @asilcetin.
+* Fix: Updated Google Fonts to include latest font-family additions.
+
+### 3.0.32 ###
+
+May 16 2018
+
+* Fix: Reverted some google-fonts changes. Fixes loading issues on some environments.
+* New: Added option per-typography-control to allow users to host Google Fonts on their own servers (GDPR compliance).
+
+### 3.0.31 ###
+
+May 16 2018
+
+* Fix: Added fallback to google-CDN if locally-hosted google-fonts can't be found.
+* Fix: Updated google-fonts list.
+
+### 3.0.30 ###
+
+May 15 2018
+
+* Fix: Fixed caching for locally-downloaded google-fonts (GDPR compliance helper).
+
+### 3.0.29 ###
+
+May 15 2018
+
+* Fix: PHP error in some PHP versions because of the "do" method-name.
+
+### 3.0.28 ###
+
+May 15 2018, dev time: 12 hours.
+
+* Fix: Repeater control JS issue if saved value is malformatted [#1879](https://github.com/aristath/kirki/issues/1879) - props @asilcetin.
+* Fix: Preset control bug [#1882](https://github.com/aristath/kirki/issues/1882).
+* Fix: JS error if an SVG is uploaded to an image control [#1883](https://github.com/aristath/kirki/issues/1883) Props @seantjohnson-dev
+* New: GDPR-Compliance: Google-Fonts are now downloaded server-side bypassing the google-CDN which collects user's IP addresses and personal data without their consent.
+* New: Added support for css-variables.
+
+### 3.0.27 ###
+
+April 30 2018, dev time: 1 hour.
+
+* Fix: multiselect in repeaters. Props @asilcetin [#1876](https://github.com/aristath/kirki/issues/1876).
+* Fix: CSS output on numeric values. [issue link](https://wordpress.org/support/topic/all-css-output-from-kirki-stop-working-on-version-3-0-26/).
+
 ### 3.0.26
+
+April 27 2018, dev time: 43 hours.
 
 * Fix: Color Palette: material colors 'light-blue' doesn't work [#1783](https://github.com/aristath/kirki/issues/1783).
 * Fix: Google Fonts switch error [#1791](https://github.com/aristath/kirki/issues/1791).
@@ -50,6 +103,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 * Fix: Display typography with no default values [#1797](https://github.com/aristath/kirki/issues/1797).
 * Fix: Define "normal" as a valid css-value for sanitizations [#1814](https://github.com/aristath/kirki/issues/1814).
 * Fix: `background` controls now output `background-color` as simply `background` if no `background-image` is defined in the value [#1808](https://github.com/aristath/kirki/issues/1808).
+* Fix: @media-queries fix due to minimized CSS. [#1787](https://github.com/aristath/kirki/issues/1787).
+* Fix: `Kirki_Helper::compare_values` contains/in PHP warning if value doesn't exist in array [#1828](https://github.com/aristath/kirki/issues/1828).
+* Fix: Invalid Value in the Dimension control [#1844](https://github.com/aristath/kirki/issues/1844).
+* Fix: Add `fr` to the array of valid units used in validations [
+86adedb](https://github.com/aristath/kirki/pull/1784/commits/86adedb8cd4c06c7e6538c3087233a6840dee562)
+* Fix: Updated webfonts.
 * New: Migrated `number` control to new structure.
 ###
 ### 3.0.25 ###
