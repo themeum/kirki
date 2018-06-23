@@ -153,7 +153,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 							event.preventDefault();
 
 							<?php if ( $show_confirm ) : ?>
-								if ( ! confirm( '<?php esc_attr_e( 'Are you sure? Dismissing this message will hide the installation recommendation and you will have to manually install and activate the plugin in the future.' ); ?>' ) ) {
+								if ( ! confirm( '<?php esc_attr_e( 'Are you sure? Dismissing this message will hide the installation recommendation and you will have to manually install and activate the plugin in the future.', 'textdomain' ); ?>' ) ) {
 									return;
 								}
 							<?php endif; ?>
