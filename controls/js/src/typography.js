@@ -167,7 +167,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		} );
 
 		// Set the initial value.
-		if ( value['font-family'] ) {
+		if ( value['font-family'] || '' === value['font-family'] ) {
 			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
 		}
 
