@@ -33,9 +33,20 @@ final class Kirki_Telemetry {
 			return;
 		}
 
-		$this->dismiss_notice();
-
+		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+	}
+
+	/**
+	 * Additional actions that run on init.
+	 *
+	 * @access public
+	 * @since 3.0.34
+	 * @return void
+	 */
+	public function init() {
+		$this->dismiss_notice();
+		$this->consent();
 	}
 
 	/**
@@ -93,8 +104,8 @@ final class Kirki_Telemetry {
 	 */
 	public function admin_notice() {
 
-		// Early exit if the user has dismissed the consent.
-		if ( get_option( 'kirki_telemetry_no_consent', false ) ) {
+		// Early exit if the user has dismissed the consent, or if they have opted-in.
+		if ( get_option( 'kirki_telemetry_no_consent' ) || get_option( 'kirki_telemetry_optin' ) ) {
 			return;
 		}
 		$data = $this->get_data();
@@ -188,10 +199,6 @@ final class Kirki_Telemetry {
 	 */
 	public function dismiss_notice() {
 
-		if ( ! function_exists( 'wp_verify_nonce' ) ) {
-			require_once ABSPATH . WPINC . '/pluggable.php';
-		}
-
 		// Check if this is the request we want.
 		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-hide-notice'] ) ) {
 			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-hide-notice'] ) ) ) {
@@ -199,6 +206,27 @@ final class Kirki_Telemetry {
 				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) ) ) {
 					// All good, we can save the option to dismiss this notice.
 					update_option( 'kirki_telemetry_no_consent', true );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Dismisses the notice.
+	 *
+	 * @access public
+	 * @since 3.0.34
+	 * @return void
+	 */
+	public function consent() {
+
+		// Check if this is the request we want.
+		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-consent-notice'] ) ) {
+			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-consent-notice'] ) ) ) {
+				// Check the wp-nonce.
+				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) ) ) {
+					// All good, we can save the option to dismiss this notice.
+					update_option( 'kirki_telemetry_optin', true );
 				}
 			}
 		}
