@@ -32,6 +32,10 @@ final class Kirki_Telemetry {
 		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
 			return;
 		}
+
+		$this->dismiss_notice();
+
+		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
 	}
 
 	/**
@@ -44,15 +48,15 @@ final class Kirki_Telemetry {
 	public function maybe_send_data() {
 
 		// Check if the user has consented to the data sending.
-		$optin = get_option( 'kirki_telemetry_optin' );
-		if ( ! $optin ) {
+		if ( ! get_option( 'kirki_telemetry_optin' ) ) {
 			return;
 		}
 
+		// Only send data once/month.
 		$sent = get_site_transient( 'kirki_telemetry_sent' );
 		if ( ! $sent ) {
 			$this->send_data();
-			set_site_transient( 'kirki_telemetry_sent', time(), WEEK_IN_SECONDS );
+			set_site_transient( 'kirki_telemetry_sent', time(), MONTH_IN_SECONDS );
 		}
 	}
 
@@ -81,6 +85,79 @@ final class Kirki_Telemetry {
 	}
 
 	/**
+	 * The admin-notice.
+	 *
+	 * @access private
+	 * @since 3.0.34
+	 * @return void
+	 */
+	public function admin_notice() {
+
+		// Early exit if the user has dismissed the consent.
+		if ( get_option( 'kirki_telemetry_no_consent', false ) ) {
+			return;
+		}
+		$data = $this->get_data();
+		?>
+		<div class="notice notice-info kirki-telemetry">
+			<p><strong><?php esc_html_e( 'Help Kirki improve with usage tracking.', 'kirki' ); ?></strong></p>
+			<p><?php esc_html_e( 'Gathering usage data about the theme you are using allows us to know which themes are most-used and work closer with developers of your theme to improve both the theme you use and the Kirki framework. We will never collect any personal information about you or your site.', 'kirki' ); ?></p>
+			<table class="data-to-send hidden widefat">
+				<thead>
+					<tr>
+						<th colspan="2"><?php esc_html_e( 'Data that will be sent', 'kirki' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>PHP Version</td>
+						<td><code><?php echo esc_attr( $data['phpVer'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td>ID</td>
+						<td><code><?php echo esc_attr( $data['siteID'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td>Theme Name</td>
+						<td><code><?php echo esc_attr( $data['themeName'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td>Theme Author</td>
+						<td><code><?php echo esc_attr( $data['themeAuthor'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td>Theme URI</td>
+						<td><code><?php echo esc_attr( $data['themeURI'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td>Theme Version</td>
+						<td><code><?php echo esc_attr( $data['themeVersion'] ); ?></code></td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="actions">
+
+				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'kirki-consent-notice', 'telemetry' ) ) ); ?>" class="button button-primary consent"><?php esc_html_e( 'I agree', 'kirki' ); ?></a>
+				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'kirki-hide-notice', 'telemetry' ) ) ); ?>" class="button button-secondary dismiss"><?php esc_html_e( 'No thanks', 'kirki' ); ?></a>
+				<a class="button button-link alignright details"><?php esc_html_e( 'Show me the data you send', 'kirki' ); ?></a>
+			</p>
+			<script>
+			jQuery( '.kirki-telemetry a.consent' ).on( 'click', function() {
+
+			});
+			jQuery( '.kirki-telemetry a.dismiss' ).on( 'click', function() {
+
+			});
+			jQuery( '.kirki-telemetry a.details' ).on( 'click', function() {
+				jQuery( '.kirki-telemetry .data-to-send' ).removeClass( 'hidden' );
+				jQuery( '.kirki-telemetry a.details' ).hide();
+			});
+			</script>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Builds and returns the data or uses cached if data already exists.
 	 *
 	 * @access private
@@ -93,12 +170,37 @@ final class Kirki_Telemetry {
 
 		// Build data and return the array.
 		return array(
-			'phpver'       => PHP_VERSION,
+			'phpVer'       => PHP_VERSION,
 			'siteID'       => md5( home_url() ),
 			'themeName'    => $theme->get( 'Name' ),
 			'themeAuthor'  => $theme->get( 'Author' ),
 			'themeURI'     => $theme->get( 'ThemeURI' ),
 			'themeVersion' => $theme->get( 'Version' ),
 		);
+	}
+
+	/**
+	 * Dismisses the notice.
+	 *
+	 * @access public
+	 * @since 3.0.34
+	 * @return void
+	 */
+	public function dismiss_notice() {
+
+		if ( ! function_exists( 'wp_verify_nonce' ) ) {
+			require_once ABSPATH . WPINC . '/pluggable.php';
+		}
+
+		// Check if this is the request we want.
+		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-hide-notice'] ) ) {
+			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-hide-notice'] ) ) ) {
+				// Check the wp-nonce.
+				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) ) ) {
+					// All good, we can save the option to dismiss this notice.
+					update_option( 'kirki_telemetry_no_consent', true );
+				}
+			}
+		}
 	}
 }
