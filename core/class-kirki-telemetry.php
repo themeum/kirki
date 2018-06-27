@@ -47,6 +47,7 @@ final class Kirki_Telemetry {
 	public function init() {
 		$this->dismiss_notice();
 		$this->consent();
+		$this->maybe_send_data();
 	}
 
 	/**
@@ -89,7 +90,7 @@ final class Kirki_Telemetry {
 		);
 
 		// Build the URL with the arguments.
-		$url = add_query_arg( $data, 'https://wpmu.io/?action=kirki-stats' );
+		$url = add_query_arg( $data, 'https://wpmu.test/?action=kirki-stats' );
 
 		// Ping remote server.
 		wp_remote_get( $url );
@@ -181,7 +182,7 @@ final class Kirki_Telemetry {
 
 		// Build data and return the array.
 		return array(
-			'phpVer'       => PHP_VERSION,
+			'phpVer'       => phpversion( 'tidy' ),
 			'siteID'       => md5( home_url() ),
 			'themeName'    => $theme->get( 'Name' ),
 			'themeAuthor'  => $theme->get( 'Author' ),
@@ -193,11 +194,11 @@ final class Kirki_Telemetry {
 	/**
 	 * Dismisses the notice.
 	 *
-	 * @access public
+	 * @access private
 	 * @since 3.0.34
 	 * @return void
 	 */
-	public function dismiss_notice() {
+	private function dismiss_notice() {
 
 		// Check if this is the request we want.
 		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-hide-notice'] ) ) {
@@ -214,11 +215,11 @@ final class Kirki_Telemetry {
 	/**
 	 * Dismisses the notice.
 	 *
-	 * @access public
+	 * @access private
 	 * @since 3.0.34
 	 * @return void
 	 */
-	public function consent() {
+	private function consent() {
 
 		// Check if this is the request we want.
 		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-consent-notice'] ) ) {
