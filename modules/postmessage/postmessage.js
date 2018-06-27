@@ -117,7 +117,8 @@ var kirkiPostMessage = {
 		fromOutput: function( output, value, controlType ) {
 			var styles      = '',
 				kirkiParent = window.parent.kirki,
-				googleFont  = '';
+				googleFont  = '',
+				mediaQuery  = false;
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
@@ -184,6 +185,21 @@ var kirkiPostMessage = {
 					styles += output.element + '{' + output.property + ':' + kirkiPostMessage.util.processValue( output, value ) + ';}';
 					break;
 			}
+
+			// Get the media-query.
+			if ( output.media_query && 'string' === typeof output.media_query && ! _.isEmpty( output.media_query ) ) {
+				mediaQuery = output.media_query;
+				if ( -1 === mediaQuery.indexOf( '@media' ) ) {
+					mediaQuery = '@media ' + mediaQuery;
+				}
+			}
+
+			// If we have a media-query, add it and return.
+			if ( mediaQuery ) {
+				return mediaQuery + '{' + styles + '}';
+			}
+
+			// Return the styles.
 			return styles;
 		}
 	},
