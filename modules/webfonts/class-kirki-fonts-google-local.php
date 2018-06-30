@@ -437,7 +437,7 @@ final class Kirki_Fonts_Google_Local {
 				$url = str_replace( $original_domain, $mapped_domain, $url );
 			}
 		}
-		$url = set_url_scheme( $url );
+		$url = str_replace( array( 'https://', 'http://' ), '//', $url );
 		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
 	}
 
