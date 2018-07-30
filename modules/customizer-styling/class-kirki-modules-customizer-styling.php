@@ -419,6 +419,172 @@ class Kirki_Modules_Customizer_Styling {
 				margin-left: -<?php echo esc_attr( $config['width'] ); ?>;
 			}
 		<?php endif; ?>
+		
+		.preview-tablet .wp-full-overlay-main {
+			width: 768px;
+		}
+		.kirki-group-outer
+		{
+			border: solid thin rgba(0,0,0,0.1);
+			padding: 5px;
+		}
+		.kirki-group-outer h5
+		{
+			margin: 0;
+		}
+		.kirki-group-outer .border-outer .border-input-outer
+		{
+			width: 60px;
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+		}
+		.kirki-control-type-dimensions .kirki-control-dimensions{
+			overflow:hidden
+		}
+		.kirki-control-type-dimensions li{
+			float:left;
+			width:20%
+		}
+		.kirki-control-type-dimensions li .kirki-link-dimensions,.kirki-control-type-dimensions li input{
+			display:block;
+			text-align:center;
+			width:100%;
+			border-color:#a4afb7;
+			height:27px
+		}
+		.kirki-control-type-dimensions li input{
+			border-left:none;
+			-webkit-border-radius:0;
+			border-radius:0;
+			padding:4px 0
+		}
+		.kirki-control-type-dimensions li input:focus+.kirki-control-dimension-label{
+			color:#505457
+		}
+		.kirki-control-type-dimensions li .kirki-link-dimensions{
+			border:1px solid #a4afb7;
+			border-left:none;
+			background-color:#fff;
+			padding:0;
+			outline:none;
+			-webkit-border-radius:0 3px 3px 0;
+			border-radius:0 3px 3px 0;
+			cursor:pointer
+		}
+		.kirki-control-type-dimensions li:first-child input{
+			border-left:1px solid #a4afb7;
+			-webkit-border-radius:3px 0 0 3px;
+			border-radius:3px 0 0 3px
+		}
+		.kirki-control-type-dimensions .kirki-control-dimension-label{
+			display:block;
+			text-align:center;
+			color:#505457;
+			font-size:9px;
+			text-transform:uppercase;
+			padding-top:5px
+		}
+		.kirki-control-type-dimensions .kirki-link-dimensions.unlinked{
+			background-color:#fff
+		}
+		.kirki-control-type-dimensions .kirki-link-dimensions.unlinked .kirki-linked{
+			display:none
+		}
+		.kirki-control-type-dimensions .kirki-link-dimensions:not(.unlinked){
+			background-color:#a4afb7
+		}
+		.kirki-control-type-dimensions .kirki-link-dimensions:not(.unlinked) .kirki-unlinked{
+			display:none
+		}
+		.kirki-control-type-dimensions .kirki-link-dimensions .kirki-linked{
+			color:#fff
+		}
+		.kirki-screen-only,.screen-reader-text,.screen-reader-text span,.ui-helper-hidden-accessible{
+			position:absolute;
+			top:-10000em;
+			width:1px;
+			height:1px;
+			margin:-1px;
+			padding:0;
+			overflow:hidden;
+			clip:rect(0,0,0,0);
+			border:0
+		}
+
+		.kirki-device-select-options
+		{
+			text-align:right;
+			display: inline;
+		}
+
+		.kirki-device-select-options li
+		{
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		.customize-control-kirki-multicheck ul {
+			display: flex;
+		}
+
+		.customize-control-kirki-multicheck ul li {
+			width: 100%;
+		}
+
+		.customize-control-kirki-multicheck ul li label {
+			background: rgba(0, 0, 0, 0.1);
+			border: 1px rgba(0, 0, 0, 0.1);
+			color: #555d66;
+			margin: 0;
+			text-align: center;
+			padding: 0.5em 1em;
+			display: block;
+		}
+
+		.customize-control-kirki-multicheck ul li label.checked {
+			background-color: #00a0d2;
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.customize-control-kirki-multicheck ul li input {
+			display: none;
+		}
+		
+		.kirki-units-choices
+		{
+			-webkit-box-flex:1;
+			-webkit-flex-grow:1;
+			-ms-flex-positive:1;
+			flex-grow:1;
+			text-align:right
+		}
+		.kirki-units-choices input{
+			display:none
+		}
+		.kirki-units-choices input:not(:checked)+label{
+			color:#c2cbd2
+		}
+		.kirki-units-choices input:checked+label{
+			text-decoration:underline
+		}
+		.kirki-units-choices label{
+			cursor:pointer;
+			padding:0 2px;
+			text-transform:uppercase;
+			font-size:9px
+		}
+		.kirki-units-choices
+		{
+			float:right;
+		}
+		li.hidden-device
+		{
+			display:none;
+		}
+		.kirki-device-select-options li.active{
+			color: #00a0d2;
+		}
 		</style>
 		<?php
 	}
