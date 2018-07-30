@@ -104,12 +104,30 @@ class Kirki_Output {
 	 * @return string|array
 	 */
 	protected function apply_value_pattern( $output, $value ) {
-
+		global $post;
 		if ( isset( $output['value_pattern'] ) && ! empty( $output['value_pattern'] ) && is_string( $output['value_pattern'] ) ) {
-			if ( ! is_array( $value ) ) {
-				$value = str_replace( '$', $value, $output['value_pattern'] );
+			//Check for post meta first...
+			$post_meta_value = null;
+			$has_post_meta = false;
+			if ( $post )
+			{
+				$post_meta = get_post_meta ( $post->ID, 'kirki_mb_' . $this->field['settings'], true );
+				if ( $post_meta != '' )
+				{
+					$post_meta_deserialized = json_decode ( $post_meta, true );
+					if ( $post_meta_deserialized )
+						$post_meta_value = $post_meta_deserialized[ $replace ];
+					else
+						$post_meta_value = $post_meta;
+				}
 			}
+			
+			if ( ! is_array( $value ) ) {
+				$value = str_replace( '$', $value, $post_meta_value ? $post_meta_value : $output['value_pattern'] );
+			}
+			
 			if ( is_array( $value ) ) {
+				$value = is_array ( $post_meta_value ) ? $post_meta_value : $value;
 				foreach ( array_keys( $value ) as $value_k ) {
 					if ( ! is_string( $value[ $value_k ] ) ) {
 						continue;
