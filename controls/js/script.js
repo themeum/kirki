@@ -1504,9 +1504,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 
 	// When we're finished loading continue processing
 	ready: function() {
-
+		
 		'use strict';
-
+		
 		var control = this;
 
 		// Init the control.

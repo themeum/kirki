@@ -24,12 +24,16 @@
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-sass": "*",
+    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-curl": "*",
     "grunt-http": "*",
     "grunt-jscs": "*",
     "grunt-wp-readme-to-markdown": "*"
+  },
+  "dependencies": {
+    "grunt-sass": "^3.0.1",
+    "node-sass": "^4.9.2"
   }
 }

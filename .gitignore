@@ -35,3 +35,7 @@ svn
 # PHPUNIT #
 ###########
 build/logs
+
+# VS Code #
+###########
+.vscode
