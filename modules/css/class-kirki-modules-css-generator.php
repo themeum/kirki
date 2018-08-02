@@ -170,6 +170,8 @@ final class Kirki_Modules_CSS_Generator {
 			'kirki-image'      => 'Kirki_Output_Field_Image',
 			'kirki-typography' => 'Kirki_Output_Field_Typography',
 			'kirki-multicolor' => 'Kirki_Output_Field_Multicolor',
+			// 'kirki-border' =  'Kirki_Output_Field_Border',
+			// 'kirki-spacing' =  'Kirki_Output_Field_Spacing'
 		) );
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 			$classname = $field_output_classes[ self::$field_type ];

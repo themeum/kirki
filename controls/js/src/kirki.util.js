@@ -284,6 +284,66 @@ kirki = jQuery.extend( kirki, {
 				// Check the validity of the numeric value and units.
 				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
 			}
+		},
+		
+		media_query: {
+			init_selectors: function( control, container, callbacks )
+			{
+				var desktop_btn = container.find( '.kirki-device-select-options li.desktop' ),
+					tablet_btn = container.find( '.kirki-device-select-options li.tablet' ),
+					mobile_btn = container.find( '.kirki-device-select-options li.mobile' ),
+					active_device = 0,
+					multiple = false;
+				
+				desktop_btn.click( function(e)
+				{
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
+					{
+						desktop_btn.toggleClass( 'multiple' );
+						if ( desktop_btn.hasClass( 'multiple' ) )
+						{
+							multiple = true;
+							tablet_btn.removeClass( 'hidden-device' );
+							mobile_btn.removeClass( 'hidden-device' );
+						}
+						else
+						{
+							multiple = false;
+							tablet_btn.addClass( 'hidden-device' );
+							mobile_btn.addClass( 'hidden-device' );
+							
+							callbacks.device_change( active_device );
+						}
+					}
+					else
+					{
+						active_device = 0;
+						tablet_btn.removeClass( 'active' );
+						mobile_btn.removeClass( 'active' );
+						callbacks.device_change( active_device );
+					}
+				});
+				tablet_btn.click( function(e)
+				{
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					active_device = 1;
+					mobile_btn.removeClass( 'active' );
+					tablet_btn.addClass( 'active' );
+					callbacks.device_change( active_device );
+				});
+				mobile_btn.click( function(e)
+				{
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					active_device = 2;
+					mobile_btn.addClass( 'active' );
+					tablet_btn.removeClass( 'active' );
+					callbacks.device_change( active_device );
+				});
+			}
 		}
 	}
 } );

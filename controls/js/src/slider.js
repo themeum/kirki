@@ -6,7 +6,12 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			rangeInput   = control.container.find( 'input[type="range"]' ),
 			textInput    = control.container.find( 'input[type="text"]' ),
 			value        = control.setting._value;
-
+			kirki.util.media_query.init_selectors ( control, control.container, {
+				device_change: function( device )
+				{
+					
+				}
+			});
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 

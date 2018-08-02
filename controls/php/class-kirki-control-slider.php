@@ -60,12 +60,12 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+			<ul class="kirki-device-select-options">
+				<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
+				<li class="tablet"><span class="dashicons dashicons-tablet"></span></li>
+				<li class="mobile"><span class="dashicons dashicons-smartphone"></span></li>
+			</ul>
 			<div class="wrapper">
-				<ul class="kirki-device-select-options">
-					<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
-					<li class="tablet hidden-device"><span class="dashicons dashicons-tablet"></span></li>
-					<li class="mobile hidden-device"><span class="dashicons dashicons-smartphone"></span></li>
-				</ul>
 				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
 				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
 				<span class="value">

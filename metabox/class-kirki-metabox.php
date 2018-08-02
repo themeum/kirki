@@ -1,4 +1,5 @@
 <?php
+include_once ABSPATH . 'wp-includes/class-wp-customize-control.php';
 if ( !class_exists ( 'Kirki_Metabox' ) )
 {
 	class Kirki_Metabox
@@ -21,7 +22,7 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 			add_action ( 'save_post', array ( $this, 'save' ), 10, 3 );
 
 			add_action ( 'admin_enqueue_scripts', array ( $this, 'enqueue_scripts' ), 10 );
-			add_action ( 'admin_enqueue_scripts', array ( $this, 'enqueue_control_scripts' ), 999 );
+			//add_action ( 'admin_enqueue_scripts', array ( $this, 'enqueue_control_scripts' ), 999 );
 
 			add_filter ( 'kirki_values_get_value', array ( $this, 'get_metabox_value' ), 999, 2);
 
@@ -102,11 +103,11 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 
 			apply_filters ( 'kiki_metabox_controls', $this->controls );
 
-			require ( 'controls/class-kirki-metabox-control.php' );
-			foreach ( $this->controls as $control )
-			{
-				require ( 'controls/' . $control['filename'] );
-			}
+			// require ( 'controls/class-kirki-metabox-control.php' );
+			// foreach ( $this->controls as $control )
+			// {
+			// 	require ( 'controls/' . $control['filename'] );
+			// }
 		}
 
 		public function init()
@@ -150,28 +151,17 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 
 		public function enqueue_scripts()
 		{
+			$control_base = new Kirki_Control_Base(null,null);
+			$control_base->enqueue();
+			
 			wp_enqueue_script( 'kirki-script-metabox' );
 			// The Kirki plugin URL.
 			$kirki_url = trailingslashit( Kirki::$url );
 			$metabox_uri = $kirki_url . '../kirki-metabox/';
 
-			wp_enqueue_script( 'jquery' );
-			//wp_enqueue_script( 'kirki-script', trailingslashit( Kirki::$url ) . 'controls/js/script.js', array( 'wp-color-picker' ), KIRKI_VERSION, true );
-
-			// Enqueue ColorPicker.
-			wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), KIRKI_VERSION, true );
-			wp_enqueue_style( 'wp-color-picker' );
-			// Enqueue selectWoo.
-			wp_enqueue_script( 'selectWoo', $kirki_url . 'assets/vendor/selectWoo/js/selectWoo.full.min.js', array( 'jquery' ), '1.0.1', true );
-			wp_enqueue_style( 'selectWoo', $kirki_url . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
-			wp_enqueue_style( 'kirki-selectWoo', $kirki_url . 'assets/vendor/selectWoo/kirki.css', null );
-
 			//Enqueue Kirki Metabox styles
-			wp_enqueue_style ( 'kirki-mb-styles', $metabox_uri . 'kirki-metabox.css' );
+			wp_enqueue_style ( 'kirki-metabox-styles', $metabox_uri . 'kirki-metabox.css' );
 
-			//Load Kirki's styles on top.
-			wp_enqueue_style ( 'kirki-customizer-styles', $kirki_url . 'controls/css/styles.css' );
-			
 			//Register our front-end metabox handler.
 			wp_register_script ( 'kirki-metabox',
 				$metabox_uri . 'kirki-metabox.js',
@@ -180,24 +170,24 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 					'selectWoo'
 				), '1.0', true );
 			
-			//Load our translations.
-			wp_localize_script(
-				'kirki-metabox',
-				'kirkiL10n',
-				array(
-					'isScriptDebug'        => ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ),
-					'noFileSelected'       => esc_attr__( 'No File Selected', 'kirki' ),
-					'remove'               => esc_attr__( 'Remove', 'kirki' ),
-					'default'              => esc_attr__( 'Default', 'kirki' ),
-					'selectFile'           => esc_attr__( 'Select File', 'kirki' ),
-					'standardFonts'        => esc_attr__( 'Standard Fonts', 'kirki' ),
-					'googleFonts'          => esc_attr__( 'Google Fonts', 'kirki' ),
-					'defaultCSSValues'     => esc_attr__( 'CSS Defaults', 'kirki' ),
-					'defaultBrowserFamily' => esc_attr__( 'Default Browser Font-Family', 'kirki' ),
-					'selectImage' => esc_attr__( 'Select Image', 'kirki' ),
-					'useThisMedia' => esc_attr__( 'Use this media', 'kirki' )
-				)
-			);
+			// //Load our translations.
+			// wp_localize_script(
+			// 	'kirki-metabox',
+			// 	'kirkiL10n',
+			// 	array(
+			// 		'isScriptDebug'        => ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ),
+			// 		'noFileSelected'       => esc_attr__( 'No File Selected', 'kirki' ),
+			// 		'remove'               => esc_attr__( 'Remove', 'kirki' ),
+			// 		'default'              => esc_attr__( 'Default', 'kirki' ),
+			// 		'selectFile'           => esc_attr__( 'Select File', 'kirki' ),
+			// 		'standardFonts'        => esc_attr__( 'Standard Fonts', 'kirki' ),
+			// 		'googleFonts'          => esc_attr__( 'Google Fonts', 'kirki' ),
+			// 		'defaultCSSValues'     => esc_attr__( 'CSS Defaults', 'kirki' ),
+			// 		'defaultBrowserFamily' => esc_attr__( 'Default Browser Font-Family', 'kirki' ),
+			// 		'selectImage' => esc_attr__( 'Select Image', 'kirki' ),
+			// 		'useThisMedia' => esc_attr__( 'Use this media', 'kirki' )
+			// 	)
+			// );
 			
 			//Load our core script.
 			wp_enqueue_script( 'kirki-metabox' );
