@@ -210,6 +210,14 @@ class Kirki_Output {
 	 * @access protected
 	 */
 	protected function parse_output() {
+		if ( isset ( $this->field['output_trigger'] ) )
+		{
+			$trigger = $this->field['output_trigger'];
+			if ( $this->value != $trigger )
+			{
+				return;
+			}
+		}
 		foreach ( $this->output as $output ) {
 			$skip = false;
 
