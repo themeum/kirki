@@ -94,11 +94,11 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 					'filename' => 'class-kirki-metabox-border.php',
 					'jsfile' => 'controls/js/border.js'
 				],
-				'spacing2' => [
-					'classname' => 'Kirki_Metabox_Spacing',
-					'filename' => 'class-kirki-metabox-spacing.php',
-					'jsfile' => 'controls/js/spacing.js'
-				],
+				// 'spacing2' => [
+				// 	'classname' => 'Kirki_Metabox_Spacing',
+				// 	'filename' => 'class-kirki-metabox-spacing.php',
+				// 	'jsfile' => 'controls/js/spacing.js'
+				// ],
 			];
 
 			apply_filters ( 'kiki_metabox_controls', $this->controls );

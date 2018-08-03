@@ -83,6 +83,7 @@ class Kirki_Init {
 		$this->control_types = array(
 			'checkbox'              => 'Kirki_Control_Checkbox',
 			'kirki-background'      => 'Kirki_Control_Background',
+			'kirki-border'          => 'Kirki_Control_Border',
 			'code_editor'           => 'Kirki_Control_Code',
 			'kirki-color'           => 'Kirki_Control_Color',
 			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
