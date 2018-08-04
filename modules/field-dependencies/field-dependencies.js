@@ -139,7 +139,6 @@ var kirkiDependencies = {
 	 */
 	evaluate: function( value1, value2, operator ) {
 		var found = false;
-		console.log ( 'v1: %o, v2: %o, op: %o', value1, value2, operator );
 		if ( '===' === operator ) {
 			return value1 === value2;
 		}
