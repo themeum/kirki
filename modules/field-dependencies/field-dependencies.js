@@ -52,7 +52,6 @@ var kirkiDependencies = {
 			),
 			i;
 
-
 		if ( _.isString( control ) ) {
 			control = wp.customize.control( control );
 		}
@@ -95,7 +94,7 @@ var kirkiDependencies = {
 		}
 
 		// If an array of other requirements nested, we need to process them separately.
-		if ( 'undefined' !== typeof requirement[0] && 'undefined' === typeof requirement.setting ) {
+		if ( _.isArray ( requirement ) && 'undefined' !== typeof requirement[0] && 'undefined' === typeof requirement.setting ) {
 			nestedItems = [];
 
 			// Loop sub-requirements.
@@ -140,7 +139,7 @@ var kirkiDependencies = {
 	 */
 	evaluate: function( value1, value2, operator ) {
 		var found = false;
-
+		console.log ( 'v1: %o, v2: %o, op: %o', value1, value2, operator );
 		if ( '===' === operator ) {
 			return value1 === value2;
 		}
