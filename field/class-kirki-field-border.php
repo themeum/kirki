@@ -31,14 +31,21 @@ class Kirki_Field_Border extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
+	}
+	
+	protected function set_choices()
+	{
+		if ( is_array( $this->default ) ) {
+			foreach ( $this->default as $key => $value ) {
+				$this->choices[ $key ] = $value;
+			}
+		}
 	}
 
 	/**
@@ -54,12 +61,12 @@ class Kirki_Field_Border extends Kirki_Field {
 			return array();
 		}
 		return array(
-			'style'     => ( isset( $value['style'] ) ) ? esc_attr( $value['style'] ) : '',
-			'top'      => ( isset( $value['top'] ) ) ? esc_attr( $value['top'] ) : '',
-			'right'    => ( isset( $value['right'] ) ) ? esc_attr( $value['right'] ) : '',
-			'bottom'   => ( isset( $value['bottom'] ) ) ? esc_attr( $value['bottom'] ) : '',
-			'left'     => ( isset( $value['left'] ) ) ? esc_attr( $value['left'] ) : '',
-			'color'    => ( isset( $value['color'] ) ) ? esc_attr( $value['color'] ) : ''
+			'border-style'     => ( isset( $value['border-style'] ) ) ? esc_attr( $value['border-style'] ) : '',
+			'border-top'       => ( isset( $value['border-top'] ) ) ? intval( $value['border-top'] ) : '',
+			'border-right'     => ( isset( $value['border-right'] ) ) ? intval( $value['border-right'] ) : '',
+			'border-bottom'    => ( isset( $value['border-bottom'] ) ) ? intval( $value['border-bottom'] ) : '',
+			'border-left'      => ( isset( $value['border-left'] ) ) ? intval( $value['border-left'] ) : '',
+			'border-color'     => ( isset( $value['border-color'] ) ) ? esc_attr( $value['border-color'] ) : ''
 		);
 	}
 

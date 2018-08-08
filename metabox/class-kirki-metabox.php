@@ -219,9 +219,9 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 					}
 				}
 			}
-			ob_start();
-			include ( get_template_directory() . '/includes/admin/theme-options/styles-config.php' );
-			$css .= ob_get_clean();
+			// ob_start();
+			// include ( get_template_directory() . '/includes/admin/theme-options/styles-config.php' );
+			// $css .= ob_get_clean();
 			$css .= $this->generate_css();
 			file_put_contents ( get_template_directory() . '/assets/css/post-' . $post->ID . '.css', $css );
 		}

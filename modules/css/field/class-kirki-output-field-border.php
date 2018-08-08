@@ -1,40 +1,40 @@
 <?php
 class Kirki_Output_Field_Border extends Kirki_Output {
+	/**
+	 * Processes a single item from the `output` array.
+	 *
+	 * @access protected
+	 * @param array $output The `output` item.
+	 * @param array $value  The field's value.
+	 */
+	protected function process_output( $output, $value ) {
 
-/**
- * Processes a single item from the `output` array.
- *
- * @access protected
- * @param array $output The `output` item.
- * @param array $value  The field's value.
- */
-protected function process_output( $output, $value ) {
+		$output = wp_parse_args(
+			$output, array(
+				'element'     => ''
+			)
+		);
+		
+		if ( !is_array( $value ) || empty( $output['element'] ) ) {
+			return;
+		}
+		
+		//fwrite(STDERR, var_export($value,true) . PHP_EOL);
+		$value = Kirki_Field_Border::sanitize( $value );
+		
+		$border_style = $value['border-style'];
+		if ( empty ( $border_style ) )
+			return;
 
-	$output = wp_parse_args(
-		$output, array(
-			'element'     => ''
-		)
-	);
-	
-	if ( ! is_array( $value ) ) {
-		return;
-	}
+		$color = isset( $value['border-color'] ) ? $value['border-color'] : '';
 
-	$border_style = $value['style'];
-	if ( empty ( $border_style ) )
-		return;
+		$border_pos = ['border-top', 'border-right', 'border-bottom', 'border-left'];
 
-	$color = isset( $value['color'] ) ? $value['color'] : '';
-
-	$border_pos = ['top', 'bottom', 'left', 'right'];
-
-	foreach ( $border_pos as $pos )
-	{
-		if ( !empty( $value[$pos] ) ){
+		foreach ( $border_pos as $pos )
+		{
 			$size = $value[$pos];
-			$this->styles[ 'global' ][ $output['element'] ]['border-' . $pos] =
-				"{$border_style} {$color} {$size}px";
+			$this->styles[ 'global' ][ $output['element'] ][$pos] =
+				"{$size}px {$border_style} {$color} ";
 		}
 	}
-}
 }

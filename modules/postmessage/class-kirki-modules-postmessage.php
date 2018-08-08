@@ -380,7 +380,53 @@ class Kirki_Modules_PostMessage {
 			'css'    => 'css',
 		);
 	}
-
+	
+	/**
+	 * Processes script generation for border fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 * @param array $field The field arguments.
+	 */
+	protected function script_var_border ( $args, $field ) {
+		$args = $this->get_args( $args );
+		$element = $args['element'];
+		$script = '';
+		$css    = '';
+		
+		$css_build_array  = array(
+			'border-style'    => 'borderStyle',
+			'border-top'      => 'borderTop',
+			'border-right'    => 'borderRight',
+			'border-bottom'   => 'borderBottom',
+			'border-left'     => 'borderLeft',
+			'border-color'    => 'borderColor'
+		);
+		
+		foreach ( $css_build_array as $property => $var ) {
+			$script .= "{$var} = ( newval['{$property}'] != 'px' ? newval['{$property}'] : '0px' );
+			";
+		}
+		
+		$script .= "
+		css = ' {$element} {'
+			";
+		foreach ( $css_build_array as $property => $var ) {
+			if ( in_array ( $property, array( 'border-style', 'border-color' ) ) )
+				continue;
+			$script .= "css += '{$property}: ' + {$var} + 'px ' + borderStyle + ' ' + borderColor + ';';
+			";
+		}
+		$script .= "\ncss += '}';
+		";
+		
+		return array(
+			'script' => $script,
+			'css'    => 'css',
+		);
+	}
+	 
 	/**
 	 * Processes script generation for typography fields.
 	 *
@@ -507,6 +553,9 @@ class Kirki_Modules_PostMessage {
 				break;
 			case 'kirki-typography':
 				$callback = array( $this, 'script_var_typography' );
+				break;
+			case 'kirki-border':
+				$callback = array( $this, 'script_var_border' );
 				break;
 			case 'kirki-image':
 				$callback = array( $this, 'script_var_image' );
