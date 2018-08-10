@@ -446,7 +446,7 @@ class Kirki_Modules_Customizer_Styling {
 			float:left;
 			width:20%
 		}
-		.kirki-control-type-dimensions li .kirki-link-dimensions,.kirki-control-type-dimensions li input{
+		.kirki-control-type-dimensions li .kirki-input-link,.kirki-control-type-dimensions li input{
 			display:block;
 			text-align:center;
 			width:100%;
@@ -462,7 +462,7 @@ class Kirki_Modules_Customizer_Styling {
 		.kirki-control-type-dimensions li input:focus+.kirki-control-dimension-label{
 			color:#505457
 		}
-		.kirki-control-type-dimensions li .kirki-link-dimensions{
+		.kirki-control-type-dimensions li .kirki-input-link{
 			border:1px solid #a4afb7;
 			border-left:none;
 			background-color:#fff;
@@ -485,19 +485,19 @@ class Kirki_Modules_Customizer_Styling {
 			text-transform:uppercase;
 			padding-top:5px
 		}
-		.kirki-control-type-dimensions .kirki-link-dimensions.unlinked{
+		.kirki-control-type-dimensions .kirki-input-link.unlinked{
 			background-color:#fff
 		}
-		.kirki-control-type-dimensions .kirki-link-dimensions.unlinked .kirki-linked{
+		.kirki-control-type-dimensions .kirki-input-link.unlinked .kirki-linked{
 			display:none
 		}
-		.kirki-control-type-dimensions .kirki-link-dimensions:not(.unlinked){
+		.kirki-control-type-dimensions .kirki-input-link:not(.unlinked){
 			background-color:#a4afb7
 		}
-		.kirki-control-type-dimensions .kirki-link-dimensions:not(.unlinked) .kirki-unlinked{
+		.kirki-control-type-dimensions .kirki-input-link:not(.unlinked) .kirki-unlinked{
 			display:none
 		}
-		.kirki-control-type-dimensions .kirki-link-dimensions .kirki-linked{
+		.kirki-control-type-dimensions .kirki-input-link .kirki-linked{
 			color:#fff
 		}
 		.kirki-screen-only,.screen-reader-text,.screen-reader-text span,.ui-helper-hidden-accessible{
@@ -512,13 +512,13 @@ class Kirki_Modules_Customizer_Styling {
 			border:0
 		}
 
-		.kirki-device-select-options
+		.kirki-respnsive-switchers
 		{
 			text-align:right;
 			display: inline;
 		}
 
-		.kirki-device-select-options li
+		.kirki-respnsive-switchers li
 		{
 			display: inline-block;
 			cursor: pointer;
@@ -582,7 +582,7 @@ class Kirki_Modules_Customizer_Styling {
 		{
 			display:none;
 		}
-		.kirki-device-select-options li.active{
+		.kirki-respnsive-switchers li.active{
 			color: #00a0d2;
 		}
 		</style>

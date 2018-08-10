@@ -86,6 +86,7 @@ class Kirki_Init {
 			'kirki-border'          => 'Kirki_Control_Border',
 			'code_editor'           => 'Kirki_Control_Code',
 			'kirki-color'           => 'Kirki_Control_Color',
+			'kirki-color-gradient'  => 'Kirki_Control_Color_Gradient',
 			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
 			'kirki-custom'          => 'Kirki_Control_Custom',
 			'kirki-date'            => 'Kirki_Control_Date',

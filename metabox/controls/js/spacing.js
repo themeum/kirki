@@ -22,14 +22,14 @@
 					var rep = /(px|%|em)/g;
 					
 					var outer = $( '.' + type + '-outer', container ),
-						link_dims = $( '.kirki-link-dimensions', outer ),
+						link_dims = $( '.kirki-input-link', outer ),
 						inputs = $( 'input[type="number"]', outer ),
 						units = $( 'input[name="' + type + '_type"][type="radio"]' ),
 						top = $( 'input[' + type + '-type="top"]', outer ),
 						bottom = $( 'input[' + type + '-type="bottom"]', outer ),
 						left = $( 'input[' + type + '-type="left"]', outer ),
 						right = $( 'input[' + type + '-type="right"]', outer ),
-						devices_outer = $( '.kirki-device-select-options', outer ),
+						devices_outer = $( '.kirki-respnsive-switchers', outer ),
 						desktop_btn = $( 'li.desktop', devices_outer ),
 						tablet_btn = $( 'li.tablet', devices_outer ),
 						mobile_btn = $( 'li.mobile', devices_outer ),

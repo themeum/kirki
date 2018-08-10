@@ -286,15 +286,25 @@ kirki = jQuery.extend( kirki, {
 			}
 		},
 		
-		media_query: {
-			init_selectors: function( control, container, callbacks )
+		helpers: {
+			media_query: function( control, callbacks )
 			{
-				var desktop_btn = container.find( '.kirki-device-select-options li.desktop' ),
-					tablet_btn = container.find( '.kirki-device-select-options li.tablet' ),
-					mobile_btn = container.find( '.kirki-device-select-options li.mobile' ),
+				if ( _.isUndefined( control.params.media_queries ) )
+				{
+					return;
+				}
+				var container = control.container,
+					desktop_btn = container.find( '.kirki-respnsive-switchers li.desktop' ),
+					tablet_btn = container.find( '.kirki-respnsive-switchers li.tablet' ),
+					mobile_btn = container.find( '.kirki-respnsive-switchers li.mobile' ),
 					active_device = 0,
+					value = control.setting._value,
 					multiple = false;
 				
+				if ( !value )
+				{
+					value = control.params.default;
+				}
 				desktop_btn.click( function(e)
 				{
 					e.preventDefault();
@@ -343,7 +353,25 @@ kirki = jQuery.extend( kirki, {
 					tablet_btn.removeClass( 'active' );
 					callbacks.device_change( active_device );
 				});
+			},
+			input_sync: function( control, inputs, events, callback, input_sanitize )
+			{
+				$( inputs ).on( events, function( e )
+				{
+					var input = $( this ),
+						val = null;
+					if ( input_sanitize )
+					{
+						input_sanitize( input, inputs );
+					}
+					else
+					{
+						var val = input.val();
+						inputs.val ( val );
+					}
+					callback();
+				});
 			}
-		}
+		},
 	}
 } );

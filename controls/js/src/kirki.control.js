@@ -289,6 +289,6 @@ kirki = jQuery.extend( kirki, {
 					placeholder: control.params.placeholder
 				} ) );
 			}
-		}
+		},
 	}
 } );

@@ -529,7 +529,7 @@ kirki = jQuery.extend( kirki, {
 					placeholder: control.params.placeholder
 				} ) );
 			}
-		}
+		},
 	}
 } );
 /* global kirkiL10n */
@@ -1295,15 +1295,25 @@ kirki = jQuery.extend( kirki, {
 			}
 		},
 		
-		media_query: {
-			init_selectors: function( control, container, callbacks )
+		helpers: {
+			media_query: function( control, callbacks )
 			{
-				var desktop_btn = container.find( '.kirki-device-select-options li.desktop' ),
-					tablet_btn = container.find( '.kirki-device-select-options li.tablet' ),
-					mobile_btn = container.find( '.kirki-device-select-options li.mobile' ),
+				if ( _.isUndefined( control.params.media_queries ) )
+				{
+					return;
+				}
+				var container = control.container,
+					desktop_btn = container.find( '.kirki-respnsive-switchers li.desktop' ),
+					tablet_btn = container.find( '.kirki-respnsive-switchers li.tablet' ),
+					mobile_btn = container.find( '.kirki-respnsive-switchers li.mobile' ),
 					active_device = 0,
+					value = control.setting._value,
 					multiple = false;
 				
+				if ( !value )
+				{
+					value = control.params.default;
+				}
 				desktop_btn.click( function(e)
 				{
 					e.preventDefault();
@@ -1352,8 +1362,26 @@ kirki = jQuery.extend( kirki, {
 					tablet_btn.removeClass( 'active' );
 					callbacks.device_change( active_device );
 				});
+			},
+			input_sync: function( control, inputs, events, callback, input_sanitize )
+			{
+				$( inputs ).on( events, function( e )
+				{
+					var input = $( this ),
+						val = null;
+					if ( input_sanitize )
+					{
+						input_sanitize( input, inputs );
+					}
+					else
+					{
+						var val = input.val();
+						inputs.val ( val );
+					}
+					callback();
+				});
 			}
-		}
+		},
 	}
 } );
 /* global kirki */
@@ -1711,20 +1739,20 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
-			input = $( '.border-hidden-value', container ),
-			style = $( '.border-type select', container),
-			inputs = $( '.kirki-control-dimension input', container),
-			link_dims = $( '.kirki-link-dimensions', container),
-			size_container = $( '.size', container ),
-			color_container = $( '.color', container ),
-			color_picker = $( 'input', color_container ),
-			top_input = $( '[data-border-type="top"]', container ),
-			right_input = $( '[data-border-type="right"]', container ),
-			bottom_input = $( '[data-border-type="bottom"]', container ),
-			left_input = $( '[data-border-type="left"]', container ),
+			input = jQuery( '.border-hidden-value', container ),
+			style = jQuery( '.border-type select', container),
+			inputs = jQuery( '.kirki-control-dimension input', container),
+			link_dims = jQuery( '.kirki-input-link', container),
+			size_container = jQuery( '.size', container ),
+			color_container = jQuery( '.color', container ),
+			color_picker = jQuery( 'input', color_container ),
+			top_input = jQuery( '[data-border-type="top"]', container ),
+			right_input = jQuery( '[data-border-type="right"]', container ),
+			bottom_input = jQuery( '[data-border-type="bottom"]', container ),
+			left_input = jQuery( '[data-border-type="left"]', container ),
 			value = control.setting._value;
 		
-		if ( !value )
+		if ( !value && control.params.default )
 		{
 			value = control.params.default;
 		}
@@ -1732,25 +1760,10 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		if ( value )
 		{
 			style.val ( value['border-style'] );
-			top_input.val ( value['border-top'].replace( 'px', '' ) );
-			right_input.val ( value['border-right'].replace( 'px', '' ) );
-			bottom_input.val ( value['border-bottom'].replace( 'px', '' ) );
-			left_input.val ( value['border-left'].replace( 'px', '' ) );
-			if ( value['border-style'] != '' )
-			{
-				size_container.show();
-				color_container.show();
-			}
-			else
-			{
-				size_container.hide();
-				color_container.hide();
-			}
-		}
-		else
-		{
-			size_container.hide();
-			color_container.hide();
+			top_input.val ( value['border-top'] );
+			right_input.val ( value['border-right'] );
+			bottom_input.val ( value['border-bottom'] );
+			left_input.val ( value['border-left'] );
 		}
 		
 		color_picker.attr( 'data-default-color', value['border-color'] )
@@ -1766,7 +1779,8 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 				}
 			});
 		
-		style.change(function(e){
+		style.change( function( e ){
+			e.preventDefault();
 			toggle_visible();
 			save();
 		});
@@ -1778,7 +1792,6 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			if ( cur_val != last_val )
 			{
 				input.attr( 'last-val', cur_val );
-				
 				if ( link_dims.hasClass( 'linked' ) )
 				{
 					inputs.attr( 'last-val', cur_val );
@@ -1794,6 +1807,8 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			link_dims.toggleClass( 'unlinked' );
 			link_dims.toggleClass( 'linked' );
 		});
+		
+		toggle_visible();
 		
 		function toggle_visible()
 		{
@@ -1827,11 +1842,97 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 				'border-color': color_val
 			};
 			var json = JSON.stringify ( new_val );
-			jQuery( input ).attr( 'value', new_val ).trigger( 'change' );
+			jQuery( input ).attr( 'value', json ).trigger( 'change' );
 			control.setting.set( new_val );
 		}
 	}
 } );wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDynamicControl.extend( {
+	initKirkiControl: function() {
+		var control = this,
+			container = control.container,
+			input = jQuery( '.color-gradient-hidden-value', container ),
+			color1_picker = jQuery( '.color1 .color-picker', container ),
+			color2_picker = jQuery( '.color2 .color-picker', container ),
+			location = jQuery( '.location input', container ),
+			textInput    = control.container.find( '.slider-wrapper .value input' ),
+			sliderReset  = control.container.find( '.slider-reset' ),
+			locationChangeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
+			direction = container.find( '.direction select' ),
+			value = control.setting._value;
+		if ( !value )
+			value = control.params.default;
+		if ( !value )
+		{
+			value = {
+				color1: '',
+				color2: '',
+				location: '0%',
+				direction: ''
+			};
+		}
+		color1_picker.attr( 'data-default-color', value['color1'] )
+			.data( 'default-color', value['color1'] )
+			.val( value['color1'] )
+			.wpColorPicker( {
+				change: function(e, ui)
+				{
+					setTimeout(function()
+					{
+						save();
+					}, 100);
+				}
+			});
+		color2_picker.attr( 'data-default-color', value['color2'] )
+			.data( 'default-color', value['color2'] )
+			.val( value['color2'] )
+			.wpColorPicker( {
+				change: function(e, ui)
+				{
+					setTimeout(function()
+					{
+						save();
+					}, 100);
+				}
+			});
+		location.val( value['location'].replace( '%', '' ) );
+		direction.val( value['direction'] );
+		
+		location.on( locationChangeAction, function( e )
+		{
+			//e.preventDefault();
+			textInput.attr( 'value', location.val() );
+			save();
+		});
+		
+		textInput.on( 'input paste change', function( e ) {
+			//location.val( textInput.val() ).trigger( 'change' );
+		} );
+		
+		direction.on( 'change', function( e ) {
+			save();
+		});
+		
+		sliderReset.click( function( e ) {
+			var defVal = control.params.default['location'].replace( '%', '') || 0;
+			location.val( defVal );
+			textInput.val( defVal );
+		});
+		
+		function save()
+		{
+			var data = {
+				color1: color1_picker.val(),
+				color2: color2_picker.val(),
+				location: location.val() + '%',
+				direction: direction.val()
+			};
+			console.log( data );
+			input.val( JSON.stringify( data ) ).trigger( 'change' );
+			control.setting.set( data );
+		}
+	}
+} );
 wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend( {} );
 wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
 
@@ -3264,23 +3365,68 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
+		var compiled = {
+			desktop: {
+				value: 0
+			},
+			tablet: {
+				value: 0
+			},
+			mobile: {
+				value: 0
+			}
+		};
 		var control      = this,
 			changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
 			rangeInput   = control.container.find( 'input[type="range"]' ),
 			textInput    = control.container.find( 'input[type="text"]' ),
-			value        = control.setting._value;
-			kirki.util.media_query.init_selectors ( control, control.container, {
+			value        = control.setting._value,
+			active_device = 0;
+			kirki.util.helpers.media_query( control, {
 				device_change: function( device )
 				{
-					
+					active_device = device;
+					if ( active_device == 0)
+					{
+						textInput.val( compiled.desktop || '' );
+						rangeInput.val( compiled.desktop || '' );
+					}
+					else if ( active_device == 1 )
+					{
+						textInput.val( compiled.tablet || '' );
+						rangeInput.val( compiled.tablet || '' );
+					}
+					else
+					{
+						textInput.val( compiled.mobile || '' );
+						rangeInput.val( compiled.mobile || '' );
+					}
 				}
 			});
+		if ( value )
+		{
+			if ( this.isset( value.desktop ) )
+				compiled.desktop = value.desktop;
+			if ( this.isset( value.tablet ) )
+				compiled.tablet = value.tablet;
+			if ( this.isset ( value.mobile ) )
+				compiled.mobile = value.mobile;
+			compiled.unit = value.unit;
+		}
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );
 
 		// If the range input value changes copy the value to the text input.
 		rangeInput.on( 'mousemove change', function() {
-			textInput.attr( 'value', rangeInput.val() );
+			var val = rangeInput.val();
+			textInput.attr( 'value', val );
+			if ( active_device == 0 )
+				compiled.destop = val;
+			else if ( active_device == 1 )
+				compiled.tablet == val;
+			else
+				compiled.mobile = val;
+			//control.setting.set( val );
 		} );
 
 		// Save the value when the range input value changes.
@@ -3289,25 +3435,50 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		// we don't want a refresh for every change
 		// but 1 final refresh when the value is changed.
 		rangeInput.on( changeAction, function() {
-			control.setting.set( rangeInput.val() );
+			var val = rangeInput.val();
+			if ( active_device == 0 )
+				compiled.destop = val;
+			else if ( active_device == 1 )
+				compiled.tablet == val;
+			else
+				compiled.mobile = val;
+			//control.setting.set( compiled );
 		} );
 
 		// If the text input value changes,
 		// copy the value to the range input
 		// and then save.
 		textInput.on( 'input paste change', function() {
-			rangeInput.attr( 'value', textInput.val() );
-			control.setting.set( textInput.val() );
+			var val = textInput.val();
+			rangeInput.attr( 'value', val );
+			if ( active_device == 0 )
+			compiled.destop = val;
+			else if ( active_device == 1 )
+				compiled.tablet == val;
+			else
+				compiled.mobile = val;
+			//control.setting.set( compiled );
 		} );
 
 		// If the reset button is clicked,
 		// set slider and text input values to default
-		// and hen save.
+		// and then save.
 		control.container.find( '.slider-reset' ).on( 'click', function() {
 			textInput.attr( 'value', control.params.default );
 			rangeInput.attr( 'value', control.params.default );
-			control.setting.set( textInput.val() );
+			if ( active_device == 0 )
+				compiled.destop = control.params.default;
+			else if ( active_device == 1 )
+				compiled.tablet == control.params.default;
+			else
+				compiled.mobile = control.params.default;
+			//control.setting.set( compiled );
 		} );
+	},
+	
+	isset: function( val )
+	{
+		return val == 0 || val;
 	}
 } );
 /* global kirkiControlLoader */

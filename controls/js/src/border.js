@@ -2,20 +2,20 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
-			input = $( '.border-hidden-value', container ),
-			style = $( '.border-type select', container),
-			inputs = $( '.kirki-control-dimension input', container),
-			link_dims = $( '.kirki-link-dimensions', container),
-			size_container = $( '.size', container ),
-			color_container = $( '.color', container ),
-			color_picker = $( 'input', color_container ),
-			top_input = $( '[data-border-type="top"]', container ),
-			right_input = $( '[data-border-type="right"]', container ),
-			bottom_input = $( '[data-border-type="bottom"]', container ),
-			left_input = $( '[data-border-type="left"]', container ),
+			input = jQuery( '.border-hidden-value', container ),
+			style = jQuery( '.border-type select', container),
+			inputs = jQuery( '.kirki-control-dimension input', container),
+			link_dims = jQuery( '.kirki-input-link', container),
+			size_container = jQuery( '.size', container ),
+			color_container = jQuery( '.color', container ),
+			color_picker = jQuery( 'input', color_container ),
+			top_input = jQuery( '[data-border-type="top"]', container ),
+			right_input = jQuery( '[data-border-type="right"]', container ),
+			bottom_input = jQuery( '[data-border-type="bottom"]', container ),
+			left_input = jQuery( '[data-border-type="left"]', container ),
 			value = control.setting._value;
 		
-		if ( !value )
+		if ( !value && control.params.default )
 		{
 			value = control.params.default;
 		}
@@ -23,25 +23,10 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		if ( value )
 		{
 			style.val ( value['border-style'] );
-			top_input.val ( value['border-top'].replace( 'px', '' ) );
-			right_input.val ( value['border-right'].replace( 'px', '' ) );
-			bottom_input.val ( value['border-bottom'].replace( 'px', '' ) );
-			left_input.val ( value['border-left'].replace( 'px', '' ) );
-			if ( value['border-style'] != '' )
-			{
-				size_container.show();
-				color_container.show();
-			}
-			else
-			{
-				size_container.hide();
-				color_container.hide();
-			}
-		}
-		else
-		{
-			size_container.hide();
-			color_container.hide();
+			top_input.val ( value['border-top'] );
+			right_input.val ( value['border-right'] );
+			bottom_input.val ( value['border-bottom'] );
+			left_input.val ( value['border-left'] );
 		}
 		
 		color_picker.attr( 'data-default-color', value['border-color'] )
@@ -57,7 +42,8 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 				}
 			});
 		
-		style.change(function(e){
+		style.change( function( e ){
+			e.preventDefault();
 			toggle_visible();
 			save();
 		});
@@ -69,7 +55,6 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			if ( cur_val != last_val )
 			{
 				input.attr( 'last-val', cur_val );
-				
 				if ( link_dims.hasClass( 'linked' ) )
 				{
 					inputs.attr( 'last-val', cur_val );
@@ -85,6 +70,8 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			link_dims.toggleClass( 'unlinked' );
 			link_dims.toggleClass( 'linked' );
 		});
+		
+		toggle_visible();
 		
 		function toggle_visible()
 		{
@@ -118,7 +105,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 				'border-color': color_val
 			};
 			var json = JSON.stringify ( new_val );
-			jQuery( input ).attr( 'value', new_val ).trigger( 'change' );
+			jQuery( input ).attr( 'value', json ).trigger( 'change' );
 			control.setting.set( new_val );
 		}
 	}

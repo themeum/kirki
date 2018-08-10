@@ -405,7 +405,7 @@ class Kirki_Modules_PostMessage {
 		);
 		
 		foreach ( $css_build_array as $property => $var ) {
-			$script .= "{$var} = ( newval['{$property}'] != 'px' ? newval['{$property}'] : '0px' );
+			$script .= "var {$var} = ( newval['{$property}'] != 'px' ? newval['{$property}'] : '0px' );
 			";
 		}
 		
@@ -421,6 +421,35 @@ class Kirki_Modules_PostMessage {
 		$script .= "\ncss += '}';
 		";
 		
+		return array(
+			'script' => $script,
+			'css'    => 'css',
+		);
+	}
+	
+	protected function script_var_color_gradient( $args, $field ) {
+		$args = $this->get_args( $args );
+		$element = $args['element'];
+		$script = '';
+		$css    = '';
+		
+		$css_build_array  = array(
+			'color1'    => 'color1',
+			'color2'      => 'color2',
+			'location'    => 'location',
+			'direction'   => 'direction'
+		);
+		foreach ( $css_build_array as $property => $var ) {
+			$script .= "var {$var} = newval['{$property}'];
+			";
+		}
+		$script .= "var css = '';
+		css = ' {$element} {'
+		";
+		$script .= "css += 'background-image: linear-gradient(' + direction + ', ' + color1 + ' ' + location + ', ' + color2 + ')';
+		";
+		$script .= "\ncss += '}';
+		";
 		return array(
 			'script' => $script,
 			'css'    => 'css',
@@ -556,6 +585,9 @@ class Kirki_Modules_PostMessage {
 				break;
 			case 'kirki-border':
 				$callback = array( $this, 'script_var_border' );
+				break;
+			case 'kirki-color-gradient':
+				$callback = array( $this, 'script_var_color_gradient' );
 				break;
 			case 'kirki-image':
 				$callback = array( $this, 'script_var_image' );

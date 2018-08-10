@@ -29,7 +29,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 			<div class="margin-outer">
 				<h5>
 					<span><?php _e( 'Margin', 'kirki' ) ?></span>
-					<ul class="kirki-device-select-options">
+					<ul class="kirki-respnsive-switchers">
 						<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
 						<li class="tablet hidden-device"><span class="dashicons dashicons-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="dashicons dashicons-smartphone"></span></li>
@@ -61,7 +61,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 							<label for="<?php echo $id; ?>-margin-left" class="kirki-control-dimension-label"><?php _e( 'Left', 'kirki' ); ?></span>
 						</li>
 						<li>
-							<button class="kirki-link-dimensions tooltip-target unlinked" data-tooltip="<?php _e( 'Link values together', 'kirki' ); ?>" original-title="">
+							<button class="kirki-input-link tooltip-target unlinked" data-tooltip="<?php _e( 'Link values together', 'kirki' ); ?>" original-title="">
 								<span class="kirki-linked">
 									<span class="dashicons dashicons-admin-links" aria-hidden="true"></span>
 									<span class="kirki-screen-only"><?php _e( 'Link values together', 'kirki' );?></span>
@@ -78,7 +78,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 			<div class="padding-outer">
 				<h5>
 					<span><?php _e( 'Padding', 'kirki' ) ?></span>
-					<ul class="kirki-device-select-options">
+					<ul class="kirki-respnsive-switchers">
 						<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
 						<li class="tablet hidden-device"><span class="dashicons dashicons-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="dashicons dashicons-smartphone"></span></li>
@@ -113,7 +113,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 							<label for="<?php echo $id; ?>-padding-left" class="kirki-control-dimension-label"><?php _e('Left', 'kirki'); ?></span>
 						</li>
 						<li>
-							<button class="kirki-link-dimensions tooltip-target unlinked" data-tooltip="<?php _e('Link values together', 'kirki'); ?>" original-title="">
+							<button class="kirki-input-link tooltip-target unlinked" data-tooltip="<?php _e('Link values together', 'kirki'); ?>" original-title="">
 								<span class="kirki-linked">
 									<span class="dashicons dashicons-admin-links" aria-hidden="true"></span>
 									<span class="kirki-screen-only"><?php _e('Link values together', 'kirki' );?></span>
