@@ -53,7 +53,7 @@ class Kirki_Field_Color_Gradient extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public function sanitize( $value ) {
+	public static function sanitize( $value ) {
 
 		if ( ! is_array( $value ) ) {
 			return array();

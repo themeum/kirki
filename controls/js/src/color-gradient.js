@@ -78,7 +78,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 				location: location.val() + '%',
 				direction: direction.val()
 			};
-			console.log( data );
+			//console.log( data );
 			input.val( JSON.stringify( data ) ).trigger( 'change' );
 			control.setting.set( data );
 		}

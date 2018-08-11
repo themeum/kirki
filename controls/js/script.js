@@ -1736,6 +1736,22 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 	}
 } );
 wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicControl.extend( {
+	
+	// When we're finished loading continue processing
+	ready: function() {
+		
+		'use strict';
+		
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
+	
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
@@ -1927,7 +1943,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 				location: location.val() + '%',
 				direction: direction.val()
 			};
-			console.log( data );
+			//console.log( data );
 			input.val( JSON.stringify( data ) ).trigger( 'change' );
 			control.setting.set( data );
 		}

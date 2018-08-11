@@ -1,4 +1,20 @@
 wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicControl.extend( {
+	
+	// When we're finished loading continue processing
+	ready: function() {
+		
+		'use strict';
+		
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
+	
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
