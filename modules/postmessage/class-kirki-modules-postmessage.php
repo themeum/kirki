@@ -91,9 +91,7 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args The arguments.
 	 */
 	protected function script( $args ) {
-
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
-
 		$add_css = false;
 		foreach ( $args['js_vars'] as $js_var ) {
 			if ( ! isset( $js_var['function'] ) || 'html' !== $js_var['function'] ) {
@@ -141,6 +139,8 @@ class Kirki_Modules_PostMessage {
 			$js_var['index_key'] = $key;
 			$callback            = $this->get_callback( $args );
 			if ( is_callable( $callback ) ) {
+				if ( !$this->has_requirement( $this->get_args( $js_var ), $args ) )
+					continue;
 				$field['scripts'][ $key ] = call_user_func_array( $callback, array( $js_var, $args ) );
 				continue;
 			}
@@ -596,5 +596,20 @@ class Kirki_Modules_PostMessage {
 				$callback = array( $this, 'script_var' );
 		}
 		return $callback;
+	}
+	
+	protected function has_requirement( $args, $field )
+	{
+		if ( !empty( $field['required'] ) ) {
+			foreach ( $field['required'] as $requirement ) {
+				if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
+					$controller_value = Kirki_Values::get_value( $field['kirki_config'], $requirement['setting'] );
+					if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
 	}
 }
