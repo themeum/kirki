@@ -90,6 +90,22 @@ class Kirki_Modules_CSS_Vars {
 		echo '}';
 		echo '</style>';
 	}
+	
+	public function flicker_fix()
+	{
+		echo "
+<style id=\"kirki-flicker-workaround\">
+body,
+#main,
+#wrapper {
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; 
+}
+</style>
+  ";
+	}
 
 	/**
 	 * Enqueues the script that handles postMessage
@@ -101,6 +117,7 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function postmessage() {
+		add_action( 'wp_head', array ( $this, 'flicker_fix' ) );
 		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'modules/css-vars/script.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		$data   = array();

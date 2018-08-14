@@ -430,7 +430,7 @@ class Kirki_Modules_PostMessage {
 	protected function script_var_color_gradient( $args, $field ) {
 		$args = $this->get_args( $args );
 		$element = $args['element'];
-		$script = '';
+		$script = 'var css = \'\';';
 		$css    = '';
 		
 		$css_build_array  = array(
@@ -443,12 +443,8 @@ class Kirki_Modules_PostMessage {
 			$script .= "var {$var} = newval['{$property}'];
 			";
 		}
-		$script .= "var css = '';
-		css = ' {$element} {'
-		";
-		$script .= "css += 'background-image: linear-gradient(' + direction + ', ' + color1 + ' ' + location + ', ' + color2 + ')';
-		";
-		$script .= "\ncss += '}';
+		$script .= "
+		jQuery('{$element}').css('background-image', 'linear-gradient(' + direction + ', ' + color1 + ' ' + location + ', ' + color2 + ')');
 		";
 		return array(
 			'script' => $script,
@@ -572,7 +568,6 @@ class Kirki_Modules_PostMessage {
 	 * @return string|array A callable function or method.
 	 */
 	protected function get_callback( $args ) {
-
 		switch ( $args['type'] ) {
 			case 'kirki-background':
 			case 'kirki-dimensions':
@@ -594,6 +589,7 @@ class Kirki_Modules_PostMessage {
 				break;
 			default:
 				$callback = array( $this, 'script_var' );
+				break;
 		}
 		return $callback;
 	}

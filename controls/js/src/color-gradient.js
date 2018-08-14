@@ -1,4 +1,19 @@
 wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDynamicControl.extend( {
+	// When we're finished loading continue processing
+	ready: function() {
+	
+		'use strict';
+		
+		var control = this;
+
+		// Init the control.
+		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
+			kirkiControlLoader( control );
+		} else {
+			control.initKirkiControl();
+		}
+	},
+	
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
@@ -31,7 +46,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 					setTimeout(function()
 					{
 						save();
-					}, 100);
+					}, 100 );
 				}
 			});
 		color2_picker.attr( 'data-default-color', value['color2'] )
@@ -43,7 +58,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 					setTimeout(function()
 					{
 						save();
-					}, 100);
+					}, 100 );
 				}
 			});
 		location.val( value['location'].replace( '%', '' ) );

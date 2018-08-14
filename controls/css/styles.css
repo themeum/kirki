@@ -1,4 +1,11 @@
 @charset "UTF-8";
+body.wp-customizer,
+#customize-preview {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
 .preview-tablet .wp-full-overlay-main {
   width: 768px; }
 
@@ -31,7 +38,6 @@
 
 .kirki-control-type-dimensions li input {
   border-left: none;
-  -webkit-border-radius: 0;
   border-radius: 0;
   padding: 4px 0; }
 
@@ -44,13 +50,11 @@
   background-color: #fff;
   padding: 0;
   outline: none;
-  -webkit-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
   cursor: pointer; }
 
 .kirki-control-type-dimensions li:first-child input {
   border-left: 1px solid #a4afb7;
-  -webkit-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px; }
 
 .kirki-control-type-dimensions .kirki-control-dimension-label {
@@ -96,6 +100,8 @@
   cursor: pointer; }
 
 .customize-control-kirki-multicheck ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex; }
 
 .customize-control-kirki-multicheck ul li {
@@ -119,7 +125,6 @@
 
 .kirki-units-choices {
   -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-align: right; }
