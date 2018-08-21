@@ -287,9 +287,9 @@ kirki = jQuery.extend( kirki, {
 		},
 		
 		helpers: {
-			media_query: function( control, callbacks )
+			media_query: function( control, init_enabled, callbacks )
 			{
-				if ( _.isUndefined( control.params.media_queries ) )
+				if ( _.isUndefined( control.params.choices.media_queries ) )
 				{
 					return;
 				}
@@ -297,14 +297,11 @@ kirki = jQuery.extend( kirki, {
 					desktop_btn = container.find( '.kirki-respnsive-switchers li.desktop' ),
 					tablet_btn = container.find( '.kirki-respnsive-switchers li.tablet' ),
 					mobile_btn = container.find( '.kirki-respnsive-switchers li.mobile' ),
+					preview_desktop = jQuery( 'button.preview-desktop' ),
+					preview_tablet = jQuery( 'button.preview-tablet' ),
+					preview_mobile = jQuery( 'button.preview-mobile' ),
 					active_device = 0,
-					value = control.setting._value,
-					multiple = false;
-				
-				if ( !value )
-				{
-					value = control.params.default;
-				}
+					enabled = init_enabled;
 				desktop_btn.click( function(e)
 				{
 					e.preventDefault();
@@ -314,17 +311,16 @@ kirki = jQuery.extend( kirki, {
 						desktop_btn.toggleClass( 'multiple' );
 						if ( desktop_btn.hasClass( 'multiple' ) )
 						{
-							multiple = true;
-							tablet_btn.removeClass( 'hidden-device' );
-							mobile_btn.removeClass( 'hidden-device' );
+							enabled = true;
+							tablet_btn.removeClass( 'hidden' );
+							mobile_btn.removeClass( 'hidden' );
 						}
 						else
 						{
-							multiple = false;
-							tablet_btn.addClass( 'hidden-device' );
-							mobile_btn.addClass( 'hidden-device' );
-							
-							callbacks.device_change( active_device );
+							enabled = false;
+							tablet_btn.addClass( 'hidden' );
+							mobile_btn.addClass( 'hidden' );
+							callbacks.device_change( active_device, enabled );
 						}
 					}
 					else
@@ -332,8 +328,9 @@ kirki = jQuery.extend( kirki, {
 						active_device = 0;
 						tablet_btn.removeClass( 'active' );
 						mobile_btn.removeClass( 'active' );
-						callbacks.device_change( active_device );
+						callbacks.device_change( active_device, enabled );
 					}
+					preview_desktop.click();
 				});
 				tablet_btn.click( function(e)
 				{
@@ -342,7 +339,9 @@ kirki = jQuery.extend( kirki, {
 					active_device = 1;
 					mobile_btn.removeClass( 'active' );
 					tablet_btn.addClass( 'active' );
-					callbacks.device_change( active_device );
+					preview_tablet.click();
+					callbacks.device_change( active_device, enabled );
+					
 				});
 				mobile_btn.click( function(e)
 				{
@@ -351,8 +350,11 @@ kirki = jQuery.extend( kirki, {
 					active_device = 2;
 					mobile_btn.addClass( 'active' );
 					tablet_btn.removeClass( 'active' );
-					callbacks.device_change( active_device );
+					preview_mobile.click();
+					callbacks.device_change( active_device, enabled );
 				});
+				if ( init_enabled )
+					desktop_btn.click();
 			},
 			input_sync: function( control, inputs, events, callback, input_sanitize )
 			{

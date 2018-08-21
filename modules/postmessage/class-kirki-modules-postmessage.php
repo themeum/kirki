@@ -427,6 +427,14 @@ class Kirki_Modules_PostMessage {
 		);
 	}
 	
+	/**
+	 * Processes script generation for color gradient fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 * @param array $field The field arguments.
+	 */
 	protected function script_var_color_gradient( $args, $field ) {
 		$args = $this->get_args( $args );
 		$element = $args['element'];
@@ -449,6 +457,58 @@ class Kirki_Modules_PostMessage {
 		return array(
 			'script' => $script,
 			'css'    => 'css',
+		);
+	}
+		/**
+	 * Processes script generation for slider fields.
+	 *
+	 * @access protected
+	 * @since 3.0.0
+	 * @param array $args  The arguments for this js_var.
+	 * @param array $field The field arguments.
+	 */
+	protected function script_var_slider( $args, $field )
+	{
+		$args = $this->get_args( $args );
+		$element = $args['element'];
+		$property = $args['property'];
+		$script = "var css = '';
+		";
+		
+		$script .= "
+		var media_queries = newval['media_queries'];
+		var breakpoints = {
+			desktop: '@media screen (min-width: 992px)',
+			tablet: '@media screen (min-width: 768px and max-width: 991px)',
+			mobile: '@media screen (max-width: 767px)'
+		};
+		var devices = { 
+			desktop: newval['desktop'], 
+			tablet: newval['tablet'], 
+			mobile: newval['mobile'] 
+		};
+		for ( var i in devices )
+		{
+			var media_query = '';
+			var device = devices[i];
+			var device_css = '';
+			if ( !media_queries && device != 'desktop' )
+				break;
+			device_css = '{$element} { {$property}: ' + device.value + device.unit }';
+			
+			if ( media_queries )
+			{
+				var breakpoint = breakpoints[i];
+				device_css = breakpoint + ' { ' + device_css + ' }';
+			}
+			
+			css += device_css;
+		}
+		";
+		
+		return array(
+			'script' => $script,
+			'css' => ''
 		);
 	}
 	 
@@ -586,6 +646,9 @@ class Kirki_Modules_PostMessage {
 				break;
 			case 'kirki-image':
 				$callback = array( $this, 'script_var_image' );
+				break;
+			case 'kirki-slider':
+				$callback = array( $this, 'script_var_slider' );
 				break;
 			default:
 				$callback = array( $this, 'script_var' );

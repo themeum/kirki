@@ -1296,9 +1296,9 @@ kirki = jQuery.extend( kirki, {
 		},
 		
 		helpers: {
-			media_query: function( control, callbacks )
+			media_query: function( control, init_enabled, callbacks )
 			{
-				if ( _.isUndefined( control.params.media_queries ) )
+				if ( _.isUndefined( control.params.choices.media_queries ) )
 				{
 					return;
 				}
@@ -1306,14 +1306,11 @@ kirki = jQuery.extend( kirki, {
 					desktop_btn = container.find( '.kirki-respnsive-switchers li.desktop' ),
 					tablet_btn = container.find( '.kirki-respnsive-switchers li.tablet' ),
 					mobile_btn = container.find( '.kirki-respnsive-switchers li.mobile' ),
+					preview_desktop = jQuery( 'button.preview-desktop' ),
+					preview_tablet = jQuery( 'button.preview-tablet' ),
+					preview_mobile = jQuery( 'button.preview-mobile' ),
 					active_device = 0,
-					value = control.setting._value,
-					multiple = false;
-				
-				if ( !value )
-				{
-					value = control.params.default;
-				}
+					enabled = init_enabled;
 				desktop_btn.click( function(e)
 				{
 					e.preventDefault();
@@ -1323,17 +1320,16 @@ kirki = jQuery.extend( kirki, {
 						desktop_btn.toggleClass( 'multiple' );
 						if ( desktop_btn.hasClass( 'multiple' ) )
 						{
-							multiple = true;
-							tablet_btn.removeClass( 'hidden-device' );
-							mobile_btn.removeClass( 'hidden-device' );
+							enabled = true;
+							tablet_btn.removeClass( 'hidden' );
+							mobile_btn.removeClass( 'hidden' );
 						}
 						else
 						{
-							multiple = false;
-							tablet_btn.addClass( 'hidden-device' );
-							mobile_btn.addClass( 'hidden-device' );
-							
-							callbacks.device_change( active_device );
+							enabled = false;
+							tablet_btn.addClass( 'hidden' );
+							mobile_btn.addClass( 'hidden' );
+							callbacks.device_change( active_device, enabled );
 						}
 					}
 					else
@@ -1341,8 +1337,9 @@ kirki = jQuery.extend( kirki, {
 						active_device = 0;
 						tablet_btn.removeClass( 'active' );
 						mobile_btn.removeClass( 'active' );
-						callbacks.device_change( active_device );
+						callbacks.device_change( active_device, enabled );
 					}
+					preview_desktop.click();
 				});
 				tablet_btn.click( function(e)
 				{
@@ -1351,7 +1348,9 @@ kirki = jQuery.extend( kirki, {
 					active_device = 1;
 					mobile_btn.removeClass( 'active' );
 					tablet_btn.addClass( 'active' );
-					callbacks.device_change( active_device );
+					preview_tablet.click();
+					callbacks.device_change( active_device, enabled );
+					
 				});
 				mobile_btn.click( function(e)
 				{
@@ -1360,8 +1359,11 @@ kirki = jQuery.extend( kirki, {
 					active_device = 2;
 					mobile_btn.addClass( 'active' );
 					tablet_btn.removeClass( 'active' );
-					callbacks.device_change( active_device );
+					preview_mobile.click();
+					callbacks.device_change( active_device, enabled );
 				});
+				if ( init_enabled )
+					desktop_btn.click();
 			},
 			input_sync: function( control, inputs, events, callback, input_sanitize )
 			{
@@ -3396,120 +3398,154 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
-		var compiled = {
-			desktop: {
-				value: 0
-			},
-			tablet: {
-				value: 0
-			},
-			mobile: {
-				value: 0
-			}
-		};
 		var control      = this,
 			changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
 			rangeInput   = control.container.find( 'input[type="range"]' ),
 			textInput    = control.container.find( 'input[type="text"]' ),
+			units        = control.container.find( 'input[data-setting="unit"]' ),
+			valueInput   = control.container.find( '.slider-hidden-value' ),
 			value        = control.setting._value,
 			active_device = 0;
-			kirki.util.helpers.media_query( control, {
-				device_change: function( device )
-				{
-					active_device = device;
-					if ( active_device == 0)
-					{
-						textInput.val( compiled.desktop || '' );
-						rangeInput.val( compiled.desktop || '' );
-					}
-					else if ( active_device == 1 )
-					{
-						textInput.val( compiled.tablet || '' );
-						rangeInput.val( compiled.tablet || '' );
-					}
-					else
-					{
-						textInput.val( compiled.mobile || '' );
-						rangeInput.val( compiled.mobile || '' );
-					}
+		this.compiled = {
+				media_queries: false,
+				desktop: {
+					value: control.params.default.value || 0,
+					unit: control.params.default.unit || ''
+				},
+				tablet: {
+					value: 0,
+					unit: ''
+				},
+				mobile: {
+					value: 0,
+					unit: ''
 				}
-			});
-		if ( value )
+			};
+		this.input = valueInput;
+		if ( this.id == 'test_slider' )
 		{
-			if ( this.isset( value.desktop ) )
-				compiled.desktop = value.desktop;
-			if ( this.isset( value.tablet ) )
-				compiled.tablet = value.tablet;
-			if ( this.isset ( value.mobile ) )
-				compiled.mobile = value.mobile;
-			compiled.unit = value.unit;
+			console.log ( this );
+			console.log( value );
 		}
-		// Set the initial value in the text input.
-		textInput.attr( 'value', value );
-
-		// If the range input value changes copy the value to the text input.
-		rangeInput.on( 'mousemove change', function() {
-			var val = rangeInput.val();
-			textInput.attr( 'value', val );
-			if ( active_device == 0 )
-				compiled.destop = val;
-			else if ( active_device == 1 )
-				compiled.tablet == val;
-			else
-				compiled.mobile = val;
-			//control.setting.set( val );
-		} );
-
-		// Save the value when the range input value changes.
-		// This is separate from the above because of the postMessage differences.
-		// If the control refreshes the preview pane,
-		// we don't want a refresh for every change
-		// but 1 final refresh when the value is changed.
+		if ( value && typeof value == 'object' )
+		{
+			compiled = value;
+		}
+		kirki.util.helpers.media_query( control, this.compiled.media_queries, {
+			device_change: function( device, enabled )
+			{
+				active_device = device;
+				control.compiled.media_queries = enabled;
+				units.filter( ':checked' ).prop( 'checked', false );
+				if ( active_device == 0 )
+				{
+					units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
+				}
+				else if ( active_device == 1 )
+				{
+					units.filter( '[value="' + control.compiled.tablet.unit + '"]' ).prop( 'checked', true );
+				}
+				else
+				{
+					units.filter( '[value="' + control.compiled.mobile.unit + '"]' ).prop( 'checked', true );
+				}
+				change_unit();
+				if ( active_device == 0 )
+				{
+					rangeInput.val( control.compiled.desktop.value || 0 );
+					textInput.val( control.compiled.desktop.value || 0 );
+				}
+				else if ( active_device == 1 )
+				{
+					rangeInput.val( control.compiled.tablet.value || 0 );
+					textInput.val( control.compiled.tablet.value || 0 );
+				}
+				else
+				{
+					rangeInput.val( control.compiled.mobile.value || 0 );
+					textInput.val( control.compiled.mobile.value || 0 );
+				}
+			}
+		});
+		
+		//Set initial value.
+		units.find( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
+		
+		if ( units.filter( ':checked' ).length == 0 )
+		{
+			units.first().prop( 'checked', true );
+		}
+		
 		rangeInput.on( changeAction, function() {
 			var val = rangeInput.val();
-			if ( active_device == 0 )
-				compiled.destop = val;
-			else if ( active_device == 1 )
-				compiled.tablet == val;
-			else
-				compiled.mobile = val;
-			//control.setting.set( compiled );
+			textInput.val( val );
+			control.save( active_device, val );
 		} );
-
-		// If the text input value changes,
-		// copy the value to the range input
-		// and then save.
+		
 		textInput.on( 'input paste change', function() {
 			var val = textInput.val();
 			rangeInput.attr( 'value', val );
-			if ( active_device == 0 )
-			compiled.destop = val;
-			else if ( active_device == 1 )
-				compiled.tablet == val;
-			else
-				compiled.mobile = val;
-			//control.setting.set( compiled );
+			control.save( active_device, val );
 		} );
-
-		// If the reset button is clicked,
-		// set slider and text input values to default
-		// and then save.
+		
+		units.on( 'change', function() {
+			var unit = $( this );
+			change_unit();
+			control.save( active_device, null, unit.val() );
+		});
+		
 		control.container.find( '.slider-reset' ).on( 'click', function() {
-			textInput.attr( 'value', control.params.default );
-			rangeInput.attr( 'value', control.params.default );
-			if ( active_device == 0 )
-				compiled.destop = control.params.default;
-			else if ( active_device == 1 )
-				compiled.tablet == control.params.default;
-			else
-				compiled.mobile = control.params.default;
-			//control.setting.set( compiled );
+			rangeInput.attr( 'value', control.params.default.value || 0 );
+			control.save( active_device, rangeInput.val(), control.params.default.unit );
 		} );
+		
+		change_unit();
+		
+		rangeInput.val( control.compiled.desktop.value || 0 );
+		textInput.val( control.compiled.desktop.value || 0 );
+		
+		function change_unit()
+		{
+			var unit = units.filter( ':checked' ),
+				min  = unit.attr( 'min' ),
+				max  = unit.attr( 'max' ),
+				step = unit.attr( 'step' );
+			rangeInput.attr( 'min', min );
+			rangeInput.attr( 'max', max );
+			rangeInput.attr( 'step', step );
+		}
 	},
 	
 	isset: function( val )
 	{
-		return val == 0 || val;
+		return val != null && ( val == 0 || val );
+	},
+	
+	save: function( device, value, unit )
+	{
+		if ( device == 0 )
+		{
+			if ( this.isset( value ) )
+				this.compiled.desktop.value = parseFloat( value );
+			if ( this.isset( unit ) )
+				this.compiled.desktop.unit = unit;
+		}
+		else if ( device == 1 )
+		{
+			if ( this.isset( value ) )
+				this.compiled.tablet.value = parseFloat( value );
+			if ( this.isset( unit ) )
+				this.compiled.tablet.unit = unit;
+		}
+		else
+		{
+			if ( this.isset( value ) )
+				this.compiled.mobile.value = parseFloat( value );
+			if ( this.isset( unit ) )
+				this.compiled.mobile.unit = unit;
+		}
+		this.input.val( JSON.stringify( this.compiled ) ).trigger( 'change' );
+		this.setting.set( this.compiled );
 	}
 } );
 /* global kirkiControlLoader */

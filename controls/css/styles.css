@@ -1,11 +1,4 @@
 @charset "UTF-8";
-body.wp-customizer,
-#customize-preview {
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; }
-
 .preview-tablet .wp-full-overlay-main {
   width: 768px; }
 
@@ -147,7 +140,7 @@ body.wp-customizer,
 .kirki-units-choices {
   float: right; }
 
-li.hidden-device {
+.kirki-respnsive-switchers li.hidden {
   display: none; }
 
 .kirki-respnsive-switchers li.active {
