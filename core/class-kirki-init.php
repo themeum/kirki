@@ -106,6 +106,7 @@ class Kirki_Init {
 			'repeater'              => 'Kirki_Control_Repeater',
 			'kirki-select'          => 'Kirki_Control_Select',
 			'kirki-slider'          => 'Kirki_Control_Slider',
+			'kirki-slider-advanced' => 'Kirki_Control_Slider_Advanced',
 			'kirki-sortable'        => 'Kirki_Control_Sortable',
 			'kirki-spacing'         => 'Kirki_Control_Dimensions',
 			'kirki-switch'          => 'Kirki_Control_Switch',

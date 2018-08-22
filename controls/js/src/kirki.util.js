@@ -331,6 +331,7 @@ kirki = jQuery.extend( kirki, {
 						callbacks.device_change( active_device, enabled );
 					}
 					preview_desktop.click();
+					//$( '.kirki-respnsive-switchers li.desktop' ).not( desktop_btn ).click();
 				});
 				tablet_btn.click( function(e)
 				{
@@ -340,8 +341,8 @@ kirki = jQuery.extend( kirki, {
 					mobile_btn.removeClass( 'active' );
 					tablet_btn.addClass( 'active' );
 					preview_tablet.click();
+					//$( '.kirki-respnsive-switchers li.tablet' ).not( tablet_btn ).click();
 					callbacks.device_change( active_device, enabled );
-					
 				});
 				mobile_btn.click( function(e)
 				{
@@ -351,6 +352,7 @@ kirki = jQuery.extend( kirki, {
 					mobile_btn.addClass( 'active' );
 					tablet_btn.removeClass( 'active' );
 					preview_mobile.click();
+					//$( '.kirki-respnsive-switchers li.mobile' ).not( mobile_btn ).click();
 					callbacks.device_change( active_device, enabled );
 				});
 				if ( init_enabled )

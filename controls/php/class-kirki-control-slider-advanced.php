@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Slider control (range).
  */
-class Kirki_Control_Slider extends Kirki_Control_Base {
+class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -27,7 +27,7 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-slider';
+	public $type = 'kirki-slider-advanced';
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
@@ -38,10 +38,14 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'min'    => '0',
-			'max'    => '100',
-			'step'   => '1',
-			'suffix' => '',
+			'media_queries'  => '0',
+			'units' => array (
+				'' => array(
+					'min' => '0',
+					'max' => '100',
+					'step' => '1'
+				)
+			)
 		) );
 	}
 
@@ -56,18 +60,30 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
+		$uq_id = mt_rand( 100, 1000 );
 		?>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+			<# if ( data.choices.media_queries ) { #>
+			<ul class="kirki-respnsive-switchers">
+				<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
+				<li class="tablet hidden"><span class="dashicons dashicons-tablet"></span></li>
+				<li class="mobile hidden"><span class="dashicons dashicons-smartphone"></span></li>
+			</ul>
+			<div class="kirki-units-choices">
+				<input id="margin_type_px_<?php echo $uq_id ?>" type="radio" name="margin_type" data-setting="unit" value="px">
+				<label class="kirki-units-choices-label" for="margin_type_px_<?php echo $uq_id ?>">px</label>
+			</div>
+			<# } #>
 			<div class="wrapper">
-				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
+				<input {{{ data.inputAttrs }}} type="range" min="0" max="100" step="" value="" />
 				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
 				<span class="value">
-					<input {{{ data.inputAttrs }}} type="text"/>
-					<span class="suffix">{{ data.choices['suffix'] }}</span>
+					<input {{{ data.inputAttrs }}} type="number"/>
 				</span>
 			</div>
+			<input type="hidden" value="" {{{ data.link }}} />
 		</label>
 		<?php
 	}

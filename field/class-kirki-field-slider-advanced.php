@@ -12,7 +12,7 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Slider extends Kirki_Field {
+class Kirki_Field_Slider_Advanced extends Kirki_Field {
 
 	/**
 	 * Sets the control type.
@@ -21,7 +21,7 @@ class Kirki_Field_Slider extends Kirki_Field {
 	 */
 	protected function set_type() {
 
-		$this->type = 'kirki-slider';
+		$this->type = 'kirki-slider-advanced';
 
 	}
 	/**
@@ -137,28 +137,38 @@ class Kirki_Field_Slider extends Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
-
+		$valid_units = array( '%', 'cm',' em', 'ex', 'in', 'mm' ,'pc', 'pt', 'px', 'vh', 'vw', 'vmin' );
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
 		
-		$_sanitize = function ( &$device )
+		$_sanitize = function ( &$device, $valid_units )
 		{
-			$valid_units = array( '%', 'cm',' em', 'ex', 'in', 'mm' ,'pc', 'pt', 'px', 'vh', 'vw', 'vmin' );
 			if ( isset( $device['value'] ) )
 				$device['value'] = isset( $device['value'] ) ? floatval( $device['value'] ) : 0;
 			else
 				$device['value'] = floatval ( $device['value'] );
-			if ( isset( $device['unit'] ) && !in_array ( strtolower( $device['unit'] ) ) )
+			if ( isset( $device['unit'] ) && !in_array ( strtolower( $device['unit'] ), $valid_units ) )
 				$device['unit'] = '';
 			else
 				$device['unit'] = strtolower( $device['unit'] );
 		};
 		
 		$value['media_queries'] = (bool)$value['media_queries'];
-		$_sanitize( $value['desktop'] );
-		$_sanitize( $value['tablet'] );
-		$_sanitize( $value['mobile'] );
+		if ( isset( $value['desktop'] ) )
+			$_sanitize( $value['desktop'],$valid_units );
+		if ( isset( $value['tablet'] ) )
+			$_sanitize( $value['tablet'], $valid_units );
+		if ( isset( $value['mobile'] ) )
+			$_sanitize( $value['mobile'], $valid_units );
+		
+		if ( isset( $value['value'] ) )
+			$value['value'] = intval ( $value['value'] );
+		if ( isset( $value['unit'] ) )
+		{
+			if ( !in_array( $value['unit'], $valid_units ) )
+				$value['unit'] = 'px';
+		}
 		
 		return $value;
 	}

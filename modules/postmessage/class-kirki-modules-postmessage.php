@@ -477,38 +477,58 @@ class Kirki_Modules_PostMessage {
 		
 		$script .= "
 		var media_queries = newval['media_queries'];
-		var breakpoints = {
-			desktop: '@media screen (min-width: 992px)',
-			tablet: '@media screen (min-width: 768px and max-width: 991px)',
-			mobile: '@media screen (max-width: 767px)'
-		};
-		var devices = { 
-			desktop: newval['desktop'], 
-			tablet: newval['tablet'], 
-			mobile: newval['mobile'] 
-		};
-		for ( var i in devices )
+		
+		if ( media_queries )
 		{
-			var media_query = '';
-			var device = devices[i];
-			var device_css = '';
-			if ( !media_queries && device != 'desktop' )
-				break;
-			device_css = '{$element} { {$property}: ' + device.value + device.unit }';
-			
-			if ( media_queries )
+			var breakpoints = {
+				desktop: '@media screen and (min-width: 992px)',
+				tablet: '@media screen and (min-width: 576px and max-width: 991px)',
+				mobile: '@media screen and (max-width: 575px)'
+			};
+			var devices = { 
+				desktop: newval['desktop'], 
+				tablet: newval['tablet'], 
+				mobile: newval['mobile'] 
+			};
+			for ( var i in devices )
 			{
-				var breakpoint = breakpoints[i];
-				device_css = breakpoint + ' { ' + device_css + ' }';
+				var device = devices[i];
+				var media_query = '';
+				var device_css = '';
+				
+				device_css = '{$element} { {$property}: ' + device.value + device.unit + '; }';
+				
+				if ( media_queries )
+				{
+					var breakpoint = breakpoints[i];
+					device_css = breakpoint + ' { ' + device_css + ' }';
+				}
+				
+				css += device_css;
+			}
+		}
+		else
+		{
+			var value = '',
+				unit = '';
+			if ( newval['desktop'] )
+			{
+				value = newval['desktop']['value'];
+				unit = newval['desktop']['unit'];
+			}
+			else
+			{
+				value = newval['value'];
+				unit = newval['unit'];
 			}
 			
-			css += device_css;
+			css += '{$element} { {$property}: ' + value + unit + '; }';
 		}
 		";
 		
 		return array(
 			'script' => $script,
-			'css' => ''
+			'css' => 'css'
 		);
 	}
 	 
@@ -647,8 +667,8 @@ class Kirki_Modules_PostMessage {
 			case 'kirki-image':
 				$callback = array( $this, 'script_var_image' );
 				break;
-			case 'kirki-slider':
-				$callback = array( $this, 'script_var_slider' );
+			case 'kirki-slider-advanced':
+				$callback = array( $this, 'script_var_slider_advanced' );
 				break;
 			default:
 				$callback = array( $this, 'script_var' );
