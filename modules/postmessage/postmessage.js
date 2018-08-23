@@ -57,11 +57,12 @@ var kirkiPostMessage = {
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
 		 * @param {string} controlType - The control-type.
-		 * @returns {string}
+		 * @returns {string|false} - Returns false if value is excluded, otherwise a string.
 		 */
 		processValue: function( output, value ) {
 			var self     = this,
-				settings = window.parent.wp.customize.get();
+				settings = window.parent.wp.customize.get(),
+				excluded = false;
 
 			if ( 'string' !== typeof value ) {
 				_.each( value, function( subValue, key ) {
@@ -74,8 +75,21 @@ var kirkiPostMessage = {
 				units: '',
 				suffix: '',
 				value_pattern: '$',
-				pattern_replace: {}
+				pattern_replace: {},
+				exclude: []
 			} );
+
+			if ( 1 <= output.exclude.length ) {
+				_.each( output.exclude, function( exclusion ) {
+					if ( value == exclusion ) {
+						excluded = true;
+					}
+				} );
+			}
+
+			if ( excluded ) {
+				return false;
+			}
 
 			value = output.value_pattern.replace( new RegExp( '\\$', 'g' ), value );
 			_.each( output.pattern_replace, function( id, placeholder ) {
@@ -118,7 +132,8 @@ var kirkiPostMessage = {
 			var styles      = '',
 				kirkiParent = window.parent.kirki,
 				googleFont  = '',
-				mediaQuery  = false;
+				mediaQuery  = false,
+				processedValue;
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
@@ -130,7 +145,10 @@ var kirkiPostMessage = {
 						if ( output.choice && key !== output.choice ) {
 							return;
 						}
-						styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+						processedValue = kirkiPostMessage.util.processValue( output, val );
+						if ( false !== processedValue ) {
+							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+						}
 					} );
 					styles += '}';
 
@@ -169,11 +187,16 @@ var kirkiPostMessage = {
 							val = kirkiPostMessage.util.backgroundImageValue( val );
 						}
 
-						// Mostly used for padding, margin & position properties.
-						if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
-							styles += output.element + '{' + output.property + '-' + key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
-						} else {
-							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+						processedValue = kirkiPostMessage.util.processValue( output, val );
+
+						if ( false !== processedValue ) {
+
+							// Mostly used for padding, margin & position properties.
+							if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
+								styles += output.element + '{' + output.property + '-' + key + ':' + processedValue + ';';
+							} else {
+								styles += key + ':' + processedValue + ';';
+							}
 						}
 					} );
 					styles += '}';
@@ -182,7 +205,10 @@ var kirkiPostMessage = {
 					if ( 'kirki-image' === controlType ) {
 						value = ( ! _.isUndefined( value.url ) ) ? kirkiPostMessage.util.backgroundImageValue( value.url ) : kirkiPostMessage.util.backgroundImageValue( value );
 					}
-					styles += output.element + '{' + output.property + ':' + kirkiPostMessage.util.processValue( output, value ) + ';}';
+					processedValue = kirkiPostMessage.util.processValue( output, value );
+					if ( false !== processedValue ) {
+						styles += output.element + '{' + output.property + ':' + processedValue + ';}';
+					}
 					break;
 			}
 
