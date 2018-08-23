@@ -38,7 +38,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'media_queries'  => '0',
+			'media_queries'  => false,
 			'units' => array (
 				'' => array(
 					'min' => '0',
@@ -60,7 +60,6 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		$uq_id = mt_rand( 100, 1000 );
 		?>
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
@@ -71,19 +70,24 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 				<li class="tablet hidden"><span class="dashicons dashicons-tablet"></span></li>
 				<li class="mobile hidden"><span class="dashicons dashicons-smartphone"></span></li>
 			</ul>
+			<# for ( unit_id in data.choices.units ) {
+					var unit = data.choices.units[unit_id];
+			#>
 			<div class="kirki-units-choices">
-				<input id="margin_type_px_<?php echo $uq_id ?>" type="radio" name="margin_type" data-setting="unit" value="px">
-				<label class="kirki-units-choices-label" for="margin_type_px_<?php echo $uq_id ?>">px</label>
+				<input id="{{ data.id }}_{{ unit_id }}" type="radio" name="margin_type" data-setting="unit" value="{{ unit_id }}" min="{{ unit['min'] }}" max="{{ unit['max'] }}" step="{{ unit['step'] }}">
+				<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit_id }}">{{ unit_id }}</label>
 			</div>
+			<# } #>
 			<# } #>
 			<div class="wrapper">
 				<input {{{ data.inputAttrs }}} type="range" min="0" max="100" step="" value="" />
 				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
 				<span class="value">
-					<input {{{ data.inputAttrs }}} type="number"/>
+					<input {{{ data.inputAttrs }}} type="text"/>
+					<span class="suffix"></span>
 				</span>
 			</div>
-			<input type="hidden" value="" {{{ data.link }}} />
+			<input class="slider-hidden-value" type="hidden" value="" {{{ data.link }}} />
 		</label>
 		<?php
 	}

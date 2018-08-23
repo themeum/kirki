@@ -154,7 +154,8 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 				$device['unit'] = strtolower( $device['unit'] );
 		};
 		
-		$value['media_queries'] = (bool)$value['media_queries'];
+		$value['media_queries'] = isset( $value['media_queries'] ) ? (bool)$value['media_queries'] :
+			false;
 		if ( isset( $value['desktop'] ) )
 			$_sanitize( $value['desktop'],$valid_units );
 		if ( isset( $value['tablet'] ) )

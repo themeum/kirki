@@ -18,6 +18,13 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		else
 			units.filter( '[value="' + control.unit + '"]' ).prop( 'checked', true );
 		
+		//No filter was selected from the loading value, so select the first one.
+		if ( units.filter ( ':checked' ).length == 0)
+		{
+			units.first().prop( 'checked', true );
+			control.save( active_device, null, unit );
+		}
+		
 		this.change_unit();
 		
 		rangeInput.val( media_queries ? control.compiled.desktop.value : control.compiled.value );
@@ -62,6 +69,8 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 						rangeInput.val( control.compiled.mobile.value || 0 );
 						textInput.val( control.compiled.mobile.value || 0 );
 					}
+					
+					control.save( active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
 				}
 			});
 		}
@@ -80,8 +89,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		
 		units.on( 'change', function() {
 			var unit = $( this ).val();
-			control.change_unit( units );
-			control.save( active_device, null, unit );
+			control.change_unit();
 		});
 	},
 	
@@ -144,8 +152,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 				if ( self.isset( unit ) )
 					self.compiled.mobile.unit = unit;
 			}
-			// if ( this.setting.id == 'test_slider' );
-			// 	console.log('saved: %o', this.compiled );
 			input.val( JSON.stringify( self.compiled ) ).trigger( 'change' );
 			self.setting.set( self.compiled );
 		}, 100 );
@@ -154,14 +160,29 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 	change_unit: function()
 	{
 		var units = this.container.find( '.kirki-units-choices input[type="radio"]' ),
+			textInput = this.container.find( 'input[type="text"]' ),
 			rangeInput = this.container.find( 'input[type="range"]' ),
+			suffix = this.container.find( 'span.suffix' ),
 			current_unit = units.filter( ':checked' ),
 			min  = current_unit.attr( 'min' ),
 			max  = current_unit.attr( 'max' ),
 			step = current_unit.attr( 'step' );
+		var cur_val = rangeInput.val();
 		rangeInput.attr( 'min', min );
 		rangeInput.attr( 'max', max );
 		rangeInput.attr( 'step', step );
+		if ( cur_val > max )
+		{
+			rangeInput.val( max );
+			textInput.val( max );
+		}
+		else if ( cur_val < min )
+		{
+			rangeInput.val( min );
+			textInput.val( min );
+		}
+		rangeInput.trigger( 'change' );
+		suffix.html( current_unit.val() );
 	},
 	
 	isset: function( val )

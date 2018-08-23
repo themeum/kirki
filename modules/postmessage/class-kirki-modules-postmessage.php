@@ -467,7 +467,7 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args  The arguments for this js_var.
 	 * @param array $field The field arguments.
 	 */
-	protected function script_var_slider( $args, $field )
+	protected function script_var_slider_advanced( $args, $field )
 	{
 		$args = $this->get_args( $args );
 		$element = $args['element'];
@@ -477,7 +477,7 @@ class Kirki_Modules_PostMessage {
 		
 		$script .= "
 		var media_queries = newval['media_queries'];
-		
+		console.log(newval);
 		if ( media_queries )
 		{
 			var breakpoints = {
@@ -493,16 +493,11 @@ class Kirki_Modules_PostMessage {
 			for ( var i in devices )
 			{
 				var device = devices[i];
+				var breakpoint = breakpoints[i];
 				var media_query = '';
 				var device_css = '';
 				
-				device_css = '{$element} { {$property}: ' + device.value + device.unit + '; }';
-				
-				if ( media_queries )
-				{
-					var breakpoint = breakpoints[i];
-					device_css = breakpoint + ' { ' + device_css + ' }';
-				}
+				device_css = breakpoint + ' { {$element} { {$property}: ' + device.value + device.unit + '; }' + ' }';
 				
 				css += device_css;
 			}
