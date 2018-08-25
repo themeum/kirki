@@ -248,74 +248,151 @@ kirki = jQuery.extend( kirki, {
 
 		},
 
+		/**
+		 * Image fields.
+		 *
+		 * @since 3.0.34
+		 */
 		image: {
-
-			/**
-			 * Get the HTML for image inputs.
-			 *
-			 * @since 3.0.17
-			 * @param {Object} data - The arguments.
-			 * @returns {string}
-			 */
-			getTemplate: function( data ) {
-				var html   = '',
-					saveAs = 'url',
-					url;
-
-				data = _.defaults( data, {
-					label: '',
-					description: '',
-					inputAttrs: '',
-					'data-id': '',
-					choices: {},
-					value: ''
-				} );
-
-				if ( ! _.isUndefined( data.choices ) && ! _.isUndefined( data.choices.save_as ) ) {
-					saveAs = data.choices.save_as;
-				}
-				url = data.value;
-				if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
-					url = data.value.url;
-				}
-
-				html += '<label>';
-				if ( data.label ) {
-					html += '<span class="customize-control-title">' + data.label + '</span>';
-				}
-				if ( data.description ) {
-					html += '<span class="description customize-control-description">' + data.description + '</span>';
-				}
-				html += '</label>';
-				html += '<div class="image-wrapper attachment-media-view image-upload">';
-				if ( data.value.url || '' !== url ) {
-					html += '<div class="thumbnail thumbnail-image"><img src="' + url + '" alt="" /></div>';
-				} else {
-					html += '<div class="placeholder">' + kirkiL10n.noFileSelected + '</div>';
-				}
-				html += '<div class="actions">';
-				html += '<button class="button image-upload-remove-button' + ( '' === url ? ' hidden' : '' ) + '">' + kirkiL10n.remove + '</button>';
-				if ( data.default && '' !== data.default ) {
-					html += '<button type="button" class="button image-default-button"';
-					if ( data.default === data.value || ( ! _.isUndefined( data.value.url ) && data.default === data.value.url ) ) {
-						html += ' style="display:none;"';
-					}
-					html += '>' + kirkiL10n.default + '</button>';
-				}
-				html += '<button type="button" class="button image-upload-button">' + kirkiL10n.selectFile + '</button>';
-				html += '</div></div>';
-
-				return '<div class="kirki-input-container" data-id="' + data.id + '">' + html + '</div>';
-			},
 
 			/**
 			 * Init the control.
 			 *
-			 * @since 3.0.17
+			 * @since 3.0.34
 			 * @param {Object} control - The control object.
 			 * @returns {null}
 			 */
 			init: function( control ) {
+				var value         = kirki.setting.get( control.id ),
+					saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
+					preview       = control.container.find( '.placeholder, .thumbnail' ),
+					previewImage  = ( 'array' === saveAs ) ? value.url : value,
+					removeButton  = control.container.find( '.image-upload-remove-button' ),
+					defaultButton = control.container.find( '.image-default-button' );
+
+				// Make sure value is properly formatted.
+				value = ( 'array' === saveAs && _.isString( value ) ) ? { url: value } : value;
+
+				control.container.find( '.kirki-controls-loading-spinner' ).hide();
+
+				// Tweaks for save_as = id.
+				if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
+					wp.media.attachment( value ).fetch().then( function() {
+						setTimeout( function() {
+							var url = wp.media.attachment( value ).get( 'url' );
+							preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + url + '" alt="" />' );
+						}, 700 );
+					} );
+				}
+
+				// If value is not empty, hide the "default" button.
+				if ( ( 'url' === saveAs && '' !== value ) || ( 'array' === saveAs && ! _.isUndefined( value.url ) && '' !== value.url ) ) {
+					control.container.find( 'image-default-button' ).hide();
+				}
+
+				// If value is empty, hide the "remove" button.
+				if ( ( 'url' === saveAs && '' === value ) || ( 'array' === saveAs && ( _.isUndefined( value.url ) || '' === value.url ) ) ) {
+					removeButton.hide();
+				}
+
+				// If value is default, hide the default button.
+				if ( value === control.params.default ) {
+					control.container.find( 'image-default-button' ).hide();
+				}
+
+				if ( '' !== previewImage ) {
+					preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
+				}
+
+				control.container.on( 'click', '.image-upload-button', function( e ) {
+					var image = wp.media( { multiple: false } ).open().on( 'select', function() {
+
+						// This will return the selected image from the Media Uploader, the result is an object.
+						var uploadedImage = image.state().get( 'selection' ).first(),
+							jsonImg       = uploadedImage.toJSON(),
+							previewImage  = jsonImg.url;
+
+						if ( ! _.isUndefined( jsonImg.sizes ) ) {
+							previewImg = jsonImg.sizes.full.url;
+							if ( ! _.isUndefined( jsonImg.sizes.medium ) ) {
+								previewImage = jsonImg.sizes.medium.url;
+							} else if ( ! _.isUndefined( jsonImg.sizes.thumbnail ) ) {
+								previewImage = jsonImg.sizes.thumbnail.url;
+							}
+						}
+
+						if ( 'array' === saveAs ) {
+							kirki.setting.set( control.id, {
+								id: jsonImg.id,
+								url: jsonImg.sizes.full.url,
+								width: jsonImg.width,
+								height: jsonImg.height
+							} );
+						} else if ( 'id' === saveAs ) {
+							kirki.setting.set( control.id, jsonImg.id );
+						} else {
+							kirki.setting.set( control.id, ( ( ! _.isUndefined( jsonImg.sizes ) ) ? jsonImg.sizes.full.url : jsonImg.url ) );
+						}
+
+						if ( preview.length ) {
+							preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + previewImage + '" alt="" />' );
+						}
+						if ( removeButton.length ) {
+							removeButton.show();
+							defaultButton.hide();
+						}
+					} );
+
+					e.preventDefault();
+				} );
+
+				control.container.on( 'click', '.image-upload-remove-button', function( e ) {
+
+					var preview,
+						removeButton,
+						defaultButton;
+
+					e.preventDefault();
+
+					kirki.setting.set( control.id, '' );
+
+					preview       = control.container.find( '.placeholder, .thumbnail' );
+					removeButton  = control.container.find( '.image-upload-remove-button' );
+					defaultButton = control.container.find( '.image-default-button' );
+
+					if ( preview.length ) {
+						preview.removeClass().addClass( 'placeholder' ).html( kirkiL10n.noFileSelected );
+					}
+					if ( removeButton.length ) {
+						removeButton.hide();
+						if ( jQuery( defaultButton ).hasClass( 'button' ) ) {
+							defaultButton.show();
+						}
+					}
+				} );
+
+				control.container.on( 'click', '.image-default-button', function( e ) {
+
+					var preview,
+						removeButton,
+						defaultButton;
+
+					e.preventDefault();
+
+					kirki.setting.set( control.id, control.params.default );
+
+					preview       = control.container.find( '.placeholder, .thumbnail' );
+					removeButton  = control.container.find( '.image-upload-remove-button' );
+					defaultButton = control.container.find( '.image-default-button' );
+
+					if ( preview.length ) {
+						preview.removeClass().addClass( 'thumbnail thumbnail-image' ).html( '<img src="' + control.params.default + '" alt="" />' );
+					}
+					if ( removeButton.length ) {
+						removeButton.show();
+						defaultButton.hide();
+					}
+				} );
 			}
 		}
 	}
