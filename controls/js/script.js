@@ -1400,6 +1400,11 @@ kirki = jQuery.extend( kirki, {
 					numericValue,
 					unit;
 
+				// Early exit if value is undefined.
+				if ( 'undefined' === typeof value ) {
+					return true;
+				}
+
 				// Whitelist values.
 				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
 					return true;
