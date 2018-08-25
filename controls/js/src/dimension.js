@@ -22,13 +22,14 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 	 */
 	kirkiNotifications: function() {
 
-		var control = this;
+		var control        = this,
+			acceptUnitless = ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.accept_unitless && true === control.params.choices.accept_unitless );
 
 		wp.customize( control.id, function( setting ) {
 			setting.bind( function( value ) {
 				var code = 'long_title';
 
-				if ( false === kirki.util.validate.cssValue( value ) ) {
+				if ( false === kirki.util.validate.cssValue( value ) && ( ! acceptUnitless || isNaN( value ) ) ) {
 					setting.notifications.add( code, new wp.customize.Notification(
 						code,
 						{

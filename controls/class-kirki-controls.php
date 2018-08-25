@@ -25,6 +25,7 @@ class Kirki_Controls {
 		'code',
 		'color',
 		'generic',
+		'image',
 		'number',
 		'radio',
 		'select',
