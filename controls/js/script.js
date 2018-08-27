@@ -3448,9 +3448,9 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			rangeInput    = control.container.find( 'input[type="range"]' ),
 			textInput     = control.container.find( 'input[type="text"]' ),
 			units         = control.container.find( '.kirki-units-choices input[type="radio"]' ),
-			media_queries = this.params.choices.media_queries,
-			active_device = null;
+			media_queries = this.params.choices.media_queries;
 		
+		this.active_device = null;
 		this.save_tid = 0;
 		this.initCompiledValue();
 		
@@ -3464,6 +3464,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		if ( units.filter ( ':checked' ).length == 0)
 		{
 			units.first().prop( 'checked', true );
+			control.save( this.active_device, null, unit );
 		}
 		
 		this.change_unit();
@@ -3473,18 +3474,18 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		
 		if ( media_queries )
 		{
-			active_device = 0;
+			this.active_device = 0;
 			kirki.util.helpers.media_query( control, true, {
 				device_change: function( device, enabled )
 				{
-					active_device = device;
+					this.active_device = device;
 					control.compiled.media_queries = enabled;
 					units.filter( ':checked' ).prop( 'checked', false );
-					if ( active_device == 0 )
+					if ( this.active_device == 0 )
 					{
 						units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
 					}
-					else if ( active_device == 1 )
+					else if ( this.active_device == 1 )
 					{
 						units.filter( '[value="' + control.compiled.tablet.unit + '"]' ).prop( 'checked', true );
 					}
@@ -3495,12 +3496,12 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 					if ( units.filter ( ':checked' ).length == 0 )
 						units.first().click();	
 					control.change_unit();
-					if ( active_device == 0 )
+					if ( this.active_device == 0 )
 					{
 						rangeInput.val( control.compiled.desktop.value || 0 );
 						textInput.val( control.compiled.desktop.value || 0 );
 					}
-					else if ( active_device == 1 )
+					else if ( this.active_device == 1 )
 					{
 						rangeInput.val( control.compiled.tablet.value || 0 );
 						textInput.val( control.compiled.tablet.value || 0 );
@@ -3511,7 +3512,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 						textInput.val( control.compiled.mobile.value || 0 );
 					}
 					
-					control.save( active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
+					control.save( this.active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
 				}
 			});
 		}
@@ -3519,19 +3520,17 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		rangeInput.on( changeAction, function() {
 			var val = rangeInput.val();
 			textInput.val( val );
-			control.save( active_device, val );
+			control.save( control.active_device, val );
 		} );
 		
 		textInput.on( 'input paste change', function() {
 			var val = textInput.val();
 			rangeInput.attr( 'value', val );
-			control.save( active_device, val );
+			control.save( control.active_device, val );
 		} );
 		
 		units.on( 'change', function() {
-			var unit = $( this ).val();
 			control.change_unit();
-			control.save( active_device, null, unit );
 		});
 	},
 	
@@ -3605,6 +3604,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			textInput = this.container.find( 'input[type="text"]' ),
 			rangeInput = this.container.find( 'input[type="range"]' ),
 			suffix = this.container.find( 'span.suffix' ),
+			active_device = this.active_device,
 			current_unit = units.filter( ':checked' ),
 			min  = current_unit.attr( 'min' ),
 			max  = current_unit.attr( 'max' ),
@@ -3615,16 +3615,20 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		rangeInput.attr( 'step', step );
 		if ( cur_val > max )
 		{
+			cur_val = max;
 			rangeInput.val( max );
 			textInput.val( max );
 		}
 		else if ( cur_val < min )
 		{
+			cur_val = max;
 			rangeInput.val( min );
 			textInput.val( min );
 		}
-		rangeInput.trigger( 'change' );
 		suffix.html( current_unit.val() );
+		//var val = rangeInput.val();
+		var unit = current_unit.val();
+		this.save( active_device, cur_val, unit );
 	},
 	
 	isset: function( val )
