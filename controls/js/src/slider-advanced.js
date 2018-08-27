@@ -184,7 +184,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			textInput.val( min );
 		}
 		suffix.html( current_unit.val() );
-		//var val = rangeInput.val();
 		var unit = current_unit.val();
 		this.save( active_device, cur_val, unit );
 	},
