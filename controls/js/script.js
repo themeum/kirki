@@ -3478,14 +3478,14 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			kirki.util.helpers.media_query( control, true, {
 				device_change: function( device, enabled )
 				{
-					this.active_device = device;
+					control.active_device = device;
 					control.compiled.media_queries = enabled;
 					units.filter( ':checked' ).prop( 'checked', false );
-					if ( this.active_device == 0 )
+					if ( control.active_device == 0 )
 					{
 						units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
 					}
-					else if ( this.active_device == 1 )
+					else if ( control.active_device == 1 )
 					{
 						units.filter( '[value="' + control.compiled.tablet.unit + '"]' ).prop( 'checked', true );
 					}
@@ -3496,12 +3496,12 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 					if ( units.filter ( ':checked' ).length == 0 )
 						units.first().click();	
 					control.change_unit();
-					if ( this.active_device == 0 )
+					if ( control.active_device == 0 )
 					{
 						rangeInput.val( control.compiled.desktop.value || 0 );
 						textInput.val( control.compiled.desktop.value || 0 );
 					}
-					else if ( this.active_device == 1 )
+					else if ( control.active_device == 1 )
 					{
 						rangeInput.val( control.compiled.tablet.value || 0 );
 						textInput.val( control.compiled.tablet.value || 0 );
@@ -3512,7 +3512,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 						textInput.val( control.compiled.mobile.value || 0 );
 					}
 					
-					control.save( this.active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
+					control.save( control.active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
 				}
 			});
 		}
@@ -3524,7 +3524,21 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		} );
 		
 		textInput.on( 'input paste change', function() {
-			var val = textInput.val();
+			var val = textInput.val(),
+				min = rangeInput.attr( 'min' ),
+				max = rangeInput.attr( 'max' );
+			// if ( val.length == 0 )
+			// 	return;
+			// if ( val > max )
+			// {
+			// 	val = max;
+			// 	textInput.val( max );
+			// }
+			// else if ( val < min )
+			// {
+			// 	val = min;
+			// 	textInput.val( min );
+			// }
 			rangeInput.attr( 'value', val );
 			control.save( control.active_device, val );
 		} );
@@ -3626,7 +3640,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			textInput.val( min );
 		}
 		suffix.html( current_unit.val() );
-		//var val = rangeInput.val();
 		var unit = current_unit.val();
 		this.save( active_device, cur_val, unit );
 	},

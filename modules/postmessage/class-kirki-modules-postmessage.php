@@ -477,7 +477,6 @@ class Kirki_Modules_PostMessage {
 		
 		$script .= "
 		var media_queries = newval['media_queries'];
-		console.log(newval);
 		if ( media_queries )
 		{
 			var breakpoints = {
