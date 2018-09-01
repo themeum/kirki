@@ -1429,6 +1429,22 @@ kirki = jQuery.extend( kirki, {
 				// Check the validity of the numeric value and units.
 				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
 			}
+		},
+
+		/**
+		 * Parses HTML Entities.
+		 *
+		 * @since 3.0.34
+		 * @param {string} str - The string we want to parse.
+		 * @returns {string}
+		 */
+		parseHtmlEntities: function( str ) {
+			var parser = new DOMParser,
+				dom    = parser.parseFromString(
+					'<!doctype html><body>' + str, 'text/html'
+				);
+
+			return dom.body.textContent;
 		}
 	}
 } );
@@ -3337,7 +3353,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		// Set the initial value.
 		if ( value['font-family'] || '' === value['font-family'] ) {
-			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
+			value['font-family'] = kirki.util.parseHtmlEntities( value['font-family'].replace( /'/g, '"' ) );
+			fontSelect.val( value['font-family'] ).trigger( 'change' );
 		}
 
 		// When the value changes
@@ -3354,7 +3371,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		} );
 	},
 
-	/**
+/**
 	 * Adds the font-families to the font-family dropdown
 	 * and instantiates selectWoo.
 	 */
