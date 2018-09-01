@@ -331,7 +331,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $this->folder_path ) ) {
-			wp_mkdir_p( $this->folder_path, FS_CHMOD_DIR );
+			wp_mkdir_p( $this->folder_path );
 		}
 		// If the file exists no reason to do anything.
 		if ( file_exists( $path ) ) {
@@ -405,7 +405,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $path ) ) {
-			wp_mkdir_p( $path, FS_CHMOD_DIR );
+			wp_mkdir_p( $path );
 		}
 
 		// Return the path.
@@ -437,7 +437,7 @@ final class Kirki_Fonts_Google_Local {
 				$url = str_replace( $original_domain, $mapped_domain, $url );
 			}
 		}
-		$url = set_url_scheme( $url );
+		$url = str_replace( array( 'https://', 'http://' ), '//', $url );
 		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
 	}
 

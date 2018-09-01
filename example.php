@@ -372,6 +372,9 @@ my_config_kirki_add_field(
 		'description' => esc_attr__( 'Description Here.', 'kirki' ),
 		'section'     => 'dimension_section',
 		'default'     => '10px',
+		'choices' => array(
+			'accept_unitless' => true
+		),
 	)
 );
 
