@@ -48,7 +48,6 @@ jQuery( document ).ready( function() {
 
 				_.each( field.css_vars, function( cssVar ) {
 					if ( cssVar[2] && _.isObject( newVal ) && newVal[ cssVar[2] ] ) {
-						console.log( cssVar );
 						val = newVal[ cssVar[2] ];
 					}
 					styles[ cssVar[0] ] = cssVar[1].replace( '$', val );
