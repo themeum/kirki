@@ -47,10 +47,11 @@ jQuery( document ).ready( function() {
 				styles = kirkiCssVars.getStyles();
 
 				_.each( field.css_vars, function( cssVar ) {
-					if ( cssVar[2] && _.isObject( value ) && value[ cssVar[2] ] ) {
-						newVal = value[ cssVar[2] ];
+					if ( cssVar[2] && _.isObject( newVal ) && newVal[ cssVar[2] ] ) {
+						console.log( cssVar );
+						val = newVal[ cssVar[2] ];
 					}
-					styles[ cssVar[0] ] = cssVar[1].replace( '$', newVal );
+					styles[ cssVar[0] ] = cssVar[1].replace( '$', val );
 				} );
 				jQuery( '#kirki-css-vars' ).html( kirkiCssVars.buildStyle( styles ) )				;
 			} );
