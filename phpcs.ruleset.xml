@@ -15,5 +15,7 @@
 	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<rule ref="PHPCompatibility"/>
+	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<config name="testVersion" value="5.2-"/>
+	<rule ref="PHPCompatibilityWP"/>
 </ruleset>
