@@ -39,12 +39,11 @@ script:
   # -s flag: Show sniff codes in all reports.
   # -v flag: Print verbose output.
   # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
-  # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
-  - vendor/bin/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - vendor/bin/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./*.php --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./**/*.php --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./**/**/*.php --extensions=php
+  - vendor/bin/phpcs -p -s -v -n ./**/**/**/*.php --extensions=php
 
 after_script:
   - php vendor/bin/coveralls
