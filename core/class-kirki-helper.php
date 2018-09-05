@@ -31,8 +31,7 @@ class Kirki_Helper {
 	 */
 	public static function array_replace_recursive( $array, $array1 ) {
 		if ( function_exists( 'array_replace_recursive' ) ) {
-			// @codingStandardsIgnoreLine PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
-			return array_replace_recursive( $array, $array1 ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
+			return array_replace_recursive( $array, $array1 );
 		}
 
 		// Handle the arguments, merge one by one.
