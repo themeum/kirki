@@ -162,7 +162,7 @@ class Kirki_Util {
 	 * @static
 	 * @access public
 	 * @since 3.0.12
-	 * @param string  $context Use 'minor' or 'major'.
+	 * @param string $context Use 'minor' or 'major'.
 	 * @return int|string      Returns integer when getting the 'major' version.
 	 *                         Returns string when getting the 'minor' version.
 	 */
@@ -184,9 +184,10 @@ class Kirki_Util {
 	 * @static
 	 * @access public
 	 * @since 3.0.12
-	 * @param string  $context Use 'minor' or 'major'.
-	 * @return int|float       Returns integer when getting the 'major' version.
-	 *                         Returns float when getting the 'minor' version.
+	 * @param string $context      Use 'minor' or 'major'.
+	 * @param bool   $only_numeric Whether we wwant to return numeric value or include beta/alpha etc.
+	 * @return int|float           Returns integer when getting the 'major' version.
+	 *                             Returns float when getting the 'minor' version.
 	 */
 	public static function get_wp_version_numeric( $context = 'minor', $only_numeric = true ) {
 		global $wp_version;

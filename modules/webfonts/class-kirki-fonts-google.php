@@ -125,7 +125,7 @@ final class Kirki_Fonts_Google {
 			}
 
 			// If we don't have a font-family then we can skip this.
-			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts ) ) ) {
+			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) ) {
 				return;
 			}
 
@@ -185,8 +185,8 @@ final class Kirki_Fonts_Google {
 						}
 					}
 				}
-			} // End foreach().
-		} // End if().
+			}
+		}
 	}
 
 	/**
@@ -246,7 +246,7 @@ final class Kirki_Fonts_Google {
 	 * @return void
 	 */
 	public function get_standardfonts_json() {
-		echo wp_json_encode( Kirki_Fonts::get_standard_fonts() ); // WPCS: XSS ok.
+		echo wp_json_encode( Kirki_Fonts::get_standard_fonts() );
 		wp_die();
 	}
 

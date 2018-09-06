@@ -63,6 +63,6 @@ class Kirki_Modules_Preset {
 	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
-		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'modules/preset/preset.js', array( 'jquery' ), KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'modules/preset/preset.js', array( 'jquery' ), KIRKI_VERSION, false );
 	}
 }

@@ -35,9 +35,11 @@ class Kirki_Control_Dimension extends Kirki_Control_Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		wp_localize_script( 'kirki-script', 'dimensionkirkiL10n', array(
-			'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
-		) );
+		wp_localize_script(
+			'kirki-script', 'dimensionkirkiL10n', array(
+				'invalid-value' => esc_attr__( 'Invalid Value', 'kirki' ),
+			)
+		);
 	}
 
 	/**

@@ -41,15 +41,17 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 	 */
 	public function json() {
 
-		$array = wp_array_slice_assoc( (array) $this, array(
-			'id',
-			'description',
-			'priority',
-			'panel',
-			'type',
-			'description_hidden',
-			'section',
-		) );
+		$array = wp_array_slice_assoc(
+			(array) $this, array(
+				'id',
+				'description',
+				'priority',
+				'panel',
+				'type',
+				'description_hidden',
+				'section',
+			)
+		);
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();

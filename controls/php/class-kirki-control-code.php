@@ -12,6 +12,8 @@
  * @since       1.0
  */
 
+// @codingStandardsIgnoreFile Generic.Files.OneClassPerFile.MultipleFound Generic.Classes.DuplicateClassName.Found
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
