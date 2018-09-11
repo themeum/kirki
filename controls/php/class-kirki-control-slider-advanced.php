@@ -66,15 +66,15 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<# if ( data.choices.media_queries ) { #>
 			<ul class="kirki-respnsive-switchers">
-				<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
-				<li class="tablet hidden"><span class="dashicons dashicons-tablet"></span></li>
-				<li class="mobile hidden"><span class="dashicons dashicons-smartphone"></span></li>
+				<li class="desktop"><span class="eicon-device-desktop"></span></li>
+				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+				<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
 			</ul>
 			<# for ( unit_id in data.choices.units ) {
 					var unit = data.choices.units[unit_id];
 			#>
 			<div class="kirki-units-choices">
-				<input id="{{ data.id }}_{{ unit_id }}" type="radio" name="margin_type" data-setting="unit" value="{{ unit_id }}" min="{{ unit['min'] }}" max="{{ unit['max'] }}" step="{{ unit['step'] }}">
+				<input id="{{ data.id }}_{{ unit_id }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit_id }}" min="{{ unit['min'] }}" max="{{ unit['max'] }}" step="{{ unit['step'] }}">
 				<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit_id }}">{{ unit_id }}</label>
 			</div>
 			<# } #>

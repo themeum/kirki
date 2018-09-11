@@ -12,7 +12,7 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Slider_Advanced extends Kirki_Field {
+class Kirki_Field_Typography_Advanced extends Kirki_Field {
 
 	/**
 	 * Sets the control type.
@@ -21,9 +21,10 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 */
 	protected function set_type() {
 
-		$this->type = 'kirki-slider-advanced';
+		$this->type = 'kirki-typography-advanced';
 
 	}
+
 	/**
 	 * The class constructor.
 	 * Parses and sanitizes all field arguments.
@@ -46,7 +47,16 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_default() {
-		
+
+		// Accomodate the use of font-weight and convert to variant.
+		if ( isset( $this->default['font-weight'] ) ) {
+			$this->default['variant'] = ( 'regular' === $this->default['font-weight'] ) ? 400 : (string) intval( $this->default['font-weight'] );
+		}
+
+		// Make sure letter-spacing has units.
+		if ( isset( $this->default['letter-spacing'] ) && is_numeric( $this->default['letter-spacing'] ) && $this->default['letter-spacing'] ) {
+			$this->default['letter-spacing'] .= 'px';
+		}
 	}
 
 	/**
@@ -128,40 +138,63 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
-		$valid_units = array( '%', 'cm',' em', 'ex', 'in', 'mm' ,'pc', 'pt', 'px', 'vh', 'vw', 'vmin' );
+
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
-		
-		$_sanitize = function ( &$device, $valid_units )
-		{
-			if ( isset( $device['value'] ) )
-				$device['value'] = isset( $device['value'] ) ? floatval( $device['value'] ) : 0;
-			else
-				$device['value'] = floatval ( $device['value'] );
-			if ( isset( $device['unit'] ) && !in_array ( strtolower( $device['unit'] ), $valid_units ) )
-				$device['unit'] = '';
-			else
-				$device['unit'] = strtolower( $device['unit'] );
-		};
-		
-		$value['media_queries'] = isset( $value['media_queries'] ) ? (bool)$value['media_queries'] :
-			false;
-		if ( isset( $value['desktop'] ) )
-			$_sanitize( $value['desktop'],$valid_units );
-		if ( isset( $value['tablet'] ) )
-			$_sanitize( $value['tablet'], $valid_units );
-		if ( isset( $value['mobile'] ) )
-			$_sanitize( $value['mobile'], $valid_units );
-		
-		if ( isset( $value['value'] ) )
-			$value['value'] = intval ( $value['value'] );
-		if ( isset( $value['unit'] ) )
-		{
-			if ( !in_array( $value['unit'], $valid_units ) )
-				$value['unit'] = 'px';
-		}
-		
+
+		foreach ( $value as $key => $val ) {
+			switch ( $key ) {
+				case 'font-family':
+					$value['font-family'] = esc_attr( $val );
+					break;
+				case 'font-weight':
+					if ( isset( $value['variant'] ) ) {
+						break;
+					}
+					$value['variant'] = $val;
+					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
+						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
+					}
+					break;
+				case 'variant':
+					// Use 'regular' instead of 400 for font-variant.
+					$value['variant'] = ( 400 === $val || '400' === $val ) ? 'regular' : $val;
+					// Get font-weight from variant.
+					$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? 400 : absint( $value['font-weight'] );
+					// Get font-style from variant.
+					if ( ! isset( $value['font-style'] ) ) {
+						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
+					}
+					break;
+				case 'font-size':
+				case 'letter-spacing':
+				case 'word-spacing':
+				case 'line-height':
+					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
+					break;
+				case 'text-align':
+					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+						$value['text-align'] = '';
+					}
+					break;
+				case 'text-transform':
+					if ( ! in_array( $val, array( '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
+						$value['text-transform'] = '';
+					}
+					break;
+				case 'text-decoration':
+					if ( ! in_array( $val, array( ''. 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+						$value['text-transform'] = '';
+					}
+					break;
+				case 'color':
+					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
+					break;
+			} // End switch().
+		} // End foreach().
+
 		return $value;
 	}
 
@@ -178,14 +211,11 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		}
 		$this->choices = wp_parse_args(
 			$this->choices, array(
-				'media_queries'  => true,
-				'units' => array (
-					'' => array(
-						'min' => '0',
-						'max' => '100',
-						'step' => '1'
-					)
-				)
+				'variant' => array(),
+				'fonts'   => array(
+					'standard' => array(),
+					'google'   => array(),
+				),
 			)
 		);
 	}

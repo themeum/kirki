@@ -6,6 +6,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			rangeInput    = control.container.find( 'input[type="range"]' ),
 			textInput     = control.container.find( 'input[type="text"]' ),
 			units         = control.container.find( '.kirki-units-choices input[type="radio"]' ),
+			has_units = units.length > 0,
 			media_queries = this.params.choices.media_queries;
 		
 		this.active_device = null;
@@ -22,7 +23,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		if ( units.filter ( ':checked' ).length == 0)
 		{
 			units.first().prop( 'checked', true );
-			control.save( this.active_device, null, unit );
 		}
 		
 		this.change_unit();
@@ -38,22 +38,27 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 				{
 					control.active_device = device;
 					control.compiled.media_queries = enabled;
+					var selected_unit = null;
 					units.filter( ':checked' ).prop( 'checked', false );
-					if ( control.active_device == 0 )
+					if ( has_units )
 					{
-						units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
+						if ( control.active_device == 0 )
+						{
+							units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
+						}
+						else if ( control.active_device == 1 )
+						{
+							units.filter( '[value="' + control.compiled.tablet.unit + '"]' ).prop( 'checked', true );
+						}
+						else
+						{
+							units.filter( '[value="' + control.compiled.mobile.unit + '"]' ).prop( 'checked', true );
+						}
+						if ( units.filter ( ':checked' ).length == 0 )
+							units.first().click();
+						control.change_unit();
+						selected_unit = units.filter ( ':checked' ).val()
 					}
-					else if ( control.active_device == 1 )
-					{
-						units.filter( '[value="' + control.compiled.tablet.unit + '"]' ).prop( 'checked', true );
-					}
-					else
-					{
-						units.filter( '[value="' + control.compiled.mobile.unit + '"]' ).prop( 'checked', true );
-					}
-					if ( units.filter ( ':checked' ).length == 0 )
-						units.first().click();	
-					control.change_unit();
 					if ( control.active_device == 0 )
 					{
 						rangeInput.val( control.compiled.desktop.value || 0 );
@@ -70,7 +75,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 						textInput.val( control.compiled.mobile.value || 0 );
 					}
 					
-					control.save( control.active_device, rangeInput.val(), units.filter ( ':checked' ).val() );
+					control.save( control.active_device, rangeInput.val(), selected_unit );
 				}
 			});
 		}
@@ -85,18 +90,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			var val = textInput.val(),
 				min = rangeInput.attr( 'min' ),
 				max = rangeInput.attr( 'max' );
-			// if ( val.length == 0 )
-			// 	return;
-			// if ( val > max )
-			// {
-			// 	val = max;
-			// 	textInput.val( max );
-			// }
-			// else if ( val < min )
-			// {
-			// 	val = min;
-			// 	textInput.val( min );
-			// }
 			rangeInput.attr( 'value', val );
 			control.save( control.active_device, val );
 		} );
@@ -109,25 +102,51 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 	initCompiledValue: function()
 	{
 		var loadedValue = this.setting._value;
-		// if ( this.setting.id == 'test_slider' );
-		// 	console.log(this.setting._value);
 		this.compiled = {
-			media_queries: false
+			media_queries: loadedValue.media_queries || false
 		};
 		if ( this.params.choices.media_queries )
 		{
-			this.compiled.media_queries = loadedValue.media_queries;
-			this.compiled.desktop = loadedValue.desktop || { value: 0, unit: '' };
-			this.compiled.tablet = loadedValue.tablet || { value: 0, unit: '' };
-			this.compiled.mobile = loadedValue.mobile || { value: 0, unit: '' };
+			var desktop_value = null,
+				desktop_unit = '',
+				tablet_value = null,
+				tablet_unit = '',
+				mobile_value = null,
+				mobile_unit = '';
+			if ( this.params.default.desktop )
+			{
+				desktop_value = this.params.default.desktop.value;
+				desktop_unit = this.params.default.desktop.unit;
+			}
+			if ( this.params.default.tablet )
+			{
+				tablet_value = this.params.default.tablet.value;
+				tablet_unit = this.params.default.tablet.unit;
+			}
+			if ( this.params.default.mobile )
+			{
+				mobile_value = this.params.default.mobile.value;
+				mobile_unit = this.params.default.mobile.unit;
+			}
+			this.compiled.desktop = loadedValue.desktop || { value: ( desktop_value ), 
+				unit: ( desktop_unit ) };
+			this.compiled.tablet = loadedValue.tablet || { value: ( tablet_value ),
+				 unit: ( tablet_unit ) };
+			this.compiled.mobile = loadedValue.mobile || { value: ( mobile_value), 
+				unit: ( mobile_unit ) };
 		}
 		else
 		{
-			this.compiled.value = loadedValue.value || 0;
-			this.compiled.unit = loadedValue.unit || '';
+			var default_val = 0,
+				default_unit = '';
+			if ( this.params.default )
+			{
+				default_val = this.params.default.value || 0;
+				default_unit = this.params.default.unit || '';
+			}
+			this.compiled.value = loadedValue.value || default_val;
+			this.compiled.unit = loadedValue.unit || default_unit;
 		}
-		// if ( this.setting.id == 'test_slider' );
-		// 	console.log(this.compiled);
 	},
 	
 	save: function( device, value, unit )

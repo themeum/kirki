@@ -582,8 +582,15 @@ class Kirki_Modules_Customizer_Styling {
 		{
 			display:none;
 		}
+		.kirki-respnsive-switchers li{
+			background-color: #999;
+			color: #fff;
+			border-radius: 100px;
+			padding: 4px;
+			font-size: 8px;
+		}
 		.kirki-respnsive-switchers li.active{
-			color: #00a0d2;
+			background-color: #00a0d2;
 		}
 		</style>
 		<?php

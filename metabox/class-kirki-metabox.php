@@ -100,14 +100,7 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 				// 	'jsfile' => 'controls/js/spacing.js'
 				// ],
 			];
-
 			apply_filters ( 'kiki_metabox_controls', $this->controls );
-
-			// require ( 'controls/class-kirki-metabox-control.php' );
-			// foreach ( $this->controls as $control )
-			// {
-			// 	require ( 'controls/' . $control['filename'] );
-			// }
 		}
 
 		public function init()

@@ -107,7 +107,10 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		wp_enqueue_script( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/js/selectWoo.full.js', array( 'jquery' ), '1.0.1', true );
 		wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
 		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', null );
-
+		
+		// Enqueue elementor-icons.
+		wp_enqueue_style( 'elementor-icons', trailingslashit( Kirki::$url ) . 'assets/vendor/elementor-icons/css/elementor-icons.min.css', null );
+		
 		// Enqueue the script.
 		wp_enqueue_script(
 			'kirki-script',

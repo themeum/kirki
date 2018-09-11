@@ -26,18 +26,10 @@ class Kirki_Control_Spacing extends Kirki_Control_Base {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-spacing';
+	public $type = 'kirki-spacing-advanced';
 	
 	public function to_json() {
 		parent::to_json();
-		// $this->json['choices'] = wp_parse_args( $this->json['default'], array(
-		// 	'border-style'    => '',
-		// 	'border-top'    => '',
-		// 	'border-right' => '',
-		// 	'border-bottom' => '',
-		// 	'border-left'   => '',
-		// 	'border-color' => ''
-		// ) );
 	}
 	
 	protected function content_template() 
@@ -47,23 +39,23 @@ class Kirki_Control_Spacing extends Kirki_Control_Base {
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		</label>
-		<div class="kirki-group-outer border">
+		<div class="kirki-group-outer spacing">
 			<div class="kirki-control-type-dimensions">
 				<ul class="kirki-control-dimensions">
 					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-top" data-border-type="top">
+						<input type="number" id="{{{ data.id }}}-top" data-spacing-type="top">
 						<label for="{{{ data.id }}}-top" class="kirki-control-dimension-label"><?php _e('Top', 'kirki') ?></span>
 					</li>
 					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-right" data-border-type="right">
+						<input type="number" id="{{{ data.id }}}-right" data-spacing-type="right">
 						<label for="{{{ data.id }}}-right" class="kirki-control-dimension-label"><?php _e('Right', 'kirki') ?></span>
 					</li>
 					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-bottom" data-border-type="bottom">
+						<input type="number" id="{{{ data.id }}}-bottom" data-spacing-type="bottom">
 						<label for="{{{ data.id }}}-bottom" class="kirki-control-dimension-label"><?php _e('Bottom', 'kirki') ?></span>
 					</li>
 					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-left" data-border-type="left">
+						<input type="number" id="{{{ data.id }}}-left" data-spacing-type="left">
 						<label for="{{{ data.id }}}-left" class="kirki-control-dimension-label"><?php _e( 'Left', 'kirki' ) ?></span>
 					</li>
 					<li>

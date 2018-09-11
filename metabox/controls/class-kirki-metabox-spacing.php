@@ -30,9 +30,9 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 				<h5>
 					<span><?php _e( 'Margin', 'kirki' ) ?></span>
 					<ul class="kirki-respnsive-switchers">
-						<li class="desktop"><span class="dashicons dashicons-desktop"></span></li>
-						<li class="tablet hidden-device"><span class="dashicons dashicons-tablet"></span></li>
-						<li class="mobile hidden-device"><span class="dashicons dashicons-smartphone"></span></li>
+						<li class="desktop"><span class="eicon-device-desktop"></span></li>
+						<li class="tablet hidden-device"><span class="eicon-device-tablet"></span></li>
+						<li class="mobile hidden-device"><span class="eicon-device-mobile"></span></li>
 					</ul>
 					<div class="kirki-units-choices">
 						<input id="margin_type_px_<?php echo $uq_id ?>" type="radio" name="margin_type" data-setting="unit" value="px">
