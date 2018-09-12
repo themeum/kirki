@@ -119,9 +119,11 @@ final class Kirki_Modules_Webfonts_Link {
 			$link_fonts[] = $link_font;
 		}
 
-		$this->link = add_query_arg( array(
-			'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
-		), 'https://fonts.googleapis.com/css' );
+		$this->link = add_query_arg(
+			array(
+				'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
+			), 'https://fonts.googleapis.com/css'
+		);
 
 	}
 }

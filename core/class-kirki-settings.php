@@ -108,13 +108,15 @@ class Kirki_Settings {
 	final private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
 
 		$this->wp_customize->add_setting(
-			new $classname( $this->wp_customize, $setting, array(
-				'default'           => $default,
-				'type'              => $type,
-				'capability'        => $capability,
-				'transport'         => $transport,
-				'sanitize_callback' => $sanitize_callback,
-			) )
+			new $classname(
+				$this->wp_customize, $setting, array(
+					'default'           => $default,
+					'type'              => $type,
+					'capability'        => $capability,
+					'transport'         => $transport,
+					'sanitize_callback' => $sanitize_callback,
+				)
+			)
 		);
 
 	}

@@ -7,9 +7,7 @@ class Test_Kirki_Add_Config extends WP_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 		require_once( ABSPATH . WPINC . '/class-wp-customize-manager.php' );
-		// @codingStandardsIgnoreStart
 		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
-		// @codingStandardsIgnoreEnd
 		$this->wp_customize = $GLOBALS['wp_customize'];
 	}
 

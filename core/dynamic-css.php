@@ -32,10 +32,8 @@ foreach ( $configs as $config_id => $args ) {
 
 	$styles = wp_kses_post( $styles );
 
-	// @codingStandardsIgnoreStart
-
 	// Why both KSES and strip_tags? Because we just added some '>'.
 	// kses replaces lone '>' with &gt;.
+	// @codingStandardsIgnoreLine WordPress.WP.AlternativeFunctions.strip_tags_strip_tags WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo strip_tags( str_replace( '&gt;', '>', $styles ) );
-	// @codingStandardsIgnoreStop
 }

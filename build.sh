@@ -41,6 +41,7 @@ rm .jscsrc
 rm .jshintignore
 rm .jshintrc
 rm .jhintrc
+rm .phpcs.xml.dist
 rm .simplecov
 rm .travis.yml
 rm CODE_OF_CONDUCT.md
@@ -49,7 +50,6 @@ rm -rf vendor/
 rm example.php
 rm Gruntfile.js
 rm package.json
-rm phpcs.ruleset.xml
 rm phpunit.xml
 rm phpunit.xml.dist
 rm README.md

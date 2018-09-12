@@ -33,6 +33,16 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.34 =
+
+* Fix: Error when `typography` fields don't have a font-family. [#1916](https://github.com/aristath/kirki/issues/1916), [#1797](https://github.com/aristath/kirki/issues/1797), [#1935](https://github.com/aristath/kirki/issues/1935). props @mintbird
+* Fix:  Allow using "Default Browser Font-Family" in default value (`typography` fields) [#1907](https://github.com/aristath/kirki/pull/1907). props @mintbird
+* Fix: Envato theme-check error [#1914](https://github.com/aristath/kirki/issues/1914), [#1926](https://github.com/aristath/kirki/pull/1926). props @timelsass
+* Fix: HTTPS webfont load error [#1925](https://github.com/aristath/kirki/issues/1925)
+* Fix: Undefined index PHP notice for background-color. [95ca010](https://github.com/aristath/kirki/pull/1930/commits/95ca010588878363a7d2042f09428bae260cb602)
+* New: Allow unitless values in dimension controls.
+* New: Migrated `image` controls to new structure in preparation of v3.1
+
 = 3.0.33 =
 
 May 17 2018

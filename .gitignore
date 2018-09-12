@@ -39,3 +39,8 @@ build/logs
 # VS Code #
 ###########
 .vscode
+
+# Local Dev files #
+###################
+.phpcs.xml
+phpcs.xml

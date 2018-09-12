@@ -260,6 +260,11 @@ kirki = jQuery.extend( kirki, {
 					numericValue,
 					unit;
 
+				// Early exit if value is undefined.
+				if ( 'undefined' === typeof value ) {
+					return true;
+				}
+
 				// Whitelist values.
 				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
 					return true;
@@ -377,5 +382,21 @@ kirki = jQuery.extend( kirki, {
 				});
 			}
 		},
+
+		/**
+		 * Parses HTML Entities.
+		 *
+		 * @since 3.0.34
+		 * @param {string} str - The string we want to parse.
+		 * @returns {string}
+		 */
+		parseHtmlEntities: function( str ) {
+			var parser = new DOMParser,
+				dom    = parser.parseFromString(
+					'<!doctype html><body>' + str, 'text/html'
+				);
+
+			return dom.body.textContent;
+		}
 	}
 } );

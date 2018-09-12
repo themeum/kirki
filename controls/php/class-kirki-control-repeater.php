@@ -130,7 +130,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 						break;
 				}
 			}
-		} // End foreach().
+		}
 
 		$this->fields = $args['fields'];
 
@@ -178,8 +178,8 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 						}
 					}
 				}
-			} // End foreach().
-		} // End if().
+			}
+		}
 	}
 
 	/**
@@ -223,7 +223,6 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 		<ul class="repeater-fields"></ul>
 
 		<?php if ( isset( $this->choices['limit'] ) ) : ?>
-			<?php // @codingStandardsIgnoreLine ?>
 			<?php /* translators: %s represents the number of rows we're limiting the repeater to allow. */ ?>
 			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'kirki' ), esc_html( $this->choices['limit'] ) ); ?></p>
 		<?php endif; ?>
