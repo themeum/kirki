@@ -1434,7 +1434,7 @@ kirki = jQuery.extend( kirki, {
 		helpers: {
 			media_query: function( control, init_enabled, callbacks )
 			{
-				if ( _.isUndefined( control.params.choices.media_queries ) )
+				if ( _.isUndefined( control.params.choices.use_media_queries ) )
 				{
 					return;
 				}
@@ -3408,45 +3408,66 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 } );wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
-		var control       = this,
-			changeAction  = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
-			rangeInput    = control.container.find( 'input[type="range"]' ),
-			textInput     = control.container.find( 'input[type="text"]' ),
-			units         = control.container.find( '.kirki-units-choices input[type="radio"]' ),
-			has_units = units.length > 0,
-			media_queries = this.params.choices.media_queries;
+		var control           = this,
+			changeAction      = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
+			rangeInput        = control.container.find( 'input[type="range"]' ),
+			textInput         = control.container.find( 'input[type="text"]' ),
+			suffix            = this.container.find( 'span.suffix' ),
+			units             = control.container.find( '.kirki-units-choices input[type="radio"]' ),
+			has_units         = units.length > 0,
+			use_media_queries = this.params.choices.use_media_queries;
 		
 		this.active_device = null;
+		this.current_unit = null;
+		this.rangeInput = rangeInput;
+		this.textInput = textInput;
 		this.save_tid = 0;
 		this.initCompiledValue();
 		
-		//Load the unit
-		if ( media_queries )
-			units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
-		else
-			units.filter( '[value="' + control.unit + '"]' ).prop( 'checked', true );
-		
-		//No filter was selected from the loading value, so select the first one.
-		if ( units.filter ( ':checked' ).length == 0)
+		//If there are units for this slider.
+		if ( has_units )
 		{
-			units.first().prop( 'checked', true );
+			//Load the unit
+			if ( use_media_queries )
+				units.filter( '[value="' + control.compiled.desktop.unit + '"]' ).prop( 'checked', true );
+			else
+				units.filter( '[value="' + control.compiled.unit + '"]' ).prop( 'checked', true );
+			//No filter was selected from the loading value, so select the first one.
+			if ( units.filter ( ':checked' ).length == 0)
+			{
+				units.first().prop( 'checked', true );
+			}
+			//Load the initial unit.
+			this.change_unit();
+			
+			//Register the event.
+			units.on( 'change', function() {
+				control.change_unit();
+			});
+		}
+		else
+		{
+			console.log(this);
+			//if ( this.params
 		}
 		
-		this.change_unit();
+		//Setup initial value
+		rangeInput.val( use_media_queries ? control.compiled.desktop.value : control.compiled.value );
+		textInput.val( use_media_queries ? control.compiled.desktop.value : control.compiled.value );
 		
-		rangeInput.val( media_queries ? control.compiled.desktop.value : control.compiled.value );
-		textInput.val( media_queries ? control.compiled.desktop.value : control.compiled.value );
-		
-		if ( media_queries )
+		//If media queries are used, we need to detect device changes.
+		if ( use_media_queries )
 		{
 			this.active_device = 0;
 			kirki.util.helpers.media_query( control, true, {
 				device_change: function( device, enabled )
 				{
 					control.active_device = device;
-					control.compiled.media_queries = enabled;
+					control.compiled.use_media_queries = enabled;
 					var selected_unit = null;
+					
 					units.filter( ':checked' ).prop( 'checked', false );
+					
 					if ( has_units )
 					{
 						if ( control.active_device == 0 )
@@ -3464,7 +3485,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 						if ( units.filter ( ':checked' ).length == 0 )
 							units.first().click();
 						control.change_unit();
-						selected_unit = units.filter ( ':checked' ).val()
+						selected_unit = units.filter ( ':checked' ).val();
 					}
 					if ( control.active_device == 0 )
 					{
@@ -3489,58 +3510,72 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		
 		rangeInput.on( changeAction, function() {
 			var val = rangeInput.val();
+			var unit = control.current_unit;
 			textInput.val( val );
-			control.save( control.active_device, val );
+			control.save( control.active_device, val, unit );
 		} );
+		//input paste change
 		
-		textInput.on( 'input paste change', function() {
+		textInput.on( 'paste change', function() {
 			var val = textInput.val(),
+				unit = control.current_unit;
 				min = rangeInput.attr( 'min' ),
 				max = rangeInput.attr( 'max' );
+			if ( val > max )
+				val = max;
+			else if ( val < min )
+				val = min;
 			rangeInput.attr( 'value', val );
-			control.save( control.active_device, val );
+			control.save( control.active_device, val, unit );
 		} );
+	},
+	
+	initUnitSlider: function()
+	{
+		var control = this.control;
 		
-		units.on( 'change', function() {
-			control.change_unit();
-		});
+	},
+	
+	initSlider: function()
+	{
+		var control = this.control;
 	},
 	
 	initCompiledValue: function()
 	{
 		var loadedValue = this.setting._value;
 		this.compiled = {
-			media_queries: loadedValue.media_queries || false
+			use_media_queries: loadedValue.use_media_queries || false
 		};
-		if ( this.params.choices.media_queries )
+		if ( this.params.choices.use_media_queries )
 		{
-			var desktop_value = null,
+			var desktop_value = 0,
 				desktop_unit = '',
-				tablet_value = null,
+				tablet_value = 0,
 				tablet_unit = '',
-				mobile_value = null,
+				mobile_value = 0,
 				mobile_unit = '';
-			if ( this.params.default.desktop )
+			if ( this.params.default )
 			{
-				desktop_value = this.params.default.desktop.value;
-				desktop_unit = this.params.default.desktop.unit;
+				if ( this.params.default.desktop )
+				{
+					desktop_value = this.params.default.desktop.value || 0;
+					desktop_unit = this.params.default.desktop.unit || '';
+				}
+				if ( this.params.default.tablet )
+				{
+					tablet_value = this.params.default.tablet.value || 0;
+					tablet_unit = this.params.default.tablet.unit || '';
+				}
+				if ( this.params.default.mobile )
+				{
+					mobile_value = this.params.default.mobile.value || 0;
+					mobile_unit = this.params.default.mobile.unit || '';
+				}
 			}
-			if ( this.params.default.tablet )
-			{
-				tablet_value = this.params.default.tablet.value;
-				tablet_unit = this.params.default.tablet.unit;
-			}
-			if ( this.params.default.mobile )
-			{
-				mobile_value = this.params.default.mobile.value;
-				mobile_unit = this.params.default.mobile.unit;
-			}
-			this.compiled.desktop = loadedValue.desktop || { value: ( desktop_value ), 
-				unit: ( desktop_unit ) };
-			this.compiled.tablet = loadedValue.tablet || { value: ( tablet_value ),
-				 unit: ( tablet_unit ) };
-			this.compiled.mobile = loadedValue.mobile || { value: ( mobile_value), 
-				unit: ( mobile_unit ) };
+			this.compiled.desktop = loadedValue.desktop || { value: desktop_value, unit: desktop_unit };
+			this.compiled.tablet = loadedValue.tablet || { value: tablet_value, unit: tablet_unit };
+			this.compiled.mobile = loadedValue.mobile || { value: mobile_value, unit: mobile_unit };
 		}
 		else
 		{
@@ -3625,7 +3660,13 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		}
 		suffix.html( current_unit.val() );
 		var unit = current_unit.val();
+		this.current_unit = unit;
 		this.save( active_device, cur_val, unit );
+	},
+	
+	load_value: function()
+	{
+		
 	},
 	
 	isset: function( val )

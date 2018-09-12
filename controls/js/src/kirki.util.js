@@ -294,7 +294,7 @@ kirki = jQuery.extend( kirki, {
 		helpers: {
 			media_query: function( control, init_enabled, callbacks )
 			{
-				if ( _.isUndefined( control.params.choices.media_queries ) )
+				if ( _.isUndefined( control.params.choices.use_media_queries ) )
 				{
 					return;
 				}

@@ -472,12 +472,13 @@ class Kirki_Modules_PostMessage {
 		$args = $this->get_args( $args );
 		$element = $args['element'];
 		$property = $args['property'];
+		$suffix = isset( $args['suffix'] ) ? $args['suffix'] : '';
 		$script = "var css = '';
 		";
 		
 		$script .= "
-		var media_queries = newval['media_queries'];
-		if ( media_queries )
+		var use_media_queries = newval['use_media_queries'];
+		if ( use_media_queries )
 		{
 			var breakpoints = {
 				desktop: '@media screen and (min-width: 992px)',
@@ -515,6 +516,8 @@ class Kirki_Modules_PostMessage {
 				value = newval['value'];
 				unit = newval['unit'];
 			}
+			if ( _.isUndefined ( unit ) || !unit )
+				unit = '{$suffix}';
 			
 			css += '{$element} { {$property}: ' + value + unit + '; }';
 		}

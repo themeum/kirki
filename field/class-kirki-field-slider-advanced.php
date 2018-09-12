@@ -145,7 +145,7 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 				$device['unit'] = strtolower( $device['unit'] );
 		};
 		
-		$value['media_queries'] = isset( $value['media_queries'] ) ? (bool)$value['media_queries'] :
+		$value['use_media_queries'] = isset( $value['use_media_queries'] ) ? (bool)$value['use_media_queries'] :
 			false;
 		if ( isset( $value['desktop'] ) )
 			$_sanitize( $value['desktop'],$valid_units );
@@ -178,7 +178,7 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		}
 		$this->choices = wp_parse_args(
 			$this->choices, array(
-				'media_queries'  => true,
+				'use_media_queries'  => true,
 				'units' => array (
 					'' => array(
 						'min' => '0',

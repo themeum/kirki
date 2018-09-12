@@ -46,7 +46,8 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 		}
 		else
 		{
-			$this->styles[ 'global' ][ $output['element'] ][ $output['property'] ] = $value['value'] . $value['unit'];
+			$suffix = isset ( $output['suffix'] ) ? $output['suffix'] : '';
+			$this->styles[ 'global' ][ $output['element'] ][ $output['property'] ] = $value['value'] . $suffix;
 		}
 	}
 }

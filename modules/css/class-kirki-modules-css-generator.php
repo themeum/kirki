@@ -175,7 +175,7 @@ final class Kirki_Modules_CSS_Generator {
 				'kirki-border'                   => 'Kirki_Output_Field_Border',
 				'kirki-slider-advanced'          => 'Kirki_Output_Field_Slider_Advanced',
 				'kirki-color-gradient'           => 'Kirki_Output_Field_Color_Gradient',
-				'kirki-spacing-advanced'         => 'Kirki_Output_Field_Spacing'
+				//'kirki-spacing-advanced'         => 'Kirki_Output_Field_Spacing'
 			)
 		);
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {

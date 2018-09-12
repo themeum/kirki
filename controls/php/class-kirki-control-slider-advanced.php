@@ -38,7 +38,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'media_queries'  => false,
+			'use_media_queries'  => false,
 			'units' => array (
 				'' => array(
 					'min' => '0',
@@ -64,7 +64,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<# if ( data.choices.media_queries ) { #>
+			<# if ( data.choices.use_media_queries ) { #>
 			<ul class="kirki-respnsive-switchers">
 				<li class="desktop"><span class="eicon-device-desktop"></span></li>
 				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
