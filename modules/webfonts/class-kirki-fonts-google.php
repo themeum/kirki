@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -125,12 +125,12 @@ final class Kirki_Fonts_Google {
 			}
 
 			// If we don't have a font-family then we can skip this.
-			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts ) ) ) {
+			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) ) {
 				return;
 			}
 
 			// If not a google-font, then we can skip this.
-			if ( ! Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
+			if ( ! isset( $value['font-family'] ) || ! Kirki_Fonts::is_google_font( $value['font-family'] ) ) {
 				return;
 			}
 
@@ -185,8 +185,8 @@ final class Kirki_Fonts_Google {
 						}
 					}
 				}
-			} // End foreach().
-		} // End if().
+			}
+		}
 	}
 
 	/**
@@ -246,7 +246,7 @@ final class Kirki_Fonts_Google {
 	 * @return void
 	 */
 	public function get_standardfonts_json() {
-		echo wp_json_encode( Kirki_Fonts::get_standard_fonts() ); // WPCS: XSS ok.
+		echo wp_json_encode( Kirki_Fonts::get_standard_fonts() );
 		wp_die();
 	}
 

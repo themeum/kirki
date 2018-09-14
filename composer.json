@@ -30,7 +30,7 @@
     "phpunit/phpunit": "*",
     "composer/installers": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
-    "wimg/php-compatibility": "*",
+    "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
     "codacy/coverage": "dev-master"
   }

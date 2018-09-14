@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -31,8 +31,7 @@ class Kirki_Helper {
 	 */
 	public static function array_replace_recursive( $array, $array1 ) {
 		if ( function_exists( 'array_replace_recursive' ) ) {
-			// @codingStandardsIgnoreLine PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
-			return array_replace_recursive( $array, $array1 ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
+			return array_replace_recursive( $array, $array1 );
 		}
 
 		// Handle the arguments, merge one by one.
@@ -145,8 +144,7 @@ class Kirki_Helper {
 
 		$attachment = wp_cache_get( 'kirki_image_id_' . md5( $url ), null );
 		if ( false === $attachment ) {
-			// @codingStandardsIgnoreLine WordPress.VIP.DirectDatabaseQuery.DirectQuery
-			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) ); // phpcs:ignore WordPress.VIP.DirectDatabaseQuery.DirectQuery
+			$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s;", $url ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			wp_cache_add( 'kirki_image_id_' . md5( $url ), $attachment, null );
 		}
 
@@ -378,7 +376,7 @@ class Kirki_Helper {
 					return $colors[ $context ];
 				}
 				return $colors['primary'];
-		} // End switch().
+		}
 	}
 
 	/**
@@ -426,7 +424,7 @@ class Kirki_Helper {
 			return $value1 !== $value2;
 		}
 		if ( ( '!=' === $operator || 'not equal' === $operator ) ) {
-			return $value1 != $value2;
+			return $value1 != $value2; // WPCS: loose comparison ok.
 		}
 		if ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) ) {
 			return $value2 >= $value1;
@@ -443,20 +441,20 @@ class Kirki_Helper {
 		if ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && is_array( $value2 ) ) {
 				foreach ( $value2 as $val ) {
-					if ( in_array( $val, $value1 ) ) {
+					if ( in_array( $val, $value1 ) ) { // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 						return true;
 					}
 				}
 				return false;
 			}
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				return in_array( $value2, $value1 );
+				return in_array( $value2, $value1 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 			}
 			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				return in_array( $value1, $value2 );
+				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 			}
 			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}
-		return $value1 == $value2;
+		return $value1 == $value2; // WPCS: loose comparison ok.
 	}
 }

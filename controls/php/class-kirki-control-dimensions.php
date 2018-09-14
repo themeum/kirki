@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.1
  */
 
@@ -133,7 +133,6 @@ class Kirki_Control_Dimensions extends Kirki_Control_Base {
 			'right'          => esc_attr__( 'Right', 'kirki' ),
 			'center'         => esc_attr__( 'Center', 'kirki' ),
 			'size'           => esc_attr__( 'Size', 'kirki' ),
-			'height'         => esc_attr__( 'Height', 'kirki' ),
 			'spacing'        => esc_attr__( 'Spacing', 'kirki' ),
 			'width'          => esc_attr__( 'Width', 'kirki' ),
 			'height'         => esc_attr__( 'Height', 'kirki' ),

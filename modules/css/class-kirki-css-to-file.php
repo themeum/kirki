@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  CSS Module
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -113,17 +113,6 @@ class Kirki_CSS_To_File {
 			$css[ $config_id ] = apply_filters( "kirki_{$config_id}_dynamic_css", Kirki_Modules_CSS::loop_controls( $config_id ) );
 		}
 		$css = implode( $css, '' );
-
-		/*
-		WIP: Minimize the CSS a bit. Commented-out because of https://github.com/aristath/kirki/issues/1787
-		$css = str_replace( array( "\n", "\t", "\r\n" ), '', $css );
-		$css = str_replace( array( '{ ', '{  ', '{   ' ), '{', $css );
-		$css = str_replace( ': ', ':', $css );
-		$css = str_replace( array( '; ', ';  ', ';   ' ), ';', $css );
-		$css = explode( '}', $css );
-		$css = array_unique( $css );
-		$css = implode( $css, '}' );
-		*/
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $this->get_path( 'folder' ) ) ) {

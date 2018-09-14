@@ -6,7 +6,7 @@
  * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -74,9 +74,11 @@ class Kirki_Modules_Selective_Refresh {
 				foreach ( $field['partial_refresh'] as $partial_refresh => $partial_refresh_args ) {
 					// If we have all we need, create the selective refresh call.
 					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
-						$partial_refresh_args = wp_parse_args( $partial_refresh_args, array(
-							'settings' => $field['settings'],
-						) );
+						$partial_refresh_args = wp_parse_args(
+							$partial_refresh_args, array(
+								'settings' => $field['settings'],
+							)
+						);
 						$wp_customize->selective_refresh->add_partial( $partial_refresh, $partial_refresh_args );
 					}
 				}

@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -472,9 +472,18 @@ class Kirki_Field {
 	 */
 	protected function set_active_callback() {
 
-		if ( is_array( $this->active_callback ) && ! is_callable( $this->active_callback ) ) {
-			if ( isset( $this->active_callback[0] ) ) {
-				$this->required = $this->active_callback;
+		if ( is_array( $this->active_callback ) ) {
+			if ( ! is_callable( $this->active_callback ) ) {
+
+				// Bugfix for https://github.com/aristath/kirki/issues/1961.
+				foreach ( $this->active_callback as $key => $val ) {
+					if ( is_callable( $val ) ) {
+						unset( $this->active_callback[ $key ] );
+					}
+				}
+				if ( isset( $this->active_callback[0] ) ) {
+					$this->required = $this->active_callback;
+				}
 			}
 		}
 

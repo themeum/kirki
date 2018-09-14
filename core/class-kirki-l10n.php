@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -118,8 +118,7 @@ class Kirki_L10n {
 
 		global $l10n;
 		if ( isset( $l10n[ $this->get_theme_textdomain() ] ) ) {
-			// @codingStandardsIgnoreLine WordPress.Variables.GlobalVariables.OverrideProhibited
-			$l10n['kirki'] = $l10n[ $this->get_theme_textdomain() ];
+			$l10n['kirki'] = $l10n[ $this->get_theme_textdomain() ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
 		}
 
 		// Check if the domain is "kirki".

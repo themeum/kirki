@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.9
  */
 
@@ -60,7 +60,7 @@ class Kirki_Util {
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 		// Extra logic in case the plugin is installed but not activated.
-		if ( $_plugin && ! is_plugin_active( $_plugin ) ) {
+		if ( $_plugin && is_plugin_inactive( $_plugin ) ) {
 			return false;
 		}
 		return $is_plugin;
@@ -162,31 +162,49 @@ class Kirki_Util {
 	 * @static
 	 * @access public
 	 * @since 3.0.12
-	 * @param string  $context      Use 'minor' or 'major'.
-	 * @param boolean $only_numeric Set to true if you want to skip the alpha/beta etc parts.
-	 * @return int|float|string     Returns integer when getting the 'major' version.
-	 *                              Returns float when getting the 'minor' version with $only_numeric set to true.
-	 *                              Returns string when getting the 'minor' version with $only_numeric set to false.
+	 * @param string $context Use 'minor' or 'major'.
+	 * @return int|string      Returns integer when getting the 'major' version.
+	 *                         Returns string when getting the 'minor' version.
 	 */
-	public static function get_wp_version( $context = 'minor', $only_numeric = true ) {
+	public static function get_wp_version( $context = 'minor' ) {
 		global $wp_version;
 
 		// We only need the major version.
 		if ( 'major' === $context ) {
 			$version_parts = explode( '.', $wp_version );
-			return ( $only_numeric ) ? absint( $version_parts[0] ) : $version_parts[0];
+			return $version_parts[0];
+		}
+
+		return $wp_version;
+	}
+
+	/**
+	 * Returns the $wp_version, only numeric value.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.12
+	 * @param string $context      Use 'minor' or 'major'.
+	 * @param bool   $only_numeric Whether we wwant to return numeric value or include beta/alpha etc.
+	 * @return int|float           Returns integer when getting the 'major' version.
+	 *                             Returns float when getting the 'minor' version.
+	 */
+	public static function get_wp_version_numeric( $context = 'minor', $only_numeric = true ) {
+		global $wp_version;
+
+		// We only need the major version.
+		if ( 'major' === $context ) {
+			$version_parts = explode( '.', $wp_version );
+			return absint( $version_parts[0] );
 		}
 
 		// If we got this far, we want the full monty.
-		if ( $only_numeric ) {
-			// Get the numeric part of the version without any beta, alpha etc parts.
-			if ( false !== strpos( $wp_version, '-' ) ) {
-				// We're on a dev version.
-				$version_parts = explode( '-', $wp_version );
-				return floatval( $version_parts[0] );
-			}
-			return floatval( $wp_version );
+		// Get the numeric part of the version without any beta, alpha etc parts.
+		if ( false !== strpos( $wp_version, '-' ) ) {
+			// We're on a dev version.
+			$version_parts = explode( '-', $wp_version );
+			return floatval( $version_parts[0] );
 		}
-		return $wp_version;
+		return floatval( $wp_version );
 	}
 }

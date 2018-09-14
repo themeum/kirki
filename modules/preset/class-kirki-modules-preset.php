@@ -6,7 +6,7 @@
  * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.26
  */
 
@@ -63,6 +63,6 @@ class Kirki_Modules_Preset {
 	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
-		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'modules/preset/preset.js', array( 'jquery' ), KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'modules/preset/preset.js', array( 'jquery' ), KIRKI_VERSION, false );
 	}
 }

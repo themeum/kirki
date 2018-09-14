@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -35,8 +35,16 @@ class Kirki_Field_Image extends Kirki_Field {
 
 	}
 
+	/**
+	 * Sets the button labels.
+	 *
+	 * @access protected
+	 * @since 3.0.23
+	 * @return void
+	 */
 	protected function set_button_labels() {
-		$this->button_labels = wp_parse_args( $this->button_labels,
+		$this->button_labels = wp_parse_args(
+			$this->button_labels,
 			array(
 				'select'       => esc_attr__( 'Select image', 'kirki' ),
 				'change'       => esc_attr__( 'Change image', 'kirki' ),

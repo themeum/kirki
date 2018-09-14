@@ -8,10 +8,9 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.28
  */
-
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -100,7 +99,7 @@ final class Kirki_Fonts_Google_Local {
 		$key               = sanitize_key( $this->family );
 		$this->folder_path = $this->get_root_path() . "/$key";
 		$this->folder_url  = $this->get_root_url() . "/$key";
-		$this->files        = $this->get_font_family();
+		$this->files       = $this->get_font_family();
 	}
 
 	/**
@@ -115,7 +114,7 @@ final class Kirki_Fonts_Google_Local {
 		if ( ! $this->files ) {
 			return;
 		}
-		$key = md5( json_encode( $this->files ) );
+		$key    = md5( wp_json_encode( $this->files ) );
 		$cached = get_transient( $key );
 		if ( $cached ) {
 			return $cached;
@@ -331,7 +330,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $this->folder_path ) ) {
-			Kirki_Helper::init_filesystem()->mkdir( $this->folder_path, FS_CHMOD_DIR );
+			wp_mkdir_p( $this->folder_path );
 		}
 		// If the file exists no reason to do anything.
 		if ( file_exists( $path ) ) {
@@ -405,7 +404,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// If the folder doesn't exist, create it.
 		if ( ! file_exists( $path ) ) {
-			Kirki_Helper::init_filesystem()->mkdir( $path, FS_CHMOD_DIR );
+			wp_mkdir_p( $path );
 		}
 
 		// Return the path.
@@ -434,9 +433,10 @@ final class Kirki_Fonts_Google_Local {
 			if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
 				$mapped_domain   = domain_mapping_siteurl( false );
 				$original_domain = get_original_url( 'siteurl' );
-				$url = str_replace( $original_domain, $mapped_domain, $url );
+				$url             = str_replace( $original_domain, $mapped_domain, $url );
 			}
 		}
+		$url = str_replace( array( 'https://', 'http://' ), '//', $url );
 		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
 	}
 
@@ -453,7 +453,7 @@ final class Kirki_Fonts_Google_Local {
 			$variants = array_keys( $this->files );
 		}
 		foreach ( $this->files as $variant => $file ) {
-			if ( in_array( $variant, $variants ) ) {
+			if ( in_array( $variant, $variants ) ) { // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				$this->download_font_file( $file );
 			}
 		}

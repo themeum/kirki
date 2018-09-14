@@ -7,7 +7,7 @@
  * @subpackage  Custom Sections Module
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -155,7 +155,7 @@ class Kirki_Modules_Custom_Sections {
 	public function enqueue_scrips() {
 
 		wp_enqueue_style( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.css', array(), KIRKI_VERSION );
-		wp_enqueue_script( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, false );
 
 	}
 

@@ -21,7 +21,7 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "grunt": "*",
+    "grunt": "^1.0.3",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-sass": "*",

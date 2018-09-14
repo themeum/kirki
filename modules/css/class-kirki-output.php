@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
@@ -124,7 +124,7 @@ class Kirki_Output {
 				}
 			}
 			$value = $this->apply_pattern_replace( $output, $value );
-		} // End if().
+		}
 		return $value;
 	}
 
@@ -164,7 +164,6 @@ class Kirki_Output {
 					case 'user_meta':
 						$user_id = get_current_user_id();
 						if ( $user_id ) {
-							// @codingStandardsIgnoreLine
 							$replacement = get_user_meta( $user_id, $replace, true );
 						}
 						break;
@@ -180,8 +179,8 @@ class Kirki_Output {
 					return $value;
 				}
 				$value = str_replace( $search, $replacement, $value );
-			} // End foreach().
-		} // End if().
+			}
+		}
 		return $value;
 	}
 
@@ -217,7 +216,6 @@ class Kirki_Output {
 						}
 						// If 'choice' is defined check for sub-values too.
 						// Fixes https://github.com/aristath/kirki/issues/1416.
-						// @codingStandardsIgnoreLine WordPress.PHP.StrictComparisons.LooseComparison
 						if ( isset( $output['choice'] ) && isset( $value[ $output['choice'] ] ) && $exclude == $value[ $output['choice'] ] ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 							$skip = true;
 						}
@@ -247,7 +245,7 @@ class Kirki_Output {
 
 			$value = $this->process_value( $value, $output );
 			$this->process_output( $output, $value );
-		} // End foreach().
+		}
 	}
 
 	/**

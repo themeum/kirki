@@ -3,10 +3,10 @@
 **Tags:** customizer,options framework, theme, mods, toolkit  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
-**Tested up to:** 4.9.2  
-**Stable tag:** 3.0.33  
+**Tested up to:** 4.9  
+**Stable tag:** 3.0.34  
 **License:** MIT  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**License URI:** https://github.com/aristath/kirki/blob/develop/LICENSE  
 
 The ultimate framework for theme developers using the WordPress Customizer
 
@@ -32,6 +32,20 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 ## Changelog ##
+
+### 3.0.34 ###
+
+Sept. 14 2018, dev time: 21h.
+
+* Fix: Error when `typography` fields don't have a font-family. [#1916](https://github.com/aristath/kirki/issues/1916), [#1797](https://github.com/aristath/kirki/issues/1797), [#1935](https://github.com/aristath/kirki/issues/1935). props @mintbird
+* Fix: Allow using "Default Browser Font-Family" in default value (`typography` fields) [#1907](https://github.com/aristath/kirki/pull/1907). props @mintbird
+* Fix: Envato theme-check error [#1914](https://github.com/aristath/kirki/issues/1914), [#1926](https://github.com/aristath/kirki/pull/1926). props @timelsass
+* Fix: HTTPS webfont load error [#1925](https://github.com/aristath/kirki/issues/1925)
+* Fix: Undefined index PHP notice for background-color. [95ca010](https://github.com/aristath/kirki/pull/1930/commits/95ca010588878363a7d2042f09428bae260cb602)
+* Fix: Minor Fixes for css-variables added in v3.0.28.
+* New: Allow unitless values in dimension controls.
+* New: (Refactor) Migrated `image` controls to new structure in preparation of v3.1
+* Update: Updated Google-fonts.
 
 ### 3.0.33 ###
 

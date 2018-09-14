@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0
  */
 
@@ -119,9 +119,11 @@ final class Kirki_Modules_Webfonts_Link {
 			$link_fonts[] = $link_font;
 		}
 
-		$this->link = add_query_arg( array(
-			'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
-		), 'https://fonts.googleapis.com/css' );
+		$this->link = add_query_arg(
+			array(
+				'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
+			), 'https://fonts.googleapis.com/css'
+		);
 
 	}
 }
