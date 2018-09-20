@@ -1,14 +1,20 @@
 /* global ajaxurl */
 var kirki = kirki || {};
 kirki = jQuery.extend( kirki, {
-
 	/**
 	 * A collection of utility methods.
 	 *
 	 * @since 3.0.17
 	 */
 	util: {
-
+		media_query_devices: {
+			global: null,
+			desktop: 0,
+			tablet: 1,
+			mobile: 2,
+		},
+		media_query_device_names: ['global', 'desktop', 'tablet', 'mobile'],
+		
 		/**
 		 * A collection of utility methods for webfonts.
 		 *
@@ -307,7 +313,7 @@ kirki = jQuery.extend( kirki, {
 					preview_mobile = jQuery( 'button.preview-mobile' ),
 					active_device = 0,
 					enabled = init_enabled;
-				desktop_btn.click( function(e)
+				desktop_btn.click( function( e )
 				{
 					e.preventDefault();
 					e.stopImmediatePropagation();
@@ -325,8 +331,9 @@ kirki = jQuery.extend( kirki, {
 							enabled = false;
 							tablet_btn.addClass( 'hidden' );
 							mobile_btn.addClass( 'hidden' );
-							callbacks.device_change( active_device, enabled );
 						}
+						preview_desktop.click();
+						callbacks.device_change( active_device, enabled );
 					}
 					else
 					{
@@ -363,23 +370,23 @@ kirki = jQuery.extend( kirki, {
 				if ( init_enabled )
 					desktop_btn.click();
 			},
-			input_sync: function( control, inputs, events, callback, input_sanitize )
+			enable_input_sync: function( control, inputs, events, callback, input_sanitize )
 			{
 				$( inputs ).on( events, function( e )
 				{
 					var input = $( this ),
-						val = null;
+						val = input.val();
 					if ( input_sanitize )
 					{
-						input_sanitize( input, inputs );
+						val = input_sanitize( val );
 					}
-					else
-					{
-						var val = input.val();
-						inputs.val ( val );
-					}
+					inputs.val ( val );
 					callback();
 				});
+			},
+			disable_input_sync: function( control, inputs, events )
+			{
+				$( inputs ).off ( events );
 			}
 		},
 

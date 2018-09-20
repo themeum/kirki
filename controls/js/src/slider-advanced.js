@@ -5,7 +5,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			changeAction      = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
 			rangeInput        = control.container.find( 'input[type="range"]' ),
 			textInput         = control.container.find( 'input[type="text"]' ),
-			suffix            = this.container.find( 'span.suffix' ),
 			units             = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			has_units         = units.length > 0,
 			use_media_queries = this.params.choices.use_media_queries;
@@ -52,7 +51,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		if ( use_media_queries )
 		{
 			this.active_device = 0;
-			kirki.util.helpers.media_query( control, true, {
+			kirki.util.helpers.media_query( control, this.compiled.use_media_queries, {
 				device_change: function( device, enabled )
 				{
 					control.active_device = device;
@@ -80,7 +79,12 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 						control.change_unit();
 						selected_unit = units.filter ( ':checked' ).val();
 					}
-					if ( control.active_device == 0 )
+					if ( !enabled )
+					{
+						rangeInput.val( control.compiled.value || 0 );
+						textInput.val( control.compiled.value || 0 );
+					}
+					else if ( control.active_device == 0 )
 					{
 						rangeInput.val( control.compiled.desktop.value || 0 );
 						textInput.val( control.compiled.desktop.value || 0 );
@@ -121,17 +125,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			rangeInput.attr( 'value', val );
 			control.save( control.active_device, val, unit );
 		} );
-	},
-	
-	initUnitSlider: function()
-	{
-		var control = this.control;
-		
-	},
-	
-	initSlider: function()
-	{
-		var control = this.control;
 	},
 	
 	initCompiledValue: function()
@@ -255,11 +248,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		var unit = current_unit.val();
 		this.current_unit = unit;
 		this.save( active_device, cur_val, unit );
-	},
-	
-	load_value: function()
-	{
-		
 	},
 	
 	isset: function( val )

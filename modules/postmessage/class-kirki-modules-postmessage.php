@@ -543,6 +543,10 @@ class Kirki_Modules_PostMessage {
 			'css'    => $return['css'],
 		);
 	}
+	
+	protected function script_var_spacing_advanced( $args ) {
+		//TODO: Code output
+	}
 
 	/**
 	 * Adds anything we need before the main script.
@@ -666,6 +670,10 @@ class Kirki_Modules_PostMessage {
 				break;
 			case 'kirki-slider-advanced':
 				$callback = array( $this, 'script_var_slider_advanced' );
+				break;
+			case 'kikri-spacing-advanced':
+				//$callback = array( $this, 'script_var_spacing_advanced' );
+				$callback = null;
 				break;
 			default:
 				$callback = array( $this, 'script_var' );

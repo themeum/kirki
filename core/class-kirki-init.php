@@ -109,7 +109,7 @@ class Kirki_Init {
 			'kirki-slider-advanced'     => 'Kirki_Control_Slider_Advanced',
 			'kirki-sortable'            => 'Kirki_Control_Sortable',
 			'kirki-spacing'             => 'Kirki_Control_Dimensions',
-			'kirki-spacing-advanced'    => 'Kirki_Control_Spacing',
+			'kirki-spacing-advanced'    => 'Kirki_Control_Spacing_Advanced',
 			'kirki-switch'              => 'Kirki_Control_Switch',
 			'kirki-generic'             => 'Kirki_Control_Generic',
 			'kirki-toggle'              => 'Kirki_Control_Toggle',
