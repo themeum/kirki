@@ -36,7 +36,7 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 			
 			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device_name )
 			{
-				if ( !isset ( $devices[$device_name] ) )
+				if ( !isset( $devices[$device_name] ) )
 					break;
 				$breakpoint = $breakpoints[$device_name];
 				$top = $devices[$device_name]['top'];
@@ -50,6 +50,8 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 		}
 		else
 		{
+			if ( !isset( $value['global'] ) )
+				return;
 			$top = $value['global']['top'];
 			$right = $value['global']['right'];
 			$bottom = $value['global']['bottom'];
