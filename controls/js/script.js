@@ -3811,7 +3811,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			}
 			if ( link_inputs_btn.hasClass( 'linked' ) )
 			{
-				inputs.val( val );
+				inputs.filter(':not(' + input.attr( 'id' ) + ')' ).val( val );
 			}
 			inputs.each( function()
 			{
@@ -3821,7 +3821,6 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 					val = input.val();
 				if ( val.length == 0 )
 				{
-					val = all_units ? '' : '0';
 					input.val( val );
 				}
 				if ( !all_units )
@@ -3837,6 +3836,13 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				control.value[device][type] = val;
 			});
 			control.save();
+		});
+		
+		inputs.on( 'blur', function()
+		{
+			var input = $( this );
+			if ( input.val() == '' )
+				input.val( '0' );
 		});
 	},
 	
@@ -3956,7 +3962,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			});
 		}
 	},
-	
+	  
 	initUnitSelect: function( units )
 	{
 		var control = this;
@@ -4000,7 +4006,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		if ( !parsed || parsed.length < 2 )
 			return { value: 0, unit: '' };
 		return {
-			value: parsed[1] || 0,
+			value: parsed[1] || '',
 			unit: parsed[2] || ''
 		};
 	},

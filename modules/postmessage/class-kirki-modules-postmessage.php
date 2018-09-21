@@ -545,7 +545,59 @@ class Kirki_Modules_PostMessage {
 	}
 	
 	protected function script_var_spacing_advanced( $args ) {
-		//TODO: Code output
+		$args = $this->get_args( $args );
+		$element = $args['element'];
+		$property = $args['property'];
+		$script = "var css = '';
+		";
+		
+		$script .= "
+		if ( typeof newval === 'string' )
+			newval = JSON.parse( newval );
+		var use_media_queries = newval['use_media_queries'];
+		if ( use_media_queries )
+		{
+			var breakpoints = {
+				desktop: '@media screen and (min-width: 992px)',
+				tablet: '@media screen and (min-width: 576px and max-width: 991px)',
+				mobile: '@media screen and (max-width: 575px)'
+			};
+			var devices = {
+				desktop: newval['desktop'], 
+				tablet: newval['tablet'], 
+				mobile: newval['mobile'] 
+			};
+			for ( var i in devices )
+			{
+				var device = devices[i];
+				var breakpoint = breakpoints[i];
+				var media_query = '';
+				var device_css = '';
+				var top = device.top,
+					right = device.right,
+					bottom = device.bottom,
+					left = device.left;
+				
+				device_css = breakpoint + ' { {$element} { {$property}: ' + top + ' ' + right + ' ' + bottom + ' ' + left  + '; }' + ' }';
+				
+				css += device_css;
+			}
+		}
+		else
+		{
+			var device = newval['global'];
+			var top = device.top,
+				right = device.right,
+				bottom = device.bottom,
+				left = device.left;
+			css += '{$element} { {$property}: ' +  top + ' ' + right + ' ' + bottom + ' ' + left + '; }';
+		}
+		";
+		
+		return array(
+			'script' => $script,
+			'css' => 'css'
+		);
 	}
 
 	/**
@@ -671,9 +723,8 @@ class Kirki_Modules_PostMessage {
 			case 'kirki-slider-advanced':
 				$callback = array( $this, 'script_var_slider_advanced' );
 				break;
-			case 'kikri-spacing-advanced':
-				//$callback = array( $this, 'script_var_spacing_advanced' );
-				$callback = null;
+			case 'kirki-spacing-advanced':
+				$callback = array( $this, 'script_var_spacing_advanced' );
 				break;
 			default:
 				$callback = array( $this, 'script_var' );
