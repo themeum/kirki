@@ -3533,8 +3533,8 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		var value = control.value[id].value;
 		if ( !control.value[id].loaded && control.params.default )
 		{
-			var defs = control.parseValue( control.params.default );
-			if ( control.has_units )
+			var defs = control.params.default;
+			if ( control.has_units && typeof defs === 'object' && defs[control.selected_unit] )
 			{
 				value = defs['value'];
 				control.selected_unit = control.units[0];
@@ -3542,7 +3542,12 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			}
 			else
 			{
-				value = defs;
+				value = control.parseValue( defs );
+				control.selected_unit = value['unit'];
+				if ( value['value'] )
+					value = value['value'];
+				else
+					value = control.rangeInput.attr( 'max' );
 			}
 		}
 		control.setRange();
