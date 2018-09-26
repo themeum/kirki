@@ -3420,6 +3420,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			rangeInput        = control.container.find( 'input[type="range"]' ),
 			textInput         = control.container.find( 'input[type="text"]' ),
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
+			resetBtn          = control.container.find( '.slider-reset' ),
 			has_units         = units_radios.length > 0,
 			use_media_queries = control.params.choices.use_media_queries;
 		
@@ -3489,6 +3490,13 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			control.save();
 		} );
 		
+		resetBtn.click( function()
+		{
+			control.value[control.getSelectedDeviceName()].loaded = false;
+			control.initValue();
+			control.rangeInput.trigger( 'change_visual' );
+		});
+		
 		control.rangeInput.trigger( changeAction );
 	},
 	initValue: function()
@@ -3507,7 +3515,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		{
 			kirki.util.media_query_device_names.forEach( function( name )
 			{
-				if ( loadedValue[name] )
+				if ( !control.value[name].loaded && loadedValue[name] )
 				{
 					var parsed = control.parseValue( loadedValue[name] );
 					control.value[name]['value'] = parsed['value'];
@@ -3520,7 +3528,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		}
 		else
 		{
-			if ( loadedValue['global'] )
+			if ( !control.value['global'].loaded && loadedValue['global'] )
 			{
 				var parsed = control.parseValue( loadedValue['global'] );
 				control.value['global'] = loadedValue['global'];
@@ -3534,11 +3542,11 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		if ( !control.value[id].loaded && control.params.default )
 		{
 			var defs = control.params.default;
-			if ( control.has_units && typeof defs === 'object' && defs[control.selected_unit] )
+			if ( control.has_units && typeof defs === 'object' )
 			{
-				value = defs['value'];
-				control.selected_unit = control.units[0];
-				value = value[control.selected_unit];
+				if ( !control.selected_unit )
+					control.selected_unit = control.units[0];
+				value = defs[control.selected_unit];
 			}
 			else
 			{
