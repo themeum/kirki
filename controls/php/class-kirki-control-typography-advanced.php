@@ -103,7 +103,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['font-size'] ) ) { #>
 				<# data.value['font-size'] = data.value['font-size'] || data['default']['font-size']; #>
 				<div class="font-size">
-					<h5><?php esc_attr_e( 'Font Size', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Font Size', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
 				</div>
 			<# } #>
@@ -111,7 +120,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['line-height'] ) ) { #>
 				<# data.value['line-height'] = data.value['line-height'] || data['default']['line-height']; #>
 				<div class="line-height">
-					<h5><?php esc_attr_e( 'Line Height', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Line Height', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
 				</div>
 			<# } #>
@@ -119,7 +137,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['letter-spacing'] ) ) { #>
 				<# data.value['letter-spacing'] = data.value['letter-spacing'] || data['default']['letter-spacing']; #>
 				<div class="letter-spacing">
-					<h5><?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
 				</div>
 			<# } #>
@@ -127,7 +154,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['word-spacing'] ) ) { #>
 				<# data.value['word-spacing'] = data.value['word-spacing'] || data['default']['word-spacing']; #>
 				<div class="word-spacing">
-					<h5><?php esc_attr_e( 'Word Spacing', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Word Spacing', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
 				</div>
 			<# } #>
@@ -206,7 +242,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['margin-top'] ) ) { #>
 				<# data.value['margin-top'] = data.value['margin-top'] || data['default']['margin-top']; #>
 				<div class="margin-top">
-					<h5><?php esc_attr_e( 'Margin Top', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Margin Top', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
 				</div>
 			<# } #>
@@ -214,7 +259,16 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 			<# if ( ! _.isUndefined( data.default['margin-bottom'] ) ) { #>
 				<# data.value['margin-bottom'] = data.value['margin-bottom'] || data['default']['margin-bottom']; #>
 				<div class="margin-bottom">
-					<h5><?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?></h5>
+					<h5>
+						<?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?>
+						<# if ( data.choices.use_media_queries ) { #>
+						<ul class="kirki-respnsive-switchers">
+							<li class="desktop"><span class="eicon-device-desktop"></span></li>
+							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
+							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
+						</ul>
+						<# } #>
+					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
 				</div>
 			<# } #>

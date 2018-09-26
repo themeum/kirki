@@ -113,7 +113,8 @@ module.exports = function( grunt ) {
 					'controls/js/src/spacing.js',
 					'controls/js/src/switch.js',
 					'controls/js/src/toggle.js',
-					'controls/js/src/typography.js'
+					'controls/js/src/typography.js',
+					'controls/js/src/typography-advanced.js'
 				],
 				dest: 'controls/js/script.js'
 			}
