@@ -478,6 +478,7 @@ class Kirki_Modules_PostMessage {
 		
 		$script .= "
 		var use_media_queries = newval['use_media_queries'];
+		var suffix = '$suffix';
 		if ( use_media_queries )
 		{
 			var breakpoints = {
@@ -492,12 +493,12 @@ class Kirki_Modules_PostMessage {
 			};
 			for ( var i in devices )
 			{
-				var device = devices[i];
+				var device_val = devices[i];
 				var breakpoint = breakpoints[i];
 				var media_query = '';
 				var device_css = '';
 				
-				device_css = breakpoint + ' { {$element} { {$property}: ' + device.value + device.unit + '; }' + ' }';
+				device_css = breakpoint + ' { {$element} { {$property}: ' + device_val + suffix + '; }' + ' }';
 				
 				css += device_css;
 			}
@@ -508,18 +509,14 @@ class Kirki_Modules_PostMessage {
 				unit = '';
 			if ( newval['desktop'] )
 			{
-				value = newval['desktop']['value'];
-				unit = newval['desktop']['unit'];
+				value = newval['desktop'];
 			}
 			else
 			{
-				value = newval['value'];
-				unit = newval['unit'];
+				value = newval['global'];
 			}
-			if ( _.isUndefined ( unit ) || !unit )
-				unit = '{$suffix}';
 			
-			css += '{$element} { {$property}: ' + value + unit + '; }';
+			css += '{$element} { {$property}: ' + value + suffix + '; }';
 		}
 		";
 		

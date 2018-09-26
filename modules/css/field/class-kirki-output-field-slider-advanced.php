@@ -19,35 +19,42 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 			return;
 		}
 		
-		//fwrite(STDERR, var_export($value,true) . PHP_EOL);
+		if ( !is_array( $output['element'] ) )
+			$output['element'] = array( $output['element'] );
+		
 		$value = Kirki_Field_Slider_Advanced::sanitize( $value );
-		//var_dump($value);
-		if ( isset ( $value['desktop'] ) )
+		$suffix = isset ( $output['suffix'] ) ? $output['suffix'] : '';
+		$prefix = isset ( $output['prefix'] ) ? $output['prefix'] : '';
+		foreach ( $output['element'] as $el )
 		{
-			$breakpoints = [
-				'desktop' => '@media screen and (min-width: 992px)',
-				'tablet' => '@media screen and (min-width: 768px and max-width: 991px)',
-				'mobile' => '@media screen and (max-width: 767px)'
-			];
-			$devices = [ 
-				'desktop' => $value['desktop'], 
-				'tablet' => $value['tablet'], 
-				'mobile' => $value['mobile'] 
-			];
-			
-			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
+			if ( isset ( $value['desktop'] ) )
 			{
-				if ( !isset ( $devices[$device] ) )
-					break;
-				$breakpoint = $breakpoints[$device];
-				$device_val = $devices[$device];
-				$this->styles[ $breakpoint ][ $output['element'] ][ $output['property'] ] = $device_val['value'] . $device_val['unit'];
+				$breakpoints = [
+					'desktop' => '@media screen and (min-width: 992px)',
+					'tablet' => '@media screen and (min-width: 768px and max-width: 991px)',
+					'mobile' => '@media screen and (max-width: 767px)'
+				];
+				$devices = [ 
+					'desktop' => $value['desktop'], 
+					'tablet' => $value['tablet'], 
+					'mobile' => $value['mobile'] 
+				];
+				
+				foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
+				{
+					if ( !isset ( $devices[$device] ) )
+						break;
+					$breakpoint = $breakpoints[$device];
+					$device_val = $devices[$device];
+					$this->styles[ $breakpoint ][ $el ][ $output['property'] ] = $prefix . $device_val . $suffix;
+				}
 			}
-		}
-		else
-		{
-			$suffix = isset ( $output['suffix'] ) ? $output['suffix'] : '';
-			$this->styles[ 'global' ][ $output['element'] ][ $output['property'] ] = $value['value'] . $suffix;
+			else
+			{
+				if ( !isset( $value['global'] ) )
+					return;
+				$this->styles[ 'global' ][ $el ][ $output['property'] ] = $prefix . $value['global'] . $suffix;
+			}
 		}
 	}
 }

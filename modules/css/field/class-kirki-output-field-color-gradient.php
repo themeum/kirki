@@ -20,7 +20,9 @@ class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
 			return;
 		}
 		
-		//fwrite(STDERR, var_export($value,true) . PHP_EOL);
+		if ( !is_array( $output['element'] ) )
+			$output['element'] = array( $output['element'] );
+		
 		$value = Kirki_Field_Color_Gradient::sanitize( $value );
 		
 		$property = $output['property'];
@@ -29,7 +31,10 @@ class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
 		$location = $value['location'];
 		$direction = $value['direction'];
 		
-		$this->styles[ 'global' ][ $output['element'] ][$property] =
-		"linear-gradient({$direction}, {$color1} {$location}, {$color2});";
+		foreach ( $output['element'] as $el )
+		{
+			$this->styles[ 'global' ][ $el ][$property] =
+				"linear-gradient({$direction}, {$color1} {$location}, {$color2});";
+		}
 	}
 }

@@ -2,9 +2,8 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 
 	initKirkiControl: function() {
 		'use strict';
-		//TODO: Add default for spacing advanced.
 		var control           = this,
-			changeAction      = ( 'postMessage' === control.setting.transport ) ? 'keyup change' : 'change',
+			changeAction      = ( 'postMessage' === control.setting.transport ) ? 'keyup change mouseup' : 'change',
 			inputs            = control.container.find( '.kirki-control-dimension input' ),
 			topInput          = inputs.filter( '[area="top"]' ),
 			rightInput        = inputs.filter( '[area="right"]' ),
@@ -89,7 +88,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			{
 				var input = $( this ),
 					type = input.attr( 'area' ),
-					device = 'global',
+					device = control.getSelectedDeviceName(),
 					val = input.val();
 				if ( val.length == 0 )
 				{
@@ -99,12 +98,6 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				{
 					val += control.selected_unit;
 				}
-				if ( control.selected_device == kirki.util.media_query_devices.desktop )
-					device = 'desktop';
-				else if ( control.selected_device == kirki.util.media_query_devices.tablet )
-					device = 'tablet';
-				else if ( control.selected_device == kirki.util.media_query_devices.mobile )
-					device = 'mobile';
 				control.value[device][type] = val;
 			});
 			control.save();
@@ -116,6 +109,8 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			if ( input.val() == '' )
 				input.val( '0' );
 		});
+		
+		control.inputs.top.trigger( 'change_visual' );
 	},
 	
 	initValue: function()
@@ -171,9 +166,6 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 					var unit = control.units[0];
 					if ( control.selected_unit )
 						unit = control.selected_unit;
-					console.log(defs);
-					console.log(unit);
-					console.log(top);
 					top = defs[unit].top || top;
 					right = defs[unit].right || right;
 					bottom = defs[unit].bottom || bottom;
@@ -297,28 +289,37 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		});
 	},
 	
+	getSelectedDeviceName: function()
+	{
+		var control = this,
+			device = 'global';
+		if ( control.selected_device == kirki.util.media_query_devices.desktop )
+			device = 'desktop';
+		else if ( control.selected_device == kirki.util.media_query_devices.tablet )
+			device = 'tablet';
+		else if ( control.selected_device == kirki.util.media_query_devices.mobile )
+			device = 'mobile';
+		return device;
+	},
+	
 	save: function()
 	{
-		var control = this;
-		clearTimeout( this.save_tid );
-		this.save_tid = setTimeout( function()
+		var control = this,
+			input  = control.container.find( '.spacing-hidden-value' ),
+			compiled = jQuery.extend( {}, control.value );
+		delete compiled.loaded;
+		if ( compiled.use_media_queries )
 		{
-			var input  = control.container.find( '.spacing-hidden-value' );
-			var compiled = jQuery.extend( {}, control.value );
-			delete compiled.loaded;
-			if ( compiled.use_media_queries )
-			{
-				delete compiled.global;
-			}
-			else
-			{
-				delete compiled.desktop;
-				delete compiled.tablet;
-				delete compiled.mobile;
-			}
-			input.val( JSON.stringify( compiled ) ).trigger( 'change' );
-			control.setting.set( compiled );
-		}, 200 );
+			delete compiled.global;
+		}
+		else
+		{
+			delete compiled.desktop;
+			delete compiled.tablet;
+			delete compiled.mobile;
+		}
+		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		control.setting.set( compiled );
 	},
 	
 	parseValue: function( value )
@@ -327,7 +328,12 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			parser = /(\d+)(\w+|.)/gm;
 		var parsed = parser.exec( value );
 		if ( !parsed || parsed.length < 2 )
-			return { value: 0, unit: '' };
+		{
+			if ( !Number.isNaN( value ) )
+				return { value: value, unit: '' };
+			else
+				return { value: 0, unit: '' };
+		}
 		return {
 			value: parsed[1] || '',
 			unit: parsed[2] || ''

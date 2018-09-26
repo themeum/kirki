@@ -120,7 +120,7 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	}
 
 	/**
-	 * Sanitizes typography controls
+	 * Sanitizes slider-advanced controls
 	 *
 	 * @static
 	 * @since 2.2.0
@@ -128,6 +128,7 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
+		return $value;
 		$valid_units = array( '%', 'cm',' em', 'ex', 'in', 'mm' ,'pc', 'pt', 'px', 'vh', 'vw', 'vmin' );
 		if ( ! is_array( $value ) ) {
 			return array();
