@@ -145,9 +145,12 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			}
 		}
 		control.setRange();
+		if ( !value )
+			value = control.rangeInput.attr( 'max' );
 		if ( control.has_units )
 		{
-			value = value.toString().replace( control.textFindRegex, '' );
+			if ( value )
+				value = value.toString().replace( control.textFindRegex, '' );
 		}
 		control.rangeInput.val( value );
 		control.textInput.val( value );

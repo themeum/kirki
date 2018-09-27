@@ -305,88 +305,75 @@ kirki = jQuery.extend( kirki, {
 					return;
 				}
 				var container = control.container,
-					desktop_btn = container.find( '.kirki-respnsive-switchers li.desktop' ),
-					tablet_btn = container.find( '.kirki-respnsive-switchers li.tablet' ),
-					mobile_btn = container.find( '.kirki-respnsive-switchers li.mobile' ),
+					switcher_containers = container.find( '.kirki-respnsive-switchers' ),
 					preview_desktop = jQuery( 'button.preview-desktop' ),
 					preview_tablet = jQuery( 'button.preview-tablet' ),
 					preview_mobile = jQuery( 'button.preview-mobile' ),
 					active_device = 0,
 					enabled = init_enabled;
-				desktop_btn.click( function( e )
+				switcher_containers.each( function( e )
 				{
-					e.preventDefault();
-					e.stopImmediatePropagation();
-					if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
+					var self = $( this ),
+						desktop_btn = self.find( 'li.desktop' ),
+						tablet_btn = self.find( 'li.tablet' ),
+						mobile_btn = self.find( 'li.mobile' );
+					desktop_btn.click( function( e )
 					{
-						desktop_btn.toggleClass( 'multiple' );
-						if ( desktop_btn.hasClass( 'multiple' ) )
+						e.preventDefault();
+						e.stopImmediatePropagation();
+						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 						{
-							enabled = true;
-							tablet_btn.removeClass( 'hidden' );
-							mobile_btn.removeClass( 'hidden' );
+							desktop_btn.toggleClass( 'multiple' );
+							if ( desktop_btn.hasClass( 'multiple' ) )
+							{
+								enabled = true;
+								tablet_btn.removeClass( 'hidden' );
+								mobile_btn.removeClass( 'hidden' );
+							}
+							else
+							{
+								enabled = false;
+								tablet_btn.addClass( 'hidden' );
+								mobile_btn.addClass( 'hidden' );
+							}
+							preview_desktop.click();
+							callbacks.device_change( active_device, enabled );
 						}
 						else
 						{
-							enabled = false;
-							tablet_btn.addClass( 'hidden' );
-							mobile_btn.addClass( 'hidden' );
+							active_device = 0;
+							tablet_btn.removeClass( 'active' );
+							mobile_btn.removeClass( 'active' );
+							callbacks.device_change( active_device, enabled );
 						}
 						preview_desktop.click();
-						callbacks.device_change( active_device, enabled );
-					}
-					else
+						//$( '.kirki-respnsive-switchers li.desktop' ).not( desktop_btn ).click();
+					});
+					tablet_btn.click( function(e)
 					{
-						active_device = 0;
-						tablet_btn.removeClass( 'active' );
+						e.preventDefault();
+						e.stopImmediatePropagation();
+						active_device = 1;
 						mobile_btn.removeClass( 'active' );
+						tablet_btn.addClass( 'active' );
+						preview_tablet.click();
+						//$( '.kirki-respnsive-switchers li.tablet' ).not( tablet_btn ).click();
 						callbacks.device_change( active_device, enabled );
-					}
-					preview_desktop.click();
-					//$( '.kirki-respnsive-switchers li.desktop' ).not( desktop_btn ).click();
-				});
-				tablet_btn.click( function(e)
-				{
-					e.preventDefault();
-					e.stopImmediatePropagation();
-					active_device = 1;
-					mobile_btn.removeClass( 'active' );
-					tablet_btn.addClass( 'active' );
-					preview_tablet.click();
-					//$( '.kirki-respnsive-switchers li.tablet' ).not( tablet_btn ).click();
-					callbacks.device_change( active_device, enabled );
-				});
-				mobile_btn.click( function(e)
-				{
-					e.preventDefault();
-					e.stopImmediatePropagation();
-					active_device = 2;
-					mobile_btn.addClass( 'active' );
-					tablet_btn.removeClass( 'active' );
-					preview_mobile.click();
-					//$( '.kirki-respnsive-switchers li.mobile' ).not( mobile_btn ).click();
-					callbacks.device_change( active_device, enabled );
-				});
-				if ( init_enabled )
-					desktop_btn.click();
-			},
-			enable_input_sync: function( control, inputs, events, callback, input_sanitize )
-			{
-				$( inputs ).on( events, function( e )
-				{
-					var input = $( this ),
-						val = input.val();
-					if ( input_sanitize )
+					});
+					mobile_btn.click( function(e)
 					{
-						val = input_sanitize( val );
-					}
-					inputs.val ( val );
-					callback();
+						e.preventDefault();
+						e.stopImmediatePropagation();
+						active_device = 2;
+						mobile_btn.addClass( 'active' );
+						tablet_btn.removeClass( 'active' );
+						preview_mobile.click();
+						//$( '.kirki-respnsive-switchers li.mobile' ).not( mobile_btn ).click();
+						callbacks.device_change( active_device, enabled );
+					});
+					if ( init_enabled )
+						desktop_btn.click();
 				});
-			},
-			disable_input_sync: function( control, inputs, events )
-			{
-				$( inputs ).off ( events );
 			}
 		},
 
