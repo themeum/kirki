@@ -1438,27 +1438,44 @@ kirki = jQuery.extend( kirki, {
 		},
 		
 		helpers: {
-			media_query: function( control, init_enabled, callbacks )
+			media_query: function( control, init_enabled, args )
 			{
 				if ( _.isUndefined( control.params.choices.use_media_queries ) )
-				{
 					return;
-				}
 				var container = control.container,
 					switcher_containers = container.find( '.kirki-respnsive-switchers' ),
 					preview_desktop = jQuery( 'button.preview-desktop' ),
 					preview_tablet = jQuery( 'button.preview-tablet' ),
-					preview_mobile = jQuery( 'button.preview-mobile' ),
-					active_device = 0,
-					enabled = init_enabled;
-				switcher_containers.each( function( e )
+					preview_mobile = jQuery( 'button.preview-mobile' );
+				var click_query_btn = function( type )
 				{
-					var self = $( this ),
-						desktop_btn = self.find( 'li.desktop' ),
-						tablet_btn = self.find( 'li.tablet' ),
-						mobile_btn = self.find( 'li.mobile' );
+					var btns = null;
+					if ( type === 'global' )
+						btns = $( '.kirki-respnsive-switchers[active-device!="global"] li.desktop' );
+					else
+						btns = $( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type );
+					btns.addClass( 'do-not-click-query' );
+					btns.click();
+				};
+				var set_active_device = function( container, device, skip_click )
+				{
+					container.attr( 'active-device', device );
+					if ( !skip_click )
+						click_query_btn( device );
+				};
+				switcher_containers.each( function()
+				{
+					var container = $( this ),
+						desktop_btn = container.find( 'li.desktop' ),
+						tablet_btn = container.find( 'li.tablet' ),
+						mobile_btn = container.find( 'li.mobile' ),
+						active_device = 0,
+						enabled = init_enabled;
+					
+					set_active_device( container, init_enabled ? 'desktop' : 'global', true );
 					desktop_btn.click( function( e )
 					{
+						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
 						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
@@ -1476,18 +1493,21 @@ kirki = jQuery.extend( kirki, {
 								tablet_btn.addClass( 'hidden' );
 								mobile_btn.addClass( 'hidden' );
 							}
+							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click-query' ) );
+							self.removeClass( 'do-not-click-query' );
+							args.device_change( active_device, enabled );
 							preview_desktop.click();
-							callbacks.device_change( active_device, enabled );
 						}
 						else
 						{
+							console.log( "SELECTING DESKTOP" );
 							active_device = 0;
 							tablet_btn.removeClass( 'active' );
 							mobile_btn.removeClass( 'active' );
-							callbacks.device_change( active_device, enabled );
+							set_active_device( container, 'desktop' );
+							args.device_change( active_device, enabled );
 						}
 						preview_desktop.click();
-						//$( '.kirki-respnsive-switchers li.desktop' ).not( desktop_btn ).click();
 					});
 					tablet_btn.click( function(e)
 					{
@@ -1496,9 +1516,9 @@ kirki = jQuery.extend( kirki, {
 						active_device = 1;
 						mobile_btn.removeClass( 'active' );
 						tablet_btn.addClass( 'active' );
+						set_active_device( container, 'tablet' );
+						args.device_change( active_device, enabled );
 						preview_tablet.click();
-						//$( '.kirki-respnsive-switchers li.tablet' ).not( tablet_btn ).click();
-						callbacks.device_change( active_device, enabled );
 					});
 					mobile_btn.click( function(e)
 					{
@@ -1507,9 +1527,9 @@ kirki = jQuery.extend( kirki, {
 						active_device = 2;
 						mobile_btn.addClass( 'active' );
 						tablet_btn.removeClass( 'active' );
+						set_active_device( container, 'mobile' );
+						args.device_change( active_device, enabled );
 						preview_mobile.click();
-						//$( '.kirki-respnsive-switchers li.mobile' ).not( mobile_btn ).click();
-						callbacks.device_change( active_device, enabled );
 					});
 					if ( init_enabled )
 						desktop_btn.click();
@@ -4663,7 +4683,30 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		var control = this,
 			value   = control.setting._value,
 			picker;
-
+		control.global_types = [
+			'font-family',
+			'font-backup',
+			'font-weight',
+			'font-style',
+			'variant',
+			'text-transform',
+			'text-decoration',
+			'color'
+		],
+		control.media_query_types = [
+			'font-size',
+			'line-height',
+			'margin-top',
+			'margin-bottom',
+			'letter-spacing',
+			'word-spacing'
+		];
+		
+		control.selected_device = kirki.util.media_query_devices.global;
+		
+		control.initValue();
+		control.initMediaQueries();
+		
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
@@ -5079,20 +5122,223 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			control.saveValue( 'downloadFont', checked );
 		} );
 	},
-
+	
+	initValue: function()
+	{
+		var control = this,
+			loadedValue = control.setting._value;
+		control.value = {
+			use_media_queries: loadedValue.use_media_queries || false,
+			loaded: false,
+			global: control.defaultValue(),
+			desktop: control.defaultValue(),
+			tablet: control.defaultValue(),
+			mobile: control.defaultValue(),
+		};
+		control.value = control.defaultGlobalValue( control.value );
+		
+		if ( loadedValue.use_media_queries )
+		{
+			kirki.util.media_query_device_names.forEach( function( name )
+			{
+				if ( !control.value[name].loaded && loadedValue[name] )
+				{
+					control.value[name] = loadedValue[name];
+					control.value[name]['loaded'] = true;
+				}
+			});
+			if ( loadedValue['desktop'] )
+				control.value['global'] = control.value['desktop'];
+		}
+		else
+		{
+			if ( !control.value['global'].loaded && loadedValue['global'] )
+			{
+				control.value['global'] = loadedValue['global'];
+				control.value['global']['loaded'] = true;
+			}
+		}
+		var id = control.value.use_media_queries ? 'desktop' : 'global',
+			defs = control.params.default;
+		if ( !control.value.loaded && defs )
+		{
+			//Set global values
+			control.global_types.forEach( function( name )
+			{
+				if ( _.isUndefined( defs[name] ) )
+					return false;
+				var def_value = defs[name];
+				control.value[name] = def_value;
+				switch ( name )
+				{
+					case 'font-family':
+					case 'variant':
+					case 'text-transform':
+						var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
+						select.val( def_value );
+						break;
+					case 'downloadFont':
+						var checkbox = control.container.find( '.kirki-host-font-locally input' );
+						checkbox.prop( 'checked', true );
+						break;
+					default:
+						var input = control.container.find( 'div.' + name + ' input' );
+						input.val( def_value );
+						break;
+				}
+			});
+		}
+		if ( !control.value[id].loaded && defs )
+		{
+			//Set global values
+			control.media_query_types.forEach( function( name )
+			{
+				if ( _.isUndefined( defs[name] ) )
+					return false;
+				var def_value = defs[name];
+				control.value[id][name] = def_value;
+				switch ( name )
+				{
+					case 'font-family':
+					case 'variant':
+					case 'text-transform':
+						var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
+						select.val( def_value );
+						break;
+					default:
+						var input = control.container.find( 'div.' + name + ' input' );
+						input.val( def_value );
+						break;
+				}
+			});
+		}
+	},
+	
+	initMediaQueries: function()
+	{
+		var control = this;
+		//If media queries are used, we need to detect device changes.
+		if ( control.params.choices.use_media_queries )
+		{
+			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
+				device_change: function( device, enabled )
+				{
+					control.selected_device = device;
+					control.value.use_media_queries = enabled;
+					var device_name = control.getSelectedDeviceName(),
+						value_to_set = null;
+					if ( enabled && !control.initial_media_query )
+					{
+						kirki.util.media_query_device_names.forEach( function( name )
+						{
+							if ( loadedValue[name] )
+							{
+								control.value[name] = loadedValue[name];
+								control.value[name]['loaded'] = true;
+							}
+						});
+					}
+					if ( enabled )
+						control.value.desktop = control.value.global;
+					else
+						control.value.global = control.value.desktop;
+					var value_to_set = control.value[device_name];
+					var defs = control.params.default;
+					//Set media query values
+					control.media_query_types.forEach( function( name )
+					{
+						if ( _.isUndefined( defs[name] ) )
+							return false;
+						var value = value_to_set[name];
+						switch ( name )
+						{
+							case 'font-family':
+							case 'variant':
+							case 'text-transform':
+								var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
+								select.val( value );
+								break;
+							default:
+								var input = control.container.find( 'div.' + name + ' input' );
+								input.val( value );
+								break;
+						}
+					});
+					
+					control.save();
+					control.initial_media_query = true;
+				}
+			});
+		}
+	},
+	
+	getSelectedDeviceName: function()
+	{
+		var control = this,
+			device = 'global';
+		if ( control.selected_device == kirki.util.media_query_devices.desktop )
+			device = 'desktop';
+		else if ( control.selected_device == kirki.util.media_query_devices.tablet )
+			device = 'tablet';
+		else if ( control.selected_device == kirki.util.media_query_devices.mobile )
+			device = 'mobile';
+		return device;
+	},
+	
 	/**
 	 * Saves the value.
 	 */
 	saveValue: function( property, value ) {
 
 		var control = this,
+			val     = control.value;
+		if ( control.media_query_types.includes( property ) )
+			val[control.getSelectedDeviceName()][ property ] = value;
+		else
+			val[ property ] = value;
+		control.save();
+	},
+	
+	save: function()
+	{
+		var control = this,
 			input   = control.container.find( '.typography-hidden-value' ),
-			val     = control.setting._value;
-
-		val[ property ] = value;
-
-		jQuery( input ).attr( 'value', JSON.stringify( val ) ).trigger( 'change' );
-		return;
-		control.setting.set( val );
+			compiled = jQuery.extend( {}, control.value );
+		delete compiled.loaded;
+		if ( compiled.use_media_queries )
+		{
+			delete compiled.global;
+		}
+		else
+		{
+			delete compiled.desktop;
+			delete compiled.tablet;
+			delete compiled.mobile;
+		}
+		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		control.setting.set( compiled );
+	},
+	
+	defaultValue: function() {
+		var control = this,
+			value = { loaded: false };
+		control.media_query_types.forEach( function( type )
+		{
+			if ( _.isUndefined( control.params.default[type] ) )
+				return false;
+			value[type] = '';
+		});
+		return value;
+	},
+	
+	defaultGlobalValue: function( value ) {
+		var control = this;
+		control.global_types.forEach( function( type )
+		{
+			if ( _.isUndefined( control.params.default[type] ) )
+				return false;
+			value[type] = '';
+		});
+		return value;
 	}
 } );
