@@ -314,7 +314,7 @@ kirki = jQuery.extend( kirki, {
 						btns = $( '.kirki-respnsive-switchers[active-device!="global"] li.desktop' );
 					else
 						btns = $( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type );
-					btns.addClass( 'do-not-click-query' );
+					btns.addClass( 'do-not-click' );
 					btns.click();
 				};
 				var set_active_device = function( container, device, skip_click )
@@ -335,6 +335,7 @@ kirki = jQuery.extend( kirki, {
 					set_active_device( container, init_enabled ? 'desktop' : 'global', true );
 					desktop_btn.click( function( e )
 					{
+						preview_desktop.click();
 						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
@@ -353,24 +354,22 @@ kirki = jQuery.extend( kirki, {
 								tablet_btn.addClass( 'hidden' );
 								mobile_btn.addClass( 'hidden' );
 							}
-							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click-query' ) );
-							self.removeClass( 'do-not-click-query' );
 							args.device_change( active_device, enabled );
-							preview_desktop.click();
+							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click' ) );
 						}
 						else
 						{
-							console.log( "SELECTING DESKTOP" );
 							active_device = 0;
 							tablet_btn.removeClass( 'active' );
 							mobile_btn.removeClass( 'active' );
-							set_active_device( container, 'desktop' );
+							set_active_device( container, 'desktop', self.hasClass( 'do-not-click' ) );
 							args.device_change( active_device, enabled );
 						}
-						preview_desktop.click();
+						self.removeClass( 'do-not-click' );
 					});
 					tablet_btn.click( function(e)
 					{
+						preview_tablet.click();
 						e.preventDefault();
 						e.stopImmediatePropagation();
 						active_device = 1;
@@ -378,10 +377,10 @@ kirki = jQuery.extend( kirki, {
 						tablet_btn.addClass( 'active' );
 						set_active_device( container, 'tablet' );
 						args.device_change( active_device, enabled );
-						preview_tablet.click();
 					});
 					mobile_btn.click( function(e)
 					{
+						preview_mobile.click();
 						e.preventDefault();
 						e.stopImmediatePropagation();
 						active_device = 2;
@@ -389,7 +388,6 @@ kirki = jQuery.extend( kirki, {
 						tablet_btn.removeClass( 'active' );
 						set_active_device( container, 'mobile' );
 						args.device_change( active_device, enabled );
-						preview_mobile.click();
 					});
 					if ( init_enabled )
 						desktop_btn.click();
