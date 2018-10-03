@@ -13,7 +13,26 @@
  * Field overrides.
  */
 class Kirki_Field_Typography_Advanced extends Kirki_Field {
-
+	
+	public static $global_properties = array(
+		'font-family',
+		'font-weight',
+		'font-style',
+		'text-transform',
+		'text-decoration',
+		'text-align',
+		'color',
+		'variant'
+	);
+	public static $device_properties = array(
+		'font-size',
+		'line-height',
+		'margin-top',
+		'margin-bottom',
+		'letter-spacing',
+		'word-spacing'
+	);
+	
 	/**
 	 * Sets the control type.
 	 *
@@ -138,13 +157,19 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
-
+		
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
-
-		foreach ( $value as $key => $val ) {
-			switch ( $key ) {
+		
+		//Loop through the global properties
+		foreach ( self::$global_properties as $key )
+		{
+			if ( !isset( $value[ $key ] ) )
+				continue;
+			$val = $value[$key];
+			switch ( $key )
+			{
 				case 'font-family':
 					$value['font-family'] = esc_attr( $val );
 					break;
@@ -168,12 +193,6 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
 					}
 					break;
-				case 'font-size':
-				case 'letter-spacing':
-				case 'word-spacing':
-				case 'line-height':
-					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
-					break;
 				case 'text-align':
 					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
 						$value['text-align'] = '';
@@ -186,15 +205,37 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 					break;
 				case 'text-decoration':
 					if ( ! in_array( $val, array( ''. 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
-						$value['text-transform'] = '';
+						$value['text-decoration'] = '';
 					}
 					break;
 				case 'color':
 					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
 					break;
-			} // End switch().
-		} // End foreach().
-
+			}
+		}
+		
+		foreach ( array( 'global', 'desktop', 'tablet', 'mobile' ) as $device )
+		{
+			if ( !isset( $value[$device] ) )
+				continue;
+			foreach ( self::$device_properties as $key )
+			{
+				if ( !isset( $value[$device][ $key ] ) )
+					continue;
+				$val = $value[$device][$key];
+				switch ( $key )
+				{
+					case 'font-size':
+					case 'letter-spacing':
+					case 'word-spacing':
+					case 'line-height':
+					case 'margin-top':
+					case 'margin-bottom':
+						$value[$device][ $key ] = '' === trim( $val ) ? '' : sanitize_text_field( $val );
+						break;
+				}
+			}
+		}
 		return $value;
 	}
 

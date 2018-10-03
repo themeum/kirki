@@ -27,26 +27,20 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
-
-		$value = Kirki_Field_Typography::sanitize( $value );
-
-		$properties = array(
-			'font-family',
-			'font-size',
-			'variant',
-			'font-weight',
-			'font-style',
-			'letter-spacing',
-			'word-spacing',
-			'line-height',
-			'text-align',
-			'text-transform',
-			'text-decoration',
-			'color',
-		);
-
-		foreach ( $properties as $property ) {
-
+		$breakpoints = [
+			'global' => 'global',
+			'desktop' => '@media screen and (min-width: 992px)',
+			'tablet' => '@media screen and (min-width: 768px and max-width: 991px)',
+			'mobile' => '@media screen and (max-width: 767px)'
+		];
+		if ( !$value )
+			return;
+		
+		$value = Kirki_Field_Typography_Advanced::sanitize( $value );
+		
+		//Output global vars
+		foreach ( Kirki_Field_Typography_Advanced::$global_properties as $property )
+		{
 			// Early exit if the value is not in the defaults.
 			if ( ! isset( $this->field['default'][ $property ] ) ) {
 				continue;
@@ -61,7 +55,7 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 			if ( isset( $output['choice'] ) && $output['choice'] !== $property ) {
 				continue;
 			}
-
+			
 			// Take care of variants.
 			if ( 'variant' === $property && isset( $value['variant'] ) && ! empty( $value['variant'] ) ) {
 
@@ -71,9 +65,9 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 
 				// Is this italic?
 				$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
-				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-weight'] = $font_weight;
+				$this->styles['global'][ $output['element'] ]['font-weight'] = $font_weight;
 				if ( $is_italic ) {
-					$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = 'italic';
+					$this->styles['global'][ $output['element'] ]['font-style'] = 'italic';
 				}
 				continue;
 			}
@@ -90,7 +84,23 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 			}
 			$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 			$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
+			$this->styles['global'][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
+		}
+		
+		//Now we loop through the media queries.
+		foreach ( array( 'global', 'desktop', 'tablet', 'mobile' ) as $device )
+		{
+			if ( !isset( $value[$device] ) )
+				continue;
+			$device_value = $value[$device];
+			$breakpoint = $breakpoints[$device];
+			foreach ( Kirki_Field_Typography_Advanced::$device_properties as $property ) 
+			{
+				$property_value = $this->process_property_value( $property, $device_value[ $property ] );
+				$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
+				$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
+				$this->styles[ $breakpoint ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
+			}
 		}
 	}
 }

@@ -5295,6 +5295,9 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		if ( compiled.use_media_queries )
 		{
 			delete compiled.global;
+			delete compiled.desktop.loaded;
+			delete compiled.tablet.loaded;
+			delete compiled.mobile.loaded;
 		}
 		else
 		{

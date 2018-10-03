@@ -132,32 +132,7 @@ class Kirki_Init {
 		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
 		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
 		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
-		add_action( 'customize_controls_print_styles', array( $this, 'adjust_customizer_responsive_sizes' ) );
-	}
-	
-	function adjust_customizer_responsive_sizes() {
-		return
-		$mobile_margin_left = '-240px'; //Half of -$mobile_width
-		$mobile_width = '480px';
-		$mobile_height = '720px';
 		
-		$tablet_margin_left = '-540px'; //Half of -$tablet_width
-		$tablet_width = '1080px';
-		$tablet_height = '720px';
-		?>
-		<style>
-			.wp-customizer .preview-mobile .wp-full-overlay-main {
-				margin-left: <?php echo $mobile_margin_left; ?>;
-				width: <?php echo $mobile_width; ?>;
-				height: <?php echo $mobile_height; ?>;
-			}
-			.wp-customizer .preview-tablet .wp-full-overlay-main {
-				margin-left: <?php echo $tablet_margin_left; ?>;
-				width: <?php echo $tablet_width; ?>;
-				height: <?php echo $tablet_height; ?>;
-			}
-		</style>
-		<?php
 	}
 	
 	/**

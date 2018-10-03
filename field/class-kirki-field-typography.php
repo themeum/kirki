@@ -186,7 +186,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 					break;
 				case 'text-decoration':
 					if ( ! in_array( $val, array( '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
-						$value['text-transform'] = '';
+						$value['text-decoration'] = '';
 					}
 					break;
 				case 'color':
