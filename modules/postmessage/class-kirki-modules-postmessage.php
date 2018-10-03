@@ -395,7 +395,6 @@ class Kirki_Modules_PostMessage {
 		$args = $this->get_args( $args );
 		$element = $args['element'];
 		
-		
 		$script = '';
 		$css    = '';
 		
@@ -496,7 +495,7 @@ class Kirki_Modules_PostMessage {
 				tablet: '@media screen and (min-width: 576px and max-width: 991px)',
 				mobile: '@media screen and (max-width: 575px)'
 			};
-			var devices = { 
+			var devices = {
 				desktop: newval['desktop'], 
 				tablet: newval['tablet'], 
 				mobile: newval['mobile'] 
@@ -507,21 +506,21 @@ class Kirki_Modules_PostMessage {
 				var breakpoint = breakpoints[i];
 				var media_query = '';
 				var device_css = '';
-				
-				device_css = breakpoint + ' { {$element} { ';
+				device_css = '{$element} { ';
 				properties.forEach( function( prop )
 				{
 					if ( _.isUndefined( device_val[prop] ) )
 						return false;
 					device_css +=  prop + ': ' + device_val[prop] + ';';
 				});
-				device_css += '} }';
+				device_css += '}';
+				device_css = breakpoint + ' { ' + device_css + ' } ';
 				css += device_css;
 			}
 		}
 		else
 		{
-			css = '{$element} { ';
+			css += '{$element} { ';
 			properties.forEach( function( prop )
 			{
 				if ( _.isUndefined( newval['global'][prop] ) )
@@ -532,12 +531,10 @@ class Kirki_Modules_PostMessage {
 		}
 		";
 		
-		$arr = array(
+		return array(
 			'script' => $script,
 			'css'    => 'css',
 		);
-		
-		return $arr;
 	}
 	
 	/**
@@ -636,6 +633,8 @@ class Kirki_Modules_PostMessage {
 		";
 		
 		$script .= "
+		if ( typeof newval === 'string' )
+			newval = JSON.parse( newval );
 		var use_media_queries = newval['use_media_queries'];
 		var suffix = '$suffix';
 		if ( use_media_queries )
@@ -645,7 +644,7 @@ class Kirki_Modules_PostMessage {
 				tablet: '@media screen and (min-width: 576px and max-width: 991px)',
 				mobile: '@media screen and (max-width: 575px)'
 			};
-			var devices = { 
+			var devices = {
 				desktop: newval['desktop'], 
 				tablet: newval['tablet'], 
 				mobile: newval['mobile'] 

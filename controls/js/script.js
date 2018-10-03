@@ -1454,8 +1454,7 @@ kirki = jQuery.extend( kirki, {
 						btns = $( '.kirki-respnsive-switchers[active-device!="global"] li.desktop' );
 					else
 						btns = $( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type );
-					btns.addClass( 'do-not-click' );
-					btns.click();
+					btns.addClass( 'do-not-click' ).click();
 				};
 				var set_active_device = function( container, device, skip_click )
 				{
@@ -1472,10 +1471,24 @@ kirki = jQuery.extend( kirki, {
 						active_device = 0,
 						enabled = init_enabled;
 					
+					$( window ).on( 'breakpoint_change', function( e, type )
+					{
+						if ( enabled )
+						{
+							container.addClass( 'skip-preview' );
+							$( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type )
+								.addClass( 'do-not-click' )
+								.click();
+						}
+					});
+					
 					set_active_device( container, init_enabled ? 'desktop' : 'global', true );
 					desktop_btn.click( function( e )
 					{
-						preview_desktop.click();
+						if ( !container.hasClass( 'skip-preview' ) )
+							preview_desktop.click();
+						else
+							container.removeClass( 'skip-preview' );
 						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
@@ -1509,7 +1522,10 @@ kirki = jQuery.extend( kirki, {
 					});
 					tablet_btn.click( function(e)
 					{
-						preview_tablet.click();
+						if ( !container.hasClass( 'skip-preview' ) )
+							preview_tablet.click();
+						else
+							container.removeClass( 'skip-preview' );
 						e.preventDefault();
 						e.stopImmediatePropagation();
 						active_device = 1;
@@ -1520,7 +1536,10 @@ kirki = jQuery.extend( kirki, {
 					});
 					mobile_btn.click( function(e)
 					{
-						preview_mobile.click();
+						if ( !container.hasClass( 'skip-preview' ) )
+							preview_mobile.click();
+						else
+							container.removeClass( 'skip-preview' );
 						e.preventDefault();
 						e.stopImmediatePropagation();
 						active_device = 2;
@@ -1531,6 +1550,22 @@ kirki = jQuery.extend( kirki, {
 					});
 					if ( init_enabled )
 						desktop_btn.click();
+				});
+				
+				preview_desktop.click( function()
+				{
+					container.addClass( 'skip-preview' );
+					$( window ).trigger( 'breakpoint_change', ['desktop'] );
+				});
+				preview_tablet.click( function()
+				{
+					container.addClass( 'skip-preview' );
+					$( window ).trigger( 'breakpoint_change', ['tablet'] );
+				});
+				preview_mobile.click( function()
+				{
+					container.addClass( 'skip-preview' );
+					$( window ).trigger( 'breakpoint_change', ['mobile'] );
 				});
 			}
 		},
