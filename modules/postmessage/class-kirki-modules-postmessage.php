@@ -375,6 +375,7 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $args['media_query'] ) ) {
 			$script .= 'css=\'' . $args['media_query'] . '{\'+css+\'}\';';
 		}
+		
 		return array(
 			'script' => $script,
 			'css'    => 'css',
@@ -382,7 +383,7 @@ class Kirki_Modules_PostMessage {
 	}
 	
 	/**
-	 * Processes script generation for typography fields.
+	 * Processes script generation for typography advanced fields.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -390,37 +391,65 @@ class Kirki_Modules_PostMessage {
 	 * @param array $field The field arguments.
 	 */
 	protected function script_var_typography_advanced( $args, $field ) {
-
+		
 		$args = $this->get_args( $args );
-
+		$element = $args['element'];
+		
+		
 		$script = '';
 		$css    = '';
-
+		
 		// Load the font using WenFontloader.
 		// This is a bit ugly because wp_add_inline_script doesn't allow adding <script> directly.
 		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+\'cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
-
-		// Add the css.
-		$css_build_array  = array(
+		
+		$check_field = function( $field, $property )
+		{
+			return ! isset( $field['default'] ) || (
+				( 'font-family' === $property && ! isset( $field['default']['font-family'] ) ) ||
+				( 'font-size' === $property && ! isset( $field['default']['font-size'] ) ) ||
+				( 'line-height' === $property && ! isset( $field['default']['line-height'] ) ) ||
+				( 'letter-spacing' === $property && ! isset( $field['default']['letter-spacing'] ) ) ||
+				( 'word-spacing' === $property && ! isset( $field['default']['word-spacing'] ) ) ||
+				( 'text-align' === $property && ! isset( $field['default']['text-align'] ) ) ||
+				( 'text-transform' === $property && ! isset( $field['default']['text-transform'] ) ) ||
+				( 'text-decoration' === $property && ! isset( $field['default']['text-decoration'] ) ) ||
+				( 'color' === $property && ! isset( $field['default']['color'] ) ) ||
+				( 'font-weight' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-weight'] ) ) ||
+				( 'font-style' === $property && ! isset( $field['default']['variant'] ) && ! isset( $field['default']['font-style'] ) )
+				);
+		};
+		
+		$global_css_build_array = array(
 			'font-family'     => 'fontFamily',
-			'font-size'       => 'fontSize',
-			'line-height'     => 'lineHeight',
-			'letter-spacing'  => 'letterSpacing',
-			'word-spacing'    => 'wordSpacing',
-			'text-align'      => 'textAlign',
-			'text-transform'  => 'textTransform',
-			'text-decoration' => 'textDecoration',
-			'color'           => 'color',
 			'font-weight'     => 'fontWeight',
 			'font-style'      => 'fontStyle',
+			'text-transform'  => 'textTransform',
+			'text-decoration' => 'textDecoration',
+			'text-align'      => 'textAlign',
+			'color'           => 'color',
 		);
-		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $css_build_array[ $args['choice'] ] ) );
+		$device_css_build_array = array(
+			'font-size'      => 'fontSize',
+			'line-height'    => 'lineHeight',
+			'margin-top'     => 'marginTop',
+			'margin-bottom'  => 'marginBottom',
+			'letter-spacing' => 'letterSpacing',
+			'word-spacing'   => 'wordSpacing'
+		);
+		$breakpoints = array(
+			'desktop' => '@media screen and (min-width: 992px)',
+			'tablet'  => '@media screen and (min-width: 576px and max-width: 991px)',
+			'mobile'  => '@media screen and (max-width: 575px)'
+		);
+		
+		$choice_condition = ( isset( $args['choice'] ) && '' !== $args['choice'] && isset( $global_css_build_array[ $args['choice'] ] ) );
 		$script          .= ( ! $choice_condition ) ? $webfont_loader : '';
-		foreach ( $css_build_array as $property => $var ) {
+		//First output global CSS.
+		foreach ( $global_css_build_array as $property => $var ) {
 			if ( $choice_condition && $property !== $args['choice'] ) {
 				continue;
 			}
-			// Fixes https://github.com/aristath/kirki/issues/1436.
 			if ( ! isset( $field['default'] ) || (
 				( 'font-family' === $property && ! isset( $field['default']['font-family'] ) ) ||
 				( 'font-size' === $property && ! isset( $field['default']['font-size'] ) ) ||
@@ -437,7 +466,6 @@ class Kirki_Modules_PostMessage {
 				continue;
 			}
 			$script .= ( $choice_condition && 'font-family' === $args['choice'] ) ? $webfont_loader : '';
-
 			if ( 'font-family' === $property || ( isset( $args['choice'] ) && 'font-family' === $args['choice'] ) ) {
 				$css .= 'fontFamilyCSS=fontFamily;if(0<fontFamily.indexOf(\' \')&&-1===fontFamily.indexOf(\'"\')){fontFamilyCSS=\'"\'+fontFamily+\'"\';}';
 				$var  = 'fontFamilyCSS';
@@ -445,15 +473,71 @@ class Kirki_Modules_PostMessage {
 			$var  = ( ( empty( $args['prefix'] ) ) ? '' : '\'' . $args['prefix'] . '\'+' ) . $var . ( ( empty( $args['units'] ) ) ? '' : '+\'' . $args['units'] . '\'' ) . ( ( empty( $args['suffix'] ) ) ? '' : '+\'' . $args['suffix'] . '\'' );
 			$css .= 'css+=(\'\'!==' . $var . ')?\'' . $args['element'] . '\'+\'{' . $property . ':\'+' . $var . '+\';}\':\'\';';
 		}
-
 		$script .= $css;
-		if ( isset( $args['media_query'] ) ) {
-			$script .= 'css=\'' . $args['media_query'] . '{\'+css+\'}\';';
+		
+		//Now we output device based CSS via JS.
+		//I'm writing the JS with multiple lines as its easier to read.
+		$script .= "
+		if ( typeof newval === 'string' )
+			newval = JSON.parse( newval );
+		var use_media_queries = newval['use_media_queries'];
+		var properties = [
+			'font-size',
+			'line-height',
+			'margin-top',
+			'margin-bottom',
+			'letter-spacing',
+			'word-spacing'
+		];
+		if ( use_media_queries )
+		{
+			var breakpoints = {
+				desktop: '@media screen and (min-width: 992px)',
+				tablet: '@media screen and (min-width: 576px and max-width: 991px)',
+				mobile: '@media screen and (max-width: 575px)'
+			};
+			var devices = { 
+				desktop: newval['desktop'], 
+				tablet: newval['tablet'], 
+				mobile: newval['mobile'] 
+			};
+			for ( var i in devices )
+			{
+				var device_val = devices[i];
+				var breakpoint = breakpoints[i];
+				var media_query = '';
+				var device_css = '';
+				
+				device_css = breakpoint + ' { {$element} { ';
+				properties.forEach( function( prop )
+				{
+					if ( _.isUndefined( device_val[prop] ) )
+						return false;
+					device_css +=  prop + ': ' + device_val[prop] + ';';
+				});
+				device_css += '} }';
+				css += device_css;
+			}
 		}
-		return array(
+		else
+		{
+			css = '{$element} { ';
+			properties.forEach( function( prop )
+			{
+				if ( _.isUndefined( newval['global'][prop] ) )
+					return false;
+				css += prop + ': ' + newval['global'][prop] + ';';
+			});
+			css += '}';
+		}
+		";
+		
+		$arr = array(
 			'script' => $script,
 			'css'    => 'css',
 		);
+		
+		return $arr;
 	}
 	
 	/**
@@ -687,6 +771,7 @@ class Kirki_Modules_PostMessage {
 		if ( isset( $args['type'] ) ) {
 			switch ( $args['type'] ) {
 				case 'kirki-typography':
+				case 'kirki-typography-advanced':
 					$script .= 'fontFamily=(_.isUndefined(newval[\'font-family\']))?\'\':newval[\'font-family\'];variant=(_.isUndefined(newval.variant))?\'400\':newval.variant;fontSize=(_.isUndefined(newval[\'font-size\']))?\'\':newval[\'font-size\'];lineHeight=(_.isUndefined(newval[\'line-height\']))?\'\':newval[\'line-height\'];letterSpacing=(_.isUndefined(newval[\'letter-spacing\']))?\'\':newval[\'letter-spacing\'];wordSpacing=(_.isUndefined(newval[\'word-spacing\']))?\'\':newval[\'word-spacing\'];textAlign=(_.isUndefined(newval[\'text-align\']))?\'\':newval[\'text-align\'];textTransform=(_.isUndefined(newval[\'text-transform\']))?\'\':newval[\'text-transform\'];textDecoration=(_.isUndefined(newval[\'text-decoration\']))?\'\':newval[\'text-decoration\'];color=(_.isUndefined(newval.color))?\'\':newval.color;fw=(!_.isString(newval.variant))?\'400\':newval.variant.match(/\d/g);fontWeight=(!_.isObject(fw))?400:fw.join(\'\');fontStyle=(variant&&-1!==variant.indexOf(\'italic\'))?\'italic\':\'normal\';css=\'\';';
 					break;
 			}

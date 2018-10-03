@@ -41,7 +41,8 @@ class Kirki_Values {
 	public function typography_field_tweaks( $value, $field_id ) {
 
 		if ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['type'] ) ) {
-			if ( 'kirki-typography' === Kirki::$fields[ $field_id ]['type'] ) {
+			if ( 'kirki-typography' === Kirki::$fields[ $field_id ]['type'] ||
+				 'kirki-typography-advanced' === Kirki::$fields[ $field_id ]['type'] ) {
 
 				// Sanitize the value.
 				// This also adds font-weight if it doesn't already exist.

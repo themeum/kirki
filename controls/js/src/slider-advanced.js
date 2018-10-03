@@ -36,9 +36,9 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			var unit = null;
 			//Load the unit
 			if ( use_media_queries )
-				loadedValue = control.value.desktop.unit;
+				unit = control.value.desktop.unit;
 			else
-				loadedValue = control.value.global.unit;
+				unit = control.value.global.unit;
 			units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
 			if ( units_radios.filter ( ':checked' ).length == 0)
 			{
@@ -290,7 +290,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 	{
 		var control = this,
 			choices = control.params.choices,
-			unit = control.selected_unit,
+			unit = choices.units ? ( control.selected_unit || Object.keys( choices.units )[0] ) : '',
 			rangeInput = control.rangeInput,
 			textInput = control.textInput,
 			suffixElement = control.container.find( '.suffix' );

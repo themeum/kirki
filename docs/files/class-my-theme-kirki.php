@@ -269,7 +269,7 @@ class My_Theme_Kirki {
 						$css[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 					}
 				} else {
-					if ( 'typography' === $field['type'] ) {
+					if ( 'typography' === $field['type'] || 'typography-advanced' === $field['type'] ) {
 
 						foreach ( $value as $key => $subvalue ) {
 

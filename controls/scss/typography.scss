@@ -22,19 +22,25 @@
     .margin-bottom,
     .margin-top,
     .text-align,
-    .text-transform,
+	.text-transform,
+	.word-spacing
     .variant {
       width: 100%;
       float: none;
       clear: both;
     }
 
+    .font-backup,
+    .font-family,
     .font-size,
     .letter-spacing,
     .line-height,
     .margin-bottom,
     .margin-top,
-    .text-transform {
+	.text-transform,
+	.word-spacing,
+	.text-decoration,
+    .variant {
       width: 48%;
     }
 

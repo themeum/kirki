@@ -115,7 +115,8 @@ final class Kirki_Fonts_Google {
 		global $wp_customize;
 
 		// Process typography fields.
-		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
+		if ( isset( $args['type'] ) && 
+			( 'kirki-typography' === $args['type'] || 'kirki-typography-advanced' === $args['type'] ) ) {
 
 			// Get the value.
 			$value = Kirki_Values::get_sanitized_field_value( $args );

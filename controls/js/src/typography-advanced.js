@@ -16,7 +16,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			'variant',
 			'text-transform',
 			'text-decoration',
-			'color'
+			'color',
+			'text-align'
 		],
 		control.media_query_types = [
 			'font-size',
@@ -266,9 +267,9 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 	 * Displays font-variants for the currently selected font-family.
 	 */
 	renderVariantSelector: function() {
-
+		
 		var control    = this,
-			value      = control.setting._value,
+			value      = control.value,
 			fontFamily = value['font-family'],
 			selector   = control.selector + ' .variant select',
 			data       = [],
@@ -451,10 +452,11 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 	initValue: function()
 	{
 		var control = this,
+		defs = control.params.default,
 			loadedValue = control.setting._value;
 		control.value = {
 			use_media_queries: loadedValue.use_media_queries || false,
-			loaded: false,
+			loaded: !_.isUndefined( loadedValue ),
 			global: control.defaultValue(),
 			desktop: control.defaultValue(),
 			tablet: control.defaultValue(),
@@ -483,60 +485,59 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				control.value['global']['loaded'] = true;
 			}
 		}
-		var id = control.value.use_media_queries ? 'desktop' : 'global',
-			defs = control.params.default;
-		if ( !control.value.loaded && defs )
+		
+		var id = control.value.use_media_queries ? 'desktop' : 'global';
+		//Set global values
+		control.global_types.forEach( function( name )
 		{
-			//Set global values
-			control.global_types.forEach( function( name )
+			if ( _.isUndefined( defs[name] ) )
+				return false;
+			control.value[name] = control.value.loaded ? loadedValue[name] : defs[name];
+			switch ( name )
 			{
-				if ( _.isUndefined( defs[name] ) )
-					return false;
-				var def_value = defs[name];
-				control.value[name] = def_value;
-				switch ( name )
-				{
-					case 'font-family':
-					case 'variant':
-					case 'text-transform':
-						var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
-						select.val( def_value );
-						break;
-					case 'downloadFont':
-						var checkbox = control.container.find( '.kirki-host-font-locally input' );
-						checkbox.prop( 'checked', true );
-						break;
-					default:
-						var input = control.container.find( 'div.' + name + ' input' );
-						input.val( def_value );
-						break;
-				}
-			});
-		}
-		if ( !control.value[id].loaded && defs )
+				case 'font-family':
+				case 'font-backup':
+				case 'variant':
+				case 'text-transform':
+					var select = control.container.find( 'div.font-family select,div.font-backup select,div.variant select,div.text-transform select' );
+					select.val( control.value[name] );
+					break;
+				case 'text-align':
+					var radio = control.container.find( 'div.text-align input[value="' + value + '"]' );
+					radio.prop( 'checked', true );
+					break;
+				default:
+					var input = control.container.find( 'div.' + name + ' input' );
+					input.val( control.value[name] );
+					break;
+			}
+		});
+		//Set media query values
+		control.media_query_types.forEach( function( name )
 		{
-			//Set global values
-			control.media_query_types.forEach( function( name )
+			if ( _.isUndefined( defs[name] ) )
+				return false;
+			control.value[id][name] = control.value[id].loaded ? loadedValue[id][name] : defs[name];
+			switch ( name )
 			{
-				if ( _.isUndefined( defs[name] ) )
-					return false;
-				var def_value = defs[name];
-				control.value[id][name] = def_value;
-				switch ( name )
-				{
-					case 'font-family':
-					case 'variant':
-					case 'text-transform':
-						var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
-						select.val( def_value );
-						break;
-					default:
-						var input = control.container.find( 'div.' + name + ' input' );
-						input.val( def_value );
-						break;
-				}
-			});
-		}
+				case 'font-family':
+				case 'font-backup':
+				case 'variant':
+				case 'text-transform':
+					var select = control.container.find( 'div.font-family select,div.font-backup select,div.variant select,div.text-transform select' );
+					select.val( control.value[id][name] );
+					break;
+				case 'text-align':
+					var radio = control.container.find( 'div.text-align input[value="' + value + '"]' );
+					radio.prop( 'checked', true );
+					break;
+				default:
+					var input = control.container.find( 'div.' + name + ' input' );
+					input.val( control.value[id][name] );
+					break;
+			}
+		});
+		control.value['downloadFont'] = loadedValue.downloadFont || false;
 	},
 	
 	initMediaQueries: function()
@@ -556,10 +557,9 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 					{
 						kirki.util.media_query_device_names.forEach( function( name )
 						{
-							if ( loadedValue[name] )
+							if ( !control.value[device_name] )
 							{
-								control.value[name] = loadedValue[name];
-								control.value[name]['loaded'] = true;
+								control.value[device_name] = control.defaultValue();
 							}
 						});
 					}
@@ -575,19 +575,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 						if ( _.isUndefined( defs[name] ) )
 							return false;
 						var value = value_to_set[name];
-						switch ( name )
-						{
-							case 'font-family':
-							case 'variant':
-							case 'text-transform':
-								var select = control.container.find( 'div.font-family select,div.variant select,div.text-transform select' );
-								select.val( value );
-								break;
-							default:
-								var input = control.container.find( 'div.' + name + ' input' );
-								input.val( value );
-								break;
-						}
+						var input = control.container.find( 'div.' + name + ' input' );
+						input.val( value );
 					});
 					
 					control.save();
@@ -664,6 +653,11 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				return false;
 			value[type] = '';
 		});
+		value['font-weight'] = '';
+		value['font-style'] = '';
+		value['variant'] = '';
+		value['downloadFont'] = false;
+		value['text-align'] = 'left';
 		return value;
 	}
 } );

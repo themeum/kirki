@@ -805,7 +805,8 @@
     .customize-control-kirki-typography .wrapper .margin-top,
     .customize-control-kirki-typography .wrapper .text-align,
     .customize-control-kirki-typography .wrapper .text-transform,
-    .customize-control-kirki-typography .wrapper .variant,
+    .customize-control-kirki-typography .wrapper .word-spacing
+    .variant,
     .customize-control-kirki-typography-advanced .wrapper .color,
     .customize-control-kirki-typography-advanced .wrapper .font-backup,
     .customize-control-kirki-typography-advanced .wrapper .font-family,
@@ -816,22 +817,33 @@
     .customize-control-kirki-typography-advanced .wrapper .margin-top,
     .customize-control-kirki-typography-advanced .wrapper .text-align,
     .customize-control-kirki-typography-advanced .wrapper .text-transform,
-    .customize-control-kirki-typography-advanced .wrapper .variant {
+    .customize-control-kirki-typography-advanced .wrapper .word-spacing
+    .variant {
       width: 100%;
       float: none;
       clear: both; }
+    .customize-control-kirki-typography .wrapper .font-backup,
+    .customize-control-kirki-typography .wrapper .font-family,
     .customize-control-kirki-typography .wrapper .font-size,
     .customize-control-kirki-typography .wrapper .letter-spacing,
     .customize-control-kirki-typography .wrapper .line-height,
     .customize-control-kirki-typography .wrapper .margin-bottom,
     .customize-control-kirki-typography .wrapper .margin-top,
     .customize-control-kirki-typography .wrapper .text-transform,
+    .customize-control-kirki-typography .wrapper .word-spacing,
+    .customize-control-kirki-typography .wrapper .text-decoration,
+    .customize-control-kirki-typography .wrapper .variant,
+    .customize-control-kirki-typography-advanced .wrapper .font-backup,
+    .customize-control-kirki-typography-advanced .wrapper .font-family,
     .customize-control-kirki-typography-advanced .wrapper .font-size,
     .customize-control-kirki-typography-advanced .wrapper .letter-spacing,
     .customize-control-kirki-typography-advanced .wrapper .line-height,
     .customize-control-kirki-typography-advanced .wrapper .margin-bottom,
     .customize-control-kirki-typography-advanced .wrapper .margin-top,
-    .customize-control-kirki-typography-advanced .wrapper .text-transform {
+    .customize-control-kirki-typography-advanced .wrapper .text-transform,
+    .customize-control-kirki-typography-advanced .wrapper .word-spacing,
+    .customize-control-kirki-typography-advanced .wrapper .text-decoration,
+    .customize-control-kirki-typography-advanced .wrapper .variant {
       width: 48%; }
     .customize-control-kirki-typography .wrapper .text-align .text-align-choices,
     .customize-control-kirki-typography-advanced .wrapper .text-align .text-align-choices {
