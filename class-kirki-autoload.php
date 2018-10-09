@@ -118,7 +118,7 @@ class Kirki_Autoload {
 		}
 		
 		//Metaboxes
-		$paths[] = dirname( __FILE__ ) . '/metabox/class-kirki-metabox.php';
+		//$paths[] = dirname( __FILE__ ) . '/metabox/class-kirki-metabox.php';
 		return $paths;
 	}
 }
