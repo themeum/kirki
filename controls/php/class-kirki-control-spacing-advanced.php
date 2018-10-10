@@ -38,7 +38,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 		parent::to_json();
 
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'use_media_queries'  => false,
+			'use_media_queries' => true,
 			'units' => array (
 				'' => array(
 					'top' => '',
