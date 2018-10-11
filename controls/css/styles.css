@@ -116,11 +116,15 @@
 .customize-control-kirki-multicheck ul li input {
   display: none; }
 
-.kirki-units-choices {
+.kirki-units-choices-outer {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  text-align: right; }
+  text-align: right;
+  float: right; }
+
+.kirki-units-choices {
+  display: inline-block; }
 
 .kirki-units-choices input {
   display: none; }
@@ -136,9 +140,6 @@
   padding: 0 2px;
   text-transform: uppercase;
   font-size: 9px; }
-
-.kirki-units-choices {
-  float: right; }
 
 .kirki-respnsive-switchers li.hidden {
   display: none; }
