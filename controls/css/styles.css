@@ -84,11 +84,11 @@
   clip: rect(0, 0, 0, 0);
   border: 0; }
 
-.kirki-respnsive-switchers {
+.kirki-responsive-switchers {
   text-align: right;
   display: inline; }
 
-.kirki-respnsive-switchers li {
+.kirki-responsive-switchers li {
   display: inline-block;
   cursor: pointer; }
 
@@ -116,15 +116,11 @@
 .customize-control-kirki-multicheck ul li input {
   display: none; }
 
-.kirki-units-choices-outer {
+.kirki-units-choices {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  text-align: right;
-  float: right; }
-
-.kirki-units-choices {
-  display: inline-block; }
+  text-align: right; }
 
 .kirki-units-choices input {
   display: none; }
@@ -141,10 +137,13 @@
   text-transform: uppercase;
   font-size: 9px; }
 
-.kirki-respnsive-switchers li.hidden {
+.kirki-units-choices {
+  float: right; }
+
+.kirki-responsive-switchers li.hidden {
   display: none; }
 
-.kirki-respnsive-switchers li {
+.kirki-responsive-switchers li {
   background-color: #999;
   font-weight: 500;
   color: #fff;
@@ -152,12 +151,12 @@
   padding: 0 4px;
   font-size: 8px; }
 
-.kirki-respnsive-switchers li span {
+.kirki-responsive-switchers li span {
   position: relative;
   display: block;
   line-height: 18px; }
 
-.kirki-respnsive-switchers li.active {
+.kirki-responsive-switchers li.active {
   background-color: #00a0d2; }
 
 .customize-control-kirki-background {

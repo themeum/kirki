@@ -39,6 +39,11 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
 			'use_media_queries' => true,
+			'all_units' => false,
+			'top' => true,
+			'right' => true,
+			'bottom' => true,
+			'left' => true,
 			'units' => array (
 				'' => array(
 					'top' => '',
@@ -66,11 +71,12 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 			<# if ( !data.choices.all_units ) { #>
 				<div class="kirki-units-choices-outer">
 				<#
-					for ( key in data.choices.units ) {
-							var unit = data.choices.units[key]; #>
+					for ( unit_key in data.choices.units ) {
+							var unit = data.choices.units[key];
+				#>
 					<div class="kirki-units-choices">
-						<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
-						<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
+						<input id="{{ data.id }}_{{ unit_key }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit_key }}">
+						<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit_key }}">{{ unit_key }}</label>
 					</div>
 				<# } #>
 			</div>
@@ -78,7 +84,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<# if ( data.choices.use_media_queries ) { #>
-			<ul class="kirki-respnsive-switchers">
+			<ul class="kirki-responsive-switchers">
 				<li class="desktop"><span class="eicon-device-desktop"></span></li>
 				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 				<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>

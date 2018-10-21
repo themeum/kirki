@@ -29,7 +29,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 			<div class="margin-outer">
 				<h5>
 					<span><?php _e( 'Margin', 'kirki' ) ?></span>
-					<ul class="kirki-respnsive-switchers">
+					<ul class="kirki-responsive-switchers">
 						<li class="desktop"><span class="eicon-device-desktop"></span></li>
 						<li class="tablet hidden-device"><span class="eicon-device-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="eicon-device-mobile"></span></li>
@@ -78,7 +78,7 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 			<div class="padding-outer">
 				<h5>
 					<span><?php _e( 'Padding', 'kirki' ) ?></span>
-					<ul class="kirki-respnsive-switchers">
+					<ul class="kirki-responsive-switchers">
 						<li class="desktop"><span class="eicon-device-desktop"></span></li>
 						<li class="tablet hidden-device"><span class="eicon-device-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="eicon-device-mobile"></span></li>

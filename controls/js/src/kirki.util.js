@@ -303,7 +303,7 @@ kirki = jQuery.extend( kirki, {
 				if ( _.isUndefined( control.params.choices.use_media_queries ) )
 					return;
 				var container = control.container,
-					switcher_containers = container.find( '.kirki-respnsive-switchers' ),
+					switcher_containers = container.find( '.kirki-responsive-switchers' ),
 					preview_desktop = jQuery( 'button.preview-desktop' ),
 					preview_tablet = jQuery( 'button.preview-tablet' ),
 					preview_mobile = jQuery( 'button.preview-mobile' );
@@ -311,9 +311,9 @@ kirki = jQuery.extend( kirki, {
 				{
 					var btns = null;
 					if ( type === 'global' )
-						btns = $( '.kirki-respnsive-switchers[active-device!="global"] li.desktop' );
+						btns = $( '.kirki-responsive-switchers[active-device!="global"] li.desktop' );
 					else
-						btns = $( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type );
+						btns = $( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type );
 					btns.addClass( 'do-not-click' ).click();
 				};
 				var set_active_device = function( container, device, skip_click )
@@ -336,7 +336,7 @@ kirki = jQuery.extend( kirki, {
 						if ( enabled )
 						{
 							container.addClass( 'skip-preview' );
-							$( '.kirki-respnsive-switchers[active-device!="' + type + '"] li.' + type )
+							$( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type)
 								.addClass( 'do-not-click' )
 								.click();
 						}
@@ -345,13 +345,13 @@ kirki = jQuery.extend( kirki, {
 					set_active_device( container, init_enabled ? 'desktop' : 'global', true );
 					desktop_btn.click( function( e )
 					{
+						var self = $( this );
+						e.preventDefault();
+						e.stopImmediatePropagation();
 						if ( !container.hasClass( 'skip-preview' ) )
 							preview_desktop.click();
 						else
 							container.removeClass( 'skip-preview' );
-						var self = $( this );
-						e.preventDefault();
-						e.stopImmediatePropagation();
 						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 						{
 							desktop_btn.toggleClass( 'multiple' );
@@ -367,6 +367,7 @@ kirki = jQuery.extend( kirki, {
 								tablet_btn.addClass( 'hidden' );
 								mobile_btn.addClass( 'hidden' );
 							}
+							container.addClass( 'skip-preview' );
 							args.device_change( active_device, enabled );
 							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click' ) );
 						}
@@ -375,19 +376,20 @@ kirki = jQuery.extend( kirki, {
 							active_device = 0;
 							tablet_btn.removeClass( 'active' );
 							mobile_btn.removeClass( 'active' );
-							set_active_device( container, 'desktop', self.hasClass( 'do-not-click' ) );
+							//self.addClass( 'do-not-click' );
+							set_active_device( container, 'desktop', true );
 							args.device_change( active_device, enabled );
 						}
 						self.removeClass( 'do-not-click' );
 					});
 					tablet_btn.click( function(e)
 					{
+						e.preventDefault();
+						e.stopImmediatePropagation();
 						if ( !container.hasClass( 'skip-preview' ) )
 							preview_tablet.click();
 						else
 							container.removeClass( 'skip-preview' );
-						e.preventDefault();
-						e.stopImmediatePropagation();
 						active_device = 1;
 						mobile_btn.removeClass( 'active' );
 						tablet_btn.addClass( 'active' );
@@ -396,12 +398,12 @@ kirki = jQuery.extend( kirki, {
 					});
 					mobile_btn.click( function(e)
 					{
+						e.preventDefault();
+						e.stopImmediatePropagation();
 						if ( !container.hasClass( 'skip-preview' ) )
 							preview_mobile.click();
 						else
 							container.removeClass( 'skip-preview' );
-						e.preventDefault();
-						e.stopImmediatePropagation();
 						active_device = 2;
 						mobile_btn.addClass( 'active' );
 						tablet_btn.removeClass( 'active' );

@@ -106,7 +106,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Font Size', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
@@ -123,7 +123,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Line Height', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
@@ -140,7 +140,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
@@ -157,7 +157,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Word Spacing', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
@@ -245,7 +245,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Margin Top', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
@@ -262,7 +262,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?>
 						<# if ( data.choices.use_media_queries ) { #>
-						<ul class="kirki-respnsive-switchers">
+						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>

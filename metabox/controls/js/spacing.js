@@ -29,7 +29,7 @@
 						bottom = $( 'input[' + type + '-type="bottom"]', outer ),
 						left = $( 'input[' + type + '-type="left"]', outer ),
 						right = $( 'input[' + type + '-type="right"]', outer ),
-						devices_outer = $( '.kirki-respnsive-switchers', outer ),
+						devices_outer = $( '.kirki-responsive-switchers', outer ),
 						desktop_btn = $( 'li.desktop', devices_outer ),
 						tablet_btn = $( 'li.tablet', devices_outer ),
 						mobile_btn = $( 'li.mobile', devices_outer ),

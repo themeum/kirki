@@ -43,7 +43,7 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 				foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
 				{
 					if ( !isset ( $devices[$device] ) )
-						break;
+						continue;
 					$breakpoint = $breakpoints[$device];
 					$device_val = $devices[$device];
 					$this->styles[ $breakpoint ][ $el ][ $output['property'] ] = $prefix . $device_val . $suffix;

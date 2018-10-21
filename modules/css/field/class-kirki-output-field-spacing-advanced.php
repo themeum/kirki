@@ -40,14 +40,14 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 				foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device_name )
 				{
 					if ( !isset( $devices[$device_name] ) )
-						break;
+						continue;
 					$breakpoint = $breakpoints[$device_name];
 					$top = $devices[$device_name]['top'];
 					$right = $devices[$device_name]['right'];
 					$bottom = $devices[$device_name]['bottom'];
 					$left = $devices[$device_name]['left'];
 					
-					$this->styles[$breakpoint][$output['element']][$output['property']] = 
+					$this->styles[$breakpoint][$el][$output['property']] = 
 						$top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 				}
 			}
@@ -59,7 +59,7 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 				$right = $value['global']['right'];
 				$bottom = $value['global']['bottom'];
 				$left = $value['global']['left'];
-				$this->styles['global'][$output['element']][$output['property']] = 
+				$this->styles['global'][$el][$output['property']] = 
 					$top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 			}
 		}

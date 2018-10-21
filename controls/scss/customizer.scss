@@ -87,13 +87,13 @@
 	border:0
 }
 
-.kirki-respnsive-switchers
+.kirki-responsive-switchers
 {
 	text-align:right;
 	display: inline;
 }
 
-.kirki-respnsive-switchers li
+.kirki-responsive-switchers li
 {
 	display: inline-block;
 	cursor: pointer;
@@ -154,11 +154,11 @@
   {
 	  float:right;
   }
-  .kirki-respnsive-switchers li.hidden
+  .kirki-responsive-switchers li.hidden
   {
 	  display:none;
   }
-  .kirki-respnsive-switchers li {
+  .kirki-responsive-switchers li {
 	background-color: #999;
 	font-weight: 500;
 	color: #fff;
@@ -166,11 +166,11 @@
 	padding:0 4px;
 	font-size: 8px; 
   }
-.kirki-respnsive-switchers li span {
+.kirki-responsive-switchers li span {
 	position: relative;
 	display: block;
 	line-height: 18px;
 }
-.kirki-respnsive-switchers li.active{
+.kirki-responsive-switchers li.active{
 	background-color: #00a0d2;
 }

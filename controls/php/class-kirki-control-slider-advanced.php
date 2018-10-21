@@ -75,7 +75,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<# if ( data.choices.use_media_queries ) { #>
-			<ul class="kirki-respnsive-switchers">
+			<ul class="kirki-responsive-switchers">
 				<li class="desktop"><span class="eicon-device-desktop"></span></li>
 				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
 				<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>

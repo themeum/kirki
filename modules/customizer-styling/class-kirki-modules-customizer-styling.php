@@ -510,13 +510,13 @@ class Kirki_Modules_Customizer_Styling {
 			border:0
 		}
 
-		.kirki-respnsive-switchers
+		.kirki-responsive-switchers
 		{
 			text-align:right;
 			display: inline;
 		}
 
-		.kirki-respnsive-switchers li
+		.kirki-responsive-switchers li
 		{
 			display: inline-block;
 			cursor: pointer;
@@ -580,14 +580,13 @@ class Kirki_Modules_Customizer_Styling {
 		{
 			display:none;
 		}
-		.kirki-respnsive-switchers li{
+		.kirki-responsive-switchers li{
 			background-color: #999;
 			color: #fff;
 			border-radius: 100px;
-			padding: 4px;
 			font-size: 8px;
 		}
-		.kirki-respnsive-switchers li.active{
+		.kirki-responsive-switchers li.active{
 			background-color: #00a0d2;
 		}
 		</style>
