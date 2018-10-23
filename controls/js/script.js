@@ -3080,7 +3080,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		} );
 	}
 } );
-/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
@@ -3090,29 +3089,12 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 
 		var control = this;
 
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
-
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Set the sortable container.
-		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
-
 		// Init sortable.
-		control.sortableContainer.sortable( {
+		jQuery( control.container.find( 'ul.sortable' ).first() ).sortable( {
 
 			// Update value when we stop sorting.
-			stop: function() {
-				control.updateValue();
+			update: function() {
+				control.setting.set( control.getNewVal() );
 			}
 		} ).disableSelection().find( 'li' ).each( function() {
 
@@ -3123,26 +3105,25 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		} ).click( function() {
 
 			// Update value on click.
-			control.updateValue();
+			control.setting.set( control.getNewVal() );
 		} );
 	},
 
 	/**
-	 * Updates the sorting list
+	 * Getss thhe new vvalue.
+	 *
+	 * @since 3.0.35
+	 * @returns {Array}
 	 */
-	updateValue: function() {
-
-		'use strict';
-
-		var control = this,
-			newValue = [];
-
-		this.sortableContainer.find( 'li' ).each( function() {
-			if ( ! jQuery( this ).is( '.invisible' ) ) {
-				newValue.push( jQuery( this ).data( 'value' ) );
+	getNewVal: function() {
+		var items  = jQuery( this.container.find( 'li' ) ),
+			newVal = [];
+		_.each ( items, function( item ) {
+			if ( ! jQuery( item ).hasClass( 'invisible' ) ) {
+				newVal.push( jQuery( item ).data( 'value' ) );
 			}
 		} );
-		control.setting.set( newValue );
+		return newVal;
 	}
 } );
 wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend( {
