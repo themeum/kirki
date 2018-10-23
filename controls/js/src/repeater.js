@@ -106,8 +106,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// The hidden field that keeps the data saved (though we never update it)
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
 
