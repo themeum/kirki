@@ -27,14 +27,14 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 	
 	public function to_json() {
 		parent::to_json();
-		// $this->json['choices'] = wp_parse_args( $this->json['default'], array(
-		// 	'border-style'    => '',
-		// 	'border-top'    => '',
-		// 	'border-right' => '',
-		// 	'border-bottom' => '',
-		// 	'border-left'   => '',
-		// 	'border-color' => ''
-		// ) );
+		$this->json['choices'] = wp_parse_args( $this->json['default'], array(
+			'border-style'  => '',
+			'border-top'    => '',
+			'border-right'  => '',
+			'border-bottom' => '',
+			'border-left'   => '',
+			'border-color'  => ''
+		) );
 	}
 	
 	protected function content_template() 
