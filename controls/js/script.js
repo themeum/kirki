@@ -3955,7 +3955,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			control.selected_unit = units_radios.filter( ':checked' ).val();
 			control.initUnitSelect( units_radios );
 			
-			if ( control.selected_unit === 'any' )
+			if ( control.selected_unit === 'all' )
 				inputs.attr( 'type', 'text' );
 		}
 		
@@ -3991,7 +3991,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				{
 					input.val( val );
 				}
-				if ( !all_units && control.selected_unit !== 'any' )
+				if ( !all_units && control.selected_unit !== 'all' )
 				{
 					val += control.selected_unit;
 				}
@@ -4071,7 +4071,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 					left = defs[unit].left || left;
 				}
 			}
-			if ( !control.all_units && control.selected_unit !== 'any' )
+			if ( !control.all_units && control.selected_unit !== 'all' )
 			{
 				if ( choices.top )
 					top = top.toString().replace( control.textFindRegex, '' );
@@ -4135,13 +4135,13 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 							control.selected_unit = units_radios.filter ( ':checked' ).val();
 						}
 						control.checkInputs();
-						if ( choices.top && control.selected_unit !== 'any' )
+						if ( choices.top && control.selected_unit !== 'all' )
 							top = top.replace( control.textFindRegex, '' );
-						if ( choices.right && control.selected_unit !== 'any' )
+						if ( choices.right && control.selected_unit !== 'all' )
 							right = right.replace( control.textFindRegex, '' );
-						if ( choices.bottom && control.selected_unit !== 'any' )
+						if ( choices.bottom && control.selected_unit !== 'all' )
 							bottom = bottom.replace( control.textFindRegex, '' );
-						if ( choices.left && control.selected_unit !== 'any' )
+						if ( choices.left && control.selected_unit !== 'all' )
 							left = left.replace( control.textFindRegex, '' );
 					}
 					
@@ -4212,7 +4212,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 	checkInputs: function()
 	{
 		var control = this;
-		if ( control.selected_unit === 'any' )
+		if ( control.selected_unit === 'all' )
 			control.all_inputs.attr( 'type', 'text' );
 		else
 		{
