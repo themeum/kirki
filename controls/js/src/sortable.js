@@ -22,8 +22,6 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 
 		var control = this;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Set the sortable container.
 		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
 

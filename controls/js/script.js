@@ -1812,8 +1812,6 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 			dateFormat: 'yy-mm-dd'
 		} );
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the changes
 		this.container.on( 'change keyup paste', 'input.datepicker', function() {
 			control.setting.set( jQuery( this ).val() );
@@ -3110,8 +3108,6 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 
 		var control = this;
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Set the sortable container.
 		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
 
@@ -3478,7 +3474,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			} else {
 				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
-				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+				fontStyle  = ( value.variant && -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
 			}
 
 			control.saveValue( 'font-weight', fontWeight );
