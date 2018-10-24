@@ -44,14 +44,6 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 			'right' => true,
 			'bottom' => true,
 			'left' => true,
-			'units' => array (
-				'' => array(
-					'top' => '',
-					'right' => '',
-					'bottom' => '',
-					'left' => '',
-				)
-			)
 		) );
 	}
 
@@ -68,19 +60,27 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 	protected function content_template() {
 		?>
 		<label>
-			<# if ( !data.choices.all_units ) { #>
-				<div class="kirki-units-choices-outer">
+			<div class="kirki-units-choices-outer">
 				<#
-					for ( unit_key in data.choices.units ) {
-							var unit = data.choices.units[key];
+					if ( data.choices.units ) {
+						console.log(data.choices);
+					for ( i in data.choices.units ) {
+							var unit = data.choices.units[i];
 				#>
 					<div class="kirki-units-choices">
-						<input id="{{ data.id }}_{{ unit_key }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit_key }}">
-						<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit_key }}">{{ unit_key }}</label>
+						<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
+						<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
+					</div>
+				<# } } #>
+				<# if ( data.choices.all_units ) {
+						var unit = 'all';
+				#>
+					<div class="kirki-units-choices">
+						<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
+						<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
 					</div>
 				<# } #>
 			</div>
-			<# } #>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<# if ( data.choices.use_media_queries ) { #>

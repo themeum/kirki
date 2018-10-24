@@ -13,7 +13,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			link_inputs_btn   = control.container.find( '.kirki-input-link' ),
 			use_media_queries = control.params.choices.use_media_queries || false,
-			all_units         = _.isUndefined( control.params.choices.all_units ) ? true : 
+			all_units         = _.isUndefined( control.params.choices.all_units ) ? false : 
 				control.params.choices.all_units;
 		control.textFindRegex = /\D+/gm;
 		control.selected_device = kirki.util.media_query_devices.global;
@@ -34,11 +34,12 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			var radio = $( this );
 			control.units.push( radio.val() );
 		});
-		
 		if ( all_units )
 		{
-			units_containers.remove();
-			inputs.attr( 'type', 'text' );
+			control.units.push ( 'all' );
+			
+			if ( control.units.length === 1 )
+				units_radios.hide();
 		}
 		
 		//Setup our value to manipulate.
@@ -46,28 +47,32 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		control.initMediaQueries();
 		control.setVisible();
 		
-		if ( !all_units ) //We need to load the initial unit if all_units = false.
+		var top_value = null;
+		//Load the unit
+		if ( use_media_queries )
+			top_value = control.value.desktop.top;
+		else
+			top_value = control.value.global.top;
+		
+		var unit = control.parseValue( top_value ).unit;
+		units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
+		if ( units_radios.filter ( ':checked' ).length == 0)
 		{
-			var top_value = null;
-			//Load the unit
-			if ( use_media_queries )
-				top_value = control.value.desktop.top;
-			else
-				top_value = control.value.global.top;
-			var unit = control.parseValue( top_value ).unit;
-			units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
-			if ( units_radios.filter ( ':checked' ).length == 0)
-			{
-				var first_unit = units_radios.first();
-				first_unit.prop( 'checked', true );
-			}
-			
-			control.selected_unit = units_radios.filter( ':checked' ).val();
-			control.initUnitSelect( units_radios );
-			
-			if ( control.selected_unit === 'all' )
-				inputs.attr( 'type', 'text' );
+			var first_unit = units_radios.first();
+			first_unit.prop( 'checked', true );
 		}
+		
+		control.selected_unit = units_radios.filter( ':checked' ).val();
+		control.initUnitSelect( units_radios );
+		
+		if ( control.selected_unit === 'all' )
+		{
+			inputs.attr( 'type', 'text' );
+			if ( units_radios.length === 1 )
+				units_radios.hide();
+		}
+		
+		control.setInitValue();
 		
 		link_inputs_btn.click(function(e){
 			e.preventDefault();
@@ -83,14 +88,8 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				val = input.val();
 			if ( val == '' )
 				val = '0';
-			if ( !all_units )
-			{
-				val += control.selected_unit;
-			}
 			if ( link_inputs_btn.hasClass( 'linked' ) )
-			{
-				inputs.filter(':not(' + input.attr( 'id' ) + '):not(.not-used)' ).val( val );
-			}
+				inputs.filter(':not(' + input.attr( 'id' ) + '):not(.not-used)' ).val( input.val() );
 			inputs.each( function()
 			{
 				var input = $( this ),
@@ -98,13 +97,9 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 					device = control.getSelectedDeviceName(),
 					val = input.val();
 				if ( val.length == 0 )
-				{
 					input.val( val );
-				}
-				if ( !all_units && control.selected_unit !== 'all' )
-				{
+				if ( control.selected_unit !== 'all' )
 					val += control.selected_unit;
-				}
 				control.value[device][type] = val;
 			});
 			control.value[control.getSelectedDeviceName()]['unit'] = control.selected_unit;
@@ -124,7 +119,6 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 	initValue: function()
 	{
 		var control = this,
-			choices = control.params.choices
 			loadedValue = control.setting._value;
 		control.value = {
 			use_media_queries: loadedValue.use_media_queries || false,
@@ -155,33 +149,26 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				control.value['global']['loaded'] = true;
 			}
 		}
+	},
+	
+	setInitValue: function()
+	{
+		var control = this,
+			choices = control.params.choices;
 		var id = control.value.use_media_queries ? 'desktop' : 'global';
 		var top    = control.value[id].top,
 			right  = control.value[id].right,
 			bottom = control.value[id].bottom,
 			left   = control.value[id].left;
-			if ( !control.value[id].loaded && control.params.default )
+			if ( !control.value[id].loaded && ( !_.isUndefined ( control.params.default ) ) )
 			{
-				var defs = control.params.units;
-				if ( control.all_units )
-				{
-					top = defs.top || top;
-					right = defs.right || right;
-					bottom = defs.bottom || bottom;
-					left = defs.left || left;
-				}
-				else
-				{
-					var unit = control.units[0];
-					if ( control.selected_unit )
-						unit = control.selected_unit;
-					top = defs[unit].top || top;
-					right = defs[unit].right || right;
-					bottom = defs[unit].bottom || bottom;
-					left = defs[unit].left || left;
-				}
+				var defs = control.params.default;
+				top = defs.top || top;
+				right = defs.right || right;
+				bottom = defs.bottom || bottom;
+				left = defs.left || left;
 			}
-			if ( !control.all_units && control.selected_unit !== 'all' )
+			if ( control.selected_unit !== 'all' )
 			{
 				if ( choices.top )
 					top = top.toString().replace( control.textFindRegex, '' );
@@ -274,22 +261,23 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			var selected = $( this );
 			control.selected_unit = selected.val();
 			
-			var defs = control.params.units;
-			if ( defs && !control.value.loaded && !control.initial_input && control.params.default && defs[control.selected_unit] )
+			var defs = control.params.default;
+			if ( defs && !control.value.loaded && !control.initial_input )
 			{
-				if ( !_.isUndefined ( defs[control.selected_unit].top ) )
-					control.inputs.top.val( defs[control.selected_unit].top.toString().replace( control.textFindRegex, '' ) );
-				if ( !_.isUndefined ( defs[control.selected_unit].right ) )
-					control.inputs.right.val( defs[control.selected_unit].right.toString().replace( control.textFindRegex, '' ) );
-				if ( !_.isUndefined ( defs[control.selected_unit].bottom ) )
-					control.inputs.bottom.val( defs[control.selected_unit].bottom.toString().replace( control.textFindRegex, '' ) );
-				if (!_.isUndefined (  defs[control.selected_unit].left ) )
-					control.inputs.left.val( defs[control.selected_unit].left.toString().replace( control.textFindRegex, '' ) );
+				if ( !_.isUndefined ( defs.top ) )
+					control.inputs.top.val( defs.top );
+				if ( !_.isUndefined ( defs.right ) )
+					control.inputs.right.val( defs.right );
+				if ( !_.isUndefined ( defs.bottom ) )
+					control.inputs.bottom.val( defs.bottom );
+				if (!_.isUndefined (  defs.left ) )
+					control.inputs.left.val( defs.left );
 			}
 			control.checkInputs();
 			
 			control.inputs.top.trigger( 'change_visual' );
 		});
+		units.on ( 'change' );
 	},
 	
 	setVisible: function()

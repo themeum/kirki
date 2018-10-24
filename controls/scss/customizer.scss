@@ -150,9 +150,12 @@
 	  text-transform:uppercase;
 	  font-size:9px
   }
-  .kirki-units-choices
+  .kirki-units-choices-outer
   {
 	  float:right;
+  }
+  .kirki-units-choices-outer .kirki-units-choices {
+	  display: inline-block;
   }
   .kirki-responsive-switchers li.hidden
   {
@@ -174,3 +177,24 @@
 .kirki-responsive-switchers li.active{
 	background-color: #00a0d2;
 }
+
+.customize-control-kirki-tabs .kirki-tabs-outer .tabs {
+  display: flex; }
+
+.customize-control-kirki-tabs .kirki-tabs-outer .tabs li {
+  cursor: pointer;
+  border: solid thin #999;
+  flex: 2;
+  text-align: center;
+  padding: 5px 0; }
+
+.customize-control-kirki-tabs .kirki-tabs-outer .tabs li.active {
+  background-color: #00a0d2;
+  border-color: #00a0d2;
+  color: white; }
+
+.customize-control-kirki-tabs .kirki-tabs-outer .tabs-content .tab-content {
+  display: none; }
+
+.customize-control-kirki-tabs .kirki-tabs-outer .tabs-content .tab-content.active {
+  display: block; }

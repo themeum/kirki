@@ -1456,6 +1456,10 @@ kirki = jQuery.extend( kirki, {
 						btns = $( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type );
 					btns.addClass( 'do-not-click' ).click();
 				};
+				var is_on_device = function( device )
+				{
+					return $( '.preview-' + device + '.active' ).length > 0;
+				};
 				var set_active_device = function( container, device, skip_click )
 				{
 					container.attr( 'active-device', device );
@@ -1469,13 +1473,15 @@ kirki = jQuery.extend( kirki, {
 						tablet_btn = container.find( 'li.tablet' ),
 						mobile_btn = container.find( 'li.mobile' ),
 						active_device = 0,
-						enabled = init_enabled;
+						enabled = init_enabled,
+						enable_breakpoint_change = true;
 					
 					$( window ).on( 'breakpoint_change', function( e, type )
 					{
+						if ( !enable_breakpoint_change )
+							return;
 						if ( enabled )
 						{
-							container.addClass( 'skip-preview' );
 							$( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type)
 								.addClass( 'do-not-click' )
 								.click();
@@ -1488,10 +1494,12 @@ kirki = jQuery.extend( kirki, {
 						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
-						if ( !container.hasClass( 'skip-preview' ) )
+						if ( !is_on_device( 'desktop' ) )
+						{
+							enable_breakpoint_change = false;
 							preview_desktop.click();
-						else
-							container.removeClass( 'skip-preview' );
+							enable_breakpoint_change = true;
+						}
 						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 						{
 							desktop_btn.toggleClass( 'multiple' );
@@ -1507,7 +1515,6 @@ kirki = jQuery.extend( kirki, {
 								tablet_btn.addClass( 'hidden' );
 								mobile_btn.addClass( 'hidden' );
 							}
-							container.addClass( 'skip-preview' );
 							args.device_change( active_device, enabled );
 							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click' ) );
 						}
@@ -1526,10 +1533,8 @@ kirki = jQuery.extend( kirki, {
 					{
 						e.preventDefault();
 						e.stopImmediatePropagation();
-						if ( !container.hasClass( 'skip-preview' ) )
+						if ( !is_on_device( 'tablet' ) )
 							preview_tablet.click();
-						else
-							container.removeClass( 'skip-preview' );
 						active_device = 1;
 						mobile_btn.removeClass( 'active' );
 						tablet_btn.addClass( 'active' );
@@ -1540,10 +1545,8 @@ kirki = jQuery.extend( kirki, {
 					{
 						e.preventDefault();
 						e.stopImmediatePropagation();
-						if ( !container.hasClass( 'skip-preview' ) )
+						if ( !is_on_device( 'mobile' ) )
 							preview_mobile.click();
-						else
-							container.removeClass( 'skip-preview' );
 						active_device = 2;
 						mobile_btn.addClass( 'active' );
 						tablet_btn.removeClass( 'active' );
@@ -3903,7 +3906,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			link_inputs_btn   = control.container.find( '.kirki-input-link' ),
 			use_media_queries = control.params.choices.use_media_queries || false,
-			all_units         = _.isUndefined( control.params.choices.all_units ) ? true : 
+			all_units         = _.isUndefined( control.params.choices.all_units ) ? false : 
 				control.params.choices.all_units;
 		control.textFindRegex = /\D+/gm;
 		control.selected_device = kirki.util.media_query_devices.global;
@@ -3924,11 +3927,12 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			var radio = $( this );
 			control.units.push( radio.val() );
 		});
-		
 		if ( all_units )
 		{
-			units_containers.remove();
-			inputs.attr( 'type', 'text' );
+			control.units.push ( 'all' );
+			
+			if ( control.units.length === 1 )
+				units_radios.hide();
 		}
 		
 		//Setup our value to manipulate.
@@ -3936,28 +3940,32 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		control.initMediaQueries();
 		control.setVisible();
 		
-		if ( !all_units ) //We need to load the initial unit if all_units = false.
+		var top_value = null;
+		//Load the unit
+		if ( use_media_queries )
+			top_value = control.value.desktop.top;
+		else
+			top_value = control.value.global.top;
+		
+		var unit = control.parseValue( top_value ).unit;
+		units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
+		if ( units_radios.filter ( ':checked' ).length == 0)
 		{
-			var top_value = null;
-			//Load the unit
-			if ( use_media_queries )
-				top_value = control.value.desktop.top;
-			else
-				top_value = control.value.global.top;
-			var unit = control.parseValue( top_value ).unit;
-			units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
-			if ( units_radios.filter ( ':checked' ).length == 0)
-			{
-				var first_unit = units_radios.first();
-				first_unit.prop( 'checked', true );
-			}
-			
-			control.selected_unit = units_radios.filter( ':checked' ).val();
-			control.initUnitSelect( units_radios );
-			
-			if ( control.selected_unit === 'all' )
-				inputs.attr( 'type', 'text' );
+			var first_unit = units_radios.first();
+			first_unit.prop( 'checked', true );
 		}
+		
+		control.selected_unit = units_radios.filter( ':checked' ).val();
+		control.initUnitSelect( units_radios );
+		
+		if ( control.selected_unit === 'all' )
+		{
+			inputs.attr( 'type', 'text' );
+			if ( units_radios.length === 1 )
+				units_radios.hide();
+		}
+		
+		control.setInitValue();
 		
 		link_inputs_btn.click(function(e){
 			e.preventDefault();
@@ -3973,14 +3981,8 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				val = input.val();
 			if ( val == '' )
 				val = '0';
-			if ( !all_units )
-			{
-				val += control.selected_unit;
-			}
 			if ( link_inputs_btn.hasClass( 'linked' ) )
-			{
-				inputs.filter(':not(' + input.attr( 'id' ) + '):not(.not-used)' ).val( val );
-			}
+				inputs.filter(':not(' + input.attr( 'id' ) + '):not(.not-used)' ).val( input.val() );
 			inputs.each( function()
 			{
 				var input = $( this ),
@@ -3988,13 +3990,9 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 					device = control.getSelectedDeviceName(),
 					val = input.val();
 				if ( val.length == 0 )
-				{
 					input.val( val );
-				}
-				if ( !all_units && control.selected_unit !== 'all' )
-				{
+				if ( control.selected_unit !== 'all' )
 					val += control.selected_unit;
-				}
 				control.value[device][type] = val;
 			});
 			control.value[control.getSelectedDeviceName()]['unit'] = control.selected_unit;
@@ -4014,7 +4012,6 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 	initValue: function()
 	{
 		var control = this,
-			choices = control.params.choices
 			loadedValue = control.setting._value;
 		control.value = {
 			use_media_queries: loadedValue.use_media_queries || false,
@@ -4045,33 +4042,26 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 				control.value['global']['loaded'] = true;
 			}
 		}
+	},
+	
+	setInitValue: function()
+	{
+		var control = this,
+			choices = control.params.choices;
 		var id = control.value.use_media_queries ? 'desktop' : 'global';
 		var top    = control.value[id].top,
 			right  = control.value[id].right,
 			bottom = control.value[id].bottom,
 			left   = control.value[id].left;
-			if ( !control.value[id].loaded && control.params.default )
+			if ( !control.value[id].loaded && ( !_.isUndefined ( control.params.default ) ) )
 			{
-				var defs = control.params.units;
-				if ( control.all_units )
-				{
-					top = defs.top || top;
-					right = defs.right || right;
-					bottom = defs.bottom || bottom;
-					left = defs.left || left;
-				}
-				else
-				{
-					var unit = control.units[0];
-					if ( control.selected_unit )
-						unit = control.selected_unit;
-					top = defs[unit].top || top;
-					right = defs[unit].right || right;
-					bottom = defs[unit].bottom || bottom;
-					left = defs[unit].left || left;
-				}
+				var defs = control.params.default;
+				top = defs.top || top;
+				right = defs.right || right;
+				bottom = defs.bottom || bottom;
+				left = defs.left || left;
 			}
-			if ( !control.all_units && control.selected_unit !== 'all' )
+			if ( control.selected_unit !== 'all' )
 			{
 				if ( choices.top )
 					top = top.toString().replace( control.textFindRegex, '' );
@@ -4164,22 +4154,23 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			var selected = $( this );
 			control.selected_unit = selected.val();
 			
-			var defs = control.params.units;
-			if ( defs && !control.value.loaded && !control.initial_input && control.params.default && defs[control.selected_unit] )
+			var defs = control.params.default;
+			if ( defs && !control.value.loaded && !control.initial_input )
 			{
-				if ( !_.isUndefined ( defs[control.selected_unit].top ) )
-					control.inputs.top.val( defs[control.selected_unit].top.toString().replace( control.textFindRegex, '' ) );
-				if ( !_.isUndefined ( defs[control.selected_unit].right ) )
-					control.inputs.right.val( defs[control.selected_unit].right.toString().replace( control.textFindRegex, '' ) );
-				if ( !_.isUndefined ( defs[control.selected_unit].bottom ) )
-					control.inputs.bottom.val( defs[control.selected_unit].bottom.toString().replace( control.textFindRegex, '' ) );
-				if (!_.isUndefined (  defs[control.selected_unit].left ) )
-					control.inputs.left.val( defs[control.selected_unit].left.toString().replace( control.textFindRegex, '' ) );
+				if ( !_.isUndefined ( defs.top ) )
+					control.inputs.top.val( defs.top );
+				if ( !_.isUndefined ( defs.right ) )
+					control.inputs.right.val( defs.right );
+				if ( !_.isUndefined ( defs.bottom ) )
+					control.inputs.bottom.val( defs.bottom );
+				if (!_.isUndefined (  defs.left ) )
+					control.inputs.left.val( defs.left );
 			}
 			control.checkInputs();
 			
 			control.inputs.top.trigger( 'change_visual' );
 		});
+		units.on ( 'change' );
 	},
 	
 	setVisible: function()
@@ -4297,6 +4288,52 @@ wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicContr
 			checkboxValue = ( jQuery( this ).is( ':checked' ) ) ? true : false;
 			control.setting.set( checkboxValue );
 		} );
+	}
+} );
+wp.customize.controlConstructor['kirki-tabs'] = wp.customize.kirkiDynamicControl.extend( {
+
+	initKirkiControl: function() {
+
+		var control = this,
+			container = control.container,
+			tab_container = container.find( '.kirki-tabs-outer' ),
+			id = control.id,
+			choices = control.params.choices;
+			
+		control.tab_container = tab_container;
+		for ( var label in choices )
+		{
+			var label_id = label.replace( ' ', '_' ),
+				control_ids = choices[label],
+				tab = $( 'li[href="#' + id + '_' + label_id + '"]' ),
+				tab_content = $( '#' + id + '_' + label_id );
+			
+			for ( var control_idx in control_ids )
+			{
+				var control_id = control_ids[control_idx];
+				var wp_control = $( '#customize-control-' + control_id );
+				wp_control.detach().appendTo( tab_content );
+			}
+			
+			control.registerTabEvents ( tab, tab_content );
+		}
+		
+		tab_container.find( '.tabs li:first' ).addClass( 'active' );
+		tab_container.find( '.tab-content:first' ).addClass( 'active' );
+	},
+	
+	registerTabEvents: function( tab, tab_content )
+	{
+		var control = this,
+			tab_container = control.tab_container;
+		
+		tab.click( function( e )
+		{
+			e.preventDefault();
+			tab_container.find( '.active' ).removeClass( 'active' );
+			tab.addClass( 'active' );
+			tab_content.addClass( 'active' );
+		});
 	}
 } );
 wp.customize.controlConstructor['kirki-toggle'] = wp.customize.kirkiDynamicControl.extend( {

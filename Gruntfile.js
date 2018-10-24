@@ -112,6 +112,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/sortable.js',
 					'controls/js/src/spacing.js',
 					'controls/js/src/switch.js',
+					'controls/js/src/tabs.js',
 					'controls/js/src/toggle.js',
 					'controls/js/src/typography.js',
 					'controls/js/src/typography-advanced.js'

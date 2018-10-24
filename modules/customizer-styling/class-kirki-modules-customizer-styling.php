@@ -549,33 +549,6 @@ class Kirki_Modules_Customizer_Styling {
 			display: none;
 		}
 		
-		.kirki-units-choices
-		{
-			-webkit-box-flex:1;
-			-webkit-flex-grow:1;
-			-ms-flex-positive:1;
-			flex-grow:1;
-			text-align:right
-		}
-		.kirki-units-choices input{
-			display:none
-		}
-		.kirki-units-choices input:not(:checked)+label{
-			color:#c2cbd2
-		}
-		.kirki-units-choices input:checked+label{
-			text-decoration:underline
-		}
-		.kirki-units-choices label{
-			cursor:pointer;
-			padding:0 2px;
-			text-transform:uppercase;
-			font-size:9px
-		}
-		.kirki-units-choices
-		{
-			float:right;
-		}
 		li.hidden-device
 		{
 			display:none;

@@ -81,7 +81,7 @@ class Kirki_Init {
 	public function default_control_types( $control_types = array() ) {
 
 		$this->control_types = array(
-			'checkbox'                           => 'Kirki_Control_Checkbox',
+			'checkbox'                  => 'Kirki_Control_Checkbox',
 			'kirki-background'          => 'Kirki_Control_Background',
 			'kirki-border'              => 'Kirki_Control_Border',
 			'code_editor'               => 'Kirki_Control_Code',
@@ -113,6 +113,7 @@ class Kirki_Init {
 			'kirki-switch'              => 'Kirki_Control_Switch',
 			'kirki-generic'             => 'Kirki_Control_Generic',
 			'kirki-toggle'              => 'Kirki_Control_Toggle',
+			'kirki-tabs'                => 'Kirki_Control_Tabs',
 			'kirki-typography'          => 'Kirki_Control_Typography',
 			'kirki-typography-advanced' => 'Kirki_Control_Typography_Advanced',
 			'image'                     => 'Kirki_Control_Image',
