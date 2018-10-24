@@ -96,6 +96,8 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 			$breakpoint = $breakpoints[$device];
 			foreach ( Kirki_Field_Typography_Advanced::$device_properties as $property ) 
 			{
+				if ( !isset( $device_value[ $property ] ) )
+					continue;
 				$property_value = $this->process_property_value( $property, $device_value[ $property ] );
 				$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 				$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;

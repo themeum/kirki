@@ -39,9 +39,7 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-typography-advanced';
-
 	}
 
 	/**

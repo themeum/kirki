@@ -34,7 +34,9 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
+		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
+			'use_media_queries'  => true,
+		 ));
 		if ( is_array( $this->json['value'] ) ) {
 			foreach ( array_keys( $this->json['value'] ) as $key ) {
 				if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
