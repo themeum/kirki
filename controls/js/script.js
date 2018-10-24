@@ -4439,6 +4439,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 					setTimeout( function() {
 						control.saveValue( 'color', picker.val() );
 					}, 100 );
+				},
+				clear: function (event) {
+					setTimeout( function() {
+						control.saveValue( 'color', '' );
+					}, 100 );
 				}
 			} );
 		}
@@ -4905,6 +4910,11 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				change: function() {
 					setTimeout( function() {
 						control.saveValue( 'color', picker.val() );
+					}, 100 );
+				},
+				clear: function (event) {
+					setTimeout( function() {
+						control.saveValue( 'color', '' );
 					}, 100 );
 				}
 			} );

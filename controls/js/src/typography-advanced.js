@@ -111,6 +111,11 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 					setTimeout( function() {
 						control.saveValue( 'color', picker.val() );
 					}, 100 );
+				},
+				clear: function (event) {
+					setTimeout( function() {
+						control.saveValue( 'color', '' );
+					}, 100 );
 				}
 			} );
 		}
