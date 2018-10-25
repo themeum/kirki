@@ -861,8 +861,6 @@ kirki = jQuery.extend( kirki, {
 				// Make sure value is properly formatted.
 				value = ( 'array' === saveAs && _.isString( value ) ) ? { url: value } : value;
 
-				control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 				// Tweaks for save_as = id.
 				if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
 					wp.media.attachment( value ).fetch().then( function() {
@@ -2184,8 +2182,6 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 			dateFormat: 'yy-mm-dd'
 		} );
 
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 		// Save the changes
 		this.container.on( 'change keyup paste', 'input.datepicker', function() {
 			control.setting.set( jQuery( this ).val() );
@@ -2617,8 +2613,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// The hidden field that keeps the data saved (though we never update it)
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
@@ -3824,8 +3818,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 	{
 		return { value: '', unit: '', loaded: false };
 	},
-} );/* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
+} );wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
@@ -3834,31 +3827,12 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 
 		var control = this;
 
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
-
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
-		// Set the sortable container.
-		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
-
 		// Init sortable.
-		control.sortableContainer.sortable( {
+		jQuery( control.container.find( 'ul.sortable' ).first() ).sortable( {
 
 			// Update value when we stop sorting.
-			stop: function() {
-				control.updateValue();
+			update: function() {
+				control.setting.set( control.getNewVal() );
 			}
 		} ).disableSelection().find( 'li' ).each( function() {
 
@@ -3869,26 +3843,25 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		} ).click( function() {
 
 			// Update value on click.
-			control.updateValue();
+			control.setting.set( control.getNewVal() );
 		} );
 	},
 
 	/**
-	 * Updates the sorting list
+	 * Getss thhe new vvalue.
+	 *
+	 * @since 3.0.35
+	 * @returns {Array}
 	 */
-	updateValue: function() {
-
-		'use strict';
-
-		var control = this,
-			newValue = [];
-
-		this.sortableContainer.find( 'li' ).each( function() {
-			if ( ! jQuery( this ).is( '.invisible' ) ) {
-				newValue.push( jQuery( this ).data( 'value' ) );
+	getNewVal: function() {
+		var items  = jQuery( this.container.find( 'li' ) ),
+			newVal = [];
+		_.each ( items, function( item ) {
+			if ( ! jQuery( item ).hasClass( 'invisible' ) ) {
+				newVal.push( jQuery( item ).data( 'value' ) );
 			}
 		} );
-		control.setting.set( newValue );
+		return newVal;
 	}
 } );
 wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDynamicControl.extend( {
@@ -4650,7 +4623,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			} else {
 				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
-				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+				fontStyle  = ( value.variant && -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
 			}
 
 			control.saveValue( 'font-weight', fontWeight );

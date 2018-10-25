@@ -82,7 +82,7 @@ class Kirki_Modules_Tooltips {
 				// Add the tooltips content.
 				$this->tooltips_content[ $id ] = array(
 					'id'      => $id,
-					'content' => wp_kses_post( $field['tooltip'] ),
+					'content' => $field['tooltip'],
 				);
 			}
 		}
