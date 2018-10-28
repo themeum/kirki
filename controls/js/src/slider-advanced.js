@@ -39,8 +39,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 				unit = control.value.desktop.unit;
 			else
 				unit = control.value.global.unit;
-			if ( !unit )
-				unit = control.selected_unit;
 			units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
 			if ( units_radios.filter ( ':checked' ).length == 0)
 			{
@@ -127,16 +125,22 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		}
 		var id = control.value.use_media_queries ? 'desktop' : 'global';
 		var value = control.value[id].value;
+		control.setRange();
 		if ( !control.value[id].loaded && control.params.default )
 		{
-			var defs = control.params.default;
-			control.selected_unit = defs['unit'];
-			if ( defs['value'] )
-				value = defs['value'];
+			if ( !_.isUndefined ( control.params.default ) )
+			{
+				value = parseFloat( control.params.default );
+				var min = control.rangeInput.attr( 'min' ),
+					max = control.rangeInput.attr( 'max' );
+				if ( value > max )
+					value = max;
+				else if ( value < min )
+					value = min;
+			}
 			else
 				value = control.rangeInput.attr( 'max' );
 		}
-		control.setRange();
 		if ( !value )
 			value = control.rangeInput.attr( 'max' );
 		if ( control.has_units )
