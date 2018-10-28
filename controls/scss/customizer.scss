@@ -196,6 +196,15 @@
 		}
 	}
 }
+.customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content {
+	overflow: auto;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 0px;
+	.tab-content {
+		overflow: auto;
+	}
+}
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
 	display: none;
