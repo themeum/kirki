@@ -339,7 +339,10 @@ kirki = jQuery.extend( kirki, {
 					$( window ).on( 'breakpoint_change', function( e, type )
 					{
 						if ( !enable_breakpoint_change )
+						{
+							container.removeClass( 'skip-preview' );
 							return;
+						}
 						if ( enabled )
 						{
 							$( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type)
@@ -354,12 +357,15 @@ kirki = jQuery.extend( kirki, {
 						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
-						if ( !is_on_device( 'desktop' ) )
+						setTimeout(function()
 						{
-							enable_breakpoint_change = false;
-							preview_desktop.click();
-							enable_breakpoint_change = true;
-						}
+							if ( !is_on_device( 'desktop' ) )
+							{
+								enable_breakpoint_change = false;
+								preview_desktop.click();
+								enable_breakpoint_change = true;
+							}
+						}, 100);
 						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 						{
 							desktop_btn.toggleClass( 'multiple' );
