@@ -1,10 +1,10 @@
-wp.customize.controlConstructor['kirki-tabs'] = wp.customize.kirkiDynamicControl.extend( {
+wp.customize.controlConstructor['toggle-tabs'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
 			container = control.container,
-			tab_container = container.find( '.kirki-tabs-outer' ),
+			tab_container = container.find( '.kirki-toggle-tabs-outer' ),
 			id = control.id,
 			choices = control.params.choices;
 			

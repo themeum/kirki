@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Control: tabs.
+ * Customizer Control: toggle-tabs.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -15,17 +15,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Tabs control. Used for grouping controls
+ * Toggle Tabs control used for grouping controls inside of customizer.
  */
-class Kirki_Control_Tabs extends Kirki_Control_Base {
-
+class Kirki_Control_Toggle_Tabs extends Kirki_Control_Base {
 	/**
 	 * The control type.
 	 *
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-tabs';
+	public $type = 'toggle-tabs';
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
@@ -43,7 +42,7 @@ class Kirki_Control_Tabs extends Kirki_Control_Base {
 		<label>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="kirki-tabs-outer">
+			<div class="kirki-toggle-tabs-outer">
 				<div class="tabs">
 					<# for ( var label in data.choices ) {
 						var label_id = label.replace( ' ', '_' );

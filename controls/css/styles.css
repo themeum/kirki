@@ -162,26 +162,25 @@
 .kirki-responsive-switchers li.active {
   background-color: #00a0d2; }
 
-.customize-control-kirki-tabs .kirki-tabs-outer .tabs {
-  display: flex; }
+.customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs {
+  display: flex;
+  flex-wrap: wrap; }
+  .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs li {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #555;
+    padding: 0.5em 1em;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1; }
+    .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs li.active {
+      background-color: #3498DB;
+      color: #fff; }
 
-.customize-control-kirki-tabs .kirki-tabs-outer .tabs li {
-  cursor: pointer;
-  border: solid thin #999;
-  flex: 2;
-  text-align: center;
-  padding: 5px 0; }
-
-.customize-control-kirki-tabs .kirki-tabs-outer .tabs li.active {
-  background-color: #00a0d2;
-  border-color: #00a0d2;
-  color: white; }
-
-.customize-control-kirki-tabs .kirki-tabs-outer .tabs-content .tab-content {
+.customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
   display: none; }
-
-.customize-control-kirki-tabs .kirki-tabs-outer .tabs-content .tab-content.active {
-  display: block; }
+  .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content.active {
+    display: block; }
 
 .customize-control-kirki-background {
   position: relative; }
