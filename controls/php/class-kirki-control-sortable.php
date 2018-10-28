@@ -26,7 +26,22 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 	 * @var string
 	 */
 	public $type = 'kirki-sortable';
-
+	
+	/**
+	 * Mode.
+	 *
+	 * @since 3.0.12
+	 * @var string
+	 */
+	public $mode = 'checkbox';
+	
+	public function to_json()
+	{
+		parent::to_json();
+		
+		$this->json['mode'] = $this->mode;
+	}
+	
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
@@ -46,27 +61,10 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-
 			<ul class="sortable">
-				<# _.each( data.value, function( choiceID ) { #>
-					<li {{{ data.inputAttrs }}} class='kirki-sortable-item' data-value='{{ choiceID }}'>
-						<i class='dashicons dashicons-menu'></i>
-						<i class="dashicons dashicons-visibility visibility"></i>
-						{{{ data.choices[ choiceID ] }}}
-					</li>
-				<# }); #>
-				<# _.each( data.choices, function( choiceLabel, choiceID ) { #>
-					<# if ( -1 === data.value.indexOf( choiceID ) ) { #>
-						<li {{{ data.inputAttrs }}} class='kirki-sortable-item invisible' data-value='{{ choiceID }}'>
-							<i class='dashicons dashicons-menu'></i>
-							<i class="dashicons dashicons-visibility visibility"></i>
-							{{{ data.choices[ choiceID ] }}}
-						</li>
-					<# } #>
-				<# }); #>
+				
 			</ul>
 		</label>
-
 		<?php
 	}
 }

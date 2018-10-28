@@ -44,16 +44,27 @@ class Kirki_Field_Sortable extends Kirki_Field {
 	 * @return array
 	 */
 	public function sanitize( $value = array() ) {
-
+		
 		if ( is_string( $value ) || is_numeric( $value ) ) {
 			return array(
 				esc_attr( $value ),
 			);
 		}
+		
 		$sanitized_value = array();
 		foreach ( $value as $sub_value ) {
-			if ( isset( $this->choices[ $sub_value ] ) ) {
-				$sanitized_value[] = esc_attr( $sub_value );
+			if ( $this->mode === 'text' )
+			{
+				$obj = json_decode( $sub_value, true );
+				if ( !$obj )
+					continue;
+				if ( isset( $this->choices[ $obj['id'] ] ) )
+					$sanitized_value[$obj['id']] = esc_attr( $obj['val'] );
+			}
+			else
+			{
+				if ( isset( $this->choices[ $v ] ) )
+					$sanitized_value[] = esc_attr( $v );
 			}
 		}
 		return $sanitized_value;
