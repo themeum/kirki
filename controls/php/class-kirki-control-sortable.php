@@ -30,7 +30,6 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 	/**
 	 * Mode.
 	 *
-	 * @since 3.0.12
 	 * @var string
 	 */
 	public $mode = 'checkbox';

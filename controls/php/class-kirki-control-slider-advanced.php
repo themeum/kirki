@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Control: slider.
+ * Customizer Control: slider-advanced.
  *
  * Creates a jQuery slider control.
  *
