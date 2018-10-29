@@ -43,7 +43,7 @@ class Kirki_Modules_CSS_Vars {
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'wp_head', array( $this, 'the_style' ), 0 );
+		add_action( 'wp_head', array( $this, 'the_style' ) );
 		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 	}
 
