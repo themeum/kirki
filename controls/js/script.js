@@ -1438,7 +1438,7 @@ kirki = jQuery.extend( kirki, {
 		helpers: {
 			media_query: function( control, init_enabled, args )
 			{
-				if ( _.isUndefined( control.params.choices.use_media_queries ) )
+				if ( _.isUndefined( control.params.use_media_queries ) )
 					return;
 				var container = control.container,
 					switcher_containers = container.find( '.kirki-responsive-switchers' ),
@@ -1477,7 +1477,10 @@ kirki = jQuery.extend( kirki, {
 					$( window ).on( 'breakpoint_change', function( e, type )
 					{
 						if ( !enable_breakpoint_change )
+						{
+							container.removeClass( 'skip-preview' );
 							return;
+						}
 						if ( enabled )
 						{
 							$( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type)
@@ -1492,12 +1495,15 @@ kirki = jQuery.extend( kirki, {
 						var self = $( this );
 						e.preventDefault();
 						e.stopImmediatePropagation();
-						if ( !is_on_device( 'desktop' ) )
+						setTimeout(function()
 						{
-							enable_breakpoint_change = false;
-							preview_desktop.click();
-							enable_breakpoint_change = true;
-						}
+							if ( !is_on_device( 'desktop' ) )
+							{
+								enable_breakpoint_change = false;
+								preview_desktop.click();
+								enable_breakpoint_change = true;
+							}
+						}, 100);
 						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 						{
 							desktop_btn.toggleClass( 'multiple' );
@@ -3461,7 +3467,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			resetBtn          = control.container.find( '.slider-reset' ),
 			has_units         = units_radios.length > 0,
-			use_media_queries = control.params.choices.use_media_queries;
+			use_media_queries = control.params.use_media_queries;
 		
 		control.selected_device = kirki.util.media_query_devices.global;
 		control.selected_unit = '';
@@ -3578,26 +3584,22 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		}
 		var id = control.value.use_media_queries ? 'desktop' : 'global';
 		var value = control.value[id].value;
+		control.setRange();
 		if ( !control.value[id].loaded && control.params.default )
 		{
-			var defs = control.params.default;
-			if ( control.has_units && typeof defs === 'object' )
+			if ( !_.isUndefined ( control.params.default ) )
 			{
-				if ( !control.selected_unit )
-					control.selected_unit = control.units[0];
-				value = defs[control.selected_unit];
+				value = parseFloat( control.params.default );
+				var min = control.rangeInput.attr( 'min' ),
+					max = control.rangeInput.attr( 'max' );
+				if ( value > max )
+					value = max;
+				else if ( value < min )
+					value = min;
 			}
 			else
-			{
-				value = control.parseValue( defs );
-				control.selected_unit = value['unit'];
-				if ( value['value'] )
-					value = value['value'];
-				else
-					value = control.rangeInput.attr( 'max' );
-			}
+				value = control.rangeInput.attr( 'max' );
 		}
-		control.setRange();
 		if ( !value )
 			value = control.rangeInput.attr( 'max' );
 		if ( control.has_units )
@@ -3614,7 +3616,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		var control = this,
 			units_radios = control.container.find( '.kirki-units-choices input[type="radio"]' );
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )
@@ -3819,52 +3821,156 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		return { value: '', unit: '', loaded: false };
 	},
 } );wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
-
-	// When we're finished loading continue processing
 	ready: function() {
-
 		'use strict';
-
-		var control = this;
-
+		var control = this,
+			update_tid = 0,
+			sortable = control.container.find( 'ul.sortable' );
+		
+		if ( control.params.mode === 'text' )
+			this.initTextItems( sortable );
+		else
+			this.initCheckboxItems( sortable );
 		// Init sortable.
-		jQuery( control.container.find( 'ul.sortable' ).first() ).sortable( {
-
+		sortable = jQuery( sortable ).sortable( {
 			// Update value when we stop sorting.
 			update: function() {
-				control.setting.set( control.getNewVal() );
+				control.save_values();
 			}
 		} ).disableSelection().find( 'li' ).each( function() {
-
 			// Enable/disable options when we click on the eye of Thundera.
 			jQuery( this ).find( 'i.visibility' ).click( function() {
 				jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
 			} );
 		} ).click( function() {
-
 			// Update value on click.
-			control.setting.set( control.getNewVal() );
+			control.save_values();
 		} );
+		
+		// If we're on the text mode, we need to check for input change.
+		if ( control.params.mode === 'text' )
+		{
+			// Update value on key up, but with a delay.
+			control.container.find( '.kirki-sortable-item input' ).on( 'change keyup paste', function()
+			{
+				clearTimeout( update_tid );
+				update_tid = setTimeout( function()
+				{
+					control.save_values();
+				}, 1000 );
+			});
+		}
+	},
+	
+	save_values: function()
+	{
+		//Saves the values.
+		var control = this,
+			val = control.params.mode === 'text' ?
+			control.getNewValText() : control.getNewValCheckbox();
+		control.setting.set( val );
+	},
+	
+	generateListElement: function ( label, value, visible )
+	{
+		var control = this;
+		var li = jQuery( '<li ' + control.params.inputAttrs + '>' )
+			.addClass( 'kirki-sortable-item' )
+			.attr( 'data-value', value );
+		
+		if ( visible === false )
+			li.addClass ( 'invisible' );
+		
+		jQuery( '<i class="dashicons dashicons-menu"></i>' ).appendTo( li );
+		jQuery( '<i class="dashicons dashicons-visibility visibility"></i>' ).appendTo( li );
+		jQuery( '<span>' + label + '</span>' ).appendTo( li );
+		
+		//If we're in text mode, we need a text input.
+		if ( control.params.mode === 'text' )
+			jQuery( '<input type="text">' ).val( value ).appendTo( li );
+		
+		return li;
+	},
+	
+	initCheckboxItems : function( list )
+	{
+		var control = this,
+			choices = control.params.choices,
+			value = control.setting._value;
+		_.each( value, function( choiceID )
+		{
+			control.generateListElement( choices[choiceID], choiceID, true ).appendTo( list );
+		});
+		_.each( choices, function( choiceLabel, choiceID )
+		{
+			if ( -1 === value.indexOf( choiceID ) )
+				control.generateListElement( choices[choiceID], choiceID, false ).appendTo( list );
+		});
+	},
+	
+	initTextItems: function( list )
+	{
+		var control = this,
+			choices = control.params.choices,
+			value = control.setting._value;
+		_.each( value, function( choiceLabel, choiceID ) {
+			var visible = true;
+			if ( value[choiceID] && value[choiceID].length === 0 )
+				visible = false;
+			var li = control.generateListElement( choices[choiceID], value[choiceID], visible );
+			li.attr( 'data-id', choiceID );
+			li.appendTo( list );
+		});
+		var keys = Object.keys( value );
+		_.each( choices, function( choiceLabel, choiceID ) {
+			if ( -1 === keys.indexOf( choiceID ) )
+			{
+				var li = control.generateListElement( choices[choiceID], '', false );
+				li.attr( 'data-id', choiceID );
+				li.appendTo( list );
+			}
+		});
 	},
 
 	/**
-	 * Getss thhe new vvalue.
+	 * Gets the new checkbox value.
 	 *
 	 * @since 3.0.35
 	 * @returns {Array}
 	 */
-	getNewVal: function() {
+	getNewValCheckbox: function() {
 		var items  = jQuery( this.container.find( 'li' ) ),
 			newVal = [];
 		_.each ( items, function( item ) {
-			if ( ! jQuery( item ).hasClass( 'invisible' ) ) {
+			if ( ! jQuery( item ).hasClass( 'invisible' ) )
 				newVal.push( jQuery( item ).data( 'value' ) );
+		} );
+		return newVal;
+	},
+	
+	/**
+	 * Gets the new text value.
+	 *
+	 * @since 3.0.35
+	 * @returns {Array}
+	 */
+	getNewValText: function() {
+		var items  = jQuery( this.container.find( 'li' ) ),
+			newVal = [];
+		_.each ( items, function( item ) {
+			if ( ! jQuery( item ).hasClass( 'invisible' ) )
+			{
+				/* Instead of using an object, a JSON object array was needed so the WordPress customizer base
+				would think they were different values. A named object would still think the order is the same.
+				*/
+				var id = jQuery( item ).attr( 'data-id' ),
+					textVal = jQuery( item ).find( 'input' ).val();
+				newVal.push(JSON.stringify( { id: id, val: textVal } ));
 			}
 		} );
 		return newVal;
 	}
-} );
-wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDynamicControl.extend( {
+} );wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 		'use strict';
@@ -3878,7 +3984,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			units_containers  = control.container.find( '.kirki-units-choices' ),
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			link_inputs_btn   = control.container.find( '.kirki-input-link' ),
-			use_media_queries = control.params.choices.use_media_queries || false,
+			use_media_queries = control.params.use_media_queries || false,
 			all_units         = _.isUndefined( control.params.choices.all_units ) ? false : 
 				control.params.choices.all_units;
 		control.textFindRegex = /\D+/gm;
@@ -4057,7 +4163,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			choices = control.params.choices,
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' );
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )
@@ -4210,9 +4316,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			compiled = jQuery.extend( {}, control.value );
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
-		{
 			delete compiled.global;
-		}
 		else
 		{
 			delete compiled.desktop;
@@ -4263,13 +4367,13 @@ wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicContr
 		} );
 	}
 } );
-wp.customize.controlConstructor['kirki-tabs'] = wp.customize.kirkiDynamicControl.extend( {
+wp.customize.controlConstructor['toggle-tabs'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
 
 		var control = this,
 			container = control.container,
-			tab_container = container.find( '.kirki-tabs-outer' ),
+			tab_container = container.find( '.kirki-toggle-tabs-outer' ),
 			id = control.id,
 			choices = control.params.choices;
 			
@@ -5322,7 +5426,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 	{
 		var control = this;
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )
@@ -5335,10 +5439,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 					{
 						kirki.util.media_query_device_names.forEach( function( name )
 						{
-							if ( !control.value[device_name] )
-							{
-								control.value[device_name] = control.defaultValue();
-							}
+							if ( !control.value[name] )
+								control.value[name] = control.defaultValue();
 						});
 					}
 					if ( enabled )
@@ -5354,6 +5456,21 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 							return false;
 						var value = value_to_set[name];
 						var input = control.container.find( 'div.' + name + ' input' );
+						// if ( !input.val() && enabled )
+						// {
+						// 	var prev_val = null;
+						// 	switch ( device_name )
+						// 	{
+						// 		case 'mobile':
+						// 			prev_val = control.value['tablet'];
+						// 			break;
+						// 		case 'tablet':
+						// 			prev_val = control.value['desktop'];
+						// 			break;
+						// 	}
+						// 	if ( prev_val )
+						// 		value = prev_val[name];
+						// }
 						input.val( value );
 					});
 					

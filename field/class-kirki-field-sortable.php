@@ -63,8 +63,8 @@ class Kirki_Field_Sortable extends Kirki_Field {
 			}
 			else
 			{
-				if ( isset( $this->choices[ $v ] ) )
-					$sanitized_value[] = esc_attr( $v );
+				if ( isset( $this->choices[ $sub_value ] ) )
+					$sanitized_value[] = esc_attr( $sub_value );
 			}
 		}
 		return $sanitized_value;
