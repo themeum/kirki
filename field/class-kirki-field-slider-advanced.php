@@ -179,7 +179,6 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		}
 		$this->choices = wp_parse_args(
 			$this->choices, array(
-				'use_media_queries'  => true,
 				'units' => array (
 					'' => array(
 						'min' => '0',

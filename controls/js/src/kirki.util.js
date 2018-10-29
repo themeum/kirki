@@ -300,7 +300,7 @@ kirki = jQuery.extend( kirki, {
 		helpers: {
 			media_query: function( control, init_enabled, args )
 			{
-				if ( _.isUndefined( control.params.choices.use_media_queries ) )
+				if ( _.isUndefined( control.params.use_media_queries ) )
 					return;
 				var container = control.container,
 					switcher_containers = container.find( '.kirki-responsive-switchers' ),

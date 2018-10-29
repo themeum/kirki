@@ -8,7 +8,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			resetBtn          = control.container.find( '.slider-reset' ),
 			has_units         = units_radios.length > 0,
-			use_media_queries = control.params.choices.use_media_queries;
+			use_media_queries = control.params.use_media_queries;
 		
 		control.selected_device = kirki.util.media_query_devices.global;
 		control.selected_unit = '';
@@ -157,7 +157,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		var control = this,
 			units_radios = control.container.find( '.kirki-units-choices input[type="radio"]' );
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )

@@ -549,7 +549,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 	{
 		var control = this;
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )
@@ -562,10 +562,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 					{
 						kirki.util.media_query_device_names.forEach( function( name )
 						{
-							if ( !control.value[device_name] )
-							{
-								control.value[device_name] = control.defaultValue();
-							}
+							if ( !control.value[name] )
+								control.value[name] = control.defaultValue();
 						});
 					}
 					if ( enabled )
@@ -581,6 +579,21 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 							return false;
 						var value = value_to_set[name];
 						var input = control.container.find( 'div.' + name + ' input' );
+						// if ( !input.val() && enabled )
+						// {
+						// 	var prev_val = null;
+						// 	switch ( device_name )
+						// 	{
+						// 		case 'mobile':
+						// 			prev_val = control.value['tablet'];
+						// 			break;
+						// 		case 'tablet':
+						// 			prev_val = control.value['desktop'];
+						// 			break;
+						// 	}
+						// 	if ( prev_val )
+						// 		value = prev_val[name];
+						// }
 						input.val( value );
 					});
 					

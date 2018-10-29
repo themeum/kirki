@@ -179,6 +179,7 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 
 		public function save ( $post_id, $post, $update )
 		{
+			$upload_dir = wp_upload_dir();
 			$css = '';
 			foreach ( self::$sections as $sect_id => $section )
 			{
@@ -197,11 +198,8 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 						delete_post_meta ( $post_id, $id );
 				}
 			}
-			// ob_start();
-			// include ( get_template_directory() . '/includes/admin/theme-options/styles-config.php' );
-			// $css .= ob_get_clean();
 			$css .= $this->generate_css();
-			file_put_contents ( get_template_directory() . '/assets/css/post-' . $post->ID . '.css', $css );
+			file_put_contents ( $upload_dir['basedir'] . '/kirki-css/post-' + $post->ID . '.css', $css );
 		}
 		
 		public function generate_css()
@@ -214,21 +212,21 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 			}
 			$css = implode( $css, '' );
 			return $css;
-			return;
-			$configs = Kirki::$config;
-			$css = '';
-			foreach ( $configs as $config_id => $args )
-			{
-				if ( true === $args['disable_output'] )
-					continue;
-				$styles = Kirki_Modules_CSS::loop_controls( $config_id );
-				$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
-				$styles = str_replace( '<=', '&lt;=', $styles );
-				$styles = wp_kses_post( $styles );
-				$css .= strip_tags( str_replace( '&gt;', '>', $styles ) );
-				$css .= "\n";
-			}
-			return $css;
+			// return;
+			// $configs = Kirki::$config;
+			// $css = '';
+			// foreach ( $configs as $config_id => $args )
+			// {
+			// 	if ( true === $args['disable_output'] )
+			// 		continue;
+			// 	$styles = Kirki_Modules_CSS::loop_controls( $config_id );
+			// 	$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
+			// 	$styles = str_replace( '<=', '&lt;=', $styles );
+			// 	$styles = wp_kses_post( $styles );
+			// 	$css .= strip_tags( str_replace( '&gt;', '>', $styles ) );
+			// 	$css .= "\n";
+			// }
+			// return $css;
 		}
 		
 		public function get_metabox_value ( $value, $field_id )

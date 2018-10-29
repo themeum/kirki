@@ -12,7 +12,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			units_containers  = control.container.find( '.kirki-units-choices' ),
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' ),
 			link_inputs_btn   = control.container.find( '.kirki-input-link' ),
-			use_media_queries = control.params.choices.use_media_queries || false,
+			use_media_queries = control.params.use_media_queries || false,
 			all_units         = _.isUndefined( control.params.choices.all_units ) ? false : 
 				control.params.choices.all_units;
 		control.textFindRegex = /\D+/gm;
@@ -191,7 +191,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			choices = control.params.choices,
 			units_radios      = control.container.find( '.kirki-units-choices input[type="radio"]' );
 		//If media queries are used, we need to detect device changes.
-		if ( control.params.choices.use_media_queries )
+		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
 				device_change: function( device, enabled )
@@ -344,9 +344,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			compiled = jQuery.extend( {}, control.value );
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
-		{
 			delete compiled.global;
-		}
 		else
 		{
 			delete compiled.desktop;

@@ -28,7 +28,13 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	 * @var string
 	 */
 	public $type = 'kirki-slider-advanced';
-
+	
+	/**
+	 * Media queries toggle
+	 */
+	
+	public $use_media_queries = true;
+	
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
@@ -36,9 +42,8 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
+		$this->json['use_media_queries'] = $this->use_media_queries;
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'use_media_queries'  => true,
 			'units' => array (
 				'' => array(
 					'min' => '0',
@@ -74,7 +79,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 			</div>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<# if ( data.choices.use_media_queries ) { #>
+			<# if ( data.use_media_queries ) { #>
 			<ul class="kirki-responsive-switchers">
 				<li class="desktop"><span class="eicon-device-desktop"></span></li>
 				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>

@@ -28,7 +28,12 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 	 * @var string
 	 */
 	public $type = 'kirki-spacing-advanced';
-
+	
+	/**
+	 * The media queries mode
+	 */
+	public $use_media_queries = true;
+	
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
@@ -36,9 +41,8 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
+		$this->json['use_media_queries'] = $this->use_media_queries;
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'use_media_queries' => true,
 			'all_units' => false,
 			'top' => true,
 			'right' => true,
@@ -63,9 +67,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 			<div class="kirki-units-choices-outer">
 				<#
 					if ( data.choices.units ) {
-						console.log(data.choices);
-					for ( i in data.choices.units ) {
-							var unit = data.choices.units[i];
+					for ( unit in data.choices.units ) {
 				#>
 					<div class="kirki-units-choices">
 						<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
@@ -83,7 +85,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 			</div>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<# if ( data.choices.use_media_queries ) { #>
+			<# if ( data.use_media_queries ) { #>
 			<ul class="kirki-responsive-switchers">
 				<li class="desktop"><span class="eicon-device-desktop"></span></li>
 				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -94,7 +96,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 				<ul class="kirki-control-dimensions">
 					<li class="kirki-control-dimension">
 						<input type="number" id="{{ data.id }}-top" area="top">
-						<label for="{{ data.id }}-margin-top" class="kirki-control-dimension-label"><?php _e( 'Top', 'kirki' ); ?></span>
+						<label for="{{ data.id }}-top" class="kirki-control-dimension-label"><?php _e( 'Top', 'kirki' ); ?></span>
 					</li>
 					<li class="kirki-control-dimension">
 						<input type="number" id="{{ data.id }}-right" area="right">

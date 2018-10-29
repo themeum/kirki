@@ -26,7 +26,14 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 	 * @var string
 	 */
 	public $type = 'kirki-typography-advanced';
-
+	
+	
+	/**
+	 * The media queries mode
+	 */
+	
+	public $use_media_queries = true;
+	
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
@@ -34,9 +41,8 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'use_media_queries'  => true,
-		 ));
+		$this->json['use_media_queries'] = $this->use_media_queries;
+		
 		if ( is_array( $this->json['value'] ) ) {
 			foreach ( array_keys( $this->json['value'] ) as $key ) {
 				if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
@@ -107,7 +113,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="font-size">
 					<h5>
 						<?php esc_attr_e( 'Font Size', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -124,7 +130,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="line-height">
 					<h5>
 						<?php esc_attr_e( 'Line Height', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -141,7 +147,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="letter-spacing">
 					<h5>
 						<?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -158,7 +164,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="word-spacing">
 					<h5>
 						<?php esc_attr_e( 'Word Spacing', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -246,7 +252,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="margin-top">
 					<h5>
 						<?php esc_attr_e( 'Margin Top', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
@@ -263,7 +269,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 				<div class="margin-bottom">
 					<h5>
 						<?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?>
-						<# if ( data.choices.use_media_queries ) { #>
+						<# if ( data.use_media_queries ) { #>
 						<ul class="kirki-responsive-switchers">
 							<li class="desktop"><span class="eicon-device-desktop"></span></li>
 							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
