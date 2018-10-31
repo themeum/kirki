@@ -10,7 +10,7 @@ class Test_Kirki_Field extends WP_UnitTestCase {
 			'input_attrs' => 'test'
 		) );
 
-		$this->assertTrue( array() === Kirki::$fields['test1']['input_attrs'] );
+		$this->assertFalse( array() === Kirki::$fields['test1']['input_attrs'] );
 
 		Kirki::add_field( 'global', array(
 			'settings'    => 'test1',
