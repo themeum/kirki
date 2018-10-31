@@ -20,9 +20,7 @@ class Kirki_Field_Date extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-date';
-
 	}
 
 	/**
@@ -38,6 +36,5 @@ class Kirki_Field_Date extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = 'sanitize_text_field';
-
 	}
 }

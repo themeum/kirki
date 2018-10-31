@@ -114,6 +114,5 @@ class Kirki_Field_Code extends Kirki_Field {
 		// It is the responsibility of the theme/plugin that registers this field
 		// to properly apply any necessary filtering.
 		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
-
 	}
 }

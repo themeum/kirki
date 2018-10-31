@@ -29,9 +29,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'repeater';
-
 	}
 
 	/**
@@ -44,7 +42,6 @@ class Kirki_Field_Repeater extends Kirki_Field {
 		// Force using refresh mode.
 		// Currently the repeater control does not support postMessage.
 		$this->transport = 'refresh';
-
 	}
 
 
@@ -89,13 +86,16 @@ class Kirki_Field_Repeater extends Kirki_Field {
 				$value[ $row_id ] = array();
 				continue;
 			}
+
 			// Start parsing sub-fields in rows.
 			foreach ( $row_value as $subfield_id => $subfield_value ) {
+
 				// Make sure this is a valid subfield.
 				// If it's not, then unset it.
 				if ( ! isset( $this->fields[ $subfield_id ] ) ) {
 					unset( $value[ $row_id ][ $subfield_id ] );
 				}
+
 				// Get the subfield-type.
 				if ( ! isset( $this->fields[ $subfield_id ]['type'] ) ) {
 					continue;
@@ -104,9 +104,7 @@ class Kirki_Field_Repeater extends Kirki_Field {
 
 				// Allow using a sanitize-callback on a per-field basis.
 				if ( isset( $this->fields[ $subfield_id ]['sanitize_callback'] ) ) {
-
 					$subfield_value = call_user_func( $this->fields[ $subfield_id ]['sanitize_callback'], $subfield_value );
-
 				} else {
 
 					switch ( $subfield_type ) {
@@ -168,7 +166,6 @@ class Kirki_Field_Repeater extends Kirki_Field {
 				$value[ $row_id ][ $subfield_id ] = $subfield_value;
 			}
 		}
-
 		return $value;
 	}
 }

@@ -57,6 +57,5 @@ class Kirki_Control_Custom extends Kirki_Control_Base {
 			{{{ data.value }}}
 		</label>
 		<?php
-
 	}
 }

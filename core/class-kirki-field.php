@@ -351,6 +351,7 @@ class Kirki_Field {
 		if ( 'options' === $this->option_type ) {
 			$this->option_type = 'option';
 		}
+
 		// Take care of common typos.
 		if ( 'theme_mods' === $this->option_type ) {
 			/* translators: %1$s represents the field ID where the error occurs. */
@@ -402,6 +403,7 @@ class Kirki_Field {
 		$settings = array();
 		foreach ( $this->settings as $setting_key => $setting_value ) {
 			$settings[ $setting_key ] = $setting_value;
+
 			// If we're using serialized options then we need to spice this up.
 			if ( 'option' === $this->option_type && '' !== $this->option_name && ( false === strpos( $setting_key, '[' ) ) ) {
 				$settings[ $setting_key ] = "{$this->option_name}[{$setting_value}]";
@@ -445,6 +447,7 @@ class Kirki_Field {
 		if ( '__return_true' === $this->active_callback ) {
 			return;
 		}
+
 		// Make sure the function is callable, otherwise fallback to __return_true.
 		if ( ! is_callable( $this->active_callback ) ) {
 			$this->active_callback = '__return_true';
@@ -460,7 +463,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_id() {
-
 		$this->id = sanitize_key( str_replace( '[', '-', str_replace( ']', '', $this->settings ) ) );
 	}
 
@@ -470,7 +472,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
@@ -482,9 +483,7 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_disable_output() {
-
 		$this->disable_output = (bool) $this->disable_output;
-
 	}
 
 	/**
@@ -493,7 +492,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_output() {
-
 		if ( empty( $this->output ) ) {
 			return;
 		}
@@ -506,12 +504,14 @@ class Kirki_Field {
 				),
 			);
 		}
+
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {
 			/* translators: The field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 			$this->output = array( $this->output );
 		}
+
 		foreach ( $this->output as $key => $output ) {
 			if ( empty( $output ) || ! isset( $output['element'] ) ) {
 				unset( $this->output[ $key ] );
@@ -520,6 +520,7 @@ class Kirki_Field {
 			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
 				$this->output[ $key ]['sanitize_callback'] = $output['callback'];
 			}
+
 			// Convert element arrays to strings.
 			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 				$this->output[ $key ]['element'] = array_unique( $this->output[ $key ]['element'] );
@@ -544,7 +545,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_js_vars() {
-
 		if ( ! is_array( $this->js_vars ) ) {
 			$this->js_vars = array();
 		}
@@ -593,7 +593,6 @@ class Kirki_Field {
 			}
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
-
 		}
 	}
 
@@ -603,7 +602,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_variables() {
-
 		if ( ! is_array( $this->variables ) ) {
 			$variable        = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
 			$this->variables = array();
@@ -619,7 +617,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_transport() {
-
 		if ( 'postmessage' === trim( strtolower( $this->transport ) ) ) {
 			$this->transport = 'postMessage';
 		}
@@ -631,7 +628,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_required() {
-
 		if ( ! is_array( $this->required ) ) {
 			$this->required = array();
 		}
@@ -643,7 +639,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_priority() {
-
 		$this->priority = absint( $this->priority );
 	}
 

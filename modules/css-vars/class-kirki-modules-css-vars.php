@@ -71,6 +71,7 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function the_style() {
+
 		// Get an array of all fields.
 		$fields = Kirki::$fields;
 		echo '<style id="kirki-css-vars">';

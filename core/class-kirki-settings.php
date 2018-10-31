@@ -49,6 +49,7 @@ class Kirki_Settings {
 
 		// Set the setting_types.
 		$this->set_setting_types();
+
 		// Add the settings.
 		$this->add_settings( $args );
 

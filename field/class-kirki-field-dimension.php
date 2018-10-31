@@ -20,9 +20,7 @@ class Kirki_Field_Dimension extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-dimension';
-
 	}
 
 	/**

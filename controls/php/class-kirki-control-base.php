@@ -141,6 +141,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		);
 
 		$suffix = str_replace( '.min', '', $suffix );
+
 		// Enqueue the style.
 		wp_enqueue_style(
 			'kirki-styles',
@@ -158,40 +159,55 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public function to_json() {
 		// Get the basics from the parent class.
 		parent::to_json();
+
 		// Default value.
 		$this->json['default'] = $this->setting->default;
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
+
 		// Required.
 		$this->json['required'] = $this->required;
+
 		// Output.
 		$this->json['output'] = $this->output;
+
 		// Value.
 		$this->json['value'] = $this->value();
+
 		// Choices.
 		$this->json['choices'] = $this->choices;
+
 		// The link.
 		$this->json['link'] = $this->get_link();
+
 		// The ID.
 		$this->json['id'] = $this->id;
+
 		// Translation strings.
 		$this->json['l10n'] = $this->l10n();
+
 		// The ajaxurl in case we need it.
 		$this->json['ajaxurl'] = admin_url( 'admin-ajax.php' );
+
 		// Input attributes.
 		$this->json['inputAttrs'] = '';
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
+
 		// The kirki-config.
 		$this->json['kirkiConfig'] = $this->kirki_config;
+
 		// The option-type.
 		$this->json['kirkiOptionType'] = $this->option_type;
+
 		// The option-name.
 		$this->json['kirkiOptionName'] = $this->option_name;
+
 		// The preset.
 		$this->json['preset'] = $this->preset;
+
 		// The CSS-Variables.
 		$this->json['css-var'] = $this->css_vars;
 	}

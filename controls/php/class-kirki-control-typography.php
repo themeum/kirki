@@ -40,10 +40,12 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 				if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
 					unset( $this->json['value'][ $key ] );
 				}
+
 				// Fix for https://wordpress.org/support/topic/white-font-after-updateing-to-3-0-16.
 				if ( ! isset( $this->json['default'][ $key ] ) ) {
 					unset( $this->json['value'][ $key ] );
 				}
+
 				// Fix for https://github.com/aristath/kirki/issues/1405.
 				if ( isset( $this->json['default'][ $key ] ) && false === $this->json['default'][ $key ] ) {
 					unset( $this->json['value'][ $key ] );
@@ -241,7 +243,6 @@ class Kirki_Control_Typography extends Kirki_Control_Base {
 	 * @return array
 	 */
 	protected function format_variants_array( $variants ) {
-
 		$all_variants   = Kirki_Fonts::get_all_variants();
 		$final_variants = array();
 		foreach ( $variants as $variant ) {

@@ -66,7 +66,6 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 				<# }); #>
 			</ul>
 		</label>
-
 		<?php
 	}
 }

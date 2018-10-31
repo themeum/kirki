@@ -28,8 +28,8 @@ class Kirki_Field_Radio extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-radio';
+
 		// Tweaks for backwards-compatibility:
 		// Prior to version 0.8 radio-buttonset & radio-image were part of the radio control.
 		if ( in_array( $this->mode, array( 'buttonset', 'image' ), true ) ) {
@@ -37,7 +37,6 @@ class Kirki_Field_Radio extends Kirki_Field {
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Error in field %1$s. The "mode" argument has been deprecated since Kirki v0.8. Use the "radio-%2$s" type instead.', 'kirki' ), esc_html( $this->settings ), esc_html( $this->mode ) ), '3.0.10' );
 			$this->type = 'radio-' . $this->mode;
 		}
-
 	}
 
 	/**
@@ -53,6 +52,5 @@ class Kirki_Field_Radio extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = 'sanitize_text_field';
-
 	}
 }

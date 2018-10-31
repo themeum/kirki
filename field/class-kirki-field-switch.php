@@ -20,9 +20,7 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-switch';
-
 	}
 
 	/**
@@ -31,7 +29,6 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}

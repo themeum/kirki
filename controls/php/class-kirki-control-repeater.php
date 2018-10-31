@@ -69,7 +69,6 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 	 * @param array                $args    {@see WP_Customize_Control::__construct}.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
-
 		parent::__construct( $manager, $id, $args );
 
 		// Set up defaults for row labels.
@@ -109,11 +108,13 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 					case 'image':
 					case 'cropped_image':
 					case 'upload':
+
 						// We add it to the list of fields that need some extra filtering/processing.
 						$media_fields_to_filter[ $key ] = true;
 						break;
 
 					case 'dropdown-pages':
+
 						// If the field is a dropdown-pages field then add it to args.
 						$dropdown = wp_dropdown_pages(
 							array(
@@ -124,6 +125,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 								'selected'          => '',
 							)
 						);
+
 						// Hackily add in the data link parameter.
 						$dropdown = str_replace( '<select', '<select data-field="' . esc_attr( $args['fields'][ $key ]['id'] ) . '"' . $this->get_link(), $dropdown ); // phpcs:ignore Generic.Formatting.MultipleStatementAlignment.NotSameWarning
 						$args['fields'][ $key ]['dropdown'] = $dropdown;

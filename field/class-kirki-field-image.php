@@ -30,9 +30,7 @@ class Kirki_Field_Image extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-image';
-
 	}
 
 	/**
@@ -64,7 +62,6 @@ class Kirki_Field_Image extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = (array) $this->choices;
 		}
@@ -91,7 +88,6 @@ class Kirki_Field_Image extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -100,7 +96,6 @@ class Kirki_Field_Image extends Kirki_Field {
 	 * @param string|array $value The control's value.
 	 */
 	public function sanitize( $value ) {
-
 		if ( isset( $this->choices['save_as'] ) && 'array' === $this->choices['save_as'] ) {
 			return array(
 				'id'     => ( isset( $value['id'] ) && '' !== $value['id'] ) ? (int) $value['id'] : '',

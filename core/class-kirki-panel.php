@@ -32,10 +32,8 @@ class Kirki_Panel {
 	 * @param array $args The panel arguments.
 	 */
 	public function __construct( $args ) {
-
 		$this->panel_types = apply_filters( 'kirki_panel_types', $this->panel_types );
 		$this->add_panel( $args );
-
 	}
 
 	/**
@@ -52,6 +50,5 @@ class Kirki_Panel {
 		$panel_classname = $this->panel_types[ $args['type'] ];
 
 		$wp_customize->add_panel( new $panel_classname( $wp_customize, $args['id'], $args ) );
-
 	}
 }

@@ -398,6 +398,7 @@ final class Kirki_Fonts_Google_Local {
 	 * @return string
 	 */
 	public function get_root_path() {
+
 		// Get the upload directory for this site.
 		$upload_dir = wp_upload_dir();
 		$path       = untrailingslashit( wp_normalize_path( $upload_dir['basedir'] ) ) . '/webfonts';
@@ -426,6 +427,7 @@ final class Kirki_Fonts_Google_Local {
 
 		// The URL.
 		$url = trailingslashit( $upload_dir['baseurl'] );
+
 		// Take care of domain mapping.
 		// When using domain mapping we have to make sure that the URL to the file
 		// does not include the original domain but instead the mapped domain.

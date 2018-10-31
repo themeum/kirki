@@ -20,9 +20,7 @@ class Kirki_Field_Background extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-background';
-
 	}
 
 	/**
@@ -38,7 +36,6 @@ class Kirki_Field_Background extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -49,7 +46,6 @@ class Kirki_Field_Background extends Kirki_Field {
 	 * @return array
 	 */
 	public function sanitize( $value ) {
-
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
@@ -116,7 +112,6 @@ class Kirki_Field_Background extends Kirki_Field {
 			}
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
-
 		}
 	}
 }

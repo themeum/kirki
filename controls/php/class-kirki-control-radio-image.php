@@ -34,7 +34,6 @@ class Kirki_Control_Radio_Image extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
 		foreach ( $this->input_attrs as $attr => $value ) {
 			if ( 'style' !== $attr ) {
 				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';

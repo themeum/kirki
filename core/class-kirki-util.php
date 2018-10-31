@@ -22,7 +22,6 @@ class Kirki_Util {
 	 * @access public
 	 */
 	public function __construct() {
-
 		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
 	}
 
@@ -35,7 +34,6 @@ class Kirki_Util {
 	 * @return bool
 	 */
 	public static function is_plugin() {
-
 		$is_plugin = false;
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -107,7 +105,6 @@ class Kirki_Util {
 
 		// Pass the variables through a filter ('kirki_variable') and return the array of variables.
 		return apply_filters( 'kirki_variable', $variables );
-
 	}
 
 	/**
@@ -120,6 +117,7 @@ class Kirki_Util {
 	 * @return array
 	 */
 	public function http_request( $request = array(), $url = '' ) {
+
 		// Early exit if installed as a plugin or not a request to wordpress.org,
 		// or finally if we don't have everything we need.
 		if (

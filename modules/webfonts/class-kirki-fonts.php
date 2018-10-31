@@ -68,10 +68,7 @@ final class Kirki_Fonts {
 	 * @return array    All available fonts.
 	 */
 	public static function get_all_fonts() {
-		$standard_fonts = self::get_standard_fonts();
-		$google_fonts   = self::get_google_fonts();
-
-		return apply_filters( 'kirki_fonts_all', array_merge( $standard_fonts, $google_fonts ) );
+		return apply_filters( 'kirki_fonts_all', array_merge( $self::get_standard_fonts(), self::get_google_fonts() ) );
 	}
 
 	/**
