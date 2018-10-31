@@ -245,7 +245,7 @@ class Kirki_Field {
 
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - setting instead of settings.', 'kirki' ), esc_attr( $args['settings'] ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Typo found in field %s - setting instead of settings.', 'kirki' ), esc_html( $args['settings'] ) ), '3.0.10' );
 			$args['settings'] = $args['setting'];
 			unset( $args['setting'] );
 		}
@@ -254,17 +254,17 @@ class Kirki_Field {
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
 			$args      = $config_id;
 			$config_id = 'global';
 		}
 
 		$args['kirki_config'] = $config_id;
 
-		$this->kirki_config = trim( esc_attr( $config_id ) );
+		$this->kirki_config = $config_id;
 		if ( '' === $config_id ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_attr( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
 			$this->kirki_config = 'global';
 		}
 
@@ -306,7 +306,6 @@ class Kirki_Field {
 		$properties = get_class_vars( __CLASS__ );
 
 		// Some things must run before the others.
-		$this->set_option_name();
 		$this->set_option_type();
 		$this->set_settings();
 
@@ -333,61 +332,12 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Escape $kirki_config.
-	 *
-	 * @access protected
-	 */
-	protected function set_kirki_config() {
-
-		$this->kirki_config = esc_attr( $this->kirki_config );
-	}
-
-	/**
-	 * Escape $option_name.
-	 *
-	 * @access protected
-	 */
-	protected function set_option_name() {
-
-		$this->option_name = esc_attr( $this->option_name );
-	}
-
-	/**
-	 * Escape the $section.
-	 *
-	 * @access protected
-	 */
-	protected function set_section() {
-
-		$this->section = sanitize_key( $this->section );
-	}
-
-	/**
 	 * Escape the $section.
 	 *
 	 * @access protected
 	 */
 	protected function set_input_attrs() {
-
-		if ( ! is_array( $this->input_attrs ) ) {
-			$this->input_attrs = array();
-		}
-	}
-
-	/**
-	 * Checks the capability chosen is valid.
-	 * If not, then falls back to 'edit_theme_options'
-	 *
-	 * @access protected
-	 */
-	protected function set_capability() {
-
-		// Early exit if we're using 'edit_theme_options'.
-		if ( 'edit_theme_options' === $this->capability ) {
-			return;
-		}
-		// Escape & trim the capability.
-		$this->capability = trim( esc_attr( $this->capability ) );
+		$this->input_attrs = (array) $this->input_attrs;
 	}
 
 	/**
@@ -404,7 +354,7 @@ class Kirki_Field {
 		// Take care of common typos.
 		if ( 'theme_mods' === $this->option_type ) {
 			/* translators: %1$s represents the field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html( 'Typo found in field %s - "theme_mods" vs "theme_mod"', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 			$this->option_type = 'theme_mod';
 		}
 	}
@@ -422,7 +372,7 @@ class Kirki_Field {
 		foreach ( $this->partial_refresh as $id => $args ) {
 			if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
 				/* translators: %1$s represents the field ID where the error occurs. */
-				_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+				_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"partial_refresh" invalid entry in field %s', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 				unset( $this->partial_refresh[ $id ] );
 				continue;
 			}
@@ -502,17 +452,6 @@ class Kirki_Field {
 	}
 
 	/**
-	 * Sets the control type.
-	 *
-	 * @access protected
-	 */
-	protected function set_type() {
-
-		// Escape the control type (it doesn't hurt to be sure).
-		$this->type = esc_attr( $this->type );
-	}
-
-	/**
 	 * Sets the $id.
 	 * Setting the ID should happen after the 'settings' sanitization.
 	 * This way we can also properly handle cases where the option_type is set to 'option'
@@ -560,7 +499,7 @@ class Kirki_Field {
 		}
 		if ( ! is_array( $this->output ) ) {
 			/* translators: The field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 			$this->output = array(
 				array(
 					'element' => $this->output,
@@ -570,7 +509,7 @@ class Kirki_Field {
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {
 			/* translators: The field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_attr( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 			$this->output = array( $this->output );
 		}
 		foreach ( $this->output as $key => $output ) {

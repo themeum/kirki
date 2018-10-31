@@ -41,7 +41,7 @@ class Kirki_Field_Text extends Kirki_Field_Kirki_Generic {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = 'esc_textarea';
+		$this->sanitize_callback = 'sanitize_textarea_field';
 
 	}
 }

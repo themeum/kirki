@@ -55,16 +55,6 @@ class Kirki_Field_Select extends Kirki_Field {
 	}
 
 	/**
-	 * The placeholder text.
-	 *
-	 * @access protected
-	 * @since 3.0.21
-	 */
-	protected function set_placeholder() {
-		$this->placeholder = esc_attr( $this->placeholder );
-	}
-
-	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
@@ -94,12 +84,12 @@ class Kirki_Field_Select extends Kirki_Field {
 			foreach ( $value as $key => $subvalue ) {
 				if ( '' !== $subvalue || isset( $this->choices[''] ) ) {
 					$key           = sanitize_key( $key );
-					$value[ $key ] = esc_attr( $subvalue );
+					$value[ $key ] = sanitize_text_field( $subvalue );
 				}
 			}
 			return $value;
 		}
-		return esc_attr( $value );
+		return sanitize_text_field( $value );
 
 	}
 

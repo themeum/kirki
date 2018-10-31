@@ -23,8 +23,8 @@ You can define inside the `choices` arguments an array of colors, the style (`ro
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_0',
-	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_attr__( 'This is a color-palette control', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_html__( 'This is a color-palette control', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#888888',
 	'choices'     => array(
@@ -47,8 +47,8 @@ Some additional examples using those helper methods:
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_4',
-	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_attr__( 'Material Design Colors - all', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_html__( 'Material Design Colors - all', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#F44336',
 	'choices'     => array(
@@ -65,8 +65,8 @@ Kirki::add_field( 'theme_config_id', array(
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_1',
-	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_attr__( 'Material Design Colors - primary', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_html__( 'Material Design Colors - primary', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#000000',
 	'choices'     => array(
@@ -83,8 +83,8 @@ Kirki::add_field( 'theme_config_id', array(
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_2',
-	'label'       => esc_attr__( 'Color-Palette', 'kirki' ),
-	'description' => esc_attr__( 'Material Design Colors - red', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
+	'description' => esc_html__( 'Material Design Colors - red', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#FF1744',
 	'choices'     => array(
@@ -101,8 +101,8 @@ Kirki::add_field( 'theme_config_id', array(
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_3',
-	'label'       => esc_attr__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_attr__( 'Material Design Colors - A100', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
+	'description' => esc_html__( 'Material Design Colors - A100', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#FF80AB',
 	'choices'     => array(

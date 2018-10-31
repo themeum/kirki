@@ -82,9 +82,9 @@ class Kirki_Modules_CSS_Vars {
 			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
 			foreach ( $args['css_vars'] as $css_var ) {
 				if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
-					echo esc_attr( $css_var[0] ) . ':' . esc_attr( str_replace( '$', $val[ $css_var[2] ], $css_var[1] ) ) . ';';
+					echo esc_html( $css_var[0] ) . ':' . esc_html( str_replace( '$', $val[ $css_var[2] ], $css_var[1] ) ) . ';';
 				} else {
-					echo esc_attr( $css_var[0] ) . ':' . esc_attr( str_replace( '$', $val, $css_var[1] ) ) . ';';
+					echo esc_html( $css_var[0] ) . ':' . esc_html( str_replace( '$', $val, $css_var[1] ) ) . ';';
 				}
 			}
 		}

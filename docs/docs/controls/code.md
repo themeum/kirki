@@ -24,8 +24,8 @@ Internally this control uses the `CodeMirror` library available in WordPress.
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'code',
 	'settings'    => 'code_setting',
-	'label'       => esc_attr__( 'Code Control', 'textdomain' ),
-	'description' => esc_attr__( 'Description', 'textdomain' ),
+	'label'       => esc_html__( 'Code Control', 'textdomain' ),
+	'description' => esc_html__( 'Description', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
 	'choices'     => array(

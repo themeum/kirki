@@ -27,12 +27,12 @@ Kirki::add_field( 'theme_config_id', array(
 		'option4'
 	),
 	'choices'     => array(
-		'option1' => esc_attr__( 'Option 1', 'textdomain' ),
-		'option2' => esc_attr__( 'Option 2', 'textdomain' ),
-		'option3' => esc_attr__( 'Option 3', 'textdomain' ),
-		'option4' => esc_attr__( 'Option 4', 'textdomain' ),
-		'option5' => esc_attr__( 'Option 5', 'textdomain' ),
-		'option6' => esc_attr__( 'Option 6', 'textdomain' ),
+		'option1' => esc_html__( 'Option 1', 'textdomain' ),
+		'option2' => esc_html__( 'Option 2', 'textdomain' ),
+		'option3' => esc_html__( 'Option 3', 'textdomain' ),
+		'option4' => esc_html__( 'Option 4', 'textdomain' ),
+		'option5' => esc_html__( 'Option 5', 'textdomain' ),
+		'option6' => esc_html__( 'Option 6', 'textdomain' ),
 	),
 	'priority'    => 10,
 ) );

@@ -37,6 +37,6 @@ class Kirki_Field_Dashicons extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = 'esc_attr';
+		$this->sanitize_callback = 'sanitize_text_field';
 	}
 }

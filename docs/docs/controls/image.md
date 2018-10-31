@@ -26,8 +26,8 @@ Examples:
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_url',
-	'label'       => esc_attr__( 'Image Control (URL)', 'textdomain' ),
-	'description' => esc_attr__( 'Description Here.', 'textdomain' ),
+	'label'       => esc_html__( 'Image Control (URL)', 'textdomain' ),
+	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
 ) );
@@ -38,8 +38,8 @@ Kirki::add_field( 'theme_config_id', array(
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_id',
-	'label'       => esc_attr__( 'Image Control (ID)', 'textdomain' ),
-	'description' => esc_attr__( 'Description Here.', 'textdomain' ),
+	'label'       => esc_html__( 'Image Control (ID)', 'textdomain' ),
+	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
 	'choices'     => array(
@@ -53,8 +53,8 @@ Kirki::add_field( 'theme_config_id', array(
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'image',
 	'settings'    => 'image_setting_array',
-	'label'       => esc_attr__( 'Image Control (array)', 'textdomain' ),
-	'description' => esc_attr__( 'Description Here.', 'textdomain' ),
+	'label'       => esc_html__( 'Image Control (array)', 'textdomain' ),
+	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
 	'choices'     => array(

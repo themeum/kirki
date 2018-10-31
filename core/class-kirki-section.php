@@ -58,7 +58,7 @@ class Kirki_Section {
 		}
 
 		// Add the section.
-		$wp_customize->add_section( new $section_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
+		$wp_customize->add_section( new $section_classname( $wp_customize, $args['id'], $args ) );
 
 	}
 }

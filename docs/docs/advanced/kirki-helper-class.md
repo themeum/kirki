@@ -49,7 +49,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_attr__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => '',
 	'priority' => 10,
@@ -77,7 +77,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_attr__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => 'option-1',
 	'priority' => 10,
@@ -100,7 +100,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_attr__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => 'option-1',
 	'priority' => 10,
@@ -125,7 +125,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'        => 'select',
 	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'This is the label', 'my_textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'my_textdomain' ),
 	'section'     => 'my_section',
 	'default'     => 'option-1',
 	'priority'    => 10,

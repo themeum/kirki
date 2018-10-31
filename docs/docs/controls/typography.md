@@ -164,7 +164,7 @@ When selecting a default value for the variant, please make sure that the value 
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'typography',
 	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'Control Label', 'textdomain' ),
+	'label'       => esc_html__( 'Control Label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => array(
 		'font-family'    => 'Roboto',
@@ -195,21 +195,21 @@ It is advised to use this field with the `output` argument to directly apply the
 $value = get_theme_mod( 'my_setting', array() );
 
 if ( isset( $value['font-family'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Font Family: %s', 'textdomain' ), $value['font-family'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Font Family: %s', 'textdomain' ), $value['font-family'] ) . '</p>';
 }
 if ( isset( $value['variant'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Variant: %s', 'textdomain' ), $value['variant'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Variant: %s', 'textdomain' ), $value['variant'] ) . '</p>';
 }
 if ( isset( $value['font-size'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Font Size: %s', 'textdomain' ), $value['font-size'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Font Size: %s', 'textdomain' ), $value['font-size'] ) . '</p>';
 }
 if ( isset( $value['line-height'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Line Height: %s', 'textdomain' ), $value['line-height'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Line Height: %s', 'textdomain' ), $value['line-height'] ) . '</p>';
 }
 if ( isset( $value['letter-spacing'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Letter Spacing: %s', 'textdomain' ), $value['letter-spacing'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Letter Spacing: %s', 'textdomain' ), $value['letter-spacing'] ) . '</p>';
 }
 if ( isset( $value['color'] ) ) {
-	echo '<p>' . sprintf( esc_attr__( 'Color: %s', 'textdomain' ), $value['color'] ) . '</p>';
+	echo '<p>' . sprintf( esc_html__( 'Color: %s', 'textdomain' ), $value['color'] ) . '</p>';
 }
 ```

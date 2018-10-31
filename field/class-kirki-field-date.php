@@ -37,7 +37,7 @@ class Kirki_Field_Date extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = 'esc_textarea';
+		$this->sanitize_callback = 'sanitize_text_field';
 
 	}
 }

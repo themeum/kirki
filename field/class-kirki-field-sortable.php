@@ -47,13 +47,13 @@ class Kirki_Field_Sortable extends Kirki_Field {
 
 		if ( is_string( $value ) || is_numeric( $value ) ) {
 			return array(
-				esc_attr( $value ),
+				sanitize_text_field( $value ),
 			);
 		}
 		$sanitized_value = array();
 		foreach ( $value as $sub_value ) {
 			if ( isset( $this->choices[ $sub_value ] ) ) {
-				$sanitized_value[] = esc_attr( $sub_value );
+				$sanitized_value[] = sanitize_text_field( $sub_value );
 			}
 		}
 		return $sanitized_value;

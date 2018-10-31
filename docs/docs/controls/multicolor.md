@@ -25,13 +25,13 @@ The saved options will be in the form of an array of the form `$key => $value`. 
 Kirki::add_field( 'theme_config_id', array(
     'type'        => 'multicolor',
     'settings'    => 'my_setting',
-    'label'       => esc_attr__( 'Label', 'textdomain' ),
+    'label'       => esc_html__( 'Label', 'textdomain' ),
     'section'     => 'section_id',
     'priority'    => 10,
     'choices'     => array(
-        'link'    => esc_attr__( 'Color', 'textdomain' ),
-        'hover'   => esc_attr__( 'Hover', 'textdomain' ),
-        'active'  => esc_attr__( 'Active', 'textdomain' ),
+        'link'    => esc_html__( 'Color', 'textdomain' ),
+        'hover'   => esc_html__( 'Hover', 'textdomain' ),
+        'active'  => esc_html__( 'Active', 'textdomain' ),
     ),
     'default'     => array(
         'link'    => '#0088cc',

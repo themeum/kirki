@@ -51,7 +51,7 @@ class Kirki_Panel {
 		}
 		$panel_classname = $this->panel_types[ $args['type'] ];
 
-		$wp_customize->add_panel( new $panel_classname( $wp_customize, sanitize_key( $args['id'] ), $args ) );
+		$wp_customize->add_panel( new $panel_classname( $wp_customize, $args['id'], $args ) );
 
 	}
 }

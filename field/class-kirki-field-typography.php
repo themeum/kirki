@@ -146,7 +146,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 		foreach ( $value as $key => $val ) {
 			switch ( $key ) {
 				case 'font-family':
-					$value['font-family'] = esc_attr( $val );
+					$value['font-family'] = sanitize_text_field( $val );
 					break;
 				case 'font-weight':
 					if ( isset( $value['variant'] ) ) {
