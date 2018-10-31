@@ -366,7 +366,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_partial_refresh() {
-
 		if ( ! is_array( $this->partial_refresh ) ) {
 			$this->partial_refresh = array();
 		}
@@ -423,7 +422,6 @@ class Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_active_callback() {
-
 		if ( is_array( $this->active_callback ) ) {
 			if ( ! is_callable( $this->active_callback ) ) {
 
