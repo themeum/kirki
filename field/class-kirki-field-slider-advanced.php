@@ -114,7 +114,6 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 			}
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
-
 		}
 
 	}
@@ -127,42 +126,32 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public static function sanitize( $value ) {
-		return $value;
-		$valid_units = array( '%', 'cm',' em', 'ex', 'in', 'mm' ,'pc', 'pt', 'px', 'vh', 'vw', 'vmin' );
-		if ( ! is_array( $value ) ) {
-			return array();
-		}
-		
-		$_sanitize = function ( &$device, $valid_units )
+	public static function sanitize( $value, $field ) {
+		if ( is_numeric ( $value ) )
 		{
-			if ( isset( $device['value'] ) )
-				$device['value'] = isset( $device['value'] ) ? floatval( $device['value'] ) : 0;
+			$default_unit = '';
+			if ( isset( $field['choices'], $field['choices']['units'] ) )
+				$default_unit = array_keys( $field['choices']['units'] )[0];
+			$value .= $default_unit;
+			$normalized = null;
+			
+			if ( $field['use_media_queries'] )
+			{
+				$normalized = array(
+					'desktop' => $value,
+					'tablet' => $value,
+					'mobile' => $value
+				);
+			}  
 			else
-				$device['value'] = floatval ( $device['value'] );
-			if ( isset( $device['unit'] ) && !in_array ( strtolower( $device['unit'] ), $valid_units ) )
-				$device['unit'] = '';
-			else
-				$device['unit'] = strtolower( $device['unit'] );
-		};
-		
-		$value['use_media_queries'] = isset( $value['use_media_queries'] ) ? (bool)$value['use_media_queries'] :
-			false;
-		if ( isset( $value['desktop'] ) )
-			$_sanitize( $value['desktop'],$valid_units );
-		if ( isset( $value['tablet'] ) )
-			$_sanitize( $value['tablet'], $valid_units );
-		if ( isset( $value['mobile'] ) )
-			$_sanitize( $value['mobile'], $valid_units );
-		
-		if ( isset( $value['value'] ) )
-			$value['value'] = intval ( $value['value'] );
-		if ( isset( $value['unit'] ) )
-		{
-			if ( !in_array( $value['unit'], $valid_units ) )
-				$value['unit'] = 'px';
+			{
+				$normalized = array(
+					'global' => $value
+				);
+			}
+			
+			return $normalized;
 		}
-		
 		return $value;
 	}
 

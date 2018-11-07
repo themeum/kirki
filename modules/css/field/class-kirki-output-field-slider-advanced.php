@@ -15,13 +15,15 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 			)
 		);
 		
-		if ( !is_array( $value ) || empty( $output['element'] ) )
+		if ( empty( $output['element'] ) )
 			return;
 		
-		$value = Kirki_Field_Slider_Advanced::sanitize( $value );
+		$value = Kirki_Field_Slider_Advanced::sanitize( $value, $this->field );
+		assert ( is_array( $value ), '`value` must be an array.' );
 		$suffix = isset ( $output['suffix'] ) ? $output['suffix'] : '';
 		$prefix = isset ( $output['prefix'] ) ? $output['prefix'] : '';
 		$breakpoints = Kirki::get_config_param( $this->field['kirki_config'], 'media_queries' );
+		
 		if ( isset ( $value['desktop'] ) )
 		{
 			$devices = [ 
