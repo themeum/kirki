@@ -190,6 +190,28 @@
   .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content.active {
     display: block; }
 
+.customize-control-kirki-multicheck ul {
+  display: flex; }
+
+.customize-control-kirki-multicheck ul li {
+  width: 100%; }
+
+.customize-control-kirki-multicheck ul li label {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px rgba(0, 0, 0, 0.1);
+  color: #555d66;
+  margin: 0;
+  text-align: center;
+  padding: 0.5em 1em;
+  display: block; }
+
+.customize-control-kirki-multicheck ul li label.checked {
+  background-color: #00a0d2;
+  color: rgba(255, 255, 255, 0.8); }
+
+.customize-control-kirki-multicheck ul li input {
+  display: none; }
+
 .customize-control-kirki-background {
   position: relative; }
   .customize-control-kirki-background .background-attachment h4,
