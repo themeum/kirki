@@ -64,7 +64,6 @@ class Kirki_Output {
 	 * @param array        $field     The field.
 	 */
 	public function __construct( $config_id, $output, $value, $field ) {
-
 		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;
@@ -82,7 +81,6 @@ class Kirki_Output {
 	 * @return string|array
 	 */
 	protected function apply_sanitize_callback( $output, $value ) {
-
 		if ( isset( $output['sanitize_callback'] ) && null !== $output['sanitize_callback'] ) {
 
 			// If the sanitize_callback is invalid, return the value.
@@ -91,9 +89,7 @@ class Kirki_Output {
 			}
 			return call_user_func( $output['sanitize_callback'], $this->value );
 		}
-
 		return $value;
-
 	}
 
 	/**

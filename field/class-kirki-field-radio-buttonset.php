@@ -20,8 +20,6 @@ class Kirki_Field_Radio_Buttonset extends Kirki_Field_Radio {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-radio-buttonset';
-
 	}
 }

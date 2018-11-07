@@ -74,7 +74,6 @@ class Kirki_Modules_CSS {
 	 * @access protected
 	 */
 	protected function __construct() {
-
 		$class_files = array(
 			'Kirki_CSS_To_File'                         => '/class-kirki-css-to-file.php',
 			'Kirki_Modules_CSS_Generator'               => '/class-kirki-modules-css-generator.php',
@@ -100,9 +99,7 @@ class Kirki_Modules_CSS {
 				include_once wp_normalize_path( dirname( __FILE__ ) . $file );
 			}
 		}
-
 		add_action( 'init', array( $this, 'init' ) );
-
 	}
 
 	/**
@@ -127,10 +124,9 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 */
 	public function init() {
+		global $wp_customize;
 
 		Kirki_Modules_Webfonts::get_instance();
-
-		global $wp_customize;
 
 		$config   = apply_filters( 'kirki_config', array() );
 		$priority = 999;
@@ -145,6 +141,7 @@ class Kirki_Modules_CSS {
 
 		$method = apply_filters( 'kirki_dynamic_css_method', 'inline' );
 		if ( $wp_customize ) {
+
 			// If we're in the customizer, load inline no matter what.
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
 
@@ -157,10 +154,13 @@ class Kirki_Modules_CSS {
 		}
 
 		if ( 'file' === $method ) {
+
 			// Attempt to write the CSS to file.
 			$this->css_to_file = new Kirki_CSS_To_File();
+
 			// If we succesd, load this file.
 			$failed = get_transient( 'kirki_css_write_to_file_failed' );
+
 			// If writing CSS to file hasn't failed, just enqueue this file.
 			if ( ! $failed ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_compiled_file' ), $priority );
@@ -188,9 +188,7 @@ class Kirki_Modules_CSS {
 	 * @since 3.0.0
 	 */
 	public function enqueue_compiled_file() {
-
 		wp_enqueue_style( 'kirki-styles', $this->css_to_file->get_url(), array(), $this->css_to_file->get_timestamp() );
-
 	}
 	/**
 	 * Adds inline styles.
@@ -272,6 +270,7 @@ class Kirki_Modules_CSS {
 			}
 
 			if ( true === apply_filters( "kirki_{$config_id}_css_skip_hidden", true ) ) {
+
 				// Only continue if field dependencies are met.
 				if ( ! empty( $field['required'] ) ) {
 					$valid = true;

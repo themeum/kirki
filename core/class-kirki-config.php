@@ -150,15 +150,14 @@ final class Kirki_Config {
 	 * @return Kirki_Config
 	 */
 	public static function get_instance( $id = 'global', $args = array() ) {
-		$id = trim( esc_attr( $id ) );
-		$id = ( '' === $id ) ? 'global' : $id;
-
+		if ( empty( $id ) ) {
+			$id = 'global';
+		}
 		$id_md5 = md5( $id );
 		if ( ! isset( self::$instances[ $id_md5 ] ) ) {
 			self::$instances[ $id_md5 ] = new self( $id, $args );
 		}
 		return self::$instances[ $id_md5 ];
-
 	}
 
 	/**
@@ -184,7 +183,6 @@ final class Kirki_Config {
 	 * @return array
 	 */
 	public function get_config() {
-
 		return $this->config_final;
 	}
 }

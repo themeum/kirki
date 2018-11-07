@@ -42,7 +42,6 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
 		$this->json['alpha'] = (bool) $this->alpha;
 	}
 

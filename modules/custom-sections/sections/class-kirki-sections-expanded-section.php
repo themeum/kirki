@@ -21,5 +21,4 @@ class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
 	 * @var string
 	 */
 	public $type = 'kirki-expanded';
-
 }

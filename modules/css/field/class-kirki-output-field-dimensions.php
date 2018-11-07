@@ -22,7 +22,6 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
-
 		$output = wp_parse_args(
 			$output, array(
 				'element'     => '',

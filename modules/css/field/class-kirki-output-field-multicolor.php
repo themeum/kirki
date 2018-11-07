@@ -22,7 +22,6 @@ class Kirki_Output_Field_Multicolor extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
-
 		foreach ( $value as $key => $sub_value ) {
 
 			// If "element" is not defined, there's no reason to continue.

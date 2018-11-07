@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Adds styles to the customizer.
  */
 class Kirki_Modules_PostMessage {
+
 	/**
 	 * The object instance.
 	 *

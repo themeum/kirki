@@ -33,6 +33,7 @@ class Kirki_CSS_To_File {
 
 		// If the file doesn't exist, create it.
 		if ( ! file_exists( $this->get_path( 'file' ) ) ) {
+
 			// If the file-write fails, fallback to inline
 			// and cache the failure so we don't try again immediately.
 			$this->write_file();
@@ -49,10 +50,8 @@ class Kirki_CSS_To_File {
 	 * @return string|array
 	 */
 	protected function get_path( $context = '' ) {
-
 		$upload_dir = wp_upload_dir();
-
-		$paths = array(
+		$paths      = array(
 			'file'   => wp_normalize_path( $upload_dir['basedir'] . '/kirki-css/styles.css' ),
 			'folder' => wp_normalize_path( $upload_dir['basedir'] . '/kirki-css' ),
 		);
@@ -64,7 +63,6 @@ class Kirki_CSS_To_File {
 			return $paths['folder'];
 		}
 		return $paths;
-
 	}
 
 	/**
@@ -75,10 +73,8 @@ class Kirki_CSS_To_File {
 	 * @return string
 	 */
 	public function get_url() {
-
 		$upload_dir = wp_upload_dir();
 		return esc_url_raw( $upload_dir['baseurl'] . '/kirki-css/styles.css' );
-
 	}
 
 	/**
@@ -90,7 +86,6 @@ class Kirki_CSS_To_File {
 	 * @return integer|false
 	 */
 	public function get_timestamp() {
-
 		if ( file_exists( $this->get_path( 'file' ) ) ) {
 			return filemtime( $this->get_path( 'file' ) );
 		}
@@ -105,7 +100,6 @@ class Kirki_CSS_To_File {
 	 * @return bool
 	 */
 	public function write_file() {
-
 		$css     = array();
 		$configs = Kirki::$config;
 		foreach ( $configs as $config_id => $args ) {
@@ -126,7 +120,6 @@ class Kirki_CSS_To_File {
 			set_transient( 'kirki_css_write_to_file_failed', true, HOUR_IN_SECONDS );
 		}
 		return $write_file;
-
 	}
 
 	/**
@@ -145,7 +138,6 @@ class Kirki_CSS_To_File {
 			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
 			WP_Filesystem();
 		}
-
 		return $wp_filesystem;
 	}
 }

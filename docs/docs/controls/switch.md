@@ -24,8 +24,8 @@ By default the labels are ON/OFF. To change them you can use the `choices` argum
 
 ```php
 'choices' => array(
-    'on'  => esc_attr__( 'Enable', 'textdomain' ),
-    'off' => esc_attr__( 'Disable', 'textdomain' )
+    'on'  => esc_html__( 'Enable', 'textdomain' ),
+    'off' => esc_html__( 'Disable', 'textdomain' )
 )
 ```
 
@@ -44,8 +44,8 @@ Kirki::add_field( 'theme_config_id', array(
 	'default'     => '1',
 	'priority'    => 10,
 	'choices'     => array(
-		'on'  => esc_attr__( 'Enable', 'textdomain' ),
-		'off' => esc_attr__( 'Disable', 'textdomain' ),
+		'on'  => esc_html__( 'Enable', 'textdomain' ),
+		'off' => esc_html__( 'Disable', 'textdomain' ),
 	),
 ) );
 ```
