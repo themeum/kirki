@@ -78,7 +78,17 @@ final class Kirki_Config {
 	 * @var bool
 	 */
 	protected $disable_output = false;
-
+	
+	/**
+	 * Media queries used for output with certain controls.
+	 * Setup initially to match the WordPress preview window.
+	 */
+	protected $media_queries = array(
+		'desktop' => '@media screen and (min-width: 992px)',
+		'tablet' => '@media screen and (min-width: 576px) and (max-width: 991px)',
+		'mobile' => '@media screen and (max-width: 320px)'
+	);
+	
 	/**
 	 * The class constructor.
 	 * Use the get_instance() static method to get the instance you need.
@@ -111,6 +121,7 @@ final class Kirki_Config {
 		$this->config_final = wp_parse_args(
 			array(
 				'id' => $config_id,
+				'media_queries' => $this->media_queries
 			),
 			$args
 		);

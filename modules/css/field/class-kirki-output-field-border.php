@@ -15,11 +15,9 @@ class Kirki_Output_Field_Border extends Kirki_Output {
 			)
 		);
 		
-		if ( !is_array( $value ) || empty( $output['element'] ) ) {
+		if ( !is_array( $value ) || empty( $output['element'] ) )
 			return;
-		}
 		
-		//fwrite(STDERR, var_export($value,true) . PHP_EOL);
 		$value = Kirki_Field_Border::sanitize( $value );
 		
 		$border_style = $value['border-style'];

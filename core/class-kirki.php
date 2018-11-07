@@ -287,4 +287,17 @@ class Kirki extends Kirki_Init {
 		}
 		return self::$config[ $id ][ $param ];
 	}
+	
+	/**
+	 * These media queries are based on the WordPress preview window.
+	 */
+	public static function get_default_media_queries()
+	{
+		return array(
+			'global' => 'global',
+			'desktop' => '@media screen and (min-width: 992px)',
+			'tablet' => '@media screen and (min-width: 576px) and (max-width: 991px)',
+			'mobile' => '@media screen and (max-width: 320px)'
+		);
+	}
 }

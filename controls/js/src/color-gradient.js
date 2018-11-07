@@ -94,7 +94,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 				direction: direction.val()
 			};
 			//console.log( data );
-			input.val( JSON.stringify( data ) ).trigger( 'change' );
+			input.attr( 'value', JSON.stringify( data ) ).trigger( 'change' );
 			control.setting.set( data );
 		}
 	}

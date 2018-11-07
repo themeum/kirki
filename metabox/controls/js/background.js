@@ -92,7 +92,7 @@ jQuery( document ).ready( function( e )
 					'background-size': size.val(),
 					'background-attachment': attachment.val()
 				};
-				input.val( JSON.stringify( obj ) );
+				input.attr( 'value', JSON.stringify( obj ) );
 			}
 	});
 });

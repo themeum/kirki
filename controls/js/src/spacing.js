@@ -344,15 +344,22 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			compiled = jQuery.extend( {}, control.value );
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
+		{
 			delete compiled.global;
+			
+			delete compiled.desktop.loaded;
+			delete compiled.tablet.loaded;
+			delete compiled.mobile.loaded;
+		}
 		else
 		{
 			delete compiled.desktop;
 			delete compiled.tablet;
 			delete compiled.mobile;
+			delete compiled.global.loaded;
 		}
 		console.log ( compiled );
-		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	

@@ -117,7 +117,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			if ( !control.value['global'].loaded && loadedValue['global'] )
 			{
 				var parsed = control.parseValue( loadedValue['global'] );
-				control.value['global'] = loadedValue['global'];
 				control.value['global']['value'] = parsed['value'];
 				control.value['global']['unit'] = parsed['unit'];
 				control.value['global']['loaded'] = true;
@@ -175,7 +174,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 						{
 							if ( !control.value[name].value )
 							{
-								control.value[name].value = range['max'];
+								control.value[name].value = control.params.default || range['min'];
 								control.value[name].unit = control.selected_unit;
 							}
 						});
@@ -320,22 +319,25 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
 		{
-			delete compiled.global;
-			
 			compiled.desktop = compiled.desktop.value + compiled.desktop.unit;
 			compiled.tablet = compiled.tablet.value + compiled.tablet.unit;
 			compiled.mobile = compiled.mobile.value + compiled.mobile.unit;
+			
+			delete compiled.desktop.loaded;
+			delete compiled.tablet.loaded;
+			delete compiled.mobile.loaded;
 		}
 		else
 		{
 			delete compiled.desktop;
 			delete compiled.tablet;
 			delete compiled.mobile;
+			delete compiled.global.loaded;
 			
 			compiled.global = compiled.global.value + compiled.global.unit;
 		}
 		delete compiled.value;
-		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	

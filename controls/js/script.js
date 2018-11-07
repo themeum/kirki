@@ -2171,7 +2171,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 				direction: direction.val()
 			};
 			//console.log( data );
-			input.val( JSON.stringify( data ) ).trigger( 'change' );
+			input.attr( 'value', JSON.stringify( data ) ).trigger( 'change' );
 			control.setting.set( data );
 		}
 	}
@@ -3576,7 +3576,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			if ( !control.value['global'].loaded && loadedValue['global'] )
 			{
 				var parsed = control.parseValue( loadedValue['global'] );
-				control.value['global'] = loadedValue['global'];
 				control.value['global']['value'] = parsed['value'];
 				control.value['global']['unit'] = parsed['unit'];
 				control.value['global']['loaded'] = true;
@@ -3634,7 +3633,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 						{
 							if ( !control.value[name].value )
 							{
-								control.value[name].value = range['max'];
+								control.value[name].value = control.params.default || range['min'];
 								control.value[name].unit = control.selected_unit;
 							}
 						});
@@ -3779,22 +3778,25 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
 		{
-			delete compiled.global;
-			
 			compiled.desktop = compiled.desktop.value + compiled.desktop.unit;
 			compiled.tablet = compiled.tablet.value + compiled.tablet.unit;
 			compiled.mobile = compiled.mobile.value + compiled.mobile.unit;
+			
+			delete compiled.desktop.loaded;
+			delete compiled.tablet.loaded;
+			delete compiled.mobile.loaded;
 		}
 		else
 		{
 			delete compiled.desktop;
 			delete compiled.tablet;
 			delete compiled.mobile;
+			delete compiled.global.loaded;
 			
 			compiled.global = compiled.global.value + compiled.global.unit;
 		}
 		delete compiled.value;
-		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	
@@ -4316,15 +4318,22 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			compiled = jQuery.extend( {}, control.value );
 		delete compiled.loaded;
 		if ( compiled.use_media_queries )
+		{
 			delete compiled.global;
+			
+			delete compiled.desktop.loaded;
+			delete compiled.tablet.loaded;
+			delete compiled.mobile.loaded;
+		}
 		else
 		{
 			delete compiled.desktop;
 			delete compiled.tablet;
 			delete compiled.mobile;
+			delete compiled.global.loaded;
 		}
 		console.log ( compiled );
-		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	
@@ -4378,25 +4387,36 @@ wp.customize.controlConstructor['toggle-tabs'] = wp.customize.kirkiDynamicContro
 			choices = control.params.choices;
 			
 		control.tab_container = tab_container;
-		for ( var label in choices )
-		{
-			var label_id = label.replace( ' ', '_' ),
-				control_ids = choices[label],
-				tab = $( 'li[href="#' + id + '_' + label_id + '"]' ),
-				tab_content = $( '#' + id + '_' + label_id );
-			
-			for ( var control_idx in control_ids )
-			{
-				var control_id = control_ids[control_idx];
-				var wp_control = $( '#customize-control-' + control_id );
-				wp_control.detach().appendTo( tab_content );
-			}
-			
-			control.registerTabEvents ( tab, tab_content );
-		}
 		
 		tab_container.find( '.tabs li:first' ).addClass( 'active' );
 		tab_container.find( '.tab-content:first' ).addClass( 'active' );
+		
+		for ( var label in choices )
+		{
+			var label_id = label.replace( ' ', '_' ),
+				tab = $( 'li[href="#' + id + '_' + label_id + '"]' ),
+				tab_content = $( '#' + id + '_' + label_id );
+			control.registerTabEvents ( tab, tab_content );
+		}
+		
+		setInterval( function()
+		{
+			for ( var label in choices )
+			{
+				var label_id = label.replace( ' ', '_' ),
+					control_ids = choices[label],
+					tab_content = $( '#' + id + '_' + label_id );
+				
+				for ( var control_idx in control_ids )
+				{
+					var control_id = control_ids[control_idx];
+					var wp_control = $( '#customize-control-' + control_id );
+					if ( wp_control.parent().hasClass( 'tab-content' ) )
+						continue;
+					wp_control.detach().appendTo( tab_content );
+				}
+			}
+		}, 500 );
 	},
 	
 	registerTabEvents: function( tab, tab_content )
@@ -4916,35 +4936,35 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		control.localFontsCheckbox();
 
 		// Font-size.
-		if ( control.params.default['font-size'] ) {
+		if ( 'undefined' !== typeof control.params.default['font-size'] ) {
 			this.container.on( 'change keyup paste', '.font-size input', function() {
 				control.saveValue( 'font-size', jQuery( this ).val() );
 			} );
 		}
 
 		// Line-height.
-		if ( control.params.default['line-height'] ) {
+		if ( 'undefined' !== typeof control.params.default['line-height'] ) {
 			this.container.on( 'change keyup paste', '.line-height input', function() {
 				control.saveValue( 'line-height', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-top.
-		if ( control.params.default['margin-top'] ) {
+		if ( 'undefined' !== typeof control.params.default['margin-top'] ) {
 			this.container.on( 'change keyup paste', '.margin-top input', function() {
 				control.saveValue( 'margin-top', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-bottom.
-		if ( control.params.default['margin-bottom'] ) {
+		if ( 'undefined' !== typeof control.params.default['margin-bottom'] ) {
 			this.container.on( 'change keyup paste', '.margin-bottom input', function() {
 				control.saveValue( 'margin-bottom', jQuery( this ).val() );
 			} );
 		}
 
 		// Letter-spacing.
-		if ( control.params.default['letter-spacing'] ) {
+		if ( 'undefined' !== typeof control.params.default['letter-spacing'] ) {
 			value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 			this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 				value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
@@ -4953,35 +4973,35 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		}
 
 		// Word-spacing.
-		if ( control.params.default['word-spacing'] ) {
+		if ( 'undefined' !== typeof control.params.default['word-spacing'] ) {
 			this.container.on( 'change keyup paste', '.word-spacing input', function() {
 				control.saveValue( 'word-spacing', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-align.
-		if ( control.params.default['text-align'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-align'] ) {
 			this.container.on( 'change', '.text-align input', function() {
 				control.saveValue( 'text-align', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-transform.
-		if ( control.params.default['text-transform'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-transform'] ) {
 			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-decoration.
-		if ( control.params.default['text-decoration'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-decoration'] ) {
 			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-decoration', jQuery( this ).val() );
 			} );
 		}
 
 		// Color.
-		if ( ! _.isUndefined( control.params.default.color ) ) {
+		if ( 'undefined' !== typeof control.params.default.color ) {
 			picker = this.container.find( '.kirki-color-control' );
 			picker.wpColorPicker( {
 				change: function() {
@@ -5074,7 +5094,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 
 		// Set the initial value.
 		if ( value['font-family'] || '' === value['font-family'] ) {
-			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
+			value['font-family'] = kirki.util.parseHtmlEntities( value['font-family'].replace( /'/g, '"' ) );
+			fontSelect.val( value['font-family'] ).trigger( 'change' );
 		}
 
 		// When the value changes
@@ -5149,9 +5170,9 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 	 * Displays font-variants for the currently selected font-family.
 	 */
 	renderVariantSelector: function() {
-		
+
 		var control    = this,
-			value      = control.value,
+			value      = control.setting._value,
 			fontFamily = value['font-family'],
 			selector   = control.selector + ' .variant select',
 			data       = [],
@@ -5198,7 +5219,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			} else {
 				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
-				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+				fontStyle  = ( value.variant && -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
 			}
 
 			control.saveValue( 'font-weight', fontWeight );
@@ -5523,11 +5544,12 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		}
 		else
 		{
+			delete compiled.global.loaded;
 			delete compiled.desktop;
 			delete compiled.tablet;
 			delete compiled.mobile;
 		}
-		input.val( JSON.stringify( compiled ) ).trigger( 'change' );
+		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	

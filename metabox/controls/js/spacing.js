@@ -249,7 +249,7 @@
 								'padding': padding
 							};
 							data = JSON.stringify( data );
-							input.val( data ).trigger( 'change' );
+							input.attr( 'value', data ).trigger( 'change' );
 							save_tid = 0;
 					}, 1000 );
 				}

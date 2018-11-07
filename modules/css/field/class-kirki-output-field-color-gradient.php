@@ -16,12 +16,8 @@ class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
 			)
 		);
 		
-		if ( !is_array( $value ) || empty( $output['element'] ) ) {
+		if ( !is_array( $value ) || empty( $output['element'] ) )
 			return;
-		}
-		
-		if ( !is_array( $output['element'] ) )
-			$output['element'] = array( $output['element'] );
 		
 		$value = Kirki_Field_Color_Gradient::sanitize( $value );
 		
@@ -31,10 +27,7 @@ class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
 		$location = $value['location'];
 		$direction = $value['direction'];
 		
-		foreach ( $output['element'] as $el )
-		{
-			$this->styles[ 'global' ][ $el ][$property] =
-				"linear-gradient({$direction}, {$color1} {$location}, {$color2});";
-		}
+		$this->styles[ 'global' ][ $output['element'] ][$property] =
+			"linear-gradient({$direction}, {$color1} {$location}, {$color2});";
 	}
 }

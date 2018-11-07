@@ -27,12 +27,7 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
-		$breakpoints = [
-			'global' => 'global',
-			'desktop' => '@media screen and (min-width: 992px)',
-			'tablet' => '@media screen and (min-width: 768px and max-width: 991px)',
-			'mobile' => '@media screen and (max-width: 767px)'
-		];
+		$breakpoints = Kirki::get_config_param( $this->field['kirki_config'], 'media_queries' );
 		if ( !$value )
 			return;
 		
@@ -96,7 +91,7 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 			$breakpoint = $breakpoints[$device];
 			foreach ( Kirki_Field_Typography_Advanced::$device_properties as $property ) 
 			{
-				if ( !isset( $device_value[ $property ] ) )
+				if ( !isset( $device_value[ $property ] ) || !$device_value[ $property] )
 					continue;
 				$property_value = $this->process_property_value( $property, $device_value[ $property ] );
 				$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;

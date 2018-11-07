@@ -123,7 +123,7 @@ class Kirki_Output {
 			}
 			
 			if ( ! is_array( $value ) ) {
-				$value = str_replace( '$', $value, $post_meta_value ? $post_meta_value : $output['value_pattern'] );
+				$value = str_replace( '$', $post_meta_value ? $post_meta_value : $value, $output['value_pattern'] );
 			}
 			
 			if ( is_array( $value ) ) {
