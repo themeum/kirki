@@ -316,7 +316,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_modules_css() {
-		return $this->modules_css = Kirki_Modules_CSS::get_instance();
+		$this->modules_css = Kirki_Modules_CSS::get_instance();
 	}
 
 	/**
@@ -326,7 +326,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_google_fonts() {
-		return $this->google_fonts = Kirki_Fonts_Google::get_instance();
+		$this->google_fonts = Kirki_Fonts_Google::get_instance();
 	}
 
 	/**
@@ -336,7 +336,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_modules_webfonts() {
-		return $this->modules_webfonts = Kirki_Modules_Webfonts::get_instance();
+		$this->modules_webfonts = Kirki_Modules_Webfonts::get_instance();
 	}
 
 	/**
@@ -346,6 +346,6 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_modules_webfont_loader() {
-		return $this->modules_webfont_loader = Kirki_Modules_Webfont_Loader::get_instance();
+		$this->modules_webfont_loader = Kirki_Modules_Webfont_Loader::get_instance();
 	}
 }
