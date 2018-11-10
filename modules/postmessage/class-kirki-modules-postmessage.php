@@ -97,9 +97,6 @@ class Kirki_Modules_PostMessage {
 			if ( ! isset( $js_var['function'] ) || 'html' !== $js_var['function'] ) {
 				$add_css = true;
 			}
-			if ( isset( $js_var['context'] ) && ! in_array( 'front', $js_var['context'] ) ) {
-				$add_css = false;
-			}
 		}
 
 		if ( $add_css ) {
