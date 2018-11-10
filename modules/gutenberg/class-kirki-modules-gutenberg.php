@@ -306,7 +306,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_enabled() {
-		return $this->enabled = ! $this->is_disabled();
+		$this->enabled = ! $this->is_disabled();
 	}
 
 	/**
