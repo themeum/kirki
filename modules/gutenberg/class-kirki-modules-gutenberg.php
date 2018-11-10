@@ -192,8 +192,9 @@ class Kirki_Modules_Gutenberg {
 				continue;
 			}
 
-			$styles = $this->modules_css::loop_controls( $config_id );
-			$styles = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
+			$modules_css = $this->modules_css;
+			$styles      = $modules_css::loop_controls( $config_id );
+			$styles      = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
 
 			if ( empty( $styles ) ) {
 				continue;
@@ -280,8 +281,8 @@ class Kirki_Modules_Gutenberg {
 			if ( $this->is_disabled( $args ) ) {
 				continue;
 			}
-
-			if ( $this->modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) {
+			$modules_css = $this->modules_css;
+			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) {
 				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
 			}
 
