@@ -308,7 +308,7 @@ class Kirki_Modules_CSS {
 	 * fontawesome script on the frontend.
 	 *
 	 * @static
-	 * @since 3.0.35
+	 * @since 3.0.26
 	 * @access public
 	 * @return void
 	 */
@@ -320,7 +320,7 @@ class Kirki_Modules_CSS {
 	 * Check if FontAwesome should be loaded.
 	 *
 	 * @static
-	 * @since 3.0.26
+	 * @since 3.0.35
 	 * @access public
 	 * @return void
 	 */
