@@ -144,6 +144,7 @@ class Kirki_Modules_CSS {
 
 			// If we're in the customizer, load inline no matter what.
 			add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'inline_dynamic_css' ), $priority );
 
 			// If we're using file method, on save write the new styles.
 			if ( 'file' === $method ) {
@@ -179,6 +180,9 @@ class Kirki_Modules_CSS {
 
 		// If we got this far then add styles inline.
 		add_action( 'wp_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
+
+		// Admin styles, adds Gutenberg compatibility.
+		add_action( 'admin_enqueue_scripts', array( $this, 'inline_dynamic_css' ), $priority );
 	}
 
 	/**
@@ -319,5 +323,17 @@ class Kirki_Modules_CSS {
 	 */
 	public static function add_fontawesome_script() {
 		self::$enqueue_fa = true;
+	}
+
+	/**
+	 * Check if FontAwesome should be loaded.
+	 *
+	 * @static
+	 * @since 3.0.35
+	 * @access public
+	 * @return void
+	 */
+	public static function get_enqueue_fa() {
+		return self::$enqueue_fa;
 	}
 }
