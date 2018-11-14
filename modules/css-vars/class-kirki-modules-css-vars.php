@@ -43,8 +43,9 @@ class Kirki_Modules_CSS_Vars {
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'wp_head', array( $this, 'the_style' ), 0 );
-		add_action( 'admin_head', array( $this, 'the_style' ), 0 );
+		$priority = 999;
+		add_action( 'wp_head', array( $this, 'the_style' ), $priority );
+		add_action( 'admin_head', array( $this, 'the_style' ), $priority );
 		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 	}
 
