@@ -84,6 +84,7 @@ final class Kirki_Config {
 	 * Setup initially to match the WordPress preview window.
 	 */
 	protected $media_queries = array(
+		'global' => 'global',
 		'desktop' => '@media screen and (min-width: 992px)',
 		'tablet' => '@media screen and (min-width: 576px) and (max-width: 991px)',
 		'mobile' => '@media screen and (max-width: 320px)'
@@ -120,11 +121,13 @@ final class Kirki_Config {
 
 		$this->config_final = wp_parse_args(
 			array(
-				'id' => $config_id,
-				'media_queries' => $this->media_queries
+				'id' => $config_id
 			),
 			$args
 		);
+		
+		if ( !isset( $this->config_final['media_queries']['global'] ) )
+			$this->config_final['global'] = 'global'; //Pollyfill the global media query if needed (Most likely if there was user/dev input).
 	}
 
 	/**

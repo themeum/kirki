@@ -194,7 +194,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
-				device_change: function( device, enabled )
+				device_change: function( enabled, device )
 				{
 					control.selected_device = device;
 					control.value.use_media_queries = enabled;
@@ -350,6 +350,11 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			delete compiled.desktop.loaded;
 			delete compiled.tablet.loaded;
 			delete compiled.mobile.loaded;
+			
+			// if ( control.value.mobile.value == '' )
+			// 	compiled.mobile = compiled.tablet;
+			// if ( control.value.tablet.value == '' )
+			// 	compiled.tablet = compiled.desktop;
 		}
 		else
 		{
@@ -358,7 +363,7 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 			delete compiled.mobile;
 			delete compiled.global.loaded;
 		}
-		console.log ( compiled );
+		
 		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
 	},

@@ -85,6 +85,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		
 		control.rangeInput.trigger( changeAction );
 	},
+	
 	initValue: function()
 	{
 		var control = this,
@@ -159,7 +160,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		if ( control.params.use_media_queries )
 		{
 			kirki.util.helpers.media_query( control, control.value.use_media_queries, {
-				device_change: function( device, enabled )
+				device_change: function( enabled, device )
 				{
 					control.selected_device = device;
 					control.value.use_media_queries = enabled;

@@ -300,144 +300,153 @@ kirki = jQuery.extend( kirki, {
 		helpers: {
 			media_query: function( control, init_enabled, args )
 			{
-				if ( _.isUndefined( control.params.use_media_queries ) )
+				var trigger_device_change = function( device )
+				{
+					jQuery( '.kirki-responsive-switchers' ).trigger( 'breakpoint_changed', [device] );
+				};
+				var customizer_footer_actions = $( '#customize-footer-actions' );
+				var DESKTOP_DEVICE = 0,
+					TABLET_DEVICE = 1,
+					MOBILE_DEVICE = 2;
+				
+				if ( _.isUndefined( control.params.use_media_queries ) ||
+					 !control.params.use_media_queries )
 					return;
+				
 				var container = control.container,
-					switcher_containers = container.find( '.kirki-responsive-switchers' ),
-					preview_desktop = jQuery( 'button.preview-desktop' ),
-					preview_tablet = jQuery( 'button.preview-tablet' ),
-					preview_mobile = jQuery( 'button.preview-mobile' );
-				var click_query_btn = function( type )
+					query_containers = container.find( '.kirki-responsive-switchers' );
+				
+				query_containers.each( function()
 				{
-					var btns = null;
-					if ( type === 'global' )
-						btns = $( '.kirki-responsive-switchers[active-device!="global"] li.desktop' );
-					else
-						btns = $( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type );
-					btns.addClass( 'do-not-click' ).click();
-				};
-				var is_on_device = function( device )
-				{
-					return $( '.preview-' + device + '.active' ).length > 0;
-				};
-				var set_active_device = function( container, device, skip_click )
-				{
-					container.attr( 'active-device', device );
-					if ( !skip_click )
-						click_query_btn( device );
-				};
-				switcher_containers.each( function()
-				{
-					var container = $( this ),
-						desktop_btn = container.find( 'li.desktop' ),
-						tablet_btn = container.find( 'li.tablet' ),
-						mobile_btn = container.find( 'li.mobile' ),
-						active_device = 0,
-						enabled = init_enabled,
-						enable_breakpoint_change = true;
+					var self = $( this ),
+						desktop_btn = self.find( 'li.desktop' ),
+						tablet_btn = self.find( 'li.tablet' ),
+						mobile_btn = self.find( 'li.mobile' ),
+						enabled = init_enabled;
 					
-					$( window ).on( 'breakpoint_change', function( e, type )
+					var change_device = function( device )
 					{
-						if ( !enable_breakpoint_change )
+						if ( device == DESKTOP_DEVICE )
 						{
-							container.removeClass( 'skip-preview' );
-							return;
-						}
-						if ( enabled )
-						{
-							$( '.kirki-responsive-switchers[active-device!="' + type + '"] li.' + type)
-								.addClass( 'do-not-click' )
-								.click();
-						}
-					});
-					
-					set_active_device( container, init_enabled ? 'desktop' : 'global', true );
-					desktop_btn.click( function( e )
-					{
-						var self = $( this );
-						e.preventDefault();
-						e.stopImmediatePropagation();
-						setTimeout(function()
-						{
-							if ( !is_on_device( 'desktop' ) )
+							if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
 							{
-								enable_breakpoint_change = false;
-								preview_desktop.click();
-								enable_breakpoint_change = true;
-							}
-						}, 100);
-						if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
-						{
-							desktop_btn.toggleClass( 'multiple' );
-							if ( desktop_btn.hasClass( 'multiple' ) )
-							{
-								enabled = true;
-								tablet_btn.removeClass( 'hidden' );
-								mobile_btn.removeClass( 'hidden' );
+								desktop_btn.toggleClass( 'multiple' );
+								if ( desktop_btn.hasClass( 'multiple' ) )
+								{
+									enabled = true;
+									tablet_btn.removeClass( 'hidden' );
+									mobile_btn.removeClass( 'hidden' );
+								}
+								else
+								{
+									enabled = false;
+									tablet_btn.addClass( 'hidden' );
+									mobile_btn.addClass( 'hidden' );
+								}
 							}
 							else
 							{
-								enabled = false;
-								tablet_btn.addClass( 'hidden' );
-								mobile_btn.addClass( 'hidden' );
+								tablet_btn.removeClass( 'active' );
+								mobile_btn.removeClass( 'active' );
 							}
-							args.device_change( active_device, enabled );
-							set_active_device( container, enabled ? 'desktop' : 'global', self.hasClass( 'do-not-click' ) );
 						}
-						else
+						else if ( device == TABLET_DEVICE )
 						{
-							active_device = 0;
-							tablet_btn.removeClass( 'active' );
+							if ( !enabled )
+							{
+								enabled = true;
+								
+								tablet_btn.removeClass( 'hidden' );
+								mobile_btn.removeClass( 'hidden' );
+								
+								desktop_btn.addClass( 'multiple' );
+							}
 							mobile_btn.removeClass( 'active' );
-							//self.addClass( 'do-not-click' );
-							set_active_device( container, 'desktop', true );
-							args.device_change( active_device, enabled );
+							tablet_btn.addClass( 'active' );
 						}
-						self.removeClass( 'do-not-click' );
-					});
-					tablet_btn.click( function(e)
+						else if ( device == MOBILE_DEVICE )
+						{
+							if ( !enabled )
+							{
+								enabled = true;
+								
+								tablet_btn.removeClass( 'hidden' );
+								mobile_btn.removeClass( 'hidden' );
+								
+								desktop_btn.addClass( 'multiple' );
+							}
+							tablet_btn.removeClass( 'active' );
+							mobile_btn.addClass( 'active' );
+						}
+						setTimeout( function()
+						{
+							args.device_change( enabled, device );
+						}, 200);
+					};
+					
+					if ( enabled )
+						change_device( DESKTOP_DEVICE );
+					
+					self.on ( 'breakpoint_changed', function( e, device )
 					{
-						e.preventDefault();
-						e.stopImmediatePropagation();
-						if ( !is_on_device( 'tablet' ) )
-							preview_tablet.click();
-						active_device = 1;
-						mobile_btn.removeClass( 'active' );
-						tablet_btn.addClass( 'active' );
-						set_active_device( container, 'tablet' );
-						args.device_change( active_device, enabled );
+						change_device( device );
 					});
-					mobile_btn.click( function(e)
+					
+					desktop_btn.click( function( e )
 					{
-						e.preventDefault();
-						e.stopImmediatePropagation();
-						if ( !is_on_device( 'mobile' ) )
-							preview_mobile.click();
-						active_device = 2;
-						mobile_btn.addClass( 'active' );
-						tablet_btn.removeClass( 'active' );
-						set_active_device( container, 'mobile' );
-						args.device_change( active_device, enabled );
+						e.stopPropagation();
+						trigger_device_change( DESKTOP_DEVICE );
+						customizer_footer_actions.addClass( 'skip-trigger' );
+						preview_desktop.click();
 					});
-					if ( init_enabled )
-						desktop_btn.click();
+					tablet_btn.click( function( e )
+					{
+						e.stopPropagation();
+						trigger_device_change( TABLET_DEVICE );
+						customizer_footer_actions.addClass( 'skip-trigger' );
+						preview_tablet.click();
+					});
+					mobile_btn.click( function( e )
+					{
+						e.stopPropagation();
+						trigger_device_change( MOBILE_DEVICE );
+						customizer_footer_actions.addClass( 'skip-trigger' );
+						preview_mobile.click();
+					});
 				});
 				
-				preview_desktop.click( function()
+				//Footer desktop/tablet/mobile preview buttons.
+				var preview_desktop = jQuery( 'button.preview-desktop' ),
+					preview_tablet = jQuery( 'button.preview-tablet' ),
+					preview_mobile = jQuery( 'button.preview-mobile' );
+				if ( !customizer_footer_actions.hasClass( 'media-query-callback' ) )
 				{
-					container.addClass( 'skip-preview' );
-					$( window ).trigger( 'breakpoint_change', ['desktop'] );
-				});
-				preview_tablet.click( function()
-				{
-					container.addClass( 'skip-preview' );
-					$( window ).trigger( 'breakpoint_change', ['tablet'] );
-				});
-				preview_mobile.click( function()
-				{
-					container.addClass( 'skip-preview' );
-					$( window ).trigger( 'breakpoint_change', ['mobile'] );
-				});
+					var trigger_device = function( device )
+					{
+						if ( customizer_footer_actions.hasClass( 'skip-trigger' ) )
+						{
+							customizer_footer_actions.removeClass( 'skip-trigger' )
+							return;
+						}
+						trigger_device_change( device );
+					};
+					customizer_footer_actions.addClass( 'media-query-callback' );
+					preview_desktop.click( function( e )
+					{
+						e.stopPropagation();
+						trigger_device( DESKTOP_DEVICE );
+					});
+					preview_tablet.click( function( e )
+					{
+						e.stopPropagation();
+						trigger_device( TABLET_DEVICE );
+					});
+					preview_mobile.click( function( e )
+					{
+						e.stopPropagation();
+						trigger_device( MOBILE_DEVICE );
+					});
+				}
 			}
 		},
 
