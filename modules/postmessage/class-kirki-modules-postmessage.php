@@ -75,6 +75,8 @@ class Kirki_Modules_PostMessage {
 				$data[] = $field;
 			}
 		}
+		// Reset this to null to fix media query check inside JS.
+		$breakpoints['global'] = null;
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiMediaQueries', $breakpoints );
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
 	}
