@@ -127,7 +127,7 @@ final class Kirki_Config {
 		);
 		
 		if ( !isset( $this->config_final['media_queries']['global'] ) )
-			$this->config_final['global'] = 'global'; //Pollyfill the global media query if needed (Most likely if there was user/dev input).
+			$this->config_final['media_queries']['global'] = 'global'; //Pollyfill the global media query if needed (Most likely if there was user/dev input).
 	}
 
 	/**
