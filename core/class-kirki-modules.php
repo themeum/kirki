@@ -42,17 +42,19 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public function __construct() {
-		$this->default_modules();
-		$this->init();
+		add_action( 'after_setup_theme', array( $this, 'setup_default_modules' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'init' ), 11 );
 	}
 
 	/**
 	 * Set the default modules and apply the 'kirki_modules' filter.
+	 * In v3.0.35 this method was renamed from default_modules to setup_default_modules,
+	 * and its visibility changed from private to public to fix https://github.com/aristath/kirki/issues/2023
 	 *
-	 * @access private
+	 * @access public
 	 * @since 3.0.0
 	 */
-	private function default_modules() {
+	public function setup_default_modules() {
 		self::$modules = apply_filters(
 			'kirki_modules', array(
 				'css'                => 'Kirki_Modules_CSS',
@@ -76,11 +78,13 @@ class Kirki_Modules {
 
 	/**
 	 * Instantiates the modules.
+	 * In v3.0.35 the visibility for this method was changed
+	 * from private to public to fix https://github.com/aristath/kirki/issues/2023
 	 *
-	 * @access private
+	 * @access public
 	 * @since 3.0.0
 	 */
-	private function init() {
+	public function init() {
 		foreach ( self::$modules as $key => $module_class ) {
 			if ( class_exists( $module_class ) ) {
 				// Use this syntax instead of $module_class::get_instance()
