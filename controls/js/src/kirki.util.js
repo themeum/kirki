@@ -447,6 +447,23 @@ kirki = jQuery.extend( kirki, {
 						trigger_device( MOBILE_DEVICE );
 					});
 				}
+			},
+			unit_select: function( control, args )
+			{
+				var container = control.container,
+					unit_radios = jQuery( '.kirki-units-choices input[type="radio"]', container );
+				if ( args.selected_unit )
+					unit_radios.filter( '[value="' + args.selected_unit + '"]' ).click();
+				else
+					unit_radios.first().click();
+				last_unit = unit_radios.filter( ':checked' ).val();
+				unit_radios.on( 'change', function()
+				{
+					var unit_radio = $( this ),
+						new_unit = unit_radio.val();
+					if ( args.unit_changed )
+						args.unit_changed ( new_unit );
+				});
 			}
 		},
 
@@ -464,6 +481,11 @@ kirki = jQuery.extend( kirki, {
 				);
 
 			return dom.body.textContent;
+		},
+		
+		parseNumber: function( str ){
+			var numberRegex = /[0-9]\d{0,9}(\.\d{1,3})?%?/gm;
+			return str.match( numberRegex );
 		}
 	}
 } );

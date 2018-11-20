@@ -267,12 +267,17 @@ var kirkiPostMessage = {
 					break;
 				case 'kirki-border':
 					styles += output.element + '{';
-					styles += 'border-style: ' + value['border-style'] + ';';
-					styles += 'border-width: ' + ( value['border-top'] + 'px ' ) +
-						( value['border-right'] + 'px ' ) +
-						( value['border-bottom'] + 'px ' ) +
-						( value['border-left'] + 'px ' ) + ';';
-					styles += 'border-color: ' + value['border-color'] + ';';
+					var border_width = [];
+					_.each( ['top', 'right', 'bottom', 'left'], function( position )
+					{
+						border_width.push( value[position] );
+					});
+					styles += 'border-style: ' + value['style'] + ';';
+					if ( value['style'] !== 'none' )
+					{
+						styles += 'border-width: ' + border_width.join( ' ' ) + ';' ;
+						styles += 'border-color: ' + value['color'] + ';';
+					}
 					styles += '}';
 					break;
 				case 'kirki-color-gradient':

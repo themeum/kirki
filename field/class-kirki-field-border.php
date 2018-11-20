@@ -61,12 +61,13 @@ class Kirki_Field_Border extends Kirki_Field {
 			return array();
 		}
 		return array(
-			'border-style'     => ( isset( $value['border-style'] ) ) ? esc_attr( $value['border-style'] ) : '',
-			'border-top'       => ( isset( $value['border-top'] ) ) ? intval( $value['border-top'] ) : '',
-			'border-right'     => ( isset( $value['border-right'] ) ) ? intval( $value['border-right'] ) : '',
-			'border-bottom'    => ( isset( $value['border-bottom'] ) ) ? intval( $value['border-bottom'] ) : '',
-			'border-left'      => ( isset( $value['border-left'] ) ) ? intval( $value['border-left'] ) : '',
-			'border-color'     => ( isset( $value['border-color'] ) ) ? esc_attr( $value['border-color'] ) : ''
+			'style'     => ( isset( $value['style'] ) ) ? esc_attr( $value['style'] ) : '',
+			'top'       => ( isset( $value['top'] ) ) ? esc_attr( $value['top'] ) : 0,
+			'right'     => ( isset( $value['right'] ) ) ? esc_attr ( $value['right'] ) : 0,
+			'bottom'    => ( isset( $value['bottom'] ) ) ? esc_attr( $value['bottom'] ) : 0,
+			'left'      => ( isset( $value['left'] ) ) ? esc_attr( $value['left'] ) : 0,
+			'color'     => ( isset( $value['color'] ) ) ? esc_attr( $value['color'] ) : 0,
+			'unit'      => ( isset( $value['unit'] ) ) ? esc_attr( $value['unit'] ) : 'px',
 		);
 	}
 
