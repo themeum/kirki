@@ -25,8 +25,14 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 	 */
 	public $type = 'kirki-border';
 	
+	/**
+	 * The all units mode
+	 */
+	public $all_units = false;
+	
 	public function to_json() {
 		parent::to_json();
+		$this->json['all_units'] = $this->all_units;
 		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
 			'style'  => '',
 			'top'    => '',
@@ -34,7 +40,6 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 			'bottom' => '',
 			'left'   => '',
 			'color'  => '',
-			'all_units' => false,
 			'units' => array( 'px' ),
 		) );
 	}
@@ -45,8 +50,10 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 		<label>
 			<div class="kirki-units-choices-outer">
 				<#
-				if ( data.choices.units ) {
-					if ( data.choices.all_units )
+				if ( data.choices.units || data.all_units ) {
+					if ( _.isUndefined( data.choices ) )
+						data.choices = [];
+					if ( data.all_units )
 						data.choices.units.push ( 'all' );
 					_.each( data.choices.units, function( unit ) {
 				#>
