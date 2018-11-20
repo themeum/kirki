@@ -485,7 +485,9 @@ kirki = jQuery.extend( kirki, {
 		
 		parseNumber: function( str ){
 			var numberRegex = /[0-9]\d{0,9}(\.\d{1,3})?%?/gm;
-			return str.match( numberRegex );
+			if ( typeof str === 'undefined' )
+				return '';
+			return str.toString().match( numberRegex );
 		}
 	}
 } );

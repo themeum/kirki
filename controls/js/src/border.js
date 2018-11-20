@@ -10,14 +10,15 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		
 		if ( !value && control.params.default )
 			value = control.params.default;
-		
 		if ( value )
 		{
 			if ( value['unit'] === 'all' )
 				inputs.attr( 'type', 'text' );
-			style_select.val ( value['style'] );
+			style_select.val( value['style'] || 'none' );
 			control.fill_inputs( value );
 		}
+		else
+			style_select.val( 'none' );
 		
 		color_picker.attr( 'data-default-color', value['color'] )
 			.data( 'default-color', value['color'] )
