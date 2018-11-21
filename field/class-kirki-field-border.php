@@ -67,7 +67,7 @@ class Kirki_Field_Border extends Kirki_Field {
 			'bottom'    => ( isset( $value['bottom'] ) ) ? esc_attr( $value['bottom'] ) : 0,
 			'left'      => ( isset( $value['left'] ) ) ? esc_attr( $value['left'] ) : 0,
 			'color'     => ( isset( $value['color'] ) ) ? esc_attr( $value['color'] ) : 0,
-			'unit'      => ( isset( $value['unit'] ) ) ? esc_attr( $value['unit'] ) : 'px',
+			'unit'      => ( isset( $value['unit'] ) ) ? esc_attr( $value['unit'] ) : 'px'
 		);
 	}
 

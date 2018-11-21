@@ -33,7 +33,9 @@ class Kirki_Output_Field_Border extends Kirki_Output {
 		$border_width = [];
 		
 		foreach ( ['top', 'right', 'bottom', 'left'] as $pos )
+		{
 			$border_width[] = $value[$pos];
+		}
 		
 		$this->styles[ 'global' ][ $output['element'] ]['border-style'] = $border_style;
 		$this->styles[ 'global' ][ $output['element'] ]['border-width'] = join ( ' ', $border_width );
