@@ -99,10 +99,12 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	fill_inputs: function( value )
 	{
 		var control = this;
-		_.each( ['top', 'right', 'bottom', 'left'], function( position )
+		_.each( ['top', 'right', 'bottom', 'left'], function( side )
 		{
-			var input = jQuery( '[data-border-position="' + position + '"]', control.container ),
-				border_val = value[position];
+			if ( _.isUndefined( control.params.default[side] ))
+				return false;
+			var input = jQuery( '[data-side="' + side + '"]', control.container ),
+				border_val = value[side];
 			if ( value['unit'] !== 'all' )
 				border_val = kirki.util.parseNumber( border_val );
 			input.val( border_val );
@@ -113,7 +115,6 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	{
 		var new_val = {};
 		var control = this,
-			defaults = control.params.default,
 			container = this.container,
 			input = jQuery( '.border-hidden-value', container ),
 			border_style = jQuery( '.border-style select', container).val(),
@@ -122,21 +123,20 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		new_val['style'] = border_style;
 		new_val['unit'] = control.has_units ? selected_unit.val() : 'all';
 		new_val['color'] = color;
-		_.each( ['top', 'right', 'bottom', 'left'], function ( position )
+		_.each( ['top', 'right', 'bottom', 'left'], function ( side )
 		{
-			if ( !_.isUndefined( defaults[position] ) && defaults[position] == false )
+			if ( _.isUndefined( control.params.default[side] ) )
 			{
-				new_val[position] = 0;
+				new_val[side] = 0;
 				return false;
 			}
-			var val = jQuery( 'input[data-border-position="' + position + '"]', container).val();
+			var val = jQuery( 'input[data-side="' + side + '"]', container).val();
 			if ( val === '' )
 				val = 0;
 			if ( new_val['unit'] !== 'all' )
 				val += new_val['unit'];
-			new_val[position] = val;
+			new_val[side] = val;
 		});
-		console.log ( new_val );
 		input.attr( 'value', JSON.stringify ( new_val ) ).trigger( 'change' );
 		control.setting.set( new_val );
 	}

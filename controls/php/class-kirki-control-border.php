@@ -39,7 +39,7 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 		?>
 		<label>
 			<#
-			if ( data.choices.units  ) {
+			if ( data.choices.units ) {
 				_.each( data.choices.units, function( unit ) {
 			#>
 			<div class="kirki-units-choices-outer">
@@ -69,12 +69,12 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 				<div class="kirki-control-type-dimensions">
 					<ul class="kirki-control-dimensions">
 						<# _.each( ['top', 'right', 'bottom', 'left'], function( side ) {
-							if ( data.default && data.default[side] == false )
+							if ( _.isUndefined( data.default[side] ) )
 								return false;
 							var label = side.charAt( 0 ).toUpperCase() + side.substring( 1 );
 						#>
 						<li class="kirki-control-dimension">
-							<input type="number" id="{{{ data.id }}}-{{{ side }}}" data-border-position="{{{ side }}}">
+							<input type="number" id="{{{ data.id }}}-{{{ side }}}" data-side="{{{ side }}}">
 							<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
 						</li>
 						<# }); #>

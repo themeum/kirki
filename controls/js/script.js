@@ -2081,10 +2081,12 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	fill_inputs: function( value )
 	{
 		var control = this;
-		_.each( ['top', 'right', 'bottom', 'left'], function( position )
+		_.each( ['top', 'right', 'bottom', 'left'], function( side )
 		{
-			var input = jQuery( '[data-border-position="' + position + '"]', control.container ),
-				border_val = value[position];
+			if ( _.isUndefined( control.params.default[side] ))
+				return false;
+			var input = jQuery( '[data-side="' + side + '"]', control.container ),
+				border_val = value[side];
 			if ( value['unit'] !== 'all' )
 				border_val = kirki.util.parseNumber( border_val );
 			input.val( border_val );
@@ -2095,7 +2097,6 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 	{
 		var new_val = {};
 		var control = this,
-			defaults = control.params.default,
 			container = this.container,
 			input = jQuery( '.border-hidden-value', container ),
 			border_style = jQuery( '.border-style select', container).val(),
@@ -2104,21 +2105,20 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		new_val['style'] = border_style;
 		new_val['unit'] = control.has_units ? selected_unit.val() : 'all';
 		new_val['color'] = color;
-		_.each( ['top', 'right', 'bottom', 'left'], function ( position )
+		_.each( ['top', 'right', 'bottom', 'left'], function ( side )
 		{
-			if ( !_.isUndefined( defaults[position] ) && defaults[position] == false )
+			if ( _.isUndefined( control.params.default[side] ) )
 			{
-				new_val[position] = 0;
+				new_val[side] = 0;
 				return false;
 			}
-			var val = jQuery( 'input[data-border-position="' + position + '"]', container).val();
+			var val = jQuery( 'input[data-side="' + side + '"]', container).val();
 			if ( val === '' )
 				val = 0;
 			if ( new_val['unit'] !== 'all' )
 				val += new_val['unit'];
-			new_val[position] = val;
+			new_val[side] = val;
 		});
-		console.log ( new_val );
 		input.attr( 'value', JSON.stringify ( new_val ) ).trigger( 'change' );
 		control.setting.set( new_val );
 	}
@@ -4050,40 +4050,11 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		};
 		control.all_units = all_units;
 		control.initial_input = false;
-		control.areas = ['top','right','bottom','left'];
-		control.units = [];
-		units_radios.each(function()
-		{
-			var radio = $( this );
-			control.units.push( radio.val() );
-		});
-		if ( all_units )
-		{
-			control.units.push ( 'all' );
-			
-			if ( control.units.length === 1 )
-				units_radios.hide();
-		}
 		
 		//Setup our value to manipulate.
 		control.initValue();
 		control.initMediaQueries();
 		control.setVisible();
-		
-		var top_value = null;
-		//Load the unit
-		if ( use_media_queries )
-			top_value = control.value.desktop.top;
-		else
-			top_value = control.value.global.top;
-		
-		var unit = control.parseValue( top_value ).unit;
-		units_radios.filter( '[value="' + unit + '"]' ).prop( 'checked', true );
-		if ( units_radios.filter ( ':checked' ).length == 0)
-		{
-			var first_unit = units_radios.first();
-			first_unit.prop( 'checked', true );
-		}
 		
 		control.selected_unit = units_radios.filter( ':checked' ).val();
 		control.initUnitSelect( units_radios );
@@ -4254,7 +4225,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 								units_radios.first().click();
 							control.selected_unit = units_radios.filter ( ':checked' ).val();
 						}
-						control.checkInputs();
+						  
 						if ( choices.top && control.selected_unit !== 'all' )
 							top = top.replace( control.textFindRegex, '' );
 						if ( choices.right && control.selected_unit !== 'all' )
@@ -4330,23 +4301,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		});
 	},
 	
-	checkInputs: function()
-	{
-		var control = this;
-		if ( control.selected_unit === 'all' )
-			control.all_inputs.attr( 'type', 'text' );
-		else
-		{
-			control.all_inputs.each( function()
-			{
-				var input = $( this );
-				var val = input.val();
-				input.val( val.replace( control.textFindRegex, '' ) );
-			});
-			control.all_inputs.attr ( 'type', 'number' );
-		}
-	},
-	
 	getSelectedDeviceName: function()
 	{
 		var control = this,
@@ -4389,24 +4343,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		
 		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
 		control.setting.set( compiled );
-	},
-	
-	parseValue: function( value )
-	{
-		var control = this,
-			parser = /(\d+)(\w+|.)/gm;
-		var parsed = parser.exec( value );
-		if ( !parsed || parsed.length < 2 )
-		{
-			if ( !Number.isNaN( value ) )
-				return { value: value, unit: '' };
-			else
-				return { value: 0, unit: '' };
-		}
-		return {
-			value: parsed[1] || '',
-			unit: parsed[2] || ''
-		};
 	},
 	
 	defaultValue: function()
