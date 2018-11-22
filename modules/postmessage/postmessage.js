@@ -312,7 +312,13 @@ var kirkiPostMessage = {
 						
 						if ( media_query )
 							styles += media_query + '{';
-							
+						
+						_.each( ['top', 'right', 'bottom', 'left'], function( side )
+						{
+							if ( _.isEmpty( device_val[side] ) )
+								device_val[side] = 0;
+						});
+						
 						styles += output.element + '{';
 						styles += output.property + ': ' + 
 							[device_val['top'], device_val['right'], 

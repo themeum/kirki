@@ -39,6 +39,15 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 				$bottom = $devices[$device_name]['bottom'];
 				$left = $devices[$device_name]['left'];
 				
+				if ( empty( $top ) )
+					$top = 0;
+				if ( empty( $right ) )
+					$right = 0;
+				if ( empty( $bottom ) )
+					$bottom = 0;
+				if ( empty( $left ) )
+					$left = 0;
+				
 				$this->styles[$breakpoint][ $output['element'] ][ $output['property'] ] = 
 					$top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 			}
@@ -51,6 +60,16 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 			$right = $value['global']['right'];
 			$bottom = $value['global']['bottom'];
 			$left = $value['global']['left'];
+			
+			if ( empty( $top ) )
+				$top = 0;
+			if ( empty( $right ) )
+				$right = 0;
+			if ( empty( $bottom ) )
+				$bottom = 0;
+			if ( empty( $left ) )
+				$left = 0;
+			
 			$this->styles['global'][ $output['element'] ][ $output['property'] ] = 
 				$top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 		}
