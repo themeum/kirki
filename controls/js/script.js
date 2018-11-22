@@ -1447,8 +1447,7 @@ kirki = jQuery.extend( kirki, {
 					TABLET_DEVICE = 1,
 					MOBILE_DEVICE = 2;
 				
-				if ( _.isUndefined( control.params.choices.use_media_queries ) ||
-					 !control.params.choices.use_media_queries )
+				if ( !control.params.choices.use_media_queries && !control.params.use_media_queries )
 					return;
 				
 				var container = control.container,
@@ -2200,7 +2199,6 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		});
 		
 		new_val['color'] = color;
-		console.log( new_val );
 		input.attr( 'value', JSON.stringify ( new_val ) ).trigger( 'change' );
 		control.setting.set( new_val );
 	}
@@ -5551,7 +5549,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			delete compiled.tablet;
 			delete compiled.mobile;
 		}
-		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
+		var json = JSON.stringify( compiled ).replace( /'/g, '&#39' );
+		input.attr( 'value', json ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	

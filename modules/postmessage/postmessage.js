@@ -202,17 +202,23 @@ var kirkiPostMessage = {
 					styles += '}';
 					break;
 				case 'kirki-typography-advanced':
+					if ( typeof value === 'string' )
+						value = JSON.parse( value );
 					styles += output.element + '{';
 					_.each( value, function( val, key ) {
 						//Only output the global values.
-						if ( key in devices )
-							return;
+						if ( _.contains( devices, key ) )
+							return false;
+						if ( _.contains([ 'downloadFont', 'variant', 'use_media_queries' ], key ) )
+							return false;
 						if ( output.choice && key !== output.choice ) {
-							return;
+							return false;
 						}
 						processedValue = kirkiPostMessage.util.processValue( output, val );
 						if ( false !== processedValue ) {
-							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+							if ( key === 'font-family' )
+								processedValue = '\'' + processedValue + '\'';
+							styles += key + ':' + processedValue + ';';
 						}
 					} );
 					styles += '}';
@@ -220,7 +226,7 @@ var kirkiPostMessage = {
 					_.each( devices, function( device_name )
 					{
 						if ( _.isUndefined( value[device_name] ) )
-							return;
+							return false;
 						var device_val = value[device_name],
 							media_query = kirkiMediaQueries[device_name];
 						
@@ -230,7 +236,7 @@ var kirkiPostMessage = {
 						{
 							styles += output.element + '{';
 							if ( output.choice && key !== output.choice ) {
-								return;
+								return false;
 							}
 							processedValue = kirkiPostMessage.util.processValue( output, val );
 							if ( false !== processedValue ) {

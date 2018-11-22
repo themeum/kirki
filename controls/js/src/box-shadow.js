@@ -72,7 +72,6 @@ wp.customize.controlConstructor['kirki-box-shadow'] = wp.customize.kirkiDynamicC
 		});
 		
 		new_val['color'] = color;
-		console.log( new_val );
 		input.attr( 'value', JSON.stringify ( new_val ) ).trigger( 'change' );
 		control.setting.set( new_val );
 	}

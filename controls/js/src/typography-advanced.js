@@ -652,7 +652,8 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			delete compiled.tablet;
 			delete compiled.mobile;
 		}
-		input.attr( 'value', JSON.stringify( compiled ) ).trigger( 'change' );
+		var json = JSON.stringify( compiled ).replace( /'/g, '&#39' );
+		input.attr( 'value', json ).trigger( 'change' );
 		control.setting.set( compiled );
 	},
 	

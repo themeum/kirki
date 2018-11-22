@@ -309,8 +309,7 @@ kirki = jQuery.extend( kirki, {
 					TABLET_DEVICE = 1,
 					MOBILE_DEVICE = 2;
 				
-				if ( _.isUndefined( control.params.choices.use_media_queries ) ||
-					 !control.params.choices.use_media_queries )
+				if ( !control.params.choices.use_media_queries && !control.params.use_media_queries )
 					return;
 				
 				var container = control.container,
