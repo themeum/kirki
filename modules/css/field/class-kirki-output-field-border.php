@@ -32,9 +32,9 @@ class Kirki_Output_Field_Border extends Kirki_Output {
 		$border_color = isset( $value['color'] ) ? $value['color'] : '';
 		$border_width = [];
 		
-		foreach ( ['top', 'right', 'bottom', 'left'] as $pos )
+		foreach ( ['top', 'right', 'bottom', 'left'] as $side )
 		{
-			$border_width[] = $value[$pos];
+			$border_width[] = $value[$side];
 		}
 		
 		$this->styles[ 'global' ][ $output['element'] ]['border-style'] = $border_style;

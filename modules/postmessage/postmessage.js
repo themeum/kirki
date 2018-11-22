@@ -280,6 +280,22 @@ var kirkiPostMessage = {
 					}
 					styles += '}';
 					break;
+				case 'kirki-box-shadow':
+					styles += output.element + '{';
+					
+					styles += 'box-shadow: ';
+					
+					var props = [];
+					
+					_.each( ['h_offset', 'v_offset', 'blur', 'spread', 'color'], function( side )
+					{
+						props.push( value[side] );
+					});
+					
+					styles += props.join( ' ' ) + ';';
+					
+					styles += '}';
+					break;
 				case 'kirki-color-gradient':
 					styles += output.element + '{';
 					styles += 'background-image: linear-gradient(' + value['direction'] + ', ' + value['color1'] + ' ' + value['location'] + ', ' + value['color2'] + ');';

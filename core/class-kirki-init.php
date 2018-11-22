@@ -81,6 +81,7 @@ class Kirki_Init {
 			'checkbox'                  => 'Kirki_Control_Checkbox',
 			'kirki-background'          => 'Kirki_Control_Background',
 			'kirki-border'              => 'Kirki_Control_Border',
+			'kirki-box-shadow'          => 'Kirki_Control_Box_Shadow',
 			'code_editor'               => 'Kirki_Control_Code',
 			'kirki-color'               => 'Kirki_Control_Color',
 			'kirki-color-gradient'      => 'Kirki_Control_Color_Gradient',

@@ -101,6 +101,7 @@ class Kirki_Control_Spacing_Advanced extends Kirki_Control_Base {
 					</li>
 					<# } #>
 				</ul>
+			</div>
 			<input class="spacing-hidden-value" type="hidden" value="" {{{ data.link }}} />
 		</label>
 		<?php

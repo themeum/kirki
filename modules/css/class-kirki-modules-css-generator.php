@@ -173,6 +173,7 @@ final class Kirki_Modules_CSS_Generator {
 				'kirki-typography-advanced'      => 'Kirki_Output_Field_Typography_Advanced',
 				'kirki-multicolor'               => 'Kirki_Output_Field_Multicolor',
 				'kirki-border'                   => 'Kirki_Output_Field_Border',
+				'kirki-box-shadow'               => 'Kirki_Output_Field_Box_Shadow',
 				'kirki-slider-advanced'          => 'Kirki_Output_Field_Slider_Advanced',
 				'kirki-color-gradient'           => 'Kirki_Output_Field_Color_Gradient',
 				'kirki-spacing-advanced'         => 'Kirki_Output_Field_Spacing_Advanced'
