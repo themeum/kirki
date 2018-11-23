@@ -80,6 +80,9 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		});
 		
 		control.inputs.top.trigger( 'change_visual' );
+		
+		if ( control.params.choices.sync_values )
+			link_inputs_btn.click();
 	},
 	
 	initValue: function()

@@ -36,10 +36,6 @@ class Kirki_Control_Box_Shadow extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'use_media_queries' => true,
-			'sync_values' => true
-		));
 	}
 
 	/**

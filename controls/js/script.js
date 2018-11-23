@@ -1989,7 +1989,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			container = control.container,
 			style_select = jQuery( '.border-style select', container),
 			inputs = jQuery( '.kirki-control-dimension input', container),
-			link_dims = jQuery( '.kirki-input-link', container),
+			link_inputs_btn = jQuery( '.kirki-input-link', container),
 			color_picker = jQuery( '.color input', container ),
 			has_units = !_.isUndefined( control.params.choices.units ),
 			value = control.setting._value;
@@ -2044,7 +2044,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			control.toggle_visibility( style_select );
 			control.save();
 		});
-
+	
 		inputs.on( 'keyup change click', function() {
 			var input = jQuery( this );
 			var cur_val = input.val();
@@ -2052,7 +2052,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			if ( cur_val != last_val )
 			{
 				input.attr( 'last-val', cur_val );
-				if ( link_dims.hasClass( 'linked' ) )
+				if ( link_inputs_btn.hasClass( 'linked' ) )
 				{
 					inputs.attr( 'last-val', cur_val );
 					inputs.val( cur_val );
@@ -2060,15 +2060,17 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 				control.save();
 			}
 		});
-
-		link_dims.click( function( e )
+	
+		link_inputs_btn.click( function( e )
 		{
 			e.preventDefault();
-			link_dims.toggleClass( 'unlinked' );
-			link_dims.toggleClass( 'linked' );
+			link_inputs_btn.toggleClass( 'unlinked linked' );
 		});
 		
 		this.toggle_visibility( style_select );
+		
+		if ( control.params.choices.sync_values )
+			link_inputs_btn.click();
 	},
 	
 	toggle_visibility: function( style_select )
@@ -4183,6 +4185,9 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		});
 		
 		control.inputs.top.trigger( 'change_visual' );
+		
+		if ( control.params.choices.sync_values )
+			link_inputs_btn.click();
 	},
 	
 	initValue: function()

@@ -77,7 +77,6 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 							<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
 						</li>
 						<# }); #>
-						<# if ( data.choices.sync_values ) { #>
 						<li>
 							<button class="kirki-input-link tooltip-target unlinked" data-tooltip="<?php _e( 'Link values together', 'kirki' ); ?>" original-title="">
 								<span class="kirki-linked">
@@ -90,7 +89,6 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 								</span>
 							</button>
 						</li>
-						<# } #>
 					</ul>
 				</div>
 			</div>
