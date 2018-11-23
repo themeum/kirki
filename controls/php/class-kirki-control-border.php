@@ -38,17 +38,16 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 	{
 		?>
 		<label>
-			<#
-			if ( data.choices.units ) {
-				_.each( data.choices.units, function( unit ) {
-			#>
+			<# if ( data.choices.units ) { #>
 			<div class="kirki-units-choices-outer">
+				<# _.each( data.choices.units, function( unit ) {#>
 				<div class="kirki-units-choices">
 					<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
 					<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
 				</div>
+				<# }); #>
 			</div>
-			<# }); } #>
+			<# } #>
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		</label>
