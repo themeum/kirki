@@ -125,9 +125,18 @@ final class Kirki_Config {
 			),
 			$args
 		);
-		
-		if ( !isset( $this->config_final['media_queries']['global'] ) )
-			$this->config_final['media_queries']['global'] = 'global'; //Pollyfill the global media query if needed (Most likely if there was user/dev input).
+		$default_queries = [
+			'desktop' => 'global',
+			'tablet' => '@media screen and (min-width: 768px) and (max-width: 991px)',
+			'mobile' => '@media screen and (max-width: 575px)'
+		];
+		if ( !isset( $this->config_final['media_queries'] ) )
+			$this->config_final['media_queries'] = array();
+		foreach ( $default_queries as $k => $v )
+		{
+			if ( !isset( $this->config_final['media_queries'][$k] ) )
+				$this->config_final['media_queries'][$k] = $v;
+		}
 	}
 
 	/**

@@ -75,25 +75,10 @@ class Kirki_Modules_PostMessage {
 				$data[] = $field;
 			}
 		}
-		// Reset this to null to fix media query check inside JS.
-		$breakpoints['global'] = null;
+		// Reset this to null to fix media query check inside JS if its global.
+		if ( $breakpoints['desktop'] === 'global' )
+			$breakpoints['desktop'] = null;
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiMediaQueries', $breakpoints );
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
-	}
-	
-	//TODO FIXME: Add this on the JS side.
-	protected function has_requirement( $args, $field )
-	{
-		if ( !empty( $field['required'] ) ) {
-			foreach ( $field['required'] as $requirement ) {
-				if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-					$controller_value = Kirki_Values::get_value( $field['kirki_config'], $requirement['setting'] );
-					if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
-						return false;
-					}
-				}
-			}
-		}
-		return true;
 	}
 }
