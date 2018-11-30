@@ -39,19 +39,19 @@ class Kirki_Metabox_Border extends Kirki_Metabox_Control
 				<div class="rugged-control-type-dimensions">
 					<ul class="rugged-control-dimensions">
 						<li class="rugged-control-dimension">
-							<input type="number" id="<?php echo $id; ?>-top" data-border-type="top">
+							<input type="number" id="<?php echo $id; ?>-top" data-border-side="top">
 							<label for="<?php echo $id; ?>-top" class="rugged-control-dimension-label"><?php _e('Top', 'kirki') ?></span>
 						</li>
 						<li class="rugged-control-dimension">
-							<input type="number" id="<?php echo $id; ?>-right" data-border-type="right">
+							<input type="number" id="<?php echo $id; ?>-right" data-border-side="right">
 							<label for="<?php echo $id; ?>-right" class="rugged-control-dimension-label"><?php _e('Right', 'kirki') ?></span>
 						</li>
 						<li class="rugged-control-dimension">
-							<input type="number" id="<?php echo $id; ?>-bottom" data-border-type="bottom">
+							<input type="number" id="<?php echo $id; ?>-bottom" data-border-side="bottom">
 							<label for="<?php echo $id; ?>-bottom" class="rugged-control-dimension-label"><?php _e('Bottom', 'kirki') ?></span>
 						</li>
 						<li class="rugged-control-dimension">
-							<input type="number" id="<?php echo $id; ?>-left" data-border-type="left">
+							<input type="number" id="<?php echo $id; ?>-left" data-border-side="left">
 							<label for="<?php echo $id; ?>-left" class="rugged-control-dimension-label"><?php _e( 'Left', 'kirki' ) ?></span>
 						</li>
 						<li>

@@ -19,26 +19,23 @@ class Kirki_Output_Field_Border extends Kirki_Output {
 			return;
 		
 		$value = Kirki_Field_Border::sanitize( $value );
+		$value = Kirki_Field_Border::normalize_default( $value, $this->field );
+		
 		$border_style = $value['style'];
 		if ( empty ( $border_style ) )
 			return;
 		
-		if ( $border_style == 'none' )
-		{
-			$this->styles[ 'global' ][ $output['element'] ]['border-style'] = $border_style;
+		$this->styles[ 'global' ][ $output['element'] ]['border-style'] = $border_style;
+		
+		if ( $border_style === 'none' )
 			return;
-		}
 		
-		$border_color = isset( $value['color'] ) ? $value['color'] : '';
-		$border_width = [];
-		
+		$border_width = array();
 		foreach ( ['top', 'right', 'bottom', 'left'] as $side )
 		{
-			$border_width[] = $value[$side];
+			$border_width[$side] = $value[$side];
 		}
-		
-		$this->styles[ 'global' ][ $output['element'] ]['border-style'] = $border_style;
-		$this->styles[ 'global' ][ $output['element'] ]['border-width'] = join ( ' ', $border_width );
-		$this->styles[ 'global' ][ $output['element'] ]['border-color'] = $border_color;
+		$this->styles[ 'global' ][ $output['element'] ]['border-width'] = join( ' ', $border_width );
+		$this->styles[ 'global' ][ $output['element'] ]['border-color'] = $value['color'];
 	}
 }

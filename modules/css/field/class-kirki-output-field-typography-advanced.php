@@ -23,10 +23,10 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 	 */
 	protected function process_output( $output, $value ) {
 
-		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
+		$output['units']       = ( isset ( $output['units'] ) ) ? $output['units'] : '';
 		$breakpoints = Kirki::get_config_param( $this->field['kirki_config'], 'media_queries' );
 		if ( !$value )
 			return;
@@ -79,11 +79,11 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 			}
 			$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 			$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
-			$this->styles['global'][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
+			$this->styles['global'][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['units'] . $output['suffix'];
 		}
 		
 		//Now we loop through the media queries.
-		foreach ( array( 'global', 'desktop', 'tablet', 'mobile' ) as $device )
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
 		{
 			if ( !isset( $value[$device] ) )
 				continue;
@@ -96,7 +96,7 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 				$property_value = $this->process_property_value( $property, $device_value[ $property ] );
 				$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 				$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
-				$this->styles[ $breakpoint ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
+				$this->styles[ $breakpoint ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['units'] . $output['suffix'];
 			}
 		}
 	}

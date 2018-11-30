@@ -7,14 +7,9 @@ kirki = jQuery.extend( kirki, {
 	 * @since 3.0.17
 	 */
 	util: {
-		media_query_devices: {
-			global: null,
-			desktop: 0,
-			tablet: 1,
-			mobile: 2,
-		},
-		media_query_device_names: ['global', 'desktop', 'tablet', 'mobile'],
-		
+		media_query_devices: { desktop: 'desktop', tablet: 'tablet', mobile: 'mobile' },
+		sides: { top: 'top', right: 'right', bottom: 'bottom', left: 'left' },
+		sides_array: ['top', 'right', 'bottom', 'left'],
 		/**
 		 * A collection of utility methods for webfonts.
 		 *
@@ -298,172 +293,110 @@ kirki = jQuery.extend( kirki, {
 		},
 		
 		helpers: {
-			media_query: function( control, init_enabled, args )
-			{
-				var trigger_device_change = function( device )
+			setupMediaQueries: function( control ) {
+				var has_units       = !_.isUndefined( control.params.choices.units );
+				var desktop_wrapper = control.container.find( '.control-wrapper-outer' ),
+					desktop_unit_wrapper    = control.container.find( '.kirki-unit-choices-outer' );
+				var device_wrappers = {},
+					unit_wrappers   = {};
+				//If media queries are not enabled in some way, just return the containers as desktop devices.
+				if ( !control.params.use_media_queries && !control.params.choices.use_media_queries )
 				{
-					jQuery( '.kirki-responsive-switchers' ).trigger( 'breakpoint_changed', [device] );
-				};
-				var customizer_footer_actions = $( '#customize-footer-actions' );
-				var DESKTOP_DEVICE = 0,
-					TABLET_DEVICE = 1,
-					MOBILE_DEVICE = 2;
-				
-				if ( !control.params.choices.use_media_queries && !control.params.use_media_queries )
-					return;
-				
-				var container = control.container,
-					query_containers = container.find( '.kirki-responsive-switchers' );
-				
-				query_containers.each( function()
-				{
-					var self = $( this ),
-						desktop_btn = self.find( 'li.desktop' ),
-						tablet_btn = self.find( 'li.tablet' ),
-						mobile_btn = self.find( 'li.mobile' ),
-						enabled = init_enabled;
-					
-					var change_device = function( device )
-					{
-						if ( device == DESKTOP_DEVICE )
-						{
-							if ( !tablet_btn.hasClass( 'active' ) && !mobile_btn.hasClass( 'active' ) )
-							{
-								desktop_btn.toggleClass( 'multiple' );
-								if ( desktop_btn.hasClass( 'multiple' ) )
-								{
-									enabled = true;
-									tablet_btn.removeClass( 'hidden' );
-									mobile_btn.removeClass( 'hidden' );
-								}
-								else
-								{
-									enabled = false;
-									tablet_btn.addClass( 'hidden' );
-									mobile_btn.addClass( 'hidden' );
-								}
-							}
-							else
-							{
-								tablet_btn.removeClass( 'active' );
-								mobile_btn.removeClass( 'active' );
-							}
-						}
-						else if ( device == TABLET_DEVICE )
-						{
-							if ( !enabled )
-							{
-								enabled = true;
-								
-								tablet_btn.removeClass( 'hidden' );
-								mobile_btn.removeClass( 'hidden' );
-								
-								desktop_btn.addClass( 'multiple' );
-							}
-							mobile_btn.removeClass( 'active' );
-							tablet_btn.addClass( 'active' );
-						}
-						else if ( device == MOBILE_DEVICE )
-						{
-							if ( !enabled )
-							{
-								enabled = true;
-								
-								tablet_btn.removeClass( 'hidden' );
-								mobile_btn.removeClass( 'hidden' );
-								
-								desktop_btn.addClass( 'multiple' );
-							}
-							tablet_btn.removeClass( 'active' );
-							mobile_btn.addClass( 'active' );
-						}
-						setTimeout( function()
-						{
-							args.device_change( enabled, device );
-						}, 200);
+					return {
+						devices: { 'desktop': desktop_wrapper },
+						units:   { 'desktop': desktop_unit_wrapper }
 					};
-					
-					if ( enabled )
-						change_device( DESKTOP_DEVICE );
-					
-					self.on ( 'breakpoint_changed', function( e, device )
-					{
-						change_device( device );
-					});
-					
-					desktop_btn.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device_change( DESKTOP_DEVICE );
-						customizer_footer_actions.addClass( 'skip-trigger' );
-						preview_desktop.click();
-					});
-					tablet_btn.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device_change( TABLET_DEVICE );
-						customizer_footer_actions.addClass( 'skip-trigger' );
-						preview_tablet.click();
-					});
-					mobile_btn.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device_change( MOBILE_DEVICE );
-						customizer_footer_actions.addClass( 'skip-trigger' );
-						preview_mobile.click();
-					});
-				});
+				}
 				
-				//Footer desktop/tablet/mobile preview buttons.
-				var preview_desktop = jQuery( 'button.preview-desktop' ),
-					preview_tablet = jQuery( 'button.preview-tablet' ),
-					preview_mobile = jQuery( 'button.preview-mobile' );
-				if ( !customizer_footer_actions.hasClass( 'media-query-callback' ) )
+				//If media queries is enabled, we need to clone the containers for each device to keep input separated.
+				//Clone the initial wrapper and add tablet/mobile.
+				var tablet_wrapper = desktop_wrapper.clone().addClass( 'device-tablet' ).attr( 'device', 'tablet' ),
+					mobile_wrapper = desktop_wrapper.clone().addClass( 'device-mobile' ).attr( 'device', 'mobile' );
+				//Add desktop to the original wrapper.
+				desktop_wrapper.addClass( 'device-desktop active' ).attr( 'device', 'desktop' );
+				
+				//Append to the container.
+				tablet_wrapper.insertAfter( desktop_wrapper );
+				mobile_wrapper.insertAfter( tablet_wrapper );
+				
+				//Add all the wrappers to the array for iterating.
+				device_wrappers['desktop'] = desktop_wrapper;
+				device_wrappers['tablet']  = tablet_wrapper;
+				device_wrappers['mobile']  = mobile_wrapper;
+				
+				//If we're using units, we need to do the same thing.
+				if ( has_units )
 				{
-					var trigger_device = function( device )
+					//Do the same type of duplication as above.
+					var tablet_unit_wrapper = desktop_unit_wrapper.clone().addClass( 'device-tablet' ).attr( 'device', 'tablet' ),
+						mobile_unit_wrapper = desktop_unit_wrapper.clone().addClass( 'device-mobile' ).attr( 'device', 'mobile' );
+					desktop_unit_wrapper.addClass( 'device-desktop active' ).attr( 'device', 'desktop' );
+					
+					//Append to the container.
+					tablet_unit_wrapper.insertAfter( desktop_unit_wrapper );
+					mobile_unit_wrapper.insertAfter( tablet_unit_wrapper );
+					
+					//Append to the unit_wrapper object.
+					unit_wrappers['desktop'] = desktop_unit_wrapper;
+					unit_wrappers['tablet']  = tablet_unit_wrapper;
+					unit_wrappers['mobile']  = mobile_unit_wrapper;
+					
+					//Normalize the IDs of the unit choices to match the device.
+					_.each( unit_wrappers, function( unit_wrapper )
 					{
-						if ( customizer_footer_actions.hasClass( 'skip-trigger' ) )
+						var choice_wrappers = unit_wrapper.find( '.kirki-unit-choice' ),
+							device          = unit_wrapper.attr( 'device' );
+						choice_wrappers.each( function()
 						{
-							customizer_footer_actions.removeClass( 'skip-trigger' )
-							return;
-						}
-						trigger_device_change( device );
-					};
-					customizer_footer_actions.addClass( 'media-query-callback' );
-					preview_desktop.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device( DESKTOP_DEVICE );
-					});
-					preview_tablet.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device( TABLET_DEVICE );
-					});
-					preview_mobile.click( function( e )
-					{
-						e.stopPropagation();
-						trigger_device( MOBILE_DEVICE );
+							var choice_wrapper = $( this ),
+								input          = choice_wrapper.find( 'input[type="radio"]' ),
+								label          = choice_wrapper.find( 'label' ),
+								id             = input.attr( 'id' ),
+								name           = input.attr( 'name' )
+								new_id         = id + '_' + device,
+								new_name       = name + '_' + device;
+							input.attr( 'id', new_id ).attr( 'name', new_name );
+							label.attr( 'for', new_id );
+						});
 					});
 				}
+				
+				return {
+					devices: device_wrappers,
+					units: unit_wrappers
+				};
 			},
-			unit_select: function( control, args )
+			initUnitSelect: function( control, args )
 			{
 				var container = control.container,
-					unit_radios = jQuery( '.kirki-units-choices input[type="radio"]', container );
+					unit_radios = jQuery( '.kirki-unit-choice input[type="radio"]', container );
 				if ( args.selected_unit )
 					unit_radios.filter( '[value="' + args.selected_unit + '"]' ).click();
 				else
 					unit_radios.first().click();
-				last_unit = unit_radios.filter( ':checked' ).val();
-				unit_radios.on( 'change', function()
+				unit_radios.on( 'change', function( e )
 				{
+					e.preventDefault();
+					e.stopPropagation();
 					var unit_radio = $( this ),
 						new_unit = unit_radio.val();
 					if ( args.unit_changed )
 						args.unit_changed ( new_unit );
 				});
-			}
+			},
+			selectUnit: function( unit_wrapper, value ) {
+				var radios = unit_wrapper.find( 'input[type="radio"]' );
+				if ( !value )
+				{
+					value = radios.first().val();
+				}
+				radios.filter( ':checked' ).prop( 'checked', false );
+				var wanted_radio = radios.filter( '[value="' + value + '"]' );
+				if ( wanted_radio.length )
+					wanted_radio.prop( 'checked', true ).trigger( 'change' );
+				else
+					radios.first().prop( 'checked', true ).trigger( 'change' );
+			},
 		},
 
 		/**
@@ -483,14 +416,15 @@ kirki = jQuery.extend( kirki, {
 		},
 		
 		parseNumber: function( str ){
-			var numberRegex = /[0-9]\d{0,9}(\.\d{1,3})?%?/gm;
-			if ( typeof str === 'undefined' )
-				return '';
-			var result = str.toString().match( numberRegex );
-			if ( result )
-				return result[0];
-			else
-				return null;
+			return parseFloat( str );
+			// var numberRegex = /[0-9]\d{0,9}(\.\d{1,3})?%?/gm;
+			// if ( typeof str === 'undefined' )
+			// 	return '';
+			// var result = str.toString().match( numberRegex );
+			// if ( result )
+			// 	return result[0];
+			// else
+			// 	return null;
 		}
 	}
 } );

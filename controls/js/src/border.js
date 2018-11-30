@@ -18,7 +18,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		{
 			value = control.params.default;
 			if ( _.isUndefined( value['unit'] ) )
-				value['unit'] = jQuery( '.kirki-units-choices input[type="radio"]:first', container ).val()
+				value['unit'] = jQuery( '.kirki-unit-choice input[type="radio"]:first', container ).val()
 		}
 		if ( value )
 		{
@@ -46,7 +46,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		
 		if ( has_units )
 		{
-			kirki.util.helpers.unit_select( control, {
+			kirki.util.helpers.initUnitSelect( control, {
 				selected_unit: value['unit'],
 				unit_changed: function( new_unit ) {
 					control.save();
@@ -105,9 +105,9 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		{
 			if ( _.isUndefined( control.params.default[side] ))
 				return false;
-			var input = jQuery( '[data-side="' + side + '"]', control.container ),
+			var input = jQuery( '[side="' + side + '"]', control.container ),
 				border_val = value[side];
-			if ( value['unit'] !== 'all' )
+			if ( value['unit'] && value['unit'] !== '' )
 				border_val = kirki.util.parseNumber( border_val );
 			input.val( border_val );
 		});
@@ -120,22 +120,19 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			container = this.container,
 			input = jQuery( '.border-hidden-value', container ),
 			border_style = jQuery( '.border-style select', container).val(),
-			selected_unit = jQuery( '.kirki-units-choices input[type="radio"]:checked', container ),
+			selected_unit = jQuery( '.kirki-unit-choice input[type="radio"]:checked', container ),
 			color = jQuery( '.color input', container).val();
 		new_val['style'] = border_style;
-		new_val['unit'] = control.has_units ? selected_unit.val() : 'all';
+		new_val['unit']  = selected_unit.val();
 		new_val['color'] = color;
 		_.each( ['top', 'right', 'bottom', 'left'], function ( side )
 		{
-			if ( _.isUndefined( control.params.default[side] ) )
+			var val = 0;
+			if ( !_.isUndefined( control.params.default[side] ) )
 			{
-				new_val[side] = 0;
-				return false;
+				val = jQuery( 'input[side="' + side + '"]', container).val();
 			}
-			var val = jQuery( 'input[data-side="' + side + '"]', container).val();
-			if ( val === '' )
-				val = 0;
-			if ( new_val['unit'] !== 'all' )
+			if ( value != 0 && new_val['unit'] !== '' )
 				val += new_val['unit'];
 			new_val[side] = val;
 		});

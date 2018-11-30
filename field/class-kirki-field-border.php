@@ -66,9 +66,29 @@ class Kirki_Field_Border extends Kirki_Field {
 			'right'     => ( isset( $value['right'] ) ) ? esc_attr ( $value['right'] ) : 0,
 			'bottom'    => ( isset( $value['bottom'] ) ) ? esc_attr( $value['bottom'] ) : 0,
 			'left'      => ( isset( $value['left'] ) ) ? esc_attr( $value['left'] ) : 0,
-			'color'     => ( isset( $value['color'] ) ) ? esc_attr( $value['color'] ) : 0,
-			'unit'      => ( isset( $value['unit'] ) ) ? esc_attr( $value['unit'] ) : 'px'
+			'color'     => ( isset( $value['color'] ) ) ? esc_attr( $value['color'] ) : 'transparent',
+			'unit'      => ( isset( $value['unit'] ) ) ? esc_attr( $value['unit'] ) : ''
 		);
+	}
+	
+	public static function normalize_default( $value, $field )
+	{
+		if ( $value['style'] === 'none' )
+			return $value;
+		
+		if ( !isset( $value['unit'] ) || empty( $value['unit'] ) )
+		{
+			if ( isset( $field['choices']['units'] ) && is_array( $field['choices']['units'] ) )
+				$value['unit'] = array_keys( $field['choices']['units'] )[0];
+		}
+		foreach ( array('top', 'right', 'bottom', 'left') as $side )
+		{
+			if ( isset( $value[$side] ) && is_numeric( $value[$side] ) && $value[$side] != 0 )
+				$value[$side] = $value[$side] . $value['unit'];
+			else if ( !isset( $value[$side] ) )
+				$value[$side] = 0;
+		}
+		return $value;
 	}
 
 	/**

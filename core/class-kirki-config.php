@@ -83,12 +83,11 @@ final class Kirki_Config {
 	 * Media queries used for output with certain controls.
 	 * Setup initially to match the WordPress preview window.
 	 */
-	protected $media_queries = array(
-		'global' => 'global',
-		'desktop' => '@media screen and (min-width: 992px)',
-		'tablet' => '@media screen and (min-width: 576px) and (max-width: 991px)',
-		'mobile' => '@media screen and (max-width: 320px)'
-	);
+	// protected $media_queries = array(
+	// 	'desktop' => 'global',
+	// 	'tablet' => '@media screen and (min-width: 576px) and (max-width: 991px)',
+	// 	'mobile' => '@media screen and (max-width: 320px)'
+	// );
 	
 	/**
 	 * The class constructor.

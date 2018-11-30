@@ -244,12 +244,12 @@
 								delete padding.tablet;
 								delete padding.mobile;
 							}
-							var data = {
+							var value = {
 								'margin': margin,
 								'padding': padding
 							};
-							data = JSON.stringify( data );
-							input.attr( 'value', data ).trigger( 'change' );
+							value = JSON.stringify( value );
+							input.attr( 'value', value ).trigger( 'change' );
 							save_tid = 0;
 					}, 1000 );
 				}

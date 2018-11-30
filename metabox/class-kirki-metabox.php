@@ -177,7 +177,7 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 			wp_enqueue_script( 'kirki-metabox' );
 		}
 
-		public function save ( $post_id, $post, $update )
+		public function save( $post_id, $post, $update )
 		{
 			$upload_dir = wp_upload_dir();
 			$css = '';
@@ -229,7 +229,7 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 			// return $css;
 		}
 		
-		public function get_metabox_value ( $value, $field_id )
+		public function get_metabox_value( $value, $field_id )
 		{
 			global $post;
 			if ( !$post || is_customize_preview() )
@@ -240,6 +240,18 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 			$post_meta_unseralized = json_decode ( $post_meta, true );
 				if ( $post_meta_unseralized )
 					return $post_meta_unseralized;
+			return $post_meta;
+		}
+		
+		public function get_value( $field_id )
+		{
+			global $post;
+			$post_meta = get_post_meta ( $post->ID, 'kirki_mb_'.$field_id, true );
+			if ( empty ( $post_meta ) && $post_meta !== false )
+				return '';
+			$post_meta_unseralized = json_decode ( $post_meta, true );
+			if ( $post_meta_unseralized )
+				return $post_meta_unseralized;
 			return $post_meta;
 		}
 		
@@ -326,12 +338,10 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 							{
 								$classname = $this->controls[$class_type];
 								$control = new $classname ( $wp_customize, $field['settings'], $field );
-								try{
-								//$control->to_json();
-								}
-								catch (Exception $e )
-								{
-								}
+								$report_level = error_reporting();
+								error_reporting( 0 ); //Disable error reporting for now.
+								$j = $control->json();
+								error_reporting( $report_level ); //Re-enable after we get the JSON
 								$args = array(
 									'label' => $control->label,
 									'description' => $control->description,
@@ -339,8 +349,15 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 									'inputAttr' => join( ' ', $control->input_attrs ),
 									'required' => $control->required,
 									'data-id' => $control->id,
+									'value' => $this->get_value( $control->id ) 
 									//'default' => isset( $control->json['default'] ) ? $control->json['default'] : ''
 								);
+								$args = array_merge( $j, $args );
+								unset( $args['instanceNumber'],
+									$args['priority'],
+									$args['kirkiOptionType'],
+									$args['kirkiOptionName'],
+									$args['link'] );
 								$control->print_template();
 								?>
 								<script>
@@ -348,7 +365,9 @@ if ( !class_exists ( 'Kirki_Metabox' ) )
 								{
 									var template = wp.template( 'customize-control-<?php echo $type ?>-content' ),
 										container = jQuery( '#metabox-<?php echo $field['settings'] ?>' );
-									args = JSON.parse( '<?php echo json_encode($args) ?>' );
+										json = '<?php echo json_encode($args); ?>';
+									console.log(json);
+									var args = JSON.parse( json );
 									console.log ( args );
 									compiled = template( args );
 									console.log( {

@@ -509,18 +509,6 @@ class Kirki_Modules_Customizer_Styling {
 			border:0
 		}
 
-		.kirki-responsive-switchers
-		{
-			text-align:right;
-			display: inline;
-		}
-
-		.kirki-responsive-switchers li
-		{
-			display: inline-block;
-			cursor: pointer;
-		}
-
 		.customize-control-kirki-multicheck ul {
 			display: flex;
 		}
@@ -551,15 +539,6 @@ class Kirki_Modules_Customizer_Styling {
 		li.hidden-device
 		{
 			display:none;
-		}
-		.kirki-responsive-switchers li{
-			background-color: #999;
-			color: #fff;
-			border-radius: 100px;
-			font-size: 8px;
-		}
-		.kirki-responsive-switchers li.active{
-			background-color: #00a0d2;
 		}
 		</style>
 		<?php

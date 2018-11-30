@@ -48,7 +48,7 @@ wp.customize.controlConstructor['kirki-box-shadow'] = wp.customize.kirkiDynamicC
 			if ( side == 'blur' || side == 'spread' )
 				if ( _.isUndefined( control.params.default[side] ))
 					return false;
-			var input = jQuery( '[data-side="' + side + '"]', control.container ),
+			var input = jQuery( '[side="' + side + '"]', control.container ),
 				val = kirki.util.parseNumber( value[side] );
 			input.val( val );
 		});
@@ -64,7 +64,7 @@ wp.customize.controlConstructor['kirki-box-shadow'] = wp.customize.kirkiDynamicC
 		
 		_.each( ['h_offset', 'v_offset', 'blur', 'spread'], function ( side )
 		{
-			var val = jQuery( 'input[data-side="' + side + '"]', container).val();
+			var val = jQuery( 'input[side="' + side + '"]', container).val();
 			if ( side == 'blur' || side == 'spread' )
 				if ( _.isUndefined( control.params.default[side] ))
 					val = 0;

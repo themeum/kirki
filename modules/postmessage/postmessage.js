@@ -134,7 +134,7 @@ var kirkiPostMessage = {
 				googleFont  = '',
 				mediaQuery  = false,
 				processedValue;
-			var devices = ['global', 'desktop', 'tablet', 'mobile'];
+			var devices = ['desktop', 'tablet', 'mobile'];
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
 			}
@@ -202,6 +202,9 @@ var kirkiPostMessage = {
 					styles += '}';
 					break;
 				case 'kirki-typography-advanced':
+					console.log( value );
+					console.log(output);
+					console.log(controlType);
 					if ( typeof value === 'string' )
 						value = JSON.parse( value );
 					styles += output.element + '{';
@@ -229,7 +232,8 @@ var kirkiPostMessage = {
 							return false;
 						var device_val = value[device_name],
 							media_query = kirkiMediaQueries[device_name];
-						
+						if ( media_query === 'desktop' )
+							media_query = null;
 						if ( media_query )
 							styles += media_query + '{';
 						_.each( device_val, function( val, key )
@@ -272,15 +276,16 @@ var kirkiPostMessage = {
 					}
 					break;
 				case 'kirki-border':
+				console.log(value);
 					styles += output.element + '{';
-					var border_width = [];
-					_.each( ['top', 'right', 'bottom', 'left'], function( position )
-					{
-						border_width.push( value[position] );
-					});
 					styles += 'border-style: ' + value['style'] + ';';
 					if ( value['style'] !== 'none' )
 					{
+						var border_width = [];
+						_.each( ['top', 'right', 'bottom', 'left'], function( side )
+						{
+							border_width.push( value[side] );
+						});
 						styles += 'border-width: ' + border_width.join( ' ' ) + ';' ;
 						styles += 'border-color: ' + value['color'] + ';';
 					}
@@ -288,18 +293,13 @@ var kirkiPostMessage = {
 					break;
 				case 'kirki-box-shadow':
 					styles += output.element + '{';
-					
 					styles += 'box-shadow: ';
-					
 					var props = [];
-					
 					_.each( ['h_offset', 'v_offset', 'blur', 'spread', 'color'], function( side )
 					{
 						props.push( value[side] );
 					});
-					
 					styles += props.join( ' ' ) + ';';
-					
 					styles += '}';
 					break;
 				case 'kirki-color-gradient':
@@ -308,47 +308,104 @@ var kirkiPostMessage = {
 					styles += '}';
 					break;
 				case 'kirki-slider-advanced':
-					_.each( devices, function( device_name )
+					if ( typeof value === 'object' )
 					{
-						if ( _.isUndefined( value[device_name] ) )
-							return;
-						var device_val = value[device_name],
-							media_query = kirkiMediaQueries[device_name];
-						processedValue = kirkiPostMessage.util.processValue( output, device_val );
-						if ( media_query )
-							styles += media_query + '{';
+						var keys = Object.keys( value );
+						if ( _.contains( keys, 'desktop' ) )
+						{
+							// Overwrite any possible use of media queries.
+							output.media_query = null;
+							_.each( devices, function( device_name )
+							{
+								if ( _.isUndefined( value[device_name] ) )
+									return false;
+								var device_val = null,
+									media_query = kirkiMediaQueries[device_name];
+								if ( media_query === 'desktop' )
+										media_query = null;
+								
+								if ( !_.isUndefined( value[device_name]['unit'] ) )
+								{
+									device_val = value[device_name]['value'];
+									output['units'] = value[device_name]['unit'];
+								}
+								else
+								{
+									device_val = value[device_name];
+								}
+								processedValue = kirkiPostMessage.util.processValue( output, device_val );
+								if ( media_query )
+									styles += media_query + '{';
+								styles += output.element + '{'
+								styles += output.property + ': ' + processedValue + ';';
+								styles += '}';
+								if ( media_query )
+									styles += '}';
+							});
+						}
+						else
+						{
+							output['units'] = value['unit'];
+							var val = kirkiPostMessage.util.processValue( output, value['value'] );
+							styles += output.element + '{'
+							styles += output.property + ': ' + val + ';';
+							styles += '}';
+						}
+					}
+					else if ( !Number.isNaN( value ) )
+					{
+						processedValue = kirkiPostMessage.util.processValue( output, value );
 						styles += output.element + '{'
 						styles += output.property + ': ' + processedValue + ';';
 						styles += '}';
-						if ( media_query )
-							styles += '}';
-					});
+					}
 					break;
 				case 'kirki-spacing-advanced':
-					_.each( devices, function( device_name )
+					var generate_styles = function( output, device_val )
 					{
-						if ( _.isUndefined( value[device_name] ) )
-							return;
-						var device_val = value[device_name],
-							media_query = kirkiMediaQueries[device_name];
-						
-						if ( media_query )
-							styles += media_query + '{';
-						
+						var styles = '';
 						_.each( ['top', 'right', 'bottom', 'left'], function( side )
 						{
-							if ( _.isEmpty( device_val[side] ) )
-								device_val[side] = 0;
+							if ( _.isUndefined( device_val[side] ) || _.isEmpty( device_val[side].toString() ) )
+								return false;
+							var value = device_val[side],
+								unit  = device_val['unit'] || '';
+							if ( unit )
+								output['units'] = unit;
+							value = kirkiPostMessage.util.processValue( output, value );
+							styles += output.property + '-' + side + ': ' + value + ';';
 						});
-						
-						styles += output.element + '{';
-						styles += output.property + ': ' + 
-							[device_val['top'], device_val['right'], 
-							device_val['bottom'], device_val['left']].join( ' ' ) + ';';
-						styles += '}';
-						if ( media_query )
+						return styles;
+					};
+					var keys = Object.keys( value );
+					if ( _.contains( keys, 'desktop' ) )
+					{
+						// Overwrite any possible use of media queries.
+						output.media_query = null;
+						_.each( devices, function( device_name )
+						{
+							if ( _.isUndefined( value[device_name] ) )
+								return;
+							var device_val = value[device_name],
+								media_query = kirkiMediaQueries[device_name];
+							if ( media_query === 'desktop' )
+								media_query = null;
+							if ( media_query )
+								styles += media_query + '{';
+								
+							styles += output.element + '{';
+							styles += generate_styles( output, device_val );
 							styles += '}';
-					});
+							if ( media_query )
+								styles += '}';
+						});
+					}
+					else
+					{
+						styles += output.element + '{';
+						styles += generate_styles( output, value );
+						styles += '}';
+					}
 					break;
 				default:
 					if ( 'kirki-image' === controlType ) {

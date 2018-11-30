@@ -38,16 +38,21 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 	{
 		?>
 		<label>
-			<# if ( data.choices.units ) { #>
-			<div class="kirki-units-choices-outer">
+			<div class="kirki-unit-choices-outer">
+				<# if ( data.choices.units ) { #>
 				<# _.each( data.choices.units, function( unit ) {#>
-				<div class="kirki-units-choices">
+				<div class="kirki-unit-choice">
 					<input id="{{ data.id }}_{{ unit }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit }}">
-					<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
+					<label class="kirki-unit-choice-label" for="{{ data.id }}_{{ unit }}">{{ unit }}</label>
 				</div>
 				<# }); #>
+				<# } else { #>
+				<div class="kirki-unit-choice">
+					<input id="{{ data.id }}_all" type="radio" name="{{ data.id }}_all" data-setting="unit" value="" checked>
+					<label class="kirki-unit-choice-label" for="{{ data.id }}_all">ALL</label>
+				</div>
+				<# } #>
 			</div>
-			<# } #>
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		</label>
@@ -73,7 +78,7 @@ class Kirki_Control_Border extends Kirki_Control_Base {
 							var label = side.charAt( 0 ).toUpperCase() + side.substring( 1 );
 						#>
 						<li class="kirki-control-dimension">
-							<input type="number" id="{{{ data.id }}}-{{{ side }}}" data-side="{{{ side }}}">
+							<input type="number" id="{{{ data.id }}}-{{{ side }}}" side="{{{ side }}}">
 							<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
 						</li>
 						<# }); #>

@@ -51,10 +51,10 @@ class Kirki_Control_Box_Shadow extends Kirki_Control_Base {
 	protected function content_template() {
 		?>
 		<label>
-			<div class="kirki-units-choices-outer">
-				<div class="kirki-units-choices">
+			<div class="kirki-unit-choices-outer">
+				<div class="kirki-unit-choice">
 					<input id="{{ data.id }}_px" type="radio" data-setting="unit" value="px" checked>
-					<label class="kirki-units-choices-label" for="{{ data.id }}_px">px</label>
+					<label class="kirki-unit-choice-label" for="{{ data.id }}_px">px</label>
 				</div>
 			</div>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
@@ -70,7 +70,7 @@ class Kirki_Control_Box_Shadow extends Kirki_Control_Base {
 						var label = side.replace( '_', '-' );
 					#>
 					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-{{{ side }}}" data-side="{{{ side }}}">
+						<input type="number" id="{{{ data.id }}}-{{{ side }}}" side="{{{ side }}}">
 						<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
 					</li>
 					<# }); #>

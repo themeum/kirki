@@ -87,15 +87,14 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 		
 		function save()
 		{
-			var data = {
+			var value = {
 				color1: color1_picker.val(),
 				color2: color2_picker.val(),
 				location: location.val() + '%',
 				direction: direction.val()
 			};
-			//console.log( data );
-			input.attr( 'value', JSON.stringify( data ) ).trigger( 'change' );
-			control.setting.set( data );
+			input.attr( 'value', JSON.stringify( value ) ).trigger( 'change' );
+			control.setting.set( value );
 		}
 	}
 } );

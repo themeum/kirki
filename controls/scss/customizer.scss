@@ -87,18 +87,6 @@
 	border:0
 }
 
-.kirki-responsive-switchers
-{
-	text-align:right;
-	display: inline;
-}
-
-.kirki-responsive-switchers li
-{
-	display: inline-block;
-	cursor: pointer;
-}
-
 .customize-control-kirki-multicheck ul {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -128,55 +116,79 @@
 	display: none;
   }
   
-  .kirki-units-choices
-  {
-	  -webkit-box-flex:1;
-	  -ms-flex-positive:1;
-	  flex-grow:1;
-	  text-align:right
-  }
-  .kirki-units-choices input{
-	  display:none
-  }
-  .kirki-units-choices input:not(:checked)+label{
-	  color:#c2cbd2
-  }
-  .kirki-units-choices input:checked+label{
-	  text-decoration:underline
-  }
-  .kirki-units-choices label{
-	  cursor:pointer;
-	  padding:0 2px;
-	  text-transform:uppercase;
-	  font-size:9px
-  }
-  .kirki-units-choices-outer
+  .kirki-unit-choices-outer
   {
 	  float:right;
+	  .kirki-unit-choice {
+		display: inline-block;
+		-webkit-box-flex:1;
+		-ms-flex-positive:1;
+		flex-grow:1;
+		text-align:right;
+		
+		input {
+			display:none;
+			&:not(:checked)+label {
+				color:#c2cbd2;
+			}
+			&:checked+label {
+				text-decoration:underline;
+			}
+		}
+		label {
+			cursor:pointer;
+			padding:0 2px;
+			text-transform:uppercase;
+			font-size:9px;
+		}
+	  }
   }
-  .kirki-units-choices-outer .kirki-units-choices {
-	  display: inline-block;
+  
+  .has-switchers {
+	.control-wrapper-outer:not(.active), .kirki-unit-choices-outer:not(.active) { 
+		display: none !important; 
+		width: 100%; 
+	}
+	.control-wrapper-outer.active, .kirki-unit-choices-outer.active {
+		display: inherit;
+	}
+	.kirki-responsive-switchers {
+		text-align:right;
+		display: inline;
+		li {
+			display: inline-block;
+			cursor: pointer;
+			background-color: #999;
+			font-weight: 500;
+			color: #fff;
+			border-radius: 50%;
+			padding: 0 4px;
+			font-size: 8px;
+			&:hover{
+				background-color: rgb(190, 190, 190);
+			}
+			&.active {
+				background-color: #00a0d2;
+			}
+			span {
+				position: relative;
+				display: block;
+				line-height: 18px;
+			}
+		}
+		li:not(.desktop) {
+			display: none;
+		}
+	}
+	
+	&.responsive-switchers-open {
+		.kirki-responsive-switchers {
+			li:not(.desktop) {
+				display: inline-block;
+			}
+		}
+	}
   }
-  .kirki-responsive-switchers li.hidden
-  {
-	  display:none;
-  }
-  .kirki-responsive-switchers li {
-	background-color: #999;
-	font-weight: 500;
-	color: #fff;
-	border-radius: 50%;
-	padding:0 4px;
-	font-size: 8px; 
-  }
-.kirki-responsive-switchers li span {
-	position: relative;
-	display: block;
-	line-height: 18px;
-}
-.kirki-responsive-switchers li.active{
-	background-color: #00a0d2;
-}
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs {
 	display: flex;

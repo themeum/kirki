@@ -43,15 +43,6 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	public function to_json() {
 		parent::to_json();
 		$this->json['use_media_queries'] = $this->use_media_queries;
-		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'units' => array (
-				'' => array(
-					'min' => '0',
-					'max' => '100',
-					'step' => '1'
-				)
-			)
-		) );
 	}
 
 	/**
@@ -67,32 +58,34 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	protected function content_template() {
 		?>
 		<label>
-			<div class="kirki-units-choices-outer">
+			<# if ( data.choices.units ) {#>
+			<div class="kirki-unit-choices-outer">
 				<# for ( unit_id in data.choices.units ) {
 					var unit = data.choices.units[unit_id];
 				#>
-				<div class="kirki-units-choices">
+				<div class="kirki-unit-choice">
 					<input id="{{ data.id }}_{{ unit_id }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit_id }}" min="{{ unit['min'] }}" max="{{ unit['max'] }}" step="{{ unit['step'] }}">
-					<label class="kirki-units-choices-label" for="{{ data.id }}_{{ unit_id }}">{{ unit_id }}</label>
+					<label class="kirki-unit-choice-label" for="{{ data.id }}_{{ unit_id }}">{{ unit_id }}</label>
 				</div>
 				<# } #>
 			</div>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<# if ( data.use_media_queries ) { #>
-			<ul class="kirki-responsive-switchers">
-				<li class="desktop"><span class="eicon-device-desktop"></span></li>
-				<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-				<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-			</ul>
 			<# } #>
-			<div class="wrapper">
-				<input {{{ data.inputAttrs }}} type="range" min="0" max="100" step="" value="" />
-				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
-				<span class="value">
-					<input {{{ data.inputAttrs }}} type="text"/>
-					<span class="suffix"></span>
-				</span>
+			<span class="customize-control-title">
+				<span>{{{ data.label }}}</span>
+				<# if ( data.use_media_queries ) { #>
+				<?php Kirki_Helper::responsive_switcher_template(); ?>
+				<# } #>
+			</span>
+			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+			<div class="control-wrapper-outer">
+				<div class="control-wrapper">
+					<input {{{ data.inputAttrs }}} type="range" min="0" max="100" step="1" value="" />
+					<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
+					<span class="value">
+						<input {{{ data.inputAttrs }}} type="text"/>
+						<span class="suffix">{{ data.choices['suffix'] }}</span>
+					</span>
+				</div>
 			</div>
 			<input class="slider-hidden-value" type="hidden" value="" {{{ data.link }}} />
 		</label>

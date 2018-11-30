@@ -126,32 +126,56 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public static function sanitize( $value, $field ) {
-		if ( is_numeric ( $value ) )
+	public static function sanitize( $value ) {
+		// TODO: Rethink sanitize....
+		return $value;
+	}
+	
+	public static function normalize_default( $value, $field )
+	{
+		$val_unit_arr = function( $value, $unit )
 		{
-			$default_unit = '';
-			if ( isset( $field['choices'], $field['choices']['units'] ) )
-				$default_unit = array_keys( $field['choices']['units'] )[0];
-			$value .= $default_unit;
-			$normalized = null;
-			
-			if ( $field['use_media_queries'] )
+			return [
+				'value' => $value,
+				'unit' => $unit
+			];
+		};
+		
+		$use_media_queries = $field['use_media_queries'];
+		$has_units         = ( isset( $field['choices']['units'] ) );
+		$is_value_array    = is_array( $value );
+		$default_unit      = $has_units ? array_keys( $field['choices']['units'] )[0] : '';
+		
+		if ( $use_media_queries )
+		{
+			if ( $has_units && !$is_value_array )
 			{
-				$normalized = array(
-					'desktop' => $value,
-					'tablet' => $value,
-					'mobile' => $value
-				);
-			}  
+				$value = [
+					'desktop' => $val_unit_arr( $value, $default_unit ),
+					'tablet' => $val_unit_arr( $value, $default_unit ),
+					'mobile' => $val_unit_arr( $value, $default_unit )
+				];
+			}
 			else
 			{
-				$normalized = array(
-					'global' => $value
-				);
+				if ( !$is_value_array )
+				{
+					$value = [
+						'desktop' => $value,
+						'tablet' => $value,
+						'mobile' => $value
+					];
+				}
 			}
-			
-			return $normalized;
 		}
+		else
+		{
+			if ( $has_units && !$is_value_array )
+			{
+				$value = $val_unit_arr( $value, $default_unit );
+			}
+		}
+		
 		return $value;
 	}
 
@@ -166,16 +190,5 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
-		$this->choices = wp_parse_args(
-			$this->choices, array(
-				'units' => array (
-					'' => array(
-						'min' => '0',
-						'max' => '100',
-						'step' => '1'
-					)
-				)
-			)
-		);
 	}
 }

@@ -444,4 +444,18 @@ class Kirki_Helper {
 		}
 		return $value1 == $value2; // WPCS: loose comparison ok.
 	}
+	
+	/**
+	 * Template HTML for responsive switchers.
+	 */
+	public static function responsive_switcher_template()
+	{
+		?>
+		<ul class="kirki-responsive-switchers">
+			<li class="desktop" device="desktop"><span class="eicon-device-desktop"></span></li>
+			<li class="tablet" device="tablet"><span class="eicon-device-tablet"></span></li>
+			<li class="mobile" device="mobile"><span class="eicon-device-mobile"></span></li>
+		</ul>
+		<?php
+	}
 }

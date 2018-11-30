@@ -62,16 +62,16 @@ jQuery(document).ready( function()
 			clearTimeout (save_tid );
 			save_tid = setTimeout( function ()
 				{
-					var data = {
+					var value = {
 						'border_type': border_select.val(),
-						'top': jQuery('[data-border-type="top"]', rugged_border_outer).val(),
-						'right': jQuery('[data-border-type="right"]', rugged_border_outer).val(),
-						'bottom': jQuery('[data-border-type="bottom"]', rugged_border_outer).val(),
-						'left': jQuery('[data-border-type="left"]', rugged_border_outer).val(),
+						'top': jQuery('[data-border-position="top"]', rugged_border_outer).val(),
+						'right': jQuery('[data-border-position="right"]', rugged_border_outer).val(),
+						'bottom': jQuery('[data-border-position="bottom"]', rugged_border_outer).val(),
+						'left': jQuery('[data-border-position="left"]', rugged_border_outer).val(),
 						'color': color_picker.val()
 					};
-					if ( data.border_type != 'none' )
-						value_input.val(JSON.stringify(data).replace( /'/g, '&#39' ));
+					if ( value.border_type != 'none' )
+						value_input.val(JSON.stringify(value).replace( /'/g, '&#39' ));
 					else
 						value_input.val('');
 					save_tid = 0;

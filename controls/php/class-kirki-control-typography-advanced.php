@@ -114,14 +114,14 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Font Size', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['font-size'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
@@ -131,14 +131,14 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Line Height', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['line-height'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
@@ -148,11 +148,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Letter Spacing', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
@@ -165,11 +161,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Word Spacing', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
@@ -253,11 +245,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Margin Top', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
@@ -270,11 +258,7 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 					<h5>
 						<?php esc_attr_e( 'Margin Bottom', 'kirki' ); ?>
 						<# if ( data.use_media_queries ) { #>
-						<ul class="kirki-responsive-switchers">
-							<li class="desktop"><span class="eicon-device-desktop"></span></li>
-							<li class="tablet hidden"><span class="eicon-device-tablet"></span></li>
-							<li class="mobile hidden"><span class="eicon-device-mobile"></span></li>
-						</ul>
+						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
 					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>

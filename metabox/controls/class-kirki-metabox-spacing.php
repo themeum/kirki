@@ -34,12 +34,12 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 						<li class="tablet hidden-device"><span class="eicon-device-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="eicon-device-mobile"></span></li>
 					</ul>
-					<div class="kirki-units-choices">
+					<div class="kirki-unit-choices">
 						<input id="margin_type_px_<?php echo $uq_id ?>" type="radio" name="margin_type" data-setting="unit" value="px">
-						<label class="kirki-units-choices-label" for="margin_type_px_<?php echo $uq_id ?>">px</label>
+						<label class="kirki-unit-choices-label" for="margin_type_px_<?php echo $uq_id ?>">px</label>
 
 						<input id="margin_type_%_<?php echo $uq_id ?>" type="radio" name="margin_type" data-setting="unit" value="%">
-						<label class="kirki-units-choices-label" for="margin_type_%_<?php echo $uq_id ?>">%</label>
+						<label class="kirki-unit-choices-label" for="margin_type_%_<?php echo $uq_id ?>">%</label>
 					</div>
 				</h5>
 				<div class="kirki-control-type-dimensions">
@@ -83,15 +83,15 @@ class Kirki_Metabox_Spacing extends Kirki_Metabox_Control
 						<li class="tablet hidden-device"><span class="eicon-device-tablet"></span></li>
 						<li class="mobile hidden-device"><span class="eicon-device-mobile"></span></li>
 					</ul>
-					<div class="kirki-units-choices">
+					<div class="kirki-unit-choices">
 						<input id="padding_type_px_<?php echo $uq_id ?>" type="radio" name="padding_type" data-setting="unit" value="px">
-						<label class="kirki-units-choices-label" for="padding_type_px_<?php echo $uq_id ?>">px</label>
+						<label class="kirki-unit-choices-label" for="padding_type_px_<?php echo $uq_id ?>">px</label>
 
 						<input id="padding_type_em_<?php echo $uq_id ?>" type="radio" name="padding_type" data-setting="unit" value="em">
-						<label class="kirki-units-choices-label" for="padding_type_em_<?php echo $uq_id ?>">em</label>
+						<label class="kirki-unit-choices-label" for="padding_type_em_<?php echo $uq_id ?>">em</label>
 
 						<input id="padding_type_%_<?php echo $uq_id ?>" type="radio" name="padding_type" data-setting="unit" value="%">
-						<label class="kirki-units-choices-label" for="padding_type_%_<?php echo $uq_id ?>">%</label>
+						<label class="kirki-unit-choices-label" for="padding_type_%_<?php echo $uq_id ?>">%</label>
 					</div>
 				</h5>
 				<div class="kirki-control-type-dimensions">

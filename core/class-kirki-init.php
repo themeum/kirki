@@ -35,8 +35,8 @@ class Kirki_Init {
 
 		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
-		add_action( 'customize_register', array( $this, 'remove_controls' ), 99999 );
-
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue' ), 99999 );
+		
 		new Kirki_Values();
 		new Kirki_Sections();
 	}
@@ -236,6 +236,21 @@ class Kirki_Init {
 
 			}
 		}
+	}
+	
+	public function enqueue()
+	{
+		$kirki_url = trailingslashit( Kirki::$url );
+		// Build the suffix for the script.
+		$suffix  = '';
+		$suffix .= ( ! defined( 'SCRIPT_DEBUG' ) || true !== SCRIPT_DEBUG ) ? '.min' : '';
+		wp_enqueue_script(
+			'kirki-general-customize-script',
+			"{$kirki_url}controls/js/general{$suffix}.js",
+			array( 'jquery', 'customize-base', 'customize-controls' ),
+			KIRKI_VERSION,
+			true
+		);
 	}
 
 	/**
