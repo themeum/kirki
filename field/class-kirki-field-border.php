@@ -76,10 +76,11 @@ class Kirki_Field_Border extends Kirki_Field {
 		if ( $value['style'] === 'none' )
 			return $value;
 		
-		if ( !isset( $value['unit'] ) || empty( $value['unit'] ) )
+		$has_units         = ( isset( $field['choices']['units'] ) );
+		$default_unit      = $has_units ? array_values( $field['choices']['units'] )[0] : '';
+		if ( ( !isset( $value['unit'] ) || empty( $value['unit'] ) ) && $has_units )
 		{
-			if ( isset( $field['choices']['units'] ) && is_array( $field['choices']['units'] ) )
-				$value['unit'] = array_keys( $field['choices']['units'] )[0];
+			$value['unit'] = $default_unit;
 		}
 		foreach ( array('top', 'right', 'bottom', 'left') as $side )
 		{
