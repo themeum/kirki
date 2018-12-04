@@ -1,7 +1,4 @@
 @charset "UTF-8";
-.preview-tablet .wp-full-overlay-main {
-  width: 768px; }
-
 .kirki-group-outer {
   border: solid thin rgba(0, 0, 0, 0.1);
   padding: 5px; }
@@ -102,7 +99,7 @@
   display: block; }
 
 .customize-control-kirki-multicheck ul li label.checked {
-  background-color: #00a0d2;
+  background-color: #0085ba;
   color: rgba(255, 255, 255, 0.8); }
 
 .customize-control-kirki-multicheck ul li input {
@@ -148,7 +145,7 @@
     .has-switchers .kirki-responsive-switchers li:hover {
       background-color: #bebebe; }
     .has-switchers .kirki-responsive-switchers li.active {
-      background-color: #00a0d2; }
+      background-color: #0085ba; }
     .has-switchers .kirki-responsive-switchers li span {
       position: relative;
       display: block;
@@ -170,7 +167,7 @@
     text-align: center;
     flex-grow: 1; }
     .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs li.active {
-      background-color: #3498DB;
+      background-color: #0085ba;
       color: #fff; }
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content {
@@ -180,6 +177,10 @@
   border-top: 0px; }
   .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
     overflow: auto; }
+    .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content li.customize-control-kirki-radio-buttonset {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center; }
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
   display: none; }
@@ -202,7 +203,7 @@
   display: block; }
 
 .customize-control-kirki-multicheck ul li label.checked {
-  background-color: #00a0d2;
+  background-color: #0085ba;
   color: rgba(255, 255, 255, 0.8); }
 
 .customize-control-kirki-multicheck ul li input {

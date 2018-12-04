@@ -1,45 +1,47 @@
-.preview-tablet .wp-full-overlay-main {
-	width: 768px;
-}
-.kirki-group-outer
-{
+.kirki-group-outer {
 	border: solid thin rgba(0,0,0,0.1);
 	padding: 5px;
 }
-.kirki-group-outer h5
-{
+
+.kirki-group-outer h5 {
 	margin: 0;
 }
-.kirki-group-outer .border-outer .border-input-outer
-{
+
+.kirki-group-outer .border-outer .border-input-outer {
 	width: 60px;
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 }
-.kirki-control-type-dimensions .kirki-control-dimensions{
+
+.kirki-control-type-dimensions .kirki-control-dimensions {
 	overflow:hidden
 }
-.kirki-control-type-dimensions li{
+
+.kirki-control-type-dimensions li {
 	float:left;
 	width:20%
 }
-.kirki-control-type-dimensions li .kirki-input-link,.kirki-control-type-dimensions li input{
+
+.kirki-control-type-dimensions li .kirki-input-link,.kirki-control-type-dimensions li input {
 	display:block;
 	text-align:center;
 	width:100%;
 	border-color:#a4afb7;
 	height:27px
 }
-.kirki-control-type-dimensions li input{
+
+.kirki-control-type-dimensions li input {
 	border-left:none;
 	border-radius:0;
 	padding:4px 0
 }
-.kirki-control-type-dimensions li input:focus+.kirki-control-dimension-label{
+
+.kirki-control-type-dimensions li input:focus+.kirki-control-dimension-label {
 	color:#505457
 }
-.kirki-control-type-dimensions li .kirki-input-link{
+
+.kirki-control-type-dimensions li .kirki-input-link {
 	border:1px solid #a4afb7;
 	border-left:none;
 	background-color:#fff;
@@ -48,11 +50,13 @@
 	border-radius:0 3px 3px 0;
 	cursor:pointer
 }
-.kirki-control-type-dimensions li:first-child input{
+
+.kirki-control-type-dimensions li:first-child input {
 	border-left:1px solid #a4afb7;
 	border-radius:3px 0 0 3px
 }
-.kirki-control-type-dimensions .kirki-control-dimension-label{
+
+.kirki-control-type-dimensions .kirki-control-dimension-label {
 	display:block;
 	text-align:center;
 	color:#505457;
@@ -60,22 +64,28 @@
 	text-transform:uppercase;
 	padding-top:5px
 }
-.kirki-control-type-dimensions .kirki-input-link.unlinked{
+
+.kirki-control-type-dimensions .kirki-input-link.unlinked {
 	background-color:#fff
 }
-.kirki-control-type-dimensions .kirki-input-link.unlinked .kirki-linked{
+
+.kirki-control-type-dimensions .kirki-input-link.unlinked .kirki-linked {
 	display:none
 }
-.kirki-control-type-dimensions .kirki-input-link:not(.unlinked){
+
+.kirki-control-type-dimensions .kirki-input-link:not(.unlinked) {
 	background-color:#a4afb7
 }
-.kirki-control-type-dimensions .kirki-input-link:not(.unlinked) .kirki-unlinked{
+
+.kirki-control-type-dimensions .kirki-input-link:not(.unlinked) .kirki-unlinked {
 	display:none
 }
-.kirki-control-type-dimensions .kirki-input-link .kirki-linked{
+
+.kirki-control-type-dimensions .kirki-input-link .kirki-linked {
 	color:#fff
 }
-.kirki-screen-only,.screen-reader-text,.screen-reader-text span,.ui-helper-hidden-accessible{
+
+.kirki-screen-only,.screen-reader-text,.screen-reader-text span,.ui-helper-hidden-accessible {
 	position:absolute;
 	top:-10000em;
 	width:1px;
@@ -91,13 +101,13 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-  }
+}
 
-  .customize-control-kirki-multicheck ul li {
+.customize-control-kirki-multicheck ul li {
 	width: 100%;
-  }
+}
 
-  .customize-control-kirki-multicheck ul li label {
+.customize-control-kirki-multicheck ul li label {
 	background: rgba(0, 0, 0, 0.1);
 	border: 1px rgba(0, 0, 0, 0.1);
 	color: #555d66;
@@ -105,27 +115,25 @@
 	text-align: center;
 	padding: 0.5em 1em;
 	display: block;
-  }
+}
 
-  .customize-control-kirki-multicheck ul li label.checked {
-	background-color: #00a0d2;
+.customize-control-kirki-multicheck ul li label.checked {
+	background-color: #0085ba;
 	color: rgba(255, 255, 255, 0.8);
-  }
+}
 
-  .customize-control-kirki-multicheck ul li input {
+.customize-control-kirki-multicheck ul li input {
 	display: none;
-  }
-  
-  .kirki-unit-choices-outer
-  {
-	  float:right;
-	  .kirki-unit-choice {
+}
+
+.kirki-unit-choices-outer {
+	float:right;
+	.kirki-unit-choice {
 		display: inline-block;
 		-webkit-box-flex:1;
 		-ms-flex-positive:1;
 		flex-grow:1;
 		text-align:right;
-		
 		input {
 			display:none;
 			&:not(:checked)+label {
@@ -141,10 +149,10 @@
 			text-transform:uppercase;
 			font-size:9px;
 		}
-	  }
-  }
-  
-  .has-switchers {
+	}
+}
+
+.has-switchers {
 	.control-wrapper-outer:not(.active), .kirki-unit-choices-outer:not(.active) { 
 		display: none !important; 
 		width: 100%; 
@@ -168,7 +176,7 @@
 				background-color: rgb(190, 190, 190);
 			}
 			&.active {
-				background-color: #00a0d2;
+				background-color: #0085ba;
 			}
 			span {
 				position: relative;
@@ -180,7 +188,6 @@
 			display: none;
 		}
 	}
-	
 	&.responsive-switchers-open {
 		.kirki-responsive-switchers {
 			li:not(.desktop) {
@@ -188,12 +195,11 @@
 			}
 		}
 	}
-  }
+}
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs {
 	display: flex;
 	flex-wrap: wrap;
-	
 	li {
 		background: rgba(0,0,0,.05);
 		border: 1px solid rgba(0,0,0,.1);
@@ -203,11 +209,12 @@
 		text-align: center;
 		flex-grow: 1;
 		&.active {
-			background-color: #3498DB;
+			background-color: #0085ba;
 			color: #fff;
 		}
 	}
 }
+
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content {
 	overflow: auto;
 	padding: 10px;
@@ -215,6 +222,11 @@
 	border-top: 0px;
 	.tab-content {
 		overflow: auto;
+		li.customize-control-kirki-radio-buttonset {
+			display: flex !important;
+			justify-content: space-between;
+			align-items: center;
+		}
 	}
 }
 
@@ -225,29 +237,29 @@
 	}
 }
 
-	.customize-control-kirki-multicheck ul {
-	  display: flex;
-	}
+.customize-control-kirki-multicheck ul {
+	display: flex;
+}
 
-	.customize-control-kirki-multicheck ul li {
-	  width: 100%;
-	}
+.customize-control-kirki-multicheck ul li {
+	width: 100%;
+}
 
-	.customize-control-kirki-multicheck ul li label {
-	  background: rgba(0, 0, 0, 0.1);
-	  border: 1px rgba(0, 0, 0, 0.1);
-	  color: #555d66;
-	  margin: 0;
-	  text-align: center;
-	  padding: 0.5em 1em;
-	  display: block;
-	}
+.customize-control-kirki-multicheck ul li label {
+	background: rgba(0, 0, 0, 0.1);
+	border: 1px rgba(0, 0, 0, 0.1);
+	color: #555d66;
+	margin: 0;
+	text-align: center;
+	padding: 0.5em 1em;
+	display: block;
+}
 
-	.customize-control-kirki-multicheck ul li label.checked {
-	  background-color: #00a0d2;
-	  color: rgba(255, 255, 255, 0.8);
-	}
+.customize-control-kirki-multicheck ul li label.checked {
+	background-color: #0085ba;
+	color: rgba(255, 255, 255, 0.8);
+}
 
-	.customize-control-kirki-multicheck ul li input {
-	  display: none;
-	}
+.customize-control-kirki-multicheck ul li input {
+	display: none;
+}
