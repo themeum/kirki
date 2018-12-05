@@ -36,6 +36,7 @@ class Kirki_Output_Field_Border extends Kirki_Output {
 			$border_width[$side] = $value[$side];
 		}
 		$this->styles[ 'global' ][ $output['element'] ]['border-width'] = join( ' ', $border_width );
-		$this->styles[ 'global' ][ $output['element'] ]['border-color'] = $value['color'];
+		if ( !empty( $value['color'] ) )
+			$this->styles[ 'global' ][ $output['element'] ]['border-color'] = $value['color'];
 	}
 }

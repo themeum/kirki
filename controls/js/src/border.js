@@ -131,6 +131,8 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 			if ( !_.isUndefined( control.params.default[side] ) )
 			{
 				val = jQuery( 'input[side="' + side + '"]', container).val();
+				if ( !val )
+					val = 0;
 			}
 			if ( value != 0 && new_val['unit'] !== '' )
 				val += new_val['unit'];
