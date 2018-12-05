@@ -1,8 +1,4 @@
 @charset "UTF-8";
-.kirki-group-outer {
-  border: solid thin rgba(0, 0, 0, 0.1);
-  padding: 5px; }
-
 .kirki-group-outer h5 {
   margin: 0; }
 
@@ -171,7 +167,6 @@
       color: #fff; }
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content {
-  overflow: auto;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: 0px; }
