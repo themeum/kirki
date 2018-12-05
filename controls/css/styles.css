@@ -171,7 +171,7 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: 0px; }
   .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
-    overflow: auto; }
+    overflow: hidden; }
     .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content li.customize-control-kirki-radio-buttonset {
       display: flex !important;
       justify-content: space-between;
