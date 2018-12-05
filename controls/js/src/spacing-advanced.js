@@ -19,8 +19,9 @@ wp.customize.controlConstructor['kirki-spacing-advanced'] = wp.customize.kirkiDy
 		
 		var wrappers = kirki.util.helpers.setupMediaQueries( control );
 		
-		_.each( wrappers.devices, function( device_wrapper )
+		_.each( wrappers.devices, function( device_wrappers )
 		{
+			var device_wrapper    = $( device_wrappers[0] );
 			var inputs            = device_wrapper.find( '.kirki-control-dimension input' ),
 				device            = device_wrapper.attr( 'device' ) || 'desktop',
 				device_val        = device === 'desktop' ? control.params.default : null,

@@ -294,36 +294,42 @@ kirki = jQuery.extend( kirki, {
 		
 		helpers: {
 			setupMediaQueries: function( control ) {
-				var has_units       = !_.isUndefined( control.params.choices.units );
-				var desktop_wrapper = control.container.find( '.control-wrapper-outer' ),
-					desktop_unit_wrapper    = control.container.find( '.kirki-unit-choices-outer' );
-				var device_wrappers = {},
-					unit_wrappers   = {};
+				var has_units            = !_.isUndefined( control.params.choices.units );
+				var desktop_wrappers     = control.container.find( '.control-wrapper-outer' ),
+					desktop_unit_wrapper = control.container.find( '.kirki-unit-choices-outer' );
+				var device_wrappers = {
+					'desktop': [],
+					'tablet': [],
+					'mobile': []
+				},
+				unit_wrappers = {};
 				//If media queries are not enabled in some way, just return the containers as desktop devices.
 				if ( !control.params.use_media_queries && !control.params.choices.use_media_queries )
 				{
 					return {
-						devices: { 'desktop': desktop_wrapper },
+						devices: { 'desktop': desktop_wrappers },
 						units:   { 'desktop': desktop_unit_wrapper }
 					};
 				}
 				
-				//If media queries is enabled, we need to clone the containers for each device to keep input separated.
-				//Clone the initial wrapper and add tablet/mobile.
-				var tablet_wrapper = desktop_wrapper.clone().addClass( 'device-tablet' ).attr( 'device', 'tablet' ),
-					mobile_wrapper = desktop_wrapper.clone().addClass( 'device-mobile' ).attr( 'device', 'mobile' );
-				//Add desktop to the original wrapper.
-				desktop_wrapper.addClass( 'device-desktop active' ).attr( 'device', 'desktop' );
-				
-				//Append to the container.
-				tablet_wrapper.insertAfter( desktop_wrapper );
-				mobile_wrapper.insertAfter( tablet_wrapper );
-				
-				//Add all the wrappers to the array for iterating.
-				device_wrappers['desktop'] = desktop_wrapper;
-				device_wrappers['tablet']  = tablet_wrapper;
-				device_wrappers['mobile']  = mobile_wrapper;
-				
+				desktop_wrappers.each( function(){
+					var desktop_wrapper = $( this );
+					//If media queries is enabled, we need to clone the containers for each device to keep input separated.
+					//Clone the initial wrapper and add tablet/mobile.
+					var tablet_wrapper = desktop_wrapper.clone().addClass( 'device-tablet' ).attr( 'device', 'tablet' ),
+						mobile_wrapper = desktop_wrapper.clone().addClass( 'device-mobile' ).attr( 'device', 'mobile' );
+					//Add desktop to the original wrapper.
+					desktop_wrapper.addClass( 'device-desktop active' ).attr( 'device', 'desktop' );
+					
+					//Append to the container.
+					tablet_wrapper.insertAfter( desktop_wrapper );
+					mobile_wrapper.insertAfter( tablet_wrapper );
+					
+					//Add all the wrappers to the array for iterating.
+					device_wrappers['desktop'].push( desktop_wrapper );
+					device_wrappers['tablet'].push( tablet_wrapper );
+					device_wrappers['mobile'].push( mobile_wrapper );
+				});
 				//If we're using units, we need to do the same thing.
 				if ( has_units )
 				{

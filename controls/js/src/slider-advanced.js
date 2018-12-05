@@ -66,8 +66,10 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			value             = control.setting._value;
 			
 		var wrappers = kirki.util.helpers.setupMediaQueries( control );
-		_.each( wrappers.devices, function( device_wrapper )
+		
+		_.each( wrappers.devices, function( device_wrappers )
 		{
+			var device_wrapper = $( device_wrappers[0] );
 			var rangeInput   = device_wrapper.find( 'input[type="range"]' ),
 				textInput    = device_wrapper.find( 'input[type="text"]' ),
 				suffix       = device_wrapper.find( '.suffix' );
