@@ -58,7 +58,6 @@ class Kirki_Control_Toggle_Tabs extends Kirki_Control_Base {
 					<# } #>
 				</div>
 			</div>
-			<input type="hidden" value="" {{{ data.link }}} />
 		</label>
 		<?php
 	}
