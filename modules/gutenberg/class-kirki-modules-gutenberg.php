@@ -246,7 +246,7 @@ class Kirki_Modules_Gutenberg {
 				continue;
 			}
 
-			$this->modules_webfont_loader::$load = true;
+			$this->modules_webfont_loader->set_load( true );
 			$this->modules_webfont_loader->enqueue_scripts();
 
 			$async = new Kirki_Modules_Webfonts_Async(

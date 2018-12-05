@@ -81,4 +81,16 @@ class Kirki_Modules_Webfont_Loader {
 			wp_enqueue_script( 'webfont-loader', trailingslashit( Kirki::$url ) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', array(), '3.0.28', true );
 		}
 	}
+
+	/**
+	 * Set the $load property of this object.
+	 *
+	 * @access public
+	 * @since 3.0.35
+	 * @param bool $load Set to false to disable loading.
+	 * @return void
+	 */
+	public function set_load( $load ) {
+		self::$load = $load;
+	}
 }

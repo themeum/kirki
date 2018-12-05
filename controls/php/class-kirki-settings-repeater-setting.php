@@ -43,11 +43,7 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 	 * @return mixed The value.
 	 */
 	public function value() {
-		$value = parent::value();
-		if ( ! is_array( $value ) ) {
-			return array();
-		}
-		return $value;
+		return (array) parent::value();
 	}
 
 	/**
