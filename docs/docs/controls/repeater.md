@@ -24,36 +24,36 @@ Creating a repeater control where each row contains 2 textfields:
 ```php
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'repeater',
-	'label'       => esc_attr__( 'Repeater Control', 'textdomain' ),
+	'label'       => esc_html__( 'Repeater Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'priority'    => 10,
 	'row_label' => array(
 		'type' => 'text',
-		'value' => esc_attr__('your custom value', 'textdomain' ),
+		'value' => esc_html__('your custom value', 'textdomain' ),
 	),
-	'button_label' => esc_attr__('"Add new" button label (optional) ', 'textdomain' ),
+	'button_label' => esc_html__('"Add new" button label (optional) ', 'textdomain' ),
 	'settings'     => 'my_setting',
 	'default'      => array(
 		array(
-			'link_text' => esc_attr__( 'Kirki Site', 'textdomain' ),
+			'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 			'link_url'  => 'https://aristath.github.io/kirki/',
 		),
 		array(
-			'link_text' => esc_attr__( 'Kirki Repository', 'textdomain' ),
+			'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 			'link_url'  => 'https://github.com/aristath/kirki',
 		),
 	),
 	'fields' => array(
 		'link_text' => array(
 			'type'        => 'text',
-			'label'       => esc_attr__( 'Link Text', 'textdomain' ),
-			'description' => esc_attr__( 'This will be the label for your link', 'textdomain' ),
+			'label'       => esc_html__( 'Link Text', 'textdomain' ),
+			'description' => esc_html__( 'This will be the label for your link', 'textdomain' ),
 			'default'     => '',
 		),
 		'link_url' => array(
 			'type'        => 'text',
-			'label'       => esc_attr__( 'Link URL', 'textdomain' ),
-			'description' => esc_attr__( 'This will be the link URL', 'textdomain' ),
+			'label'       => esc_html__( 'Link URL', 'textdomain' ),
+			'description' => esc_html__( 'This will be the link URL', 'textdomain' ),
 			'default'     => '',
 		),
 	)
@@ -65,37 +65,37 @@ Creating a repeater control where the label has a dynamic name based on a field'
 ```php
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'repeater',
-	'label'       => esc_attr__( 'Repeater Control', 'textdomain' ),
+	'label'       => esc_html__( 'Repeater Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'priority'    => 10,
 	'row_label' => array(
 		'type'  => 'field',
-		'value' => esc_attr__('your custom value', 'textdomain' ),
+		'value' => esc_html__('your custom value', 'textdomain' ),
 		'field' => 'link_text',
 	),
-	'button_label' => esc_attr__('"Add new" button label (optional) ', 'textdomain' ),
+	'button_label' => esc_html__('"Add new" button label (optional) ', 'textdomain' ),
 	'settings'     => 'my_setting',
 	'default'      => array(
 		array(
-			'link_text' => esc_attr__( 'Kirki Site', 'textdomain' ),
+			'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 			'link_url'  => 'https://aristath.github.io/kirki/',
 		),
 		array(
-			'link_text' => esc_attr__( 'Kirki Repository', 'textdomain' ),
+			'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 			'link_url'  => 'https://github.com/aristath/kirki',
 		),
 	),
 	'fields' => array(
 		'link_text' => array(
 			'type'        => 'text',
-			'label'       => esc_attr__( 'Link Text', 'textdomain' ),
-			'description' => esc_attr__( 'This will be the label for your link', 'textdomain' ),
+			'label'       => esc_html__( 'Link Text', 'textdomain' ),
+			'description' => esc_html__( 'This will be the label for your link', 'textdomain' ),
 			'default'     => '',
 		),
 		'link_url' => array(
 			'type'        => 'text',
-			'label'       => esc_attr__( 'Link URL', 'textdomain' ),
-			'description' => esc_attr__( 'This will be the link URL', 'textdomain' ),
+			'label'       => esc_html__( 'Link URL', 'textdomain' ),
+			'description' => esc_html__( 'This will be the link URL', 'textdomain' ),
 			'default'     => '',
 		),
 	)
@@ -109,11 +109,11 @@ Kirki::add_field( 'theme_config_id', array(
 // Default values for 'my_setting' theme mod.
 $defaults = array(
     array(
-        'link_text' => esc_attr__( 'Kirki Site', 'textdomain' ),
+        'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 		'link_url'  => 'https://aristath.github.io/kirki/',
 	),
 	array(
-		'link_text' => esc_attr__( 'Kirki Repository', 'textdomain' ),
+		'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 		'link_url'  => 'https://github.com/aristath/kirki',
 	),
 );

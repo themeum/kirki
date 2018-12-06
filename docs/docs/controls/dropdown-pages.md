@@ -28,7 +28,7 @@ The returned value is the ID of the selected page.
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'dropdown-pages',
 	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 42,
 	'priority'    => 10,

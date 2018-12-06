@@ -26,9 +26,9 @@ Kirki::add_field( 'theme_config_id', array(
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
-		'red'   => esc_attr__( 'Red', 'textdomain' ),
-		'green' => esc_attr__( 'Green', 'textdomain' ),
-		'blue'  => esc_attr__( 'Blue', 'textdomain' ),
+		'red'   => esc_html__( 'Red', 'textdomain' ),
+		'green' => esc_html__( 'Green', 'textdomain' ),
+		'blue'  => esc_html__( 'Blue', 'textdomain' ),
 	),
 ) );
 ```

@@ -22,8 +22,6 @@ class Kirki_Field_Select2_Multiple extends Kirki_Field_Select {
 	 * @access protected
 	 */
 	protected function set_multiple() {
-
 		$this->multiple = 999;
-
 	}
 }

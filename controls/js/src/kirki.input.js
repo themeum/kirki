@@ -273,8 +273,6 @@ kirki = jQuery.extend( kirki, {
 				// Make sure value is properly formatted.
 				value = ( 'array' === saveAs && _.isString( value ) ) ? { url: value } : value;
 
-				control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 				// Tweaks for save_as = id.
 				if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
 					wp.media.attachment( value ).fetch().then( function() {

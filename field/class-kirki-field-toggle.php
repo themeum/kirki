@@ -20,8 +20,6 @@ class Kirki_Field_Toggle extends Kirki_Field_Checkbox {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-toggle';
-
 	}
 }

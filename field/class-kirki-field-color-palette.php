@@ -20,8 +20,6 @@ class Kirki_Field_Color_Palette extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-color-palette';
-
 	}
 }

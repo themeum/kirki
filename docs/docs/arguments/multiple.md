@@ -22,10 +22,10 @@ Kirki::add_field( 'my_config', array(
 	'priority'    => 10,
 	'multiple'    => 999,
 	'choices'     => array(
-		'option-1' => esc_attr__( 'Option 1', 'my_textdomain' ),
-		'option-2' => esc_attr__( 'Option 2', 'my_textdomain' ),
-		'option-3' => esc_attr__( 'Option 3', 'my_textdomain' ),
-		'option-4' => esc_attr__( 'Option 4', 'my_textdomain' ),
+		'option-1' => esc_html__( 'Option 1', 'my_textdomain' ),
+		'option-2' => esc_html__( 'Option 2', 'my_textdomain' ),
+		'option-3' => esc_html__( 'Option 3', 'my_textdomain' ),
+		'option-4' => esc_html__( 'Option 4', 'my_textdomain' ),
 	),
 ) );
 ```

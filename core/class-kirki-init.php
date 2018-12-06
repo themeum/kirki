@@ -28,7 +28,6 @@ class Kirki_Init {
 	 * The class constructor.
 	 */
 	public function __construct() {
-
 		self::set_url();
 		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
 		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
@@ -49,7 +48,6 @@ class Kirki_Init {
 	 * @access public
 	 */
 	public static function set_url() {
-
 		if ( Kirki_Util::is_plugin() ) {
 			return;
 		}
@@ -79,7 +77,6 @@ class Kirki_Init {
 	 * @return array
 	 */
 	public function default_control_types( $control_types = array() ) {
-
 		$this->control_types = array(
 			'checkbox'              => 'Kirki_Control_Checkbox',
 			'kirki-background'      => 'Kirki_Control_Background',
@@ -115,7 +112,6 @@ class Kirki_Init {
 			'upload'                => 'Kirki_Control_Upload',
 		);
 		return array_merge( $this->control_types, $control_types );
-
 	}
 
 	/**
@@ -216,7 +212,6 @@ class Kirki_Init {
 	 * @var object The WordPress Customizer object.
 	 */
 	public function add_fields() {
-
 		global $wp_customize;
 		foreach ( Kirki::$fields as $args ) {
 
@@ -243,7 +238,6 @@ class Kirki_Init {
 	 * @since 2.0.0
 	 */
 	private function fields_from_filters() {
-
 		$fields = apply_filters( 'kirki_controls', array() );
 		$fields = apply_filters( 'kirki_fields', $fields );
 
@@ -264,7 +258,6 @@ class Kirki_Init {
 	 * @return bool
 	 */
 	public static function is_plugin() {
-		// Return result using the Kirki_Util class.
 		return Kirki_Util::is_plugin();
 	}
 
@@ -278,9 +271,9 @@ class Kirki_Init {
 	 * @return array Formatted as array( 'variable-name' => value ).
 	 */
 	public static function get_variables() {
+
 		// Log error for developers.
-		_doing_it_wrong( __METHOD__, esc_attr__( 'We detected you\'re using Kirki_Init::get_variables(). Please use Kirki_Util::get_variables() instead.', 'kirki' ), '3.0.10' );
-		// Return result using the Kirki_Util class.
+		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki_Init::get_variables(). Please use Kirki_Util::get_variables() instead.', 'kirki' ), '3.0.10' );
 		return Kirki_Util::get_variables();
 	}
 

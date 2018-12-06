@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Adds styles to the customizer.
  */
 class Kirki_Modules_PostMessage {
+
 	/**
 	 * The object instance.
 	 *
@@ -70,7 +71,6 @@ class Kirki_Modules_PostMessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-
 		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		foreach ( $fields as $field ) {
@@ -80,7 +80,6 @@ class Kirki_Modules_PostMessage {
 		}
 		$this->script = apply_filters( 'kirki_postmessage_script', $this->script );
 		wp_add_inline_script( 'kirki_auto_postmessage', $this->script, 'after' );
-
 	}
 
 	/**
@@ -91,7 +90,6 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args The arguments.
 	 */
 	protected function script( $args ) {
-
 		$script = 'wp.customize(\'' . $args['settings'] . '\',function(value){value.bind(function(newval){';
 
 		$add_css = false;
@@ -115,6 +113,7 @@ class Kirki_Modules_PostMessage {
 		$field = array(
 			'scripts' => array(),
 		);
+
 		// Loop through the js_vars and generate the script.
 		foreach ( $args['js_vars'] as $key => $js_var ) {
 
@@ -127,10 +126,12 @@ class Kirki_Modules_PostMessage {
 				}
 			}
 			if ( isset( $js_var['element'] ) ) {
+
 				// Array to string.
 				if ( is_array( $js_var['element'] ) ) {
 					$js_var['element'] = implode( ',', $js_var['element'] );
 				}
+
 				// Replace single quotes with double quotes to avoid issues with the compiled JS.
 				$js_var['element'] = str_replace( '\'', '"', $js_var['element'] );
 			}
@@ -173,7 +174,6 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args  The arguments for this js_var.
 	 */
 	protected function script_html_var( $args ) {
-
 		$script = ( isset( $args['choice'] ) ) ? "newval=newval['{$args['choice']}'];" : '';
 
 		// Apply the value_pattern.
@@ -243,7 +243,6 @@ class Kirki_Modules_PostMessage {
 	 * @param array $args  The arguments for this js_var.
 	 */
 	protected function script_var_array( $args ) {
-
 		$script          = ( 0 === $args['index_key'] ) ? 'css=\'\';' : '';
 		$property_script = '';
 
@@ -280,9 +279,11 @@ class Kirki_Modules_PostMessage {
 		// Mostly used for padding, margin & position properties.
 		$direction_script  = 'if(_.contains([\'top\',\'bottom\',\'left\',\'right\'],subKey)){';
 		$direction_script .= 'css+=\'' . $args['element'] . '{' . $args['property'] . '-\'+subKey+\':\'+subValue+\'' . $args['units'] . $args['suffix'] . ';}\';}';
+
 		// Allows us to apply this just for a specific choice in the array of the values.
 		if ( '' !== $choice ) {
 			$choice_is_direction = ( false !== strpos( $choice, 'top' ) || false !== strpos( $choice, 'bottom' ) || false !== strpos( $choice, 'left' ) || false !== strpos( $choice, 'right' ) );
+
 			// The script.
 			$script .= 'if(\'' . $choice . '\'===subKey){';
 			$script .= ( $choice_is_direction ) ? $direction_script . 'else{' : '';
@@ -315,7 +316,6 @@ class Kirki_Modules_PostMessage {
 	 * @param array $field The field arguments.
 	 */
 	protected function script_var_typography( $args, $field ) {
-
 		$args = $this->get_args( $args );
 
 		$script = '';
@@ -323,7 +323,7 @@ class Kirki_Modules_PostMessage {
 
 		// Load the font using WenFontloader.
 		// This is a bit ugly because wp_add_inline_script doesn't allow adding <script> directly.
-		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+\'cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
+		$webfont_loader = 'sc=\'a\';jQuery(\'head\').append(sc.replace(\'a\',\'<\')+\'script>if(!_.isUndefined(WebFont)&&fontFamily){WebFont.load({google:{families:["\'+fontFamily.replace( /\"/g, \'&quot;\' )+\':\'+variant+\':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai"]}});}\'+sc.replace(\'a\',\'<\')+\'/script>\');';
 
 		// Add the css.
 		$css_build_array  = array(
@@ -405,9 +405,7 @@ class Kirki_Modules_PostMessage {
 	 * @return string
 	 */
 	private function before_script( $args ) {
-
 		$script = '';
-
 		if ( isset( $args['type'] ) ) {
 			switch ( $args['type'] ) {
 				case 'kirki-typography':
@@ -455,7 +453,6 @@ class Kirki_Modules_PostMessage {
 			$args['js_callback'][1] = '';
 		}
 		return $args;
-
 	}
 
 	/**
@@ -497,7 +494,6 @@ class Kirki_Modules_PostMessage {
 	 * @return string|array A callable function or method.
 	 */
 	protected function get_callback( $args ) {
-
 		switch ( $args['type'] ) {
 			case 'kirki-background':
 			case 'kirki-dimensions':

@@ -22,7 +22,6 @@ class Kirki_Output_Field_Image extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
-
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 			return;
 		}

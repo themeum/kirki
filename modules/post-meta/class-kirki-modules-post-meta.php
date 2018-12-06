@@ -43,7 +43,6 @@ class Kirki_Modules_Post_Meta {
 	 * @since 3.1.0
 	 */
 	protected function __construct() {
-
 		add_action( 'customize_preview_init', array( $this, 'customize_preview_init' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_scripts' ) );
 	}
@@ -55,7 +54,6 @@ class Kirki_Modules_Post_Meta {
 	 * @since 3.1.0
 	 */
 	public function enqueue_control_scripts() {
-
 		wp_enqueue_script( 'kirki_post_meta_previewed_controls', trailingslashit( Kirki::$url ) . 'modules/post-meta/customize-controls.js', array( 'jquery', 'customize-controls' ), KIRKI_VERSION, true );
 	}
 
@@ -66,7 +64,6 @@ class Kirki_Modules_Post_Meta {
 	 * @since 3.1.0
 	 */
 	public function customize_preview_init() {
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_preview_scripts' ) );
 	}
 
@@ -77,7 +74,6 @@ class Kirki_Modules_Post_Meta {
 	 * @since 3.1.0
 	 */
 	public function enqueue_preview_scripts() {
-
 		wp_enqueue_script( 'kirki_post_meta_previewed_preview', trailingslashit( Kirki::$url ) . 'modules/post-meta/customize-preview.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
 
 		$wp_scripts   = wp_scripts();
