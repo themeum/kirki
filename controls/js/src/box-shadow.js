@@ -68,6 +68,8 @@ wp.customize.controlConstructor['kirki-box-shadow'] = wp.customize.kirkiDynamicC
 			if ( side == 'blur' || side == 'spread' )
 				if ( _.isUndefined( control.params.default[side] ))
 					val = 0;
+			if ( _.isEmpty( val ) )
+				val = 0;
 			new_val[side] = val + 'px';
 		});
 		
