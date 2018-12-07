@@ -52,7 +52,7 @@ class Kirki_Modules_CSS_Vars {
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'wp', array( $this, 'populate_vars' ) );
+		add_action( 'init', array( $this, 'populate_vars' ) );
 		add_action( 'wp_head', array( $this, 'the_style' ), 999 );
 		add_action( 'admin_head', array( $this, 'the_style' ), 999 );
 		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
@@ -108,7 +108,6 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function the_style() {
-
 		if ( empty( $this->vars ) ) {
 			return;
 		}

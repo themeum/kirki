@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.0  
-**Stable tag:** 3.0.35.1  
+**Stable tag:** 3.0.35.2  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -32,6 +32,12 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 ## Changelog ##
+
+### 3.0.35.2 ###
+
+Dec. 8, 2018, dev time: 20m
+
+* Fix: Correctly output css-vars on the top pf admin pages for use in Gutenberg styles.
 
 ### 3.0.35.1 ###
 
