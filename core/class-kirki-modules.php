@@ -72,6 +72,7 @@ class Kirki_Modules {
 				'webfont-loader'     => 'Kirki_Modules_Webfont_Loader',
 				'preset'             => 'Kirki_Modules_Preset',
 				'gutenberg'          => 'Kirki_Modules_Gutenberg',
+				'section-reset'      => 'Kirki_Modules_Section_Reset'
 			)
 		);
 	}

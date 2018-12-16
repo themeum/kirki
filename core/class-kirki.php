@@ -108,7 +108,11 @@ class Kirki extends Kirki_Init {
 	 * @var array
 	 */
 	public static $controls_to_remove = array();
-
+	
+	/**
+	 * Used to bypass the output context check.
+	 */
+	public static $skip_output_context = false;
 	/**
 	 * Modules object.
 	 *
