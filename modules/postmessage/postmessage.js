@@ -40,6 +40,12 @@ var kirkiPostMessage = {
 		addData: function( id, styles ) {
 			kirkiPostMessage.styleTag.add( id );
 			jQuery( '#kirki-postmessage-' + id ).text( styles );
+		},
+		
+		removeData: function( id ) {
+			if ( null !== document.getElementById( 'kirki-postmessage-' + id ) || 'undefined' !== typeof document.getElementById( 'kirki-postmessage-' + id ) ) {
+				jQuery( '#kirki-postmessage-' + id ).remove();
+			}
 		}
 	},
 
@@ -109,7 +115,7 @@ var kirkiPostMessage = {
 		 */
 		backgroundImageValue: function( url ) {
 			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
-		}
+		},
 	},
 
 	/**
@@ -202,9 +208,6 @@ var kirkiPostMessage = {
 					styles += '}';
 					break;
 				case 'kirki-typography-advanced':
-					console.log( value );
-					console.log(output);
-					console.log(controlType);
 					if ( typeof value === 'string' )
 						value = JSON.parse( value );
 					styles += output.element + '{';
@@ -219,8 +222,6 @@ var kirkiPostMessage = {
 						}
 						processedValue = kirkiPostMessage.util.processValue( output, val );
 						if ( false !== processedValue ) {
-							if ( key === 'font-family' )
-								processedValue = '\'' + processedValue + '\'';
 							styles += key + ':' + processedValue + ';';
 						}
 					} );
@@ -236,8 +237,12 @@ var kirkiPostMessage = {
 							media_query = null;
 						if ( media_query )
 							styles += media_query + '{';
-						_.each( device_val, function( val, key )
+						var value_keys = Object.keys( device_val );
+						_.each( value_keys, function( key )
 						{
+							var val = device_val[key];
+							if ( _.isEmpty( val ) )
+								return false;
 							styles += output.element + '{';
 							if ( output.choice && key !== output.choice ) {
 								return false;
@@ -276,7 +281,6 @@ var kirkiPostMessage = {
 					}
 					break;
 				case 'kirki-border':
-				console.log(value);
 					styles += output.element + '{';
 					styles += 'border-style: ' + value['style'] + ';';
 					if ( value['style'] !== 'none' )
@@ -287,11 +291,14 @@ var kirkiPostMessage = {
 							border_width.push( value[side] );
 						});
 						styles += 'border-width: ' + border_width.join( ' ' ) + ';' ;
-						styles += 'border-color: ' + value['color'] + ';';
+						if ( !_.isEmpty( value['color'] ) )
+							styles += 'border-color: ' + value['color'] + ';';
 					}
 					styles += '}';
 					break;
 				case 'kirki-box-shadow':
+					if ( _.isEmpty( value['color'] ) )
+						break;
 					styles += output.element + '{';
 					styles += 'box-shadow: ';
 					var props = [];
@@ -304,7 +311,10 @@ var kirkiPostMessage = {
 					break;
 				case 'kirki-color-gradient':
 					styles += output.element + '{';
-					styles += 'background-image: linear-gradient(' + value['direction'] + ', ' + value['color1'] + ' ' + value['location'] + ', ' + value['color2'] + ');';
+					var gradient = 'linear-gradient(' + value['direction'] + ', ' + value['color1'] + ' ' + value['location'] + ', ' + value['color2'] + ')';
+					styles += 'background-image: ' + gradient + ';';
+					styles += 'background: ' + gradient + ';';
+					styles += 'background-color: ' + gradient + ';';
 					styles += '}';
 					break;
 				case 'kirki-slider-advanced':
@@ -345,6 +355,7 @@ var kirkiPostMessage = {
 						}
 						else
 						{
+							output['suffix'] = '';
 							output['units'] = value['unit'];
 							var val = kirkiPostMessage.util.processValue( output, value['value'] );
 							styles += output.element + '{'
@@ -507,16 +518,116 @@ var kirkiPostMessage = {
 };
 
 jQuery( document ).ready( function() {
+	/**
+	 * Figure out if the 2 values have the relation we want.
+	 *
+	 * @since 3.0.17
+	 * @param {mixed} value1 - The 1st value.
+	 * @param {mixed} value2 - The 2nd value.
+	 * @param {string} operator - The comparison to use.
+	 * @returns {bool}
+	 */
+	function evaluate( value1, value2, operator ) {
+		var found = false;
+		if ( '===' === operator ) {
+			return value1 === value2;
+		}
+		if ( '==' === operator || '=' === operator || 'equals' === operator || 'equal' === operator ) {
+			return value1 == value2;
+		}
+		if ( '!==' === operator ) {
+			return value1 !== value2;
+		}
+		if ( '!=' === operator || 'not equal' === operator ) {
+			return value1 != value2;
+		}
+		if ( '>=' === operator || 'greater or equal' === operator || 'equal or greater' === operator ) {
+			return value2 >= value1;
+		}
+		if ( '<=' === operator || 'smaller or equal' === operator || 'equal or smaller' === operator ) {
+			return value2 <= value1;
+		}
+		if ( '>' === operator || 'greater' === operator ) {
+			return value2 > value1;
+		}
+		if ( '<' === operator || 'smaller' === operator ) {
+			return value2 < value1;
+		}
+		if ( 'contains' === operator || 'in' === operator ) {
+			if ( _.isArray( value1 ) && _.isArray( value2 ) ) {
+				_.each( value2, function( value ) {
+					if ( value1.includes( value ) ) {
+						found = true;
+						return false;
+					}
+				} );
+				return found;
+			}
+			if ( _.isArray( value2 ) ) {
+				_.each( value2, function( value ) {
+					if ( value == value1 ) { // jshint ignore:line
+						found = true;
+					}
+				} );
+				return found;
+			}
+			if ( _.isObject( value2 ) ) {
+				if ( ! _.isUndefined( value2[ value1 ] ) ) {
+					found = true;
+				}
+				_.each( value2, function( subValue ) {
+					if ( value1 === subValue ) {
+						found = true;
+					}
+				} );
+				return found;
+			}
+			if ( _.isString( value2 ) ) {
+				if ( _.isString( value1 ) ) {
+					return ( -1 < value1.indexOf( value2 ) && -1 < value2.indexOf( value1 ) );
+				}
+				return -1 < value1.indexOf( value2 );
+			}
+		}
+		return value1 == value2;
+	}
 	_.each( kirkiPostMessageFields, function( field ) {
 		wp.customize( field.settings, function( value ) {
 			value.bind( function( newVal ) {
+				if ( field.required.length > 0 )
+				{
+					for ( var i in field.required )
+					{
+						var requirement = field.required[i];
+						var required_value = wp.customize.value( requirement.setting )._value;
+						var result = evaluate (
+							requirement.value,
+							required_value,
+							requirement.operator
+						);
+						
+						//If we hit a requirement not met, remove the data.
+						if ( !result )
+						{
+							kirkiPostMessage.styleTag.removeData( field.settings );
+							return;
+						}
+					}
+				}
+				
 				var styles = '';
 				_.each( field.js_vars, function( output ) {
 					if ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) {
 						output.function = 'css';
 					}
 					if ( 'css' === output.function ) {
-						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+						if ( !Array.isArray( output.property ) )
+							output.property = [output.property];
+						_.each( output.property, function( property ) {
+							var prop_output = jQuery.extend({}, output);
+							prop_output.property = property;
+							styles += kirkiPostMessage.css.fromOutput( prop_output, newVal, field.type );
+						});
 					} else {
 						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );
 					}
