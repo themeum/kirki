@@ -26,6 +26,8 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 		$units       = isset( $output['units'] ) ? $output['units'] : '';
 		$breakpoints = Kirki::get_config_param( $this->field['kirki_config'], 'media_queries' );
 		$has_units   = isset( $this->field['choices']['units'] );
+		if ( $has_units )
+			$units = '';
 		if ( $this->field['use_media_queries'] )
 		{
 			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
@@ -46,13 +48,12 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 		else
 		{
 			$output_value = '';
-			if ( $has_units ) {
+			if ( $has_units || isset( $value['unit'] ) ) {
 				$output_value = $value['value'] . $value['unit'];
 			}
 			else {
 				$output_value = $value;
 			}
-			
 			$this->styles[ 'global' ][ $output['element'] ][ $output['property'] ] = $prefix . $output_value . $units . $suffix;
 		}
 	}

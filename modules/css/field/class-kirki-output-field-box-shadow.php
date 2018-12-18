@@ -20,6 +20,9 @@ class Kirki_Output_Field_Box_Shadow extends Kirki_Output {
 		
 		$value = Kirki_Field_Box_Shadow::sanitize( $value );
 		
+		if ( empty( $value['color'] ) )
+			return;
+		
 		$shadow_opts = [];
 		
 		foreach ( ['h_offset', 'v_offset', 'blur', 'spread', 'color'] as $side )
