@@ -144,8 +144,13 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		$use_media_queries = $field['use_media_queries'];
 		$has_units         = ( isset( $field['choices']['units'] ) );
 		$is_value_array    = is_array( $value );
-		$default_unit      = $has_units ? array_keys( $field['choices']['units'] )[0] : '';
-		
+		$default_unit      = '';
+		if ( !isset( $field['choices']['min'] ) &&
+				!isset( $field['choices']['max'] ) &&
+				!isset( $field['choices']['step'] ) )
+			$default_unit = array_keys( $field['choices']['units'] )[0];
+		else
+			$default_unit = $field['choices']['units'][0];
 		if ( $use_media_queries )
 		{
 			if ( $has_units && !$is_value_array )
