@@ -1,63 +1,28 @@
 /* global kirkiSetSettingValue */
 var current_section = null;
-var cookie_name = '_kirki_last_section';
+var last_session_cookie = '_kirki_last_section';
 
+/* global jQuery, kirki_reset_section, ajaxurl, wp */
 function generate_buttons()
 {
-	/* global jQuery, kirki_reset_section, ajaxurl, wp */
 	var $container = $('#customize-header-actions');
 	
-	var $button_container = $( '<div>' )
-	.css({
-		'float': 'right',
-		'margin-right': '10px',
-		'margin-top': '9px'
-	});
-	
-	var $reset_all = $('<input>')
-		.attr( 'type', 'submit' )
-		.addClass( 'button-secondary button' )
-		.attr( 'name', 'kirki-reset-all' )
-		.attr( 'id', 'kirki-reset-all' )
-		.attr( 'value', kirki_reset_section.reset_all )
-
-	$reset_all.on('click', function (event) {
-		event.preventDefault();
-		if ( !confirm( kirki_reset_section.confirm ) )
-			return;
-		
-		var data = {
-			wp_customize: 'on',
-			action: 'reset_theme_options',
-			nonce: kirki_reset_section.nonce.reset
-		};
-		
-		$reset_all.attr( 'disabled', 'disabled' );
-	
-		$.post( ajaxurl, data, function ( result ) {
-			if ( result.success )
-			{
-				api.state( 'saved' ).set( true );
-				location.reload();
-			}
-			else
-			{
-				$reset_all.removeAttr( 'disabled' );
-				alert( kirki_reset_section.something_went_wrong );
-			}
-		});
-	});
-		
-	var $reset_section = $( '<input>' )
+	var $reset_section_btn = $( '<input>' )
 		.attr( 'type', 'submit' )
 		.addClass( 'button-secondary button' )
 		.attr( 'name', 'kirki-reset-section' )
 		.attr( 'id', 'kirki-reset-section' )
 		.attr( 'value', kirki_reset_section.reset_section )
 		.attr( 'disabled', 'disabled' )
+		.css({
+			'float': 'right',
+			'margin-right': '10px',
+			'margin-top': '9px'
+		});
 
-	$reset_section.on('click', function ( event ) {
+	$reset_section_btn.on( 'click', function ( event ) {
 		event.preventDefault();
+		
 		if ( !confirm( kirki_reset_section.confirm_section ) )
 			return;
 		
@@ -68,39 +33,49 @@ function generate_buttons()
 			nonce: kirki_reset_section.nonce.reset
 		};
 	
-		$reset_section.attr('disabled', 'disabled');
-	
+		$reset_section_btn.attr('disabled', 'disabled');
+		
+		wp.customize.state( 'saving' ).set( true );
+		
 		$.post( ajaxurl, data, function ( result ) {
 			if ( result.success )
 			{
-				createCookie( cookie_name, current_section, 1 );
+				createCookie( last_session_cookie, current_section, 1 );
 				wp.customize.state( 'saved' ).set( true );
 				location.reload();
 			}
 			else
 			{
-				$reset_section.removeAttr( 'disabled' );
-				alert( kirki_reset_section.something_went_wrong );
+				wp.customize.state( 'saving' ).set( false );
+				$reset_section_btn.removeAttr( 'disabled' );
+				alert( result.data || kirki_reset_section.something_went_wrong );
 			}
 		});
 	});
 	
-	$button_container.append( $reset_section );
-	//$button_container.append( $reset_all );
-	$container.append( $button_container );
+	$container.append( $reset_section_btn );
 }
 
 jQuery( document ).ready( function() {
 	
 	generate_buttons();
 	
-	var $reset_section = $( '#kirki-reset-section' );
+	var $reset_section_btn = $( '#kirki-reset-section' );
 	
-	wp.customize.section.each( function ( panel ) {
+	var enable_button = function() {
+		$reset_section_btn.removeAttr( 'disabled' );
+	};
+	
+	var disable_button = function() {
+		current_section = null;
+		back_btn = null;
+		$reset_section_btn.attr( 'disabled', 'disabled' );
+	};
+	
+	wp.customize.panel.each( function ( panel ) {
 		
 		panel.expanded.bind( function() {
-			current_section = null;
-			$reset_section.attr( 'disabled', 'disabled' );
+			disable_button();
 		});
 	});
 	
@@ -108,17 +83,21 @@ jQuery( document ).ready( function() {
 		
 		section.expanded.bind( function() {
 			current_section = section.id;
-			$reset_section.removeAttr( 'disabled' );
+			enable_button();
+			$( '.customize-section-back' ).on( 'click', function(){
+				disable_button();
+			});
 		});
 	} );
 	
-	current_section = readCookie( cookie_name );
-	console.log(current_section);
+	current_section = readCookie( last_session_cookie );
+	
 	if ( current_section )
 	{
-		deleteCookie ( cookie_name );
+		deleteCookie ( last_session_cookie );
 		setTimeout( function() {
 			wp.customize.section( current_section ).expanded.set ( true );
+			enable_button();
 		}, 1000 );
 	}
 } );
@@ -132,6 +111,7 @@ function createCookie( name, value, days ) {
 	else var expires = '';
 	document.cookie = name + '=' + value + expires + '; path=/';
 }
+
 function readCookie( name ) {
 	var nameEQ = name + '=';
 	var ca = document.cookie.split( ';' );
@@ -142,6 +122,7 @@ function readCookie( name ) {
 	}
 	return null;
 }
+
 function deleteCookie( name ) {
 	createCookie( name, '', -1 );
 }

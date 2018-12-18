@@ -1,11 +1,11 @@
 <?php
 /**
- * Automatic preset scripts calculation for Kirki controls.
+ * Adds ability to reset sections inside customizer.
  *
  * @package     Kirki
  * @category    Modules
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Nathaniel Glover
+ * @copyright   Copyright (c) 2018, Nathaniel Glover
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.26
  */
@@ -15,9 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Adds styles to the customizer.
- */
 class Kirki_Modules_Section_Reset {
 
 	/**
@@ -25,7 +22,6 @@ class Kirki_Modules_Section_Reset {
 	 *
 	 * @static
 	 * @access private
-	 * @since 3.0.26
 	 * @var object
 	 */
 	private static $instance;
@@ -34,11 +30,10 @@ class Kirki_Modules_Section_Reset {
 	 * Constructor.
 	 *
 	 * @access protected
-	 * @since 3.0.26
 	 */
 	protected function __construct() {
-		add_action( 'wp_ajax_reset_section', array( $this, 'ajax_reset_section' ) );
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+		add_action( 'wp_ajax_reset_section', array( $this, 'ajax_reset_section' ) );
 	}
 
 	/**
@@ -47,7 +42,6 @@ class Kirki_Modules_Section_Reset {
 	 *
 	 * @static
 	 * @access public
-	 * @since 3.0.26
 	 * @return object
 	 */
 	public static function get_instance() {
@@ -61,15 +55,12 @@ class Kirki_Modules_Section_Reset {
 	 * Enqueue scripts.
 	 *
 	 * @access public
-	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
 		wp_enqueue_script( 'kirki-section-reset', trailingslashit( Kirki::$url ) . 'modules/section-reset/section-reset.js', array( 'jquery' ), KIRKI_VERSION, false );
 		wp_localize_script( 'kirki-section-reset', 'kirki_reset_section', array(
-			'reset_all'   => __( 'Reset All', 'kirki' ),
 			'reset_section'   => __( 'Reset Section', 'kirki' ),
-			'confirm' => __( "Attention! This will remove all customizations ever made via customizer to this theme!\n\nThis action is irreversible!", 'kirki' ),
-			'confirm_section' => __( "Attention! This will remove all customizations made to this section.!\n\nThis action is irreversible!", 'kirki' ),
+			'confirm_section' => __( "Attention! This will remove all customizations made to this section!\n\nThis action is irreversible!", 'kirki' ),
 			'something_went_wrong' => __( "Something went wrong.", 'kirki' ),
 			'nonce'   => array(
 				'reset' => wp_create_nonce( 'section-reset' ),
@@ -77,16 +68,21 @@ class Kirki_Modules_Section_Reset {
 		) );
 	}
 	
+	/**
+	 * Handles resetting called by reset button
+	 */
 	public function ajax_reset_section()
 	{
 		$section = isset ( $_REQUEST['section'] ) ? $_REQUEST['section'] : '';
+		$nonce = isset ( $_REQUEST['nonce'] ) ? $_REQUEST['nonce'] : '';
+		if ( !wp_verify_nonce( $nonce, 'section-reset'  ) )
+			wp_send_json_error( __( 'Invalid nonce.', 'kirki' ) );
 		if ( empty( $section ) )
-			wp_send_json_error( __( 'Section not set.', 'kirki' ) );
-		$sections = Kirki::$sections;
-		$fields = Kirki::$fields;
-		if ( isset( $sections[$section] ) )
+			wp_send_json_error( __( 'Section not set', 'kirki' ) );
+		
+		if ( isset( Kirki::$sections[$section] ) )
 		{
-			foreach ( $fields as $field )
+			foreach ( Kirki::$fields as $field )
 			{
 				if ( $field['section'] !== $section )
 					continue;
