@@ -236,6 +236,28 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 		}
 		return $value;
 	}
+	
+	public static function normalize_default( $value, $field ) {
+		if ( ! is_array( $value ) ) {
+			return array();
+		}
+		
+		if ( !isset( $value['desktop'] ) )
+		{
+			$desktop_fill = [];
+			foreach ( $value as $k => $v )
+			{
+				if ( in_array( $k, Kirki_Field_Typography_Advanced::$device_properties ) )
+				{
+					$desktop_fill[$k] = $v;
+					unset( $value[$k] );
+				}
+			}
+			$value['desktop'] = $desktop_fill;
+		}
+		
+		return $value;
+	}
 
 	/**
 	 * Sets the $choices

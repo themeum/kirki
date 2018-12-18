@@ -28,10 +28,11 @@ class Kirki_Output_Field_Typography_Advanced extends Kirki_Output {
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 		$output['units']       = ( isset ( $output['units'] ) ) ? $output['units'] : '';
 		$breakpoints = Kirki::get_config_param( $this->field['kirki_config'], 'media_queries' );
-		if ( !$value )
+		if ( !$value ) 
 			return;
 		
 		$value = Kirki_Field_Typography_Advanced::sanitize( $value );
+		$value = Kirki_Field_Typography_Advanced::normalize_default( $value, $this->field );
 		
 		//Output global vars
 		foreach ( Kirki_Field_Typography_Advanced::$global_properties as $property )
