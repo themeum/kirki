@@ -42,7 +42,9 @@ function generate_buttons()
 			{
 				createCookie( last_session_cookie, current_section, 1 );
 				wp.customize.state( 'saved' ).set( true );
-				location.reload();
+				setTimeout(function() {
+					location.reload();
+				}, 300);
 			}
 			else
 			{
@@ -95,10 +97,12 @@ jQuery( document ).ready( function() {
 	if ( current_section )
 	{
 		deleteCookie ( last_session_cookie );
-		setTimeout( function() {
-			wp.customize.section( current_section ).expanded.set ( true );
-			enable_button();
-		}, 1000 );
+		wp.customize.bind( 'ready', function(){
+			setTimeout( function() {
+				wp.customize.section( current_section ).expanded.set ( true );
+				enable_button();
+			}, 1000 );
+		});
 	}
 } );
 
