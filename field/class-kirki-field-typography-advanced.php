@@ -212,7 +212,7 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 			}
 		}
 		
-		foreach ( array( 'global', 'desktop', 'tablet', 'mobile' ) as $device )
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
 		{
 			if ( !isset( $value[$device] ) )
 				continue;
