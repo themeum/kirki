@@ -23,7 +23,16 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 		var value           = this.setting._value,
 			is_value_object = typeof value === 'object',
 			has_units       = !_.isUndefined( this.params.choices.units ),
-			default_unit    = has_units ? Object.keys( this.params.choices.units )[0] : '';
+			default_unit    = '';
+			if ( has_units )
+			{
+				if ( _.isUndefined( this.params.choices.min ) &&
+					_.isUndefined( this.params.choices.max ) &&
+					_.isUndefined( this.params.choices.step ) )
+					default_unit = Object.keys( this.params.choices.units )[0];
+				else
+					default_unit = this.params.choices.units[0];
+			}
 		
 		if ( this.params.use_media_queries )
 		{
@@ -84,7 +93,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 				if ( has_units )
 					device_unit = value[device]['unit'];
 			}
-			else if ( has_units )
+			else if ( has_units || typeof value === 'object' )
 			{
 				device_val  = value['value'];
 				device_unit = value['unit'];
@@ -111,6 +120,8 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			{
 				var unit_wrapper = wrappers.units[device];
 				range = control.params.choices['units'][device_unit];
+				if ( _.isUndefined( range ) )
+					range = control.params.choices;
 				kirki.util.helpers.selectUnit( unit_wrapper, device_unit );
 				
 				unit_wrapper.find ( '.kirki-unit-choice input[type="radio"]').on ( 'change', function( e )
@@ -118,11 +129,12 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 					var $this = $( this ),
 						unit  = $this.val(),
 						range = control.params.choices['units'][unit];
+					if ( _.isUndefined( range ) )
+						range = control.params.choices;
 					rangeInput.attr( 'min', range.min )
 						.attr( 'max', range.max )
 						.attr( 'step', range.step );
 					textInput.attr( 'value', rangeInput.val() );
-					suffix.html( unit );
 					control.save();
 				});
 			}
@@ -133,8 +145,6 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			
 			rangeInput.attr( 'value', device_val );
 			textInput.attr( 'value', device_val );
-			if ( device_unit )
-				suffix.html( device_unit );
 			
 			rangeInput.on( 'mousemove change', function() {
 				textInput.attr( 'value', rangeInput.val() );
@@ -150,14 +160,15 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			} );
 			
 			device_wrapper.find( '.slider-reset' ).on( 'click', function() {
-				
 				if ( has_units )
 				{
 					kirki.util.helpers.selectUnit( unit_wrapper );
 				}
-				
-				textInput.attr( 'value', control.params.default );
-				rangeInput.attr( 'value', control.params.default );
+				var val = control.params.default;
+				if ( !_.isUndefined( control.params.default['value'] ) )
+					val = control.params.default['value'];
+				textInput.attr( 'value', val );
+				rangeInput.attr( 'value', val );
 				control.save();
 			} );
 		});

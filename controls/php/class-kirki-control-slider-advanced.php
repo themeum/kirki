@@ -62,6 +62,15 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 			<div class="kirki-unit-choices-outer">
 				<# for ( unit_id in data.choices.units ) {
 					var unit = data.choices.units[unit_id];
+					if ( typeof unit !== 'object' )
+					{
+						unit_id = unit;
+						unit = {
+							min: data.choices.min || 0,
+							max: data.choices.max || 0,
+							step: data.choices.step || 0
+						};
+					}
 				#>
 				<div class="kirki-unit-choice">
 					<input id="{{ data.id }}_{{ unit_id }}" type="radio" name="{{ data.id }}_unit" data-setting="unit" value="{{ unit_id }}" min="{{ unit['min'] }}" max="{{ unit['max'] }}" step="{{ unit['step'] }}">
