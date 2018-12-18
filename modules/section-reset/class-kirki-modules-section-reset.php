@@ -33,7 +33,7 @@ class Kirki_Modules_Section_Reset {
 	 */
 	protected function __construct() {
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
-		add_action( 'wp_ajax_reset_section', array( $this, 'ajax_reset_section' ) );
+		add_action( 'wp_ajax_kirki_reset_section', array( $this, 'ajax_reset_section' ) );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class Kirki_Modules_Section_Reset {
 			'confirm_section' => __( "Attention! This will remove all customizations made to this section!\n\nThis action is irreversible!", 'kirki' ),
 			'something_went_wrong' => __( "Something went wrong.", 'kirki' ),
 			'nonce'   => array(
-				'reset' => wp_create_nonce( 'section-reset' ),
+				'reset' => wp_create_nonce( 'kirki-section-reset' ),
 			)
 		) );
 	}
@@ -75,7 +75,7 @@ class Kirki_Modules_Section_Reset {
 	{
 		$section = isset ( $_REQUEST['section'] ) ? $_REQUEST['section'] : '';
 		$nonce = isset ( $_REQUEST['nonce'] ) ? $_REQUEST['nonce'] : '';
-		if ( !wp_verify_nonce( $nonce, 'section-reset'  ) )
+		if ( !wp_verify_nonce( $nonce, 'kirki-section-reset'  ) )
 			wp_send_json_error( __( 'Invalid nonce.', 'kirki' ) );
 		if ( empty( $section ) )
 			wp_send_json_error( __( 'Section not set', 'kirki' ) );

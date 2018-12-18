@@ -28,7 +28,7 @@ function generate_buttons()
 		
 		var data = {
 			wp_customize: 'on',
-			action: 'reset_section',
+			action: 'kirki_reset_section',
 			section: current_section,
 			nonce: kirki_reset_section.nonce.reset
 		};
