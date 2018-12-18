@@ -151,7 +151,11 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['letter-spacing'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
@@ -164,7 +168,11 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['word-spacing'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
@@ -248,7 +256,11 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-top'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
@@ -261,7 +273,11 @@ class Kirki_Control_Typography_Advanced extends Kirki_Control_Base {
 						<?php Kirki_Helper::responsive_switcher_template(); ?>
 						<# } #>
 					</h5>
-					<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
+					<div class="control-wrapper-outer">
+						<div class="control-wrapper">
+							<input {{{ data.inputAttrs }}} type="text" value="{{ data.value['margin-bottom'] }}"/>
+						</div>
+					</div>
 				</div>
 			<# } #>
 
