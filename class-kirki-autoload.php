@@ -93,6 +93,8 @@ class Kirki_Autoload {
 			$path    = dirname( __FILE__ ) . '/modules/';
 			$path   .= strtolower( str_replace( '_', '-', str_replace( 'Kirki_Modules_', '', $class_name ) ) ) . '/';
 			$paths[] = $path . $filename;
+		} elseif ( 'Kirki_Fonts' === $class_name ) {
+			$paths[] = dirname( __FILE__ ) . '/modules/webfonts/class-kirki-fonts.php';
 		}
 
 		if ( isset( $name_parts[0] ) ) {
