@@ -30,19 +30,15 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 	public $type = 'kirki-slider-advanced';
 	
 	/**
-	 * Media queries toggle
-	 */
-	
-	public $use_media_queries = true;
-	
-	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['use_media_queries'] = $this->use_media_queries;
+		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
+			'use_media_queries' => true
+		));
 	}
 
 	/**
@@ -81,7 +77,7 @@ class Kirki_Control_Slider_Advanced extends Kirki_Control_Base {
 			<# } #>
 			<span class="customize-control-title">
 				<span>{{{ data.label }}}</span>
-				<# if ( data.use_media_queries ) { #>
+				<# if ( data.choices.use_media_queries ) { #>
 				<?php Kirki_Helper::responsive_switcher_template(); ?>
 				<# } #>
 			</span>

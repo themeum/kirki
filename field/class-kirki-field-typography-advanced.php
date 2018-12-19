@@ -272,6 +272,7 @@ class Kirki_Field_Typography_Advanced extends Kirki_Field {
 		}
 		$this->choices = wp_parse_args(
 			$this->choices, array(
+				'use_media_queries' => true,
 				'variant' => array(),
 				'fonts'   => array(
 					'standard' => array(),

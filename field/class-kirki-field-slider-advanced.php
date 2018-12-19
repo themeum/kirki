@@ -141,16 +141,19 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 			];
 		};
 		
-		$use_media_queries = $field['use_media_queries'];
+		$use_media_queries = $field['choices']['use_media_queries'];
 		$has_units         = ( isset( $field['choices']['units'] ) );
 		$is_value_array    = is_array( $value );
 		$default_unit      = '';
-		if ( !isset( $field['choices']['min'] ) &&
-				!isset( $field['choices']['max'] ) &&
-				!isset( $field['choices']['step'] ) )
-			$default_unit = array_keys( $field['choices']['units'] )[0];
-		else
-			$default_unit = $field['choices']['units'][0];
+		if ( isset( $field['choices']['units'] ) )
+		{
+			if ( !isset( $field['choices']['min'] ) &&
+					!isset( $field['choices']['max'] ) &&
+					!isset( $field['choices']['step'] ) )
+				$default_unit = array_keys( $field['choices']['units'] )[0];
+			else
+				$default_unit = $field['choices']['units'][0];
+		}
 		if ( $use_media_queries )
 		{
 			if ( $has_units && !$is_value_array )
@@ -195,5 +198,11 @@ class Kirki_Field_Slider_Advanced extends Kirki_Field {
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
+		$this->choices = wp_parse_args(
+			$this->choices, array(
+				'use_media_queries' => true,
+			)
+		);
+		
 	}
 }

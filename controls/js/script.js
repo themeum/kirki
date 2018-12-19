@@ -1442,7 +1442,7 @@ kirki = jQuery.extend( kirki, {
 				},
 				unit_wrappers = {};
 				//If media queries are not enabled in some way, just return the containers as desktop devices.
-				if ( !control.params.use_media_queries && !control.params.choices.use_media_queries )
+				if ( !control.params.choices.use_media_queries )
 				{
 					return {
 						devices: { 'desktop': desktop_wrappers },
@@ -3531,7 +3531,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 	initKirkiControl: function() {
 		'use strict';
 		
-		if ( this.params.use_media_queries )
+		if ( this.params.choices.use_media_queries )
 		{
 			this.container.addClass( 'has-switchers' );
 		}
@@ -3563,7 +3563,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 					default_unit = this.params.choices.units[0];
 			}
 		
-		if ( this.params.use_media_queries )
+		if ( this.params.choices.use_media_queries )
 		{
 			if ( has_units && !is_value_object )
 			{
@@ -3709,7 +3709,7 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 			has_units  = !_.isUndefined( control.params.choices.units ),
 			save_value = null;
 		
-		if ( control.params.use_media_queries )
+		if ( control.params.choices.use_media_queries )
 		{
 			save_value = {};
 			_.each( kirki.util.media_query_devices, function( device )
@@ -4604,7 +4604,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		
 		kirki.util.helpers.setupMediaQueries( control );
 		
-		if ( control.params.use_media_queries )
+		if ( control.params.choices.use_media_queries )
 		{
 			control.container.addClass( 'has-switchers' );
 		}
@@ -4618,7 +4618,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		// Setting up the values for tablet/mobile.
 		_.each( ['desktop', 'tablet', 'mobile'], function( device )
 		{
-			if ( !control.params.use_media_queries &&
+			if ( !control.params.choices.use_media_queries &&
 					device !== kirki.util.media_query_devices.desktop )
 			{
 				return false;
@@ -4628,7 +4628,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				if ( _.isUndefined( control.params.default[type] ) )
 					return false;
 				var device_class = ' .device-' + device + ' ';
-				if ( !control.params.use_media_queries )
+				if ( !control.params.choices.use_media_queries )
 				{
 					device_class = ' ';
 				}
@@ -5102,7 +5102,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		});
 		_.each( kirki.util.media_query_devices, function( device )
 		{
-			if ( !control.params.use_media_queries &&
+			if ( !control.params.choices.use_media_queries &&
 				 device !== kirki.util.media_query_devices.desktop )
 			{ 
 				return false;
@@ -5114,7 +5114,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				if ( _.isUndefined( control.params.default[type] ) )
 					return false;
 				if ( device !== kirki.util.media_query_devices.desktop && 
-					control.params.use_media_queries )
+					control.params.choices.use_media_queries )
 				{
 					value[device][type] = '';
 					return false;

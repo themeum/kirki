@@ -28,7 +28,7 @@ class Kirki_Output_Field_Slider_Advanced extends Kirki_Output {
 		$has_units   = isset( $this->field['choices']['units'] );
 		if ( $has_units )
 			$units = '';
-		if ( $this->field['use_media_queries'] )
+		if ( $this->field['choices']['use_media_queries'] )
 		{
 			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device )
 			{

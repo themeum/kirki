@@ -2,7 +2,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 	initKirkiControl: function() {
 		'use strict';
 		
-		if ( this.params.use_media_queries )
+		if ( this.params.choices.use_media_queries )
 		{
 			this.container.addClass( 'has-switchers' );
 		}
@@ -34,7 +34,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 					default_unit = this.params.choices.units[0];
 			}
 		
-		if ( this.params.use_media_queries )
+		if ( this.params.choices.use_media_queries )
 		{
 			if ( has_units && !is_value_object )
 			{
@@ -180,7 +180,7 @@ wp.customize.controlConstructor['kirki-slider-advanced'] = wp.customize.kirkiDyn
 			has_units  = !_.isUndefined( control.params.choices.units ),
 			save_value = null;
 		
-		if ( control.params.use_media_queries )
+		if ( control.params.choices.use_media_queries )
 		{
 			save_value = {};
 			_.each( kirki.util.media_query_devices, function( device )

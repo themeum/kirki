@@ -304,7 +304,7 @@ kirki = jQuery.extend( kirki, {
 				},
 				unit_wrappers = {};
 				//If media queries are not enabled in some way, just return the containers as desktop devices.
-				if ( !control.params.use_media_queries && !control.params.choices.use_media_queries )
+				if ( !control.params.choices.use_media_queries )
 				{
 					return {
 						devices: { 'desktop': desktop_wrappers },

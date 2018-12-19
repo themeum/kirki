@@ -29,7 +29,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		
 		kirki.util.helpers.setupMediaQueries( control );
 		
-		if ( control.params.use_media_queries )
+		if ( control.params.choices.use_media_queries )
 		{
 			control.container.addClass( 'has-switchers' );
 		}
@@ -43,7 +43,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		// Setting up the values for tablet/mobile.
 		_.each( ['desktop', 'tablet', 'mobile'], function( device )
 		{
-			if ( !control.params.use_media_queries &&
+			if ( !control.params.choices.use_media_queries &&
 					device !== kirki.util.media_query_devices.desktop )
 			{
 				return false;
@@ -53,7 +53,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				if ( _.isUndefined( control.params.default[type] ) )
 					return false;
 				var device_class = ' .device-' + device + ' ';
-				if ( !control.params.use_media_queries )
+				if ( !control.params.choices.use_media_queries )
 				{
 					device_class = ' ';
 				}
@@ -527,7 +527,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		});
 		_.each( kirki.util.media_query_devices, function( device )
 		{
-			if ( !control.params.use_media_queries &&
+			if ( !control.params.choices.use_media_queries &&
 				 device !== kirki.util.media_query_devices.desktop )
 			{ 
 				return false;
@@ -539,7 +539,7 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				if ( _.isUndefined( control.params.default[type] ) )
 					return false;
 				if ( device !== kirki.util.media_query_devices.desktop && 
-					control.params.use_media_queries )
+					control.params.choices.use_media_queries )
 				{
 					value[device][type] = '';
 					return false;
