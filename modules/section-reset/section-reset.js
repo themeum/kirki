@@ -40,7 +40,6 @@ function generate_buttons()
 		$.post( ajaxurl, data, function ( result ) {
 			if ( result.success )
 			{
-				createCookie( last_session_cookie, current_section, 1 );
 				wp.customize.state( 'saved' ).set( true );
 				setTimeout(function() {
 					location.reload();
@@ -92,41 +91,13 @@ jQuery( document ).ready( function() {
 		});
 	} );
 	
-	current_section = readCookie( last_session_cookie );
+	current_section = kirki_reset_section.last_section || null;
 	
 	if ( current_section )
 	{
-		deleteCookie ( last_session_cookie );
-		wp.customize.bind( 'ready', function(){
-			setTimeout( function() {
-				wp.customize.section( current_section ).expanded.set ( true );
-				enable_button();
-			}, 1000 );
-		});
+		setTimeout( function() {
+			wp.customize.section( current_section ).expanded.set ( true );
+			enable_button();
+		}, 1000 );
 	}
 } );
-
-function createCookie( name, value, days ) {
-	if ( days ) {
-		var date = new Date();
-		date.setTime( date.getTime() + ( days*24*60*60*1000 ) );
-		var expires = '; expires='+date.toGMTString();
-	}
-	else var expires = '';
-	document.cookie = name + '=' + value + expires + '; path=/';
-}
-
-function readCookie( name ) {
-	var nameEQ = name + '=';
-	var ca = document.cookie.split( ';' );
-	for( var i = 0; i < ca.length;i++ ) {
-		var c = ca[i];
-		while ( c.charAt( 0 ) == ' ' ) c = c.substring( 1, c.length );
-		if ( c.indexOf( nameEQ ) == 0 ) return c.substring( nameEQ.length, c.length );
-	}
-	return null;
-}
-
-function deleteCookie( name ) {
-	createCookie( name, '', -1 );
-}

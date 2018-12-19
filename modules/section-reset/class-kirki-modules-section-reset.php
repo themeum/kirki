@@ -57,6 +57,7 @@ class Kirki_Modules_Section_Reset {
 	 * @access public
 	 */
 	public function customize_controls_print_footer_scripts() {
+		
 		wp_enqueue_script( 'kirki-section-reset', trailingslashit( Kirki::$url ) . 'modules/section-reset/section-reset.js', array( 'jquery' ), KIRKI_VERSION, false );
 		wp_localize_script( 'kirki-section-reset', 'kirki_reset_section', array(
 			'reset_section'   => __( 'Reset Section', 'kirki' ),
@@ -64,8 +65,11 @@ class Kirki_Modules_Section_Reset {
 			'something_went_wrong' => __( "Something went wrong.", 'kirki' ),
 			'nonce'   => array(
 				'reset' => wp_create_nonce( 'kirki-section-reset' ),
-			)
+			),
+			'last_section' => get_option( '_kirki_customize_last_section', null )
 		) );
+		
+		delete_option( '_kirki_customize_last_section' );
 	}
 	
 	/**
@@ -95,6 +99,9 @@ class Kirki_Modules_Section_Reset {
 			new Kirki_CSS_To_File();
 			do_action( 'customize_save_after' );
 			Kirki::$skip_output_context = false;
+			
+			update_option( '_kirki_customize_last_section', $section );
+			
 			wp_send_json_success();
 		}
 		else
