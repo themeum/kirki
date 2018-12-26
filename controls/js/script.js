@@ -1398,8 +1398,8 @@ kirki = jQuery.extend( kirki, {
 					numericValue,
 					unit;
 
-				// Early exit if value is undefined.
-				if ( 'undefined' === typeof value ) {
+				// Early exit if value is not a string or a number.
+				if ( 'string' !== typeof value || 'number' !== typeof value ) {
 					return true;
 				}
 
