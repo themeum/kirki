@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.0  
-**Stable tag:** 3.0.35.2  
+**Stable tag:** 3.0.35.3  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -33,11 +33,20 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.35.3 ###
+
+Dec. 26, 2018, dev time: 1h
+
+* Fix: Update CSS-Vars when the preview pane refreshes.
+* Fix: Tweaked the CSS Values JS-validation function.
+* Fix: Update Google Fonts.
+
 ### 3.0.35.2 ###
 
 Dec. 8, 2018, dev time: 20m
 
 * Fix: Correctly output css-vars on the top pf admin pages for use in Gutenberg styles.
+* Fix: Update Google Fonts.
 
 ### 3.0.35.1 ###
 
