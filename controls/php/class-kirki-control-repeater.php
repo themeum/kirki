@@ -417,7 +417,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 								</figure>
 
 								<div class="actions">
-									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"></button>
+									<button type="button" class="button remove-button<# if ( ! field.default ) { #> hidden<# } #>"><?php esc_html_e( 'Remove', 'kirki' ); ?></button>
 									<button type="button" class="button upload-button" data-label="<?php esc_attr_e( 'Add File', 'kirki' ); ?>" data-alt-label="<?php esc_attr_e( 'Change File', 'kirki' ); ?>">
 										<# if ( field.default ) { #>
 											<?php esc_html_e( 'Change File', 'kirki' ); ?>
