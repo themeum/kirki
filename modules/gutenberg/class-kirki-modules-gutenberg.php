@@ -240,27 +240,30 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	public function load_fonts() {
+
+		$modules_webfonts = $this->modules_webfonts;
+		$google_fonts     = $this->google_fonts;
 		foreach ( $this->configs as $config_id => $args ) {
 
 			if ( $this->is_disabled( $args ) ) {
 				continue;
 			}
 
-			$this->modules_webfont_loader::$load = true;
+			$this->modules_webfont_loader->set_load( true );
 			$this->modules_webfont_loader->enqueue_scripts();
 
 			$async = new Kirki_Modules_Webfonts_Async(
 				$config_id,
-				$this->modules_webfonts::get_instance(),
-				$this->google_fonts::get_instance()
+				$modules_webfonts::get_instance(),
+				$google_fonts::get_instance()
 			);
 
 			$async->webfont_loader();
 			$async->webfont_loader_script();
 
 			$local_fonts = new Kirki_Modules_Webfonts_Local(
-				$this->modules_webfonts::get_instance(),
-				$this->google_fonts::get_instance()
+				$modules_webfonts::get_instance(),
+				$google_fonts::get_instance()
 			);
 
 			$local_fonts->add_styles();
