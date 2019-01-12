@@ -319,4 +319,16 @@ class Kirki_Modules_CSS {
 	public static function add_fontawesome_script() {
 		self::$enqueue_fa = true;
 	}
+
+	/**
+	 * Check if FontAwesome should be loaded.
+	 *
+	 * @static
+	 * @since 3.0.35
+	 * @access public
+	 * @return void
+	 */
+	public static function get_enqueue_fa() {
+		return self::$enqueue_fa;
+	}
 }

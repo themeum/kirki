@@ -240,18 +240,16 @@ class Kirki_Output {
 
 			$value = $this->process_value( $value, $output );
 
-			// Set the context.
-			if ( ! isset( $output['context'] ) || empty( $output['context'] ) ) {
-				$output['context'] = array( 'front' );
-			}
-
-			// Check if this is an admin style.
 			if ( is_admin() && ! is_customize_preview() ) {
-				if ( ! in_array( 'editor', $output['context'] ) ) {
-					return;
+
+				// Check if this is an admin style.
+				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'] ) ) {
+					continue;
 				}
-			} elseif ( ! in_array( 'front', $output['context'] ) ) {
-				return;
+			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'] ) ) {
+
+				// Check if this is a frontend style.
+				continue;
 			}
 			$this->process_output( $output, $value );
 		}
