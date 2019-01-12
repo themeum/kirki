@@ -218,9 +218,6 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	 *
 	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
 	 *
-	 * Supports basic input types `text`, `checkbox`, `textarea`, `radio`, `select` and `dropdown-pages`.
-	 * Additional input types such as `email`, `url`, `number`, `hidden` and `date` are supported implicitly.
-	 *
 	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
 	 *
 	 * @since 3.4.0
