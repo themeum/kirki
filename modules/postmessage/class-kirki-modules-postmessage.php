@@ -66,11 +66,8 @@ class Kirki_Modules_PostMessage {
 		$fields = Kirki::$fields;
 		$data   = array();
 		foreach ( $fields as $field ) {
-			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
+			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) && ( ! isset( $field['js_vars']['context'] ) || in_array( 'front', $field['js_vars']['context'] ) ) ) {
 				$data[] = $field;
-			}
-			if ( isset( $js_var['context'] ) && ! in_array( 'front', $js_var['context'] ) ) {
-				$add_css = false;
 			}
 		}
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
