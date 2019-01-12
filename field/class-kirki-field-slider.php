@@ -20,8 +20,6 @@ class Kirki_Field_Slider extends Kirki_Field_Number {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-slider';
-
 	}
 }

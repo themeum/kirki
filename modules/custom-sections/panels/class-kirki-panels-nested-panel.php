@@ -40,7 +40,6 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-
 		$array = wp_array_slice_assoc(
 			(array) $this, array(
 				'id',

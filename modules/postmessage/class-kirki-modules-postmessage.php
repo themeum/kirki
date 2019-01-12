@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Adds styles to the customizer.
  */
 class Kirki_Modules_PostMessage {
+
 	/**
 	 * The object instance.
 	 *
@@ -61,7 +62,6 @@ class Kirki_Modules_PostMessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-
 		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		$data   = array();

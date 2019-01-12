@@ -89,14 +89,12 @@ class Kirki_Modules_Webfonts {
 	 * @since 3.0.0
 	 */
 	protected function init() {
-
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
 			$method    = $this->get_method( $config_id );
 			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
 			new $classname( $config_id, $this, $this->fonts_google );
 		}
 		new Kirki_Modules_Webfonts_Local( $this, $this->fonts_google );
-
 	}
 
 	/**

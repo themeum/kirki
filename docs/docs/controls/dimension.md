@@ -21,8 +21,8 @@ The `dimension` control allows you create an input where users can enter any val
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'dimension',
 	'settings'    => 'dimension_setting',
-	'label'       => esc_attr__( 'Dimension Control', 'textdomain' ),
-	'description' => esc_attr__( 'Description Here.', 'textdomain' ),
+	'label'       => esc_html__( 'Dimension Control', 'textdomain' ),
+	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '10px',
 ) );

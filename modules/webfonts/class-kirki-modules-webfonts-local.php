@@ -61,7 +61,6 @@ final class Kirki_Modules_Webfonts_Local {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 */
 	public function __construct( $webfonts, $googlefonts ) {
-
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 

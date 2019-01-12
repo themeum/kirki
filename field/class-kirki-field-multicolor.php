@@ -62,8 +62,6 @@ class Kirki_Field_Multicolor extends Kirki_Field {
 	 * @return array The value.
 	 */
 	public function sanitize( $value ) {
-
 		return $value;
-
 	}
 }

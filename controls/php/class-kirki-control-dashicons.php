@@ -34,7 +34,6 @@ class Kirki_Control_Dashicons extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
 		$this->json['icons'] = Kirki_Helper::get_dashicons();
 	}
 

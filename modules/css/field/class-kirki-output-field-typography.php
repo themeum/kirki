@@ -22,7 +22,6 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
-
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';

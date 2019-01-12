@@ -25,10 +25,10 @@ Kirki::add_field( 'theme_config_id', array(
 	'priority'    => 10,
 	'multiple'    => 1,
 	'choices'     => array(
-		'option-1' => esc_attr__( 'Option 1', 'textdomain' ),
-		'option-2' => esc_attr__( 'Option 2', 'textdomain' ),
-		'option-3' => esc_attr__( 'Option 3', 'textdomain' ),
-		'option-4' => esc_attr__( 'Option 4', 'textdomain' ),
+		'option-1' => esc_html__( 'Option 1', 'textdomain' ),
+		'option-2' => esc_html__( 'Option 2', 'textdomain' ),
+		'option-3' => esc_html__( 'Option 3', 'textdomain' ),
+		'option-4' => esc_html__( 'Option 4', 'textdomain' ),
 	),
 ) );
 ```

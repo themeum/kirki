@@ -16,7 +16,7 @@ if ( ! function_exists( 'kirki_get_option' ) ) {
 	 * @return mixed
 	 */
 	function kirki_get_option( $option = '' ) {
-		_deprecated_function( __FUNCTION__, '1.0.0', sprintf( esc_attr__( '%1$s or %2$s', 'kirki' ), 'get_theme_mod', 'get_option' ) );
+		_deprecated_function( __FUNCTION__, '1.0.0', sprintf( esc_html__( '%1$s or %2$s', 'kirki' ), 'get_theme_mod', 'get_option' ) );
 		return Kirki::get_option( '', $option );
 	}
 }

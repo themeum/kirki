@@ -21,7 +21,7 @@ heroButtons:
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'number',
 	'settings'    => 'my_setting',
-	'label'       => esc_attr__( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 42,
 	'choices'     => array(

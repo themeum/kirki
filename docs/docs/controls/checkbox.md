@@ -23,8 +23,8 @@ If a checkbox is not what you're after visually, you can also use a [`switch`](s
 Kirki::add_field( 'theme_config_id', array(
 	'type'        => 'checkbox',
 	'settings'    => 'checkbox_setting',
-	'label'       => esc_attr__( 'Checkbox Control', 'textdomain' ),
-	'description' => esc_attr__( 'Description', 'textdomain' ),
+	'label'       => esc_html__( 'Checkbox Control', 'textdomain' ),
+	'description' => esc_html__( 'Description', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => true,
 ) );

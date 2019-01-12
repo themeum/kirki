@@ -178,7 +178,6 @@ final class Kirki_Modules_CSS_Generator {
 		}
 		$obj = new $classname( $field['kirki_config'], self::$output, self::$value, $field );
 		return $obj->get_styles();
-
 	}
 
 	/**
@@ -232,7 +231,6 @@ final class Kirki_Modules_CSS_Generator {
 	 * @return array
 	 */
 	public static function add_prefixes( $css ) {
-
 		if ( is_array( $css ) ) {
 			foreach ( $css as $media_query => $elements ) {
 				foreach ( $elements as $element => $style_array ) {

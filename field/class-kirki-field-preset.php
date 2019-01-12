@@ -20,9 +20,7 @@ class Kirki_Field_Preset extends Kirki_Field_Select {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-select';
-
 	}
 
 	/**

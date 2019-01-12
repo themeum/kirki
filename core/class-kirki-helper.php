@@ -60,6 +60,7 @@ class Kirki_Helper {
 	 */
 	public static function recurse( $array, $array1 ) {
 		foreach ( $array1 as $key => $value ) {
+
 			// Create new key in $array, if it is empty or not an array.
 			if ( ! isset( $array[ $key ] ) || ( isset( $array[ $key ] ) && ! is_array( $array[ $key ] ) ) ) {
 				$array[ $key ] = array();
@@ -161,7 +162,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_image_from_url( $url ) {
-
 		$image_id = self::get_image_id( $url );
 		$image    = wp_get_attachment_image_src( $image_id, 'full' );
 
@@ -171,7 +171,6 @@ class Kirki_Helper {
 			'height'    => $image[2],
 			'thumbnail' => $image[3],
 		);
-
 	}
 
 	/**
@@ -183,7 +182,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_posts( $args ) {
-
 		if ( is_string( $args ) ) {
 			$args = add_query_arg(
 				array(
@@ -206,7 +204,6 @@ class Kirki_Helper {
 		wp_reset_postdata();
 
 		return $items;
-
 	}
 
 	/**
@@ -217,7 +214,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_taxonomies() {
-
 		$items = array();
 
 		// Get the taxonomies.
@@ -235,7 +231,6 @@ class Kirki_Helper {
 		}
 
 		return $items;
-
 	}
 
 	/**
@@ -246,7 +241,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_post_types() {
-
 		$items = array();
 
 		// Get the post types.
@@ -262,7 +256,6 @@ class Kirki_Helper {
 		}
 
 		return $items;
-
 	}
 
 	/**
@@ -274,7 +267,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_terms( $taxonomies ) {
-
 		$items = array();
 
 		// Get the post types.
@@ -286,7 +278,6 @@ class Kirki_Helper {
 		}
 
 		return $items;
-
 	}
 
 	/**
@@ -298,7 +289,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_material_design_colors( $context = 'primary' ) {
-
 		$colors = array(
 			'primary'     => array( '#FFFFFF', '#000000', '#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B' ),
 			'red'         => array( '#FFEBEE', '#FFCDD2', '#EF9A9A', '#E57373', '#EF5350', '#F44336', '#E53935', '#D32F2F', '#C62828', '#B71C1C', '#FF8A80', '#FF5252', '#FF1744', '#D50000' ),
@@ -323,7 +313,6 @@ class Kirki_Helper {
 		);
 
 		switch ( $context ) {
-
 			case '50':
 			case '100':
 			case '200':
@@ -387,7 +376,6 @@ class Kirki_Helper {
 	 * @return array
 	 */
 	public static function get_dashicons() {
-
 		return array(
 			'admin-menu'     => array( 'menu', 'admin-site', 'dashboard', 'admin-post', 'admin-media', 'admin-links', 'admin-page', 'admin-comments', 'admin-appearance', 'admin-plugins', 'admin-users', 'admin-tools', 'admin-settings', 'admin-network', 'admin-home', 'admin-generic', 'admin-collapse', 'filter', 'admin-customizer', 'admin-multisite' ),
 			'welcome-screen' => array( 'welcome-write-blog', 'welcome-add-page', 'welcome-view-site', 'welcome-widgets-menus', 'welcome-comments', 'welcome-learn-more' ),
@@ -405,7 +393,6 @@ class Kirki_Helper {
 			'notifications'  => array( 'yes', 'no', 'no-alt', 'plus', 'plus-alt', 'minus', 'dismiss', 'marker', 'star-filled', 'star-half', 'star-empty', 'flag', 'warning' ),
 			'misc'           => array( 'location', 'location-alt', 'vault', 'shield', 'shield-alt', 'sos', 'search', 'slides', 'analytics', 'chart-pie', 'chart-bar', 'chart-line', 'chart-area', 'groups', 'businessman', 'id', 'id-alt', 'products', 'awards', 'forms', 'testimonial', 'portfolio', 'book', 'book-alt', 'download', 'upload', 'backup', 'clock', 'lightbulb', 'microphone', 'desktop', 'tablet', 'smartphone', 'phone', 'index-card', 'carrot', 'building', 'store', 'album', 'palmtree', 'tickets-alt', 'money', 'smiley', 'thumbs-up', 'thumbs-down', 'layout' ),
 		);
-
 	}
 
 	/**

@@ -42,10 +42,8 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public function __construct() {
-
 		$this->default_modules();
 		$this->init();
-
 	}
 
 	/**
@@ -55,7 +53,6 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	private function default_modules() {
-
 		self::$modules = apply_filters(
 			'kirki_modules', array(
 				'css'                => 'Kirki_Modules_CSS',
@@ -74,7 +71,6 @@ class Kirki_Modules {
 				'preset'             => 'Kirki_Modules_Preset',
 			)
 		);
-
 	}
 
 	/**
@@ -84,7 +80,6 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	private function init() {
-
 		foreach ( self::$modules as $key => $module_class ) {
 			if ( class_exists( $module_class ) ) {
 				// Use this syntax instead of $module_class::get_instance()
@@ -103,11 +98,9 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public static function add_module( $module ) {
-
 		if ( ! in_array( $module, self::$modules, true ) ) {
 			self::$modules[] = $module;
 		}
-
 	}
 
 	/**
@@ -119,7 +112,6 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public static function remove_module( $module ) {
-
 		$key = array_search( $module, self::$modules, true );
 		if ( false !== $key ) {
 			unset( self::$modules[ $key ] );
@@ -135,9 +127,7 @@ class Kirki_Modules {
 	 * @return array
 	 */
 	public static function get_modules() {
-
 		return self::$modules;
-
 	}
 
 	/**
@@ -149,8 +139,6 @@ class Kirki_Modules {
 	 * @return array
 	 */
 	public static function get_active_modules() {
-
 		return self::$active_modules;
-
 	}
 }

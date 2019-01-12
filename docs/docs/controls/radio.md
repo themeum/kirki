@@ -26,9 +26,9 @@ Kirki::add_field( 'theme_config_id', array(
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => array(
-		'red'   => esc_attr__( 'Red', 'textdomain' ),
-		'green' => esc_attr__( 'Green', 'textdomain' ),
-		'blue'  => esc_attr__( 'Blue', 'textdomain' ),
+		'red'   => esc_html__( 'Red', 'textdomain' ),
+		'green' => esc_html__( 'Green', 'textdomain' ),
+		'blue'  => esc_html__( 'Blue', 'textdomain' ),
 	),
 ) );
 ```
@@ -45,16 +45,16 @@ Kirki::add_field( 'theme_config_id', array(
 	'priority'    => 10,
 	'choices'     => array(
 		'red'   => array(
-			esc_attr__( 'Red', 'my_textdomain' ),
-			esc_attr__( 'These are some extra details about Red', 'textdomain' ),
+			esc_html__( 'Red', 'my_textdomain' ),
+			esc_html__( 'These are some extra details about Red', 'textdomain' ),
 		),
 		'green' => array(
-			esc_attr__( 'Green', 'kirki' ),
-			esc_attr__( 'These are some extra details about Green', 'textdomain' ),
+			esc_html__( 'Green', 'kirki' ),
+			esc_html__( 'These are some extra details about Green', 'textdomain' ),
 		),
 		'blue'  => array(
-			esc_attr__( 'Blue', 'kirki' ),
-			esc_attr__( 'These are some extra details about Blue', 'textdomain' ),
+			esc_html__( 'Blue', 'kirki' ),
+			esc_html__( 'These are some extra details about Blue', 'textdomain' ),
 		),
 	),
 ) );
