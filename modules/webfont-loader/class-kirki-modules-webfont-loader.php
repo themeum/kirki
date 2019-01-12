@@ -49,6 +49,7 @@ class Kirki_Modules_Webfont_Loader {
 	 */
 	protected function __construct() {
 		add_action( 'wp_head', array( $this, 'enqueue_scripts' ), 20 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
 	}
 
 	/**

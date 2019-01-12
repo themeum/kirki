@@ -157,6 +157,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	 * @see WP_Customize_Control::to_json()
 	 */
 	public function to_json() {
+
 		// Get the basics from the parent class.
 		parent::to_json();
 

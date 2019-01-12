@@ -65,6 +65,7 @@ final class Kirki_Modules_Webfonts_Local {
 		$this->googlefonts = $googlefonts;
 
 		add_action( 'wp_footer', array( $this, 'add_styles' ) );
+		add_action( 'admin_footer', array( $this, 'add_styles' ) );
 	}
 
 	/**
