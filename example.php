@@ -851,6 +851,17 @@ my_config_kirki_add_field(
 		'description' => esc_html__( 'Description', 'kirki' ),
 		'section'     => 'toggle_section',
 		'default'     => true,
+		// WIP
+		'transport'   => 'postMessage',
+		// WIP
+		'js_vars'     => array(
+			array(
+				'element'  => '.site-description',
+				'function' => 'toggleClass',
+				'class'    => 'hidden',
+				'value'    => true,
+			),
+		),
 	)
 );
 
