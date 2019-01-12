@@ -8,7 +8,7 @@
  * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -81,7 +81,7 @@ class Kirki_Modules_Customizer_Branding {
 		}
 
 		if ( ! empty( $vars['logoImage'] ) || ! empty( $vars['description'] ) ) {
-			wp_register_script( 'kirki-branding', Kirki::$url . '/modules/customizer-branding/branding.js', array(), KIRKI_VERSION );
+			wp_register_script( 'kirki-branding', Kirki::$url . '/modules/customizer-branding/branding.js', array(), KIRKI_VERSION, false );
 			wp_localize_script( 'kirki-branding', 'kirkiBranding', $vars );
 			wp_enqueue_script( 'kirki-branding' );
 		}

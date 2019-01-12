@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
@@ -81,10 +81,12 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			$property_value = $this->process_property_value( $property, $value[ $property ] );
 			if ( 'font-family' === $property ) {
 				$value['font-backup'] = ( isset( $value['font-backup'] ) ) ? $value['font-backup'] : '';
-				$property_value       = $this->process_property_value( $property, array(
-					$value['font-family'],
-					$value['font-backup'],
-				) );
+				$property_value       = $this->process_property_value(
+					$property, array(
+						$value['font-family'],
+						$value['font-backup'],
+					)
+				);
 			}
 			$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;
 			$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;

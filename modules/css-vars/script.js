@@ -43,14 +43,16 @@ jQuery( document ).ready( function() {
 	_.each( kirkiCssVarFields, function( field ) {
 		wp.customize( field.settings, function( value ) {
 			value.bind( function( newVal ) {
-				var val = newVal;
-				styles = kirkiCssVars.getStyles();
+				var styles = kirkiCssVars.getStyles();
 
 				_.each( field.css_vars, function( cssVar ) {
-					if ( cssVar[2] && _.isObject( value ) && value[ cssVar[2] ] ) {
-						newVal = value[ cssVar[2] ];
+					if ( 'object' === typeof newVal ) {
+						if ( cssVar[2] && newVal[ cssVar[2] ] ) {
+							styles[ cssVar[0] ] = cssVar[1].replace( '$', newVal[ cssVar[2] ] );
+						}
+					} else {
+						styles[ cssVar[0] ] = cssVar[1].replace( '$', newVal );
 					}
-					styles[ cssVar[0] ] = cssVar[1].replace( '$', newVal );
 				} );
 				jQuery( '#kirki-css-vars' ).html( kirkiCssVars.buildStyle( styles ) )				;
 			} );

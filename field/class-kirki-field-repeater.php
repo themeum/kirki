@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -164,11 +164,11 @@ class Kirki_Field_Repeater extends Kirki_Field {
 						case 'textarea':
 							$subfield_value = html_entity_decode( wp_kses_post( $subfield_value ) );
 
-					} // End switch().
-				} // End if().
+					}
+				}
 				$value[ $row_id ][ $subfield_id ] = $subfield_value;
-			} // End foreach().
-		} // End foreach().
+			}
+		}
 
 		return $value;
 	}

@@ -7,7 +7,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.12
  */
 
@@ -106,7 +106,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		// Enqueue selectWoo.
 		wp_enqueue_script( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/js/selectWoo.full.js', array( 'jquery' ), '1.0.1', true );
 		wp_enqueue_style( 'selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/css/selectWoo.css', array(), '1.0.1' );
-		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', null );
+		wp_enqueue_style( 'kirki-selectWoo', trailingslashit( Kirki::$url ) . 'assets/vendor/selectWoo/kirki.css', array(), KIRKI_VERSION );
 
 		// Enqueue the script.
 		wp_enqueue_script(
@@ -120,7 +120,8 @@ class Kirki_Control_Base extends WP_Customize_Control {
 				'jquery-ui-button',
 				'jquery-ui-datepicker',
 			),
-			KIRKI_VERSION
+			KIRKI_VERSION,
+			false
 		);
 
 		wp_localize_script(
@@ -157,7 +158,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 	public function to_json() {
 		// Get the basics from the parent class.
 		parent::to_json();
-		// Default.
+		// Default value.
 		$this->json['default'] = $this->setting->default;
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;

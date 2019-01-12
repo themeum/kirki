@@ -38,11 +38,9 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 		// Get all user-meta.
 		// We'll use this to check if the value is set or not,
 		// in order to figure out if we need to return the default value.
-		// @codingStandardsIgnoreLine
 		$user_meta = get_user_meta( get_current_user_id() );
 
 		// Get the single meta.
-		// @codingStandardsIgnoreLine
 		$single_meta = get_user_meta( get_current_user_id(), $id_base, true );
 
 		if ( isset( $user_meta[ $id_base ] ) ) {
@@ -64,11 +62,9 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 
 		// First delete the current user-meta.
 		// We're doing this to avoid duplicate entries.
-		// @codingStandardsIgnoreLine
 		delete_user_meta( get_current_user_id(), $id_base );
 
 		// Update the user-meta.
-		// @codingStandardsIgnoreLine
 		return update_user_meta( get_current_user_id(), $id_base, $value );
 	}
 

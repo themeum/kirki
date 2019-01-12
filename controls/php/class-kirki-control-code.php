@@ -8,9 +8,11 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
+
+// @codingStandardsIgnoreFile Generic.Files.OneClassPerFile.MultipleFound Generic.Classes.DuplicateClassName.Found
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

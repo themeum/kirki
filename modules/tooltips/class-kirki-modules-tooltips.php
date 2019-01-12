@@ -6,7 +6,7 @@
  * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -77,7 +77,7 @@ class Kirki_Modules_Tooltips {
 		$fields = Kirki::$fields;
 		foreach ( $fields as $field ) {
 			if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
-				// Get the control ID and properly format it for the tooltips
+				// Get the control ID and properly format it for the tooltips.
 				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
 				// Add the tooltips content.
 				$this->tooltips_content[ $id ] = array(
@@ -115,7 +115,7 @@ class Kirki_Modules_Tooltips {
 
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery' ), KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery' ), KIRKI_VERSION, false );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
 		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', array(), KIRKI_VERSION );
 

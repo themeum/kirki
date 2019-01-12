@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Custom Sections Module
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
@@ -41,15 +41,17 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 	 */
 	public function json() {
 
-		$array = wp_array_slice_assoc( (array) $this, array(
-			'id',
-			'description',
-			'priority',
-			'panel',
-			'type',
-			'description_hidden',
-			'section',
-		) );
+		$array = wp_array_slice_assoc(
+			(array) $this, array(
+				'id',
+				'description',
+				'priority',
+				'panel',
+				'type',
+				'description_hidden',
+				'section',
+			)
+		);
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();

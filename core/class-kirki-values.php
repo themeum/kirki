@@ -9,7 +9,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -122,10 +122,8 @@ class Kirki_Values {
 			$value = get_option( $field_id, Kirki::$fields[ $field_id ]['default'] );
 			return apply_filters( 'kirki_values_get_value', $value, $field_id );
 
-		} // End if().
-
+		}
 		return apply_filters( 'kirki_values_get_value', $value, $field_id );
-
 	}
 
 	/**
