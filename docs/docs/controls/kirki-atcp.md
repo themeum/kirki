@@ -238,3 +238,4 @@ For the default values that makes 1600 checks for every background color change 
 	</ul>
 </div>
 
+<a href="https://wplemon.com/downloads/kirki-accessible-text-colorpicker/" class="button round">Buy License</a>
