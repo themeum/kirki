@@ -110,7 +110,7 @@ Kirki::add_section( 'my_section', [
 ] );
 
 Kirki::add_field( 'my_theme', [
-	'settings'    => 'test_box_model_control',
+	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'Box Model Control', 'my-textdomain' ),
 	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'my-textdomain' ),
 	'type'        => 'kirki-box-model',
@@ -150,7 +150,7 @@ To make this control affect a `#my-element` element on our page with live-updati
 
 ```php
 Kirki::add_field( 'my_theme', [
-	'settings'    => 'test_box_model_control',
+	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'Box Model Control', 'my-textdomain' ),
 	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'my-textdomain' ),
 	'type'        => 'kirki-box-model',
