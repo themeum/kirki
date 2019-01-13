@@ -1,7 +1,7 @@
 ---
 layout: default
 title: required
-published: false
+published: true
 ---
 
 The `required` argument was deprecated on version 2.3.2.
