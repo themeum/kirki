@@ -14,7 +14,12 @@ heroButtons:
 ---
 
 
+<div class="callout success" style="text-align:center">
+	<p>This is a premium control. You can use in your <strong>premium theme</strong> by purchasing a license.</p>
+	<a href="https://wplemon.com/downloads/kirki-accessible-text-colorpicker/" class="button round">Buy License</a>
+</div>
 
+<img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/kirki-atcp.gif" alt="accessible-textlorpicker control example" style="max-width:300px;max-height:100vh;float:right;padding-left:1em;">
 The **Kirki Accessible-Text Colorpicker** plugin (or Kirki-ATCP for short) is an advanced control for the WordPress Customizer and can be used as an add-on for the Kirki Toolkit. It introduces a new custom control to the WordPress Customizer using the Kirki API.
 You can use this control one of 2 ways:
 
@@ -233,4 +238,3 @@ For the default values that makes 1600 checks for every background color change 
 	</ul>
 </div>
 
-<a href="https://wplemon.com/downloads/kirki-accessible-text-colorpicker/" class="button round">Buy License</a>
