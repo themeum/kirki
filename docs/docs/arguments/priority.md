@@ -2,7 +2,7 @@
 layout: default
 title: priority
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 * When used in controls, you can use the `priority` argument to define and change the order in which your controls will be presented inside a section.

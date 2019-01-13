@@ -2,7 +2,7 @@
 layout: default
 title: type
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 Using the `type` argument you can define what sort of control you want to create for your setting.

@@ -2,7 +2,7 @@
 layout: default
 title: settings
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 `settings` is a mandatory argument for any field. The value entered here will be used to store the settings in the database.

@@ -2,7 +2,7 @@
 layout: default
 title: partial_refresh
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 WordPress 4.5 introduced partial (or selective) refreshes to the customizer.
 

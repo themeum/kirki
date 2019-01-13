@@ -2,7 +2,7 @@
 layout: default
 title: sanitize_callback
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 WordPress requires you to define a `sanitize_callback` for every option you create, which is a great for security purposes.
