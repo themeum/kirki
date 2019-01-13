@@ -18,26 +18,26 @@ Palette controls are essentially [`radio`](radio) controls. The difference betwe
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'palette',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Palette Control', 'textdomain' ),
+	'label'       => esc_html__( 'Palette Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 'light',
 	'priority'    => 10,
-	'choices'     => array(
-		'light' => array(
+	'choices'     => [
+		'light' => [
 			'#ECEFF1',
 			'#333333',
 			'#4DD0E1',
-		),
-		'dark' => array(
+		],
+		'dark' => [
 			'#37474F',
 			'#FFFFFF',
 			'#F9A825',
-		),
-	),
-) );
+		],
+	],
+] );
 ```
 
 ### Usage
@@ -56,7 +56,7 @@ if ( 'light' == $saved_palette ) {
 }
 $styles = "background-color:{$background}; color:{$text_color}; border-color:{$border_color};";
 ?>
-<div style="<?php echo $styles; ?>">
+<div style="<?php echo esc_attr( $styles ); ?>">
 	Some text here
 </div>
 ```

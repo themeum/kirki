@@ -12,3 +12,5 @@ heroButtons:
     icon: fa fa-arrow-circle-o-left
     label: Back to Controls
 ---
+
+The `spacing` control is an alias for the `dimensions` control. Please see documentation on [the dimensions field](https://aristath.github.io/kirki/docs/controls/dimensions.html).

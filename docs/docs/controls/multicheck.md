@@ -21,21 +21,21 @@ On Multicheck fields, you can specify the options that will be available to your
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'multicheck',
 	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'My Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => array('option-1', 'option-3', 'option-4'),
 	'priority'    => 10,
-	'choices'     => array(
+	'choices'     => [
 		'option-1' => esc_html__( 'Option 1', 'textdomain' ),
 		'option-2' => esc_html__( 'Option 2', 'textdomain' ),
 		'option-3' => esc_html__( 'Option 3', 'textdomain' ),
 		'option-4' => esc_html__( 'Option 4', 'textdomain' ),
 		'option-5' => esc_html__( 'Option 5', 'textdomain' ),
-	),
-) );
+	],
+] );
 ```
 
 ### Usage

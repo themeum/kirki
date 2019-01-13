@@ -18,16 +18,16 @@ heroButtons:
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'slider',
 	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 42,
-	'choices'     => array(
-		'min'  => '0',
-		'max'  => '100',
-		'step' => '1',
-	),
-) );
+	'choices'     => [
+		'min'  => 0,
+		'max'  => 100,
+		'step' => 1,
+	],
+] );
 ```

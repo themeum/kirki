@@ -18,12 +18,12 @@ heroButtons:
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'     => 'textarea',
 	'settings' => 'my_setting',
-	'label'    => __( 'Textarea Control', 'textdomain' ),
+	'label'    => esc_html__( 'Textarea Control', 'textdomain' ),
 	'section'  => 'section_id',
 	'default'  => esc_html__( 'This is a default value', 'textdomain' ),
 	'priority' => 10,
-) );
+] );
 ```

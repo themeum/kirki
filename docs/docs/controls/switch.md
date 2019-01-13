@@ -23,10 +23,10 @@ One main difference that `switch` controls have from [`checkbox`](checkbox) and 
 By default the labels are ON/OFF. To change them you can use the `choices` argument:
 
 ```php
-'choices' => array(
+'choices' => [
     'on'  => esc_html__( 'Enable', 'textdomain' ),
     'off' => esc_html__( 'Disable', 'textdomain' )
-)
+]
 ```
 
 ### Example
@@ -36,18 +36,18 @@ In the example below we'll be using 'Enable' and 'Disable' as labels.
 The default labels are "On" & "Off", so if you don't want to change them you can simply omit the `choices` argument.
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'switch',
 	'settings'    => 'my_setting',
-	'label'       => __( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '1',
 	'priority'    => 10,
-	'choices'     => array(
+	'choices'     => [
 		'on'  => esc_html__( 'Enable', 'textdomain' ),
 		'off' => esc_html__( 'Disable', 'textdomain' ),
-	),
-) );
+	],
+] );
 ```
 
 ### Usage

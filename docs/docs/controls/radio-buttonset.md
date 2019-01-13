@@ -18,17 +18,17 @@ You can define the available options using the `choices` argument and formating 
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'radio-buttonset',
 	'settings'    => 'my_setting',
-	'label'       => __( 'Radio-Buttonset Control', 'textdomain' ),
+	'label'       => esc_html__( 'Radio-Buttonset Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 'red',
 	'priority'    => 10,
-	'choices'     => array(
+	'choices'     => [
 		'red'   => esc_html__( 'Red', 'textdomain' ),
 		'green' => esc_html__( 'Green', 'textdomain' ),
 		'blue'  => esc_html__( 'Blue', 'textdomain' ),
-	),
-) );
+	],
+] );
 ```
