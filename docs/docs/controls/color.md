@@ -20,14 +20,14 @@ The `color` control allows you to create colorpickers. WordPress uses [iris](htt
 #### Adding a hex-only colorpicker
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_hex',
 	'label'       => __( 'Color Control (hex-only)', 'textdomain' ),
 	'description' => esc_html__( 'This is a color control - without alpha channel.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
-) );
+] );
 ```
 
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-hex.png" alt="color-hex control example" style="max-width:300px;">
@@ -37,17 +37,17 @@ Kirki::add_field( 'theme_config_id', array(
 #### Adding an rgba colorpicker
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_rgba',
 	'label'       => __( 'Color Control (with alpha channel)', 'textdomain' ),
 	'description' => esc_html__( 'This is a color control - with alpha channel.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
-	'choices'     => array(
+	'choices'     => [
 		'alpha' => true,
-	),
-) );
+	],
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-rgba.png" alt="color-rgba control example" style="max-width:300px;">
 
@@ -56,7 +56,7 @@ Kirki::add_field( 'theme_config_id', array(
 #### Adding a hue-only colorpicker
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_hue',
 	'label'       => __( 'Color Control - hue only.', 'textdomain' ),
@@ -64,7 +64,7 @@ Kirki::add_field( 'theme_config_id', array(
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
 	'mode'        => 'hue',
-) );
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-hue.png" alt="color-hue control example" style="max-width:300px;">
 

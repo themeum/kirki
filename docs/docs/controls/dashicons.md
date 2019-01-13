@@ -21,14 +21,14 @@ The returned value is a string and does not contain the `dashicons dashicons-` p
 
 ```php
 <?php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'     => 'dashicons',
 	'settings' => 'my_setting',
-	'label'    => __( 'Dashicons Control', 'textdomain' ),
+	'label'    => esc_html__( 'Dashicons Control', 'textdomain' ),
 	'section'  => 'section_id',
 	'default'  => 'menu',
 	'priority' => 10,
-) );
+] );
 ?>
 ```
 

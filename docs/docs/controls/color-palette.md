@@ -20,18 +20,18 @@ You can define inside the `choices` arguments an array of colors, the style (`ro
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_0',
 	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
 	'description' => esc_html__( 'This is a color-palette control', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#888888',
-	'choices'     => array(
-		'colors' => array( '#000000', '#222222', '#444444', '#666666', '#888888', '#aaaaaa', '#cccccc', '#eeeeee', '#ffffff' ),
+	'choices'     => [
+		'colors' => [ '#000000', '#222222', '#444444', '#666666', '#888888', '#aaaaaa', '#cccccc', '#eeeeee', '#ffffff' ],
 		'style'  => 'round',
-	),
-) );
+	],
+] );
 ```
 The result of the above example would look like this:
 
@@ -44,72 +44,72 @@ Some additional examples using those helper methods:
 #### Material-design Colors - All.
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_4',
 	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
 	'description' => esc_html__( 'Material Design Colors - all', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#F44336',
-	'choices'     => array(
+	'choices'     => [
 		'colors' => Kirki_Helper::get_material_design_colors( 'all' ),
 		'size'   => 17,
-	),
-) );
+	],
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-all.png" alt="color-palette control example 2" style="max-width:300px;">
 
 #### Material-design Colors - Primary
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_1',
 	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
 	'description' => esc_html__( 'Material Design Colors - primary', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#000000',
-	'choices'     => array(
+	'choices'     => [
 		'colors' => Kirki_Helper::get_material_design_colors( 'primary' ),
 		'size'   => 25,
-	),
-) );
+	],
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-primary.png" alt="color-palette control example 2" style="max-width:300px;">
 
 #### All Material-design Colors - Reds
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_2',
 	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
 	'description' => esc_html__( 'Material Design Colors - red', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#FF1744',
-	'choices'     => array(
+	'choices'     => [
 		'colors' => Kirki_Helper::get_material_design_colors( 'textdomain' ),
 		'size'   => 16,
-	),
-) );
+	],
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-red.png" alt="color-palette control example 2" style="max-width:300px;">
 
 #### All Material-design Colors - A100 variation.
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_3',
 	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
 	'description' => esc_html__( 'Material Design Colors - A100', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '#FF80AB',
-	'choices'     => array(
+	'choices'     => [
 		'colors' => Kirki_Helper::get_material_design_colors( 'A100' ),
 		'size'   => 60,
 		'style'  => 'round',
-	),
-) );
+	],
+] );
 ```
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/color-palette-md-a100.png" alt="color-palette control example 2" style="max-width:300px;">

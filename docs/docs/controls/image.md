@@ -23,44 +23,44 @@ Examples:
 /**
  * Default behaviour (saves data as a URL).
  */
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'image',
 	'settings'    => 'image_setting_url',
 	'label'       => esc_html__( 'Image Control (URL)', 'textdomain' ),
 	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
-) );
+] );
 
 /**
  * Save data as integer (ID)
  */
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'image',
 	'settings'    => 'image_setting_id',
 	'label'       => esc_html__( 'Image Control (ID)', 'textdomain' ),
 	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
-	'choices'     => array(
+	'choices'     => [
 		'save_as' => 'id',
-	),
-) );
+	],
+] );
 
 /**
  * Save data as array.
  */
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'image',
 	'settings'    => 'image_setting_array',
 	'label'       => esc_html__( 'Image Control (array)', 'textdomain' ),
 	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
-	'choices'     => array(
+	'choices'     => [
 		'save_as' => 'array',
-	),
-) );
+	],
+] );
 ```
 
 ### Usage
