@@ -65,6 +65,7 @@ final class Kirki_Telemetry {
 		}
 
 		// Only send data once/month.
+		// TODO: Enable this before merging
 		// $sent = get_site_transient( 'kirki_telemetry_sent' );
 		if ( ! $sent ) {
 			$this->send_data();
