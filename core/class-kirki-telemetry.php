@@ -47,7 +47,9 @@ final class Kirki_Telemetry {
 	public function init() {
 		$this->dismiss_notice();
 		$this->consent();
-		$this->maybe_send_data();
+
+		// This is the last thing to run. No impact on performance or anything else.
+		add_action( 'wp_footer', array( $this, 'maybe_send_data' ), 99999 );
 	}
 
 	/**
@@ -65,8 +67,7 @@ final class Kirki_Telemetry {
 		}
 
 		// Only send data once/month.
-		// TODO: Enable this before merging
-		// $sent = get_site_transient( 'kirki_telemetry_sent' );
+		$sent = get_site_transient( 'kirki_telemetry_sent' );
 		if ( ! $sent ) {
 			$this->send_data();
 			set_site_transient( 'kirki_telemetry_sent', time(), MONTH_IN_SECONDS );
@@ -82,20 +83,17 @@ final class Kirki_Telemetry {
 	 */
 	private function send_data() {
 
-		// The data.
-		$data = array_merge(
-			array(
-				'action' => 'kirki-stats',
-			),
-			$this->get_data()
-		);
-
-		// Build the URL with the arguments.
-		// TODO: ADD URL.
-		$url = add_query_arg( $data, 'https://localhost/?action=kirki-stats' );
-
 		// Ping remote server.
-		wp_remote_get( $url );
+		wp_remote_post( 'https://wplemon.com/?action=kirki-stats', [
+			'method'   => 'POST',
+			'blocking' => false,
+			'body'     => array_merge(
+				array(
+					'action' => 'kirki-stats',
+				),
+				$this->get_data()
+			),
+		] );
 	}
 
 	/**
@@ -142,7 +140,7 @@ final class Kirki_Telemetry {
 					</tr>
 					<tr>
 						<td><?php esc_html_e( 'Field Types Used', 'kirki' ); ?></td>
-						<td><code><?php echo esc_html( $data['fieldTypes'] ); ?></code></td>
+						<td><code><?php echo esc_html( implode( ',', $data['fieldTypes'] ) ); ?></code></td>
 					</tr>
 				</tbody>
 				<tfoot>
@@ -152,10 +150,8 @@ final class Kirki_Telemetry {
 							printf(
 								/* translators: %1$s: URL to the server plugin code. %2$s: URL to the stats page. */
 								__( 'We believe in complete transparency. You can see the code used on our server <a href="%1$s" rel="nofollow">here</a>, and the results of the statistics we\'re gathering on <a href="%2$s" rel="nofollow">this page</a>.', 'kirki' ),
-								// TODO: ADD URL.
-								'',
-								// TODO: ADD URL.
-								''
+								'https://github.com/aristath/kirki-telemetry-server',
+								'https://wplemon.com/?action=kirki-telemetry-stats'
 							);
 							?>
 						</th>
@@ -204,11 +200,11 @@ final class Kirki_Telemetry {
 
 		// Build data and return the array.
 		return array(
-			'phpVer'       => $php_version,
-			'themeName'    => $theme->get( 'Name' ),
-			'themeAuthor'  => $theme->get( 'Author' ),
-			'themeURI'     => $theme->get( 'ThemeURI' ),
-			'fieldTypes'   => $this->get_field_types(),
+			'phpVer'      => $php_version,
+			'themeName'   => $theme->get( 'Name' ),
+			'themeAuthor' => $theme->get( 'Author' ),
+			'themeURI'    => $theme->get( 'ThemeURI' ),
+			'fieldTypes'  => $this->get_field_types(),
 		);
 	}
 
@@ -226,7 +222,7 @@ final class Kirki_Telemetry {
 				$types[] = $field['type'];
 			}
 		}
-		return implode( '","',  $types );
+		return $types;
 	}
 
 	/**
