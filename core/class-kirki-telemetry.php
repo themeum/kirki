@@ -65,7 +65,7 @@ final class Kirki_Telemetry {
 		}
 
 		// Only send data once/month.
-		$sent = get_site_transient( 'kirki_telemetry_sent' );
+		// $sent = get_site_transient( 'kirki_telemetry_sent' );
 		if ( ! $sent ) {
 			$this->send_data();
 			set_site_transient( 'kirki_telemetry_sent', time(), MONTH_IN_SECONDS );
@@ -90,7 +90,8 @@ final class Kirki_Telemetry {
 		);
 
 		// Build the URL with the arguments.
-		$url = add_query_arg( $data, 'https://wpmu.test/?action=kirki-stats' );
+		// TODO: ADD URL.
+		$url = add_query_arg( $data, 'https://localhost/?action=kirki-stats' );
 
 		// Ping remote server.
 		wp_remote_get( $url );
@@ -112,8 +113,9 @@ final class Kirki_Telemetry {
 		$data = $this->get_data();
 		?>
 		<div class="notice notice-info kirki-telemetry">
-			<p><strong><?php esc_html_e( 'Help Kirki improve with usage tracking.', 'kirki' ); ?></strong></p>
-			<p><?php esc_html_e( 'Gathering usage data about the theme you are using allows us to know which themes are most-used and work closer with developers of your theme to improve both the theme you use and the Kirki framework. We will never collect any personal information about you or your site.', 'kirki' ); ?></p>
+			<h3><strong><?php esc_html_e( 'Help us improve Kirki.', 'kirki' ); ?></strong></h3>
+			<p><?php esc_html_e( 'Gathering usage data about the theme you are using allows us to know which themes and field-types are most-used with the Kirki framework.', 'kirki' ); ?><br><?php esc_html_e( 'This will allow us to work closer with theme developers to improve both the theme you use and the Kirki framework.', 'kirki' ); ?></p>
+			<p><strong><?php esc_html_e( 'The data is completely anonymous and we will never collect any identifyable information about you or your website.'); ?></strong></p>
 			<table class="data-to-send hidden widefat">
 				<thead>
 					<tr>
@@ -122,30 +124,50 @@ final class Kirki_Telemetry {
 				</thead>
 				<tbody>
 					<tr>
-						<td>PHP Version</td>
-						<td><code><?php echo esc_attr( $data['phpVer'] ); ?></code></td>
+						<td style="min-width: 200px;"><?php esc_html_e( 'PHP Version', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['phpVer'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td>ID</td>
-						<td><code><?php echo esc_attr( $data['siteID'] ); ?></code></td>
+						<td><?php esc_html_e( 'ID', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['siteID'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td>Theme Name</td>
-						<td><code><?php echo esc_attr( $data['themeName'] ); ?></code></td>
+						<td><?php esc_html_e( 'Theme Name', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['themeName'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td>Theme Author</td>
-						<td><code><?php echo esc_attr( $data['themeAuthor'] ); ?></code></td>
+						<td><?php esc_html_e( 'Theme Author', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['themeAuthor'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td>Theme URI</td>
-						<td><code><?php echo esc_attr( $data['themeURI'] ); ?></code></td>
+						<td><?php esc_html_e( 'Theme URI', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['themeURI'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td>Theme Version</td>
-						<td><code><?php echo esc_attr( $data['themeVersion'] ); ?></code></td>
+						<td><?php esc_html_e( 'Theme Version', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['themeVersion'] ); ?></code></td>
+					</tr>
+					<tr>
+						<td><?php esc_html_e( 'Field Types Used', 'kirki' ); ?></td>
+						<td><code><?php echo esc_html( $data['fieldTypes'] ); ?></code></td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="2">
+							<?php
+							printf(
+								/* translators: %1$s: URL to the server plugin code. %2$s: URL to the stats page. */
+								__( 'We believe in complete transparency. You can see the code used on our server <a href="%1$s" rel="nofollow">here</a>, and the results of the statistics we\'re gathering on <a href="%2$s" rel="nofollow">this page</a>.', 'kirki' ),
+								// TODO: ADD URL.
+								'',
+								// TODO: ADD URL.
+								''
+							);
+							?>
+						</th>
+					</tr>
+				</tfoot>
 			</table>
 			<p class="actions">
 
@@ -180,15 +202,40 @@ final class Kirki_Telemetry {
 		// Get the theme.
 		$theme = wp_get_theme();
 
+		// Format the PHP version.
+		$php_version = phpversion( 'tidy' );
+		if ( ! $php_version ) {
+			$php_version = array_merge( explode( '.', phpversion() ), array( 0, 0 ) );
+			$php_version = "{$php_version[0]}.{$php_version[1]}";
+		}
+
 		// Build data and return the array.
 		return array(
-			'phpVer'       => phpversion( 'tidy' ),
+			'phpVer'       => $php_version,
 			'siteID'       => md5( home_url() ),
 			'themeName'    => $theme->get( 'Name' ),
 			'themeAuthor'  => $theme->get( 'Author' ),
 			'themeURI'     => $theme->get( 'ThemeURI' ),
 			'themeVersion' => $theme->get( 'Version' ),
+			'fieldTypes'   => $this->get_field_types(),
 		);
+	}
+
+	/**
+	 * Get the field-types used.
+	 *
+	 * @access private
+	 * @since 3.0.36
+	 * @return array
+	 */
+	public function get_field_types() {
+		$types = array();
+		foreach ( Kirki::$fields as $field ) {
+			if ( isset( $field['type'] ) ) {
+				$types[] = $field['type'];
+			}
+		}
+		return '["' . implode( '","',  array_unique( $types ) ) . '"]';
 	}
 
 	/**
