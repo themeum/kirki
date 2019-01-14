@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
@@ -20,7 +20,6 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 	 * @access protected
 	 */
 	protected function process_value() {
-
 		$google_fonts_array = Kirki_Fonts::get_google_fonts();
 		$backup_fonts       = Kirki_Fonts::get_backup_fonts();
 

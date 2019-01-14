@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -31,9 +31,7 @@ class Kirki_Field_Number extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -42,7 +40,6 @@ class Kirki_Field_Number extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		$this->choices = wp_parse_args(
 			$this->choices,
 			array(
@@ -65,7 +62,6 @@ class Kirki_Field_Number extends Kirki_Field {
 	 * @return bool
 	 */
 	public function sanitize( $value = 0 ) {
-
 		$this->set_choices();
 
 		$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );

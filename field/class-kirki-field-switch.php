@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-switch';
-
 	}
 
 	/**
@@ -31,7 +29,6 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
@@ -39,8 +36,8 @@ class Kirki_Field_Switch extends Kirki_Field_Checkbox {
 		$this->choices = wp_parse_args(
 			$this->choices,
 			array(
-				'on'    => esc_attr__( 'On', 'kirki' ),
-				'off'   => esc_attr__( 'Off', 'kirki' ),
+				'on'    => esc_html__( 'On', 'kirki' ),
+				'off'   => esc_html__( 'Off', 'kirki' ),
 				'round' => false,
 			)
 		);

@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Background extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-background';
-
 	}
 
 	/**
@@ -38,7 +36,6 @@ class Kirki_Field_Background extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -49,17 +46,16 @@ class Kirki_Field_Background extends Kirki_Field {
 	 * @return array
 	 */
 	public function sanitize( $value ) {
-
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
 		return array(
-			'background-color'      => ( isset( $value['background-color'] ) ) ? esc_attr( $value['background-color'] ) : '',
+			'background-color'      => ( isset( $value['background-color'] ) ) ? sanitize_text_field( $value['background-color'] ) : '',
 			'background-image'      => ( isset( $value['background-image'] ) ) ? esc_url_raw( $value['background-image'] ) : '',
-			'background-repeat'     => ( isset( $value['background-repeat'] ) ) ? esc_attr( $value['background-repeat'] ) : '',
-			'background-position'   => ( isset( $value['background-position'] ) ) ? esc_attr( $value['background-position'] ) : '',
-			'background-size'       => ( isset( $value['background-size'] ) ) ? esc_attr( $value['background-size'] ) : '',
-			'background-attachment' => ( isset( $value['background-attachment'] ) ) ? esc_attr( $value['background-attachment'] ) : '',
+			'background-repeat'     => ( isset( $value['background-repeat'] ) ) ? sanitize_text_field( $value['background-repeat'] ) : '',
+			'background-position'   => ( isset( $value['background-position'] ) ) ? sanitize_text_field( $value['background-position'] ) : '',
+			'background-size'       => ( isset( $value['background-size'] ) ) ? sanitize_text_field( $value['background-size'] ) : '',
+			'background-attachment' => ( isset( $value['background-attachment'] ) ) ? sanitize_text_field( $value['background-attachment'] ) : '',
 		);
 	}
 
@@ -116,7 +112,6 @@ class Kirki_Field_Background extends Kirki_Field {
 			}
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
-
 		}
 	}
 }

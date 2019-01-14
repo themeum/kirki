@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -28,16 +28,15 @@ class Kirki_Field_Radio extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-radio';
+
 		// Tweaks for backwards-compatibility:
 		// Prior to version 0.8 radio-buttonset & radio-image were part of the radio control.
 		if ( in_array( $this->mode, array( 'buttonset', 'image' ), true ) ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2%s is buttonset/image. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_attr__( 'Error in field %1$s. The "mode" argument has been deprecated since Kirki v0.8. Use the "radio-%2$s" type instead.', 'kirki' ), esc_attr( $this->settings ), esc_attr( $this->mode ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Error in field %1$s. The "mode" argument has been deprecated since Kirki v0.8. Use the "radio-%2$s" type instead.', 'kirki' ), esc_html( $this->settings ), esc_html( $this->mode ) ), '3.0.10' );
 			$this->type = 'radio-' . $this->mode;
 		}
-
 	}
 
 	/**
@@ -52,7 +51,6 @@ class Kirki_Field_Radio extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = 'esc_attr';
-
+		$this->sanitize_callback = 'sanitize_text_field';
 	}
 }

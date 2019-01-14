@@ -7,7 +7,7 @@
  * @category  Modules
  * @author    Aristeides Stathopoulos
  * @copyright Copyright (c) 2017, Aristeides Stathopoulos
- * @license   http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license  https://opensource.org/licenses/MIT
  * @since     3.0.26
  */
 
@@ -49,6 +49,7 @@ class Kirki_Modules_Webfont_Loader {
 	 */
 	protected function __construct() {
 		add_action( 'wp_head', array( $this, 'enqueue_scripts' ), 20 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
 	}
 
 	/**
@@ -79,5 +80,17 @@ class Kirki_Modules_Webfont_Loader {
 		if ( self::$load || $wp_customize || is_customize_preview() ) {
 			wp_enqueue_script( 'webfont-loader', trailingslashit( Kirki::$url ) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', array(), '3.0.28', true );
 		}
+	}
+
+	/**
+	 * Set the $load property of this object.
+	 *
+	 * @access public
+	 * @since 3.0.35
+	 * @param bool $load Set to false to disable loading.
+	 * @return void
+	 */
+	public function set_load( $load ) {
+		self::$load = $load;
 	}
 }

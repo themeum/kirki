@@ -1,12 +1,12 @@
 # Kirki #
 **Contributors:** [aristath](https://profiles.wordpress.org/aristath), [fovoc](https://profiles.wordpress.org/fovoc), [igmoweb](https://profiles.wordpress.org/igmoweb)  
-**Tags:** customizer,options framework, theme, mods, toolkit  
+**Tags:** customizer,options framework, theme, mods, toolkit, gutenberg  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
-**Tested up to:** 4.9.2  
-**Stable tag:** 3.0.33  
+**Tested up to:** 5.0  
+**Stable tag:** 3.0.35.3  
 **License:** MIT  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**License URI:** https://opensource.org/licenses/MIT  
 
 The ultimate framework for theme developers using the WordPress Customizer
 
@@ -33,15 +33,56 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 3.0.35.3 ###
+
+Dec. 26, 2018, dev time: 1h
+
+* Fix: Update CSS-Vars when the preview pane refreshes.
+* Fix: Tweaked the CSS Values JS-validation function.
+* Fix: Update Google Fonts.
+
+### 3.0.35.2 ###
+
+Dec. 8, 2018, dev time: 20m
+
+* Fix: Correctly output css-vars on the top pf admin pages for use in Gutenberg styles.
+* Fix: Update Google Fonts.
+
+### 3.0.35.1 ###
+
+Dec. 6, 2018, dev time: 5m
+
+* Fix: PHP 5.2 conflict.
+
+### 3.0.35 ###
+
+Dec. 6, 2018, dev time: 15h
+
+* New: Add Gutenberg support [#2009](https://github.com/aristath/kirki/issues/2009) props @timelsass
+* Fix: Add additional check for variants in the typography control - fixes JS issue if no variants were found.
+* Fix: Reviews all sanitization, validation & escaping calls and adjusted them where necessary. This is one step closer to full WPTRT compliance. Props @poena for bringing this to my attention.
+* Fix: Improved implementation for the `sortable` control.
+* Fix: `kirki_modules` filter was not working. [#2023](https://github.com/aristath/kirki/issues/2023)
+* Fix: Issue with google-fonts loading when in the customizer and the typography field uses `postMessage`. [#1988](https://github.com/aristath/kirki/issues/1988)
+* Fix: Changed the priority for css-vars.
+* Fix: Dependencies for the code control. [#2020](https://github.com/aristath/kirki/issues/2020)
+* Fix: PHP 5.2 error `T_PAAMAYIM_NEKUDOTAYIM` [#2032](https://github.com/aristath/kirki/issues/2032)
+* Fix: Code cleanup in the repeater control, props @joyously [ticket](https://wordpress.org/support/topic/repeater-setting-value-function/)
+* Tweak: Removed deprecated code & code cleanups.
+
 ### 3.0.34 ###
 
+Sept. 14 2018, dev time: 21h.
+
 * Fix: Error when `typography` fields don't have a font-family. [#1916](https://github.com/aristath/kirki/issues/1916), [#1797](https://github.com/aristath/kirki/issues/1797), [#1935](https://github.com/aristath/kirki/issues/1935). props @mintbird
-* Fix:  Allow using "Default Browser Font-Family" in default value (`typography` fields) [#1907](https://github.com/aristath/kirki/pull/1907). props @mintbird
+* Fix: Allow using "Default Browser Font-Family" in default value (`typography` fields) [#1907](https://github.com/aristath/kirki/pull/1907). props @mintbird
 * Fix: Envato theme-check error [#1914](https://github.com/aristath/kirki/issues/1914), [#1926](https://github.com/aristath/kirki/pull/1926). props @timelsass
 * Fix: HTTPS webfont load error [#1925](https://github.com/aristath/kirki/issues/1925)
 * Fix: Undefined index PHP notice for background-color. [95ca010](https://github.com/aristath/kirki/pull/1930/commits/95ca010588878363a7d2042f09428bae260cb602)
+* Fix: Minor Fixes for css-variables added in v3.0.28.
 * New: Allow unitless values in dimension controls.
-* New: Migrated `image` controls to new structure in preparation of v3.1
+* New: (Refactor) Migrated `image` controls to new structure in preparation of v3.1
+* Update: Updated Google-fonts.
 
 ### 3.0.33 ###
 

@@ -6,7 +6,7 @@
  * @category    Modules
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.28
  */
 
@@ -37,13 +37,24 @@ class Kirki_Modules_CSS_Vars {
 	private $fields = array();
 
 	/**
+	 * CSS-variables array [var=>val].
+	 *
+	 * @access private
+	 * @since 3.0.35
+	 * @var array
+	 */
+	private $vars = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @access protected
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'wp_head', array( $this, 'the_style' ), 0 );
+		add_action( 'init', array( $this, 'populate_vars' ) );
+		add_action( 'wp_head', array( $this, 'the_style' ), 999 );
+		add_action( 'admin_head', array( $this, 'the_style' ), 999 );
 		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
 	}
 
@@ -64,6 +75,32 @@ class Kirki_Modules_CSS_Vars {
 	}
 
 	/**
+	 * Populates the $vars property of this object.
+	 *
+	 * @access public
+	 * @since 3.0.35
+	 * @return void
+	 */
+	public function populate_vars() {
+
+		// Get an array of all fields.
+		$fields = Kirki::$fields;
+		foreach ( $fields as $id => $args ) {
+			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
+				continue;
+			}
+			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
+			foreach ( $args['css_vars'] as $css_var ) {
+				if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
+					$this->vars[ $css_var[0] ] = str_replace( '$', $val[ $css_var[2] ], $css_var[1] );
+				} else {
+					$this->vars[ $css_var[0] ] = str_replace( '$', $val, $css_var[1] );
+				}
+			}
+		}
+	}
+
+	/**
 	 * Add styles in <head>.
 	 *
 	 * @access public
@@ -71,24 +108,28 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function the_style() {
-		// Get an array of all fields.
-		$fields = Kirki::$fields;
+		if ( empty( $this->vars ) ) {
+			return;
+		}
+
 		echo '<style id="kirki-css-vars">';
 		echo ':root{';
-		foreach ( $fields as $id => $args ) {
-			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
-				continue;
-			}
-			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
-			foreach ( $args['css_vars'] as $css_var ) {
-			if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
-				$val = $val[ $css_var[2] ];
-			}
-			echo esc_attr( $css_var[0] ) . ':' . esc_attr( str_replace( '$', $val, $css_var[1] ) ) . ';';
-		}
+		foreach ( $this->vars as $var => $val ) {
+			echo esc_html( $var ) . ':' . esc_html( $val ) . ';';
 		}
 		echo '}';
 		echo '</style>';
+	}
+
+	/**
+	 * Get an array of all the variables.
+	 *
+	 * @access public
+	 * @since 3.0.35
+	 * @return array
+	 */
+	public function get_vars() {
+		return $this->vars;
 	}
 
 	/**

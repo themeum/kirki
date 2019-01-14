@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.28
  */
 
@@ -61,11 +61,11 @@ final class Kirki_Modules_Webfonts_Local {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 */
 	public function __construct( $webfonts, $googlefonts ) {
-
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
 		add_action( 'wp_footer', array( $this, 'add_styles' ) );
+		add_action( 'admin_footer', array( $this, 'add_styles' ) );
 	}
 
 	/**

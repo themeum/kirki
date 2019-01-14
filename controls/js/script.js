@@ -861,8 +861,6 @@ kirki = jQuery.extend( kirki, {
 				// Make sure value is properly formatted.
 				value = ( 'array' === saveAs && _.isString( value ) ) ? { url: value } : value;
 
-				control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
 				// Tweaks for save_as = id.
 				if ( ( 'id' === saveAs || 'ID' === saveAs ) && '' !== value ) {
 					wp.media.attachment( value ).fetch().then( function() {
@@ -1400,6 +1398,11 @@ kirki = jQuery.extend( kirki, {
 					numericValue,
 					unit;
 
+				// Early exit if value is not a string or a number.
+				if ( 'string' !== typeof value || 'number' !== typeof value ) {
+					return true;
+				}
+
 				// Whitelist values.
 				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
 					return true;
@@ -1424,6 +1427,22 @@ kirki = jQuery.extend( kirki, {
 				// Check the validity of the numeric value and units.
 				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
 			}
+		},
+
+		/**
+		 * Parses HTML Entities.
+		 *
+		 * @since 3.0.34
+		 * @param {string} str - The string we want to parse.
+		 * @returns {string}
+		 */
+		parseHtmlEntities: function( str ) {
+			var parser = new DOMParser,
+				dom    = parser.parseFromString(
+					'<!doctype html><body>' + str, 'text/html'
+				);
+
+			return dom.body.textContent;
 		}
 	}
 } );
@@ -1790,8 +1809,6 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 		jQuery( selector ).datepicker( {
 			dateFormat: 'yy-mm-dd'
 		} );
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// Save the changes
 		this.container.on( 'change keyup paste', 'input.datepicker', function() {
@@ -2224,8 +2241,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
 		var settingValue = this.params.value;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
 
 		// The hidden field that keeps the data saved (though we never update it)
 		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
@@ -3065,7 +3080,6 @@ wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicContr
 		} );
 	}
 } );
-/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
@@ -3075,31 +3089,12 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 
 		var control = this;
 
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
-
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this;
-
-		control.container.find( '.kirki-controls-loading-spinner' ).hide();
-
-		// Set the sortable container.
-		control.sortableContainer = control.container.find( 'ul.sortable' ).first();
-
 		// Init sortable.
-		control.sortableContainer.sortable( {
+		jQuery( control.container.find( 'ul.sortable' ).first() ).sortable( {
 
 			// Update value when we stop sorting.
-			stop: function() {
-				control.updateValue();
+			update: function() {
+				control.setting.set( control.getNewVal() );
 			}
 		} ).disableSelection().find( 'li' ).each( function() {
 
@@ -3110,26 +3105,25 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 		} ).click( function() {
 
 			// Update value on click.
-			control.updateValue();
+			control.setting.set( control.getNewVal() );
 		} );
 	},
 
 	/**
-	 * Updates the sorting list
+	 * Getss thhe new vvalue.
+	 *
+	 * @since 3.0.35
+	 * @returns {Array}
 	 */
-	updateValue: function() {
-
-		'use strict';
-
-		var control = this,
-			newValue = [];
-
-		this.sortableContainer.find( 'li' ).each( function() {
-			if ( ! jQuery( this ).is( '.invisible' ) ) {
-				newValue.push( jQuery( this ).data( 'value' ) );
+	getNewVal: function() {
+		var items  = jQuery( this.container.find( 'li' ) ),
+			newVal = [];
+		_.each ( items, function( item ) {
+			if ( ! jQuery( item ).hasClass( 'invisible' ) ) {
+				newVal.push( jQuery( item ).data( 'value' ) );
 			}
 		} );
-		control.setting.set( newValue );
+		return newVal;
 	}
 } );
 wp.customize.controlConstructor['kirki-switch'] = wp.customize.kirkiDynamicControl.extend( {
@@ -3179,35 +3173,35 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.localFontsCheckbox();
 
 		// Font-size.
-		if ( control.params.default['font-size'] ) {
+		if ( 'undefined' !== typeof control.params.default['font-size'] ) {
 			this.container.on( 'change keyup paste', '.font-size input', function() {
 				control.saveValue( 'font-size', jQuery( this ).val() );
 			} );
 		}
 
 		// Line-height.
-		if ( control.params.default['line-height'] ) {
+		if ( 'undefined' !== typeof control.params.default['line-height'] ) {
 			this.container.on( 'change keyup paste', '.line-height input', function() {
 				control.saveValue( 'line-height', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-top.
-		if ( control.params.default['margin-top'] ) {
+		if ( 'undefined' !== typeof control.params.default['margin-top'] ) {
 			this.container.on( 'change keyup paste', '.margin-top input', function() {
 				control.saveValue( 'margin-top', jQuery( this ).val() );
 			} );
 		}
 
 		// Margin-bottom.
-		if ( control.params.default['margin-bottom'] ) {
+		if ( 'undefined' !== typeof control.params.default['margin-bottom'] ) {
 			this.container.on( 'change keyup paste', '.margin-bottom input', function() {
 				control.saveValue( 'margin-bottom', jQuery( this ).val() );
 			} );
 		}
 
 		// Letter-spacing.
-		if ( control.params.default['letter-spacing'] ) {
+		if ( 'undefined' !== typeof control.params.default['letter-spacing'] ) {
 			value['letter-spacing'] = ( jQuery.isNumeric( value['letter-spacing'] ) ) ? value['letter-spacing'] + 'px' : value['letter-spacing'];
 			this.container.on( 'change keyup paste', '.letter-spacing input', function() {
 				value['letter-spacing'] = ( jQuery.isNumeric( jQuery( this ).val() ) ) ? jQuery( this ).val() + 'px' : jQuery( this ).val();
@@ -3216,35 +3210,35 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		}
 
 		// Word-spacing.
-		if ( control.params.default['word-spacing'] ) {
+		if ( 'undefined' !== typeof control.params.default['word-spacing'] ) {
 			this.container.on( 'change keyup paste', '.word-spacing input', function() {
 				control.saveValue( 'word-spacing', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-align.
-		if ( control.params.default['text-align'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-align'] ) {
 			this.container.on( 'change', '.text-align input', function() {
 				control.saveValue( 'text-align', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-transform.
-		if ( control.params.default['text-transform'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-transform'] ) {
 			jQuery( control.selector + ' .text-transform select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-transform', jQuery( this ).val() );
 			} );
 		}
 
 		// Text-decoration.
-		if ( control.params.default['text-decoration'] ) {
+		if ( 'undefined' !== typeof control.params.default['text-decoration'] ) {
 			jQuery( control.selector + ' .text-decoration select' ).selectWoo().on( 'change', function() {
 				control.saveValue( 'text-decoration', jQuery( this ).val() );
 			} );
 		}
 
 		// Color.
-		if ( ! _.isUndefined( control.params.default.color ) ) {
+		if ( 'undefined' !== typeof control.params.default.color ) {
 			picker = this.container.find( '.kirki-color-control' );
 			picker.wpColorPicker( {
 				change: function() {
@@ -3332,7 +3326,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 		// Set the initial value.
 		if ( value['font-family'] || '' === value['font-family'] ) {
-			fontSelect.val( value['font-family'].replace( /'/g, '"' ) ).trigger( 'change' );
+			value['font-family'] = kirki.util.parseHtmlEntities( value['font-family'].replace( /'/g, '"' ) );
+			fontSelect.val( value['font-family'] ).trigger( 'change' );
 		}
 
 		// When the value changes
@@ -3456,7 +3451,7 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			} else {
 				fontWeight = ( ! _.isString( value.variant ) ) ? '400' : value.variant.match( /\d/g );
 				fontWeight = ( ! _.isObject( fontWeight ) ) ? '400' : fontWeight.join( '' );
-				fontStyle  = ( -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
+				fontStyle  = ( value.variant && -1 !== value.variant.indexOf( 'italic' ) ) ? 'italic' : 'normal';
 			}
 
 			control.saveValue( 'font-weight', fontWeight );

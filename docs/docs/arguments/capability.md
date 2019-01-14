@@ -28,7 +28,7 @@ Kirki::add_field( 'my_config', array(
 	'settings' => 'my_setting1',
 	'label'    => __( 'Text Control 1', 'my_textdomain' ),
 	'section'  => 'my_section',
-	'default'  => esc_attr__( 'This is a defualt value', 'my_textdomain' ),
+	'default'  => esc_html__( 'This is a default value', 'my_textdomain' ),
 	'priority' => 10,
 ) );
 
@@ -39,7 +39,7 @@ Kirki::add_field( 'my_config', array(
 	'settings'    => 'my_setting2',
 	'label'       => __( 'Text Control 2', 'my_textdomain' ),
 	'section'     => 'my_section',
-	'default'     => esc_attr__( 'This is a defualt value', 'my_textdomain' ),
+	'default'     => esc_html__( 'This is a default value', 'my_textdomain' ),
 	'priority'    => 10,
 	'capability'  => 'edit_theme_options'
 ) );

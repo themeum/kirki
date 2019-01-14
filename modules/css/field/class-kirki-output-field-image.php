@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.10
  */
 
@@ -22,16 +22,17 @@ class Kirki_Output_Field_Image extends Kirki_Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
-
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 			return;
 		}
-		$output = wp_parse_args( $output, array(
-			'media_query' => 'global',
-			'prefix'      => '',
-			'units'       => '',
-			'suffix'      => '',
-		) );
+		$output = wp_parse_args(
+			$output, array(
+				'media_query' => 'global',
+				'prefix'      => '',
+				'units'       => '',
+				'suffix'      => '',
+			)
+		);
 		if ( is_array( $value ) ) {
 			if ( isset( $output['choice'] ) && $output['choice'] ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $this->process_property_value( $output['property'], $value[ $output['choice'] ] ) . $output['units'] . $output['suffix'];

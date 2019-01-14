@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.1
  */
 
@@ -58,7 +58,6 @@ class Kirki_Control_Dimensions extends Kirki_Control_Base {
 	 * @access public
 	 */
 	public function enqueue() {
-
 		wp_enqueue_style( 'kirki-styles', trailingslashit( Kirki::$url ) . 'controls/css/styles.css', array(), KIRKI_VERSION );
 		wp_localize_script( 'kirki-script', 'dimensionskirkiL10n', $this->l10n() );
 	}
@@ -112,32 +111,31 @@ class Kirki_Control_Dimensions extends Kirki_Control_Base {
 	 */
 	protected function l10n() {
 		return array(
-			'left-top'       => esc_attr__( 'Left Top', 'kirki' ),
-			'left-center'    => esc_attr__( 'Left Center', 'kirki' ),
-			'left-bottom'    => esc_attr__( 'Left Bottom', 'kirki' ),
-			'right-top'      => esc_attr__( 'Right Top', 'kirki' ),
-			'right-center'   => esc_attr__( 'Right Center', 'kirki' ),
-			'right-bottom'   => esc_attr__( 'Right Bottom', 'kirki' ),
-			'center-top'     => esc_attr__( 'Center Top', 'kirki' ),
-			'center-center'  => esc_attr__( 'Center Center', 'kirki' ),
-			'center-bottom'  => esc_attr__( 'Center Bottom', 'kirki' ),
-			'font-size'      => esc_attr__( 'Font Size', 'kirki' ),
-			'font-weight'    => esc_attr__( 'Font Weight', 'kirki' ),
-			'line-height'    => esc_attr__( 'Line Height', 'kirki' ),
-			'font-style'     => esc_attr__( 'Font Style', 'kirki' ),
-			'letter-spacing' => esc_attr__( 'Letter Spacing', 'kirki' ),
-			'word-spacing'   => esc_attr__( 'Word Spacing', 'kirki' ),
-			'top'            => esc_attr__( 'Top', 'kirki' ),
-			'bottom'         => esc_attr__( 'Bottom', 'kirki' ),
-			'left'           => esc_attr__( 'Left', 'kirki' ),
-			'right'          => esc_attr__( 'Right', 'kirki' ),
-			'center'         => esc_attr__( 'Center', 'kirki' ),
-			'size'           => esc_attr__( 'Size', 'kirki' ),
-			'height'         => esc_attr__( 'Height', 'kirki' ),
-			'spacing'        => esc_attr__( 'Spacing', 'kirki' ),
-			'width'          => esc_attr__( 'Width', 'kirki' ),
-			'height'         => esc_attr__( 'Height', 'kirki' ),
-			'invalid-value'  => esc_attr__( 'Invalid Value', 'kirki' ),
+			'left-top'       => esc_html__( 'Left Top', 'kirki' ),
+			'left-center'    => esc_html__( 'Left Center', 'kirki' ),
+			'left-bottom'    => esc_html__( 'Left Bottom', 'kirki' ),
+			'right-top'      => esc_html__( 'Right Top', 'kirki' ),
+			'right-center'   => esc_html__( 'Right Center', 'kirki' ),
+			'right-bottom'   => esc_html__( 'Right Bottom', 'kirki' ),
+			'center-top'     => esc_html__( 'Center Top', 'kirki' ),
+			'center-center'  => esc_html__( 'Center Center', 'kirki' ),
+			'center-bottom'  => esc_html__( 'Center Bottom', 'kirki' ),
+			'font-size'      => esc_html__( 'Font Size', 'kirki' ),
+			'font-weight'    => esc_html__( 'Font Weight', 'kirki' ),
+			'line-height'    => esc_html__( 'Line Height', 'kirki' ),
+			'font-style'     => esc_html__( 'Font Style', 'kirki' ),
+			'letter-spacing' => esc_html__( 'Letter Spacing', 'kirki' ),
+			'word-spacing'   => esc_html__( 'Word Spacing', 'kirki' ),
+			'top'            => esc_html__( 'Top', 'kirki' ),
+			'bottom'         => esc_html__( 'Bottom', 'kirki' ),
+			'left'           => esc_html__( 'Left', 'kirki' ),
+			'right'          => esc_html__( 'Right', 'kirki' ),
+			'center'         => esc_html__( 'Center', 'kirki' ),
+			'size'           => esc_html__( 'Size', 'kirki' ),
+			'spacing'        => esc_html__( 'Spacing', 'kirki' ),
+			'width'          => esc_html__( 'Width', 'kirki' ),
+			'height'         => esc_html__( 'Height', 'kirki' ),
+			'invalid-value'  => esc_html__( 'Invalid Value', 'kirki' ),
 		);
 	}
 }

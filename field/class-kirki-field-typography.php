@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-typography';
-
 	}
 
 	/**
@@ -72,7 +70,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( __CLASS__, 'sanitize' );
-
 	}
 
 	/**
@@ -81,7 +78,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_js_vars() {
-
 		if ( ! is_array( $this->js_vars ) ) {
 			$this->js_vars = array();
 		}
@@ -124,9 +120,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 			}
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
-
 		}
-
 	}
 
 	/**
@@ -138,7 +132,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
-
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
@@ -146,7 +139,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 		foreach ( $value as $key => $val ) {
 			switch ( $key ) {
 				case 'font-family':
-					$value['font-family'] = esc_attr( $val );
+					$value['font-family'] = sanitize_text_field( $val );
 					break;
 				case 'font-weight':
 					if ( isset( $value['variant'] ) ) {
@@ -158,11 +151,14 @@ class Kirki_Field_Typography extends Kirki_Field {
 					}
 					break;
 				case 'variant':
+
 					// Use 'regular' instead of 400 for font-variant.
 					$value['variant'] = ( 400 === $val || '400' === $val ) ? 'regular' : $val;
+
 					// Get font-weight from variant.
 					$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? 400 : absint( $value['font-weight'] );
+
 					// Get font-style from variant.
 					if ( ! isset( $value['font-style'] ) ) {
 						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
@@ -185,15 +181,15 @@ class Kirki_Field_Typography extends Kirki_Field {
 					}
 					break;
 				case 'text-decoration':
-					if ( ! in_array( $val, array( ''. 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+					if ( ! in_array( $val, array( '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
 						$value['text-transform'] = '';
 					}
 					break;
 				case 'color':
 					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
 					break;
-			} // End switch().
-		} // End foreach().
+			}
+		}
 
 		return $value;
 	}
@@ -205,7 +201,6 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @since 3.0.0
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}

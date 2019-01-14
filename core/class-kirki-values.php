@@ -9,7 +9,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -25,7 +25,6 @@ class Kirki_Values {
 	 * @since 3.0.10
 	 */
 	public function __construct() {
-
 		add_filter( 'kirki_values_get_value', array( $this, 'typography_field_tweaks' ), 10, 2 );
 	}
 
@@ -39,7 +38,6 @@ class Kirki_Values {
 	 * @return array
 	 */
 	public function typography_field_tweaks( $value, $field_id ) {
-
 		if ( isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['type'] ) ) {
 			if ( 'kirki-typography' === Kirki::$fields[ $field_id ]['type'] ) {
 
@@ -122,10 +120,8 @@ class Kirki_Values {
 			$value = get_option( $field_id, Kirki::$fields[ $field_id ]['default'] );
 			return apply_filters( 'kirki_values_get_value', $value, $field_id );
 
-		} // End if().
-
+		}
 		return apply_filters( 'kirki_values_get_value', $value, $field_id );
-
 	}
 
 	/**
@@ -151,8 +147,6 @@ class Kirki_Values {
 				$value = get_option( $field['settings'], $field['default'] );
 			}
 		}
-
 		return $value;
-
 	}
 }

@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -36,9 +36,7 @@ class Kirki_Field_Color extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-color';
-
 	}
 
 	/**
@@ -47,12 +45,11 @@ class Kirki_Field_Color extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
 		if ( true === $this->alpha ) {
-			_doing_it_wrong( 'Kirki::add_field', esc_attr__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
+			_doing_it_wrong( 'Kirki::add_field', esc_html__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
 			$this->choices['alpha'] = true;
 		}
 		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
@@ -84,6 +81,5 @@ class Kirki_Field_Color extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
-
 	}
 }

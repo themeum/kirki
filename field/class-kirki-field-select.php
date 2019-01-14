@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -40,9 +40,7 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-select';
-
 	}
 
 	/**
@@ -52,16 +50,6 @@ class Kirki_Field_Select extends Kirki_Field {
 	 */
 	protected function set_multiple() {
 		$this->multiple = absint( $this->multiple );
-	}
-
-	/**
-	 * The placeholder text.
-	 *
-	 * @access protected
-	 * @since 3.0.21
-	 */
-	protected function set_placeholder() {
-		$this->placeholder = esc_attr( $this->placeholder );
 	}
 
 	/**
@@ -77,7 +65,6 @@ class Kirki_Field_Select extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -89,18 +76,16 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @return string|array
 	 */
 	public function sanitize( $value ) {
-
 		if ( is_array( $value ) ) {
 			foreach ( $value as $key => $subvalue ) {
 				if ( '' !== $subvalue || isset( $this->choices[''] ) ) {
 					$key           = sanitize_key( $key );
-					$value[ $key ] = esc_attr( $subvalue );
+					$value[ $key ] = sanitize_text_field( $subvalue );
 				}
 			}
 			return $value;
 		}
-		return esc_attr( $value );
-
+		return sanitize_text_field( $value );
 	}
 
 	/**
@@ -110,7 +95,6 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @since 3.0.0
 	 */
 	protected function set_default() {
-
 		if ( 1 < $this->multiple && ! is_array( $this->default ) ) {
 			$this->default = array( $this->default );
 		}

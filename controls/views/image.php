@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.34
  */
 
@@ -31,13 +31,13 @@ if ( _.isObject( data.value ) && ! _.isUndefined( data.value.url ) ) {
 
 data.choices.labels = _.isObject( data.choices.labels ) ? data.choices.labels : {};
 data.choices.labels = _.defaults( data.choices.labels, {
-	select: '<?php esc_attr_e( 'Select image', 'kirki' ); ?>',
-	change: '<?php esc_attr_e( 'Change image', 'kirki' ); ?>',
-	'default': '<?php esc_attr_e( 'Default', 'kirki' ); ?>',
-	remove: '<?php esc_attr_e( 'Remove', 'kirki' ); ?>',
-	placeholder: '<?php esc_attr_e( 'No image selected', 'kirki' ); ?>',
-	frame_title: '<?php esc_attr_e( 'Select image', 'kirki' ); ?>',
-	frame_button: '<?php esc_attr_e( 'Choose image', 'kirki' ); ?>',
+	select: '<?php esc_html_e( 'Select image', 'kirki' ); ?>',
+	change: '<?php esc_html_e( 'Change image', 'kirki' ); ?>',
+	'default': '<?php esc_html_e( 'Default', 'kirki' ); ?>',
+	remove: '<?php esc_html_e( 'Remove', 'kirki' ); ?>',
+	placeholder: '<?php esc_html_e( 'No image selected', 'kirki' ); ?>',
+	frame_title: '<?php esc_html_e( 'Select image', 'kirki' ); ?>',
+	frame_button: '<?php esc_html_e( 'Choose image', 'kirki' ); ?>',
 } );
 #>
 

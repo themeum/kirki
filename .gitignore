@@ -35,3 +35,8 @@ svn
 # PHPUNIT #
 ###########
 build/logs
+
+# Local Dev files #
+###################
+.phpcs.xml
+phpcs.xml

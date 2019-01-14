@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Dashicons extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-dashicons';
-
 	}
 
 	/**
@@ -37,6 +35,6 @@ class Kirki_Field_Dashicons extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = 'esc_attr';
+		$this->sanitize_callback = 'sanitize_text_field';
 	}
 }

@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,13 +20,11 @@ class Kirki_Field_URL extends Kirki_Field_Kirki_Generic {
 	 * @access protected
 	 */
 	protected function set_choices() {
-
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = array();
 		}
 		$this->choices['element'] = 'input';
 		$this->choices['type']    = 'text';
-
 	}
 
 	/**
@@ -42,6 +40,5 @@ class Kirki_Field_URL extends Kirki_Field_Kirki_Generic {
 			return;
 		}
 		$this->sanitize_callback = 'esc_url_raw';
-
 	}
 }

@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -164,19 +164,20 @@ final class Kirki_Modules_CSS_Generator {
 
 		// Find the class that will handle the outpout for this field.
 		$classname            = 'Kirki_Output';
-		$field_output_classes = apply_filters( "kirki_{$field['kirki_config']}_output_control_classnames", array(
+		$default_classnames   = array(
 			'kirki-background' => 'Kirki_Output_Field_Background',
 			'kirki-dimensions' => 'Kirki_Output_Field_Dimensions',
 			'kirki-image'      => 'Kirki_Output_Field_Image',
 			'kirki-typography' => 'Kirki_Output_Field_Typography',
 			'kirki-multicolor' => 'Kirki_Output_Field_Multicolor',
-		) );
+		);
+		$field_output_classes = apply_filters( 'kirki_output_control_classnames', $default_classnames );
+		$field_output_classes = apply_filters( "kirki_{$field['kirki_config']}_output_control_classnames", $field_output_classes );
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
 			$classname = $field_output_classes[ self::$field_type ];
 		}
 		$obj = new $classname( $field['kirki_config'], self::$output, self::$value, $field );
 		return $obj->get_styles();
-
 	}
 
 	/**
@@ -230,23 +231,24 @@ final class Kirki_Modules_CSS_Generator {
 	 * @return array
 	 */
 	public static function add_prefixes( $css ) {
-
 		if ( is_array( $css ) ) {
 			foreach ( $css as $media_query => $elements ) {
 				foreach ( $elements as $element => $style_array ) {
 					foreach ( $style_array as $property => $value ) {
 
 						// Add -webkit-* and -moz-*.
-						if ( is_string( $property ) && in_array( $property, array(
-							'border-radius',
-							'box-shadow',
-							'box-sizing',
-							'text-shadow',
-							'transform',
-							'background-size',
-							'transition',
-							'transition-property',
-						), true ) ) {
+						if ( is_string( $property ) && in_array(
+							$property, array(
+								'border-radius',
+								'box-shadow',
+								'box-sizing',
+								'text-shadow',
+								'transform',
+								'background-size',
+								'transition',
+								'transition-property',
+							), true
+						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
 							$css[ $media_query ][ $element ][ '-moz-' . $property ]    = $value;
@@ -254,12 +256,14 @@ final class Kirki_Modules_CSS_Generator {
 						}
 
 						// Add -ms-* and -o-*.
-						if ( is_string( $property ) && in_array( $property, array(
-							'transform',
-							'background-size',
-							'transition',
-							'transition-property',
-						), true ) ) {
+						if ( is_string( $property ) && in_array(
+							$property, array(
+								'transform',
+								'background-size',
+								'transition',
+								'transition-property',
+							), true
+						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;
 							$css[ $media_query ][ $element ][ '-o-' . $property ]  = $value;
@@ -267,10 +271,8 @@ final class Kirki_Modules_CSS_Generator {
 						}
 					}
 				}
-			} // End foreach().
-		} // End if().
-
+			}
+		}
 		return $css;
-
 	}
 }

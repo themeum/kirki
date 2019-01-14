@@ -7,7 +7,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -70,6 +70,7 @@ class Kirki_Sanitize_Values {
 	 * @return int|string Page ID if the page is published; otherwise, the setting default.
 	 */
 	public static function dropdown_pages( $page_id, $setting ) {
+
 		// Ensure $input is an absolute integer.
 		$page_id = absint( $page_id );
 
@@ -170,16 +171,20 @@ class Kirki_Sanitize_Values {
 	 * @return string
 	 */
 	public static function color( $value ) {
+
 		// If the value is empty, then return empty.
 		if ( '' === $value ) {
 			return '';
 		}
+
 		// If transparent, then return 'transparent'.
 		if ( is_string( $value ) && 'transparent' === trim( $value ) ) {
 			return 'transparent';
 		}
+
 		// Instantiate the object.
 		$color = ariColor::newColor( $value );
+
 		// Return a CSS value, using the auto-detected mode.
 		return $color->toCSS( $color->mode );
 	}

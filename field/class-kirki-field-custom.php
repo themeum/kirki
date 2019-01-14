@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Custom extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-custom';
-
 	}
 
 	/**
@@ -37,9 +35,9 @@ class Kirki_Field_Custom extends Kirki_Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
+
 		// Custom fields don't actually save any value.
 		// just use __return_true.
 		$this->sanitize_callback = '__return_true';
-
 	}
 }

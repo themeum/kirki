@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Multicheck extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-multicheck';
-
 	}
 
 	/**
@@ -38,7 +36,6 @@ class Kirki_Field_Multicheck extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = array( $this, 'sanitize' );
-
 	}
 
 	/**
@@ -47,9 +44,7 @@ class Kirki_Field_Multicheck extends Kirki_Field {
 	 * @param string|array $value The control's value.
 	 */
 	public function sanitize( $value ) {
-
 		$value = ( ! is_array( $value ) ) ? explode( ',', $value ) : $value;
 		return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
-
 	}
 }

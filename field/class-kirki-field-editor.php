@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -26,6 +26,7 @@ class Kirki_Field_Editor extends Kirki_Field {
 			$this->type = 'kirki-editor';
 			return;
 		}
+
 		// Fallback for older WordPress versions.
 		$this->type = 'kirki-generic';
 		if ( ! is_array( $this->choices ) ) {
@@ -33,7 +34,6 @@ class Kirki_Field_Editor extends Kirki_Field {
 		}
 		$this->choices['element'] = 'textarea';
 		$this->choices['rows']    = '5';
-
 	}
 
 	/**
@@ -49,6 +49,5 @@ class Kirki_Field_Editor extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = 'wp_kses_post';
-
 	}
 }

@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -20,9 +20,7 @@ class Kirki_Field_Upload extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-
 		$this->type = 'upload';
-
 	}
 
 	/**
@@ -38,6 +36,5 @@ class Kirki_Field_Upload extends Kirki_Field {
 			return;
 		}
 		$this->sanitize_callback = 'esc_url_raw';
-
 	}
 }

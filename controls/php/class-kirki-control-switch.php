@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -49,11 +49,11 @@ class Kirki_Control_Switch extends Kirki_Control_Base {
 			<input class="screen-reader-text" {{{ data.inputAttrs }}} name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
 			<label class="switch-label" for="switch_{{ data.id }}">
 				<span class="switch-on">
-					<# data.choices.on = data.choices.on || '<?php esc_attr_e( 'On', 'kirki' ); ?>' #>
+					<# data.choices.on = data.choices.on || '<?php esc_html_e( 'On', 'kirki' ); ?>' #>
 					{{ data.choices.on }}
 				</span>
 				<span class="switch-off">
-					<# data.choices.off = data.choices.off || '<?php esc_attr_e( 'Off', 'kirki' ); ?>' #>
+					<# data.choices.off = data.choices.off || '<?php esc_html_e( 'Off', 'kirki' ); ?>' #>
 					{{ data.choices.off }}
 				</span>
 			</label>

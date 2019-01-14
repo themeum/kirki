@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
 
@@ -22,8 +22,6 @@ class Kirki_Field_Select2_Multiple extends Kirki_Field_Select {
 	 * @access protected
 	 */
 	protected function set_multiple() {
-
 		$this->multiple = 999;
-
 	}
 }

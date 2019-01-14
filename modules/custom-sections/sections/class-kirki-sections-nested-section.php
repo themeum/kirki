@@ -5,7 +5,7 @@
  * @package     Kirki
  * @subpackage  Custom Sections Module
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
 
@@ -40,26 +40,27 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-
-		$array = wp_array_slice_assoc( (array) $this, array(
-			'id',
-			'description',
-			'priority',
-			'panel',
-			'type',
-			'description_hidden',
-			'section',
-		) );
+		$array = wp_array_slice_assoc(
+			(array) $this, array(
+				'id',
+				'description',
+				'priority',
+				'panel',
+				'type',
+				'description_hidden',
+				'section',
+			)
+		);
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();
 		$array['active']         = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
 
-		$array['customizeAction'] = esc_attr__( 'Customizing', 'kirki' );
+		$array['customizeAction'] = esc_html__( 'Customizing', 'kirki' );
 		if ( $this->panel ) {
 			/* translators: The title. */
-			$array['customizeAction'] = sprintf( esc_attr__( 'Customizing &#9656; %s', 'kirki' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
+			$array['customizeAction'] = sprintf( esc_html__( 'Customizing &#9656; %s', 'kirki' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
 		}
 		return $array;
 	}

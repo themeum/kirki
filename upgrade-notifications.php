@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! function_exists( 'kirki_show_upgrade_notification' ) ) :
 		if ( isset( $response->upgrade_notice ) && strlen( trim( $response->upgrade_notice ) ) > 0 ) : ?>
 			<style>.kirki-upgrade-notification {background-color:#d54e21;padding:10px;color:#f9f9f9;margin-top:10px;margin-bottom:10px;}.kirki-upgrade-notification + p {display:none;}</style>
 			<div class="kirki-upgrade-notification">
-				<strong><?php esc_attr_e( 'Important Upgrade Notice:', 'kirki' ); ?></strong>
+				<strong><?php esc_html_e( 'Important Upgrade Notice:', 'kirki' ); ?></strong>
 				<?php $upgrade_notice = wp_strip_all_tags( $response->upgrade_notice ); ?>
 				<?php echo esc_html( $upgrade_notice ); ?>
 			</div>

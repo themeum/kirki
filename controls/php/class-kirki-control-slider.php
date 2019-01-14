@@ -7,7 +7,7 @@
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -36,13 +36,14 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-
-		$this->json['choices'] = wp_parse_args( $this->json['choices'], array(
-			'min'    => '0',
-			'max'    => '100',
-			'step'   => '1',
-			'suffix' => '',
-		) );
+		$this->json['choices'] = wp_parse_args(
+			$this->json['choices'], array(
+				'min'    => '0',
+				'max'    => '100',
+				'step'   => '1',
+				'suffix' => '',
+			)
+		);
 	}
 
 	/**
@@ -62,7 +63,7 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 			<div class="wrapper">
 				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
-				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_attr_e( 'Reset', 'kirki' ); ?></span></span>
+				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_html_e( 'Reset', 'kirki' ); ?></span></span>
 				<span class="value">
 					<input {{{ data.inputAttrs }}} type="text"/>
 					<span class="suffix">{{ data.choices['suffix'] }}</span>

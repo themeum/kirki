@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @license    https://opensource.org/licenses/MIT
  * @since       3.0
  */
 
@@ -62,7 +62,6 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
-
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
@@ -70,8 +69,11 @@ final class Kirki_Modules_Webfonts_Async {
 		add_action( 'wp_head', array( $this, 'webfont_loader' ) );
 		add_action( 'wp_head', array( $this, 'webfont_loader_script' ), 30 );
 
-		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		// Add these in the dashboard to support editor-styles.
+		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader_script' ), 30 );
 
+		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
 	}
 
 	/**
@@ -83,7 +85,6 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @return array $urls           URLs to print for resource hints.
 	 */
 	public function resource_hints( $urls, $relation_type ) {
-
 		$fonts_to_load = $this->googlefonts->fonts;
 
 		if ( ! empty( $fonts_to_load ) && 'preconnect' === $relation_type ) {
@@ -93,7 +94,6 @@ final class Kirki_Modules_Webfonts_Async {
 			);
 		}
 		return $urls;
-
 	}
 
 	/**
@@ -134,7 +134,6 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @since 3.0.0
 	 */
 	public function webfont_loader_script() {
-
 		if ( ! empty( $this->fonts_to_load ) ) {
 			wp_add_inline_script(
 				'webfont-loader',
