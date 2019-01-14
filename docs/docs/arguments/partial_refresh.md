@@ -2,7 +2,7 @@
 layout: default
 title: partial_refresh
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 WordPress 4.5 introduced partial (or selective) refreshes to the customizer.
 
@@ -17,19 +17,19 @@ function my_register_blogname_partials( WP_Customize_Manager $wp_customize ) {
         return;
     }
 
-    $wp_customize->selective_refresh->add_partial( 'header_site_title', array(
-        'selector' => '.site-title a',
-        'settings' => array( 'blogname' ),
+    $wp_customize->selective_refresh->add_partial( 'header_site_title', [
+        'selector'        => '.site-title a',
+        'settings'        => [ 'blogname' ],
         'render_callback' => function() {
             return get_bloginfo( 'name', 'display' );
         },
-    ) );
+	] );
 
-    $wp_customize->selective_refresh->add_partial( 'document_title', array(
-        'selector' => 'head > title',
-        'settings' => array( 'blogname' ),
+    $wp_customize->selective_refresh->add_partial( 'document_title', [
+        'selector'        => 'head > title',
+        'settings'        => [ 'blogname' ],
         'render_callback' => 'wp_get_document_title',
-    ) );
+	] );
 }
 add_action( 'customize_register', 'my_register_blogname_partials' );
 ```
@@ -38,24 +38,24 @@ Kirki simplifies that process and you can add the arguments for partial refreshe
 
 
 ```php
-Kirki::add_field( 'my_config', array(
-	'type'     => 'text',
-	'settings' => 'my_setting',
-	'label'    => __( 'Text Control', 'my_textdomain' ),
-	'section'  => 'my_section',
-	'default'  => esc_html__( 'This is a default value', 'my_textdomain' ),
-	'priority' => 10,
-	'partial_refresh' => array(
-		'header_site_title' => array(
+Kirki::add_field( 'my_config', [
+	'type'            => 'text',
+	'settings'        => 'my_setting',
+	'label'           => esc_html__( 'Text Control', 'my_textdomain' ),
+	'section'         => 'my_section',
+	'default'         => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'priority'        => 10,
+	'partial_refresh'    => [
+		'header_site_title' => [
 			'selector'        => '.site-title a',
 			'render_callback' => function() {
 				return get_bloginfo( 'name', 'display' );
 			},
-		),
-		'document_title' => array(
+		],
+		'document_title' => [
 			'selector'        => 'head > title',
 			'render_callback' => 'wp_get_document_title',
-		),
-	),
-) );
+		],
+	],
+] );
 ```

@@ -4,7 +4,6 @@ title: variables
 published: false
 ---
 
-
 If you're using a CSS preprocessor and for example a less-php, sass-php or even less.js compiler for your styles, you may wish to have the values of your options returned as variables that you can then use and feed them to your compiler.
 
 In order to facilitate this we now have a `variables` argument you can define in your fields.

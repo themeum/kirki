@@ -3,7 +3,7 @@ layout: default
 title: The "repeater" control
 slug: repeater
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
 heroButtons:
@@ -22,84 +22,84 @@ You can create for example a set of fields that will contain a checkbox and a te
 Creating a repeater control where each row contains 2 textfields:
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Repeater Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'priority'    => 10,
-	'row_label' => array(
-		'type' => 'text',
+	'row_label' => [
+		'type'  => 'text',
 		'value' => esc_html__('your custom value', 'textdomain' ),
-	),
+	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'textdomain' ),
 	'settings'     => 'my_setting',
-	'default'      => array(
-		array(
+	'default'      => [
+		[
 			'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 			'link_url'  => 'https://aristath.github.io/kirki/',
-		),
-		array(
+		],
+		[
 			'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 			'link_url'  => 'https://github.com/aristath/kirki',
-		),
-	),
-	'fields' => array(
-		'link_text' => array(
+		],
+	],
+	'fields' => [
+		'link_text' => [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Link Text', 'textdomain' ),
 			'description' => esc_html__( 'This will be the label for your link', 'textdomain' ),
 			'default'     => '',
-		),
-		'link_url' => array(
+		],
+		'link_url'  => [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Link URL', 'textdomain' ),
 			'description' => esc_html__( 'This will be the link URL', 'textdomain' ),
 			'default'     => '',
-		),
-	)
-) );
+		],
+	]
+] );
 ```
 
 Creating a repeater control where the label has a dynamic name based on a field's input.  This will use `['row_label']['value']` if nothing is returned from the specified field:
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Repeater Control', 'textdomain' ),
 	'section'     => 'section_id',
 	'priority'    => 10,
-	'row_label' => array(
+	'row_label' => [
 		'type'  => 'field',
 		'value' => esc_html__('your custom value', 'textdomain' ),
 		'field' => 'link_text',
-	),
+	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'textdomain' ),
 	'settings'     => 'my_setting',
-	'default'      => array(
-		array(
+	'default'      => [
+		[
 			'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 			'link_url'  => 'https://aristath.github.io/kirki/',
-		),
-		array(
+		],
+		[
 			'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 			'link_url'  => 'https://github.com/aristath/kirki',
-		),
-	),
-	'fields' => array(
-		'link_text' => array(
+		],
+	],
+	'fields' => [
+		'link_text' => [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Link Text', 'textdomain' ),
 			'description' => esc_html__( 'This will be the label for your link', 'textdomain' ),
 			'default'     => '',
-		),
-		'link_url' => array(
+		],
+		'link_url' => [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Link URL', 'textdomain' ),
 			'description' => esc_html__( 'This will be the link URL', 'textdomain' ),
 			'default'     => '',
-		),
-	)
-) );
+		],
+	]
+] );
 ```
 
 ### Usage
@@ -107,16 +107,16 @@ Kirki::add_field( 'theme_config_id', array(
 ```php
 <?php
 // Default values for 'my_setting' theme mod.
-$defaults = array(
-    array(
+$defaults = [
+    [
         'link_text' => esc_html__( 'Kirki Site', 'textdomain' ),
 		'link_url'  => 'https://aristath.github.io/kirki/',
-	),
-	array(
+	],
+	[
 		'link_text' => esc_html__( 'Kirki Repository', 'textdomain' ),
 		'link_url'  => 'https://github.com/aristath/kirki',
-	),
-);
+	],
+];
 
 // Theme_mod settings to check.
 $settings = get_theme_mod( 'my_setting', $defaults ); ?>

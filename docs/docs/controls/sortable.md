@@ -3,7 +3,7 @@ layout: default
 title: The "sortable" control
 slug: sortable
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
 heroButtons:
@@ -16,26 +16,26 @@ heroButtons:
 Example:
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'sortable',
 	'settings'    => 'my_setting',
-	'label'       => __( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
-	'default'     => array(
+	'default'     => [
 		'option3',
 		'option1',
 		'option4'
-	),
-	'choices'     => array(
+	],
+	'choices'     => [
 		'option1' => esc_html__( 'Option 1', 'textdomain' ),
 		'option2' => esc_html__( 'Option 2', 'textdomain' ),
 		'option3' => esc_html__( 'Option 3', 'textdomain' ),
 		'option4' => esc_html__( 'Option 4', 'textdomain' ),
 		'option5' => esc_html__( 'Option 5', 'textdomain' ),
 		'option6' => esc_html__( 'Option 6', 'textdomain' ),
-	),
+	],
 	'priority'    => 10,
-) );
+] );
 ```
 
 Example of how to load template parts based on the value of the control in a template:

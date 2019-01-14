@@ -3,7 +3,7 @@ layout: default
 title: The "dropdown-pages" control
 slug: dropdown-pages
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: int
 heroButtons:
@@ -25,12 +25,12 @@ The returned value is the ID of the selected page.
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'dropdown-pages',
 	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => 42,
 	'priority'    => 10,
-) );
+] );
 ```

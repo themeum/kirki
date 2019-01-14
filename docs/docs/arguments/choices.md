@@ -2,7 +2,7 @@
 layout: default
 title: choices
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 The `choices` argument allows you to select the available choices for a control and is always formatted as an array.

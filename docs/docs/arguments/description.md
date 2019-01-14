@@ -2,7 +2,7 @@
 layout: default
 title: description
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 

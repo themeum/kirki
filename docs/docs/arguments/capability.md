@@ -2,7 +2,7 @@
 layout: default
 title: capability
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 The `capability` argument allows you to define the the capability that a user must have in order to access the control for a field.
@@ -16,33 +16,33 @@ Example:
 ```php
 <?php
 // Only allow network admins to access options in this config
-Kirki::add_config( 'my_config', array(
+Kirki::add_config( 'my_config', [
 	'option_type' => 'theme_mod',
 	'capability'  => 'manage_network_plugins'
-);
+];
 
 // Add a simple text-field.
 // This will inherit the capability from our config.
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'     => 'text',
 	'settings' => 'my_setting1',
-	'label'    => __( 'Text Control 1', 'my_textdomain' ),
+	'label'    => esc_html__( 'Text Control 1', 'my_textdomain' ),
 	'section'  => 'my_section',
 	'default'  => esc_html__( 'This is a default value', 'my_textdomain' ),
 	'priority' => 10,
-) );
+] );
 
 // Another text-field.
 // This will override the capability of the config and be available to admins.
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'        => 'text',
 	'settings'    => 'my_setting2',
-	'label'       => __( 'Text Control 2', 'my_textdomain' ),
+	'label'       => esc_html__( 'Text Control 2', 'my_textdomain' ),
 	'section'     => 'my_section',
 	'default'     => esc_html__( 'This is a default value', 'my_textdomain' ),
 	'priority'    => 10,
 	'capability'  => 'edit_theme_options'
-) );
+] );
 ?>
 ```
 

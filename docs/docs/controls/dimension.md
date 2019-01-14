@@ -3,7 +3,7 @@ layout: default
 title: The "dimension" control
 slug: dimension
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
 heroButtons:
@@ -18,14 +18,14 @@ The `dimension` control allows you create an input where users can enter any val
 ### Example:
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'dimension',
 	'settings'    => 'dimension_setting',
 	'label'       => esc_html__( 'Dimension Control', 'textdomain' ),
 	'description' => esc_html__( 'Description Here.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '10px',
-) );
+] );
 ```
 
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/dimension.gif" alt="dimension control example" style="max-width:300px;">

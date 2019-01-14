@@ -2,7 +2,7 @@
 layout: default
 title: output
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 Using the `output` argument you can specify if you want Kirki to automatically generate and apply CSS for various elements of your page.

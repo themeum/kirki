@@ -1,7 +1,7 @@
 ---
 layout: default
 title: active_callback
-published: false
+published: true
 ---
 
 You can use the `active_callback` argument to define if you want to hide or display a control under conditions.
@@ -12,15 +12,13 @@ The default WordPress Customizer implementation for `active_callback` allows you
 Kirki extends the `active_callback` argument to allow defined field dependencies:
 
 ```php
-<?php
-'active_callback'    => array(
-	array(
+'active_callback' => [
+	[
 		'setting'  => 'checkbox_demo',
 		'operator' => '==',
 		'value'    => true,
-	),
-),
-?>
+	]
+],
 ```
 It is formatted as an array of arrays so you can add multiple dependencies.
 
@@ -43,56 +41,78 @@ The text control will **only** be shown if the value of the checkbox is equal to
 
 
 ```php
-<?php
 Kirki::add_config( 'my_config' );
 
-Kirki::add_section( 'my_section', array(
-    'title'          => __( 'My Section' ),
-    'priority'       => 10,
-) );
+Kirki::add_section( 'my_section', [
+	'title'    => esc_html__( 'My Section' ),
+    'priority' => 10,
+] );
 
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'      => 'checkbox',
 	'settings'  => 'my_checkbox',
-	'label'     => __( 'My Checkbox', 'my_textdomain' ),
+	'label'     => esc_html__( 'My Checkbox', 'my_textdomain' ),
 	'section'   => 'my_section',
-	'default'   => 0,
+	'default'   => false,
 	'priority'  => 10,
-) );
+] );
 
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'      => 'radio',
 	'settings'  => 'my_radio',
-	'label'     => __( 'My Radio', 'my_textdomain' ),
+	'label'     => esc_html__( 'My Radio', 'my_textdomain' ),
 	'section'   => 'my_section',
 	'default'   => 'option-1',
 	'priority'  => 20,
-	'choices'   => array(
-		'option-1' => __( 'Option 1', 'my_textdomain' ),
-		'option-2' => __( 'Option 2', 'my_textdomain' ),
-		'option-3' => __( 'Option 3', 'my_textdomain' )
-	)
-) );
+	'choices'   => [
+		'option-1' => esc_html__( 'Option 1', 'my_textdomain' ),
+		'option-2' => esc_html__( 'Option 2', 'my_textdomain' ),
+		'option-3' => esc_html__( 'Option 3', 'my_textdomain' )
+	]
+] );
 
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'      => 'text',
 	'settings'  => 'my_setting',
-	'label'     => __( 'Text Color', 'my_textdomain' ),
+	'label'     => esc_html__( 'Text Color', 'my_textdomain' ),
 	'section'   => 'my_section',
-	'default'   => __( 'my default text here', 'my_textdomain' ),
+	'default'   => esc_html__( 'my default text here', 'my_textdomain' ),
 	'priority'  => 30,
-	'active_callback'  => array(
-		array(
+	'active_callback'  => [
+		[
 			'setting'  => 'my_checkbox',
-			'operator' => '==',
-			'value'    => 1,
-		),
-		array(
+			'operator' => '===',
+			'value'    => true,
+		],
+		[
 			'setting'  => 'my_radio',
-			'operator' => '!=',
+			'operator' => '!==',
 			'value'    => 'option-1',
-		),
-	)
-) );
+		],
+	]
+] );
 ?>
 ```
+
+The equivalent of the above rule written as a PHP function in the callback would look like this:
+
+```php
+'active_callback' => function() {
+	$checkbox_value = get_theme_mod( 'my_checkbox', false );
+	$radio_value    = get_theme_mod( 'my_radio', 'option-1' );
+
+	if ( true === $checkbox_value && 'option-1' !== $radio_value ) {
+		return true;
+	}
+	return false;
+},
+```
+or written a lot shorter:
+
+```php
+'active_callback' => function() {
+	return true === get_theme_mod( 'my_checkbox', false ) && 'option-1' !== get_theme_mod( 'my_radio', 'option-1' );
+},
+```
+
+The benefit however of using the field-dependencies using Kirki instead of using a PHP function is that active_callbacks are applied via JavaScript instead of PHP, so changes are instant.

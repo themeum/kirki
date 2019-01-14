@@ -11,6 +11,18 @@
   font-style: normal;
 }
 
+html {
+  font-size: 18px;
+
+  @media (max-width: 960px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+}
+
 body {
   max-width: 100%;
   overflow-x: hidden;
@@ -379,6 +391,7 @@ pre {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   -webkit-tab-size: 4;
+  clear: both;
 
   code {
     width: 100%;

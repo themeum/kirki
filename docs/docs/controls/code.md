@@ -3,7 +3,7 @@ layout: default
 title: The "code" control
 slug: code
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
 heroButtons:
@@ -21,17 +21,17 @@ Internally this control uses the `CodeMirror` library available in WordPress.
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'code',
 	'settings'    => 'code_setting',
 	'label'       => esc_html__( 'Code Control', 'textdomain' ),
 	'description' => esc_html__( 'Description', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
-	'choices'     => array(
+	'choices'     => [
 		'language' => 'css',
-	),
-) );
+	],
+] );
 ```
 
 ### Usage

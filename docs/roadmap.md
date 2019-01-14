@@ -2,7 +2,7 @@
 layout: default
 title: Kirki Roadmap
 subtitle: Plan big
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: roadmap
 ---
 
