@@ -3,7 +3,7 @@ layout: default
 title: The "checkbox" control
 slug: checkbox
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: boolean
 heroButtons:
@@ -20,14 +20,14 @@ If a checkbox is not what you're after visually, you can also use a [`switch`](s
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'checkbox',
 	'settings'    => 'checkbox_setting',
 	'label'       => esc_html__( 'Checkbox Control', 'textdomain' ),
 	'description' => esc_html__( 'Description', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => true,
-) );
+] );
 ```
 
 ### Usage

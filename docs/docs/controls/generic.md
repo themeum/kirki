@@ -3,7 +3,7 @@ layout: default
 title: The "generic" control
 slug: generic
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
 heroButtons:
@@ -18,20 +18,20 @@ The `generic` control is one of the most versatile controls in Kirki. It allows 
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'generic',
 	'settings'    => 'generic_custom_setting',
 	'label'       => esc_html__( 'Custom input Control.', 'textdomain' ),
 	'description' => esc_html__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '',
-	'choices'     => array(
+	'choices'     => [
 		'element'  => 'input',
 		'type'     => 'password',
 		'style'    => 'background-color:black;color:red;',
 		'data-foo' => 'bar',
-	),
-) );
+	],
+] );
 ```
 
 The above code will create this HTML in your control:

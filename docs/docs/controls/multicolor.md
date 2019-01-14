@@ -3,7 +3,7 @@ layout: default
 title: The "multicolor" control
 slug: multicolor
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
 heroButtons:
@@ -22,23 +22,23 @@ The saved options will be in the form of an array of the form `$key => $value`. 
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
     'type'        => 'multicolor',
     'settings'    => 'my_setting',
     'label'       => esc_html__( 'Label', 'textdomain' ),
     'section'     => 'section_id',
     'priority'    => 10,
-    'choices'     => array(
+    'choices'     => [
         'link'    => esc_html__( 'Color', 'textdomain' ),
         'hover'   => esc_html__( 'Hover', 'textdomain' ),
         'active'  => esc_html__( 'Active', 'textdomain' ),
-    ),
-    'default'     => array(
+    ],
+    'default'     => [
         'link'    => '#0088cc',
         'hover'   => '#00aaff',
         'active'  => '#00ffff',
-    ),
-) );
+    ],
+] );
 ```
 
 ### Usage

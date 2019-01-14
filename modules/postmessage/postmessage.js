@@ -115,7 +115,7 @@ var kirkiPostMessage = {
 		 */
 		backgroundImageValue: function( url ) {
 			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
-		},
+		}
 	},
 
 	/**
@@ -153,7 +153,7 @@ var kirkiPostMessage = {
 						}
 						processedValue = kirkiPostMessage.util.processValue( output, val );
 						if ( false !== processedValue ) {
-							styles += key + ':' + kirkiPostMessage.util.processValue( output, val ) + ';';
+							styles += key + ':' + processedValue + ';';
 						}
 					} );
 					styles += '}';
@@ -172,7 +172,7 @@ var kirkiPostMessage = {
 								googleFont += ':' + value.variant;
 							}
 						}
-						googleFont += ':cyrillic,cyrillic-ext,devanagari,grb eek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
+						googleFont += ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 						WebFont.load( {
 							google: {
 								families: [ googleFont ]
@@ -422,9 +422,26 @@ var kirkiPostMessage = {
 					if ( 'kirki-image' === controlType ) {
 						value = ( ! _.isUndefined( value.url ) ) ? kirkiPostMessage.util.backgroundImageValue( value.url ) : kirkiPostMessage.util.backgroundImageValue( value );
 					}
-					processedValue = kirkiPostMessage.util.processValue( output, value );
-					if ( false !== processedValue ) {
-						styles += output.element + '{' + output.property + ':' + processedValue + ';}';
+					if ( _.isObject( value ) ) {
+						styles += output.element + '{';
+						_.each( value, function( val, key ) {
+							if ( output.choice && key !== output.choice ) {
+								return;
+							}
+							processedValue = kirkiPostMessage.util.processValue( output, val );
+							if ( ! output.property ) {
+								output.property = key;
+							}
+							if ( false !== processedValue ) {
+								styles += output.property + ':' + processedValue + ';';
+							}
+						} );
+						styles += '}';
+					} else {
+						processedValue = kirkiPostMessage.util.processValue( output, value );
+						if ( false !== processedValue ) {
+							styles += output.element + '{' + output.property + ':' + processedValue + ';}';
+						}
 					}
 					break;
 			}

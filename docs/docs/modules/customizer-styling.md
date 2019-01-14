@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Styling the Customizer
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: page
 ---
 

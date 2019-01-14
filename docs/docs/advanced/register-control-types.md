@@ -2,7 +2,7 @@
 layout: default
 title: Register new Control Type
 subtitle: Make custom controls available to Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: page
 ---
 

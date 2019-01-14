@@ -3,7 +3,7 @@ layout: default
 title: The "background" control
 slug: background
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
 heroButtons:
@@ -18,19 +18,25 @@ The `background` control allows you to have every CSS background property under 
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'background',
 	'settings'    => 'background_setting',
 	'label'       => esc_html__( 'Background Control', 'textdomain' ),
 	'description' => esc_html__( 'Background conrols are pretty complex - but extremely useful if properly used.', 'textdomain' ),
 	'section'     => 'section_id',
-	'default'     => array(
+	'default'     => [
 		'background-color'      => 'rgba(20,20,20,.8)',
 		'background-image'      => '',
 		'background-repeat'     => 'repeat',
 		'background-position'   => 'center center',
 		'background-size'       => 'cover',
 		'background-attachment' => 'scroll',
-	),
-) );
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => 'body',
+		],
+	],
+] );
 ```

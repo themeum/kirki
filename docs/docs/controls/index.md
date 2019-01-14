@@ -2,7 +2,7 @@
 layout: default
 title: Adding Controls to your project
 subtitle: How to add kirki to your project.
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: page
 heroButtons:
   - url: ../config

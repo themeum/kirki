@@ -64,6 +64,7 @@ $sections = array(
 	'date'            => array( esc_html__( 'Date', 'kirki' ), '' ),
 	'dimension'       => array( esc_html__( 'Dimension', 'kirki' ), '' ),
 	'dimensions'      => array( esc_html__( 'Dimensions', 'kirki' ), '' ),
+	'dropdown-pages'  => array( esc_html__( 'Dropdown Pages', 'kirki' ), '' ),
 	'editor'          => array( esc_html__( 'Editor', 'kirki' ), '' ),
 	'fontawesome'     => array( esc_html__( 'Font-Awesome', 'kirki' ), '' ),
 	'generic'         => array( esc_html__( 'Generic', 'kirki' ), '' ),
@@ -426,6 +427,24 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+/**
+ * Dropdown-pages Control.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'dropdown-pages',
+		'settings'    => 'dropdown-pages',
+		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+		'description' => esc_html__( 'Description Here.', 'kirki' ),
+		'section'     => 'dropdown_pages_section',
+		'default'     => array(
+			'width'  => '100px',
+			'height' => '100px',
+		),
+	)
+);
+
 
 /**
  * Font-Awesome Control.
@@ -851,6 +870,17 @@ my_config_kirki_add_field(
 		'description' => esc_html__( 'Description', 'kirki' ),
 		'section'     => 'toggle_section',
 		'default'     => true,
+		// WIP
+		'transport'   => 'postMessage',
+		// WIP
+		'js_vars'     => array(
+			array(
+				'element'  => '.site-description',
+				'function' => 'toggleClass',
+				'class'    => 'hidden',
+				'value'    => true,
+			),
+		),
 	)
 );
 

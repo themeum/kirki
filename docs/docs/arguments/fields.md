@@ -1,10 +1,10 @@
 ---
 layout: default
 title: fields
-published: false
+published: true
 ---
 
 
-The `fields` argument is only used in `repeater` controls.
+The `fields` argument is only used in [`repeater`](https://aristath.github.io/kirki/docs/controls/repeater.html) controls.
 
-For documentation and usage instructions please visit the documentation of releater controls.
+For documentation and usage instructions please visit the documentation of related controls.

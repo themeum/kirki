@@ -2,7 +2,7 @@
 layout: default
 title: The Kirki_Helper class
 subtitle: A collection of helper methods
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: page
 ---
 

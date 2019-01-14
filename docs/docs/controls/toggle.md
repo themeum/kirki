@@ -3,7 +3,7 @@ layout: default
 title: The "toggle" control
 slug: toggle
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: boolean
 heroButtons:
@@ -20,14 +20,14 @@ Toggle controls are internally [`checkbox`](checkbox) controls styled differentl
 ### Example
 
 ```php
-Kirki::add_field( 'theme_config_id', array(
+Kirki::add_field( 'theme_config_id', [
 	'type'        => 'toggle',
 	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'This is the label', 'textdomain' ),
 	'section'     => 'section_id',
 	'default'     => '1',
 	'priority'    => 10,
-) );
+] );
 ```
 
 ### Usage

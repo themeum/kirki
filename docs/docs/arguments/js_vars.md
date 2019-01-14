@@ -1,7 +1,7 @@
 ---
 layout: default
 title: js_vars
-published: false
+published: true
 ---
 
 <div class="callout warning">
@@ -16,29 +16,27 @@ If you set `transport` to `postMessage` you can write your own scripts, or you c
 It is defined as an array of arrays so you can specify multiple elements.
 
 ```php
-<?php
-Kirki::add_field( 'my_config', array(
+Kirki::add_field( 'my_config', [
 	'type'      => 'color',
 	'settings'  => 'my_setting',
-	'label'     => __( 'Text Color', 'translation_domain' ),
+	'label'     => esc_html__( 'Text Color', 'translation_domain' ),
 	'section'   => 'my_section',
 	'default'   => 1,
 	'priority'  => 1,
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
+	'js_vars'   => [
+		[
 			'element'  => 'body',
 			'function' => 'css',
 			'property' => 'color',
-		),
-		array(
+		],
+		[
 			'element'  => 'h1, h2, h3, h4',
 			'function' => 'css',
 			'property' => 'color',
-		),
-	)
-) );
-?>
+		],
+	]
+] );
 ```
 
 Available arguments you can use on each item inside each array:

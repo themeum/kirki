@@ -2,7 +2,7 @@
 layout: default
 title: tooltip
 published: true
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 ---
 
 Using the `tooltip` argument you can add tooltips to your controls.

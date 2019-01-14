@@ -3,7 +3,7 @@ layout: default
 title: The "spacing" control
 slug: spacing
 subtitle: Learn how to create controls using Kirki
-mainMaxWidth: 50rem;
+mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
 heroButtons:
@@ -12,3 +12,5 @@ heroButtons:
     icon: fa fa-arrow-circle-o-left
     label: Back to Controls
 ---
+
+The `spacing` control is an alias for the `dimensions` control. Please see documentation on [the dimensions field](https://aristath.github.io/kirki/docs/controls/dimensions.html).
