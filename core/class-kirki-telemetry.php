@@ -236,7 +236,7 @@ final class Kirki_Telemetry {
 				$types[] = $field['type'];
 			}
 		}
-		return '["' . implode( '","',  array_unique( $types ) ) . '"]';
+		return implode( '","',  $types );
 	}
 
 	/**
