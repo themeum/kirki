@@ -129,10 +129,6 @@ final class Kirki_Telemetry {
 						<td><code><?php echo esc_html( $data['phpVer'] ); ?></code></td>
 					</tr>
 					<tr>
-						<td><?php esc_html_e( 'ID', 'kirki' ); ?></td>
-						<td><code><?php echo esc_html( $data['siteID'] ); ?></code></td>
-					</tr>
-					<tr>
 						<td><?php esc_html_e( 'Theme Name', 'kirki' ); ?></td>
 						<td><code><?php echo esc_html( $data['themeName'] ); ?></code></td>
 					</tr>
@@ -143,10 +139,6 @@ final class Kirki_Telemetry {
 					<tr>
 						<td><?php esc_html_e( 'Theme URI', 'kirki' ); ?></td>
 						<td><code><?php echo esc_html( $data['themeURI'] ); ?></code></td>
-					</tr>
-					<tr>
-						<td><?php esc_html_e( 'Theme Version', 'kirki' ); ?></td>
-						<td><code><?php echo esc_html( $data['themeVersion'] ); ?></code></td>
 					</tr>
 					<tr>
 						<td><?php esc_html_e( 'Field Types Used', 'kirki' ); ?></td>
@@ -213,11 +205,9 @@ final class Kirki_Telemetry {
 		// Build data and return the array.
 		return array(
 			'phpVer'       => $php_version,
-			'siteID'       => md5( home_url() ),
 			'themeName'    => $theme->get( 'Name' ),
 			'themeAuthor'  => $theme->get( 'Author' ),
 			'themeURI'     => $theme->get( 'ThemeURI' ),
-			'themeVersion' => $theme->get( 'Version' ),
 			'fieldTypes'   => $this->get_field_types(),
 		);
 	}
