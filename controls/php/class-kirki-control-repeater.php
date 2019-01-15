@@ -360,7 +360,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
 									}
 								} #>
-								<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+								<input class="color-picker-hex" type="text" maxlength="7" value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							<# } else if ( 'textarea' === field.type ) { #>
 
