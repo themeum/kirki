@@ -33,6 +33,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.36 =
+
+* Fix: `active_callback` argument for `dropdown-pages` control. [#2055](https://github.com/aristath/kirki/issues/2055)
+* Fix: `color ` control issues when inside a repeater. [#2059](https://github.com/aristath/kirki/issues/2059)
+* Tweak: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
+
 = 3.0.35.3 =
 
 Dec. 26, 2018, dev time: 1h
