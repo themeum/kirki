@@ -39,7 +39,6 @@ class Kirki_Init {
 
 		new Kirki_Values();
 		new Kirki_Sections();
-		new Kirki_Telemetry();
 	}
 
 	/**

@@ -7,7 +7,7 @@
  * @author      Aristeides Stathopoulos
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
- * @since       3.0.34
+ * @since       3.0.36
  */
 
 // Exit if accessed directly.
@@ -18,15 +18,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Telemetry implementation.
  */
-final class Kirki_Telemetry {
+final class Kirki_Modules_Telemetry {
 
 	/**
+	 * The object instance.
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.36
+	 * @var object
+	 */
+	private static $instance;
+
+    /**
 	 * Constructor.
 	 *
-	 * @access public
-	 * @since 3.0.34
+	 * @access protected
+	 * @since 3.0.36
 	 */
-	public function __construct() {
+	protected function __construct() {
 
 		// Early exit if telemetry is disabled.
 		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
@@ -38,10 +48,26 @@ final class Kirki_Telemetry {
 	}
 
 	/**
+	 * Gets an instance of this object.
+	 * Prevents duplicate instances which avoid artefacts and improves performance.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.36
+	 * @return object
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * Additional actions that run on init.
 	 *
 	 * @access public
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	public function init() {
@@ -56,7 +82,7 @@ final class Kirki_Telemetry {
 	 * Maybe send data.
 	 *
 	 * @access public
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	public function maybe_send_data() {
@@ -78,7 +104,7 @@ final class Kirki_Telemetry {
 	 * Sends data.
 	 *
 	 * @access private
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	private function send_data() {
@@ -100,7 +126,7 @@ final class Kirki_Telemetry {
 	 * The admin-notice.
 	 *
 	 * @access private
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	public function admin_notice() {
@@ -113,8 +139,7 @@ final class Kirki_Telemetry {
 		?>
 		<div class="notice notice-info kirki-telemetry">
 			<h3><strong><?php esc_html_e( 'Help us improve Kirki.', 'kirki' ); ?></strong></h3>
-			<p><?php esc_html_e( 'Gathering usage data about the theme you are using allows us to know which themes and field-types are most-used with the Kirki framework.', 'kirki' ); ?><br><?php esc_html_e( 'This will allow us to work closer with theme developers to improve both the theme you use and the Kirki framework.', 'kirki' ); ?></p>
-			<p><strong><?php esc_html_e( 'The data is completely anonymous and we will never collect any identifyable information about you or your website.'); ?></strong></p>
+			<p style="max-width: 76em;"><?php echo wp_kses_post( __( 'Help us begin a dialogue with theme developers, collaborate and improve both the theme you are using and the Kirki framework by agreeing to send anonymous data. <strong>The data is completely anonymous and we will never collect any identifyable information about you or your website.</strong>', 'kirki' ) ); ?></p>
 			<table class="data-to-send hidden widefat">
 				<thead>
 					<tr>
@@ -151,7 +176,7 @@ final class Kirki_Telemetry {
 								/* translators: %1$s: URL to the server plugin code. %2$s: URL to the stats page. */
 								__( 'We believe in complete transparency. You can see the code used on our server <a href="%1$s" rel="nofollow">here</a>, and the results of the statistics we\'re gathering on <a href="%2$s" rel="nofollow">this page</a>.', 'kirki' ),
 								'https://github.com/aristath/kirki-telemetry-server',
-								'https://wplemon.com/?action=kirki-telemetry-stats'
+								'https://wplemon.com/kirki-telemetry-statistics/'
 							);
 							?>
 						</th>
@@ -162,7 +187,8 @@ final class Kirki_Telemetry {
 
 				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'kirki-consent-notice', 'telemetry' ) ) ); ?>" class="button button-primary consent"><?php esc_html_e( 'I agree', 'kirki' ); ?></a>
 				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'kirki-hide-notice', 'telemetry' ) ) ); ?>" class="button button-secondary dismiss"><?php esc_html_e( 'No thanks', 'kirki' ); ?></a>
-				<a class="button button-link alignright details"><?php esc_html_e( 'Show me the data you send', 'kirki' ); ?></a>
+				<a class="button button-link details details-show"><?php esc_html_e( 'Show me the data', 'kirki' ); ?></a>
+				<a class="button button-link details details-hide hidden"><?php esc_html_e( 'Collapse data', 'kirki' ); ?></a>
 			</p>
 			<script>
 			jQuery( '.kirki-telemetry a.consent' ).on( 'click', function() {
@@ -172,8 +198,9 @@ final class Kirki_Telemetry {
 
 			});
 			jQuery( '.kirki-telemetry a.details' ).on( 'click', function() {
-				jQuery( '.kirki-telemetry .data-to-send' ).removeClass( 'hidden' );
-				jQuery( '.kirki-telemetry a.details' ).hide();
+				jQuery( '.kirki-telemetry .data-to-send' ).toggleClass( 'hidden' );
+				jQuery( '.kirki-telemetry a.details-show' ).toggleClass( 'hidden' );
+				jQuery( '.kirki-telemetry a.details-hide' ).toggleClass( 'hidden' );
 			});
 			</script>
 		</div>
@@ -184,7 +211,7 @@ final class Kirki_Telemetry {
 	 * Builds and returns the data or uses cached if data already exists.
 	 *
 	 * @access private
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return array
 	 */
 	private function get_data() {
@@ -229,7 +256,7 @@ final class Kirki_Telemetry {
 	 * Dismisses the notice.
 	 *
 	 * @access private
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	private function dismiss_notice() {
@@ -250,7 +277,7 @@ final class Kirki_Telemetry {
 	 * Dismisses the notice.
 	 *
 	 * @access private
-	 * @since 3.0.34
+	 * @since 3.0.36
 	 * @return void
 	 */
 	private function consent() {
