@@ -20,9 +20,9 @@ Once they consent, the following data is sent:
 
 We then use that information to prioritize development of the most necessary and widely used field-types, and try to collaborate with the top themes to improve the whole ecosystem.
 
-We believe in complete transparency so all that information is available publicly on https://wplemon.com/kirki-telemetry-statistics/
+We believe in complete transparency so all that information is [publicly available](https://wplemon.com/kirki-telemetry-statistics/)
 
-The code we use on our server to store the data and also display is also available to everyone on https://github.com/aristath/kirki-telemetry-server
+The code we use on our server to store the data and also display is also [available to everyone on github](https://github.com/aristath/kirki-telemetry-server)
 
 Both Kirki and themes will benefit from the data gathered and we hope this will lead to more collaboration efforts between the kirki plugin developers and themes that use the framework in order to more efficiently and effectively improve them both.
 
