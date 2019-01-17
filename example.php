@@ -26,7 +26,8 @@ if ( ! class_exists( 'Kirki' ) ) {
  * @link https://aristath.github.io/kirki/docs/getting-started/config.html
  */
 Kirki::add_config(
-	'kirki_demo', array(
+	'kirki_demo',
+	array(
 		'capability'  => 'edit_theme_options',
 		'option_type' => 'theme_mod',
 	)
@@ -38,7 +39,8 @@ Kirki::add_config(
  * @link https://aristath.github.io/kirki/docs/getting-started/panels.html
  */
 Kirki::add_panel(
-	'kirki_demo_panel', array(
+	'kirki_demo_panel',
+	array(
 		'priority'    => 10,
 		'title'       => esc_html__( 'Kirki Demo Panel', 'kirki' ),
 		'description' => esc_html__( 'Contains sections for all kirki controls.', 'kirki' ),
@@ -870,9 +872,9 @@ my_config_kirki_add_field(
 		'description' => esc_html__( 'Description', 'kirki' ),
 		'section'     => 'toggle_section',
 		'default'     => true,
-		// WIP
+		// WIP.
 		'transport'   => 'postMessage',
-		// WIP
+		// WIP.
 		'js_vars'     => array(
 			array(
 				'element'  => '.site-description',
@@ -979,7 +981,8 @@ function kirki_sidebars_select_example() {
 		return;
 	}
 	Kirki::add_field(
-		'kirki_demo', array(
+		'kirki_demo',
+		array(
 			'type'        => 'select',
 			'settings'    => 'sidebars_select',
 			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),

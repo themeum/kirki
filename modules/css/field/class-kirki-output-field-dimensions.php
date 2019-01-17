@@ -23,7 +23,8 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 	 */
 	protected function process_output( $output, $value ) {
 		$output = wp_parse_args(
-			$output, array(
+			$output,
+			array(
 				'element'     => '',
 				'property'    => '',
 				'media_query' => 'global',

@@ -91,7 +91,7 @@ class Kirki_Modules_CSS {
 
 		foreach ( $class_files as $class_name => $file ) {
 			if ( ! class_exists( $class_name ) ) {
-				include_once wp_normalize_path( dirname( __FILE__ ) . $file );
+				include_once wp_normalize_path( dirname( __FILE__ ) . $file ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			}
 		}
 		add_action( 'init', array( $this, 'init' ) );
@@ -227,7 +227,7 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 */
 	public function ajax_dynamic_css() {
-		require wp_normalize_path( Kirki::$path . '/modules/css/dynamic-css.php' );
+		require wp_normalize_path( Kirki::$path . '/modules/css/dynamic-css.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		exit;
 	}
 
@@ -326,7 +326,7 @@ class Kirki_Modules_CSS {
 	 * @static
 	 * @since 3.0.35
 	 * @access public
-	 * @return void
+	 * @return bool
 	 */
 	public static function get_enqueue_fa() {
 		return self::$enqueue_fa;

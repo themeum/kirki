@@ -162,6 +162,7 @@ class Kirki_Modules_Gutenberg {
 	 * Enqueue styles to Gutenberg Editor.
 	 *
 	 * @access public
+	 * @param array $settings The settings for styles.
 	 * @since 3.0.35
 	 */
 	public function enqueue( $settings ) {
@@ -193,7 +194,7 @@ class Kirki_Modules_Gutenberg {
 			}
 
 			$modules_css = $this->modules_css;
-			$styles      = $modules_css::loop_controls( $config_id );
+			$styles      = $modules_css::loop_controls( $config_id ); // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 			$styles      = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
 
 			if ( empty( $styles ) ) {
@@ -211,6 +212,7 @@ class Kirki_Modules_Gutenberg {
 	 * gutenbeg_support argument, and disabled output argument.
 	 *
 	 * @access public
+	 * @param array $args An array of arguments.
 	 * @since 3.0.35
 	 *
 	 * @return bool $disabled Is gutenberg integration feature disabled?
@@ -254,16 +256,16 @@ class Kirki_Modules_Gutenberg {
 
 			$async = new Kirki_Modules_Webfonts_Async(
 				$config_id,
-				$modules_webfonts::get_instance(),
-				$google_fonts::get_instance()
+				$modules_webfonts::get_instance(), // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
+				$google_fonts::get_instance() // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 			);
 
 			$async->webfont_loader();
 			$async->webfont_loader_script();
 
 			$local_fonts = new Kirki_Modules_Webfonts_Local(
-				$modules_webfonts::get_instance(),
-				$google_fonts::get_instance()
+				$modules_webfonts::get_instance(), // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
+				$google_fonts::get_instance() // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 			);
 
 			$local_fonts->add_styles();
@@ -285,7 +287,7 @@ class Kirki_Modules_Gutenberg {
 				continue;
 			}
 			$modules_css = $this->modules_css;
-			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) {
+			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) { // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
 			}
 
@@ -300,7 +302,8 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_configs() {
-		return $this->configs = Kirki::$config;
+		$this->configs = Kirki::$config;
+		return $this->configs;
 	}
 
 	/**

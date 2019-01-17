@@ -238,7 +238,8 @@ final class Kirki_Modules_CSS_Generator {
 
 						// Add -webkit-* and -moz-*.
 						if ( is_string( $property ) && in_array(
-							$property, array(
+							$property,
+							array(
 								'border-radius',
 								'box-shadow',
 								'box-sizing',
@@ -247,7 +248,8 @@ final class Kirki_Modules_CSS_Generator {
 								'background-size',
 								'transition',
 								'transition-property',
-							), true
+							),
+							true
 						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-webkit-' . $property ] = $value;
@@ -257,12 +259,14 @@ final class Kirki_Modules_CSS_Generator {
 
 						// Add -ms-* and -o-*.
 						if ( is_string( $property ) && in_array(
-							$property, array(
+							$property,
+							array(
 								'transform',
 								'background-size',
 								'transition',
 								'transition-property',
-							), true
+							),
+							true
 						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
 							$css[ $media_query ][ $element ][ '-ms-' . $property ] = $value;

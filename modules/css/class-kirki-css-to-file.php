@@ -135,7 +135,7 @@ class Kirki_CSS_To_File {
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {
-			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			WP_Filesystem();
 		}
 		return $wp_filesystem;

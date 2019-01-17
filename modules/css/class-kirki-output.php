@@ -243,10 +243,10 @@ class Kirki_Output {
 			if ( is_admin() && ! is_customize_preview() ) {
 
 				// Check if this is an admin style.
-				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'] ) ) {
+				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
 					continue;
 				}
-			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'] ) ) {
+			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
 
 				// Check if this is a frontend style.
 				continue;
@@ -304,7 +304,8 @@ class Kirki_Output {
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters(
-			"kirki_{$this->config_id}_output_property_classnames", array(
+			"kirki_{$this->config_id}_output_property_classnames",
+			array(
 				'font-family'         => 'Kirki_Output_Property_Font_Family',
 				'background-image'    => 'Kirki_Output_Property_Background_Image',
 				'background-position' => 'Kirki_Output_Property_Background_Position',

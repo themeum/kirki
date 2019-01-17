@@ -384,7 +384,7 @@ final class Kirki_Fonts_Google_Local {
 	 */
 	private function get_fonts() {
 		ob_start();
-		include wp_normalize_path( dirname( __FILE__ ) . '/webfont-files.json' );
+		include wp_normalize_path( dirname( __FILE__ ) . '/webfont-files.json' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		$json = ob_get_clean();
 		return json_decode( $json, true );
 	}

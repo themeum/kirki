@@ -108,13 +108,11 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 					case 'image':
 					case 'cropped_image':
 					case 'upload':
-
 						// We add it to the list of fields that need some extra filtering/processing.
 						$media_fields_to_filter[ $key ] = true;
 						break;
 
 					case 'dropdown-pages':
-
 						// If the field is a dropdown-pages field then add it to args.
 						$dropdown = wp_dropdown_pages(
 							array(

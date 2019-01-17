@@ -26,7 +26,8 @@ class Kirki_Output_Field_Image extends Kirki_Output {
 			return;
 		}
 		$output = wp_parse_args(
-			$output, array(
+			$output,
+			array(
 				'media_query' => 'global',
 				'prefix'      => '',
 				'units'       => '',

@@ -75,7 +75,8 @@ class Kirki_Modules_Selective_Refresh {
 					// If we have all we need, create the selective refresh call.
 					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
 						$partial_refresh_args = wp_parse_args(
-							$partial_refresh_args, array(
+							$partial_refresh_args,
+							array(
 								'settings' => $field['settings'],
 							)
 						);

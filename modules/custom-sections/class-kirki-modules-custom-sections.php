@@ -116,12 +116,12 @@ class Kirki_Modules_Custom_Sections {
 			if ( ! class_exists( $class ) ) {
 				$path = wp_normalize_path( $folder_path . 'class-kirki-sections-' . $id . '-section.php' );
 				if ( file_exists( $path ) ) {
-					include_once $path;
+					include_once $path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 					continue;
 				}
 				$path = str_replace( 'class-kirki-sections-kirki-', 'class-kirki-sections-', $path );
 				if ( file_exists( $path ) ) {
-					include_once $path;
+					include_once $path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 				}
 			}
 		}
@@ -134,12 +134,12 @@ class Kirki_Modules_Custom_Sections {
 			if ( ! class_exists( $class ) ) {
 				$path = wp_normalize_path( $folder_path . 'class-kirki-panels-' . $id . '-panel.php' );
 				if ( file_exists( $path ) ) {
-					include_once $path;
+					include_once $path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 					continue;
 				}
 				$path = str_replace( 'class-kirki-panels-kirki-', 'class-kirki-panels-', $path );
 				if ( file_exists( $path ) ) {
-					include_once $path;
+					include_once $path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 				}
 			}
 		}

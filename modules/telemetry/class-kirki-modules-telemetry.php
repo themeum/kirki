@@ -30,7 +30,7 @@ final class Kirki_Modules_Telemetry {
 	 */
 	private static $instance;
 
-    /**
+	/**
 	 * Constructor.
 	 *
 	 * @access protected
@@ -110,16 +110,19 @@ final class Kirki_Modules_Telemetry {
 	private function send_data() {
 
 		// Ping remote server.
-		wp_remote_post( 'https://wplemon.com/?action=kirki-stats', [
-			'method'   => 'POST',
-			'blocking' => false,
-			'body'     => array_merge(
-				array(
-					'action' => 'kirki-stats',
+		wp_remote_post(
+			'https://wplemon.com/?action=kirki-stats',
+			array(
+				'method'   => 'POST',
+				'blocking' => false,
+				'body'     => array_merge(
+					array(
+						'action' => 'kirki-stats',
+					),
+					$this->get_data()
 				),
-				$this->get_data()
-			),
-		] );
+			) 
+		);
 	}
 
 	/**
@@ -174,7 +177,7 @@ final class Kirki_Modules_Telemetry {
 							<?php
 							printf(
 								/* translators: %1$s: URL to the server plugin code. %2$s: URL to the stats page. */
-								__( 'We believe in complete transparency. You can see the code used on our server <a href="%1$s" rel="nofollow">here</a>, and the results of the statistics we\'re gathering on <a href="%2$s" rel="nofollow">this page</a>.', 'kirki' ),
+								__( 'We believe in complete transparency. You can see the code used on our server <a href="%1$s" rel="nofollow">here</a>, and the results of the statistics we\'re gathering on <a href="%2$s" rel="nofollow">this page</a>.', 'kirki' ), // phpcs:ignore WordPress.Security.EscapeOutput
 								'https://github.com/aristath/kirki-telemetry-server',
 								'https://wplemon.com/kirki-telemetry-statistics/'
 							);
@@ -263,7 +266,7 @@ final class Kirki_Modules_Telemetry {
 
 		// Check if this is the request we want.
 		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-hide-notice'] ) ) {
-			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-hide-notice'] ) ) ) {
+			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-hide-notice'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				// Check the wp-nonce.
 				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) ) ) {
 					// All good, we can save the option to dismiss this notice.
@@ -284,7 +287,7 @@ final class Kirki_Modules_Telemetry {
 
 		// Check if this is the request we want.
 		if ( isset( $_GET['_wpnonce'] ) && isset( $_GET['kirki-consent-notice'] ) ) {
-			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-consent-notice'] ) ) ) {
+			if ( 'telemetry' === sanitize_text_field( wp_unslash( $_GET['kirki-consent-notice'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				// Check the wp-nonce.
 				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) ) ) {
 					// All good, we can save the option to dismiss this notice.
