@@ -11,17 +11,9 @@
       "email": "aristath@gmail.com",
       "homepage": "https://aristath.github.io",
       "role":"Developer"
-    },
-    {
-      "name": "fovoc",
-      "email": "kalliris.d@gmail.com",
-      "homepage": "https://github.com/fovoc",
-      "role":"Developer"
     }
   ],
-  "autoload": {
-      "files": ["kirki.php"]
-  },
+  "include-path": [".", "core"],
   "require": {
     "php": ">=5.2"
   },
