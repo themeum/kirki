@@ -42,7 +42,7 @@ You can configure most of the arguments used to calculate the accessible colors 
 When embedding this control in your theme, you will need to include its file and also add a filter to properly modify the URL for the scripts and styles this addon uses:
 
 ```php
-require_once get_template_directory() . '/inc/kirki-atcp/kirki-wcag-tc.php';
+require_once get_template_directory() . '/inc/kirki-wcga-tc/kirki-wcag-tc.php';
 /**
  * Modify the URL for assets in our custom control.
  *
@@ -69,7 +69,7 @@ If you want to use the WordPress Customizer API, then you can add your control l
  * @param WP_Customize_Manager $wp_customize The WordPress Customizer object.
  * @return void
  */
-function my_theme_example_kirki_atcp( $wp_customize ) {
+function my_theme_example_kirki_wcag_tc( $wp_customize ) {
 
 	// Add section.
 	$wp_customize->add_section( 'my_theme_colors', [
@@ -113,7 +113,7 @@ function my_theme_example_kirki_atcp( $wp_customize ) {
 		],
 	] ) );
 }
-add_action( 'customize_register', 'my_theme_example_kirki_atcp' );
+add_action( 'customize_register', 'my_theme_example_kirki_wcag_tc' );
 ```
 
 ### Using the Kirki API:
@@ -146,7 +146,7 @@ Kirki::add_field( 'my_theme', [
 	'settings'    => 'text_color',
 	'label'       => esc_html__( 'Text Color', 'my-theme' ),
 	'description' => esc_html__( 'Select the text color for your content. Please choose one of the recommended colors to ensure readability with your selected background-color, or switch to the "Custom Color" tab to select any other color you want.', 'my-theme' ),
-	'type'        => 'kirki-atcp',
+	'type'        => 'kirki-wcga-tc',
 	'section'     => 'my_theme_colors',
 	'default'     => '#000000',
 	'choices'     => [
