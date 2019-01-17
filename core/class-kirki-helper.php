@@ -40,7 +40,7 @@ class Kirki_Helper {
 		 * In PHP 7 func_get_args() changed the way it behaves but this doesn't mean anything in this case
 		 * sinc ethis method is only used when the array_replace_recursive() function doesn't exist
 		 * and that was introduced in PHP v5.3.
-		 * 
+		 *
 		 * Once WordPress-Core raises its minimum requirements we''' be able to remove this fallback completely.
 		 */
 		$args  = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue
@@ -420,7 +420,7 @@ class Kirki_Helper {
 			return $value1 !== $value2;
 		}
 		if ( ( '!=' === $operator || 'not equal' === $operator ) ) {
-			return $value1 != $value2; // WPCS: loose comparison ok.
+			return $value1 != $value2; // phpcs:ignore WordPress.PHP.StrictComparisons
 		}
 		if ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) ) {
 			return $value2 >= $value1;
@@ -451,6 +451,6 @@ class Kirki_Helper {
 			}
 			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}
-		return $value1 == $value2; // WPCS: loose comparison ok.
+		return $value1 == $value2; // phpcs:ignore WordPress.PHP.StrictComparisons
 	}
 }

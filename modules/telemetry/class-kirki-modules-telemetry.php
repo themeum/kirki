@@ -121,7 +121,7 @@ final class Kirki_Modules_Telemetry {
 					),
 					$this->get_data()
 				),
-			) 
+			)
 		);
 	}
 

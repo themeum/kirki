@@ -34,6 +34,5 @@ foreach ( $configs as $config_id => $args ) {
 
 	// Why both KSES and strip_tags? Because we just added some '>'.
 	// kses replaces lone '>' with &gt;.
-	// @codingStandardsIgnoreLine WordPress.WP.AlternativeFunctions.strip_tags_strip_tags WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo strip_tags( str_replace( '&gt;', '>', $styles ) );
+	echo strip_tags( str_replace( '&gt;', '>', $styles ) ); // phpcs:ignore WordPress.Security.EscapeOutput, WordPress.WP.AlternativeFunctions
 }

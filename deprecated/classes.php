@@ -1,5 +1,5 @@
 <?php
-// @codingStandardsIgnoreFile
+// phpcs:ignoreFile
 
 if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 	// Removed in https://github.com/aristath/kirki/pull/1682/files

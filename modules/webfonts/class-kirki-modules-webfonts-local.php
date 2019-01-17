@@ -99,7 +99,7 @@ final class Kirki_Modules_Webfonts_Local {
 
 		// If we've got CSS, add to the footer.
 		if ( $css ) {
-			echo '<style id="kirki-local-webfonts-' . esc_attr( sanitize_key( $this->config_id ) ) . '">' . $css . '</style>'; // WPCS: XSS ok.
+			echo '<style id="kirki-local-webfonts-' . esc_attr( sanitize_key( $this->config_id ) ) . '">' . $css . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 	}
 }
