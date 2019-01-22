@@ -1,5 +1,5 @@
 # Kirki #
-**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [fovoc](https://profiles.wordpress.org/fovoc), [igmoweb](https://profiles.wordpress.org/igmoweb)  
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)  
 **Tags:** customizer,options framework, theme, mods, toolkit, gutenberg  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
@@ -19,9 +19,16 @@ Using Kirki theme developers can create rich experiences for the WordPress Custo
 
 Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
-We advise you to familiarise yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+Premium controls are also available for premium themes:
 
-You can find detailed documentation on how to use Kirki on [https://aristath.github.io/kirki/](https://aristath.github.io/kirki/)
+* [Kirki WCAG Text Colorpicker](https://wplemon.com/downloads/kirki-wcag-text-colorpicker/)
+* [Kirki WCAG Links Colorpicker](https://wplemon.com/downloads/kirki-wcag-link-colorpicker/)
+* [Kirki Box Model](https://wplemon.com/downloads/kirki-box-model/)
+* [Kirki Box Shadow](https://wplemon.com/downloads/kirki-box-shadow/)
+
+Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+
+You can find detailed documentation on how to use Kirki on [aristath.github.io/kirki/](https://aristath.github.io/kirki/)
 
 [Development and issues on github](https://github.com/aristath/kirki).
 
@@ -32,6 +39,16 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 ## Changelog ##
+
+### 3.0.36 ###
+
+Date TBD
+
+* Fix: `active_callback` argument for `dropdown-pages` control. [#2055](https://github.com/aristath/kirki/issues/2055)
+* Fix: `color ` control issues when inside a repeater. [#2059](https://github.com/aristath/kirki/issues/2059)
+* Tweak: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
+* New: Added telemetry module. See [aristath.github.io/kirki/docs/modules/telemetry](https://aristath.github.io/kirki/docs/modules/telemetry.html) for details.
+* Fix: Updated Google Fonts
 
 ### 3.0.35.3 ###
 
