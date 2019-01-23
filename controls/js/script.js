@@ -905,7 +905,7 @@ kirki = jQuery.extend( kirki, {
 							previewImage  = jsonImg.url;
 
 						if ( ! _.isUndefined( jsonImg.sizes ) ) {
-							previewImg = jsonImg.sizes.full.url;
+							previewImage = jsonImg.sizes.full.url;
 							if ( ! _.isUndefined( jsonImg.sizes.medium ) ) {
 								previewImage = jsonImg.sizes.medium.url;
 							} else if ( ! _.isUndefined( jsonImg.sizes.thumbnail ) ) {
