@@ -27,7 +27,7 @@ jQuery( document ).ready( function() {
 			return true;
 		}
 	} );
-} ());
+} () );
 
 /**
  * @see https://wordpress.stackexchange.com/a/256103/17078

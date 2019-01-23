@@ -99,12 +99,15 @@ foreach ( $sections as $section_id => $section ) {
 	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
 }
 
-Kirki::add_section( 'pro_test', [
-	'title'       => esc_html__( 'Something', 'kirki' ),
-	'type'        => 'link',
-	'button_text' => 'Link Text',
-	'button_url'  => 'https://wplemon.com',
-] );
+Kirki::add_section(
+	'pro_test',
+	array(
+		'title'       => esc_html__( 'Test Link Section', 'kirki' ),
+		'type'        => 'link',
+		'button_text' => esc_html__( 'Pro', 'kirki' ),
+		'button_url'  => 'https://wplemon.com',
+	),
+);
 
 /**
  * A proxy function. Automatically passes-on the config-id.
