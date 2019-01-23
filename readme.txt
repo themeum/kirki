@@ -44,6 +44,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 Date TBD
 
+* New: Added a new `link` section-type.
 * Fix: `active_callback` argument for `dropdown-pages` control. [#2055](https://github.com/aristath/kirki/issues/2055)
 * Fix: `color ` control issues when inside a repeater. [#2059](https://github.com/aristath/kirki/issues/2059)
 * Tweak: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
