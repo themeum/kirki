@@ -242,7 +242,13 @@ kirki = jQuery.extend( kirki, {
 				} );
 
 				element.on( 'change keyup paste click', function() {
-					kirki.setting.set( control.id, jQuery( this ).val() );
+					var val = jQuery( this ).val();
+					if ( isNaN( val ) ) {
+						val = parseFloat( val, 10 );
+						val = ( isNaN( val ) ) ? 0 : val;
+						jQuery( this ).attr( 'value', val );
+					}
+					kirki.setting.set( control.id, val );
 				} );
 			}
 
