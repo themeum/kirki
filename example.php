@@ -106,7 +106,7 @@ Kirki::add_section(
 		'type'        => 'link',
 		'button_text' => esc_html__( 'Pro', 'kirki' ),
 		'button_url'  => 'https://wplemon.com',
-	),
+	)
 );
 
 /**
