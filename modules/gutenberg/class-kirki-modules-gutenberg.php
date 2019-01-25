@@ -77,15 +77,6 @@ class Kirki_Modules_Gutenberg {
 	private $google_fonts;
 
 	/**
-	 * Webfonts Loader Module reference.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 * @var object $modules_webfonts
-	 */
-	private $modules_webfont_loader;
-
-	/**
 	 * Constructor.
 	 *
 	 * @access protected
@@ -108,7 +99,6 @@ class Kirki_Modules_Gutenberg {
 		$this->set_modules_css();
 		$this->set_google_fonts();
 		$this->set_modules_webfonts();
-		$this->set_modules_webfont_loader();
 		$this->add_hooks();
 	}
 
@@ -137,7 +127,6 @@ class Kirki_Modules_Gutenberg {
 	protected function add_hooks() {
 		if ( ! $this->is_disabled() ) {
 			add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 999 );
-			add_action( 'enqueue_block_editor_assets', array( $this, 'load_fonts' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_fontawesome' ) );
 			add_filter( 'block_editor_settings', array( $this, 'enqueue' ) );
 		}
@@ -236,45 +225,6 @@ class Kirki_Modules_Gutenberg {
 	}
 
 	/**
-	 * Load Fonts in Gutenberg Editor.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 */
-	public function load_fonts() {
-
-		$modules_webfonts = $this->modules_webfonts;
-		$google_fonts     = $this->google_fonts;
-		foreach ( $this->configs as $config_id => $args ) {
-
-			if ( $this->is_disabled( $args ) ) {
-				continue;
-			}
-
-			$this->modules_webfont_loader->set_load( true );
-			$this->modules_webfont_loader->enqueue_scripts();
-
-			$async = new Kirki_Modules_Webfonts_Async(
-				$config_id,
-				$modules_webfonts::get_instance(), // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-				$google_fonts::get_instance() // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-			);
-
-			$async->webfont_loader();
-			$async->webfont_loader_script();
-
-			$local_fonts = new Kirki_Modules_Webfonts_Local(
-				$modules_webfonts::get_instance(), // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-				$google_fonts::get_instance() // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-			);
-
-			$local_fonts->add_styles();
-
-			return;
-		}
-	}
-
-	/**
 	 * Enqueue fontawesome in Gutenberg Editor.
 	 *
 	 * @access public
@@ -344,15 +294,5 @@ class Kirki_Modules_Gutenberg {
 	 */
 	private function set_modules_webfonts() {
 		$this->modules_webfonts = Kirki_Modules_Webfonts::get_instance();
-	}
-
-	/**
-	 * Set class property for $modules_webfont_loader.
-	 *
-	 * @access private
-	 * @since 3.0.35
-	 */
-	private function set_modules_webfont_loader() {
-		$this->modules_webfont_loader = Kirki_Modules_Webfont_Loader::get_instance();
 	}
 }

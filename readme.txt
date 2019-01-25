@@ -44,15 +44,27 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 Date TBD
 
+This updates represents a big performance improvement both for the frontend and the customizer.
+In the frontend the google-fonts are now loaded more efficiently and the `font-display` property was added to `@font-face` CSS from the google API responses.
+In the customizer the `postMessage` module was completely rewritten.
+
 * Fix: `active_callback` argument for `dropdown-pages` control. [#2055](https://github.com/aristath/kirki/issues/2055)
 * Fix: `color ` control issues when inside a repeater. [#2059](https://github.com/aristath/kirki/issues/2059)
 * Fix: Updated Google Fonts
 * Fix: No longer enqueueing an empty stylesheet in order to add styles inline.
+* Fix: Gutenberg implementation improvements.
+* New: Google Fonts are now embedded inside the dynamic-css instead of using the webfont-loader script when not in the customizer.
+* New: Google Fonts are now always used locally when possible, the google-CDN is only used as a fallback.
+* New: Performance improvement by using `font-display:swap` for google-fonts.
+* New: Added `kirki_googlefonts_font_display` filter.
 * New: Added a new `link` section-type.
 * New: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
 * New: Added telemetry module. See [aristath.github.io/kirki/docs/modules/telemetry](https://aristath.github.io/kirki/docs/modules/telemetry.html) for details.
 * New: Improved CSS loading method. Styles are now added as synamic stylesheet with a URL `example.com/?action=kirki-styles`.
-* Deprecated: Deprecated the `Kirki_CSS_To_File` class.
+* Deprecated: Removed the "host locally" option from typography controls. This is now the default behaviour, no option is necessary.
+* Deprecated: Removed the `Kirki_CSS_To_File` class.
+* Reprecated: Removed the `Kirki_Modules_Webfonts_Local` class.
+* Deprecated: Removed the `Kirki_Fonts_Google_Local` class.
 
 = 3.0.35.3 =
 

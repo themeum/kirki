@@ -174,6 +174,7 @@ class Kirki_Modules_CSS {
 				echo wp_strip_all_tags( $styles ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
+		do_action( 'kirki_dynamic_css' );
 
 		exit;
 	}
