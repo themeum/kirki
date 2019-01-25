@@ -165,7 +165,7 @@ class Kirki_Modules_CSS {
 				/**
 				 * Note to code reviewers:
 				 *
-				 * Though all output should be run through an escaping function, this is pure CSS 
+				 * Though all output should be run through an escaping function, this is pure CSS
 				 * and the PHP header() function we're using above makes the browser interpret it as such.
 				 * No code, script or anything else can be executed from inside a stylesheet.
 				 * For extra security we're using the wp_strip_all_tags() function here

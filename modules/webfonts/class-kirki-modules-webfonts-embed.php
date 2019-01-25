@@ -72,7 +72,7 @@ final class Kirki_Modules_Webfonts_Embed {
 
 	/**
 	 * Init.
-	 * 
+	 *
 	 * @access public
 	 * @since 3.0.36
 	 * @return void
@@ -147,7 +147,11 @@ final class Kirki_Modules_Webfonts_Embed {
 
 			$transient_id = 'kirki_gfonts_' . md5( $url );
 			$contents     = get_site_transient( $transient_id );
-			if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) {
+			/**
+			 * Note to code reviewers:
+			 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
+			 */
+			if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 				$contents = false;
 			}
 			if ( ! $contents ) {
@@ -194,7 +198,16 @@ final class Kirki_Modules_Webfonts_Embed {
 				}
 			}
 			if ( $contents ) {
-				echo $contents;
+				/**
+				 * Note to code reviewers:
+				 *
+				 * Though all output should be run through an escaping function, this is pure CSS
+				 * and it is added on a call that has a PHP `header( 'Content-type: text/css' );`.
+				 * No code, script or anything else can be executed from inside a stylesheet.
+				 * For extra security we're using the wp_strip_all_tags() function here
+				 * just to make sure there's no <script> tags in there or anything else.
+				 */
+				echo wp_strip_all_tags( $contents ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
 	}

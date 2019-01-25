@@ -28,8 +28,9 @@ final class Kirki_Fonts_Helper {
 	 * @static
 	 * @access public
 	 * @since 3.0.36
-	 * @param string $url The URL we want to get.
-	 * @return string     The contents of the remote URL.
+	 * @param string $url  The URL we want to get.
+	 * @param array  $args An array of arguments for the wp_remote_retrieve_body() function.
+	 * @return string      The contents of the remote URL.
 	 */
 	public static function get_remote_url_contents( $url, $args = array() ) {
 		$response = wp_remote_get( $url, $args );
