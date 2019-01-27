@@ -23,8 +23,8 @@ The `color` control allows you to create colorpickers. WordPress uses [iris](htt
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_hex',
-	'label'       => __( 'Color Control (hex-only)', 'textdomain' ),
-	'description' => esc_html__( 'This is a color control - without alpha channel.', 'textdomain' ),
+	'label'       => __( 'Color Control (hex-only)', 'kirki' ),
+	'description' => esc_html__( 'This is a color control - without alpha channel.', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
 ] );
@@ -40,8 +40,8 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_rgba',
-	'label'       => __( 'Color Control (with alpha channel)', 'textdomain' ),
-	'description' => esc_html__( 'This is a color control - with alpha channel.', 'textdomain' ),
+	'label'       => __( 'Color Control (with alpha channel)', 'kirki' ),
+	'description' => esc_html__( 'This is a color control - with alpha channel.', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
 	'choices'     => [
@@ -59,8 +59,8 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_hue',
-	'label'       => __( 'Color Control - hue only.', 'textdomain' ),
-	'description' => esc_html__( 'This is a color control - hue only.', 'textdomain' ),
+	'label'       => __( 'Color Control - hue only.', 'kirki' ),
+	'description' => esc_html__( 'This is a color control - hue only.', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#0088CC',
 	'mode'        => 'hue',

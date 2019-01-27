@@ -24,9 +24,9 @@ You can enter your custom HTML in the field's `default` argument.
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'custom',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'kirki' ),
 	'section'     => 'section_id',
-	'default'     => '<div style="padding: 30px;background-color: #333; color: #fff; border-radius: 50px;">' . esc_html__( 'You can enter custom markup in this control and use it however you want', 'textdomain' ) . '</div>',
+	'default'     => '<div style="padding: 30px;background-color: #333; color: #fff; border-radius: 50px;">' . esc_html__( 'You can enter custom markup in this control and use it however you want', 'kirki' ) . '</div>',
 	'priority'    => 10,
 ] );
 ?>

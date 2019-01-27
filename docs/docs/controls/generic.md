@@ -21,8 +21,8 @@ The `generic` control is one of the most versatile controls in Kirki. It allows 
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'generic',
 	'settings'    => 'generic_custom_setting',
-	'label'       => esc_html__( 'Custom input Control.', 'textdomain' ),
-	'description' => esc_html__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'textdomain' ),
+	'label'       => esc_html__( 'Custom input Control.', 'kirki' ),
+	'description' => esc_html__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '',
 	'choices'     => [

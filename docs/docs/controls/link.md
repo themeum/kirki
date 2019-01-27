@@ -21,7 +21,7 @@ The `link` control is a simple text-input control, with URL sanitization. Values
 Kirki::add_field( 'theme_config_id', [
 	'type'     => 'link',
 	'settings' => 'my_setting',
-	'label'    => __( 'Link Control', 'textdomain' ),
+	'label'    => __( 'Link Control', 'kirki' ),
 	'section'  => 'section_id',
 	'default'  => 'https://wplemon.com/',
 	'priority' => 10,

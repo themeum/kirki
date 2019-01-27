@@ -8,6 +8,8 @@
  * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0
+ *
+ * phpcs:ignoreFile Generic.Classes.DuplicateClassName
  */
 
 /**
