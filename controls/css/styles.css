@@ -172,10 +172,6 @@
   border-top: 0px; }
   .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
     overflow: hidden; }
-    .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content li.customize-control-kirki-radio-buttonset {
-      display: flex !important;
-      justify-content: space-between;
-      align-items: center; }
 
 .customize-control-toggle-tabs .kirki-toggle-tabs-outer .tabs-content .tab-content {
   display: none; }
