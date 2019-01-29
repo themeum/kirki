@@ -142,7 +142,7 @@ final class Kirki_Modules_Telemetry {
 		?>
 		<div class="notice notice-info kirki-telemetry">
 			<h3><strong><?php esc_html_e( 'Help us improve Kirki.', 'kirki' ); ?></strong></h3>
-			<p style="max-width: 76em;"><?php echo __( 'Help us begin a dialogue with theme developers, collaborate and improve both the theme you are using and the Kirki framework by agreeing to send anonymous data. <strong>The data is completely anonymous and we will never collect any identifyable information about you or your website.</strong>', 'kirki' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
+			<p style="max-width: 76em;"><?php _e( 'Help us begin a dialogue with theme developers, collaborate and improve both the theme you are using and the Kirki framework by agreeing to send anonymous data. <strong>The data is completely anonymous and we will never collect any identifyable information about you or your website.</strong>', 'kirki' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
 			<table class="data-to-send hidden widefat">
 				<thead>
 					<tr>
