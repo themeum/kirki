@@ -106,7 +106,7 @@ class Kirki_Output {
 			}
 			if ( is_array( $value ) ) {
 				foreach ( array_keys( $value ) as $value_k ) {
-					if ( ! is_string( $value[ $value_k ] ) ) {
+					if ( is_array( $value[ $value_k ] ) ) {
 						continue;
 					}
 					if ( isset( $output['choice'] ) ) {
@@ -164,6 +164,9 @@ class Kirki_Output {
 						break;
 					default:
 						$replacement = get_theme_mod( $replace );
+						if ( ! $replacement ) {
+							$replacement = Kirki_Values::get_value( $this->field['kirki_config'], $replace );
+						}
 				}
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
