@@ -47,9 +47,9 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google-local.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-helper.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 		add_action( 'wp_loaded', array( $this, 'run' ) );
 
@@ -90,11 +90,12 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function init() {
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
-			$method    = $this->get_method( $config_id );
-			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
-			new $classname( $config_id, $this, $this->fonts_google );
+			if ( is_customize_preview() ) {
+				new Kirki_Modules_Webfonts_Async( $config_id, $this, $this->fonts_google );
+			} else {
+				new Kirki_Modules_Webfonts_Embed( $config_id, $this, $this->fonts_google );
+			}
 		}
-		new Kirki_Modules_Webfonts_Local( $this, $this->fonts_google );
 	}
 
 	/**

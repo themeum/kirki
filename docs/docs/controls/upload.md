@@ -20,6 +20,6 @@ The `upload` control is identical to the [`image`](https://aristath.github.io/ki
 ```php
 <?php
 $file_url = get_theme_mod( 'my_setting', '' );
-printf( esc_html__( 'URL of uploaded file: %s', 'textdomain' ), $file_url );
+printf( esc_html__( 'URL of uploaded file: %s', 'kirki' ), $file_url );
 ?>
 ```

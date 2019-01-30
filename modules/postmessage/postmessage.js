@@ -198,8 +198,12 @@ var kirkiPostMessage = {
 						if ( false !== processedValue ) {
 
 							// Mostly used for padding, margin & position properties.
-							if ( output.property && '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
-								styles += output.element + '{' + output.property + '-' + key + ':' + processedValue + ';';
+							if ( output.property ) {
+								styles += output.property;
+								if ( '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
+									styles += '-' + key;
+								}
+								styles += ':' + processedValue + ';';
 							} else {
 								styles += key + ':' + processedValue + ';';
 							}

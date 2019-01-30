@@ -56,7 +56,8 @@ class Kirki_Modules {
 	 */
 	public function setup_default_modules() {
 		self::$modules = apply_filters(
-			'kirki_modules', array(
+			'kirki_modules',
+			array(
 				'css'                => 'Kirki_Modules_CSS',
 				'css-vars'           => 'Kirki_Modules_CSS_Vars',
 				'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
@@ -73,7 +74,8 @@ class Kirki_Modules {
 				'preset'             => 'Kirki_Modules_Preset',
 				'gutenberg'          => 'Kirki_Modules_Gutenberg',
 				'section-reset'      => 'Kirki_Modules_Section_Reset',
-				'metaboxes'          => 'Kirki_Modules_Metaboxes'
+				'metaboxes'          => 'Kirki_Modules_Metaboxes',
+				'telemetry'          => 'Kirki_Modules_Telemetry',
 			)
 		);
 	}

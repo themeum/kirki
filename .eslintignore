@@ -1,0 +1,7 @@
+vendor/
+node_modules/
+assets/vendor/
+*.min.js
+controls/js/script.js
+tests/
+modules/webfont-loader/vendor-typekit

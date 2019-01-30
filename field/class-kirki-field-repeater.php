@@ -119,8 +119,10 @@ class Kirki_Field_Repeater extends Kirki_Field {
 							$subfield_value = (int) $subfield_value;
 							break;
 						case 'color':
-							$color_obj      = ariColor::newColor( $subfield_value );
-							$subfield_value = $color_obj->toCSS( $color_obj->mode );
+							if ( $subfield_value ) {
+								$color_obj      = ariColor::newColor( $subfield_value );
+								$subfield_value = $color_obj->toCSS( $color_obj->mode );
+							}
 							break;
 						case 'text':
 							$subfield_value = sanitize_text_field( $subfield_value );

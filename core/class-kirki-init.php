@@ -155,7 +155,8 @@ class Kirki_Init {
 		}
 
 		$skip_control_types = apply_filters(
-			'kirki_control_types_exclude', array(
+			'kirki_control_types_exclude',
+			array(
 				'Kirki_Control_Repeater',
 				'WP_Customize_Control',
 			)

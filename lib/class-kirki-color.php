@@ -11,7 +11,7 @@
  * @since       1.0
  */
 
-// @codingStandardsIgnoreFile
+// phpcs:ignoreFile
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

@@ -41,7 +41,8 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 	 */
 	public function json() {
 		$array = wp_array_slice_assoc(
-			(array) $this, array(
+			(array) $this,
+			array(
 				'id',
 				'description',
 				'priority',

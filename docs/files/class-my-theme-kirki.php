@@ -245,7 +245,8 @@ class My_Theme_Kirki {
 			// Start parsing the output arguments of the field.
 			foreach ( $field['output'] as $output ) {
 				$output = wp_parse_args(
-					$output, array(
+					$output,
+					array(
 						'element'       => '',
 						'property'      => '',
 						'media_query'   => 'global',

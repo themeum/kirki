@@ -12,8 +12,6 @@
  * @since       1.0
  */
 
-// @codingStandardsIgnoreFile Generic.Files.OneClassPerFile.MultipleFound Generic.Classes.DuplicateClassName.Found
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -46,7 +44,7 @@ if ( ! class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
 	/**
 	 * Adds a "code" control, alias of the WP_Customize_Code_Editor_Control class.
 	 */
-	class Kirki_Control_Code extends WP_Customize_Code_Editor_Control {
+	class Kirki_Control_Code extends WP_Customize_Code_Editor_Control { // phpcs:ignore Generic.Classes, Generic.Files
 
 		/**
 		 * Whitelisting the "required" argument.

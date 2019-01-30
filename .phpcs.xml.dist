@@ -15,9 +15,10 @@
 
 	<file>.</file>
 
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>node_modules/</exclude-pattern>
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>tests/</exclude-pattern>
+	<exclude-pattern>docs/</exclude-pattern>
 
 	<!-- Include the WordPress ruleset. -->
 	<rule ref="WordPress"/>

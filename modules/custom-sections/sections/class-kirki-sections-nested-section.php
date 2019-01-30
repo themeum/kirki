@@ -41,7 +41,8 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 	 */
 	public function json() {
 		$array = wp_array_slice_assoc(
-			(array) $this, array(
+			(array) $this,
+			array(
 				'id',
 				'description',
 				'priority',

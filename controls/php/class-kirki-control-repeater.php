@@ -108,13 +108,11 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 					case 'image':
 					case 'cropped_image':
 					case 'upload':
-
 						// We add it to the list of fields that need some extra filtering/processing.
 						$media_fields_to_filter[ $key ] = true;
 						break;
 
 					case 'dropdown-pages':
-
 						// If the field is a dropdown-pages field then add it to args.
 						$dropdown = wp_dropdown_pages(
 							array(
@@ -360,7 +358,7 @@ class Kirki_Control_Repeater extends Kirki_Control_Base {
 										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
 									}
 								} #>
-								<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value', 'kirki' ); ?>"  value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+								<input class="color-picker-hex" type="text" maxlength="7" value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
 
 							<# } else if ( 'textarea' === field.type ) { #>
 

@@ -19,16 +19,16 @@ heroButtons:
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'select',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'This is the label', 'textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => 'option-1',
 	'priority'    => 10,
 	'multiple'    => 1,
 	'choices'     => [
-		'option-1' => esc_html__( 'Option 1', 'textdomain' ),
-		'option-2' => esc_html__( 'Option 2', 'textdomain' ),
-		'option-3' => esc_html__( 'Option 3', 'textdomain' ),
-		'option-4' => esc_html__( 'Option 4', 'textdomain' ),
+		'option-1' => esc_html__( 'Option 1', 'kirki' ),
+		'option-2' => esc_html__( 'Option 2', 'kirki' ),
+		'option-3' => esc_html__( 'Option 3', 'kirki' ),
+		'option-4' => esc_html__( 'Option 4', 'kirki' ),
 	],
 ] );
 ```

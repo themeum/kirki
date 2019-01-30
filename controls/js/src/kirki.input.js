@@ -242,7 +242,13 @@ kirki = jQuery.extend( kirki, {
 				} );
 
 				element.on( 'change keyup paste click', function() {
-					kirki.setting.set( control.id, jQuery( this ).val() );
+					var val = jQuery( this ).val();
+					if ( isNaN( val ) ) {
+						val = parseFloat( val, 10 );
+						val = ( isNaN( val ) ) ? 0 : val;
+						jQuery( this ).attr( 'value', val );
+					}
+					kirki.setting.set( control.id, val );
 				} );
 			}
 
@@ -311,7 +317,7 @@ kirki = jQuery.extend( kirki, {
 							previewImage  = jsonImg.url;
 
 						if ( ! _.isUndefined( jsonImg.sizes ) ) {
-							previewImg = jsonImg.sizes.full.url;
+							previewImage = jsonImg.sizes.full.url;
 							if ( ! _.isUndefined( jsonImg.sizes.medium ) ) {
 								previewImage = jsonImg.sizes.medium.url;
 							} else if ( ! _.isUndefined( jsonImg.sizes.thumbnail ) ) {

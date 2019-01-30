@@ -81,7 +81,8 @@ class Kirki_Output_Field_Typography extends Kirki_Output {
 			if ( 'font-family' === $property ) {
 				$value['font-backup'] = ( isset( $value['font-backup'] ) ) ? $value['font-backup'] : '';
 				$property_value       = $this->process_property_value(
-					$property, array(
+					$property,
+					array(
 						$value['font-family'],
 						$value['font-backup'],
 					)

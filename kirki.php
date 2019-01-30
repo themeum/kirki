@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Aristeides Stathopoulos
  * Author URI:    http://aristath.github.io
- * Version:       3.0.35.3
+ * Version:       3.0.36-beta.1
  * Text Domain:   kirki
  *
  * GitHub Plugin URI: aristath/kirki
@@ -30,7 +30,7 @@ if ( class_exists( 'Kirki' ) ) {
 }
 
 // Include the autoloader.
-require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php';
+require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 new Kirki_Autoload();
 
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
@@ -40,7 +40,7 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
 	if ( ! function_exists( 'get_plugin_data' ) ) {
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		include_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 	}
 	$data    = get_plugin_data( KIRKI_PLUGIN_FILE );
 	$version = ( isset( $data['Version'] ) ) ? $data['Version'] : false;
@@ -48,7 +48,7 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 }
 
 // Make sure the path is properly set.
-Kirki::$path = wp_normalize_path( dirname( __FILE__ ) );
+Kirki::$path = wp_normalize_path( dirname( __FILE__ ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 Kirki_Init::set_url();
 
 new Kirki_Controls();
@@ -77,10 +77,10 @@ new Kirki();
 new Kirki_L10n();
 
 // Include deprecated functions & methods.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/deprecated/deprecated.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/deprecated/deprecated.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 // Include the ariColor library.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 // Add an empty config for global fields.
 Kirki::add_config( '' );
@@ -88,11 +88,11 @@ Kirki::add_config( '' );
 $custom_config_path = dirname( __FILE__ ) . '/custom-config.php';
 $custom_config_path = wp_normalize_path( $custom_config_path );
 if ( file_exists( $custom_config_path ) ) {
-	require_once $custom_config_path;
+	require_once $custom_config_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
 
 // Add upgrade notifications.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' );
+require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 /**
  * To enable tests, add this line to your wp-config.php file (or anywhere alse):
@@ -102,5 +102,5 @@ require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
  * and will only be included in dev versions of the plugin in the github repository.
  */
 if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
-	include_once dirname( __FILE__ ) . '/example.php';
+	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
