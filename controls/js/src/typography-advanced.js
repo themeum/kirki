@@ -77,7 +77,6 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
-		control.localFontsCheckbox();
 
 		// Font-size.
 		if ( 'undefined' !== typeof control.params.default['font-size'] ) {
@@ -480,22 +479,6 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 			standard: standardFonts
 		};
 	},
-
-	localFontsCheckbox: function() {
-		var control           = this,
-			checkboxContainer = control.container.find( '.kirki-host-font-locally' ),
-			checkbox          = control.container.find( '.kirki-host-font-locally input' ),
-			checked           = jQuery( checkbox ).is( ':checked' );
-
-		if ( control.setting._value && control.setting._value.downloadFont ) {
-			jQuery( checkbox ).attr( 'checked', 'checked' );
-		}
-
-		jQuery( checkbox ).on( 'change', function() {
-			checked = jQuery( checkbox ).is( ':checked' );
-			control.saveValue( 'downloadFont', checked );
-		} );
-	},
 	
 	/**
 	 * Saves the value.
@@ -547,7 +530,6 @@ wp.customize.controlConstructor['kirki-typography-advanced'] = wp.customize.kirk
 				value[device][type] = control.params.default[type];
 			});
 		});
-		value['downloadFont'] = false;
 		return value;
 	},
 	

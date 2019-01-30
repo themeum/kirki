@@ -219,7 +219,7 @@ var kirkiPostMessage = {
 						//Only output the global values.
 						if ( _.contains( devices, key ) )
 							return false;
-						if ( _.contains([ 'downloadFont', 'variant', 'use_media_queries' ], key ) )
+						if ( _.contains([ 'variant', 'use_media_queries' ], key ) )
 							return false;
 						if ( output.choice && key !== output.choice ) {
 							return false;
