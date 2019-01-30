@@ -48,8 +48,9 @@ class Kirki_Field_Sortable extends Kirki_Field {
 		}
 		
 		$sanitized_value = array();
+		$mode = isset( $this->args['mode'] ) ? $this->args['mode'] : 'checkbox';
 		foreach ( $value as $sub_value ) {
-			if ( $this->mode === 'text' )
+			if ( $mode === 'text' )
 			{
 				$obj = json_decode( $sub_value, true );
 				if ( !$obj )
