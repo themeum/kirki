@@ -56,36 +56,43 @@ Kirki::add_panel(
  * @link https://aristath.github.io/kirki/docs/getting-started/sections.html
  */
 $sections = array(
-	'background'      => array( esc_html__( 'Background', 'kirki' ), '' ),
-	'code'            => array( esc_html__( 'Code', 'kirki' ), '' ),
-	'checkbox'        => array( esc_html__( 'Checkbox', 'kirki' ), '' ),
-	'color'           => array( esc_html__( 'Color', 'kirki' ), '' ),
-	'color-palette'   => array( esc_html__( 'Color Palette', 'kirki' ), '' ),
-	'custom'          => array( esc_html__( 'Custom', 'kirki' ), '' ),
-	'dashicons'       => array( esc_html__( 'Dashicons', 'kirki' ), '' ),
-	'date'            => array( esc_html__( 'Date', 'kirki' ), '' ),
-	'dimension'       => array( esc_html__( 'Dimension', 'kirki' ), '' ),
-	'dimensions'      => array( esc_html__( 'Dimensions', 'kirki' ), '' ),
-	'dropdown-pages'  => array( esc_html__( 'Dropdown Pages', 'kirki' ), '' ),
-	'editor'          => array( esc_html__( 'Editor', 'kirki' ), '' ),
-	'fontawesome'     => array( esc_html__( 'Font-Awesome', 'kirki' ), '' ),
-	'generic'         => array( esc_html__( 'Generic', 'kirki' ), '' ),
-	'image'           => array( esc_html__( 'Image', 'kirki' ), '' ),
-	'multicheck'      => array( esc_html__( 'Multicheck', 'kirki' ), '' ),
-	'multicolor'      => array( esc_html__( 'Multicolor', 'kirki' ), '' ),
-	'number'          => array( esc_html__( 'Number', 'kirki' ), '' ),
-	'palette'         => array( esc_html__( 'Palette', 'kirki' ), '' ),
-	'preset'          => array( esc_html__( 'Preset', 'kirki' ), '' ),
-	'radio'           => array( esc_html__( 'Radio', 'kirki' ), esc_html__( 'A plain Radio control.', 'kirki' ) ),
-	'radio-buttonset' => array( esc_html__( 'Radio Buttonset', 'kirki' ), esc_html__( 'Radio-Buttonset controls are essentially radio controls with some fancy styling to make them look cooler.', 'kirki' ) ),
-	'radio-image'     => array( esc_html__( 'Radio Image', 'kirki' ), esc_html__( 'Radio-Image controls are essentially radio controls with some fancy styles to use images', 'kirki' ) ),
-	'repeater'        => array( esc_html__( 'Repeater', 'kirki' ), '' ),
-	'select'          => array( esc_html__( 'Select', 'kirki' ), '' ),
-	'slider'          => array( esc_html__( 'Slider', 'kirki' ), '' ),
-	'sortable'        => array( esc_html__( 'Sortable', 'kirki' ), '' ),
-	'switch'          => array( esc_html__( 'Switch', 'kirki' ), '' ),
-	'toggle'          => array( esc_html__( 'Toggle', 'kirki' ), '' ),
-	'typography'      => array( esc_html__( 'Typography', 'kirki' ), '', 'outer' ),
+	'background'           => array( esc_html__( 'Background', 'kirki' ), '' ),
+	'border'               => array( esc_html__( 'Border', 'kirki' ), '' ),
+	'box-shadow'           => array( esc_html__( 'Box Shadow', 'kirki' ), '' ),
+	'code'                 => array( esc_html__( 'Code', 'kirki' ), '' ),
+	'checkbox'             => array( esc_html__( 'Checkbox', 'kirki' ), '' ),
+	'color'                => array( esc_html__( 'Color', 'kirki' ), '' ),
+	'color-gradient'       => array( esc_html__( 'Color Gradient', 'kirki' ), '' ),
+	'color-palette'        => array( esc_html__( 'Color Palette', 'kirki' ), '' ),
+	'custom'               => array( esc_html__( 'Custom', 'kirki' ), '' ),
+	'dashicons'            => array( esc_html__( 'Dashicons', 'kirki' ), '' ),
+	'date'                 => array( esc_html__( 'Date', 'kirki' ), '' ),
+	'dimension'            => array( esc_html__( 'Dimension', 'kirki' ), '' ),
+	'dimensions'           => array( esc_html__( 'Dimensions', 'kirki' ), '' ),
+	'dropdown-pages'       => array( esc_html__( 'Dropdown Pages', 'kirki' ), '' ),
+	'editor'               => array( esc_html__( 'Editor', 'kirki' ), '' ),
+	'fontawesome'          => array( esc_html__( 'Font-Awesome', 'kirki' ), '' ),
+	'generic'              => array( esc_html__( 'Generic', 'kirki' ), '' ),
+	'image'                => array( esc_html__( 'Image', 'kirki' ), '' ),
+	'multicheck'           => array( esc_html__( 'Multicheck', 'kirki' ), '' ),
+	'multicolor'           => array( esc_html__( 'Multicolor', 'kirki' ), '' ),
+	'number'               => array( esc_html__( 'Number', 'kirki' ), '' ),
+	'palette'              => array( esc_html__( 'Palette', 'kirki' ), '' ),
+	'preset'               => array( esc_html__( 'Preset', 'kirki' ), '' ),
+	'radio'                => array( esc_html__( 'Radio', 'kirki' ), esc_html__( 'A plain Radio control.', 'kirki' ) ),
+	'radio-buttonset'      => array( esc_html__( 'Radio Buttonset', 'kirki' ), esc_html__( 'Radio-Buttonset controls are essentially radio controls with some fancy styling to make them look cooler.', 'kirki' ) ),
+	'radio-image'          => array( esc_html__( 'Radio Image', 'kirki' ), esc_html__( 'Radio-Image controls are essentially radio controls with some fancy styles to use images', 'kirki' ) ),
+	'repeater'             => array( esc_html__( 'Repeater', 'kirki' ), '' ),
+	'select'               => array( esc_html__( 'Select', 'kirki' ), '' ),
+	'slider'               => array( esc_html__( 'Slider', 'kirki' ), '' ),
+	'slider-advanced'      => array( esc_html__( 'Slider Advanced', 'kirki' ), '' ),
+	'sortable'             => array( esc_html__( 'Sortable', 'kirki' ), '' ),
+	'spacing-advanced'     => array( esc_html__( 'Spacing Advanced', 'kirki' ), '' ),
+	'switch'               => array( esc_html__( 'Switch', 'kirki' ), '' ),
+	'toggle'               => array( esc_html__( 'Toggle', 'kirki' ), '' ),
+	'toggle-tabs'          => array( esc_html__( 'Toggle Tabs', 'kirki' ), '' ),
+	'typography'           => array( esc_html__( 'Typography', 'kirki' ), '', 'outer' ),
+	'typography-advanced'  => array( esc_html__( 'Typography Advanced', 'kirki' ), '', 'outer' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -140,6 +147,80 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+/**
+ * Border Control
+ */
+my_config_kirki_add_field( array(
+	'settings' => 'border_setting',
+	'type' => 'border',
+	'label' => esc_html__( 'Border Control', 'kirki' ),
+	'section' => 'border_section',
+	'choices' => array(
+		'units' => array( 'px', 'em' )
+	),
+	'default' => array(
+		'style' => 'dotted',
+		'left' => 5,
+		'right' => 5,
+		'color' => '#1e73be',
+		'unit' => 'em'
+	)
+));
+
+my_config_kirki_add_field( array(
+	'settings' => 'border_setting2',
+	'type' => 'border',
+	'label' => esc_html__( 'Border Control 2', 'kirki' ),
+	'section' => 'border_section',
+	'choices' => array(
+		'units' => array( 'px' )
+	),
+	'default' => array(
+		'style' => 'dotted',
+		'top' => 5,
+		'bottom' => 5,
+		'left' => 5,
+		'right' => 5,
+		'color' => '#1e73be'
+	)
+));
+
+my_config_kirki_add_field( array(
+	'settings' => 'border_setting3',
+	'type' => 'border',
+	'label' => esc_html__( 'Border Setting 3', 'kirki' ),
+	'section' => 'border_section',
+	'choices' => array(
+		'sync_values' => false
+	),
+	'default' => array(
+		'style' => 'solid',
+		'top' => '2em',
+		'right' => '10px',
+		'bottom' => '2em',
+		'left' => '10px',
+		'color' => '#1e73be'
+	)
+));
+
+/**
+ * Box Shadow Control
+ */
+my_config_kirki_add_field( array(
+	'settings' => 'box_shadow_setting',
+	'type' => 'box-shadow',
+	'label' => esc_html__( 'Box Shadow Control', 'kirki' ),
+	'section' => 'box_shadow_section',
+	'transport' => 'auto',
+	'default' => array(
+		'v_offset' => 1,
+		'h_offset' => 2,
+		'spread' => 3,
+		'blur' => 4,
+		'color' => '#999'
+	)
+));
 
 /**
  * Code control.
@@ -217,6 +298,21 @@ my_config_kirki_add_field(
 		'mode'        => 'hue',
 	)
 );
+
+/**
+ * Color Gradient
+ */
+Kirki::add_field($konio_opt_name, array(
+	'section' => 'color_gradient_section',
+	'settings' => 'color_gradient_setting',
+	'type' => 'color-gradient',
+	'default' => array(
+		'color1' => '#000',
+		'color2' => '#fff',
+		'direction' => 'to bottom right',
+		'location' => '0%'
+	)
+));
 
 /**
  * DateTime Control.
@@ -815,6 +911,85 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Slider Advanced Control
+ */
+my_config_kirki_add_field( array(
+	'label' => esc_html__('No Media Queries with Units', 'kirki'),
+	'section' => 'slider_advanced_section',
+	'settings' => 'slider_advanced_setting1',
+	'type' => 'slider-advanced',
+	'choices' => array(
+		'use_media_queries' => false,
+		'units' => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 500,
+				'step' => 1
+			),
+			'em' => array(
+				'min' => 1,
+				'max' => 30,
+				'step' => .1
+			)
+		),
+	),
+	'default' => 100,
+));
+
+my_config_kirki_add_field( array(
+	'label' => esc_html__('Media Queries with Units', 'kirki'),
+	'section' => 'slider_advanced_section',
+	'settings' => 'slider_advanced_setting2',
+	'type' => 'slider-advanced',
+	'choices' => array(
+		'use_media_queries' => true,
+		'units' => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 500,
+				'step' => 1
+			),
+			'em' => array(
+				'min' => 1,
+				'max' => 2,
+				'step' => .1
+			)
+		),
+	),
+	'default' => 30
+));
+
+my_config_kirki_add_field( array(
+	'label' => esc_html__('Media Queries without Units', 'kirki'),
+	'section' => 'slider_advanced_section',
+	'settings' => 'slider_advanced_setting3',
+	'type' => 'slider-advanced',
+	'choices' => array(
+		'use_media_queries' => true,
+		'min' => 0,
+		'max' => 100,
+		'step' => 1,
+		'suffix' => '%'
+	),
+	'default' => 50
+));
+
+my_config_kirki_add_field( array(
+	'label' => esc_html__('No Media Queries, No Units', 'kirki'),
+	'section' => 'slider_advanced_section',
+	'settings' => 'slider_advanced_setting4',
+	'type' => 'slider-advanced',
+	'choices' => array(
+		'use_media_queries' => false,
+		'min' => 0,
+		'max' => 100,
+		'step' => 1,
+		'suffix' => '%'
+	),
+	'default' => 50
+));
+
+/**
  * Sortable control.
  */
 my_config_kirki_add_field(
@@ -834,6 +1009,116 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+my_config_kirki_add_field(
+	array(
+		'type'     => 'sortable',
+		'mode'     => 'text',
+		'settings' => 'sortable_text_setting',
+		'label'    => __( 'This is a sortable control with text mode.', 'kirki' ),
+		'section'  => 'sortable_section',
+		'default' => array(
+			'option3' => 'My text 3',
+			'option1' => 'My text 1',
+			'option4' => 'My text 4'
+		),
+		'choices'  => array(
+			'option1' => esc_html__( 'Option 1', 'kirki' ),
+			'option2' => esc_html__( 'Option 2', 'kirki' ),
+			'option3' => esc_html__( 'Option 3', 'kirki' ),
+			'option4' => esc_html__( 'Option 4', 'kirki' ),
+			'option5' => esc_html__( 'Option 5', 'kirki' ),
+			'option6' => esc_html__( 'Option 6', 'kirki' ),
+		),
+	)
+);
+
+/**
+ * Spacing Advanced Control
+ */
+my_config_kirki_add_field( array(
+	'type' => 'spacing-advanced',
+	'settings' => 'spacing_setting1',
+	'label' => esc_html__( 'No Units with Media Queries', 'kirki' ),
+	'section' => 'spacing_advanced_section',
+	'choices' => array(
+		'use_media_queries' => true,
+		'sync_values' => false
+	),
+	'default' => array(
+		'top' => '1.5em',
+		'right' => '5px',
+		'bottom' => '10px',
+		'left' => '5px'
+	),
+	'output' => array(
+		array(
+			'element' => array( 'body' ),
+			'property' => 'padding'
+		)
+	)
+));
+
+my_config_kirki_add_field( array(
+	'type' => 'spacing-advanced',
+	'settings' => 'spacing_setting2',
+	'label' => esc_html__( 'Units with Media Queries', 'kirki' ),
+	'section' => 'spacing_advanced_section',
+	'choices' => array(
+		'use_media_queries' => true,
+		'units' => array( 'px', 'em' )
+	),
+	'default' => array(
+		'right' => 10,
+		'left' => 5
+	),
+	'output' => array(
+		array(
+			'element' => array( 'body' ),
+			'property' => 'margin'
+		)
+	)
+));
+
+my_config_kirki_add_field( array(
+	'type' => 'spacing-advanced',
+	'settings' => 'spacing_setting3',
+	'label' => esc_html__( 'Units with No Media Queries', 'kirki' ),
+	'section' => 'spacing_advanced_section',
+	'choices' => array(
+		'use_media_queries' => false,
+		'units' => array( 'px', 'em' )
+	),
+	'default' => array(
+		'top' => 5,
+		'right' => 5,
+		'bottom' => 5,
+		'left' => 5
+	)
+));
+
+my_config_kirki_add_field( array(
+	'type' => 'spacing-advanced',
+	'settings' => 'spacing_setting4',
+	'label' => esc_html__( 'No Units, No Media Queries', 'kirki' ),
+	'section' => 'spacing_advanced_section',
+	'transport' => 'auto',
+	'choices' => array(
+		'use_media_queries' => false
+	),
+	'default' => array(
+		'top' => 5,
+		'right' => 5,
+		'bottom' => 5,
+		'left' => 5
+	),
+	'output' => array(
+		array(
+			'element' => array( '.elementor-element-7b29bfd .elementor-button-text' ),
+			'property' => 'padding'
+		)
+	)
+));
 
 /**
  * Switch control.
@@ -895,6 +1180,40 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+/**
+ * Toggle-Tabs Control
+ */
+my_config_kirki_add_field( array(
+	'label' => esc_html__('Tab 1 Control', 'kirki'),
+	'section' => 'toggle_tabs_section',
+	'settings' => 'toggle_tabs_tab1',
+	'type' => 'text',
+	'default' => 'Tab 1 Content!'
+));
+my_config_kirki_add_field( array(
+	'label' => esc_html__('Tab 2 Control', 'kirki'),
+	'section' => 'toggle_tabs_section',
+	'settings' => 'toggle_tabs_tab2',
+	'type' => 'text',
+	'default' => 'Tab 2 Content!'
+));
+
+my_config_kirki_add_field( array(
+	'label' => esc_html__('Toggle Tabs', 'kirki'),
+	'section' => 'toggle_tabs_section',
+	'settings' => 'toggle_tabs',
+	'type' => 'toggle-tabs',
+	'choices' => array(
+		esc_html__('Tab 1') => array(
+			'toggle_tabs_tab1',
+		),
+		esc_html__('Tab 2') => array(
+			'toggle_tabs_tab2',
+		)
+	),
+	'transport' => 'auto'
+));
 
 /**
  * Typography Control.
@@ -972,6 +1291,55 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+/**
+ * Typography Advanced Control
+ */
+my_config_kirki_add_field( array(
+	'settings' => 'typography_advanced_setting1',
+	'type' => 'typography-advanced',
+	'label' => esc_html__( 'Typography Advanced Control 1', 'kirki' ),
+	'section' => 'typography_advanced_section',
+	'choices' => array(
+		'use_media_queries' => true,
+	),
+	'default' => array(
+		'font-family'    => 'Roboto',
+		'variant'        => 'regular',
+		'font-size'      => '14px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'color'          => '#333333',
+		'text-transform' => 'none',
+		'text-align'     => 'left',
+	),
+	'output' => array(
+		array(
+			'element' => array( 'p' )
+		)
+	)
+));
+
+my_config_kirki_add_field( array(
+	'settings' => 'typography_advanced_setting2',
+	'type' => 'typography-advanced',
+	'label' => esc_html__( 'Typography Advanced Control 2', 'kirki' ),
+	'section' => 'typography_advanced_section',
+	'choices' => array(
+		'use_media_queries' => true,
+	),
+	'transport' => 'auto',
+	'default' => array(
+		'font-family' => 'Roboto',
+		'font-size' => '14px',
+		'text-transform' => 'none'
+	),
+	'output' => array(
+		array(
+			'element' => array( 'body' )
+		)
+	)
+));
 
 /**
  * Example function that creates a control containing the available sidebars as choices.
