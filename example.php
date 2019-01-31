@@ -302,7 +302,7 @@ my_config_kirki_add_field(
 /**
  * Color Gradient
  */
-Kirki::add_field($konio_opt_name, array(
+my_config_kirki_add_field( array(
 	'section' => 'color_gradient_section',
 	'settings' => 'color_gradient_setting',
 	'type' => 'color-gradient',
