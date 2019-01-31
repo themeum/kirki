@@ -269,24 +269,21 @@ class Kirki_Output {
 				$output['element'] = implode( ',', $output['element'] );
 			}
 			
-			if ( !Kirki::$skip_output_context )
-			{
-				if ( is_admin() && ! is_customize_preview() ) {
-						// Check if this is an admin style.
-						if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'] ) ) {
-							continue;
-						}
-					} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'] ) ) {
-
+			if ( is_admin() && ! is_customize_preview() ) {
 					// Check if this is an admin style.
-					if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
+					if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'] ) ) {
 						continue;
 					}
-				} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
+				} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'] ) ) {
 
-					// Check if this is a frontend style.
+				// Check if this is an admin style.
+				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
 					continue;
 				}
+			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
+
+				// Check if this is a frontend style.
+				continue;
 			}
 			
 			if ( isset( $output['property'] ) )

@@ -95,10 +95,6 @@ class Kirki_Modules_Section_Reset {
 				else
 					delete_option( $field['settings'] );
 			}
-			Kirki::$skip_output_context = true;
-			new Kirki_CSS_To_File();
-			do_action( 'customize_save_after' );
-			Kirki::$skip_output_context = false;
 			
 			update_option( '_kirki_customize_last_section', $section );
 			

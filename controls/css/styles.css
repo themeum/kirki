@@ -226,6 +226,12 @@
       background-color: #3498DB;
       color: #fff; }
 
+.customize-control-kirki-box-shadow {
+  position: relative; }
+  .customize-control-kirki-box-shadow .wrapper, .customize-control-kirki-box-shadow .control-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px; }
+
 .customize-control-kirki-code textarea {
   width: 100%;
   min-height: 200px; }

@@ -59,26 +59,28 @@ class Kirki_Control_Box_Shadow extends Kirki_Control_Base {
 			</div>
 			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="kirki-control-type-dimensions">
-				<ul class="kirki-control-dimensions">
-					<# _.each( ['h_offset', 'v_offset', 'blur', 'spread'], function( side ) {
-						if ( side === 'blur' || side === 'spread' )
-						{
-							if ( data.default && _.isUndefined( data.default[side] ) )
-								return false;
-						}
-						var label = side.replace( '_', '-' );
-					#>
-					<li class="kirki-control-dimension">
-						<input type="number" id="{{{ data.id }}}-{{{ side }}}" side="{{{ side }}}">
-						<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
-					</li>
-					<# }); #>
-				</ul>
-			</div>
-			<div class="color">
-				<p><b><?php _e( 'Color', 'kirki' ) ?></b></p>
-				<input type="text" class="color-picker" data-alpha="true" value="" />
+			<div class="wrapper">
+				<div class="kirki-control-type-dimensions">
+					<ul class="kirki-control-dimensions">
+						<# _.each( ['h_offset', 'v_offset', 'blur', 'spread'], function( side ) {
+							if ( side === 'blur' || side === 'spread' )
+							{
+								if ( data.default && _.isUndefined( data.default[side] ) )
+									return false;
+							}
+							var label = side.replace( '_', '-' );
+						#>
+						<li class="kirki-control-dimension">
+							<input type="number" id="{{{ data.id }}}-{{{ side }}}" side="{{{ side }}}">
+							<label for="{{{ data.id }}}-{{{ side }}}" class="kirki-control-dimension-label"><?php _e('{{{ label }}}', 'kirki') ?></span>
+						</li>
+						<# }); #>
+					</ul>
+				</div>
+				<div class="color">
+					<p><b><?php _e( 'Color', 'kirki' ) ?></b></p>
+					<input type="text" class="color-picker" data-alpha="true" value="" />
+				</div>
 			</div>
 			<input class="box-shadow-hidden-value" type="hidden" value="" {{{ data.link }}} />
 		</label>
