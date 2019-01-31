@@ -620,7 +620,10 @@ jQuery( document ).ready( function() {
 					for ( var i in field.required )
 					{
 						var requirement = field.required[i];
-						var required_value = wp.customize.value( requirement.setting )._value;
+						var required_setting = wp.customize.value( requirement.setting );
+						if ( !required_setting )
+							continue;
+						var required_value = required_setting._value;
 						var result = evaluate (
 							requirement.value,
 							required_value,
