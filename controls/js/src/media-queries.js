@@ -1,12 +1,7 @@
 jQuery( document ).ready( function( $ ) {
 	var observer = new MutationObserver(function (mutations, me) {
-		if ($( '.kirki-responsive-switchers li' ).length === 0) {
-			return;
-		}
-		me.disconnect();
-		
 		// Responsive switchers
-		$( '.kirki-responsive-switchers li' ).on( 'click', function( event ) {
+		$( '.kirki-responsive-switchers li' ).off( 'click') .on( 'click', function( event ) {
 			event.preventDefault();
 			// Set up variables
 			var $this 		= $( this ),
