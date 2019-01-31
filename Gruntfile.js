@@ -82,6 +82,8 @@ module.exports = function( grunt ) {
 			},
 			dist: {
 				src: [
+					'controls/js/general.js',
+					
 					'controls/js/src/set-setting-value.js',
 					'controls/js/src/kirki.js',
 					'controls/js/src/kirki.control.js',
@@ -89,7 +91,7 @@ module.exports = function( grunt ) {
 					'controls/js/src/kirki.setting.js',
 					'controls/js/src/kirki.util.js',
 					'controls/js/src/dynamic-control.js',
-
+					
 					'controls/js/src/background.js',
 					'controls/js/src/border.js',
 					'controls/js/src/box-shadow.js',
