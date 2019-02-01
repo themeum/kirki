@@ -9,6 +9,8 @@
   margin-left: -100%; }
   #customize-theme-controls .customize-pane-child.control-section-kirki-expanded h3 .customize-action {
     display: none; }
+#customize-theme-controls .control-section-kirki-link .button {
+  margin-top: -3px; }
 
 #customize-theme-controls .customize-pane-child.current-section-parent,
 .in-sub-panel #customize-theme-controls .customize-pane-child.current-panel-parent {
