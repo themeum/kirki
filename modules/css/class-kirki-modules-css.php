@@ -134,7 +134,16 @@ class Kirki_Modules_CSS {
 	public function enqueue_styles() {
 
 		// Enqueue the dynamic stylesheet.
-		wp_enqueue_style( 'kirki-styles', add_query_arg( 'action', 'kirki-styles', site_url() ), array(), KIRKI_VERSION );
+		wp_enqueue_style(
+			'kirki-styles',
+			add_query_arg(
+				'action',
+				apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
+				site_url()
+			),
+			array(),
+			KIRKI_VERSION
+		);
 
 		// Enqueue FA if needed (I hope not, this FA version is pretty old, only kept here for backwards-compatibility purposes).
 		if ( self::$enqueue_fa && apply_filters( 'kirki_load_fontawesome', true ) ) {
@@ -152,7 +161,7 @@ class Kirki_Modules_CSS {
 		 * Note to code reviewers:
 		 * There is no need for a nonce check here, we're only checking if this is a valid request or not.
 		 */
-		if ( empty( $_GET['action'] ) || 'kirki-styles' !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if ( empty( $_GET['action'] ) || apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ) !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 			return;
 		}
 
