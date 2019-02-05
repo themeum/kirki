@@ -115,7 +115,7 @@ class Kirki_Modules_CSS {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), $priority );
 
 		// Prints the styles.
-		add_action( 'wp', array( $this, 'print_styles' ) );
+		add_action( 'wp', array( $this, 'print_styles_action' ) );
 	}
 
 	/**
@@ -126,6 +126,13 @@ class Kirki_Modules_CSS {
 	 * @return void
 	 */
 	public function enqueue_styles() {
+
+		if ( apply_filters( 'kirki_force_inline_styles', false ) ) {
+			echo '<style id="kirki-inline-styles">';
+			$this->print_styles();
+			echo '</style>';
+			return;
+		}
 
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
@@ -146,11 +153,13 @@ class Kirki_Modules_CSS {
 	}
 
 	/**
-	 * Prints the styles.
+	 * Prints the styles as an enqueued file.
 	 *
 	 * @access public
+	 * @since 3.0.36
+	 * @return void
 	 */
-	public function print_styles() {
+	public function print_styles_action() {
 		/**
 		 * Note to code reviewers:
 		 * There is no need for a nonce check here, we're only checking if this is a valid request or not.
@@ -161,6 +170,16 @@ class Kirki_Modules_CSS {
 
 		// This is a stylesheet.
 		header( 'Content-type: text/css' );
+		$this->print_styles();
+		exit;
+	}
+
+	/**
+	 * Prints the styles.
+	 *
+	 * @access public
+	 */
+	public function print_styles() {
 
 		// Go through all configs.
 		$configs = Kirki::$config;
@@ -184,8 +203,6 @@ class Kirki_Modules_CSS {
 			}
 		}
 		do_action( 'kirki_dynamic_css' );
-
-		exit;
 	}
 
 	/**
