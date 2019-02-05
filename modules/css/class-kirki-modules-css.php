@@ -132,20 +132,20 @@ class Kirki_Modules_CSS {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-
 		if ( apply_filters( 'kirki_force_inline_styles', false ) ) {
 			echo '<style id="kirki-inline-styles">';
 			$this->print_styles();
 			echo '</style>';
 			return;
 		}
-
+		
+		$action_handle = apply_filters( 'kirki_styles_action_handle', 'kirki-styles' );
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
-			'kirki-styles',
+			$action_handle,
 			add_query_arg(
 				'action',
-				apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
+				$action_handle,
 				site_url()
 			),
 			array(),
