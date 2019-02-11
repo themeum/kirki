@@ -613,7 +613,7 @@ kirki = jQuery.extend( kirki, {
 			 * @returns {null}
 			 */
 			init: function( control ) {
-				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+				var input = control.container.find( 'input.kirki-data-holder' );
 
 				// Save the value
 				input.on( 'change keyup paste click', function() {
@@ -642,7 +642,7 @@ kirki = jQuery.extend( kirki, {
 			 * @returns {null}
 			 */
 			init: function( control ) {
-				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
+				var picker = control.container.find( '.kirki-data-holder' ),
 					clear;
 
 				control.choices = control.choices || {};
@@ -657,7 +657,7 @@ kirki = jQuery.extend( kirki, {
 
 				// Tweaks to make the "clear" buttons work.
 				setTimeout( function() {
-					clear = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .wp-picker-clear' );
+					clear = control.container.find( '.wp-picker-clear' );
 					if ( clear.length ) {
 						clear.click( function() {
 							kirki.setting.set( control.id, '' );
@@ -694,7 +694,7 @@ kirki = jQuery.extend( kirki, {
 			 * @returns {null}
 			 */
 			init: function( control ) {
-				var input = jQuery( 'input[data-id="' + control.id + '"]' );
+				var input = control.container.find( '.kirki-data-holder' );
 
 				// Save the value
 				input.on( 'change keyup paste click', function() {
@@ -719,7 +719,7 @@ kirki = jQuery.extend( kirki, {
 			 * @returns {null}
 			 */
 			init: function( control ) {
-				var textarea = jQuery( 'textarea[data-id="' + control.id + '"]' );
+				var textarea = control.container.find( '.kirki-data-holder' );
 
 				// Save the value
 				textarea.on( 'change keyup paste click', function() {
@@ -739,7 +739,7 @@ kirki = jQuery.extend( kirki, {
 			 * @returns {null}
 			 */
 			init: function( control ) {
-				var element  = jQuery( 'select[data-id="' + control.id + '"]' ),
+				var element  = control.container.find( '.kirki-data-holder' ),
 					multiple = parseInt( element.data( 'multiple' ), 10 ),
 					selectValue,
 					selectWooOptions = {
@@ -780,7 +780,7 @@ kirki = jQuery.extend( kirki, {
 			 */
 			init: function( control ) {
 
-				var element = jQuery( 'input[data-id="' + control.id + '"]' ),
+				var element = control.container.find( '.kirki-data-holder' ),
 					value   = control.setting._value,
 					up,
 					down;
@@ -806,8 +806,8 @@ kirki = jQuery.extend( kirki, {
 				control.params.choices.max  = parseFloat( control.params.choices.max );
 				control.params.choices.step = parseFloat( control.params.choices.step );
 
-				up   = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .plus' );
-				down = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .minus' );
+				up   = control.container.find( '.plus' );
+				down = control.container.find( '.minus' );
 
 				up.click( function() {
 					var oldVal = parseFloat( element.val() ),
