@@ -36,6 +36,7 @@ if ( 1 < data.multiple && data.value && _.isString( data.value ) ) {
 		<# } #>
 		<select
 			data-id="{{ data['data-id'] }}"
+			class="kirki-data-holder"
 			{{{ data.inputAttrs }}}
 			<# if ( 1 < data.multiple ) { #>
 				data-multiple="{{ data.multiple }}" multiple="multiple"

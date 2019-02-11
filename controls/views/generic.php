@@ -32,6 +32,7 @@ data = _.defaults( data, {
 		<div class="customize-control-content">
 			<{{ element }}
 				data-id="{{ data['data-id'] }}"
+				class="kirki-data-holder"
 				{{{ data.inputAttrs }}}
 				value="{{ data.value }}"
 				<# _.each( data.choices, function( val, key ) { #>

@@ -31,6 +31,7 @@ data = _.defaults( data, {
 		<div class="customize-control-content">
 			<textarea
 				data-id="{{ data['data-id'] }}"
+				class="kirki-data-holder"
 				{{{ data.inputAttrs }}}
 				<# _.each( data.choices, function( val, key ) { #>
 					{{ key }}="{{ val }}"

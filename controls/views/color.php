@@ -41,7 +41,7 @@ data = _.defaults( data, {
 		data-default-color="{{ data['data-default-color'] }}"
 		data-alpha="{{ data['data-alpha'] }}"
 		value="{{ data.value }}"
-		class="kirki-color-control"
+		class="kirki-color-control kirki-data-holder"
 		data-id="{{ data['data-id'] }}"
 	/>
 </div>
