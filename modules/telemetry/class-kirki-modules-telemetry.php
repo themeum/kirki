@@ -92,11 +92,13 @@ final class Kirki_Modules_Telemetry {
 			return;
 		}
 
-		// Only send data once/month.
-		$sent = get_site_transient( 'kirki_telemetry_sent' );
-		if ( ! $sent ) {
+		// Only send data once/month. We use an option instead of a transient
+		// because transients in some managed hosting environments don't properly update
+		// due to their caching implementations.
+		$sent = get_option( 'kirki_telemetry_sent' );
+		if ( ! $sent || $sent < time() - MONTH_IN_SECONDS ) {
 			$this->send_data();
-			set_site_transient( 'kirki_telemetry_sent', time(), MONTH_IN_SECONDS );
+			update_option( 'kirki_telemetry_sent', time() );
 		}
 	}
 
