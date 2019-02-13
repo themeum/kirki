@@ -96,8 +96,8 @@ final class Kirki_Fonts_Helper {
 	 */
 	public static function download_font_file( $url ) {
 
-		// Gives us access to the download_url() and wp_handle_sideload() functions
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		// Gives us access to the download_url() and wp_handle_sideload() functions.
+		require_once ABSPATH . 'wp-admin/includes/file.php';
 
 		$timeout_seconds = 5;
 
@@ -108,7 +108,7 @@ final class Kirki_Fonts_Helper {
 			return false;
 		}
 
-		// Array based on $_FILE as seen in PHP file uploads
+		// Array based on $_FILE as seen in PHP file uploads.
 		$file = array(
 			'name'     => basename( $url ),
 			'type'     => 'font/woff',
@@ -122,7 +122,7 @@ final class Kirki_Fonts_Helper {
 			'test_size' => true,
 		);
 
-		// Move the temporary file into the uploads directory
+		// Move the temporary file into the uploads directory.
 		$results = wp_handle_sideload( $file, $overrides );
 
 		if ( empty( $results['error'] ) ) {
