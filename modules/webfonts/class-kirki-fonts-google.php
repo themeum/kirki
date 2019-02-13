@@ -110,7 +110,6 @@ final class Kirki_Fonts_Google {
 	 * @param array $args The field arguments.
 	 */
 	public function generate_google_font( $args ) {
-		global $wp_customize;
 
 		// Process typography fields.
 		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
@@ -119,7 +118,7 @@ final class Kirki_Fonts_Google {
 			$value = Kirki_Values::get_sanitized_field_value( $args );
 
 			// If we don't have a font-family then we can skip this.
-			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) ) {
+			if ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) {
 				return;
 			}
 

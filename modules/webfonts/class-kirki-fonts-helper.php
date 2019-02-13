@@ -96,31 +96,37 @@ final class Kirki_Fonts_Helper {
 	 */
 	public static function download_font_file( $url ) {
 
-		// Get the remote file.
-		$contents = self::get_remote_url_contents( $url );
+		// Gives us access to the download_url() and wp_handle_sideload() functions
+		require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
-		// Build the folder path.
-		$folder_path = self::get_root_path();
+		$timeout_seconds = 5;
 
-		// The filename.
-		$filename = self::get_filename_from_url( $url );
+		// Download file to temp dir.
+		$temp_file = download_url( $url, $timeout_seconds );
 
-		// Build the file path.
-		$path = $folder_path . '/' . $filename;
-
-		// If the folder doesn't exist, create it.
-		if ( ! file_exists( $folder_path ) ) {
-			wp_mkdir_p( $folder_path );
+		if ( is_wp_error( $temp_file ) ) {
+			return false;
 		}
 
-		// If the file exists there's no reason to do anything.
-		if ( file_exists( $path ) ) {
-			return self::get_root_url() . '/' . $filename;
-		}
+		// Array based on $_FILE as seen in PHP file uploads
+		$file = array(
+			'name'     => basename( $url ),
+			'type'     => 'font/woff',
+			'tmp_name' => $temp_file,
+			'error'    => 0,
+			'size'     => filesize( $temp_file ),
+		);
 
-		// Write file.
-		if ( Kirki_Helper::init_filesystem()->put_contents( $path, $contents, FS_CHMOD_FILE ) ) {
-			return self::get_root_url() . '/' . $filename;
+		$overrides = array(
+			'test_form' => false,
+			'test_size' => true,
+		);
+
+		// Move the temporary file into the uploads directory
+		$results = wp_handle_sideload( $file, $overrides );
+
+		if ( empty( $results['error'] ) ) {
+			return $results['url'];
 		}
 		return false;
 	}

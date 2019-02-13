@@ -93,7 +93,6 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 */
 	public function init() {
-		global $wp_customize;
 
 		Kirki_Modules_Webfonts::get_instance();
 
@@ -109,13 +108,30 @@ class Kirki_Modules_CSS {
 		}
 
 		// Add styles.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+		if ( is_customize_preview() || apply_filters( 'kirki_force_inline_styles', false ) ) {
+			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
+		} else {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+		}
 
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), $priority );
 
 		// Prints the styles.
 		add_action( 'wp', array( $this, 'print_styles_action' ) );
+	}
+
+	/**
+	 * Print styles inline.
+	 *
+	 * @access public
+	 * @since 3.0.36
+	 * @return void
+	 */
+	public function print_styles_inline() {
+		echo '<style id="kirki-inline-styles">';
+		$this->print_styles();
+		echo '</style>';
 	}
 
 	/**
@@ -126,13 +142,6 @@ class Kirki_Modules_CSS {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-
-		if ( apply_filters( 'kirki_force_inline_styles', false ) ) {
-			echo '<style id="kirki-inline-styles">';
-			$this->print_styles();
-			echo '</style>';
-			return;
-		}
 
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
