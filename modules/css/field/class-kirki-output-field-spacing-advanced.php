@@ -41,7 +41,7 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 					$output_val = $value[$device][$side];
 					if ( isset( $value[$device]['unit'] ) )
 						$output_val .= $value[$device]['unit'];
-					$this->styles[$breakpoint][ $output['element'] ][ $output['property'] ][ $side ] = $prefix . $output_val . $units . $suffix;;
+					$this->styles[$breakpoint][ $output['element'] ][ $output['property'] . '-' . $side ] = $prefix . $output_val . $units . $suffix;;
 				}
 			}
 		}
@@ -53,7 +53,7 @@ class Kirki_Output_Field_Spacing_Advanced extends Kirki_Output {
 				$output_val = $value[$side];
 				if ( isset( $value['unit'] ) )
 					$output_val .= $value['unit'];
-				$this->styles['global'][ $output['element'] ][ $output['property'] ][ $side ] = $prefix . $output_val . $units . $suffix;
+				$this->styles['global'][ $output['element'] ][ $output['property'] . '-' . $side ]= $prefix . $output_val . $units . $suffix;
 			}
 		}
 		
