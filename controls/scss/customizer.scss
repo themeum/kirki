@@ -252,3 +252,20 @@
 .customize-control-kirki-multicheck ul li input {
 	display: none;
 }
+
+.kirki-control-dimensions {
+	display: flex;
+}
+
+.kirki-control-type-dimensions li .kirki-input-link {
+	width: 50px;
+}
+
+.kirki-control-type-dimensions li {
+	flex-grow: 1;
+}
+
+.kirki-control-type-dimensions li:last-child {
+	flex-grow: 0;
+	width: 50px;
+}

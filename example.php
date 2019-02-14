@@ -62,7 +62,7 @@ $sections = array(
 	'code'                 => array( esc_html__( 'Code', 'kirki' ), '' ),
 	'checkbox'             => array( esc_html__( 'Checkbox', 'kirki' ), '' ),
 	'color'                => array( esc_html__( 'Color', 'kirki' ), '' ),
-	'color-gradient'       => array( esc_html__( 'Color Gradient', 'kirki' ), '' ),
+	'gradient'             => array( esc_html__( 'Color Gradient', 'kirki' ), '' ),
 	'color-palette'        => array( esc_html__( 'Color Palette', 'kirki' ), '' ),
 	'custom'               => array( esc_html__( 'Custom', 'kirki' ), '' ),
 	'dashicons'            => array( esc_html__( 'Dashicons', 'kirki' ), '' ),
@@ -303,9 +303,9 @@ my_config_kirki_add_field(
  * Color Gradient
  */
 my_config_kirki_add_field( array(
-	'section' => 'color_gradient_section',
+	'section' => 'Gradient_section',
 	'settings' => 'color_gradient_setting',
-	'type' => 'color-gradient',
+	'type' => 'gradient',
 	'default' => array(
 		'color1' => '#000',
 		'color2' => '#fff',

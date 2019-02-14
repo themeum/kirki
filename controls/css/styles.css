@@ -200,6 +200,19 @@
 .customize-control-kirki-multicheck ul li input {
   display: none; }
 
+.kirki-control-dimensions {
+  display: flex; }
+
+.kirki-control-type-dimensions li .kirki-input-link {
+  width: 50px; }
+
+.kirki-control-type-dimensions li {
+  flex-grow: 1; }
+
+.kirki-control-type-dimensions li:last-child {
+  flex-grow: 0;
+  width: 50px; }
+
 .customize-control-kirki-background {
   position: relative; }
   .customize-control-kirki-background .background-attachment h4,
@@ -236,7 +249,7 @@
   width: 100%;
   min-height: 200px; }
 
-.color-gradient .color1, .color-gradient .color2 {
+.gradient .color1, .gradient .color2 {
   display: inline-block; }
 
 .customize-control-kirki-color-palette {

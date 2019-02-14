@@ -1,5 +1,5 @@
 <?php
-class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
+class Kirki_Output_Field_Gradient extends Kirki_Output {
 	/**
 	 * Processes a single item from the `output` array.
 	 *
@@ -19,7 +19,7 @@ class Kirki_Output_Field_Color_Gradient extends Kirki_Output {
 		if ( !is_array( $value ) || empty( $output['element'] ) )
 			return;
 		
-		$value = Kirki_Field_Color_Gradient::sanitize( $value );
+		$value = Kirki_Field_Gradient::sanitize( $value );
 		
 		$property = $output['property'];
 		$color1 = $value['color1'];

@@ -69,8 +69,8 @@ var kirkiPostMessage = {
 			var self     = this,
 				settings = window.parent.wp.customize.get(),
 				excluded = false;
-
-			if ( 'string' !== typeof value ) {
+				
+			if ( 'object' === typeof value ) {
 				_.each( value, function( subValue, key ) {
 					value[ key ] = self.processValue( output, subValue );
 				} );
@@ -84,7 +84,6 @@ var kirkiPostMessage = {
 				pattern_replace: {},
 				exclude: []
 			} );
-
 			if ( 1 <= output.exclude.length ) {
 				_.each( output.exclude, function( exclusion ) {
 					if ( value == exclusion ) {
@@ -96,7 +95,7 @@ var kirkiPostMessage = {
 			if ( excluded ) {
 				return false;
 			}
-
+			
 			value = output.value_pattern.replace( new RegExp( '\\$', 'g' ), value );
 			_.each( output.pattern_replace, function( id, placeholder ) {
 				if ( ! _.isUndefined( settings[ id ] ) ) {
@@ -313,12 +312,10 @@ var kirkiPostMessage = {
 					styles += props.join( ' ' ) + ';';
 					styles += '}';
 					break;
-				case 'kirki-color-gradient':
+				case 'kirki-gradient':
 					styles += output.element + '{';
 					var gradient = 'linear-gradient(' + value['direction'] + ', ' + value['color1'] + ' ' + value['location'] + ', ' + value['color2'] + ')';
-					styles += 'background-image: ' + gradient + ';';
 					styles += 'background: ' + gradient + ';';
-					styles += 'background-color: ' + gradient + ';';
 					styles += '}';
 					break;
 				case 'kirki-slider-advanced':
@@ -661,3 +658,7 @@ jQuery( document ).ready( function() {
 		} );
 	} );
 } );
+
+jQuery( document ).on( 'DOMSubtreeModified', function() {
+	jQuery( '[data-customize-setting-link]' ).trigger( 'change' );
+});

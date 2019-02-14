@@ -2228,7 +2228,7 @@ wp.customize.controlConstructor['kirki-border'] = wp.customize.kirkiDynamicContr
 		control.setting.set( new_val );
 	}
 } );wp.customize.controlConstructor['kirki-color-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
-wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDynamicControl.extend( {
+wp.customize.controlConstructor['kirki-gradient'] = wp.customize.kirkiDynamicControl.extend( {
 	// When we're finished loading continue processing
 	ready: function() {
 	
@@ -2247,7 +2247,7 @@ wp.customize.controlConstructor['kirki-color-gradient'] = wp.customize.kirkiDyna
 	initKirkiControl: function() {
 		var control = this,
 			container = control.container,
-			input = jQuery( '.color-gradient-hidden-value', container ),
+			input = jQuery( '.gradient-hidden-value', container ),
 			color1_picker = jQuery( '.color1 .color-picker', container ),
 			color2_picker = jQuery( '.color2 .color-picker', container ),
 			location = jQuery( '.location input', container ),

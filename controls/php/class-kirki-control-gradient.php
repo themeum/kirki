@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Kirki_Control_Color_Gradient extends Kirki_Control_Base {
+class Kirki_Control_Gradient extends Kirki_Control_Base {
 
 	/**
 	 * The control type.
@@ -22,7 +22,7 @@ class Kirki_Control_Color_Gradient extends Kirki_Control_Base {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-color-gradient';
+	public $type = 'kirki-gradient';
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
@@ -46,7 +46,7 @@ class Kirki_Control_Color_Gradient extends Kirki_Control_Base {
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
 		</label>
-		<div class="kirki-group-outer color-gradient customize-control-kirki-slider">
+		<div class="kirki-group-outer gradient customize-control-kirki-slider">
 			<div class="color1">
 				<h5><?php _e( 'Color 1', 'kirki' ) ?></h5>
 				<input {{{ data.inputAttrs }}} type="text" class="color-picker" data-alpha="true" value="" />
@@ -81,7 +81,7 @@ class Kirki_Control_Color_Gradient extends Kirki_Control_Base {
 				</select>
 			</div>
 		</div>
-		<input class="color-gradient-hidden-value" type="hidden" value="{{ data.value }}" {{{ data.link }}}>
+		<input class="gradient-hidden-value" type="hidden" value="{{ data.value }}" {{{ data.link }}}>
 		<?php
 	}
 }

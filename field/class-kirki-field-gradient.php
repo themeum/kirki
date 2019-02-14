@@ -12,7 +12,7 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Color_Gradient extends Kirki_Field {
+class Kirki_Field_Gradient extends Kirki_Field {
 
 	/**
 	 * Sets the control type.
@@ -20,7 +20,7 @@ class Kirki_Field_Color_Gradient extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_type() {
-		$this->type = 'kirki-color-gradient';
+		$this->type = 'kirki-gradient';
 	}
 
 	/**

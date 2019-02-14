@@ -92,10 +92,11 @@ module.exports = function( grunt ) {
 					'controls/js/src/media-queries.js',
 					
 					'controls/js/src/background.js',
+					'controls/js/src/background-switch.js',
 					'controls/js/src/border.js',
 					'controls/js/src/box-shadow.js',
 					'controls/js/src/color-palette.js',
-					'controls/js/src/color-gradient.js',
+					'controls/js/src/gradient.js',
 					'controls/js/src/dashicons.js',
 					'controls/js/src/date.js',
 					'controls/js/src/dimension.js',
