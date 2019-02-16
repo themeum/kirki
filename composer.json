@@ -17,7 +17,8 @@
   "require": {
     "php": ">=5.6",
     "kirki-framework/core": "dev-master",
-    "kirki-framework/module-css": "dev-master"
+    "kirki-framework/module-css": "dev-master",
+    "kirki-framework/module-css-vars": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
