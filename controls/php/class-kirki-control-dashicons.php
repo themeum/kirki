@@ -10,6 +10,7 @@
  */
 
 use Kirki\Core\Helper;
+use Kirki\Control\Base;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Dashicons control (modified radio).
  */
-class Kirki_Control_Dashicons extends Kirki_Control_Base {
+class Kirki_Control_Dashicons extends Base {
 
 	/**
 	 * The control type.

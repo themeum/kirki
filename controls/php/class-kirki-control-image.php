@@ -9,10 +9,12 @@
  * @since       3.0.0
  */
 
+use Kirki\Control\Base;
+
 /**
  * Adds the image control.
  */
-class Kirki_Control_Image extends Kirki_Control_Base {
+class Kirki_Control_Image extends Base {
 
 	/**
 	 * The control type.

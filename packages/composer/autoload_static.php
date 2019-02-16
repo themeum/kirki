@@ -4,10 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita3b0c04381b8521c15bbc8cd07b400b9
+class ComposerStaticInite46ac16ac309836257dcdcf6ae7960de
 {
     public static $files = array (
         '87c34c6c6680f5cbf57e2065b44cdcd1' => __DIR__ . '/..' . '/kirki-framework/core/src/aliases.php',
+        'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
     );
@@ -18,6 +19,7 @@ class ComposerStaticInita3b0c04381b8521c15bbc8cd07b400b9
             'Kirki\\Modules\\CSS_Vars\\' => 23,
             'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Core\\' => 11,
+            'Kirki\\Control\\' => 14,
         ),
     );
 
@@ -34,13 +36,17 @@ class ComposerStaticInita3b0c04381b8521c15bbc8cd07b400b9
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/core/src',
         ),
+        'Kirki\\Control\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/control-base/src',
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita3b0c04381b8521c15bbc8cd07b400b9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita3b0c04381b8521c15bbc8cd07b400b9::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite46ac16ac309836257dcdcf6ae7960de::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite46ac16ac309836257dcdcf6ae7960de::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

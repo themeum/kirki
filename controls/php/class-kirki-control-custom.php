@@ -17,10 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Kirki\Control\Base;
+
 /**
  * The "custom" control allows you to add any raw HTML.
  */
-class Kirki_Control_Custom extends Kirki_Control_Base {
+class Kirki_Control_Custom extends Base {
 
 	/**
 	 * The control type.

@@ -11,6 +11,8 @@
  * @since       1.0
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Slider control (range).
  */
-class Kirki_Control_Slider extends Kirki_Control_Base {
+class Kirki_Control_Slider extends Base {
 
 	/**
 	 * The control type.

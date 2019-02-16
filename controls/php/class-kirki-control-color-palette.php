@@ -15,12 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Kirki\Core\Helper;
+use Kirki\Control\Base;
 
 /**
  * Adds a color-palette control.
  * This is essentially a radio control, styled as a palette.
  */
-class Kirki_Control_Color_Palette extends Kirki_Control_Base {
+class Kirki_Control_Color_Palette extends Base {
 
 	/**
 	 * The control type.

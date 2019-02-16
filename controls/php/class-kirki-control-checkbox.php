@@ -12,12 +12,14 @@
  * @since       3.0.26
  */
 
+use Kirki\Control\Base;
+
 /**
  * Adds a checkbox control.
  *
  * @since 3.0.26
  */
-class Kirki_Control_Checkbox extends Kirki_Control_Base {
+class Kirki_Control_Checkbox extends Base {
 
 	/**
 	 * The control type.

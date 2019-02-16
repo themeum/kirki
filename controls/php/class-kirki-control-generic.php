@@ -9,6 +9,8 @@
  * @since       2.0
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A generic and pretty abstract control.
  * Allows for great manipulation using the field's "choices" argumnent.
  */
-class Kirki_Control_Generic extends Kirki_Control_Base {
+class Kirki_Control_Generic extends Base {
 
 	/**
 	 * The control type.

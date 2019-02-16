@@ -9,6 +9,8 @@
  * @since       2.2.7
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Multicolor control.
  */
-class Kirki_Control_Multicolor extends Kirki_Control_Base {
+class Kirki_Control_Multicolor extends Base {
 
 	/**
 	 * The control type.

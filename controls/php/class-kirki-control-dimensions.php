@@ -9,6 +9,8 @@
  * @since       2.1
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Dimensions control.
  * multiple fields with CSS units validation.
  */
-class Kirki_Control_Dimensions extends Kirki_Control_Base {
+class Kirki_Control_Dimensions extends Base {
 
 	/**
 	 * The control type.

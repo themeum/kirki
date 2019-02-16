@@ -14,12 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Kirki\Control\Base;
+
 /**
  * Adds a color & color-alpha control
  *
  * @see https://github.com/23r9i0/wp-color-picker-alpha
  */
-class Kirki_Control_Color extends Kirki_Control_Base {
+class Kirki_Control_Color extends Base {
 
 	/**
 	 * The control type.

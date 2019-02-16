@@ -1,5 +1,54 @@
 [
     {
+        "name": "kirki-framework/control-base",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-base.git",
+            "reference": "6c1f860159d6b6fd09ac3fc48d947bccd91f44d6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/6c1f860159d6b6fd09ac3fc48d947bccd91f44d6",
+            "reference": "6c1f860159d6b6fd09ac3fc48d947bccd91f44d6",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "time": "2019-02-16T21:01:09+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "The Base Class for other Kirki Customizer Controls.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/core",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

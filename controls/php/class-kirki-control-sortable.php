@@ -9,6 +9,8 @@
  * @since       1.0
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Sortable control (uses checkboxes).
  */
-class Kirki_Control_Sortable extends Kirki_Control_Base {
+class Kirki_Control_Sortable extends Base {
 
 	/**
 	 * The control type.

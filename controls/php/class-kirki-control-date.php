@@ -9,6 +9,8 @@
  * @since       2.2
  */
 
+use Kirki\Control\Base;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * A simple date control, using jQuery UI.
  */
-class Kirki_Control_Date extends Kirki_Control_Base {
+class Kirki_Control_Date extends Base {
 
 	/**
 	 * The control type.

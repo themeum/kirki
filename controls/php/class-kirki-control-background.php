@@ -12,10 +12,12 @@
  * @since       1.0
  */
 
+use Kirki\Control\Base;
+
 /**
  * Adds multiple input fiels that combined make up the background control.
  */
-class Kirki_Control_Background extends Kirki_Control_Base {
+class Kirki_Control_Background extends Base {
 
 	/**
 	 * The control type.
