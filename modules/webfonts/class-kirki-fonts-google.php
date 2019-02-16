@@ -11,6 +11,8 @@
  * @since       1.0
  */
 
+use Kirki\Core\Values;
+
 /**
  * Manages the way Google Fonts are enqueued.
  */
@@ -115,7 +117,7 @@ final class Kirki_Fonts_Google {
 		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
 
 			// Get the value.
-			$value = Kirki_Values::get_sanitized_field_value( $args );
+			$value = Values::get_sanitized_field_value( $args );
 
 			// If we don't have a font-family then we can skip this.
 			if ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) {
@@ -164,7 +166,7 @@ final class Kirki_Fonts_Google {
 				}
 
 				// Get the value.
-				$value = Kirki_Values::get_sanitized_field_value( $args );
+				$value = Values::get_sanitized_field_value( $args );
 
 				if ( is_string( $value ) ) {
 					if ( 'font-family' === $output['property'] ) {

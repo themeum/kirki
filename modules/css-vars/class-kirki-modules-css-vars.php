@@ -10,6 +10,8 @@
  * @since       3.0.28
  */
 
+use Kirki\Core\Values;
+
 /**
  * The Kirki_Modules_CSS_Vars object.
  *
@@ -89,7 +91,7 @@ class Kirki_Modules_CSS_Vars {
 			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
 				continue;
 			}
-			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
+			$val = Values::get_value( $args['kirki_config'], $id );
 			foreach ( $args['css_vars'] as $css_var ) {
 				if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
 					$this->vars[ $css_var[0] ] = str_replace( '$', $val[ $css_var[2] ], $css_var[1] );

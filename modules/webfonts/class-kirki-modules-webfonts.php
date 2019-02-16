@@ -10,6 +10,9 @@
  * @since       3.0.0
  */
 
+use Kirki\Core\Helper;
+use Kirki\Core\Values;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -127,8 +130,8 @@ class Kirki_Modules_Webfonts {
 
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-							if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
+							if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
 								$valid = false;
 							}
 						}

@@ -10,6 +10,8 @@
  * @since       3.0.12
  */
 
+use Kirki\Core\Helper;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -286,7 +288,7 @@ my_config_kirki_add_field(
 		'section'     => 'color_palette_section',
 		'default'     => '#F44336',
 		'choices'     => array(
-			'colors' => Kirki_Helper::get_material_design_colors( 'all' ),
+			'colors' => Helper::get_material_design_colors( 'all' ),
 			'size'   => 17,
 		),
 	)
@@ -301,7 +303,7 @@ my_config_kirki_add_field(
 		'section'     => 'color_palette_section',
 		'default'     => '#000000',
 		'choices'     => array(
-			'colors' => Kirki_Helper::get_material_design_colors( 'primary' ),
+			'colors' => Helper::get_material_design_colors( 'primary' ),
 			'size'   => 25,
 		),
 	)
@@ -316,7 +318,7 @@ my_config_kirki_add_field(
 		'section'     => 'color_palette_section',
 		'default'     => '#FF1744',
 		'choices'     => array(
-			'colors' => Kirki_Helper::get_material_design_colors( 'red' ),
+			'colors' => Helper::get_material_design_colors( 'red' ),
 			'size'   => 16,
 		),
 	)
@@ -331,7 +333,7 @@ my_config_kirki_add_field(
 		'section'     => 'color_palette_section',
 		'default'     => '#FF80AB',
 		'choices'     => array(
-			'colors' => Kirki_Helper::get_material_design_colors( 'A100' ),
+			'colors' => Helper::get_material_design_colors( 'A100' ),
 			'size'   => 60,
 			'style'  => 'round',
 		),
@@ -630,8 +632,8 @@ my_config_kirki_add_field(
 		'section'  => 'palette_section',
 		'default'  => 'blue',
 		'choices'  => array(
-			'a200'  => Kirki_Helper::get_material_design_colors( 'A200' ),
-			'blue'  => Kirki_Helper::get_material_design_colors( 'blue' ),
+			'a200'  => Helper::get_material_design_colors( 'A200' ),
+			'blue'  => Helper::get_material_design_colors( 'blue' ),
 			'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
 			'bnw'   => array( '#000000', '#ffffff' ),
 		),

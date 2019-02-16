@@ -9,10 +9,12 @@
  * @since       2.2.7
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Editor extends Kirki_Field {
+class Kirki_Field_Editor extends Field {
 
 	/**
 	 * Sets the control type.

@@ -11,6 +11,8 @@
  * @since       1.0
  */
 
+use Kirki\Core\Values;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -160,7 +162,7 @@ final class Kirki_Modules_CSS_Generator {
 		}
 
 		// Get the value of this field.
-		self::$value = Kirki_Values::get_sanitized_field_value( $field );
+		self::$value = Values::get_sanitized_field_value( $field );
 
 		// Find the class that will handle the outpout for this field.
 		$classname            = 'Kirki_Output';

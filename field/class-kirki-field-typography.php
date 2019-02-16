@@ -9,10 +9,12 @@
  * @since       2.2.7
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Typography extends Kirki_Field {
+class Kirki_Field_Typography extends Field {
 
 	/**
 	 * Sets the control type.
@@ -31,7 +33,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @access public
 	 * @param string $config_id    The ID of the config we want to use.
 	 *                             Defaults to "global".
-	 *                             Configs are handled by the Kirki_Config class.
+	 *                             Configs are handled by the Kirki\Core\Config class.
 	 * @param array  $args         The arguments of the field.
 	 */
 	public function __construct( $config_id = 'global', $args = array() ) {

@@ -9,10 +9,12 @@
  * @since       2.2.7
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Code extends Kirki_Field {
+class Kirki_Field_Code extends Field {
 
 	/**
 	 * The code_type (MIME type).
@@ -113,6 +115,6 @@ class Kirki_Field_Code extends Kirki_Field {
 		// Code fields must NOT be filtered. Their values usually contain CSS/JS.
 		// It is the responsibility of the theme/plugin that registers this field
 		// to properly apply any necessary filtering.
-		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
+		$this->sanitize_callback = array( 'Kirki\Core\Sanitize_Values', 'unfiltered' );
 	}
 }

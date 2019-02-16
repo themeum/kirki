@@ -9,10 +9,12 @@
  * @since       2.2.7
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Color extends Kirki_Field {
+class Kirki_Field_Color extends Field {
 
 	/**
 	 * Backwards compatibility.
@@ -80,6 +82,6 @@ class Kirki_Field_Color extends Kirki_Field {
 			$this->sanitize_callback = 'absint';
 			return;
 		}
-		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'color' );
+		$this->sanitize_callback = array( 'Kirki\Core\Sanitize_Values', 'color' );
 	}
 }

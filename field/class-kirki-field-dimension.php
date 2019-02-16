@@ -9,10 +9,12 @@
  * @since       2.3.2
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Dimension extends Kirki_Field {
+class Kirki_Field_Dimension extends Field {
 
 	/**
 	 * Sets the control type.

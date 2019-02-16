@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Kirki\Core\Helper;
+
 /**
  * Adds a color-palette control.
  * This is essentially a radio control, styled as a palette.
@@ -39,7 +41,7 @@ class Kirki_Control_Color_Palette extends Kirki_Control_Base {
 
 		// If no palette has been defined, use Material Design Palette.
 		if ( ! isset( $this->json['choices']['colors'] ) || empty( $this->json['choices']['colors'] ) ) {
-			$this->json['choices']['colors'] = Kirki_Helper::get_material_design_colors( 'primary' );
+			$this->json['choices']['colors'] = Helper::get_material_design_colors( 'primary' );
 		}
 		if ( ! isset( $this->json['choices']['size'] ) || empty( $this->json['choices']['size'] ) ) {
 			$this->json['choices']['size'] = 20;

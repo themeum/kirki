@@ -12,13 +12,19 @@
  * GitHub Plugin URI: aristath/kirki
  * GitHub Plugin URI: https://github.com/aristath/kirki
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   Kirki
+ * @category  Core
+ * @author    Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
+
+use Kirki\Core\Init;
+use Kirki\Core\L10n;
+use Kirki\Core\Modules;
+use Kirki\Core\Framework;
+use Kirki\Core\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -29,6 +35,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( class_exists( 'Kirki' ) ) {
 	return;
 }
+
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Include the autoloader.
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
@@ -50,7 +58,7 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 
 // Make sure the path is properly set.
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
-Kirki_Init::set_url();
+Init::set_url();
 
 new Kirki_Controls();
 
@@ -59,7 +67,7 @@ if ( ! function_exists( 'Kirki' ) ) {
 	 * Returns an instance of the Kirki object.
 	 */
 	function kirki() {
-		$kirki = Kirki_Toolkit::get_instance();
+		$kirki = Framework::get_instance();
 		return $kirki;
 	}
 }
@@ -69,13 +77,13 @@ global $kirki;
 $kirki = kirki();
 
 // Instantiate the modules.
-$kirki->modules = new Kirki_Modules();
+$kirki->modules = new Modules();
 
 Kirki::$url = plugins_url( '', __FILE__ );
 
 // Instantiate classes.
 new Kirki();
-new Kirki_L10n();
+new L10n();
 
 // Include the ariColor library.
 require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude

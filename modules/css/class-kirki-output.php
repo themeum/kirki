@@ -9,6 +9,8 @@
  * @since       2.2.0
  */
 
+use Kirki\Core\Values;
+
 /**
  * Handles field CSS output.
  */
@@ -165,7 +167,7 @@ class Kirki_Output {
 					default:
 						$replacement = get_theme_mod( $replace );
 						if ( ! $replacement ) {
-							$replacement = Kirki_Values::get_value( $this->field['kirki_config'], $replace );
+							$replacement = Values::get_value( $this->field['kirki_config'], $replace );
 						}
 				}
 				$replacement = ( false === $replacement ) ? '' : $replacement;

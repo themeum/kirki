@@ -9,6 +9,8 @@
  * @since       2.2.4
  */
 
+use Kirki\Core\Helper;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -34,7 +36,7 @@ class Kirki_Control_Dashicons extends Kirki_Control_Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['icons'] = Kirki_Helper::get_dashicons();
+		$this->json['icons'] = Helper::get_dashicons();
 	}
 
 	/**

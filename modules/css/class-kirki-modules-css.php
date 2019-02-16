@@ -10,6 +10,9 @@
  * @since       3.0.0
  */
 
+use Kirki\Core\Helper;
+use Kirki\Core\Values;
+
 /**
  * The Kirki_Modules_CSS object.
  */
@@ -253,8 +256,8 @@ class Kirki_Modules_CSS {
 
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-							if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
+							if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
 								$valid = false;
 							}
 						}
@@ -268,11 +271,11 @@ class Kirki_Modules_CSS {
 
 			// Only continue if $field['output'] is set.
 			if ( isset( $field['output'] ) && ! empty( $field['output'] ) ) {
-				$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
+				$css = Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
 
 				// Add the globals.
 				if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
-					Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
+					Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
 				}
 			}
 		}

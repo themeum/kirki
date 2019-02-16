@@ -9,10 +9,12 @@
  * @since       2.2.7
  */
 
+use Kirki\Core\Field;
+
 /**
  * Field overrides.
  */
-class Kirki_Field_Select extends Kirki_Field {
+class Kirki_Field_Select extends Field {
 
 	/**
 	 * Use only on select controls.
