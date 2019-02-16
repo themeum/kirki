@@ -5,6 +5,9 @@
   "description": "Extending the WordPress customizer",
   "homepage": "https://aristath.github.io/kirki",
   "license": "MIT",
+  "config": {
+    "vendor-dir": "packages"
+  },
   "authors": [
     {
       "name": "aristath",

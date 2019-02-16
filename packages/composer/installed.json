@@ -105,19 +105,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-css-vars.git",
-            "reference": "205e17482d6fe73dce07bdb9243a79013a26ceae"
+            "reference": "8c82389f0edd374fdde002b5bb65ed3483b6d3fc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-css-vars/zipball/205e17482d6fe73dce07bdb9243a79013a26ceae",
-            "reference": "205e17482d6fe73dce07bdb9243a79013a26ceae",
+            "url": "https://api.github.com/repos/kirki-framework/module-css-vars/zipball/8c82389f0edd374fdde002b5bb65ed3483b6d3fc",
+            "reference": "8c82389f0edd374fdde002b5bb65ed3483b6d3fc",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-16T20:01:14+00:00",
+        "time": "2019-02-16T20:13:27+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
