@@ -7,7 +7,7 @@
  * Author URI:    http://aristath.github.io
  * Version:       3.0.36-beta.2
  * Text Domain:   kirki
- *
+ * Requires PHP:  5.3
  * GitHub Plugin URI: aristath/kirki
  * GitHub Plugin URI: https://github.com/aristath/kirki
  *
