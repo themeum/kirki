@@ -96,29 +96,28 @@ class Kirki_Modules_CSS {
 
 		Kirki_Modules_Webfonts::get_instance();
 
-		$config   = apply_filters( 'kirki_config', array() );
-		$priority = 999;
-		if ( isset( $config['styles_priority'] ) ) {
-			$priority = absint( $config['styles_priority'] );
-		}
-
 		// Allow completely disabling Kirki CSS output.
 		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {
 			return;
 		}
 
-		// Add styles.
-		if ( is_customize_preview() || apply_filters( 'kirki_force_inline_styles', false ) ) {
-			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
-		} else {
+		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+
+		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
+			$config   = apply_filters( 'kirki_config', array() );
+			$priority = 999;
+			if ( isset( $config['styles_priority'] ) ) {
+				$priority = absint( $config['styles_priority'] );
+			}
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+
+			// Prints the styles.
+			add_action( 'wp', array( $this, 'print_styles_action' ) );
+			return;
 		}
 
-		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), $priority );
-
-		// Prints the styles.
-		add_action( 'wp', array( $this, 'print_styles_action' ) );
+		add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
 	}
 
 	/**
