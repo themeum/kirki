@@ -273,7 +273,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_modules_css() {
-		$this->modules_css = Kirki_Modules_CSS::get_instance();
+		$this->modules_css = \Kirki\Modules\CSS\Module::get_instance();
 	}
 
 	/**
