@@ -3,7 +3,7 @@
  * Plugin Name:   Kirki Toolkit
  * Plugin URI:    http://aristath.github.io/kirki
  * Description:   The ultimate WordPress Customizer Toolkit
- * Author:        Aristeides Stathopoulos
+ * Author:        Ari Stathopoulos (@aristath)
  * Author URI:    http://aristath.github.io
  * Version:       3.0.36-beta.2
  * Text Domain:   kirki
@@ -14,8 +14,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
