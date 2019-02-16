@@ -201,11 +201,15 @@ class Kirki_Modules_CSS {
 				/**
 				 * Note to code reviewers:
 				 *
-				 * Though all output should be run through an escaping function, this is pure CSS
-				 * and the PHP header() function we're using above makes the browser interpret it as such.
+				 * Though all output should be run through an escaping function, this is pure CSS.
+				 *
+				 * When used in the print_styles_action() method the PHP header() call makes the browser interpret it as such.
 				 * No code, script or anything else can be executed from inside a stylesheet.
-				 * For extra security we're using the wp_strip_all_tags() function here
-				 * just to make sure there's no <script> tags in there or anything else.
+				 *
+				 * When using in the print_styles_inline() method the wp_strip_all_tags call we use below
+				 * strips anything that has the possibility to be malicious, and since this is inslide a <style> tag
+				 * it can only be interpreted by the browser as such.
+				 * wp_strip_all_tags() excludes the possibility of someone closing the <style> tag and then opening something else.
 				 */
 				echo wp_strip_all_tags( $styles ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
