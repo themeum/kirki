@@ -9,5 +9,5 @@ return array(
     'Kirki\\Modules\\CSS_Vars\\' => array($vendorDir . '/kirki-framework/module-css-vars/src'),
     'Kirki\\Modules\\CSS\\' => array($vendorDir . '/kirki-framework/module-css/src'),
     'Kirki\\Core\\' => array($vendorDir . '/kirki-framework/core/src'),
-    'Kirki\\Control\\' => array($vendorDir . '/kirki-framework/control-base/src', $vendorDir . '/kirki-framework/control-color/src'),
+    'Kirki\\Control\\' => array($vendorDir . '/kirki-framework/control-base/src', $vendorDir . '/kirki-framework/control-checkbox/src', $vendorDir . '/kirki-framework/control-code/src', $vendorDir . '/kirki-framework/control-color/src'),
 );

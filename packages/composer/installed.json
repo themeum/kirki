@@ -49,6 +49,106 @@
         ]
     },
     {
+        "name": "kirki-framework/control-checkbox",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-checkbox.git",
+            "reference": "3ce22067339eba928bfb6b49113063eb10011e8d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/3ce22067339eba928bfb6b49113063eb10011e8d",
+            "reference": "3ce22067339eba928bfb6b49113063eb10011e8d",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-17T09:00:29+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Checkbox control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-code",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-code.git",
+            "reference": "d4668dc1683c2f9705c550e99b753f8ff8302f49"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-code/zipball/d4668dc1683c2f9705c550e99b753f8ff8302f49",
+            "reference": "d4668dc1683c2f9705c550e99b753f8ff8302f49",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-17T09:07:59+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Code control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/control-color",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

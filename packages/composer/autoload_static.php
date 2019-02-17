@@ -4,11 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1030b55c5e6290703eaf78dcdbfc1700
+class ComposerStaticInit49a03ec7f73bac8c17d7449683ad10c5
 {
     public static $files = array (
-        '87c34c6c6680f5cbf57e2065b44cdcd1' => __DIR__ . '/..' . '/kirki-framework/core/src/aliases.php',
         'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
+        '87c34c6c6680f5cbf57e2065b44cdcd1' => __DIR__ . '/..' . '/kirki-framework/core/src/aliases.php',
+        '3828a3428ac6126936fc1807c796fd29' => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/aliases.php',
+        'cb5bace3763fc0771eefd25ddf042dfe' => __DIR__ . '/..' . '/kirki-framework/control-code/src/aliases.php',
         '28bceabd95641c2ffed7c4a6c4140d56' => __DIR__ . '/..' . '/kirki-framework/control-color/src/aliases.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
@@ -40,15 +42,17 @@ class ComposerStaticInit1030b55c5e6290703eaf78dcdbfc1700
         'Kirki\\Control\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-base/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-color/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/control-code/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/control-color/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1030b55c5e6290703eaf78dcdbfc1700::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1030b55c5e6290703eaf78dcdbfc1700::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit49a03ec7f73bac8c17d7449683ad10c5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit49a03ec7f73bac8c17d7449683ad10c5::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
