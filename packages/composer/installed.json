@@ -307,18 +307,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-cropped-image.git",
-            "reference": "a998367925d564d857a52c76fa087692058c1221"
+            "reference": "50184e5f983114eb90a131d8399c2f384bbac288"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-cropped-image/zipball/a998367925d564d857a52c76fa087692058c1221",
-            "reference": "a998367925d564d857a52c76fa087692058c1221",
+            "url": "https://api.github.com/repos/kirki-framework/control-cropped-image/zipball/50184e5f983114eb90a131d8399c2f384bbac288",
+            "reference": "50184e5f983114eb90a131d8399c2f384bbac288",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-02-17T11:33:43+00:00",
+        "time": "2019-02-17T13:06:01+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -356,19 +356,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-custom.git",
-            "reference": "747792e5b6c2e9502cb4291cfc129908ac702186"
+            "reference": "d4c9542e6649e69817f1fb761ae14a6350fa1390"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-custom/zipball/747792e5b6c2e9502cb4291cfc129908ac702186",
-            "reference": "747792e5b6c2e9502cb4291cfc129908ac702186",
+            "url": "https://api.github.com/repos/kirki-framework/control-custom/zipball/d4c9542e6649e69817f1fb761ae14a6350fa1390",
+            "reference": "d4c9542e6649e69817f1fb761ae14a6350fa1390",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-17T12:37:35+00:00",
+        "time": "2019-02-17T13:08:00+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -392,6 +392,56 @@
             }
         ],
         "description": "Custom control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-dashicons",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-dashicons.git",
+            "reference": "7ab9bd73b546c978ae65c00dafed144255efc1d3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/7ab9bd73b546c978ae65c00dafed144255efc1d3",
+            "reference": "7ab9bd73b546c978ae65c00dafed144255efc1d3",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-17T13:33:37+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Dashicons control for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

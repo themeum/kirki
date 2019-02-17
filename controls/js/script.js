@@ -1539,7 +1539,6 @@ kirki = jQuery.extend( kirki, {
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
 } );
-wp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend( {} );
 wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
