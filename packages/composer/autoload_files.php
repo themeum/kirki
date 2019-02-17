@@ -14,6 +14,7 @@ return array(
     'cb5bace3763fc0771eefd25ddf042dfe' => $vendorDir . '/kirki-framework/control-code/src/aliases.php',
     '02e6283a844c2ddf6af174adc878ef5f' => $vendorDir . '/kirki-framework/control-color-palette/src/aliases.php',
     '48169c443670736d2b1a514d020b64a1' => $vendorDir . '/kirki-framework/control-cropped-image/src/aliases.php',
+    '0bd495d9ba08e95186c90548d7cd511f' => $vendorDir . '/kirki-framework/control-custom/src/aliases.php',
     'bbfb95d513c9b499ebb3ff8793dfc7ce' => $vendorDir . '/kirki-framework/module-css/src/aliases.php',
     '3c2e0be98245672dad9b32c8768ee4fd' => $vendorDir . '/kirki-framework/module-css-vars/src/aliases.php',
 );
