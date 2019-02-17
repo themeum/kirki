@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit38145df0edd13012a8954245236e75e6
+class ComposerStaticInitb153ce738d3027ede456db7a118554d1
 {
     public static $files = array (
         'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
@@ -61,8 +61,8 @@ class ComposerStaticInit38145df0edd13012a8954245236e75e6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit38145df0edd13012a8954245236e75e6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit38145df0edd13012a8954245236e75e6::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb153ce738d3027ede456db7a118554d1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb153ce738d3027ede456db7a118554d1::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

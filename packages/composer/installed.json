@@ -406,19 +406,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-dashicons.git",
-            "reference": "7ab9bd73b546c978ae65c00dafed144255efc1d3"
+            "reference": "e043dccbf35122184b85b50208eedc264a7c4982"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/7ab9bd73b546c978ae65c00dafed144255efc1d3",
-            "reference": "7ab9bd73b546c978ae65c00dafed144255efc1d3",
+            "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/e043dccbf35122184b85b50208eedc264a7c4982",
+            "reference": "e043dccbf35122184b85b50208eedc264a7c4982",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-17T13:33:37+00:00",
+        "time": "2019-02-17T13:41:47+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
