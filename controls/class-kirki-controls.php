@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.17
  */
@@ -64,7 +64,7 @@ class Kirki_Controls {
 		foreach ( $this->templates as $template ) {
 			if ( file_exists( $this->views_path . $template . '.php' ) ) {
 				echo '<script type="text/html" id="tmpl-kirki-input-' . esc_attr( $template ) . '">';
-				include $this->views_path . $template . '.php';
+				include $this->views_path . $template . '.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 				echo '</script>';
 			}
 		}

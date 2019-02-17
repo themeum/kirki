@@ -21,8 +21,8 @@ The `background` control allows you to have every CSS background property under 
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'background',
 	'settings'    => 'background_setting',
-	'label'       => esc_html__( 'Background Control', 'textdomain' ),
-	'description' => esc_html__( 'Background conrols are pretty complex - but extremely useful if properly used.', 'textdomain' ),
+	'label'       => esc_html__( 'Background Control', 'kirki' ),
+	'description' => esc_html__( 'Background conrols are pretty complex - but extremely useful if properly used.', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => [
 		'background-color'      => 'rgba(20,20,20,.8)',

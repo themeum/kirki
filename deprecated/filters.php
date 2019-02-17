@@ -1,5 +1,5 @@
 <?php
-// @codingStandardsIgnoreFile
+// phpcs:ignoreFile
 
 add_filter( 'kirki_config', function( $args ) {
 	return apply_filters( 'kirki/config', $args );

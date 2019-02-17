@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -147,7 +147,8 @@ class Kirki_Init {
 		}
 
 		$skip_control_types = apply_filters(
-			'kirki_control_types_exclude', array(
+			'kirki_control_types_exclude',
+			array(
 				'Kirki_Control_Repeater',
 				'WP_Customize_Control',
 			)

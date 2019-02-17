@@ -23,8 +23,8 @@ You can define inside the `choices` arguments an array of colors, the style (`ro
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_0',
-	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_html__( 'This is a color-palette control', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
+	'description' => esc_html__( 'This is a color-palette control', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#888888',
 	'choices'     => [
@@ -47,8 +47,8 @@ Some additional examples using those helper methods:
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_4',
-	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_html__( 'Material Design Colors - all', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
+	'description' => esc_html__( 'Material Design Colors - all', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#F44336',
 	'choices'     => [
@@ -65,8 +65,8 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_1',
-	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_html__( 'Material Design Colors - primary', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
+	'description' => esc_html__( 'Material Design Colors - primary', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#000000',
 	'choices'     => [
@@ -84,7 +84,7 @@ Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_2',
 	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
-	'description' => esc_html__( 'Material Design Colors - red', 'textdomain' ),
+	'description' => esc_html__( 'Material Design Colors - red', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#FF1744',
 	'choices'     => [
@@ -101,8 +101,8 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color-palette',
 	'settings'    => 'color_palette_setting_3',
-	'label'       => esc_html__( 'Color-Palette', 'textdomain' ),
-	'description' => esc_html__( 'Material Design Colors - A100', 'textdomain' ),
+	'label'       => esc_html__( 'Color-Palette', 'kirki' ),
+	'description' => esc_html__( 'Material Design Colors - A100', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => '#FF80AB',
 	'choices'     => [

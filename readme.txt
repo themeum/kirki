@@ -1,10 +1,10 @@
 === Kirki ===
-Contributors: aristath, fovoc, igmoweb
+Contributors: aristath, wplemon, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 5.0
-Stable tag: 3.0.35.3
+Stable tag: 3.0.36
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -19,9 +19,16 @@ Using Kirki theme developers can create rich experiences for the WordPress Custo
 
 Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
-We advise you to familiarise yourself with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+Premium controls are also available for premium themes:
 
-You can find detailed documentation on how to use Kirki on [https://aristath.github.io/kirki/](https://aristath.github.io/kirki/)
+* [Kirki WCAG Text Colorpicker](https://wplemon.com/downloads/kirki-wcag-text-colorpicker/)
+* [Kirki WCAG Links Colorpicker](https://wplemon.com/downloads/kirki-wcag-link-colorpicker/)
+* [Kirki Box Model](https://wplemon.com/downloads/kirki-box-model/)
+* [Kirki Box Shadow](https://wplemon.com/downloads/kirki-box-shadow/)
+
+Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+
+You can find detailed documentation on how to use Kirki on [aristath.github.io/kirki/](https://aristath.github.io/kirki/)
 
 [Development and issues on github](https://github.com/aristath/kirki).
 
@@ -32,6 +39,33 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.36 =
+
+Feb. 17, 2019, dev time > 100h
+
+This updates represents a big performance improvement both for the frontend and the customizer.
+In the frontend the google-fonts are now loaded more efficiently and the `font-display` property was added to `@font-face` CSS from the google API responses.
+In the customizer the `postMessage` module was completely rewritten.
+
+* Fix: `active_callback` argument for `dropdown-pages` control. [#2055](https://github.com/aristath/kirki/issues/2055)
+* Fix: `color ` control issues when inside a repeater. [#2059](https://github.com/aristath/kirki/issues/2059)
+* Fix: Updated Google Fonts
+* Fix: No longer enqueueing an empty stylesheet in order to add styles inline.
+* Fix: Gutenberg implementation improvements.
+* New: Google Fonts are now embedded inside the dynamic-css instead of using the webfont-loader script when not in the customizer.
+* New: Google Fonts are now always used locally when possible, the google-CDN is only used as a fallback.
+* New: Performance improvement by using `font-display:swap` for google-fonts.
+* New: Added `kirki_googlefonts_font_display` filter.
+* New: Added a new `link` section-type.
+* New: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
+* New: Added telemetry module. See [aristath.github.io/kirki/docs/modules/telemetry](https://aristath.github.io/kirki/docs/modules/telemetry.html) for details.
+* New: Improved CSS loading method. Styles are now added inline.
+* New: Introduced a `kirki_output_inline_styles` filter - can be used by themes that want to enqueue a dynamic stylesheet with a URL `example.com/?action=kirki-styles` instead of the inline method.
+* Deprecated: Removed the "host locally" option from typography controls. This is now the default behaviour and significantly improves performance. Option is no longer necessary.
+* Deprecated: Removed the `Kirki_CSS_To_File` class.
+* Reprecated: Removed the `Kirki_Modules_Webfonts_Local` class.
+* Deprecated: Removed the `Kirki_Fonts_Google_Local` class.
 
 = 3.0.35.3 =
 

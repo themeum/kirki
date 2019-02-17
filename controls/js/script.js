@@ -830,7 +830,13 @@ kirki = jQuery.extend( kirki, {
 				} );
 
 				element.on( 'change keyup paste click', function() {
-					kirki.setting.set( control.id, jQuery( this ).val() );
+					var val = jQuery( this ).val();
+					if ( isNaN( val ) ) {
+						val = parseFloat( val, 10 );
+						val = ( isNaN( val ) ) ? 0 : val;
+						jQuery( this ).attr( 'value', val );
+					}
+					kirki.setting.set( control.id, val );
 				} );
 			}
 
@@ -899,7 +905,7 @@ kirki = jQuery.extend( kirki, {
 							previewImage  = jsonImg.url;
 
 						if ( ! _.isUndefined( jsonImg.sizes ) ) {
-							previewImg = jsonImg.sizes.full.url;
+							previewImage = jsonImg.sizes.full.url;
 							if ( ! _.isUndefined( jsonImg.sizes.medium ) ) {
 								previewImage = jsonImg.sizes.medium.url;
 							} else if ( ! _.isUndefined( jsonImg.sizes.thumbnail ) ) {
@@ -3170,7 +3176,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 		control.renderFontSelector();
 		control.renderBackupFontSelector();
 		control.renderVariantSelector();
-		control.localFontsCheckbox();
 
 		// Font-size.
 		if ( 'undefined' !== typeof control.params.default['font-size'] ) {
@@ -3566,22 +3571,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			google: googleFonts,
 			standard: standardFonts
 		};
-	},
-
-	localFontsCheckbox: function() {
-		var control           = this,
-			checkboxContainer = control.container.find( '.kirki-host-font-locally' ),
-			checkbox          = control.container.find( '.kirki-host-font-locally input' ),
-			checked           = jQuery( checkbox ).is( ':checked' );
-
-		if ( control.setting._value && control.setting._value.downloadFont ) {
-			jQuery( checkbox ).attr( 'checked', 'checked' );
-		}
-
-		jQuery( checkbox ).on( 'change', function() {
-			checked = jQuery( checkbox ).is( ':checked' );
-			control.saveValue( 'downloadFont', checked );
-		} );
 	},
 
 	/**

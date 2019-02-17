@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -110,7 +110,9 @@ class Kirki_Settings {
 
 		$this->wp_customize->add_setting(
 			new $classname(
-				$this->wp_customize, $setting, array(
+				$this->wp_customize,
+				$setting,
+				array(
 					'default'           => $default,
 					'type'              => $type,
 					'capability'        => $capability,
@@ -132,7 +134,8 @@ class Kirki_Settings {
 
 		// Apply the kirki_setting_types filter.
 		$this->setting_types = apply_filters(
-			'kirki_setting_types', array(
+			'kirki_setting_types',
+			array(
 				'default'     => 'WP_Customize_Setting',
 				'repeater'    => 'Kirki_Settings_Repeater_Setting',
 				'user_meta'   => 'Kirki_Setting_User_Meta',

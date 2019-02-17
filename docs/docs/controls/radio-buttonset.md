@@ -21,14 +21,14 @@ You can define the available options using the `choices` argument and formating 
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'radio-buttonset',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Radio-Buttonset Control', 'textdomain' ),
+	'label'       => esc_html__( 'Radio-Buttonset Control', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => 'red',
 	'priority'    => 10,
 	'choices'     => [
-		'red'   => esc_html__( 'Red', 'textdomain' ),
-		'green' => esc_html__( 'Green', 'textdomain' ),
-		'blue'  => esc_html__( 'Blue', 'textdomain' ),
+		'red'   => esc_html__( 'Red', 'kirki' ),
+		'green' => esc_html__( 'Green', 'kirki' ),
+		'blue'  => esc_html__( 'Blue', 'kirki' ),
 	],
 ] );
 ```

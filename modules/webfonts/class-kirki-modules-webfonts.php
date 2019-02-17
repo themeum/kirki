@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Modules
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -47,9 +47,9 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' );
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google-local.php' );
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-helper.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 		add_action( 'wp_loaded', array( $this, 'run' ) );
 
@@ -90,11 +90,11 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function init() {
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
-			$method    = $this->get_method( $config_id );
-			$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
-			new $classname( $config_id, $this, $this->fonts_google );
+			if ( 'async' === $this->get_method() ) {
+				new Kirki_Modules_Webfonts_Async( $config_id, $this, $this->fonts_google );
+			}
+			new Kirki_Modules_Webfonts_Embed( $config_id, $this, $this->fonts_google );
 		}
-		new Kirki_Modules_Webfonts_Local( $this, $this->fonts_google );
 	}
 
 	/**
@@ -102,27 +102,11 @@ class Kirki_Modules_Webfonts {
 	 *
 	 * @access public
 	 * @since 3.0.0
+	 * @deprecated in 3.0.36.
 	 * @return string
 	 */
 	public function get_method() {
-
-		// Figure out which method to use.
-		$method = apply_filters( 'kirki_googlefonts_load_method', 'async' );
-
-		// Fallback to 'async' if value is invalid.
-		if ( 'async' !== $method && 'embed' !== $method && 'link' !== $method ) {
-			$method = 'async';
-		}
-
-		$classname = 'Kirki_Modules_Webfonts_' . ucfirst( $method );
-		if ( ! class_exists( $classname ) ) {
-			$method = 'async';
-		}
-
-		// Force using the JS method while in the customizer.
-		// This will help us work-out the live-previews for typography fields.
-		// If we're not in the customizer use the defined method.
-		return ( is_customize_preview() ) ? 'async' : $method;
+		return ( is_customize_preview() ) ? 'async' : 'embed';
 	}
 
 	/**

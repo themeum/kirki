@@ -21,9 +21,9 @@ heroButtons:
 Kirki::add_field( 'theme_config_id', [
 	'type'     => 'textarea',
 	'settings' => 'my_setting',
-	'label'    => esc_html__( 'Textarea Control', 'textdomain' ),
+	'label'    => esc_html__( 'Textarea Control', 'kirki' ),
 	'section'  => 'section_id',
-	'default'  => esc_html__( 'This is a default value', 'textdomain' ),
+	'default'  => esc_html__( 'This is a default value', 'kirki' ),
 	'priority' => 10,
 ] );
 ```

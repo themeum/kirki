@@ -27,8 +27,8 @@ Using Kirki:
 ```php
 Kirki::add_panel( 'panel_id', array(
     'priority'    => 10,
-    'title'       => esc_html__( 'My Panel', 'textdomain' ),
-    'description' => esc_html__( 'My panel description', 'textdomain' ),
+    'title'       => esc_html__( 'My Panel', 'kirki' ),
+    'description' => esc_html__( 'My panel description', 'kirki' ),
 ) );
 ```
 
@@ -42,8 +42,8 @@ Sections are wrappers for controls, a way to group multiple controls together. A
 Using Kirki:
 ```php
 Kirki::add_section( 'section_id', array(
-    'title'          => esc_html__( 'My Section', 'textdomain' ),
-    'description'    => esc_html__( 'My section description.', 'textdomain' ),
+    'title'          => esc_html__( 'My Section', 'kirki' ),
+    'description'    => esc_html__( 'My section description.', 'kirki' ),
     'panel'          => 'panel_id',
     'priority'       => 160,
 ) );

@@ -21,7 +21,7 @@ Palette controls are essentially [`radio`](radio) controls. The difference betwe
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'palette',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Palette Control', 'textdomain' ),
+	'label'       => esc_html__( 'Palette Control', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => 'light',
 	'priority'    => 10,

@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.12
  */
@@ -26,7 +26,8 @@ if ( ! class_exists( 'Kirki' ) ) {
  * @link https://aristath.github.io/kirki/docs/getting-started/config.html
  */
 Kirki::add_config(
-	'kirki_demo', array(
+	'kirki_demo',
+	array(
 		'capability'  => 'edit_theme_options',
 		'option_type' => 'theme_mod',
 	)
@@ -38,7 +39,8 @@ Kirki::add_config(
  * @link https://aristath.github.io/kirki/docs/getting-started/panels.html
  */
 Kirki::add_panel(
-	'kirki_demo_panel', array(
+	'kirki_demo_panel',
+	array(
 		'priority'    => 10,
 		'title'       => esc_html__( 'Kirki Demo Panel', 'kirki' ),
 		'description' => esc_html__( 'Contains sections for all kirki controls.', 'kirki' ),
@@ -64,6 +66,7 @@ $sections = array(
 	'date'            => array( esc_html__( 'Date', 'kirki' ), '' ),
 	'dimension'       => array( esc_html__( 'Dimension', 'kirki' ), '' ),
 	'dimensions'      => array( esc_html__( 'Dimensions', 'kirki' ), '' ),
+	'dropdown-pages'  => array( esc_html__( 'Dropdown Pages', 'kirki' ), '' ),
 	'editor'          => array( esc_html__( 'Editor', 'kirki' ), '' ),
 	'fontawesome'     => array( esc_html__( 'Font-Awesome', 'kirki' ), '' ),
 	'generic'         => array( esc_html__( 'Generic', 'kirki' ), '' ),
@@ -95,6 +98,16 @@ foreach ( $sections as $section_id => $section ) {
 	}
 	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
 }
+
+Kirki::add_section(
+	'pro_test',
+	array(
+		'title'       => esc_html__( 'Test Link Section', 'kirki' ),
+		'type'        => 'link',
+		'button_text' => esc_html__( 'Pro', 'kirki' ),
+		'button_url'  => 'https://wplemon.com',
+	)
+);
 
 /**
  * A proxy function. Automatically passes-on the config-id.
@@ -426,6 +439,24 @@ my_config_kirki_add_field(
 		),
 	)
 );
+
+/**
+ * Dropdown-pages Control.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'dropdown-pages',
+		'settings'    => 'dropdown-pages',
+		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+		'description' => esc_html__( 'Description Here.', 'kirki' ),
+		'section'     => 'dropdown_pages_section',
+		'default'     => array(
+			'width'  => '100px',
+			'height' => '100px',
+		),
+	)
+);
+
 
 /**
  * Font-Awesome Control.
@@ -851,6 +882,17 @@ my_config_kirki_add_field(
 		'description' => esc_html__( 'Description', 'kirki' ),
 		'section'     => 'toggle_section',
 		'default'     => true,
+		// WIP.
+		'transport'   => 'postMessage',
+		// WIP.
+		'js_vars'     => array(
+			array(
+				'element'  => '.site-description',
+				'function' => 'toggleClass',
+				'class'    => 'hidden',
+				'value'    => true,
+			),
+		),
 	)
 );
 
@@ -949,7 +991,8 @@ function kirki_sidebars_select_example() {
 		return;
 	}
 	Kirki::add_field(
-		'kirki_demo', array(
+		'kirki_demo',
+		array(
 			'type'        => 'select',
 			'settings'    => 'sidebars_select',
 			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),

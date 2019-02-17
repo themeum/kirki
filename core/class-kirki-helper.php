@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -34,8 +34,16 @@ class Kirki_Helper {
 			return array_replace_recursive( $array, $array1 );
 		}
 
-		// Handle the arguments, merge one by one.
-		$args  = func_get_args();
+		/**
+		 * Handle the arguments, merge one by one.
+		 *
+		 * In PHP 7 func_get_args() changed the way it behaves but this doesn't mean anything in this case
+		 * sinc ethis method is only used when the array_replace_recursive() function doesn't exist
+		 * and that was introduced in PHP v5.3.
+		 *
+		 * Once WordPress-Core raises its minimum requirements we''' be able to remove this fallback completely.
+		 */
+		$args  = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue
 		$array = $args[0];
 		if ( ! is_array( $array ) ) {
 			return $array;
@@ -121,7 +129,7 @@ class Kirki_Helper {
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {
-			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+			require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			WP_Filesystem( $credentials );
 		}
 
@@ -247,7 +255,8 @@ class Kirki_Helper {
 		$post_types = get_post_types(
 			array(
 				'public' => true,
-			), 'objects'
+			),
+			'objects'
 		);
 
 		// Build the array.
@@ -411,7 +420,7 @@ class Kirki_Helper {
 			return $value1 !== $value2;
 		}
 		if ( ( '!=' === $operator || 'not equal' === $operator ) ) {
-			return $value1 != $value2; // WPCS: loose comparison ok.
+			return $value1 != $value2; // phpcs:ignore WordPress.PHP.StrictComparisons
 		}
 		if ( ( '>=' === $operator || 'greater or equal' === $operator || 'equal or greater' === $operator ) ) {
 			return $value2 >= $value1;
@@ -428,20 +437,20 @@ class Kirki_Helper {
 		if ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && is_array( $value2 ) ) {
 				foreach ( $value2 as $val ) {
-					if ( in_array( $val, $value1 ) ) { // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+					if ( in_array( $val, $value1 ) ) { // phpcs:ignore WordPress.PHP.StrictInArray
 						return true;
 					}
 				}
 				return false;
 			}
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				return in_array( $value2, $value1 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+				return in_array( $value2, $value1 ); // phpcs:ignore WordPress.PHP.StrictInArray
 			}
 			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray
 			}
 			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}
-		return $value1 == $value2; // WPCS: loose comparison ok.
+		return $value1 == $value2; // phpcs:ignore WordPress.PHP.StrictComparisons
 	}
 }

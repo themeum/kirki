@@ -21,7 +21,7 @@ You can define the available options using the `choices` argument and formating 
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'radio-image',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Radio Control', 'textdomain' ),
+	'label'       => esc_html__( 'Radio Control', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => 'red',
 	'priority'    => 10,

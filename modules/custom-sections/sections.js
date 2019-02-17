@@ -15,8 +15,19 @@ jQuery( document ).ready( function() {
 		}
 
 	} );
-
 } );
+
+/**
+ * See https://github.com/justintadlock/trt-customizer-pro
+ */
+( function() {
+	wp.customize.sectionConstructor['kirki-link'] = wp.customize.Section.extend( {
+		attachEvents: function() {},
+		isContextuallyActive: function() {
+			return true;
+		}
+	} );
+} () );
 
 /**
  * @see https://wordpress.stackexchange.com/a/256103/17078

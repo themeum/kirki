@@ -5,8 +5,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -55,7 +55,7 @@ class Kirki_Autoload {
 
 		// Check if we've got it cached and ready.
 		if ( isset( $this->cached_paths[ $class_name ] ) && file_exists( $this->cached_paths[ $class_name ] ) ) {
-			include_once $this->cached_paths[ $class_name ];
+			include_once $this->cached_paths[ $class_name ]; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			return;
 		}
 
@@ -65,7 +65,7 @@ class Kirki_Autoload {
 			$path = wp_normalize_path( $path );
 			if ( file_exists( $path ) ) {
 				$this->cached_paths[ $class_name ] = $path;
-				include_once $path;
+				include_once $path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 				return;
 			}
 		}

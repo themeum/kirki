@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */
@@ -106,7 +106,7 @@ class Kirki_Output {
 			}
 			if ( is_array( $value ) ) {
 				foreach ( array_keys( $value ) as $value_k ) {
-					if ( ! is_string( $value[ $value_k ] ) ) {
+					if ( is_array( $value[ $value_k ] ) ) {
 						continue;
 					}
 					if ( isset( $output['choice'] ) ) {
@@ -164,6 +164,9 @@ class Kirki_Output {
 						break;
 					default:
 						$replacement = get_theme_mod( $replace );
+						if ( ! $replacement ) {
+							$replacement = Kirki_Values::get_value( $this->field['kirki_config'], $replace );
+						}
 				}
 				$replacement = ( false === $replacement ) ? '' : $replacement;
 				if ( is_array( $value ) ) {
@@ -243,10 +246,10 @@ class Kirki_Output {
 			if ( is_admin() && ! is_customize_preview() ) {
 
 				// Check if this is an admin style.
-				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'] ) ) {
+				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
 					continue;
 				}
-			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'] ) ) {
+			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
 
 				// Check if this is a frontend style.
 				continue;
@@ -304,7 +307,8 @@ class Kirki_Output {
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters(
-			"kirki_{$this->config_id}_output_property_classnames", array(
+			"kirki_{$this->config_id}_output_property_classnames",
+			array(
 				'font-family'         => 'Kirki_Output_Property_Font_Family',
 				'background-image'    => 'Kirki_Output_Property_Background_Image',
 				'background-position' => 'Kirki_Output_Property_Background_Position',

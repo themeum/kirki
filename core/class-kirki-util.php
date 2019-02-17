@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.9
  */
@@ -36,7 +36,7 @@ class Kirki_Util {
 	public static function is_plugin() {
 		$is_plugin = false;
 		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		}
 
 		// Get all plugins.
@@ -55,7 +55,7 @@ class Kirki_Util {
 		}
 
 		// Make sure the is_plugins_loaded function is loaded.
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		include_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 		// Extra logic in case the plugin is installed but not activated.
 		if ( $_plugin && is_plugin_inactive( $_plugin ) ) {

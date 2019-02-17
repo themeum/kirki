@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0
  */
@@ -122,8 +122,8 @@ final class Kirki_Modules_Webfonts_Link {
 		$this->link = add_query_arg(
 			array(
 				'family' => str_replace( '%2B', '+', rawurlencode( implode( '|', $link_fonts ) ) ),
-			), 'https://fonts.googleapis.com/css'
+			),
+			'https://fonts.googleapis.com/css'
 		);
-
 	}
 }

@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -56,7 +56,8 @@ class Kirki_Modules {
 	 */
 	public function setup_default_modules() {
 		self::$modules = apply_filters(
-			'kirki_modules', array(
+			'kirki_modules',
+			array(
 				'css'                => 'Kirki_Modules_CSS',
 				'css-vars'           => 'Kirki_Modules_CSS_Vars',
 				'customizer-styling' => 'Kirki_Modules_Customizer_Styling',
@@ -72,6 +73,7 @@ class Kirki_Modules {
 				'webfont-loader'     => 'Kirki_Modules_Webfont_Loader',
 				'preset'             => 'Kirki_Modules_Preset',
 				'gutenberg'          => 'Kirki_Modules_Gutenberg',
+				'telemetry'          => 'Kirki_Modules_Telemetry',
 			)
 		);
 	}

@@ -9,7 +9,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Tim Elsass
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license     https://opensource.org/licenses/MIT
  * @since       3.0.35
  */
@@ -77,15 +77,6 @@ class Kirki_Modules_Gutenberg {
 	private $google_fonts;
 
 	/**
-	 * Webfonts Loader Module reference.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 * @var object $modules_webfonts
-	 */
-	private $modules_webfont_loader;
-
-	/**
 	 * Constructor.
 	 *
 	 * @access protected
@@ -108,7 +99,6 @@ class Kirki_Modules_Gutenberg {
 		$this->set_modules_css();
 		$this->set_google_fonts();
 		$this->set_modules_webfonts();
-		$this->set_modules_webfont_loader();
 		$this->add_hooks();
 	}
 
@@ -137,7 +127,6 @@ class Kirki_Modules_Gutenberg {
 	protected function add_hooks() {
 		if ( ! $this->is_disabled() ) {
 			add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 999 );
-			add_action( 'enqueue_block_editor_assets', array( $this, 'load_fonts' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_fontawesome' ) );
 			add_filter( 'block_editor_settings', array( $this, 'enqueue' ) );
 		}
@@ -162,6 +151,7 @@ class Kirki_Modules_Gutenberg {
 	 * Enqueue styles to Gutenberg Editor.
 	 *
 	 * @access public
+	 * @param array $settings The settings for styles.
 	 * @since 3.0.35
 	 */
 	public function enqueue( $settings ) {
@@ -193,7 +183,7 @@ class Kirki_Modules_Gutenberg {
 			}
 
 			$modules_css = $this->modules_css;
-			$styles      = $modules_css::loop_controls( $config_id );
+			$styles      = $modules_css::loop_controls( $config_id ); // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 			$styles      = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
 
 			if ( empty( $styles ) ) {
@@ -211,6 +201,7 @@ class Kirki_Modules_Gutenberg {
 	 * gutenbeg_support argument, and disabled output argument.
 	 *
 	 * @access public
+	 * @param array $args An array of arguments.
 	 * @since 3.0.35
 	 *
 	 * @return bool $disabled Is gutenberg integration feature disabled?
@@ -234,45 +225,6 @@ class Kirki_Modules_Gutenberg {
 	}
 
 	/**
-	 * Load Fonts in Gutenberg Editor.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 */
-	public function load_fonts() {
-
-		$modules_webfonts = $this->modules_webfonts;
-		$google_fonts     = $this->google_fonts;
-		foreach ( $this->configs as $config_id => $args ) {
-
-			if ( $this->is_disabled( $args ) ) {
-				continue;
-			}
-
-			$this->modules_webfont_loader->set_load( true );
-			$this->modules_webfont_loader->enqueue_scripts();
-
-			$async = new Kirki_Modules_Webfonts_Async(
-				$config_id,
-				$modules_webfonts::get_instance(),
-				$google_fonts::get_instance()
-			);
-
-			$async->webfont_loader();
-			$async->webfont_loader_script();
-
-			$local_fonts = new Kirki_Modules_Webfonts_Local(
-				$modules_webfonts::get_instance(),
-				$google_fonts::get_instance()
-			);
-
-			$local_fonts->add_styles();
-
-			return;
-		}
-	}
-
-	/**
 	 * Enqueue fontawesome in Gutenberg Editor.
 	 *
 	 * @access public
@@ -285,7 +237,7 @@ class Kirki_Modules_Gutenberg {
 				continue;
 			}
 			$modules_css = $this->modules_css;
-			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) {
+			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) { // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
 				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
 			}
 
@@ -300,7 +252,8 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_configs() {
-		return $this->configs = Kirki::$config;
+		$this->configs = Kirki::$config;
+		return $this->configs;
 	}
 
 	/**
@@ -341,15 +294,5 @@ class Kirki_Modules_Gutenberg {
 	 */
 	private function set_modules_webfonts() {
 		$this->modules_webfonts = Kirki_Modules_Webfonts::get_instance();
-	}
-
-	/**
-	 * Set class property for $modules_webfont_loader.
-	 *
-	 * @access private
-	 * @since 3.0.35
-	 */
-	private function set_modules_webfont_loader() {
-		$this->modules_webfont_loader = Kirki_Modules_Webfont_Loader::get_instance();
 	}
 }
