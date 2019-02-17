@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc03d81274a2a238d2af9031d0ebdeab8
+class ComposerStaticInita5616e8d1e7578c3b06bf4fff3878c4b
 {
     public static $files = array (
         'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
@@ -14,6 +14,7 @@ class ComposerStaticInitc03d81274a2a238d2af9031d0ebdeab8
         '3828a3428ac6126936fc1807c796fd29' => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/aliases.php',
         'cb5bace3763fc0771eefd25ddf042dfe' => __DIR__ . '/..' . '/kirki-framework/control-code/src/aliases.php',
         '02e6283a844c2ddf6af174adc878ef5f' => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/aliases.php',
+        '48169c443670736d2b1a514d020b64a1' => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src/aliases.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
     );
@@ -49,14 +50,15 @@ class ComposerStaticInitc03d81274a2a238d2af9031d0ebdeab8
             3 => __DIR__ . '/..' . '/kirki-framework/control-code/src',
             4 => __DIR__ . '/..' . '/kirki-framework/control-color/src',
             5 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc03d81274a2a238d2af9031d0ebdeab8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc03d81274a2a238d2af9031d0ebdeab8::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita5616e8d1e7578c3b06bf4fff3878c4b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita5616e8d1e7578c3b06bf4fff3878c4b::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

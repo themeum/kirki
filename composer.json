@@ -27,7 +27,8 @@
     "kirki-framework/control-checkbox": "dev-master",
     "kirki-framework/control-code": "dev-master",
     "kirki-framework/control-color": "dev-master",
-    "kirki-framework/control-color-palette": "dev-master"
+    "kirki-framework/control-color-palette": "dev-master",
+    "kirki-framework/control-cropped-image": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
