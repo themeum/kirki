@@ -1,13 +1,13 @@
 ---
 layout: default
-title: The "Kirki Accessible Colorpicker" control
-slug: kirki-atcp
+title: The "Kirki WCAG Text Colorpicker" control
+slug: kirki-wcag-text-color
 subtitle: Premium Kirki Control
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
 heroButtons:
-  - url: https://wplemon.com/downloads/kirki-accessible-text-colorpicker/
+  - url: https://wplemon.com/downloads/kirki-wcag-text-colorpicker/
     class: white button round border-only
     icon: fa fa-arrow-circle-o-right
     label: Buy License
@@ -16,11 +16,12 @@ heroButtons:
 
 <div class="callout success" style="text-align:center">
 	<p>This is a premium control. You can use in your <strong>premium theme</strong> by purchasing a license.</p>
-	<a href="https://wplemon.com/downloads/kirki-accessible-text-colorpicker/" class="button round">Buy License</a>
+	<a href="https://wplemon.com/downloads/kirki-wcag-text-colorpicker/" class="button round">Buy License</a>
 </div>
 
 <img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/kirki-atcp.gif" alt="accessible-textlorpicker control example" style="max-width:300px;max-height:100vh;float:right;padding-left:1em;">
-The **Kirki Accessible-Text Colorpicker** plugin (or Kirki-ATCP for short) is an advanced control for the WordPress Customizer and can be used as an add-on for the Kirki Toolkit. It introduces a new custom control to the WordPress Customizer using the Kirki API.
+The **Kirki WCAG Text Colorpicker** plugin is an advanced control for the WordPress Customizer and can be used as an add-on for the Kirki Toolkit. 
+
 You can use this control one of 2 ways:
 
 1. Using the default WordPress Customizer API
@@ -41,16 +42,16 @@ You can configure most of the arguments used to calculate the accessible colors 
 When embedding this control in your theme, you will need to include its file and also add a filter to properly modify the URL for the scripts and styles this addon uses:
 
 ```php
-require_once get_template_directory() . '/inc/kirki-atcp/kirki-atcp.php';
+require_once get_template_directory() . '/inc/kirki-wcga-tc/kirki-wcag-tc.php';
 /**
  * Modify the URL for assets in our custom control.
  *
  * @return string
  */
-function my_theme_kirki_accessible_text_colorpicker_url() {
-	return get_template_directory_uri() . '/inc/kirki-atcp';
+function my_theme_kirki_wcag_text_color_url() {
+	return get_template_directory_uri() . '/inc/kirki-wcag-tc';
 }
-add_filter( 'kirki_accessible_text_colorpicker_url', 'my_theme_kirki_accessible_text_colorpicker_url' );
+add_filter( 'kirki_wcag_text_color_url', 'my_theme_kirki_wcag_text_color_url' );
 ```
 
 ## Adding a control.
@@ -68,7 +69,7 @@ If you want to use the WordPress Customizer API, then you can add your control l
  * @param WP_Customize_Manager $wp_customize The WordPress Customizer object.
  * @return void
  */
-function my_theme_example_kirki_atcp( $wp_customize ) {
+function my_theme_example_kirki_wcag_tc( $wp_customize ) {
 
 	// Add section.
 	$wp_customize->add_section( 'my_theme_colors', [
@@ -96,7 +97,7 @@ function my_theme_example_kirki_atcp( $wp_customize ) {
 	] );
 
 	// Add text-color control.
-	$wp_customize->add_control( new Kirki_Accessible_Text_Colorpicker( $wp_customize, 'text_color', [
+	$wp_customize->add_control( new Kirki_WCAG_Text_Color( $wp_customize, 'text_color', [
 		'label'       => esc_html__( 'Text Color', 'my-theme' ),
 		'description' => esc_html__( 'Select the text color for your content. Please choose one of the recommended colors to ensure readability with your selected background-color, or switch to the "Custom Color" tab to select any other color you want.', 'my-theme' ),
 		'section'     => 'my_theme_colors',
@@ -112,7 +113,7 @@ function my_theme_example_kirki_atcp( $wp_customize ) {
 		],
 	] ) );
 }
-add_action( 'customize_register', 'my_theme_example_kirki_atcp' );
+add_action( 'customize_register', 'my_theme_example_kirki_wcag_tc' );
 ```
 
 ### Using the Kirki API:
@@ -145,7 +146,7 @@ Kirki::add_field( 'my_theme', [
 	'settings'    => 'text_color',
 	'label'       => esc_html__( 'Text Color', 'my-theme' ),
 	'description' => esc_html__( 'Select the text color for your content. Please choose one of the recommended colors to ensure readability with your selected background-color, or switch to the "Custom Color" tab to select any other color you want.', 'my-theme' ),
-	'type'        => 'kirki-atcp',
+	'type'        => 'kirki-wcga-tc',
 	'section'     => 'my_theme_colors',
 	'default'     => '#000000',
 	'choices'     => [
@@ -180,7 +181,7 @@ The control accepts the same arguments as any other control. Please note that `c
 | `settings` | **REQUIRED** | `string` | The name of the theme_mod you want to save.
 | `label` | OPTIONAL | `string` | The label of the control.
 | `description` | OPTIONAL | `string` | The control’s description. Shows below the label.
-| `type` | **REQUIRED** | `string` | The control-type. To use this control this must be set to kirki_accessible_text_colorpicker.
+| `type` | **REQUIRED** | `string` | The control-type. To use this control this must be set to Kirki_WCAG_Text_Color.
 | `section` | **REQUIRED** | `string` | The section in which this control will be added.
 | `priority` | OPTIONAL | `int` | The control’s priority.
 | `default` | **REQUIRED** | `string` | The default color.
@@ -234,8 +235,8 @@ For the default values that makes 1600 checks for every background color change 
 		<li>This product is licenced under GPL 2.0.</li>
 		<li>Purchasing a license allows you to include it in a single premium plugin or theme.</li>
 		<li>If you want to include it in more than 1 of your products, a separate license will have to be acquired for each of your products.</li>
-		<li><strong>You may not include the “Kirki Accessible-Text Colorpicker” addon-on in a free product.</strong></li>
+		<li><strong>You may not include this control in a free product.</strong></li>
 	</ul>
 </div>
 
-<a href="https://wplemon.com/downloads/kirki-accessible-text-colorpicker/" class="button round">Buy License</a>
+<a href="https://wplemon.com/downloads/kirki-wcag-text-colorpicker/" class="button round">Buy License</a>
