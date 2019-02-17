@@ -450,6 +450,56 @@
         ]
     },
     {
+        "name": "kirki-framework/control-date",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-date.git",
+            "reference": "98df3b8f25780a59f2f9ef69c93dbff0746f467e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/98df3b8f25780a59f2f9ef69c93dbff0746f467e",
+            "reference": "98df3b8f25780a59f2f9ef69c93dbff0746f467e",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-17T21:59:45+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Date control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/core",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

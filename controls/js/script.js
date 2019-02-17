@@ -1539,23 +1539,6 @@ kirki = jQuery.extend( kirki, {
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
 } );
-wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
-
-	initKirkiControl: function() {
-		var control  = this,
-			selector = control.selector + ' input.datepicker';
-
-		// Init the datepicker
-		jQuery( selector ).datepicker( {
-			dateFormat: 'yy-mm-dd'
-		} );
-
-		// Save the changes
-		this.container.on( 'change keyup paste', 'input.datepicker', function() {
-			control.setting.set( jQuery( this ).val() );
-		} );
-	}
-} );
 /* global dimensionkirkiL10n */
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
