@@ -1,3 +1,15 @@
+- name: Stylizer
+  url: http://alxmedia.se/themes/stylizer/
+  thumb: http://demo.alxmedia.se/wp-content/themes/stylizer/screenshot.png
+
+- name: Curver
+  url: http://alxmedia.se/themes/curver/
+  thumb: http://demo.alxmedia.se/wp-content/themes/curver/screenshot.png
+
+- name: Boxstyle
+  url: http://alxmedia.se/themes/boxstyle/
+  thumb: http://demo.alxmedia.se/wp-content/themes/boxstyle/screenshot.png
+
 - name: Enspire
   url: http://alxmedia.se/themes/enspire/
   thumb: http://demo.alxmedia.se/wp-content/themes/enspire/screenshot.png
