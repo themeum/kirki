@@ -35,62 +35,6 @@ kirki = jQuery.extend( kirki, {
 		},
 
 		/**
-		 * Color input fields.
-		 *
-		 * @since 3.0.16
-		 */
-		color: {
-
-			/**
-			 * Init the control.
-			 *
-			 * @since 3.0.16
-			 * @param {Object} control - The control object.
-			 * @param {Object} control.id - The setting.
-			 * @param {Object} control.choices - Additional options for the colorpickers.
-			 * @param {Object} control.params - Control parameters.
-			 * @param {Object} control.params.choices - alias for control.choices.
-
-			 * @returns {null}
-			 */
-			init: function( control ) {
-				var picker = jQuery( '.kirki-color-control[data-id="' + control.id + '"]' ),
-					clear;
-
-				control.choices = control.choices || {};
-				if ( _.isEmpty( control.choices ) && control.params.choices ) {
-					control.choices = control.params.choices;
-				}
-
-				// If we have defined any extra choices, make sure they are passed-on to Iris.
-				if ( ! _.isEmpty( control.choices ) ) {
-					picker.wpColorPicker( control.choices );
-				}
-
-				// Tweaks to make the "clear" buttons work.
-				setTimeout( function() {
-					clear = jQuery( '.kirki-input-container[data-id="' + control.id + '"] .wp-picker-clear' );
-					if ( clear.length ) {
-						clear.click( function() {
-							kirki.setting.set( control.id, '' );
-						} );
-					}
-				}, 200 );
-
-				// Saves our settings to the WP API
-				picker.wpColorPicker( {
-					change: function() {
-
-						// Small hack: the picker needs a small delay
-						setTimeout( function() {
-							kirki.setting.set( control.id, picker.val() );
-						}, 20 );
-					}
-				} );
-			}
-		},
-
-		/**
 		 * Generic input fields.
 		 *
 		 * @since 3.0.17
