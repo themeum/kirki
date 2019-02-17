@@ -23,6 +23,7 @@
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-css-vars": "dev-master",
     "kirki-framework/control-base": "dev-master",
+    "kirki-framework/control-background": "dev-master",
     "kirki-framework/control-checkbox": "dev-master",
     "kirki-framework/control-code": "dev-master",
     "kirki-framework/control-color": "dev-master"
