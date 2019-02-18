@@ -1539,52 +1539,6 @@ kirki = jQuery.extend( kirki, {
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
 } );
-/* global dimensionkirkiL10n */
-wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
-
-	initKirkiControl: function() {
-
-		var control = this,
-			value;
-
-		// Notifications.
-		control.kirkiNotifications();
-
-		// Save the value
-		this.container.on( 'change keyup paste', 'input', function() {
-
-			value = jQuery( this ).val();
-			control.setting.set( value );
-		} );
-	},
-
-	/**
-	 * Handles notifications.
-	 */
-	kirkiNotifications: function() {
-
-		var control        = this,
-			acceptUnitless = ( 'undefined' !== typeof control.params.choices && 'undefined' !== typeof control.params.choices.accept_unitless && true === control.params.choices.accept_unitless );
-
-		wp.customize( control.id, function( setting ) {
-			setting.bind( function( value ) {
-				var code = 'long_title';
-
-				if ( false === kirki.util.validate.cssValue( value ) && ( ! acceptUnitless || isNaN( value ) ) ) {
-					setting.notifications.add( code, new wp.customize.Notification(
-						code,
-						{
-							type: 'warning',
-							message: dimensionkirkiL10n['invalid-value']
-						}
-					) );
-				} else {
-					setting.notifications.remove( code );
-				}
-			} );
-		} );
-	}
-} );
 /* global dimensionskirkiL10n */
 wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
