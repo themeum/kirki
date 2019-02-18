@@ -3,22 +3,6 @@ module.exports = function( grunt ) {
 
 	grunt.initConfig( {
 
-		// Get json file from the google-fonts API
-		http: {
-			'google-fonts-alpha': {
-				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
-				dest: 'modules/webfonts/webfonts-alpha.json'
-			},
-			'google-fonts-popularity': {
-				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
-				dest: 'modules/webfonts/webfonts-popularity.json'
-			},
-			'google-fonts-trending': {
-				options: { url: 'https://www.googleapis.com/webfonts/v1/webfonts?sort=trending&key=AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs' },
-				dest: 'modules/webfonts/webfonts-trending.json'
-			}
-		},
-
 		// Compile CSS
 		sass: {
 			dist: {
@@ -137,78 +121,11 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-http' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
 	grunt.registerTask( 'dev', [ 'sass', 'jscs', 'watch' ] );
-	grunt.registerTask( 'googlefontsProcess', function() {
-		var alphaFonts,
-			popularityFonts,
-			trendingFonts,
-			finalObject = {
-				items: {},
-				order: {
-					popularity: [],
-					trending: []
-				}
-			},
-			finalJSON,
-			i,
-			fontFiles = {};
-			fontNames = [];
-
-		// Get file contents.
-		alphaFonts      = grunt.file.readJSON( 'modules/webfonts/webfonts-alpha.json' );
-		popularityFonts = grunt.file.readJSON( 'modules/webfonts/webfonts-popularity.json' );
-		trendingFonts   = grunt.file.readJSON( 'modules/webfonts/webfonts-trending.json' );
-
-		// Populate the fonts.
-		for ( i = 0; i < alphaFonts.items.length; i++ ) {
-			finalObject.items[ alphaFonts.items[ i ].family ] = {
-				family: alphaFonts.items[ i ].family,
-				category: alphaFonts.items[ i ].category,
-				variants: alphaFonts.items[ i ].variants.sort()
-
-				/* Deprecated
-				subsets: alphaFonts.items[ i ].subsets.sort(),
-				files: alphaFonts.items[ i ].files
-				*/
-			};
-		}
-
-		// Add the popularity order.
-		for ( i = 0; i < popularityFonts.items.length; i++ ) {
-			finalObject.order.popularity.push( popularityFonts.items[ i ].family );
-			fontNames.push( popularityFonts.items[ i ].family );
-		}
-
-		// Add the rrending order.
-		for ( i = 0; i < trendingFonts.items.length; i++ ) {
-			finalObject.order.trending.push( trendingFonts.items[ i ].family );
-		}
-
-		// Generate the font-files object.
-		for ( i = 0; i < popularityFonts.items.length; i++ ) {
-			fontFiles[ popularityFonts.items[ i ].family ] = popularityFonts.items[ i ].files;
-		}
-
-		// Write the final object to json.
-		finalJSON = JSON.stringify( finalObject );
-		grunt.file.write( 'modules/webfonts/webfonts.json', finalJSON );
-		grunt.file.write( 'modules/webfonts/webfont-names.json', JSON.stringify( fontNames ) );
-		grunt.file.write( 'modules/webfonts/webfont-files.json', JSON.stringify( fontFiles ) );
-
-		// Delete files no longer needed.
-		grunt.file.delete( 'modules/webfonts/webfonts-alpha.json' ); // jshint ignore:line
-		grunt.file.delete( 'modules/webfonts/webfonts-popularity.json' ); // jshint ignore:line
-		grunt.file.delete( 'modules/webfonts/webfonts-trending.json' ); // jshint ignore:line
-	} );
-	grunt.registerTask( 'googlefonts', function() {
-		grunt.task.run( 'http' );
-		grunt.task.run( 'googlefontsProcess' );
-	} );
 	grunt.registerTask( 'default', [ 'sass:dist', 'concat', 'uglify' ] );
 	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
-	grunt.registerTask( 'all', [ 'default', 'googlefonts', 'wp_readme_to_markdown' ] );
+	grunt.registerTask( 'all', [ 'default', 'wp_readme_to_markdown' ] );
 };

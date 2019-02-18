@@ -19,4 +19,5 @@ return array(
     'c81bf14be6aed8a54dd795431d8f1609' => $vendorDir . '/kirki-framework/control-date/src/aliases.php',
     'bbfb95d513c9b499ebb3ff8793dfc7ce' => $vendorDir . '/kirki-framework/module-css/src/aliases.php',
     '3c2e0be98245672dad9b32c8768ee4fd' => $vendorDir . '/kirki-framework/module-css-vars/src/aliases.php',
+    '4becfd0b1c4f3bd1c4b12db74525d49e' => $vendorDir . '/kirki-framework/module-webfonts/src/aliases.php',
 );

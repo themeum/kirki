@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Kirki\\Modules\\Webfonts\\' => array($vendorDir . '/kirki-framework/module-webfonts/src'),
     'Kirki\\Modules\\CSS_Vars\\' => array($vendorDir . '/kirki-framework/module-css-vars/src'),
     'Kirki\\Modules\\CSS\\' => array($vendorDir . '/kirki-framework/module-css/src'),
     'Kirki\\Core\\' => array($vendorDir . '/kirki-framework/core/src'),

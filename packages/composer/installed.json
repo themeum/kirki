@@ -647,5 +647,55 @@
             "framework",
             "wordpress"
         ]
+    },
+    {
+        "name": "kirki-framework/module-webfonts",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-webfonts.git",
+            "reference": "aa0121a057986db04e3d95595845f814497802cc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/aa0121a057986db04e3d95595845f814497802cc",
+            "reference": "aa0121a057986db04e3d95595845f814497802cc",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/core": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-18T18:27:01+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Modules\\Webfonts\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Webfonts Module for the Kirki WordPress plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
     }
 ]
