@@ -33,7 +33,8 @@
     "kirki-framework/control-custom": "dev-master",
     "kirki-framework/control-dashicons": "dev-master",
     "kirki-framework/control-date": "dev-master",
-    "kirki-framework/control-dimension": "dev-master"
+    "kirki-framework/control-dimension": "dev-master",
+    "kirki-framework/control-dimensions": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

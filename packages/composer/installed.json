@@ -506,19 +506,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-dimension.git",
-            "reference": "79bc2f9ff95ed1997ca656ed7f868077c83181ca"
+            "reference": "7d1d65753145e753da29aaeb86c9292c2bea9f6c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/79bc2f9ff95ed1997ca656ed7f868077c83181ca",
-            "reference": "79bc2f9ff95ed1997ca656ed7f868077c83181ca",
+            "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/7d1d65753145e753da29aaeb86c9292c2bea9f6c",
+            "reference": "7d1d65753145e753da29aaeb86c9292c2bea9f6c",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-18T18:49:35+00:00",
+        "time": "2019-02-18T19:02:17+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -542,6 +542,56 @@
             }
         ],
         "description": "Dimension control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-dimensions",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-dimensions.git",
+            "reference": "db9dda4fc37f762658ea6fe58ba0415708ae28c4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/db9dda4fc37f762658ea6fe58ba0415708ae28c4",
+            "reference": "db9dda4fc37f762658ea6fe58ba0415708ae28c4",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-18T19:19:58+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Dimensions control for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

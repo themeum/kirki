@@ -18,6 +18,7 @@ return array(
     '28e3cee4a082bd8768f3e773889743ca' => $vendorDir . '/kirki-framework/control-dashicons/src/aliases.php',
     'c81bf14be6aed8a54dd795431d8f1609' => $vendorDir . '/kirki-framework/control-date/src/aliases.php',
     '8de1edff898b5676084c9da7ee1847ef' => $vendorDir . '/kirki-framework/control-dimension/src/aliases.php',
+    'cf84c47a0ece0f40aa57c14236e7982e' => $vendorDir . '/kirki-framework/control-dimensions/src/aliases.php',
     'bbfb95d513c9b499ebb3ff8793dfc7ce' => $vendorDir . '/kirki-framework/module-css/src/aliases.php',
     '3c2e0be98245672dad9b32c8768ee4fd' => $vendorDir . '/kirki-framework/module-css-vars/src/aliases.php',
     '4becfd0b1c4f3bd1c4b12db74525d49e' => $vendorDir . '/kirki-framework/module-webfonts/src/aliases.php',

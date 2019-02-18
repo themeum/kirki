@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6efe0bbc74218156f200ff88747bd875
+class ComposerStaticInitafc2fa143fa2e272dcdbf5c3572fe9ad
 {
     public static $files = array (
         'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
@@ -19,6 +19,7 @@ class ComposerStaticInit6efe0bbc74218156f200ff88747bd875
         '28e3cee4a082bd8768f3e773889743ca' => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/aliases.php',
         'c81bf14be6aed8a54dd795431d8f1609' => __DIR__ . '/..' . '/kirki-framework/control-date/src/aliases.php',
         '8de1edff898b5676084c9da7ee1847ef' => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/aliases.php',
+        'cf84c47a0ece0f40aa57c14236e7982e' => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/aliases.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
         '4becfd0b1c4f3bd1c4b12db74525d49e' => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src/aliases.php',
@@ -65,14 +66,15 @@ class ComposerStaticInit6efe0bbc74218156f200ff88747bd875
             8 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src',
             9 => __DIR__ . '/..' . '/kirki-framework/control-date/src',
             10 => __DIR__ . '/..' . '/kirki-framework/control-dimension/src',
+            11 => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6efe0bbc74218156f200ff88747bd875::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6efe0bbc74218156f200ff88747bd875::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitafc2fa143fa2e272dcdbf5c3572fe9ad::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitafc2fa143fa2e272dcdbf5c3572fe9ad::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
