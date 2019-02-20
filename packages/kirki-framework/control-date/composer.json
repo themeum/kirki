@@ -1,0 +1,26 @@
+{
+    "name": "kirki-framework/control-date",
+    "type": "library",
+    "description": "Date control for the Kirki Customizer framework.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/control-base": "dev-master"
+    },
+    "autoload": {
+		"psr-4": {
+			"Kirki\\Control\\": "src/"
+        },
+        "files": ["src/aliases.php"]
+    }
+}
