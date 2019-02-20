@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.0  
-**Stable tag:** 3.0.35.3  
+**Stable tag:** 3.0.36  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -42,7 +42,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### 3.0.36 ###
 
-Date TBD
+Feb. 17, 2019, dev time > 100h
 
 This updates represents a big performance improvement both for the frontend and the customizer.
 In the frontend the google-fonts are now loaded more efficiently and the `font-display` property was added to `@font-face` CSS from the google API responses.
@@ -60,8 +60,9 @@ In the customizer the `postMessage` module was completely rewritten.
 * New: Added a new `link` section-type.
 * New: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
 * New: Added telemetry module. See [aristath.github.io/kirki/docs/modules/telemetry](https://aristath.github.io/kirki/docs/modules/telemetry.html) for details.
-* New: Improved CSS loading method. Styles are now added as synamic stylesheet with a URL `example.com/?action=kirki-styles`.
-* Deprecated: Removed the "host locally" option from typography controls. This is now the default behaviour, no option is necessary.
+* New: Improved CSS loading method. Styles are now added inline.
+* New: Introduced a `kirki_output_inline_styles` filter - can be used by themes that want to enqueue a dynamic stylesheet with a URL `example.com/?action=kirki-styles` instead of the inline method.
+* Deprecated: Removed the "host locally" option from typography controls. This is now the default behaviour and significantly improves performance. Option is no longer necessary.
 * Deprecated: Removed the `Kirki_CSS_To_File` class.
 * Reprecated: Removed the `Kirki_Modules_Webfonts_Local` class.
 * Deprecated: Removed the `Kirki_Fonts_Google_Local` class.

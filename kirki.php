@@ -5,7 +5,7 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Ari Stathopoulos (@aristath)
  * Author URI:    http://aristath.github.io
- * Version:       3.0.36-beta.2
+ * Version:       3.0.36
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  5.3
