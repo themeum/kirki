@@ -9,6 +9,8 @@
  * @since       2.0
  */
 
+namespace Kirki\Control;
+
 use Kirki\Control\Base;
 
 // Exit if accessed directly.
@@ -20,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A generic and pretty abstract control.
  * Allows for great manipulation using the field's "choices" argumnent.
  */
-class Kirki_Control_Generic extends Base {
+class Generic extends Base {
 
 	/**
 	 * The control type.

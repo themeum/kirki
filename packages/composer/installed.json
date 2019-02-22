@@ -700,6 +700,106 @@
         ]
     },
     {
+        "name": "kirki-framework/control-generic",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-generic.git",
+            "reference": "8901f335fcaa008a2a8048fdaa803a324b19dc82"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/8901f335fcaa008a2a8048fdaa803a324b19dc82",
+            "reference": "8901f335fcaa008a2a8048fdaa803a324b19dc82",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-22T23:06:51+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Generic control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-image",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-image.git",
+            "reference": "e35bacb76276f49d28f17445bc834ec149af532b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/e35bacb76276f49d28f17445bc834ec149af532b",
+            "reference": "e35bacb76276f49d28f17445bc834ec149af532b",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-02-22T23:07:19+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/"
+            },
+            "files": [
+                "src/aliases.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Image control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/core",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -855,19 +955,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "aa0121a057986db04e3d95595845f814497802cc"
+            "reference": "54a99c2aa5e2f53dd3d718b980c943fb598fc0ac"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/aa0121a057986db04e3d95595845f814497802cc",
-            "reference": "aa0121a057986db04e3d95595845f814497802cc",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/54a99c2aa5e2f53dd3d718b980c943fb598fc0ac",
+            "reference": "54a99c2aa5e2f53dd3d718b980c943fb598fc0ac",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-18T18:27:01+00:00",
+        "time": "2019-02-22T22:55:55+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
