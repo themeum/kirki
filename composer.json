@@ -38,7 +38,9 @@
     "kirki-framework/control-editor": "dev-master",
     "kirki-framework/control-fontawesome": "dev-master",
     "kirki-framework/control-generic": "dev-master",
-    "kirki-framework/control-image": "dev-master"
+    "kirki-framework/control-image": "dev-master",
+    "kirki-framework/control-multicheck": "dev-master",
+    "kirki-framework/control-multicolor": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

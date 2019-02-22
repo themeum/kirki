@@ -9,7 +9,10 @@
  * @since       2.2.7
  */
 
+namespace Kirki\Control;
+
 use Kirki\Control\Base;
+use Kirki\Core\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Multicolor control.
  */
-class Kirki_Control_Multicolor extends Base {
+class Multicolor extends Base {
 
 	/**
 	 * The control type.
@@ -36,6 +39,41 @@ class Kirki_Control_Multicolor extends Base {
 	 * @var boolean
 	 */
 	public $alpha = true;
+
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		$url = apply_filters(
+			'kirki_package_url_control_multicolor',
+			trailingslashit( Kirki::$url ) . 'packages/kirki-framework/control-multicolor/src'
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-control-multicolor',
+			"$url/assets/scripts/control.js",
+			[
+				'kirki-script',
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the style.
+		wp_enqueue_style(
+			'kirki-control-multicolor-style',
+			"$url/assets/styles/style.css",
+			[],
+			KIRKI_VERSION
+		);
+	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

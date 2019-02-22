@@ -23,6 +23,8 @@ return array(
     'd10e2a486d0cb6355877a80a89b88ca0' => $vendorDir . '/kirki-framework/control-fontawesome/src/aliases.php',
     'bdf9faad5d67477f1adacaaa6a51cd32' => $vendorDir . '/kirki-framework/control-generic/src/aliases.php',
     '51f3a51af556a40b42d4d141df793794' => $vendorDir . '/kirki-framework/control-image/src/aliases.php',
+    'da3a4279afd488e9e68cdc6f461c1884' => $vendorDir . '/kirki-framework/control-multicheck/src/aliases.php',
+    '5285725d4d15a89bf41a8c9df330fa53' => $vendorDir . '/kirki-framework/control-multicolor/src/aliases.php',
     'bbfb95d513c9b499ebb3ff8793dfc7ce' => $vendorDir . '/kirki-framework/module-css/src/aliases.php',
     '3c2e0be98245672dad9b32c8768ee4fd' => $vendorDir . '/kirki-framework/module-css-vars/src/aliases.php',
     '4becfd0b1c4f3bd1c4b12db74525d49e' => $vendorDir . '/kirki-framework/module-webfonts/src/aliases.php',

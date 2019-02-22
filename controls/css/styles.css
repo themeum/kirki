@@ -1,24 +1,4 @@
 @charset "UTF-8";
-.customize-control-kirki-generic input {
-  width: 100%; }
-.customize-control-kirki-generic textarea {
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-
-.customize-control-kirki-multicolor .multicolor-single-color-wrapper {
-  display: flex;
-  justify-content: space-between; }
-.customize-control-kirki-multicolor .multicolor-single-label {
-  order: 2; }
-.customize-control-kirki-multicolor .wp-picker-container {
-  width: 100%; }
-  .customize-control-kirki-multicolor .wp-picker-container > .wp-color-result {
-    width: 100%; }
-  .customize-control-kirki-multicolor .wp-picker-container.wp-picker-active + .multicolor-single-label {
-    display: none; }
-
 .customize-control-kirki-number .customize-control-content {
   display: flex;
   align-items: stretch; }
