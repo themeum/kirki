@@ -1539,9 +1539,6 @@ kirki = jQuery.extend( kirki, {
 _.each( kirki.control, function( obj, type ) {
 	wp.customize.controlConstructor[ type ] = wp.customize.kirkiDynamicControl.extend( {} );
 } );
-wp.customize.controlConstructor['kirki-palette'] = wp.customize.kirkiDynamicControl.extend( {} );
-wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend( {} );
-wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend( {} );
 /* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 

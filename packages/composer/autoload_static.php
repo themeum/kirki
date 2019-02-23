@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2fe76fe67a5a2a4f0d00828375912fc3
+class ComposerStaticInitda464f1c4fccc9ec5a7ddd19c86045c8
 {
     public static $files = array (
         'f80535149d9c08fd75226c2b6e8b42c3' => __DIR__ . '/..' . '/kirki-framework/control-base/src/aliases.php',
@@ -26,6 +26,9 @@ class ComposerStaticInit2fe76fe67a5a2a4f0d00828375912fc3
         '51f3a51af556a40b42d4d141df793794' => __DIR__ . '/..' . '/kirki-framework/control-image/src/aliases.php',
         'da3a4279afd488e9e68cdc6f461c1884' => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/aliases.php',
         '5285725d4d15a89bf41a8c9df330fa53' => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/aliases.php',
+        '75fd17dd5ce500231130198ca3409387' => __DIR__ . '/..' . '/kirki-framework/control-number/src/aliases.php',
+        '47ee81932bfe4866a344fea2e75d593f' => __DIR__ . '/..' . '/kirki-framework/control-palette/src/aliases.php',
+        'a084d179ffcbfb2ddddf17ae3161b131' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/aliases.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
         '4becfd0b1c4f3bd1c4b12db74525d49e' => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src/aliases.php',
@@ -79,14 +82,17 @@ class ComposerStaticInit2fe76fe67a5a2a4f0d00828375912fc3
             15 => __DIR__ . '/..' . '/kirki-framework/control-image/src',
             16 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src',
             17 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-number/src',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-palette/src',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-radio/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2fe76fe67a5a2a4f0d00828375912fc3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2fe76fe67a5a2a4f0d00828375912fc3::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitda464f1c4fccc9ec5a7ddd19c86045c8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitda464f1c4fccc9ec5a7ddd19c86045c8::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

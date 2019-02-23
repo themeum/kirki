@@ -40,7 +40,10 @@
     "kirki-framework/control-generic": "dev-master",
     "kirki-framework/control-image": "dev-master",
     "kirki-framework/control-multicheck": "dev-master",
-    "kirki-framework/control-multicolor": "dev-master"
+    "kirki-framework/control-multicolor": "dev-master",
+    "kirki-framework/control-number": "dev-master",
+    "kirki-framework/control-palette": "dev-master",
+    "kirki-framework/control-radio": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

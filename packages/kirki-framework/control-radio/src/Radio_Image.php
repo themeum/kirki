@@ -9,7 +9,10 @@
  * @since       1.0
  */
 
+namespace Kirki\Control;
+
 use Kirki\Control\Base;
+use Kirki\Core\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Radio Image control (modified radio).
  */
-class Kirki_Control_Radio_Image extends Base {
+class Radio_Image extends Base {
 
 	/**
 	 * The control type.
@@ -28,6 +31,41 @@ class Kirki_Control_Radio_Image extends Base {
 	 * @var string
 	 */
 	public $type = 'kirki-radio-image';
+
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		$url = apply_filters(
+			'kirki_package_url_control_radio_image',
+			trailingslashit( Kirki::$url ) . 'packages/kirki-framework/control-radio_image/src'
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-control-radio_image',
+			"$url/assets/scripts/control.js",
+			[
+				'kirki-script',
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the style.
+		wp_enqueue_style(
+			'kirki-control-radio_image-style',
+			"$url/assets/styles/style.css",
+			[],
+			KIRKI_VERSION
+		);
+	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

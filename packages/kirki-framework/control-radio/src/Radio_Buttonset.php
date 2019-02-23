@@ -9,7 +9,10 @@
  * @since       1.0
  */
 
+namespace Kirki\Control;
+
 use Kirki\Control\Base;
+use Kirki\Core\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Radio Buttonset control (modified radio)
  */
-class Kirki_Control_Radio_Buttonset extends Base {
+class Radio_Buttonset extends Base {
 
 	/**
 	 * The control type.
@@ -28,6 +31,41 @@ class Kirki_Control_Radio_Buttonset extends Base {
 	 * @var string
 	 */
 	public $type = 'kirki-radio-buttonset';
+
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		$url = apply_filters(
+			'kirki_package_url_control_radio_buttonset',
+			trailingslashit( Kirki::$url ) . 'packages/kirki-framework/control-radio_buttonset/src'
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-control-radio_buttonset',
+			"$url/assets/scripts/control.js",
+			[
+				'kirki-script',
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the style.
+		wp_enqueue_style(
+			'kirki-control-radio_buttonset-style',
+			"$url/assets/styles/style.css",
+			[],
+			KIRKI_VERSION
+		);
+	}
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
