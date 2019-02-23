@@ -43,7 +43,10 @@
     "kirki-framework/control-radio": "dev-master",
     "kirki-framework/control-repeater": "dev-master",
     "kirki-framework/control-select": "dev-master",
-    "kirki-framework/control-slider": "dev-master"
+    "kirki-framework/control-slider": "dev-master",
+    "kirki-framework/control-sortable": "dev-master",
+    "kirki-framework/control-typography": "dev-master",
+    "kirki-framework/control-upload": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

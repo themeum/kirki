@@ -9,8 +9,7 @@ module.exports = function( grunt ) {
 				files: {
 					'assets/vendor/selectWoo/kirki.css': 'assets/vendor/selectWoo/kirki.scss',
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
-					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss',
-					'controls/css/styles.css': 'controls/scss/styles.scss'
+					'modules/custom-sections/sections.css': 'modules/custom-sections/sections.scss'
 				}
 			}
 		},
@@ -45,7 +44,6 @@ module.exports = function( grunt ) {
 			css: {
 				files: [
 					'assets/**/*.scss',
-					'controls/scss/*.scss',
 					'modules/**/*.scss'
 				],
 				tasks: [ 'sass' ]
