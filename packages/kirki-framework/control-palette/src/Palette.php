@@ -32,7 +32,7 @@ class Palette extends Base {
 	 */
 	public $type = 'kirki-palette';
 
-		/**
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
