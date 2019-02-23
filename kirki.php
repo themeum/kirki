@@ -36,7 +36,7 @@ if ( class_exists( 'Kirki' ) ) {
 	return;
 }
 
-require_once __DIR__ . '/packages/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Include the autoloader.
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
