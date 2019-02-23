@@ -5,9 +5,6 @@
   "description": "Extending the WordPress customizer",
   "homepage": "https://aristath.github.io/kirki",
   "license": "MIT",
-  "config": {
-    "vendor-dir": "packages"
-  },
   "authors": [
     {
       "name": "aristath",
@@ -43,7 +40,9 @@
     "kirki-framework/control-multicolor": "dev-master",
     "kirki-framework/control-number": "dev-master",
     "kirki-framework/control-palette": "dev-master",
-    "kirki-framework/control-radio": "dev-master"
+    "kirki-framework/control-radio": "dev-master",
+    "kirki-framework/control-repeater": "dev-master",
+    "kirki-framework/control-select": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
