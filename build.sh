@@ -23,7 +23,6 @@ rm -rf .git
 rm -rf .github
 rm -rf .sass-cache
 rm -rf controls/css/*.map
-rm -rf controls/js/src
 rm -rf controls/scss
 rm -rf docs
 rm modules/custom-sections/*.scss

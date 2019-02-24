@@ -22,11 +22,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.3",
-    "grunt-contrib-concat": "*",
     "grunt-contrib-sass": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-jscs": "*",
     "grunt-wp-readme-to-markdown": "*"
   }
 }
