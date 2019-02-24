@@ -60,8 +60,6 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 Kirki::$path = wp_normalize_path( dirname( __FILE__ ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 Init::set_url();
 
-new Kirki_Controls();
-
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
 	 * Returns an instance of the Kirki object.
