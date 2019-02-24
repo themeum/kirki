@@ -253,44 +253,6 @@ kirki = jQuery.extend( kirki, {
 			}
 		},
 
-		validate: {
-			cssValue: function( value ) {
-
-				var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
-					numericValue,
-					unit;
-
-				// Early exit if value is not a string or a number.
-				if ( 'string' !== typeof value || 'number' !== typeof value ) {
-					return true;
-				}
-
-				// Whitelist values.
-				if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
-					return true;
-				}
-
-				// Skip checking if calc().
-				if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
-					return true;
-				}
-
-				// Get the numeric value.
-				numericValue = parseFloat( value );
-
-				// Get the unit
-				unit = value.replace( numericValue, '' );
-
-				// Allow unitless.
-				if ( ! value ) {
-					return;
-				}
-
-				// Check the validity of the numeric value and units.
-				return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
-			}
-		},
-
 		/**
 		 * Parses HTML Entities.
 		 *
@@ -299,7 +261,7 @@ kirki = jQuery.extend( kirki, {
 		 * @returns {string}
 		 */
 		parseHtmlEntities: function( str ) {
-			var parser = new DOMParser,
+			var parser = new DOMParser(),
 				dom    = parser.parseFromString(
 					'<!doctype html><body>' + str, 'text/html'
 				);
