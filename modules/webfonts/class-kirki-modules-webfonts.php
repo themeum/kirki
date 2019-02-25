@@ -106,7 +106,7 @@ class Kirki_Modules_Webfonts {
 	 * @return string
 	 */
 	public function get_method() {
-		return ( is_customize_preview() ) ? 'async' : 'embed';
+		return ( is_customize_preview() || is_admin() ) ? 'async' : 'embed';
 	}
 
 	/**

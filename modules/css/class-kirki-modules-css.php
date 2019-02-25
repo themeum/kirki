@@ -113,10 +113,10 @@ class Kirki_Modules_CSS {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
 
 			// Prints the styles.
-			add_action( 'wp', array( $this, 'print_styles_action' ) );
 			return;
 		}
 
+		add_action( 'wp', array( $this, 'print_styles_action' ) );
 		add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
 	}
 
