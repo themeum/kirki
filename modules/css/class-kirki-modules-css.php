@@ -104,6 +104,8 @@ class Kirki_Modules_CSS {
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
 
+		add_action( 'wp', array( $this, 'print_styles_action' ) );
+
 		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
 			$config   = apply_filters( 'kirki_config', array() );
 			$priority = 999;
@@ -111,13 +113,9 @@ class Kirki_Modules_CSS {
 				$priority = absint( $config['styles_priority'] );
 			}
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
-
-			// Prints the styles.
-			add_action( 'wp', array( $this, 'print_styles_action' ) );
-			return;
+		} else {
+			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
 		}
-
-		add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
 	}
 
 	/**

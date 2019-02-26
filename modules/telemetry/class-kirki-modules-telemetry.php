@@ -145,7 +145,7 @@ final class Kirki_Modules_Telemetry {
 		<div class="notice notice-info kirki-telemetry">
 			<h3><strong><?php esc_html_e( 'Help us improve Kirki.', 'kirki' ); ?></strong></h3>
 			<p style="max-width: 76em;"><?php _e( 'Help us begin a dialogue with theme developers, collaborate and improve both the theme you are using and the Kirki framework by agreeing to send anonymous data. <strong>The data is completely anonymous and we will never collect any identifyable information about you or your website.</strong>', 'kirki' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
-			<table class="data-to-send hidden widefat">
+			<table class="data-to-send hidden">
 				<thead>
 					<tr>
 						<th colspan="2"><?php esc_html_e( 'Data that will be sent', 'kirki' ); ?></th>
@@ -204,6 +204,8 @@ final class Kirki_Modules_Telemetry {
 			</script>
 		</div>
 		<?php
+
+		$this->table_styles();
 	}
 
 	/**
@@ -291,5 +293,35 @@ final class Kirki_Modules_Telemetry {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Prints the table styles.
+	 *
+	 * Normally we'd just use the .widefat CSS class for the table,
+	 * however apparently there's an obscure bug in WP causing this: https://github.com/aristath/kirki/issues/2067
+	 * This CSS is a copy of some styles from common.css in wp-core.
+	 *
+	 * @access private
+	 * @since 3.0.37
+	 * @return void
+	 */
+	private function table_styles() {
+		?>
+		<style>
+			/* .widefat - main style for tables */
+			.data-to-send { border-spacing: 0; width: 100%; clear: both; }
+			.data-to-send * { word-wrap: break-word; }
+			.data-to-send a, .data-to-send button.button-link { text-decoration: none; }
+			.data-to-send td, .data-to-send th { padding: 8px 10px; }
+			.data-to-send thead th, .data-to-send thead td { border-bottom: 1px solid #e1e1e1; }
+			.data-to-send tfoot th, .data-to-send tfoot td { border-top: 1px solid #e1e1e1; border-bottom: none; }
+			.data-to-send .no-items td { border-bottom-width: 0; }
+			.data-to-send td { vertical-align: top; }
+			.data-to-send td, .data-to-send td p, .data-to-send td ol, .data-to-send td ul { font-size: 13px; line-height: 1.5em; }
+			.data-to-send th, .data-to-send thead td, .data-to-send tfoot td { text-align: left; line-height: 1.3em; font-size: 14px; }
+			.data-to-send th input, .updates-table td input, .data-to-send thead td input, .data-to-send tfoot td input { margin: 0 0 0 8px; padding: 0; vertical-align: text-top; }
+		</style>
+		<?php
 	}
 }
