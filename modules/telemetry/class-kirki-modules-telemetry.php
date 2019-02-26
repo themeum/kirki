@@ -301,7 +301,7 @@ final class Kirki_Modules_Telemetry {
 	 * Normally we'd just use the .widefat CSS class for the table,
 	 * however apparently there's an obscure bug in WP causing this: https://github.com/aristath/kirki/issues/2067
 	 * This CSS is a copy of some styles from common.css in wp-core.
-	 * 
+	 *
 	 * @access private
 	 * @since 3.0.37
 	 * @return void
