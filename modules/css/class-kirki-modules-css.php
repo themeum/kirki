@@ -143,11 +143,10 @@ class Kirki_Modules_CSS {
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
 			'kirki-styles',
-			add_query_arg(
-				'action',
-				apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
-				site_url()
-			),
+			add_query_arg( array(
+				'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
+				'editor' => ( is_admin() && ! is_customize_preview() ),
+			), site_url() ),
 			array(),
 			KIRKI_VERSION
 		);
