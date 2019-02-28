@@ -40,6 +40,13 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 3.0.38 =
+
+Mar. 1, 2019, dev time: 20m.
+
+* Fix: Editor styles.
+* Update: Updated the Google Fonts list.
+
 = 3.0.37 =
 
 Feb. 26, 2019, dev time: 1h.
