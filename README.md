@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.0  
-**Stable tag:** 3.0.37  
+**Stable tag:** 3.0.38  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -45,6 +45,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 Mar. 1, 2019, dev time: 20m.
 
 * Fix: Editor styles.
+* Update: Updated the Google Fonts list.
 
 ### 3.0.37 ###
 
