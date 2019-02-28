@@ -243,7 +243,7 @@ class Kirki_Output {
 
 			$value = $this->process_value( $value, $output );
 
-			if ( is_admin() && ! is_customize_preview() ) {
+			if ( ( is_admin() && ! is_customize_preview() ) || ( isset( $_GET['editor'] ) && '1' === $_GET['editor'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 
 				// Check if this is an admin style.
 				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
