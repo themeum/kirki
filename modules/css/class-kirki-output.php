@@ -199,7 +199,7 @@ class Kirki_Output {
 			if ( '' === $this->value ) {
 				$skip = true;
 			}
-
+			
 			// No need to proceed this if the current value is the same as in the "exclude" value.
 			if ( isset( $output['exclude'] ) && is_array( $output['exclude'] ) ) {
 				foreach ( $output['exclude'] as $exclude ) {
@@ -234,15 +234,13 @@ class Kirki_Output {
 
 			// Apply any value patterns defined.
 			$value = $this->apply_value_pattern( $output, $value );
-
+			
 			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
 				$output['element'] = array_unique( $output['element'] );
 				sort( $output['element'] );
 				$output['element'] = implode( ',', $output['element'] );
 			}
-
-			$value = $this->process_value( $value, $output );
-
+			
 			if ( is_admin() && ! is_customize_preview() ) {
 
 				// Check if this is an admin style.
@@ -254,7 +252,21 @@ class Kirki_Output {
 				// Check if this is a frontend style.
 				continue;
 			}
-			$this->process_output( $output, $value );
+			
+			if ( isset( $output['property'] ) ) {
+				$properties = $output['property'];
+				if ( !is_array( $properties ) )
+					$properties = explode( ',', $properties );
+				foreach ( $properties as $property ) {
+					$output['property'] = $property;
+					$value = $this->process_value( $value, $output );
+					$this->process_output( $output, $value );
+				}
+			}
+			else {
+				$value = $this->process_value( $value, $output );
+				$this->process_output( $output, $value );
+			}
 		}
 	}
 
@@ -290,8 +302,12 @@ class Kirki_Output {
 			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ][] = $output['prefix'] . $value . $output['units'] . $output['suffix'];
 			return;
 		}
+		if ( !is_array( $output['property'] ) ) {
+			$output['property'] = array( $output['property'] );
+		}
 		if ( is_string( $value ) || is_numeric( $value ) ) {
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $this->process_property_value( $output['property'], $value ) . $output['units'] . $output['suffix'];
+			foreach ( $output['property'] as $property )
+				$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value ) . $output['units'] . $output['suffix'];
 		}
 	}
 

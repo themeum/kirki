@@ -90,7 +90,7 @@ var kirkiPostMessage = {
 			if ( excluded ) {
 				return false;
 			}
-
+			
 			value = output.value_pattern.replace( new RegExp( '\\$', 'g' ), value );
 			_.each( output.pattern_replace, function( id, placeholder ) {
 				if ( ! _.isUndefined( settings[ id ] ) ) {
@@ -332,7 +332,13 @@ jQuery( document ).ready( function() {
 						output.function = 'css';
 					}
 					if ( 'css' === output.function ) {
-						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+						if ( !_.isArray( output.property ) )
+							output.property = [output.property];
+						_.each( output.property, function( property ) {
+							var prop_output = jQuery.extend( {}, output );
+							prop_output.property = property;
+							styles += kirkiPostMessage.css.fromOutput( prop_output, newVal, field.type );
+						} );
 					} else {
 						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );
 					}
