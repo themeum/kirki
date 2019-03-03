@@ -332,12 +332,13 @@ jQuery( document ).ready( function() {
 						output.function = 'css';
 					}
 					if ( 'css' === output.function ) {
-						if ( !_.isArray( output.property ) )
+						if ( !_.isArray( output.property ) ) {
 							output.property = [output.property];
+						}
 						_.each( output.property, function( property ) {
-							var prop_output = jQuery.extend( {}, output );
-							prop_output.property = property;
-							styles += kirkiPostMessage.css.fromOutput( prop_output, newVal, field.type );
+							var propOutput = jQuery.extend( {}, output );
+							propOutput.property = property;
+							styles += kirkiPostMessage.css.fromOutput( propOutput, newVal, field.type );
 						} );
 					} else {
 						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );

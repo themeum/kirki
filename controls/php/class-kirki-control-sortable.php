@@ -46,7 +46,7 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 		$this->json['mode'] = $this->mode;
 		$this->json['visibility_toggle'] = $this->visibility_toggle;
 	}
-	
+
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
@@ -66,9 +66,7 @@ class Kirki_Control_Sortable extends Kirki_Control_Base {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<ul class="sortable">
-				
-			</ul>
+			<ul class="sortable"></ul>
 		</label>
 		<?php
 	}

@@ -252,11 +252,12 @@ class Kirki_Output {
 				// Check if this is a frontend style.
 				continue;
 			}
-			
+
 			if ( isset( $output['property'] ) ) {
 				$properties = $output['property'];
-				if ( !is_array( $properties ) )
+				if ( !is_array( $properties ) ) {
 					$properties = explode( ',', $properties );
+				}
 				foreach ( $properties as $property ) {
 					$output['property'] = $property;
 					$value = $this->process_value( $value, $output );
