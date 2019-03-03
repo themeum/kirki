@@ -24,9 +24,9 @@ class Kirki_Field_Spacing extends Kirki_Field_Dimensions {
 		$default_args = array(
 			'controls' => array(
 				'top'    => ( isset( $this->default['top'] ) ),
-				'bottom' => ( isset( $this->default['top'] ) ),
-				'left'   => ( isset( $this->default['top'] ) ),
-				'right'  => ( isset( $this->default['top'] ) ),
+				'bottom' => ( isset( $this->default['bottom'] ) ),
+				'left'   => ( isset( $this->default['left'] ) ),
+				'right'  => ( isset( $this->default['right'] ) ),
 			),
 			'labels'   => array(
 				'top'    => esc_html__( 'Top', 'kirki' ),
