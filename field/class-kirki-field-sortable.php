@@ -46,9 +46,18 @@ class Kirki_Field_Sortable extends Kirki_Field {
 			);
 		}
 		$sanitized_value = array();
+		$mode = isset( $this->args['mode'] ) ? $this->args['mode'] : 'checkbox';
 		foreach ( $value as $sub_value ) {
-			if ( isset( $this->choices[ $sub_value ] ) ) {
-				$sanitized_value[] = sanitize_text_field( $sub_value );
+			if ( $mode === 'text' ) {
+				$obj = json_decode( $sub_value, true );
+				if ( !$obj )
+					continue;
+				if ( isset( $this->choices[ $obj['id'] ] ) )
+					$sanitized_value[$obj['id']] = esc_attr( $obj['val'] );
+			}
+			else {
+				if ( isset( $this->choices[ $sub_value ] ) )
+					$sanitized_value[] = esc_attr( $sub_value );
 			}
 		}
 		return $sanitized_value;

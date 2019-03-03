@@ -835,6 +835,55 @@ my_config_kirki_add_field(
 	)
 );
 
+my_config_kirki_add_field(
+	array(
+		'type'              => 'sortable',
+		'settings'          => 'sortable_without_visibility_setting',
+		'label'             => __( 'This is a sortable control without visibility.', 'kirki' ),
+		'section'           => 'sortable_section',
+		'visibility_toggle' => false,
+		'default'           => array(
+			'option1',
+			'option2',
+			'option5',
+			'option6',
+			'option3',
+			'option4',
+		),
+		'choices'          => array(
+			'option1' => esc_html__( 'Option 1', 'kirki' ),
+			'option2' => esc_html__( 'Option 2', 'kirki' ),
+			'option3' => esc_html__( 'Option 3', 'kirki' ),
+			'option4' => esc_html__( 'Option 4', 'kirki' ),
+			'option5' => esc_html__( 'Option 5', 'kirki' ),
+			'option6' => esc_html__( 'Option 6', 'kirki' ),
+		),
+	)
+);
+
+my_config_kirki_add_field(
+	array(
+		'type'     => 'sortable',
+		'settings' => 'sortable_with_text_setting',
+		'label'    => __( 'This is a sortable control with text mode.', 'kirki' ),
+		'section'  => 'sortable_section',
+		'mode'     => 'text',
+		'default'  => array( 
+			'option3' => 'my text',
+			'option1' => 'something',
+			'option4' => 'hello!',
+		),
+		'choices'  => array(
+			'option1' => esc_html__( 'Option 1', 'kirki' ),
+			'option2' => esc_html__( 'Option 2', 'kirki' ),
+			'option3' => esc_html__( 'Option 3', 'kirki' ),
+			'option4' => esc_html__( 'Option 4', 'kirki' ),
+			'option5' => esc_html__( 'Option 5', 'kirki' ),
+			'option6' => esc_html__( 'Option 6', 'kirki' ),
+		),
+	)
+);
+
 /**
  * Switch control.
  */
