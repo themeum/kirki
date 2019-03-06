@@ -3153,8 +3153,8 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 			.addClass( 'kirki-sortable-item' )
 			.attr( 'data-value', value );
 		
+		jQuery( '<i class="dashicons dashicons-menu"></i>' ).appendTo( li );
 		if ( control.params[ 'visibility_toggle' ] === true ) {
-			jQuery( '<i class="dashicons dashicons-menu"></i>' ).appendTo( li );
 			jQuery( '<i class="dashicons dashicons-visibility visibility"></i>' ).appendTo( li );
 			
 			if ( !visible ) {
