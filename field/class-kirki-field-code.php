@@ -96,9 +96,9 @@ class Kirki_Field_Code extends Kirki_Field {
 		if ( ! isset( $this->editor_settings['codemirror']['mode'] ) ) {
 			$this->editor_settings['codemirror']['mode'] = $language;
 		}
-		
-		if($this->editor_settings['codemirror']['mode'] === 'text/x-scss') {
-  			$this->editor_settings['codemirror'] = array_merge(
+
+		if ( 'text/x-scss' === $this->editor_settings['codemirror']['mode'] ) {
+			$this->editor_settings['codemirror'] = array_merge(
 				$this->editor_settings['codemirror'],
 				array(
 					'lint'              => false,
