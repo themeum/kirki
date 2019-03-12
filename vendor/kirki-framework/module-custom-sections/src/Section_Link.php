@@ -10,10 +10,12 @@
  * @since      3.0.36
  */
 
+namespace Kirki\Modules\Custom_Sections;
+
 /**
  * Link Section.
  */
-class Kirki_Sections_Link_Section extends WP_Customize_Section {
+class Section_Link extends \WP_Customize_Section {
 
 	/**
 	 * The section type.

@@ -1,6 +1,6 @@
 <?php
 /**
- * An expanded section.
+ * The default section.
  *
  * @package     Kirki
  * @subpackage  Custom Sections Module
@@ -9,10 +9,12 @@
  * @since       2.2.0
  */
 
+namespace Kirki\Modules\Custom_Sections;
+
 /**
- * Expanded Section.
+ * Default Section.
  */
-class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
+class Section_Default extends \WP_Customize_Section {
 
 	/**
 	 * The section type.
@@ -20,5 +22,5 @@ class Kirki_Sections_Expanded_Section extends WP_Customize_Section {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-expanded';
+	public $type = 'kirki-default';
 }

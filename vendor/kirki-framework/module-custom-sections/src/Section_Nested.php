@@ -6,25 +6,27 @@
  * @subpackage  Custom Sections Module
  * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @since       2.2.0
  */
+
+namespace Kirki\Modules\Custom_Sections;
 
 /**
- * Nested panel.
+ * Nested section.
  */
-class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
+class Section_Nested extends \WP_Customize_Section {
 
 	/**
-	 * The parent panel.
+	 * The parent section.
 	 *
 	 * @access public
 	 * @since 3.0.0
 	 * @var string
 	 */
-	public $panel;
+	public $section;
 
 	/**
-	 * Type of this panel.
+	 * The section type.
 	 *
 	 * @access public
 	 * @since 3.0.0
@@ -42,13 +44,15 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 	public function json() {
 		$array = wp_array_slice_assoc(
 			(array) $this,
-			array(
+			[
 				'id',
 				'description',
 				'priority',
-				'type',
 				'panel',
-			)
+				'type',
+				'description_hidden',
+				'section',
+			]
 		);
 
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -56,6 +60,11 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 		$array['active']         = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
 
+		$array['customizeAction'] = esc_html__( 'Customizing', 'kirki' );
+		if ( $this->panel ) {
+			/* translators: The title. */
+			$array['customizeAction'] = sprintf( esc_html__( 'Customizing &#9656; %s', 'kirki' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
+		}
 		return $array;
 	}
 }

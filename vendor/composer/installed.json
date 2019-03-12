@@ -1531,6 +1531,57 @@
         ]
     },
     {
+        "name": "kirki-framework/module-custom-sections",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-custom-sections.git",
+            "reference": "99b99fa7324e272ee384c1f097c8e1220b8735e0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-custom-sections/zipball/99b99fa7324e272ee384c1f097c8e1220b8735e0",
+            "reference": "99b99fa7324e272ee384c1f097c8e1220b8735e0",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/core": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-03-12T18:03:01+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Modules\\Custom_Sections\\": "src/",
+                "Kirki\\Modules\\Custom_Panels\\": "src/"
+            },
+            "files": [
+                "src/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Custom Sections Module for the Kirki WordPress plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/module-preset",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

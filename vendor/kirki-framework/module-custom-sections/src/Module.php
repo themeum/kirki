@@ -11,6 +11,10 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Custom_Sections;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds styles to the customizer.
  */
-class Kirki_Modules_Custom_Sections {
+class Module {
 
 	/**
 	 * The object instance.
@@ -40,16 +44,16 @@ class Kirki_Modules_Custom_Sections {
 	protected function __construct() {
 
 		// Register the new section types.
-		add_filter( 'kirki_section_types', array( $this, 'set_section_types' ) );
+		add_filter( 'kirki_section_types', [ $this, 'set_section_types' ] );
 
 		// Register the new panel types.
-		add_filter( 'kirki_panel_types', array( $this, 'set_panel_types' ) );
+		add_filter( 'kirki_panel_types', [ $this, 'set_panel_types' ] );
 
 		// Include the section-type files.
-		add_action( 'customize_register', array( $this, 'include_sections_and_panels' ) );
+		add_action( 'customize_register', [ $this, 'include_sections_and_panels' ] );
 
 		// Enqueue styles & scripts.
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scrips' ), 999 );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scrips' ], 999 );
 	}
 
 	/**
@@ -77,13 +81,15 @@ class Kirki_Modules_Custom_Sections {
 	 * @return array
 	 */
 	public function set_section_types( $section_types ) {
-		$new_types = array(
-			'kirki-default'  => 'Kirki_Sections_Default_Section',
-			'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
-			'kirki-nested'   => 'Kirki_Sections_Nested_Section',
-			'kirki-link'     => 'Kirki_Sections_Link_Section',
+		return array_merge(
+			$section_types,
+			[
+				'kirki-default'  => 'Kirki_Sections_Default_Section',
+				'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
+				'kirki-nested'   => 'Kirki_Sections_Nested_Section',
+				'kirki-link'     => 'Kirki_Sections_Link_Section',
+			]
 		);
-		return array_merge( $section_types, $new_types );
 	}
 
 	/**
@@ -95,10 +101,12 @@ class Kirki_Modules_Custom_Sections {
 	 * @return array
 	 */
 	public function set_panel_types( $panel_types ) {
-		$new_types = array(
-			'kirki-nested' => 'Kirki_Panels_Nested_Panel',
+		return array_merge(
+			$panel_types,
+			[
+				'kirki-nested' => 'Kirki_Panels_Nested_Panel',
+			]
 		);
-		return array_merge( $panel_types, $new_types );
 	}
 
 	/**
@@ -111,7 +119,7 @@ class Kirki_Modules_Custom_Sections {
 
 		// Sections.
 		$folder_path   = dirname( __FILE__ ) . '/sections/';
-		$section_types = apply_filters( 'kirki_section_types', array() );
+		$section_types = apply_filters( 'kirki_section_types', [] );
 
 		foreach ( $section_types as $id => $class ) {
 			if ( ! class_exists( $class ) ) {
@@ -129,7 +137,7 @@ class Kirki_Modules_Custom_Sections {
 
 		// Panels.
 		$folder_path = dirname( __FILE__ ) . '/panels/';
-		$panel_types = apply_filters( 'kirki_panel_types', array() );
+		$panel_types = apply_filters( 'kirki_panel_types', [] );
 
 		foreach ( $panel_types as $id => $class ) {
 			if ( ! class_exists( $class ) ) {
@@ -153,7 +161,12 @@ class Kirki_Modules_Custom_Sections {
 	 * @since 3.0.0
 	 */
 	public function enqueue_scrips() {
-		wp_enqueue_style( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.css', array(), KIRKI_VERSION );
-		wp_enqueue_script( 'kirki-custom-sections', trailingslashit( Kirki::$url ) . 'modules/custom-sections/sections.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, false );
+		$url = apply_filters(
+			'kirki_package_url_module_custom_sections',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-custom-sections/src'
+		);
+
+		wp_enqueue_style( 'kirki-custom-sections', $url . '/assets/styles/sections.css', [], KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-custom-sections', $url . '/assets/scripts/sections.js', [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, false );
 	}
 }

@@ -37,5 +37,6 @@ return array(
     '28b130d380ae5efcc6bf24e598b4c100' => $vendorDir . '/kirki-framework/control-upload/src/functions.php',
     'bbfb95d513c9b499ebb3ff8793dfc7ce' => $vendorDir . '/kirki-framework/module-css/src/aliases.php',
     '3c2e0be98245672dad9b32c8768ee4fd' => $vendorDir . '/kirki-framework/module-css-vars/src/aliases.php',
+    'efb42dfb79f225933e792debf4a2f818' => $vendorDir . '/kirki-framework/module-custom-sections/src/functions.php',
     '625723311fca1faf566a0d377d9ee046' => $vendorDir . '/kirki-framework/module-preset/src/aliases.php',
 );

@@ -38,6 +38,7 @@ class ComposerStaticInit037eb073bf35f228f8c3034980cbe094
         '28b130d380ae5efcc6bf24e598b4c100' => __DIR__ . '/..' . '/kirki-framework/control-upload/src/functions.php',
         'bbfb95d513c9b499ebb3ff8793dfc7ce' => __DIR__ . '/..' . '/kirki-framework/module-css/src/aliases.php',
         '3c2e0be98245672dad9b32c8768ee4fd' => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src/aliases.php',
+        'efb42dfb79f225933e792debf4a2f818' => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src/functions.php',
         '625723311fca1faf566a0d377d9ee046' => __DIR__ . '/..' . '/kirki-framework/module-preset/src/aliases.php',
     );
 
@@ -47,6 +48,8 @@ class ComposerStaticInit037eb073bf35f228f8c3034980cbe094
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Webfonts\\' => 23,
             'Kirki\\Modules\\Preset\\' => 21,
+            'Kirki\\Modules\\Custom_Sections\\' => 30,
+            'Kirki\\Modules\\Custom_Panels\\' => 28,
             'Kirki\\Modules\\CSS_Vars\\' => 23,
             'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Field\\' => 12,
@@ -67,6 +70,14 @@ class ComposerStaticInit037eb073bf35f228f8c3034980cbe094
         'Kirki\\Modules\\Preset\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+        ),
+        'Kirki\\Modules\\Custom_Sections\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
+        ),
+        'Kirki\\Modules\\Custom_Panels\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
         ),
         'Kirki\\Modules\\CSS_Vars\\' => 
         array (
