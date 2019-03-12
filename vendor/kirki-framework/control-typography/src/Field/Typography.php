@@ -9,12 +9,14 @@
  * @since       2.2.7
  */
 
+namespace Kirki\Field;
+
 use Kirki\Core\Field;
 
 /**
  * Field overrides.
  */
-class Kirki_Field_Typography extends Field {
+class Typography extends Field {
 
 	/**
 	 * Sets the control type.
@@ -187,7 +189,7 @@ class Kirki_Field_Typography extends Field {
 					}
 					break;
 				case 'color':
-					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
+					$value['color'] = '' === $value['color'] ? '' : \ariColor::newColor( $val )->toCSS( 'hex' );
 					break;
 			}
 		}

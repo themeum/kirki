@@ -36,6 +36,8 @@ if ( class_exists( 'Kirki' ) ) {
 	return;
 }
 
+require_once __DIR__ . '/lib/class-aricolor.php';
+require_once __DIR__ . '/lib/class-kirki-color.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Include the autoloader.
