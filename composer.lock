@@ -1531,12 +1531,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "15d8f0082a3d615c63431f0443d4f507816d398f"
+                "reference": "e93cf053ecb0d16b4546255d367087cae98a4d8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/15d8f0082a3d615c63431f0443d4f507816d398f",
-                "reference": "15d8f0082a3d615c63431f0443d4f507816d398f",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/e93cf053ecb0d16b4546255d367087cae98a4d8d",
+                "reference": "e93cf053ecb0d16b4546255d367087cae98a4d8d",
                 "shasum": ""
             },
             "require": {
@@ -1571,7 +1571,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T00:06:10+00:00"
+            "time": "2019-03-12T15:54:52+00:00"
         }
     ],
     "packages-dev": [
