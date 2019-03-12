@@ -1,0 +1,165 @@
+@import "vars";
+
+.customize-control-kirki-switch {
+  position: relative;
+
+  .switch-off,
+  .switch-on {
+    opacity: 1;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .switch-on {
+    color: #fff;
+    opacity: 0;
+  }
+
+  .switch-off {
+    color: #777;
+  }
+
+  .switch {
+    border: none;
+    margin-bottom: 1.5rem;
+    outline: 0;
+    padding: 0;
+    user-select: none;
+    border-radius: 3rem;
+  }
+
+  label {
+    background: $color-light-silver-gray;
+    float: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: left 0.15s ease-out;
+    border-radius: 3rem;
+
+    &:after {
+      background: #FFFFFF;
+      content: "";
+      display: block;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: calc(.85rem + 10px);
+      height: calc(.85rem + 10px);
+      transition: all 0.25s ease-in-out;
+      border-radius: 3rem;
+    }
+  }
+
+  input {
+    + label {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &:checked {
+      + label {
+        background: $color-wp-blue;
+
+        &:after {
+          left: auto;
+          right: 5px;
+          background: #ffffff;
+        }
+
+        .switch-on {
+          opacity: 1;
+        }
+
+        .switch-off {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.customize-control-kirki-toggle {
+  position: relative;
+
+  label {
+    display: flex;
+    flex-wrap: wrap;
+
+    .customize-control-title {
+      width: calc(100% - 55px);
+    }
+
+    .description {
+      order: 99;
+    }
+  }
+
+  .switch {
+    border: 1px solid $color-light-silver-gray;
+    display: inline-block;
+    width: 35px;
+    height: 12px;
+    border-radius: 8px;
+    background: $color-light-silver-gray;
+    vertical-align: middle;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 350ms ease;
+
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: -3px;
+      transition: all 350ms cubic-bezier(0,.95,.38,.98), background 150ms ease;
+    }
+
+    &:before {
+      background: rgba(0,0,0,.2);
+      transform: translate3d(0, -50%, 0) scale(0);
+    }
+
+    &:after {
+      background: #999;
+      border: 1px solid rgba(0,0,0,.1);
+      transform: translate3d(0, -50%, 0);
+    }
+
+    &:active {
+      &:before {
+        transform: translate3d(0, -50%, 0) scale(3);
+      }
+    }
+  }
+
+  input:checked + .switch {
+
+    &:before {
+      background: rgba($color-wp-blue, 0.075);
+      transform: translate3d(100%, -50%, 0) scale(1);
+    }
+
+    &:after {
+      background: $color-wp-blue;
+      transform: translate3d(100%, -50%, 0);
+    }
+
+    &:active {
+      &:before {
+        background: rgba($color-wp-blue, 0.075);
+        transform: translate3d(100%, -50%, 0) scale(3);
+      }
+    }
+  }
+}

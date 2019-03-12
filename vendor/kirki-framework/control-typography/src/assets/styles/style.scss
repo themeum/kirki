@@ -1,0 +1,67 @@
+.customize-control-kirki-typography {
+  position: relative;
+
+  .wrapper {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid rgba(0,0,0,.1);
+
+    h5 {
+      margin: 0.67em 0 0;
+    }
+
+    .color,
+    .font-backup,
+    .font-family,
+    .font-size,
+    .letter-spacing,
+    .line-height,
+    .margin-bottom,
+    .margin-top,
+    .text-align,
+    .text-transform,
+    .variant {
+      width: 100%;
+      float: none;
+      clear: both;
+    }
+
+    .font-size,
+    .letter-spacing,
+    .line-height,
+    .margin-bottom,
+    .margin-top,
+    .text-transform {
+      width: 48%;
+    }
+
+    .text-align {
+      .text-align-choices {
+        display: flex;
+
+        label {
+          width: 100%;
+          padding: 5px;
+          text-align: center;
+          border: 1px solid rgba(255,255,255,0);
+        }
+
+        input {
+          display: none;
+
+          &:checked {
+            + label {
+              border-color: #0085ba;
+            }
+          }
+        }
+      }
+    }
+
+    .color {
+      width: auto;
+    }
+  }
+}

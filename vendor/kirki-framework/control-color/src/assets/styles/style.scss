@@ -1,0 +1,15 @@
+.customize-control-kirki-color {
+  input {
+    &[data-type="hue"] {
+      + .iris-strip-horiz {
+        .iris-slider {
+          background-image: -webkit-linear-gradient(left, rgb(255, 0, 0), rgb(255, 127, 0), rgb(255, 255, 0), rgb(128, 255, 0), rgb(0, 255, 0), rgb(0, 255, 128), rgb(0, 255, 255), rgb(0, 127, 255), rgb(0, 0, 255), rgb(127, 0, 255), rgb(255, 0, 255), rgb(255, 0, 128), rgb(255, 0, 0)) !important;
+        }
+      }
+    }
+  }
+
+  .iris-picker .iris-square-handle {
+    z-index: 8;
+  }
+}

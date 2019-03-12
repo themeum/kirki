@@ -10,8 +10,8 @@ package-lock.json
 
 # composer #
 ############
-vendor
-composer.lock
+# vendor
+# composer.lock
 
 # OS generated files #
 ######################

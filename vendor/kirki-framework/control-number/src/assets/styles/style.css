@@ -1,0 +1,16 @@
+.customize-control-kirki-number .customize-control-content {
+  display: flex;
+  align-items: stretch; }
+  .customize-control-kirki-number .customize-control-content input {
+    width: 100%;
+    -moz-appearance: textfield; }
+    .customize-control-kirki-number .customize-control-content input::-webkit-inner-spin-button, .customize-control-kirki-number .customize-control-content input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+  .customize-control-kirki-number .customize-control-content .quantity {
+    min-width: 2rem;
+    max-width: 2rem;
+    text-align: center;
+    line-height: 24px; }
+
+/*# sourceMappingURL=style.css.map */

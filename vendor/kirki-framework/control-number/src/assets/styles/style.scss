@@ -1,0 +1,28 @@
+.customize-control-kirki-number {
+  .customize-control-content {
+    display: flex;
+    align-items: stretch;
+
+    input {
+      width: 100%;
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    .quantity {
+      min-width: 2rem;
+      max-width: 2rem;
+      text-align: center;
+      line-height: 24px;
+
+      &.minus {}
+
+      &.plus {}
+    }
+  }
+}

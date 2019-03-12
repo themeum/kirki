@@ -1,0 +1,70 @@
+.customize-control-kirki-color-palette {
+  position: relative;
+
+  label {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .colors-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .color-palette-color {
+      color: transparent;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.2);
+    }
+
+    &.round {
+      label {
+        padding: 3px;
+      }
+
+      .color-palette-color {
+        border-radius: 50%;
+      }
+    }
+
+    &.box-shadow {
+      .color-palette-color {
+        box-shadow: inset 3px 3px 13px 2px rgba(0,0,0,.22);
+      }
+    }
+
+    input:checked + label .color-palette-color {
+      border: 0;
+      width: 150%;
+      height: 150%;
+      position: relative;
+      left: -25%;
+      top: -25%;
+      z-index: 1;
+    }
+
+    &.with-margin {
+      label {
+        margin: 3px;
+      }
+    }
+
+    input {
+      display: none;
+
+      &:checked {
+        + label .color-palette-color {
+          box-shadow: 1px 1px 10px 1px #333333;
+          border: 1px solid rgba(0,0,0,.3);
+        }
+      }
+    }
+  }
+}

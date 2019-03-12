@@ -1,0 +1,197 @@
+.customize-control-repeater {
+  position: relative;
+
+  .repeater-fields {
+    .repeater-row {
+      border: 1px solid #e5e5e5;
+      margin-top: 0.5rem;
+      background: #eee;
+      position: relative;
+
+      &.minimized {
+        border: 1px solid #dfdfdf;
+        padding: 0;
+
+        &:hover {
+          border: 1px solid #e5e5e5;
+        }
+
+        .repeater-row-content {
+          display: none;
+        }
+      }
+
+      label {
+        margin-bottom: 12px;
+        clear: both;
+      }
+
+      .repeater-field {
+        &.repeater-field- {
+          display: none;
+        }
+
+        &.repeater-field-radio-image {
+          input {
+            img {
+              border: 1px solid transparent;
+            }
+            display: none;
+
+            &:checked {
+              + label {
+                img {
+                  -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+                  box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+                  border: 1px solid #3498DB;
+                }
+              }
+            }
+          }
+        }
+
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  button.repeater-add {
+    margin-top: 1rem;
+  }
+
+  .repeater-row-content {
+    padding: 10px 15px;
+    background: #fff;
+  }
+
+  .repeater-field {
+    margin-bottom: 12px;
+    width: 100%;
+    clear: both;
+    padding-bottom: 12px;
+    border-bottom: 1px dotted #CCC;
+
+    .customize-control-title {
+      font-size: 13px;
+      line-height: initial;
+    }
+
+    .customize-control-description {
+      font-size: 13px;
+      line-height: initial;
+    }
+
+    &.repeater-field-hidden {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .repeater-field-select select {
+    margin-left: 0;
+  }
+
+  .repeater-field-checkbox {
+    label {
+      line-height: 28px;
+    }
+
+    input {
+      line-height: 28px;
+      margin-right: 5px;
+    }
+  }
+
+  .repeater-field-textarea textarea {
+    width: 100%;
+    resize: vertical;
+  }
+
+  .repeater-row-header {
+    background: white;
+    border-bottom: 1px solid #dfdfdf;
+    position: relative;
+    padding: 10px 15px;
+    height: auto;
+    min-height: 20px;
+    line-height: 30px;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    &:hover {
+      cursor: move;
+    }
+
+    .dashicons {
+      font-size: 18px;
+      position: absolute;
+      right: 12px;
+      top: 2px;
+      color: #a0a5aa;
+    }
+  }
+
+  .repeater-row-label {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    display: block;
+    width: 90%;
+    overflow: hidden;
+    height: 18px;
+  }
+
+  .repeater-row-remove {
+    color: #a00;
+
+    &:hover {
+      color: #f00;
+    }
+  }
+
+  .repeater-minimize {
+    line-height: 36px;
+  }
+
+  .remove-button,
+  .upload-button {
+    width: 48%;
+  }
+}
+
+.kirki-image-attachment {
+  margin: 0;
+  text-align: center;
+  margin-bottom: 10px;
+
+  img {
+    display: inline-block;
+  }
+}
+
+.kirki-file-attachment {
+  margin: 0;
+  text-align: center;
+  margin-bottom: 10px;
+
+  .file {
+    display: block;
+    padding: 10px 5px;
+    border: 1px dotted #c3c3c3;
+    background: #f9f9f9;
+  }
+}
+
+.limit {
+  padding: 3px;
+  border-radius: 3px;
+
+  &.highlight {
+    background: #D32F2F;
+    color: #fff;
+  }
+}

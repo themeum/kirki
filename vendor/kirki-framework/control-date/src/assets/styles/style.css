@@ -1,0 +1,56 @@
+.wp-customizer div.ui-datepicker {
+  z-index: 500001 !important;
+  width: 255px;
+  background: #fff;
+  border: 1px solid #dedede; }
+  .wp-customizer div.ui-datepicker .ui-datepicker-header {
+    padding: 10px;
+    background: #e5e5e5;
+    border-bottom: 1px solid #fff; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next,
+    .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+      display: block;
+      position: absolute;
+      width: 1em;
+      overflow: hidden; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after, .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:before,
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:after,
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before {
+        font-family: dashicons; }
+        .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after:hover, .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:before:hover,
+        .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:after:hover,
+        .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before:hover {
+          cursor: pointer; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon,
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev .ui-icon {
+        display: none; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+      left: 10px; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before {
+        content: "\f341"; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+      right: 10px; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after {
+        content: "\f345"; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+      text-align: center; }
+  .wp-customizer div.ui-datepicker .ui-datepicker-calendar {
+    border-collapse: collapse;
+    width: 100%; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-calendar thead {
+      background: #e5e5e5;
+      padding: 5px; }
+    .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td {
+      text-align: center; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a {
+        display: block;
+        padding: 5px;
+        color: #333;
+        text-decoration: none; }
+        .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a.ui-state-active, .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a:hover {
+          color: #fff;
+          background-color: #0073aa; }
+      .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled a, .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled .ui-state-default a {
+        color: #999; }
+
+/*# sourceMappingURL=style.css.map */

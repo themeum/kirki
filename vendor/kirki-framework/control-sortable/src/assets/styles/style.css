@@ -1,0 +1,15 @@
+.customize-control-kirki-sortable ul.ui-sortable li {
+  padding: 5px 10px;
+  border: 1px solid #333;
+  background: #fff; }
+  .customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-menu {
+    float: right; }
+  .customize-control-kirki-sortable ul.ui-sortable li .dashicons.visibility {
+    margin-right: 10px; }
+  .customize-control-kirki-sortable ul.ui-sortable li.invisible {
+    color: #aaa;
+    border: 1px dashed #aaa; }
+    .customize-control-kirki-sortable ul.ui-sortable li.invisible .dashicons.visibility {
+      color: #aaa; }
+
+/*# sourceMappingURL=style.css.map */
