@@ -120,6 +120,7 @@ final class Helper {
 		);
 
 		$overrides = array(
+			'test_type' => false,
 			'test_form' => false,
 			'test_size' => true,
 		);
