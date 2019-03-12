@@ -6,15 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'e39d65200389eae57bc808f1490b0286' => $vendorDir . '/kirki-framework/control-base/src/functions.php',
     '87c34c6c6680f5cbf57e2065b44cdcd1' => $vendorDir . '/kirki-framework/core/src/aliases.php',
     'eb4452de9d915613ac6f95c83bf4be18' => $vendorDir . '/kirki-framework/control-color/src/functions.php',
     '37841c7b48171f84098f3850c2594b73' => $vendorDir . '/kirki-framework/control-number/src/functions.php',
     '92949853f7e17f96334a268282ccda4f' => $vendorDir . '/kirki-framework/control-radio/src/functions.php',
     'a1be2832d45f421df16520e860f0108a' => $vendorDir . '/kirki-framework/control-select/src/functions.php',
     '4becfd0b1c4f3bd1c4b12db74525d49e' => $vendorDir . '/kirki-framework/module-webfonts/src/aliases.php',
-    '067ff29f1a61025d7ba521f79f9136f6' => $vendorDir . '/kirki-framework/control-background/src/functions.php',
-    '86edf5bdebb786eab1d6a70a05e6a321' => $vendorDir . '/kirki-framework/control-checkbox/src/functions.php',
     'c407089037feacda59cad35e1520f0ea' => $vendorDir . '/kirki-framework/control-code/src/functions.php',
     '948b3ed58ed44c03e81e7d045dce8910' => $vendorDir . '/kirki-framework/control-color-palette/src/functions.php',
     '48169c443670736d2b1a514d020b64a1' => $vendorDir . '/kirki-framework/control-cropped-image/src/aliases.php',

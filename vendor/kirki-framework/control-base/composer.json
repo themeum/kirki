@@ -19,7 +19,6 @@
     "autoload": {
 		"psr-4": {
 			"Kirki\\Control\\": "src/Control"
-        },
-        "files": ["src/functions.php"]
+        }
     }
 }

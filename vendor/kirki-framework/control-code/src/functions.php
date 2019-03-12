@@ -9,14 +9,6 @@
  */
 
 add_action(
-    'customize_register',
-    function() {
-        class_alias( 'Kirki\Control\Code', 'Kirki_Control_Code' );
-    }
-);
-class_alias( 'Kirki\Field\Code', 'Kirki_Field_Code' );
-
-add_action(
     'customize_controls_print_footer_scripts',
     function() {
         $path = apply_filters( 'kirki_control_view_code', __DIR__ . '/view.php' );
