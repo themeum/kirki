@@ -23,7 +23,7 @@ class Color_Alpha extends Color {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		$this->choices['alpha'] = true;
 	}

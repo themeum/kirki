@@ -78,12 +78,12 @@ class Slider extends Base {
 		parent::to_json();
 		$this->json['choices'] = wp_parse_args(
 			$this->json['choices'],
-			array(
+			[
 				'min'    => '0',
 				'max'    => '100',
 				'step'   => '1',
 				'suffix' => '',
-			)
+			]
 		);
 	}
 

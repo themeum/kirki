@@ -24,7 +24,7 @@ class Sections {
 	 * @since 3.0.17
 	 */
 	public function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'outer_sections_css' ) );
+		add_action( 'customize_controls_print_footer_scripts', [ $this, 'outer_sections_css' ] );
 	}
 
 	/**

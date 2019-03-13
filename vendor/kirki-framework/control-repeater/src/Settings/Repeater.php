@@ -31,11 +31,11 @@ class Repeater extends \WP_Customize_Setting {
 	 * @param string               $id       A specific ID of the setting. Can be a theme mod or option name.
 	 * @param array                $args     Setting arguments.
 	 */
-	public function __construct( $manager, $id, $args = array() ) {
+	public function __construct( $manager, $id, $args = [] ) {
 		parent::__construct( $manager, $id, $args );
 
 		// Will onvert the setting from JSON to array. Must be triggered very soon.
-		add_filter( "customize_sanitize_{$this->id}", array( $this, 'sanitize_repeater_setting' ), 10, 1 );
+		add_filter( "customize_sanitize_{$this->id}", [ $this, 'sanitize_repeater_setting' ], 10, 1 );
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Repeater extends \WP_Customize_Setting {
 			$value = json_decode( urldecode( $value ) );
 		}
 		if ( empty( $value ) || ! is_array( $value ) ) {
-			$value = array();
+			$value = [];
 		}
 
 		// Make sure that every row is an array, not an object.

@@ -75,8 +75,8 @@ class Select extends Base {
 		$url = untrailingslashit( $url );
 
 		// Enqueue selectWoo.
-		wp_enqueue_script( 'selectWoo', "$url/assets/scripts/selectWoo/js/selectWoo.full.js", array( 'jquery' ), '1.0.1', true );
-		wp_enqueue_style( 'selectWoo', "$url/assets/scripts/selectWoo/css/selectWoo.css", array(), '1.0.1' );
+		wp_enqueue_script( 'selectWoo', "$url/assets/scripts/selectWoo/js/selectWoo.full.js", [ 'jquery' ], '1.0.1', true );
+		wp_enqueue_style( 'selectWoo', "$url/assets/scripts/selectWoo/css/selectWoo.css", [], '1.0.1' );
 
 		// Enqueue the script.
 		wp_enqueue_script(

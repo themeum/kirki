@@ -23,7 +23,7 @@ final class Config {
 	 * @access private
 	 * @var array
 	 */
-	private static $instances = array();
+	private static $instances = [];
 
 	/**
 	 * The finalized configuration array.
@@ -31,7 +31,7 @@ final class Config {
 	 * @access protected
 	 * @var array
 	 */
-	protected $config_final = array();
+	protected $config_final = [];
 
 	/**
 	 * The configuration ID.
@@ -71,7 +71,7 @@ final class Config {
 	 * @access protected
 	 * @var array
 	 */
-	protected $compiler = array();
+	protected $compiler = [];
 
 	/**
 	 * Set to true if you want to completely disable any Kirki-generated CSS.
@@ -89,7 +89,7 @@ final class Config {
 	 * @param string $config_id @see Kirki\Core\Config::get_instance().
 	 * @param array  $args      @see Kirki\Core\Config::get_instance().
 	 */
-	private function __construct( $config_id = 'global', $args = array() ) {
+	private function __construct( $config_id = 'global', $args = [] ) {
 
 		// Get defaults from the class.
 		$defaults = get_class_vars( __CLASS__ );
@@ -111,9 +111,9 @@ final class Config {
 		$this->id = $config_id;
 
 		$this->config_final = wp_parse_args(
-			array(
+			[
 				'id' => $config_id,
-			),
+			],
 			$args
 		);
 	}
@@ -140,7 +140,7 @@ final class Config {
 	 *
 	 * @return Kirki\Core\Config
 	 */
-	public static function get_instance( $id = 'global', $args = array() ) {
+	public static function get_instance( $id = 'global', $args = [] ) {
 		if ( empty( $id ) ) {
 			$id = 'global';
 		}
@@ -160,7 +160,7 @@ final class Config {
 	 * @return array
 	 */
 	public static function get_config_ids() {
-		$configs = array();
+		$configs = [];
 		foreach ( self::$instances as $instance ) {
 			$configs[] = $instance->id;
 		}

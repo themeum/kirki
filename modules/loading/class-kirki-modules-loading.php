@@ -30,7 +30,7 @@ class Kirki_Modules_Loading {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -61,13 +61,13 @@ class Kirki_Modules_Loading {
 			return;
 		}
 		// Allow disabling the custom loader using the kirki_config filter.
-		$config = apply_filters( 'kirki_config', array() );
+		$config = apply_filters( 'kirki_config', [] );
 		if ( isset( $config['disable_loader'] ) && true === $config['disable_loader'] ) {
 			return;
 		}
 		// Add the "loading" icon.
-		add_action( 'wp_footer', array( $this, 'add_loader_to_footer' ) );
-		add_action( 'wp_head', array( $this, 'add_loader_styles_to_header' ), 99 );
+		add_action( 'wp_footer', [ $this, 'add_loader_to_footer' ] );
+		add_action( 'wp_head', [ $this, 'add_loader_styles_to_header' ], 99 );
 		$this->remove_default_loading_styles();
 	}
 
@@ -162,6 +162,6 @@ class Kirki_Modules_Loading {
 	 */
 	public function remove_default_loading_styles() {
 		global $wp_customize;
-		remove_action( 'wp_head', array( $wp_customize, 'customize_preview_loading_style' ) );
+		remove_action( 'wp_head', [ $wp_customize, 'customize_preview_loading_style' ] );
 	}
 }

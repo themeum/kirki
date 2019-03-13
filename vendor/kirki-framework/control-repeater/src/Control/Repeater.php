@@ -38,7 +38,7 @@ class Repeater extends Base {
 	 * @access public
 	 * @var array
 	 */
-	public $fields = array();
+	public $fields = [];
 
 	/**
 	 * Will store a filtered version of value for advenced fields (like images).
@@ -46,7 +46,7 @@ class Repeater extends Base {
 	 * @access protected
 	 * @var array
 	 */
-	protected $filtered_value = array();
+	protected $filtered_value = [];
 
 	/**
 	 * The row label
@@ -54,7 +54,7 @@ class Repeater extends Base {
 	 * @access public
 	 * @var array
 	 */
-	public $row_label = array();
+	public $row_label = [];
 
 	/**
 	 * The button label
@@ -73,15 +73,15 @@ class Repeater extends Base {
 	 * @param string               $id      Control ID.
 	 * @param array                $args    {@see WP_Customize_Control::__construct}.
 	 */
-	public function __construct( $manager, $id, $args = array() ) {
+	public function __construct( $manager, $id, $args = [] ) {
 		parent::__construct( $manager, $id, $args );
 
 		// Set up defaults for row labels.
-		$this->row_label = array(
+		$this->row_label = [
 			'type'  => 'text',
 			'value' => esc_attr__( 'row', 'kirki' ),
 			'field' => false,
-		);
+		];
 
 		// Validate row-labels.
 		$this->row_label( $args );
@@ -92,11 +92,11 @@ class Repeater extends Base {
 		}
 
 		if ( empty( $args['fields'] ) || ! is_array( $args['fields'] ) ) {
-			$args['fields'] = array();
+			$args['fields'] = [];
 		}
 
 		// An array to store keys of fields that need to be filtered.
-		$media_fields_to_filter = array();
+		$media_fields_to_filter = [];
 
 		foreach ( $args['fields'] as $key => $value ) {
 			if ( ! isset( $value['default'] ) ) {
@@ -120,13 +120,13 @@ class Repeater extends Base {
 					case 'dropdown-pages':
 						// If the field is a dropdown-pages field then add it to args.
 						$dropdown = wp_dropdown_pages(
-							array(
+							[
 								'name'              => '',
 								'echo'              => 0,
 								'show_option_none'  => esc_html__( 'Select a Page', 'kirki' ),
 								'option_none_value' => '0',
 								'selected'          => '',
-							)
+							]
 						);
 
 						// Hackily add in the data link parameter.
@@ -173,11 +173,11 @@ class Repeater extends Base {
 								if ( $url ) {
 
 									// 'id' is needed for form hidden value, URL is needed to display the image.
-									$value = array(
+									$value = [
 										'id'       => $attachment_id,
 										'url'      => $url,
 										'filename' => $filename,
-									);
+									];
 								}
 							}
 						}

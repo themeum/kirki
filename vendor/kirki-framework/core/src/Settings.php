@@ -31,7 +31,7 @@ class Settings {
 	 * @access protected
 	 * @var array
 	 */
-	protected $setting_types = array();
+	protected $setting_types = [];
 
 	/**
 	 * Creates a new Settings object.
@@ -40,7 +40,7 @@ class Settings {
 	 * @access public
 	 * @param array $args The field definition as sanitized in Kirki\Core\Field.
 	 */
-	public function __construct( $args = array() ) {
+	public function __construct( $args = [] ) {
 
 		// Set the $wp_customize property.
 		global $wp_customize;
@@ -66,7 +66,7 @@ class Settings {
 	 * @access private
 	 * @param array $args The field definition as sanitized in Kirki\Core\Field.
 	 */
-	final private function add_settings( $args = array() ) {
+	final private function add_settings( $args = [] ) {
 
 		// Get the classname we'll be using to create our setting(s).
 		$classname = false;
@@ -84,7 +84,7 @@ class Settings {
 
 			// Make sure defaults have been defined.
 			if ( ! isset( $args['default'] ) || ! is_array( $args['default'] ) ) {
-				$args['default'] = array();
+				$args['default'] = [];
 			}
 			foreach ( $args['settings'] as $key => $value ) {
 				$default = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
@@ -114,13 +114,13 @@ class Settings {
 			new $classname(
 				$this->wp_customize,
 				$setting,
-				array(
+				[
 					'default'           => $default,
 					'type'              => $type,
 					'capability'        => $capability,
 					'transport'         => $transport,
 					'sanitize_callback' => $sanitize_callback,
-				)
+				]
 			)
 		);
 
@@ -137,12 +137,12 @@ class Settings {
 		// Apply the kirki_setting_types filter.
 		$this->setting_types = apply_filters(
 			'kirki_setting_types',
-			array(
+			[
 				'default'     => 'WP_Customize_Setting',
 				'repeater'    => 'Kirki_Settings_Repeater_Setting',
 				'user_meta'   => '\Kirki\Core\Setting\User_Meta',
 				'site_option' => '\Kirki\Core\Setting\Site_Option',
-			)
+			]
 		);
 
 		// Make sure the defined classes actually exist.

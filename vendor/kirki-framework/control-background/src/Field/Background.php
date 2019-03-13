@@ -39,7 +39,7 @@ class Background extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -51,16 +51,16 @@ class Background extends Field {
 	 */
 	public function sanitize( $value ) {
 		if ( ! is_array( $value ) ) {
-			return array();
+			return [];
 		}
-		return array(
+		return [
 			'background-color'      => ( isset( $value['background-color'] ) ) ? sanitize_text_field( $value['background-color'] ) : '',
 			'background-image'      => ( isset( $value['background-image'] ) ) ? esc_url_raw( $value['background-image'] ) : '',
 			'background-repeat'     => ( isset( $value['background-repeat'] ) ) ? sanitize_text_field( $value['background-repeat'] ) : '',
 			'background-position'   => ( isset( $value['background-position'] ) ) ? sanitize_text_field( $value['background-position'] ) : '',
 			'background-size'       => ( isset( $value['background-size'] ) ) ? sanitize_text_field( $value['background-size'] ) : '',
 			'background-attachment' => ( isset( $value['background-attachment'] ) ) ? sanitize_text_field( $value['background-attachment'] ) : '',
-		);
+		];
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Background extends Field {
 		// Serves as a fallback in case we failt to auto-calculate js_vars.
 		$this->transport = 'refresh';
 
-		$js_vars = array();
+		$js_vars = [];
 
 		// Try to auto-generate js_vars.
 		// First we need to check if js_vars are empty, and that output is not empty.

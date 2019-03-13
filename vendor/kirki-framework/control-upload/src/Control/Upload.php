@@ -23,7 +23,7 @@ class Upload extends \WP_Customize_Upload_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $required = array();
+	public $required = [];
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

@@ -30,7 +30,7 @@ class Control {
 	 * @access protected
 	 * @var array
 	 */
-	protected static $control_types = array();
+	protected static $control_types = [];
 
 	/**
 	 * The class constructor.
@@ -107,7 +107,7 @@ class Control {
 			return;
 		}
 
-		self::$control_types = apply_filters( 'kirki_control_types', array() );
+		self::$control_types = apply_filters( 'kirki_control_types', [] );
 
 		// Make sure the defined classes actually exist.
 		foreach ( self::$control_types as $key => $classname ) {

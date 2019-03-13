@@ -22,9 +22,9 @@ class Textarea extends Generic {
 	 * @access protected
 	 */
 	protected function set_choices() {
-		$this->choices = array(
+		$this->choices = [
 			'element' => 'textarea',
 			'rows'    => 5,
-		);
+		];
 	}
 }

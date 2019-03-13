@@ -50,7 +50,7 @@ final class Generator {
 	 * @access public
 	 * @var array
 	 */
-	public static $output = array();
+	public static $output = [];
 
 	/**
 	 * Callback.
@@ -155,12 +155,12 @@ final class Generator {
 		self::$field_type = $field['type'];
 		self::$output     = $field['output'];
 		if ( ! is_array( self::$output ) ) {
-			self::$output = array(
-				array(
+			self::$output = [
+				[
 					'element'           => self::$output,
 					'sanitize_callback' => null,
-				),
-			);
+				],
+			];
 		}
 
 		// Get the value of this field.
@@ -168,13 +168,13 @@ final class Generator {
 
 		// Find the class that will handle the outpout for this field.
 		$classname            = '\Kirki\Modules\CSS\Output';
-		$default_classnames   = array(
+		$default_classnames   = [
 			'kirki-background' => '\Kirki\Modules\CSS\Field\Background',
 			'kirki-dimensions' => '\Kirki\Modules\CSS\Field\Dimensions',
 			'kirki-image'      => '\Kirki\Modules\CSS\Field\Image',
 			'kirki-typography' => '\Kirki\Modules\CSS\Field\Typography',
 			'kirki-multicolor' => '\Kirki\Modules\CSS\Field\Multicolor',
-		);
+		];
 		$field_output_classes = apply_filters( 'kirki_output_control_classnames', $default_classnames );
 		$field_output_classes = apply_filters( "kirki_{$field['kirki_config']}_output_control_classnames", $field_output_classes );
 		if ( array_key_exists( self::$field_type, $field_output_classes ) ) {
@@ -192,7 +192,7 @@ final class Generator {
 	 * @param array $css The CSS definitions array.
 	 * @return string    The generated CSS.
 	 */
-	public static function styles_parse( $css = array() ) {
+	public static function styles_parse( $css = [] ) {
 
 		// Pass our styles from the kirki_styles_array filter.
 		$css = apply_filters( 'kirki_styles_array', $css );
@@ -243,7 +243,7 @@ final class Generator {
 						// Add -webkit-* and -moz-*.
 						if ( is_string( $property ) && in_array(
 							$property,
-							array(
+							[
 								'border-radius',
 								'box-shadow',
 								'box-sizing',
@@ -252,7 +252,7 @@ final class Generator {
 								'background-size',
 								'transition',
 								'transition-property',
-							),
+							],
 							true
 						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );
@@ -264,12 +264,12 @@ final class Generator {
 						// Add -ms-* and -o-*.
 						if ( is_string( $property ) && in_array(
 							$property,
-							array(
+							[
 								'transform',
 								'background-size',
 								'transition',
 								'transition-property',
-							),
+							],
 							true
 						) ) {
 							unset( $css[ $media_query ][ $element ][ $property ] );

@@ -23,9 +23,9 @@ class Panel {
 	 * @access private
 	 * @var array
 	 */
-	private $panel_types = array(
+	private $panel_types = [
 		'default' => 'WP_Customize_Panel',
-	);
+	];
 
 	/**
 	 * The class constructor.

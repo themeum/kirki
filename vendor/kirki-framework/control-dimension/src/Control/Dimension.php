@@ -69,9 +69,9 @@ class Dimension extends Base {
 		wp_localize_script(
 			'kirki-control-dimension',
 			'dimensionkirkiL10n',
-			array(
+			[
 				'invalid-value' => esc_html__( 'Invalid Value', 'kirki' ),
-			)
+			]
 		);
 	}
 

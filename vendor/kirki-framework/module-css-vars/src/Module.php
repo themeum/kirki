@@ -39,7 +39,7 @@ class Module {
 	 * @since 3.0.28
 	 * @var array
 	 */
-	private $fields = array();
+	private $fields = [];
 
 	/**
 	 * CSS-variables array [var=>val].
@@ -48,7 +48,7 @@ class Module {
 	 * @since 3.0.35
 	 * @var array
 	 */
-	private $vars = array();
+	private $vars = [];
 
 	/**
 	 * Constructor
@@ -57,10 +57,10 @@ class Module {
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'init', array( $this, 'populate_vars' ) );
-		add_action( 'wp_head', array( $this, 'the_style' ), 999 );
-		add_action( 'admin_head', array( $this, 'the_style' ), 999 );
-		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
+		add_action( 'init', [ $this, 'populate_vars' ] );
+		add_action( 'wp_head', [ $this, 'the_style' ], 999 );
+		add_action( 'admin_head', [ $this, 'the_style' ], 999 );
+		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
 	}
 
 	/**
@@ -147,9 +147,9 @@ class Module {
 	 * @return void
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-css-vars/src/script.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-css-vars/src/script.js', [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
-		$data   = array();
+		$data   = [];
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_vars'] ) && ! empty( $field['css_vars'] ) ) {
 				$data[] = $field;

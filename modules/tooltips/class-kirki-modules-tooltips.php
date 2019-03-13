@@ -37,7 +37,7 @@ class Kirki_Modules_Tooltips {
 	 * @since 3.0.0
 	 * @var array
 	 */
-	private $tooltips_content = array();
+	private $tooltips_content = [];
 
 	/**
 	 * The class constructor
@@ -46,7 +46,7 @@ class Kirki_Modules_Tooltips {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+		add_action( 'customize_controls_print_footer_scripts', [ $this, 'customize_controls_print_footer_scripts' ] );
 	}
 
 	/**
@@ -79,10 +79,10 @@ class Kirki_Modules_Tooltips {
 				// Get the control ID and properly format it for the tooltips.
 				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
 				// Add the tooltips content.
-				$this->tooltips_content[ $id ] = array(
+				$this->tooltips_content[ $id ] = [
 					'id'      => $id,
 					'content' => $field['tooltip'],
-				);
+				];
 			}
 		}
 	}
@@ -96,10 +96,10 @@ class Kirki_Modules_Tooltips {
 	 * @param string $tooltip  The tooltip content.
 	 */
 	public function add_tooltip( $field_id, $tooltip ) {
-		$this->tooltips_content[ $field_id ] = array(
+		$this->tooltips_content[ $field_id ] = [
 			'id'      => sanitize_key( $field_id ),
 			'content' => wp_kses_post( $tooltip ),
-		);
+		];
 	}
 
 	/**
@@ -111,8 +111,8 @@ class Kirki_Modules_Tooltips {
 	public function customize_controls_print_footer_scripts() {
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery' ), KIRKI_VERSION, false );
+		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', [ 'jquery' ], KIRKI_VERSION, false );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
-		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', array(), KIRKI_VERSION );
+		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', [], KIRKI_VERSION );
 	}
 }

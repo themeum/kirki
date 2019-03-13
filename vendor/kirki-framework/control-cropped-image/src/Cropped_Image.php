@@ -23,7 +23,7 @@ class Cropped_Image extends \WP_Customize_Cropped_Image_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $required = array();
+	public $required = [];
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

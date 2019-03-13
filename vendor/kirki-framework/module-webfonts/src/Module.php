@@ -55,8 +55,8 @@ class Module {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'wp_loaded', array( $this, 'run' ) );
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_controls_webfonts_script' ), 1 );
+		add_action( 'wp_loaded', [ $this, 'run' ] );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_controls_webfonts_script' ], 1 );
 	}
 
 	/**

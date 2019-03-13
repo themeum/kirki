@@ -41,7 +41,7 @@ class Module {
 	 * @since 3.0.26
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+		add_action( 'customize_controls_print_footer_scripts', [ $this, 'customize_controls_print_footer_scripts' ] );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Module {
 		wp_enqueue_script(
 			'kirki-set-setting-value',
 			trailingslashit( Kirki::$url ) . 'assets/scripts/set-setting-value.js',
-			array( 'jquery' ),
+			[ 'jquery' ],
 			KIRKI_VERSION,
 			false
 		);
@@ -83,7 +83,7 @@ class Module {
 		wp_enqueue_script(
 			'kirki-preset',
 			trailingslashit( Kirki::$url ) . 'assets/scripts/preset.js',
-			array( 'jquery', 'kirki-set-setting-value' ),
+			[ 'jquery', 'kirki-set-setting-value' ],
 			KIRKI_VERSION,
 			false
 		);

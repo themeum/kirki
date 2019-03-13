@@ -32,16 +32,16 @@ class Checkbox_Switch extends Checkbox {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 
 		$this->choices = wp_parse_args(
 			$this->choices,
-			array(
+			[
 				'on'    => esc_html__( 'On', 'kirki' ),
 				'off'   => esc_html__( 'Off', 'kirki' ),
 				'round' => false,
-			)
+			]
 		);
 	}
 }

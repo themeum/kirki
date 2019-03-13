@@ -28,13 +28,13 @@ class Dimensions extends Output {
 	protected function process_output( $output, $value ) {
 		$output = wp_parse_args(
 			$output,
-			array(
+			[
 				'element'     => '',
 				'property'    => '',
 				'media_query' => 'global',
 				'prefix'      => '',
 				'suffix'      => '',
-			)
+			]
 		);
 
 		if ( ! is_array( $value ) ) {

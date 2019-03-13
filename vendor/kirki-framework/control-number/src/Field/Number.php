@@ -35,7 +35,7 @@ class Number extends Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -46,11 +46,11 @@ class Number extends Field {
 	protected function set_choices() {
 		$this->choices = wp_parse_args(
 			$this->choices,
-			array(
+			[
 				'min'  => -999999999,
 				'max'  => 999999999,
 				'step' => 1,
-			)
+			]
 		);
 		// Make sure min, max & step are all numeric.
 		$this->choices['min']  = filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );

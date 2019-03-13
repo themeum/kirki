@@ -33,7 +33,7 @@ class Typography extends Output {
 
 		$value = \Kirki_Field_Typography::sanitize( $value );
 
-		$properties = array(
+		$properties = [
 			'font-family',
 			'font-size',
 			'variant',
@@ -46,7 +46,7 @@ class Typography extends Output {
 			'text-transform',
 			'text-decoration',
 			'color',
-		);
+		];
 
 		foreach ( $properties as $property ) {
 
@@ -70,7 +70,7 @@ class Typography extends Output {
 
 				// Get the font_weight.
 				$font_weight = str_replace( 'italic', '', $value['variant'] );
-				$font_weight = ( in_array( $font_weight, array( '', 'regular' ), true ) ) ? '400' : $font_weight;
+				$font_weight = ( in_array( $font_weight, [ '', 'regular' ], true ) ) ? '400' : $font_weight;
 
 				// Is this italic?
 				$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
@@ -86,10 +86,10 @@ class Typography extends Output {
 				$value['font-backup'] = ( isset( $value['font-backup'] ) ) ? $value['font-backup'] : '';
 				$property_value       = $this->process_property_value(
 					$property,
-					array(
+					[
 						$value['font-family'],
 						$value['font-backup'],
-					)
+					]
 				);
 			}
 			$property       = ( isset( $output['choice'] ) && isset( $output['property'] ) ) ? $output['property'] : $property;

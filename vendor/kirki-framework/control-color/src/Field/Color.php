@@ -50,7 +50,7 @@ class Color extends Field {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		if ( true === $this->alpha ) {
 			_doing_it_wrong( 'Kirki::add_field', esc_html__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
@@ -84,6 +84,6 @@ class Color extends Field {
 			$this->sanitize_callback = 'absint';
 			return;
 		}
-		$this->sanitize_callback = array( 'Kirki\Core\Sanitize_Values', 'color' );
+		$this->sanitize_callback = [ 'Kirki\Core\Sanitize_Values', 'color' ];
 	}
 }

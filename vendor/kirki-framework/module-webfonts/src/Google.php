@@ -55,7 +55,7 @@ final class Google {
 	 * @access public
 	 * @var array
 	 */
-	public $fonts = array();
+	public $fonts = [];
 
 	/**
 	 * An array of all google fonts.
@@ -63,7 +63,7 @@ final class Google {
 	 * @access private
 	 * @var array
 	 */
-	private $google_fonts = array();
+	private $google_fonts = [];
 
 	/**
 	 * An array of fonts that should be hosted locally instead of served via the google-CDN.
@@ -72,23 +72,23 @@ final class Google {
 	 * @since 3.0.32
 	 * @var array
 	 */
-	protected $hosted_fonts = array();
+	protected $hosted_fonts = [];
 
 	/**
 	 * The class constructor.
 	 */
 	private function __construct() {
-		$config = apply_filters( 'kirki_config', array() );
+		$config = apply_filters( 'kirki_config', [] );
 
 		// If we have set $config['disable_google_fonts'] to true then do not proceed any further.
 		if ( isset( $config['disable_google_fonts'] ) && true === $config['disable_google_fonts'] ) {
 			return;
 		}
 
-		add_action( 'wp_ajax_kirki_fonts_google_all_get', array( $this, 'get_googlefonts_json' ) );
-		add_action( 'wp_ajax_nopriv_kirki_fonts_google_all_get', array( $this, 'get_googlefonts_json' ) );
-		add_action( 'wp_ajax_kirki_fonts_standard_all_get', array( $this, 'get_standardfonts_json' ) );
-		add_action( 'wp_ajax_nopriv_kirki_fonts_standard_all_get', array( $this, 'get_standardfonts_json' ) );
+		add_action( 'wp_ajax_kirki_fonts_google_all_get', [ $this, 'get_googlefonts_json' ] );
+		add_action( 'wp_ajax_nopriv_kirki_fonts_google_all_get', [ $this, 'get_googlefonts_json' ] );
+		add_action( 'wp_ajax_kirki_fonts_standard_all_get', [ $this, 'get_standardfonts_json' ] );
+		add_action( 'wp_ajax_nopriv_kirki_fonts_standard_all_get', [ $this, 'get_standardfonts_json' ] );
 
 		// Populate the array of google fonts.
 		$this->google_fonts = Fonts::get_google_fonts();
@@ -139,7 +139,7 @@ final class Google {
 
 			// Add the requested google-font.
 			if ( ! isset( $this->fonts[ $value['font-family'] ] ) ) {
-				$this->fonts[ $value['font-family'] ] = array();
+				$this->fonts[ $value['font-family'] ] = [];
 			}
 			if ( ! in_array( $value['variant'], $this->fonts[ $value['font-family'] ], true ) ) {
 				$this->fonts[ $value['font-family'] ][] = $value['variant'];
@@ -164,7 +164,7 @@ final class Google {
 			foreach ( $args['output'] as $output ) {
 
 				// If we don't have a typography-related output argument we can skip this.
-				if ( ! isset( $output['property'] ) || ! in_array( $output['property'], array( 'font-family', 'font-weight' ), true ) ) {
+				if ( ! isset( $output['property'] ) || ! in_array( $output['property'], [ 'font-family', 'font-weight' ], true ) ) {
 					continue;
 				}
 
@@ -174,7 +174,7 @@ final class Google {
 				if ( is_string( $value ) ) {
 					if ( 'font-family' === $output['property'] ) {
 						if ( ! array_key_exists( $value, $this->fonts ) ) {
-							$this->fonts[ $value ] = array();
+							$this->fonts[ $value ] = [];
 						}
 					} elseif ( 'font-weight' === $output['property'] ) {
 						foreach ( $this->fonts as $font => $variants ) {
@@ -210,7 +210,7 @@ final class Google {
 			}
 
 			// Get all valid font variants for this font.
-			$font_variants = array();
+			$font_variants = [];
 			if ( isset( $this->google_fonts[ $font ]['variants'] ) ) {
 				$font_variants = $this->google_fonts[ $font ]['variants'];
 			}

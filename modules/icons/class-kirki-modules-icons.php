@@ -37,7 +37,7 @@ class Kirki_Modules_Icons {
 	 * @access private
 	 * @var string
 	 */
-	private static $icons = array();
+	private static $icons = [];
 
 	/**
 	 * The class constructor.
@@ -45,7 +45,7 @@ class Kirki_Modules_Icons {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 99 );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'customize_controls_enqueue_scripts' ], 99 );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Kirki_Modules_Icons {
 			}
 		}
 
-		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );
 		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
 	}
 }

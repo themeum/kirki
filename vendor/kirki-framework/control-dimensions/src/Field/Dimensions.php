@@ -39,7 +39,7 @@ class Dimensions extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -65,7 +65,7 @@ class Dimensions extends Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-		$this->choices['controls'] = array();
+		$this->choices['controls'] = [];
 		if ( is_array( $this->default ) ) {
 			foreach ( $this->default as $key => $value ) {
 				$this->choices['controls'][ $key ] = true;

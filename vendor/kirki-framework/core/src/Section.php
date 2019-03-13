@@ -23,7 +23,7 @@ class Section {
 	 * @access private
 	 * @var array
 	 */
-	private $section_types = array();
+	private $section_types = [];
 
 	/**
 	 * The object constructor.

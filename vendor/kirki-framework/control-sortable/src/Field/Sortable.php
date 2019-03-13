@@ -33,7 +33,7 @@ class Sortable extends Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -43,13 +43,13 @@ class Sortable extends Field {
 	 * @param array $value The checkbox value.
 	 * @return array
 	 */
-	public function sanitize( $value = array() ) {
+	public function sanitize( $value = [] ) {
 		if ( is_string( $value ) || is_numeric( $value ) ) {
-			return array(
+			return [
 				sanitize_text_field( $value ),
-			);
+			];
 		}
-		$sanitized_value = array();
+		$sanitized_value = [];
 		foreach ( $value as $sub_value ) {
 			if ( isset( $this->choices[ $sub_value ] ) ) {
 				$sanitized_value[] = sanitize_text_field( $sub_value );

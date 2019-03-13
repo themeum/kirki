@@ -25,7 +25,7 @@ class Kirki_Autoload {
 	 * @since 3.0.10
 	 * @var array
 	 */
-	private $cached_paths = array();
+	private $cached_paths = [];
 
 	/**
 	 * Class constructor.
@@ -35,7 +35,7 @@ class Kirki_Autoload {
 	 */
 	public function __construct() {
 
-		spl_autoload_register( array( $this, 'autoload' ) );
+		spl_autoload_register( [ $this, 'autoload' ] );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Kirki_Autoload {
 	 */
 	protected function get_paths( $class_name ) {
 
-		$paths = array();
+		$paths = [];
 		// Build the filename.
 		$filename = 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 

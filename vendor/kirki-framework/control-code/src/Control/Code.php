@@ -31,7 +31,7 @@ class Code extends \WP_Customize_Code_Editor_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $required = array();
+	public $required = [];
 
 	/**
 	 * Enqueue control related scripts/styles.

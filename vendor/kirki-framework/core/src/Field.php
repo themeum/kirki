@@ -24,7 +24,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $args = array();
+	protected $args = [];
 
 	/**
 	 * The ID of the kirki_config we're using.
@@ -59,7 +59,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $input_attrs = array();
+	protected $input_attrs = [];
 
 	/**
 	 * Preset choices.
@@ -67,7 +67,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $preset = array();
+	protected $preset = [];
 
 	/**
 	 * CSS Variables.
@@ -75,7 +75,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $css_vars = array();
+	protected $css_vars = [];
 
 	/**
 	 * Use "theme_mod" or "option".
@@ -117,7 +117,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $choices = array();
+	protected $choices = [];
 
 	/**
 	 * Assign this field to a section.
@@ -161,7 +161,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $output = array();
+	protected $output = [];
 
 	/**
 	 * Use to automatically generate postMessage scripts.
@@ -172,7 +172,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $js_vars = array();
+	protected $js_vars = [];
 
 	/**
 	 * If you want to use a CSS compiler, then use this to set the variable names.
@@ -181,7 +181,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $variables = array();
+	protected $variables = [];
 
 	/**
 	 * Text that will be used in a tooltip to provide extra info for this field.
@@ -222,7 +222,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $required = array();
+	protected $required = [];
 
 	/**
 	 * Partial Refreshes array.
@@ -230,7 +230,7 @@ class Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $partial_refresh = array();
+	protected $partial_refresh = [];
 
 	/**
 	 * The class constructor.
@@ -243,7 +243,7 @@ class Field {
 	 *                             Configs are handled by the Kirki\Core\Config class.
 	 * @param array  $args         The arguments of the field.
 	 */
-	public function __construct( $config_id = 'global', $args = array() ) {
+	public function __construct( $config_id = 'global', $args = [] ) {
 
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
@@ -274,11 +274,11 @@ class Field {
 		$defaults = get_class_vars( __CLASS__ );
 
 		// Get the config arguments, and merge them with the defaults.
-		$config_defaults = ( isset( Kirki::$config['global'] ) ) ? Kirki::$config['global'] : array();
+		$config_defaults = ( isset( Kirki::$config['global'] ) ) ? Kirki::$config['global'] : [];
 		if ( 'global' !== $this->kirki_config && isset( Kirki::$config[ $this->kirki_config ] ) ) {
 			$config_defaults = Kirki::$config[ $this->kirki_config ];
 		}
-		$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : array();
+		$config_defaults = ( is_array( $config_defaults ) ) ? $config_defaults : [];
 		foreach ( $config_defaults as $key => $value ) {
 			if ( isset( $defaults[ $key ] ) && ! empty( $value ) && $value !== $defaults[ $key ] ) {
 				$defaults[ $key ] = $value;
@@ -313,7 +313,7 @@ class Field {
 
 		// Sanitize the properties, skipping the ones that have already run above.
 		foreach ( $properties as $property => $value ) {
-			if ( in_array( $property, array( 'option_name', 'option_type', 'settings' ), true ) ) {
+			if ( in_array( $property, [ 'option_name', 'option_type', 'settings' ], true ) ) {
 				continue;
 			}
 			if ( method_exists( $this, 'set_' . $property ) ) {
@@ -369,7 +369,7 @@ class Field {
 	 */
 	protected function set_partial_refresh() {
 		if ( ! is_array( $this->partial_refresh ) ) {
-			$this->partial_refresh = array();
+			$this->partial_refresh = [];
 		}
 		foreach ( $this->partial_refresh as $id => $args ) {
 			if ( ! is_array( $args ) || ! isset( $args['selector'] ) || ! isset( $args['render_callback'] ) || ! is_callable( $args['render_callback'] ) ) {
@@ -397,11 +397,11 @@ class Field {
 		// This is just to allow us to process everything the same way and avoid code duplication.
 		// if settings is not an array then it will not be set as an array in the end.
 		if ( ! is_array( $this->settings ) ) {
-			$this->settings = array(
+			$this->settings = [
 				'kirki_placeholder_setting' => $this->settings,
-			);
+			];
 		}
-		$settings = array();
+		$settings = [];
 		foreach ( $this->settings as $setting_key => $setting_value ) {
 			$settings[ $setting_key ] = $setting_value;
 
@@ -473,7 +473,7 @@ class Field {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 	}
 
@@ -498,18 +498,18 @@ class Field {
 		if ( ! is_array( $this->output ) ) {
 			/* translators: The field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
-			$this->output = array(
-				array(
+			$this->output = [
+				[
 					'element' => $this->output,
-				),
-			);
+				],
+			];
 		}
 
 		// Convert to array of arrays if needed.
 		if ( isset( $this->output['element'] ) ) {
 			/* translators: The field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
-			$this->output = array( $this->output );
+			$this->output = [ $this->output ];
 		}
 
 		foreach ( $this->output as $key => $output ) {
@@ -534,7 +534,7 @@ class Field {
 			}
 
 			// Fix for https://github.com/aristath/kirki/issues/1659#issuecomment-346229751.
-			$this->output[ $key ]['element'] = str_replace( array( "\t", "\n", "\r", "\0", "\x0B" ), ' ', $this->output[ $key ]['element'] );
+			$this->output[ $key ]['element'] = str_replace( [ "\t", "\n", "\r", "\0", "\x0B" ], ' ', $this->output[ $key ]['element'] );
 			$this->output[ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $this->output[ $key ]['element'] ) );
 		}
 	}
@@ -546,7 +546,7 @@ class Field {
 	 */
 	protected function set_js_vars() {
 		if ( ! is_array( $this->js_vars ) ) {
-			$this->js_vars = array();
+			$this->js_vars = [];
 		}
 
 		// Check if transport is set to auto.
@@ -559,7 +559,7 @@ class Field {
 		// Serves as a fallback in case we failt to auto-calculate js_vars.
 		$this->transport = 'refresh';
 
-		$js_vars = array();
+		$js_vars = [];
 
 		// Try to auto-generate js_vars.
 		// First we need to check if js_vars are empty, and that output is not empty.
@@ -604,7 +604,7 @@ class Field {
 	protected function set_variables() {
 		if ( ! is_array( $this->variables ) ) {
 			$variable        = ( is_string( $this->variables ) && ! empty( $this->variables ) ) ? $this->variables : false;
-			$this->variables = array();
+			$this->variables = [];
 			if ( $variable && empty( $this->variables ) ) {
 				$this->variables[0]['name'] = $variable;
 			}
@@ -629,7 +629,7 @@ class Field {
 	 */
 	protected function set_required() {
 		if ( ! is_array( $this->required ) ) {
-			$this->required = array();
+			$this->required = [];
 		}
 	}
 
@@ -649,10 +649,10 @@ class Field {
 	 */
 	protected function set_css_vars() {
 		if ( is_string( $this->css_vars ) ) {
-			$this->css_vars = array( $this->css_vars );
+			$this->css_vars = [ $this->css_vars ];
 		}
 		if ( isset( $this->css_vars[0] ) && is_string( $this->css_vars[0] ) ) {
-			$this->css_vars = array( $this->css_vars );
+			$this->css_vars = [ $this->css_vars ];
 		}
 		foreach ( $this->css_vars as $key => $val ) {
 			if ( ! isset( $val[1] ) ) {

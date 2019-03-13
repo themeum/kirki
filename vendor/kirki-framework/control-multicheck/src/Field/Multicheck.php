@@ -39,7 +39,7 @@ class Multicheck extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -49,6 +49,6 @@ class Multicheck extends Field {
 	 */
 	public function sanitize( $value ) {
 		$value = ( ! is_array( $value ) ) ? explode( ',', $value ) : $value;
-		return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
+		return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : [];
 	}
 }

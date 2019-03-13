@@ -38,7 +38,7 @@ class Multicolor extends Field {
 
 		// Make sure choices are defined as an array.
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 
 	}
@@ -55,7 +55,7 @@ class Multicolor extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 
 	}
 

@@ -27,7 +27,7 @@ class Values {
 	 * @since 3.0.10
 	 */
 	public function __construct() {
-		add_filter( 'kirki_values_get_value', array( $this, 'typography_field_tweaks' ), 10, 2 );
+		add_filter( 'kirki_values_get_value', [ $this, 'typography_field_tweaks' ], 10, 2 );
 	}
 
 	/**
@@ -140,8 +140,8 @@ class Values {
 			$value = get_theme_mod( $field['settings'], $field['default'] );
 		} elseif ( isset( $field['option_type'] ) && 'option' === $field['option_type'] ) {
 			if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {
-				$all_values     = get_option( $field['option_name'], array() );
-				$sub_setting_id = str_replace( array( ']', $field['option_name'] . '[' ), '', $field['settings'] );
+				$all_values     = get_option( $field['option_name'], [] );
+				$sub_setting_id = str_replace( [ ']', $field['option_name'] . '[' ], '', $field['settings'] );
 				if ( isset( $all_values[ $sub_setting_id ] ) ) {
 					$value = $all_values[ $sub_setting_id ];
 				}

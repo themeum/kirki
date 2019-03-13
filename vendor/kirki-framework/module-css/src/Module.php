@@ -38,7 +38,7 @@ class Module {
 	 * @access public
 	 * @var array
 	 */
-	public static $css_array = array();
+	public static $css_array = [];
 
 	/**
 	 * Should we enqueue font-awesome?
@@ -56,7 +56,7 @@ class Module {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -90,19 +90,19 @@ class Module {
 		}
 
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_styles' ], 100 );
 
-		add_action( 'wp', array( $this, 'print_styles_action' ) );
+		add_action( 'wp', [ $this, 'print_styles_action' ] );
 
 		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
-			$config   = apply_filters( 'kirki_config', array() );
+			$config   = apply_filters( 'kirki_config', [] );
 			$priority = 999;
 			if ( isset( $config['styles_priority'] ) ) {
 				$priority = absint( $config['styles_priority'] );
 			}
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ], $priority );
 		} else {
-			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
+			add_action( 'wp_head', [ $this, 'print_styles_inline' ], 999 );
 		}
 	}
 
@@ -128,9 +128,9 @@ class Module {
 	 */
 	public function enqueue_styles() {
 
-		$args = array(
+		$args = [
 			'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
-		);
+		];
 		if ( is_admin() && ! is_customize_preview() ) {
 			$args['editor'] = '1';
 		}
@@ -139,13 +139,13 @@ class Module {
 		wp_enqueue_style(
 			'kirki-styles',
 			add_query_arg( $args, site_url() ),
-			array(),
+			[],
 			KIRKI_VERSION
 		);
 
 		// Enqueue FA if needed (I hope not, this FA version is pretty old, only kept here for backwards-compatibility purposes).
 		if ( self::$enqueue_fa && apply_filters( 'kirki_load_fontawesome', true ) ) {
-			wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
+			wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', [], '4.0.7', true );
 		}
 	}
 
@@ -220,7 +220,7 @@ class Module {
 		Generator::get_instance();
 
 		$fields = Kirki::$fields;
-		$css    = array();
+		$css    = [];
 
 		// Early exit if no fields are found.
 		if ( empty( $fields ) ) {

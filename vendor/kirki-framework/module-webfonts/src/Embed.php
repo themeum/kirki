@@ -53,7 +53,7 @@ final class Embed {
 	 * @since 3.0.26
 	 * @var array
 	 */
-	protected $fonts_to_load = array();
+	protected $fonts_to_load = [];
 
 	/**
 	 * Constructor.
@@ -65,13 +65,13 @@ final class Embed {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
+	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_action( 'wp', array( $this, 'init' ), 9 );
-		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		add_action( 'wp', [ $this, 'init' ], 9 );
+		add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
 	}
 
 	/**
@@ -83,7 +83,7 @@ final class Embed {
 	 */
 	public function init() {
 		$this->populate_fonts();
-		add_action( 'kirki_dynamic_css', array( $this, 'the_css' ) );
+		add_action( 'kirki_dynamic_css', [ $this, 'the_css' ] );
 	}
 
 	/**
@@ -98,10 +98,10 @@ final class Embed {
 		$fonts_to_load = $this->googlefonts->fonts;
 
 		if ( ! empty( $fonts_to_load ) && 'preconnect' === $relation_type ) {
-			$urls[] = array(
+			$urls[] = [
 				'href' => 'https://fonts.gstatic.com',
 				'crossorigin',
-			);
+			];
 		}
 		return $urls;
 	}
@@ -127,13 +127,13 @@ final class Embed {
 				if ( 'italic' === $value ) {
 					$weights[ $key ] = '400i';
 				} else {
-					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
+					$weights[ $key ] = str_replace( [ 'regular', 'bold', 'italic' ], [ '400', '', 'i' ], $value );
 				}
 			}
-			$this->fonts_to_load[] = array(
+			$this->fonts_to_load[] = [
 				'family'  => $font,
 				'weights' => $weights,
-			);
+			];
 		}
 	}
 
@@ -163,15 +163,15 @@ final class Embed {
 				// Get the contents of the remote URL.
 				$contents = Helper::get_remote_url_contents(
 					$url,
-					array(
-						'headers' => array(
+					[
+						'headers' => [
 							/**
 							 * Set user-agent to firefox so that we get woff files.
 							 * If we want woff2, use this instead: 'Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0'
 							 */
 							'user-agent' => 'Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0',
-						),
-					)
+						],
+					]
 				);
 
 				/**
@@ -187,8 +187,8 @@ final class Embed {
 
 					// Remove blank lines and extra spaces.
 					$contents = str_replace(
-						array( ': ', ';  ', '; ', '  ' ),
-						array( ':', ';', ';', ' ' ),
+						[ ': ', ';  ', '; ', '  ' ],
+						[ ':', ';', ';', ' ' ],
 						preg_replace( "/\r|\n/", '', $contents )
 					);
 

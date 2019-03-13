@@ -26,7 +26,7 @@ class Image extends Field {
 	 * @since 3.0.23
 	 * @var string
 	 */
-	public $button_labels = array();
+	public $button_labels = [];
 
 	/**
 	 * Sets the control type.
@@ -47,7 +47,7 @@ class Image extends Field {
 	protected function set_button_labels() {
 		$this->button_labels = wp_parse_args(
 			$this->button_labels,
-			array(
+			[
 				'select'       => esc_html__( 'Select image', 'kirki' ),
 				'change'       => esc_html__( 'Change image', 'kirki' ),
 				'default'      => esc_html__( 'Default', 'kirki' ),
@@ -55,7 +55,7 @@ class Image extends Field {
 				'placeholder'  => esc_html__( 'No image selected', 'kirki' ),
 				'frame_title'  => esc_html__( 'Select image', 'kirki' ),
 				'frame_button' => esc_html__( 'Choose image', 'kirki' ),
-			)
+			]
 		);
 	}
 
@@ -73,7 +73,7 @@ class Image extends Field {
 			$this->choices['save_as'] = 'url';
 		}
 		if ( ! isset( $this->choices['labels'] ) ) {
-			$this->choices['labels'] = array();
+			$this->choices['labels'] = [];
 		}
 		$this->set_button_labels();
 		$this->choices['labels'] = wp_parse_args( $this->choices['labels'], $this->button_labels );
@@ -91,7 +91,7 @@ class Image extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -101,12 +101,12 @@ class Image extends Field {
 	 */
 	public function sanitize( $value ) {
 		if ( isset( $this->choices['save_as'] ) && 'array' === $this->choices['save_as'] ) {
-			return array(
+			return [
 				'id'     => ( isset( $value['id'] ) && '' !== $value['id'] ) ? (int) $value['id'] : '',
 				'url'    => ( isset( $value['url'] ) && '' !== $value['url'] ) ? esc_url_raw( $value['url'] ) : '',
 				'width'  => ( isset( $value['width'] ) && '' !== $value['width'] ) ? (int) $value['width'] : '',
 				'height' => ( isset( $value['height'] ) && '' !== $value['height'] ) ? (int) $value['height'] : '',
-			);
+			];
 		}
 		if ( isset( $this->choices['save_as'] ) && 'id' === $this->choices['save_as'] ) {
 			return absint( $value );

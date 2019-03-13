@@ -25,7 +25,7 @@ class Modules {
 	 * @since 3.0.0
 	 * @var array
 	 */
-	private static $modules = array();
+	private static $modules = [];
 
 	/**
 	 * An array of active modules (objects).
@@ -35,7 +35,7 @@ class Modules {
 	 * @since 3.0.0
 	 * @var array
 	 */
-	private static $active_modules = array();
+	private static $active_modules = [];
 
 	/**
 	 * Constructor.
@@ -44,8 +44,8 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'setup_default_modules' ), 10 );
-		add_action( 'after_setup_theme', array( $this, 'init' ), 11 );
+		add_action( 'after_setup_theme', [ $this, 'setup_default_modules' ], 10 );
+		add_action( 'after_setup_theme', [ $this, 'init' ], 11 );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Modules {
 	public function setup_default_modules() {
 		self::$modules = apply_filters(
 			'kirki_modules',
-			array(
+			[
 				'css'                => '\Kirki\Modules\CSS\Module',
 				'css-vars'           => '\Kirki\Modules\CSS_Vars\Module',
 				'customizer-styling' => '\Kirki_Modules_Customizer_Styling',
@@ -76,7 +76,7 @@ class Modules {
 				'preset'             => '\Kirki_Modules_Preset',
 				'gutenberg'          => '\Kirki_Modules_Gutenberg',
 				'telemetry'          => '\Kirki_Modules_Telemetry',
-			)
+			]
 		);
 	}
 
@@ -93,7 +93,7 @@ class Modules {
 			if ( class_exists( $module_class ) ) {
 				// Use this syntax instead of $module_class::get_instance()
 				// for PHP 5.2 compatibility.
-				self::$active_modules[ $key ] = call_user_func( array( $module_class, 'get_instance' ) );
+				self::$active_modules[ $key ] = call_user_func( [ $module_class, 'get_instance' ] );
 			}
 		}
 	}

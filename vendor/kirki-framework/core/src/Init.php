@@ -31,20 +31,20 @@ class Init {
 	 * @since 3.0.0
 	 * @var array
 	 */
-	private $control_types = array();
+	private $control_types = [];
 
 	/**
 	 * The class constructor.
 	 */
 	public function __construct() {
 		self::set_url();
-		add_action( 'after_setup_theme', array( $this, 'set_url' ) );
-		add_action( 'wp_loaded', array( $this, 'add_to_customizer' ), 1 );
-		add_filter( 'kirki_control_types', array( $this, 'default_control_types' ) );
+		add_action( 'after_setup_theme', [ $this, 'set_url' ] );
+		add_action( 'wp_loaded', [ $this, 'add_to_customizer' ], 1 );
+		add_filter( 'kirki_control_types', [ $this, 'default_control_types' ] );
 
-		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
-		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
-		add_action( 'customize_register', array( $this, 'remove_controls' ), 99999 );
+		add_action( 'customize_register', [ $this, 'remove_panels' ], 99999 );
+		add_action( 'customize_register', [ $this, 'remove_sections' ], 99999 );
+		add_action( 'customize_register', [ $this, 'remove_controls' ], 99999 );
 
 		new Values();
 		new Sections();
@@ -68,7 +68,7 @@ class Init {
 		Kirki::$url = str_replace( $content_dir, $content_url, wp_normalize_path( Kirki::$path ) );
 
 		// Apply the kirki_config filter.
-		$config = apply_filters( 'kirki_config', array() );
+		$config = apply_filters( 'kirki_config', [] );
 		if ( isset( $config['url_path'] ) ) {
 			Kirki::$url = $config['url_path'];
 		}
@@ -85,8 +85,8 @@ class Init {
 	 * @param array $control_types The control types array.
 	 * @return array
 	 */
-	public function default_control_types( $control_types = array() ) {
-		$this->control_types = array(
+	public function default_control_types( $control_types = [] ) {
+		$this->control_types = [
 			'checkbox'              => 'Kirki_Control_Checkbox',
 			'kirki-background'      => 'Kirki_Control_Background',
 			'code_editor'           => 'Kirki_Control_Code',
@@ -119,7 +119,7 @@ class Init {
 			'image'                 => 'Kirki_Control_Image',
 			'cropped_image'         => 'Kirki_Control_Cropped_Image',
 			'upload'                => 'Kirki_Control_Upload',
-		);
+		];
 		return array_merge( $this->control_types, $control_types );
 	}
 
@@ -128,10 +128,10 @@ class Init {
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
-		add_action( 'customize_register', array( $this, 'register_control_types' ) );
-		add_action( 'customize_register', array( $this, 'add_panels' ), 97 );
-		add_action( 'customize_register', array( $this, 'add_sections' ), 98 );
-		add_action( 'customize_register', array( $this, 'add_fields' ), 99 );
+		add_action( 'customize_register', [ $this, 'register_control_types' ] );
+		add_action( 'customize_register', [ $this, 'add_panels' ], 97 );
+		add_action( 'customize_register', [ $this, 'add_sections' ], 98 );
+		add_action( 'customize_register', [ $this, 'add_fields' ], 99 );
 	}
 
 	/**
@@ -140,7 +140,7 @@ class Init {
 	public function register_control_types() {
 		global $wp_customize;
 
-		$section_types = apply_filters( 'kirki_section_types', array() );
+		$section_types = apply_filters( 'kirki_section_types', [] );
 		foreach ( $section_types as $section_type ) {
 			$wp_customize->register_section_type( $section_type );
 		}
@@ -157,10 +157,10 @@ class Init {
 
 		$skip_control_types = apply_filters(
 			'kirki_control_types_exclude',
-			array(
+			[
 				'Kirki_Control_Repeater',
 				'WP_Customize_Control',
-			)
+			]
 		);
 
 		foreach ( $this->control_types as $control_type ) {
@@ -248,7 +248,7 @@ class Init {
 	 * @since 2.0.0
 	 */
 	private function fields_from_filters() {
-		$fields = apply_filters( 'kirki_controls', array() );
+		$fields = apply_filters( 'kirki_controls', [] );
 		$fields = apply_filters( 'kirki_fields', $fields );
 
 		if ( ! empty( $fields ) ) {

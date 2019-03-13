@@ -79,8 +79,8 @@ class Typography extends Base {
 		$select_url = untrailingslashit( $select_url );
 
 		// Enqueue selectWoo.
-		wp_enqueue_script( 'selectWoo', "$select_url/assets/scripts/selectWoo/js/selectWoo.full.js", array( 'jquery' ), '1.0.1', true );
-		wp_enqueue_style( 'selectWoo', "$select_url/assets/scripts/selectWoo/css/selectWoo.css", array(), '1.0.1' );
+		wp_enqueue_script( 'selectWoo', "$select_url/assets/scripts/selectWoo/js/selectWoo.full.js", [ 'jquery' ], '1.0.1', true );
+		wp_enqueue_style( 'selectWoo', "$select_url/assets/scripts/selectWoo/css/selectWoo.css", [], '1.0.1' );
 
 		// Enqueue the script.
 		wp_enqueue_script(
@@ -124,13 +124,13 @@ class Typography extends Base {
 		wp_localize_script(
 			'kirki-control-typography',
 			'kirkiTypographyControlL10n',
-			array(
+			[
 				'isScriptDebug'        => ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ),
 				'standardFonts'        => esc_html__( 'Standard Fonts', 'kirki' ),
 				'googleFonts'          => esc_html__( 'Google Fonts', 'kirki' ),
 				'defaultCSSValues'     => esc_html__( 'CSS Defaults', 'kirki' ),
 				'defaultBrowserFamily' => esc_html__( 'Default Browser Font-Family', 'kirki' ),
-			)
+			]
 		);
 
 		// Enqueue the style.
@@ -152,7 +152,7 @@ class Typography extends Base {
 
 		if ( is_array( $this->json['value'] ) ) {
 			foreach ( array_keys( $this->json['value'] ) as $key ) {
-				if ( ! in_array( $key, array( 'variant', 'font-weight', 'font-style' ), true ) && ! isset( $this->json['default'][ $key ] ) ) {
+				if ( ! in_array( $key, [ 'variant', 'font-weight', 'font-style' ], true ) && ! isset( $this->json['default'][ $key ] ) ) {
 					unset( $this->json['value'][ $key ] );
 				}
 
@@ -353,13 +353,13 @@ class Typography extends Base {
 	 */
 	protected function format_variants_array( $variants ) {
 		$all_variants   = Kirki_Fonts::get_all_variants();
-		$final_variants = array();
+		$final_variants = [];
 		foreach ( $variants as $variant ) {
 			if ( is_string( $variant ) ) {
-				$final_variants[] = array(
+				$final_variants[] = [
 					'id'    => $variant,
 					'label' => isset( $all_variants[ $variant ] ) ? $all_variants[ $variant ] : $variant,
-				);
+				];
 			} elseif ( is_array( $variant ) && isset( $variant['id'] ) && isset( $variant['label'] ) ) {
 				$final_variants[] = $variant;
 			}

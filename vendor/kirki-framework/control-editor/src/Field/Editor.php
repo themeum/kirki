@@ -34,7 +34,7 @@ class Editor extends Field {
 		// Fallback for older WordPress versions.
 		$this->type = 'kirki-generic';
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		$this->choices['element'] = 'textarea';
 		$this->choices['rows']    = '5';

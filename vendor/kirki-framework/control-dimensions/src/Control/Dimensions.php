@@ -141,7 +141,7 @@ class Dimensions extends Base {
 	 * @return array
 	 */
 	protected function l10n() {
-		return array(
+		return [
 			'left-top'       => esc_html__( 'Left Top', 'kirki' ),
 			'left-center'    => esc_html__( 'Left Center', 'kirki' ),
 			'left-bottom'    => esc_html__( 'Left Bottom', 'kirki' ),
@@ -167,6 +167,6 @@ class Dimensions extends Base {
 			'width'          => esc_html__( 'Width', 'kirki' ),
 			'height'         => esc_html__( 'Height', 'kirki' ),
 			'invalid-value'  => esc_html__( 'Invalid Value', 'kirki' ),
-		);
+		];
 	}
 }

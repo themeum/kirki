@@ -31,12 +31,12 @@ class Image extends Output {
 		}
 		$output = wp_parse_args(
 			$output,
-			array(
+			[
 				'media_query' => 'global',
 				'prefix'      => '',
 				'units'       => '',
 				'suffix'      => '',
-			)
+			]
 		);
 		if ( is_array( $value ) ) {
 			if ( isset( $output['choice'] ) && $output['choice'] ) {

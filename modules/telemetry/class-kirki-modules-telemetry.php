@@ -43,8 +43,8 @@ final class Kirki_Modules_Telemetry {
 			return;
 		}
 
-		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'admin_notices', [ $this, 'admin_notice' ] );
 	}
 
 	/**
@@ -75,7 +75,7 @@ final class Kirki_Modules_Telemetry {
 		$this->consent();
 
 		// This is the last thing to run. No impact on performance or anything else.
-		add_action( 'wp_footer', array( $this, 'maybe_send_data' ), 99999 );
+		add_action( 'wp_footer', [ $this, 'maybe_send_data' ], 99999 );
 	}
 
 	/**
@@ -114,16 +114,16 @@ final class Kirki_Modules_Telemetry {
 		// Ping remote server.
 		wp_remote_post(
 			'https://wplemon.com/?action=kirki-stats',
-			array(
+			[
 				'method'   => 'POST',
 				'blocking' => false,
 				'body'     => array_merge(
-					array(
+					[
 						'action' => 'kirki-stats',
-					),
+					],
 					$this->get_data()
 				),
-			)
+			]
 		);
 	}
 
@@ -222,18 +222,18 @@ final class Kirki_Modules_Telemetry {
 		// Format the PHP version.
 		$php_version = phpversion( 'tidy' );
 		if ( ! $php_version ) {
-			$php_version = array_merge( explode( '.', phpversion() ), array( 0, 0 ) );
+			$php_version = array_merge( explode( '.', phpversion() ), [ 0, 0 ] );
 			$php_version = "{$php_version[0]}.{$php_version[1]}";
 		}
 
 		// Build data and return the array.
-		return array(
+		return [
 			'phpVer'      => $php_version,
 			'themeName'   => $theme->get( 'Name' ),
 			'themeAuthor' => $theme->get( 'Author' ),
 			'themeURI'    => $theme->get( 'ThemeURI' ),
 			'fieldTypes'  => $this->get_field_types(),
-		);
+		];
 	}
 
 	/**
@@ -244,7 +244,7 @@ final class Kirki_Modules_Telemetry {
 	 * @return array
 	 */
 	public function get_field_types() {
-		$types = array();
+		$types = [];
 		foreach ( Kirki::$fields as $field ) {
 			if ( isset( $field['type'] ) ) {
 				$types[] = $field['type'];

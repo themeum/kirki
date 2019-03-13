@@ -34,10 +34,10 @@ final class Helper {
 	 * @param array  $args An array of arguments for the wp_remote_retrieve_body() function.
 	 * @return string      The contents of the remote URL.
 	 */
-	public static function get_remote_url_contents( $url, $args = array() ) {
+	public static function get_remote_url_contents( $url, $args = [] ) {
 		$response = wp_remote_get( $url, $args );
 		if ( is_wp_error( $response ) ) {
-			return array();
+			return [];
 		}
 		$html = wp_remote_retrieve_body( $response );
 		if ( is_wp_error( $html ) ) {
@@ -111,19 +111,19 @@ final class Helper {
 		}
 
 		// Array based on $_FILE as seen in PHP file uploads.
-		$file = array(
+		$file = [
 			'name'     => basename( $url ),
 			'type'     => 'font/woff',
 			'tmp_name' => $temp_file,
 			'error'    => 0,
 			'size'     => filesize( $temp_file ),
-		);
+		];
 
-		$overrides = array(
+		$overrides = [
 			'test_type' => false,
 			'test_form' => false,
 			'test_size' => true,
-		);
+		];
 
 		// Move the temporary file into the uploads directory.
 		$results = wp_handle_sideload( $file, $overrides );
@@ -161,7 +161,7 @@ final class Helper {
 				$url             = str_replace( $original_domain, $mapped_domain, $url );
 			}
 		}
-		$url = str_replace( array( 'https://', 'http://' ), '//', $url );
+		$url = str_replace( [ 'https://', 'http://' ], '//', $url );
 		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
 	}
 }

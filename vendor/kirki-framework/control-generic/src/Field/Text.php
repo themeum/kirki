@@ -23,7 +23,7 @@ class Text extends Generic {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		$this->choices['element'] = 'input';
 		$this->choices['type']    = 'text';

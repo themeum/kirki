@@ -31,7 +31,7 @@ class Kirki_Modules_Selective_Refresh {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'customize_register', array( $this, 'register_partials' ), 99 );
+		add_action( 'customize_register', [ $this, 'register_partials' ], 99 );
 	}
 
 	/**
@@ -76,9 +76,9 @@ class Kirki_Modules_Selective_Refresh {
 					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
 						$partial_refresh_args = wp_parse_args(
 							$partial_refresh_args,
-							array(
+							[
 								'settings' => $field['settings'],
-							)
+							]
 						);
 						$wp_customize->selective_refresh->add_partial( $partial_refresh, $partial_refresh_args );
 					}

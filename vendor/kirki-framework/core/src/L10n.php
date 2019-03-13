@@ -45,13 +45,13 @@ class L10n {
 
 		// If Kirki is installed as a plugin, load the texdomain.
 		if ( Util::is_plugin() ) {
-			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+			add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
 			return;
 		}
 
 		// If we got this far, then Kirki is embedded in a plugin.
 		// We want the theme's textdomain to handle translations.
-		add_filter( 'override_load_textdomain', array( $this, 'override_load_textdomain' ), 5, 3 );
+		add_filter( 'override_load_textdomain', [ $this, 'override_load_textdomain' ], 5, 3 );
 	}
 
 	/**
@@ -95,10 +95,10 @@ class L10n {
 	 * @return array
 	 */
 	protected function get_paths() {
-		return array(
+		return [
 			WP_LANG_DIR . '/' . $this->textdomain . '-' . get_locale() . '.mo',
 			Kirki::$path . '/languages/' . $this->textdomain . '-' . get_locale() . '.mo',
-		);
+		];
 	}
 
 	/**

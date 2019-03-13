@@ -32,7 +32,7 @@ class Output {
 	 * @access protected
 	 * @var array
 	 */
-	protected $output = array();
+	protected $output = [];
 
 	/**
 	 * An array of the generated styles.
@@ -40,7 +40,7 @@ class Output {
 	 * @access protected
 	 * @var array
 	 */
-	protected $styles = array();
+	protected $styles = [];
 
 	/**
 	 * The field.
@@ -48,7 +48,7 @@ class Output {
 	 * @access protected
 	 * @var array
 	 */
-	protected $field = array();
+	protected $field = [];
 
 	/**
 	 * The value.
@@ -138,7 +138,7 @@ class Output {
 		if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
 			$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
 			$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
-			$options     = array();
+			$options     = [];
 			if ( $option_name ) {
 				$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
 			}
@@ -148,7 +148,7 @@ class Output {
 					case 'option':
 						if ( is_array( $options ) ) {
 							if ( $option_name ) {
-								$subkey      = str_replace( array( $option_name, '[', ']' ), '', $replace );
+								$subkey      = str_replace( [ $option_name, '[', ']' ], '', $replace );
 								$replacement = ( isset( $options[ $subkey ] ) ) ? $options[ $subkey ] : '';
 								break;
 							}
@@ -283,10 +283,10 @@ class Output {
 		// Properties that can accept multiple values.
 		// Useful for example for gradients where all browsers use the "background-image" property
 		// and the browser prefixes go in the value_pattern arg.
-		$accepts_multiple = array(
+		$accepts_multiple = [
 			'background-image',
 			'background',
-		);
+		];
 		if ( in_array( $output['property'], $accepts_multiple, true ) ) {
 			if ( isset( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) && ! is_array( $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] ) ) {
 				$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = (array) $this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ];
@@ -312,11 +312,11 @@ class Output {
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters(
 			'kirki_output_property_classnames',
-			array(
+			[
 				'font-family'         => '\Kirki\Modules\CSS\Property\Font_Family',
 				'background-image'    => '\Kirki\Modules\CSS\Property\Background_Image',
 				'background-position' => '\Kirki\Modules\CSS\Property\Background_Position',
-			)
+			]
 		);
 		if ( array_key_exists( $property, $properties ) ) {
 			$classname = $properties[ $property ];

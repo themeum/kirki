@@ -38,7 +38,7 @@ class Typography extends Field {
 	 *                             Configs are handled by the Kirki\Core\Config class.
 	 * @param array  $args         The arguments of the field.
 	 */
-	public function __construct( $config_id = 'global', $args = array() ) {
+	public function __construct( $config_id = 'global', $args = [] ) {
 		parent::__construct( $config_id, $args );
 		$this->set_default();
 	}
@@ -73,7 +73,7 @@ class Typography extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( __CLASS__, 'sanitize' );
+		$this->sanitize_callback = [ __CLASS__, 'sanitize' ];
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Typography extends Field {
 	 */
 	protected function set_js_vars() {
 		if ( ! is_array( $this->js_vars ) ) {
-			$this->js_vars = array();
+			$this->js_vars = [];
 		}
 
 		// Check if transport is set to auto.
@@ -96,7 +96,7 @@ class Typography extends Field {
 		// Serves as a fallback in case we failt to auto-calculate js_vars.
 		$this->transport = 'refresh';
 
-		$js_vars = array();
+		$js_vars = [];
 
 		// Try to auto-generate js_vars.
 		// First we need to check if js_vars are empty, and that output is not empty.
@@ -137,7 +137,7 @@ class Typography extends Field {
 	 */
 	public static function sanitize( $value ) {
 		if ( ! is_array( $value ) ) {
-			return array();
+			return [];
 		}
 
 		foreach ( $value as $key => $val ) {
@@ -174,17 +174,17 @@ class Typography extends Field {
 					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
 					break;
 				case 'text-align':
-					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+					if ( ! in_array( $val, [ '', 'inherit', 'left', 'center', 'right', 'justify' ], true ) ) {
 						$value['text-align'] = '';
 					}
 					break;
 				case 'text-transform':
-					if ( ! in_array( $val, array( '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
+					if ( ! in_array( $val, [ '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ], true ) ) {
 						$value['text-transform'] = '';
 					}
 					break;
 				case 'text-decoration':
-					if ( ! in_array( $val, array( '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+					if ( ! in_array( $val, [ '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ], true ) ) {
 						$value['text-transform'] = '';
 					}
 					break;
@@ -205,17 +205,17 @@ class Typography extends Field {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		$this->choices = wp_parse_args(
 			$this->choices,
-			array(
-				'variant' => array(),
-				'fonts'   => array(
-					'standard' => array(),
-					'google'   => array(),
-				),
-			)
+			[
+				'variant' => [],
+				'fonts'   => [
+					'standard' => [],
+					'google'   => [],
+				],
+			]
 		);
 	}
 }

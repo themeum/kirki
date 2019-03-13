@@ -51,7 +51,7 @@ final class Async {
 	 * @since 3.0.26
 	 * @var array
 	 */
-	protected $fonts_to_load = array();
+	protected $fonts_to_load = [];
 
 	/**
 	 * Constructor.
@@ -63,19 +63,19 @@ final class Async {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
+	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_action( 'wp_head', array( $this, 'webfont_loader' ) );
-		add_action( 'wp_head', array( $this, 'webfont_loader_script' ), 30 );
+		add_action( 'wp_head', [ $this, 'webfont_loader' ] );
+		add_action( 'wp_head', [ $this, 'webfont_loader_script' ], 30 );
 
 		// Add these in the dashboard to support editor-styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader_script' ), 30 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'webfont_loader' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'webfont_loader_script' ], 30 );
 
-		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
 	}
 
 	/**
@@ -90,10 +90,10 @@ final class Async {
 		$fonts_to_load = $this->googlefonts->fonts;
 
 		if ( ! empty( $fonts_to_load ) && 'preconnect' === $relation_type ) {
-			$urls[] = array(
+			$urls[] = [
 				'href' => 'https://fonts.gstatic.com',
 				'crossorigin',
-			);
+			];
 		}
 		return $urls;
 	}
@@ -119,7 +119,7 @@ final class Async {
 				if ( 'italic' === $value ) {
 					$weights[ $key ] = '400i';
 				} else {
-					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
+					$weights[ $key ] = str_replace( [ 'regular', 'bold', 'italic' ], [ '400', '', 'i' ], $value );
 				}
 			}
 			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';

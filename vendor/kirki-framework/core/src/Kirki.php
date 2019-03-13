@@ -57,7 +57,7 @@ class Kirki extends Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $config = array();
+	public static $config = [];
 
 	/**
 	 * An array containing all fields.
@@ -66,7 +66,7 @@ class Kirki extends Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $fields = array();
+	public static $fields = [];
 
 	/**
 	 * An array containing all panels.
@@ -75,7 +75,7 @@ class Kirki extends Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $panels = array();
+	public static $panels = [];
 
 	/**
 	 * An array containing all sections.
@@ -84,7 +84,7 @@ class Kirki extends Init {
 	 * @access public
 	 * @var array
 	 */
-	public static $sections = array();
+	public static $sections = [];
 
 	/**
 	 * An array containing all panels to be removed.
@@ -94,7 +94,7 @@ class Kirki extends Init {
 	 * @since 3.0.17
 	 * @var array
 	 */
-	public static $panels_to_remove = array();
+	public static $panels_to_remove = [];
 
 	/**
 	 * An array containing all sections to be removed.
@@ -104,7 +104,7 @@ class Kirki extends Init {
 	 * @since 3.0.17
 	 * @var array
 	 */
-	public static $sections_to_remove = array();
+	public static $sections_to_remove = [];
 
 	/**
 	 * An array containing all controls to be removed.
@@ -114,7 +114,7 @@ class Kirki extends Init {
 	 * @since 3.0.17
 	 * @var array
 	 */
-	public static $controls_to_remove = array();
+	public static $controls_to_remove = [];
 
 	/**
 	 * Modules object.
@@ -146,7 +146,7 @@ class Kirki extends Init {
 	 * @param string $config_id The configuration ID.
 	 * @param array  $args      The configuration options.
 	 */
-	public static function add_config( $config_id, $args = array() ) {
+	public static function add_config( $config_id, $args = [] ) {
 		$config                             = Config::get_instance( $config_id, $args );
 		$config_args                        = $config->get_config();
 		self::$config[ $config_args['id'] ] = $config_args;
@@ -160,7 +160,7 @@ class Kirki extends Init {
 	 * @param string $id   The ID for this panel.
 	 * @param array  $args The panel arguments.
 	 */
-	public static function add_panel( $id = '', $args = array() ) {
+	public static function add_panel( $id = '', $args = [] ) {
 		$args['id'] = $id;
 		if ( ! isset( $args['description'] ) ) {
 			$args['description'] = '';
@@ -254,7 +254,7 @@ class Kirki extends Init {
 			\Kirki\Modules\CSS\Module::add_fontawesome_script();
 		}
 
-		$str       = str_replace( array( '-', '_' ), ' ', $args['type'] );
+		$str       = str_replace( [ '-', '_' ], ' ', $args['type'] );
 		$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
 		if ( class_exists( $classname ) ) {
 			new $classname( $config_id, $args );

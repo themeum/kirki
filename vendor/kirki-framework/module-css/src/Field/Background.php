@@ -28,15 +28,15 @@ class Background extends Output {
 	protected function process_output( $output, $value ) {
 		$output = wp_parse_args(
 			$output,
-			array(
+			[
 				'media_query' => 'global',
 				'element'     => 'body',
 				'prefix'      => '',
 				'suffix'      => '',
-			)
+			]
 		);
 
-		foreach ( array( 'background-image', 'background-color', 'background-repeat', 'background-position', 'background-size', 'background-attachment' ) as $property ) {
+		foreach ( [ 'background-image', 'background-color', 'background-repeat', 'background-position', 'background-size', 'background-attachment' ] as $property ) {
 
 			// See https://github.com/aristath/kirki/issues/1808.
 			if ( 'background-color' === $property && isset( $value['background-color'] ) && $value['background-color'] && ( ! isset( $value['background-image'] ) || empty( $value['background-image'] ) ) ) {

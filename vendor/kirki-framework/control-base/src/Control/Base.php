@@ -26,7 +26,7 @@ class Base extends \WP_Customize_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $output = array();
+	public $output = [];
 
 	/**
 	 * Data type
@@ -59,7 +59,7 @@ class Base extends \WP_Customize_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $required = array();
+	public $required = [];
 
 	/**
 	 * Whitelisting the "preset" argument.
@@ -68,7 +68,7 @@ class Base extends \WP_Customize_Control {
 	 * @access public
 	 * @var array
 	 */
-	public $preset = array();
+	public $preset = [];
 
 	/**
 	 * Whitelisting the "css_vars" argument.
@@ -86,7 +86,7 @@ class Base extends \WP_Customize_Control {
 	 * @return array
 	 */
 	public function kirki_script_dependencies() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -223,6 +223,6 @@ class Base extends \WP_Customize_Control {
 	 * @return array
 	 */
 	protected function l10n() {
-		return array();
+		return [];
 	}
 }

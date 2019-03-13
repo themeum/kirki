@@ -38,8 +38,8 @@ class Background_Position extends Property {
 			return;
 		}
 
-		$x_dimensions = array( 'left', 'center', 'right' );
-		$y_dimensions = array( 'top', 'center', 'bottom' );
+		$x_dimensions = [ 'left', 'center', 'right' ];
+		$y_dimensions = [ 'top', 'center', 'bottom' ];
 
 		// If there's a space, we have an X and a Y value.
 		if ( false !== strpos( $this->value, ' ' ) ) {

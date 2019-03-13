@@ -39,7 +39,7 @@ class Kirki_Modules_Customizer_Styling {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_print_styles', array( $this, 'custom_css' ), 99 );
+		add_action( 'customize_controls_print_styles', [ $this, 'custom_css' ], 99 );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Kirki_Modules_Customizer_Styling {
 	 * @access public
 	 */
 	public function custom_css() {
-		$config = apply_filters( 'kirki_config', array() );
+		$config = apply_filters( 'kirki_config', [] );
 		if ( ! isset( $config['color_accent'] ) && ! isset( $config['color_back'] ) ) {
 			return;
 		}

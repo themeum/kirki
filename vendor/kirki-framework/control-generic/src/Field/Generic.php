@@ -34,7 +34,7 @@ class Generic extends Field {
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
-			$this->choices = array();
+			$this->choices = [];
 		}
 		if ( ! isset( $this->choices['element'] ) ) {
 			$this->choices['element'] = 'input';

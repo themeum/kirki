@@ -26,7 +26,7 @@ class Util {
 	 * @access public
 	 */
 	public function __construct() {
-		add_filter( 'http_request_args', array( $this, 'http_request' ), 10, 2 );
+		add_filter( 'http_request_args', [ $this, 'http_request' ], 10, 2 );
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Util {
 	 */
 	public static function get_variables() {
 
-		$variables = array();
+		$variables = [];
 
 		// Loop through all fields.
 		foreach ( Kirki::$fields as $field ) {
@@ -120,7 +120,7 @@ class Util {
 	 * @param string $url     The request URL.
 	 * @return array
 	 */
-	public function http_request( $request = array(), $url = '' ) {
+	public function http_request( $request = [], $url = '' ) {
 
 		// Early exit if installed as a plugin or not a request to wordpress.org,
 		// or finally if we don't have everything we need.

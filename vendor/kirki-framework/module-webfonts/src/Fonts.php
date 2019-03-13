@@ -81,20 +81,20 @@ final class Fonts {
 	 * @return array    Standard websafe fonts.
 	 */
 	public static function get_standard_fonts() {
-		$standard_fonts = array(
-			'serif'      => array(
+		$standard_fonts = [
+			'serif'      => [
 				'label' => 'Serif',
 				'stack' => 'Georgia,Times,"Times New Roman",serif',
-			),
-			'sans-serif' => array(
+			],
+			'sans-serif' => [
 				'label' => 'Sans Serif',
 				'stack' => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-			),
-			'monospace'  => array(
+			],
+			'monospace'  => [
 				'label' => 'Monospace',
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
-			),
-		);
+			],
+		];
 		return apply_filters( 'kirki_fonts_standard_fonts', $standard_fonts );
 	}
 
@@ -104,13 +104,13 @@ final class Fonts {
 	 * @return array
 	 */
 	public static function get_backup_fonts() {
-		$backup_fonts = array(
+		$backup_fonts = [
 			'sans-serif'  => 'Helvetica, Arial, sans-serif',
 			'serif'       => 'Georgia, serif',
 			'display'     => '"Comic Sans MS", cursive, sans-serif',
 			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
 			'monospace'   => '"Lucida Console", Monaco, monospace',
-		);
+		];
 		return apply_filters( 'kirki_fonts_backup_fonts', $backup_fonts );
 	}
 
@@ -141,14 +141,14 @@ final class Fonts {
 		$fonts_json = ob_get_clean();
 		$fonts      = json_decode( $fonts_json, true );
 
-		$google_fonts = array();
+		$google_fonts = [];
 		if ( is_array( $fonts ) ) {
 			foreach ( $fonts['items'] as $font ) {
-				$google_fonts[ $font['family'] ] = array(
+				$google_fonts[ $font['family'] ] = [
 					'label'    => $font['family'],
 					'variants' => $font['variants'],
 					'category' => $font['category'],
-				);
+				];
 			}
 		}
 
@@ -170,7 +170,7 @@ final class Fonts {
 	 * @return array
 	 */
 	public static function get_google_font_subsets() {
-		return array(
+		return [
 			'cyrillic'     => 'Cyrillic',
 			'cyrillic-ext' => 'Cyrillic Extended',
 			'devanagari'   => 'Devanagari',
@@ -187,7 +187,7 @@ final class Fonts {
 			'tamil'        => 'Tamil',
 			'telugu'       => 'Telugu',
 			'thai'         => 'Thai',
-		);
+		];
 	}
 
 	/**
@@ -207,7 +207,7 @@ final class Fonts {
 	 * @return array
 	 */
 	public static function get_all_variants() {
-		return array(
+		return [
 			'100'       => esc_html__( 'Ultra-Light 100', 'kirki' ),
 			'100light'  => esc_html__( 'Ultra-Light 100', 'kirki' ),
 			'100italic' => esc_html__( 'Ultra-Light 100 Italic', 'kirki' ),
@@ -231,7 +231,7 @@ final class Fonts {
 			'900'       => esc_html__( 'Ultra-Bold 900', 'kirki' ),
 			'900bold'   => esc_html__( 'Ultra-Bold 900', 'kirki' ),
 			'900italic' => esc_html__( 'Ultra-Bold 900 Italic', 'kirki' ),
-		);
+		];
 	}
 
 	/**
@@ -255,7 +255,7 @@ final class Fonts {
 	 */
 	public static function get_font_choices() {
 		$fonts       = self::get_all_fonts();
-		$fonts_array = array();
+		$fonts_array = [];
 		foreach ( $fonts as $key => $args ) {
 			$fonts_array[ $key ] = $key;
 		}

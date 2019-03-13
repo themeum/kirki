@@ -49,6 +49,8 @@
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 	</rule>
 
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
+
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP -->
 	<config name="testVersion" value="5.6-"/>

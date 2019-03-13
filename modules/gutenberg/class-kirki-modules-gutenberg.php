@@ -83,7 +83,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -126,9 +126,9 @@ class Kirki_Modules_Gutenberg {
 	 */
 	protected function add_hooks() {
 		if ( ! $this->is_disabled() ) {
-			add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 999 );
-			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_fontawesome' ) );
-			add_filter( 'block_editor_settings', array( $this, 'enqueue' ) );
+			add_action( 'after_setup_theme', [ $this, 'add_theme_support' ], 999 );
+			add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_fontawesome' ] );
+			add_filter( 'block_editor_settings', [ $this, 'enqueue' ] );
 		}
 	}
 
@@ -158,7 +158,7 @@ class Kirki_Modules_Gutenberg {
 		$styles = $this->get_styles();
 
 		if ( ! empty( $styles ) ) {
-			$settings['styles'][] = array( 'css' => $styles );
+			$settings['styles'][] = [ 'css' => $styles ];
 		}
 
 		return $settings;
@@ -206,7 +206,7 @@ class Kirki_Modules_Gutenberg {
 	 *
 	 * @return bool $disabled Is gutenberg integration feature disabled?
 	 */
-	private function is_disabled( $args = array() ) {
+	private function is_disabled( $args = [] ) {
 		if ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) {
 			return true;
 		}
@@ -238,7 +238,7 @@ class Kirki_Modules_Gutenberg {
 			}
 			$modules_css = $this->modules_css;
 			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) { // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
+				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', [], '4.0.7', true );
 			}
 
 			return;

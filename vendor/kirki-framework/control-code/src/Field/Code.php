@@ -35,7 +35,7 @@ class Code extends Field {
 	 * @access public
 	 * @var array|false
 	 */
-	public $editor_settings = array();
+	public $editor_settings = [];
 
 	/**
 	 * Custom input attributes (defined as an array).
@@ -44,9 +44,9 @@ class Code extends Field {
 	 * @since 3.0.21
 	 * @var array
 	 */
-	public $input_attrs = array(
+	public $input_attrs = [
 		'aria-describedby' => 'kirki-code editor-keyboard-trap-help-1 editor-keyboard-trap-help-2 editor-keyboard-trap-help-3 editor-keyboard-trap-help-4',
-	);
+	];
 
 	/**
 	 * Sets the control type.
@@ -95,7 +95,7 @@ class Code extends Field {
 				break;
 		}
 		if ( ! isset( $this->editor_settings['codemirror'] ) ) {
-			$this->editor_settings['codemirror'] = array();
+			$this->editor_settings['codemirror'] = [];
 		}
 		if ( ! isset( $this->editor_settings['codemirror']['mode'] ) ) {
 			$this->editor_settings['codemirror']['mode'] = $language;
@@ -104,11 +104,11 @@ class Code extends Field {
 		if ( 'text/x-scss' === $this->editor_settings['codemirror']['mode'] ) {
 			$this->editor_settings['codemirror'] = array_merge(
 				$this->editor_settings['codemirror'],
-				array(
+				[
 					'lint'              => false,
 					'autoCloseBrackets' => true,
 					'matchBrackets'     => true,
-				)
+				]
 			);
 		}
 	}
@@ -128,6 +128,6 @@ class Code extends Field {
 		// Code fields must NOT be filtered. Their values usually contain CSS/JS.
 		// It is the responsibility of the theme/plugin that registers this field
 		// to properly apply any necessary filtering.
-		$this->sanitize_callback = array( 'Kirki\Core\Sanitize_Values', 'unfiltered' );
+		$this->sanitize_callback = [ 'Kirki\Core\Sanitize_Values', 'unfiltered' ];
 	}
 }

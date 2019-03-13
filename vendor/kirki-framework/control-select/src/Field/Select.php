@@ -68,7 +68,7 @@ class Select extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Select extends Field {
 	 */
 	protected function set_default() {
 		if ( 1 < $this->multiple && ! is_array( $this->default ) ) {
-			$this->default = array( $this->default );
+			$this->default = [ $this->default ];
 		}
 	}
 }

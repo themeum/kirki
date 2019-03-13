@@ -25,7 +25,7 @@ class Repeater extends Field {
 	 * @access protected
 	 * @var array
 	 */
-	protected $fields = array();
+	protected $fields = [];
 
 	/**
 	 * Sets the control type.
@@ -61,7 +61,7 @@ class Repeater extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = [ $this, 'sanitize' ];
 
 	}
 
@@ -87,7 +87,7 @@ class Repeater extends Field {
 
 			// Make sure the row is formatted as an array.
 			if ( ! is_array( $row_value ) ) {
-				$value[ $row_id ] = array();
+				$value[ $row_id ] = [];
 				continue;
 			}
 
