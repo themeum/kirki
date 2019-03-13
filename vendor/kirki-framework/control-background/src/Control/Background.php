@@ -52,7 +52,7 @@ class Background extends Base {
 			'wp-color-picker-alpha',
 			"$url_color/assets/scripts/wp-color-picker-alpha.js",
 			[
-				'wp-color-picker'
+				'wp-color-picker',
 			],
 			KIRKI_VERSION,
 			true
@@ -67,7 +67,7 @@ class Background extends Base {
 			[
 				'jquery',
 				'customize-base',
-				'wp-color-picker-alpha'
+				'wp-color-picker-alpha',
 			],
 			KIRKI_VERSION,
 			false

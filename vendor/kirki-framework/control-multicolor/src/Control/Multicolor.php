@@ -57,7 +57,7 @@ class Multicolor extends Base {
 			'wp-color-picker-alpha',
 			"$color_url/assets/scripts/wp-color-picker-alpha.js",
 			[
-				'wp-color-picker'
+				'wp-color-picker',
 			],
 			KIRKI_VERSION,
 			true

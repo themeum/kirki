@@ -10,8 +10,28 @@ package-lock.json
 
 # composer #
 ############
-# vendor
-# composer.lock
+# vendor/bin
+# vendor/codacy
+# vendor/composer/installers
+# vendor/dealerdirect
+# vendor/doctrine
+# vendor/gitonomy
+# vendor/guzzlehttp
+# vendor/myclabs
+# vendor/phar-io
+# vendor/phpcompatibility
+# vendor/php-coveralls
+# vendor/phpdocumentor
+# vendor/phpspec
+# vendor/phpunit
+# vendor/psr
+# vendor/ralouphie
+# vendor/sebastian
+# vendor/squizlabs
+# vendor/symfony
+# vendor/theseer
+# vendor/webmozart
+# vendor/wp-coding-standards
 
 # OS generated files #
 ######################

@@ -110,7 +110,7 @@ class Module {
 	 * @return string
 	 */
 	public function get_method() {
-		return ( is_customize_preview()|| is_admin() ) ? 'async' : 'embed';
+		return ( is_customize_preview() || is_admin() ) ? 'async' : 'embed';
 	}
 
 	/**
@@ -167,6 +167,6 @@ class Module {
 			[ 'jquery' ],
 			KIRKI_VERSION,
 			false
-		);		
+		);
 	}
 }

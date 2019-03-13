@@ -27,10 +27,10 @@ class Image extends Base {
 	public $type = 'kirki-image';
 
 		/**
-	 * Enqueue control related scripts/styles.
-	 *
-	 * @access public
-	 */
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 	public function enqueue() {
 		parent::enqueue();
 

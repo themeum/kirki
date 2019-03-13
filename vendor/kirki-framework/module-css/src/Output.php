@@ -311,7 +311,7 @@ class Output {
 	 */
 	protected function process_property_value( $property, $value ) {
 		$properties = apply_filters(
-			"kirki_output_property_classnames",
+			'kirki_output_property_classnames',
 			array(
 				'font-family'         => '\Kirki\Modules\CSS\Property\Font_Family',
 				'background-image'    => '\Kirki\Modules\CSS\Property\Background_Image',

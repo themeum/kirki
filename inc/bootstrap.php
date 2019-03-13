@@ -6,4 +6,5 @@
  * @package kirki
  */
 
+// Load aliases.
 require_once 'aliases.php';

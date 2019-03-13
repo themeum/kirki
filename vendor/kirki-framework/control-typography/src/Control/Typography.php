@@ -50,7 +50,7 @@ class Typography extends Base {
 			'wp-color-picker-alpha',
 			"$color_url/assets/scripts/wp-color-picker-alpha.js",
 			[
-				'wp-color-picker'
+				'wp-color-picker',
 			],
 			KIRKI_VERSION,
 			true
@@ -81,7 +81,7 @@ class Typography extends Base {
 		// Enqueue selectWoo.
 		wp_enqueue_script( 'selectWoo', "$select_url/assets/scripts/selectWoo/js/selectWoo.full.js", array( 'jquery' ), '1.0.1', true );
 		wp_enqueue_style( 'selectWoo', "$select_url/assets/scripts/selectWoo/css/selectWoo.css", array(), '1.0.1' );
-		
+
 		// Enqueue the script.
 		wp_enqueue_script(
 			'kirki-control-select',
@@ -132,7 +132,6 @@ class Typography extends Base {
 				'defaultBrowserFamily' => esc_html__( 'Default Browser Font-Family', 'kirki' ),
 			)
 		);
-
 
 		// Enqueue the style.
 		wp_enqueue_style(

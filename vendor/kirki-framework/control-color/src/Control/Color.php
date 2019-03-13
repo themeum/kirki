@@ -66,7 +66,7 @@ class Color extends Base {
 				include $path;
 				echo '</script>';
 			}
-		);		
+		);
 
 		$url = apply_filters(
 			'kirki_package_url_control_color',
@@ -77,7 +77,7 @@ class Color extends Base {
 			'wp-color-picker-alpha',
 			"$url/assets/scripts/wp-color-picker-alpha.js",
 			[
-				'wp-color-picker'
+				'wp-color-picker',
 			],
 			KIRKI_VERSION,
 			true

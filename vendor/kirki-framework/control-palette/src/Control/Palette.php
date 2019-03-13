@@ -33,10 +33,10 @@ class Palette extends Base {
 	public $type = 'kirki-palette';
 
 		/**
-	 * Enqueue control related scripts/styles.
-	 *
-	 * @access public
-	 */
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
 	public function enqueue() {
 		parent::enqueue();
 

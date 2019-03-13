@@ -50,7 +50,7 @@ class Generic extends Base {
 				echo '</script>';
 			}
 		);
-		
+
 		add_action(
 			'customize_controls_print_footer_scripts',
 			function() {

@@ -3,7 +3,7 @@
 	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
 	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/blob/develop/WordPress-Core/ruleset.xml -->
 	<description>A custom ruleset for the Kirki project based on the WordPress Coding Standards and PHPCompatibility.</description>
-
+	
 	<!-- Only check PHP files. -->
 	<arg name="extensions" value="php"/>
 
@@ -16,15 +16,41 @@
 	<file>.</file>
 
 	<exclude-pattern>node_modules/</exclude-pattern>
-	<exclude-pattern>vendor/</exclude-pattern>
 	<exclude-pattern>tests/</exclude-pattern>
 	<exclude-pattern>docs/</exclude-pattern>
+	<exclude-pattern>vendor/composer</exclude-pattern>
+	<exclude-pattern>vendor/bin</exclude-pattern>
+	<exclude-pattern>vendor/codacy</exclude-pattern>
+	<exclude-pattern>vendor/composer/installers</exclude-pattern>
+	<exclude-pattern>vendor/dealerdirect</exclude-pattern>
+	<exclude-pattern>vendor/doctrine</exclude-pattern>
+	<exclude-pattern>vendor/gitonomy</exclude-pattern>
+	<exclude-pattern>vendor/guzzlehttp</exclude-pattern>
+	<exclude-pattern>vendor/myclabs</exclude-pattern>
+	<exclude-pattern>vendor/phar-io</exclude-pattern>
+	<exclude-pattern>vendor/phpcompatibility</exclude-pattern>
+	<exclude-pattern>vendor/php-coveralls</exclude-pattern>
+	<exclude-pattern>vendor/phpdocumentor</exclude-pattern>
+	<exclude-pattern>vendor/phpspec</exclude-pattern>
+	<exclude-pattern>vendor/phpunit</exclude-pattern>
+	<exclude-pattern>vendor/psr</exclude-pattern>
+	<exclude-pattern>vendor/ralouphie</exclude-pattern>
+	<exclude-pattern>vendor/sebastian</exclude-pattern>
+	<exclude-pattern>vendor/squizlabs</exclude-pattern>
+	<exclude-pattern>vendor/symfony</exclude-pattern>
+	<exclude-pattern>vendor/theseer</exclude-pattern>
+	<exclude-pattern>vendor/webmozart</exclude-pattern>
+	<exclude-pattern>vendor/wp-coding-standards</exclude-pattern>
+	<exclude-pattern>vendor/autoload.php</exclude-pattern>
 
 	<!-- Include the WordPress ruleset. -->
-	<rule ref="WordPress"/>
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+	</rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP -->
-	<config name="testVersion" value="5.2-"/>
+	<config name="testVersion" value="5.6-"/>
 	<rule ref="PHPCompatibilityWP"/>
 </ruleset>

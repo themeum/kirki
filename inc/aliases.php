@@ -95,34 +95,34 @@ add_action(
 		class_alias( 'Kirki\Control\Cropped_Image', 'Kirki_Control_Cropped_Image' );
 		class_alias( 'Kirki\Control\Custom', 'Kirki_Control_Custom' );
 		class_alias( 'Kirki\Control\Dashicons', 'Kirki_Control_Dashicons' );
-        class_alias( 'Kirki\Control\Date', 'Kirki_Control_Date' );
-        class_alias( 'Kirki\Control\Dimension', 'Kirki_Control_Dimension' );
-        class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Dimensions' );
-        class_alias( 'Kirki\Control\Editor', 'Kirki_Control_Editor' );
+		class_alias( 'Kirki\Control\Date', 'Kirki_Control_Date' );
+		class_alias( 'Kirki\Control\Dimension', 'Kirki_Control_Dimension' );
+		class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Dimensions' );
+		class_alias( 'Kirki\Control\Editor', 'Kirki_Control_Editor' );
 		class_alias( 'Kirki\Control\FontAwesome', 'Kirki_Control_FontAwesome' );
-        class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Generic' );
-        class_alias( 'Kirki\Control\Image', 'Kirki_Control_Image' );
-        class_alias( 'Kirki\Control\Multicheck', 'Kirki_Control_Multicheck' );
-        class_alias( 'Kirki\Control\Multicolor', 'Kirki_Control_Multicolor' );
-        class_alias( 'Kirki\Control\Number', 'Kirki_Control_Number' );
-        class_alias( 'Kirki\Control\Palette', 'Kirki_Control_Palette' );
-        class_alias( 'Kirki\Control\Radio', 'Kirki_Control_Radio' );
-        class_alias( 'Kirki\Control\Radio_Buttonset', 'Kirki_Control_Radio_Buttonset' );
+		class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Generic' );
+		class_alias( 'Kirki\Control\Image', 'Kirki_Control_Image' );
+		class_alias( 'Kirki\Control\Multicheck', 'Kirki_Control_Multicheck' );
+		class_alias( 'Kirki\Control\Multicolor', 'Kirki_Control_Multicolor' );
+		class_alias( 'Kirki\Control\Number', 'Kirki_Control_Number' );
+		class_alias( 'Kirki\Control\Palette', 'Kirki_Control_Palette' );
+		class_alias( 'Kirki\Control\Radio', 'Kirki_Control_Radio' );
+		class_alias( 'Kirki\Control\Radio_Buttonset', 'Kirki_Control_Radio_Buttonset' );
 		class_alias( 'Kirki\Control\Radio_Image', 'Kirki_Control_Radio_Image' );
 		class_alias( 'Kirki\Control\Repeater', 'Kirki_Control_Repeater' );
-        class_alias( 'Kirki\Control\Select', 'Kirki_Control_Select' );
-        class_alias( 'Kirki\Control\Slider', 'Kirki_Control_Slider' );
-        class_alias( 'Kirki\Control\Sortable', 'Kirki_Control_Sortable' );
+		class_alias( 'Kirki\Control\Select', 'Kirki_Control_Select' );
+		class_alias( 'Kirki\Control\Slider', 'Kirki_Control_Slider' );
+		class_alias( 'Kirki\Control\Sortable', 'Kirki_Control_Sortable' );
 		class_alias( 'Kirki\Control\Typography', 'Kirki_Control_Typography' );
 		class_alias( 'Kirki\Control\Upload', 'Kirki_Control_Upload' );
 
-        class_alias( 'Kirki\Settings\Repeater', 'Kirki\Settings\Repeater_Setting' );
+		class_alias( 'Kirki\Settings\Repeater', 'Kirki\Settings\Repeater_Setting' );
 		class_alias( 'Kirki\Settings\Repeater', 'Kirki_Settings_Repeater_Setting' );
-		
+
 		class_alias( 'Kirki\Modules\Custom_Sections\Section_Default', 'Kirki_Sections_Default_Section' );
-        class_alias( 'Kirki\Modules\Custom_Sections\Section_Expanded', 'Kirki_Sections_Expanded_Section' );
-        class_alias( 'Kirki\Modules\Custom_Sections\Section_Nested', 'Kirki_Sections_Nested_Section' );
-        class_alias( 'Kirki\Modules\Custom_Sections\Section_Link', 'Kirki_Sections_Link_Section' );
-        class_alias( 'Kirki\Modules\Custom_Panels\Panel_Nested', 'Kirki_Panels_Nested_Panel' );
+		class_alias( 'Kirki\Modules\Custom_Sections\Section_Expanded', 'Kirki_Sections_Expanded_Section' );
+		class_alias( 'Kirki\Modules\Custom_Sections\Section_Nested', 'Kirki_Sections_Nested_Section' );
+		class_alias( 'Kirki\Modules\Custom_Sections\Section_Link', 'Kirki_Sections_Link_Section' );
+		class_alias( 'Kirki\Modules\Custom_Panels\Panel_Nested', 'Kirki_Panels_Nested_Panel' );
 	}
 );

@@ -67,25 +67,25 @@ class Module {
 	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
-        $url = apply_filters(
+		$url = apply_filters(
 			'kirki_package_url_module_preset',
 			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-preset/src'
 		);
 
 		wp_enqueue_script(
-            'kirki-set-setting-value',
-            trailingslashit( Kirki::$url ) . 'assets/scripts/set-setting-value.js',
-            array( 'jquery' ),
-            KIRKI_VERSION,
-            false
-        );
+			'kirki-set-setting-value',
+			trailingslashit( Kirki::$url ) . 'assets/scripts/set-setting-value.js',
+			array( 'jquery' ),
+			KIRKI_VERSION,
+			false
+		);
 
-        wp_enqueue_script(
-            'kirki-preset',
-            trailingslashit( Kirki::$url ) . 'assets/scripts/preset.js',
-            array( 'jquery', 'kirki-set-setting-value' ),
-            KIRKI_VERSION,
-            false
-        );
+		wp_enqueue_script(
+			'kirki-preset',
+			trailingslashit( Kirki::$url ) . 'assets/scripts/preset.js',
+			array( 'jquery', 'kirki-set-setting-value' ),
+			KIRKI_VERSION,
+			false
+		);
 	}
 }
