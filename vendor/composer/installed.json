@@ -149,29 +149,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-code.git",
-            "reference": "b58d381624df5c1bcea49b1e69f32c6fff13dd24"
+            "reference": "42cd3fbec2520489d56e25bc442aac77a022317b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-code/zipball/b58d381624df5c1bcea49b1e69f32c6fff13dd24",
-            "reference": "b58d381624df5c1bcea49b1e69f32c6fff13dd24",
+            "url": "https://api.github.com/repos/kirki-framework/control-code/zipball/42cd3fbec2520489d56e25bc442aac77a022317b",
+            "reference": "42cd3fbec2520489d56e25bc442aac77a022317b",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-03-12T18:38:46+00:00",
+        "time": "2019-03-13T19:53:56+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
                 "Kirki\\Field\\": "src/Field"
-            },
-            "files": [
-                "src/functions.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -200,29 +197,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "7bc5ae07bd0897809c3121962bc53a0ff979bd02"
+            "reference": "f105a1cd6f7eef645e0f4045fe5d970b0009cb17"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/7bc5ae07bd0897809c3121962bc53a0ff979bd02",
-            "reference": "7bc5ae07bd0897809c3121962bc53a0ff979bd02",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/f105a1cd6f7eef645e0f4045fe5d970b0009cb17",
+            "reference": "f105a1cd6f7eef645e0f4045fe5d970b0009cb17",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-27T22:43:58+00:00",
+        "time": "2019-03-13T19:55:40+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
                 "Kirki\\Field\\": "src/Field"
-            },
-            "files": [
-                "src/functions.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -251,12 +245,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color-palette.git",
-            "reference": "ce0c813660a9093db2d4e1a15485fba250684957"
+            "reference": "6faad170567031869e97ab23ad1651dc84bb4577"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/ce0c813660a9093db2d4e1a15485fba250684957",
-            "reference": "ce0c813660a9093db2d4e1a15485fba250684957",
+            "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/6faad170567031869e97ab23ad1651dc84bb4577",
+            "reference": "6faad170567031869e97ab23ad1651dc84bb4577",
             "shasum": ""
         },
         "require": {
@@ -264,17 +258,14 @@
             "kirki-framework/core": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-26T21:00:26+00:00",
+        "time": "2019-03-13T19:57:25+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
                 "Kirki\\Field\\": "src/Field"
-            },
-            "files": [
-                "src/functions.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -303,27 +294,24 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-cropped-image.git",
-            "reference": "50184e5f983114eb90a131d8399c2f384bbac288"
+            "reference": "fef348cc1e28af0b35ef337efa899508e754c98f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-cropped-image/zipball/50184e5f983114eb90a131d8399c2f384bbac288",
-            "reference": "50184e5f983114eb90a131d8399c2f384bbac288",
+            "url": "https://api.github.com/repos/kirki-framework/control-cropped-image/zipball/fef348cc1e28af0b35ef337efa899508e754c98f",
+            "reference": "fef348cc1e28af0b35ef337efa899508e754c98f",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-02-17T13:06:01+00:00",
+        "time": "2019-03-13T19:58:35+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/"
-            },
-            "files": [
-                "src/aliases.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -352,29 +340,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-custom.git",
-            "reference": "6907075f5b49a04b1b3818e22d8eb1d2a9661792"
+            "reference": "573ce4f7e3c3d0e554770f6af44b493a01e8917d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-custom/zipball/6907075f5b49a04b1b3818e22d8eb1d2a9661792",
-            "reference": "6907075f5b49a04b1b3818e22d8eb1d2a9661792",
+            "url": "https://api.github.com/repos/kirki-framework/control-custom/zipball/573ce4f7e3c3d0e554770f6af44b493a01e8917d",
+            "reference": "573ce4f7e3c3d0e554770f6af44b493a01e8917d",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-02-26T21:00:46+00:00",
+        "time": "2019-03-13T20:01:18+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
                 "Kirki\\Field\\": "src/Field"
-            },
-            "files": [
-                "src/functions.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [

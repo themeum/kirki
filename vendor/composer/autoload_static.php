@@ -4,19 +4,14 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1dea7df0957cf1b01ddfd01930feb7d0
+class ComposerStaticInitd63f66495b16fe3019d30eca950ad032
 {
     public static $files = array (
         '87c34c6c6680f5cbf57e2065b44cdcd1' => __DIR__ . '/..' . '/kirki-framework/core/src/aliases.php',
-        'eb4452de9d915613ac6f95c83bf4be18' => __DIR__ . '/..' . '/kirki-framework/control-color/src/functions.php',
         '37841c7b48171f84098f3850c2594b73' => __DIR__ . '/..' . '/kirki-framework/control-number/src/functions.php',
         '92949853f7e17f96334a268282ccda4f' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/functions.php',
         'a1be2832d45f421df16520e860f0108a' => __DIR__ . '/..' . '/kirki-framework/control-select/src/functions.php',
         '4becfd0b1c4f3bd1c4b12db74525d49e' => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src/aliases.php',
-        'c407089037feacda59cad35e1520f0ea' => __DIR__ . '/..' . '/kirki-framework/control-code/src/functions.php',
-        '948b3ed58ed44c03e81e7d045dce8910' => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/functions.php',
-        '48169c443670736d2b1a514d020b64a1' => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src/aliases.php',
-        '42b0c4a8afbf4658a439a34c62236673' => __DIR__ . '/..' . '/kirki-framework/control-custom/src/functions.php',
         '5678445cc03b44699921d4b75db276f7' => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/functions.php',
         'dee06733620bf504193ae5e70e61ab71' => __DIR__ . '/..' . '/kirki-framework/control-date/src/functions.php',
         '0f53086aced4b81caf11988d15b5ff6c' => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/functions.php',
@@ -151,8 +146,8 @@ class ComposerStaticInit1dea7df0957cf1b01ddfd01930feb7d0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1dea7df0957cf1b01ddfd01930feb7d0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1dea7df0957cf1b01ddfd01930feb7d0::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd63f66495b16fe3019d30eca950ad032::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd63f66495b16fe3019d30eca950ad032::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

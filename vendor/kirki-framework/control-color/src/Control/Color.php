@@ -58,6 +58,16 @@ class Color extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_color', __DIR__ . '/view.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-color">';
+				include $path;
+				echo '</script>';
+			}
+		);		
+
 		$url = apply_filters(
 			'kirki_package_url_control_color',
 			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color/src'

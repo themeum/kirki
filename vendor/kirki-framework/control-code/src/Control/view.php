@@ -20,7 +20,7 @@ data = _.defaults( data, {
 <# var elementIdPrefix = 'el' + String( Math.random() ); #>
 <div class="kirki-input-container" data-id="{{ data.id }}">
 	<# if ( data.label ) { #>
-		<label for="{{ elementIdPrefix }}_editor" class="customize-control-title">
+		<label for="{{ elementIdPrefix }}_editor" class="customize-control-title">aqaaa
 			{{{ data.label }}}
 		</label>
 	<# } #>

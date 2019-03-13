@@ -34,6 +34,23 @@ class Code extends \WP_Customize_Code_Editor_Control {
 	public $required = array();
 
 	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @since 4.0
+	 */
+	public function enqueue() {
+		parent::enqueue();
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				echo '<script type="text/html" id="tmpl-kirki-input-code">';
+				include apply_filters( 'kirki_control_view_code', __DIR__ . '/view.php' );
+				echo '</script>';
+			}
+		);
+	}
+
+	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
