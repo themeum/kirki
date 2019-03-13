@@ -22,7 +22,6 @@
             "Kirki\\Control\\": "src/Control",
             "Kirki\\Field\\": "src/Field",
 			"Kirki\\Settings\\": "src/Settings"
-        },
-        "files": ["src/functions.php"]
+        }
     }
 }

@@ -40,6 +40,16 @@ class Radio extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_radio', __DIR__ . '/view-radio.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-radio">';
+				include $path;
+				echo '</script>';
+			}
+		);
+
 		$url = apply_filters(
 			'kirki_package_url_control_radio',
 			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-radio/src'

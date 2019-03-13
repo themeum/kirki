@@ -885,12 +885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-palette.git",
-                "reference": "010cb727ec742c378a0a443795a9fdae7ecb8978"
+                "reference": "843350788a64513b7fa77978b4aff778ba7205ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/010cb727ec742c378a0a443795a9fdae7ecb8978",
-                "reference": "010cb727ec742c378a0a443795a9fdae7ecb8978",
+                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/843350788a64513b7fa77978b4aff778ba7205ae",
+                "reference": "843350788a64513b7fa77978b4aff778ba7205ae",
                 "shasum": ""
             },
             "require": {
@@ -903,10 +903,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -927,7 +924,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-27T17:30:12+00:00"
+            "time": "2019-03-13T20:44:58+00:00"
         },
         {
             "name": "kirki-framework/control-radio",
@@ -935,12 +932,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "1664454de0f6402306c24f8233b3e1a053e56488"
+                "reference": "bcecef8acdd30c1f634fa6ee14c17e5a7b709558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/1664454de0f6402306c24f8233b3e1a053e56488",
-                "reference": "1664454de0f6402306c24f8233b3e1a053e56488",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/bcecef8acdd30c1f634fa6ee14c17e5a7b709558",
+                "reference": "bcecef8acdd30c1f634fa6ee14c17e5a7b709558",
                 "shasum": ""
             },
             "require": {
@@ -952,10 +949,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -976,7 +970,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-27T17:29:34+00:00"
+            "time": "2019-03-13T20:47:06+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -984,12 +978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "40b754b7606f45e9ca5f663075fe5b543b63aba9"
+                "reference": "092efd3fbd4b800095a50ba4e999edc15f5f8bdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/40b754b7606f45e9ca5f663075fe5b543b63aba9",
-                "reference": "40b754b7606f45e9ca5f663075fe5b543b63aba9",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/092efd3fbd4b800095a50ba4e999edc15f5f8bdb",
+                "reference": "092efd3fbd4b800095a50ba4e999edc15f5f8bdb",
                 "shasum": ""
             },
             "require": {
@@ -1002,10 +996,7 @@
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field",
                     "Kirki\\Settings\\": "src/Settings"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1026,7 +1017,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T00:54:34+00:00"
+            "time": "2019-03-13T20:48:32+00:00"
         },
         {
             "name": "kirki-framework/control-select",
@@ -1034,12 +1025,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-select.git",
-                "reference": "8b9258757d9804ee3f3d42d7f220c15ae255bda4"
+                "reference": "fff30319f79c48a2454a19947e9009bcebabd399"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/8b9258757d9804ee3f3d42d7f220c15ae255bda4",
-                "reference": "8b9258757d9804ee3f3d42d7f220c15ae255bda4",
+                "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/fff30319f79c48a2454a19947e9009bcebabd399",
+                "reference": "fff30319f79c48a2454a19947e9009bcebabd399",
                 "shasum": ""
             },
             "require": {
@@ -1051,10 +1042,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1075,7 +1063,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-26T21:38:47+00:00"
+            "time": "2019-03-13T20:50:30+00:00"
         },
         {
             "name": "kirki-framework/control-slider",
@@ -1083,12 +1071,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "9b60b1827f88a5f0a82630b290a2dc8145a45779"
+                "reference": "123a4e3577914e775e6808f1d574aeedd4cc858c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/9b60b1827f88a5f0a82630b290a2dc8145a45779",
-                "reference": "9b60b1827f88a5f0a82630b290a2dc8145a45779",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/123a4e3577914e775e6808f1d574aeedd4cc858c",
+                "reference": "123a4e3577914e775e6808f1d574aeedd4cc858c",
                 "shasum": ""
             },
             "require": {
@@ -1101,10 +1089,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1125,7 +1110,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-27T21:39:17+00:00"
+            "time": "2019-03-13T20:52:20+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -1133,12 +1118,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-sortable.git",
-                "reference": "300def730b9a203b51344776f8f73b5af4a3aa23"
+                "reference": "791e83b6cfc728e5d16ad9839bd1b7598048c368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/300def730b9a203b51344776f8f73b5af4a3aa23",
-                "reference": "300def730b9a203b51344776f8f73b5af4a3aa23",
+                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/791e83b6cfc728e5d16ad9839bd1b7598048c368",
+                "reference": "791e83b6cfc728e5d16ad9839bd1b7598048c368",
                 "shasum": ""
             },
             "require": {
@@ -1150,10 +1135,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1174,7 +1156,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-27T21:42:14+00:00"
+            "time": "2019-03-13T20:53:58+00:00"
         },
         {
             "name": "kirki-framework/control-typography",
@@ -1182,12 +1164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-typography.git",
-                "reference": "7c214925224b1d7428472e2d72b849fb381c028f"
+                "reference": "b6f55798d973eb8175fed649330a2f280f943544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/7c214925224b1d7428472e2d72b849fb381c028f",
-                "reference": "7c214925224b1d7428472e2d72b849fb381c028f",
+                "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/b6f55798d973eb8175fed649330a2f280f943544",
+                "reference": "b6f55798d973eb8175fed649330a2f280f943544",
                 "shasum": ""
             },
             "require": {
@@ -1202,10 +1184,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1226,7 +1205,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T00:52:20+00:00"
+            "time": "2019-03-13T20:55:16+00:00"
         },
         {
             "name": "kirki-framework/control-upload",
@@ -1234,12 +1213,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "7e5a1ae1ba9e3c7ffb5a32577529e85b86a3d672"
+                "reference": "a43c3403ebf6e6e6c1f7b967d9032d94e3198d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/7e5a1ae1ba9e3c7ffb5a32577529e85b86a3d672",
-                "reference": "7e5a1ae1ba9e3c7ffb5a32577529e85b86a3d672",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/a43c3403ebf6e6e6c1f7b967d9032d94e3198d46",
+                "reference": "a43c3403ebf6e6e6c1f7b967d9032d94e3198d46",
                 "shasum": ""
             },
             "require": {
@@ -1251,10 +1230,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1275,7 +1251,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T00:55:47+00:00"
+            "time": "2019-03-13T21:14:08+00:00"
         },
         {
             "name": "kirki-framework/core",
@@ -1283,12 +1259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "4528b46446884cd773798a49649443e92087d294"
+                "reference": "be036e110886a64c57a48937cc0f0e5a26535e61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/4528b46446884cd773798a49649443e92087d294",
-                "reference": "4528b46446884cd773798a49649443e92087d294",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/be036e110886a64c57a48937cc0f0e5a26535e61",
+                "reference": "be036e110886a64c57a48937cc0f0e5a26535e61",
                 "shasum": ""
             },
             "require": {
@@ -1298,10 +1274,7 @@
             "autoload": {
                 "psr-4": {
                     "Kirki\\Core\\": "src/"
-                },
-                "files": [
-                    "src/aliases.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1322,7 +1295,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-16T20:00:50+00:00"
+            "time": "2019-03-13T20:58:24+00:00"
         },
         {
             "name": "kirki-framework/module-css",
@@ -1330,12 +1303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "b1a832581c98329d4b62c5998c6d03b4b7c1e507"
+                "reference": "97f0d18472dd1d86e31667df2de5ef5145b07698"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/b1a832581c98329d4b62c5998c6d03b4b7c1e507",
-                "reference": "b1a832581c98329d4b62c5998c6d03b4b7c1e507",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/97f0d18472dd1d86e31667df2de5ef5145b07698",
+                "reference": "97f0d18472dd1d86e31667df2de5ef5145b07698",
                 "shasum": ""
             },
             "require": {
@@ -1346,10 +1319,7 @@
             "autoload": {
                 "psr-4": {
                     "Kirki\\Modules\\CSS\\": "src/"
-                },
-                "files": [
-                    "src/aliases.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1370,7 +1340,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T00:09:29+00:00"
+            "time": "2019-03-13T20:59:32+00:00"
         },
         {
             "name": "kirki-framework/module-css-vars",
@@ -1378,12 +1348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css-vars.git",
-                "reference": "d9a143377f39b4ddd22336bd8a3cd6ce9a38445e"
+                "reference": "12b3c235aa3e30e183989ede1c89e0ce1ec6da68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css-vars/zipball/d9a143377f39b4ddd22336bd8a3cd6ce9a38445e",
-                "reference": "d9a143377f39b4ddd22336bd8a3cd6ce9a38445e",
+                "url": "https://api.github.com/repos/kirki-framework/module-css-vars/zipball/12b3c235aa3e30e183989ede1c89e0ce1ec6da68",
+                "reference": "12b3c235aa3e30e183989ede1c89e0ce1ec6da68",
                 "shasum": ""
             },
             "require": {
@@ -1394,10 +1364,7 @@
             "autoload": {
                 "psr-4": {
                     "Kirki\\Modules\\CSS_Vars\\": "src/"
-                },
-                "files": [
-                    "src/aliases.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1418,7 +1385,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-23T13:57:10+00:00"
+            "time": "2019-03-13T21:00:43+00:00"
         },
         {
             "name": "kirki-framework/module-custom-sections",
@@ -1426,12 +1393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-custom-sections.git",
-                "reference": "99b99fa7324e272ee384c1f097c8e1220b8735e0"
+                "reference": "ca9e5d8b3bafadb861a4fb8ce6738d2cae671222"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-custom-sections/zipball/99b99fa7324e272ee384c1f097c8e1220b8735e0",
-                "reference": "99b99fa7324e272ee384c1f097c8e1220b8735e0",
+                "url": "https://api.github.com/repos/kirki-framework/module-custom-sections/zipball/ca9e5d8b3bafadb861a4fb8ce6738d2cae671222",
+                "reference": "ca9e5d8b3bafadb861a4fb8ce6738d2cae671222",
                 "shasum": ""
             },
             "require": {
@@ -1443,10 +1410,7 @@
                 "psr-4": {
                     "Kirki\\Modules\\Custom_Sections\\": "src/",
                     "Kirki\\Modules\\Custom_Panels\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1467,7 +1431,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T18:03:01+00:00"
+            "time": "2019-03-13T21:02:01+00:00"
         },
         {
             "name": "kirki-framework/module-preset",
@@ -1475,12 +1439,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-preset.git",
-                "reference": "dc08403e7dbd9fde72f33973da864a3c28dea4e2"
+                "reference": "3093c6847d647968c6e12dc0c618c92a71bc0fcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/dc08403e7dbd9fde72f33973da864a3c28dea4e2",
-                "reference": "dc08403e7dbd9fde72f33973da864a3c28dea4e2",
+                "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/3093c6847d647968c6e12dc0c618c92a71bc0fcb",
+                "reference": "3093c6847d647968c6e12dc0c618c92a71bc0fcb",
                 "shasum": ""
             },
             "require": {
@@ -1491,10 +1455,7 @@
             "autoload": {
                 "psr-4": {
                     "Kirki\\Modules\\Preset\\": "src/"
-                },
-                "files": [
-                    "src/aliases.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1515,7 +1476,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-02-24T09:14:20+00:00"
+            "time": "2019-03-13T21:03:04+00:00"
         },
         {
             "name": "kirki-framework/module-webfonts",
@@ -1523,12 +1484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "e93cf053ecb0d16b4546255d367087cae98a4d8d"
+                "reference": "441b963bed2d0a7b9eb284eb587eafbc50931184"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/e93cf053ecb0d16b4546255d367087cae98a4d8d",
-                "reference": "e93cf053ecb0d16b4546255d367087cae98a4d8d",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/441b963bed2d0a7b9eb284eb587eafbc50931184",
+                "reference": "441b963bed2d0a7b9eb284eb587eafbc50931184",
                 "shasum": ""
             },
             "require": {
@@ -1539,10 +1500,7 @@
             "autoload": {
                 "psr-4": {
                     "Kirki\\Modules\\Webfonts\\": "src/"
-                },
-                "files": [
-                    "src/aliases.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1563,7 +1521,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-12T15:54:52+00:00"
+            "time": "2019-03-13T21:04:06+00:00"
         }
     ],
     "packages-dev": [

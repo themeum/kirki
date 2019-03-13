@@ -21,7 +21,6 @@
 		"psr-4" : {
 			"Kirki\\Modules\\Custom_Sections\\" : "src/",
 			"Kirki\\Modules\\Custom_Panels\\" : "src/"
-        },
-        "files": ["src/functions.php"]
+        }
     }
 }
