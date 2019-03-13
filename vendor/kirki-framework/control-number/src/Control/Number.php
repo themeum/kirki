@@ -40,6 +40,16 @@ class Number extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_number', __DIR__ . '/view.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-number">';
+				include $path;
+				echo '</script>';
+			}
+		);
+
 		$url = apply_filters(
 			'kirki_package_url_control_number',
 			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-number/src'

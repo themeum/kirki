@@ -41,6 +41,26 @@ class Generic extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_generic', __DIR__ . '/view-generic.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-generic">';
+				include $path;
+				echo '</script>';
+			}
+		);
+		
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_textarea', __DIR__ . '/view-textarea.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-textarea">';
+				include $path;
+				echo '</script>';
+			}
+		);
+
 		$url = apply_filters(
 			'kirki_package_url_control_generic',
 			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-generic/src'

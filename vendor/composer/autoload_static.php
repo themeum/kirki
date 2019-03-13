@@ -4,24 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd63f66495b16fe3019d30eca950ad032
+class ComposerStaticInit04a1646d73b3f04bb856147f57ff3705
 {
     public static $files = array (
         '87c34c6c6680f5cbf57e2065b44cdcd1' => __DIR__ . '/..' . '/kirki-framework/core/src/aliases.php',
-        '37841c7b48171f84098f3850c2594b73' => __DIR__ . '/..' . '/kirki-framework/control-number/src/functions.php',
         '92949853f7e17f96334a268282ccda4f' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/functions.php',
         'a1be2832d45f421df16520e860f0108a' => __DIR__ . '/..' . '/kirki-framework/control-select/src/functions.php',
         '4becfd0b1c4f3bd1c4b12db74525d49e' => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src/aliases.php',
-        '5678445cc03b44699921d4b75db276f7' => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/functions.php',
-        'dee06733620bf504193ae5e70e61ab71' => __DIR__ . '/..' . '/kirki-framework/control-date/src/functions.php',
-        '0f53086aced4b81caf11988d15b5ff6c' => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/functions.php',
-        'e0f4af39dd71a538f882b53a70c8d7dd' => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/functions.php',
-        'cf29855fdcaeb3393b0ca336f1fcb973' => __DIR__ . '/..' . '/kirki-framework/control-editor/src/functions.php',
-        '38603afb5ae5cfc732ba47da9149a57a' => __DIR__ . '/..' . '/kirki-framework/control-fontawesome/src/functions.php',
-        '8e893f64a9e43a9198abc83436ed4c2e' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/functions.php',
-        '940911ea269c1b792c235c125cbbceab' => __DIR__ . '/..' . '/kirki-framework/control-image/src/functions.php',
-        '3cb5c1171623e07adaac3b315ae73686' => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/functions.php',
-        'e4e6c8dbefdfa70f152f0c107215a718' => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/functions.php',
         'b25096ef0e6141de7ee64e75b0147dc9' => __DIR__ . '/..' . '/kirki-framework/control-palette/src/functions.php',
         '5128c8a704e5de89e895a9a036f2fefb' => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/functions.php',
         '635bd5947c94cc6bd54858603e093673' => __DIR__ . '/..' . '/kirki-framework/control-slider/src/functions.php',
@@ -146,8 +135,8 @@ class ComposerStaticInitd63f66495b16fe3019d30eca950ad032
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd63f66495b16fe3019d30eca950ad032::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd63f66495b16fe3019d30eca950ad032::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit04a1646d73b3f04bb856147f57ff3705::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit04a1646d73b3f04bb856147f57ff3705::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

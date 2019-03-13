@@ -25,4 +25,23 @@ class Image extends Base {
 	 * @var string
 	 */
 	public $type = 'kirki-image';
+
+		/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		add_action(
+			'customize_controls_print_footer_scripts',
+			function() {
+				$path = apply_filters( 'kirki_control_view_image', __DIR__ . '/view.php' );
+				echo '<script type="text/html" id="tmpl-kirki-input-image">';
+				include $path;
+				echo '</script>';
+			}
+		);
+	}
 }
