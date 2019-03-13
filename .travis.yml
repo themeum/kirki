@@ -22,8 +22,7 @@ before_script:
 script:
   - mkdir -p build/logs
   # Run the plugin through ESLint.
-  - eslint ./controls/js/src/*.js
-  - eslint ./modules/**/*.js
+  - eslint .
   # PHPCS Coding Standards check.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link https://github.com/PHPCompatibility/PHPCompatibilityWP
