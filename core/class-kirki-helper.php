@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -437,17 +437,17 @@ class Kirki_Helper {
 		if ( 'contains' === $operator || 'in' === $operator ) {
 			if ( is_array( $value1 ) && is_array( $value2 ) ) {
 				foreach ( $value2 as $val ) {
-					if ( in_array( $val, $value1 ) ) { // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+					if ( in_array( $val, $value1 ) ) { // phpcs:ignore WordPress.PHP.StrictInArray
 						return true;
 					}
 				}
 				return false;
 			}
 			if ( is_array( $value1 ) && ! is_array( $value2 ) ) {
-				return in_array( $value2, $value1 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+				return in_array( $value2, $value1 ); // phpcs:ignore WordPress.PHP.StrictInArray
 			}
 			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
-				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray
 			}
 			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}

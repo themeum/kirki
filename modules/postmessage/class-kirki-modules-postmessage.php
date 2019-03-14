@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Modules
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -71,5 +71,9 @@ class Kirki_Modules_PostMessage {
 			}
 		}
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
+		$extras = apply_filters( 'kirki_postmessage_script', false );
+		if ( $extras ) {
+			wp_add_inline_script( 'kirki_auto_postmessage', $extras, 'after' );
+		}
 	}
 }

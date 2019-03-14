@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0
  */
@@ -222,7 +222,10 @@ final class Kirki_Modules_Webfonts_Embed {
 	 * @return string     The CSS with local URLs.
 	 */
 	private function use_local_files( $css ) {
-		preg_match( '/https\:.*\.woff/', $css, $matches );
+		preg_match_all( '/https\:.*?\.woff/', $css, $matches );
+
+		$matches = array_shift( $matches );
+
 		foreach ( $matches as $match ) {
 			if ( 0 === strpos( $match, 'https://fonts.gstatic.com' ) ) {
 				$new_url = Kirki_Fonts_Helper::download_font_file( $match );

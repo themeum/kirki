@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @category    Modules
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -93,29 +93,42 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 */
 	public function init() {
-		global $wp_customize;
 
 		Kirki_Modules_Webfonts::get_instance();
-
-		$config   = apply_filters( 'kirki_config', array() );
-		$priority = 999;
-		if ( isset( $config['styles_priority'] ) ) {
-			$priority = absint( $config['styles_priority'] );
-		}
 
 		// Allow completely disabling Kirki CSS output.
 		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {
 			return;
 		}
 
-		// Add styles.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
-
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), $priority );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
 
-		// Prints the styles.
 		add_action( 'wp', array( $this, 'print_styles_action' ) );
+
+		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
+			$config   = apply_filters( 'kirki_config', array() );
+			$priority = 999;
+			if ( isset( $config['styles_priority'] ) ) {
+				$priority = absint( $config['styles_priority'] );
+			}
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+		} else {
+			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
+		}
+	}
+
+	/**
+	 * Print styles inline.
+	 *
+	 * @access public
+	 * @since 3.0.36
+	 * @return void
+	 */
+	public function print_styles_inline() {
+		echo '<style id="kirki-inline-styles">';
+		$this->print_styles();
+		echo '</style>';
 	}
 
 	/**
@@ -127,21 +140,17 @@ class Kirki_Modules_CSS {
 	 */
 	public function enqueue_styles() {
 
-		if ( apply_filters( 'kirki_force_inline_styles', false ) ) {
-			echo '<style id="kirki-inline-styles">';
-			$this->print_styles();
-			echo '</style>';
-			return;
+		$args = array(
+			'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
+		);
+		if ( is_admin() && ! is_customize_preview() ) {
+			$args['editor'] = '1';
 		}
 
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
 			'kirki-styles',
-			add_query_arg(
-				'action',
-				apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
-				site_url()
-			),
+			add_query_arg( $args, site_url() ),
 			array(),
 			KIRKI_VERSION
 		);
@@ -193,11 +202,15 @@ class Kirki_Modules_CSS {
 				/**
 				 * Note to code reviewers:
 				 *
-				 * Though all output should be run through an escaping function, this is pure CSS
-				 * and the PHP header() function we're using above makes the browser interpret it as such.
+				 * Though all output should be run through an escaping function, this is pure CSS.
+				 *
+				 * When used in the print_styles_action() method the PHP header() call makes the browser interpret it as such.
 				 * No code, script or anything else can be executed from inside a stylesheet.
-				 * For extra security we're using the wp_strip_all_tags() function here
-				 * just to make sure there's no <script> tags in there or anything else.
+				 *
+				 * When using in the print_styles_inline() method the wp_strip_all_tags call we use below
+				 * strips anything that has the possibility to be malicious, and since this is inslide a <style> tag
+				 * it can only be interpreted by the browser as such.
+				 * wp_strip_all_tags() excludes the possibility of someone closing the <style> tag and then opening something else.
 				 */
 				echo wp_strip_all_tags( $styles ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}

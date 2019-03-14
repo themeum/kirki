@@ -64,7 +64,7 @@ var kirkiPostMessage = {
 				settings = window.parent.wp.customize.get(),
 				excluded = false;
 
-			if ( 'string' !== typeof value ) {
+			if ( 'object' === typeof value ) {
 				_.each( value, function( subValue, key ) {
 					value[ key ] = self.processValue( output, subValue );
 				} );

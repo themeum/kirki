@@ -5,8 +5,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -110,7 +110,6 @@ final class Kirki_Fonts_Google {
 	 * @param array $args The field arguments.
 	 */
 	public function generate_google_font( $args ) {
-		global $wp_customize;
 
 		// Process typography fields.
 		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
@@ -119,7 +118,7 @@ final class Kirki_Fonts_Google {
 			$value = Kirki_Values::get_sanitized_field_value( $args );
 
 			// If we don't have a font-family then we can skip this.
-			if ( ! $wp_customize && ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) ) {
+			if ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) {
 				return;
 			}
 
@@ -214,7 +213,7 @@ final class Kirki_Fonts_Google {
 
 				// If this is not a valid variant for this font-family
 				// then unset it and move on to the next one.
-				if ( ! in_array( $variant, $font_variants, true ) ) {
+				if ( ! in_array( strval( $variant ), $font_variants, true ) ) {
 					$variant_key = array_search( $variant, $this->fonts[ $font ], true );
 					unset( $this->fonts[ $font ][ $variant_key ] );
 					continue;
