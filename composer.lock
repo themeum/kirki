@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ced436f9629bc34c6f4aaf0048a6fe7",
+    "content-hash": "65bc0fbc223d72385adf32c25b66c78b",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1477,6 +1477,51 @@
                 "wordpress"
             ],
             "time": "2019-03-13T22:05:00+00:00"
+        },
+        {
+            "name": "kirki-framework/module-tooltips",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-tooltips.git",
+                "reference": "2c6215aeb33239fcff269b6add9230012c0250cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/2c6215aeb33239fcff269b6add9230012c0250cd",
+                "reference": "2c6215aeb33239fcff269b6add9230012c0250cd",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/core": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Modules\\Tooltips\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tooltips Module for the Kirki WordPress plugin.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-03-14T18:27:34+00:00"
         },
         {
             "name": "kirki-framework/module-webfonts",
@@ -4415,10 +4460,11 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kirki-framework/core": 20,
-        "kirki-framework/module-custom-sections": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-css-vars": 20,
+        "kirki-framework/module-custom-sections": 20,
         "kirki-framework/module-preset": 20,
+        "kirki-framework/module-tooltips": 20,
         "kirki-framework/module-webfonts": 20,
         "kirki-framework/control-base": 20,
         "kirki-framework/control-background": 20,

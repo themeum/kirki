@@ -39,6 +39,8 @@ class_alias( 'Kirki\Modules\Custom_Sections\Module', 'Kirki_Modules_Custom_Secti
 
 class_alias( 'Kirki\Modules\Preset\Module', 'Kirki_Modules_Preset' );
 
+class_alias( 'Kirki\Modules\Tooltips\Module', 'Kirki_Modules_Tooltips' );
+
 class_alias( 'Kirki\Modules\Webfonts\Module', 'Kirki_Modules_Webfonts' );
 class_alias( 'Kirki\Modules\Webfonts\Google', 'Kirki_Fonts_Google' );
 class_alias( 'Kirki\Modules\Webfonts\Fonts', 'Kirki_Fonts' );

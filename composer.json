@@ -17,10 +17,11 @@
   "require": {
     "php": ">=5.6",
     "kirki-framework/core": "dev-master",
-    "kirki-framework/module-custom-sections": "dev-master",
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-css-vars": "dev-master",
+    "kirki-framework/module-custom-sections": "dev-master",
     "kirki-framework/module-preset": "dev-master",
+    "kirki-framework/module-tooltips": "dev-master",
     "kirki-framework/module-webfonts": "dev-master",
     "kirki-framework/control-base": "dev-master",
     "kirki-framework/control-background": "dev-master",

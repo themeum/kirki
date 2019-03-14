@@ -1536,6 +1536,53 @@
         ]
     },
     {
+        "name": "kirki-framework/module-tooltips",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-tooltips.git",
+            "reference": "2c6215aeb33239fcff269b6add9230012c0250cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/2c6215aeb33239fcff269b6add9230012c0250cd",
+            "reference": "2c6215aeb33239fcff269b6add9230012c0250cd",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/core": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-03-14T18:27:34+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Modules\\Tooltips\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Tooltips Module for the Kirki WordPress plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/module-webfonts",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

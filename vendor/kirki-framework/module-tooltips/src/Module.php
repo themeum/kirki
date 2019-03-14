@@ -10,6 +10,10 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Tooltips;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds script for tooltips.
  */
-class Kirki_Modules_Tooltips {
+class Module {
 
 	/**
 	 * The object instance.
@@ -111,8 +115,13 @@ class Kirki_Modules_Tooltips {
 	public function customize_controls_print_footer_scripts() {
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', [ 'jquery' ], KIRKI_VERSION, false );
+		$url = apply_filters(
+			'kirki_package_url_module_tooltips',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-tooltips/src'
+		);
+
+		wp_enqueue_script( 'kirki-tooltip', $url . '/assets/scripts/script.js', [ 'jquery' ], KIRKI_VERSION, false );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
-		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', [], KIRKI_VERSION );
+		wp_enqueue_style( 'kirki-tooltip', $url . '/assets/styles/styles.css', [], KIRKI_VERSION );
 	}
 }
