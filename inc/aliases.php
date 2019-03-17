@@ -64,6 +64,7 @@ class_alias( 'Kirki\Field\Dashicons', 'Kirki_Field_Dashicons' );
 class_alias( 'Kirki\Field\Date', 'Kirki_Field_Date' );
 class_alias( 'Kirki\Field\Dimension', 'Kirki_Field_Dimension' );
 class_alias( 'Kirki\Field\Dimensions', 'Kirki_Field_Dimensions' );
+class_alias( 'Kirki\Field\Dimensions', 'Kirki_Field_Spacing' );
 class_alias( 'Kirki\Field\Editor', 'Kirki_Field_Editor' );
 class_alias( 'Kirki\Field\FontAwesome', 'Kirki_Field_FontAwesome' );
 class_alias( 'Kirki\Field\Generic', 'Kirki_Field_Kirki_Generic' );
