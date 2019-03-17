@@ -47,6 +47,7 @@
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-css-vars": "dev-master",
     "kirki-framework/module-custom-sections": "dev-master",
+    "kirki-framework/module-field-dependencies": "dev-master",
     "kirki-framework/module-loading": "dev-master",
     "kirki-framework/module-preset": "dev-master",
     "kirki-framework/module-tooltips": "dev-master",

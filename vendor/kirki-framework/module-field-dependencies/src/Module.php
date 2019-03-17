@@ -10,6 +10,10 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Field_Dependencies;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds styles to the customizer.
  */
-class Kirki_Modules_Field_Dependencies {
+class Module {
 
 	/**
 	 * The object instance.
@@ -65,6 +69,10 @@ class Kirki_Modules_Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
-		wp_enqueue_script( 'kirki_field_dependencies', trailingslashit( Kirki::$url ) . 'modules/field-dependencies/field-dependencies.js', [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );
+		$url = apply_filters(
+			'kirki_package_url_module_field_dependencies',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-field-dependencies/src'
+		);
+		wp_enqueue_script( 'kirki_field_dependencies', $url . '/assets/scripts/script.js', [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );
 	}
 }

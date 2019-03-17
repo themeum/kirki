@@ -49,6 +49,8 @@ class_alias( 'Kirki\Modules\Webfonts\Google', 'Kirki_Fonts_Google' );
 class_alias( 'Kirki\Modules\Webfonts\Fonts', 'Kirki_Fonts' );
 class_alias( 'Kirki\Modules\Webfonts\Embed', 'Kirki_Modules_Webfonts_Embed' );
 class_alias( 'Kirki\Modules\Webfonts\Async', 'Kirki_Modules_Webfonts_Async' );
+// Module: Field Dependencies.
+class_alias( 'Kirki\Modules\Field_Dependencies\Module', 'Kirki_Modules_Field_Dependencies' );
 
 // Fields.
 class_alias( 'Kirki\Field\Background', 'Kirki_Field_Background' );

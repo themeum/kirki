@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3f549ea3a5b5e2fb0c215d72492e607",
+    "content-hash": "8dc7484a364d3428f2aeade3587f41cb",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1432,6 +1432,51 @@
                 "wordpress"
             ],
             "time": "2019-03-13T21:02:01+00:00"
+        },
+        {
+            "name": "kirki-framework/module-field-dependencies",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-field-dependencies.git",
+                "reference": "98a7be7628f9dd59926dda029fd3fa70f64a966e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/98a7be7628f9dd59926dda029fd3fa70f64a966e",
+                "reference": "98a7be7628f9dd59926dda029fd3fa70f64a966e",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/core": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Modules\\Field_Dependencies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Field-Dependencies Module for the Kirki WordPress plugin.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-03-17T19:48:02+00:00"
         },
         {
             "name": "kirki-framework/module-loading",
@@ -4535,6 +4580,7 @@
         "kirki-framework/module-css": 20,
         "kirki-framework/module-css-vars": 20,
         "kirki-framework/module-custom-sections": 20,
+        "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-loading": 20,
         "kirki-framework/module-preset": 20,
         "kirki-framework/module-tooltips": 20,
