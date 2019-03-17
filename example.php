@@ -442,568 +442,568 @@ my_config_kirki_add_field(
 	]
 );
 
-/**
- * Dropdown-pages Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'dropdown-pages',
-		'settings'    => 'dropdown-pages',
-		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'dropdown_pages_section',
-		'default'     => [
-			'width'  => '100px',
-			'height' => '100px',
-		],
-	]
-);
+// /**
+//  * Dropdown-pages Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'dropdown-pages',
+// 		'settings'    => 'dropdown-pages',
+// 		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description Here.', 'kirki' ),
+// 		'section'     => 'dropdown_pages_section',
+// 		'default'     => [
+// 			'width'  => '100px',
+// 			'height' => '100px',
+// 		],
+// 	]
+// );
 
 
-/**
- * Font-Awesome Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'fontawesome',
-		'settings'    => 'fontawesome_setting',
-		'label'       => esc_html__( 'Font Awesome Control', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'fontawesome_section',
-		'default'     => 'bath',
-	]
-);
+// /**
+//  * Font-Awesome Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'fontawesome',
+// 		'settings'    => 'fontawesome_setting',
+// 		'label'       => esc_html__( 'Font Awesome Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description Here.', 'kirki' ),
+// 		'section'     => 'fontawesome_section',
+// 		'default'     => 'bath',
+// 	]
+// );
 
-/**
- * Generic Controls.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'text',
-		'settings'    => 'generic_text_setting',
-		'label'       => esc_html__( 'Text Control', 'kirki' ),
-		'description' => esc_html__( 'Description', 'kirki' ),
-		'section'     => 'generic_section',
-		'default'     => '',
-	]
-);
+// /**
+//  * Generic Controls.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'text',
+// 		'settings'    => 'generic_text_setting',
+// 		'label'       => esc_html__( 'Text Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description', 'kirki' ),
+// 		'section'     => 'generic_section',
+// 		'default'     => '',
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'textarea',
-		'settings'    => 'generic_textarea_setting',
-		'label'       => esc_html__( 'Textarea Control', 'kirki' ),
-		'description' => esc_html__( 'Description', 'kirki' ),
-		'section'     => 'generic_section',
-		'default'     => '',
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'textarea',
+// 		'settings'    => 'generic_textarea_setting',
+// 		'label'       => esc_html__( 'Textarea Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description', 'kirki' ),
+// 		'section'     => 'generic_section',
+// 		'default'     => '',
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'generic',
-		'settings'    => 'generic_custom_setting',
-		'label'       => esc_html__( 'Custom input Control.', 'kirki' ),
-		'description' => esc_html__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'kirki' ),
-		'section'     => 'generic_section',
-		'default'     => '',
-		'choices'     => [
-			'element'  => 'input',
-			'type'     => 'password',
-			'style'    => 'background-color:black;color:red;',
-			'data-foo' => 'bar',
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'generic',
+// 		'settings'    => 'generic_custom_setting',
+// 		'label'       => esc_html__( 'Custom input Control.', 'kirki' ),
+// 		'description' => esc_html__( 'The "generic" control allows you to add any input type you want. In this case we use type="password" and define custom styles.', 'kirki' ),
+// 		'section'     => 'generic_section',
+// 		'default'     => '',
+// 		'choices'     => [
+// 			'element'  => 'input',
+// 			'type'     => 'password',
+// 			'style'    => 'background-color:black;color:red;',
+// 			'data-foo' => 'bar',
+// 		],
+// 	]
+// );
 
-/**
- * Image Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'image',
-		'settings'    => 'image_setting_url',
-		'label'       => esc_html__( 'Image Control (URL)', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'image_section',
-		'default'     => '',
-	]
-);
+// /**
+//  * Image Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'image',
+// 		'settings'    => 'image_setting_url',
+// 		'label'       => esc_html__( 'Image Control (URL)', 'kirki' ),
+// 		'description' => esc_html__( 'Description Here.', 'kirki' ),
+// 		'section'     => 'image_section',
+// 		'default'     => '',
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'image',
-		'settings'    => 'image_setting_id',
-		'label'       => esc_html__( 'Image Control (ID)', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'image_section',
-		'default'     => '',
-		'choices'     => [
-			'save_as' => 'id',
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'image',
+// 		'settings'    => 'image_setting_id',
+// 		'label'       => esc_html__( 'Image Control (ID)', 'kirki' ),
+// 		'description' => esc_html__( 'Description Here.', 'kirki' ),
+// 		'section'     => 'image_section',
+// 		'default'     => '',
+// 		'choices'     => [
+// 			'save_as' => 'id',
+// 		],
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'image',
-		'settings'    => 'image_setting_array',
-		'label'       => esc_html__( 'Image Control (array)', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'image_section',
-		'default'     => '',
-		'choices'     => [
-			'save_as' => 'array',
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'image',
+// 		'settings'    => 'image_setting_array',
+// 		'label'       => esc_html__( 'Image Control (array)', 'kirki' ),
+// 		'description' => esc_html__( 'Description Here.', 'kirki' ),
+// 		'section'     => 'image_section',
+// 		'default'     => '',
+// 		'choices'     => [
+// 			'save_as' => 'array',
+// 		],
+// 	]
+// );
 
-/**
- * Multicheck Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'     => 'multicheck',
-		'settings' => 'multicheck_setting',
-		'label'    => esc_html__( 'Multickeck Control', 'kirki' ),
-		'section'  => 'multicheck_section',
-		'default'  => [ 'option-1', 'option-3', 'option-4' ],
-		'priority' => 10,
-		'choices'  => [
-			'option-1' => esc_html__( 'Option 1', 'kirki' ),
-			'option-2' => esc_html__( 'Option 2', 'kirki' ),
-			'option-3' => esc_html__( 'Option 3', 'kirki' ),
-			'option-4' => esc_html__( 'Option 4', 'kirki' ),
-			'option-5' => esc_html__( 'Option 5', 'kirki' ),
-		],
-	]
-);
+// /**
+//  * Multicheck Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'     => 'multicheck',
+// 		'settings' => 'multicheck_setting',
+// 		'label'    => esc_html__( 'Multickeck Control', 'kirki' ),
+// 		'section'  => 'multicheck_section',
+// 		'default'  => [ 'option-1', 'option-3', 'option-4' ],
+// 		'priority' => 10,
+// 		'choices'  => [
+// 			'option-1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option-2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option-3' => esc_html__( 'Option 3', 'kirki' ),
+// 			'option-4' => esc_html__( 'Option 4', 'kirki' ),
+// 			'option-5' => esc_html__( 'Option 5', 'kirki' ),
+// 		],
+// 	]
+// );
 
-/**
- * Multicolor Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'     => 'multicolor',
-		'settings' => 'multicolor_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
-		'section'  => 'multicolor_section',
-		'priority' => 10,
-		'choices'  => [
-			'link'   => esc_html__( 'Color', 'kirki' ),
-			'hover'  => esc_html__( 'Hover', 'kirki' ),
-			'active' => esc_html__( 'Active', 'kirki' ),
-		],
-		'alpha'    => true,
-		'default'  => [
-			'link'   => '#0088cc',
-			'hover'  => '#00aaff',
-			'active' => '#00ffff',
-		],
-	]
-);
+// /**
+//  * Multicolor Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'     => 'multicolor',
+// 		'settings' => 'multicolor_setting',
+// 		'label'    => esc_html__( 'Label', 'kirki' ),
+// 		'section'  => 'multicolor_section',
+// 		'priority' => 10,
+// 		'choices'  => [
+// 			'link'   => esc_html__( 'Color', 'kirki' ),
+// 			'hover'  => esc_html__( 'Hover', 'kirki' ),
+// 			'active' => esc_html__( 'Active', 'kirki' ),
+// 		],
+// 		'alpha'    => true,
+// 		'default'  => [
+// 			'link'   => '#0088cc',
+// 			'hover'  => '#00aaff',
+// 			'active' => '#00ffff',
+// 		],
+// 	]
+// );
 
-/**
- * Number Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'     => 'number',
-		'settings' => 'number_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
-		'section'  => 'number_section',
-		'priority' => 10,
-		'choices'  => [
-			'min'  => -5,
-			'max'  => 5,
-			'step' => 1,
-		],
-	]
-);
+// /**
+//  * Number Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'     => 'number',
+// 		'settings' => 'number_setting',
+// 		'label'    => esc_html__( 'Label', 'kirki' ),
+// 		'section'  => 'number_section',
+// 		'priority' => 10,
+// 		'choices'  => [
+// 			'min'  => -5,
+// 			'max'  => 5,
+// 			'step' => 1,
+// 		],
+// 	]
+// );
 
-/**
- * Palette Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'     => 'palette',
-		'settings' => 'palette_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
-		'section'  => 'palette_section',
-		'default'  => 'blue',
-		'choices'  => [
-			'a200'  => Helper::get_material_design_colors( 'A200' ),
-			'blue'  => Helper::get_material_design_colors( 'blue' ),
-			'green' => [ '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ],
-			'bnw'   => [ '#000000', '#ffffff' ],
-		],
-	]
-);
+// /**
+//  * Palette Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'     => 'palette',
+// 		'settings' => 'palette_setting',
+// 		'label'    => esc_html__( 'Label', 'kirki' ),
+// 		'section'  => 'palette_section',
+// 		'default'  => 'blue',
+// 		'choices'  => [
+// 			'a200'  => Helper::get_material_design_colors( 'A200' ),
+// 			'blue'  => Helper::get_material_design_colors( 'blue' ),
+// 			'green' => [ '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ],
+// 			'bnw'   => [ '#000000', '#ffffff' ],
+// 		],
+// 	]
+// );
 
-/**
- * Radio Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'radio',
-		'settings'    => 'radio_setting',
-		'label'       => esc_html__( 'Radio Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'radio_section',
-		'default'     => 'option-3',
-		'choices'     => [
-			'option-1' => esc_html__( 'Option 1', 'kirki' ),
-			'option-2' => esc_html__( 'Option 2', 'kirki' ),
-			'option-3' => esc_html__( 'Option 3', 'kirki' ),
-			'option-4' => esc_html__( 'Option 4', 'kirki' ),
-			'option-5' => esc_html__( 'Option 5', 'kirki' ),
-		],
-	]
-);
+// /**
+//  * Radio Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'radio',
+// 		'settings'    => 'radio_setting',
+// 		'label'       => esc_html__( 'Radio Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'radio_section',
+// 		'default'     => 'option-3',
+// 		'choices'     => [
+// 			'option-1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option-2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option-3' => esc_html__( 'Option 3', 'kirki' ),
+// 			'option-4' => esc_html__( 'Option 4', 'kirki' ),
+// 			'option-5' => esc_html__( 'Option 5', 'kirki' ),
+// 		],
+// 	]
+// );
 
-/**
- * Radio-Buttonset Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'radio-buttonset',
-		'settings'    => 'radio_buttonset_setting',
-		'label'       => esc_html__( 'Radio-Buttonset Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'radio_buttonset_section',
-		'default'     => 'option-2',
-		'choices'     => [
-			'option-1' => esc_html__( 'Option 1', 'kirki' ),
-			'option-2' => esc_html__( 'Option 2', 'kirki' ),
-			'option-3' => esc_html__( 'Option 3', 'kirki' ),
-		],
-	]
-);
+// /**
+//  * Radio-Buttonset Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'radio-buttonset',
+// 		'settings'    => 'radio_buttonset_setting',
+// 		'label'       => esc_html__( 'Radio-Buttonset Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'radio_buttonset_section',
+// 		'default'     => 'option-2',
+// 		'choices'     => [
+// 			'option-1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option-2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option-3' => esc_html__( 'Option 3', 'kirki' ),
+// 		],
+// 	]
+// );
 
-/**
- * Radio-Image Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'radio-image',
-		'settings'    => 'radio_image_setting',
-		'label'       => esc_html__( 'Radio-Image Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'radio_image_section',
-		'default'     => 'travel',
-		'choices'     => [
-			'moto'    => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-moto.png',
-			'cossack' => 'https://raw.githubusercontent.com/templatemonster/cossack-wapuula/master/cossack-wapuula.png',
-			'travel'  => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-travel.png',
-		],
-	]
-);
+// /**
+//  * Radio-Image Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'radio-image',
+// 		'settings'    => 'radio_image_setting',
+// 		'label'       => esc_html__( 'Radio-Image Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'radio_image_section',
+// 		'default'     => 'travel',
+// 		'choices'     => [
+// 			'moto'    => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-moto.png',
+// 			'cossack' => 'https://raw.githubusercontent.com/templatemonster/cossack-wapuula/master/cossack-wapuula.png',
+// 			'travel'  => 'https://jawordpressorg.github.io/wapuu/wapuu-archive/wapuu-travel.png',
+// 		],
+// 	]
+// );
 
-/**
- * Repeater Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'repeater',
-		'settings'    => 'repeater_setting',
-		'label'       => esc_html__( 'Repeater Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'repeater_section',
-		'default'     => [
-			[
-				'link_text'   => esc_html__( 'Kirki Site', 'kirki' ),
-				'link_url'    => 'https://aristath.github.io/kirki/',
-				'link_target' => '_self',
-				'checkbox'    => false,
-			],
-			[
-				'link_text'   => esc_html__( 'Kirki Repository', 'kirki' ),
-				'link_url'    => 'https://github.com/aristath/kirki',
-				'link_target' => '_self',
-				'checkbox'    => false,
-			],
-		],
-		'fields'      => [
-			'link_text'   => [
-				'type'        => 'text',
-				'label'       => esc_html__( 'Link Text', 'kirki' ),
-				'description' => esc_html__( 'This will be the label for your link', 'kirki' ),
-				'default'     => '',
-			],
-			'link_url'    => [
-				'type'        => 'text',
-				'label'       => esc_html__( 'Link URL', 'kirki' ),
-				'description' => esc_html__( 'This will be the link URL', 'kirki' ),
-				'default'     => '',
-			],
-			'link_target' => [
-				'type'        => 'select',
-				'label'       => esc_html__( 'Link Target', 'kirki' ),
-				'description' => esc_html__( 'This will be the link target', 'kirki' ),
-				'default'     => '_self',
-				'choices'     => [
-					'_blank' => esc_html__( 'New Window', 'kirki' ),
-					'_self'  => esc_html__( 'Same Frame', 'kirki' ),
-				],
-			],
-			'checkbox'    => [
-				'type'    => 'checkbox',
-				'label'   => esc_html__( 'Checkbox', 'kirki' ),
-				'default' => false,
-			],
-		],
-	]
-);
+// /**
+//  * Repeater Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'repeater',
+// 		'settings'    => 'repeater_setting',
+// 		'label'       => esc_html__( 'Repeater Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'repeater_section',
+// 		'default'     => [
+// 			[
+// 				'link_text'   => esc_html__( 'Kirki Site', 'kirki' ),
+// 				'link_url'    => 'https://aristath.github.io/kirki/',
+// 				'link_target' => '_self',
+// 				'checkbox'    => false,
+// 			],
+// 			[
+// 				'link_text'   => esc_html__( 'Kirki Repository', 'kirki' ),
+// 				'link_url'    => 'https://github.com/aristath/kirki',
+// 				'link_target' => '_self',
+// 				'checkbox'    => false,
+// 			],
+// 		],
+// 		'fields'      => [
+// 			'link_text'   => [
+// 				'type'        => 'text',
+// 				'label'       => esc_html__( 'Link Text', 'kirki' ),
+// 				'description' => esc_html__( 'This will be the label for your link', 'kirki' ),
+// 				'default'     => '',
+// 			],
+// 			'link_url'    => [
+// 				'type'        => 'text',
+// 				'label'       => esc_html__( 'Link URL', 'kirki' ),
+// 				'description' => esc_html__( 'This will be the link URL', 'kirki' ),
+// 				'default'     => '',
+// 			],
+// 			'link_target' => [
+// 				'type'        => 'select',
+// 				'label'       => esc_html__( 'Link Target', 'kirki' ),
+// 				'description' => esc_html__( 'This will be the link target', 'kirki' ),
+// 				'default'     => '_self',
+// 				'choices'     => [
+// 					'_blank' => esc_html__( 'New Window', 'kirki' ),
+// 					'_self'  => esc_html__( 'Same Frame', 'kirki' ),
+// 				],
+// 			],
+// 			'checkbox'    => [
+// 				'type'    => 'checkbox',
+// 				'label'   => esc_html__( 'Checkbox', 'kirki' ),
+// 				'default' => false,
+// 			],
+// 		],
+// 	]
+// );
 
-/**
- * Select Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'select',
-		'settings'    => 'select_setting',
-		'label'       => esc_html__( 'Select Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'select_section',
-		'default'     => 'option-3',
-		'placeholder' => esc_html__( 'Select an option', 'kirki' ),
-		'choices'     => [
-			'option-1' => esc_html__( 'Option 1', 'kirki' ),
-			'option-2' => esc_html__( 'Option 2', 'kirki' ),
-			'option-3' => esc_html__( 'Option 3', 'kirki' ),
-			'option-4' => esc_html__( 'Option 4', 'kirki' ),
-			'option-5' => esc_html__( 'Option 5', 'kirki' ),
-		],
-	]
-);
+// /**
+//  * Select Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'select',
+// 		'settings'    => 'select_setting',
+// 		'label'       => esc_html__( 'Select Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'select_section',
+// 		'default'     => 'option-3',
+// 		'placeholder' => esc_html__( 'Select an option', 'kirki' ),
+// 		'choices'     => [
+// 			'option-1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option-2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option-3' => esc_html__( 'Option 3', 'kirki' ),
+// 			'option-4' => esc_html__( 'Option 4', 'kirki' ),
+// 			'option-5' => esc_html__( 'Option 5', 'kirki' ),
+// 		],
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'select',
-		'settings'    => 'select_setting_multiple',
-		'label'       => esc_html__( 'Select Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'select_section',
-		'default'     => 'option-3',
-		'multiple'    => 3,
-		'choices'     => [
-			'option-1' => esc_html__( 'Option 1', 'kirki' ),
-			'option-2' => esc_html__( 'Option 2', 'kirki' ),
-			'option-3' => esc_html__( 'Option 3', 'kirki' ),
-			'option-4' => esc_html__( 'Option 4', 'kirki' ),
-			'option-5' => esc_html__( 'Option 5', 'kirki' ),
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'select',
+// 		'settings'    => 'select_setting_multiple',
+// 		'label'       => esc_html__( 'Select Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'select_section',
+// 		'default'     => 'option-3',
+// 		'multiple'    => 3,
+// 		'choices'     => [
+// 			'option-1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option-2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option-3' => esc_html__( 'Option 3', 'kirki' ),
+// 			'option-4' => esc_html__( 'Option 4', 'kirki' ),
+// 			'option-5' => esc_html__( 'Option 5', 'kirki' ),
+// 		],
+// 	]
+// );
 
-/**
- * Slider Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'slider',
-		'settings'    => 'slider_setting',
-		'label'       => esc_html__( 'Slider Control', 'kirki' ),
-		'description' => esc_html__( 'The description here.', 'kirki' ),
-		'section'     => 'slider_section',
-		'default'     => '10',
-		'choices'     => [
-			'min'    => 0,
-			'max'    => 20,
-			'step'   => 1,
-			'suffix' => 'px',
-		],
-	]
-);
+// /**
+//  * Slider Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'slider',
+// 		'settings'    => 'slider_setting',
+// 		'label'       => esc_html__( 'Slider Control', 'kirki' ),
+// 		'description' => esc_html__( 'The description here.', 'kirki' ),
+// 		'section'     => 'slider_section',
+// 		'default'     => '10',
+// 		'choices'     => [
+// 			'min'    => 0,
+// 			'max'    => 20,
+// 			'step'   => 1,
+// 			'suffix' => 'px',
+// 		],
+// 	]
+// );
 
-/**
- * Sortable control.
- */
-my_config_kirki_add_field(
-	[
-		'type'     => 'sortable',
-		'settings' => 'sortable_setting',
-		'label'    => __( 'This is a sortable control.', 'kirki' ),
-		'section'  => 'sortable_section',
-		'default'  => [ 'option3', 'option1', 'option4' ],
-		'choices'  => [
-			'option1' => esc_html__( 'Option 1', 'kirki' ),
-			'option2' => esc_html__( 'Option 2', 'kirki' ),
-			'option3' => esc_html__( 'Option 3', 'kirki' ),
-			'option4' => esc_html__( 'Option 4', 'kirki' ),
-			'option5' => esc_html__( 'Option 5', 'kirki' ),
-			'option6' => esc_html__( 'Option 6', 'kirki' ),
-		],
-	]
-);
+// /**
+//  * Sortable control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'     => 'sortable',
+// 		'settings' => 'sortable_setting',
+// 		'label'    => __( 'This is a sortable control.', 'kirki' ),
+// 		'section'  => 'sortable_section',
+// 		'default'  => [ 'option3', 'option1', 'option4' ],
+// 		'choices'  => [
+// 			'option1' => esc_html__( 'Option 1', 'kirki' ),
+// 			'option2' => esc_html__( 'Option 2', 'kirki' ),
+// 			'option3' => esc_html__( 'Option 3', 'kirki' ),
+// 			'option4' => esc_html__( 'Option 4', 'kirki' ),
+// 			'option5' => esc_html__( 'Option 5', 'kirki' ),
+// 			'option6' => esc_html__( 'Option 6', 'kirki' ),
+// 		],
+// 	]
+// );
 
-/**
- * Switch control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'switch',
-		'settings'    => 'switch_setting',
-		'label'       => esc_html__( 'Switch Control', 'kirki' ),
-		'description' => esc_html__( 'Description', 'kirki' ),
-		'section'     => 'switch_section',
-		'default'     => true,
-	]
-);
+// /**
+//  * Switch control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'switch',
+// 		'settings'    => 'switch_setting',
+// 		'label'       => esc_html__( 'Switch Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description', 'kirki' ),
+// 		'section'     => 'switch_section',
+// 		'default'     => true,
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'            => 'switch',
-		'settings'        => 'switch_setting_custom_label',
-		'label'           => esc_html__( 'Switch Control with custom labels', 'kirki' ),
-		'description'     => esc_html__( 'Description', 'kirki' ),
-		'section'         => 'switch_section',
-		'default'         => true,
-		'choices'         => [
-			'on'  => esc_html__( 'Enabled', 'kirki' ),
-			'off' => esc_html__( 'Disabled', 'kirki' ),
-		],
-		'active_callback' => [
-			[
-				'setting'  => 'switch_setting',
-				'operator' => '==',
-				'value'    => true,
-			],
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'            => 'switch',
+// 		'settings'        => 'switch_setting_custom_label',
+// 		'label'           => esc_html__( 'Switch Control with custom labels', 'kirki' ),
+// 		'description'     => esc_html__( 'Description', 'kirki' ),
+// 		'section'         => 'switch_section',
+// 		'default'         => true,
+// 		'choices'         => [
+// 			'on'  => esc_html__( 'Enabled', 'kirki' ),
+// 			'off' => esc_html__( 'Disabled', 'kirki' ),
+// 		],
+// 		'active_callback' => [
+// 			[
+// 				'setting'  => 'switch_setting',
+// 				'operator' => '==',
+// 				'value'    => true,
+// 			],
+// 		],
+// 	]
+// );
 
-/**
- * Toggle control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'toggle',
-		'settings'    => 'toggle_setting',
-		'label'       => esc_html__( 'Toggle Control', 'kirki' ),
-		'description' => esc_html__( 'Description', 'kirki' ),
-		'section'     => 'toggle_section',
-		'default'     => true,
-		// WIP.
-		'transport'   => 'postMessage',
-		// WIP.
-		'js_vars'     => [
-			[
-				'element'  => '.site-description',
-				'function' => 'toggleClass',
-				'class'    => 'hidden',
-				'value'    => true,
-			],
-		],
-	]
-);
+// /**
+//  * Toggle control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'toggle',
+// 		'settings'    => 'toggle_setting',
+// 		'label'       => esc_html__( 'Toggle Control', 'kirki' ),
+// 		'description' => esc_html__( 'Description', 'kirki' ),
+// 		'section'     => 'toggle_section',
+// 		'default'     => true,
+// 		// WIP.
+// 		'transport'   => 'postMessage',
+// 		// WIP.
+// 		'js_vars'     => [
+// 			[
+// 				'element'  => '.site-description',
+// 				'function' => 'toggleClass',
+// 				'class'    => 'hidden',
+// 				'value'    => true,
+// 			],
+// 		],
+// 	]
+// );
 
-/**
- * Typography Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'typography',
-		'settings'    => 'typography_setting_0',
-		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
-		'description' => esc_html__( 'The full set of options.', 'kirki' ),
-		'section'     => 'typography_section',
-		'priority'    => 10,
-		'transport'   => 'auto',
-		'default'     => [
-			'font-family'     => 'Roboto',
-			'variant'         => 'regular',
-			'font-size'       => '14px',
-			'line-height'     => '1.5',
-			'letter-spacing'  => '0',
-			'color'           => '#333333',
-			'text-transform'  => 'none',
-			'text-decoration' => 'none',
-			'text-align'      => 'left',
-			'margin-top'      => '0',
-			'margin-bottom'   => '0',
-		],
-		'output'      => [
-			[
-				'element' => 'body, p',
-			],
-		],
-		'choices'     => [
-			'fonts' => [
-				'google'   => [ 'popularity', 60 ],
-				'families' => [
-					'custom' => [
-						'text'     => 'My Custom Fonts (demo only)',
-						'children' => [
-							[
-								'id'   => 'helvetica-neue',
-								'text' => 'Helvetica Neue',
-							],
-							[
-								'id'   => 'linotype-authentic',
-								'text' => 'Linotype Authentic',
-							],
-						],
-					],
-				],
-				'variants' => [
-					'helvetica-neue'     => [ 'regular', '900' ],
-					'linotype-authentic' => [ 'regular', '100', '300' ],
-				],
-			],
-		],
-	]
-);
+// /**
+//  * Typography Control.
+//  */
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'typography',
+// 		'settings'    => 'typography_setting_0',
+// 		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
+// 		'description' => esc_html__( 'The full set of options.', 'kirki' ),
+// 		'section'     => 'typography_section',
+// 		'priority'    => 10,
+// 		'transport'   => 'auto',
+// 		'default'     => [
+// 			'font-family'     => 'Roboto',
+// 			'variant'         => 'regular',
+// 			'font-size'       => '14px',
+// 			'line-height'     => '1.5',
+// 			'letter-spacing'  => '0',
+// 			'color'           => '#333333',
+// 			'text-transform'  => 'none',
+// 			'text-decoration' => 'none',
+// 			'text-align'      => 'left',
+// 			'margin-top'      => '0',
+// 			'margin-bottom'   => '0',
+// 		],
+// 		'output'      => [
+// 			[
+// 				'element' => 'body, p',
+// 			],
+// 		],
+// 		'choices'     => [
+// 			'fonts' => [
+// 				'google'   => [ 'popularity', 60 ],
+// 				'families' => [
+// 					'custom' => [
+// 						'text'     => 'My Custom Fonts (demo only)',
+// 						'children' => [
+// 							[
+// 								'id'   => 'helvetica-neue',
+// 								'text' => 'Helvetica Neue',
+// 							],
+// 							[
+// 								'id'   => 'linotype-authentic',
+// 								'text' => 'Linotype Authentic',
+// 							],
+// 						],
+// 					],
+// 				],
+// 				'variants' => [
+// 					'helvetica-neue'     => [ 'regular', '900' ],
+// 					'linotype-authentic' => [ 'regular', '100', '300' ],
+// 				],
+// 			],
+// 		],
+// 	]
+// );
 
-my_config_kirki_add_field(
-	[
-		'type'        => 'typography',
-		'settings'    => 'typography_setting_1',
-		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
-		'description' => esc_html__( 'The full set of options.', 'kirki' ),
-		'section'     => 'typography_section',
-		'priority'    => 10,
-		'transport'   => 'auto',
-		'default'     => [
-			'font-family' => 'Roboto',
-		],
-		'output'      => [
-			[
-				'element' => [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ],
-			],
-		],
-	]
-);
+// my_config_kirki_add_field(
+// 	[
+// 		'type'        => 'typography',
+// 		'settings'    => 'typography_setting_1',
+// 		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
+// 		'description' => esc_html__( 'The full set of options.', 'kirki' ),
+// 		'section'     => 'typography_section',
+// 		'priority'    => 10,
+// 		'transport'   => 'auto',
+// 		'default'     => [
+// 			'font-family' => 'Roboto',
+// 		],
+// 		'output'      => [
+// 			[
+// 				'element' => [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ],
+// 			],
+// 		],
+// 	]
+// );
 
-/**
- * Example function that creates a control containing the available sidebars as choices.
- *
- * @return void
- */
-function kirki_sidebars_select_example() {
-	$sidebars = [];
-	if ( isset( $GLOBALS['wp_registered_sidebars'] ) ) {
-		$sidebars = $GLOBALS['wp_registered_sidebars'];
-	}
-	$sidebars_choices = [];
-	foreach ( $sidebars as $sidebar ) {
-		$sidebars_choices[ $sidebar['id'] ] = $sidebar['name'];
-	}
-	if ( ! class_exists( 'Kirki' ) ) {
-		return;
-	}
-	Kirki::add_field(
-		'kirki_demo',
-		[
-			'type'        => 'select',
-			'settings'    => 'sidebars_select',
-			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),
-			'description' => esc_html__( 'An example of how to implement sidebars selection.', 'kirki' ),
-			'section'     => 'select_section',
-			'default'     => 'primary',
-			'choices'     => $sidebars_choices,
-			'priority'    => 30,
-		]
-	);
-}
-add_action( 'init', 'kirki_sidebars_select_example', 999 );
+// /**
+//  * Example function that creates a control containing the available sidebars as choices.
+//  *
+//  * @return void
+//  */
+// function kirki_sidebars_select_example() {
+// 	$sidebars = [];
+// 	if ( isset( $GLOBALS['wp_registered_sidebars'] ) ) {
+// 		$sidebars = $GLOBALS['wp_registered_sidebars'];
+// 	}
+// 	$sidebars_choices = [];
+// 	foreach ( $sidebars as $sidebar ) {
+// 		$sidebars_choices[ $sidebar['id'] ] = $sidebar['name'];
+// 	}
+// 	if ( ! class_exists( 'Kirki' ) ) {
+// 		return;
+// 	}
+// 	Kirki::add_field(
+// 		'kirki_demo',
+// 		[
+// 			'type'        => 'select',
+// 			'settings'    => 'sidebars_select',
+// 			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),
+// 			'description' => esc_html__( 'An example of how to implement sidebars selection.', 'kirki' ),
+// 			'section'     => 'select_section',
+// 			'default'     => 'primary',
+// 			'choices'     => $sidebars_choices,
+// 			'priority'    => 30,
+// 		]
+// 	);
+// }
+// add_action( 'init', 'kirki_sidebars_select_example', 999 );

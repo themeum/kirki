@@ -26,9 +26,9 @@ class Spacing extends Dimensions {
 		$default_args = [
 			'controls' => [
 				'top'    => ( isset( $this->default['top'] ) ),
-				'bottom' => ( isset( $this->default['top'] ) ),
-				'left'   => ( isset( $this->default['top'] ) ),
-				'right'  => ( isset( $this->default['top'] ) ),
+				'bottom' => ( isset( $this->default['bottom'] ) ),
+				'left'   => ( isset( $this->default['left'] ) ),
+				'right'  => ( isset( $this->default['right'] ) ),
 			],
 			'labels'   => [
 				'top'    => esc_html__( 'Top', 'kirki' ),

@@ -69,7 +69,7 @@ class FontAwesome extends Base {
 		wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', [], '4.0.7', false );
 
 		ob_start();
-		$json_path = wp_normalize_path( __DIR__ . '/assets/json/fontawesome.json' );
+		$json_path = wp_normalize_path( dirname( __DIR__ ) . '/assets/json/fontawesome.json' );
 		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		$font_awesome_json = ob_get_clean();
 

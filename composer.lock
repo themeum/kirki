@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65bc0fbc223d72385adf32c25b66c78b",
+    "content-hash": "a3f549ea3a5b5e2fb0c215d72492e607",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -516,12 +516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimensions.git",
-                "reference": "4050b31ff0a2f272ac9837eeabe30768213ddf42"
+                "reference": "2376bd80cde0dc0fa98192fed65aeeff06ee09d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/4050b31ff0a2f272ac9837eeabe30768213ddf42",
-                "reference": "4050b31ff0a2f272ac9837eeabe30768213ddf42",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/2376bd80cde0dc0fa98192fed65aeeff06ee09d5",
+                "reference": "2376bd80cde0dc0fa98192fed65aeeff06ee09d5",
                 "shasum": ""
             },
             "require": {
@@ -554,7 +554,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-13T22:09:17+00:00"
+            "time": "2019-03-17T16:45:54+00:00"
         },
         {
             "name": "kirki-framework/control-editor",
@@ -608,12 +608,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-fontawesome.git",
-                "reference": "ce647378262e7ad52dbbb44222b5771e9f0a624c"
+                "reference": "cea28b6f58932c4277ff50567950b5fe76a40349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/ce647378262e7ad52dbbb44222b5771e9f0a624c",
-                "reference": "ce647378262e7ad52dbbb44222b5771e9f0a624c",
+                "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/cea28b6f58932c4277ff50567950b5fe76a40349",
+                "reference": "cea28b6f58932c4277ff50567950b5fe76a40349",
                 "shasum": ""
             },
             "require": {
@@ -646,7 +646,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-13T22:08:44+00:00"
+            "time": "2019-03-17T16:45:25+00:00"
         },
         {
             "name": "kirki-framework/control-generic",
@@ -1434,17 +1434,62 @@
             "time": "2019-03-13T21:02:01+00:00"
         },
         {
+            "name": "kirki-framework/module-loading",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-loading.git",
+                "reference": "ff352d207123d56ed444ebfb22c6f38762b0751d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-loading/zipball/ff352d207123d56ed444ebfb22c6f38762b0751d",
+                "reference": "ff352d207123d56ed444ebfb22c6f38762b0751d",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/core": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Modules\\Loading\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Loading Animation Module for the Kirki WordPress plugin.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-03-17T16:45:07+00:00"
+        },
+        {
             "name": "kirki-framework/module-preset",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-preset.git",
-                "reference": "64d7c53a6a3fe028cebdefabfb74aa43df12fe07"
+                "reference": "f6ae966042580f216fb6aa11cb83f43b5bd9cdee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/64d7c53a6a3fe028cebdefabfb74aa43df12fe07",
-                "reference": "64d7c53a6a3fe028cebdefabfb74aa43df12fe07",
+                "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/f6ae966042580f216fb6aa11cb83f43b5bd9cdee",
+                "reference": "f6ae966042580f216fb6aa11cb83f43b5bd9cdee",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1521,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-13T22:05:00+00:00"
+            "time": "2019-03-17T16:27:32+00:00"
         },
         {
             "name": "kirki-framework/module-tooltips",
@@ -2954,16 +2999,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.0.4",
+            "version": "8.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a7af0201285445c9c73c4bdf869c486e36b41604"
+                "reference": "19cbed2120839772c4a00e8b28456b0c77d1a7b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a7af0201285445c9c73c4bdf869c486e36b41604",
-                "reference": "a7af0201285445c9c73c4bdf869c486e36b41604",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/19cbed2120839772c4a00e8b28456b0c77d1a7b4",
+                "reference": "19cbed2120839772c4a00e8b28456b0c77d1a7b4",
                 "shasum": ""
             },
             "require": {
@@ -2982,7 +3027,7 @@
                 "phpunit/php-code-coverage": "^7.0",
                 "phpunit/php-file-iterator": "^2.0.1",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-timer": "^2.0",
+                "phpunit/php-timer": "^2.1",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
                 "sebastian/environment": "^4.1",
@@ -3032,7 +3077,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-02-18T09:23:05+00:00"
+            "time": "2019-03-16T07:33:46+00:00"
         },
         {
             "name": "psr/http-message",
@@ -4460,12 +4505,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kirki-framework/core": 20,
-        "kirki-framework/module-css": 20,
-        "kirki-framework/module-css-vars": 20,
-        "kirki-framework/module-custom-sections": 20,
-        "kirki-framework/module-preset": 20,
-        "kirki-framework/module-tooltips": 20,
-        "kirki-framework/module-webfonts": 20,
         "kirki-framework/control-base": 20,
         "kirki-framework/control-background": 20,
         "kirki-framework/control-checkbox": 20,
@@ -4493,6 +4532,13 @@
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-typography": 20,
         "kirki-framework/control-upload": 20,
+        "kirki-framework/module-css": 20,
+        "kirki-framework/module-css-vars": 20,
+        "kirki-framework/module-custom-sections": 20,
+        "kirki-framework/module-loading": 20,
+        "kirki-framework/module-preset": 20,
+        "kirki-framework/module-tooltips": 20,
+        "kirki-framework/module-webfonts": 20,
         "codacy/coverage": 20
     },
     "prefer-stable": false,

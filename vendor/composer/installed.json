@@ -532,19 +532,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-dimensions.git",
-            "reference": "4050b31ff0a2f272ac9837eeabe30768213ddf42"
+            "reference": "2376bd80cde0dc0fa98192fed65aeeff06ee09d5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/4050b31ff0a2f272ac9837eeabe30768213ddf42",
-            "reference": "4050b31ff0a2f272ac9837eeabe30768213ddf42",
+            "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/2376bd80cde0dc0fa98192fed65aeeff06ee09d5",
+            "reference": "2376bd80cde0dc0fa98192fed65aeeff06ee09d5",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:09:17+00:00",
+        "time": "2019-03-17T16:45:54+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -628,19 +628,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-fontawesome.git",
-            "reference": "ce647378262e7ad52dbbb44222b5771e9f0a624c"
+            "reference": "cea28b6f58932c4277ff50567950b5fe76a40349"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/ce647378262e7ad52dbbb44222b5771e9f0a624c",
-            "reference": "ce647378262e7ad52dbbb44222b5771e9f0a624c",
+            "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/cea28b6f58932c4277ff50567950b5fe76a40349",
+            "reference": "cea28b6f58932c4277ff50567950b5fe76a40349",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:08:44+00:00",
+        "time": "2019-03-17T16:45:25+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1489,25 +1489,72 @@
         ]
     },
     {
-        "name": "kirki-framework/module-preset",
+        "name": "kirki-framework/module-loading",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/kirki-framework/module-preset.git",
-            "reference": "64d7c53a6a3fe028cebdefabfb74aa43df12fe07"
+            "url": "https://github.com/kirki-framework/module-loading.git",
+            "reference": "ff352d207123d56ed444ebfb22c6f38762b0751d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/64d7c53a6a3fe028cebdefabfb74aa43df12fe07",
-            "reference": "64d7c53a6a3fe028cebdefabfb74aa43df12fe07",
+            "url": "https://api.github.com/repos/kirki-framework/module-loading/zipball/ff352d207123d56ed444ebfb22c6f38762b0751d",
+            "reference": "ff352d207123d56ed444ebfb22c6f38762b0751d",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:05:00+00:00",
+        "time": "2019-03-17T16:45:07+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Modules\\Loading\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Loading Animation Module for the Kirki WordPress plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/module-preset",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-preset.git",
+            "reference": "f6ae966042580f216fb6aa11cb83f43b5bd9cdee"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/f6ae966042580f216fb6aa11cb83f43b5bd9cdee",
+            "reference": "f6ae966042580f216fb6aa11cb83f43b5bd9cdee",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/core": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-03-17T16:27:32+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

@@ -17,12 +17,6 @@
   "require": {
     "php": ">=5.6",
     "kirki-framework/core": "dev-master",
-    "kirki-framework/module-css": "dev-master",
-    "kirki-framework/module-css-vars": "dev-master",
-    "kirki-framework/module-custom-sections": "dev-master",
-    "kirki-framework/module-preset": "dev-master",
-    "kirki-framework/module-tooltips": "dev-master",
-    "kirki-framework/module-webfonts": "dev-master",
     "kirki-framework/control-base": "dev-master",
     "kirki-framework/control-background": "dev-master",
     "kirki-framework/control-checkbox": "dev-master",
@@ -49,7 +43,14 @@
     "kirki-framework/control-slider": "dev-master",
     "kirki-framework/control-sortable": "dev-master",
     "kirki-framework/control-typography": "dev-master",
-    "kirki-framework/control-upload": "dev-master"
+    "kirki-framework/control-upload": "dev-master",
+    "kirki-framework/module-css": "dev-master",
+    "kirki-framework/module-css-vars": "dev-master",
+    "kirki-framework/module-custom-sections": "dev-master",
+    "kirki-framework/module-loading": "dev-master",
+    "kirki-framework/module-preset": "dev-master",
+    "kirki-framework/module-tooltips": "dev-master",
+    "kirki-framework/module-webfonts": "dev-master"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

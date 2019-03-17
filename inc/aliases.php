@@ -6,6 +6,7 @@
  * @package kirki
  */
 
+// Core.
 class_alias( 'Kirki\Core\Kirki', 'Kirki' );
 class_alias( 'Kirki\Core\Config', 'Kirki_Config' );
 class_alias( 'Kirki\Core\Control', 'Kirki_Control' );
@@ -22,6 +23,7 @@ class_alias( 'Kirki\Core\Values', 'Kirki_Values' );
 class_alias( 'Kirki\Core\Util', 'Kirki_Util' );
 class_alias( 'Kirki\Core\Framework', 'Kirki_Toolkit' );
 
+// Module: CSS.
 class_alias( 'Kirki\Modules\CSS\Output', 'Kirki_Output' );
 class_alias( 'Kirki\Modules\CSS\Module', 'Kirki_Modules_CSS' );
 class_alias( 'Kirki\Modules\CSS\Generator', 'Kirki_Modules_CSS_Generator' );
@@ -32,21 +34,23 @@ class_alias( 'Kirki\Modules\CSS\Field\Dimensions', 'Kirki_Output_Field_Dimension
 class_alias( 'Kirki\Modules\CSS\Field\Image', 'Kirki_Output_Field_Image' );
 class_alias( 'Kirki\Modules\CSS\Field\Multicolor', 'Kirki_Output_Field_Multicolor' );
 class_alias( 'Kirki\Modules\CSS\Field\Typography', 'Kirki_Output_Field_Typography' );
-
 class_alias( 'Kirki\Modules\CSS_Vars\Module', 'Kirki_Modules_CSS_Vars' );
-
+// Module: Custom Sections & Panels.
 class_alias( 'Kirki\Modules\Custom_Sections\Module', 'Kirki_Modules_Custom_Sections' );
-
+// Module: Loading Animation.
+class_alias( 'Kirki\Modules\Loading\Module', 'Kirki_Modules_Loading' );
+// Module: Preset.
 class_alias( 'Kirki\Modules\Preset\Module', 'Kirki_Modules_Preset' );
-
+// Module: Tooltips.
 class_alias( 'Kirki\Modules\Tooltips\Module', 'Kirki_Modules_Tooltips' );
-
+// Module: Webfonts.
 class_alias( 'Kirki\Modules\Webfonts\Module', 'Kirki_Modules_Webfonts' );
 class_alias( 'Kirki\Modules\Webfonts\Google', 'Kirki_Fonts_Google' );
 class_alias( 'Kirki\Modules\Webfonts\Fonts', 'Kirki_Fonts' );
 class_alias( 'Kirki\Modules\Webfonts\Embed', 'Kirki_Modules_Webfonts_Embed' );
 class_alias( 'Kirki\Modules\Webfonts\Async', 'Kirki_Modules_Webfonts_Async' );
 
+// Fields.
 class_alias( 'Kirki\Field\Background', 'Kirki_Field_Background' );
 class_alias( 'Kirki\Field\Checkbox', 'Kirki_Field_Checkbox' );
 class_alias( 'Kirki\Field\Checkbox_Switch', 'Kirki_Field_Switch' );
@@ -83,6 +87,7 @@ class_alias( 'Kirki\Field\Sortable', 'Kirki_Field_Sortable' );
 class_alias( 'Kirki\Field\Typography', 'Kirki_Field_Typography' );
 class_alias( 'Kirki\Field\Upload', 'Kirki_Field_Upload' );
 
+// Controls.
 add_action(
 	'customize_register',
 	function() {

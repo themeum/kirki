@@ -74,7 +74,7 @@ class Module {
 
 		wp_enqueue_script(
 			'kirki-set-setting-value',
-			trailingslashit( Kirki::$url ) . 'assets/scripts/set-setting-value.js',
+			$url . '/assets/scripts/set-setting-value.js',
 			[ 'jquery' ],
 			KIRKI_VERSION,
 			false
@@ -82,7 +82,7 @@ class Module {
 
 		wp_enqueue_script(
 			'kirki-preset',
-			trailingslashit( Kirki::$url ) . 'assets/scripts/preset.js',
+			$url . '/assets/scripts/preset.js',
 			[ 'jquery', 'kirki-set-setting-value' ],
 			KIRKI_VERSION,
 			false
