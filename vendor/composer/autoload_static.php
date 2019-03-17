@@ -15,6 +15,7 @@ class ComposerStaticInit53bd5729e3687b0c706c2f47790231de
             'Kirki\\Modules\\Preset\\' => 21,
             'Kirki\\Modules\\Loading\\' => 22,
             'Kirki\\Modules\\Field_Dependencies\\' => 33,
+            'Kirki\\Modules\\Editor_Styles\\' => 28,
             'Kirki\\Modules\\Custom_Sections\\' => 30,
             'Kirki\\Modules\\Custom_Panels\\' => 28,
             'Kirki\\Modules\\CSS_Vars\\' => 23,
@@ -49,6 +50,10 @@ class ComposerStaticInit53bd5729e3687b0c706c2f47790231de
         'Kirki\\Modules\\Field_Dependencies\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
+        ),
+        'Kirki\\Modules\\Editor_Styles\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
         ),
         'Kirki\\Modules\\Custom_Sections\\' => 
         array (

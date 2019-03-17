@@ -14,12 +14,16 @@
  * @since       3.0.35
  */
 
+namespace Kirki\Modules\Editor_Styles;
+
+use Kirki\Core\Kirki;
+
 /**
  * Wrapper class for static methods.
  *
  * @since 3.0.35
  */
-class Kirki_Modules_Gutenberg {
+class Module {
 
 	/**
 	 * The object instance.
@@ -283,7 +287,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_google_fonts() {
-		$this->google_fonts = Kirki_Fonts_Google::get_instance();
+		$this->google_fonts = \Kirki\Modules\Webfonts\Google::get_instance();
 	}
 
 	/**
@@ -293,6 +297,6 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	private function set_modules_webfonts() {
-		$this->modules_webfonts = Kirki_Modules_Webfonts::get_instance();
+		$this->modules_webfonts = \Kirki\Modules\Webfonts\Module::get_instance();
 	}
 }

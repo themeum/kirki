@@ -1489,6 +1489,55 @@
         ]
     },
     {
+        "name": "kirki-framework/module-editor-styles",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-editor-styles.git",
+            "reference": "356d7a348531dbd3b78b11fd23630aa04d3b2413"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/356d7a348531dbd3b78b11fd23630aa04d3b2413",
+            "reference": "356d7a348531dbd3b78b11fd23630aa04d3b2413",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/core": "dev-master",
+            "kirki-framework/module-css": "dev-master",
+            "kirki-framework/module-webfonts": "dev-master",
+            "php": ">=5.6"
+        },
+        "time": "2019-03-17T20:01:27+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Modules\\Editor_Styles\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Loading Animation Module for the Kirki WordPress plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/module-field-dependencies",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

@@ -12,6 +12,7 @@ return array(
     'Kirki\\Modules\\Preset\\' => array($vendorDir . '/kirki-framework/module-preset/src'),
     'Kirki\\Modules\\Loading\\' => array($vendorDir . '/kirki-framework/module-loading/src'),
     'Kirki\\Modules\\Field_Dependencies\\' => array($vendorDir . '/kirki-framework/module-field-dependencies/src'),
+    'Kirki\\Modules\\Editor_Styles\\' => array($vendorDir . '/kirki-framework/module-editor-styles/src'),
     'Kirki\\Modules\\Custom_Sections\\' => array($vendorDir . '/kirki-framework/module-custom-sections/src'),
     'Kirki\\Modules\\Custom_Panels\\' => array($vendorDir . '/kirki-framework/module-custom-sections/src'),
     'Kirki\\Modules\\CSS_Vars\\' => array($vendorDir . '/kirki-framework/module-css-vars/src'),
