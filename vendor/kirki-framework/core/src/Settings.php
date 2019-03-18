@@ -138,8 +138,8 @@ class Settings {
 		$this->setting_types = apply_filters(
 			'kirki_setting_types',
 			[
-				'default'     => '\WP_Customize_Setting',
-				'repeater'    => '\Kirki\Settings\Repeater',
+				'default'     => 'WP_Customize_Setting',
+				'repeater'    => '\Kirki_Settings_Repeater_Setting',
 				'user_meta'   => '\Kirki\Core\Setting\User_Meta',
 				'site_option' => '\Kirki\Core\Setting\Site_Option',
 			]

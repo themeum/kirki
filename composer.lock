@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cf46bc4ef3dfb9e76376b372c34aa0b",
+    "content-hash": "4b944ddba3cd7abf949263aa9880e4d6",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1259,12 +1259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "d6d5a65035fffb62640b598bf954fb609fc3f64e"
+                "reference": "63c737c8189621b6d2dd3bff108eeb4d546453eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/d6d5a65035fffb62640b598bf954fb609fc3f64e",
-                "reference": "d6d5a65035fffb62640b598bf954fb609fc3f64e",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/63c737c8189621b6d2dd3bff108eeb4d546453eb",
+                "reference": "63c737c8189621b6d2dd3bff108eeb4d546453eb",
                 "shasum": ""
             },
             "require": {
@@ -1295,7 +1295,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-18T20:09:11+00:00"
+            "time": "2019-03-18T20:54:38+00:00"
         },
         {
             "name": "kirki-framework/module-css",
@@ -1303,12 +1303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "be4549440091b3370554c39a60cd59313d8f9fe4"
+                "reference": "820fc6cab22a5b7216263154799e4cecde33e007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/be4549440091b3370554c39a60cd59313d8f9fe4",
-                "reference": "be4549440091b3370554c39a60cd59313d8f9fe4",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/820fc6cab22a5b7216263154799e4cecde33e007",
+                "reference": "820fc6cab22a5b7216263154799e4cecde33e007",
                 "shasum": ""
             },
             "require": {
@@ -1340,7 +1340,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-18T19:41:00+00:00"
+            "time": "2019-03-18T20:54:14+00:00"
         },
         {
             "name": "kirki-framework/module-css-vars",
@@ -1659,6 +1659,51 @@
                 "wordpress"
             ],
             "time": "2019-03-17T16:27:32+00:00"
+        },
+        {
+            "name": "kirki-framework/module-section-icons",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-section-icons.git",
+                "reference": "25fd57b0de478d5c0eef277d3d236636c7644fd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/25fd57b0de478d5c0eef277d3d236636c7644fd1",
+                "reference": "25fd57b0de478d5c0eef277d3d236636c7644fd1",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/core": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Modules\\Section_Icons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Section-Icons Module for the Kirki WordPress plugin.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-03-18T21:02:19+00:00"
         },
         {
             "name": "kirki-framework/module-selective-refresh",
@@ -4767,6 +4812,7 @@
         "kirki-framework/module-loading": 20,
         "kirki-framework/module-postmessage": 20,
         "kirki-framework/module-preset": 20,
+        "kirki-framework/module-section-icons": 20,
         "kirki-framework/module-selective-refresh": 20,
         "kirki-framework/module-tooltips": 20,
         "kirki-framework/module-webfont-loader": 20,

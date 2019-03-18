@@ -10,6 +10,10 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Section_Icons;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds scripts for icons in sections & panels.
  */
-class Kirki_Modules_Icons {
+class Module {
 
 	/**
 	 * The object instance.

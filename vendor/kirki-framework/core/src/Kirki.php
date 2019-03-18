@@ -250,17 +250,10 @@ class Kirki extends Init {
 		}
 
 		$str       = str_replace( [ '-', '_' ], ' ', $args['type'] );
-		$classname = 'Kirki_Field_' . str_replace( ' ', '_', ucwords( $str ) );
+		$classname = '\Kirki\Field\\' . str_replace( ' ', '_', ucwords( $str ) );
 		if ( class_exists( $classname ) ) {
 			new $classname( $config_id, $args );
 			return;
-		}
-		if ( false !== strpos( $classname, 'Kirki_Field_Kirki_' ) ) {
-			$classname = str_replace( 'Kirki_Field_Kirki_', 'Kirki_Field_', $classname );
-			if ( class_exists( $classname ) ) {
-				new $classname( $config_id, $args );
-				return;
-			}
 		}
 		new Field( $config_id, $args );
 	}

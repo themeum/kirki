@@ -52,6 +52,7 @@
     "kirki-framework/module-loading": "dev-master",
     "kirki-framework/module-postmessage": "dev-master",
     "kirki-framework/module-preset": "dev-master",
+    "kirki-framework/module-section-icons": "dev-master",
     "kirki-framework/module-selective-refresh": "dev-master",
     "kirki-framework/module-tooltips": "dev-master",
     "kirki-framework/module-webfont-loader": "dev-master",

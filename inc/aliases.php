@@ -59,6 +59,8 @@ class_alias( 'Kirki\Modules\Selective_Refresh\Module', 'Kirki_Modules_Selective_
 class_alias( 'Kirki\Modules\Webfont_Loader\Module', 'Kirki_Modules_Webfont_Loader' );
 // Module: postMessage.
 class_alias( 'Kirki\Modules\Postmessage\Module', 'Kirki_Modules_Postmessage' );
+// Module: Section Icons.
+class_alias( 'Kirki\Modules\Section_Icons\Module', 'Kirki_Modules_Icons' );
 
 // Fields.
 class_alias( 'Kirki\Field\Background', 'Kirki_Field_Background' );

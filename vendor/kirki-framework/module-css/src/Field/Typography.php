@@ -31,7 +31,7 @@ class Typography extends Output {
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
 		$output['suffix']      = ( isset( $output['suffix'] ) ) ? $output['suffix'] : '';
 
-		$value = \Kirki_Field_Typography::sanitize( $value );
+		$value = \Kirki\Field\Typography::sanitize( $value );
 
 		$properties = [
 			'font-family',
