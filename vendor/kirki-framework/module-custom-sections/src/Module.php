@@ -84,10 +84,10 @@ class Module {
 		return array_merge(
 			$section_types,
 			[
-				'kirki-default'  => 'Kirki_Sections_Default_Section',
-				'kirki-expanded' => 'Kirki_Sections_Expanded_Section',
-				'kirki-nested'   => 'Kirki_Sections_Nested_Section',
-				'kirki-link'     => 'Kirki_Sections_Link_Section',
+				'kirki-default'  => '\Kirki\Modules\Custom_Sections\Section_Default',
+				'kirki-expanded' => '\Kirki\Modules\Custom_Sections\Section_Expanded',
+				'kirki-nested'   => '\Kirki\Modules\Custom_Sections\Section_Nested',
+				'kirki-link'     => '\Kirki\Modules\Custom_Sections\Section_Link',
 			]
 		);
 	}
@@ -104,7 +104,7 @@ class Module {
 		return array_merge(
 			$panel_types,
 			[
-				'kirki-nested' => 'Kirki_Panels_Nested_Panel',
+				'kirki-nested' => '\Kirki\Modules\Custom_Panels\Panel_Nested',
 			]
 		);
 	}

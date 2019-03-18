@@ -10,6 +10,10 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Postmessage;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds styles to the customizer.
  */
-class Kirki_Modules_PostMessage {
+class Module {
 
 	/**
 	 * The object instance.
@@ -62,7 +66,11 @@ class Kirki_Modules_PostMessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
+		$url = apply_filters(
+			'kirki_package_url_module_postmessage',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-postmessage/src'
+		);
+		wp_enqueue_script( 'kirki_auto_postmessage', $url . '/assets/scripts/script.js', [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		$data   = [];
 		foreach ( $fields as $field ) {

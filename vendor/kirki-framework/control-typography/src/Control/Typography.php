@@ -14,6 +14,7 @@ namespace Kirki\Control;
 use Kirki\Core\Kirki;
 use Kirki\Control\Base;
 use Kirki\Modules\Webfonts\Google;
+use Kirki\Modules\Webfonts\Fonts;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -352,7 +353,7 @@ class Typography extends Base {
 	 * @return array
 	 */
 	protected function format_variants_array( $variants ) {
-		$all_variants   = Kirki_Fonts::get_all_variants();
+		$all_variants   = Fonts::get_all_variants();
 		$final_variants = [];
 		foreach ( $variants as $variant ) {
 			if ( is_string( $variant ) ) {

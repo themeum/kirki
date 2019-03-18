@@ -12,13 +12,6 @@
 
 namespace Kirki\Core;
 
-use Kirki\Core\Control;
-use Kirki\Core\Panel;
-use Kirki\Core\Sections;
-use Kirki\Core\Values;
-use Kirki\Core\Util;
-use Kirki\Core\Settings;
-
 /**
  * Initialize Kirki
  */
@@ -48,6 +41,7 @@ class Init {
 
 		new Values();
 		new Sections();
+		new Telemetry();
 	}
 
 	/**
@@ -87,38 +81,38 @@ class Init {
 	 */
 	public function default_control_types( $control_types = [] ) {
 		$this->control_types = [
-			'checkbox'              => 'Kirki_Control_Checkbox',
-			'kirki-background'      => 'Kirki_Control_Background',
-			'code_editor'           => 'Kirki_Control_Code',
-			'kirki-color'           => 'Kirki_Control_Color',
-			'kirki-color-palette'   => 'Kirki_Control_Color_Palette',
-			'kirki-custom'          => 'Kirki_Control_Custom',
-			'kirki-date'            => 'Kirki_Control_Date',
-			'kirki-dashicons'       => 'Kirki_Control_Dashicons',
-			'kirki-dimension'       => 'Kirki_Control_Dimension',
-			'kirki-dimensions'      => 'Kirki_Control_Dimensions',
-			'kirki-editor'          => 'Kirki_Control_Editor',
-			'kirki-fontawesome'     => 'Kirki_Control_FontAwesome',
-			'kirki-image'           => 'Kirki_Control_Image',
-			'kirki-multicolor'      => 'Kirki_Control_Multicolor',
-			'kirki-multicheck'      => 'Kirki_Control_MultiCheck',
-			'kirki-number'          => 'Kirki_Control_Number',
-			'kirki-palette'         => 'Kirki_Control_Palette',
-			'kirki-radio'           => 'Kirki_Control_Radio',
-			'kirki-radio-buttonset' => 'Kirki_Control_Radio_ButtonSet',
-			'kirki-radio-image'     => 'Kirki_Control_Radio_Image',
-			'repeater'              => 'Kirki_Control_Repeater',
-			'kirki-select'          => 'Kirki_Control_Select',
-			'kirki-slider'          => 'Kirki_Control_Slider',
-			'kirki-sortable'        => 'Kirki_Control_Sortable',
-			'kirki-spacing'         => 'Kirki_Control_Dimensions',
-			'kirki-switch'          => 'Kirki_Control_Switch',
-			'kirki-generic'         => 'Kirki_Control_Generic',
-			'kirki-toggle'          => 'Kirki_Control_Toggle',
-			'kirki-typography'      => 'Kirki_Control_Typography',
-			'image'                 => 'Kirki_Control_Image',
-			'cropped_image'         => 'Kirki_Control_Cropped_Image',
-			'upload'                => 'Kirki_Control_Upload',
+			'checkbox'              => '\Kirki\Control\Checkbox',
+			'kirki-background'      => '\Kirki\Control\Background',
+			'code_editor'           => '\Kirki\Control\Code',
+			'kirki-color'           => '\Kirki\Control\Color',
+			'kirki-color-palette'   => '\Kirki\Control\Color_Palette',
+			'kirki-custom'          => '\Kirki\Control\Custom',
+			'kirki-date'            => '\Kirki\Control\Date',
+			'kirki-dashicons'       => '\Kirki\Control\Dashicons',
+			'kirki-dimension'       => '\Kirki\Control\Dimension',
+			'kirki-dimensions'      => '\Kirki\Control\Dimensions',
+			'kirki-editor'          => '\Kirki\Control\Editor',
+			'kirki-fontawesome'     => '\Kirki\Control\FontAwesome',
+			'kirki-image'           => '\Kirki\Control\Image',
+			'kirki-multicolor'      => '\Kirki\Control\Multicolor',
+			'kirki-multicheck'      => '\Kirki\Control\MultiCheck',
+			'kirki-number'          => '\Kirki\Control\Number',
+			'kirki-palette'         => '\Kirki\Control\Palette',
+			'kirki-radio'           => '\Kirki\Control\Radio',
+			'kirki-radio-buttonset' => '\Kirki\Control\Radio_ButtonSet',
+			'kirki-radio-image'     => '\Kirki\Control\Radio_Image',
+			'repeater'              => '\Kirki\Control\Repeater',
+			'kirki-select'          => '\Kirki\Control\Select',
+			'kirki-slider'          => '\Kirki\Control\Slider',
+			'kirki-sortable'        => '\Kirki\Control\Sortable',
+			'kirki-spacing'         => '\Kirki\Control\Dimensions',
+			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',
+			'kirki-generic'         => '\Kirki\Control\Generic',
+			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle',
+			'kirki-typography'      => '\Kirki\Control\Typography',
+			'image'                 => '\Kirki\Control\Image',
+			'cropped_image'         => '\Kirki\Control\Cropped_Image',
+			'upload'                => '\Kirki\Control\Upload',
 		];
 		return array_merge( $this->control_types, $control_types );
 	}

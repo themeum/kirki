@@ -14,6 +14,7 @@
 namespace Kirki\Modules\CSS;
 
 use Kirki\Core\Values;
+use Kirki\Modules\Webfonts\Fonts;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -120,10 +121,10 @@ final class Generator {
 	 */
 	private function __construct() {
 		if ( is_null( self::$google_fonts ) ) {
-			self::$google_fonts = \Kirki_Fonts::get_google_fonts();
+			self::$google_fonts = Fonts::get_google_fonts();
 		}
 		if ( is_null( self::$backup_fonts ) ) {
-			self::$backup_fonts = \Kirki_Fonts::get_backup_fonts();
+			self::$backup_fonts = Fonts::get_backup_fonts();
 		}
 	}
 

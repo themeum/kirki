@@ -29,7 +29,7 @@ final class Embed {
 	protected $config_id;
 
 	/**
-	 * The Kirki_Modules_Webfonts object.
+	 * The \Kirki\Modules\Webfonts\Module object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -38,7 +38,7 @@ final class Embed {
 	protected $webfonts;
 
 	/**
-	 * The Kirki_Fonts_Google object.
+	 * The \Kirki\Modules\Webfonts\Google object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -61,8 +61,8 @@ final class Embed {
 	 * @access public
 	 * @since 3.0
 	 * @param string $config_id   The config-ID.
-	 * @param object $webfonts    The Kirki_Modules_Webfonts object.
-	 * @param object $googlefonts The Kirki_Fonts_Google object.
+	 * @param object $webfonts    The \Kirki\Modules\Webfonts\Module object.
+	 * @param object $googlefonts The \Kirki\Modules\Webfonts\Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {

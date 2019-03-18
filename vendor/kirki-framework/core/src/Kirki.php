@@ -14,11 +14,6 @@
 
 namespace Kirki\Core;
 
-use Kirki\Core\Init;
-use Kirki\Core\Config;
-use Kirki\Core\Field;
-use Kirki\Core\Values;
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

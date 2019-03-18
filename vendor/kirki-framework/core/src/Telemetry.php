@@ -10,6 +10,8 @@
  * @since       3.0.36
  */
 
+namespace Kirki\Core;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,25 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Telemetry implementation.
  */
-final class Kirki_Modules_Telemetry {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.36
-	 * @var object
-	 */
-	private static $instance;
+final class Telemetry {
 
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 3.0.36
 	 */
-	protected function __construct() {
+	public function __construct() {
 
 		// Early exit if telemetry is disabled.
 		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
@@ -45,22 +37,6 @@ final class Kirki_Modules_Telemetry {
 
 		add_action( 'init', [ $this, 'init' ] );
 		add_action( 'admin_notices', [ $this, 'admin_notice' ] );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.36
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
 	}
 
 	/**

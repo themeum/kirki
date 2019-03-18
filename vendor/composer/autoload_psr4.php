@@ -8,9 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'Kirki\\Settings\\' => array($vendorDir . '/kirki-framework/control-repeater/src/Settings'),
     'Kirki\\Modules\\Webfonts\\' => array($vendorDir . '/kirki-framework/module-webfonts/src'),
+    'Kirki\\Modules\\Webfont_Loader\\' => array($vendorDir . '/kirki-framework/module-webfont-loader/src'),
     'Kirki\\Modules\\Tooltips\\' => array($vendorDir . '/kirki-framework/module-tooltips/src'),
     'Kirki\\Modules\\Selective_Refresh\\' => array($vendorDir . '/kirki-framework/module-selective-refresh/src'),
     'Kirki\\Modules\\Preset\\' => array($vendorDir . '/kirki-framework/module-preset/src'),
+    'Kirki\\Modules\\Postmessage\\' => array($vendorDir . '/kirki-framework/module-postmessage/src'),
     'Kirki\\Modules\\Loading\\' => array($vendorDir . '/kirki-framework/module-loading/src'),
     'Kirki\\Modules\\Field_Dependencies\\' => array($vendorDir . '/kirki-framework/module-field-dependencies/src'),
     'Kirki\\Modules\\Editor_Styles\\' => array($vendorDir . '/kirki-framework/module-editor-styles/src'),

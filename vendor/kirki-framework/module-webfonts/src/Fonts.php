@@ -13,7 +13,7 @@
 namespace Kirki\Modules\Webfonts;
 
 /**
- * The Kirki_Fonts object.
+ * The Fonts object.
  */
 final class Fonts {
 
@@ -55,7 +55,7 @@ final class Fonts {
 	 * Get the one, true instance of this class.
 	 * Prevents performance issues since this is only loaded once.
 	 *
-	 * @return object Kirki_Fonts
+	 * @return object Fonts
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {

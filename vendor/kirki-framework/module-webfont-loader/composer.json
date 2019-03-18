@@ -1,0 +1,25 @@
+{
+    "name": "kirki-framework/module-webfont-loader",
+    "type": "library",
+    "description": "Webfonts Loader Module for the Kirki WordPress plugin.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/core": "dev-master"
+    },
+    "autoload"    : {
+		"psr-4" : {
+			"Kirki\\Modules\\Webfont_Loader\\" : "src/"
+        }
+    }
+}

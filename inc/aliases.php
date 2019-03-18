@@ -55,6 +55,10 @@ class_alias( 'Kirki\Modules\Field_Dependencies\Module', 'Kirki_Modules_Field_Dep
 class_alias( 'Kirki\Modules\Editor_Styles\Module', 'Kirki_Modules_Gutenberg' );
 // Module: Selective Refresh.
 class_alias( 'Kirki\Modules\Selective_Refresh\Module', 'Kirki_Modules_Selective_Refresh' );
+// Module: Webfont Loader.
+class_alias( 'Kirki\Modules\Webfont_Loader\Module', 'Kirki_Modules_Webfont_Loader' );
+// Module: postMessage.
+class_alias( 'Kirki\Modules\Postmessage\Module', 'Kirki_Modules_Postmessage' );
 
 // Fields.
 class_alias( 'Kirki\Field\Background', 'Kirki_Field_Background' );

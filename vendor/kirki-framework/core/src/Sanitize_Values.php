@@ -13,6 +13,8 @@
 
 namespace Kirki\Core;
 
+use Kirki\Field\Checkbox;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,16 +31,16 @@ class Sanitize_Values {
 	 * Sanitization callback for 'checkbox' type controls.
 	 * This callback sanitizes `$value` as a boolean value, either TRUE or FALSE.
 	 *
-	 * Deprecated. Use Kirki_Field_Checkbox::sanitize() instead.
+	 * Deprecated. Use \Kirki\Field\Checkbox::sanitize() instead.
 	 *
 	 * @static
 	 * @access public
-	 * @see Kirki_Field_Checkbox::sanitize()
+	 * @see \Kirki\Field\Checkbox::sanitize()
 	 * @param bool|string $value Whether the checkbox is checked.
 	 * @return bool Whether the checkbox is checked.
 	 */
 	public static function checkbox( $value ) {
-		$obj = new Kirki_Field_Checkbox();
+		$obj = new Checkbox();
 		return (bool) $obj->sanitize( $value );
 	}
 

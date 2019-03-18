@@ -11,6 +11,10 @@
  * @since     3.0.26
  */
 
+namespace Kirki\Modules\Webfont_Loader;
+
+use Kirki\Core\Kirki;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds script for tooltips.
  */
-class Kirki_Modules_Webfont_Loader {
+class Module {
 
 	/**
 	 * The object instance.
@@ -77,8 +81,13 @@ class Kirki_Modules_Webfont_Loader {
 	 */
 	public function enqueue_scripts() {
 		global $wp_customize;
+		$url = apply_filters(
+			'kirki_package_url_module_webfont_loader',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-webfont-loader/src'
+		);
+
 		if ( self::$load || $wp_customize || is_customize_preview() ) {
-			wp_enqueue_script( 'webfont-loader', trailingslashit( Kirki::$url ) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', [], '3.0.28', true );
+			wp_enqueue_script( 'webfont-loader', $url . '/assets/scripts/vendor-typekit/webfontloader.js', [], '3.0.28', true );
 		}
 	}
 

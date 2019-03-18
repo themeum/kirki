@@ -27,7 +27,7 @@ final class Async {
 	protected $config_id;
 
 	/**
-	 * The Kirki_Modules_Webfonts object.
+	 * The \Kirki\Modules\Webfonts\Module object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -36,7 +36,7 @@ final class Async {
 	protected $webfonts;
 
 	/**
-	 * The Kirki_Fonts_Google object.
+	 * The \Kirki\Modules\Webfonts\Google object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -59,8 +59,8 @@ final class Async {
 	 * @access public
 	 * @since 3.0
 	 * @param string $config_id   The config-ID.
-	 * @param object $webfonts    The Kirki_Modules_Webfonts object.
-	 * @param object $googlefonts The Kirki_Fonts_Google object.
+	 * @param object $webfonts    The \Kirki\Modules\Webfonts\Module object.
+	 * @param object $googlefonts The \Kirki\Modules\Webfonts\Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {
@@ -125,7 +125,7 @@ final class Async {
 			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 		}
 		if ( ! empty( $this->fonts_to_load ) ) {
-			\Kirki_Modules_Webfont_Loader::$load = true;
+			\Kirki\Modules\Webfont_Loader\Module::$load = true;
 		}
 	}
 

@@ -4,16 +4,18 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9f17ea4370922733817076d2876286a3
+class ComposerStaticInita0894d0b6d07832b29d47bbeca007a2a
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
         array (
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Webfonts\\' => 23,
+            'Kirki\\Modules\\Webfont_Loader\\' => 29,
             'Kirki\\Modules\\Tooltips\\' => 23,
             'Kirki\\Modules\\Selective_Refresh\\' => 32,
             'Kirki\\Modules\\Preset\\' => 21,
+            'Kirki\\Modules\\Postmessage\\' => 26,
             'Kirki\\Modules\\Loading\\' => 22,
             'Kirki\\Modules\\Field_Dependencies\\' => 33,
             'Kirki\\Modules\\Editor_Styles\\' => 28,
@@ -36,6 +38,10 @@ class ComposerStaticInit9f17ea4370922733817076d2876286a3
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
+        'Kirki\\Modules\\Webfont_Loader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-webfont-loader/src',
+        ),
         'Kirki\\Modules\\Tooltips\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
@@ -47,6 +53,10 @@ class ComposerStaticInit9f17ea4370922733817076d2876286a3
         'Kirki\\Modules\\Preset\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+        ),
+        'Kirki\\Modules\\Postmessage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
         ),
         'Kirki\\Modules\\Loading\\' => 
         array (
@@ -143,8 +153,8 @@ class ComposerStaticInit9f17ea4370922733817076d2876286a3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9f17ea4370922733817076d2876286a3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9f17ea4370922733817076d2876286a3::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita0894d0b6d07832b29d47bbeca007a2a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita0894d0b6d07832b29d47bbeca007a2a::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

@@ -75,7 +75,7 @@ class Editor extends Base {
 	 * Class variables for this control class are available in the `data` JS object;
 	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
 	 *
-	 * The actual editor is added from the Kirki_Field_Editor class.
+	 * The actual editor is added from the \Kirki\Field\Editor class.
 	 * All this template contains is a button that triggers the global editor on/off
 	 * and a hidden textarea element that is used to mirror save the options.
 	 *

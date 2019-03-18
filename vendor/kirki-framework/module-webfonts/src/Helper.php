@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * The Kirki_Fonts object.
+ * The Helper object.
  *
  * @since 3.0.28
  */

@@ -12,6 +12,7 @@
 namespace Kirki\Modules\CSS\Property;
 
 use Kirki\Modules\CSS\Property;
+use Kirki\Modules\Webfonts\Fonts;
 
 /**
  * Output overrides.
@@ -24,8 +25,8 @@ class Font_Family extends Property {
 	 * @access protected
 	 */
 	protected function process_value() {
-		$google_fonts_array = \Kirki_Fonts::get_google_fonts();
-		$backup_fonts       = \Kirki_Fonts::get_backup_fonts();
+		$google_fonts_array = Fonts::get_google_fonts();
+		$backup_fonts       = Fonts::get_backup_fonts();
 
 		$family = $this->value;
 		$backup = '';
@@ -44,7 +45,7 @@ class Font_Family extends Property {
 		$family = str_replace( '&quot;', '"', $family );
 
 		// Add backup font.
-		if ( \Kirki_Fonts::is_google_font( $family ) ) {
+		if ( Fonts::is_google_font( $family ) ) {
 
 			if ( '' === $backup && isset( $google_fonts_array[ $family ] ) && isset( $backup_fonts[ $google_fonts_array[ $family ]['category'] ] ) ) {
 				$backup = $backup_fonts[ $google_fonts_array[ $family ]['category'] ];

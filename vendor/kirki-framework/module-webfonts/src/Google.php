@@ -98,7 +98,7 @@ final class Google {
 	 * Get the one, true instance of this class.
 	 * Prevents performance issues since this is only loaded once.
 	 *
-	 * @return object Kirki_Fonts_Google
+	 * @return object Google
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -147,7 +147,7 @@ final class Google {
 
 			// Are we force-loading all variants?
 			if ( true === self::$force_load_all_variants ) {
-				$all_variants               = Kirki_Fonts::get_all_variants();
+				$all_variants               = Fonts::get_all_variants();
 				$args['choices']['variant'] = array_keys( $all_variants );
 			}
 
