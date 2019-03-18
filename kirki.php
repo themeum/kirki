@@ -41,10 +41,6 @@ require_once __DIR__ . '/lib/class-kirki-color.php';
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/inc/bootstrap.php';
 
-// Include the autoloader.
-require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'class-kirki-autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-new Kirki_Autoload();
-
 if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
