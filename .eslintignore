@@ -2,5 +2,4 @@ vendor/
 node_modules/
 assets/vendor/
 *.min.js
-tests/
 modules/webfont-loader/vendor-typekit

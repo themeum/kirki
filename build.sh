@@ -30,7 +30,6 @@ rm modules/custom-sections/*.map
 rm modules/tooltips/*.scss
 rm modules/tooltips/*.map
 rm -rf node_modules
-rm -rf tests
 rm .codeclimate.yml
 rm .coveralls.yml
 rm .csslintrc

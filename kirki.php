@@ -36,14 +36,14 @@ if ( class_exists( 'Kirki' ) ) {
 	return;
 }
 
+if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
+	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
+}
+
 require_once __DIR__ . '/lib/class-aricolor.php';
 require_once __DIR__ . '/lib/class-kirki-color.php';
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/inc/bootstrap.php';
-
-if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
-	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
-}
 
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
@@ -56,7 +56,7 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 }
 
 // Make sure the path is properly set.
-Kirki::$path = wp_normalize_path( dirname( __FILE__ ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
+Kirki::$path = wp_normalize_path( __DIR__ ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 Init::set_url();
 
 if ( ! function_exists( 'Kirki' ) ) {
