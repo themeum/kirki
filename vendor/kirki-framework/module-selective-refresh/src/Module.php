@@ -10,10 +10,14 @@
  * @since       3.0.0
  */
 
+namespace Kirki\Modules\Selective_Refresh;
+
+use Kirki\Core\Kirki;
+
 /**
  * Handle selective refreshes introduced in WordPress 4.5.
  */
-class Kirki_Modules_Selective_Refresh {
+class Module {
 
 	/**
 	 * The object instance.

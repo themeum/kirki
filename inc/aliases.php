@@ -53,6 +53,8 @@ class_alias( 'Kirki\Modules\Webfonts\Async', 'Kirki_Modules_Webfonts_Async' );
 class_alias( 'Kirki\Modules\Field_Dependencies\Module', 'Kirki_Modules_Field_Dependencies' );
 // Module: Editor Styles.
 class_alias( 'Kirki\Modules\Editor_Styles\Module', 'Kirki_Modules_Gutenberg' );
+// Module: Selective Refresh.
+class_alias( 'Kirki\Modules\Selective_Refresh\Module', 'Kirki_Modules_Selective_Refresh' );
 
 // Fields.
 class_alias( 'Kirki\Field\Background', 'Kirki_Field_Background' );

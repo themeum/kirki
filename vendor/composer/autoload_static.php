@@ -12,6 +12,7 @@ class ComposerStaticInit53bd5729e3687b0c706c2f47790231de
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Webfonts\\' => 23,
             'Kirki\\Modules\\Tooltips\\' => 23,
+            'Kirki\\Modules\\Selective_Refresh\\' => 32,
             'Kirki\\Modules\\Preset\\' => 21,
             'Kirki\\Modules\\Loading\\' => 22,
             'Kirki\\Modules\\Field_Dependencies\\' => 33,
@@ -38,6 +39,10 @@ class ComposerStaticInit53bd5729e3687b0c706c2f47790231de
         'Kirki\\Modules\\Tooltips\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+        ),
+        'Kirki\\Modules\\Selective_Refresh\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
         ),
         'Kirki\\Modules\\Preset\\' => 
         array (

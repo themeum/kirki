@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c981921a63feb1ec0764e3c9fd0a3b1",
+    "content-hash": "d519215d2a6096e3b6c008392ccf206d",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1614,6 +1614,51 @@
                 "wordpress"
             ],
             "time": "2019-03-17T16:27:32+00:00"
+        },
+        {
+            "name": "kirki-framework/module-selective-refresh",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-selective-refresh.git",
+                "reference": "875509fe03f7036440731255d87fb1cf649f57b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/875509fe03f7036440731255d87fb1cf649f57b6",
+                "reference": "875509fe03f7036440731255d87fb1cf649f57b6",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/core": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Modules\\Selective_Refresh\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Preset Module for the Kirki WordPress plugin.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-03-18T19:07:59+00:00"
         },
         {
             "name": "kirki-framework/module-tooltips",
@@ -4631,6 +4676,7 @@
         "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-loading": 20,
         "kirki-framework/module-preset": 20,
+        "kirki-framework/module-selective-refresh": 20,
         "kirki-framework/module-tooltips": 20,
         "kirki-framework/module-webfonts": 20,
         "codacy/coverage": 20
