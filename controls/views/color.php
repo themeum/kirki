@@ -24,7 +24,7 @@ data = _.defaults( data, {
 } );
 #>
 
-<div class="kirki-input-container" data-id="{{ data['data-id'] }}">
+<div class="kirki-input-container" data-id="{{ data['data-id'] }}" data-has-alpha="{{ data['data-alpha'] }}">
 	<label>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{{ data.label }}}</span>
