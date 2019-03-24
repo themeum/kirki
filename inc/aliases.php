@@ -77,6 +77,7 @@ class_alias( 'Kirki\Field\Date', 'Kirki_Field_Date' );
 class_alias( 'Kirki\Field\Dimension', 'Kirki_Field_Dimension' );
 class_alias( 'Kirki\Field\Dimensions', 'Kirki_Field_Dimensions' );
 class_alias( 'Kirki\Field\Dimensions', 'Kirki_Field_Spacing' );
+class_alias( 'Kirki\Field\Dimensions', 'Kirki\Field\Spacing' );
 class_alias( 'Kirki\Field\Editor', 'Kirki_Field_Editor' );
 class_alias( 'Kirki\Field\FontAwesome', 'Kirki_Field_FontAwesome' );
 class_alias( 'Kirki\Field\Generic', 'Kirki_Field_Kirki_Generic' );
@@ -118,6 +119,8 @@ add_action(
 		class_alias( 'Kirki\Control\Date', 'Kirki_Control_Date' );
 		class_alias( 'Kirki\Control\Dimension', 'Kirki_Control_Dimension' );
 		class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Dimensions' );
+		class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Spacing' );
+		class_alias( 'Kirki\Control\Dimensions', 'Kirki\Control\Spacing' );
 		class_alias( 'Kirki\Control\Editor', 'Kirki_Control_Editor' );
 		class_alias( 'Kirki\Control\FontAwesome', 'Kirki_Control_FontAwesome' );
 		class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Generic' );
