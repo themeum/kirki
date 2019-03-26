@@ -29,7 +29,7 @@ data = _.defaults( data, {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<div class="customize-control-content">
-			<input {{{ data.inputAttrs }}} type="text" value="{{ data.value }}" data-id="{{ data['data-id'] }}"/>
+			<input {{{ data.inputAttrs }}} type="text" class="kirki-data-holder" value="{{ data.value }}" data-id="{{ data['data-id'] }}"/>
 			<div class="quantity button minus">-</div>
 			<div class="quantity button plus">+</div>
 		</div>
