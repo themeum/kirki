@@ -27,6 +27,7 @@ class ComposerStaticInit9b563f24150b1ffc821318190fa8130a
             'Kirki\\Field\\' => 12,
             'Kirki\\Core\\' => 11,
             'Kirki\\Control\\' => 14,
+            'Kirki\\' => 6,
         ),
     );
 
@@ -152,6 +153,10 @@ class ComposerStaticInit9b563f24150b1ffc821318190fa8130a
             24 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
             25 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Control',
             26 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+        ),
+        'Kirki\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 

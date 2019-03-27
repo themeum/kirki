@@ -14,6 +14,7 @@
 namespace Kirki\Control;
 
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 /**
  * A base for controls.
@@ -96,38 +97,11 @@ class Base extends \WP_Customize_Control {
 	 */
 	public function enqueue() {
 
-		// The Kirki plugin URL.
-		$kirki_url = trailingslashit( Kirki::$url );
-
-		$url = apply_filters(
-			'kirki_package_url_control_base',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-base/src'
-		);
-
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-setting',
-			"$url/assets/scripts/kirki.setting.js",
-			[
-				'jquery',
-				'customize-base',
-			],
-			KIRKI_VERSION,
-			false
-		);
-
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-dynamic-control',
-			"$url/assets/scripts/dynamic-control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-setting',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		// Enqueue the scripts.
+		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/kirki.setting.js' );
+		wp_enqueue_script( 'kirki-setting', $url->get_url(), [ 'jquery', 'customize-base' ], '4.0', false );
+		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/dynamic-control.js' );
+		wp_enqueue_script( 'kirki-dynamic-control', $url->get_url(), [ 'jquery', 'customize-base', 'customize-controls', 'kirki-setting' ], '4.0', false );
 	}
 
 	/**

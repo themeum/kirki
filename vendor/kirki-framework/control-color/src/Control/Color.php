@@ -13,6 +13,7 @@ namespace Kirki\Control;
 
 use Kirki\Control\Base;
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -58,54 +59,28 @@ class Color extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
+		// Add view.
 		add_action(
 			'customize_controls_print_footer_scripts',
 			function() {
-				$path = apply_filters( 'kirki_control_view_color', __DIR__ . '/view.php' );
 				echo '<script type="text/html" id="tmpl-kirki-input-color">';
-				include $path;
+				include apply_filters( 'kirki_control_view_color', __DIR__ . '/view.php' );
 				echo '</script>';
 			}
 		);
 
-		$url = apply_filters(
-			'kirki_package_url_control_color',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color/src'
-		);
-
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
-			"$url/assets/scripts/wp-color-picker-alpha.js",
-			[
-				'wp-color-picker',
-			],
-			KIRKI_VERSION,
-			true
-		);
-
+		// Enqueue the colorpicker.
+		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/wp-color-picker-alpha.js' );
+		wp_enqueue_script( 'wp-color-picker-alpha', $url->get_url(), [ 'wp-color-picker' ], '4.0', true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-color',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'wp-color-picker-alpha',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		// Enqueue the control script.
+		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/control.js' );
+		wp_enqueue_script( 'kirki-control-color', $url->get_url(), [ 'jquery', 'customize-base', 'customize-controls', 'wp-color-picker-alpha', 'kirki-dynamic-control' ], '4.0', false );
 
-		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-color-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		// Enqueue the control style.
+		$url = new URL( dirname( __DIR__ ) . '/assets/styles/style.css' );
+		wp_enqueue_style( 'kirki-control-color-style', $url->get_url(), [], '4.0' );
 	}
 
 	/**
@@ -121,3 +96,11 @@ class Color extends Base {
 		$this->json['mode']             = $this->mode;
 	}
 }
+
+add_action(
+	'customize_register',
+	function( $wp_customize ) {
+		$wp_customize->register_control_type( '\Kirki\Control\Color' );
+	},
+	999
+);
