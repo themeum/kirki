@@ -4,11 +4,10 @@
  *
  * Extend this in other controls.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.12
+ * @package   kirki-framework/control-base
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
@@ -18,13 +17,18 @@ use Kirki\URL;
 
 /**
  * A base for controls.
+ *
+ * @since 1.0
  */
 class Base extends \WP_Customize_Control {
 
 	/**
 	 * Used to automatically generate all CSS output.
 	 *
+	 * Whitelisting property for use in Kirki modules.
+	 *
 	 * @access public
+	 * @since 1.0
 	 * @var array
 	 */
 	public $output = [];
@@ -33,6 +37,7 @@ class Base extends \WP_Customize_Control {
 	 * Data type
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $option_type = 'theme_mod';
@@ -40,7 +45,10 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Option name (if using options).
 	 *
+	 * Whitelisting property for use in Kirki modules.
+	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $option_name = false;
@@ -48,34 +56,37 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * The kirki_config we're using for this control
 	 *
+	 * Whitelisting property for use in Kirki modules.
+	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $kirki_config = 'global';
 
 	/**
-	 * Whitelisting the "required" argument.
+	 * Whitelisting the "required" argument for use in Kirki modules.
 	 *
-	 * @since 3.0.17
+	 * @since 1.0
 	 * @access public
 	 * @var array
 	 */
 	public $required = [];
 
 	/**
-	 * Whitelisting the "preset" argument.
+	 * Whitelisting the "preset" argument for use in Kirki modules.
 	 *
-	 * @since 3.0.26
 	 * @access public
+	 * @since 1.0
 	 * @var array
 	 */
 	public $preset = [];
 
 	/**
-	 * Whitelisting the "css_vars" argument.
+	 * Whitelisting the "css_vars" argument for use in Kirki modules.
 	 *
-	 * @since 3.0.28
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $css_vars = '';
@@ -83,7 +94,8 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Extra script dependencies.
 	 *
-	 * @since 3.1.0
+	 * @access public
+	 * @since 1.0
 	 * @return array
 	 */
 	public function kirki_script_dependencies() {
@@ -94,6 +106,8 @@ class Base extends \WP_Customize_Control {
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 
@@ -107,7 +121,10 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
+	 * @access public
+	 * @since 1.0
 	 * @see WP_Customize_Control::to_json()
+	 * @return void
 	 */
 	public function to_json() {
 
@@ -170,10 +187,11 @@ class Base extends \WP_Customize_Control {
 	 * Render the control's content.
 	 *
 	 * Allows the content to be overridden without having to rewrite the wrapper in `$this::render()`.
-	 *
 	 * Control content can alternately be rendered in JS. See WP_Customize_Control::print_template().
 	 *
-	 * @since 3.4.0
+	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function render_content() {}
 
@@ -183,9 +201,10 @@ class Base extends \WP_Customize_Control {
 	 * Class variables for this control class are available in the `data` JS object;
 	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
 	 *
-	 * @see WP_Customize_Control::print_template()
-	 *
 	 * @access protected
+	 * @since 1.0
+	 * @see WP_Customize_Control::print_template()
+	 * @return void
 	 */
 	protected function content_template() {}
 

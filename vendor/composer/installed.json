@@ -55,19 +55,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-base.git",
-            "reference": "e113601f1f75120e70245710bc68fe1905f7c462"
+            "reference": "30e95ef0f8545033363c787c5c3122db2e548a64"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/e113601f1f75120e70245710bc68fe1905f7c462",
-            "reference": "e113601f1f75120e70245710bc68fe1905f7c462",
+            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/30e95ef0f8545033363c787c5c3122db2e548a64",
+            "reference": "30e95ef0f8545033363c787c5c3122db2e548a64",
             "shasum": ""
         },
         "require": {
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-27T20:33:15+00:00",
+        "time": "2019-03-27T21:30:29+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -198,20 +198,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "4dc0050a45785e5b9fafa27c2f2b230b45fc7034"
+            "reference": "789351b7b1c557caf3341ad3cfa702717b541d6f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/4dc0050a45785e5b9fafa27c2f2b230b45fc7034",
-            "reference": "4dc0050a45785e5b9fafa27c2f2b230b45fc7034",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/789351b7b1c557caf3341ad3cfa702717b541d6f",
+            "reference": "789351b7b1c557caf3341ad3cfa702717b541d6f",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/control-base": "dev-master",
+            "kirki-framework/control-base": "*",
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-27T20:34:01+00:00",
+        "time": "2019-03-27T21:32:31+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

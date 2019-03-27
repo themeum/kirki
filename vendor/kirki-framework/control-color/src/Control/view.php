@@ -1,12 +1,11 @@
 <?php
 /**
- * Customizer controls underscore.js template.
+ * Customizer control underscore.js template.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.17
+ * @package   kirki-framework/control-color
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 ?>

@@ -1,12 +1,14 @@
 <?php
 /**
- * Override field methods
+ * Object used by the Kirki framework to instantiate the control.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * This is a man-in-the-middle class, nothing but a proxy to set sanitization
+ * callbacks and any usother properties we may need.
+ *
+ * @package   kirki-framework/control-color
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,21 +17,16 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Color extends Field {
-
-	/**
-	 * Backwards compatibility.
-	 *
-	 * @access protected
-	 * @var bool
-	 */
-	protected $alpha = false;
 
 	/**
 	 * Mode (hue)
 	 *
 	 * @access protected
+	 * @since 1.0
 	 * @var string
 	 */
 	protected $mode = 'full';
@@ -38,6 +35,8 @@ class Color extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-color';
@@ -47,43 +46,59 @@ class Color extends Field {
 	 * Sets the $choices
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
+
+		// Make sure choices is an array.
 		if ( ! is_array( $this->choices ) ) {
 			$this->choices = [];
 		}
-		if ( true === $this->alpha ) {
-			_doing_it_wrong( 'Kirki::add_field', esc_html__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
-			$this->choices['alpha'] = true;
-		}
-		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
-			$this->choices['alpha'] = true;
-			if ( property_exists( $this, 'default' ) && ! empty( $this->default ) && false === strpos( 'rgba', $this->default ) ) {
-				$this->choices['alpha'] = false;
-			}
-		}
 
-		if ( ( ! isset( $this->choices['mode'] ) ) || ( 'hex' !== $this->choices['mode'] || 'hue' !== $this->choices['mode'] ) ) {
-			$this->choices['mode'] = 'hex';
-		}
+		$this->choices['alpha'] = isset( $this->choices['alpha'] ) ? (bool) $this->choices['alpha'] : false;
+		$this->choices['mode']  = isset( $this->choices['mode'] ) && \in_array( $this->choices['mode'], [ 'hex', 'hue'], true ) ? $this->choices['mode'] : 'hex';
 	}
 
 	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+		// Check if a sanitization callback is defined or not.
+		// Only proceed if no custom callback has been defined.
+		if ( empty( $this->sanitize_callback ) ) {
+
+			// If this is a hue control then things are pretty simple,
+			// we just need to sanitize as an integer.
+			if ( 'hue' === $this->mode ) {
+				$this->sanitize_callback = 'absint';
+				return;
+			}
+
+			// Get the default value.
+			// This will be used as a fallback in case sanitization fails.
+			$default = $this->default;
+
+			// Set the callback.
+			$this->sanitize_callback = function( $value ) use ( $default ) {
+
+				// This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, & hsla colors.
+				$pattern = '/^(\#[\da-f]{3}|\#[\da-f]{6}|\#[\da-f]{8}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
+				$values  = \preg_match( $pattern, $value, $matches );
+
+				// Return the 1st match found.
+				if ( isset( $matches[0] ) && isset( $matches[0][0] ) ) {
+					return $matches[0][0];
+				}
+
+				// If no match was found, return the default value.
+				return $default;
+			};
 		}
-		if ( 'hue' === $this->mode ) {
-			$this->sanitize_callback = 'absint';
-			return;
-		}
-		$this->sanitize_callback = [ 'Kirki\Core\Sanitize_Values', 'color' ];
 	}
 }

@@ -2,11 +2,10 @@
 /**
  * Customizer Control: color.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework/control-color
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
@@ -15,15 +14,10 @@ use Kirki\Control\Base;
 use Kirki\Core\Kirki;
 use Kirki\URL;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Adds a color & color-alpha control
  *
- * @see https://github.com/23r9i0/wp-color-picker-alpha
+ * @since 1.0
  */
 class Color extends Base {
 
@@ -31,6 +25,7 @@ class Color extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-color';
@@ -39,6 +34,7 @@ class Color extends Base {
 	 * Colorpicker palette
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var bool
 	 */
 	public $palette = true;
@@ -46,7 +42,8 @@ class Color extends Base {
 	/**
 	 * Mode.
 	 *
-	 * @since 3.0.12
+	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $mode = 'full';
@@ -55,6 +52,8 @@ class Color extends Base {
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
@@ -87,6 +86,8 @@ class Color extends Base {
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -99,6 +100,13 @@ class Color extends Base {
 
 add_action(
 	'customize_register',
+	/**
+	 * Registers the control and whitelists it for JS-templating.
+	 *
+	 * @since 1.0
+	 * @param WP_Customize_Manager $wp_customize The main customizer object.
+	 * @return void
+	 */
 	function( $wp_customize ) {
 		$wp_customize->register_control_type( '\Kirki\Control\Color' );
 	},
