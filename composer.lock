@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eed0db6d4a0c0fc6682ae3cd530adda4",
+    "content-hash": "95a9460c45283eea865d6044715c25d1",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -59,16 +59,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "411636880605616170aaf46e273fcb40fbecf285"
+                "reference": "e113601f1f75120e70245710bc68fe1905f7c462"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/411636880605616170aaf46e273fcb40fbecf285",
-                "reference": "411636880605616170aaf46e273fcb40fbecf285",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/e113601f1f75120e70245710bc68fe1905f7c462",
+                "reference": "e113601f1f75120e70245710bc68fe1905f7c462",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/url-getter": "dev-master",
+                "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -96,7 +96,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-27T19:15:58+00:00"
+            "time": "2019-03-27T20:33:15+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -196,17 +196,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "dd1e4580b6ca3d04ac2d51dfb7a468472393579a"
+                "reference": "4dc0050a45785e5b9fafa27c2f2b230b45fc7034"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/dd1e4580b6ca3d04ac2d51dfb7a468472393579a",
-                "reference": "dd1e4580b6ca3d04ac2d51dfb7a468472393579a",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/4dc0050a45785e5b9fafa27c2f2b230b45fc7034",
+                "reference": "4dc0050a45785e5b9fafa27c2f2b230b45fc7034",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "dev-master",
-                "kirki-framework/url-getter": "dev-master",
+                "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -235,7 +235,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-27T19:50:00+00:00"
+            "time": "2019-03-27T20:34:01+00:00"
         },
         {
             "name": "kirki-framework/control-color-palette",
@@ -1889,16 +1889,16 @@
         },
         {
             "name": "kirki-framework/url-getter",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/url-getter.git",
-                "reference": "44758a98b60ebd3f127dd5366caf0bdb2d0e2633"
+                "reference": "c9bbd06e7a6bba4e9854d549c9d4c10b87a8e3a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/44758a98b60ebd3f127dd5366caf0bdb2d0e2633",
-                "reference": "44758a98b60ebd3f127dd5366caf0bdb2d0e2633",
+                "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/c9bbd06e7a6bba4e9854d549c9d4c10b87a8e3a7",
+                "reference": "c9bbd06e7a6bba4e9854d549c9d4c10b87a8e3a7",
                 "shasum": ""
             },
             "require": {
@@ -1922,12 +1922,12 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Helper component to get the URL of a file.",
+            "description": "Helper component to get the URL of a file in WordPress.",
             "homepage": "https://aristath.github.io/kirki",
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-03-27T19:14:04+00:00"
+            "time": "2019-03-27T20:23:36+00:00"
         }
     ],
     "packages-dev": [
@@ -4823,7 +4823,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kirki-framework/core": 20,
-        "kirki-framework/url-getter": 20,
         "kirki-framework/control-base": 20,
         "kirki-framework/control-background": 20,
         "kirki-framework/control-checkbox": 20,
