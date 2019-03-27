@@ -118,7 +118,7 @@ class URL {
 	 * @return bool
 	 */
 	public function in_parent_theme() {
-		return ( false === \strpos( $this->path, \get_template_directory() ) );
+		return ( 0 === \strpos( $this->path, \get_template_directory() ) );
 	}
 
 	/**
@@ -129,7 +129,7 @@ class URL {
 	 * @return bool
 	 */
 	public function in_child_theme() {
-		return ( false === \strpos( $this->path, \get_stylesheet_directory() ) );
+		return ( 0 === \strpos( $this->path, \get_stylesheet_directory() ) );
 	}
 
 	/**
