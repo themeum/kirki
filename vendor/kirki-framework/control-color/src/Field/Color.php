@@ -99,8 +99,13 @@ class Color extends Field {
 		$values  = \preg_match( $pattern, $value, $matches );
 
 		// Return the 1st match found.
-		if ( isset( $matches[0] ) && isset( $matches[0][0] ) ) {
-			return $matches[0][0];
+		if ( isset( $matches[0] ) ) {
+			if ( is_string( $matches[0] ) ) {
+				return $matches[0];
+			}
+			if ( is_arra( $matches[0] ) && isset( $matches[0][0] ) ) {
+				return $matches[0][0];
+			}
 		}
 
 		// If no match was found, return an empty string.

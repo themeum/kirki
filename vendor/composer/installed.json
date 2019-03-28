@@ -102,12 +102,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-checkbox.git",
-            "reference": "87ac152ee250f6f1add1cd09dc407d8e6938dae9"
+            "reference": "44e2f8cf6f0bfd37bddeda034bf8c36b0c533b42"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/87ac152ee250f6f1add1cd09dc407d8e6938dae9",
-            "reference": "87ac152ee250f6f1add1cd09dc407d8e6938dae9",
+            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/44e2f8cf6f0bfd37bddeda034bf8c36b0c533b42",
+            "reference": "44e2f8cf6f0bfd37bddeda034bf8c36b0c533b42",
             "shasum": ""
         },
         "require": {
@@ -115,7 +115,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-28T22:19:31+00:00",
+        "time": "2019-03-28T22:20:50+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -199,12 +199,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "ce1f8f168cdd0f2e05db899bf0d680e9f42bea1a"
+            "reference": "46040d08d976cc627434035d039a0c1dbf36cd7c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/ce1f8f168cdd0f2e05db899bf0d680e9f42bea1a",
-            "reference": "ce1f8f168cdd0f2e05db899bf0d680e9f42bea1a",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/46040d08d976cc627434035d039a0c1dbf36cd7c",
+            "reference": "46040d08d976cc627434035d039a0c1dbf36cd7c",
             "shasum": ""
         },
         "require": {
@@ -212,7 +212,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-28T21:30:09+00:00",
+        "time": "2019-03-28T23:16:59+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
