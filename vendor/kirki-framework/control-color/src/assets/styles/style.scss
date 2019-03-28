@@ -1,9 +1,10 @@
 .customize-control-kirki-color {
   input {
     &[data-type="hue"] {
-      + .iris-strip-horiz {
+      +.iris-strip-horiz {
         .iris-slider {
           background-image: -webkit-linear-gradient(left, rgb(255, 0, 0), rgb(255, 127, 0), rgb(255, 255, 0), rgb(128, 255, 0), rgb(0, 255, 0), rgb(0, 255, 128), rgb(0, 255, 255), rgb(0, 127, 255), rgb(0, 0, 255), rgb(127, 0, 255), rgb(255, 0, 255), rgb(255, 0, 128), rgb(255, 0, 0)) !important;
+          widows: 100% !important;
         }
       }
     }
@@ -11,5 +12,37 @@
 
   .iris-picker .iris-square-handle {
     z-index: 8;
+  }
+
+  .iris-picker.iris-border {
+    width: 100% !important;
+  }
+
+  .iris-picker-inner {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-gap: 7px;
+
+    >* {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  .kirki-input-container {
+    &[data-has-alpha=true] {
+      .iris-picker-inner {
+        grid-template-columns: 1fr 20px 20px;
+      }
+    }
+  }
+
+  .iris-only-strip {
+    width: 100% !important;
+
+    .iris-picker-inner {
+      grid-template-columns: 1fr;
+    }
   }
 }
