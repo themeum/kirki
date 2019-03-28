@@ -28,7 +28,7 @@ data = _.defaults( data, {
 		<span class="description customize-control-description">{{{ data.description }}}</span>
 	<# } #>
 	<div class="customize-control-notifications-container"></div>
-	<textarea id="{{ elementIdPrefix }}_editor" class="kirki-data-holder"
+	<textarea id="{{ elementIdPrefix }}_editor"
 		<# _.each( _.extend( { 'class': 'code' }, data.input_attrs ), function( value, key ) { #>
 			{{{ key }}}="{{ value }}"
 		<# }); #>

@@ -33,7 +33,6 @@
 			<input
 				{{{ data.inputAttrs }}}
 				type="radio"
-				class="kirki-data-holder"
 				data-id="{{ data['data-id'] }}"
 				value="{{ key }}"
 				name="_customize-radio-{{ data['data-id'] }}"
