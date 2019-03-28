@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/checkbox
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Checkbox extends Field {
 
@@ -22,6 +23,8 @@ class Checkbox extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'checkbox';
@@ -31,10 +34,12 @@ class Checkbox extends Field {
 	 * Sets the $sanitize_callback.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 		if ( ! $this->sanitize_callback ) {
-			$this->sanitize_callback = [ $this, 'sanitize' ];
+			$this->sanitize_callback = [ '\Kirki\Field\Checkbox', 'sanitize' ];
 		}
 	}
 
@@ -42,10 +47,10 @@ class Checkbox extends Field {
 	 * Sanitizes checkbox values.
 	 *
 	 * @access public
-	 * @param boolean|integer|string|null $value The checkbox value.
+	 * @param boolean|integer|string|null $value The value.
 	 * @return bool
 	 */
-	public function sanitize( $value = null ) {
+	public static function sanitize( $value = null ) {
 		return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
 	}
 
@@ -55,6 +60,6 @@ class Checkbox extends Field {
 	 * @access protected
 	 */
 	protected function set_default() {
-		$this->default = (bool) ( 1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default );
+		$this->default = (bool) in_array( $this->default, [ 1, '1', true, 'true', 'on' ], true );
 	}
 }

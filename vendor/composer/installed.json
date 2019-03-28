@@ -102,19 +102,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-checkbox.git",
-            "reference": "5208442c1212653c67810cb3bea5a1834b469ec2"
+            "reference": "87ac152ee250f6f1add1cd09dc407d8e6938dae9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/5208442c1212653c67810cb3bea5a1834b469ec2",
-            "reference": "5208442c1212653c67810cb3bea5a1834b469ec2",
+            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/87ac152ee250f6f1add1cd09dc407d8e6938dae9",
+            "reference": "87ac152ee250f6f1add1cd09dc407d8e6938dae9",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/control-base": "dev-master",
+            "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:10:22+00:00",
+        "time": "2019-03-28T22:19:31+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
