@@ -80,25 +80,31 @@ class Color extends Field {
 				return;
 			}
 
-			// Get the default value.
-			// This will be used as a fallback in case sanitization fails.
-			$default = $this->default;
-
 			// Set the callback.
-			$this->sanitize_callback = function( $value ) use ( $default ) {
-
-				// This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, & hsla colors.
-				$pattern = '/^(\#[\da-f]{3}|\#[\da-f]{6}|\#[\da-f]{8}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
-				$values  = \preg_match( $pattern, $value, $matches );
-
-				// Return the 1st match found.
-				if ( isset( $matches[0] ) && isset( $matches[0][0] ) ) {
-					return $matches[0][0];
-				}
-
-				// If no match was found, return the default value.
-				return $default;
-			};
+			$this->sanitize_callback = [ '\kirki\Field\Color', 'sanitize' ];
 		}
 	}
+
+	/**
+	 * Sanitize colors.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.2
+	 */
+	public static function sanitize( $value ) {
+
+		// This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, & hsla colors.
+		$pattern = '/^(\#[\da-f]{3}|\#[\da-f]{6}|\#[\da-f]{8}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
+		$values  = \preg_match( $pattern, $value, $matches );
+
+		// Return the 1st match found.
+		if ( isset( $matches[0] ) && isset( $matches[0][0] ) ) {
+			return $matches[0][0];
+		}
+
+		// If no match was found, return an empty string.
+		return '';
+	}
+
 }

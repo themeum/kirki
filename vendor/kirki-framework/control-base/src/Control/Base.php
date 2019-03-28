@@ -112,10 +112,8 @@ class Base extends \WP_Customize_Control {
 	public function enqueue() {
 
 		// Enqueue the scripts.
-		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/kirki.setting.js' );
-		wp_enqueue_script( 'kirki-setting', $url->get_url(), [ 'jquery', 'customize-base' ], '4.0', false );
-		$url = new URL( dirname( __DIR__ ) . '/assets/scripts/dynamic-control.js' );
-		wp_enqueue_script( 'kirki-dynamic-control', $url->get_url(), [ 'jquery', 'customize-base', 'customize-controls', 'kirki-setting' ], '4.0', false );
+		wp_enqueue_script( 'kirki-setting', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/kirki.setting.js' ), [ 'jquery', 'customize-base' ], '4.0', false );
+		wp_enqueue_script( 'kirki-dynamic-control', $url = URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/dynamic-control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'kirki-setting' ], '4.0', false );
 	}
 
 	/**

@@ -13,24 +13,5 @@ composer install kirki-framework/url-getter
 
 Then when you need to get the URL of a file you can do this:
 ```php
-$obj = new \Kirki\URL( '/absolute/path/to/file' );
-$url = $obj->get_url();
-```
-It may be convenient to just write a wrapper function in your theme or plugin like this:
-```php
-/**
- * Get the URL of a file path.
- *
- * @since 1.0
- * @param string $path The absolute path to a file.
- * @return string      Returns the file URL.
- */
-function my_prefix_get_file_url( $path ) {
-    $url = new \Kirki\URL( $path );
-    return $obj->get_url();
-}
-```
-and you can then call it simply by running
-```php
-$url = my_prefix_get_file_url( '/absolute/path/to/file' );
+$url = \Kirki\URL::get_from_path( '/absolute/path/to/file' );
 ```

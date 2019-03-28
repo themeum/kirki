@@ -31,6 +31,15 @@ class Color extends Base {
 	public $type = 'kirki-color';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0.2
+	 */
+	private static $control_ver = '1.0.2';
+
+	/**
 	 * Colorpicker palette
 	 *
 	 * @access public
@@ -49,43 +58,14 @@ class Color extends Base {
 	public $mode = 'full';
 
 	/**
-	 * Has the control already been whitelisted for JS-templating?
+	 * Has the template already been added?
 	 *
 	 * @static
 	 * @access private
 	 * @since 1.0.1
 	 * @var bool
 	 */
-	private static $js_templating_whitelisted = false;
-
-	/**
-	 * Have the assets already been enqueued?
-	 *
-	 * @static
-	 * @access private
-	 * @since 1.0.1
-	 * @var bool
-	 */
-	private static $assets_already_enqueued = false;
-
-	/**
-	 * Constructor.
-	 *
-	 * Supplied `$args` override class property defaults.
-	 *
-	 * @since 1.0
-	 * @see WP_Customize_Manager
-	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
-	 * @param string               $id      Control ID.
-	 * @param array                $args    The arguments.
-	 */
-	public function __construct( $manager, $id, $args = array() ) {
-		if ( ! self::$js_templating_whitelisted ) {
-			$manager->register_control_type( '\Kirki\Control\Color' );
-			self::$js_templating_whitelisted = true;
-		}
-		parent::__construct( $manager, $id, $args );
-	}
+	private static $template_added = false;
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -97,7 +77,7 @@ class Color extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		if ( ! self::$assets_already_enqueued ) {
+		if ( ! self::$template_added ) {
 			// Add view.
 			add_action(
 				'customize_controls_print_footer_scripts',
@@ -107,22 +87,18 @@ class Color extends Base {
 					echo '</script>';
 				}
 			);
-
-			// Enqueue the colorpicker.
-			$url = new URL( dirname( __DIR__ ) . '/assets/scripts/wp-color-picker-alpha.js' );
-			wp_enqueue_script( 'wp-color-picker-alpha', $url->get_url(), [ 'wp-color-picker' ], '4.0', true );
-			wp_enqueue_style( 'wp-color-picker' );
-
-			// Enqueue the control script.
-			$url = new URL( dirname( __DIR__ ) . '/assets/scripts/control.js' );
-			wp_enqueue_script( 'kirki-control-color', $url->get_url(), [ 'jquery', 'customize-base', 'customize-controls', 'wp-color-picker-alpha', 'kirki-dynamic-control' ], '4.0', false );
-
-			// Enqueue the control style.
-			$url = new URL( dirname( __DIR__ ) . '/assets/styles/style.css' );
-			wp_enqueue_style( 'kirki-control-color-style', $url->get_url(), [], '4.0' );
-
-			self::$assets_already_enqueued = true;
+			self::$template_added = true;
 		}
+
+		// Enqueue the colorpicker.
+		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/wp-color-picker-alpha.js' ), [ 'wp-color-picker' ], self::$control_ver, true );
+		wp_enqueue_style( 'wp-color-picker' );
+
+		// Enqueue the control script.
+		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'wp-color-picker-alpha', 'kirki-dynamic-control' ], self::$control_ver, false );
+
+		// Enqueue the control style.
+		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**

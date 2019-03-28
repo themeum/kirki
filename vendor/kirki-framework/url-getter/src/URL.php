@@ -19,6 +19,19 @@ namespace Kirki;
 class URL {
 
 	/**
+	 * An array of instances.
+	 *
+	 * Used for performance reasons in case we need
+	 * the same url over and over again.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0.2
+	 * @var array
+	 */
+	private static $instances = [];
+
+	/**
 	 * The file path.
 	 *
 	 * @access private
@@ -57,16 +70,46 @@ class URL {
 	private $url;
 
 	/**
+	 * Gets an instance based on the path.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.2
+	 * @param string $path Absolute path to a file.
+	 * @return URL         An instance of this object.
+	 */
+	public static function get_instance( $path ) {
+		$path = \wp_normalize_path( $path );
+		if ( ! isset( self::$instances[ $path ] ) ) {
+			self::$instances[ $path ] = new self( $path );
+		}
+		return self::$instances[ $path ];
+	}
+
+	/**
 	 * Constructor.
 	 *
-	 * @access public
+	 * @access private
 	 * @since 1.0
 	 * @param string $path Absolute path to a file.
 	 */
-	public function __construct( $path ) {
-		$this->path = \wp_normalize_path( $path );
+	private function __construct( $path ) {
+		$this->path = ( $path );
 		$this->set_content_url();
 		$this->set_content_path();
+	}
+
+	/**
+	 * Get a URL from a path.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.2
+	 * @param string $path The file path.
+	 * @return string
+	 */
+	public static function get_from_path( $path ) {
+		return self::get_instance( $path )->get_url();
 	}
 
 	/**
