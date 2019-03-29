@@ -103,7 +103,7 @@ class Color extends Field {
 			if ( is_string( $matches[0] ) ) {
 				return $matches[0];
 			}
-			if ( is_arra( $matches[0] ) && isset( $matches[0][0] ) ) {
+			if ( is_array( $matches[0] ) && isset( $matches[0][0] ) ) {
 				return $matches[0][0];
 			}
 		}
