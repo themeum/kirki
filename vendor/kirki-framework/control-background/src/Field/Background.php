@@ -123,6 +123,7 @@ class Background extends Field {
 				true
 			) ? $value['background-attachment'] : '';
 		}
+		return $sanitized_value;
 	}
 
 	/**

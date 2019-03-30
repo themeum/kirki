@@ -58,7 +58,7 @@ class Background extends Base {
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-background', URL::get_from_path( dirname( __DIR__ ) ). '/assets/scripts/control.js', [ 'jquery', 'customize-base', 'customizer-controls', 'wp-color-picker-alpha' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-background', URL::get_from_path( dirname( __DIR__ ) ). '/assets/scripts/control.js', [ 'jquery', 'customize-base', 'wp-color-picker-alpha' ], self::$control_ver, false );
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) ) . '/assets/styles/style.css', [], self::$control_ver );
