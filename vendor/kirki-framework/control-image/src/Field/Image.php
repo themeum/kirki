@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-image
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -23,7 +22,7 @@ class Image extends Field {
 	 * This only exists here for backwards-compatibility purposes.
 	 *
 	 * @access public
-	 * @since 3.0.23
+	 * @since 1.0
 	 * @var string
 	 */
 	public $button_labels = [];
@@ -32,6 +31,8 @@ class Image extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-image';
@@ -41,7 +42,7 @@ class Image extends Field {
 	 * Sets the button labels.
 	 *
 	 * @access protected
-	 * @since 3.0.23
+	 * @since 1.0
 	 * @return void
 	 */
 	protected function set_button_labels() {
@@ -64,6 +65,8 @@ class Image extends Field {
 	 * Adds a pseudo-element "controls" that helps with the JS API.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {
@@ -83,21 +86,22 @@ class Image extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
-
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+		if ( empty( $this->sanitize_callback ) ) {
+			$this->sanitize_callback = [ $this, 'sanitize' ];
 		}
-		$this->sanitize_callback = [ $this, 'sanitize' ];
 	}
 
 	/**
 	 * The sanitize method that will be used as a falback
 	 *
-	 * @param string|array $value The control's value.
+	 * @access public
+	 * @since 1.0
+	 * @param string|array|int $value The control's value.
+	 * @return string|array
 	 */
 	public function sanitize( $value ) {
 		if ( isset( $this->choices['save_as'] ) && 'array' === $this->choices['save_as'] ) {
@@ -111,9 +115,6 @@ class Image extends Field {
 		if ( isset( $this->choices['save_as'] ) && 'id' === $this->choices['save_as'] ) {
 			return absint( $value );
 		}
-		if ( is_string( $value ) ) {
-			return esc_url_raw( $value );
-		}
-		return $value;
+		return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;
 	}
 }

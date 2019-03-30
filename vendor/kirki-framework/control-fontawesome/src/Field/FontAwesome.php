@@ -1,12 +1,11 @@
 <?php
 /**
- * Override field methods
+ * Override field methods.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package   kirki-framework/control-fontawesome
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -22,6 +21,8 @@ class FontAwesome extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-fontawesome';
@@ -31,14 +32,12 @@ class FontAwesome extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
-
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+		if ( empty( $this->sanitize_callback ) ) {
+			$this->sanitize_callback = 'sanitize_text_field';
 		}
-		$this->sanitize_callback = 'sanitize_text_field';
 	}
 }

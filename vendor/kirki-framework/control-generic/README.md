@@ -5,7 +5,7 @@
 First, install the package using composer:
 
 ```bash
-composer require kirki-framework/control-fontawesome
+composer require kirki-framework/control-generic
 ```
 
 Make sure you include the autoloader:
@@ -25,7 +25,7 @@ To add a control using the customizer API:
  * @return void
  */
 add_action( 'customize_register', function( $wp_customize ) {
-	$wp_customize->register_control_type( '\Kirki\Control\FontAwesome' );
+	$wp_customize->register_control_type( '\Kirki\Control\Generic' );
 } );
 
 /**
@@ -41,15 +41,21 @@ add_action( 'customize_register', function( $wp_customize ) {
 	$wp_customize->add_setting( 'my_control', [
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'bath',
+		'default'           => '',
 		'transport'         => 'refresh', // Or postMessage.
 		'sanitize_callback' => 'sanitize_text_field', // Or a custom sanitization callback.
 	] );
 
 	// Add control.
-	$wp_customize->add_control( new \Kirki\Control\FontAwesome( $wp_customize, 'my_control', [
+	$wp_customize->add_control( new \Kirki\Control\Generic( $wp_customize, 'my_control', [
 		'label'   => esc_html__( 'My Control', 'theme_textdomain' ),
 		'section' => 'my_section',
+		'choices'     => [
+			'element'  => 'input',
+			'type'     => 'password',
+			'style'    => 'background-color:black;color:red;',
+			'data-foo' => 'bar',
+		],
 	] ) );
 } );
 ```

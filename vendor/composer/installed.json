@@ -591,19 +591,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-editor.git",
-            "reference": "083edc950c30ee0d21d79bbf0847ff85d8ca1985"
+            "reference": "9539f07ec9043409a407e37818733beb16f1a0d8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/083edc950c30ee0d21d79bbf0847ff85d8ca1985",
-            "reference": "083edc950c30ee0d21d79bbf0847ff85d8ca1985",
+            "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/9539f07ec9043409a407e37818733beb16f1a0d8",
+            "reference": "9539f07ec9043409a407e37818733beb16f1a0d8",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
+            "kirki-framework/url-getter": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-03-18T19:41:45+00:00",
+        "time": "2019-03-30T16:36:34+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -639,19 +640,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-fontawesome.git",
-            "reference": "cea28b6f58932c4277ff50567950b5fe76a40349"
+            "reference": "4640aa09243643eaaf995eeefffa3ba5145d74de"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/cea28b6f58932c4277ff50567950b5fe76a40349",
-            "reference": "cea28b6f58932c4277ff50567950b5fe76a40349",
+            "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/4640aa09243643eaaf995eeefffa3ba5145d74de",
+            "reference": "4640aa09243643eaaf995eeefffa3ba5145d74de",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-17T16:45:25+00:00",
+        "time": "2019-03-30T16:52:50+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -687,19 +689,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-generic.git",
-            "reference": "6dbb6bf8292f6443d0d6b373e115f32bab3739f1"
+            "reference": "d69d35edce2a8b3ef08acf967bddeabf1c027a82"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/6dbb6bf8292f6443d0d6b373e115f32bab3739f1",
-            "reference": "6dbb6bf8292f6443d0d6b373e115f32bab3739f1",
+            "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/d69d35edce2a8b3ef08acf967bddeabf1c027a82",
+            "reference": "d69d35edce2a8b3ef08acf967bddeabf1c027a82",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:08:31+00:00",
+        "time": "2019-03-30T17:03:18+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -735,19 +738,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-image.git",
-            "reference": "fe36340b70869c0d1c9140f1dde1f6b0072664b6"
+            "reference": "55f7596a96203cd2dd5f246561de426544f93310"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/fe36340b70869c0d1c9140f1dde1f6b0072664b6",
-            "reference": "fe36340b70869c0d1c9140f1dde1f6b0072664b6",
+            "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/55f7596a96203cd2dd5f246561de426544f93310",
+            "reference": "55f7596a96203cd2dd5f246561de426544f93310",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:08:16+00:00",
+        "time": "2019-03-30T19:20:29+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
