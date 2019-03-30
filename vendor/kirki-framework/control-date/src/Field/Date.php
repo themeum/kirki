@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-date
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Date extends Field {
 
@@ -22,6 +23,8 @@ class Date extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-date';
@@ -31,14 +34,12 @@ class Date extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
-
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+		if ( empty( $this->sanitize_callback ) ) {
+			$this->sanitize_callback = 'sanitize_text_field';
 		}
-		$this->sanitize_callback = 'sanitize_text_field';
 	}
 }

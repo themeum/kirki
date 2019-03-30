@@ -50,13 +50,8 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 			numericValue,
 			unit;
 
-		// Early exit if value is not a string or a number.
-		if ( 'string' !== typeof value || 'number' !== typeof value ) {
-			return true;
-		}
-
 		// Whitelist values.
-		if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
+		if ( ! value || '' === value || 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
 			return true;
 		}
 
@@ -72,11 +67,11 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 		unit = value.replace( numericValue, '' );
 
 		// Allow unitless.
-		if ( ! value ) {
-			return;
+		if ( ! unit ) {
+			return true;
 		}
 
 		// Check the validity of the numeric value and units.
-		return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
+		return ( ! isNaN( numericValue ) && -1 !== validUnits.indexOf( unit ) );
 	}
 } );

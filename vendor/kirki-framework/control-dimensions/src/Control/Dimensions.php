@@ -2,25 +2,22 @@
 /**
  * Customizer Control: dimensions
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.0
+ * @package   kirki-framework/control-dimensions
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
+use Kirki\URL;
+use Kirki\Control\Dimension;
 use Kirki\Control\Base;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * A text control with validation for CSS units.
+ *
+ * @since 1.0
  */
 class Dimensions extends Base {
 
@@ -28,51 +25,77 @@ class Dimensions extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-dimensions';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_dimensions',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-dimensions/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-dimensions',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-dimension', Dimension::get_control_path_url() . '/assets/scripts/control.js', [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], Dimension::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-dimensions', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-dimensions-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-dimensions-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 
-		wp_localize_script( 'kirki-control-dimensions', 'dimensionskirkiL10n', $this->l10n() );
+		wp_localize_script(
+			'kirki-control-dimensions',
+			'dimensionskirkiL10n',
+			[
+				'left-top'       => esc_html__( 'Left Top', 'kirki' ),
+				'left-center'    => esc_html__( 'Left Center', 'kirki' ),
+				'left-bottom'    => esc_html__( 'Left Bottom', 'kirki' ),
+				'right-top'      => esc_html__( 'Right Top', 'kirki' ),
+				'right-center'   => esc_html__( 'Right Center', 'kirki' ),
+				'right-bottom'   => esc_html__( 'Right Bottom', 'kirki' ),
+				'center-top'     => esc_html__( 'Center Top', 'kirki' ),
+				'center-center'  => esc_html__( 'Center Center', 'kirki' ),
+				'center-bottom'  => esc_html__( 'Center Bottom', 'kirki' ),
+				'font-size'      => esc_html__( 'Font Size', 'kirki' ),
+				'font-weight'    => esc_html__( 'Font Weight', 'kirki' ),
+				'line-height'    => esc_html__( 'Line Height', 'kirki' ),
+				'font-style'     => esc_html__( 'Font Style', 'kirki' ),
+				'letter-spacing' => esc_html__( 'Letter Spacing', 'kirki' ),
+				'word-spacing'   => esc_html__( 'Word Spacing', 'kirki' ),
+				'top'            => esc_html__( 'Top', 'kirki' ),
+				'bottom'         => esc_html__( 'Bottom', 'kirki' ),
+				'left'           => esc_html__( 'Left', 'kirki' ),
+				'right'          => esc_html__( 'Right', 'kirki' ),
+				'center'         => esc_html__( 'Center', 'kirki' ),
+				'size'           => esc_html__( 'Size', 'kirki' ),
+				'spacing'        => esc_html__( 'Spacing', 'kirki' ),
+				'width'          => esc_html__( 'Width', 'kirki' ),
+				'height'         => esc_html__( 'Height', 'kirki' ),
+				'invalid-value'  => esc_html__( 'Invalid Value', 'kirki' ),
+			]
+		);
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
+	 * 
+	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -102,6 +125,8 @@ class Dimensions extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>
@@ -131,42 +156,5 @@ class Dimensions extends Base {
 			</div>
 		</label>
 		<?php
-	}
-
-	/**
-	 * Returns an array of translation strings.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @return array
-	 */
-	protected function l10n() {
-		return [
-			'left-top'       => esc_html__( 'Left Top', 'kirki' ),
-			'left-center'    => esc_html__( 'Left Center', 'kirki' ),
-			'left-bottom'    => esc_html__( 'Left Bottom', 'kirki' ),
-			'right-top'      => esc_html__( 'Right Top', 'kirki' ),
-			'right-center'   => esc_html__( 'Right Center', 'kirki' ),
-			'right-bottom'   => esc_html__( 'Right Bottom', 'kirki' ),
-			'center-top'     => esc_html__( 'Center Top', 'kirki' ),
-			'center-center'  => esc_html__( 'Center Center', 'kirki' ),
-			'center-bottom'  => esc_html__( 'Center Bottom', 'kirki' ),
-			'font-size'      => esc_html__( 'Font Size', 'kirki' ),
-			'font-weight'    => esc_html__( 'Font Weight', 'kirki' ),
-			'line-height'    => esc_html__( 'Line Height', 'kirki' ),
-			'font-style'     => esc_html__( 'Font Style', 'kirki' ),
-			'letter-spacing' => esc_html__( 'Letter Spacing', 'kirki' ),
-			'word-spacing'   => esc_html__( 'Word Spacing', 'kirki' ),
-			'top'            => esc_html__( 'Top', 'kirki' ),
-			'bottom'         => esc_html__( 'Bottom', 'kirki' ),
-			'left'           => esc_html__( 'Left', 'kirki' ),
-			'right'          => esc_html__( 'Right', 'kirki' ),
-			'center'         => esc_html__( 'Center', 'kirki' ),
-			'size'           => esc_html__( 'Size', 'kirki' ),
-			'spacing'        => esc_html__( 'Spacing', 'kirki' ),
-			'width'          => esc_html__( 'Width', 'kirki' ),
-			'height'         => esc_html__( 'Height', 'kirki' ),
-			'invalid-value'  => esc_html__( 'Invalid Value', 'kirki' ),
-		];
 	}
 }

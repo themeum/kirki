@@ -15,6 +15,7 @@
     ],
     "require": {
         "php": ">=5.6",
+        "kirki-framework/url-getter": "dev-master",
         "kirki-framework/control-base": "dev-master"
     },
     "autoload": {

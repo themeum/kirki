@@ -2,17 +2,16 @@
 /**
  * Customizer Control: dimension
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.0
+ * @package   kirki-framework/control-dimension
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * A text control with validation for CSS units.
+ *
+ * @since 1.0
  */
 class Dimension extends Base {
 
@@ -28,43 +29,35 @@ class Dimension extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-dimension';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_dimension',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-dimension/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-dimension',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-dimension', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-dimension-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-dimension-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 
 		wp_localize_script(
 			'kirki-control-dimension',
@@ -76,6 +69,21 @@ class Dimension extends Base {
 	}
 
 	/**
+	 * Get the URL for the control folder.
+	 *
+	 * This is a static method because there are more controls in the Kirki framework
+	 * that use colorpickers, and they all need to enqueue the same assets.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @return string
+	 */
+	public static function get_control_path_url() {
+		return URL::get_from_path( dirname( __DIR__ ) );
+	}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
@@ -84,6 +92,8 @@ class Dimension extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

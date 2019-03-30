@@ -70,7 +70,7 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 				setting.notifications.remove( code );
 
 				_.each( value, function( val, direction ) {
-					if ( false === control.validateCssValue( val ) ) {
+					if ( false === wp.customize.controlConstructor['kirki-dimension'].prototype.validateCssValue( val ) ) {
 						subs[ direction ] = val;
 					} else {
 						delete subs[ direction ];
@@ -89,40 +89,4 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 			} );
 		} );
 	},
-
-	validateCssValue: function( value ) {
-
-		var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
-			numericValue,
-			unit;
-
-		// Early exit if value is not a string or a number.
-		if ( 'string' !== typeof value || 'number' !== typeof value ) {
-			return true;
-		}
-
-		// Whitelist values.
-		if ( 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
-			return true;
-		}
-
-		// Skip checking if calc().
-		if ( 0 <= value.indexOf( 'calc(' ) && 0 <= value.indexOf( ')' ) ) {
-			return true;
-		}
-
-		// Get the numeric value.
-		numericValue = parseFloat( value );
-
-		// Get the unit
-		unit = value.replace( numericValue, '' );
-
-		// Allow unitless.
-		if ( ! value ) {
-			return;
-		}
-
-		// Check the validity of the numeric value and units.
-		return ( ! isNaN( numericValue ) && -1 < jQuery.inArray( unit, validUnits ) );
-	}
 } );

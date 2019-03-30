@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.3.2
+ * @package   Kirki
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -28,13 +27,15 @@ class Dimension extends Field {
 	}
 
 	/**
-	 * Sanitizes the value.
+	 * Sets the $sanitize_callback
 	 *
-	 * @access public
-	 * @param string $value The value.
-	 * @return string
+	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
-	public function sanitize( $value ) {
-		return sanitize_text_field( $value );
+	protected function set_sanitize_callback() {
+		if ( empty( $this->sanitize_callback ) ) {
+			$this->sanitize_callback = 'sanitize_text_field';
+		}
 	}
 }

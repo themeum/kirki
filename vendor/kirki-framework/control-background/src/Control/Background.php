@@ -55,7 +55,7 @@ class Background extends Base {
 		parent::enqueue();
 
 		// Enqueue colorpicker.
-		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url(), '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() . '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue the script.
