@@ -5,20 +5,23 @@
  * Creates a new custom control.
  * Custom controls contains all background-related options.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework\control-background
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license  https://opensource.org/licenses/MIT
+ * @since    1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
+use Kirki\Control\Color;
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 /**
  * Adds multiple input fiels that combined make up the background control.
+ *
+ * @since 1.0
  */
 class Background extends Base {
 
@@ -26,68 +29,42 @@ class Background extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-background';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 */
+	private static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url_color = apply_filters(
-			'kirki_package_url_control_color',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color/src'
-		);
-
-		$url_background = apply_filters(
-			'kirki_package_url_control_background',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-background/src'
-		);
-
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
-			"$url_color/assets/scripts/wp-color-picker-alpha.js",
-			[
-				'wp-color-picker',
-			],
-			KIRKI_VERSION,
-			true
-		);
-
+		// Enqueue
+		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() , '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-background',
-			"$url_background/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'wp-color-picker-alpha',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-background', URL::get_from_path( dirname( __DIR__ ) ). '/assets/scripts/control.js', [ 'jquery', 'customize-base', 'customizer-controls', 'wp-color-picker-alpha' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-color-style',
-			"$url_color/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) ) . '/assets/styles/style.css', [], self::$control_ver );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-background-style',
-			"$url_background/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-background-style', URL::get_from_path( dirname( __DIR__ ) ) . '/assets/styles/style.css', [], self::$control_ver );
 	}
 
 	/**
@@ -99,6 +76,8 @@ class Background extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

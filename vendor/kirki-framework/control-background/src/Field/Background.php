@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package   kirki-framework/control-background
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Background extends Field {
 
@@ -22,6 +23,8 @@ class Background extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-background';
@@ -31,6 +34,8 @@ class Background extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 
@@ -45,7 +50,8 @@ class Background extends Field {
 	/**
 	 * Sanitizes typography controls
 	 *
-	 * @since 2.2.0
+	 * @access public
+	 * @since 1.0
 	 * @param array $value The value.
 	 * @return array
 	 */
@@ -53,20 +59,78 @@ class Background extends Field {
 		if ( ! is_array( $value ) ) {
 			return [];
 		}
-		return [
-			'background-color'      => ( isset( $value['background-color'] ) ) ? sanitize_text_field( $value['background-color'] ) : '',
-			'background-image'      => ( isset( $value['background-image'] ) ) ? esc_url_raw( $value['background-image'] ) : '',
-			'background-repeat'     => ( isset( $value['background-repeat'] ) ) ? sanitize_text_field( $value['background-repeat'] ) : '',
-			'background-position'   => ( isset( $value['background-position'] ) ) ? sanitize_text_field( $value['background-position'] ) : '',
-			'background-size'       => ( isset( $value['background-size'] ) ) ? sanitize_text_field( $value['background-size'] ) : '',
-			'background-attachment' => ( isset( $value['background-attachment'] ) ) ? sanitize_text_field( $value['background-attachment'] ) : '',
+		$sanitized_value = [
+			'background-color'      => '',
+			'background-image'      => '',
+			'background-repeat'     => '',
+			'background-position'   => '',
+			'background-size'       => '',
+			'background-attachment' => '',
 		];
+		if ( isset( $value['background-color'] ) ) {
+			$sanitized_value['background-color'] = \Kirki\Field\Color::sanitize( $value['background-color'] );
+		}
+		if ( isset( $value['background-image'] ) ) {
+			$sanitized_value['background-image'] = esc_url_raw( $value['background-image'] );
+		}
+		if ( isset( $value['background-repeat'] ) ) {
+			$sanitized_value['background-repeat'] = in_array(
+				$value['background-repeat'],
+				[
+					'no-repeat',
+					'repeat',
+					'repeat-x',
+					'repeat-y',
+				],
+				true
+			) ? $value['background-repeat'] : '';
+		}
+		if ( isset( $value['background-position'] ) ) {
+			$sanitized_value['background-position'] = in_array(
+				$value['background-position'],
+				[
+					'left top',
+					'left center',
+					'left bottom',
+					'center top',
+					'center center',
+					'center bottom',
+					'right top',
+					'right center',
+					'right bottom',
+				],
+				true
+			) ? $value['background-position'] : '';
+		}
+		if ( isset( $value['background-size'] ) ) {
+			$sanitized_value['background-size'] = in_array(
+				$value['background-size'],
+				[
+					'cover',
+					'contain',
+					'auto',
+				],
+				true
+			) ? $value['background-size'] : '';
+		}
+		if ( isset( $value['background-attachment'] ) ) {
+			$sanitized_value['background-attachment'] = in_array(
+				$value['background-attachment'],
+				[
+					'scroll',
+					'fixed',
+				],
+				true
+			) ? $value['background-attachment'] : '';
+		}
 	}
 
 	/**
 	 * Sets the $js_vars
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_js_vars() {
 

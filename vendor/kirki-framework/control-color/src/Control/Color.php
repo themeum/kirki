@@ -11,6 +11,7 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
+use Kirki\Control\Color;
 use Kirki\Core\Kirki;
 use Kirki\URL;
 
@@ -34,10 +35,10 @@ class Color extends Base {
 	 * The version. Used in scripts & styles for cache-busting.
 	 *
 	 * @static
-	 * @access private
+	 * @access public
 	 * @since 1.0.2
 	 */
-	private static $control_ver = '1.0.2';
+	public static $control_ver = '1.0.6';
 
 	/**
 	 * Colorpicker palette
@@ -99,6 +100,21 @@ class Color extends Base {
 
 		// Enqueue the control style.
 		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+	}
+
+	/**
+	 * Get the URL for the control folder.
+	 *
+	 * This is a static method because there are more controls in the Kirki framework
+	 * that use colorpickers, and they all need to enqueue the same assets.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.6
+	 * @return string
+	 */
+	public static function get_control_path_url() {
+		return URL::get_from_path( dirname( __DIR__ ) );
 	}
 
 	/**
