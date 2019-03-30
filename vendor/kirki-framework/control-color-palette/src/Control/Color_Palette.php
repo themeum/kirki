@@ -2,17 +2,16 @@
 /**
  * Customizer Control: color-palette.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.6
+ * @package   kirki-framework/color-paletter
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
-use Kirki\Core\Helper;
+use Kirki\URL;
+use Kirki\Core\Material_Colors;
 use Kirki\Control\Base;
 
 // Exit if accessed directly.
@@ -23,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds a color-palette control.
  * This is essentially a radio control, styled as a palette.
+ *
+ * @since 1.0
  */
 class Color_Palette extends Base {
 
@@ -30,49 +31,43 @@ class Color_Palette extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-color-palette';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 */
+	private static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_color_palette',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color-palette/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-color-palette',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-color-palette', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-color-palette-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-color-palette-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 
@@ -80,7 +75,7 @@ class Color_Palette extends Base {
 
 		// If no palette has been defined, use Material Design Palette.
 		if ( ! isset( $this->json['choices']['colors'] ) || empty( $this->json['choices']['colors'] ) ) {
-			$this->json['choices']['colors'] = Helper::get_material_design_colors( 'primary' );
+			$this->json['choices']['colors'] = Material_Colors::get_colors( 'primary' );
 		}
 		if ( ! isset( $this->json['choices']['size'] ) || empty( $this->json['choices']['size'] ) ) {
 			$this->json['choices']['size'] = 20;
@@ -96,6 +91,8 @@ class Color_Palette extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

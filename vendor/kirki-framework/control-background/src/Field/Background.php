@@ -44,18 +44,19 @@ class Background extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
-		$this->sanitize_callback = [ $this, 'sanitize' ];
+		$this->sanitize_callback = [ '\Kirki\Field\Background', 'sanitize' ];
 	}
 
 	/**
 	 * Sanitizes typography controls
 	 *
+	 * @static
 	 * @access public
 	 * @since 1.0
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public function sanitize( $value ) {
+	public static function sanitize( $value ) {
 		if ( ! is_array( $value ) ) {
 			return [];
 		}

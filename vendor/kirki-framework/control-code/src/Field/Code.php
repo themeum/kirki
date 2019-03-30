@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-code
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -22,7 +21,7 @@ class Code extends Field {
 	 * The code_type (MIME type).
 	 *
 	 * @access public
-	 * @since 3.0.21
+	 * @since 1.0
 	 * @var string
 	 */
 	public $code_type = 'text/css';
@@ -31,7 +30,7 @@ class Code extends Field {
 	 * Code editor settings.
 	 *
 	 * @see wp_enqueue_code_editor()
-	 * @since 3.0.21
+	 * @since 1.0
 	 * @access public
 	 * @var array|false
 	 */
@@ -41,7 +40,7 @@ class Code extends Field {
 	 * Custom input attributes (defined as an array).
 	 *
 	 * @access public
-	 * @since 3.0.21
+	 * @since 1.0
 	 * @var array
 	 */
 	public $input_attrs = [
@@ -52,6 +51,8 @@ class Code extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'code_editor';
@@ -61,6 +62,8 @@ class Code extends Field {
 	 * Sets the $choices
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
 		if ( ! isset( $this->choices['language'] ) ) {
@@ -117,17 +120,21 @@ class Code extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+		if ( empty( $this->sanitize_callback ) ) {
+			/**
+			 * Code fields should not be filtered by default.
+			 * Their values usually contain CSS/JS and it it the responsibility
+			 * of the theme/plugin that registers this field
+			 * to properly apply any necessary sanitization.
+			 */
+			$this->sanitize_callback = function( $value ) {
+				return $value;
+			};
 		}
-		// Code fields must NOT be filtered. Their values usually contain CSS/JS.
-		// It is the responsibility of the theme/plugin that registers this field
-		// to properly apply any necessary filtering.
-		$this->sanitize_callback = [ 'Kirki\Core\Sanitize_Values', 'unfiltered' ];
 	}
 }

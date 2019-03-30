@@ -42,21 +42,21 @@ add_action( 'customize_register', function( $wp_customize ) {
 	$wp_customize->add_setting( 'my_control_checkbox', [
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '#fff',
+		'default'           => true,
 		'transport'         => 'refresh', // Or postMessage.
 		'sanitize_callback' => [ '\kirki\Field\Checkbox', 'sanitize' ], // Or a custom sanitization callback.
 	] );
 	$wp_customize->add_setting( 'my_control_switch', [
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '#fff',
+		'default'           => true
 		'transport'         => 'refresh', // Or postMessage.
 		'sanitize_callback' => [ '\kirki\Field\Checkbox', 'sanitize' ], // Or a custom sanitization callback.
 	] );
 	$wp_customize->add_setting( 'my_control_toggle', [
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '#fff',
+		'default'           => false
 		'transport'         => 'refresh', // Or postMessage.
 		'sanitize_callback' => [ '\kirki\Field\Checkbox', 'sanitize' ], // Or a custom sanitization callback.
 	] );

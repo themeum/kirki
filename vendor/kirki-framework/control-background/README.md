@@ -1,11 +1,11 @@
-# control-color-palette
+# control-background
 
 ## Installation
 
 First, install the package using composer:
 
 ```bash
-composer require kirki-framework/control-color-palette
+composer require kirki-framework/control-background
 ```
 
 Make sure you include the autoloader:
@@ -24,7 +24,7 @@ To add a control using the customizer API:
  * @return void
  */
 add_action( 'customize_register', function( $wp_customize ) {
-	$wp_customize->register_control_type( '\Kirki\Control\Color_Palette' );
+	$wp_customize->register_control_type( '\Kirki\Control\Background' );
 } );
 
 /**
@@ -37,23 +37,25 @@ add_action( 'customize_register', function( $wp_customize ) {
 add_action( 'customize_register', function( $wp_customize ) {
 
 	// Add settings.
-	$wp_customize->add_setting( 'my_control_color_palette', [
+	$wp_customize->add_setting( 'my_control_background', [
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '#00acdc',
+		'default'           => [
+			'background-color'      => '',
+			'background-image'      => '',
+			'background-repeat'     => '',
+			'background-position'   => '',
+			'background-size'       => '',
+			'background-attachment' => '',
+		],
 		'transport'         => 'refresh', // Or postMessage.
-		'sanitize_callback' => [ '\kirki\Field\Color_Palette', 'sanitize' ], // Or a custom sanitization callback.
+		'sanitize_callback' => [ '\kirki\Field\Background', 'sanitize' ], // Or a custom sanitization callback.
 	] );
 
 	// Add controls.
-	$wp_customize->add_control( new \Kirki\Control\Color_Palette( $wp_customize, 'my_control_color_palette', [
-		'label'   => esc_html__( 'My Color-Palette Control', 'theme_textdomain' ),
-        'section' => 'my_section',
-        'choices' => [
-            'colors' => [ '#00acdc', '#f00', '#fff', '#469aa1' ],
-            'style'  => 'round',
-            'size'   => 23,
-        ],
+	$wp_customize->add_control( new \Kirki\Control\Background( $wp_customize, 'my_control_background', [
+		'label'   => esc_html__( 'My Background Control', 'theme_textdomain' ),
+		'section' => 'my_section',
 	] ) );
 } );
 ```
