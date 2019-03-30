@@ -57,7 +57,7 @@ class Color extends Field {
 		}
 
 		$this->choices['alpha'] = isset( $this->choices['alpha'] ) ? (bool) $this->choices['alpha'] : false;
-		$this->choices['mode']  = isset( $this->choices['mode'] ) && \in_array( $this->choices['mode'], [ 'hex', 'hue'], true ) ? $this->choices['mode'] : 'hex';
+		$this->choices['mode']  = isset( $this->choices['mode'] ) && \in_array( $this->choices['mode'], [ 'hex', 'hue' ], true ) ? $this->choices['mode'] : 'hex';
 	}
 
 	/**
@@ -91,6 +91,8 @@ class Color extends Field {
 	 * @static
 	 * @access public
 	 * @since 1.0.2
+	 * @param string $value The color.
+	 * @return string
 	 */
 	public static function sanitize( $value ) {
 

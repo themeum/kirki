@@ -2,17 +2,15 @@
 /**
  * Customizer Control: dashicons.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.4
+ * @package   kirki-framework/control-dashicons
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
-use Kirki\Core\Helper;
+use Kirki\URL;
 use Kirki\Control\Base;
 
 // Exit if accessed directly.
@@ -22,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Dashicons control (modified radio).
+ *
+ * @since 1.0
  */
 class Dashicons extends Base {
 
@@ -29,53 +29,47 @@ class Dashicons extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-dashicons';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.2
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_dashicons',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-dashicons/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-dashicons',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-dashicons', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-dashicons-style',
-			"$url/assets/styles/style.css",
-			[ 'dashicons' ],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-dashicons-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [ 'dashicons' ], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['icons'] = Helper::get_dashicons();
+		$this->json['icons'] = \Kirki\Core\Dashicons::get_icons();
 	}
 
 	/**
@@ -87,6 +81,8 @@ class Dashicons extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>
@@ -100,96 +96,42 @@ class Dashicons extends Base {
 					</input>
 				<# } #>
 			<# } else { #>
-				<h4>Admin Menu</h4>
-				<# for ( key in data.icons['admin-menu'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['admin-menu'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['admin-menu'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['admin-menu'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['admin-menu'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['admin-menu'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Welcome Screen</h4>
-				<# for ( key in data.icons['welcome-screen'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['welcome-screen'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['welcome-screen'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['welcome-screen'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['welcome-screen'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['welcome-screen'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Post Formats</h4>
-				<# for ( key in data.icons['post-formats'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['post-formats'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['post-formats'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['post-formats'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['post-formats'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['post-formats'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Media</h4>
-				<# for ( key in data.icons['media'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['media'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['media'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['media'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['media'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['media'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Image Editing</h4>
-				<# for ( key in data.icons['image-editing'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['image-editing'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['image-editing'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['image-editing'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['image-editing'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['image-editing'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>TinyMCE</h4>
-				<# for ( key in data.icons['tinymce'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['tinymce'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['tinymce'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['tinymce'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['tinymce'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['tinymce'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Posts</h4>
-				<# for ( key in data.icons['posts'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['posts'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['posts'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['posts'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['posts'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['posts'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Sorting</h4>
-				<# for ( key in data.icons['sorting'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['sorting'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['sorting'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['sorting'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['sorting'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['sorting'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Social</h4>
-				<# for ( key in data.icons['social'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['social'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['social'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['social'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['social'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['social'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>WordPress</h4>
-				<# for ( key in data.icons['wordpress_org'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['wordpress_org'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['wordpress_org'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['wordpress_org'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['wordpress_org'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['wordpress_org'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Products</h4>
-				<# for ( key in data.icons['products'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['products'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['products'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['products'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['products'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['products'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Taxonomies</h4>
-				<# for ( key in data.icons['taxonomies'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['taxonomies'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['taxonomies'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['taxonomies'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['taxonomies'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['taxonomies'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Widgets</h4>
-				<# for ( key in data.icons['widgets'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['widgets'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['widgets'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['widgets'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['widgets'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['widgets'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Notifications</h4>
-				<# for ( key in data.icons['notifications'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['notifications'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['notifications'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['notifications'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['notifications'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['notifications'][ key ] }}"></span></label>
-					</input>
-				<# } #>
-				<h4>Misc</h4>
-				<# for ( key in data.icons['misc'] ) { #>
-					<input {{{ data.inputAttrs }}} class="dashicons-select" type="radio" value="{{ data.icons['misc'][ key ] }}" name="_customize-dashicons-radio-{{ data.id }}" id="{{ data.id }}{{ data.icons['misc'][ key ] }}" {{{ data.link }}}<# if ( data.value === data.icons['misc'][ key ] ) { #> checked="checked"<# } #>>
-						<label for="{{ data.id }}{{ data.icons['misc'][ key ] }}"><span class="dashicons dashicons-{{ data.icons['misc'][ key ] }}"></span></label>
-					</input>
-				<# } #>
+				<#
+				var dashiconSections = {
+					'admin-menu': '<?php esc_html_e( 'Admin Menu', 'kirki' ); ?>',
+					'welcome-screen': '<?php esc_html_e( 'Welcome Screen', 'kirki' ); ?>',
+					'post-formats': '<?php esc_html_e( 'Post Formats', 'kirki' ); ?>',
+					'media': '<?php esc_html_e( 'Media', 'kirki' ); ?>',
+					'image-editing': '<?php esc_html_e( 'Image Editing', 'kirki' ); ?>',
+					'tinymce': 'TinyMCE',
+					'posts': '<?php esc_html_e( 'Posts', 'kirki' ); ?>',
+					'sorting': '<?php esc_html_e( 'Sorting', 'kirki' ); ?>',
+					'social': '<?php esc_html_e( 'Social', 'kirki' ); ?>',
+					'wordpress_org': 'WordPress',
+					'products': '<?php esc_html_e( 'Products', 'kirki' ); ?>',
+					'taxonomies': '<?php esc_html_e( 'Taxonomies', 'kirki' ); ?>',
+					'widgets': '<?php esc_html_e( 'Widgets', 'kirki' ); ?>',
+					'notifications': '<?php esc_html_e( 'Notifications', 'kirki' ); ?>',
+					'misc': '<?php esc_html_e( 'Miscelaneous', 'kirki' ); ?>'
+				};
+				#>
+				<# _.each( dashiconSections, function( sectionLabel, sectionKey ) { #>
+					<h4>{{ sectionLabel }}</h4>
+					<# for ( key in data.icons[ sectionKey ] ) { #>
+						<input {{{ data.inputAttrs }}}
+							class="dashicons-select"
+							type="radio"
+							value="{{ data.icons[ sectionKey ][ key ] }}"
+							name="_customize-dashicons-radio-{{ data.id }}"
+							id="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}"
+							{{{ data.link }}}
+							<# if ( data.value === data.icons[ sectionKey ][ key ] ) { #> checked="checked"<# } #>>
+							<label for="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}">
+								<span class="dashicons dashicons-{{ data.icons[ sectionKey ][ key ] }}"></span>
+							</label>
+						</input>
+					<# } #>
+				<# }); #>
 			<# } #>
 		</div>
 		<?php

@@ -40,6 +40,7 @@ class Background extends Base {
 	 * @static
 	 * @access private
 	 * @since 1.0
+	 * @var string
 	 */
 	private static $control_ver = '1.0';
 
@@ -53,8 +54,8 @@ class Background extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		// Enqueue
-		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() , '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
+		// Enqueue colorpicker.
+		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url(), '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue the script.

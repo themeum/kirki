@@ -23,7 +23,7 @@ class Material_Colors {
 	 *
 	 * @static
 	 * @access public
-     * @since 1.0
+	 * @since 1.0
 	 * @param string $context Allows us to get subsets of the palette.
 	 * @return array
 	 */

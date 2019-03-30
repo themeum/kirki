@@ -42,6 +42,7 @@ class Color_Palette extends Base {
 	 * @static
 	 * @access private
 	 * @since 1.0
+	 * @var string
 	 */
 	private static $control_ver = '1.0';
 

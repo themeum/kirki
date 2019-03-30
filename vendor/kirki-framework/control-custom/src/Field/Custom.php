@@ -1,12 +1,11 @@
 <?php
 /**
- * Override field methods
+ * Override field methods when used with the Kirki API.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-custom
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Custom extends Field {
 
@@ -22,6 +23,8 @@ class Custom extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-custom';
@@ -31,17 +34,14 @@ class Custom extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
+		if ( empty( $this->sanitize_callback ) ) {
 
-		// If a custom sanitize_callback has been defined,
-		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
-			return;
+			// Custom fields don't actually save any value.
+			$this->sanitize_callback = '__return_null';
 		}
-
-		// Custom fields don't actually save any value.
-		// just use __return_true.
-		$this->sanitize_callback = '__return_true';
 	}
 }
