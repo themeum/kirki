@@ -787,19 +787,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-multicheck.git",
-            "reference": "112a05068af8864402541cf9e015958aa8435d02"
+            "reference": "ec4367854dc8021c1299d97ff470cbe224163def"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/112a05068af8864402541cf9e015958aa8435d02",
-            "reference": "112a05068af8864402541cf9e015958aa8435d02",
+            "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/ec4367854dc8021c1299d97ff470cbe224163def",
+            "reference": "ec4367854dc8021c1299d97ff470cbe224163def",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-13T22:08:02+00:00",
+        "time": "2019-03-30T20:54:08+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
