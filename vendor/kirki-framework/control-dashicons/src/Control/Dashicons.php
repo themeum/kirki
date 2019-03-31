@@ -40,6 +40,7 @@ class Dashicons extends Base {
 	 * @static
 	 * @access public
 	 * @since 1.0.2
+	 * @var string
 	 */
 	public static $control_ver = '1.0';
 

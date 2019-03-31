@@ -30,7 +30,7 @@ class Upload extends \WP_Customize_Upload_Control {
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @uses WP_Customize_Media_Control::to_json()
-	 * 
+	 *
 	 * @access public
 	 * @since 1.0
 	 * @return void

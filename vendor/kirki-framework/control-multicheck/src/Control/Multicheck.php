@@ -43,6 +43,7 @@ class MultiCheck extends Base {
 	 * @static
 	 * @access public
 	 * @since 1.0
+	 * @var string
 	 */
 	public static $control_ver = '1.0';
 

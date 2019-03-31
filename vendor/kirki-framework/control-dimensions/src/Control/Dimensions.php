@@ -36,6 +36,7 @@ class Dimensions extends Base {
 	 * @static
 	 * @access public
 	 * @since 1.0
+	 * @var string
 	 */
 	public static $control_ver = '1.0';
 
@@ -92,7 +93,7 @@ class Dimensions extends Base {
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
-	 * 
+	 *
 	 * @access public
 	 * @since 1.0
 	 * @return void

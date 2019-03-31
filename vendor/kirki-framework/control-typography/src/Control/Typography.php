@@ -60,7 +60,7 @@ class Typography extends Base {
 		wp_enqueue_style( 'selectWoo', Select::get_control_path_url() . '/assets/scripts/selectWoo/css/selectWoo.css', [], '1.0.1' );
 
 		// Enqueue the control script.
-		wp_enqueue_script( 'kirki-control-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-webfonts' ], self::$control_ver );
+		wp_enqueue_script( 'kirki-control-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-webfonts' ], self::$control_ver, false );
 		wp_localize_script(
 			'kirki-control-typography',
 			'kirkiTypographyControlL10n',
@@ -81,7 +81,7 @@ class Typography extends Base {
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
-	 * 
+	 *
 	 * @access public
 	 * @since 1.0
 	 * @return void
