@@ -33,15 +33,6 @@ class Module {
 	private static $instance;
 
 	/**
-	 * Fields with variables.
-	 *
-	 * @access private
-	 * @since 3.0.28
-	 * @var array
-	 */
-	private $fields = [];
-
-	/**
 	 * CSS-variables array [var=>val].
 	 *
 	 * @access private
