@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-typography
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Typography extends Field {
 
@@ -22,6 +23,8 @@ class Typography extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-typography';
@@ -33,6 +36,7 @@ class Typography extends Field {
 	 * Then it adds the field to Kirki::$fields.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @param string $config_id    The ID of the config we want to use.
 	 *                             Defaults to "global".
 	 *                             Configs are handled by the Kirki\Core\Config class.
@@ -47,6 +51,8 @@ class Typography extends Field {
 	 * Sets the default value.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_default() {
 
@@ -65,6 +71,8 @@ class Typography extends Field {
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 
@@ -80,6 +88,8 @@ class Typography extends Field {
 	 * Sets the $js_vars
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_js_vars() {
 		if ( ! is_array( $this->js_vars ) ) {
@@ -131,7 +141,7 @@ class Typography extends Field {
 	 * Sanitizes typography controls
 	 *
 	 * @static
-	 * @since 2.2.0
+	 * @since 1.0
 	 * @param array $value The value.
 	 * @return array
 	 */
@@ -201,7 +211,8 @@ class Typography extends Field {
 	 * Sets the $choices
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
 		if ( ! is_array( $this->choices ) ) {

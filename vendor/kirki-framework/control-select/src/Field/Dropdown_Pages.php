@@ -2,17 +2,18 @@
 /**
  * Override field methods
  *
- * @package    Kirki
- * @subpackage Controls
- * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since      3.0.36
+ * @package   kirki-framework/control-select
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Dropdown_Pages extends Select {
 
@@ -20,7 +21,8 @@ class Dropdown_Pages extends Select {
 	 * Sets the default value.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
 		$all_pages = get_pages();

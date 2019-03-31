@@ -2,22 +2,16 @@
 /**
  * Customizer Control: sortable.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework/control-sortable
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
+use Kirki\URL;
 use Kirki\Control\Base;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * Sortable control (uses checkboxes).
@@ -28,42 +22,36 @@ class Sortable extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-sortable';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_sortable',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-sortable/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-sortable',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-sortable', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-sortable-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-sortable-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
@@ -75,6 +63,8 @@ class Sortable extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

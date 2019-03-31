@@ -2,27 +2,23 @@
 /**
  * Customizer Control: slider.
  *
- * Creates a jQuery slider control.
+ * Creates a slider control.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework/control-slider
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Core\Kirki;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Kirki\URL;
 
 /**
  * Slider control (range).
+ *
+ * @since 1.0
  */
 class Slider extends Base {
 
@@ -30,49 +26,46 @@ class Slider extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-slider';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_slider',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-slider/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-slider',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-slider', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-slider-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-slider-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -96,6 +89,8 @@ class Slider extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

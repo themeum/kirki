@@ -2,17 +2,18 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-select
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Preset extends Select {
 
@@ -20,6 +21,7 @@ class Preset extends Select {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-select';
@@ -29,7 +31,7 @@ class Preset extends Select {
 	 * Set the preset.
 	 *
 	 * @access protected
-	 * @since 3.0.28
+	 * @since 1.0
 	 */
 	protected function set_preset() {
 

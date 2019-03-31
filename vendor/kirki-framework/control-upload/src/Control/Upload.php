@@ -2,24 +2,25 @@
 /**
  * Customizer Control: image.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.23
+ * @package   kirki-framework/control-typography
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 /**
  * Adds the image control.
+ *
+ * @psince 1.0
  */
 class Upload extends \WP_Customize_Upload_Control {
 
 	/**
 	 * Whitelisting the "required" argument.
 	 *
-	 * @since 3.0.17
+	 * @since 1.0
 	 * @access public
 	 * @var array
 	 */
@@ -28,9 +29,11 @@ class Upload extends \WP_Customize_Upload_Control {
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
-	 * @since 3.0.23
-	 *
 	 * @uses WP_Customize_Media_Control::to_json()
+	 * 
+	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();

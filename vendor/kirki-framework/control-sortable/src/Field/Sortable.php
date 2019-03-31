@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.3.2
+ * @package   kirki-framework/control-sortable
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Sortable extends Field {
 
@@ -22,6 +23,8 @@ class Sortable extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-sortable';
@@ -31,6 +34,8 @@ class Sortable extends Field {
 	 * Sets the $sanitize_callback.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 		$this->sanitize_callback = [ $this, 'sanitize' ];
@@ -40,6 +45,7 @@ class Sortable extends Field {
 	 * Sanitizes sortable values.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @param array $value The checkbox value.
 	 * @return array
 	 */

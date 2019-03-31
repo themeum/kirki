@@ -2,27 +2,23 @@
 /**
  * Customizer Control: typography.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.0
+ * @package   kirki-framework/control-typography
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
+use Kirki\URL;
 use Kirki\Control\Base;
 use Kirki\Modules\Webfonts\Google;
 use Kirki\Modules\Webfonts\Fonts;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Typography control.
+ *
+ * @since 1.0
  */
 class Typography extends Base {
 
@@ -30,98 +26,41 @@ class Typography extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-typography';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$color_url = apply_filters(
-			'kirki_package_url_control_color',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color/src'
-		);
-
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
-			"$color_url/assets/scripts/wp-color-picker-alpha.js",
-			[
-				'wp-color-picker',
-			],
-			KIRKI_VERSION,
-			true
-		);
-
+		// Enqueue colorpicker.
+		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() . '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-color',
-			"$color_url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'wp-color-picker-alpha',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
-
-		$select_url = apply_filters(
-			'kirki_package_url_control_select',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-select/src'
-		);
-		$select_url = untrailingslashit( $select_url );
-
 		// Enqueue selectWoo.
-		wp_enqueue_script( 'selectWoo', "$select_url/assets/scripts/selectWoo/js/selectWoo.full.js", [ 'jquery' ], '1.0.1', true );
-		wp_enqueue_style( 'selectWoo', "$select_url/assets/scripts/selectWoo/css/selectWoo.css", [], '1.0.1' );
-
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-select',
-			"$select_url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'selectWoo',
-			],
-			KIRKI_VERSION,
-			false
-		);
-
-		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-select-style',
-			"$select_url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
-
-		$typography_url = apply_filters(
-			'kirki_package_url_control_typography',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-typography/src'
-		);
+		wp_enqueue_script( 'selectWoo', Select::get_control_path_url() . '/assets/scripts/selectWoo/js/selectWoo.full.js', [ 'jquery' ], '1.0.1', true );
+		wp_enqueue_style( 'selectWoo', Select::get_control_path_url() . '/assets/scripts/selectWoo/css/selectWoo.css', [], '1.0.1' );
 
 		// Enqueue the control script.
-		wp_enqueue_script(
-			'kirki-control-typography',
-			"$typography_url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-				'kirki-webfonts',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-webfonts' ], self::$control_ver );
 		wp_localize_script(
 			'kirki-control-typography',
 			'kirkiTypographyControlL10n',
@@ -135,18 +74,17 @@ class Typography extends Base {
 		);
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-typography-style',
-			"$typography_url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-typography-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
+	 * 
+	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -181,6 +119,8 @@ class Typography extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>
@@ -342,29 +282,5 @@ class Typography extends Base {
 		</div>
 		<input class="typography-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php
-	}
-
-	/**
-	 * Formats variants.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param array $variants The variants.
-	 * @return array
-	 */
-	protected function format_variants_array( $variants ) {
-		$all_variants   = Fonts::get_all_variants();
-		$final_variants = [];
-		foreach ( $variants as $variant ) {
-			if ( is_string( $variant ) ) {
-				$final_variants[] = [
-					'id'    => $variant,
-					'label' => isset( $all_variants[ $variant ] ) ? $all_variants[ $variant ] : $variant,
-				];
-			} elseif ( is_array( $variant ) && isset( $variant['id'] ) && isset( $variant['label'] ) ) {
-				$final_variants[] = $variant;
-			}
-		}
-		return $final_variants;
 	}
 }
