@@ -5,19 +5,19 @@
  * Description:   The ultimate WordPress Customizer Toolkit
  * Author:        Ari Stathopoulos (@aristath)
  * Author URI:    http://aristath.github.io
- * Version:       3.0.38
+ * Version:       3.0.39
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  5.3
  * GitHub Plugin URI: aristath/kirki
  * GitHub Plugin URI: https://github.com/aristath/kirki
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   Kirki
+ * @category  Core
+ * @author    Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 // Exit if accessed directly.

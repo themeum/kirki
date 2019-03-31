@@ -118,6 +118,7 @@ final class Kirki_Fonts_Helper {
 		);
 
 		$overrides = array(
+			'test_type' => false,
 			'test_form' => false,
 			'test_size' => true,
 		);
