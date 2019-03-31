@@ -2,19 +2,13 @@
 /**
  * Repeater Customizer Setting.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.0
+ * @package   kirki-framework/control-repeater
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Settings;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * Repeater Settings.
@@ -27,6 +21,7 @@ class Repeater extends \WP_Customize_Setting {
 	 * Any supplied $args override class property defaults.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @param WP_Customize_Manager $manager The WordPress WP_Customize_Manager object.
 	 * @param string               $id       A specific ID of the setting. Can be a theme mod or option name.
 	 * @param array                $args     Setting arguments.
@@ -34,7 +29,7 @@ class Repeater extends \WP_Customize_Setting {
 	public function __construct( $manager, $id, $args = [] ) {
 		parent::__construct( $manager, $id, $args );
 
-		// Will onvert the setting from JSON to array. Must be triggered very soon.
+		// Will convert the setting from JSON to array. Must be triggered very soon.
 		add_filter( "customize_sanitize_{$this->id}", [ $this, 'sanitize_repeater_setting' ], 10, 1 );
 	}
 
@@ -42,6 +37,7 @@ class Repeater extends \WP_Customize_Setting {
 	 * Fetch the value of the setting.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @return mixed The value.
 	 */
 	public function value() {
@@ -52,6 +48,7 @@ class Repeater extends \WP_Customize_Setting {
 	 * Convert the JSON encoded setting coming from Customizer to an Array.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @param string $value URL Encoded JSON Value.
 	 * @return array
 	 */

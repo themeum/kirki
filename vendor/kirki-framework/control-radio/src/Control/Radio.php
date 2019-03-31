@@ -2,17 +2,16 @@
 /**
  * Customizer Control: kirki-radio.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework/control-radio
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,6 +32,16 @@ class Radio extends Base {
 	public $type = 'kirki-radio';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public static $control_ver = '1.0';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -50,30 +59,10 @@ class Radio extends Base {
 			}
 		);
 
-		$url = apply_filters(
-			'kirki_package_url_control_radio',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-radio/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-radio',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-radio', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-radio-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-radio-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 }

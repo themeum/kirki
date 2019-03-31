@@ -2,17 +2,16 @@
 /**
  * Customizer Control: palette.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package   kirki-framework/control-palette
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Palette control (modified radio).
+ *
+ * @since 1.0
  */
 class Palette extends Base {
 
@@ -28,43 +29,36 @@ class Palette extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-palette';
 
-		/**
-		 * Enqueue control related scripts/styles.
-		 *
-		 * @access public
-		 */
+	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 * @var string
+	 */
+	private static $control_ver = '1.0';
+
+	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
+	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_palette',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-palette/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-palette',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-palette', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-palette-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-palette-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
@@ -76,6 +70,8 @@ class Palette extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

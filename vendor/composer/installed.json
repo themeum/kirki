@@ -935,20 +935,21 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-palette.git",
-            "reference": "8ac10a68cda202b11bb89af03c432c2fea44381f"
+            "reference": "c4a534544a99782d3e3ef066024ed56691bbdade"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/8ac10a68cda202b11bb89af03c432c2fea44381f",
-            "reference": "8ac10a68cda202b11bb89af03c432c2fea44381f",
+            "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/c4a534544a99782d3e3ef066024ed56691bbdade",
+            "reference": "c4a534544a99782d3e3ef066024ed56691bbdade",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "*",
             "kirki-framework/control-radio": "*",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T11:06:24+00:00",
+        "time": "2019-03-31T13:15:11+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -984,19 +985,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-radio.git",
-            "reference": "cc0c80d1a13d9a26898e97d069b9c8cfd69ef5ac"
+            "reference": "89e7115fa5d8c1f18c44a91c1816b2b33354d1ce"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/cc0c80d1a13d9a26898e97d069b9c8cfd69ef5ac",
-            "reference": "cc0c80d1a13d9a26898e97d069b9c8cfd69ef5ac",
+            "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/89e7115fa5d8c1f18c44a91c1816b2b33354d1ce",
+            "reference": "89e7115fa5d8c1f18c44a91c1816b2b33354d1ce",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T11:06:40+00:00",
+        "time": "2019-03-31T13:37:28+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1032,19 +1033,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-repeater.git",
-            "reference": "e6caf4b201de9bd7c1d27a2c3e61d51aff2b481c"
+            "reference": "845fca8b7326a2fb52f25b389ed772915d32d406"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/e6caf4b201de9bd7c1d27a2c3e61d51aff2b481c",
-            "reference": "e6caf4b201de9bd7c1d27a2c3e61d51aff2b481c",
+            "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/845fca8b7326a2fb52f25b389ed772915d32d406",
+            "reference": "845fca8b7326a2fb52f25b389ed772915d32d406",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T11:06:54+00:00",
+        "time": "2019-03-31T14:18:56+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

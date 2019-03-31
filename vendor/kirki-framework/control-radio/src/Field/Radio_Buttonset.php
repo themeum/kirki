@@ -2,17 +2,18 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-radio
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Radio_Buttonset extends Radio {
 
@@ -20,6 +21,8 @@ class Radio_Buttonset extends Radio {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_type() {
 		$this->type = 'kirki-radio-buttonset';

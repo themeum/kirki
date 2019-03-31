@@ -2,25 +2,21 @@
 /**
  * Customizer Control: repeater.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.0
+ * @package   kirki-framework/control-repeater
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
 use Kirki\Core\Kirki;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
+use Kirki\URL;
 /**
  * Repeater control
+ *
+ * @since 1.0
  */
 class Repeater extends Base {
 
@@ -28,6 +24,7 @@ class Repeater extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'repeater';
@@ -36,6 +33,7 @@ class Repeater extends Base {
 	 * The fields that each container row will contain.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var array
 	 */
 	public $fields = [];
@@ -44,6 +42,7 @@ class Repeater extends Base {
 	 * Will store a filtered version of value for advenced fields (like images).
 	 *
 	 * @access protected
+	 * @since 1.0
 	 * @var array
 	 */
 	protected $filtered_value = [];
@@ -52,6 +51,7 @@ class Repeater extends Base {
 	 * The row label
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var array
 	 */
 	public $row_label = [];
@@ -60,15 +60,28 @@ class Repeater extends Base {
 	 * The button label
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $button_label = '';
+
+	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public static $control_ver = '1.0';
 
 	/**
 	 * Constructor.
 	 * Supplied `$args` override class property defaults.
 	 * If `$args['settings']` is not defined, use the $id as the setting ID.
 	 *
+	 * @access public
+	 * @since 1.0
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    {@see WP_Customize_Control::__construct}.
@@ -191,40 +204,25 @@ class Repeater extends Base {
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$url = apply_filters(
-			'kirki_package_url_control_repeater',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-repeater/src'
-		);
-
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-repeater',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-repeater-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -246,6 +244,8 @@ class Repeater extends Base {
 	 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function render_content() {
 		?>
@@ -268,9 +268,7 @@ class Repeater extends Base {
 		<button class="button-secondary repeater-add"><?php echo esc_html( $this->button_label ); ?></button>
 
 		<?php
-
 		$this->repeater_js_template();
-
 	}
 
 	/**
@@ -278,6 +276,8 @@ class Repeater extends Base {
 	 * Class variables for this control class are available in the `data` JS object.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function repeater_js_template() {
 		?>
@@ -490,8 +490,9 @@ class Repeater extends Base {
 	 * Validate row-labels.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0
 	 * @param array $args {@see WP_Customize_Control::__construct}.
+	 * @return void
 	 */
 	protected function row_label( $args ) {
 
