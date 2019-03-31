@@ -33,11 +33,11 @@ class Number extends Base {
 	 * The version. Used in scripts & styles for cache-busting.
 	 *
 	 * @static
-	 * @access private
+	 * @access public
 	 * @since 1.0
 	 * @var string
 	 */
-	private static $control_ver = '1.0';
+	public static $control_ver = '1.0';
 
 	/**
 	 * Enqueue control related scripts/styles.

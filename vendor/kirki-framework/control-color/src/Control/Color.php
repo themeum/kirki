@@ -11,8 +11,6 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Control\Color;
-use Kirki\Core\Kirki;
 use Kirki\URL;
 
 /**
