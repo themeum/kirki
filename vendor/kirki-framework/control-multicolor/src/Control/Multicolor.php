@@ -2,25 +2,22 @@
 /**
  * Customizer Control: multicolor.
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-multicolor
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Core\Kirki;
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Kirki\Control\Color;
+use Kirki\URL;
 
 /**
  * Multicolor control.
+ *
+ * @since 1.0
  */
 class Multicolor extends Base {
 
@@ -28,14 +25,26 @@ class Multicolor extends Base {
 	 * The control type.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-multicolor';
 
 	/**
+	 * The version. Used in scripts & styles for cache-busting.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 * @var string
+	 */
+	private static $control_ver = '1.0';
+
+	/**
 	 * Enable/Disable Alpha channel on color pickers
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @var boolean
 	 */
 	public $alpha = true;
@@ -44,71 +53,32 @@ class Multicolor extends Base {
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function enqueue() {
 		parent::enqueue();
 
-		$color_url = apply_filters(
-			'kirki_package_url_control_color',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-color/src'
-		);
-
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
-			"$color_url/assets/scripts/wp-color-picker-alpha.js",
-			[
-				'wp-color-picker',
-			],
-			KIRKI_VERSION,
-			true
-		);
-
+		// Enqueue colorpicker.
+		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() . '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-color',
-			"$color_url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-				'wp-color-picker-alpha',
-				'kirki-dynamic-control',
-			],
-			KIRKI_VERSION,
-			false
-		);
-
-		$url = apply_filters(
-			'kirki_package_url_control_multicolor',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-multicolor/src'
-		);
+		wp_enqueue_script( 'kirki-control-color', Color::get_control_path_url() . '/assets/scripts/control.js', [ 'jquery', 'customize-base', 'wp-color-picker-alpha', 'kirki-dynamic-control' ], Color::$control_ver, false );
 
 		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-multicolor',
-			"$url/assets/scripts/control.js",
-			[
-				'jquery',
-				'customize-base',
-			],
-			KIRKI_VERSION,
-			false
-		);
+		wp_enqueue_script( 'kirki-control-multicolor', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style(
-			'kirki-control-multicolor-style',
-			"$url/assets/styles/style.css",
-			[],
-			KIRKI_VERSION
-		);
+		wp_enqueue_style( 'kirki-control-multicolor-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 	}
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @access public
+	 * @since 1.0
+	 * @return void
 	 */
 	public function to_json() {
 		parent::to_json();
@@ -124,6 +94,8 @@ class Multicolor extends Base {
 	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function content_template() {
 		?>

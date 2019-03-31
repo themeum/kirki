@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=5.6",
-        "kirki-framework/core": "dev-master"
+        "kirki-framework/core": "*"
     },
     "autoload"    : {
 		"psr-4" : {

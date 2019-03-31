@@ -2,11 +2,10 @@
 /**
  * Override field methods
  *
- * @package     Kirki
- * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       2.2.7
+ * @package   kirki-framework/control-number
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license   https://opensource.org/licenses/MIT
+ * @since     1.0
  */
 
 namespace Kirki\Field;
@@ -15,6 +14,8 @@ use Kirki\Core\Field;
 
 /**
  * Field overrides.
+ *
+ * @since 1.0
  */
 class Number extends Field {
 
@@ -22,17 +23,18 @@ class Number extends Field {
 	 * Sets the control type.
 	 *
 	 * @access protected
+	 * @since 1.0
 	 */
 	protected function set_type() {
-
 		$this->type = 'kirki-number';
-
 	}
 
 	/**
 	 * Sets the $sanitize_callback
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_sanitize_callback() {
 		$this->sanitize_callback = [ $this, 'sanitize' ];
@@ -42,6 +44,8 @@ class Number extends Field {
 	 * Sets the $choices
 	 *
 	 * @access protected
+	 * @since 1.0
+	 * @return void
 	 */
 	protected function set_choices() {
 		$this->choices = wp_parse_args(
@@ -62,6 +66,7 @@ class Number extends Field {
 	 * Sanitizes numeric values.
 	 *
 	 * @access public
+	 * @since 1.0
 	 * @param integer|string $value The checkbox value.
 	 * @return bool
 	 */
