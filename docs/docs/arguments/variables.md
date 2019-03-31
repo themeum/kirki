@@ -59,7 +59,9 @@ In our compiler then in order to get the values and format them properly we'd do
 
 ```php
 <?php
-$variables = Kirki_Util::get_variables();
+use Kirki\Core\Util;
+
+$variables = Util::get_variables();
 
 foreach ( $variables as $variable => $value ) {
 	echo '@' . $variable . ':' . $value . ';';
