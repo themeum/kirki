@@ -1,3 +1,7 @@
+- name: Kale
+  url: http://demo.lyrathemes.com/kale/
+  thumb: http://demo.lyrathemes.com/kale/wp-content/themes/kale/screenshot.png
+
 - name: Stylizer
   url: http://alxmedia.se/themes/stylizer/
   thumb: http://demo.alxmedia.se/wp-content/themes/stylizer/screenshot.png
