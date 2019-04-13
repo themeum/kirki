@@ -1,0 +1,17 @@
+# Omit during export.
+.github/ export-ignore
+docs/ export-ignore
+tests/ export-ignore
+controls/scss/ export-ignore
+.* export-ignore
+*.sh export-ignore
+*.md export-ignore
+*.txt export-ignore
+*.xml export-ignore
+*.dist export-ignore
+*.json export-ignore
+*.lock export-ignore
+LICENSE export-ignore
+Gruntfile.js export-ignore
+example.php export-ignore
+LICENSE export-ignore
