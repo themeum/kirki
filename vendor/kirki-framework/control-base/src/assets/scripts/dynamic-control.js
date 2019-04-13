@@ -1,4 +1,3 @@
-/* global kirki */
 /**
  * The majority of the code in this file
  * is derived from the wp-customize-posts plugin
@@ -7,6 +6,8 @@
  * @see https://github.com/xwp/wp-customize-posts
  */
 
+var kirki = kirki || {};
+kirki.control = kirki.control || {};
 ( function() {
 	'use strict';
 

@@ -10,7 +10,7 @@
 
 namespace Kirki\Control;
 
-use Kirki\Control\Base;
+use Kirki\Control\Radio;
 use Kirki\URL;
 
 // Exit if accessed directly.
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class Palette extends Base {
+class Palette extends Radio {
 
 	/**
 	 * The control type.

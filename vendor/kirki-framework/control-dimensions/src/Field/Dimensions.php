@@ -39,7 +39,7 @@ class Dimensions extends Field {
 	 */
 	protected function set_sanitize_callback() {
 		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = [ '\Kirki\Fields\Dimensions', 'sanitize' ];
+			$this->sanitize_callback = [ '\Kirki\Field\Dimensions', 'sanitize' ];
 		}
 	}
 

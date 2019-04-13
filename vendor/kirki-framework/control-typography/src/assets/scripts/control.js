@@ -84,8 +84,11 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			picker.wpColorPicker( {
 				change: function() {
 					setTimeout( function() {
-						control.saveValue( 'color', picker.val() );
-					}, 100 );
+						console.log( control.setting._value );
+						if ( control.setting._value.color !== picker.val() ) {
+							control.saveValue( 'color', picker.val() );
+						}
+					}, 50 );
 				}
 			} );
 		}

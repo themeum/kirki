@@ -59,6 +59,9 @@ class Typography extends Base {
 		wp_enqueue_script( 'selectWoo', Select::get_control_path_url() . '/assets/scripts/selectWoo/js/selectWoo.full.js', [ 'jquery' ], '1.0.1', true );
 		wp_enqueue_style( 'selectWoo', Select::get_control_path_url() . '/assets/scripts/selectWoo/css/selectWoo.css', [], '1.0.1' );
 
+		// Enqueue the custom selectWoo style.
+		wp_enqueue_style( 'kirki-control-select-style', Select::get_control_path_url() . '/assets/styles/style.css', [], self::$control_ver );
+
 		// Enqueue the control script.
 		wp_enqueue_script( 'kirki-control-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control', 'kirki-webfonts' ], self::$control_ver, false );
 		wp_localize_script(

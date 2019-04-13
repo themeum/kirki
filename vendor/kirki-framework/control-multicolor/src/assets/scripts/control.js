@@ -1,25 +1,7 @@
 /* global kirkiControlLoader */
-wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.extend( {
-
-	// When we're finished loading continue processing
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Init the control.
-		if ( ! _.isUndefined( window.kirkiControlLoader ) && _.isFunction( kirkiControlLoader ) ) {
-			kirkiControlLoader( control );
-		} else {
-			control.initKirkiControl();
-		}
-	},
+wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
-
-		'use strict';
-
 		var control = this,
 			colors  = control.params.choices,
 			keys    = Object.keys( colors ),
@@ -35,13 +17,15 @@ wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.Control.exten
 
 						// Color controls require a small delay.
 						setTimeout( function() {
+							if ( ! control.setting._value || ! control.setting._value[ subSetting ] || control.setting._value[ subSetting ] !== picker.val() ) {
 
-							// Set the value.
-							control.saveValue( subSetting, picker.val() );
+								// Set the value.
+								control.saveValue( subSetting, picker.val() );
 
-							// Trigger the change.
-							control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
-						}, 100 );
+								// Trigger the change.
+								control.container.find( '.multicolor-index-' + subSetting ).trigger( 'change' );
+							}
+						}, 50 );
 					}
 				};
 

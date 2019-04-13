@@ -54,7 +54,7 @@ data = _.defaults( data, {
 		<# if ( 'hue' !== data.mode && true === data['data-palette'] ) { #>
 			<?php $editor_palette = current( (array) get_theme_support( 'editor-color-palette' ) ); ?>
 			<?php if ( ! empty( $editor_palette ) ) : ?>
-				<# var kirkiColorEditorPalette = <?php echo wp_strip_all_tags( json_encode( $editor_palette ) ); ?>; #>
+				<# var kirkiColorEditorPalette = <?php echo wp_strip_all_tags( json_encode( $editor_palette ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>; #>
 				<# _.each( kirkiColorEditorPalette, function( paletteColor ) { #>
 					<button class="palette-color palette-color-{{ paletteColor.slug }}" style="background-color:{{ paletteColor.color }};" title="{{ paletteColor.name }}" data-color="{{ paletteColor.color }}">
 						<span class="screen-reader-text">{{ paletteColor.name }}</span>

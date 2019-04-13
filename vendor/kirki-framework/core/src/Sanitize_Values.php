@@ -162,7 +162,7 @@ class Sanitize_Values {
 	 * @return string
 	 */
 	public static function rgba( $value ) {
-		$color = ariColor::newColor( $value );
+		$color = \ariColor::newColor( $value );
 		return $color->toCSS( 'rgba' );
 	}
 
@@ -187,7 +187,7 @@ class Sanitize_Values {
 		}
 
 		// Instantiate the object.
-		$color = ariColor::newColor( $value );
+		$color = \ariColor::newColor( $value );
 
 		// Return a CSS value, using the auto-detected mode.
 		return $color->toCSS( $color->mode );

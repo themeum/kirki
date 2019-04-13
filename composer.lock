@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eed0db6d4a0c0fc6682ae3cd530adda4",
+    "content-hash": "78f76b8db67a29f57a978087f0c10065",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "b1f8c085700753840253b14d25a535abe1ec6d37"
+                "reference": "16d2c1e4030be9d585109e1e2c490697ed327c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/b1f8c085700753840253b14d25a535abe1ec6d37",
-                "reference": "b1f8c085700753840253b14d25a535abe1ec6d37",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/16d2c1e4030be9d585109e1e2c490697ed327c9c",
+                "reference": "16d2c1e4030be9d585109e1e2c490697ed327c9c",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T18:02:07+00:00"
+            "time": "2019-04-13T22:35:35+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -198,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19"
+                "reference": "d4f0d8d4c0473edc718bd18327e7e49420de6e89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19",
-                "reference": "ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/d4f0d8d4c0473edc718bd18327e7e49420de6e89",
+                "reference": "d4f0d8d4c0473edc718bd18327e7e49420de6e89",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-13T21:16:32+00:00"
+            "time": "2019-04-13T21:27:50+00:00"
         },
         {
             "name": "kirki-framework/control-color-palette",
@@ -245,12 +245,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color-palette.git",
-                "reference": "6e582120c7ec36da00fc360cd06151405acbd27c"
+                "reference": "145737843499dfc8c5a511abc93564d7151ca8e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/6e582120c7ec36da00fc360cd06151405acbd27c",
-                "reference": "6e582120c7ec36da00fc360cd06151405acbd27c",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/145737843499dfc8c5a511abc93564d7151ca8e7",
+                "reference": "145737843499dfc8c5a511abc93564d7151ca8e7",
                 "shasum": ""
             },
             "require": {
@@ -285,7 +285,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T17:10:22+00:00"
+            "time": "2019-04-13T21:46:06+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -383,12 +383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "28bc4877b31223008746e6dc2326e5eb5a6bbea4"
+                "reference": "c5edc75c925c4d51b375f4fddec61c07171876b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/28bc4877b31223008746e6dc2326e5eb5a6bbea4",
-                "reference": "28bc4877b31223008746e6dc2326e5eb5a6bbea4",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/c5edc75c925c4d51b375f4fddec61c07171876b6",
+                "reference": "c5edc75c925c4d51b375f4fddec61c07171876b6",
                 "shasum": ""
             },
             "require": {
@@ -423,7 +423,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:17:46+00:00"
+            "time": "2019-04-13T21:49:28+00:00"
         },
         {
             "name": "kirki-framework/control-date",
@@ -525,12 +525,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimensions.git",
-                "reference": "fe8269691186f9ca55dac5f9652120250f468ec0"
+                "reference": "8e2dbd5071e307a7cfbfa260b7c01c73432807a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/fe8269691186f9ca55dac5f9652120250f468ec0",
-                "reference": "fe8269691186f9ca55dac5f9652120250f468ec0",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimensions/zipball/8e2dbd5071e307a7cfbfa260b7c01c73432807a6",
+                "reference": "8e2dbd5071e307a7cfbfa260b7c01c73432807a6",
                 "shasum": ""
             },
             "require": {
@@ -565,7 +565,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:11:14+00:00"
+            "time": "2019-04-13T21:54:52+00:00"
         },
         {
             "name": "kirki-framework/control-editor",
@@ -620,16 +620,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-fontawesome.git",
-                "reference": "d897ff7f3ea000562f54a6ac23cbcef20f9d89f9"
+                "reference": "5edb915972f3e2a7028cf82cd8d824df24a7322e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/d897ff7f3ea000562f54a6ac23cbcef20f9d89f9",
-                "reference": "d897ff7f3ea000562f54a6ac23cbcef20f9d89f9",
+                "url": "https://api.github.com/repos/kirki-framework/control-fontawesome/zipball/5edb915972f3e2a7028cf82cd8d824df24a7322e",
+                "reference": "5edb915972f3e2a7028cf82cd8d824df24a7322e",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "*",
+                "kirki-framework/control-select": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
@@ -659,7 +659,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:18:58+00:00"
+            "time": "2019-04-13T21:58:47+00:00"
         },
         {
             "name": "kirki-framework/control-generic",
@@ -667,12 +667,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "fae6ce4ce2aa0a8ced97e4c170ff083f86c0a93d"
+                "reference": "fc0da746fd4f625552a66a8565368c4f5eb8d54c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/fae6ce4ce2aa0a8ced97e4c170ff083f86c0a93d",
-                "reference": "fae6ce4ce2aa0a8ced97e4c170ff083f86c0a93d",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/fc0da746fd4f625552a66a8565368c4f5eb8d54c",
+                "reference": "fc0da746fd4f625552a66a8565368c4f5eb8d54c",
                 "shasum": ""
             },
             "require": {
@@ -706,7 +706,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:13:30+00:00"
+            "time": "2019-04-13T22:18:04+00:00"
         },
         {
             "name": "kirki-framework/control-image",
@@ -808,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-multicolor.git",
-                "reference": "997355e70087a001f2e0947d598260a25e19d6ac"
+                "reference": "9001b0a6e91c5b7be6c855812a8ed63e9be41f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-multicolor/zipball/997355e70087a001f2e0947d598260a25e19d6ac",
-                "reference": "997355e70087a001f2e0947d598260a25e19d6ac",
+                "url": "https://api.github.com/repos/kirki-framework/control-multicolor/zipball/9001b0a6e91c5b7be6c855812a8ed63e9be41f25",
+                "reference": "9001b0a6e91c5b7be6c855812a8ed63e9be41f25",
                 "shasum": ""
             },
             "require": {
@@ -848,54 +848,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T17:11:28+00:00"
-        },
-        {
-            "name": "kirki-framework/control-number",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/control-number.git",
-                "reference": "03041cb6aa9c11cf32cb5912f0cff639228e49f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-number/zipball/03041cb6aa9c11cf32cb5912f0cff639228e49f7",
-                "reference": "03041cb6aa9c11cf32cb5912f0cff639228e49f7",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-base": "*",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Number control for the Kirki Customizer framework.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "time": "2019-03-31T17:12:10+00:00"
+            "time": "2019-04-13T22:10:07+00:00"
         },
         {
             "name": "kirki-framework/control-palette",
@@ -903,16 +856,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-palette.git",
-                "reference": "ead78d1edb362e53aac101c5f8ff2e899b785d1e"
+                "reference": "bfb506fb49b3cc6b37f1cc52d0fa9ef2eb6cde37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/ead78d1edb362e53aac101c5f8ff2e899b785d1e",
-                "reference": "ead78d1edb362e53aac101c5f8ff2e899b785d1e",
+                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/bfb506fb49b3cc6b37f1cc52d0fa9ef2eb6cde37",
+                "reference": "bfb506fb49b3cc6b37f1cc52d0fa9ef2eb6cde37",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "*",
                 "kirki-framework/control-radio": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
@@ -943,7 +895,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T17:03:00+00:00"
+            "time": "2019-04-13T22:38:35+00:00"
         },
         {
             "name": "kirki-framework/control-radio",
@@ -997,16 +949,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "845fca8b7326a2fb52f25b389ed772915d32d406"
+                "reference": "073617f4d88c1926d46030e74d66bbe8d4bd2877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/845fca8b7326a2fb52f25b389ed772915d32d406",
-                "reference": "845fca8b7326a2fb52f25b389ed772915d32d406",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/073617f4d88c1926d46030e74d66bbe8d4bd2877",
+                "reference": "073617f4d88c1926d46030e74d66bbe8d4bd2877",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "*",
+                "kirki-framework/control-checkbox": "*",
+                "kirki-framework/control-color": "*",
+                "kirki-framework/control-generic": "*",
+                "kirki-framework/control-image": "*",
+                "kirki-framework/control-radio": "*",
+                "kirki-framework/control-select": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
@@ -1037,7 +994,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T14:18:56+00:00"
+            "time": "2019-04-13T22:50:21+00:00"
         },
         {
             "name": "kirki-framework/control-select",
@@ -1092,17 +1049,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "0bb4058047aab84c51b1ea2683ed120dd1a04b09"
+                "reference": "02e403213461e6a1783013f6eb90c6bfee1c681b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/0bb4058047aab84c51b1ea2683ed120dd1a04b09",
-                "reference": "0bb4058047aab84c51b1ea2683ed120dd1a04b09",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/02e403213461e6a1783013f6eb90c6bfee1c681b",
+                "reference": "02e403213461e6a1783013f6eb90c6bfee1c681b",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "*",
-                "kirki-framework/control-number": "*",
+                "kirki-framework/control-generic": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
@@ -1132,7 +1088,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T15:17:19+00:00"
+            "time": "2019-04-13T22:23:57+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -1187,12 +1143,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-typography.git",
-                "reference": "6b5a003fac3f6f4c153c15eced2facf4be51fb29"
+                "reference": "9720e13802e8415303ff09424d447d77c009f379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/6b5a003fac3f6f4c153c15eced2facf4be51fb29",
-                "reference": "6b5a003fac3f6f4c153c15eced2facf4be51fb29",
+                "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/9720e13802e8415303ff09424d447d77c009f379",
+                "reference": "9720e13802e8415303ff09424d447d77c009f379",
                 "shasum": ""
             },
             "require": {
@@ -1229,7 +1185,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:12:17+00:00"
+            "time": "2019-04-13T23:07:56+00:00"
         },
         {
             "name": "kirki-framework/control-upload",
@@ -1283,12 +1239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "bd522a3d57233a08178685fb8f161d4973f42a4c"
+                "reference": "b5d0323d3c8dcd0fae800d57ac5f4763a97b8881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/bd522a3d57233a08178685fb8f161d4973f42a4c",
-                "reference": "bd522a3d57233a08178685fb8f161d4973f42a4c",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/b5d0323d3c8dcd0fae800d57ac5f4763a97b8881",
+                "reference": "b5d0323d3c8dcd0fae800d57ac5f4763a97b8881",
                 "shasum": ""
             },
             "require": {
@@ -1319,7 +1275,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-30T14:46:38+00:00"
+            "time": "2019-04-13T23:16:00+00:00"
         },
         {
             "name": "kirki-framework/module-css",
@@ -1327,17 +1283,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "29ecf42b1704971e2fd57d779c9475a12b7759c1"
+                "reference": "0e69f33992a01aed0548f134843601ab1410cb97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/29ecf42b1704971e2fd57d779c9475a12b7759c1",
-                "reference": "29ecf42b1704971e2fd57d779c9475a12b7759c1",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/0e69f33992a01aed0548f134843601ab1410cb97",
+                "reference": "0e69f33992a01aed0548f134843601ab1410cb97",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/core": "*",
-                "kirki-framework/wp-css-generator": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -1365,7 +1320,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-04T16:10:03+00:00"
+            "time": "2019-04-13T21:29:25+00:00"
         },
         {
             "name": "kirki-framework/module-css-vars",
@@ -1951,48 +1906,6 @@
                 "wordpress"
             ],
             "time": "2019-03-30T14:59:26+00:00"
-        },
-        {
-            "name": "kirki-framework/wp-css-generator",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/wp-css-generator.git",
-                "reference": "6ae1d459fab0cd63b7a083cef412da80697af941"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/wp-css-generator/zipball/6ae1d459fab0cd63b7a083cef412da80697af941",
-                "reference": "6ae1d459fab0cd63b7a083cef412da80697af941",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Compiles styles from an array of properties, values, media-queries and elements.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "wordpress"
-            ],
-            "time": "2019-04-01T19:02:46+00:00"
         }
     ],
     "packages-dev": [
@@ -4907,7 +4820,6 @@
         "kirki-framework/control-image": 20,
         "kirki-framework/control-multicheck": 20,
         "kirki-framework/control-multicolor": 20,
-        "kirki-framework/control-number": 20,
         "kirki-framework/control-palette": 20,
         "kirki-framework/control-radio": 20,
         "kirki-framework/control-repeater": 20,

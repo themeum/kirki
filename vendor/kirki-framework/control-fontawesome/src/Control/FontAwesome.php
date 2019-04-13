@@ -10,13 +10,13 @@
 
 namespace Kirki\Control;
 
-use Kirki\Control\Base;
+use Kirki\Control\Select;
 use Kirki\URL;
 
 /**
  * Select control.
  */
-class FontAwesome extends Base {
+class FontAwesome extends Select {
 
 	/**
 	 * The control type.
