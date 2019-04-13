@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-background.git",
-            "reference": "ad437ffe85515b0aeb24976c8c6398e10f30384b"
+            "reference": "faacc173d82ef70b8b9362a2924afb0a1c19af42"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/ad437ffe85515b0aeb24976c8c6398e10f30384b",
-            "reference": "ad437ffe85515b0aeb24976c8c6398e10f30384b",
+            "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/faacc173d82ef70b8b9362a2924afb0a1c19af42",
+            "reference": "faacc173d82ef70b8b9362a2924afb0a1c19af42",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T17:01:06+00:00",
+        "time": "2019-04-13T08:54:21+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -200,12 +200,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "aeeeaa74e01ecd9f83bfead4dd866b64152ca82c"
+            "reference": "ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/aeeeaa74e01ecd9f83bfead4dd866b64152ca82c",
-            "reference": "aeeeaa74e01ecd9f83bfead4dd866b64152ca82c",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19",
+            "reference": "ebb0b4ea0e3a0ba29149065fde1ab94a46e54b19",
             "shasum": ""
         },
         "require": {
@@ -213,7 +213,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T16:43:15+00:00",
+        "time": "2019-04-13T21:16:32+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1377,19 +1377,20 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-css.git",
-            "reference": "89890111676fc2d5fb28f11b04283d2bfe390f70"
+            "reference": "29ecf42b1704971e2fd57d779c9475a12b7759c1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/89890111676fc2d5fb28f11b04283d2bfe390f70",
-            "reference": "89890111676fc2d5fb28f11b04283d2bfe390f70",
+            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/29ecf42b1704971e2fd57d779c9475a12b7759c1",
+            "reference": "29ecf42b1704971e2fd57d779c9475a12b7759c1",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "*",
+            "kirki-framework/wp-css-generator": "*",
             "php": ">=5.6"
         },
-        "time": "2019-03-31T11:09:41+00:00",
+        "time": "2019-04-04T16:10:03+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -2023,6 +2024,50 @@
             }
         ],
         "description": "Helper component to get the URL of a file in WordPress.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/wp-css-generator",
+        "version": "v0.1",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/wp-css-generator.git",
+            "reference": "6ae1d459fab0cd63b7a083cef412da80697af941"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/wp-css-generator/zipball/6ae1d459fab0cd63b7a083cef412da80697af941",
+            "reference": "6ae1d459fab0cd63b7a083cef412da80697af941",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "time": "2019-04-01T19:02:46+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Compiles styles from an array of properties, values, media-queries and elements.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "wordpress"

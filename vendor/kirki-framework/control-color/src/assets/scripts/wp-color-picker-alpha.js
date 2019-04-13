@@ -9,8 +9,10 @@
  * Licensed under the GPLv2 license.
  */
 ( function( $ ) {
+
 	// Variable for some backgrounds ( grid )
 	var image   = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAAHnlligAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHJJREFUeNpi+P///4EDBxiAGMgCCCAGFB5AADGCRBgYDh48CCRZIJS9vT2QBAggFBkmBiSAogxFBiCAoHogAKIKAlBUYTELAiAmEtABEECk20G6BOmuIl0CIMBQ/IEMkO0myiSSraaaBhZcbkUOs0HuBwDplz5uFJ3Z4gAAAABJRU5ErkJggg==',
+
 	// Html stuff for wpColorPicker copy of the original color-picker.js
 		_before = '<button type="button" class="button wp-color-result" aria-expanded="false"><span class="wp-color-result-text"></span></button>',
 		_after = '<div class="wp-picker-holder" />',
@@ -24,16 +26,19 @@
 	 * for enable support rbga
 	 */
 	Color.fn.toString = function() {
-		if ( this._alpha < 1 )
-			return this.toCSS( 'rgba', this._alpha ).replace( /\s+/g, '' );
+		if ( 1 > this._alpha ) {
+return this.toCSS( 'rgba', this._alpha ).replace( /\s+/g, '' );
+}
 
 		var hex = parseInt( this._color, 10 ).toString( 16 );
 
-		if ( this.error )
-			return '';
+		if ( this.error ) {
+return '';
+}
 
-		if ( hex.length < 6 )
-			hex = ( '00000' + hex ).substr( -6 );
+		if ( 6 > hex.length ) {
+hex = ( '00000' + hex ).substr( -6 );
+}
 
 		return '#' + hex;
 	};
@@ -42,6 +47,7 @@
 	 * Overwrite wpColorPicker
 	 */
 	$.widget( 'wp.wpColorPicker', $.wp.wpColorPicker, {
+
 		/**
 		 * @summary Creates the color picker.
 		 *
@@ -54,6 +60,7 @@
 		 * @returns {void}
 		 */
 		_create: function() {
+
 			// Return early if Iris support is missing.
 			if ( ! $.support.iris ) {
 				return;
@@ -66,7 +73,7 @@
 			$.extend( self.options, el.data() );
 
 			// Create a color picker which only allows adjustments to the hue.
-			if ( self.options.type === 'hue' ) {
+			if ( 'hue' === self.options.type ) {
 				return self._createHueOnly();
 			}
 
@@ -83,8 +90,10 @@
 			 * If there's no label, add a default one to match the Customizer template.
 			 */
 			if ( ! el.parent( 'label' ).length ) {
+
 				// Wrap the input field in the default label.
 				el.wrap( _wrappingLabel );
+
 				// Insert the default label text.
 				self.wrappingLabelText = $( _wrappingLabelText )
 					.insertBefore( el )
@@ -99,20 +108,25 @@
 
 			// Wrap the label in the main wrapper.
 			self.wrappingLabel.wrap( _wrap );
+
 			// Store a reference to the main wrapper.
 			self.wrap = self.wrappingLabel.parent();
+
 			// Set up the toggle button and insert it before the wrapping label.
 			self.toggler = $( _before )
 				.insertBefore( self.wrappingLabel )
 				.css( { backgroundColor: self.initialValue } );
+
 			// Set the toggle button span element text.
 			if ( el.data( 'label' ) ) {
 				self.toggler.find( '.wp-color-result-text' ).text( el.data( 'label' ) );
 			} else {
 				self.toggler.find( '.wp-color-result-text' ).text( wpColorPickerL10n.pick );
 			}
+
 			// Set up the Iris container and insert it after the wrapping label.
 			self.pickerContainer = $( _after ).insertAfter( self.wrappingLabel );
+
 			// Store a reference to the Clear/Default button.
 			self.button = $( _button );
 
@@ -144,14 +158,14 @@
 			/*
 			 * CSS for support < 4.9
 			 */
-			self.toggler.css({
+			self.toggler.css( {
 				'height': '24px',
 				'margin': '0 6px 6px 0',
 				'padding': '0 0 0 30px',
 				'font-size': '11px'
-			});
+			} );
 
-			self.toggler.find( '.wp-color-result-text' ).css({
+			self.toggler.find( '.wp-color-result-text' ).css( {
 				'background': '#f7f7f7',
 				'border-radius': '0 2px 2px 0',
 				'border-left': '1px solid #ccc',
@@ -160,7 +174,7 @@
 				'line-height': '22px',
 				'padding': '0 6px',
 				'text-align': 'center'
-			});
+			} );
 
 			el.iris( {
 				target: self.pickerContainer,
@@ -168,6 +182,7 @@
 				width: self.options.width,
 				mode: self.options.mode,
 				palettes: self.options.palettes,
+
 				/**
 				 * @summary Handles the onChange event if one has been defined in the options.
 				 *
@@ -187,7 +202,7 @@
 							'background-image': 'url(' + image + ')',
 							'position': 'relative'
 						} );
-						if ( self.toggler.find( 'span.color-alpha' ).length == 0 ) {
+						if ( 0 == self.toggler.find( 'span.color-alpha' ).length ) {
 							self.toggler.append( '<span class="color-alpha" />' );
 						}
 						self.toggler.find( 'span.color-alpha' ).css( {
@@ -218,6 +233,7 @@
 				self.toggler.click();
 			}
 		},
+
 		/**
 		 * @summary Binds event listeners to the color picker.
 		 *
@@ -241,7 +257,7 @@
 			 */
 			self.wrap.on( 'click.wpcolorpicker', function( event ) {
 				event.stopPropagation();
-			});
+			} );
 
 			/**
 			 * @summary Open or close the color picker depending on the class.
@@ -254,7 +270,7 @@
 				} else {
 					self.open();
 				}
-			});
+			} );
 
 			/**
 			 * @summary Checks if value is empty when changing the color in the color picker.
@@ -269,8 +285,9 @@
 			 * @returns {void}
 			 */
 			self.element.on( 'change', function( event ) {
+
 				// Empty or Error = clear
-				if ( $( this ).val() === '' || self.element.hasClass( 'iris-error' ) ) {
+				if ( '' === $( this ).val() || self.element.hasClass( 'iris-error' ) ) {
 					if ( self.options.alpha ) {
 						self.toggler.find( 'span.color-alpha' ).css( 'backgroundColor', '' );
 					} else {
@@ -278,8 +295,9 @@
 					}
 
 					// Fire clear callback if we have one
-					if ( $.isFunction( self.options.clear ) )
-						self.options.clear.call( this, event );
+					if ( $.isFunction( self.options.clear ) ) {
+self.options.clear.call( this, event );
+}
 				}
 			} );
 
@@ -303,15 +321,16 @@
 						self.toggler.css( 'backgroundColor', '' );
 					}
 
-					if ( $.isFunction( self.options.clear ) )
-						self.options.clear.call( this, event );
+					if ( $.isFunction( self.options.clear ) ) {
+self.options.clear.call( this, event );
+}
 
 				} else if ( $( this ).hasClass( 'wp-picker-default' ) ) {
 					self.element.val( self.options.defaultColor ).change();
 				}
-			});
+			} );
 		}
-	});
+	} );
 
 	/**
 	 * Overwrite iris
@@ -324,10 +343,11 @@
 			this.options.alpha = this.element.data( 'alpha' ) || false;
 
 			// Is not input disabled
-			if ( ! this.element.is( ':input' ) )
-				this.options.alpha = false;
+			if ( ! this.element.is( ':input' ) ) {
+this.options.alpha = false;
+}
 
-			if ( typeof this.options.alpha !== 'undefined' && this.options.alpha ) {
+			if ( 'undefined' !== typeof this.options.alpha && this.options.alpha ) {
 				var self       = this,
 					el         = self.element,
 					_html      = '<div class="iris-strip iris-slider iris-alpha-slider"><div class="iris-slider-offset iris-slider-offset-alpha"></div></div>',
@@ -338,7 +358,7 @@
 						aSlider: aSlider
 					};
 
-				if ( typeof el.data( 'custom-width' ) !== 'undefined' ) {
+				if ( 'undefined' !== typeof el.data( 'custom-width' ) ) {
 					self.options.customWidth = parseInt( el.data( 'custom-width' ) ) || 0;
 				} else {
 					self.options.customWidth = 100;
@@ -348,8 +368,9 @@
 				self.options.defaultWidth = el.width();
 
 				// Update width for input
-				if ( self._color._alpha < 1 || self._color.toString().indexOf( 'rgb' ) != -1 )
-					el.width( parseInt( self.options.defaultWidth + self.options.customWidth ) );
+				if ( 1 > self._color._alpha || -1 != self._color.toString().indexOf( 'rgb' ) ) {
+el.width( parseInt( self.options.defaultWidth + self.options.customWidth ) );
+}
 
 				// Push new controls
 				$.each( controls, function( k, v ) {
@@ -380,18 +401,19 @@
 				var self     = this,
 					controls = self.controls;
 
-				controls.aSlider.slider({
+				controls.aSlider.slider( {
 					orientation: 'vertical',
 					min: 0,
 					max: 100,
 					step: 1,
 					value: parseInt( self._color._alpha * 100 ),
 					slide: function( event, ui ) {
+
 						// Update alpha value
 						self._color._alpha = parseFloat( ui.value / 100 );
 						self._change.apply( self, arguments );
 					}
-				});
+				} );
 			}
 		},
 		_change: function() {
@@ -416,6 +438,7 @@
 				controls.aContainer.css( { 'background': 'linear-gradient(to bottom, ' + gradient.join( ', ' ) + '), url(' + image + ')' } );
 
 				if ( target.hasClass( 'wp-picker-open' ) ) {
+
 					// Update alpha value
 					controls.aSlider.slider( 'value', alpha );
 
@@ -423,7 +446,7 @@
 					 * Disabled change opacity in default slider Saturation ( only is alpha enabled )
 					 * and change input width for view all value
 					 */
-					if ( self._color._alpha < 1 ) {
+					if ( 1 > self._color._alpha ) {
 						controls.strip.attr( 'style', controls.strip.attr( 'style' ).replace( /rgba\(([0-9]+,)(\s+)?([0-9]+,)(\s+)?([0-9]+)(,(\s+)?[0-9\.]+)\)/g, 'rgb($1$3$5)' ) );
 						el.width( parseInt( defaultWidth + customWidth ) );
 					} else {
@@ -450,16 +473,21 @@
 						val   = input.val();
 
 					input.removeClass( 'iris-error' );
+
 					// We gave a bad color
 					if ( color.error ) {
+
 						// Don't error on an empty input
-						if ( val !== '' )
-							input.addClass( 'iris-error' );
+						if ( '' !== val ) {
+input.addClass( 'iris-error' );
+}
 					} else {
 						if ( color.toString() !== self._color.toString() ) {
+
 							// Let's not do this on keyup for hex shortcodes
-							if ( ! ( event.type === 'keyup' && val.match( /^[0-9a-fA-F]{3}$/ ) ) )
-								self._setOption( 'color', color.toString() );
+							if ( ! ( 'keyup' === event.type && val.match( /^[0-9a-fA-F]{3}$/ ) ) ) {
+self._setOption( 'color', color.toString() );
+}
 						}
 					}
 				};

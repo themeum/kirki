@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit614b8a6ac1b7ad6266a2ec146c133cc8
+class ComposerStaticInita01c09d4fb54ada176cf52dca0cb2f65
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -159,14 +159,15 @@ class ComposerStaticInit614b8a6ac1b7ad6266a2ec146c133cc8
         'Kirki\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/wp-css-generator/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit614b8a6ac1b7ad6266a2ec146c133cc8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit614b8a6ac1b7ad6266a2ec146c133cc8::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita01c09d4fb54ada176cf52dca0cb2f65::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita01c09d4fb54ada176cf52dca0cb2f65::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

@@ -34,7 +34,9 @@ wp.customize.controlConstructor['kirki-background'] = wp.customize.Control.exten
 		picker.wpColorPicker( {
 			change: function() {
 				setTimeout( function() {
-					control.saveValue( 'background-color', picker.val() );
+					if ( picker.val() !== control.setting._value['background-color'] ) {
+						control.saveValue( 'background-color', picker.val() );
+					}
 				}, 100 );
 			}
 		} );

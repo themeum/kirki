@@ -37,14 +37,14 @@ class Color extends Base {
 	 * @since 1.0.2
 	 * @var string
 	 */
-	public static $control_ver = '1.0.6';
+	public static $control_ver = '1.0.7';
 
 	/**
 	 * Colorpicker palette
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @var bool
+	 * @var array|bool
 	 */
 	public $palette = true;
 
@@ -90,12 +90,13 @@ class Color extends Base {
 			self::$template_added = true;
 		}
 
-		// Enqueue the colorpicker.
-		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/wp-color-picker-alpha.js' ), [ 'wp-color-picker' ], self::$control_ver, true );
-		wp_enqueue_style( 'wp-color-picker' );
+		// Enqueue iro.
+		wp_enqueue_script( 'iro', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/iro.js' ), [], '4.3.1', true );
+		wp_enqueue_script( 'iro-transparency-plugin', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/iro-transparency-plugin.js' ), [ 'iro' ], '1.0.2', true );
 
 		// Enqueue the control script.
-		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'wp-color-picker-alpha', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'iro', 'iro-transparency-plugin', 'kirki-dynamic-control' ], self::$control_ver, false );
+		global $_wp_theme_features;
 
 		// Enqueue the control style.
 		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
@@ -129,5 +130,10 @@ class Color extends Base {
 		$this->json['palette']          = $this->palette;
 		$this->json['choices']['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		$this->json['mode']             = $this->mode;
+		$this->json['choices']['i18n']  = [
+			'default' => esc_html__( 'Default', 'kirki' ),
+			'clear'   => esc_html__( 'Clear', 'kirki' ),
+		];
+		$this->json['defaultPalette'] = [ '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eee', '#abb8c3', '#313131' ];
 	}
 }

@@ -113,5 +113,4 @@ class Color extends Field {
 		// If no match was found, return an empty string.
 		return '';
 	}
-
 }

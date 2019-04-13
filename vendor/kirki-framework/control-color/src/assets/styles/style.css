@@ -1,23 +1,73 @@
-.customize-control-kirki-color input[data-type="hue"] + .iris-strip-horiz .iris-slider {
-  background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, magenta, #ff0080, red) !important;
-  widows: 100% !important; }
-.customize-control-kirki-color .iris-picker .iris-square-handle {
-  z-index: 8; }
-.customize-control-kirki-color .iris-picker.iris-border {
-  width: 100% !important; }
-.customize-control-kirki-color .iris-picker-inner {
+.customize-control-kirki-color .kirki-color-input-wrapper {
   display: grid;
-  grid-template-columns: 1fr 20px;
-  grid-gap: 7px; }
-  .customize-control-kirki-color .iris-picker-inner > * {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important; }
-.customize-control-kirki-color .kirki-input-container[data-has-alpha=true] .iris-picker-inner {
-  grid-template-columns: 1fr 20px 20px; }
-.customize-control-kirki-color .iris-only-strip {
-  width: 100% !important; }
-  .customize-control-kirki-color .iris-only-strip .iris-picker-inner {
-    grid-template-columns: 1fr; }
+  grid-template-columns: 45px 1fr auto; }
+  .customize-control-kirki-color .kirki-color-input-wrapper input {
+    width: 100%;
+    font-family: monospace; }
+  .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker:focus {
+      box-shadow: 0 0 2px 2px rgba(30, 140, 190, 0.8); }
+    .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker .placeholder {
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #eee;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+      background-size: 14px 14px;
+      background-position: 0 0, 7px 7px;
+      z-index: 1; }
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) ~ .kirki-colorpicker-wrapper-palette,
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) ~ .kirki-colorpicker-wrapper-palette ~ .kirki-colorpicker-wrapper,
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) ~ .kirki-colorpicker-wrapper ~ .kirki-colorpicker-wrapper-palette,
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) ~ .kirki-colorpicker-wrapper {
+    display: none; }
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) .reset {
+    display: none; }
+  .customize-control-kirki-color .kirki-color-input-wrapper.collapsed:not(.mode-hue) input {
+    background: none;
+    border: none;
+    box-shadow: none;
+    opacity: .5;
+    cursor: pointer; }
+  .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue .toggle-colorpicker,
+  .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue input,
+  .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue .reset {
+    display: none; }
+.customize-control-kirki-color .kirki-colorpicker-wrapper-palette {
+  display: flex;
+  margin-top: 12px; }
+  .customize-control-kirki-color .kirki-colorpicker-wrapper-palette button {
+    width: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+    height: 28px;
+    margin-right: 4px;
+    border-radius: 3px; }
+    .customize-control-kirki-color .kirki-colorpicker-wrapper-palette button:last-child {
+      margin-right: none; }
+    .customize-control-kirki-color .kirki-colorpicker-wrapper-palette button:focus {
+      box-shadow: 0 0 2px 2px rgba(30, 140, 190, 0.8); }
 
 /*# sourceMappingURL=style.css.map */
