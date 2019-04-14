@@ -29,8 +29,8 @@ class Number extends Generic {
 			$this->choices = [];
 		}
 		$this->choices['element'] = 'input';
-        $this->choices['type']    = 'number';
-        $this->choices = wp_parse_args(
+		$this->choices['type']    = 'number';
+		$this->choices = wp_parse_args(
 			$this->choices,
 			[
 				'min'  => -999999999,
@@ -55,9 +55,9 @@ class Number extends Generic {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			$this->sanitize_callback = [ 'Kirki\Field\Number', 'sanitize' ];
 		}
-    }
-    
-    /**
+	}
+	
+	/**
 	 * Sanitizes numeric values.
 	 *
 	 * @access public
@@ -66,6 +66,6 @@ class Number extends Generic {
 	 * @return bool
 	 */
 	public function sanitize( $value = 0 ) {
-        return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-    }
+		return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+	}
 }

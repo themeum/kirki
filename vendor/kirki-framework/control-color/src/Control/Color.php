@@ -130,10 +130,10 @@ class Color extends Base {
 		$this->json['palette']          = $this->palette;
 		$this->json['choices']['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		$this->json['mode']             = $this->mode;
+		$this->json['defaultPalette']   = [ '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eee', '#abb8c3', '#313131' ];
 		$this->json['choices']['i18n']  = [
 			'default' => esc_html__( 'Default', 'kirki' ),
 			'clear'   => esc_html__( 'Clear', 'kirki' ),
 		];
-		$this->json['defaultPalette'] = [ '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eee', '#abb8c3', '#313131' ];
 	}
 }

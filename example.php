@@ -974,81 +974,35 @@ my_config_kirki_add_field(
 	]
 );
 
-// /**
-//  * Example function that creates a control containing the available sidebars as choices.
-//  *
-//  * @return void
-//  */
-// function kirki_sidebars_select_example() {
-// 	$sidebars = [];
-// 	if ( isset( $GLOBALS['wp_registered_sidebars'] ) ) {
-// 		$sidebars = $GLOBALS['wp_registered_sidebars'];
-// 	}
-// 	$sidebars_choices = [];
-// 	foreach ( $sidebars as $sidebar ) {
-// 		$sidebars_choices[ $sidebar['id'] ] = $sidebar['name'];
-// 	}
-// 	if ( ! class_exists( 'Kirki' ) ) {
-// 		return;
-// 	}
-// 	Kirki::add_field(
-// 		'kirki_demo',
-// 		[
-// 			'type'        => 'select',
-// 			'settings'    => 'sidebars_select',
-// 			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),
-// 			'description' => esc_html__( 'An example of how to implement sidebars selection.', 'kirki' ),
-// 			'section'     => 'select_section',
-// 			'default'     => 'primary',
-// 			'choices'     => $sidebars_choices,
-// 			'priority'    => 30,
-// 		]
-// 	);
-// }
-// add_action( 'init', 'kirki_sidebars_select_example', 999 );
-
-Kirki::add_config( 'foo', array(
-    'capability'    => 'edit_theme_options',
-    'option_type'   => 'option',
-    'option_name'   => 'foo_kirki',
-    'styles_priority' => '1000',
-) );
-
-Kirki::add_section( 'foo_body', array(
-    'title'          => esc_attr__( 'Defaults', 'foo' ),
-    'priority'       => 20,
-) );
-
-Kirki::add_field( 'foo', array(
-    'type'        => 'typography',
-    'settings'    => 'foo_body_font',
-    'label'       => esc_attr__( 'Typography', 'foo' ),
-    'section'     => 'foo_body',
-    'choices' => array(
-      'fonts' => array(
-        'google'   => array( 'popularity', 50 ),
-        'standard' => array(
-          'serif',
-          'sans-serif',
-          'monospace',
-        ),
-      ),
-    ),
-    'default'     => array(
-      'font-family'    => '',
-      'variant'        => '',
-      'font-size'      => '',
-      'line-height'    => '',
-      'letter-spacing' => '',
-      'color'          => '',
-      'text-transform' => '',
-      'text-align'     => '',
-    ),
-    'priority'    => 10,
-    'transport'   => 'auto',
-    'output'      => array(
-      array(
-        'element' => 'body #main',
-      ),
-    ),
-) );  
+/**
+ * Example function that creates a control containing the available sidebars as choices.
+ *
+ * @return void
+ */
+function kirki_sidebars_select_example() {
+	$sidebars = [];
+	if ( isset( $GLOBALS['wp_registered_sidebars'] ) ) {
+		$sidebars = $GLOBALS['wp_registered_sidebars'];
+	}
+	$sidebars_choices = [];
+	foreach ( $sidebars as $sidebar ) {
+		$sidebars_choices[ $sidebar['id'] ] = $sidebar['name'];
+	}
+	if ( ! class_exists( 'Kirki' ) ) {
+		return;
+	}
+	Kirki::add_field(
+		'kirki_demo',
+		[
+			'type'        => 'select',
+			'settings'    => 'sidebars_select',
+			'label'       => esc_html__( 'Sidebars Select', 'kirki' ),
+			'description' => esc_html__( 'An example of how to implement sidebars selection.', 'kirki' ),
+			'section'     => 'select_section',
+			'default'     => 'primary',
+			'choices'     => $sidebars_choices,
+			'priority'    => 30,
+		]
+	);
+}
+add_action( 'init', 'kirki_sidebars_select_example', 999 );
