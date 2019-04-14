@@ -84,7 +84,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			picker.wpColorPicker( {
 				change: function() {
 					setTimeout( function() {
-						console.log( control.setting._value );
 						if ( control.setting._value.color !== picker.val() ) {
 							control.saveValue( 'color', picker.val() );
 						}
@@ -155,11 +154,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				children: googleFonts
 			}
 		} );
-
-		if ( kirkiTypographyControlL10n.isScriptDebug ) {
-			console.info( 'Kirki Debug: Font families for control "' + control.id + '":' );
-			console.info( data );
-		}
 
 		data = _.values( data );
 
@@ -271,11 +265,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 				variants = control.params.choices.fonts.variants[ fontFamily ];
 			}
 		}
-		if ( kirkiTypographyControlL10n.isScriptDebug ) {
-			console.info( 'Kirki Debug: Font variants for font-family "' + fontFamily + '":' );
-			console.info( variants );
-		}
-
 		if ( 'inherit' === fontFamily || 'initial' === fontFamily || '' === fontFamily ) {
 			value.variant = 'inherit';
 			variants      = [ '' ];
