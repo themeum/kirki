@@ -1,4 +1,4 @@
-/* global iro, iroTransparencyPlugin */
+/* global iro, iroTransparencyPlugin, wp */
 var kirki = kirki || {};
 
 kirki.input = kirki.input || {};
@@ -18,7 +18,7 @@ kirki.input.color = {
 	init: function( control ) {
 		var colorPicker,
 			containerWidth     = control.container.width(),
-			buttonLabel        = control.params.default ? control.params.choices.i18n.default : control.params.choices.i18n.clear,
+			buttonLabel        = control.params.default ? wp.i18n.__( 'Default', 'kirki' ) : wp.i18n.__( 'Clear', 'kirki' ),
 			isHue              = control.params.mode && 'hue' === control.params.mode,
 			colorpickerOptions = {
 				width: containerWidth,
@@ -57,7 +57,7 @@ kirki.input.color = {
 		// Add color to the previewer next to the input.
 		jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', control.params.value );
 
-		colorPicker = new iro.ColorPicker( '.colorpicker-' + control.id, colorpickerOptions );
+		colorPicker = new iro.ColorPicker( '.colorpicker-' + control.id.replace( '[', '--' ).replace( ']', '' ), colorpickerOptions );
 
 		// Update color on colorpicker change.
 		colorPicker.on( 'color:change', function( color ) {

@@ -36,6 +36,7 @@ kirki.control = kirki.control || {};
 
 			control.propertyElements = [];
 			wp.customize.Control.prototype.initialize.call( control, id, args );
+			wp.hooks.doAction( 'kirki.dynamicControl.init.after', id, control, args );
 		},
 
 		/**
@@ -119,6 +120,7 @@ kirki.control = kirki.control || {};
 			control.deferred.embedded.done( function() {
 				control.initKirkiControl( control );
 			} );
+			wp.hooks.doAction( 'kirki.dynamicControl.ready.after', control );
 		},
 
 		/**
@@ -149,6 +151,7 @@ kirki.control = kirki.control || {};
 					} );
 				}
 			} );
+			wp.hooks.doAction( 'kirki.dynamicControl.embed.after', control );
 		},
 
 		/**
@@ -166,6 +169,7 @@ kirki.control = kirki.control || {};
 			}
 			control.renderContent();
 			control.deferred.embedded.resolve(); // This triggers control.ready().
+			wp.hooks.doAction( 'kirki.dynamicControl.actuallyEmbed.after', control );
 		},
 
 		/**
@@ -178,6 +182,7 @@ kirki.control = kirki.control || {};
 			var control = this;
 			control.actuallyEmbed();
 			wp.customize.Control.prototype.focus.call( control, args );
+			wp.hooks.doAction( 'kirki.dynamicControl.focus.after', control );
 		},
 
 		/**
@@ -196,6 +201,7 @@ kirki.control = kirki.control || {};
 			this.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
 			} );
+			wp.hooks.doAction( 'kirki.dynamicControl.initKirkiControl.after', control );
 		}
 	} );
 }() );

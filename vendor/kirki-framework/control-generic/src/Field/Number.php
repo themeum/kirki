@@ -30,7 +30,7 @@ class Number extends Generic {
 		}
 		$this->choices['element'] = 'input';
 		$this->choices['type']    = 'number';
-		$this->choices = wp_parse_args(
+		$this->choices            = wp_parse_args(
 			$this->choices,
 			[
 				'min'  => -999999999,
@@ -38,6 +38,7 @@ class Number extends Generic {
 				'step' => 1,
 			]
 		);
+
 		// Make sure min, max & step are all numeric.
 		$this->choices['min']  = filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 		$this->choices['max']  = filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
@@ -56,7 +57,7 @@ class Number extends Generic {
 			$this->sanitize_callback = [ 'Kirki\Field\Number', 'sanitize' ];
 		}
 	}
-	
+
 	/**
 	 * Sanitizes numeric values.
 	 *

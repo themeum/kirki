@@ -21,7 +21,7 @@
 } );
 #>
 
-<div class="kirki-input-container" data-id="' + data.id + '">
+<div class="kirki-input-container" data-id="{{ data['data-id'] }}">
 	<# if ( data.label ) { #>
 		<span class="customize-control-title">{{{ data.label }}}</span>
 	<# } #>

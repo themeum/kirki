@@ -81,6 +81,7 @@ class Init {
 	 */
 	public function default_control_types( $control_types = [] ) {
 		$this->control_types = [
+			'kirki-composite'       => '\Kirki\Control\Composite',
 			'checkbox'              => '\Kirki\Control\Checkbox',
 			'kirki-background'      => '\Kirki\Control\Background',
 			'code_editor'           => '\Kirki\Control\Code',

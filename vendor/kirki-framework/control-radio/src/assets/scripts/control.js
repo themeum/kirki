@@ -19,6 +19,9 @@ kirki.input.radio = {
     }
 };
 
+kirki.input['radio-buttonset'] = kirki.input.radio;
+kirki.input['radio-image']     = kirki.input.radio;
+
 kirki.control = kirki.control || {};
 kirki.control['kirki-radio'] = {
 
@@ -67,7 +70,9 @@ kirki.control['kirki-radio'] = {
         } ) );
     }
 };
+kirki.control['kirki-radio-buttonset'] = kirki.control['kirki-radio'];
+kirki.control['kirki-radio-image']     = kirki.control['kirki-radio'];
 
-wp.customize.controlConstructor['kirki-radio'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-radio']           = wp.customize.kirkiDynamicControl.extend( {} );
 wp.customize.controlConstructor['kirki-radio-buttonset'] = wp.customize.kirkiDynamicControl.extend( {} );
-wp.customize.controlConstructor['kirki-radio-image'] = wp.customize.kirkiDynamicControl.extend( {} );
+wp.customize.controlConstructor['kirki-radio-image']     = wp.customize.kirkiDynamicControl.extend( {} );

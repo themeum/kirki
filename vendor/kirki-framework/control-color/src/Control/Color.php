@@ -95,8 +95,8 @@ class Color extends Base {
 		wp_enqueue_script( 'iro-transparency-plugin', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/iro-transparency-plugin.js' ), [ 'iro' ], '1.0.2', true );
 
 		// Enqueue the control script.
-		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'iro', 'iro-transparency-plugin', 'kirki-dynamic-control' ], self::$control_ver, false );
-		global $_wp_theme_features;
+		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'iro', 'iro-transparency-plugin', 'kirki-dynamic-control', 'wp-i18n' ], self::$control_ver, false );
+		wp_set_script_translations( 'kirki-control-color', 'kirki' );
 
 		// Enqueue the control style.
 		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
@@ -131,9 +131,5 @@ class Color extends Base {
 		$this->json['choices']['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		$this->json['mode']             = $this->mode;
 		$this->json['defaultPalette']   = [ '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eee', '#abb8c3', '#313131' ];
-		$this->json['choices']['i18n']  = [
-			'default' => esc_html__( 'Default', 'kirki' ),
-			'clear'   => esc_html__( 'Clear', 'kirki' ),
-		];
 	}
 }

@@ -21,7 +21,7 @@ data = _.defaults( data, {
 	choices: {}
 } );
 #>
-<div class="kirki-input-container" data-id="{{ data.id }}">
+<div class="kirki-input-container" data-id="{{ data['data-id'] }}">
 	<label>
 		<# if ( data.label ) { #>
 			<span class="customize-control-title">{{{ data.label }}}</span>

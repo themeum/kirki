@@ -49,7 +49,7 @@ data = _.defaults( data, {
 		/>
 		<button class="reset"><?php esc_html_e( 'Reset', 'kirki' ); ?></button>
 	</div>
-	<div class="kirki-colorpicker-wrapper colorpicker-{{ data['data-id'] }}"></div>
+	<div class="kirki-colorpicker-wrapper colorpicker-{{ data['data-id'].replace( '[', '--' ).replace( ']', '' ) }}"></div>
 	<div class="kirki-colorpicker-wrapper-palette">
 		<# if ( 'hue' !== data.mode && true === data['data-palette'] ) { #>
 			<?php $editor_palette = current( (array) get_theme_support( 'editor-color-palette' ) ); ?>
