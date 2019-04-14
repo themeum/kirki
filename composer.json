@@ -24,6 +24,7 @@
     "kirki-framework/control-code": "dev-master",
     "kirki-framework/control-color": "dev-master",
     "kirki-framework/control-color-palette": "dev-master",
+    "kirki-framework/control-composite": "dev-master",
     "kirki-framework/control-cropped-image": "dev-master",
     "kirki-framework/control-custom": "dev-master",
     "kirki-framework/control-dashicons": "dev-master",
