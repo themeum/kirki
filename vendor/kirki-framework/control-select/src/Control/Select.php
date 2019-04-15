@@ -56,7 +56,7 @@ class Select extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.1';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -67,16 +67,6 @@ class Select extends Base {
 	 */
 	public function enqueue() {
 		parent::enqueue();
-
-		add_action(
-			'customize_controls_print_footer_scripts',
-			function() {
-				$path = apply_filters( 'kirki_control_view_select', __DIR__ . '/view.php' );
-				echo '<script type="text/html" id="tmpl-kirki-input-select">';
-				include $path;
-				echo '</script>';
-			}
-		);
 
 		// Enqueue selectWoo.
 		wp_enqueue_script( 'selectWoo', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/selectWoo/js/selectWoo.full.js' ), [ 'jquery' ], '1.0.1', true );
@@ -117,5 +107,46 @@ class Select extends Base {
 		parent::to_json();
 		$this->json['multiple']    = $this->multiple;
 		$this->json['placeholder'] = $this->placeholder;
+	}
+
+	/**
+	 * An Underscore (JS) template for this control's content (but not its container).
+	 *
+	 * Class variables for this control class are available in the `data` JS object;
+	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
+	 *
+	 * @see WP_Customize_Control::print_template()
+	 *
+	 * @access protected
+	 * @since 1.1
+	 * @return void
+	 */
+	protected function content_template() {
+		?>
+		<label>
+			<span class="customize-control-title">{{{ data.label }}}</span>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<select data-id="{{ data.id }}" {{{ data.inputAttrs }}} <# if ( 1 < data.multiple ) { #>data-multiple="{{ data.multiple }}" multiple="multiple"<# } #>>
+				<# if ( data.placeholder ) { #>
+					<option value=""<# if ( '' === data.value ) { #> selected<# } #>></option>
+				<# } #>
+				<# _.each( data.choices, function( optionLabel, optionKey ) { #>
+					<# selected = ( 1 < data.multiple && data.value ) ? _.contains( data.value, optionKey ) : ( data.value === optionKey ); #>
+					<# if ( _.isObject( optionLabel ) ) { #>
+						<optgroup label="{{ optionLabel[0] }}">
+							<# _.each( optionLabel[1], function( optgroupOptionLabel, optgroupOptionKey ) { #>
+								<# selected = ( 1 < data.multiple && data.value ) ? _.contains( data.value, optgroupOptionKey ) : ( data.value === optgroupOptionKey ); #>
+								<option value="{{ optgroupOptionKey }}"<# if ( selected ) { #> selected<# } #>>{{{ optgroupOptionLabel }}}</option>
+							<# } ); #>
+						</optgroup>
+					<# } else { #>
+						<option value="{{ optionKey }}"<# if ( selected ) { #> selected<# } #>>{{{ optionLabel }}}</option>
+					<# } #>
+				<# } ); #>
+			</select>
+		</label>
+		<?php
 	}
 }

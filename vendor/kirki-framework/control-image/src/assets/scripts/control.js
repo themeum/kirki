@@ -1,18 +1,9 @@
-/* global kirkiL10n */
-var kirki = kirki || {};
-kirki.input = kirki.input || {};
+/* global kirki, __ */
+wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicControl.extend( {
 
-kirki.input.image = {
-
-    /**
-     * Init the control.
-     *
-     * @since 3.0.34
-     * @param {Object} control - The control object.
-     * @returns {null}
-     */
-    init: function( control ) {
-        var value         = kirki.setting.get( control.id ),
+	initKirkiControl: function() {
+        var control       = this,
+            value         = kirki.setting.get( control.id ),
             saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
             preview       = control.container.find( '.placeholder, .thumbnail' ),
             previewImage  = ( 'array' === saveAs ) ? value.url : value,
@@ -108,7 +99,7 @@ kirki.input.image = {
             defaultButton = control.container.find( '.image-default-button' );
 
             if ( preview.length ) {
-                preview.removeClass().addClass( 'placeholder' ).html( kirkiL10n.noFileSelected );
+                preview.removeClass().addClass( 'placeholder' ).html( __( 'No image selected', 'kirki' ) );
             }
             if ( removeButton.length ) {
                 removeButton.hide();
@@ -141,56 +132,4 @@ kirki.input.image = {
             }
         } );
     }
-};
-
-kirki.control = kirki.control || {};
-kirki.control['kirki-image'] = {
-
-    /**
-     * Init the control.
-     *
-     * @since 3.0.34
-     * @param {Object} control - The customizer control object.
-     * @returns {null}
-     */
-    init: function( control ) {
-        var self = this;
-
-        // Render the template.
-        self.template( control );
-
-        // Init the control.
-        kirki.input.image.init( control );
-    },
-
-    /**
-     * Render the template.
-     *
-     * @since 3.0.34
-     * @param {Object}  control - The customizer control object.
-     * @param {Object}  control.params - The control parameters.
-     * @param {string}  control.params.label - The control label.
-     * @param {string}  control.params.description - The control description.
-     * @param {string}  control.params.inputAttrs - extra input arguments.
-     * @param {string}  control.params.default - The default value.
-     * @param {Object}  control.params.choices - Any extra choices we may need.
-     * @param {string}  control.id - The setting.
-     * @returns {null}
-     */
-    template: function( control ) {
-        var template = wp.template( 'kirki-input-image' );
-
-        control.container.html(
-            template( args = {
-                label: control.params.label,
-                description: control.params.description,
-                'data-id': control.id,
-                inputAttrs: control.params.inputAttrs,
-                choices: control.params.choices,
-                value: kirki.setting.get( control.id )
-            } )
-        );
-    }
-};
-
-wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicControl.extend( {} );
+} );

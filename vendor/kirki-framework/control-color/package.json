@@ -16,5 +16,9 @@
     "grunt": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-watch": "*"
+  },
+  "dependencies": {
+    "@jaames/iro": "^4.3.3",
+    "iro-transparency-plugin": "^1.0.2"
   }
 }

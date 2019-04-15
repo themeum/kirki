@@ -61,30 +61,32 @@ class Checkbox extends Base {
 	}
 
 	/**
-	 * Render the control's content.
-	 * Verbatim copy from WP_Customize_Control->render_content.
+	 * An Underscore (JS) template for this control's content (but not its container).
+	 *
+	 * Class variables for this control class are available in the `data` JS object;
+	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
+	 *
+	 * @see WP_Customize_Control::print_template()
 	 *
 	 * @access protected
 	 * @since 1.0
 	 * @return void
 	 */
-	protected function render_content() {
-		$input_id       = '_customize-input-' . $this->id;
-		$description_id = '_customize-description-' . $this->id;
+	protected function content_template() {
 		?>
 		<span class="customize-inside-control-row">
 			<input
-				id="<?php echo esc_attr( $input_id ); ?>"
-				<?php echo ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : ''; ?>
+				id="_customize-input-{{ data.id }}"
 				type="checkbox"
-				value="<?php echo esc_attr( $this->value() ); ?>"
-				<?php $this->link(); ?>
-				<?php checked( $this->value() ); ?>
+				value="{{ data.value }}"
+				{{ data.link }}
+				<# if ( data.description ) { #>aria-describedby="_customize-description-{{ data.id }}"<# } #>
+				<# if ( data.value ) { #>checked="checked"<# } #>
 			/>
-			<label for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_html( $this->label ); ?></label>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
-			<?php endif; ?>
+			<label for="{{ data.id }}">{{ data.label }}</label>
+			<# if ( data.description ) { #>
+				<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{ data.description }}</span>
+			<# } #>
 		</span>
 		<?php
 	}
