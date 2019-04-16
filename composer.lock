@@ -198,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "124d5a4027c6d58790a291e55039edac6c48d9e4"
+                "reference": "798e0b7cfb1da33556cd63ca98ef6480011c0420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/124d5a4027c6d58790a291e55039edac6c48d9e4",
-                "reference": "124d5a4027c6d58790a291e55039edac6c48d9e4",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/798e0b7cfb1da33556cd63ca98ef6480011c0420",
+                "reference": "798e0b7cfb1da33556cd63ca98ef6480011c0420",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-16T18:50:10+00:00"
+            "time": "2019-04-16T20:13:50+00:00"
         },
         {
             "name": "kirki-framework/control-color-palette",
