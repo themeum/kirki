@@ -1002,12 +1002,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-select.git",
-                "reference": "5d625a9018d2349b4f4b7cde3634c8890182d84c"
+                "reference": "5f0802a279c9260755743c4594adc234edd30e95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/5d625a9018d2349b4f4b7cde3634c8890182d84c",
-                "reference": "5d625a9018d2349b4f4b7cde3634c8890182d84c",
+                "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/5f0802a279c9260755743c4594adc234edd30e95",
+                "reference": "5f0802a279c9260755743c4594adc234edd30e95",
                 "shasum": ""
             },
             "require": {
@@ -1041,7 +1041,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-16T19:38:49+00:00"
+            "time": "2019-04-16T19:57:26+00:00"
         },
         {
             "name": "kirki-framework/control-slider",
