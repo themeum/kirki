@@ -1,7 +1,6 @@
 wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
-
 		var control = this;
 
 		// Save the value

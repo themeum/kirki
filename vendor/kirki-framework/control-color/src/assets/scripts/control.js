@@ -5,11 +5,9 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 	initKirkiControl: function() {
 		var colorPicker,
 			control            = this,
-			containerWidth     = control.container.width(),
-			buttonLabel        = control.params.default ? wp.i18n.__( 'Default', 'kirki' ) : wp.i18n.__( 'Clear', 'kirki' ),
 			isHue              = control.params.mode && 'hue' === control.params.mode,
 			colorpickerOptions = {
-				width: containerWidth,
+				width: control.container.width(),
 				color: isHue ? { h: parseInt( control.params.value ), s: 100, l: 50 } : control.params.value,
 				layout: [
 					{
@@ -20,6 +18,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 					}
 				]
 			};
+
 		if ( ! isHue ) {
 			colorpickerOptions.layout.push( { // Saturation slider.
 				component: iro.ui.Slider,
@@ -39,31 +38,25 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 			colorpickerOptions.transparency = true;
 		}
 
-		// Add label to the button.
-		control.container.find( '.reset' ).html( buttonLabel );
-
 		// Add color to the previewer next to the input.
 		jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', control.params.value );
 
+		// Init the colorpicker.
 		colorPicker = new iro.ColorPicker( '.colorpicker-' + control.id.replace( '[', '--' ).replace( ']', '' ), colorpickerOptions );
 
-		// Update color on colorpicker change.
+		// Update on colorpicker change.
 		colorPicker.on( 'color:change', function( color ) {
 			var value = ( 'undefined' !== typeof color.alpha && 1 > parseFloat( color.alpha ) ) ? color.rgbaString : color.hexString;
 			if ( isHue ) {
 				value = color.hsl.h;
 			}
-			control.container.find( 'input' ).attr( 'value', value );
-			if ( isHue ) {
-				jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', 'hsl(' + value + ', 100%, 50%)' );
-			} else {
-				jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', value );
-			}
-			kirki.setting.set( control.id, value );
+
+			// Update the value.
+			control.setValue( value );
 		} );
 
 		// Update color when a value is manually entered.
-		control.container.find( 'input' ).on( 'change paste keyup', function() {
+		control.container.find( '.kirki-color-control' ).on( 'change paste keyup', function() {
 			var value   = jQuery( this ).val();
 			if ( isHue ) {
 				colorPicker.updateColor( new iro.Color( { h: parseInt( value ), s: 100, l: 50 } ) );
@@ -84,12 +77,12 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		// Handle clicking on the reset button.
 		control.container.find( '.reset' ).on( 'click', function( e ) {
 			e.preventDefault();
+			control.container.find( '.kirki-color-control' ).attr( 'value', '' ).trigger( 'change' );
 			if ( ! control.params.default ) {
-				kirki.setting.set( control.id, '' );
 				setTimeout( function() {
 					colorPicker.updateColor( new iro.Color( 'rgba(0,0,0,0)' ) );
 					colorPicker.color.set( 'rgba(0,0,0,0)' );
-					control.container.find( 'input' ).attr( 'value', '' );
+					control.setValue( '' );
 					jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', '' );
 				}, 50 );
 			} else {
@@ -105,7 +98,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		} );
 
 		// If we click on the text input expand the colorpicker.
-		control.container.find( 'input' ).on( 'click', function() {
+		control.container.find( '.kirki-color-control' ).on( 'click', function() {
 			control.container.find( '.kirki-color-input-wrapper' ).removeClass( 'collapsed' );
 		} );
 
@@ -113,5 +106,13 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		window.addEventListener( 'resize', function() {
 			colorPicker.resize( control.container.width() );
 		});
+	},
+
+	setValue: function( value ) {
+		this.container.find( '.kirki-color-control' ).attr( 'value', value ).trigger( 'change' );
+		this.setting.set( value );
+		if ( ! this.params.mode || 'hue' !== this.params.mode ) {
+			jQuery( this.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', value );
+		}
 	}
 } );

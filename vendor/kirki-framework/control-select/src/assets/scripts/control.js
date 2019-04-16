@@ -12,7 +12,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
             };
             if ( control.params.placeholder ) {
                 selectWooOptions.placeholder = control.params.placeholder;
-                selectWooOptions.allowClear = true;
+                selectWooOptions.allowClear  = true;
             }
 
         if ( 1 < multiple ) {
@@ -21,7 +21,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
         jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
             selectValue = jQuery( this ).val();
             selectValue = ( null === selectValue && 1 < multiple ) ? [] : selectValue;
-            kirki.setting.set( control.id, selectValue );
+            control.setting.set( selectValue );
         } );
     }
 });

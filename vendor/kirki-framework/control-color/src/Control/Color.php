@@ -82,7 +82,7 @@ class Color extends Base {
 		wp_enqueue_script( 'iro-transparency-plugin', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/node_modules/iro-transparency-plugin/dist/iro-transparency-plugin.min.js' ), [ 'iro' ], '1.0.2', true );
 
 		// Enqueue the control script.
-		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'iro', 'iro-transparency-plugin', 'kirki-dynamic-control', 'wp-i18n' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'iro', 'iro-transparency-plugin', 'kirki-dynamic-control' ], self::$control_ver, false );
 		wp_set_script_translations( 'kirki-control-color', 'kirki' );
 
 		// Enqueue the control style.
@@ -157,11 +157,17 @@ class Color extends Base {
 				{{{ data.inputAttrs }}}
 				data-default-color="{{ data.default }}"
 				value="{{ data.value }}"
-				class="kirki-color-control"
+				class="kirki-color-control<# if ( 'hue' === data.mode ) {#> screen-reader-text<# } #>"
 				data-id="{{ data.id }}"
 				{{ data.link }}
 			/>
-			<button class="reset"><?php esc_html_e( 'Reset', 'kirki' ); ?></button>
+			<button class="reset">
+				<# if ( ! data.default ) { #>
+					<?php esc_html_e( 'Clear', 'kirki' ); ?>
+				<# } else { #>
+					<?php esc_html_e( 'Default', 'kirki' ); ?>
+				<# } #>
+			</button>
 		</div>
 		<div class="kirki-colorpicker-wrapper colorpicker-{{ data.id.replace( '[', '--' ).replace( ']', '' ) }}"></div>
 		<div class="kirki-colorpicker-wrapper-palette">

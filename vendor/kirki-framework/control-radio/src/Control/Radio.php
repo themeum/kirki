@@ -39,7 +39,7 @@ class Radio extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.1';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -49,20 +49,49 @@ class Radio extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		add_action(
-			'customize_controls_print_footer_scripts',
-			function() {
-				$path = apply_filters( 'kirki_control_view_radio', __DIR__ . '/view-radio.php' );
-				echo '<script type="text/html" id="tmpl-kirki-input-radio">';
-				include $path;
-				echo '</script>';
-			}
-		);
-
 		// Enqueue the script.
 		wp_enqueue_script( 'kirki-control-radio', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-radio-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+	}
+
+	/**
+	 * An Underscore (JS) template for this control's content (but not its container).
+	 *
+	 * Class variables for this control class are available in the `data` JS object;
+	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
+	 *
+	 * @see WP_Customize_Control::print_template()
+	 *
+	 * @access protected
+	 * @since 1.1
+	 * @return void
+	 */
+	protected function content_template() {
+		?>
+		<span class="customize-control-title">{{{ data.label }}}</span>
+		<# if ( data.description ) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
+		<# _.each( data.choices, function( val, key ) { #>
+			<label>
+				<input
+					{{{ data.inputAttrs }}}
+					type="radio"
+					data-id="{{ data['data-id'] }}"
+					value="{{ key }}"
+					{{ data.link }}
+					name="_customize-radio-{{ data['data-id'] }}"
+					<# if ( data.value === key ) { #> checked<# } #>
+				/>
+				<# if ( _.isArray( val ) ) { #>
+					{{{ val[0] }}}<span class="option-description">{{{ val[1] }}}</span>
+				<# } else { #>
+					{{ val }}
+				<# } #>
+			</label>
+		<# } ); #>
+		<?php
 	}
 }

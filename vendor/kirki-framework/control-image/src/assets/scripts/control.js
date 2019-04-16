@@ -1,9 +1,8 @@
-/* global kirki, __ */
 wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
         var control       = this,
-            value         = kirki.setting.get( control.id ),
+            value         = this.setting._value,
             saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
             preview       = control.container.find( '.placeholder, .thumbnail' ),
             previewImage  = ( 'array' === saveAs ) ? value.url : value,
@@ -60,16 +59,16 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicContro
                 }
 
                 if ( 'array' === saveAs ) {
-                    kirki.setting.set( control.id, {
+                    control.setting.set( {
                         id: jsonImg.id,
                         url: jsonImg.sizes.full.url,
                         width: jsonImg.width,
                         height: jsonImg.height
                     } );
                 } else if ( 'id' === saveAs ) {
-                    kirki.setting.set( control.id, jsonImg.id );
+                    control.setting.set( jsonImg.id );
                 } else {
-                    kirki.setting.set( control.id, ( ( ! _.isUndefined( jsonImg.sizes ) ) ? jsonImg.sizes.full.url : jsonImg.url ) );
+                    control.setting.set( ( ! _.isUndefined( jsonImg.sizes ) ) ? jsonImg.sizes.full.url : jsonImg.url );
                 }
 
                 if ( preview.length ) {
@@ -92,14 +91,14 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicContro
 
             e.preventDefault();
 
-            kirki.setting.set( control.id, '' );
+            control.setting.set( '' );
 
             preview       = control.container.find( '.placeholder, .thumbnail' );
             removeButton  = control.container.find( '.image-upload-remove-button' );
             defaultButton = control.container.find( '.image-default-button' );
 
             if ( preview.length ) {
-                preview.removeClass().addClass( 'placeholder' ).html( __( 'No image selected', 'kirki' ) );
+                preview.removeClass().addClass( 'placeholder' ).html( wp.i18n.__( 'No image selected', 'kirki' ) );
             }
             if ( removeButton.length ) {
                 removeButton.hide();
@@ -117,7 +116,7 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicContro
 
             e.preventDefault();
 
-            kirki.setting.set( control.id, control.params.default );
+            control.setting.set( control.params.default );
 
             preview       = control.container.find( '.placeholder, .thumbnail' );
             removeButton  = control.container.find( '.image-upload-remove-button' );

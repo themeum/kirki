@@ -37,7 +37,7 @@ class Generic extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.1';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -49,27 +49,52 @@ class Generic extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		add_action(
-			'customize_controls_print_footer_scripts',
-			function() {
-				$path = apply_filters( 'kirki_control_view_generic', __DIR__ . '/view-generic.php' );
-				echo '<script type="text/html" id="tmpl-kirki-input-generic">';
-				include $path;
-				echo '</script>';
-			}
-		);
-
-		add_action(
-			'customize_controls_print_footer_scripts',
-			function() {
-				$path = apply_filters( 'kirki_control_view_textarea', __DIR__ . '/view-textarea.php' );
-				echo '<script type="text/html" id="tmpl-kirki-input-textarea">';
-				include $path;
-				echo '</script>';
-			}
-		);
-
 		// Enqueue the script.
 		wp_enqueue_script( 'kirki-control-generic', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+	}
+
+	/**
+	 * An Underscore (JS) template for this control's content (but not its container).
+	 *
+	 * Class variables for this control class are available in the `data` JS object;
+	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
+	 *
+	 * @see WP_Customize_Control::print_template()
+	 *
+	 * @access protected
+	 * @since 1.1
+	 * @return void
+	 */
+	protected function content_template() {
+		?>
+		<label>
+			<span class="customize-control-title">{{{ data.label }}}</span>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div class="customize-control-content">
+				<# element = ( data.choices.element ) ? data.choices.element : 'input'; #>
+
+				<# if ( 'textarea' === element ) { #>
+					<textarea
+						{{{ data.inputAttrs }}}
+						{{ data.link }}
+						<# _.each( data.choices, function( val, key ) { #>
+							{{ key }}="{{ val }}"
+						<# }); #>
+					>{{{ data.value }}}</textarea>
+				<# } else { #>
+					<{{ element }}
+						{{{ data.inputAttrs }}}
+						value="{{ data.value }}"
+						{{ data.link }}
+						<# _.each( data.choices, function( val, key ) { #>
+							{{ key }}="{{ val }}"
+						<# } ); #>
+					<# if ( data.choices.content ) { #>>{{{ data.choices.content }}}</{{ element }}><# } else { #>/><# } #>
+				<# } #>
+			</div>
+		</label>
+		<?php
 	}
 }

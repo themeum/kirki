@@ -14,7 +14,8 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: pointer; }
     .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker:focus {
       box-shadow: 0 0 2px 2px rgba(30, 140, 190, 0.8); }
     .customize-control-kirki-color .kirki-color-input-wrapper .toggle-colorpicker .placeholder {
@@ -52,7 +53,6 @@
     opacity: .5;
     cursor: pointer; }
   .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue .toggle-colorpicker,
-  .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue input,
   .customize-control-kirki-color .kirki-color-input-wrapper.mode-hue .reset {
     display: none; }
 .customize-control-kirki-color .kirki-colorpicker-wrapper-palette {

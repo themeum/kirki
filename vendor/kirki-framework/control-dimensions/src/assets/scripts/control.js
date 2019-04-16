@@ -2,7 +2,6 @@
 wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function() {
-
 		var control     = this,
 			subControls = control.params.choices.controls,
 			value       = {},
@@ -25,10 +24,8 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	 * Updates the value.
 	 */
 	updateDimensionsValue: function( context, value ) {
-
 		var control = this;
-
-		control.container.on( 'change keyup paste', '.' + context + ' input', function() {
+		this.container.on( 'change keyup paste', '.' + context + ' input', function() {
 			value[ context ] = jQuery( this ).val();
 
 			// Notifications.
@@ -43,14 +40,12 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 	 * Saves the value.
 	 */
 	saveValue: function( value ) {
-
 		var control  = this,
 			newValue = {};
 
 		_.each( value, function( newSubValue, i ) {
 			newValue[ i ] = newSubValue;
 		} );
-
 		control.setting.set( newValue );
 	},
 
