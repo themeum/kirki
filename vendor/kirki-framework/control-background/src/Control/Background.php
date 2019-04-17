@@ -13,17 +13,14 @@
 
 namespace Kirki\Control;
 
-use Kirki\Control\Base;
-use Kirki\Control\Color;
-use Kirki\Core\Kirki;
-use Kirki\URL;
+use Kirki\Control\Composite;
 
 /**
  * Adds multiple input fiels that combined make up the background control.
  *
  * @since 1.0
  */
-class Background extends Base {
+class Background extends Composite {
 
 	/**
 	 * The control type.
@@ -32,7 +29,7 @@ class Background extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public $type = 'kirki-background';
+	public $type = 'kirki-composite';
 
 	/**
 	 * The version. Used in scripts & styles for cache-busting.
@@ -45,127 +42,106 @@ class Background extends Base {
 	public static $control_ver = '1.0.2';
 
 	/**
-	 * Enqueue control related scripts/styles.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return void
-	 */
-	public function enqueue() {
-		parent::enqueue();
-
-		// Enqueue colorpicker.
-		wp_enqueue_script( 'wp-color-picker-alpha', Color::get_control_path_url() . '/assets/scripts/wp-color-picker-alpha.js', [ 'wp-color-picker' ], Color::$control_ver, true );
-		wp_enqueue_style( 'wp-color-picker' );
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-background', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'wp-color-picker-alpha' ], self::$control_ver, false );
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-color-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-background-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
-	}
-
-	/**
-	 * An Underscore (JS) template for this control's content (but not its container).
-	 *
-	 * Class variables for this control class are available in the `data` JS object;
-	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
-	 *
-	 * @see WP_Customize_Control::print_template()
+	 * Script dependencies.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var array
 	 */
-	protected function content_template() {
-		?>
-		<label>
-			<span class="customize-control-title">{{{ data.label }}}</span>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-		</label>
-		<div class="background-wrapper">
+	protected $script_dependencies = [ 'kirki-control-color', 'kirki-control-image', 'kirki-control-select', 'kirki-control-radio' ];
 
-			<!-- background-color -->
-			<div class="background-color">
-				<h4><?php esc_html_e( 'Background Color', 'kirki' ); ?></h4>
-				<input type="text" data-default-color="{{ data.default['background-color'] }}" data-alpha="true" value="{{ data.value['background-color'] }}" class="kirki-color-control"/>
-			</div>
-
-			<!-- background-image -->
-			<div class="background-image">
-				<h4><?php esc_html_e( 'Background Image', 'kirki' ); ?></h4>
-				<div class="attachment-media-view background-image-upload">
-					<# if ( data.value['background-image'] ) { #>
-						<div class="thumbnail thumbnail-image"><img src="{{ data.value['background-image'] }}"/></div>
-					<# } else { #>
-						<div class="placeholder"><?php esc_html_e( 'No File Selected', 'kirki' ); ?></div>
-					<# } #>
-					<div class="actions">
-						<button class="button background-image-upload-remove-button<# if ( ! data.value['background-image'] ) { #> hidden <# } #>"><?php esc_html_e( 'Remove', 'kirki' ); ?></button>
-						<button type="button" class="button background-image-upload-button"><?php esc_html_e( 'Select File', 'kirki' ); ?></button>
-					</div>
-				</div>
-			</div>
-
-			<!-- background-repeat -->
-			<div class="background-repeat">
-				<h4><?php esc_html_e( 'Background Repeat', 'kirki' ); ?></h4>
-				<select {{{ data.inputAttrs }}}>
-					<option value="no-repeat"<# if ( 'no-repeat' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_html_e( 'No Repeat', 'kirki' ); ?></option>
-					<option value="repeat"<# if ( 'repeat' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_html_e( 'Repeat All', 'kirki' ); ?></option>
-					<option value="repeat-x"<# if ( 'repeat-x' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_html_e( 'Repeat Horizontally', 'kirki' ); ?></option>
-					<option value="repeat-y"<# if ( 'repeat-y' === data.value['background-repeat'] ) { #> selected <# } #>><?php esc_html_e( 'Repeat Vertically', 'kirki' ); ?></option>
-				</select>
-			</div>
-
-			<!-- background-position -->
-			<div class="background-position">
-				<h4><?php esc_html_e( 'Background Position', 'kirki' ); ?></h4>
-				<select {{{ data.inputAttrs }}}>
-					<option value="left top"<# if ( 'left top' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Left Top', 'kirki' ); ?></option>
-					<option value="left center"<# if ( 'left center' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Left Center', 'kirki' ); ?></option>
-					<option value="left bottom"<# if ( 'left bottom' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Left Bottom', 'kirki' ); ?></option>
-					<option value="right top"<# if ( 'right top' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Right Top', 'kirki' ); ?></option>
-					<option value="right center"<# if ( 'right center' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Right Center', 'kirki' ); ?></option>
-					<option value="right bottom"<# if ( 'right bottom' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Right Bottom', 'kirki' ); ?></option>
-					<option value="center top"<# if ( 'center top' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Center Top', 'kirki' ); ?></option>
-					<option value="center center"<# if ( 'center center' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Center Center', 'kirki' ); ?></option>
-					<option value="center bottom"<# if ( 'center bottom' === data.value['background-position'] ) { #> selected <# } #>><?php esc_html_e( 'Center Bottom', 'kirki' ); ?></option>
-				</select>
-			</div>
-
-			<!-- background-size -->
-			<div class="background-size">
-				<h4><?php esc_html_e( 'Background Size', 'kirki' ); ?></h4>
-				<div class="buttonset">
-					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="cover" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}cover" <# if ( 'cover' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'cover' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}cover"><?php esc_html_e( 'Cover', 'kirki' ); ?></label>
-					</input>
-					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="contain" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}contain" <# if ( 'contain' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'contain' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}contain"><?php esc_html_e( 'Contain', 'kirki' ); ?></label>
-					</input>
-					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="auto" name="_customize-bg-{{{ data.id }}}-size" id="{{ data.id }}auto" <# if ( 'auto' === data.value['background-size'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'auto' === data.value['background-size'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}auto"><?php esc_html_e( 'Auto', 'kirki' ); ?></label>
-					</input>
-				</div>
-			</div>
-
-			<!-- background-attachment -->
-			<div class="background-attachment">
-				<h4><?php esc_html_e( 'Background Attachment', 'kirki' ); ?></h4>
-				<div class="buttonset">
-					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="scroll" name="_customize-bg-{{{ data.id }}}-attachment" id="{{ data.id }}scroll" <# if ( 'scroll' === data.value['background-attachment'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'scroll' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}scroll"><?php esc_html_e( 'Scroll', 'kirki' ); ?></label>
-					</input>
-					<input {{{ data.inputAttrs }}} class="switch-input screen-reader-text" type="radio" value="fixed" name="_customize-bg-{{{ data.id }}}-attachment" id="{{ data.id }}fixed" <# if ( 'fixed' === data.value['background-attachment'] ) { #> checked="checked" <# } #>>
-						<label class="switch-label switch-label-<# if ( 'fixed' === data.value['background-attachment'] ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}fixed"><?php esc_html_e( 'Fixed', 'kirki' ); ?></label>
-					</input>
-				</div>
-			</div>
-			<input class="background-hidden-value" type="hidden" {{{ data.link }}}>
-		<?php
+	/**
+	 * Constructor.
+	 * Supplied `$args` override class property defaults.
+	 * If `$args['settings']` is not defined, use the $id as the setting ID.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+	 * @param string               $id      Control ID.
+	 * @param array                $args    {@see WP_Customize_Control::__construct}.
+	 */
+	public function __construct( $manager, $id, $args = [] ) {
+		$this->fields = [
+			[
+				'type'        => 'kirki-custom',
+				'settings'    => $id . '[--label-and-description]',
+				'label'       => isset( $args['label'] ) ? $args['label'] : '',
+				'description' => isset( $args['description'] ) ? $args['description'] : '',
+				'default'     => '',
+			],
+			[
+				'type'        => 'kirki-color',
+				'settings'    => $id . '[background-color]',
+				'label'       => '',
+				'description' => esc_html__( 'Background Color', 'kirki' ),
+				'default'     => isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '',
+				'choices'     => [
+					'alpha' => true,
+				],
+			],
+			[
+				'type'        => 'kirki-image',
+				'settings'    => $id . '[background-image]',
+				'label'       => '',
+				'description' => esc_html__( 'Background Image', 'kirki' ),
+				'default'     => isset( $args['default']['background-image'] ) ? $args['default']['background-image'] : '',
+			],
+			[
+				'type'        => 'kirki-select',
+				'settings'    => $id . '[background-repeat]',
+				'label'       => '',
+				'description' => esc_html__( 'Background Repeat', 'kirki' ),
+				'default'     => isset( $args['default']['background-repeat'] ) ? $args['default']['background-repeat'] : '',
+				'choices'     => [
+					'no-repeat' => esc_html__( 'No Repeat', 'kirki' ),
+					'repeat'    => esc_html__( 'Repeat All', 'kirki' ),
+					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'kirki' ),
+					'repeat-y'  => esc_html__( 'Repeat Vertically', 'kirki' ),
+				],
+			],
+			[
+				'type'        => 'kirki-select',
+				'settings'    => $id . '[background-position]',
+				'label'       => '',
+				'description' => esc_html__( 'Background Position', 'kirki' ),
+				'default'     => isset( $args['default']['background-position'] ) ? $args['default']['background-position'] : '',
+				'choices'     => [
+					'left top'      => esc_html__( 'Left Top', 'kirki' ),
+					'left center'   => esc_html__( 'Left Center', 'kirki' ),
+					'left bottom'   => esc_html__( 'Left Bottom', 'kirki' ),
+					'center top'    => esc_html__( 'Center Top', 'kirki' ),
+					'center center' => esc_html__( 'Center Center', 'kirki' ),
+					'center bottom' => esc_html__( 'Center Bottom', 'kirki' ),
+					'right top'     => esc_html__( 'Right Top', 'kirki' ),
+					'right center'  => esc_html__( 'Right Center', 'kirki' ),
+					'right bottom'  => esc_html__( 'Right Bottom', 'kirki' ),
+				],
+			],
+			[
+				'type'        => 'kirki-radio-buttonset',
+				'settings'    => $id . '[background-size]',
+				'label'       => '',
+				'description' => esc_html__( 'Background Size', 'kirki' ),
+				'default'     => isset( $args['default']['background-size'] ) ? $args['default']['background-size'] : '',
+				'choices'     => [
+					'cover'   => esc_html__( 'Cover', 'kirki' ),
+					'contain' => esc_html__( 'Contain', 'kirki' ),
+					'auto'    => esc_html__( 'Auto', 'kirki' ),
+				],
+			],
+			[
+				'type'        => 'kirki-radio-buttonset',
+				'settings'    => $id . '[background-attachment]',
+				'description' => esc_html__( 'Background Attachment', 'kirki' ),
+				'label'       => '',
+				'default'     => isset( $args['default']['background-attachment'] ) ? $args['default']['background-attachment'] : '',
+				'choices'     => [
+					'scroll' => esc_html__( 'Scroll', 'kirki' ),
+					'fixed'  => esc_html__( 'Fixed', 'kirki' ),
+				],
+			],
+		];
+		parent::__construct( $manager, $id, $args );
 	}
 }

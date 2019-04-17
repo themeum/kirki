@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78f76b8db67a29f57a978087f0c10065",
+    "content-hash": "0c2aee3b9a083e0975eb30ba3bf03f28",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -12,18 +12,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-background.git",
-                "reference": "70dd8f59f53672d86eb790e1a4193940947a083a"
+                "reference": "25bd8bb2b5291a96cc1042613ea30c9276d55c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/70dd8f59f53672d86eb790e1a4193940947a083a",
-                "reference": "70dd8f59f53672d86eb790e1a4193940947a083a",
+                "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/25bd8bb2b5291a96cc1042613ea30c9276d55c40",
+                "reference": "25bd8bb2b5291a96cc1042613ea30c9276d55c40",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "*",
-                "kirki-framework/control-color": "*",
-                "kirki-framework/url-getter": "*",
+                "kirki-framework/control-base": "dev-master",
+                "kirki-framework/control-color": "dev-master",
+                "kirki-framework/control-composite": "dev-master",
+                "kirki-framework/control-radio": "dev-master",
+                "kirki-framework/control-select": "dev-master",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -52,7 +54,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-14T16:20:25+00:00"
+            "time": "2019-04-17T19:10:11+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -60,12 +62,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "80d52f781a18608a2b0b55ee3e8b6b4772655bc1"
+                "reference": "9f7afbdf8f92b0e0f708477f43b56e1f9b723f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/80d52f781a18608a2b0b55ee3e8b6b4772655bc1",
-                "reference": "80d52f781a18608a2b0b55ee3e8b6b4772655bc1",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/9f7afbdf8f92b0e0f708477f43b56e1f9b723f87",
+                "reference": "9f7afbdf8f92b0e0f708477f43b56e1f9b723f87",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +99,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-14T16:12:30+00:00"
+            "time": "2019-04-17T19:05:02+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -286,6 +288,53 @@
                 "wordpress"
             ],
             "time": "2019-04-13T21:46:06+00:00"
+        },
+        {
+            "name": "kirki-framework/control-composite",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-composite.git",
+                "reference": "b13157f3bf96281a7a9b938aff307d311de1a37d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-composite/zipball/b13157f3bf96281a7a9b938aff307d311de1a37d",
+                "reference": "b13157f3bf96281a7a9b938aff307d311de1a37d",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "kirki-framework/url-getter": "*",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Composite control for the Kirki Customizer framework.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-04-17T19:03:02+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -4134,7 +4183,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -4197,7 +4246,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -4337,7 +4386,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -4504,7 +4553,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -4553,7 +4602,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -4603,7 +4652,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -4804,6 +4853,7 @@
         "kirki-framework/url-getter": 20,
         "kirki-framework/control-base": 20,
         "kirki-framework/control-background": 20,
+        "kirki-framework/control-composite": 20,
         "kirki-framework/control-checkbox": 20,
         "kirki-framework/control-code": 20,
         "kirki-framework/control-color": 20,

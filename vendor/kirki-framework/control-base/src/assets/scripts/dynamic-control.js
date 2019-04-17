@@ -118,7 +118,8 @@ kirki.control = kirki.control || {};
 			wp.customize.Control.prototype.ready.call( control );
 
 			control.deferred.embedded.done( function() {
-				control.initKirkiControl( control );
+				control.initKirkiControl();
+				wp.hooks.doAction( 'kirki.dynamicControl.ready.deferred.embedded.done', control );
 			} );
 			wp.hooks.doAction( 'kirki.dynamicControl.ready.after', control );
 		},
@@ -191,7 +192,7 @@ kirki.control = kirki.control || {};
 		 * @param {object} [args] Args.
 		 * @returns {null}
 		 */
-		initKirkiControl: function( control ) {
+		initKirkiControl: function() {
 			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
 				kirki.control[ control.params.type ].init( control );
 				return;
@@ -199,9 +200,8 @@ kirki.control = kirki.control || {};
 
 			// Save the value
 			this.container.on( 'change keyup paste click', 'input', function() {
-				control.setting.set( jQuery( this ).val() );
+				this.setting.set( jQuery( this ).val() );
 			} );
-			wp.hooks.doAction( 'kirki.dynamicControl.initKirkiControl.after', control );
-		}
+		},
 	} );
 }() );

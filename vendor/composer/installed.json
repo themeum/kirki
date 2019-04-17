@@ -6,21 +6,23 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-background.git",
-            "reference": "70dd8f59f53672d86eb790e1a4193940947a083a"
+            "reference": "25bd8bb2b5291a96cc1042613ea30c9276d55c40"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/70dd8f59f53672d86eb790e1a4193940947a083a",
-            "reference": "70dd8f59f53672d86eb790e1a4193940947a083a",
+            "url": "https://api.github.com/repos/kirki-framework/control-background/zipball/25bd8bb2b5291a96cc1042613ea30c9276d55c40",
+            "reference": "25bd8bb2b5291a96cc1042613ea30c9276d55c40",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/control-base": "*",
-            "kirki-framework/control-color": "*",
-            "kirki-framework/url-getter": "*",
+            "kirki-framework/control-base": "dev-master",
+            "kirki-framework/control-color": "dev-master",
+            "kirki-framework/control-composite": "dev-master",
+            "kirki-framework/control-radio": "dev-master",
+            "kirki-framework/control-select": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-04-14T16:20:25+00:00",
+        "time": "2019-04-17T19:10:11+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -56,19 +58,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-base.git",
-            "reference": "80d52f781a18608a2b0b55ee3e8b6b4772655bc1"
+            "reference": "9f7afbdf8f92b0e0f708477f43b56e1f9b723f87"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/80d52f781a18608a2b0b55ee3e8b6b4772655bc1",
-            "reference": "80d52f781a18608a2b0b55ee3e8b6b4772655bc1",
+            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/9f7afbdf8f92b0e0f708477f43b56e1f9b723f87",
+            "reference": "9f7afbdf8f92b0e0f708477f43b56e1f9b723f87",
             "shasum": ""
         },
         "require": {
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-04-14T16:12:30+00:00",
+        "time": "2019-04-17T19:05:02+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -285,6 +287,55 @@
             }
         ],
         "description": "Color Palette control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-composite",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-composite.git",
+            "reference": "b13157f3bf96281a7a9b938aff307d311de1a37d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-composite/zipball/b13157f3bf96281a7a9b938aff307d311de1a37d",
+            "reference": "b13157f3bf96281a7a9b938aff307d311de1a37d",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-04-17T19:03:02+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Composite control for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",
