@@ -28,7 +28,7 @@ class Composite extends Base {
 	 * @var string
 	 */
 	public $type = 'kirki-composite';
-	
+
 	/**
 	 * An array of fields used to compile this composite control.
 	 *
