@@ -1,12 +1,12 @@
 /* global dimensionskirkiL10n */
 wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-		var control     = this,
-			subControls = control.params.choices.controls,
-			value       = {},
-			subsArray   = [],
-			i;
+	initKirkiControl: function( control ) {
+		var subControls, i, value, subsArray;
+		value       = {};
+		subsArray   = [];
+		control     = control || this;
+		subControls = control.params.choices.controls;
 
 		_.each( subControls, function( v, i ) {
 			if ( true === v ) {

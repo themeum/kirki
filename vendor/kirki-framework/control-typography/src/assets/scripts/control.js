@@ -1,13 +1,10 @@
-/* global kirkiTypographyControlL10n, kirki, console */
+/* global kirkiTypographyControlL10n, kirki */
 wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this,
-			value   = control.setting._value,
-			picker;
+	initKirkiControl: function( control ) {
+		var value, picker;
+		control = control || this;
+		value   = control.setting._value;
 
 		control.renderFontSelector();
 		control.renderBackupFontSelector();

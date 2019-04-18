@@ -1,8 +1,9 @@
 wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-		var control  = this,
-			selector = control.selector + ' input.datepicker';
+	initKirkiControl: function( control ) {
+		var selector;
+		control  = control || this;
+		selector = control.selector + ' input.datepicker';
 
 		// Init the datepicker
 		jQuery( selector ).datepicker( {

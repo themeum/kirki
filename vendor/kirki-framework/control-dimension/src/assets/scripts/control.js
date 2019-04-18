@@ -1,15 +1,15 @@
 /* global dimensionkirkiL10n */
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-		var control = this,
-			value;
+	initKirkiControl: function( control ) {
+		var value;
+		control = control || this;
 
 		// Notifications.
 		control.kirkiNotifications();
 
 		// Save the value
-		this.container.on( 'change keyup paste', 'input', function() {
+		control.container.on( 'change keyup paste', 'input', function() {
 			value = jQuery( this ).val();
 			control.setting.set( value );
 		} );

@@ -6,8 +6,6 @@
  * @see https://github.com/xwp/wp-customize-posts
  */
 
-var kirki = kirki || {};
-kirki.control = kirki.control || {};
 ( function() {
 	'use strict';
 
@@ -192,15 +190,13 @@ kirki.control = kirki.control || {};
 		 * @param {object} [args] Args.
 		 * @returns {null}
 		 */
-		initKirkiControl: function() {
-			if ( 'undefined' !== typeof kirki.control[ control.params.type ] ) {
-				kirki.control[ control.params.type ].init( control );
-				return;
-			}
+		initKirkiControl: function( control ) {
+			control = control || this;
+			wp.hooks.doAction( 'kirki.dynamicControl.initKirkiControl', this );
 
 			// Save the value
-			this.container.on( 'change keyup paste click', 'input', function() {
-				this.setting.set( jQuery( this ).val() );
+			control.container.on( 'change keyup paste click', 'input', function() {
+				control.setting.set( jQuery( this ).val() );
 			} );
 		},
 	} );

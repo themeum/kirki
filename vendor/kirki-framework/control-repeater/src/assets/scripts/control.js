@@ -1,8 +1,5 @@
 /* global kirkiControlLoader */
 var RepeaterRow = function( rowIndex, container, label, control ) {
-
-	'use strict';
-
 	var self        = this;
 	this.rowIndex   = rowIndex;
 	this.container  = container;
@@ -82,9 +79,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 	// When we're finished loading continue processing
 	ready: function() {
-
-		'use strict';
-
 		var control = this;
 
 		// Init the control.
@@ -95,39 +89,35 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		}
 	},
 
-	initKirkiControl: function() {
-
-		'use strict';
-
-		var control = this,
-			limit,
-			theNewRow;
+	initKirkiControl: function( control ) {
+		var limit, theNewRow;
+		control = control || this;
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
-		var settingValue = this.params.value;
+		var settingValue = control.params.value;
 
 		// The hidden field that keeps the data saved (though we never update it)
-		this.settingField = this.container.find( '[data-customize-setting-link]' ).first();
+		control.settingField = control.container.find( '[data-customize-setting-link]' ).first();
 
 		// Set the field value for the first time, we'll fill it up later
-		this.setValue( [], false );
+		control.setValue( [], false );
 
 		// The DIV that holds all the rows
-		this.repeaterFieldsContainer = this.container.find( '.repeater-fields' ).first();
+		control.repeaterFieldsContainer = control.container.find( '.repeater-fields' ).first();
 
 		// Set number of rows to 0
-		this.currentIndex = 0;
+		control.currentIndex = 0;
 
 		// Save the rows objects
-		this.rows = [];
+		control.rows = [];
 
 		// Default limit choice
 		limit = false;
-		if ( ! _.isUndefined( this.params.choices.limit ) ) {
-			limit = ( 0 >= this.params.choices.limit ) ? false : parseInt( this.params.choices.limit, 10 );
+		if ( ! _.isUndefined( control.params.choices.limit ) ) {
+			limit = ( 0 >= control.params.choices.limit ) ? false : parseInt( control.params.choices.limit, 10 );
 		}
 
-		this.container.on( 'click', 'button.repeater-add', function( e ) {
+		control.container.on( 'click', 'button.repeater-add', function( e ) {
 			e.preventDefault();
 			if ( ! limit || control.currentIndex < limit ) {
 				theNewRow = control.addRow();
@@ -139,26 +129,26 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 			}
 		} );
 
-		this.container.on( 'click', '.repeater-row-remove', function() {
+		control.container.on( 'click', '.repeater-row-remove', function() {
 			control.currentIndex--;
 			if ( ! limit || control.currentIndex < limit ) {
 				jQuery( control.selector + ' .limit' ).removeClass( 'highlight' );
 			}
 		} );
 
-		this.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
+		control.container.on( 'click keypress', '.repeater-field-image .upload-button,.repeater-field-cropped_image .upload-button,.repeater-field-upload .upload-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.openFrame( e );
 		} );
 
-		this.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function( e ) {
+		control.container.on( 'click keypress', '.repeater-field-image .remove-button,.repeater-field-cropped_image .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeImage( e );
 		} );
 
-		this.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
+		control.container.on( 'click keypress', '.repeater-field-upload .remove-button', function( e ) {
 			e.preventDefault();
 			control.$thisButton = jQuery( this );
 			control.removeFile( e );
@@ -167,7 +157,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		/**
 		 * Function that loads the Mustache template
 		 */
-		this.repeaterTemplate = _.memoize( function() {
+		control.repeaterTemplate = _.memoize( function() {
 			var compiled,
 
 				/*
@@ -200,9 +190,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		}
 
 		// Once we have displayed the rows, we cleanup the values
-		this.setValue( settingValue, true, true );
+		control.setValue( settingValue, true, true );
 
-		this.repeaterFieldsContainer.sortable( {
+		control.repeaterFieldsContainer.sortable( {
 			handle: '.repeater-row-header',
 			update: function() {
 				control.sort();
@@ -215,9 +205,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * Open the media modal.
 	 */
 	openFrame: function( event ) {
-
-		'use strict';
-
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
 			return;
 		}
@@ -232,9 +219,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	},
 
 	initFrame: function() {
-
-		'use strict';
-
 		var libMediaType = this.getMimeType();
 
 		this.frame = wp.media( {
@@ -256,8 +240,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
 	 */
 	initCropperFrame: function() {
-
-		'use strict';
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' ),
@@ -310,9 +292,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	},
 
 	onSelect: function() {
-
-		'use strict';
-
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		if ( this.$thisButton.closest( '.repeater-field' ).hasClass( 'repeater-field-upload' ) ) {
@@ -328,9 +307,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 */
 
 	onSelectForCrop: function() {
-
-		'use strict';
-
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 
 		if ( this.params.width === attachment.width && this.params.height === attachment.height && ! this.params.flex_width && ! this.params.flex_height ) {
@@ -346,11 +322,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param {object} croppedImage Cropped attachment data.
 	 */
 	onCropped: function( croppedImage ) {
-
-		'use strict';
-
 		this.setImageInRepeaterField( croppedImage );
-
 	},
 
 	/**
@@ -363,9 +335,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @returns {Object} Options
 	 */
 	calculateImageSelectOptions: function( attachment, controller ) {
-
-		'use strict';
-
 		var control    = controller.get( 'control' ),
 			flexWidth  = !! parseInt( control.params.flex_width, 10 ),
 			flexHeight = !! parseInt( control.params.flex_height, 10 ),
@@ -431,26 +400,15 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @return {bool}
 	 */
 	mustBeCropped: function( flexW, flexH, dstW, dstH, imgW, imgH ) {
-
-		'use strict';
-
-		if ( ( true === flexW && true === flexH ) || ( true === flexW && dstH === imgH ) || ( true === flexH && dstW === imgW ) || ( dstW === imgW && dstH === imgH ) || ( imgW <= dstW ) ) {
-			return false;
-		}
-
-		return true;
+		return ! ( ( true === flexW && true === flexH ) || ( true === flexW && dstH === imgH ) || ( true === flexH && dstW === imgW ) || ( dstW === imgW && dstH === imgH ) || ( imgW <= dstW ) );
 	},
 
 	/**
 	 * If cropping was skipped, apply the image data directly to the setting.
 	 */
 	onSkippedCrop: function() {
-
-		'use strict';
-
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
 		this.setImageInRepeaterField( attachment );
-
 	},
 
 	/**
@@ -459,9 +417,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param {object} attachment
 	 */
 	setImageInRepeaterField: function( attachment ) {
-
-		'use strict';
-
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
 
 		$targetDiv.find( '.kirki-image-attachment' ).html( '<img src="' + attachment.url + '">' ).hide().slideDown( 'slow' );
@@ -473,7 +428,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		//This will activate the save button
 		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
 		this.frame.close();
-
 	},
 
 	/**
@@ -482,9 +436,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param {object} attachment
 	 */
 	setFileInRepeaterField: function( attachment ) {
-
-		'use strict';
-
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
 
 		$targetDiv.find( '.kirki-file-attachment' ).html( '<span class="file"><span class="dashicons dashicons-media-default"></span> ' + attachment.filename + '</span>' ).hide().slideDown( 'slow' );
@@ -497,12 +448,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		//This will activate the save button
 		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
 		this.frame.close();
-
 	},
 
 	getMimeType: function() {
-
-		'use strict';
 
 		// We get the field id from which this was called
 		var currentFieldId = this.$thisButton.siblings( 'input.hidden-field' ).attr( 'data-field' );
@@ -522,13 +470,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 			}
 		}
 		return 'image';
-
 	},
 
 	removeImage: function( event ) {
-
-		'use strict';
-
 		var $targetDiv,
 			$uploadButton;
 
@@ -547,13 +491,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		this.$thisButton.hide();
 
 		$targetDiv.find( 'input, textarea, select' ).trigger( 'change' );
-
 	},
 
 	removeFile: function( event ) {
-
-		'use strict';
-
 		var $targetDiv,
 			$uploadButton;
 
@@ -582,11 +522,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 */
 	getValue: function() {
 
-		'use strict';
-
 		// The setting is saved in JSON
 		return JSON.parse( decodeURI( this.setting.get() ) );
-
 	},
 
 	/**
@@ -596,8 +533,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param refresh If we want to refresh the previewer or not
 	 */
 	setValue: function( newValue, refresh, filtering ) {
-
-		'use strict';
 
 		// We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
 		var filteredValue = newValue,
@@ -634,9 +569,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param data (Optional) Object of field => value pairs (undefined if you want to get the default values)
 	 */
 	addRow: function( data ) {
-
-		'use strict';
-
 		var control       = this,
 			template      = control.repeaterTemplate(), // The template for the new row (defined on Kirki_Customize_Repeater_Control::render_content() ).
 			settingValue  = this.getValue(), // Get the current setting value.
@@ -702,9 +634,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	},
 
 	sort: function() {
-
-		'use strict';
-
 		var control     = this,
 			$rows       = this.repeaterFieldsContainer.find( '.repeater-row' ),
 			newOrder    = [],
@@ -725,7 +654,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 		control.rows = newRows;
 		control.setValue( newSettings );
-
 	},
 
 	/**
@@ -734,13 +662,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param index Position of the row in the complete Setting Array
 	 */
 	deleteRow: function( index ) {
-
-		'use strict';
-
 		var currentSettings = this.getValue(),
 			row,
-			i,
-			prop;
+			prop,
+			i = 1;
 
 		if ( currentSettings[ index ] ) {
 
@@ -756,13 +681,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 				// Update the new setting values
 				this.setValue( currentSettings, true );
-
 			}
-
 		}
 
 		// Remap the row numbers
-		i = 1;
 		for ( prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].updateLabel();
@@ -778,9 +700,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * @param e Event Object
 	 */
 	updateField: function( e, rowIndex, fieldId, element ) {
-
-		'use strict';
-
 		var type,
 			row,
 			currentSettings;
@@ -819,9 +738,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 *
 	 */
 	initColorPicker: function() {
-
-		'use strict';
-
 		var control     = this,
 			colorPicker = control.container.find( '.color-picker-hex' ),
 			options     = {},
@@ -860,14 +776,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 *
 	 */
 	initSelect: function( theNewRow, data ) {
-
-		'use strict';
-
 		var control  = this,
 			dropdown = theNewRow.container.find( '.repeater-field select' ),
-			$select,
 			dataField,
 			multiple,
+			$select,
 			selectWooOptions = {};
 
 		if ( 0 === dropdown.length ) {

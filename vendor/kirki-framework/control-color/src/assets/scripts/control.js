@@ -2,22 +2,25 @@
 var kirki = kirki || {};
 
 wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicControl.extend( {
-	initKirkiControl: function() {
+	initKirkiControl: function( control ) {
 		var colorPicker,
-			control            = this,
-			isHue              = control.params.mode && 'hue' === control.params.mode,
-			colorpickerOptions = {
-				width: control.container.width(),
-				color: isHue ? { h: parseInt( control.params.value ), s: 100, l: 50 } : control.params.value,
-				layout: [
-					{
-						component: iro.ui.Slider,
-						options: {
-							sliderType: 'hue'
-						}
+			isHue,
+			colorpickerOptions;
+
+		control            = control || this;
+		isHue              = control.params.mode && 'hue' === control.params.mode;
+		colorpickerOptions = {
+			width: control.container.width(),
+			color: isHue ? { h: parseInt( control.params.value ), s: 100, l: 50 } : control.params.value,
+			layout: [
+				{
+					component: iro.ui.Slider,
+					options: {
+						sliderType: 'hue'
 					}
-				]
-			};
+				}
+			]
+		};
 
 		if ( ! isHue ) {
 			colorpickerOptions.layout.push( { // Saturation slider.
@@ -52,7 +55,11 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 			}
 
 			// Update the value.
-			control.setValue( value );
+			control.container.find( '.kirki-color-control' ).attr( 'value', value ).trigger( 'change' );
+			control.setting.set( value );
+			if ( ! control.params.mode || 'hue' !== control.params.mode ) {
+				jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', value );
+			}
 		} );
 
 		// Update color when a value is manually entered.
@@ -82,7 +89,11 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 				setTimeout( function() {
 					colorPicker.updateColor( new iro.Color( 'rgba(0,0,0,0)' ) );
 					colorPicker.color.set( 'rgba(0,0,0,0)' );
-					control.setValue( '' );
+					control.container.find( '.kirki-color-control' ).attr( 'value', value ).trigger( 'change' );
+					control.setting.set( value );
+					if ( ! control.params.mode || 'hue' !== control.params.mode ) {
+						jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', value );
+					}
 					jQuery( control.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', '' );
 				}, 50 );
 			} else {
@@ -106,13 +117,5 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		window.addEventListener( 'resize', function() {
 			colorPicker.resize( control.container.width() );
 		});
-	},
-
-	setValue: function( value ) {
-		this.container.find( '.kirki-color-control' ).attr( 'value', value ).trigger( 'change' );
-		this.setting.set( value );
-		if ( ! this.params.mode || 'hue' !== this.params.mode ) {
-			jQuery( this.container.find( '.toggle-colorpicker .placeholder' ) ).css( 'background-color', value );
-		}
 	}
 } );

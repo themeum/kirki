@@ -1,11 +1,11 @@
 wp.customize.controlConstructor['kirki-slider'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-		var control      = this,
-			changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
-			rangeInput   = control.container.find( 'input[type="range"]' ),
-			textInput    = control.container.find( 'input[type="text"]' ),
-			value        = control.setting._value;
+	initKirkiControl: function( control ) {
+		var changeAction, rangeInput, textInput, value;
+		changeAction = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change';
+		rangeInput   = control.container.find( 'input[type="range"]' );
+		textInput    = control.container.find( 'input[type="text"]' );
+		value        = control.setting._value;
 
 		// Set the initial value in the text input.
 		textInput.attr( 'value', value );

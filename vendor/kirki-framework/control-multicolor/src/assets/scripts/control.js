@@ -1,12 +1,12 @@
-/* global kirkiControlLoader */
 wp.customize.controlConstructor['kirki-multicolor'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-		var control = this,
-			colors  = control.params.choices,
-			keys    = Object.keys( colors ),
-			value   = this.params.value,
-			i       = 0;
+	initKirkiControl: function( control ) {
+		var colors, keys, value, i;
+		control = control || this;
+		colors  = control.params.choices,
+		keys    = Object.keys( colors ),
+		value   = control.params.value,
+		i       = 0;
 
 		// Proxy function that handles changing the individual colors
 		function kirkiMulticolorChangeHandler( control, value, subSetting ) {

@@ -1,25 +1,23 @@
 /* global fontAwesomeJSON */
 wp.customize.controlConstructor['kirki-fontawesome'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-
-		var control  = this,
-			element  = this.container.find( 'select' ),
-			icons    = jQuery.parseJSON( fontAwesomeJSON ),
-			selectValue,
-			selectWooOptions = {
-				data: [],
-				escapeMarkup: function( markup ) {
-					return markup;
-				},
-				templateResult: function( val ) {
-					return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
-				},
-				templateSelection: function( val ) {
-					return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
-				}
+	initKirkiControl: function( control ) {
+		var element, icons, selectValue, selectWooOptions, select;
+		control          = control || this;
+		element          = control.container.find( 'select' );
+		icons            = jQuery.parseJSON( fontAwesomeJSON );
+		selectWooOptions = {
+			data: [],
+			escapeMarkup: function( markup ) {
+				return markup;
 			},
-			select;
+			templateResult: function( val ) {
+				return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
+			},
+			templateSelection: function( val ) {
+				return '<i class="fa fa-lg fa-' + val.id + '" aria-hidden="true"></i>' + ' ' + val.text;
+			}
+		};
 
 		_.each( icons.icons, function( icon ) {
 			selectWooOptions.data.push( {

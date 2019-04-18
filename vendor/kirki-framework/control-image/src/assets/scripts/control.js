@@ -1,13 +1,14 @@
 wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicControl.extend( {
 
-	initKirkiControl: function() {
-        var control       = this,
-            value         = this.setting._value,
-            saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url',
-            preview       = control.container.find( '.placeholder, .thumbnail' ),
-            previewImage  = ( 'array' === saveAs ) ? value.url : value,
-            removeButton  = control.container.find( '.image-upload-remove-button' ),
-            defaultButton = control.container.find( '.image-default-button' );
+	initKirkiControl: function( control ) {
+        var value, saveAs, preview, previewImage, removeButton, defaultButton;
+        control       = control || this;
+        value         = control.setting._value;
+        saveAs        = ( ! _.isUndefined( control.params.choices ) && ! _.isUndefined( control.params.choices.save_as ) ) ? control.params.choices.save_as : 'url';
+        preview       = control.container.find( '.placeholder, .thumbnail' );
+        previewImage  = ( 'array' === saveAs ) ? value.url : value;
+        removeButton  = control.container.find( '.image-upload-remove-button' );
+        defaultButton = control.container.find( '.image-default-button' );
 
         // Make sure value is properly formatted.
         value = ( 'array' === saveAs && _.isString( value ) ) ? { url: value } : value;
