@@ -83,7 +83,6 @@ class Init {
 		$this->control_types = [
 			'kirki-composite'       => '\Kirki\Control\Composite',
 			'checkbox'              => '\Kirki\Control\Checkbox',
-			'kirki-background'      => '\Kirki\Control\Background',
 			'code_editor'           => '\Kirki\Control\Code',
 			'kirki-color'           => '\Kirki\Control\Color',
 			'kirki-color-palette'   => '\Kirki\Control\Color_Palette',

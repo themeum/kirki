@@ -1,61 +1,16 @@
 # control-background
 
-## Installation
+The background control is a pseudo-control for the Kirki framework. The control itself doesn't exist, it it a proxy for more basic controls. It adds controls for the following properties:
 
-First, install the package using composer:
+* background-color
+* background-image
+* background-repeat
+* background-position
+* background-size
+* background-attachment
 
-```bash
-composer require kirki-framework/control-background
-```
+In addition to the above visible controls, a hidden control is added which contains the value for the sum of the above sub-controls saved as an array.
 
-Make sure you include the autoloader:
-```php
-require_once get_parent_theme_file_path( 'vendor/autoload.php' );
-```
+The control is only useful when using the Kirki API (which is just a proxy for the WordPress-Core Customizer API) and can not be used as-is using the customizer API directly.
 
-To add a control using the customizer API:
-
-```php
-/**
- * Registers the control and whitelists it for JS templating.
- *
- * @since 1.0
- * @param WP_Customize_Manager $wp_customize The WP_Customize_Manager object.
- * @return void
- */
-add_action( 'customize_register', function( $wp_customize ) {
-	$wp_customize->register_control_type( '\Kirki\Control\Background' );
-} );
-
-/**
- * Add Customizer settings & controls.
- * 
- * @since 1.0
- * @param WP_Customize_Manager $wp_customize The WP_Customize_Manager object.
- * @return void
- */
-add_action( 'customize_register', function( $wp_customize ) {
-
-	// Add settings.
-	$wp_customize->add_setting( 'my_control_background', [
-		'type'              => 'theme_mod',
-		'capability'        => 'edit_theme_options',
-		'default'           => [
-			'background-color'      => '',
-			'background-image'      => '',
-			'background-repeat'     => '',
-			'background-position'   => '',
-			'background-size'       => '',
-			'background-attachment' => '',
-		],
-		'transport'         => 'refresh', // Or postMessage.
-		'sanitize_callback' => [ '\kirki\Field\Background', 'sanitize' ], // Or a custom sanitization callback.
-	] );
-
-	// Add controls.
-	$wp_customize->add_control( new \Kirki\Control\Background( $wp_customize, 'my_control_background', [
-		'label'   => esc_html__( 'My Background Control', 'theme_textdomain' ),
-		'section' => 'my_section',
-	] ) );
-} );
-```
+If you are using the customizer-api directly, you can see what the control does by examining the code it contains in `src/Field/Background.php` and extrapolating the fields you need to use directly from there.

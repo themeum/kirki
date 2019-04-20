@@ -10,6 +10,7 @@
 
 namespace Kirki\Field;
 
+use Kirki;
 use Kirki\Core\Field;
 
 /**
@@ -20,14 +21,204 @@ use Kirki\Core\Field;
 class Background extends Field {
 
 	/**
-	 * Sets the control type.
+	 * The class constructor.
+	 * Parses and sanitizes all field arguments.
+	 * Then it adds the field to Kirki::$fields.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @param string $config_id    The ID of the config we want to use.
+	 *                             Defaults to "global".
+	 *                             Configs are handled by the Kirki\Core\Config class.
+	 * @param array  $args         The arguments of the field.
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-background';
+	public function __construct( $config_id = 'global', $args = [] ) {
+		$args['required'] = isset( $args['required'] ) ? (array) $args['required'] : [];
+		/**
+		 * Add a hidden field, the label & description.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-generic',
+				'section'     => $args['section'],
+				'default'     => '',
+				'settings'    => $args['settings'],
+				'label'       => $args['label'],
+				'description' => $args['description'],
+				'choices'     => [
+					'type' => 'hidden',
+				]
+			]
+		);
+
+		/**
+		 * Background Color.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-color',
+				'settings'    => $args['settings'] . '[background-color]',
+				'parent_setting' => $args['settings'],
+				'label'       => '',
+				'description' => esc_html__( 'Background Color', 'kirki' ),
+				'default'     => isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '',
+				'section'     => $args['section'],
+				'choices'     => [
+					'alpha' => true,
+				],
+			]
+		);
+
+		/**
+		 * Background Image.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-image',
+				'settings'    => $args['settings'] . '[background-image]',
+				'parent_setting' => $args['settings'],
+				'label'       => '',
+				'description' => esc_html__( 'Background Image', 'kirki' ),
+				'default'     => isset( $args['default']['background-image'] ) ? $args['default']['background-image'] : '',
+				'section'     => $args['section'],
+			]
+		);
+
+		/**
+		 * Background Repeat.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-select',
+				'settings'    => $args['settings'] . '[background-repeat]',
+				'parent_setting' => $args['settings'],
+				'label'       => '',
+				'description' => esc_html__( 'Background Repeat', 'kirki' ),
+				'section'     => $args['section'],
+				'default'     => isset( $args['default']['background-repeat'] ) ? $args['default']['background-repeat'] : '',
+				'choices'     => [
+					'no-repeat' => esc_html__( 'No Repeat', 'kirki' ),
+					'repeat'    => esc_html__( 'Repeat All', 'kirki' ),
+					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'kirki' ),
+					'repeat-y'  => esc_html__( 'Repeat Vertically', 'kirki' ),
+				],
+				'required'    => array_merge(
+					$args['required'],
+					[
+						[
+							'setting'  => $args['settings'],
+							'operator' => '!=',
+							'value'    => '',
+							'choice'   => 'background-image',
+						],
+					]
+				),
+			]
+		);
+
+		/**
+		 * Background Position.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-select',
+				'settings'    => $args['settings'] . '[background-position]',
+				'parent_setting' => $args['settings'],
+				'label'       => '',
+				'description' => esc_html__( 'Background Position', 'kirki' ),
+				'default'     => isset( $args['default']['background-position'] ) ? $args['default']['background-position'] : '',
+				'section'     => $args['section'],
+				'choices'     => [
+					'left top'      => esc_html__( 'Left Top', 'kirki' ),
+					'left center'   => esc_html__( 'Left Center', 'kirki' ),
+					'left bottom'   => esc_html__( 'Left Bottom', 'kirki' ),
+					'center top'    => esc_html__( 'Center Top', 'kirki' ),
+					'center center' => esc_html__( 'Center Center', 'kirki' ),
+					'center bottom' => esc_html__( 'Center Bottom', 'kirki' ),
+					'right top'     => esc_html__( 'Right Top', 'kirki' ),
+					'right center'  => esc_html__( 'Right Center', 'kirki' ),
+					'right bottom'  => esc_html__( 'Right Bottom', 'kirki' ),
+				],
+				'required'    => array_merge(
+					$args['required'],
+					[
+						[
+							'setting'  => $args['settings'],
+							'operator' => '!=',
+							'value'    => '',
+							'choice'   => 'background-image',
+						],
+					]
+				),
+			]
+		);
+
+		/**
+		 * Background size.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-radio-buttonset',
+				'settings'    => $args['settings'] . '[background-size]',
+				'parent_setting' => $args['settings'],
+				'label'       => '',
+				'description' => esc_html__( 'Background Size', 'kirki' ),
+				'default'     => isset( $args['default']['background-size'] ) ? $args['default']['background-size'] : '',
+				'section'     => $args['section'],
+				'choices'     => [
+					'cover'   => esc_html__( 'Cover', 'kirki' ),
+					'contain' => esc_html__( 'Contain', 'kirki' ),
+					'auto'    => esc_html__( 'Auto', 'kirki' ),
+				],
+				'required'    => array_merge(
+					$args['required'],
+					[
+						[
+							'setting'  => $args['settings'],
+							'operator' => '!=',
+							'value'    => '',
+							'choice'   => 'background-image',
+						],
+					]
+				),
+			]
+		);
+
+		/**
+		 * Background attachment.
+		 */
+		Kirki::add_field(
+			$config_id,
+			[
+				'type'        => 'kirki-radio-buttonset',
+				'settings'    => $args['settings'] . '[background-attachment]',
+				'parent_setting' => $args['settings'],
+				'description' => esc_html__( 'Background Attachment', 'kirki' ),
+				'label'       => '',
+				'default'     => isset( $args['default']['background-attachment'] ) ? $args['default']['background-attachment'] : '',
+				'section'     => $args['section'],
+				'choices'     => [
+					'scroll' => esc_html__( 'Scroll', 'kirki' ),
+					'fixed'  => esc_html__( 'Fixed', 'kirki' ),
+				],
+				'required'    => array_merge(
+					$args['required'],
+					[
+						[
+							'setting'  => $args['settings'],
+							'operator' => '!=',
+							'value'    => '',
+							'choice'   => 'background-image',
+						],
+					]
+				),
+			]
+		);
 	}
 
 	/**
@@ -48,7 +239,7 @@ class Background extends Field {
 	}
 
 	/**
-	 * Sanitizes typography controls
+	 * Sanitizes background controls
 	 *
 	 * @static
 	 * @access public

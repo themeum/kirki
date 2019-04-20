@@ -125,7 +125,8 @@ var kirkiDependencies = {
 		return self.evaluate(
 			requirement.value,
 			wp.customize.control( requirement.setting ).setting._value,
-			requirement.operator
+			requirement.operator,
+			requirement.choice
 		);
 	},
 
@@ -136,10 +137,15 @@ var kirkiDependencies = {
 	 * @param {mixed} value1 - The 1st value.
 	 * @param {mixed} value2 - The 2nd value.
 	 * @param {string} operator - The comparison to use.
+	 * @param {string} choice - If we want to check an item in an object value.
 	 * @returns {bool}
 	 */
-	evaluate: function( value1, value2, operator ) {
+	evaluate: function( value1, value2, operator, choice ) {
 		var found = false;
+
+		if ( choice && 'object' === typeof value2 ) {
+			value2 = value2[ choice ];
+		}
 
 		if ( '===' === operator ) {
 			return value1 === value2;

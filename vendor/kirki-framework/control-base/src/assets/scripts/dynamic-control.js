@@ -201,3 +201,46 @@
 		},
 	} );
 }() );
+
+( function ( api ) {
+	/**
+	 * Set the value and trigger all bound callbacks.
+	 *
+	 * @since 1.0
+	 * @param {object} to New value.
+	 */
+	api.Value.prototype.set = function( to ) {
+		var from = this._value,
+		parentSetting,
+		newVal;
+
+		to = this._setter.apply( this, arguments );
+		to = this.validate( to );
+
+		// Bail if the sanitized value is null or unchanged.
+		if ( null === to || _.isEqual( from, to ) ) {
+			return this;
+		}
+
+		/**
+		 * Start Kirki mod.
+		 */
+		if ( this.id && api.control( this.id ) && api.control( this.id ).params && api.control( this.id ).params.parent_setting ) {
+			parentSetting = api.control( this.id ).params.parent_setting;
+			newVal        = {};
+			newVal[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ] = to;
+			api.control( parentSetting ).setting.set( jQuery.extend( {}, api.control( parentSetting ).setting._value, newVal ) );
+			return;
+		}
+		/**
+		 * End Kirki mod.
+		 */
+
+		this._value = to;
+		this._dirty = true;
+
+		this.callbacks.fireWith( this, [ to, from ] );
+
+		return this;
+	};
+} )( wp.customize );

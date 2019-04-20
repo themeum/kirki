@@ -107,7 +107,6 @@ class_alias( 'Kirki\Field\Upload', 'Kirki_Field_Upload' );
 add_action(
 	'customize_register',
 	function() {
-		class_alias( 'Kirki\Control\Background', 'Kirki_Control_Background' );
 		class_alias( 'Kirki\Control\Base', 'Kirki_Control_Base' );
 		class_alias( 'Kirki\Control\Checkbox', 'Kirki_Control_Checkbox' );
 		class_alias( 'Kirki\Control\Checkbox_Switch', 'Kirki_Control_Switch' );

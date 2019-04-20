@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3c28e278a85ecde8367a5b955e10b006
+class ComposerStaticInit820878f4869c00a82179964d6d9b0c87
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -99,26 +99,25 @@ class ComposerStaticInit3c28e278a85ecde8367a5b955e10b006
             2 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Field',
             3 => __DIR__ . '/..' . '/kirki-framework/control-color/src/Field',
             4 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Field',
-            5 => __DIR__ . '/..' . '/kirki-framework/control-composite/src/Field',
-            6 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Field',
-            7 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Field',
-            8 => __DIR__ . '/..' . '/kirki-framework/control-date/src/Field',
-            9 => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/Field',
-            10 => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/Field',
-            11 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Field',
-            12 => __DIR__ . '/..' . '/kirki-framework/control-fontawesome/src/Field',
-            13 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
-            14 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Field',
-            15 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
-            16 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Field',
-            17 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Field',
-            18 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            5 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Field',
+            6 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Field',
+            7 => __DIR__ . '/..' . '/kirki-framework/control-date/src/Field',
+            8 => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/Field',
+            9 => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/Field',
+            10 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Field',
+            11 => __DIR__ . '/..' . '/kirki-framework/control-fontawesome/src/Field',
+            12 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
+            13 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Field',
+            14 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
+            15 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Field',
+            16 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Field',
+            17 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
+            21 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
         ),
         'Kirki\\Core\\' => 
         array (
@@ -134,27 +133,26 @@ class ComposerStaticInit3c28e278a85ecde8367a5b955e10b006
             3 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Control',
             4 => __DIR__ . '/..' . '/kirki-framework/control-color/src/Control',
             5 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Control',
-            6 => __DIR__ . '/..' . '/kirki-framework/control-composite/src/Control',
-            7 => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src',
-            8 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Control',
-            9 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Control',
-            10 => __DIR__ . '/..' . '/kirki-framework/control-date/src/Control',
-            11 => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/Control',
-            12 => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/Control',
-            13 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Control',
-            14 => __DIR__ . '/..' . '/kirki-framework/control-fontawesome/src/Control',
-            15 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
-            16 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Control',
-            17 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
-            18 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Control',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Control',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            25 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Control',
-            26 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            6 => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Control',
+            8 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Control',
+            9 => __DIR__ . '/..' . '/kirki-framework/control-date/src/Control',
+            10 => __DIR__ . '/..' . '/kirki-framework/control-dimension/src/Control',
+            11 => __DIR__ . '/..' . '/kirki-framework/control-dimensions/src/Control',
+            12 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Control',
+            13 => __DIR__ . '/..' . '/kirki-framework/control-fontawesome/src/Control',
+            14 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
+            15 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Control',
+            16 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
+            17 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Control',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Control',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
+            21 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Control',
+            25 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
         ),
         'Kirki\\' => 
         array (
@@ -165,8 +163,8 @@ class ComposerStaticInit3c28e278a85ecde8367a5b955e10b006
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3c28e278a85ecde8367a5b955e10b006::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3c28e278a85ecde8367a5b955e10b006::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit820878f4869c00a82179964d6d9b0c87::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit820878f4869c00a82179964d6d9b0c87::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

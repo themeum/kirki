@@ -102,6 +102,17 @@ class Base extends \WP_Customize_Control {
 	public static $control_ver = '1.0.2';
 
 	/**
+	 * Parent setting.
+	 *
+	 * Used for composite controls to denote the setting that should be saved.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var string
+	 */
+	public $parent_setting;
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @access public
@@ -189,6 +200,9 @@ class Base extends \WP_Customize_Control {
 
 		// The CSS-Variables.
 		$this->json['css-var'] = $this->css_vars;
+
+		// Parent setting.
+		$this->json['parent_setting'] = $this->parent_setting;
 	}
 
 	/**
