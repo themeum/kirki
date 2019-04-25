@@ -56,7 +56,6 @@ class Module {
 	 */
 	protected function __construct() {
 		add_action( 'wp_loaded', [ $this, 'run' ] );
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_controls_webfonts_script' ], 1 );
 	}
 
 	/**
@@ -145,28 +144,5 @@ class Module {
 			}
 			$this->fonts_google->generate_google_font( $field );
 		}
-	}
-
-	/**
-	 * Enqueues the webfonts script used by controls in the customizer.
-	 *
-	 * @access public
-	 * @since 4.0
-	 * @return void
-	 */
-	public function enqueue_controls_webfonts_script() {
-		$url = apply_filters(
-			'kirki_package_url_module_webfonts',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-webfonts/src'
-		);
-
-		// Enqueue the webfonts script.
-		wp_enqueue_script(
-			'kirki-webfonts',
-			"$url/assets/scripts/webfonts.js",
-			[ 'jquery' ],
-			KIRKI_VERSION,
-			false
-		);
 	}
 }

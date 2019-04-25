@@ -1,8 +1,8 @@
 {
-    "name": "kirki-framework/module-webfonts",
+    "name": "kirki-framework/googlefonts",
     "type": "library",
-    "description": "Webfonts Module for the Kirki WordPress plugin.",
-    "keywords": ["wordpress","customizer","framework"],
+    "description": "Get a JSON file for all googlefonts. Initially built for the Kirki framework for the WordPress Customizer.",
+    "keywords": ["wordpress","customizer","framework","googlefonts","google-fonts"],
     "homepage": "https://aristath.github.io/kirki",
     "license": "MIT",
     "authors": [
@@ -14,13 +14,11 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "kirki-framework/core": "*",
-        "kirki-framework/googlefonts": "*"
+        "php": ">=5.6"
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\Webfonts\\" : "src/"
+			"Kirki\\" : "src/"
         }
     }
 }

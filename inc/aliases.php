@@ -137,7 +137,6 @@ add_action(
 		class_alias( 'Kirki\Control\Select', 'Kirki_Control_Select' );
 		class_alias( 'Kirki\Control\Slider', 'Kirki_Control_Slider' );
 		class_alias( 'Kirki\Control\Sortable', 'Kirki_Control_Sortable' );
-		class_alias( 'Kirki\Control\Typography', 'Kirki_Control_Typography' );
 		class_alias( 'Kirki\Control\Upload', 'Kirki_Control_Upload' );
 
 		class_alias( 'Kirki\Settings\Repeater', 'Kirki\Settings\Repeater_Setting' );

@@ -1,67 +1,60 @@
-.customize-control-kirki-typography {
-  position: relative;
+li {
+  &[data-kirki-parent-control-type="kirki-typography"] {
+    margin-bottom: 8px;
 
-  .wrapper {
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: 1px solid rgba(0,0,0,.1);
+    &[kirki-typography-subcontrol-type="font-size"] label,
+    &[kirki-typography-subcontrol-type="line-height"] label,
+    &[kirki-typography-subcontrol-type="letter-spacing"] label,
+    &[kirki-typography-subcontrol-type="word-spacing"] label,
+    &[kirki-typography-subcontrol-type="text-transform"] label,
+    &[kirki-typography-subcontrol-type="text-decoration"] label,
+    &[kirki-typography-subcontrol-type="margin-top"] label,
+    &[kirki-typography-subcontrol-type="margin-bottom"] label {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
 
-    h5 {
-      margin: 0.67em 0 0;
+      input,
+      .select2-container {
+        max-width: 100px;
+      }
     }
 
-    .color,
-    .font-backup,
-    .font-family,
-    .font-size,
-    .letter-spacing,
-    .line-height,
-    .margin-bottom,
-    .margin-top,
-    .text-align,
-    .text-transform,
-    .variant {
-      width: 100%;
-      float: none;
-      clear: both;
-    }
+    &[kirki-typography-subcontrol-type="font-style"],
+    &[kirki-typography-subcontrol-type="text-align"] {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
 
-    .font-size,
-    .letter-spacing,
-    .line-height,
-    .margin-bottom,
-    .margin-top,
-    .text-transform {
-      width: 48%;
-    }
-
-    .text-align {
-      .text-align-choices {
-        display: flex;
-
+      div.buttonset {
         label {
-          width: 100%;
-          padding: 5px;
-          text-align: center;
-          border: 1px solid rgba(255,255,255,0);
-        }
+          padding: .5em .75em;
 
-        input {
-          display: none;
-
-          &:checked {
-            + label {
-              border-color: #0085ba;
-            }
+          svg {
+            width: 1em;
+            height: 1em;
           }
         }
       }
     }
 
-    .color {
-      width: auto;
+    &[kirki-typography-subcontrol-type="font-weight"] {
+      .buttonset {
+        display: flex;
+        flex-wrap: nowrap;
+
+        label {
+          padding: .35em 0;
+        }
+      }
+    }
+
+    .customize-control-title {
+      font-weight: 400;
     }
   }
+}
+
+.kirki-typography-end {
+  margin-bottom: 12px;
 }

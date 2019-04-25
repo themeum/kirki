@@ -28,6 +28,7 @@ module.exports = function( grunt ) {
 			finalObject = {
 				items: {},
 				order: {
+					alpha: [],
 					popularity: [],
 					trending: []
 				}
@@ -42,27 +43,25 @@ module.exports = function( grunt ) {
 		popularityFonts = grunt.file.readJSON( 'src/webfonts-popularity.json' );
 		trendingFonts   = grunt.file.readJSON( 'src/webfonts-trending.json' );
 
-		// Populate the fonts.
+		// Add the alpha order.
 		for ( i = 0; i < alphaFonts.items.length; i++ ) {
+			finalObject.order.alpha.push( alphaFonts.items[ i ].family );
+		}
+
+		for ( i = 0; i < popularityFonts.items.length; i++ ) {
+			// Populate the fonts.
 			finalObject.items[ alphaFonts.items[ i ].family ] = {
 				family: alphaFonts.items[ i ].family,
 				category: alphaFonts.items[ i ].category,
 				variants: alphaFonts.items[ i ].variants.sort()
-
-				/* Deprecated
-				subsets: alphaFonts.items[ i ].subsets.sort(),
-				files: alphaFonts.items[ i ].files
-				*/
 			};
-		}
 
-		// Add the popularity order.
-		for ( i = 0; i < popularityFonts.items.length; i++ ) {
+			// Add the popularity order.
 			finalObject.order.popularity.push( popularityFonts.items[ i ].family );
 			fontNames.push( popularityFonts.items[ i ].family );
 		}
 
-		// Add the rrending order.
+		// Add the trending order.
 		for ( i = 0; i < trendingFonts.items.length; i++ ) {
 			finalObject.order.trending.push( trendingFonts.items[ i ].family );
 		}

@@ -159,11 +159,16 @@ var kirkiPostMessage = {
 					styles += '}';
 
 					// Check if this is a googlefont so that we may load it.
-					if ( ! _.isUndefined( WebFont ) && value['font-family'] && 'google' === kirkiParent.util.webfonts.getFontType( value['font-family'] ) ) {
+					if ( ! _.isUndefined( WebFont ) && value['font-family'] ) {
 
 						// Calculate the googlefont params.
 						googleFont = value['font-family'].replace( /\"/g, '&quot;' );
-						if ( value.variant ) {
+						if ( value['font-weight'] && value['font-style'] ) {
+							googleFont += ':' + value['font-weight'];
+							if ( 'italic' === value['font-style'] ) {
+								googleFont += 'i';
+							}
+						} else if ( value.variant ) {
 							if ( 'regular' === value.variant ) {
 								googleFont += ':400';
 							} else if ( 'italic' === value.variant ) {
@@ -218,15 +223,14 @@ var kirkiPostMessage = {
 					if ( _.isObject( value ) ) {
 						styles += output.element + '{';
 						_.each( value, function( val, key ) {
+							var property;
 							if ( output.choice && key !== output.choice ) {
 								return;
 							}
 							processedValue = kirkiPostMessage.util.processValue( output, val );
-							if ( ! output.property ) {
-								output.property = key;
-							}
+							property       = output.property ? output.property : key;
 							if ( false !== processedValue ) {
-								styles += output.property + ':' + processedValue + ';';
+								styles += property + ':' + processedValue + ';';
 							}
 						} );
 						styles += '}';
@@ -336,6 +340,9 @@ jQuery( document ).ready( function() {
 				_.each( field.js_vars, function( output ) {
 					if ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) {
 						output.function = 'css';
+					}
+					if ( field.choices && field.choices.parent_type ) {
+						field.type = field.choices.parent_type;
 					}
 					if ( 'css' === output.function ) {
 						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );

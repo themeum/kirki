@@ -30,6 +30,8 @@
   .customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label {
     background-color: #00a0d2;
     color: rgba(255, 255, 255, 0.8); }
+    .customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label svg {
+      fill: rgba(255, 255, 255, 0.8); }
 
 .customize-control-kirki-radio-image > .image {
   display: flex;

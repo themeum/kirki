@@ -20,7 +20,7 @@
 
     .option-description {
       display: block;
-      color: rgba(0,0,0,.35);
+      color: rgba(0, 0, 0, .35);
       font-size: 0.9em;
       padding-left: 25px;
     }
@@ -33,8 +33,8 @@
     flex-wrap: wrap;
 
     .switch-label {
-      background: rgba(0,0,0,.1);
-      border: 1px rgba(0,0,0,.1);
+      background: rgba(0, 0, 0, .1);
+      border: 1px rgba(0, 0, 0, .1);
       color: $color-dark-medium-gray;
       margin: 0;
       text-align: center;
@@ -46,9 +46,13 @@
 
     .switch-input {
       &:checked {
-        + .switch-label {
+        +.switch-label {
           background-color: $color-medium-blue;
           color: $textcolor-light;
+
+          svg {
+            fill: $textcolor-light;
+          }
         }
       }
     }
@@ -56,7 +60,7 @@
 }
 
 .customize-control-kirki-radio-image {
-  > .image {
+  >.image {
     display: flex;
     flex-wrap: wrap;
   }
@@ -72,7 +76,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255,255,255,.7);
+      background: rgba(255, 255, 255, .7);
       font-weight: bold;
 
       .inner {
@@ -95,19 +99,20 @@
     img {
       border: 1px solid transparent;
     }
+
     display: none;
 
     &:checked {
-      + label {
+      +label {
         img {
-          -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
-          box-shadow: 0 0 5px 2px rgba(0,0,0,.25);
+          -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .25);
+          box-shadow: 0 0 5px 2px rgba(0, 0, 0, .25);
           border: 1px solid #3498DB;
         }
       }
     }
 
-    + label .image-clickable {
+    +label .image-clickable {
       position: absolute;
       top: 0;
       bottom: 0;

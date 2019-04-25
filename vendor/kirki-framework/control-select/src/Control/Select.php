@@ -59,6 +59,18 @@ class Select extends Base {
 	public static $control_ver = '1.1';
 
 	/**
+	 * Whitelist the "select_args" argument.
+	 *
+	 * The arguments here will be passed-on to select2.
+	 *
+	 * @see https://select2.org/
+	 * @access protected
+	 * @since 1.1
+	 * @var string|array
+	 */
+	protected $select_args;
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -107,6 +119,7 @@ class Select extends Base {
 		parent::to_json();
 		$this->json['multiple']    = $this->multiple;
 		$this->json['placeholder'] = $this->placeholder;
+		$this->json['select_args'] = $this->select_args;
 	}
 
 	/**

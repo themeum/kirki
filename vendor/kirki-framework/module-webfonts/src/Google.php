@@ -15,6 +15,7 @@ namespace Kirki\Modules\Webfonts;
 
 use Kirki\Core\Values;
 use Kirki\Modules\Webfonts\Fonts;
+use Kirki\GoogleFonts;
 
 /**
  * Manages the way Google Fonts are enqueued.
@@ -85,8 +86,7 @@ final class Google {
 			return;
 		}
 
-		add_action( 'wp_ajax_kirki_fonts_google_all_get', [ $this, 'get_googlefonts_json' ] );
-		add_action( 'wp_ajax_nopriv_kirki_fonts_google_all_get', [ $this, 'get_googlefonts_json' ] );
+		new GoogleFonts();
 		add_action( 'wp_ajax_kirki_fonts_standard_all_get', [ $this, 'get_standardfonts_json' ] );
 		add_action( 'wp_ajax_nopriv_kirki_fonts_standard_all_get', [ $this, 'get_standardfonts_json' ] );
 
@@ -117,7 +117,7 @@ final class Google {
 	public function generate_google_font( $args ) {
 
 		// Process typography fields.
-		if ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) {
+		if ( ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) || ( isset( $args['choices'] ) && isset( $args['choices']['parent_type'] ) && 'kirki-typography' === $args['choices']['parent_type'] ) ) {
 
 			// Get the value.
 			$value = Values::get_sanitized_field_value( $args );
@@ -138,7 +138,7 @@ final class Google {
 			}
 
 			// Add the requested google-font.
-			if ( ! isset( $this->fonts[ $value['font-family'] ] ) ) {
+			if ( ! is_array( $value ) || ! isset( $value['font-family'] ) || ! isset( $this->fonts[ $value['font-family'] ] ) ) {
 				$this->fonts[ $value['font-family'] ] = [];
 			}
 			if ( ! in_array( $value['variant'], $this->fonts[ $value['font-family'] ], true ) ) {
@@ -225,17 +225,6 @@ final class Google {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Gets the googlefonts JSON file.
-	 *
-	 * @since 3.0.17
-	 * @return void
-	 */
-	public function get_googlefonts_json() {
-		include 'webfonts.json'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-		wp_die();
 	}
 
 	/**

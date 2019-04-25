@@ -109,7 +109,6 @@ class Init {
 			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',
 			'kirki-generic'         => '\Kirki\Control\Generic',
 			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle',
-			'kirki-typography'      => '\Kirki\Control\Typography',
 			'image'                 => '\Kirki\Control\Image',
 			'cropped_image'         => '\Kirki\Control\Cropped_Image',
 			'upload'                => '\Kirki\Control\Upload',

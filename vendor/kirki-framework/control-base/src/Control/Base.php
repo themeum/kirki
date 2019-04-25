@@ -113,6 +113,15 @@ class Base extends \WP_Customize_Control {
 	public $parent_setting;
 
 	/**
+	 * Wrapper attributes.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var array
+	 */
+	public $wrapper_atts = [];
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @access public
@@ -203,6 +212,9 @@ class Base extends \WP_Customize_Control {
 
 		// Parent setting.
 		$this->json['parent_setting'] = $this->parent_setting;
+
+		// Wrapper Attributes.
+		$this->json['wrapper_atts'] = $this->wrapper_atts;
 	}
 
 	/**

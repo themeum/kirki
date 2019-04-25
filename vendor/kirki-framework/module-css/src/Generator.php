@@ -154,7 +154,9 @@ final class Generator {
 		self::$settings   = $field['settings'];
 		self::$callback   = $field['sanitize_callback'];
 		self::$field_type = $field['type'];
+		self::$field_type = ( isset( $field['choices'] ) && isset( $field['choices']['parent_type'] ) ) ? $field['choices']['parent_type'] : self::$field_type;
 		self::$output     = $field['output'];
+
 		if ( ! is_array( self::$output ) ) {
 			self::$output = [
 				[

@@ -569,8 +569,8 @@ class Field {
 			foreach ( $this->output as $output ) {
 				$output['function'] = ( isset( $output['function'] ) ) ? $output['function'] : 'style';
 
-				// If 'element' or 'property' are not defined, skip this.
-				if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
+				// If 'element' is not defined, skip this.
+				if ( ! isset( $output['element'] ) ) {
 					continue;
 				}
 				if ( is_array( $output['element'] ) ) {

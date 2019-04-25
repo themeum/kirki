@@ -26,11 +26,14 @@
 			if ( ! args.params.type ) {
 				args.params.type = 'kirki-generic';
 			}
-			if ( ! args.params.content ) {
-				args.params.content = jQuery( '<li></li>' );
-				args.params.content.attr( 'id', 'customize-control-' + id.replace( /]/g, '' ).replace( /\[/g, '-' ) );
-				args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
-			}
+
+			// Hijack the container to add wrapper_atts.
+			args.params.content = jQuery( '<li></li>' );
+			args.params.content.attr( 'id', 'customize-control-' + id.replace( /]/g, '' ).replace( /\[/g, '-' ) );
+			args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
+			_.each( args.params.wrapper_atts, function( val, key ) {
+				args.params.content.attr( key, val );
+			});
 
 			control.propertyElements = [];
 			wp.customize.Control.prototype.initialize.call( control, id, args );
@@ -230,7 +233,6 @@
 			newVal        = {};
 			newVal[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ] = to;
 			api.control( parentSetting ).setting.set( jQuery.extend( {}, api.control( parentSetting ).setting._value, newVal ) );
-			return;
 		}
 		/**
 		 * End Kirki mod.
@@ -242,5 +244,24 @@
 		this.callbacks.fireWith( this, [ to, from ] );
 
 		return this;
+	};
+
+	/**
+	 * Get the value.
+	 *
+	 * @return {mixed}
+	 */
+	api.Value.prototype.get = function() {
+		/**
+		 * Start Kirki mod.
+		 */
+		if ( this.id && api.control( this.id ) && api.control( this.id ).params && api.control( this.id ).params.parent_setting ) {
+			parentSetting = api.control( this.id ).params.parent_setting;
+			return api.control( parentSetting ).setting.get()[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ];
+		}
+		/**
+		 * End Kirki mod.
+		 */
+		return this._value;
 	};
 } )( wp.customize );
