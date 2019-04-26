@@ -1,5 +1,5 @@
 ---
 engines:
 exclude_paths:
-  - 'vendor/autoload.php'
-  - 'vendor/composer/**'
+  - 'packages/autoload.php'
+  - 'packages/composer/**'

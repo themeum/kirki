@@ -13,6 +13,7 @@
 namespace Kirki\Modules\Postmessage;
 
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -66,11 +67,7 @@ class Module {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-		$url = apply_filters(
-			'kirki_package_url_module_postmessage',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-postmessage/src'
-		);
-		wp_enqueue_script( 'kirki_auto_postmessage', $url . '/assets/scripts/script.js', [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		$data   = [];
 		foreach ( $fields as $field ) {

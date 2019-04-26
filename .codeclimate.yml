@@ -70,6 +70,6 @@ exclude_paths:
 - tests/*
 - bin/*
 - lib/*
-- vendor/kirki-framework/control-select/src/assets/scripts/selectWoo/*
-- vendor/composer/*
-- vendor/autolot.php
+- packages/kirki-framework/control-select/src/assets/scripts/selectWoo/*
+- packages/composer/*
+- packages/autoload.php

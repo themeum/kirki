@@ -12,6 +12,7 @@
 namespace Kirki\Modules\Loading;
 
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 /**
  * Modifies the loading overlay.
@@ -94,10 +95,6 @@ class Module {
 	 * @access public
 	 */
 	public function add_loader_styles_to_header() {
-		$url = apply_filters(
-			'kirki_package_url_module_loading',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-loading/src'
-		);
 		?>
 		<style>
 			body.wp-customizer-unloading {
@@ -121,7 +118,7 @@ class Module {
 				opacity: 0;
 				-webkit-transition: opacity 0.5s;
 				transition: opacity 0.5s;
-				background-image: url("<?php echo esc_url_raw( $url ); ?>/assets/kirki-logo.svg");
+				background-image: url("<?php echo esc_url_raw( URL::get_from_path( __DIR__ . '/assets/kirki-logo.svg' ) ); ?>");
 				background-repeat: no-repeat;
 				background-position: center center;
 			}

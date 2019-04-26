@@ -14,6 +14,7 @@ namespace Kirki\Modules\CSS_Vars;
 
 use Kirki\Core\Values;
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 /**
  * The Module object.
@@ -138,7 +139,7 @@ class Module {
 	 * @return void
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-css-vars/src/script.js', [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_auto_css_vars', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
 		$fields = Kirki::$fields;
 		$data   = [];
 		foreach ( $fields as $field ) {

@@ -13,6 +13,7 @@
 namespace Kirki\Modules\Preset;
 
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -67,14 +68,9 @@ class Module {
 	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
-		$url = apply_filters(
-			'kirki_package_url_module_preset',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-preset/src'
-		);
-
 		wp_enqueue_script(
 			'kirki-set-setting-value',
-			$url . '/assets/scripts/set-setting-value.js',
+			URL::get_from_path( __DIR__ . '/assets/scripts/set-setting-value.js' ),
 			[ 'jquery' ],
 			KIRKI_VERSION,
 			false
@@ -82,7 +78,7 @@ class Module {
 
 		wp_enqueue_script(
 			'kirki-preset',
-			$url . '/assets/scripts/preset.js',
+			URL::get_from_path( __DIR__ . '/assets/scripts/preset.js' ),
 			[ 'jquery', 'kirki-set-setting-value' ],
 			KIRKI_VERSION,
 			false

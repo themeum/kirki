@@ -25,10 +25,10 @@ composer.lock export-ignore
 example.php export-ignore
 Gruntfile.js export-ignore
 package.json export-ignore
-vendor/**/installed.json export-ignore
-vendor/kirki-framework/**/.gitignore export-ignore
-vendor/kirki-framework/**/package.json export-ignore
-vendor/kirki-framework/**/Gruntfile.js export-ignore
+packages/**/installed.json export-ignore
+packages/kirki-framework/**/.gitignore export-ignore
+packages/kirki-framework/**/package.json export-ignore
+packages/kirki-framework/**/Gruntfile.js export-ignore
 *.map export-ignore
 .sass-cache export-ignore
 *.scss export-ignore

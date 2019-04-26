@@ -14,6 +14,7 @@
 namespace Kirki\Modules\Custom_Sections;
 
 use Kirki\Core\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -161,12 +162,7 @@ class Module {
 	 * @since 3.0.0
 	 */
 	public function enqueue_scrips() {
-		$url = apply_filters(
-			'kirki_package_url_module_custom_sections',
-			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/module-custom-sections/src'
-		);
-
-		wp_enqueue_style( 'kirki-custom-sections', $url . '/assets/styles/sections.css', [], KIRKI_VERSION );
-		wp_enqueue_script( 'kirki-custom-sections', $url . '/assets/scripts/sections.js', [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, false );
+		wp_enqueue_style( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/styles/sections.css' ), [], KIRKI_VERSION );
+		wp_enqueue_script( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/scripts/sections.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, false );
 	}
 }

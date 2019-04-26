@@ -30,4 +30,4 @@ script:
   # -p flag: Show progress of the run.
   # -s flag: Show sniff codes in all reports.
   # -v flag: Print verbose output.
-  - vendor/bin/phpcs -v --runtime-set ignore_warnings_on_exit 1
+  - packages/bin/phpcs -v --runtime-set ignore_warnings_on_exit 1
