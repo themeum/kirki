@@ -63,9 +63,10 @@
     "php-coveralls/php-coveralls": "^2.0",
     "phpunit/phpunit": "*",
     "composer/installers": "*",
-    "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
-    "codacy/coverage": "dev-master"
+    "codacy/coverage": "dev-master",
+    "wptrt/wpthemereview": "dev-develop",
+    "dealerdirect/phpcodesniffer-composer-installer": "*"
   }
 }

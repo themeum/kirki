@@ -48,6 +48,9 @@
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 	</rule>
 
+	<!-- Include the WordPress Theme Review Team ruleset. -->
+	<rule ref="WPThemeReview" />
+
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
