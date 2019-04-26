@@ -41,6 +41,7 @@
 	<exclude-pattern>vendor/webmozart</exclude-pattern>
 	<exclude-pattern>vendor/wp-coding-standards</exclude-pattern>
 	<exclude-pattern>vendor/autoload.php</exclude-pattern>
+	<exclude-pattern>vendor/wptrt</exclude-pattern>
 
 	<!-- Include the WordPress ruleset. -->
 	<rule ref="WordPress">
@@ -56,5 +57,11 @@
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP -->
 	<config name="testVersion" value="5.6-"/>
-	<rule ref="PHPCompatibilityWP"/>
+	<rule ref="PHPCompatibilityWP">
+		<exclude name="PHPCompatibility.LanguageConstructs.NewLanguageConstructs" />
+		<exclude name="PHPCompatibility.Syntax.NewShortArray" />
+		<exclude name="PHPCompatibility.Keywords.NewKeywords" />
+		<exclude name="PHPCompatibility.FunctionDeclarations.NewClosure.Found" />
+		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.class_aliasFound" />
+	</rule>
 </ruleset>
