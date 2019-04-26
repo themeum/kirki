@@ -36,7 +36,6 @@ final class GoogleFonts {
 	public function __construct() {
 		add_action( 'wp_ajax_kirki_fonts_google_all_get', [ $this, 'print_googlefonts_json' ] );
 		add_action( 'wp_ajax_nopriv_kirki_fonts_google_all_get', [ $this, 'print_googlefonts_json' ] );
-		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
 	}
 
 	/**
@@ -53,6 +52,12 @@ final class GoogleFonts {
 		}
 	}
 
+	/**
+	 * Returns the array of googlefonts from the JSON file.
+	 *
+	 * @since 0.1
+	 * @return array
+	 */
 	public function get_array() {
 		ob_start();
 		include 'webfonts.json'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
@@ -92,7 +97,7 @@ final class GoogleFonts {
 
 		// Apply the 'kirki_fonts_google_fonts' filter.
 		self::$google_fonts = apply_filters( 'kirki_fonts_google_fonts', self::$google_fonts );
-			
+
 		// Save the array in cache.
 		$cache_time = apply_filters( 'kirki_googlefonts_transient_time', HOUR_IN_SECONDS );
 		set_site_transient( 'kirki_googlefonts_cache', self::$google_fonts, $cache_time );
@@ -100,6 +105,14 @@ final class GoogleFonts {
 		return self::$google_fonts;
 	}
 
+	/**
+	 * Returns an array of google-fonts matching our arguments.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array $args The arguments.
+	 * @return array
+	 */
 	public function get_google_fonts_by_args( $args = [] ) {
 		$cache_name = 'kirki_googlefonts_' . md5( wp_json_encode( $args ) );
 		$cache      = get_site_transient( $cache_name );
@@ -109,7 +122,7 @@ final class GoogleFonts {
 
 		$args['sort'] = isset( $args['sort'] ) ? $args['sort'] : 'alpha';
 
-		$fonts = $this->get_array();
+		$fonts         = $this->get_array();
 		$ordered_fonts = $fonts['order'][ $args['sort'] ];
 		if ( isset( $args['count'] ) ) {
 			set_site_transient( $cache_name, $ordered_fonts, HOUR_IN_SECONDS );
@@ -118,36 +131,5 @@ final class GoogleFonts {
 		}
 		set_site_transient( $cache_name, $ordered_fonts, HOUR_IN_SECONDS );
 		return $ordered_fonts;
-	}
-
-	public function register_routes() {
-		foreach( [ 'alpha', 'popularity', 'trending' ] as $sort_by ) {
-			register_rest_route(
-				'kirki/v1',
-				'/control/typography/fonts/google/' . $sort_by,
-				[
-					[
-						'methods'             => 'GET',
-						'callback'            => [ $this, 'get_google_fonts_rest_callback' ],
-						'permission_callback' => '__return_true',
-						'args'                => [
-							'sort' => $sort_by,
-						],
-					],
-				]
-			);
-		}
-	}
-
-	public function get_google_fonts_rest_callback( $request ) {
-
-		// Get the attributes.
-		$attributes = $request->get_attributes();
-
-		return $this->get_google_fonts_by_args(
-			[
-				'sort' => $attributes['args']['sort'],
-			]
-		);
 	}
 }

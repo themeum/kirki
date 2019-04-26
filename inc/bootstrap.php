@@ -7,4 +7,4 @@
  */
 
 // Load aliases.
-require_once 'aliases.php';
+require_once 'aliases.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude

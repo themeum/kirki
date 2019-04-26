@@ -99,7 +99,7 @@ final class Helper {
 	public static function download_font_file( $url ) {
 
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
-		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 		$timeout_seconds = 5;
 

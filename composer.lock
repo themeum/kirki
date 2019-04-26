@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6dcf85f1eede684fee714b1b71bfe85c",
+    "content-hash": "9705876b2dcf3de4f72c6ac95716c876",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1284,12 +1284,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/googlefonts.git",
-                "reference": "dce1930ffd18345370e20f28ba621b8ec8dde985"
+                "reference": "b803192a8cc4492ab352869b1f8f05ed1ec435cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/dce1930ffd18345370e20f28ba621b8ec8dde985",
-                "reference": "dce1930ffd18345370e20f28ba621b8ec8dde985",
+                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/b803192a8cc4492ab352869b1f8f05ed1ec435cb",
+                "reference": "b803192a8cc4492ab352869b1f8f05ed1ec435cb",
                 "shasum": ""
             },
             "require": {
@@ -1322,7 +1322,7 @@
                 "googlefonts",
                 "wordpress"
             ],
-            "time": "2019-04-20T18:07:26+00:00"
+            "time": "2019-04-26T21:07:28+00:00"
         },
         {
             "name": "kirki-framework/module-css",
@@ -1873,12 +1873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "cfcc083b7f6662d98775294a44416e2366f9a9a0"
+                "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/cfcc083b7f6662d98775294a44416e2366f9a9a0",
-                "reference": "cfcc083b7f6662d98775294a44416e2366f9a9a0",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
+                "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
                 "shasum": ""
             },
             "require": {
@@ -1911,7 +1911,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-25T22:37:48+00:00"
+            "time": "2019-04-26T21:07:08+00:00"
         },
         {
             "name": "kirki-framework/url-getter",
@@ -4843,6 +4843,76 @@
                 "wordpress"
             ],
             "time": "2019-04-08T10:53:57+00:00"
+        },
+        {
+            "name": "wptrt/wpthemereview",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPTRT/WPThemeReview.git",
+                "reference": "29200a2e6339264af3785d67a787e39a71b0f74b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/29200a2e6339264af3785d67a787e39a71b0f74b",
+                "reference": "29200a2e6339264af3785d67a787e39a71b0f74b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "phpcompatibility/phpcompatibility-wp": "^2.0",
+                "squizlabs/php_codesniffer": "^3.3.1",
+                "wp-coding-standards/wpcs": "^2.1.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Theme Review Team",
+                    "homepage": "https://make.wordpress.org/themes/handbook/",
+                    "role": "Strategy and rule setting"
+                },
+                {
+                    "name": "Ulrich Pogson",
+                    "homepage": "https://github.com/grappler",
+                    "role": "Lead developer"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "Lead developer"
+                },
+                {
+                    "name": "Denis Žoljom",
+                    "homepage": "https://github.com/dingo-d",
+                    "role": "Plugin integration lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WPTRT/WPThemeReview/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to verify theme compliance with the rules for theme hosting on wordpress.org",
+            "homepage": "https://make.wordpress.org/themes/handbook/review/",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "themes",
+                "wordpress"
+            ],
+            "time": "2019-04-25T11:50:50+00:00"
         }
     ],
     "aliases": [],
@@ -4890,7 +4960,8 @@
         "kirki-framework/module-tooltips": 20,
         "kirki-framework/module-webfont-loader": 20,
         "kirki-framework/module-webfonts": 20,
-        "codacy/coverage": 20
+        "codacy/coverage": 20,
+        "wptrt/wpthemereview": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

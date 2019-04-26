@@ -13,6 +13,9 @@
       "role":"Developer"
     }
   ],
+  "config": {
+    "vendor-dir": "packages"
+  },
   "include-path": [".", "core"],
   "require": {
     "php": ">=5.6",

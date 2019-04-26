@@ -1332,18 +1332,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/googlefonts.git",
-            "reference": "dce1930ffd18345370e20f28ba621b8ec8dde985"
+            "reference": "b803192a8cc4492ab352869b1f8f05ed1ec435cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/dce1930ffd18345370e20f28ba621b8ec8dde985",
-            "reference": "dce1930ffd18345370e20f28ba621b8ec8dde985",
+            "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/b803192a8cc4492ab352869b1f8f05ed1ec435cb",
+            "reference": "b803192a8cc4492ab352869b1f8f05ed1ec435cb",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-04-20T18:07:26+00:00",
+        "time": "2019-04-26T21:07:28+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1947,12 +1947,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "cfcc083b7f6662d98775294a44416e2366f9a9a0"
+            "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/cfcc083b7f6662d98775294a44416e2366f9a9a0",
-            "reference": "cfcc083b7f6662d98775294a44416e2366f9a9a0",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
+            "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
             "shasum": ""
         },
         "require": {
@@ -1960,7 +1960,7 @@
             "kirki-framework/googlefonts": "*",
             "php": ">=5.6"
         },
-        "time": "2019-04-25T22:37:48+00:00",
+        "time": "2019-04-26T21:07:08+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
