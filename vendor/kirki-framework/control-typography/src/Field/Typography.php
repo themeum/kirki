@@ -232,8 +232,8 @@ class Typography extends Field {
 						'settings'    => $args['settings'] . '[font-style]',
 						'default'     => $is_italic ? 'italic' : 'normal',
 						'choices'     => [
-							'normal' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z"/></svg><span class="screen-reader-text">' . esc_html__( 'Normal', 'kirki' ) . '</span>',
-							'italic' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.565 20.827c-.361.732-.068 1.173.655 1.173h1.78v2h-9v-2h.897c1.356 0 1.673-.916 2.157-1.773l8.349-16.89c.403-.852-.149-1.337-.855-1.337h-1.548v-2h9v2h-.84c-1.169 0-1.596.646-2.06 1.516l-8.535 17.311z"/></svg><span class="screen-reader-text">' . esc_html__( 'Italic', 'kirki' ) . '</span>',
+							'normal' => '<span class="dashicons dashicons-no-alt"></span><span class="screen-reader-text">' . esc_html__( 'Normal', 'kirki' ) . '</span>',
+							'italic' => '<span class="dashicons dashicons-editor-italic"></span><span class="screen-reader-text">' . esc_html__( 'Italic', 'kirki' ) . '</span>',
 						],
 					],
 					$args
@@ -315,30 +315,6 @@ class Typography extends Field {
 			);
 		}
 
-		if ( isset( $args['default']['text-transform'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'text-transform';
-			Kirki::add_field(
-				$config_id,
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Text Transform', 'kirki' ),
-						'description' => '',
-						'type'        => 'select',
-						'settings'    => $args['settings'] . '[text-transform]',
-						'default'     => $args['default']['text-transform'],
-						'choices'     => [
-							'capitalize' => esc_html__( 'Capitalize', 'kirki' ),
-							'uppercase'  => esc_html__( 'Uppercase', 'kirki' ),
-							'lowercase'  => esc_html__( 'Lowercase', 'kirki' ),
-							'initial'    => esc_html__( 'Initial', 'kirki' ),
-							'inherit'    => esc_html__( 'Inherit', 'kirki' ),
-						],
-					],
-					$args
-				)
-			);
-		}
-
 		if ( isset( $args['default']['text-decoration'] ) ) {
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'text-decoration';
 			Kirki::add_field(
@@ -347,15 +323,35 @@ class Typography extends Field {
 					[
 						'label'       => esc_html__( 'Text Decoration', 'kirki' ),
 						'description' => '',
-						'type'        => 'select',
+						'type'        => 'radio-buttonset',
 						'settings'    => $args['settings'] . '[text-decoration]',
 						'default'     => $args['default']['text-decoration'],
 						'choices'     => [
-							'underline'    => esc_html__( 'Underline', 'kirki' ),
-							'overline'     => esc_html__( 'Overline', 'kirki' ),
-							'line-through' => esc_html__( 'Line-Through', 'kirki' ),
-							'initial'      => esc_html__( 'Initial', 'kirki' ),
-							'inherit'      => esc_html__( 'Inherit', 'kirki' ),
+							''          => '<span class="dashicons dashicons-no-alt"></span><span class="screen-reader-text">' . esc_html__( 'Inherit', 'kirki' ) . '</span>',
+							'underline' => '<span class="dashicons dashicons-editor-underline"></span><span class="screen-reader-text">' . esc_html__( 'Underline', 'kirki' ) . '</span>',
+						],
+					],
+					$args
+				)
+			);
+		}
+
+		if ( isset( $args['default']['text-transform'] ) ) {
+			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'text-transform';
+			Kirki::add_field(
+				$config_id,
+				wp_parse_args(
+					[
+						'label'       => esc_html__( 'Text Transform', 'kirki' ),
+						'description' => '',
+						'type'        => 'radio-buttonset',
+						'settings'    => $args['settings'] . '[text-transform]',
+						'default'     => $args['default']['text-transform'],
+						'choices'     => [
+							''           => '<span class="dashicons dashicons-no-alt"><span class="screen-reader-text">' . esc_html__( 'None', 'kirki' ) . '</span>',
+							'capitalize' => '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 24 24" width="24" height="24"><g clip-path="url(#_clipPath_6mY59hWt2X6wMJkW0bF8bQ3uzZwcpH2O)"><clipPath id="_clipPath_zFrweGjD0u7iDCfkr4sg6tiHFLf3CNfH"><rect x="0.5" y="0.5" width="23" height="23" transform="matrix(1,0,0,1,0,0)" fill="rgb(255,255,255)"/></clipPath><g clip-path="url(#_clipPath_zFrweGjD0u7iDCfkr4sg6tiHFLf3CNfH)"><g><path d=" M 10.52 17.941 L 9.552 15.067 L 4.515 15.067 L 3.556 17.941 L 0.5 17.941 L 5.693 3.994 L 8.355 3.994 L 13.576 17.941 L 10.52 17.941 Z  M 7.024 7.519 L 5.289 12.739 L 8.777 12.739 L 7.024 7.519 Z  M 23.5 17.941 L 20.702 17.941 L 20.702 17.941 Q 20.511 17.568 20.424 17.012 L 20.424 17.012 L 20.424 17.012 Q 19.418 18.132 17.81 18.132 L 17.81 18.132 L 17.81 18.132 Q 16.286 18.132 15.286 17.251 L 15.286 17.251 L 15.286 17.251 Q 14.284 16.37 14.284 15.029 L 14.284 15.029 L 14.284 15.029 Q 14.284 13.381 15.506 12.5 L 15.506 12.5 L 15.506 12.5 Q 16.728 11.618 19.036 11.61 L 19.036 11.61 L 20.309 11.61 L 20.309 11.016 L 20.309 11.016 Q 20.309 10.297 19.941 9.867 L 19.941 9.867 L 19.941 9.867 Q 19.572 9.435 18.776 9.435 L 18.776 9.435 L 18.776 9.435 Q 18.077 9.435 17.681 9.77 L 17.681 9.77 L 17.681 9.77 Q 17.283 10.105 17.283 10.689 L 17.283 10.689 L 14.514 10.689 L 14.514 10.689 Q 14.514 9.789 15.07 9.023 L 15.07 9.023 L 15.07 9.023 Q 15.625 8.257 16.641 7.821 L 16.641 7.821 L 16.641 7.821 Q 17.657 7.385 18.921 7.385 L 18.921 7.385 L 18.921 7.385 Q 20.836 7.385 21.961 8.348 L 21.961 8.348 L 21.961 8.348 Q 23.088 9.31 23.088 11.053 L 23.088 11.053 L 23.088 15.546 L 23.088 15.546 Q 23.096 17.021 23.5 17.778 L 23.5 17.778 L 23.5 17.941 Z  M 18.413 16.015 L 18.413 16.015 L 18.413 16.015 Q 19.026 16.015 19.543 15.742 L 19.543 15.742 L 19.543 15.742 Q 20.06 15.47 20.309 15.009 L 20.309 15.009 L 20.309 13.228 L 19.275 13.228 L 19.275 13.228 Q 17.196 13.228 17.063 14.664 L 17.063 14.664 L 17.053 14.828 L 17.053 14.828 Q 17.053 15.345 17.417 15.68 L 17.417 15.68 L 17.417 15.68 Q 17.78 16.015 18.413 16.015 Z " fill="rgb(0,0,0)"/></g></g></g></svg><span class="screen-reader-text">' . esc_html__( 'Capitalize', 'kirki' ) . '</span>',
+							'uppercase'  => '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 24 24" width="24" height="24"><g clip-path="url(#_clipPath_hCczLZ7PvaZ0P2xWKjUWS6vKnewKF4MY)"><clipPath id="_clipPath_aPpwGwqOQs4HQfvKjxFrZNwoYdDKQbJb"><rect x="0" y="0" width="24" height="24" transform="matrix(1,0,0,1,0,0)" fill="rgb(255,255,255)"/></clipPath><g clip-path="url(#_clipPath_aPpwGwqOQs4HQfvKjxFrZNwoYdDKQbJb)"><g><path d=" M 9.271 18.105 L 8.423 15.589 L 4.013 15.589 L 3.174 18.105 L 0.5 18.105 L 5.045 5.895 L 7.375 5.895 L 11.946 18.105 L 9.271 18.105 Z  M 6.21 8.981 L 4.692 13.552 L 7.745 13.552 L 6.21 8.981 Z  M 20.826 18.105 L 19.978 15.589 L 15.568 15.589 L 14.729 18.105 L 12.054 18.105 L 16.6 5.895 L 18.931 5.895 L 23.5 18.105 L 20.826 18.105 Z  M 17.765 8.981 L 16.247 13.552 L 19.3 13.552 L 17.765 8.981 Z " fill="rgb(0,0,0)"/></g></g></g></svg><span class="screen-reader-text">' . esc_html__( 'Uppercase', 'kirki' ) . '</span>',
+							'lowercase'  => '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 24 24" width="24" height="24"><g clip-path="url(#_clipPath_CLUYXygJXnDYLCChOsSJ6haUMut687yO)"><clipPath id="_clipPath_fyOJFEyPm9SH7cciRPiBMpoNFA1I5PXi"><rect x="0" y="0" width="24" height="24" transform="matrix(1,0,0,1,0,0)" fill="rgb(255,255,255)"/></clipPath><g clip-path="url(#_clipPath_fyOJFEyPm9SH7cciRPiBMpoNFA1I5PXi)"><g><path d=" M 11.241 18.04 L 7.98 18.04 L 7.98 18.04 Q 7.757 17.605 7.657 16.957 L 7.657 16.957 L 7.657 16.957 Q 6.484 18.264 4.609 18.264 L 4.609 18.264 L 4.609 18.264 Q 2.834 18.264 1.666 17.236 L 1.666 17.236 L 1.666 17.236 Q 0.5 16.209 0.5 14.646 L 0.5 14.646 L 0.5 14.646 Q 0.5 12.725 1.924 11.698 L 1.924 11.698 L 1.924 11.698 Q 3.347 10.672 6.038 10.661 L 6.038 10.661 L 7.523 10.661 L 7.523 9.968 L 7.523 9.968 Q 7.523 9.13 7.094 8.629 L 7.094 8.629 L 7.094 8.629 Q 6.662 8.126 5.736 8.126 L 5.736 8.126 L 5.736 8.126 Q 4.921 8.126 4.457 8.516 L 4.457 8.516 L 4.457 8.516 Q 3.995 8.907 3.995 9.588 L 3.995 9.588 L 0.768 9.588 L 0.768 9.588 Q 0.768 8.539 1.416 7.646 L 1.416 7.646 L 1.416 7.646 Q 2.063 6.752 3.247 6.244 L 3.247 6.244 L 3.247 6.244 Q 4.43 5.736 5.905 5.736 L 5.905 5.736 L 5.905 5.736 Q 8.137 5.736 9.449 6.858 L 9.449 6.858 L 9.449 6.858 Q 10.76 7.98 10.76 10.012 L 10.76 10.012 L 10.76 15.249 L 10.76 15.249 Q 10.772 16.968 11.241 17.85 L 11.241 17.85 L 11.241 18.04 Z  M 5.312 15.796 L 5.312 15.796 L 5.312 15.796 Q 6.027 15.796 6.63 15.477 L 6.63 15.477 L 6.63 15.477 Q 7.232 15.16 7.523 14.623 L 7.523 14.623 L 7.523 12.547 L 6.318 12.547 L 6.318 12.547 Q 3.894 12.547 3.737 14.221 L 3.737 14.221 L 3.727 14.412 L 3.727 14.412 Q 3.727 15.015 4.15 15.405 L 4.15 15.405 L 4.15 15.405 Q 4.575 15.796 5.312 15.796 Z  M 23.5 18.04 L 20.24 18.04 L 20.24 18.04 Q 20.016 17.605 19.917 16.957 L 19.917 16.957 L 19.917 16.957 Q 18.744 18.264 16.867 18.264 L 16.867 18.264 L 16.867 18.264 Q 15.093 18.264 13.926 17.236 L 13.926 17.236 L 13.926 17.236 Q 12.759 16.209 12.759 14.646 L 12.759 14.646 L 12.759 14.646 Q 12.759 12.725 14.182 11.698 L 14.182 11.698 L 14.182 11.698 Q 15.606 10.672 18.296 10.661 L 18.296 10.661 L 19.783 10.661 L 19.783 9.968 L 19.783 9.968 Q 19.783 9.13 19.351 8.629 L 19.351 8.629 L 19.351 8.629 Q 18.922 8.126 17.996 8.126 L 17.996 8.126 L 17.996 8.126 Q 17.181 8.126 16.717 8.516 L 16.717 8.516 L 16.717 8.516 Q 16.253 8.907 16.253 9.588 L 16.253 9.588 L 13.027 9.588 L 13.027 9.588 Q 13.027 8.539 13.674 7.646 L 13.674 7.646 L 13.674 7.646 Q 14.323 6.752 15.505 6.244 L 15.505 6.244 L 15.505 6.244 Q 16.689 5.736 18.162 5.736 L 18.162 5.736 L 18.162 5.736 Q 20.397 5.736 21.708 6.858 L 21.708 6.858 L 21.708 6.858 Q 23.02 7.98 23.02 10.012 L 23.02 10.012 L 23.02 15.249 L 23.02 15.249 Q 23.031 16.968 23.5 17.85 L 23.5 17.85 L 23.5 18.04 Z  M 17.571 15.796 L 17.571 15.796 L 17.571 15.796 Q 18.287 15.796 18.889 15.477 L 18.889 15.477 L 18.889 15.477 Q 19.492 15.16 19.783 14.623 L 19.783 14.623 L 19.783 12.547 L 18.576 12.547 L 18.576 12.547 Q 16.153 12.547 15.997 14.221 L 15.997 14.221 L 15.985 14.412 L 15.985 14.412 Q 15.985 15.015 16.41 15.405 L 16.41 15.405 L 16.41 15.405 Q 16.835 15.796 17.571 15.796 Z " fill="rgb(0,0,0)"/></g></g></g></svg><span class="screen-reader-text">' . esc_html__( 'Lowercase', 'kirki' ) . '</span>',
 						],
 					],
 					$args
@@ -375,7 +371,7 @@ class Typography extends Field {
 						'settings'    => $args['settings'] . '[text-align]',
 						'default'     => $args['default']['text-align'],
 						'choices'     => [
-							'inherit' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg><span class="screen-reader-text">' . esc_html__( 'Inherit', 'kirki' ) . '</span>',
+							''        => '<span class="dashicons dashicons-no-alt"><span class="screen-reader-text">' . esc_html__( 'None', 'kirki' ) . '</span>',
 							'left'    => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 3h-24v-2h24v2zm-12 3h-12v2h12v-2zm12 5h-24v2h24v-2zm-12 5h-12v2h12v-2zm12 5h-24v2h24v-2z"/></svg><span class="screen-reader-text">' . esc_html__( 'Left', 'kirki' ) . '</span>',
 							'center'  => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 3h-24v-2h24v2zm-6 3h-12v2h12v-2zm6 5h-24v2h24v-2zm-6 5h-12v2h12v-2zm6 5h-24v2h24v-2z"/></svg><span class="screen-reader-text">' . esc_html__( 'Center', 'kirki' ) . '</span>',
 							'right'   => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 1h24v2h-24v-2zm12 7h12v-2h-12v2zm-12 5h24v-2h-24v2zm12 5h12v-2h-12v2zm-12 5h24v-2h-24v2z"/></svg><span class="screen-reader-text">' . esc_html__( 'Right', 'kirki' ) . '</span>',

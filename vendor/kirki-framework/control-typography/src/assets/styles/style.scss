@@ -6,7 +6,6 @@ li {
     &[kirki-typography-subcontrol-type="line-height"] label,
     &[kirki-typography-subcontrol-type="letter-spacing"] label,
     &[kirki-typography-subcontrol-type="word-spacing"] label,
-    &[kirki-typography-subcontrol-type="text-transform"] label,
     &[kirki-typography-subcontrol-type="text-decoration"] label,
     &[kirki-typography-subcontrol-type="margin-top"] label,
     &[kirki-typography-subcontrol-type="margin-bottom"] label {
@@ -21,7 +20,10 @@ li {
     }
 
     &[kirki-typography-subcontrol-type="font-style"],
-    &[kirki-typography-subcontrol-type="text-align"] {
+    &[kirki-typography-subcontrol-type="text-align"],
+    &[kirki-typography-subcontrol-type="font-weight"],
+    &[kirki-typography-subcontrol-type="text-decoration"],
+    &[kirki-typography-subcontrol-type="text-transform"] {
       display: flex !important;
       justify-content: space-between;
       align-items: center;
@@ -31,20 +33,9 @@ li {
           padding: .5em .75em;
 
           svg {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.5em;
           }
-        }
-      }
-    }
-
-    &[kirki-typography-subcontrol-type="font-weight"] {
-      .buttonset {
-        display: flex;
-        flex-wrap: nowrap;
-
-        label {
-          padding: .35em 0;
         }
       }
     }

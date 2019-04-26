@@ -1185,12 +1185,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-typography.git",
-            "reference": "c78bd73e0feaef17a80384c1f347106c07e97772"
+            "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/c78bd73e0feaef17a80384c1f347106c07e97772",
-            "reference": "c78bd73e0feaef17a80384c1f347106c07e97772",
+            "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
+            "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
             "shasum": ""
         },
         "require": {
@@ -1202,7 +1202,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-04-25T22:38:48+00:00",
+        "time": "2019-04-26T19:49:48+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

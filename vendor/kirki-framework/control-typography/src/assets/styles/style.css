@@ -1,7 +1,7 @@
 li[data-kirki-parent-control-type=kirki-typography] {
   margin-bottom: 8px;
 }
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label {
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
@@ -10,31 +10,23 @@ li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label input,
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label input,
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label input,
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label input,
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label input,
 li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label .select2-container {
   max-width: 100px;
 }
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] {
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
 }
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label {
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label {
   padding: 0.5em 0.75em;
 }
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label svg {
-  width: 1em;
-  height: 1em;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] .buttonset {
-  display: flex;
-  flex-wrap: nowrap;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] .buttonset label {
-  padding: 0.35em 0;
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label svg {
+  width: 1.2em;
+  height: 1.5em;
 }
 li[data-kirki-parent-control-type=kirki-typography] .customize-control-title {
   font-weight: 400;
