@@ -1,7 +1,7 @@
 {
-    "name": "kirki-framework/control-typography",
+    "name": "kirki-framework/field-typography",
     "type": "library",
-    "description": "Typography control for the Kirki Customizer framework.",
+    "description": "Typography field for the Kirki Customizer framework.",
     "keywords": ["wordpress","customizer","framework"],
     "homepage": "https://aristath.github.io/kirki",
     "license": "MIT",

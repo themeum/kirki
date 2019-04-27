@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9705876b2dcf3de4f72c6ac95716c876",
+    "content-hash": "fce70818486f92f9642090698e242df9",
     "packages": [
         {
             "name": "kirki-framework/control-background",
@@ -1138,57 +1138,6 @@
             "time": "2019-03-31T15:33:35+00:00"
         },
         {
-            "name": "kirki-framework/control-typography",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/control-typography.git",
-                "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
-                "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-base": "*",
-                "kirki-framework/control-color": "*",
-                "kirki-framework/control-select": "*",
-                "kirki-framework/googlefonts": "*",
-                "kirki-framework/module-webfonts": "*",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Typography control for the Kirki Customizer framework.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "time": "2019-04-26T19:49:48+00:00"
-        },
-        {
             "name": "kirki-framework/control-upload",
             "version": "dev-master",
             "source": {
@@ -1277,6 +1226,57 @@
                 "wordpress"
             ],
             "time": "2019-04-21T14:25:39+00:00"
+        },
+        {
+            "name": "kirki-framework/field-typography",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/field-typography.git",
+                "reference": "eac41a88e4e04acdb7892d72156687902468c8e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/eac41a88e4e04acdb7892d72156687902468c8e8",
+                "reference": "eac41a88e4e04acdb7892d72156687902468c8e8",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "kirki-framework/control-color": "*",
+                "kirki-framework/control-select": "*",
+                "kirki-framework/googlefonts": "*",
+                "kirki-framework/module-webfonts": "*",
+                "kirki-framework/url-getter": "*",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Typography field for the Kirki Customizer framework.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-04-27T07:53:12+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -4954,8 +4954,8 @@
         "kirki-framework/control-select": 20,
         "kirki-framework/control-slider": 20,
         "kirki-framework/control-sortable": 20,
-        "kirki-framework/control-typography": 20,
         "kirki-framework/control-upload": 20,
+        "kirki-framework/field-typography": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-css-vars": 20,
         "kirki-framework/module-custom-sections": 20,

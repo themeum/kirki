@@ -1179,59 +1179,6 @@
         ]
     },
     {
-        "name": "kirki-framework/control-typography",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kirki-framework/control-typography.git",
-            "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-typography/zipball/d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
-            "reference": "d97157fdf247f36fdcc5b30e78d1501dfac48bc9",
-            "shasum": ""
-        },
-        "require": {
-            "kirki-framework/control-base": "*",
-            "kirki-framework/control-color": "*",
-            "kirki-framework/control-select": "*",
-            "kirki-framework/googlefonts": "*",
-            "kirki-framework/module-webfonts": "*",
-            "kirki-framework/url-getter": "*",
-            "php": ">=5.6"
-        },
-        "time": "2019-04-26T19:49:48+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Kirki\\Control\\": "src/Control",
-                "Kirki\\Field\\": "src/Field"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ari Stathopoulos",
-                "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io",
-                "role": "Developer"
-            }
-        ],
-        "description": "Typography control for the Kirki Customizer framework.",
-        "homepage": "https://aristath.github.io/kirki",
-        "keywords": [
-            "customizer",
-            "framework",
-            "wordpress"
-        ]
-    },
-    {
         "name": "kirki-framework/control-upload",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1318,6 +1265,59 @@
             }
         ],
         "description": "The Kirki WordPress plugin core classes.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/field-typography",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/field-typography.git",
+            "reference": "eac41a88e4e04acdb7892d72156687902468c8e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/eac41a88e4e04acdb7892d72156687902468c8e8",
+            "reference": "eac41a88e4e04acdb7892d72156687902468c8e8",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/control-color": "*",
+            "kirki-framework/control-select": "*",
+            "kirki-framework/googlefonts": "*",
+            "kirki-framework/module-webfonts": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-04-27T07:53:12+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Typography field for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

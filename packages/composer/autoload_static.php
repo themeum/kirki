@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b
+class ComposerStaticInit07e730352ae5c74cb39a24efbcd03650
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -116,8 +116,8 @@ class ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b
             19 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
             20 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
             21 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
         'Kirki\\Core\\' => 
         array (
@@ -151,8 +151,8 @@ class ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b
             21 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
             22 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             23 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-typography/src/Control',
-            25 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
         ),
         'Kirki\\' => 
         array (
@@ -164,8 +164,8 @@ class ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit110ed9857ca6f15c42adc065fd88d88b::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit07e730352ae5c74cb39a24efbcd03650::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit07e730352ae5c74cb39a24efbcd03650::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
