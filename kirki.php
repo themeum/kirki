@@ -55,10 +55,6 @@ if ( ! defined( 'KIRKI_VERSION' ) ) {
 	define( 'KIRKI_VERSION', $version );
 }
 
-// Make sure the path is properly set.
-Kirki::$path = wp_normalize_path( __DIR__ ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride
-Init::set_url();
-
 if ( ! function_exists( 'Kirki' ) ) {
 	/**
 	 * Returns an instance of the Kirki object.
@@ -75,8 +71,6 @@ $kirki = kirki();
 
 // Instantiate the modules.
 $kirki->modules = new Modules();
-
-Kirki::$url = plugins_url( '', __FILE__ );
 
 // Instantiate classes.
 new Kirki();
