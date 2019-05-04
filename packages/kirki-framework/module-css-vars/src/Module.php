@@ -43,13 +43,23 @@ class Module {
 	private $vars = [];
 
 	/**
+	 * Fields array.
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @var array
+	 */
+	private $fields = [];
+
+	/**
 	 * Constructor
 	 *
 	 * @access protected
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'init', [ $this, 'populate_vars' ] );
+		add_action( 'kirki_field_init', [ $this, 'field_init' ] );
+		add_action( 'init', [ $this, 'populate_vars' ], 20 );
 		add_action( 'wp_head', [ $this, 'the_style' ], 999 );
 		add_action( 'admin_head', [ $this, 'the_style' ], 999 );
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
@@ -72,6 +82,31 @@ class Module {
 	}
 
 	/**
+	 * Runs when a field gets added.
+	 * Adds fields to this object so their styles can later be generated.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $args The field args.
+	 * @return void
+	 */
+	function field_init( $args ) {
+		if ( ! isset( $args['css_vars'] ) ) {
+			return;
+		}
+		$args['css_vars'] = (array) $args['css_vars'];
+		if ( isset( $args['css_vars'][0] ) && is_string( $args['css_vars'][0] ) ) {
+			$args['css_vars'] = [ $args['css_vars'] ];
+		}
+		foreach ( $args['css_vars'] as $key => $val ) {
+			if ( ! isset( $val[1] ) ) {
+				$args['css_vars'][ $key ][1] = '$';
+			}
+		}
+		$this->fields[ $args['settings'] ] = $args;
+	}
+
+	/**
 	 * Populates the $vars property of this object.
 	 *
 	 * @access public
@@ -81,7 +116,7 @@ class Module {
 	public function populate_vars() {
 
 		// Get an array of all fields.
-		$fields = Kirki::$fields;
+		$fields = array_merge( Kirki::$fields, $this->fields );
 		foreach ( $fields as $id => $args ) {
 			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
 				continue;
@@ -140,7 +175,7 @@ class Module {
 	 */
 	public function postmessage() {
 		wp_enqueue_script( 'kirki_auto_css_vars', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
-		$fields = Kirki::$fields;
+		$fields = array_merge( Kirki::$fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_vars'] ) && ! empty( $field['css_vars'] ) ) {

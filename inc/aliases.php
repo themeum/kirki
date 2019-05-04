@@ -71,7 +71,7 @@ class_alias( 'Kirki\Field\Checkbox_Toggle', 'Kirki_Field_Toggle' );
 class_alias( 'Kirki\Field\Checkbox_Toggle', 'Kirki\Field\Toggle' );
 class_alias( 'Kirki\Field\Code', 'Kirki_Field_Code' );
 class_alias( 'Kirki\Field\Color', 'Kirki_Field_Color' );
-class_alias( 'Kirki\Field\Color_Alpha', 'Kirki_Field_Color_Alpha' );
+class_alias( 'Kirki\Field\Color', 'Kirki_Field_Color_Alpha' );
 class_alias( 'Kirki\Field\Color_Palette', 'Kirki_Field_Color_Palette' );
 class_alias( 'Kirki\Field\Custom', 'Kirki_Field_Custom' );
 class_alias( 'Kirki\Field\Dashicons', 'Kirki_Field_Dashicons' );

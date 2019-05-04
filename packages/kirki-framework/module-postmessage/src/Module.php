@@ -36,6 +36,15 @@ class Module {
 	private static $instance;
 
 	/**
+	 * An array of fields to be processed.
+	 *
+	 * @access protected
+	 * @since 1.0
+	 * @var array
+	 */
+	protected $fields = [];
+
+	/**
 	 * Constructor.
 	 *
 	 * @access protected
@@ -43,6 +52,7 @@ class Module {
 	 */
 	protected function __construct() {
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
+		add_action( 'kirki_field_add_setting_args', [ $this, 'field_add_setting_args' ] );
 	}
 
 	/**
@@ -62,13 +72,80 @@ class Module {
 	}
 
 	/**
+	 * Filter setting args before adding the setting to the customizer.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $args The field arguments.
+	 * @return void
+	 */
+	public function field_add_setting_args( $args ) {
+
+		if ( ! isset( $args['transport'] ) ) {
+			return $args;
+		}
+
+		if ( 'postMessage' === $args['transport'] && isset( $args['js_vars'] ) && ! empty( $args['js_vars'] ) ) {
+			$this->fields[] = $args;
+			return $args;
+		}
+
+		if ( 'auto' === $args['transport'] ) {
+			$args['js_vars'] = isset( $args['js_vars'] ) ? $args['js_vars'] : [];
+			$args['js_vars'] = (array) $args['js_vars'];
+			
+			// Set transport to refresh initially.
+			// Serves as a fallback in case we failt to auto-calculate js_vars.
+			$args['transport'] = 'refresh';
+
+			// Try to auto-generate js_vars.
+			// First we need to check if js_vars are empty, and that output is not empty.
+			if ( empty( $args['js_vars'] ) && ! empty( $args['output'] ) ) {
+
+				foreach ( $args['output'] as $output ) {
+					$output['function'] = ( isset( $output['function'] ) ) ? $output['function'] : 'style';
+					
+					// If 'element' is not defined, skip this.
+					if ( ! isset( $output['element'] ) ) {
+						continue;
+					}
+					
+					if ( is_array( $output['element'] ) ) {
+						$output['element'] = implode( ',', $output['element'] );
+					}
+
+					// If there's a sanitize_callback defined skip this, unless we also have a js_callback defined.
+					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) && ! isset( $output['js_callback'] ) ) {
+						continue;
+					}
+
+					// If we got this far, it's safe to add this.
+					$js_vars[] = $output;
+				}
+			}
+
+			// Did we manage to get all the items from 'output'?
+			// If not, then we're missing something so don't add this.
+			if ( count( $js_vars ) !== count( $args['output'] ) ) {
+				$js_vars = [];
+			}
+			$args['js_vars']   = $js_vars;
+			if ( ! empty( $args['js_vars'] ) ) {
+				$args['transport'] = 'postMessage';
+			}
+		}
+		$this->fields[] = $args;
+		return $args;
+	}
+
+	/**
 	 * Enqueues the postMessage script
 	 * and adds variables to it using the wp_localize_script function.
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
 		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
-		$fields = Kirki::$fields;
+		$fields = array_merge( Kirki::$fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {

@@ -28,17 +28,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Kirki extends Init {
 
 	/**
-	 * Absolute path to the Kirki folder.
-	 *
-	 * @static
-	 * @access public
-	 * @var string
-	 */
-	public static $path;
-
-	/**
 	 * URL to the Kirki folder.
 	 *
+	 * @deprecated This is no longer used. Only kept here for backwards compatibility to avoid fatal errors.
 	 * @static
 	 * @access public
 	 * @var string
@@ -234,7 +226,7 @@ class Kirki extends Init {
 	 * @param string $config_id The configuration ID for this field.
 	 * @param array  $args      The field arguments.
 	 */
-	public static function add_field( $config_id, $args ) {
+	public static function add_field( $config_id, $args = [] ) {
 		if ( doing_action( 'customize_register' ) ) {
 			_doing_it_wrong( __METHOD__, esc_html__( 'Kirki fields should not be added on customize_register. Please add them directly, or on init.', 'kirki' ), '3.0.10' );
 		}
@@ -251,11 +243,17 @@ class Kirki extends Init {
 
 		$str       = str_replace( [ '-', '_' ], ' ', $args['type'] );
 		$classname = '\Kirki\Field\\' . str_replace( ' ', '_', ucwords( $str ) );
+
+		$config = Config::get_instance( $config_id )->get_config();
+		$args['kirki_config'] = isset( $args['kirki_config'] ) ? $args['kirki_config'] : $config_id;
+		unset( $config['id'] );
+		$args = wp_parse_args( $args, $config );
+
 		if ( class_exists( $classname ) ) {
-			new $classname( $config_id, $args );
+			new $classname( $args );
 			return;
 		}
-		new Field( $config_id, $args );
+		new Field( $args );
 	}
 
 	/**

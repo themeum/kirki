@@ -41,6 +41,16 @@ class Module {
 	public static $css_array = [];
 
 	/**
+	 * An array of fields to be processed.
+	 *
+	 * @static
+	 * @access protected
+	 * @since 1.0
+	 * @var array
+	 */
+	protected static $fields = [];
+
+	/**
 	 * Should we enqueue font-awesome?
 	 *
 	 * @static
@@ -56,6 +66,7 @@ class Module {
 	 * @access protected
 	 */
 	protected function __construct() {
+		add_action( 'kirki_field_init', [ $this, 'field_init' ] );
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
@@ -104,6 +115,64 @@ class Module {
 		} else {
 			add_action( 'wp_head', [ $this, 'print_styles_inline' ], 999 );
 		}
+	}
+
+	/**
+	 * Runs when a field gets added.
+	 * Adds fields to this object so their styles can later be generated.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $args The field args.
+	 * @return void
+	 */
+	function field_init( $args ) {
+		if ( ! isset( $args['output'] ) || empty( $args['output'] ) ) {
+			return;
+		}
+		if ( ! is_array( $args['output'] ) ) {
+			/* translators: The field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
+			$args['output'] = [
+				[
+					'element' => $args['output'],
+				],
+			];
+		}
+
+		// Convert to array of arrays if needed.
+		if ( isset( $args['output']['element'] ) ) {
+			/* translators: The field ID where the error occurs. */
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
+			$args['output'] = [ $args['output'] ];
+		}
+
+		foreach ( $args['output'] as $key => $output ) {
+			if ( empty( $output ) || ! isset( $output['element'] ) ) {
+				unset( $args['output'][ $key ] );
+				continue;
+			}
+			if ( ! isset( $output['sanitize_callback'] ) && isset( $output['callback'] ) ) {
+				$args['output'][ $key ]['sanitize_callback'] = $output['callback'];
+			}
+
+			// Convert element arrays to strings.
+			if ( isset( $output['element'] ) && is_array( $output['element'] ) ) {
+				$args['output'][ $key ]['element'] = array_unique( $args['output'][ $key ]['element'] );
+				sort( $args['output'][ $key ]['element'] );
+
+				// Trim each element in the array.
+				foreach ( $args['output'][ $key ]['element'] as $index => $element ) {
+					$args['output'][ $key ]['element'][ $index ] = trim( $element );
+				}
+				$args['output'][ $key ]['element'] = implode( ',', $args['output'][ $key ]['element'] );
+			}
+
+			// Fix for https://github.com/aristath/kirki/issues/1659#issuecomment-346229751.
+			$args['output'][ $key ]['element'] = str_replace( [ "\t", "\n", "\r", "\0", "\x0B" ], ' ', $args['output'][ $key ]['element'] );
+			$args['output'][ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $args['output'][ $key ]['element'] ) );
+		}
+		self::$fields[] = $args;
 	}
 
 	/**
@@ -219,7 +288,7 @@ class Module {
 		// This will make sure google fonts and backup fonts are loaded.
 		Generator::get_instance();
 
-		$fields = Kirki::$fields;
+		$fields = array_merge( Kirki::$fields, self::get_fields_by_config( $config_id ) );
 		$css    = [];
 
 		// Early exit if no fields are found.
@@ -230,7 +299,7 @@ class Module {
 		foreach ( $fields as $field ) {
 
 			// Only process fields that belong to $config_id.
-			if ( $config_id !== $field['kirki_config'] ) {
+			if ( isset( $field['kirki_config'] ) && $config_id !== $field['kirki_config'] ) {
 				continue;
 			}
 
@@ -296,5 +365,24 @@ class Module {
 	 */
 	public static function get_enqueue_fa() {
 		return self::$enqueue_fa;
+	}
+
+	/**
+	 * Gets fields from self::$fields by config-id.
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 * @param string $config_id The config-ID.
+	 * @return array
+	 */
+	private static function get_fields_by_config( $config_id ) {
+		$fields = [];
+		foreach ( self::$fields as $field ) {
+			if ( ( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) || ( 'global' === $config_id || ! $config_id ) && ( 'global' === $field['kirki_config'] || ! $field['kirki_config'] ) ) {
+				$fields[] = $field;
+			}
+		}
+		return $fields;
 	}
 }

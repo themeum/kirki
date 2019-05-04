@@ -30,8 +30,6 @@ class Init {
 	 * The class constructor.
 	 */
 	public function __construct() {
-		self::set_url();
-		add_action( 'after_setup_theme', [ $this, 'set_url' ] );
 		add_action( 'wp_loaded', [ $this, 'add_to_customizer' ], 1 );
 		add_filter( 'kirki_control_types', [ $this, 'default_control_types' ] );
 
@@ -42,33 +40,6 @@ class Init {
 		new Values();
 		new Sections();
 		new Telemetry();
-	}
-
-	/**
-	 * Properly set the Kirki URL for assets.
-	 *
-	 * @static
-	 * @access public
-	 */
-	public static function set_url() {
-		if ( Util::is_plugin() ) {
-			return;
-		}
-
-		// Get correct URL and path to wp-content.
-		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
-		$content_dir = wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) );
-
-		Kirki::$url = str_replace( $content_dir, $content_url, wp_normalize_path( Kirki::$path ) );
-
-		// Apply the kirki_config filter.
-		$config = apply_filters( 'kirki_config', [] );
-		if ( isset( $config['url_path'] ) ) {
-			Kirki::$url = $config['url_path'];
-		}
-
-		// Make sure the right protocol is used.
-		Kirki::$url = set_url_scheme( Kirki::$url );
 	}
 
 	/**
@@ -246,7 +217,8 @@ class Init {
 
 		if ( ! empty( $fields ) ) {
 			foreach ( $fields as $field ) {
-				Kirki::add_field( 'global', $field );
+				$field['kirki_config'] = 'global';
+				Kirki::add_field( $field );
 			}
 		}
 	}

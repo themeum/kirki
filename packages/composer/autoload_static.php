@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit07e730352ae5c74cb39a24efbcd03650
+class ComposerStaticInita0ea422983ef3d750d0d775fbd326531
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -156,16 +156,17 @@ class ComposerStaticInit07e730352ae5c74cb39a24efbcd03650
         ),
         'Kirki\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            0 => __DIR__ . '/..' . '/kirki-framework/field/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit07e730352ae5c74cb39a24efbcd03650::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit07e730352ae5c74cb39a24efbcd03650::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita0ea422983ef3d750d0d775fbd326531::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita0ea422983ef3d750d0d775fbd326531::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

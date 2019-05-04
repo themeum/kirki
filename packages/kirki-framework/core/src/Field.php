@@ -245,20 +245,18 @@ class Field {
 	 */
 	public function __construct( $config_id = 'global', $args = [] ) {
 
+		// In case the user only provides 1 argument,
+		// assume that the provided argument is $args and set $config_id = 'global'.
+		if ( is_array( $config_id ) && empty( $args ) ) {
+			$args      = $config_id;
+			$config_id = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
+		}
+
 		if ( isset( $args['setting'] ) && ! empty( $args['setting'] ) && ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) ) {
 			/* translators: %s represents the field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Typo found in field %s - setting instead of settings.', 'kirki' ), esc_html( $args['settings'] ) ), '3.0.10' );
 			$args['settings'] = $args['setting'];
 			unset( $args['setting'] );
-		}
-
-		// In case the user only provides 1 argument,
-		// assume that the provided argument is $args and set $config_id = 'global'.
-		if ( is_array( $config_id ) && empty( $args ) ) {
-			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
-			$args      = $config_id;
-			$config_id = 'global';
 		}
 
 		$args['kirki_config'] = $config_id;

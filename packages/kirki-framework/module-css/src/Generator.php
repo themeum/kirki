@@ -152,7 +152,7 @@ final class Generator {
 
 		// Set class vars.
 		self::$settings   = $field['settings'];
-		self::$callback   = $field['sanitize_callback'];
+		self::$callback   = isset( $field['sanitize_callback'] ) ? $field['sanitize_callback'] : '';
 		self::$field_type = $field['type'];
 		self::$field_type = ( isset( $field['choices'] ) && isset( $field['choices']['parent_type'] ) ) ? $field['choices']['parent_type'] : self::$field_type;
 		self::$output     = $field['output'];

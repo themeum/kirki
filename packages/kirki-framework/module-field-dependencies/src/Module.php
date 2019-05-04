@@ -43,6 +43,7 @@ class Module {
 	 */
 	protected function __construct() {
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'field_dependencies' ] );
+		add_filter( 'kirki_field_add_control_args', [ $this, 'field_add_control_args' ] );
 	}
 
 	/**
@@ -59,6 +60,48 @@ class Module {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Filter control arguments.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $args The field arguments.
+	 * @return array
+	 */
+	public function field_add_control_args( $args ) {
+		if ( isset( $args['active_callback'] ) ) {
+			if ( is_array( $args['active_callback'] ) ) {
+				if ( ! is_callable( $args['active_callback'] ) ) {
+	
+					// Bugfix for https://github.com/aristath/kirki/issues/1961.
+					foreach ( $args['active_callback'] as $key => $val ) {
+						if ( is_callable( $val ) ) {
+							unset( $args['active_callback'][ $key ] );
+						}
+					}
+					if ( isset( $args['active_callback'][0] ) ) {
+						$args['required'] = $args['active_callback'];
+					}
+				}
+			}
+	
+			if ( ! empty( $args['required'] ) ) {
+				$args['active_callback'] = '__return_true';
+				return;
+			}
+			// No need to proceed any further if we're using the default value.
+			if ( '__return_true' === $args['active_callback'] ) {
+				return;
+			}
+	
+			// Make sure the function is callable, otherwise fallback to __return_true.
+			if ( ! is_callable( $args['active_callback'] ) ) {
+				$args['active_callback'] = '__return_true';
+			}
+		}
+		return $args;
 	}
 
 	/**

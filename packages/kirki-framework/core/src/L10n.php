@@ -63,7 +63,7 @@ class L10n {
 		if ( null !== $this->get_path() ) {
 			load_textdomain( $this->textdomain, $this->get_path() );
 		}
-		load_plugin_textdomain( $this->textdomain, false, Kirki::$path . '/languages' );
+		load_plugin_textdomain( $this->textdomain, false, dirname( KIRKI_PLUGIN_FILE ) . '/languages' );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class L10n {
 	protected function get_paths() {
 		return [
 			WP_LANG_DIR . '/' . $this->textdomain . '-' . get_locale() . '.mo',
-			Kirki::$path . '/languages/' . $this->textdomain . '-' . get_locale() . '.mo',
+			dirname( KIRKI_PLUGIN_FILE ) . '/languages/' . $this->textdomain . '-' . get_locale() . '.mo',
 		];
 	}
 

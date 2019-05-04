@@ -13,7 +13,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Core\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -23,66 +23,83 @@ use Kirki\Core\Field;
 class Color extends Field {
 
 	/**
-	 * Mode (hue)
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
+	 * @since 0.1
 	 * @var string
 	 */
-	protected $mode = 'full';
+	protected $control_class = '\Kirki\Control\Color';
 
 	/**
-	 * Sets the control type.
+ 	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var bool
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-color';
+	protected $control_has_js_template = true;
+
+	/**
+	 * Filter arguments before creating the setting.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_setting_args( $args, $wp_customize ) {
+
+		if ( $args['settings'] !== $args['settings'] ) {
+			return $args;
+		}
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
+
+			// If this is a hue control then its value should be an integer.
+			if ( isset( $args['mode'] ) && 'hue' === $args['mode'] ) {
+				$args['sanitize_callback'] = 'absint';
+			}
+		}
+		return $args;
 	}
 
 	/**
-	 * Sets the $choices
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $args['settings'] ) {
+			return $args;
+		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		// Set the control-type.
+		$args['type'] = 'kirki-color';
 
 		// Make sure choices is an array.
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = [];
+		if ( ! isset( $args['choices'] ) || ! \is_array( $args['choices'] ) ) {
+			$args['choices'] = [];
 		}
 
-		$this->choices['alpha'] = isset( $this->choices['alpha'] ) ? (bool) $this->choices['alpha'] : false;
-		$this->choices['mode']  = isset( $this->choices['mode'] ) && \in_array( $this->choices['mode'], [ 'hex', 'hue' ], true ) ? $this->choices['mode'] : 'hex';
-	}
+		// Set alpha argument.
+		$args['choices']['alpha'] = isset( $args['choices']['alpha'] ) ? (bool) $args['choices']['alpha'] : false;
 
-	/**
-	 * Sets the $sanitize_callback
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
-	 */
-	protected function set_sanitize_callback() {
-
-		// Check if a sanitization callback is defined or not.
-		// Only proceed if no custom callback has been defined.
-		if ( empty( $this->sanitize_callback ) ) {
-
-			// If this is a hue control then things are pretty simple,
-			// we just need to sanitize as an integer.
-			if ( 'hue' === $this->mode ) {
-				$this->sanitize_callback = 'absint';
-				return;
-			}
-
-			// Set the callback.
-			$this->sanitize_callback = [ '\kirki\Field\Color', 'sanitize' ];
+		// Set mode.
+		if ( ! isset( $args['choices']['mode'] ) ) {
+			$args['choices']['mode'] = isset( $args['mode'] ) ? $args['mode'] : 'full';
 		}
+
+		return $args;
 	}
 
 	/**

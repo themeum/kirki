@@ -11,7 +11,7 @@
 namespace Kirki\Field;
 
 use Kirki;
-use Kirki\Core\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -21,18 +21,17 @@ use Kirki\Core\Field;
 class Background extends Field {
 
 	/**
-	 * The class constructor.
-	 * Parses and sanitizes all field arguments.
-	 * Then it adds the field to Kirki::$fields.
+	 * Extra logic for the field.
+	 *
+	 * Adds all sub-fields.
 	 *
 	 * @access public
-	 * @param string $config_id    The ID of the config we want to use.
-	 *                             Defaults to "global".
-	 *                             Configs are handled by the Kirki\Core\Config class.
-	 * @param array  $args         The arguments of the field.
+	 * @param array $args The arguments of the field.
 	 */
-	public function __construct( $config_id = 'global', $args = [] ) {
+	public function init( $args ) {
+
 		$args['required'] = isset( $args['required'] ) ? (array) $args['required'] : [];
+		$config_id        = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
 		/**
 		 * Add a hidden field, the label & description.
 		 */
@@ -375,4 +374,24 @@ class Background extends Field {
 			$this->transport = 'postMessage';
 		}
 	}
+
+	/**
+	 * Override parent method. No need to register any setting.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return void
+	 */
+	public function add_setting( $wp_customize ) {}
+
+	/**
+	 * Override the parent method. No need for a control.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return void
+	 */
+	public function add_control( $wp_customize ) {}
 }
