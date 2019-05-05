@@ -33,7 +33,7 @@
 			args.params.content.attr( 'class', 'customize-control customize-control-' + args.params.type );
 			_.each( args.params.wrapper_atts, function( val, key ) {
 				args.params.content.attr( key, val );
-			});
+			} );
 
 			control.propertyElements = [];
 			wp.customize.Control.prototype.initialize.call( control, id, args );
@@ -201,11 +201,12 @@
 			control.container.on( 'change keyup paste click', 'input', function() {
 				control.setting.set( jQuery( this ).val() );
 			} );
-		},
+		}
 	} );
 }() );
 
-( function ( api ) {
+( function( api ) {
+
 	/**
 	 * Set the value and trigger all bound callbacks.
 	 *
@@ -234,6 +235,7 @@
 			newVal[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ] = to;
 			api.control( parentSetting ).setting.set( jQuery.extend( {}, api.control( parentSetting ).setting._value, newVal ) );
 		}
+
 		/**
 		 * End Kirki mod.
 		 */
@@ -252,6 +254,7 @@
 	 * @return {mixed}
 	 */
 	api.Value.prototype.get = function() {
+
 		/**
 		 * Start Kirki mod.
 		 */
@@ -259,9 +262,10 @@
 			parentSetting = api.control( this.id ).params.parent_setting;
 			return api.control( parentSetting ).setting.get()[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ];
 		}
+
 		/**
 		 * End Kirki mod.
 		 */
 		return this._value;
 	};
-} )( wp.customize );
+} ( wp.customize ) );

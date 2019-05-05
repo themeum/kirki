@@ -49,6 +49,7 @@ module.exports = function( grunt ) {
 		}
 
 		for ( i = 0; i < popularityFonts.items.length; i++ ) {
+
 			// Populate the fonts.
 			finalObject.items[ alphaFonts.items[ i ].family ] = {
 				family: alphaFonts.items[ i ].family,

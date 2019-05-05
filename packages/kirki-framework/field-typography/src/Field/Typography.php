@@ -196,15 +196,15 @@ class Typography extends Field {
 						'settings'    => $args['settings'] . '[font-weight]',
 						'default'     => $font_weight,
 						'choices'     => [
-							'100' => '100',
-							'200' => '200',
-							'300' => '300',
-							'400' => '400',
-							'500' => '500',
-							'600' => '600',
-							'700' => '700',
-							'800' => '800',
-							'900' => '900',
+							'100' => '<span class="indicator" title="' . esc_html__( '100 - Thin', 'kirki' ) . '"><span class="sublabel">100</span></span>',
+							'200' => '<span class="indicator" title="' . esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ) . '"><span class="sublabel">200</span></span>',
+							'300' => '<span class="indicator" title="' . esc_html__( '300 - Light', 'kirki' ) . '"><span class="sublabel">300</span></span>',
+							'400' => '<span class="indicator" title="' . esc_html__( '400 - Normal, Book, Regular', 'kirki' ) . '"><span class="sublabel">400</span></span>',
+							'500' => '<span class="indicator" title="' . esc_html__( '500 - Medium', 'kirki' ) . '"><span class="sublabel">500</span></span>',
+							'600' => '<span class="indicator" title="' . esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ) . '"><span class="sublabel">600</span></span>',
+							'700' => '<span class="indicator" title="' . esc_html__( '700 - Bold', 'kirki' ) . '"><span class="sublabel">700</span></span>',
+							'800' => '<span class="indicator" title="' . esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ) . '"><span class="sublabel">800</span></span>',
+							'900' => '<span class="indicator" title="' . esc_html__( '900 - Black, Heavy', 'kirki' ) . '"><span class="sublabel">900</span></span>',
 							/**
 							 * WIP - Still thinking about the best way to present these.
 							 * Below is the same array we have above, but with proper names

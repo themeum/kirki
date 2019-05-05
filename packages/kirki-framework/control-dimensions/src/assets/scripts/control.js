@@ -83,5 +83,5 @@ wp.customize.controlConstructor['kirki-dimensions'] = wp.customize.kirkiDynamicC
 				setting.notifications.remove( code );
 			} );
 		} );
-	},
+	}
 } );

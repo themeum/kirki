@@ -6,7 +6,7 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 		control = control || this;
 		element = control.container.find( 'textarea' );
 		id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
-			
+
 		wp.editor.initialize( id, {
 			tinymce: {
 				wpautop: true

@@ -139,7 +139,7 @@ var kirkiPostMessage = {
 
 			try {
 				value = JSON.parse( value );
-			} catch( e ) {}
+			} catch ( e ) {}
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );

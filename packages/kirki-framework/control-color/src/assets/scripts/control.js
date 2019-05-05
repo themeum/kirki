@@ -10,7 +10,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 		isHue   = control.params.mode && 'hue' === control.params.mode;
 
 		colorPicker = this.initColorPicker();
-		
+
 		// Update color when a value is manually entered.
 		control.container.find( '.kirki-color-control' ).on( 'change paste keyup', function() {
 			var value   = jQuery( this ).val();
@@ -42,14 +42,14 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 			if ( ! control.container.find( 'details' ).is( '[open]' ) ) {
 				control.container.find( 'details' ).attr( 'open', true );
 			} else {
-				control.container.find( 'details' ).removeAttr( 'open',  );
+				control.container.find( 'details' ).removeAttr( 'open' );
 			}
-		});
-		
+		} );
+
 		// Handle resizing the window.
 		window.addEventListener( 'resize', function() {
 			colorPicker.resize( control.container.width() );
-		});
+		} );
 	},
 
 	/**
@@ -74,7 +74,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 					inPalette = true;
 				}
 			}
-		});
+		} );
 
 		if ( ! inPalette ) {
 			control.container.find( 'button.palette-color.color-preview' ).attr( 'aria-pressed', 'true' );
@@ -150,7 +150,7 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 						}
 					}
 				]
-			};	
+			};
 		}
 
 		colorpickerOptions = {

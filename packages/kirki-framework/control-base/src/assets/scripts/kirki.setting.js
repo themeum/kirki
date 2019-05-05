@@ -162,8 +162,9 @@ kirki = jQuery.extend( kirki, {
 wp.hooks.addAction(
 	'kirki.settingSet',
 	'kirki',
+
 	/**
-	 * 
+	 *
 	 * @param {string} setting - The setting we want to save.
 	 * @param {mixed} value - The value.
 	 * @returns {void}

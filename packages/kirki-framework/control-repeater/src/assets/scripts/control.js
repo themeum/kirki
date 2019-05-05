@@ -90,11 +90,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	},
 
 	initKirkiControl: function( control ) {
-		var limit, theNewRow;
+		var limit, theNewRow, settingValue;
 		control = control || this;
 
 		// The current value set in Control Class (set in Kirki_Customize_Repeater_Control::to_json() function)
-		var settingValue = control.params.value;
+		settingValue = control.params.value;
 
 		// The hidden field that keeps the data saved (though we never update it)
 		control.settingField = control.container.find( '[data-customize-setting-link]' ).first();
