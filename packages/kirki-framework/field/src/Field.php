@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PHPCompatibility.FunctionDeclarations.NewClosure
 /**
  * WordPress Customizer API abstraction.
  *
@@ -64,12 +64,18 @@ abstract class Field {
 		// Set the arguments in this object.
 		$this->args = $args;
 
-		add_action( 'init', function() {
-			do_action( 'kirki_field_init', $this->args );
-		} );
-		add_action( 'wp', function() {
-			do_action( 'kirki_field_wp', $this->args );
-		} );
+		add_action(
+			'init',
+			function() {
+				do_action( 'kirki_field_init', $this->args );
+			} 
+		);
+		add_action(
+			'wp',
+			function() {
+				do_action( 'kirki_field_wp', $this->args );
+			} 
+		);
 
 		$this->init( $this->args );
 
@@ -103,7 +109,7 @@ abstract class Field {
 	 * @access public
 	 * @since 0.1
 	 * @param WP_Customize_Manager $wp_customize The customizer instance.
-	 * @return array
+	 * @return void
 	 */
 	public function register_control_type( $wp_customize ) {
 		if ( $this->control_class ) {

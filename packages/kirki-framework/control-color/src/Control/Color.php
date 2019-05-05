@@ -117,7 +117,7 @@ class Color extends Base {
 		$this->json['palette']          = $this->palette;
 		$this->json['choices']['alpha'] = ( isset( $this->choices['alpha'] ) && $this->choices['alpha'] ) ? 'true' : 'false';
 		$this->json['mode']             = $this->mode;
-		$this->json['defaultPalette']   = 			[
+		$this->json['defaultPalette']   = [
 			[
 				'name'  => esc_attr__( 'Pale Pink', 'kirki' ),
 				'slug'  => 'pale-pink',
@@ -228,7 +228,7 @@ class Color extends Base {
 			<# if ( 'hue' !== data.mode && true === data.palette ) { #>
 				<?php $editor_palette = current( (array) get_theme_support( 'editor-color-palette' ) ); ?>
 				<?php if ( ! empty( $editor_palette ) ) : ?>
-					<# var kirkiColorEditorPalette = <?php echo wp_strip_all_tags( wp_json_encode( $editor_palette ) ) // phpcs:ignore WordPress.Security.EscapeOutput ?>; #>
+					<# var kirkiColorEditorPalette = <?php echo wp_strip_all_tags( wp_json_encode( $editor_palette ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>; #>
 				<?php else : ?>
 					<# var kirkiColorEditorPalette = data.defaultPalette; #>
 				<?php endif; ?>
@@ -249,11 +249,8 @@ class Color extends Base {
 						class="palette-color palette-color-{{ paletteColor.slug }}"
 						data-color="{{ paletteColor.color }}"
 						title="{{ paletteColor.name }}"
-						aria-label="<?php printf(
-							/* translators: the color name. */
-							esc_attr_e( 'Color: %s', 'kirki' ),
-							'{{ paletteColor.name }}'
-						); ?>"
+						<?php /* translators: the color name. */ ?>
+						aria-label="<?php printf( esc_attr_e( 'Color: %s', 'kirki' ), '{{ paletteColor.name }}' ); ?>"
 						aria-pressed="{{ selected }}"
 						>
 						<span class="button-inner" style="color:{{ paletteColor.color }};">
@@ -277,11 +274,8 @@ class Color extends Base {
 						class="palette-color palette-color-{{ paletteColor }}"
 						data-color="{{ paletteColor }}"
 						title="{{ paletteColor }}"
-						aria-label="<?php printf(
-							/* translators: the color name. */
-							esc_attr_e( 'Color: %s', 'kirki' ),
-							'{{ paletteColor }}'
-						); ?>"
+						<?php /* translators: the color name. */ ?>
+						aria-label="<?php printf( esc_attr_e( 'Color: %s', 'kirki' ), '{{ paletteColor }}' ); ?>"
 						aria-pressed="{{ selected }}"
 						>
 						<span class="button-inner" style="color:{{ paletteColor }};">
@@ -298,10 +292,8 @@ class Color extends Base {
 					<button
 						class="palette-color placeholder color-preview"
 						data-color="{{ data.value }}"
-						aria-label="<?php printf(
-							esc_attr_e( 'Color: %s', 'kirki' ),
-							'{{ data.value }}'
-						); ?>"
+						<?php /* translators: the color name. */ ?>
+						aria-label="<?php printf( esc_attr_e( 'Color: %s', 'kirki' ), '{{ data.value }}' ); ?>"
 						aria-pressed="{{ ! hasPaletteColorSelected }}"
 						>
 						<span class="button-inner" style="color:{{ data.value }};">

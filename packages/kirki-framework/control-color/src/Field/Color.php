@@ -32,7 +32,7 @@ class Color extends Field {
 	protected $control_class = '\Kirki\Control\Color';
 
 	/**
- 	 * Whether we should register the control class for JS-templating or not.
+	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
 	 * @since 0.1

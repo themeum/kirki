@@ -77,7 +77,7 @@ class Module {
 	 * @access public
 	 * @since 1.0
 	 * @param array $args The field arguments.
-	 * @return void
+	 * @return array
 	 */
 	public function field_add_setting_args( $args ) {
 
@@ -129,7 +129,7 @@ class Module {
 			if ( count( $js_vars ) !== count( $args['output'] ) ) {
 				$js_vars = [];
 			}
-			$args['js_vars']   = $js_vars;
+			$args['js_vars'] = $js_vars;
 			if ( ! empty( $args['js_vars'] ) ) {
 				$args['transport'] = 'postMessage';
 			}

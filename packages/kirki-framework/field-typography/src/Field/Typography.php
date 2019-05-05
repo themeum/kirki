@@ -205,21 +205,6 @@ class Typography extends Field {
 							'700' => '<span class="indicator" title="' . esc_html__( '700 - Bold', 'kirki' ) . '"><span class="sublabel">700</span></span>',
 							'800' => '<span class="indicator" title="' . esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ) . '"><span class="sublabel">800</span></span>',
 							'900' => '<span class="indicator" title="' . esc_html__( '900 - Black, Heavy', 'kirki' ) . '"><span class="sublabel">900</span></span>',
-							/**
-							 * WIP - Still thinking about the best way to present these.
-							 * Below is the same array we have above, but with proper names
-							 * in case we decide to switch to some other control-type.
-							 *
-							'100' => esc_html__( '100 - Thin', 'kirki' ),
-							'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
-							'300' => esc_html__( '300 - Light', 'kirki' ),
-							'400' => esc_html__( '400 - Normal, Book, Regular', 'kirki' ),
-							'500' => esc_html__( '500 - Medium', 'kirki' ),
-							'600' => esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ),
-							'700' => esc_html__( '700 - Bold', 'kirki' ),
-							'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
-							'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
-							*/
 						],
 					],
 					$args
@@ -479,7 +464,7 @@ class Typography extends Field {
 					if ( isset( $value['variant'] ) ) {
 						break;
 					}
-					$value['variant'] = $val;
+					$value['variant'] = (string) $val;
 					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
 						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
 					}
@@ -490,7 +475,7 @@ class Typography extends Field {
 
 					// Get font-weight from variant.
 					$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? 400 : (string) absint( $value['font-weight'] );
+					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? '400' : (string) absint( $value['font-weight'] );
 
 					// Get font-style from variant.
 					if ( ! isset( $value['font-style'] ) ) {

@@ -90,7 +90,7 @@ class Module {
 	 * @param array $args The field args.
 	 * @return void
 	 */
-	function field_init( $args ) {
+	public function field_init( $args ) {
 		if ( ! isset( $args['css_vars'] ) ) {
 			return;
 		}
