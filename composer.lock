@@ -1050,12 +1050,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "ef556f3a5f2533d6ac695dbf0db6b9e1ec3e92a4"
+                "reference": "2c27c8cb144de84c19e39261f6bae783342b356e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/ef556f3a5f2533d6ac695dbf0db6b9e1ec3e92a4",
-                "reference": "ef556f3a5f2533d6ac695dbf0db6b9e1ec3e92a4",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/2c27c8cb144de84c19e39261f6bae783342b356e",
+                "reference": "2c27c8cb144de84c19e39261f6bae783342b356e",
                 "shasum": ""
             },
             "require": {
@@ -1089,7 +1089,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-18T19:35:35+00:00"
+            "time": "2019-05-05T17:16:47+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -1144,16 +1144,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "9ed236d33daf2978fdadefca0a3cdcb418defe10"
+                "reference": "43c57be94a82789739a6bc39103cf757a6bc23c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/9ed236d33daf2978fdadefca0a3cdcb418defe10",
-                "reference": "9ed236d33daf2978fdadefca0a3cdcb418defe10",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/43c57be94a82789739a6bc39103cf757a6bc23c3",
+                "reference": "43c57be94a82789739a6bc39103cf757a6bc23c3",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
+                "kirki-framework/field": "dev-master",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -1182,7 +1183,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T16:19:31+00:00"
+            "time": "2019-05-05T17:14:36+00:00"
         },
         {
             "name": "kirki-framework/core",
