@@ -2,7 +2,7 @@
 	"extends": "wordpress",
   "parserOptions": { "ecmaVersion": 6 },
   "rules": {
-    "space-in-parens": ["error", "always"],
+    "space-in-parens": ["error", "always", { "exceptions": ["empty"] }],
     "camelcase": ["error", { "properties": "never" }]
   }
 }
