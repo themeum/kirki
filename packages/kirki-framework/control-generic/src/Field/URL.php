@@ -15,33 +15,27 @@ namespace Kirki\Field;
  *
  * @since 1.0
  */
-class URL extends Generic {
+class URL extends Text {
 
 	/**
-	 * Sets the $choices
+	 * Filter arguments before creating the setting.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = [];
-		}
-		$this->choices['element'] = 'input';
-		$this->choices['type']    = 'text';
-	}
+	public function filter_setting_args( $args, $wp_customize ) {
 
-	/**
-	 * Sets the $sanitize_callback
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
-	 */
-	protected function set_sanitize_callback() {
-		if ( ! empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = 'esc_url_raw';
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			$args['sanitize_callback'] = 'esc_url_raw';
+		}
+		return $args;
 	}
 }

@@ -18,30 +18,50 @@ namespace Kirki\Field;
 class Text extends Generic {
 
 	/**
-	 * Sets the $choices
+	 * Filter arguments before creating the setting.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = [];
+	public function filter_setting_args( $args, $wp_customize ) {
+
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
-		$this->choices['element'] = 'input';
-		$this->choices['type']    = 'text';
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			$args['sanitize_callback'] = 'sanitize_textarea_field';
+		}
+		return $args;
 	}
 
 	/**
-	 * Sets the $sanitize_callback
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_sanitize_callback() {
-		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = 'sanitize_textarea_field';
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		// Set the control-type.
+		$args['type'] = 'kirki-generic';
+
+		// Choices.
+		$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
+		$args['choices']['element'] = 'input';
+		$args['choices']['type']    = 'text';
+		return $args;
 	}
 }

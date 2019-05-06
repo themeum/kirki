@@ -668,12 +668,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "eb28a52b392ccd8da61e092005ec549a59c5b8fa"
+                "reference": "f1080bf33df1ab501c3c47b18460469886b33b58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/eb28a52b392ccd8da61e092005ec549a59c5b8fa",
-                "reference": "eb28a52b392ccd8da61e092005ec549a59c5b8fa",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/f1080bf33df1ab501c3c47b18460469886b33b58",
+                "reference": "f1080bf33df1ab501c3c47b18460469886b33b58",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-05-05T16:29:55+00:00"
+            "time": "2019-05-06T19:59:42+00:00"
         },
         {
             "name": "kirki-framework/control-image",

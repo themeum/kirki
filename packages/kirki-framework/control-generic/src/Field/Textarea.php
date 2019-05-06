@@ -16,16 +16,28 @@ namespace Kirki\Field;
 class Textarea extends Generic {
 
 	/**
-	 * Sets the $choices
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
-		$this->choices = [
-			'element' => 'textarea',
-			'rows'    => 5,
-		];
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		// Set the control-type.
+		$args['type'] = 'kirki-generic';
+
+		// Choices.
+		$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
+		$args['choices']['element'] = 'textarea';
+		$args['choices']['rows']    = '5';
+		return $args;
 	}
 }
