@@ -127,7 +127,6 @@ add_action(
 		class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Generic' );
 		class_alias( 'Kirki\Control\Image', 'Kirki_Control_Image' );
 		class_alias( 'Kirki\Control\Multicheck', 'Kirki_Control_Multicheck' );
-		class_alias( 'Kirki\Control\Multicolor', 'Kirki_Control_Multicolor' );
 		class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Number' );
 		class_alias( 'Kirki\Control\Palette', 'Kirki_Control_Palette' );
 		class_alias( 'Kirki\Control\Radio', 'Kirki_Control_Radio' );

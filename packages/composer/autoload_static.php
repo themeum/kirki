@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e
+class ComposerStaticInit2f87a641fce94fa6a487617de89e4885
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -109,14 +109,14 @@ class ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e
             12 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
             13 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Field',
             14 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
-            15 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Field',
-            16 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Field',
-            17 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
-            18 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            15 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Field',
+            16 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
+            17 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
+            21 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
         'Kirki\\Core\\' => 
@@ -144,14 +144,14 @@ class ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e
             14 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
             15 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Control',
             16 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
-            17 => __DIR__ . '/..' . '/kirki-framework/control-multicolor/src/Control',
-            18 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Control',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            17 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Control',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
+            21 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
         ),
         'Kirki\\' => 
@@ -165,8 +165,8 @@ class ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0140b9a8c48dcacf043601049ddc4d3e::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2f87a641fce94fa6a487617de89e4885::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2f87a641fce94fa6a487617de89e4885::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

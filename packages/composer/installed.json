@@ -831,56 +831,6 @@
         ]
     },
     {
-        "name": "kirki-framework/control-multicolor",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kirki-framework/control-multicolor.git",
-            "reference": "2f4c6ee9bfcbc2ae2b33d428816693e2115edeea"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-multicolor/zipball/2f4c6ee9bfcbc2ae2b33d428816693e2115edeea",
-            "reference": "2f4c6ee9bfcbc2ae2b33d428816693e2115edeea",
-            "shasum": ""
-        },
-        "require": {
-            "kirki-framework/control-base": "*",
-            "kirki-framework/control-color": "*",
-            "kirki-framework/url-getter": "*",
-            "php": ">=5.6"
-        },
-        "time": "2019-04-18T19:37:08+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Kirki\\Control\\": "src/Control",
-                "Kirki\\Field\\": "src/Field"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ari Stathopoulos",
-                "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io",
-                "role": "Developer"
-            }
-        ],
-        "description": "Multicolor control for the Kirki Customizer framework.",
-        "homepage": "https://aristath.github.io/kirki",
-        "keywords": [
-            "customizer",
-            "framework",
-            "wordpress"
-        ]
-    },
-    {
         "name": "kirki-framework/control-palette",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1316,6 +1266,56 @@
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/field-multicolor",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/field-multicolor.git",
+            "reference": "3fd511167775ca72fcc341e72d0db0b8a6737f7e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/3fd511167775ca72fcc341e72d0db0b8a6737f7e",
+            "reference": "3fd511167775ca72fcc341e72d0db0b8a6737f7e",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/control-color": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-05-06T18:47:05+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Multicolor control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
             "wordpress"
         ]
     },
