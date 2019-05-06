@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2f87a641fce94fa6a487617de89e4885
+class ComposerStaticInit3219c6490297c25fda89088e4df5e971
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -27,6 +27,7 @@ class ComposerStaticInit2f87a641fce94fa6a487617de89e4885
             'Kirki\\Field\\' => 12,
             'Kirki\\Core\\' => 11,
             'Kirki\\Control\\' => 14,
+            'Kirki\\Compatibility\\' => 20,
             'Kirki\\' => 6,
         ),
     );
@@ -154,6 +155,10 @@ class ComposerStaticInit2f87a641fce94fa6a487617de89e4885
             24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
         ),
+        'Kirki\\Compatibility\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/compatibility/src',
+        ),
         'Kirki\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/field/src',
@@ -165,8 +170,8 @@ class ComposerStaticInit2f87a641fce94fa6a487617de89e4885
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2f87a641fce94fa6a487617de89e4885::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2f87a641fce94fa6a487617de89e4885::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3219c6490297c25fda89088e4df5e971::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3219c6490297c25fda89088e4df5e971::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

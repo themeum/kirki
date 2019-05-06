@@ -10,7 +10,9 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
+
+use Kirki;
 
 /**
  * Please do not use this class directly.

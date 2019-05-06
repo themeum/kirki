@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Core\Field;
+use Kirki\Compatibility\Field;
 
 /**
  * Field overrides.

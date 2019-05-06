@@ -19,6 +19,7 @@
   "include-path": [".", "core"],
   "require": {
     "php": ">=5.6",
+    "kirki-framework/compatibility": "dev-master",
     "kirki-framework/core": "dev-master",
     "kirki-framework/field": "dev-master",
     "kirki-framework/googlefonts": "dev-master",

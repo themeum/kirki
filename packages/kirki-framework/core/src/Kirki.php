@@ -14,6 +14,8 @@
 
 namespace Kirki\Core;
 
+use Kirki\Compatibility\Field;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

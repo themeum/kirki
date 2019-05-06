@@ -38,7 +38,7 @@ class Settings {
 	 * Class constructor.
 	 *
 	 * @access public
-	 * @param array $args The field definition as sanitized in Kirki\Core\Field.
+	 * @param array $args The field definition as sanitized in Kirki\Compatibility\Field.
 	 */
 	public function __construct( $args = [] ) {
 
@@ -64,7 +64,7 @@ class Settings {
 	 * If not an array, then it just calls add_setting
 	 *
 	 * @access private
-	 * @param array $args The field definition as sanitized in Kirki\Core\Field.
+	 * @param array $args The field definition as sanitized in Kirki\Compatibility\Field.
 	 */
 	final private function add_settings( $args = [] ) {
 
