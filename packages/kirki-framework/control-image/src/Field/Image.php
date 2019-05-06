@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Core\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -18,36 +18,77 @@ use Kirki\Core\Field;
 class Image extends Field {
 
 	/**
-	 * Custom labels.
-	 * This only exists here for backwards-compatibility purposes.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @var string
-	 */
-	public $button_labels = [];
-
-	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-image';
+	protected $control_class = '\Kirki\Control\Image';
+
+	/**
+	 * Whether we should register the control class for JS-templating or not.
+	 *
+	 * @access protected
+	 * @since 0.1
+	 * @var bool
+	 */
+	protected $control_has_js_template = true;
+
+	/**
+	 * Filter arguments before creating the setting.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_setting_args( $args, $wp_customize ) {
+
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			$args['sanitize_callback'] = function( $value ) {
+				if ( isset( $this->args['choices']['save_as'] ) && 'array' === $this->args['choices']['save_as'] ) {
+					return [
+						'id'     => ( isset( $value['id'] ) && '' !== $value['id'] ) ? (int) $value['id'] : '',
+						'url'    => ( isset( $value['url'] ) && '' !== $value['url'] ) ? esc_url_raw( $value['url'] ) : '',
+						'width'  => ( isset( $value['width'] ) && '' !== $value['width'] ) ? (int) $value['width'] : '',
+						'height' => ( isset( $value['height'] ) && '' !== $value['height'] ) ? (int) $value['height'] : '',
+					];
+				}
+				if ( isset( $this->args['choices']['save_as'] ) && 'id' === $this->args['choices']['save_as'] ) {
+					return absint( $value );
+				}
+				return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;		
+			};
+		}
+		return $args;
 	}
 
 	/**
-	 * Sets the button labels.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_button_labels() {
-		$this->button_labels = wp_parse_args(
-			$this->button_labels,
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		$args['button_labels'] = isset( $args['button_labels'] ) ? $args['button_labels'] : [];
+		$args['button_labels'] = wp_parse_args(
+			$args['button_labels'],
 			[
 				'select'       => esc_html__( 'Select image', 'kirki' ),
 				'change'       => esc_html__( 'Change image', 'kirki' ),
@@ -58,63 +99,15 @@ class Image extends Field {
 				'frame_button' => esc_html__( 'Choose image', 'kirki' ),
 			]
 		);
-	}
 
-	/**
-	 * Set the choices.
-	 * Adds a pseudo-element "controls" that helps with the JS API.
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
-	 */
-	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = (array) $this->choices;
-		}
-		if ( ! isset( $this->choices['save_as'] ) ) {
-			$this->choices['save_as'] = 'url';
-		}
-		if ( ! isset( $this->choices['labels'] ) ) {
-			$this->choices['labels'] = [];
-		}
-		$this->set_button_labels();
-		$this->choices['labels'] = wp_parse_args( $this->choices['labels'], $this->button_labels );
-	}
+		$args['choices']            = isset( $args['choices'] ) ? (array) $args['choices'] : [];
+		$args['choices']['save_as'] = isset( $args['choices']['save_as'] ) ? $args['choices']['save_as'] : 'url';
+		$args['choices']['labels']  = isset( $args['choices']['labels'] ) ? $args['choices']['labels'] : [];
+		$args['choices']['labels']  = wp_parse_args( $args['choices']['labels'], $args['button_labels'] );
 
-	/**
-	 * Sets the $sanitize_callback
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
-	 */
-	protected function set_sanitize_callback() {
-		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = [ $this, 'sanitize' ];
-		}
-	}
+		// Set the control-type.
+		$args['type'] = 'kirki-image';
 
-	/**
-	 * The sanitize method that will be used as a falback
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @param string|array|int $value The control's value.
-	 * @return string|array
-	 */
-	public function sanitize( $value ) {
-		if ( isset( $this->choices['save_as'] ) && 'array' === $this->choices['save_as'] ) {
-			return [
-				'id'     => ( isset( $value['id'] ) && '' !== $value['id'] ) ? (int) $value['id'] : '',
-				'url'    => ( isset( $value['url'] ) && '' !== $value['url'] ) ? esc_url_raw( $value['url'] ) : '',
-				'width'  => ( isset( $value['width'] ) && '' !== $value['width'] ) ? (int) $value['width'] : '',
-				'height' => ( isset( $value['height'] ) && '' !== $value['height'] ) ? (int) $value['height'] : '',
-			];
-		}
-		if ( isset( $this->choices['save_as'] ) && 'id' === $this->choices['save_as'] ) {
-			return absint( $value );
-		}
-		return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;
+		return $args;
 	}
 }

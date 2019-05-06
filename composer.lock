@@ -715,12 +715,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-image.git",
-                "reference": "506ddff98e671c038362ad5c4762481ab188ae00"
+                "reference": "feee8968e7b9ce28388491f8eac62e69d6f7dbec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/506ddff98e671c038362ad5c4762481ab188ae00",
-                "reference": "506ddff98e671c038362ad5c4762481ab188ae00",
+                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/feee8968e7b9ce28388491f8eac62e69d6f7dbec",
+                "reference": "feee8968e7b9ce28388491f8eac62e69d6f7dbec",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-18T19:37:35+00:00"
+            "time": "2019-05-06T19:16:13+00:00"
         },
         {
             "name": "kirki-framework/control-multicheck",
@@ -762,12 +762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-multicheck.git",
-                "reference": "8fb72f7001ce3e46cb069f5d02ef571c7b83efa7"
+                "reference": "b60e2027f1ec54543152d972b2735e7d42ea4416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/8fb72f7001ce3e46cb069f5d02ef571c7b83efa7",
-                "reference": "8fb72f7001ce3e46cb069f5d02ef571c7b83efa7",
+                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/b60e2027f1ec54543152d972b2735e7d42ea4416",
+                "reference": "b60e2027f1ec54543152d972b2735e7d42ea4416",
                 "shasum": ""
             },
             "require": {
@@ -801,7 +801,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-18T19:37:21+00:00"
+            "time": "2019-05-06T19:01:59+00:00"
         },
         {
             "name": "kirki-framework/control-palette",
