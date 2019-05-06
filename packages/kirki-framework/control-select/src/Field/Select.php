@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Core\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -20,7 +20,6 @@ use Kirki\Core\Field;
 class Select extends Field {
 
 	/**
-	 * Use only on select controls.
 	 * Defines if this is a multi-select or not.
 	 * If value is > 1, then the maximum number of selectable options
 	 * is the number defined here.
@@ -41,70 +40,74 @@ class Select extends Field {
 	protected $placeholder = false;
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-select';
-	}
+	protected $control_class = '\Kirki\Control\Select';
 
 	/**
-	 * Sets the $multiple
+	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var bool
 	 */
-	protected function set_multiple() {
-		$this->multiple = absint( $this->multiple );
-	}
+	protected $control_has_js_template = true;
 
 	/**
-	 * Sets the $sanitize_callback
-	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
-	 */
-	protected function set_sanitize_callback() {
-		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = [ $this, 'sanitize' ];
-		}
-	}
-
-	/**
-	 * Sanitizes select control values.
+	 * Filter arguments before creating the setting.
 	 *
 	 * @access public
-	 * @since 1.0
-	 * @param array $value The value.
-	 * @return string|array
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	public function sanitize( $value ) {
-		if ( is_array( $value ) ) {
-			foreach ( $value as $key => $subvalue ) {
-				if ( '' !== $subvalue || isset( $this->choices[''] ) ) {
-					$key           = sanitize_key( $key );
+	public function filter_setting_args( $args, $wp_customize ) {
+
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+
+		$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			$args['sanitize_callback'] = 2 > $args['multiple'] ? 'sanitize_text_field' : function( $value ) {
+				$value = (array) $value;
+				foreach ( $value as $key => $subvalue ) {
 					$value[ $key ] = sanitize_text_field( $subvalue );
 				}
-			}
-			return $value;
+				return $value;
+			};
 		}
-		return sanitize_text_field( $value );
+		return $args;
 	}
 
 	/**
-	 * Sets the default value.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 3.0.0
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_default() {
-		if ( 1 < $this->multiple && ! is_array( $this->default ) ) {
-			$this->default = [ $this->default ];
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
+
+		$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		// Set the control-type.
+		$args['type'] = 'kirki-select';
+
+		return $args;
 	}
 }

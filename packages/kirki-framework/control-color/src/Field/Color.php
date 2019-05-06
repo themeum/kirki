@@ -51,7 +51,7 @@ class Color extends Field {
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
 
-		if ( $args['settings'] !== $args['settings'] ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
 			return $args;
 		}
 
@@ -77,7 +77,7 @@ class Color extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $args['settings'] ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
 			return $args;
 		}
 

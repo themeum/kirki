@@ -18,29 +18,27 @@ namespace Kirki\Field;
 class Preset extends Select {
 
 	/**
-	 * Sets the control type.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-select';
-	}
-
-	/**
-	 * Set the preset.
-	 *
-	 * @access protected
-	 * @since 1.0
-	 */
-	protected function set_preset() {
-
-		// Set preset from the choices.
-		$this->preset = $this->choices;
-
-		// We're using a flat select.
-		foreach ( $this->choices as $key => $args ) {
-			$this->choices[ $key ] = $args['label'];
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		$args['multiple'] = 1;
+		$args['preset']   = $args['choices'];
+		foreach ( $args['choices'] as $key => $args ) {
+			$args['choices'][ $key ] = $args['label'];
+		}
+
+		return $args;
 	}
 }

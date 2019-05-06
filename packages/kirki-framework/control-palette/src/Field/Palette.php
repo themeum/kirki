@@ -18,13 +18,32 @@ namespace Kirki\Field;
 class Palette extends Radio {
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-palette';
+	protected $control_class = '\Kirki\Control\Palette';
+
+	/**
+	 * Filter arguments before creating the control.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+		$args = parent::filter_control_args( $args, $wp_customize );
+
+		// Set the control-type.
+		$args['type'] = 'kirki-palette';
+
+		return $args;
 	}
 }

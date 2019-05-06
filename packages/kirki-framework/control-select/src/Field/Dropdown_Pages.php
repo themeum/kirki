@@ -18,16 +18,26 @@ namespace Kirki\Field;
 class Dropdown_Pages extends Select {
 
 	/**
-	 * Sets the default value.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
+		}
+
+		$args = parent::filter_control_args( $args, $wp_customize );
+
 		$all_pages = get_pages();
 		foreach ( $all_pages as $page ) {
-			$this->choices[ $page->ID ] = $page->post_title;
+			$args['choices'][ $page->ID ] = $page->post_title;
 		}
+
+		return $args;
 	}
 }
