@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9
+class ComposerStaticInit91204f296a86921b2ed6cf1352ae7c05
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -117,8 +117,8 @@ class ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9
             19 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
             20 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
             21 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
         'Kirki\\Core\\' => 
         array (
@@ -152,8 +152,8 @@ class ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9
             21 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             22 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
             23 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
-            24 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            25 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (
@@ -170,8 +170,8 @@ class ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4b6e7b43ee2cbf1ad305e4f3b90c7ea9::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit91204f296a86921b2ed6cf1352ae7c05::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit91204f296a86921b2ed6cf1352ae7c05::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
