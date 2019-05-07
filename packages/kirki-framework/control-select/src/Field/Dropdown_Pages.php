@@ -27,17 +27,14 @@ class Dropdown_Pages extends Select {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			$all_pages = get_pages();
+			foreach ( $all_pages as $page ) {
+				$args['choices'][ $page->ID ] = $page->post_title;
+			}
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		$all_pages = get_pages();
-		foreach ( $all_pages as $page ) {
-			$args['choices'][ $page->ID ] = $page->post_title;
-		}
-
 		return $args;
 	}
 }

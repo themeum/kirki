@@ -67,22 +67,21 @@ class Select extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
+			$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
 
-		$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = 2 > $args['multiple'] ? 'sanitize_text_field' : function( $value ) {
-				$value = (array) $value;
-				foreach ( $value as $key => $subvalue ) {
-					$value[ $key ] = sanitize_text_field( $subvalue );
-				}
-				return $value;
-			};
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = 2 > $args['multiple'] ? 'sanitize_text_field' : function( $value ) {
+					$value = (array) $value;
+					foreach ( $value as $key => $subvalue ) {
+						$value[ $key ] = sanitize_text_field( $subvalue );
+					}
+					return $value;
+				};
+			}
 		}
 		return $args;
 	}
@@ -97,17 +96,12 @@ class Select extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
+			$args['type']     = 'kirki-select';
 		}
-
-		$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-select';
-
 		return $args;
 	}
 }

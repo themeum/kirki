@@ -47,16 +47,15 @@ class Slider extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = function( $value ) {
-				return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-			};
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = function( $value ) {
+					return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+				};
+			}
 		}
 		return $args;
 	}
@@ -71,15 +70,10 @@ class Slider extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-slider';
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-slider';
-
 		return $args;
 	}
 }

@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Compatibility\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -20,46 +20,60 @@ use Kirki\Compatibility\Field;
 class Checkbox extends Field {
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'checkbox';
-	}
+	protected $control_class = '\Kirki\Control\Checkbox';
 
 	/**
-	 * Sets the $sanitize_callback.
+	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var bool
 	 */
-	protected function set_sanitize_callback() {
-		if ( ! $this->sanitize_callback ) {
-			$this->sanitize_callback = [ '\Kirki\Field\Checkbox', 'sanitize' ];
-		}
-	}
+	protected $control_has_js_template = true;
 
 	/**
-	 * Sanitizes checkbox values.
+	 * Filter arguments before creating the setting.
 	 *
 	 * @access public
-	 * @param boolean|integer|string|null $value The value.
-	 * @return bool
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	public static function sanitize( $value = null ) {
-		return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
+	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
+
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = function( $value ) {
+					return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
+				};
+			}
+		}
+		return $args;
 	}
 
 	/**
-	 * Sets the default value.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_default() {
-		$this->default = (bool) in_array( $this->default, [ 1, '1', true, 'true', 'on' ], true );
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-checkbox';
+		}
+		return $args;
 	}
 }

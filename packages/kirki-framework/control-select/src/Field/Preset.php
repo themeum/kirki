@@ -27,18 +27,15 @@ class Preset extends Select {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			$args['multiple'] = 1;
+			$args['preset']   = $args['choices'];
+			foreach ( $args['choices'] as $key => $args ) {
+				$args['choices'][ $key ] = $args['label'];
+			}
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		$args['multiple'] = 1;
-		$args['preset']   = $args['choices'];
-		foreach ( $args['choices'] as $key => $args ) {
-			$args['choices'][ $key ] = $args['label'];
-		}
-
 		return $args;
 	}
 }

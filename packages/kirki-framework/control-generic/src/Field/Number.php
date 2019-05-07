@@ -28,15 +28,15 @@ class Number extends Generic {
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = function( $value ) {
-				return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-			};
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = function( $value ) {
+					return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+				};
+			}
 		}
 		return $args;
 	}
@@ -51,32 +51,30 @@ class Number extends Generic {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			// Set the control-type.
+			$args['type'] = 'kirki-generic';
+
+			// Choices.
+			$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
+			$args['choices']['element'] = 'input';
+			$args['choices']['type']    = 'number';
+			$args['choices']            = wp_parse_args(
+				$args['choices'],
+				[
+					'min'  => -999999999,
+					'max'  => 999999999,
+					'step' => 1,
+				]
+			);
+
+			// Make sure min, max & step are all numeric.
+			$args['choices']['min']  = filter_var( $args['choices']['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+			$args['choices']['max']  = filter_var( $args['choices']['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+			$args['choices']['step'] = filter_var( $args['choices']['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-generic';
-
-		// Choices.
-		$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
-		$args['choices']['element'] = 'input';
-		$args['choices']['type']    = 'number';
-		$args['choices']            = wp_parse_args(
-			$args['choices'],
-			[
-				'min'  => -999999999,
-				'max'  => 999999999,
-				'step' => 1,
-			]
-		);
-
-		// Make sure min, max & step are all numeric.
-		$args['choices']['min']  = filter_var( $args['choices']['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-		$args['choices']['max']  = filter_var( $args['choices']['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-		$args['choices']['step'] = filter_var( $args['choices']['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 		return $args;
 	}
 }

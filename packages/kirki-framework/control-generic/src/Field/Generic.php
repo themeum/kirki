@@ -47,14 +47,13 @@ class Generic extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = 'wp_kses_post';
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = 'wp_kses_post';
+			}
 		}
 		return $args;
 	}
@@ -69,19 +68,16 @@ class Generic extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			// Set the control-type.
+			$args['type'] = 'kirki-generic';
+
+			// Choices.
+			$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
+			$args['choices']['element'] = isset( $args['choices']['element'] ) ? $args['choices']['element'] : 'input';
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-generic';
-
-		// Choices.
-		$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
-		$args['choices']['element'] = isset( $args['choices']['element'] ) ? $args['choices']['element'] : 'input';
-
 		return $args;
 	}
 }

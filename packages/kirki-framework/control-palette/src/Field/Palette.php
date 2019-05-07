@@ -36,14 +36,10 @@ class Palette extends Radio {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-palette';
 		}
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-palette';
-
 		return $args;
 	}
 }

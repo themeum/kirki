@@ -25,19 +25,17 @@ class Textarea extends Generic {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			// Set the control-type.
+			$args['type'] = 'kirki-generic';
+
+			// Choices.
+			$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
+			$args['choices']['element'] = 'textarea';
+			$args['choices']['rows']    = '5';
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-generic';
-
-		// Choices.
-		$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
-		$args['choices']['element'] = 'textarea';
-		$args['choices']['rows']    = '5';
 		return $args;
 	}
 }

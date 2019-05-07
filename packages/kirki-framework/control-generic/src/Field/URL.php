@@ -27,14 +27,13 @@ class URL extends Text {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = 'esc_url_raw';
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = 'esc_url_raw';
+			}
 		}
 		return $args;
 	}

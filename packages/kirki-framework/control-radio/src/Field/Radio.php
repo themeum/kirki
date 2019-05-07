@@ -47,19 +47,18 @@ class Radio extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = function( $value ) {
-				if ( ! isset( $this->args['choices'][ $value ] ) ) {
-					return ( isset( $this->args['default'] ) ) ? $this->args['default'] : '';
-				}
-				return $value;
-			};
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = function( $value ) {
+					if ( ! isset( $this->args['choices'][ $value ] ) ) {
+						return ( isset( $this->args['default'] ) ) ? $this->args['default'] : '';
+					}
+					return $value;
+				};
+			}
 		}
 		return $args;
 	}
@@ -74,15 +73,10 @@ class Radio extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-radio';
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-radio';
-
 		return $args;
 	}
 }

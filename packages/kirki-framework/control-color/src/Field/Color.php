@@ -50,18 +50,17 @@ class Color extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
 
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
-
-			// If this is a hue control then its value should be an integer.
-			if ( isset( $args['mode'] ) && 'hue' === $args['mode'] ) {
-				$args['sanitize_callback'] = 'absint';
+				// If this is a hue control then its value should be an integer.
+				if ( isset( $args['mode'] ) && 'hue' === $args['mode'] ) {
+					$args['sanitize_callback'] = 'absint';
+				}
 			}
 		}
 		return $args;
@@ -77,28 +76,24 @@ class Color extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+
+			$args['type'] = 'kirki-color';
+
+			// Make sure choices is an array.
+			if ( ! isset( $args['choices'] ) || ! \is_array( $args['choices'] ) ) {
+				$args['choices'] = [];
+			}
+
+			// Set alpha argument.
+			$args['choices']['alpha'] = isset( $args['choices']['alpha'] ) ? (bool) $args['choices']['alpha'] : false;
+
+			// Set mode.
+			if ( ! isset( $args['choices']['mode'] ) ) {
+				$args['choices']['mode'] = isset( $args['mode'] ) ? $args['mode'] : 'full';
+			}
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-color';
-
-		// Make sure choices is an array.
-		if ( ! isset( $args['choices'] ) || ! \is_array( $args['choices'] ) ) {
-			$args['choices'] = [];
-		}
-
-		// Set alpha argument.
-		$args['choices']['alpha'] = isset( $args['choices']['alpha'] ) ? (bool) $args['choices']['alpha'] : false;
-
-		// Set mode.
-		if ( ! isset( $args['choices']['mode'] ) ) {
-			$args['choices']['mode'] = isset( $args['mode'] ) ? $args['mode'] : 'full';
-		}
-
 		return $args;
 	}
 

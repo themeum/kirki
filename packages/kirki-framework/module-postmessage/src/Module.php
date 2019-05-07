@@ -91,8 +91,9 @@ class Module {
 		}
 
 		if ( 'auto' === $args['transport'] ) {
-			$args['js_vars'] = isset( $args['js_vars'] ) ? $args['js_vars'] : [];
-			$args['js_vars'] = (array) $args['js_vars'];
+			$args['js_vars'] = isset( $args['js_vars'] ) ? (array) $args['js_vars'] : [];
+			$args['output']  = isset( $args['output'] ) ? (array) $args['output'] : [];
+			$js_vars         = $args['js_vars'];
 			
 			// Set transport to refresh initially.
 			// Serves as a fallback in case we failt to auto-calculate js_vars.

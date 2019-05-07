@@ -74,20 +74,18 @@ class Checkbox extends Base {
 	 */
 	protected function content_template() {
 		?>
-		<span class="customize-inside-control-row">
-			<input
-				id="_customize-input-{{ data.id }}"
-				type="checkbox"
-				value="{{ data.value }}"
-				{{ data.link }}
-				<# if ( data.description ) { #>aria-describedby="_customize-description-{{ data.id }}"<# } #>
-				<# if ( data.value ) { #>checked="checked"<# } #>
-			/>
-			<label for="{{ data.id }}">{{ data.label }}</label>
-			<# if ( data.description ) { #>
-				<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{ data.description }}</span>
-			<# } #>
-		</span>
+		<input
+			id="_customize-input-{{ data.id }}"
+			type="checkbox"
+			value="{{ data.value }}"
+			{{ data.link }}
+			<# if ( data.description ) { #>aria-describedby="_customize-description-{{ data.id }}"<# } #>
+			<# if ( data.value ) { #>checked="checked"<# } #>
+		/>
+		<label for="{{ data.id }}">{{ data.label }}</label>
+		<# if ( data.description ) { #>
+			<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{ data.description }}</span>
+		<# } #>
 		<?php
 	}
 }

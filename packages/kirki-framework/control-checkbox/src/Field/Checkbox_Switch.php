@@ -18,33 +18,28 @@ namespace Kirki\Field;
 class Checkbox_Switch extends Checkbox {
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-switch';
-	}
+	protected $control_class = '\Kirki\Control\Checkbox_Switch';
 
 	/**
-	 * Sets the control choices.
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = [];
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-switch';
 		}
-
-		$this->choices = wp_parse_args(
-			$this->choices,
-			[
-				'on'    => esc_html__( 'On', 'kirki' ),
-				'off'   => esc_html__( 'Off', 'kirki' ),
-				'round' => false,
-			]
-		);
+		return $args;
 	}
 }
