@@ -36,6 +36,18 @@ class Image extends Field {
 	protected $control_has_js_template = true;
 
 	/**
+	 * Additional logic for this field.
+	 *
+	 * @access protected
+	 * @since 0.1
+	 * @param array $args The field arguments.
+	 * @return void
+	 */
+	protected function init( $args ) {
+		add_filter( 'kirki_output_item_args', [ $this, 'output_item_args' ] );
+	}
+
+		/**
 	 * Filter arguments before creating the setting.
 	 *
 	 * @access public
@@ -105,5 +117,27 @@ class Image extends Field {
 			$args['type'] = 'kirki-image';
 		}
 		return $args;
+	}
+
+	/**
+	 * Filter for output argument used by the kirki-framework/module-css module.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $output      A single output item.
+	 * @param mixed $value       The value.
+	 * @param array $all_outputs All field output args.
+	 * @param array $field       The field arguments.
+	 * @return array
+	 */
+	public function output_item_args( $output, $value, $all_outputs, $field ) {
+		if ( $field['settings'] === $this->args['settings'] ) {
+			if ( isset( $output['property'] ) && in_array( [ 'background', 'background-image' ], $output['property'], true ) ) {
+				if ( ! isset( $output['value_pattern'] ) || empty( $output['value_pattern'] ) || '$' === $output['value_pattern'] ) {
+					$output['value_pattern'] = 'url("$")';
+				}
+			}
+		}
+		return $output;
 	}
 }

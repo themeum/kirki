@@ -272,6 +272,7 @@ class Output {
 	 * @return null
 	 */
 	protected function process_output( $output, $value ) {
+		$output = apply_filters( 'kirki_output_item_args', $output, $value, $this->output, $this->field );
 		if ( ! isset( $output['element'] ) || ! isset( $output['property'] ) ) {
 			return;
 		}
