@@ -1,0 +1,13 @@
+li[data-kirki-parent-control-type=kirki-dimensions] {
+  margin-bottom: 8px;
+}
+li[data-kirki-parent-control-type=kirki-dimensions] label {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+li[data-kirki-parent-control-type=kirki-dimensions] input {
+  max-width: 100px;
+}
+
+/*# sourceMappingURL=style.css.map */

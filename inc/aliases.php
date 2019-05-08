@@ -119,9 +119,6 @@ add_action(
 		class_alias( 'Kirki\Control\Dashicons', 'Kirki_Control_Dashicons' );
 		class_alias( 'Kirki\Control\Date', 'Kirki_Control_Date' );
 		class_alias( 'Kirki\Control\Dimension', 'Kirki_Control_Dimension' );
-		class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Dimensions' );
-		class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Spacing' );
-		class_alias( 'Kirki\Control\Dimensions', 'Kirki\Control\Spacing' );
 		class_alias( 'Kirki\Control\Editor', 'Kirki_Control_Editor' );
 		class_alias( 'Kirki\Control\FontAwesome', 'Kirki_Control_FontAwesome' );
 		class_alias( 'Kirki\Control\Generic', 'Kirki_Control_Generic' );

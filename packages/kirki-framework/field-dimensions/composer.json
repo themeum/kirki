@@ -1,7 +1,7 @@
 {
-    "name": "kirki-framework/control-dimensions",
+    "name": "kirki-framework/field-dimensions",
     "type": "library",
-    "description": "Dimensions control for the Kirki Customizer framework.",
+    "description": "Dimensions field for the Kirki Customizer framework.",
     "keywords": ["wordpress","customizer","framework"],
     "homepage": "https://aristath.github.io/kirki",
     "license": "MIT",
@@ -16,12 +16,10 @@
     "require": {
         "php": ">=5.6",
         "kirki-framework/url-getter": "*",
-        "kirki-framework/control-dimension": "*",
-        "kirki-framework/control-base": "*"
+        "kirki-framework/control-dimension": "*"
     },
     "autoload": {
 		"psr-4": {
-			"Kirki\\Control\\": "src/Control",
 			"Kirki\\Field\\": "src/Field"
         }
     }

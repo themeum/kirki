@@ -43,6 +43,15 @@ abstract class Field {
 	protected $control_class;
 
 	/**
+	 * The setting class-name.
+	 *
+	 * @access protected
+	 * @since 0.1
+	 * @var string|null
+	 */
+	protected $settings_class;
+
+	/**
 	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
@@ -176,6 +185,11 @@ abstract class Field {
 		 */
 		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $wp_customize );
 		if ( isset( $args['settings'] ) ) {
+			$classname = $this->settings_class;
+			if ( $this->settings_class ) {
+				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );		
+				return;
+			}
 			$wp_customize->add_setting( $args['settings'], $args );
 		}
 	}

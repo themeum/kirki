@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Compatibility\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -18,39 +18,58 @@ use Kirki\Compatibility\Field;
 class Editor extends Field {
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		global $wp_version;
+	protected $control_class = '\Kirki\Control\Editor';
 
-		if ( version_compare( $wp_version, '4.8' ) >= 0 ) {
-			$this->type = 'kirki-editor';
-			return;
-		}
+	/**
+	 * Whether we should register the control class for JS-templating or not.
+	 *
+	 * @access protected
+	 * @since 0.1
+	 * @var bool
+	 */
+	protected $control_has_js_template = true;
 
-		// Fallback for older WordPress versions.
-		$this->type = 'kirki-generic';
-		if ( ! is_array( $this->choices ) ) {
-			$this->choices = [];
+	/**
+	 * Filter arguments before creating the setting.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
+
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = 'wp_kses_post';
+			}
 		}
-		$this->choices['element'] = 'textarea';
-		$this->choices['rows']    = '5';
+		return $args;
 	}
 
 	/**
-	 * Sets the $sanitize_callback
+	 * Filter arguments before creating the control.
 	 *
-	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	protected function set_sanitize_callback() {
-		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = 'wp_kses_post';
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-editor';
 		}
+		return $args;
 	}
 }

@@ -10,7 +10,7 @@
 
 namespace Kirki\Field;
 
-use Kirki\Compatibility\Field;
+use Kirki\Field;
 
 /**
  * Field overrides.
@@ -20,44 +20,58 @@ use Kirki\Compatibility\Field;
 class Color_Palette extends Field {
 
 	/**
-	 * Sets the control type.
+	 * The control class-name.
 	 *
 	 * @access protected
-	 * @since 1.0
+	 * @since 0.1
+	 * @var string
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-color-palette';
-	}
+	protected $control_class = '\Kirki\Control\Color_Palette';
 
 	/**
-	 * Sets the $sanitize_callback
+	 * Whether we should register the control class for JS-templating or not.
 	 *
 	 * @access protected
-	 * @since 1.0
-	 * @return void
+	 * @since 0.1
+	 * @var bool
 	 */
-	protected function set_sanitize_callback() {
-
-		// Check if a sanitization callback is defined or not.
-		// Only proceed if no custom callback has been defined.
-		if ( empty( $this->sanitize_callback ) ) {
-			$this->sanitize_callback = [ '\kirki\Field\Color_Palette', 'sanitize' ];
-		}
-	}
+	protected $control_has_js_template = true;
 
 	/**
-	 * Sanitization callback.
+	 * Filter arguments before creating the setting.
 	 *
-	 * @static
 	 * @access public
-	 * @since 1.0
-	 * @param string $value The color value.
-	 * @return string
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
 	 */
-	public static function sanitize( $value ) {
-		if ( class_exists( '\Kirki\Field\Color' ) ) {
-			return \Kirki\Field\Color::sanitize( $value );
+	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
+
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = 'sanitize_text_field';
+			}
 		}
-		return esc_attr( $value );
+		return $args;
+	}
+
+	/**
+	 * Filter arguments before creating the control.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_control_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-color-palette';
+		}
+		return $args;
 	}
 }
