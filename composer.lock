@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "a5a9dc1b7ecaba37fe4cecc5f175afb3ebbf0ab2"
+                "reference": "20803adf734ab6300863f0c927b2129cd9c40091"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/a5a9dc1b7ecaba37fe4cecc5f175afb3ebbf0ab2",
-                "reference": "a5a9dc1b7ecaba37fe4cecc5f175afb3ebbf0ab2",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/20803adf734ab6300863f0c927b2129cd9c40091",
+                "reference": "20803adf734ab6300863f0c927b2129cd9c40091",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-05-06T20:32:54+00:00"
+            "time": "2019-05-12T09:11:33+00:00"
         },
         {
             "name": "kirki-framework/control-background",

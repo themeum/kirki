@@ -6,5 +6,9 @@
  * @package kirki
  */
 
-// Load aliases.
-require_once 'aliases.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+/**
+ * Add class aliases for backwards compatibility.
+ *
+ * @since 4.0
+ */
+new \Kirki\Compatibility\Aliases();
