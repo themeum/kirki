@@ -12,7 +12,6 @@ class ComposerStaticInitafa2cb26ecbd0777a69399429e1dce1e
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Webfonts\\' => 23,
             'Kirki\\Modules\\Webfont_Loader\\' => 29,
-            'Kirki\\Modules\\Tooltips\\' => 23,
             'Kirki\\Modules\\Selective_Refresh\\' => 32,
             'Kirki\\Modules\\Section_Icons\\' => 28,
             'Kirki\\Modules\\Preset\\' => 21,
@@ -24,6 +23,7 @@ class ComposerStaticInitafa2cb26ecbd0777a69399429e1dce1e
             'Kirki\\Modules\\Custom_Panels\\' => 28,
             'Kirki\\Modules\\CSS_Vars\\' => 23,
             'Kirki\\Modules\\CSS\\' => 18,
+            'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
             'Kirki\\Core\\' => 11,
             'Kirki\\Control\\' => 14,
@@ -44,10 +44,6 @@ class ComposerStaticInitafa2cb26ecbd0777a69399429e1dce1e
         'Kirki\\Modules\\Webfont_Loader\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-webfont-loader/src',
-        ),
-        'Kirki\\Modules\\Tooltips\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
         ),
         'Kirki\\Modules\\Selective_Refresh\\' => 
         array (
@@ -92,6 +88,10 @@ class ComposerStaticInitafa2cb26ecbd0777a69399429e1dce1e
         'Kirki\\Modules\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
+        ),
+        'Kirki\\Module\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
         ),
         'Kirki\\Field\\' => 
         array (

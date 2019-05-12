@@ -69,8 +69,7 @@ class Dimensions extends Field {
 		/**
 		 * Add a hidden field, the label & description.
 		 */
-		Kirki::add_field(
-			$args['kirki_config'],
+		new \Kirki\Field\Generic(
 			wp_parse_args(
 				[
 					'type'        => 'kirki-generic',
@@ -94,8 +93,7 @@ class Dimensions extends Field {
 			$label = $choice;
 			$label = isset( $labels[ $choice ] ) ? $labels[ $choice ] : $label;
 			$label = isset( $args['choices']['labels'][ $choice ] ) ? $args['choices']['labels'][ $choice ] : $label;
-			Kirki::add_field(
-				$args['kirki_config'],
+			new \Kirki\Field\Dimension(
 				wp_parse_args(
 					[
 						'type'           => 'kirki-dimension',

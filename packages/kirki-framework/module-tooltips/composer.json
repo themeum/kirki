@@ -15,12 +15,11 @@
     ],
     "require": {
         "php": ">=5.6",
-        "kirki-framework/url-getter": "*",
-        "kirki-framework/core": "*"
+        "kirki-framework/url-getter": "*"
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\Tooltips\\" : "src/"
+			"Kirki\\Module\\" : "src/"
         }
     }
 }

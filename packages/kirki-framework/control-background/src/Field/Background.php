@@ -35,26 +35,23 @@ class Background extends Field {
 		/**
 		 * Add a hidden field, the label & description.
 		 */
-		Kirki::add_field(
-			$config_id,
-			[
-				'type'        => 'kirki-generic',
-				'section'     => $args['section'],
-				'default'     => '',
-				'settings'    => $args['settings'],
-				'label'       => $args['label'],
-				'description' => $args['description'],
-				'choices'     => [
-					'type' => 'hidden',
+		new \Kirki\Field\Generic(
+			wp_parse_args(
+				[
+					'type'        => 'kirki-generic',
+					'default'     => '',
+					'choices'     => [
+						'type' => 'hidden',
+					],
 				],
-			]
+				$args
+			)
 		);
 
 		/**
 		 * Background Color.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new \Kirki\Field\Color(
 			[
 				'type'           => 'kirki-color',
 				'settings'       => $args['settings'] . '[background-color]',
@@ -72,8 +69,7 @@ class Background extends Field {
 		/**
 		 * Background Image.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new \Kirki\Field\Image(
 			[
 				'type'           => 'kirki-image',
 				'settings'       => $args['settings'] . '[background-image]',
@@ -88,8 +84,7 @@ class Background extends Field {
 		/**
 		 * Background Repeat.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new Kirki\Field\Select(
 			[
 				'type'           => 'kirki-select',
 				'settings'       => $args['settings'] . '[background-repeat]',
@@ -121,8 +116,7 @@ class Background extends Field {
 		/**
 		 * Background Position.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new Kirki\Field\Select(
 			[
 				'type'           => 'kirki-select',
 				'settings'       => $args['settings'] . '[background-position]',
@@ -159,8 +153,7 @@ class Background extends Field {
 		/**
 		 * Background size.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new Kirki\Field\Radio_Buttonset(
 			[
 				'type'           => 'kirki-radio-buttonset',
 				'settings'       => $args['settings'] . '[background-size]',
@@ -191,8 +184,7 @@ class Background extends Field {
 		/**
 		 * Background attachment.
 		 */
-		Kirki::add_field(
-			$config_id,
+		new Kirki\Field\Radio_Buttonset(
 			[
 				'type'           => 'kirki-radio-buttonset',
 				'settings'       => $args['settings'] . '[background-attachment]',

@@ -64,7 +64,6 @@ class Modules {
 				'css-vars'           => '\Kirki\Modules\CSS_Vars\Module',
 				'icons'              => '\Kirki_Modules_Icons',
 				'loading'            => '\Kirki\Modules\Loading\Module',
-				'tooltips'           => '\Kirki\Modules\Tooltips\Module',
 				'postMessage'        => '\Kirki\Modules\Postmessage\Module',
 				'selective-refresh'  => '\Kirki\Modules\Selective_Refresh\Module',
 				'field-dependencies' => '\Kirki\Modules\Field_Dependencies\Module',
@@ -93,6 +92,8 @@ class Modules {
 				self::$active_modules[ $key ] = call_user_func( [ $module_class, 'get_instance' ] );
 			}
 		}
+
+		new \Kirki\Module\Tooltips();
 	}
 
 	/**

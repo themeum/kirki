@@ -44,7 +44,7 @@ class Image extends Field {
 	 * @return void
 	 */
 	protected function init( $args ) {
-		add_filter( 'kirki_output_item_args', [ $this, 'output_item_args' ] );
+		add_filter( 'kirki_output_item_args', [ $this, 'output_item_args' ], 10, 4 );
 	}
 
 		/**

@@ -42,7 +42,7 @@ class_alias( 'Kirki\Modules\Loading\Module', 'Kirki_Modules_Loading' );
 // Module: Preset.
 class_alias( 'Kirki\Modules\Preset\Module', 'Kirki_Modules_Preset' );
 // Module: Tooltips.
-class_alias( 'Kirki\Modules\Tooltips\Module', 'Kirki_Modules_Tooltips' );
+class_alias( 'Kirki\Module\Tooltips', 'Kirki_Modules_Tooltips' );
 // Module: Webfonts.
 class_alias( 'Kirki\Modules\Webfonts\Module', 'Kirki_Modules_Webfonts' );
 class_alias( 'Kirki\Modules\Webfonts\Google', 'Kirki_Fonts_Google' );

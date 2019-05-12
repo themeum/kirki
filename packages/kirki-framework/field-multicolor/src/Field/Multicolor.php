@@ -33,8 +33,7 @@ class Multicolor extends Field {
 		/**
 		 * Add a hidden field, the label & description.
 		 */
-		Kirki::add_field(
-			$args['kirki_config'],
+		new \Kirki\Field\Generic(
 			wp_parse_args(
 				[
 					'type'        => 'kirki-generic',
@@ -48,8 +47,7 @@ class Multicolor extends Field {
 		);
 
 		foreach ( $args['choices'] as $choice => $choice_label ) {
-			Kirki::add_field(
-				$args['kirki_config'],
+			new \Kirki\Field\Color(
 				wp_parse_args(
 					[
 						'type'           => 'kirki-color',
