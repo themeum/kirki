@@ -41,7 +41,7 @@ jQuery( document ).ready( function() {
 
 	wp.customize.control.each( function( control ) {
 		wp.customize.section( control.section(), function( section ) {
-			if ( section.expanded() || wp.customize.settings.autofocus.control === control.id ) {		
+			if ( section.expanded() || wp.customize.settings.autofocus.control === control.id ) {
 				kirkiTooltipAdd( control );
 			} else {
 				section.expanded.bind( function( expanded ) {

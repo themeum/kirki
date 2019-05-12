@@ -187,7 +187,7 @@ abstract class Field {
 		if ( isset( $args['settings'] ) ) {
 			$classname = $this->settings_class;
 			if ( $this->settings_class ) {
-				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );		
+				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );        
 				return;
 			}
 			$wp_customize->add_setting( $args['settings'], $args );

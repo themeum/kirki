@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PHPCompatibility.FunctionDeclarations.NewClosure
 /**
  * Override field methods
  *
@@ -48,14 +48,14 @@ class Image extends Field {
 	}
 
 		/**
-	 * Filter arguments before creating the setting.
-	 *
-	 * @access public
-	 * @since 0.1
-	 * @param array                $args         The field arguments.
-	 * @param WP_Customize_Manager $wp_customize The customizer instance.
-	 * @return array
-	 */
+		 * Filter arguments before creating the setting.
+		 *
+		 * @access public
+		 * @since 0.1
+		 * @param array                $args         The field arguments.
+		 * @param WP_Customize_Manager $wp_customize The customizer instance.
+		 * @return array
+		 */
 	public function filter_setting_args( $args, $wp_customize ) {
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_setting_args( $args, $wp_customize );
@@ -74,7 +74,7 @@ class Image extends Field {
 					if ( isset( $this->args['choices']['save_as'] ) && 'id' === $this->args['choices']['save_as'] ) {
 						return absint( $value );
 					}
-					return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;		
+					return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;        
 				};
 			}
 		}
