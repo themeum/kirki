@@ -10,7 +10,7 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Section_Icons;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 use Kirki\URL;
@@ -23,17 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds scripts for icons in sections & panels.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Section_Icons {
 
 	/**
 	 * An array of panels and sections with icons.
@@ -47,26 +37,10 @@ class Module {
 	/**
 	 * The class constructor.
 	 *
-	 * @access protected
-	 */
-	protected function __construct() {
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'customize_controls_enqueue_scripts' ], 99 );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
 	 * @access public
-	 * @since 3.0.0
-	 * @return object
 	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
+	public function __construct() {
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'customize_controls_enqueue_scripts' ], 99 );
 	}
 
 	/**

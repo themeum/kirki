@@ -61,7 +61,6 @@ class Modules {
 			'kirki_modules',
 			[
 				'css'                => '\Kirki\Modules\CSS\Module',
-				'icons'              => '\Kirki_Modules_Icons',
 				'loading'            => '\Kirki\Modules\Loading\Module',
 				'postMessage'        => '\Kirki\Modules\Postmessage\Module',
 				'selective-refresh'  => '\Kirki\Modules\Selective_Refresh\Module',
@@ -93,6 +92,7 @@ class Modules {
 		new \Kirki\Module\Webfonts();
 		new \Kirki\Module\Preset();
 		new \Kirki\Module\Custom_Sections();
+		new \Kirki\Module\Section_Icons();
 	}
 
 	/**

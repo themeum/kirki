@@ -20,7 +20,7 @@
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\Section_Icons\\" : "src/"
+			"Kirki\\Module\\" : "src/"
         }
     }
 }
