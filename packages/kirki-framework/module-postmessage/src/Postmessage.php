@@ -10,30 +10,15 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Postmessage;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 use Kirki\URL;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Adds styles to the customizer.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Postmessage {
 
 	/**
 	 * An array of fields to be processed.
@@ -47,28 +32,12 @@ class Module {
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
+	 * @access PUBLIC
 	 * @since 3.0.0
 	 */
-	protected function __construct() {
+	PUBLIC function __construct() {
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
 		add_action( 'kirki_field_add_setting_args', [ $this, 'field_add_setting_args' ] );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.0
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
 	}
 
 	/**

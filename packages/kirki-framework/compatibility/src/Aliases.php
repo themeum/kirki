@@ -66,7 +66,7 @@ class Aliases {
 			[ 'Kirki\Module\Field_Dependencies', 'Kirki_Modules_Field_Dependencies' ],
 			[ 'Kirki\Modules\Editor_Styles\Module', 'Kirki_Modules_Gutenberg' ],
 			[ 'Kirki\Module\Selective_Refresh', 'Kirki_Modules_Selective_Refresh' ],
-			[ 'Kirki\Modules\Postmessage\Module', 'Kirki_Modules_Postmessage' ],
+			[ 'Kirki\Module\Postmessage', 'Kirki_Modules_Postmessage' ],
 			[ 'Kirki\Module\Section_Icons', 'Kirki_Modules_Icons' ],
 			[ 'Kirki\Field\Background', 'Kirki_Field_Background' ],
 			[ 'Kirki\Field\Checkbox', 'Kirki_Field_Checkbox' ],
