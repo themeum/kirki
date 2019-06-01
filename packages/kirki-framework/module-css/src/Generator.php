@@ -14,7 +14,7 @@
 namespace Kirki\Modules\CSS;
 
 use Kirki\Core\Values;
-use Kirki\Modules\Webfonts\Fonts;
+use Kirki\Module\Webfonts\Fonts;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

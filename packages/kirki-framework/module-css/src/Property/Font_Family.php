@@ -12,7 +12,7 @@
 namespace Kirki\Modules\CSS\Property;
 
 use Kirki\Modules\CSS\Property;
-use Kirki\Modules\Webfonts\Fonts;
+use Kirki\Module\Webfonts\Fonts;
 
 /**
  * Output overrides.

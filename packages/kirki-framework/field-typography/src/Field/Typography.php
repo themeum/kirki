@@ -14,7 +14,7 @@ use Kirki\Field;
 use Kirki;
 use Kirki\URL;
 use Kirki\GoogleFonts;
-use Kirki\Modules\Webfonts\Fonts;
+use Kirki\Module\Webfonts\Fonts;
 
 /**
  * Field overrides.
@@ -528,7 +528,7 @@ class Typography extends Field {
 		if ( ! self::$gfonts_var_added ) {
 			echo '<script>kirkiGoogleFonts=';
 			$google = new GoogleFonts();
-			$google->print_googlefonts_json( false );
+			echo esc_html( wp_json_encode( $google->get_array() ) );
 			echo ';</script>';
 			self::$gfonts_var_added = true;
 		}

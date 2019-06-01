@@ -10,12 +10,24 @@
  * @since       3.0
  */
 
-namespace Kirki\Modules\Webfonts;
+namespace Kirki\Module\Webfonts;
+
+use Kirki\URL;
 
 /**
  * Manages the way Google Fonts are enqueued.
  */
 final class Async {
+
+	/**
+	 * Only load the webfont script if this is true.
+	 *
+	 * @static
+	 * @access public
+	 * @since 3.0.26
+	 * @var bool
+	 */
+	public static $load = false;
 
 	/**
 	 * The config ID.
@@ -27,7 +39,7 @@ final class Async {
 	protected $config_id;
 
 	/**
-	 * The \Kirki\Modules\Webfonts\Module object.
+	 * The \Kirki\Module\Webfonts object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -36,7 +48,7 @@ final class Async {
 	protected $webfonts;
 
 	/**
-	 * The \Kirki\Modules\Webfonts\Google object.
+	 * The \Kirki\Module\Webfonts\Google object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -59,8 +71,8 @@ final class Async {
 	 * @access public
 	 * @since 3.0
 	 * @param string $config_id   The config-ID.
-	 * @param object $webfonts    The \Kirki\Modules\Webfonts\Module object.
-	 * @param object $googlefonts The \Kirki\Modules\Webfonts\Google object.
+	 * @param object $webfonts    The \Kirki\Module\Webfonts object.
+	 * @param object $googlefonts The \Kirki\Module\Webfonts\Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {
@@ -125,7 +137,12 @@ final class Async {
 			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 		}
 		if ( ! empty( $this->fonts_to_load ) ) {
-			\Kirki\Modules\Webfont_Loader\Module::$load = true;
+			self::$load = true;
+		}
+
+		global $wp_customize;
+		if ( self::$load || $wp_customize || is_customize_preview() ) {
+			wp_enqueue_script( 'webfont-loader', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/vendor-typekit/webfontloader.js' ), [], '3.0.28', true );
 		}
 	}
 
@@ -143,5 +160,17 @@ final class Async {
 				'after'
 			);
 		}
+	}
+
+	/**
+	 * Set the $load property of this object.
+	 *
+	 * @access public
+	 * @since 3.0.35
+	 * @param bool $load Set to false to disable loading.
+	 * @return void
+	 */
+	public function set_load( $load ) {
+		self::$load = $load;
 	}
 }

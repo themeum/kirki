@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "957589bb698158d03506982ad51ebdde",
+    "content-hash": "d0645e088505a8da4a6016161dede752",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "8e8bd399d82f981c9fcbac2a16d5d7437bcdf537"
+                "reference": "e0c6e11069e1308ad8695d40dcde6c8c5bf37fe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/8e8bd399d82f981c9fcbac2a16d5d7437bcdf537",
-                "reference": "8e8bd399d82f981c9fcbac2a16d5d7437bcdf537",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/e0c6e11069e1308ad8695d40dcde6c8c5bf37fe7",
+                "reference": "e0c6e11069e1308ad8695d40dcde6c8c5bf37fe7",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T08:32:16+00:00"
+            "time": "2019-06-01T11:59:16+00:00"
         },
         {
             "name": "kirki-framework/control-background",
@@ -1139,12 +1139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "73c3902f515d033c7f67871aa26ce1eca92b8e27"
+                "reference": "9813564eb3873e0e7a535da61e3e3b38f5f43916"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/73c3902f515d033c7f67871aa26ce1eca92b8e27",
-                "reference": "73c3902f515d033c7f67871aa26ce1eca92b8e27",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/9813564eb3873e0e7a535da61e3e3b38f5f43916",
+                "reference": "9813564eb3873e0e7a535da61e3e3b38f5f43916",
                 "shasum": ""
             },
             "require": {
@@ -1175,7 +1175,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T08:32:58+00:00"
+            "time": "2019-06-01T12:00:06+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -1320,12 +1320,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "7e1a25d16ac9fa2f0662a13028429e3f6d8337b0"
+                "reference": "3d9402aad028345f46ed8db0b774b8ea110af031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/7e1a25d16ac9fa2f0662a13028429e3f6d8337b0",
-                "reference": "7e1a25d16ac9fa2f0662a13028429e3f6d8337b0",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/3d9402aad028345f46ed8db0b774b8ea110af031",
+                "reference": "3d9402aad028345f46ed8db0b774b8ea110af031",
                 "shasum": ""
             },
             "require": {
@@ -1363,7 +1363,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-05-05T16:40:25+00:00"
+            "time": "2019-06-01T12:00:45+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1417,12 +1417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "886ab0542627f55d22c6e7329d0438ee3edc2577"
+                "reference": "8df3e9b2e847982038bea40b4acbb786b1331f4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/886ab0542627f55d22c6e7329d0438ee3edc2577",
-                "reference": "886ab0542627f55d22c6e7329d0438ee3edc2577",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/8df3e9b2e847982038bea40b4acbb786b1331f4b",
+                "reference": "8df3e9b2e847982038bea40b4acbb786b1331f4b",
                 "shasum": ""
             },
             "require": {
@@ -1454,7 +1454,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T09:03:29+00:00"
+            "time": "2019-06-01T12:01:25+00:00"
         },
         {
             "name": "kirki-framework/module-css-vars",
@@ -1555,12 +1555,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-editor-styles.git",
-                "reference": "7a93a9d37dbe817f9303b69354fa4f2e0f833dd9"
+                "reference": "ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/7a93a9d37dbe817f9303b69354fa4f2e0f833dd9",
-                "reference": "7a93a9d37dbe817f9303b69354fa4f2e0f833dd9",
+                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793",
+                "reference": "ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793",
                 "shasum": ""
             },
             "require": {
@@ -1594,7 +1594,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T09:03:46+00:00"
+            "time": "2019-06-01T12:01:49+00:00"
         },
         {
             "name": "kirki-framework/module-field-dependencies",
@@ -1917,63 +1917,17 @@
             "time": "2019-05-12T08:30:13+00:00"
         },
         {
-            "name": "kirki-framework/module-webfont-loader",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/module-webfont-loader.git",
-                "reference": "e0f05a58dc5b4ba750a4b974184129534e4312b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfont-loader/zipball/e0f05a58dc5b4ba750a4b974184129534e4312b6",
-                "reference": "e0f05a58dc5b4ba750a4b974184129534e4312b6",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/core": "*",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Modules\\Webfont_Loader\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Webfonts Loader Module for the Kirki WordPress plugin.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "time": "2019-04-26T21:40:24+00:00"
-        },
-        {
             "name": "kirki-framework/module-webfonts",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe"
+                "reference": "4f1731b7e541ae499830352f8c02e305e23b1807"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
-                "reference": "d3684e91b1270cb5e8ad103e7e7b9b860a46fdfe",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/4f1731b7e541ae499830352f8c02e305e23b1807",
+                "reference": "4f1731b7e541ae499830352f8c02e305e23b1807",
                 "shasum": ""
             },
             "require": {
@@ -1984,7 +1938,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Modules\\Webfonts\\": "src/"
+                    "Kirki\\Module\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2006,7 +1960,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-04-26T21:07:08+00:00"
+            "time": "2019-06-01T11:58:30+00:00"
         },
         {
             "name": "kirki-framework/url-getter",
@@ -5107,7 +5061,6 @@
         "kirki-framework/module-section-icons": 20,
         "kirki-framework/module-selective-refresh": 20,
         "kirki-framework/module-tooltips": 20,
-        "kirki-framework/module-webfont-loader": 20,
         "kirki-framework/module-webfonts": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20

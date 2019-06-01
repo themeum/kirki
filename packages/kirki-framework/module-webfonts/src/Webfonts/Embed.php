@@ -10,9 +10,9 @@
  * @since       3.0
  */
 
-namespace Kirki\Modules\Webfonts;
+namespace Kirki\Module\Webfonts;
 
-use Kirki\Modules\Webfonts\Helper;
+use Kirki\Module\Webfonts\Helper;
 
 /**
  * Manages the way Google Fonts are enqueued.
@@ -29,7 +29,7 @@ final class Embed {
 	protected $config_id;
 
 	/**
-	 * The \Kirki\Modules\Webfonts\Module object.
+	 * The \Kirki\Module\Webfonts object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -38,7 +38,7 @@ final class Embed {
 	protected $webfonts;
 
 	/**
-	 * The \Kirki\Modules\Webfonts\Google object.
+	 * The \Kirki\Module\Webfonts\Google object.
 	 *
 	 * @access protected
 	 * @since 3.0.0
@@ -61,8 +61,8 @@ final class Embed {
 	 * @access public
 	 * @since 3.0
 	 * @param string $config_id   The config-ID.
-	 * @param object $webfonts    The \Kirki\Modules\Webfonts\Module object.
-	 * @param object $googlefonts The \Kirki\Modules\Webfonts\Google object.
+	 * @param object $webfonts    The \Kirki\Module\Webfonts object.
+	 * @param object $googlefonts The \Kirki\Module\Webfonts\Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
 	public function __construct( $config_id, $webfonts, $googlefonts, $args = [] ) {

@@ -93,7 +93,7 @@ class Module {
 	 */
 	public function init() {
 
-		\Kirki\Modules\Webfonts\Module::get_instance();
+		new \Kirki\Module\Webfonts();
 
 		// Allow completely disabling Kirki CSS output.
 		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {

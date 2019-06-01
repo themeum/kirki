@@ -287,7 +287,7 @@ class Module {
 	 * @since 3.0.35
 	 */
 	private function set_google_fonts() {
-		$this->google_fonts = \Kirki\Modules\Webfonts\Google::get_instance();
+		$this->google_fonts = \Kirki\Module\Webfonts\Google::get_instance();
 	}
 
 	/**
@@ -297,6 +297,6 @@ class Module {
 	 * @since 3.0.35
 	 */
 	private function set_modules_webfonts() {
-		$this->modules_webfonts = \Kirki\Modules\Webfonts\Module::get_instance();
+		$this->modules_webfonts = new \Kirki\Module\Webfonts();
 	}
 }

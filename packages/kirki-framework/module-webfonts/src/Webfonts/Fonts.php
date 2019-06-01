@@ -10,7 +10,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Modules\Webfonts;
+namespace Kirki\Module\Webfonts;
 
 use Kirki\GoogleFonts;
 

@@ -10,7 +10,7 @@
  * @since      3.0.36
  */
 
-namespace Kirki\Modules\Webfonts;
+namespace Kirki\Module\Webfonts;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
