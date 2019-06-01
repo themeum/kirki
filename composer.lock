@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "7d3802c20fc411669977eaa3e2b6eba8a2da42b6"
+                "reference": "06403e350dbb84f30c5f2fe4f58e27e4e273a52b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/7d3802c20fc411669977eaa3e2b6eba8a2da42b6",
-                "reference": "7d3802c20fc411669977eaa3e2b6eba8a2da42b6",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/06403e350dbb84f30c5f2fe4f58e27e4e273a52b",
+                "reference": "06403e350dbb84f30c5f2fe4f58e27e4e273a52b",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T20:16:53+00:00"
+            "time": "2019-06-01T20:37:50+00:00"
         },
         {
             "name": "kirki-framework/control-background",
@@ -1139,12 +1139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "e226d495379be451aa5d9d095470dd40bf0c0e97"
+                "reference": "a37080f4112f27a369f5a0954c59ae74b1c98e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/e226d495379be451aa5d9d095470dd40bf0c0e97",
-                "reference": "e226d495379be451aa5d9d095470dd40bf0c0e97",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/a37080f4112f27a369f5a0954c59ae74b1c98e08",
+                "reference": "a37080f4112f27a369f5a0954c59ae74b1c98e08",
                 "shasum": ""
             },
             "require": {
@@ -1175,7 +1175,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T20:16:42+00:00"
+            "time": "2019-06-01T20:37:28+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -1831,12 +1831,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-selective-refresh.git",
-                "reference": "d62d63329503b5220ddbaeb7404138f69b7ef805"
+                "reference": "8b51833619f235e24986c721bed0d1ec08dfdbd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/d62d63329503b5220ddbaeb7404138f69b7ef805",
-                "reference": "d62d63329503b5220ddbaeb7404138f69b7ef805",
+                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/8b51833619f235e24986c721bed0d1ec08dfdbd9",
+                "reference": "8b51833619f235e24986c721bed0d1ec08dfdbd9",
                 "shasum": ""
             },
             "require": {
@@ -1846,7 +1846,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Modules\\Selective_Refresh\\": "src/"
+                    "Kirki\\Module\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1868,7 +1868,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-03-31T11:11:53+00:00"
+            "time": "2019-06-01T20:36:05+00:00"
         },
         {
             "name": "kirki-framework/module-tooltips",

@@ -10,7 +10,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         'K' => 
         array (
             'Kirki\\Settings\\' => 15,
-            'Kirki\\Modules\\Selective_Refresh\\' => 32,
             'Kirki\\Modules\\Postmessage\\' => 26,
             'Kirki\\Modules\\Loading\\' => 22,
             'Kirki\\Modules\\Field_Dependencies\\' => 33,
@@ -29,10 +28,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         'Kirki\\Settings\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Settings',
-        ),
-        'Kirki\\Modules\\Selective_Refresh\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
         ),
         'Kirki\\Modules\\Postmessage\\' => 
         array (
@@ -60,8 +55,9 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
             1 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
             2 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
             3 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (

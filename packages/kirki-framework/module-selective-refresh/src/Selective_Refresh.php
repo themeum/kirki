@@ -10,48 +10,22 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Selective_Refresh;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 
 /**
  * Handle selective refreshes introduced in WordPress 4.5.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Selective_Refresh {
 
 	/**
 	 * Adds any necessary actions & filters.
 	 *
-	 * @access protected
-	 */
-	protected function __construct() {
-		add_action( 'customize_register', [ $this, 'register_partials' ], 99 );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
 	 * @access public
-	 * @since 3.0.0
-	 * @return object
 	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
+	public function __construct() {
+		add_action( 'customize_register', [ $this, 'register_partials' ], 99 );
 	}
 
 	/**

@@ -63,7 +63,6 @@ class Modules {
 				'css'                => '\Kirki\Modules\CSS\Module',
 				'loading'            => '\Kirki\Modules\Loading\Module',
 				'postMessage'        => '\Kirki\Modules\Postmessage\Module',
-				'selective-refresh'  => '\Kirki\Modules\Selective_Refresh\Module',
 				'field-dependencies' => '\Kirki\Modules\Field_Dependencies\Module',
 				'gutenberg'          => '\Kirki\Modules\Editor_Styles\Module',
 			]
@@ -93,6 +92,7 @@ class Modules {
 		new \Kirki\Module\Preset();
 		new \Kirki\Module\Custom_Sections();
 		new \Kirki\Module\Section_Icons();
+		new \Kirki\Module\Selective_Refresh();
 	}
 
 	/**

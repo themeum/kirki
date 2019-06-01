@@ -19,7 +19,7 @@
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\Selective_Refresh\\" : "src/"
+			"Kirki\\Module\\" : "src/"
         }
     }
 }
