@@ -32,10 +32,10 @@ class Postmessage {
 	/**
 	 * Constructor.
 	 *
-	 * @access PUBLIC
+	 * @access public
 	 * @since 3.0.0
 	 */
-	PUBLIC function __construct() {
+	public function __construct() {
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
 		add_action( 'kirki_field_add_setting_args', [ $this, 'field_add_setting_args' ] );
 	}

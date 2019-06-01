@@ -1759,12 +1759,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-postMessage.git",
-            "reference": "5b6de76a4149ead5113bd89ffb1f642ce78ee887"
+            "reference": "92e52318294714d15caf9cf07e4da303f77f73b6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/5b6de76a4149ead5113bd89ffb1f642ce78ee887",
-            "reference": "5b6de76a4149ead5113bd89ffb1f642ce78ee887",
+            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/92e52318294714d15caf9cf07e4da303f77f73b6",
+            "reference": "92e52318294714d15caf9cf07e4da303f77f73b6",
             "shasum": ""
         },
         "require": {
@@ -1772,7 +1772,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-01T20:46:45+00:00",
+        "time": "2019-06-01T22:14:17+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
