@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "5afa3ac646f53b5bf38db75749709214adf8d7e3"
+            "reference": "d1d41a7432efe611ef55d03c21d94b77128814c4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/5afa3ac646f53b5bf38db75749709214adf8d7e3",
-            "reference": "5afa3ac646f53b5bf38db75749709214adf8d7e3",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/d1d41a7432efe611ef55d03c21d94b77128814c4",
+            "reference": "d1d41a7432efe611ef55d03c21d94b77128814c4",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-06-01T20:48:18+00:00",
+        "time": "2019-06-01T21:36:29+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1181,18 +1181,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/core.git",
-            "reference": "90a5f3f97276ec18ac98113d5e35ab37f8c74c28"
+            "reference": "38638bcedd32aaa470049de99ab5cc4a9ab0b517"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/core/zipball/90a5f3f97276ec18ac98113d5e35ab37f8c74c28",
-            "reference": "90a5f3f97276ec18ac98113d5e35ab37f8c74c28",
+            "url": "https://api.github.com/repos/kirki-framework/core/zipball/38638bcedd32aaa470049de99ab5cc4a9ab0b517",
+            "reference": "38638bcedd32aaa470049de99ab5cc4a9ab0b517",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-06-01T20:48:04+00:00",
+        "time": "2019-06-01T21:36:17+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1471,24 +1471,24 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-css.git",
-            "reference": "8df3e9b2e847982038bea40b4acbb786b1331f4b"
+            "reference": "3db186697d33c58300b435bb19048ae2170c1d72"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/8df3e9b2e847982038bea40b4acbb786b1331f4b",
-            "reference": "8df3e9b2e847982038bea40b4acbb786b1331f4b",
+            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/3db186697d33c58300b435bb19048ae2170c1d72",
+            "reference": "3db186697d33c58300b435bb19048ae2170c1d72",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-01T12:01:25+00:00",
+        "time": "2019-06-01T21:41:50+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Kirki\\Modules\\CSS\\": "src/"
+                "Kirki\\Module\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1614,12 +1614,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-editor-styles.git",
-            "reference": "ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793"
+            "reference": "a983747eabac9c98559c9e91b5494ae61af92fd1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793",
-            "reference": "ea5fa5b332d98d81ff53b8e54f49c6d9f8ef3793",
+            "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/a983747eabac9c98559c9e91b5494ae61af92fd1",
+            "reference": "a983747eabac9c98559c9e91b5494ae61af92fd1",
             "shasum": ""
         },
         "require": {
@@ -1628,12 +1628,12 @@
             "kirki-framework/module-webfonts": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-01T12:01:49+00:00",
+        "time": "2019-06-01T21:32:21+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Kirki\\Modules\\Editor_Styles\\": "src/"
+                "Kirki\\Module\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1711,12 +1711,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-loading.git",
-            "reference": "099b6a61c516b1601d0b239960fe9bfb4661a3f0"
+            "reference": "2ed1287ee78e638d4c09c3b6c7da5e721d37826a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-loading/zipball/099b6a61c516b1601d0b239960fe9bfb4661a3f0",
-            "reference": "099b6a61c516b1601d0b239960fe9bfb4661a3f0",
+            "url": "https://api.github.com/repos/kirki-framework/module-loading/zipball/2ed1287ee78e638d4c09c3b6c7da5e721d37826a",
+            "reference": "2ed1287ee78e638d4c09c3b6c7da5e721d37826a",
             "shasum": ""
         },
         "require": {
@@ -1724,12 +1724,12 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-04-26T21:41:51+00:00",
+        "time": "2019-06-01T21:42:57+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Kirki\\Modules\\Loading\\": "src/"
+                "Kirki\\Module\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",

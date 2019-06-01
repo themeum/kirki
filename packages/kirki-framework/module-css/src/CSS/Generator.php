@@ -11,7 +11,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Modules\CSS;
+namespace Kirki\Module\CSS;
 
 use Kirki\Core\Values;
 use Kirki\Module\Webfonts\Fonts;
@@ -170,13 +170,13 @@ final class Generator {
 		self::$value = Values::get_sanitized_field_value( $field );
 
 		// Find the class that will handle the outpout for this field.
-		$classname            = '\Kirki\Modules\CSS\Output';
+		$classname            = '\Kirki\Module\CSS\Output';
 		$default_classnames   = [
-			'kirki-background' => '\Kirki\Modules\CSS\Field\Background',
-			'kirki-dimensions' => '\Kirki\Modules\CSS\Field\Dimensions',
-			'kirki-image'      => '\Kirki\Modules\CSS\Field\Image',
-			'kirki-typography' => '\Kirki\Modules\CSS\Field\Typography',
-			'kirki-multicolor' => '\Kirki\Modules\CSS\Field\Multicolor',
+			'kirki-background' => '\Kirki\Module\CSS\Field\Background',
+			'kirki-dimensions' => '\Kirki\Module\CSS\Field\Dimensions',
+			'kirki-image'      => '\Kirki\Module\CSS\Field\Image',
+			'kirki-typography' => '\Kirki\Module\CSS\Field\Typography',
+			'kirki-multicolor' => '\Kirki\Module\CSS\Field\Multicolor',
 		];
 		$field_output_classes = apply_filters( 'kirki_output_control_classnames', $default_classnames );
 		$field_output_classes = apply_filters( "kirki_{$field['kirki_config']}_output_control_classnames", $field_output_classes );

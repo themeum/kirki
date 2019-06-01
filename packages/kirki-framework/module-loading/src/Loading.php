@@ -9,7 +9,7 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Loading;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 use Kirki\URL;
@@ -17,41 +17,15 @@ use Kirki\URL;
 /**
  * Modifies the loading overlay.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Loading {
 
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
-	 */
-	protected function __construct() {
-		add_action( 'init', [ $this, 'init' ] );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
 	 * @access public
-	 * @since 3.0.0
-	 * @return object
 	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
+	public function __construct() {
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**

@@ -60,9 +60,18 @@ class Modules {
 		self::$modules = apply_filters(
 			'kirki_modules',
 			[
-				'css'                => '\Kirki\Modules\CSS\Module',
-				'loading'            => '\Kirki\Modules\Loading\Module',
-				'gutenberg'          => '\Kirki\Modules\Editor_Styles\Module',
+				'css'                => '\Kirki\Module\CSS',
+				'css-vars'           => '\Kirki\Module\CSS_Vars',
+				'icons'              => '\Kirki\Module\Section_Icons',
+				'loading'            => '\Kirki\Module\Loading',
+				'tooltips'           => '\Kirki\Module\Tooltips',
+				'postMessage'        => '\Kirki\Module\Postmessage',
+				'selective-refresh'  => '\Kirki\Module\Selective_Refresh',
+				'field-dependencies' => '\Kirki\Module\Field_Dependencies',
+				'custom-sections'    => '\Kirki\Module\Custom_Sections',
+				'webfonts'           => '\Kirki\Module\Webfonts',
+				'preset'             => '\Kirki\Module\Preset',
+				'gutenberg'          => '\Kirki\Module\Editor_Styles',
 			]
 		);
 	}
@@ -78,21 +87,9 @@ class Modules {
 	public function init() {
 		foreach ( self::$modules as $key => $module_class ) {
 			if ( class_exists( $module_class ) ) {
-				// Use this syntax instead of $module_class::get_instance()
-				// for PHP 5.2 compatibility.
-				self::$active_modules[ $key ] = call_user_func( [ $module_class, 'get_instance' ] );
+				new $module_class();
 			}
 		}
-
-		new \Kirki\Module\Tooltips();
-		new \Kirki\Module\CSS_Vars();
-		new \Kirki\Module\Webfonts();
-		new \Kirki\Module\Preset();
-		new \Kirki\Module\Custom_Sections();
-		new \Kirki\Module\Section_Icons();
-		new \Kirki\Module\Selective_Refresh();
-		new \Kirki\Module\Field_Dependencies();
-		new \Kirki\Module\Postmessage();
 	}
 
 	/**

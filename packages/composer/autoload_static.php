@@ -10,9 +10,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         'K' => 
         array (
             'Kirki\\Settings\\' => 15,
-            'Kirki\\Modules\\Loading\\' => 22,
-            'Kirki\\Modules\\Editor_Styles\\' => 28,
-            'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
             'Kirki\\Core\\' => 11,
@@ -27,29 +24,20 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Settings',
         ),
-        'Kirki\\Modules\\Loading\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
-        ),
-        'Kirki\\Modules\\Editor_Styles\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
-        ),
-        'Kirki\\Modules\\CSS\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
-        ),
         'Kirki\\Module\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
-            6 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
-            7 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            8 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+            8 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            9 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            10 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            11 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (

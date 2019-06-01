@@ -14,7 +14,7 @@
  * @since       3.0.35
  */
 
-namespace Kirki\Modules\Editor_Styles;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 
@@ -23,17 +23,7 @@ use Kirki\Core\Kirki;
  *
  * @since 3.0.35
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.35
-	 * @var object
-	 */
-	private static $instance;
+class Editor_Styles {
 
 	/**
 	 * Configuration reference.
@@ -83,10 +73,10 @@ class Module {
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 3.0.0
 	 */
-	protected function __construct() {
+	public function __construct() {
 		add_action( 'admin_init', [ $this, 'init' ] );
 	}
 
@@ -104,22 +94,6 @@ class Module {
 		$this->set_google_fonts();
 		$this->set_modules_webfonts();
 		$this->add_hooks();
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.0
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
 	}
 
 	/**
@@ -277,7 +251,7 @@ class Module {
 	 * @since 3.0.35
 	 */
 	private function set_modules_css() {
-		$this->modules_css = \Kirki\Modules\CSS\Module::get_instance();
+		$this->modules_css = new \Kirki\Module\CSS();
 	}
 
 	/**

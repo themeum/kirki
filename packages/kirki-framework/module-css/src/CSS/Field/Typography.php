@@ -9,9 +9,9 @@
  * @since      2.2.0
  */
 
-namespace Kirki\Modules\CSS\Field;
+namespace Kirki\Module\CSS\Field;
 
-use Kirki\Modules\CSS\Output;
+use Kirki\Module\CSS\Output;
 
 /**
  * Output overrides.

@@ -9,9 +9,9 @@
  * @since       2.2.0
  */
 
-namespace Kirki\Modules\CSS\Property;
+namespace Kirki\Module\CSS\Property;
 
-use Kirki\Modules\CSS\Property;
+use Kirki\Module\CSS\Property;
 
 /**
  * Output overrides.

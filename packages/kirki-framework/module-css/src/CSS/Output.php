@@ -9,7 +9,7 @@
  * @since       2.2.0
  */
 
-namespace Kirki\Modules\CSS;
+namespace Kirki\Module\CSS;
 
 use Kirki\Core\Values;
 
@@ -314,9 +314,9 @@ class Output {
 		$properties = apply_filters(
 			'kirki_output_property_classnames',
 			[
-				'font-family'         => '\Kirki\Modules\CSS\Property\Font_Family',
-				'background-image'    => '\Kirki\Modules\CSS\Property\Background_Image',
-				'background-position' => '\Kirki\Modules\CSS\Property\Background_Position',
+				'font-family'         => '\Kirki\Module\CSS\Property\Font_Family',
+				'background-image'    => '\Kirki\Module\CSS\Property\Background_Image',
+				'background-position' => '\Kirki\Module\CSS\Property\Background_Position',
 			]
 		);
 		if ( array_key_exists( $property, $properties ) ) {

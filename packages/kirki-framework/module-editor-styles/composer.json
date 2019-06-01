@@ -21,7 +21,7 @@
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\Editor_Styles\\" : "src/"
+			"Kirki\\Module\\" : "src/"
         }
     }
 }

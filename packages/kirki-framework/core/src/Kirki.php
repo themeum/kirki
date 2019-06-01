@@ -239,8 +239,8 @@ class Kirki extends Init {
 		}
 
 		// If the field is font-awesome, enqueue the icons on the frontend.
-		if ( class_exists( '\Kirki\Modules\CSS\Module' ) && ( 'fontawesome' === $args['type'] || 'kirki-fontawesome' === $args['type'] ) ) {
-			\Kirki\Modules\CSS\Module::add_fontawesome_script();
+		if ( class_exists( '\Kirki\Module\CSS' ) && ( 'fontawesome' === $args['type'] || 'kirki-fontawesome' === $args['type'] ) ) {
+			\Kirki\Module\CSS::add_fontawesome_script();
 		}
 
 		$str       = str_replace( [ '-', '_' ], ' ', $args['type'] );
