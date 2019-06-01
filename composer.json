@@ -61,7 +61,6 @@
     "kirki-framework/module-section-icons": "dev-master",
     "kirki-framework/module-selective-refresh": "dev-master",
     "kirki-framework/module-tooltips": "dev-master",
-    "kirki-framework/module-webfont-loader": "dev-master",
     "kirki-framework/module-webfonts": "dev-master"
   },
   "require-dev": {

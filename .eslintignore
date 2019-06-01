@@ -1,7 +1,7 @@
 node_modules/
 assets/vendor/
 *.min.js
-packages/kirki-framework/module-webfont-loader/src/assets/scripts/vendor-typekit/
+packages/kirki-framework/module-webfonts/src/assets/scripts/vendor-typekit/
 packages/kirki-framework/control-select/src/assets/scripts/selectWoo/
 packages/squizlabs/
 packages/phpunit/
