@@ -53,7 +53,7 @@ class Aliases {
 			[ 'Kirki\Modules\CSS\Field\Image', 'Kirki_Output_Field_Image' ],
 			[ 'Kirki\Modules\CSS\Field\Multicolor', 'Kirki_Output_Field_Multicolor' ],
 			[ 'Kirki\Modules\CSS\Field\Typography', 'Kirki_Output_Field_Typography' ],
-			[ 'Kirki\Modules\CSS_Vars\Module', 'Kirki_Modules_CSS_Vars' ],
+			[ 'Kirki\Module\CSS_Vars', 'Kirki_Modules_CSS_Vars' ],
 			[ 'Kirki\Modules\Custom_Sections\Module', 'Kirki_Modules_Custom_Sections' ],
 			[ 'Kirki\Modules\Loading\Module', 'Kirki_Modules_Loading' ],
 			[ 'Kirki\Modules\Preset\Module', 'Kirki_Modules_Preset' ],

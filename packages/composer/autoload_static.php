@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0
+class ComposerStaticInit379e01a2ea65bdfc5e73b9a6bc7b40e7
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -21,7 +21,6 @@ class ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0
             'Kirki\\Modules\\Editor_Styles\\' => 28,
             'Kirki\\Modules\\Custom_Sections\\' => 30,
             'Kirki\\Modules\\Custom_Panels\\' => 28,
-            'Kirki\\Modules\\CSS_Vars\\' => 23,
             'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
@@ -81,17 +80,14 @@ class ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
         ),
-        'Kirki\\Modules\\CSS_Vars\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
-        ),
         'Kirki\\Modules\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
         ),
         'Kirki\\Module\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            0 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
         ),
         'Kirki\\Field\\' => 
         array (
@@ -169,8 +165,8 @@ class ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitadc3bd2f8aa2aee781281ded7bd622f0::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit379e01a2ea65bdfc5e73b9a6bc7b40e7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit379e01a2ea65bdfc5e73b9a6bc7b40e7::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

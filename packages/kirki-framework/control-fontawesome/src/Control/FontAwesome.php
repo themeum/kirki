@@ -53,8 +53,7 @@ class FontAwesome extends Select {
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-fontawesome-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
 
-		wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', [], '4.0.7', false );
-
+		wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.0.7' );
 		ob_start();
 		$json_path = wp_normalize_path( dirname( __DIR__ ) . '/assets/json/fontawesome.json' );
 		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude

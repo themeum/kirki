@@ -61,7 +61,6 @@ class Modules {
 			'kirki_modules',
 			[
 				'css'                => '\Kirki\Modules\CSS\Module',
-				'css-vars'           => '\Kirki\Modules\CSS_Vars\Module',
 				'icons'              => '\Kirki_Modules_Icons',
 				'loading'            => '\Kirki\Modules\Loading\Module',
 				'postMessage'        => '\Kirki\Modules\Postmessage\Module',
@@ -94,6 +93,7 @@ class Modules {
 		}
 
 		new \Kirki\Module\Tooltips();
+		new \Kirki\Module\CSS_Vars();
 	}
 
 	/**

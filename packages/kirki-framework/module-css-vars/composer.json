@@ -20,7 +20,7 @@
     },
     "autoload"    : {
 		"psr-4" : {
-			"Kirki\\Modules\\CSS_Vars\\" : "src/"
+			"Kirki\\Module\\" : "src/"
         }
     }
 }

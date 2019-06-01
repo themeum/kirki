@@ -10,10 +10,9 @@
  * @since       3.0.28
  */
 
-namespace Kirki\Modules\CSS_Vars;
+namespace Kirki\Module;
 
 use Kirki\Core\Values;
-use Kirki\Core\Kirki;
 use Kirki\URL;
 
 /**
@@ -21,17 +20,7 @@ use Kirki\URL;
  *
  * @since 3.0.28
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.28
-	 * @var object
-	 */
-	private static $instance;
+class CSS_Vars {
 
 	/**
 	 * CSS-variables array [var=>val].
@@ -54,31 +43,15 @@ class Module {
 	/**
 	 * Constructor
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 3.0.28
 	 */
-	protected function __construct() {
+	public function __construct() {
 		add_action( 'kirki_field_init', [ $this, 'field_init' ] );
 		add_action( 'init', [ $this, 'populate_vars' ], 20 );
 		add_action( 'wp_head', [ $this, 'the_style' ], 999 );
 		add_action( 'admin_head', [ $this, 'the_style' ], 999 );
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.28
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
 	}
 
 	/**
@@ -116,7 +89,8 @@ class Module {
 	public function populate_vars() {
 
 		// Get an array of all fields.
-		$fields = array_merge( Kirki::$fields, $this->fields );
+		$fields = class_exists( '\Kirki\Core\Kirki' ) ? \Kirki\Core\Kirki::$fields : [];
+		$fields = array_merge( $fields, $this->fields );
 		foreach ( $fields as $id => $args ) {
 			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
 				continue;
@@ -174,8 +148,9 @@ class Module {
 	 * @return void
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_css_vars', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
-		$fields = array_merge( Kirki::$fields, $this->fields );
+		wp_enqueue_script( 'kirki_auto_css_vars', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-preview' ], '1.0', true );
+		$fields = class_exists( '\Kirki\Core\Kirki' ) ? \Kirki\Core\Kirki::$fields : [];
+		$fields = array_merge( $fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_vars'] ) && ! empty( $field['css_vars'] ) ) {
