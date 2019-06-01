@@ -3,8 +3,8 @@ Contributors: aristath, wplemon, igmoweb
 Tags: customizer,options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
-Tested up to: 5.0
-Stable tag: 3.0.39
+Tested up to: 5.2
+Stable tag: 3.0.40
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -39,6 +39,13 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
 
 == Changelog ==
+
+= 3.0.40 =
+
+Jun.1 2019, dev time: 30m
+
+* Fix: Updated URL for fontawesome to avoid tracking.
+* Fix: Updated Google-fonts list.
 
 = 3.0.39 =
 

@@ -1,3 +1,7 @@
+- name: Kale
+  url: http://demo.lyrathemes.com/kale/
+  thumb: http://demo.lyrathemes.com/kale/wp-content/themes/kale/screenshot.png
+
 - name: Stylizer
   url: http://alxmedia.se/themes/stylizer/
   thumb: http://demo.alxmedia.se/wp-content/themes/stylizer/screenshot.png
@@ -37,10 +41,6 @@
 - name: Advance
   url: https://wordpress.org/themes/advance/
   thumb: https://i0.wp.com/themes.svn.wordpress.org/advance/1.4.0/screenshot.jpg?w=1142&strip=all
-
-- name : Promote Lite
-  url: https://themezwp.com/promote-lite/
-  thumb: https://themezwp.com/wp-content/uploads/2017/01/single-free-2.png
 
 - name: Green Ink
   url: http://pressfore.com/item/green-ink-wordpress-theme/
