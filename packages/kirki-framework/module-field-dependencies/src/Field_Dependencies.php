@@ -10,56 +10,25 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Field_Dependencies;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 use Kirki\URL;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Adds styles to the customizer.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Field_Dependencies {
 
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
-	 * @since 3.0.0
-	 */
-	protected function __construct() {
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'field_dependencies' ] );
-		add_filter( 'kirki_field_add_control_args', [ $this, 'field_add_control_args' ] );
-	}
-
-	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
 	 * @access public
 	 * @since 3.0.0
-	 * @return object
 	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
+	public function __construct() {
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'field_dependencies' ] );
+		add_filter( 'kirki_field_add_control_args', [ $this, 'field_add_control_args' ] );
 	}
 
 	/**

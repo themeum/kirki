@@ -12,7 +12,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Postmessage\\' => 26,
             'Kirki\\Modules\\Loading\\' => 22,
-            'Kirki\\Modules\\Field_Dependencies\\' => 33,
             'Kirki\\Modules\\Editor_Styles\\' => 28,
             'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Module\\' => 13,
@@ -37,10 +36,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
         ),
-        'Kirki\\Modules\\Field_Dependencies\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
-        ),
         'Kirki\\Modules\\Editor_Styles\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
@@ -53,11 +48,12 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
             1 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            6 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (
