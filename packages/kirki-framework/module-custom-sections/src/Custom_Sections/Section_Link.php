@@ -10,7 +10,7 @@
  * @since      3.0.36
  */
 
-namespace Kirki\Modules\Custom_Sections;
+namespace Kirki\Module\Custom_Sections;
 
 /**
  * Link Section.

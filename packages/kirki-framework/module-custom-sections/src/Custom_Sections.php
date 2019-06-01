@@ -11,7 +11,7 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Modules\Custom_Sections;
+namespace Kirki\Module;
 
 use Kirki\Core\Kirki;
 use Kirki\URL;
@@ -24,25 +24,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds styles to the customizer.
  */
-class Module {
-
-	/**
-	 * The object instance.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.0
-	 * @var object
-	 */
-	private static $instance;
+class Custom_Sections {
 
 	/**
 	 * Constructor.
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 3.0.0
 	 */
-	protected function __construct() {
+	public function __construct() {
 
 		// Register the new section types.
 		add_filter( 'kirki_section_types', [ $this, 'set_section_types' ] );
@@ -58,22 +48,6 @@ class Module {
 	}
 
 	/**
-	 * Gets an instance of this object.
-	 * Prevents duplicate instances which avoid artefacts and improves performance.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.0
-	 * @return object
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
-	/**
 	 * Add the custom section types.
 	 *
 	 * @access public
@@ -85,10 +59,10 @@ class Module {
 		return array_merge(
 			$section_types,
 			[
-				'kirki-default'  => '\Kirki\Modules\Custom_Sections\Section_Default',
-				'kirki-expanded' => '\Kirki\Modules\Custom_Sections\Section_Expanded',
-				'kirki-nested'   => '\Kirki\Modules\Custom_Sections\Section_Nested',
-				'kirki-link'     => '\Kirki\Modules\Custom_Sections\Section_Link',
+				'kirki-default'  => '\Kirki\Module\Custom_Sections\Section_Default',
+				'kirki-expanded' => '\Kirki\Module\Custom_Sections\Section_Expanded',
+				'kirki-nested'   => '\Kirki\Module\Custom_Sections\Section_Nested',
+				'kirki-link'     => '\Kirki\Module\Custom_Sections\Section_Link',
 			]
 		);
 	}
@@ -105,7 +79,7 @@ class Module {
 		return array_merge(
 			$panel_types,
 			[
-				'kirki-nested' => '\Kirki\Modules\Custom_Panels\Panel_Nested',
+				'kirki-nested' => '\Kirki\Module\Custom_Panels\Panel_Nested',
 			]
 		);
 	}

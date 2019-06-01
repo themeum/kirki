@@ -9,7 +9,7 @@
  * @since       2.2.0
  */
 
-namespace Kirki\Modules\Custom_Sections;
+namespace Kirki\Module\Custom_Sections;
 
 /**
  * Expanded Section.

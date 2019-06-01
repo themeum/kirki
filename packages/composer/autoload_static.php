@@ -12,13 +12,10 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
             'Kirki\\Settings\\' => 15,
             'Kirki\\Modules\\Selective_Refresh\\' => 32,
             'Kirki\\Modules\\Section_Icons\\' => 28,
-            'Kirki\\Modules\\Preset\\' => 21,
             'Kirki\\Modules\\Postmessage\\' => 26,
             'Kirki\\Modules\\Loading\\' => 22,
             'Kirki\\Modules\\Field_Dependencies\\' => 33,
             'Kirki\\Modules\\Editor_Styles\\' => 28,
-            'Kirki\\Modules\\Custom_Sections\\' => 30,
-            'Kirki\\Modules\\Custom_Panels\\' => 28,
             'Kirki\\Modules\\CSS\\' => 18,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
@@ -42,10 +39,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
         ),
-        'Kirki\\Modules\\Preset\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-        ),
         'Kirki\\Modules\\Postmessage\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
@@ -62,14 +55,6 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
         ),
-        'Kirki\\Modules\\Custom_Sections\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-        ),
-        'Kirki\\Modules\\Custom_Panels\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-        ),
         'Kirki\\Modules\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
@@ -77,8 +62,10 @@ class ComposerStaticInitb190f00f3b3438a972e45988fdc28f45
         'Kirki\\Module\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (
