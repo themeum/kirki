@@ -238,7 +238,7 @@ class Kirki_Modules_Gutenberg {
 			}
 			$modules_css = $this->modules_css;
 			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) { // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-				wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
+				wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.0.7' );
 			}
 
 			return;

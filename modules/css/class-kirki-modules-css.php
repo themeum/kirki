@@ -157,7 +157,7 @@ class Kirki_Modules_CSS {
 
 		// Enqueue FA if needed (I hope not, this FA version is pretty old, only kept here for backwards-compatibility purposes).
 		if ( self::$enqueue_fa && apply_filters( 'kirki_load_fontawesome', true ) ) {
-			wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
+			wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.0.7' );
 		}
 	}
 
