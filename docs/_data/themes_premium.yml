@@ -1,3 +1,13 @@
+- name: Davenport
+  market: ThemeForest
+  url: http://wp2.creanncy.com/davenport/davenport-selector/
+  thumb: http://wp2.creanncy.com/davenport/davenport-1/wp-content/themes/davenport/screenshot.jpg
+  
+- name: Saxon
+  market: ThemeForest
+  url: http://wp.wp-preview.com/saxon/saxon-selector/
+  thumb: http://wp.wp-preview.com/saxon/saxon-ads/wp-content/themes/saxon/screenshot.jpg
+  
 - name: Kale Pro
   url: http://demo.lyrathemes.com/kale-pro/
   thumb: http://demo.lyrathemes.com/kale/wp-content/themes/kale-pro/screenshot.png
