@@ -30,7 +30,7 @@ script: testimonials-script.html
             </div>
             <div class="feature cell medium-6">
                 <h3>Controls</h3>
-                <p>With 30 custom controls and counting at your disposal, chances are Kirki has what you need. <a href="https://aristath.github.io/kirki/controls/">Take a look at what's available</a></p>
+                <p>With 30 custom controls and counting at your disposal, chances are Kirki has what you need. <a href="https://aristath.github.io/kirki/docs/controls/">Take a look at what's available</a></p>
             </div>
         </div>
         <div class="grid-x grid-margin-x features">
