@@ -29,7 +29,7 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 				fontStyleControl.activate();
 			} else {
 				fontStyleControl.deactivate();
-			}	
+			}
 		} );
 
 		/**
