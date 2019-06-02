@@ -74,7 +74,7 @@ class Image extends Field {
 					if ( isset( $this->args['choices']['save_as'] ) && 'id' === $this->args['choices']['save_as'] ) {
 						return absint( $value );
 					}
-					return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;        
+					return ( is_string( $value ) ) ? esc_url_raw( $value ) : $value;
 				};
 			}
 		}

@@ -36,7 +36,6 @@ class Sections {
 	 */
 	public function outer_sections_css() {
 		echo '<style>';
-		$css = '';
 		if ( ! empty( Kirki::$sections ) ) {
 			foreach ( Kirki::$sections as $section_args ) {
 				if ( isset( $section_args['id'] ) && isset( $section_args['type'] ) && 'outer' === $section_args['type'] || 'kirki-outer' === $section_args['type'] ) {

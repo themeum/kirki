@@ -132,14 +132,18 @@ var kirkiPostMessage = {
 		 */
 		fromOutput: function( output, value, controlType ) {
 			var styles      = '',
-				kirkiParent = window.parent.kirki,
 				googleFont  = '',
 				mediaQuery  = false,
 				processedValue;
 
 			try {
 				value = JSON.parse( value );
-			} catch ( e ) {}
+			} catch ( e ) {
+				console.log( {
+					value: value,
+					error: e
+				} );
+			}
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );

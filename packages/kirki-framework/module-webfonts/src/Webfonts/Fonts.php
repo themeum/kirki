@@ -225,11 +225,8 @@ final class Fonts {
 	 * @return array
 	 */
 	public static function get_font_choices() {
-		$fonts       = self::get_all_fonts();
-		$fonts_array = [];
-		foreach ( $fonts as $key => $args ) {
-			$fonts_array[ $key ] = $key;
-		}
-		return $fonts_array;
+		$fonts = self::get_all_fonts();
+		$key   = array_keys( $fonts );
+		return array_combine( $keys, $keys );
 	}
 }

@@ -64,7 +64,7 @@ class Field_Dependencies {
 			if ( '__return_true' === $args['active_callback'] ) {
 				return;
 			}
-	
+
 			// Make sure the function is callable, otherwise fallback to __return_true.
 			if ( ! is_callable( $args['active_callback'] ) ) {
 				$args['active_callback'] = '__return_true';

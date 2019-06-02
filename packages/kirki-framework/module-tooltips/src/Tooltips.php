@@ -67,7 +67,7 @@ class Tooltips {
 			$this->tooltips_content[ $args['settings'] ] = [
 				'id'      => sanitize_key( $args['settings'] ),
 				'content' => wp_kses_post( $args['tooltip'] ),
-			];              
+			];
 		}
 		return $args;
 	}

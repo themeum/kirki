@@ -58,16 +58,6 @@ class Color extends Base {
 	public $mode = 'full';
 
 	/**
-	 * Has the template already been added?
-	 *
-	 * @static
-	 * @access private
-	 * @since 0.1
-	 * @var bool
-	 */
-	private static $template_added = false;
-
-	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public

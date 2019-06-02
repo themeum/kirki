@@ -92,26 +92,21 @@ class Code extends Field {
 				case 'xml':
 					$language = 'application/' . $language;
 					break;
-
 				case 'http':
 					$language = 'message/' . $language;
 					break;
-
 				case 'js':
 				case 'javascript':
 					$language = 'text/javascript';
 					break;
-
 				case 'txt':
 					$language = 'text/plain';
 					break;
-
 				case 'css':
 				case 'jsx':
 				case 'html':
 					$language = 'text/' . $language;
 					break;
-
 				default:
 					$language = ( 'js' === $language ) ? 'javascript' : $language;
 					$language = ( 'htm' === $language ) ? 'html' : $language;
@@ -128,7 +123,7 @@ class Code extends Field {
 			if ( ! isset( $args['editor_settings']['codemirror']['mode'] ) ) {
 				$args['editor_settings']['codemirror']['mode'] = $language;
 			}
-
+	
 			if ( 'text/x-scss' === $args['editor_settings']['codemirror']['mode'] ) {
 				$args['editor_settings']['codemirror'] = array_merge(
 					$args['editor_settings']['codemirror'],

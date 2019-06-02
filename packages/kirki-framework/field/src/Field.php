@@ -32,7 +32,7 @@ abstract class Field {
 
 	/**
 	 * The control class-name.
-	 * 
+	 *
 	 * Use the full classname, with namespace included.
 	 * Example: '\Kirki\Control\Color'.
 	 *
@@ -87,7 +87,7 @@ abstract class Field {
 			'wp',
 			function() {
 				do_action( 'kirki_field_wp', $this->args );
-			} 
+			}
 		);
 
 		$this->init( $this->args );
@@ -187,7 +187,7 @@ abstract class Field {
 		if ( isset( $args['settings'] ) ) {
 			$classname = $this->settings_class;
 			if ( $this->settings_class ) {
-				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );        
+				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );
 				return;
 			}
 			$wp_customize->add_setting( $args['settings'], $args );

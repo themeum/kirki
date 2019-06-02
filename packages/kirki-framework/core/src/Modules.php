@@ -85,7 +85,7 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public function init() {
-		foreach ( self::$modules as $key => $module_class ) {
+		foreach ( self::$modules as $module_class ) {
 			if ( class_exists( $module_class ) ) {
 				new $module_class();
 			}

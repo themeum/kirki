@@ -71,24 +71,6 @@ final class Helper {
 	}
 
 	/**
-	 * Gets the filename by breaking-down the URL parts.
-	 *
-	 * @static
-	 * @access private
-	 * @since 3.0.28
-	 * @param string $url The URL.
-	 * @return string     The filename.
-	 */
-	private static function get_filename_from_url( $url ) {
-		$url_parts   = explode( '/', $url );
-		$parts_count = count( $url_parts );
-		if ( 1 < $parts_count ) {
-			return $url_parts[ count( $url_parts ) - 1 ];
-		}
-		return $url;
-	}
-
-	/**
 	 * Downloads a font-file and saves it locally.
 	 *
 	 * @access public

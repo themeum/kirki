@@ -176,34 +176,4 @@ class Util {
 
 		return $wp_version;
 	}
-
-	/**
-	 * Returns the $wp_version, only numeric value.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.12
-	 * @param string $context      Use 'minor' or 'major'.
-	 * @param bool   $only_numeric Whether we wwant to return numeric value or include beta/alpha etc.
-	 * @return int|float           Returns integer when getting the 'major' version.
-	 *                             Returns float when getting the 'minor' version.
-	 */
-	public static function get_wp_version_numeric( $context = 'minor', $only_numeric = true ) {
-		global $wp_version;
-
-		// We only need the major version.
-		if ( 'major' === $context ) {
-			$version_parts = explode( '.', $wp_version );
-			return absint( $version_parts[0] );
-		}
-
-		// If we got this far, we want the full monty.
-		// Get the numeric part of the version without any beta, alpha etc parts.
-		if ( false !== strpos( $wp_version, '-' ) ) {
-			// We're on a dev version.
-			$version_parts = explode( '-', $wp_version );
-			return floatval( $version_parts[0] );
-		}
-		return floatval( $wp_version );
-	}
 }

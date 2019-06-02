@@ -1,7 +1,7 @@
 {
-    "name": "kirki-framework/control-background",
+    "name": "kirki-framework/field-background",
     "type": "library",
-    "description": "Background control for the Kirki Customizer framework.",
+    "description": "Background field for the Kirki Customizer framework.",
     "keywords": ["wordpress","customizer","framework"],
     "homepage": "https://aristath.github.io/kirki",
     "license": "MIT",
@@ -21,7 +21,6 @@
     },
     "autoload": {
 		"psr-4": {
-			"Kirki\\Control\\": "src/Control",
 			"Kirki\\Field\\": "src/Field"
         }
     }

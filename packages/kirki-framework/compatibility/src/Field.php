@@ -312,7 +312,7 @@ class Field {
 		$this->set_settings();
 
 		// Sanitize the properties, skipping the ones that have already run above.
-		foreach ( $properties as $property => $value ) {
+		foreach ( array_keys( $properties ) as $property ) {
 			if ( in_array( $property, [ 'option_name', 'option_type', 'settings' ], true ) ) {
 				continue;
 			}

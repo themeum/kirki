@@ -30,8 +30,8 @@ class Background extends Field {
 	 */
 	public function init( $args ) {
 
-		$args['required'] = isset( $args['required'] ) ? (array) $args['required'] : [];
-		$config_id        = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
+		$args['required']     = isset( $args['required'] ) ? (array) $args['required'] : [];
+		$args['kirki_config'] = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
 		/**
 		 * Add a hidden field, the label & description.
 		 */
