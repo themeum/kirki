@@ -24,6 +24,12 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 			if ( -1 === fontWeights.indexOf( variant ) ) {
 				fontWeights.push( parseInt( variant ) );
 			}
+
+			if ( hasItalics && control.active() ) {
+				fontStyleControl.activate();
+			} else {
+				fontStyleControl.deactivate();
+			}	
 		} );
 
 		/**
@@ -41,10 +47,10 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		/**
 		 * If there's only 1 font-weight to choose from, we can hide the control.
 		 */
-		if ( 1 === fontWeights.length ) {
-			fontWeightControl.deactivate;
-		} else {
+		if ( 1 < fontWeights.length && control.active() ) {
 			fontWeightControl.activate();
+		} else {
+			fontWeightControl.deactivate();
 		}
 
 		/**
@@ -53,13 +59,6 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
 			fontWeightControl.container.find( '[value=' + weight + ']' ).attr( 'disabled', -1 === fontWeights.indexOf( weight ) );
 		} );
-
-		/**
-		 * If the user has selected italics but italics are not available for this font-family, switch to normal.
-		 */
-		if ( ! hasItalics && 'italic' === fontStyleControl.setting.get() ) {
-			fontStyleControl.setting.set( 'normal' );
-		}
 	}
 
 	wp.hooks.addAction(

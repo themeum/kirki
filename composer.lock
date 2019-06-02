@@ -1320,12 +1320,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "455657bde530cb2b313b2dbb170ae22152f1f5a4"
+                "reference": "4399a479891c4d841dacc221f05ab0606648f02a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/455657bde530cb2b313b2dbb170ae22152f1f5a4",
-                "reference": "455657bde530cb2b313b2dbb170ae22152f1f5a4",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/4399a479891c4d841dacc221f05ab0606648f02a",
+                "reference": "4399a479891c4d841dacc221f05ab0606648f02a",
                 "shasum": ""
             },
             "require": {
@@ -1363,7 +1363,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-01T18:08:19+00:00"
+            "time": "2019-06-02T10:09:32+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",

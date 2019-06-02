@@ -29,11 +29,25 @@ li {
 
       div.buttonset {
         label {
-          padding: .5em .75em;
+          padding: .5em;
+          border-radius: 50%;
+          background: none;
+          width: 1.5em;
+          height: 1.5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
+          > *,
           svg {
             width: 1.2em;
-            height: 1.5em;
+            height: 1.2em;
+          }
+
+          .dashicons {
+            width: 1.2em;
+            height: 1.2em;
+            font-size: 1.2em;
           }
         }
       }
