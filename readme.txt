@@ -1,5 +1,5 @@
 === Kirki ===
-Contributors: aristath, wplemon, igmoweb
+Contributors: aristath, wplemon, igmoweb, dannycooper
 Tags: customizer,options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
