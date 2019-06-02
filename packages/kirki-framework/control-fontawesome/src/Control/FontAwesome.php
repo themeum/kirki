@@ -57,9 +57,9 @@ class FontAwesome extends Select {
 		ob_start();
 		$json_path = wp_normalize_path( dirname( __DIR__ ) . '/assets/json/fontawesome.json' );
 		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-		$font_awesome_json = ob_get_clean();
+		$json = ob_get_clean();
 
-		wp_localize_script( 'kirki-control-fontawesome', 'fontAwesomeJSON', $font_awesome_json );
+		wp_localize_script( 'kirki-control-fontawesome', 'fontAwesomeJSON', $json );
 	}
 
 	/**
