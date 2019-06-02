@@ -428,12 +428,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "065c5cc727173e32eafd15f344d0504888b443fd"
+                "reference": "28e1e3577a94cd13691532f841d2141e9c81165f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/065c5cc727173e32eafd15f344d0504888b443fd",
-                "reference": "065c5cc727173e32eafd15f344d0504888b443fd",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/28e1e3577a94cd13691532f841d2141e9c81165f",
+                "reference": "28e1e3577a94cd13691532f841d2141e9c81165f",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +468,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-05-08T15:49:03+00:00"
+            "time": "2019-06-02T10:27:57+00:00"
         },
         {
             "name": "kirki-framework/control-date",
