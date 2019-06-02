@@ -41,16 +41,6 @@ class CSS {
 	protected static $fields = [];
 
 	/**
-	 * Should we enqueue font-awesome?
-	 *
-	 * @static
-	 * @access protected
-	 * @since 3.0.26
-	 * @var bool
-	 */
-	protected static $enqueue_fa = false;
-
-	/**
 	 * Constructor
 	 *
 	 * @access public
@@ -68,11 +58,6 @@ class CSS {
 	public function init() {
 
 		new \Kirki\Module\Webfonts();
-
-		// Allow completely disabling Kirki CSS output.
-		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {
-			return;
-		}
 
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_styles' ], 100 );
@@ -185,11 +170,6 @@ class CSS {
 			[],
 			KIRKI_VERSION
 		);
-
-		// Enqueue FA if needed (I hope not, this FA version is pretty old, only kept here for backwards-compatibility purposes).
-		if ( self::$enqueue_fa && apply_filters( 'kirki_load_fontawesome', true ) ) {
-			wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.0.7' );
-		}
 	}
 
 	/**
@@ -314,31 +294,6 @@ class CSS {
 		if ( is_array( $css ) ) {
 			return Generator::styles_parse( Generator::add_prefixes( $css ) );
 		}
-	}
-
-	/**
-	 * Runs when we're adding a font-awesome field to allow enqueueing the
-	 * fontawesome script on the frontend.
-	 *
-	 * @static
-	 * @since 3.0.26
-	 * @access public
-	 * @return void
-	 */
-	public static function add_fontawesome_script() {
-		self::$enqueue_fa = true;
-	}
-
-	/**
-	 * Check if FontAwesome should be loaded.
-	 *
-	 * @static
-	 * @since 3.0.35
-	 * @access public
-	 * @return bool
-	 */
-	public static function get_enqueue_fa() {
-		return self::$enqueue_fa;
 	}
 
 	/**

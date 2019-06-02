@@ -105,7 +105,6 @@ class Editor_Styles {
 	protected function add_hooks() {
 		if ( ! $this->is_disabled() ) {
 			add_action( 'after_setup_theme', [ $this, 'add_theme_support' ], 999 );
-			add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_fontawesome' ] );
 			add_filter( 'block_editor_settings', [ $this, 'enqueue' ] );
 		}
 	}
@@ -200,27 +199,6 @@ class Editor_Styles {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Enqueue fontawesome in Gutenberg Editor.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 */
-	public function enqueue_fontawesome() {
-		foreach ( $this->configs as $config_id => $args ) {
-
-			if ( $this->is_disabled( $args ) ) {
-				continue;
-			}
-			$modules_css = $this->modules_css;
-			if ( $modules_css::get_enqueue_fa() && apply_filters( 'kirki_load_fontawesome', true ) ) { // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-				wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.0.7' );
-			}
-
-			return;
-		}
 	}
 
 	/**
