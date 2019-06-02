@@ -54,55 +54,25 @@ class Postmessage {
 			return $args;
 		}
 
-		if ( 'postMessage' === $args['transport'] && isset( $args['js_vars'] ) && ! empty( $args['js_vars'] ) ) {
-			$this->fields[] = $args;
-			return $args;
-		}
+		$args['transport'] = 'auto' === $args['transport'] ? 'postMessage' : $args['transport'];
 
-		if ( 'auto' === $args['transport'] ) {
+		if ( 'postMessage' === $args['transport'] ) {
 			$args['js_vars'] = isset( $args['js_vars'] ) ? (array) $args['js_vars'] : [];
 			$args['output']  = isset( $args['output'] ) ? (array) $args['output'] : [];
 			$js_vars         = $args['js_vars'];
-			
-			// Set transport to refresh initially.
-			// Serves as a fallback in case we failt to auto-calculate js_vars.
-			$args['transport'] = 'refresh';
 
 			// Try to auto-generate js_vars.
 			// First we need to check if js_vars are empty, and that output is not empty.
 			if ( empty( $args['js_vars'] ) && ! empty( $args['output'] ) ) {
 
 				foreach ( $args['output'] as $output ) {
-					$output['function'] = ( isset( $output['function'] ) ) ? $output['function'] : 'style';
-					
-					// If 'element' is not defined, skip this.
-					if ( ! isset( $output['element'] ) ) {
-						continue;
-					}
-					
-					if ( is_array( $output['element'] ) ) {
-						$output['element'] = implode( ',', $output['element'] );
-					}
-
-					// If there's a sanitize_callback defined skip this, unless we also have a js_callback defined.
-					if ( isset( $output['sanitize_callback'] ) && ! empty( $output['sanitize_callback'] ) && ! isset( $output['js_callback'] ) ) {
-						continue;
-					}
-
-					// If we got this far, it's safe to add this.
-					$js_vars[] = $output;
+					$output['function'] = isset( $output['function'] ) ? $output['function'] : 'style';
+					$output['element']  = is_array( $output['element'] ) ? implode( ',', $output['element'] ) : $output['element'];
+					$js_vars[]          = $output;
 				}
 			}
 
-			// Did we manage to get all the items from 'output'?
-			// If not, then we're missing something so don't add this.
-			if ( count( $js_vars ) !== count( $args['output'] ) ) {
-				$js_vars = [];
-			}
 			$args['js_vars'] = $js_vars;
-			if ( ! empty( $args['js_vars'] ) ) {
-				$args['transport'] = 'postMessage';
-			}
 		}
 		$this->fields[] = $args;
 		return $args;
@@ -114,7 +84,7 @@ class Postmessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
 		$fields = array_merge( Kirki::$fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {
