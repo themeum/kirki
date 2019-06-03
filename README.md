@@ -1,12 +1,12 @@
 # Kirki #
-**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)  
-**Tags:** customizer,options framework, theme, mods, toolkit, gutenberg  
-**Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.9  
-**Tested up to:** 5.2  
-**Stable tag:** 3.0.40  
-**License:** MIT  
-**License URI:** https://opensource.org/licenses/MIT  
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)
+**Tags:** customizer,options framework, theme, mods, toolkit, gutenberg
+**Donate link:** https://aristath.github.io/donate
+**Requires at least:** 4.9
+**Tested up to:** 5.2
+**Stable tag:** 3.0.40
+**License:** MIT
+**License URI:** https://opensource.org/licenses/MIT
 
 The ultimate framework for theme developers using the WordPress Customizer
 
@@ -28,7 +28,7 @@ Premium controls are also available for premium themes:
 
 Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
-You can find detailed documentation on how to use Kirki on [aristath.github.io/kirki/](https://aristath.github.io/kirki/)
+You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
 
 [Development and issues on github](https://github.com/aristath/kirki).
 
@@ -36,7 +36,7 @@ You can find detailed documentation on how to use Kirki on [aristath.github.io/k
 
 Simply install as a normal WordPress plugin and activate.
 
-If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://aristath.github.io/kirki/docs/integration).
+If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/integration).
 
 ## Changelog ##
 
