@@ -1,6 +1,6 @@
 # Kirki #
-**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)
-**Tags:** customizer,options framework, theme, mods, toolkit, gutenberg
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)
+**Tags:** customizer, options framework, theme, mods, toolkit, gutenberg
 **Donate link:** https://aristath.github.io/donate
 **Requires at least:** 4.9
 **Tested up to:** 5.2
@@ -30,7 +30,7 @@ Theme developers should be familiar with the Customizer API before you start wri
 
 You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
 
-[Development and issues on github](https://github.com/aristath/kirki).
+[Development and issues on GitHub](https://github.com/aristath/kirki).
 
 ## Installation ##
 
