@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:   Kirki Toolkit
- * Plugin URI:    http://aristath.github.io/kirki
- * Description:   The ultimate WordPress Customizer Toolkit
+ * Plugin Name:   Kirki Customizer Framework
+ * Plugin URI:    https://kirki.org
+ * Description:   The Ultimate WordPress Customizer Framework
  * Author:        Ari Stathopoulos (@aristath)
- * Author URI:    http://aristath.github.io
+ * Author URI:    https://aristath.github.io
  * Version:       3.0.40
  * Text Domain:   kirki
  * Requires WP:   4.9
