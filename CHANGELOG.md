@@ -1,3 +1,10 @@
+## 3.0.41 ##
+
+Jun.8 2019, dev time: 30m
+
+* Fix: http/https issue for locally-hosted googlefonts
+* Fix: Updated Google-fonts list.
+
 ## 3.0.40
 
 Jun.1 2019, dev time: 30m
