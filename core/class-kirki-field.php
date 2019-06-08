@@ -254,7 +254,7 @@ class Kirki_Field {
 		// assume that the provided argument is $args and set $config_id = 'global'.
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://kirki.org/docs/getting-started/fields.html' ), '3.0.10' );
 			$args      = $config_id;
 			$config_id = 'global';
 		}
@@ -264,7 +264,7 @@ class Kirki_Field {
 		$this->kirki_config = $config_id;
 		if ( '' === $config_id ) {
 			/* translators: %1$s represents the field ID where the error occurs. %2$s is the URL in the documentation site. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://aristath.github.io/kirki/docs/getting-started/fields.html' ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Config not defined for field %1$s - See %2$s for details on how to properly add fields.', 'kirki' ), esc_html( $args['settings'] ), 'https://kirki.org/docs/getting-started/fields.html' ), '3.0.10' );
 			$this->kirki_config = 'global';
 		}
 

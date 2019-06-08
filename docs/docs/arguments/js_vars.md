@@ -7,7 +7,7 @@ published: true
 <div class="callout warning">
     <h5>Use <code>output</code> and set <code>transport</code> to <code>auto</code> instead.</h5>
     <p>Using <code>js_vars</code> is almost never needed. This argument should only be used in special cases as it will be internally calculated from the <code>output</code> argument if you set <code>transport</code> to <code>auto</code>.</p>
-    <p>See the <a href="https://aristath.github.io/kirki/docs/arguments/transport.html"><code>transport</code></a> and <a href="https://aristath.github.io/kirki/docs/arguments/output.html"><code>output</code></a> arguments for more details.</p>
+    <p>See the <a href="https://kirki.org/docs/arguments/transport.html"><code>transport</code></a> and <a href="https://kirki.org/docs/arguments/output.html"><code>output</code></a> arguments for more details.</p>
 </div>
 
 

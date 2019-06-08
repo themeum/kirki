@@ -13,7 +13,7 @@ heroButtons:
     label: Back to Controls
 ---
 
-The `upload` control is identical to the [`image`](https://aristath.github.io/kirki/docs/controls/image.html) control, the only difference is that it allows uploading more file types and not only images.
+The `upload` control is identical to the [`image`](https://kirki.org/docs/controls/image.html) control, the only difference is that it allows uploading more file types and not only images.
 
 ### Usage
 

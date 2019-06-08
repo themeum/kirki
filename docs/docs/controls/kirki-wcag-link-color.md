@@ -94,7 +94,7 @@ function my_theme_example_kirki_wcag_controls( $wp_customize ) {
 
 	// Add text-color control. This can be a simple colorpicker
 	// but in this example we're using the kirki-wcag-text-color control.
-	// See https://aristath.github.io/kirki/docs/controls/kirki-wcag-text-color.html
+	// See https://kirki.org/docs/controls/kirki-wcag-text-color.html
 	$wp_customize->add_control( new Kirki_WCAG_Text_Color( $wp_customize, 'text_color', [
 		'label'       => esc_html__( 'Text Color', 'my-theme' ),
 		'description' => esc_html__( 'Select the text color for your content. Please choose one of the recommended colors to ensure readability with your selected background-color, or switch to the "Custom Color" tab to select any other color you want.', 'my-theme' ),
@@ -182,7 +182,7 @@ In the above examples We add a `my_theme_colors` section and inside that section
 * `text_color` controls our text color.
 * `links_color` controls our links color.
 
-The text-color control can be a simple colorpicker, but in order to further enhance the accessibility automation for our example we're using the `kirki-wcag-tc` control. See [this article](https://aristath.github.io/kirki/docs/controls/kirki-wcag-text-color.html) for more detials on that control if needed.
+The text-color control can be a simple colorpicker, but in order to further enhance the accessibility automation for our example we're using the `kirki-wcag-tc` control. See [this article](https://kirki.org/docs/controls/kirki-wcag-text-color.html) for more detials on that control if needed.
 
 ## Arguments
 

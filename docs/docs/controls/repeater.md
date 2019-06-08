@@ -36,7 +36,7 @@ Kirki::add_field( 'theme_config_id', [
 	'default'      => [
 		[
 			'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
-			'link_url'  => 'https://aristath.github.io/kirki/',
+			'link_url'  => 'https://kirki.org/',
 		],
 		[
 			'link_text' => esc_html__( 'Kirki Repository', 'kirki' ),
@@ -78,7 +78,7 @@ Kirki::add_field( 'theme_config_id', [
 	'default'      => [
 		[
 			'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
-			'link_url'  => 'https://aristath.github.io/kirki/',
+			'link_url'  => 'https://kirki.org/',
 		],
 		[
 			'link_text' => esc_html__( 'Kirki Repository', 'kirki' ),
@@ -110,7 +110,7 @@ Kirki::add_field( 'theme_config_id', [
 $defaults = [
     [
         'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
-		'link_url'  => 'https://aristath.github.io/kirki/',
+		'link_url'  => 'https://kirki.org/',
 	],
 	[
 		'link_text' => esc_html__( 'Kirki Repository', 'kirki' ),

@@ -3,7 +3,7 @@
   "type": "library",
   "keywords": ["WordPress", "Customizer"],
   "description": "Extending the WordPress customizer",
-  "homepage": "https://aristath.github.io/kirki",
+  "homepage": "https://kirki.org",
   "license": "MIT",
   "authors": [
     {

@@ -21,7 +21,7 @@ Kirki allows you to change the styling of the customizer using the `kirki_config
  */
 function kirki_demo_configuration_sample_styling( $config ) {
 	return wp_parse_args( array(
-		'logo_image'   => 'https://aristath.github.io/kirki/images/logo.png',
+		'logo_image'   => 'https://kirki.org/images/logo.png',
 		'description'  => esc_html__( 'The theme description.', 'kirki' ),
 		'color_accent' => '#0091EA',
 		'color_back'   => '#FFFFFF',

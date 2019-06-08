@@ -13,4 +13,4 @@ heroButtons:
     label: Back to Controls
 ---
 
-The `spacing` control is an alias for the `dimensions` control. Please see documentation on [the dimensions field](https://aristath.github.io/kirki/docs/controls/dimensions.html).
+The `spacing` control is an alias for the `dimensions` control. Please see documentation on [the dimensions field](https://kirki.org/docs/controls/dimensions.html).
