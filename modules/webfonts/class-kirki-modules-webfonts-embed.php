@@ -200,8 +200,8 @@ final class Kirki_Modules_Webfonts_Embed {
 						$contents
 					);
 
-					// Set the transient for a week.
-					set_site_transient( $transient_id, $contents, WEEK_IN_SECONDS );
+					// Set the transient for a day.
+					set_site_transient( $transient_id, $contents, DAY_IN_SECONDS );
 				}
 			}
 			if ( $contents ) {
