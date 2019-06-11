@@ -4,7 +4,7 @@ sass:
   style: compressed
 
 repository: https://github.com/aristath/kirki
-
+permalink: /:slug
 defaults:
   -
     scope:
