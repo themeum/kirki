@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Open-Source Customizer Framework
+title: WordPress Customizer Framework (Open-Source)
 subtitle: A complete toolkit for WordPress theme Developers.
 heroButtons:
   - url: https://wordpress.org/plugins/kirki
