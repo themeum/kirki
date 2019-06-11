@@ -59,7 +59,7 @@
     display: flex;
     flex-wrap: wrap; }
     .customize-control-kirki-toggle label .customize-control-title {
-      width: calc(100% - 55px); }
+      width: calc(100% - 40px); }
     .customize-control-kirki-toggle label .description {
       order: 99; }
   .customize-control-kirki-toggle .switch {
