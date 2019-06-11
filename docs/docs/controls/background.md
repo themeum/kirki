@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "background" control
+title: WordPress Customizer Background Control
 slug: background
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a background control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array

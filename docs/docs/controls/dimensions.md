@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "dimensions" control
+title: WordPress Customizer Dimensions Control
 slug: dimensions
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a dimensions control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "color-palette" control
+title: WordPress Customizer Color Palette Control
 slug: color-palette
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a color-palette control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

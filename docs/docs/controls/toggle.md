@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "toggle" control
+title: WordPress Customizer Toggle Control
 slug: toggle
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a toggle control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: boolean

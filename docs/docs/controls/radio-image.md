@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "radio-image" control
+title: WordPress Customizer Radio Image Control
 slug: radio-image
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a radio image control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

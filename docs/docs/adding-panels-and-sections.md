@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Adding Panels and Sections
-subtitle: How to add kirki to your project.
+title: Adding Panels and Sections to the WordPress Customizer
+subtitle: How to add panels and sections to the WordPress Customizer using the Kirki framework.
 mainMaxWidth: 55rem;
 bodyClasses: page
 heroButtons:

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "sortable" control
+title: WordPress Customizer Sortable Control
 slug: sortable
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a sortable control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array

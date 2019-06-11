@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "dashicons" control
+title: WordPress Customizer Dashicons Control
 slug: dashicons
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a dashicon control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

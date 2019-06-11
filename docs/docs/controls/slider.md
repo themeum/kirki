@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "slider" control
+title: WordPress Customizer Slider Control
 slug: slider
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a slider control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string|int|float

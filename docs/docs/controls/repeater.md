@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "repeater" control
+title: WordPress Customizer Repeater Control
 slug: repeater
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a repeater control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array

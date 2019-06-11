@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "upload" control
+title: WordPress Customizer Upload Control
 slug: upload
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create an upload control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

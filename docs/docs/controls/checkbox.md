@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "checkbox" control
+title: WordPress Customizer Checkbox Control
 slug: checkbox
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a checkbox control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: boolean

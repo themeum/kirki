@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "generic" control
+title: WordPress Customizer Generic Control
 slug: generic
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a generic control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
