@@ -2,6 +2,7 @@
 layout: default
 title: js_vars
 published: true
+mainMaxWidth: 55rem;
 ---
 
 <div class="callout warning">

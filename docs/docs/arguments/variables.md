@@ -2,6 +2,7 @@
 layout: default
 title: variables
 published: false
+mainMaxWidth: 55rem;
 ---
 
 If you're using a CSS preprocessor and for example a less-php, sass-php or even less.js compiler for your styles, you may wish to have the values of your options returned as variables that you can then use and feed them to your compiler.

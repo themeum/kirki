@@ -2,6 +2,7 @@
 layout: default
 title: multiple
 published: true
+mainMaxWidth: 55rem;
 ---
 
 

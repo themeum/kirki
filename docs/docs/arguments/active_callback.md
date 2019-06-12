@@ -2,6 +2,7 @@
 layout: default
 title: active_callback
 published: true
+mainMaxWidth: 55rem;
 ---
 
 You can use the `active_callback` argument to define if you want to hide or display a control under conditions.
