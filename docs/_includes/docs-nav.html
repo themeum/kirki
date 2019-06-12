@@ -24,10 +24,11 @@
 	<li>
 		<a>Modules</a>
 		<ul class="menu">
-			<li><a href="/docs/modules/css">CSS Module</a></li>
-			<li><a href="/docs/modules/postmessage">postMessage Module</a></li>
-			<li><a href="/docs/modules/telemetry">Telemetry Module</a></li>
-			<li><a href="/docs/modules/customizer-styling">Styling the Customizer</a></li>
+			{% for node in site.pages %}
+				{% if node.url contains "docs/modules" %}
+					<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+				{% endif %}
+			{% endfor %}
 		</ul>
 	</li>
 	<li>
