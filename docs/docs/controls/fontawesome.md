@@ -5,6 +5,7 @@ slug: fontawesome
 subtitle: Learn how to create controls using Kirki
 mainMaxWidth: 55rem;
 bodyClasses: control page
+published: false
 returns: string
 heroButtons:
   - url: ../controls
