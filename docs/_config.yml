@@ -2,9 +2,9 @@ markdown: kramdown
 highlighter: rouge
 sass:
   style: compressed
-
+url: https://kirki.org
 repository: https://github.com/aristath/kirki
-
+permalink: /:slug
 defaults:
   -
     scope:
