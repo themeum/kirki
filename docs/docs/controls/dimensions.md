@@ -69,10 +69,10 @@ Kirki::add_field( 'theme_config_id', [
 	],
 	'choices'     => [
 		'labels' => [
-			'min-width'  => esc_html__( 'Min Width', 'my-theme' ),
-			'max-width'  => esc_html__( 'Max Width', 'my-theme' ),
-			'min-height' => esc_html__( 'Min Height', 'my-theme' ),
-			'max-height' => esc_html__( 'Max Height', 'my-theme' ),
+			'min-width'  => esc_html__( 'Min Width', 'kirki' ),
+			'max-width'  => esc_html__( 'Max Width', 'kirki' ),
+			'min-height' => esc_html__( 'Min Height', 'kirki' ),
+			'max-height' => esc_html__( 'Max Height', 'kirki' ),
 		],
 	],
 ] );
