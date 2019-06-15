@@ -46,7 +46,9 @@ class Kirki_Init {
 		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_controls' ), 99999 );
+
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+		add_action( 'admin_init', array( $this, 'dismiss_nag' ) );
 
 		new Kirki_Values();
 		new Kirki_Sections();
@@ -343,13 +345,46 @@ class Kirki_Init {
 
 		// No need for a nag if FA plugin is already installed.
 		if ( defined( 'FONTAWESOME_DIR_PATH' ) ) {
+			// return;
+		}
+
+		// No need for a nag if current user can't install plugins.
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
-		echo '<div class="notice notice-info is-dismissible">';
-		echo '<p>';
-		esc_html__( 'Your theme uses a font-awesome field for icons. To avoid issues with missing icons on your frontend we recommend you install the Font Awesome plugin.', 'kirki' );
-		echo '</p>';
-		echo '</div>';
+
+		// No need for a nag if user has dismissed it.
+		$dismissed = get_user_meta( get_current_user_id(), 'kirki_fa_nag_dismissed', true );
+		if ( true ===  $dismissed || 1 === $dismissed || '1' === $dismissed ) {
+			return;
+		}
+
+		?>
+		<div class="notice notice-info is-dismissible">
+			<p>
+				<?php esc_html_e( 'Your theme uses a font-awesome field for icons. To avoid issues with missing icons on your frontend we recommend you install the Font Awesome plugin.', 'kirki' ); ?>
+			</p>
+			<p>
+				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=font-awesome&TB_iframe=true&width=600&height=550' ) ); ?>"><?php esc_html_e( 'Install Plugin', 'kirki' ); ?></a>
+				<a class="button button-secondary" href="<?php echo esc_url( wp_nonce_url( admin_url( '?dismiss-nag=font-awesome-kirki' ), 'kirki-dismiss-nag', 'nonce' ) ); ?>"><?php esc_html_e( 'Don\'t show this again', 'kirki' ); ?></a>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Dismisses the nag.
+	 *
+	 * @access public
+	 * @since 3.0.42
+	 * @return void
+	 */
+	public function dismiss_nag() {
+		if ( isset( $_GET['nonce'] ) && wp_verify_nonce( $_GET['nonce'], 'kirki-dismiss-nag' ) ) {
+			if ( get_current_user_id() && isset( $_GET['dismiss-nag'] ) && 'font-awesome-kirki' === $_GET['dismiss-nag'] ) {
+				update_user_meta( get_current_user_id(), 'kirki_fa_nag_dismissed', true );
+			}
+		}
 	}
 
 	/**
