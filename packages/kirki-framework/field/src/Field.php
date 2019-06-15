@@ -170,27 +170,27 @@ abstract class Field {
 	 *
 	 * @access public
 	 * @since 0.1
-	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @param WP_Customize_Manager $customizer The customizer instance.
 	 * @return void
 	 */
-	public function add_setting( $wp_customize ) {
+	public function add_setting( $customizer ) {
 
 		/**
 		 * Allow filtering the arguments.
 		 *
 		 * @since 0.1
 		 * @param array                $this->args   The arguments.
-		 * @param WP_Customize_Manager $wp_customize The customizer instance.
+		 * @param WP_Customize_Manager $customizer The customizer instance.
 		 * @return array                             Return the arguments.
 		 */
-		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $wp_customize );
+		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $customizer );
 		if ( isset( $args['settings'] ) ) {
 			$classname = $this->settings_class;
 			if ( $this->settings_class ) {
-				$wp_customize->add_setting( new $classname( $wp_customize, $args['settings'], $args ) );
+				$customizer->add_setting( new $classname( $customizer, $args['settings'], $args ) );
 				return;
 			}
-			$wp_customize->add_setting( $args['settings'], $args );
+			$customizer->add_setting( $args['settings'], $args );
 		}
 	}
 
