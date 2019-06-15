@@ -45,7 +45,7 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'choices'     => [
 		'red'   => [
-			esc_html__( 'Red', 'my_textdomain' ),
+			esc_html__( 'Red', 'kirki' ),
 			esc_html__( 'These are some extra details about Red', 'kirki' ),
 		],
 		'green' => [

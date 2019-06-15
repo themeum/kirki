@@ -49,7 +49,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'kirki' ),
 	'section'  => 'my_section',
 	'default'  => '',
 	'priority' => 10,
@@ -77,7 +77,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'kirki' ),
 	'section'  => 'my_section',
 	'default'  => 'option-1',
 	'priority' => 10,
@@ -100,7 +100,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'     => 'select',
 	'settings' => 'my_setting',
-	'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
+	'label'    => esc_html__( 'This is the label', 'kirki' ),
 	'section'  => 'my_section',
 	'default'  => 'option-1',
 	'priority' => 10,
@@ -125,7 +125,7 @@ Example:
 Kirki::add_field( 'my_config', array(
 	'type'        => 'select',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'This is the label', 'my_textdomain' ),
+	'label'       => esc_html__( 'This is the label', 'kirki' ),
 	'section'     => 'my_section',
 	'default'     => 'option-1',
 	'priority'    => 10,
@@ -135,7 +135,7 @@ Kirki::add_field( 'my_config', array(
 ```
 For full list of choices https://developer.wordpress.org/reference/functions/get_terms/#source
 
-### Custom Post Types and Custom Taxnonomy
+### Custom Post Types and Custom Taxonomy
 
 Please note that to make the custom post types and taxonomies work you must add the fields and sections in 'init' action.
 
@@ -146,7 +146,7 @@ add_action( 'init', function() {
 	Kirki::add_field( 'my_settings', array(
 		'type'     => 'select',
 		'settings' => 'my_setting',
-		'label'    => __( 'This is the label', 'my_textdomain' ),
+		'label'    => __( 'This is the label', 'kirki' ),
 		'section'  => 'title_tagline',
 		'default'  => '',
 		'priority' => 10,

@@ -41,9 +41,9 @@ Kirki simplifies that process and you can add the arguments for partial refreshe
 Kirki::add_field( 'my_config', [
 	'type'            => 'text',
 	'settings'        => 'my_setting',
-	'label'           => esc_html__( 'Text Control', 'my_textdomain' ),
+	'label'           => esc_html__( 'Text Control', 'kirki' ),
 	'section'         => 'my_section',
-	'default'         => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'default'         => esc_html__( 'This is a default value', 'kirki' ),
 	'priority'        => 10,
 	'partial_refresh'    => [
 		'header_site_title' => [
