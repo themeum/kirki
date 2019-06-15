@@ -88,7 +88,7 @@ Kirki::add_field( 'theme_config_id', [
 	'section'     => 'section_id',
 	'default'     => '#FF1744',
 	'choices'     => [
-		'colors' => Kirki_Helper::get_material_design_colors( 'textdomain' ),
+		'colors' => Kirki_Helper::get_material_design_colors( 'red' ),
 		'size'   => 16,
 	],
 ] );
