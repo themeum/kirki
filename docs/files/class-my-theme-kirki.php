@@ -403,7 +403,7 @@ class My_Theme_Kirki {
 						if ( isset( $response['response'] ) && isset( $response['response']['code'] ) ) {
 							if ( 200 === $response['response']['code'] ) {
 
-								// URL was ok. Set transient to true and cache for a week.
+								// URL was ok. Set transient to true and cache for an hour.
 								set_transient( $key, true, 7 * 24 * HOUR_IN_SECONDS );
 								$url_is_valid = true;
 							}
