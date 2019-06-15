@@ -168,7 +168,7 @@ class CSS {
 			'kirki-styles',
 			add_query_arg( $args, site_url() ),
 			[],
-			KIRKI_VERSION
+			'4.0'
 		);
 	}
 

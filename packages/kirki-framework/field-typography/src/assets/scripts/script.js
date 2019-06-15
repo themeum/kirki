@@ -2,7 +2,11 @@
 function kirkiTypographyCompositeControlFontProperties( id, value ) {
 	var control, isGoogle, fontWeights, hasItalics, fontWeightControl, fontStyleControl, closest;
 
-	control           = wp.customize.control( id );
+	control = wp.customize.control( id );
+	if ( 'undefined' === typeof control ) {
+		return;
+	}
+
 	value             = value || control.setting.get();
 	isGoogle          = value['font-family'] && kirkiGoogleFonts.items[ value['font-family'] ];
 	fontWeights       = [ 400, 700 ];

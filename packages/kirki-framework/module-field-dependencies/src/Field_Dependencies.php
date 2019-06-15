@@ -82,6 +82,6 @@ class Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
-		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
 	}
 }

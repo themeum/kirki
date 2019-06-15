@@ -63,6 +63,7 @@ class Custom_Sections {
 				'kirki-expanded' => '\Kirki\Module\Custom_Sections\Section_Expanded',
 				'kirki-nested'   => '\Kirki\Module\Custom_Sections\Section_Nested',
 				'kirki-link'     => '\Kirki\Module\Custom_Sections\Section_Link',
+				'kirki-outer'    => '\Kirki\Module\Custom_Sections\Section_Outer',
 			]
 		);
 	}
@@ -136,7 +137,7 @@ class Custom_Sections {
 	 * @since 3.0.0
 	 */
 	public function enqueue_scrips() {
-		wp_enqueue_style( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/styles/sections.css' ), [], KIRKI_VERSION );
-		wp_enqueue_script( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/scripts/sections.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, false );
+		wp_enqueue_style( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/styles/sections.css' ), [], '4.0' );
+		wp_enqueue_script( 'kirki-custom-sections', URL::get_from_path( __DIR__ . '/assets/scripts/sections.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', false );
 	}
 }

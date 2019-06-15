@@ -84,7 +84,7 @@ class Postmessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview' ], '4.0', true );
 		$fields = array_merge( Kirki::$fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {

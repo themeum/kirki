@@ -2,12 +2,18 @@
   .kirki-color-input-wrapper {
     display: grid;
     grid-template-columns: 45px 1fr auto;
+
+    &.mode-full {
+
+    }
   }
 
   .kirki-colorpicker-wrapper-palette {
     display: flex;
     flex-wrap: wrap;
     margin-top: 12px;
+    margin-left: -7px;
+    margin-right: -7px;
   }
 
   button {
@@ -22,6 +28,11 @@
     padding: 2px;
     box-sizing: content-box;
     background: transparent;
+
+    &.placeholder {
+      margin-left: -7px;
+      margin-right: -7px;
+    }
 
     &:hover,
     &:focus {

@@ -1,106 +1,95 @@
 .customize-control-kirki-color .kirki-color-input-wrapper {
   display: grid;
-  grid-template-columns: 45px 1fr auto;
-}
+  grid-template-columns: 45px 1fr auto; }
 .customize-control-kirki-color .kirki-colorpicker-wrapper-palette {
   display: flex;
   flex-wrap: wrap;
   margin-top: 12px;
-}
+  margin-left: -7px;
+  margin-right: -7px; }
 .customize-control-kirki-color button {
   width: 35px;
   height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.1s ease;
+  transition: all .1s ease;
   border: 2px solid transparent;
   border-radius: 50%;
   padding: 2px;
   box-sizing: content-box;
-  background: transparent;
-}
-.customize-control-kirki-color button:hover, .customize-control-kirki-color button:focus {
-  border-color: #777;
-}
-.customize-control-kirki-color button .button-inner {
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  background: transparent;
-  box-shadow: inset 0 0 0 14px;
-  transition: all 0.1s ease;
-  cursor: pointer;
-}
-.customize-control-kirki-color button .button-inner:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-}
-.customize-control-kirki-color button svg {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  opacity: 0;
-}
-.customize-control-kirki-color button:hover .button-inner, .customize-control-kirki-color button:active .button-inner, .customize-control-kirki-color button:focus .button-inner {
-  width: 32px;
-  height: 32px;
-  box-shadow: inset 0 0 0 16px;
-}
-.customize-control-kirki-color button[aria-pressed=true] .button-inner {
-  box-shadow: inset 0 0 0 5px;
-  width: 32px;
-  height: 32px;
-}
-.customize-control-kirki-color button[aria-pressed=true] svg {
-  opacity: 1;
-}
+  background: transparent; }
+  .customize-control-kirki-color button.placeholder {
+    margin-left: -7px;
+    margin-right: -7px; }
+  .customize-control-kirki-color button:hover, .customize-control-kirki-color button:focus {
+    border-color: #777; }
+  .customize-control-kirki-color button .button-inner {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    background: transparent;
+    box-shadow: inset 0 0 0 14px;
+    transition: all .1s ease;
+    cursor: pointer; }
+    .customize-control-kirki-color button .button-inner:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2); }
+  .customize-control-kirki-color button svg {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    opacity: 0; }
+  .customize-control-kirki-color button:hover .button-inner, .customize-control-kirki-color button:active .button-inner, .customize-control-kirki-color button:focus .button-inner {
+    width: 32px;
+    height: 32px;
+    box-shadow: inset 0 0 0 16px; }
+  .customize-control-kirki-color button[aria-pressed=true] .button-inner {
+    box-shadow: inset 0 0 0 5px;
+    width: 32px;
+    height: 32px; }
+  .customize-control-kirki-color button[aria-pressed=true] svg {
+    opacity: 1; }
 .customize-control-kirki-color summary {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-.customize-control-kirki-color summary .summary-description {
-  color: #0073aa;
-  width: 100%;
-  text-align: left;
-  padding: 10px;
-  cursor: pointer;
-  text-decoration: underline;
-}
-.customize-control-kirki-color summary input.kirki-color-control {
-  width: 100px;
-  font-family: monospace;
-  font-size: 12px;
-  background: none;
-  box-shadow: none;
-  opacity: 0.5;
-  text-align: right;
-  transition: all 0.1s ease;
-  border: 1px solid transparent;
-}
-.customize-control-kirki-color summary input.kirki-color-control:focus {
-  background: #fff;
-  border-color: #dedede;
-  opacity: 1;
-}
+  align-items: center; }
+  .customize-control-kirki-color summary .summary-description {
+    color: #0073aa;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: underline; }
+  .customize-control-kirki-color summary input.kirki-color-control {
+    width: 100px;
+    font-family: monospace;
+    font-size: 12px;
+    background: none;
+    box-shadow: none;
+    opacity: .5;
+    text-align: right;
+    transition: all .1s ease;
+    border: 1px solid transparent; }
+    .customize-control-kirki-color summary input.kirki-color-control:focus {
+      background: #fff;
+      border-color: #dedede;
+      opacity: 1; }
 .customize-control-kirki-color details[open] summary input.kirki-color-control {
   background: #fff;
   border-color: #dedede;
-  opacity: 1;
-}
+  opacity: 1; }
 .customize-control-kirki-color details.mode-hue summary {
-  display: none;
-}
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
