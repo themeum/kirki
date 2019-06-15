@@ -288,7 +288,9 @@ class Kirki_Modules_CSS {
 	 * @static
 	 * @since 3.0.35
 	 * @access public
-	 * @return bool
+	 * @return false
 	 */
-	public static function get_enqueue_fa() {}
+	public static function get_enqueue_fa() {
+		return false;
+	}
 }

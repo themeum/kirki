@@ -345,7 +345,7 @@ class Kirki_Init {
 
 		// No need for a nag if FA plugin is already installed.
 		if ( defined( 'FONTAWESOME_DIR_PATH' ) ) {
-			// return;
+			return;
 		}
 
 		// No need for a nag if current user can't install plugins.
@@ -355,7 +355,7 @@ class Kirki_Init {
 
 		// No need for a nag if user has dismissed it.
 		$dismissed = get_user_meta( get_current_user_id(), 'kirki_fa_nag_dismissed', true );
-		if ( true ===  $dismissed || 1 === $dismissed || '1' === $dismissed ) {
+		if ( true === $dismissed || 1 === $dismissed || '1' === $dismissed ) {
 			return;
 		}
 
@@ -380,7 +380,7 @@ class Kirki_Init {
 	 * @return void
 	 */
 	public function dismiss_nag() {
-		if ( isset( $_GET['nonce'] ) && wp_verify_nonce( $_GET['nonce'], 'kirki-dismiss-nag' ) ) {
+		if ( isset( $_GET['nonce'] ) && wp_verify_nonce( $_GET['nonce'], 'kirki-dismiss-nag' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			if ( get_current_user_id() && isset( $_GET['dismiss-nag'] ) && 'font-awesome-kirki' === $_GET['dismiss-nag'] ) {
 				update_user_meta( get_current_user_id(), 'kirki_fa_nag_dismissed', true );
 			}
