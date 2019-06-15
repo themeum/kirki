@@ -25,6 +25,16 @@ class Kirki_Init {
 	private $control_types = array();
 
 	/**
+	 * Should we show a nag for the deprecated fontawesome field?
+	 *
+	 * @static
+	 * @access private
+	 * @since 3.0.42
+	 * @var bool
+	 */
+	private static $show_fa_nag = false;
+
+	/**
 	 * The class constructor.
 	 */
 	public function __construct() {
@@ -36,6 +46,7 @@ class Kirki_Init {
 		add_action( 'customize_register', array( $this, 'remove_panels' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_sections' ), 99999 );
 		add_action( 'customize_register', array( $this, 'remove_controls' ), 99999 );
+		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
 		new Kirki_Values();
 		new Kirki_Sections();
@@ -313,6 +324,60 @@ class Kirki_Init {
 	public function remove_controls( $wp_customize ) {
 		foreach ( Kirki::$controls_to_remove as $control ) {
 			$wp_customize->remove_control( $control );
+		}
+	}
+
+	/**
+	 * Shows an admin notice.
+	 *
+	 * @access public
+	 * @since 3.0.42
+	 * @return void
+	 */
+	public function admin_notices() {
+
+		// No need for a nag if we don't need to recommed installing the FA plugin.
+		if ( ! self::$show_fa_nag ) {
+			return;
+		}
+
+		// No need for a nag if FA plugin is already installed.
+		if ( defined( 'FONTAWESOME_DIR_PATH' ) ) {
+			return;
+		}
+		echo '<div class="notice notice-info is-dismissible">';
+		echo '<p>';
+		esc_html__( 'Your theme uses a font-awesome field for icons. To avoid issues with missing icons on your frontend we recommend you install the Font Awesome plugin.', 'kirki' );
+		echo '</p>';
+		echo '</div>';
+	}
+
+	/**
+	 * Handles showing a nag if the theme is using the deprecated fontawesome field
+	 *
+	 * @static
+	 * @access protected
+	 * @since 3.0.42
+	 * @param array $args The field arguments.
+	 * @return void
+	 */
+	protected static function maybe_show_fontawesome_nag( $args ) {
+
+		// If we already know we want it, skip check.
+		if ( self::$show_fa_nag ) {
+			return;
+		}
+
+		// Check if the field is fontawesome.
+		if ( isset( $args['type'] ) && in_array( $args['type'], array( 'fontawesome', 'kirki-fontawesome' ), true ) ) {
+
+			// Skip check if theme has disabled FA enqueueing via a filter.
+			if ( ! apply_filters( 'kirki_load_fontawesome', true ) ) {
+				return;
+			}
+
+			// If we got this far, we need to show the nag.
+			self::$show_fa_nag = true;
 		}
 	}
 }
