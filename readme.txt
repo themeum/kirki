@@ -1,5 +1,5 @@
 === Kirki Customizer Framework ===
-Contributors: aristath, wplemon, igmoweb, dannycooper
+Contributors: aristath, dannycooper, wplemon, igmoweb
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
@@ -30,7 +30,7 @@ Theme developers should be familiar with the Customizer API before you start wri
 
 You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
 
-[Development and issues on github](https://github.com/aristath/kirki).
+[Development and issues on Github](https://github.com/aristath/kirki).
 
 == Installation ==
 

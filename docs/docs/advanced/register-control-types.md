@@ -33,4 +33,4 @@ add_action( 'customize_register', function( $wp_customize ) {
 ?>
 ```
 
-You can then create new fields using your own control simply by defining `notice` as your field's [`type`](https://aristath.github.io/kirki/docs/arguments/type).
+You can then create new fields using your own control simply by defining `notice` as your field's [`type`](https://kirki.org/docs/arguments/type).

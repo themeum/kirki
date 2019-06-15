@@ -25,7 +25,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 /**
  * First of all, add the config.
  *
- * @link https://aristath.github.io/kirki/docs/getting-started/config.html
+ * @link https://kirki.org/docs/getting-started/config.html
  */
 Kirki::add_config(
 	'kirki_demo',
@@ -38,7 +38,7 @@ Kirki::add_config(
 /**
  * Add a panel.
  *
- * @link https://aristath.github.io/kirki/docs/getting-started/panels.html
+ * @link https://kirki.org/docs/getting-started/panels.html
  */
 Kirki::add_panel(
 	'kirki_demo_panel',
@@ -55,7 +55,7 @@ Kirki::add_panel(
  * We'll be doing things a bit differently here, just to demonstrate an example.
  * We're going to define 1 section per control-type just to keep things clean and separate.
  *
- * @link https://aristath.github.io/kirki/docs/getting-started/sections.html
+ * @link https://kirki.org/docs/getting-started/sections.html
  */
 $sections = [
 	'background'      => [ esc_html__( 'Background', 'kirki' ), '' ],
@@ -146,7 +146,7 @@ my_config_kirki_add_field(
 /**
  * Code control.
  *
- * @link https://aristath.github.io/kirki/docs/controls/code.html
+ * @link https://kirki.org/docs/controls/code.html
  */
 my_config_kirki_add_field(
 	[
@@ -165,7 +165,7 @@ my_config_kirki_add_field(
 /**
  * Checkbox control.
  *
- * @link https://aristath.github.io/kirki/docs/controls/checkbox.html
+ * @link https://kirki.org/docs/controls/checkbox.html
  */
 my_config_kirki_add_field(
 	[
@@ -181,7 +181,7 @@ my_config_kirki_add_field(
 /**
  * Color Controls.
  *
- * @link https://aristath.github.io/kirki/docs/controls/color.html
+ * @link https://kirki.org/docs/controls/color.html
  */
 my_config_kirki_add_field(
 	[
@@ -262,7 +262,7 @@ my_config_kirki_add_field(
 /**
  * Color-Palette Controls.
  *
- * @link https://aristath.github.io/kirki/docs/controls/color-palette.html
+ * @link https://kirki.org/docs/controls/color-palette.html
  */
 my_config_kirki_add_field(
 	[
@@ -343,7 +343,7 @@ my_config_kirki_add_field(
 /**
  * Dashicons control.
  *
- * @link https://aristath.github.io/kirki/docs/controls/dashicons.html
+ * @link https://kirki.org/docs/controls/dashicons.html
  */
 my_config_kirki_add_field(
 	[
@@ -711,7 +711,7 @@ my_config_kirki_add_field(
 		'default'     => [
 			[
 				'link_text'   => esc_html__( 'Kirki Site', 'kirki' ),
-				'link_url'    => 'https://aristath.github.io/kirki/',
+				'link_url'    => 'https://kirki.org/',
 				'link_target' => '_self',
 				'checkbox'    => false,
 			],
