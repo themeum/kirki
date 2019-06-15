@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.2  
-**Stable tag:** 3.0.40  
+**Stable tag:** 3.0.41  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -40,11 +40,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
-### 3.0.40 ###
+### 3.0.41 ###
 
-Jun.1 2019, dev time: 30m
+Jun.8 2019, dev time: 30m
 
-* Fix: Updated URL for fontawesome to avoid tracking.
+* Fix: http/https issue for locally-hosted googlefonts
 * Fix: Updated Google-fonts list.
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).
