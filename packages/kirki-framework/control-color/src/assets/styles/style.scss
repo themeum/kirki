@@ -2,10 +2,6 @@
   .kirki-color-input-wrapper {
     display: grid;
     grid-template-columns: 45px 1fr auto;
-
-    &.mode-full {
-
-    }
   }
 
   .kirki-colorpicker-wrapper-palette {
@@ -98,6 +94,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    list-style: none;
+    list-style-image: none;
+    list-style-type: none;
+
+    &::-webkit-details-marker {
+      list-style-image: none;
+      color: transparent;
+    }
 
     .summary-description {
       color: #0073aa;

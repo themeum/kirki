@@ -63,7 +63,13 @@
 .customize-control-kirki-color summary {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  list-style: none;
+  list-style-image: none;
+  list-style-type: none; }
+  .customize-control-kirki-color summary::-webkit-details-marker {
+    list-style-image: none;
+    color: transparent; }
   .customize-control-kirki-color summary .summary-description {
     color: #0073aa;
     width: 100%;
