@@ -122,7 +122,6 @@ class Aliases {
 			[ 'Kirki\Control\Date', 'Kirki_Control_Date' ],
 			[ 'Kirki\Control\Dimension', 'Kirki_Control_Dimension' ],
 			[ 'Kirki\Control\Editor', 'Kirki_Control_Editor' ],
-			[ 'Kirki\Control\FontAwesome', 'Kirki_Control_FontAwesome' ],
 			[ 'Kirki\Control\Generic', 'Kirki_Control_Generic' ],
 			[ 'Kirki\Control\Image', 'Kirki_Control_Image' ],
 			[ 'Kirki\Control\Multicheck', 'Kirki_Control_Multicheck' ],

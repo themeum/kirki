@@ -63,7 +63,6 @@ class Init {
 			'kirki-dimension'       => '\Kirki\Control\Dimension',
 			'kirki-dimensions'      => '\Kirki\Control\Dimensions',
 			'kirki-editor'          => '\Kirki\Control\Editor',
-			'kirki-fontawesome'     => '\Kirki\Control\FontAwesome',
 			'kirki-image'           => '\Kirki\Control\Image',
 			'kirki-multicolor'      => '\Kirki\Control\Multicolor',
 			'kirki-multicheck'      => '\Kirki\Control\MultiCheck',
