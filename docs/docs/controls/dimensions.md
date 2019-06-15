@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "dimensions" control
+title: WordPress Customizer Dimensions Control
 slug: dimensions
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a dimensions control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array
@@ -69,10 +69,10 @@ Kirki::add_field( 'theme_config_id', [
 	],
 	'choices'     => [
 		'labels' => [
-			'min-width'  => esc_html__( 'Min Width', 'my-theme' ),
-			'max-width'  => esc_html__( 'Max Width', 'my-theme' ),
-			'min-height' => esc_html__( 'Min Height', 'my-theme' ),
-			'max-height' => esc_html__( 'Max Height', 'my-theme' ),
+			'min-width'  => esc_html__( 'Min Width', 'kirki' ),
+			'max-width'  => esc_html__( 'Max Width', 'kirki' ),
+			'min-height' => esc_html__( 'Min Height', 'kirki' ),
+			'max-height' => esc_html__( 'Max Height', 'kirki' ),
 		],
 	],
 ] );

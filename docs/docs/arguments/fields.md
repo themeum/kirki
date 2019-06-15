@@ -2,6 +2,7 @@
 layout: default
 title: fields
 published: true
+mainMaxWidth: 55rem;
 ---
 
 

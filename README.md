@@ -19,6 +19,39 @@ Using Kirki theme developers can create rich experiences for the WordPress Custo
 
 Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
 
+### Control Types ###
+
+* [Background Customizer Control](https://kirki.org/docs/controls/background)
+* [Checkbox Customizer Control](https://kirki.org/docs/controls/checkbox)
+* [Code Customizer Control](https://kirki.org/docs/controls/code)
+* [Color Palette Customizer Control](https://kirki.org/docs/controls/color-palette)
+* [Color Customizer Control](https://kirki.org/docs/controls/color)
+* [Custom Customizer Control](https://kirki.org/docs/controls/custom)
+* [Dashicons Customizer Control](https://kirki.org/docs/controls/dashicons)
+* [Date Customizer Control](https://kirki.org/docs/controls/date)
+* [Dropdown Pages Customizer Control](https://kirki.org/docs/controls/dropdown-pages)
+* [Editor Customizer Control](https://kirki.org/docs/controls/editor)
+* [Generic Customizer Control](https://kirki.org/docs/controls/generic)
+* [Image Customizer Control](https://kirki.org/docs/controls/image)
+* [Link Customizer Control](https://kirki.org/docs/controls/link)
+* [Multiple Checkbox Customizer Control](https://kirki.org/docs/controls/multicheck)
+* [Multicolor Customizer Control](https://kirki.org/docs/controls/multicolor)
+* [Number Customizer Control](https://kirki.org/docs/controls/number)
+* [Radio Buttonset Customizer Control](https://kirki.org/docs/controls/radio-buttonset)
+* [Radio Image Customizer Control](https://kirki.org/docs/controls/radio-image)
+* [Radio Customizer Control](https://kirki.org/docs/controls/radio)
+* [Repeater Customizer Control](https://kirki.org/docs/controls/repeater)
+* [Select Customizer Control](https://kirki.org/docs/controls/select)
+* [Slider Customizer Control](https://kirki.org/docs/controls/slider)
+* [Sortable Customizer Control](https://kirki.org/docs/controls/sortable)
+* [Spacing Customizer Control](https://kirki.org/docs/controls/spacing)
+* [Switch Customizer Control](https://kirki.org/docs/controls/switch)
+* [Text Customizer Control](https://kirki.org/docs/controls/text)
+* [Textarea Customizer Control](https://kirki.org/docs/controls/textarea)
+* [Toggle Customizer Control](https://kirki.org/docs/controls/toggle)
+* [Typography Customizer Control](https://kirki.org/docs/controls/typography)
+* [Upload Customizer Control](https://kirki.org/docs/controls/upload)
+
 Premium controls are also available for premium themes:
 
 * [Kirki WCAG Text Colorpicker](https://wplemon.com/downloads/kirki-wcag-text-colorpicker/)

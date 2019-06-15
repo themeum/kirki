@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "radio-buttonset" control
+title: WordPress Customizer Radio Buttonset Control
 slug: radio-buttonset
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a radio buttonset control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
@@ -13,7 +13,7 @@ heroButtons:
     label: Back to Controls
 ---
 
-You can define the available options using the `choices` argument and formating them as an array `key => label`.
+You can define the available options using the `choices` argument and formatting them as an array `key => label`.
 
 ### Example
 

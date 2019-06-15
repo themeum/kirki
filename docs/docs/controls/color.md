@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "color" control
+title: WordPress Customizer Color Control
 slug: color
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a color picker control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

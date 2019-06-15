@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "dropdown-pages" control
+title: WordPress Customizer Dropdown Pages Control
 slug: dropdown-pages
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a dropdown pages control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: int

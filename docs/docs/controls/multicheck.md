@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "multicheck" control
+title: WordPress Customizer Multiple Checkbox Control
 slug: multicheck
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a multiple checkbox control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: array

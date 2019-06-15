@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "switch" control
+title: WordPress Customizer Switch Control
 slug: switch
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a switch control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: boolean

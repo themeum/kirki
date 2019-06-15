@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "image" control
+title: WordPress Customizer Image Control
 slug: image
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create an image control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string|array|int

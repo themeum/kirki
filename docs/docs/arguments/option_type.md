@@ -2,6 +2,7 @@
 layout: default
 title: option_type
 published: true
+mainMaxWidth: 55rem;
 ---
 
 You don't have to manually set the `option_name` argument as it is automatically set for you from the config you're using.
@@ -23,9 +24,9 @@ Kirki::add_config( 'my_config', [
 Kirki::add_field( 'my_config', [
 	'type'     => 'text',
 	'settings' => 'my_setting',
-	'label'    => esc_html__( 'Text Control', 'my_textdomain' ),
+	'label'    => esc_html__( 'Text Control', 'kirki' ),
 	'section'  => 'my_section',
-	'default'  => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'default'  => esc_html__( 'This is a default value', 'kirki' ),
 	'priority' => 10,
 ] );
 
@@ -35,9 +36,9 @@ Kirki::add_field( 'my_config', [
 Kirki::add_field( 'my_config', [
 	'type'        => 'text',
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Text Control', 'my_textdomain' ),
+	'label'       => esc_html__( 'Text Control', 'kirki' ),
 	'section'     => 'my_section',
-	'default'     => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'default'     => esc_html__( 'This is a default value', 'kirki' ),
 	'priority'    => 10,
 	'option_type' => 'theme_mod',
 ] );

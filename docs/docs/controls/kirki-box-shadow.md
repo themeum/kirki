@@ -61,7 +61,7 @@ function my_theme_example_kirki_box_control( $wp_customize ) {
 
 	// Add a section.
 	$wp_customize->add_section( 'my_section', [
-		'title'    => esc_html__( 'My Section', 'my-textdomain' ),
+		'title'    => esc_html__( 'My Section', 'kirki' ),
 	] );
 
 	// Add setting.
@@ -71,8 +71,8 @@ function my_theme_example_kirki_box_control( $wp_customize ) {
 
 	// Add control.
 	$wp_customize->add_control( new Kirki_Box_Shadow_Control( $wp_customize, 'my_setting', [
-		'label'       => esc_html__( 'Box Shadow Control', 'my-textdomain' ),
-		'description' => esc_html__( 'Box-Shadow Options.', 'my-textdomain' ),
+		'label'       => esc_html__( 'Box Shadow Control', 'kirki' ),
+		'description' => esc_html__( 'Box-Shadow Options.', 'kirki' ),
 		'type'        => 'kirki-box-shadow',
 		'section'     => 'my_section',
 	] ) );
@@ -92,13 +92,13 @@ Kirki::add_config( 'my_theme', [
 ] );
 
 Kirki::add_section( 'my_section', [
-	'title' => esc_html__( 'My Section', 'my-textdomain' ),
+	'title' => esc_html__( 'My Section', 'kirki' ),
 ] );
 
 Kirki::add_field( 'my_theme', [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Box Shadow Control', 'my-textdomain' ),
-	'description' => esc_html__( 'Box-Shadow Options.', 'my-textdomain' ),
+	'label'       => esc_html__( 'Box Shadow Control', 'kirki' ),
+	'description' => esc_html__( 'Box-Shadow Options.', 'kirki' ),
 	'type'        => 'kirki-box-shadow',
 	'section'     => 'my_section',
 	'default'     => '0px 0px 0px 0px #000000',
@@ -124,8 +124,8 @@ To make this control affect a `#my-element` element on our page with live-updati
 ```php
 Kirki::add_field( 'my_theme', [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Box Shadow Control', 'my-textdomain' ),
-	'description' => esc_html__( 'Box-Shadow Options.', 'my-textdomain' ),
+	'label'       => esc_html__( 'Box Shadow Control', 'kirki' ),
+	'description' => esc_html__( 'Box-Shadow Options.', 'kirki' ),
 	'type'        => 'kirki-box-shadow',
 	'section'     => 'my_section',
 	'default'     => '0px 0px 0px 0px #000000',

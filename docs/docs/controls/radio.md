@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "radio" control
+title: WordPress Customizer Radio Control
 slug: radio
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create a radio control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string
@@ -45,7 +45,7 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'choices'     => [
 		'red'   => [
-			esc_html__( 'Red', 'my_textdomain' ),
+			esc_html__( 'Red', 'kirki' ),
 			esc_html__( 'These are some extra details about Red', 'kirki' ),
 		],
 		'green' => [

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: The "editor" control
+title: WordPress Customizer Editor Control
 slug: editor
-subtitle: Learn how to create controls using Kirki
+subtitle: Learn how to create an editor control using the Kirki Customizer Framework.
 mainMaxWidth: 55rem;
 bodyClasses: control page
 returns: string

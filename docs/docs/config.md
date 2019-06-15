@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configuring your project
-subtitle: How to add kirki to your project.
+subtitle: How to add Kirki to your project.
 mainMaxWidth: 55rem;
 bodyClasses: page
 heroButtons:

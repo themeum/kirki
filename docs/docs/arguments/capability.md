@@ -26,9 +26,9 @@ Kirki::add_config( 'my_config', [
 Kirki::add_field( 'my_config', [
 	'type'     => 'text',
 	'settings' => 'my_setting1',
-	'label'    => esc_html__( 'Text Control 1', 'my_textdomain' ),
+	'label'    => esc_html__( 'Text Control 1', 'kirki' ),
 	'section'  => 'my_section',
-	'default'  => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'default'  => esc_html__( 'This is a default value', 'kirki' ),
 	'priority' => 10,
 ] );
 
@@ -37,9 +37,9 @@ Kirki::add_field( 'my_config', [
 Kirki::add_field( 'my_config', [
 	'type'        => 'text',
 	'settings'    => 'my_setting2',
-	'label'       => esc_html__( 'Text Control 2', 'my_textdomain' ),
+	'label'       => esc_html__( 'Text Control 2', 'kirki' ),
 	'section'     => 'my_section',
-	'default'     => esc_html__( 'This is a default value', 'my_textdomain' ),
+	'default'     => esc_html__( 'This is a default value', 'kirki' ),
 	'priority'    => 10,
 	'capability'  => 'edit_theme_options'
 ] );
