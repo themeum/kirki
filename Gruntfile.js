@@ -97,7 +97,6 @@ module.exports = function( grunt ) {
 					'controls/js/src/dimension.js',
 					'controls/js/src/dimensions.js',
 					'controls/js/src/editor.js',
-					'controls/js/src/fontawesome.js',
 					'controls/js/src/multicheck.js',
 					'controls/js/src/multicolor.js',
 					'controls/js/src/number.js',
