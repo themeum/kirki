@@ -61,7 +61,7 @@ function my_theme_example_kirki_box_control( $wp_customize ) {
 
 	// Add a section.
 	$wp_customize->add_section( 'my_section', [
-		'title'    => esc_html__( 'My Section', 'my-textdomain' ),
+		'title'    => esc_html__( 'My Section', 'kirki' ),
 	] );
 
 	// Add setting.
@@ -85,8 +85,8 @@ function my_theme_example_kirki_box_control( $wp_customize ) {
 
 	// Add control.
 	$wp_customize->add_control( new Kirki_Box_Model_Control( $wp_customize, 'my_setting', [
-		'label'       => esc_html__( 'Box Model Control', 'my-textdomain' ),
-		'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'my-textdomain' ),
+		'label'       => esc_html__( 'Box Model Control', 'kirki' ),
+		'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'kirki' ),
 		'type'        => 'kirki-box-model',
 		'section'     => 'my_section',
 	] ) );
@@ -106,13 +106,13 @@ Kirki::add_config( 'my_theme', [
 ] );
 
 Kirki::add_section( 'my_section', [
-	'title' => esc_html__( 'My Section', 'my-textdomain' ),
+	'title' => esc_html__( 'My Section', 'kirki' ),
 ] );
 
 Kirki::add_field( 'my_theme', [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Box Model Control', 'my-textdomain' ),
-	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'my-textdomain' ),
+	'label'       => esc_html__( 'Box Model Control', 'kirki' ),
+	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'kirki' ),
 	'type'        => 'kirki-box-model',
 	'section'     => 'my_section',
 	'default'     => [
@@ -136,7 +136,7 @@ In the above examples We add a `my_section` section and inside that section a bo
 
 ## Arguments
 
-The control accepts the same arguments as any other control. 
+The control accepts the same arguments as any other control.
 
 ## Return value
 
@@ -151,8 +151,8 @@ To make this control affect a `#my-element` element on our page with live-updati
 ```php
 Kirki::add_field( 'my_theme', [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Box Model Control', 'my-textdomain' ),
-	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'my-textdomain' ),
+	'label'       => esc_html__( 'Box Model Control', 'kirki' ),
+	'description' => esc_html__( 'You can select the margin, border-width and padding for your element.', 'kirki' ),
 	'type'        => 'kirki-box-model',
 	'section'     => 'my_section',
 	'default'     => [

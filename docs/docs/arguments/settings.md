@@ -13,7 +13,7 @@ If for example you create a field using something like this:
 Kirki::add_field( 'global', [
     'type'     => 'color',
     'settings' => 'body_background_color',
-    'label'    => esc_html__( 'This is the label', 'my_textdomain' ),
+    'label'    => esc_html__( 'This is the label', 'kirki' ),
     'section'  => 'my_section',
     'default'  => '#0088CC',
     'priority' => 10,
