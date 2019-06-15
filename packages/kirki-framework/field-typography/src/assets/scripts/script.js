@@ -29,11 +29,11 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 				fontWeights.push( parseInt( variant ) );
 			}
 
-			if ( hasItalics && control.active() ) {
-				fontStyleControl.activate();
-			} else {
-				fontStyleControl.deactivate();
-			}
+			// if ( hasItalics && control.active() ) {
+			// 	fontStyleControl.activate();
+			// } else {
+			// 	fontStyleControl.deactivate();
+			// }
 		} );
 
 		/**
