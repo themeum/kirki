@@ -4,7 +4,7 @@ Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 5.2
-Stable tag: 3.0.42
+Stable tag: 3.0.43
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -73,12 +73,11 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.0.42 =
+= 3.0.43 =
 
-Jun.16 2019, dev time: 2h
+Jun.16 2019, dev time: 30m
 
-* Deprecated: `fontawesome` field was deprecated. If a theme uses this field users will be prompted to install the official Font Awesome plugin from the w.org repository.
-* Fix: Transient for Google Fonts now has a lifetime of 1 day instead of 1 week.
-* Fix: Updated Google Fonts list.
+* Fix: Google Fonts URL references in multisites.
+* New: It is now possible to reset Kirki google-font caches by visiting {site-url}/?action=kirki-reset-cache
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).

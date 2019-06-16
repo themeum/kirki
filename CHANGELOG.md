@@ -1,3 +1,10 @@
+## 3.0.43
+
+Jun.16 2019, dev time: 30m
+
+* Fix: Google Fonts URL references in multisites.
+* New: It is now possible to reset Kirki google-font caches by visiting {site-url}/?action=kirki-reset-cache
+
 ## 3.0.42
 
 Jun.16 2019, dev time: 2h
