@@ -12,15 +12,30 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_FontAwesome extends Kirki_Field {
+class Kirki_Field_FontAwesome extends Kirki_Field_Select {
 
 	/**
-	 * Sets the control type.
+	 * Set dropdown choices from the FA JSON.
 	 *
 	 * @access protected
+	 * @since 3.0.42
+	 * @return void
 	 */
-	protected function set_type() {
-		$this->type = 'kirki-fontawesome';
+	protected function set_choices() {
+		ob_start();
+		$json_path = wp_normalize_path( Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json' );
+		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		$font_awesome_json = ob_get_clean();
+
+		$fa_array = (array) json_decode( $font_awesome_json, true );
+
+		$this->choices = array();
+		foreach ( $fa_array['icons'] as $icon ) {
+			if ( ! isset( $icon['id'] ) || ! isset( $icon['name'] ) ) {
+				continue;
+			}
+			$this->choices[ $icon['id'] ] = $icon['name'];
+		}
 	}
 
 	/**

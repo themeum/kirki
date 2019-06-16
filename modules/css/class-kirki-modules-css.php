@@ -34,16 +34,6 @@ class Kirki_Modules_CSS {
 	public static $css_array = array();
 
 	/**
-	 * Should we enqueue font-awesome?
-	 *
-	 * @static
-	 * @access protected
-	 * @since 3.0.26
-	 * @var bool
-	 */
-	protected static $enqueue_fa = false;
-
-	/**
 	 * Constructor
 	 *
 	 * @access protected
@@ -154,11 +144,6 @@ class Kirki_Modules_CSS {
 			array(),
 			KIRKI_VERSION
 		);
-
-		// Enqueue FA if needed (I hope not, this FA version is pretty old, only kept here for backwards-compatibility purposes).
-		if ( self::$enqueue_fa && apply_filters( 'kirki_load_fontawesome', true ) ) {
-			wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.0.7' );
-		}
 	}
 
 	/**
@@ -286,27 +271,26 @@ class Kirki_Modules_CSS {
 	}
 
 	/**
-	 * Runs when we're adding a font-awesome field to allow enqueueing the
-	 * fontawesome script on the frontend.
+	 * The FA field got deprecated in v3.0.42.
+	 * This is here for backwards-compatibility in case a theme was calling it directly.
 	 *
 	 * @static
 	 * @since 3.0.26
 	 * @access public
 	 * @return void
 	 */
-	public static function add_fontawesome_script() {
-		self::$enqueue_fa = true;
-	}
+	public static function add_fontawesome_script() {}
 
 	/**
-	 * Check if FontAwesome should be loaded.
+	 * The FA field got deprecated in v3.0.42.
+	 * This is here for backwards-compatibility in case a theme was calling it directly.
 	 *
 	 * @static
 	 * @since 3.0.35
 	 * @access public
-	 * @return bool
+	 * @return false
 	 */
 	public static function get_enqueue_fa() {
-		return self::$enqueue_fa;
+		return false;
 	}
 }

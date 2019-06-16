@@ -237,14 +237,11 @@ class Kirki extends Kirki_Init {
 			_doing_it_wrong( __METHOD__, esc_html__( 'Kirki fields should not be added on customize_register. Please add them directly, or on init.', 'kirki' ), '3.0.10' );
 		}
 
+		parent::maybe_show_fontawesome_nag( $args );
+
 		// Early exit if 'type' is not defined.
 		if ( ! isset( $args['type'] ) ) {
 			return;
-		}
-
-		// If the field is font-awesome, enqueue the icons on the frontend.
-		if ( class_exists( 'Kirki_Modules_CSS' ) && ( 'fontawesome' === $args['type'] || 'kirki-fontawesome' === $args['type'] ) ) {
-			Kirki_Modules_CSS::add_fontawesome_script();
 		}
 
 		$str       = str_replace( array( '-', '_' ), ' ', $args['type'] );
