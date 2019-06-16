@@ -122,8 +122,13 @@ final class Kirki_Fonts {
 		// Get fonts from cache.
 		self::$google_fonts = get_site_transient( 'kirki_googlefonts_cache' );
 
-		// If we're debugging, don't use cached.
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		/**
+		 * Reset the cache if we're debugging, or if we force-reset caches using action=kirki-reset-cache in the URL.
+		 *
+		 * Note to code reviewers:
+		 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
+		 */
+		if ( ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			self::$google_fonts = false;
 		}
 
