@@ -509,7 +509,7 @@ class Typography extends Field {
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'kirki-control-typography-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script.js' ), [], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script.js' ), [ 'wp-hooks' ], '1.0', true );
 		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
 
 		if ( ! self::$gfonts_var_added ) {
@@ -519,3 +519,4 @@ class Typography extends Field {
 		}
 	}
 }
+

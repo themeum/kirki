@@ -1318,12 +1318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "5d6cbb5198020f6384ab46ab42b84344c8a8b4d8"
+                "reference": "a581fe10a342e2ba6e1b256356104612743226b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/5d6cbb5198020f6384ab46ab42b84344c8a8b4d8",
-                "reference": "5d6cbb5198020f6384ab46ab42b84344c8a8b4d8",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/a581fe10a342e2ba6e1b256356104612743226b8",
+                "reference": "a581fe10a342e2ba6e1b256356104612743226b8",
                 "shasum": ""
             },
             "require": {
@@ -1361,7 +1361,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-16T14:59:02+00:00"
+            "time": "2019-06-16T17:02:20+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1691,12 +1691,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "3e052d469612bed6d3fda58a983274740b4f0967"
+                "reference": "62b121a300befbe89367487a6c4484d5ff3dabde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/3e052d469612bed6d3fda58a983274740b4f0967",
-                "reference": "3e052d469612bed6d3fda58a983274740b4f0967",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/62b121a300befbe89367487a6c4484d5ff3dabde",
+                "reference": "62b121a300befbe89367487a6c4484d5ff3dabde",
                 "shasum": ""
             },
             "require": {
@@ -1729,7 +1729,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-15T07:30:47+00:00"
+            "time": "2019-06-16T17:01:54+00:00"
         },
         {
             "name": "kirki-framework/module-preset",
