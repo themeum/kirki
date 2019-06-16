@@ -53,105 +53,105 @@ li {
       }
     }
 
-    &[kirki-typography-subcontrol-type="font-weight"] {
-      display: flex !important;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+    // &[kirki-typography-subcontrol-type="font-weight"] {
+    //   display: flex !important;
+    //   justify-content: space-between;
+    //   align-items: center;
+    //   flex-wrap: wrap;
 
-      div.buttonset {
-        width: 100%;
-        margin: 1.2em 0;
+    //   div.buttonset {
+    //     width: 100%;
+    //     margin: 1.2em 0;
 
-        label {
-          position: relative;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-          background-color: #00a0d2;
-          height: 6px;
+    //     label {
+    //       position: relative;
+    //       padding: 0;
+    //       display: flex;
+    //       justify-content: center;
+    //       background-color: #00a0d2;
+    //       height: 6px;
 
-          .indicator {
-            display: block;
-            width: 1em;
-            height: 1em;
-          }
+    //       .indicator {
+    //         display: block;
+    //         width: 1em;
+    //         height: 1em;
+    //       }
 
-          .sublabel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            line-height: 1em;
-            font-weight: 700;
-            width: 100%;
-            text-align: center;
-            transition: all .2s;
-          }
+    //       .sublabel {
+    //         position: absolute;
+    //         top: 0;
+    //         left: 0;
+    //         line-height: 1em;
+    //         font-weight: 700;
+    //         width: 100%;
+    //         text-align: center;
+    //         transition: all .2s;
+    //       }
 
-          &:nth-child(2n) {
-            .sublabel {
-              top: -17px;
-            }
-          }
+    //       &:nth-child(2n) {
+    //         .sublabel {
+    //           top: -17px;
+    //         }
+    //       }
 
-          &:nth-child(4n) {
-            .sublabel {
-              top: 11px;
-            }
-          }
-        }
+    //       &:nth-child(4n) {
+    //         .sublabel {
+    //           top: 11px;
+    //         }
+    //       }
+    //     }
 
-        .switch-input {
-          &:checked+.switch-label {
-            background: linear-gradient(to right, #00a0d2 0%, #00a0d2 50%, rgba(0, 0, 0, .1) 51%, rgba(0, 0, 0, .1) 100%);
+    //     .switch-input {
+    //       &:checked+.switch-label {
+    //         background: linear-gradient(to right, #00a0d2 0%, #00a0d2 50%, rgba(0, 0, 0, .1) 51%, rgba(0, 0, 0, .1) 100%);
 
-            .indicator {
-              &:after {
-                content: "";
-                position: absolute;
-                display: block;
-                width: 6px;
-                height: 14;
-                background: #00a0d2;
-                top: -4px;
-                left: calc(50% - 3px);
-                border-radius: 3px;
-              }
-            }
+    //         .indicator {
+    //           &:after {
+    //             content: "";
+    //             position: absolute;
+    //             display: block;
+    //             width: 6px;
+    //             height: 14;
+    //             background: #00a0d2;
+    //             top: -4px;
+    //             left: calc(50% - 3px);
+    //             border-radius: 3px;
+    //           }
+    //         }
 
-            .sublabel {
-              color: #00a0d2;
-              font-size: 15px;
-            }
+    //         .sublabel {
+    //           color: #00a0d2;
+    //           font-size: 15px;
+    //         }
 
-            ~.switch-label {
-              background: rgba(0, 0, 0, .1);
-            }
-            &:nth-child(2n) {
-              .sublabel {
-                top: -21px;
-              }
-            }
+    //         ~.switch-label {
+    //           background: rgba(0, 0, 0, .1);
+    //         }
+    //         &:nth-child(2n) {
+    //           .sublabel {
+    //             top: -21px;
+    //           }
+    //         }
   
-            &:nth-child(4n) {
-              .sublabel {
-                top: 15px;
-              }
-            }  
-          }
+    //         &:nth-child(4n) {
+    //           .sublabel {
+    //             top: 15px;
+    //           }
+    //         }  
+    //       }
 
-          &[disabled=true],
-          &[disabled=disabled] {
-            +.switch-label {
-              .sublabel {
-                color: #c4c4c4;
-                font-weight: 300;
-              }
-            }
-          }
-        }
-      }
-    }
+    //       &[disabled=true],
+    //       &[disabled=disabled] {
+    //         +.switch-label {
+    //           .sublabel {
+    //             color: #c4c4c4;
+    //             font-weight: 300;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     .customize-control-title {
       font-weight: 400;

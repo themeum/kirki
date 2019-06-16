@@ -1,125 +1,46 @@
-li[data-kirki-parent-control-type=kirki-typography] {
-  margin-bottom: 8px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label {
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label .select2-container, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label input,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label .select2-container {
-  max-width: 100px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration], li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] {
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label {
-  padding: 0.5em;
-  border-radius: 50%;
-  background: none;
-  width: 1.5em;
-  height: 1.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label > *,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label > *,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label > *,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label svg, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label > *,
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label svg {
-  width: 1.2em;
-  height: 1.2em;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] div.buttonset label .dashicons, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] div.buttonset label .dashicons, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] div.buttonset label .dashicons, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] div.buttonset label .dashicons {
-  width: 1.2em;
-  height: 1.2em;
-  font-size: 1.2em;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] {
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset {
-  width: 100%;
-  margin: 1.2em 0;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label {
-  position: relative;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  background-color: #00a0d2;
-  height: 6px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label .indicator {
-  display: block;
-  width: 1em;
-  height: 1em;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label .sublabel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 1em;
-  font-weight: 700;
-  width: 100%;
-  text-align: center;
-  transition: all 0.2s;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label:nth-child(2n) .sublabel {
-  top: -17px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset label:nth-child(4n) .sublabel {
-  top: 11px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label {
-  background: linear-gradient(to right, #00a0d2 0%, #00a0d2 50%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.1) 100%);
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label .indicator:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 6px;
-  height: 14;
-  background: #00a0d2;
-  top: -4px;
-  left: calc(50% - 3px);
-  border-radius: 3px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label .sublabel {
-  color: #00a0d2;
-  font-size: 15px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label ~ .switch-label {
-  background: rgba(0, 0, 0, 0.1);
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label:nth-child(2n) .sublabel {
-  top: -21px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input:checked + .switch-label:nth-child(4n) .sublabel {
-  top: 15px;
-}
-li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input[disabled=true] + .switch-label .sublabel, li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-weight] div.buttonset .switch-input[disabled=disabled] + .switch-label .sublabel {
-  color: #c4c4c4;
-  font-weight: 300;
-}
-li[data-kirki-parent-control-type=kirki-typography] .customize-control-title {
-  font-weight: 400;
-}
+li[data-kirki-parent-control-type="kirki-typography"] {
+  margin-bottom: 8px; }
+  li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-size"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="line-height"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="letter-spacing"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="word-spacing"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-top"] label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-bottom"] label {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center; }
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-size"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-size"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="line-height"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="line-height"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="letter-spacing"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="letter-spacing"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="word-spacing"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="word-spacing"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-top"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-top"] label .select2-container, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-bottom"] label input,
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="margin-bottom"] label .select2-container {
+      max-width: 100px; }
+  li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-style"], li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-align"], li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"], li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-transform"] {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center; }
+    li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-style"] div.buttonset label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-align"] div.buttonset label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] div.buttonset label, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-transform"] div.buttonset label {
+      padding: .5em;
+      border-radius: 50%;
+      background: none;
+      width: 1.5em;
+      height: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-style"] div.buttonset label > *,
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-style"] div.buttonset label svg, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-align"] div.buttonset label > *,
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-align"] div.buttonset label svg, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] div.buttonset label > *,
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] div.buttonset label svg, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-transform"] div.buttonset label > *,
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-transform"] div.buttonset label svg {
+        width: 1.2em;
+        height: 1.2em; }
+      li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="font-style"] div.buttonset label .dashicons, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-align"] div.buttonset label .dashicons, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-decoration"] div.buttonset label .dashicons, li[data-kirki-parent-control-type="kirki-typography"][kirki-typography-subcontrol-type="text-transform"] div.buttonset label .dashicons {
+        width: 1.2em;
+        height: 1.2em;
+        font-size: 1.2em; }
+  li[data-kirki-parent-control-type="kirki-typography"] .customize-control-title {
+    font-weight: 400; }
 
 .kirki-typography-end {
-  margin-bottom: 12px;
-}
+  margin-bottom: 12px; }
 
 /*# sourceMappingURL=style.css.map */

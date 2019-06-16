@@ -172,24 +172,24 @@ class Typography extends Field {
 			$font_weight = 'regular' === $font_weight || 'italic' === $font_weight ? 400 : (int) $font_weight;
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-weight';
 
-			new \Kirki\Field\Radio_Buttonset(
+			new \Kirki\Field\Select(
 				wp_parse_args(
 					[
 						'label'       => esc_html__( 'Font Weight', 'kirki' ),
 						'description' => '',
-						'type'        => 'radio-buttonset',
+						'type'        => 'select',
 						'settings'    => $args['settings'] . '[font-weight]',
 						'default'     => $font_weight,
 						'choices'     => [
-							'100' => '<span class="indicator" title="' . esc_html__( '100 - Thin', 'kirki' ) . '"><span class="sublabel">100</span></span>',
-							'200' => '<span class="indicator" title="' . esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ) . '"><span class="sublabel">200</span></span>',
-							'300' => '<span class="indicator" title="' . esc_html__( '300 - Light', 'kirki' ) . '"><span class="sublabel">300</span></span>',
-							'400' => '<span class="indicator" title="' . esc_html__( '400 - Normal, Book, Regular', 'kirki' ) . '"><span class="sublabel">400</span></span>',
-							'500' => '<span class="indicator" title="' . esc_html__( '500 - Medium', 'kirki' ) . '"><span class="sublabel">500</span></span>',
-							'600' => '<span class="indicator" title="' . esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ) . '"><span class="sublabel">600</span></span>',
-							'700' => '<span class="indicator" title="' . esc_html__( '700 - Bold', 'kirki' ) . '"><span class="sublabel">700</span></span>',
-							'800' => '<span class="indicator" title="' . esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ) . '"><span class="sublabel">800</span></span>',
-							'900' => '<span class="indicator" title="' . esc_html__( '900 - Black, Heavy', 'kirki' ) . '"><span class="sublabel">900</span></span>',
+							'100' => esc_html__( '100 - Thin', 'kirki' ),
+							'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
+							'300' => esc_html__( '300 - Light', 'kirki' ),
+							'400' => esc_html__( '400 - Normal, Book, Regular', 'kirki' ),
+							'500' => esc_html__( '500 - Medium', 'kirki' ),
+							'600' => esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ),
+							'700' => esc_html__( '700 - Bold', 'kirki' ),
+							'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
+							'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
 						],
 					],
 					$args

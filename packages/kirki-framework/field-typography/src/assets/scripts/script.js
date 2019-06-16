@@ -29,6 +29,10 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 				fontWeights.push( parseInt( variant ) );
 			}
 
+			if ( ! hasItalics ) {
+				fontStyleControl.setting.set( 'normal' );
+			}
+
 			// if ( hasItalics && control.active() ) {
 			// 	fontStyleControl.activate();
 			// } else {
@@ -45,6 +49,7 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 			closest = fontWeights.reduce( function( prev, curr ) {
 				return ( Math.abs( curr - parseInt( value['font-weight'] ) ) < Math.abs( prev - parseInt( value['font-weight'] ) ) ? curr : prev );
 			} );
+			fontWeightControl.doSelectAction( 'selectOption', closest.toString() );
 			fontWeightControl.setting.set( closest.toString() );
 		}
 
@@ -60,18 +65,28 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		/**
 		 * Hide/show font-weight options depending on which are available for this font-family.
 		 */
-		_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-			fontWeightControl.container.find( '[value=' + weight + ']' ).attr( 'disabled', -1 === fontWeights.indexOf( weight ) );
-		} );
+		if ( fontWeightControl ) {
+			_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
+				if ( -1 === fontWeights.indexOf( weight ) ) {
+					fontWeightControl.doSelectAction( 'enableOption', weight.toString() );
+				} else {
+					fontWeightControl.doSelectAction( 'disableOption', weight.toString() );
+				}
+			} );
+		}
 	}
 
 	wp.hooks.addAction(
 		'kirki.dynamicControl.initKirkiControl',
 		'kirki',
 		function( controlInit ) {
-			if ( id + '[font-weight]' === controlInit.id ) {
+			if ( fontWeightControl && id + '[font-weight]' === controlInit.id ) {
 				_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-					fontWeightControl.container.find( '[value=' + weight + ']' ).attr( 'disabled', -1 === fontWeights.indexOf( weight ) );
+					if ( -1 === fontWeights.indexOf( weight ) ) {
+						fontWeightControl.doSelectAction( 'enableOption', weight.toString() );
+					} else {
+						fontWeightControl.doSelectAction( 'disableOption', weight.toString() );
+					}
 				} );
 			}
 		}
