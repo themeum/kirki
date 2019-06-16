@@ -146,12 +146,15 @@ final class Kirki_Modules_Webfonts_Embed {
 			$url     = "https://fonts.googleapis.com/css?family={$family}:{$weights}&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai";
 
 			$transient_id = 'kirki_gfonts_' . md5( $url );
-			$contents     = get_site_transient( $transient_id );
+			$contents     = get_transient( $transient_id );
+
 			/**
+			 * Reset the cache if we're debugging, or if we force-reset caches using action=kirki-reset-cache in the URL.
+			 *
 			 * Note to code reviewers:
 			 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
 			 */
-			if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				$contents = false;
 			}
 			if ( ! $contents ) {
@@ -201,7 +204,7 @@ final class Kirki_Modules_Webfonts_Embed {
 					);
 
 					// Set the transient for a day.
-					set_site_transient( $transient_id, $contents, DAY_IN_SECONDS );
+					set_transient( $transient_id, $contents, DAY_IN_SECONDS );
 				}
 			}
 			if ( $contents ) {
