@@ -60,3 +60,5 @@ build/logs
 .phpcs.xml
 phpcs.xml
 .css.map
+
+packages/wptrt/wpthemereview/
