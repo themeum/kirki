@@ -147,6 +147,7 @@ class Typography extends Field {
 						'label'       => esc_html__( 'Font Family', 'kirki' ),
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-family]',
+						'default'     => isset( $args['default']['font-family'] ) ? $args['default']['font-family'] : '',
 						'choices'     => [
 							'standard' => [
 								esc_html__( 'Standard Fonts', 'kirki' ),
