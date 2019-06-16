@@ -129,8 +129,10 @@ final class Kirki_Modules_Webfonts_Embed {
 		// Sanitize the URL.
 		$url = esc_url_raw( $url );
 
+		$site_id = is_multisite() ? get_current_blog_id() . '_' : '';
+
 		// The transient name.
-		$transient_name = 'kirki_googlefonts_contents_' . md5( $url );
+		$transient_name = 'kirki_googlefonts_contents_' . $site_id . md5( $url );
 
 		// Get the transient value.
 		$data = get_transient( $transient_name );
