@@ -338,7 +338,7 @@ class Kirki_Init {
 	 */
 	public function admin_notices() {
 
-		// No need for a nag if we don't need to recommed installing the FA plugin.
+		// No need for a nag if we don't need to recommend installing the FA plugin.
 		if ( ! self::$show_fa_nag ) {
 			return;
 		}
@@ -362,7 +362,7 @@ class Kirki_Init {
 		?>
 		<div class="notice notice-info is-dismissible">
 			<p>
-				<?php esc_html_e( 'Your theme uses a font-awesome field for icons. To avoid issues with missing icons on your frontend we recommend you install the Font Awesome plugin.', 'kirki' ); ?>
+				<?php esc_html_e( 'Your theme uses a Font Awesome field for icons. To avoid issues with missing icons on your frontend we recommend you install the official Font Awesome plugin.', 'kirki' ); ?>
 			</p>
 			<p>
 				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=font-awesome&TB_iframe=true&width=600&height=550' ) ); ?>"><?php esc_html_e( 'Install Plugin', 'kirki' ); ?></a>
