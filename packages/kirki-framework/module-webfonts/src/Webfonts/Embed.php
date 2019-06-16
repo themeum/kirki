@@ -199,8 +199,8 @@ final class Embed {
 
 					// Remove protocol to fix http/https issues.
 					$contents = str_replace(
-						array( 'http://', 'https://' ),
-						array( '//', '//' ),
+						[ 'http://', 'https://' ],
+						[ '//', '//' ],
 						$contents
 					);
 

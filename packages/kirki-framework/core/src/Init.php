@@ -48,7 +48,7 @@ class Init {
 		add_action( 'customize_register', [ $this, 'remove_controls' ], 99999 );
 
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
-		add_action( 'admin_init', array( $this, 'dismiss_nag' ) );
+		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
 		new Values();
 		new Sections();
@@ -377,7 +377,7 @@ class Init {
 		}
 
 		// Check if the field is fontawesome.
-		if ( isset( $args['type'] ) && in_array( $args['type'], array( 'fontawesome', 'kirki-fontawesome' ), true ) ) {
+		if ( isset( $args['type'] ) && in_array( $args['type'], [ 'fontawesome', 'kirki-fontawesome' ], true ) ) {
 
 			// Skip check if theme has disabled FA enqueueing via a filter.
 			if ( ! apply_filters( 'kirki_load_fontawesome', true ) ) {
