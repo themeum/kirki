@@ -1,7 +1,7 @@
 {
-    "name": "kirki-framework/control-fontawesome",
+    "name": "kirki-framework/field-fontawesome",
     "type": "library",
-    "description": "Font-Awesome control for the Kirki Customizer framework.",
+    "description": "Font-Awesome field for the Kirki Customizer framework.",
     "keywords": ["wordpress","customizer","framework"],
     "homepage": "https://aristath.github.io/kirki",
     "license": "MIT",

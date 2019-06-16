@@ -28,13 +28,13 @@ class FontAwesome extends Select {
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
 		if ( $args['settings'] === $this->args['settings'] ) {
-			$args         = parent::filter_control_args( $args, $wp_customize );
+			$args = parent::filter_control_args( $args, $wp_customize );
 
 			ob_start();
-			$json_path = wp_normalize_path( dirname( __DIR__ ) . '/assets/json/fontawesome.json' );
-			include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+			include 'fontawesome.json'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			$font_awesome_json = ob_get_clean();
-			$fa_array = (array) json_decode( $font_awesome_json, true );
+
+			$fa_array        = (array) json_decode( $font_awesome_json, true );
 			$args['choices'] = [];
 			foreach ( $fa_array['icons'] as $icon ) {
 				if ( ! isset( $icon['id'] ) || ! isset( $icon['name'] ) ) {
