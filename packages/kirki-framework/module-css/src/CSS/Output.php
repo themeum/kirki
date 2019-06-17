@@ -12,6 +12,7 @@
 namespace Kirki\Module\CSS;
 
 use Kirki\Core\Values;
+use Kirki\Core\Kirki;
 
 /**
  * Handles field CSS output.
