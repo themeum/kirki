@@ -147,7 +147,7 @@ class Color extends Base {
 			type="text"
 			data-type="{{ data.mode }}"
 			{{{ data.inputAttrs }}}
-			data-palette="ddd"
+			data-palette="{{ JSON.stringify( palette ) }}"
 			data-default-color="{{ data.default }}"
 			data-alpha="{{ data.choices.alpha }}"
 			value="{{ data.value }}"
