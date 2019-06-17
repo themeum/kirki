@@ -6,7 +6,7 @@ mainMaxWidth: 55rem;
 bodyClasses: page
 ---
 
-Though you can create new control types for the WordPress Customizer using its API, you may want to register your control with Kirki as well so you can define fields using that control type directly.
+Though you can create new control types for the WordPress Customizer using its API, you may want to register your control with Kirki instead so you can define fields using that control type directly.
 
 To do that you can write something like the example below:
 
@@ -34,3 +34,5 @@ add_action( 'customize_register', function( $wp_customize ) {
 ```
 
 You can then create new fields using your own control simply by defining `notice` as your field's [`type`](https://kirki.org/docs/arguments/type).
+
+By extending `Kirki_Control_Base` instead of WordPress' core `WP_Customize_Control` you give your custom control access to all Kirki's arguments such as <a href="https://kirki.org/docs/arguments/output">output</a>.
