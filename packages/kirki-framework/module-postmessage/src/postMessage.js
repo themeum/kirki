@@ -148,8 +148,6 @@ var kirkiPostMessage = {
 
 			if ( '' === styles ) {
 				switch ( controlType ) {
-					case 'kirki-background':
-					case 'kirki-dimensions':
 					case 'kirki-multicolor':
 					case 'kirki-sortable':
 						styles += output.element + '{';
@@ -157,24 +155,10 @@ var kirkiPostMessage = {
 							if ( output.choice && key !== output.choice ) {
 								return;
 							}
-							if ( 'background-image' === key ) {
-								val = kirkiPostMessage.util.backgroundImageValue( val );
-							}
-
 							processedValue = kirkiPostMessage.util.processValue( output, val );
 
 							if ( false !== processedValue ) {
-
-								// Mostly used for padding, margin & position properties.
-								if ( output.property ) {
-									styles += output.property;
-									if ( '' !== output.property && ( 'top' === key || 'bottom' === key || 'left' === key || 'right' === key ) ) {
-										styles += '-' + key;
-									}
-									styles += ':' + processedValue + ';';
-								} else {
-									styles += key + ':' + processedValue + ';';
-								}
+								styles += output.property ? output.property + '-' + key + ':' + processedValue + ';': key + ':' + processedValue + ';';
 							}
 						} );
 						styles += '}';

@@ -1173,12 +1173,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-background.git",
-            "reference": "fc7861cdc9594a3d2076d63e7fcd123fafbe36ce"
+            "reference": "81ee73014c38f008aa4ab998555ab0938f224fc5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/fc7861cdc9594a3d2076d63e7fcd123fafbe36ce",
-            "reference": "fc7861cdc9594a3d2076d63e7fcd123fafbe36ce",
+            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/81ee73014c38f008aa4ab998555ab0938f224fc5",
+            "reference": "81ee73014c38f008aa4ab998555ab0938f224fc5",
             "shasum": ""
         },
         "require": {
@@ -1187,12 +1187,12 @@
             "kirki-framework/control-select": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-02T11:06:26+00:00",
+        "time": "2019-06-17T18:26:42+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Kirki\\Field\\": "src/Field"
+                "Kirki\\Field\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1222,12 +1222,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-dimensions.git",
-            "reference": "a61b6bdd1cbce305274600827ee9380afd67f330"
+            "reference": "294e01d8803b62f0949fcbbd653e6f0d76fd054f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/a61b6bdd1cbce305274600827ee9380afd67f330",
-            "reference": "a61b6bdd1cbce305274600827ee9380afd67f330",
+            "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/294e01d8803b62f0949fcbbd653e6f0d76fd054f",
+            "reference": "294e01d8803b62f0949fcbbd653e6f0d76fd054f",
             "shasum": ""
         },
         "require": {
@@ -1235,12 +1235,12 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-05-12T08:31:24+00:00",
+        "time": "2019-06-17T18:27:15+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
             "psr-4": {
-                "Kirki\\Field\\": "src/Field"
+                "Kirki\\Field\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1757,12 +1757,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-postMessage.git",
-            "reference": "62b121a300befbe89367487a6c4484d5ff3dabde"
+            "reference": "3d317d42073bc66291f94a49b7a9500bacba3d40"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/62b121a300befbe89367487a6c4484d5ff3dabde",
-            "reference": "62b121a300befbe89367487a6c4484d5ff3dabde",
+            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/3d317d42073bc66291f94a49b7a9500bacba3d40",
+            "reference": "3d317d42073bc66291f94a49b7a9500bacba3d40",
             "shasum": ""
         },
         "require": {
@@ -1770,7 +1770,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-16T17:01:54+00:00",
+        "time": "2019-06-17T18:29:31+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

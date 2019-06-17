@@ -156,6 +156,7 @@ class Dimensions extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'kirki-control-dimensions-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], '1.0' );
+		wp_enqueue_style( 'kirki-field-dimensions', URL::get_from_path( __DIR__ . '/style.css' ), [], '1.0' );
+		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( __DIR__ ) . 'script.js', [ 'kirki_auto_postmessage' ], '1.0', true );
 	}
 }
