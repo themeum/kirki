@@ -12,6 +12,7 @@ namespace Kirki\Field;
 
 use Kirki;
 use Kirki\Field;
+use Kirki\URL;
 
 /**
  * Field overrides.

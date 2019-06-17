@@ -1173,21 +1173,22 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-background.git",
-            "reference": "81ee73014c38f008aa4ab998555ab0938f224fc5"
+            "reference": "5fdd987ca336ec0d28c2d09e06ec56f27947ae86"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/81ee73014c38f008aa4ab998555ab0938f224fc5",
-            "reference": "81ee73014c38f008aa4ab998555ab0938f224fc5",
+            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/5fdd987ca336ec0d28c2d09e06ec56f27947ae86",
+            "reference": "5fdd987ca336ec0d28c2d09e06ec56f27947ae86",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-color": "*",
             "kirki-framework/control-radio": "*",
             "kirki-framework/control-select": "*",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-17T18:26:42+00:00",
+        "time": "2019-06-17T18:36:06+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
