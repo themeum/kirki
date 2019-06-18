@@ -1,6 +1,6 @@
 <?php
 /**
- * Hekoers to get the values of a field.
+ * Helpers to get the values of a field.
  * WARNING: PLEASE DO NOT USE THESE.
  * we only have these for backwards-compatibility purposes.
  * please use get_option() & get_theme_mod() instead.
