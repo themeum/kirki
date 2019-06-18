@@ -449,27 +449,13 @@ my_config_kirki_add_field(
 	[
 		'type'        => 'dropdown-pages',
 		'settings'    => 'dropdown-pages',
-		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+		'label'       => esc_html__( 'Dropdown Pages Control', 'kirki' ),
 		'description' => esc_html__( 'Description Here.', 'kirki' ),
 		'section'     => 'dropdown_pages_section',
 		'default'     => [
 			'width'  => '100px',
 			'height' => '100px',
 		],
-	]
-);
-
-/**
- * Font-Awesome Control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'fontawesome',
-		'settings'    => 'fontawesome_setting',
-		'label'       => esc_html__( 'Font Awesome Control', 'kirki' ),
-		'description' => esc_html__( 'Description Here.', 'kirki' ),
-		'section'     => 'fontawesome_section',
-		'default'     => 'bath',
 	]
 );
 
