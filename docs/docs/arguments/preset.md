@@ -7,7 +7,7 @@ mainMaxWidth: 55rem;
 
 The `preset` argument allows you to change the values of one or more controls, based on the value of another control.
 
-In the following example, changing the `color_scheme_radio` will automatically update the values of `color_setting_one` and `color_setting_two`. The color controls retain the functionality to be interacted with independently.
+In the following example, changing the value of `color_scheme_radio` will automatically update the values of `color_setting_one` and `color_setting_two`. The color controls retain the functionality to be interacted with independently.
 
 Example:
 
@@ -49,7 +49,7 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_one',
-	'label'       => __( 'Color Control', 'kirki' ),
+	'label'       => __( 'Color Control One', 'kirki' ),
 	'description' => esc_html__( 'This is a color control.', 'kirki' ),
 	'section'     => 'preset_section',
 	'default'     => '#d6a356',
@@ -58,7 +58,7 @@ Kirki::add_field( 'theme_config_id', [
 Kirki::add_field( 'theme_config_id', [
 	'type'        => 'color',
 	'settings'    => 'color_setting_two',
-	'label'       => __( 'Color Control', 'kirki' ),
+	'label'       => __( 'Color Control Two', 'kirki' ),
 	'description' => esc_html__( 'This is a color control.', 'kirki' ),
 	'section'     => 'preset_section',
 	'default'     => '#dd9933',
