@@ -96,6 +96,11 @@ final class Kirki_Fonts_Helper {
 	 */
 	public static function download_font_file( $url ) {
 
+		$saved_fonts = get_option( 'kirki_font_local_filenames', array() );
+		if ( isset( $saved_fonts[ $url ] ) && file_exists( $saved_fonts[ $url ]['file'] ) ) {
+			return $saved_fonts[ $url ]['url'];
+		}
+
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 
@@ -127,6 +132,8 @@ final class Kirki_Fonts_Helper {
 		$results = wp_handle_sideload( $file, $overrides );
 
 		if ( empty( $results['error'] ) ) {
+			$saved_fonts[ $url ] = $results;
+			update_option( 'kirki_font_local_filenames', $saved_fonts );
 			return $results['url'];
 		}
 		return false;

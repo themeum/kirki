@@ -123,12 +123,12 @@ final class Kirki_Fonts {
 		self::$google_fonts = get_site_transient( 'kirki_googlefonts_cache' );
 
 		/**
-		 * Reset the cache if we're debugging, or if we force-reset caches using action=kirki-reset-cache in the URL.
+		 * Reset the cache if we're using action=kirki-reset-cache in the URL.
 		 *
 		 * Note to code reviewers:
 		 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
 		 */
-		if ( ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 			self::$google_fonts = false;
 		}
 
@@ -159,7 +159,7 @@ final class Kirki_Fonts {
 		self::$google_fonts = apply_filters( 'kirki_fonts_google_fonts', $google_fonts );
 
 		// Save the array in cache.
-		$cache_time = apply_filters( 'kirki_googlefonts_transient_time', HOUR_IN_SECONDS );
+		$cache_time = apply_filters( 'kirki_googlefonts_transient_time', DAY_IN_SECONDS );
 		set_site_transient( 'kirki_googlefonts_cache', self::$google_fonts, $cache_time );
 
 		return self::$google_fonts;
