@@ -1,4 +1,6 @@
 /* global kirkiControlLoader */
+/* eslint max-depth: 0 */
+/* eslint no-useless-escape: 0 */
 var RepeaterRow = function( rowIndex, container, label, control ) {
 	var self        = this;
 	this.rowIndex   = rowIndex;
@@ -22,10 +24,10 @@ var RepeaterRow = function( rowIndex, container, label, control ) {
 		self.container.trigger( 'row:update', [ self.rowIndex, jQuery( e.target ).data( 'field' ), e.target ] );
 	} );
 
-	this.setRowIndex = function( rowIndex ) {
-		this.rowIndex = rowIndex;
-		this.container.attr( 'data-row', rowIndex );
-		this.container.data( 'row', rowIndex );
+	this.setRowIndex = function( rowNum ) {
+		this.rowIndex = rowNum;
+		this.container.attr( 'data-row', rowNum );
+		this.container.data( 'row', rowNum );
 		this.updateLabel();
 	};
 
@@ -203,6 +205,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 	/**
 	 * Open the media modal.
+	 *
+	 * @param {Object} event - The JS event.
+	 * @returns {void}
 	 */
 	openFrame: function( event ) {
 		if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -238,6 +243,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Create a media modal select frame, and store it so the instance can be reused when needed.
 	 * This is mostly a copy/paste of Core api.CroppedImageControl in /wp-admin/js/customize-control.js
+	 *
+	 * @returns {void}
 	 */
 	initCropperFrame: function() {
 
@@ -320,6 +327,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * After the image has been cropped, apply the cropped image data to the setting.
 	 *
 	 * @param {object} croppedImage Cropped attachment data.
+	 * @returns {void}
 	 */
 	onCropped: function( croppedImage ) {
 		this.setImageInRepeaterField( croppedImage );
@@ -330,9 +338,9 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * control-specific data, to be fed to the imgAreaSelect plugin in
 	 * wp.media.view.Cropper.
 	 *
-	 * @param {wp.media.model.Attachment} attachment
-	 * @param {wp.media.controller.Cropper} controller
-	 * @returns {Object} Options
+	 * @param {wp.media.model.Attachment} attachment - The attachment from the WP API.
+	 * @param {wp.media.controller.Cropper} controller - Media controller.
+	 * @returns {Object} - Options.
 	 */
 	calculateImageSelectOptions: function( attachment, controller ) {
 		var control    = controller.get( 'control' ),
@@ -391,13 +399,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Return whether the image must be cropped, based on required dimensions.
 	 *
-	 * @param {bool} flexW
-	 * @param {bool} flexH
-	 * @param {int}  dstW
-	 * @param {int}  dstH
-	 * @param {int}  imgW
-	 * @param {int}  imgH
-	 * @return {bool}
+	 * @param {bool} flexW - The flex-width.
+	 * @param {bool} flexH - The flex-height.
+	 * @param {int}  dstW - Initial point distance in the X axis.
+	 * @param {int}  dstH - Initial point distance in the Y axis.
+	 * @param {int}  imgW - Width.
+	 * @param {int}  imgH - Height.
+	 * @returns {bool} - Whether the image must be cropped or not based on required dimensions.
 	 */
 	mustBeCropped: function( flexW, flexH, dstW, dstH, imgW, imgH ) {
 		return ! ( ( true === flexW && true === flexH ) || ( true === flexW && dstH === imgH ) || ( true === flexH && dstW === imgW ) || ( dstW === imgW && dstH === imgH ) || ( imgW <= dstW ) );
@@ -405,6 +413,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 	/**
 	 * If cropping was skipped, apply the image data directly to the setting.
+	 *
+	 * @returns {void}
 	 */
 	onSkippedCrop: function() {
 		var attachment = this.frame.state().get( 'selection' ).first().toJSON();
@@ -414,7 +424,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Updates the setting and re-renders the control UI.
 	 *
-	 * @param {object} attachment
+	 * @param {object} attachment - The attachment object.
+	 * @returns {void}
 	 */
 	setImageInRepeaterField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-image,.repeater-field-cropped_image' );
@@ -433,7 +444,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Updates the setting and re-renders the control UI.
 	 *
-	 * @param {object} attachment
+	 * @param {object} attachment - The attachment object.
+	 * @returns {void}
 	 */
 	setFileInRepeaterField: function( attachment ) {
 		var $targetDiv = this.$thisButton.closest( '.repeater-field-upload' );
@@ -518,7 +530,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Get the current value of the setting
 	 *
-	 * @return Object
+	 * @returns {Object} - Returns the value.
 	 */
 	getValue: function() {
 
@@ -529,8 +541,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Set a new value for the setting
 	 *
-	 * @param newValue Object
-	 * @param refresh If we want to refresh the previewer or not
+	 * @param {Object} newValue - The new value.
+	 * @param {bool} refresh - If we want to refresh the previewer or not
+	 * @param {bool} filtering - If we want to filter or not.
+	 * @returns {void}
 	 */
 	setValue: function( newValue, refresh, filtering ) {
 
@@ -566,7 +580,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Add a new row to repeater settings based on the structure.
 	 *
-	 * @param data (Optional) Object of field => value pairs (undefined if you want to get the default values)
+	 * @param {Object} data - (Optional) Object of field => value pairs (undefined if you want to get the default values)
+	 * @returns {Object} - Returns the new row.
 	 */
 	addRow: function( data ) {
 		var control       = this,
@@ -611,7 +626,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 			} );
 
 			newRow.container.on( 'row:update', function( e, rowIndex, fieldName, element ) {
-				control.updateField.call( control, e, rowIndex, fieldName, element );
+				control.updateField.call( control, e, rowIndex, fieldName, element ); // eslint-disable-line no-useless-call
 				newRow.updateLabel();
 			} );
 
@@ -659,13 +674,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	/**
 	 * Delete a row in the repeater setting
 	 *
-	 * @param index Position of the row in the complete Setting Array
+	 * @param {int} index - Position of the row in the complete Setting Array
+	 * @returns {void}
 	 */
 	deleteRow: function( index ) {
 		var currentSettings = this.getValue(),
 			row,
-			prop,
-			i = 1;
+			prop;
 
 		if ( currentSettings[ index ] ) {
 
@@ -688,7 +703,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		for ( prop in this.rows ) {
 			if ( this.rows.hasOwnProperty( prop ) && this.rows[ prop ] ) {
 				this.rows[ prop ].updateLabel();
-				i++;
 			}
 		}
 	},
@@ -697,7 +711,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * Update a single field inside a row.
 	 * Triggered when a field has changed
 	 *
-	 * @param e Event Object
+	 * @param {Object} e - Event Object
+	 * @param {int} rowIndex - The row's index as an integer.
+	 * @param {string} fieldId - The field ID.
+	 * @param {string|Object} element - The element's identifier, or jQuery Object of the element.
+	 * @returns {void}
 	 */
 	updateField: function( e, rowIndex, fieldId, element ) {
 		var type,
@@ -736,6 +754,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 * Init the color picker on color fields
 	 * Called after AddRow
 	 *
+	 * @returns {void}
 	 */
 	initColorPicker: function() {
 		var control     = this,
@@ -773,14 +792,13 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	 *
 	 * @param {object} theNewRow the row that was added to the repeater
 	 * @param {object} data the data for the row if we're initializing a pre-existing row
-	 *
+	 * @returns {void}
 	 */
 	initSelect: function( theNewRow, data ) {
 		var control  = this,
 			dropdown = theNewRow.container.find( '.repeater-field select' ),
 			dataField,
 			multiple,
-			$select,
 			selectWooOptions = {};
 
 		if ( 0 === dropdown.length ) {
@@ -799,7 +817,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		data = data || {};
 		data[ dataField ] = data[ dataField ] || '';
 
-		$select = jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] || jQuery( dropdown ).val() );
+		jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] || jQuery( dropdown ).val() );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 

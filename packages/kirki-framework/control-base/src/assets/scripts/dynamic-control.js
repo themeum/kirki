@@ -47,7 +47,7 @@
 		 * should be changed in Core to be applied once the control is embedded.
 		 *
 		 * @private
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		_setUpSettingRootLinks: function() {
 			var control = this,
@@ -69,7 +69,7 @@
 		 * Add bidirectional data binding links between inputs and the setting properties.
 		 *
 		 * @private
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		_setUpSettingPropertyLinks: function() {
 			var control = this,
@@ -132,7 +132,7 @@
 		 * so that the control isn't embedded on load,
 		 * unless the containing section is already expanded.
 		 *
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		embed: function() {
 			var control   = this,
@@ -162,7 +162,7 @@
 		 * This function is called in Section.onChangeExpanded() so the control
 		 * will only get embedded when the Section is first expanded.
 		 *
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		actuallyEmbed: function() {
 			var control = this;
@@ -178,7 +178,7 @@
 		 * This is not working with autofocus.
 		 *
 		 * @param {object} [args] Args.
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		focus: function( args ) {
 			var control = this;
@@ -190,8 +190,8 @@
 		/**
 		 * Additional actions that run on ready.
 		 *
-		 * @param {object} [args] Args.
-		 * @returns {null}
+		 * @param {object} control - The control object. If undefined fallsback to the this.
+		 * @returns {void}
 		 */
 		initKirkiControl: function( control ) {
 			control = control || this;
@@ -211,7 +211,8 @@
 	 * Set the value and trigger all bound callbacks.
 	 *
 	 * @since 1.0
-	 * @param {object} to New value.
+	 * @param {object} to - New value.
+	 * @returns {Object} - this
 	 */
 	api.Value.prototype.set = function( to ) {
 		var from = this._value,
@@ -251,21 +252,18 @@
 	/**
 	 * Get the value.
 	 *
-	 * @return {mixed}
+	 * @returns {mixed} - Returns the value.
 	 */
 	api.Value.prototype.get = function() {
 
-		/**
-		 * Start Kirki mod.
-		 */
+		// Start Kirki mod.
+		var parentSetting;
 		if ( this.id && api.control( this.id ) && api.control( this.id ).params && api.control( this.id ).params.parent_setting ) {
 			parentSetting = api.control( this.id ).params.parent_setting;
 			return api.control( parentSetting ).setting.get()[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ];
 		}
+		// End Kirki mod.
 
-		/**
-		 * End Kirki mod.
-		 */
 		return this._value;
 	};
-} ( wp.customize ) );
+}( wp.customize ) );

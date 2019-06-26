@@ -22,12 +22,12 @@ jQuery( document ).ready( function() {
  */
 ( function() {
 	wp.customize.sectionConstructor['kirki-link'] = wp.customize.Section.extend( {
-		attachEvents: function() {},
+		attachEvents: function() {}, // eslint-disable-line no-empty-function
 		isContextuallyActive: function() {
 			return true;
 		}
 	} );
-} () );
+}() );
 
 /**
  * @see https://wordpress.stackexchange.com/a/256103/17078

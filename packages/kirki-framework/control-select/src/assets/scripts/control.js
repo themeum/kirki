@@ -67,7 +67,7 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
 					}
 				} );
 				break;
-			
+
 			case 'selectOption':
 				jQuery( this.selectElement ).val( arg );
 				jQuery( this.selectElement ).trigger( 'change' );

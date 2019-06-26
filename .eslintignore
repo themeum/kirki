@@ -8,3 +8,4 @@ packages/squizlabs/
 packages/phpunit/
 Gruntfile.js
 packages/kirki-framework/compatibility/src/scripts/
+packages/kirki-framework/control-color/src/Control/wp-color-picker-alpha.js

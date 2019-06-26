@@ -107,7 +107,7 @@ var kirkiPostMessage = {
 		 *
 		 * @since 3.0.26
 		 * @param {string} url - The URL.
-		 * @returns {string}
+		 * @returns {string} - Returns the URL.
 		 */
 		backgroundImageValue: function( url ) {
 			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
@@ -128,7 +128,7 @@ var kirkiPostMessage = {
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
 		 * @param {string} controlType - The control-type.
-		 * @returns {string}
+		 * @returns {string} - Returns CSS as a string.
 		 */
 		fromOutput: function( output, value, controlType ) {
 			var styles      = '',
@@ -137,7 +137,7 @@ var kirkiPostMessage = {
 
 			try {
 				value = JSON.parse( value );
-			} catch ( e ) {}
+			} catch ( e ) {} // eslint-disable-line no-empty
 
 			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
 				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
@@ -158,7 +158,7 @@ var kirkiPostMessage = {
 							processedValue = kirkiPostMessage.util.processValue( output, val );
 
 							if ( false !== processedValue ) {
-								styles += output.property ? output.property + '-' + key + ':' + processedValue + ';': key + ':' + processedValue + ';';
+								styles += output.property ? output.property + '-' + key + ':' + processedValue + ';' : key + ':' + processedValue + ';';
 							}
 						} );
 						styles += '}';
@@ -222,7 +222,7 @@ var kirkiPostMessage = {
 		 * @since 3.0.26
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
-		 * @returns {string}
+		 * @returns {void}
 		 */
 		fromOutput: function( output, value ) {
 
@@ -264,7 +264,7 @@ var kirkiPostMessage = {
 		 * @since 3.0.21
 		 * @param {Object} output - The output (js_vars) argument.
 		 * @param {mixed}  value - The value.
-		 * @returns {string}
+		 * @returns {void}
 		 */
 		fromOutput: function( output, value ) {
 			if ( 'undefined' === typeof output.class || 'undefined' === typeof output.value ) {

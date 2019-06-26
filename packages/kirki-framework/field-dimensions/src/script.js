@@ -9,6 +9,7 @@ jQuery( document ).ready( function() {
 	wp.hooks.addFilter(
 		'kirkiPostMessageStylesOutput',
 		'kirki',
+
 		/**
 		 * Append styles for this control.
 		 *
@@ -16,7 +17,7 @@ jQuery( document ).ready( function() {
 		 * @param {Object} value       - The control value.
 		 * @param {Object} output      - The control's "output" argument.
 		 * @param {string} controlType - The control type.
-		 * @returns {string}
+		 * @returns {string} - Returns the CSS as a string.
 		 */
 		function( styles, value, output, controlType ) {
 			var processedValue;

@@ -31,12 +31,12 @@ wp.customize.controlConstructor['kirki-sortable'] = wp.customize.Control.extend(
 	 * Getss thhe new vvalue.
 	 *
 	 * @since 3.0.35
-	 * @returns {Array}
+	 * @returns {Array} - Returns the value as an array.
 	 */
 	getNewVal: function() {
 		var items  = jQuery( this.container.find( 'li' ) ),
 			newVal = [];
-		_.each ( items, function( item ) {
+		_.each( items, function( item ) {
 			if ( ! jQuery( item ).hasClass( 'invisible' ) ) {
 				newVal.push( jQuery( item ).data( 'value' ) );
 			}

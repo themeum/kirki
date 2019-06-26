@@ -1,14 +1,13 @@
-/* jshint -W079 */
-/* jshint unused:false */
 if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
-	var kirkiSetSettingValue = { // eslint-disable-line vars-on-top
+	window.kirkiSetSettingValue = { // eslint-disable-line vars-on-top
 
 		/**
 		 * Set the value of the control.
 		 *
 		 * @since 3.0.0
-		 * @param string setting The setting-ID.
-		 * @param mixed  value   The value.
+		 * @param {string} setting - The setting-ID.
+		 * @param {mixed}  value - The value.
+		 * @returns {void}
 		 */
 		set: function( setting, value ) {
 
@@ -149,8 +148,9 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 * CAUTION: This only sets the value visually, it does not change it in th wp object.
 		 *
 		 * @since 3.0.0
-		 * @param object selector jQuery object for this element.
-		 * @param string value    The value we want to set.
+		 * @param {object} selector - jQuery object for this element.
+		 * @param {string} value - The value we want to set.
+		 * @returns {void}
 		 */
 		setColorPicker: function( selector, value ) {
 			selector.attr( 'data-default-color', value ).data( 'default-color', value ).wpColorPicker( 'color', value );
@@ -161,8 +161,9 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 * CAUTION: This only sets the value visually, it does not change it in th wp object.
 		 *
 		 * @since 3.0.0
-		 * @param string selector The CSS identifier for this selectWoo.
-		 * @param string value    The value we want to set.
+		 * @param {string} selector - The CSS identifier for this selectWoo.
+		 * @param {string} value - The value we want to set.
+		 * @returns {void}
 		 */
 		setSelectWoo: function( selector, value ) {
 			jQuery( selector ).selectWoo().val( value ).trigger( 'change' );
@@ -173,8 +174,9 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 * CAUTION: This only sets the value visually, it does not change it in th wp object.
 		 *
 		 * @since 3.0.0
-		 * @param string selector The CSS identifier for this textarea.
-		 * @param string value    The value we want to set.
+		 * @param {string} selector - The CSS identifier for this textarea.
+		 * @param {string} value - The value we want to set.
+		 * @returns {void}
 		 */
 		setTextarea: function( selector, value ) {
 			jQuery( selector ).prop( 'value', value );
@@ -184,8 +186,9 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 * Finds an element inside this control.
 		 *
 		 * @since 3.0.0
-		 * @param string setting The setting ID.
-		 * @param string element The CSS identifier.
+		 * @param {string} setting The setting ID.
+		 * @param {string} element The CSS identifier.
+		 * @returns {Object} - Returns the customizer control object.
 		 */
 		findElement: function( setting, element ) {
 			return wp.customize.control( setting ).container.find( element );
@@ -195,8 +198,10 @@ if ( _.isUndefined( window.kirkiSetSettingValue ) ) {
 		 * Updates the value in the wp.customize object.
 		 *
 		 * @since 3.0.0
-		 * @param string setting The setting-ID.
-		 * @param mixed  value   The value.
+		 * @param {string} setting - The setting-ID.
+		 * @param {mixed} value - The value.
+		 * @param {int} timeout - The delay in milliseconds.
+		 * @returns {void}
 		 */
 		setValue: function( setting, value, timeout ) {
 			timeout = ( _.isUndefined( timeout ) ) ? 100 : parseInt( timeout, 10 );

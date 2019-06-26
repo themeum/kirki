@@ -5,7 +5,7 @@ var kirkiCssVars = {
 	 * Get styles.
 	 *
 	 * @since 3.0.28
-	 * @returns {Object}
+	 * @returns {Object} - Returns styles as an object.
 	 */
 	getStyles: function() {
 		var style     = jQuery( '#kirki-css-vars' ),
@@ -13,10 +13,10 @@ var kirkiCssVars = {
 			stylesObj = {};
 
 		// Format styles as a object we can then tweak.
-		_.each( styles, function( style ) {
-			style = style.split( ':' );
-			if ( style[0] && style[1] ) {
-				stylesObj[ style[0] ] = style[1];
+		_.each( styles, function( css ) {
+			css = css.split( ':' );
+			if ( css[0] && css[1] ) {
+				stylesObj[ css[0] ] = css[1];
 			}
 		} );
 		return stylesObj;
@@ -27,7 +27,7 @@ var kirkiCssVars = {
 	 *
 	 * @since 3.0.28
 	 * @param {Object} vars - The vars.
-	 * @returns {string}
+	 * @returns {string} - Returns the CSS as a string.
 	 */
 	buildStyle: function( vars ) {
 		var style = '';

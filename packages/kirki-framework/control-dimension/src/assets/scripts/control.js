@@ -17,6 +17,8 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 	/**
 	 * Handles notifications.
+	 *
+	 * @returns {void}
 	 */
 	kirkiNotifications: function() {
 

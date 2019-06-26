@@ -25,7 +25,7 @@
 	 * for enable support rbga
 	 */
 	Color.fn.toString = function() {
-		if ( this._alpha < 1 ) {
+		if ( 1 > this._alpha ) {
 			return this.toCSS( 'rgba', this._alpha ).replace( /\s+/g, '' );
 		}
 
@@ -35,7 +35,7 @@
 			return '';
 		}
 
-		if ( hex.length < 6 ) {
+		if ( 6 > hex.length ) {
 			hex = ( '00000' + hex ).substr( -6 );
 		}
 
@@ -46,6 +46,7 @@
 	 * Overwrite wpColorPicker
 	 */
 	$.widget( 'wp.wpColorPicker', $.wp.wpColorPicker, {
+
 		/**
 		 * @summary Creates the color picker.
 		 *
@@ -70,7 +71,7 @@
 			$.extend( self.options, el.data() );
 
 			// Create a color picker which only allows adjustments to the hue.
-			if ( self.options.type === 'hue' ) {
+			if ( 'hue' === self.options.type ) {
 				return self._createHueOnly();
 			}
 
@@ -148,14 +149,14 @@
 			/*
 			 * CSS for support < 4.9
 			 */
-			self.toggler.css({
+			self.toggler.css( {
 				'height': '24px',
 				'margin': '0 6px 6px 0',
 				'padding': '0 0 0 30px',
 				'font-size': '11px'
-			});
+			} );
 
-			self.toggler.find( '.wp-color-result-text' ).css({
+			self.toggler.find( '.wp-color-result-text' ).css( {
 				'background': '#f7f7f7',
 				'border-radius': '0 2px 2px 0',
 				'border-left': '1px solid #ccc',
@@ -164,7 +165,7 @@
 				'line-height': '22px',
 				'padding': '0 6px',
 				'text-align': 'center'
-			});
+			} );
 
 			el.iris( {
 				target: self.pickerContainer,
@@ -172,6 +173,7 @@
 				width: self.options.width,
 				mode: self.options.mode,
 				palettes: self.options.palettes,
+
 				/**
 				 * @summary Handles the onChange event if one has been defined in the options.
 				 *
@@ -191,7 +193,7 @@
 							'background-image': 'url(' + image + ')',
 							'position': 'relative'
 						} );
-						if ( self.toggler.find( 'span.color-alpha' ).length === 0 ) {
+						if ( 0 === self.toggler.find( 'span.color-alpha' ).length ) {
 							self.toggler.append( '<span class="color-alpha" />' );
 						}
 						self.toggler.find( 'span.color-alpha' ).css( {
@@ -222,6 +224,7 @@
 				self.toggler.click();
 			}
 		},
+
 		/**
 		 * @summary Binds event listeners to the color picker.
 		 *
@@ -245,7 +248,7 @@
 			 */
 			self.wrap.on( 'click.wpcolorpicker', function( event ) {
 				event.stopPropagation();
-			});
+			} );
 
 			/**
 			 * @summary Open or close the color picker depending on the class.
@@ -258,7 +261,7 @@
 				} else {
 					self.open();
 				}
-			});
+			} );
 
 			/**
 			 * @summary Checks if value is empty when changing the color in the color picker.
@@ -274,7 +277,7 @@
 			 */
 			self.element.on( 'change', function( event ) {
 				// Empty or Error = clear
-				if ( $( this ).val() === '' || self.element.hasClass( 'iris-error' ) ) {
+				if ( '' === $( this ).val() || self.element.hasClass( 'iris-error' ) ) {
 					if ( self.options.alpha ) {
 						self.toggler.find( 'span.color-alpha' ).css( 'backgroundColor', '' );
 					} else {
@@ -315,9 +318,9 @@
 				} else if ( $( this ).hasClass( 'wp-picker-default' ) ) {
 					self.element.val( self.options.defaultColor ).change();
 				}
-			});
+			} );
 		}
-	});
+	} );
 
 	/**
 	 * Overwrite iris
@@ -334,7 +337,7 @@
 				this.options.alpha = false;
 			}
 
-			if ( typeof this.options.alpha !== 'undefined' && this.options.alpha ) {
+			if ( 'undefined' !== typeof this.options.alpha && this.options.alpha ) {
 				var self       = this,
 					el         = self.element,
 					_html      = '<div class="iris-strip iris-slider iris-alpha-slider"><div class="iris-slider-offset iris-slider-offset-alpha"></div></div>',
@@ -345,7 +348,7 @@
 						aSlider: aSlider
 					};
 
-				if ( typeof el.data( 'custom-width' ) !== 'undefined' ) {
+				if ( 'undefined' !== typeof el.data( 'custom-width' ) ) {
 					self.options.customWidth = parseInt( el.data( 'custom-width' ) ) || 0;
 				} else {
 					self.options.customWidth = 100;
@@ -355,7 +358,7 @@
 				self.options.defaultWidth = el.width();
 
 				// Update width for input
-				if ( self._color._alpha < 1 || self._color.toString().indexOf( 'rgb' ) !== -1 ) {
+				if ( 1 > self._color._alpha || -1 !== self._color.toString().indexOf( 'rgb' ) ) {
 					el.width( parseInt( self.options.defaultWidth + self.options.customWidth ) );
 				}
 
@@ -388,7 +391,7 @@
 				var self     = this,
 					controls = self.controls;
 
-				controls.aSlider.slider({
+				controls.aSlider.slider( {
 					orientation: 'vertical',
 					min: 0,
 					max: 100,
@@ -399,7 +402,7 @@
 						self._color._alpha = parseFloat( ui.value / 100 );
 						self._change.apply( self, arguments );
 					}
-				});
+				} );
 			}
 		},
 		_change: function() {
@@ -431,7 +434,7 @@
 					 * Disabled change opacity in default slider Saturation ( only is alpha enabled )
 					 * and change input width for view all value
 					 */
-					if ( self._color._alpha < 1 ) {
+					if ( 1 > self._color._alpha ) {
 						controls.strip.attr( 'style', controls.strip.attr( 'style' ).replace( /rgba\(([0-9]+,)(\s+)?([0-9]+,)(\s+)?([0-9]+)(,(\s+)?[0-9\.]+)\)/g, 'rgb($1$3$5)' ) );
 						el.width( parseInt( defaultWidth + customWidth ) );
 					} else {
@@ -461,13 +464,13 @@
 					// We gave a bad color
 					if ( color.error ) {
 						// Don't error on an empty input
-						if ( val !== '' ) {
+						if ( '' !== val ) {
 							input.addClass( 'iris-error' );
 						}
 					} else {
 						if ( color.toString() !== self._color.toString() ) {
 							// Let's not do this on keyup for hex shortcodes
-							if ( ! ( event.type === 'keyup' && val.match( /^[0-9a-fA-F]{3}$/ ) ) ) {
+							if ( ! ( 'keyup' === event.type && val.match( /^[0-9a-fA-F]{3}$/ ) ) ) {
 								self._setOption( 'color', color.toString() );
 							}
 						}

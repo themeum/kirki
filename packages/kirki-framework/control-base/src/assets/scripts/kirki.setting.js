@@ -65,7 +65,7 @@ kirki = jQuery.extend( kirki, {
 		 * @param {mixed}         value - Depends on the control-type.
 		 * @param {string}        key - If we only want to save an item in an object
 		 *                                  we can define the key here.
-		 * @returns {null}
+		 * @returns {void}
 		 */
 		set: function( element, value, key ) {
 			var setting,

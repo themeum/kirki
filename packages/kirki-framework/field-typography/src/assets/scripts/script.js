@@ -24,9 +24,9 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 			if ( -1 !== variant.indexOf( 'i' ) ) {
 				hasItalics = true;
 			}
-			variant = 'regular' === variant || 'italic' === variant ? 400 : parseInt( variant );
+			variant = 'regular' === variant || 'italic' === variant ? 400 : parseInt( variant, 10 );
 			if ( -1 === fontWeights.indexOf( variant ) ) {
-				fontWeights.push( parseInt( variant ) );
+				fontWeights.push( parseInt( variant, 10 ) );
 			}
 
 			if ( ! hasItalics ) {
@@ -43,11 +43,11 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		/**
 		 * If the selected font-family doesn't support the selected font-weight, switch to a supported one.
 		 */
-		if ( -1 === fontWeights.indexOf( parseInt( value['font-weight'] ) ) ) {
+		if ( -1 === fontWeights.indexOf( parseInt( value['font-weight'], 10 ) ) ) {
 
 			// Find the font-weight closest to our previous value.
 			closest = fontWeights.reduce( function( prev, curr ) {
-				return ( Math.abs( curr - parseInt( value['font-weight'] ) ) < Math.abs( prev - parseInt( value['font-weight'] ) ) ? curr : prev );
+				return ( Math.abs( curr - parseInt( value['font-weight'], 10 ) ) < Math.abs( prev - parseInt( value['font-weight'], 10 ) ) ? curr : prev );
 			} );
 			fontWeightControl.doSelectAction( 'selectOption', closest.toString() );
 			fontWeightControl.setting.set( closest.toString() );
@@ -113,6 +113,7 @@ jQuery( document ).ready( function() {
 	wp.hooks.addFilter(
 		'kirkiPostMessageStylesOutput',
 		'kirki',
+
 		/**
 		 * Append styles for this control.
 		 *
@@ -120,7 +121,7 @@ jQuery( document ).ready( function() {
 		 * @param {Object} value       - The control value.
 		 * @param {Object} output      - The control's "output" argument.
 		 * @param {string} controlType - The control type.
-		 * @returns {string}
+		 * @returns {string} - Returns the CSS as a string.
 		 */
 		function( styles, value, output, controlType ) {
 			var googleFont = '',
@@ -143,7 +144,7 @@ jQuery( document ).ready( function() {
 				if ( ! _.isUndefined( WebFont ) && value['font-family'] ) {
 
 					// Calculate the googlefont params.
-					googleFont = value['font-family'].replace( /\"/g, '&quot;' );
+					googleFont = value['font-family'].replace( /\"/g, '&quot;' ); // eslint-disable-line no-useless-escape
 					if ( value['font-weight'] && value['font-style'] ) {
 						googleFont += ':' + value['font-weight'];
 						if ( 'italic' === value['font-style'] ) {

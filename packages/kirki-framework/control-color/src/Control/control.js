@@ -5,15 +5,15 @@ wp.customize.controlConstructor['kirki-color'] = wp.customize.kirkiDynamicContro
 
 		control = control || this;
 		picker  = control.container.find( '.kirki-color-control' );
-		
+
 		control.choices = control.choices || {};
 		control.choices = ( _.isEmpty( control.choices ) && control.params.choices ) ? control.params.choices : control.choices;
-		
+
 		control.choices.palettes = control.choices.palettes || jQuery( picker ).attr( 'data-palette' );
 		if ( 'string' === typeof control.choices.palettes ) {
 			try {
 				control.choices.palettes = JSON.parse( control.choices.palettes );
-			} catch( e ) {
+			} catch ( e ) {
 				control.choices.palettes = [ '#000000', '#ffffff', '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eeeeee', '#abb8c3', '#546E7A', '#313131' ];
 			}
 		}
