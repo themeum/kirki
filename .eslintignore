@@ -6,3 +6,5 @@ packages/kirki-framework/control-select/src/assets/scripts/selectWoo/
 packages/wptrt/
 packages/squizlabs/
 packages/phpunit/
+Gruntfile.js
+packages/kirki-framework/compatibility/src/scripts/
