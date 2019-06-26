@@ -4,7 +4,7 @@
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
 **Tested up to:** 5.2  
-**Stable tag:** 3.0.43  
+**Stable tag:** 3.0.44  
 **License:** MIT  
 **License URI:** https://opensource.org/licenses/MIT  
 
@@ -59,6 +59,8 @@ Premium controls are also available for premium themes:
 * [Kirki Box Model](https://wplemon.com/downloads/kirki-box-model/)
 * [Kirki Box Shadow](https://wplemon.com/downloads/kirki-box-shadow/)
 
+All premium controls are also [available as a pack](https://wplemon.com/downloads/kirki-premium-controls-pack/)
+
 Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
 You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
@@ -73,11 +75,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
-### 3.0.43 ###
+### 3.0.34 ###
 
-Jun.16 2019, dev time: 30m
+Jun.25 2019, dev time: 30m
 
-* Fix: Google Fonts URL references in multisites.
-* New: It is now possible to reset Kirki google-font caches by visiting {site-url}/?action=kirki-reset-cache
+* Fix: Google fonts getting constantly downloaded when `WP_DEBUG` was set to `true`
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).

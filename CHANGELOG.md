@@ -1,3 +1,9 @@
+## 3.0.44
+
+Jun.25 2019, dev time: 30m
+
+* Fix: Google fonts getting constantly downloaded when `WP_DEBUG` was set to `true`
+
 ## 3.0.43
 
 Jun.16 2019, dev time: 30m
