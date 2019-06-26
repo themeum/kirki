@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "77a075d3ebdd9b878f564e0ac5c87f36f9881f52"
+            "reference": "a96995e7007f8aed6cd521afaaf03be5225cdfcd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/77a075d3ebdd9b878f564e0ac5c87f36f9881f52",
-            "reference": "77a075d3ebdd9b878f564e0ac5c87f36f9881f52",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/a96995e7007f8aed6cd521afaaf03be5225cdfcd",
+            "reference": "a96995e7007f8aed6cd521afaaf03be5225cdfcd",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-06-17T17:31:10+00:00",
+        "time": "2019-06-26T21:35:18+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -196,12 +196,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "b60b84946e4cb4240211c36f9735bdaeb678cf11"
+            "reference": "8e06534731f9b6536893335ddb7e30d90cf5393b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/b60b84946e4cb4240211c36f9735bdaeb678cf11",
-            "reference": "b60b84946e4cb4240211c36f9735bdaeb678cf11",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/8e06534731f9b6536893335ddb7e30d90cf5393b",
+            "reference": "8e06534731f9b6536893335ddb7e30d90cf5393b",
             "shasum": ""
         },
         "require": {
@@ -210,7 +210,7 @@
             "kirki-framework/url-getter": "dev-master",
             "php": ">=5.6"
         },
-        "time": "2019-06-26T21:27:31+00:00",
+        "time": "2019-06-26T21:35:05+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

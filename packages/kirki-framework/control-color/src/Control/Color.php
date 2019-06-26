@@ -68,7 +68,7 @@ class Color extends Base {
 		parent::enqueue();
 
 		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( __DIR__ . '/wp-color-picker-alpha.js' ), array( 'wp-color-picker' ), '2.1.3', false );
+		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( __DIR__ . '/wp-color-picker-alpha.js' ), [ 'wp-color-picker' ], '2.1.3', false );
 
 		// Enqueue the control script.
 		wp_enqueue_script( 'kirki-control-color', URL::get_from_path( __DIR__ . '/control.js' ), [ 'jquery', 'customize-base', 'customize-controls', 'kirki-dynamic-control' ], self::$control_ver, false );
