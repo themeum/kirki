@@ -8,7 +8,7 @@
 
 if ( ! function_exists( 'kirki_installer_register' ) ) {
 	/**
-	 * Registers the section, setting & control for the kirki installer.
+	 * Registers the section, setting & control for the Kirki installer.
 	 *
 	 * @param object $wp_customize The main customizer object.
 	 */
@@ -102,7 +102,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 				protected function install_button() {
 					?>
 					<p style="text-align:left;margin-top:0;">
-						<?php esc_html_e( 'Please install the Kirki plugin to take full advantage of this theme\s customizer capabilities', 'kirki' ); ?>
+						<?php esc_html_e( 'Please install the Kirki plugin to take full advantage of this theme\'s customizer capabilities', 'kirki' ); ?>
 					</p>
 					<a class="install-now button-primary button" data-slug="kirki" href="<?php echo esc_url_raw( $this->get_plugin_install_url() ); ?>" aria-label="<?php esc_attr_e( 'Install Kirki Toolkit now', 'kirki' ); ?>" data-name="Kirki Toolkit">
 						<?php esc_html_e( 'Install Now', 'kirki' ); ?>
@@ -228,7 +228,7 @@ add_action( 'customize_register', 'kirki_installer_register', 999 );
 
 if ( ! function_exists( 'kirki_installer_dismiss' ) ) {
 	/**
-	 * Handles dismissing the plgin-install/activate recommendation.
+	 * Handles dismissing the plugin-install/activate recommendation.
 	 * If the user clicks the "Don't show this again" button, save as user-meta.
 	 *
 	 * @since 1.0.0
