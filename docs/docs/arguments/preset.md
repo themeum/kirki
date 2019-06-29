@@ -3,13 +3,6 @@ layout: default
 title: preset
 published: true
 mainMaxWidth: 55rem;
-bodyClasses: control page
-returns: array
-heroButtons:
-  - url: ../controls
-    class: white button round border-only
-    icon: fa fa-arrow-circle-o-left
-    label: Back to Controls
 ---
 
 The `preset` argument allows you to change the values of one or more controls, based on the value of another control.
