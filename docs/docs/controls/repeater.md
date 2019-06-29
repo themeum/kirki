@@ -29,7 +29,7 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'row_label' => [
 		'type'  => 'text',
-		'value' => esc_html__('your custom value', 'kirki' ),
+		'value' => esc_html__( 'Your Custom Value', 'kirki' ),
 	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'kirki' ),
 	'settings'     => 'my_setting',
@@ -70,7 +70,7 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'row_label' => [
 		'type'  => 'field',
-		'value' => esc_html__('your custom value', 'kirki' ),
+		'value' => esc_html__( 'Your custom value', 'kirki' ),
 		'field' => 'link_text',
 	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'kirki' ),
@@ -102,14 +102,46 @@ Kirki::add_field( 'theme_config_id', [
 ] );
 ```
 
+Creating a repeater control with a maximum limit of 3 rows:
+
+```php
+Kirki::add_field( 'theme_config_id', [
+	'type'        => 'repeater',
+	'label'       => esc_attr__( 'Repeater Control', 'kirki' ),
+	'section'     => 'section_id',
+	'priority'    => 10,
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Your Custom Value.', 'kirki' ),
+		'field' => 'link_text',
+	]
+	'settings'    => 'my_setting',
+	'fields' => [
+		'link_text' => [
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Link Text', 'kirki' ),
+			'description' => esc_attr__( 'This will be the label for your link', 'kirki' ),
+		],
+	]
+	'default'     => [
+		[
+			'link_text' => esc_attr__( 'Link Text Example', 'kirki' ),
+		],
+	),
+	'choices' => [
+		'limit' => 3
+	],
+) );
+```
+
 ### Usage
 
 ```php
 <?php
 // Default values for 'my_setting' theme mod.
 $defaults = [
-    [
-        'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
+  [
+    'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
 		'link_url'  => 'https://kirki.org/',
 	],
 	[
