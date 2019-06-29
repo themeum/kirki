@@ -448,11 +448,8 @@ class Kirki_Helper {
 	/**
 	 * Helper method to return navigation menus.
 	 *
-	 * @since 3.0.0
 	 * @access public
-	 *
 	 * @param string $value_field The value to be stored in options. Accepted values: id|slug
-	 *
 	 * @return array
 	 */
 	public static function get_nav_menus( $value_field = 'id' ) {
