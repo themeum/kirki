@@ -110,6 +110,7 @@ class Aliases {
 		],
 		'customizer' => [
 			[ 'Kirki\Control\Base', 'Kirki_Control_Base' ],
+			[ 'Kirki\Control\Base', 'Kirki_Customize_Control' ],
 			[ 'Kirki\Control\Checkbox', 'Kirki_Control_Checkbox' ],
 			[ 'Kirki\Control\Checkbox_Switch', 'Kirki_Control_Switch' ],
 			[ 'Kirki\Control\Checkbox_Toggle', 'Kirki_Control_Toggle' ],
@@ -130,6 +131,7 @@ class Aliases {
 			[ 'Kirki\Control\Radio', 'Kirki_Control_Radio' ],
 			[ 'Kirki\Control\Radio_Buttonset', 'Kirki_Control_Radio_Buttonset' ],
 			[ 'Kirki\Control\Radio_Image', 'Kirki_Control_Radio_Image' ],
+			[ 'Kirki\Control\Radio_Image', 'Kirki_Controls_Radio_Image_Control' ],
 			[ 'Kirki\Control\Repeater', 'Kirki_Control_Repeater' ],
 			[ 'Kirki\Control\Select', 'Kirki_Control_Select' ],
 			[ 'Kirki\Control\Slider', 'Kirki_Control_Slider' ],
