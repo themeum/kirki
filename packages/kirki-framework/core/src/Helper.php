@@ -6,7 +6,7 @@
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
  * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
+ * @license     https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -40,10 +40,10 @@ class Helper {
 		 * Handle the arguments, merge one by one.
 		 *
 		 * In PHP 7 func_get_args() changed the way it behaves but this doesn't mean anything in this case
-		 * sinc ethis method is only used when the array_replace_recursive() function doesn't exist
+		 * since this method is only used when the array_replace_recursive() function doesn't exist
 		 * and that was introduced in PHP v5.3.
 		 *
-		 * Once WordPress-Core raises its minimum requirements we''' be able to remove this fallback completely.
+		 * Once WordPress-Core raises its minimum requirements we'll be able to remove this fallback completely.
 		 */
 		$args  = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue
 		$array = $args[0];
@@ -86,7 +86,7 @@ class Helper {
 	}
 
 	/**
-	 * Initialize the WP_Filesystem
+	 * Initialize the WP_Filesystem.
 	 *
 	 * @static
 	 * @access public
@@ -139,7 +139,7 @@ class Helper {
 	}
 
 	/**
-	 * Returns the attachment object
+	 * Returns the attachment object.
 	 *
 	 * @static
 	 * @access public
@@ -270,7 +270,7 @@ class Helper {
 	}
 
 	/**
-	 * Get an array of terms from a taxonomy
+	 * Get an array of terms from a taxonomy.
 	 *
 	 * @static
 	 * @access public
@@ -289,6 +289,24 @@ class Helper {
 		}
 
 		return $items;
+	}
+
+	/**
+	 * Returns an array of navigation menus.
+	 *
+	 * @access public
+	 * @param string $value_field The value to be stored in options. Accepted values: id|slug.
+	 * @return array
+	 */
+	public static function get_nav_menus( $value_field = 'id' ) {
+		$choices   = array();
+		$nav_menus = wp_get_nav_menus();
+
+		foreach ( $nav_menus as $term ) {
+			$choices[ 'slug' === $value_field ? $term->slug : $term->term_id ] = $term->name;
+		}
+
+		return $choices;
 	}
 
 	/**
