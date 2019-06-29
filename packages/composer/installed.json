@@ -1470,19 +1470,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-css.git",
-            "reference": "96b59f65100233a59ac049341c4e871a2e1600fe"
+            "reference": "1c62cdd2b18a83beed2f02d933f3c49e55da0009"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/96b59f65100233a59ac049341c4e871a2e1600fe",
-            "reference": "96b59f65100233a59ac049341c4e871a2e1600fe",
+            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/1c62cdd2b18a83beed2f02d933f3c49e55da0009",
+            "reference": "1c62cdd2b18a83beed2f02d933f3c49e55da0009",
             "shasum": ""
         },
         "require": {
             "kirki-framework/core": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-17T17:39:33+00:00",
+        "time": "2019-06-29T17:39:13+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
