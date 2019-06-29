@@ -212,7 +212,7 @@ class Background extends Field {
 			]
 		);
 
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'customize_preview_init', [ $this, 'enqueue_scripts' ] );
 	}
 
 	/**
@@ -398,6 +398,6 @@ class Background extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'kirki-typography', URL::get_from_path( __DIR__ ) . '/script.js', [ 'kirki_auto_postmessage' ], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
 	}
 }
