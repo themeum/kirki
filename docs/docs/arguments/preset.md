@@ -16,7 +16,7 @@ Kirki::add_field( 'theme_config_id', [
 	'type'        => 'radio',
 	'settings'    => 'color_scheme_radio',
 	'label'       => esc_attr__( 'Radio Control', 'kirki' ),
-	'description' => esc_attr__( 'This radio will control.', 'kirki' ),
+	'description' => esc_attr__( 'This radio will control the following two color controls.', 'kirki' ),
 	'section'     => 'preset_section',
 	'default'     => 'orange',
 	'choices'     => [
