@@ -449,15 +449,15 @@ class Kirki_Helper {
 	 * Helper method to return navigation menus.
 	 *
 	 * @access public
-	 * @param string $value_field The value to be stored in options. Accepted values: id|slug
+	 * @param string $value_field The value to be stored in options. Accepted values: id|slug.
 	 * @return array
 	 */
 	public static function get_nav_menus( $value_field = 'id' ) {
-		$choices = array();
+		$choices   = array();
 		$nav_menus = wp_get_nav_menus();
 
 		foreach ( $nav_menus as $term ) {
-			$choices[ 'slug' == $value_field ? $term->slug : $term->term_id ] = $term->name;
+			$choices[ 'slug' === $value_field ? $term->slug : $term->term_id ] = $term->name;
 		}
 
 		return $choices;
