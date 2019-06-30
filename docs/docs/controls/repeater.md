@@ -114,7 +114,7 @@ Kirki::add_field( 'theme_config_id', [
 		'type'  => 'field',
 		'value' => esc_html__( 'Your Custom Value.', 'kirki' ),
 		'field' => 'link_text',
-	]
+	],
 	'settings'    => 'my_repeater_setting',
 	'fields' => [
 		'link_text' => [
@@ -122,12 +122,12 @@ Kirki::add_field( 'theme_config_id', [
 			'label'       => esc_attr__( 'Link Text', 'kirki' ),
 			'description' => esc_attr__( 'This will be the label for your link', 'kirki' ),
 		],
-	]
+	],
 	'default'     => [
 		[
 			'link_text' => esc_attr__( 'Link Text Example', 'kirki' ),
 		],
-	),
+	],
 	'choices' => [
 		'limit' => 3
 	],
