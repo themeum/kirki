@@ -5,8 +5,12 @@ var kirkiDependencies = {
 	init: function() {
 		var self = this;
 
-		wp.customize.control.each( function( control ) {
-			self.showKirkiControl( control );
+		_.each( window.kirkiControlDependencies, function( requires, controlID ) {
+			var control = wp.customize.control( controlID );
+			if ( control ) {
+				wp.customize.control( controlID ).params.required = requires;
+				self.showKirkiControl( control );
+			}
 		} );
 
 		_.each( self.listenTo, function( slaves, master ) {

@@ -24,16 +24,7 @@ class Code extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\Kirki\Control\Code';
-
-	/**
-	 * Whether we should register the control class for JS-templating or not.
-	 *
-	 * @access protected
-	 * @since 0.1
-	 * @var bool
-	 */
-	protected $control_has_js_template = true;
+	protected $control_class = '\WP_Customize_Code_Editor_Control';
 
 	/**
 	 * Filter arguments before creating the setting.

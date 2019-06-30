@@ -65,15 +65,6 @@ class Base extends \WP_Customize_Control {
 	public $kirki_config = 'global';
 
 	/**
-	 * Whitelisting the "required" argument for use in Kirki modules.
-	 *
-	 * @since 1.0
-	 * @access public
-	 * @var array
-	 */
-	public $required = [];
-
-	/**
 	 * Whitelisting the "preset" argument for use in Kirki modules.
 	 *
 	 * @access public

@@ -94,9 +94,8 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             17 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
             18 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             19 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
-            21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
+            20 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (

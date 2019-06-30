@@ -21,6 +21,15 @@ use Kirki\URL;
 class Field_Dependencies {
 
 	/**
+	 * An array of field dependencies.
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @var array
+	 */
+	private $dependencies = [];
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -57,6 +66,7 @@ class Field_Dependencies {
 			}
 	
 			if ( ! empty( $args['required'] ) ) {
+				$this->dependencies[ $args['settings'] ] = $args['required'];
 				$args['active_callback'] = '__return_true';
 				return $args;
 			}
@@ -83,5 +93,6 @@ class Field_Dependencies {
 	 */
 	public function field_dependencies() {
 		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
+		wp_localize_script( 'kirki_field_dependencies', 'kirkiControlDependencies', $this->dependencies );
 	}
 }
