@@ -2,13 +2,17 @@ li {
   &[data-kirki-parent-control-type="kirki-typography"] {
     margin-bottom: 8px;
 
+    &[kirki-typography-subcontrol-type="text-decoration"],
+    &[kirki-typography-subcontrol-type="font-style"],
     &[kirki-typography-subcontrol-type="font-size"] label,
     &[kirki-typography-subcontrol-type="line-height"] label,
     &[kirki-typography-subcontrol-type="letter-spacing"] label,
     &[kirki-typography-subcontrol-type="word-spacing"] label,
     &[kirki-typography-subcontrol-type="text-decoration"] label,
     &[kirki-typography-subcontrol-type="margin-top"] label,
-    &[kirki-typography-subcontrol-type="margin-bottom"] label {
+    &[kirki-typography-subcontrol-type="margin-bottom"] label,
+    &[kirki-typography-subcontrol-type="text-transform"] label,
+    &[kirki-typography-subcontrol-type="text-align"] label {
       display: flex !important;
       justify-content: space-between;
       align-items: center;
@@ -18,140 +22,6 @@ li {
         max-width: 100px;
       }
     }
-
-    &[kirki-typography-subcontrol-type="font-style"],
-    &[kirki-typography-subcontrol-type="text-align"],
-    &[kirki-typography-subcontrol-type="text-decoration"],
-    &[kirki-typography-subcontrol-type="text-transform"] {
-      display: flex !important;
-      justify-content: space-between;
-      align-items: center;
-
-      div.buttonset {
-        label {
-          padding: .5em;
-          border-radius: 50%;
-          background: none;
-          width: 1.5em;
-          height: 1.5em;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          > *,
-          svg {
-            width: 1.2em;
-            height: 1.2em;
-          }
-
-          .dashicons {
-            width: 1.2em;
-            height: 1.2em;
-            font-size: 1.2em;
-          }
-        }
-      }
-    }
-
-    // &[kirki-typography-subcontrol-type="font-weight"] {
-    //   display: flex !important;
-    //   justify-content: space-between;
-    //   align-items: center;
-    //   flex-wrap: wrap;
-
-    //   div.buttonset {
-    //     width: 100%;
-    //     margin: 1.2em 0;
-
-    //     label {
-    //       position: relative;
-    //       padding: 0;
-    //       display: flex;
-    //       justify-content: center;
-    //       background-color: #00a0d2;
-    //       height: 6px;
-
-    //       .indicator {
-    //         display: block;
-    //         width: 1em;
-    //         height: 1em;
-    //       }
-
-    //       .sublabel {
-    //         position: absolute;
-    //         top: 0;
-    //         left: 0;
-    //         line-height: 1em;
-    //         font-weight: 700;
-    //         width: 100%;
-    //         text-align: center;
-    //         transition: all .2s;
-    //       }
-
-    //       &:nth-child(2n) {
-    //         .sublabel {
-    //           top: -17px;
-    //         }
-    //       }
-
-    //       &:nth-child(4n) {
-    //         .sublabel {
-    //           top: 11px;
-    //         }
-    //       }
-    //     }
-
-    //     .switch-input {
-    //       &:checked+.switch-label {
-    //         background: linear-gradient(to right, #00a0d2 0%, #00a0d2 50%, rgba(0, 0, 0, .1) 51%, rgba(0, 0, 0, .1) 100%);
-
-    //         .indicator {
-    //           &:after {
-    //             content: "";
-    //             position: absolute;
-    //             display: block;
-    //             width: 6px;
-    //             height: 14;
-    //             background: #00a0d2;
-    //             top: -4px;
-    //             left: calc(50% - 3px);
-    //             border-radius: 3px;
-    //           }
-    //         }
-
-    //         .sublabel {
-    //           color: #00a0d2;
-    //           font-size: 15px;
-    //         }
-
-    //         ~.switch-label {
-    //           background: rgba(0, 0, 0, .1);
-    //         }
-    //         &:nth-child(2n) {
-    //           .sublabel {
-    //             top: -21px;
-    //           }
-    //         }
-  
-    //         &:nth-child(4n) {
-    //           .sublabel {
-    //             top: 15px;
-    //           }
-    //         }  
-    //       }
-
-    //       &[disabled=true],
-    //       &[disabled=disabled] {
-    //         +.switch-label {
-    //           .sublabel {
-    //             color: #c4c4c4;
-    //             font-weight: 300;
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
 
     .customize-control-title {
       font-weight: 400;

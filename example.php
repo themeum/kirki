@@ -899,6 +899,7 @@ my_config_kirki_add_field(
 			'font-family'     => 'Roboto',
 			'variant'         => 'regular',
 			'font-size'       => '14px',
+			'font-style'      => 'normal',
 			'line-height'     => '1.5',
 			'letter-spacing'  => '0',
 			'color'           => '#333333',
