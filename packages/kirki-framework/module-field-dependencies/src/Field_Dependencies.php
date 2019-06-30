@@ -58,11 +58,11 @@ class Field_Dependencies {
 	
 			if ( ! empty( $args['required'] ) ) {
 				$args['active_callback'] = '__return_true';
-				return;
+				return $args;
 			}
 			// No need to proceed any further if we're using the default value.
 			if ( '__return_true' === $args['active_callback'] ) {
-				return;
+				return $args;
 			}
 
 			// Make sure the function is callable, otherwise fallback to __return_true.
