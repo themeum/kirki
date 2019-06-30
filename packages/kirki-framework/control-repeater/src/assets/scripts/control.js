@@ -191,9 +191,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 			} );
 		}
 
-		// Once we have displayed the rows, we cleanup the values
-		control.setValue( settingValue, true, true );
-
 		control.repeaterFieldsContainer.sortable( {
 			handle: '.repeater-row-header',
 			update: function() {
