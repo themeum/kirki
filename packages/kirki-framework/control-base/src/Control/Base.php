@@ -12,7 +12,7 @@
 
 namespace Kirki\Control;
 
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 /**
@@ -155,9 +155,6 @@ class Base extends \WP_Customize_Control {
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
-
-		// Required.
-		$this->json['required'] = $this->required;
 
 		// Output.
 		$this->json['output'] = $this->output;

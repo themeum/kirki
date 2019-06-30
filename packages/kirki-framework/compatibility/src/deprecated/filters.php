@@ -50,7 +50,7 @@ add_filter( 'kirki_values_get_value', function( $arg1, $arg2 ) {
 }, 99, 2 );
 
 add_action( 'init', function() {
-	$config_ids = Kirki_Config::get_config_ids();
+	$config_ids = \Kirki\Compatibility\Config::get_config_ids();
 	global $kirki_deprecated_filters_iteration;
 	foreach ( $config_ids as $config_id ) {
 		foreach( array(

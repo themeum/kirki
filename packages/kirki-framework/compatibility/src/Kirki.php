@@ -12,8 +12,9 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
+use Kirki\Compatibility\Config;
 use Kirki\Compatibility\Field;
 
 // Exit if accessed directly.

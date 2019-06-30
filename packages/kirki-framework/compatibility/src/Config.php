@@ -3,13 +3,13 @@
  * Processes configurations.
  *
  * @package   Kirki
- * @category  Core
+ * @category  Compatibility
  * @author    Ari Stathopoulos (@aristath)
  * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license   https://opensource.org/licenses/MIT
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * The Config object
@@ -86,8 +86,8 @@ final class Config {
 	 * Use the get_instance() static method to get the instance you need.
 	 *
 	 * @access private
-	 * @param string $config_id @see Kirki\Core\Config::get_instance().
-	 * @param array  $args      @see Kirki\Core\Config::get_instance().
+	 * @param string $config_id @see Kirki\Compatibility\Config::get_instance().
+	 * @param array  $args      @see Kirki\Compatibility\Config::get_instance().
 	 */
 	private function __construct( $config_id = 'global', $args = [] ) {
 
@@ -138,7 +138,7 @@ final class Config {
 	 *                                        from fields using this configuration.
 	 * }
 	 *
-	 * @return Kirki\Core\Config
+	 * @return Kirki\Compatibility\Config
 	 */
 	public static function get_instance( $id = 'global', $args = [] ) {
 		if ( empty( $id ) ) {

@@ -52,6 +52,6 @@ if ( ! function_exists( 'kirki_get_brightness' ) ) {
 
 if ( ! function_exists( 'Kirki' ) ) {
 	function Kirki() {
-		return \Kirki\Core\Framework::get_instance();
+		return \Kirki\Compatibility\Framework::get_instance();
 	}
 }

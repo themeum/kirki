@@ -12,7 +12,7 @@ namespace Kirki\Control;
 
 use Kirki\Control\Base;
 use Kirki\Control\Select;
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 /**
  * Repeater control

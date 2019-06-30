@@ -20,11 +20,11 @@
  * @since     1.0
  */
 
-use Kirki\Core\Init;
+use Kirki\Compatibility\Init;
 use Kirki\Core\L10n;
-use Kirki\Core\Modules;
-use Kirki\Core\Framework;
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Modules;
+use Kirki\Compatibility\Framework;
+use Kirki\Compatibility\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

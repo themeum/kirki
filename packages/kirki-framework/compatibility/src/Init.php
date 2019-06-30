@@ -10,7 +10,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * Initialize Kirki
@@ -52,7 +52,7 @@ class Init {
 
 		new Values();
 		new Sections();
-		new Telemetry();
+		new \Kirki\Core\Telemetry();
 	}
 
 	/**
@@ -161,7 +161,7 @@ class Init {
 					}
 				}
 
-				new Panel( $panel_args );
+				new \Kirki\Compatibility\Panel( $panel_args );
 			}
 		}
 	}
@@ -186,7 +186,7 @@ class Init {
 						}
 					}
 				}
-				new Section( $section_args );
+				new \Kirki\Compatibility\Section( $section_args );
 			}
 		}
 	}
@@ -201,7 +201,7 @@ class Init {
 		foreach ( Kirki::$fields as $args ) {
 
 			// Create the settings.
-			new Settings( $args );
+			new \Kirki\Compatibility\Settings( $args );
 
 			// Check if we're on the customizer.
 			// If we are, then we will create the controls, add the scripts needed for the customizer

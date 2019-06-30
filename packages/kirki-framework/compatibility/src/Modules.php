@@ -2,15 +2,15 @@
 /**
  * Handles modules loading.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @package    Kirki
+ * @category   Modules
+ * @author     Ari Stathopoulos (@aristath)
+ * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @since      3.0.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * The Modules class.

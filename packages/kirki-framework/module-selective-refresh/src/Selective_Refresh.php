@@ -12,7 +12,7 @@
 
 namespace Kirki\Module;
 
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Kirki;
 
 /**
  * Handle selective refreshes introduced in WordPress 4.5.

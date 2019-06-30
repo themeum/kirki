@@ -10,7 +10,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * Each panel is a separate instance of the Panel object.

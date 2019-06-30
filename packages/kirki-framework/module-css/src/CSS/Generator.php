@@ -13,7 +13,7 @@
 
 namespace Kirki\Module\CSS;
 
-use Kirki\Core\Values;
+use Kirki\Compatibility\Values;
 use Kirki\Module\Webfonts\Fonts;
 
 // Exit if accessed directly.

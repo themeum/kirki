@@ -12,9 +12,9 @@
 
 namespace Kirki\Module;
 
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Kirki;
 use Kirki\Core\Helper;
-use Kirki\Core\Values;
+use Kirki\Compatibility\Values;
 use Kirki\Module\CSS\Generator;
 
 /**

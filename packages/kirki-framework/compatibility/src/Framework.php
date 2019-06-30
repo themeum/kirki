@@ -10,7 +10,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -36,7 +36,7 @@ final class Framework {
 	 *
 	 * @static
 	 * @access public
-	 * @return Kirki\Core\Framework
+	 * @return Kirki\Compatibility\Framework
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {

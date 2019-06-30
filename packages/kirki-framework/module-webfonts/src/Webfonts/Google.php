@@ -13,7 +13,7 @@
 
 namespace Kirki\Module\Webfonts;
 
-use Kirki\Core\Values;
+use Kirki\Compatibility\Values;
 use Kirki\Module\Webfonts\Fonts;
 use Kirki\GoogleFonts;
 

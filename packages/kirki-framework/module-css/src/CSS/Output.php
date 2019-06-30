@@ -11,8 +11,8 @@
 
 namespace Kirki\Module\CSS;
 
-use Kirki\Core\Values;
-use Kirki\Core\Kirki;
+use Kirki\Compatibility\Values;
+use Kirki\Compatibility\Kirki;
 
 /**
  * Handles field CSS output.

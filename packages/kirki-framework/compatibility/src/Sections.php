@@ -10,7 +10,7 @@
  * @since       3.0.17
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * Additional tweaks for sections.
@@ -36,8 +36,8 @@ class Sections {
 	 */
 	public function outer_sections_css() {
 		echo '<style>';
-		if ( ! empty( Kirki::$sections ) ) {
-			foreach ( Kirki::$sections as $section_args ) {
+		if ( ! empty( \Kirki\Compatibility\Kirki::$sections ) ) {
+			foreach ( \Kirki\Compatibility\Kirki::$sections as $section_args ) {
 				if ( isset( $section_args['id'] ) && isset( $section_args['type'] ) && 'outer' === $section_args['type'] || 'kirki-outer' === $section_args['type'] ) {
 					echo '#customize-theme-controls li#accordion-section-' . esc_html( $section_args['id'] ) . '{display:list-item!important;}';
 				}

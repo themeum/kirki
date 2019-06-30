@@ -9,7 +9,7 @@
  * @license    https://opensource.org/licenses/MIT
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 /**
  * Our main Kirki\Control object

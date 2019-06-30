@@ -12,7 +12,7 @@
 
 namespace Kirki\Module;
 
-use Kirki\Core\Values;
+use Kirki\Compatibility\Values;
 use Kirki\URL;
 
 /**
@@ -89,7 +89,7 @@ class CSS_Vars {
 	public function populate_vars() {
 
 		// Get an array of all fields.
-		$fields = class_exists( '\Kirki\Core\Kirki' ) ? \Kirki\Core\Kirki::$fields : [];
+		$fields = class_exists( '\Kirki\Compatibility\Kirki' ) ? \Kirki\Compatibility\Kirki::$fields : [];
 		$fields = array_merge( $fields, $this->fields );
 		foreach ( $fields as $id => $args ) {
 			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
@@ -149,7 +149,7 @@ class CSS_Vars {
 	 */
 	public function postmessage() {
 		wp_enqueue_script( 'kirki_auto_css_vars', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-preview' ], '1.0', true );
-		$fields = class_exists( '\Kirki\Core\Kirki' ) ? \Kirki\Core\Kirki::$fields : [];
+		$fields = class_exists( '\Kirki\Compatibility\Kirki' ) ? \Kirki\Compatibility\Kirki::$fields : [];
 		$fields = array_merge( $fields, $this->fields );
 		$data   = [];
 		foreach ( $fields as $field ) {
