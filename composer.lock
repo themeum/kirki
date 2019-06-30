@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "8e06534731f9b6536893335ddb7e30d90cf5393b"
+                "reference": "78da64324250a008088ffd9151dc510e53b87820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/8e06534731f9b6536893335ddb7e30d90cf5393b",
-                "reference": "8e06534731f9b6536893335ddb7e30d90cf5393b",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/78da64324250a008088ffd9151dc510e53b87820",
+                "reference": "78da64324250a008088ffd9151dc510e53b87820",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-26T21:35:05+00:00"
+            "time": "2019-06-30T12:53:22+00:00"
         },
         {
             "name": "kirki-framework/control-color-palette",
@@ -803,12 +803,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "4e99a65f4a6ce85e2403ddb9183ad39dbec66abb"
+                "reference": "616e5c41f9b918d4d873b2505f212a68b9412e8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/4e99a65f4a6ce85e2403ddb9183ad39dbec66abb",
-                "reference": "4e99a65f4a6ce85e2403ddb9183ad39dbec66abb",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/616e5c41f9b918d4d873b2505f212a68b9412e8d",
+                "reference": "616e5c41f9b918d4d873b2505f212a68b9412e8d",
                 "shasum": ""
             },
             "require": {
@@ -848,7 +848,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-26T21:26:58+00:00"
+            "time": "2019-06-30T11:19:28+00:00"
         },
         {
             "name": "kirki-framework/control-select",
