@@ -80,7 +80,7 @@ final class Helper {
 	 */
 	public static function download_font_file( $url ) {
 
-		$saved_fonts = get_option( 'kirki_font_local_filenames', array() );
+		$saved_fonts = get_option( 'kirki_font_local_filenames', [] );
 		if ( isset( $saved_fonts[ $url ] ) && file_exists( $saved_fonts[ $url ]['file'] ) ) {
 			return $saved_fonts[ $url ]['url'];
 		}

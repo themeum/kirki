@@ -18,15 +18,15 @@ namespace Kirki\Compatibility;
  */
 class Deprecated {
 
-    /**
-     * Constructor.
-     *
-     * @access public
-     * @since 1.0
-     */
-    public function __construct() {
-        require_once __DIR__ . '/deprecated/classes.php';
-        require_once __DIR__ . '/deprecated/functions.php';
-        require_once __DIR__ . '/deprecated/filters.php';
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @access public
+	 * @since 1.0
+	 */
+	public function __construct() {
+		require_once __DIR__ . '/deprecated/classes.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		require_once __DIR__ . '/deprecated/functions.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		require_once __DIR__ . '/deprecated/filters.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+	}
 }

@@ -299,7 +299,7 @@ class Helper {
 	 * @return array
 	 */
 	public static function get_nav_menus( $value_field = 'id' ) {
-		$choices   = array();
+		$choices   = [];
 		$nav_menus = wp_get_nav_menus();
 
 		foreach ( $nav_menus as $term ) {
