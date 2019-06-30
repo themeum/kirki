@@ -22,7 +22,7 @@ if ( ! class_exists( 'Kirki_Active_Callback' ) ) {
 /**
  * Deprecated in v3.0.36
  *
- * keeping it here in case a theme or plugin was using one of its public methods.
+ * Keeping it here in case a theme or plugin was using one of its public methods.
  * This is just to avoid fatal errors, it does not do anything.
  */
 if ( ! class_exists( 'Kirki_CSS_To_File' ) ) {

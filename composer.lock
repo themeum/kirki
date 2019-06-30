@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "89d2147a9cef9492a463d0c434d4354901c65e92"
+                "reference": "9cb2c1c960c6c8cdf9edaa400c8c705c26f508b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/89d2147a9cef9492a463d0c434d4354901c65e92",
-                "reference": "89d2147a9cef9492a463d0c434d4354901c65e92",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/9cb2c1c960c6c8cdf9edaa400c8c705c26f508b2",
+                "reference": "9cb2c1c960c6c8cdf9edaa400c8c705c26f508b2",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-30T09:12:11+00:00"
+            "time": "2019-06-30T09:19:26+00:00"
         },
         {
             "name": "kirki-framework/control-base",
