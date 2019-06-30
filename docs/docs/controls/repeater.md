@@ -131,7 +131,7 @@ Kirki::add_field( 'theme_config_id', [
 	'choices' => [
 		'limit' => 3
 	],
-) );
+] );
 ```
 
 ### Usage
