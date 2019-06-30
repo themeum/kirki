@@ -62,6 +62,7 @@ class Typography extends Field {
 
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'customize_preview_init', [ $this, 'enqueue_customize_preview_init' ] );
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 	}
 
 	/**
@@ -517,5 +518,17 @@ class Typography extends Field {
 	public function enqueue_customize_preview_init() {
 		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
 	}
-}
 
+	/**
+	 * Adds a custom output class for typography fields.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $classnames The array of classnames.
+	 * @return array
+	 */
+	public function output_control_classnames( $classnames ) {
+		$classnames['kirki-typography'] = '\Kirki\Field\CSS\Typography';
+		return $classnames;
+	}
+}

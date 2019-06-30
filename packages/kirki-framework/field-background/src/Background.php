@@ -213,6 +213,7 @@ class Background extends Field {
 		);
 
 		add_action( 'customize_preview_init', [ $this, 'enqueue_scripts' ] );
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 	}
 
 	/**
@@ -399,5 +400,18 @@ class Background extends Field {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'kirki-typography', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
+	}
+
+	/**
+	 * Adds a custom output class for typography fields.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $classnames The array of classnames.
+	 * @return array
+	 */
+	public function output_control_classnames( $classnames ) {
+		$classnames['kirki-background'] = '\Kirki\Field\CSS\Background';
+		return $classnames;
 	}
 }

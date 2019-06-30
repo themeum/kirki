@@ -30,6 +30,8 @@ class Multicolor extends Field {
 	 */
 	public function init( $args ) {
 
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
+
 		/**
 		 * Add a hidden field, the label & description.
 		 */
@@ -121,4 +123,17 @@ class Multicolor extends Field {
 	 * @return void
 	 */
 	public function add_control( $wp_customize ) {}
+
+	/**
+	 * Adds a custom output class for typography fields.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $classnames The array of classnames.
+	 * @return array
+	 */
+	public function output_control_classnames( $classnames ) {
+		$classnames['kirki-multicolor'] = '\Kirki\Field\CSS\Multicolor';
+		return $classnames;
+	}
 }

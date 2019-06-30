@@ -31,10 +31,9 @@ class Dimensions extends Field {
 	 */
 	public function init( $args = [] ) {
 
-		$config_id = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
-
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'customize_preview_init', [ $this, 'enqueue_customize_preview_scripts' ] );
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 
 		$args['required'] = isset( $args['required'] ) ? (array) $args['required'] : [];
 		$config_id        = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
@@ -174,5 +173,18 @@ class Dimensions extends Field {
 	 */
 	public function enqueue_customize_preview_scripts() {
 		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
+	}
+
+	/**
+	 * Adds a custom output class for typography fields.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $classnames The array of classnames.
+	 * @return array
+	 */
+	public function output_control_classnames( $classnames ) {
+		$classnames['kirki-dimensions'] = '\Kirki\Field\CSS\Dimensions';
+		return $classnames;
 	}
 }

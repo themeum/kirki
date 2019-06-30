@@ -45,6 +45,7 @@ class Image extends Field {
 	 */
 	protected function init( $args ) {
 		add_filter( 'kirki_output_item_args', [ $this, 'output_item_args' ], 10, 4 );
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 	}
 
 		/**
@@ -139,5 +140,18 @@ class Image extends Field {
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * Adds a custom output class for typography fields.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $classnames The array of classnames.
+	 * @return array
+	 */
+	public function output_control_classnames( $classnames ) {
+		$classnames['kirki-image'] = '\Kirki\Field\CSS\Image';
+		return $classnames;
 	}
 }
