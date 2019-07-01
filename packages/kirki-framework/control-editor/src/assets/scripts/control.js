@@ -1,19 +1,21 @@
 /* global tinyMCE */
-wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicControl.extend( {
-
+wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicControl.extend( {
 	initKirkiControl: function( control ) {
-		var element, editor, id;
+		var element, editor, id, defaultParams;
 		control = control || this;
 		element = control.container.find( 'textarea' );
 		id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
 
-		wp.editor.initialize( id, {
+		defaultParams = {
 			tinymce: {
-				wpautop: true
+				wpautop: true,
 			},
 			quicktags: true,
-			mediaButtons: true
-		} );
+			mediaButtons: true,
+		};
+
+		// Overwrite the default paramaters if choices is defined.
+		wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
 
 		editor = tinyMCE.get( id );
 
@@ -27,5 +29,5 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 				wp.customize.instance( control.id ).set( content );
 			} );
 		}
-	}
+	},
 } );

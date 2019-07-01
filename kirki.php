@@ -21,7 +21,7 @@
  */
 
 use Kirki\Compatibility\Init;
-use Kirki\Core\L10n;
+use Kirki\L10n;
 use Kirki\Compatibility\Modules;
 use Kirki\Compatibility\Framework;
 use Kirki\Compatibility\Kirki;
@@ -69,7 +69,7 @@ $kirki->modules = new Modules();
 
 // Instantiate classes.
 new Kirki();
-new L10n();
+new L10n( 'kirki', __DIR__ . '/languages' );
 
 // Include the ariColor library.
 require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude

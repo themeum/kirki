@@ -42,6 +42,15 @@ class Editor extends Base {
 	public static $control_ver = '1.0';
 
 	/**
+	 * Args to pass to TinyMCE.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var bool
+	 */
+	public $choices = array();
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -56,6 +65,18 @@ class Editor extends Base {
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-editor-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+	}
+
+	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
+	 */
+	public function to_json() {
+		parent::to_json();
+		$this->json['choices'] = $this->choices;
 	}
 
 	/**

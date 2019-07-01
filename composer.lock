@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "948956032685381e4895eace247d280f",
+    "content-hash": "5a112fddc4bcf19dc7e053722baf47fa",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -101,12 +101,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
-                "reference": "98848dd04a3d9590b4ece1b6e9253217a96d0ee3"
+                "reference": "58368c94ead20081de3bb79cf95941c6d7fc8258"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/98848dd04a3d9590b4ece1b6e9253217a96d0ee3",
-                "reference": "98848dd04a3d9590b4ece1b6e9253217a96d0ee3",
+                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/58368c94ead20081de3bb79cf95941c6d7fc8258",
+                "reference": "58368c94ead20081de3bb79cf95941c6d7fc8258",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-30T18:19:57+00:00"
+            "time": "2019-07-01T15:07:19+00:00"
         },
         {
             "name": "kirki-framework/control-code",
@@ -380,12 +380,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "28e1e3577a94cd13691532f841d2141e9c81165f"
+                "reference": "aaeed5675f87e30913302ee371cb3b34f65c88e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/28e1e3577a94cd13691532f841d2141e9c81165f",
-                "reference": "28e1e3577a94cd13691532f841d2141e9c81165f",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/aaeed5675f87e30913302ee371cb3b34f65c88e2",
+                "reference": "aaeed5675f87e30913302ee371cb3b34f65c88e2",
                 "shasum": ""
             },
             "require": {
@@ -420,7 +420,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-02T10:27:57+00:00"
+            "time": "2019-07-01T15:03:52+00:00"
         },
         {
             "name": "kirki-framework/control-date",
@@ -522,12 +522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-editor.git",
-                "reference": "68d4435c2195a84665d1f7c978cba5ac23ae1488"
+                "reference": "69620b3c7ac5bd8b97c642b7dad45d5dc57ca7a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/68d4435c2195a84665d1f7c978cba5ac23ae1488",
-                "reference": "68d4435c2195a84665d1f7c978cba5ac23ae1488",
+                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/69620b3c7ac5bd8b97c642b7dad45d5dc57ca7a3",
+                "reference": "69620b3c7ac5bd8b97c642b7dad45d5dc57ca7a3",
                 "shasum": ""
             },
             "require": {
@@ -561,7 +561,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-05-08T16:10:20+00:00"
+            "time": "2019-07-01T15:06:05+00:00"
         },
         {
             "name": "kirki-framework/control-generic",
@@ -1043,12 +1043,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "abbfdc6c43d2fce84f518961dc2a95c3652fc23f"
+                "reference": "d55f0af70ff83549b158959aca00c87f49874dad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/abbfdc6c43d2fce84f518961dc2a95c3652fc23f",
-                "reference": "abbfdc6c43d2fce84f518961dc2a95c3652fc23f",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/d55f0af70ff83549b158959aca00c87f49874dad",
+                "reference": "d55f0af70ff83549b158959aca00c87f49874dad",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-06-30T18:19:14+00:00"
+            "time": "2019-07-01T18:44:49+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -1408,6 +1408,50 @@
                 "wordpress"
             ],
             "time": "2019-05-05T16:32:16+00:00"
+        },
+        {
+            "name": "kirki-framework/l10n",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/l10n.git",
+                "reference": "6aa25316f3a11f6ec491389cdd7d6dee13edbef8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/l10n/zipball/6aa25316f3a11f6ec491389cdd7d6dee13edbef8",
+                "reference": "6aa25316f3a11f6ec491389cdd7d6dee13edbef8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Allows loading a 2nd textdomain inside a theme.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-07-01T18:57:20+00:00"
         },
         {
             "name": "kirki-framework/module-css",
@@ -5118,6 +5162,7 @@
     "stability-flags": {
         "kirki-framework/compatibility": 20,
         "kirki-framework/core": 20,
+        "kirki-framework/l10n": 20,
         "kirki-framework/field": 20,
         "kirki-framework/googlefonts": 20,
         "kirki-framework/url-getter": 20,

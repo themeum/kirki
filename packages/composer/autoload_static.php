@@ -105,7 +105,8 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/field/src',
             1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 
