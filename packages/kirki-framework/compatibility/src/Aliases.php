@@ -34,7 +34,7 @@ class Aliases {
 			[ 'Kirki\Compatibility\Field', 'Kirki_Field' ],
 			[ 'Kirki\Core\Helper', 'Kirki_Helper' ],
 			[ 'Kirki\Compatibility\Init', 'Kirki_Init' ],
-			[ 'Kirki\Core\L10n', 'Kirki_L10n' ],
+			[ 'Kirki\L10n', 'Kirki_L10n' ],
 			[ 'Kirki\Compatibility\Modules', 'Kirki_Modules' ],
 			[ 'Kirki\Compatibility\Panel', 'Kirki_Panel' ],
 			[ 'Kirki\Compatibility\Sanitize_Values', 'Kirki_Sanitize_Values' ],
