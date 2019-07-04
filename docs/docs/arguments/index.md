@@ -5,5 +5,9 @@ mainMaxWidth: 55rem;
 bodyClasses: page
 ---
 <ul>
-{% for node in site.pages %}{% if node.url contains "docs/arguments" %}<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.slug }}</a></li>{% endif %}{% endfor %}
+{% for node in site.pages %}
+	{% if node.url contains "docs/arguments" %}
+		<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+	{% endif %}
+{% endfor %}
 </ul>
