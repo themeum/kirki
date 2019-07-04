@@ -66,6 +66,7 @@ $sections = [
 	'custom'          => [ esc_html__( 'Custom', 'kirki' ), '' ],
 	'dashicons'       => [ esc_html__( 'Dashicons', 'kirki' ), '' ],
 	'date'            => [ esc_html__( 'Date', 'kirki' ), '' ],
+	'dimension'       => [ esc_html__( 'Dimension', 'kirki' ), '' ],
 	'dimensions'      => [ esc_html__( 'Dimensions', 'kirki' ), '' ],
 	'dropdown-pages'  => [ esc_html__( 'Dropdown Pages', 'kirki' ), '' ],
 	'editor'          => [ esc_html__( 'Editor', 'kirki' ), '' ],
@@ -359,12 +360,28 @@ new \Kirki\Field\Dashicons(
 );
 
 /**
+ * Dimension Control.
+ */
+new \Kirki\Field\Dimension(
+	[
+		'settings'    => 'dimension_0',
+		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+		'description' => esc_html__( 'Description Here.', 'kirki' ),
+		'section'     => 'dimension_section',
+		'default'     => '10px',
+		'choices'     => [
+			'accept_unitless' => true,
+		],
+	]
+);
+
+/**
  * Dimensions Control.
  */
 new \Kirki\Field\Dimensions(
 	[
 		'settings'    => 'dimensions_0',
-		'label'       => esc_html__( 'Dimensions Control', 'kirki' ),
+		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
 		'description' => esc_html__( 'Description Here.', 'kirki' ),
 		'section'     => 'dimensions_section',
 		'default'     => [
@@ -377,7 +394,7 @@ new \Kirki\Field\Dimensions(
 new \Kirki\Field\Dimensions(
 	[
 		'settings'    => 'dimensions_1',
-		'label'       => esc_html__( 'Dimensions Control', 'kirki' ),
+		'label'       => esc_html__( 'Dimension Control', 'kirki' ),
 		'description' => esc_html__( 'Description Here.', 'kirki' ),
 		'section'     => 'dimensions_section',
 		'default'     => [
