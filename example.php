@@ -570,7 +570,7 @@ my_config_kirki_add_field(
 	[
 		'type'     => 'multicolor',
 		'settings' => 'multicolor_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
+		'label'    => esc_html__( 'Multicolor Control', 'kirki' ),
 		'section'  => 'multicolor_section',
 		'priority' => 10,
 		'choices'  => [
@@ -594,7 +594,7 @@ my_config_kirki_add_field(
 	[
 		'type'     => 'number',
 		'settings' => 'number_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
+		'label'    => esc_html__( 'Number Control', 'kirki' ),
 		'section'  => 'number_section',
 		'priority' => 10,
 		'choices'  => [
@@ -612,7 +612,7 @@ my_config_kirki_add_field(
 	[
 		'type'     => 'palette',
 		'settings' => 'palette_setting',
-		'label'    => esc_html__( 'Label', 'kirki' ),
+		'label'    => esc_html__( 'Palette Control', 'kirki' ),
 		'section'  => 'palette_section',
 		'default'  => 'blue',
 		'choices'  => [
@@ -864,7 +864,7 @@ my_config_kirki_add_field(
 	[
 		'type'        => 'typography',
 		'settings'    => 'typography_setting_0',
-		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
+		'label'       => esc_html__( 'Typography Control', 'kirki' ),
 		'description' => esc_html__( 'The full set of options.', 'kirki' ),
 		'section'     => 'typography_section',
 		'priority'    => 10,
@@ -919,8 +919,8 @@ my_config_kirki_add_field(
 	[
 		'type'        => 'typography',
 		'settings'    => 'typography_setting_1',
-		'label'       => esc_html__( 'Typography Control Label', 'kirki' ),
-		'description' => esc_html__( 'The full set of options.', 'kirki' ),
+		'label'       => esc_html__( 'Typography Control', 'kirki' ),
+		'description' => esc_html__( 'Just the font-family and font-weight.', 'kirki' ),
 		'section'     => 'typography_section',
 		'priority'    => 10,
 		'transport'   => 'auto',
