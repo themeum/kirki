@@ -86,7 +86,6 @@ $sections = [
 	'slider'          => [ esc_html__( 'Slider', 'kirki' ), '' ],
 	'sortable'        => [ esc_html__( 'Sortable', 'kirki' ), '' ],
 	'switch'          => [ esc_html__( 'Switch', 'kirki' ), '' ],
-	'toggle'          => [ esc_html__( 'Toggle', 'kirki' ), '' ],
 	'typography'      => [ esc_html__( 'Typography', 'kirki' ), '', 'outer' ],
 ];
 foreach ( $sections as $section_id => $section ) {
@@ -852,31 +851,6 @@ my_config_kirki_add_field(
 			[
 				'setting'  => 'switch_setting',
 				'operator' => '==',
-				'value'    => true,
-			],
-		],
-	]
-);
-
-/**
- * Toggle control.
- */
-my_config_kirki_add_field(
-	[
-		'type'        => 'toggle',
-		'settings'    => 'toggle_setting',
-		'label'       => esc_html__( 'Toggle Control', 'kirki' ),
-		'description' => esc_html__( 'Description', 'kirki' ),
-		'section'     => 'toggle_section',
-		'default'     => true,
-		// WIP.
-		'transport'   => 'postMessage',
-		// WIP.
-		'js_vars'     => [
-			[
-				'element'  => '.site-description',
-				'function' => 'toggleClass',
-				'class'    => 'hidden',
 				'value'    => true,
 			],
 		],
