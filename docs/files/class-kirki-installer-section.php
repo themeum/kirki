@@ -59,7 +59,7 @@ if ( ! function_exists( 'kirki_installer_register' ) ) {
 					$plugins   = get_plugins();
 					$installed = false;
 					foreach ( $plugins as $plugin ) {
-						if ( 'Kirki' === $plugin['Name'] || 'Kirki Toolkit' === $plugin['Name'] ) {
+						if ( 'Kirki' === $plugin['Name'] || 'Kirki Toolkit' === $plugin['Name'] || 'Kirki Customizer Framework' === $plugin['Name'] ) {
 							$installed = true;
 						}
 					}
