@@ -21,10 +21,9 @@ You can define the properties it will use in the field's `default` argument.
 Controlling the `width` and `height`:
 
 ```php
-Kirki::add_field( 'theme_config_id', [
-	'type'        => 'dimensions',
+new \Kirki\Field\Dimensions( [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+	'label'       => esc_html__( 'Dimensions Control', 'kirki' ),
 	'description' => esc_html__( 'Description Here.', 'kirki' ),
 	'section'     => 'my_section',
 	'default'     => [
@@ -37,10 +36,9 @@ Kirki::add_field( 'theme_config_id', [
 Controlling the padding:
 
 ```php
-Kirki::add_field( 'theme_config_id', [
-	'type'        => 'dimensions',
+new \Kirki\Field\Dimensions( [
 	'settings'    => 'my_setting',
-	'label'       => esc_html__( 'Dimension Control', 'kirki' ),
+	'label'       => esc_html__( 'Dimensions Control', 'kirki' ),
 	'description' => esc_html__( 'Description Here.', 'kirki' ),
 	'section'     => 'my_section',
 	'default'     => [
@@ -55,8 +53,7 @@ Kirki::add_field( 'theme_config_id', [
 You can use any dimensions and define the labels using a snippet like this:
 
 ```php
-Kirki::add_field( 'theme_config_id', [
-	'type'        => 'dimensions',
+new \Kirki\Field\Dimensions( [
 	'settings'    => 'my_setting',
 	'label'       => esc_html__( 'Dimension Control', 'kirki' ),
 	'description' => esc_html__( 'Description Here.', 'kirki' ),
