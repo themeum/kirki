@@ -84,8 +84,8 @@ $sections = [
 	'select'          => [ esc_html__( 'Select', 'kirki' ), '' ],
 	'slider'          => [ esc_html__( 'Slider', 'kirki' ), '' ],
 	'sortable'        => [ esc_html__( 'Sortable', 'kirki' ), '' ],
-	'switch'          => [ esc_html__( 'Switch', 'kirki' ), '' ],
-	'typography'      => [ esc_html__( 'Typography', 'kirki' ), '', 'outer' ],
+	'switch'          => [ esc_html__( 'Switch', 'kirki' ), '', 'outer' ],
+	'typography'      => [ esc_html__( 'Typography', 'kirki' ), '' ],
 ];
 foreach ( $sections as $section_id => $section ) {
 	$section_args = [
