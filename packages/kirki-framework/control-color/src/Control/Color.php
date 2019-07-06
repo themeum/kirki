@@ -139,7 +139,7 @@ class Color extends Base {
 					palette.push( paletteColor.color );
 				});
 			<?php else : ?>
-				palette = [ '#000000', '#ffffff', '#f78da7', '#cf2e2e', '#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#eeeeee', '#abb8c3', '#546E7A', '#313131' ]
+				palette = [ '#000000', '#ffffff', '#cf2e2e', '#ff6900', '#fcb900', '#00d084', '#0693e3', '#abb8c3', '#546E7A', '#313131' ]
 			<?php endif; ?>
 		}
 		#>
