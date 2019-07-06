@@ -23,19 +23,6 @@ if ( ! class_exists( 'Kirki' ) ) {
 }
 
 /**
- * First of all, add the config.
- *
- * @link https://kirki.org/docs/getting-started/config.html
- */
-Kirki::add_config(
-	'kirki_demo',
-	[
-		'capability'  => 'edit_theme_options',
-		'option_type' => 'theme_mod',
-	]
-);
-
-/**
  * Add a panel.
  *
  * @link https://kirki.org/docs/getting-started/panels.html
@@ -109,15 +96,6 @@ Kirki::add_section(
 		'button_url'  => 'https://wplemon.com',
 	]
 );
-
-/**
- * A proxy function. Automatically passes-on the config-id.
- *
- * @param array $args The field arguments.
- */
-function my_config_kirki_add_field( $args ) {
-	Kirki::add_field( 'kirki_demo', $args );
-}
 
 /**
  * Background Control.
