@@ -157,6 +157,8 @@ final class Generator {
 		self::$field_type = ( isset( $field['choices'] ) && isset( $field['choices']['parent_type'] ) ) ? $field['choices']['parent_type'] : self::$field_type;
 		self::$output     = $field['output'];
 
+		$field['kirki_config'] = isset( $field['kirki_config'] ) ? $field['kirki_config'] : 'global';
+
 		if ( ! is_array( self::$output ) ) {
 			self::$output = [
 				[

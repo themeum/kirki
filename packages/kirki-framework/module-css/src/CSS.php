@@ -46,7 +46,7 @@ class CSS {
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'kirki_field_init', [ $this, 'field_init' ] );
+		add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
@@ -82,10 +82,11 @@ class CSS {
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $args The field args.
+	 * @param array  $args   The field args.
+	 * @param Object $object The field object.
 	 * @return void
 	 */
-	public function field_init( $args ) {
+	public function field_init( $args, $object ) {
 		if ( ! isset( $args['output'] ) || empty( $args['output'] ) ) {
 			return;
 		}
@@ -131,6 +132,11 @@ class CSS {
 			$args['output'][ $key ]['element'] = str_replace( [ "\t", "\n", "\r", "\0", "\x0B" ], ' ', $args['output'][ $key ]['element'] );
 			$args['output'][ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $args['output'][ $key ]['element'] ) );
 		}
+
+		if ( ! isset( $args['type'] ) && isset( $object->type )) {
+			$args['type'] = $object->type;
+		}
+
 		self::$fields[] = $args;
 	}
 

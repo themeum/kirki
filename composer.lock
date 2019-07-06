@@ -1043,12 +1043,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/core.git",
-                "reference": "27d4e5b09de9cd94c4eb32f2cb1f6733d9547e18"
+                "reference": "0410bd751428e1c9f202a463479286491172d14b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/core/zipball/27d4e5b09de9cd94c4eb32f2cb1f6733d9547e18",
-                "reference": "27d4e5b09de9cd94c4eb32f2cb1f6733d9547e18",
+                "url": "https://api.github.com/repos/kirki-framework/core/zipball/0410bd751428e1c9f202a463479286491172d14b",
+                "reference": "0410bd751428e1c9f202a463479286491172d14b",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-02T18:52:42+00:00"
+            "time": "2019-07-06T21:46:22+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -1459,12 +1459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "02f34cc0f313108686d03d62e7fcde9d9d2650ba"
+                "reference": "d804b69acdd4754c5cd61d68f9cc1ed388c95543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/02f34cc0f313108686d03d62e7fcde9d9d2650ba",
-                "reference": "02f34cc0f313108686d03d62e7fcde9d9d2650ba",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/d804b69acdd4754c5cd61d68f9cc1ed388c95543",
+                "reference": "d804b69acdd4754c5cd61d68f9cc1ed388c95543",
                 "shasum": ""
             },
             "require": {
@@ -1496,7 +1496,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-06T20:13:23+00:00"
+            "time": "2019-07-06T21:07:53+00:00"
         },
         {
             "name": "kirki-framework/module-css-vars",

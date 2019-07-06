@@ -25,6 +25,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Telemetry {
 
 	/**
+	 * An array of all control types.
+	 *
+	 * @static
+	 * @access private
+	 * @since 4.0
+	 * @var array
+	 */
+	private static $types = [];
+
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -37,6 +48,7 @@ final class Telemetry {
 			return;
 		}
 
+		add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
 		add_action( 'init', [ $this, 'init' ] );
 		add_action( 'admin_notices', [ $this, 'admin_notice' ] );
 	}
@@ -204,13 +216,15 @@ final class Telemetry {
 			$php_version = "{$php_version[0]}.{$php_version[1]}";
 		}
 
+		$this->get_field_types();
+
 		// Build data and return the array.
 		return [
 			'phpVer'      => $php_version,
 			'themeName'   => $theme->get( 'Name' ),
 			'themeAuthor' => $theme->get( 'Author' ),
 			'themeURI'    => $theme->get( 'ThemeURI' ),
-			'fieldTypes'  => $this->get_field_types(),
+			'fieldTypes'  => self::$types,
 		];
 	}
 
@@ -225,10 +239,28 @@ final class Telemetry {
 		$types = [];
 		foreach ( Kirki::$fields as $field ) {
 			if ( isset( $field['type'] ) ) {
-				$types[] = $field['type'];
+				self::$types[] = $field['type'];
 			}
 		}
-		return $types;
+	}
+
+	/**
+	 * Runs when a field gets added.
+	 * Adds fields to this object so their styles can later be generated.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array  $args   The field args.
+	 * @param Object $object The field object.
+	 * @return void
+	 */
+	public function field_init( $args, $object ) {
+		if ( ! isset( $args['type'] ) && isset( $object->type )) {
+			$args['type'] = $object->type;
+		}
+		if ( isset( $args['type'] ) ) {
+			self::$types[] = $args['type'];
+		}
 	}
 
 	/**
