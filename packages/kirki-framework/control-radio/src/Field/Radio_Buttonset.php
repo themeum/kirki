@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class Radio_Buttonset extends Radio {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-radio-buttonset';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

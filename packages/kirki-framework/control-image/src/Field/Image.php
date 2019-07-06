@@ -18,6 +18,15 @@ use Kirki\Field;
 class Image extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-image';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

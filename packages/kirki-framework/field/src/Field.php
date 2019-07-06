@@ -80,13 +80,13 @@ abstract class Field {
 		add_action(
 			'init',
 			function() {
-				do_action( 'kirki_field_init', $this->args );
+				do_action( 'kirki_field_init', $this->args, $this );
 			} 
 		);
 		add_action(
 			'wp',
 			function() {
-				do_action( 'kirki_field_wp', $this->args );
+				do_action( 'kirki_field_wp', $this->args, $this );
 			}
 		);
 
@@ -179,9 +179,9 @@ abstract class Field {
 		 * Allow filtering the arguments.
 		 *
 		 * @since 0.1
-		 * @param array                $this->args   The arguments.
+		 * @param array                $this->args The arguments.
 		 * @param WP_Customize_Manager $customizer The customizer instance.
-		 * @return array                             Return the arguments.
+		 * @return array                           Return the arguments.
 		 */
 		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $customizer );
 		if ( isset( $args['settings'] ) ) {

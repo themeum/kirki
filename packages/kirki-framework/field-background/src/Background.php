@@ -22,6 +22,15 @@ use Kirki\URL;
 class Background extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-background';
+
+	/**
 	 * Extra logic for the field.
 	 *
 	 * Adds all sub-fields.

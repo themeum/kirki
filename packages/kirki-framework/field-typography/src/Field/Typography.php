@@ -24,6 +24,15 @@ use Kirki\Module\Webfonts\Fonts;
 class Typography extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-typography';
+
+	/**
 	 * Has the glogal gfonts var been added already?
 	 *
 	 * @static

@@ -21,6 +21,15 @@ use Kirki\Field;
 class Multicolor extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-multicolor';
+
+	/**
 	 * Extra logic for the field.
 	 *
 	 * Adds all sub-fields.

@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class Palette extends Radio {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-palette';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

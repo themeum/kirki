@@ -20,6 +20,15 @@ use Kirki\Field;
 class Date extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-date';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

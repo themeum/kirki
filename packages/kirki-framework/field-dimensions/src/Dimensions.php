@@ -22,6 +22,15 @@ use Kirki\URL;
 class Dimensions extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-dimensions';
+
+	/**
 	 * Extra logic for the field.
 	 *
 	 * Adds all sub-fields.

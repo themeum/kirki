@@ -308,7 +308,13 @@ class CSS {
 	private static function get_fields_by_config( $config_id ) {
 		$fields = [];
 		foreach ( self::$fields as $field ) {
-			if ( ( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) || ( 'global' === $config_id || ! $config_id ) && ( 'global' === $field['kirki_config'] || ! $field['kirki_config'] ) ) {
+			if (
+				( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) ||
+				(
+					( 'global' === $config_id || ! $config_id ) &&
+					( ! isset( $field['kirki_config'] ) || 'global' === $field['kirki_config'] || ! $field['kirki_config'] )
+				)
+			) {
 				$fields[] = $field;
 			}
 		}

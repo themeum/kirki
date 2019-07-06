@@ -20,6 +20,15 @@ use Kirki\Field;
 class Checkbox extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-checkbox';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

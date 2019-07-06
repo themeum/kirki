@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class Checkbox_Switch extends Checkbox {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-switch';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

@@ -20,6 +20,15 @@ use Kirki\Field;
 class Select extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-select';
+
+	/**
 	 * Defines if this is a multi-select or not.
 	 * If value is > 1, then the maximum number of selectable options
 	 * is the number defined here.

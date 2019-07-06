@@ -20,6 +20,15 @@ use Kirki\Field;
 class Slider extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-slider';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected
