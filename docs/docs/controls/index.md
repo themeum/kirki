@@ -19,5 +19,9 @@ heroButtons:
     label: Controls
 ---
 <ul>
-{% for node in site.pages %}{% if node.url contains "docs/controls" %}{% if node.slug %}<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.slug }}</a></li> {% endif %}{% endif %}{% endfor %}
+{% for node in site.pages %}
+	{% if node.url contains "docs/controls" %}
+		<li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+	{% endif %}
+{% endfor %}
 </ul>

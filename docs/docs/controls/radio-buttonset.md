@@ -15,6 +15,8 @@ heroButtons:
 
 You can define the available options using the `choices` argument and formatting them as an array `key => label`.
 
+<img src="https://raw.githubusercontent.com/aristath/kirki/master/docs/assets/images/radio-buttonset-control.png" alt="radio buttonset control example" style="max-width:300px;">
+
 ### Example
 
 ```php

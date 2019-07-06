@@ -29,10 +29,10 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'row_label' => [
 		'type'  => 'text',
-		'value' => esc_html__('your custom value', 'kirki' ),
+		'value' => esc_html__( 'Your Custom Value', 'kirki' ),
 	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'kirki' ),
-	'settings'     => 'my_setting',
+	'settings'     => 'my_repeater_setting',
 	'default'      => [
 		[
 			'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
@@ -70,11 +70,11 @@ Kirki::add_field( 'theme_config_id', [
 	'priority'    => 10,
 	'row_label' => [
 		'type'  => 'field',
-		'value' => esc_html__('your custom value', 'kirki' ),
+		'value' => esc_html__( 'Your Custom Value', 'kirki' ),
 		'field' => 'link_text',
 	],
 	'button_label' => esc_html__('"Add new" button label (optional) ', 'kirki' ),
-	'settings'     => 'my_setting',
+	'settings'     => 'my_repeater_setting',
 	'default'      => [
 		[
 			'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
@@ -102,14 +102,46 @@ Kirki::add_field( 'theme_config_id', [
 ] );
 ```
 
+Creating a repeater control with a maximum limit of 3 rows:
+
+```php
+Kirki::add_field( 'theme_config_id', [
+	'type'        => 'repeater',
+	'label'       => esc_attr__( 'Repeater Control', 'kirki' ),
+	'section'     => 'section_id',
+	'priority'    => 10,
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Your Custom Value.', 'kirki' ),
+		'field' => 'link_text',
+	],
+	'settings'    => 'my_repeater_setting',
+	'fields' => [
+		'link_text' => [
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Link Text', 'kirki' ),
+			'description' => esc_attr__( 'This will be the label for your link', 'kirki' ),
+		],
+	],
+	'default'     => [
+		[
+			'link_text' => esc_attr__( 'Link Text Example', 'kirki' ),
+		],
+	],
+	'choices' => [
+		'limit' => 3
+	],
+] );
+```
+
 ### Usage
 
 ```php
 <?php
-// Default values for 'my_setting' theme mod.
+// Default values for 'my_repeater_setting' theme mod.
 $defaults = [
-    [
-        'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
+  [
+    'link_text' => esc_html__( 'Kirki Site', 'kirki' ),
 		'link_url'  => 'https://kirki.org/',
 	],
 	[
@@ -119,7 +151,7 @@ $defaults = [
 ];
 
 // Theme_mod settings to check.
-$settings = get_theme_mod( 'my_setting', $defaults ); ?>
+$settings = get_theme_mod( 'my_repeater_setting', $defaults ); ?>
 
 <div class="kirki-links">
     <?php foreach( $settings as $setting ) : ?>
