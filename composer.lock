@@ -903,12 +903,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "1101881990d1ebab90dee82cebe1941ced20b6b0"
+                "reference": "1119b5ba08836520882b619ffd93e96abb1dcefb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/1101881990d1ebab90dee82cebe1941ced20b6b0",
-                "reference": "1101881990d1ebab90dee82cebe1941ced20b6b0",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/1119b5ba08836520882b619ffd93e96abb1dcefb",
+                "reference": "1119b5ba08836520882b619ffd93e96abb1dcefb",
                 "shasum": ""
             },
             "require": {
@@ -942,7 +942,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-06T20:33:24+00:00"
+            "time": "2019-07-07T10:01:49+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
