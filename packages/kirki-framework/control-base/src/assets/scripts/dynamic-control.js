@@ -260,7 +260,6 @@
 		var parentSetting;
 		if ( this.id && api.control( this.id ) && api.control( this.id ).params && api.control( this.id ).params.parent_setting ) {
 			parentSetting = api.control( this.id ).params.parent_setting;
-			console.log( parentSetting );
 			return api.control( parentSetting ).setting.get()[ this.id.replace( parentSetting + '[', '' ).replace( ']', '' ) ];
 		}
 		// End Kirki mod.
