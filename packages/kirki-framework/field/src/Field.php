@@ -140,15 +140,7 @@ abstract class Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
-		$args['type'] = 'theme_mod';
-		if ( isset( $args['option_type'] ) ) {
-			$args['type'] = $args['option_type'];
-			if ( isset( $args['option_name'] ) && ! empty( $args['option_name'] ) ) {
-				if ( isset( $args['settings'] ) && false === strpos( $args['settings'], $args['option_name'] . '[' ) ) {
-					$args['settings'] = $args['option_name'] . '[' . $args['settings'] . ']';
-				}
-			}
-		}
+		$args['type'] = isset( $args['option_type'] ) ? $args['option_type'] : 'theme_mod';
 		return $args;
 	}
 
@@ -186,11 +178,23 @@ abstract class Field {
 		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $customizer );
 		if ( isset( $args['settings'] ) ) {
 			$classname = $this->settings_class;
+
+			$setting_id = $args['settings'];
+
+			$args = [
+				'type'                 => isset( $args['type'] ) ? $args['type'] : 'theme_mod',
+				'capability'           => isset( $args['capability'] ) ? $args['capability'] : 'edit_theme_options',
+				'theme_supports'       => isset( $args['theme_supports'] ) ? $args['theme_supports'] : '',
+				'default'              => isset( $args['default'] ) ? $args['default'] : '',
+				'transport'            => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
+				'sanitize_callback'    => isset( $args['sanitize_callback'] ) ? $args['sanitize_callback'] : '',
+				'sanitize_js_callback' => isset( $args['sanitize_js_callback'] ) ? $args['sanitize_js_callback'] : '',
+			];
 			if ( $this->settings_class ) {
-				$customizer->add_setting( new $classname( $customizer, $args['settings'], $args ) );
+				$customizer->add_setting( new $classname( $customizer, $settings_id, $args ) );
 				return;
 			}
-			$customizer->add_setting( $args['settings'], $args );
+			$customizer->add_setting( $setting_id, $args );
 		}
 	}
 

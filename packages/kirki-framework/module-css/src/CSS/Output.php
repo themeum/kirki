@@ -20,14 +20,6 @@ use Kirki\Compatibility\Kirki;
 class Output {
 
 	/**
-	 * The Kirki configuration used in the field.
-	 *
-	 * @access protected
-	 * @var string
-	 */
-	protected $config_id = 'global';
-
-	/**
 	 * The field's `output` argument.
 	 *
 	 * @access protected
@@ -69,7 +61,6 @@ class Output {
 	 * @param array        $field     The field.
 	 */
 	public function __construct( $config_id, $output, $value, $field ) {
-		$this->config_id = $config_id;
 		$this->value     = $value;
 		$this->output    = $output;
 		$this->field     = $field;
@@ -137,8 +128,8 @@ class Output {
 	 */
 	protected function apply_pattern_replace( $output, $value ) {
 		if ( isset( $output['pattern_replace'] ) && is_array( $output['pattern_replace'] ) ) {
-			$option_type = ( '' !== Kirki::get_config_param( $this->config_id, 'option_type' ) ) ? Kirki::get_config_param( $this->config_id, 'option_type' ) : 'theme_mod';
-			$option_name = Kirki::get_config_param( $this->config_id, 'option_name' );
+			$option_type = ( isset( $this->field['option_type'] ) ) ? $this->field['option_type'] : 'theme_mod';
+			$option_name = ( isset( $this->field['option_name'] ) ) ? $this->field['option_name'] : '';
 			$options     = [];
 			if ( $option_name ) {
 				$options = ( 'site_option' === $option_type ) ? get_site_option( $option_name ) : get_option( $option_name );
