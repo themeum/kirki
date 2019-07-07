@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a112fddc4bcf19dc7e053722baf47fa",
+    "content-hash": "1dbc459851c9aea2f433a617727d6b39",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1080,6 +1080,49 @@
                 "wordpress"
             ],
             "time": "2019-07-06T21:46:22+00:00"
+        },
+        {
+            "name": "kirki-framework/data-option",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/data-option.git",
+                "reference": "00edec737a569b07f4ab72ff9f8aae3217eb0559"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/00edec737a569b07f4ab72ff9f8aae3217eb0559",
+                "reference": "00edec737a569b07f4ab72ff9f8aae3217eb0559",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Data\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "aristath",
+                    "email": "aristath@gmail.com",
+                    "homepage": "https://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Hooks and tweaks to allow Kirki Fields to save options.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "wordpress"
+            ],
+            "time": "2019-07-07T10:58:42+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -5187,6 +5230,7 @@
         "kirki-framework/control-slider": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
+        "kirki-framework/data-option": 20,
         "kirki-framework/field-background": 20,
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,

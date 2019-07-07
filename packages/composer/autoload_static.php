@@ -12,6 +12,7 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             'Kirki\\Settings\\' => 15,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
+            'Kirki\\Data\\' => 11,
             'Kirki\\Core\\' => 11,
             'Kirki\\Control\\' => 14,
             'Kirki\\Compatibility\\' => 20,
@@ -65,6 +66,10 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
             22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
+        ),
+        'Kirki\\Data\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/data-option/src',
         ),
         'Kirki\\Core\\' => 
         array (

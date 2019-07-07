@@ -46,6 +46,7 @@
     "kirki-framework/control-slider": "dev-master",
     "kirki-framework/control-sortable": "dev-master",
     "kirki-framework/control-upload": "dev-master",
+    "kirki-framework/data-option": "dev-master",
     "kirki-framework/field-background": "dev-master",
     "kirki-framework/field-dimensions": "dev-master",
     "kirki-framework/field-fontawesome": "dev-master",
