@@ -49,7 +49,7 @@ class Init {
 		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
 		new Values();
-		new \Kirki\Core\Telemetry();
+		new \Kirki\Util\Telemetry();
 	}
 
 	/**
@@ -179,7 +179,7 @@ class Init {
 	}
 
 	/**
-	 * Alias for the is_plugin static method in the Kirki\Core\Util class.
+	 * Alias for the is_plugin static method in the Kirki\Util\Util class.
 	 * This is here for backwards-compatibility purposes.
 	 *
 	 * @static
@@ -192,7 +192,7 @@ class Init {
 	}
 
 	/**
-	 * Alias for the get_variables static method in the Kirki\Core\Util class.
+	 * Alias for the get_variables static method in the Kirki\Util\Util class.
 	 * This is here for backwards-compatibility purposes.
 	 *
 	 * @static
@@ -203,7 +203,7 @@ class Init {
 	public static function get_variables() {
 
 		// Log error for developers.
-		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Core\Init::get_variables(). Please use \Kirki\Core\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
+		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Compatibility\Init::get_variables(). Please use \Kirki\Util\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
 		return Util::get_variables();
 	}
 

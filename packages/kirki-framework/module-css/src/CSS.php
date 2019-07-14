@@ -13,7 +13,7 @@
 namespace Kirki\Module;
 
 use Kirki\Compatibility\Kirki;
-use Kirki\Core\Helper;
+use Kirki\Util\Helper;
 use Kirki\Compatibility\Values;
 use Kirki\Module\CSS\Generator;
 

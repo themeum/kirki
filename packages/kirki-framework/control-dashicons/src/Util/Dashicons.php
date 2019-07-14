@@ -10,7 +10,7 @@
  * @since     1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Util;
 
 /**
  * A simple object containing static methods.

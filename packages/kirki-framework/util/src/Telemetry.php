@@ -10,7 +10,7 @@
  * @since       3.0.36
  */
 
-namespace Kirki\Core;
+namespace Kirki\Util;
 
 use Kirki\Compatibility\Kirki;
 

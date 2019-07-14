@@ -7,7 +7,7 @@
  * @since 3.0.0
  */
 
-namespace Kirki\Core\Setting;
+namespace Kirki\Util\Setting;
 
 /**
  * Handles saving and sanitizing of user-meta.
@@ -15,7 +15,7 @@ namespace Kirki\Core\Setting;
  * @since 3.0.0
  * @see WP_Customize_Setting
  */
-class User_Meta extends \WP_Customize_Setting {
+class Site_Option extends \WP_Customize_Setting {
 
 	/**
 	 * Type of customize settings.
@@ -24,7 +24,7 @@ class User_Meta extends \WP_Customize_Setting {
 	 * @since 3.0.0
 	 * @var string
 	 */
-	public $type = 'user_meta';
+	public $type = 'site_option';
 
 	/**
 	 * Get the root value for a setting, especially for multidimensional ones.
@@ -35,20 +35,7 @@ class User_Meta extends \WP_Customize_Setting {
 	 * @return mixed
 	 */
 	protected function get_root_value( $default = null ) {
-		$id_base = $this->id_data['base'];
-
-		// Get all user-meta.
-		// We'll use this to check if the value is set or not,
-		// in order to figure out if we need to return the default value.
-		$user_meta = get_user_meta( get_current_user_id() );
-
-		// Get the single meta.
-		$single_meta = get_user_meta( get_current_user_id(), $id_base, true );
-
-		if ( isset( $user_meta[ $id_base ] ) ) {
-			return $single_meta;
-		}
-		return $default;
+		return get_site_option( $this->id_data['base'], $default );
 	}
 
 	/**
@@ -60,14 +47,7 @@ class User_Meta extends \WP_Customize_Setting {
 	 * @return bool Whether the multidimensional root was updated successfully.
 	 */
 	protected function set_root_value( $value ) {
-		$id_base = $this->id_data['base'];
-
-		// First delete the current user-meta.
-		// We're doing this to avoid duplicate entries.
-		delete_user_meta( get_current_user_id(), $id_base );
-
-		// Update the user-meta.
-		return update_user_meta( get_current_user_id(), $id_base, $value );
+		return update_site_option( $this->id_data['base'], $value );
 	}
 
 	/**

@@ -10,7 +10,7 @@
  * @since       3.0.12
  */
 
-use Kirki\Core\Helper;
+use Kirki\Util\Helper;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

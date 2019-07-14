@@ -10,7 +10,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Util;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -318,8 +318,8 @@ class Helper {
 	 * @return array
 	 */
 	public static function get_material_design_colors( $context = 'primary' ) {
-		if ( class_exists( '\Kirki\Core\Material_Colors' ) ) {
-			return \Kirki\Core\Material_Colors::get_colors( $context );
+		if ( class_exists( '\Kirki\Util\Material_Colors' ) ) {
+			return \Kirki\Util\Material_Colors::get_colors( $context );
 		}
 		return [];
 	}
@@ -332,8 +332,8 @@ class Helper {
 	 * @return array
 	 */
 	public static function get_dashicons() {
-		if ( class_exists( '\Kirki\Core\Dashicons' ) ) {
-			return \Kirki\Core\Dashicons::get_icons();
+		if ( class_exists( '\Kirki\Util\Dashicons' ) ) {
+			return \Kirki\Util\Dashicons::get_icons();
 		}
 		return [];
 	}

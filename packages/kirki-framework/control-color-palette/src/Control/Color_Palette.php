@@ -11,7 +11,7 @@
 namespace Kirki\Control;
 
 use Kirki\URL;
-use Kirki\Core\Material_Colors;
+use Kirki\Util\Material_Colors;
 use Kirki\Control\Base;
 
 // Exit if accessed directly.

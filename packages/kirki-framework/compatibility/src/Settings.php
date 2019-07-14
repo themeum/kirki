@@ -140,8 +140,8 @@ class Settings {
 			[
 				'default'     => 'WP_Customize_Setting',
 				'repeater'    => '\Kirki_Settings_Repeater_Setting',
-				'user_meta'   => '\Kirki\Core\Setting\User_Meta',
-				'site_option' => '\Kirki\Core\Setting\Site_Option',
+				'user_meta'   => '\Kirki\Util\Setting\User_Meta',
+				'site_option' => '\Kirki\Util\Setting\Site_Option',
 			]
 		);
 

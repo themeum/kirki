@@ -9,11 +9,11 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
     public static $prefixLengthsPsr4 = array (
         'K' => 
         array (
+            'Kirki\\Util\\' => 11,
             'Kirki\\Settings\\' => 15,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
             'Kirki\\Data\\' => 11,
-            'Kirki\\Core\\' => 11,
             'Kirki\\Control\\' => 14,
             'Kirki\\Compatibility\\' => 20,
             'Kirki\\' => 6,
@@ -21,6 +21,12 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
     );
 
     public static $prefixDirsPsr4 = array (
+        'Kirki\\Util\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Util',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Core',
+            2 => __DIR__ . '/..' . '/kirki-framework/util/src',
+        ),
         'Kirki\\Settings\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Settings',
@@ -69,12 +75,6 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
         'Kirki\\Data\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/data-option/src',
-        ),
-        'Kirki\\Core\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Core',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Core',
-            2 => __DIR__ . '/..' . '/kirki-framework/core/src',
         ),
         'Kirki\\Control\\' => 
         array (
