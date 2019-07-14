@@ -242,12 +242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color-palette.git",
-                "reference": "e80c06d63974621e8e402f9686f2443f12f680b3"
+                "reference": "4075ca1c08de2872ffa666db8ba6206525f6df4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/e80c06d63974621e8e402f9686f2443f12f680b3",
-                "reference": "e80c06d63974621e8e402f9686f2443f12f680b3",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/4075ca1c08de2872ffa666db8ba6206525f6df4d",
+                "reference": "4075ca1c08de2872ffa666db8ba6206525f6df4d",
                 "shasum": ""
             },
             "require": {
@@ -282,7 +282,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-14T12:38:34+00:00"
+            "time": "2019-07-14T12:55:42+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -380,12 +380,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "c38b987e468456806bc3fcc23765c3e9ff09202a"
+                "reference": "19bd50aa2a4bc9b61553bd34fd1e5e27fa87d13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/c38b987e468456806bc3fcc23765c3e9ff09202a",
-                "reference": "c38b987e468456806bc3fcc23765c3e9ff09202a",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/19bd50aa2a4bc9b61553bd34fd1e5e27fa87d13b",
+                "reference": "19bd50aa2a4bc9b61553bd34fd1e5e27fa87d13b",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +398,7 @@
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field",
-                    "Kirki\\Util\\": "src/Core"
+                    "Kirki\\Util\\": "src/Util"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -420,7 +420,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-14T12:38:18+00:00"
+            "time": "2019-07-14T12:55:23+00:00"
         },
         {
             "name": "kirki-framework/control-date",

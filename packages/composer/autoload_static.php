@@ -24,7 +24,7 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
         'Kirki\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Util',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Core',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Util',
             2 => __DIR__ . '/..' . '/kirki-framework/util/src',
         ),
         'Kirki\\Settings\\' => 
