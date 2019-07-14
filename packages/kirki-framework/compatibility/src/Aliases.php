@@ -36,7 +36,6 @@ class Aliases {
 			[ 'Kirki\Compatibility\Init', 'Kirki_Init' ],
 			[ 'Kirki\L10n', 'Kirki_L10n' ],
 			[ 'Kirki\Compatibility\Modules', 'Kirki_Modules' ],
-			[ 'Kirki\Compatibility\Panel', 'Kirki_Panel' ],
 			[ 'Kirki\Compatibility\Sanitize_Values', 'Kirki_Sanitize_Values' ],
 			[ 'Kirki\Compatibility\Section', 'Kirki_Section' ],
 			[ 'Kirki\Compatibility\Sections', 'Kirki_Sections' ],
@@ -143,7 +142,7 @@ class Aliases {
 			[ 'Kirki\Module\Custom_Sections\Section_Expanded', 'Kirki_Sections_Expanded_Section' ],
 			[ 'Kirki\Module\Custom_Sections\Section_Nested', 'Kirki_Sections_Nested_Section' ],
 			[ 'Kirki\Module\Custom_Sections\Section_Link', 'Kirki_Sections_Link_Section' ],
-			[ 'Kirki\Module\Custom_Panels\Panel_Nested', 'Kirki_Panels_Nested_Panel' ],
+			[ 'Kirki\Panel_Types\Nested', 'Kirki_Panels_Nested_Panel' ],
 		],
 	];
 

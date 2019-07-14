@@ -34,17 +34,13 @@ jQuery( document ).ready( function() {
  */
 ( function() {
 
-	var _panelEmbed,
-		_panelIsContextuallyActive,
-		_panelAttachEvents,
-		_sectionEmbed,
+	var _sectionEmbed,
 		_sectionIsContextuallyActive,
 		_sectionAttachEvents;
 
 	wp.customize.bind( 'pane-contents-reflowed', function() {
 
-		var panels   = [],
-			sections = [];
+		var sections = [];
 
 		// Reflow Sections.
 		wp.customize.section.each( function( section ) {
@@ -62,113 +58,6 @@ jQuery( document ).ready( function() {
 
 			parentContainer.children( '.section-meta' ).after( section.headContainer );
 		} );
-
-		// Reflow Panels.
-		wp.customize.panel.each( function( panel ) {
-			if ( 'kirki-nested' !== panel.params.type || _.isUndefined( panel.params.panel ) ) {
-				return;
-			}
-			panels.push( panel );
-		} );
-
-		panels.sort( wp.customize.utils.prioritySort ).reverse();
-
-		jQuery.each( panels, function( i, panel ) {
-			var parentContainer = jQuery( '#sub-accordion-panel-' + panel.params.panel );
-
-			parentContainer.children( '.panel-meta' ).after( panel.headContainer );
-		} );
-	} );
-
-	// Extend Panel.
-	_panelEmbed = wp.customize.Panel.prototype.embed;
-	_panelIsContextuallyActive = wp.customize.Panel.prototype.isContextuallyActive;
-	_panelAttachEvents = wp.customize.Panel.prototype.attachEvents;
-
-	wp.customize.Panel = wp.customize.Panel.extend( {
-		attachEvents: function() {
-			var panel;
-
-			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.panel ) ) {
-				_panelAttachEvents.call( this );
-				return;
-			}
-
-			_panelAttachEvents.call( this );
-
-			panel = this;
-
-			panel.expanded.bind( function( expanded ) {
-				var parent = wp.customize.panel( panel.params.panel );
-
-				if ( expanded ) {
-					parent.contentContainer.addClass( 'current-panel-parent' );
-				} else {
-					parent.contentContainer.removeClass( 'current-panel-parent' );
-				}
-			} );
-
-			panel.container.find( '.customize-panel-back' ).off( 'click keydown' ).on( 'click keydown', function( event ) {
-				if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
-					return;
-				}
-				event.preventDefault(); // Keep this AFTER the key filter above
-
-				if ( panel.expanded() ) {
-					wp.customize.panel( panel.params.panel ).expand();
-				}
-			} );
-		},
-
-		embed: function() {
-
-			var panel = this,
-				parentContainer;
-			if ( 'kirki-nested' !== this.params.type || _.isUndefined( this.params.panel ) ) {
-				_panelEmbed.call( this );
-				return;
-			}
-
-			_panelEmbed.call( this );
-
-			parentContainer = jQuery( '#sub-accordion-panel-' + this.params.panel );
-
-			parentContainer.append( panel.headContainer );
-		},
-
-		isContextuallyActive: function() {
-
-			var panel = this,
-				children,
-				activeCount = 0;
-
-			if ( 'kirki-nested' !== this.params.type ) {
-				return _panelIsContextuallyActive.call( this );
-			}
-
-			children = this._children( 'panel', 'section' );
-
-			wp.customize.panel.each( function( child ) {
-				if ( ! child.params.panel ) {
-					return;
-				}
-
-				if ( child.params.panel !== panel.id ) {
-					return;
-				}
-
-				children.push( child );
-			} );
-
-			children.sort( wp.customize.utils.prioritySort );
-
-			_( children ).each( function( child ) {
-				if ( child.active() && child.isContextuallyActive() ) {
-					activeCount += 1;
-				}
-			} );
-			return ( 0 !== activeCount );
-		}
 	} );
 
 	// Extend Section.

@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "244ec40facd508c89cfe3ee2679a894eaa93dd78"
+            "reference": "d35a1444031c312490e8efdd1043ffeedd949802"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/244ec40facd508c89cfe3ee2679a894eaa93dd78",
-            "reference": "244ec40facd508c89cfe3ee2679a894eaa93dd78",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/d35a1444031c312490e8efdd1043ffeedd949802",
+            "reference": "d35a1444031c312490e8efdd1043ffeedd949802",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-07-01T19:12:10+00:00",
+        "time": "2019-07-14T08:23:50+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1655,12 +1655,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-custom-sections.git",
-            "reference": "f06f080b5226381d309a2f835e713697ec33b68c"
+            "reference": "ffc54c4a2fc1aab18583cd3541ce9d3ea7710882"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-custom-sections/zipball/f06f080b5226381d309a2f835e713697ec33b68c",
-            "reference": "f06f080b5226381d309a2f835e713697ec33b68c",
+            "url": "https://api.github.com/repos/kirki-framework/module-custom-sections/zipball/ffc54c4a2fc1aab18583cd3541ce9d3ea7710882",
+            "reference": "ffc54c4a2fc1aab18583cd3541ce9d3ea7710882",
             "shasum": ""
         },
         "require": {
@@ -1668,7 +1668,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-30T18:18:37+00:00",
+        "time": "2019-07-14T08:24:57+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1842,6 +1842,53 @@
         ]
     },
     {
+        "name": "kirki-framework/module-panels",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/module-panels.git",
+            "reference": "66ba461a76c8e7d7931ac2f3d3c6f6dbab1843dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/module-panels/zipball/66ba461a76c8e7d7931ac2f3d3c6f6dbab1843dd",
+            "reference": "66ba461a76c8e7d7931ac2f3d3c6f6dbab1843dd",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-07-14T08:51:33+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Panels API & Custom Panel Types for the Kirki WordPress Plugin.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/module-postmessage",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1944,12 +1991,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-section-icons.git",
-            "reference": "e39392fd3c046ef6e7296e74372a9f02b67a2fde"
+            "reference": "549870d8194afd067aed3d11f9d4e40261e5c9d8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/e39392fd3c046ef6e7296e74372a9f02b67a2fde",
-            "reference": "e39392fd3c046ef6e7296e74372a9f02b67a2fde",
+            "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/549870d8194afd067aed3d11f9d4e40261e5c9d8",
+            "reference": "549870d8194afd067aed3d11f9d4e40261e5c9d8",
             "shasum": ""
         },
         "require": {
@@ -1957,7 +2004,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-06-30T18:17:30+00:00",
+        "time": "2019-07-14T08:25:54+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

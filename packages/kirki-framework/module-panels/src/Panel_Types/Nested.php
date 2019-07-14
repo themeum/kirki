@@ -9,12 +9,12 @@
  * @since       3.0.0
  */
 
-namespace Kirki\Module\Custom_Panels;
+namespace Kirki\Panel_Types;
 
 /**
  * Nested panel.
  */
-class Panel_Nested extends \WP_Customize_Panel {
+class Nested extends \WP_Customize_Panel {
 
 	/**
 	 * The parent panel.

@@ -59,15 +59,6 @@ class Kirki extends Init {
 	public static $fields = [];
 
 	/**
-	 * An array containing all panels.
-	 *
-	 * @static
-	 * @access public
-	 * @var array
-	 */
-	public static $panels = [];
-
-	/**
 	 * An array containing all sections.
 	 *
 	 * @static
@@ -75,16 +66,6 @@ class Kirki extends Init {
 	 * @var array
 	 */
 	public static $sections = [];
-
-	/**
-	 * An array containing all panels to be removed.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.17
-	 * @var array
-	 */
-	public static $panels_to_remove = [];
 
 	/**
 	 * An array containing all sections to be removed.
@@ -151,20 +132,7 @@ class Kirki extends Init {
 	 * @param array  $args The panel arguments.
 	 */
 	public static function add_panel( $id = '', $args = [] ) {
-		$args['id'] = $id;
-		if ( ! isset( $args['description'] ) ) {
-			$args['description'] = '';
-		}
-		if ( ! isset( $args['priority'] ) ) {
-			$args['priority'] = 10;
-		}
-		if ( ! isset( $args['type'] ) ) {
-			$args['type'] = 'default';
-		}
-		if ( false === strpos( $args['type'], 'kirki-' ) ) {
-			$args['type'] = 'kirki-' . $args['type'];
-		}
-		self::$panels[ $id ] = $args;
+		new \Kirki\Panel( $id, $args );
 	}
 
 	/**
@@ -176,9 +144,8 @@ class Kirki extends Init {
 	 * @param string $id   The ID for this panel.
 	 */
 	public static function remove_panel( $id = '' ) {
-		if ( ! in_array( $id, self::$panels_to_remove, true ) ) {
-			self::$panels_to_remove[] = $id;
-		}
+		$panel = new \Kirki\Panel( $id );
+		$panel->remove();
 	}
 
 	/**
@@ -213,7 +180,7 @@ class Kirki extends Init {
 	 * @static
 	 * @access public
 	 * @since 3.0.17
-	 * @param string $id   The ID for this panel.
+	 * @param string $id The ID for this section.
 	 */
 	public static function remove_section( $id = '' ) {
 		if ( ! in_array( $id, self::$sections_to_remove, true ) ) {

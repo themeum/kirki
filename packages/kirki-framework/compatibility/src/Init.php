@@ -43,7 +43,6 @@ class Init {
 		add_action( 'wp_loaded', [ $this, 'add_to_customizer' ], 1 );
 		add_filter( 'kirki_control_types', [ $this, 'default_control_types' ] );
 
-		add_action( 'customize_register', [ $this, 'remove_panels' ], 99999 );
 		add_action( 'customize_register', [ $this, 'remove_sections' ], 99999 );
 		add_action( 'customize_register', [ $this, 'remove_controls' ], 99999 );
 
@@ -99,12 +98,11 @@ class Init {
 	}
 
 	/**
-	 * Helper function that adds the fields, sections and panels to the customizer.
+	 * Helper function that adds the fields, sections to the customizer.
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
 		add_action( 'customize_register', [ $this, 'register_control_types' ] );
-		add_action( 'customize_register', [ $this, 'add_panels' ], 97 );
 		add_action( 'customize_register', [ $this, 'add_sections' ], 98 );
 		add_action( 'customize_register', [ $this, 'add_fields' ], 99 );
 	}
@@ -141,27 +139,6 @@ class Init {
 		foreach ( $this->control_types as $control_type ) {
 			if ( ! in_array( $control_type, $skip_control_types, true ) && class_exists( $control_type ) ) {
 				$wp_customize->register_control_type( $control_type );
-			}
-		}
-	}
-
-	/**
-	 * Register our panels to the WordPress Customizer.
-	 *
-	 * @access public
-	 */
-	public function add_panels() {
-		if ( ! empty( Kirki::$panels ) ) {
-			foreach ( Kirki::$panels as $panel_args ) {
-				// Extra checks for nested panels.
-				if ( isset( $panel_args['panel'] ) ) {
-					if ( isset( Kirki::$panels[ $panel_args['panel'] ] ) ) {
-						// Set the type to nested.
-						$panel_args['type'] = 'kirki-nested';
-					}
-				}
-
-				new \Kirki\Compatibility\Panel( $panel_args );
 			}
 		}
 	}
@@ -261,19 +238,6 @@ class Init {
 		// Log error for developers.
 		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Core\Init::get_variables(). Please use \Kirki\Core\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
 		return Util::get_variables();
-	}
-
-	/**
-	 * Remove panels.
-	 *
-	 * @since 3.0.17
-	 * @param object $wp_customize The customizer object.
-	 * @return void
-	 */
-	public function remove_panels( $wp_customize ) {
-		foreach ( Kirki::$panels_to_remove as $panel ) {
-			$wp_customize->remove_panel( $panel );
-		}
 	}
 
 	/**
