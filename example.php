@@ -27,7 +27,7 @@ if ( ! class_exists( 'Kirki' ) ) {
  *
  * @link https://kirki.org/docs/getting-started/panels.html
  */
-Kirki::add_panel(
+new \Kirki\Panel(
 	'kirki_demo_panel',
 	[
 		'priority'    => 10,
@@ -84,10 +84,10 @@ foreach ( $sections as $section_id => $section ) {
 	if ( isset( $section[2] ) ) {
 		$section_args['type'] = $section[2];
 	}
-	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
+	new \Kirki\Section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
 }
 
-Kirki::add_section(
+new \Kirki\Section(
 	'pro_test',
 	[
 		'title'       => esc_html__( 'Test Link Section', 'kirki' ),
