@@ -59,25 +59,6 @@ class Kirki extends Init {
 	public static $fields = [];
 
 	/**
-	 * An array containing all sections.
-	 *
-	 * @static
-	 * @access public
-	 * @var array
-	 */
-	public static $sections = [];
-
-	/**
-	 * An array containing all sections to be removed.
-	 *
-	 * @static
-	 * @access public
-	 * @since 3.0.17
-	 * @var array
-	 */
-	public static $sections_to_remove = [];
-
-	/**
 	 * An array containing all controls to be removed.
 	 *
 	 * @static
@@ -157,21 +138,7 @@ class Kirki extends Init {
 	 * @param array  $args The section arguments.
 	 */
 	public static function add_section( $id, $args ) {
-		$args['id'] = $id;
-		if ( ! isset( $args['description'] ) ) {
-			$args['description'] = '';
-		}
-		if ( ! isset( $args['priority'] ) ) {
-			$args['priority'] = 10;
-		}
-		if ( ! isset( $args['type'] ) ) {
-			$args['type'] = 'default';
-		}
-		if ( false === strpos( $args['type'], 'kirki-' ) ) {
-			$args['type'] = 'kirki-' . $args['type'];
-		}
-
-		self::$sections[ $id ] = $args;
+		new \Kirki\Section( $id, $args );
 	}
 
 	/**
@@ -183,9 +150,8 @@ class Kirki extends Init {
 	 * @param string $id The ID for this section.
 	 */
 	public static function remove_section( $id = '' ) {
-		if ( ! in_array( $id, self::$sections_to_remove, true ) ) {
-			self::$sections_to_remove[] = $id;
-		}
+		$section = new \Kirki\Section( $id, $args );
+		$section->remove();
 	}
 
 	/**

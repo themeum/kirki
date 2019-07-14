@@ -44,6 +44,15 @@ class Section_Icons {
 	private $panels = [];
 
 	/**
+	 * An array of sections.
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @var array
+	 */
+	private $sections = [];
+
+	/**
 	 * The class constructor.
 	 *
 	 * @access public
@@ -51,6 +60,7 @@ class Section_Icons {
 	public function __construct() {
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'customize_controls_enqueue_scripts' ], 99 );
 		add_action( 'kirki_panel_added', [ $this, 'panel_added' ], 10, 2 );
+		add_action( 'kirki_section_added', [ $this, 'section_added' ], 10, 2 );
 	}
 
 	/**
@@ -82,21 +92,33 @@ class Section_Icons {
 	}
 
 	/**
+	 * Hooks in kirki_section_added to populate $this->sections.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param string $id   The section ID.
+	 * @param array  $args The section arguments.
+	 */
+	public function section_added( $id, $args ) {
+		if ( isset( $args['icon'] ) ) {
+			$args['id']     = $id;
+			$this->sections[] = $args;
+		}
+	}
+
+	/**
 	 * Format the script in a way that will be compatible with WordPress.
 	 */
 	public function customize_controls_enqueue_scripts() {
-		$sections = Kirki::$sections;
-
-		// Parse sections and find ones with icons.
-		foreach ( $sections as $section ) {
-			if ( isset( $section['icon'] ) ) {
-				$this->add_icon( $section['id'], $section['icon'], 'section' );
-			}
-		}
 
 		// Parse panels and find ones with icons.
 		foreach ( $this->panels as $panel ) {
 			$this->add_icon( $panel['id'], $panel['icon'], 'panel' );
+		}
+
+		// Parse sections and find ones with icons.
+		foreach ( $this->sections as $section ) {
+			$this->add_icon( $section['id'], $section['icon'], 'section' );
 		}
 
 		wp_enqueue_script( 'kirki_panel_and_section_icons', URL::get_from_path( __DIR__ . '/icons.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );

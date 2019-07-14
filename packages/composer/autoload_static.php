@@ -29,16 +29,15 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
             1 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
-            6 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
-            7 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-            8 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
-            9 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
-            10 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            11 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            8 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            9 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            10 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (
@@ -112,7 +111,8 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
             2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
             3 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 

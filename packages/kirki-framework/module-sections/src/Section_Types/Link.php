@@ -3,25 +3,24 @@
  * The default section.
  * Inspired from https://github.com/justintadlock/trt-customizer-pro
  *
- * @package    Kirki
- * @subpackage Custom Sections Module
+ * @package    kirki-framework/module-sections
  * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
- * @since      3.0.36
+ * @since      1.0
  */
 
-namespace Kirki\Module\Custom_Sections;
+namespace Kirki\Section_Types;
 
 /**
  * Link Section.
  */
-class Section_Link extends \WP_Customize_Section {
+class Link extends \WP_Customize_Section {
 
 	/**
 	 * The section type.
 	 *
-	 * @since 3.0.36
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $type = 'kirki-link';
@@ -29,8 +28,8 @@ class Section_Link extends \WP_Customize_Section {
 	/**
 	 * Button Text
 	 *
-	 * @since  3.0.36
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $button_text = '';
@@ -38,8 +37,8 @@ class Section_Link extends \WP_Customize_Section {
 	/**
 	 * Button URL.
 	 *
-	 * @since  3.0.36
 	 * @access public
+	 * @since 1.0
 	 * @var string
 	 */
 	public $button_url = '';
@@ -48,14 +47,14 @@ class Section_Link extends \WP_Customize_Section {
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @access public
-	 * @since 3.0.36
+	 * @since 1.0
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
 		$json = parent::json();
 
 		$json['button_text'] = $this->button_text;
-		$json['button_url']  = esc_url( $this->button_url );
+		$json['button_url']  = $this->button_url;
 
 		return $json;
 	}
@@ -63,8 +62,8 @@ class Section_Link extends \WP_Customize_Section {
 	/**
 	 * Outputs the Underscore.js template.
 	 *
-	 * @since  3.0.36
 	 * @access public
+	 * @since 1.0
 	 * @return void
 	 */
 	protected function render_template() {

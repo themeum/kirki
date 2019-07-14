@@ -1,18 +1,18 @@
 <?php
 /**
- * Nested section.
+ * Creates a new panel.
  *
- * @package     Kirki
- * @subpackage  Custom Sections Module
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @package    Kirki
+ * @subpackage Custom Sections Module
+ * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @since      1.0
  */
 
 namespace Kirki;
 
 /**
- * Nested panel.
+ * Panel.
  */
 class Panel {
 
@@ -127,7 +127,7 @@ class Panel {
 	 * Enqueues any necessary scripts and styles.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0
 	 */
 	public function enqueue_scrips() {
 		wp_enqueue_script( 'kirki-panels', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '1.0', false );
