@@ -2,41 +2,53 @@
   url: http://demo.lyrathemes.com/kale/
   thumb: http://demo.lyrathemes.com/kale/wp-content/themes/kale/screenshot.png
 
+- name: Gridzone
+  url: http://alx.media/themes/gridzone/
+  thumb: http://demo.alx.media/wp-content/themes/gridzone/screenshot.png
+
+- name: Minimer
+  url: http://alx.media/themes/minimer/
+  thumb: http://demo.alx.media/wp-content/themes/minimer/screenshot.png
+
+- name: Readline
+  url: http://alx.media/themes/readline/
+  thumb: http://demo.alx.media/wp-content/themes/readline/screenshot.png
+
 - name: Stylizer
-  url: http://alxmedia.se/themes/stylizer/
-  thumb: http://demo.alxmedia.se/wp-content/themes/stylizer/screenshot.png
+  url: http://alx.media/themes/stylizer/
+  thumb: http://demo.alx.media/wp-content/themes/stylizer/screenshot.png
 
 - name: Curver
-  url: http://alxmedia.se/themes/curver/
-  thumb: http://demo.alxmedia.se/wp-content/themes/curver/screenshot.png
+  url: http://alx.media/themes/curver/
+  thumb: http://demo.alx.media/wp-content/themes/curver/screenshot.png
 
 - name: Boxstyle
-  url: http://alxmedia.se/themes/boxstyle/
-  thumb: http://demo.alxmedia.se/wp-content/themes/boxstyle/screenshot.png
+  url: http://alx.media/themes/boxstyle/
+  thumb: http://demo.alx.media/wp-content/themes/boxstyle/screenshot.png
 
 - name: Enspire
-  url: http://alxmedia.se/themes/enspire/
-  thumb: http://demo.alxmedia.se/wp-content/themes/enspire/screenshot.png
+  url: http://alx.media/themes/enspire/
+  thumb: http://demo.alx.media/wp-content/themes/enspire/screenshot.png
 
 - name: Typecore
-  url: http://alxmedia.se/themes/typecore/
-  thumb: http://demo.alxmedia.se/wp-content/themes/typecore/screenshot.png
+  url: http://alx.media/themes/typecore/
+  thumb: http://demo.alx.media/wp-content/themes/typecore/screenshot.png
 
 - name: Kontrast
-  url: http://alxmedia.se/themes/kontrast/
-  thumb: http://demo.alxmedia.se/wp-content/themes/kontrast/screenshot.png
+  url: http://alx.media/themes/kontrast/
+  thumb: http://demo.alx.media/wp-content/themes/kontrast/screenshot.png
 
 - name: Slanted
-  url: http://alxmedia.se/themes/slanted/
-  thumb: http://demo.alxmedia.se/wp-content/themes/slanted/screenshot.png
-  
+  url: http://alx.media/themes/slanted/
+  thumb: http://demo.alx.media/wp-content/themes/slanted/screenshot.png
+
 - name: Blogline
-  url: http://alxmedia.se/themes/blogline/
-  thumb: http://demo.alxmedia.se/wp-content/themes/blogline/screenshot.png
-  
+  url: http://alx.media/themes/blogline/
+  thumb: http://demo.alx.media/wp-content/themes/blogline/screenshot.png
+
 - name: Blogrow
-  url: http://alxmedia.se/themes/blogrow/
-  thumb: http://demo.alxmedia.se/wp-content/themes/blogrow/screenshot.png
+  url: http://alx.media/themes/blogrow/
+  thumb: http://demo.alx.media/wp-content/themes/blogrow/screenshot.png
 
 - name: Advance
   url: https://wordpress.org/themes/advance/
