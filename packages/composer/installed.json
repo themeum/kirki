@@ -1367,12 +1367,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-typography.git",
-            "reference": "160a60d49c69b091d24568ffca72af355ae46017"
+            "reference": "bce9609bbdf139de00031d71457c5e73e08196f9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/160a60d49c69b091d24568ffca72af355ae46017",
-            "reference": "160a60d49c69b091d24568ffca72af355ae46017",
+            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/bce9609bbdf139de00031d71457c5e73e08196f9",
+            "reference": "bce9609bbdf139de00031d71457c5e73e08196f9",
             "shasum": ""
         },
         "require": {
@@ -1384,7 +1384,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-06T20:36:42+00:00",
+        "time": "2019-07-30T14:43:01+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1400,9 +1400,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
+                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io",
-                "role": "Developer"
+                "homepage": "http://aristath.github.io"
             }
         ],
         "description": "Typography field for the Kirki Customizer framework.",
