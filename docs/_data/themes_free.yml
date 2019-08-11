@@ -2,6 +2,14 @@
   url: http://demo.lyrathemes.com/kale/
   thumb: http://demo.lyrathemes.com/kale/wp-content/themes/kale/screenshot.png
 
+- name: Boxcard
+  url: http://alx.media/themes/boxcard/
+  thumb: http://demo.alx.media/wp-content/themes/boxcard/screenshot.png
+
+- name: Indite
+  url: http://alx.media/themes/indite/
+  thumb: http://demo.alx.media/wp-content/themes/indite/screenshot.png
+
 - name: Gridzone
   url: http://alx.media/themes/gridzone/
   thumb: http://demo.alx.media/wp-content/themes/gridzone/screenshot.png
@@ -42,9 +50,9 @@
   url: http://alx.media/themes/slanted/
   thumb: http://demo.alx.media/wp-content/themes/slanted/screenshot.png
 
-- name: Blogline
-  url: http://alx.media/themes/blogline/
-  thumb: http://demo.alx.media/wp-content/themes/blogline/screenshot.png
+- name: Blogside
+  url: http://alx.media/themes/blogside/
+  thumb: http://demo.alx.media/wp-content/themes/blogside/screenshot.png
 
 - name: Blogrow
   url: http://alx.media/themes/blogrow/
