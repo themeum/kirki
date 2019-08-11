@@ -15,11 +15,6 @@ namespace Kirki\Module;
 use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Adds scripts for icons in sections & panels.
  */
@@ -121,7 +116,7 @@ class Section_Icons {
 			$this->add_icon( $section['id'], $section['icon'], 'section' );
 		}
 
-		wp_enqueue_script( 'kirki_panel_and_section_icons', URL::get_from_path( __DIR__ . '/icons.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki_panel_and_section_icons', URL::get_from_path( __DIR__ . '/icons.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '1.0', true );
 		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
 	}
 }
