@@ -40,11 +40,11 @@ class Section {
 	 * @var array
 	 */
 	private $section_types = [
-        'kirki-expanded' => '\Kirki\Section_Types\Expanded',
-        'kirki-nested'   => '\Kirki\Section_Types\Nested',
-        'kirki-link'     => '\Kirki\Section_Types\Link',
-        'kirki-outer'    => '\Kirki\Section_Types\Outer',
-    ];
+		'kirki-expanded' => '\Kirki\Section_Types\Expanded',
+		'kirki-nested'   => '\Kirki\Section_Types\Nested',
+		'kirki-link'     => '\Kirki\Section_Types\Link',
+		'kirki-outer'    => '\Kirki\Section_Types\Outer',
+	];
 
 	/**
 	 * Constructor.
@@ -112,8 +112,8 @@ class Section {
 		}
 
 		if ( isset( $this->args['type'] ) && 'kirki-outer' === $this->args['type'] ) {
-			$this->args['type']      = 'outer';
-			$section_classname = 'WP_Customize_Section';
+			$this->args['type'] = 'outer';
+			$section_classname  = 'WP_Customize_Section';
 		}
 
 		// Add the section.

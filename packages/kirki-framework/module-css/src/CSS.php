@@ -133,7 +133,7 @@ class CSS {
 			$args['output'][ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $args['output'][ $key ]['element'] ) );
 		}
 
-		if ( ! isset( $args['type'] ) && isset( $object->type )) {
+		if ( ! isset( $args['type'] ) && isset( $object->type ) ) {
 			$args['type'] = $object->type;
 		}
 

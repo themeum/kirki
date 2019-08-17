@@ -116,6 +116,8 @@ class Dimensions extends Field {
 							'data-kirki-parent-control-type' => 'kirki-dimensions',
 						],
 						'js_vars'        => [],
+						'css_vars'       => [],
+						'output'         => [],
 					],
 					$args
 				)

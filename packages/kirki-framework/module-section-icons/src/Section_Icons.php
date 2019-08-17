@@ -96,7 +96,7 @@ class Section_Icons {
 	 */
 	public function section_added( $id, $args ) {
 		if ( isset( $args['icon'] ) ) {
-			$args['id']     = $id;
+			$args['id']       = $id;
 			$this->sections[] = $args;
 		}
 	}

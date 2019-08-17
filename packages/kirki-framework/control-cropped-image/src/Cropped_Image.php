@@ -17,7 +17,7 @@ namespace Kirki\Control;
  */
 class Cropped_Image extends \WP_Customize_Cropped_Image_Control {
 
-    /**
+	/**
 	 * The field type.
 	 *
 	 * @access public

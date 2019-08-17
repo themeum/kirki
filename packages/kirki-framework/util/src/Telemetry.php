@@ -255,7 +255,7 @@ final class Telemetry {
 	 * @return void
 	 */
 	public function field_init( $args, $object ) {
-		if ( ! isset( $args['type'] ) && isset( $object->type )) {
+		if ( ! isset( $args['type'] ) && isset( $object->type ) ) {
 			$args['type'] = $object->type;
 		}
 		if ( isset( $args['type'] ) ) {

@@ -61,9 +61,9 @@ class Output {
 	 * @param array        $field     The field.
 	 */
 	public function __construct( $config_id, $output, $value, $field ) {
-		$this->value     = $value;
-		$this->output    = $output;
-		$this->field     = $field;
+		$this->value  = $value;
+		$this->output = $output;
+		$this->field  = $field;
 
 		$this->parse_output();
 	}

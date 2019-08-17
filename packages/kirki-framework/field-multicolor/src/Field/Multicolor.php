@@ -67,6 +67,8 @@ class Multicolor extends Field {
 						'label'          => '',
 						'description'    => $choice_label,
 						'default'        => isset( $args['default'][ $choice ] ) ? $args['default'][ $choice ] : '',
+						'css_vars'       => [],
+						'output'         => [],
 					],
 					$args
 				)

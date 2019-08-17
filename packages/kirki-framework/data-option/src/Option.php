@@ -78,7 +78,7 @@ class Option {
 				return $args;
 			}
 			if ( false === strpos( $args['settings'], '[' ) ) {
-				$parts = explode( '[', $args['settings'] );
+				$parts       = explode( '[', $args['settings'] );
 				$final_parts = [ $args['option_name'] ];
 				foreach ( $parts as $part ) {
 					$final_parts[] = $part;
