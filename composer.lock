@@ -1317,17 +1317,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "df9701a86a2b5a92ab22eb51544fbc99e1d35793"
+                "reference": "8c92374f783e875e3dacc2d35968ececf5085905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/df9701a86a2b5a92ab22eb51544fbc99e1d35793",
-                "reference": "df9701a86a2b5a92ab22eb51544fbc99e1d35793",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/8c92374f783e875e3dacc2d35968ececf5085905",
+                "reference": "8c92374f783e875e3dacc2d35968ececf5085905",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "kirki-framework/control-color": "*",
+                "kirki-framework/control-custom": "*",
+                "kirki-framework/control-generic": "*",
                 "kirki-framework/control-select": "*",
                 "kirki-framework/googlefonts": "*",
                 "kirki-framework/module-webfonts": "*",
@@ -1360,7 +1362,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-17T06:59:09+00:00"
+            "time": "2019-08-17T14:03:58+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1368,12 +1370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/googlefonts.git",
-                "reference": "3f70418800edc1733b5687d0b891fedd7783b074"
+                "reference": "95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/3f70418800edc1733b5687d0b891fedd7783b074",
-                "reference": "3f70418800edc1733b5687d0b891fedd7783b074",
+                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b",
+                "reference": "95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b",
                 "shasum": ""
             },
             "require": {
@@ -1392,9 +1394,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
+                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
+                    "homepage": "http://aristath.github.io"
                 }
             ],
             "description": "Get a JSON file for all googlefonts. Initially built for the Kirki framework for the WordPress Customizer.",
@@ -1406,7 +1408,7 @@
                 "googlefonts",
                 "wordpress"
             ],
-            "time": "2019-05-05T16:32:16+00:00"
+            "time": "2019-08-17T14:03:18+00:00"
         },
         {
             "name": "kirki-framework/l10n",

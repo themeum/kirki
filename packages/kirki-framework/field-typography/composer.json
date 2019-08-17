@@ -19,6 +19,8 @@
         "kirki-framework/url-getter": "*",
         "kirki-framework/control-base": "*",
         "kirki-framework/control-color": "*",
+	"kirki-framework/control-custom": "*",
+	"kirki-framework/control-generic": "*",
         "kirki-framework/control-select": "*",
         "kirki-framework/module-webfonts": "*"
     },
