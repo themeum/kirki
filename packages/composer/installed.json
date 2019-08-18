@@ -1171,12 +1171,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-background.git",
-            "reference": "8acf4a3bbe5411ab97c32a5f2ac5ab223289f961"
+            "reference": "427c6e473ce304cb55b2c4f9cfbc7c3afda92245"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/8acf4a3bbe5411ab97c32a5f2ac5ab223289f961",
-            "reference": "8acf4a3bbe5411ab97c32a5f2ac5ab223289f961",
+            "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/427c6e473ce304cb55b2c4f9cfbc7c3afda92245",
+            "reference": "427c6e473ce304cb55b2c4f9cfbc7c3afda92245",
             "shasum": ""
         },
         "require": {
@@ -1186,7 +1186,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-17T07:00:02+00:00",
+        "time": "2019-08-18T09:47:20+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1803,12 +1803,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-postMessage.git",
-            "reference": "506c31ddb6b473d7dfc2c0c33803c3da59c9db6b"
+            "reference": "3aca7ddd32ff968015c317754423d494b07c1ec6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/506c31ddb6b473d7dfc2c0c33803c3da59c9db6b",
-            "reference": "506c31ddb6b473d7dfc2c0c33803c3da59c9db6b",
+            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/3aca7ddd32ff968015c317754423d494b07c1ec6",
+            "reference": "3aca7ddd32ff968015c317754423d494b07c1ec6",
             "shasum": ""
         },
         "require": {
@@ -1816,7 +1816,7 @@
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-18T09:00:01+00:00",
+        "time": "2019-08-18T09:47:05+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
