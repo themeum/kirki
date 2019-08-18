@@ -12,13 +12,20 @@
 
 namespace Kirki\Util;
 
-use Kirki\Compatibility\Values;
-use Kirki\Compatibility\Kirki;
-
 /**
  * Utility class.
  */
 class Util {
+
+	/**
+	 * Fields containing variables.
+	 *
+	 * @static
+	 * @access private
+	 * @since 4.0
+	 * @var array
+	 */
+	private $variables_fields = [];
 
 	/**
 	 * Constructor.
@@ -28,6 +35,7 @@ class Util {
 	 */
 	public function __construct() {
 		add_filter( 'http_request_args', [ $this, 'http_request' ], 10, 2 );
+		add_action( 'kirki_field_init', [ $this, 'field_init_variables' ], 10, 2 );
 	}
 
 	/**
@@ -70,6 +78,21 @@ class Util {
 	}
 
 	/**
+	 * Add fields with variables to self::$variables_fields.
+	 *
+	 * @access public
+	 * @since 4.0
+	 * @param array  $args   The field args.
+	 * @param Object $object The field object.
+	 * @return void
+	 */
+	public function field_init_variables( $args, $object ) {
+		if ( isset( $args['variables'] ) ) {
+			self::$variables_fields[] = $args;
+		}
+	}
+
+	/**
 	 * Build the variables.
 	 *
 	 * @static
@@ -80,29 +103,46 @@ class Util {
 	public static function get_variables() {
 
 		$variables = [];
+		$fields    = self::$variables_fields;
+
+		/**
+		 * Compatibility with Kirki v3.x API.
+		 * If the Kirki class exists, check for fields inside it
+		 * and add them to our fields array.
+		 */
+		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
+			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
+		}
 
 		// Loop through all fields.
-		foreach ( Kirki::$fields as $field ) {
+		foreach ( $fields as $field ) {
 
-			// Check if we have variables for this field.
-			if ( isset( $field['variables'] ) && $field['variables'] && ! empty( $field['variables'] ) ) {
+			// Skip if this field doesn't have variables.
+			if ( ! isset( $field['variables'] ) || ! $field['variables'] || empty( $field['variables'] ) ) {
+				continue;
+			}
 
-				// Loop through the array of variables.
-				foreach ( $field['variables'] as $field_variable ) {
+			$option_type = ( isset( $field['option_type'] ) ) ? $field['option_type'] : 'theme_mod';
+			$default     = ( isset( $field['default'] ) ) ? $field['default'] : '';
+			$value       = apply_filters( 'kirki_get_value', get_theme_mod( $field['settings'], $default ), $field['settings'], $default, $option_type );
 
-					// Is the variable ['name'] defined? If yes, then we can proceed.
-					if ( isset( $field_variable['name'] ) ) {
+			// Loop through the array of variables.
+			foreach ( $field['variables'] as $field_variable ) {
 
-						// Do we have a callback function defined? If not then set $variable_callback to false.
-						$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
+				// Is the variable ['name'] defined? If yes, then we can proceed.
+				if ( isset( $field_variable['name'] ) ) {
 
-						// If we have a variable_callback defined then get the value of the option
-						// and run it through the callback function.
-						// If no callback is defined (false) then just get the value.
-						$variables[ $field_variable['name'] ] = Values::get_value( $field['settings'] );
-						if ( $variable_callback ) {
-							$variables[ $field_variable['name'] ] = call_user_func( $field_variable['callback'], Values::get_value( $field['settings'] ) );
-						}
+					// Do we have a callback function defined? If not then set $variable_callback to false.
+					$variable_callback = ( isset( $field_variable['callback'] ) && is_callable( $field_variable['callback'] ) ) ? $field_variable['callback'] : false;
+
+					/**
+					 * If we have a variable_callback defined then get the value of the option
+					 * and run it through the callback function.
+					 * If no callback is defined (false) then just get the value.
+					 */
+					$variables[ $field_variable['name'] ] = $value;
+					if ( $variable_callback ) {
+						$variables[ $field_variable['name'] ] = call_user_func( $field_variable['callback'], $value );
 					}
 				}
 			}

@@ -13,7 +13,6 @@
 
 namespace Kirki\Module\Webfonts;
 
-use Kirki\Compatibility\Values;
 use Kirki\Module\Webfonts\Fonts;
 use Kirki\GoogleFonts;
 
@@ -120,7 +119,9 @@ final class Google {
 		if ( ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) || ( isset( $args['choices'] ) && isset( $args['choices']['parent_type'] ) && 'kirki-typography' === $args['choices']['parent_type'] ) ) {
 
 			// Get the value.
-			$value = Values::get_sanitized_field_value( $args );
+			$option_type = ( isset( $args['option_type'] ) ) ? $args['option_type'] : 'theme_mod';
+			$default     = ( isset( $args['default'] ) ) ? $args['default'] : '';
+			$value       = apply_filters( 'kirki_get_value', get_theme_mod( $args['settings'], $default ), $args['settings'], $default, $option_type );
 
 			// If we don't have a font-family then we can skip this.
 			if ( ! isset( $value['font-family'] ) || in_array( $value['font-family'], $this->hosted_fonts, true ) ) {
@@ -169,7 +170,9 @@ final class Google {
 				}
 
 				// Get the value.
-				$value = Values::get_sanitized_field_value( $args );
+				$option_type = ( isset( $args['option_type'] ) ) ? $args['option_type'] : 'theme_mod';
+				$default     = ( isset( $args['default'] ) ) ? $args['default'] : '';
+				$value       = apply_filters( 'kirki_get_value', get_theme_mod( $args['settings'], $default ), $args['settings'], $default, $option_type );
 
 				if ( is_string( $value ) ) {
 					if ( 'font-family' === $output['property'] ) {

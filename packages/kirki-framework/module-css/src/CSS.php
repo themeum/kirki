@@ -248,8 +248,13 @@ class CSS {
 		// This will make sure google fonts and backup fonts are loaded.
 		Generator::get_instance();
 
-		$fields = array_merge( Kirki::$fields, self::get_fields_by_config( $config_id ) );
-		$css    = [];
+		$fields = self::get_fields_by_config( $config_id );
+
+		// Compatibility with v3 API.
+		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
+			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
+		}
+		$css = [];
 
 		// Early exit if no fields are found.
 		if ( empty( $fields ) ) {

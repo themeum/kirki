@@ -26,6 +26,63 @@ class Option {
 	public function __construct() {
 		add_filter( 'kirki_field_add_setting_args', [ $this, 'add_setting_args' ], 20, 2 );
 		add_filter( 'kirki_field_add_control_args', [ $this, 'add_control_args' ], 20, 2 );
+		add_filter( 'kirki_get_value', [ $this, 'kirki_get_value' ] );
+	}
+
+	/**
+	 * Filters the value for an option.
+	 *
+	 * @access public
+	 * @since 4.0
+	 * @param mixed  $value   The value.
+	 * @param string $option  The field-name.
+	 * @param mixed  $default The default value.
+	 * @param string $type    The option-type (theme_mod, option etc).
+	 * @return mixed          Returns the field value.
+	 */
+	public function kirki_get_value( $value = '', $option = '', $default = '', $type = 'theme_mod' ) {
+		if ( 'option' === $type ) {
+
+			/**
+			 * If the option doesn't contain a '[', then it's not a sub-item
+			 * of another option. Get the option value and return it.
+			 */
+			if ( false === strpos( $option, '[' ) ) {
+				return get_option( $option, $default );
+			}
+
+			/**
+			 * If we got here then this is part of an option array.
+			 * We need to get the 1st level, and then find the item inside that array.
+			 */
+			$parts = \explode( '[', $option );
+			$value = get_option( $parts[0], [] );
+			foreach ( $parts as $key => $part ) {
+				/**
+				 * Skip the 1st item, it's already been dealt with
+				 * when we got the value initially right before this loop.
+				 */
+				if ( 0 === $key ) {
+					continue;
+				}
+				$part = str_replace( ']', '', $part );
+				/**
+				 * If the item exists in the value, then change $value to the item.
+				 * This runs recursively for all parts until we get to the end.
+				 */
+				if ( is_array( $value ) && isset( $value[ $part ] ) ) {
+					$value = $value[ $part ];
+					continue;
+				}
+				/**
+				 * If we got here, the item was not found in the value.
+				 * We need to change the value accordingly depending on whether
+				 * this is the last item in the loop or not.
+				 */
+				$value = ( isset( $parts[ $key + 1 ] ) ) ? [] : '';
+			}
+		}
+		return $value;
 	}
 
 	/**

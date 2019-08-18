@@ -12,7 +12,6 @@
 
 namespace Kirki\Module;
 
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 /**
@@ -85,8 +84,13 @@ class Postmessage {
 	 */
 	public function postmessage() {
 		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview', 'wp-hooks' ], '4.0', true );
-		$fields = array_merge( Kirki::$fields, $this->fields );
-		$data   = [];
+		$fields = $this->fields;
+
+		// Compatibility with v3 API.
+		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
+			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
+		}
+		$data = [];
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
 				$data[] = $field;
