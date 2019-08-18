@@ -1081,18 +1081,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/data-option.git",
-            "reference": "d50c3b6c17ad0a255717cfd356510395463c2dcd"
+            "reference": "32215657b58feab2db5ed570a728d6a50501f781"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/d50c3b6c17ad0a255717cfd356510395463c2dcd",
-            "reference": "d50c3b6c17ad0a255717cfd356510395463c2dcd",
+            "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/32215657b58feab2db5ed570a728d6a50501f781",
+            "reference": "32215657b58feab2db5ed570a728d6a50501f781",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-08-18T08:21:42+00:00",
+        "time": "2019-08-18T09:19:41+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

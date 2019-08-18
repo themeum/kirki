@@ -26,7 +26,7 @@ class Option {
 	public function __construct() {
 		add_filter( 'kirki_field_add_setting_args', [ $this, 'add_setting_args' ], 20, 2 );
 		add_filter( 'kirki_field_add_control_args', [ $this, 'add_control_args' ], 20, 2 );
-		add_filter( 'kirki_get_value', [ $this, 'kirki_get_value' ] );
+		add_filter( 'kirki_get_value', [ $this, 'kirki_get_value' ], 10, 4 );
 	}
 
 	/**
