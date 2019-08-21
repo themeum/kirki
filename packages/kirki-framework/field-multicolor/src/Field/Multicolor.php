@@ -21,6 +21,15 @@ use Kirki\Field;
 class Multicolor extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-multicolor';
+
+	/**
 	 * Extra logic for the field.
 	 *
 	 * Adds all sub-fields.
@@ -58,6 +67,8 @@ class Multicolor extends Field {
 						'label'          => '',
 						'description'    => $choice_label,
 						'default'        => isset( $args['default'][ $choice ] ) ? $args['default'][ $choice ] : '',
+						'css_vars'       => [],
+						'output'         => [],
 					],
 					$args
 				)

@@ -33,6 +33,14 @@ jQuery( document ).ready( function() {
 
 					processedValue = kirkiPostMessage.util.processValue( output, val );
 
+					if ( '' === processedValue ) {
+						if ( 'background-color' === output.property ) {
+							processedValue = 'unset';
+						} else if ( 'background-image' === output.property ) {
+							processedValue = 'none';
+						}
+					}
+
 					if ( false !== processedValue ) {
 						styles += output.property ? output.property + ':' + processedValue + ';' : key + ':' + processedValue + ';';
 					}

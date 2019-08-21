@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class URL extends Text {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-url';
+
+	/**
 	 * Filter arguments before creating the setting.
 	 *
 	 * @access public

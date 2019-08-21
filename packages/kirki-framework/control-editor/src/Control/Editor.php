@@ -48,7 +48,7 @@ class Editor extends Base {
 	 * @since 1.0
 	 * @var bool
 	 */
-	public $choices = array();
+	public $choices = [];
 
 	/**
 	 * Enqueue control related scripts/styles.

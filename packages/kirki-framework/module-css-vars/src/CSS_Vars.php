@@ -12,7 +12,6 @@
 
 namespace Kirki\Module;
 
-use Kirki\Compatibility\Values;
 use Kirki\URL;
 
 /**
@@ -95,7 +94,12 @@ class CSS_Vars {
 			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
 				continue;
 			}
-			$val = Values::get_value( $args['kirki_config'], $id );
+
+			// Get the value of this field.
+			$option_type = ( isset( $args['option_type'] ) ) ? $args['option_type'] : 'theme_mod';
+			$default     = ( isset( $args['default'] ) ) ? $args['default'] : '';
+			$val         = apply_filters( 'kirki_get_value', get_theme_mod( $args['settings'], $default ), $args['settings'], $default, $option_type );
+
 			foreach ( $args['css_vars'] as $css_var ) {
 				if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
 					$this->vars[ $css_var[0] ] = str_replace( '$', $val[ $css_var[2] ], $css_var[1] );

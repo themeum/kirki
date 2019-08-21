@@ -157,6 +157,14 @@ var kirkiPostMessage = {
 							}
 							processedValue = kirkiPostMessage.util.processValue( output, val );
 
+							if ( '' === processedValue ) {
+								if ( 'background-color' === output.property ) {
+									processedValue = 'unset';
+								} else if ( 'background-image' === output.property ) {
+									processedValue = 'none';
+								}
+							}
+
 							if ( false !== processedValue ) {
 								styles += output.property ? output.property + '-' + key + ':' + processedValue + ';' : key + ':' + processedValue + ';';
 							}
@@ -176,6 +184,15 @@ var kirkiPostMessage = {
 								}
 								processedValue = kirkiPostMessage.util.processValue( output, val );
 								property       = output.property ? output.property : key;
+
+								if ( '' === processedValue ) {
+									if ( 'background-color' === property ) {
+										processedValue = 'unset';
+									} else if ( 'background-image' === property ) {
+										processedValue = 'none';
+									}
+								}
+
 								if ( false !== processedValue ) {
 									styles += property + ':' + processedValue + ';';
 								}
@@ -183,6 +200,14 @@ var kirkiPostMessage = {
 							styles += '}';
 						} else {
 							processedValue = kirkiPostMessage.util.processValue( output, value );
+							if ( '' === processedValue ) {
+								if ( 'background-color' === output.property ) {
+									processedValue = 'unset';
+								} else if ( 'background-image' === output.property ) {
+									processedValue = 'none';
+								}
+							}
+
 							if ( false !== processedValue ) {
 								styles += output.element + '{' + output.property + ':' + processedValue + ';}';
 							}

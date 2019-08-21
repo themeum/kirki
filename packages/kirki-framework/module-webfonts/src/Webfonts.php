@@ -12,7 +12,7 @@
 
 namespace Kirki\Module;
 
-use Kirki\Core\Helper;
+use Kirki\Util\Helper;
 use Kirki\Compatibility\Values;
 use Kirki\Compatibility\Kirki;
 use Kirki\Module\Webfonts\Google;

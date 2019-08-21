@@ -20,6 +20,15 @@ use Kirki\Compatibility\Field;
 class Repeater extends Field {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-repeater';
+
+	/**
 	 * Used only on repeaters.
 	 * Contains an array of the fields.
 	 *

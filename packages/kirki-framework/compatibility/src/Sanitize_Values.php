@@ -11,7 +11,7 @@
  * @since       1.0
  */
 
-namespace Kirki\Core;
+namespace Kirki\Compatibility;
 
 use Kirki\Field\Checkbox;
 

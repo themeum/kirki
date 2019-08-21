@@ -9,10 +9,11 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
     public static $prefixLengthsPsr4 = array (
         'K' => 
         array (
+            'Kirki\\Util\\' => 11,
             'Kirki\\Settings\\' => 15,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
-            'Kirki\\Core\\' => 11,
+            'Kirki\\Data\\' => 11,
             'Kirki\\Control\\' => 14,
             'Kirki\\Compatibility\\' => 20,
             'Kirki\\' => 6,
@@ -20,6 +21,12 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
     );
 
     public static $prefixDirsPsr4 = array (
+        'Kirki\\Util\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Util',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Util',
+            2 => __DIR__ . '/..' . '/kirki-framework/util/src',
+        ),
         'Kirki\\Settings\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Settings',
@@ -28,16 +35,15 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/module-css/src',
             1 => __DIR__ . '/..' . '/kirki-framework/module-css-vars/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-custom-sections/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
-            6 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
-            7 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-            8 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
-            9 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
-            10 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            11 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-editor-styles/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-loading/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            8 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            9 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            10 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (
@@ -66,11 +72,9 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
-        'Kirki\\Core\\' => 
+        'Kirki\\Data\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/control-color-palette/src/Core',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Core',
-            2 => __DIR__ . '/..' . '/kirki-framework/core/src',
+            0 => __DIR__ . '/..' . '/kirki-framework/data-option/src',
         ),
         'Kirki\\Control\\' => 
         array (
@@ -106,7 +110,9 @@ class ComposerStaticInit382d384ad8cd338e46c931310886111b
             0 => __DIR__ . '/..' . '/kirki-framework/field/src',
             1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
             2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 

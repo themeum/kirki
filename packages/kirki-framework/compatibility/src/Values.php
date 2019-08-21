@@ -98,7 +98,7 @@ class Values {
 	 */
 	public static function get_sanitized_field_value( $field ) {
 		$value = $field['default'];
-		if ( isset( $field['option_type'] ) && 'theme_mod' === $field['option_type'] ) {
+		if ( ! isset( $field['option_type'] ) || 'theme_mod' === $field['option_type'] ) {
 			$value = get_theme_mod( $field['settings'], $field['default'] );
 		} elseif ( isset( $field['option_type'] ) && 'option' === $field['option_type'] ) {
 			if ( isset( $field['option_name'] ) && '' !== $field['option_name'] ) {

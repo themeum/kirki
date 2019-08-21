@@ -13,7 +13,6 @@
 
 namespace Kirki\Module\CSS;
 
-use Kirki\Compatibility\Values;
 use Kirki\Module\Webfonts\Fonts;
 
 // Exit if accessed directly.
@@ -157,6 +156,8 @@ final class Generator {
 		self::$field_type = ( isset( $field['choices'] ) && isset( $field['choices']['parent_type'] ) ) ? $field['choices']['parent_type'] : self::$field_type;
 		self::$output     = $field['output'];
 
+		$field['kirki_config'] = isset( $field['kirki_config'] ) ? $field['kirki_config'] : 'global';
+
 		if ( ! is_array( self::$output ) ) {
 			self::$output = [
 				[
@@ -167,7 +168,9 @@ final class Generator {
 		}
 
 		// Get the value of this field.
-		self::$value = Values::get_sanitized_field_value( $field );
+		$option_type = ( isset( $field['option_type'] ) ) ? $field['option_type'] : 'theme_mod';
+		$default     = ( isset( $field['default'] ) ) ? $field['default'] : '';
+		self::$value = apply_filters( 'kirki_get_value', get_theme_mod( $field['settings'], $default ), $field['settings'], $default, $option_type );
 
 		// Find the class that will handle the outpout for this field.
 		$classname            = '\Kirki\Module\CSS\Output';

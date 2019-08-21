@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class Radio_Image extends Radio {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-radio-image';
+
+	/**
 	 * The control class-name.
 	 *
 	 * @access protected

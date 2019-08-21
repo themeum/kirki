@@ -12,7 +12,6 @@ namespace Kirki\Field;
 
 use Kirki\Field;
 use Kirki;
-use Kirki\URL;
 use Kirki\GoogleFonts;
 use Kirki\Module\Webfonts\Fonts;
 
@@ -22,6 +21,15 @@ use Kirki\Module\Webfonts\Fonts;
  * @since 1.0
  */
 class Typography extends Field {
+
+	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-typography';
 
 	/**
 	 * Has the glogal gfonts var been added already?
@@ -158,6 +166,8 @@ class Typography extends Field {
 								array_combine( array_values( $g_fonts ), array_values( $g_fonts ) ),
 							],
 						],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -190,6 +200,8 @@ class Typography extends Field {
 							'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
 							'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
 						],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -214,6 +226,8 @@ class Typography extends Field {
 								'normal' => esc_html__( 'No', 'kirki' ),
 								'italic' => esc_html__( 'Yes', 'kirki' ),
 							],
+							'css_vars'    => [],
+							'output'      => [],
 						],
 						$args
 					)
@@ -235,6 +249,8 @@ class Typography extends Field {
 							'none'      => esc_html__( 'No', 'kirki' ),
 							'underline' => esc_html__( 'Yes', 'kirki' ),
 						],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -254,6 +270,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-size]',
 						'default'     => $args['default']['font-size'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -273,6 +291,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[line-height]',
 						'default'     => $args['default']['line-height'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -289,6 +309,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[letter-spacing]',
 						'default'     => $args['default']['letter-spacing'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -305,6 +327,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[word-spacing]',
 						'default'     => $args['default']['word-spacing'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -327,6 +351,8 @@ class Typography extends Field {
 							'uppercase'  => esc_html__( 'Uppercase', 'kirki' ),
 							'lowercase'  => esc_html__( 'Lowercase', 'kirki' ),
 						],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -350,6 +376,8 @@ class Typography extends Field {
 							'right'   => esc_html__( 'Right', 'kirki' ),
 							'justify' => esc_html__( 'Justify', 'kirki' ),
 						],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -366,6 +394,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[margin-top]',
 						'default'     => $args['default']['margin-top'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -382,6 +412,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[margin-bottom]',
 						'default'     => $args['default']['margin-bottom'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -398,6 +430,8 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[color]',
 						'default'     => $args['default']['color'],
+						'css_vars'    => [],
+						'output'      => [],
 					],
 					$args
 				)
@@ -411,6 +445,8 @@ class Typography extends Field {
 				'default'         => '<div class="kirki-typography-end"><hr></div>',
 				'section'         => $args['section'],
 				'active_callback' => isset( $args['active_callback'] ) ? $args['active_callback'] : '',
+				'css_vars'        => [],
+				'output'          => [],
 			]
 		);
 	}
@@ -496,9 +532,9 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'kirki-control-typography-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], '1.0' );
+		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script.js' ), [], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script.js' ), [], '1.0', true );
 		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
 
 		if ( ! self::$gfonts_var_added ) {
@@ -516,7 +552,7 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_customize_preview_init() {
-		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
 	}
 
 	/**

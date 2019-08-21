@@ -8,10 +8,10 @@ wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicCon
 
 		defaultParams = {
 			tinymce: {
-				wpautop: true,
+				wpautop: true
 			},
 			quicktags: true,
-			mediaButtons: true,
+			mediaButtons: true
 		};
 
 		// Overwrite the default paramaters if choices is defined.
@@ -29,5 +29,5 @@ wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicCon
 				wp.customize.instance( control.id ).set( content );
 			} );
 		}
-	},
+	}
 } );

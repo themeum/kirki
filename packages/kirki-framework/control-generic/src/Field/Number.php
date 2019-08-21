@@ -18,6 +18,15 @@ namespace Kirki\Field;
 class Number extends Generic {
 
 	/**
+	 * The field type.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @var string
+	 */
+	public $type = 'kirki-number';
+
+	/**
 	 * Filter arguments before creating the setting.
 	 *
 	 * @access public

@@ -70,7 +70,7 @@ class Dashicons extends Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['icons'] = \Kirki\Core\Dashicons::get_icons();
+		$this->json['icons'] = \Kirki\Util\Dashicons::get_icons();
 	}
 
 	/**

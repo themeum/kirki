@@ -13,7 +13,7 @@
 namespace Kirki\Module;
 
 use Kirki\Compatibility\Kirki;
-use Kirki\Core\Helper;
+use Kirki\Util\Helper;
 use Kirki\Compatibility\Values;
 use Kirki\Module\CSS\Generator;
 
@@ -46,7 +46,7 @@ class CSS {
 	 * @access public
 	 */
 	public function __construct() {
-		add_action( 'kirki_field_init', [ $this, 'field_init' ] );
+		add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
@@ -82,10 +82,11 @@ class CSS {
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $args The field args.
+	 * @param array  $args   The field args.
+	 * @param Object $object The field object.
 	 * @return void
 	 */
-	public function field_init( $args ) {
+	public function field_init( $args, $object ) {
 		if ( ! isset( $args['output'] ) || empty( $args['output'] ) ) {
 			return;
 		}
@@ -131,6 +132,11 @@ class CSS {
 			$args['output'][ $key ]['element'] = str_replace( [ "\t", "\n", "\r", "\0", "\x0B" ], ' ', $args['output'][ $key ]['element'] );
 			$args['output'][ $key ]['element'] = trim( preg_replace( '/\s+/', ' ', $args['output'][ $key ]['element'] ) );
 		}
+
+		if ( ! isset( $args['type'] ) && isset( $object->type ) ) {
+			$args['type'] = $object->type;
+		}
+
 		self::$fields[] = $args;
 	}
 
@@ -242,8 +248,13 @@ class CSS {
 		// This will make sure google fonts and backup fonts are loaded.
 		Generator::get_instance();
 
-		$fields = array_merge( Kirki::$fields, self::get_fields_by_config( $config_id ) );
-		$css    = [];
+		$fields = self::get_fields_by_config( $config_id );
+
+		// Compatibility with v3 API.
+		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
+			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
+		}
+		$css = [];
 
 		// Early exit if no fields are found.
 		if ( empty( $fields ) ) {
@@ -308,7 +319,13 @@ class CSS {
 	private static function get_fields_by_config( $config_id ) {
 		$fields = [];
 		foreach ( self::$fields as $field ) {
-			if ( ( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) || ( 'global' === $config_id || ! $config_id ) && ( 'global' === $field['kirki_config'] || ! $field['kirki_config'] ) ) {
+			if (
+				( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) ||
+				(
+					( 'global' === $config_id || ! $config_id ) &&
+					( ! isset( $field['kirki_config'] ) || 'global' === $field['kirki_config'] || ! $field['kirki_config'] )
+				)
+			) {
 				$fields[] = $field;
 			}
 		}

@@ -125,8 +125,8 @@ final class GoogleFonts {
 		$fonts         = $this->get_array();
 		$ordered_fonts = $fonts['order'][ $args['sort'] ];
 		if ( isset( $args['count'] ) ) {
-			set_site_transient( $cache_name, $ordered_fonts, HOUR_IN_SECONDS );
 			$ordered_fonts = array_slice( $ordered_fonts, 0, $args['count'] );
+			set_site_transient( $cache_name, $ordered_fonts, HOUR_IN_SECONDS );
 			return $ordered_fonts;
 		}
 		set_site_transient( $cache_name, $ordered_fonts, HOUR_IN_SECONDS );

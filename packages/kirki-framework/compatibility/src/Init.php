@@ -43,16 +43,13 @@ class Init {
 		add_action( 'wp_loaded', [ $this, 'add_to_customizer' ], 1 );
 		add_filter( 'kirki_control_types', [ $this, 'default_control_types' ] );
 
-		add_action( 'customize_register', [ $this, 'remove_panels' ], 99999 );
-		add_action( 'customize_register', [ $this, 'remove_sections' ], 99999 );
 		add_action( 'customize_register', [ $this, 'remove_controls' ], 99999 );
 
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
 		new Values();
-		new Sections();
-		new \Kirki\Core\Telemetry();
+		new \Kirki\Util\Telemetry();
 	}
 
 	/**
@@ -99,13 +96,11 @@ class Init {
 	}
 
 	/**
-	 * Helper function that adds the fields, sections and panels to the customizer.
+	 * Helper function that adds the fields to the customizer.
 	 */
 	public function add_to_customizer() {
 		$this->fields_from_filters();
 		add_action( 'customize_register', [ $this, 'register_control_types' ] );
-		add_action( 'customize_register', [ $this, 'add_panels' ], 97 );
-		add_action( 'customize_register', [ $this, 'add_sections' ], 98 );
 		add_action( 'customize_register', [ $this, 'add_fields' ], 99 );
 	}
 
@@ -114,11 +109,6 @@ class Init {
 	 */
 	public function register_control_types() {
 		global $wp_customize;
-
-		$section_types = apply_filters( 'kirki_section_types', [] );
-		foreach ( $section_types as $section_type ) {
-			$wp_customize->register_section_type( $section_type );
-		}
 
 		$this->control_types = $this->default_control_types();
 		if ( ! class_exists( 'WP_Customize_Code_Editor_Control' ) ) {
@@ -141,52 +131,6 @@ class Init {
 		foreach ( $this->control_types as $control_type ) {
 			if ( ! in_array( $control_type, $skip_control_types, true ) && class_exists( $control_type ) ) {
 				$wp_customize->register_control_type( $control_type );
-			}
-		}
-	}
-
-	/**
-	 * Register our panels to the WordPress Customizer.
-	 *
-	 * @access public
-	 */
-	public function add_panels() {
-		if ( ! empty( Kirki::$panels ) ) {
-			foreach ( Kirki::$panels as $panel_args ) {
-				// Extra checks for nested panels.
-				if ( isset( $panel_args['panel'] ) ) {
-					if ( isset( Kirki::$panels[ $panel_args['panel'] ] ) ) {
-						// Set the type to nested.
-						$panel_args['type'] = 'kirki-nested';
-					}
-				}
-
-				new \Kirki\Compatibility\Panel( $panel_args );
-			}
-		}
-	}
-
-	/**
-	 * Register our sections to the WordPress Customizer.
-	 *
-	 * @var object The WordPress Customizer object
-	 */
-	public function add_sections() {
-		if ( ! empty( Kirki::$sections ) ) {
-			foreach ( Kirki::$sections as $section_args ) {
-				// Extra checks for nested sections.
-				if ( isset( $section_args['section'] ) ) {
-					if ( isset( Kirki::$sections[ $section_args['section'] ] ) ) {
-						// Set the type to nested.
-						$section_args['type'] = 'kirki-nested';
-						// We need to check if the parent section is nested inside a panel.
-						$parent_section = Kirki::$sections[ $section_args['section'] ];
-						if ( isset( $parent_section['panel'] ) ) {
-							$section_args['panel'] = $parent_section['panel'];
-						}
-					}
-				}
-				new \Kirki\Compatibility\Section( $section_args );
 			}
 		}
 	}
@@ -235,7 +179,7 @@ class Init {
 	}
 
 	/**
-	 * Alias for the is_plugin static method in the Kirki\Core\Util class.
+	 * Alias for the is_plugin static method in the Kirki\Util\Util class.
 	 * This is here for backwards-compatibility purposes.
 	 *
 	 * @static
@@ -248,7 +192,7 @@ class Init {
 	}
 
 	/**
-	 * Alias for the get_variables static method in the Kirki\Core\Util class.
+	 * Alias for the get_variables static method in the Kirki\Util\Util class.
 	 * This is here for backwards-compatibility purposes.
 	 *
 	 * @static
@@ -259,34 +203,8 @@ class Init {
 	public static function get_variables() {
 
 		// Log error for developers.
-		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Core\Init::get_variables(). Please use \Kirki\Core\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
+		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Compatibility\Init::get_variables(). Please use \Kirki\Util\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
 		return Util::get_variables();
-	}
-
-	/**
-	 * Remove panels.
-	 *
-	 * @since 3.0.17
-	 * @param object $wp_customize The customizer object.
-	 * @return void
-	 */
-	public function remove_panels( $wp_customize ) {
-		foreach ( Kirki::$panels_to_remove as $panel ) {
-			$wp_customize->remove_panel( $panel );
-		}
-	}
-
-	/**
-	 * Remove sections.
-	 *
-	 * @since 3.0.17
-	 * @param object $wp_customize The customizer object.
-	 * @return void
-	 */
-	public function remove_sections( $wp_customize ) {
-		foreach ( Kirki::$sections_to_remove as $section ) {
-			$wp_customize->remove_section( $section );
-		}
 	}
 
 	/**

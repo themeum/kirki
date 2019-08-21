@@ -2,17 +2,15 @@
 /**
  * Handles sections created via the Kirki API.
  *
- * @package     Kirki
- * @category    Modules
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @package    Kirki
+ * @category   Modules
+ * @author     Ari Stathopoulos (@aristath)
+ * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @since      3.0.0
  */
 
 namespace Kirki\Module;
-
-use Kirki\Compatibility\Kirki;
 
 /**
  * Handle selective refreshes introduced in WordPress 4.5.
@@ -43,7 +41,12 @@ class Selective_Refresh {
 		}
 
 		// Get an array of all fields.
-		$fields = Kirki::$fields;
+		$fields = [];
+
+		// Compatibility with v3 API.
+		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
+			$fields = \Kirki\Compatibility\Kirki::$fields;
+		}
 
 		// Start parsing the fields.
 		foreach ( $fields as $field ) {
