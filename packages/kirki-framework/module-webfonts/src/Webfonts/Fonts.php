@@ -101,22 +101,6 @@ final class Fonts {
 	}
 
 	/**
-	 * Return an array of backup fonts based on the font-category
-	 *
-	 * @return array
-	 */
-	public static function get_backup_fonts() {
-		$backup_fonts = [
-			'sans-serif'  => 'Helvetica, Arial, sans-serif',
-			'serif'       => 'Georgia, serif',
-			'display'     => '"Comic Sans MS", cursive, sans-serif',
-			'handwriting' => '"Comic Sans MS", cursive, sans-serif',
-			'monospace'   => '"Lucida Console", Monaco, monospace',
-		];
-		return apply_filters( 'kirki_fonts_backup_fonts', $backup_fonts );
-	}
-
-	/**
 	 * Return an array of all available Google Fonts.
 	 *
 	 * @return array    All Google Fonts.

@@ -89,15 +89,6 @@ final class Generator {
 	public static $google_fonts = null;
 
 	/**
-	 * Standard Fonts
-	 *
-	 * @static
-	 * @access public
-	 * @var array
-	 */
-	public static $backup_fonts = null;
-
-	/**
 	 * CSS
 	 *
 	 * @static
@@ -121,9 +112,6 @@ final class Generator {
 	private function __construct() {
 		if ( is_null( self::$google_fonts ) ) {
 			self::$google_fonts = Fonts::get_google_fonts();
-		}
-		if ( is_null( self::$backup_fonts ) ) {
-			self::$backup_fonts = Fonts::get_backup_fonts();
 		}
 	}
 

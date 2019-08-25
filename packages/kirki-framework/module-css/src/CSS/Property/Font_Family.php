@@ -26,7 +26,6 @@ class Font_Family extends Property {
 	 */
 	protected function process_value() {
 		$google_fonts_array = Fonts::get_google_fonts();
-		$backup_fonts       = Fonts::get_backup_fonts();
 
 		$family = $this->value;
 		$backup = '';
@@ -43,22 +42,6 @@ class Font_Family extends Property {
 
 		// Hack for standard fonts.
 		$family = str_replace( '&quot;', '"', $family );
-
-		// Add backup font.
-		if ( Fonts::is_google_font( $family ) ) {
-
-			if ( '' === $backup && isset( $google_fonts_array[ $family ] ) && isset( $backup_fonts[ $google_fonts_array[ $family ]['category'] ] ) ) {
-				$backup = $backup_fonts[ $google_fonts_array[ $family ]['category'] ];
-			}
-
-			// Add double quotes if needed.
-			if ( false !== strpos( $family, ' ' ) && false === strpos( $family, '"' ) ) {
-				$this->value = '"' . $family . '", ' . $backup;
-				return;
-			}
-			$this->value = $family . ', ' . $backup;
-			return;
-		}
 
 		// Add double quotes if needed.
 		if ( false !== strpos( $family, ' ' ) && false === strpos( $family, '"' ) ) {

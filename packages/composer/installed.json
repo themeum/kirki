@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "798a908bd392013c94bf3bb0930adcc5d86deeb0"
+            "reference": "04e06bc96c3787a8371a87d6fa27a6eae585c1db"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/798a908bd392013c94bf3bb0930adcc5d86deeb0",
-            "reference": "798a908bd392013c94bf3bb0930adcc5d86deeb0",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/04e06bc96c3787a8371a87d6fa27a6eae585c1db",
+            "reference": "04e06bc96c3787a8371a87d6fa27a6eae585c1db",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-07-14T12:38:58+00:00",
+        "time": "2019-08-24T11:42:48+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -32,9 +32,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
+                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io",
-                "role": "Developer"
+                "homepage": "http://aristath.github.io"
             }
         ],
         "description": "Compatibility package for themes using the Kirki v3.x API.",
@@ -1516,19 +1516,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-css.git",
-            "reference": "aac3b3b3c7c824b900009628efd0129becf888d5"
+            "reference": "b83bb9c6dfd864d2d3aafd8ec5211bdcbcff19d2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/aac3b3b3c7c824b900009628efd0129becf888d5",
-            "reference": "aac3b3b3c7c824b900009628efd0129becf888d5",
+            "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/b83bb9c6dfd864d2d3aafd8ec5211bdcbcff19d2",
+            "reference": "b83bb9c6dfd864d2d3aafd8ec5211bdcbcff19d2",
             "shasum": ""
         },
         "require": {
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-18T08:50:38+00:00",
+        "time": "2019-08-24T11:42:34+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -2088,12 +2088,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "353b21da41121b163e01f9805d07bd4a0fd0b468"
+            "reference": "19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/353b21da41121b163e01f9805d07bd4a0fd0b468",
-            "reference": "353b21da41121b163e01f9805d07bd4a0fd0b468",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e",
+            "reference": "19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e",
             "shasum": ""
         },
         "require": {
@@ -2101,7 +2101,7 @@
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-18T08:38:51+00:00",
+        "time": "2019-08-24T11:42:11+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
