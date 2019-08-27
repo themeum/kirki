@@ -37,12 +37,6 @@ final class Kirki_Modules_Telemetry {
 	 * @since 3.0.36
 	 */
 	protected function __construct() {
-
-		// Early exit if telemetry is disabled.
-		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
-			return;
-		}
-
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
 	}
@@ -71,6 +65,12 @@ final class Kirki_Modules_Telemetry {
 	 * @return void
 	 */
 	public function init() {
+
+		// Early exit if telemetry is disabled.
+		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
+			return;
+		}
+
 		$this->dismiss_notice();
 		$this->consent();
 
@@ -135,6 +135,11 @@ final class Kirki_Modules_Telemetry {
 	 * @return void
 	 */
 	public function admin_notice() {
+
+		// Early exit if telemetry is disabled.
+		if ( ! apply_filters( 'kirki_telemetry', true ) ) {
+			return;
+		}
 
 		// Early exit if the user has dismissed the consent, or if they have opted-in.
 		if ( get_option( 'kirki_telemetry_no_consent' ) || get_option( 'kirki_telemetry_optin' ) ) {
