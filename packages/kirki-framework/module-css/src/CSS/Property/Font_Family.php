@@ -28,10 +28,8 @@ class Font_Family extends Property {
 		$google_fonts_array = Fonts::get_google_fonts();
 
 		$family = $this->value;
-		$backup = '';
 		if ( is_array( $this->value ) && isset( $this->value[0] ) && isset( $this->value[1] ) ) {
 			$family = $this->value[0];
-			$backup = $this->value[1];
 		}
 
 		// Make sure the value is a string.
