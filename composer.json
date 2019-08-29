@@ -53,7 +53,6 @@
     "kirki-framework/field-multicolor": "dev-master",
     "kirki-framework/field-typography": "dev-master",
     "kirki-framework/module-css": "dev-master",
-    "kirki-framework/module-css-vars": "dev-master",
     "kirki-framework/module-editor-styles": "dev-master",
     "kirki-framework/module-field-dependencies": "dev-master",
     "kirki-framework/module-loading": "dev-master",

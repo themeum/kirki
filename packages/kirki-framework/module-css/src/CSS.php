@@ -87,9 +87,10 @@ class CSS {
 	 * @return void
 	 */
 	public function field_init( $args, $object ) {
-		if ( ! isset( $args['output'] ) || empty( $args['output'] ) ) {
-			return;
+		if ( ! isset( $args['output'] ) ) {
+			$args['output'] = [];
 		}
+
 		if ( ! is_array( $args['output'] ) ) {
 			/* translators: The field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
@@ -105,6 +106,31 @@ class CSS {
 			/* translators: The field ID where the error occurs. */
 			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
 			$args['output'] = [ $args['output'] ];
+		}
+
+		// Convert css_vars to output args.
+		if ( isset( $args['css_vars'] ) ) {
+			$args['css_vars'] = (array) $args['css_vars'];
+			if ( isset( $args['css_vars'][0] ) && is_string( $args['css_vars'][0] ) ) {
+				$args['css_vars'] = [ $args['css_vars'] ];
+			}
+			foreach ( $args['css_vars'] as $css_var ) {
+				$output = [
+					'element'  => ':root',
+					'property' => $css_var[0]
+				];
+				if ( isset( $css_var[1] ) ) {
+					$output['value_pattern'] = $css_var[1];
+				}
+				if ( isset( $css_var[2] ) ) {
+					$output['choice'] = $css_var[2];
+				}
+				$args['output'][] = $output;
+			}
+		}
+
+		if ( empty( $args['output'] ) ) {
+			return;
 		}
 
 		foreach ( $args['output'] as $key => $output ) {
