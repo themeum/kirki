@@ -8,13 +8,15 @@ wp.customize.controlConstructor['kirki-editor'] = wp.customize.kirkiDynamicContr
 			id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' ),
 			editor;
 
-		wp.editor.initialize( id, {
-			tinymce: {
-				wpautop: true
-			},
-			quicktags: true,
-			mediaButtons: true
-		} );
+		if ( wp.editor && wp.editor.initialize ) {
+			wp.editor.initialize( id, {
+				tinymce: {
+					wpautop: true
+				},
+				quicktags: true,
+				mediaButtons: true
+			} );
+		}
 
 		editor = tinyMCE.get( id );
 
