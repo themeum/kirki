@@ -81,7 +81,7 @@ abstract class Field {
 			'init',
 			function() {
 				do_action( 'kirki_field_init', $this->args, $this );
-			} 
+			}
 		);
 		add_action(
 			'wp',

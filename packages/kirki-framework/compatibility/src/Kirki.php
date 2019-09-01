@@ -174,6 +174,8 @@ class Kirki extends Init {
 			return;
 		}
 
+		$args = self::migrate_css_vars( $args );
+
 		$str       = str_replace( [ '-', '_' ], ' ', $args['type'] );
 		$classname = '\Kirki\Field\\' . str_replace( ' ', '_', ucwords( $str ) );
 
@@ -218,5 +220,45 @@ class Kirki extends Init {
 			return '';
 		}
 		return self::$config[ $id ][ $param ];
+	}
+
+	/**
+	 * Migrate css-variables to output argument.
+	 *
+	 * This only exists for backwards-compatibility with the deprecated css-vars argument.
+	 *
+	 * @static
+	 * @since 4.0
+	 * @param array $args The field arguments.
+	 * @return array
+	 */
+	private static function migrate_css_vars( $args ) {
+		// Convert css_vars to output args.
+		if ( isset( $args['css_vars'] ) ) {
+
+			if ( 'postMessage' === $args['transport'] ) {
+				$args['transport'] = 'auto';
+			}
+
+			// Convert to properly-formatted arrays.
+			$args['css_vars'] = (array) $args['css_vars'];
+			if ( isset( $args['css_vars'][0] ) && is_string( $args['css_vars'][0] ) ) {
+				$args['css_vars'] = [ $args['css_vars'] ];
+			}
+			foreach ( $args['css_vars'] as $css_var ) {
+				$output = [
+					'element'  => ':root',
+					'property' => $css_var[0]
+				];
+				if ( isset( $css_var[1] ) ) {
+					$output['value_pattern'] = $css_var[1];
+				}
+				if ( isset( $css_var[2] ) ) {
+					$output['choice'] = $css_var[2];
+				}
+				$args['output'][] = $output;
+			}
+		}
+		return $args;
 	}
 }

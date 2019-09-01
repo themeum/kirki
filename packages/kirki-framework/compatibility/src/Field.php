@@ -296,6 +296,9 @@ class Field {
 		$this->args = $args;
 
 		$this->set_field();
+
+		// Instantiate the \Kirki\Field to apply hooks.
+		new \Kirki\Field\None( $this->args );
 	}
 
 	/**
