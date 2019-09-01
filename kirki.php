@@ -5,7 +5,7 @@
  * Description:   The Ultimate WordPress Customizer Framework
  * Author:        Ari Stathopoulos (@aristath)
  * Author URI:    https://aristath.github.io
- * Version:       3.0.44
+ * Version:       3.0.45
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  5.3
@@ -47,7 +47,7 @@ require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreF
 
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '3.0.44' );
+	define( 'KIRKI_VERSION', '3.0.45' );
 }
 
 if ( ! function_exists( 'Kirki' ) ) {
