@@ -103,10 +103,6 @@ add_filter( 'kirki_fonts_standard_fonts', function( $args ) {
 	return apply_filters( 'kirki/fonts/standard_fonts', $args );
 }, 99 );
 
-add_filter( 'kirki_fonts_backup_fonts', function( $args ) {
-	return apply_filters( 'kirki/fonts/backup_fonts', $args );
-}, 99 );
-
 add_filter( 'kirki_fonts_google_fonts', function( $args ) {
 	return apply_filters( 'kirki/fonts/google_fonts', $args );
 }, 99 );

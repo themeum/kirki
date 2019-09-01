@@ -47,7 +47,10 @@ class Kirki_Values {
 
 				// Combine font-family and font-backup.
 				if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) ) {
-					$value['font-family'] .= ', ' . $value['font-backup'];
+					$backup = trim( $value['font-backup'] );
+					if ( ! empty( $backup ) ) {
+						$value['font-family'] .= ', ' . $backup;
+					}
 					unset( $value['font-backup'] );
 				}
 			}

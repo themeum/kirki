@@ -1,3 +1,19 @@
+## 3.0.45 - 2019-09-01
+
+### Fixed
+* Compatibility with the latest Gutenberg plugin versions.
+* Styles for normal font-weights in typography controls (`regular` to `400` conversion).
+
+### Changed
+* Updated Google-Fonts lists.
+
+### Removed
+* Backup fonts are no longer needed since google-fonts are no longer loaded from the google CDN.
+
+### Deprecated
+* `kirki_fonts_backup_fonts` filter.
+* `Kirki_Fonts::get_backup_fonts()` method.
+
 ## 3.0.44
 
 Jun.25 2019, dev time: 30m

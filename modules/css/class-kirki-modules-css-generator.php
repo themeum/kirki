@@ -85,15 +85,6 @@ final class Kirki_Modules_CSS_Generator {
 	public static $google_fonts = null;
 
 	/**
-	 * Standard Fonts
-	 *
-	 * @static
-	 * @access public
-	 * @var array
-	 */
-	public static $backup_fonts = null;
-
-	/**
 	 * CSS
 	 *
 	 * @static
@@ -117,9 +108,6 @@ final class Kirki_Modules_CSS_Generator {
 	private function __construct() {
 		if ( is_null( self::$google_fonts ) ) {
 			self::$google_fonts = Kirki_Fonts::get_google_fonts();
-		}
-		if ( is_null( self::$backup_fonts ) ) {
-			self::$backup_fonts = Kirki_Fonts::get_backup_fonts();
 		}
 	}
 

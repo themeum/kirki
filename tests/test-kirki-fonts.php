@@ -25,14 +25,4 @@ class Test_Kirki_Fonts extends WP_UnitTestCase {
 	public function test_instance() {
 		$this->assertTrue( null != Kirki_Fonts::get_instance() );
 	}
-
-	public function test_get_backup_fonts() {
-		$this->assertNotEmpty( Kirki_Fonts::get_backup_fonts() );
-		$this->assertTrue( 5 == count( Kirki_Fonts::get_backup_fonts() ) );
-		$this->assertArrayHasKey( 'serif', Kirki_Fonts::get_backup_fonts() );
-		$this->assertArrayHasKey( 'sans-serif', Kirki_Fonts::get_backup_fonts() );
-		$this->assertArrayHasKey( 'display', Kirki_Fonts::get_backup_fonts() );
-		$this->assertArrayHasKey( 'handwriting', Kirki_Fonts::get_backup_fonts() );
-		$this->assertArrayHasKey( 'monospace', Kirki_Fonts::get_backup_fonts() );
-	}
 }
