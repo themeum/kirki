@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f42c66fc623e853d3a048ea753282eeb",
+    "content-hash": "d468834dc551683c5e97fd81c3390013",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -796,6 +796,54 @@
                 "wordpress"
             ],
             "time": "2019-07-06T20:31:02+00:00"
+        },
+        {
+            "name": "kirki-framework/control-react-color",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-react-color.git",
+                "reference": "d473fbed72a02ff3bd414b648416dc89558204c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/d473fbed72a02ff3bd414b648416dc89558204c6",
+                "reference": "d473fbed72a02ff3bd414b648416dc89558204c6",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "dev-master",
+                "kirki-framework/field": "dev-master",
+                "kirki-framework/url-getter": "dev-master",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Color control for the Kirki Customizer framework using react-color.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "time": "2019-09-01T12:17:21+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1689,12 +1737,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "f354bfd9b471b0c1e5b4e35533bab69db30cd89b"
+                "reference": "d02c08cb383e708274adeafc8c3a64a0d1abe7ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/f354bfd9b471b0c1e5b4e35533bab69db30cd89b",
-                "reference": "f354bfd9b471b0c1e5b4e35533bab69db30cd89b",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/d02c08cb383e708274adeafc8c3a64a0d1abe7ca",
+                "reference": "d02c08cb383e708274adeafc8c3a64a0d1abe7ca",
                 "shasum": ""
             },
             "require": {
@@ -1715,9 +1763,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "postMessage Module for the Kirki WordPress plugin.",
@@ -1727,7 +1775,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-29T03:01:08+00:00"
+            "time": "2019-09-01T12:11:09+00:00"
         },
         {
             "name": "kirki-framework/module-preset",
@@ -5216,6 +5264,7 @@
         "kirki-framework/control-checkbox": 20,
         "kirki-framework/control-code": 20,
         "kirki-framework/control-color": 20,
+        "kirki-framework/control-react-color": 20,
         "kirki-framework/control-color-palette": 20,
         "kirki-framework/control-cropped-image": 20,
         "kirki-framework/control-custom": 20,

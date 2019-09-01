@@ -1,0 +1,28 @@
+{
+    "name": "kirki-framework/control-react-color",
+    "type": "library",
+    "description": "Color control for the Kirki Customizer framework using react-color.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/control-base": "dev-master",
+        "kirki-framework/field": "dev-master",
+        "kirki-framework/url-getter": "dev-master"
+    },
+    "autoload": {
+		"psr-4": {
+			"Kirki\\Control\\": "src/Control",
+			"Kirki\\Field\\": "src/Field"
+        }
+    }
+}

@@ -65,8 +65,9 @@ class Postmessage {
 			if ( empty( $args['js_vars'] ) && ! empty( $args['output'] ) ) {
 
 				foreach ( $args['output'] as $output ) {
-					$output['function'] = isset( $output['function'] ) ? $output['function'] : 'style';
+					$output['element']  = isset( $output['element'] ) ? $output['element'] : ':root';
 					$output['element']  = is_array( $output['element'] ) ? implode( ',', $output['element'] ) : $output['element'];
+					$output['function'] = isset( $output['function'] ) ? $output['function'] : 'style';
 					$js_vars[]          = $output;
 				}
 			}
