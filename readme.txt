@@ -4,7 +4,7 @@ Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 5.2
-Stable tag: 3.0.44
+Stable tag: 3.0.45
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -75,10 +75,20 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.0.34 =
+= 3.0.45 - 2019-09-01 =
 
-Jun.25 2019, dev time: 30m
+### Fixed
+* Compatibility with the latest Gutenberg plugin versions.
+* Styles for normal font-weights in typography controls (`regular` to `400` conversion).
 
-* Fix: Google fonts getting constantly downloaded when `WP_DEBUG` was set to `true`
+### Changed
+* Updated Google-Fonts lists.
+
+### Removed
+* Backup fonts are no longer needed since google-fonts are no longer loaded from the google CDN.
+
+### Deprecated
+* `kirki_fonts_backup_fonts` filter.
+* `Kirki_Fonts::get_backup_fonts()` method.
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).
