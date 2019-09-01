@@ -240,56 +240,6 @@
         ]
     },
     {
-        "name": "kirki-framework/control-color-palette",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kirki-framework/control-color-palette.git",
-            "reference": "4075ca1c08de2872ffa666db8ba6206525f6df4d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/4075ca1c08de2872ffa666db8ba6206525f6df4d",
-            "reference": "4075ca1c08de2872ffa666db8ba6206525f6df4d",
-            "shasum": ""
-        },
-        "require": {
-            "kirki-framework/control-base": "*",
-            "kirki-framework/url-getter": "*",
-            "php": ">=5.6"
-        },
-        "time": "2019-07-14T12:55:42+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Kirki\\Util\\": "src/Util",
-                "Kirki\\Control\\": "src/Control",
-                "Kirki\\Field\\": "src/Field"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ari Stathopoulos",
-                "role": "Developer",
-                "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
-            }
-        ],
-        "description": "Color Palette control for the Kirki Customizer framework.",
-        "homepage": "https://aristath.github.io/kirki",
-        "keywords": [
-            "customizer",
-            "framework",
-            "wordpress"
-        ]
-    },
-    {
         "name": "kirki-framework/control-cropped-image",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1257,6 +1207,54 @@
             }
         ],
         "description": "Background field for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/field-color-palette",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/field-color-palette.git",
+            "reference": "706909d21c4c579096fd67b8397a99bca91f43e5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/field-color-palette/zipball/706909d21c4c579096fd67b8397a99bca91f43e5",
+            "reference": "706909d21c4c579096fd67b8397a99bca91f43e5",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-react-color": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-09-01T12:44:54+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Util\\": "src/Util",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Color Palette field for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

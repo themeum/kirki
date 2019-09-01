@@ -1,4 +1,4 @@
-# control-color-palette
+# field-color-palette
 
 ## Installation
 
@@ -29,7 +29,7 @@ add_action( 'customize_register', function( $wp_customize ) {
 
 /**
  * Add Customizer settings & controls.
- * 
+ *
  * @since 1.0
  * @param WP_Customize_Manager $wp_customize The WP_Customize_Manager object.
  * @return void

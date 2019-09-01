@@ -1,0 +1,24 @@
+{
+  "name": "kirki-framework/field-color-palette",
+  "type": "library",
+  "description": "Color Palette field for the Kirki Customizer framework.",
+  "keywords": ["wordpress", "customizer", "framework"],
+  "homepage": "https://aristath.github.io/kirki",
+  "license": "MIT",
+  "authors": [{
+    "name": "Ari Stathopoulos",
+    "email": "aristath@gmail.com",
+    "homepage": "http://aristath.github.io",
+    "role": "Developer"
+  }],
+  "require": {
+    "php": ">=5.6",
+    "kirki-framework/control-react-color": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kirki\\Util\\": "src/Util",
+      "Kirki\\Field\\": "src/Field"
+    }
+  }
+}
