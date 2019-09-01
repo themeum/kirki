@@ -522,12 +522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-editor.git",
-                "reference": "d1437a0a398e9f65829e83c9fe9230e50f9238fb"
+                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/d1437a0a398e9f65829e83c9fe9230e50f9238fb",
-                "reference": "d1437a0a398e9f65829e83c9fe9230e50f9238fb",
+                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
+                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
                 "shasum": ""
             },
             "require": {
@@ -549,9 +549,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Editor control for the Kirki Customizer framework.",
@@ -561,7 +561,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-17T07:00:47+00:00"
+            "time": "2019-09-01T07:19:49+00:00"
         },
         {
             "name": "kirki-framework/control-generic",
@@ -1317,12 +1317,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "07e5db006636568f9c7c2f09823ab48245169c39"
+                "reference": "e8d84b3e6dec94996416e3bf4c196417f67f13a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/07e5db006636568f9c7c2f09823ab48245169c39",
-                "reference": "07e5db006636568f9c7c2f09823ab48245169c39",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/e8d84b3e6dec94996416e3bf4c196417f67f13a4",
+                "reference": "e8d84b3e6dec94996416e3bf4c196417f67f13a4",
                 "shasum": ""
             },
             "require": {
@@ -1350,9 +1350,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Typography field for the Kirki Customizer framework.",
@@ -1362,7 +1362,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-17T14:38:23+00:00"
+            "time": "2019-09-01T07:15:32+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1460,12 +1460,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "32f72f8cac49e235fd4f2a138621013454df8984"
+                "reference": "d1868f1c5676f7690930b73ed3f340afb6b46f86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/32f72f8cac49e235fd4f2a138621013454df8984",
-                "reference": "32f72f8cac49e235fd4f2a138621013454df8984",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/d1868f1c5676f7690930b73ed3f340afb6b46f86",
+                "reference": "d1868f1c5676f7690930b73ed3f340afb6b46f86",
                 "shasum": ""
             },
             "require": {
@@ -1485,9 +1485,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "CSS Module for the Kirki WordPress plugin.",
@@ -1497,7 +1497,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-29T02:47:18+00:00"
+            "time": "2019-09-01T07:15:55+00:00"
         },
         {
             "name": "kirki-framework/module-editor-styles",
@@ -1689,12 +1689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "3aca7ddd32ff968015c317754423d494b07c1ec6"
+                "reference": "f354bfd9b471b0c1e5b4e35533bab69db30cd89b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/3aca7ddd32ff968015c317754423d494b07c1ec6",
-                "reference": "3aca7ddd32ff968015c317754423d494b07c1ec6",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/f354bfd9b471b0c1e5b4e35533bab69db30cd89b",
+                "reference": "f354bfd9b471b0c1e5b4e35533bab69db30cd89b",
                 "shasum": ""
             },
             "require": {
@@ -1727,7 +1727,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-18T09:47:05+00:00"
+            "time": "2019-08-29T03:01:08+00:00"
         },
         {
             "name": "kirki-framework/module-preset",
@@ -1962,12 +1962,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e"
+                "reference": "693fbdc568037a37fa34284855137c0ddd552dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e",
-                "reference": "19bcbdaa09a352f3ea26a5cb32cfdf07c594e86e",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/693fbdc568037a37fa34284855137c0ddd552dc9",
+                "reference": "693fbdc568037a37fa34284855137c0ddd552dc9",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2000,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-24T11:42:11+00:00"
+            "time": "2019-08-29T03:00:44+00:00"
         },
         {
             "name": "kirki-framework/url-getter",
@@ -2755,18 +2755,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -2891,13 +2891,13 @@
             "authors": [
                 {
                     "name": "Wim Godden",
-                    "role": "lead",
-                    "homepage": "https://github.com/wimg"
+                    "homepage": "https://github.com/wimg",
+                    "role": "lead"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "role": "lead",
-                    "homepage": "https://github.com/jrfnl"
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
                 },
                 {
                     "name": "Contributors",
@@ -3280,8 +3280,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",

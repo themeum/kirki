@@ -23,7 +23,7 @@ var kirkiPostMessage = {
 		 * @returns {void}
 		 */
 		add: function( id ) {
-			id = id.replace( '[', '-' ).replace( ']', '' );
+			id = id.replace(/[^\w\s]/gi, '-');
 			if ( null === document.getElementById( 'kirki-postmessage-' + id ) || 'undefined' === typeof document.getElementById( 'kirki-postmessage-' + id ) ) {
 				jQuery( 'head' ).append( '<style id="kirki-postmessage-' + id + '"></style>' );
 			}

@@ -15,7 +15,9 @@ wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicCon
 		};
 
 		// Overwrite the default paramaters if choices is defined.
-		wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
+		if ( wp.editor && wp.editor.initialize ) {
+			wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
+		}
 
 		editor = tinyMCE.get( id );
 
