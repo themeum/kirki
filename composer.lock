@@ -1598,12 +1598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "f95f7469d2cb58917e290f1b78fc4465c5f0ca87"
+                "reference": "e11e014c78d09867413c89d5594097269d036a74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/f95f7469d2cb58917e290f1b78fc4465c5f0ca87",
-                "reference": "f95f7469d2cb58917e290f1b78fc4465c5f0ca87",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/e11e014c78d09867413c89d5594097269d036a74",
+                "reference": "e11e014c78d09867413c89d5594097269d036a74",
                 "shasum": ""
             },
             "require": {
@@ -1624,9 +1624,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Field-Dependencies Module for the Kirki WordPress plugin.",
@@ -1636,7 +1636,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-17T06:57:59+00:00"
+            "time": "2019-09-07T19:43:34+00:00"
         },
         {
             "name": "kirki-framework/module-loading",
@@ -2096,12 +2096,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/util.git",
-                "reference": "bbcfde48e335ecdeaaf51f269e380a0fed2535b1"
+                "reference": "c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/util/zipball/bbcfde48e335ecdeaaf51f269e380a0fed2535b1",
-                "reference": "bbcfde48e335ecdeaaf51f269e380a0fed2535b1",
+                "url": "https://api.github.com/repos/kirki-framework/util/zipball/c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae",
+                "reference": "c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae",
                 "shasum": ""
             },
             "require": {
@@ -2120,9 +2120,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "The Kirki WordPress plugin core classes.",
@@ -2132,7 +2132,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-18T08:55:35+00:00"
+            "time": "2019-09-07T19:43:17+00:00"
         }
     ],
     "packages-dev": [

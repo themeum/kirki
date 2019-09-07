@@ -385,6 +385,9 @@ class Helper {
 			}
 			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
 		}
+		if ( 'does not contain' === $operator || 'not in' === $operator ) {
+			return ! self::compare_values( $value1, $value2, $operator );
+		}
 		return $value1 == $value2; // phpcs:ignore WordPress.PHP.StrictComparisons
 	}
 }
