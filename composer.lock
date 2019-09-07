@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b355d58beb27d91771fef8ec039e08ac",
+    "content-hash": "8529200b1f1ffcada8ceb2f780c6242a",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -81,9 +81,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "The Base Class for other Kirki Customizer Controls.",
@@ -128,9 +128,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Checkbox control for the Kirki Customizer framework.",
@@ -174,9 +174,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Code control for the Kirki Customizer framework.",
@@ -222,9 +222,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Color control for the Kirki Customizer framework.",
@@ -312,9 +312,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Custom control for the Kirki Customizer framework.",
@@ -407,9 +407,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Date control for the Kirki Customizer framework.",
@@ -454,9 +454,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Dimension control for the Kirki Customizer framework.",
@@ -548,9 +548,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Generic control for the Kirki Customizer framework.",
@@ -595,9 +595,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Image control for the Kirki Customizer framework.",
@@ -642,9 +642,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Multicheck control for the Kirki Customizer framework.",
@@ -689,9 +689,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Palette control for the Kirki Customizer framework.",
@@ -735,9 +735,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Radio controls for the Kirki Customizer framework.",
@@ -751,16 +751,16 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "d473fbed72a02ff3bd414b648416dc89558204c6"
+                "reference": "f7522490a5d212fc446ca15dfabf2d19b011b041"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/d473fbed72a02ff3bd414b648416dc89558204c6",
-                "reference": "d473fbed72a02ff3bd414b648416dc89558204c6",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/f7522490a5d212fc446ca15dfabf2d19b011b041",
+                "reference": "f7522490a5d212fc446ca15dfabf2d19b011b041",
                 "shasum": ""
             },
             "require": {
@@ -795,7 +795,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-01T12:17:21+00:00"
+            "time": "2019-09-07T19:14:53+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -836,9 +836,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Repeater control for the Kirki Customizer framework.",
@@ -883,9 +883,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Select control for the Kirki Customizer framework.",
@@ -930,9 +930,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Slider control for the Kirki Customizer framework.",
@@ -977,9 +977,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Sortable control for the Kirki Customizer framework.",
@@ -1023,9 +1023,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Upload control for the Kirki Customizer framework.",
@@ -1486,9 +1486,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Allows loading a 2nd textdomain inside a theme.",
@@ -2078,9 +2078,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Helper component to get the URL of a file in WordPress.",
@@ -2343,9 +2343,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
-                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl"
+                    "homepage": "http://www.frenck.nl",
+                    "role": "Developer / IT Manager"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -2903,16 +2903,16 @@
         },
         {
             "name": "phpcompatibility/php-compatibility",
-            "version": "9.3.0",
+            "version": "9.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "06cc8d2c2ed62a70f52963dbdf5eaa1ec0fe34c5"
+                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/06cc8d2c2ed62a70f52963dbdf5eaa1ec0fe34c5",
-                "reference": "06cc8d2c2ed62a70f52963dbdf5eaa1ec0fe34c5",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/9999344e47e7af6b00e1a898eacc4e4368fb7196",
+                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196",
                 "shasum": ""
             },
             "require": {
@@ -2957,7 +2957,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-08-28T15:29:06+00:00"
+            "time": "2019-09-05T18:36:49+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
@@ -3377,8 +3377,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3419,8 +3419,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -3468,8 +3468,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -3598,8 +3598,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -4361,8 +4361,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -4404,8 +4404,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5184,12 +5184,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WPTRT/WPThemeReview.git",
-                "reference": "9247c7616e6c54a6e96885377689948b1c18e195"
+                "reference": "5aea683c1c7a19ef1af10ac72268e10e8fd864d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/9247c7616e6c54a6e96885377689948b1c18e195",
-                "reference": "9247c7616e6c54a6e96885377689948b1c18e195",
+                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/5aea683c1c7a19ef1af10ac72268e10e8fd864d6",
+                "reference": "5aea683c1c7a19ef1af10ac72268e10e8fd864d6",
                 "shasum": ""
             },
             "require": {
@@ -5215,23 +5215,23 @@
             "authors": [
                 {
                     "name": "Theme Review Team",
-                    "role": "Strategy and rule setting",
-                    "homepage": "https://make.wordpress.org/themes/handbook/"
+                    "homepage": "https://make.wordpress.org/themes/handbook/",
+                    "role": "Strategy and rule setting"
                 },
                 {
                     "name": "Ulrich Pogson",
-                    "role": "Lead developer",
-                    "homepage": "https://github.com/grappler"
+                    "homepage": "https://github.com/grappler",
+                    "role": "Lead developer"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "role": "Lead developer",
-                    "homepage": "https://github.com/jrfnl"
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "Lead developer"
                 },
                 {
                     "name": "Denis Žoljom",
-                    "role": "Plugin integration lead",
-                    "homepage": "https://github.com/dingo-d"
+                    "homepage": "https://github.com/dingo-d",
+                    "role": "Plugin integration lead"
                 },
                 {
                     "name": "Contributors",
@@ -5246,7 +5246,7 @@
                 "themes",
                 "wordpress"
             ],
-            "time": "2019-08-13T13:23:46+00:00"
+            "time": "2019-09-05T07:19:21+00:00"
         }
     ],
     "aliases": [],
@@ -5262,7 +5262,6 @@
         "kirki-framework/control-checkbox": 20,
         "kirki-framework/control-code": 20,
         "kirki-framework/control-color": 20,
-        "kirki-framework/control-react-color": 20,
         "kirki-framework/control-cropped-image": 20,
         "kirki-framework/control-custom": 20,
         "kirki-framework/control-dashicons": 20,
