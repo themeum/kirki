@@ -77,7 +77,7 @@ class Checkbox_Switch extends Base {
 	protected function content_template() {
 		?>
 
-		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
+		<div class="switch">
 			<span class="customize-control-title">
 				{{{ data.label }}}
 			</span>

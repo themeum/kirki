@@ -3,7 +3,16 @@ li {
     margin-bottom: 8px;
 
     &[kirki-typography-subcontrol-type="text-decoration"],
-    &[kirki-typography-subcontrol-type="font-style"],
+    &[kirki-typography-subcontrol-type="font-style"] {
+      .customize-control-title {
+        float: left;
+      }
+
+      .buttonset {
+        float: right;
+      }
+    }
+
     &[kirki-typography-subcontrol-type="font-size"] label,
     &[kirki-typography-subcontrol-type="line-height"] label,
     &[kirki-typography-subcontrol-type="letter-spacing"] label,
@@ -13,7 +22,7 @@ li {
     &[kirki-typography-subcontrol-type="margin-bottom"] label,
     &[kirki-typography-subcontrol-type="text-transform"] label,
     &[kirki-typography-subcontrol-type="text-align"] label {
-      display: flex !important;
+      display: flex;
       justify-content: space-between;
       align-items: center;
 

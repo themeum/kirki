@@ -213,7 +213,7 @@ var kirkiDependencies = {
 			}
 		}
 		if ( 'does not contain' === operator || 'not in' === operator ) {
-			return ( ! this.evaluate( value1, value2, 'contains', choice );
+			return ( ! this.evaluate( value1, value2, 'contains', choice ) );
 		}
 
 		return value1 == value2;

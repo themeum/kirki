@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "3398c179b099a493456ee6ed19c2e0d1bf23bef1"
+            "reference": "29673e1b1769c56964db376f458f65ba210a08de"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/3398c179b099a493456ee6ed19c2e0d1bf23bef1",
-            "reference": "3398c179b099a493456ee6ed19c2e0d1bf23bef1",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/29673e1b1769c56964db376f458f65ba210a08de",
+            "reference": "29673e1b1769c56964db376f458f65ba210a08de",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-09-01T13:44:24+00:00",
+        "time": "2019-09-08T15:46:13+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -99,12 +99,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-checkbox.git",
-            "reference": "69fa71ac2bef0a233281fc28b982518483a1d334"
+            "reference": "495a4b772414f4d1556c4a74e33d3eb9ce30376b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/69fa71ac2bef0a233281fc28b982518483a1d334",
-            "reference": "69fa71ac2bef0a233281fc28b982518483a1d334",
+            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/495a4b772414f4d1556c4a74e33d3eb9ce30376b",
+            "reference": "495a4b772414f4d1556c4a74e33d3eb9ce30376b",
             "shasum": ""
         },
         "require": {
@@ -112,7 +112,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-06T20:19:34+00:00",
+        "time": "2019-09-08T13:50:16+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1415,12 +1415,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-typography.git",
-            "reference": "e8d84b3e6dec94996416e3bf4c196417f67f13a4"
+            "reference": "9dd40901346156915209c06220fb3a0878ece9d3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/e8d84b3e6dec94996416e3bf4c196417f67f13a4",
-            "reference": "e8d84b3e6dec94996416e3bf4c196417f67f13a4",
+            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/9dd40901346156915209c06220fb3a0878ece9d3",
+            "reference": "9dd40901346156915209c06220fb3a0878ece9d3",
             "shasum": ""
         },
         "require": {
@@ -1434,7 +1434,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-01T07:15:32+00:00",
+        "time": "2019-09-08T14:37:31+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1660,12 +1660,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-            "reference": "e11e014c78d09867413c89d5594097269d036a74"
+            "reference": "1067f22e293bffa532a2dc088dfac85d82199a89"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/e11e014c78d09867413c89d5594097269d036a74",
-            "reference": "e11e014c78d09867413c89d5594097269d036a74",
+            "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/1067f22e293bffa532a2dc088dfac85d82199a89",
+            "reference": "1067f22e293bffa532a2dc088dfac85d82199a89",
             "shasum": ""
         },
         "require": {
@@ -1673,7 +1673,7 @@
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-07T19:43:34+00:00",
+        "time": "2019-09-07T20:10:02+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
