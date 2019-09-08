@@ -24,7 +24,7 @@
     "kirki-framework/l10n": "dev-master",
     "kirki-framework/field": "dev-master",
     "kirki-framework/googlefonts": "dev-master",
-    "kirki-framework/url-getter": "dev-master",
+    "kirki-framework/url-getter": "*",
     "kirki-framework/control-base": "dev-master",
     "kirki-framework/control-checkbox": "dev-master",
     "kirki-framework/control-code": "dev-master",
