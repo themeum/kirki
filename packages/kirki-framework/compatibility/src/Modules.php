@@ -61,7 +61,6 @@ class Modules {
 			'kirki_modules',
 			[
 				'css'                => '\Kirki\Module\CSS',
-				'icons'              => '\Kirki\Module\Section_Icons',
 				'loading'            => '\Kirki\Module\Loading',
 				'tooltips'           => '\Kirki\Module\Tooltips',
 				'postMessage'        => '\Kirki\Module\Postmessage',

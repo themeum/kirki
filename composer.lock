@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89dd1fff2c7014d824229bdaa94ce520",
+    "content-hash": "68eb9efa59a704ada224640c3aa0e4b4",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "29673e1b1769c56964db376f458f65ba210a08de"
+                "reference": "e09a3679d42fabeb91d6ac9355b8b858abb477b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/29673e1b1769c56964db376f458f65ba210a08de",
-                "reference": "29673e1b1769c56964db376f458f65ba210a08de",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/e09a3679d42fabeb91d6ac9355b8b858abb477b2",
+                "reference": "e09a3679d42fabeb91d6ac9355b8b858abb477b2",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-08T15:46:13+00:00"
+            "time": "2019-09-22T12:33:13+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -1820,52 +1820,6 @@
                 "wordpress"
             ],
             "time": "2019-07-14T12:44:17+00:00"
-        },
-        {
-            "name": "kirki-framework/module-section-icons",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/module-section-icons.git",
-                "reference": "b9d45cacfc2528dbe291b19b7f783810508ae655"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/b9d45cacfc2528dbe291b19b7f783810508ae655",
-                "reference": "b9d45cacfc2528dbe291b19b7f783810508ae655",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/url-getter": "*",
-                "kirki-framework/util": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Module\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "role": "Developer",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
-                }
-            ],
-            "description": "Section-Icons Module for the Kirki WordPress plugin.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "time": "2019-08-17T06:57:36+00:00"
         },
         {
             "name": "kirki-framework/module-sections",
@@ -5290,7 +5244,6 @@
         "kirki-framework/module-postmessage": 20,
         "kirki-framework/module-preset": 20,
         "kirki-framework/module-sections": 20,
-        "kirki-framework/module-section-icons": 20,
         "kirki-framework/module-selective-refresh": 20,
         "kirki-framework/module-webfonts": 20,
         "codacy/coverage": 20,
