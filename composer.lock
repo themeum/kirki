@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0562e7cf6a312d972c4a915459cb4254",
+    "content-hash": "99f4476ea036274239b0f584727aa45e",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1776,16 +1776,16 @@
         },
         {
             "name": "kirki-framework/module-sections",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-sections.git",
-                "reference": "4390fb4a8cb36e2de1a0bdc5a7d0f38b57803823"
+                "reference": "1726ccf28ce24e1084e5f78b5342b84f1110abc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/4390fb4a8cb36e2de1a0bdc5a7d0f38b57803823",
-                "reference": "4390fb4a8cb36e2de1a0bdc5a7d0f38b57803823",
+                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/1726ccf28ce24e1084e5f78b5342b84f1110abc7",
+                "reference": "1726ccf28ce24e1084e5f78b5342b84f1110abc7",
                 "shasum": ""
             },
             "require": {
@@ -1805,9 +1805,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Sections API & Custom Section Types for the Kirki WordPress Plugin.",
@@ -1817,7 +1817,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-17T06:57:00+00:00"
+            "time": "2019-09-22T16:09:41+00:00"
         },
         {
             "name": "kirki-framework/module-selective-refresh",
@@ -5190,7 +5190,6 @@
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-panels": 20,
-        "kirki-framework/module-sections": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

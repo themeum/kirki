@@ -2,10 +2,10 @@
 /**
  * Nested section.
  *
- * @package    kirki-framework/module-sections
- * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since      1.0
+ * @package kirki-framework/module-sections
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Section_Types;
@@ -19,7 +19,7 @@ class Nested extends \WP_Customize_Section {
 	 * The parent section.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $section;
@@ -28,7 +28,7 @@ class Nested extends \WP_Customize_Section {
 	 * The section type.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $type = 'kirki-nested';
@@ -37,7 +37,7 @@ class Nested extends \WP_Customize_Section {
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {

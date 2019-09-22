@@ -3,10 +3,10 @@
  * The default section.
  * Inspired from https://github.com/justintadlock/trt-customizer-pro
  *
- * @package    kirki-framework/module-sections
- * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since      1.0
+ * @package kirki-framework/module-sections
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Section_Types;
@@ -20,7 +20,7 @@ class Link extends \WP_Customize_Section {
 	 * The section type.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $type = 'kirki-link';
@@ -29,7 +29,7 @@ class Link extends \WP_Customize_Section {
 	 * Button Text
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $button_text = '';
@@ -38,7 +38,7 @@ class Link extends \WP_Customize_Section {
 	 * Button URL.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $button_url = '';
@@ -47,7 +47,7 @@ class Link extends \WP_Customize_Section {
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
@@ -63,7 +63,7 @@ class Link extends \WP_Customize_Section {
 	 * Outputs the Underscore.js template.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return void
 	 */
 	protected function render_template() {

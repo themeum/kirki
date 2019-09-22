@@ -2,10 +2,10 @@
 /**
  * Creates a new Section.
  *
- * @package    kirki-framework/module-sections
- * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since      1.0
+ * @package kirki-framework/module-sections
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki;
@@ -19,7 +19,7 @@ class Section {
 	 * The section ID.
 	 *
 	 * @access protected
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	protected $id;
@@ -28,7 +28,7 @@ class Section {
 	 * The section arguments.
 	 *
 	 * @access protected
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $args;
@@ -50,7 +50,7 @@ class Section {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $id   The section ID.
 	 * @param array  $args The section args.
 	 */
@@ -73,7 +73,7 @@ class Section {
 	 * Register section types.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param object $wp_customize The customizer object.
 	 * @return void
 	 */
@@ -87,7 +87,7 @@ class Section {
 	 * Add the section using the Customizer API.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param object $wp_customize The customizer object.
 	 */
 	public function add_section( $wp_customize ) {
@@ -133,7 +133,7 @@ class Section {
 	 * Removes the section.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function remove() {
@@ -144,18 +144,18 @@ class Section {
 	 * Add the section using the Customizer API.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param object $wp_customize The customizer object.
 	 */
 	public function remove_section( $wp_customize ) {
 		$wp_customize->remove_section( $this->id );
 	}
-	
+
 	/**
 	 * Enqueues any necessary scripts and styles.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function enqueue_scrips() {
 		wp_enqueue_style( 'kirki-sections', URL::get_from_path( __DIR__ . '/styles.css' ), [], '1.0' );
@@ -167,7 +167,7 @@ class Section {
 	 * These are by default hidden, we need to expose them.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function outer_sections_css() {
