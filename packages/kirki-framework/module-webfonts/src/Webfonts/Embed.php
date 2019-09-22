@@ -2,12 +2,11 @@
 /**
  * Adds the Webfont Loader to load fonts asyncronously.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module\Webfonts;
@@ -23,7 +22,7 @@ final class Embed {
 	 * The config ID.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	protected $config_id;
@@ -32,7 +31,7 @@ final class Embed {
 	 * The \Kirki\Module\Webfonts object.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var object
 	 */
 	protected $webfonts;
@@ -41,7 +40,7 @@ final class Embed {
 	 * The \Kirki\Module\Webfonts\Google object.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var object
 	 */
 	protected $googlefonts;
@@ -50,7 +49,7 @@ final class Embed {
 	 * Fonts to load.
 	 *
 	 * @access protected
-	 * @since 3.0.26
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $fonts_to_load = [];
@@ -59,7 +58,7 @@ final class Embed {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 3.0
+	 * @since 1.0.0
 	 * @param string $config_id   The config-ID.
 	 * @param object $webfonts    The \Kirki\Module\Webfonts object.
 	 * @param object $googlefonts The \Kirki\Module\Webfonts\Google object.
@@ -78,7 +77,7 @@ final class Embed {
 	 * Init.
 	 *
 	 * @access public
-	 * @since 3.0.36
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function init() {
@@ -110,7 +109,7 @@ final class Embed {
 	 * Webfont Loader for Google Fonts.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function populate_fonts() {
 
@@ -141,7 +140,7 @@ final class Embed {
 	 * Webfont Loader script for Google Fonts.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function the_css() {
 		foreach ( $this->fonts_to_load as $font ) {
@@ -231,7 +230,7 @@ final class Embed {
 	 * This addresses any and all GDPR concerns, as well as firewalls that exist in some parts of the world.
 	 *
 	 * @access private
-	 * @since 3.0.36
+	 * @since 1.0.0
 	 * @param string $css The CSS with original URLs.
 	 * @return string     The CSS with local URLs.
 	 */

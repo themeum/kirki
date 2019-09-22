@@ -62,7 +62,7 @@
     "kirki-framework/module-sections": "dev-master",
     "kirki-framework/module-selective-refresh": "dev-master",
     "kirki-framework/module-tooltips": "*",
-    "kirki-framework/module-webfonts": "dev-master"
+    "kirki-framework/module-webfonts": "*"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",

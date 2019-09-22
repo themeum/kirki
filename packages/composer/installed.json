@@ -1987,27 +1987,26 @@
     },
     {
         "name": "kirki-framework/module-webfonts",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v1.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7"
+            "reference": "527327fc97da74ed1651e18c01a711e217fad0b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/f4135a855a18f6d6853364e6061f950feb3d1de7",
-            "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/527327fc97da74ed1651e18c01a711e217fad0b3",
+            "reference": "527327fc97da74ed1651e18c01a711e217fad0b3",
             "shasum": ""
         },
         "require": {
             "kirki-framework/googlefonts": "*",
-            "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-11T15:31:50+00:00",
+        "time": "2019-09-22T12:56:28+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\Module\\": "src/"

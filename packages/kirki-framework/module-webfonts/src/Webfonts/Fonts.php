@@ -2,12 +2,11 @@
 /**
  * A simple object containing properties for fonts.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module\Webfonts;

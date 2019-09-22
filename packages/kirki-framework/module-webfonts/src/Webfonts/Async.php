@@ -2,19 +2,18 @@
 /**
  * Adds the Webfont Loader to load fonts asyncronously.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module\Webfonts;
 
 use Kirki\URL;
 
-/**
+/**3.
  * Manages the way Google Fonts are enqueued.
  */
 final class Async {
@@ -24,7 +23,7 @@ final class Async {
 	 *
 	 * @static
 	 * @access public
-	 * @since 3.0.26
+	 * @since 1.0.0
 	 * @var bool
 	 */
 	public static $load = false;
@@ -33,7 +32,7 @@ final class Async {
 	 * The config ID.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var string
 	 */
 	protected $config_id;
@@ -42,7 +41,7 @@ final class Async {
 	 * The \Kirki\Module\Webfonts object.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var object
 	 */
 	protected $webfonts;
@@ -51,7 +50,7 @@ final class Async {
 	 * The \Kirki\Module\Webfonts\Google object.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var object
 	 */
 	protected $googlefonts;
@@ -60,7 +59,7 @@ final class Async {
 	 * Fonts to load.
 	 *
 	 * @access protected
-	 * @since 3.0.26
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $fonts_to_load = [];
@@ -69,7 +68,7 @@ final class Async {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 3.0
+	 * @since 1.0.0
 	 * @param string $config_id   The config-ID.
 	 * @param object $webfonts    The \Kirki\Module\Webfonts object.
 	 * @param object $googlefonts The \Kirki\Module\Webfonts\Google object.
@@ -114,7 +113,7 @@ final class Async {
 	 * Webfont Loader for Google Fonts.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function webfont_loader() {
 
@@ -150,7 +149,7 @@ final class Async {
 	 * Webfont Loader script for Google Fonts.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function webfont_loader_script() {
 		if ( ! empty( $this->fonts_to_load ) ) {
@@ -166,7 +165,7 @@ final class Async {
 	 * Set the $load property of this object.
 	 *
 	 * @access public
-	 * @since 3.0.35
+	 * @since 1.0.0
 	 * @param bool $load Set to false to disable loading.
 	 * @return void
 	 */

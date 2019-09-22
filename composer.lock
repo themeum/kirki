@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "462169bb209b755c7f3d0aff3a810e23",
+    "content-hash": "53691808da71beefa59dbd5d2287cc18",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1912,21 +1912,20 @@
         },
         {
             "name": "kirki-framework/module-webfonts",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-webfonts.git",
-                "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7"
+                "reference": "527327fc97da74ed1651e18c01a711e217fad0b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/f4135a855a18f6d6853364e6061f950feb3d1de7",
-                "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7",
+                "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/527327fc97da74ed1651e18c01a711e217fad0b3",
+                "reference": "527327fc97da74ed1651e18c01a711e217fad0b3",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/googlefonts": "*",
-                "kirki-framework/util": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -1954,7 +1953,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-11T15:31:50+00:00"
+            "time": "2019-09-22T12:56:28+00:00"
         },
         {
             "name": "kirki-framework/url-getter",
@@ -5198,7 +5197,6 @@
         "kirki-framework/module-preset": 20,
         "kirki-framework/module-sections": 20,
         "kirki-framework/module-selective-refresh": 20,
-        "kirki-framework/module-webfonts": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

@@ -2,12 +2,11 @@
 /**
  * Helper methods for fonts.
  *
- * @package    Kirki
- * @category   Core
- * @author     Ari Stathopoulos (@aristath)
- * @copyright  Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since      3.0.36
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module\Webfonts;
@@ -20,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The Helper object.
  *
- * @since 3.0.28
+ * @since 1.0.0
  */
 final class Helper {
 
@@ -29,7 +28,7 @@ final class Helper {
 	 *
 	 * @static
 	 * @access public
-	 * @since 3.0.36
+	 * @since 1.0.0
 	 * @param string $url  The URL we want to get.
 	 * @param array  $args An array of arguments for the wp_remote_retrieve_body() function.
 	 * @return string      The contents of the remote URL.
@@ -51,7 +50,7 @@ final class Helper {
 	 * Other paths are built based on this.
 	 *
 	 * @static
-	 * @since 3.0.36
+	 * @since 1.0.0
 	 * @access public
 	 * @return string
 	 */
@@ -74,7 +73,7 @@ final class Helper {
 	 * Downloads a font-file and saves it locally.
 	 *
 	 * @access public
-	 * @since 3.0.28
+	 * @since 1.0.0
 	 * @param string $url The URL of the file we want to get.
 	 * @return bool
 	 */
@@ -128,7 +127,7 @@ final class Helper {
 	 * Other urls are built based on this.
 	 *
 	 * @static
-	 * @since 3.0.36
+	 * @since 1.0.0
 	 * @access public
 	 * @return string
 	 */

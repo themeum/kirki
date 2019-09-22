@@ -2,30 +2,23 @@
 /**
  * Handles webfonts.
  *
- * @package     Kirki
- * @category    Modules
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module;
 
-use Kirki\Util\Helper;
 use Kirki\Compatibility\Values;
 use Kirki\Compatibility\Kirki;
 use Kirki\Module\Webfonts\Google;
 use Kirki\Module\Webfonts\Embed;
 use Kirki\Module\Webfonts\Async;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
- * Adds script for tooltips.
+ * The Webfonts object.
  */
 class Webfonts {
 
@@ -33,7 +26,7 @@ class Webfonts {
 	 * The Google object.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @var \Kirki\Module\Webfonts\Google
 	 */
 	protected $fonts_google;
@@ -43,7 +36,7 @@ class Webfonts {
 	 *
 	 * @static
 	 * @access public
-	 * @since 4.0
+	 * @since 1.0.0
 	 * @var array
 	 */
 	public static $fields = [];
@@ -52,7 +45,7 @@ class Webfonts {
 	 * The class constructor
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
         add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
@@ -63,7 +56,7 @@ class Webfonts {
 	 * Run on after_setup_theme.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function run() {
 		$this->fonts_google = Google::get_instance();
@@ -74,7 +67,7 @@ class Webfonts {
 	 * Init other objects depending on the method we'll be using.
 	 *
 	 * @access protected
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	protected function init() {
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
@@ -89,7 +82,7 @@ class Webfonts {
 	 * Get the method we're going to use.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 * @deprecated in 3.0.36.
 	 * @return string
 	 */
@@ -102,7 +95,7 @@ class Webfonts {
 	 * Adds fields to this object so we can loop through them.
 	 *
 	 * @access public
-	 * @since 4.0
+	 * @since 1.0.0
 	 * @param array  $args   The field args.
 	 * @param Object $object The field object.
 	 * @return void
@@ -132,25 +125,7 @@ class Webfonts {
 			if ( isset( $field['kirki_config'] ) && $config_id !== $field['kirki_config'] ) {
 				continue;
 			}
-			if ( true === apply_filters( "kirki_{$config_id}_webfonts_skip_hidden", true ) ) {
-				// Only continue if field dependencies are met.
-				if ( ! empty( $field['required'] ) ) {
-					$valid = true;
 
-					foreach ( $field['required'] as $requirement ) {
-						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
-							if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
-								$valid = false;
-							}
-						}
-					}
-
-					if ( ! $valid ) {
-						continue;
-					}
-				}
-			}
 			$this->fonts_google->generate_google_font( $field );
 		}
 	}

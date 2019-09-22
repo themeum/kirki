@@ -3,12 +3,11 @@
  * Processes typography-related fields
  * and generates the google-font link.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package kirki-framework/module-webfonts
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module\Webfonts;
@@ -69,7 +68,7 @@ final class Google {
 	 * An array of fonts that should be hosted locally instead of served via the google-CDN.
 	 *
 	 * @access protected
-	 * @since 3.0.32
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $hosted_fonts = [];
@@ -233,7 +232,7 @@ final class Google {
 	/**
 	 * Get the standard fonts JSON.
 	 *
-	 * @since 3.0.17
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function get_standardfonts_json() {
