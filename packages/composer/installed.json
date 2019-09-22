@@ -1750,17 +1750,17 @@
     },
     {
         "name": "kirki-framework/module-postmessage",
-        "version": "v1.0",
-        "version_normalized": "1.0.0.0",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-postMessage.git",
-            "reference": "554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3"
+            "reference": "15697b26ce05df057a23da6c4faaec57b4ee6fa5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3",
-            "reference": "554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3",
+            "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/15697b26ce05df057a23da6c4faaec57b4ee6fa5",
+            "reference": "15697b26ce05df057a23da6c4faaec57b4ee6fa5",
             "shasum": ""
         },
         "require": {
@@ -1768,7 +1768,7 @@
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-22T13:35:23+00:00",
+        "time": "2019-09-22T14:19:53+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1798,27 +1798,26 @@
     },
     {
         "name": "kirki-framework/module-preset",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-preset.git",
-            "reference": "d4896bef649042b0baea77bf3eb91a808c5fb4d2"
+            "reference": "c968bbeae70145409628d7ac624b8ffb6f378652"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/d4896bef649042b0baea77bf3eb91a808c5fb4d2",
-            "reference": "d4896bef649042b0baea77bf3eb91a808c5fb4d2",
+            "url": "https://api.github.com/repos/kirki-framework/module-preset/zipball/c968bbeae70145409628d7ac624b8ffb6f378652",
+            "reference": "c968bbeae70145409628d7ac624b8ffb6f378652",
             "shasum": ""
         },
         "require": {
             "kirki-framework/url-getter": "*",
-            "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-14T12:44:17+00:00",
+        "time": "2019-09-22T14:18:59+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\Module\\": "src/"
@@ -1831,9 +1830,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
-                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
             }
         ],
         "description": "Preset Module for the Kirki WordPress plugin.",
@@ -1940,24 +1939,24 @@
     },
     {
         "name": "kirki-framework/module-tooltips",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-tooltips.git",
-            "reference": "f2d398524641309a5f7e160d0456b5e268c5dd8f"
+            "reference": "9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/f2d398524641309a5f7e160d0456b5e268c5dd8f",
-            "reference": "f2d398524641309a5f7e160d0456b5e268c5dd8f",
+            "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5",
+            "reference": "9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5",
             "shasum": ""
         },
         "require": {
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-22T12:21:13+00:00",
+        "time": "2019-09-22T14:20:44+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
