@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a7a4f5fa579a56f6513699633c594af",
+    "content-hash": "3276a907c117f3122380fdfabb6c80be",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1685,16 +1685,16 @@
         },
         {
             "name": "kirki-framework/module-postmessage",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "d02c08cb383e708274adeafc8c3a64a0d1abe7ca"
+                "reference": "554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/d02c08cb383e708274adeafc8c3a64a0d1abe7ca",
-                "reference": "d02c08cb383e708274adeafc8c3a64a0d1abe7ca",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3",
+                "reference": "554f97fb86f0f9c354a7ae4c41e03ab6992f9ab3",
                 "shasum": ""
             },
             "require": {
@@ -1727,7 +1727,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-01T12:11:09+00:00"
+            "time": "2019-09-22T13:35:23+00:00"
         },
         {
             "name": "kirki-framework/module-preset",
@@ -5192,7 +5192,6 @@
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-panels": 20,
-        "kirki-framework/module-postmessage": 20,
         "kirki-framework/module-preset": 20,
         "kirki-framework/module-sections": 20,
         "kirki-framework/module-selective-refresh": 20,

@@ -2,12 +2,11 @@
 /**
  * Automatic postMessage scripts calculation for Kirki controls.
  *
- * @package     Kirki
- * @category    Modules
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package kirki-framework/module-postmessage
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module;
@@ -23,7 +22,7 @@ class Postmessage {
 	 * An array of fields to be processed.
 	 *
 	 * @access protected
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var array
 	 */
 	protected $fields = [];
@@ -32,7 +31,7 @@ class Postmessage {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		add_action( 'customize_preview_init', [ $this, 'postmessage' ] );
@@ -43,7 +42,7 @@ class Postmessage {
 	 * Filter setting args before adding the setting to the customizer.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param array $args The field arguments.
 	 * @return array
 	 */
