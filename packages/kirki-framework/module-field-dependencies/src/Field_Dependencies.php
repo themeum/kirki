@@ -2,21 +2,19 @@
 /**
  * Automatic field-dependencies scripts calculation for Kirki controls.
  *
- * @package     Kirki
- * @category    Modules
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license    https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package kirki-framework/module-field-dependencies
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki\Module;
 
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 /**
- * Adds styles to the customizer.
+ * Field dependencies.
  */
 class Field_Dependencies {
 
@@ -24,7 +22,7 @@ class Field_Dependencies {
 	 * An array of field dependencies.
 	 *
 	 * @access private
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @var array
 	 */
 	private $dependencies = [];
@@ -33,7 +31,7 @@ class Field_Dependencies {
 	 * Constructor.
 	 *
 	 * @access public
-	 * @since 3.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'field_dependencies' ] );
@@ -44,7 +42,7 @@ class Field_Dependencies {
 	 * Filter control arguments.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param array $args The field arguments.
 	 * @return array
 	 */
@@ -52,7 +50,7 @@ class Field_Dependencies {
 		if ( isset( $args['active_callback'] ) ) {
 			if ( is_array( $args['active_callback'] ) ) {
 				if ( ! is_callable( $args['active_callback'] ) ) {
-	
+
 					// Bugfix for https://github.com/aristath/kirki/issues/1961.
 					foreach ( $args['active_callback'] as $key => $val ) {
 						if ( is_callable( $val ) ) {
@@ -64,7 +62,7 @@ class Field_Dependencies {
 					}
 				}
 			}
-	
+
 			if ( ! empty( $args['required'] ) ) {
 				$this->dependencies[ $args['settings'] ] = $args['required'];
 				$args['active_callback']                 = '__return_true';
@@ -92,7 +90,7 @@ class Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
-		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/assets/scripts/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
+		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
 		wp_localize_script( 'kirki_field_dependencies', 'kirkiControlDependencies', $this->dependencies );
 	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99f4476ea036274239b0f584727aa45e",
+    "content-hash": "bce5e9778c402fea6e758bc55967ab2a",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1594,21 +1594,20 @@
         },
         {
             "name": "kirki-framework/module-field-dependencies",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "1067f22e293bffa532a2dc088dfac85d82199a89"
+                "reference": "2a6754d98a030bc9840802ea7b99ab6d064d223a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/1067f22e293bffa532a2dc088dfac85d82199a89",
-                "reference": "1067f22e293bffa532a2dc088dfac85d82199a89",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/2a6754d98a030bc9840802ea7b99ab6d064d223a",
+                "reference": "2a6754d98a030bc9840802ea7b99ab6d064d223a",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
-                "kirki-framework/util": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -1636,7 +1635,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-07T20:10:02+00:00"
+            "time": "2019-09-22T16:22:50+00:00"
         },
         {
             "name": "kirki-framework/module-panels",
@@ -5188,7 +5187,6 @@
         "kirki-framework/field-typography": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
-        "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-panels": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20

@@ -54,7 +54,7 @@
     "kirki-framework/field-typography": "dev-master",
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-editor-styles": "dev-master",
-    "kirki-framework/module-field-dependencies": "dev-master",
+    "kirki-framework/module-field-dependencies": "*",
     "kirki-framework/module-panels": "dev-master",
     "kirki-framework/module-postmessage": "*",
     "kirki-framework/module-preset": "*",
