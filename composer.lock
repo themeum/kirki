@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25fcbc3e82908e00af781d95267ede29",
+    "content-hash": "7a7a4f5fa579a56f6513699633c594af",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
