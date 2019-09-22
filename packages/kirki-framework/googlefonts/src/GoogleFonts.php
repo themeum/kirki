@@ -3,11 +3,11 @@
  * Processes typography-related fields
  * and generates the google-font link.
  *
- * @package   kirki-framework/googlefonts
- * @author    Ari Stathopoulos (@aristath)
+ * @package kirki-framework/googlefonts
+ * @author Ari Stathopoulos (@aristath)
  * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license   https://opensource.org/licenses/MIT
- * @since     0.1
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0.0
  */
 
 namespace Kirki;
@@ -22,7 +22,7 @@ final class GoogleFonts {
 	 *
 	 * @static
 	 * @access public
-	 * @since 0.1
+	 * @since 1.0.0
 	 * @var array
 	 */
 	public static $google_fonts;
@@ -31,7 +31,7 @@ final class GoogleFonts {
 	 * The class constructor.
 	 *
 	 * @access public
-	 * @since 0.1
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		add_action( 'wp_ajax_kirki_fonts_google_all_get', [ $this, 'print_googlefonts_json' ] );
@@ -41,7 +41,7 @@ final class GoogleFonts {
 	/**
 	 * Prints the googlefonts JSON file.
 	 *
-	 * @since 0.1
+	 * @since 1.0.0
 	 * @param bool $die Whether the script should exit or not.
 	 * @return void
 	 */
@@ -55,7 +55,7 @@ final class GoogleFonts {
 	/**
 	 * Returns the array of googlefonts from the JSON file.
 	 *
-	 * @since 0.1
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public function get_array() {
@@ -68,7 +68,7 @@ final class GoogleFonts {
 	 * Return an array of all available Google Fonts.
 	 *
 	 * @access public
-	 * @since 0.1
+	 * @since 1.0.0
 	 * @return array All Google Fonts.
 	 */
 	public function get_google_fonts() {
@@ -109,7 +109,7 @@ final class GoogleFonts {
 	 * Returns an array of google-fonts matching our arguments.
 	 *
 	 * @access public
-	 * @since 0.1
+	 * @since 1.0.0
 	 * @param array $args The arguments.
 	 * @return array
 	 */

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53691808da71beefa59dbd5d2287cc18",
+    "content-hash": "25fcbc3e82908e00af781d95267ede29",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1412,16 +1412,16 @@
         },
         {
             "name": "kirki-framework/googlefonts",
-            "version": "dev-master",
+            "version": "v19.09.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/googlefonts.git",
-                "reference": "95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b"
+                "reference": "d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b",
-                "reference": "95a40aebfb2863a56df2a79c7e9e0f75d15ecb0b",
+                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b",
+                "reference": "d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b",
                 "shasum": ""
             },
             "require": {
@@ -1440,9 +1440,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Get a JSON file for all googlefonts. Initially built for the Kirki framework for the WordPress Customizer.",
@@ -1454,7 +1454,7 @@
                 "googlefonts",
                 "wordpress"
             ],
-            "time": "2019-08-17T14:03:18+00:00"
+            "time": "2019-09-22T13:04:19+00:00"
         },
         {
             "name": "kirki-framework/l10n",
@@ -5161,7 +5161,6 @@
         "kirki-framework/util": 20,
         "kirki-framework/l10n": 20,
         "kirki-framework/field": 20,
-        "kirki-framework/googlefonts": 20,
         "kirki-framework/control-base": 20,
         "kirki-framework/control-checkbox": 20,
         "kirki-framework/control-code": 20,
