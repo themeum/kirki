@@ -196,21 +196,21 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "758636198eff9ecfac11b364dddb5336ba17334c"
+            "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/758636198eff9ecfac11b364dddb5336ba17334c",
-            "reference": "758636198eff9ecfac11b364dddb5336ba17334c",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
+            "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
             "shasum": ""
         },
         "require": {
             "kirki-framework/control-base": "dev-master",
             "kirki-framework/field": "dev-master",
-            "kirki-framework/url-getter": "dev-master",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-06T20:21:02+00:00",
+        "time": "2019-09-08T18:37:12+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -776,26 +776,26 @@
     },
     {
         "name": "kirki-framework/control-react-color",
-        "version": "v1.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-react-color.git",
-            "reference": "f7522490a5d212fc446ca15dfabf2d19b011b041"
+            "reference": "c7e373d5f6d25dca91b1915c1494bf73448d69c3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/f7522490a5d212fc446ca15dfabf2d19b011b041",
-            "reference": "f7522490a5d212fc446ca15dfabf2d19b011b041",
+            "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/c7e373d5f6d25dca91b1915c1494bf73448d69c3",
+            "reference": "c7e373d5f6d25dca91b1915c1494bf73448d69c3",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/control-base": "dev-master",
-            "kirki-framework/field": "dev-master",
-            "kirki-framework/url-getter": "dev-master",
+            "kirki-framework/control-base": "*",
+            "kirki-framework/field": "*",
+            "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-07T19:14:53+00:00",
+        "time": "2019-09-08T18:39:09+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2088,12 +2088,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "693fbdc568037a37fa34284855137c0ddd552dc9"
+            "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/693fbdc568037a37fa34284855137c0ddd552dc9",
-            "reference": "693fbdc568037a37fa34284855137c0ddd552dc9",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/f4135a855a18f6d6853364e6061f950feb3d1de7",
+            "reference": "f4135a855a18f6d6853364e6061f950feb3d1de7",
             "shasum": ""
         },
         "require": {
@@ -2101,7 +2101,7 @@
             "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-29T03:00:44+00:00",
+        "time": "2019-09-11T15:31:50+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -2116,9 +2116,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
-                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
             }
         ],
         "description": "Webfonts Module for the Kirki WordPress plugin.",
@@ -2131,23 +2131,23 @@
     },
     {
         "name": "kirki-framework/url-getter",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v1.0.4",
+        "version_normalized": "1.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/url-getter.git",
-            "reference": "a07286de239ec912f172fad8df11f8f307c9cd1b"
+            "reference": "2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/a07286de239ec912f172fad8df11f8f307c9cd1b",
-            "reference": "a07286de239ec912f172fad8df11f8f307c9cd1b",
+            "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3",
+            "reference": "2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-03-30T14:59:26+00:00",
+        "time": "2019-09-08T18:32:10+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

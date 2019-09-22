@@ -112,7 +112,7 @@ class Webfonts {
 			$args['type'] = $object->type;
 		}
 
-		if ( ! isset( $args['type'] ) || $args['type'] !== 'typography' ) {
+		if ( ! isset( $args['type'] ) || $args['type'] !== 'kirki-typography' ) {
 			return;
 		}
 
