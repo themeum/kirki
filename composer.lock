@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6e494705bdb273d368f9962335c511b",
+    "content-hash": "0562e7cf6a312d972c4a915459cb4254",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1821,20 +1821,19 @@
         },
         {
             "name": "kirki-framework/module-selective-refresh",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-selective-refresh.git",
-                "reference": "18c6ea3f07b6f51299a674b0250f05029fbd5426"
+                "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/18c6ea3f07b6f51299a674b0250f05029fbd5426",
-                "reference": "18c6ea3f07b6f51299a674b0250f05029fbd5426",
+                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/9457c5741b8161bd085d0803f5ffb86f31cb0259",
+                "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/util": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -1850,9 +1849,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Preset Module for the Kirki WordPress plugin.",
@@ -1862,7 +1861,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-08-18T08:58:56+00:00"
+            "time": "2019-09-22T15:41:10+00:00"
         },
         {
             "name": "kirki-framework/module-tooltips",
@@ -5192,7 +5191,6 @@
         "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/module-panels": 20,
         "kirki-framework/module-sections": 20,
-        "kirki-framework/module-selective-refresh": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

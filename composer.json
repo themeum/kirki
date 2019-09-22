@@ -59,7 +59,7 @@
     "kirki-framework/module-postmessage": "*",
     "kirki-framework/module-preset": "*",
     "kirki-framework/module-sections": "dev-master",
-    "kirki-framework/module-selective-refresh": "dev-master",
+    "kirki-framework/module-selective-refresh": "*",
     "kirki-framework/module-tooltips": "*",
     "kirki-framework/module-webfonts": "*"
   },

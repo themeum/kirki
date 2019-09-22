@@ -1892,26 +1892,25 @@
     },
     {
         "name": "kirki-framework/module-selective-refresh",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-selective-refresh.git",
-            "reference": "18c6ea3f07b6f51299a674b0250f05029fbd5426"
+            "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/18c6ea3f07b6f51299a674b0250f05029fbd5426",
-            "reference": "18c6ea3f07b6f51299a674b0250f05029fbd5426",
+            "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/9457c5741b8161bd085d0803f5ffb86f31cb0259",
+            "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/util": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-18T08:58:56+00:00",
+        "time": "2019-09-22T15:41:10+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\Module\\": "src/"
@@ -1924,9 +1923,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
-                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
             }
         ],
         "description": "Preset Module for the Kirki WordPress plugin.",
