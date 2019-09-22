@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/compatibility.git",
-            "reference": "e09a3679d42fabeb91d6ac9355b8b858abb477b2"
+            "reference": "7978ae89bf0acbfe46db000bd21dda22761dc95a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/e09a3679d42fabeb91d6ac9355b8b858abb477b2",
-            "reference": "e09a3679d42fabeb91d6ac9355b8b858abb477b2",
+            "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/7978ae89bf0acbfe46db000bd21dda22761dc95a",
+            "reference": "7978ae89bf0acbfe46db000bd21dda22761dc95a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-09-22T12:33:13+00:00",
+        "time": "2019-09-22T12:36:13+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1694,54 +1694,6 @@
             }
         ],
         "description": "Field-Dependencies Module for the Kirki WordPress plugin.",
-        "homepage": "https://aristath.github.io/kirki",
-        "keywords": [
-            "customizer",
-            "framework",
-            "wordpress"
-        ]
-    },
-    {
-        "name": "kirki-framework/module-loading",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kirki-framework/module-loading.git",
-            "reference": "284a07ae0ce84b78e56df27bf94f05b56e888809"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-loading/zipball/284a07ae0ce84b78e56df27bf94f05b56e888809",
-            "reference": "284a07ae0ce84b78e56df27bf94f05b56e888809",
-            "shasum": ""
-        },
-        "require": {
-            "kirki-framework/url-getter": "*",
-            "kirki-framework/util": "*",
-            "php": ">=5.6"
-        },
-        "time": "2019-07-14T12:44:39+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Kirki\\Module\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ari Stathopoulos",
-                "role": "Developer",
-                "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
-            }
-        ],
-        "description": "Loading Animation Module for the Kirki WordPress plugin.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

@@ -46,7 +46,6 @@ class Aliases {
 			[ 'Kirki\Module\CSS\Generator', 'Kirki_Modules_CSS_Generator' ],
 			[ 'Kirki\Module\CSS\Property', 'Kirki_Output_Property' ],
 			[ 'Kirki\Module\CSS\Property\Font_Family', 'Kirki_Output_Property_Font_Family' ],
-			[ 'Kirki\Module\Loading', 'Kirki_Modules_Loading' ],
 			[ 'Kirki\Module\Preset', 'Kirki_Modules_Preset' ],
 			[ 'Kirki\Module\Tooltips', 'Kirki_Modules_Tooltips' ],
 			[ 'Kirki\Module\Webfonts', 'Kirki_Modules_Webfonts' ],

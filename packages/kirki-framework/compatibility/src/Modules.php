@@ -61,7 +61,6 @@ class Modules {
 			'kirki_modules',
 			[
 				'css'                => '\Kirki\Module\CSS',
-				'loading'            => '\Kirki\Module\Loading',
 				'tooltips'           => '\Kirki\Module\Tooltips',
 				'postMessage'        => '\Kirki\Module\Postmessage',
 				'selective-refresh'  => '\Kirki\Module\Selective_Refresh',
