@@ -32,7 +32,7 @@ class Slider extends Base {
 	public $type = 'kirki-slider';
 
 	/**
-	 * The version. Used in scripts & styles for cache-busting.
+	 * The control version.
 	 *
 	 * @static
 	 * @access public
@@ -52,10 +52,24 @@ class Slider extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-slider', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script(
+			'kirki-control-react-range',
+			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/main.js' ),
+			[
+				'customize-controls',
+				'customize-base',
+				'wp-element',
+				'wp-compose',
+				'wp-components',
+				'jquery',
+				'wp-i18n',
+			],
+			time(),
+			false
+		);
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-slider-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-react-range-style', URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], self::$control_ver );
 	}
 
 	/**
@@ -92,20 +106,5 @@ class Slider extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	protected function content_template() {
-		?>
-		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="wrapper">
-				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
-				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_html_e( 'Reset', 'kirki' ); ?></span></span>
-				<span class="value">
-					<input {{{ data.inputAttrs }}} type="text"/>
-					<span class="suffix">{{ data.choices['suffix'] }}</span>
-				</span>
-			</div>
-		</label>
-		<?php
-	}
+	protected function content_template() {}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83d982a65d0161ceda26ce6d64f213c7",
+    "content-hash": "e4d0329e22a18e7308c7e52fb62c09cd",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -899,16 +899,16 @@
         },
         {
             "name": "kirki-framework/control-slider",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "1119b5ba08836520882b619ffd93e96abb1dcefb"
+                "reference": "9069cb3ca5ed7799753c0cf14dc53edea06c8720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/1119b5ba08836520882b619ffd93e96abb1dcefb",
-                "reference": "1119b5ba08836520882b619ffd93e96abb1dcefb",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/9069cb3ca5ed7799753c0cf14dc53edea06c8720",
+                "reference": "9069cb3ca5ed7799753c0cf14dc53edea06c8720",
                 "shasum": ""
             },
             "require": {
@@ -942,7 +942,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-07T10:01:49+00:00"
+            "time": "2019-09-28T14:33:06+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -5175,7 +5175,6 @@
         "kirki-framework/control-radio": 20,
         "kirki-framework/control-repeater": 20,
         "kirki-framework/control-select": 20,
-        "kirki-framework/control-slider": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
         "kirki-framework/data-option": 20,
