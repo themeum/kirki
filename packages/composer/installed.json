@@ -1410,17 +1410,17 @@
     },
     {
         "name": "kirki-framework/field-typography",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v0.1",
+        "version_normalized": "0.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-typography.git",
-            "reference": "9dd40901346156915209c06220fb3a0878ece9d3"
+            "reference": "d7510ca7d83420346cfdf7e496535dab620fb327"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/9dd40901346156915209c06220fb3a0878ece9d3",
-            "reference": "9dd40901346156915209c06220fb3a0878ece9d3",
+            "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/d7510ca7d83420346cfdf7e496535dab620fb327",
+            "reference": "d7510ca7d83420346cfdf7e496535dab620fb327",
             "shasum": ""
         },
         "require": {
@@ -1434,9 +1434,9 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-08T14:37:31+00:00",
+        "time": "2019-09-28T11:42:09+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",

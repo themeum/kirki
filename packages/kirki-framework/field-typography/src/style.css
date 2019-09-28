@@ -1,0 +1,58 @@
+li[data-kirki-parent-control-type=kirki-typography] {
+  margin-bottom: 8px;
+}
+
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] .customize-control-title,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] .customize-control-title {
+  float: left;
+}
+
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] .buttonset,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-style] .buttonset {
+  float: right;
+}
+
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=font-size] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=line-height] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=letter-spacing] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=word-spacing] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-decoration] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-top] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=margin-bottom] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-transform] label .select2-container,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] label input,
+li[data-kirki-parent-control-type=kirki-typography][kirki-typography-subcontrol-type=text-align] label .select2-container {
+  max-width: 100px;
+}
+
+li[data-kirki-parent-control-type=kirki-typography] .customize-control-title {
+  font-weight: 400;
+}
+
+.kirki-typography-end {
+  margin-bottom: 12px;
+}
+
+/*# sourceMappingURL=style.css.map */

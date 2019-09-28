@@ -138,10 +138,34 @@ class Typography extends Field {
 				]
 			);
 
-			$standard_fonts = Fonts::get_standard_fonts();
-			$std_fonts      = [];
-			foreach ( $standard_fonts as $font ) {
-				$std_fonts[ $font['stack'] ] = $font['label'];
+			$std_fonts = [];
+			if ( ! isset( $args['choices']['fonts'] ) || ! isset( $args['choices']['fonts']['standard'] ) ) {
+				$standard_fonts = Fonts::get_standard_fonts();
+				foreach ( $standard_fonts as $font ) {
+					$std_fonts[ $font['stack'] ] = $font['label'];
+				}
+			} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
+				foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
+					$key = ( \is_int( $key ) ) ? $val : $key;
+					$std_fonts[ $key ] = $val;
+				}
+			}
+
+			$choices     = [
+				'standard' => [
+					esc_html__( 'Standard Fonts', 'kirki' ),
+					$std_fonts,
+				],
+				'google'   => [
+					esc_html__( 'Google Fonts', 'kirki' ),
+					array_combine( array_values( $g_fonts ), array_values( $g_fonts ) ),
+				],
+			];
+
+			if ( empty( $choices['standard'][1] ) ) {
+				$choices = array_combine( array_values( $g_fonts ), array_values( $g_fonts ) );
+			} elseif ( empty( $choices['google'][1] ) ) {
+				$choices = $std_fonts;
 			}
 
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-family';
@@ -156,16 +180,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-family]',
 						'default'     => isset( $args['default']['font-family'] ) ? $args['default']['font-family'] : '',
-						'choices'     => [
-							'standard' => [
-								esc_html__( 'Standard Fonts', 'kirki' ),
-								$std_fonts,
-							],
-							'google'   => [
-								esc_html__( 'Google Fonts', 'kirki' ),
-								array_combine( array_values( $g_fonts ), array_values( $g_fonts ) ),
-							],
-						],
+						'choices'     => $choices,
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -532,9 +547,9 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], '1.0' );
+		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script.js' ), [], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script.js' ), [], '1.0', true );
 		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
 
 		if ( ! self::$gfonts_var_added ) {
@@ -552,7 +567,7 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_customize_preview_init() {
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
 	}
 
 	/**
