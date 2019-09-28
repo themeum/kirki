@@ -1891,23 +1891,23 @@
     },
     {
         "name": "kirki-framework/module-selective-refresh",
-        "version": "v1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-selective-refresh.git",
-            "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259"
+            "reference": "826dad18131bd4d6e9fdd4dde2eaa2f338801692"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/9457c5741b8161bd085d0803f5ffb86f31cb0259",
-            "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259",
+            "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/826dad18131bd4d6e9fdd4dde2eaa2f338801692",
+            "reference": "826dad18131bd4d6e9fdd4dde2eaa2f338801692",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-09-22T15:41:10+00:00",
+        "time": "2019-09-28T07:48:05+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

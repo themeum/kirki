@@ -1820,16 +1820,16 @@
         },
         {
             "name": "kirki-framework/module-selective-refresh",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-selective-refresh.git",
-                "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259"
+                "reference": "826dad18131bd4d6e9fdd4dde2eaa2f338801692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/9457c5741b8161bd085d0803f5ffb86f31cb0259",
-                "reference": "9457c5741b8161bd085d0803f5ffb86f31cb0259",
+                "url": "https://api.github.com/repos/kirki-framework/module-selective-refresh/zipball/826dad18131bd4d6e9fdd4dde2eaa2f338801692",
+                "reference": "826dad18131bd4d6e9fdd4dde2eaa2f338801692",
                 "shasum": ""
             },
             "require": {
@@ -1860,7 +1860,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-22T15:41:10+00:00"
+            "time": "2019-09-28T07:48:05+00:00"
         },
         {
             "name": "kirki-framework/module-tooltips",
@@ -2774,9 +2774,9 @@
             "authors": [
                 {
                     "name": "Kitamura Satoshi",
-                    "role": "Original creator",
                     "email": "with.no.parachute@gmail.com",
-                    "homepage": "https://www.facebook.com/satooshi.jp"
+                    "homepage": "https://www.facebook.com/satooshi.jp",
+                    "role": "Original creator"
                 },
                 {
                     "name": "Takashi Matsuo",
@@ -4316,16 +4316,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.2",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+                "reference": "0afebf16a2e7f1e434920fa976253576151effe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0afebf16a2e7f1e434920fa976253576151effe9",
+                "reference": "0afebf16a2e7f1e434920fa976253576151effe9",
                 "shasum": ""
             },
             "require": {
@@ -4363,7 +4363,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T23:49:02+00:00"
+            "time": "2019-09-26T23:12:26+00:00"
         },
         {
             "name": "symfony/config",

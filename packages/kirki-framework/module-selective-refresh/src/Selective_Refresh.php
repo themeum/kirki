@@ -33,7 +33,6 @@ class Selective_Refresh {
 	 */
 	public function __construct() {
 		add_filter( 'kirki_field_add_setting_args', [ $this, 'filter_setting_args' ], 10, 2 );
-		add_action( 'customize_register', [ $this, 'register_partials' ], 9999 );
 	}
 
 	/**
