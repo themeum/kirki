@@ -17,7 +17,7 @@ Example:
 Kirki::add_config( 'my_config', [
 	'option_type' => 'option',
 	'option_name' => 'my_option'
-];
+] );
 
 // Add a simple text-field.
 // This will inherit the option_name from our config.
