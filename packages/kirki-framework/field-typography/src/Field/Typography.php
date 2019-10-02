@@ -173,7 +173,7 @@ class Typography extends Field {
 			/**
 			 * Add font-family control.
 			 */
-			new \Kirki\Field\Select(
+			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
 					[
 						'label'       => esc_html__( 'Font Family', 'kirki' ),
@@ -197,7 +197,7 @@ class Typography extends Field {
 			$font_weight = 'regular' === $font_weight || 'italic' === $font_weight ? 400 : (int) $font_weight;
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-weight';
 
-			new \Kirki\Field\Select(
+			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
 					[
 						'label'       => esc_html__( 'Font Weight', 'kirki' ),
@@ -353,7 +353,7 @@ class Typography extends Field {
 		if ( isset( $args['default']['text-transform'] ) ) {
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'text-transform';
 
-			new \Kirki\Field\Select(
+			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
 					[
 						'label'       => esc_html__( 'Text Transform', 'kirki' ),
@@ -377,7 +377,7 @@ class Typography extends Field {
 		if ( isset( $args['default']['text-align'] ) ) {
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'text-align';
 
-			new \Kirki\Field\Select(
+			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
 					[
 						'label'       => esc_html__( 'Text Align', 'kirki' ),
@@ -551,6 +551,21 @@ class Typography extends Field {
 
 		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script.js' ), [], '1.0', true );
 		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
+		wp_localize_script(
+			'kirki-typography',
+			'kirkiFontWeights',
+			[
+				'100' => esc_html__( '100 - Thin', 'kirki' ),
+				'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
+				'300' => esc_html__( '300 - Light', 'kirki' ),
+				'400' => esc_html__( '400 - Normal, Book, Regular', 'kirki' ),
+				'500' => esc_html__( '500 - Medium', 'kirki' ),
+				'600' => esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ),
+				'700' => esc_html__( '700 - Bold', 'kirki' ),
+				'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
+				'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
+			]
+		);
 
 		if ( ! self::$gfonts_var_added ) {
 			$google = new GoogleFonts();

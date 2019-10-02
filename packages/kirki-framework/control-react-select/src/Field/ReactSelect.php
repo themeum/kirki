@@ -17,7 +17,7 @@ use Kirki\Field;
  *
  * @since 1.0
  */
-class Select extends Field {
+class ReactSelect extends Field {
 
 	/**
 	 * The field type.
@@ -55,7 +55,7 @@ class Select extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\Kirki\Control\Select';
+	protected $control_class = '\Kirki\Control\ReactSelect';
 
 	/**
 	 * Whether we should register the control class for JS-templating or not.
@@ -109,7 +109,7 @@ class Select extends Field {
 			$args = parent::filter_control_args( $args, $wp_customize );
 
 			$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
-			$args['type']     = 'kirki-select';
+			$args['type']     = 'kirki-react-select';
 		}
 		return $args;
 	}

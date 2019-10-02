@@ -18,7 +18,7 @@ use Kirki\URL;
  *
  * @since 1.0
  */
-class Select extends Base {
+class ReactSelect extends Base {
 
 	/**
 	 * The control type.
@@ -27,7 +27,7 @@ class Select extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public $type = 'kirki-select';
+	public $type = 'kirki-react-select';
 
 	/**
 	 * Placeholder text.

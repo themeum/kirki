@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7288dee165ef76952affe0814e41d58",
+    "content-hash": "7f0e6a6a8e46123aef7a4c4570c98654",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -266,9 +266,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Cropped-Image control for the Kirki Customizer framework.",
@@ -360,9 +360,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Dashicons control for the Kirki Customizer framework.",
@@ -799,16 +799,16 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "737f490e279a606307188a246bae4e237a809443"
+                "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/737f490e279a606307188a246bae4e237a809443",
-                "reference": "737f490e279a606307188a246bae4e237a809443",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/1a7cacf28defee78f5eaabe41fd897692adda94b",
+                "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b",
                 "shasum": ""
             },
             "require": {
@@ -842,7 +842,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-02T15:47:37+00:00"
+            "time": "2019-10-02T22:28:59+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1114,9 +1114,9 @@
             "authors": [
                 {
                     "name": "aristath",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "https://aristath.github.io"
+                    "homepage": "https://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Hooks and tweaks to allow Kirki Fields to save options.",
@@ -1204,9 +1204,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Background field for the Kirki Customizer framework.",
@@ -1296,9 +1296,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Dimensions field for the Kirki Customizer framework.",
@@ -1342,9 +1342,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Font-Awesome field for the Kirki Customizer framework.",
@@ -1406,16 +1406,16 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "dev-master",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "d7510ca7d83420346cfdf7e496535dab620fb327"
+                "reference": "bd84ad4016230a736b08d12b92b35ee78314cb2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/d7510ca7d83420346cfdf7e496535dab620fb327",
-                "reference": "d7510ca7d83420346cfdf7e496535dab620fb327",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/bd84ad4016230a736b08d12b92b35ee78314cb2e",
+                "reference": "bd84ad4016230a736b08d12b92b35ee78314cb2e",
                 "shasum": ""
             },
             "require": {
@@ -1423,7 +1423,7 @@
                 "kirki-framework/control-color": "*",
                 "kirki-framework/control-custom": "*",
                 "kirki-framework/control-generic": "*",
-                "kirki-framework/control-select": "*",
+                "kirki-framework/control-react-select": "*",
                 "kirki-framework/googlefonts": "*",
                 "kirki-framework/module-webfonts": "*",
                 "kirki-framework/url-getter": "*",
@@ -1455,7 +1455,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-28T11:42:09+00:00"
+            "time": "2019-10-02T22:29:41+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1625,9 +1625,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Loading Animation Module for the Kirki WordPress plugin.",
@@ -1715,9 +1715,9 @@
             "authors": [
                 {
                     "name": "Ari Stathopoulos",
-                    "role": "Developer",
                     "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io"
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
                 }
             ],
             "description": "Panels API & Custom Panel Types for the Kirki WordPress Plugin.",
@@ -5222,7 +5222,6 @@
         "kirki-framework/control-radio": 20,
         "kirki-framework/control-repeater": 20,
         "kirki-framework/control-select": 20,
-        "kirki-framework/control-react-select": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
         "kirki-framework/data-option": 20,
@@ -5231,7 +5230,6 @@
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,
         "kirki-framework/field-multicolor": 20,
-        "kirki-framework/field-typography": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-panels": 20,

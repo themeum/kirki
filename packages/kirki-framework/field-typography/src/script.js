@@ -1,4 +1,4 @@
-/* global kirkiTypographyControls, kirkiGoogleFonts */
+/* global kirkiTypographyControls, kirkiGoogleFonts, kirkiFontWeights */
 function kirkiTypographyCompositeControlFontProperties( id, value ) {
 	var control, isGoogle, fontWeights, hasItalics, fontWeightControl, fontStyleControl, closest;
 
@@ -66,11 +66,13 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		 * Hide/show font-weight options depending on which are available for this font-family.
 		 */
 		if ( fontWeightControl ) {
+			fontWeightControl.params.choices = {};
 			_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-				if ( -1 === fontWeights.indexOf( weight ) ) {
-					fontWeightControl.doSelectAction( 'enableOption', weight.toString() );
-				} else {
-					fontWeightControl.doSelectAction( 'disableOption', weight.toString() );
+				if ( -1 !== fontWeights.indexOf( weight ) ) {
+					fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
+					fontWeightControl.formattedOptions = [];
+					fontWeightControl.destroy();
+					fontWeightControl.renderContent();
 				}
 			} );
 		}
@@ -82,10 +84,11 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 		function( controlInit ) {
 			if ( fontWeightControl && id + '[font-weight]' === controlInit.id ) {
 				_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-					if ( -1 === fontWeights.indexOf( weight ) ) {
-						fontWeightControl.doSelectAction( 'enableOption', weight.toString() );
-					} else {
-						fontWeightControl.doSelectAction( 'disableOption', weight.toString() );
+					if ( -1 !== fontWeights.indexOf( weight ) ) {
+						fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
+						fontWeightControl.formattedOptions = [];
+						fontWeightControl.destroy();
+						fontWeightControl.renderContent();
 					}
 				} );
 			}
