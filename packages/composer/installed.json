@@ -825,6 +825,55 @@
         ]
     },
     {
+        "name": "kirki-framework/control-react-select",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-react-select.git",
+            "reference": "737f490e279a606307188a246bae4e237a809443"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/737f490e279a606307188a246bae4e237a809443",
+            "reference": "737f490e279a606307188a246bae4e237a809443",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-10-02T15:47:37+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Select control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/control-repeater",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1365,12 +1414,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-multicolor.git",
-            "reference": "19272264a4bc4d12ee58102e5b354c5c5dff2264"
+            "reference": "0adbaaff123f1f5e286fe56a0bbda6aebd4a6626"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/19272264a4bc4d12ee58102e5b354c5c5dff2264",
-            "reference": "19272264a4bc4d12ee58102e5b354c5c5dff2264",
+            "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/0adbaaff123f1f5e286fe56a0bbda6aebd4a6626",
+            "reference": "0adbaaff123f1f5e286fe56a0bbda6aebd4a6626",
             "shasum": ""
         },
         "require": {
@@ -1379,7 +1428,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-08-17T06:59:29+00:00",
+        "time": "2019-10-01T20:50:12+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1395,9 +1444,9 @@
         "authors": [
             {
                 "name": "Ari Stathopoulos",
-                "role": "Developer",
                 "email": "aristath@gmail.com",
-                "homepage": "http://aristath.github.io"
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
             }
         ],
         "description": "Multicolor control for the Kirki Customizer framework.",
@@ -1410,8 +1459,8 @@
     },
     {
         "name": "kirki-framework/field-typography",
-        "version": "v0.1",
-        "version_normalized": "0.1.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/field-typography.git",
@@ -1436,7 +1485,7 @@
         },
         "time": "2019-09-28T11:42:09+00:00",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
@@ -2049,7 +2098,7 @@
         },
         "time": "2019-09-08T18:32:10+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\": "src"

@@ -66,7 +66,11 @@ class Multicolor extends Field {
 						'parent_setting' => $args['settings'],
 						'label'          => '',
 						'description'    => $choice_label,
-						'default'        => isset( $args['default'][ $choice ] ) ? $args['default'][ $choice ] : '',
+						'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
+						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
+						'choices'        => [
+							'alpha' => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
+						],
 						'css_vars'       => [],
 						'output'         => [],
 					],
@@ -74,6 +78,38 @@ class Multicolor extends Field {
 				)
 			);
 		}
+	}
+	
+	/**
+	 * Prefer control specific value over field value
+	 *
+	 * @access public
+	 * @since 4.0
+	 * @param $setting
+	 * @param $choice
+	 * @param $args
+	 *
+	 * @return string
+	 */
+	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
+		// Fail early
+		if ( ! isset( $args[ $setting ] ) ) {
+			return '';
+		}
+
+		// If a specific field for the choice is set
+		if ( isset( $args[ $setting ][ $choice ] ) ) {
+			return $args[ $setting ][ $choice ];
+		}
+
+		// Unset input_attrs of all other choices
+		foreach ( $args['choices'] as $id => $set ) {
+			if ( $id !== $choice ) {
+				unset( $args[ $setting ][ $id ] );
+			}
+		}
+
+		return $args[ $setting ];
 	}
 
 	/**

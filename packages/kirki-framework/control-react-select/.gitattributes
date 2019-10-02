@@ -1,0 +1,22 @@
+# Exclude from release archives.
+
+/.editorconfig        export-ignore
+/.git                 export-ignore
+/.gitattributes       export-ignore
+/.gitignore           export-ignore
+/CHANGELOG.md         export-ignore
+/composer.lock        export-ignore
+/contributing.md      export-ignore
+/LICENSE              export-ignore
+/package.json         export-ignore
+/webpack.config.js    export-ignore
+/.babelrc             export-ignore
+/src/*.js             export-ignore
+/composer.json        export-ignore
+/package-lock.json    export-ignore
+/README.md            export-ignore
+
+# Handle line endings.
+# See https://help.github.com/articles/dealing-with-line-endings/
+
+* text eol=lf
