@@ -38,7 +38,7 @@ class Color extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\Kirki\Control\Color';
+	protected $control_class = '\WPTRT\Customize\Control\ColorAlpha';
 
 	/**
 	 * Whether we should register the control class for JS-templating or not.
@@ -88,7 +88,7 @@ class Color extends Field {
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_control_args( $args, $wp_customize );
 
-			$args['type'] = 'kirki-color';
+			$args['type'] = 'color-alpha';
 
 			// Make sure choices is an array.
 			if ( ! isset( $args['choices'] ) || ! \is_array( $args['choices'] ) ) {

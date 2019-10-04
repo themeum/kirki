@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f0e6a6a8e46123aef7a4c4570c98654",
+    "content-hash": "b28e3ec87d4bfb8478be023d21894f9e",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "877bbcd5fa8a259b78355b9ad1f27ff447782d37"
+                "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/877bbcd5fa8a259b78355b9ad1f27ff447782d37",
-                "reference": "877bbcd5fa8a259b78355b9ad1f27ff447782d37",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/13bf42e5b4619c9122e3c78d1381c104443c6304",
+                "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304",
                 "shasum": ""
             },
             "require": {
@@ -93,7 +93,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-07-07T15:46:42+00:00"
+            "time": "2019-10-04T21:15:35+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -190,23 +190,22 @@
         },
         {
             "name": "kirki-framework/control-color",
-            "version": "dev-master",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064"
+                "reference": "2c1c2e44687c4462fb6a96a3c0a23646b3d13762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
-                "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/2c1c2e44687c4462fb6a96a3c0a23646b3d13762",
+                "reference": "2c1c2e44687c4462fb6a96a3c0a23646b3d13762",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-base": "dev-master",
                 "kirki-framework/field": "dev-master",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
+                "php": ">=5.6",
+                "wptrt/control-color-alpha": "*"
             },
             "type": "library",
             "autoload": {
@@ -234,7 +233,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-08T18:37:12+00:00"
+            "time": "2019-10-04T21:40:15+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -799,16 +798,16 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v0.1",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b"
+                "reference": "0bf451ba013d265ced39b6a734964709475d3c0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/1a7cacf28defee78f5eaabe41fd897692adda94b",
-                "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/0bf451ba013d265ced39b6a734964709475d3c0a",
+                "reference": "0bf451ba013d265ced39b6a734964709475d3c0a",
                 "shasum": ""
             },
             "require": {
@@ -842,7 +841,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-02T22:28:59+00:00"
+            "time": "2019-10-04T21:22:40+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -2084,6 +2083,48 @@
                 "wordpress"
             ],
             "time": "2019-09-07T19:43:17+00:00"
+        },
+        {
+            "name": "wptrt/control-color-alpha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPTRT/control-color-alpha.git",
+                "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPTRT/control-color-alpha/zipball/f11717ffbc05abd01b00a5a20416a14edb5a8db8",
+                "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WPTRT\\Customize\\Control\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress.org Theme Review Team",
+                    "email": "themes@wordpress.org",
+                    "homepage": "https://make.wordpress.org/themes",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Color control for the WordPress Customizer with RGBA support.",
+            "homepage": "https://github.com/WPTRT/control-color-alpha",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2019-10-04T20:24:15+00:00"
         }
     ],
     "packages-dev": [
@@ -3164,22 +3205,22 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/f6811d96d97bdf400077a0cc100ae56aa32b9203",
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
                 "sebastian/comparator": "^1.1|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
@@ -3223,7 +3264,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-06-13T12:50:23+00:00"
+            "time": "2019-10-03T11:07:50+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3479,16 +3520,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.3.5",
+            "version": "8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "302faed7059fde575cf3403a78c730c5e3a62750"
+                "reference": "57e5e77b62086033528ee1f4063ae03035f57894"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/302faed7059fde575cf3403a78c730c5e3a62750",
-                "reference": "302faed7059fde575cf3403a78c730c5e3a62750",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/57e5e77b62086033528ee1f4063ae03035f57894",
+                "reference": "57e5e77b62086033528ee1f4063ae03035f57894",
                 "shasum": ""
             },
             "require": {
@@ -3532,7 +3573,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.3-dev"
+                    "dev-master": "8.4-dev"
                 }
             },
             "autoload": {
@@ -3558,7 +3599,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-09-14T09:12:03+00:00"
+            "time": "2019-10-04T03:12:25+00:00"
         },
         {
             "name": "psr/container",
@@ -5208,7 +5249,6 @@
         "kirki-framework/control-base": 20,
         "kirki-framework/control-checkbox": 20,
         "kirki-framework/control-code": 20,
-        "kirki-framework/control-color": 20,
         "kirki-framework/control-cropped-image": 20,
         "kirki-framework/control-custom": 20,
         "kirki-framework/control-dashicons": 20,
@@ -5233,6 +5273,7 @@
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-panels": 20,
+        "wptrt/control-color-alpha": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

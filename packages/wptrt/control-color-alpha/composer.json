@@ -1,0 +1,26 @@
+{
+	"name"        : "wptrt/control-color-alpha",
+	"description" : "Color control for the WordPress Customizer with RGBA support.",
+	"keywords"    : [ "wordpress" ],
+	"homepage"    : "https://github.com/WPTRT/control-color-alpha",
+	"license"     : "GPL-2.0-or-later",
+	"authors"     : [
+		{
+			"name"     : "WordPress.org Theme Review Team",
+			"email"    : "themes@wordpress.org",
+			"homepage" : "https://make.wordpress.org/themes",
+			"role"     : "Developer"
+		}
+	],
+	"support"     : {
+		"issues" : "https://github.com/WPTRT/control-color-alpha/issues"
+	},
+	"autoload"    : {
+		"psr-4" : {
+			"WPTRT\\Customize\\Control\\" : "src/"
+		}
+	},
+	"require"     : {
+		"php" : ">=5.6"
+	}
+}

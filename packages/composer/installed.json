@@ -52,19 +52,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-base.git",
-            "reference": "877bbcd5fa8a259b78355b9ad1f27ff447782d37"
+            "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/877bbcd5fa8a259b78355b9ad1f27ff447782d37",
-            "reference": "877bbcd5fa8a259b78355b9ad1f27ff447782d37",
+            "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/13bf42e5b4619c9122e3c78d1381c104443c6304",
+            "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304",
             "shasum": ""
         },
         "require": {
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-07T15:46:42+00:00",
+        "time": "2019-10-04T21:15:35+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -191,28 +191,27 @@
     },
     {
         "name": "kirki-framework/control-color",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v0.2",
+        "version_normalized": "0.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-color.git",
-            "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064"
+            "reference": "2c1c2e44687c4462fb6a96a3c0a23646b3d13762"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
-            "reference": "acd1c3d640821ad44a4b5e6d8a1ba8ee7bbf6064",
+            "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/2c1c2e44687c4462fb6a96a3c0a23646b3d13762",
+            "reference": "2c1c2e44687c4462fb6a96a3c0a23646b3d13762",
             "shasum": ""
         },
         "require": {
-            "kirki-framework/control-base": "dev-master",
             "kirki-framework/field": "dev-master",
-            "kirki-framework/url-getter": "*",
-            "php": ">=5.6"
+            "php": ">=5.6",
+            "wptrt/control-color-alpha": "*"
         },
-        "time": "2019-09-08T18:37:12+00:00",
+        "time": "2019-10-04T21:40:15+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Kirki\\Control\\": "src/Control",
@@ -826,17 +825,17 @@
     },
     {
         "name": "kirki-framework/control-react-select",
-        "version": "v0.1",
-        "version_normalized": "0.1.0.0",
+        "version": "v0.2",
+        "version_normalized": "0.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-react-select.git",
-            "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b"
+            "reference": "0bf451ba013d265ced39b6a734964709475d3c0a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/1a7cacf28defee78f5eaabe41fd897692adda94b",
-            "reference": "1a7cacf28defee78f5eaabe41fd897692adda94b",
+            "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/0bf451ba013d265ced39b6a734964709475d3c0a",
+            "reference": "0bf451ba013d265ced39b6a734964709475d3c0a",
             "shasum": ""
         },
         "require": {
@@ -844,7 +843,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-10-02T22:28:59+00:00",
+        "time": "2019-10-04T21:22:40+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2165,6 +2164,50 @@
         "keywords": [
             "customizer",
             "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "wptrt/control-color-alpha",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/WPTRT/control-color-alpha.git",
+            "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/WPTRT/control-color-alpha/zipball/f11717ffbc05abd01b00a5a20416a14edb5a8db8",
+            "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "time": "2019-10-04T20:24:15+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "WPTRT\\Customize\\Control\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "WordPress.org Theme Review Team",
+                "email": "themes@wordpress.org",
+                "homepage": "https://make.wordpress.org/themes",
+                "role": "Developer"
+            }
+        ],
+        "description": "Color control for the WordPress Customizer with RGBA support.",
+        "homepage": "https://github.com/WPTRT/control-color-alpha",
+        "keywords": [
             "wordpress"
         ]
     }

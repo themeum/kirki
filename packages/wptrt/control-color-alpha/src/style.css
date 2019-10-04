@@ -1,0 +1,47 @@
+.customize-control-color-alpha span.color-alpha {
+    width: 30px;
+    height: 100%;
+}
+
+@media only screen and (max-width:782px) {
+    .customize-control-color-alpha span.color-alpha {
+        width: 40px;
+    }
+}
+
+.customize-control-color-alpha .wp-picker-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .customize-control-color-alpha .wp-picker-holder {
+    width: 100%;
+  }
+  
+  .customize-control-color-alpha .iris-picker {
+    width: 100% !important;
+  }
+  
+  .customize-control-color-alpha .iris-picker:not(.iris-only-strip) .iris-picker-inner {
+    display: flex;
+  }
+  
+  .customize-control-color-alpha .iris-picker:not(.iris-only-strip) .iris-square {
+    width: 100% !important;
+    margin-right: 0;
+  }
+  
+  .customize-control-color-alpha .iris-picker:not(.iris-only-strip) .iris-slider {
+    width: 24px !important;
+    margin-left: 8px !important;
+  }
+  
+  .customize-control-color-alpha .iris-palette-container {
+    width: calc(100% - 77px) !important;
+    display: flex;
+  }
+  
+  .customize-control-color-alpha .iris-palette {
+    width: 100% !important;
+  }
+  

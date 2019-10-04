@@ -4,9 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8e44c1c40a452d2f34e67604c6c88036
+class ComposerStaticInit002487b733daaadb7cfa371c84c1a7de
 {
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WPTRT\\Customize\\Control\\' => 24,
+        ),
         'K' => 
         array (
             'Kirki\\Util\\' => 11,
@@ -21,6 +25,10 @@ class ComposerStaticInit8e44c1c40a452d2f34e67604c6c88036
     );
 
     public static $prefixDirsPsr4 = array (
+        'WPTRT\\Customize\\Control\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wptrt/control-color-alpha/src',
+        ),
         'Kirki\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Util',
@@ -119,8 +127,8 @@ class ComposerStaticInit8e44c1c40a452d2f34e67604c6c88036
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8e44c1c40a452d2f34e67604c6c88036::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8e44c1c40a452d2f34e67604c6c88036::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit002487b733daaadb7cfa371c84c1a7de::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit002487b733daaadb7cfa371c84c1a7de::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
