@@ -178,8 +178,10 @@ class Base extends \WP_Customize_Control {
 
 		// Input attributes.
 		$this->json['inputAttrs'] = '';
-		foreach ( $this->input_attrs as $attr => $value ) {
-			$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
+		if ( is_array( $this->input_attrs ) ) {
+			foreach ( $this->input_attrs as $attr => $value ) {
+				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
+			}
 		}
 
 		// The kirki-config.
