@@ -879,12 +879,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-repeater.git",
-            "reference": "79b0841aeb0c9c44f09ab2e1b7c14bdcbf8ab520"
+            "reference": "85baf5842b2729b0eaee481150f5a1c19ef90c3a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/79b0841aeb0c9c44f09ab2e1b7c14bdcbf8ab520",
-            "reference": "79b0841aeb0c9c44f09ab2e1b7c14bdcbf8ab520",
+            "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/85baf5842b2729b0eaee481150f5a1c19ef90c3a",
+            "reference": "85baf5842b2729b0eaee481150f5a1c19ef90c3a",
             "shasum": ""
         },
         "require": {
@@ -897,7 +897,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-06T20:32:15+00:00",
+        "time": "2019-10-05T14:17:58+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -934,12 +934,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-select.git",
-            "reference": "c6e18c16a90e8e33417c287685b225f6b92f53b5"
+            "reference": "1f4abff6dc6549720624bc8a1d0930a61cf52a50"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/c6e18c16a90e8e33417c287685b225f6b92f53b5",
-            "reference": "c6e18c16a90e8e33417c287685b225f6b92f53b5",
+            "url": "https://api.github.com/repos/kirki-framework/control-select/zipball/1f4abff6dc6549720624bc8a1d0930a61cf52a50",
+            "reference": "1f4abff6dc6549720624bc8a1d0930a61cf52a50",
             "shasum": ""
         },
         "require": {
@@ -947,7 +947,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-07-06T20:32:59+00:00",
+        "time": "2019-10-05T14:12:03+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -2174,18 +2174,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/WPTRT/control-color-alpha.git",
-            "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8"
+            "reference": "7af21e7efa86ee8ff0b1cd4cd8db07a7d29b8b85"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/WPTRT/control-color-alpha/zipball/f11717ffbc05abd01b00a5a20416a14edb5a8db8",
-            "reference": "f11717ffbc05abd01b00a5a20416a14edb5a8db8",
+            "url": "https://api.github.com/repos/WPTRT/control-color-alpha/zipball/7af21e7efa86ee8ff0b1cd4cd8db07a7d29b8b85",
+            "reference": "7af21e7efa86ee8ff0b1cd4cd8db07a7d29b8b85",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2019-10-04T20:24:15+00:00",
+        "time": "2019-10-05T12:14:46+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

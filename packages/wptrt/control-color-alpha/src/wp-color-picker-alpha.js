@@ -436,15 +436,6 @@
 					self._change();
 				});
 			}
-
-			// Only run after the first time.
-			if ( self._inited ) {
-				self._trigger(
-					'change',
-					{ type: self.active },
-					{ color: self._color }
-				);
-			}
 		}
 	});
 }( jQuery ) );

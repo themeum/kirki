@@ -784,7 +784,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	},
 
 	/**
-	 * Init the dropdown-pages field with selectWoo
+	 * Init the dropdown-pages field.
 	 * Called after AddRow
 	 *
 	 * @param {object} theNewRow the row that was added to the repeater
@@ -794,9 +794,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 	initSelect: function( theNewRow, data ) {
 		var control  = this,
 			dropdown = theNewRow.container.find( '.repeater-field select' ),
-			dataField,
-			multiple,
-			selectWooOptions = {};
+			dataField;
 
 		if ( 0 === dropdown.length ) {
 			return;
@@ -804,17 +802,11 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 		dataField = dropdown.data( 'field' );
 		multiple  = jQuery( dropdown ).data( 'multiple' );
-		if ( 'undefed' !== multiple && jQuery.isNumeric( multiple ) ) {
-			multiple = parseInt( multiple, 10 );
-			if ( 1 < multiple ) {
-				selectWooOptions.maximumSelectionLength = multiple;
-			}
-		}
 
 		data = data || {};
 		data[ dataField ] = data[ dataField ] || '';
 
-		jQuery( dropdown ).selectWoo( selectWooOptions ).val( data[ dataField ] || jQuery( dropdown ).val() );
+		jQuery( dropdown ).val( data[ dataField ] || jQuery( dropdown ).val() );
 
 		this.container.on( 'change', '.repeater-field select', function( event ) {
 
