@@ -17,7 +17,7 @@ use Kirki\Field;
  *
  * @since 1.0
  */
-class React_Color extends Field {
+class ReactColor extends Field {
 
 	/**
 	 * The field type.
@@ -35,7 +35,7 @@ class React_Color extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\Kirki\Control\React_Color';
+	protected $control_class = '\Kirki\Control\ReactColor';
 
 	/**
 	 * Whether we should register the control class for JS-templating or not.

@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class React_Color extends Base {
+class ReactColor extends Base {
 
 	/**
 	 * The control type.

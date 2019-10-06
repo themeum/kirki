@@ -11,14 +11,14 @@
 namespace Kirki\Field;
 
 use Kirki\Field;
-use Kirki\Field\React_Color;
+use Kirki\Field\ReactColor;
 
 /**
  * Field overrides.
  *
  * @since 1.0
  */
-class Color_Palette extends Field {
+class ColorPalette extends Field {
 
 	/**
 	 * The field type.
@@ -53,6 +53,6 @@ class Color_Palette extends Field {
 		// Change the spacing between colors.
 		$args['choices']['circleSpacing'] = ( isset( $args['choices']['circleSpacing'] ) ) ? $args['choices']['circleSpacing'] : 10;
 
-		new React_Color( $args );
+		new ReactColor( $args );
 	}
 }

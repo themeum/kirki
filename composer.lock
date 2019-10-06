@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b28e3ec87d4bfb8478be023d21894f9e",
+    "content-hash": "a9a65fce34186b441b4585a066839095",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -750,16 +750,16 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "c7e373d5f6d25dca91b1915c1494bf73448d69c3"
+                "reference": "c78d21e31aace1c1b7ead600efd1c50dff6c639b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/c7e373d5f6d25dca91b1915c1494bf73448d69c3",
-                "reference": "c7e373d5f6d25dca91b1915c1494bf73448d69c3",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/c78d21e31aace1c1b7ead600efd1c50dff6c639b",
+                "reference": "c78d21e31aace1c1b7ead600efd1c50dff6c639b",
                 "shasum": ""
             },
             "require": {
@@ -794,7 +794,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-08T18:39:09+00:00"
+            "time": "2019-10-06T08:45:18+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -1219,16 +1219,16 @@
         },
         {
             "name": "kirki-framework/field-color-palette",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-color-palette.git",
-                "reference": "706909d21c4c579096fd67b8397a99bca91f43e5"
+                "reference": "3809ca2fa7d6c3f98add779891ad963c0785f0d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-color-palette/zipball/706909d21c4c579096fd67b8397a99bca91f43e5",
-                "reference": "706909d21c4c579096fd67b8397a99bca91f43e5",
+                "url": "https://api.github.com/repos/kirki-framework/field-color-palette/zipball/3809ca2fa7d6c3f98add779891ad963c0785f0d0",
+                "reference": "3809ca2fa7d6c3f98add779891ad963c0785f0d0",
                 "shasum": ""
             },
             "require": {
@@ -1261,7 +1261,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-01T12:44:54+00:00"
+            "time": "2019-10-06T08:52:56+00:00"
         },
         {
             "name": "kirki-framework/field-dimensions",
@@ -5266,7 +5266,6 @@
         "kirki-framework/control-upload": 20,
         "kirki-framework/data-option": 20,
         "kirki-framework/field-background": 20,
-        "kirki-framework/field-color-palette": 20,
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,
         "kirki-framework/field-multicolor": 20,

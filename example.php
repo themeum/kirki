@@ -232,7 +232,7 @@ new \Kirki\Field\Editor(
  *
  * @link https://kirki.org/docs/controls/color-palette.html
  */
-new \Kirki\Field\Color_Palette(
+new \Kirki\Field\ColorPalette(
 	[
 		'settings'    => 'color_palette_setting_0',
 		'label'       => esc_html__( 'Color-Palette', 'kirki' ),
@@ -246,7 +246,7 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
-new \Kirki\Field\Color_Palette(
+new \Kirki\Field\ColorPalette(
 	[
 		'settings'    => 'color_palette_setting_4',
 		'label'       => esc_html__( 'Color-Palette', 'kirki' ),
@@ -260,7 +260,7 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
-new \Kirki\Field\Color_Palette(
+new \Kirki\Field\ColorPalette(
 	[
 		'settings'    => 'color_palette_setting_1',
 		'label'       => esc_html__( 'Color-Palette', 'kirki' ),
@@ -274,7 +274,7 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
-new \Kirki\Field\Color_Palette(
+new \Kirki\Field\ColorPalette(
 	[
 		'settings'    => 'color_palette_setting_2',
 		'label'       => esc_html__( 'Color-Palette', 'kirki' ),
@@ -288,7 +288,7 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
-new \Kirki\Field\Color_Palette(
+new \Kirki\Field\ColorPalette(
 	[
 		'settings'    => 'color_palette_setting_3',
 		'label'       => esc_html__( 'Color-Palette', 'kirki' ),

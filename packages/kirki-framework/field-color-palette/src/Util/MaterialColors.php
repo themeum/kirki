@@ -16,7 +16,7 @@ namespace Kirki\Util;
  *
  * @since 1.0
  */
-class Material_Colors {
+class MaterialColors {
 
 	/**
 	 * Gets an array of material-design colors.
