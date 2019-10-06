@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "7978ae89bf0acbfe46db000bd21dda22761dc95a"
+                "reference": "8306a04016e8773f8d74ee51baaa8621af4abb99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/7978ae89bf0acbfe46db000bd21dda22761dc95a",
-                "reference": "7978ae89bf0acbfe46db000bd21dda22761dc95a",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/8306a04016e8773f8d74ee51baaa8621af4abb99",
+                "reference": "8306a04016e8773f8d74ee51baaa8621af4abb99",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-22T12:36:13+00:00"
+            "time": "2019-10-06T08:55:28+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -750,16 +750,16 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "c78d21e31aace1c1b7ead600efd1c50dff6c639b"
+                "reference": "2c9ed0badf187e9a87d48dabd4b6a39d2d948238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/c78d21e31aace1c1b7ead600efd1c50dff6c639b",
-                "reference": "c78d21e31aace1c1b7ead600efd1c50dff6c639b",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/2c9ed0badf187e9a87d48dabd4b6a39d2d948238",
+                "reference": "2c9ed0badf187e9a87d48dabd4b6a39d2d948238",
                 "shasum": ""
             },
             "require": {
@@ -794,7 +794,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-06T08:45:18+00:00"
+            "time": "2019-10-06T09:07:09+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -2046,12 +2046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/util.git",
-                "reference": "c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae"
+                "reference": "22e1855b1baad6272017f22652f137fc4f0d51ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/util/zipball/c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae",
-                "reference": "c0fa9d1455e813b9eab3ffbdccbe9201e0c095ae",
+                "url": "https://api.github.com/repos/kirki-framework/util/zipball/22e1855b1baad6272017f22652f137fc4f0d51ba",
+                "reference": "22e1855b1baad6272017f22652f137fc4f0d51ba",
                 "shasum": ""
             },
             "require": {
@@ -2082,7 +2082,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-07T19:43:17+00:00"
+            "time": "2019-10-06T08:55:10+00:00"
         },
         {
             "name": "wptrt/control-color-alpha",
