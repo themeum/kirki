@@ -99,12 +99,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-checkbox.git",
-            "reference": "495a4b772414f4d1556c4a74e33d3eb9ce30376b"
+            "reference": "bcb351efa97883b4839fc92c989053518ca3c355"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/495a4b772414f4d1556c4a74e33d3eb9ce30376b",
-            "reference": "495a4b772414f4d1556c4a74e33d3eb9ce30376b",
+            "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/bcb351efa97883b4839fc92c989053518ca3c355",
+            "reference": "bcb351efa97883b4839fc92c989053518ca3c355",
             "shasum": ""
         },
         "require": {
@@ -112,7 +112,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-09-08T13:50:16+00:00",
+        "time": "2019-10-06T18:05:42+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -825,17 +825,17 @@
     },
     {
         "name": "kirki-framework/control-react-select",
-        "version": "v0.2",
-        "version_normalized": "0.2.0.0",
+        "version": "v0.2.3",
+        "version_normalized": "0.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-react-select.git",
-            "reference": "0bf451ba013d265ced39b6a734964709475d3c0a"
+            "reference": "fba53a1f1dfe54e3fa839451ac386c61984ef025"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/0bf451ba013d265ced39b6a734964709475d3c0a",
-            "reference": "0bf451ba013d265ced39b6a734964709475d3c0a",
+            "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/fba53a1f1dfe54e3fa839451ac386c61984ef025",
+            "reference": "fba53a1f1dfe54e3fa839451ac386c61984ef025",
             "shasum": ""
         },
         "require": {
@@ -843,7 +843,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-10-04T21:22:40+00:00",
+        "time": "2019-10-07T15:40:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

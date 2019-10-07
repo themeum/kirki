@@ -109,6 +109,7 @@ class ReactSelect extends Field {
 			$args = parent::filter_control_args( $args, $wp_customize );
 
 			$args['multiple'] = isset( $args['multiple'] ) ? absint( $args['multiple'] ) : 1;
+			$args['multiple'] = 1 === $args['multiple'] ? 1 : 999;
 			$args['type']     = 'kirki-react-select';
 		}
 		return $args;
