@@ -84,7 +84,7 @@ class Checkbox extends Base {
 		/>
 		<label for="_customize-input-{{ data.id }}">{{ data.label }}</label>
 		<# if ( data.description ) { #>
-			<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{ data.description }}</span>
+			<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<?php
 	}
