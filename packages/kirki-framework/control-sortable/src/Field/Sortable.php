@@ -61,7 +61,7 @@ class Sortable extends Field {
 
 			// Set the sanitize-callback if none is defined.
 			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-				$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
+				$args['sanitize_callback'] = [ $this, 'sanitize' ];
 			}
 		}
 		return $args;

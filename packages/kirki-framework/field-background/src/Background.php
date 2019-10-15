@@ -72,7 +72,7 @@ class Background extends Field {
 		/**
 		 * Background Color.
 		 */
-		new \Kirki\Field\Color(
+		new \Kirki\Field\ReactColor(
 			wp_parse_args(
 				[
 					'settings'    => $args['settings'] . '[background-color]',
@@ -80,9 +80,6 @@ class Background extends Field {
 					'description' => esc_html__( 'Background Color', 'kirki' ),
 					'default'     => isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '',
 					'section'     => $args['section'],
-					'choices'     => [
-						'alpha' => true,
-					],
 				],
 				$args
 			)

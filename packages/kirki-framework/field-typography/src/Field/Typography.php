@@ -438,7 +438,7 @@ class Typography extends Field {
 		if ( isset( $args['default']['color'] ) ) {
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'color';
 
-			new \Kirki\Field\Color(
+			new \Kirki\Field\ReactColor(
 				wp_parse_args(
 					[
 						'label'       => '',
@@ -447,6 +447,9 @@ class Typography extends Field {
 						'default'     => $args['default']['color'],
 						'css_vars'    => [],
 						'output'      => [],
+						'choices'     => [
+							'disableAlpha' => true,
+						],
 					],
 					$args
 				)

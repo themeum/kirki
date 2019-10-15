@@ -27,7 +27,6 @@
     "kirki-framework/control-base": "dev-master",
     "kirki-framework/control-checkbox": "dev-master",
     "kirki-framework/control-code": "dev-master",
-    "kirki-framework/control-color": "*",
     "kirki-framework/control-react-color": "*",
     "kirki-framework/control-cropped-image": "dev-master",
     "kirki-framework/control-custom": "dev-master",

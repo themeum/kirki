@@ -58,10 +58,9 @@ class Multicolor extends Field {
 		);
 
 		foreach ( $args['choices'] as $choice => $choice_label ) {
-			new \Kirki\Field\Color(
+			new \Kirki\Field\ReactColor(
 				wp_parse_args(
 					[
-						'type'           => 'kirki-color',
 						'settings'       => $args['settings'] . '[' . $choice . ']',
 						'parent_setting' => $args['settings'],
 						'label'          => '',
@@ -79,7 +78,7 @@ class Multicolor extends Field {
 			);
 		}
 	}
-	
+
 	/**
 	 * Prefer control specific value over field value
 	 *

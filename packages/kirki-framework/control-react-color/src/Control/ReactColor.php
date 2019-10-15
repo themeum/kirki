@@ -62,6 +62,27 @@ class ReactColor extends Base {
 	}
 
 	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @see WP_Customize_Control::to_json()
+	 * @return void
+	 */
+	public function to_json() {
+
+		// Get the basics from the parent class.
+		parent::to_json();
+
+		if ( ! isset( $this->json['choices']['formElement'] ) ) {
+			$this->json['choices']['formComponent'] = 'ChromePicker';
+		}
+		if ( isset( $this->json['choices']['alpha'] ) && false === $this->json['choices']['alpha'] ) {
+			$this->json['choices']['disableAlpha'] = true;
+		}
+	}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
