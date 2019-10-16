@@ -74,7 +74,7 @@ class ReactColor extends Base {
 		// Get the basics from the parent class.
 		parent::to_json();
 
-		if ( ! isset( $this->json['choices']['formElement'] ) ) {
+		if ( ! isset( $this->json['choices']['formComponent'] ) ) {
 			$this->json['choices']['formComponent'] = 'ChromePicker';
 		}
 		if ( isset( $this->json['choices']['alpha'] ) && false === $this->json['choices']['alpha'] ) {

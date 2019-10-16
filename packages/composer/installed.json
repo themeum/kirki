@@ -775,17 +775,17 @@
     },
     {
         "name": "kirki-framework/control-react-color",
-        "version": "v1.0.7",
-        "version_normalized": "1.0.7.0",
+        "version": "v1.0.8",
+        "version_normalized": "1.0.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/control-react-color.git",
-            "reference": "ca471e40a39344170682dd6c1d52bfb8d94e6829"
+            "reference": "db9f9d4fe9d1f25627fe8c9458a47fc70e112537"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/ca471e40a39344170682dd6c1d52bfb8d94e6829",
-            "reference": "ca471e40a39344170682dd6c1d52bfb8d94e6829",
+            "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/db9f9d4fe9d1f25627fe8c9458a47fc70e112537",
+            "reference": "db9f9d4fe9d1f25627fe8c9458a47fc70e112537",
             "shasum": ""
         },
         "require": {
@@ -794,7 +794,7 @@
             "kirki-framework/url-getter": "*",
             "php": ">=5.6"
         },
-        "time": "2019-10-15T16:40:04+00:00",
+        "time": "2019-10-16T19:59:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
