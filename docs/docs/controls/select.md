@@ -22,6 +22,7 @@ Kirki::add_field( 'theme_config_id', [
 	'label'       => esc_html__( 'This is the label', 'kirki' ),
 	'section'     => 'section_id',
 	'default'     => 'option-1',
+	'placeholder' => esc_html__( 'Select an option...', 'kirki' ),
 	'priority'    => 10,
 	'multiple'    => 1,
 	'choices'     => [
