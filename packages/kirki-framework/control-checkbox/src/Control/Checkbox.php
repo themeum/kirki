@@ -82,7 +82,7 @@ class Checkbox extends Base {
 			<# if ( data.description ) { #>aria-describedby="_customize-description-{{ data.id }}"<# } #>
 			<# if ( data.value ) { #>checked="checked"<# } #>
 		/>
-		<label for="_customize-input-{{ data.id }}">{{ data.label }}</label>
+		<label for="_customize-input-{{ data.id }}">{{{ data.label }}}</label>
 		<# if ( data.description ) { #>
 			<span id="_customize-description-{{ data.id }}" class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>

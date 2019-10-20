@@ -39,14 +39,22 @@ class ReactSelect extends Base {
 	public $placeholder = false;
 
 	/**
-	 * Maximum number of options the user will be able to select.
-	 * Set to 1 for single-select.
+	 * Whether the select should be clearable or not.
+	 *
+	 * @link https://react-select.com/props#select-props
+	 * @since 0.3.0
+	 * @var bool
+	 */
+	public $isClearable = false;
+
+	/**
+	 * whether this is a multi-select or not.
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @var int
+	 * @var bool
 	 */
-	public $multiple = 1;
+	public $multiple = false;
 
 	/**
 	 * The version. Used in scripts & styles for cache-busting.
@@ -127,8 +135,31 @@ class ReactSelect extends Base {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['multiple']    = $this->multiple;
-		$this->json['placeholder'] = $this->placeholder;
+		$this->json['isClearable'] = $this->isClearable;
+
+		// Backwards-compatibility: The "multiple" argument used to be a number of maximum options users can select.
+		// That was based on select2. Since we switched to react-select this option is a boolean so we need to convert it.
+		switch ( $this->multiple ) {
+			case true:
+			case false:
+				$this->json['multiple'] = $this->multiple; // Already a bool.
+				break;
+			case 0:
+			case '0':
+				$this->json['multiple'] = true; // 0 used to be infinite.
+				break;
+			case 1:
+			case '1':
+				$this->json['multiple'] = false; // Single option.
+				break;
+			case ( is_numeric( $this->multiple ) && 1 < $this->multiple ):
+				$this->json['multiple'] = true; // More than 1 options.
+				break;
+			default:
+				$this->multiple = false;
+		}
+
+		$this->json['placeholder'] = ( $this->placeholder ) ? $this->placeholder : esc_html__( 'Select...', 'kirki' );
 		$this->json['select_args'] = $this->select_args;
 	}
 

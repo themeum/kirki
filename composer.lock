@@ -101,12 +101,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
-                "reference": "bcb351efa97883b4839fc92c989053518ca3c355"
+                "reference": "554893f0b35e2b4285ea418d088cca963e948889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/bcb351efa97883b4839fc92c989053518ca3c355",
-                "reference": "bcb351efa97883b4839fc92c989053518ca3c355",
+                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/554893f0b35e2b4285ea418d088cca963e948889",
+                "reference": "554893f0b35e2b4285ea418d088cca963e948889",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-06T18:05:42+00:00"
+            "time": "2019-10-20T11:52:49+00:00"
         },
         {
             "name": "kirki-framework/control-code",
@@ -798,16 +798,16 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v0.2.3",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "fba53a1f1dfe54e3fa839451ac386c61984ef025"
+                "reference": "02f97d93df8a44c523a6afb23b3e5b7fcf408510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/fba53a1f1dfe54e3fa839451ac386c61984ef025",
-                "reference": "fba53a1f1dfe54e3fa839451ac386c61984ef025",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/02f97d93df8a44c523a6afb23b3e5b7fcf408510",
+                "reference": "02f97d93df8a44c523a6afb23b3e5b7fcf408510",
                 "shasum": ""
             },
             "require": {
@@ -841,7 +841,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-07T15:40:21+00:00"
+            "time": "2019-10-20T11:38:35+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -996,12 +996,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-sortable.git",
-                "reference": "6375cb88666fb369363b96bca6208ccafd4b009d"
+                "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/6375cb88666fb369363b96bca6208ccafd4b009d",
-                "reference": "6375cb88666fb369363b96bca6208ccafd4b009d",
+                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
+                "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
                 "shasum": ""
             },
             "require": {
@@ -1035,7 +1035,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-07T16:17:41+00:00"
+            "time": "2019-10-20T11:42:14+00:00"
         },
         {
             "name": "kirki-framework/control-upload",
@@ -2895,16 +2895,16 @@
         },
         {
             "name": "phpcompatibility/php-compatibility",
-            "version": "9.3.1",
+            "version": "9.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196"
+                "reference": "bfca2be3992f40e92206e5a7ebe5eaee37280b58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/9999344e47e7af6b00e1a898eacc4e4368fb7196",
-                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/bfca2be3992f40e92206e5a7ebe5eaee37280b58",
+                "reference": "bfca2be3992f40e92206e5a7ebe5eaee37280b58",
                 "shasum": ""
             },
             "require": {
@@ -2949,20 +2949,20 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-05T18:36:49+00:00"
+            "time": "2019-10-16T21:24:24+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie.git",
-                "reference": "b1bb79a7cab1fb856b56f1b5cf110b6e52d8e936"
+                "reference": "94b2388c4fe99e9e2ef0772e280fa0eafa1d0603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityParagonie/zipball/b1bb79a7cab1fb856b56f1b5cf110b6e52d8e936",
-                "reference": "b1bb79a7cab1fb856b56f1b5cf110b6e52d8e936",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityParagonie/zipball/94b2388c4fe99e9e2ef0772e280fa0eafa1d0603",
+                "reference": "94b2388c4fe99e9e2ef0772e280fa0eafa1d0603",
                 "shasum": ""
             },
             "require": {
@@ -3001,7 +3001,7 @@
                 "polyfill",
                 "standards"
             ],
-            "time": "2019-08-28T15:58:19+00:00"
+            "time": "2019-10-16T21:41:26+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-wp",
@@ -4404,16 +4404,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "0afebf16a2e7f1e434920fa976253576151effe9"
+                "reference": "82cd0f854ceca17731d6d019c7098e3755c45060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0afebf16a2e7f1e434920fa976253576151effe9",
-                "reference": "0afebf16a2e7f1e434920fa976253576151effe9",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/82cd0f854ceca17731d6d019c7098e3755c45060",
+                "reference": "82cd0f854ceca17731d6d019c7098e3755c45060",
                 "shasum": ""
             },
             "require": {
@@ -4451,7 +4451,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-26T23:12:26+00:00"
+            "time": "2019-10-16T21:14:26+00:00"
         },
         {
             "name": "symfony/config",

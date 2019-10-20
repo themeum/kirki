@@ -78,11 +78,13 @@ class Sortable extends Base {
 
 			<ul class="sortable">
 				<# _.each( data.value, function( choiceID ) { #>
-					<li {{{ data.inputAttrs }}} class='kirki-sortable-item' data-value='{{ choiceID }}'>
-						<i class='dashicons dashicons-menu'></i>
-						<i class="dashicons dashicons-visibility visibility"></i>
-						{{{ data.choices[ choiceID ] }}}
-					</li>
+					<# if ( data.choices[ choiceID ] ) { #>
+						<li {{{ data.inputAttrs }}} class='kirki-sortable-item' data-value='{{ choiceID }}'>
+							<i class='dashicons dashicons-menu'></i>
+							<i class="dashicons dashicons-visibility visibility"></i>
+							{{{ data.choices[ choiceID ] }}}
+						</li>
+					<# } #>
 				<# }); #>
 				<# _.each( data.choices, function( choiceLabel, choiceID ) { #>
 					<# if ( -1 === data.value.indexOf( choiceID ) ) { #>
